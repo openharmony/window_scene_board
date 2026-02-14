@@ -1,0 +1,380 @@
+{
+  "color": [
+    {
+      "name":"transparent",
+      "value":"#00000000"
+    },
+    {
+      "name": "floating_scene_bg_color",
+      "value": "#CCFFFFFF"
+    },
+    {
+      "name": "page_background",
+      "value": "#19181B"
+    },
+    {
+      "name": "battery_background",
+      "value": "#00000000"
+    },
+    {
+      "name": "date_time_color",
+      "value": "#ffffff"
+    },
+    {
+      "name": "button_background",
+      "value": "#4d000000"
+    },
+    {
+      "name": "font_color_white",
+      "value": "#fff"
+    },
+    {
+      "name": "screenlock_backgroundcolor",
+      "value": "#000000"
+    },
+    {
+      "name": "capsule_background_color",
+      "value": "#64BB5C"
+    },
+    {
+      "name" : "green_capsule_text_color",
+      "value" : "#ccFFFFFF"
+    },
+    {
+      "name": "control_center_complex_toggle_ring_mode_on_bg_color",
+      "value": "#FFFF9800"
+    },
+    {
+      "name": "quickly_setting_time_font_color",
+      "value": "#ffffffff"
+    },
+    {
+      "name": "quickly_setting_date_font_color",
+      "value": "#ffffffff"
+    },
+    {
+      "name": "brightness_slider_block_color",
+      "value": "#FFFFFFFF"
+    },
+    {
+      "name": "statusbar_background_color",
+      "value": "#4d999999"
+    },
+    {
+      "name": "statusbar_background_color_transparent",
+      "value": "#00000000"
+    },
+    {
+      "name": "user_switch_prompt",
+      "value": "#000000"
+    },
+    {
+      "name": "muti_window_title_bar_button_shape_color",
+      "value": "#7F696B71"
+    },
+    {
+      "name": "muti_window_title_menu_background_color",
+      "value": "#E6FFFFFF"
+    },
+    {
+      "name": "onestep_highlight_circle_bg_color",
+      "value": "#33DCDFE6"
+    },
+    {
+      "name": "onestep_highlight_icon_color",
+      "value": "#FFFFFF"
+    },
+    {
+      "name": "onestep_highlight_card_bg_color",
+      "value": "#7FDCDFE6"
+    },
+    {
+      "name": "onestep_highlight_card_bg_border_color",
+      "value": "#33FFFFFF"
+    },
+    {
+      "name": "divider_twenty_pct_white_color",
+      "value": "#CCFFFFFF"
+    },
+    {
+      "name": "screenlock_shortcut_bg_enable_color",
+      "value": "#BFFFFFFF"
+    },
+    {
+      "name": "floating_scene_focused_shadow_color",
+      "value": "#4000001E"
+    },
+    {
+      "name": "floating_scene_unfocused_shadow_color",
+      "value": "#2600001E"
+    },
+    {
+      "name": "pip_icon_color",
+      "value": "#E5000000"
+    },
+    {
+      "name": "hovered_outer_border_color",
+      "value": "#1A000000"
+    },
+    {
+      "name": "hovered_inner_border_color",
+      "value": "#33FFFFFF"
+    },
+    {
+      "name": "keyboard_panel_background_color",
+      "value": "#E3E4E6"
+    },
+    {
+      "name": "keyboard_panel_button_color",
+      "value": "#00000000"
+    },
+    {
+      "name": "keyboard_panel_button_pressed_color",
+      "value": "#1A000000"
+    },
+    {
+      "name": "keyboard_light_pressed_color",
+      "value": "#19000000"
+    },
+    {
+      "name": "keyboard_dark_pressed_color",
+      "value": "#26FFFFFF"
+    },
+    {
+      "name": "keyboard_light_font_and_iocn_color",
+      "value": "#E5000000"
+    },
+    {
+      "name": "keyboard_dark_font_and_iocn_color",
+      "value": "#E5FFFFFF"
+    },
+    {
+      "name": "keyboard_light_select_iocn_color",
+      "value": "#FF0A59F7"
+    },
+    {
+      "name": "keyboard_dark_select_icon_color",
+      "value": "#FFFFFFFF"
+    },
+    {
+      "name": "keyboard_light_not_select_iocn_color",
+      "value": "#99000000"
+    },
+    {
+      "name": "keyboard_dark_not_select_icon_color",
+      "value": "#99FFFFFF"
+    },
+    {
+      "name": "keyboard_light_split_Line_color",
+      "value": "#33000000"
+    },
+    {
+      "name": "keyboard_dark_split_Line_color",
+      "value": "#33FFFFFF"
+    },
+    {
+      "name": "keyboard_light_Dialog_color",
+      "value": "#D8FFFFFF"
+    },
+    {
+      "name": "keyboard_dark_Dialog_color",
+      "value": "#D8202224"
+    },
+    {
+      "name": "keyboard_transparent_color",
+      "value": "#00000000"
+    },
+    {
+      "name": "keyboard_immersive_color",
+      "value": "#FF000000"
+    },
+    {
+      "name": "keyboard_item_item_bg_color",
+      "value": "#00000000"
+    },
+    {
+      "name": "keyboard_dialog_text_selected_color",
+      "value": "#0A59F7"
+    },
+    {
+      "name": "keyboard_dialog_selected_color",
+      "value": "#220A59F7"
+    },
+    {
+      "name": "aod_style_item_border_color",
+      "value": "#33808080"
+    },
+    {
+      "name": "intent_card_bg_light_color",
+      "value": "#B3FFFFFF"
+    },
+    {
+      "name": "intent_card_bg_dark_color",
+      "value": "#4DFFFFFF"
+    },
+    {
+      "name":"indicator_select_color",
+      "value": "#0A59F7"
+    },
+    {
+      "name":"indicator_unselect_color",
+      "value": "#19000000"
+    },
+    {
+      "name": "ntf_phone_clear_button_bg_color",
+      "value": "#66000000"
+    },
+    {
+      "name": "scb_intent_start_window_background",
+      "value": "#00FFFFFF"
+    },
+    {
+      "name": "app_lock_color",
+      "value": "#4D000000"
+    },
+    {
+      "name": "app_lock_mask_color",
+      "value": "#34000000"
+    },
+    {
+      "name": "app_lock_icon_color",
+      "value": "#000000"
+    },
+    {
+      "name": "app_lock_white_board_background",
+      "value": "#E5E5E5"
+    },
+    {
+      "name": "app_form_back_board",
+      "value": "#FFFFFF"
+    },
+    {
+      "name": "sl_default_foreground_bright_color",
+      "value": "#B8ffffff"
+    },
+    {
+      "name": "sl_default_foreground_dark_color",
+      "value": "#B62f2f2f"
+    },
+    {
+      "name": "screenlock_change_color",
+      "value": "#BAffffff"
+    },
+    {
+      "name": "sl_form_panel_bright_color",
+      "value": "#3Cffffff"
+    },
+    {
+      "name": "sl_form_panel_dark_color",
+      "value": "#46a8a8a8"
+    },
+    {
+      "name": "sl_ntf_list_foreground_bright_color",
+      "value": "#2cffffff"
+    },
+    {
+      "name": "sl_ntf_list_foreground_dark_color",
+      "value": "#28000000"
+    },
+    {
+      "name": "sl_ntf_list_back_bright_color",
+      "value": "#71000000"
+    },
+    {
+      "name": "sl_ntf_list_back_dark_color",
+      "value": "#92ffffff"
+    },
+    {
+      "name": "sl_cap_default_foreground_bright_color",
+      "value": "#F8ffffff"
+    },
+    {
+      "name": "sl_cap_default_foreground_dark_color",
+      "value": "#C5000000"
+    },
+    {
+      "name": "sl_cap_default_bright_color",
+      "value": "#24ffffff"
+    },
+    {
+      "name": "sl_cap_default_dark_color",
+      "value": "#27000000"
+    },
+    {
+      "name": "sl_cap_first_background_bright_color",
+      "value": "#2Fffffff"
+    },
+    {
+      "name": "sl_cap_first_background_dark_color",
+      "value": "#3A303030"
+    },
+    {
+      "name": "sl_cap_second_foreground_bright_color",
+      "value": "#C2ffffff"
+    },
+    {
+      "name": "sl_cap_second_foreground_dark_color",
+      "value": "#AE000000"
+    },
+    {
+      "name": "sl_cap_second_background_bright_color",
+      "value": "#37a8a8a8"
+    },
+    {
+      "name": "sl_cap_second_background_dark_color",
+      "value": "#40101010"
+    },
+    {
+      "name": "app_lock_mask_reminder_text_color",
+      "value": "#FFFFFFFF"
+    },
+    {
+      "name": "app_lock_deepen_mask_color",
+      "value": "#1C000000"
+    },
+    {
+      "name": "font_creation_shadow_color_yellow",
+      "value": "#66ffc628"
+    },
+    {
+      "name": "font_creation_shadow_color_red",
+      "value": "#5Cff5757"
+    },
+    {
+      "name": "font_creation_shadow_color_pink",
+      "value": "#66ff42d2"
+    },
+    {
+      "name": "create_res_font_col",
+      "value": "#e6000000"
+    },
+    {
+      "name": "loading_icon_col",
+      "value": "#99646464"
+    },
+    {
+      "name": "art_sign_font_col",
+      "value": "#ff191919"
+    },
+    {
+      "name": "dlp_white_board_background",
+      "value": "#FFFFFFFF"
+    },
+    {
+      "name": "dlp_mask_color",
+      "value": "#34000000"
+    },
+    {
+      "name": "dlp_mask_reminder_text_color",
+      "value": "#FFFFFFFF"
+    },
+    {
+      "name": "color_white_20",
+      "value": "#32FFFFFF"
+    },
+    {
+      "name": "color_text_secondary",
+      "value": "#99FFFFFF"
+    }
+  ]
+}

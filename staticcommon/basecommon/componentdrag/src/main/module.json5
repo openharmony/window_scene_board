@@ -1,0 +1,10 @@
+{
+  "module": {
+    "name": "componentdrag",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ]
+  }
+}

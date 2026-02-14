@@ -1,0 +1,12 @@
+{
+  "string": [
+    {
+      "name": "shared_desc",
+      "value": "description"
+    },
+    {
+      "name": "covertTo_bigFolder_hsp",
+      "value": "enlarge_hsp"
+    }
+  ]
+}

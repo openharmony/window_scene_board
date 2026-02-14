@@ -1,0 +1,226 @@
+{
+  "insightIntents": [
+    {
+      "intentName": "Rebooting",
+      "domain": "SystemDomain",
+      "intentVersion": "1.0.1",
+      "srcEntry": "./ets/SceneBoard/intents/intentExecutor.ets",
+      "serviceExtension": {
+        "ability": "IntentServiceExtAbility"
+      }
+    },
+    {
+      "intentName": "LockScreen",
+      "domain": "SystemDomain",
+      "intentVersion": "1.0.1",
+      "srcEntry": "./ets/SceneBoard/intents/intentExecutor.ets",
+      "serviceExtension": {
+        "ability": "IntentServiceExtAbility"
+      }
+    },
+    {
+      "intentName": "Shutdown",
+      "domain": "SystemDomain",
+      "intentVersion": "1.0.1",
+      "srcEntry": "./ets/SceneBoard/intents/intentExecutor.ets",
+      "serviceExtension": {
+        "ability": "IntentServiceExtAbility"
+      }
+    },
+    {
+      "intentName": "ComputerHibernation",
+      "domain": "SystemDomain",
+      "intentVersion": "1.0.1",
+      "srcEntry": "./ets/SceneBoard/intents/intentExecutor.ets",
+      "serviceExtension": {
+        "ability": "IntentServiceExtAbility"
+      }
+    },
+    {
+      "intentName": "DeactivateAccountIntent",
+      "domain": "SystemDomain",
+      "intentVersion": "1.0.1",
+      "srcEntry": "./ets/SceneBoard/intents/intentExecutor.ets",
+      "serviceExtension": {
+        "ability": "IntentServiceExtAbility"
+      }
+    },
+    {
+      "intentName": "SwitchStatusBarIntent",
+      "domain": "SystemDomain",
+      "intentVersion": "1.0.1",
+      "srcEntry": "./ets/SceneBoard/intents/intentExecutor.ets",
+      "serviceExtension": {
+        "ability": "IntentServiceExtAbility"
+      }
+    },
+      {
+        "intentName": "EnterAppNotificationSettingPage",
+        "domain": "ToolsDomain",
+        "intentVersion": "1.0.1",
+        "srcEntry": "./ets/SceneBoard/intents/executor/IntentExecutorAdapter.ets",
+        "uiAbility": {
+          "ability": "PCScbIntentUIAbility",
+          "executeMode": [
+            "foreground"
+          ]
+        }
+      },
+      {
+        "intentName": "GetAllowAppNotifySwitch",
+        "domain": "ToolsDomain",
+        "intentVersion": "1.0.1",
+        "srcEntry": "./ets/SceneBoard/intents/executor/IntentExecutorAdapter.ets",
+        "uiAbility": {
+          "ability": "PCScbIntentUIAbility",
+          "executeMode": [
+            "background"
+          ]
+        }
+      },
+      {
+        "intentName": "SetAllowAppNotifySwitch",
+        "domain": "ToolsDomain",
+        "intentVersion": "1.0.1",
+        "srcEntry": "./ets/SceneBoard/intents/executor/IntentExecutorAdapter.ets",
+        "uiAbility": {
+          "ability": "PCScbIntentUIAbility",
+          "executeMode": [
+            "background"
+          ]
+        }
+      },
+      {
+        "intentName": "GetAppNotifyDisplayOnTop",
+        "domain": "ToolsDomain",
+        "intentVersion": "1.0.1",
+        "srcEntry": "./ets/SceneBoard/intents/executor/IntentExecutorAdapter.ets",
+        "uiAbility": {
+          "ability": "PCScbIntentUIAbility",
+          "executeMode": [
+            "background"
+          ]
+        }
+      },
+      {
+        "intentName": "SetAppNotifyDisplayOnTop",
+        "domain": "ToolsDomain",
+        "intentVersion": "1.0.1",
+        "srcEntry": "./ets/SceneBoard/intents/executor/IntentExecutorAdapter.ets",
+        "uiAbility": {
+          "ability": "PCScbIntentUIAbility",
+          "executeMode": [
+            "background"
+          ]
+        }
+      },
+      {
+        "intentName": "GetAppNotifyDisplayOnBanner",
+        "domain": "ToolsDomain",
+        "intentVersion": "1.0.1",
+        "srcEntry": "./ets/SceneBoard/intents/executor/IntentExecutorAdapter.ets",
+        "uiAbility": {
+          "ability": "PCScbIntentUIAbility",
+          "executeMode": [
+            "background"
+          ]
+        }
+      },
+      {
+        "intentName": "SetAppNotifyDisplayOnBanner",
+        "domain": "ToolsDomain",
+        "intentVersion": "1.0.1",
+        "srcEntry": "./ets/SceneBoard/intents/executor/IntentExecutorAdapter.ets",
+        "uiAbility": {
+          "ability": "PCScbIntentUIAbility",
+          "executeMode": [
+            "background"
+          ]
+        }
+      },
+      {
+        "intentName": "GetAppNotifyDisplayOnIconMark",
+        "domain": "ToolsDomain",
+        "intentVersion": "1.0.1",
+        "srcEntry": "./ets/SceneBoard/intents/executor/IntentExecutorAdapter.ets",
+        "uiAbility": {
+          "ability": "PCScbIntentUIAbility",
+          "executeMode": [
+            "background"
+          ]
+        }
+      },
+      {
+        "intentName": "SetAppNotifyDisplayOnIconMark",
+        "domain": "ToolsDomain",
+        "intentVersion": "1.0.1",
+        "srcEntry": "./ets/SceneBoard/intents/executor/IntentExecutorAdapter.ets",
+        "uiAbility": {
+          "ability": "PCScbIntentUIAbility",
+          "executeMode": [
+            "background"
+          ]
+        }
+      },
+      {
+        "intentName": "GetAppNotifyWithRinging",
+        "domain": "ToolsDomain",
+        "intentVersion": "1.0.1",
+        "srcEntry": "./ets/SceneBoard/intents/executor/IntentExecutorAdapter.ets",
+        "uiAbility": {
+          "ability": "PCScbIntentUIAbility",
+          "executeMode": [
+            "background"
+          ]
+        }
+      },
+      {
+        "intentName": "SetAppNotifyWithRinging",
+        "domain": "ToolsDomain",
+        "intentVersion": "1.0.1",
+        "srcEntry": "./ets/SceneBoard/intents/executor/IntentExecutorAdapter.ets",
+        "uiAbility": {
+          "ability": "PCScbIntentUIAbility",
+          "executeMode": [
+            "background"
+          ]
+        }
+      },
+    {
+      "intentName": "GetAllowAppNotifyCategory",
+      "domain": "ToolsDomain",
+      "intentVersion": "1.0.1",
+      "srcEntry": "./ets/SceneBoard/intents/executor/IntentExecutorAdapter.ets",
+      "uiAbility": {
+        "ability": "PCScbIntentUIAbility",
+        "executeMode": [
+          "background"
+        ]
+      }
+    },
+    {
+      "intentName": "SetAllowAppNotifyCategory",
+      "domain": "ToolsDomain",
+      "intentVersion": "1.0.1",
+      "srcEntry": "./ets/SceneBoard/intents/executor/IntentExecutorAdapter.ets",
+      "uiAbility": {
+        "ability": "PCScbIntentUIAbility",
+        "executeMode": [
+          "background"
+        ]
+      }
+    },
+    {
+      "intentName": "GetAppNotifyCategoryType",
+      "domain": "ToolsDomain",
+      "intentVersion": "1.0.1",
+      "srcEntry": "./ets/SceneBoard/intents/executor/IntentExecutorAdapter.ets",
+      "uiAbility": {
+        "ability": "PCScbIntentUIAbility",
+        "executeMode": [
+          "background"
+        ]
+      }
+    }
+  ]
+}

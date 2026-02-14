@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"app_name",
+            "value":"Početni ekran i slike",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

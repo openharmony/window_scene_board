@@ -1,0 +1,52 @@
+{
+  "color": [
+    {
+      "name": "hovered_outer_border_color",
+      "value": "#66000000"
+    },
+    {
+      "name": "hovered_inner_border_color",
+      "value": "#33FFFFFF"
+    },
+    {
+      "name": "keyboard_panel_background_color",
+      "value": "#FF242424"
+    },
+    {
+      "name": "ntf_phone_clear_button_bg_color",
+      "value": "#FF000000"
+    },
+    {
+      "name": "app_lock_color",
+      "value": "#99FFFFFF"
+    },
+    {
+      "name": "app_lock_mask_color",
+      "value": "#34000000"
+    },
+    {
+      "name": "app_lock_icon_color",
+      "value": "#FFFFFF"
+    },
+    {
+      "name": "app_lock_white_board_background",
+      "value": "#000000"
+    },
+    {
+      "name": "app_form_back_board",
+      "value": "#2E3033"
+    },
+    {
+      "name": "art_sign_font_col",
+      "value": "#e6FFFFFF"
+    },
+    {
+      "name": "loading_icon_col",
+      "value": "#e6FFFFFF"
+    },
+    {
+      "name": "dlp_mask_color",
+      "value": "#34000000"
+    }
+  ]
+}

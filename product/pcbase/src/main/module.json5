@@ -1,0 +1,14 @@
+{
+  "module": {
+    "name": "pcbase",
+    "type": "har",
+    "deviceTypes": [
+      "tablet"
+    ],
+    "requestPermissions": [
+      {
+        "name": "ohos.permission.MOUNT_UNMOUNT_MANAGER"
+      }
+    ]
+  }
+}

@@ -1,0 +1,176 @@
+# Copyright (c) 2023 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+import("//build/ohos.gni")
+import("//vendor/openharmony/build/framework/templates/ohos_app.gni")
+
+declare_args() {
+  scene_board_ext_feature_product = "default"
+}
+
+
+ohos_app("SceneBoard_hsp") {
+  hvigor_home="//vendor/openharmony/binary/artifacts/build/integral_hvigor_tools/5.19.0/HvigorAndPlugin-Integration.5.19.0/bin"
+  sdk_home = "//prebuilts/ohos-sdk/5.1.1.66/ohos-sdk-linux"
+  node_version = "v18.20.1"
+  publicity_file = "publicity.xml"
+  build_level = "module"
+  assemble_type = "assembleHsp"
+  js_build_mode = "release"
+  build_profile = "build-profile.json5"
+  certificate_profile = "signature/sceneboard.p7b"
+  module_install_dir = "app/com.ohos.sceneboard"
+
+  part_name = "scene_board_ext"
+  subsystem_name = "window"
+
+  if (defined(sign_hap_py_path)) {
+    certificate_profile = "//vendor/tools/hap_sign_conf/window/scene_board_ext/sceneboard.p7b"
+    key_alias = "SceneBoard"
+    private_key_path = "SceneBoard"
+    compatible_version = "10"
+  }
+}
+
+ohos_app("SceneBoard_phone_dt") {
+  hvigor_home="//vendor/openharmony/binary/artifacts/build/integral_hvigor_tools/5.19.0/HvigorAndPlugin-Integration.5.19.0/bin"
+  sdk_home = "//prebuilts/ohos-sdk/5.1.1.66/ohos-sdk-linux"
+  node_version = "v18.20.1"
+  publicity_file = "publicity.xml"
+  build_level = "module"
+  assemble_type = "assembleHap"
+  js_build_mode = "release"
+  build_profile = "build-profile.json5"
+  certificate_profile = "signature/sceneboard.p7b"
+  module_install_dir = "app/com.ohos.sceneboard"
+  if (scene_board_ext_feature_product == "phone" || scene_board_ext_feature_product == "pad") {
+    build_modules = [
+      "phone_sceneboard@ohosTest",
+    ]
+  }
+  part_name = "scene_board_ext"
+  subsystem_name = "window"
+  if (defined(sign_hap_py_path)) {
+    certificate_profile = "//vendor/tools/hap_sign_conf/window/scene_board_ext/sceneboard.p7b"
+    key_alias = "SceneBoard"
+    private_key_path = "SceneBoard"
+    compatible_version = "10"
+  }
+}
+
+ohos_app("SceneBoard_app") {
+  hvigor_home="//vendor/openharmony/binary/artifacts/build/integral_hvigor_tools/5.19.0/HvigorAndPlugin-Integration.5.19.0/bin"
+  sdk_home = "//prebuilts/ohos-sdk/5.1.1.66/ohos-sdk-linux"
+  node_version = "v18.20.1"
+  deps = [ ":SceneBoard_hsp" ]
+  publicity_file = "publicity.xml"
+  build_level = "module"
+  assemble_type = "assembleHap"
+  js_build_mode = "release"
+  build_profile = "build-profile.json5"
+  certificate_profile = "signature/sceneboard.p7b"
+  module_install_dir = "app/com.ohos.sceneboard"
+  if (scene_board_ext_feature_product == "phone") {
+    build_modules = [
+      "phone_sceneboard",
+      "default_notificationmanagement",
+      "engineservice",
+      "themeservice_core",
+      "themecomponent",
+    ]
+  } else if (scene_board_ext_feature_product == "pad") {
+      build_modules = [
+          "pad_sceneboard",
+          "default_notificationmanagement",
+          "engineservice",
+          "themeservice_core",
+          "themecomponent",
+          "pcresourcesoverlay",
+        ]
+  } else if (scene_board_ext_feature_product == "pc") {
+    build_modules = [
+      "pc_sceneboard",
+      "default_notificationmanagement",
+      "engineservice",
+      "themeservice_core",
+      "themecomponent",
+    ]
+  } else if (scene_board_ext_feature_product == "car") {
+    build_modules = [
+       "car_sceneboard",
+    ]
+  } else {
+    # By default, the compilation product is in the mobile phone form.
+    # If a new product is launched in the future, the compilation product must be specified.
+    build_modules = [
+        "phone_sceneboard",
+        "default_notificationmanagement",
+        "engineservice",
+        "themeservice_core",
+        "themecomponent",
+      ]
+  }
+
+  part_name = "scene_board_ext"
+  subsystem_name = "window"
+
+  if (defined(sign_hap_py_path)) {
+    certificate_profile = "//vendor/tools/hap_sign_conf/window/scene_board_ext/sceneboard.p7b"
+    key_alias = "SceneBoard"
+    private_key_path = "SceneBoard"
+    compatible_version = "10"
+  }
+}
+
+
+action("SceneBoard_rename") {
+  deps = [ ":SceneBoard_app" ]
+
+  script = "scripts/rename_hap.py"
+  args = [
+    "--path",
+    rebase_path("$root_out_dir/obj/foundation/window/scene_board_ext/SceneBoard_app"),
+    "--product",
+    scene_board_ext_feature_product,
+  ]
+
+  if (scene_board_ext_feature_product == "phone" || scene_board_ext_feature_product == "pad" ) {
+    outputs = [
+      "$root_out_dir/obj/foundation/window/scene_board_ext/SceneBoard_app/SceneBoard.hap",
+      "$root_out_dir/obj/foundation/window/scene_board_ext/SceneBoard_app/SceneBoard_Settings.hap",
+      "$root_out_dir/obj/foundation/window/scene_board_ext/SceneBoard_app/SceneBoard_NotificationManagement.hap",
+    ]
+  } else if (scene_board_ext_feature_product == "pc") {
+    outputs = [
+      "$root_out_dir/obj/foundation/window/scene_board_ext/SceneBoard_app/SceneBoard.hap",
+      "$root_out_dir/obj/foundation/window/scene_board_ext/SceneBoard_app/SceneBoard_NotificationManagement.hap",
+    ]
+  }  else if (scene_board_ext_feature_product == "car"){
+    outputs = [
+      "$root_out_dir/obj/foundation/window/scene_board_ext/SceneBoard_app/SceneBoard.hap",
+    ]
+  } else {
+    # By default, the compilation product is in the mobile phone form.
+    # If a new product is launched in the future, the compilation product must be specified.
+    outputs = [
+      "$root_out_dir/obj/foundation/window/scene_board_ext/SceneBoard_app/SceneBoard.hap",
+      "$root_out_dir/obj/foundation/window/scene_board_ext/SceneBoard_app/SceneBoard_Settings.hap",
+      "$root_out_dir/obj/foundation/window/scene_board_ext/SceneBoard_app/SceneBoard_NotificationManagement.hap",
+    ]
+  }
+  outputs += [ "$target_gen_dir/$target_name.stamp" ]
+}
+
+group("SceneBoard") {
+  deps = [ ":SceneBoard_rename" ]
+}

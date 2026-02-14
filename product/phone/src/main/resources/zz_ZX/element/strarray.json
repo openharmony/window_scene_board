@@ -1,0 +1,21 @@
+{
+    "strarray":[
+        {
+            "name":"bundle_toggle_map_default",
+            "value":[
+                {
+                    "value":"[TS_1018744]_com.ohos.soundrecorder:sound_recorder"
+                },
+                {
+                    "value":"[TS_1019268]_com.ohos.clock:clock_timer"
+                },
+                {
+                    "value":"[TS_1020535]_com.ohos.calculator:calculator"
+                },
+                {
+                    "value":"[TS_1023578]_com.ohos.remotecontroller:remote_control"
+                }
+            ]
+        }
+    ]
+}

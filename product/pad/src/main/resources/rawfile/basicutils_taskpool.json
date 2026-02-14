@@ -1,0 +1,7 @@
+[
+  {
+    "taskType": "com.sceneboard.taskpool.HiSysEvent",
+    "maxInstance": 1,
+    "afterFull": 1
+  }
+]

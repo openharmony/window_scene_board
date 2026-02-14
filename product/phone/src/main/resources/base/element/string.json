@@ -1,0 +1,1571 @@
+{
+    "string":[
+        {
+            "name":"entry_MainAbility",
+            "value":"SceneBoard"
+        },
+        {
+            "name":"mainability_description",
+            "value":"ETS_Empty Feature Ability"
+        },
+        {
+            "name":"layout_style",
+            "value":"Layout Style"
+        },
+        {
+            "name":"launcher_layout",
+            "value":"Launcher Layout"
+        },
+        {
+            "name":"cancel",
+            "value":"Cancel",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"uninstall",
+            "value":"Uninstall",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"uninstall_success",
+            "value":"Uninstalled.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"uninstall_failed",
+            "value":"Uninstallation failed.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_uninstall",
+            "value":"Uninstallation not allowed.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"duplicate_add",
+            "value":"This has already been added.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"delete_app",
+            "value":"Remove",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"apply_access_bluetooth_reason",
+            "value":"Apply ACCESS_BLUETOOTH permission"
+        },
+        {
+            "name":"permission_reason_bluetooth_local_mac",
+            "value":"Apply ACCESS_BLUETOOTH permission"
+        },
+        {
+            "name":"app_center_menu_add_dock",
+            "value":"Add to dock",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_center_menu_add_desktop",
+            "value":"Add to home screen",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add",
+            "value":"Add",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"new_folder_name",
+            "value":"Folder %1$d",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"rename_folder",
+            "value":"Rename"
+        },
+        {
+            "name":"folder_name_tools",
+            "value":"Tools",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"add_to_desktop",
+            "value":"Add to home screen",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"folder_name_preload",
+            "value":"Top Apps",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"delete_form",
+            "value":"Remove",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_delete_form",
+            "value":"Remove this widget?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remove_form_dialog_content",
+            "value":"You can add this widget again from the app's quick action menu.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"No_available_window",
+            "value":"No app window available",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"No_running_apps_recently",
+            "value":"No recent apps",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"lock_app",
+            "value":"Locked %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_locked",
+            "value":"%s is locked",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"unlock_app",
+            "value":"%s is unlocked",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"recent_unlock",
+            "value":"Unlock %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"running_apps_recently",
+            "value":"Recent apps",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_menu_open",
+            "value":"Open",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_menu_exit",
+            "value":"Quit",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remove_app_from_folder",
+            "value":"remove app from folder"
+        },
+        {
+            "name":"airplane_mode",
+            "value":"Airplane mode",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_bluetooth_title",
+            "value":"Bluetooth",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_location_title",
+            "value":"Location",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_ring_mode_title_on",
+            "value":"Sound",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_ring_mode_title_off",
+            "value":"Silent",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_ring_mode_title_vibration",
+            "value":"Vibration",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_nfc_mode_title",
+            "value":"NFC",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"get_installed_bundle_list_reason",
+            "value":"SystemUI GetAllBundleInfo Request"
+        },
+        {
+            "name":"continue_mission_fail",
+            "value":"Handover failed.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"continue_mission_waiting",
+            "value":"Handing over…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"continue_mission_fail_close_hotspot_and_try_again",
+            "value":"Handover failed. Disable the personal hotspot on %1$s and try again.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"continue_mission_fail_device_connecting_to_another_device",
+            "value":"Handover failed. %1$s is interacting with another device.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"openharmony_multiwindow_not_support_multiwindows",
+            "value":"%1$s does not support multi window display.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"openharmony_multiwindow_not_support_split",
+            "value":"%1$s does not support split-screen display.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"openharmony_multiwindow_not_support_vertical_split_new",
+            "value":"%1$s does not support vertical split screen.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"openharmony_multiwindow_not_support_horizontal_split_new",
+            "value":"%1$s does not support horizontal split screen.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"openharmony_multiwindow_not_support_split_ratio",
+            "value":"Screen sizes can't be adjusted for games.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"openharmony_multiwindow_save_group",
+            "value":"Save combo",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"openharmony_multiwindow_horizontal_split",
+            "value":"Split horizontally",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"openharmony_multiwindow_vertical_split",
+            "value":"Split vertically",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"openharmony_multiwindow_horizontal_exchange",
+            "value":"Flip top/bottom",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"openharmony_multiwindow_vertical_exchange",
+            "value":"Flip left/right",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"openharmony_multiwindow_not_support_split_for_folded_new",
+            "value":"%1$s not available in split-screen while device is folded.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"openharmony_multiwindow_click_application_form_split_screen",
+            "value":"Open another app for split-screen view.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"openharmony_multiwindow_not_support_float_window",
+            "value":"%1$s can't be opened in a floating window.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"openharmony_multiwindow_minimize_all_float_due_to_rss",
+            "value":"To ensure a smooth experience, the floating window has been tucked away to the side.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"permission_reason_manage_install",
+            "value":"Used to call methods of pause, resume downloading from appGallery"
+        },
+        {
+            "name":"permission_reason_receive_install",
+            "value":"Used to receive common event of downloading status from appGallery"
+        },
+        {
+            "name":"openharmony_multiwindow_app_is_open",
+            "value":"App is already open.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_title",
+            "value":"Multi-window",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"multi_window_force_switch_title",
+            "value":"Compatibility mode",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"landscape_startup_title",
+            "value":"App scaling options",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"compatible_application_display",
+            "value":"Compatible apps",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_dock_switch_title",
+            "value":"Multi-window dock",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_dock_switch_contents",
+            "value":"Swipe in from the edge of the screen, hold, then release to open the dock.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_pip_switch_title",
+            "value":"Picture-in-picture",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_pip_switch_desc",
+            "value":"When this is on, video and MeeTime calls will continue in a mini window when you open another app or return to the home screen.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_change_views_title",
+            "value":"Quickly change views",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_change_views_contents",
+            "value":"Swipe to the top right for a floating window or the top left for split screen.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_floating_windows_title",
+            "value":"Floating window",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_floating_windows_contents",
+            "value":"Open apps in floating windows and use gestures to minimize, maximize, or close them.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_dock_title",
+            "value":"Multi-window dock",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_dock_contents",
+            "value":"Swipe in from the edge to open the dock. Tap an app to open a floating window. Or drag an app into the screen to enter split-screen view.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_split_screen_title",
+            "value":"Split-screen",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_split_screen_contents",
+            "value":"Drag the top bar to flip the windows or open a floating window. Resize by dragging the center.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_Mid_View_title",
+            "value":"Parallel-window view",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_Mid_View_contents",
+            "value":"From split-screen view, swipe up or resize the windows to enter parallel-window view.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Desktop_setting",
+            "value":"Home screen settings",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Desktop_slide",
+            "value":"Swipe down to search",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Desktop_individuation",
+            "value":"Home screen & style",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"covertheme_settings_title",
+            "value":"Home screen, cover screen & style",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aod_list_title_more_style",
+            "value":"More AODs",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"permission_reason_access_near_link",
+            "value":"for accessing the near link interface"
+        },
+        {
+            "name":"MultiWindow_guidance_floating_tip",
+            "value":"Tap to view controls.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_split_tip",
+            "value":"Tap to view controls.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_float_to_split_title",
+            "value":"Floating window to split-screen",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_split_to_float_title",
+            "value":"Split-screen to floating window",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_split_swap_title",
+            "value":"Flip the windows",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_float_to_split_content",
+            "value":"Touch & hold the top bar on a window, then drag to enter split-screen view.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_split_to_float_content_phone",
+            "value":"Touch & hold the top bar on a window, then drag to switch to a floating window.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_split_to_float_content_fold",
+            "value":"Touch & hold the top bar on a window, then drag to switch to a floating window.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_split_swap_content_phone",
+            "value":"Touch & hold the top bar on a window, then drag it over another window.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_split_swap_content_fold",
+            "value":"Touch & hold the top bar on a window, then drag it over another window.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_button_know",
+            "value":"Got it",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_button_next",
+            "value":"Next",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_button_more",
+            "value":"Learn more",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_button_quit",
+            "value":"Later",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_button_finish",
+            "value":"Done",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aod_dialog_title",
+            "value":"Always On Display",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_dialog_content",
+            "value":"Always On Display needs to be enabled. Enable now?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_cancel",
+            "value":"Cancel",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_enable",
+            "value":"Enable",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"System",
+            "value":"System",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"next_step",
+            "value":"Next",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"know",
+            "value":"Got it",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"learn_more",
+            "value":"Learn more",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_poup_confirm",
+            "value":"OK",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_modify_mode_smart_text",
+            "value":"This Always On Display only supports Smart mode. Your display mode has been automatically switched.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"style_mode_label_small",
+            "value":"Small (%1$d:%2$d)",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"style_mode_label_medium",
+            "value":"Medium",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"style_mode_label_full",
+            "value":"Fill screen",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"style_mode_label_split",
+            "value":"Columns",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"landscape_app_full_ratio",
+            "value":"Full screen ratio",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"landscape_view_force",
+            "value":"Force landscape",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"landscape_desc_force",
+            "value":"Apps will open in landscape view, even if they don't support it. You can change the aspect ratio below.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"restoring_tips_message",
+            "value":"This is unavailable while data is being restored. Try again later.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"restoring_tips_btn",
+            "value":"OK",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"split_to_float",
+            "value":"Floating window",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"switch_floating_window",
+            "value":"Floating window",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"split_screen",
+            "value":"Split screen",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"minimize_window",
+            "value":"Minimize",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_restored",
+            "value":"App has been restored.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"recover_Theme_App",
+            "value":"Restore the Themes app?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"recover_Theme_App_massage",
+            "value":"Themes needs to be installed to use this feature.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"recover",
+            "value":"Restore",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enter_pc_mode_tips",
+            "value":"Free windows mode is about to be enabled. This mode is only available in landscape orientation.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"enter_free_windows_tips",
+            "value":"For free windows mode, rotate your device to landscape orientation.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"out_pcmod_tips",
+            "value":"To exit this mode, first close %s.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"confirm_pcmod_tips",
+            "value":"OK",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"force_split_tips",
+            "value":"Column view will take effect the next time the app is opened.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"force_split2full_tips",
+            "value":"Fill screen will take effect the next time the app is opened.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"force_split2other",
+            "value":"Aspect ratio changed. There may be display issues.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"maximize_window",
+            "value":"Maximize",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"add_window",
+            "value":"Add",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"replace_window",
+            "value":"Swap",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"close_window",
+            "value":"Close",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"title_bar_menu_maximize_window",
+            "value":"Maximize",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"title_bar_menu_minimize_window",
+            "value":"Minimize",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"title_bar_menu_close_window",
+            "value":"Close",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"title_bar_menu_enlarge_window",
+            "value":"Enlarge",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"title_bar_menu_shrink_window",
+            "value":"Shrink",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"not_harmony_apps",
+            "value":"Coming Soon",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"gesture_dock_add_limit",
+            "value":"A maximum of %1$d applications can be added.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_adjust_mid_window_title",
+            "value":"Adjust windows",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_add_window_title",
+            "value":"Add a new window",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_add_window_content",
+            "value":"You can add another window to this group from the menu at the top.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_adjust_mid_window_content",
+            "value":"Drag to resize windows.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_focused_switch_title_fold",
+            "value":"Switch windows",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_focused_switch_content_fold",
+            "value":"Tap a window to select it.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_one_step_mid_title",
+            "value":"Enter Multitask view by swiping",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"display_brightness",
+            "value":"Display & brightness",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_split_adjust_to_mid_title",
+            "value":"Enter Multitask view by resizing windows",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_swap_title",
+            "value":"Swap windows",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_multi_finger_knead_title",
+            "value":"Enter/Exit full screen",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_three_finger_cross_slip_title",
+            "value":"Switch between apps",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_slid_delete_title",
+            "value":"Swipe to close apps",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_one_step_mid_content",
+            "value":"Swipe from the bottom of the screen to the top, then select an app.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_split_adjust_to_mid_content",
+            "value":"In split-screen view, drag the separating line until the view changes.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_swap_content",
+            "value":"Touch & hold the top bar on a window, then drag it over another window.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_multi_finger_knead_content",
+            "value":"Spread your thumb and three fingers apart, or pinch them together.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_three_finger_cross_slip_content",
+            "value":"Swipe left or right with three fingers.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_slid_delete_content",
+            "value":"Touch & hold the top bar on a window, then quickly swipe toward the bottom of the screen.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_float_to_split_content_fold",
+            "value":"Touch & hold the top bar on a window, then drag to enter split-screen view.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_mid_view_guidance_floating_tip",
+            "value":"Drag here to resize the windows.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_show_not_support_adjust_window",
+            "value":"%1$s window doesn't support resizing.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_show_not_support_small_step",
+            "value":"%1$s does not support mini window display.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"title_all_apps",
+            "value":"All apps",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"search_apps",
+            "value":"Search apps",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"title_recently_use",
+            "value":"Recents",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"title_support_multiWindow",
+            "value":"More",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"title_search_result",
+            "value":"Results",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"keyboard_panel_world_access_text",
+            "value":"Switch keyboards, button",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keyboard_panel_smart_access_text",
+            "value":"Other input modes, button",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keyboard_common_access_text",
+            "value":"Standard keyboard, button",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keyboard_one_hand_access_text",
+            "value":"One-handed keyboard, button",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keyboard_float_access_text",
+            "value":"Floating keyboard, button",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keyboard_thumb_access_text",
+            "value":"Thumb keyboard, button",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"flip_the_phone",
+            "value":"Flip to turn on flashlight",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"close_flashlight_tips",
+            "value":"Press the Power button to turn off the flashlight",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dragging_to_mid_tip",
+            "value":"Release to enter Multitask view",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dragging_to_one_to_two_split_tip",
+            "value":"Release to enter %1$d:%2$d split screen",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dragging_to_two_to_one_split_tip",
+            "value":"Release to enter %2$d:%1$d split screen",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dragging_to_full_tip",
+            "value":"Release to enter full-screen view",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pip_window_open",
+            "value":"Playback controls are being shown",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_window_close",
+            "value":"Playback controls have been hidden",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_video_player",
+            "value":"Mini window playing video",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_close",
+            "value":"Close mini window",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_restore",
+            "value":"Restore to larger window",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_play_next",
+            "value":"Play next",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_play_previous",
+            "value":"Play previous",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_play_pause",
+            "value":"Pause",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_play",
+            "value":"Play",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_play_fast_backward",
+            "value":"Go back",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_play_fast_forward",
+            "value":"Fast forward",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_window_show",
+            "value":"Mini window is being shown",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"already_exist_pip_window_toast",
+            "value":"Close the existing mini window first.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"forbid_pip_window_size_adjust",
+            "value":"Window size can't be adjusted on cover screen.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"openharmony_multiwindow_click_application_form_midScene_waiting_state",
+            "value":"Tap an app icon to add to Multitask view.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"openharmony_multiwindow_does_not_support_panoramic_multiwindow",
+            "value":"This app doesn't support Multitask view.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"openharmony_multiwindow_back_to_middle_scene_using_gesture",
+            "value":"Pinch four fingers together to return to Multitask view.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"mid_scene_tip_label",
+            "value":"Release to enter Multitask view",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"openharmony_multiwindow_does_not_support_panoramic_multiwindow_in_current_state",
+            "value":"Multitask view not supported.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"continue",
+            "value":"Next",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"gesture_return",
+            "value":"Go back",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"gesture_return_desktop",
+            "value":"Return to home screen",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"gesture_enter_recent_task",
+            "value":"View recent tasks",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"one_hand_mode",
+            "value":"One-Handed mode",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"one_hand_mode_exit",
+            "value":"Tap the blank area to exit.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"one_hand_mode_accessibility_str_entry_setting",
+            "value":"Settings",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"floating_three_button_navigation",
+            "value":"Floating navigation controls",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"floating_three_button_navigation_detail",
+            "value":"Drag the navigation keys to reposition them.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"one_hand_compatibility_mode_prompt_string",
+            "value":"If you experience display issues, try relaunching the app.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"one_handed_mode_diag_title",
+            "value":"One-handed mode",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"one_handed_mode_diag_content",
+            "value":"To enter One-handed mode, slide your finger along the bottom of the screen and briefly hold it there.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"one_handed_mode_diag_confirm",
+            "value":"Learn more",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"one_handed_mode_diag_cancel",
+            "value":"Got it",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"openharmony_multiwindow_not_support_split_currently",
+            "value":"In your device's current form, %1$s does not support split-screen.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"openharmony_multiwindow_not_support_split_this_way_currently",
+            "value":"In your device's current form, %1$s can't be opened in split-screen in this way.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"openharmony_multiwindow_not_support_change_split_ratio",
+            "value":"Can't adjust %1$s window ratio in split-screen view.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"creation_results",
+            "value":"Font result",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"content_creation",
+            "value":"Creating font…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"creation_results_apply",
+            "value":"Apply",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"desktop_layout",
+            "value":"Layout",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"auto_align",
+            "value":"Auto-align",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"auto_align_content",
+            "value":"Automatically fill empty spaces when apps are removed.",
+            "attr":{
+                "priority":"LT"
+            }
+        }
+    ]
+}

@@ -1,0 +1,68 @@
+{
+  "layoutInfo": [
+    {
+      "bundleName": "com.ohos.mms",
+      "abilityName": "com.ohos.mms.MainAbility",
+      "moduleName": "entry",
+      "appIndex": 0,
+      "container": -101,
+      "typeId": 0
+    },
+    {
+      "bundleName": "com.ohos.notepad",
+      "abilityName": "MainAbility",
+      "moduleName": "NotepadPhone",
+      "appIndex": 0,
+      "typeId": 0,
+      "container": -101
+    },
+    {
+      "bundleName": "com.ohos.photos",
+      "abilityName": "com.ohos.photos.MainAbility",
+      "moduleName": "phone_photos",
+      "appIndex": 0,
+      "container": -100,
+      "typeId": 0
+    },
+    {
+      "bundleName": "com.ohos.browser",
+      "abilityName": "MainAbility",
+      "moduleName": "entry",
+      "appIndex": 0,
+      "container": -101,
+      "typeId": 0
+    },
+    {
+      "bundleName": "com.ohos.calculator",
+      "abilityName": "CalculatorAbility",
+      "moduleName": "phone",
+      "appIndex": 0,
+      "container": -101,
+      "typeId": 0
+    },
+    {
+      "bundleName":"com.ohos.totemweather",
+      "abilityName": "com.ohos.totemweather.MainAbility",
+      "moduleName": "product",
+      "appIndex": 0,
+      "container": -100,
+      "typeId": 0
+    },
+    {
+      "bundleName":"com.ohos.calendar",
+      "abilityName": "MainAbility",
+      "moduleName": "phone",
+      "appIndex": 0,
+      "container": -100,
+      "typeId": 0
+    },
+    {
+      "bundleName":"com.ohos.email",
+      "abilityName": "EntryAbility",
+      "moduleName": "entry",
+      "appIndex": 0,
+      "container": -100,
+      "typeId": 0
+    }
+  ]
+}

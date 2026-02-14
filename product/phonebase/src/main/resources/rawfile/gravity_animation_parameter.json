@@ -1,0 +1,38 @@
+[
+  {
+    "type": "phone",
+    "parameters": {
+      "enable": 1,
+      "maxRadius": 300,
+      "minRadius": 0,
+      "waveSpeed": 1000,
+      "waveRangeConstant": 0.7,
+      "waveDuration": 100,
+      "curve": "Linear",
+      "delayOnDrop": 300,
+      "delayOnFolderChangeToBig": 650,
+      "delayOnFolderChangeToSmall": 550,
+      "delayOnRemoveApplication": 150,
+      "delayOnRemoveCard": 200,
+      "delayOnAddCard": 500
+    }
+  },
+  {
+    "type": "tablet",
+    "parameters": {
+      "enable": 1,
+      "maxRadius": 300,
+      "minRadius": 0,
+      "waveSpeed": 1000,
+      "waveRangeConstant": 0.7,
+      "waveDuration": 100,
+      "curve": "Linear",
+      "delayOnDrop": 300,
+      "delayOnFolderChangeToBig": 350,
+      "delayOnFolderChangeToSmall": 550,
+      "delayOnRemoveApplication": 50,
+      "delayOnRemoveCard": 100,
+      "delayOnAddCard": 500
+    }
+  }
+]

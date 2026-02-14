@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"app_name",
+            "value":"Αρχική οθόνη και προσόψεις",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

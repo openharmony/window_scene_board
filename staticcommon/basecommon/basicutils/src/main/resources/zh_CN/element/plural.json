@@ -1,0 +1,36 @@
+{
+    "plural":[
+        {
+            "name":"multiSelect_drag_start",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"已拖起 %d 个应用"
+                },
+                {
+                    "quantity":"other",
+                    "value":"已拖起 %d 个应用",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"multiSelect_drag_drop",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"%d 个应用已放置到屏幕"
+                },
+                {
+                    "quantity":"other",
+                    "value":"%d 个应用已放置到屏幕",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

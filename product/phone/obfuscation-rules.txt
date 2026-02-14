@@ -1,0 +1,9 @@
+-remove-comments
+-enable-toplevel-obfuscation
+-keep-global-name
+LogCollectUtil
+ArkTools
+-keep-property-name
+clearCollectLogInterval
+createCollectLogInterval
+

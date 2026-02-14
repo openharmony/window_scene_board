@@ -1,0 +1,252 @@
+{
+    "string":[
+        {
+            "name":"app_center_menu_add_dock",
+            "value":"[TS_863954]_Add to dock"
+        },
+        {
+            "name":"download_installwait",
+            "value":"[TS_871029]_Waiting"
+        },
+        {
+            "name":"download_installing",
+            "value":"[TS_871030]_Installing"
+        },
+        {
+            "name":"uninstall_success",
+            "value":"[TS_863848]_Uninstalled."
+        },
+        {
+            "name":"launcher_layout",
+            "value":"[TS_864234]_Launcher Layout"
+        },
+        {
+            "name":"disable_uninstall",
+            "value":"[TS_863978]_Uninstallation not allowed."
+        },
+        {
+            "name":"delete_app",
+            "value":"[TS_864170]_Remove"
+        },
+        {
+            "name":"uninstall_failed",
+            "value":"[TS_863852]_Uninstallation failed."
+        },
+        {
+            "name":"uninstall",
+            "value":"[TS_863986]_Uninstall"
+        },
+        {
+            "name":"Control_center_icon_on_color",
+            "value":"[TS_869903]_#CC000000"
+        },
+        {
+            "name":"Control_center_long_button_font_family",
+            "value":"[TS_869904]_HarmonyHeiTi"
+        },
+        {
+            "name":"layout_style",
+            "value":"[TS_864154]_Layout Style"
+        },
+        {
+            "name":"delete_form",
+            "value":"[TS_863893]_Remove"
+        },
+        {
+            "name":"form_center",
+            "value":"[TS_863874]_Browse widgets"
+        },
+        {
+            "name":"Control_center_icon_shadow_color",
+            "value":"[TS_872868]_#00000000"
+        },
+        {
+            "name":"download_pause",
+            "value":"[TS_871028]_Paused"
+        },
+        {
+            "name":"remove_app_dialog_content",
+            "value":"[TS_878147]_You can add it again at any time from the App center."
+        },
+        {
+            "name":"rename_folder",
+            "value":"[TS_864014]_Rename"
+        },
+        {
+            "name":"WorkSchedulerExtensionAbility_label",
+            "value":"[TS_879467]_ReportWorkSchedulerExtensionAbility"
+        },
+        {
+            "name":"remove_app_from_folder",
+            "value":"[TS_863989]_remove app from folder"
+        },
+        {
+            "name":"WorkSchedulerExtensionAbility_desc",
+            "value":"[TS_879466]_ReportWorkSchedulerExtensionAbility"
+        },
+        {
+            "name":"notification_and_status_bar_title",
+            "value":"[TS_863889]_Notifications & status bar"
+        },
+        {
+            "name":"Control_center_button_font_color",
+            "value":"[TS_869905]_#B3FFFFFF"
+        },
+        {
+            "name":"app_center_menu_add_desktop",
+            "value":"[TS_864190]_Add to home screen"
+        },
+        {
+            "name":"Control_center_icon_on_bg_color",
+            "value":"[TS_869894]_#00000000"
+        },
+        {
+            "name":"Control_center_icon_default_bg_color",
+            "value":"[TS_869900]_#00000000"
+        },
+        {
+            "name":"cancel",
+            "value":"[TS_864202]_Cancel"
+        },
+        {
+            "name":"download_wait",
+            "value":"[TS_871031]_Waiting"
+        },
+        {
+            "name":"app_menu_open",
+            "value":"[TS_864153]_Open"
+        },
+        {
+            "name":"app_menu_open_from_floating_window",
+            "value":"[TS_936772]_Open from the floating window"
+        },
+        {
+            "name":"app_menu_open_from_split_screen",
+            "value":"[TS_936773]_Open from split screen"
+        },
+        {
+            "name":"Control_center_icon_default_color",
+            "value":"[TS_869897]_#e6ffffff"
+        },
+        {
+            "name":"form_stack_max_number_limit",
+            "value":"[TS_872867]_This stack is full."
+        },
+        {
+            "name":"download_start",
+            "value":"[TS_871034]_Downloading"
+        },
+        {
+            "name":"add_to_desktop",
+            "value":"[TS_863917]_Add to home screen"
+        },
+        {
+            "name":"floating_scene_button_close",
+            "value":"[TS_931370]_Close %s"
+        },
+        {
+            "name":"floating_scene_button_start",
+            "value":"[TS_931375]_Open %s"
+        },
+        {
+            "name":"drag_start",
+            "value":"[TS_934964]_Icon ready to drag"
+        },
+        {
+            "name":"drop_merge_to_desktop",
+            "value":"[TS_941114]_%1$s and %2$s merged into folder %3$s, and placed in row %4$s, column %5$s"
+        },
+        {
+            "name":"drop_merge_to_dock",
+            "value":"[TS_941113]_%1$s and %2$s merged into folder %3$s, and placed in position %4$s of the dock"
+        },
+        {
+            "name":"drag_move_to_dock",
+            "value":"[TS_934960]_Move to position %s of the dock"
+        },
+        {
+            "name":"drag_drop_to_dock",
+            "value":"[TS_934956]_%1$s placed in position %2$s of the dock"
+        },
+        {
+            "name":"drag_drop_dock_full",
+            "value":"[TS_934961]_Dock full, icon returned to original position"
+        },
+        {
+            "name":"drag_move_to_merge",
+            "value":"[TS_934954]_Merge with %s as folder"
+        },
+        {
+            "name":"drag_drop_to_folder",
+            "value":"[TS_934955]_%1$s placed in %2$s folder"
+        },
+        {
+            "name":"drag_move",
+            "value":"[TS_934959]_Move to row %1$s, column %2$s"
+        },
+        {
+            "name":"drag_move_to_folder",
+            "value":"[TS_934953]_Move to %s Folder"
+        },
+        {
+            "name":"drag_drop",
+            "value":"[TS_934948]_%1$s has been placed in row %2$s, column %3$s"
+        },
+        {
+            "name":"app_running_mutex_toast",
+            "value":"[TS_970287]_To ensure smooth performance, %1$s and %2$s can't run at the same time."
+        },
+        {
+            "name":"drag_move_to_form_stack",
+            "value":"[TS_949732]_Move to stack. %s is on top"
+        },
+        {
+            "name":"drag_move_to_merge_card",
+            "value":"[TS_949735]_Stack with %s"
+        },
+        {
+            "name":"drop_merge_to_form_stack",
+            "value":"[TS_949734]_%1$s stacked with %2$s"
+        },
+        {
+            "name":"drag_drop_to_form_stack",
+            "value":"[TS_949733]_%1$s placed in the stack. %2$s is on top"
+        },
+        {
+            "name":"drag_near_left_screen",
+            "value":"[TS_977807]_Near the left edge of the screen"
+        },
+        {
+            "name":"drag_near_right_screen",
+            "value":"[TS_977808]_Near the right edge of the screen"
+        },
+        {
+            "name":"app_smart_service",
+            "value":"[TS_979300]_Smart Services"
+        },
+        {
+            "name":"screen_capture_notification_content",
+            "value":"[TS_996721]_%s captured your screen."
+        },
+        {
+            "name":"screen_capture_notification_title",
+            "value":"[TS_996720]_Screen capture"
+        },
+        {
+            "name":"click_twin_app_not_installed",
+            "value":"[TS_1008444]_%s is not installed."
+        },
+        {
+            "name":"click_twin_app_download_installing",
+            "value":"[TS_1008446]_%s is being installed."
+        },
+        {
+            "name":"click_twin_app_download_start",
+            "value":"[TS_1008445]_%s is being downloaded."
+        },
+        {
+            "name":"click_twin_app_wait_data_recover",
+            "value":"[TS_1008443]_%s data is being restored."
+        }
+    ]
+}

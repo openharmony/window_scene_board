@@ -1,0 +1,16 @@
+{
+  "src": [
+    "pages/FormManagerView",
+    "pages/EmptyPage",
+    "pages/EntryView",
+    "pages/CommonScbView",
+    "intents/pages/SwitchIntentCardPage",
+    "desktopsetting/pages/DesktopSetting",
+    "intents/pages/DesktopSlideCardPage",
+    "desktopedit/pages/DesktopEditPage",
+    "restoringtips/RestoringTipsDialog",
+    "SceneBoard/oneHandModeDialog/view/OneHandModeDialog",
+    "SystemDialog/pages/PoweroffIndex",
+    "SystemDialog/pages/AlertPage"
+  ]
+}

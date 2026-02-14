@@ -1,0 +1,351 @@
+{
+    "string":[
+        {
+            "name":"uninstall_success",
+            "value":"ئۆچۈرۈلدى.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"delete_app",
+            "value":"چىقىرىۋېتىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remove_app_dialog_content",
+            "value":"كېيىن ئەپ مەركىزىدىن قايتا قوشالايسىز.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_and_status_bar_title",
+            "value":"ئۇقتۇرۇش ۋە ھالەت بالدىقى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_center_menu_add_desktop",
+            "value":"ئۈستەليۈزىگە قوشۇش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_menu_open",
+            "value":"ئېچىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_menu_open_from_floating_window",
+            "value":"ئايلىق كۆزنەكدىن ئېچىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_menu_open_from_split_screen",
+            "value":"ئايرىلغان ئېكراننىدىن ئېچىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_center_menu_add_dock",
+            "value":"تېزلەتمە بالداققا قوشۇش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_uninstall",
+            "value":"ئۆچۈرۈش چەكلىنىدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"uninstall_failed",
+            "value":"ئۆچۈرۈلمىدى.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"delete_form",
+            "value":"چىقىرىۋېتىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"form_center",
+            "value":"كارتا مەركىزى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"floating_scene_button_close",
+            "value":"\u200f«%s» نى ئېتىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"floating_scene_button_start",
+            "value":"\u200f«%s» نى ئېچىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"download_installwait",
+            "value":"قاچىلانماقچى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"download_installing",
+            "value":"قاچىلاۋاتىدۇ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"drag_start",
+            "value":"سۆرەلدى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drop_merge_to_desktop",
+            "value":"نۆۋەتتە %1$s بىلەن %2$s بىرىكتۈرۈلۈپ، %3$s دېگەن قىسقۇچ قىلىندى ۋە %4$s-قۇر %5$s-رەتكە قويۇلدى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"download_pause",
+            "value":"تورمۇزلاق",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"drop_merge_to_dock",
+            "value":"نۆۋەتتە %1$s بىلەن %2$s بىرىكتۈرۈلۈپ، %3$s دېگەن قىسقۇچ قىلىندى ۋە تەگدىكى %4$s-ئورۇنغا قويۇلدى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_move_to_dock",
+            "value":"تەگدىكى %s-ئورۇنغا يۆتكەش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_drop_to_dock",
+            "value":"‏%1$s تەگدىكى %2$s-ئورۇنغا قويۇلدى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_drop_dock_full",
+            "value":"تەگ توشۇپ كەتتى، سىنبەلگە ئەسلى ئورنىغا قويۇلدى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_move_to_merge",
+            "value":"‏%s بىلەن بىر قىسقۇچ قىلىپ بىرىكتۈرۈش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_drop_to_folder",
+            "value":"‏%1$s قىسقۇچ %2$s غا قويۇلدى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_move",
+            "value":"%1$s-قۇر %2$s-رەتكە يۆتكەش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cancel",
+            "value":"بىكار قىلىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"download_wait",
+            "value":"چۈشمەكچى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"download_start",
+            "value":"چۈشۈۋاتىدۇ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"drag_move_to_folder",
+            "value":"قىسقۇچ %s غا يۆتكەش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_drop",
+            "value":"‏%1$s نۆۋەتتە %2$s-قۇر %3$s-رەتكە قويۇلدى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"rename_folder",
+            "value":"نام ئۆزگەرتىش"
+        },
+        {
+            "name":"uninstall",
+            "value":"ئۆچۈرۈش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"form_stack_max_number_limit",
+            "value":"كارتا دۆۋىسى توشتى.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"add_to_desktop",
+            "value":"ئۈستەليۈزىگە قوشۇش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_running_mutex_toast",
+            "value":"ئىشلىتىش تەسىراتىغا كاپالەتلىك قىلىش ئۈچۈن «%1$s» بىلەن «%2$s» تەڭ يۈرگۈزۈلمەيدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"drag_move_to_form_stack",
+            "value":"دۆۋىگە يۆتكەش، ئەڭ ئۈستىدىكىسى %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_move_to_merge_card",
+            "value":"‏%s بىلەن دۆۋىلەش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drop_merge_to_form_stack",
+            "value":"‏%1$s بىلەن %2$s دۆۋىلەندى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_drop_to_form_stack",
+            "value":"دۆۋىگە %1$s قويۇلدى، ئەڭ ئۈستىدىكىسى %2$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_near_left_screen",
+            "value":"ئېكراننىڭ سول تەرىپىدە",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_near_right_screen",
+            "value":"ئېكراننىڭ ئوڭ تەرىپىدە",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_smart_service",
+            "value":"ئاڭلىق مۇلازىمەت",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screen_capture_notification_content",
+            "value":"\u200f«%s» ئېكران تۇتقان.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"screen_capture_notification_title",
+            "value":"ئېكران تۇتۇش مۇلازىمىتى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"click_twin_app_not_installed",
+            "value":"\u200f%s قاچىلانمىغان.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"click_twin_app_download_installing",
+            "value":"\u200f%s قاچىلىنىۋاتىدۇ...",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"click_twin_app_download_start",
+            "value":"\u200f%s چۈشۈۋاتىدۇ...",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"click_twin_app_wait_data_recover",
+            "value":"\u200f%s مەلۇماتى ئەسلىگە كېلىۋاتىدۇ...",
+            "attr":{
+                "priority":"LT"
+            }
+        }
+    ]
+}

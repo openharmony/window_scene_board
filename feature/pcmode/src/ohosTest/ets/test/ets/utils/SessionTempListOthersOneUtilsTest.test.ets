@@ -1,0 +1,492 @@
+/*
+ * Copyright (c) Huawei Technologies Co., Ltd. 2024-2025. All rights reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+import {
+  SCBSceneContainerSession,
+  SCBSceneInfo,
+  SCBSceneSession,
+  SCBSceneSessionManager,
+  SCBScreenProperty
+} from '@ohos/windowscene';
+import { describe, beforeEach, it, expect, MockKit,
+  ArgumentMatchers,
+  when} from '@ohos/hypium'
+import { SessionTempList } from '../../../../../main/ets/utils/SessionTempListUtils';
+
+export function SessionTempListOthersOneUtilsTest() {
+  describe('SessionTempListOthersOneUtilsTest', () => {
+    let sessionTempList: SessionTempList;
+    let mocker: MockKit;
+    let mockMap: Map<string, Function[]>;
+    beforeEach(() => {
+      sessionTempList = new SessionTempList();
+      mocker = new MockKit();
+      mockMap = new Map<string, Function[]>();
+      (sessionTempList as object)['afterRemoveCallbackGroupMap'] = mockMap;
+    })
+
+    it('test_registerTimeoutOne_othOne_othOne', 0, async (done: Function) => {
+      try {
+        let containerSession: SCBSceneContainerSession = registerTimeoutTem();
+        (sessionTempList as object)['timeoutGroupMap'].set('groupOne', undefined);
+        (sessionTempList as object)['registerTimeout']('groupOne', containerSession, () => {
+          sessionTempList.removeSession('groupOne', containerSession, true);
+        });
+        expect(sessionTempList).not().assertNull();
+      } catch (e) {
+        expect(e).assertEqual('error: ' + JSON.stringify(e.message));
+      } finally {
+        done();
+      }
+    })
+
+    it('test_registerTimeoutTwo_othOne', 0, async (done: Function) => {
+      try {
+        let containerSession: SCBSceneContainerSession = registerTimeoutTem();
+        let cs: Map<SCBSceneContainerSession, number> = new Map();
+        cs.set(containerSession, 1);
+        (sessionTempList as object)['timeoutGroupMap'].set('groupTwo', cs);
+        (sessionTempList as object)['registerTimeout']('groupTwo', containerSession, () => {
+          sessionTempList.removeSession('groupTwo', containerSession, true);
+        });
+        expect(sessionTempList).not().assertNull();
+      } catch (e) {
+        expect(e).assertEqual('error: ' + JSON.stringify(e.message));
+      } finally {
+        done();
+      }
+    })
+
+    it('test_registerTimeoutThree_othOne', 0, async (done: Function) => {
+      try {
+        let containerSession: SCBSceneContainerSession = registerTimeoutTem();
+        let cs: Map<SCBSceneContainerSession, number> = new Map();
+        (sessionTempList as object)['timeoutGroupMap'].set('groupThree', cs);
+        (sessionTempList as object)['registerTimeout']('groupThree', containerSession, () => {
+          sessionTempList.removeSession('groupTwo', containerSession, true);
+        });
+        expect(sessionTempList).not().assertNull();
+      } catch (e) {
+        expect(e).assertEqual('error: ' + JSON.stringify(e.message));
+      } finally {
+        done();
+      }
+    })
+
+    it('test_unRegisterTimeoutOne_othOne', 0, async (done: Function) => {
+      try {
+        let containerSession: SCBSceneContainerSession = registerTimeoutTem();
+        let cs: Map<SCBSceneContainerSession, number> = new Map();
+        cs.set(containerSession, 1);
+        (sessionTempList as object)['timeoutGroupMap'].set('unGroupOne', cs);
+        (sessionTempList as object)['unRegisterTimeout']('unGroupOne', containerSession);
+        expect(sessionTempList).not().assertNull();
+      } catch (e) {
+        expect(e).assertEqual('error: ' + JSON.stringify(e.message));
+      } finally {
+        done();
+      }
+    })
+
+    it('test_unRegisterTimeoutTwo_othOne', 0, async (done: Function) => {
+      try {
+        let containerSession: SCBSceneContainerSession = registerTimeoutTem();
+        (sessionTempList as object)['timeoutGroupMap'].set('unGroupTwo', undefined);
+        (sessionTempList as object)['unRegisterTimeout']('unGroupTwo', containerSession);
+        expect(sessionTempList).not().assertNull();
+      } catch (e) {
+        expect(e).assertEqual('error: ' + JSON.stringify(e.message));
+      } finally {
+        done();
+      }
+    })
+
+    it('test_unRegisterTimeoutThree_othOne', 0, async (done: Function) => {
+      try {
+        let containerSession: SCBSceneContainerSession = registerTimeoutTem();
+        let cs: Map<SCBSceneContainerSession, number> = new Map();
+        (sessionTempList as object)['timeoutGroupMap'].set('unGroupOne', cs);
+        (sessionTempList as object)['unRegisterTimeout']('unGroupThree', containerSession);
+        expect(sessionTempList).not().assertNull();
+      } catch (e) {
+        expect(e).assertEqual('error: ' + JSON.stringify(e.message));
+      } finally {
+        done();
+      }
+    })
+
+    it('test_triggerRemoveCallbacksOne_othOne', 0, async (done: Function) => {
+      try {
+        let containerSession: SCBSceneContainerSession = registerTimeoutTem();
+        let cg: Map<string, Function[]> = new Map();
+        (sessionTempList as object)['afterRemoveCallbackGroupMap'].set('testGroupOne', cg);
+        (sessionTempList as object)['triggerRemoveCallbacks']('testGroupOne', containerSession);
+        expect(sessionTempList).not().assertNull();
+      } catch (e) {
+        expect(e).assertEqual('error: ' + JSON.stringify(e.message));
+      } finally {
+        done();
+      }
+    })
+
+    it('test_triggerRemoveCallbacksTwo_othOne', 0, async (done: Function) => {
+      try {
+        let containerSession: SCBSceneContainerSession = registerTimeoutTem();
+        let cg: Map<string, Function[]> = new Map();
+        (sessionTempList as object)['afterRemoveCallbackGroupMap'].set('testGroupTwo', cg);
+        (sessionTempList as object)['triggerRemoveCallbacks']('testGroupTwo', containerSession);
+        expect(sessionTempList).not().assertNull();
+      } catch (e) {
+        expect(e).assertEqual('error: ' + JSON.stringify(e.message));
+      } finally {
+        done();
+      }
+    })
+
+    it('test_printLogOne_othOne', 0, async (done: Function) => {
+      try {
+        (sessionTempList as object)['printLog']('sessionGroupMap');
+        expect(sessionTempList).not().assertNull();
+      } catch (e) {
+        expect(e).assertEqual('error: ' + JSON.stringify(e.message));
+      } finally {
+        done();
+      }
+    })
+
+    it('test_printLogTwo_othOne', 0, async (done: Function) => {
+      try {
+        (sessionTempList as object)['printLog']('timeoutGroupMap');
+        expect(sessionTempList).not().assertNull();
+      } catch (e) {
+        expect(e).assertEqual('error: ' + JSON.stringify(e.message));
+      } finally {
+        done();
+      }
+    })
+
+    it('test_printLogThree_othOne', 0, async (done: Function) => {
+      try {
+        (sessionTempList as object)['printLog']('all');
+        expect(sessionTempList).not().assertNull();
+      } catch (e) {
+        expect(e).assertEqual('error: ' + JSON.stringify(e.message));
+      } finally {
+        done();
+      }
+    })
+
+    it('not_register_if_groupName_is_empty_othOne', 0, async (done: Function) => {
+      try {
+        sessionTempList.registerAfterRemoveSession('', () => {});
+        expect(mockMap.size).assertEqual(0);
+      } catch (e) {
+        expect(e).assertEqual('error: ' + JSON.stringify(e.message));
+      } finally {
+        done();
+      }
+    });
+
+    it('add_callback_group_not_exist_othOne', 0, async (done: Function) => {
+      try {
+        let callback: Function = (containerSession: SCBSceneContainerSession) => {
+          containerSession.requestDestruction(true);
+        };
+        let mockSet = mocker.mockFunc(mockMap, mockMap.set);
+        when(mockSet)([ArgumentMatchers.any, ArgumentMatchers.any]).afterReturn(undefined);
+        sessionTempList.registerAfterRemoveSession('group1', callback);
+        expect(sessionTempList).not().assertNull();
+      } catch (e) {
+        expect(e).assertEqual('error: ' + JSON.stringify(e.message));
+      } finally {
+        mocker.clear(mockMap);
+        done();
+      }
+    });
+
+    it('add_callback_to_existing_group_othOne', 0, async (done: Function) => {
+      try {
+        let callback = () => {};
+        let callbacks = [() => {}];
+        mockMap.set('group1', callbacks);
+        let mockGet = mocker.mockFunc(mockMap, mockMap.get);
+        let mockSet = mocker.mockFunc(mockMap, mockMap.set);
+        when(mockGet)(ArgumentMatchers.any).afterReturn(callbacks);
+        when(mockSet)([ArgumentMatchers.any, ArgumentMatchers.any]).afterReturn(undefined);
+        sessionTempList.registerAfterRemoveSession('group1', callback);
+        expect(sessionTempList).not().assertNull();
+      } catch (e) {
+        expect(e).assertEqual('error: ' + JSON.stringify(e.message));
+      } finally {
+        mocker.clear(mockMap);
+        done();
+      }
+    });
+
+    it('should_do_nothing_if_groupName_is_empty_othOne', 0, async (done: Function) => {
+      try {
+        sessionTempList.unRegisterAfterRemoveSession('', () => {});
+        expect(mockMap.has('')).assertFalse();
+      } catch (e) {
+        expect(e).assertEqual('error: ' + JSON.stringify(e.message));
+      } finally {
+        done();
+      }
+    });
+
+    it('should_do_nothing_if_callbackGroup_is_undefined_othOne', 0, async (done: Function) => {
+      try {
+        sessionTempList.unRegisterAfterRemoveSession('group1', () => {});
+        expect(mockMap.has('group1')).assertFalse();
+      } catch (e) {
+        expect(e).assertEqual('error: ' + JSON.stringify(e.message));
+      } finally {
+        done();
+      }
+    });
+
+    it('should_do_nothing_if_callbackGroup_is_empty_othOne', 0, async (done: Function) => {
+      try {
+        mockMap.set('group2', []);
+        sessionTempList.unRegisterAfterRemoveSession('group2', () => {});
+        expect(mockMap.get('group2')?.length).assertEqual(0);
+      } catch (e) {
+        expect(e).assertEqual('error: ' + JSON.stringify(e.message));
+      }
+      done();
+    });
+
+    it('should_remove_callback_from_callbackGroup_if_present_othOne', 0, async (done: Function) => {
+      try {
+        const callback = () => {};
+        mockMap.set('group3', [callback]);
+        sessionTempList.unRegisterAfterRemoveSession('group3', callback);
+        expect(mockMap.get('group3')?.includes(callback)).assertFalse();
+      } catch (e) {
+        expect(e).assertEqual('error: ' + JSON.stringify(e.message));
+      }
+      done();
+    });
+
+    it('should_not_remove_any_callback_if_not_present_othOne', 0, async (done: Function) => {
+      try {
+        const callback1 = () => {};
+        const callback2 = () => {};
+        mockMap.set('group4', [callback1]);
+        sessionTempList.unRegisterAfterRemoveSession('group4', callback2);
+        expect(mockMap.get('group4')?.includes(callback1)).assertTrue();
+      } catch (e) {
+        expect(e).assertEqual('error: ' + JSON.stringify(e.message));
+      }
+      done();
+    });
+
+    it('removeSession_groupName_or_containerSession_is_null_othOne', 0, async (done: Function) => {
+      try {
+        let session = registerTimeoutTem();
+        sessionTempList.removeSession(null, session);
+        sessionTempList.removeSession('groupName', null);
+        expect(sessionTempList).not().assertNull();
+      } catch (e) {
+        expect(e).assertEqual('error: ' + JSON.stringify(e.message));
+      }
+      done();
+    });
+
+    it('removeSession_if_sessionGroup_does_not_exist_othOne', 0, async (done: Function) => {
+      try {
+        let session = registerTimeoutTem();
+        sessionTempList.removeSession('groupName', session);
+        expect(sessionTempList).not().assertNull();
+      } catch (e) {
+        expect(e).assertEqual('error: ' + JSON.stringify(e.message));
+      }
+      done();
+    });
+
+    it('removeSession_if_session_not_found_in_sessionGroup_othOne', 0, async (done: Function) => {
+      try {
+        let session = registerTimeoutTem();
+        (sessionTempList as object)['sessionGroupMap'].set('groupName', []);
+        sessionTempList.removeSession('groupName', session);
+        expect(sessionTempList).not().assertNull();
+      } catch (e) {
+        expect(e).assertEqual('error: ' + JSON.stringify(e.message));
+      }
+      done();
+    });
+
+    it('removeSession_and_trigger_callbacks_othOne', 0, async (done: Function) => {
+      try {
+        let session = registerTimeoutTem();
+        (sessionTempList as object)['sessionGroupMap'].set('groupName', [session]);
+        sessionTempList.removeSession('groupName', session, true);
+        expect(sessionTempList).not().assertNull();
+      } catch (e) {
+        expect(e).assertEqual('error: ' + JSON.stringify(e.message));
+      }
+      done();
+    });
+
+    it('removeSession_without_triggering_callbacks_othOne', 0, async (done: Function) => {
+      try {
+        let session = registerTimeoutTem();
+        (sessionTempList as object)['sessionGroupMap'].set('groupName', [session]);
+        sessionTempList.removeSession('groupName', session, false);
+        expect(sessionTempList).not().assertNull();
+      } catch (e) {
+        expect(e).assertEqual('error: ' + JSON.stringify(e.message));
+      }
+      done();
+    });
+
+    it('insert_groupName_or_containerSession_is_null_othOne', 0, async (done: Function) => {
+      try {
+        let containerSession = registerTimeoutTem();
+        sessionTempList.insert(null, containerSession);
+        sessionTempList.insert('groupName', null);
+        expect(sessionTempList).not().assertNull();
+      } catch (e) {
+        expect(e).assertEqual('error: ' + JSON.stringify(e.message));
+      }
+      done();
+    });
+
+    it('insert_new_group_not_exists_othOne', 0, async (done: Function) => {
+      try {
+        let containerSession = registerTimeoutTem();
+        sessionTempList.insert('newGroup', containerSession);
+        expect(sessionTempList).not().assertNull();
+      } catch (e) {
+        expect(e).assertEqual('error: ' + JSON.stringify(e.message));
+      }
+      done();
+    });
+
+    it('existing_group_containerId_does_not_exist_othOne', 0, async (done: Function) => {
+      try {
+        let containerSession = registerTimeoutTem();
+        (sessionTempList as object)['sessionGroupMap'].set('existingGroup', []);
+        sessionTempList.insert('existingGroup', containerSession);
+        sessionTempList.insert('existingGroup', containerSession);
+        expect(sessionTempList).not().assertNull();
+      } catch (e) {
+        expect(e).assertEqual('error: ' + JSON.stringify(e.message));
+      }
+      done();
+    });
+
+    it('containerId_already_exists_in_group_othOne', 0, async (done: Function) => {
+      try {
+        let containerSession = registerTimeoutTem();
+        (sessionTempList as object)['sessionGroupMap'].set('existingGroup', [containerSession]);
+        sessionTempList.insert('existingGroup', containerSession);
+        sessionTempList.insert('existingGroup', containerSession);
+        expect(sessionTempList).not().assertNull();
+      } catch (e) {
+        expect(e).assertEqual('error: ' + JSON.stringify(e.message));
+      }
+      done();
+    });
+
+    it('getSession_groupName_is_empty_othOne', 0, async (done: Function) => {
+      try {
+        const result = sessionTempList.getSession('', 123);
+        expect(result).assertUndefined();
+      } catch (e) {
+        expect(e).assertEqual('error: ' + JSON.stringify(e.message));
+      }
+      done();
+    });
+
+    it('getSession_persistentId_is_zero_othOne', 0, async (done: Function) => {
+      try {
+        const result = sessionTempList.getSession('group1', 0);
+        expect(result).assertUndefined();
+      } catch (e) {
+        expect(e).assertEqual('error: ' + JSON.stringify(e.message));
+      }
+      done();
+    });
+
+    it('getSession_groupName_not_exist_othOne', 0, async (done: Function) => {
+      try {
+        const result = sessionTempList.getSession('nonexistentGroup', 123);
+        expect(result).assertUndefined();
+      } catch (e) {
+        expect(e).assertEqual('error: ' + JSON.stringify(e.message));
+      }
+      done();
+    });
+
+    it('getSession_sessionGroup_is_empty_othOne', 0, async (done: Function) => {
+      try {
+        (sessionTempList as object)['sessionGroupMap'].set('emptyGroup', []);
+        const result = sessionTempList.getSession('emptyGroup', 123);
+        expect(result).assertUndefined();
+      } catch (e) {
+        expect(e).assertEqual('error: ' + JSON.stringify(e.message));
+      }
+      done();
+    });
+
+    it('getSession_session_is_found1_othOne', 0, async (done: Function) => {
+      try {
+        let mockSession = registerTimeoutTem(123);
+        (sessionTempList as object)['sessionGroupMap'].set('emptyGroup', [mockSession]);
+        sessionTempList.getSession('group1', 123);
+        expect(sessionTempList).not().assertNull();
+      } catch (e) {
+        expect(e).assertEqual('error: ' + JSON.stringify(e.message));
+      }
+      done();
+    });
+
+    it('getSession_session_is_found2_othOne', 0, async (done: Function) => {
+      try {
+        let mockSession = registerTimeoutTem(111);
+        (sessionTempList as object)['sessionGroupMap'].set('emptyGroup', [mockSession]);
+        sessionTempList.getSession('group1', 123);
+        expect(sessionTempList).not().assertNull();
+      } catch (e) {
+        expect(e).assertEqual('error: ' + JSON.stringify(e.message));
+      }
+      done();
+    });
+
+    it('getSession_removeAfterGet_is_true_othOne', 0, async (done: Function) => {
+      try {
+        let mockSession = registerTimeoutTem(123);
+        (sessionTempList as object)['sessionGroupMap'].set('emptyGroup', [mockSession]);
+        sessionTempList.getSession('group1', 123, true);
+        expect(sessionTempList).not().assertNull();
+      } catch (e) {
+        expect(e).assertEqual('error: ' + JSON.stringify(e.message));
+      }
+      done();
+    });
+
+  })
+}
+
+function registerTimeoutTem(persistentId?: number): SCBSceneContainerSession {
+  let testSCBScreenProperty = new SCBScreenProperty();
+  let testSCBSceneInfo: SCBSceneInfo =
+    new SCBSceneInfo('testBundleName', 'testModuleName', 'testAbilityName', 1, persistentId || 1);
+  let testSession = SCBSceneSessionManager.getInstance().requestSceneSession(testSCBSceneInfo);
+  let scbSceneSession = new SCBSceneSession(testSession, testSCBSceneInfo);
+  let containerSession: SCBSceneContainerSession =
+    new SCBSceneContainerSession(scbSceneSession, testSCBScreenProperty);
+  return containerSession;
+}

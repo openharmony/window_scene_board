@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"app_name",
+            "value":"Ecranul de pornire și fețe",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

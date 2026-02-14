@@ -1,0 +1,28 @@
+{
+    "plural":[
+        {
+            "name":"multiSelect_drag_start",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"ཉེར་སྤྱོད་ %d ཡར་བཏེགས་ཟིན།",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"multiSelect_drag_drop",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"ཉེར་སྤྱོད་ %d བརྙན་ཡོལ་ཐོག་ཏུ་བཞག་ཟིན།",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,40 @@
+{
+  "appsInfo": [
+    {
+      "bundleName": "com.ohos.contacts",
+      "abilityName": "com.ohos.contacts.MainAbility",
+      "moduleName": "entry",
+      "type": 1
+	},
+    {
+      "bundleName": "com.ohos.mms",
+      "abilityName": "com.ohos.mms.MainAbility",
+      "moduleName": "entry",
+      "type": 1
+	},
+    {
+      "bundleName": "com.ohos.wallet",
+      "abilityName": "MainAbility",
+      "moduleName": "phone",
+      "type": 1
+	},
+    {
+      "bundleName": "com.ohos.contacts",
+      "abilityName": "com.ohos.contacts.MainAbility",
+      "moduleName": "entry",
+      "type": 2
+    },
+    {
+      "bundleName": "com.ohos.mms",
+      "abilityName": "com.ohos.mms.MainAbility",
+      "moduleName": "entry",
+      "type": 2
+    },
+    {
+      "bundleName": "com.ohos.wallet",
+      "abilityName": "MainAbility",
+      "moduleName": "phone",
+      "type": 2
+    }
+  ]
+}

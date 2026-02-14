@@ -1,0 +1,55 @@
+{
+  "description": "Configuration for SceneBoard Tests",
+  "driver": {
+    "type": "OHJSUnitTest",
+    "test-timeout": "180000",
+    "bundle-name": "com.ohos.sceneboard",
+    "module-name": "entry_test",
+    "shell-timeout": "600000",
+    "testcase-timeout": "30000",
+    "compile-mode": "esmodule",
+    "coverage": true,
+    "package-tool-path": "D:\\Local\\coverage\\node_modules\\@ohos\\coverage"
+  },
+  "kits": [
+    {
+      "run-command": [
+        "mount -o remount,rw /",
+        "param set persist.scb.testmode.enable true",
+        "echo ENABLED > /etc/windowscene.config"
+      ],
+      "teardown-command": [
+      ],
+      "type": "ShellKit"
+    },
+    {
+      "type": "CommandKit",
+      "shell": [
+        {
+          "name": "push",
+          "value": "SceneBoardTest.hap->/data/local/tmp/SceneBoardTest.hap"
+        }
+      ]
+    },
+    {
+      "run-command": [
+        "param set persist.ark.mem_config_property jsHeap1024",
+        "reboot"
+      ],
+      "teardown-command": [
+      ],
+      "type": "ShellKit"
+    },
+    {
+      "run-command": [
+        "param set persist.scb.testmode.enable true",
+        "power-shell wakeup",
+        "uinput -T -d 300 600 -m 300 600 300 100 -u 300 100",
+        "power-shell timeout -o 600000"
+      ],
+      "teardown-command": [
+      ],
+      "type": "ShellKit"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "devDependencies": {},
+  "name": "@ohos/pcbase",
+  "description": "",
+  "version": "1.0.0",
+  "dependencies": {
+    "@ohos/basicutils": "../../staticcommon/basecommon/basicutils",
+    "@ohos/frameworkwrapper": "../../staticcommon/basecommon/frameworkwrapper",
+    "@ohos/windowscene": "../../staticcommon/basecommon/windowscene",
+    "@ohos/componentdrag": "../../staticcommon/basecommon/componentdrag",
+    "@ohos/componenthelper": "../../staticcommon/basecommon/componenthelper",
+    "@ohos/commonconstants": "../../staticcommon/basecommon/commonconstants",
+    "@ohos/frameworkcommon": "../../staticcommon/basecommon/frameworkcommon",
+    "@ohos/componentanimator": "../../staticcommon/basecommon/componentanimator",
+    "@ohos/commonscbscreen": "../../feature/commonscbscreen",
+    "@ohos/pcmode": "../../feature/pcmode",
+    "@ohos/windowsceneinterfaces": "file:../../staticcommon/basecommon/windowsceneinterfaces"
+  }
+}

@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"app_name",
+            "value":"Pantalla principal y esferas",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

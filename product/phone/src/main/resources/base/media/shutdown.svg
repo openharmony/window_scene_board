@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="36px" height="36px" viewBox="0 0 36 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>开关</title>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="OH-锁屏2" transform="translate(-24.000000, -48.000000)">
+            <g id="开关" transform="translate(24.000000, 48.000000)">
+                <circle id="椭圆形" fill-opacity="0.5" fill="#FFFFFF" fill-rule="nonzero" cx="18" cy="18" r="18"></circle>
+                <polygon id="Fill-1" points="9.45 26.4737143 26.6108276 26.4737143 26.6108276 8.7 9.45 8.7"></polygon>
+                <line x1="18.0304138" y1="10.7736" x2="18.0304138" y2="16.9944" id="Stroke-8" stroke-opacity="0.6" stroke="#000000" stroke-width="1.5" stroke-linecap="round"></line>
+                <path d="M14.7416699,11.6871245 C12.7757541,12.8652255 11.4520823,15.0653151 11.4520823,17.5868127 C11.4520823,21.3496561 14.3973093,24.4000699 18.0303995,24.4000699 C21.6634897,24.4000699 24.6087167,21.3496561 24.6087167,17.5868127 C24.6087167,15.0653151 23.2850449,12.8652255 21.3191291,11.6871245" id="Stroke-10" stroke-opacity="0.6" stroke="#000000" stroke-width="1.5" stroke-linecap="round"></path>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"app_name",
+            "value":"מסך הבית ופני שעון",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

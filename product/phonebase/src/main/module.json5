@@ -1,0 +1,10 @@
+{
+  "module": {
+    "name": "phonebase",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ]
+  }
+}

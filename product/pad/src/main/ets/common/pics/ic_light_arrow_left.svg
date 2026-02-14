@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>ic_light_arrow_left</title>
+    <defs>
+        <path d="M1.11078341,0.177127546 L1.13931335,0.205467954 L5.54389104,4.84112031 C6.13936663,5.46783596 6.15177237,6.47583047 5.58110827,7.11843274 L5.54389104,7.15894649 L1.13931335,11.7945988 C1.02463452,11.915294 0.878604694,11.9828833 0.728812744,11.9973667 L0.687887847,12 L0.646900765,12 C0.482993895,11.9947333 0.320579437,11.9262662 0.195475266,11.7945988 C-0.0558500761,11.5300883 -0.0648259812,11.1071017 0.168547551,10.8312714 L0.195475266,10.8012447 L4.28544027,6.49671043 C4.53676562,6.23219997 4.54574152,5.80921325 4.31236799,5.53338305 L4.28544027,5.50335636 L0.195475266,1.19882203 C-0.0651584221,0.924514876 -0.0651584221,0.479775108 0.195475266,0.205467954 C0.321137937,0.0732127192 0.484444768,0.00472340125 0.649096032,0 L0.690265851,0.000147606289 C0.841170502,0.00555983688 0.990663031,0.0645531503 1.11078341,0.177127546 Z" id="path-1"></path>
+        <filter x="-58.3%" y="-20.8%" width="216.7%" height="158.3%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.4 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="ic_light_arrow_left" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g transform="translate(9.000000, 6.000000)" id="path-1">
+            <g transform="translate(3.000000, 6.000000) scale(-1, 1) translate(-3.000000, -6.000000) ">
+                <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+            </g>
+        </g>
+    </g>
+</svg>

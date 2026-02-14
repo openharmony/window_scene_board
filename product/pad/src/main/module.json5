@@ -1,0 +1,1173 @@
+{
+  "module": {
+    "name": "pad_sceneboard",
+    "type": "entry",
+    "srcEntry": "./ets/Application/AbilityStage.ets",
+    "description": "$string:mainability_description",
+    "mainElement": "com.ohos.sceneboard.MainAbility",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ],
+    "definePermissions": [
+      {
+        "name": "ohos.permission.ACCESS_CUSTOM_RINGTONE"
+      },
+      {
+        "name": "ohos.permission.GET_EDM_CONFIG",
+        "grantMode": "system_grant",
+        "availableLevel": "system_basic",
+        "provisionEnable": true,
+        "distributedSceneEnable": false
+      },
+      {
+        "name": "ohos.permission.ACCESS_TRUST_LIST_OOBE_MANAGER",
+        "grantMode": "system_grant",
+        "availableLevel": "system_core",
+        "provisionEnable": true,
+        "distributedSceneEnable": false
+      },
+      {
+        "name": "ohos.permission.RECEIVE_BMS_BROKER_MESSAGES",
+        "grantMode": "system_grant",
+        "availableLevel": "system_basic",
+        "provisionEnable": true,
+        "distributedSceneEnable": false
+      }
+    ],
+    "metadata": [
+      {
+        "name": "support_bluetooth_lyric",
+        "value": "true"
+      },
+      {
+        "name": "ArkTSPartialUpdate",
+        "value": "true"
+      },
+      {
+        "name": "action.settings.search.path",
+        "value": "searchConfigDesktop/searchPage.json"
+      },
+      {
+        "name": "action.settings.app.disable_force_stop",
+        "value": "true"
+      },
+      {
+        "name": "configColorModeChangePerformanceInArkUI",
+        "value": "true"
+      },
+      {
+        "name": "action.settings.app.can_not_disable",
+        "value": "true"
+      }
+    ],
+    "deliveryWithInstall": true,
+    "installationFree": false,
+    "pages": "$profile:main_pages",
+    "abilities": [
+      {
+        "exported": false,
+        "name": "DesktopIntentBackgroundUiAbility",
+        "description": "DesktopIntentBackgroundUiAbility",
+        "label": "$string:Desktop_setting",
+        "srcEntry": "./ets/intents/DesktopIntentBackgroundUiAbilityRedirect.ets",
+        "launchType": "singleton",
+        "orientation": "portrait",
+        "startWindowIcon": "$media:icon",
+        "startWindowBackground": "$color:start_window_background",
+        "removeMissionAfterTerminate": true
+      },
+      {
+        "exported": false,
+        "name": "ScbIntentUIAbility",
+        "description": "ScbIntentUIAbility",
+        "label": "$string:entry_MainAbility",
+        "srcEntry": "./ets/intents/abilities/ScbIntentUIAbilityRedirect.ets",
+        "launchType": "singleton",
+        "orientation": "auto_rotation_restricted",
+        "startWindowIcon": "$media:icon",
+        "startWindowBackground": "$color:scb_intent_start_window_background",
+        "removeMissionAfterTerminate": true,
+        "excludeFromMissions": true
+      }
+    ],
+    "extensionAbilities": [
+      {
+        "priority": 5,
+        "skills": [
+          {
+            "entities": [
+              "entity.system.home",
+              "flag.home.intent.from.system"
+            ],
+            "actions": [
+              "action.system.home",
+              "com.ohos.action.main",
+              "action.form.publish"
+            ]
+          }
+        ],
+        "visible": false,
+        "name": "com.ohos.sceneboard.MainAbility",
+        "icon": "$media:icon",
+        "description": "$string:mainability_description",
+        "label": "$string:entry_MainAbility",
+        "srcEntry": "./ets/MainAbility/MainAbility.ets",
+        "type": "service"
+      },
+      {
+        "exported": true,
+        "name": "DesktopProviderService",
+        "icon": "$media:icon",
+        "description": "DesktopProviderService",
+        "srcEntry": "./ets/service/DesktopProviderService.ets",
+        "type": "service",
+        "permissions": [
+          "ohos.permission.GET_BUNDLE_INFO_PRIVILEGED"
+        ],
+        "metadata": [
+          {
+            "name": "ohos.extension.version",
+            "value": "12"
+          }
+        ]
+      },
+      {
+        "exported": true,
+        "name": "OobeService",
+        "icon": "$media:icon",
+        "description": "OobeService",
+        "srcEntry": "./ets/service/OobeService.ets",
+        "type": "service",
+        "permissions": [
+          "ohos.permission.GET_BUNDLE_INFO_PRIVILEGED"
+        ],
+        "metadata": [
+          {
+            "name": "ohos.extension.version",
+            "value": "1"
+          }
+        ]
+      },
+      {
+        "exported": true,
+        "name": "PageRouterService",
+        "icon": "$media:icon",
+        "description": "PageRouterService",
+        "srcEntry": "./ets/service/PageRouterService.ets",
+        "type": "service",
+        "metadata": [
+          {
+            "name": "ohos.extension.version",
+            "value": "1"
+          }
+        ],
+        "skills": [
+          {
+            "actions": [
+              "action.form.page"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "ScbIntentUIExtensionAbility",
+        "srcEntry": "./ets/intents/abilities/ScbIntentUIExtensionAbilityRedirect.ets",
+        "description": "Scene board Intent UI Extension Ability",
+        "type": "sys/commonUI",
+        "exported": true,
+        "permissions": [
+          "ohos.permission.ACCESS_SYSTEM_SETTINGS"
+        ]
+      },
+      {
+        "name": "ReportWorkSchedulerExtensionAbility",
+        "srcEntry": "./ets/SceneBoard/desktopReporter/ReportWorkSchedulerExtensionAbilityRedirect.ets",
+        "label": "$string:WorkSchedulerExtensionAbility_label",
+        "description": "$string:WorkSchedulerExtensionAbility_desc",
+        "type": "workScheduler"
+      },
+      {
+        "name": "EditModeIconAbilityPhone",
+        "description": "EditModeIconAbilityPhone",
+        "type": "sys/commonUI",
+        "exported": true,
+        "srcEntry": "./ets/desktopedit/ability/EditModeIconAbilityPhoneRedirect.ets",
+        "permissions": [
+          "ohos.permission.ACCESS_SYSTEM_SETTINGS"
+        ]
+      },
+      {
+        "name": "DesktopSettingUIExtAbility",
+        "description": "DesktopSettingUIExtAbility",
+        "type": "sys/commonUI",
+        "exported": true,
+        "srcEntry": "./ets/desktopsetting/ability/DesktopSettingAbilityRedirect.ets"
+      },
+      {
+        "name": "SceneBoardFormAbility",
+        "srcEntry": "./ets/FormAbility/SceneBoardFormAbility.ets",
+        "description": "SceneBoardFormAbility",
+        "type": "form",
+        "exported": false,
+        "metadata": [
+          {
+            "name": "ohos.extension.form",
+            "resource": "$profile:form_config"
+          }
+        ]
+      },
+      {
+        "name": "ExtHomeProviderService",
+        "srcEntry": "./ets/service/ExtHomeProviderService.ets",
+        "description": "ExtHomeProviderService",
+        "type": "service",
+        "exported": false,
+        "permissions": [
+          "ohos.permission.ACCESS_SCREEN_LOCK_INNER"
+        ]
+      },
+      {
+        "name": "SinglePocketProviderService",
+        "srcEntry": "./ets/service/SinglePocketProviderService.ets",
+        "description": "SinglePocketProviderService",
+        "type": "service",
+        "exported": false,
+        "permissions": [
+          "ohos.permission.ACCESS_SYSTEM_SETTINGS"
+        ]
+      },
+      {
+        "name": "StatusBarExtensionService",
+        "srcEntry": "./ets/service/StatusBarExtensionService.ets",
+        "type": "service",
+        "exported": true,
+        "description": "service"
+      },
+      {
+        "name": "ScreenLockExtensionService",
+        "srcEntry": "./ets/service/ScreenLockExtensionService.ets",
+        "description": "ScreenLockExtensionService",
+        "type": "service",
+        "exported": true,
+        "permissions": [
+          "ohos.permission.ACCESS_SCREEN_LOCK"
+        ]
+      },
+      {
+        "name": "RestoringTipsAbility",
+        "srcEntry": "./ets/restoringtips/RestoringTipsAbilityRedirect.ets",
+        "description": "RestoringTipsDialog",
+        "exported": false,
+        "type": "sysDialog/common"
+      },
+      {
+        "srcEntry": "./ets/SystemDialog/ExtAbility.ets",
+        "name": "com.ohos.sceneboard.systemdialog",
+        "description": "System-Dialog ServiceExtensionAbility",
+        "type": "service",
+        "exported": true,
+        "permissions": [
+          "ohos.permission.START_SYSTEM_DIALOG"
+        ]
+      },
+      {
+        "srcEntry": "./ets/SystemDialog/CFWKExtAbility.ets",
+        "name": "com.ohos.sceneboard.cfwksystemdialog",
+        "description": "System-Dialog ServiceExtensionAbility",
+        "type": "service",
+        "exported": true,
+        "permissions": [
+          "ohos.permission.START_SYSTEM_DIALOG"
+        ]
+      },
+      {
+        "name": "PoweroffAbility",
+        "srcEntry": "./ets/SystemDialog/PoweroffAbility.ets",
+        "description": "PowerOffAbility",
+        "exported": false,
+        "type": "sysDialog/common",
+        "permissions": [
+          "ohos.permission.REBOOT"
+        ]
+      },
+      {
+        "srcEntry": "./ets/SystemDialog/AlertAbility.ets",
+        "name": "com.ohos.sceneboard.alert",
+        "description": "System-Dialog AlertAbility",
+        "type": "sysDialog/common",
+        "exported": false
+      },
+      {
+        "srcEntry": "./ets/SceneBoard/oneHandModeDialog/ability/OneHandModeDialogAbilityRedirect.ets",
+        "name": "OneHandModeDialogAbility",
+        "description": "System-Dialog OneHandModeDialogAbility",
+        "type": "sysDialog/common",
+        "exported": false
+      },
+      {
+        "visible": false,
+        "name": "SoundPermissionAbility",
+        "srcEntry": "./ets/SceneBoard/soundpanel/permission/SoundPermissionAbility.ets",
+        "description": "SoundPermissionAbility_desc",
+        "label": "$string:sound",
+        "exported": false,
+        "type": "sysDialog/common"
+      },
+      {
+        "name": "WallpaperComponentExtAbility",
+        "srcEntry": "./ets/SceneBoard/themeeditor/WallpaperComponentExtAbility.ets",
+        "exported": true,
+        "type": "service",
+        "icon": "$media:icon",
+        "extensionProcessMode": "type",
+        "permissions": [
+          "ohos.permission.ACTIVATE_THEME_PACKAGE"
+        ]
+      },
+      {
+        "name": "IntentServiceExtAbility",
+        "srcEntry": "./ets/service/IntentServiceExtAbility.ets",
+        "type": "service",
+        "exported": true,
+        "description": "service",
+        "permissions": [
+          "ohos.permission.EXECUTE_INSIGHT_INTENT"
+        ]
+      },
+      {
+        "visible": false,
+        "name": "ExtendedScreenDialogAbility",
+        "srcEntry": "./ets/SystemDialog/ExtendedScreenDialog/ability/ExtendedScreenDialogAbility.ets",
+        "description": "ExtendedScreenDialogAbility_desc",
+        "label": "$string:sound",
+        "exported": false,
+        "type": "sysDialog/common"
+      }
+    ],
+    "requestPermissions": [
+      // acl
+      {
+        "name": "ohos.permission.MANAGE_SHORTCUTS"
+      },
+      {
+        "name": "ohos.permission.UNINSTALL_CLONE_BUNDLE"
+      },
+      {
+        "name": "ohos.permission.START_SHORTCUT"
+      },
+      {
+        "name": "ohos.permission.INJECT_INPUT_EVENT"
+      },
+      {
+        "name": "ohos.permission.PRELOAD_APPLICATION"
+      },
+      {
+        "name": "ohos.permission.ACCESS_PIN_AUTH"
+      },
+      {
+        "name": "ohos.permission.ACCESS_SCREEN_LOCK_INNER"
+      },
+      {
+        "name": "ohos.permission.ACCESS_SCREEN_LOCK"
+      },
+      {
+        "name": "ohos.permission.ACCESS_USER_AUTH_INTERNAL"
+      },
+      {
+        "name": "ohos.permission.BUNDLE_ACTIVE_INFO"
+      },
+      {
+        "name": "ohos.permission.CAPTURE_SCREEN"
+      },
+      {
+        "name": "ohos.permission.MANAGE_SYSTEM_AUDIO_EFFECTS"
+      },
+      {
+        "name": "ohos.permission.GET_TELEPHONY_STATE"
+      },
+      {
+        "name": "ohos.permission.GET_WALLPAPER"
+      },
+      {
+        "name": "ohos.permission.INSTALL_BUNDLE"
+      },
+      {
+        "name": "ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS_EXTENSION"
+      },
+      {
+        "name": "ohos.permission.LISTEN_BUNDLE_CHANGE"
+      },
+      {
+        "name": "ohos.permission.MANAGE_AUDIO_CONFIG"
+      },
+      {
+        "name": "ohos.permission.MANAGE_USER_IDM"
+      },
+      {
+        "name": "ohos.permission.MANAGE_BLUETOOTH"
+      },
+      {
+        "name": "ohos.permission.MANAGE_CAMERA_CONFIG"
+      },
+      {
+        "name": "ohos.permission.MANAGE_LOCAL_ACCOUNTS"
+      },
+      {
+        "name": "ohos.permission.MANAGE_MEDIA_RESOURCES"
+      },
+      {
+        "name": "ohos.permission.FILE_ACCESS_MANAGER"
+      },
+      {
+        "name": "ohos.permission.GET_DEFAULT_APPLICATION"
+      },
+      {
+        "name": "ohos.permission.SECURE_PASTE"
+      },
+      {
+        "name": "ohos.permission.PROCESS_FILE_COPY_PASTE"
+      },
+      {
+        "name": "ohos.permission.CLEAR_RECYCLEBIN"
+      },
+      {
+        "name": "ohos.permission.MANAGE_MISSIONS"
+      },
+      {
+        "name": "ohos.permission.MANAGE_SECURE_SETTINGS"
+      },
+      {
+        "name": "ohos.permission.MANAGE_SETTINGS"
+      },
+      {
+        "name": "ohos.permission.MANAGE_WIFI_CONNECTION"
+      },
+      {
+        "name": "ohos.permission.MODIFY_AUDIO_SETTINGS"
+      },
+      {
+        "name": "ohos.permission.NOTIFICATION_CONTROLLER"
+      },
+      {
+        "name": "ohos.permission.PERMISSION_USED_STATS"
+      },
+      {
+        "name": "ohos.permission.REBOOT"
+      },
+      {
+        "name": "ohos.permission.REQUIRE_FORM"
+      },
+      {
+        "name": "ohos.permission.RUNNING_LOCK"
+      },
+      {
+        "name": "ohos.permission.SET_WALLPAPER"
+      },
+      {
+        "name": "ohos.permission.START_ABILITIES_FROM_BACKGROUND"
+      },
+      {
+        "name": "ohos.permission.ABILITY_BACKGROUND_COMMUNICATION"
+      },
+      {
+        "name": "ohos.permission.START_INVISIBLE_ABILITY"
+      },
+      {
+        "name": "ohos.permission.STORAGE_MANAGER"
+      },
+      {
+        "name": "ohos.permission.SUBSCRIBE_SWING_ABILITY"
+      },
+      {
+        "name": "ohos.permission.UPDATE_CONFIGURATION"
+      },
+      {
+        "name": "ohos.permission.USE_USER_IDM"
+      },
+      {
+        "name": "ohos.permission.CONNECTIVITY_INTERNAL"
+      },
+      {
+        "name": "ohos.permission.SET_TELEPHONY_STATE"
+      },
+      {
+        "name": "ohos.permission.ACCESS_SERVICE_DM"
+      },
+      {
+        "name": "ohos.permission.INSTANTSHARE_SWITCH_CONTROL"
+      },
+      {
+        "name": "ohos.permission.UPDATE_MIGRATE"
+      },
+      {
+        "name": "ohos.permission.PROXY_AUTHORIZATION_URI"
+      },
+      {
+        "name": "ohos.permission.ACCESS_LOWPOWER_MANAGER"
+      },
+      {
+        "name": "ohos.permission.ACTIVATE_THEME_PACKAGE"
+      },
+      {
+        "name": "ohos.permission.ACCESS_SYSTEM_SETTINGS"
+      },
+      {
+        // 通知中心用于升级/克隆单场景恢复延迟安装应用的开关 事件监听位置：NotificationRestoreManager#subscriberDelayedRestore()
+        "name": "ohos.permission.START_RESTORE_NOTIFICATION"
+      },
+      {
+        "name": "ohos.permission.ACCESS_APP_LOCK"
+      },
+      {
+        // 通知中心用于监听应用加锁状态隐藏通知内容 事件监听位置：AppProtectedVm#init()
+        "name": "ohos.permission.READ_APP_LOCK"
+      },
+      {
+        "name": "ohos.permission.MANAGE_APP_INSTALL_INFO",
+        "reason": "$string:permission_reason_manage_install",
+        "usedScene": {
+          "abilities": [
+            "MainAbility"
+          ],
+          "when": "always"
+        }
+      },
+      {
+        "name":"ohos.permission.RECEIVE_APP_INSTALL_INFO_CHANGE",
+        "reason": "$string:permission_reason_receive_install",
+        "usedScene": {
+          "abilities": [
+            "MainAbility"
+          ],
+          "when": "always"
+        }
+      },
+      {
+        "name": "ohos.permission.CHANGE_ABILITY_ENABLED_STATE"
+      },
+      {
+        "name": "ohos.permission.GET_BUNDLE_RESOURCES"
+      },
+      {
+        "name": "ohos.permission.CONNECT_IME_ABILITY"
+      },
+      {
+        "name": "ohos.permission.GET_SUPER_PRIVACY"
+      },
+      {
+        "name": "ohos.permission.EXECUTE_INSIGHT_INTENT"
+      },
+      {
+        "name": "ohos.permission.POWER_OPTIMIZATION",
+        "usedScene": {
+          "abilities": [
+            "MainAbility"
+          ],
+          "when": "always"
+        }
+      },
+      {
+        "name": "ohos.permission.MANAGE_NEARLINK"
+      },
+      {
+        "name": "ohos.permission.MANAGE_WIFI_HOTSPOT"
+      },
+      {
+        "name": "ohos.permission.PERCEIVE_SMART_POWER_SCENARIO"
+      },
+      {
+        "name": "ohos.permission.PRELOAD_UI_EXTENSION_ABILITY"
+      },
+      {
+        "name": "ohos.permission.BACKUP"
+      },
+      {
+        "name": "ohos.permission.GET_DISPOSED_APP_STATUS"
+      },
+      {
+        "name": "ohos.permission.CONTROL_LOCATION_SWITCH"
+      },
+      {
+        "name": "ohos.permission.RECEIVE_FUSION_MESSAGES"
+      },
+      {
+        "name": "ohos.permission.RECEIVE_UPDATE_MESSAGE"
+      },
+      {
+        "name": "ohos.permission.STORAGE_MANAGER_CRYPT"
+      },
+      {
+        "name": "ohos.permission.GET_ANIM_POLICY"
+      },
+      {
+        "name": "ohos.permission.SET_UNREMOVABLE_NOTIFICATION"
+      },
+      {
+        "name": "ohos.permission.OPERATE_FINDNETWORK"
+      },
+      {
+        "name": "ohos.permission.MANAGE_SHUTDOWN_FINDNETWORK"
+      },
+      {
+        "name": "ohos.permission.POWER_MANAGER"
+      },
+      {
+        "name": "ohos.permission.ACCESS_CUSTOM_RINGTONE"
+      },
+      {
+        "name": "ohos.permission.GET_EDM_CONFIG"
+      },
+      {
+        // 读取BMS的thirdPartyAppList.json文件权限
+        "name": "ohos.permission.ACCESS_BUNDLE_DIR"
+      },
+      {
+        // 控制中心读取已用流量权限
+        "name": "ohos.permission.GET_NETWORK_STATS"
+      },
+      {
+        // 通知中心设置want拉起原因参数 设置位置：NotificationStarterVm#setLaunchReasonFromNC
+        "name": "ohos.permission.SET_LAUNCH_REASON_MESSAGE"
+      },
+      // 云盘同步接口权限
+      {
+        "name": "ohos.permission.CLOUDFILE_SYNC"
+      },
+      {
+        // QXS设备pc模式，可以通过控制中心点击超级隐私图标改变超级隐私状态
+        "name": "ohos.permission.SET_SUPER_PRIVACY"
+      },
+      {
+        // 用于萌宠系列主题触发手写笔吸附动画
+        "name": "ohos.permission.MANAGE_ACCESSORY"
+      },
+
+      // normal
+      {
+        "name": "ohos.permission.ACCESS_NOTIFICATION_POLICY"
+      },
+      {
+        "name": "ohos.permission.DISCOVER_BLUETOOTH"
+      },
+      {
+        "name": "ohos.permission.VIBRATE"
+      },
+      {
+        "name": "ohos.permission.DISTRIBUTED_DATASYNC",
+        "reason": "$string:continue_mission_waiting",
+        "usedScene": {
+          "abilities": [
+            "MainAbility"
+          ],
+          "when": "always"
+        }
+      },
+      {
+        "name": "ohos.permission.GET_BUNDLE_INFO"
+      },
+      {
+        "name": "ohos.permission.GET_INSTALLED_BUNDLE_LIST",
+        "reason": "$string:get_installed_bundle_list_reason",
+        "usedScene": {
+          "abilities": [
+            "EntryFormAbility"
+          ]
+        }
+      },
+      {
+        "name": "ohos.permission.ACCESS_BLUETOOTH",
+        "reason": "$string:apply_access_bluetooth_reason",
+        "usedScene": {
+          "abilities": [
+            "MainAbility"
+          ],
+          "when": "always"
+        }
+      },
+      {
+        "name": "ohos.permission.GET_BUNDLE_INFO_PRIVILEGED"
+      },
+      {
+        "name": "ohos.permission.GET_NETWORK_INFO"
+      },
+      {
+        "name": "ohos.permission.GET_WIFI_INFO"
+      },
+      {
+        "name": "ohos.permission.INPUT_MONITORING"
+      },
+      {
+        "name": "ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS"
+      },
+      {
+        "name": "ohos.permission.KEEP_BACKGROUND_RUNNING"
+      },
+      {
+        "name": "ohos.permission.PRINT"
+      },
+      {
+        "name": "ohos.permission.SET_WIFI_INFO"
+      },
+      {
+        "name": "ohos.permission.SYSTEM_FLOAT_WINDOW"
+      },
+      {
+        "name": "ohos.permission.USE_BLUETOOTH"
+      },
+      {
+        "name": "ohos.permission.RUNNING_STATE_OBSERVER"
+      },
+      {
+        "name": "ohos.permission.GET_RUNNING_INFO"
+      },
+      {
+        name: "ohos.permission.COMMONEVENT_STICKY"
+      },
+      {
+        "name": "ohos.permission.ACCESS_SERVICE_NAVIGATION_INFO"
+      },
+      {
+        "name": "ohos.permission.ACCESS_NEARLINK",
+        "reason": "$string:permission_reason_access_near_link",
+        "usedScene": {
+          "abilities": [
+            "MainAbility"
+          ],
+          "when": "always"
+        }
+      },
+      {
+        // 陀螺仪权限
+        "name": "ohos.permission.GYROSCOPE"
+      },
+      {
+        "name": "ohos.permission.ACCESS_BIOMETRIC"
+      },
+      {
+        "name": "ohos.permission.VISIBLE_WINDOW_INFO"
+      },
+      {
+        "name": "ohos.permission.READ_IMAGEVIDEO",
+        "reason": "$string:reason_read_media",
+        "usedScene": {
+          "abilities": [
+            "MainAbility"
+          ],
+          "when": "always"
+        }
+      }
+    ],
+//    "requestPermissions": [
+//      {
+//        "name": "ohos.permission.MANAGE_SHORTCUTS"
+//      },
+//      {
+//        "name": "ohos.permission.UNINSTALL_CLONE_BUNDLE"
+//      },
+//      {
+//        "name": "ohos.permission.START_SHORTCUT"
+//      },
+//      {
+//        "name": "ohos.permission.INJECT_INPUT_EVENT"
+//      },
+//      {
+//        "name": "ohos.permission.PRELOAD_APPLICATION"
+//      },
+//      {
+//        "name": "ohos.permission.ACCESS_NOTIFICATION_POLICY"
+//      },
+//      {
+//        "name": "ohos.permission.ACCESS_PIN_AUTH"
+//      },
+//      {
+//        "name": "ohos.permission.ACCESS_SCREEN_LOCK_INNER"
+//      },
+//      {
+//        "name": "ohos.permission.ACCESS_SCREEN_LOCK"
+//      },
+//      {
+//        "name": "ohos.permission.ACCESS_USER_AUTH_INTERNAL"
+//      },
+//      {
+//        "name": "ohos.permission.BUNDLE_ACTIVE_INFO"
+//      },
+//      {
+//        "name": "ohos.permission.CAPTURE_SCREEN"
+//      },
+//      {
+//        "name": "ohos.permission.DISCOVER_BLUETOOTH"
+//      },
+//      {
+//        "name": "ohos.permission.VIBRATE"
+//      },
+//      {
+//        "name": "ohos.permission.DISTRIBUTED_DATASYNC",
+//        "reason": "$string:continue_mission_waiting",
+//        "usedScene": {
+//          "abilities": [
+//            "MainAbility"
+//          ],
+//          "when": "always"
+//        }
+//      },
+//      {
+//        "name": "ohos.permission.GET_BUNDLE_INFO"
+//      },
+//      {
+//        "name": "ohos.permission.GET_INSTALLED_BUNDLE_LIST",
+//        "reason": "$string:get_installed_bundle_list_reason",
+//        "usedScene": {
+//          "abilities": [
+//            "EntryFormAbility"
+//          ]
+//        }
+//      },
+//      {
+//        "name": "ohos.permission.ACCESS_BLUETOOTH",
+//        "reason": "$string:apply_access_bluetooth_reason",
+//        "usedScene": {
+//          "abilities": [
+//            "MainAbility"
+//          ],
+//          "when": "always"
+//        }
+//      },
+//      {
+//        "name": "ohos.permission.MANAGE_SYSTEM_AUDIO_EFFECTS"
+//      },
+//      {
+//        "name": "ohos.permission.GET_BUNDLE_INFO_PRIVILEGED"
+//      },
+//      {
+//        "name": "ohos.permission.GET_NETWORK_INFO"
+//      },
+//      {
+//        "name": "ohos.permission.GET_TELEPHONY_STATE"
+//      },
+//      {
+//        "name": "ohos.permission.GET_WALLPAPER"
+//      },
+//      {
+//        "name": "ohos.permission.GET_WIFI_INFO"
+//      },
+//      {
+//        "name": "ohos.permission.INPUT_MONITORING"
+//      },
+//      {
+//        "name": "ohos.permission.INSTALL_BUNDLE"
+//      },
+//      {
+//        "name": "ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS"
+//      },
+//      {
+//        "name": "ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS_EXTENSION"
+//      },
+//      {
+//        "name": "ohos.permission.KEEP_BACKGROUND_RUNNING"
+//      },
+//      {
+//        "name": "ohos.permission.LISTEN_BUNDLE_CHANGE"
+//      },
+//      {
+//        "name": "ohos.permission.MANAGE_AUDIO_CONFIG"
+//      },
+//      {
+//        "name": "ohos.permission.MANAGE_USER_IDM"
+//      },
+//      {
+//        "name": "ohos.permission.MANAGE_BLUETOOTH"
+//      },
+//      {
+//        "name": "ohos.permission.MANAGE_CAMERA_CONFIG"
+//      },
+//      {
+//        "name": "ohos.permission.MANAGE_LOCAL_ACCOUNTS"
+//      },
+//      {
+//        "name": "ohos.permission.MANAGE_MEDIA_RESOURCES"
+//      },
+//      {
+//        "name": "ohos.permission.FILE_ACCESS_MANAGER"
+//      },
+//      {
+//        "name": "ohos.permission.PRINT"
+//      },
+//      {
+//        "name": "ohos.permission.GET_DEFAULT_APPLICATION"
+//      },
+//      {
+//        "name": "ohos.permission.SECURE_PASTE"
+//      },
+//      {
+//        "name": "ohos.permission.PROCESS_FILE_COPY_PASTE"
+//      },
+//      {
+//        "name": "ohos.permission.CLEAR_RECYCLEBIN"
+//      },
+//      {
+//        "name": "ohos.permission.MANAGE_MISSIONS"
+//      },
+//      {
+//        "name": "ohos.permission.MANAGE_SECURE_SETTINGS"
+//      },
+//      {
+//        "name": "ohos.permission.MANAGE_SETTINGS"
+//      },
+//      {
+//        "name": "ohos.permission.MANAGE_WIFI_CONNECTION"
+//      },
+//      {
+//        "name": "ohos.permission.MODIFY_AUDIO_SETTINGS"
+//      },
+//      {
+//        "name": "ohos.permission.NOTIFICATION_CONTROLLER"
+//      },
+//      {
+//        "name": "ohos.permission.PERMISSION_USED_STATS"
+//      },
+//      {
+//        "name": "ohos.permission.REBOOT"
+//      },
+//      {
+//        "name": "ohos.permission.REQUIRE_FORM"
+//      },
+//      {
+//        "name": "ohos.permission.RUNNING_LOCK"
+//      },
+//      {
+//        "name": "ohos.permission.SET_WALLPAPER"
+//      },
+//      {
+//        "name": "ohos.permission.SET_WIFI_INFO"
+//      },
+//      {
+//        "name": "ohos.permission.START_ABILITIES_FROM_BACKGROUND"
+//      },
+//      {
+//        "name": "ohos.permission.ABILITY_BACKGROUND_COMMUNICATION"
+//      },
+//      {
+//        "name": "ohos.permission.START_INVISIBLE_ABILITY"
+//      },
+//      {
+//        "name": "ohos.permission.STORAGE_MANAGER"
+//      },
+//      {
+//        "name": "ohos.permission.SYSTEM_FLOAT_WINDOW"
+//      },
+//      {
+//        "name": "ohos.permission.SUBSCRIBE_SWING_ABILITY"
+//      },
+//      {
+//        "name": "ohos.permission.UPDATE_CONFIGURATION"
+//      },
+//      {
+//        "name": "ohos.permission.USE_BLUETOOTH"
+//      },
+//      {
+//        "name": "ohos.permission.USE_USER_IDM"
+//      },
+//      {
+//        "name": "ohos.permission.CONNECTIVITY_INTERNAL"
+//      },
+//      {
+//        "name": "ohos.permission.SET_TELEPHONY_STATE"
+//      },
+//      {
+//        "name": "ohos.permission.ACCESS_SERVICE_DM"
+//      },
+//      {
+//        "name": "ohos.permission.INSTANTSHARE_SWITCH_CONTROL"
+//      },
+//      {
+//        "name": "ohos.permission.UPDATE_MIGRATE"
+//      },
+//      {
+//        "name": "ohos.permission.PROXY_AUTHORIZATION_URI"
+//      },
+//      {
+//        "name": "ohos.permission.RUNNING_STATE_OBSERVER"
+//      },
+//      {
+//        "name": "ohos.permission.GET_RUNNING_INFO"
+//      },
+//      {
+//        "name": "ohos.permission.ACCESS_LOWPOWER_MANAGER"
+//      },
+//      {
+//        "name": "ohos.permission.ACTIVATE_THEME_PACKAGE"
+//      },
+//      {
+//        "name": "ohos.permission.ACCESS_SYSTEM_SETTINGS"
+//      },
+//      {
+//        // 通知中心用于升级/克隆场景恢复延迟安装应用的开关 事件监听位置：NotificationRestoreManager#subscriberDelayedRestore()
+//        "name": "ohos.permission.START_RESTORE_NOTIFICATION"
+//      },
+//      {
+//        "name": "ohos.permission.ACCESS_APP_LOCK"
+//      },
+//      {
+//        // 通知中心用于监听应用加锁状态隐藏通知内容 事件监听位置：AppProtectedVm#init()
+//        "name": "ohos.permission.READ_APP_LOCK"
+//      },
+//      {
+//        "name": "ohos.permission.MANAGE_APP_INSTALL_INFO",
+//        "reason": "$string:permission_reason_manage_install",
+//        "usedScene": {
+//          "abilities": [
+//            "MainAbility"
+//          ],
+//          "when": "always"
+//        }
+//      },
+//      {
+//        "name":"ohos.permission.RECEIVE_APP_INSTALL_INFO_CHANGE",
+//        "reason": "$string:permission_reason_receive_install",
+//        "usedScene": {
+//          "abilities": [
+//            "MainAbility"
+//          ],
+//          "when": "always"
+//        }
+//      },
+//      {
+//        "name": "ohos.permission.CHANGE_ABILITY_ENABLED_STATE"
+//      },
+//      {
+//        "name": "ohos.permission.GET_BUNDLE_RESOURCES"
+//      },
+//      {
+//        name: "ohos.permission.COMMONEVENT_STICKY"
+//      },
+//      {
+//        "name": "ohos.permission.CONNECT_IME_ABILITY"
+//      },
+//      {
+//        "name": "ohos.permission.GET_SUPER_PRIVACY"
+//      },
+//      {
+//        "name": "ohos.permission.ACCESS_SERVICE_NAVIGATION_INFO"
+//      },
+//      {
+//        "name": "ohos.permission.EXECUTE_INSIGHT_INTENT"
+//      },
+//      {
+//        "name": "ohos.permission.POWER_OPTIMIZATION",
+//        "usedScene": {
+//          "abilities": [
+//            "MainAbility"
+//          ],
+//          "when": "always"
+//        }
+//      },
+//      {
+//        "name": "ohos.permission.MANAGE_NEARLINK"
+//      },
+//      {
+//        "name": "ohos.permission.ACCESS_NEARLINK",
+//        "reason": "$string:permission_reason_access_near_link",
+//        "usedScene": {
+//          "abilities": [
+//            "MainAbility"
+//          ],
+//          "when": "always"
+//        }
+//      },
+//      {
+//        "name": "ohos.permission.MANAGE_WIFI_HOTSPOT"
+//      },
+//      {
+//        "name": "ohos.permission.PERCEIVE_SMART_POWER_SCENARIO"
+//      },
+//      {
+//        "name": "ohos.permission.PRELOAD_UI_EXTENSION_ABILITY"
+//      },
+//      {
+//        "name": "ohos.permission.BACKUP"
+//      },
+//      {
+//        "name": "ohos.permission.GET_DISPOSED_APP_STATUS"
+//      },
+//      {
+//        "name": "ohos.permission.CONTROL_LOCATION_SWITCH"
+//      },
+//      {
+//        "name": "ohos.permission.RECEIVE_FUSION_MESSAGES"
+//      },
+//      {
+//        // 陀螺仪权限
+//        "name": "ohos.permission.GYROSCOPE"
+//      },
+//      {
+//        "name": "ohos.permission.RECEIVE_UPDATE_MESSAGE"
+//      },
+//      {
+//        "name": "ohos.permission.STORAGE_MANAGER_CRYPT"
+//      },
+//      {
+//        "name": "ohos.permission.GET_ANIM_POLICY"
+//      },
+//      {
+//        "name": "ohos.permission.ACCESS_BIOMETRIC"
+//      },
+//      {
+//        // 通知不支持删除权限
+//        "name": "ohos.permission.SET_UNREMOVABLE_NOTIFICATION"
+//      },
+//      {
+//        "name": "ohos.permission.OPERATE_FINDNETWORK"
+//      },
+//      {
+//        "name": "ohos.permission.MANAGE_SHUTDOWN_FINDNETWORK"
+//      },
+//      {
+//        "name": "ohos.permission.POWER_MANAGER"
+//      },
+//      {
+//        "name": "ohos.permission.ACCESS_CUSTOM_RINGTONE"
+//      },
+//      {
+//        "name": "ohos.permission.GET_EDM_CONFIG"
+//      },
+//      {
+//        // 读取BMS的thirdPartyAppList.json文件权限
+//        "name": "ohos.permission.ACCESS_BUNDLE_DIR"
+//      },
+//      {
+//        // 控制中心读取已用流量权限
+//        "name": "ohos.permission.GET_NETWORK_STATS"
+//      },
+//      {
+//        "name": "ohos.permission.VISIBLE_WINDOW_INFO"
+//      },
+//      {
+//        // 通知中心设置want拉起原因参数 设置位置：NotificationStarterVm#setLaunchReasonFromNC
+//        "name": "ohos.permission.SET_LAUNCH_REASON_MESSAGE"
+//      },
+//      {
+//        "name": "ohos.permission.READ_IMAGEVIDEO",
+//        "reason": "$string:reason_read_media",
+//        "usedScene": {
+//          "abilities": [
+//            "MainAbility"
+//          ],
+//          "when": "always"
+//        }
+//      },
+//      // 云盘同步接口权限
+//      {
+//        "name": "ohos.permission.CLOUDFILE_SYNC"
+//      },
+//      {
+//         // QXS设备pc模式，可以通过控制中心点击超级隐私图标改变超级隐私状态
+//         "name": "ohos.permission.SET_SUPER_PRIVACY"
+//      },
+//      {
+//        // 用于萌宠系列主题触发手写笔吸附动画
+//        "name": "ohos.permission.MANAGE_ACCESSORY"
+//      }
+//    ]
+  }
+}

@@ -1,0 +1,193 @@
+{
+  "layoutDescription": {
+    "pageCount": 2,
+    "row": 4,
+    "column": 3,
+    "maxPage": 18,
+    "maxForm": 1
+  },
+  "layoutInfo": [
+    {
+      "bundleName": "com.ohos.contacts",
+      "abilityName": "com.ohos.contacts.MainAbility",
+      "moduleName": "entry",
+      "container": -101,
+      "typeId": 0,
+      "column": 0
+    },
+    {
+      "bundleName": "com.ohos.mms",
+      "abilityName": "com.ohos.mms.MainAbility",
+      "moduleName": "entry",
+      "container": -101,
+      "typeId": 0,
+      "column": 1
+    },
+    {
+      "bundleName": "com.ohos.camera",
+      "abilityName": "com.ohos.camera.MainAbility",
+      "moduleName": "phone",
+      "container": -101,
+      "typeId": 0,
+      "column": 2
+    },
+    {
+      "bundleName": "com.ohos.totemweather",
+      "abilityName": "FormAbility",
+      "moduleName": "product",
+      "cardName": "ClockWeatherCard",
+      "formConfigAbility": "ability://com.ohos.totemweather.MainAbility",
+      "container": -100,
+      "cardDimension": 3,
+      "isTransparent": true,
+      "typeId": 1,
+      "area": [
+        3,
+        2
+      ],
+      "page": 0,
+      "row": 0,
+      "column": 0
+    },
+    {
+      "bundleName": "com.ohos.himovie",
+      "abilityName": "MainAbility",
+      "moduleName": "entry",
+      "container": -100,
+      "typeId": 0,
+      "area": [
+        1,
+        1
+      ],
+      "page": 0,
+      "row": 2,
+      "column": 0
+    },
+    {
+      "bundleName": "com.ohos.settings",
+      "abilityName": "com.ohos.settings.MainAbility",
+      "moduleName": "phone_settings",
+      "container": -100,
+      "typeId": 0,
+      "area": [
+        1,
+        1
+      ],
+      "page": 0,
+      "row": 2,
+      "column": 1
+    },
+    {
+      "bundleName": "com.ohos.browser",
+      "abilityName": "MainAbility",
+      "moduleName": "entry",
+      "container": -100,
+      "typeId": 0,
+      "area": [
+        1,
+        1
+      ],
+      "page": 0,
+      "row": 2,
+      "column": 2
+    },
+    {
+      "bundleName": "com.ohos.books",
+      "abilityName": "MainAbility",
+      "moduleName": "HwBooks",
+      "container": -100,
+      "typeId": 0,
+      "area": [
+        1,
+        1
+      ],
+      "page": 0,
+      "row": 3,
+      "column": 0
+    },
+    {
+      "bundleName": "com.ohos.photos",
+      "abilityName": "com.ohos.photos.MainAbility",
+      "moduleName": "phone_photos",
+      "container": -100,
+      "typeId": 0,
+      "area": [
+        1,
+        1
+      ],
+      "page": 0,
+      "row": 3,
+      "column": 1
+    },
+    {
+      "bundleName": "com.ohos.appgallery",
+      "abilityName": "MainAbility",
+      "moduleName": "entry",
+      "container": -100,
+      "typeId": 0,
+      "area": [
+        1,
+        1
+      ],
+      "page": 0,
+      "row": 3,
+      "column": 2
+    },
+    {
+      "bundleName": "com.ohos.health",
+      "abilityName": "MainAbility",
+      "moduleName": "entry",
+      "container": -100,
+      "typeId": 0,
+      "area": [
+        1,
+        1
+      ],
+      "page": 1,
+      "row": 0,
+      "column": 0
+    },
+    {
+      "bundleName": "com.ohos.calculator",
+      "abilityName": "CalculatorAbility",
+      "moduleName": "phone",
+      "container": -100,
+      "typeId": 0,
+      "area": [
+        1,
+        1
+      ],
+      "page": 1,
+      "row": 0,
+      "column": 1
+    },
+    {
+      "bundleName": "com.ohos.calendar",
+      "abilityName": "MainAbility",
+      "moduleName": "phone",
+      "container": -100,
+      "typeId": 0,
+      "area": [
+        1,
+        1
+      ],
+      "page": 1,
+      "row": 0,
+      "column": 2
+    },
+    {
+      "bundleName": "com.ohos.notepad",
+      "abilityName": "MainAbility",
+      "moduleName": "NotepadPhone",
+      "container": -100,
+      "typeId": 0,
+      "area": [
+        1,
+        1
+      ],
+      "page": 1,
+      "row": 1,
+      "column": 0
+    }
+  ]
+}

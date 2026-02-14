@@ -1,0 +1,32 @@
+{
+  "string": [
+    {
+      "name": "toggle_data_top",
+      "value": "wifi_ui_extension,bluetooth_ui_extension,focus_mode,scenario_mode"
+    },
+    {
+      "name": "toggle_data_default",
+      "value": "flashlight,ring_mode,auto_rotate,toggle_scanner,share,air_plane,mobile_data,hotspot,toggle_screenshot,toggle_screen_recorder,HuaweiCastToggle,location"
+    },
+    {
+      "name": "toggle_data_default_old",
+      "value": "flashlight,ring_mode,auto_rotate,toggle_scanner,share,air_plane,mobile_data,hotspot,toggle_screenshot,toggle_screen_recorder,HuaweiCastToggle,music_service,location,nfc,eye_comfort,dark_mode,toggle_Demo,multi_window"
+    },
+    {
+      "name": "toggle_data_all",
+      "value": "wifi_ui_extension,bluetooth_ui_extension,focus_mode,scenario_mode,flashlight,ring_mode,auto_rotate,toggle_scanner,share,air_plane,mobile_data,hotspot,toggle_screenshot,toggle_screen_recorder,HuaweiCastToggle,toggle_Demo,multi_window,dark_mode,camera,mic,nfc,super_privacy,super_hub,eye_comfort,power_save,near_link,location,youth_mode,music_service,anti_peeping,quick_note"
+    },
+    {
+      "name": "small_screen_toggle_data_default",
+      "value": "flashlight,ring_mode,air_plane,mobile_data,share,focus_mode,hotspot,toggle_screenshot,toggle_screen_recorder,music_service,location,nfc"
+    },
+    {
+      "name": "toggle_max",
+      "value": "16"
+    },
+    {
+      "name": "toggle_min",
+      "value": "8"
+    }
+  ]
+}

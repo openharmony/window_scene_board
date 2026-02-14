@@ -1,0 +1,15 @@
+{
+  "name": "@ohos/componentanimator",
+  "version": "1.0.0",
+  "description": "Please describe the basic information.",
+  "main": "./src/main/ets/TsIndex.ts",
+  "author": "",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@ohos/commonconstants": "../commonconstants",
+    "@ohos/componenthelper": "../componenthelper",
+    "@ohos/basicutils": "../basicutils",
+    "@ohos/frameworkwrapper": "../frameworkwrapper",
+    "@ohos/windowscene": "../windowscene",
+  }
+}

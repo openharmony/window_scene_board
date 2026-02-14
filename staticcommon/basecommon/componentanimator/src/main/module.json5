@@ -1,0 +1,10 @@
+{
+  "module": {
+    "name": "componentanimator",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ]
+  }
+}

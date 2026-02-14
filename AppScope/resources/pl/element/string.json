@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"app_name",
+            "value":"Ekran główny i tarcze zegarka",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

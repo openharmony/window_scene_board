@@ -1,0 +1,20 @@
+{
+  "float": [
+    {
+      "name": "app_lock_mask_blur_radius",
+      "value": "200"
+    },
+    {
+      "name": "app_lock_mask_saturate",
+      "value": "1"
+    },
+    {
+      "name": "app_lock_mask_brightness",
+      "value": "1"
+    },
+    {
+      "name": "app_lock_icon_opacity",
+      "value": "0.4"
+    }
+  ]
+}

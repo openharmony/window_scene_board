@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"app_name",
+            "value":"হোম স্ক্রিন ও ফেস",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

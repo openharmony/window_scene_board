@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"app_name",
+            "value":"Početni zaslon i brojčanici sata",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

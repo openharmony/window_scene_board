@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"app_name",
+            "value":"Startskærm og urskiver",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

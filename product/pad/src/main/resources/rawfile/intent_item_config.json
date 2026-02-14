@@ -1,0 +1,12 @@
+[
+  {
+    "itemName": "PIP_SWITCH",
+    "itemDesc": "Picture-in-Picture Auto Pull-up Switch",
+    "itemType": "switch"
+  },
+  {
+    "itemName": "MULTI_DOCK_SWITCH",
+    "itemDesc": "Multi-window app bar switch",
+    "itemType": "switch"
+  }
+]

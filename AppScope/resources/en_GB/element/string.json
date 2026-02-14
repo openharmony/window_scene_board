@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"app_name",
+            "value":"Home screen & faces",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

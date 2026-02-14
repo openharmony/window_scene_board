@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"app_name",
+            "value":"Startscherm en wijzerplaten",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

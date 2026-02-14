@@ -1,0 +1,88 @@
+{
+  "forms": [
+    {
+      "name": "SceneBoard_2_1_Card",
+      "description": "SceneBoard_2_1_Card",
+      "src": "./ets/SceneBoardCard/pages/SceneBoard_2_1_Card.ets",
+      "uiSyntax": "arkts",
+      "window": {
+        "designWidth": 720,
+        "autoDesignWidth": true
+      },
+      "colorMode": "auto",
+      "isDynamic": true,
+      "isDefault": false,
+      "updateEnabled": false,
+      "scheduledUpdateTime": "10:30",
+      "updateDuration": 1,
+      "defaultDimension": "1*2",
+      "supportDimensions": [
+        "1*2"
+      ],
+      "metadata": [{"name": "isShowInFormCenter", "value": "false"}]
+    },
+    {
+      "name": "SceneBoard_2_2_Card",
+      "description": "SceneBoard_2_2_Card",
+      "src": "./ets/SceneBoardCard/pages/SceneBoard_2_2_Card.ets",
+      "uiSyntax": "arkts",
+      "window": {
+        "designWidth": 720,
+        "autoDesignWidth": true
+      },
+      "colorMode": "auto",
+      "isDynamic": true,
+      "isDefault": false,
+      "updateEnabled": false,
+      "scheduledUpdateTime": "10:30",
+      "updateDuration": 1,
+      "defaultDimension": "2*2",
+      "supportDimensions": [
+        "2*2"
+      ],
+      "metadata": [{"name": "isShowInFormCenter", "value": "false"}]
+    },
+    {
+      "name": "SceneBoard_2_4_Card",
+      "description": "SceneBoard_2_4_Card",
+      "src": "./ets/SceneBoardCard/pages/SceneBoard_2_4_Card.ets",
+      "uiSyntax": "arkts",
+      "window": {
+        "designWidth": 720,
+        "autoDesignWidth": true
+      },
+      "colorMode": "auto",
+      "isDynamic": true,
+      "isDefault": false,
+      "updateEnabled": false,
+      "scheduledUpdateTime": "10:30",
+      "updateDuration": 1,
+      "defaultDimension": "2*4",
+      "supportDimensions": [
+        "2*4"
+      ],
+      "metadata": [{"name": "isShowInFormCenter", "value": "false"}]
+    },
+    {
+      "name": "SceneBoard_4_4_Card",
+      "description": "SceneBoard_4_4_Card",
+      "src": "./ets/SceneBoardCard/pages/SceneBoard_4_4_Card.ets",
+      "uiSyntax": "arkts",
+      "window": {
+        "designWidth": 720,
+        "autoDesignWidth": true
+      },
+      "colorMode": "auto",
+      "isDynamic": true,
+      "isDefault": false,
+      "updateEnabled": false,
+      "scheduledUpdateTime": "10:30",
+      "updateDuration": 1,
+      "defaultDimension": "4*4",
+      "supportDimensions": [
+        "4*4"
+      ],
+      "metadata": [{"name": "isShowInFormCenter", "value": "false"}]
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"app_name",
+            "value":"홈 및 워치 화면",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

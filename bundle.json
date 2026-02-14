@@ -1,0 +1,38 @@
+{
+  "name": "@ohos/scene_board_ext",
+  "description": "SceneBoard",
+  "version": "3.1",
+  "license": "Apache License 2.0",
+  "publishAs": "code-segment",
+  "segment": {
+    "destPath": "//foundation/window/scene_board_ext"
+  },
+  "dirs": {},
+  "scripts": {},
+  "component": {
+    "name": "scene_board_ext",
+    "subsystem": "window",
+    "syscap": [],
+    "features": [
+      "scene_board_ext_feature_product"
+    ],
+    "adapted_system_type": [
+      "standard"
+    ],
+    "rom": "10000KB",
+    "ram": "10000KB",
+    "deps": {
+      "components": [
+        "ace_engine"
+      ],
+      "third_party": []
+    },
+    "build": {
+      "sub_component": [
+        "//foundation/window/scene_board_ext:SceneBoard"
+      ],
+      "inner_kits": [],
+      "test": []
+    }
+  }
+}

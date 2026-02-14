@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"app_name",
+            "value":"होम स्क्रीन और डायल",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}
