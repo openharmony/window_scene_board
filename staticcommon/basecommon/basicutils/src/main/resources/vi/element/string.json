@@ -1,0 +1,347 @@
+{
+    "string":[
+        {
+            "name":"download_installwait",
+            "value":"Đang chờ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"download_installing",
+            "value":"Đang cài đặt",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"uninstall_success",
+            "value":"Đã gỡ cài đặt.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_running_mutex_toast",
+            "value":"Để đảm bảo hiệu suất mượt mà, %1$s và %2$s không thể chạy cùng lúc.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"delete_app",
+            "value":"Gỡ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"uninstall_failed",
+            "value":"Gỡ cài đặt không thành công.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screen_capture_notification_content",
+            "value":"%s đã chụp màn hình của bạn.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"download_pause",
+            "value":"Đã tạm dừng",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screen_capture_notification_title",
+            "value":"Chụp màn hình",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_and_status_bar_title",
+            "value":"Thông báo và thanh trạng thái",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"floating_scene_button_start",
+            "value":"Mở %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"form_stack_max_number_limit",
+            "value":"Ngăn xếp này đã đầy.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_smart_service",
+            "value":"Dịch vụ thông minh",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_to_desktop",
+            "value":"Thêm vào màn hình chính",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_center_menu_add_dock",
+            "value":"Thêm vào thanh tác vụ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"click_twin_app_not_installed",
+            "value":"Chưa cài đặt %s.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"disable_uninstall",
+            "value":"Không cho phép gỡ cài đặt.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"uninstall",
+            "value":"Gỡ cài đặt",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"floating_scene_button_close",
+            "value":"Đóng %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"delete_form",
+            "value":"Kéo vào đây để xóa",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"form_center",
+            "value":"Duyệt xem tiện ích",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"click_twin_app_download_installing",
+            "value":"%s đang được cài đặt.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remove_app_dialog_content",
+            "value":"Bạn có thể thêm lại bất kỳ lúc nào từ Trung tâm ứng dụng.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_near_left_screen",
+            "value":"Gần cạnh trái màn hình",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_near_right_screen",
+            "value":"Gần cạnh phải màn hình",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_center_menu_add_desktop",
+            "value":"Thêm vào màn hình chính",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cancel",
+            "value":"Hủy",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"download_wait",
+            "value":"Đang chờ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_menu_open",
+            "value":"Mở",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_menu_open_from_floating_window",
+            "value":"Mở từ cửa sổ nổi",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_menu_open_from_split_screen",
+            "value":"Mở từ màn hình chia",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"click_twin_app_download_start",
+            "value":"%s đang được tải xuống.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"download_start",
+            "value":"Đang tải xuống",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"click_twin_app_wait_data_recover",
+            "value":"Dữ liệu %s đang được khôi phục.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"drag_move_to_folder",
+            "value":"Di chuyển đến thư mục %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_start",
+            "value":"Biểu tượng đã sẵn sàng để kéo",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drop_merge_to_desktop",
+            "value":"%1$s và %2$s đã được hợp nhất vào thư mục %3$s, và được đặt trong hàng %4$s, cột %5$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drop_merge_to_dock",
+            "value":"%1$s và %2$s đã được hợp nhất vào thư mục %3$s, và được đặt vào vị trí %4$s của thanh dock",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_move_to_form_stack",
+            "value":"Di chuyển đến ngăn xếp. %s ở trên cùng",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_move_to_dock",
+            "value":"Di chuyển đến vị trí thứ %s của thanh dock",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_drop_to_dock",
+            "value":"%1$s nằm ở vị trí thứ %2$s của thanh dock",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_move_to_merge_card",
+            "value":"Xếp chồng với %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_drop_dock_full",
+            "value":"Thanh dock đã đầy, biểu tượng được đưa về vị trí ban đầu",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drop_merge_to_form_stack",
+            "value":"%1$s được xếp chồng với %2$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_move_to_merge",
+            "value":"Hợp nhất với %s thành thư mục",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_drop_to_form_stack",
+            "value":"%1$s được đặt vào ngăn xếp. %2$s ở trên cùng",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_drop_to_folder",
+            "value":"%1$s nằm trên thư mục %2$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_move",
+            "value":"Di chuyển đến hàng %1$s, cột %2$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_drop",
+            "value":"%1$s đã được đặt trong hàng %2$s, cột %3$s",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

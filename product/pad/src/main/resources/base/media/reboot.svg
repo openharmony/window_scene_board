@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="36px" height="36px" viewBox="0 0 36 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>编组 3</title>
+    <defs>
+        <filter id="filter-1">
+            <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0.000000 0 0 0 0 0.000000 0 0 0 0 0.000000 0 0 0 0.600000 0"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="OH-锁屏2" transform="translate(-72.000000, -48.000000)">
+            <g id="编组-3" transform="translate(72.000000, 48.000000)">
+                <circle id="椭圆形" fill-opacity="0.5" fill="#FFFFFF" fill-rule="nonzero" cx="18" cy="18" r="18"></circle>
+                <g filter="url(#filter-1)" id="重启" stroke-linecap="round">
+                    <g transform="translate(10.200000, 10.200000)">
+                        <g id="Group" transform="translate(0.585547, 0.585547)" stroke="#000000" stroke-width="1.5">
+                            <line x1="6.852384" y1="2.62432552" x2="6.852384" y2="0" id="Stroke-6"></line>
+                            <line x1="6.852384" y1="11.0804425" x2="6.852384" y2="13.704768" id="Stroke-8"></line>
+                            <line x1="9.84201766" y1="3.86275034" x2="11.6978301" y2="2.00693793" id="Stroke-11"></line>
+                            <line x1="3.86275034" y1="9.84201766" x2="2.00693793" y2="11.6978301" id="Stroke-12"></line>
+                            <line x1="2.62432552" y1="6.852384" x2="0" y2="6.852384" id="Stroke-13"></line>
+                            <line x1="11.0804425" y1="6.852384" x2="13.704768" y2="6.852384" id="Stroke-15"></line>
+                            <line x1="3.86275034" y1="3.86275034" x2="2.00693793" y2="2.00693793" id="Stroke-18"></line>
+                            <line x1="9.84201766" y1="9.84201766" x2="11.6978301" y2="11.6978301" id="Stroke-19"></line>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

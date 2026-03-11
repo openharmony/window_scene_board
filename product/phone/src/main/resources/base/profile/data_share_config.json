@@ -1,0 +1,8 @@
+{
+  "tableConfig": [
+    {
+      "uri": "*",
+      "crossUserMode": 1
+    }
+  ]
+}

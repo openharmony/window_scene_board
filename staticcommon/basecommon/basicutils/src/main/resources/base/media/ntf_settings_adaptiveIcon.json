@@ -1,0 +1,7 @@
+{
+  "layered-image":
+  {
+    "background" : "$media:ntf_settings_background",
+    "foreground" : "$media:ntf_settings_foreground"
+  }
+}

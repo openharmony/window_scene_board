@@ -1,0 +1,37 @@
+/*
+ * Copyright (c) Huawei Technologies Co., Ltd. 2024-2025. All rights reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+import FoldPhoneLayoutRulesControllerTest
+  from './SceneBoard/controllers/SceneDesktopController/FoldPhoneLayoutRulesController.test';
+import VerticalPadLayoutRulesControllerTest
+  from './SceneBoard/controllers/SceneDesktopController/VerticalPadLayoutRulesController.test';
+import { ControlCenterComponentTest } from './SceneBoard/controlcenter/ControlCenterComponentTest.test';
+import { PhoneFolderLayoutConfigTest } from './ets/common/folder/PhoneFolderLayoutConfig.test';
+import { MyAbilityStageTest } from './ets/Application/AbilityStage.test'
+import { MainAbilityTest } from './ets/MainAbility/MainAbility.test'
+import OuterPhoneLayoutRulesControllerTest
+  from './SceneBoard/controllers/SceneDesktopController/OuterPhoneLayoutRulesController.test';
+import { FlashlightTipsHelperTest } from './SceneBoard/flashlight/FlashlightTipsHelper.test';
+
+
+export default function testsuite() {
+  VerticalPadLayoutRulesControllerTest();
+  FoldPhoneLayoutRulesControllerTest();
+  OuterPhoneLayoutRulesControllerTest();
+  ControlCenterComponentTest();
+  PhoneFolderLayoutConfigTest();
+  MyAbilityStageTest();
+  MainAbilityTest();
+  FlashlightTipsHelperTest();
+}

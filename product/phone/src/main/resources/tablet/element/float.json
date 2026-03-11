@@ -1,0 +1,32 @@
+{
+  "float": [
+    {
+      "name": "dropdown_panel_background_radius",
+      "value": "29"
+    },
+    {
+      "name": "dropdown_panel_background_saturation",
+      "value": "0.1"
+    },
+    {
+      "name": "gesture_dock_width",
+      "value": "72"
+    },
+    {
+      "name": "gesture_dock_radius",
+      "value": "20"
+    },
+    {
+      "name": "gesture_dock_icon_size",
+      "value": "48"
+    },
+    {
+      "name": "gesture_dock_bar_max_count",
+      "value": "7"
+    },
+    {
+      "name": "dropdown_scale",
+      "value": "0.93"
+    }
+  ]
+}

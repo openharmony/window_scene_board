@@ -1,0 +1,729 @@
+{
+  "float": [
+    {
+      "name": "status_bar_signal_type_font_size",
+      "value": "5.5fp"
+    },
+    {
+      "name": "status_bar_signal_unknown_font_size",
+      "value": "7fp"
+    },
+    {
+      "name": "signal_text_max_width",
+      "value": "113vp"
+    },
+    {
+      "name": "status_bar_signal_net_signal_text_max_width",
+      "value": "15vp"
+    },
+    {
+      "name": "status_bar_wifi_width",
+      "value": "18.25vp"
+    },
+    {
+      "name": "status_bar_wifi_height",
+      "value": "16vp"
+    },
+
+    {
+      "name": "battery_component_gap",
+      "value": "2vp"
+    },
+    {
+      "name": "battery_component_pic_body_height",
+      "value": "11vp"
+    },
+    {
+      "name": "battery_component_pic_body_width",
+      "value": "18.5vp"
+    },
+    {
+      "name": "green_capsule_phone_width",
+      "value": "14vp"
+    },
+    {
+      "name": "green_capsule_phone_height",
+      "value": "14vp"
+    },
+    {
+      "name": "green_capsule_height",
+      "value": "20vp"
+    },
+    {
+      "name": "green_capsule_radius",
+      "value": "10vp"
+    },
+    {
+      "name": "status_bar_bluetooth_width",
+      "value": "10.5vp"
+    },
+    {
+      "name": "status_bar_bluetooth_height",
+      "value": "16vp"
+    },
+    {
+      "name": "status_bar_ring_mode_width",
+      "value": "17.5vp"
+    },
+    {
+      "name": "status_bar_ring_off_width",
+      "value": "13.5vp"
+    },
+    {
+      "name": "status_bar_ring_mode_height",
+      "value": "16vp"
+    },
+    {
+      "name": "status_bar_location_width",
+      "value": "12.75vp"
+    },
+    {
+      "name": "status_bar_location_height",
+      "value": "16vp"
+    },
+    {
+      "name": "icon_component_opacity",
+      "value": "1"
+    },
+    {
+      "name": "green_capsule_phone_margin_left",
+      "value": "2vp"
+    },
+    {
+      "name": "status_bar_margin_left_right",
+      "value": "5vp"
+    },
+    {
+      "name": "status_bar_height",
+      "value": "46vp"
+    },
+    {
+      "name": "phone_status_bar_height",
+      "value": "39vp"
+    },
+    {
+      "name": "quickly_setting_time_font_size",
+      "value": "30fp"
+    },
+    {
+      "name": "quickly_setting_date_font_size",
+      "value": "20fp"
+    },
+    {
+      "name": "quickly_setting_text_flex_margin_left",
+      "value": "10vp"
+    },
+    {
+      "name": "quickly_setting_image_width",
+      "value": "50vp"
+    },
+    {
+      "name": "quickly_setting_image_height",
+      "value": "50vp"
+    },
+    {
+      "name": "quickly_setting_image_margin_right",
+      "value": "10vp"
+    },
+    {
+      "name": "quickly_setting_border_radius",
+      "value": "20vp"
+    },
+    {
+      "name": "quickly_setting_margin_left",
+      "value": "10vp"
+    },
+    {
+      "name": "quickly_setting_margin_right",
+      "value": "10vp"
+    },
+    {
+      "name": "delete_all_image_width",
+      "value": "50vp"
+    },
+    {
+      "name": "delete_all_image_height",
+      "value": "50vp"
+    },
+    {
+      "name": "delete_all_image_border_radius",
+      "value": "25vp"
+    },
+    {
+      "name": "delete_all_image_opacity",
+      "value": "0.9"
+    },
+    {
+      "name": "status_bar_padding_left_right",
+      "value": "16vp"
+    },
+    {
+      "name": "screen_record_sensor_size",
+      "value": "5vp"
+    },
+    {
+      "name": "screen_record_sensor_size_large_fold",
+      "value": "4vp"
+    },
+    {
+      "name": "screen_record_sensor_padding_left",
+      "value": "12vp"
+    },
+    {
+      "name": "quick_toggle_column",
+      "value": "4"
+    },
+    {
+      "name": "control_status_bar_padding_left_right",
+      "value": "4vp"
+    },
+    {
+      "name": "muti_window_title_bar_button_circle_diameter",
+      "value": "6"
+    },
+    {
+      "name": "muti_window_title_bar_button_rect_width",
+      "value": "16"
+    },
+    {
+      "name": "muti_window_title_bar_button_rect_radius",
+      "value": "16"
+    },
+    {
+      "name": "muti_window_title_bar_button_shape_space",
+      "value": "4"
+    },
+    {
+      "name": "muti_window_title_bar_button_width",
+      "value": "96"
+    },
+    {
+      "name": "muti_window_title_bar_button_border_radius",
+      "value": "8"
+    },
+    {
+      "name": "muti_window_title_bar_button_border_width",
+      "value": "2"
+    },
+    {
+      "name": "muti_window_title_bar_button_height",
+      "value": "32"
+    },
+    {
+      "name": "muti_window_title_menu_position_y",
+      "value": "13"
+    },
+    {
+      "name": "muti_window_title_menu_button_image_size",
+      "value": "20"
+    },
+    {
+      "name": "muti_window_title_menu_border_radius",
+      "value": "24"
+    },
+    {
+      "name": "muti_window_title_menu_button_size",
+      "value": "32"
+    },
+    {
+      "name": "muti_window_title_menu_padding",
+      "value": "12"
+    },
+    {
+      "name": "muti_window_title_menu_height",
+      "value": "40"
+    },
+    {
+      "name": "muti_window_floating_title_btn_width",
+      "value": "48"
+    },
+    {
+      "name": "muti_window_floating_title_btn_height",
+      "value": "18"
+    },
+    {
+      "name": "muti_window_floating_full_screen_blur_radius",
+      "value": "16"
+    },
+    {
+      "name": "muti_window_floating_quick_del_area_size",
+      "value": "115"
+    },
+    {
+      "name": "muti_window_floating_pre_quick_del_area_size",
+      "value": "230"
+    },
+    {
+      "name": "floating_outer_screen_pre_quick_del_area_size",
+      "value": "130"
+    },
+    {
+      "name": "muti_window_floating_quick_min_area_size",
+      "value": "96"
+    },
+    {
+      "name": "muti_window_floating_quick_bottom_rebound_area_size",
+      "value": "64"
+    },
+    {
+      "name": "muti_window_floating_quick_full_blur_v_padding",
+      "value": "32"
+    },
+    {
+      "name": "muti_window_floating_quick_full_blur_h_padding",
+      "value": "12"
+    },
+    {
+      "name": "muti_window_floating_quick_full_blur_value",
+      "value": "99"
+    },
+    {
+      "name": "muti_window_floating_bucket_outer_circle_diameter",
+      "value": "80"
+    },
+    {
+      "name": "muti_window_floating_bucket_outer_circle_opacity",
+      "value": "0.8"
+    },
+    {
+      "name": "muti_window_floating_bucket_inner_circle_diameter",
+      "value": "60"
+    },
+    {
+      "name": "muti_window_floating_bucket_size",
+      "value": "24"
+    },
+    {
+      "name": "muti_window_floating_title_bar_border_size",
+      "value": "0.5"
+    },
+    {
+      "name": "screenlock_shortcut_icon_width",
+      "value": "24vp"
+    },
+    {
+      "name": "screenlock_shortcut_icon_height",
+      "value": "24vp"
+    },
+    {
+      "name": "screenlock_shortcut_icon_flash_height",
+      "value": "48vp"
+    },
+    {
+      "name": "screenlock_shortcut_icon_bg_border_radius",
+      "value": "48vp"
+    },
+    {
+      "name": "screenlock_shortcut_icon_container_width",
+      "value": "80vp"
+    },
+    {
+      "name": "screenlock_shortcut_icon_container_height",
+      "value": "96vp"
+    },
+    {
+      "name": "screenlock_shortcut_app_container_height",
+      "value": "70vp"
+    },
+    {
+      "name": "screenlock_shortcut_icon_container_size",
+      "value": "48vp"
+    },
+    {
+      "name": "screenlock_shortcut_icon_container_margin",
+      "value": "32vp"
+    },
+    {
+      "name": "screenlock_shortcut_icon_container_margin_phone",
+      "value": "16vp"
+    },
+    {
+      "name": "screenlock_notification_icon_container_margin",
+      "value": "12vp"
+    },
+    {
+      "name": "screenlock_notification_list_container_margin_top",
+      "value": "16vp"
+    },
+    {
+      "name": "screenlock_notification_list_container_margin_bottom",
+      "value": "16vp"
+    },
+    {
+      "name": "live_view_list_corner_radius",
+      "value": "16vp"
+    },
+    {
+      "name": "live_view_list_banner_top",
+      "value": "38vp"
+    },
+    {
+      "name": "floating_scene_focused_shadow_radius",
+      "value": "55vp"
+    },
+    {
+      "name": "floating_scene_unfocused_shadow_radius",
+      "value": "50vp"
+    },
+    {
+      "name": "floating_scene_focused_shadow_offset_x",
+      "value": "0"
+    },
+    {
+      "name": "floating_scene_unfocused_shadow_offset_x",
+      "value": "0"
+    },
+    {
+      "name": "floating_scene_focused_shadow_offset_y",
+      "value": "10"
+    },
+    {
+      "name": "floating_scene_unfocused_shadow_offset_y",
+      "value": "10"
+    },
+    {
+      "name": "screenlock_ntf_date_space",
+      "value": "24vp"
+    },
+    {
+      "name": "screenlock_shortcut_app_container_height_pad",
+      "value": "16vp"
+    },
+    {
+      "name": "screenlock_shortcut_icon_container_margin_pad",
+      "value": "48vp"
+    },
+    {
+      "name": "screenlock_shortcut_icon_container_margin_pad_portrait",
+      "value": "64vp"
+    },
+    {
+      "name": "desktop_default_card_image_size",
+      "value": "54vp"
+    },
+    {
+      "name": "desktop_default_1x2_card_image_size",
+      "value": "32vp"
+    },
+    {
+      "name": "lem_time_width",
+      "value": "12vp"
+    },
+    {
+      "name": "lem_time_height",
+      "value": "22vp"
+    },
+    {
+      "name": "lem_time_colon",
+      "value": "5vp"
+    },
+    {
+      "name": "lem_font_size",
+      "value": "20vp"
+    },
+    {
+      "name": "lem_date_size",
+      "value": "8vp"
+    },
+    {
+      "name": "lem_view_top",
+      "value": "30vp"
+    },
+    {
+      "name": "lem_view_bottom",
+      "value": "10vp"
+    },
+    {
+      "name": "lem_date_top",
+      "value": "4vp"
+    },
+    {
+      "name": "ongoing_ntf_small_icon_size",
+      "value": "18vp"
+    },
+    {
+      "name": "lem_notification_size",
+      "value": "8vp"
+    },
+    {
+      "name": "lem_notification_radius",
+      "value": "2vp"
+    },
+    {
+      "name": "lem_onging_notification_radius",
+      "value": "9vp"
+    },
+    {
+      "name": "keyboard_tool_image_hot_landspace",
+      "value": "40vp"
+    },
+    {
+      "name": "keyboard_tool_image_hot_float",
+      "value": "36vp"
+    },
+    {
+      "name": "keyboard_tool_image_hot",
+      "value": "32vp"
+    },
+    {
+      "name": "keyboard_tool_image_hot_expand",
+      "value": "32vp"
+    },
+    {
+      "name": "status_bar_starflash_width",
+      "value": "13vp"
+    },
+    {
+      "name": "status_bar_starflash_height",
+      "value": "16vp"
+    },
+    {
+      "name": "statusbar_super_privacy_height",
+      "value": "16vp"
+    },
+    {
+      "name": "statusbar_super_privacy_width",
+      "value": "14vp"
+    },
+    {
+      "name": "keyboard_tool_image_size",
+      "value": "24vp"
+    },
+    {
+      "name": "keyboard_tool_float_image_size",
+      "value": "20vp"
+    },
+    {
+      "name": "corner_radius_level16",
+      "value": "32vp"
+    },
+    {
+      "name": "status_bar_vpn_width",
+      "value": "17.5vp"
+    },
+    {
+      "name": "status_bar_vpn_height",
+      "value": "16vp"
+    },
+    {
+      "name": "pad_brightness_borderRadius",
+      "value": "32"
+    },
+    {
+      "name": "pad_brightness_width",
+      "value": "212"
+    },
+    {
+      "name": "pad_brightness_height",
+      "value": "40"
+    },
+    {
+      "name": "brightness_slider_left_margin",
+      "value": "9.5vp"
+    },
+    {
+      "name": "brightness_border_width",
+      "value": "0vp"
+    },
+    {
+      "name": "brightness_panel_height",
+      "value": "40vp"
+    },
+    {
+      "name": "brightness_panel_top",
+      "value": "36vp"
+    },
+    {
+      "name": "brightness_panel_width",
+      "value": "212vp"
+    },
+    {
+      "name": "brightness_slider_radius",
+      "value": "0vp"
+    },
+    {
+      "name": "brightness_image_width",
+      "value": "28vp"
+    },
+    {
+      "name": "brightness_image_height",
+      "value": "28vp"
+    },
+    {
+      "name": "gesture_dock_width",
+      "value": "64"
+    },
+    {
+      "name": "gesture_dock_radius",
+      "value": "16"
+    },
+    {
+      "name": "gesture_dock_icon_size",
+      "value": "40"
+    },
+    {
+      "name": "gesture_dock_bar_max_count",
+      "value": "9"
+    },
+    {
+      "name": "app_lock_mask_blur_radius",
+      "value": "80"
+    },
+    {
+      "name": "app_lock_mask_saturate",
+      "value": "1.4"
+    },
+    {
+      "name": "app_lock_mask_brightness",
+      "value": "1.2"
+    },
+    {
+      "name": "app_lock_icon_opacity",
+      "value": "0.15"
+    },
+    {
+      "name": "bottom_tools_height",
+      "value": "100vp"
+    },
+    {
+      "name": "outer_bottom_tools_height",
+      "value": "68vp"
+    },
+    {
+      "name": "mid_scene_focused_shadow_radius",
+      "value": "64.5"
+    },
+    {
+      "name": "popup_margin_left_right",
+      "value": "16"
+    },
+    {
+      "name": "default_popup_max_width",
+      "value": "400"
+    },
+    {
+      "name": "common_size0",
+      "value": "0"
+    },
+    {
+      "name": "common_size1",
+      "value": "1"
+    },
+    {
+      "name": "common_size2",
+      "value": "2"
+    },
+    {
+      "name": "common_size4",
+      "value": "4"
+    },
+    {
+      "name": "common_size7",
+      "value": "7"
+    },
+    {
+      "name": "common_size10",
+      "value": "10"
+    },
+    {
+      "name": "common_size12",
+      "value": "12"
+    },
+    {
+      "name": "common_size16",
+      "value": "16"
+    },
+    {
+      "name": "common_size24",
+      "value": "24"
+    },
+    {
+      "name": "common_size32",
+      "value": "32"
+    },
+    {
+      "name": "common_size40",
+      "value": "40"
+    },
+    {
+      "name": "common_size240",
+      "value": "240"
+    },
+    {
+      "name": "common_size400",
+      "value": "400"
+    },
+    {
+      "name": "common_borderRadius8",
+      "value": "8"
+    },
+    {
+      "name": "common_padding10",
+      "value": "10"
+    },
+    {
+      "name": "common_padding12",
+      "value": "12"
+    },
+    {
+      "name": "common_padding16",
+      "value": "16"
+    },
+    {
+      "name": "common_padding24",
+      "value": "24"
+    },
+    {
+      "name": "common_font_size19",
+      "value": "19"
+    },
+    {
+      "name": "common_font_size14",
+      "value": "14"
+    },
+    {
+      "name": "common_line_height21",
+      "value": "21"
+    },
+    {
+      "name": "common_line_height27",
+      "value": "27"
+    },
+    {
+      "name": "common_line_height48",
+      "value": "48"
+    },
+    {
+      "name": "common_margin2",
+      "value": "2"
+    },
+    {
+      "name": "common_margin3",
+      "value": "3"
+    },
+    {
+      "name": "common_margin5",
+      "value": "5"
+    },
+    {
+      "name": "common_margin7",
+      "value": "7"
+    },
+    {
+      "name": "common_margin8",
+      "value": "8"
+    },
+    {
+      "name": "common_margin9",
+      "value": "9"
+    },
+    {
+      "name": "common_margin56",
+      "value": "56"
+    },
+    {
+      "name": "common_margin80",
+      "value": "80"
+    }
+  ]
+}

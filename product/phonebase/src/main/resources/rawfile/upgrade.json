@@ -1,0 +1,410 @@
+{
+  "upgrade": [
+    {
+      "version": 1,
+      "description": "If any schema is changed between released versions, Write sql script to upgrade from old version to new version.",
+      "sqlList": []
+    },
+    {
+      "version": 2,
+      "description": "create new launcher table, delete all old table ",
+      "sqlList": [
+        "DROP TABLE IF EXISTS BADGE",
+        "DROP TABLE IF EXISTS FORM",
+        "DROP TABLE IF EXISTS FORMSWIPER",
+        "DROP TABLE IF EXISTS SMARTDOCK",
+        "DROP TABLE IF EXISTS DESKTOPAPPLICATIONINFO",
+        "DROP TABLE IF EXISTS GRIDLAYOUTINFO",
+        "DROP TABLE IF EXISTS SETTINGS",
+        "DROP TABLE IF EXISTS SESSIONPERSIST",
+        "CREATE TABLE IF NOT EXISTS badge_info (_id INTEGER PRIMARY KEY AUTOINCREMENT, bundle_name TEXT UNIQUE, badge_number INTEGER, is_show INTEGER, user_id INTEGER)",
+        "CREATE TABLE IF NOT EXISTS form_swiper (_id INTEGER PRIMARY KEY AUTOINCREMENT, user_id INTEGER, bundle_name TEXT, info_name TEXT, ability_name TEXT, module_name TEXT, dimension INTEGER)",
+        "CREATE TABLE IF NOT EXISTS gridlayout_info (_id INTEGER PRIMARY KEY AUTOINCREMENT, user_id INTEGER, info_id INTEGER UNIQUE, info_name TEXT, uri TEXT, mime_type INTEGER, container INTEGER, type_id INTEGER, width INTEGER, height INTEGER, page_index INTEGER, column INTEGER, row INTEGER, appIcon_id INTEGER, appLabel_id INTEGER, bundle_name TEXT,module_name TEXT, ability_name TEXT, icon_type INTEGER, icon_resource TEXT, kind_id INTEGER, extend1 TEXT, extend2 TEXT)",
+        "CREATE TABLE IF NOT EXISTS session_persist (id INTEGER PRIMARY KEY AUTOINCREMENT, data TEXT)"
+      ]
+    },
+    {
+      "version": 3,
+      "description": "add column download_progress",
+      "sqlList": [
+        "ALTER TABLE gridlayout_info ADD download_progress REAL",
+        "ALTER TABLE gridlayout_info ADD caller_name TEXT",
+        "ALTER TABLE gridlayout_info RENAME COLUMN icon_type TO app_status",
+        "CREATE TABLE IF NOT EXISTS recent_dock_info (_id INTEGER PRIMARY KEY AUTOINCREMENT, user_id INTEGER, column INTEGER, appIcon_id INTEGER, appLabel_id INTEGER, bundle_name TEXT,module_name TEXT, ability_name TEXT)"
+      ]
+    },
+    {
+      "version": 4,
+      "description": "add column download_progress",
+      "sqlList": [
+        "CREATE TABLE IF NOT EXISTS recent_dock_layout_Info (_id INTEGER PRIMARY KEY AUTOINCREMENT, extend1 TEXT, extend2 TEXT, extend3 TEXT,visible_count INTEGER)"
+      ]
+    },
+    {
+      "version": 5,
+      "description": "delete old table intelligent_image",
+      "sqlList": [
+        "DROP TABLE IF EXISTS intelligent_image"
+      ]
+    },
+    {
+      "version": 6,
+      "description": "create new intelligent common data table",
+      "sqlList": [
+        "CREATE TABLE IF NOT EXISTS intelligent_common_data ( _id INTEGER PRIMARY KEY AUTOINCREMENT, module_name TEXT, key_name TEXT, value TEXT, extra_data TEXT, CONSTRAINT INTELLIGENT_COMMON_DADA UNIQUE (module_name, key_name) )"
+      ]
+    },
+    {
+      "version": 7,
+      "description": "add column file_ino and file_type",
+      "sqlList": [
+        "ALTER TABLE gridlayout_info ADD file_ino TEXT",
+        "ALTER TABLE gridlayout_info RENAME COLUMN mime_type TO file_type"
+      ]
+    },
+    {
+      "version": 8,
+      "description": "add column app_index",
+      "sqlList": [
+        "ALTER TABLE gridlayout_info ADD app_index INTEGER",
+        "ALTER TABLE recent_dock_layout_Info ADD app_index INTEGER"
+      ]
+    },
+    {
+      "version": 9,
+      "description": "add column shortcut_id",
+      "sqlList": [
+        "ALTER TABLE gridlayout_info ADD shortcut_id TEXT"
+      ]
+    },
+    {
+      "version": 10,
+      "description": "set app_index default value 0, delete app_index form recent_dock_layout_Info",
+      "sqlList": [
+        "UPDATE gridlayout_info SET app_index = 0 WHERE app_index IS NULL",
+        "ALTER TABLE recent_dock_info ADD app_index INTEGER",
+        "UPDATE recent_dock_info SET app_index = 0 WHERE app_index IS NULL",
+        "ALTER TABLE recent_dock_layout_Info RENAME TO recent_dock_layout_Info_old",
+        "CREATE TABLE IF NOT EXISTS recent_dock_layout_Info (_id INTEGER PRIMARY KEY AUTOINCREMENT, extend1 TEXT, extend2 TEXT, extend3 TEXT,visible_count INTEGER)",
+        "INSERT INTO recent_dock_layout_Info SELECT _id,extend1,extend2,extend3,visible_count FROM recent_dock_layout_Info_old",
+        "DROP TABLE IF EXISTS recent_dock_layout_Info_old"
+      ]
+    }, {
+      "version": 11,
+      "description": "add column intent",
+      "sqlList": [
+        "ALTER TABLE gridlayout_info ADD intent TEXT"
+      ]
+    },
+    {
+      "version": 12,
+      "description": "add table outer_gridlayout_info",
+      "sqlList": [
+        "CREATE TABLE IF NOT EXISTS outer_gridlayout_info (_id INTEGER PRIMARY KEY AUTOINCREMENT, user_id INTEGER, info_id TEXT UNIQUE, info_name TEXT, uri TEXT, file_type INTEGER, container INTEGER, type_id INTEGER, width INTEGER, height INTEGER, page_index INTEGER, column INTEGER, row INTEGER, appIcon_id INTEGER, appLabel_id INTEGER, bundle_name TEXT,module_name TEXT, ability_name TEXT, app_status INTEGER, icon_resource TEXT, kind_id INTEGER, extend1 TEXT, extend2 TEXT,download_progress REAL,caller_name TEXT,file_ino TEXT,app_index INTEGER,shortcut_id TEXT,intent TEXT)"
+      ]
+    },
+    {
+      "version": 13,
+      "description": "badge_info add column app_index and delete UNIQUE",
+      "sqlList": [
+        "ALTER TABLE badge_info ADD app_index INTEGER",
+        "UPDATE badge_info SET app_index = 0 WHERE app_index IS NULL",
+        "ALTER TABLE badge_info RENAME TO badge_info_old",
+        "CREATE TABLE IF NOT EXISTS badge_info (_id INTEGER PRIMARY KEY AUTOINCREMENT, bundle_name TEXT, badge_number INTEGER, is_show INTEGER, user_id INTEGER, app_index INTEGER)",
+        "INSERT INTO badge_info SELECT * FROM badge_info_old",
+        "DROP TABLE badge_info_old"
+      ]
+    },
+    {
+      "version": 14,
+      "description": "alter table gridlayout_info on info_id TEXT",
+      "sqlList": [
+        "ALTER TABLE gridLayout_info RENAME TO gridLayout_info_old",
+        "CREATE TABLE IF NOT EXISTS gridlayout_info (_id INTEGER PRIMARY KEY AUTOINCREMENT,user_id INTEGER,info_id TEXT UNIQUE,info_name TEXT,uri TEXT,file_type INTEGER,container INTEGER,type_id INTEGER,width INTEGER,height INTEGER,page_index INTEGER,column INTEGER,row INTEGER,appIcon_id INTEGER,appLabel_id INTEGER,bundle_name TEXT,module_name TEXT,ability_name TEXT,app_status INTEGER, icon_resource TEXT, kind_id INTEGER,extend1 TEXT,extend2 TEXT,download_progress REAL,caller_name TEXT,file_ino TEXT,app_index INTEGER,shortcut_id TEXT,intent TEXT)",
+        "INSERT INTO gridlayout_info SELECT _id,user_id,info_id,info_name,uri,file_type,container,type_id,width,height,page_index,column,row,appIcon_id,appLabel_id,bundle_name,module_name,ability_name,app_status,icon_resource,kind_id,extend1,extend2,download_progress,caller_name,file_ino,app_index,shortcut_id,intent FROM gridlayout_info_old",
+        "DROP TABLE IF EXISTS gridLayout_info_old"
+      ]
+    },
+    {
+      "version": 15,
+      "description": "add a new table simple_gridlayout_info",
+      "sqlList": [
+        "CREATE TABLE IF NOT EXISTS simple_gridlayout_info (_id INTEGER PRIMARY KEY AUTOINCREMENT, user_id INTEGER, info_id TEXT UNIQUE, info_name TEXT, uri TEXT, file_type INTEGER, container INTEGER, type_id INTEGER, width INTEGER, height INTEGER, page_index INTEGER, column INTEGER, row INTEGER, appIcon_id INTEGER, appLabel_id INTEGER, bundle_name TEXT,module_name TEXT, ability_name TEXT, app_status INTEGER, icon_resource TEXT, kind_id INTEGER, extend1 TEXT, extend2 TEXT, download_progress REAL, caller_name TEXT, file_ino TEXT, app_index INTEGER, shortcut_id TEXT, intent TEXT)"
+        ]
+    },
+    {
+      "version": 16,
+      "description": "add column file_size and file_ctime and file_mtime",
+      "sqlList": [
+        "ALTER TABLE gridlayout_info ADD file_size INTEGER",
+        "ALTER TABLE gridlayout_info ADD file_ctime INTEGER",
+        "ALTER TABLE gridlayout_info ADD file_mtime INTEGER",
+        "UPDATE gridlayout_info SET file_size = 0 WHERE file_size IS NULL",
+        "UPDATE gridlayout_info SET file_ctime = 0 WHERE file_ctime IS NULL",
+        "UPDATE gridlayout_info SET file_mtime = 0 WHERE file_mtime IS NULL",
+
+        "ALTER TABLE simple_gridlayout_info ADD file_size INTEGER",
+        "ALTER TABLE simple_gridlayout_info ADD file_ctime INTEGER",
+        "ALTER TABLE simple_gridlayout_info ADD file_mtime INTEGER",
+        "UPDATE simple_gridlayout_info SET file_size = 0 WHERE file_size IS NULL",
+        "UPDATE simple_gridlayout_info SET file_ctime = 0 WHERE file_ctime IS NULL",
+        "UPDATE simple_gridlayout_info SET file_mtime = 0 WHERE file_mtime IS NULL",
+
+        "ALTER TABLE outer_gridlayout_info ADD file_size INTEGER",
+        "ALTER TABLE outer_gridlayout_info ADD file_ctime INTEGER",
+        "ALTER TABLE outer_gridlayout_info ADD file_mtime INTEGER",
+        "UPDATE outer_gridlayout_info SET file_size = 0 WHERE file_size IS NULL",
+        "UPDATE outer_gridlayout_info SET file_ctime = 0 WHERE file_ctime IS NULL",
+        "UPDATE outer_gridlayout_info SET file_mtime = 0 WHERE file_mtime IS NULL"
+      ]
+    },
+    {
+      "version": 17,
+      "description": "add column theme_id and theme_form_id to gridlayout_info",
+      "sqlList": [
+        "ALTER TABLE gridlayout_info ADD theme_id TEXT",
+        "ALTER TABLE gridlayout_info ADD theme_form_id TEXT",
+        "ALTER TABLE simple_gridlayout_info ADD theme_id TEXT",
+        "ALTER TABLE simple_gridlayout_info ADD theme_form_id TEXT",
+        "ALTER TABLE outer_gridlayout_info ADD theme_id TEXT",
+        "ALTER TABLE outer_gridlayout_info ADD theme_form_id TEXT"
+      ]
+    },
+    {
+      "version": 18,
+      "description": "add columns for lazy rotate to gridlayout_info",
+      "sqlList": [
+        "ALTER TABLE gridlayout_info ADD portrait_page_index INTEGER",
+        "ALTER TABLE gridlayout_info ADD portrait_column INTEGER",
+        "ALTER TABLE gridlayout_info ADD portrait_row INTEGER",
+        "ALTER TABLE gridlayout_info ADD landscape_page_index INTEGER",
+        "ALTER TABLE gridlayout_info ADD landscape_column INTEGER",
+        "ALTER TABLE gridlayout_info ADD landscape_row INTEGER"
+      ]
+    },
+    {
+      "version": 19,
+      "description": "add a new table app_category_info",
+      "sqlList": [
+        "CREATE TABLE IF NOT EXISTS app_category_info (_id INTEGER PRIMARY KEY AUTOINCREMENT, bundle_name TEXT UNIQUE, secondary_category_id INTEGER)"
+      ]
+    },
+    {
+      "version": 20,
+      "description": "update column theme_id and theme_form_id to gridlayout_info",
+      "sqlList": [
+        "ALTER TABLE gridlayout_info ADD COLUMN file_size INTEGER DEFAULT 0",
+        "ALTER TABLE gridlayout_info ADD COLUMN file_ctime INTEGER DEFAULT 0",
+        "ALTER TABLE gridlayout_info ADD COLUMN file_mtime INTEGER DEFAULT 0",
+
+        "ALTER TABLE gridlayout_info RENAME TO gridlayout_info_old",
+        "CREATE TABLE IF NOT EXISTS gridlayout_info (_id INTEGER PRIMARY KEY AUTOINCREMENT,user_id INTEGER,info_id TEXT UNIQUE,info_name TEXT,uri TEXT,file_type INTEGER,container INTEGER,type_id INTEGER,width INTEGER,height INTEGER,page_index INTEGER,column INTEGER,row INTEGER,appIcon_id INTEGER,appLabel_id INTEGER,bundle_name TEXT,module_name TEXT,ability_name TEXT,app_status INTEGER,icon_resource TEXT,kind_id INTEGER,extend1 TEXT,extend2 TEXT,download_progress REAL,caller_name TEXT,file_ino TEXT,app_index INTEGER,shortcut_id TEXT,intent TEXT,file_size INTEGER,file_ctime INTEGER,file_mtime INTEGER,portrait_page_index INTEGER,portrait_column INTEGER,portrait_row INTEGER,landscape_page_index INTEGER,landscape_column INTEGER,landscape_row INTEGER)",
+        "INSERT INTO gridlayout_info SELECT _id,user_id,info_id,info_name,uri,file_type,container,type_id,width,height,page_index,column,row,appIcon_id,appLabel_id,bundle_name,module_name,ability_name,app_status,icon_resource,kind_id,extend1,extend2,download_progress,caller_name,file_ino,app_index,shortcut_id,intent,file_size,file_ctime,file_mtime,portrait_page_index,portrait_column,portrait_row,landscape_page_index,landscape_column,landscape_row FROM gridlayout_info_old",
+        "DROP TABLE IF EXISTS gridlayout_info_old",
+        "ALTER TABLE gridlayout_info ADD theme_id TEXT",
+        "ALTER TABLE gridlayout_info ADD theme_form_id TEXT",
+
+        "ALTER TABLE simple_gridlayout_info ADD file_size INTEGER DEFAULT 0",
+        "ALTER TABLE simple_gridlayout_info ADD file_ctime INTEGER DEFAULT 0",
+        "ALTER TABLE simple_gridlayout_info ADD file_mtime INTEGER DEFAULT 0",
+
+        "ALTER TABLE simple_gridlayout_info RENAME TO simple_gridlayout_info_old",
+        "CREATE TABLE IF NOT EXISTS simple_gridlayout_info (_id INTEGER PRIMARY KEY AUTOINCREMENT,user_id INTEGER,info_id TEXT UNIQUE,info_name TEXT,uri TEXT,file_type INTEGER,container INTEGER,type_id INTEGER,width INTEGER,height INTEGER,page_index INTEGER,column INTEGER,row INTEGER,appIcon_id INTEGER,appLabel_id INTEGER,bundle_name TEXT,module_name TEXT,ability_name TEXT,app_status INTEGER,icon_resource TEXT,kind_id INTEGER,extend1 TEXT,extend2 TEXT,download_progress REAL,caller_name TEXT,file_ino TEXT,app_index INTEGER,shortcut_id TEXT,intent TEXT,file_size INTEGER,file_ctime INTEGER,file_mtime INTEGER)",
+        "INSERT INTO simple_gridlayout_info SELECT _id,user_id,info_id,info_name,uri,file_type,container,type_id,width,height,page_index,column,row,appIcon_id,appLabel_id,bundle_name,module_name,ability_name,app_status,icon_resource,kind_id,extend1,extend2,download_progress,caller_name,file_ino,app_index,shortcut_id,intent,file_size,file_ctime,file_mtime FROM simple_gridlayout_info_old",
+        "DROP TABLE IF EXISTS simple_gridlayout_info_old",
+        "ALTER TABLE simple_gridlayout_info ADD theme_id TEXT",
+        "ALTER TABLE simple_gridlayout_info ADD theme_form_id TEXT",
+
+        "ALTER TABLE outer_gridlayout_info ADD file_size INTEGER DEFAULT 0",
+        "ALTER TABLE outer_gridlayout_info ADD file_ctime INTEGER DEFAULT 0",
+        "ALTER TABLE outer_gridlayout_info ADD file_mtime INTEGER DEFAULT 0",
+
+        "ALTER TABLE outer_gridlayout_info RENAME TO outer_gridlayout_info_old",
+        "CREATE TABLE IF NOT EXISTS outer_gridlayout_info (_id INTEGER PRIMARY KEY AUTOINCREMENT,user_id INTEGER,info_id TEXT UNIQUE,info_name TEXT,uri TEXT,file_type INTEGER,container INTEGER,type_id INTEGER,width INTEGER,height INTEGER,page_index INTEGER,column INTEGER,row INTEGER,appIcon_id INTEGER,appLabel_id INTEGER,bundle_name TEXT,module_name TEXT,ability_name TEXT,app_status INTEGER,icon_resource TEXT,kind_id INTEGER,extend1 TEXT,extend2 TEXT,download_progress REAL,caller_name TEXT,file_ino TEXT,app_index INTEGER,shortcut_id TEXT,intent TEXT,file_size INTEGER,file_ctime INTEGER,file_mtime INTEGER)",
+        "INSERT INTO outer_gridlayout_info SELECT _id,user_id,info_id,info_name,uri,file_type,container,type_id,width,height,page_index,column,row,appIcon_id,appLabel_id,bundle_name,module_name,ability_name,app_status,icon_resource,kind_id,extend1,extend2,download_progress,caller_name,file_ino,app_index,shortcut_id,intent,file_size,file_ctime,file_mtime FROM outer_gridlayout_info_old",
+        "DROP TABLE IF EXISTS outer_gridlayout_info_old",
+        "ALTER TABLE outer_gridlayout_info ADD theme_id TEXT",
+        "ALTER TABLE outer_gridlayout_info ADD theme_form_id TEXT"
+      ]
+    },
+    {
+      "version": 21,
+      "description": "add columns for lazy rotate to outer_gridlayout_info",
+      "sqlList": [
+        "ALTER TABLE outer_gridlayout_info ADD portrait_page_index INTEGER",
+        "ALTER TABLE outer_gridlayout_info ADD portrait_column INTEGER",
+        "ALTER TABLE outer_gridlayout_info ADD portrait_row INTEGER",
+        "ALTER TABLE outer_gridlayout_info ADD landscape_page_index INTEGER",
+        "ALTER TABLE outer_gridlayout_info ADD landscape_column INTEGER",
+        "ALTER TABLE outer_gridlayout_info ADD landscape_row INTEGER"
+      ]
+    },
+    {
+      "version": 22,
+      "description": "update db version for delivery folder remove custom design",
+      "sqlList": [
+        "select date()"
+      ]
+    },
+    {
+      "version": 22,
+      "sqlVersion": 1,
+      "description": "add columns for portrait/landscape width and height",
+      "sqlList": [
+        "ALTER TABLE gridlayout_info ADD portrait_width INTEGER",
+        "UPDATE gridlayout_info SET portrait_width = width WHERE portrait_width IS NULL",
+        "ALTER TABLE gridlayout_info ADD portrait_height INTEGER",
+        "UPDATE gridlayout_info SET portrait_height = height WHERE portrait_height IS NULL",
+        "ALTER TABLE gridlayout_info ADD landscape_width INTEGER",
+        "UPDATE gridlayout_info SET landscape_width = width WHERE landscape_width IS NULL",
+        "ALTER TABLE gridlayout_info ADD landscape_height INTEGER",
+        "UPDATE gridlayout_info SET landscape_height = height WHERE landscape_height IS NULL",
+        "ALTER TABLE outer_gridlayout_info ADD portrait_width INTEGER",
+        "UPDATE outer_gridlayout_info SET portrait_width = width WHERE portrait_width IS NULL",
+        "ALTER TABLE outer_gridlayout_info ADD portrait_height INTEGER",
+        "UPDATE outer_gridlayout_info SET portrait_height = height WHERE portrait_height IS NULL",
+        "ALTER TABLE outer_gridlayout_info ADD landscape_width INTEGER",
+        "UPDATE outer_gridlayout_info SET landscape_width = width WHERE landscape_width IS NULL",
+        "ALTER TABLE outer_gridlayout_info ADD landscape_height INTEGER",
+        "UPDATE outer_gridlayout_info SET landscape_height = height WHERE landscape_height IS NULL",
+        "ALTER TABLE simple_gridlayout_info ADD portrait_width INTEGER",
+        "UPDATE simple_gridlayout_info SET portrait_width = width WHERE portrait_width IS NULL",
+        "ALTER TABLE simple_gridlayout_info ADD portrait_height INTEGER",
+        "UPDATE simple_gridlayout_info SET portrait_height = height WHERE portrait_height IS NULL",
+        "ALTER TABLE simple_gridlayout_info ADD landscape_width INTEGER",
+        "UPDATE simple_gridlayout_info SET landscape_width = width WHERE landscape_width IS NULL",
+        "ALTER TABLE simple_gridlayout_info ADD landscape_height INTEGER",
+        "UPDATE simple_gridlayout_info SET landscape_height = height WHERE landscape_height IS NULL"
+      ]
+    },
+    {
+      "version": 22,
+      "sqlVersion": 2,
+      "description": "add column fixed to badge_info",
+      "sqlList": [
+        "ALTER TABLE badge_info ADD fixed INTEGER"
+      ]
+    },
+    {
+      "version": 22,
+      "sqlVersion": 3,
+      "description": "add columns for lazy rotate to simple_gridlayout_info",
+      "sqlList": [
+        "ALTER TABLE simple_gridlayout_info ADD portrait_page_index INTEGER",
+        "ALTER TABLE simple_gridlayout_info ADD portrait_column INTEGER",
+        "ALTER TABLE simple_gridlayout_info ADD portrait_row INTEGER",
+        "ALTER TABLE simple_gridlayout_info ADD landscape_page_index INTEGER",
+        "ALTER TABLE simple_gridlayout_info ADD landscape_column INTEGER",
+        "ALTER TABLE simple_gridlayout_info ADD landscape_row INTEGER"
+      ]
+    },
+    {
+      "version": 22,
+      "sqlVersion": 6,
+      "description": "add column target_form_data to gridlayout_info",
+      "sqlList": [
+        "ALTER TABLE gridlayout_info ADD target_form_data TEXT",
+        "ALTER TABLE simple_gridlayout_info ADD target_form_data TEXT",
+        "ALTER TABLE outer_gridlayout_info ADD target_form_data TEXT"
+      ]
+    },
+    {
+      "version": 22,
+      "sqlVersion": 7,
+      "description": "add a new table card_info",
+      "sqlList": [
+        "CREATE TABLE IF NOT EXISTS card_info (_id INTEGER PRIMARY KEY AUTOINCREMENT, bundle_name TEXT UNIQUE, app_name TEXT, app_index INTEGER, cards TEXT, status INTEGER)"
+      ]
+    },
+    {
+      "version": 22,
+      "sqlVersion": 8,
+      "description": "add a new table recent_lock_info",
+      "sqlList": [
+        "CREATE TABLE IF NOT EXISTS recent_lock_info (_id INTEGER PRIMARY KEY AUTOINCREMENT, bundle_name TEXT, ability_name TEXT, module_name TEXT, app_index INTEGER)"
+      ]
+    },
+    {
+      "version": 22,
+      "sqlVersion": 9,
+      "description": "re-execute sql to sync columns from version 16 (adapt users upgrade from 5.0.1 and 5.0.2)",
+      "sqlList": [
+        "ALTER TABLE gridlayout_info ADD COLUMN file_size INTEGER DEFAULT 0",
+        "ALTER TABLE gridlayout_info ADD COLUMN file_ctime INTEGER DEFAULT 0",
+        "ALTER TABLE gridlayout_info ADD COLUMN file_mtime INTEGER DEFAULT 0",
+        "ALTER TABLE gridlayout_info ADD theme_id TEXT",
+        "ALTER TABLE gridlayout_info ADD theme_form_id TEXT",
+        "ALTER TABLE gridlayout_info ADD portrait_page_index INTEGER",
+        "ALTER TABLE gridlayout_info ADD portrait_column INTEGER",
+        "ALTER TABLE gridlayout_info ADD portrait_row INTEGER",
+        "ALTER TABLE gridlayout_info ADD landscape_page_index INTEGER",
+        "ALTER TABLE gridlayout_info ADD landscape_column INTEGER",
+        "ALTER TABLE gridlayout_info ADD landscape_row INTEGER",
+        "ALTER TABLE gridlayout_info ADD portrait_width INTEGER",
+        "UPDATE gridlayout_info SET portrait_width = width WHERE portrait_width IS NULL",
+        "ALTER TABLE gridlayout_info ADD portrait_height INTEGER",
+        "UPDATE gridlayout_info SET portrait_height = height WHERE portrait_height IS NULL",
+        "ALTER TABLE gridlayout_info ADD landscape_width INTEGER",
+        "UPDATE gridlayout_info SET landscape_width = width WHERE landscape_width IS NULL",
+        "ALTER TABLE gridlayout_info ADD landscape_height INTEGER",
+        "UPDATE gridlayout_info SET landscape_height = height WHERE landscape_height IS NULL",
+        "ALTER TABLE gridlayout_info ADD screen_id INTEGER DEFAULT 0",
+        "ALTER TABLE simple_gridlayout_info ADD file_size INTEGER DEFAULT 0",
+        "ALTER TABLE simple_gridlayout_info ADD file_ctime INTEGER DEFAULT 0",
+        "ALTER TABLE simple_gridlayout_info ADD file_mtime INTEGER DEFAULT 0",
+        "ALTER TABLE simple_gridlayout_info ADD theme_id TEXT",
+        "ALTER TABLE simple_gridlayout_info ADD theme_form_id TEXT",
+        "ALTER TABLE simple_gridlayout_info ADD portrait_page_index INTEGER",
+        "ALTER TABLE simple_gridlayout_info ADD portrait_column INTEGER",
+        "ALTER TABLE simple_gridlayout_info ADD portrait_row INTEGER",
+        "ALTER TABLE simple_gridlayout_info ADD landscape_page_index INTEGER",
+        "ALTER TABLE simple_gridlayout_info ADD landscape_column INTEGER",
+        "ALTER TABLE simple_gridlayout_info ADD landscape_row INTEGER",
+        "ALTER TABLE simple_gridlayout_info ADD portrait_width INTEGER",
+        "UPDATE simple_gridlayout_info SET portrait_width = width WHERE portrait_width IS NULL",
+        "ALTER TABLE simple_gridlayout_info ADD portrait_height INTEGER",
+        "UPDATE simple_gridlayout_info SET portrait_height = height WHERE portrait_height IS NULL",
+        "ALTER TABLE simple_gridlayout_info ADD landscape_width INTEGER",
+        "UPDATE simple_gridlayout_info SET landscape_width = width WHERE landscape_width IS NULL",
+        "ALTER TABLE simple_gridlayout_info ADD landscape_height INTEGER",
+        "UPDATE simple_gridlayout_info SET landscape_height = height WHERE landscape_height IS NULL",
+        "ALTER TABLE simple_gridlayout_info ADD screen_id INTEGER DEFAULT 0",
+        "ALTER TABLE outer_gridlayout_info ADD file_size INTEGER DEFAULT 0",
+        "ALTER TABLE outer_gridlayout_info ADD file_ctime INTEGER DEFAULT 0",
+        "ALTER TABLE outer_gridlayout_info ADD file_mtime INTEGER DEFAULT 0",
+        "ALTER TABLE outer_gridlayout_info ADD theme_id TEXT",
+        "ALTER TABLE outer_gridlayout_info ADD theme_form_id TEXT",
+        "ALTER TABLE outer_gridlayout_info ADD portrait_page_index INTEGER",
+        "ALTER TABLE outer_gridlayout_info ADD portrait_column INTEGER",
+        "ALTER TABLE outer_gridlayout_info ADD portrait_row INTEGER",
+        "ALTER TABLE outer_gridlayout_info ADD landscape_page_index INTEGER",
+        "ALTER TABLE outer_gridlayout_info ADD landscape_column INTEGER",
+        "ALTER TABLE outer_gridlayout_info ADD landscape_row INTEGER",
+        "ALTER TABLE outer_gridlayout_info ADD portrait_width INTEGER",
+        "UPDATE outer_gridlayout_info SET portrait_width = width WHERE portrait_width IS NULL",
+        "ALTER TABLE outer_gridlayout_info ADD portrait_height INTEGER",
+        "UPDATE outer_gridlayout_info SET portrait_height = height WHERE portrait_height IS NULL",
+        "ALTER TABLE outer_gridlayout_info ADD landscape_width INTEGER",
+        "UPDATE outer_gridlayout_info SET landscape_width = width WHERE landscape_width IS NULL",
+        "ALTER TABLE outer_gridlayout_info ADD landscape_height INTEGER",
+        "UPDATE outer_gridlayout_info SET landscape_height = height WHERE landscape_height IS NULL",
+        "ALTER TABLE outer_gridlayout_info ADD screen_id INTEGER DEFAULT 0",
+        "CREATE TABLE IF NOT EXISTS app_category_info (_id INTEGER PRIMARY KEY AUTOINCREMENT, bundle_name TEXT UNIQUE, secondary_category_id INTEGER)",
+        "ALTER TABLE badge_info ADD fixed INTEGER",
+        "ALTER TABLE gridlayout_info ADD target_form_data TEXT",
+        "ALTER TABLE simple_gridlayout_info ADD target_form_data TEXT",
+        "ALTER TABLE outer_gridlayout_info ADD target_form_data TEXT",
+        "CREATE TABLE IF NOT EXISTS card_info (_id INTEGER PRIMARY KEY AUTOINCREMENT, bundle_name TEXT UNIQUE, app_name TEXT, app_index INTEGER, cards TEXT, status INTEGER)",
+        "CREATE TABLE IF NOT EXISTS recent_lock_info (_id INTEGER PRIMARY KEY AUTOINCREMENT, bundle_name TEXT, ability_name TEXT, module_name TEXT, app_index INTEGER)"
+      ]
+    },
+    {
+      "version": 22,
+      "sqlVersion": 10,
+      "description": "create drawer_mode_app_info table to restore intent info by desktop app removed",
+      "sqlList": [
+        "CREATE TABLE IF NOT EXISTS drawer_mode_app_info (_id INTEGER PRIMARY KEY AUTOINCREMENT,bundle_name TEXT,module_name TEXT,ability_name TEXT,app_index INTEGER,intent TEXT)"
+      ]
+    }
+  ]
+}

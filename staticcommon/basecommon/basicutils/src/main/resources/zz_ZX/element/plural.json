@@ -1,0 +1,62 @@
+{
+    "plural":[
+        {
+            "name":"multiSelect_drag_start",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"[TS_956608]_%d apps are being dragged"
+                },
+                {
+                    "quantity":"one",
+                    "value":"[TS_956612]_%d app is being dragged"
+                },
+                {
+                    "quantity":"zero",
+                    "value":"[TS_956614]_%d apps are being dragged"
+                },
+                {
+                    "quantity":"few",
+                    "value":"[TS_956609]_%d apps are being dragged"
+                },
+                {
+                    "quantity":"many",
+                    "value":"[TS_956610]_%d apps are being dragged"
+                },
+                {
+                    "quantity":"two",
+                    "value":"[TS_956615]_%d apps are being dragged"
+                }
+            ]
+        },
+        {
+            "name":"multiSelect_drag_drop",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"[TS_956616]_%d apps placed on screen"
+                },
+                {
+                    "quantity":"one",
+                    "value":"[TS_956607]_%d app placed on screen"
+                },
+                {
+                    "quantity":"zero",
+                    "value":"[TS_956613]_%d apps placed on screen"
+                },
+                {
+                    "quantity":"few",
+                    "value":"[TS_956606]_%d apps placed on screen"
+                },
+                {
+                    "quantity":"many",
+                    "value":"[TS_956611]_%d apps placed on screen"
+                },
+                {
+                    "quantity":"two",
+                    "value":"[TS_956617]_%d apps placed on screen"
+                }
+            ]
+        }
+    ]
+}

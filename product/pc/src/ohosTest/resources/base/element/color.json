@@ -1,0 +1,20 @@
+{
+  "color": [
+    {
+      "name": "start_window_background",
+      "value": "#FFFFFF"
+    },
+    {
+      "name": "control_center_brightness_sun_blue",
+      "value": "#FF0A59F7"
+    },
+    {
+      "name": "control_center_brightness_sun_write",
+      "value": "#FFFFFFFF"
+    },
+    {
+      "name": "control_center_brightness_sun_black",
+      "value": "#FF000000"
+    }
+  ]
+}

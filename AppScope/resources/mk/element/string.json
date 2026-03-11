@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"app_name",
+            "value":"Почетен екран и лица",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

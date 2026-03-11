@@ -1,0 +1,23 @@
+{
+  "src": [
+    "pages/FormManagerView",
+    "pages/EmptyPage",
+    "pages/EntryView",
+    "pages/DevView",
+    "pages/ExtendView",
+    "pages/CommonScbView",
+    "pages/pc/EntryView",
+    "pages/pc/CommonScbView",
+    "intents/pages/SwitchIntentCardPage",
+    "desktopsetting/pages/DesktopSetting",
+    "intents/pages/DesktopSlideCardPage",
+    "desktopedit/pages/DesktopEditPage",
+    "restoringtips/RestoringTipsDialog",
+    "SystemDialog/pages/PoweroffIndex",
+    "SystemDialog/pages/AlertPage",
+    "SceneBoard/oneHandModeDialog/view/OneHandModeDialog",
+    "SceneBoard/themeeditor/pages/WallpaperApplyPage",
+    "SceneBoard/soundpanel/pages/FirstUsePermissionRequest",
+    "SystemDialog/ExtendedScreenDialog/pages/ExtendedScreenDialogPage"
+  ]
+}

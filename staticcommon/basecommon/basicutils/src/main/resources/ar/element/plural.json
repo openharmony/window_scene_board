@@ -1,0 +1,98 @@
+{
+    "plural":[
+        {
+            "name":"multiSelect_drag_start",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"جارٍ سحب %d تطبيق",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"one",
+                    "value":"جارٍ سحب تطبيق واحد",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"zero",
+                    "value":"جارٍ سحب %d تطبيقات",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"few",
+                    "value":"جارٍ سحب %d تطبيقات",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"many",
+                    "value":"جارٍ سحب %d تطبيقًا",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"two",
+                    "value":"جارٍ سحب تطبيقين",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"multiSelect_drag_drop",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"تم وضع %d تطبيق على الشاشة",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"one",
+                    "value":"تم وضع تطبيق واحد على الشاشة",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"zero",
+                    "value":"تم وضع %d تطبيقات على الشاشة",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"few",
+                    "value":"تم وضع %d تطبيقات على الشاشة",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"many",
+                    "value":"تم وضع %d تطبيقًا على الشاشة",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"two",
+                    "value":"تم وضع تطبيقين على الشاشة",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"app_name",
+            "value":"หน้าจอหลักและหน้าปัด",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

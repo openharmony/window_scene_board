@@ -1,0 +1,21 @@
+{
+  "name": "scene_board_ext",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "node scripts/Build.js",
+    "build:phone": "node scripts/Build.js --module=phone_sceneboard",
+    "build:pc": "node scripts/Build.js --product=pc",
+    "build:pad": "node scripts/Build.js --product=pad",
+    "build:car": "node scripts/Build.js --module=car_sceneboard --product=car",
+    "dp": "node scripts/Build.js --deploy",
+    "dp:phone": "node scripts/Build.js --module=phone_sceneboard --deploy",
+    "dp:pc": "node scripts/Build.js --deploy --product=pc",
+    "dp:pad": "node scripts/Build.js --module=pad_sceneboard --deploy --product=pad",
+    "sync": "node scripts/Sync.js"
+  },
+  "dependencies": {
+    "execa": "5.1.1",
+    "iconv-lite": "0.6.3",
+    "json5": "2.2.1"
+  }
+}

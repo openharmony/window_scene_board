@@ -1,0 +1,42 @@
+{
+    "plural":[
+        {
+            "name":"multiSelect_drag_start",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"Se están arrastrando %d aplicaciones",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"one",
+                    "value":"Se está arrastrando %d aplicación",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"multiSelect_drag_drop",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"%d aplicaciones colocadas en la pantalla",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"one",
+                    "value":"%d aplicación colocada en la pantalla",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

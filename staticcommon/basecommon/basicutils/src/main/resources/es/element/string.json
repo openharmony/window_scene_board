@@ -1,0 +1,347 @@
+{
+    "string":[
+        {
+            "name":"notification_and_status_bar_title",
+            "value":"Notificaciones y barra de estado",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"delete_form",
+            "value":"Eliminar",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_near_left_screen",
+            "value":"Cerca del extremo izquierdo de la pantalla",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_near_right_screen",
+            "value":"Cerca del extremo derecho de la pantalla",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"download_installwait",
+            "value":"Esperando",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"download_installing",
+            "value":"Instalando",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"uninstall_success",
+            "value":"Se ha desinstalado.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_running_mutex_toast",
+            "value":"Para garantizar un rendimiento fluido, %1$s y %2$s no pueden ejecutarse al mismo tiempo.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"delete_app",
+            "value":"Eliminar",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"uninstall_failed",
+            "value":"No se ha podido desinstalar.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screen_capture_notification_content",
+            "value":"%s ha hecho una captura de tu pantalla.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"download_pause",
+            "value":"En pausa",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screen_capture_notification_title",
+            "value":"Captura de pantalla",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"floating_scene_button_start",
+            "value":"Abrir %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"form_stack_max_number_limit",
+            "value":"Esta pila está llena.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_smart_service",
+            "value":"Servicios inteligentes",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_to_desktop",
+            "value":"Añadir a pantalla principal",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_center_menu_add_dock",
+            "value":"Añadir a la barra inferior",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"click_twin_app_not_installed",
+            "value":"%s no está instalada.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"disable_uninstall",
+            "value":"No se permite la desinstalación.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"uninstall",
+            "value":"Desinstalar",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"floating_scene_button_close",
+            "value":"Cerrar %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"form_center",
+            "value":"Explorar widgets",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"click_twin_app_download_installing",
+            "value":"Se está instalando %s.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remove_app_dialog_content",
+            "value":"Puedes volver a añadirla en cualquier momento desde el Centro de aplicaciones.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_center_menu_add_desktop",
+            "value":"Añadir a pantalla principal",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cancel",
+            "value":"Cancelar",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"download_wait",
+            "value":"Esperando",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_menu_open",
+            "value":"Abrir",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_menu_open_from_floating_window",
+            "value":"Abrir desde la ventana flotante",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_menu_open_from_split_screen",
+            "value":"Abrir desde la pantalla dividida",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"click_twin_app_download_start",
+            "value":"Se está descargando %s.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"download_start",
+            "value":"Descargando",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"click_twin_app_wait_data_recover",
+            "value":"Se están restaurando datos de %s.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"drag_move_to_folder",
+            "value":"Mover a la carpeta %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_start",
+            "value":"Icono listo para arrastrar",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drop_merge_to_desktop",
+            "value":"%1$s y %2$s se han combinado en la carpeta %3$s, y se han ubicado en la fila %4$s, columna %5$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drop_merge_to_dock",
+            "value":"%1$s y %2$s se han combinado en la carpeta %3$s, y se han ubicado en la posición %4$s del dock",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_move_to_form_stack",
+            "value":"Mover a la pila. %s se encuentra arriba",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_move_to_dock",
+            "value":"Mover a la posición %s del dock",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_drop_to_dock",
+            "value":"%1$s se ha ubicado en la posición %2$s del dock",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_move_to_merge_card",
+            "value":"Apilar con %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_drop_dock_full",
+            "value":"Dock lleno, icono devuelto a su posición original",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drop_merge_to_form_stack",
+            "value":"%1$s apilada con %2$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_move_to_merge",
+            "value":"Combinar con %s como carpeta",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_drop_to_form_stack",
+            "value":"%1$s se ha ubicado en la pila. %2$s se encuentra arriba",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_drop_to_folder",
+            "value":"%1$s se ha ubicado en la carpeta %2$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_move",
+            "value":"Mover a la fila %1$s, columna %2$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_drop",
+            "value":"%1$s se ha ubicado en la fila %2$s, columna %3$s",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

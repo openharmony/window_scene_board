@@ -1,0 +1,347 @@
+{
+    "string":[
+        {
+            "name":"notification_and_status_bar_title",
+            "value":"الإشعارات وشريط الحالة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"delete_form",
+            "value":"إزالة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_near_left_screen",
+            "value":"بالقرب من الحافة اليسرى للشاشة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_near_right_screen",
+            "value":"بالقرب من الحافة اليمنى للشاشة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"download_installwait",
+            "value":"قيد الانتظار",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"download_installing",
+            "value":"قيد التثبيت",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_start",
+            "value":"الأيقونة جاهزة للسحب",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drop_merge_to_desktop",
+            "value":"تم دمج %1$s و%2$s في مجلد %3$s، ووُضعا في الصف %4$s، والعمود %5$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"uninstall_success",
+            "value":"تمت إزالة التثبيت",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_running_mutex_toast",
+            "value":"لضمان الأداء السلس، لا يمكن تشغيل %1$s و%2$s في نفس الوقت",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"delete_app",
+            "value":"إزالة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"uninstall_failed",
+            "value":"تتعذر إزالة التثبيت",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screen_capture_notification_content",
+            "value":"التقط تطبيق %s صورة لشاشتك.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"download_pause",
+            "value":"متوقف مؤقتًا",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drop_merge_to_dock",
+            "value":"تم دمج %1$s و%2$s في مجلد %3$s، ووُضعا في الموضع %4$s من شريط الإرساء",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screen_capture_notification_title",
+            "value":"التقاط الشاشة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"drag_move_to_form_stack",
+            "value":"النقل إلى الرزمة التي يوجد في مقدمتها بطاقة %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_move_to_dock",
+            "value":"النقل إلى الموضع %s على شريط الإرساء",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"floating_scene_button_start",
+            "value":"فتح تطبيق %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_drop_to_dock",
+            "value":"تم وضع %1$s في %2$s على شريط الإرساء",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"form_stack_max_number_limit",
+            "value":"هذه الرزمة ممتلئة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_smart_service",
+            "value":"الخدمات الذكية",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_to_desktop",
+            "value":"الإضافة إلى الشاشة الرئيسية",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_center_menu_add_dock",
+            "value":"الإضافة إلى شريط الإرساء",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_move_to_merge_card",
+            "value":"التكديس في رزمة مع %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_drop_dock_full",
+            "value":"شريط الإرساء ممتلئ، عادت الأيقونة إلى موضعها الأصلي",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"click_twin_app_not_installed",
+            "value":"تعذر تثبيت تطبيق %s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"disable_uninstall",
+            "value":"لا يمكن إزالة هذا التطبيق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drop_merge_to_form_stack",
+            "value":"تم تكديس %1$s في رزمة مع %2$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"uninstall",
+            "value":"إزالة التثبيت",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_move_to_merge",
+            "value":"الدمج مع %s في مجلد",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_drop_to_form_stack",
+            "value":"تم وضع %1$s في الرزمة التي يوجد في مقدمتها بطاقة %2$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"floating_scene_button_close",
+            "value":"إغلاق تطبيق %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"form_center",
+            "value":"تصفح الأدوات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"click_twin_app_download_installing",
+            "value":"جارٍ تثبيت تطبيق %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_drop_to_folder",
+            "value":"تم وضع %1$s في مجلد %2$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remove_app_dialog_content",
+            "value":"يمكنك إضافته مجددًا في أي وقت تشاء من \"مركز التطبيقات\".",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_move",
+            "value":"النقل إلى الصف %1$s، والعمود %2$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_center_menu_add_desktop",
+            "value":"الإضافة إلى الشاشة الرئيسية",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cancel",
+            "value":"إلغاء",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"download_wait",
+            "value":"قيد الانتظار",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_menu_open",
+            "value":"فتح",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_menu_open_from_floating_window",
+            "value":"فتح من النافذة العائمة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_menu_open_from_split_screen",
+            "value":"فتح من الشاشة المنقسمة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"click_twin_app_download_start",
+            "value":"جارٍ تنزيل تطبيق %s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"download_start",
+            "value":"قيد التنزيل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"click_twin_app_wait_data_recover",
+            "value":"جارٍ استعادة بيانات تطبيق %s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"drag_move_to_folder",
+            "value":"النقل إلى مجلد %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_drop",
+            "value":"تم وضع %1$s في الصف %2$s والعمود %3$s",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

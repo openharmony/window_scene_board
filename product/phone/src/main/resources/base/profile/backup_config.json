@@ -1,0 +1,29 @@
+{
+  "allowToBackupRestore": true,
+  "fullBackupOnly": true,
+  "supportScene": "next2next,ohos2next",
+  "requireCompatibility": true,
+  "extraInfo": {
+    "supportScene": [
+      "ohos2next",
+      "next2next"
+    ]
+  },
+  "includes": [
+    "data/storage/el1/database/",
+    "data/storage/el1/base/haps/phone_sceneboard/preferences/DESKTOP_LAYOUT_INFO",
+    "data/storage/el1/base/haps/phone_sceneboard/preferences/GestureDockPreference",
+    "data/storage/el1/base/haps/phone_sceneboard/preferences/launcher_preferences",
+    "data/storage/el1/base/haps/phone_sceneboard/preferences/LauncherLayoutCacheUtil",
+    "data/storage/el1/base/haps/pad_sceneboard/preferences/DESKTOP_LAYOUT_INFO",
+    "data/storage/el1/base/haps/pad_sceneboard/preferences/GestureDockPreference",
+    "data/storage/el1/base/haps/pad_sceneboard/preferences/launcher_preferences",
+    "data/storage/el1/base/haps/pad_sceneboard/preferences/LauncherLayoutCacheUtil",
+    "data/storage/el1/base/preferences/DesktopSetting",
+    "data/storage/el2/base/preferences/",
+    "data/storage/el2/database/",
+    "data/storage/el2/base/temp/live_view_data_migration.json",
+    "data/storage/el2/base/temp/notification_data_migration.json",
+    "data/storage/el2/base/temp/status_bar_data_migration.json"
+  ]
+}

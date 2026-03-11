@@ -1,0 +1,36 @@
+{
+  "apiType": 'stageMode',
+  "buildOption": {
+    "sourceOption": {
+    },
+    "napiLibFilterOption": {
+      "excludes": [
+        "**/libpaf_logger_2503302.so",
+        "**/libflayout.so"
+      ]
+    }
+  },
+  "buildOptionSet": [
+    {
+      "name": "release",
+      "arkOptions": {
+        "obfuscation": {
+          "ruleOptions": {
+            "enable": true,
+            "files": [
+              "./obfuscation-rules.txt"
+            ]
+          }
+        }
+      }
+    },
+  ],
+  "targets": [
+    {
+      "name": "default",
+    },
+    {
+      "name": "ohosTest",
+    }
+  ]
+}

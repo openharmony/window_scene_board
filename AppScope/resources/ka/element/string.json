@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"app_name",
+            "value":"საწყისი ეკრანი და ციფერბლატები",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

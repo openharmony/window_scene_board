@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"app_name",
+            "value":"Startbildschirm und Watchfaces",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

@@ -1,0 +1,15 @@
+{
+  "maxAddAppCount": 8,
+  "addAppBlacklist": [
+    "com.ohos.appgallery",
+    "com.ohos.thememanager",
+    "com.ohos.parentcontrol",
+    "com.easy.ohos.abroad",
+    "com.easy.transfer.abroad",
+    "com.easy.feedback.abroad",
+    "com.openharmony.baseexperience"
+  ],
+  "iconBadgeInvisibleList": [
+    "com.ohos.settings"
+  ]
+}

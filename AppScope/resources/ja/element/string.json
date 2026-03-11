@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"app_name",
+            "value":"ホーム画面と文字盤",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

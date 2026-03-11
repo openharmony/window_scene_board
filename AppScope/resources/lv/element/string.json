@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"app_name",
+            "value":"Sākuma ekrāns un veidoli",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

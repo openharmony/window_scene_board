@@ -1,0 +1,13 @@
+{
+  "name": "@ohos/frameworkwrapper",
+  "version": "1.0.0",
+  "description": "Please describe the basic information.",
+  "main": "./src/main/ets/TsIndex.ts",
+  "author": "",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@ohos/basicutils": "../basicutils",
+    "@ohos/commonconstants": "../commonconstants",
+    "@ohos/windowsceneinterfaces": "../windowsceneinterfaces"
+  }
+}

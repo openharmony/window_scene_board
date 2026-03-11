@@ -1,0 +1,4 @@
+{
+  "name": "HdsVisualComponent",
+  "attrs": ["scene", "expectedFrameRateRange"]
+}

@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"app_name",
+            "value":"Écran d'accueil & cadrans de montre",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

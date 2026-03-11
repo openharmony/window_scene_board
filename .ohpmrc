@@ -1,0 +1,4 @@
+strict_ssl=false
+resolve_conflict=true
+retry_times=5
+fetch_timeout=120000

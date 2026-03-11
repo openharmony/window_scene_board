@@ -1,0 +1,9 @@
+{
+  "module": {
+    "name": "pcbase_test",
+    "type": "har",
+    "deviceTypes": [
+      "tablet"
+    ]
+  }
+}

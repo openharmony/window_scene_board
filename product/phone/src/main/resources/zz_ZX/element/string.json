@@ -1,0 +1,920 @@
+{
+    "string":[
+        {
+            "name":"control_center_complex_toggle_nfc_mode_title",
+            "value":"[TS_864091]_NFC"
+        },
+        {
+            "name":"control_center_complex_toggle_ring_mode_title_off",
+            "value":"[TS_864148]_Silent"
+        },
+        {
+            "name":"airplane_mode",
+            "value":"[TS_863956]_Airplane mode"
+        },
+        {
+            "name":"control_center_complex_toggle_ring_mode_title_vibration",
+            "value":"[TS_863869]_Vibration"
+        },
+        {
+            "name":"control_center_complex_toggle_bluetooth_title",
+            "value":"[TS_863887]_Bluetooth"
+        },
+        {
+            "name":"openharmony_multiwindow_not_support_multiwindows",
+            "value":"[TS_869898]_%1$s does not support multi window display."
+        },
+        {
+            "name":"openharmony_multiwindow_not_support_split",
+            "value":"[TS_869895]_%1$s does not support split-screen display."
+        },
+        {
+            "name":"openharmony_multiwindow_not_support_split_ratio",
+            "value":"[TS_911909]_Screen sizes can't be adjusted for games."
+        },
+        {
+            "name":"openharmony_multiwindow_click_application_form_split_screen",
+            "value":"[TS_869902]_Open another app for split-screen view."
+        },
+        {
+            "name":"openharmony_multiwindow_not_support_float_window",
+            "value":"[TS_873725]_%1$s can't be opened in a floating window."
+        },
+        {
+            "name":"openharmony_multiwindow_app_is_open",
+            "value":"[TS_881042]_App is already open."
+        },
+        {
+            "name":"Desktop_setting",
+            "value":"[TS_881711]_Home screen settings"
+        },
+        {
+            "name":"Desktop_slide",
+            "value":"[TS_881713]_Swipe down to search"
+        },
+        {
+            "name":"entry_MainAbility",
+            "value":"[TS_864087]_SceneBoard"
+        },
+        {
+            "name":"uninstall_success",
+            "value":"[TS_863848]_Uninstalled."
+        },
+        {
+            "name":"uninstall_failed",
+            "value":"[TS_863852]_Uninstallation failed."
+        },
+        {
+            "name":"delete_app",
+            "value":"[TS_864170]_Remove"
+        },
+        {
+            "name":"layout_style",
+            "value":"[TS_864154]_Layout Style"
+        },
+        {
+            "name":"control_center_complex_toggle_location_title",
+            "value":"[TS_864007]_Location"
+        },
+        {
+            "name":"rename_folder",
+            "value":"[TS_864014]_Rename"
+        },
+        {
+            "name":"remove_app_from_folder",
+            "value":"[TS_863989]_remove app from folder"
+        },
+        {
+            "name":"No_running_apps_recently",
+            "value":"[TS_863963]_No recent apps"
+        },
+        {
+            "name":"permission_reason_receive_install",
+            "value":"[TS_878770]_Used to receive common event of downloading status from appGallery"
+        },
+        {
+            "name":"control_center_complex_toggle_ring_mode_title_on",
+            "value":"[TS_863908]_Sound"
+        },
+        {
+            "name":"mainability_description",
+            "value":"[TS_864123]_ETS_Empty Feature Ability"
+        },
+        {
+            "name":"add_to_desktop",
+            "value":"[TS_863917]_Add to home screen"
+        },
+        {
+            "name":"folder_name_oh",
+            "value":"[TS_968023]_Huawei Apps"
+        },
+        {
+            "name":"folder_name_preload",
+            "value":"[TS_1047815]_Top Apps"
+        },
+        {
+            "name":"app_center_menu_add_dock",
+            "value":"[TS_863954]_Add to dock"
+        },
+        {
+            "name":"remove_form_dialog_content",
+            "value":"[TS_863932]_You can add this widget again from the app's quick action menu."
+        },
+        {
+            "name":"duplicate_add",
+            "value":"[TS_864197]_This has already been added."
+        },
+        {
+            "name":"get_installed_bundle_list_reason",
+            "value":"[TS_864191]_SystemUI GetAllBundleInfo Request"
+        },
+        {
+            "name":"launcher_layout",
+            "value":"[TS_864234]_Launcher Layout"
+        },
+        {
+            "name":"disable_uninstall",
+            "value":"[TS_863978]_Uninstallation not allowed."
+        },
+        {
+            "name":"uninstall",
+            "value":"[TS_863986]_Uninstall"
+        },
+        {
+            "name":"add",
+            "value":"[TS_864068]_Add"
+        },
+        {
+            "name":"delete_form",
+            "value":"[TS_863893]_Remove"
+        },
+        {
+            "name":"new_folder_name",
+            "value":"[TS_864160]_Folder %1$d"
+        },
+        {
+            "name":"continue_mission_waiting",
+            "value":"[TS_863943]_Handing over…"
+        },
+        {
+            "name":"app_center_menu_add_desktop",
+            "value":"[TS_864190]_Add to home screen"
+        },
+        {
+            "name":"permission_reason_manage_install",
+            "value":"[TS_878772]_Used to call methods of pause, resume downloading from appGallery"
+        },
+        {
+            "name":"cancel",
+            "value":"[TS_864202]_Cancel"
+        },
+        {
+            "name":"continue_mission_fail",
+            "value":"[TS_864001]_Handover failed."
+        },
+        {
+            "name":"continue_mission_fail_close_hotspot_and_try_again",
+            "value":"[TS_958496]_Handover failed. Disable the personal hotspot on %1$s and try again."
+        },
+        {
+            "name":"continue_mission_fail_device_connecting_to_another_device",
+            "value":"[TS_958497]_Handover failed. %1$s is interacting with another device."
+        },
+        {
+            "name":"app_menu_open",
+            "value":"[TS_864153]_Open"
+        },
+        {
+            "name":"Desktop_individuation",
+            "value":"[TS_899850]_Home screen & style"
+        },
+        {
+            "name":"apply_access_bluetooth_reason",
+            "value":"[TS_906040]_Apply ACCESS_BLUETOOTH permission"
+        },
+        {
+            "name":"openharmony_multiwindow_not_support_vertical_split_new",
+            "value":"[TS_939801]_%1$s does not support vertical split screen."
+        },
+        {
+            "name":"openharmony_multiwindow_not_support_horizontal_split_new",
+            "value":"[TS_939800]_%1$s does not support horizontal split screen."
+        },
+        {
+            "name":"is_delete_form",
+            "value":"[TS_864063]_Remove this widget?"
+        },
+        {
+            "name":"MultiWindow_Mid_View_contents",
+            "value":"[TS_929471]_From split-screen view, swipe up or resize the windows to enter parallel-window view."
+        },
+        {
+            "name":"MultiWindow_pip_switch_title",
+            "value":"[TS_925942]_Picture-in-picture"
+        },
+        {
+            "name":"aod_list_title_more_style",
+            "value":"[TS_922847]_More AODs"
+        },
+        {
+            "name":"MultiWindow_floating_windows_title",
+            "value":"[TS_925945]_Floating window"
+        },
+        {
+            "name":"MultiWindow_dock_title",
+            "value":"[TS_925933]_Multi-window dock"
+        },
+        {
+            "name":"MultiWindow_floating_windows_contents",
+            "value":"[TS_925940]_Open apps in floating windows and use gestures to minimize, maximize, or close them."
+        },
+        {
+            "name":"MultiWindow_Mid_View_title",
+            "value":"[TS_929475]_Parallel-window view"
+        },
+        {
+            "name":"MultiWindow_pip_switch_desc",
+            "value":"[TS_925936]_When this is on, video and MeeTime calls will continue in a mini window when you open another app or return to the home screen."
+        },
+        {
+            "name":"permission_reason_access_near_link",
+            "value":"[TS_927765]_for accessing the near link interface"
+        },
+        {
+            "name":"next_step",
+            "value":"[TS_929474]_Next"
+        },
+        {
+            "name":"learn_more",
+            "value":"[TS_929477]_Learn more"
+        },
+        {
+            "name":"MultiWindow_change_views_title",
+            "value":"[TS_925937]_Quickly change views"
+        },
+        {
+            "name":"MultiWindow_split_screen_contents",
+            "value":"[TS_925932]_Drag the top bar to flip the windows or open a floating window. Resize by dragging the center."
+        },
+        {
+            "name":"MultiWindow_change_views_contents",
+            "value":"[TS_925939]_Swipe to the top right for a floating window or the top left for split screen."
+        },
+        {
+            "name":"MultiWindow_dock_contents",
+            "value":"[TS_925934]_Swipe in from the edge to open the dock. Tap an app to open a floating window. Or drag an app into the screen to enter split-screen view."
+        },
+        {
+            "name":"System",
+            "value":"[TS_922798]_System"
+        },
+        {
+            "name":"MultiWindow_title",
+            "value":"[TS_925935]_Multi-window"
+        },
+        {
+            "name":"MultiWindow_dock_switch_contents",
+            "value":"[TS_925946]_Swipe in from the edge of the screen, hold, then release to open the dock."
+        },
+        {
+            "name":"know",
+            "value":"[TS_929476]_Got it"
+        },
+        {
+            "name":"MultiWindow_split_screen_title",
+            "value":"[TS_925938]_Split-screen"
+        },
+        {
+            "name":"MultiWindow_dock_switch_title",
+            "value":"[TS_925943]_Multi-window dock"
+        },
+        {
+            "name":"No_available_window",
+            "value":"[TS_876386]_No app window available"
+        },
+        {
+            "name":"app_menu_exit",
+            "value":"[TS_934958]_Quit"
+        },
+        {
+            "name":"MultiWindow_guidance_floating_tip",
+            "value":"[TS_931376]_Tap to view controls."
+        },
+        {
+            "name":"MultiWindow_guidance_split_tip",
+            "value":"[TS_931381]_Tap to view controls."
+        },
+        {
+            "name":"aod_dialog_title",
+            "value":"[TS_934952]_Always On Display"
+        },
+        {
+            "name":"aod_dialog_content",
+            "value":"[TS_934949]_Always On Display needs to be enabled. Enable now?"
+        },
+        {
+            "name":"aod_cancel",
+            "value":"[TS_934962]_Cancel"
+        },
+        {
+            "name":"aod_enable",
+            "value":"[TS_934963]_Enable"
+        },
+        {
+            "name":"MultiWindow_guidance_button_next",
+            "value":"[TS_931374]_Next"
+        },
+        {
+            "name":"MultiWindow_guidance_split_swap_title",
+            "value":"[TS_931382]_Flip the windows"
+        },
+        {
+            "name":"MultiWindow_guidance_split_to_float_title",
+            "value":"[TS_931372]_Split-screen to floating window"
+        },
+        {
+            "name":"MultiWindow_guidance_button_finish",
+            "value":"[TS_931379]_Done"
+        },
+        {
+            "name":"MultiWindow_guidance_split_swap_content_phone",
+            "value":"[TS_937415]_Touch & hold the top bar on a window, then drag it over another window."
+        },
+        {
+            "name":"openharmony_multiwindow_not_support_split_for_folded_new",
+            "value":"[TS_941846]_%1$s not available in split-screen while device is folded."
+        },
+        {
+            "name":"MultiWindow_guidance_float_to_split_title",
+            "value":"[TS_931373]_Floating window to split-screen"
+        },
+        {
+            "name":"MultiWindow_guidance_float_to_split_content",
+            "value":"[TS_931378]_Touch & hold the top bar on a window, then drag to enter split-screen view."
+        },
+        {
+            "name":"MultiWindow_guidance_split_to_float_content_phone",
+            "value":"[TS_937413]_Touch & hold the top bar on a window, then drag to switch to a floating window."
+        },
+        {
+            "name":"MultiWindow_guidance_button_know",
+            "value":"[TS_931377]_Got it"
+        },
+        {
+            "name":"MultiWindow_guidance_split_swap_content_fold",
+            "value":"[TS_937416]_Touch & hold the top bar on a window, then drag it over another window."
+        },
+        {
+            "name":"MultiWindow_guidance_split_to_float_content_fold",
+            "value":"[TS_937414]_Touch & hold the top bar on a window, then drag to switch to a floating window."
+        },
+        {
+            "name":"MultiWindow_guidance_button_quit",
+            "value":"[TS_931384]_Later"
+        },
+        {
+            "name":"MultiWindow_guidance_button_more",
+            "value":"[TS_931380]_Learn more"
+        },
+        {
+            "name":"folder_name_tools",
+            "value":"[TS_943119]_Tools"
+        },
+        {
+            "name":"aod_modify_mode_smart_text",
+            "value":"[TS_945323]_This Always On Display only supports Smart mode. Your display mode has been automatically switched."
+        },
+        {
+            "name":"aod_poup_confirm",
+            "value":"[TS_945322]_OK"
+        },
+        {
+            "name":"openharmony_multiwindow_horizontal_split",
+            "value":"[TS_949924]_Split horizontally"
+        },
+        {
+            "name":"openharmony_multiwindow_vertical_split",
+            "value":"[TS_949922]_Split vertically"
+        },
+        {
+            "name":"openharmony_multiwindow_horizontal_exchange",
+            "value":"[TS_949921]_Flip top/bottom"
+        },
+        {
+            "name":"openharmony_multiwindow_save_group",
+            "value":"[TS_949925]_Save combo"
+        },
+        {
+            "name":"openharmony_multiwindow_vertical_exchange",
+            "value":"[TS_949923]_Flip left/right"
+        },
+        {
+            "name":"running_apps_recently",
+            "value":"[TS_943915]_Recent apps"
+        },
+        {
+            "name":"landscape_startup_title",
+            "value":"[TS_950940]_App scaling options"
+        },
+        {
+            "name":"compatible_application_display",
+            "value":"[TS_1074016]_Compatible apps"
+        },
+        {
+            "name":"style_mode_label_medium",
+            "value":"[TS_954083]_Medium"
+        },
+        {
+            "name":"landscape_view_force",
+            "value":"[TS_950942]_Force landscape"
+        },
+        {
+            "name":"restoring_tips_message",
+            "value":"[TS_951863]_This is unavailable while data is being restored. Try again later."
+        },
+        {
+            "name":"style_mode_label_small",
+            "value":"[TS_954081]_Small (%1$d:%2$d)"
+        },
+        {
+            "name":"style_mode_label_split",
+            "value":"[TS_950934]_Columns"
+        },
+        {
+            "name":"landscape_desc_force",
+            "value":"[TS_950941]_Apps will open in landscape view, even if they don't support it. You can change the aspect ratio below."
+        },
+        {
+            "name":"landscape_app_full_ratio",
+            "value":"[TS_950943]_Full screen ratio"
+        },
+        {
+            "name":"restoring_tips_btn",
+            "value":"[TS_951862]_OK"
+        },
+        {
+            "name":"style_mode_label_full",
+            "value":"[TS_950937]_Fill screen"
+        },
+        {
+            "name":"app_restored",
+            "value":"[TS_958832]_App has been restored."
+        },
+        {
+            "name":"recover_Theme_App_massage",
+            "value":"[TS_958833]_Themes needs to be installed to use this feature."
+        },
+        {
+            "name":"recover",
+            "value":"[TS_958835]_Restore"
+        },
+        {
+            "name":"recover_Theme_App",
+            "value":"[TS_958834]_Restore the Themes app?"
+        },
+        {
+            "name":"force_split_tips",
+            "value":"[TS_966963]_Column view will take effect the next time the app is opened."
+        },
+        {
+            "name":"force_split2full_tips",
+            "value":"[TS_993023]_Fill screen will take effect the next time the app is opened."
+        },
+        {
+            "name":"out_pcmod_tips",
+            "value":"[TS_971214]_To exit this mode, first close %s."
+        },
+        {
+            "name":"confirm_pcmod_tips",
+            "value":"[TS_971215]_OK"
+        },
+        {
+            "name":"covertheme_settings_title",
+            "value":"[TS_971295]_Home screen, cover screen & style"
+        },
+        {
+            "name":"display_brightness",
+            "value":"[TS_972948]_Display & brightness"
+        },
+        {
+            "name":"not_harmony_apps",
+            "value":"[TS_972531]_Coming Soon"
+        },
+        {
+            "name":"gesture_dock_add_limit",
+            "value":"[TS_971638]_A maximum of %1$d applications can be added."
+        },
+        {
+            "name":"MultiWindow_guidance_mid_multi_finger_knead_title",
+            "value":"[TS_975926]_Enter/Exit full screen"
+        },
+        {
+            "name":"MultiWindow_guidance_split_adjust_to_mid_title",
+            "value":"[TS_975927]_Enter Multitask view by resizing windows"
+        },
+        {
+            "name":"title_recently_use",
+            "value":"[TS_976779]_Recents"
+        },
+        {
+            "name":"MultiWindow_guidance_mid_slid_delete_title",
+            "value":"[TS_975932]_Swipe to close apps"
+        },
+        {
+            "name":"MultiWindow_guidance_mid_swap_title",
+            "value":"[TS_975923]_Swap windows"
+        },
+        {
+            "name":"title_all_apps",
+            "value":"[TS_976778]_All apps"
+        },
+        {
+            "name":"MultiWindow_guidance_one_step_mid_content",
+            "value":"[TS_975936]_Swipe from the bottom of the screen to the top, then select an app."
+        },
+        {
+            "name":"MultiWindow_guidance_mid_three_finger_cross_slip_title",
+            "value":"[TS_975922]_Switch between apps"
+        },
+        {
+            "name":"title_search_result",
+            "value":"[TS_976775]_Results"
+        },
+        {
+            "name":"MultiWindow_guidance_mid_three_finger_cross_slip_content",
+            "value":"[TS_975933]_Swipe left or right with three fingers."
+        },
+        {
+            "name":"search_apps",
+            "value":"[TS_976776]_Search apps"
+        },
+        {
+            "name":"title_support_multiWindow",
+            "value":"[TS_976777]_More"
+        },
+        {
+            "name":"split_to_float",
+            "value":"[TS_974589]_Floating window"
+        },
+        {
+            "name":"dragging_to_mid_tip",
+            "value":"[TS_1002548]_Release to enter Multitask view"
+        },
+        {
+            "name":"dragging_to_full_tip",
+            "value":"[TS_1002550]_Release to enter full-screen view"
+        },
+        {
+            "name":"MultiWindow_guidance_split_adjust_to_mid_content",
+            "value":"[TS_975925]_In split-screen view, drag the separating line until the view changes."
+        },
+        {
+            "name":"MultiWindow_mid_view_guidance_floating_tip",
+            "value":"[TS_975934]_Drag here to resize the windows."
+        },
+        {
+            "name":"MultiWindow_guidance_mid_multi_finger_knead_content",
+            "value":"[TS_975929]_Spread your thumb and three fingers apart, or pinch them together."
+        },
+        {
+            "name":"MultiWindow_guidance_mid_slid_delete_content",
+            "value":"[TS_975930]_Touch & hold the top bar on a window, then quickly swipe toward the bottom of the screen."
+        },
+        {
+            "name":"MultiWindow_guidance_one_step_mid_title",
+            "value":"[TS_975924]_Enter Multitask view by swiping"
+        },
+        {
+            "name":"MultiWindow_guidance_mid_swap_content",
+            "value":"[TS_975937]_Touch & hold the top bar on a window, then drag it over another window."
+        },
+        {
+            "name":"MultiWindow_guidance_float_to_split_content_fold",
+            "value":"[TS_975935]_Touch & hold the top bar on a window, then drag to enter split-screen view."
+        },
+        {
+            "name":"flip_the_phone",
+            "value":"[TS_968327]_Flip to turn on flashlight"
+        },
+        {
+            "name":"close_flashlight_tips",
+            "value":"[TS_966391]_Press the Power button to turn off the flashlight"
+        },
+        {
+            "name":"enter_pc_mode_tips",
+            "value":"[TS_980465]_Free windows mode is about to be enabled. This mode is only available in landscape orientation."
+        },
+        {
+            "name":"keyboard_panel_smart_access_text",
+            "value":"[TS_982993]_Other input modes, button"
+        },
+        {
+            "name":"keyboard_common_access_text",
+            "value":"[TS_982997]_Standard keyboard, button"
+        },
+        {
+            "name":"keyboard_panel_world_access_text",
+            "value":"[TS_982998]_Switch keyboards, button"
+        },
+        {
+            "name":"keyboard_one_hand_access_text",
+            "value":"[TS_982996]_One-handed keyboard, button"
+        },
+        {
+            "name":"keyboard_thumb_access_text",
+            "value":"[TS_982994]_Thumb keyboard, button"
+        },
+        {
+            "name":"keyboard_float_access_text",
+            "value":"[TS_982995]_Floating keyboard, button"
+        },
+        {
+            "name":"pip_play_fast_backward",
+            "value":"[TS_992748]_Go back"
+        },
+        {
+            "name":"pip_video_player",
+            "value":"[TS_992747]_Mini window playing video"
+        },
+        {
+            "name":"pip_window_close",
+            "value":"[TS_992744]_Playback controls have been hidden"
+        },
+        {
+            "name":"pip_window_open",
+            "value":"[TS_992740]_Playback controls are being shown"
+        },
+        {
+            "name":"pip_play_previous",
+            "value":"[TS_992749]_Play previous"
+        },
+        {
+            "name":"pip_play",
+            "value":"[TS_992742]_Play"
+        },
+        {
+            "name":"pip_play_next",
+            "value":"[TS_992745]_Play next"
+        },
+        {
+            "name":"pip_play_fast_forward",
+            "value":"[TS_992738]_Fast forward"
+        },
+        {
+            "name":"pip_window_show",
+            "value":"[TS_992746]_Mini window is being shown"
+        },
+        {
+            "name":"pip_restore",
+            "value":"[TS_992741]_Restore to larger window"
+        },
+        {
+            "name":"pip_close",
+            "value":"[TS_992739]_Close mini window"
+        },
+        {
+            "name":"pip_play_pause",
+            "value":"[TS_992743]_Pause"
+        },
+        {
+            "name":"already_exist_pip_window_toast",
+            "value":"[TS_995670]_Close the existing mini window first."
+        },
+        {
+            "name":"maximize_window",
+            "value":"[TS_999527]_Maximize"
+        },
+        {
+            "name":"replace_window",
+            "value":"[TS_999528]_Swap"
+        },
+        {
+            "name":"add_window",
+            "value":"[TS_999526]_Add"
+        },
+        {
+            "name":"close_window",
+            "value":"[TS_999529]_Close"
+        },
+        {
+            "name":"title_bar_menu_maximize_window",
+            "value":"[TS_1042274]_Maximize"
+        },
+        {
+            "name":"title_bar_menu_close_window",
+            "value":"[TS_1042275]_Close"
+        },
+        {
+            "name":"title_bar_menu_minimize_window",
+            "value":"[TS_1042273]_Minimize"
+        },
+        {
+            "name":"title_bar_menu_enlarge_window",
+            "value":"[TS_1045011]_Enlarge"
+        },
+        {
+            "name":"title_bar_menu_shrink_window",
+            "value":"[TS_1045012]_Shrink"
+        },
+        {
+            "name":"openharmony_multiwindow_click_application_form_midScene_waiting_state",
+            "value":"[TS_1001225]_Tap an app icon to add to Multitask view."
+        },
+        {
+            "name":"MultiWindow_guidance_mid_show_not_support_small_step",
+            "value":"[TS_1002549]_%1$s does not support mini window display."
+        },
+        {
+            "name":"openharmony_multiwindow_does_not_support_panoramic_multiwindow_in_current_state",
+            "value":"[TS_1002963]_Multitask view not supported."
+        },
+        {
+            "name":"openharmony_multiwindow_does_not_support_panoramic_multiwindow",
+            "value":"[TS_1002826]_This app doesn't support Multitask view."
+        },
+        {
+            "name":"openharmony_multiwindow_back_to_middle_scene_using_gesture",
+            "value":"[TS_1001358]_Pinch four fingers together to return to Multitask view."
+        },
+        {
+            "name":"mid_scene_tip_label",
+            "value":"[TS_1001224]_Release to enter Multitask view"
+        },
+        {
+            "name":"minimize_window",
+            "value":"[TS_998642]_Minimize"
+        },
+        {
+            "name":"split_screen",
+            "value":"[TS_998641]_Split screen"
+        },
+        {
+            "name":"switch_floating_window",
+            "value":"[TS_998640]_Floating window"
+        },
+        {
+            "name":"continue",
+            "value":"[TS_1015987]_Next"
+        },
+        {
+            "name":"gesture_return",
+            "value":"[TS_1015986]_Go back"
+        },
+        {
+            "name":"gesture_return_desktop",
+            "value":"[TS_1015988]_Return to home screen"
+        },
+        {
+            "name":"gesture_enter_recent_task",
+            "value":"[TS_1015985]_View recent tasks"
+        },
+        {
+            "name":"app_locked",
+            "value":"[TS_1014285]_%s is locked"
+        },
+        {
+            "name":"recent_unlock",
+            "value":"[TS_1014286]_Unlock %s"
+        },
+        {
+            "name":"unlock_app",
+            "value":"[TS_1016749]_%s is unlocked"
+        },
+        {
+            "name":"lock_app",
+            "value":"[TS_1016750]_Locked %s"
+        },
+        {
+            "name":"MultiWindow_guidance_mid_show_not_support_adjust_window",
+            "value":"[TS_1015876]_%1$s window doesn't support resizing."
+        },
+        {
+            "name":"MultiWindow_guidance_adjust_mid_window_title",
+            "value":"[TS_1020926]_Adjust windows"
+        },
+        {
+            "name":"MultiWindow_guidance_mid_add_window_title",
+            "value":"[TS_1020925]_Add a new window"
+        },
+        {
+            "name":"MultiWindow_guidance_mid_add_window_content",
+            "value":"[TS_1020924]_You can add another window to this group from the menu at the top."
+        },
+        {
+            "name":"MultiWindow_guidance_adjust_mid_window_content",
+            "value":"[TS_1022469]_Drag to resize windows."
+        },
+        {
+            "name":"MultiWindow_guidance_focused_switch_title_fold",
+            "value":"[TS_1003711]_Switch windows"
+        },
+        {
+            "name":"MultiWindow_guidance_focused_switch_content_fold",
+            "value":"[TS_1003712]_Tap a window to select it."
+        },
+        {
+            "name":"one_hand_mode",
+            "value":"[TS_1021111]_One-Handed mode"
+        },
+        {
+            "name":"one_hand_mode_exit",
+            "value":"[TS_1021110]_Tap the blank area to exit."
+        },
+        {
+            "name":"force_split2other",
+            "value":"[TS_1015504]_Aspect ratio changed. There may be display issues."
+        },
+        {
+            "name":"one_hand_mode_accessibility_str_entry_setting",
+            "value":"[TS_1042172]_Settings"
+        },
+        {
+            "name":"one_hand_compatibility_mode_prompt_string",
+            "value":"[TS_1047483]_If you experience display issues, try relaunching the app."
+        },
+        {
+            "name":"floating_three_button_navigation",
+            "value":"[TS_1044982]_Floating navigation controls"
+        },
+        {
+            "name":"floating_three_button_navigation_detail",
+            "value":"[TS_1044980]_Drag the navigation keys to reposition them."
+        },
+        {
+            "name":"one_handed_mode_diag_title",
+            "value":"[TS_1049481]_One-handed mode"
+        },
+        {
+            "name":"one_handed_mode_diag_content",
+            "value":"[TS_1049479]_To enter One-handed mode, slide your finger along the bottom of the screen and briefly hold it there."
+        },
+        {
+            "name":"one_handed_mode_diag_confirm",
+            "value":"[TS_1049478]_Learn more"
+        },
+        {
+            "name":"one_handed_mode_diag_cancel",
+            "value":"[TS_1049480]_Got it"
+        },
+        {
+            "name":"dragging_to_one_to_two_split_tip",
+            "value":"[TS_1058293]_Release to enter %1$d:%2$d split screen"
+        },
+        {
+            "name":"dragging_to_two_to_one_split_tip",
+            "value":"[TS_1058292]_Release to enter %2$d:%1$d split screen"
+        },
+        {
+            "name":"forbid_pip_window_size_adjust",
+            "value":"[TS_1061869]_Window size can't be adjusted on cover screen."
+        },
+        {
+            "name":"openharmony_multiwindow_minimize_all_float_due_to_rss",
+            "value":"[TS_1067048]_To ensure a smooth experience, the floating window has been tucked away to the side."
+        },
+        {
+            "name":"openharmony_multiwindow_not_support_split_this_way_currently",
+            "value":"[TS_1082137]_In your device's current form, %1$s can't be opened in split-screen in this way."
+        },
+        {
+            "name":"openharmony_multiwindow_not_support_split_currently",
+            "value":"[TS_1082138]_In your device's current form, %1$s does not support split-screen."
+        },
+        {
+            "name":"openharmony_multiwindow_not_support_change_split_ratio",
+            "value":"[TS_1084021]_Can't adjust %1$s window ratio in split-screen view."
+        },
+        {
+            "name":"enter_free_windows_tips",
+            "value":"[TS_1094767]_For free windows mode, rotate your device to landscape orientation."
+        },
+        {
+            "name":"multi_window_force_switch_title",
+            "value":"[TS_1101140]_Compatibility mode"
+        },
+        {
+            "name":"creation_results",
+            "value":"[TS_1111467]_Font result"
+        },
+        {
+            "name":"creation_results_apply",
+            "value":"[TS_1111471]_Apply"
+        },
+        {
+            "name":"content_creation",
+            "value":"[TS_1111474]_Creating font…"
+        },
+        {
+            "name":"desktop_layout",
+            "value":"[TS_929263]_Layout"
+        },
+        {
+            "name":"auto_align",
+            "value":"[TS_929277]_Auto-align"
+        },
+        {
+            "name":"auto_align_content",
+            "value":"[TS_929268]_Automatically fill empty spaces when apps are removed."
+        }
+    ]
+}

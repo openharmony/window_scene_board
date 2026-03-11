@@ -1,0 +1,486 @@
+{
+  "version": {
+    "curVersion": "1.0.7"
+  },
+  "searchPages": [
+    {
+      "pageTitle": "$string:Desktop_setting",
+      "pageDescription": "",
+      "entryKey": "desktop_settings",
+      "params": "",
+      "path": [
+        "$string:Desktop_individuation" ,"$string:Desktop_setting"
+      ],
+      "supportDevices": [
+        "phone",
+        "tablet",
+        "2in1"
+      ] ,
+      "searchItems": [
+        {
+          "itemName": "desktop_setting",
+          "itemTitle": "$string:Desktop_setting",
+          "itemDescription": "Desktop setting",
+          "icon": "",
+          "checkItem": {
+            "type": "function",
+            "checkKey": "isSmallFoldProduct",
+            "value": "false"
+          }
+        },
+        {
+          "itemName": "desktop_slide",
+          "itemTitle": "$string:Desktop_slide",
+          "itemDescription": "Desktop slide",
+          "icon": "",
+          "checkItem": {
+            "type": "function",
+            "checkKey": "isSmallFoldProduct",
+            "value": "false"
+          }
+        },
+        {
+          "itemName": "intelligent_settings",
+          "itemTitle": "$string:intelligent_settings",
+          "itemDescription": "Intelligent Setting",
+          "icon": "",
+          "checkItem": {
+            "type": "function",
+            "checkKey": "isSmallFoldProduct",
+            "value": "false"
+          }
+        },
+        {
+          "itemName": "auto_align",
+          "itemTitle": "$string:auto_align",
+          "itemDescription": "Auto align",
+          "icon": "",
+          "checkItem": {
+            "type": "function",
+            "checkKey": "isSmallFoldProduct",
+            "value": "false"
+          }
+        },
+        {
+          "itemName": "lock_layout",
+          "itemTitle": "$string:lock_layout",
+          "itemDescription": "Lock layout",
+          "icon": "",
+          "checkItem": {
+            "type": "function",
+            "checkKey": "isSmallFoldProduct",
+            "value": "false"
+          }
+        },
+        {
+          "itemName": "icon_settings",
+          "itemTitle": "$string:icon_settings",
+          "itemDescription": "Icons",
+          "icon": "",
+          "checkItem": {
+            "type": "function",
+            "checkKey": "isSmallFoldProduct",
+            "value": "false"
+          }
+        }
+      ]
+    },
+    {
+      "pageTitle": "$string:magic_screen",
+      "pageDescription": "",
+      "entryKey": "theme_settings",
+      "params": "",
+      "path": [
+        "$string:covertheme_settings_title"
+      ],
+      "supportDevices": [
+        "phone"
+      ] ,
+      "searchItems": [
+        {
+          "itemName": "magic_screen",
+          "itemTitle": "$string:magic_screen",
+          "itemDescription": "Dual preview",
+          "icon": "",
+          "checkItem": {
+            "type": "function",
+            "checkKey": "isSmallFoldProduct",
+            "value": "true"
+          }
+        }
+      ]
+    },
+    {
+      "pageTitle": "$string:Desktop_setting",
+      "pageDescription": "",
+      "entryKey": "desktop_settings",
+      "params": "",
+      "path": [
+        "$string:covertheme_settings_title" ,"$string:Desktop_setting"
+      ],
+      "supportDevices": [
+        "phone"
+      ] ,
+      "searchItems": [
+        {
+          "itemName": "desktop_setting",
+          "itemTitle": "$string:Desktop_setting",
+          "itemDescription": "Desktop setting",
+          "icon": "",
+          "checkItem": {
+            "type": "function",
+            "checkKey": "isSmallFoldProduct",
+            "value": "true"
+          }
+        },
+        {
+          "itemName": "desktop_slide",
+          "itemTitle": "$string:Desktop_slide",
+          "itemDescription": "Desktop slide",
+          "icon": "",
+          "checkItem": {
+            "type": "function",
+            "checkKey": "isSmallFoldProduct",
+            "value": "true"
+          }
+        },
+        {
+          "itemName": "intelligent_settings",
+          "itemTitle": "$string:intelligent_settings",
+          "itemDescription": "Intelligent Setting",
+          "icon": "",
+          "checkItem": {
+            "type": "function",
+            "checkKey": "isSmallFoldProduct",
+            "value": "true"
+          }
+        },
+        {
+          "itemName": "auto_align",
+          "itemTitle": "$string:auto_align",
+          "itemDescription": "Auto align",
+          "icon": "",
+          "checkItem": {
+            "type": "function",
+            "checkKey": "isSmallFoldProduct",
+            "value": "true"
+          }
+        },
+        {
+          "itemName": "lock_layout",
+          "itemTitle": "$string:lock_layout",
+          "itemDescription": "Lock layout",
+          "icon": "",
+          "checkItem": {
+            "type": "function",
+            "checkKey": "isSmallFoldProduct",
+            "value": "true"
+          }
+        },
+        {
+          "itemName": "icon_settings",
+          "itemTitle": "$string:icon_settings",
+          "itemDescription": "Icons",
+          "icon": "",
+          "checkItem": {
+            "type": "function",
+            "checkKey": "isSmallFoldProduct",
+            "value": "true"
+          }
+        }
+      ]
+    },
+    {
+      "pageTitle": "$string:aod_page_title",
+      "pageDescription": "",
+      "entryKey": "aod_settings_entry",
+      "params": "",
+      "path": [
+        "$string:Desktop_individuation",
+        "$string:aod_page_title"
+      ],
+      "supportDevices": [
+        "phone",
+        "tablet",
+        "2in1"
+      ],
+      "searchItems": [
+        {
+          "itemName": "aod_page_title",
+          "itemTitle": "$string:aod_page_title",
+          "itemDescription": "aod page title",
+          "icon": "",
+          "checkItem": {
+            "type": "function",
+            "checkKey": "isSmallFoldProduct",
+            "value": "false"
+          }
+        },
+        {
+          "itemName": "aod_switch_title",
+          "itemTitle": "$string:aod_switch_title",
+          "itemDescription": "aod switch",
+          "icon": "",
+          "checkItem": {
+            "type": "function",
+            "checkKey": "isSmallFoldProduct",
+            "value": "false"
+          }
+        },
+        {
+          "itemName": "aod_smart_display_mode_title",
+          "itemTitle": "$string:aod_smart_display_mode_title",
+          "itemDescription": "aod smart display mode title",
+          "icon": "",
+          "checkItem": {
+            "type": "function",
+            "checkKey": "isSmallFoldProduct",
+            "value": "false"
+          }
+        },
+        {
+          "itemName": "aod_timed_display_mode_title",
+          "itemTitle": "$string:aod_timed_display_mode_title",
+          "itemDescription": "aod timed display mode title",
+          "icon": "",
+          "checkItem": {
+            "type": "function",
+            "checkKey": "isSmallFoldProduct",
+            "value": "false"
+          }
+        },
+        {
+          "itemName": "aod_all_day_display_mode_title",
+          "itemTitle": "$string:aod_all_day_display_mode_title",
+          "itemDescription": "aod all day display mode title",
+          "icon": "",
+          "checkItem": {
+            "type": "function",
+            "checkKey": "isSmallFoldProduct",
+            "value": "false"
+          }
+        }
+      ]
+    },
+    {
+      "pageTitle": "$string:aod_page_title",
+      "pageDescription": "",
+      "entryKey": "aod_settings_entry",
+      "params": "",
+      "path": [
+        "$string:covertheme_settings_title",
+        "$string:aod_page_title"
+      ],
+      "supportDevices": [
+        "phone"
+      ],
+      "searchItems": [
+        {
+          "itemName": "aod_page_title",
+          "itemTitle": "$string:aod_page_title",
+          "itemDescription": "aod page title",
+          "icon": "",
+          "checkItem": {
+            "type": "function",
+            "checkKey": "isSmallFoldProduct",
+            "value": "true"
+          }
+        },
+        {
+          "itemName": "aod_switch_title",
+          "itemTitle": "$string:aod_switch_title",
+          "itemDescription": "aod switch",
+          "icon": "",
+          "checkItem": {
+            "type": "function",
+            "checkKey": "isSmallFoldProduct",
+            "value": "true"
+          }
+        },
+        {
+          "itemName": "aod_smart_display_mode_title",
+          "itemTitle": "$string:aod_smart_display_mode_title",
+          "itemDescription": "aod smart display mode title",
+          "icon": "",
+          "checkItem": {
+            "type": "function",
+            "checkKey": "isSmallFoldProduct",
+            "value": "true"
+          }
+        },
+        {
+          "itemName": "aod_timed_display_mode_title",
+          "itemTitle": "$string:aod_timed_display_mode_title",
+          "itemDescription": "aod timed display mode title",
+          "icon": "",
+          "checkItem": {
+            "type": "function",
+            "checkKey": "isSmallFoldProduct",
+            "value": "true"
+          }
+        },
+        {
+          "itemName": "aod_all_day_display_mode_title",
+          "itemTitle": "$string:aod_all_day_display_mode_title",
+          "itemDescription": "aod all day display mode title",
+          "icon": "",
+          "checkItem": {
+            "type": "function",
+            "checkKey": "isSmallFoldProduct",
+            "value": "true"
+          }
+        }
+      ]
+    },
+    {
+      "pageTitle": "$string:aod_style_title",
+      "pageDescription": "",
+      "entryKey": "aod_style_entry",
+      "params": "",
+      "path": [
+        "$string:Desktop_individuation",
+        "$string:aod_style_title"
+      ],
+      "supportDevices": [
+        "phone",
+        "tablet",
+        "2in1"
+      ],
+      "searchItems": [
+        {
+          "itemName": "aod_style_page",
+          "itemTitle": "$string:aod_style_title",
+          "itemDescription": "aod style page",
+          "icon": "",
+          "checkItem": {
+            "type": "function",
+            "checkKey": "isSmallFoldProduct",
+            "value": "false"
+          }
+        }
+      ]
+    },
+    {
+      "pageTitle": "$string:aod_style_title",
+      "pageDescription": "",
+      "entryKey": "aod_style_entry",
+      "params": "",
+      "path": [
+        "$string:covertheme_settings_title",
+        "$string:aod_style_title"
+      ],
+      "supportDevices": [
+        "phone"
+      ],
+      "searchItems": [
+        {
+          "itemName": "aod_style_page",
+          "itemTitle": "$string:aod_style_title",
+          "itemDescription": "aod style page",
+          "icon": "",
+          "checkItem": {
+            "type": "function",
+            "checkKey": "isSmallFoldProduct",
+            "value": "true"
+          }
+        }
+      ]
+    },
+    {
+      "pageTitle": "$string:MultiWindow_title",
+      "pageDescription": "",
+      "entryKey": "smart_multi_window",
+      "params": "",
+      "path": [
+        "$string:System",
+        "$string:MultiWindow_title"
+      ],
+      "supportDevices": [
+        "phone",
+        "tablet",
+        "2in1"
+      ],
+      "searchItems": [
+        {
+          "itemName": "multi_window_title",
+          "itemTitle": "$string:MultiWindow_title",
+          "itemDescription": "Multi Window Page",
+          "icon": ""
+        },
+        {
+          "itemName": "MULTI_DOCK_SWITCH",
+          "itemTitle": "$string:MultiWindow_dock_switch_title",
+          "itemDescription": "Multi Window Dock Switch",
+          "icon": ""
+        },
+        {
+          "itemName": "PIP_SWITCH",
+          "itemTitle": "$string:MultiWindow_pip_switch_title",
+          "itemDescription": "Multi Window PiP Switch",
+          "icon": ""
+        }
+      ]
+    },
+    {
+      "pageTitle": "$string:multi_window_force_switch_title",
+      "pageDescription": "",
+      "entryKey": "multi_window_force_switch",
+      "params": "",
+      "path": [
+        "$string:System",
+        "$string:MultiWindow_title",
+        "$string:multi_window_force_switch_title"
+      ],
+      "supportDevices": [
+        "phone",
+        "tablet"
+      ],
+      "searchItems": [
+        {
+          "itemName": "multi_window_force_switch_title",
+          "itemTitle": "$string:multi_window_force_switch_title",
+          "itemDescription": "Multi Window Compatibility Mode",
+          "icon": ""
+        }
+      ]
+    },
+    {
+      "pageTitle": "$string:landscape_startup_title",
+      "pageDescription": "",
+      "entryKey": "forced_landscape",
+      "params": "",
+      "path": [
+        "$string:display_brightness",
+        "$string:landscape_startup_title"
+      ],
+      "supportDevices": [
+        "phone",
+        "tablet"
+      ],
+      "searchItems": [
+        {
+          "itemName": "landscape_startup_title",
+          "itemTitle": "$string:landscape_startup_title",
+          "itemDescription": "Force Landscape",
+          "icon": "",
+          "checkItem": {
+            "type": "function",
+            "checkKey": "isSupportForcedLandscape",
+            "value": "true"
+          }
+        },
+        {
+          "itemName": "landscape_view_force",
+          "itemTitle": "$string:landscape_view_force",
+          "itemDescription": "Force Landscape View",
+          "icon": "",
+          "checkItem": {
+            "type": "function",
+            "checkKey": "isSupportForcedLandscape",
+            "value": "true"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "modelVersion": "5.1.1",
+  "dependencies": {
+//    "@ohos/hypium-plugin": "1.0.10-rc1"
+  },
+  "debugging": {
+    "stacktrace": true
+  },
+  "nodeOptions": {
+    "maxOldSpaceSize": 40000
+  },
+  "properties": {
+    "ohos.obfuscationRules.optimization": true
+  }
+}

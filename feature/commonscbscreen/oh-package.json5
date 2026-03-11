@@ -1,0 +1,18 @@
+{
+  "name": "@ohos/commonscbscreen",
+  "version": "1.0.0",
+  "description": "Please describe the basic information.",
+  "main": "Index.ets",
+  "author": "",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@ohos/basicutils": "../../staticcommon/basecommon/basicutils",
+    "@ohos/windowscene": "../../staticcommon/basecommon/windowscene",
+    "@ohos/frameworkwrapper": "../../staticcommon/basecommon/frameworkwrapper",
+    "@ohos/commonconstants": "../../staticcommon/basecommon/commonconstants",
+    "@ohos/frameworkcommon": "../../staticcommon/basecommon/frameworkcommon",
+    "@ohos/componenthelper": "../../staticcommon/basecommon/componenthelper",
+    "@ohos/componentanimator": "../../staticcommon/basecommon/componentanimator",
+    "@ohos/componentdrag": "../../staticcommon/basecommon/componentdrag",
+  }
+}

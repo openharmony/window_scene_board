@@ -1,0 +1,12 @@
+{
+  "module": {
+    "name": "basecommon",
+    "type": "har",
+    "description": "$string:shared_desc",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ],
+//    "deliveryWithInstall": true
+  }
+}

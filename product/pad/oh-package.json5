@@ -1,0 +1,20 @@
+{
+  "devDependencies": {},
+  "name": "sceneboard",
+  "description": "",
+  "version": "1.0.0",
+  "dependencies": {
+    "@ohos/phonebase": "file:../../product/phonebase",
+    "@ohos/basicutils": "../../staticcommon/basecommon/basicutils",
+    "@ohos/frameworkwrapper": "../../staticcommon/basecommon/frameworkwrapper",
+    "@ohos/frameworkcommon": "../../staticcommon/basecommon/frameworkcommon",
+    "@ohos/componenthelper": "../../staticcommon/basecommon/componenthelper",
+    "@ohos/commonconstants": "../../staticcommon/basecommon/commonconstants",
+    "@ohos/componentanimator": "../../staticcommon/basecommon/componentanimator",
+    "@ohos/windowscene": "../../staticcommon/basecommon/windowscene",
+    "@ohos/basecommon": "../../basecommon",
+    "@ohos/commonscbscreen": "../../feature/commonscbscreen",
+    "@ohos/pcmode": "../../feature/pcmode",
+    "@ohos/pcbase": "file:../../product/pcbase"
+  }
+}

@@ -1,0 +1,11 @@
+-enable-export-obfuscation
+-enable-property-obfuscation
+-enable-filename-obfuscation
+-remove-log
+-enable-toplevel-obfuscation
+-keep-global-name
+LogCollectUtil
+-keep-property-name
+clearCollectLogInterval
+createCollectLogInterval
+

@@ -1,0 +1,70 @@
+{
+    "plural":[
+        {
+            "name":"multiSelect_drag_start",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"Вы перетаскиваете %d приложения",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"one",
+                    "value":"Вы перетаскиваете %d приложение",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"few",
+                    "value":"Вы перетаскиваете %d приложения",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"many",
+                    "value":"Вы перетаскиваете %d приложений",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"multiSelect_drag_drop",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"%d приложения размещено на экране",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"one",
+                    "value":"%d приложение размещено на экране",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"few",
+                    "value":"%d приложения размещено на экране",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"many",
+                    "value":"%d приложений размещено на экране",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

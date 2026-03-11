@@ -1,0 +1,15 @@
+{
+  "src": [
+    "pages/EntryView",
+    "pages/DevView",
+    "pages/ExtendView",
+    "pages/EmptyPage",
+    "pages/CommonScbView",
+    "SceneBoard/themeeditor/pages/WallpaperApplyPage",
+    "SceneBoard/soundpanel/pages/FirstUsePermissionRequest",
+    "SystemDialog/ExtendedScreenDialog/pages/ExtendedScreenDialogPage",
+    "SystemDialog/pages/AlertPage",
+    "pages/FormEditPage",
+    "pages/FormEditSecPage"
+  ]
+}

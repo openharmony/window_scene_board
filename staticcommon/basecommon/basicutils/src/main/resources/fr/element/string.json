@@ -1,0 +1,347 @@
+{
+    "string":[
+        {
+            "name":"notification_and_status_bar_title",
+            "value":"Notifications & barre d'état",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"delete_form",
+            "value":"Retirer",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_near_left_screen",
+            "value":"Près du bord gauche de l'écran",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_near_right_screen",
+            "value":"Près du bord droit de l'écran",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"download_installwait",
+            "value":"En attente",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"download_installing",
+            "value":"Installation en cours",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"uninstall_success",
+            "value":"Désinstallée.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_running_mutex_toast",
+            "value":"Pour garantir des performances optimales, %1$s et %2$s ne peuvent pas fonctionner simultanément.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"delete_app",
+            "value":"Retirer",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"uninstall_failed",
+            "value":"La désinstallation a échoué.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screen_capture_notification_content",
+            "value":"%s a pris une capture de votre écran.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"download_pause",
+            "value":"En pause",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screen_capture_notification_title",
+            "value":"Capture d'écran",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"floating_scene_button_start",
+            "value":"Ouvrir %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"form_stack_max_number_limit",
+            "value":"La pile est pleine.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_smart_service",
+            "value":"Services intelligents",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_to_desktop",
+            "value":"Ajouter à l'écran d'accueil",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_center_menu_add_dock",
+            "value":"Ajouter au dock",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"click_twin_app_not_installed",
+            "value":"L'application %s n'est pas installée.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"disable_uninstall",
+            "value":"La désinstallation n'est pas permise.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"uninstall",
+            "value":"Désinstaller",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"floating_scene_button_close",
+            "value":"Fermer %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"form_center",
+            "value":"Parcourir les widgets",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"click_twin_app_download_installing",
+            "value":"%s est en cours d'installation.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remove_app_dialog_content",
+            "value":"Vous pouvez l'ajouter à nouveau à tout moment depuis Centre d'applications.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_center_menu_add_desktop",
+            "value":"Ajouter à l'écran d'accueil",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cancel",
+            "value":"Annuler",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"download_wait",
+            "value":"En attente",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_menu_open",
+            "value":"Ouvrir",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_menu_open_from_floating_window",
+            "value":"Ouvrir depuis la fenêtre flottante",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_menu_open_from_split_screen",
+            "value":"Ouvrir depuis l'écran partagé",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"click_twin_app_download_start",
+            "value":"%s est en cours de téléchargement.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"download_start",
+            "value":"Téléchargement en cours",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"click_twin_app_wait_data_recover",
+            "value":"Les données de l'application %s sont en cours de restauration.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"drag_move_to_folder",
+            "value":"Déplacer vers le dossier %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_start",
+            "value":"Icône prête à être déplacée",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drop_merge_to_desktop",
+            "value":"%1$s et %2$s fusionnés dans le dossier %3$s et placés à la ligne %4$s, colonne %5$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drop_merge_to_dock",
+            "value":"%1$s et %2$s fusionnés dans le dossier %3$s et placés à la position %4$s du dock",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_move_to_form_stack",
+            "value":"Déplacer vers la pile. %s est en haut",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_move_to_dock",
+            "value":"Déplacer vers la position %s du dock",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_drop_to_dock",
+            "value":"%1$s placé à la position %2$s du dock",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_move_to_merge_card",
+            "value":"Empiler avec %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_drop_dock_full",
+            "value":"Dock plein, icône revenue à sa position d'origine",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drop_merge_to_form_stack",
+            "value":"%1$s empilé avec %2$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_move_to_merge",
+            "value":"Fusionner avec %s en tant que dossier",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_drop_to_form_stack",
+            "value":"%1$s placé dans la pile. %2$s est en haut",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_drop_to_folder",
+            "value":"%1$s placé dans le dossier %2$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_move",
+            "value":"Déplacer vers la ligne %1$s, colonne %2$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_drop",
+            "value":"%1$s a été placé à la ligne %2$s, colonne %3$s",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

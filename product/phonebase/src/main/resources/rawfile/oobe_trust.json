@@ -1,0 +1,74 @@
+{
+  "trustList":[
+    {
+      "bundleName":"com.ohos.hwstartupguide",
+      "moduleName":"phone_hwstartupguide",
+      "abilityName":"com.ohos.hwstartupguide.MainAbility"
+    },
+    {
+      "bundleName":"com.ohos.browser",
+      "moduleName":"entry",
+      "abilityName":"CustomTabAbility"
+    },
+    {
+      "bundleName":"com.ohos.projectmenu",
+      "moduleName":"phone",
+      "abilityName":"MainAbility"
+    },
+    {
+      "bundleName":"com.ohos.projectmenu",
+      "moduleName":"phone",
+      "abilityName":"BatteryChargeAbility"
+    },
+    {
+      "bundleName":"com.ohos.mmitest",
+      "moduleName":"phone",
+      "abilityName":"MmiTestManuNormal"
+    },
+    {
+      "bundleName":"com.ohos.mmitest",
+      "moduleName":"phone",
+      "abilityName":"MmiManualSimple"
+    },
+    {
+      "bundleName": "com.ohos.findservice",
+      "moduleName": "entry",
+      "abilityName": "FindServiceAbility"
+    },
+    {
+      "bundleName":"com.ohos.emergencycommunication",
+      "moduleName":"entry",
+      "abilityName":"com.ohos.emergencycommunication.EmergencyCallAbility"
+    },
+    {
+      "bundleName": "com.ohos.callui",
+      "moduleName": "callui",
+      "abilityName": "com.ohos.callui.MainAbility"
+    },
+    {
+      "bundleName": "com.ohos.mmitest",
+      "moduleName": "phone",
+      "abilityName": "MmiSingleItemMenu"
+    },
+    {
+      "bundleName": "com.ohos.mmitest",
+      "moduleName": "phone",
+      "abilityName": "MmiCameraSimultaneousDisplay"
+    },
+    {
+      "bundleName": "com.ohos.clock",
+      "moduleName": "entry",
+      "abilityName": "com.ohos.clock.FullScreenAbility"
+    },
+    {
+      "bundleName": "com.ohos.outerhome",
+      "moduleName": "entry",
+      "abilityName": "EntryAbility"
+    },
+    {
+      "bundleName":"com.wifiservice.portallogin",
+      "moduleName":"entry",
+      "abilityName":"EntryAbility"
+    }
+  ]
+}

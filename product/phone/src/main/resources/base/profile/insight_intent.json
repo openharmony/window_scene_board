@@ -1,0 +1,349 @@
+{
+  "insightIntents": [
+    {
+      "intentName": "GetSettingSwitch",
+      "domain": "ToolsDomain",
+      "intentVersion": "1.0.1",
+      "srcEntry": "./ets/intents/executor/IntentExecutorAdapterRedirect.ets",
+      "uiAbility": {
+        "ability": "ScbIntentUIAbility",
+        "executeMode": [
+          "background"
+        ]
+      }
+    },
+    {
+      "intentName": "SetSettingSwitch",
+      "domain": "ToolsDomain",
+      "intentVersion": "1.0.1",
+      "srcEntry": "./ets/intents/executor/IntentExecutorAdapterRedirect.ets",
+      "uiAbility": {
+        "ability": "ScbIntentUIAbility",
+        "executeMode": [
+          "background"
+        ]
+      }
+    },
+    {
+      "intentName": "CheckSettingItem",
+      "domain": "ToolsDomain",
+      "intentVersion": "1.0.1",
+      "srcEntry": "./ets/intents/executor/IntentExecutorAdapterRedirect.ets",
+      "uiAbility": {
+        "ability": "ScbIntentUIAbility",
+        "executeMode": [
+          "background"
+        ]
+      }
+    },
+    {
+      "intentName": "CheckSettingPage",
+      "domain": "ToolsDomain",
+      "intentVersion": "1.0.1",
+      "srcEntry": "./ets/intents/executor/IntentExecutorAdapterRedirect.ets",
+      "uiAbility": {
+        "ability": "ScbIntentUIAbility",
+        "executeMode": [
+          "background"
+        ]
+      }
+    },
+    {
+      "intentName": "LoadSettingCard",
+      "domain": "ToolsDomain",
+      "intentVersion": "1.0.1",
+      "srcEntry": "./ets/intents/executor/IntentExecutorAdapterRedirect.ets",
+      "uiExtension": {
+        "ability": "ScbIntentUIExtensionAbility"
+      }
+    },
+    {
+      "intentName": "OpenFlashlight",
+      "domain": "ToolsDomain",
+      "intentVersion": "1.0.1",
+      "srcEntry": "./ets/intents/executor/IntentExecutorAdapterRedirect.ets",
+      "uiAbility": {
+        "ability": "ScbIntentUIAbility",
+        "executeMode": [
+          "background"
+        ]
+      }
+    },
+    {
+      "intentName": "CloseFlashlight",
+      "domain": "ToolsDomain",
+      "intentVersion": "1.0.1",
+      "srcEntry": "./ets/intents/executor/IntentExecutorAdapterRedirect.ets",
+      "uiAbility": {
+        "ability": "ScbIntentUIAbility",
+        "executeMode": [
+          "background"
+        ]
+      }
+    },
+    {
+      "intentName": "GetSettingOption",
+      "domain": "ToolsDomain",
+      "intentVersion": "1.0.1",
+      "srcEntry": "./ets/intents/executor/IntentExecutorAdapterRedirect.ets",
+      "uiAbility": {
+        "ability": "ScbIntentUIAbility",
+        "executeMode": [
+          "background"
+        ]
+      }
+    },
+    {
+      "intentName": "SetSettingOption",
+      "domain": "ToolsDomain",
+      "intentVersion": "1.0.1",
+      "srcEntry": "./ets/intents/executor/IntentExecutorAdapterRedirect.ets",
+      "uiAbility": {
+        "ability": "ScbIntentUIAbility",
+        "executeMode": [
+          "background"
+        ]
+      }
+    },
+    {
+      "intentName": "EnterSettingPage",
+      "domain": "ToolsDomain",
+      "intentVersion": "1.0.1",
+      "srcEntry": "./ets/intents/executor/IntentExecutorAdapterRedirect.ets",
+      "uiAbility": {
+        "ability": "ScbIntentUIAbility",
+        "executeMode": [
+          "foreground"
+        ]
+      }
+    },
+    {
+      "intentName": "EnterAppNotificationSettingPage",
+      "domain": "ToolsDomain",
+      "intentVersion": "1.0.1",
+      "srcEntry": "./ets/intents/executor/IntentExecutorAdapterRedirect.ets",
+      "uiAbility": {
+        "ability": "ScbIntentUIAbility",
+        "executeMode": [
+          "foreground"
+        ]
+      }
+    },
+    {
+      "intentName": "GetAllowAppNotifySwitch",
+      "domain": "ToolsDomain",
+      "intentVersion": "1.0.1",
+      "srcEntry": "./ets/intents/executor/IntentExecutorAdapterRedirect.ets",
+      "uiAbility": {
+        "ability": "ScbIntentUIAbility",
+        "executeMode": [
+          "background"
+        ]
+      }
+    },
+    {
+      "intentName": "SetAllowAppNotifySwitch",
+      "domain": "ToolsDomain",
+      "intentVersion": "1.0.1",
+      "srcEntry": "./ets/intents/executor/IntentExecutorAdapterRedirect.ets",
+      "uiAbility": {
+        "ability": "ScbIntentUIAbility",
+        "executeMode": [
+          "background"
+        ]
+      }
+    },
+    {
+      "intentName": "GetAppNotifyDisplayOnTop",
+      "domain": "ToolsDomain",
+      "intentVersion": "1.0.1",
+      "srcEntry": "./ets/intents/executor/IntentExecutorAdapterRedirect.ets",
+      "uiAbility": {
+        "ability": "ScbIntentUIAbility",
+        "executeMode": [
+          "background"
+        ]
+      }
+    },
+    {
+      "intentName": "SetAppNotifyDisplayOnTop",
+      "domain": "ToolsDomain",
+      "intentVersion": "1.0.1",
+      "srcEntry": "./ets/intents/executor/IntentExecutorAdapterRedirect.ets",
+      "uiAbility": {
+        "ability": "ScbIntentUIAbility",
+        "executeMode": [
+          "background"
+        ]
+      }
+    },
+    {
+      "intentName": "GetAppNotifyDisplayOnLockScreen",
+      "domain": "ToolsDomain",
+      "intentVersion": "1.0.1",
+      "srcEntry": "./ets/intents/executor/IntentExecutorAdapterRedirect.ets",
+      "uiAbility": {
+        "ability": "ScbIntentUIAbility",
+        "executeMode": [
+          "background"
+        ]
+      }
+    },
+    {
+      "intentName": "SetAppNotifyDisplayOnLockScreen",
+      "domain": "ToolsDomain",
+      "intentVersion": "1.0.1",
+      "srcEntry": "./ets/intents/executor/IntentExecutorAdapterRedirect.ets",
+      "uiAbility": {
+        "ability": "ScbIntentUIAbility",
+        "executeMode": [
+          "background"
+        ]
+      }
+    },
+    {
+      "intentName": "GetAppNotifyDisplayOnBanner",
+      "domain": "ToolsDomain",
+      "intentVersion": "1.0.1",
+      "srcEntry": "./ets/intents/executor/IntentExecutorAdapterRedirect.ets",
+      "uiAbility": {
+        "ability": "ScbIntentUIAbility",
+        "executeMode": [
+          "background"
+        ]
+      }
+    },
+    {
+      "intentName": "SetAppNotifyDisplayOnBanner",
+      "domain": "ToolsDomain",
+      "intentVersion": "1.0.1",
+      "srcEntry": "./ets/intents/executor/IntentExecutorAdapterRedirect.ets",
+      "uiAbility": {
+        "ability": "ScbIntentUIAbility",
+        "executeMode": [
+          "background"
+        ]
+      }
+    },
+    {
+      "intentName": "GetAppNotifyDisplayOnIconMark",
+      "domain": "ToolsDomain",
+      "intentVersion": "1.0.1",
+      "srcEntry": "./ets/intents/executor/IntentExecutorAdapterRedirect.ets",
+      "uiAbility": {
+        "ability": "ScbIntentUIAbility",
+        "executeMode": [
+          "background"
+        ]
+      }
+    },
+    {
+      "intentName": "SetAppNotifyDisplayOnIconMark",
+      "domain": "ToolsDomain",
+      "intentVersion": "1.0.1",
+      "srcEntry": "./ets/intents/executor/IntentExecutorAdapterRedirect.ets",
+      "uiAbility": {
+        "ability": "ScbIntentUIAbility",
+        "executeMode": [
+          "background"
+        ]
+      }
+    },
+    {
+      "intentName": "GetAppNotifyWithRinging",
+      "domain": "ToolsDomain",
+      "intentVersion": "1.0.1",
+      "srcEntry": "./ets/intents/executor/IntentExecutorAdapterRedirect.ets",
+      "uiAbility": {
+        "ability": "ScbIntentUIAbility",
+        "executeMode": [
+          "background"
+        ]
+      }
+    },
+    {
+      "intentName": "SetAppNotifyWithRinging",
+      "domain": "ToolsDomain",
+      "intentVersion": "1.0.1",
+      "srcEntry": "./ets/intents/executor/IntentExecutorAdapterRedirect.ets",
+      "uiAbility": {
+        "ability": "ScbIntentUIAbility",
+        "executeMode": [
+          "background"
+        ]
+      }
+    },
+    {
+      "intentName": "GetAllowAppNotifyCategory",
+      "domain": "ToolsDomain",
+      "intentVersion": "1.0.1",
+      "srcEntry": "./ets/intents/executor/IntentExecutorAdapterRedirect.ets",
+      "uiAbility": {
+        "ability": "ScbIntentUIAbility",
+        "executeMode": [
+          "background"
+        ]
+      }
+    },
+    {
+      "intentName": "SetAllowAppNotifyCategory",
+      "domain": "ToolsDomain",
+      "intentVersion": "1.0.1",
+      "srcEntry": "./ets/intents/executor/IntentExecutorAdapterRedirect.ets",
+      "uiAbility": {
+        "ability": "ScbIntentUIAbility",
+        "executeMode": [
+          "background"
+        ]
+      }
+    },
+    {
+      "intentName": "GetAppNotifyWithVibrate",
+      "domain": "ToolsDomain",
+      "intentVersion": "1.0.1",
+      "srcEntry": "./ets/intents/executor/IntentExecutorAdapterRedirect.ets",
+      "uiAbility": {
+        "ability": "ScbIntentUIAbility",
+        "executeMode": [
+          "background"
+        ]
+      }
+    },
+    {
+      "intentName": "SetAppNotifyWithVibrate",
+      "domain": "ToolsDomain",
+      "intentVersion": "1.0.1",
+      "srcEntry": "./ets/intents/executor/IntentExecutorAdapterRedirect.ets",
+      "uiAbility": {
+        "ability": "ScbIntentUIAbility",
+        "executeMode": [
+          "background"
+        ]
+      }
+    },
+    {
+      "intentName": "GetAppNotifyCategoryType",
+      "domain": "ToolsDomain",
+      "intentVersion": "1.0.1",
+      "srcEntry": "./ets/intents/executor/IntentExecutorAdapterRedirect.ets",
+      "uiAbility": {
+        "ability": "ScbIntentUIAbility",
+        "executeMode": [
+          "background"
+        ]
+      }
+    },
+    {
+      "intentName": "ViewSplitScreen",
+      "domain": "ToolsDomain",
+      "intentVersion": "1.0.1",
+      "srcEntry": "./ets/intents/executor/SplitIntentExecutorAdapterRedirect.ets",
+      "uiAbility": {
+        "ability": "ScbIntentUIAbility",
+        "executeMode": [
+          "background"
+        ]
+      }
+    }
+  ]
+}

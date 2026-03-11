@@ -1,0 +1,10 @@
+{
+  "module": {
+    "name": "componenthelper",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ]
+  }
+}

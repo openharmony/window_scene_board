@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"app_name",
+            "value":"Domovská obrazovka a ciferníky",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

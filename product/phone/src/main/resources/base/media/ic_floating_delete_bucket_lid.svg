@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="8px" viewBox="0 0 24 8" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>画板备份</title>
+    <defs>
+        <path d="M10,0 C11.5727118,-2.88902466e-16 12.862769,1.2101879 12.9897427,2.75013463 L19.25,2.75 C19.6642136,2.75 20,3.08578644 20,3.5 C20,3.89942022 19.68777,4.22591522 19.2940682,4.24872683 L19.25,4.25 L0.75,4.25 C0.335786438,4.25 0,3.91421356 0,3.5 C0,3.10057978 0.312229991,2.77408478 0.705931803,2.75127317 L0.75,2.75 L7.01025734,2.75013463 C7.13723098,1.2101879 8.42728822,2.88902466e-16 10,0 Z" id="path-1"></path>
+    </defs>
+    <g id="画板备份" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Public/ic_public_delete_filled" transform="translate(2, 1.75)">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="形状结合" fill="#000000" fill-rule="nonzero" xlink:href="#path-1"></use>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"app_name",
+            "value":"Layar beranda & muka jam tangan",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

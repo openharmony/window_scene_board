@@ -1,0 +1,84 @@
+{
+  "float": [
+    {
+      "name": "menu_border_radius",
+      "value": "12"
+    },
+    {
+      "name": "form_corner_radius",
+      "value": "16"
+    },
+    {
+      "name": "had_status_bar_pc_height",
+      "value": "48"
+    },
+    {
+      "name": "Control_center_icon_on_bg_brightness_for_brightness_bar",
+      "value": "1.2"
+    },
+    {
+      "name": "live_view_left_large_icon_radius",
+      "value": "8vp"
+    },
+    {
+      "name": "live_view_card_progress_width",
+      "value": "40vp"
+    },
+    {
+      "name": "live_view_card_progress_height",
+      "value": "40vp"
+    },
+    {
+      "name": "live_view_card_progress_stroke_width",
+      "value": "6vp"
+    },
+    {
+      "name": "live_view_card_activity_height",
+      "value": "72vp"
+    },
+    {
+      "name": "live_view_card_other_activity_height",
+      "value": "144vp"
+    },
+    {
+      "name": "Control_dialog_height",
+      "value": "394"
+    },
+    {
+      "name": "Control_dialog_left_padding",
+      "value": "24"
+    },
+    {
+      "name": "Control_dialog_right_padding",
+      "value": "24"
+    },
+    {
+      "name": "Control_dialog_bottom_padding",
+      "value": "16"
+    },
+    {
+      "name": "Control_dialog_row_height",
+      "value": "40"
+    },
+    {
+      "name": "plugin_phone_clock_font_size",
+      "value": "15fp"
+    },
+    {
+      "name": "ohos_id_blur_style_thin_radius",
+      "value": "23.0"
+    },
+    {
+      "name": "ohos_id_blur_style_thin_saturation",
+      "value": "1.05"
+    },
+    {
+      "name": "ohos_id_blur_style_thin_brightness",
+      "value": "1.05"
+    },
+    {
+      "name": "regionfolder_blur_style_thin_radius",
+      "value": "30"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"app_name",
+            "value":"Skrin utama & muka",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

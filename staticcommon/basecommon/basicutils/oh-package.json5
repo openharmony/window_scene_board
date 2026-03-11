@@ -1,0 +1,9 @@
+{
+  "name": "@ohos/basicutils",
+  "version": "1.0.0",
+  "description": "Please describe the basic information.",
+  "main": "./src/main/ets/TsIndex.ts",
+  "author": "",
+  "license": "Apache-2.0",
+  "dependencies": {}
+}

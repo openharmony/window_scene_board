@@ -1,0 +1,348 @@
+{
+    "string":[
+        {
+            "name":"download_installwait",
+            "value":"대기 중",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"download_installing",
+            "value":"설치 중",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"uninstall_success",
+            "value":"제거되었습니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_running_mutex_toast",
+            "value":"원활한 성능을 위해 %1$s 및 %2$s 앱은 동시에 실행할 수 없습니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"delete_app",
+            "value":"제거",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"uninstall_failed",
+            "value":"제거에 실패했습니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screen_capture_notification_content",
+            "value":"%s에서 화면을 캡처했습니다.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"download_pause",
+            "value":"일시 정지됨",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screen_capture_notification_title",
+            "value":"화면 캡처",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_and_status_bar_title",
+            "value":"알림 및 상태 표시줄",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"floating_scene_button_start",
+            "value":"%s 열기",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"form_stack_max_number_limit",
+            "value":"이 스택은 가득 찼습니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_smart_service",
+            "value":"스마트 서비스",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_to_desktop",
+            "value":"홈 화면에 추가",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_center_menu_add_dock",
+            "value":"도크에 추가",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"click_twin_app_not_installed",
+            "value":"%s이(가) 설치되지 않았습니다.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"disable_uninstall",
+            "value":"제거는 허용되지 않습니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"uninstall",
+            "value":"제거",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"floating_scene_button_close",
+            "value":"%s 닫기",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"delete_form",
+            "value":"제거",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"form_center",
+            "value":"위젯 검색",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"click_twin_app_download_installing",
+            "value":"%s 앱을 설치 중입니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remove_app_dialog_content",
+            "value":"앱 센터에서 언제든지 다시 추가할 수 있습니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_near_left_screen",
+            "value":"화면 왼쪽 가장자리 근처",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_near_right_screen",
+            "value":"화면 오른쪽 가장자리 근처",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_center_menu_add_desktop",
+            "value":"홈 화면에 추가",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cancel",
+            "value":"취소",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"download_wait",
+            "value":"대기 중",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_menu_open",
+            "value":"열기",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_menu_open_from_floating_window",
+            "value":"부유 창에서 열기",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_menu_open_from_split_screen",
+            "value":"분할 화면에서 열기",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+
+        {
+            "name":"click_twin_app_download_start",
+            "value":"%s 다운로드 중입니다.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"download_start",
+            "value":"다운로드 중",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"click_twin_app_wait_data_recover",
+            "value":"%s 데이터 복원 중입니다.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"drag_move_to_folder",
+            "value":"%s 폴더로 이동",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_start",
+            "value":"아이콘 드래그 가능",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drop_merge_to_desktop",
+            "value":"%1$s 및 %2$s 앱이 폴더 %3$s에 병합되어 %4$s행, %5$s열에 배치됨",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drop_merge_to_dock",
+            "value":"%1$s 및 %2$s 앱이 폴더 %3$s에 병합되어 도크의 %4$s번 위치에 배치됨",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_move_to_form_stack",
+            "value":"스택으로 이동합니다. %s 카드가 상단에 있음",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_move_to_dock",
+            "value":"도크의 %s 위치로 이동",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_drop_to_dock",
+            "value":"%1$s 항목이 도크의 %2$s번 위치에 배치됨",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_move_to_merge_card",
+            "value":"%s 카드와 스택",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_drop_dock_full",
+            "value":"도크 꽉 참, 아이템이 원래 위치로 돌아감",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drop_merge_to_form_stack",
+            "value":"%1$s %2$s 함께 스택됨",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_move_to_merge",
+            "value":"%s 앱과 폴더로 병합",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_drop_to_form_stack",
+            "value":"%1$s 카드가 스택에 배치되었습니다. %2$s 카드가 상단에 있음",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_drop_to_folder",
+            "value":"%1$s 앱이 %2$s 폴더에 배치됨",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_move",
+            "value":"%1$s행, %2$s열로 이동",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_drop",
+            "value":"%1$s 항목이 %2$s행, %3$s열에 배치됨",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

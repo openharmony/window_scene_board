@@ -1,0 +1,6 @@
+[
+  {
+    "itemType": "switch",
+    "cardPage": "intents/pages/SwitchIntentCardPage"
+  }
+]

@@ -1,0 +1,10 @@
+{
+  "module": {
+    "name": "windowsceneinterfaces",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ]
+  }
+}

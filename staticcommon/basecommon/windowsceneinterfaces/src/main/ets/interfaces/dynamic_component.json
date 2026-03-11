@@ -1,0 +1,4 @@
+{
+	"name": "DynamicComponent",
+	"attrs": ["onLoad", "onDestroy"]
+}

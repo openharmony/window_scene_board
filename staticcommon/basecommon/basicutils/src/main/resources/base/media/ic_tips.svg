@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="37px" height="41px" viewBox="0 0 37 41" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>ic_tips</title>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="实况卡片" transform="translate(-738.000000, -771.000000)" fill="#FFFFFF">
+            <g id="实时服务-骑手已接单" transform="translate(640.000000, 698.000000)">
+                <g id="编组" transform="translate(98.390244, 73.000000)">
+                    <path d="M18,0 C27.9411255,0 36,8.0588745 36,18 C36,25.1965445 31.7767061,31.4066858 25.6733568,34.2871854 L19.3170092,39.8476169 C18.5629572,40.5074124 17.4370428,40.5074124 16.6829908,39.8476169 L16.6829908,39.8476169 L10.3286364,34.288126 C4.22421343,31.4080378 0,25.1973279 0,18 C0,8.0588745 8.0588745,0 18,0 Z" id="ic_tips"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

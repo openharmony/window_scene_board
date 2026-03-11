@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"app_name",
+            "value":"Tela inicial e mostradores",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

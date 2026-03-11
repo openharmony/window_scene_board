@@ -1,0 +1,10 @@
+{
+  "module": {
+    "name": "windowscene",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ]
+  }
+}

@@ -1,0 +1,148 @@
+{
+  "layoutDescription": {
+    "pageCount": 2,
+    "row": 4,
+    "column": 8,
+    "maxPage": 18,
+    "maxForm": 80
+  },
+  "layoutInfo": [
+    {
+      "cardName": "ClockWeatherCard",
+      "bundleName": "com.ohos.totemweather",
+      "abilityName": "FormAbility",
+      "moduleName": "product",
+      "formConfigAbility": "",
+      "cardDimension": 3,
+      "isTransparent": true,
+      "typeId": 1,
+      "area": [
+        4,
+        2
+      ],
+      "page": 0,
+      "row": 0,
+      "column": 2
+    },
+    {
+      "cardName": "notesCard2x2ForPhone",
+      "bundleName": "com.ohos.notepad",
+      "abilityName": "FormAbility",
+      "moduleName": "NotepadPhone",
+      "formConfigAbility": "",
+      "cardDimension": 2,
+      "typeId": 1,
+      "area": [
+        2,
+        2
+      ],
+      "page": 0,
+      "row": 2,
+      "column": 2
+    },
+    {
+      "bundleName": "com.ohos.appgallery",
+      "abilityName": "MainAbility",
+      "moduleName": "entry",
+      "typeId": 0,
+      "area": [
+        1,
+        1
+      ],
+      "page": 0,
+      "row": 2,
+      "column": 4
+    },
+    {
+      "bundleName": "com.ohos.himovie",
+      "abilityName": "MainAbility",
+      "moduleName": "entry",
+      "typeId": 0,
+      "area": [
+        1,
+        1
+      ],
+      "page": 0,
+      "row": 2,
+      "column": 5
+    },
+    {
+      "bundleName": "com.ohos.music",
+      "abilityName": "MainAbility",
+      "moduleName": "phone",
+      "typeId": 0,
+      "area": [
+        1,
+        1
+      ],
+      "page": 0,
+      "row": 2,
+      "column": 6
+    },
+    {
+      "bundleName": "com.ohos.books",
+      "abilityName": "MainAbility",
+      "moduleName": "HwBooks",
+      "typeId": 0,
+      "area": [
+        1,
+        1
+      ],
+      "page": 0,
+      "row": 2,
+      "column": 7
+    },
+    {
+      "bundleName": "com.ohos.thememanager",
+      "abilityName": "MainAbility",
+      "moduleName": "entry",
+      "typeId": 0,
+      "area": [
+        1,
+        1
+      ],
+      "page": 0,
+      "row": 3,
+      "column": 4
+    },
+    {
+      "bundleName": "com.ohos.health",
+      "abilityName": "MainAbility",
+      "moduleName": "entry",
+      "typeId": 0,
+      "area": [
+        1,
+        1
+      ],
+      "page": 0,
+      "row": 3,
+      "column": 5
+    },
+    {
+      "bundleName": "com.ohos.meetime",
+      "abilityName": "MainAbility",
+      "moduleName": "phone",
+      "typeId": 0,
+      "area": [
+        1,
+        1
+      ],
+      "page": 0,
+      "row": 3,
+      "column": 6
+    },
+    {
+      "bundleName": "com.ohos.settings",
+      "abilityName": "com.ohos.settings.MainAbility",
+      "moduleName": "phone_settings",
+      "typeId": 0,
+      "area": [
+        1,
+        1
+      ],
+      "page": 0,
+      "row": 3,
+      "column": 7
+    }
+  ]
+}

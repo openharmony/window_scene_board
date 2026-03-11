@@ -1,0 +1,399 @@
+{
+    "string":[
+        {
+            "name":"layout_style",
+            "value":"Layout Style"
+        },
+        {
+            "name":"floating_scene_button_start",
+            "value":"Open %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"floating_scene_button_close",
+            "value":"Close %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"launcher_layout",
+            "value":"Launcher Layout"
+        },
+        {
+            "name":"add_to_desktop",
+            "value":"Add to home screen",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_center_menu_add_dock",
+            "value":"Add to dock",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_center_menu_add_desktop",
+            "value":"Add to home screen",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remove_app_from_folder",
+            "value":"remove app from folder"
+        },
+        {
+            "name":"app_menu_open",
+            "value":"Open",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_menu_open_from_floating_window",
+            "value":"Open from the floating window",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_menu_open_from_split_screen",
+            "value":"Open from split screen",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"rename_folder",
+            "value":"Rename"
+        },
+        {
+            "name":"cancel",
+            "value":"Cancel",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remove_app_dialog_content",
+            "value":"You can add it again at any time from the App center.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"delete_form",
+            "value":"Remove",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"uninstall",
+            "value":"Uninstall",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"delete_app",
+            "value":"Remove",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"uninstall_success",
+            "value":"Uninstalled.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"uninstall_failed",
+            "value":"Uninstallation failed.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_uninstall",
+            "value":"Uninstallation not allowed.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"form_center",
+            "value":"Browse widgets",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_and_status_bar_title",
+            "value":"Notifications & status bar",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Control_center_long_button_font_family",
+            "value":"HarmonyHeiTi"
+        },
+        {
+            "name":"Control_center_icon_default_bg_color",
+            "value":"#00000000"
+        },
+        {
+            "name":"Control_center_icon_on_bg_color",
+            "value":"#00000000"
+        },
+        {
+            "name":"Control_center_icon_on_color",
+            "value":"#CC000000"
+        },
+        {
+            "name":"Control_center_icon_default_color",
+            "value":"#e6ffffff"
+        },
+        {
+            "name":"Control_center_button_font_color",
+            "value":"#B3FFFFFF"
+        },
+        {
+            "name":"Control_center_icon_shadow_color",
+            "value":"#00000000"
+        },
+        {
+            "name":"download_wait",
+            "value":"Waiting",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"download_start",
+            "value":"Downloading",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"download_pause",
+            "value":"Paused",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"download_installwait",
+            "value":"Waiting",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"download_installing",
+            "value":"Installing",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"click_twin_app_download_start",
+            "value":"%s is being downloaded.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"click_twin_app_download_installing",
+            "value":"%s is being installed.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"click_twin_app_not_installed",
+            "value":"%s is not installed.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"click_twin_app_wait_data_recover",
+            "value":"%s data is being restored.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"form_stack_max_number_limit",
+            "value":"This stack is full.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"WorkSchedulerExtensionAbility_label",
+            "value":"ReportWorkSchedulerExtensionAbility"
+        },
+        {
+            "name":"WorkSchedulerExtensionAbility_desc",
+            "value":"ReportWorkSchedulerExtensionAbility"
+        },
+        {
+            "name":"drag_start",
+            "value":"Icon ready to drag",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_move",
+            "value":"Move to row %1$s, column %2$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_move_to_dock",
+            "value":"Move to position %s of the dock",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_move_to_folder",
+            "value":"Move to %s Folder",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_move_to_merge",
+            "value":"Merge with %s as folder",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_drop",
+            "value":"%1$s has been placed in row %2$s, column %3$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_drop_to_dock",
+            "value":"%1$s placed in position %2$s of the dock",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drop_merge_to_desktop",
+            "value":"%1$s and %2$s merged into folder %3$s, and placed in row %4$s, column %5$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drop_merge_to_dock",
+            "value":"%1$s and %2$s merged into folder %3$s, and placed in position %4$s of the dock",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_drop_to_folder",
+            "value":"%1$s placed in %2$s folder",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_drop_dock_full",
+            "value":"Dock full, icon returned to original position",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_running_mutex_toast",
+            "value":"To ensure smooth performance, %1$s and %2$s can't run at the same time.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"drag_move_to_merge_card",
+            "value":"Stack with %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_move_to_form_stack",
+            "value":"Move to stack. %s is on top",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drop_merge_to_form_stack",
+            "value":"%1$s stacked with %2$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_drop_to_form_stack",
+            "value":"%1$s placed in the stack. %2$s is on top",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_near_right_screen",
+            "value":"Near the right edge of the screen",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_near_left_screen",
+            "value":"Near the left edge of the screen",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_smart_service",
+            "value":"Smart Services",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screen_capture_notification_title",
+            "value":"Screen capture",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"screen_capture_notification_content",
+            "value":"%s captured your screen.",
+            "attr":{
+                "priority":"LT"
+            }
+        }
+    ]
+}

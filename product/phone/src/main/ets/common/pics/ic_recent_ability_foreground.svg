@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>任务中心备份</title>
+    <defs>
+        <linearGradient x1="-2.7157096e-13%" y1="18%" x2="100%" y2="82%" id="linearGradient-1">
+            <stop stop-color="#FFFFFF" stop-opacity="0.906441215" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" stop-opacity="0.8" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="6.07561887%" y1="18%" x2="100%" y2="82%" id="linearGradient-2">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" stop-opacity="0.8" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="任务中心备份" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="编组-2" transform="translate(7.000000, 9.000000)">
+            <path d="M9,0 L23,0 C24.6568542,-3.04359188e-16 26,1.34314575 26,3 L26,13 C26,14.6568542 24.6568542,16 23,16 L9,16 C7.34314575,16 6,14.6568542 6,13 L6,3 C6,1.34314575 7.34314575,3.04359188e-16 9,0 Z" id="矩形" fill-opacity="0.6" fill="url(#linearGradient-1)"></path>
+            <path d="M3,6 L17,6 C18.6568542,6 20,7.34314575 20,9 L20,19 C20,20.6568542 18.6568542,22 17,22 L3,22 C1.34314575,22 2.02906125e-16,20.6568542 0,19 L0,9 C-2.02906125e-16,7.34314575 1.34314575,6 3,6 Z" id="矩形" fill-opacity="0.95" fill="url(#linearGradient-2)"></path>
+        </g>
+    </g>
+</svg>
