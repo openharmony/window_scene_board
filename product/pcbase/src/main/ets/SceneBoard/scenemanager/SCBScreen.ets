@@ -67,6 +67,7 @@ import { FixedScrollerComponent } from '@ohos/pcsmartdock/src/main/ets/default/l
 import { SCBCentralLogoMask } from '../systemscene/SCBCentralLogoMask';
 import { StyleConstants } from '@ohos/launchercommon';
 import { SCBSystemSceneLayout } from '../statusbar/SCBSceneLayout';
+// import apsManager from '@hms.graphic.apsManager';
 import { SCBCloneWallpaper } from '../systemscene/SCBCloneWallpaper';
 import { SCBCentralMask } from '../systemscene/SCBCentralMask';
 import screenSessionManager from '@ohos.screenSessionManager';

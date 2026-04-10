@@ -136,6 +136,7 @@ import PcSmartDockViewModel from '@ohos/pcsmartdock/src/main/ets/default/viewmod
 import { PcDockIndepentIconMgr } from '@ohos/pcsmartdock/src/main/ets/default/manager/PcDockIndependentIconMgr';
 import sceneSessionManager from '@ohos.sceneSessionManager';
 import { SCBSceneContainerRefresh } from './SCBSceneContainerRefresh';
+// import apsManager from '@hms.graphic.apsManager';
 import curves from '@ohos.curves';
 import performanceMonitor from '@ohos.arkui.performanceMonitor';
 import { SplitState } from '@ohos/windowscene/src/main/ets/scene/session/SCBSceneContainerSession';
