@@ -74,6 +74,7 @@ import {
 import { PowerStatus } from '@ohos/commonconstants';
 import { EventConstants, StyleConstants } from '@ohos/launchercommon'
 import { styleMgr } from '@ohos/systemuicommon';
+// import apsManager from '@hms.graphic.apsManager';
 import PowerStatusChangeAnimationController from './PowerStatusChangeAnimationController';
 import { SCBRecentStyleConstants } from '../recentview/SCBRecentStyleConstants';
 import curves from '@ohos.curves';
