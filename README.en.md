@@ -1,36 +1,57 @@
-# window_scene_board
+# scene_board
 
-#### Description
-{**When you're done, you can delete the content in this README and update the file with details for others getting started with your repository**}
+- [scene\_board]
+  - [Description](#Description)
+  - [目录](#目录)
+  - [约束](#约束)
+  - [相关仓](#相关仓)
 
-#### Software Architecture
-Software architecture description
+## Description
+**SceneBoard** is one part of the window subsystem. It is a collection of a window management framework and desktop environment built based on the unified architecture, and it serves as the entry point for users to interact with the system. It includes:
+1. Desktop related system APPs implemented through system window scenes, such as wallpapers, desktops, multitasking, application center, and lock screen, etc.
+2. A window management framework based on screen and window components, providing `ScreenScene` and `ScreenSession`, `WindowScene` and `SceneSession` controls to manage screen scene and screen sessions, window scene and window sessions.
 
-#### Installation
+### SceneBoard
+![部件关系](./docs/figures/SceneBoard.png)
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+SceneBoard is a three-layer architecture, which consists of the following:
+- `common`：Infrastructure, such as log systems, equipment tools, and cross-product common dependency modules.
 
-#### Instructions
+- `feature`：The feature module contains reusable features across different products, such as multitasking, application center, lock screen, heterogeneous virtual screens, etc.
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+- `product`：The product layer is the upper-level module that integrates `common` and `feature`. It includes the `ServiceExtensionAbility` entry point and arranges the hierarchical arrangement rules for the entire product entry and system window.
 
-#### Contribution
+Ultimately, SceneBoard will package these modules into a **.hap** package.
 
-1.  Fork the repository
-2.  Create Feat_xxx branch
-3.  Commit your code
-4.  Create Pull Request
+## Directory
+
+```
+scene_board
+├─AppScope
+│  └─resources        # resources
+├─docs                # documents for scene_board
+├─features            # feature layer
+│  ├─appcenter        # app center 
+│  ├─appinstall       # app install guidance 
+│  ├─commonscbscreen  # common virtual screen 
+│  └─pcmode           # window pc mode
+├─product             # product layer
+│  ├─pad              # Tablet product integration
+│  ├─pc               # PC product integration
+│  ├─pcbase           # product infrastructure for PC
+│  ├─phone            # Phone product integration
+│  └─phone            # product infrastructure for phones and tablets
+├─hvigor              # hivigor build scripts
+├─signature           # signature
+└─staticcommon        # common layer
+```
 
 
-#### Gitee Feature
+## Constraints
+- language
+    - ArkTS
 
-1.  You can use Readme\_XXX.md to support different languages, such as Readme\_en.md, Readme\_zh.md
-2.  Gitee blog [blog.gitee.com](https://blog.gitee.com)
-3.  Explore open source project [https://gitee.com/explore](https://gitee.com/explore)
-4.  The most valuable open source project [GVP](https://gitee.com/gvp)
-5.  The manual of Gitee [https://gitee.com/help](https://gitee.com/help)
-6.  The most popular members  [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+## Repositories Involved
+- [window_manager](https://gitcode.com/openharmony/window_window_manager)
+- [window_scene](https://gitcode.com/openharmony/window_scene)
+- [arkui_ace_engine](https://gitcode.com/openharmony/arkui_ace_engine)

@@ -1,39 +1,55 @@
-# window_scene_board
+# scene_board
 
-#### 介绍
-{**以下是 Gitee 平台说明，您可以替换此简介**
-Gitee 是 OSCHINA 推出的基于 Git 的代码托管平台（同时支持 SVN）。专为开发者提供稳定、高效、安全的云端软件开发协作平台
-无论是个人、团队、或是企业，都能够用 Gitee 实现代码托管、项目管理、协作开发。企业项目请看 [https://gitee.com/enterprises](https://gitee.com/enterprises)}
+- [scene\_board]
+  - [简介](#简介)
+  - [目录](#目录)
+  - [约束](#约束)
+  - [相关仓](#相关仓)
 
-#### 软件架构
-软件架构说明
+## 简介
+**SceneBoard** 是窗口子系统的部件之一，是基于窗口合一架构构建的窗口管理框架和桌面环境的集合，也是用户与系统交互的入口。包含了：
+1. 通过系统窗口控件实现的桌面相关的系统应用，例如：壁纸、桌面、多任务、应用中心、锁屏等。
+2. 基于屏幕控件和窗口控件的窗口管理框架，提供了 `ScreenScene` 和 `ScreenSession`、 `WindowScene` 和 `SceneSession` 控件来管理屏幕控件和屏幕会话、窗口控件和窗口会话。
 
+### SceneBoard
+![部件关系](./docs/figures/SceneBoard.png)
 
-#### 安装教程
+SceneBoard是一个三层架构，分别是：
+- `common`：基础设施，例如日志系统、设备工具以及跨产品公共依赖模块。
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+- `feature`：特性模块，包含了跨产品可复用的特性，例如多任务、应用中心、锁屏、异源虚拟屏等。
 
-#### 使用说明
+- `product`：产品层，是将 `common` 和 `feature` 打包集成的上层模块，包含了`ServiceExtensionAbility`入口，编排整个产品入口和系统窗口的层级排列规则。
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+最终，SceneBoard会将这些模块打包成一个**hap**包。
 
-#### 参与贡献
+## 目录
+```
+scene_board
+├─AppScope
+│  └─resources        # resources
+├─docs                # documents for scene_board
+├─features            # feature layer
+│  ├─appcenter        # app center 
+│  ├─appinstall       # app install guidance 
+│  ├─commonscbscreen  # common virtual screen 
+│  └─pcmode           # window pc mode
+├─product             # product layer
+│  ├─pad              # Tablet product integration
+│  ├─pc               # PC product integration
+│  ├─pcbase           # product infrastructure for PC
+│  ├─phone            # Phone product integration
+│  └─phone            # product infrastructure for phones and tablets
+├─hvigor              # hivigor build scripts
+├─signature           # signature
+└─staticcommon        # common layer
+```
 
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
+## 约束
+- 语言版本
+    - ArkTS
 
-
-#### 特技
-
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+## 相关仓
+- [window_manager](https://gitcode.com/openharmony/window_window_manager)
+- [window_scene](https://gitcode.com/openharmony/window_scene)
+- [arkui_ace_engine](https://gitcode.com/openharmony/arkui_ace_engine)
