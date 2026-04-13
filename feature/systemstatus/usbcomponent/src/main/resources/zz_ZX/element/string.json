@@ -1,0 +1,12 @@
+{
+    "string":[
+        {
+            "name":"USBRemoved",
+            "value":"[TS_1064213]_Safely remove"
+        },
+        {
+            "name":"usb_hover",
+            "value":"[TS_1064214]_External storage"
+        }
+    ]
+}

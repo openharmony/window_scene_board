@@ -1,0 +1,124 @@
+{
+    "string":[
+        {
+            "name":"screenlock_settings",
+            "value":"[TS_1104513]_Lock screen"
+        },
+        {
+            "name":"font_creation_dialog_stop_service_text",
+            "value":"[TS_1104508]_If you disable this service, you will no longer be able to create fonts based on text contained in images."
+        },
+        {
+            "name":"stop_font_creation_service",
+            "value":"[TS_1104497]_Disable service"
+        },
+        {
+            "name":"screenlock_font_creation_service_text",
+            "value":"[TS_1104505]_Lock screen font creation service"
+        },
+        {
+            "name":"screenlock_font_creation_service",
+            "value":"[TS_1104506]_Lock screen font creation service"
+        },
+        {
+            "name":"font_creation_dialog_part_one",
+            "value":"[TS_1104504]_This service uses cloud-based AI to generate fonts based on text contained in images. Generated fonts can be applied to your lock screen clock and signature."
+        },
+        {
+            "name":"font_creation_dialog_part_four",
+            "value":"[TS_1104503]_Statement About Lock Screen Font Creation Service and Privacy"
+        },
+        {
+            "name":"font_creation_setting_footbar_new",
+            "value":"[TS_1112083]_This service requires an Internet connection and needs to read and upload/transfer images to provide lock screen font creation features. We only collect personal information relevant to the features you use. For more information, refer to the %1$s and %2$s. By turning this on, you agree to let us provide you with this service."
+        },
+        {
+            "name":"font_creation_dialog_part_five",
+            "value":"[TS_1112081]_Terms & conditions"
+        },
+        {
+            "name":"font_creation_dialog_part_three",
+            "value":"[TS_1112082]_This service requires an Internet connection and needs to read and upload/transfer images to provide lock screen font creation features. We only collect personal information relevant to the features you use. For more information, refer to the %1$s and %2$s.\nPlease carefully read the above content. By tapping Agree, you agree to let us provide you with this service."
+        },
+        {
+            "name":"icon_settings",
+            "value":"[TS_1104509]_Icons"
+        },
+        {
+            "name":"icon_settings_content",
+            "value":"[TS_1104499]_Resize and rename home screen icons."
+        },
+        {
+            "name":"icon_edit_not_support_small_step",
+            "value":"[TS_1123576]_Icons can't be adjusted while Settings is in a floating window."
+        },
+      {
+        "name": "theme_title",
+        "value": "theme title"
+      },
+        {
+            "name": "notification_main_time_travel_ongoing_content",
+            "value": "notification main"
+        },
+        {
+            "name": "notification_main_time_travel_finish_content",
+            "value": "travel finish content"
+        },
+        {
+            "name": "time_travel_generate_failed",
+            "value": ""
+        },
+        {
+            "name": "notification_main_dimensional_travel_ongoing_content",
+            "value": ""
+        },
+        {
+            "name": "notification_main_dimensional_travel_finish_content",
+            "value": ""
+        },
+        {
+            "name": "dimensional_travel_generate_failed",
+            "value": ""
+        },
+        {
+            "name": "notification_dynamic_lead_ongoing_content",
+            "value": ""
+        },
+        {
+            "name": "notification_dynamic_lead_finish_content",
+            "value": ""
+        },
+        {
+            "name": "dynamic_lead_generate_failed",
+            "value": ""
+        },
+        {
+            "name": "notification_main_pandora_title",
+            "value": ""
+        },
+      {
+        "name": "reason_read_media",
+        "value": ""
+      },
+      {
+        "name": "reason_set_media",
+        "value": ""
+      },
+      {
+        "name":"edit_wallpaper",
+        "value":"[TS_924855]_Wallpapers"
+      },
+      {
+        "name": "current_wallpaper",
+        "value": ""
+      },
+      {
+        "name": "managment",
+        "value": ""
+      },
+      {
+        "name": "wallpaper_editor",
+        "value": ""
+      }
+    ]
+}

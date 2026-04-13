@@ -1,0 +1,16 @@
+{
+  "color": [
+    {
+      "name": "date_time_color",
+      "value": "#ffffff"
+    },
+    {
+      "name": "date_time_light_color",
+      "value": "#D9FFFFFF"
+    },
+    {
+      "name": "date_time_dark_color",
+      "value": "#D9000000"
+    }
+  ]
+}

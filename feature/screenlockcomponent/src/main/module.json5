@@ -1,0 +1,18 @@
+{
+  "module": {
+    "name": "screenlockcomponent",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ],
+    "requestPermissions": [
+      {
+        "name": "ohos.permission.ACTIVATE_THEME_PACKAGE"
+      },
+      {
+        name: "ohos.permission.MANAGE_FINGERPRINT_AUTH"
+      }
+    ]
+  }
+}

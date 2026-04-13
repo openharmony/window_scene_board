@@ -1,0 +1,162 @@
+{
+    "string":[
+        {
+            "name":"screenlock_settings",
+            "value":"鎖定螢幕設定",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_stop_service_text",
+            "value":"停用後，將無法智慧學習和創作圖片內的文字風格。確定停用？",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"stop_font_creation_service",
+            "value":"停止服務",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screenlock_font_creation_service_text",
+            "value":"鎖定螢幕字體創作服務",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screenlock_font_creation_service",
+            "value":"鎖定螢幕字體創作服務",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_one",
+            "value":"本服務使用雲端 AI 演算法辨識所選圖片中的文字，產生不同風格字體，並將字體套用於鎖定螢幕時鐘和簽名檔。",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_four",
+            "value":"關於鎖定螢幕字體創作服務與隱私權的聲明",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_setting_footbar_new",
+            "value":"本服務需要連線網路，讀取並傳輸圖片，以提供鎖定螢幕字體創作功能，產生的字體用於鎖定螢幕時鐘和簽名檔。只有在您使用特定服務功能時，我們才會觸發上述行為，收集與使用相關的個人資訊。如需詳細資料，請參閱%1$s、%2$s。若開啟開關，即表示您知悉並同意我們所提供的服務。",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_five",
+            "value":"使用者服務條款與條件",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_three",
+            "value":"本服務需要連線網路，讀取並傳輸圖片，以提供鎖定螢幕字體創作功能。只有在您使用特定服務功能時，我們才會觸發上述行為，收集與使用相關的個人資訊。如需詳細資料，請參閱%1$s、%2$s。\n請仔細閱讀上述聲明，若輕觸「同意」，即表示您知悉並同意我們提供的服務。",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"icon_settings",
+            "value":"圖示調整",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"icon_settings_content",
+            "value":"調整桌面圖示尺寸和顯示名稱",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"icon_edit_not_support_small_step",
+            "value":"圖示不支援在小視窗下調整",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+      {
+        "name": "theme_title",
+        "value": "theme title"
+      },
+        {
+            "name": "notification_main_time_travel_ongoing_content",
+            "value": "notification main"
+        },
+        {
+            "name": "notification_main_time_travel_finish_content",
+            "value": "travel finish content"
+        },
+        {
+            "name": "time_travel_generate_failed",
+            "value": ""
+        },
+        {
+            "name": "notification_main_dimensional_travel_ongoing_content",
+            "value": ""
+        },
+        {
+            "name": "notification_main_dimensional_travel_finish_content",
+            "value": ""
+        },
+        {
+            "name": "dimensional_travel_generate_failed",
+            "value": ""
+        },
+        {
+            "name": "notification_dynamic_lead_ongoing_content",
+            "value": ""
+        },
+        {
+            "name": "notification_dynamic_lead_finish_content",
+            "value": ""
+        },
+        {
+            "name": "dynamic_lead_generate_failed",
+            "value": ""
+        },
+        {
+            "name": "notification_main_pandora_title",
+            "value": ""
+        },
+      {
+        "name":"edit_wallpaper",
+        "value":"桌布",
+        "attr":{
+          "priority":"LT"
+        }
+      },
+      {
+        "name": "theme_chose",
+        "value": "從圖庫中選擇"
+      },
+      {
+        "name": "current_wallpaper",
+        "value": "我的壁紙"
+      },
+      {
+        "name": "managment",
+        "value": ""
+      },
+      {
+        "name": "wallpaper_editor",
+        "value": "套用"
+      }
+    ]
+}

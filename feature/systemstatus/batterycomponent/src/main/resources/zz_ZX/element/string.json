@@ -1,0 +1,56 @@
+{
+    "string":[
+        {
+            "name":"shutdown_dialog_content",
+            "value":"[TS_878160]_Battery extremely low. Your device is about to shut down."
+        },
+        {
+            "name":"shutdown_dialog_title",
+            "value":"[TS_878159]_Note"
+        },
+        {
+            "name":"mainability_description",
+            "value":"[TS_803107]_ETS_Empty Feature Ability"
+        },
+        {
+            "name":"accessibility_battery_level",
+            "value":"[TS_916910]_Battery level, %s"
+        },
+        {
+            "name":"accessibility_battery_charge",
+            "value":"[TS_916914]_Charging, battery %s charged"
+        },
+        {
+            "name":"accessibility_battery_charge_double",
+            "value":"[TS_916916]_Fast charging, battery %s charged"
+        },
+        {
+            "name":"accessibility_battery_supercharge",
+            "value":"[TS_916905]_SuperCharging, battery %s charged"
+        },
+        {
+            "name":"shutdown_dialog_content_new",
+            "value":"[TS_932722]_Battery is about to run out. Powering off in %d seconds."
+        },
+        {
+            "name":"battery_emergency_dialog_content",
+            "value":"[TS_932723]_Battery extremely low. Power reserve mode activating in %d seconds."
+        },
+        {
+            "name":"low_battery_ntf_btn_text",
+            "value":"[TS_943117]_Turn on Battery saver"
+        },
+        {
+            "name":"low_battery_ntf_content",
+            "value":"[TS_943116]_%s remaining"
+        },
+        {
+            "name":"low_battery_ntf_title",
+            "value":"[TS_943118]_Low battery"
+        },
+        {
+            "name":"accessibility_battery_power_saving",
+            "value":"[TS_951864]_Battery saver"
+        }
+    ]
+}

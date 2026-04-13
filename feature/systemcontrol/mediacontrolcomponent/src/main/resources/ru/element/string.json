@@ -1,0 +1,396 @@
+{
+    "string":[
+        {
+            "name":"av_cast_disconnect",
+            "value":"Трансляция отключена. Воспроизведение возобновлено на этом устройстве.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"open_bluetooth",
+            "value":"Для трансляции на это устройство сначала включите Bluetooth.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"wireless_usage",
+            "value":"Сбой переключения. Аудиоканал занят службой трансляции экрана.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"WiredDevice",
+            "value":"Проводные наушники",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_Favorited",
+            "value":"В Избранном",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"toobar_title_pitching",
+            "value":"Проекция аудио",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"WiredCastDevice",
+            "value":"Проводное устройство",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"RecentlyPlay",
+            "value":"Недавно воспроизведенное",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"av_cast_cast_fail",
+            "value":"Сбой воспроизведения на другом устройстве. Повторите попытку.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"CallEarpiece",
+            "value":"Разговорный динамик",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"access_fast_forward",
+            "value":"Перемотка вперед",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"av_cast_cast_disconnect",
+            "value":"Устройство воспроизведения отключено.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_pause",
+            "value":"Пауза",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_connected",
+            "value":"Подключено",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"no_media_title",
+            "value":"Не воспроизводится",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"access_favorites",
+            "value":"Избранное",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_unavailable",
+            "value":"Недоступно",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"audio_usage",
+            "value":"На этом экране невозможно переключить вывод звука вызова.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"CallSpeaker",
+            "value":"Динамики",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"device_error",
+            "value":"Сбой трансляции из-за ошибки устройства или приложения.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"BluetoothDevice",
+            "value":"Bluetooth-наушники",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"LocalDevice",
+            "value":"Это устройство",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_cancel_favorites",
+            "value":"Удалить из Избранного",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"av_cast_banner_title",
+            "value":"Воспроизводится на устройстве %s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sound_output_device_nearlink",
+            "value":"Устройство NearLink (%s)",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"switch_to_resource_cast",
+            "value":"Переключено на трансляцию мультимедиа.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"preference_setting",
+            "value":"Предпочтения",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"access_media_broadcast_control_center",
+            "value":"Контроллер мультимедиа",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"recommended_to_you",
+            "value":"Лучшие подборки",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"multi_screen_usage",
+            "value":"Сбой переключения. Аудио используется функцией Мультиэкран.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"unAuthDevice",
+            "value":"Другие устройства",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"HearingAid",
+            "value":"Слуховой аппарат",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_cyclic_mode_shuffle",
+            "value":"Режим воспроизведения, воспроизведение в случайном порядке",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_audio_control",
+            "value":"Проекция контента",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_cyclic_mode_sequential",
+            "value":"Режим воспроизведения, воспроизведение по порядку",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_notice",
+            "value":"Сведения",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_next",
+            "value":"Следующая композиция",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_rewind",
+            "value":"Перемотать назад",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_play",
+            "value":"Воспроизвести",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_av_cast_volume_increase",
+            "value":"Увеличить громкость устройства воспроизведения",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_previous",
+            "value":"Предыдущая композиция",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_More",
+            "value":"Еще",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_media_volume_bar",
+            "value":"Шкала громкости мультимедиа",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_cyclic_mode_list",
+            "value":"Режим воспроизведения, повторять все композиции",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_av_cast_volume_reduce",
+            "value":"Уменьшить громкость устройства воспроизведения",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_cyclic_mode_loop",
+            "value":"Режим воспроизведения, повторять одну композицию",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_close",
+            "value":"Закрыть",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_total_duration",
+            "value":"Общее время",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_switch_playback_device",
+            "value":"Изменить устройство воспроизведения",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_playback_progress",
+            "value":"Полоса воспроизведения",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_expand_more_devices",
+            "value":"Раскрыть список с устройствами",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_cover_image",
+            "value":"Изображение обложки",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"device_in_call",
+            "value":"Выполняется вызов",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_call_volume_bar",
+            "value":"Шкала громкости звука вызова",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"recently_played_songs",
+            "value":"Недавно воспроизведенная композиция",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"you_may_like",
+            "value":"Рекомендации",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

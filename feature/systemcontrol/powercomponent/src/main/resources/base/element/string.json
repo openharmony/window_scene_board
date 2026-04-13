@@ -1,0 +1,37 @@
+{
+    "string":[
+        {
+            "name":"power_off",
+            "value":"Power off"
+        },
+        {
+            "name":"restart",
+            "value":"Restart"
+        },
+        {
+            "name":"dormant",
+            "value":"Sleep"
+        },
+        {
+            "name":"power_dialog_message",
+            "value":"Powering off now may cause other people logged in to this computer to lose unsaved work. Power off anyway?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"restart_dialog_message",
+            "value":"Restarting now may cause other people logged in to this computer to lose unsaved work. Restart anyway?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"power_dialog_negative_button",
+            "value":"Cancel",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

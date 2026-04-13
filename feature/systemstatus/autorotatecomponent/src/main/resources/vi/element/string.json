@@ -1,0 +1,18 @@
+{
+    "string":[
+        {
+            "name":"control_center_complex_toggle_auto_rotate_title",
+            "value":"Khóa hướng",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"multi_window_opened",
+            "value":"Đã bật Cửa sổ tự do. Tính năng này chỉ hoạt động ở chế độ xoay ngang.",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

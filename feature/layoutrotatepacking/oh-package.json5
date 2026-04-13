@@ -1,0 +1,12 @@
+{
+  "name": "@ohos/layoutrotatepacking",
+  "version": "1.0.0",
+  "description": "layout rotate packing algorithm",
+  "main": "",
+  "author": "",
+  "license": "",
+  "dependencies": {
+    "libLayoutRotatePacking.so": "file:./src/main/cpp/types/libLayoutRotatePacking",
+    "@ohos/basicutils": "../../staticcommon/basecommon/basicutils"
+  }
+}

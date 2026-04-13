@@ -1,0 +1,64 @@
+{
+    "string":[
+        {
+            "name":"immersive_sys_no_auth_tips",
+            "value":"Activer les services de localisation permet de profiter de plus de fonctionnalités.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"immersive_go_auth",
+            "value":"Allez dans Paramètres",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"immersive_app_sys_no_auth_tips",
+            "value":"Accorder l'accès à la Localisation et s'assurer que les services de localisation sont activés permet de profiter de plus de fonctionnalités.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"immersive_app_no_auth_tips",
+            "value":"Accorder l'accès à la Localisation permet de profiter de plus de fonctionnalités.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"immersive_card_tip_to_down",
+            "value":"Réduire, bouton, toucher deux fois pour activer",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"immersive_card_tip_to_up",
+            "value":"Développer, bouton, toucher deux fois pour activer",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"immersive_card_tip_status_down",
+            "value":"Carte réduite",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"immersive_card_tip_status_up",
+            "value":"Carte développée",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+      {
+        "name": "psd_back_accessible",
+        "value": "返回 按钮"
+      }
+    ]
+}

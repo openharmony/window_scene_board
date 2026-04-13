@@ -1,0 +1,74 @@
+{
+    "string":[
+        {
+            "name":"accessibility_status_bar_wifi_no",
+            "value":"WLAN 신호 없음",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"shared_network_tips_network_messages",
+            "value":"%s의 모바일 네트워크를 사용하여 인터넷에 액세스하며 메시지를 전송하고 수신할 수 있습니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"shared_network_tips_network",
+            "value":"%s의 모바일 네트워크를 사용하여 인터넷에 액세스할 수 있습니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"shared_network_tips_network_calls",
+            "value":"%s의 모바일 네트워크를 사용하여 인터넷에 액세스하며 전화를 발신하고 수신할 수 있습니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"shared_network_tips1",
+            "value":"%s의 모바일 네트워크를 사용하여 인터넷 액세스, 전화 발신 및 수신, 메시지 전송 및 수신을 수행할 수 있습니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"shared_network_tips",
+            "value":"%s의 모바일 네트워크를 사용 중입니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_wifi_4",
+            "value":"WLAN 신호, 꽉 참",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_wifi_3",
+            "value":"WLAN 신호, 막대 3개",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_wifi_2",
+            "value":"WLAN 신호, 막대 2개",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_wifi_1",
+            "value":"WLAN 신호, 막대 1개",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

@@ -1,0 +1,162 @@
+{
+    "string":[
+        {
+            "name":"screenlock_settings",
+            "value":"སྒོ་ལྕགས་བརྙན་ཡོལ་སྒྲིག་འགོད།",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_stop_service_text",
+            "value":"མཚམས་བཞག་རྗེས། པར་རིས་ནང་གི་ཡི་གེའི་ཁྱད་ཆོས་ལ་རིག་ལྡན་སློབ་སྦྱོང་དང་གསར་རྩོམ་བྱེད་མི་ཐུབ། མཚམས་འཇོག་རྒྱུ་གཏན་འཁེལ་ཡིན་ནམ།",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"stop_font_creation_service",
+            "value":"ཞབས་ཞུ་མཚམས་འཇོག",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screenlock_font_creation_service_text",
+            "value":"སྒོ་ལྕགས་བརྙན་ཡོལ་གྱི་ཡིག་གཟུགས་གསར་རྩོམ་ཞབས་ཞུ།",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screenlock_font_creation_service",
+            "value":"སྒོ་ལྕགས་བརྙན་ཡོལ་གྱི་ཡིག་གཟུགས་གསར་རྩོམ་ཞབས་ཞུ།",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_one",
+            "value":"ཞབས་ཞུ་འདིས་སྤྲིན་ཕྱོགས་ཀྱི་ AI རྩིས་ཐབས་བཀོལ་ནས། བདམས་པའི་པར་རིས་ཁྲོད་ཀྱི་ཡི་གེ་ངོས་བཟུང་སྟེ། ཁྱད་ཆོས་མི་འདྲ་བའི་ཡི་གེ་སྐྱེད་སྒྲུབ་བྱ། མ་ཟད་ཡིག་གཟུགས་སྒོ་ལྕགས་བརྙན་ཡོལ་གྱི་ཆུ་ཚོད་དང་མིང་རྟགས་ལ་ཉེར་སྤྱོད་བྱ།",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_four",
+            "value":"སྒོ་ལྕགས་བརྙན་ཡོལ་གྱི་ཡིག་གཟུགས་གསར་རྩོམ་ཞབས་ཞུ་དང་སྒེར་གསང་སྐོར་གྱི་གསལ་བསྒྲགས་",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_setting_footbar_new",
+            "value":"ཞབས་ཞུ་འདིར་དྲ་སྦྲེལ་དགོས་ཤིང་། པར་རིས་ཀློག་ལེན་དང་བརྒྱུད་སྐྱེལ་བྱ་དགོས་ཏེ། སྒོ་ལྕགས་བརྙན་ཡོལ་གྱི་ཡིག་གཟུགས་གསར་རྩོམ་རྩོལ་ནུས་མཁོ་འདོན་བྱ། སྐྱེད་སྒྲུབ་བྱུང་བའི་ཡིག་གཟུགས་ནི་སྒོ་ལྕགས་བརྙན་ཡོལ་གྱི་ཆུ་ཚོད་དང་མིང་རྟགས་ལ་བེད་སྤྱོད་བྱ། ཁྱེད་ཀྱིས་ཞིབ་ཕྲའི་ལས་སྒོའི་རྩོལ་ནུས་བཀོལ་སྤྱོད་བྱེད་སྐབས་ཁོ་ནར། ང་ཚོས་གོང་དུ་བརྗོད་པའི་བྱ་སྤྱོད་སྐུལ་སློང་བྱས་ནས་འབྲེལ་ཡོད་ཀྱི་མི་སྒེར་གྱི་ཆ་འཕྲིན་བསྡུ་རུབ་དང་བེད་སྤྱོད་བྱེད། གནས་ཚུལ་ཞིབ་ཕྲ་%1$sདང་%2$sལ་གཟིགས་རོགས། བསད་སྤར་ཁ་ཕྱེ་ཚེ། ཁྱེད་ཀྱིས་ང་ཚོས་ཁྱེད་ལ་ཞབས་ཞུ་འདི་མཁོ་འདོན་བྱ་རྒྱུ་ཡིན་པ་ཤེས་པ་མ་ཟད་མོས་མཐུན་བྱེད་པ་མཚོན།",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_five",
+            "value":"སྤྱོད་མཁན་གྱི་ཞབས་ཞུའི་དོན་ཚན་དང་ཆ་རྐྱེན།",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_three",
+            "value":"ཞབས་ཞུ་འདིར་དྲ་སྦྲེལ་དགོས་ཤིང་། པར་རིས་ཀློག་ལེན་དང་བརྒྱུད་སྐྱེལ་བྱ་དགོས་ཏེ། སྒོ་ལྕགས་བརྙན་ཡོལ་གྱི་ཡིག་གཟུགས་གསར་རྩོམ་རྩོལ་ནུས་མཁོ་འདོན་བྱ། ཁྱེད་ཀྱིས་ཞིབ་ཕྲའི་ལས་སྒོའི་རྩོལ་ནུས་བཀོལ་སྤྱོད་བྱེད་སྐབས་ཁོ་ནར། ང་ཚོས་གོང་དུ་བརྗོད་པའི་བྱ་སྤྱོད་སྐུལ་སློང་བྱས་ནས་འབྲེལ་ཡོད་ཀྱི་མི་སྒེར་གྱི་ཆ་འཕྲིན་བསྡུ་རུབ་དང་བེད་སྤྱོད་བྱེད། གནས་ཚུལ་ཞིབ་ཕྲ་%1$sདང་%2$sལ་གཟིགས་རོགས།\nཁྱེད་ཀྱིས་གོང་བརྗོད་གསལ་བསྒྲགས་གཟབ་ནན་གྱིས་ཀློག་རོགས། ༼མོས་མཐུན་༽ལ་བརྡབས་ཚེ། ཁྱེད་ཀྱིས་ང་ཚོས་ཁྱེད་ལ་ཞབས་ཞུ་འདི་མཁོ་འདོན་བྱ་རྒྱུ་ཡིན་པ་ཤེས་པ་མ་ཟད་མོས་མཐུན་བྱེད་པ་མཚོན།",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"icon_settings",
+            "value":"རིས་རྟགས་སྙོམ་སྒྲིག",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"icon_settings_content",
+            "value":"ཅོག་ངོས་ཀྱི་རིས་རྟགས་ཀྱི་ཆེ་ཆུང་དང་འཆར་བའི་མིང་སྙོམ་སྒྲིག",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"icon_edit_not_support_small_step",
+            "value":"རིས་རྟགས་སྒེའུ་ཁུང་ཆུང་ངུའི་སྐབས་སུ་སྙོམ་སྒྲིག་བྱེད་མི་ཐུབ།",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+      {
+        "name": "theme_title",
+        "value": "theme title"
+      },
+        {
+            "name": "notification_main_time_travel_ongoing_content",
+            "value": "notification main"
+        },
+        {
+            "name": "notification_main_time_travel_finish_content",
+            "value": "travel finish content"
+        },
+        {
+            "name": "time_travel_generate_failed",
+            "value": ""
+        },
+        {
+            "name": "notification_main_dimensional_travel_ongoing_content",
+            "value": ""
+        },
+        {
+            "name": "notification_main_dimensional_travel_finish_content",
+            "value": ""
+        },
+        {
+            "name": "dimensional_travel_generate_failed",
+            "value": ""
+        },
+        {
+            "name": "notification_dynamic_lead_ongoing_content",
+            "value": ""
+        },
+        {
+            "name": "notification_dynamic_lead_finish_content",
+            "value": ""
+        },
+        {
+            "name": "dynamic_lead_generate_failed",
+            "value": ""
+        },
+        {
+            "name": "notification_main_pandora_title",
+            "value": ""
+        },
+      {
+        "name":"edit_wallpaper",
+        "value":"ལྡེབས་ཤོག",
+        "attr":{
+          "priority":"LT"
+        }
+      },
+      {
+        "name": "theme_chose",
+        "value": "རི་མོ་མཉམ་འབྲེལ་ནས་གདོང་བཀོད།"
+      },
+      {
+        "name": "current_wallpaper",
+        "value": "ངའི་སྒོ་སྣོད་པ།"
+      },
+      {
+        "name": "managment",
+        "value": ""
+      },
+      {
+        "name": "wallpaper_editor",
+        "value": "ཉེར་སྤྱོད།"
+      }
+    ]
+}

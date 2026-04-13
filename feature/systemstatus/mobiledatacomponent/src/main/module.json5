@@ -1,0 +1,10 @@
+{
+  "module": {
+    "name": "mobiledatacomponent",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ]
+  }
+}

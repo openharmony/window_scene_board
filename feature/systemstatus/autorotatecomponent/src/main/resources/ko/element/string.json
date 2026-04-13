@@ -1,0 +1,18 @@
+{
+    "string":[
+        {
+            "name":"control_center_complex_toggle_auto_rotate_title",
+            "value":"방향 잠금",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"multi_window_opened",
+            "value":"프리 윈도우가 실행되었습니다. 이 기능은 가로 보기 모드에서만 작동합니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

@@ -1,0 +1,508 @@
+{
+    "string":[
+        {
+            "name":"banners",
+            "value":"Biểu ngữ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_style",
+            "value":"Kiểu thông báo",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"clear",
+            "value":"Xóa",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_wake_screen_switch_text",
+            "value":"Bật màn hình khi nhận được thông báo.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_lock_screen_switch_text",
+            "value":"Nội dung thông báo sẽ không hiển thị khi khóa điện thoại.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_and_status_bar_title",
+            "value":"Thông báo và thanh trạng thái",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_lock_screen_switch_title_new",
+            "value":"Ẩn nội dung thông báo",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"status_bar_title",
+            "value":"Thanh trạng thái",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_wake_screen_switch_title",
+            "value":"Đánh thức màn hình",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"more_ntf_setting",
+            "value":"Cài đặt khác",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"search_history",
+            "value":"Lịch sử tìm kiếm",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"no_banners",
+            "value":"Không có",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntfSoundModeOnlyVibration",
+            "value":"Rung",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"lock_screen_notification",
+            "value":"Màn hình khóa",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"badges",
+            "value":"Dấu báo",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"search_app",
+            "value":"Tìm kiếm ứng dụng",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notifications",
+            "value":"Thông báo",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_not_banner",
+            "value":"Hiển thị biểu ngữ trên màn hình chính",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"smart_reminder_learn_more",
+            "value":"Tìm hiểu thêm",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"smart_digest",
+            "value":"Nhóm thông minh",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntfSoundModeSilence",
+            "value":"Im lặng",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remind_banner",
+            "value":"Biểu ngữ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"lock_screen_notification_style",
+            "value":"Hiển thị dưới dạng danh sách trên màn hình khóa",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"entry_desc",
+            "value":"Thông báo",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"set_face",
+            "value":"Thiết lập",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"hide_banner_content_desc",
+            "value":"Chỉ áp dụng cho các ứng dụng theo cài đặt thông báo hệ thống.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"unified_notification_label",
+            "value":"Tổ chức",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remind_disable",
+            "value":"Tắt",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remind_sound",
+            "value":"Âm thanh",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_pin_on_top",
+            "value":"Luôn hiển thị thông báo từ ứng dụng này ở đầu Bảng thông báo.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"hide_banner_content_title",
+            "value":"Hiển thị nội dung biểu ngữ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"no_matching_results",
+            "value":"Không có kết quả nào",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"splitter_format_for_4",
+            "value":"%1$s, %2$s, %3$s, %4$s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"splitter_format_for_2",
+            "value":"%1$s, %2$s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"splitter_format_for_3",
+            "value":"%1$s, %2$s, %3$s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"switch_screen_lock_ntf_style_forbidden",
+            "value":"Thông báo luôn được mở rộng khi sử dụng mở khóa bằng vân tay.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remind_vibration",
+            "value":"Rung",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"smart_reminder_tips_main",
+            "value":"Khi bật tính năng này, nội dung của biểu ngữ sẽ chỉ được hiển thị cho bạn và cảnh báo thông báo sẽ nhẹ nhàng hơn khi bạn nhìn vào màn hình. Tính năng này sử dụng nhận dạng khuôn mặt. %s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"smart_reminder_tips_no_weak",
+            "value":"Khi bật tính năng này, nội dung của biểu ngữ sẽ chỉ hiển thị cho bạn. Tính năng này sử dụng nhận dạng khuôn mặt.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"unified_notification_intro",
+            "value":"Nhóm các thông báo từ các ứng dụng khác nhau khi các thông báo có liên quan.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"show_tip_live_view_preview_when_screen_lock",
+            "value":"Bật tính năng này để có trải nghiệm tốt hơn với chế độ xem trực tiếp.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remind_lock_screen",
+            "value":"Màn hình khóa",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pad_pure_show_description",
+            "value":"Chỉ hiện giờ, WLAN và mức pin trên thanh trạng thái.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntfSoundModeSettingTitle",
+            "value":"Âm thông báo",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remind_only_notification_center",
+            "value":"Chỉ Bảng thông báo",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"hide_banner_content_app_follow_system",
+            "value":"Theo hệ thống",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"hiding_banner_content_txt",
+            "value":"Khi thông báo biểu ngữ xuất hiện, nội dung của thông báo sẽ không được hiển thị nếu người khác đang nhìn vào màn hình. Tính năng này sử dụng nhận dạng khuôn mặt.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"hide_banner_content_app_never",
+            "value":"Không hiển thị",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntfSoundModeOnlyRing",
+            "value":"Phát âm thanh",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"hide_banner_content_app_always",
+            "value":"Luôn hiển thị",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"live_view_title",
+            "value":"Xem trực tiếp",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"switch_badges_forbidden",
+            "value":"Trước tiên, hãy bật \"Hiển thị dấu báo\" trong Cài đặt > Thông báo và thanh trạng thái > Cài đặt khác.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pure_show_description",
+            "value":"Chỉ hiện giờ, WLAN, tín hiệu mạng di động và mức pin trên thanh trạng thái.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remind_type",
+            "value":"Loại",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_switch_alarm_clock",
+            "value":"Báo thức",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_switch_vpn",
+            "value":"VPN",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_switch_nearlink",
+            "value":"Kết nối NearLink và Bluetooth",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_switch_icon_visible",
+            "value":"Quản lý biểu tượng",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"enable_switch_ring_mode_silent",
+            "value":"Chế độ Im lặng",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_switch_ring_mode",
+            "value":"Im lặng/Rung",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"enable_switch_head_phones",
+            "value":"Tai nghe có dây",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_switch_bluetooth",
+            "value":"Kết nối Bluetooth",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_switch_net_speed",
+            "value":"Tốc độ Internet theo thời gian thực",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_switch_nfc",
+            "value":"NFC",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_switch_notification_icon",
+            "value":"Biểu tượng thông báo",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"psd_back_accessible",
+            "value":"Trở lại, nút",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"lock_screen_notification_fold",
+            "value":"Thông báo màn hình khóa, đã thu gọn hiển thị",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"silent_notification",
+            "value":"Thông báo nhẹ nhàng",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"silent_notification_description",
+            "value":"Tắt tiếng thông báo từ ứng dụng này và chỉ hiển thị thông báo trong Bảng thông báo.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"lock_screen_notification_expand",
+            "value":"Thông báo màn hình khóa, đã mở rộng hiển thị",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"enable_switch_explain",
+            "value":"Các biểu tượng trạng thái vẫn được hiển thị trong Bảng điều khiển và Bảng thông báo ngay cả khi bỏ chọn ở đây.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"already_clear",
+            "value":"Đã xóa",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

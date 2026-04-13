@@ -1,0 +1,52 @@
+{
+  "float": [
+    {
+      "name": "status_bar_week_width",
+      "value": "60vp"
+    },
+    {
+      "name": "status_bar_clock_line_height",
+      "value": "20vp"
+    },
+    {
+      "name": "had_status_bar_clock_line_height",
+      "value": "19vp"
+    },
+    {
+      "name": "window_status_bar_clock_line_height",
+      "value": "17vp"
+    },
+    {
+      "name": "window_status_bar_clock_margin_left_right",
+      "value": "10vp"
+    },
+    {
+      "name": "status_bar_clock_margin_left_right",
+      "value": "10vp"
+    },
+    {
+      "name": "status_bar_clock_margin_top_bottom",
+      "value": "2vp"
+    },
+    {
+      "name": "had_status_bar_clock_margin_left_right",
+      "value": "4vp"
+    },
+    {
+      "name": "icon_component_opacity",
+      "value": "1"
+    },
+    {
+      "name": "notification_bell_icon_size",
+      "value": "20"
+    },
+    {
+      "name": "notification_bell_badge_size",
+      "value": "6"
+    },
+    {
+      "name": "bell_icon_padding_left_right",
+      "value": "8"
+    }
+  ]
+}

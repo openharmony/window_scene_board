@@ -1,0 +1,20 @@
+{
+  "float": [
+    {
+      "name": "ntf_header_title_margin",
+      "value": "24vp"
+    },
+    {
+      "name": "ntf_list_item_padding_start_end",
+      "value": "16vp"
+    },
+    {
+      "name": "ntf_title_icon_space",
+      "value": "8vp"
+    },
+    {
+      "name": "ntf_header_title_margin_right",
+      "value": "16vp"
+    }
+  ]
+}

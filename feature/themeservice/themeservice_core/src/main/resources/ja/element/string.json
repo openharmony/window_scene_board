@@ -1,0 +1,18 @@
+{
+    "string":[
+        {
+            "name":"Desktop_individuation",
+            "value":"ホーム画面とスタイル",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"theme_title",
+            "value":"テーマ",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

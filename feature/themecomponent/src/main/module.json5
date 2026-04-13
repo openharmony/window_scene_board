@@ -1,0 +1,145 @@
+{
+  "module": {
+    "name": "themecomponent",
+    "type": "feature",
+    "mainElement": "ThemeComponentAbility",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ],
+    "deliveryWithInstall": true,
+    "installationFree": false,
+    "pages": "$profile:main_pages",
+    "abilities": [
+      {
+        "name": "ThemeComponentAbility",
+        "srcEntry": "./ets/uiability/ThemeComponentAbility.ets",
+        "icon": "$media:startIcon",
+        "label": "$string:theme_title",
+        "startWindowIcon": "$media:startIcon",
+        "startWindowBackground": "$color:start_window_background",
+        "exported": true,
+        "excludeFromMissions": true,
+        "removeMissionAfterTerminate": true,
+        "permissions": ["ohos.permission.ACTIVATE_THEME_PACKAGE"],
+        "supportWindowMode": [
+          "fullscreen"
+        ]
+      },
+      {
+        "name": "AigcAbility",
+        "srcEntry": "./ets/uiability/AigcAbility.ets",
+        "label": "$string:theme_title",
+        "startWindowIcon": "$media:icon",
+        "startWindowBackground": "$color:pandora_start_window_background",
+        "exported": false,
+        "excludeFromMissions": true,
+        "removeMissionAfterTerminate": true,
+        "supportWindowMode": [
+          "fullscreen"
+        ]
+      }
+    ],
+    "extensionAbilities": [
+      {
+        "name": "SettingThemeComponentExtAbility",
+        "srcEntry": "./ets/uiextability/ThemeComponentExtAbility.ets",
+        "exported": true,
+        "type": "sys/commonUI",
+        "icon": "$media:icon",
+        "extensionProcessMode": "type",
+        "permissions": ["ohos.permission.ACTIVATE_THEME_PACKAGE"]
+      },
+      {
+        "name": "HomeThemeComponentExtAbility",
+        "srcEntry": "./ets/uiextability/ThemeComponentExtAbility.ets",
+        "exported": true,
+        "type": "sys/commonUI",
+        "icon": "$media:icon",
+        "extensionProcessMode": "type",
+        "permissions": ["ohos.permission.ACTIVATE_THEME_PACKAGE"]
+      },
+      {
+        "name": "PhotoThemeComponentExtAbility",
+        "srcEntry": "./ets/uiextability/ThemeComponentExtAbility.ets",
+        "exported": true,
+        "type": "sys/commonUI",
+        "icon": "$media:icon",
+        "extensionProcessMode": "type",
+        "permissions": ["ohos.permission.ACTIVATE_THEME_PACKAGE"]
+      },
+      {
+        "name": "ThemeManagerComponentExtAbility",
+        "srcEntry": "./ets/uiextability/ThemeComponentExtAbility.ets",
+        "exported": true,
+        "type": "sys/commonUI",
+        "icon": "$media:icon",
+        "extensionProcessMode": "type",
+        "permissions": ["ohos.permission.ACTIVATE_THEME_PACKAGE"]
+      },
+      {
+        "name": "ThemeComponentExtAbility",
+        "srcEntry": "./ets/uiextability/ThemeComponentExtAbility.ets",
+        "exported": true,
+        "type": "sys/commonUI",
+        "icon": "$media:icon",
+        "extensionProcessMode": "instance",
+        "permissions": ["ohos.permission.ACTIVATE_THEME_PACKAGE"]
+      },
+      {
+        "name": "AigcServiceAbility",
+        "srcEntry": "./ets/aigcServiceAbility/AigcServiceAbility.ets",
+        "exported": true,
+        "type": "service",
+        "permissions": [
+          "ohos.permission.START_ABILITIES_FROM_BACKGROUND"
+        ]
+      }
+    ],
+    "requestPermissions": [
+      {
+        "name": "ohos.permission.ACTIVATE_THEME_PACKAGE"
+      },
+      {
+        "name": "ohos.permission.LAUNCH_DATA_PRIVACY_CENTER"
+      },
+      {
+        "name": "ohos.permission.SET_WALLPAPER"
+      },
+      {
+        "name": "ohos.permission.GET_WALLPAPER"
+      },
+      {
+        "name": "ohos.permission.READ_IMAGEVIDEO",
+        "reason": "$string:imagevideo_permission_reason",
+        "usedScene": {
+          "abilities": [
+            "EntryAbility"
+          ],
+          "when": "always"
+        }
+      },
+      {
+        "name": "ohos.permission.WRITE_IMAGEVIDEO",
+        "reason": "$string:imagevideo_permission_reason",
+        "usedScene": {
+          "abilities": [
+            "EntryAbility"
+          ],
+          "when": "inuse"
+        }
+      },
+      {
+        "name": "ohos.permission.FILE_ACCESS_MANAGER",
+        "reason": "$string:file_access_reason",
+        "usedScene": {
+          "abilities": [
+            "EntryAbility"
+          ],
+          "when": "inuse"
+        }
+      }
+    ],
+    "routerMap": "$profile:router_map"
+  }
+}

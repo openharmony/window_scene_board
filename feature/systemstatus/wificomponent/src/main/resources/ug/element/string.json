@@ -1,0 +1,74 @@
+{
+    "string":[
+        {
+            "name":"accessibility_status_bar_wifi_no",
+            "value":"\u200fWLAN سىگنالى يوق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_wifi_4",
+            "value":"نۆۋەتتە WLAN سىگنالى تولۇق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_wifi_3",
+            "value":"نۆۋەتتە WLAN سىگنالى ئۈچ بالداق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_wifi_2",
+            "value":"نۆۋەتتە WLAN سىگنالى ئىككى بالداق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_wifi_1",
+            "value":"نۆۋەتتە WLAN سىگنالى بىر بالداق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"shared_network_tips1",
+            "value":"\u200f%s نىڭ ئالاقە ئىقتىدارى ئارقىلىق تور، تېلېفون ۋە ئۇچۇرلىشىشقا بولىدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"shared_network_tips",
+            "value":"\u200f%s نىڭ كۆچمە ئېقىمى ئورتاقلىنىۋاتىدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"shared_network_tips_network_messages",
+            "value":"\u200f%s نىڭ ئالاقە ئىقتىدارى ئارقىلىق تور ۋە ئۇچۇرلىشىشقا بولىدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"shared_network_tips_network",
+            "value":"\u200f%s نىڭ ئالاقە ئىقتىدارى ئارقىلىق تورغا چىقالايسىز.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"shared_network_tips_network_calls",
+            "value":"\u200f%s نىڭ ئالاقە ئىقتىدارى ئارقىلىق تور ۋە تېلېفونلىشىشقا بولىدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        }
+    ]
+}

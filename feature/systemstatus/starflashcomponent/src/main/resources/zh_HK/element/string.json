@@ -1,0 +1,18 @@
+{
+    "string":[
+        {
+            "name":"accessibility_status_bar_nearlink_open",
+            "value":"星閃已啟用",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_nearlink_connected",
+            "value":"星閃已連接",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

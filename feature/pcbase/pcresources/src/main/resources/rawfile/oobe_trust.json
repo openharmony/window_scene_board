@@ -1,0 +1,34 @@
+{
+  "trustList":[
+    {
+      "bundleName":"com.ohos.hwstartupguide",
+      "moduleName":"pc_hwstartupguide",
+      "abilityName":"com.ohos.hwstartupguide.MainAbility"
+    },
+    {
+      "bundleName":"com.ohos.browser",
+      "moduleName":"entry",
+      "abilityName":"CustomTabAbility"
+    },
+    {
+      "bundleName":"com.openharmony.vpn",
+      "moduleName":"entry",
+      "abilityName":"EntryAbility"
+    },
+    {
+      "bundleName":"com.ohos.mmitest",
+      "moduleName":"pc",
+      "abilityName":"PcAbility"
+    },
+    {
+      "bundleName": "com.ohos.findservice",
+      "moduleName": "entry",
+      "abilityName": "FindServiceAbility"
+    },
+    {
+      "bundleName":"com.wifiservice.portallogin",
+      "moduleName":"entry",
+      "abilityName":"EntryAbility"
+    }
+  ]
+}

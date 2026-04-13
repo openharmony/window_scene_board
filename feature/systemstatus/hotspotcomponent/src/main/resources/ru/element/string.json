@@ -1,0 +1,25 @@
+{
+    "string":[
+        {
+            "name":"statusbar_talkbackhotspot01",
+            "value":"Точка доступа включена",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_hotspot_title",
+            "value":"Личная точка доступа",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_hotspot_no_device",
+            "value":"Нет устройств",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

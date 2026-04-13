@@ -1,0 +1,28 @@
+{
+    "plural":[
+        {
+            "name":"stack_request_focus_front_text",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"卡片堆疊，共 %d 張，",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"expand_stack_request_focus_after_text",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"共 %d 項，有可用的操作，單指輕觸兩下即可摺疊堆疊並置頂卡片，輕觸兩下並按住即可上下拖曳",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

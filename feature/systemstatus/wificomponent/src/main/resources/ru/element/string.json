@@ -1,0 +1,74 @@
+{
+    "string":[
+        {
+            "name":"accessibility_status_bar_wifi_no",
+            "value":"Нет сигнала сети WLAN",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"shared_network_tips_network_messages",
+            "value":"Вы можете использовать мобильную сеть устройства %s для доступа в Интернет, отправки и получения сообщений.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"shared_network_tips_network",
+            "value":"Вы можете использовать мобильную сеть устройства %s для доступа в Интернет.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"shared_network_tips_network_calls",
+            "value":"Вы можете использовать мобильную сеть устройства %s для доступа в Интернет, выполнения вызовов и ответа на них.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"shared_network_tips1",
+            "value":"Вы можете использовать мобильную сеть устройства %s для доступа в Интернет, выполнения вызовов и ответа на них, отправки и получения сообщений.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"shared_network_tips",
+            "value":"Используется мобильная сеть устройства %s.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_wifi_4",
+            "value":"Сигнал сети WLAN, все деления",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_wifi_3",
+            "value":"Сигнал сети WLAN, три деления",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_wifi_2",
+            "value":"Сигнал сети WLAN, два деления",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_wifi_1",
+            "value":"Сигнал сети WLAN, одно деление",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

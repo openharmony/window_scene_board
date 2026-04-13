@@ -1,0 +1,62 @@
+{
+    "plural":[
+        {
+            "name":"control_center_complex_toggle_hotspot_device_count",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"[TS_1086249]_%d device"
+                },
+                {
+                    "quantity":"other",
+                    "value":"[TS_1086252]_%d devices"
+                },
+                {
+                    "quantity":"zero",
+                    "value":"[TS_1086250]_%d devices"
+                },
+                {
+                    "quantity":"few",
+                    "value":"[TS_1086253]_%d devices"
+                },
+                {
+                    "quantity":"many",
+                    "value":"[TS_1086254]_%d devices"
+                },
+                {
+                    "quantity":"two",
+                    "value":"[TS_1086248]_%d devices"
+                }
+            ]
+        },
+        {
+            "name":"statusbar_talkbackhotspot02",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"[TS_1107834]_One device connected"
+                },
+                {
+                    "quantity":"other",
+                    "value":"[TS_1107829]_%1$d devices connected"
+                },
+                {
+                    "quantity":"zero",
+                    "value":"[TS_1107832]_%1$d devices connected"
+                },
+                {
+                    "quantity":"few",
+                    "value":"[TS_1107833]_%1$d devices connected"
+                },
+                {
+                    "quantity":"many",
+                    "value":"[TS_1107831]_%1$d devices connected"
+                },
+                {
+                    "quantity":"two",
+                    "value":"[TS_1107830]_%1$d devices connected"
+                }
+            ]
+        }
+    ]
+}

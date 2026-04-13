@@ -1,0 +1,25 @@
+{
+  "float": [
+    {
+      "name": "time_fontsize",
+      "value": "106"
+    },
+    {
+      "name": "time_top_margin",
+      "value": "10"
+    },
+    {
+      "name": "time_bottom_margin",
+      "value": "10"
+    },
+    {
+      "name": "date_fontsize",
+      "value": "36"
+    },
+    {
+      "name": "date_week_area_height",
+      "value": "48"
+    }
+
+  ]
+}

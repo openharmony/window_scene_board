@@ -1,0 +1,116 @@
+{
+    "string":[
+        {
+            "name":"volume",
+            "value":"ئۈن",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"volume_channel_ringer",
+            "value":"قوڭغۇراق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"volume_channel_more_setting",
+            "value":"باشقا تەڭشەكلەر",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"volume_channel_voice_call",
+            "value":"سۆزلىشىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"volume_channel_media",
+            "value":"مېدىيا",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"volume_popup_note",
+            "value":"ئوڭغا سىيرىپ ماس ئاۋاز يولىنىڭ ئۈنىنى تەڭشەيسىز.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"volume_channel_notification",
+            "value":"ئۇقتۇرۇش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"volume_channel_alarm",
+            "value":"قوڭغۇراق سائەت",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"volume_accessibility_expand_dialog",
+            "value":"يېيىلدى، ئۈن سۇپىسى، %1$d سېكۇنت مەشغۇلات قىلمىسىڭىز ياكى ئىككى بارماقتا سىيرىسىڭىز ئېتىلىدۇ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"volume_accessibility_media",
+            "value":"مېدىيا ئاۋازى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"volume_accessibility_icon_enabled",
+            "value":"ئوچۇق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"volume_accessibility_icon_disabled",
+            "value":"ئېتىك",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"volume_accessibility_single",
+            "value":"%1$d پىرسەنت، %2$s، يۈرۈم بالدىقى، ئۈن كۇنۇپكىسى ئارقىلىق تەڭشەيسىز، ئىككى بارماقتا سولغا سىيرىسىڭىز ئۈن سۇپىسى يېيىلىدۇ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"volume_accessibility_dialog",
+            "value":"%1$d پىرسەنت، %2$s، يۈرۈم بالدىقى، ئۈن كۇنۇپكىسى ئارقىلىق تەڭشەيسىز",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"volume_accessibility_icon",
+            "value":"‏%1$s، ‏%2$s، كۇنۇپكا، بىر بارماقتا قوش چەكسىڭىز يۈرگۈزۈلىدۇ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"volume_accessibility_accessibility",
+            "value":"توسالغۇسىزلىق",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

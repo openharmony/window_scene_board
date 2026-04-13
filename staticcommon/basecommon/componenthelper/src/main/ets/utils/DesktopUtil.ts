@@ -21,6 +21,7 @@ import { SCBScenePanelManager, SCBScreenSessionManager, ScenePanelState } from '
 import display from '@ohos.display';
 import { RoPropConstants } from '@ohos/commonconstants';
 import { launcherStatusUtil } from '@ohos/windowscene';
+// import apsManager from '@hms.graphic.apsManager';
 
 const TAG = 'DesktopUtil';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.HOME, TAG);

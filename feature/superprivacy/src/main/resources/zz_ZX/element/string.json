@@ -1,0 +1,56 @@
+{
+    "string":[
+        {
+            "name":"SuperPrivacyPanelUnderEdmControl5",
+            "value":"[TS_1101175]_Your organization is managing camera and location access."
+        },
+        {
+            "name":"SuperPrivacyPanelUnderEdmControl4",
+            "value":"[TS_1101170]_Your organization is managing camera access."
+        },
+        {
+            "name":"SuperPrivacyPanelUnderEdmControl7",
+            "value":"[TS_1101164]_Your organization is managing camera, microphone, and location access."
+        },
+        {
+            "name":"SuperPrivacyPanelUnderEdmControl6",
+            "value":"[TS_1101187]_Your organization is managing camera and microphone access."
+        },
+        {
+            "name":"SuperPrivacyPaddlePanelOffContent",
+            "value":"[TS_1101162]_Camera, microphone, and location access restored. To enable Super Privacy, flip the switch next to the keyboard."
+        },
+        {
+            "name":"SuperPrivacyPanelUnderEdmControl1",
+            "value":"[TS_1101172]_Your organization is managing location access."
+        },
+        {
+            "name":"SuperPrivacyPanelUnderEdmControl3",
+            "value":"[TS_1101163]_Your organization is managing microphone and location access."
+        },
+        {
+            "name":"SuperPrivacyPanelUnderEdmControl2",
+            "value":"[TS_1101182]_Your organization is managing microphone access."
+        },
+        {
+            "name":"SuperPrivacyPaddlePanelContent",
+            "value":"[TS_1101183]_Apps can't access your camera, microphone, or location. To disable Super Privacy, flip the switch next to the keyboard."
+        },
+        {
+            "name":"SuperPrivacyPaddlePanelDisappearTitle",
+            "value":"[TS_1101176]_Super Privacy off"
+        },
+        {
+            "name":"SuperPrivacySoftPanelContent",
+            "value":"[TS_1101180]_Apps can't access your camera, microphone, or location. To restore access, turn off Super Privacy mode."
+        },
+        {
+            "name":"SuperPrivacyPaddlePanelAppearTitle",
+            "value":"[TS_1101173]_Super Privacy on"
+        },
+        {
+            "name":"SuperPrivacySoftPanelOffContent",
+            "value":"[TS_1101161]_Camera, microphone, and location access restored. To restrict access, turn on Super Privacy mode."
+        }
+    ]
+}

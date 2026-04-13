@@ -1,0 +1,102 @@
+{
+    "string":[
+        {
+            "name":"expand_formstack",
+            "value":"Mở rộng ngăn xếp",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"edit_formstack",
+            "value":"Sửa %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"delete_formstack",
+            "value":"Gỡ %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"expand_stack_request_focus_front_text",
+            "value":"Mục %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"delete_stack_form",
+            "value":"Đã xóa tiện ích %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"talkback_expand_stack_moved_to",
+            "value":"Được đặt là mục %d trong ngăn xếp",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"form_pinned_stack_text",
+            "value":"%1$s đã chuyển lên đầu ngăn xếp",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"stack_request_focus_after_text",
+            "value":"Đây là tiện ích %1$s. Có các hành động bạn có thể thực hiện. Chạm đúp và giữ để mở menu tùy chọn.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"create_form_stack_text",
+            "value":"%1$s được xếp chồng với %2$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"expand_stack_text",
+            "value":"Đã mở rộng, vuốt xuống bằng hai ngón tay để cuộn các tiện ích",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"delete_form_stack_text",
+            "value":"Xóa",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_form_stack_text",
+            "value":"%1$s đã được đặt trên ngăn xếp",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"close_stack_text",
+            "value":"Đã thu gọn ngăn xếp tiện ích",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"talkback_expand_stack_move_to",
+            "value":"Chuyển đến mục %d",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

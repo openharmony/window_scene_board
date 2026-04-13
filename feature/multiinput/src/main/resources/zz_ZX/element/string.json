@@ -1,0 +1,267 @@
+{
+    "string":[
+        {
+            "name":"system_function_show_desktop_key_d",
+            "value":"[TS_929439]_D"
+        },
+        {
+            "name":"system_function_show_desktop_key_c",
+            "value":"[TS_929436]_C"
+        },
+        {
+            "name":"system_function_show_desktop_key_alt",
+            "value":"[TS_929437]_Alt"
+        },
+        {
+            "name":"system_function_show_desktop_key_f",
+            "value":"[TS_929430]_F"
+        },
+        {
+            "name":"system_function_show_desktop_key_l",
+            "value":"[TS_929417]_L"
+        },
+        {
+            "name":"system_function_show_desktop_key_m",
+            "value":"[TS_929455]_M"
+        },
+        {
+            "name":"system_function_screen_lock",
+            "value":"[TS_929453]_Lock screen"
+        },
+        {
+            "name":"system_function_show_desktop_key_q",
+            "value":"[TS_929457]_Q"
+        },
+        {
+            "name":"shortcut_key_system_function_title",
+            "value":"[TS_929441]_System features"
+        },
+        {
+            "name":"system_function_show_desktop_key_n",
+            "value":"[TS_929454]_N"
+        },
+        {
+            "name":"focus_navigation_move_to_top",
+            "value":"[TS_929424]_Move focus to start of area"
+        },
+        {
+            "name":"system_function_show_desktop_key_f4",
+            "value":"[TS_929444]_F4"
+        },
+        {
+            "name":"system_function_control_center",
+            "value":"[TS_929415]_Control Panel"
+        },
+        {
+            "name":"system_function_show_desktop_key_tab",
+            "value":"[TS_929428]_Tab"
+        },
+        {
+            "name":"system_function_show_desktop_key_enter",
+            "value":"[TS_929447]_Enter"
+        },
+        {
+            "name":"focus_navigation_move_to_end",
+            "value":"[TS_929421]_Move focus to end of area"
+        },
+        {
+            "name":"system_function_show_desktop_key_a",
+            "value":"[TS_929418]_A"
+        },
+        {
+            "name":"system_function_application_center",
+            "value":"[TS_929426]_App center"
+        },
+        {
+            "name":"focus_navigation_move_to_next",
+            "value":"[TS_929431]_Move focus to next control"
+        },
+        {
+            "name":"system_function_notification_center",
+            "value":"[TS_929419]_Notification Panel"
+        },
+        {
+            "name":"focus_navigation_direction_keys_move_focus",
+            "value":"[TS_929458]_Move focus"
+        },
+        {
+            "name":"system_function_show_desktop_key_r",
+            "value":"[TS_929422]_R"
+        },
+        {
+            "name":"system_function_show_desktop_key_s",
+            "value":"[TS_929443]_S"
+        },
+        {
+            "name":"system_function_task_center",
+            "value":"[TS_929427]_Task center"
+        },
+        {
+            "name":"system_function_open_file_manager",
+            "value":"[TS_929433]_Files"
+        },
+        {
+            "name":"system_function_show_desktop_key_ctrl",
+            "value":"[TS_929425]_Ctrl"
+        },
+        {
+            "name":"shortcut_key_window_manager_title",
+            "value":"[TS_929448]_Home & windows"
+        },
+        {
+            "name":"focus_navigation_active",
+            "value":"[TS_929434]_Activate focus navigation"
+        },
+        {
+            "name":"shortcut_key_focus_navigation_title",
+            "value":"[TS_929461]_Focus navigation"
+        },
+        {
+            "name":"focus_navigation_quit_application",
+            "value":"[TS_929463]_Quit app"
+        },
+        {
+            "name":"system_function_show_desktop_key_back",
+            "value":"[TS_929435]_Back"
+        },
+        {
+            "name":"system_function_go_home",
+            "value":"[TS_929459]_Home"
+        },
+        {
+            "name":"system_function_or",
+            "value":"[TS_929416]_or"
+        },
+        {
+            "name":"system_function_show_desktop_key_home",
+            "value":"[TS_929465]_Fn"
+        },
+        {
+            "name":"focus_navigation_active_action",
+            "value":"[TS_929468]_Activate focus action"
+        },
+        {
+            "name":"focus_navigation_open_context_menu",
+            "value":"[TS_929450]_Open context menu"
+        },
+        {
+            "name":"system_function_show_desktop_key_end",
+            "value":"[TS_929429]_Fn"
+        },
+        {
+            "name":"system_function_screen_shot",
+            "value":"[TS_929464]_Screenshot"
+        },
+        {
+            "name":"system_function_switch_inputmethod",
+            "value":"[TS_929449]_Switch input method"
+        },
+        {
+            "name":"system_function_intelligent_search",
+            "value":"[TS_929456]_AI Search"
+        },
+        {
+            "name":"system_function_show_desktop_key_space",
+            "value":"[TS_929469]_Space"
+        },
+        {
+            "name":"focus_navigation_move_to_pre",
+            "value":"[TS_929423]_Move focus to previous control"
+        },
+        {
+            "name":"system_function_show_desktop_key_shift",
+            "value":"[TS_929466]_Shift"
+        },
+        {
+            "name":"system_function_shortcut_key_pannel",
+            "value":"[TS_929467]_Show keyboard shortcuts"
+        },
+        {
+            "name":"focus_navigation_cancel_current_operation",
+            "value":"[TS_929420]_Cancel current action"
+        },
+        {
+            "name":"system_function_show_desktop_key_f10",
+            "value":"[TS_929442]_F10"
+        },
+        {
+            "name":"window_manager_min_window",
+            "value":"[TS_929445]_Minimize window"
+        },
+        {
+            "name":"system_function_show_desktop",
+            "value":"[TS_929460]_Show home screen"
+        },
+        {
+            "name":"system_function_open_task_manager",
+            "value":"[TS_929440]_Task Manager"
+        },
+        {
+            "name":"window_manager_close_window",
+            "value":"[TS_929462]_Close window"
+        },
+        {
+            "name":"system_function_screen_record",
+            "value":"[TS_929446]_Record screen"
+        },
+        {
+            "name":"system_function_back",
+            "value":"[TS_929452]_Go back"
+        },
+        {
+            "name":"system_function_show_desktop_key_esc",
+            "value":"[TS_929451]_Esc"
+        },
+        {
+            "name":"focus_navigation_enter_and_focus",
+            "value":"[TS_929438]_Enter area & focus"
+        },
+        {
+            "name":"system_function_show_desktop_key_slash",
+            "value":"[TS_929470]_/"
+        },
+        {
+            "name":"window_manager_switch_application",
+            "value":"[TS_929432]_Switch apps"
+        },
+        {
+            "name":"system_task_manager",
+            "value":"[TS_973644]_Task Manager"
+        },
+        {
+            "name":"system_force_exit",
+            "value":"[TS_999925]_Force close apps",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"system_function_show_desktop_key_question_mark",
+            "value":"[TS_1024211]_?"
+        },
+        {
+            "name":"system_fn_key_switch",
+            "value":"[TS_1024208]_Toggle function keys on/off"
+        },
+        {
+            "name":"system_start_menu",
+            "value":"[TS_1024210]_Start menu"
+        },
+        {
+            "name":"window_manager_max_window",
+            "value":"[TS_1024209]_Maximize window"
+        },
+        {
+            "name":"shortcut_key_navigaton_view_title",
+            "value":"[TS_1024212]_Shortcuts"
+        },
+        {
+            "name":"mic_reminder_mute",
+            "value":"[TS_1054848]_Microphone muted."
+        },
+        {
+            "name":"mic_reminder_unmute",
+            "value":"[TS_1054847]_Microphone unmuted."
+        }
+    ]
+}

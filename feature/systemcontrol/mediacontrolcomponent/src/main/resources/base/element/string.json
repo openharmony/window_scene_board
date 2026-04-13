@@ -1,0 +1,396 @@
+{
+    "string":[
+        {
+            "name":"no_media_title",
+            "value":"Not playing",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"toobar_title_pitching",
+            "value":"Audio projection",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"LocalDevice",
+            "value":"This device",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"WiredDevice",
+            "value":"Wired headphones",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"WiredCastDevice",
+            "value":"Wired device",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"BluetoothDevice",
+            "value":"Bluetooth headphones",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"av_cast_cast_fail",
+            "value":"Playback on other device failed. Please try again.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"av_cast_cast_disconnect",
+            "value":"Playback device disconnected.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"CallEarpiece",
+            "value":"Receiver",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"CallSpeaker",
+            "value":"Speakers",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"recommended_to_you",
+            "value":"Top picks for you",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"RecentlyPlay",
+            "value":"Recently played",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"preference_setting",
+            "value":"Preferences",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"audio_usage",
+            "value":"Call audio can't be switched from this screen.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"device_error",
+            "value":"Cast failed due to a device or app error.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"av_cast_disconnect",
+            "value":"Cast disconnected. Playback returned to this device.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"switch_to_resource_cast",
+            "value":"Switched to media casting.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"wireless_usage",
+            "value":"Unable to switch. Audio channel is being used by screen casting.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"unAuthDevice",
+            "value":"More devices",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"access_audio_control",
+            "value":"PlayCast",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_cyclic_mode_loop",
+            "value":"Playback mode, repeat one",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_cyclic_mode_list",
+            "value":"Playback mode, repeat all",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_cyclic_mode_sequential",
+            "value":"Playback mode, play in order",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_cyclic_mode_shuffle",
+            "value":"Playback mode, random",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_previous",
+            "value":"Previous track",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_play",
+            "value":"Play",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_pause",
+            "value":"Pause",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_next",
+            "value":"Next track",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_favorites",
+            "value":"Favorites",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_cancel_favorites",
+            "value":"Unfavorite",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_rewind",
+            "value":"Rewind",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_fast_forward",
+            "value":"Fast forward",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_More",
+            "value":"More",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_close",
+            "value":"Close",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_notice",
+            "value":"Information",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_connected",
+            "value":"Connected",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_unavailable",
+            "value":"Unavailable",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_Favorited",
+            "value":"Favorited",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"open_bluetooth",
+            "value":"To cast to this device, first turn on Bluetooth.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"multi_screen_usage",
+            "value":"Unable to switch. Audio is being used for Multi-Screen Collaboration.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"av_cast_banner_title",
+            "value":"Playing on \"%s\"",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"access_av_cast_volume_increase",
+            "value":"Increase volume of playback device",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_av_cast_volume_reduce",
+            "value":"Lower volume of playback device",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_media_broadcast_control_center",
+            "value":"Media Controller",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_media_volume_bar",
+            "value":"Media volume bar",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sound_output_device_nearlink",
+            "value":"NearLink device (%s)",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+          "name":"HearingAid",
+          "value":"Hearing aid",
+          "attr":{
+            "priority":"translate"
+          }
+        },
+        {
+            "name":"access_switch_playback_device",
+            "value":"Change playback device",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_expand_more_devices",
+            "value":"Expand more devices",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_cover_image",
+            "value":"Cover image",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_playback_progress",
+            "value":"Playback progress",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_total_duration",
+            "value":"Total duration",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name": "device_in_call",
+            "value": "Call in progress",
+            "attr": {
+                "priority": "translate"
+            }
+        },
+        {
+            "name":"access_call_volume_bar",
+            "value":"Volume bar for calls",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"you_may_like",
+            "value":"Suggested",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"recently_played_songs",
+            "value":"Recently played song",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

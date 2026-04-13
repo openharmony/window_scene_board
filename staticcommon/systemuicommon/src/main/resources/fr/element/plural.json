@@ -1,0 +1,80 @@
+{
+    "plural":[
+        {
+            "name":"cc_accessibility_str_timer_str_hour",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"%d heures",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"one",
+                    "value":"%d heure",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"cc_accessibility_str_timer_str_minute",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"%d minutes",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"one",
+                    "value":"%d minute",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"ntf_pin_top_dialog_reach_limit_content",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"Jusqu'à %d application peut être épinglée en haut. Veuillez retirer les applications que vous ne souhaitez plus épingler.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"Jusqu'à %d applications peuvent être épinglées en haut. Veuillez retirer les applications que vous ne souhaitez plus épingler.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"cc_accessibility_str_timer_str_second",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"%d seconde",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"%d secondes",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

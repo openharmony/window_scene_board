@@ -1,0 +1,144 @@
+{
+    "string":[
+        {
+            "name":"accessibility_reboot",
+            "value":"ئۈسكۈنىنى قايتا قوزغىتىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_power_off",
+            "value":"ئۈسكۈنىنى ئېتىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_back",
+            "value":"ئۈسكۈنىنى ئېتىش ئېكرانىدىن چېكىنىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"poweroff_tips",
+            "value":"ئەسكەرتىش: توك مەنبە ۋە ئۈن تۆۋەنلىتىش كۇنۇپكىسىنى بىللە %d سېكۇنتتىن ئارتۇق بېسىپ تۇرسىڭىز، ئۈسكۈنە مەجبۇرىي قايتا قوزغىلىدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"poweroff_fold_tips",
+            "value":"ئەسكەرتىش: توك مەنبە ۋە ئۈن تۆۋەنلىتىش كۇنۇپكىسىنى بىللە %d سېكۇنتتىن ئارتۇق بېسىپ تۇرسىڭىز، ئۈسكۈنە مەجبۇرىي قايتا قوزغىلىدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Poweroff_Button_Reboot",
+            "value":"قايتا قوزغىتىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Poweroff_Button_Shutdown",
+            "value":"ئېتىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Poweroff_Button_Click_Reboot",
+            "value":"قايتا قوزغىتىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Poweroff_Button_Click_Shutdown",
+            "value":"ئېتىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"thermal_aware_toast",
+            "value":"قاتلاقنى ئاچسىڭىز ياخشىراق.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"power_schedule_switch_reminder",
+            "value":"قەرەللىك ئېچىش (%s)",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"power_schedule_switch_toast",
+            "value":"ئۈسكۈنە بېكىتكەن قەرەل بويىچە ئۆزلۈكىدىن ئېچىلمايدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"off_find_no_action_confirm",
+            "value":"بىلدىم",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"off_find_checkbox",
+            "value":"ئېتىك ھالەتتىمۇ ئۈسكۈنە ئىزدەش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"off_find_disable_confirm",
+            "value":"ۋاقىتلىق ئېتىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"off_find_alert_dialog_title",
+            "value":"ئېتىك ئۈسكۈنىمۇ تېپىلىدۇ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"off_find_alert_dialog_message",
+            "value":"بۇ ئۈسكۈنە ئېتىك بولسىمۇ، ئوخشاش ھېساباتقا كىرگەن باشقا ئۈسكۈنىدە تەڭشەك > ھېسابات > ئۈسكۈنە ئىزدەش دېگەن ئورۇندىن ئورنىنى ئېنىقلاشقا بولىدۇ. ئۈسكۈنە ئىزدەش ۋاقىتلىق ئېتىلسىمۇ، ئۈسكۈنىنى قايتا قوزغاتقاندا ئۈسكۈنە ئىزدەش ئىقتىدارى ئۆزلۈكىدىن ئېچىلىدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"battery_emergency_dialog_content",
+            "value":"توك بەك ئاز، ئۈسكۈنە %d سېكۇنتتىن كېيىن جىددىي ھالەتكە كىرىدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"shutdown_dialog_content_new",
+            "value":"توك تۈگىدى، ئۈسكۈنە %d سېكۇنتتىن كېيىن ئېتىلىدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"shutdown_dialog_title",
+            "value":"ئەسكەرتىش",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

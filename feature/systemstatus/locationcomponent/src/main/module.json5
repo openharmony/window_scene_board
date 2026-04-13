@@ -1,0 +1,10 @@
+{
+  "module": {
+    "name": "locationcomponent",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ]
+  }
+}

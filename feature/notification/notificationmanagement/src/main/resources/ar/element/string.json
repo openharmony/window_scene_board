@@ -1,0 +1,508 @@
+{
+    "string":[
+        {
+            "name":"banners",
+            "value":"الأشرطة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_style",
+            "value":"نمط عرض الإشعارات",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"clear",
+            "value":"مسح",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_wake_screen_switch_text",
+            "value":"إيقاظ الشاشة عند تلقي إشعارات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_lock_screen_switch_text",
+            "value":"عدم إظهار محتوى الإشعارات والشاشة مقفلة.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_and_status_bar_title",
+            "value":"الإشعارات وشريط الحالة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_lock_screen_switch_title_new",
+            "value":"إخفاء محتوى الإشعارات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"status_bar_title",
+            "value":"شريط الحالة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_wake_screen_switch_title",
+            "value":"إيقاظ الشاشة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"more_ntf_setting",
+            "value":"إعدادات إضافية",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"search_history",
+            "value":"محفوظات البحث",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"no_banners",
+            "value":"لا شيء",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntfSoundModeOnlyVibration",
+            "value":"اهتزاز",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"lock_screen_notification",
+            "value":"شاشة القفل",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"badges",
+            "value":"الشارات",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"search_app",
+            "value":"البحث عن التطبيق",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notifications",
+            "value":"الإشعارات",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_not_banner",
+            "value":"إظهار إشعارات شريط الحالة على الشاشة الرئيسية",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"smart_reminder_learn_more",
+            "value":"معرفة المزيد",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"smart_digest",
+            "value":"التجميع الذكي",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntfSoundModeSilence",
+            "value":"صامت",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remind_banner",
+            "value":"الأشرطة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"lock_screen_notification_style",
+            "value":"عرض الإشعارات كقائمة على شاشة القفل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"entry_desc",
+            "value":"الإشعارات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"set_face",
+            "value":"إعداد",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"hide_banner_content_desc",
+            "value":"ينطبق فقط على التطبيقات التي تتبع إعدادات إشعارات النظام.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"unified_notification_label",
+            "value":"تنظيم الإشعارات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remind_disable",
+            "value":"مغلق",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remind_sound",
+            "value":"صوت",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_pin_on_top",
+            "value":"إظهار دائم لإشعارات هذا التطبيق في أعلى لوحة الإشعارات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"hide_banner_content_title",
+            "value":"إظهار محتوى إشعارات شريط الحالة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"no_matching_results",
+            "value":"لا توجد نتائج",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"splitter_format_for_4",
+            "value":"%1$s‏، %2$s‏، %3$s‏، %4$s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"splitter_format_for_2",
+            "value":"%1$s‏، %2$s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"splitter_format_for_3",
+            "value":"%1$s‏، %2$s،‏ %3$s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"switch_screen_lock_ntf_style_forbidden",
+            "value":"سيتم فتح وعرض محتوى الإشعارات عند استخدام بصمة الإصبع لفتح القفل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remind_vibration",
+            "value":"اهتزاز",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"smart_reminder_tips_main",
+            "value":"عند تشغيل هذا الخيار، ستُعرض محتويات إشعارات شريط الحالة لك فقط، كما ستصبح تنبيهات الإشعارات أكثر هدوءًا من حيث الصوت والاهتزاز عند النظر إلى الشاشة. تستخدم هذه الميزة تقنية التعرف على الوجه. %s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"smart_reminder_tips_no_weak",
+            "value":"عند تشغيل هذا الخيار، ستُعرض محتويات إشعارات شريط الحالة لك فقط. تستخدم هذه الميزة تقنية التعرف على الوجه.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"unified_notification_intro",
+            "value":"تجميع الإشعارات من تطبيقات مختلفة عندما تكون مرتبطة ببعضها.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"show_tip_live_view_preview_when_screen_lock",
+            "value":"شغّل هذا الخيار للحصول على تجربة أفضل للعرض الحي.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remind_lock_screen",
+            "value":"شاشة القفل",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pad_pure_show_description",
+            "value":"إظهار الوقت والشبكة اللاسلكية والبطارية فقط في شريط الحالة.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntfSoundModeSettingTitle",
+            "value":"نغمة الإشعارات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remind_only_notification_center",
+            "value":"لوحة الإشعارات فقط",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"hide_banner_content_app_follow_system",
+            "value":"حسب النظام",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"hiding_banner_content_txt",
+            "value":"عند ظهور إشعارات شريط الحالة، لن يُعرض محتواها إذا كان هناك أشخاص آخرون ينظرون إلى الشاشة. تستخدم هذه الميزة تقنية التعرف على الوجه.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"hide_banner_content_app_never",
+            "value":"عدم الإظهار",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntfSoundModeOnlyRing",
+            "value":"رنين",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"hide_banner_content_app_always",
+            "value":"إظهار دومًا",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"live_view_title",
+            "value":"العرض الحي",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"switch_badges_forbidden",
+            "value":"شغّل أولًا خيار \"إظهار الشارات\" من \"الإعدادات > الإشعارات وشريط الحالة > إعدادات إضافية\"",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pure_show_description",
+            "value":"إظهار الوقت وإشارة الجوال والشبكة اللاسلكية والبطارية فقط في شريط الحالة.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remind_type",
+            "value":"النوع",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_switch_alarm_clock",
+            "value":"المنبه",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_switch_vpn",
+            "value":"شبكة VPN",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_switch_nearlink",
+            "value":"اتصال البلوتوث وNearLink",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_switch_icon_visible",
+            "value":"إدارة الأيقونات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"enable_switch_ring_mode_silent",
+            "value":"الوضع الصامت",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_switch_ring_mode",
+            "value":"صامت/اهتزاز",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"enable_switch_head_phones",
+            "value":"سماعة الرأس السلكية",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_switch_bluetooth",
+            "value":"اتصال البلوتوث",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_switch_net_speed",
+            "value":"سرعة الإنترنت في الوقت الفعلي",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_switch_nfc",
+            "value":"NFC",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_switch_notification_icon",
+            "value":"أيقونات الإشعارات",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"psd_back_accessible",
+            "value":"رجوع، زر",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"lock_screen_notification_fold",
+            "value":"إشعار شاشة القفل، عرض مطوي",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"silent_notification",
+            "value":"الإشعارات اللطيفة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"silent_notification_description",
+            "value":"إسكات الإشعارات من هذا التطبيق وإظهارها في لوحة الإشعارات فقط.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"lock_screen_notification_expand",
+            "value":"إشعار شاشة القفل، عرض موسّع",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"enable_switch_explain",
+            "value":"تظهر أيقونات الحالة في لوحة التحكم ولوحة الإشعارات حتى إذا تم إلغاء تحديدها هنا.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"already_clear",
+            "value":"تم المسح",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

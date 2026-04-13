@@ -1,0 +1,67 @@
+{
+    "string":[
+        {
+            "name":"control_center_eye_comfort_toggle_title",
+            "value":"كۆز قوغداش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"control_center_eye_comfort_scheduled_open",
+            "value":"قەرەللىك",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"control_center_eye_comfort_scheduled_next_day",
+            "value":"%1$s ~ ئەتىسى %2$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_eye_comfort_smart_open_subtitle_active",
+            "value":"كۆز تېلىشتىن قوغداش ئوچۇق.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"control_center_eye_comfort_scheduled_open_subtitle_sunset",
+            "value":"كۈن پاتقاندىن باشلاپ كۈن چىققۇچە",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_eye_comfort_smart_open",
+            "value":"ئاڭلىق",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"control_center_eye_comfort_always_on",
+            "value":"پۈتۈن كۈن",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"control_center_eye_comfort_smart_open_subtitle_normal",
+            "value":"كۆز ھالىتى نورمال.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_eye_comfort_smart_open_subtitle_default",
+            "value":"كۆز تېلىشنى ئېنىقلاپ، كۆرسىتىش ئۈنۈمىنى ئۆزلۈكىدىن تەڭشەيدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        }
+    ]
+}

@@ -1,0 +1,529 @@
+{
+    "string":[
+        {
+            "name":"notification_tip_open",
+            "value":"تم تمكين الإشعارات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"allowNotification",
+            "value":"السماح بتلقي الإشعارات",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"show_battery_soc",
+            "value":"إظهار نسبة البطارية",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"loading",
+            "value":"جارٍ التحميل...",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"lock_screen",
+            "value":"شاشة القفل",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"application",
+            "value":"التطبيقات",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pure_show_title",
+            "value":"العرض البسيط",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntfSoundModeOnlyVibration",
+            "value":"اهتزاز",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_tip_close",
+            "value":"الإشعارات موقوف تشغيلها",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"banner",
+            "value":"شريط",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"allow_notification_distribution",
+            "value":"عرض الإشعارات من الهاتف",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"allow_live_view_distribution",
+            "value":"عرض العروض الحية من الهاتف",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"show_preview_when_screen_lock",
+            "value":"إظهار معاينات الإشعارات عند القفل",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"slot_other",
+            "value":"أخرى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remind_vibration_in_list",
+            "value":"اهتزاز",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"slot_service_information",
+            "value":"إشعارات الخدمة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notificationStyle",
+            "value":"نمط عرض الإشعارات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"live_view_no_services",
+            "value":"لا توجد خدمات متوفرة حاليًا",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"badge",
+            "value":"الشارات",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"live_view_apps",
+            "value":"التطبيقات",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"version",
+            "value":"الإصدار \u202a%s\u202c",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"batch_Management",
+            "value":"إدارة الكل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pinTopShowNotification",
+            "value":"تثبيت في الأعلى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"noDisturb_none",
+            "value":"إيقاف",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"smart_hiding_of_banner_content",
+            "value":"الحفاظ على خصوصية إشعارات شريط الحالة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"slot_social_communication",
+            "value":"التواصل الاجتماعي",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"smart_reminder",
+            "value":"الإشعارات الذكية",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"show_notification_icon",
+            "value":"إظهار أيقونات إشعارات التطبيقات",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"show_live_view_preview_when_screen_lock",
+            "value":"إظهار معاينات العرض الحي عند القفل",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"meta_service",
+            "value":"الخدمات",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remind_sound",
+            "value":"صوت",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"confirm",
+            "value":"موافق",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"splitter_format_for_4",
+            "value":"%1$s‏، %2$s‏، %3$s‏، %4$s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"splitter_format_for_5",
+            "value":"%1$s‏، %2$s‏، %3$s‏، %4$s‏، %5$s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"splitter_format_for_2",
+            "value":"%1$s‏، %2$s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"splitter_format_for_3",
+            "value":"%1$s‏، %2$s،‏ %3$s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pinTopNotification",
+            "value":"تثبيت الإشعارات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"only_notification_center",
+            "value":"لوحة الإشعارات فقط",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"slot_customer_service_message",
+            "value":"رسائل خدمة العملاء",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"live_view_services",
+            "value":"الخدمات",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"slotType",
+            "value":"نوع الإشعار",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remind_lock_screen_in_list",
+            "value":"شاشة القفل",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"empty_service",
+            "value":"لا توجد خدمات",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wake_screen_when_receive_notification",
+            "value":"إيقاظ الشاشة مع الإشعارات",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remind_only_notification_center",
+            "value":"لوحة الإشعارات فقط",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"setting",
+            "value":"الإعدادات",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntfSoundModeOnlyRing",
+            "value":"رنين",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntf_pin_top_dialog_reach_limit_title",
+            "value":"بلغ عدد التطبيقات المثبتة في الأعلى الحد الأقصى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"show_desktop_badges",
+            "value":"إظهار الشارات",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remind_sound_in_list",
+            "value":"صوت",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remind_banner_in_list",
+            "value":"الأشرطة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"cancel",
+            "value":"إلغاء",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"show_real_time_network_speed",
+            "value":"إظهار سرعة الشبكة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"live_view_no_apps",
+            "value":"لا توجد تطبيقات متوفرة حاليًا",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"slot_content_information",
+            "value":"المحتوى والأخبار",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notificationSound",
+            "value":"نغمة الإشعارات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"open_app_inner_ntf_mgmt",
+            "value":"انتقال إلى %s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_list_loading_message",
+            "value":"جارٍ التحميل…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"network_error",
+            "value":"مشكلة في الشبكة، تحقق من إعدادات الشبكة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"login_button",
+            "value":"تسجيل الدخول",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"display_only_when_the_owner_is_looking",
+            "value":"عند النظر إليه فقط",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"display_lock_Screen_notification_content_tip",
+            "value":"هذا الخيار بحاجة إلى تشغيل بصمة الوجه لكي يعمل على النحو المنشود",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"only_when_the_owner_is_looking_tip",
+            "value":"خيار \"عند النظر إليه فقط\" سيكون مُتاحًا للاستخدام فقط عند تشغيل بصمة الوجه. %s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"only_when_the_owner_is_looking_tip_button",
+            "value":"معرفة المزيد",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"need_login_service_tips",
+            "value":"يلزم تسجيل الدخول باستخدام حساب هواوي لتغيير هذه الإعدادات.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"display_live_window_content",
+            "value":"إظهار محتوى العرض الحي",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"display_live_window_content_tip",
+            "value":"عيّن هذا الخيار على \"السماح دومًا\" للحصول على أفضل تجربة للعرض الحي.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"display_lock_Screen_notification_content",
+            "value":"إظهار محتوى الإشعارات على شاشة القفل",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"display_banner_notification_content",
+            "value":"إظهار محتوى شريط الإشعارات",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"always_display",
+            "value":"السماح دومًا",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"display_when_unlocked",
+            "value":"عند فتح القفل",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"psd_back_accessible",
+            "value":"رجوع، زر",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"check_box_unchecked",
+            "value":"غير محدد",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"check_box_selected",
+            "value":"محدد",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"close_accessibility_text",
+            "value":"زر الإغلاق",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

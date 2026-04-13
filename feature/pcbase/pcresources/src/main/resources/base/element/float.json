@@ -1,0 +1,2340 @@
+{
+  "float": [
+    {
+      "name": "brightness_slider_trackthickness_height",
+      "value": "4vp"
+    },
+    {
+      "name": "brightness_slider_left_margin",
+      "value": "9.5vp"
+    },
+    {
+      "name": "brightness_slider_radius",
+      "value": "3vp"
+    },
+    {
+      "name": "brightness_image_left_margin",
+      "value": "16vp"
+    },
+    {
+      "name": "brightness_border_width",
+      "value": "1vp"
+    },
+    {
+      "name": "account_page_icon_radio",
+      "value": "20vp"
+    },
+    {
+      "name": "screenLock_date_margin",
+      "value": "6vp"
+    },
+    {
+      "name": "screenLock_powermenu_fontsize",
+      "value": "16vp"
+    },
+    {
+      "name": "screenLock_user_name_font_size",
+      "value": "22vp"
+    },
+    {
+      "name": "screenLock_resettext_margin_leftright",
+      "value": "4vp"
+    },
+    {
+      "name": "screenLock_resettext_margin_topbottom",
+      "value": "2vp"
+    },
+    {
+      "name": "Control_center_header_top_margin",
+      "value": "14"
+    },
+    {
+      "name": "Control_center_meidaCard_radius",
+      "value": "24"
+    },
+    {
+      "name": "Control_center_mediaAndWifiBlue_top_margin",
+      "value": "2"
+    },
+    {
+      "name": "Control_center_button_margin",
+      "value": "16"
+    },
+    {
+      "name": "Control_center_button_margin_bottom",
+      "value": "14"
+    },
+    {
+      "name": "Control_center_brightness_left_padding",
+      "value": "0"
+    },
+    {
+      "name": "Control_center_volume_top_margin",
+      "value": "12"
+    },
+    {
+      "name": "Control_center_brightness_top_margin",
+      "value": "14"
+    },
+    {
+      "name": "Control_center_focus_padding_top",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_focus_padding",
+      "value": "2"
+    },
+    {
+      "name": "Control_center_mediaAndWifiBlue_spaceBetween",
+      "value": "16"
+    },
+    {
+      "name": "Control_center_button_font_size",
+      "value": "14"
+    },
+    {
+      "name": "control_center_panel_padding",
+      "value": "28"
+    },
+    {
+      "name": "Control_center_media_width",
+      "value": "312"
+    },
+    {
+      "name": "Control_center_media_height",
+      "value": "72"
+    },
+    {
+      "name": "Control_center_media_border_radius",
+      "value": "16"
+    },
+    {
+      "name": "Control_center_media_row_gap",
+      "value": "16"
+    },
+    {
+      "name": "Control_center_bottom_margin",
+      "value": "21"
+    },
+    {
+      "name": "Control_center_head_height",
+      "value": "56"
+    },
+    {
+      "name": "Control_center_setting_width",
+      "value": "40"
+    },
+    {
+      "name": "Control_center_setting_border",
+      "value": "8vp"
+    },
+    {
+      "name": "Control_center_setting_icon_width",
+      "value": "24"
+    },
+    {
+      "name": "Control_center_edit_header_height",
+      "value": "56vp"
+    },
+    {
+      "name": "Control_center_edit_symbol_icon_size",
+      "value": "24vp"
+    },
+    {
+      "name": "Control_center_header_btn_wrapper_width",
+      "value": "40vp"
+    },
+    {
+      "name": "Control_center_header_btn_wrapper_height",
+      "value": "40vp"
+    },
+    {
+      "name": "Control_center_header_back_btn_margin_left",
+      "value": "12vp"
+    },
+    {
+      "name": "Control_center_header_back_btn_margin_right",
+      "value": "16vp"
+    },
+    {
+      "name": "Control_center_header_edit_mode_title_width",
+      "value": "258vp"
+    },
+    {
+      "name": "Control_center_header_edit_mode_title_margin_left",
+      "value": "4vp"
+    },
+    {
+      "name": "Control_center_edit_mode_grid_rowsGap",
+      "value": "24vp"
+    },
+    {
+      "name": "Control_center_edit_mode_grid_colsGap",
+      "value": "5vp"
+    },
+    {
+      "name": "Control_center_edit_mode_selected_grid_margin_left",
+      "value": "8vp"
+    },
+    {
+      "name": "Control_center_edit_mode_selected_grid_margin_right",
+      "value": "8vp"
+    },
+    {
+      "name": "Control_center_edit_mode_selected_grid_padding_left",
+      "value": "12vp"
+    },
+    {
+      "name": "Control_center_edit_mode_selected_grid_padding_right",
+      "value": "12vp"
+    },
+    {
+      "name": "Control_center_edit_mode_selected_grid_padding_top",
+      "value": "16vp"
+    },
+    {
+      "name": "Control_center_edit_mode_selected_grid_height",
+      "value": "206vp"
+    },
+    {
+      "name": "Control_center_edit_mode_selected_grid_border_radius",
+      "value": "12vp"
+    },
+    {
+      "name": "Control_center_edit_mode_selected_grid_border_width",
+      "value": "2vp"
+    },
+    {
+      "name": "Control_center_edit_mode_selected_grid_padding_bottom",
+      "value": "20vp"
+    },
+    {
+      "name": "Control_center_edit_mode_candidate_grid_padding_left",
+      "value": "20vp"
+    },
+    {
+      "name": "Control_center_edit_mode_candidate_grid_padding_right",
+      "value": "20vp"
+    },
+    {
+      "name": "Control_center_edit_mode_candidate_grid_padding_bottom",
+      "value": "20vp"
+    },
+    {
+      "name": "Control_center_edit_mode_candidate_grid_padding_top",
+      "value": "8vp"
+    },
+    {
+      "name": "Control_center_edit_mode_prompt_fontSize",
+      "value": "14vp"
+    },
+    {
+      "name": "Control_center_edit_mode_prompt_height",
+      "value": "48vp"
+    },
+    {
+      "name": "Control_center_edit_mode_prompt_margin_left",
+      "value": "8vp"
+    },
+    {
+      "name": "Control_center_edit_mode_prompt_margin_right",
+      "value": "8vp"
+    },
+    {
+      "name": "Control_center_edit_mode_prompt_margin_top",
+      "value": "22vp"
+    },
+    {
+      "name": "Control_center_edit_mode_prompt_margin_bottom",
+      "value": "22vp"
+    },
+    {
+      "name": "Control_center_edit_mode_prompt_width",
+      "value": "312vp"
+    },
+    {
+      "name": "Control_center_edit_mode_action_btn_size",
+      "value": "24vp"
+    },
+    {
+      "name": "Control_center_edit_mode_action_btn_margin_top",
+      "value": "-6vp"
+    },
+    {
+      "name": "Control_center_edit_mode_action_btn_margin_right",
+      "value": "-6vp"
+    },
+    {
+      "name": "Control_center_head_font_size",
+      "value": "20"
+    },
+    {
+      "name": "Control_center_head_line_height",
+      "value": "32"
+    },
+    {
+      "name": "Control_center_head_line_top_padding",
+      "value": "5vp"
+    },
+    {
+      "name": "Control_center_head_width",
+      "value": "312"
+    },
+    {
+      "name": "Control_center_head_right_margin",
+      "value": "6"
+    },
+    {
+      "name": "Control_center_padding",
+      "value": "24"
+    },
+    {
+      "name": "Control_center_volume_bright_padding",
+      "value": "22"
+    },
+    {
+      "name": "Had_control_center_padding",
+      "value": "21"
+    },
+    {
+      "name": "Control_center_background_effect_radius",
+      "value": "30"
+    },
+    {
+      "name": "Control_center_background_effect_saturation",
+      "value": "2"
+    },
+    {
+      "name": "control_center_privacy_img_size",
+      "value": "18"
+    },
+    {
+      "name": "Control_center_brightness_height",
+      "value": "32"
+    },
+    {
+      "name": "Control_center_brightness_icon_left_margin",
+      "value": "0"
+    },
+    {
+      "name": "control_center_panel_bottom_space_land",
+      "value": "4"
+    },
+    {
+      "name": "status_bar_panel_saturate",
+      "value": "1.2"
+    },
+    {
+      "name": "control_center_panel_margin_bottom",
+      "value": "0"
+    },
+    {
+      "name": "Control_center_quickToggle_padding_vertical",
+      "value": "6"
+    },
+    {
+      "name": "Control_center_brightness_padding",
+      "value": "8"
+    },
+    {
+      "name": "Control_center_brightness_padding_left",
+      "value": "6.5"
+    },
+    {
+      "name": "status_bar_panel_inner_border_width",
+      "value": "1px"
+    },
+    {
+      "name": "status_bar_panel_outer_border_width",
+      "value": "1px"
+    },
+    {
+      "name": "Control_center_quickToggle_top_margin_pc",
+      "value": "20"
+    },
+    {
+      "name": "Control_center_quickToggle_top_margin_pc_left",
+      "value": "6"
+    },
+    {
+      "name": "actionsheet_padding_h",
+      "value": "48"
+    },
+    {
+      "name": "actionsheet_padding_v",
+      "value": "48"
+    },
+    {
+      "name": "gridview_clock_border_width",
+      "value": "3.0"
+    },
+    {
+      "name": "editsheet_pane_spacing",
+      "value": "16"
+    },
+    {
+      "name": "edit_clockwidget_grid_margin",
+      "value": "16"
+    },
+    {
+      "name": "mediumbutton_outer_width",
+      "value": "60"
+    },
+    {
+      "name": "mediumbutton_outer_height",
+      "value": "60"
+    },
+    {
+      "name": "mediumbutton_image_width",
+      "value": "24"
+    },
+    {
+      "name": "mediumbutton_outer_radius",
+      "value": "30"
+    },
+    {
+      "name": "mediumbutton_bg_blur_radius",
+      "value": "10"
+    },
+    {
+      "name": "pane_bg_blur_radius",
+      "value": "22"
+    },
+    {
+      "name": "toolbar_bg_blur_saturation",
+      "value": "0.13"
+    },
+    {
+      "name": "edit_clockwidget_date_text_font_size",
+      "value": "32"
+    },
+    {
+      "name": "edit_clockwidget_date_text_font_size_2_4",
+      "value": "24"
+    },
+    {
+      "name": "edit_clockwidget_date_text_font_size_4_2",
+      "value": "24"
+    },
+    {
+      "name": "edit_clockwidget_date_text_margin_top_2_4",
+      "value": "6"
+    },
+    {
+      "name": "edit_clockwidget_date_text_line_height",
+      "value": "36"
+    },
+    {
+      "name": "sigpane_padding_h",
+      "value": "24"
+    },
+    {
+      "name": "edit_clockwidget_signature_margin_top",
+      "value": "4"
+    },
+    {
+      "name": "editbar_width",
+      "value": "260"
+    },
+    {
+      "name": "editbar_height",
+      "value": "64"
+    },
+    {
+      "name": "editbar_btn_space",
+      "value": "16"
+    },
+    {
+      "name": "editbar_padding",
+      "value": "10"
+    },
+    {
+      "name": "fontbutton_outer_radius",
+      "value": "12"
+    },
+    {
+      "name": "layoutbutton_outer_radius",
+      "value": "12"
+    },
+    {
+      "name": "toolbutton_outer_width",
+      "value": "48"
+    },
+    {
+      "name": "toolbutton_outer_height",
+      "value": "48"
+    },
+    {
+      "name": "toolbutton_outer_radius",
+      "value": "12"
+    },
+    {
+      "name": "editbar_radius",
+      "value": "20"
+    },
+    {
+      "name": "colorpane_max_width",
+      "value": "424"
+    },
+    {
+      "name": "colorpane_min_height",
+      "value": "152"
+    },
+    {
+      "name": "colorpane_padding",
+      "value": "24"
+    },
+    {
+      "name": "colorpane_btn_width",
+      "value": "40"
+    },
+    {
+      "name": "colorpane_btn_height",
+      "value": "40"
+    },
+    {
+      "name": "colorpane_btn_space",
+      "value": "27"
+    },
+    {
+      "name": "colorpane_radius",
+      "value": "20"
+    },
+    {
+      "name": "fontpane_max_width",
+      "value": "308"
+    },
+    {
+      "name": "fontpane_min_width",
+      "value": "256"
+    },
+    {
+      "name": "fontbutton_outer_width",
+      "value": "56"
+    },
+    {
+      "name": "fontbutton_outer_height",
+      "value": "56"
+    },
+    {
+      "name": "fontpane_btn_space",
+      "value": "35"
+    },
+    {
+      "name": "fontpane_radius",
+      "value": "20"
+    },
+    {
+      "name": "layoutpane_radius",
+      "value": "20"
+    },
+    {
+      "name": "layoutpane_single_height",
+      "value": "104"
+    },
+    {
+      "name": "layoutpane_double_height",
+      "value": "216"
+    },
+    {
+      "name": "layoutpane_width",
+      "value": "424"
+    },
+    {
+      "name": "sigpane_padding_top",
+      "value": "4"
+    },
+    {
+      "name": "sigpane_radius",
+      "value": "20"
+    },
+    {
+      "name": "sigpane_width",
+      "value": "424"
+    },
+    {
+      "name": "sigbutton_width",
+      "value": "370"
+    },
+    {
+      "name": "sigbutton_height",
+      "value": "48"
+    },
+    {
+      "name": "sigbutton_sig_padding_h",
+      "value": "24"
+    },
+    {
+      "name": "floatingbutton_circle_width",
+      "value": "40"
+    },
+    {
+      "name": "floatingbutton_circle_height",
+      "value": "40"
+    },
+    {
+      "name": "floatingbutton_outer_radius",
+      "value": "30"
+    },
+    {
+      "name": "floatingbutton_image_width",
+      "value": "24"
+    },
+    {
+      "name": "floatingbutton_image_height",
+      "value": "24"
+    },
+    {
+      "name": "floatingbutton_group_spacing",
+      "value": "32"
+    },
+    {
+      "name": "linear_floatingbutton_group_padding_h",
+      "value": "48"
+    },
+    {
+      "name": "Control_center_Bright_BG_rate_darkMode",
+      "value": "0.637"
+    },
+    {
+      "name": "Control_center_Bright_BG_lightUpDegree_darkMode",
+      "value": "0.207"
+    },
+    {
+      "name": "ntf_list_item_padding_start_end",
+      "value": "16vp"
+    },
+    {
+      "name": "ntf_list_first_item_margin_top",
+      "value": "0vp"
+    },
+    {
+      "name": "ntf_list_last_item_margin_bottom",
+      "value": "16vp"
+    },
+    {
+      "name": "ntf_list_item_radius",
+      "value": "16vp"
+    },
+    {
+      "name": "notification_empty_list_height",
+      "value": "464"
+    },
+    {
+      "name": "ntf_pc_banner_shadow_radius",
+      "value": "50"
+    },
+    {
+      "name": "ntf_pc_right_click_menu_radius",
+      "value": "16"
+    },
+    {
+      "name": "ntf_pc_right_click_menu_padding_start_end",
+      "value": "16"
+    },
+    {
+      "name": "status_bar_signal_type_font_size",
+      "value": "5.5fp"
+    },
+    {
+      "name": "status_bar_signal_unknown_font_size",
+      "value": "7fp"
+    },
+    {
+      "name": "signal_component_icon_width",
+      "value": "21.5vp"
+    },
+    {
+      "name": "signal_component_icon_height",
+      "value": "15vp"
+    },
+    {
+      "name": "signal_text_max_width",
+      "value": "113vp"
+    },
+    {
+      "name": "status_bar_signal_net_signal_text_max_width",
+      "value": "15vp"
+    },
+    {
+      "name": "status_bar_wifi_width",
+      "value": "15.75vp"
+    },
+    {
+      "name": "status_bar_wifi_height",
+      "value": "15vp"
+    },
+    {
+      "name": "battery_component_gap",
+      "value": "2vp"
+    },
+    {
+      "name": "battery_component_pic_body_height",
+      "value": "11vp"
+    },
+    {
+      "name": "battery_component_pic_body_width",
+      "value": "18.5vp"
+    },
+    {
+      "name": "green_capsule_phone_width",
+      "value": "14vp"
+    },
+    {
+      "name": "green_capsule_phone_height",
+      "value": "14vp"
+    },
+    {
+      "name": "green_capsule_height",
+      "value": "20vp"
+    },
+    {
+      "name": "green_capsule_radius",
+      "value": "10vp"
+    },
+    {
+      "name": "status_bar_bluetooth_width",
+      "value": "11.5vp"
+    },
+    {
+      "name": "status_bar_bluetooth_height",
+      "value": "15vp"
+    },
+    {
+      "name": "status_bar_ring_mode_width",
+      "value": "17vp"
+    },
+    {
+      "name": "status_bar_ring_mode_height",
+      "value": "15vp"
+    },
+    {
+      "name": "status_bar_location_width",
+      "value": "13vp"
+    },
+    {
+      "name": "status_bar_location_height",
+      "value": "15vp"
+    },
+    {
+      "name": "icon_component_opacity",
+      "value": "1"
+    },
+    {
+      "name": "green_capsule_phone_margin_left",
+      "value": "2vp"
+    },
+    {
+      "name": "status_bar_margin_left_right",
+      "value": "5vp"
+    },
+    {
+      "name": "status_bar_height",
+      "value": "48vp"
+    },
+    {
+      "name": "phone_status_bar_height",
+      "value": "39vp"
+    },
+    {
+      "name": "quickly_setting_time_font_size",
+      "value": "30fp"
+    },
+    {
+      "name": "quickly_setting_date_font_size",
+      "value": "20fp"
+    },
+    {
+      "name": "quickly_setting_text_flex_margin_left",
+      "value": "10vp"
+    },
+    {
+      "name": "quickly_setting_image_width",
+      "value": "50vp"
+    },
+    {
+      "name": "quickly_setting_image_height",
+      "value": "50vp"
+    },
+    {
+      "name": "quickly_setting_image_margin_right",
+      "value": "10vp"
+    },
+    {
+      "name": "quickly_setting_border_radius",
+      "value": "20vp"
+    },
+    {
+      "name": "quickly_setting_border_radius_outline_1",
+      "value": "21vp"
+    },
+    {
+      "name": "quickly_setting_margin_left",
+      "value": "10vp"
+    },
+    {
+      "name": "quickly_setting_margin_right",
+      "value": "10vp"
+    },
+    {
+      "name": "delete_all_image_width",
+      "value": "50vp"
+    },
+    {
+      "name": "delete_all_image_height",
+      "value": "50vp"
+    },
+    {
+      "name": "delete_all_image_border_radius",
+      "value": "25vp"
+    },
+    {
+      "name": "delete_all_image_opacity",
+      "value": "0.9"
+    },
+    {
+      "name": "brightness_component_gap",
+      "value": "26vp"
+    },
+    {
+      "name": "status_bar_padding_left_right",
+      "value": "12vp"
+    },
+    {
+      "name": "default_border_radius",
+      "value": "20vp"
+    },
+    {
+      "name": "system_panel_component_slider_margin_top",
+      "value": "40vp"
+    },
+    {
+      "name": "system_panel_component_slider_width",
+      "value": "200vp"
+    },
+    {
+      "name": "system_panel_component_slider_height",
+      "value": "8vp"
+    },
+    {
+      "name": "system_panel_border_radius",
+      "value": "48vp"
+    },
+    {
+      "name": "system_panel_component_slider_margin_bottom",
+      "value": "40vp"
+    },
+    {
+      "name": "system_panel_component_mute_btn_icon_size",
+      "value": "48vp"
+    },
+    {
+      "name": "system_panel_component_mute_btn_icon_margin_bottom",
+      "value": "24vp"
+    },
+    {
+      "name": "system_panel_component_mute_btn_height",
+      "value": "72vp"
+    },
+    {
+      "name": "system_panel_component_setting_icon_size",
+      "value": "48vp"
+    },
+    {
+      "name": "system_panel_divider_height",
+      "value": "1vp"
+    },
+    {
+      "name": "system_panel_divider_width",
+      "value": "128vp"
+    },
+    {
+      "name": "normal_window_border_width",
+      "value": "1vp"
+    },
+    {
+      "name": "default_shadow_m_radius",
+      "value": "60"
+    },
+    {
+      "name": "default_shadow_m_offset_x",
+      "value": "0"
+    },
+    {
+      "name": "default_shadow_m_offset_y",
+      "value": "10"
+    },
+    {
+      "name": "system_panel_component_setting_btn_icon_size",
+      "value": "96vp"
+    },
+    {
+      "name": "sound_slider_bar_height",
+      "value": "56vp"
+    },
+    {
+      "name": "sound_panel_component_slider_margin_top",
+      "value": "20vp"
+    },
+    {
+      "name": "sound_panel_component_slider_width",
+      "value": "288vp"
+    },
+    {
+      "name": "sound_panel_component_slider_height",
+      "value": "20vp"
+    },
+    {
+      "name": "sound_panel_border_radius",
+      "value": "48vp"
+    },
+    {
+      "name": "sound_panel_component_slider_margin_bottom",
+      "value": "40vp"
+    },
+    {
+      "name": "sound_panel_component_mute_btn_icon_size",
+      "value": "48vp"
+    },
+    {
+      "name": "sound_panel_component_mute_btn_icon_margin_bottom",
+      "value": "24vp"
+    },
+    {
+      "name": "sound_panel_component_mute_btn_height",
+      "value": "72vp"
+    },
+    {
+      "name": "sound_panel_component_setting_icon_size",
+      "value": "24vp"
+    },
+    {
+      "name": "sound_panel_divider_height",
+      "value": "1vp"
+    },
+    {
+      "name": "sound_divider_width",
+      "value": "312vp"
+    },
+    {
+      "name": "sound_slider_gap",
+      "value": "12vp"
+    },
+    {
+      "name": "sound_slider_font_size",
+      "value": "40fp"
+    },
+    {
+      "name": "sound_slider_icon_width",
+      "value": "24vp"
+    },
+    {
+      "name": "sound_slider_icon_height",
+      "value": "24vp"
+    },
+    {
+      "name": "sound_slider_icon_hover_width",
+      "value": "32vp"
+    },
+    {
+      "name": "sound_slider_icon_hover_height",
+      "value": "32vp"
+    },
+    {
+      "name": "sound_slider_icon_hover_radius",
+      "value": "8vp"
+    },
+    {
+      "name": "sound_slider_margin_left",
+      "value": "20vp"
+    },
+    {
+      "name": "sound_slider_margin_right",
+      "value": "12vp"
+    },
+    {
+      "name": "sound_slider_bar_margin_left",
+      "value": "2vp"
+    },
+    {
+      "name": "sound_device_gap",
+      "value": "12vp"
+    },
+    {
+      "name": "sound_device_icon_width",
+      "value": "24vp"
+    },
+    {
+      "name": "sound_device_icon_height",
+      "value": "24vp"
+    },
+    {
+      "name": "sound_device_margin_top",
+      "value": "16vp"
+    },
+    {
+      "name": "sound_device_margin_bottom",
+      "value": "16vp"
+    },
+    {
+      "name": "quick_toggle_column",
+      "value": "5"
+    },
+    {
+      "name": "controlpanel_border_radius",
+      "value": "24vp"
+    },
+    {
+      "name": "control_center_media_card_width",
+      "value": "156"
+    },
+    {
+      "name": "lockicon_area_height",
+      "value": "44"
+    },
+    {
+      "name": "datetime_area_height",
+      "value": "240"
+    },
+    {
+      "name": "batterysoc_area_height",
+      "value": "48"
+    },
+    {
+      "name": "shortcut_area_margin_top",
+      "value": "24"
+    },
+    {
+      "name": "shortcut_area_height",
+      "value": "120"
+    },
+    {
+      "name": "notificationList_margin_top",
+      "value": "32"
+    },
+    {
+      "name": "title_font_height",
+      "value": "28vp"
+    },
+    {
+      "name": "title_font_margin_t",
+      "value": "13vp"
+    },
+    {
+      "name": "setting_cont_fontsize",
+      "value": "32"
+    },
+    {
+      "name": "close_notification_margin_top",
+      "value": "15vp"
+    },
+    {
+      "name": "notification_appname_margin_top",
+      "value": "11vp"
+    },
+    {
+      "name": "notification_cancle_margin_top",
+      "value": "11vp"
+    },
+    {
+      "name": "ntf_heads_up_padding",
+      "value": "4vp"
+    },
+    {
+      "name": "ntf_heads_right_padding",
+      "value": "4vp"
+    },
+    {
+      "name": "account_page_icon_width",
+      "value": "40vp"
+    },
+    {
+      "name": "account_page_icon_height",
+      "value": "40vp"
+    },
+    {
+      "name": "brightness_panel_width",
+      "value": "259vp"
+    },
+    {
+      "name": "brightness_panel_height",
+      "value": "58vp"
+    },
+    {
+      "name": "brightness_panel_radius",
+      "value": "32vp"
+    },
+    {
+      "name": "brightness_image_width",
+      "value": "18vp"
+    },
+    {
+      "name": "brightness_image_height",
+      "value": "18vp"
+    },
+    {
+      "name": "brightness_slider_width",
+      "value": "182.5vp"
+    },
+    {
+      "name": "brightness_panel_slider_height",
+      "value": "4vp"
+    },
+    {
+      "name": "ntf_pc_banner_blur",
+      "value": "60"
+    },
+    {
+      "name": "ntf_pc_banner_saturate",
+      "value": "0.5"
+    },
+    {
+      "name": "Notification_center_icon_shadow_radius",
+      "value": "8"
+    },
+    {
+      "name": "Notification_center_icon_space",
+      "value": "8"
+    },
+    {
+      "name": "gridview_clock_border_width_wallpaper",
+      "value": "2"
+    },
+    {
+      "name": "Control_center_other_icon_padding",
+      "value": "12"
+    },
+    {
+      "name": "Control_center_other_icon_padding_right",
+      "value": "13"
+    },
+    {
+      "name": "Control_center_pluginComponent_padding",
+      "value": "7"
+    },
+    {
+      "name": "Control_center_pluginComponent_right_padding",
+      "value": "4"
+    },
+    {
+      "name": "Control_center_quickToggle_padding_vertical_top",
+      "value": "14"
+    },
+    {
+      "name": "Control_center_brightness_padding_top",
+      "value": "0"
+    },
+    {
+      "name": "ntf_title_font_size",
+      "value": "14fp"
+    },
+    {
+      "name": "ntf_background_brightness_rate",
+      "value": "0"
+    },
+    {
+      "name": "ntf_background_brightness_degree",
+      "value": "0"
+    },
+    {
+      "name": "ntf_content_padding_start_end",
+      "value": "11vp"
+    },
+    {
+      "name": "Control_center_divider_padding_top",
+      "value": "15"
+    },
+    {
+      "name": "Control_center_divider_padding_bottom",
+      "value": "13"
+    },
+    {
+      "name": "Control_center_divider_width",
+      "value": "312"
+    },
+    {
+      "name": "Control_center_divider_height",
+      "value": "1px"
+    },
+    {
+      "name": "Control_center_quickToggle_additional_grid_height",
+      "value": "4"
+    },
+    {
+      "name": "Control_center_quickToggle_additional_height",
+      "value": "60"
+    },
+    {
+      "name": "Control_center_quickToggle_grid_item_top_padding",
+      "value": "4"
+    },
+    {
+      "name": "Control_center_quickToggle_grid_item_bottom_padding",
+      "value": "8"
+    },
+    {
+      "name": "additional_grid_height",
+      "value": "4"
+    },
+    {
+      "name": "Control_center_button_diameter",
+      "value": "48"
+    },
+    {
+      "name": "Control_center_button_label_width",
+      "value": "60"
+    },
+    {
+      "name": "Control_center_button_label_hover_width",
+      "value": "50"
+    },
+    {
+      "name": "Control_center_hover_arrow_width",
+      "value": "8"
+    },
+    {
+      "name": "Control_center_button_label_top_padding",
+      "value": "6.5"
+    },
+    {
+      "name": "Control_center_brightness_icon_width",
+      "value": "18"
+    },
+    {
+      "name": "Control_center_volume_background_width",
+      "value": "36"
+    },
+    {
+      "name": "Control_center_volume_background_height",
+      "value": "32"
+    },
+    {
+      "name": "Control_center_brightness_icon_top_margin",
+      "value": "10"
+    },
+    {
+      "name": "Control_center_brightness_width",
+      "value": "312"
+    },
+    {
+      "name": "Control_center_long_icon_Diameter",
+      "value": "24"
+    },
+    {
+      "name": "Control_center_wifi_icon_Diameter",
+      "value": "24"
+    },
+    {
+      "name": "Control_center_wifi_icon_bottom_padding",
+      "value": "2"
+    },
+    {
+      "name": "Control_center_top_button_left_padding",
+      "value": "2"
+    },
+    {
+      "name": "Control_center_long_button_left_margin",
+      "value": "10"
+    },
+    {
+      "name": "Control_center_long_button_width",
+      "value": "148"
+    },
+    {
+      "name": "Control_center_long_button_arrow_left_padding",
+      "value": "2"
+    },
+    {
+      "name": "Control_center_long_button_arrow_bottom_padding",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_icon_diameter",
+      "value": "24"
+    },
+    {
+      "name": "Control_center_long_button_spaceBetween",
+      "value": "6"
+    },
+    {
+      "name": "Control_center_long_button_label_top_padding",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_long_button_label_left_padding",
+      "value": "2"
+    },
+    {
+      "name": "Control_center_long_button_left_padding",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_quickToggle_padding_left",
+      "value": "6"
+    },
+    {
+      "name": "screenLock_root_container_width",
+      "value": "604vp"
+    },
+    {
+      "name": "screenLock_root_container_height",
+      "value": "426vp"
+    },
+    {
+      "name": "screenLock_user_layout_pin_height",
+      "value": "346vp"
+    },
+    {
+      "name": "screenLock_user_layout_reset_pin_height",
+      "value": "504vp"
+    },
+    {
+      "name": "screenLock_user_layout_domain_pin_offset_y",
+      "value": "37vp"
+    },
+    {
+      "name": "screenLock_user_layout_nodomain_pin_offset_y",
+      "value": "134vp"
+    },
+    {
+      "name": "screenLock_user_layout_reset_pin_offset_y",
+      "value": "-30vp"
+    },
+    {
+      "name": "screenLock_reset_psw_margin",
+      "value": "23vp"
+    },
+    {
+      "name": "max_user_name_left_width",
+      "value": "202vp"
+    },
+    {
+      "name": "screenLock_account_item_bg_width",
+      "value": "318vp"
+    },
+    {
+      "name": "screenLock_account_item_bg_height",
+      "value": "96vp"
+    },
+    {
+      "name": "screenLock_user_name_first_shadow_offset_y",
+      "value": "0vp"
+    },
+    {
+      "name": "screenLock_user_name_first_shadow_offset_x",
+      "value": "0vp"
+    },
+    {
+      "name": "screenLock_user_name_first_shadow_radius",
+      "value": "5vp"
+    },
+    {
+      "name": "screenLock_user_name_second_shadow_offset_y",
+      "value": "1vp"
+    },
+    {
+      "name": "screenLock_user_name_second_shadow_offset_x",
+      "value": "0vp"
+    },
+    {
+      "name": "screenLock_user_name_second_shadow_radio",
+      "value": "1vp"
+    },
+    {
+      "name": "screenLock_user_name_margin_left",
+      "value": "12vp"
+    },
+    {
+      "name": "screenLock_user_name_line_height",
+      "value": "24vp"
+    },
+    {
+      "name": "screenLock_user_icon_margin_left",
+      "value": "6vp"
+    },
+    {
+      "name": "screenLock_user_activated_outside_border_width",
+      "value": "18vp"
+    },
+    {
+      "name": "screenLock_user_activated_outside_border_height",
+      "value": "18vp"
+    },
+    {
+      "name": "screenLock_user_activated_outside_border_radius",
+      "value": "72vp"
+    },
+    {
+      "name": "screenLock_user_activated_inside_border_width",
+      "value": "16vp"
+    },
+    {
+      "name": "screenLock_user_activated_inside_border_height",
+      "value": "16vp"
+    },
+    {
+      "name": "screenLock_user_activated_inside_border_radius",
+      "value": "72vp"
+    },
+    {
+      "name": "domain_font_size",
+      "value": "12vp"
+    },
+    {
+      "name": "domain_line_height",
+      "value": "16vp"
+    },
+    {
+      "name": "error_prompt_font_size",
+      "value": "14vp"
+    },
+    {
+      "name": "error_prompt_line_height",
+      "value": "20vp"
+    },
+    {
+      "name": "screenLock_user_item_width",
+      "value": "318vp"
+    },
+    {
+      "name": "screenLock_user_item_height",
+      "value": "112vp"
+    },
+    {
+      "name": "screenLock_user_item_radius",
+      "value": "56vp"
+    },
+    {
+      "name": "screenLock_user_item_margin_top",
+      "value": "8vp"
+    },
+    {
+      "name": "blur_style_component_default_value",
+      "value": "1"
+    },
+    {
+      "name": "ohos_id_blur_style_component_ultra_thin_radius",
+      "value": "120"
+    },
+    {
+      "name": "ohos_id_blur_style_component_ultra_thin_radius_dark",
+      "value": "200"
+    },
+    {
+      "name": "ohos_id_blur_style_component_ultra_thin_saturation",
+      "value": "1.1"
+    },
+    {
+      "name": "enterprise_back_brightness",
+      "value": "1.1"
+    },
+    {
+      "name": "enterprise_back_brightness_light",
+      "value": "1"
+    },
+    {
+      "name": "screenLock_detail_msg_width",
+      "value": "212vp"
+    },
+    {
+      "name": "screenLock_detail_font_size",
+      "value": "14vp"
+    },
+    {
+      "name": "screenLock_detail_line_height",
+      "value": "19vp"
+    },
+    {
+      "name": "screenLock_row_baseplate_width_318",
+      "value": "318vp"
+    },
+    {
+      "name": "screenLock_row_baseplate_width_424",
+      "value": "424vp"
+    },
+    {
+      "name": "screenLock_password_text_height",
+      "value": "20vp"
+    },
+    {
+      "name": "screenLock_password_text_input_height",
+      "value": "24vp"
+    },
+    {
+      "name": "screenLock_password_text_input_arrow_size",
+      "value": "24vp"
+    },
+    {
+      "name": "screenLock_icon_baseplate_radius",
+      "value": "16vp"
+    },
+    {
+      "name": "screenLock_icon_baseplate_width",
+      "value": "32vp"
+    },
+    {
+      "name": "screenLock_password_part_height",
+      "value": "252vp"
+    },
+    {
+      "name": "screenLock_icon_part_height",
+      "value": "104vp"
+    },
+    {
+      "name": "screenLock_detail_max_lines",
+      "value": "3"
+    },
+    {
+      "name": "screenLock_row_baseplate_backdrop_blur",
+      "value": "50"
+    },
+    {
+      "name": "screenLock_detail_icon_margin_right",
+      "value": "50"
+    },
+    {
+      "name": "screenLock_row_baseplate_saturate",
+      "value": "1.8"
+    },
+    {
+      "name": "screenLock_password_font_size",
+      "value": "16"
+    },
+    {
+      "name": "screenLock_password_padding",
+      "value": "0"
+    },
+    {
+      "name": "screenLock_password_padding_right",
+      "value": "2"
+    },
+    {
+      "name": "screenLock_stateStyles_opacity",
+      "value": "0.15"
+    },
+    {
+      "name": "screenLock_opacity_0_1",
+      "value": "0.1"
+    },
+    {
+      "name": "screenLock_opacity_0",
+      "value": "0"
+    },
+    {
+      "name": "screenLock_offset_x_1",
+      "value": "1"
+    },
+    {
+      "name": "screenLock_offset_y_f4",
+      "value": "-4"
+    },
+    {
+      "name": "offset_x_600",
+      "value": "600"
+    },
+    {
+      "name": "width_600",
+      "value": "600"
+    },
+    {
+      "name": "screenLock_textInput_frame_width",
+      "value": "242vp"
+    },
+    {
+      "name": "height_38",
+      "value": "38"
+    },
+    {
+      "name": "height_44",
+      "value": "44"
+    },
+    {
+      "name": "screenLock_textInput_frame_height",
+      "value": "42vp"
+    },
+    {
+      "name": "screenLock_textInput_frame_border_radius",
+      "value": "21vp"
+    },
+    {
+      "name": "screenLock_textInput_frame_border_radius_outline_2",
+      "value": "22vp"
+    },
+    {
+      "name": "screenLock_password_border_width",
+      "value": "1"
+    },
+    {
+      "name": "text_shadow_radius_b",
+      "value": "0"
+    },
+    {
+      "name": "text_shadow_radius_d",
+      "value": "3"
+    },
+    {
+      "name": "length_16",
+      "value": "16"
+    },
+    {
+      "name": "text_shadow_radius_6",
+      "value": "6"
+    },
+    {
+      "name": "face_image_tip_size",
+      "value": "22vp"
+    },
+    {
+      "name": "face_text_tip_font_size",
+      "value": "16vp"
+    },
+    {
+      "name": "face_text_tip_line_height",
+      "value": "24vp"
+    },
+    {
+      "name": "base_text_tip_line_height",
+      "value": "19vp"
+    },
+    {
+      "name": "lost_mode_prompt_margin_top",
+      "value": "395"
+    },
+    {
+      "name": "Control_center_volume_hover_row_width",
+      "value": "24"
+    },
+    {
+      "name": "Control_center_volume_hover_img_size",
+      "value": "10"
+    },
+    {
+      "name": "Control_center_volume_hover_img_padding_left",
+      "value": "4"
+    },
+    {
+      "name": "screen_lock_domain_slot_border_width",
+      "value": "4vp"
+    },
+    {
+      "name": "screen_lock_domain_slot_border_height",
+      "value": "2vp"
+    },
+    {
+      "name": "app_lock_mask_blur_radius",
+      "value": "200"
+    },
+    {
+      "name": "ctrl_alt_del_cancel_bottom_margin",
+      "value": "100vp"
+    },
+    {
+      "name": "ctrl_alt_del_icon_margin",
+      "value": "13vp"
+    },
+    {
+      "name": "ctrl_alt_del_font_margin",
+      "value": "3vp"
+    },
+    {
+      "name": "ctrl_alt_del_description_font_size",
+      "value": "16vp"
+    },
+    {
+      "name": "single_item_card_margin",
+      "value": "22vp"
+    },
+    {
+      "name": "control_center_top_toggle_height",
+      "value": "152"
+    },
+    {
+      "name": "control_center_media_card_toggle_height",
+      "value": "240"
+    },
+    {
+      "name": "screenLock_textInput_frame_shadow_radius",
+      "value": "5vp"
+    },
+    {
+      "name": "pwd_line_width",
+      "value": "240vp"
+    },
+    {
+      "name": "pwd_line_width_narrow",
+      "value": "212vp"
+    },
+    {
+      "name": "screenLock_user_icon_width",
+      "value": "96vp"
+    },
+    {
+      "name": "screenLock_user_icon_height",
+      "value": "96vp"
+    },
+    {
+      "name": "screenLock_user_icon_width_small",
+      "value": "80vp"
+    },
+    {
+      "name": "screenLock_user_icon_height_small",
+      "value": "80vp"
+    },
+    {
+      "name": "screenLock_toast_font_size_small",
+      "value": "16vp"
+    },
+    {
+      "name": "screenLock_toast_font_size",
+      "value": "18vp"
+    },
+    {
+      "name": "screenLock_light_radius",
+      "value": "88vp"
+    },
+    {
+      "name": "screenLock_light_radius_small",
+      "value": "72vp"
+    },
+    {
+      "name": "screenLock_gb_size_levelone",
+      "value": "14vp"
+    },
+    {
+      "name": "screenLock_gb_size_levelone_small",
+      "value": "12vp"
+    },
+    {
+      "name": "screenLock_gb_size_leveltwo",
+      "value": "24vp"
+    },
+    {
+      "name": "screenLock_gb_size_leveltwo_small",
+      "value": "22vp"
+    },
+    {
+      "name": "screenLock_light_on_head",
+      "value": "48vp"
+    },
+    {
+      "name": "screenLock_light_on_head_small",
+      "value": "40vp"
+    },
+    {
+      "name": "screenLock_light_on_body",
+      "value": "114vp"
+    },
+    {
+      "name": "screenLock_light_on_body_small",
+      "value": "114vp"
+    },
+    {
+      "name": "Control_center_button_rowsGap",
+      "value": "22"
+    },
+    {
+      "name": "Control_center_button_columnsGap",
+      "value": "5"
+    },
+    {
+      "name": "Control_center_grid_bottom_fix",
+      "value": "6"
+    },
+    {
+      "name": "Control_center_grid_margin_left",
+      "value": "20"
+    },
+    {
+      "name": "Control_center_grid_margin_right",
+      "value": "20"
+    },
+    {
+      "name": "media_control_play_btn_size",
+      "value": "24"
+    },
+    {
+      "name": "media_control_btn_margin_right",
+      "value": "5"
+    },
+    {
+      "name": "Control_center_button_label_padding",
+      "value": "3"
+    },
+    {
+      "name": "Control_center_icon_on_bg_brightness",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_icon_default_bg_brightness",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_icon_margin_bottom",
+      "value": "4"
+    },
+    {
+      "name": "Control_center_wifiblue_icon_default_bg_brightness",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_wifiblue_icon_on_bg_brightness",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_icon_shadow_radius",
+      "value": "8"
+    },
+    {
+      "name": "Control_center_icon_shadow_offset_y",
+      "value": "4"
+    },
+    {
+      "name": "Control_center_long_button_font_size",
+      "value": "16"
+    },
+    {
+      "name": "Control_center_pc_long_button_font_size",
+      "value": "15"
+    },
+    {
+      "name": "Control_center_other_long_button_font_size",
+      "value": "14"
+    },
+    {
+      "name": "Control_center_long_button_font_lineheight",
+      "value": "0"
+    },
+    {
+      "name": "Control_center_brightness_lightUpDegree_on",
+      "value": "0"
+    },
+    {
+      "name": "Control_center_brightness_lightUpDegree_off",
+      "value": "0"
+    },
+    {
+      "name": "Control_center_quickToggle_padding",
+      "value": "6"
+    },
+    {
+      "name": "Control_center_brightness_rate_off",
+      "value": "0"
+    },
+    {
+      "name": "Control_center_brightness_main_card_a_dark",
+      "value": "0.986"
+    },
+    {
+      "name": "Control_center_brightness_main_card_b_dark",
+      "value": "-0.18"
+    },
+    {
+      "name": "Control_center_brightness_main_card_n_dark",
+      "value": "1.2"
+    },
+    {
+      "name": "Control_center_brightness_main_card_redCof1_dark",
+      "value": "0.3"
+    },
+    {
+      "name": "Control_center_brightness_main_card_greenCof1_dark",
+      "value": "0.5"
+    },
+    {
+      "name": "Control_center_brightness_main_card_blueCof1_dark",
+      "value": "0.5"
+    },
+    {
+      "name": "Control_center_brightness_main_card_redCof2_dark",
+      "value": "0.3"
+    },
+    {
+      "name": "Control_center_brightness_main_card_greenCof2_dark",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_brightness_main_card_blueCof2_dark",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_brightness_main_card_a",
+      "value": "0.8386"
+    },
+    {
+      "name": "Control_center_brightness_main_card_b",
+      "value": "0.2"
+    },
+    {
+      "name": "Control_center_brightness_main_card_n",
+      "value": "1.4"
+    },
+    {
+      "name": "Control_center_brightness_main_card_redCof1",
+      "value": "0.4"
+    },
+    {
+      "name": "Control_center_brightness_main_card_greenCof1",
+      "value": "1.2"
+    },
+    {
+      "name": "Control_center_brightness_main_card_blueCof1",
+      "value": "0.2"
+    },
+    {
+      "name": "Control_center_brightness_main_card_redCof2",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_brightness_main_card_greenCof2",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_brightness_main_card_blueCof2",
+      "value": "0.5"
+    },
+    {
+      "name": "Control_center_brightness_volume_top_card_a",
+      "value": "0.2947"
+    },
+    {
+      "name": "Control_center_brightness_volume_top_card_b",
+      "value": "0.7749"
+    },
+    {
+      "name": "Control_center_brightness_volume_top_card_n",
+      "value": "1.5"
+    },
+    {
+      "name": "Control_center_brightness_volume_top_card_redCof1",
+      "value": "1.2"
+    },
+    {
+      "name": "Control_center_brightness_volume_top_card_greenCof1",
+      "value": "2"
+    },
+    {
+      "name": "Control_center_brightness_volume_top_card_blueCof1",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_brightness_volume_top_card_redCof2",
+      "value": "0.8"
+    },
+    {
+      "name": "Control_center_brightness_volume_top_card_greenCof2",
+      "value": "1.7"
+    },
+    {
+      "name": "Control_center_brightness_volume_top_card_blueCof2",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_brightness_volume_top_card_a_dark",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_brightness_volume_top_card_b_dark",
+      "value": "0.68"
+    },
+    {
+      "name": "Control_center_brightness_volume_top_card_n_dark",
+      "value": "1.2"
+    },
+    {
+      "name": "Control_center_brightness_volume_top_card_redCof1_dark",
+      "value": "0.5"
+    },
+    {
+      "name": "Control_center_brightness_volume_top_card_greenCof1_dark",
+      "value": "1.5"
+    },
+    {
+      "name": "Control_center_brightness_volume_top_card_blueCof1_dark",
+      "value": "3"
+    },
+    {
+      "name": "Control_center_brightness_volume_top_card_redCof2_dark",
+      "value": "1.5"
+    },
+    {
+      "name": "Control_center_brightness_volume_top_card_greenCof2_dark",
+      "value": "2.5"
+    },
+    {
+      "name": "Control_center_brightness_volume_top_card_blueCof2_dark",
+      "value": "2"
+    },
+    {
+      "name": "Control_center_brightness_upper_card_a_dark",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_brightness_upper_card_b_dark",
+      "value": "0.12"
+    },
+    {
+      "name": "Control_center_brightness_upper_card_n_dark",
+      "value": "1.3"
+    },
+    {
+      "name": "Control_center_brightness_upper_card_redCof1_dark",
+      "value": "1.2"
+    },
+    {
+      "name": "Control_center_brightness_upper_card_greenCof1_dark",
+      "value": "1.4"
+    },
+    {
+      "name": "Control_center_brightness_upper_card_blueCof1_dark",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_brightness_upper_card_redCof2_dark",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_brightness_upper_card_greenCof2_dark",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_brightness_upper_card_blueCof2_dark",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_brightness_lightbar_bottom_card_a",
+      "value": "0.986"
+    },
+    {
+      "name": "Control_center_brightness_lightbar_bottom_card_b",
+      "value": "-0.18"
+    },
+    {
+      "name": "Control_center_brightness_lightbar_bottom_card_n",
+      "value": "1.2"
+    },
+    {
+      "name": "Control_center_brightness_lightbar_bottom_card_redCof1",
+      "value": "0.3"
+    },
+    {
+      "name": "Control_center_brightness_lightbar_bottom_card_greenCof1",
+      "value": "0.5"
+    },
+    {
+      "name": "Control_center_brightness_lightbar_bottom_card_blueCof1",
+      "value": "0.5"
+    },
+    {
+      "name": "Control_center_brightness_lightbar_bottom_card_redCof2",
+      "value": "0.3"
+    },
+    {
+      "name": "Control_center_brightness_lightbar_bottom_card_greenCof2",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_brightness_lightbar_bottom_card_blueCof2",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_brightness_icon_primary_a_dark",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_brightness_icon_primary_b_dark",
+      "value": "0.5216"
+    },
+    {
+      "name": "Control_center_brightness_icon_primary_n_dark",
+      "value": "1.1"
+    },
+    {
+      "name": "Control_center_brightness_icon_primary_redCof1_dark",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_brightness_icon_primary_greenCof1_dark",
+      "value": "1.2"
+    },
+    {
+      "name": "Control_center_brightness_icon_primary_blueCof1_dark",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_brightness_edit_card_bg_a_dark",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_brightness_edit_card_bg_b_dark",
+      "value": "-0.078"
+    },
+    {
+      "name": "Control_center_brightness_edit_card_bg_n_dark",
+      "value": "1.2"
+    },
+    {
+      "name": "Control_center_brightness_edit_card_bg_redCof1_dark",
+      "value": "1.3"
+    },
+    {
+      "name": "Control_center_brightness_edit_card_bg_greenCof1_dark",
+      "value": "1.8"
+    },
+    {
+      "name": "Control_center_brightness_edit_card_bg_blueCof1_dark",
+      "value": "0.5"
+    },
+    {
+      "name": "Control_center_brightness_edit_card_bg_greenCof2_dark",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_brightness_edit_card_bg_blueCof2_dark",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_brightness_icon_primary_redCof2_dark",
+      "value": "0.5"
+    },
+    {
+      "name": "Control_center_brightness_icon_primary_greenCof2_dark",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_brightness_icon_primary_blueCof2_dark",
+      "value": "0.5"
+    },
+    {
+      "name": "Control_center_brightness_icon_primary_a",
+      "value": "0.4"
+    },
+    {
+      "name": "Control_center_brightness_icon_primary_b",
+      "value": "-0.1176"
+    },
+    {
+      "name": "Control_center_brightness_icon_primary_n",
+      "value": "1.8"
+    },
+    {
+      "name": "Control_center_brightness_icon_primary_redCof1",
+      "value": "1.9"
+    },
+    {
+      "name": "Control_center_brightness_icon_primary_greenCof1",
+      "value": "3.8"
+    },
+    {
+      "name": "Control_center_brightness_icon_primary_blueCof1",
+      "value": "1.3"
+    },
+    {
+      "name": "Control_center_brightness_icon_primary_redCof2",
+      "value": "0.5"
+    },
+    {
+      "name": "Control_center_brightness_icon_primary_greenCof2",
+      "value": "0.67"
+    },
+    {
+      "name": "Control_center_brightness_icon_primary_blueCof2",
+      "value": "1.3"
+    },
+    {
+      "name": "Control_center_brightness_icon_primary_on_background_a_dark",
+      "value": "1.0142"
+    },
+    {
+      "name": "Control_center_brightness_icon_primary_on_background_b_dark",
+      "value": "0.7039"
+    },
+    {
+      "name": "Control_center_brightness_icon_primary_on_background_n_dark",
+      "value": "1.5"
+    },
+    {
+      "name": "Control_center_brightness_icon_primary_on_background_redCof1_dark",
+      "value": "1.2"
+    },
+    {
+      "name": "Control_center_brightness_icon_primary_on_background_greenCof1_dark",
+      "value": "1.5"
+    },
+    {
+      "name": "Control_center_brightness_icon_primary_on_background_blueCof1_dark",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_brightness_icon_primary_on_background_redCof2_dark",
+      "value": "0.5"
+    },
+    {
+      "name": "Control_center_brightness_icon_primary_on_background_greenCof2_dark",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_brightness_icon_primary_on_background_blueCof2_dark",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_subpage_brightness_light_rate",
+      "value": "0.2632"
+    },
+    {
+      "name": "Control_center_subpage_brightness_light_lightUpDegree",
+      "value": "0.7529"
+    },
+    {
+      "name": "Control_center_subpage_brightness_light_saturation",
+      "value": "2.3"
+    },
+    {
+      "name": "Control_center_subpage_brightness_light_redCof1",
+      "value": "0.8"
+    },
+    {
+      "name": "Control_center_subpage_brightness_light_greenCof1",
+      "value": "0.7"
+    },
+    {
+      "name": "Control_center_subpage_brightness_light_blueCof1",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_subpage_brightness_light_redCof2",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_subpage_brightness_light_greenCof2",
+      "value": "1.2"
+    },
+    {
+      "name": "Control_center_subpage_brightness_light_blueCof2",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_subpage_brightness_bg_light_rate",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_subpage_brightness_bg_light_lightUpDegree",
+      "value": "-0.0784"
+    },
+    {
+      "name": "Control_center_subpage_brightness_bg_light_saturation",
+      "value": "1.2"
+    },
+    {
+      "name": "Control_center_subpage_brightness_bg_light_redCof1",
+      "value": "1.3"
+    },
+    {
+      "name": "Control_center_subpage_brightness_bg_light_greenCof1",
+      "value": "0.5"
+    },
+    {
+      "name": "Control_center_subpage_brightness_bg_light_blueCof1",
+      "value": "0.5"
+    },
+    {
+      "name": "Control_center_subpage_brightness_bg_light_redCof2",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_subpage_brightness_bg_light_greenCof2",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_subpage_brightness_bg_light_blueCof2",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_brightness_subpage_bg_light_rate",
+      "value": "0.5895"
+    },
+    {
+      "name": "Control_center_brightness_subpage_bg_light_lightUpDegree",
+      "value": "0.46"
+    },
+    {
+      "name": "Control_center_brightness_subpage_bg_light_saturation",
+      "value": "1.2"
+    },
+    {
+      "name": "Control_center_brightness_subpage_bg_light_redCof1",
+      "value": "0.1"
+    },
+    {
+      "name": "Control_center_brightness_subpage_bg_light_greenCof1",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_brightness_subpage_bg_light_blueCof1",
+      "value": "0.5"
+    },
+    {
+      "name": "Control_center_brightness_subpage_bg_light_redCof2",
+      "value": "1.5"
+    },
+    {
+      "name": "Control_center_brightness_subpage_bg_light_greenCof2",
+      "value": "1.5"
+    },
+    {
+      "name": "Control_center_brightness_subpage_bg_light_blueCof2",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_long_button_radius",
+      "value": "16"
+    },
+    {
+      "name": "control_center_privacy_margin_top",
+      "value": "12"
+    },
+    {
+      "name": "control_center_privacy_margin_bottom",
+      "value": "-10"
+    },
+    {
+      "name": "control_center_privacy_text_padding_bottom",
+      "value": "1"
+    },
+    {
+      "name": "control_center_privacy_hotPadding",
+      "value": "8"
+    },
+    {
+      "name": "Control_center_long_button_height",
+      "value": "68"
+    },
+    {
+      "name": "Control_center_brightness_padding_bottom",
+      "value": "0"
+    },
+    {
+      "name": "Control_center_grid_margin_bottomn",
+      "value": "24"
+    },
+    {
+      "name": "Control_center_button_label_space",
+      "value": "8"
+    },
+    {
+      "name": "Control_center_quick_toggle_label_font_padding_top",
+      "value": "7"
+    },
+    {
+      "name": "Control_center_quick_toggle_label_top_padding",
+      "value": "3"
+    },
+    {
+      "name": "control_center_media_marquee_fontsize",
+      "value": "1.3"
+    },
+    {
+      "name": "media_card_border_radius",
+      "value": "8"
+    }
+  ]
+}

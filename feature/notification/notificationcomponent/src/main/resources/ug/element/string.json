@@ -1,0 +1,466 @@
+{
+    "string":[
+        {
+            "name":"ntf_close_pkg_notification",
+            "value":"ئۇقتۇرۇش ئېتىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"place_holder_input_content",
+            "value":"مەزمۇن كىرگۈزۈڭ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntf_extra_message_brief_content",
+            "value":"مەنبە: %s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_pin_top_pkg_notification",
+            "value":"چوققىلاش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntf_dialog_more_settings",
+            "value":"باشقا تەڭشەك",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_extra_message",
+            "value":"باشقا ئۇقتۇرۇشلار",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_extra_message_collapse",
+            "value":"يىغىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_center_title",
+            "value":"ئۇقتۇرۇش مەركىزى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_extra_message_expand",
+            "value":"يېيىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"topped_notification_flag",
+            "value":"چوققىلاندى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntf_cancel_pin_top_pkg_notification",
+            "value":"چوققىدىن ئېلىۋېتىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntf_keyguard_no_content_click_tip",
+            "value":"بۇ ئۇقتۇرۇشنىڭ تەپسىلىي ئەھۋالى يوق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntf_dialog_cancel",
+            "value":"بىكار قىلىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_keyguard_click_tip",
+            "value":"قايتا بېسىپ ئېچىڭ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"is_ntf_close_pkg_notification",
+            "value":"\u200f«%s» نىڭ بارلىق ئۇقتۇرۇشىنى ئېتەمسىز؟",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntf_extra_message_brief_title",
+            "value":"كۆپرەك مەزمۇن",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_brief_remainder_count",
+            "value":"+%d",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_download_file_detail",
+            "value":"ھۆججەت تەپسىلاتى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntf_empty_text_tip",
+            "value":"ئۇقتۇرۇش يوق",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_download_progress",
+            "value":"ھالەت: ‎%s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntf_close_pkg_live_view",
+            "value":"بۇ ھالەت كۆزنىكىنى ئېتىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"live_view_setting_dialog_title",
+            "value":"\u200f«%s» نىڭ ھالەت كۆزنىكى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"is_ntf_close_pkg_live_view",
+            "value":"\u200f«%s» نىڭ بارلىق ھالەت كۆزنىكىنى ئېتەمسىز؟",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_notification_and_start_bar_setting",
+            "value":"ئۇقتۇرۇش ۋە ھالەت بالدىقى تەڭشەكلىرى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_notification_clear",
+            "value":"بارلىق ئۇقتۇرۇشنى تازىلاش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_notifications_icon",
+            "value":"‏%1$s ئۇقتۇرۇشى: %2$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntf_close_meta_service_live_view_notification",
+            "value":"بۇ ھالەت كۆزنىكىنى ئېتىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntf_setting_dialog_title",
+            "value":"\u200f%s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"accessibility_notification_setting_bar",
+            "value":"تەڭشەك",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_notification_delete_bar",
+            "value":"ئۆچۈرۈش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"smart_digest_setting_dialog_title",
+            "value":"ئاڭلىق ئۈزۈندى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"close_smart_digest",
+            "value":"ئاڭلىق ئۈزۈندىنى ئېتىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"kg_ntf_collapse_tip",
+            "value":"قوش چەكسىڭىز ئۇقتۇرۇش يىغىلىدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"kg_ntf_click_tip",
+            "value":"قوش چەكسىڭىز ئەپ ئېچىلىدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_hide_content",
+            "value":"%d ئۇقتۇرۇش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"imm_kg_ntf_click_tip",
+            "value":"بېسىپ تۇرسىڭىز چوڭراق كۆرۈنىدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"kg_ntf_expand_tip",
+            "value":"قوش چەكسىڭىز ئۇقتۇرۇش يېيىلىدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_ntf_swipe_left_text",
+            "value":"يېيىلدى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_ntf_swipe_right_text",
+            "value":"يىغىلدى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_ntf_swipe_remove_text",
+            "value":"چىقىرىۋېتىلدى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntf_extra_message_brief_app_tag",
+            "value":"، %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_ntf_focused_action_tips",
+            "value":"قوش بېسىپ تۇرۇپ ئوڭغا سىيرىسىڭىز، باشقا تاللانمىلار كۆرۈنىدۇ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_ntf_collapse_tips",
+            "value":"قوش بېسىپ تۇرۇپ سولغا سىيرىسىڭىز، باشقا تاللانمىلار يوشۇرۇنىدۇ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"nc_accessibility_pinned_notification",
+            "value":"ئۇقتۇرۇش چوققىلاندى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"nc_accessibility_unpinned_notification",
+            "value":"ئېلىۋېتىلدى.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntf_app_locked_content",
+            "value":"ئەپ قۇلۇپلاندى.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sa_default_name",
+            "value":"سىستېما مۇلازىمىتى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_group_header_title",
+            "value":"\u200f%1$s - %2$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntf_close_meta_service_notification",
+            "value":"ئۇقتۇرۇش ئېتىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"nc_accessibility_close_notification",
+            "value":"ئۇقتۇرۇش ئۆچۈرۈلدى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"nc_accessibility_close_live_view",
+            "value":"ھالەت كۆزنىكى ئۇچۇرى ئۆچۈرۈلدى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"silence_app_notifications",
+            "value":"تىنچ ئۇقتۇرۇش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_silent_notifications",
+            "value":"تىنچ ئۇقتۇرۇشنى بىكار قىلىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"loading",
+            "value":"يۈكلەۋاتىدۇ…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"noDisturb_none",
+            "value":"ئېتىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"open_app_inner_ntf_mgmt",
+            "value":"\u200f«%s» ئارقىلىق باشقۇرۇش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"setting",
+            "value":"تەڭشەك",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"show_preview_when_screen_lock",
+            "value":"قۇلۇپلاق ھالەتتە ئۇقتۇرۇش كۆرىكى كۆرسىتىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"show_live_view_preview_when_screen_lock",
+            "value":"قۇلۇپلاق ھالەتتە ھالەت كۆرىكى كۆرسىتىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wake_screen_when_receive_notification",
+            "value":"ئۇقتۇرۇش كەلسە ئېكران ئويغىتىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"smart_reminder",
+            "value":"ئاڭلىق ئەسكەرتىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pure_show_title",
+            "value":"ساپ كۆرسىتىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"show_notification_icon",
+            "value":"ئۇقتۇرۇش سىنبەلگىسى كۆرسىتىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"show_real_time_network_speed",
+            "value":"تور تېزلىكىنى كۆرسىتىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"show_battery_soc",
+            "value":"توك نىسبىتىنى كۆرسىتىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"already_clear",
+            "value":"تازىلاندى",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

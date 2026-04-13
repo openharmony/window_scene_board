@@ -1,0 +1,39 @@
+{
+    "string":[
+        {
+            "name":"button_turn_off",
+            "value":"종료",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"quick_toggle_microphone_label",
+            "value":"마이크",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dialog_title_disable_microphone",
+            "value":"마이크를 종료하시겠습니까?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dialog_text_disable_microphone",
+            "value":"종료하면 앱이나 서비스에서 전화 통화, 오디오 입력 또는 음성 활성화에 마이크를 사용할 수 없습니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"button_cancel",
+            "value":"취소",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

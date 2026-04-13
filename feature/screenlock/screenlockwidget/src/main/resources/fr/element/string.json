@@ -1,0 +1,393 @@
+{
+    "string":[
+        {
+            "name":"theme_edit_apply",
+            "value":"Appliquer",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"show_lock_screen_signature",
+            "value":"Signature d'écran verrouillé",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"widgets_two_click_accessible",
+            "value":"Tapoter deux fois pour activer",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"checked",
+            "value":"Sélectionné",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"layout_tab_art",
+            "value":"Affiche personnalisée",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"art_signature_input_error_language",
+            "value":"Caractères ou lettres chinois uniquement",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"art_signature_input_tip",
+            "value":"Veuillez saisir des lettres ou jusqu'à %d caractères chinois.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"layout_tab_default",
+            "value":"Horloge numérique",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"art_signature_input_title",
+            "value":"Texte de l'affiche",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"art_signature_input_error_len",
+            "value":"Limite de caractères atteinte",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"theme_edit_cancel",
+            "value":"Annuler",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"click_input_text",
+            "value":"Texte",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"EnterpriseDeviceDefaultText",
+            "value":"Cet appareil est géré par votre organisation",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_back",
+            "value":"Précédent",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"EnterpriseDeviceText",
+            "value":"Cet appareil est géré par %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"clock_font_color",
+            "value":"Couleur de la police %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"clock_font_style",
+            "value":"Style de police %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"artfont_creation_reach_limit",
+            "value":"Limite de police atteinte",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"apply_font_cannot_delete",
+            "value":"Les polices en cours d'utilisation ne peuvent pas être supprimées.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"artfont_creation_no_network",
+            "value":"Aucune connexion Internet. Veuillez vérifier vos paramètres réseau.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"artfont_creation_delete_notice",
+            "value":"Veuillez toucher et maintenir une police pour la supprimer et en créer une nouvelle.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"artfont_creation_confirm",
+            "value":"OK",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"artfont_creation_ocr_err",
+            "value":"L'identification a échoué. Veuillez réessayer.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"service_form_area_accessible",
+            "value":"Zone des widgets",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"clock_style",
+            "value":"Style de l'horloge %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"unchecked",
+            "value":"Non sélectionné",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"more_edits",
+            "value":"Plus de modifications",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Double_click_and_hold_accessibility",
+            "value":"Toucher deux fois et maintenir pour ouvrir le menu des options",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"service_form_delete_button_accessible",
+            "value":"Supprimer, bouton",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"art_signature_style",
+            "value":"Style d'affiche %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_four",
+            "value":"Déclaration relative à la vie privée Service de création de polices d'écran verrouillé",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"artfont_creation_statement_agree",
+            "value":"Accepter",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screenlock_font_creation_service",
+            "value":"Service de création de polices d'écran verrouillé",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_one",
+            "value":"Ce service utilise l'IA basée sur le cloud pour générer des polices basées sur le texte contenu dans les images. Les polices générées peuvent être appliquées à votre horloge d'écran verrouillé et à votre signature.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation",
+            "value":"Créer une police",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_five",
+            "value":"Conditions d'utilisation",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"art_signature_displayed_as_combined_character",
+            "value":"Combiner en un seul caractère",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"art_signature_content_creation_failed",
+            "value":"La création de la police a échoué.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"art_signature_try_combined_characters",
+            "value":"Sélectionner les caractères chinois combinés",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"art_signature_combined_character",
+            "value":"Caractères chinois combinés",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_three",
+            "value":"Ce service a besoin d'accéder à Internet et de lire et de transférer des images pour fournir les fonctionnalités de création de police pour l'écran verrouillé. Seules les informations/données personnelles relatives aux fonctionnalités que vous utilisez sont recueillies. Pour plus d'informations, veuillez vous référer à la %1$s et aux %2$s.\nVeuillez lire attentivement le contenu ci-dessus. En touchant Accepter, vous acceptez que nous vous fournissions ce service.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"card_deleted",
+            "value":"Le widget %s a été supprimé",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"art_signature_text_button_tip",
+            "value":"Informations",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"art_signature_text_tip_content",
+            "value":"Fonctionne mieux avec %d caractères chinois ou moins.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"artfont_AI_creation",
+            "value":"Création IA",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"please_input_text",
+            "value":"Texte",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"artfont_delete_description",
+            "value":"Si votre signature personnalisée utilise cette police, elle reviendra à la police par défaut.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"layout_tab_artsign",
+            "value":"Signature personnalisée",
+            "attr":{
+                "priority": "translate"
+            }
+        },
+        {
+            "name":"artfont_delete_confirm",
+            "value":"Retirer cette police ?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"artfont_delete_remove_button",
+            "value":"Retirer",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"artfont_long_press_delete",
+            "value":"Toucher et maintenir permet de modifier ou de supprimer la police.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"art_signature",
+            "value":"Signature personnalisée",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+      {
+            "name":"AIGC_server_offline_title",
+            "value":"Service de création de polices hors ligne",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"switch_combined_characters_fonts_prompt",
+            "value":"Le changement de police n'est pas disponible pour les caractères combinés.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"AIGC_server_offline_description",
+            "value":"Cette fonctionnalité est temporairement indisponible pendant que nous apportons quelques améliorations.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+      {
+        "name": "unsupported_content",
+        "value": "Le contenu contient des caractères non pris en charge"
+      }
+    ]
+}

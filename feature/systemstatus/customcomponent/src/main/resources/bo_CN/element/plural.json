@@ -1,0 +1,28 @@
+{
+    "plural":[
+        {
+            "name":"duration_minutes_shortest",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"སྐར་མ་ %d གོང་།",
+                    "attr":{
+                        "priority":"LT"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"duration_minutes_shortest_future",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"སྐར་མ་ %d རྗེས་སུ།",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

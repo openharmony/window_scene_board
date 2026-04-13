@@ -1,0 +1,25 @@
+{
+    "string":[
+        {
+            "name":"control_center_complex_toggle_hotspot_title",
+            "value":"個人熱點",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"statusbar_talkbackhotspot01",
+            "value":"熱點已啟用",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_hotspot_no_device",
+            "value":"無裝置",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

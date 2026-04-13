@@ -1,0 +1,28 @@
+{
+  "float": [
+    {
+      "name": "plugin_icon_red_hot_size",
+      "value": "8vp"
+    },
+    {
+      "name": "menu_right_padding",
+      "value": "12"
+    },
+    {
+      "name": "menu_min_width",
+      "value": "160"
+    },
+    {
+      "name": "menu_max_width_ration",
+      "value": "0.67"
+    },
+    {
+      "name": "menu_text_padding",
+      "value": "32"
+    },
+    {
+      "name": "arrow_right_width",
+      "value": "36"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+    "plural":[
+        {
+            "name":"search_result_accessibility_text",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"以下顯示 %d 個搜尋結果。",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

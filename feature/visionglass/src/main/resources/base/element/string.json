@@ -1,0 +1,116 @@
+{
+    "string":[
+        {
+            "name":"ScreenShot_label",
+            "value":"Screenshot",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Incoming_call_flag",
+            "value":"Incoming call",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Incoming_call_title",
+            "value":"%s calling",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Incoming_call_prompt",
+            "value":"Take call on your phone",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"action_button_reply",
+            "value":"Reply",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"banner_toast_message",
+            "value":"View this message on your phone.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"banner_hint_message",
+            "value":"This message cannot be displayed on the Vision Glass. View it on your phone.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"control_center_bluetooth",
+            "value":"Bluetooth",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"control_center_adjustment",
+            "value":"Prescription adjustment",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"control_center_phone_cast_screen",
+            "value":"Phone mirroring",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"control_center_phone_power_save_mode",
+            "value":"Power Saving mode",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"control_center_wlan",
+            "value":"WLAN",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"control_screenshot_no_right",
+            "value":"Taking screenshots requires the Images & videos permission. Grant the permission in the pop-up window on your phone or in Settings.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"screenshot_privacy",
+            "value":"Can't take a screenshot. The current screen may contain sensitive information.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Input_prompt",
+            "value":"Disconnect and input text in the app on your phone.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"add_app_to_glass_msg",
+            "value":"Add %s to the App Library.",
+            "attr":{
+                "priority":"LT"
+            }
+        }
+    ]
+}

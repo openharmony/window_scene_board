@@ -1,0 +1,12 @@
+{
+  "float": [
+    {
+      "name": "headup_banner_top",
+      "value": "47vp"
+    },
+    {
+      "name": "tint_headup_banner_top",
+      "value": "8vp"
+    }
+  ]
+}

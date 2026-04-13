@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Public/ic_public_remove_filled</title>
+    <defs>
+        <path d="M8,16 C3.581722,16 0,12.418278 0,8 C0,3.581722 3.581722,0 8,0 C12.418278,0 16,3.581722 16,8 C16,12.418278 12.418278,16 8,16 Z" id="path-1"></path>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="#illustration_低电量应急模式-编辑" transform="translate(-196.000000, -340.000000)">
+            <g id="Public/ic_public_remove_filled" transform="translate(196.000000, 340.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <use id="合并形状" fill="#E84026" fill-rule="nonzero" xlink:href="#path-1"></use>
+                <path d="M3.45454545,8.54545455 C3.15329923,8.54545455 2.90909091,8.30124623 2.90909091,8 C2.90909091,7.69875377 3.15329923,7.45454545 3.45454545,7.45454545 L12.5454545,7.45454545 C12.8467008,7.45454545 13.0909091,7.69875377 13.0909091,8 C13.0909091,8.30124623 12.8467008,8.54545455 12.5454545,8.54545455 L3.45454545,8.54545455 Z" id="Path-5" fill-opacity="0.858823529" fill="#FFFFFF" fill-rule="nonzero"></path>
+            </g>
+        </g>
+    </g>
+</svg>

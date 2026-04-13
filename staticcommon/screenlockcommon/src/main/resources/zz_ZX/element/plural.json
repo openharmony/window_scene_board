@@ -1,0 +1,149 @@
+{
+    "plural":[
+        {
+            "name":"psd_incorrect_will_locked1",
+            "value":[
+                {
+                    "quantity":"many",
+                    "value":"[TS_924867]_%d more attempts"
+                },
+                {
+                    "quantity":"few",
+                    "value":"[TS_924764]_%d more attempts"
+                },
+                {
+                    "quantity":"zero",
+                    "value":"[TS_924836]_%d more attempts"
+                },
+                {
+                    "quantity":"one",
+                    "value":"[TS_924853]_%d more attempt"
+                },
+                {
+                    "quantity":"other",
+                    "value":"[TS_924865]_%d more attempts"
+                },
+                {
+                    "quantity":"two",
+                    "value":"[TS_924876]_%d more attempts"
+                }
+            ]
+        },
+        {
+            "name":"psd_incorrect_will_locked2",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"[TS_924848]_%d minute"
+                },
+                {
+                    "quantity":"few",
+                    "value":"[TS_924760]_%d minutes"
+                },
+                {
+                    "quantity":"two",
+                    "value":"[TS_924877]_%d minutes"
+                },
+                {
+                    "quantity":"zero",
+                    "value":"[TS_924749]_%d minutes"
+                },
+                {
+                    "quantity":"many",
+                    "value":"[TS_924742]_%d minutes"
+                },
+                {
+                    "quantity":"other",
+                    "value":"[TS_924888]_%d minutes"
+                }
+            ]
+        },
+        {
+            "name":"psd_incorrect_will_locked3",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"[TS_924858]_%d second"
+                },
+                {
+                    "quantity":"few",
+                    "value":"[TS_924766]_%d seconds"
+                },
+                {
+                    "quantity":"zero",
+                    "value":"[TS_924751]_%d seconds"
+                },
+                {
+                    "quantity":"two",
+                    "value":"[TS_924870]_%d seconds"
+                },
+                {
+                    "quantity":"other",
+                    "value":"[TS_924812]_%d seconds"
+                },
+                {
+                    "quantity":"many",
+                    "value":"[TS_924866]_%d seconds"
+                }
+            ]
+        },
+        {
+            "name":"psd_incorrect_psd_left_times",
+            "value":[
+                {
+                    "quantity":"two",
+                    "value":"[TS_924780]_Incorrect PIN. %d attempts remaining."
+                },
+                {
+                    "quantity":"few",
+                    "value":"[TS_924755]_Incorrect PIN. %d attempts remaining."
+                },
+                {
+                    "quantity":"other",
+                    "value":"[TS_924810]_Incorrect PIN. %d attempts remaining."
+                },
+                {
+                    "quantity":"many",
+                    "value":"[TS_924773]_Incorrect PIN. %d attempts remaining."
+                },
+                {
+                    "quantity":"zero",
+                    "value":"[TS_924886]_Incorrect PIN. %d attempts remaining."
+                },
+                {
+                    "quantity":"one",
+                    "value":"[TS_924805]_Incorrect PIN. %d attempt remaining."
+                }
+            ]
+        },
+        {
+            "name":"psd_incorrect_psd_left_times_mix",
+            "value":[
+                {
+                    "quantity":"many",
+                    "value":"[TS_924798]_Incorrect password. %d attempts remaining."
+                },
+                {
+                    "quantity":"zero",
+                    "value":"[TS_924839]_Incorrect password. %d attempts remaining."
+                },
+                {
+                    "quantity":"other",
+                    "value":"[TS_924873]_Incorrect password. %d attempts remaining."
+                },
+                {
+                    "quantity":"one",
+                    "value":"[TS_924875]_Incorrect password. %d attempt remaining."
+                },
+                {
+                    "quantity":"few",
+                    "value":"[TS_924767]_Incorrect password. %d attempts remaining."
+                },
+                {
+                    "quantity":"two",
+                    "value":"[TS_924813]_Incorrect password. %d attempts remaining."
+                }
+            ]
+        }
+    ]
+}

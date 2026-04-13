@@ -1,0 +1,393 @@
+{
+    "string":[
+        {
+            "name":"theme_edit_apply",
+            "value":"Áp dụng",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"theme_edit_cancel",
+            "value":"Hủy",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"show_lock_screen_signature",
+            "value":"Chữ ký màn hình khóa",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"click_input_text",
+            "value":"Nhập văn bản",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"widgets_two_click_accessible",
+            "value":"Chạm hai lần để kích hoạt",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"EnterpriseDeviceDefaultText",
+            "value":"Thiết bị này do tổ chức của bạn quản lý",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_back",
+            "value":"Trở lại",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"EnterpriseDeviceText",
+            "value":"Thiết bị này do %s quản lý",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"checked",
+            "value":"Đã chọn",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"layout_tab_art",
+            "value":"Áp phích cá nhân hóa",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"art_signature_input_error_language",
+            "value":"Chỉ ký tự hoặc chữ cái tiếng Trung",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"art_signature_input_tip",
+            "value":"Nhập tối đa %d ký tự tiếng Trung.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"layout_tab_default",
+            "value":"Đồng hồ kỹ thuật số",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"art_signature_input_title",
+            "value":"Văn bản trên áp phích",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"art_signature_input_error_len",
+            "value":"Đã đạt đến giới hạn ký tự",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"clock_font_color",
+            "value":"Màu phông chữ %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"clock_font_style",
+            "value":"Kiểu phông chữ %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"artfont_creation_reach_limit",
+            "value":"Đã đạt đến giới hạn phông chữ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_font_cannot_delete",
+            "value":"Không thể xóa phông chữ khi đang sử dụng.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"artfont_creation_no_network",
+            "value":"Không có kết nối Internet. Hãy kiểm tra cài đặt mạng của bạn.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"artfont_creation_delete_notice",
+            "value":"Hãy chạm và giữ một phông chữ để xóa và tạo một phông chữ mới.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"artfont_creation_confirm",
+            "value":"OK",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"artfont_creation_ocr_err",
+            "value":"Nhận dạng không thành công. Vui lòng thử lại.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"service_form_area_accessible",
+            "value":"Vùng dành cho tiện ích",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"clock_style",
+            "value":"Kiểu đồng hồ %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"unchecked",
+            "value":"Chưa chọn",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"more_edits",
+            "value":"Thêm chỉnh sửa",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Double_click_and_hold_accessibility",
+            "value":"Chạm đúp và giữ để mở menu tùy chọn",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"service_form_delete_button_accessible",
+            "value":"Xóa, nút",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"art_signature_style",
+            "value":"Kiểu áp phích %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_four",
+            "value":"Tuyên bố về Dịch vụ tạo phông chữ màn hình khóa và Quyền riêng tư",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"artfont_creation_statement_agree",
+            "value":"Đồng ý",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screenlock_font_creation_service",
+            "value":"Dịch vụ tạo phông chữ màn hình khóa",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_one",
+            "value":"Dịch vụ này sử dụng AI dựa trên đám mây để tạo phông chữ từ văn bản có trong hình ảnh. Phông chữ được tạo có thể được áp dụng cho đồng hồ màn hình khóa và chữ ký của bạn.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation",
+            "value":"Tạo một phông chữ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_five",
+            "value":"Điều khoản & Điều kiện",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"art_signature_displayed_as_combined_character",
+            "value":"Kết hợp thành một ký tự",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"art_signature_content_creation_failed",
+            "value":"Không tạo được phông chữ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"art_signature_try_combined_characters",
+            "value":"Chọn ký tự tiếng Trung được kết hợp",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"art_signature_combined_character",
+            "value":"Ký tự tiếng Trung được kết hợp",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_three",
+            "value":"Dịch vụ này yêu cầu kết nối Internet cũng như cần đọc và tải lên/truyền hình ảnh để cung cấp các tính năng tạo phông chữ màn hình khóa. Chúng tôi chỉ thu thập thông tin cá nhân liên quan đến các tính năng bạn sử dụng. Để biết thêm thông tin, hãy tham khảo %1$s và %2$s.\nVui lòng đọc kỹ nội dung trên. Bằng việc chạm vào Đồng ý, bạn đồng ý cho chúng tôi cung cấp dịch vụ này cho bạn.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"card_deleted",
+            "value":"%s tiện ích đã bị xóa",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"art_signature_text_button_tip",
+            "value":"Thông tin",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"art_signature_text_tip_content",
+            "value":"Hoạt động tốt nhất khi sử dụng không quá %d kí tự Tiếng Trung.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"artfont_AI_creation",
+            "value":"AI tạo",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"please_input_text",
+            "value":"Nhập văn bản",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"artfont_delete_description",
+            "value":"Nếu chữ ký cá nhân hóa của bạn đang dùng phông chữ này, hệ thống sẽ chuyển về phông chữ mặc định.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"layout_tab_artsign",
+            "value":"Chữ ký cá nhân hóa",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"artfont_delete_confirm",
+            "value":"Gỡ phông chữ này?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"artfont_delete_remove_button",
+            "value":"Gỡ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"artfont_long_press_delete",
+            "value":"Chạm và giữ để sửa hoặc gỡ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"art_signature",
+            "value":"Chữ ký cá nhân hóa",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+      {
+            "name":"AIGC_server_offline_title",
+            "value":"Dịch vụ tạo phông chữ đang ngoại tuyến",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"switch_combined_characters_fonts_prompt",
+            "value":"Không thể chuyển đổi phông chữ cho các ký tự kết hợp.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"AIGC_server_offline_description",
+            "value":"Tính năng này tạm thời không hoạt động do chúng tôi đang trong quá trình cải thiện.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+      {
+        "name": "unsupported_content",
+        "value": "Chứa ký tự không được hỗ trợ"
+      }
+    ]
+}

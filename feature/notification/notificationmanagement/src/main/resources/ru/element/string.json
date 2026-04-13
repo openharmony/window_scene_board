@@ -1,0 +1,508 @@
+{
+    "string":[
+        {
+            "name":"banners",
+            "value":"Баннеры",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_style",
+            "value":"Стиль уведомлений",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"clear",
+            "value":"Удалить",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_wake_screen_switch_text",
+            "value":"Активация экрана при получении уведомления.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_lock_screen_switch_text",
+            "value":"Скрытие содержания уведомления, когда телефон заблокирован",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_and_status_bar_title",
+            "value":"Уведомления и строка состояния",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_lock_screen_switch_title_new",
+            "value":"Скрытие содержания уведомления",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"status_bar_title",
+            "value":"Строка состояния",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_wake_screen_switch_title",
+            "value":"Активация экрана",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"more_ntf_setting",
+            "value":"Другие настройки",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"search_history",
+            "value":"История поиска",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"no_banners",
+            "value":"Нет",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntfSoundModeOnlyVibration",
+            "value":"Вибрация",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"lock_screen_notification",
+            "value":"Экран блокировки",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"badges",
+            "value":"Метки",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"search_app",
+            "value":"Поиск приложений",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notifications",
+            "value":"Уведомления",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_not_banner",
+            "value":"Отображение баннеров на рабочем экране",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"smart_reminder_learn_more",
+            "value":"Подробнее",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"smart_digest",
+            "value":"Умная группировка",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntfSoundModeSilence",
+            "value":"Без звука",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remind_banner",
+            "value":"Баннеры",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"lock_screen_notification_style",
+            "value":"Отображение в формате списка на экране блокировки",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"entry_desc",
+            "value":"Уведомления",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"set_face",
+            "value":"Настроить",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"hide_banner_content_desc",
+            "value":"Применяется только к приложениям с системными настройками уведомлений.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"unified_notification_label",
+            "value":"Организация",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remind_disable",
+            "value":"Выклю\u200bчено",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remind_sound",
+            "value":"Звук",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_pin_on_top",
+            "value":"Уведомления этого приложения всегда будут отображаться в верхней части панели уведомлений.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"hide_banner_content_title",
+            "value":"Отображение контента баннеров",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"no_matching_results",
+            "value":"Нет результатов",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"splitter_format_for_4",
+            "value":"%1$s, %2$s, %3$s, %4$s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"splitter_format_for_2",
+            "value":"%1$s, %2$s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"splitter_format_for_3",
+            "value":"%1$s, %2$s, %3$s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"switch_screen_lock_ntf_style_forbidden",
+            "value":"Уведомления всегда раскрываются при разблокировке сканированием отпечатка.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remind_vibration",
+            "value":"Вибрация",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"smart_reminder_tips_main",
+            "value":"Когда эта функция включена, контент баннеров будет отображаться только для вас, оповещение об уведомлениях будет менее интенсивным, когда вы смотрите на экран. Эта функция использует распознавание лица. %s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"smart_reminder_tips_no_weak",
+            "value":"Когда эта функция включена, контент баннеров будет отображаться только для вас. Эта функция использует распознавание лица.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"unified_notification_intro",
+            "value":"Группировка уведомлений от различных связанных приложений.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"show_tip_live_view_preview_when_screen_lock",
+            "value":"Включите эту функцию, чтобы использовать возможности интерактивного вида.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remind_lock_screen",
+            "value":"Экран блокировки",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pad_pure_show_description",
+            "value":"Отображение в строке состояния только времени, значков WLAN и уровня заряда батареи.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntfSoundModeSettingTitle",
+            "value":"Сигнал уведомлений",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remind_only_notification_center",
+            "value":"Только панель уведомлений",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"hide_banner_content_app_follow_system",
+            "value":"Настройки системы",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"hiding_banner_content_txt",
+            "value":"При появлении уведомления в формате баннера его контент не будет отображаться, если другие люди смотрят на экран. Эта функция использует распознавание лица.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"hide_banner_content_app_never",
+            "value":"Не показывать",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntfSoundModeOnlyRing",
+            "value":"Сигнал",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"hide_banner_content_app_always",
+            "value":"Всегда показывать",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"live_view_title",
+            "value":"Интерактивный вид",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"switch_badges_forbidden",
+            "value":"Сначала включите функцию Отображение меток в разделе Настройки > Уведомления и строка состояния > Другие настройки.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pure_show_description",
+            "value":"Отображение в строке состояния только времени, значков WLAN, мобильного сигнала и уровня заряда батареи.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remind_type",
+            "value":"Тип",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_switch_alarm_clock",
+            "value":"Будильник",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_switch_vpn",
+            "value":"VPN",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_switch_nearlink",
+            "value":"NearLink и Bluetooth",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_switch_icon_visible",
+            "value":"Управление значками",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"enable_switch_ring_mode_silent",
+            "value":"Режим Без звука",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_switch_ring_mode",
+            "value":"Режим Без звука или Вибрация",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"enable_switch_head_phones",
+            "value":"Проводные наушники",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_switch_bluetooth",
+            "value":"Bluetooth-соединение",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_switch_net_speed",
+            "value":"Скорость интернет-соединения в реальном времени",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_switch_nfc",
+            "value":"NFC",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_switch_notification_icon",
+            "value":"Значки уведомлений",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"psd_back_accessible",
+            "value":"Кнопка Назад",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"lock_screen_notification_fold",
+            "value":"Уведомления на экране блокировки в скрытом виде",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"silent_notification",
+            "value":"Умные уведомления",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"silent_notification_description",
+            "value":"Уведомления от этого приложения поступают без звука и отображаются только на панели уведомлений.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"lock_screen_notification_expand",
+            "value":"Уведомления на экране блокировки в раскрытом виде",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"enable_switch_explain",
+            "value":"Значки статусов будут отображаться на панели управления и панели уведомлений, даже если они не выбраны здесь.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"already_clear",
+            "value":"Удалено",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

@@ -1,0 +1,56 @@
+{
+    "string":[
+        {
+            "name":"suggestion",
+            "value":"[TS_951201]_Suggestions"
+        },
+        {
+            "name":"form_added",
+            "value":"[TS_960899]_Widget added."
+        },
+        {
+            "name":"add_to_screen_lock",
+            "value":"[TS_973973]_Add to lock screen"
+        },
+        {
+            "name":"add_theme_form_to_desktop_more",
+            "value":"[TS_966654]_More live widgets"
+        },
+        {
+            "name":"look_more_theme_form",
+            "value":"[TS_966653]_More"
+        },
+        {
+            "name":"form_center_notice_text",
+            "value":"[TS_982398]_Click or drag widgets to add to the home screen"
+        },
+        {
+            "name":"form_center_notice_button",
+            "value":"[TS_982399]_OK"
+        },
+        {
+            "name":"add_form_to_intelligent",
+            "value":"[TS_1044219]_Add to Assistant·TODAY"
+        },
+        {
+            "name":"accessibility_str_long_click_to_drag",
+            "value":"[TS_1042282]_Double tap and hold to drag"
+        },
+        {
+            "name":"accessibility_str_two_finger_slide",
+            "value":"[TS_1065581]_Swipe left or right with two fingers to change screens"
+        },
+        {
+            "name":"splitter_format",
+            "value":"[TS_1091933]_%1$s, %2$s"
+        },
+        {
+            "name":"card_load_error",
+            "value":"[TS_1110978]_Widget loading error. Try again later."
+        },
+        {
+            "name":"onekeylock_shortcut",
+            "value":"[TS_1118110]_Lock screen shortcut"
+        }
+    ]
+}

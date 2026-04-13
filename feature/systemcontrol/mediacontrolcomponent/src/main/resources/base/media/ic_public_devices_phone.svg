@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>device_bluetooth</title>
+    <g id="device_bluetooth" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(6, 1)">
+        <path d="M10,1.5h-7A1.5,1.5 0,0 0,1.501 2.9438L1.5,3v17a1.5,1.5 0,0 0,1.4438 1.499L3,21.5h7a1.5,1.5 0,0 0,1.499 -1.4438L11.5,20L11.5,3a1.5,1.5 0,0 0,-1.4438 -1.499ZM10,0a3,3 0,0 1,2.999 2.9238L13,3L13,7.25a0.75,0.75 0,0 1,0.75 0.75v1a0.75,0.75 0,0 1,-0.75 0.75L13,20a3,3 0,0 1,-2.9238 2.999L10,23h-7a3,3 0,0 1,-2.999 -2.9238L0,3A3,3 0,0 1,2.9238 0.001Z" id="Rectangle-8-Copy-4备份" fill="#000000"></path>
+    </g>
+</svg>

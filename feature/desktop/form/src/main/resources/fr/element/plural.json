@@ -1,0 +1,23 @@
+{
+    "plural":[
+        {
+            "name":"search_result_accessibility_text",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"%d résultat de recherche affiché ci-dessous",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"%d résultats de recherche affichés ci-dessous",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

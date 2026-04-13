@@ -1,0 +1,276 @@
+{
+    "string":[
+        {
+            "name":"ntf_cancel_pin_top_pkg_notification",
+            "value":"[TS_817456]_Unpin from top"
+        },
+        {
+            "name":"ntf_pin_top_pkg_notification",
+            "value":"[TS_817455]_Pin to top"
+        },
+        {
+            "name":"topped_notification_flag",
+            "value":"[TS_818587]_Pinned"
+        },
+        {
+            "name":"is_ntf_close_pkg_notification",
+            "value":"[TS_833228]_Disable all notifications for %s?"
+        },
+        {
+            "name":"place_holder_input_content",
+            "value":"[TS_834518]_Type here"
+        },
+        {
+            "name":"ntf_close_pkg_notification",
+            "value":"[TS_817666]_Disable notifications"
+        },
+        {
+            "name":"ntf_dialog_more_settings",
+            "value":"[TS_817686]_More settings"
+        },
+        {
+            "name":"ntf_dialog_cancel",
+            "value":"[TS_817676]_Cancel"
+        },
+        {
+            "name":"ntf_extra_message_brief_title",
+            "value":"[TS_871078]_View more notifications"
+        },
+        {
+            "name":"ntf_extra_message_brief_content",
+            "value":"[TS_873730]_From %s"
+        },
+        {
+            "name":"ntf_extra_message",
+            "value":"[TS_871077]_More notifications"
+        },
+        {
+            "name":"ntf_extra_message_collapse",
+            "value":"[TS_871076]_Show less"
+        },
+        {
+            "name":"ntf_center_title",
+            "value":"[TS_817681]_Notification Panel"
+        },
+        {
+            "name":"ntf_extra_message_expand",
+            "value":"[TS_871079]_Show more"
+        },
+        {
+            "name":"ntf_download_file_detail",
+            "value":"[TS_817674]_File details"
+        },
+        {
+            "name":"ntf_empty_text_tip",
+            "value":"[TS_817673]_No notifications"
+        },
+        {
+            "name":"ntf_keyguard_no_content_click_tip",
+            "value":"[TS_832858]_No details available."
+        },
+        {
+            "name":"ntf_keyguard_click_tip",
+            "value":"[TS_817668]_Tap again to open."
+        },
+        {
+            "name":"ntf_brief_remainder_count",
+            "value":"[TS_880715]_+%d"
+        },
+        {
+            "name":"ntf_download_progress",
+            "value":"[TS_880716]_Progress: %s"
+        },
+        {
+            "name":"kg_ntf_collapse_tip",
+            "value":"[TS_906071]_Double-tap to show less."
+        },
+        {
+            "name":"kg_ntf_click_tip",
+            "value":"[TS_906074]_Double-tap to open app."
+        },
+        {
+            "name":"imm_kg_ntf_click_tip",
+            "value":"[TS_906072]_Touch & hold for large view."
+        },
+        {
+            "name":"kg_ntf_expand_tip",
+            "value":"[TS_906073]_Double-tap to expand."
+        },
+        {
+            "name":"ntf_setting_dialog_title",
+            "value":"[TS_914853]_%s"
+        },
+        {
+            "name":"ntf_close_pkg_live_view",
+            "value":"[TS_914852]_Disable live view"
+        },
+        {
+            "name":"live_view_setting_dialog_title",
+            "value":"[TS_914855]_%s"
+        },
+        {
+            "name":"is_ntf_close_pkg_live_view",
+            "value":"[TS_914854]_Disable live view for %s?"
+        },
+        {
+            "name":"accessibility_notification_and_start_bar_setting",
+            "value":"[TS_917721]_Notification and status bar settings"
+        },
+        {
+            "name":"accessibility_notification_clear",
+            "value":"[TS_917735]_Clear all notifications"
+        },
+        {
+            "name":"accessibility_notifications_icon",
+            "value":"[TS_917724]_%1$s notification: %2$s"
+        },
+        {
+            "name":"ntf_hide_content",
+            "value":"[TS_919866]_%d notification"
+        },
+        {
+            "name":"ntf_close_meta_service_notification",
+            "value":"[TS_920743]_Disable notifications"
+        },
+        {
+            "name":"ntf_close_meta_service_live_view_notification",
+            "value":"[TS_929795]_Disable live view"
+        },
+        {
+            "name":"accessibility_notification_setting_bar",
+            "value":"[TS_937118]_Settings"
+        },
+        {
+            "name":"accessibility_notification_delete_bar",
+            "value":"[TS_937117]_Delete"
+        },
+        {
+            "name":"smart_digest_setting_dialog_title",
+            "value":"[TS_920811]_Smart grouping"
+        },
+        {
+            "name":"close_smart_digest",
+            "value":"[TS_920810]_Disable Smart grouping"
+        },
+        {
+            "name":"intent_bg_dark",
+            "value":"[TS_934991]_rgba(0,0,0,0.6)"
+        },
+        {
+            "name":"intent_bg",
+            "value":"[TS_934994]_rgba(255,255,255,0.6)"
+        },
+        {
+            "name":"cc_accessibility_str_ntf_swipe_left_text",
+            "value":"[TS_959849]_Expanded"
+        },
+        {
+            "name":"cc_accessibility_str_ntf_swipe_right_text",
+            "value":"[TS_959848]_Collapsed"
+        },
+        {
+            "name":"cc_accessibility_str_ntf_swipe_remove_text",
+            "value":"[TS_959850]_Removed"
+        },
+        {
+            "name":"ntf_extra_message_brief_app_tag",
+            "value":"[TS_966061]_, %s"
+        },
+        {
+            "name":"cc_accessibility_str_ntf_focused_action_tips",
+            "value":"[TS_992892]_Double-tap and hold, then swipe left for additional options"
+        },
+        {
+            "name":"cc_accessibility_str_ntf_collapse_tips",
+            "value":"[TS_993101]_Double-tap and hold, then swipe right to hide additional options"
+        },
+        {
+            "name":"nc_accessibility_pinned_notification",
+            "value":"[TS_1045543]_Notification pinned"
+        },
+        {
+            "name":"nc_accessibility_unpinned_notification",
+            "value":"[TS_1045544]_Unpinned."
+        },
+        {
+            "name":"ntf_app_locked_content",
+            "value":"[TS_998053]_App is locked"
+        },
+        {
+            "name":"sa_default_name",
+            "value":"[TS_1039036]_System Ability"
+        },
+        {
+            "name":"ntf_group_header_title",
+            "value":"[TS_1045907]_%1$s · %2$s"
+        },
+        {
+            "name":"nc_accessibility_close_notification",
+            "value":"[TS_1061215]_Notification has been deleted"
+        },
+        {
+            "name":"nc_accessibility_close_live_view",
+            "value":"[TS_1061214]_Live view message has been deleted"
+        },
+        {
+            "name":"silence_app_notifications",
+            "value":"[TS_1084017]_Use gentle notifications"
+        },
+        {
+            "name":"disable_silent_notifications",
+            "value":"[TS_1084018]_Disable gentle notifications"
+        },
+        {
+            "name":"loading",
+            "value":"[TS_916919]_Loading…"
+        },
+        {
+            "name":"noDisturb_none",
+            "value":"[TS_784867]_Disable"
+        },
+        {
+            "name":"open_app_inner_ntf_mgmt",
+            "value":"[TS_1082053]_Go to %s"
+        },
+        {
+            "name":"setting",
+            "value":"[TS_934993]_Settings"
+        },
+        {
+            "name":"show_preview_when_screen_lock",
+            "value":"[TS_931325]_Show notification previews when locked"
+        },
+        {
+            "name":"show_live_view_preview_when_screen_lock",
+            "value":"[TS_981987]_Show live view previews when locked"
+        },
+        {
+            "name":"wake_screen_when_receive_notification",
+            "value":"[TS_931344]_Wake screen for notifications"
+        },
+        {
+            "name":"smart_reminder",
+            "value":"[TS_957024]_Smart notifications"
+        },
+        {
+            "name":"pure_show_title",
+            "value":"[TS_818451]_Simple display"
+        },
+        {
+            "name":"show_notification_icon",
+            "value":"[TS_818447]_Show app notification icons"
+        },
+        {
+            "name":"show_real_time_network_speed",
+            "value":"[TS_818449]_Show network speed"
+        },
+        {
+            "name":"show_battery_soc",
+            "value":"[TS_931343]_Show battery percentage"
+        },
+        {
+            "name":"already_clear",
+            "value":"[TS_1119892]_Cleared"
+        }
+    ]
+}

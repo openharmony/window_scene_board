@@ -1,0 +1,12 @@
+{
+  "float": [
+    {
+      "name": "control_center_media_marquee_fontsize",
+      "value": "1.3"
+    },
+    {
+      "name": "media_card_border_radius",
+      "value": "8"
+    }
+  ]
+}

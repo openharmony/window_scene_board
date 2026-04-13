@@ -1,0 +1,65 @@
+{
+    "string":[
+        
+        {
+            "name":"confirm_shutdown_dialog_title",
+            "value":"[TS_904565]_Preparing to power off"
+        },
+        {
+            "name":"confirm_shutdown_tip",
+            "value":"[TS_904563]_Unsaved changes will be lost if you power off now."
+        },
+        {
+            "name":"confirm_reboot_tip",
+            "value":"[TS_904343]_Unsaved changes will be lost if you restart now."
+        },
+        {
+            "name":"confirm_restarting_dialog_title",
+            "value":"[TS_904373]_Preparing to restart"
+        },
+        {
+            "name":"common_cancel",
+            "value":"[TS_904464]_Cancel"
+        },
+        {
+            "name":"got_it",
+            "value":"[TS_1021027]_OK"
+        },
+        {
+            "name":"shutdown_warning_when_kiddo_update",
+            "value":"[TS_1067580]_The virtual machine is being updated. Powering off now may damage it. Please try again after the update has finished."
+        },
+        {
+            "name":"reboot_warning_when_kiddo_update",
+            "value":"[TS_1067579]_The virtual machine is being updated. Restarting now may damage it. Please try again after the update has finished."
+        },
+        {
+            "name":"app_not_saving",
+            "value":"[TS_1082024]_Contains unsaved changes"
+        },
+        {
+            "name":"continue_restart",
+            "value":"[TS_1082022]_Restart now"
+        },
+        {
+            "name":"continue_shutdown",
+            "value":"[TS_1082017]_Power off now"
+        },
+        {
+            "name":"shutdown_warning_when_kiddo_update_in_other_user",
+            "value":"[TS_1098810]_Another user is currently updating a virtual machine. Powering off now may damage it. Try again later."
+        },
+        {
+            "name":"reboot_warning_when_kiddo_update_in_other_user",
+            "value":"[TS_1098809]_Another user is currently updating a virtual machine. Restarting now may damage it. Try again later."
+        },
+        {
+            "name":"continue_mode_change",
+            "value":"[TS_1105232]_Switch now"
+        },
+        {
+            "name":"confirm_mode_change_dialog_title",
+            "value":"[TS_1105227]_Preparing to switch system mode"
+        }
+    ]
+}

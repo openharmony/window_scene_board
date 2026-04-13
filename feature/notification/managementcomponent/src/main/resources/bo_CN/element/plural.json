@@ -1,0 +1,16 @@
+{
+    "plural":[
+        {
+            "name":"ntf_pin_top_dialog_reach_limit_content",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"ཆེས་མང་ན་ཉེར་སྤྱོད་ %d རྩེར་སྒྲིག་བྱེད། སྔོན་ལ་ཉེར་སྤྱོད་རྩེར་སྒྲིག་ཁག་ཅིག་དོར་ཚེ། ད་གཟོད་ཉེར་སྤྱོད་གཞན་པ་རྩེར་སྒྲིག་བྱེད་ཐུབ།",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

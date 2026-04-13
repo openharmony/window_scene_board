@@ -1,0 +1,25 @@
+{
+  "license": "ISC",
+  "types": "",
+  "name": "@ohos/notificationcomponent",
+  "description": "a npm package which contains arkUI2.0 page",
+  "repository": {},
+  "version": "1.0.0",
+  "main": "newIndex.ets",
+  "dependencies": {
+    "@ohos/customcomponent": "file:../../systemstatus/customcomponent",
+    "@ohos/basicutils": "file:../../../staticcommon/basecommon/basicutils",
+    "@ohos/commonconstants": "file:../../../staticcommon/basecommon/commonconstants",
+    "@ohos/componentdrag": "file:../../../staticcommon/basecommon/componentdrag",
+    "@ohos/componenthelper": "file:../../../staticcommon/basecommon/componenthelper",
+    "@ohos/frameworkwrapper": "file:../../../staticcommon/basecommon/frameworkwrapper",
+    "@ohos/windowscene": "file:../../../staticcommon/basecommon/windowscene",
+    "@ohos/launchercommon": "file:../../../staticcommon/launchercommon",
+    "@ohos/mediacontrolcomponent": "file:../../systemcontrol/mediacontrolcomponent",
+    "@ohos/systemuicommon": "../../../staticcommon/systemuicommon",
+    "@ohos/systemuiutils": "../../../staticcommon/systemuibasic/systemuiutils",
+    "@ohos/frameworkpinyin": "../../../staticcommon/basecommon/frameworkpinyin",
+    "@ohos/screenlockcommon": "file:../../../staticcommon/screenlockcommon",
+    "@ohos/controlcentercommon": "file:../../../staticcommon/controlcentercommon"
+  }
+}

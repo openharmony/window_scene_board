@@ -1,0 +1,18 @@
+{
+    "string":[
+        {
+            "name":"accessibility_ethernet_connected",
+            "value":"이더넷 연결됨.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_ethernet_disconnected",
+            "value":"이더넷 끊김.",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

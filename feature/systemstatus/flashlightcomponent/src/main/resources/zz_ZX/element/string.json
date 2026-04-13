@@ -1,0 +1,12 @@
+{
+    "string":[
+        {
+            "name":"control_center_complex_toggle_flashlight_title",
+            "value":"[TS_922502]_Flashlight"
+        },
+        {
+            "name":"flashlight_on_ntf_content",
+            "value":"[TS_1024663]_Flashlight is on"
+        }
+    ]
+}

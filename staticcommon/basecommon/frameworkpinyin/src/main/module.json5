@@ -1,0 +1,10 @@
+{
+  "module": {
+    "name": "frameworkpinyin",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ]
+  }
+}

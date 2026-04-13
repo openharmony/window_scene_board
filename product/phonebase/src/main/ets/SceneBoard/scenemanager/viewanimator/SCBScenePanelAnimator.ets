@@ -75,6 +75,7 @@ import { SceneBoardStateManager, CoreEventType as SCBCoreEventType } from '@ohos
 import sceneSessionManager from '@ohos.sceneSessionManager'
 import { BlurEffectType, SCBConstants, VisualEffectConstants } from '@ohos/commonconstants';
 import { SCBScenePanelViewModel } from '../viewmodel/SCBScenePanelViewModel';
+// import apsManager from '@hms.graphic.apsManager';
 import { BigFolderViewModel } from '@ohos/bigfolder';
 import { QuitAppRectViewModel } from '@ohos/pagedesktop/src/main/ets/default/common/viewmodel/QuitAppRectViewModel';
 import { commonEventManager, configPolicy, systemDateTime } from '@kit.BasicServicesKit';

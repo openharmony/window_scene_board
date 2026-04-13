@@ -1,0 +1,18 @@
+{
+    "string":[
+        {
+            "name":"free_window_closed",
+            "value":"ئاۋۋال ئەركىن كۆزنەك ھالىتىنى ئېچىڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"anti_peeping_title",
+            "value":"ماراشتىن قوغداش",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

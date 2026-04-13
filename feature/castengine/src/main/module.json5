@@ -1,0 +1,10 @@
+{
+  "module": {
+    "name": "castengine",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ]
+  }
+}

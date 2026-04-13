@@ -1,0 +1,228 @@
+{
+    "string":[
+        {
+            "name":"RecentlyPlay",
+            "value":"[TS_932202]_Recently played"
+        },
+        {
+            "name":"preference_setting",
+            "value":"[TS_932170]_Preferences"
+        },
+        {
+            "name":"recommended_to_you",
+            "value":"[TS_932178]_Top picks for you"
+        },
+        {
+            "name":"WiredDevice",
+            "value":"[TS_932194]_Wired headphones"
+        },
+        {
+            "name":"WiredCastDevice",
+            "value":"[TS_949574]_Wired device"
+        },
+        {
+            "name":"CallSpeaker",
+            "value":"[TS_932185]_Speakers"
+        },
+        {
+            "name":"toobar_title_pitching",
+            "value":"[TS_932190]_Audio projection"
+        },
+        {
+            "name":"av_cast_cast_fail",
+            "value":"[TS_932174]_Playback on other device failed. Please try again."
+        },
+        {
+            "name":"BluetoothDevice",
+            "value":"[TS_932199]_Bluetooth headphones"
+        },
+        {
+            "name":"CallEarpiece",
+            "value":"[TS_932196]_Receiver"
+        },
+        {
+            "name":"LocalDevice",
+            "value":"[TS_932179]_This device"
+        },
+        {
+            "name":"av_cast_cast_disconnect",
+            "value":"[TS_932200]_Playback device disconnected."
+        },
+        {
+            "name":"no_media_title",
+            "value":"[TS_932181]_Not playing"
+        },
+        {
+            "name":"av_cast_disconnect",
+            "value":"[TS_954190]_Cast disconnected. Playback returned to this device."
+        },
+        {
+            "name":"audio_usage",
+            "value":"[TS_954195]_Call audio can't be switched from this screen."
+        },
+        {
+            "name":"device_error",
+            "value":"[TS_954193]_Cast failed due to a device or app error."
+        },
+        {
+            "name":"switch_to_resource_cast",
+            "value":"[TS_954191]_Switched to media casting."
+        },
+        {
+            "name":"wireless_usage",
+            "value":"[TS_954192]_Unable to switch. Audio channel is being used by screen casting."
+        },
+        {
+            "name":"unAuthDevice",
+            "value":"[TS_959851]_More devices"
+        },
+        {
+            "name":"open_bluetooth",
+            "value":"[TS_974388]_To cast to this device, first turn on Bluetooth."
+        },
+        {
+            "name":"access_audio_control",
+            "value":"[TS_973057]_PlayCast"
+        },
+        {
+            "name":"access_cyclic_mode_sequential",
+            "value":"[TS_973068]_Playback mode, play in order"
+        },
+        {
+            "name":"access_fast_forward",
+            "value":"[TS_973065]_Fast forward"
+        },
+        {
+            "name":"access_notice",
+            "value":"[TS_973064]_Information"
+        },
+        {
+            "name":"access_pause",
+            "value":"[TS_973062]_Pause"
+        },
+        {
+            "name":"access_next",
+            "value":"[TS_973066]_Next track"
+        },
+        {
+            "name":"access_connected",
+            "value":"[TS_973069]_Connected"
+        },
+        {
+            "name":"access_rewind",
+            "value":"[TS_973072]_Rewind"
+        },
+        {
+            "name":"access_play",
+            "value":"[TS_973073]_Play"
+        },
+        {
+            "name":"access_favorites",
+            "value":"[TS_973061]_Favorites"
+        },
+        {
+            "name":"access_previous",
+            "value":"[TS_973070]_Previous track"
+        },
+        {
+            "name":"access_cancel_favorites",
+            "value":"[TS_973059]_Unfavorite"
+        },
+        {
+            "name":"access_More",
+            "value":"[TS_973063]_More"
+        },
+        {
+            "name":"access_cyclic_mode_shuffle",
+            "value":"[TS_973067]_Playback mode, random"
+        },
+        {
+            "name":"access_cyclic_mode_list",
+            "value":"[TS_973060]_Playback mode, repeat all"
+        },
+        {
+            "name":"access_cyclic_mode_loop",
+            "value":"[TS_973058]_Playback mode, repeat one"
+        },
+        {
+            "name":"access_close",
+            "value":"[TS_973071]_Close"
+        },
+        {
+            "name":"access_unavailable",
+            "value":"[TS_978536]_Unavailable"
+        },
+        {
+            "name":"access_Favorited",
+            "value":"[TS_978676]_Favorited"
+        },
+        {
+            "name":"multi_screen_usage",
+            "value":"[TS_982890]_Unable to switch. Audio is being used for Multi-Screen Collaboration."
+        },
+        {
+            "name":"av_cast_banner_title",
+            "value":"[TS_1004685]_Playing on \"%s\""
+        },
+        {
+            "name":"access_av_cast_volume_increase",
+            "value":"[TS_1040338]_Increase volume of playback device"
+        },
+        {
+            "name":"access_av_cast_volume_reduce",
+            "value":"[TS_1040337]_Lower volume of playback device"
+        },
+        {
+            "name":"access_media_volume_bar",
+            "value":"[TS_1049387]_Media volume bar"
+        },
+        {
+            "name":"access_media_broadcast_control_center",
+            "value":"[TS_1049388]_Media Controller"
+        },
+        {
+            "name":"sound_output_device_nearlink",
+            "value":"[TS_1066371]_NearLink device (%s)"
+        },
+        {
+          "name":"HearingAid",
+          "value":"[TS_1094728]_Hearing aid"
+        },
+        {
+            "name":"access_total_duration",
+            "value":"[TS_1103800]_Total duration"
+        },
+        {
+            "name":"access_switch_playback_device",
+            "value":"[TS_1103799]_Change playback device"
+        },
+        {
+            "name":"access_playback_progress",
+            "value":"[TS_1103801]_Playback progress"
+        },
+        {
+            "name":"access_expand_more_devices",
+            "value":"[TS_1103802]_Expand more devices"
+        },
+        {
+            "name":"access_cover_image",
+            "value":"[TS_1103798]_Cover image"
+        },
+        {
+            "name":"device_in_call",
+            "value":"[TS_1111944]_Call in progress"
+        },
+        {
+            "name":"access_call_volume_bar",
+            "value":"[TS_1114382]_Volume bar for calls"
+        },
+        {
+            "name":"recently_played_songs",
+            "value":"[TS_1120425]_Recently played song"
+        },
+        {
+            "name":"you_may_like",
+            "value":"[TS_1120424]_Suggested"
+        }
+    ]
+}

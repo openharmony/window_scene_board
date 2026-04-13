@@ -1,0 +1,18 @@
+{
+    "string":[
+        {
+            "name":"USBRemoved",
+            "value":"Safely remove",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"usb_hover",
+            "value":"External storage",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

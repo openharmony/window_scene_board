@@ -1,0 +1,24 @@
+{
+  "color": [
+    {
+      "name": "icon_style_button_bg_color",
+      "value": "#99ffffff"
+    },
+    {
+      "name": "bottomsheet_bg2_color",
+      "value": "#E1FAFAFA"
+    },
+    {
+      "name": "bottomsheet_bg_color",
+      "value": "#ccffffff"
+    },
+    {
+      "name": "bottomsheet_additive_white_color",
+      "value": "#59808080"
+    },
+    {
+      "name": "outer_edit_button_bg_color",
+      "value": "#33ffffff"
+    }
+  ]
+}

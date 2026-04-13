@@ -1,0 +1,12 @@
+{
+  "float": [
+    {
+      "name": "bg_dock_blur",
+      "value": "30"
+    },
+    {
+      "name": "bg_dock_saturate",
+      "value": "2.5"
+    }
+  ]
+}

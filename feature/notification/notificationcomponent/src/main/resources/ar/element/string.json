@@ -1,0 +1,466 @@
+{
+    "string":[
+        {
+            "name":"accessibility_notification_setting_bar",
+            "value":"الإعدادات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntf_dialog_cancel",
+            "value":"إلغاء",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntf_dialog_more_settings",
+            "value":"إعدادات إضافية",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_extra_message_expand",
+            "value":"إظهار المزيد",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"nc_accessibility_unpinned_notification",
+            "value":"تمت الإزالة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntf_close_pkg_notification",
+            "value":"إيقاف تشغيل الإشعارات",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_extra_message",
+            "value":"إشعارات إضافية",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_extra_message_collapse",
+            "value":"إظهار محتوى أقل",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_center_title",
+            "value":"لوحة الإشعارات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_notification_delete_bar",
+            "value":"حذف",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_ntf_swipe_remove_text",
+            "value":"تمت الإزالة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"kg_ntf_collapse_tip",
+            "value":"انقر مرتين لإظهار محتوى أقل",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_setting_dialog_title",
+            "value":"‏%s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"smart_digest_setting_dialog_title",
+            "value":"التجميع الذكي",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntf_close_meta_service_live_view_notification",
+            "value":"إيقاف تشغيل العرض الحي",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_group_header_title",
+            "value":"‏%1$s‏ • ‏%2$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntf_download_progress",
+            "value":"جارٍ التنزيل:‏ %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_ntf_close_pkg_live_view",
+            "value":"هل تريد إيقاف العرض الحي لتطبيق %s؟",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"kg_ntf_click_tip",
+            "value":"انقر مرتين لفتح التطبيق",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_hide_content",
+            "value":"إشعار واحد",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"imm_kg_ntf_click_tip",
+            "value":"انقر مطولًا لعرض الإشعار بشكلٍ موسع",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"close_smart_digest",
+            "value":"إيقاف التجميع الذكي",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntf_pin_top_pkg_notification",
+            "value":"تثبيت في الأعلى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sa_default_name",
+            "value":"قدرة النظام",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_cancel_pin_top_pkg_notification",
+            "value":"إلغاء التثبيت في الأعلى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntf_keyguard_click_tip",
+            "value":"انقر مرةً أخرى للفتح",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntf_extra_message_brief_title",
+            "value":"عرض المزيد من الإشعارات",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_extra_message_brief_content",
+            "value":"من تطبيق %s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_extra_message_brief_app_tag",
+            "value":"،‏ %s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"topped_notification_flag",
+            "value":"مُثبَّت في الأعلى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_close_pkg_live_view",
+            "value":"إيقاف تشغيل العرض الحي",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"live_view_setting_dialog_title",
+            "value":"‏%s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"place_holder_input_content",
+            "value":"اكتب هنا",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_brief_remainder_count",
+            "value":"‏+‏%d",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"is_ntf_close_pkg_notification",
+            "value":"هل تريد إيقاف جميع الإشعارات لتطبيق %s؟",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"kg_ntf_expand_tip",
+            "value":"انقر مرتين لتوسيع عرض الإشعار",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_download_file_detail",
+            "value":"تفاصيل الملف",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntf_close_meta_service_notification",
+            "value":"إيقاف تشغيل الإشعارات",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_empty_text_tip",
+            "value":"لا توجد إشعارات",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_keyguard_no_content_click_tip",
+            "value":"لا توجد تفاصيل",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_app_locked_content",
+            "value":"التطبيق مقفل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"silence_app_notifications",
+            "value":"استخدام الإشعارات الهادئة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"nc_accessibility_pinned_notification",
+            "value":"تم تثبيت الإشعار",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_ntf_swipe_left_text",
+            "value":"تم التوسيع",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"nc_accessibility_close_notification",
+            "value":"تم حذف الإشعار",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_notification_clear",
+            "value":"مسح جميع الإشعارات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"nc_accessibility_close_live_view",
+            "value":"تم حذف رسالة العرض الحي",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_ntf_swipe_right_text",
+            "value":"تم الطي",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_ntf_focused_action_tips",
+            "value":"انقر مرتين ثم مطولاً، ثم اسحب لليمين لعرض خيارات إضافية",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_ntf_collapse_tips",
+            "value":"انقر مرتين ثم مطولاً، ثم اسحب لليسار لإخفاء الخيارات الإضافية",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_silent_notifications",
+            "value":"إيقاف الإشعارات اللطيفة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"accessibility_notification_and_start_bar_setting",
+            "value":"إعدادات شريط الحالة والإشعارات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_notifications_icon",
+            "value":"إشعار تطبيق %1$s: %2$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"loading",
+            "value":"جارٍ التحميل...",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"noDisturb_none",
+            "value":"إيقاف",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"open_app_inner_ntf_mgmt",
+            "value":"انتقال إلى %s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"setting",
+            "value":"الإعدادات",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"show_preview_when_screen_lock",
+            "value":"إظهار معاينات الإشعارات عند القفل",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"show_live_view_preview_when_screen_lock",
+            "value":"إظهار معاينات العرض الحي عند القفل",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wake_screen_when_receive_notification",
+            "value":"إيقاظ الشاشة مع الإشعارات",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"smart_reminder",
+            "value":"الإشعارات الذكية",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pure_show_title",
+            "value":"العرض البسيط",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"show_notification_icon",
+            "value":"إظهار أيقونات إشعارات التطبيقات",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"show_real_time_network_speed",
+            "value":"إظهار سرعة الشبكة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"show_battery_soc",
+            "value":"إظهار نسبة البطارية",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"already_clear",
+            "value":"تم المسح",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

@@ -1,0 +1,9 @@
+{
+  "src": [
+    "pages/ThemeHome",
+    "pages/AigcHome",
+    "pages/SubWindowPage",
+    "pages/ShowWallpaperPage",
+    "pages/WallpaperEditPage"
+  ]
+}

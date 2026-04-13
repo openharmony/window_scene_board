@@ -1,0 +1,67 @@
+{
+    "string":[
+        {
+            "name":"wireless_projection_toggle",
+            "value":"无线投屏",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"text_open_wlan_and_bluetooth",
+            "value":"用于设备的发现和音视频传输。",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"title_open_wlan_and_bluetooth",
+            "value":"“无线投屏”需开启 WLAN 和蓝牙",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"privacy_hint",
+            "value":"可将本机屏幕无线投射至大屏。",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"projection_privacy_statement",
+            "value":"本服务调用设备发现和连接权限，用于开启蓝牙开关，使用蓝牙、WLAN 功能，开启本地录音、录屏，以提供投屏相关服务。点击“同意”，即表示您同意上述内容。",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"btn_agree",
+            "value":"同意",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"btn_turn_on",
+            "value":"开启",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"title_projection_fail",
+            "value":"连接失败",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"error_text_code_2",
+            "value":"请重启对方设备和本机 WLAN、蓝牙后再试。",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

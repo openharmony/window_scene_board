@@ -1,0 +1,19 @@
+{
+  "name": "@ohos/screenlockcommon",
+  "version": "1.0.0",
+  "description": "Please describe the basic information.",
+  "main": "Index.ets",
+  "author": "",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@ohos/basicutils": "file:../../staticcommon/basecommon/basicutils",
+    "@ohos/commonconstants": "file:../../staticcommon/basecommon/commonconstants",
+    "@ohos/componentanimator": "file:../../staticcommon/basecommon/componentanimator",
+    "@ohos/componenthelper": "file:../../staticcommon/basecommon/componenthelper",
+    "@ohos/frameworkwrapper": "file:../../staticcommon/basecommon/frameworkwrapper",
+    "@ohos/windowscene": "file:../../staticcommon/basecommon/windowscene",
+    "@ohos/themeservice": "file:../../staticcommon/basecommon/themeservice",
+    "@ohos/systemuicommon": "file:../../staticcommon/systemuicommon",
+    "@ohos/windowsceneinterfaces": "../../staticcommon/basecommon/windowsceneinterfaces"
+  }
+}

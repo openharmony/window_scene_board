@@ -1,0 +1,10 @@
+{
+  "module": {
+    "name": "hcastcomponent",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ]
+  }
+}

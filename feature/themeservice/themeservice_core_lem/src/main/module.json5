@@ -1,0 +1,10 @@
+{
+  "module": {
+    "name": "themeservice_core_lem",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ]
+  }
+}

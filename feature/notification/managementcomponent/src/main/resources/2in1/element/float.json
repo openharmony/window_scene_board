@@ -1,0 +1,64 @@
+{
+  "float": [
+    {
+      "name": "app_list_indexer_padding_left_right",
+      "value": "24vp"
+    },
+    {
+      "name": "search_bar_nav_margin",
+      "value": "123vp"
+    },
+    {
+      "name": "head_component_title_margin_top",
+      "value": "6vp"
+    },
+    {
+      "name": "enableListComp_default_item_width",
+      "value": "16vp"
+    },
+    {
+      "name": "search_image_scale",
+      "value": "48vp"
+    },
+    {
+      "name": "ntf_search_app_item_height",
+      "value": "64vp"
+    },
+    {
+      "name": "switchComp_height",
+      "value": "48vp"
+    },
+    {
+      "name": "notification_style_margin_top",
+      "value": "12"
+    },
+    {
+      "name": "remind_sound_padding",
+      "value": "0"
+    },
+    {
+      "name": "hide_banner_content_title_padding",
+      "value": "0"
+    },
+    {
+      "name": "allow_notification_padding",
+      "value": "0vp"
+    },
+    {
+      "name": "page_notice_info_label_margin",
+      "value": "8vp"
+    },
+    {
+      "name": "app_list_indexer_template_divider",
+      "value": "64vp"
+    },
+    {
+      "name": "nav_back_image_bg_radius",
+      "value": "8vp"
+    },
+    {
+      "name": "page_title_height",
+      "value": "64vp"
+    }
+  ]
+}

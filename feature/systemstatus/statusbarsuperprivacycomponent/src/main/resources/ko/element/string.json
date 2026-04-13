@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"accessibility_status_bar_super_privacy_open",
+            "value":"슈퍼 프라이버시 모드 켜짐",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

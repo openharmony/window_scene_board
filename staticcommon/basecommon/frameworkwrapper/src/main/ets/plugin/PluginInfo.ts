@@ -18,7 +18,7 @@ import { PluginParseInfo } from './PluginParseInfo';
 import { PluginClickType } from './PluginConstants';
 import type { Equality } from '@ohos/basicutils';
 import PCM from '@ohos.pluginComponent';
-import statusBar from '@ohos.pcService.statusBar';
+// import statusBar from '@hms.pcService.statusBar';
 
 /**
  * plugin化接入，组件数据信息
@@ -211,7 +211,7 @@ export class PluginAccessInfo extends PluginInfo {
   /**
    * 右键菜单数据
    */
-  menuInfo?: statusBar.StatusBarGroupMenu[];
+  // menuInfo?: statusBar.StatusBarGroupMenu[];
 
   /**
    * 二级菜单动效使能

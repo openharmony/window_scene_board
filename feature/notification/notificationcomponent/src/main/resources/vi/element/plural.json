@@ -1,0 +1,28 @@
+{
+    "plural":[
+        {
+            "name":"ntf_hide_content_count",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"Thông báo %d",
+                    "attr":{
+                        "priority":"LT"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"live_hide_content",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"%d lượt xem trực tiếp",
+                    "attr":{
+                        "priority":"LT"
+                    }
+                }
+            ]
+        }
+    ]
+}

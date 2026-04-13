@@ -28,7 +28,7 @@ export enum SCBSceneMode {
   FULLSCREEN = 1,
   PRIMARY = 100,
   SECONDARY,
-  FLOATING,
+  FLOATING = 10000,
   PIP
 }
 

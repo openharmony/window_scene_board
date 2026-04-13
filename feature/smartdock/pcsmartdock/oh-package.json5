@@ -1,0 +1,24 @@
+{
+  "devDependencies": {},
+  "name": "@ohos/pcsmartdock",
+  "description": "a npm package which contains pcsmartdock feature",
+  "main": "index.ets",
+  "version": "1.0.0",
+  "dependencies": {
+    "@ohos/basicutils": "file:../../../staticcommon/basecommon/basicutils",
+    "@ohos/componentanimator": "file:../../../staticcommon/basecommon/componentanimator",
+    "@ohos/commonconstants": "file:../../../staticcommon/basecommon/commonconstants",
+    "@ohos/componenthelper": "file:../../../staticcommon/basecommon/componenthelper",
+    "@ohos/componentdrag": "file:../../../staticcommon/basecommon/componentdrag",
+    "@ohos/frameworkcommon": "file:../../../staticcommon/basecommon/frameworkcommon",
+    "@ohos/frameworkwrapper": "file:../../../staticcommon/basecommon/frameworkwrapper",
+    "@ohos/windowscene": "file:../../../staticcommon/basecommon/windowscene",
+    "@ohos/launchercommon": "file:../../../staticcommon/launchercommon",
+    "@ohos/smartdock": "../commonsmartdock",
+    "@ohos/statusbarextensionservice": "file:../../../feature/statusbarextension",
+    "@ohos/togglehome": "file:../../togglehome",
+    "@ohos/desktopfilefolder": "file:../../desktopfilefolder",
+    "@ohos/statusbarcomponent": "file:../../statusbarcomponent",
+    "@ohos/systemuicommon": "file:../../../staticcommon/systemuicommon"
+  }
+}

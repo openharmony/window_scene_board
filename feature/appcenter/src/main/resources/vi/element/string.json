@@ -1,0 +1,67 @@
+{
+    "string":[
+        {
+            "name":"app_center_menu_add_dock",
+            "value":"Thêm vào thanh tác vụ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"search_no_result",
+            "value":"Không có kết quả",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_menu_open",
+            "value":"Mở",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_menu_open_from_floating_window",
+            "value":"Mở từ cửa sổ nổi",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_menu_open_from_split_screen",
+            "value":"Mở từ màn hình chia đôi",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"uninstall",
+            "value":"Gỡ cài đặt",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"isUninstall",
+            "value":"Gỡ cài đặt %s?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_center_menu_add_desktop",
+            "value":"Thêm vào màn hình chính",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"drag_full",
+            "value":"Màn hình đã đầy. Không thể thêm bất kỳ biểu tượng nào nữa.",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

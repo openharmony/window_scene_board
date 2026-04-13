@@ -1,0 +1,20 @@
+{
+  "float": [
+    {
+      "name": "status_bar_camera_width",
+      "value": "24vp"
+    },
+    {
+      "name": "status_bar_camera_height",
+      "value": "24vp"
+    },
+    {
+      "name": "had_status_bar_camera_width",
+      "value": "20vp"
+    },
+    {
+      "name": "had_status_bar_camera_height",
+      "value": "20vp"
+    }
+  ]
+}

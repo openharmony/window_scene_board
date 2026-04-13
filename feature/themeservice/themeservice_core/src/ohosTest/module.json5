@@ -1,0 +1,50 @@
+{
+  "module": {
+    "name": "themeservice_test",
+    "type": "feature",
+    "description": "$string:module_test_desc",
+    "srcEntry": "./ets/core/entry/TestServiceStage.ets",
+    "mainElement": "TestAbility",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ],
+    "deliveryWithInstall": true,
+    "installationFree": false,
+    "pages": "$profile:test_pages",
+    "abilities": [
+      {
+        "name": "TestAbility",
+        "srcEntry": "./ets/testability/TestAbility.ets",
+        "description": "$string:TestAbility_desc",
+        "icon": "$media:icon",
+        "label": "$string:TestAbility_label",
+        "exported": true,
+        "startWindowIcon": "$media:icon",
+        "startWindowBackground": "$color:start_window_background",
+        "skills": [
+          {
+            "actions": [
+              "action.system.home"
+            ],
+            "entities": [
+              "entity.system.home"
+            ]
+          }
+        ]
+      }
+    ],
+    "extensionAbilities": [
+      {
+        "name": "TSOhosTestServiceAbility",
+        "label": "$string:TestAbility_label",
+        "exported": true,
+        "type": "service",
+        "srcEntry": "./ets/testability/TSOhosTestServiceAbility.ets",
+        "permissions": [
+          "ohos.permission.ACTIVATE_THEME_PACKAGE"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,396 @@
+{
+    "string":[
+        {
+            "name":"av_cast_disconnect",
+            "value":"Đã ngắt kết nối tính năng phát. Tính năng phát lại được trả về thiết bị này.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"open_bluetooth",
+            "value":"Để truyền sang thiết bị này, trước tiên hãy bật Bluetooth.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"wireless_usage",
+            "value":"Không chuyển đổi được. Kênh âm thanh đang được sử dụng để truyền màn hình.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"WiredDevice",
+            "value":"Tai nghe có dây",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_Favorited",
+            "value":"Đã thêm vào mục ưa thích",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"toobar_title_pitching",
+            "value":"Chiếu âm thanh",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"WiredCastDevice",
+            "value":"Thiết bị có dây",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"RecentlyPlay",
+            "value":"Đã phát gần đây",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"av_cast_cast_fail",
+            "value":"Phát lại trên thiết bị khác không thành công. Vui lòng thử lại.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"CallEarpiece",
+            "value":"Loa trong",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"access_fast_forward",
+            "value":"Tua nhanh",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"av_cast_cast_disconnect",
+            "value":"Thiết bị phát lại đã ngắt kết nối.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_pause",
+            "value":"Tạm dừng",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_connected",
+            "value":"Đã kết nối",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"no_media_title",
+            "value":"Không phát",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"access_favorites",
+            "value":"Ưa thích",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_unavailable",
+            "value":"Không khả dụng",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"audio_usage",
+            "value":"Không chuyển được âm thanh cuộc gọi từ màn hình này.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"CallSpeaker",
+            "value":"Loa ngoài",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"device_error",
+            "value":"Phát không thành công do lỗi thiết bị hoặc ứng dụng.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"BluetoothDevice",
+            "value":"Tai nghe Bluetooth",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"LocalDevice",
+            "value":"Thiết bị này",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"access_cancel_favorites",
+            "value":"Bỏ thích",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"av_cast_banner_title",
+            "value":"Đang phát trên \"%s\"",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sound_output_device_nearlink",
+            "value":"Thiết bị NearLink (%s)",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"switch_to_resource_cast",
+            "value":"Đã chuyển sang truyền đa phương tiện.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"preference_setting",
+            "value":"Tùy chọn",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"access_media_broadcast_control_center",
+            "value":"Trình điều khiển nội dung đa phương tiện",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"recommended_to_you",
+            "value":"Lựa chọn hàng đầu dành cho bạn",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"multi_screen_usage",
+            "value":"Không chuyển đổi được. Đang sử dụng âm thanh cho tính năng Phối hợp đa màn hình.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"unAuthDevice",
+            "value":"Thiết bị khác",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"HearingAid",
+            "value":"Máy trợ thính",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_cyclic_mode_shuffle",
+            "value":"Chế độ phát lại, ngẫu nhiên",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_audio_control",
+            "value":"PlayCast",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_cyclic_mode_sequential",
+            "value":"Chế độ phát lại, phát theo thứ tự",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_notice",
+            "value":"Thông tin",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_next",
+            "value":"Bài hát tiếp theo",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_rewind",
+            "value":"Tua lại",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_play",
+            "value":"Phát",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_av_cast_volume_increase",
+            "value":"Tăng âm lượng của thiết bị phát",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_previous",
+            "value":"Bài hát trước",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_More",
+            "value":"Thêm",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_media_volume_bar",
+            "value":"Thanh âm lượng phương tiện",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_cyclic_mode_list",
+            "value":"Chế độ phát lại, lặp lại tất cả",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_av_cast_volume_reduce",
+            "value":"Giảm âm lượng của thiết bị phát",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_cyclic_mode_loop",
+            "value":"Chế độ phát lại, lặp lại một bài",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_close",
+            "value":"Đóng",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_total_duration",
+            "value":"Tổng thời lượng",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_switch_playback_device",
+            "value":"Đổi thiết bị phát",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_playback_progress",
+            "value":"Tiến trình phát",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_expand_more_devices",
+            "value":"Mở rộng thêm thiết bị",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_cover_image",
+            "value":"Ảnh bìa",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"device_in_call",
+            "value":"Cuộc gọi đang diễn ra",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_call_volume_bar",
+            "value":"Thanh âm lượng cho cuộc gọi",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"recently_played_songs",
+            "value":"Bài hát đã phát gần đây",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"you_may_like",
+            "value":"Đề xuất",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

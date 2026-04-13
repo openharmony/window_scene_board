@@ -1,0 +1,10 @@
+{
+  "module": {
+    "name": "bluetoothcomponent",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ]
+  }
+}

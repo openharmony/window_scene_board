@@ -1,0 +1,36 @@
+{
+    "plural":[
+        {
+            "name":"duration_minutes_shortest",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"%d 分钟前"
+                },
+                {
+                    "quantity":"other",
+                    "value":"%d 分钟前",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"duration_minutes_shortest_future",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"%d 分钟后"
+                },
+                {
+                    "quantity":"other",
+                    "value":"%d 分钟后",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

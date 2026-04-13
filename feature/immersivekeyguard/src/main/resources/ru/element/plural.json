@@ -1,0 +1,37 @@
+{
+    "plural":[
+        {
+            "name":"ntf_hide_content_tip",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"%d уведомление",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"%d уведомления",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"few",
+                    "value":"%d уведомления",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"many",
+                    "value":"%d уведомлений",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

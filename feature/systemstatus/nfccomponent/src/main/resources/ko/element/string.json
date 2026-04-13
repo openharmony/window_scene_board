@@ -1,0 +1,18 @@
+{
+    "string":[
+        {
+            "name":"control_center_complex_toggle_nfc_mode_title",
+            "value":"NFC",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_nfc_open",
+            "value":"NFC 켜짐",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

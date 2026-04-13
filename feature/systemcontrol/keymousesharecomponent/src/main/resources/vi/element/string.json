@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"key_mouse_share",
+            "value":"Chia sẻ bàn phím và chuột",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

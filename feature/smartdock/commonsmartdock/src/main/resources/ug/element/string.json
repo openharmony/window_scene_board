@@ -1,0 +1,116 @@
+{
+    "string":[
+        {
+            "name":"app_menu_exit",
+            "value":"چېكىنىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_menu_more",
+            "value":"باشقىلار",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"continue_mission_fail",
+            "value":"ئۆتكۈزۈلمىدى.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"continue_mission_waiting",
+            "value":"ئۆتكۈزۈلۈۋاتىدۇ...",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"duplicate_add",
+            "value":"تەكرار قوشۇلمايدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remove_from_dock",
+            "value":"تېزلەتمە بالداقتىن چىقىرىۋېتىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"continue_mission_fail_device_connecting_to_another_device",
+            "value":"ئۆتكۈزۈلمىدى، %1$s باشقا ئۈسكۈنە بىلەن ئۆزئارالىقتا.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"delete_app",
+            "value":"چىقىرىۋېتىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"disable_add_to_dock",
+            "value":"قوشۇلمايدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_center_menu_add_desktop",
+            "value":"ئۈستەليۈزىگە قوشۇش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"continue_mission_fail_close_hotspot_and_try_again",
+            "value":"ئۆتكۈزۈلمىدى، %1$s نىڭ تور نۇقتىسىنى ئېتىپ قايتا سىناڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_menu_open",
+            "value":"ئېچىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_menu_clean",
+            "value":"يىغىش ئورنىنى تازىلاش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"isUninstall",
+            "value":"\u200f‏«%s» نى ئۆچۈرەمسىز؟",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"accessibility_dock",
+            "value":"تەگ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_beyond_max",
+            "value":"قوشقان سىنبەلگە سانى چەككە يەتتى.",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

@@ -1,0 +1,10 @@
+{
+  "module": {
+    "name": "shutdownview",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ]
+  }
+}

@@ -1,0 +1,124 @@
+{
+  "color": [
+    {
+      "name": "panel_background",
+      "value": "#F2FFFFFF"
+    },
+    {
+      "name": "volume_slider_block_color",
+      "value": "#FFFFFFFF"
+    },
+    {
+      "name": "volume_slider_track_color",
+      "value": "#E1E3E6"
+    },
+    {
+      "name": "volume_slider_selected_color",
+      "value": "#FF0A59F7"
+    },
+    {
+      "name": "volume_button_background_color",
+      "value": "#00000000"
+    },
+    {
+      "name": "volume_ring_mode_color",
+      "value": "#FF3B58C5"
+    },
+    {
+      "name": "volume_divider_color",
+      "value": "#FF9BB792"
+    },
+    {
+      "name": "volume_virtual_background_color",
+      "value": "#808080"
+    },
+    {
+      "name": "volume_dialog_background_color",
+      "value": "#D9C0C0C0"
+    },
+    {
+      "name": "volume_side_progress_slider_color",
+      "value": "#E6FFFFFF"
+    },
+    {
+      "name": "volume_dialog_progress_slider_color",
+      "value": "#E6FFFFFF"
+    },
+    {
+      "name": "volume_dialog_progress_background_color",
+      "value": "#66000000"
+    },
+    {
+      "name": "volume_panel_progress_background_color",
+      "value": "#33808080"
+    },
+    {
+      "name": "volume_panel_progress_background_color_above_launcher",
+      "value": "#33000000"
+    },
+    {
+      "name": "volume_panel_shadow_color",
+      "value": "#33000000"
+    },
+    {
+      "name": "volume_popup_background_color",
+      "value": "#FAF1F3F5"
+    },
+    {
+      "name": "volume_panel_bottom_color",
+      "value": "#FF000000"
+    },
+    {
+      "name": "volume_panel_progress_color",
+      "value": "#FFFFFFFF"
+    },
+    {
+      "name": "volume_side_progress_color",
+      "value": "#FFFFFFFF"
+    },
+    {
+      "name": "volume_side_bottom_default",
+      "value": "#FF000000"
+    },
+    {
+      "name": "volume_side_bottom_brightening",
+      "value": "#59ffffff"
+    },
+    {
+      "name": "volume_side_bottom_dimming",
+      "value": "#73000000"
+    },
+    {
+      "name": "volume_content_font_color",
+      "value": "#FF000000"
+    },
+    {
+      "name": "volume_channel_icon_color",
+      "value": "#80000000"
+    },
+    {
+      "name": "volume_title_font_color",
+      "value": "#FF000000"
+    },
+    {
+      "name": "volume_popup_more_button_color",
+      "value": "#FF0A59F7"
+    },
+    {
+      "name": "volume_panel_stacking_color",
+      "value": "#FF000000"
+    },
+    {
+      "name": "volume_panel_background_color",
+      "value": "#FF000000"
+    },
+    {
+      "name": "pc_volume_panel_canvas_white",
+      "value": "#FFFFFFFF"
+    },
+    {
+      "name": "pc_volume_panel_canvas_black",
+      "value": "#FF000000"
+    }
+  ]
+}

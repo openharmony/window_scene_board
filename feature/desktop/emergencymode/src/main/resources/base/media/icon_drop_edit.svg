@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>TitleBar/item/right/icon备份 2</title>
+    <defs>
+        <path d="M1.70710678,15.8492424 C1.31658249,16.2397667 0.683417513,16.2397667 0.292893222,15.8492424 C-0.0976310702,15.4587181 -0.0976310702,14.8255531 0.292893222,14.4350288 L6.65685425,8.07106781 L0.292893219,1.70710678 C-0.0976310729,1.31658249 -0.0976310729,0.683417511 0.292893219,0.292893219 C0.683417511,-0.0976310729 1.31658249,-0.0976310729 1.70710678,0.292893219 L8.07106781,6.65685425 L14.4350288,0.292893222 C14.8255531,-0.0976310701 15.4587181,-0.0976310701 15.8492424,0.292893222 C16.2397667,0.683417513 16.2397667,1.31658249 15.8492424,1.70710678 L1.70710678,15.8492424 Z M15.8492424,14.4350288 C16.2397667,14.8255531 16.2397667,15.4587181 15.8492424,15.8492424 C15.4587181,16.2397667 14.8255531,16.2397667 14.4350288,15.8492424 L8.77817459,10.1923882 L10.1923882,8.77817459 L15.8492424,14.4350288 Z" id="path-1"></path>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="#illustration_低电量应急模式-编辑" transform="translate(-16.000000, -50.000000)">
+            <g id="TitleBar/item/right/icon备份-2" transform="translate(16.000000, 50.000000)">
+                <circle id="椭圆形" fill-opacity="0.151961" fill="#FFFFFF" cx="20" cy="20" r="20"></circle>
+                <g id="ic/add" transform="translate(11.928932, 11.928932)">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <g id="形状" fill-rule="nonzero"></g>
+                    <g id="Symbol/color-light/colorPrimary" mask="url(#mask-2)" fill="#FFFFFF" fill-opacity="0.858823529">
+                        <g transform="translate(-3.928932, -3.928932)" id="color/#000000">
+                            <rect x="0" y="0" width="24" height="24"></rect>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

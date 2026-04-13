@@ -1,0 +1,64 @@
+{
+    "string":[
+        {
+            "name":"immersive_sys_no_auth_tips",
+            "value":"རྒྱུད་ཁོངས་ཀྱིས་ས་ཁམས་གནས་ཡུལ་གྱི་ཆ་འཕྲིན་ལ་ལྟ་སྤྱོད་བྱ་ཆོག་པར་བྱས་ཚེ། རྩོལ་ནུས་ཆ་ཚང་ཉམས་ལེན་བྱེད་ཐུབ།",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"immersive_go_auth",
+            "value":"དབང་སྤྲོད་དུ་འགྲོ།",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"immersive_app_no_auth_tips",
+            "value":"ཉེར་སྤྱོད་ཀྱིས་ས་ཁམས་གནས་ཡུལ་གྱི་ཆ་འཕྲིན་ལ་ལྟ་སྤྱོད་བྱ་ཆོག་པར་བྱས་ཚེ། རྩོལ་ནུས་ཆ་ཚང་ཉམས་ལེན་བྱེད་ཐུབ།",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"immersive_app_sys_no_auth_tips",
+            "value":"རྒྱུད་ཁོངས་དང་ཉེར་སྤྱོད་ཀྱིས་ས་ཁམས་གནས་ཡུལ་གྱི་ཆ་འཕྲིན་ལ་ལྟ་སྤྱོད་བྱ་ཆོག་པར་བྱས་ཚེ། རྩོལ་ནུས་ཆ་ཚང་ཉམས་ལེན་བྱེད་ཐུབ།",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"immersive_card_tip_to_down",
+            "value":"སྡུད་པའི་གནོན་མཐེབ་ཡིན། མཛུབ་མོ་གཅིག་གིས་ཐེངས་གཉིས་བསྟུད་མར་བརྡབས་ཏེ་ལག་བསྟར་བྱ་ཆོག",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"immersive_card_tip_to_up",
+            "value":"འགྲེམ་པའི་གནོན་མཐེབ་ཡིན། མཛུབ་མོ་གཅིག་གིས་ཐེངས་གཉིས་བསྟུད་མར་བརྡབས་ཏེ་ལག་བསྟར་བྱ་ཆོག",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"immersive_card_tip_status_down",
+            "value":"བྱང་བུ་སྡུད་ཟིན།",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"immersive_card_tip_status_up",
+            "value":"བྱང་བུ་བཀྲམ་ཟིན།",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+      {
+        "name": "psd_back_accessible",
+        "value": "返回 按钮"
+      }
+    ]
+}

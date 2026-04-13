@@ -1,0 +1,33 @@
+{
+    "plural":[
+        {
+            "name":"folder_is_open_and_total_screen",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"[TS_954983]_Folder is open, it has %d screen"
+                },
+                {
+                    "quantity":"other",
+                    "value":"[TS_954981]_Folder is open, it has %d screens"
+                },
+                {
+                    "quantity":"zero",
+                    "value":"[TS_954980]_Folder is open, it has %d screens"
+                },
+                {
+                    "quantity":"few",
+                    "value":"[TS_954982]_Folder is open, it has %d screens"
+                },
+                {
+                    "quantity":"many",
+                    "value":"[TS_954985]_Folder is open, it has %d screens"
+                },
+                {
+                    "quantity":"two",
+                    "value":"[TS_954984]_Folder is open, it has %d screens"
+                }
+            ]
+        }
+    ]
+}

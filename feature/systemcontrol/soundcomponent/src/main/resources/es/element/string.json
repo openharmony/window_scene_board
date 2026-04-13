@@ -1,0 +1,130 @@
+{
+    "string":[
+        {
+            "name":"sound_title",
+            "value":"Ajustes de audio",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"HD_spatial_audio",
+            "value":"Audio espacial HD",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"noise_on",
+            "value":"Activado",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"base_none",
+            "value":"Desactivado",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"base_noise_control",
+            "value":"Control de ruido",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"spatial_audio_follow",
+            "value":"Seguimiento de cabeza",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"spatial_audio_fixed",
+            "value":"Posición fija",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"base_pass_through",
+            "value":"Atención",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"toast_wear_headphone",
+            "value":"Ponte ambos auriculares.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"toast_noise_control_amphora",
+            "value":"Para la cancelación de ruido, ponte los dos auriculares.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"spatial_audio",
+            "value":"Audio espacial",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"toast_voice_enhance",
+            "value":"Ponte los auriculares para usar esta función.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"noise_reduction",
+            "value":"Cancelación de ruido",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"toast_noise_control",
+            "value":"Ponte los auriculares para usar esta función.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_change_vertical_volume_desc",
+            "value":"Barra de volumen: mantén pulsado dos veces y desliza el dedo hacia arriba o hacia abajo para ajustarla",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_change_volume_desc",
+            "value":"Barra de volumen, pulsa dos veces y mantén pulsado; a continuación desliza el dedo hacia la izquierda o hacia la derecha para ajustar",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_change_volume",
+            "value":"Volumen ajustado en %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_volume",
+            "value":"Nivel de volumen %s",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

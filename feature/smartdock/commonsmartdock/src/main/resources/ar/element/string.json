@@ -1,0 +1,116 @@
+{
+    "string":[
+        {
+            "name":"app_menu_more",
+            "value":"المزيد",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"duplicate_add",
+            "value":"لقد تمت إضافة هذا مُسبقًا",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remove_from_dock",
+            "value":"إزالة من شريط الإرساء",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_menu_exit",
+            "value":"خروج",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"continue_mission_fail_device_connecting_to_another_device",
+            "value":"تعذر التسليم، توجد عمليات جارية للجهاز %1$s مع جهاز آخر",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"delete_app",
+            "value":"إزالة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_add_to_dock",
+            "value":"تعذرت الإضافة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_center_menu_add_desktop",
+            "value":"إضافة إلى الشاشة الرئيسية",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"continue_mission_fail_close_hotspot_and_try_again",
+            "value":"تعذر التسليم، أوقف نقطة الاتصال الشخصية على الجهاز %1$s وأعد المحاولة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"continue_mission_fail",
+            "value":"تعذر التسليم",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_menu_open",
+            "value":"فتح",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_menu_clean",
+            "value":"إفراغ سلة المحذوفات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"isUninstall",
+            "value":"هل تريد إزالة تثبيت تطبيق %s؟",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"continue_mission_waiting",
+            "value":"جارٍ تسليم المهمة…",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"accessibility_dock",
+            "value":"شريط التطبيقات أسفل الشاشة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_beyond_max",
+            "value":"بلغ عدد الأيقونات المضافة الحد الأقصى",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

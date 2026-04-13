@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"airplane_mode",
+            "value":"C.độ m.bay",
+            "attr":{
+                "priority":"LT"
+            }
+        }
+    ]
+}

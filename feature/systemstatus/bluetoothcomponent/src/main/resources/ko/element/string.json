@@ -1,0 +1,32 @@
+{
+    "string":[
+        {
+            "name":"control_center_complex_toggle_bluetooth_title",
+            "value":"블루투스",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_nearlink_bluetooth_title",
+            "value":"NearLink 및 블루투스",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_bluetooth_connected",
+            "value":"블루투스 연결됨",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_bluetooth_open",
+            "value":"블루투스 켜짐",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

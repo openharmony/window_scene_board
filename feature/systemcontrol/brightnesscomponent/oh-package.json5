@@ -1,0 +1,13 @@
+{
+  "name": "@ohos/brightnesscomponent",
+  "description": "a npm package which contains brightnesscomponent function",
+  "version": "1.0.0",
+  "dependencies": {
+    "@ohos/basicutils": "file:../../../staticcommon/basecommon/basicutils",
+    "@ohos/windowscene": "file:../../../staticcommon/basecommon/windowscene",
+    "@ohos/commonconstants": "file:../../../staticcommon/basecommon/commonconstants",
+    "@ohos/frameworkcommon": "file:../../../staticcommon/basecommon/frameworkcommon",
+    "@ohos/frameworkwrapper": "file:../../../staticcommon/basecommon/frameworkwrapper",
+    "@ohos/systemuicommon": "file:../../../staticcommon/systemuicommon"
+  }
+}

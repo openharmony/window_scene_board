@@ -1,0 +1,64 @@
+{
+    "string":[
+        {
+            "name":"immersive_sys_no_auth_tips",
+            "value":"Habilita los Servicios de localización para disfrutar de más funciones.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"immersive_go_auth",
+            "value":"Ir a Ajustes",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"immersive_app_sys_no_auth_tips",
+            "value":"Para disfrutar de más funciones, otorga acceso a Localización y asegúrate de que los Servicios de localización estén activados.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"immersive_app_no_auth_tips",
+            "value":"Otorga acceso a Localización para disfrutar de más funciones.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"immersive_card_tip_to_down",
+            "value":"Minimizar, botón, pulsa dos veces para activar",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"immersive_card_tip_to_up",
+            "value":"Expandir, botón, pulsa dos veces para activar",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"immersive_card_tip_status_down",
+            "value":"Tarjeta minimizada",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"immersive_card_tip_status_up",
+            "value":"Tarjeta expandida",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+      {
+        "name": "psd_back_accessible",
+        "value": "返回 按钮"
+      }
+    ]
+}

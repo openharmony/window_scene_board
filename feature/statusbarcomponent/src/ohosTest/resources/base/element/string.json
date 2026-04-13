@@ -1,0 +1,344 @@
+{
+  "string": [
+    {
+      "name": "live_view_authorization_tip",
+      "value": "Continue receiving live updates from this app?"
+    },
+    {
+      "name": "smart_screenshot",
+      "value": "Screenshot"
+    },
+    {
+      "name": "live_view_authorization_reject",
+      "value": "No"
+    },
+    {
+      "name": "live_view_authorization_confirm",
+      "value": "Yes"
+    },
+    {
+      "name": "Control_center_button_font_color",
+      "value": "#B3FFFFFF"
+    },
+    {
+      "name": "Control_center_icon_shadow_color",
+      "value": "#00000000"
+    },
+    {
+      "name": "Control_center_icon_on_color",
+      "value": "#CC000000"
+    },
+    {
+      "name": "cc_accessibility_str_entry_page_text",
+      "value": "Enter Control Panel"
+    },
+    {
+      "name": "cc_accessibility_str_wifi_open_conn",
+      "value": "Enabled. WLAN network is %s. Switch"
+    },
+    {
+      "name": "cc_accessibility_str_wifi_open_def",
+      "value": "Enabled. WLAN not connected. Switch"
+    },
+    {
+      "name": "cc_accessibility_str_wifi_close",
+      "value": "Disabled. WLAN disabled. Switch"
+    },
+    {
+      "name": "cc_accessibility_str_wifi_list",
+      "value": "View list of WLAN networks"
+    },
+    {
+      "name": "cc_accessibility_str_bluetooth_name",
+      "value": "Bluetooth"
+    },
+    {
+      "name": "cc_accessibility_str_bluetooth_open_conn",
+      "value": "Enabled. Bluetooth %s. Switch"
+    },
+    {
+      "name": "cc_accessibility_str_bluetooth_open_def",
+      "value": "Enabled. Bluetooth not connected. Switch"
+    },
+    {
+      "name": "cc_accessibility_str_bluetooth_close",
+      "value": "Disabled. Bluetooth is disabled. Switch"
+    },
+    {
+      "name": "cc_accessibility_str_bluetooth_list",
+      "value": "View paired devices"
+    },
+    {
+      "name": "cc_accessibility_str_open_state",
+      "value": "Enabled"
+    },
+    {
+      "name": "cc_accessibility_str_close_state",
+      "value": "Disabled"
+    },
+    {
+      "name": "cc_accessibility_str_switch",
+      "value": "%s switch"
+    },
+    {
+      "name": "cc_accessibility_str_toggle_unavailable",
+      "value": "Not responsive"
+    },
+    {
+      "name": "cc_accessibility_str_open_ringer_mode_silent",
+      "value": "Muted"
+    },
+    {
+      "name": "cc_accessibility_str_open_ringer_mode_normal",
+      "value": "Ringer enabled"
+    },
+    {
+      "name": "cc_accessibility_str_open_ringer_mode_vibrate",
+      "value": "Vibration enabled"
+    },
+    {
+      "name": "cc_accessibility_str_open_action",
+      "value": "Disabled"
+    },
+    {
+      "name": "cc_accessibility_str_close_action",
+      "value": "Enabled"
+    },
+    {
+      "name": "cc_accessibility_str_edit_panel_tips_max_toggles",
+      "value": "Maximum of %d switches."
+    },
+    {
+      "name": "cc_accessibility_str_edit_panel_tips_min_toggles",
+      "value": "At least %d switches must be kept."
+    },
+    {
+      "name": "cc_accessibility_str_edit_add_toggle_coordinates",
+      "value": "Added to row %1$d column %2$d"
+    },
+    {
+      "name": "cc_accessibility_str_edit_coordinates",
+      "value": "Row %1$d, column %2$d"
+    },
+    {
+      "name": "cc_accessibility_str_edit_remove_toggle",
+      "value": "Add %s to library"
+    },
+    {
+      "name": "cc_accessibility_str_edit_remove_toggle_action",
+      "value": "Added to library"
+    },
+    {
+      "name": "cc_accessibility_str_edit_add_toggle",
+      "value": "Add %s to Control Panel"
+    },
+    {
+      "name": "cc_accessibility_str_edit_move_toggle_coordinates",
+      "value": "%1$s is on row %2$d column %3$d"
+    },
+    {
+      "name": "cc_accessibility_str_common_button_str",
+      "value": "%s button"
+    },
+    {
+      "name": "ntf_center_title",
+      "value": "Notification Panel"
+    },
+    {
+      "name": "live_view_hide_tip",
+      "value": "Unlock to view details"
+    },
+    {
+      "name": "cc_accessibility_str_timer_str_minute_to_second",
+      "value": "%1$s %2$s"
+    },
+    {
+      "name": "cc_accessibility_str_timer_str_hour_to_minute_to_second",
+      "value": "%1$s %2$s %3$s"
+    },
+    {
+      "name": "live_view_expanded",
+      "value": "Expanded"
+    },
+    {
+      "name": "live_view_collapsed",
+      "value": "Collapsed"
+    },
+    {
+      "name": "more_settings",
+      "value": "More settings"
+    },
+    {
+      "name": "automatic_brightness",
+      "value": "Automatic"
+    },
+    {
+      "name": "cc_accessibility_str_edit_remove_toggle_new",
+      "value": "Remove, %s"
+    },
+    {
+      "name": "cc_accessibility_str_click",
+      "value": "Double-tap to activate,"
+    },
+    {
+      "name": "cc_accessibility_str_long_click",
+      "value": "Double tap and hold to bring up more options"
+    },
+    {
+      "name": "cc_accessibility_str_ring_mode_click",
+      "value": "Double-tap to switch to %s,"
+    },
+    {
+      "name": "cc_accessibility_str_switch_click",
+      "value": "Double-tap to %s,"
+    },
+    {
+      "name": "cc_accessibility_str_connect_state",
+      "value": "Connected to %s,"
+    },
+    {
+      "name": "gesture_identified_successfully",
+      "value": "Gesture identified successfully!"
+    },
+    {
+      "name": "ntf_pin_top_dialog_reach_limit_title",
+      "value": "Maximum number of apps pinned"
+    },
+    {
+      "name": "confirm",
+      "value": "OK"
+    },
+    {
+      "name": "please_unlock",
+      "value": "Unlock your device"
+    },
+    {
+      "name": "edm_operate_prohibit_tip",
+      "value": "This operation is prohibited by enterprise management."
+    },
+    {
+      "name": "aod_phone_timer_text",
+      "value": "Call in progress"
+    },
+    {
+      "name": "aod_timing_timer_text",
+      "value": "Timer on"
+    },
+    {
+      "name": "aod_count_down_timer_text",
+      "value": "Counting down"
+    },
+    {
+      "name": "control_center_complex_toggle_focus_mode_title",
+      "value": "test"
+    },
+    {
+      "name": "control_center_complex_toggle_ring_mode_title_on",
+      "value": "test"
+    },
+    {
+      "name": "control_center_complex_toggle_location_title",
+      "value": "test"
+    },
+    {
+      "name": "control_center_complex_toggle_nfc_mode_title",
+      "value": "test"
+    },
+    {
+      "name": "control_center_complex_toggle_auto_rotate_title",
+      "value": "test"
+    },
+    {
+      "name": "screen_shot_widget_name",
+      "value": "test"
+    },
+    {
+      "name": "screen_recorder_widget_name",
+      "value": "test"
+    },
+    {
+      "name": "scanner_widget_name",
+      "value": "test"
+    },
+    {
+      "name": "multi_window_widget_name",
+      "value": "test"
+    },
+    {
+      "name": "control_center_complex_toggle_dark_mode_title",
+      "value": "test"
+    },
+    {
+      "name": "airplane_mode",
+      "value": "test"
+    },
+    {
+      "name": "control_center_complex_toggle_hotspot_title",
+      "value": "test"
+    },
+    {
+      "name": "control_center_complex_toggle_mobiledata_title",
+      "value": "test"
+    },
+    {
+      "name": "control_center_complex_toggle_flashlight_title",
+      "value": "test"
+    },
+    {
+      "name": "wireless_projection_toggle",
+      "value": "test"
+    },
+    {
+      "name": "control_center_complex_toggle_powersaving_title",
+      "value": "test"
+    },
+    {
+      "name": "control_center_complex_toggle_nearlink_title",
+      "value": "test"
+    },
+    {
+      "name": "control_center_complex_toggle_share_title",
+      "value": "test"
+    },
+    {
+      "name": "super_privacy_toggle",
+      "value": "test"
+    },
+    {
+      "name": "control_center_eye_comfort_toggle_title",
+      "value": "test"
+    },
+    {
+      "name": "control_center_complex_toggle_superhub_title",
+      "value": "test"
+    },
+    {
+      "name": "sound_title",
+      "value": "test"
+    },
+    {
+      "name": "juvenile_mode_toggle",
+      "value": "test"
+    },
+    {
+      "name": "sound_recorder_name",
+      "value": "test"
+    },
+    {
+      "name": "calculator_widget_name",
+      "value": "test"
+    },
+    {
+      "name": "clock_timer_widget_name",
+      "value": "test"
+    },
+    {
+      "name": "remote_control_widget_name",
+      "value": "test"
+    },
+    {
+      "name": "control_center_camera_open_toggle_title",
+      "value": "test"
+    }
+  ]
+}

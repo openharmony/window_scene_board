@@ -1,0 +1,95 @@
+{
+    "string":[
+        {
+            "name":"accessibility_str_two_finger_slide",
+            "value":"Vuốt sang trái hoặc sang phải bằng hai ngón tay để thay đổi màn hình",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"suggestion",
+            "value":"Đề xuất",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"form_center_notice_text",
+            "value":"Nhấp hoặc kéo tiện ích để thêm vào màn hình chính",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_to_screen_lock",
+            "value":"Thêm vào màn hình khóa",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_theme_form_to_desktop_more",
+            "value":"Thêm tiện ích trực tiếp khác",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_form_to_intelligent",
+            "value":"Thêm vào Assistant·TODAY",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"form_center_notice_button",
+            "value":"OK",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"form_added",
+            "value":"Đã thêm tiện ích.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"look_more_theme_form",
+            "value":"Thêm",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"splitter_format",
+            "value":"%1$s, %2$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_str_long_click_to_drag",
+            "value":"Chạm đúp và giữ để kéo",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"card_load_error",
+            "value":"Lỗi tải tiện ích. Hãy thử lại sau.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"onekeylock_shortcut",
+            "value":"Lối tắt trên màn hình khóa",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

@@ -1,0 +1,102 @@
+{
+    "string":[
+        {
+            "name":"expand_formstack",
+            "value":"توسيع الرزمة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"expand_stack_request_focus_front_text",
+            "value":"العنصر رقم %d في القائمة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"delete_stack_form",
+            "value":"تم حذف الأداة %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"talkback_expand_stack_moved_to",
+            "value":"تم وضعها في الموضع رقم %d في الرزمة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"edit_formstack",
+            "value":"تحرير \"%s\"",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"delete_formstack",
+            "value":"إزالة الأداة %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"form_pinned_stack_text",
+            "value":"تم نقل الأداة %1$s إلى أعلى الرزمة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"stack_request_focus_after_text",
+            "value":"هذه هي الأداة رقم %1$s. وهناك إجراءات يمكنك القيام بها. انقر نقرًا مزدوجًا مع الاستمرار في الضغط لفتح قائمة الخيارات.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"create_form_stack_text",
+            "value":"تم وضع الأداتين %1$s و%2$s في رزمة واحدة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"expand_stack_text",
+            "value":"تمت التوسعة، اسحب بإصبعين للأسفل للتنقل بين الأدوات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"delete_form_stack_text",
+            "value":"حذف",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_form_stack_text",
+            "value":"تم وضع الأداة %1$s في رزمة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"close_stack_text",
+            "value":"تم طي رزمة الأدوات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"talkback_expand_stack_move_to",
+            "value":"تم نقلها إلى الموضع رقم %d في الرزمة",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

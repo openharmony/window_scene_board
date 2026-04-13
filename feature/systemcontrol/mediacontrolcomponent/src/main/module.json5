@@ -1,0 +1,10 @@
+{
+  "module": {
+    "name": "mediacontrolcomponent",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ]
+  }
+}

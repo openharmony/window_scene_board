@@ -1,0 +1,37 @@
+{
+  "module": {
+    "name": "app_install_test",
+    "type": "feature",
+    "description": "app_install_test",
+    "mainElement": "TestAbility",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ],
+    "deliveryWithInstall": true,
+    "installationFree": false,
+    "pages": "$profile:test_pages",
+    "abilities": [
+      {
+        "name": "TestAbility",
+        "srcEntry": "./ets/testability/TestAbility.ets",
+        "description": "app_install_test",
+        "icon": "$media:icon",
+        "label": "app_install_test",
+        "exported": true,
+        "startWindowIcon": "$media:icon",
+        "startWindowBackground": "#FFFFFF",
+        "skills": [
+          {
+            "actions": [
+              "action.system.home"
+            ],
+            "entities": [
+              "entity.system.home"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

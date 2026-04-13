@@ -1,0 +1,22 @@
+{
+  "name": "@ohos/visionglass",
+  "version": "1.0.0",
+  "description": "Please describe the basic information.",
+  "main": "Index.ets",
+  "author": "",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@ohos/basicutils": "../../staticcommon/basecommon/basicutils",
+    "@ohos/windowscene": "../../staticcommon/basecommon/windowscene",
+    "@ohos/notificationcomponent": "file:../notification/notificationcomponent",
+    "@ohos/systemuicommon": "file:../../staticcommon/systemuicommon",
+    "@ohos/batterycomponent": "../systemstatus/batterycomponent",
+    "@ohos/bluetoothcomponent": "../systemstatus/bluetoothcomponent",
+    "@ohos/signalcomponent": "../systemstatus/signalcomponent",
+    "@ohos/airplanecomponent": "../systemstatus/airplanecomponent",
+    "@ohos/wificomponent": "../systemstatus/wificomponent",
+    "@ohos/launchercommon": "../../staticcommon/launchercommon",
+    "@ohos/frameworkwrapper": "file:../../staticcommon/basecommon/frameworkwrapper",
+    "@ohos/customcomponent": "file:../../feature/systemstatus/customcomponent"
+  }
+}

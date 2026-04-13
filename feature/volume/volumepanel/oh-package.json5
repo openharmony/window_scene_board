@@ -1,0 +1,13 @@
+{
+  "devDependencies": {},
+  "name": "@ohos/default_volumepanel",
+  "description": "",
+  "version": "1.0.0",
+  "dependencies": {
+    "@ohos/volumepanelcomponent": "file:../volumepanelcomponent",
+    "@ohos/basicutils": "file:../../../staticcommon/basecommon/basicutils",
+    "@ohos/windowscene": "file:../../../staticcommon/basecommon/windowscene",
+    "@ohos/frameworkwrapper": "file:../../../staticcommon/basecommon/frameworkwrapper",
+    "@ohos/frameworkcommon": "file:../../../staticcommon/basecommon/frameworkcommon"
+  }
+}

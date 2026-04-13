@@ -1,0 +1,130 @@
+{
+    "string":[
+        {
+            "name":"sound_title",
+            "value":"ئاۋاز",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"noise_reduction",
+            "value":"شاۋقۇنسىزلاش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"base_none",
+            "value":"ئېتىك",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"base_pass_through",
+            "value":"ئۆتۈشمە",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"base_noise_control",
+            "value":"شاۋقۇن تىزگىنلەش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"spatial_audio",
+            "value":"بوشلۇق ئاۋازى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"spatial_audio_follow",
+            "value":"باش ئىزلاش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"spatial_audio_fixed",
+            "value":"مۇقىم",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"toast_noise_control",
+            "value":"شاۋقۇنسىزلاش ئىقتىدارىنى ئىشلىتىش ئۈچۈن تىڭشىغۇچنى تاقاڭ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"toast_voice_enhance",
+            "value":"ئۆتۈشمە ھالەت ئىشلىتىش ئۈچۈن تىڭشىغۇچنى تاقاڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"HD_spatial_audio",
+            "value":"سۈزۈك بوشلۇق ئاۋازى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"toast_wear_headphone",
+            "value":"ئىككى تىڭشىغۇچنى تاقاڭ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"toast_noise_control_amphora",
+            "value":"شاۋقۇنسىزلاش ئۈچۈن ھەر ئىككى تىڭشىغۇچنى تاقاڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_change_volume_desc",
+            "value":"ئۈن بالدىقى، قوش بېسىپ تۇرۇپ ئوڭ-سولغا سىيرىپ تەڭشەيسىز",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_change_volume",
+            "value":"ئۈن %s قىلىپ تەڭشەلدى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_volume",
+            "value":"ئۈن %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"noise_on",
+            "value":"ئوچۇق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_change_vertical_volume_desc",
+            "value":"ئۈن بالدىقى، قوش بېسىپ تۇرۇپ ئۈستى-ئاستىغا سىيرىپ تەڭشەيسىز",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

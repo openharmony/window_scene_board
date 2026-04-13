@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"key_mouse_share",
+            "value":"키보드 및 마우스 공유",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

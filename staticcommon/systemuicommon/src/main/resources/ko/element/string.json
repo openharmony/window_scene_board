@@ -1,0 +1,480 @@
+{
+    "string":[
+        {
+            "name":"more_settings",
+            "value":"설정 더 보기",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"live_view_collapsed",
+            "value":"축소됨",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"gesture_identified_successfully",
+            "value":"제스처 식별 성공!",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"live_view_expanded",
+            "value":"확장됨",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntf_center_title",
+            "value":"알림 패널",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"edm_operate_prohibit_tip",
+            "value":"이 작업은 엔터프라이즈 관리에 의해 금지되어 있습니다.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_phone_timer_text",
+            "value":"통화 진행 중",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_timing_timer_text",
+            "value":"타이머 켜짐",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_count_down_timer_text",
+            "value":"카운트 다운",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_timing_capsule_timer_text",
+            "value":"타이밍",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_count_down_capsule_timer_text",
+            "value":"카운트 다운",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"automatic_brightness",
+            "value":"자동",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_edit_panel_tips_max_toggles",
+            "value":"최대 스위치 수는 %d개입니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"live_view_authorization_confirm",
+            "value":"예",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"live_view_authorization_tip",
+            "value":"이 앱에서 라이브 업데이트를 계속 수신하시겠습니까?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"confirm",
+            "value":"확인",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"please_unlock",
+            "value":"장치 잠금 해제",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_edit_panel_tips_min_toggles",
+            "value":"%d개 이상의 스위치를 유지해야 합니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"live_view_authorization_reject",
+            "value":"아니요",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"smart_screenshot",
+            "value":"스크린샷",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center",
+            "value":"제어판",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"live_view_hide_tip",
+            "value":"잠금 해제하여 상세정보 보기",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_pin_top_dialog_reach_limit_title",
+            "value":"최대 수의 앱이 고정됨",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"talkback_temperature",
+            "value":"최대 온도는 %1$s입니다. 최저 온도는 %2$s입니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"stop_font_creation_service",
+            "value":"서비스 종료",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_open_ringer_mode_silent",
+            "value":"음소거됨",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_entry_page_text",
+            "value":"제어판 진입",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"silence_dialog_title",
+            "value":"%s에 조용한 알림을 사용하시겠습니까?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_open_ringer_mode_vibrate",
+            "value":"진동 실행됨",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_close_state",
+            "value":"종료됨",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_edit_coordinates",
+            "value":"%1$d행, %2$d열",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_edit_remove_toggle",
+            "value":"라이브러리에 %s 추가",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_edit_add_toggle_coordinates",
+            "value":"%1$d행 %2$d열에 추가됨",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_edit_add_toggle",
+            "value":"제어판에 %s 추가",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_ring_mode_click",
+            "value":"두 번 탭하여 %s 모드로 전환,",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_click",
+            "value":"두 번 탭하여 활성화,",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_switch_click",
+            "value":"두 번 탭하여 %s,",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_wifi_list",
+            "value":"WLAN 네트워크 목록 보기",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"face_verifing",
+            "value":"얼굴 인식",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_wifi_open_def",
+            "value":"실행되었습니다. WLAN이 연결되지 않았습니다. 스위치",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_open_ringer_mode_normal",
+            "value":"벨소리 실행됨",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_open_state",
+            "value":"실행됨",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_bluetooth_close",
+            "value":"종료되었습니다. 블루투스가 종료되었습니다. 스위치",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_switch",
+            "value":"%s 스위치",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_wifi_open_conn",
+            "value":"실행되었습니다. WLAN 네트워크가 %s입니다. 스위치",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_edit_remove_toggle_action",
+            "value":"라이브러리에 추가됨",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_timer_str_hour_to_minute_to_second",
+            "value":"%1$s %2$s %3$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_bluetooth_open_conn",
+            "value":"실행되었습니다. 블루투스 %s. 스위치",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_open_action",
+            "value":"종료됨",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_edit_remove_toggle_new",
+            "value":"제거, %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_bluetooth_name",
+            "value":"블루투스",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_toggle_unavailable",
+            "value":"응답 없음",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_bluetooth_open_def",
+            "value":"실행되었습니다. 블루투스가 연결되지 않았습니다. 스위치",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_edit_move_toggle_coordinates",
+            "value":"%1$s 스위치가 %2$d행 %3$d열에 있음",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"silent_notifications_dialog",
+            "value":"조용한 알림은 무음으로 알림 패널에만 표시됩니다.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_wifi_close",
+            "value":"종료되었습니다. WLAN이 종료되었습니다. 스위치",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"face_auth_recognize_success",
+            "value":"확인됨",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_bluetooth_list",
+            "value":"페어링된 장치 보기",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_long_click",
+            "value":"두 번 탭하고 길게 눌러 더 많은 옵션 표시",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_close_action",
+            "value":"실행됨",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_connect_state",
+            "value":"%s에 연결됨,",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_common_button_str",
+            "value":"%s 버튼",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_timer_str_minute_to_second",
+            "value":"%1$s %2$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"data_remain",
+            "value":"잔여 %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"data_total",
+            "value":"총 %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"data_use_today",
+            "value":"오늘 %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"data_exceed",
+            "value":"%s 한도 초과",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"meta_service_live_view_authorization_tip",
+            "value":"이 서비스에서 라이브 업데이트를 계속 수신하시겠습니까?",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

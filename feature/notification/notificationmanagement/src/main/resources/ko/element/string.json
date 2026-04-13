@@ -1,0 +1,508 @@
+{
+    "string":[
+        {
+            "name":"banners",
+            "value":"배너",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_style",
+            "value":"알림 스타일",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"clear",
+            "value":"삭제",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_wake_screen_switch_text",
+            "value":"알림이 수신되면 화면이 켜집니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_lock_screen_switch_text",
+            "value":"휴대폰이 잠긴 상태에서는 알림 콘텐츠가 표시되지 않습니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_and_status_bar_title",
+            "value":"알림 및 상태 표시줄",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_lock_screen_switch_title_new",
+            "value":"알림 콘텐츠 숨기기",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"status_bar_title",
+            "value":"상태 표시줄",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_wake_screen_switch_title",
+            "value":"화면 활성화",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"more_ntf_setting",
+            "value":"설정 더 보기",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"search_history",
+            "value":"검색 내역",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"no_banners",
+            "value":"없음",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntfSoundModeOnlyVibration",
+            "value":"진동",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"lock_screen_notification",
+            "value":"잠금 화면",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"badges",
+            "value":"배지",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"search_app",
+            "value":"응용 프로그램 검색",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notifications",
+            "value":"알림",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_not_banner",
+            "value":"홈 화면에 배너 표시",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"smart_reminder_learn_more",
+            "value":"자세히 알아보기",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"smart_digest",
+            "value":"스마트 그룹화",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntfSoundModeSilence",
+            "value":"무음",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remind_banner",
+            "value":"배너",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"lock_screen_notification_style",
+            "value":"잠금 화면에 목록으로 표시",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"entry_desc",
+            "value":"알림",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"set_face",
+            "value":"설정",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"hide_banner_content_desc",
+            "value":"시스템 알림 설정을 따르는 앱에만 적용됩니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"unified_notification_label",
+            "value":"조직",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remind_disable",
+            "value":"꺼짐",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remind_sound",
+            "value":"소리",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_pin_on_top",
+            "value":"이 앱의 알림이 항상 알림 패널 상단에 표시됩니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"hide_banner_content_title",
+            "value":"배너 콘텐츠 표시",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"no_matching_results",
+            "value":"결과 없음",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"splitter_format_for_4",
+            "value":"%1$s, %2$s, %3$s, %4$s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"splitter_format_for_2",
+            "value":"%1$s, %2$s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"splitter_format_for_3",
+            "value":"%1$s, %2$s, %3$s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"switch_screen_lock_ntf_style_forbidden",
+            "value":"지문 잠금 해제를 사용하면 알림이 항상 확장됩니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remind_vibration",
+            "value":"진동",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"smart_reminder_tips_main",
+            "value":"켜는 경우, 배너의 콘텐츠가 나에게만 표시되고, 화면을 보고 있는 중에는 알림 경고의 강도가 줄어듭니다. 이 기능은 얼굴 인식을 사용합니다. %s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"smart_reminder_tips_no_weak",
+            "value":"켜는 경우, 배너의 콘텐츠가 나에게만 표시됩니다. 이 기능은 얼굴 인식을 사용합니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"unified_notification_intro",
+            "value":"서로 관련이 있을 때 다양한 앱의 알림이 그룹화됩니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"show_tip_live_view_preview_when_screen_lock",
+            "value":"켜면 라이브 보기에서 더 나은 경험이 제공됩니다.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remind_lock_screen",
+            "value":"잠금 화면",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pad_pure_show_description",
+            "value":"상태 표시줄에 시간, WLAN 및 배터리만 표시됩니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntfSoundModeSettingTitle",
+            "value":"알림톤",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remind_only_notification_center",
+            "value":"알림 패널만",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"hide_banner_content_app_follow_system",
+            "value":"시스템 따르기",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"hiding_banner_content_txt",
+            "value":"배너 알림이 나타날 때 다른 사람이 화면을 보고 있으면 해당 콘텐츠가 표시되지 않습니다. 이 기능은 얼굴 인식을 사용합니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"hide_banner_content_app_never",
+            "value":"표시하지 않음",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntfSoundModeOnlyRing",
+            "value":"사운드 재생",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"hide_banner_content_app_always",
+            "value":"항상 표시",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"live_view_title",
+            "value":"라이브 보기",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"switch_badges_forbidden",
+            "value":"먼저 설정 > 알림 및 상태 표시줄 > 설정 더 보기에서 \"배지 표시\"를 실행하십시오.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pure_show_description",
+            "value":"상태 표시줄에 시간, WLAN, 모바일 신호 및 배터리만 표시됩니다.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remind_type",
+            "value":"유형",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_switch_alarm_clock",
+            "value":"알람",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_switch_vpn",
+            "value":"VPN",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_switch_nearlink",
+            "value":"NearLink 및 블루투스 연결",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_switch_icon_visible",
+            "value":"아이콘 관리",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"enable_switch_ring_mode_silent",
+            "value":"음소거 모드",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_switch_ring_mode",
+            "value":"무음/진동",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"enable_switch_head_phones",
+            "value":"유선 헤드폰",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_switch_bluetooth",
+            "value":"블루투스 연결",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_switch_net_speed",
+            "value":"실시간 인터넷 속도",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_switch_nfc",
+            "value":"NFC",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_switch_notification_icon",
+            "value":"알림 아이콘",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"psd_back_accessible",
+            "value":"뒤로, 버튼",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"lock_screen_notification_fold",
+            "value":"잠금 화면 알림, 축소된 디스플레이",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"silent_notification",
+            "value":"조용한 알림",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"silent_notification_description",
+            "value":"이 앱의 알림을 음소거하고 알림 패널에만 표시합니다.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"lock_screen_notification_expand",
+            "value":"잠금 화면 알림, 확장된 디스플레이",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"enable_switch_explain",
+            "value":"상태 아이콘은 여기에서 선택을 취소하더라도 제어판 및 알림 패널에 표시됩니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"already_clear",
+            "value":"삭제됨",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

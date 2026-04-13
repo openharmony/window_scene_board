@@ -1,0 +1,67 @@
+{
+    "string":[
+        {
+            "name":"app_center_menu_add_dock",
+            "value":"Ajouter au dock",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"search_no_result",
+            "value":"Aucun résultat",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_menu_open",
+            "value":"Ouvrir",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_menu_open_from_floating_window",
+            "value":"Ouvrir depuis la fenêtre flottante",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_menu_open_from_split_screen",
+            "value":"Ouvrir depuis l'écran fractionné",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"uninstall",
+            "value":"Désinstaller",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"isUninstall",
+            "value":"Désinstaller %s ?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_center_menu_add_desktop",
+            "value":"Ajouter à l'écran d'accueil",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"drag_full",
+            "value":"Écran plein. Échec de l'ajout d'autres icônes.",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

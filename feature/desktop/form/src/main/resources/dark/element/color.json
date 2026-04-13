@@ -1,0 +1,28 @@
+{
+  "color": [
+    {
+      "name": "transparent_form_background_color",
+      "value": "#4D000000"
+    },
+    {
+      "name": "gradient_transparent_form_background_color",
+      "value": "#00000000"
+    },
+    {
+      "name": "normal_form_background_color",
+      "value": "#FF000000"
+    },
+    {
+      "name": "normal_form_manager_shadow_color",
+      "value": "#4D050505"
+    },
+    {
+      "name": "gradient_form_manager_shadow_color",
+      "value": "#00050505"
+    },
+    {
+      "name": "normal_form_center_shadow_color",
+      "value": "#59050505"
+    }
+  ]
+}

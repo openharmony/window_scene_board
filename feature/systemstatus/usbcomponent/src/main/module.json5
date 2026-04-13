@@ -1,0 +1,10 @@
+{
+  "module": {
+    "name": "usbcomponent",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ]
+  }
+}

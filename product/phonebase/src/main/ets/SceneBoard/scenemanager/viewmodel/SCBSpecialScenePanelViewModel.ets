@@ -14,6 +14,7 @@
  */
 
 import { curves } from '@kit.ArkUI';
+// import apsManager from '@hms.graphic.apsManager';
 import transactionManager from '@ohos.transactionManager';
 import sceneSessionManager from '@ohos.sceneSessionManager';
 import { power } from '@kit.BasicServicesKit';

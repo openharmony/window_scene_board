@@ -1,0 +1,15 @@
+{
+  "module": {
+    "name": "darkmodecomponent",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ],
+    "requestPermissions": [
+      {
+        "name": "ohos.permission.WRITE_ACCESSIBILITY_CONFIG"
+      }
+    ]
+  }
+}

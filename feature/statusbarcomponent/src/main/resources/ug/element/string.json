@@ -1,0 +1,158 @@
+{
+    "string":[
+        {
+            "name":"status_bar_search",
+            "value":"ئىزدەش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"status_bar_volume",
+            "value":"\u200f%1$s ئۈنى: ‎%2$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"location_statusbar_tips",
+            "value":"ئورۇن",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"more",
+            "value":"باشقىلار",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"full_charge",
+            "value":"%s، تولۇق توكلاندى.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"turbo_charge",
+            "value":"%s، بەك تېز Turbo توكلاۋاتىدۇ...",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"normal_charge",
+            "value":"%s، توكلاۋاتىدۇ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"wlan_connect",
+            "value":"\u200fWLAN ئۇلاق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"battery_power",
+            "value":"توك: ‎%s‎",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"host_battery_power",
+            "value":"باش ئۈسكۈنە توكى: ‎%s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keyboard_battery_power",
+            "value":"كۇنۇپكا تاختىسى توكى: ‎%s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"personal_panel",
+            "value":"سىستېما",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"wlan_disconnect",
+            "value":"\u200fWLAN ئۈزۈك",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"back_home",
+            "value":"ئۈستەليۈزىگە قايتىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"super_charge",
+            "value":"%s، بەك تېز توكلاۋاتىدۇ...",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"wlan_closed",
+            "value":"\u200fWLAN ئېتىك",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"key_mouse_sharing",
+            "value":"ئورتاق مائۇس-كىرگۈزگۈچ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"custom_charge",
+            "value":"\u200f%s، ئۆزلەشتۈرمە توكلاش ئوچۇق.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"smart_charge",
+            "value":"\u200f%s، ئاڭلىق توكلاش ئوچۇق.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ethernet_status_connected",
+            "value":"سىملىق تور ئۇلاق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"file_upload",
+            "value":"ھۆججەت يۈكلەش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"settings",
+            "value":"تەڭشەك",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

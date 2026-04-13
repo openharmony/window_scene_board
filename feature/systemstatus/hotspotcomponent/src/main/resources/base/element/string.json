@@ -1,0 +1,25 @@
+{
+    "string":[
+        {
+            "name":"control_center_complex_toggle_hotspot_title",
+            "value":"Personal hotspot",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"statusbar_talkbackhotspot01",
+            "value":"Hotspot enabled",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_hotspot_no_device",
+            "value":"No devices",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

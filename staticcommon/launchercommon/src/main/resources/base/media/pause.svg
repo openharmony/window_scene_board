@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="96px" height="96px" viewBox="0 0 96 96" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>画板</title>
+    <g id="画板1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="矩形备份-6" fill="#000000" x="0" y="0" width="96" height="96" opacity="0.3"></rect>
+    </g>
+    <g id="画板" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="矩形备份-2" fill="#FFFFFF" x="39" y="38" width="5" height="20"></rect>
+        <rect id="矩形备份-4" fill="#FFFFFF" x="52" y="38" width="5" height="20"></rect>
+    </g>
+</svg>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="30px" height="64px" viewBox="0 0 30 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>ic_statusbar_battery_charge_figure</title>
+    <g id="ic_statusbar_battery_charge_figure" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M2.59735275,35.2795396 L2.55177313,35.3715524 C2.36101615,35.8363885 2.71936483,36.3598725 3.26633919,36.3598725 L10.2453166,36.3595414 L10.2453166,55.2715734 C10.2453166,56.0220358 11.2961283,56.2807383 11.6795418,55.6246696 L27.4026473,28.7204604 L27.4482269,28.6284476 C27.6389838,28.1636115 27.2806352,27.6401275 26.7336608,27.6401275 L19.7546834,27.6394889 L19.7546834,8.72842657 C19.7546834,7.97796417 18.7038717,7.71926168 18.3204582,8.37533037 L2.59735275,35.2795396 Z" id="路径" fill="#FFFFFF" fill-rule="nonzero"></path>
+    </g>
+</svg>

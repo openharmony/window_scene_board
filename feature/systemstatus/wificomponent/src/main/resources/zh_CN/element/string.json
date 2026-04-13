@@ -1,0 +1,74 @@
+{
+    "string":[
+        {
+            "name":"accessibility_status_bar_wifi_no",
+            "value":"WLAN 无信号",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_wifi_1",
+            "value":"WLAN 信号一格",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_wifi_2",
+            "value":"WLAN 信号两格",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_wifi_3",
+            "value":"WLAN 信号三格",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_wifi_4",
+            "value":"WLAN 信号满格",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name": "shared_network_tips",
+            "value": "正在共享 %s 的移动数据",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name": "shared_network_tips1",
+            "value": "可使用 %s 的通信能力上网、接打电话、收发信息",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"shared_network_tips_network",
+            "value":"可使用 %s 的通信能力上网",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"shared_network_tips_network_calls",
+            "value":"可使用 %s 的通信能力上网、接打电话",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"shared_network_tips_network_messages",
+            "value":"可使用 %s 的通信能力上网、收发信息",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

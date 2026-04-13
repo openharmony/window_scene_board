@@ -1,0 +1,24 @@
+{
+  "float": [
+    {
+      "name": "normal_form_manager_radius",
+      "value": "80"
+    },
+    {
+      "name": "normal_form_manager_offset",
+      "value": "15"
+    },
+    {
+      "name": "normal_form_center_radius",
+      "value": "60"
+    },
+    {
+      "name": "normal_form_center_offset",
+      "value": "15"
+    },
+    {
+      "name": "form_back_radius",
+      "value": "120"
+    }
+  ]
+}

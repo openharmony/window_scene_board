@@ -1,0 +1,5 @@
+add_library(sorted_partial STATIC src/build_layout.cpp)
+target_link_libraries(sorted_partial gui)
+
+add_library(sorted_packing_algo STATIC src/apply_configuration.cpp)
+target_link_libraries(sorted_packing_algo PUBLIC sorted_partial)

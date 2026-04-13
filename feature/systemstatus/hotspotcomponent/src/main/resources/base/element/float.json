@@ -1,0 +1,20 @@
+{
+  "float": [
+    {
+      "name": "status_bar_hotspot_width",
+      "value": "16.5vp"
+    },
+    {
+      "name": "status_bar_hotspot_width_with_number",
+      "value": "20vp"
+    },
+    {
+      "name": "status_bar_hotspot_height",
+      "value": "16vp"
+    },
+    {
+      "name": "icon_component_opacity",
+      "value": "1"
+    }
+  ]
+}

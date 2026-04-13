@@ -1,0 +1,36 @@
+{
+  "color": [
+    {
+      "name": "hovered_outer_border_color",
+      "value": "#66000000"
+    },
+    {
+      "name": "hovered_inner_border_color",
+      "value": "#33FFFFFF"
+    },
+    {
+      "name":"calendar_color_red",
+      "value":"#F76045"
+    },
+    {
+      "name":"calendar_color_blue",
+      "value":"#FF0A49E9"
+    },
+    {
+      "name": "app_lock_mask_color",
+      "value": "#1A000000"
+    },
+    {
+      "name": "app_lock_color",
+      "value": "#99FFFFFF"
+    },
+    {
+      "name": "app_lock_icon_color",
+      "value": "#FFFFFF"
+    },
+    {
+      "name": "app_lock_white_board_background",
+      "value": "#FF000000"
+    }
+  ]
+}

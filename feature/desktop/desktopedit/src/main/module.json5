@@ -1,0 +1,9 @@
+{
+  "module": {
+    "name": "launcher_desktopedit",
+    "type": "har",
+    "deviceTypes": [
+      "default"
+    ]
+  }
+}

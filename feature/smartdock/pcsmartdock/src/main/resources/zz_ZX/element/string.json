@@ -1,0 +1,64 @@
+{
+    "string":[
+        {
+            "name":"continue_hap_come_from",
+            "value":"[TS_936781]_From \"%1$s\"."
+        },
+        {
+            "name":"app_menu_exit",
+            "value":"[TS_936782]_Quit"
+        },
+        {
+            "name":"remove_from_dock",
+            "value":"[TS_936773]_Remove from dock"
+        },
+        {
+            "name":"app_menu_open",
+            "value":"[TS_936775]_Open"
+        },
+        {
+            "name":"dock_hover_text_filemanager",
+            "value":"[TS_936776]_filemanager"
+        },
+        {
+            "name":"app_menu_clean",
+            "value":"[TS_936772]_Empty Recycle Bin"
+        },
+        {
+            "name":"dock_hover_text_appcenter",
+            "value":"[TS_936777]_App center"
+        },
+        {
+            "name":"dock_hover_text_recentcenter",
+            "value":"[TS_936783]_Task center"
+        },
+        {
+            "name":"dock_hover_text_recyclebin",
+            "value":"[TS_936778]_Recycle Bin"
+        },
+        {
+            "name":"app_center_menu_add_desktop",
+            "value":"[TS_936780]_Add to home screen"
+        },
+        {
+            "name":"app_dock_menu_suggest_title",
+            "value":"[TS_936774]_Suggested"
+        },
+        {
+            "name":"app_menu_open_new_window",
+            "value":"[TS_939346]_Open new window"
+        },
+        {
+            "name":"app_menu_exit_multiple",
+            "value":"[TS_977810]_Close all windows"
+        },
+        {
+            "name":"app_menu_exit_single",
+            "value":"[TS_977809]_Close window"
+        },
+        {
+            "name":"more_app_icon",
+            "value":"[TS_997838]_More apps"
+        }
+    ]
+}

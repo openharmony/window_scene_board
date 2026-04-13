@@ -1,0 +1,24 @@
+{
+    "string":[
+        {
+            "name":"control_center_complex_toggle_ring_mode_title_off",
+            "value":"[TS_803115]_Silent"
+        },
+        {
+            "name":"control_center_complex_toggle_ring_mode_title_on",
+            "value":"[TS_784922]_Sound"
+        },
+        {
+            "name":"control_center_complex_toggle_ring_mode_title_vibration",
+            "value":"[TS_803108]_Vibration"
+        },
+        {
+            "name":"accessibility_status_bar_ring_off_filled",
+            "value":"[TS_916913]_Vibration is off"
+        },
+        {
+            "name":"accessibility_status_bar_vibration_on",
+            "value":"[TS_916904]_Vibration is on"
+        }
+    ]
+}

@@ -1,0 +1,151 @@
+{
+    "string":[
+        {
+            "name":"regular_verify_psd_for_security",
+            "value":"추가 보안을 위해 암호 필요",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_enter_psd_mix",
+            "value":"암호 입력",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_incorrect_will_locked",
+            "value":"잘못된 PIN입니다. %1$s 후, 장치는 %2$s 동안 잠깁니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"please_enter_psd_for_security",
+            "value":"추가 보안을 위해 암호가 필요합니다",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_incorrect_psd_try_again",
+            "value":"잘못된 PIN입니다. 다시 시도하십시오.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_incorrect_hardware_error",
+            "value":"확인 오류",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pattern_incorrect_will_locked",
+            "value":"잘못된 패턴입니다. %1$s 후, 장치는 %2$s 동안 잠깁니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_enter_psd",
+            "value":"PIN 입력",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"regular_verify_pin_for_security",
+            "value":"추가 보안을 위해 PIN 필요",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_incorrect_psd_try_again_mix",
+            "value":"잘못된 암호입니다. 다시 시도하십시오.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_try_again_after_time1",
+            "value":"%s 후 다시 시도",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"text_loading",
+            "value":"로드 중…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"restart_enter_pin",
+            "value":"재시작한 후에는 PIN이 필요합니다",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"restart_enter_psd",
+            "value":"다시 시작한 후에는 암호가 필요합니다",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"fp_disable_enter_psd",
+            "value":"지문 인식 종료되었습니다. PIN을 입력하십시오.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"device_restart_enter_psd",
+            "value":"다시 시작한 후에는 암호가 필요합니다",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pattern_psd_incorrect_psd_try_again",
+            "value":"잘못된 패턴",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"fingerprint_incorrect_will_locked",
+            "value":"지문이 인식되지 않습니다. %1$s 후 장치는 %2$s간 잠깁니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"fp_incorrect_fp_try_again",
+            "value":"손가락이 센서 전체를 가리는지 확인하고 더 오래 누릅니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"please_enter_pin_for_security",
+            "value":"추가 보안을 위해 PIN 필요",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pattern_psd_drawing_completed",
+            "value":"패턴 그림",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

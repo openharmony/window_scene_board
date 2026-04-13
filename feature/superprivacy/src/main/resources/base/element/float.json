@@ -1,0 +1,20 @@
+{
+  "float": [
+    {
+      "name": "super_privacy_paddle_illustration_size_default",
+      "value": "288vp"
+    },
+    {
+      "name": "super_privacy_paddle_title_bar_min_height",
+      "value": "56vp"
+    },
+    {
+      "name": "super_privacy_paddle_title_bar_btn_size",
+      "value": "40vp"
+    },
+    {
+      "name": "super_privacy_paddle_title_bar_img_size",
+      "value": "24vp"
+    }
+  ]
+}

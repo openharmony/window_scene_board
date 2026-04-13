@@ -1,0 +1,18 @@
+{
+  "module": {
+    "name": "juvenilemodecomponent",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ],
+    "requestPermissions": [
+      {
+        "name": "ohos.permission.ACCESS_ACCOUNT_KIT_UI"
+      },
+      {
+        "name": "ohos.permission.GET_ACCOUNT_MINORS_INFO"
+      }
+    ]
+  }
+}

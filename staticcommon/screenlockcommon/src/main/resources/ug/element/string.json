@@ -1,0 +1,151 @@
+{
+    "string":[
+        {
+            "name":"restart_enter_psd",
+            "value":"قايتا قوزغاتقاندىن كېيىن پارول سورىلىدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"device_restart_enter_psd",
+            "value":"قايتا قوزغاتقاندىن كېيىن پارول سورايدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"please_enter_psd_for_security",
+            "value":"بىخەتەرلىك ئۈچۈن پارول كىرگۈزۈڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"please_enter_pin_for_security",
+            "value":"بىخەتەرلىك ئۈچۈن پارول كىرگۈزۈڭ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"psd_enter_psd_mix",
+            "value":"پارول كىرگۈزۈڭ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_incorrect_will_locked",
+            "value":"مەخپىي نومۇر خاتا، يەنە %1$s پۇرسەت قالدى، يەنىلا خاتا كىرگۈزسىڭىز، %2$s قۇلۇپلىنىدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_incorrect_psd_try_again",
+            "value":"مەخپىي نومۇر خاتا، قايتا سىناڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_enter_psd",
+            "value":"مەخپىي نومۇر كىرگۈزۈڭ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_incorrect_psd_try_again_mix",
+            "value":"پارول خاتا، قايتا سىناڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_try_again_after_time1",
+            "value":"%sتىن كېيىن قايتا سىناڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"fp_disable_enter_psd",
+            "value":"بارماق ئىزى ئېتىلدى، مەخپىي نومۇر كىرگۈزۈڭ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"fingerprint_incorrect_will_locked",
+            "value":"بارماق تونۇلمىدى، يەنە %1$s پۇرسەت بار، خاتا بولسا %2$s قۇلۇپلىنىدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"fp_incorrect_fp_try_again",
+            "value":"بارماق ئامال بار رەسىمنى تولۇق قاپلىسۇن، بارماقنى بېسىپ سەل تۇرۇڭ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pattern_psd_incorrect_psd_try_again",
+            "value":"شەكىل خاتا",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pattern_psd_drawing_completed",
+            "value":"ئاچقۇچ شەكىل سىزىلىپ بولدى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pattern_incorrect_will_locked",
+            "value":"ئاچقۇچ شەكىل خاتا، يەنە %1$s پۇرسەت قالدى، يەنىلا خاتا بولسا، %2$s قۇلۇپلىنىدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_incorrect_hardware_error",
+            "value":"مەخپىي نومۇرلۇق دەلىللەش نورمالسىز",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"restart_enter_pin",
+            "value":"قايتا قوزغاتقاندىن كېيىن پارول سورايدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"text_loading",
+            "value":"يۈكلەۋاتىدۇ...",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"regular_verify_psd_for_security",
+            "value":"بىخەتەرلىك ئۈچۈن قەرەللىك پارول دەلىللەش كېرەك.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"regular_verify_pin_for_security",
+            "value":"بىخەتەرلىك ئۈچۈن قەرەللىك پارول دەلىللەش كېرەك.",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

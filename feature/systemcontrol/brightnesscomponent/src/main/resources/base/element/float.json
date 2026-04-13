@@ -1,0 +1,44 @@
+{
+  "float": [
+    {
+      "name": "brightness_margin_top",
+      "value": "12"
+    },
+    {
+      "name": "brightness_padding_left",
+      "value": "12"
+    },
+    {
+      "name": "brightness_padding_right",
+      "value": "12"
+    },
+    {
+      "name": "brightness_component_gap",
+      "value": "12"
+    },
+    {
+      "name": "brightness_reduce_width",
+      "value": "24"
+    },
+    {
+      "name": "brightness_reduce_height",
+      "value": "24"
+    },
+    {
+      "name": "brightness_plus_width",
+      "value": "24"
+    },
+    {
+      "name": "brightness_plus_height",
+      "value": "24"
+    },
+    {
+      "name": "brightness_height",
+      "value": "24"
+    },
+    {
+      "name": "brightness_slider_height",
+      "value": "20"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "module": {
+    "name": "starflashcomponent",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ]
+  }
+}

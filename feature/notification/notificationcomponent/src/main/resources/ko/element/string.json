@@ -1,0 +1,466 @@
+{
+    "string":[
+        {
+            "name":"accessibility_notification_setting_bar",
+            "value":"설정",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntf_dialog_cancel",
+            "value":"취소",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntf_dialog_more_settings",
+            "value":"설정 더 보기",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_extra_message_expand",
+            "value":"더 보기",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"nc_accessibility_unpinned_notification",
+            "value":"핀 해제가 완료되었습니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntf_close_pkg_notification",
+            "value":"알림 종료",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_extra_message",
+            "value":"알림 더 보기",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_extra_message_collapse",
+            "value":"적게 보기",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_center_title",
+            "value":"알림 패널",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_notification_delete_bar",
+            "value":"삭제",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_ntf_swipe_remove_text",
+            "value":"제거됨",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"kg_ntf_collapse_tip",
+            "value":"적게 보려면 두 번 탭합니다.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_setting_dialog_title",
+            "value":"%s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"smart_digest_setting_dialog_title",
+            "value":"스마트 그룹화",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntf_close_meta_service_live_view_notification",
+            "value":"라이브 보기 종료",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_group_header_title",
+            "value":"%1$s · %2$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntf_download_progress",
+            "value":"진행률: %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_ntf_close_pkg_live_view",
+            "value":"%s의 라이브 보기를 종료하시겠습니까?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"kg_ntf_click_tip",
+            "value":"앱을 열려면 두 번 탭합니다.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_hide_content",
+            "value":"%d개 알림",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"imm_kg_ntf_click_tip",
+            "value":"크게 보려면 길게 터치합니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"close_smart_digest",
+            "value":"스마트 그룹화 종료",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntf_pin_top_pkg_notification",
+            "value":"상단에 고정",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sa_default_name",
+            "value":"시스템 성능",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_cancel_pin_top_pkg_notification",
+            "value":"상단 핀 해제",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntf_keyguard_click_tip",
+            "value":"열려면 다시 탭합니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntf_extra_message_brief_title",
+            "value":"알림 더 보기",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_extra_message_brief_content",
+            "value":"출처: %s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_extra_message_brief_app_tag",
+            "value":", %s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"topped_notification_flag",
+            "value":"고정됨",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_close_pkg_live_view",
+            "value":"라이브 보기 종료",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"live_view_setting_dialog_title",
+            "value":"%s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"place_holder_input_content",
+            "value":"여기에 입력",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_brief_remainder_count",
+            "value":"+%d",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"is_ntf_close_pkg_notification",
+            "value":"%s의 모든 알림을 종료하시겠습니까?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"kg_ntf_expand_tip",
+            "value":"확장하려면 두 번 탭합니다.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_download_file_detail",
+            "value":"파일 상세정보",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntf_close_meta_service_notification",
+            "value":"알림 종료",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_empty_text_tip",
+            "value":"알림 없음",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_keyguard_no_content_click_tip",
+            "value":"상세정보가 없습니다.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_app_locked_content",
+            "value":"앱 잠김",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"silence_app_notifications",
+            "value":"조용한 알림 사용",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"nc_accessibility_pinned_notification",
+            "value":"알림이 고정됨",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_ntf_swipe_left_text",
+            "value":"확장됨",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"nc_accessibility_close_notification",
+            "value":"알림 삭제됨",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_notification_clear",
+            "value":"모든 알림 삭제",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"nc_accessibility_close_live_view",
+            "value":"라이브 보기 메시지 삭제됨",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_ntf_swipe_right_text",
+            "value":"축소됨",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_ntf_focused_action_tips",
+            "value":"두 번 탭하고 길게 누른 다음 왼쪽으로 스와이프하여 추가 옵션 표시",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_ntf_collapse_tips",
+            "value":"두 번 탭하고 길게 누른 다음 오른쪽으로 스와이프하여 추가 옵션 숨기기",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_silent_notifications",
+            "value":"조용한 알림 종료",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"accessibility_notification_and_start_bar_setting",
+            "value":"알림 및 상태 표시줄 설정",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_notifications_icon",
+            "value":"%1$s 알림: %2$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"loading",
+            "value":"로드 중…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"noDisturb_none",
+            "value":"종료",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"open_app_inner_ntf_mgmt",
+            "value":"%s(으)로 이동",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"setting",
+            "value":"설정",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"show_preview_when_screen_lock",
+            "value":"잠겼을 때 알림 미리보기 표시",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"show_live_view_preview_when_screen_lock",
+            "value":"잠겼을 때 라이브 보기 미리보기 표시",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wake_screen_when_receive_notification",
+            "value":"알림 화면 활성화",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"smart_reminder",
+            "value":"스마트 알림",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pure_show_title",
+            "value":"단순 표시",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"show_notification_icon",
+            "value":"앱 알림 아이콘 표시",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"show_real_time_network_speed",
+            "value":"네트워크 속도 표시",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"show_battery_soc",
+            "value":"배터리 잔량 표시",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"already_clear",
+            "value":"삭제됨",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

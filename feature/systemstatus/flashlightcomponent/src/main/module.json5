@@ -1,0 +1,10 @@
+{
+  "module": {
+    "name": "flashlightcomponent",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ]
+  }
+}

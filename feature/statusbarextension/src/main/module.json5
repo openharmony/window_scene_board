@@ -1,0 +1,14 @@
+{
+  "module": {
+    "name": "statusbarextensionservice",
+    "type": "har",
+    "deviceTypes": [
+      "tablet"
+    ],
+    "requestPermissions": [
+      {
+        "name": "ohos.permission.GET_BUNDLE_INFO_PRIVILEGED"
+      }
+    ]
+  }
+}

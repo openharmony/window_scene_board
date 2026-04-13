@@ -1,0 +1,32 @@
+{
+    "string":[
+        {
+            "name":"control_center_complex_toggle_bluetooth_title",
+            "value":"སོ་སྔོན།",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_bluetooth_open",
+            "value":"སོ་སྔོན་ཁ་ཕྱེ་ཟིན།",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_bluetooth_connected",
+            "value":"སོ་སྔོན་སྦྲེལ་ཟིན།",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_nearlink_bluetooth_title",
+            "value":"སྐར་ཆེམ། | སོ་སྔོན།",
+            "attr":{
+                "priority":"LT"
+            }
+        }
+    ]
+}

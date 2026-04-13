@@ -1,0 +1,16 @@
+{
+    "string":[
+        {
+            "name":"control_center_complex_toggle_hotspot_title",
+            "value":"[TS_922499]_Personal hotspot"
+        },
+        {
+            "name":"statusbar_talkbackhotspot01",
+            "value":"[TS_928451]_Hotspot enabled"
+        },
+        {
+            "name":"control_center_complex_toggle_hotspot_no_device",
+            "value":"[TS_1082123]_No devices"
+        }
+    ]
+}

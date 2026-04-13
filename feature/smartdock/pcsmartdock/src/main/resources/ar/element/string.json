@@ -1,0 +1,95 @@
+{
+    "string":[
+        {
+            "name":"app_dock_menu_suggest_title",
+            "value":"التطبيقات المُقترحة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remove_from_dock",
+            "value":"إزالة من شريط الإرساء",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dock_hover_text_recentcenter",
+            "value":"مركز المهام",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_center_menu_add_desktop",
+            "value":"إضافة إلى الشاشة الرئيسية",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"continue_hap_come_from",
+            "value":"من \"%1$s\".",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_menu_open_new_window",
+            "value":"فتح نافذة جديدة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_menu_exit_multiple",
+            "value":"إغلاق جميع النوافذ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_menu_open",
+            "value":"فتح",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_menu_exit_single",
+            "value":"إغلاق النافذة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_menu_clean",
+            "value":"إفراغ سلة المحذوفات",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dock_hover_text_appcenter",
+            "value":"مركز التطبيقات",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dock_hover_text_recyclebin",
+            "value":"سلة المحذوفات",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"more_app_icon",
+            "value":"المزيد من التطبيقات",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

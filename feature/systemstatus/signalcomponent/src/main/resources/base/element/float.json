@@ -1,0 +1,160 @@
+{
+  "float": [
+    {
+      "name": "status_bar_signal_type_font_size",
+      "value": "10fp"
+    },
+    {
+      "name": "status_bar_signal_unknown_font_size",
+      "value": "14fp"
+    },
+    {
+      "name": "signal_component_icon_width",
+      "value": "20.5vp"
+    },
+    {
+      "name": "signal_component_icon_long_width",
+      "value": "24.5vp"
+    },
+    {
+      "name": "signal_component_airplane_width",
+      "value": "15.75vp"
+    },
+    {
+      "name": "signal_component_nosim_width",
+      "value": "12.25vp"
+    },
+    {
+      "name": "signal_component_icon_height",
+      "value": "16vp"
+    },
+    {
+      "name": "distributed_modem_icon_width",
+      "value": "16vp"
+    },
+    {
+      "name": "signal_text_max_width",
+      "value": "113vp"
+    },
+    {
+      "name": "status_bar_signal_net_signal_text_max_width",
+      "value": "18vp"
+    },
+    {
+      "name": "icon_component_opacity",
+      "value": "1"
+    },
+    {
+      "name": "signal_operator_domesticSpn_one",
+      "value": "68vp"
+    },
+    {
+      "name": "signal_operator_domesticSpn_two",
+      "value": "42vp"
+    },
+    {
+      "name": "signal_operator_domesticSpn_width_landscape",
+      "value": "116vp"
+    },
+    {
+      "name": "flow_type_margin_top",
+      "value": "4vp"
+    },
+    {
+      "name": "flow_type_margin_left",
+      "value": "1vp"
+    },
+    {
+      "name": "flow_type_width",
+      "value": "15vp"
+    },
+    {
+      "name": "signal_operator_width_two",
+      "value": "36vp"
+    },
+    {
+      "name": "signal_operator_width_null",
+      "value": "68vp"
+    },
+    {
+      "name": "signal_operator_width",
+      "value": "68vp"
+    },
+    {
+      "name": "signal_operator_width_landscape",
+      "value": "80vp"
+    },
+    {
+      "name": "signal_operator_font_size",
+      "value": "13vp"
+    },
+    {
+      "name": "signal_operator_font_size_two",
+      "value": "8vp"
+    },
+    {
+      "name": "signal_hd_icon_width",
+      "value": "17vp"
+    },
+    {
+      "name": "signal_hd_icon_height",
+      "value": "16vp"
+    },
+    {
+      "name": "signal_hd_icon_width_two",
+      "value": "12vp"
+    },
+    {
+      "name": "signal_hd_icon_height_two",
+      "value": "12vp"
+    },
+    {
+      "name": "signal_hd_icon_margin_left",
+      "value": "2vp"
+    },
+    {
+      "name": "signal_icon_margin_width",
+      "value": "2vp"
+    },
+    {
+      "name" : "only_signal_strength_width",
+      "value": "18vp"
+    },
+    {
+      "name": "stack_signal_component_icon_width",
+      "value": "18vp"
+    },
+    {
+      "name": "stack_signal_type_5g_icon_width",
+      "value": "26.5vp"
+    },
+    {
+      "name": "stack_signal_type_4g_icon_width",
+      "value": "27.25vp"
+    },
+    {
+      "name": "stack_signal_type_2g_icon_width",
+      "value": "26.5vp"
+    },
+    {
+      "name": "stack_signal_type_3g_icon_width",
+      "value": "26.5vp"
+    },
+    {
+      "name": "stack_signal_type_4gplus_icon_width",
+      "value": "30.5vp"
+    },
+    {
+      "name": "stack_signal_type_h_icon_width",
+      "value": "23.25vp"
+    },
+    {
+      "name": "stack_signal_type_hplus_icon_width",
+      "value": "26.5vp"
+    },
+    {
+      "name": "stack_signal_type_x_icon_width",
+      "value": "24.25vp"
+    }
+  ]
+}

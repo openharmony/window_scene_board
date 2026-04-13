@@ -1,0 +1,12 @@
+{
+  "float": [
+    {
+      "name": "form_corner_radius",
+      "value": "16"
+    },
+    {
+      "name": "icon_radius",
+      "value": "-1"
+    }
+  ]
+}

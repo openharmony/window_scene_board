@@ -1,0 +1,12 @@
+{
+  "color": [
+    {
+      "name": "sim_font_color",
+      "value": "#FFFFFF"
+    },
+    {
+      "name": "sim_background_color",
+      "value": "#000000"
+    }
+  ]
+}

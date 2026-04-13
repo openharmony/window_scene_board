@@ -1,0 +1,393 @@
+{
+    "string":[
+        {
+            "name":"theme_edit_apply",
+            "value":"Aplicar",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"show_lock_screen_signature",
+            "value":"Firma de pantalla de bloqueo",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"widgets_two_click_accessible",
+            "value":"Pulsar dos veces para activar",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"checked",
+            "value":"Seleccionado",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"layout_tab_art",
+            "value":"Cartel personalizado",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"art_signature_input_error_language",
+            "value":"Solo caracteres chinos o letras",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"art_signature_input_tip",
+            "value":"Introduce letras o hasta %d caracteres chinos.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"layout_tab_default",
+            "value":"Reloj digital",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"art_signature_input_title",
+            "value":"Texto del cartel",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"art_signature_input_error_len",
+            "value":"Se ha alcanzado el límite de caracteres",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"theme_edit_cancel",
+            "value":"Cancelar",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"click_input_text",
+            "value":"Introduce texto",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"EnterpriseDeviceDefaultText",
+            "value":"Este dispositivo está gestionado por tu organización",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_back",
+            "value":"Volver",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"EnterpriseDeviceText",
+            "value":"Este dispositivo está gestionado por %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"clock_font_color",
+            "value":"Color de fuente %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"clock_font_style",
+            "value":"Estilo de fuente %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"artfont_creation_reach_limit",
+            "value":"Se ha alcanzado el límite de fuentes",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_font_cannot_delete",
+            "value":"Las fuentes no se pueden eliminar mientras están en uso.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"artfont_creation_no_network",
+            "value":"Sin conexión a Internet. Comprueba los ajustes de red.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"artfont_creation_delete_notice",
+            "value":"Mantén pulsada una fuente para eliminarla y crear una nueva.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"artfont_creation_confirm",
+            "value":"Aceptar",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"artfont_creation_ocr_err",
+            "value":"Error de identificación. Inténtalo de nuevo.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"service_form_area_accessible",
+            "value":"Área para widgets",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"clock_style",
+            "value":"Estilo de reloj %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"unchecked",
+            "value":"Sin seleccionar",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"more_edits",
+            "value":"Más opciones de edición",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Double_click_and_hold_accessibility",
+            "value":"Pulsar dos veces y mantener pulsado para abrir el menú de opciones",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"service_form_delete_button_accessible",
+            "value":"Eliminar, botón",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"art_signature_style",
+            "value":"Estilo de póster %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_four",
+            "value":"Declaración acerca del Servicio de creación de fuentes de la pantalla de bloqueo y la privacidad",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"artfont_creation_statement_agree",
+            "value":"Acepto",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screenlock_font_creation_service",
+            "value":"Servicio de creación de fuentes de la pantalla de bloqueo",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_one",
+            "value":"Este servicio utiliza IA basada en la nube para generar fuentes a partir del texto contenido en imágenes. Las fuentes generadas se pueden aplicar al reloj y a la firma de la pantalla de bloqueo.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation",
+            "value":"Crear una fuente",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_five",
+            "value":"Términos y condiciones",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"art_signature_displayed_as_combined_character",
+            "value":"Combinar en un solo carácter",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"art_signature_content_creation_failed",
+            "value":"No se ha podido aplicar la fuente.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"art_signature_try_combined_characters",
+            "value":"Selecciona caracteres chinos combinados",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"art_signature_combined_character",
+            "value":"Caracteres chinos combinados",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_three",
+            "value":"Este servicio requiere conexión a Internet y necesita leer y cargar/transferir imágenes para proporcionar funciones de creación de la pantalla de bloqueo frontal. Solo recopilamos información personal relacionada con las funciones que utilizas. Para obtener más información, consulta la %1$s y los %2$s.\nLee detenidamente el contenido anterior. Si pulsas Acepto, significa que aceptas que te proporcionemos este servicio.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"card_deleted",
+            "value":"El widget %s se ha eliminado",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"art_signature_text_button_tip",
+            "value":"Información",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"art_signature_text_tip_content",
+            "value":"Funciona mejor con %d caracteres chinos o menos.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"artfont_AI_creation",
+            "value":"Creación con IA",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"please_input_text",
+            "value":"Introducir texto",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"artfont_delete_description",
+            "value":"Si tu firma personalizada utiliza esta fuente, volverá a la predeterminada.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"layout_tab_artsign",
+            "value":"Firma personalizada",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"artfont_delete_confirm",
+            "value":"¿Eliminar esta fuente?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"artfont_delete_remove_button",
+            "value":"Eliminar",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"artfont_long_press_delete",
+            "value":"Mantén pulsado para editar o eliminar.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"art_signature",
+            "value":"Firma personalizada",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+      {
+            "name":"AIGC_server_offline_title",
+            "value":"El servicio de creación de fuentes no tiene conexión",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"switch_combined_characters_fonts_prompt",
+            "value":"El cambio de fuente no está disponible para los caracteres combinados.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"AIGC_server_offline_description",
+            "value":"Esta función no estará disponible temporalmente mientras realizamos algunas mejoras.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+      {
+        "name": "unsupported_content",
+        "value": "Contiene caracteres que no son compatibles"
+      }
+    ]
+}

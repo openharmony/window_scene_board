@@ -1,0 +1,18 @@
+{
+    "string":[
+        {
+            "name":"control_center_complex_toggle_flashlight_title",
+            "value":"電筒",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"flashlight_on_ntf_content",
+            "value":"電筒已開啟",
+            "attr":{
+                "priority":"LT"
+            }
+        }
+    ]
+}

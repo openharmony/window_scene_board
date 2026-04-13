@@ -1,0 +1,11 @@
+{
+  "devDependencies": {},
+  "name": "default_notificationmanagement",
+  "description": "",
+  "version": "1.0.0",
+  "dependencies": {
+    "@ohos/managementcomponent": "file:../managementcomponent",
+    "@ohos/frameworkpinyin": "../../../staticcommon/basecommon/frameworkpinyin",
+    "@ohos/windowsceneinterfaces": "../../../staticcommon/basecommon/windowsceneinterfaces"
+  }
+}

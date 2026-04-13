@@ -1,0 +1,12 @@
+{
+  "name": "@ohos/ethernetcomponent",
+  "version": "1.0.0",
+  "description": "a npm package which contains ethernetcomponent function",
+  "dependencies": {
+    "@ohos/basicutils": "file:../../../staticcommon/basecommon/basicutils",
+    "@ohos/frameworkwrapper": "file:../../../staticcommon/basecommon/frameworkwrapper",
+    "@ohos/systemuicommon": "file:../../../staticcommon/systemuicommon",
+    "@ohos/controlcentercommon": "file:../../../staticcommon/controlcentercommon",
+    "@ohos/wificomponent": "file:../wificomponent"
+  }
+}

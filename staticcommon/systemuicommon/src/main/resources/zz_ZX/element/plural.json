@@ -1,0 +1,120 @@
+{
+    "plural":[
+        {
+            "name":"cc_accessibility_str_timer_str_hour",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"[TS_968394]_%d hour"
+                },
+                {
+                    "quantity":"zero",
+                    "value":"[TS_968383]_%d hours"
+                },
+                {
+                    "quantity":"two",
+                    "value":"[TS_968391]_%d hours"
+                },
+                {
+                    "quantity":"few",
+                    "value":"[TS_968396]_%d hours"
+                },
+                {
+                    "quantity":"many",
+                    "value":"[TS_968381]_%d hours"
+                },
+                {
+                    "quantity":"other",
+                    "value":"[TS_968397]_%d hours"
+                }
+            ]
+        },
+        {
+            "name":"cc_accessibility_str_timer_str_minute",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"[TS_968398]_%d minute"
+                },
+                {
+                    "quantity":"zero",
+                    "value":"[TS_968384]_%d minutes"
+                },
+                {
+                    "quantity":"two",
+                    "value":"[TS_968389]_%d minutes"
+                },
+                {
+                    "quantity":"few",
+                    "value":"[TS_968392]_%d minutes"
+                },
+                {
+                    "quantity":"many",
+                    "value":"[TS_968382]_%d minutes"
+                },
+                {
+                    "quantity":"other",
+                    "value":"[TS_968387]_%d minutes"
+                }
+            ]
+        },
+        {
+            "name":"cc_accessibility_str_timer_str_second",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"[TS_968395]_%d second"
+                },
+                {
+                    "quantity":"zero",
+                    "value":"[TS_968388]_%d seconds"
+                },
+                {
+                    "quantity":"two",
+                    "value":"[TS_968385]_%d seconds"
+                },
+                {
+                    "quantity":"few",
+                    "value":"[TS_968393]_%d seconds"
+                },
+                {
+                    "quantity":"many",
+                    "value":"[TS_968386]_%d seconds"
+                },
+                {
+                    "quantity":"other",
+                    "value":"[TS_968390]_%d seconds"
+                }
+            ]
+        },
+        {
+            "name":"ntf_pin_top_dialog_reach_limit_content",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"[TS_818590]_Up to %d app can be pinned to the top. Remove apps you no longer want to pin."
+                },
+                {
+                    "quantity":"other",
+                    "value":"[TS_818591]_Up to %d apps can be pinned to the top. Remove apps you no longer want to pin."
+                },
+                {
+                    "quantity":"zero",
+                    "value":"[TS_818589]_Up to %d apps can be pinned to the top. Remove apps you no longer want to pin."
+                },
+                {
+                    "quantity":"few",
+                    "value":"[TS_818585]_Up to %d apps can be pinned to the top. Remove apps you no longer want to pin."
+                },
+                {
+                    "quantity":"many",
+                    "value":"[TS_818588]_Up to %d apps can be pinned to the top. Remove apps you no longer want to pin."
+                },
+                {
+                    "quantity":"two",
+                    "value":"[TS_818583]_Up to %d apps can be pinned to the top. Remove apps you no longer want to pin."
+                }
+            ]
+        }
+    ]
+}

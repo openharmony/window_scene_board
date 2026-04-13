@@ -1,0 +1,14 @@
+{
+  "allowToBackupRestore": true,
+  "fullBackupOnly": true,
+  "supportScene": "next2next",
+  "extraInfo": {
+    "supportScene": [
+      "next2next"
+    ]
+  },
+  "includes": [
+    "data/storage/el1/database/",
+    "data/storage/el2/base/preferences/"
+  ]
+}

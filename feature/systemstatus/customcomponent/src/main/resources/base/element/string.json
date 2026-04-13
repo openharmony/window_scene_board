@@ -1,0 +1,25 @@
+{
+    "string":[
+        {
+            "name":"now_string_shortest",
+            "value":"Just now",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"date_time_view_yesterday",
+            "value":"Yesterday",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"accessibility_quick_settings_alarm_set",
+            "value":"Alarm set",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

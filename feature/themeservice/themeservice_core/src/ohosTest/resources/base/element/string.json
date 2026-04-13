@@ -1,0 +1,16 @@
+{
+  "string": [
+    {
+      "name": "module_test_desc",
+      "value": "ThemeService test ability description"
+    },
+    {
+      "name": "TestAbility_desc",
+      "value": "The ThemeService test ability"
+    },
+    {
+      "name": "TestAbility_label",
+      "value": "ThemeServiceTest"
+    }
+  ]
+}

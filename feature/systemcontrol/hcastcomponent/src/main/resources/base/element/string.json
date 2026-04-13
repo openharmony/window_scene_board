@@ -1,0 +1,67 @@
+{
+    "string":[
+        {
+            "name":"wireless_projection_toggle",
+            "value":"ScreenCast",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"title_open_wlan_and_bluetooth",
+            "value":"To use ScreenCast, first enable WLAN and Bluetooth",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"text_open_wlan_and_bluetooth",
+            "value":"These are required to discover devices and stream audio and video.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"privacy_hint",
+            "value":"Cast your screen to a bigger display.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"projection_privacy_statement",
+            "value":"This service requires the Device connection permission to turn on Bluetooth and use Bluetooth and WLAN. It will also record device audio and onscreen content. By tapping Agree, you agree to these terms.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"btn_agree",
+            "value":"Agree",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"btn_turn_on",
+            "value":"Enable",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"title_projection_fail",
+            "value":"Connection failed",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"error_text_code_2",
+            "value":"Restart WLAN and Bluetooth on both devices and try again.",
+            "attr":{
+                "priority":"LT"
+            }
+        }
+    ]
+}

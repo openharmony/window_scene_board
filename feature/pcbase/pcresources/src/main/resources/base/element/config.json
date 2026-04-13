@@ -1,0 +1,48 @@
+{
+  "string": [
+    {
+      "name": "top_toggle_data_default",
+      "value": "wifi,bluetooth,share"
+    },
+    {
+      "name": "top_toggle_data_all",
+      "value": "wifi,bluetooth,share"
+    },
+    {
+      "name": "top_toggle_data_default_multiuser",
+      "value": "wifi,bluetooth,share"
+    },
+    {
+      "name": "toggle_data_default",
+      "value": "focus_mode,location,air_plane,mic,near_link,power_save,meeting,super_privacy,eye_comfort,dark_mode,key_mouse_share,anti_peeping"
+    },
+    {
+      "name": "toggle_data_default_old",
+      "value": "focus_mode,location,air_plane,mic,near_link,power_save,meeting,super_privacy,eye_comfort,dark_mode,key_mouse_share,anti_peeping"
+    },
+    {
+      "name": "toggle_data_all",
+      "value": "air_plane,focus_mode,location,toggle_screen_recorder,mic,near_link,power_save,super_privacy,eye_comfort,dark_mode,key_mouse_share,anti_peeping,toggle_screenshot,dpin"
+    },
+    {
+      "name": "toggle_data_black_multiuser",
+      "value": ""
+    },
+    {
+      "name": "small_screen_toggle_data_default",
+      "value": "flashlight,ring_mode,air_plane,mobile_data,focus_mode,auto_rotate,hotspot,toggle_screenshot,toggle_screen_recorder,music_service,location,nfc"
+    },
+    {
+      "name": "toggle_max",
+      "value": "10"
+    },
+    {
+      "name": "toggle_min",
+      "value": "4"
+    },
+    {
+      "name": "edm_admin_toggles",
+      "value": "wifi,bluetooth,mobile_data,toggle_screenshot,toggle_screen_recorder,hotspot,near_link,location,air_plane,nfc,super_privacy"
+    }
+  ]
+}

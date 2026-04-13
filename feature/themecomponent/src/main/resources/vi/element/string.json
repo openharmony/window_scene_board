@@ -1,0 +1,162 @@
+{
+    "string":[
+        {
+            "name":"screenlock_settings",
+            "value":"Màn hình khóa",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_stop_service_text",
+            "value":"Nếu bạn tắt dịch vụ này, bạn sẽ không còn có thể tạo phông chữ dựa trên văn bản có trong hình ảnh.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"stop_font_creation_service",
+            "value":"Tắt dịch vụ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screenlock_font_creation_service_text",
+            "value":"Dịch vụ tạo phông chữ màn hình khóa",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screenlock_font_creation_service",
+            "value":"Dịch vụ tạo phông chữ màn hình khóa",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_one",
+            "value":"Dịch vụ này sử dụng AI dựa trên đám mây để tạo phông chữ từ văn bản có trong hình ảnh. Phông chữ được tạo có thể được áp dụng cho đồng hồ màn hình khóa và chữ ký của bạn.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_four",
+            "value":"Tuyên bố về Dịch vụ tạo phông chữ màn hình khóa và Quyền riêng tư",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_setting_footbar_new",
+            "value":"Để cung cấp tính năng tạo phông chữ màn hình khóa, dịch vụ này yêu cầu kết nối Internet và cần đọc cũng như tải lên/truyền hình ảnh. Chúng tôi chỉ thu thập thông tin cá nhân liên quan đến các tính năng bạn sử dụng. Để biết thêm thông tin, hãy tham khảo %1$s và %2$s. Bằng việc bật nút chuyển này, bạn đồng ý để chúng tôi cung cấp cho bạn dịch vụ này.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_five",
+            "value":"Điều khoản & Điều kiện",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_three",
+            "value":"Dịch vụ này yêu cầu kết nối Internet cũng như cần đọc và tải lên/truyền hình ảnh để cung cấp các tính năng tạo phông chữ màn hình khóa. Chúng tôi chỉ thu thập thông tin cá nhân liên quan đến các tính năng bạn sử dụng. Để biết thêm thông tin, hãy tham khảo %1$s và %2$s.\nVui lòng đọc kỹ nội dung trên. Bằng việc chạm vào Đồng ý, bạn đồng ý cho chúng tôi cung cấp dịch vụ này cho bạn.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"icon_settings",
+            "value":"Biểu tượng",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"icon_settings_content",
+            "value":"Thay đổi kích thước và đổi tên biểu tượng màn hình chính.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"icon_edit_not_support_small_step",
+            "value":"Không thể điều chỉnh biểu tượng khi cửa sổ Cài đặt đang ở chế độ cửa sổ di động.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+      {
+        "name": "theme_title",
+        "value": "theme title"
+      },
+        {
+            "name": "notification_main_time_travel_ongoing_content",
+            "value": "notification main"
+        },
+        {
+            "name": "notification_main_time_travel_finish_content",
+            "value": "travel finish content"
+        },
+        {
+            "name": "time_travel_generate_failed",
+            "value": ""
+        },
+        {
+            "name": "notification_main_dimensional_travel_ongoing_content",
+            "value": ""
+        },
+        {
+            "name": "notification_main_dimensional_travel_finish_content",
+            "value": ""
+        },
+        {
+            "name": "dimensional_travel_generate_failed",
+            "value": ""
+        },
+        {
+            "name": "notification_dynamic_lead_ongoing_content",
+            "value": ""
+        },
+        {
+            "name": "notification_dynamic_lead_finish_content",
+            "value": ""
+        },
+        {
+            "name": "dynamic_lead_generate_failed",
+            "value": ""
+        },
+        {
+            "name": "notification_main_pandora_title",
+            "value": ""
+        },
+      {
+        "name":"edit_wallpaper",
+        "value":"Hình nền",
+        "attr":{
+          "priority":"translate"
+        }
+      },
+      {
+        "name": "theme_chose",
+        "value": "Chọn từ thư viện"
+      },
+      {
+        "name": "current_wallpaper",
+        "value": "Hình nền của tôi"
+      },
+      {
+        "name": "managment",
+        "value": ""
+      },
+      {
+        "name": "wallpaper_editor",
+        "value": "Áp dụng"
+      }
+    ]
+}

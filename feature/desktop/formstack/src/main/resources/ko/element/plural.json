@@ -1,0 +1,28 @@
+{
+    "plural":[
+        {
+            "name":"stack_request_focus_front_text",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"위젯 스택, 총 %d개 위젯",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"expand_stack_request_focus_after_text",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"총 %d개의 항목이 있습니다. 사용할 수 있는 옵션이 있습니다. 두 번 탭하면 스택이 축소되고 위젯이 상단에 배치됩니다. 위젯을 두 번 탭하고 길게 눌러 위아래로 드래그",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

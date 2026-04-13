@@ -31,6 +31,7 @@ import { launcherStatusUtil } from '@ohos/windowscene/src/main/ets/utils/Launche
 import { DeviceHelper } from '@ohos/frameworkwrapper';
 import { DesktopUtil } from '../../../../../../main/ets/utils/DesktopUtil';
 import { SCBSceneContainerSessionArray, SCBScenePanelManager } from '@ohos/windowscene';
+import apsManager from '@hms.graphic.apsManager';
 
 /**
  * 外屏桌面工具类 DT测试套

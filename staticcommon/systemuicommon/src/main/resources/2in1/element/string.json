@@ -1,0 +1,15 @@
+{
+    "string":[
+        {
+            "name":"Control_center_icon_shadow_color",
+            "value":"#19000000"
+        },
+        {
+            "name":"cc_accessibility_str_long_click",
+            "value":"Double click and hold to bring up more options",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

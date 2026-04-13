@@ -1,0 +1,13 @@
+{
+  "devDependencies": {},
+  "name": "@ohos/appinstall",
+  "description": "a npm package which contains app install feature",
+  "main": "index.ets",
+  "version": "1.0.0",
+  "dependencies": {
+    "@ohos/launchercommon": "../../staticcommon/launchercommon",
+    "@ohos/commonconstants": "../../staticcommon/basecommon/commonconstants",
+    "@ohos/basicutils": "../../staticcommon/basecommon/basicutils",
+    "@ohos/frameworkwrapper": "../../staticcommon/basecommon/frameworkwrapper",
+  }
+}

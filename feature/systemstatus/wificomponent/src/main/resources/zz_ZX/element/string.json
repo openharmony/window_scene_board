@@ -1,0 +1,44 @@
+{
+    "string":[
+        {
+            "name":"accessibility_status_bar_wifi_no",
+            "value":"[TS_928807]_No WLAN signal"
+        },
+        {
+            "name":"accessibility_status_bar_wifi_4",
+            "value":"[TS_928819]_WLAN signal, full"
+        },
+        {
+            "name":"accessibility_status_bar_wifi_3",
+            "value":"[TS_928811]_WLAN signal, three bars"
+        },
+        {
+            "name":"accessibility_status_bar_wifi_2",
+            "value":"[TS_928818]_WLAN signal, two bars"
+        },
+        {
+            "name":"accessibility_status_bar_wifi_1",
+            "value":"[TS_928812]_WLAN signal, one bar"
+        },
+        {
+            "name":"shared_network_tips1",
+            "value":"[TS_996723]_You can use %s's mobile network to access the Internet, make and receive calls, and send and receive messages."
+        },
+        {
+            "name":"shared_network_tips",
+            "value":"[TS_996724]_Using %s's mobile network."
+        },
+        {
+            "name":"shared_network_tips_network_messages",
+            "value":"[TS_1004509]_You can use %s's mobile network to access the Internet and send and receive messages."
+        },
+        {
+            "name":"shared_network_tips_network",
+            "value":"[TS_1004507]_You can use %s's mobile network to access the Internet."
+        },
+        {
+            "name":"shared_network_tips_network_calls",
+            "value":"[TS_1004508]_You can use %s's mobile network to access the Internet and make and receive calls."
+        }
+    ]
+}

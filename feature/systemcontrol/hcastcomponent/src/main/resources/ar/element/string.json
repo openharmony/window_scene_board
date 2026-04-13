@@ -1,0 +1,67 @@
+{
+    "string":[
+        {
+            "name":"title_open_wlan_and_bluetooth",
+            "value":"مطلوب أولًا تشغيل WLAN والبلوتوث لاستخدام ميزة بث الشاشة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"btn_turn_on",
+            "value":"تشغيل",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wireless_projection_toggle",
+            "value":"بث الشاشة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"title_projection_fail",
+            "value":"تعذر الاتصال",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"text_open_wlan_and_bluetooth",
+            "value":"هذه المتطلبات لتسهيل اكتشاف الأجهزة وبث الصوت والفيديو.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"projection_privacy_statement",
+            "value":"تحتاج هذه الخدمة إلى منحها إذن الاتصال بالجهاز لتشغيل البلوتوث واستخدامه بالإضافة إلى WLAN. علمًا بأنها ستقوم بتسجيل صوت الجهاز والمحتوى الظاهر على الشاشة. بالنقر على \"أوافق\"، فأنت تعني بذلك موافقتك على هذه البنود.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"error_text_code_2",
+            "value":"أعد تشغيل WLAN والبلوتوث على كلا الجهازين وحاول مجددًا.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"privacy_hint",
+            "value":"اعرض محتوى شاشتك على شاشة أكبر.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"btn_agree",
+            "value":"أوافق",
+            "attr":{
+                "priority":"LT"
+            }
+        }
+    ]
+}

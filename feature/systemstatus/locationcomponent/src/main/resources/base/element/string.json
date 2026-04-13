@@ -1,0 +1,18 @@
+{
+    "string":[
+        {
+            "name":"control_center_complex_toggle_location_title",
+            "value":"Location",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_location",
+            "value":"The app sent a valid location request",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

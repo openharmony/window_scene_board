@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"accessibility_status_bar_vpn_connected",
+            "value":"Đã kết nối VPN",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

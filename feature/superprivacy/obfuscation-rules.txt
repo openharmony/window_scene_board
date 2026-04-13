@@ -1,0 +1,2 @@
+-remove-comments
+-enable-toplevel-obfuscation

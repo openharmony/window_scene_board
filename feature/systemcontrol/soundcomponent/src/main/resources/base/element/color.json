@@ -1,0 +1,20 @@
+{
+  "color": [
+    {
+      "name": "volume_icon_color",
+      "value": "#80000000"
+    },
+    {
+      "name": "volume_bg_color",
+      "value": "#2E000000"
+    },
+    {
+      "name": "volume_selected_bg_color",
+      "value": "#A5FFFFFF"
+    },
+    {
+      "name": "volume_title_bg_color",
+      "value": "#ff000000"
+    }
+  ]
+}

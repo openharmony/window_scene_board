@@ -1,0 +1,10 @@
+{
+  "module": {
+    "name": "launcher_pagedesktop",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ]
+  }
+}

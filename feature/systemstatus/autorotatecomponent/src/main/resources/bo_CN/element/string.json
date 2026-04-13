@@ -1,0 +1,18 @@
+{
+    "string":[
+        {
+            "name":"control_center_complex_toggle_auto_rotate_title",
+            "value":"འཁྱིལ་འཁོར་ལ་སྒོ་ལྕགས་རྒྱག",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"multi_window_opened",
+            "value":"རང་འདོད་སྒེའུ་ཁུང་མང་པོ་ཁ་ཕྱེ་ཟིན། འཕྲེད་ཡོལ་ལ་བཀོལ་དགོས།",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

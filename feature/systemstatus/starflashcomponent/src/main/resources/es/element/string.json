@@ -1,0 +1,18 @@
+{
+    "string":[
+        {
+            "name":"accessibility_status_bar_nearlink_open",
+            "value":"NearLink está activado",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_nearlink_connected",
+            "value":"NearLink conectado",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

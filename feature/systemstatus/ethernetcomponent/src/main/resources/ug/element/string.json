@@ -1,0 +1,18 @@
+{
+    "string":[
+        {
+            "name":"accessibility_ethernet_connected",
+            "value":"ئېفىر تورى ئۇلاندى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_ethernet_disconnected",
+            "value":"ئېفىر تورى ئۈزۈلدى",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

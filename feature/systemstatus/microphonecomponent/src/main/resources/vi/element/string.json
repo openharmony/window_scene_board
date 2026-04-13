@@ -1,0 +1,39 @@
+{
+    "string":[
+        {
+            "name":"button_turn_off",
+            "value":"Tắt",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"quick_toggle_microphone_label",
+            "value":"Micrô",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dialog_title_disable_microphone",
+            "value":"Tắt micrô?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dialog_text_disable_microphone",
+            "value":"Nếu tắt, sẽ không có ứng dụng hoặc dịch vụ nào sử dụng được micrô để gọi điện thoại, nhận đầu vào âm thanh hoặc đánh thức máy bằng giọng nói.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"button_cancel",
+            "value":"Hủy",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

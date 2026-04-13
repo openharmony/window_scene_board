@@ -1,0 +1,16 @@
+{
+  "float": [
+    {
+      "name": "ntf_list_content_border_radius",
+      "value": "12"
+    },
+    {
+      "name": "page_title_height",
+      "value": "64vp"
+    },
+    {
+      "name": "nav_back_image_bg_radius",
+      "value": "8vp"
+    }
+  ]
+}

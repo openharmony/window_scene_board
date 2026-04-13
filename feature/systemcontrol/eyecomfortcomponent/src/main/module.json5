@@ -1,0 +1,10 @@
+{
+  "module": {
+    "name": "eyecomfortcomponent",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ]
+  }
+}

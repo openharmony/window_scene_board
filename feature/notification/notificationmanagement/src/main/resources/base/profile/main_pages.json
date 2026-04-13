@@ -1,0 +1,15 @@
+{
+  "src": [
+    "pages/NotificationMgmtView",
+    "pages/NotificationMgmtViewTv",
+    "pages/StatusBarSetting",
+    "pages/ntfAndStatusBar",
+    "pages/ntfAndStatusBarPC",
+    "pages/NtfMoreSetting",
+    "pages/NtfSearchPage",
+    "pages/NotificationMgmtHalfModeView",
+    "pages/NtfLiveViewSwitchPage",
+    "pages/HomeNavigationView",
+    "pages/MetaServiceMgmtView"
+  ]
+}

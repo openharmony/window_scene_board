@@ -1,0 +1,62 @@
+{
+    "plural":[
+        {
+            "name":"duration_minutes_shortest_future",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"[TS_935242]_In %d min"
+                },
+                {
+                    "quantity":"other",
+                    "value":"[TS_935229]_In %d min"
+                },
+                {
+                    "quantity":"zero",
+                    "value":"[TS_935240]_In %d min"
+                },
+                {
+                    "quantity":"few",
+                    "value":"[TS_935231]_In %d min"
+                },
+                {
+                    "quantity":"many",
+                    "value":"[TS_935238]_In %d min"
+                },
+                {
+                    "quantity":"two",
+                    "value":"[TS_935236]_In %d min"
+                }
+            ]
+        },
+        {
+            "name":"duration_minutes_shortest",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"[TS_935230]_%d min ago"
+                },
+                {
+                    "quantity":"one",
+                    "value":"[TS_935239]_%d min ago"
+                },
+                {
+                    "quantity":"zero",
+                    "value":"[TS_935233]_%d min ago"
+                },
+                {
+                    "quantity":"few",
+                    "value":"[TS_935241]_%d min ago"
+                },
+                {
+                    "quantity":"many",
+                    "value":"[TS_935237]_%d min ago"
+                },
+                {
+                    "quantity":"two",
+                    "value":"[TS_935234]_%d min ago"
+                }
+            ]
+        }
+    ]
+}

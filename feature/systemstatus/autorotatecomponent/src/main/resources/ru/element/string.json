@@ -1,0 +1,18 @@
+{
+    "string":[
+        {
+            "name":"control_center_complex_toggle_auto_rotate_title",
+            "value":"Блокировка ориентации",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"multi_window_opened",
+            "value":"Включен режим плавающих окон. Он доступен только в горизонтальной ориентации.",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

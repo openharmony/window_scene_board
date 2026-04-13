@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"accessibility_status_bar_vpn_connected",
+            "value":"VPN 연결됨",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

@@ -1,0 +1,88 @@
+{
+    "string":[
+        {
+            "name":"shutdown_dialog_content",
+            "value":"電量即將耗盡，裝置稍後將自動關機。",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"shutdown_dialog_title",
+            "value":"注意",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_battery_level",
+            "value":"電池電量 %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_battery_charge",
+            "value":"正在充電，已完成 %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_battery_charge_double",
+            "value":"正在快速充電，已完成 %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_battery_supercharge",
+            "value":"正在進行超級快充，已完成 %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"shutdown_dialog_content_new",
+            "value":"電量即將用盡，裝置將在 %d 秒後自動關機。",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"battery_emergency_dialog_content",
+            "value":"電量即將用盡，裝置將在 %d 秒後進入低電量緊急模式。",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"low_battery_ntf_title",
+            "value":"電量低",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"low_battery_ntf_content",
+            "value":"剩餘 %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"low_battery_ntf_btn_text",
+            "value":"啟用省電模式",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_battery_power_saving",
+            "value":"省電模式",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

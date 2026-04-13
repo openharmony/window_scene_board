@@ -1,0 +1,68 @@
+{
+    "string":[
+        {
+            "name":"module_desc",
+            "value":"module description"
+        },
+        {
+            "name":"immersive_sys_no_auth_tips",
+            "value":"Enable Location Services to enjoy more features.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"immersive_app_no_auth_tips",
+            "value":"Grant Location access to enjoy more features.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"immersive_app_sys_no_auth_tips",
+            "value":"To enjoy more features, grant Location access and make sure Location Services is on.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"immersive_go_auth",
+            "value":"Go to Settings",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"immersive_card_tip_status_up",
+            "value":"Card expanded",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"immersive_card_tip_status_down",
+            "value":"Card collapsed",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"immersive_card_tip_to_up",
+            "value":"Expand, button, double tap to activate",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"immersive_card_tip_to_down",
+            "value":"Collapse, button, double tap to activate",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+      {
+        "name": "psd_back_accessible",
+        "value": "返回 按钮"
+      }
+    ]
+}

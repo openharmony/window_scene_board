@@ -1,0 +1,9 @@
+{
+  "module": {
+    "name": "dpintogglecomponent",
+    "type": "har",
+    "deviceTypes": [
+      "tablet"
+    ]
+  }
+}

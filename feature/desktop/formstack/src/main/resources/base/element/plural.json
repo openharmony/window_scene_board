@@ -1,0 +1,42 @@
+{
+    "plural":[
+        {
+            "name":"stack_request_focus_front_text",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"Widget stack, %d widget in total",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"Widget stack, %d widgets in total",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"expand_stack_request_focus_after_text",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"%d item in total. There are options available. Double-tap to collapse the stack and place this widget on top. Double-tap and hold to drag the widget up and down",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"%d items in total. There are options available. Double-tap to collapse the stack and place this widget on top. Double-tap and hold to drag the widget up and down",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

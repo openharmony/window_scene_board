@@ -1,0 +1,10 @@
+{
+  "module": {
+    "name": "carcast",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ]
+  }
+}

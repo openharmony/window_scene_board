@@ -1,0 +1,151 @@
+{
+    "string":[
+        {
+            "name":"regular_verify_psd_for_security",
+            "value":"كلمة المرور مطلوبة لتعزيز الحماية",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_incorrect_hardware_error",
+            "value":"خطأ في التحقق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"regular_verify_pin_for_security",
+            "value":"رقم الدخول مطلوب لتعزيز الحماية",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"text_loading",
+            "value":"جارٍ التحميل…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"fp_incorrect_fp_try_again",
+            "value":"تأكد من تغطية إصبعك لقارئ البصمات بالكامل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_enter_psd_mix",
+            "value":"أدخل كلمة المرور",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_incorrect_will_locked",
+            "value":"رقم دخول خاطئ. سيتم قفل الجهاز لمدة %2$s بعد %1$s.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"please_enter_psd_for_security",
+            "value":"مطلوب إدخال كلمة المرور للأمان الإضافي",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_incorrect_psd_try_again",
+            "value":"رقم دخول خاطئ. يُرجى إعادة المحاولة.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pattern_incorrect_will_locked",
+            "value":"نمط الدخول غير صحيح. سيتم قفل الجهاز لمدة %2$s بعد %1$s.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_enter_psd",
+            "value":"أدخل رقم الدخول",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_incorrect_psd_try_again_mix",
+            "value":"كلمة مرور خاطئة، يُرجى إعادة المحاولة.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_try_again_after_time1",
+            "value":"أعد المحاولة بعد %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"restart_enter_pin",
+            "value":"مطلوب إدخال رقم الدخول عقب إعادة التشغيل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"restart_enter_psd",
+            "value":"مطلوب إدخال كلمة المرور عقب إعادة التشغيل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"fp_disable_enter_psd",
+            "value":"تم إيقاف ميزة بصمة الإصبع، يُرجى إدخال رقم الدخول.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"device_restart_enter_psd",
+            "value":"مطلوب إدخال كلمة المرور عقب إعادة التشغيل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pattern_psd_incorrect_psd_try_again",
+            "value":"نمط دخولٍ خاطئ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"fingerprint_incorrect_will_locked",
+            "value":"تعذر التعرف على بصمة الإصبع، سيتم قفل الجهاز لمدة %2$s بعد %1$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pattern_psd_drawing_completed",
+            "value":"تم رسم نمط الدخول",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"please_enter_pin_for_security",
+            "value":"رقم الدخول مطلوب لتعزيز الحماية",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

@@ -1,0 +1,67 @@
+{
+    "string":[
+        {
+            "name":"title_open_wlan_and_bluetooth",
+            "value":"Включите WLAN и Bluetooth, чтобы использовать Трансляцию экрана",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"btn_turn_on",
+            "value":"Включить",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wireless_projection_toggle",
+            "value":"Трансляция экрана",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"title_projection_fail",
+            "value":"Сбой подключения",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"text_open_wlan_and_bluetooth",
+            "value":"Это необходимо для обнаружения устройств и передачи потокового аудио или видео.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"projection_privacy_statement",
+            "value":"Этой службе требуется право подключения устройств для включения Bluetooth и использования Bluetooth и WLAN. Она также будет записывать аудио устройства и контент на экране. Нажимая Принимаю, вы принимаете данные положения.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"error_text_code_2",
+            "value":"Выключите и снова включите WLAN и Bluetooth на обоих устройствах и повторите попытку.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"privacy_hint",
+            "value":"Трансляция экрана на большой дисплей.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"btn_agree",
+            "value":"Принимаю",
+            "attr":{
+                "priority":"LT"
+            }
+        }
+    ]
+}

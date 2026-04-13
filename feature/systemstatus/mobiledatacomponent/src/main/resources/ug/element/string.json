@@ -1,0 +1,39 @@
+{
+    "string":[
+        {
+            "name":"control_center_complex_toggle_mobiledata_title",
+            "value":"كۆچمە ئېقىم",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_mobiledata_title_on",
+            "value":"كارتا %d ئېقىمى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_mobiledata_toast",
+            "value":"كۆچمە ئېقىم تاللانمىسىنى باشقۇرۇش ئۈچۈن دۇنيا كېزەر يۈرۈشلۈكىنى ئېتىڭ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_mobiledata_usage",
+            "value":"ئىشلەتكەن ‎%s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_mobiledata_title_on_esim",
+            "value":"\u200feSIM %d ئېقىمى",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

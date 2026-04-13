@@ -1,0 +1,16 @@
+{
+    "string":[
+        {
+            "name":"togglehome_MainAbility",
+            "value":"[TS_968804]_togglehome_MainAbility"
+        },
+        {
+            "name":"mainability_description",
+            "value":"[TS_968803]_ETS_Empty Feature Ability"
+        },
+        {
+            "name":"back_home",
+            "value":"[TS_969885]_Back to home screen"
+        }
+    ]
+}

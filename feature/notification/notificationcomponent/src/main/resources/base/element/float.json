@@ -1,0 +1,1243 @@
+{
+  "float": [
+    {
+      "name": "ntf_none_vp",
+      "value": "0vp"
+    },
+    {
+      "name": "ntf_item_header_height",
+      "value": "40vp"
+    },
+    {
+      "name": "ntf_small_icon_size",
+      "value": "16vp"
+    },
+    {
+      "name": "ntf_button_size_in_tint",
+      "value": "24vp"
+    },
+    {
+      "name": "ntf_small_icon_size_phone",
+      "value": "32vp"
+    },
+    {
+      "name": "ntf_overlay_icon_size_phone",
+      "value": "40vp"
+    },
+    {
+      "name": "ntf_small_icon_with_overlay_icon_size_phone",
+      "value": "16vp"
+    },
+    {
+      "name": "ntf_small_icon_offset_phone",
+      "value": "12vp"
+    },
+    {
+      "name": "ntf_overlay_icon_offset_phone",
+      "value": "-4vp"
+    },
+    {
+      "name": "ntf_item_right_with_overlay_icon_radius",
+      "value": "4vp"
+    },
+    {
+      "name": "ntf_small_iconn_with_overlay_icon_size_in_tint",
+      "value": "12vp"
+    },
+    {
+      "name": "ntf_small_icon_in_tint_offset_phone",
+      "value": "7.5vp"
+    },
+    {
+      "name": "ntf_action_button_with_overlay_icon_radius",
+      "value": "3vp"
+    },
+    {
+      "name": "ntf_small_icon_size_in_tint",
+      "value": "20vp"
+    },
+    {
+      "name": "ntf_small_list_icon_size",
+      "value": "22vp"
+    },
+    {
+      "name": "ntf_small_list_icon_margin",
+      "value": "5vp"
+    },
+    {
+      "name": "ntf_small_list_width",
+      "value": "96vp"
+    },
+    {
+      "name": "ntf_small_list_height",
+      "value": "80vp"
+    },
+    {
+      "name": "ntf_app_name_font_size",
+      "value": "12fp"
+    },
+    {
+      "name": "ntf_app_time_font_size",
+      "value": "12fp"
+    },
+    {
+      "name": "ntf_header_common_margin",
+      "value": "8vp"
+    },
+    {
+      "name": "ntf_header_common_margin_top",
+      "value": "4vp"
+    },
+    {
+      "name": "ntf_remain_count_height",
+      "value": "16vp"
+    },
+    {
+      "name": "ntf_remain_count_lineHeight",
+      "value": "16fp"
+    },
+    {
+      "name": "ntf_header_setting_land_bottom_margin",
+      "value": "-8vp"
+    },
+    {
+      "name": "ntf_header_margin_16",
+      "value": "16vp"
+    },
+    {
+      "name": "ntf_header_margin_4",
+      "value": "4vp"
+    },
+    {
+      "name": "ntf_item_corner_radius",
+      "value": "16vp"
+    },
+    {
+      "name": "ntf_pc_click_menu_radius",
+      "value": "16vp"
+    },
+    {
+      "name": "ntf_item_padding_start_end",
+      "value": "12vp"
+    },
+    {
+      "name": "ntf_item_overlay_padding_start_end",
+      "value": "4vp"
+    },
+    {
+      "name": "ntf_item_padding_start_end_outer_home_fold",
+      "value": "8vp"
+    },
+    {
+      "name": "ntf_pc_item_padding_start_end",
+      "value": "11vp"
+    },
+    {
+      "name": "ntf_content_padding_start_end",
+      "value": "12vp"
+    },
+    {
+      "name": "ntf_item_padding_title",
+      "value": "24vp"
+    },
+    {
+      "name": "tint_ntf_item_padding_start_end",
+      "value": "8vp"
+    },
+    {
+      "name": "expand_tint_ntf_item_padding_start_end",
+      "value": "6vp"
+    },
+    {
+      "name": "tint_ntf_item_padding_left_right",
+      "value": "16vp"
+    },
+    {
+      "name": "tint_ntf_title_padding_end",
+      "value": "8vp"
+    },
+    {
+      "name": "tint_ntf_time_view_width",
+      "value": "36vp"
+    },
+    {
+      "name": "tint_ntf_subtitle_padding_end",
+      "value": "12vp"
+    },
+    {
+      "name": "ntf_title_icon_space",
+      "value": "12vp"
+    },
+    {
+      "name": "ntf_list_item_padding_start_end",
+      "value": "16vp"
+    },
+    {
+      "name": "ntf_list_item_padding_start_end_outer_home",
+      "value": "16vp"
+    },
+    {
+      "name": "ntf_list_last_item_margin_bottom",
+      "value": "0"
+    },
+    {
+      "name": "ntf_list_item_padding_bottom",
+      "value": "32vp"
+    },
+    {
+      "name": "ntf_list_land_item_padding_bottom",
+      "value": "16vp"
+    },
+    {
+      "name": "ntf_item_right_icon_radius",
+      "value": "8vp"
+    },
+    {
+      "name": "ntf_item_right_icon_size",
+      "value": "30vp"
+    },
+    {
+      "name": "ntf_item_menu_icon_size",
+      "value": "40vp"
+    },
+    {
+      "name": "ntf_list_item_radius",
+      "value": "0"
+    },
+    {
+      "name": "ntf_clear_button_icon_size",
+      "value": "48vp"
+    },
+    {
+      "name": "ntf_item_bottom_pic_top_margin",
+      "value": "13vp"
+    },
+    {
+      "name": "ntf_title_font_size",
+      "value": "14fp"
+    },
+    {
+      "name": "ntf_group_brief_title_and_content_margin",
+      "value": "8vp"
+    },
+    {
+      "name": "ntf_group_brief_title_and_content_margin_fp",
+      "value": "8fp"
+    },
+    {
+      "name": "ntf_remainder_count_font_size",
+      "value": "12fp"
+    },
+    {
+      "name": "ntf_title_land_font_size",
+      "value": "14vp"
+    },
+    {
+      "name": "ntf_action_button_height",
+      "value": "48vp"
+    },
+    {
+      "name": "ntf_setting_button_height",
+      "value": "40"
+    },
+    {
+      "name": "ntf_action_send_icon_size",
+      "value": "24vp"
+    },
+    {
+      "name": "ntf_action_button_radius",
+      "value": "4vp"
+    },
+    {
+      "name": "ntf_action_edit_margin_right",
+      "value": "8vp"
+    },
+    {
+      "name": "ntf_action_button_del_icon_bin_height",
+      "value": "20vp"
+    },
+    {
+      "name": "ntf_action_menu_width",
+      "value": "140vp"
+    },
+    {
+      "name": "ntf_action_button_del_icon_bin_width",
+      "value": "19vp"
+    },
+    {
+      "name": "ntf_action_send_padding_start_end",
+      "value": "16vp"
+    },
+    {
+      "name": "ntf_action_send_margin_bottom",
+      "value": "8vp"
+    },
+    {
+      "name": "ntf_action_send_margin_top",
+      "value": "12vp"
+    },
+    {
+      "name": "ntf_text_line_height",
+      "value": "20vp"
+    },
+    {
+      "name": "ntf_text_line_height_fp",
+      "value": "20fp"
+    },
+    {
+      "name": "ntf_text_title_line_height",
+      "value": "19vp"
+    },
+    {
+      "name": "ntf_text_title_line_height_fp",
+      "value": "20fp"
+    },
+    {
+      "name": "ntf_hide_content_margin_top",
+      "value": "2vp"
+    },
+    {
+      "name": "ntf_text_title_height",
+      "value": "20vp"
+    },
+    {
+      "name": "ntf_center_header_pc_height",
+      "value": "56vp"
+    },
+    {
+      "name": "ntf_center_title_font_size",
+      "value": "20fp"
+    },
+    {
+      "name": "ntf_center_title_width",
+      "value": "225vp"
+    },
+    {
+      "name": "ntf_center_btn_hover_size",
+      "value": "8vp"
+    },
+    {
+      "name": "ntf_empty_icon_size",
+      "value": "120vp"
+    },
+    {
+      "name": "ntf_empty_font_size",
+      "value": "16fp"
+    },
+    {
+      "name": "ntf_center_header_phone_height",
+      "value": "92vp"
+    },
+    {
+      "name": "ntf_center_header_phone_land_height",
+      "value": "56vp"
+    },
+    {
+      "name": "ntf_center_time_font_size",
+      "value": "40fp"
+    },
+    {
+      "name": "ntf_center_time_font_size_land",
+      "value": "36vp"
+    },
+    {
+      "name": "ntf_center_land_time_font_size",
+      "value": "24fp"
+    },
+    {
+      "name": "ntf_empty_font_top_margin",
+      "value": "40vp"
+    },
+    {
+      "name": "ntf_clear_btn_margin",
+      "value": "32vp"
+    },
+    {
+      "name": "ntf_clear_btn_padding",
+      "value": "44vp"
+    },
+    {
+      "name": "ntf_clear_btn_padding_outer_home",
+      "value": "16vp"
+    },
+    {
+      "name": "ntf_clear_btn_padding_bottom_land",
+      "value": "35vp"
+    },
+    {
+      "name": "ntf_clear_btn_padding_land",
+      "value": "30vp"
+    },
+    {
+      "name": "ntf_clear_btn_padding_pad",
+      "value": "36vp"
+    },
+    {
+      "name": "ntf_center_pannel_bottom_space",
+      "value": "24vp"
+    },
+    {
+      "name": "ntf_center_pannel_bottom_space_land",
+      "value": "12vp"
+    },
+    {
+      "name": "ntf_pc_close_container_size",
+      "value": "24vp"
+    },
+    {
+      "name": "ntf_pc_close_icon_size",
+      "value": "14vp"
+    },
+    {
+      "name": "ntf_pc_close_x_offset",
+      "value": "4vp"
+    },
+    {
+      "name": "ntf_pc_close_y_offset",
+      "value": "-8vp"
+    },
+    {
+      "name": "ntf_big_pic_max_height",
+      "value": "284vp"
+    },
+    {
+      "name": "ntf_menu_margin_top",
+      "value": "28vp"
+    },
+    {
+      "name": "ntf_menu_margin_top_keyguard",
+      "value": "17vp"
+    },
+    {
+      "name": "ntf_pc_click_menu_width",
+      "value": "156vp"
+    },
+    {
+      "name": "ntf_pc_click_menu_height",
+      "value": "152vp"
+    },
+    {
+      "name": "ntf_pc_menu_item_height",
+      "value": "40vp"
+    },
+    {
+      "name": "ntf_qxs_pc_menu_item_height",
+      "value": "48vp"
+    },
+    {
+      "name": "ntf_pc_click_menu_padding_left",
+      "value": "4vp"
+    },
+    {
+      "name": "ntf_pc_click_menu_padding_top",
+      "value": "2vp"
+    },
+    {
+      "name": "ntf_qxs_pc_click_menu_padding_top",
+      "value": "4vp"
+    },
+    {
+      "name": "ntf_pc_click_menu_padding_right",
+      "value": "4vp"
+    },
+    {
+      "name": "ntf_pc_click_menu_padding_bottom",
+      "value": "4vp"
+    },
+    {
+      "name": "ntf_pc_menu_item_padding_left",
+      "value": "12vp"
+    },
+    {
+      "name": "ntf_pc_menu_item_margin_top",
+      "value": "2vp"
+    },
+    {
+      "name": "ntf_pc_menu_item_border",
+      "value": "2vp"
+    },
+    {
+      "name": "ntf_pc_menu_item_border_radius",
+      "value": "4vp"
+    },
+    {
+      "name": "ntf_list_top_padding",
+      "value": "8vp"
+    },
+    {
+      "name": "ntf_settings_dialog_title_height",
+      "value": "56vp"
+    },
+    {
+      "name": "ntf_settings_dialog_radius",
+      "value": "24vp"
+    },
+    {
+      "name": "ntf_setting_dialog_title_font_size",
+      "value": "20fp"
+    },
+    {
+      "name": "ntf_settings_dialog_content_font_size",
+      "value": "16fp"
+    },
+    {
+      "name": "ntf_settings_dialog_content_line_height",
+      "value": "21vp"
+    },
+    {
+      "name": "ntf_setting_dialog_item_height",
+      "value": "40vp"
+    },
+    {
+      "name": "ntf_setting_dialog_icon_size",
+      "value": "32vp"
+    },
+    {
+      "name": "ntf_setting_dialog_item_margin",
+      "value": "4vp"
+    },
+    {
+      "name": "ntf_arrow_width",
+      "value": "16vp"
+    },
+    {
+      "name": "ntf_arrow_height",
+      "value": "16vp"
+    },
+    {
+      "name": "tint_ntf_arrow_height",
+      "value": "10vp"
+    },
+    {
+      "name": "tint_ntf_arrow_width",
+      "value": "20vp"
+    },
+    {
+      "name": "ntf_pin_top_app_sub_icon_margin",
+      "value": "4vp"
+    },
+    {
+      "name": "ntf_pin_top_app_dialog_bottom_divider_height",
+      "value": "24vp"
+    },
+    {
+      "name": "ntf_pin_top_app_dialog_bottom_divider_width",
+      "value": "1px"
+    },
+    {
+      "name": "ntf_settings_dialog_padding",
+      "value": "16vp"
+    },
+    {
+      "name": "ntf_settings_dialog_padding_bottom",
+      "value": "16vp"
+    },
+    {
+      "name": "ntf_pin_top_app_dialog_content_padding",
+      "value": "16vp"
+    },
+    {
+      "name": "ntf_settings_dialog_bottom_button_margin_top",
+      "value": "8vp"
+    },
+    {
+      "name": "ntf_settings_dialog_bottom_button_margin_bottom",
+      "value": "16vp"
+    },
+    {
+      "name": "ntf_settings_dialog_app_name_height",
+      "value": "19vp"
+    },
+    {
+      "name": "ntf_settings_dialog_app_name_margin_top",
+      "value": "18vp"
+    },
+    {
+      "name": "ntf_settings_dialog_menu_item_height",
+      "value": "48vp"
+    },
+    {
+      "name": "ntf_settings_dialog_menu_item_margin",
+      "value": "4vp"
+    },
+    {
+      "name": "ntf_settings_dialog_width",
+      "value": "216vp"
+    },
+    {
+      "name": "ntf_settings_dialog_position_x",
+      "value": "200"
+    },
+    {
+      "name": "ntf_settings_dialog_position_y",
+      "value": "48"
+    },
+    {
+      "name": "ntf_pin_top_flag_padding_vertical",
+      "value": "2vp"
+    },
+    {
+      "name": "ntf_pin_top_flag_padding_horizontal",
+      "value": "5vp"
+    },
+    {
+      "name": "ntf_pin_top_flag_border_width",
+      "value": "1vp"
+    },
+    {
+      "name": "ntf_pin_top_flag_border_radius",
+      "value": "4vp"
+    },
+    {
+      "name": "ntf_pin_top_flag_font_size",
+      "value": "9vp"
+    },
+    {
+      "name": "ntf_pin_top_flag_line_height",
+      "value": "9vp"
+    },
+    {
+      "name": "headup_banner_top",
+      "value": "0vp"
+    },
+    {
+      "name": "ntf_header_inner_padding",
+      "value": "12vp"
+    },
+    {
+      "name": "ic_ntf_btn_manager_size",
+      "value": "40vp"
+    },
+    {
+      "name": "ic_ntf_btn_manager_border_radius",
+      "value": "20vp"
+    },
+    {
+      "name": "ntf_group_count_width",
+      "value": "34vp"
+    },
+    {
+      "name": "ntf_group_count_height",
+      "value": "16vp"
+    },
+    {
+      "name": "ntf_group_count_border_radius",
+      "value": "14vp"
+    },
+    {
+      "name": "ntf_center_title_height",
+      "value": "48vp"
+    },
+    {
+      "name": "ntf_center_title_margin_top",
+      "value": "15vp"
+    },
+    {
+      "name": "ntf_center_title_image_margin_top",
+      "value": "18vp"
+    },
+    {
+      "name": "ntf_extra_title_font_size",
+      "value": "14fp"
+    },
+    {
+      "name": "ntf_extra_title_height",
+      "value": "20vp"
+    },
+    {
+      "name": "ntf_extra_title_margin_top",
+      "value": "10vp"
+    },
+    {
+      "name": "ntf_extra_title_margin_bottom",
+      "value": "0.5vp"
+    },
+    {
+      "name": "ntf_extra_title_margin_start",
+      "value": "10vp"
+    },
+    {
+      "name": "ntf_extra_content_font",
+      "value": "12vp"
+    },
+    {
+      "name": "ntf_extra_content_font_size",
+      "value": "12fp"
+    },
+    {
+      "name": "ntf_extra_content_line_height",
+      "value": "14vp"
+    },
+    {
+      "name": "ntf_extra_content_width",
+      "value": "24vp"
+    },
+    {
+      "name": "ntf_extra_content_margin_top",
+      "value": "4vp"
+    },
+    {
+      "name": "ntf_extra_content_margin_bottom",
+      "value": "4vp"
+    },
+    {
+      "name": "ntf_extra_content_margin_left",
+      "value": "8vp"
+    },
+    {
+      "name": "ntf_extra_content_image_width",
+      "value": "20vp"
+    },
+    {
+      "name": "ntf_extra_content_image_height",
+      "value": "10vp"
+    },
+    {
+      "name": "ntf_extra_image_width",
+      "value": "11vp"
+    },
+    {
+      "name": "ntf_pc_extra_content_image_height",
+      "value": "14vp"
+    },
+    {
+      "name": "ntf_pc_extra_content_image_margin_top",
+      "value": "5vp"
+    },
+    {
+      "name": "ntf_pc_extra_content_image_margin_bottom",
+      "value": "5vp"
+    },
+    {
+      "name": "ntf_extra_content_image_margin_top",
+      "value": "7vp"
+    },
+    {
+      "name": "ntf_extra_content_image_margin_bottom",
+      "value": "7vp"
+    },
+    {
+      "name": "ntf_extra_content_image_margin_right",
+      "value": "2vp"
+    },
+    {
+      "name": "ntf_extra_content_image_margin_start",
+      "value": "4.5vp"
+    },
+    {
+      "name": "ntf_extra_button_radius",
+      "value": "12vp"
+    },
+    {
+      "name": "ntf_extra_button_line_height",
+      "value": "24vp"
+    },
+    {
+      "name": "ntf_extra_button_width",
+      "value": "54vp"
+    },
+    {
+      "name": "ntf_extra_button_margin_top",
+      "value": "16vp"
+    },
+    {
+      "name": "ntf_extra_button_margin_bottom",
+      "value": "8vp"
+    },
+    {
+      "name": "ntf_pc_extra_button_margin_right",
+      "value": "8vp"
+    },
+    {
+      "name": "ntf_extra_button_margin_right",
+      "value": "12vp"
+    },
+    {
+      "name": "ntf_extra_height",
+      "value": "40vp"
+    },
+    {
+      "name": "ntf_extra_brief_title_lineHeight",
+      "value": "20vp"
+    },
+    {
+      "name": "ntf_extra_brief_title_lineHeight_fp",
+      "value": "20fp"
+    },
+    {
+      "name": "ntf_extra_brief_header_margin_bottom",
+      "value": "2vp"
+    },
+    {
+      "name": "ntf_extra_brief_header_height",
+      "value": "19vp"
+    },
+    {
+      "name": "ntf_extra_brief_content_height",
+      "value": "20vp"
+    },
+    {
+      "name": "ntf_extra_brief_main_margin_top",
+      "value": "14vp"
+    },
+    {
+      "name": "ntf_extra_brief_main_margin_bottom",
+      "value": "11vp"
+    },
+    {
+      "name": "ntf_heads_up_drop_width",
+      "value": "48vp"
+    },
+    {
+      "name": "ntf_heads_up_drop_height",
+      "value": "4vp"
+    },
+    {
+      "name": "immersive_ntf_heads_up_drop_margin_bottom",
+      "value": "4vp"
+    },
+    {
+      "name": "ntf_heads_up_drop_margin_bottom",
+      "value": "6vp"
+    },
+    {
+      "name": "ntf_has_drop_bar_add_height",
+      "value": "10vp"
+    },
+    {
+      "name": "ntf_pc_click_menu_inner_boarder_width",
+      "value": "1vp"
+    },
+    {
+      "name": "ntf_pc_click_menu_outer_boarder_width",
+      "value": "1vp"
+    },
+    {
+      "name": "ntf_pc_click_menu_inner_boarder_radius",
+      "value": "16vp"
+    },
+    {
+      "name": "ntf_pc_click_menu_outer_boarder_radius",
+      "value": "17vp"
+    },
+    {
+      "name": "ntf_pc_banner_inner_boarder_width",
+      "value": "1vp"
+    },
+    {
+      "name": "ntf_pc_banner_outer_boarder_width",
+      "value": "1vp"
+    },
+    {
+      "name": "ntf_pc_banner_inner_boarder_radius",
+      "value": "16vp"
+    },
+    {
+      "name": "ntf_pc_banner_outer_boarder_radius",
+      "value": "16vp"
+    },
+    {
+      "name": "ntf_click_menu_padding_start_end",
+      "value": "16vp"
+    },
+    {
+      "name": "ntf_pc_click_menu_shadow_radius",
+      "value": "60vp"
+    },
+    {
+      "name": "ntf_scrollbar_inner_width",
+      "value": "4vp"
+    },
+    {
+      "name": "ntf_scrollbar_width",
+      "value": "8vp"
+    },
+    {
+      "name": "ntf_scrollbar_height",
+      "value": "278vp"
+    },
+    {
+      "name": "ntf_scrollbar_opacity",
+      "value": "0.4"
+    },
+    {
+      "name": "ntf_scrollbar_padding_bottom",
+      "value": "16vp"
+    },
+    {
+      "name": "ntf_scrollbar_margin_right",
+      "value": "-12vp"
+    },
+    {
+      "name": "ntf_buttons_divier_height",
+      "value": "22vp"
+    },
+    {
+      "name": "ntf_buttons_top_bottom_margin",
+      "value": "8vp"
+    },
+    {
+      "name": "ntf_divider_opacity",
+      "value": "0.15"
+    },
+    {
+      "name": "ntf_action_view_brightness",
+      "value": "0.95"
+    },
+    {
+      "name": "ntf_settings_menu_offset",
+      "value": "8vp"
+    },
+    {
+      "name": "ntf_background_brightness_rate",
+      "value": "0"
+    },
+    {
+      "name": "ntf_background_brightness_degree",
+      "value": "0"
+    },
+    {
+      "name": "ntf_close_background_brightness_rate",
+      "value": "0"
+    },
+    {
+      "name": "ntf_close_background_brightness_degree",
+      "value": "0"
+    },
+    {
+      "name": "ntf_close_inner_border_radius",
+      "value": "12vp"
+    },
+    {
+      "name": "ntf_close_inner_border_width",
+      "value": "1vp"
+    },
+    {
+      "name": "ntf_close_outer_border_radius",
+      "value": "12vp"
+    },
+    {
+      "name": "ntf_close_outer_border_width",
+      "value": "1vp"
+    },
+    {
+      "name": "ntf_settings_dialog_max_height",
+      "value": "189"
+    },
+    {
+      "name": "ntf_settings_dialog_left_margin",
+      "value": "12"
+    },
+    {
+      "name": "ntf_settings_dialog_top_margin",
+      "value": "0.64"
+    },
+    {
+      "name": "ntf_settings_dialog_margin",
+      "value": "8vp"
+    },
+    {
+      "name": "ntf_settings_dialog_border_radius",
+      "value": "20vp"
+    },
+    {
+      "name": "ntf_settings_dialog_menu_item_border_radius",
+      "value": "16vp"
+    },
+    {
+      "name": "ntf_aggregate_small_icon_size",
+      "value": "12vp"
+    },
+    {
+      "name": "ntf_aggregate_small_radius",
+      "value": "4vp"
+    },
+    {
+      "name": "ntf_aggregate_header_box_size",
+      "value": "20vp"
+    },
+    {
+      "name": "ntf_aggregate_header_box_radius",
+      "value": "5vp"
+    },
+    {
+      "name": "ntf_aggregate_header_small_size",
+      "value": "7.5vp"
+    },
+    {
+      "name": "ntf_aggregate_header_small_radius",
+      "value": "2.5vp"
+    },
+    {
+      "name": "ntf_aggregate_header_box_padding",
+      "value": "2vp"
+    },
+    {
+      "name": "ntf_aggregate_brief_box_padding",
+      "value": "3vp"
+    },
+    {
+      "name": "ntf_item_date_time_margin",
+      "value": "8vp"
+    },
+    {
+      "name": "ntf_item_date_time_margin_arrowshape",
+      "value": "5vp"
+    },
+    {
+      "name": "ntf_remainder_count_padding",
+      "value": "10vp"
+    },
+    {
+      "name": "nft_app_time_font_size",
+      "value": "12vp"
+    },
+    {
+      "name": "nft_brief_remain_count_width",
+      "value": "38vp"
+    },
+    {
+      "name": "ntf_app_more_close_press_padding",
+      "value": "4vp"
+    },
+    {
+      "name": "ntf_menu_dialog_divider_margin",
+      "value": "8vp"
+    },
+    {
+      "name": "ntf_menu_dialog_text_padding",
+      "value": "8vp"
+    },
+    {
+      "name": "ntf_action_button_response_region_height",
+      "value": "4vp"
+    },
+    {
+      "name": "ntf_title_time_font_size",
+      "value": "52.8vp"
+    },
+    {
+      "name": "ntf_title_pad_time_font_size",
+      "value": "70.4vp"
+    },
+    {
+      "name": "ntf_title_date_font_size",
+      "value": "16vp"
+    },
+    {
+      "name": "ntf_title_pad_date_font_size",
+      "value": "20vp"
+    },
+    {
+      "name": "ntf_title_date_margin_top",
+      "value": "11vp"
+    },{
+      "name": "ntf_land_title_date_margin_top",
+      "value": "5vp"
+    },
+    {
+      "name": "ntf_title_pad_data_font_size",
+      "value": "18vp"
+    },
+    {
+      "name": "ntf_title_data_font_size",
+      "value": "14vp"
+    },
+    {
+      "name": "ntf_data_plan_margin_top",
+      "value": "8vp"
+    },
+    {
+      "name": "ntf_title_padding_top",
+      "value": "32vp"
+    },
+    {
+      "name": "ntf_land_title_padding_top",
+      "value": "8vp"
+    },
+    {
+      "name": "ntf_land_pad_title_padding_top",
+      "value": "18.5vp"
+    },
+    {
+      "name": "ntf_pad_title_padding_top",
+      "value": "26.5vp"
+    },
+    {
+      "name": "ntf_title_padding_bottom",
+      "value": "16vp"
+    },
+    {
+      "name": "ntf_land_title_padding_bottom",
+      "value": "10vp"
+    },
+    {
+      "name": "ntf_close_hot_region_size",
+      "value": "32vp"
+    },
+    {
+      "name": "ntf_pin_top_app_icon_radius",
+      "value": "12vp"
+    },
+    {
+      "name": "ntf_pin_top_dialog_radius",
+      "value": "32vp"
+    },
+    {
+      "name": "ntf_menu_row_clear_button_radius",
+      "value": "20vp"
+    },
+    {
+      "name": "ntf_action_view_text_on_touch_effect_side_padding",
+      "value": "4vp"
+    },
+    {
+      "name": "ntf_action_view_text_on_touch_effect_up_down_padding",
+      "value": "2vp"
+    },
+    {
+      "name": "ntf_text_pc_title_line_height",
+      "value": "27vp"
+    },
+    {
+      "name": "ntf_list_content_border_radius",
+      "value": "20"
+    },
+    {
+      "name": "ntf_land_datetime_width",
+      "value": "92vp"
+    },
+    {
+      "name": "ntf_land_datetime_height",
+      "value": "206vp"
+    },
+    {
+      "name": "ntf_title_time_land_font_size",
+      "value": "67vp"
+    },
+    {
+      "name": "ntf_title_time_land_line_height",
+      "value": "72vp"
+    },
+    {
+      "name": "ntf_title_date_land_font_size",
+      "value": "21vp"
+    },
+    {
+      "name": "ntf_title_date_land_line_height",
+      "value": "22vp"
+    },
+    {
+      "name": "ntf_land_time_margin_top",
+      "value": "4vp"
+    },
+    {
+      "name": "ntf_land_date_weeks_margin_top",
+      "value": "5vp"
+    },
+    {
+      "name": "ntf_land_date_margin_top",
+      "value": "11vp"
+    },
+    {
+      "name": "ntf_land_date_time_margin_start",
+      "value": "48vp"
+    },
+    {
+      "name": "ntf_empty_font_land_top_padding",
+      "value": "8vp"
+    },
+    {
+      "name": "ntf_time_end_length",
+      "value": "12vp"
+    },
+    {
+      "name": "ntf_icon_Left_length",
+      "value": "12vp"
+    },
+    {
+      "name": "ntf_icon_right_length",
+      "value": "12vp"
+    },
+    {
+      "name": "ntf_button_right_length",
+      "value": "12vp"
+    },
+    {
+      "name": "ntf_button_left_length",
+      "value": "12vp"
+    },
+    {
+      "name": "single_item_card_margin",
+      "value": "26vp"
+    },
+    {
+      "name": "ntf_hidden_pin_top_time_margin",
+      "value": "12vp"
+    },
+    {
+      "name": "ntf_header_overlay_icon_size",
+      "value": "1vp"
+    },
+    {
+      "name": "ntf_item_shadow_border_padding_top",
+      "value": "2vp"
+    },
+    {
+      "name": "ntf_header_arrow_offset_top",
+      "value": "2vp"
+    },
+    {
+      "name": "page_notice_part_margin_t",
+      "value": "24vp"
+    },
+    {
+      "name": "page_title_height",
+      "value": "56vp"
+    },
+    {
+      "name": "nav_back_image_bg_width_height",
+      "value": "40vp"
+    },
+    {
+      "name": "nav_back_image_bg_radius",
+      "value": "20vp"
+    },
+    {
+      "name": "nav_back_image_width_height",
+      "value": "20vp"
+    },
+    {
+      "name": "nav_back_image_margin_l",
+      "value": "10vp"
+    },
+    {
+      "name": "appitem_item_height",
+      "value": "72vp"
+    },
+    {
+      "name": "itemComp_padding_r",
+      "value": "8vp"
+    },
+    {
+      "name": "status_bar_setting_status_bar_height",
+      "value": "39vp"
+    },
+    {
+      "name": "switchComp_padding_r",
+      "value": "12vp"
+    },
+    {
+      "name": "toggle_comp_width",
+      "value": "36vp"
+    },
+    {
+      "name": "toggle_comp_height",
+      "value": "20vp"
+    },
+    {
+      "name": "divider_margin_l",
+      "value": "16vp"
+    }
+  ]
+}

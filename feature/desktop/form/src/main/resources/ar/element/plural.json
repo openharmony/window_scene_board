@@ -1,0 +1,51 @@
+{
+    "plural":[
+        {
+            "name":"search_result_accessibility_text",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"تُعرض أدناه نتيجة بحث واحدة",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"تُعرض أدناه %d نتيجة بحث",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"zero",
+                    "value":"تُعرض أدناه %d نتائج بحث",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"few",
+                    "value":"تُعرض أدناه %d نتائج بحث",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"many",
+                    "value":"تُعرض أدناه %d نتيجة بحث",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"two",
+                    "value":"تُعرض أدناه نتيجتا بحث",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

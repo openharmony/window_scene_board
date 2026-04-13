@@ -1,0 +1,393 @@
+{
+    "string":[
+        {
+            "name":"theme_edit_apply",
+            "value":"적용",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"theme_edit_cancel",
+            "value":"취소",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"show_lock_screen_signature",
+            "value":"잠금 화면 서명",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"click_input_text",
+            "value":"텍스트 입력",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"widgets_two_click_accessible",
+            "value":"두 번 탭하여 활성화",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"EnterpriseDeviceDefaultText",
+            "value":"이 장치는 해당 조직에서 관리합니다",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_back",
+            "value":"뒤로",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"EnterpriseDeviceText",
+            "value":"이 장치는 %s에 의해 관리됩니다",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"checked",
+            "value":"선택됨",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"layout_tab_art",
+            "value":"맞춤형 포스터",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"art_signature_input_error_language",
+            "value":"중국어 또는 문자만 가능",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"art_signature_input_tip",
+            "value":"최대 %d자의 한자를 입력합니다.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"layout_tab_default",
+            "value":"디지털 시계",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"art_signature_input_title",
+            "value":"포스터 텍스트",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"art_signature_input_error_len",
+            "value":"문자 수 제한에 도달했습니다",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"clock_font_color",
+            "value":"글꼴 색상 %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"clock_font_style",
+            "value":"글꼴 스타일 %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"artfont_creation_reach_limit",
+            "value":"글꼴 제한 도달",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_font_cannot_delete",
+            "value":"사용 중인 글꼴은 삭제할 수 없습니다.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"artfont_creation_no_network",
+            "value":"인터넷 연결이 없습니다. 네트워크 설정을 확인하십시오.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"artfont_creation_delete_notice",
+            "value":"글꼴을 길게 터치하여 제거하고 새로 만드십시오.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"artfont_creation_confirm",
+            "value":"확인",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"artfont_creation_ocr_err",
+            "value":"식별에 실패했습니다. 다시 시도하십시오.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"service_form_area_accessible",
+            "value":"위젯 영역",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"clock_style",
+            "value":"시계 스타일 %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"unchecked",
+            "value":"선택되지 않음",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"more_edits",
+            "value":"편집 더 보기",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Double_click_and_hold_accessibility",
+            "value":"두 번 탭하고 길게 눌러 옵션 메뉴 열기",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"service_form_delete_button_accessible",
+            "value":"제거, 버튼",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"art_signature_style",
+            "value":"포스터 스타일 %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_four",
+            "value":"잠금 화면 글꼴 생성 서비스 및 개인 정보 보호에 대한 방침",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"artfont_creation_statement_agree",
+            "value":"동의",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screenlock_font_creation_service",
+            "value":"잠금 화면 글꼴 생성 서비스",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_one",
+            "value":"이 서비스는 클라우드 기반 AI를 사용하여 이미지에 포함된 텍스트를 기반으로 글꼴을 생성합니다. 생성된 글꼴은 잠금 화면 시계와 서명에 적용할 수 있습니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation",
+            "value":"글꼴 만들기",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_five",
+            "value":"이용 약관",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"art_signature_displayed_as_combined_character",
+            "value":"하나의 문자에 결합",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"art_signature_content_creation_failed",
+            "value":"글꼴을 생성할 수 없습니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"art_signature_try_combined_characters",
+            "value":"결합된 중국어 문자 선택",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"art_signature_combined_character",
+            "value":"결합된 중국어 문자",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_three",
+            "value":"이 서비스는 인터넷 연결이 필요하며, 잠금 화면 전면 생성 기능을 제공하기 위해 이미지를 읽고 업로드/전송해야 합니다. 당사는 귀하가 사용하는 기능과 관련된 개인정보만 수집합니다. 자세한 정보는 %1$s, %2$s의 내용을 참조하십시오.\n위 내용을 주의 깊게 읽어주시기 바랍니다. 동의를 탭하면 당사에서 이 서비스를 제공하는 데 동의함을 의미합니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"card_deleted",
+            "value":"%s 위젯이 삭제됨",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"art_signature_text_button_tip",
+            "value":"정보",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"art_signature_text_tip_content",
+            "value":"%d자 이하의 중국어 문자와 가장 잘 작동합니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"artfont_AI_creation",
+            "value":"AI 생성",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"please_input_text",
+            "value":"텍스트 입력",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"artfont_delete_description",
+            "value":"맞춤형 서명에서 이 글꼴을 사용 중이면 기본 글꼴로 돌아갑니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name": "layout_tab_artsign",
+            "value": "맞춤형 서명",
+            "attr": {
+                "priority": "translate"
+            }
+        },
+        {
+            "name":"artfont_delete_confirm",
+            "value":"이 글꼴을 제거하시겠습니까?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"artfont_delete_remove_button",
+            "value":"제거",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"artfont_long_press_delete",
+            "value":"길게 터치하여 편집하거나 제거합니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"art_signature",
+            "value":"맞춤형 서명",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+      {
+            "name":"AIGC_server_offline_title",
+            "value":"글꼴 크리에이션 서비스 오프라인",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"switch_combined_characters_fonts_prompt",
+            "value":"문자 조합에는 글꼴 전환을 사용할 수 없습니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"AIGC_server_offline_description",
+            "value":"이 기능은 현재 개선 작업이 진행 중이므로 일시적으로 사용할 수 없습니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+      {
+        "name": "unsupported_content",
+        "value": "지원되지 않는 문자가 포함되어 있습니다"
+      }
+    ]
+}

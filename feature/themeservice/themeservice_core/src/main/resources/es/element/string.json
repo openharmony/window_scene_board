@@ -1,0 +1,18 @@
+{
+    "string":[
+        {
+            "name":"Desktop_individuation",
+            "value":"Pantalla principal y estilo",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"theme_title",
+            "value":"Temas",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

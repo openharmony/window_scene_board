@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"app_not_support_full_screen",
+            "value":"このアプリでは全画面表示はサポートされていません。",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "@ohos/emergencymode",
+  "version": "1.0.0",
+  "description": "A npm package which contains emergency mode feature.",
+  "main": "index.ets",
+  "dependencies": {
+    "@ohos/basicutils": "file:../../../staticcommon/basecommon/basicutils",
+    "@ohos/windowscene": "../../../staticcommon/basecommon/windowscene",
+    "@ohos/frameworkwrapper": "../../../staticcommon/basecommon/frameworkwrapper",
+    "@ohos/commonconstants": "../../../staticcommon/basecommon/commonconstants",
+    "@ohos/launchercommon": "file:../../../staticcommon/launchercommon",
+    "@ohos/screenlockcomponent": "file:../../screenlockcomponent",
+    "@ohos/screenlockwidget": "file:../../screenlock/screenlockwidget"
+  }
+}

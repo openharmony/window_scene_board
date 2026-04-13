@@ -1,0 +1,16 @@
+{
+  "float": [
+    {
+      "name": "ntf_action_view_brightness",
+      "value": "1.04"
+    },
+    {
+      "name": "ntf_close_background_brightness_rate",
+      "value": "0.637"
+    },
+    {
+      "name": "ntf_close_background_brightness_degree",
+      "value": "0.207"
+    }
+  ]
+}

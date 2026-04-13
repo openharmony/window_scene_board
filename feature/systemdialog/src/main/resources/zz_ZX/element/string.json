@@ -1,0 +1,112 @@
+{
+    "string":[
+        {
+            "name":"poweroff_tips",
+            "value":"[TS_928823]_Press & hold the Power and Volume down buttons for at least %d seconds to force restart"
+        },
+        {
+            "name":"poweroff_fold_tips",
+            "value":"[TS_928809]_Press & hold the Power and Volume down buttons for at least %d seconds to force restart"
+        },
+        {
+            "name":"poweroff_fold_blank_top_height",
+            "value":"[TS_928815]_40%"
+        },
+        {
+            "name":"poweroff_blank_top_height",
+            "value":"[TS_928820]_40%"
+        },
+        {
+            "name":"poweroff_button_space",
+            "value":"[TS_928805]_40vp"
+        },
+        {
+            "name":"accessibility_reboot",
+            "value":"[TS_928816]_Restart"
+        },
+        {
+            "name":"Poweroff_Button_Reboot",
+            "value":"[TS_928824]_Restart"
+        },
+        {
+            "name":"poweroff_fold_button_space",
+            "value":"[TS_928808]_120vp"
+        },
+        {
+            "name":"PoweroffAbility_desc",
+            "value":"[TS_928822]_description"
+        },
+        {
+            "name":"Poweroff_Button_Shutdown",
+            "value":"[TS_928813]_Power off"
+        },
+        {
+            "name":"accessibility_power_off",
+            "value":"[TS_928814]_Power off"
+        },
+        {
+            "name":"accessibility_back",
+            "value":"[TS_928817]_Exit power off screen"
+        },
+        {
+            "name":"mainability_description",
+            "value":"[TS_803107]_System-Dialog ServiceExtensionAbility"
+        },
+        {
+            "name":"PoweroffAbility_reason",
+            "value":"[TS_928821]_reboot or shutdown"
+        },
+        {
+            "name":"Poweroff_Button_Click_Reboot",
+            "value":"[TS_954675]_Tap to restart"
+        },
+        {
+            "name":"Poweroff_Button_Click_Shutdown",
+            "value":"[TS_954676]_Tap to power off"
+        },
+        {
+            "name":"thermal_aware_toast",
+            "value":"[TS_1031533]_Unfold for a better experience."
+        },
+        {
+            "name":"power_schedule_switch_reminder",
+            "value":"[TS_1025107]_Power on as scheduled (%s)"
+        },
+        {
+            "name":"power_schedule_switch_toast",
+            "value":"[TS_1025104]_Your device won't automatically power back on."
+        },
+        {
+            "name":"off_find_no_action_confirm",
+            "value":"[TS_1033513]_OK"
+        },
+        {
+            "name":"off_find_checkbox",
+            "value":"[TS_1033516]_Keep Find Device enabled after power off"
+        },
+        {
+            "name":"off_find_disable_confirm",
+            "value":"[TS_1033512]_Disable Find Device"
+        },
+        {
+            "name":"off_find_alert_dialog_title",
+            "value":"[TS_1033515]_This device will still be findable even after being powered off"
+        },
+        {
+            "name":"off_find_alert_dialog_message",
+            "value":"[TS_1033514]_It can still be found using Find Device. If you disable Find Device now, it will be re-enabled the next time the device is powered on."
+        },
+        {
+            "name":"battery_emergency_dialog_content",
+            "value":"[TS_932723]_Battery extremely low. Power reserve mode activating in %d seconds."
+        },
+        {
+            "name":"shutdown_dialog_content_new",
+            "value":"[TS_932722]_Battery is about to run out. Powering off in %d seconds."
+        },
+        {
+            "name":"shutdown_dialog_title",
+            "value":"[TS_878159]_Note"
+        }
+    ]
+}

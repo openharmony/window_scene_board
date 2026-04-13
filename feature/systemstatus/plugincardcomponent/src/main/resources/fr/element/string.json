@@ -1,0 +1,144 @@
+{
+    "string":[
+        {
+            "name":"title_login_openharmony_account",
+            "value":"Se connecter pour utiliser Appareil+",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_name_desc",
+            "value":"Appareil+",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"account_button_login",
+            "value":"Se connecter",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"text_open_wlan_and_bluetooth_account",
+            "value":"Ceci est nécessaire pour détecter et collaborer avec des appareils.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"super_device_title_open_wlan_and_bluetooth",
+            "value":"Activer le WLAN et le Bluetooth pour utiliser Appareil+",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"super_device_disabled",
+            "value":"Activer Appareil+ ?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"button_enable",
+            "value":"Activer",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"device_connected_msg",
+            "value":"Connecté",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"tablet",
+            "value":"Tablette",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"capsuleTips",
+            "value":"Toucher deux fois pour ouvrir Appareil+",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"radarIconTipsBlank",
+            "value":"Bouton Appareil+, toucher deux fois pour activer",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"appSateCollaborating",
+            "value":"Collaboration en cours",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"TV",
+            "value":"TV",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"switch_audio",
+            "value":"Sortie audio changée pour \"%s\".",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Phone",
+            "value":"Téléphone",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Laptop",
+            "value":"Ordinateur",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Car",
+            "value":"Voiture",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"audio",
+            "value":"Périphérique audio",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"appSateCancel",
+            "value":"Terminer la collaboration",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"radarIconTips",
+            "value":"Bouton d'accès à Appareil+, toucher deux fois avec un doigt pour activer",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

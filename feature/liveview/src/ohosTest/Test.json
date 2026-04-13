@@ -1,0 +1,39 @@
+{
+  "description": "Configuration for SceneBoard Tests",
+  "driver": {
+    "type": "OHJSUnitTest",
+    "test-timeout": "180000",
+    "bundle-name": "com.ohos.sceneboard",
+    "module-name": "sceneboard_liveview_test",
+    "shell-timeout": "600000",
+    "testcase-timeout": "30000",
+    "compile-mode": "esmodule",
+    "coverage": true,
+    "package-tool-path": "D:\\Local\\coverage2.0\\node_modules\\@ohos\\coverage"
+  },
+  "kits": [
+    {
+      "type": "AppInstallKit",
+      "test-file-name": [
+        "liveviewTest.hap"
+      ],
+      "cleanup-apps": false
+    },
+    {
+      "type": "ShellKit",
+      "teardown-command": [],
+      "run-command": [
+        "mount -o remount,rw /",
+        "target mount",
+        "echo ENABLED > /etc/windowscene.config",
+        "param set persist.scb.testmode.enable true",
+        "grep -q '\"supportSCBCrashReboot\": true' /system/etc/ams_service_config.json && sed -i 's/\"supportSCBCrashReboot\": true,/\"supportSCBCrashReboot\": false,/' /system/etc/ams_service_config.json",
+        "reboot",
+        "param set persist.scb.testmode.enable true",
+        "power-shell wakeup",
+        "uinput -T -d 300 600 -m 300 600 300 100 -u 300 100",
+        "power-shell timeout -o 600000"
+      ]
+    }
+  ]
+}

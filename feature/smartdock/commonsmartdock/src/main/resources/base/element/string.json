@@ -1,0 +1,124 @@
+{
+    "string":[
+        {
+            "name":"is_delete_form",
+            "value":"是否移除"
+        },
+        {
+            "name":"isUninstall",
+            "value":"Uninstall %s?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_menu_open",
+            "value":"Open",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_center_menu_add_desktop",
+            "value":"Add to home screen",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"delete_app",
+            "value":"Remove",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remove_from_dock",
+            "value":"Remove from dock",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"duplicate_add",
+            "value":"This has already been added.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_beyond_max",
+            "value":"Max number of icons added.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_add_to_dock",
+            "value":"Unable to add.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_to_move",
+            "value":"禁止移动"
+        },
+        {
+            "name":"app_menu_clean",
+            "value":"Empty Recycle Bin",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"continue_mission_fail",
+            "value":"Handover failed.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"continue_mission_waiting",
+            "value":"Handing over…",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"continue_mission_fail_close_hotspot_and_try_again",
+            "value":"Handover failed. Disable the personal hotspot on %1$s and try again.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"continue_mission_fail_device_connecting_to_another_device",
+            "value":"Handover failed. %1$s is interacting with another device.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_menu_more",
+            "value":"More",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_menu_exit",
+            "value":"Quit",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"accessibility_dock",
+            "value":"Dock",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

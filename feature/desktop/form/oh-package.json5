@@ -1,0 +1,22 @@
+{
+  "devDependencies": {},
+  "name": "@ohos/form",
+  "description": "a npm package which contains form feature",
+  "main": "index.ets",
+  "version": "1.0.0",
+  "dependencies": {
+    "@ohos/basicutils": "../../../staticcommon/basecommon/basicutils",
+    "@ohos/windowscene": "../../../staticcommon/basecommon/windowscene",
+    "@ohos/frameworkwrapper": "../../../staticcommon/basecommon/frameworkwrapper",
+    "@ohos/commonconstants": "../../../staticcommon/basecommon/commonconstants",
+    "@ohos/frameworkpinyin": "../../../staticcommon/basecommon/frameworkpinyin",
+    "@ohos/componentanimator": "../../../staticcommon/basecommon/componentanimator",
+    "@ohos/componenthelper": "../../../staticcommon/basecommon/componenthelper",
+    "@ohos/componentdrag": "../../../staticcommon/basecommon/componentdrag",
+    "@ohos/swiperdata": "../../../staticcommon/basecommon/swiperdata",
+    "@ohos/systemuicommon": "../../../staticcommon/systemuicommon",
+    "@ohos/launchercommon": "../../../staticcommon/launchercommon",
+    "@ohos/screenlockcommon": "../../../staticcommon/screenlockcommon",
+    "@ohos/screenlockwidget": "file:../../screenlock/screenlockwidget"
+  }
+}

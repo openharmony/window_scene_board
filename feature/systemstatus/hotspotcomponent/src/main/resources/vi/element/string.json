@@ -1,0 +1,25 @@
+{
+    "string":[
+        {
+            "name":"control_center_complex_toggle_hotspot_title",
+            "value":"Điểm phát sóng cá nhân",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_hotspot_no_device",
+            "value":"Không có thiết bị nào",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"statusbar_talkbackhotspot01",
+            "value":"Đã bật điểm phát sóng",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

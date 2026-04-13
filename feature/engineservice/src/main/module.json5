@@ -1,0 +1,36 @@
+{
+  "module": {
+    "name": "engineservice",
+    "type": "feature",
+    "description": "$string:module_desc",
+    "mainElement": "EngineServiceAbility",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ],
+    "dependencies": [],
+    "deliveryWithInstall": true,
+    "installationFree": false,
+    "pages": "$profile:main_pages",
+    "extensionAbilities": [
+      {
+        "name": "EngineServiceAbility",
+        "srcEntry": "./ets/engineserviceability/EngineServiceAbility.ets",
+        "description": "$string:EngineServiceAbility_desc",
+        "icon": "$media:icon",
+        "label": "$string:EngineServiceAbility_label",
+        "exported": true,
+        "visible": true,
+        "type": "sys/commonUI",
+        "metadata": [
+          {
+            "name": "ohos.extension.servicetype",
+            "value": "share"
+          }
+        ],
+        "extensionProcessMode": "instance"
+      }
+    ],
+    "requestPermissions": []
+  }
+}

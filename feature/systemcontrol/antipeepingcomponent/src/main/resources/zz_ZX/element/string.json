@@ -1,0 +1,12 @@
+{
+    "string":[
+        {
+            "name":"free_window_closed",
+            "value":"[TS_1062781]_Turn on Free windows first."
+        },
+        {
+            "name":"anti_peeping_title",
+            "value":"[TS_1062782]_Screen Privacy"
+        }
+    ]
+}

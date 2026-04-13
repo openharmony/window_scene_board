@@ -1,0 +1,102 @@
+{
+    "string":[
+        {
+            "name":"app_menu_exit",
+            "value":"چېكىنىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remove_from_dock",
+            "value":"تېزلەتمە بالداقتىن چىقىرىۋېتىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_menu_open",
+            "value":"ئېچىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_menu_clean",
+            "value":"سېۋەتنى تازىلاش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_center_menu_add_desktop",
+            "value":"ئۈستەليۈزىگە قوشۇش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_dock_menu_suggest_title",
+            "value":"تەۋسىيەلىك ئەپلەر",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dock_hover_text_appcenter",
+            "value":"ئەپ مەركىزى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dock_hover_text_recentcenter",
+            "value":"ۋەزىپە مەركىزى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dock_hover_text_recyclebin",
+            "value":"سېۋەت",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_menu_open_new_window",
+            "value":"يېڭى كۆزنەك ئېچىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"continue_hap_come_from",
+            "value":"مەنبە: %1$s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_menu_exit_multiple",
+            "value":"بارلىق كۆزنەكنى ئېتىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_menu_exit_single",
+            "value":"كۆزنەك ئېتىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"more_app_icon",
+            "value":"كۆپرەك ئەپ",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

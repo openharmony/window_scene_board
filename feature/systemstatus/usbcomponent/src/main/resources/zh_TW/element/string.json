@@ -1,0 +1,18 @@
+{
+    "string":[
+        {
+            "name":"USBRemoved",
+            "value":"安全移除",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"usb_hover",
+            "value":"外接儲存空間",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

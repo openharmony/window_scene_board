@@ -1,0 +1,67 @@
+{
+    "string":[
+        {
+            "name":"wireless_projection_toggle",
+            "value":"無線投影",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"projection_privacy_statement",
+            "value":"本服務啟用裝置發現和連接權限，用以開啟藍牙開關，使用藍牙和 WLAN 功能，啟用本機錄音和錄屏，以提供投影的相關服務。輕觸「同意」，即表示您同意上述內容。",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"btn_agree",
+            "value":"同意",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"btn_turn_on",
+            "value":"開啟",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"title_projection_fail",
+            "value":"連接失敗",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"title_open_wlan_and_bluetooth",
+            "value":"「無線投影」需要啟用 WLAN 和藍牙",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"text_open_wlan_and_bluetooth",
+            "value":"用於發現裝置，以及傳輸音訊和影片。",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"error_text_code_2",
+            "value":"請重新啟動對方裝置和本機的 WLAN 及藍牙，然後再試。",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"privacy_hint",
+            "value":"可以將本機屏幕無線投影至大屏幕。",
+            "attr":{
+                "priority":"LT"
+            }
+        }
+    ]
+}

@@ -1,0 +1,480 @@
+{
+    "string":[
+        {
+            "name":"more_settings",
+            "value":"إعدادات إضافية",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"live_view_collapsed",
+            "value":"تم الطي",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"gesture_identified_successfully",
+            "value":"تم التعرف على الإيماءة بنجاح!",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"live_view_expanded",
+            "value":"تم التوسيع",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntf_center_title",
+            "value":"لوحة الإشعارات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"edm_operate_prohibit_tip",
+            "value":"تحظر إدارة المؤسسة هذه العملية",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_phone_timer_text",
+            "value":"مكالمة جارية",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_timing_timer_text",
+            "value":"المؤقت قيد التشغيل",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_count_down_timer_text",
+            "value":"جارٍ العد التنازلي",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_timing_capsule_timer_text",
+            "value":"التوقيت",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_count_down_capsule_timer_text",
+            "value":"جارٍ العد التنازلي",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"automatic_brightness",
+            "value":"ضبط تلقائي",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_edit_panel_tips_max_toggles",
+            "value":"يمكن إضافة %d اختصارًا كحدٍ أقصى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"live_view_authorization_confirm",
+            "value":"نعم",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"live_view_authorization_tip",
+            "value":"هل تريد متابعة تلقي التحديثات الحية من هذا التطبيق؟",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"confirm",
+            "value":"موافق",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"please_unlock",
+            "value":"افتح قفل الجهاز",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_edit_panel_tips_min_toggles",
+            "value":"يجب الاحتفاظ بما لا يقل عن %d اختصارات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"live_view_authorization_reject",
+            "value":"لا",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"smart_screenshot",
+            "value":"لقطة شاشة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"live_view_hide_tip",
+            "value":"افتح القفل لعرض التفاصيل",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"control_center",
+            "value":"لوحة التحكم",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntf_pin_top_dialog_reach_limit_title",
+            "value":"بلغ عدد التطبيقات المثبتة في الأعلى الحد الأقصى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"talkback_temperature",
+            "value":"درجة الحرارة العظمى %1$s. درجة الحرارة الصغرى %2$s.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"stop_font_creation_service",
+            "value":"إيقاف الخدمة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_open_ringer_mode_silent",
+            "value":"تم الكتم",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_entry_page_text",
+            "value":"دخول إلى لوحة التحكم",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"silence_dialog_title",
+            "value":"هل تريد استخدام الإشعارات الهادئة لتطبيق %s؟",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_open_ringer_mode_vibrate",
+            "value":"تم تشغيل الاهتزاز",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_close_state",
+            "value":"مغلق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_edit_coordinates",
+            "value":"الصف %1$d، العمود %2$d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_edit_remove_toggle",
+            "value":"إضافة %s إلى المكتبة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_edit_add_toggle_coordinates",
+            "value":"تمت الإضافة إلى الصف %1$d العمود %2$d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_edit_add_toggle",
+            "value":"إضافة %s إلى لوحة التحكم",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_ring_mode_click",
+            "value":"انقر مرتين للتبديل إلى %s،",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_click",
+            "value":"انقر مرتين للتفعيل،",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_switch_click",
+            "value":"انقر مرتين من أجل %s،",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_wifi_list",
+            "value":"عرض قائمة الشبكات اللاسلكية",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"face_verifing",
+            "value":"قيد التعرف على الوجه",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_wifi_open_def",
+            "value":"تم التشغيل. الشبكة اللاسلكية غير متصلة. زر تبديل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_open_ringer_mode_normal",
+            "value":"تم تشغيل الرنين",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_open_state",
+            "value":"مشغّل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_bluetooth_close",
+            "value":"تم الإيقاف. تم إيقاف البلوتوث. تبديل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_switch",
+            "value":"زر التبديل %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_wifi_open_conn",
+            "value":"تم التشغيل. اسم الشبكة اللاسلكية %s. زر تبديل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_edit_remove_toggle_action",
+            "value":"تمت الإضافة إلى المكتبة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_timer_str_hour_to_minute_to_second",
+            "value":"%1$s %2$s %3$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_bluetooth_open_conn",
+            "value":"تم التشغيل. بلوتوث %s. تبديل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_open_action",
+            "value":"إغلاق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_edit_remove_toggle_new",
+            "value":"إزالة، %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_bluetooth_name",
+            "value":"البلوتوث",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_toggle_unavailable",
+            "value":"لا يستجيب",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_bluetooth_open_def",
+            "value":"تم التشغيل. البلوتوث غير متصل. زر تبديل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_edit_move_toggle_coordinates",
+            "value":"زر التبديل %1$s في الصف %2$d العمود %3$d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"silent_notifications_dialog",
+            "value":"تكون الإشعارات الهادئة صامتة ولا تظهر إلا في لوحة الإشعارات.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_wifi_close",
+            "value":"تم الإيقاف. تم إيقاف الشبكة اللاسلكية. تبديل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"face_auth_recognize_success",
+            "value":"اكتملت عملية التحقق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_bluetooth_list",
+            "value":"عرض الأجهزة المقترنة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_long_click",
+            "value":"انقر مرتين ثم مطولاً لعرض المزيد من الخيارات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_close_action",
+            "value":"تم التشغيل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_connect_state",
+            "value":"متصل بشبكة %s،",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_common_button_str",
+            "value":"زر %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_timer_str_minute_to_second",
+            "value":"%1$s %2$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"data_remain",
+            "value":"المتبقي %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"data_total",
+            "value":"الإجمالي %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"data_use_today",
+            "value":"اليوم %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"data_exceed",
+            "value":"تم تجاوز الحد بمقدار %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"meta_service_live_view_authorization_tip",
+            "value":"هل تريد متابعة استلام التحديثات المباشرة من هذه الخدمة؟",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

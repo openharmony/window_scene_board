@@ -1,0 +1,80 @@
+{
+  "string": [
+    {
+      "name":"SuperPrivacyPaddlePanelAppearTitle",
+      "value":"Super Privacy on"
+    },
+    {
+      "name":"SuperPrivacyPaddlePanelDisappearTitle",
+      "value":"Super Privacy off"
+    },
+    {
+      "name":"SuperPrivacyPaddlePanelContent",
+      "value":"Apps can't access your camera, microphone, or location. To disable Super Privacy, flip the switch next to the keyboard."
+    },
+    {
+      "name":"SuperPrivacySoftPanelContent",
+      "value":"Apps can't access your camera, microphone, or location. To restore access, turn off Super Privacy mode."
+    },
+    {
+      "name":"SuperPrivacyPaddlePanelOffContent",
+      "value":"Camera, microphone, and location access restored. To enable Super Privacy, flip the switch next to the keyboard."
+    },
+    {
+      "name":"SuperPrivacySoftPanelOffContent",
+      "value":"Camera, microphone, and location access restored. To restrict access, turn on Super Privacy mode.",
+      "attr":{
+        "priority":"translate"
+      }
+    },
+    {
+      "name":"SuperPrivacyPanelUnderEdmControl1",
+      "value":"Your organization is managing location access.",
+      "attr":{
+        "priority":"translate"
+      }
+    },
+    {
+      "name":"SuperPrivacyPanelUnderEdmControl2",
+      "value":"Your organization is managing microphone access.",
+      "attr":{
+        "priority":"translate"
+      }
+    },
+    {
+      "name":"SuperPrivacyPanelUnderEdmControl3",
+      "value":"Your organization is managing microphone and location access.",
+      "attr":{
+        "priority":"translate"
+      }
+    },
+    {
+      "name":"SuperPrivacyPanelUnderEdmControl4",
+      "value":"Your organization is managing camera access.",
+      "attr":{
+        "priority":"translate"
+      }
+    },
+    {
+      "name":"SuperPrivacyPanelUnderEdmControl5",
+      "value":"Your organization is managing camera and location access.",
+      "attr":{
+        "priority":"translate"
+      }
+    },
+    {
+      "name":"SuperPrivacyPanelUnderEdmControl6",
+      "value":"Your organization is managing camera and microphone access.",
+      "attr":{
+        "priority":"translate"
+      }
+    },
+    {
+      "name":"SuperPrivacyPanelUnderEdmControl7",
+      "value":"Your organization is managing camera, microphone, and location access.",
+      "attr":{
+        "priority":"translate"
+      }
+    }
+  ]
+}

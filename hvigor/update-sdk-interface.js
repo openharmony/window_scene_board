@@ -32,14 +32,14 @@ const copyHmsPathFileArray = [
         path: './ets/api/',
         file: '../product/pcbase/src/main/ets/SceneBoard/virtualmachine/@hms.virtService.vmManagerInner.d.ets'
     },
-    // {
-    //     path: './ets/kits/',
-    //     file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@kit.UIDesignKit.d.ts'
-    // },
-    // {
-    //     path: './ets/build-tools/ets-loader/kit_configs/',
-    //     file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@kit.UIDesignKit.json'
-    // },
+    {
+        path: './ets/kits/',
+        file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@kit.UIDesignKit.d.ts'
+    },
+    {
+        path: './ets/build-tools/ets-loader/kit_configs/',
+        file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@kit.UIDesignKit.json'
+    },
     {
         path: './ets/api',
         file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@hms.virtService.abilityFrameworkBroker.d.ts'
@@ -67,22 +67,22 @@ const copyOHPathFileArray = [
     //     path: './ets/api/',
     //     file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@hms.hds.hdsDrawable.d.ts'
     // },
-    // {
-    //     path: './ets/api',
-    //     file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@kit.UIDesignKit.d.ts'
-    // },
-    // {
-    //     path: './ets/api',
-    //     file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@kit.UIDesignKit.json'
-    // },
-    // {
-    //     path: './ets/kits/',
-    //     file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@kit.UIDesignKit.d.ts'
-    // },
-    // {
-    //     path: './ets/build-tools/ets-loader/kit_configs/',
-    //     file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@kit.UIDesignKit.json'
-    // },
+    {
+        path: './ets/api',
+        file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@kit.UIDesignKit.d.ts'
+    },
+    {
+        path: './ets/api',
+        file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@kit.UIDesignKit.json'
+    },
+    {
+        path: './ets/kits/',
+        file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@kit.UIDesignKit.d.ts'
+    },
+    {
+        path: './ets/build-tools/ets-loader/kit_configs/',
+        file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@kit.UIDesignKit.json'
+    },
     {
         path: './ets/build-tools/ets-loader/components/',
         file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/HdsVisualComponent.json'
@@ -154,10 +154,10 @@ const copyOHPathFileArray = [
     //     path: './ets/api',
     //     file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@hms.graphic.apsManager.d.ts'
     // },
-    {
-        path: './ets/api',
-        file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@ohos.pcService.statusBar.d.ts'
-    },
+    // {
+    //     path: './ets/api',
+    //     file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@hms.pcService.statusBar.d.ts'
+    // },
     // {
     //     path: './ets/api',
     //     file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@hms.pcService.scb_mode_change_napi.d.ts'
@@ -281,14 +281,14 @@ const replaceHmsPathFileArray = [
         path: './ets/api/',
         file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@hms.hds.HdsVisualComponent.d.ets'
     },
-    // {
-    //     path: './ets/kits/',
-    //     file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@kit.UIDesignKit.d.ts'
-    // },
-    // {
-    //     path: './ets/build-tools/ets-loader/kit_configs/',
-    //     file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@kit.UIDesignKit.json'
-    // },
+    {
+        path: './ets/kits/',
+        file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@kit.UIDesignKit.d.ts'
+    },
+    {
+        path: './ets/build-tools/ets-loader/kit_configs/',
+        file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@kit.UIDesignKit.json'
+    },
     {
         path: './ets/api/',
         file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@hms.virtService.servicebrokerWms.d.ts'
@@ -364,14 +364,14 @@ const replaceOHPathFileArray = [
         path:'./ets/build-tools/ets-loader',
         file:'../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/tsconfig.json'
     },
-    // {
-    //     path: '../hms/ets/kits',
-    //     file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@kit.UIDesignKit.d.ts'
-    // },
-    // {
-    //     path: '../hms/ets/build-tools/ets-loader/kit_configs',
-    //     file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@kit.UIDesignKit.json'
-    // },
+    {
+        path: '../hms/ets/kits',
+        file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@kit.UIDesignKit.d.ts'
+    },
+    {
+        path: '../hms/ets/build-tools/ets-loader/kit_configs',
+        file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@kit.UIDesignKit.json'
+    },
     // {
     //     path: '../hms/ets/api',
     //     file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@hms.hds.hdsBaseComponent.d.ets'
@@ -384,14 +384,14 @@ const replaceOHPathFileArray = [
     //     path: './ets/api/',
     //     file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@hms.hds.HdsVisualComponent.d.ets'
     // },
-    // {
-    //     path: './ets/kits/',
-    //     file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@kit.UIDesignKit.d.ts'
-    // },
-    // {
-    //     path: './ets/build-tools/ets-loader/kit_configs/',
-    //     file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@kit.UIDesignKit.json'
-    // },
+    {
+        path: './ets/kits/',
+        file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@kit.UIDesignKit.d.ts'
+    },
+    {
+        path: './ets/build-tools/ets-loader/kit_configs/',
+        file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@kit.UIDesignKit.json'
+    },
     {
         path: './ets/build-tools/ets-loader/components/',
         file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/HdsVisualComponent.json'

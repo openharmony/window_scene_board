@@ -1,0 +1,52 @@
+/*
+ * Copyright (c) Huawei Technologies Co., Ltd. 2024-2025. All rights reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+import { IImmersiveGraftVm } from './IImmersiveGraftVm';
+import { IImmGestureEventVm } from './IImmGestureEventVm';
+import { IImmLifeCycleVm } from './IImmLifeCycleVm';
+
+/**
+ * 沉浸列表模块触摸事件处理
+ */
+export interface IImmersiveCapsuleHandle extends IImmersiveGraftVm, IImmLifeCycleVm, IImmGestureEventVm {
+  /**
+   * 手势开启
+   *
+   * @param event 事件
+   */
+  onGestureStart(event: GestureEvent): void;
+
+  /**
+   * 手势更新
+   *
+   * @param event 事件
+   */
+  onGestureUpdate(event: GestureEvent): void;
+
+  /**
+   * 手势结束
+   *
+   * @param event 事件
+   * @param isCancel 是否取消场景
+   */
+  onGestureEnd(event: GestureEvent, isCancel: boolean): void;
+
+  /**
+   * 胶囊根布局触摸事件
+   *
+   * @param event 事件
+   */
+  onRootTouch(event: TouchEvent): void;
+}

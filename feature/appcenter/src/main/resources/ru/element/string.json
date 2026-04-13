@@ -1,0 +1,67 @@
+{
+    "string":[
+        {
+            "name":"app_center_menu_add_dock",
+            "value":"Добавить на панель",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"search_no_result",
+            "value":"Нет результатов",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_menu_open",
+            "value":"Открыть",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_menu_open_from_floating_window",
+            "value":"Открыть из плавающего окна",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_menu_open_from_split_screen",
+            "value":"Открыть из разделенного экрана",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"uninstall",
+            "value":"Удалить",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"isUninstall",
+            "value":"Удалить приложение %s?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_center_menu_add_desktop",
+            "value":"Добавить на рабочий стол",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"drag_full",
+            "value":"На экране нет свободного места. Невозможно добавить больше значков.",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

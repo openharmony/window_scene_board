@@ -1,0 +1,21 @@
+{
+  "module": {
+    "name": "launchercommon",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ],
+    "requestPermissions": [
+      {
+        name: "ohos.permission.POWER_OPTIMIZATION",
+        "usedScene": {
+          "abilities": [
+            "MainAbility"
+          ],
+          "when": "always"
+        }
+      }
+    ]
+  }
+}

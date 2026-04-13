@@ -1,0 +1,18 @@
+{
+    "string":[
+        {
+            "name":"control_center_complex_toggle_flashlight_title",
+            "value":"手電筒",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"flashlight_on_ntf_content",
+            "value":"手電筒已啟用",
+            "attr":{
+                "priority":"LT"
+            }
+        }
+    ]
+}

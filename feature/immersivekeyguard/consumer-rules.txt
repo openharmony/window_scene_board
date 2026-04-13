@@ -1,0 +1,2 @@
+-keep-global-name
+__updateDirty2Immediately_V2_Change_Observation

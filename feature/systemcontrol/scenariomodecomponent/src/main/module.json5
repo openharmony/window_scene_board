@@ -1,0 +1,10 @@
+{
+  "module": {
+    "name": "scenariomodecomponent",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ]
+  }
+}

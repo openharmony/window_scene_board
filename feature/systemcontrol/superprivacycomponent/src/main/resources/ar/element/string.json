@@ -1,0 +1,74 @@
+{
+    "string":[
+        {
+            "name":"super_privacy_toggle",
+            "value":"الخصوصية الصارمة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"super_privacy_toggle_always_protect",
+            "value":"التشغيل الدائم",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"super_privacy_toggle_fold_protect",
+            "value":"تشغيل عند طي الجهاز",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"edm_super_privacy_content_mic",
+            "value":"وضع الخصوصية الصارم غير متوفر لأن مؤسستك تدير مفتاح الميكروفون",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"edm_super_privacy_content_cam_loc",
+            "value":"وضع الخصوصية الصارم غير متوفر لأن مؤسستك تدير مفتاحي خدمات الموقع والكاميرا",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"edm_super_privacy_content_mic_loc",
+            "value":"وضع الخصوصية الصارم غير متوفر لأن مؤسستك تدير مفتاحي خدمات الموقع والميكروفون",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"edm_super_privacy_content_cam",
+            "value":"وضع الخصوصية الصارم غير متوفر لأن مؤسستك تدير مفتاح الكاميرا",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"edm_super_privacy_content_loc",
+            "value":"وضع الخصوصية الصارم غير متوفر لأن مؤسستك تدير مفتاح خدمات الموقع",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"edm_super_privacy_content_cam_mic",
+            "value":"وضع الخصوصية الصارم غير متوفر لأن مؤسستك تدير مفتاحي الميكروفون والكاميرا",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"edm_super_privacy_content_cam_mic_loc",
+            "value":"وضع الخصوصية الصارم غير متوفر لأن مؤسستك تدير مفاتيح خدمات الموقع، والميكروفون، والكاميرا",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

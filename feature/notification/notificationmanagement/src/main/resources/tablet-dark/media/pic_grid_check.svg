@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="190px" height="118px" viewBox="0 0 190 118" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>pic_pad_grid_check</title>
+    <g id="通知和状态栏管理0604" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="dark-UX调整" transform="translate(-449.000000, -425.000000)">
+            <g id="pic_pad_grid_check" transform="translate(449.000000, 425.000000)">
+                <rect id="矩形" stroke-opacity="0.598441597" stroke="#317AF7" stroke-width="2" transform="translate(95.000000, 59.000000) rotate(-90.000000) translate(-95.000000, -59.000000) " x="37" y="-35" width="116" height="188" rx="8.06837607"></rect>
+                <g id="编组-40" transform="translate(45.000000, 100.000000)" fill="#317AF7" opacity="0.3">
+                    <rect id="矩形备份-25" x="0" y="0" width="10" height="10" rx="2"></rect>
+                    <rect id="矩形备份-37" x="54" y="0" width="10" height="10" rx="2"></rect>
+                    <rect id="矩形备份-28" x="18" y="0" width="10" height="10" rx="2"></rect>
+                    <rect id="矩形备份-38" x="72" y="0" width="10" height="10" rx="2"></rect>
+                    <rect id="矩形备份-31" x="36" y="0" width="10" height="10" rx="2"></rect>
+                    <rect id="矩形备份-39" x="90" y="0" width="10" height="10" rx="2"></rect>
+                </g>
+                <g id="编组-41" transform="translate(27.000000, 16.000000)" fill="#317AF7">
+                    <rect id="矩形备份-23" opacity="0.3" x="36" y="0" width="10" height="10" rx="2"></rect>
+                    <rect id="矩形备份-41" opacity="0.3" x="18" y="0" width="10" height="10" rx="2"></rect>
+                    <rect id="矩形备份-43" opacity="0.3" x="0" y="0" width="10" height="10" rx="2"></rect>
+                    <rect id="矩形备份-36" opacity="0.3" x="36" y="18" width="10" height="10" rx="2"></rect>
+                    <rect id="矩形备份-42" opacity="0.3" x="18" y="18" width="10" height="10" rx="2"></rect>
+                    <rect id="矩形备份-44" opacity="0.3" x="0" y="18" width="10" height="10" rx="2"></rect>
+                    <rect id="矩形备份-24" opacity="0.3" x="54" y="18" width="10" height="10" rx="2"></rect>
+                    <rect id="矩形备份-26" opacity="0.3" x="54" y="0" width="10" height="10" rx="2"></rect>
+                    <rect id="矩形备份-33" opacity="0.3" x="108" y="0" width="10" height="10" rx="2"></rect>
+                    <rect id="矩形备份-27" opacity="0.3" x="72" y="18" width="10" height="10" rx="2"></rect>
+                    <rect id="矩形备份-29" opacity="0.3" x="72" y="0" width="10" height="10" rx="2"></rect>
+                    <rect id="矩形备份-34" opacity="0.3" x="126" y="0" width="10" height="10" rx="2"></rect>
+                    <rect id="矩形备份-40" opacity="0.3" x="90" y="18" width="10" height="10" rx="2"></rect>
+                    <circle id="椭圆形备份-3" cx="99" cy="19" r="2"></circle>
+                    <rect id="矩形备份-32" opacity="0.3" x="90" y="0" width="10" height="10" rx="2"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

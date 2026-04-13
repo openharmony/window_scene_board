@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"control_center_complex_toggle_focus_mode_title",
+            "value":"Ne pas déranger",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

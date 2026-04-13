@@ -1,0 +1,18 @@
+{
+    "string":[
+        {
+            "name":"Desktop_individuation",
+            "value":"ئۈستەليۈزى ۋە خاسلاشتۇرۇش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"theme_title",
+            "value":"ئۇسلۇب",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

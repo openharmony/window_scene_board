@@ -1,0 +1,400 @@
+{
+    "string":[
+        {
+            "name":"cancel",
+            "value":"[TS_784943]_Cancel"
+        },
+        {
+            "name":"slot_other",
+            "value":"[TS_784826]_Other"
+        },
+        {
+            "name":"slotType",
+            "value":"[TS_784908]_Notification type"
+        },
+        {
+            "name":"slot_service_information",
+            "value":"[TS_784937]_Service notifications"
+        },
+        {
+            "name":"slot_social_communication",
+            "value":"[TS_784904]_Social"
+        },
+        {
+            "name":"slot_content_information",
+            "value":"[TS_784949]_Content & news"
+        },
+        {
+            "name":"notification_wake_screen_switch_title",
+            "value":"[TS_816134]_Wake screen"
+        },
+        {
+            "name":"banners",
+            "value":"[TS_816137]_Banners"
+        },
+        {
+            "name":"notification_style",
+            "value":"[TS_816131]_Notification style"
+        },
+        {
+            "name":"notification_wake_screen_switch_text",
+            "value":"[TS_816133]_Turn on the screen when notifications are received."
+        },
+        {
+            "name":"lock_screen_notification",
+            "value":"[TS_816176]_Lock screen"
+        },
+        {
+            "name":"notification_and_status_bar_title",
+            "value":"[TS_816136]_Notifications & status bar"
+        },
+        {
+            "name":"notification_lock_screen_switch_title_new",
+            "value":"[TS_816135]_Hide notification content"
+        },
+        {
+            "name":"notifications",
+            "value":"[TS_816132]_Notifications"
+        },
+        {
+            "name":"pinTopNotification",
+            "value":"[TS_817411]_Pin notifications"
+        },
+        {
+            "name":"notification_tip_open",
+            "value":"[TS_819114]_Notifications enabled"
+        },
+        {
+            "name":"notification_tip_close",
+            "value":"[TS_819113]_Notifications disabled"
+        },
+        {
+            "name":"allowNotification",
+            "value":"[TS_784923]_Allow notifications"
+        },
+        {
+            "name":"notificationSound",
+            "value":"[TS_784921]_Notification tone"
+        },
+        {
+            "name":"repeat",
+            "value":"[TS_784883]_重复"
+        },
+        {
+            "name":"noDisturb_closed",
+            "value":"[TS_784967]_已关闭"
+        },
+        {
+            "name":"confirm",
+            "value":"[TS_784936]_OK"
+        },
+        {
+            "name":"endTime",
+            "value":"[TS_784831]_结束时间"
+        },
+        {
+            "name":"noDisturb_daily",
+            "value":"[TS_784862]_每天"
+        },
+        {
+            "name":"noDisturb_clearly",
+            "value":"[TS_784854]_自定义"
+        },
+        {
+            "name":"notificationStyle",
+            "value":"[TS_784857]_Notification style"
+        },
+        {
+            "name":"version",
+            "value":"[TS_784868]_Version %s"
+        },
+        {
+            "name":"startTime",
+            "value":"[TS_784894]_开始时间"
+        },
+        {
+            "name":"noDisturb_once_label",
+            "value":"[TS_784952]_仅一次："
+        },
+        {
+            "name":"batch_Management",
+            "value":"[TS_784866]_Manage all"
+        },
+        {
+            "name":"noDisturb",
+            "value":"[TS_784968]_免打扰"
+        },
+        {
+            "name":"slot_unknown",
+            "value":"[TS_784918]_此应用未发布任何通知"
+        },
+        {
+            "name":"noDisturb_none",
+            "value":"[TS_784867]_Disable"
+        },
+        {
+            "name":"noDisturb_clearly_label",
+            "value":"[TS_784842]_自定义："
+        },
+        {
+            "name":"endDate",
+            "value":"[TS_784891]_结束日期"
+        },
+        {
+            "name":"noDisturb_once",
+            "value":"[TS_784960]_仅一次"
+        },
+        {
+            "name":"startDate",
+            "value":"[TS_784851]_开始日期"
+        },
+        {
+            "name":"noDisturb_nextDay",
+            "value":"[TS_784938]_次日"
+        },
+        {
+            "name":"noDisturb_daily_label",
+            "value":"[TS_784928]_每天："
+        },
+        {
+            "name":"noDisturb_opened",
+            "value":"[TS_784924]_已启动"
+        },
+        {
+            "name":"loading",
+            "value":"[TS_916919]_Loading…"
+        },
+        {
+            "name":"ntfSoundModeOnlyRing",
+            "value":"[TS_818558]_Play sound"
+        },
+        {
+            "name":"only_notification_center",
+            "value":"[TS_912382]_Notification Panel only"
+        },
+        {
+            "name":"slot_customer_service_message",
+            "value":"[TS_917707]_Customer service messages"
+        },
+        {
+            "name":"ntfSoundModeOnlyVibration",
+            "value":"[TS_917706]_Vibrate"
+        },
+        {
+            "name":"lock_screen",
+            "value":"[TS_784905]_Lock screen"
+        },
+        {
+            "name":"banner",
+            "value":"[TS_912381]_Banner"
+        },
+        {
+            "name":"pinTopShowNotification",
+            "value":"[TS_931148]_Pin to top"
+        },
+        {
+            "name":"pure_show_title",
+            "value":"[TS_818451]_Simple display"
+        },
+        {
+            "name":"show_preview_when_screen_lock",
+            "value":"[TS_931325]_Show notification previews when locked"
+        },
+        {
+            "name":"show_live_view_preview_when_screen_lock",
+            "value":"[TS_981987]_Show live view previews when locked"
+        },
+        {
+            "name":"show_notification_icon",
+            "value":"[TS_818447]_Show app notification icons"
+        },
+        {
+            "name":"show_real_time_network_speed",
+            "value":"[TS_818449]_Show network speed"
+        },
+        {
+            "name":"show_battery_soc",
+            "value":"[TS_931343]_Show battery percentage"
+        },
+        {
+            "name":"wake_screen_when_receive_notification",
+            "value":"[TS_931344]_Wake screen for notifications"
+        },
+        {
+            "name":"smart_hiding_of_banner_content",
+            "value":"[TS_931332]_Keep banners private"
+        },
+        {
+            "name":"setting",
+            "value":"[TS_934993]_Settings"
+        },
+        {
+            "name":"remind_only_notification_center",
+            "value":"[TS_931342]_Notification Panel only"
+        },
+        {
+            "name":"remind_sound",
+            "value":"[TS_931347]_Sound"
+        },
+        {
+            "name":"splitter_format_for_2",
+            "value":"[TS_931361]_%1$s, %2$s"
+        },
+        {
+            "name":"splitter_format_for_3",
+            "value":"[TS_931362]_%1$s, %2$s, %3$s"
+        },
+        {
+            "name":"splitter_format_for_4",
+            "value":"[TS_931363]_%1$s, %2$s, %3$s, %4$s"
+        },
+        {
+            "name":"remind_vibration_in_list",
+            "value":"[TS_943729]_Vibrate"
+        },
+        {
+            "name":"remind_lock_screen_in_list",
+            "value":"[TS_943731]_Lock screen"
+        },
+        {
+            "name":"remind_sound_in_list",
+            "value":"[TS_943730]_Sound"
+        },
+        {
+            "name":"remind_banner_in_list",
+            "value":"[TS_943732]_Banners"
+        },
+        {
+            "name":"smart_reminder",
+            "value":"[TS_957024]_Smart notifications"
+        },
+        {
+            "name":"psd_back_accessible",
+            "value":"[TS_978818]_Back, button"
+        },
+        {
+            "name":"check_box_selected",
+            "value":"[TS_997840]_Selected"
+        },
+        {
+            "name":"check_box_unchecked",
+            "value":"[TS_997839]_Not selected"
+        },
+        {
+            "name":"ntf_pin_top_dialog_reach_limit_title",
+            "value":"[TS_818584]_Maximum number of apps pinned"
+        },
+        {
+            "name":"live_view_no_services",
+            "value":"[TS_1025848]_No services available yet"
+        },
+        {
+            "name":"badge",
+            "value":"[TS_1033847]_Badges"
+        },
+        {
+            "name":"live_view_apps",
+            "value":"[TS_1025849]_Apps"
+        },
+        {
+            "name":"splitter_format_for_5",
+            "value":"[TS_1033848]_%1$s, %2$s, %3$s, %4$s, %5$s"
+        },
+        {
+            "name":"live_view_services",
+            "value":"[TS_1025850]_Services"
+        },
+        {
+            "name":"show_desktop_badges",
+            "value":"[TS_1025851]_Show badges"
+        },
+        {
+            "name":"live_view_no_apps",
+            "value":"[TS_1025853]_No apps available yet"
+        },
+        {
+            "name":"meta_service",
+            "value":"[TS_1033800]_Services"
+        },
+        {
+            "name":"application",
+            "value":"[TS_1033803]_Apps"
+        },
+        {
+            "name":"network_error",
+            "value":"[TS_1057154]_Network error. Check your network settings."
+        },
+        {
+            "name":"empty_service",
+            "value":"[TS_1033801]_No services"
+        },
+        {
+            "name":"login_button",
+            "value":"[TS_1057152]_Log in"
+        },
+        {
+            "name":"need_login_service_tips",
+            "value":"[TS_1057153]_You need to be logged in with your HUAWEI ID to change these settings."
+        },
+        {
+            "name":"app_list_loading_message",
+            "value":"[TS_1057155]_Loading…"
+        },
+        {
+            "name":"allow_notification_distribution",
+            "value":"[TS_1082052]_Show notifications from phone"
+        },
+        {
+            "name":"allow_live_view_distribution",
+            "value":"[TS_1082051]_Show live views from phone"
+        },
+        {
+            "name":"display_only_when_the_owner_is_looking",
+            "value":"[TS_1084010]_Only when I'm looking"
+        },
+        {
+            "name":"display_lock_Screen_notification_content_tip",
+            "value":"[TS_1084011]_This option requires face recognition to be enabled."
+        },
+        {
+            "name":"only_when_the_owner_is_looking_tip",
+            "value":"[TS_1091389]_The \"Only when I'm looking\" option is only available when face recognition is enabled. %s"
+        },
+        {
+            "name":"only_when_the_owner_is_looking_tip_button",
+            "value":"[TS_1091390]_Learn more"
+        },
+        {
+            "name":"open_app_inner_ntf_mgmt",
+            "value":"[TS_1082053]_Go to %s"
+        },
+        {
+            "name":"display_live_window_content",
+            "value":"[TS_1084009]_Show live view content"
+        },
+        {
+            "name":"display_live_window_content_tip",
+            "value":"[TS_1084015]_For the best experience with live view, set this to \"Always\"."
+        },
+        {
+            "name":"display_lock_Screen_notification_content",
+            "value":"[TS_1084014]_Show lock screen notification content"
+        },
+        {
+            "name":"display_banner_notification_content",
+            "value":"[TS_1084013]_Show banner content"
+        },
+        {
+            "name":"always_display",
+            "value":"[TS_1084016]_Always"
+        },
+        {
+            "name":"display_when_unlocked",
+            "value":"[TS_1084020]_When unlocked"
+        },
+        {
+            "name":"close_accessibility_text",
+            "value":"[TS_1128831]_Close, button"
+        }
+    ]
+}

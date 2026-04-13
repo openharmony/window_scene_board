@@ -1,0 +1,33 @@
+{
+    "plural":[
+        {
+            "name":"search_result_accessibility_text",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"[TS_1093217]_%d search result shown below"
+                },
+                {
+                    "quantity":"other",
+                    "value":"[TS_1093214]_%d search results shown below"
+                },
+                {
+                    "quantity":"zero",
+                    "value":"[TS_1093212]_%d search results shown below"
+                },
+                {
+                    "quantity":"few",
+                    "value":"[TS_1093215]_%d search results shown below"
+                },
+                {
+                    "quantity":"many",
+                    "value":"[TS_1093216]_%d search results shown below"
+                },
+                {
+                    "quantity":"two",
+                    "value":"[TS_1093213]_%d search results shown below"
+                }
+            ]
+        }
+    ]
+}

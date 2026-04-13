@@ -1,0 +1,256 @@
+{
+  "color": [
+    {
+      "name": "text_color",
+      "value": "#FFFFFFFF"
+    },
+    {
+      "name": "placeholder_text_color",
+      "value": "#CCFFFFFF"
+    },
+    {
+      "name": "other_user_text_color",
+      "value": "#E6FFFFFF"
+    },
+    {
+      "name": "transparent",
+      "value": "#00000000"
+    },
+    {
+      "name": "pwdinput_border_color",
+      "value": "#0DFFFFFF"
+    },
+    {
+      "name": "pwdinput_bg_color",
+      "value": "#66333333"
+    },
+    {
+      "name": "keyboard_press_background",
+      "value": "#4D000000"
+    },
+    {
+      "name": "keyboard_background",
+      "value": "#1A000000"
+    },
+    {
+      "name": "keyletter_text_color",
+      "value": "#99FFFFFF"
+    },
+    {
+      "name": "prompt_text_color",
+      "value": "#DBFFFFFF"
+    },
+    {
+      "name": "numkey_normal_bg",
+      "value": "#1AFFFFFF"
+    },
+    {
+      "name": "numkey_press_bg",
+      "value": "#26FFFFFF"
+    },
+    {
+      "name": "numkey_press_bg_black",
+      "value": "#19000000"
+    },
+    {
+      "name": "press_point_light_font_color",
+      "value": "#FFFFFF"
+    },
+    {
+      "name": "numkey_point_light_bg",
+      "value": "#60FFFFFF"
+    },
+    {
+      "name": "numkey_point_light_bloom_color",
+      "value": "#40FFFFFF"
+    },
+    {
+      "name": "head_image_border_color",
+      "value": "#CCFFFFFF"
+    },
+    {
+      "name": "head_green_border_color",
+      "value": "#52D3D3D3"
+    },
+    {
+      "name": "head_green_color",
+      "value": "#98FF50"
+    },
+    {
+      "name": "text_shadow_color",
+      "value": "#66000000"
+    },
+    {
+      "name": "time_font_color",
+      "value": "#99ffffff"
+    },
+    {
+      "name": "date_font_color",
+      "value": "#99ffffff"
+    },
+    {
+      "name": "user_icon_border_color_selected",
+      "value": "#e6ffffff"
+    },
+    {
+      "name": "user_icon_shadow_color_selected",
+      "value": "#66ffffff"
+    },
+    {
+      "name": "user_icon_border_color_unselected",
+      "value": "#0DFFFFFF"
+    },
+    {
+      "name": "user_icon_shadow_color_unselected",
+      "value": "#0DFFFFFF"
+    },
+    {
+      "name": "user_icon_background",
+      "value": "#33f0f0f0"
+    },
+    {
+      "name": "user_name_shadow_color",
+      "value": "#66000000"
+    },
+    {
+      "name": "time_text_shadow_color",
+      "value": "#26000000"
+    },
+    {
+      "name": "date_text_shadow_color",
+      "value": "#14000000"
+    },
+    {
+      "name": "time_font_color_dark",
+      "value": "#FFFFFFFF"
+    },
+    {
+      "name": "time_font_color_bright",
+      "value": "#B3000000"
+    },
+    {
+      "name": "time_font_color_cold_dark",
+      "value": "#B2B3B3B3"
+    },
+    {
+      "name": "user_icon_inner_border_color",
+      "value": "#33FFFFFF"
+    },
+    {
+      "name": "user_name_bright_text_color",
+      "value": "#E6000000"
+    },
+    {
+      "name": "user_icon_shadow_color_unselected_pc",
+      "value": "#19000000"
+    },
+    {
+      "name": "user_name_shadow_color_pc",
+      "value": "#59000000"
+    },
+    {
+      "name": "pwd_enter_icon_bright_color_pc",
+      "value": "#1A000000"
+    },
+    {
+      "name": "pwd_enter_icon_dark_color_pc",
+      "value": "#1AFFFFFF"
+    },
+    {
+      "name": "screenlock_clock_widget_border_color",
+      "value": "#66FFFFFF"
+    },
+    {
+      "name": "screenlock_shortcut_bg_enable_color",
+      "value": "#BFFFFFFF"
+    },
+    {
+      "name": "quick_tools_open_light_wallpaper_bg_color",
+      "value": "#33000000"
+    },
+    {
+      "name": "quick_tools_open_dark_wallpaper_bg_color",
+      "value": "#33FFFFFF"
+    },
+    {
+      "name": "quick_tools_open_light_wallpaper_icon_color",
+      "value": "#D8000000"
+    },
+    {
+      "name": "quick_tools_open_dark_wallpaper_icon_color",
+      "value": "#D8FFFFFF"
+    },
+    {
+      "name": "quick_tools_light_wallpaper_hit_bg_color",
+      "value": "#E5000000"
+    },
+    {
+      "name": "quick_tools_dark_wallpaper_hit_bg_color",
+      "value": "#E5FFFFFF"
+    },
+    {
+      "name": "quick_tools_light_wallpaper_hit_icon_color",
+      "value": "#D8FFFFFF"
+    },
+    {
+      "name": "quick_tools_hit_dark_wallpaper_icon_color",
+      "value": "#D8000000"
+    },
+    {
+      "name":"account_bg_color",
+      "value":"#FF7CA4EF"
+    },
+    {
+      "name":"pwd_input_bg_color",
+      "value":"#33FFFFFF"
+    },
+    {
+      "name":"pwd_input_bg_color_black",
+      "value":"#3B000000"
+    },
+    {
+      "name": "fingerprint_bg_color",
+      "value": "#00000000"
+    },
+    {
+      "name": "screenlock_backgroundcolor",
+      "value": "#000000"
+    },
+    {
+      "name": "sim_font_color",
+      "value": "#000000"
+    },
+    {
+      "name": "sim_background_color",
+      "value": "#FFFFFF"
+    },
+    {
+      "name": "wallpaper_outline_color",
+      "value": "#26FFFFFF"
+    },
+    {
+      "name": "edit_border_color",
+      "value": "#66FFFFFF"
+    },
+    {
+      "name": "edit_border_color_dark",
+      "value": "#66000000"
+    },
+    {
+      "name": "aod_gesture_nav_bar",
+      "value": "#85737373"
+    },
+    {
+      "name": "immersive_keyguard_tools_background_color",
+      "value": "#22FFFFFF"
+    },
+    {
+      "name": "date_time_light_color",
+      "value": "#66FFFFFF"
+    },
+    {
+      "name": "date_time_dark_color",
+      "value": "#66000000"
+    }
+  ]
+}

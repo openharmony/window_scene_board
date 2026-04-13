@@ -1,0 +1,9 @@
+{
+  "name": "engineservice",
+  "version": "1.0.0",
+  "description": "a npm package which contains theme engine",
+  "main": "",
+  "author": "",
+  "license": "",
+  "dependencies": {}
+}

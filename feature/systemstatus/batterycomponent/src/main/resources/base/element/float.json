@@ -1,0 +1,133 @@
+{
+  "float": [
+    {
+      "name": "battery_component_gap",
+      "value": "8.5vp"
+    },
+    {
+      "name": "battery_component_pic_body_height",
+      "value": "11vp"
+    },
+    {
+      "name": "battery_component_pic_body_width",
+      "value": "18.5vp"
+    },
+    {
+      "name": "battery_image_width",
+      "value": "12vp"
+    },
+    {
+      "name": "battery_image_height",
+      "value": "12vp"
+    },
+    {
+      "name": "icon_component_opacity",
+      "value": "1"
+    },
+    {
+      "name": "battery_pic_image_width",
+      "value": "44vp"
+    },
+    {
+      "name": "battery_pic_image_height",
+      "value": "36vp"
+    },
+    {
+      "name": "had_battery_pic_image_width",
+      "value": "36.67vp"
+    },
+    {
+      "name": "had_battery_pic_image_height",
+      "value": "30vp"
+    },
+    {
+      "name": "normal_pic_inner_padding_right",
+      "value": "4vp"
+    },
+    {
+      "name": "charging_pic_inner_padding_right",
+      "value": "12vp"
+    },
+    {
+      "name": "battery_pic_inner_padding_top",
+      "value": "1.5vp"
+    },
+    {
+      "name": "pic_inner_padding_right",
+      "value": "3.5vp"
+    },
+    {
+      "name": "had_charging_pic_inner_padding_right",
+      "value": "10vp"
+    },
+    {
+      "name": "had_normal_pic_inner_padding_right",
+      "value": "3.5vp"
+    },
+
+    {
+      "name": "battery_charging_image_width",
+      "value": "7.5vp"
+    },
+    {
+      "name": "battery_charging_image_height",
+      "value": "16vp"
+    },
+    {
+      "name": "battery_pic_outer_charging_width",
+      "value": "8vp"
+    },
+    {
+      "name": "battery_pic_outer_charging_height",
+      "value": "24vp"
+    },
+    {
+      "name": "battery_pic_outer_charging_margin_left",
+      "value": "1vp"
+    },
+    {
+      "name": "battery_pic_soc_font_size",
+      "value": "11"
+    },
+    {
+      "name": "had_battery_pic_soc_font_size",
+      "value": "9"
+    },
+    {
+      "name": "battery_pic_soc_line_height",
+      "value": "16vp"
+    },
+    {
+      "name": "battery_pic_soc_margin_top",
+      "value": "-1vp"
+    },
+    {
+      "name": "had_battery_pic_soc_margin_top",
+      "value": "-3vp"
+    },
+    {
+      "name": "battery_image_width_pad",
+      "value": "29vp"
+    },
+    {
+      "name": "battery_image_height_pad",
+      "value": "21vp"
+    },
+    {
+      "name": "battery_charging_image_offset_x",
+      "value": "-1vp"
+    },
+    {
+      "name": "dialog_title_min_height",
+      "value": "56"
+    },
+    {
+      "name": "battery_power_save_image_width",
+      "value": "8vp"
+    },
+    {
+      "name": "battery_power_save_image_height",
+      "value": "16vp"
+    }
+  ]
+}

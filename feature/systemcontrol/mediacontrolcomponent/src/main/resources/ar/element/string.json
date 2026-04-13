@@ -1,0 +1,396 @@
+{
+    "string":[
+        {
+            "name":"av_cast_disconnect",
+            "value":"تمت استعادة التشغيل تلقائيًا إلى هذا الجهاز لانقطاع البث",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"open_bluetooth",
+            "value":"يُرجى أولًا تشغيل البلوتوث للبث على هذا الجهاز",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"wireless_usage",
+            "value":"يتعذر التبديل لأن قناة الصوت قيد الاستخدام بواسطة بث الشاشة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"WiredDevice",
+            "value":"سماعة الرأس السلكية",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_Favorited",
+            "value":"في المفضلة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"toobar_title_pitching",
+            "value":"عرض الصوت",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"WiredCastDevice",
+            "value":"الجهاز المتصل سلكيًا",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"RecentlyPlay",
+            "value":"المُشغَّلة مؤخرًا",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"av_cast_cast_fail",
+            "value":"تعذر التشغيل على الجهاز الآخر، يُرجى إعادة المحاولة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"CallEarpiece",
+            "value":"السماعة الداخلية",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"access_fast_forward",
+            "value":"تقديم سريع",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"av_cast_cast_disconnect",
+            "value":"انقطع اتصال جهاز التشغيل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_pause",
+            "value":"إيقاف مؤقت",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_connected",
+            "value":"متصل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"no_media_title",
+            "value":"لا شيء مُشغّل",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"access_favorites",
+            "value":"المفضلة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_unavailable",
+            "value":"غير الُمتاحة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"audio_usage",
+            "value":"يتعذر تبديل صوت المكالمة من هذه الشاشة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"CallSpeaker",
+            "value":"مكبر الصوت",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"device_error",
+            "value":"تعذر البث لوجود مشكلة في الجهاز أو التطبيق",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"BluetoothDevice",
+            "value":"سماعة البلوتوث",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"LocalDevice",
+            "value":"هذا الجهاز",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"access_cancel_favorites",
+            "value":"إزالة من المفضلة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"av_cast_banner_title",
+            "value":"التشغيل جارٍ على الجهاز \"\u202a%s\u202c\"",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sound_output_device_nearlink",
+            "value":"جهاز NearLink (%s)",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"switch_to_resource_cast",
+            "value":"تم التبديل إلى بث الوسائط",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"preference_setting",
+            "value":"التفضيلات",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"access_media_broadcast_control_center",
+            "value":"المتحكم بالوسائط",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"recommended_to_you",
+            "value":"محتوى اختير لأجلك",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"multi_screen_usage",
+            "value":"يتعذر التبديل لأن قناة الصوت مُستخدمة حاليًا بواسطة ميزة \"المشاركة بين الشاشات\"",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"unAuthDevice",
+            "value":"المزيد من الأجهزة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"HearingAid",
+            "value":"أداة السمع المساعدة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_cyclic_mode_shuffle",
+            "value":"وضع التشغيل، عشوائي",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_audio_control",
+            "value":"تشغيل البث",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_cyclic_mode_sequential",
+            "value":"وضع التشغيل، التشغيل بالترتيب",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_notice",
+            "value":"معلومات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_next",
+            "value":"الأغنية التالية",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_rewind",
+            "value":"إرجاع",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_play",
+            "value":"تشغيل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_av_cast_volume_increase",
+            "value":"رفع مستوى صوت جهاز التشغيل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_previous",
+            "value":"الأغنية السابقة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_More",
+            "value":"المزيد",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_media_volume_bar",
+            "value":"شريط مستوى صوت الوسائط",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_cyclic_mode_list",
+            "value":"وضع التشغيل، تكرار الكل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_av_cast_volume_reduce",
+            "value":"خفض مستوى صوت جهاز التشغيل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_cyclic_mode_loop",
+            "value":"وضع التشغيل، تكرار أغنية واحدة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_close",
+            "value":"إغلاق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_total_duration",
+            "value":"إجمالي المدة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_switch_playback_device",
+            "value":"تغيير جهاز التشغيل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_playback_progress",
+            "value":"مستوى تقدم التشغيل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_expand_more_devices",
+            "value":"توسيع لعرض أجهزة إضافية",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_cover_image",
+            "value":"صورة الغلاف",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"device_in_call",
+            "value":"مكالمة جارية",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_call_volume_bar",
+            "value":"شريط مستوى الصوت للمكالمات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"recently_played_songs",
+            "value":"الأغاني المُشغّلة مؤخرًا",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"you_may_like",
+            "value":"محتوى مُقترح",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

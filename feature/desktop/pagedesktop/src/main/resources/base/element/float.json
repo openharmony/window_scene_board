@@ -1,0 +1,16 @@
+{
+  "float": [
+    {
+      "name": "dock_toast_bottom",
+      "value": "0.13"
+    },
+    {
+      "name": "form_corner_radius",
+      "value": "16"
+    },
+    {
+      "name": "right_width_menu",
+      "value": "160"
+    }
+  ]
+}

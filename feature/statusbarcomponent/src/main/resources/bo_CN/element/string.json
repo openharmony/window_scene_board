@@ -1,0 +1,158 @@
+{
+    "string":[
+        {
+            "name":"status_bar_search",
+            "value":"བཤེར་འཚོལ།",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"status_bar_volume",
+            "value":"སྒྲ་ཚད། (%1$s) : %2$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"location_statusbar_tips",
+            "value":"གནས་ཡུལ།",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"more",
+            "value":"དེ་ལས་མང་བ།",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"full_charge",
+            "value":"%s | ཁེངས་ཟིན།",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"turbo_charge",
+            "value":"%s | Turbo རིམ་འདས་མགྱོགས་གསོག་བཞིན་པ།",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"normal_charge",
+            "value":"%s | གློག་གསོག་བཞིན་པ།",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"wlan_connect",
+            "value":"WLAN སྦྲེལ་ཟིན།",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"battery_power",
+            "value":"གློག་ཚད། : %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"host_battery_power",
+            "value":"འཕྲུལ་ཆས་གཙོ་བོའི་གློག་ཚད། : %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keyboard_battery_power",
+            "value":"མཐེབ་གཞོང་གི་གློག་ཚད། : %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"personal_panel",
+            "value":"རྒྱུད་ཁོངས།",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"wlan_disconnect",
+            "value":"WLAN སྦྲེལ་མེད།",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"back_home",
+            "value":"ཅོག་ངོས་སུ་ལོག་པ།",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"super_charge",
+            "value":"%s | རིམ་འདས་མགྱོགས་གསོག་བྱེད་བཞིན་པ།",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"wlan_closed",
+            "value":"WLAN ཁ་ཕྱེ་མེད།",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"key_mouse_sharing",
+            "value":"ཙིག་མཐེབ་མཉམ་སྤྱོད།",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"custom_charge",
+            "value":"%s | རང་སྒྲིག་གློག་གསོག་སྲུང་སྐྱོབ་བྱེད་བཞིན་པ།",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"smart_charge",
+            "value":"%s | རིག་ལྡན་གློག་གསོག་སྲུང་སྐྱོབ་བྱེད་བཞིན་པ།",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ethernet_status_connected",
+            "value":"སྐུད་ལྡན་དྲ་རྒྱ་སྦྲེལ་ཟིན།",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"file_upload",
+            "value":"ཡིག་ཆ་ཡར་སྐྱེལ།",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"settings",
+            "value":"སྒྲིག་འགོད།",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

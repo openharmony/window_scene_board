@@ -1,0 +1,200 @@
+{
+    "string":[
+        {
+            "name":"accessibility_cancel_this_edit",
+            "value":"отменить изменения",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_back",
+            "value":"Назад",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_save_this_edit",
+            "value":"сохранить изменения",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_remove",
+            "value":"Удалить",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_edit",
+            "value":"Изменить",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_note",
+            "value":"*При выходе из режима максимального энергосбережения устройство может окончательно разрядиться и выключиться.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"emergency_enter_dialog_title",
+            "value":"Батарея почти полностью разряжена",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Thermal_safe_note",
+            "value":"Если возможно, не используйте устройство. Выход из режима охлаждения будет выполнен автоматически после нормализации температуры устройства.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_dialog_not_remind",
+            "value":"Больше не показывать",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_title",
+            "value":"Максимальное энергосбережение",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_all_application",
+            "value":"Все приложения",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_button_exit",
+            "value":"Выйти",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_title_dialog_enter",
+            "value":"Батарея почти полностью разряжена. Для продления времени работы батареи включен режим максимального энергосбережения.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_button_determined",
+            "value":"OK",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_button_cancel",
+            "value":"Отмена",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"emergency_exit_with_charge_dialog_content",
+            "value":"При выходе из этого режима устройство может окончательно разрядиться и выключиться.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_add_application",
+            "value":"Добавление приложений",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_search_application",
+            "value":"Поиск приложений",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"thermal_safe_enter_dialog_dialog_title",
+            "value":"Устройство сильно нагрелось",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_add",
+            "value":"Добавить",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"emergency_exit_without_charge_dialog_content",
+            "value":"Зарядите устройство как можно скорее.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"thermal_safe_enter_dialog_dialog_content",
+            "value":"Активирован режим охлаждения. Выход из этого режима будет выполнен автоматически, как только устройство охладится.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"emergency_enter_dialog_content",
+            "value":"Для продления времени работы батареи включен режим максимального энергосбережения.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Thermal_safe_title",
+            "value":"Режим охлаждения",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_button_know",
+            "value":"OK",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Thermal_safe_dialog_title_enter",
+            "value":"Устройство сильно нагрелось. Включен режим охлаждения. Выход из этого режима будет выполнен автоматически после охлаждения устройства.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_dialog_title_exit",
+            "value":"Выйти из режима максимального энергосбережения?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_shutdown_dialog_title_exit",
+            "value":"Выйти из режима максимального энергосбережения и выключить устройство?",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

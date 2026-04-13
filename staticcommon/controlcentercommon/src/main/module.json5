@@ -1,0 +1,10 @@
+{
+  "module": {
+    "name": "controlcentercommon",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ]
+  }
+}

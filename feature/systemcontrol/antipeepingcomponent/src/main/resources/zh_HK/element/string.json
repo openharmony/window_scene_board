@@ -1,0 +1,18 @@
+{
+    "string":[
+        {
+            "name":"free_window_closed",
+            "value":"使用前，請開啟自由多視窗",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"anti_peeping_title",
+            "value":"防窺保護",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"back_home",
+            "value":"返回主屏幕",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

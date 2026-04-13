@@ -1,0 +1,95 @@
+{
+    "string":[
+        {
+            "name":"SuperPrivacyPanelUnderEdmControl5",
+            "value":"كامېرا ۋە ئورۇن ئىجازىتىنى ئورگان باشقۇرىدۇ، يۇقىرى مەخپىيەتلىك ھالىتى باشقۇرالمايدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"SuperPrivacyPanelUnderEdmControl4",
+            "value":"كامېرا ئىجازىتىنى ئورگان باشقۇرىدۇ، يۇقىرى مەخپىيەتلىك ھالىتى باشقۇرالمايدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"SuperPrivacyPanelUnderEdmControl7",
+            "value":"كامېرا، مىكروفون ۋە ئورۇن ئىجازىتىنى ئورگان باشقۇرىدۇ، يۇقىرى مەخپىيەتلىك ھالىتى باشقۇرالمايدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"SuperPrivacyPanelUnderEdmControl6",
+            "value":"كامېرا ۋە مىكروفون ئىجازىتىنى ئورگان باشقۇرىدۇ، يۇقىرى مەخپىيەتلىك ھالىتى باشقۇرالمايدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"SuperPrivacyPaddlePanelOffContent",
+            "value":"كامېرا، مىكروفون ۋە ئورۇن مۇلازىمىتى ئەسلىگە كەلدى. كۇنۇپكا تاختىسىنىڭ يېنىدىكى ئۈزچات ئارقىلىق يۇقىرى مەخپىيەتلىك ھالىتىنى ئاچالايسىز.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"SuperPrivacyPanelUnderEdmControl1",
+            "value":"ئورۇن ئىجازىتىنى ئورگان باشقۇرىدۇ، يۇقىرى مەخپىيەتلىك ھالىتى باشقۇرالمايدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"SuperPrivacyPanelUnderEdmControl3",
+            "value":"مىكروفون ۋە ئورۇن ئىجازىتىنى ئورگان باشقۇرىدۇ، يۇقىرى مەخپىيەتلىك ھالىتى باشقۇرالمايدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"SuperPrivacyPanelUnderEdmControl2",
+            "value":"مىكروفون ئىجازىتىنى ئورگان باشقۇرىدۇ، يۇقىرى مەخپىيەتلىك ھالىتى باشقۇرالمايدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"SuperPrivacyPaddlePanelContent",
+            "value":"ئەپلەرنىڭ كامېرا، مىكروفون ۋە ئورۇن ئۇچۇرى ئىشلىتىشى چەكلەندى. كۇنۇپكا تاختىسىنىڭ يېنىدىكى ئۈزچات ئارقىلىق يۇقىرى مەخپىيەتلىك ھالىتىنى ئېتەلەيسىز.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"SuperPrivacyPaddlePanelDisappearTitle",
+            "value":"يۇقىرى مەخپىيەتلىك ھالىتى ئېتىك",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"SuperPrivacySoftPanelContent",
+            "value":"ئەپلەرنىڭ كامېرا، مىكروفون ۋە ئورۇن ئۇچۇرى ئىشلىتىشى چەكلەندى. «يۇقىرى مەخپىيەتلىك ھالىتى» نى ئەتسىڭىز ئەسلىگە كېلىدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"SuperPrivacyPaddlePanelAppearTitle",
+            "value":"يۇقىرى مەخپىيەتلىك ھالىتى ئوچۇق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"SuperPrivacySoftPanelOffContent",
+            "value":"ئەپلەرنىڭ كامېرا، مىكروفون ۋە ئورۇن ئۇچۇرى ئىشلىتىشى ئەسلىگە كەلدى. «يۇقىرى مەخپىيەتلىك ھالىتى» نى ئاچسىڭىز چەكلىنىدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

@@ -1,0 +1,42 @@
+{
+    "plural":[
+        {
+            "name":"stack_request_focus_front_text",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"كارتا دۆۋىسى، %d كارتا بار",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"one",
+                    "value":"كارتا دۆۋىسى، %d كارتا بار",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"expand_stack_request_focus_after_text",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"جەمئىي %d نەرسە بار، مەشغۇلات قىلىشقا بولىدۇ، بىر بارماقتا قوش چەكسىڭىز دۆۋە يىغىلىپ، كارتا چوققىلىنىدۇ. قوش بېسىپ تۇرۇپ ئۈستى-ئاستىغا سۆرەپ يۆتكەشكە بولىدۇ",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"جەمئىي %d نەرسە بار، مەشغۇلات قىلىشقا بولىدۇ، بىر بارماقتا قوش چەكسىڭىز دۆۋە يىغىلىپ، كارتا چوققىلىنىدۇ. قوش بېسىپ تۇرۇپ ئۈستى-ئاستىغا سۆرەپ يۆتكەشكە بولىدۇ",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

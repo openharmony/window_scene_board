@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"accessibility_status_bar_ear",
+            "value":"Наушники подключены",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

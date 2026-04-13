@@ -1,0 +1,368 @@
+{
+    "plural":[
+        {
+            "name":"psd_incorrect_psd_left_times",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"密码错误，还可尝试%d次"
+                },
+                {
+                    "quantity":"two",
+                    "value":"密码错误，还可尝试%d次"
+                },
+                {
+                    "quantity":"zero",
+                    "value":"密码错误，还可尝试%d次"
+                },
+                {
+                    "quantity":"few",
+                    "value":"密码错误，还可尝试%d次"
+                },
+                {
+                    "quantity":"many",
+                    "value":"密码错误，还可尝试%d次"
+                },
+                {
+                    "quantity":"other",
+                    "value":"密码错误，还可尝试 %d 次",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"psd_incorrect_psd_left_times_mix",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"密码错误，还可尝试%d次"
+                },
+                {
+                    "quantity":"two",
+                    "value":"密码错误，还可尝试%d次"
+                },
+                {
+                    "quantity":"zero",
+                    "value":"密码错误，还可尝试%d次"
+                },
+                {
+                    "quantity":"few",
+                    "value":"密码错误，还可尝试%d次"
+                },
+                {
+                    "quantity":"many",
+                    "value":"密码错误，还可尝试%d次"
+                },
+                {
+                    "quantity":"other",
+                    "value":"密码错误，还可尝试 %d 次",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"psd_incorrect_will_locked1",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"%d次"
+                },
+                {
+                    "quantity":"two",
+                    "value":"%d次"
+                },
+                {
+                    "quantity":"zero",
+                    "value":"%d次"
+                },
+                {
+                    "quantity":"few",
+                    "value":"%d次"
+                },
+                {
+                    "quantity":"many",
+                    "value":"%d次"
+                },
+                {
+                    "quantity":"other",
+                    "value":"%d 次",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"psd_incorrect_will_locked2",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"%d分钟"
+                },
+                {
+                    "quantity":"two",
+                    "value":"%d分钟"
+                },
+                {
+                    "quantity":"zero",
+                    "value":"%d分钟"
+                },
+                {
+                    "quantity":"few",
+                    "value":"%d分钟"
+                },
+                {
+                    "quantity":"many",
+                    "value":"%d分钟"
+                },
+                {
+                    "quantity":"other",
+                    "value":"%d 分钟",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"psd_incorrect_will_locked3",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"%d秒"
+                },
+                {
+                    "quantity":"two",
+                    "value":"%d秒"
+                },
+                {
+                    "quantity":"zero",
+                    "value":"%d秒"
+                },
+                {
+                    "quantity":"few",
+                    "value":"%d秒"
+                },
+                {
+                    "quantity":"many",
+                    "value":"%d秒"
+                },
+                {
+                    "quantity":"other",
+                    "value":"%d 秒",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"sim_unlock_input_puk_tips",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"输入 PUK 码（剩余 %d 次）"
+                },
+                {
+                    "quantity":"two",
+                    "value":"输入 PUK 码（剩余 %d 次）"
+                },
+                {
+                    "quantity":"zero",
+                    "value":"输入 PUK 码（剩余 %d 次）"
+                },
+                {
+                    "quantity":"few",
+                    "value":"输入 PUK 码（剩余 %d 次）"
+                },
+                {
+                    "quantity":"many",
+                    "value":"输入 PUK 码（剩余 %d 次）"
+                },
+                {
+                    "quantity":"other",
+                    "value":"输入 PUK 码 (剩余 %d 次)",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"sim_unlock_input_tips",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"输入 SIM 卡 PIN 码（剩余 %d 次）"
+                },
+                {
+                    "quantity":"two",
+                    "value":"输入 SIM 卡 PIN 码（剩余 %d 次）"
+                },
+                {
+                    "quantity":"zero",
+                    "value":"输入 SIM 卡 PIN 码（剩余 %d 次）"
+                },
+                {
+                    "quantity":"few",
+                    "value":"输入 SIM 卡 PIN 码（剩余 %d 次）"
+                },
+                {
+                    "quantity":"many",
+                    "value":"输入 SIM 卡 PIN 码（剩余 %d 次）"
+                },
+                {
+                    "quantity":"other",
+                    "value":"输入 SIM 卡 PIN 码 (剩余 %d 次)",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"sim_unlock_pin_incorrect_tips",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"SIM 卡 PIN 码错误，您还有 %d 次尝试机会。"
+                },
+                {
+                    "quantity":"two",
+                    "value":"SIM 卡 PIN 码错误，您还有 %d 次尝试机会。"
+                },
+                {
+                    "quantity":"zero",
+                    "value":"SIM 卡 PIN 码错误，您还有 %d 次尝试机会。"
+                },
+                {
+                    "quantity":"few",
+                    "value":"SIM 卡 PIN 码错误，您还有 %d 次尝试机会。"
+                },
+                {
+                    "quantity":"many",
+                    "value":"SIM 卡 PIN 码错误，您还有 %d 次尝试机会。"
+                },
+                {
+                    "quantity":"other",
+                    "value":"SIM 卡 PIN 码错误，您还有 %d 次尝试机会。",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"sim_unlock_puk_incorrect_tips",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"SIM 卡 PUK 码错误，您还有 %d 次尝试机会。如果仍然失败，SIM 卡将永远无法使用。"
+                },
+                {
+                    "quantity":"two",
+                    "value":"SIM 卡 PUK 码错误，您还有 %d 次尝试机会。如果仍然失败，SIM 卡将永远无法使用。"
+                },
+                {
+                    "quantity":"zero",
+                    "value":"SIM 卡 PUK 码错误，您还有 %d 次尝试机会。如果仍然失败，SIM 卡将永远无法使用。"
+                },
+                {
+                    "quantity":"few",
+                    "value":"SIM 卡 PUK 码错误，您还有 %d 次尝试机会。如果仍然失败，SIM 卡将永远无法使用。"
+                },
+                {
+                    "quantity":"many",
+                    "value":"SIM 卡 PUK 码错误，您还有 %d 次尝试机会。如果仍然失败，SIM 卡将永远无法使用。"
+                },
+                {
+                    "quantity":"other",
+                    "value":"SIM 卡 PUK 码错误，您还有 %d 次尝试机会。如果仍然失败，SIM 卡将永远无法使用。",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"fp_fingerprint_not_match",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"指纹不匹配，还可以尝试 %d 次",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"psd_totle_length",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"共 %d 位"
+                },
+                {
+                    "quantity":"two",
+                    "value":"共 %d 位"
+                },
+                {
+                    "quantity":"zero",
+                    "value":"共 %d 位"
+                },
+                {
+                    "quantity":"few",
+                    "value":"共 %d 位"
+                },
+                {
+                    "quantity":"many",
+                    "value":"共 %d 位"
+                },
+                {
+                    "quantity":"other",
+                    "value":"共 %d 位",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"psd_entered_length",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"已输入 %d 位"
+                },
+                {
+                    "quantity":"two",
+                    "value":"已输入 %d 位"
+                },
+                {
+                    "quantity":"zero",
+                    "value":"已输入 %d 位"
+                },
+                {
+                    "quantity":"few",
+                    "value":"已输入 %d 位"
+                },
+                {
+                    "quantity":"many",
+                    "value":"已输入 %d 位"
+                },
+                {
+                    "quantity":"other",
+                    "value":"已输入 %d 位",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

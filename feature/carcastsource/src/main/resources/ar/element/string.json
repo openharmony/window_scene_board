@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"app_not_support_full_screen",
+            "value":"لا يدعم هذا التطبيق العرض ملء الشاشة",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

@@ -1,0 +1,36 @@
+{
+  "color": [
+    {
+      "name": "battery_component_pic_level_very_low_color",
+      "value": "#E84026"
+    },
+    {
+      "name": "battery_component_pic_level_low_color",
+      "value": "#ED6F21"
+    },
+    {
+      "name": "battery_background",
+      "value": "#00000000"
+    },
+    {
+      "name": "battery_bright_color",
+      "value": "#FFFFFF"
+    },
+    {
+      "name": "battery_dark_color",
+      "value": "#DF000000"
+    },
+    {
+      "name": "battery_pic_soc_background_color",
+      "value": "#33000000"
+    },
+    {
+      "name": "battery_pic_soc_bright_background_color",
+      "value": "#33FFFFFF"
+    },
+    {
+      "name": "microphone_circle",
+      "value": "#F5AF0D"
+    }
+  ]
+}

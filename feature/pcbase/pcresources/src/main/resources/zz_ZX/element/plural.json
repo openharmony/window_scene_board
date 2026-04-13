@@ -1,0 +1,146 @@
+{
+    "plural":[
+        {
+            "name":"confirm_reboot",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"[TS_904488]_Restart (%d)"
+                },
+                {
+                    "quantity":"other",
+                    "value":"[TS_904561]_Restart (%d)"
+                },
+                {
+                    "quantity":"zero",
+                    "value":"[TS_904440]_Restart (%d)"
+                },
+                {
+                    "quantity":"few",
+                    "value":"[TS_904377]_Restart (%d)"
+                },
+                {
+                    "quantity":"many",
+                    "value":"[TS_904492]_Restart (%d)"
+                },
+                {
+                    "quantity":"two",
+                    "value":"[TS_904425]_Restart (%d)"
+                }
+            ]
+        },
+        {
+            "name":"confirm_shutdown",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"[TS_904352]_Power off (%d)"
+                },
+                {
+                    "quantity":"other",
+                    "value":"[TS_904447]_Power off (%d)"
+                },
+                {
+                    "quantity":"zero",
+                    "value":"[TS_904422]_Power off (%d)"
+                },
+                {
+                    "quantity":"few",
+                    "value":"[TS_904527]_Power off (%d)"
+                },
+                {
+                    "quantity":"many",
+                    "value":"[TS_904466]_Power off (%d)"
+                },
+                {
+                    "quantity":"two",
+                    "value":"[TS_904500]_Power off (%d)"
+                }
+            ]
+        },
+        {
+            "name":"confirm_hibernate",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"[TS_958352]_Sleep (%d)"
+                },
+                {
+                    "quantity":"other",
+                    "value":"[TS_958355]_Sleep (%d)"
+                },
+                {
+                    "quantity":"zero",
+                    "value":"[TS_958353]_Sleep (%d)"
+                },
+                {
+                    "quantity":"few",
+                    "value":"[TS_958350]_Sleep (%d)"
+                },
+                {
+                    "quantity":"many",
+                    "value":"[TS_958354]_Sleep (%d)"
+                },
+                {
+                    "quantity":"two",
+                    "value":"[TS_958348]_Sleep (%d)"
+                }
+            ]
+        },
+        {
+            "name":"common_cancel",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"[TS_1061814]_Cancel (%d)"
+                },
+                {
+                    "quantity":"other",
+                    "value":"[TS_1061816]_Cancel (%d)"
+                },
+                {
+                    "quantity":"zero",
+                    "value":"[TS_1061813]_Cancel (%d)"
+                },
+                {
+                    "quantity":"few",
+                    "value":"[TS_1061812]_Cancel (%d)"
+                },
+                {
+                    "quantity":"many",
+                    "value":"[TS_1061819]_Cancel (%d)"
+                },
+                {
+                    "quantity":"two",
+                    "value":"[TS_1061815]_Cancel (%d)"
+                }
+            ]
+        },
+        {
+            "name":"create_region_folder",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"[TS_1058055]_Smart organize (%d item)"
+                },
+                {
+                    "quantity":"other",
+                    "value":"[TS_1058053]_Smart organize (%d items)"
+                }
+            ]
+        },
+        {
+            "name":"confirm_shutdown_tip",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"[TS_1082016]_Closing %d apps. To go back and save your work, click Cancel and save manually."
+                },
+                {
+                    "quantity":"one",
+                    "value":"[TS_1082014]_Closing %d app. To go back and save your work, click Cancel and save manually."
+                }
+            ]
+        }
+    ]
+}

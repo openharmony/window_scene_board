@@ -1,0 +1,580 @@
+{
+  "float": [
+    {
+      "name": "Control_center_button_label_padding",
+      "value": "3"
+    },
+    {
+      "name": "Control_center_icon_on_bg_brightness",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_icon_default_bg_brightness",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_icon_margin_bottom",
+      "value": "4"
+    },
+    {
+      "name": "Control_center_button_font_size",
+      "value": "14"
+    },
+    {
+      "name": "Control_center_wifiblue_icon_default_bg_brightness",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_wifiblue_icon_on_bg_brightness",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_icon_shadow_radius",
+      "value": "8"
+    },
+    {
+      "name": "Control_center_icon_shadow_offset_y",
+      "value": "4"
+    },
+    {
+      "name": "Control_center_long_button_font_size",
+      "value": "16"
+    },
+    {
+      "name": "Control_center_pc_long_button_font_size",
+      "value": "15"
+    },
+    {
+      "name": "Control_center_other_long_button_font_size",
+      "value": "14"
+    },
+    {
+      "name": "Control_center_long_button_font_lineheight",
+      "value": "0"
+    },
+    {
+      "name": "Control_center_brightness_lightUpDegree_on",
+      "value": "0"
+    },
+    {
+      "name": "Control_center_brightness_lightUpDegree_off",
+      "value": "0"
+    },
+    {
+      "name": "Control_center_quickToggle_padding",
+      "value": "6"
+    },
+    {
+      "name": "Control_center_brightness_rate_off",
+      "value": "0"
+    },
+    {
+      "name": "Control_center_brightness_main_card_a_dark",
+      "value": "0.986"
+    },
+    {
+      "name": "Control_center_brightness_main_card_b_dark",
+      "value": "-0.18"
+    },
+    {
+      "name": "Control_center_brightness_main_card_n_dark",
+      "value": "1.2"
+    },
+    {
+      "name": "Control_center_brightness_main_card_redCof1_dark",
+      "value": "0.3"
+    },
+    {
+      "name": "Control_center_brightness_main_card_greenCof1_dark",
+      "value": "0.5"
+    },
+    {
+      "name": "Control_center_brightness_main_card_blueCof1_dark",
+      "value": "0.5"
+    },
+    {
+      "name": "Control_center_brightness_main_card_redCof2_dark",
+      "value": "0.3"
+    },
+    {
+      "name": "Control_center_brightness_main_card_greenCof2_dark",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_brightness_main_card_blueCof2_dark",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_brightness_main_card_a",
+      "value": "0.8386"
+    },
+    {
+      "name": "Control_center_brightness_main_card_b",
+      "value": "0.2"
+    },
+    {
+      "name": "Control_center_brightness_main_card_n",
+      "value": "1.4"
+    },
+    {
+      "name": "Control_center_brightness_main_card_redCof1",
+      "value": "0.4"
+    },
+    {
+      "name": "Control_center_brightness_main_card_greenCof1",
+      "value": "1.2"
+    },
+    {
+      "name": "Control_center_brightness_main_card_blueCof1",
+      "value": "0.2"
+    },
+    {
+      "name": "Control_center_brightness_main_card_redCof2",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_brightness_main_card_greenCof2",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_brightness_main_card_blueCof2",
+      "value": "0.5"
+    },
+    {
+      "name": "Control_center_brightness_volume_top_card_a",
+      "value": "0.2947"
+    },
+    {
+      "name": "Control_center_brightness_volume_top_card_b",
+      "value": "0.7749"
+    },
+    {
+      "name": "Control_center_brightness_volume_top_card_n",
+      "value": "1.5"
+    },
+    {
+      "name": "Control_center_brightness_volume_top_card_redCof1",
+      "value": "1.2"
+    },
+    {
+      "name": "Control_center_brightness_volume_top_card_greenCof1",
+      "value": "2"
+    },
+    {
+      "name": "Control_center_brightness_volume_top_card_blueCof1",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_brightness_volume_top_card_redCof2",
+      "value": "0.8"
+    },
+    {
+      "name": "Control_center_brightness_volume_top_card_greenCof2",
+      "value": "1.7"
+    },
+    {
+      "name": "Control_center_brightness_volume_top_card_blueCof2",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_brightness_volume_top_card_a_dark",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_brightness_volume_top_card_b_dark",
+      "value": "0.68"
+    },
+    {
+      "name": "Control_center_brightness_volume_top_card_n_dark",
+      "value": "1.2"
+    },
+    {
+      "name": "Control_center_brightness_volume_top_card_redCof1_dark",
+      "value": "0.5"
+    },
+    {
+      "name": "Control_center_brightness_volume_top_card_greenCof1_dark",
+      "value": "1.5"
+    },
+    {
+      "name": "Control_center_brightness_volume_top_card_blueCof1_dark",
+      "value": "3"
+    },
+    {
+      "name": "Control_center_brightness_volume_top_card_redCof2_dark",
+      "value": "1.5"
+    },
+    {
+      "name": "Control_center_brightness_volume_top_card_greenCof2_dark",
+      "value": "2.5"
+    },
+    {
+      "name": "Control_center_brightness_volume_top_card_blueCof2_dark",
+      "value": "2"
+    },
+    {
+      "name": "Control_center_brightness_upper_card_a_dark",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_brightness_upper_card_b_dark",
+      "value": "0.12"
+    },
+    {
+      "name": "Control_center_brightness_upper_card_n_dark",
+      "value": "1.3"
+    },
+    {
+      "name": "Control_center_brightness_upper_card_redCof1_dark",
+      "value": "1.2"
+    },
+    {
+      "name": "Control_center_brightness_upper_card_greenCof1_dark",
+      "value": "1.4"
+    },
+    {
+      "name": "Control_center_brightness_upper_card_blueCof1_dark",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_brightness_upper_card_redCof2_dark",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_brightness_upper_card_greenCof2_dark",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_brightness_upper_card_blueCof2_dark",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_brightness_lightbar_bottom_card_a",
+      "value": "0.986"
+    },
+    {
+      "name": "Control_center_brightness_lightbar_bottom_card_b",
+      "value": "-0.18"
+    },
+    {
+      "name": "Control_center_brightness_lightbar_bottom_card_n",
+      "value": "1.2"
+    },
+    {
+      "name": "Control_center_brightness_lightbar_bottom_card_redCof1",
+      "value": "0.3"
+    },
+    {
+      "name": "Control_center_brightness_lightbar_bottom_card_greenCof1",
+      "value": "0.5"
+    },
+    {
+      "name": "Control_center_brightness_lightbar_bottom_card_blueCof1",
+      "value": "0.5"
+    },
+    {
+      "name": "Control_center_brightness_lightbar_bottom_card_redCof2",
+      "value": "0.3"
+    },
+    {
+      "name": "Control_center_brightness_lightbar_bottom_card_greenCof2",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_brightness_lightbar_bottom_card_blueCof2",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_brightness_icon_primary_a_dark",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_brightness_icon_primary_b_dark",
+      "value": "0.5216"
+    },
+    {
+      "name": "Control_center_brightness_icon_primary_n_dark",
+      "value": "1.1"
+    },
+    {
+      "name": "Control_center_brightness_icon_primary_redCof1_dark",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_brightness_icon_primary_greenCof1_dark",
+      "value": "1.2"
+    },
+    {
+      "name": "Control_center_brightness_icon_primary_blueCof1_dark",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_brightness_edit_card_bg_a_dark",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_brightness_edit_card_bg_b_dark",
+      "value": "-0.078"
+    },
+    {
+      "name": "Control_center_brightness_edit_card_bg_n_dark",
+      "value": "1.2"
+    },
+    {
+      "name": "Control_center_brightness_edit_card_bg_redCof1_dark",
+      "value": "1.3"
+    },
+    {
+      "name": "Control_center_brightness_edit_card_bg_greenCof1_dark",
+      "value": "1.8"
+    },
+    {
+      "name": "Control_center_brightness_edit_card_bg_blueCof1_dark",
+      "value": "0.5"
+    },
+    {
+      "name": "Control_center_brightness_edit_card_bg_greenCof2_dark",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_brightness_edit_card_bg_blueCof2_dark",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_brightness_icon_primary_redCof2_dark",
+      "value": "0.5"
+    },
+    {
+      "name": "Control_center_brightness_icon_primary_greenCof2_dark",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_brightness_icon_primary_blueCof2_dark",
+      "value": "0.5"
+    },
+    {
+      "name": "Control_center_brightness_icon_primary_a",
+      "value": "0.4"
+    },
+    {
+      "name": "Control_center_brightness_icon_primary_b",
+      "value": "-0.1176"
+    },
+    {
+      "name": "Control_center_brightness_icon_primary_n",
+      "value": "1.8"
+    },
+    {
+      "name": "Control_center_brightness_icon_primary_redCof1",
+      "value": "1.9"
+    },
+    {
+      "name": "Control_center_brightness_icon_primary_greenCof1",
+      "value": "3.8"
+    },
+    {
+      "name": "Control_center_brightness_icon_primary_blueCof1",
+      "value": "1.3"
+    },
+    {
+      "name": "Control_center_brightness_icon_primary_redCof2",
+      "value": "0.5"
+    },
+    {
+      "name": "Control_center_brightness_icon_primary_greenCof2",
+      "value": "0.67"
+    },
+    {
+      "name": "Control_center_brightness_icon_primary_blueCof2",
+      "value": "1.3"
+    },
+    {
+      "name": "Control_center_brightness_icon_primary_on_background_a_dark",
+      "value": "1.0142"
+    },
+    {
+      "name": "Control_center_brightness_icon_primary_on_background_b_dark",
+      "value": "0.7039"
+    },
+    {
+      "name": "Control_center_brightness_icon_primary_on_background_n_dark",
+      "value": "1.5"
+    },
+    {
+      "name": "Control_center_brightness_icon_primary_on_background_redCof1_dark",
+      "value": "1.2"
+    },
+    {
+      "name": "Control_center_brightness_icon_primary_on_background_greenCof1_dark",
+      "value": "1.5"
+    },
+    {
+      "name": "Control_center_brightness_icon_primary_on_background_blueCof1_dark",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_brightness_icon_primary_on_background_redCof2_dark",
+      "value": "0.5"
+    },
+    {
+      "name": "Control_center_brightness_icon_primary_on_background_greenCof2_dark",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_brightness_icon_primary_on_background_blueCof2_dark",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_subpage_brightness_light_rate",
+      "value": "0.2632"
+    },
+    {
+      "name": "Control_center_subpage_brightness_light_lightUpDegree",
+      "value": "0.7529"
+    },
+    {
+      "name": "Control_center_subpage_brightness_light_saturation",
+      "value": "2.3"
+    },
+    {
+      "name": "Control_center_subpage_brightness_light_redCof1",
+      "value": "0.8"
+    },
+    {
+      "name": "Control_center_subpage_brightness_light_greenCof1",
+      "value": "0.7"
+    },
+    {
+      "name": "Control_center_subpage_brightness_light_blueCof1",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_subpage_brightness_light_redCof2",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_subpage_brightness_light_greenCof2",
+      "value": "1.2"
+    },
+    {
+      "name": "Control_center_subpage_brightness_light_blueCof2",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_subpage_brightness_bg_light_rate",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_subpage_brightness_bg_light_lightUpDegree",
+      "value": "-0.0784"
+    },
+    {
+      "name": "Control_center_subpage_brightness_bg_light_saturation",
+      "value": "1.2"
+    },
+    {
+      "name": "Control_center_subpage_brightness_bg_light_redCof1",
+      "value": "1.3"
+    },
+    {
+      "name": "Control_center_subpage_brightness_bg_light_greenCof1",
+      "value": "0.5"
+    },
+    {
+      "name": "Control_center_subpage_brightness_bg_light_blueCof1",
+      "value": "0.5"
+    },
+    {
+      "name": "Control_center_subpage_brightness_bg_light_redCof2",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_subpage_brightness_bg_light_greenCof2",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_subpage_brightness_bg_light_blueCof2",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_brightness_subpage_bg_light_rate",
+      "value": "0.5895"
+    },
+    {
+      "name": "Control_center_brightness_subpage_bg_light_lightUpDegree",
+      "value": "0.46"
+    },
+    {
+      "name": "Control_center_brightness_subpage_bg_light_saturation",
+      "value": "1.2"
+    },
+    {
+      "name": "Control_center_brightness_subpage_bg_light_redCof1",
+      "value": "0.1"
+    },
+    {
+      "name": "Control_center_brightness_subpage_bg_light_greenCof1",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_brightness_subpage_bg_light_blueCof1",
+      "value": "0.5"
+    },
+    {
+      "name": "Control_center_brightness_subpage_bg_light_redCof2",
+      "value": "1.5"
+    },
+    {
+      "name": "Control_center_brightness_subpage_bg_light_greenCof2",
+      "value": "1.5"
+    },
+    {
+      "name": "Control_center_brightness_subpage_bg_light_blueCof2",
+      "value": "1"
+    },
+    {
+      "name": "Control_center_long_button_radius",
+      "value": "16"
+    },
+    {
+      "name": "control_center_privacy_margin_top",
+      "value": "12"
+    },
+    {
+      "name": "control_center_privacy_margin_bottom",
+      "value": "-10"
+    },
+    {
+      "name": "control_center_privacy_text_padding_bottom",
+      "value": "1"
+    },
+    {
+      "name": "control_center_privacy_hotPadding",
+      "value": "8"
+    },
+    {
+      "name": "Control_center_long_button_height",
+      "value": "68"
+    },
+    {
+      "name": "Control_center_brightness_padding_bottom",
+      "value": "0"
+    },
+    {
+      "name": "Control_center_grid_margin_bottomn",
+      "value": "24"
+    },
+    {
+      "name": "Control_center_button_label_space",
+      "value": "8"
+    },
+    {
+      "name": "Control_center_quick_toggle_label_font_padding_top",
+      "value": "7"
+    },
+    {
+      "name": "Control_center_quick_toggle_label_top_padding",
+      "value": "3"
+    }
+  ]
+}

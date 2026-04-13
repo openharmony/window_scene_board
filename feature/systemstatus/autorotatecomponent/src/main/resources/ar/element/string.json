@@ -1,0 +1,18 @@
+{
+    "string":[
+        {
+            "name":"control_center_complex_toggle_auto_rotate_title",
+            "value":"قفل الاتجاه",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"multi_window_opened",
+            "value":"تم تشغيل النوافذ الحرة، لا تعمل هذه الميزة إلا في الوضع الأفقي",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

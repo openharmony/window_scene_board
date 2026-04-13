@@ -1,0 +1,144 @@
+{
+    "string":[
+        {
+            "name":"off_find_alert_dialog_message",
+            "value":"سيظل بإمكانك إيجاد هذا الجهاز باستخدام ميزة إيجاد الجهاز. علمًا بأنه إذا أوقفت تشغيل ميزة إيجاد الجهاز الآن، فسيُعاد تشغيلها المرة القادمة التي يُعاد فيها تشغيل الجهاز.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"off_find_no_action_confirm",
+            "value":"حسنًا",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"off_find_checkbox",
+            "value":"الإبقاء على ميزة \"إيجاد الجهاز\" مُشغّلة بعد إيقاف تشغيل الجهاز",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"off_find_alert_dialog_title",
+            "value":"سيظل بالإمكان تحديد موقع هذا الجهاز حتى بعد إيقاف تشغيله.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"off_find_disable_confirm",
+            "value":"إيقاف تشغيل إيجاد الجهاز",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"thermal_aware_toast",
+            "value":"يُرجى فرد الهاتف لتجربة استخدام أفضل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Poweroff_Button_Click_Reboot",
+            "value":"انقر هنا لإعادة التشغيل",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"shutdown_dialog_title",
+            "value":"تنويه",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"power_schedule_switch_reminder",
+            "value":"تشغيل مجدول (%s)",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Poweroff_Button_Reboot",
+            "value":"إعادة التشغيل",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"poweroff_tips",
+            "value":"اضغط مطولًا على زر تشغيل الجهاز وزر خفض الصوت لمدة لا تقل عن %d ثوانٍ لفرض إعادة تشغيل الجهاز",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Poweroff_Button_Click_Shutdown",
+            "value":"انقر هنا لإيقاف التشغيل",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"battery_emergency_dialog_content",
+            "value":"مستوى طاقة البطارية منخفض جدًا. سيُفعّل وضع الطاقة الاحتياطية بعد %d ثانية.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"shutdown_dialog_content_new",
+            "value":"طاقة البطارية على وشك النفاد. سيتم إيقاف تشغيل الجهاز بعد %d ثانية.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Poweroff_Button_Shutdown",
+            "value":"إيقاف التشغيل",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"poweroff_fold_tips",
+            "value":"اضغط مطولًا على زر تشغيل الجهاز وزر خفض الصوت لمدة لا تقل عن %d ثوانٍ لفرض إعادة تشغيل الجهاز",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"power_schedule_switch_toast",
+            "value":"لن يُشغَّل جهازك تلقائيًا مجددًا",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"accessibility_power_off",
+            "value":"إيقاف التشغيل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_reboot",
+            "value":"إعادة التشغيل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_back",
+            "value":"مغادرة شاشة إيقاف التشغيل",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

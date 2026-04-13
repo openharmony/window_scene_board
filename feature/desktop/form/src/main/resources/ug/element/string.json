@@ -1,0 +1,95 @@
+{
+    "string":[
+        {
+            "name":"suggestion",
+            "value":"تەۋسىيە",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"form_added",
+            "value":"كارتا قوشۇلدى.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"add_to_screen_lock",
+            "value":"قۇلۇپ ئېكرانىغا قوشۇش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"add_theme_form_to_desktop_more",
+            "value":"كۆپرەك ئۆزگەرمە كارتا",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"look_more_theme_form",
+            "value":"كۆپرەك ئۆزگەرمە كارتا",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"form_center_notice_text",
+            "value":"كارتا چېكىپ ياكى سۆرەپ ئۈستەليۈزىگە قوشۇڭ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"form_center_notice_button",
+            "value":"پۈتتى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_form_to_intelligent",
+            "value":"قوشۇمچە ئېكرانغا قوشۇش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_str_long_click_to_drag",
+            "value":"قوش بېسىپ تۇرۇپ سۆرەيسىز",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_str_two_finger_slide",
+            "value":"ئىككى بارماقتا ئوڭ-سولغا سىيرىسىڭىز ئېكران ئالمىشىدۇ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"splitter_format",
+            "value":"%1$s، %2$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"card_load_error",
+            "value":"كارتا ئۇچۇرىنى يۈكلەشتە خاتالىق كۆرۈلدى، كېيىنرەك قايتا سىناڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"onekeylock_shortcut",
+            "value":"قۇلۇپ ئېكران تېزلەتمىسى",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

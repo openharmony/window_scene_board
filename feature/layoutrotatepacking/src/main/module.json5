@@ -1,0 +1,11 @@
+{
+  "module": {
+    "name": "layoutrotatepacking",
+    "type": "har",
+    "description": "layout rotate packing",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ]
+  }
+}

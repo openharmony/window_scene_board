@@ -1,0 +1,112 @@
+{
+  "float": [
+    {
+      "name": "volume_image_width",
+      "value": "32vp"
+    },
+    {
+      "name": "pc_volume_image_width",
+      "value": "18vp"
+    },
+    {
+      "name": "volume_image_height",
+      "value": "32vp"
+    },
+    {
+      "name": "pc_volume_image_height",
+      "value": "18vp"
+    },
+    {
+      "name": "volume_image_left_margin",
+      "value": "16vp"
+    },
+    {
+      "name": "pc_volume_image_left_margin",
+      "value": "10vp"
+    },
+    {
+      "name": "volume_slider_width",
+      "value": "182.5vp"
+    },
+    {
+      "name": "volume_slider_height",
+      "value": "4vp"
+    },
+    {
+      "name": "volume_slider_trackthickness_height",
+      "value": "4vp"
+    },
+    {
+      "name": "volume_slider_left_margin",
+      "value": "9.5vp"
+    },
+    {
+      "name": "volume_slider_radius",
+      "value": "3vp"
+    },
+    {
+      "name": "volume_panel_radius",
+      "value": "29vp"
+    },
+    {
+      "name": "pc_volume_panel_radius",
+      "value": "32vp"
+    },
+    {
+      "name": "volume_border_width",
+      "value": "1vp"
+    },
+    {
+      "name": "pc_volume_border_width",
+      "value": "1vp"
+    },
+    {
+      "name": "volume_progress_component_width",
+      "value": "40vp"
+    },
+    {
+      "name": "volume_progress_component_width_thin",
+      "value": "8vp"
+    },
+    {
+      "name": "volume_progress_component_width_thin_min",
+      "value": "7.2vp"
+    },
+    {
+      "name": "volume_progress_component_width_thin_max",
+      "value": "8.8vp"
+    },
+    {
+      "name": "volume_progress_component_height",
+      "value": "160vp"
+    },
+    {
+      "name": "volume_progress_component_height_thin_min",
+      "value": "154vp"
+    },
+    {
+      "name": "volume_progress_component_height_thin_max",
+      "value": "166vp"
+    },
+    {
+      "name": "volume_progress_component_height_stretch",
+      "value": "170vp"
+    },
+    {
+      "name": "volume_virtual_progress_component_height",
+      "value": "144vp"
+    },
+    {
+      "name": "volume_panel_dialog_width",
+      "value": "312vp"
+    },
+    {
+      "name": "volume_panel_dialog_height",
+      "value": "319vp"
+    },
+    {
+      "name": "status_bar_phone_height",
+      "value": "33"
+    }
+  ]
+}

@@ -1,0 +1,151 @@
+{
+    "string":[
+        {
+            "name":"regular_verify_psd_for_security",
+            "value":"Yêu cầu mật khẩu để tăng cường bảo mật",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_enter_psd_mix",
+            "value":"Nhập mật khẩu",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_incorrect_will_locked",
+            "value":"Mã PIN không chính xác. Sau %1$s, thiết bị của bạn sẽ bị khóa trong %2$s.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"please_enter_psd_for_security",
+            "value":"Yêu cầu mật khẩu để tăng cường bảo mật",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_incorrect_psd_try_again",
+            "value":"Mã PIN không chính xác. Vui lòng thử lại.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_incorrect_hardware_error",
+            "value":"Lỗi xác minh",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pattern_incorrect_will_locked",
+            "value":"Mẫu hình không chính xác. Sau %1$s, thiết bị của bạn sẽ bị khóa trong %2$s.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_enter_psd",
+            "value":"Nhập mã PIN",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"regular_verify_pin_for_security",
+            "value":"Yêu cầu mã PIN để tăng cường bảo mật",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_incorrect_psd_try_again_mix",
+            "value":"Mật khẩu không chính xác. Vui lòng thử lại.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_try_again_after_time1",
+            "value":"Thử lại sau %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"text_loading",
+            "value":"Đang tải…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"restart_enter_pin",
+            "value":"Bạn cần nhập mã PIN sau khi khởi động lại",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"restart_enter_psd",
+            "value":"Bạn cần nhập mật khẩu sau khi khởi động lại",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"fp_disable_enter_psd",
+            "value":"Đã tắt nhận dạng vân tay. Vui lòng nhập mã PIN của bạn.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"device_restart_enter_psd",
+            "value":"Bạn cần nhập mật khẩu sau khi khởi động lại",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pattern_psd_incorrect_psd_try_again",
+            "value":"Sai mẫu hình",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"fingerprint_incorrect_will_locked",
+            "value":"Không nhận dạng được vân tay. Thiết bị sẽ bị khóa trong %2$s sau %1$s.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"fp_incorrect_fp_try_again",
+            "value":"Đảm bảo ngón tay của bạn bao phủ toàn bộ cảm biến và thử nhấn giữ lâu hơn.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"please_enter_pin_for_security",
+            "value":"Yêu cầu mã PIN để tăng cường bảo mật",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pattern_psd_drawing_completed",
+            "value":"Đã vẽ mẫu hình",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

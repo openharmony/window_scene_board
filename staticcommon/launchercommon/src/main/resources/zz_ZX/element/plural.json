@@ -1,0 +1,236 @@
+{
+    "plural":[
+        {
+            "name":"number_of_notifications",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"[TS_953962]_%d notifications"
+                },
+                {
+                    "quantity":"one",
+                    "value":"[TS_953971]_%d notification"
+                },
+                {
+                    "quantity":"zero",
+                    "value":"[TS_953965]_%d notifications"
+                },
+                {
+                    "quantity":"few",
+                    "value":"[TS_953973]_%d notifications"
+                },
+                {
+                    "quantity":"many",
+                    "value":"[TS_953966]_%d notifications"
+                },
+                {
+                    "quantity":"two",
+                    "value":"[TS_953967]_%d notifications"
+                }
+            ]
+        },
+        {
+            "name":"number_of_apps",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"[TS_953968]_%d apps"
+                },
+                {
+                    "quantity":"one",
+                    "value":"[TS_953972]_%d app"
+                },
+                {
+                    "quantity":"zero",
+                    "value":"[TS_953963]_%d apps"
+                },
+                {
+                    "quantity":"few",
+                    "value":"[TS_953969]_%d apps"
+                },
+                {
+                    "quantity":"many",
+                    "value":"[TS_953970]_%d apps"
+                },
+                {
+                    "quantity":"two",
+                    "value":"[TS_953964]_%d apps"
+                }
+            ]
+        },
+      {
+        "name":"remove_n_title",
+        "value":[
+          {
+            "quantity":"other",
+            "value":"[TS_1025111]_Remove %d apps?"
+          },
+          {
+            "quantity":"one",
+            "value":"[TS_1025113]_Remove %d app?"
+          },
+          {
+            "quantity":"zero",
+            "value":"[TS_1025127]_Remove %d apps?"
+          },
+          {
+            "quantity":"few",
+            "value":"[TS_1025130]_Remove %d apps?"
+          },
+          {
+            "quantity":"many",
+            "value":"[TS_1025114]_Remove %d apps?"
+          },
+          {
+            "quantity":"two",
+            "value":"[TS_1025120]_Remove %d apps?"
+          }
+        ]
+      },
+      {
+        "name":"delete_n_title",
+        "value":[
+          {
+            "quantity":"one",
+            "value":"[TS_1025123]_Delete %d app?"
+          },
+          {
+            "quantity":"other",
+            "value":"[TS_1025122]_Delete %d apps?"
+          },
+          {
+            "quantity":"zero",
+            "value":"[TS_1025126]_Delete %d apps?"
+          },
+          {
+            "quantity":"few",
+            "value":"[TS_1025109]_Delete %d apps?"
+          },
+          {
+            "quantity":"many",
+            "value":"[TS_1025121]_Delete %d apps?"
+          },
+          {
+            "quantity":"two",
+            "value":"[TS_1025128]_Delete %d apps?"
+          }
+        ]
+      },
+      {
+        "name":"uninstall_n_title",
+        "value":[
+          {
+            "quantity":"one",
+            "value":"[TS_1025125]_Uninstall %d app?"
+          },
+          {
+            "quantity":"other",
+            "value":"[TS_1025129]_Uninstall %d apps?"
+          },
+          {
+            "quantity":"zero",
+            "value":"[TS_1025124]_Uninstall %d apps?"
+          },
+          {
+            "quantity":"few",
+            "value":"[TS_1025116]_Uninstall %d apps?"
+          },
+          {
+            "quantity":"many",
+            "value":"[TS_1025115]_Uninstall %d apps?"
+          },
+          {
+            "quantity":"two",
+            "value":"[TS_1025112]_Uninstall %d apps?"
+          }
+        ]
+      },
+      {
+        "name":"talkback_n_page_move_back",
+        "value":[
+          {
+            "quantity":"one",
+            "value":"[TS_1062989]_The original screen %d has moved backward a screen"
+          },
+          {
+            "quantity":"other",
+            "value":"[TS_1062990]_The original screen %d has moved backward a screen"
+          },
+          {
+            "quantity":"zero",
+            "value":"[TS_1063001]_The original screen %d has moved backward a screen"
+          },
+          {
+            "quantity":"few",
+            "value":"[TS_1063000]_The original screen %d has moved backward a screen"
+          },
+          {
+            "quantity":"many",
+            "value":"[TS_1062995]_The original screen %d has moved backward a screen"
+          },
+          {
+            "quantity":"two",
+            "value":"[TS_1062997]_The original screen %d has moved backward a screen"
+          }
+        ]
+      },
+      {
+        "name":"talkback_n_page_move_forward",
+        "value":[
+          {
+            "quantity":"other",
+            "value":"[TS_1062987]_The original screen %d has moved forward a screen"
+          },
+          {
+            "quantity":"one",
+            "value":"[TS_1062998]_The original screen %d has moved forward a screen"
+          },
+          {
+            "quantity":"zero",
+            "value":"[TS_1062992]_The original screen %d has moved forward a screen"
+          },
+          {
+            "quantity":"few",
+            "value":"[TS_1063004]_The original screen %d has moved forward a screen"
+          },
+          {
+            "quantity":"many",
+            "value":"[TS_1063002]_The original screen %d has moved forward a screen"
+          },
+          {
+            "quantity":"two",
+            "value":"[TS_1062991]_The original screen %d has moved forward a screen"
+          }
+        ]
+      },
+      {
+        "name":"talkback_drag_page_to_n",
+        "value":[
+          {
+            "quantity":"one",
+            "value":"[TS_1062988]_Moved to screen %d"
+          },
+          {
+            "quantity":"other",
+            "value":"[TS_1062993]_Moved to screen %d"
+          },
+          {
+            "quantity":"zero",
+            "value":"[TS_1063005]_Moved to screen %d"
+          },
+          {
+            "quantity":"few",
+            "value":"[TS_1062994]_Moved to screen %d"
+          },
+          {
+            "quantity":"many",
+            "value":"[TS_1062999]_Moved to screen %d"
+          },
+          {
+            "quantity":"two",
+            "value":"[TS_1063006]_Moved to screen %d"
+          }
+        ]
+      }
+    ]
+}

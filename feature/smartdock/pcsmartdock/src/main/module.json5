@@ -1,0 +1,10 @@
+{
+  "module": {
+    "name": "pc_smartdock",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ]
+  }
+}

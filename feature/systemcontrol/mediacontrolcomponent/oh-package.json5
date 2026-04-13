@@ -1,0 +1,18 @@
+{
+  "name": "@ohos/mediacontrolcomponent",
+  "description": "a npm package which contains mediacontrolcomponent function",
+  "version": "1.0.0",
+  "dependencies": {
+    "@ohos/basicutils": "file:../../../staticcommon/basecommon/basicutils",
+    "@ohos/frameworkwrapper": "file:../../../staticcommon/basecommon/frameworkwrapper",
+    "@ohos/componenthelper": "file:../../../staticcommon/basecommon/componenthelper",
+    "@ohos/frameworkcommon": "file:../../../staticcommon/basecommon/frameworkcommon",
+    "@ohos/windowscene": "file:../../../staticcommon/basecommon/windowscene",
+    "@ohos/windowsceneinterfaces": "file:../../../staticcommon/basecommon/windowsceneinterfaces",
+    "@ohos/screenlockcommon": "file:../../../staticcommon/screenlockcommon",
+    "@ohos/systemuicommon": "file:../../../staticcommon/systemuicommon",
+    "@ohos/launchercommon": "file:../../../staticcommon/launchercommon",
+    "@ohos/systemuiutils": "file:../../../staticcommon/systemuibasic/systemuiutils",
+    "@ohos/controlcentercommon": "file:../../../staticcommon/controlcentercommon"
+  }
+}

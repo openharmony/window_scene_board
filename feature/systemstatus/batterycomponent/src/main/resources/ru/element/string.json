@@ -1,0 +1,88 @@
+{
+    "string":[
+        {
+            "name":"low_battery_ntf_title",
+            "value":"Батарея разряжена",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"low_battery_ntf_btn_text",
+            "value":"Включить Экономный режим",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"shutdown_dialog_title",
+            "value":"Внимание",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"battery_emergency_dialog_content",
+            "value":"Батарея почти полностью разряжена. Режим максимального энергосбережения активируется через %d секунд.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"shutdown_dialog_content",
+            "value":"Батарея почти полностью разряжена. Устройство скоро выключится.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"shutdown_dialog_content_new",
+            "value":"Батарея почти разряжена. Устройство выключится через %d секунд.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"low_battery_ntf_content",
+            "value":"Осталось %s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"accessibility_battery_charge_double",
+            "value":"Быстрая зарядка, уровень заряда батареи: %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_battery_supercharge",
+            "value":"Супербыстрая зарядка, уровень заряда батареи: %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_battery_charge",
+            "value":"Зарядка, уровень заряда батареи: %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_battery_power_saving",
+            "value":"Экономный режим",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_battery_level",
+            "value":"Уровень заряда батареи, %s",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

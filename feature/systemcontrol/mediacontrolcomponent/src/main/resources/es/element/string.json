@@ -1,0 +1,396 @@
+{
+    "string":[
+        {
+            "name":"access_Favorited",
+            "value":"Marcado como favorito",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"toobar_title_pitching",
+            "value":"Proyección de audio",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_fast_forward",
+            "value":"Adelantar",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_pause",
+            "value":"Pausar",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_connected",
+            "value":"Conectado",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"no_media_title",
+            "value":"No se está reproduciendo",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"access_favorites",
+            "value":"Favoritos",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_unavailable",
+            "value":"No disponibles",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"audio_usage",
+            "value":"El audio de las llamadas no se puede cambiar desde esta pantalla.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"LocalDevice",
+            "value":"Este dispositivo",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_cancel_favorites",
+            "value":"Eliminar de Favoritos",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sound_output_device_nearlink",
+            "value":"Dispositivo NearLink (%s)",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_media_broadcast_control_center",
+            "value":"Controlador multimedia",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"unAuthDevice",
+            "value":"Más dispositivos",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"av_cast_disconnect",
+            "value":"Transmisión interrumpida. La reproducción se ha restablecido a este dispositivo.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"open_bluetooth",
+            "value":"Para transmitir a este dispositivo, primero activa el Bluetooth.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"wireless_usage",
+            "value":"No se ha podido cambiar. El canal de audio se está utilizando para la proyección de pantalla.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"WiredDevice",
+            "value":"Auriculares con cable",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"WiredCastDevice",
+            "value":"Dispositivo con cable",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"RecentlyPlay",
+            "value":"Reproducido recientemente",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"av_cast_cast_fail",
+            "value":"Error al reproducir en otro dispositivo. Vuelve a intentarlo.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"CallEarpiece",
+            "value":"Auricular del teléfono",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"av_cast_cast_disconnect",
+            "value":"Dispositivo de reproducción desconectado.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"CallSpeaker",
+            "value":"Altavoces",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"device_error",
+            "value":"La transmisión ha fallado debido a un error del dispositivo o de la aplicación.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"BluetoothDevice",
+            "value":"Auriculares Bluetooth",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"av_cast_banner_title",
+            "value":"Reproduciendo en “%s”",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"switch_to_resource_cast",
+            "value":"Se ha cambiado a proyección multimedia.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"preference_setting",
+            "value":"Preferencias",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"recommended_to_you",
+            "value":"Selección para ti",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"multi_screen_usage",
+            "value":"No se ha podido cambiar. Se está usando el audio para la Colaboración entre múltiples pantallas.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"HearingAid",
+            "value":"Audífono",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_cyclic_mode_shuffle",
+            "value":"Modo de reproducción, aleatorio",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_audio_control",
+            "value":"PlayCast",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_cyclic_mode_sequential",
+            "value":"Modo de reproducción, reproducir en orden",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_notice",
+            "value":"Información",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_next",
+            "value":"Tema siguiente",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_rewind",
+            "value":"Retroceder",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_play",
+            "value":"Reproducir",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_av_cast_volume_increase",
+            "value":"Subir el volumen del dispositivo de reproducción",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_previous",
+            "value":"Tema anterior",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_More",
+            "value":"Más",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_media_volume_bar",
+            "value":"Barra de volumen multimedia",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_cyclic_mode_list",
+            "value":"Modo de reproducción, repetir todo",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_av_cast_volume_reduce",
+            "value":"Bajar el volumen del dispositivo de reproducción",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_cyclic_mode_loop",
+            "value":"Modo de reproducción, repetir uno",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_close",
+            "value":"Cerrar",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_total_duration",
+            "value":"Duración total",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_switch_playback_device",
+            "value":"Cambiar dispositivo de reproducción",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_playback_progress",
+            "value":"Progreso de la reproducción",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_expand_more_devices",
+            "value":"Expandir más dispositivos",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_cover_image",
+            "value":"Imagen de portada",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"device_in_call",
+            "value":"Llamada en curso",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_call_volume_bar",
+            "value":"Barra de volumen de llamadas",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"recently_played_songs",
+            "value":"Canción reproducida recientemente",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"you_may_like",
+            "value":"Sugeridos",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

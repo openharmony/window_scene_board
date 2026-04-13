@@ -1,0 +1,26 @@
+{
+  "license": "ISC",
+  "types": "",
+  "devDependencies": {},
+  "name": "@ohos/screenlockcomponent",
+  "description": "a npm package which contains arkUI2.0 page",
+  "main": "index.ets",
+  "repository": {},
+  "version": "1.0.0",
+  "dependencies": {
+    "@ohos/basicutils": "file:../../staticcommon/basecommon/basicutils",
+    "@ohos/componenthelper": "file:../../staticcommon/basecommon/componenthelper",
+    "@ohos/commonconstants": "file:../../staticcommon/basecommon/commonconstants",
+    "@ohos/componentdrag": "file:../../staticcommon/basecommon/componentdrag",
+    "@ohos/componentanimator": "file:../../staticcommon/basecommon/componentanimator",
+    "@ohos/frameworkwrapper": "file:../../staticcommon/basecommon/frameworkwrapper",
+    "@ohos/frameworkcommon": "file:../../staticcommon/basecommon/frameworkcommon",
+    "@ohos/windowscene": "file:../../staticcommon/basecommon/windowscene",
+    "@ohos/themeservice": "file:../../staticcommon/basecommon/themeservice",
+    "@ohos/screenlockcommon": "file:../../staticcommon/screenlockcommon",
+    "@ohos/launchercommon": "file:../../staticcommon/launchercommon",
+    "@ohos/systemuicommon": "file:../../staticcommon/systemuicommon",
+    "@ohos/themeservicekit": "file:../themeservice/themeservice_kit",
+    "@ohos/screenlockwidget": "file:../screenlock/screenlockwidget"
+  }
+}

@@ -1,0 +1,20 @@
+{
+    "plural":[
+        {
+            "name":"ntf_hide_content_tip",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"%d 个通知"
+                },
+                {
+                    "quantity":"other",
+                    "value":"%d 个通知",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

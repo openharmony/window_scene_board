@@ -1,0 +1,162 @@
+{
+    "string":[
+        {
+            "name":"screenlock_font_creation_service",
+            "value":"锁屏字体创作服务",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_one",
+            "value":"本服务使用云侧 AI 算法识别所选图片中的文字，生成不同风格字，并将字体应用于锁屏时钟和签名。",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_four",
+            "value":"关于锁屏字体创作服务与隐私的声明",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_stop_service_text",
+            "value":"停止后，将无法智能学习图片内的文字风格并创作。确定停止？",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screenlock_settings",
+            "value":"锁屏设置",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"stop_font_creation_service",
+            "value":"停止服务",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screenlock_font_creation_service_text",
+            "value":"锁屏字体创作服务",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_five",
+            "value":"用户服务条款与条件",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_setting_footbar_new",
+            "value":"本服务需联网，读取并传送图片，以提供锁屏字体创作功能，生成字体用于锁屏时钟和签名。我们仅在您使用具体业务功能时，才会触发上述行为收集使用相关的个人信息。详情请参阅%1$s、%2$s。打开开关，即表示您知悉并同意我们所提供的服务。",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_three",
+            "value":"本服务需联网，读取并传送图片，以提供锁屏字体创作功能。我们仅在您使用具体业务功能时，才会触发上述行为收集使用相关的个人信息。详情请参阅%1$s、%2$s。\n请您仔细阅读上述声明，点击“同意”，即表示您知悉并同意我们提供的服务。",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"icon_settings",
+            "value":"图标调节",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"icon_edit_not_support_small_step",
+            "value":"图标不支持在小窗下调节",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"icon_settings_content",
+            "value":"调节桌面图标尺寸和显示名称",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+      {
+        "name": "theme_title",
+        "value": "theme title"
+      },
+        {
+            "name": "notification_main_time_travel_ongoing_content",
+            "value": "notification main"
+        },
+        {
+            "name": "notification_main_time_travel_finish_content",
+            "value": "travel finish content"
+        },
+        {
+            "name": "time_travel_generate_failed",
+            "value": ""
+        },
+        {
+            "name": "notification_main_dimensional_travel_ongoing_content",
+            "value": ""
+        },
+        {
+            "name": "notification_main_dimensional_travel_finish_content",
+            "value": ""
+        },
+        {
+            "name": "dimensional_travel_generate_failed",
+            "value": ""
+        },
+        {
+            "name": "notification_dynamic_lead_ongoing_content",
+            "value": ""
+        },
+        {
+            "name": "notification_dynamic_lead_finish_content",
+            "value": ""
+        },
+        {
+            "name": "dynamic_lead_generate_failed",
+            "value": ""
+        },
+        {
+            "name": "notification_main_pandora_title",
+            "value": ""
+        },
+        {
+            "name": "theme_chose",
+            "value": "从图库中选择"
+        },
+      {
+        "name":"edit_wallpaper",
+        "value":"壁纸",
+        "attr":{
+          "priority":"translate"
+        }
+      },
+      {
+        "name": "current_wallpaper",
+        "value": "我的壁纸"
+      },
+      {
+        "name": "managment",
+        "value": ""
+      },
+      {
+        "name": "wallpaper_editor",
+        "value": "应用"
+      }
+    ]
+}

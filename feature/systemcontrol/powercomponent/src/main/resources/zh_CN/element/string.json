@@ -1,0 +1,34 @@
+{
+    "string":[
+        {
+            "name":"power_off",
+            "value":"关机"
+        },
+        {
+            "name":"restart",
+            "value":"重启"
+        },
+        {
+            "name":"dormant",
+            "value":"睡眠"
+        },
+        {
+            "name":"power_dialog_message",
+            "value":"现在关机可能会导致已登录此设备的用户丢失尚未存储的更改内容。确定关机？",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"restart_dialog_message",
+            "value":"现在重启可能会导致已登录此设备的用户丢失尚未存储的更改内容。确定重启？",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"power_dialog_negative_button",
+            "value":"取消"
+        }
+    ]
+}

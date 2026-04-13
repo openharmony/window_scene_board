@@ -1,0 +1,28 @@
+{
+    "string":[
+        {
+            "name":"power_off",
+            "value":"[TS_1038688]_Power off"
+        },
+        {
+            "name":"restart",
+            "value":"[TS_1038691]_Restart"
+        },
+        {
+            "name":"dormant",
+            "value":"[TS_1038689]_Sleep"
+        },
+        {
+            "name":"power_dialog_message",
+            "value":"[TS_1038693]_Powering off now may cause other people logged in to this computer to lose unsaved work. Power off anyway?"
+        },
+        {
+            "name":"power_dialog_negative_button",
+            "value":"[TS_1038690]_Cancel"
+        },
+        {
+            "name":"restart_dialog_message",
+            "value":"[TS_1038692]_Restarting now may cause other people logged in to this computer to lose unsaved work. Restart anyway?"
+        }
+    ]
+}

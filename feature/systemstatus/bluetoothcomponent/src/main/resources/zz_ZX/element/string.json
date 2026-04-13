@@ -1,0 +1,20 @@
+{
+    "string":[
+        {
+            "name":"control_center_complex_toggle_bluetooth_title",
+            "value":"[TS_803102]_Bluetooth"
+        },
+        {
+            "name":"accessibility_status_bar_bluetooth_open",
+            "value":"[TS_916902]_Bluetooth is on"
+        },
+        {
+            "name":"accessibility_status_bar_bluetooth_connected",
+            "value":"[TS_916908]_Bluetooth connected"
+        },
+        {
+            "name":"control_center_complex_toggle_nearlink_bluetooth_title",
+            "value":"[TS_1101052]_NearLink & Bluetooth"
+        }
+    ]
+}

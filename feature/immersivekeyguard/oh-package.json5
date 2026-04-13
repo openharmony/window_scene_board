@@ -1,0 +1,24 @@
+{
+  "license": "ISC",
+  "types": "",
+  "devDependencies": {},
+  "name": "@ohos/immersivekeyguard",
+  "description": "Please describe the basic information.",
+  "repository": {},
+  "main": "index.ets",
+  "version": "1.0.0",
+  "dependencies": {
+    "@ohos/basicutils": "file:../../staticcommon/basecommon/basicutils",
+    "@ohos/componenthelper": "file:../../staticcommon/basecommon/componenthelper",
+    "@ohos/frameworkwrapper": "file:../../staticcommon/basecommon/frameworkwrapper",
+    "@ohos/frameworkcommon": "file:../../staticcommon/basecommon/frameworkcommon",
+    "@ohos/windowscene": "file:../../staticcommon/basecommon/windowscene",
+    "@ohos/screenlockcommon": "file:../../staticcommon/screenlockcommon",
+    "@ohos/launchercommon": "file:../../staticcommon/launchercommon",
+    "@ohos/commonconstants": "file:../../staticcommon/basecommon/commonconstants",
+    "@ohos/notificationcomponent": "../../feature/notification/notificationcomponent",
+    "@ohos/mediacontrolcomponent": "../../feature/systemcontrol/mediacontrolcomponent",
+    "@ohos/systemuicommon": "file:../../staticcommon/systemuicommon"
+  }
+}
+

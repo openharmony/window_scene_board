@@ -36,13 +36,26 @@ const buildProfile = json5.parse(fs.readFileSync(path.resolve(rootPath, 'build-p
 const PHONE_MODULE_CONFIG = {
   basecommon: '/system/app/SceneBoard/basecommon.hsp',
   'phone_sceneboard': '/system/app/SceneBoard/SceneBoard.hap',
+  'default_notificationmanagement': '/system/app/SceneBoard/SceneBoard_NotificationManagement.hap',
+  engineservice: '/system/app/SceneBoard/SceneBoard_EngineService.hap',
+  'themeservice_core': '/system/app/SceneBoard/SceneBoard_ThemeServiceCore.hap',
+  themecomponent: '/system/app/SceneBoard/SceneBoard_ThemeComponent.hap',
 };
 const PAD_MODULE_CONFIG = {
   basecommon: '/system/app/SceneBoard/basecommon.hsp',
+  pcresourcesoverlay: '/system/app/SceneBoard/pcresourcesoverlay.hsp',
   'pad_sceneboard': '/system/app/SceneBoard/SceneBoard.hap',
+  'default_notificationmanagement': '/system/app/SceneBoard/SceneBoard_NotificationManagement.hap',
+  engineservice: '/system/app/SceneBoard/SceneBoard_EngineService.hap',
+  'themeservice_core': '/system/app/SceneBoard/SceneBoard_ThemeServiceCore.hap',
+  themecomponent: '/system/app/SceneBoard/SceneBoard_ThemeComponent.hap',
 };
 const PC_MODULE_CONFIG = {
   'pc_sceneboard': '/system/app/SceneBoard/SceneBoard.hap',
+  'default_notificationmanagement': '/system/app/SceneBoard/SceneBoard_NotificationManagement.hap',
+  engineservice: '/system/app/SceneBoard/SceneBoard_EngineService.hap',
+  'themeservice_core': '/system/app/SceneBoard/SceneBoard_ThemeServiceCore.hap',
+  themecomponent: '/system/app/SceneBoard/SceneBoard_ThemeComponent.hap',
 };
 
 async function deployModules(mods, moduleConfig) {

@@ -1,0 +1,74 @@
+{
+    "string":[
+        {
+            "name":"accessibility_status_bar_wifi_no",
+            "value":"No WLAN signal",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_wifi_1",
+            "value":"WLAN signal, one bar",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_wifi_2",
+            "value":"WLAN signal, two bars",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_wifi_3",
+            "value":"WLAN signal, three bars",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_wifi_4",
+            "value":"WLAN signal, full",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"shared_network_tips",
+            "value":"Using %s's mobile network.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"shared_network_tips1",
+            "value":"You can use %s's mobile network to access the Internet, make and receive calls, and send and receive messages.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"shared_network_tips_network",
+            "value":"You can use %s's mobile network to access the Internet.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"shared_network_tips_network_calls",
+            "value":"You can use %s's mobile network to access the Internet and make and receive calls.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"shared_network_tips_network_messages",
+            "value":"You can use %s's mobile network to access the Internet and send and receive messages.",
+            "attr":{
+                "priority":"LT"
+            }
+        }
+    ]
+}

@@ -89,6 +89,16 @@ export default function RecentMediaPlayTest() {
         "outputDevice":
         {"devices":[]}
       }
+      let descriptor_: AVSessionManager.AVSessionDescriptor = {
+        "sessionId": "E50ADEAEA8C40975A3CECB8D819566E23D5CEDFE6B49268254B886CA83570B8D",
+        "type": "audio",
+        "sessionTag": "QQMusic",
+        "elementName":
+        {"deviceId":"","bundleName":"com.tencent.hm.qqmusic","abilityName":"EntryAbility"},
+        "isActive": true,
+        "isTopSession": true,
+        "outputDevice":{"devices":[]}
+      }
       let descriptorArray = new Array<Readonly<AVSessionManager.AVSessionDescriptor>>();
       descriptorArray.push(descriptor);
       descriptorArray.push(descriptor_);
@@ -115,12 +125,27 @@ export default function RecentMediaPlayTest() {
         "outputDevice":
           {"devices":[]}
       }
+      let descriptor_: AVSessionManager.AVSessionDescriptor = {
+        "sessionId": "E50ADEAEA8C40975A3CECB8D819566E23D5CEDFE6B49268254B886CA83570B8D",
+        "type": "audio",
+        "sessionTag": "QQMusic",
+        "elementName":
+        {"deviceId":"","bundleName":"com.tencent.hm.qqmusic","abilityName":"EntryAbility"},
+        "isActive": true,
+        "isTopSession": true,
+        "outputDevice":{"devices":[]}
+      }
       let descriptorArray = new Array<Readonly<AVSessionManager.AVSessionDescriptor>>();
       descriptorArray.push(descriptor);
       descriptorArray.push(descriptor_);
       let descriptors: Promise<Array<Readonly<AVSessionManager.AVSessionDescriptor>>> = new Promise((resolve) => {
         resolve(descriptorArray);
       });
+      let instance = new RecentMediaPlay();
+      let bundleName = 'com.tencent.hm.qqmusic';
+      instance.initAvSessionMap();
+      (instance as object)['monitorSessionAction']()
+      expect(descriptorArray).not().assertNull();
     })
 
     it('recent_media_play_test_init_aVSession_map', 0, async () => {
@@ -135,6 +160,16 @@ export default function RecentMediaPlayTest() {
         "isTopSession": true,
         "outputDevice":
         {"devices":[]}
+      }
+      let descriptor_: AVSessionManager.AVSessionDescriptor = {
+        "sessionId": "E50ADEAEA8C40975A3CECB8D819566E23D5CEDFE6B49268254B886CA83570B8D",
+        "type": "audio",
+        "sessionTag": "QQMusic",
+        "elementName":
+        {"deviceId":"","bundleName":"com.tencent.hm.qqmusic","abilityName":"EntryAbility"},
+        "isActive": true,
+        "isTopSession": true,
+        "outputDevice":{"devices":[]}
       }
       let descriptorArray = new Array<Readonly<AVSessionManager.AVSessionDescriptor>>();
       descriptorArray.push(descriptor);

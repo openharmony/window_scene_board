@@ -1,0 +1,23 @@
+{
+    "plural":[
+        {
+            "name":"ntf_pin_top_dialog_reach_limit_content",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"كۆپىدە %d ئەپ چوققىلىنىدۇ. ئىشلەتمەيدىغان ئەپلەرنى ئېلىۋېتىڭ.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"كۆپىدە %d ئەپ چوققىلىنىدۇ. ئىشلەتمەيدىغان ئەپلەرنى ئېلىۋېتىڭ.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

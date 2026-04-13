@@ -1,0 +1,393 @@
+{
+    "string":[
+        {
+            "name":"theme_edit_apply",
+            "value":"استخدام",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"show_lock_screen_signature",
+            "value":"توقيع شاشة القفل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"widgets_two_click_accessible",
+            "value":"انقر نقرًا مزدوجًا للتفعيل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"checked",
+            "value":"تم التحديد",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"layout_tab_art",
+            "value":"ملصق شخصي",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"art_signature_input_error_language",
+            "value":"الرموز الصينية أو الأحرف فقط",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"art_signature_input_tip",
+            "value":"أدخل أحرفًا أو %d رموز صينية كحدٍ أقصى.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"layout_tab_default",
+            "value":"ساعة رقمية",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"art_signature_input_title",
+            "value":"نص الملصق",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"art_signature_input_error_len",
+            "value":"تم بلوغ حد الرموز",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"service_form_area_accessible",
+            "value":"منطقة الأدوات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"theme_edit_cancel",
+            "value":"إلغاء",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"clock_style",
+            "value":"نمط الساعة %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"unchecked",
+            "value":"تم إلغاء التحديد",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"more_edits",
+            "value":"المزيد من التعديلات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Double_click_and_hold_accessibility",
+            "value":"انقر نقرًا مزدوجًا مع الاستمرار لفتح قائمة الخيارات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"click_input_text",
+            "value":"أدخل النص هنا",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"service_form_delete_button_accessible",
+            "value":"زر الإزالة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"clock_font_style",
+            "value":"نمط الخط %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"clock_font_color",
+            "value":"لون الخط %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"EnterpriseDeviceDefaultText",
+            "value":"مؤسستك هي المسؤولة عن إدارة هذا الجهاز",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_back",
+            "value":"رجوع",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"EnterpriseDeviceText",
+            "value":"هذا الجهاز تحت إدارة %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"artfont_creation_reach_limit",
+            "value":"بلغ عدد الخطوط الحد الأقصى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_font_cannot_delete",
+            "value":"لا يمكن حذف الخطوط في أثناء استخدامها",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"artfont_creation_no_network",
+            "value":"غير متصل بالإنترنت، يُرجى التحقق من إعدادات الشبكة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"artfont_creation_delete_notice",
+            "value":"انقر مطولاً على خط لإزالته وإنشاء خط جديد.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"artfont_creation_confirm",
+            "value":"حسنًا",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"artfont_creation_ocr_err",
+            "value":"تعذّر التعرّف، يُرجى إعادة المحاولة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"art_signature_style",
+            "value":"نمط الملصق %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_four",
+            "value":"البيان المتعلق بخدمة إنشاء خطوط شاشة القفل والخصوصية",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"artfont_creation_statement_agree",
+            "value":"أوافق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screenlock_font_creation_service",
+            "value":"خدمة إنشاء خطوط شاشة القفل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_one",
+            "value":"تستخدم هذه الخدمة الذكاء الاصطناعي المستند إلى السحابة لإنشاء خطوط وفقًا للنصوص الموجودة في الصور. يمكن تطبيق الخطوط التي تم إنشاؤها على التوقيع والساعة في شاشة القفل.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation",
+            "value":"إنشاء خط",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_five",
+            "value":"الشروط والأحكام",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"art_signature_displayed_as_combined_character",
+            "value":"دمج في حرف واحد",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"art_signature_content_creation_failed",
+            "value":"يتعذر إنشاء الخط.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"art_signature_try_combined_characters",
+            "value":"تحديد أحرف صينية مركبة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"art_signature_combined_character",
+            "value":"أحرف صينية مركبة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_three",
+            "value":"تحتاج هذه الخدمة إلى الاتصال بالإنترنت وإلى قراءة ورفع/نقل الصور لتوفير ميزات إنشاء خطوط شاشة القفل. نحن لا نجمع سوى المعلومات الشخصية المتعلقة بالميزات التي تستخدمها فقط. يمكنك الاطلاع على %1$s و%2$s لمعرفة المزيد من المعلومات. بالنقر على \"أوافق\"، فأنت تعني بذلك السماح لنا بتزويدك بهذه الخدمة.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"card_deleted",
+            "value":"تم حذف تطبيق %s المصغر",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"art_signature_text_button_tip",
+            "value":"المعلومات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"art_signature_text_tip_content",
+            "value":"يُفضَّل استخدام %d رموز صينية أو أقل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"artfont_AI_creation",
+            "value":"إنشاء بالذكاء الاصطناعي",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"please_input_text",
+            "value":"أدخل النص هنا",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"artfont_delete_description",
+            "value":"إذا كانت توقيعك الشخصي يستخدم هذا الخط، فسيتم الرجوع إلى الخط الافتراضي.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"layout_tab_artsign",
+            "value":"التوقيع الشخصي",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"artfont_delete_confirm",
+            "value":"هل تريد إزالة هذا الخط؟",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"artfont_delete_remove_button",
+            "value":"إزالة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"artfont_long_press_delete",
+            "value":"انقر مطولًا للتعديل أو الإزالة.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"art_signature",
+            "value":"التوقيع الشخصي",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+      {
+            "name":"AIGC_server_offline_title",
+            "value":"تم إيقاف خدمة إنشاء الخطوط",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"switch_combined_characters_fonts_prompt",
+            "value":"تبديل الخط غير متاح للأحرف المركبة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"AIGC_server_offline_description",
+            "value":"هذه الميزة غير مُتاحة مؤقتًا بسبب إجراء بعض التحسينات.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+      {
+        "name": "unsupported_content",
+        "value": "يحتوي على رموز غير مدعومة"
+      }
+    ]
+}

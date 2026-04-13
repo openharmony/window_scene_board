@@ -1,0 +1,10 @@
+{
+  "module": {
+    "name": "launcher_multiinput",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ]
+  }
+}

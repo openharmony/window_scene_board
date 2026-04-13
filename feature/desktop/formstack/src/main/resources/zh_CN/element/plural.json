@@ -1,0 +1,36 @@
+{
+    "plural":[
+        {
+            "name":"stack_request_focus_front_text",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"卡片堆叠，共 %d 张，"
+                },
+                {
+                    "quantity":"other",
+                    "value":"卡片堆叠，共 %d 张，",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"expand_stack_request_focus_after_text",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"共 %d 项，有可用的操作，单指双击即可收起堆叠并置顶卡片，双击按住即可上下拖动"
+                },
+                {
+                    "quantity":"other",
+                    "value":"共 %d 项，有可用的操作，单指双击即可收起堆叠并置顶卡片，双击按住即可上下拖动",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

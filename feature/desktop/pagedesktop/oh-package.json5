@@ -1,0 +1,29 @@
+{
+  "devDependencies": {},
+  "name": "@ohos/pagedesktop",
+  "description": "a npm package which contains pagedesktop feature",
+  "main": "index.ets",
+  "version": "1.0.0",
+  "dependencies": {
+    "@ohos/basicutils": "../../../staticcommon/basecommon/basicutils",
+    "@ohos/windowscene": "../../../staticcommon/basecommon/windowscene",
+    "@ohos/frameworkwrapper": "../../../staticcommon/basecommon/frameworkwrapper",
+    "@ohos/commonconstants": "../../../staticcommon/basecommon/commonconstants",
+    "@ohos/componentanimator": "../../../staticcommon/basecommon/componentanimator",
+    "@ohos/componenthelper": "../../../staticcommon/basecommon/componenthelper",
+    "@ohos/componentdrag": "../../../staticcommon/basecommon/componentdrag",
+    "@ohos/frameworkcommon": "../../../staticcommon/basecommon/frameworkcommon",
+    "@ohos/windowsceneinterfaces": "../../../staticcommon/basecommon/windowsceneinterfaces",
+    "@ohos/swiperdata": "../../../staticcommon/basecommon/swiperdata",
+    "@ohos/themeservice": "../../../staticcommon/basecommon/themeservice",
+    "@ohos/screenlockcommon": "../../../staticcommon/screenlockcommon",
+    "@ohos/launchercommon": "../../../staticcommon/launchercommon",
+    "@ohos/bigfolder": "../bigfolder",
+    "@ohos/smallfolder": "../smallfolder",
+    "@ohos/desktopfilefolder": "../../desktopfilefolder",
+    "@ohos/form": "../form",
+    "@ohos/formstack": "../formstack",
+    "@ohos/desktopedit": "../desktopedit",
+    "@ohos/frameworkpinyin": "../../../staticcommon/basecommon/frameworkpinyin"
+  }
+}

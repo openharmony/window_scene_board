@@ -1,0 +1,224 @@
+{
+  "color": [
+    {
+      "name": "color_nomusic_bg",
+      "value": "#0CFFFFFF"
+    },
+    {
+      "name": "color_accent_blue",
+      "value": "#CC0A59F7"
+    },
+    {
+      "name": "media_control_color_brightness",
+      "value": "#FFFFFFFF"
+    },
+    {
+      "name": "ohos_id_color_text_primary",
+      "value": "#CCFFFFFF"
+    },
+    {
+      "name": "ohos_id_color_text_secondary",
+      "value": "#80FFFFFF"
+    },
+    {
+      "name": "ohos_id_color_fourth",
+      "value": "#33FFFFFF"
+    },
+    {
+      "name": "ohos_id_color_primary",
+      "value": "#CCFFFFFF"
+    },
+    {
+      "name": "ohos_id_color_secondary",
+      "value": "#CCFFFFFF"
+    },
+    {
+      "name": "ohos_id_color_primary_contrary",
+      "value": "#CCFFFFFF"
+    },
+    {
+      "name": "ohos_id_color_emphasize",
+      "value": "#0A59F7"
+    },
+    {
+      "name": "ohos_id_color_component_normal",
+      "value": "#19000000"
+    },
+    {
+      "name": "device_checked_ok",
+      "value": "#ccffffff"
+    },
+    {
+      "name": "device_text_checked",
+      "value": "#ffffff"
+    },
+    {
+      "name": "media_control_card_bgc",
+      "value": "#FFFFFFFF"
+    },
+    {
+      "name": "media_control_text_primary",
+      "value": "#FFFFFFFF"
+    },
+    {
+      "name": "media_control_text_primary_activated",
+      "value": "#FFFFFF"
+    },
+    {
+      "name": "media_control_text_secondary",
+      "value": "#FFFFFFFF"
+    },
+    {
+      "name": "media_control_icon_primary",
+      "value": "#FFFFFFFF"
+    },
+    {
+      "name": "media_control_icon_disable",
+      "value": "#33FFFFFF"
+    },
+    {
+      "name": "media_control_switch_active_full",
+      "value": "#E5E5E5"
+    },
+    {
+      "name": "media_control_switch_active_bgc",
+      "value": "#317AF7"
+    },
+    {
+      "name": "media_control_switch_full",
+      "value": "#FFFFFFFF"
+    },
+    {
+      "name": "media_control_component_normal",
+      "value": "#19FFFFFF"
+    },
+    {
+      "name": "media_control_slider_primary",
+      "value": "#FFFFFF"
+    },
+    {
+      "name": "media_control_default_img_bgc",
+      "value": "#19FFFFFF"
+    },
+    {
+      "name": "media_control_item_text_primary",
+      "value": "#FFFFFFFF"
+    },
+    {
+      "name": "media_control_item_text_secondary",
+      "value": "#FFFFFFFF"
+    },
+    {
+      "name": "media_control_item_slider_text",
+      "value": "#FFFFFFFF"
+    },
+    {
+      "name": "media_control_item_icon_primary",
+      "value": "#FFFFFFFF"
+    },
+    {
+      "name": "media_control_item_default_img_bgc_disable",
+      "value": "#33FFFFFF"
+    },
+    {
+      "name": "media_item_slider_normal",
+      "value": "#19FFFFFF"
+    },
+    {
+      "name": "media_control_item_default_img_bgc",
+      "value": "#19FFFFFF"
+    },
+    {
+      "name": "media_item_slider_primary",
+      "value": "#FFFFFF"
+    },
+    {
+      "name": "media_control_ponit",
+      "value": "#FFFFFF"
+    },
+    {
+      "name": "media_control_scroll_bar",
+      "value": "#66FFFFFF"
+    },
+    {
+      "name": "media_control_Loading_progress",
+      "value": "#99FFFFFF"
+    },
+    {
+      "name": "media_control_center_icon_primary",
+      "value": "#FFFFFFFF"
+    },
+    {
+      "name": "media_control_center_icon_disable",
+      "value": "#33FFFFFF"
+    },
+    {
+      "name": "media_control_item_icon_disable",
+      "value": "#33FFFFFF"
+    },
+    {
+      "name": "media_control_center_default_img_bgc_disable",
+      "value": "#33FFFFFF"
+    },
+    {
+      "name": "media_control_center_default_img_bgc",
+      "value": "#19FFFFFF"
+    },
+    {
+      "name": "media_control_center_text_primary",
+      "value": "#FFFFFFFF"
+    },
+    {
+      "name": "media_control_center_text_secondary",
+      "value": "#FFFFFFFF"
+    },
+    {
+      "name": "media_control_center_switch_full",
+      "value": "#FFFFFFFF"
+    },
+    {
+      "name": "media_control_center_switch_active_full",
+      "value": "#E5E5E5"
+    },
+    {
+      "name": "media_control_center_component_normal",
+      "value": "#FFFFFFFF"
+    },
+    {
+      "name": "media_control_center_switch_active_bgc",
+      "value": "#317AF7"
+    },
+    {
+      "name": "media_control_center_icon_disable_pc",
+      "value": "#66FFFFFF"
+    },
+    {
+      "name": "media_item_switch_full",
+      "value": "#FF000000"
+    },
+    {
+      "name": "media_item_switch_active_full",
+      "value": "#E5E5E5"
+    },
+    {
+      "name": "media_item_component_normal",
+      "value": "#E5E5E5"
+    },
+    {
+      "name": "media_item_switch_active_bgc",
+      "value": "#317AF7"
+    },
+    {
+      "name": "media_control_temporary_text",
+      "value": "#FFFFFFFF"
+    },
+    {
+      "name": "dot_color",
+      "value": "#33FFFFFF"
+    },
+    {
+      "name": "dot_selected_color",
+      "value": "#FFFFFFFF"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"bigFolder_useGuidance_content",
+            "value":"Click & hold a folder, then drag the outline to enlarge it.",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

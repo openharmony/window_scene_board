@@ -1,0 +1,10 @@
+{
+  "module": {
+    "name": "soundcomponent",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ]
+  }
+}

@@ -120,6 +120,13 @@
             }
         },
         {
+            "name":"folder_name_oh",
+            "value":"Huawei Apps",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
             "name":"folder_name_preload",
             "value":"Top Apps",
             "attr":{

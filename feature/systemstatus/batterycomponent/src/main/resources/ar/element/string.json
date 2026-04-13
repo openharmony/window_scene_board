@@ -1,0 +1,88 @@
+{
+    "string":[
+        {
+            "name":"low_battery_ntf_title",
+            "value":"طاقة البطارية منخفضة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"low_battery_ntf_btn_text",
+            "value":"تشغيل توفير البطارية",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"shutdown_dialog_title",
+            "value":"تنويه",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"battery_emergency_dialog_content",
+            "value":"مستوى طاقة البطارية منخفض جدًا. سيُفعّل وضع الطاقة الاحتياطية بعد %d ثانية.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"shutdown_dialog_content",
+            "value":"مستوى طاقة البطارية منخفض جدًا. سيتم إيقاف تشغيل جهازك قريبًا.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"shutdown_dialog_content_new",
+            "value":"طاقة البطارية على وشك النفاد. سيتم إيقاف تشغيل الجهاز بعد %d ثانية.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"low_battery_ntf_content",
+            "value":"طاقة البطارية المتبقية %s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"accessibility_battery_charge_double",
+            "value":"جارٍ الشحن السريع، وصل شحن البطارية إلى %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_battery_supercharge",
+            "value":"جارٍ الشحن فائق السرعة SuperCharge، وصل شحن البطارية إلى %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_battery_charge",
+            "value":"جارٍ الشحن، وصل شحن البطارية إلى %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_battery_power_saving",
+            "value":"موفر البطارية",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_battery_level",
+            "value":"مستوى البطارية، %s",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

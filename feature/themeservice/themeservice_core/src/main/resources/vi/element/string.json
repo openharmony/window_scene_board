@@ -1,0 +1,18 @@
+{
+    "string":[
+        {
+            "name":"Desktop_individuation",
+            "value":"Màn hình chính và phong cách",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"theme_title",
+            "value":"Chủ đề",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

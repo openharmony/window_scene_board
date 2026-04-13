@@ -1,0 +1,32 @@
+{
+  "float": [
+    {
+      "name": "app_ntf_visual_remind_style_img_width",
+      "value": "116vp"
+    },
+    {
+      "name": "app_ntf_visual_remind_style_img_width_halfMode",
+      "value": "90vp"
+    },
+    {
+      "name": "app_ntf_visual_remind_style_img_pad_landscape_width",
+      "value": "190vp"
+    },
+    {
+      "name": "app_ntf_half_visual_remind_style_img_pad_landscape_width",
+      "value": "118vp"
+    },
+    {
+      "name": "title_text_margin_start",
+      "value": "24vp"
+    },
+    {
+      "name": "ntf_status_bar_search_item_padding",
+      "value": "24vp"
+    },
+    {
+      "name": "enableListComp_default_item_land_width",
+      "value": "140vp"
+    }
+  ]
+}

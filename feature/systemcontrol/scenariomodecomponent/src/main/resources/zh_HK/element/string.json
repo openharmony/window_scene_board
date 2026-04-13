@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"control_center_complex_toggle_scenario_mode_title",
+            "value":"情景模式",
+            "attr":{
+                "priority":"LT"
+            }
+        }
+    ]
+}

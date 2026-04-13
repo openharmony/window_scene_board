@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"app_not_support_full_screen",
+            "value":"ئەپ تولۇق ئېكران قوللىمايدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        }
+    ]
+}

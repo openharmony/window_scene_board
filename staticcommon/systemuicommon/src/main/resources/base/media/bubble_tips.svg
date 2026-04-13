@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="36px" height="40px" viewBox="0 0 36 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>画板</title>
+    <g id="画板" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="编组备份-21" transform="translate(0.000000, 0.000000)" fill="#FFFFFF">
+            <circle id="椭圆形" cx="18" cy="18" r="18"></circle>
+            <path d="M19.2710936,35.0463397 L26,40.5854455 L26,40.5854455 L10,40.5854455 L16.7289064,35.0463397 C17.4673029,34.438506 18.5326971,34.438506 19.2710936,35.0463397 Z" id="三角形" transform="translate(18.000000, 37.292723) scale(1, -1) translate(-18.000000, -37.292723) "></path>
+        </g>
+    </g>
+</svg>

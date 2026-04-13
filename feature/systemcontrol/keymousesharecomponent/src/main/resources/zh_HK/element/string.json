@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"key_mouse_share",
+            "value":"鍵鼠分享",
+            "attr":{
+                "priority":"LT"
+            }
+        }
+    ]
+}

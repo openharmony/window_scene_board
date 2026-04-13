@@ -1,0 +1,144 @@
+{
+    "string":[
+        {
+            "name":"app_name_desc",
+            "value":"Super Device",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"appSateCollaborating",
+            "value":"Collaborating",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"device_connected_msg",
+            "value":"Connected",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"switch_audio",
+            "value":"Audio output switched to \"%s\".",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"appSateCancel",
+            "value":"End collaboration",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Phone",
+            "value":"Phone",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Laptop",
+            "value":"Computer",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"tablet",
+            "value":"Tablet",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"TV",
+            "value":"TV",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"audio",
+            "value":"Audio device",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Car",
+            "value":"Car",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"radarIconTips",
+            "value":"Button to enter Super Device, double-tap with one finger to activate",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"capsuleTips",
+            "value":"Double-tap to open Super Device",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"title_login_openharmony_account",
+            "value":"Log in to use Super Device",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"super_device_title_open_wlan_and_bluetooth",
+            "value":"Enable WLAN and Bluetooth to use Super Device",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"text_open_wlan_and_bluetooth_account",
+            "value":"This is required to discover and collaborate with devices.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"button_enable",
+            "value":"Enable",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"account_button_login",
+            "value":"Log in",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"super_device_disabled",
+            "value":"Enable Super Device?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"radarIconTipsBlank",
+            "value":"Super Device button, double tap to activate",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

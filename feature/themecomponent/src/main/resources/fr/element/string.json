@@ -1,0 +1,162 @@
+{
+    "string":[
+        {
+            "name":"screenlock_settings",
+            "value":"Écran verrouillé",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_stop_service_text",
+            "value":"Vous ne pouvez plus créer de polices basées sur du texte contenu dans des images si vous désactivez ce service.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"stop_font_creation_service",
+            "value":"Désactiver le service",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screenlock_font_creation_service_text",
+            "value":"Service de création de polices d'écran verrouillé",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screenlock_font_creation_service",
+            "value":"Service de création de polices d'écran verrouillé",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_one",
+            "value":"Ce service utilise l'IA basée sur le cloud pour générer des polices basées sur le texte contenu dans les images. Les polices générées peuvent être appliquées à votre horloge d'écran verrouillé et à votre signature.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_four",
+            "value":"Déclaration relative à la vie privée Service de création de polices d'écran verrouillé",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_setting_footbar_new",
+            "value":"Ce service a besoin d'accéder à Internet et de lire et de transférer des images pour fournir des fonctionnalités de création de façade d'écran verrouillé. Seules les informations/données personnelles relatives aux fonctionnalités que vous utilisez sont recueillies. Pour plus d'informations, veuillez vous référer à la %1$s et aux %2$s. En activant cette option, vous acceptez que nous vous fournissions ce service.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_five",
+            "value":"Conditions d'utilisation",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_three",
+            "value":"Ce service a besoin d'accéder à Internet et de lire et de transférer des images pour fournir les fonctionnalités de création de police pour l'écran verrouillé. Seules les informations/données personnelles relatives aux fonctionnalités que vous utilisez sont recueillies. Pour plus d'informations, veuillez vous référer à la %1$s et aux %2$s.\nVeuillez lire attentivement le contenu ci-dessus. En touchant Accepter, vous acceptez que nous vous fournissions ce service.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"icon_settings",
+            "value":"Icônes",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"icon_settings_content",
+            "value":"Redimensionner et renommer les icônes de l'écran d'accueil.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"icon_edit_not_support_small_step",
+            "value":"Les icônes ne peuvent pas être ajustées lorsque la rubrique Paramètres est dans une fenêtre flottante.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+      {
+        "name": "theme_title",
+        "value": "theme title"
+      },
+        {
+            "name": "notification_main_time_travel_ongoing_content",
+            "value": "notification main"
+        },
+        {
+            "name": "notification_main_time_travel_finish_content",
+            "value": "travel finish content"
+        },
+        {
+            "name": "time_travel_generate_failed",
+            "value": ""
+        },
+        {
+            "name": "notification_main_dimensional_travel_ongoing_content",
+            "value": ""
+        },
+        {
+            "name": "notification_main_dimensional_travel_finish_content",
+            "value": ""
+        },
+        {
+            "name": "dimensional_travel_generate_failed",
+            "value": ""
+        },
+        {
+            "name": "notification_dynamic_lead_ongoing_content",
+            "value": ""
+        },
+        {
+            "name": "notification_dynamic_lead_finish_content",
+            "value": ""
+        },
+        {
+            "name": "dynamic_lead_generate_failed",
+            "value": ""
+        },
+        {
+            "name": "notification_main_pandora_title",
+            "value": ""
+        },
+      {
+        "name":"edit_wallpaper",
+        "value":"Fonds d'écran",
+        "attr":{
+          "priority":"translate"
+        }
+      },
+      {
+        "name": "theme_chose",
+        "value": "Choisir dans la galerie"
+      },
+      {
+        "name": "current_wallpaper",
+        "value": "Mon papier peint"
+      },
+      {
+        "name": "managment",
+        "value": ""
+      },
+      {
+        "name": "wallpaper_editor",
+        "value": "Appliquer"
+      }
+    ]
+}

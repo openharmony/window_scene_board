@@ -1,0 +1,162 @@
+{
+    "string":[
+        {
+            "name":"screenlock_settings",
+            "value":"Экран блокировки",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_stop_service_text",
+            "value":"Выключив службу, вы больше не сможете создавать шрифты на основе стиля текста внутри изображений.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"stop_font_creation_service",
+            "value":"Выключить службу",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screenlock_font_creation_service_text",
+            "value":"Служба создания шрифтов для экрана блокировки",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screenlock_font_creation_service",
+            "value":"Служба создания шрифтов для экрана блокировки",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_one",
+            "value":"Эта служба использует облачные технологии искусственного интеллекта для создания шрифтов на основании текста на изображениях. Созданные шрифты можно использовать для часов и подписи на экране блокировки.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_four",
+            "value":"Уведомление о службе создания шрифтов для экрана блокировки и конфиденциальности",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_setting_footbar_new",
+            "value":"Для предоставления функций создания шрифтов экрана блокировки этой службе требуется доступ в Интернет, а также право чтения и выгрузки или передачи изображений. Компания собирает только персональные данные, связанные с функциями, которые вы используете. Дополнительные сведения см. в документах %1$s и %2$s. Включая эту функцию, вы разрешаете компании предоставлять вам эту службу.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_five",
+            "value":"Положения и условия",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_three",
+            "value":"Для предоставления функций создания шрифтов экрана блокировки этой службе требуется доступ в Интернет, а также право чтения и выгрузки или передачи изображений. Компания собирает только персональные данные, связанные с функциями, которые вы используете. Дополнительные сведения см. в документах %1$s и %2$s.\nВнимательно прочтите вышеуказанные положения. Нажимая Принимаю, вы даете компании согласие на предоставление этой службы.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"icon_settings",
+            "value":"Значки",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"icon_settings_content",
+            "value":"Изменение размера и названий значков рабочего экрана.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"icon_edit_not_support_small_step",
+            "value":"Невозможно настроить значки, когда раздел Настройки открыт в формате плавающего окна.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+      {
+        "name": "theme_title",
+        "value": "theme title"
+      },
+        {
+            "name": "notification_main_time_travel_ongoing_content",
+            "value": "notification main"
+        },
+        {
+            "name": "notification_main_time_travel_finish_content",
+            "value": "travel finish content"
+        },
+        {
+            "name": "time_travel_generate_failed",
+            "value": ""
+        },
+        {
+            "name": "notification_main_dimensional_travel_ongoing_content",
+            "value": ""
+        },
+        {
+            "name": "notification_main_dimensional_travel_finish_content",
+            "value": ""
+        },
+        {
+            "name": "dimensional_travel_generate_failed",
+            "value": ""
+        },
+        {
+            "name": "notification_dynamic_lead_ongoing_content",
+            "value": ""
+        },
+        {
+            "name": "notification_dynamic_lead_finish_content",
+            "value": ""
+        },
+        {
+            "name": "dynamic_lead_generate_failed",
+            "value": ""
+        },
+        {
+            "name": "notification_main_pandora_title",
+            "value": ""
+        },
+      {
+        "name":"edit_wallpaper",
+        "value":"Обои",
+        "attr":{
+          "priority":"translate"
+        }
+      },
+      {
+        "name": "theme_chose",
+        "value": "Выбрать из галереи"
+      },
+      {
+        "name": "current_wallpaper",
+        "value": "Мои обои"
+      },
+      {
+        "name": "managment",
+        "value": ""
+      },
+      {
+        "name": "wallpaper_editor",
+        "value": "Применить"
+      }
+    ]
+}

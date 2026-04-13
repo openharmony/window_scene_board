@@ -1,0 +1,46 @@
+{
+    "string":[
+        {
+            "name":"power_dialog_message",
+            "value":"ད་ལྟ་གློག་སྒོ་བརྒྱབ་ཚེ་སྒྲིག་ཆས་འདིར་ཐོ་བཅུག་པའི་སྤྱོད་མཁན་གྱི་ཉར་གསོག་བྱས་མེད་པའི་བཟོ་བཅོས་བྱས་པའི་ནང་དོན་བོར་བརླག་ཏུ་འགྲོ་སྲིད། གློག་སྒོ་རྒྱག་རྒྱུ་གཏན་འཁེལ་ཡིན་ནམ།",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"power_dialog_negative_button",
+            "value":"འདོར་བ།",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"power_off",
+            "value":"གློག་སྒོ་རྒྱག",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"restart",
+            "value":"བསྐྱར་སློང་།",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"restart_dialog_message",
+            "value":"ད་ལྟ་བསྐྱར་སློང་བྱས་ཚེ་སྒྲིག་ཆས་འདིར་ཐོ་བཅུག་པའི་སྤྱོད་མཁན་གྱི་ཉར་གསོག་བྱས་མེད་པའི་བཟོ་བཅོས་བྱས་པའི་ནང་དོན་བོར་བརླག་ཏུ་འགྲོ་སྲིད། བསྐྱར་སློང་བྱ་རྒྱུ་གཏན་འཁེལ་ཡིན་ནམ།",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dormant",
+            "value":"གཉིད་པ།",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

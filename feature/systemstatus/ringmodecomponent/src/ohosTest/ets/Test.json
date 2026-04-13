@@ -1,0 +1,76 @@
+{
+  "description": "Configuration for SceneBoard Tests",
+  "driver": {
+    "type": "OHJSUnitTest",
+    "test-timeout": "180000",
+    "bundle-name": "com.ohos.sceneboard",
+    "module-name": "sceneboard_ringmodecomponent_test",
+    "shell-timeout": "600000",
+    "testcase-timeout": "30000",
+    "compile-mode": "esmodule"
+  },
+  "kits": [
+    {
+      "run-command": [
+        "mount -o remount,rw /",
+        "param set persist.scb.testmode.enable true",
+        "echo ENABLED > /etc/windowscene.config"
+      ],
+      "teardown-command": [
+      ],
+      "type": "ShellKit"
+    },
+    {
+      "type": "CommandKit",
+      "shell": [
+        {
+          "name": "push",
+          "value": "SceneBoard.hap->/system/app/SceneBoard/SceneBoard.hap"
+        },
+        {
+          "name": "push",
+          "value": "SceneBoardTest.hap->/data/local/tmp/SceneBoardTest.hap"
+        },
+        {
+          "name": "push",
+          "value": "SceneBoard_NotificationManagement.hap->/system/app/SceneBoard/SceneBoard_NotificationManagement.hap"
+        },
+        {
+          "name": "push",
+          "value": "SceneBoard_Settings.hap->/system/app/SceneBoard/SceneBoard_Settings.hap"
+        },
+        {
+          "name": "push",
+          "value": "SceneBoard_SystemDialog.hap->/system/app/SceneBoard/SceneBoard_SystemDialog.hap"
+        },
+        {
+          "name": "push",
+          "value": "SceneBoard_EngineService.hap->/system/app/SceneBoard/SceneBoard_EngineService.hap"
+        }
+      ]
+    },
+    {
+      "run-command": [
+        "param set persist.bms.test-upgrade true",
+        "ls -l /system/app/SceneBoard",
+        "sync /system/bin/udevadm trigger",
+        "reboot"
+      ],
+      "teardown-command": [
+      ],
+      "type": "ShellKit"
+    },
+    {
+      "run-command": [
+        "bm install -p /data/local/tmp/SceneBoardTest.hap",
+        "param set persist.scb.testmode.enable true",
+        "power-shell wakeup",
+        "uinput -T -d 300 600 -m 300 600 300 100 -u 300 100",
+        "power-shell setmode 602"
+      ],
+      "teardown-command": [
+      ],
+      "type": "ShellKit"
+    }
+  ]
+}

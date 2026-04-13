@@ -1,0 +1,151 @@
+{
+    "string":[
+        {
+            "name":"d_app_dialog_cancel",
+            "value":"تجاهل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"d_app_dialog_confirm",
+            "value":"تحديث الآن",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"d_app_unavailable_dialog_know",
+            "value":"حسنًا",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"folder_add",
+            "value":"إضافة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"d_app_unavailable_dialog_content",
+            "value":"لاستخدام هذا التطبيق، تحتاج أولاً إلى تنزيل تطبيق %s من متجر التطبيقات.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"d_app_dialog_contents",
+            "value":"حدّث تطبيقك للحصول على تجربة جديدة كليًا. يُرجى ملاحظة أن بعض بيانات التطبيق قد تُفقد عند تبديل الإصدارات.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"d_app_dialog_text",
+            "value":"تطبيق %s متوفر الآن لنظام OpenHarmony.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"uninstall_d_app_dialog_content",
+            "value":"لقد قمت بالفعل بتثبيت إصدار من تطبيق %s المخصص لنظام OpenHarmony على هذا الجهاز. هل تريد إزالة تثبيت الإصدار القديم؟",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"open_harmony_app_dialog_content",
+            "value":"لديك على الجهاز إصدار تطبيق %s الخاص بنظام OpenHarmony.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"d_app_dialog_open",
+            "value":"فتح إصدار OpenHarmony",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"confirm_dialog",
+            "value":"موافق",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"d_app_pause_download_dialog_content",
+            "value":"توقف تنزيل تطبيق %s مؤقتًا. هل تريد استئناف التنزيل؟",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"d_app_unavailable_dialog_title",
+            "value":"التطبيق غير متوفر",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"d_app_dialog_title",
+            "value":"إصدار جديد متوفر",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"uninstall_d_app_dialog_title",
+            "value":"تم تثبيت أحدث إصدار",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"d_app_wait_download_dialog_content",
+            "value":"تطبيق %s في قائمة انتظار التنزيل. هل تريد منحه أولوية التنزيل؟",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"folder_items_limit_toast",
+            "value":"المجلد ممتلئ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"d_app_installing_dialog_content",
+            "value":"يجري الآن تثبيت تطبيق %s. يُرجى الانتظار.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sheet_title_similar",
+            "value":"جمع التطبيقات المشابهة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sheet_sub_title_similar",
+            "value":"يمكنك اختيار المزيد من التطبيقات لإضافتها إلى هذا المجلد.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sheet_title_recommended",
+            "value":"التطبيقات المُقترحة",
+            "attr":{
+                "priority":"LT"
+            }
+        }
+    ]
+}

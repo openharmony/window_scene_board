@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"app_not_support_full_screen",
+            "value":"ཉེར་སྤྱོད་ཀྱིས་ཧྲིལ་ཡོལ་ལ་རྒྱབ་སྐྱོར་མི་བྱེད།",
+            "attr":{
+                "priority":"LT"
+            }
+        }
+    ]
+}

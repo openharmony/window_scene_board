@@ -1,0 +1,30 @@
+{
+    "string":[
+        {
+            "name":"module_desc",
+            "value":"module description"
+        },
+        {
+            "name":"ThemeServiceAbility_desc",
+            "value":"description"
+        },
+        {
+            "name":"ThemeServiceAbility_label",
+            "value":"label"
+        },
+        {
+            "name":"Desktop_individuation",
+            "value":"Home screen & style",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"theme_title",
+            "value":"Themes",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

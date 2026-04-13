@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"accessibility_status_bar_vpn_connected",
+            "value":"‏VPN ئۇلاق",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

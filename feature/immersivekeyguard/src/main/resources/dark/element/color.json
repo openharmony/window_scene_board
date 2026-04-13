@@ -1,0 +1,12 @@
+{
+  "color": [
+    {
+      "name": "card_tip_fill_color",
+      "value": "#FFFFFFFF"
+    },
+    {
+      "name": "immersive_card_default_bg_color",
+      "value": "#39000000"
+    }
+  ]
+}

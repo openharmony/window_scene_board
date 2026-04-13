@@ -1,0 +1,20 @@
+{
+  "devDependencies": {},
+  "name": "@ohos/systemdialog",
+  "description": "",
+  "version": "1.0.0",
+  "main": "./src/main/ets/TsIndex.ets",
+  "dependencies": {
+    "@ohos/basicutils": "file:../../staticcommon/basecommon/basicutils",
+    "@ohos/frameworkwrapper": "file:../../staticcommon/basecommon/frameworkwrapper",
+    "@ohos/windowscene": "file:../../staticcommon/basecommon/windowscene",
+    "@ohos/commonconstants": "file:../../staticcommon/basecommon/commonconstants",
+    "@ohos/componentdrag": "file:../../staticcommon/basecommon/componentdrag",
+    "@ohos/componenthelper": "file:../../staticcommon/basecommon/componenthelper",
+    "@ohos/screenlockcommon": "file:../../staticcommon/screenlockcommon",
+    "@ohos/batterycomponent": "../../feature/systemstatus/batterycomponent",
+    "@ohos/launchercommon": "file:../../staticcommon/launchercommon",
+    "@ohos/systemuicommon": "file:../../staticcommon/systemuicommon",
+    "@ohos/systemuiutils": "file:../../staticcommon/systemuibasic/systemuiutils"
+  }
+}

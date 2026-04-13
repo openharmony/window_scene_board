@@ -1,0 +1,15 @@
+{
+  "devDependencies": {},
+  "name": "@ohos/desktopfilefolder",
+  "description": "a npm package which contains desktopfilefolder feature",
+  "version": "1.0.0",
+  "dependencies": {
+    "@ohos/componentanimator": "../../staticcommon/basecommon/componentanimator",
+    "@ohos/basicutils": "../../staticcommon/basecommon/basicutils",
+    "@ohos/componenthelper": "../../staticcommon/basecommon/componenthelper",
+    "@ohos/windowscene": "../../staticcommon/basecommon/windowscene",
+    "@ohos/frameworkwrapper": "../../staticcommon/basecommon/frameworkwrapper",
+    "@ohos/componentdrag": "../../staticcommon/basecommon/componentdrag",
+    "@ohos/launchercommon": "../../staticcommon/launchercommon",
+  }
+}

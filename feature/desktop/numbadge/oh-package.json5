@@ -1,0 +1,11 @@
+{
+  "devDependencies": {},
+  "name": "@ohos/numbadge",
+  "description": "a npm package which contains numbadge feature",
+  "main": "index.ets",
+  "version": "1.0.0",
+  "dependencies": {
+    "@ohos/basicutils": "../../../staticcommon/basecommon/basicutils",
+    "@ohos/launchercommon": "../../../staticcommon/launchercommon",
+  }
+}

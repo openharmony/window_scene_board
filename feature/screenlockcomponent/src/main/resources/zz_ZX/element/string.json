@@ -1,0 +1,512 @@
+{
+    "string":[
+        {
+            "name":"psd_enter_psd_mix",
+            "value":"[TS_924885]_Enter password"
+        },
+        {
+            "name":"edit_after_unlock",
+            "value":"[TS_958254]_Unlock to edit lock screen"
+        },
+        {
+            "name":"psd_incorrect_will_locked",
+            "value":"[TS_924745]_Incorrect PIN. After %1$s, your device will be locked for %2$s."
+        },
+        {
+            "name":"psd_incorrect_psd_try_again",
+            "value":"[TS_924827]_Incorrect PIN. Please try again."
+        },
+        {
+            "name":"psd_other_users",
+            "value":"[TS_924909]_Other users"
+        },
+        {
+            "name":"psd_enter_psd",
+            "value":"[TS_924765]_Enter PIN"
+        },
+        {
+            "name":"psd_incorrect_psd_try_again_mix",
+            "value":"[TS_924728]_Incorrect password. Please try again."
+        },
+        {
+            "name":"psd_try_again_after_time1",
+            "value":"[TS_924884]_Try again in %s"
+        },
+        {
+            "name":"psd_delete",
+            "value":"[TS_924724]_Delete"
+        },
+        {
+            "name":"psd_back_accessible",
+            "value":"[TS_924756]_Back"
+        },
+        {
+            "name":"fp_try_again_after_time",
+            "value":"[TS_924862]_Fingerprint suspended. Try again in %s."
+        },
+        {
+            "name":"fp_incorrect_fp_try_again",
+            "value":"[TS_924770]_Cover the entire sensor with your finger."
+        },
+        {
+            "name":"out_sensor_fp_dirty_try_again",
+            "value":"[TS_924826]_Fingerprint not recognized."
+        },
+        {
+            "name":"fp_disable_enter_psd",
+            "value":"[TS_924748]_Fingerprint recognition disabled. Please enter your PIN."
+        },
+        {
+            "name":"face_not_recognized",
+            "value":"[TS_924889]_Face not recognized. Double-tap to try again."
+        },
+        {
+            "name":"face_locked_in_input_pwd_when_finger_enable",
+            "value":"[TS_924823]_Face recognition has been disabled. Use your fingerprint or PIN to unlock."
+        },
+        {
+            "name":"sim_unlock_puk_format_tips",
+            "value":"[TS_924871]_Enter %1$s-digit PUK code"
+        },
+        {
+            "name":"sim_unlock_num_keyboard_cancel",
+            "value":"[TS_924806]_Cancel"
+        },
+        {
+            "name":"sim_unlock_num_keyboard_cancel_accessible",
+            "value":"[TS_924725]_Cancel"
+        },
+        {
+            "name":"sim_unlock_pin_exhausting_tips",
+            "value":"[TS_924859]_Incorrect SIM PIN. Enter the PUK code to unlock your device."
+        },
+        {
+            "name":"face_unlock_verifying",
+            "value":"[TS_924881]_Verifying…"
+        },
+        {
+            "name":"face_unlock_ready_in_input_pwd",
+            "value":"[TS_924815]_Use face recognition or enter password"
+        },
+        {
+            "name":"fp_hold_finger",
+            "value":"[TS_924791]_Hold your finger a little longer"
+        },
+        {
+            "name":"lock_icon_tip_with_fingerprint",
+            "value":"[TS_924793]_Use fingerprint or swipe up from bottom to unlock"
+        },
+        {
+            "name":"add_to_screen_lock",
+            "value":"[TS_924878]_Add to lock screen"
+        },
+        {
+            "name":"press_fingerprint_sensor_area",
+            "value":"[TS_924856]_Press to continue"
+        },
+        {
+            "name":"face_unlock_success",
+            "value":"[TS_924801]_Swipe up to open"
+        },
+        {
+            "name":"face_locked_in_input_pwd",
+            "value":"[TS_924738]_Face recognition disabled. Please enter your password."
+        },
+        {
+            "name":"input_pwd_tip_when_face_and_finger_locked",
+            "value":"[TS_924849]_Face and fingerprint recognition disabled. Please enter your PIN."
+        },
+        {
+            "name":"fingerprint_incorrect_will_locked",
+            "value":"[TS_924833]_Fingerprint not recognized. Device will be locked for %2$s after %1$s."
+        },
+        {
+            "name":"sim_unlock_reset_pin_tips",
+            "value":"[TS_924727]_Enter new PIN"
+        },
+        {
+            "name":"sim_unlock_unavailable_tips",
+            "value":"[TS_924851]_This SIM card cannot be used. Contact your carrier for assistance."
+        },
+        {
+            "name":"sim_confirm_tips",
+            "value":"[TS_924829]_OK"
+        },
+        {
+            "name":"toast_prompt_face_unlock_success",
+            "value":"[TS_924746]_Unlocked with face recognition."
+        },
+        {
+            "name":"sim_unlock_puk_tips",
+            "value":"[TS_924828]_The PUK is different from your SIM PIN. You can get it from your carrier."
+        },
+        {
+            "name":"face_unlock_ready",
+            "value":"[TS_924797]_Double-tap for face recognition"
+        },
+        {
+            "name":"sim_unlock_pin_not_match",
+            "value":"[TS_924850]_PINs don't match"
+        },
+        {
+            "name":"sim_unlock_solt_flag",
+            "value":"[TS_924787]_SIM %s"
+        },
+        {
+            "name":"add_form_to_screen_lock_editor_max",
+            "value":"[TS_924838]_Not enough space to place."
+        },
+        {
+            "name":"face_recognition_try_again_after_time",
+            "value":"[TS_924834]_Face recognition disabled. Try again in %s."
+        },
+        {
+            "name":"fp_try_again_pin_after_time",
+            "value":"[TS_924802]_Fingerprint disabled. Try entering your PIN in %s."
+        },
+        {
+            "name":"face_not_recognized_in_input_pwd",
+            "value":"[TS_924758]_Face not recognized. Tap here to try again."
+        },
+        {
+            "name":"sim_unlock_pin_format_tips",
+            "value":"[TS_924762]_Enter %1$s to %2$s-digit PIN"
+        },
+        {
+            "name":"sim_unlock_reset_pin_confirm_tips",
+            "value":"[TS_924837]_Confirm PIN"
+        },
+        {
+            "name":"fp_disable_forever",
+            "value":"[TS_924754]_Fingerprint recognition disabled. Please enter your PIN."
+        },
+        {
+            "name":"lock_icon_tip",
+            "value":"[TS_924750]_Swipe up from the bottom to unlock"
+        },
+        {
+            "name":"emergency_call",
+            "value":"[TS_924835]_Emergency"
+        },
+        {
+            "name":"flash_light_accessible",
+            "value":"[TS_924872]_Flashlight"
+        },
+        {
+            "name":"pad_notes_accessible",
+            "value":"[TS_924831]_Notepad"
+        },
+        {
+            "name":"flash_light_open_accessible",
+            "value":"[TS_924804]_On"
+        },
+        {
+            "name":"flash_light_close_accessible",
+            "value":"[TS_924830]_Off"
+        },
+        {
+            "name":"ic_camera_button_accessible",
+            "value":"[TS_1050194]_Camera"
+        },
+        {
+            "name":"ic_tools_disable_battery_low",
+            "value":"[TS_931154]_Battery too low to turn on flashlight."
+        },
+        {
+            "name":"sim_card_psd_confirm_accessible",
+            "value":"[TS_924879]_Confirm"
+        },
+        {
+            "name":"del_pwd_accessible",
+            "value":"[TS_924822]_Delete"
+        },
+        {
+            "name":"emergency_call_accessible",
+            "value":"[TS_924864]_Emergency call"
+        },
+        {
+            "name":"custom_mix_psd_ok_accessible",
+            "value":"[TS_924774]_Confirm"
+        },
+        {
+            "name":"custom_mix_psd_area_accessible",
+            "value":"[TS_924775]_Box to enter password. Double-tap to enter text."
+        },
+        {
+            "name":"edit_wallpaper",
+            "value":"[TS_924855]_Wallpapers"
+        },
+        {
+            "name":"edit_theme",
+            "value":"[TS_924846]_Themes"
+        },
+        {
+            "name":"show_lunar_date",
+            "value":"[TS_924786]_Show lunar date"
+        },
+        {
+            "name":"confirm",
+            "value":"[TS_924883]_OK"
+        },
+        {
+            "name":"show_date",
+            "value":"[TS_924792]_Show date"
+        },
+        {
+            "name":"edit_aod",
+            "value":"[TS_924841]_AOD"
+        },
+        {
+            "name":"sim_pin_area_accessible",
+            "value":"[TS_924783]_Box to enter SIM PIN"
+        },
+        {
+            "name":"cancel",
+            "value":"[TS_924807]_Cancel"
+        },
+        {
+            "name":"keypad_password_one",
+            "value":"[TS_924753]_one"
+        },
+        {
+            "name":"keypad_password_two",
+            "value":"[TS_924788]_two"
+        },
+        {
+            "name":"keypad_password_three",
+            "value":"[TS_924845]_three"
+        },
+        {
+            "name":"keypad_password_four",
+            "value":"[TS_924771]_four"
+        },
+        {
+            "name":"keypad_password_five",
+            "value":"[TS_924734]_five"
+        },
+        {
+            "name":"keypad_password_six",
+            "value":"[TS_924794]_six"
+        },
+        {
+            "name":"keypad_password_seven",
+            "value":"[TS_924790]_seven"
+        },
+        {
+            "name":"keypad_password_eight",
+            "value":"[TS_924817]_eight"
+        },
+        {
+            "name":"keypad_password_nine",
+            "value":"[TS_924796]_nine"
+        },
+        {
+            "name":"keypad_password_zero",
+            "value":"[TS_924803]_zero"
+        },
+        {
+            "name":"psd_area_accessible",
+            "value":"[TS_924825]_Box to enter password"
+        },
+        {
+            "name":"emergency_mode_title",
+            "value":"[TS_937042]_Power reserve mode"
+        },
+        {
+            "name":"camera_muted",
+            "value":"[TS_941699]_Camera disabled. Face recognition not available."
+        },
+        {
+            "name":"face_unlock_ready_in_input_pin",
+            "value":"[TS_945505]_Use face recognition or enter PIN"
+        },
+        {
+            "name":"fp_try_again_psd_after_time",
+            "value":"[TS_945498]_Fingerprint disabled. Try entering your password in %s."
+        },
+        {
+            "name":"face_locked_in_input_pin",
+            "value":"[TS_945502]_Face recognition disabled. Please enter your PIN."
+        },
+        {
+            "name":"pattern_psd_error",
+            "value":"[TS_947865]_Incorrect pattern"
+        },
+        {
+            "name":"pattern_psd_enter_psd",
+            "value":"[TS_947860]_Draw your pattern"
+        },
+        {
+            "name":"start_drawing_pattern",
+            "value":"[TS_950575]_Start drawing pattern"
+        },
+        {
+            "name":"pattern_area",
+            "value":"[TS_950576]_Area for drawing pattern"
+        },
+        {
+            "name":"pattern_psd_drawing_completed",
+            "value":"[TS_950577]_Pattern drawn"
+        },
+        {
+            "name":"sim_remember_tips",
+            "value":"[TS_947270]_Remember PIN"
+        },
+        {
+            "name":"sim_remember_popup",
+            "value":"[TS_947271]_The PIN will be automatically entered each time this device restarts or the SIM is re-inserted."
+        },
+        {
+            "name":"sim_locking_popup",
+            "value":"[TS_959734]_Unlocking SIM card…"
+        },
+        {
+            "name":"keyboard_simple_delete_remainder_accessible",
+            "value":"[TS_953294]_Deleted."
+        },
+        {
+            "name":"finger_print_area_accessible",
+            "value":"[TS_924769]_Fingerprint sensor zone"
+        },
+        {
+            "name":"keyboard_delete_remainder",
+            "value":"[TS_958829]_Deleted, %1$s, %2$s"
+        },
+        {
+            "name":"cover_normal_charging",
+            "value":"[TS_972943]_Charging %s"
+        },
+        {
+            "name":"cover_turbo_charging",
+            "value":"[TS_972946]_Turbo charging %s"
+        },
+        {
+            "name":"cover_super_charging",
+            "value":"[TS_972942]_SuperCharging %s"
+        },
+        {
+            "name":"cover_fully_charged",
+            "value":"[TS_972944]_Fully charged"
+        },
+        {
+            "name":"cover_quick_charging",
+            "value":"[TS_972945]_Fast charging %s"
+        },
+        {
+            "name":"lock_screen_time_accessible_mornings",
+            "value":"[TS_988799]_mornings %s %s"
+        },
+        {
+            "name":"lock_screen_time_accessible_afternoons",
+            "value":"[TS_988798]_afternoons %s %s"
+        },
+        {
+            "name":"ic_tools_back_around_accessible",
+            "value":"[TS_979322]_Close"
+        },
+        {
+            "name":"ic_tools_unavailable_accessible",
+            "value":"[TS_994354]_%1$s, unavailable"
+        },
+        {
+            "name":"screen_lock_edit_accessible",
+            "value":"[TS_992755]_Lock screen editing screen"
+        },
+        {
+            "name":"Double_click_and_hold_accessibility",
+            "value":"[TS_992759]_Double-tap and hold to open options menu"
+        },
+        {
+            "name":"exit_edit_mode_accessible",
+            "value":"[TS_992754]_Exited editing mode"
+        },
+        {
+            "name":"ic_tools_memorandum_accessible",
+            "value":"[TS_931151]_Notepad"
+        },
+        {
+            "name":"ic_tools_clock_accessible",
+            "value":"[TS_931153]_Clock"
+        },
+        {
+            "name":"ic_tools_accessible",
+            "value":"[TS_931155]_Tools"
+        },
+        {
+            "name":"ic_tools_widgets_two_click_accessible",
+            "value":"[TS_988774]_%1$s, double-tap to activate"
+        },
+        {
+            "name":"enter_edit_mode_accessible",
+            "value":"[TS_992758]_Entered editing mode"
+        },
+        {
+            "name":"ic_tools_calculator_accessible",
+            "value":"[TS_931150]_Calculator"
+        },
+        {
+            "name":"card_edit",
+            "value":"[TS_998768]_Custom"
+        },
+        {
+            "name":"fp_try_again_after_time_pc",
+            "value":"[TS_1001182]_Fingerprint disabled. Try again in %s or use another unlock method."
+        },
+        {
+            "name":"ic_tools_opened",
+            "value":"[TS_1015492]_On"
+        },
+        {
+            "name":"keypad_password_input_success",
+            "value":"[TS_1033300]_Bullet"
+        },
+        {
+            "name":"exit_outscreen_theme_selection_accessible",
+            "value":"[TS_1043248]_Exit cover screen theme selection"
+        },
+        {
+            "name":"enter_outscreen_theme_selection_accessible",
+            "value":"[TS_1041438]_Entering theme selection mode for the cover screen"
+        },
+        {
+            "name":"fingerprint_antitouch_notification_camera",
+            "value":"[TS_1061478]_Mistouch prevention enabled. Don't cover the camera."
+        },
+        {
+            "name":"two_click_accessible",
+            "value":"[TS_1064030]_Double-tap to activate"
+        },
+        {
+            "name":"ic_tools_two_click_back_accessible",
+            "value":"[TS_1063394]_Double tap to close the tools panel"
+        },
+        {
+            "name":"ic_tools_timer_accessible",
+            "value":"[TS_1068590]_Timer"
+        },
+        {
+            "name":"reset_pin_tip",
+            "value":"[TS_1073581]_You recently set a new password. If you've forgotten it, you can reset it by entering your previous PIN/password."
+        },
+        {
+            "name":"reset_pin",
+            "value":"[TS_1073580]_Reset"
+        },
+        {
+            "name":"reset_psd_tip",
+            "value":"[TS_1082152]_You recently set a new PIN. If you've forgotten it, you can reset it by entering your previous PIN/password."
+        },
+        {
+            "name":"exit_clock_edit_mode_accessible",
+            "value":"[TS_1111046]_Exit clock editing mode."
+        },
+        {
+            "name":"enter_clock_edit_mode_accessible",
+            "value":"[TS_1111047]_Enter clock editing mode"
+        },
+        {
+            "name":"esim_unlock_slot_flag",
+            "value":"[TS_1130053]_eSIM %s"
+        }
+    ]
+}

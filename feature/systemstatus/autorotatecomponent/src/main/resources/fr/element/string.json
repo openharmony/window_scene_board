@@ -1,0 +1,18 @@
+{
+    "string":[
+        {
+            "name":"control_center_complex_toggle_auto_rotate_title",
+            "value":"Verrouillage de l'orientation",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"multi_window_opened",
+            "value":"La fonctionnalité Free windows est activée. Elle fonctionne uniquement en mode paysage.",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

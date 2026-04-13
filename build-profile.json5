@@ -62,6 +62,126 @@
   },
   "modules": [
     {
+      "name": "launcher_appcenter",
+      "srcPath": "./feature/appcenter",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "launcher_bigfolder",
+      "srcPath": "./feature/desktop/bigfolder",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "launcher_desktopedit",
+      "srcPath": "./feature/desktop/desktopedit",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "launcher_smallfolder",
+      "srcPath": "./feature/desktop/smallfolder",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "launcher_form",
+      "srcPath": "./feature/desktop/form",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "launcher_formstack",
+      "srcPath": "./feature/desktop/formstack",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "launcher_numbadge",
+      "srcPath": "./feature/desktop/numbadge",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "launcher_pagedesktop",
+      "srcPath": "./feature/desktop/pagedesktop",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "launcher_recents",
+      "srcPath": "./feature/recents",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "launcher_smartDock",
+      "srcPath": "./feature/smartdock/commonsmartdock",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
       "name": "phone_sceneboard",
       "srcPath": "./product/phone",
       "targets": [
@@ -122,6 +242,602 @@
       ]
     },
     {
+      "name": "superprivacy",
+      "srcPath": "./feature/superprivacy",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default",
+          ],
+        },
+      ],
+    },
+    {
+      "name": "statusbarcomponent",
+      "srcPath": "./feature/statusbarcomponent",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "systemdialog",
+      "srcPath": "./feature/systemdialog",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default",
+            "2in1"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "batterycomponent",
+      "srcPath": "./feature/systemstatus/batterycomponent",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "clockcomponent",
+      "srcPath": "./feature/systemstatus/clockcomponent",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "bluetoothcomponent",
+      "srcPath": "./feature/systemstatus/bluetoothcomponent",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "signalcomponent",
+      "srcPath": "./feature/systemstatus/signalcomponent",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "wificomponent",
+      "srcPath": "./feature/systemstatus/wificomponent",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "hotspotcomponent",
+      "srcPath": "./feature/systemstatus/hotspotcomponent",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "flashlightcomponent",
+      "srcPath": "./feature/systemstatus/flashlightcomponent",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ethernetcomponent",
+      "srcPath": "./feature/systemstatus/ethernetcomponent",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "hcastcomponent",
+      "srcPath": "./feature/systemcontrol/hcastcomponent",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "mobiledatacomponent",
+      "srcPath": "./feature/systemstatus/mobiledatacomponent",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "locationcomponent",
+      "srcPath": "./feature/systemstatus/locationcomponent",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "nfccomponent",
+      "srcPath": "./feature/systemstatus/nfccomponent",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ringmodecomponent",
+      "srcPath": "./feature/systemstatus/ringmodecomponent",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "airplanecomponent",
+      "srcPath": "./feature/systemstatus/airplanecomponent",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "autorotatecomponent",
+      "srcPath": "./feature/systemstatus/autorotatecomponent",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "brightnesscomponent",
+      "srcPath": "./feature/systemcontrol/brightnesscomponent",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "superhubtogglecomponent",
+      "srcPath": "./feature/systemcontrol/superhubtogglecomponent",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "controlcentercomponent",
+      "srcPath": "./feature/controlcentercomponent",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "volumepanelcomponent",
+      "srcPath": "./feature/volume/volumepanelcomponent",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "notificationcomponent",
+      "srcPath": "./feature/notification/notificationcomponent",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "managementcomponent",
+      "srcPath": "./feature/notification/managementcomponent",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "default_notificationmanagement",
+      "srcPath": "./feature/notification/notificationmanagement",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default",
+            "2in1"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "default_volumepanel",
+      "srcPath": "./feature/volume/volumepanel",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "screenlockcomponent",
+      "srcPath": "./feature/screenlockcomponent",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "datetimecomponent",
+      "srcPath": "./feature/systemstatus/datetimecomponent",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "powercomponent",
+      "srcPath": "./feature/systemcontrol/powercomponent",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "wallpapercomponent",
+      "srcPath": "./feature/wallpapercomponent",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "darkmodecomponent",
+      "srcPath": "./feature/systemstatus/darkmodecomponent",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "earphonecomponent",
+      "srcPath": "./feature/systemstatus/earphonecomponent",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "inputmethodcomponent",
+      "srcPath": "./feature/systemstatus/inputmethodcomponent",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "linkspeedcomponent",
+      "srcPath": "./feature/systemstatus/linkspeedcomponent",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "plugincomponent",
+      "srcPath": "./feature/systemstatus/plugincomponent",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "customcomponent",
+      "srcPath": "./feature/systemstatus/customcomponent",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "mediacontrolcomponent",
+      "srcPath": "./feature/systemcontrol/mediacontrolcomponent",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "superprivacycomponent",
+      "srcPath": "./feature/systemcontrol/superprivacycomponent",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "launcher_togglehome",
+      "srcPath": "./feature/togglehome",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "launcher_multiinput",
+      "srcPath": "./feature/multiinput",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "launcher_desktopfilefolder",
+      "srcPath": "./feature/desktopfilefolder",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "cameraindicator",
+      "srcPath": "./feature/systemstatus/cameraindicator"
+    },
+    {
+      "name": "liveview",
+      "srcPath": "./feature/liveview",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "engineservice",
+      "srcPath": "./feature/engineservice",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default",
+            "2in1"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "themecomponent",
+      "srcPath": "./feature/themecomponent",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default",
+            "2in1"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "carcast",
+      "srcPath": "./feature/carcastsource",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "app_install",
+      "srcPath": "./feature/appinstall",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "castengine",
+      "srcPath": "./feature/castengine",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "devecoviewer",
+      "srcPath": "./feature/devecoviewer",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "gesturenavigation",
+      "srcPath": "./feature/gesturenavigation",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
       "name": "basecommon",
       "srcPath": "./basecommon",
       //      "targets": [
@@ -135,8 +851,353 @@
       //      ]
     },
     {
+      "name": "pc_smartdock",
+      "srcPath": "./feature/smartdock/pcsmartdock",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "immersivekeyguard",
+      "srcPath": "./feature/immersivekeyguard",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "screenlockcommon",
+      "srcPath": "./staticcommon/screenlockcommon"
+    },
+    {
+      "name": "plugincardcomponent",
+      "srcPath": "./feature/systemstatus/plugincardcomponent",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "themeservice_core",
+      "srcPath": "./feature/themeservice/themeservice_core",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default",
+            "2in1"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "themeservice_kit",
+      "srcPath": "./feature/themeservice/themeservice_kit",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "themeservice_base",
+      "srcPath": "./feature/themeservice/themeservice_base"
+    },
+    {
+      "name": "themeservice_inner_api",
+      "srcPath": "./feature/themeservice/themeservice_inner_api"
+    },
+    {
+      "name": "themeservice_core_lem",
+      "srcPath": "./feature/themeservice/themeservice_core_lem"
+    },
+    {
+      "name": "themeservice_core_subscreen",
+      "srcPath": "./feature/themeservice/themeservice_core_subscreen"
+    },
+    {
+      "name": "systemuicommon",
+      "srcPath": "./staticcommon/systemuicommon"
+    },
+    {
+      "name": "launchercommon",
+      "srcPath": "./staticcommon/launchercommon",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "eyecomfortcomponent",
+      "srcPath": "./feature/systemcontrol/eyecomfortcomponent",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "antipeepingcomponent",
+      "srcPath": "./feature/systemcontrol/antipeepingcomponent",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "powersavingtogglecomponent",
+      "srcPath": "./feature/systemcontrol/powersavingtogglecomponent",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "starflashcomponent",
+      "srcPath": "./feature/systemstatus/starflashcomponent",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "statusbarfocusmodecomponent",
+      "srcPath": "./feature/systemstatus/statusbarfocusmodecomponent",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "statusbarsuperprivacycomponent",
+      "srcPath": "./feature/systemstatus/statusbarsuperprivacycomponent",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "emergencymode",
+      "srcPath": "./feature/desktop/emergencymode",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "statusbarextensionservice",
+      "srcPath": "./feature/statusbarextension"
+    },
+    {
+      "name": "soundcomponent",
+      "srcPath": "./feature/systemcontrol/soundcomponent",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "musicservicetogglecomponent",
+      "srcPath": "./feature/systemcontrol/musicservicetogglecomponent",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "nearlinktogglecomponent",
+      "srcPath": "./feature/systemcontrol/nearlinktogglecomponent",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "dpintogglecomponent",
+      "srcPath": "./feature/systemcontrol/dpintogglecomponent",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "meetingtogglecomponent",
+      "srcPath": "./feature/systemcontrol/meetingtogglecomponent",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "keymousesharecomponent",
+      "srcPath": "./feature/systemcontrol/keymousesharecomponent",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "focusmodecomponent",
+      "srcPath": "./feature/systemcontrol/focusmodecomponent",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "scenariomodecomponent",
+      "srcPath": "./feature/systemcontrol/scenariomodecomponent",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "vpncomponent",
+      "srcPath": "./feature/systemstatus/vpncomponent",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "juvenilemodecomponent",
+      "srcPath": "./feature/systemcontrol/juvenilemodecomponent",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
       "name": "pcmode",
       "srcPath": "./feature/pcmode",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "enterprisespacecomponent",
+      "srcPath": "./feature/systemstatus/enterprisespacecomponent"
+    },
+    {
+      "name": "foldeffect",
+      "srcPath": "./feature/foldeffect",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "layoutrotatepacking",
+      "srcPath": "./feature/layoutrotatepacking",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "gestureback",
+      "srcPath": "./feature/gestureback",
       "targets": [
         {
           "name": "default",
@@ -183,8 +1244,108 @@
       "srcPath": "./staticcommon/basecommon/windowscene"
     },
     {
+      "name": "frameworkpinyin",
+      "srcPath": "./staticcommon/basecommon/frameworkpinyin"
+    },
+    {
+      "name": "swiperdata",
+      "srcPath": "./staticcommon/basecommon/swiperdata"
+    },
+    {
+      "name": "themeservice",
+      "srcPath": "./staticcommon/basecommon/themeservice"
+    },
+    {
+      "name": "systemuiutils",
+      "srcPath": "./staticcommon/systemuibasic/systemuiutils"
+    },
+    {
+      "name": "multimodalinput",
+      "srcPath": "./feature/multimodalinput",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
       "name": "commonscbscreen",
       "srcPath": "./feature/commonscbscreen",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "screenlockwidget",
+      "srcPath": "./feature/screenlock/screenlockwidget"
+    },
+    {
+      "name": "usbcomponent",
+      "srcPath": "./feature/systemstatus/usbcomponent"
+    },
+    {
+      "name": "collaborationfwkdialog",
+      "srcPath": "./feature/collaborationfwkdialog",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "pcresources",
+      "srcPath": "./feature/pcbase/pcresources",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "pcresourcesoverlay",
+      "srcPath": "./feature/pcbase/pcresourcesoverlay",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "pcmodecomponent",
+      "srcPath": "./feature/systemcontrol/pcmodecomponent",
+    },
+    {
+      "name": "controlcentercommon",
+      "srcPath": "./staticcommon/controlcentercommon",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "shutdownview",
+      "srcPath": "./feature/shutdownview",
       "targets": [
         {
           "name": "default",

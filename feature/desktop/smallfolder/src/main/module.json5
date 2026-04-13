@@ -1,0 +1,10 @@
+{
+  "module": {
+    "name": "launcher_smallfolder",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ]
+  }
+}

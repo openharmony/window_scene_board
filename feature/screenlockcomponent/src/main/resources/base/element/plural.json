@@ -1,0 +1,344 @@
+{
+    "plural":[
+        {
+            "name":"psd_incorrect_psd_left_times",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"Incorrect PIN. %d attempt remaining.",
+                    "attr":{
+                        "priority":"LT"
+                    }
+                },
+                {
+                    "quantity":"two",
+                    "value":"Incorrect PIN. %d attempts remaining."
+                },
+                {
+                    "quantity":"zero",
+                    "value":"Incorrect PIN. %d attempts remaining."
+                },
+                {
+                    "quantity":"few",
+                    "value":"Incorrect PIN. %d attempts remaining."
+                },
+                {
+                    "quantity":"many",
+                    "value":"Incorrect PIN. %d attempts remaining."
+                },
+                {
+                    "quantity":"other",
+                    "value":"Incorrect PIN. %d attempts remaining.",
+                    "attr":{
+                        "priority":"LT"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"psd_incorrect_psd_left_times_mix",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"Incorrect password. %d attempt remaining.",
+                    "attr":{
+                        "priority":"LT"
+                    }
+                },
+                {
+                    "quantity":"two",
+                    "value":"Incorrect password. %d attempts remaining."
+                },
+                {
+                    "quantity":"zero",
+                    "value":"Incorrect password. %d attempts remaining."
+                },
+                {
+                    "quantity":"few",
+                    "value":"Incorrect password. %d attempts remaining."
+                },
+                {
+                    "quantity":"many",
+                    "value":"Incorrect password. %d attempts remaining."
+                },
+                {
+                    "quantity":"other",
+                    "value":"Incorrect password. %d attempts remaining.",
+                    "attr":{
+                        "priority":"LT"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"psd_incorrect_will_locked1",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"%d more attempt",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"two",
+                    "value":"%d more attempts"
+                },
+                {
+                    "quantity":"zero",
+                    "value":"%d more attempts"
+                },
+                {
+                    "quantity":"few",
+                    "value":"%d more attempts"
+                },
+                {
+                    "quantity":"many",
+                    "value":"%d more attempts"
+                },
+                {
+                    "quantity":"other",
+                    "value":"%d more attempts",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"psd_incorrect_will_locked2",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"%d minute",
+                    "attr":{
+                        "priority":"LT"
+                    }
+                },
+                {
+                    "quantity":"two",
+                    "value":"%d minutes"
+                },
+                {
+                    "quantity":"zero",
+                    "value":"%d minutes"
+                },
+                {
+                    "quantity":"few",
+                    "value":"%d minutes"
+                },
+                {
+                    "quantity":"many",
+                    "value":"%d minutes"
+                },
+                {
+                    "quantity":"other",
+                    "value":"%d minutes",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"psd_incorrect_will_locked3",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"%d second",
+                    "attr":{
+                        "priority":"LT"
+                    }
+                },
+                {
+                    "quantity":"two",
+                    "value":"%d seconds"
+                },
+                {
+                    "quantity":"zero",
+                    "value":"%d seconds"
+                },
+                {
+                    "quantity":"few",
+                    "value":"%d seconds"
+                },
+                {
+                    "quantity":"many",
+                    "value":"%d seconds"
+                },
+                {
+                    "quantity":"other",
+                    "value":"%d seconds",
+                    "attr":{
+                        "priority":"LT"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"sim_unlock_input_puk_tips",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"Enter PUK code (%d attempt remaining)",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"Enter PUK code (%d attempts remaining)",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"sim_unlock_input_tips",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"Enter SIM PIN (%d attempt remaining)",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"Enter SIM PIN (%d attempts remaining)",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"sim_unlock_pin_incorrect_tips",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"Incorrect SIM PIN. %d attempt remaining.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"Incorrect SIM PIN. %d attempts remaining.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"sim_unlock_puk_incorrect_tips",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"Incorrect PUK code. %d attempt remaining. After the maximum number of attempts, your SIM card will be permanently unusable.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"Incorrect PUK code. %d attempts remaining. After the maximum number of attempts, your SIM card will be permanently unusable.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"fp_fingerprint_not_match",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"Fingerprint not recognized. %d attempt remaining.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"Fingerprint not recognized. %d attempts remaining.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"psd_totle_length",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"%d digit in total",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"two",
+                    "value":"%d digits in total"
+                },
+                {
+                    "quantity":"zero",
+                    "value":"%d digits in total"
+                },
+                {
+                    "quantity":"few",
+                    "value":"%d digits in total"
+                },
+                {
+                    "quantity":"many",
+                    "value":"%d digits in total"
+                },
+                {
+                    "quantity":"other",
+                    "value":"%d digits in total",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"psd_entered_length",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"%d digit entered",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"two",
+                    "value":"%d digits entered"
+                },
+                {
+                    "quantity":"zero",
+                    "value":"%d digits entered"
+                },
+                {
+                    "quantity":"few",
+                    "value":"%d digits entered"
+                },
+                {
+                    "quantity":"many",
+                    "value":"%d digits entered"
+                },
+                {
+                    "quantity":"other",
+                    "value":"%d digits entered",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

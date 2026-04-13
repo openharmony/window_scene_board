@@ -1,0 +1,22 @@
+{
+  "module": {
+    "name": "sceneboard_liveview_test",
+    "type": "feature",
+    "mainElement": "TestAbility",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ],
+    "deliveryWithInstall": true,
+    "installationFree": false,
+    "abilities": [
+      {
+        "name": "LiveViewTestAbility",
+        "srcEntry": "./ets/testability/LiveViewTestAbility.ets",
+        "exported": true,
+        "startWindowIcon": "$media:icon",
+        "startWindowBackground": "$color:start_window_background"
+      }
+    ]
+  }
+}

@@ -1,0 +1,296 @@
+{
+  "float": [
+    {
+      "name": "page_setEnable_list_height",
+      "value": "193vp"
+    },
+    {
+      "name": "ntf_setting_item_margin",
+      "value": "12vp"
+    },
+    {
+      "name": "title_text_margin_start",
+      "value": "16vp"
+    },
+    {
+      "name": "ntf_status_bar_search_bottom",
+      "value": "8vp"
+    },
+    {
+      "name": "ntf_status_bar_search_item_padding",
+      "value": "16vp"
+    },
+    {
+      "name": "ntf_setting_item_margin_bottom",
+      "value": "56vp"
+    },
+    {
+      "name": "ntf_setting_item_height",
+      "value": "56vp"
+    },
+    {
+      "name": "soundItemHeight",
+      "value": "48vp"
+    },
+    {
+      "name": "checkboxSize",
+      "value": "20vp"
+    },
+    {
+      "name": "soundItemDivider",
+      "value": "1px"
+    },
+    {
+      "name": "soundSettingDialogTitleSize",
+      "value": "20vp"
+    },
+    {
+      "name": "soundItemTextSize",
+      "value": "16vp"
+    },
+    {
+      "name": "dialogButtonTextSize",
+      "value": "16vp"
+    },
+    {
+      "name": "soundItemLineHeight",
+      "value": "22vp"
+    },
+    {
+      "name": "ntf_setting_item_arrow_width",
+      "value": "12vp"
+    },
+    {
+      "name": "ntf_setting_item_arrow_height",
+      "value": "24vp"
+    },
+    {
+      "name": "ntf_setting_item_padding_horizontal",
+      "value": "12vp"
+    },
+    {
+      "name": "ntf_setting_item_padding_vertical",
+      "value": "4vp"
+    },
+    {
+      "name": "ntf_setting_item_secondary_text_size",
+      "value": "14vp"
+    },
+    {
+      "name": "ntf_setting_item_card_radius",
+      "value": "16vp"
+    },
+    {
+      "name": "ntf_setting_dialog_padding_horizontal",
+      "value": "24vp"
+    },
+    {
+      "name": "batch_set_padding_vertical",
+      "value": "39vp"
+    },
+    {
+      "name": "dialog_blank_width",
+      "value": "10vp"
+    },
+    {
+      "name": "page_notice_and_status_bar_top_padding",
+      "value": "39vp"
+    },
+    {
+      "name": "hide_banner_content_item_height",
+      "value": "48vp"
+    },
+    {
+      "name": "ntf_hide_banner_content_item_margin",
+      "value": "12vp"
+    },
+    {
+      "name": "ntf_hide_banner_content_button_width",
+      "value": "36vp"
+    },
+    {
+      "name": "ntf_hide_banner_content_button_height",
+      "value": "20vp"
+    },
+    {
+      "name": "ntf_hide_banner_content_item_height",
+      "value": "56vp"
+    },
+    {
+      "name": "ntf_hide_banner_content_item_padding",
+      "value": "4vp"
+    },
+    {
+      "name": "ntf_hide_banner_content_item_raduis",
+      "value": "20vp"
+    },
+    {
+      "name": "ntf_hide_banner_content_item_border_width",
+      "value": "1vp"
+    },
+    {
+      "name": "ntf_hide_banner_content_item_open_face_button_margin",
+      "value": "12vp"
+    },
+    {
+      "name": "ntf_hide_banner_content_item_open_face_height",
+      "value": "48vp"
+    },
+    {
+      "name": "ntf_hide_banner_content_item_open_face_button_height",
+      "value": "28vp"
+    },
+    {
+      "name": "ntf_hide_banner_content_item_open_face_button_padding_left",
+      "value": "12vp"
+    },
+    {
+      "name": "ntf_hide_banner_content_item_open_face_button_padding_top",
+      "value": "6vp"
+    },
+    {
+      "name": "ntf_hide_banner_content_item_open_face_button_fontsize",
+      "value": "12vp"
+    },
+    {
+      "name": "ntf_hide_banner_toggle_margin",
+      "value": "12vp"
+    },
+    {
+      "name": "ntf_hide_banner_toggle_height",
+      "value": "48vp"
+    },
+    {
+      "name": "ntf_hide_banner_txt_padding",
+      "value": "12vp"
+    },
+    {
+      "name": "ntf_hide_banner_txt_margin",
+      "value": "8vp"
+    },
+    {
+      "name": "ntf_hide_banner_txt_lineHeight",
+      "value": "16vp"
+    },
+    {
+      "name": "ntf_hide_banner_txt_fontsize",
+      "value": "12vp"
+    },
+    {
+      "name": "app_ntf_visual_remind_style_img_width",
+      "value": "60vp"
+    },
+    {
+      "name": "ntf_visual_reminder_view_text_margin_top",
+      "value": "12"
+    },
+    {
+      "name": "ntf_visual_reminder_view_text_margin_bottom",
+      "value": "6"
+    },
+    {
+      "name": "ntf_visual_reminder_top_padding",
+      "value": "24"
+    },
+    {
+      "name": "ntf_visual_reminder_view_text_font_size",
+      "value": "14"
+    },
+    {
+      "name": "ntf_visual_reminder_view_text_height",
+      "value": "19"
+    },
+    {
+      "name": "ntf_search_list_padding",
+      "value": "8vp"
+    },
+    {
+      "name": "ntf_search_list_margin",
+      "value": "4vp"
+    },
+    {
+      "name": "ntf_search_list_padding_top",
+      "value": "4vp"
+    },
+    {
+      "name": "ntf_search_list_padding_bottom",
+      "value": "4vp"
+    },
+    {
+      "name": "ntf_search_list_press_shadow_radius",
+      "value": "16vp"
+    },
+    {
+      "name": "ntf_search_icon_margin_right",
+      "value": "16vp"
+    },
+    {
+      "name": "search_list_divider_left_margin",
+      "value": "56vp"
+    },
+    {
+      "name": "search_list_divider_right_margin",
+      "value": "16vp"
+    },
+    {
+      "name": "dialog_title_height",
+      "value": "48vp"
+    },
+    {
+      "name": "ntf_status_bar_title_font_size",
+      "value": "24vp"
+    },
+    {
+      "name": "app_ntf_half_visual_remind_style_img_pad_landscape_width",
+      "value": "118vp"
+    },
+    {
+      "name": "reminder_view_title_margin_top",
+      "value": "28vp"
+    },
+    {
+      "name": "label_toggle_view_height_single_line",
+      "value": "48"
+    },
+    {
+      "name": "label_toggle_view_padding",
+      "value": "4"
+    },
+    {
+      "name": "ntf_half_mode_view_padding_end",
+      "value": "16vp"
+    },
+    {
+      "name": "ntf_half_mode_view_padding_start",
+      "value": "16vp"
+    },
+    {
+      "name": "ntf_half_mode_view_margin_end",
+      "value": "0vp"
+    },
+    {
+      "name": "ntf_half_mode_padding_end",
+      "value": "0vp"
+    },
+    {
+      "name": "ntf_half_mode_border_radius",
+      "value": "20"
+    },
+    {
+      "name": "ntf_half_mode_view_margin_bottom",
+      "value": "16"
+    },
+    {
+      "name": "ntf_half_mode_view_margin_top",
+      "value": "24"
+    },
+    {
+      "name": "app_list_indexer_padding_top",
+      "value": "12vp"
+    },
+    {
+      "name": "ntf_setting_live_view_app_item_height",
+      "value": "64vp"
+    }
+  ]
+}

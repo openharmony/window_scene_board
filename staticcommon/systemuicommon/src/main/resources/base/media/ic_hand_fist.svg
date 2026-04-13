@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="56px" height="56px" viewBox="0 0 56 56" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>svglight</title>
+    <defs>
+        <circle id="path-1" cx="19" cy="19" r="19"></circle>
+        <filter x="-18.4%" y="-13.2%" width="136.8%" height="136.8%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.1 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="light" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_hand_up" transform="translate(9.000000, 9.000000)">
+            <g id="path-1">
+                <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                <use fill-opacity="0.9" fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+            </g>
+            <g id="编组-2" transform="translate(9.000000, 9.000000)" stroke="#0A59F7" stroke-linejoin="round" stroke-width="1.5">
+                <rect id="矩形" x="14.9668976" y="3.87901748" width="4" height="6" rx="2"></rect>
+                <rect id="矩形备份" x="10.9668976" y="1.87901748" width="4" height="8" rx="2"></rect>
+                <rect id="矩形备份" x="6.96689762" y="0.879017483" width="4" height="9" rx="2"></rect>
+                <path d="M2.96689762,6.10853813 L2.96689762,3.64962903 C2.96689762,2.54505953 3.86232812,1.64962903 4.96689762,1.64962903 C6.07146712,1.64962903 6.96689762,2.54505953 6.96689762,3.64962903 L6.96689762,7.730478" id="路径" stroke-linecap="round"></path>
+                <path d="M8.394954,13.8426449 C7.70279542,11.853076 6.24089115,10.5819253 4.0092412,10.0291928 C5.54162967,9.66572131 6.65039217,9.38666673 6.68669229,7.60626628 C6.7229924,5.82586583 1.56501539,5.272065 0.940319309,7.49269324 C0.723918974,8.40212529 0.888141019,9.38221213 0.930503956,10.1768898 C1.01360467,11.7357593 1.24006256,12.8716333 1.49245087,13.3952989 C1.81590469,14.3490629 2.81174155,15.7178203 3.8196947,16.7247773 C4.93607181,17.8400512 5.93305904,18.6139897 6.92237537,18.9639776 C8.66469077,19.580352 12.1485513,19.891233 14.6117578,18.656976 C16.9970271,17.4617716 18.5000813,13.4471588 18.9276951,8.3599608" id="路径" stroke-linecap="round"></path>
+            </g>
+        </g>
+    </g>
+</svg>

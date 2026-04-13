@@ -1,0 +1,18 @@
+{
+    "string":[
+        {
+            "name":"control_center_complex_toggle_location_title",
+            "value":"位置情報",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_location",
+            "value":"アプリが有効な位置情報のリクエストを送信しています",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

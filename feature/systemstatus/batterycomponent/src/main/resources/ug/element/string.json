@@ -1,0 +1,88 @@
+{
+    "string":[
+        {
+            "name":"shutdown_dialog_content",
+            "value":"توك تۈگىدى، ئۈسكۈنە ئېتىلمەكچى.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"shutdown_dialog_title",
+            "value":"ئەسكەرتىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_battery_level",
+            "value":"باتارېيەدىكى توك %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_battery_charge",
+            "value":"توكلاۋاتىدۇ، %s بولدى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_battery_charge_double",
+            "value":"تېز توكلاۋاتىدۇ، %s بولدى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_battery_supercharge",
+            "value":"بەك تېز توكلاۋاتىدۇ، %s بولدى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"shutdown_dialog_content_new",
+            "value":"توك تۈگىدى، ئۈسكۈنە %d سېكۇنتتىن كېيىن ئېتىلىدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"battery_emergency_dialog_content",
+            "value":"توك بەك ئاز، ئۈسكۈنە %d سېكۇنتتىن كېيىن جىددىي ھالەتكە كىرىدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"low_battery_ntf_title",
+            "value":"توك ئاز",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"low_battery_ntf_content",
+            "value":"قالدۇق ‎%s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"low_battery_ntf_btn_text",
+            "value":"توك تېجەش ھالىتىنى ئېچىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_battery_power_saving",
+            "value":"توك تېجەش ھالىتى",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

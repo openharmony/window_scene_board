@@ -1,0 +1,16 @@
+{
+  "float": [
+    {
+      "name": "status_bar_starflash_height",
+      "value": "16vp"
+    },
+    {
+      "name": "status_bar_starflash_width",
+      "value": "200vp"
+    },
+    {
+      "name": "icon_component_opacity",
+      "value": "1"
+    }
+  ]
+}

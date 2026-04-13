@@ -1,0 +1,5 @@
+add_library(composed_partial STATIC src/build_layout.cpp)
+target_link_libraries(composed_partial gui greedy_suffix_partial sorted_partial)
+
+add_library(composed_algo STATIC src/apply_configuration.cpp)
+target_link_libraries(composed_algo PUBLIC composed_partial)

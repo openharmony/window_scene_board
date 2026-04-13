@@ -1,0 +1,9 @@
+{
+  "module": {
+    "name": "antipeepingcomponent",
+    "type": "har",
+    "deviceTypes": [
+      "tablet"
+    ]
+  }
+}

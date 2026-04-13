@@ -1,0 +1,10 @@
+{
+  "module": {
+    "name": "datetimecomponent",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ]
+  }
+}

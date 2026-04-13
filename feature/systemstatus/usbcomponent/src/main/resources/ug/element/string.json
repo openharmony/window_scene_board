@@ -1,0 +1,18 @@
+{
+    "string":[
+        {
+            "name":"USBRemoved",
+            "value":"بىخەتەر چىقىرىۋېتىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"usb_hover",
+            "value":"تاشقى بوشلۇق",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

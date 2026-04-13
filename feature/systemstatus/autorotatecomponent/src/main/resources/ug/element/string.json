@@ -1,0 +1,18 @@
+{
+    "string":[
+        {
+            "name":"control_center_complex_toggle_auto_rotate_title",
+            "value":"يۆنىلىش مۇقىملاش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"multi_window_opened",
+            "value":"ئەركىن كۆزنەك ھالىتى ئېچىلدى، تۈزبوي ئىشلىتىڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

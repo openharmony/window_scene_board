@@ -1,0 +1,64 @@
+{
+    "string":[
+        {
+            "name":"immersive_sys_no_auth_tips",
+            "value":"تولۇق ئىقتىدار ھالىتىنى ئىشلىتىش ئۈچۈن ئورۇن ئۇچۇرى ئىشلىتىشنى ئىجازەتلەش كېرەك.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"immersive_go_auth",
+            "value":"ئىجازەتلەش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"immersive_app_no_auth_tips",
+            "value":"تولۇق ئىقتىدار ھالىتىنى ئىشلىتىش ئۈچۈن ئەپنىڭ ئورۇن ئۇچۇرى ئىشلىتىشىنى ئىجازەتلەش كېرەك.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"immersive_app_sys_no_auth_tips",
+            "value":"تولۇق ئىقتىدار ھالىتىنى ئىشلىتىش ئۈچۈن سىستېما ئورۇن مۇلازىمىتى ۋە ئەپنىڭ ئورۇن ئىجازىتىنى ئېچىڭ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"immersive_card_tip_to_down",
+            "value":"يىغىش، كۇنۇپكا، بىر بارماقتا قوش چەكسىڭىز يۈرگۈزۈلىدۇ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"immersive_card_tip_to_up",
+            "value":"يېيىش، كۇنۇپكا، بىر بارماقتا قوش چەكسىڭىز يۈرگۈزۈلىدۇ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"immersive_card_tip_status_down",
+            "value":"كارتا يىغىلدى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"immersive_card_tip_status_up",
+            "value":"كارتا يېيىلدى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+      {
+        "name": "psd_back_accessible",
+        "value": "返回 按钮"
+      }
+    ]
+}

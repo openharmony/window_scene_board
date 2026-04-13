@@ -8,6 +8,11 @@
     "@ohos/commonconstants": "../../staticcommon/basecommon/commonconstants",
     "@ohos/frameworkwrapper": "../../staticcommon/basecommon/frameworkwrapper",
     "@ohos/windowscene": "../../staticcommon/basecommon/windowscene",
+    "@ohos/screenlockcommon": "../../staticcommon/screenlockcommon",
+    "@ohos/launchercommon": "../../staticcommon/launchercommon",
     "@ohos/componenthelper": "../../staticcommon/basecommon/componenthelper",
+    "@ohos/multiinput": "../multiinput",
+    "@ohos/smartdock": "../smartdock/commonsmartdock",
+    "@ohos/pcsmartdock": "../smartdock/pcsmartdock",
   }
 }

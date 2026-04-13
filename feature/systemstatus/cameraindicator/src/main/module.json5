@@ -1,0 +1,10 @@
+{
+  "module": {
+    "name": "cameraindicator",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ]
+  }
+}

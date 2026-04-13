@@ -1,0 +1,24 @@
+{
+  "float": [
+    {
+      "name": "control_center_title_font_size",
+      "value": "20fp"
+    },
+    {
+      "name": "control_center_title_height",
+      "value": "56"
+    },
+    {
+      "name": "control_center_panel_padding",
+      "value": "16"
+    },
+    {
+      "name": "control_center_header_padding_left",
+      "value": "8"
+    },
+    {
+      "name": "control_center_media_card_width",
+      "value": "158"
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+    "string":[
+        {
+            "name":"sound_title",
+            "value":"[TS_935251]_Audio settings"
+        },
+        {
+            "name":"spatial_audio",
+            "value":"[TS_935256]_Spatial Audio"
+        },
+        {
+            "name":"base_none",
+            "value":"[TS_935243]_Off"
+        },
+        {
+            "name":"base_noise_control",
+            "value":"[TS_935253]_Noise control"
+        },
+        {
+            "name":"spatial_audio_follow",
+            "value":"[TS_935245]_Head tracked"
+        },
+        {
+            "name":"spatial_audio_fixed",
+            "value":"[TS_935246]_Fixed"
+        },
+        {
+            "name":"base_pass_through",
+            "value":"[TS_935257]_Awareness"
+        },
+        {
+            "name":"toast_voice_enhance",
+            "value":"[TS_935250]_Put your earbuds in to use this feature."
+        },
+        {
+            "name":"noise_reduction",
+            "value":"[TS_935248]_Noise canceling"
+        },
+        {
+            "name":"toast_noise_control",
+            "value":"[TS_935247]_Put your earbuds in to use this feature."
+        },
+        {
+            "name":"HD_spatial_audio",
+            "value":"[TS_967985]_HD Spatial Audio"
+        },
+        {
+            "name":"toast_wear_headphone",
+            "value":"[TS_967986]_Please put in both buds."
+        },
+        {
+            "name":"toast_noise_control_amphora",
+            "value":"[TS_1120556]_For noise canceling, wear both earbuds.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_change_volume_desc",
+            "value":"[TS_973864]_Volume bar, double-tap and hold, then slide left or right to adjust"
+        },
+        {
+            "name":"cc_accessibility_str_change_volume",
+            "value":"[TS_973863]_Volume adjusted to %s"
+        },
+        {
+            "name":"cc_accessibility_str_volume",
+            "value":"[TS_973862]_Volume %s"
+        },
+        {
+            "name":"noise_on",
+            "value":"[TS_974369]_On"
+        },
+        {
+            "name":"cc_accessibility_str_change_vertical_volume_desc",
+            "value":"[TS_1086251]_Volume bar, double tap and hold, then swipe up or down to adjust"
+        }
+    ]
+}

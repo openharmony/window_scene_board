@@ -1,0 +1,305 @@
+{
+    "string":[
+        {
+            "name":"icon",
+            "value":"Biểu tượng",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"recorder",
+            "value":"Máy ghi âm",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"contacts",
+            "value":"Điện thoại",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"email",
+            "value":"Email",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"filemanager",
+            "value":"Tệp tin",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"calendar",
+            "value":"Lịch",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"icon_size_small",
+            "value":"Nhỏ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"tips",
+            "value":"Mẹo",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"appmarket",
+            "value":"AppGallery",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"calculator",
+            "value":"Máy tính",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wallet",
+            "value":"Ví",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"clock",
+            "value":"Đồng hồ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"health",
+            "value":"Sức khỏe",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wallpaper",
+            "value":"Hình nền",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notepad",
+            "value":"Sổ tay",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"vmall",
+            "value":"VMALL",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"icon_size",
+            "value":"Kích thước biểu tượng",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply",
+            "value":"Áp dụng",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"show_app_name",
+            "value":"Hiện tên ứng dụng",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"icon_size_normal",
+            "value":"Bình thường",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"hwireader",
+            "value":"Sách",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"camera",
+            "value":"Máy ảnh",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"meetime",
+            "value":"MeeTime",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sound_music",
+            "value":"Nhạc",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"messaging",
+            "value":"Nhắn tin",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"theme_title",
+            "value":"Chủ đề",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ailife",
+            "value":"AI Life",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"himovie",
+            "value":"HUAWEI Video",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"form_service",
+            "value":"Tiện ích",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"selected",
+            "value":"Đã chọn",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"applyIcon",
+            "value":"Đang áp dụng…",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"gamecenter",
+            "value":"GameCenter",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"gallery",
+            "value":"Bộ sưu tập",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"finddevice",
+            "value":"Tìm thiết bị",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"browser",
+            "value":"Trình duyệt",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"weather",
+            "value":"Thời tiết",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"clouddrive",
+            "value":"Cloud",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"icon_style",
+            "value":"Kiểu biểu tượng",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_remove_form",
+            "value":"Gỡ tiện ích này?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"settings",
+            "value":"Cài đặt",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"icon_size_large",
+            "value":"Lớn",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"navigation_up",
+            "value":"Quay lại trang trước",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"icon_edit_not_support_small_step",
+            "value":"Không thể điều chỉnh biểu tượng khi cửa sổ Cài đặt đang ở chế độ cửa sổ di động.",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"accessibility_status_bar_focus_mode",
+            "value":"免打扰",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

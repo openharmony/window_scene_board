@@ -1,0 +1,200 @@
+{
+    "string":[
+        {
+            "name":"Emergency_add",
+            "value":"قوشۇش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Emergency_search_application",
+            "value":"ئەپ ئىزدەش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Emergency_dialog_title_exit",
+            "value":"جىددىي ھالەتتىن چېكىنەمسىز؟",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Emergency_dialog_not_remind",
+            "value":"ئەمدى ئەسكەرتمەڭ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Emergency_shutdown_dialog_title_exit",
+            "value":"جىددىي ھالەتتىن چېكىنىپ، ئۈسكۈنىنى ئېتەمسىز؟",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Emergency_all_application",
+            "value":"بارلىق ئەپ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Emergency_button_exit",
+            "value":"چېكىنىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Emergency_button_cancel",
+            "value":"بىكار قىلىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Emergency_add_application",
+            "value":"ئەپ قوشۇش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Thermal_safe_note",
+            "value":"ئەسكەرتىش: ئۈسكۈنە ھازىر سوۋۇتۇش ھالىتىدە، ئىشلەتمەسلىكنى تەۋسىيە قىلىمىز. ئۈسكۈنە سوۋۇغاندا سوۋۇتۇش ھالىتى ئۆزلۈكىدىن ئېتىلىدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Emergency_title_dialog_enter",
+            "value":"توك تۈگىمەكچى. ئىشلىتىش ۋاقتىنى ئۇزارتىش ئۈچۈن توك ئاز جىددىي ھالەتنى ئاچتۇق.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Thermal_safe_title",
+            "value":"سوۋۇتۇش ھالىتى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Thermal_safe_dialog_title_enter",
+            "value":"ئۈسكۈنە قىزىپ كەتتى. سوۋۇتۇش ھالىتىنى ئاچتۇق، ئۈسكۈنە سوۋۇغاندا بۇ ھالەت ئۆزلۈكىدىن ئېتىلىدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Emergency_button_determined",
+            "value":"جەزملەش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Emergency_note",
+            "value":"ئەسكەرتىش: توك ئاز جىددىي ھالەتتىن چېكىنسىڭىز، توك يېتىشمەي ئۈسكۈنە ئېتىلىپ قېلىشى مۇمكىن.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Emergency_title",
+            "value":"توك ئاز جىددىي ھالەت",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Emergency_button_know",
+            "value":"بىلدىم",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Emergency_edit",
+            "value":"تەھرىرلەش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_remove",
+            "value":"چىقىرىۋېتىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_back",
+            "value":"قايتىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_cancel_this_edit",
+            "value":"نۆۋەتتىكى تەھرىرلەشنى بىكار قىلىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_save_this_edit",
+            "value":"ھازىرقى تەھرىرلەشنى ساقلاش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"emergency_exit_with_charge_dialog_content",
+            "value":"توك بەك ئاز، چېكىنسىڭىز ئۈسكۈنە ئېتىلىپ قېلىشى مۇمكىن.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"emergency_exit_without_charge_dialog_content",
+            "value":"ۋاقتىدا توكلاشنى تەۋسىيە قىلىمىز.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"emergency_enter_dialog_title",
+            "value":"توك تۈگىمەكچى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"emergency_enter_dialog_content",
+            "value":"ئىشلىتىش ۋاقتىنى ئۇزارتىش ئۈچۈن توك ئاز جىددىي ھالەتنى ئاچتۇق.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"thermal_safe_enter_dialog_dialog_title",
+            "value":"ئۈسكۈنە قىزىپ كەتتى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"thermal_safe_enter_dialog_dialog_content",
+            "value":"سوۋۇتۇش ھالىتىنى ئاچتۇق، ئۈسكۈنە سوۋۇغاندا بۇ ھالەت ئۆزلۈكىدىن ئېتىلىدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        }
+    ]
+}

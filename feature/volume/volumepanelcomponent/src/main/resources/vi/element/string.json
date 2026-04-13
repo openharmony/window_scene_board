@@ -1,0 +1,116 @@
+{
+    "string":[
+        {
+            "name":"volume_channel_notification",
+            "value":"Thông báo",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"volume",
+            "value":"Âm lượng",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"volume_channel_ringer",
+            "value":"Nhạc chuông",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"volume_channel_voice_call",
+            "value":"Cuộc gọi",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"volume_accessibility_expand_dialog",
+            "value":"Bảng điều khiển âm lượng mở rộng, đóng bằng cách vuốt bằng hai ngón tay, sẽ tự động đóng nếu không thực hiện thao tác nào trong %1$d giây",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"volume_accessibility_media",
+            "value":"Âm thanh phương tiện",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"volume_accessibility_icon_enabled",
+            "value":"đã bật",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"volume_accessibility_icon_disabled",
+            "value":"đã tắt",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"volume_accessibility_single",
+            "value":"%1$d phần trăm, %2$s, thanh tiến trình, có thể được điều chỉnh bằng cách nhấn nút âm lượng, vuốt sang trái bằng hai ngón tay để mở rộng bảng điều khiển âm lượng",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"volume_channel_alarm",
+            "value":"Báo thức",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"volume_accessibility_dialog",
+            "value":"%1$d phần trăm, %2$s, thanh tiến trình, có thể được điều chỉnh bằng cách nhấn nút âm lượng",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"volume_accessibility_icon",
+            "value":"%1$s, %2$s, nút, chạm đúp để kích hoạt",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"volume_popup_note",
+            "value":"Vuốt sang trái để có thêm tùy chọn điều chỉnh âm lượng.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"volume_channel_media",
+            "value":"Phương tiện",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"volume_channel_more_setting",
+            "value":"Cài đặt khác",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"volume_accessibility_accessibility",
+            "value":"Trợ năng",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="25px" height="25px" viewBox="0 0 25 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>ic_enter_white</title>
+    <defs>
+        <path d="M18.5607022,10.7499686 L16.4392022,10.7499686 L10.4359286,16.7556673 C10.1772453,17.0502619 10.1884924,17.4991526 10.4696699,17.7803301 C10.7508474,18.0615076 11.1997381,18.0727547 11.4943327,17.8140714 L18.5607022,10.7499686 Z M11.5303301,0.219669914 C11.2374369,-0.0732233047 10.7625631,-0.0732233047 10.4696699,0.219669914 C10.1884924,0.500847404 10.1772453,0.949738137 10.4359286,1.24433269 L17.4395,8.25 L0.75,8.25 C0.350579779,8.25 0.0240847801,8.56222999 0.00127317335,8.9559318 L0,9 C0,9.39942022 0.312229991,9.72591522 0.705931803,9.74872683 L18.6464466,9.75 C18.9116631,9.75 19.166017,9.64464316 19.3535534,9.45710678 C19.7310602,9.07959997 19.7436438,8.47535891 19.3913041,8.08273648 L11.5303301,0.219669914 Z" id="path-1"></path>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.8">
+        <g id="5.0-锁屏----输入状态备份" transform="translate(-1146.000000, -987.000000)">
+            <g id="编组-3" transform="translate(1146.693452, 987.206894)">
+                <g id="Public/ic_public_back" transform="translate(2.250000, 3.000000)">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <g id="形状" fill-rule="nonzero"></g>
+                    <g id="Symbol/color-light/colorPrimary" mask="url(#mask-2)" fill="#FFFFFF">
+                        <g transform="translate(-2.103553, -3.000000)" id="color/#000000">
+                            <rect x="0" y="0" width="24" height="24"></rect>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

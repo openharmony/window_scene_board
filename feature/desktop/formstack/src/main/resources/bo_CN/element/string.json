@@ -1,0 +1,102 @@
+{
+    "string":[
+        {
+            "name":"expand_formstack",
+            "value":"སྤུང་བརྩེགས་འགྲེམ་པ།",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"edit_formstack",
+            "value":"%sརྩོམ་སྒྲིག",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"delete_formstack",
+            "value":"%sསྤོ་འབུད།",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"delete_form_stack_text",
+            "value":"སུབ་པ།",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"create_form_stack_text",
+            "value":"%1$s དང་ %2$s སྤུང་བརྩེགས་ཆགས་ཟིན།",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_form_stack_text",
+            "value":"%1$s སྤུང་བརྩེགས་ནང་བླུགས་ཟིན།",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"form_pinned_stack_text",
+            "value":"བྱང་བུ་ %1$s རྩེར་བསྒྲིགས་ཟིན།",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"expand_stack_text",
+            "value":"བཀྲམ་ཟིན། མཛུབ་མོ་གཉིས་ཀྱིས་ཡར་མར་འདེད་འགུལ་བྱས་ཚེ་བྱང་བུ་ཚང་མ་འགྲིལ་འགུལ་བྱེད་ཐུབ།",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"close_stack_text",
+            "value":"བྱང་བུ་སྤུང་བརྩེགས་སྡུད་ཟིན།",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"stack_request_focus_after_text",
+            "value":"མིག་སྔར་%1$sབྱང་བུ་ལ་སྒྲིག་བཀོལ་བྱ་ཆོག་པ་ཡོད། ཉིས་རྡེབ་བྱས་ནས་མནན་ཚེ་གདམ་ག་དེ་ལས་མང་བ་འཕར་ཐོན་བྱེད།",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"expand_stack_request_focus_front_text",
+            "value":"རྣམ་གྲངས་ཨང་ %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"delete_stack_form",
+            "value":"བྱང་བུ་ %s བསུབས་ཟིན།",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"talkback_expand_stack_moved_to",
+            "value":"དོན་ཚན་ %d ལ་བཞག་ཟིན།",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"talkback_expand_stack_move_to",
+            "value":"དོན་ཚན་ %d ལ་སྤོ་བ།",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

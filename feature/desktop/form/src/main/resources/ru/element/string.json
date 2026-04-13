@@ -1,0 +1,95 @@
+{
+    "string":[
+        {
+            "name":"accessibility_str_two_finger_slide",
+            "value":"Чтобы перелистнуть, проведите влево или вправо двумя пальцами",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"suggestion",
+            "value":"Рекомендации",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"form_center_notice_text",
+            "value":"Нажмите на виджеты или перетащите их, чтобы добавить на рабочий экран",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_to_screen_lock",
+            "value":"Добавить на экран блокировки",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_theme_form_to_desktop_more",
+            "value":"Другие живые виджеты",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_form_to_intelligent",
+            "value":"Добавить в Assistant·TODAY",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"form_center_notice_button",
+            "value":"OK",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_str_long_click_to_drag",
+            "value":"Нажмите дважды и удерживайте, чтобы перетащить",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"form_added",
+            "value":"Виджет добавлен.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"look_more_theme_form",
+            "value":"Еще",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"splitter_format",
+            "value":"%1$s, %2$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"card_load_error",
+            "value":"Ошибка загрузки виджета. Повторите попытку позже.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"onekeylock_shortcut",
+            "value":"Значок блокировки экрана",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

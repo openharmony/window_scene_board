@@ -1,0 +1,62 @@
+{
+    "plural":[
+        {
+            "name":"stack_request_focus_front_text",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"[TS_972384]_Widget stack, %d widgets in total"
+                },
+                {
+                    "quantity":"one",
+                    "value":"[TS_972388]_Widget stack, %d widget in total"
+                },
+                {
+                    "quantity":"zero",
+                    "value":"[TS_972393]_Widget stack, %d widgets in total"
+                },
+                {
+                    "quantity":"few",
+                    "value":"[TS_972376]_Widget stack, %d widgets in total"
+                },
+                {
+                    "quantity":"many",
+                    "value":"[TS_972385]_Widget stack, %d widgets in total"
+                },
+                {
+                    "quantity":"two",
+                    "value":"[TS_972391]_Widget stack, %d widgets in total"
+                }
+            ]
+        },
+        {
+            "name":"expand_stack_request_focus_after_text",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"[TS_972383]_%d item in total. There are options available. Double-tap to collapse the stack and place this widget on top. Double-tap and hold to drag the widget up and down"
+                },
+                {
+                    "quantity":"other",
+                    "value":"[TS_972387]_%d items in total. There are options available. Double-tap to collapse the stack and place this widget on top. Double-tap and hold to drag the widget up and down"
+                },
+                {
+                    "quantity":"zero",
+                    "value":"[TS_972377]_%d items in total. There are options available. Double-tap to collapse the stack and place this widget on top. Double-tap and hold to drag the widget up and down"
+                },
+                {
+                    "quantity":"few",
+                    "value":"[TS_972394]_%d items in total. There are options available. Double-tap to collapse the stack and place this widget on top. Double-tap and hold to drag the widget up and down"
+                },
+                {
+                    "quantity":"many",
+                    "value":"[TS_972382]_%d items in total. There are options available. Double-tap to collapse the stack and place this widget on top. Double-tap and hold to drag the widget up and down"
+                },
+                {
+                    "quantity":"two",
+                    "value":"[TS_972378]_%d items in total. There are options available. Double-tap to collapse the stack and place this widget on top. Double-tap and hold to drag the widget up and down"
+                }
+            ]
+        }
+    ]
+}

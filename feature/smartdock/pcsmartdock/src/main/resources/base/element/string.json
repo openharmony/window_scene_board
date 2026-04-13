@@ -1,0 +1,99 @@
+{
+    "string":[
+        {
+            "name":"app_menu_open",
+            "value":"Open",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_menu_open_new_window",
+            "value":"Open new window",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_menu_exit_single",
+            "value":"Close window",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_menu_exit_multiple",
+            "value":"Close all windows",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_center_menu_add_desktop",
+            "value":"Add to home screen",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remove_from_dock",
+            "value":"Remove from dock",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_dock_menu_suggest_title",
+            "value":"Suggested",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_menu_clean",
+            "value":"Empty Recycle Bin",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"continue_hap_come_from",
+            "value":"From \"%1$s\".",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dock_hover_text_appcenter",
+            "value":"App center",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dock_hover_text_recentcenter",
+            "value":"Task center",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dock_hover_text_filemanager",
+            "value":"filemanager"
+        },
+        {
+            "name":"dock_hover_text_recyclebin",
+            "value":"Recycle Bin",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"more_app_icon",
+            "value":"More apps",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

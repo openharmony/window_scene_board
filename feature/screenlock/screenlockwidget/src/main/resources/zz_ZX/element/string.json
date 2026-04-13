@@ -1,0 +1,232 @@
+{
+    "string":[
+        {
+            "name":"show_lock_screen_signature",
+            "value":"[TS_924776]_Lock screen signature"
+        },
+        {
+            "name":"click_input_text",
+            "value":"[TS_924860]_Enter text"
+        },
+        {
+            "name":"widgets_two_click_accessible",
+            "value":"[TS_952904]_Double-tap to activate"
+        },
+        {
+            "name":"checked",
+            "value":"[TS_962933]_Selected"
+        },
+        {
+            "name":"unchecked",
+            "value":"[TS_962909]_Not selected"
+        },
+        {
+            "name":"service_form_area_accessible",
+            "value":"[TS_992756]_Zone for widgets"
+        },
+        {
+            "name":"theme_edit_cancel",
+            "value":"[TS_924784]_Cancel"
+        },
+        {
+            "name":"psd_back",
+            "value":"[TS_924763]_Back"
+        },
+        {
+            "name":"theme_edit_apply",
+            "value":"[TS_924730]_Apply"
+        },
+        {
+            "name":"clock_style",
+            "value":"[TS_962930]_Clock style %d"
+        },
+        {
+            "name":"clock_font_style",
+            "value":"[TS_962943]_Font style %d"
+        },
+        {
+            "name":"clock_font_color",
+            "value":"[TS_962924]_Font color %d"
+        },
+        {
+            "name":"font_creation",
+            "value":"[TS_1104438]_Create a font"
+        },
+        {
+            "name":"more_edits",
+            "value":"[TS_962902]_More edits"
+        },
+        {
+            "name":"Double_click_and_hold_accessibility",
+            "value":"[TS_992759]_Double-tap and hold to open options menu"
+        },
+        {
+            "name":"EnterpriseDeviceDefaultText",
+            "value":"[TS_927767]_This device is managed by your organization"
+        },
+        {
+            "name":"EnterpriseDeviceText",
+            "value":"[TS_927766]_This device is managed by %s"
+        },
+        {
+            "name":"service_form_delete_button_accessible",
+            "value":"[TS_992757]_Remove, button"
+        },
+        {
+            "name":"layout_tab_art",
+            "value":"[TS_1061875]_Personalized poster"
+        },
+        {
+            "name":"art_signature_input_error_language",
+            "value":"[TS_1066039]_Chinese characters or letters only"
+        },
+        {
+            "name":"art_signature_input_tip",
+            "value":"[TS_1066037]_Enter letters or up to %d Chinese characters."
+        },
+        {
+            "name":"layout_tab_default",
+            "value":"[TS_1061874]_Digital clock"
+        },
+        {
+            "name":"art_signature_input_title",
+            "value":"[TS_1066036]_Poster text"
+        },
+        {
+            "name":"art_signature_input_error_len",
+            "value":"[TS_1066038]_Character limit reached"
+        },
+        {
+            "name":"art_signature_input_error_char",
+            "value":"[TS_1066040]_This symbol is not supported currently."
+        },
+        {
+            "name":"artfont_creation_reach_limit",
+            "value":"[TS_1094862]_Font limit reached"
+        },
+        {
+            "name":"apply_font_cannot_delete",
+            "value":"[TS_1097723]_Fonts can't be deleted while in use."
+        },
+        {
+            "name":"artfont_creation_no_network",
+            "value":"[TS_1091050]_No Internet connection. Check your network settings."
+        },
+        {
+            "name":"artfont_creation_delete_notice",
+            "value":"[TS_1094859]_Touch & hold a font to remove it and create a new one."
+        },
+        {
+            "name":"artfont_creation_confirm",
+            "value":"[TS_1094858]_OK"
+        },
+        {
+            "name":"artfont_creation_ocr_err",
+            "value":"[TS_1095907]_Identification unsuccessful. Please try again."
+        },
+        {
+            "name":"art_signature_style",
+            "value":"[TS_1097722]_Poster style %d"
+        },
+        {
+            "name":"font_creation_dialog_part_four",
+            "value":"[TS_1104335]_Statement About Lock Screen Font Creation Service and Privacy"
+        },
+        {
+            "name":"artfont_creation_statement_agree",
+            "value":"[TS_1103588]_Agree"
+        },
+        {
+            "name":"screenlock_font_creation_service",
+            "value":"[TS_1104336]_Lock screen font creation service"
+        },
+        {
+            "name":"font_creation_dialog_part_one",
+            "value":"[TS_1104338]_This service uses cloud-based AI to generate fonts based on text contained in images. Generated fonts can be applied to your lock screen clock and signature."
+        },
+        {
+            "name":"font_creation_dialog_part_five",
+            "value":"[TS_1112091]_Terms & conditions"
+        },
+        {
+            "name":"art_signature_displayed_as_combined_character",
+            "value":"[TS_1111508]_Combine into one character"
+        },
+        {
+            "name":"art_signature_content_creation_failed",
+            "value":"[TS_1111506]_Unable to create font."
+        },
+        {
+            "name":"art_signature_try_combined_characters",
+            "value":"[TS_1111505]_Select combined Chinese characters"
+        },
+        {
+            "name":"art_signature_combined_character",
+            "value":"[TS_1111507]_Combined Chinese characters"
+        },
+        {
+            "name":"font_creation_dialog_part_three",
+            "value":"[TS_1112090]_This service requires an Internet connection and needs to read and upload/transfer images to provide lock screen font creation features. We only collect personal information relevant to the features you use. For more information, refer to the %1$s and %2$s.\nPlease carefully read the above content. By tapping Agree, you agree to let us provide you with this service."
+        },
+        {
+            "name":"card_deleted",
+            "value":"[TS_1113811]_%s widget has been deleted"
+        },
+        {
+            "name":"art_signature_text_button_tip",
+            "value":"[TS_1119990]_Information"
+        },
+        {
+            "name":"art_signature_text_tip_content",
+            "value":"[TS_1119984]_Works best with %d Chinese characters or less."
+        },
+        {
+            "name":"please_input_text",
+            "value":"[TS_1125326]_Enter text"
+        },
+        {
+            "name": "layout_tab_artsign",
+            "value": "[TS_1119986]_Personalized signature"
+        },
+        {
+            "name":"artfont_AI_creation",
+            "value":"[TS_1122458]_AI create"
+        },
+        {
+            "name":"artfont_delete_description",
+            "value":"[TS_1122460]_If your personalized signature is using this font, it will revert to the default font."
+        },
+        {
+            "name":"artfont_delete_confirm",
+            "value":"[TS_1122455]_Remove this font?"
+        },
+        {
+            "name":"artfont_delete_remove_button",
+            "value":"[TS_1122456]_Remove"
+        },
+        {
+            "name":"artfont_long_press_delete",
+            "value":"[TS_1122461]_Touch & hold to edit or remove."
+        },
+        {
+            "name":"art_signature",
+            "value":"[TS_1122462]_Personalized signature"
+        },
+        {
+            "name":"AIGC_server_offline_title",
+            "value":"[TS_1122463]_Font creation service is offline"
+        },
+        {
+            "name":"switch_combined_characters_fonts_prompt",
+            "value":"[TS_1122464]_Font switching is not available for combo characters."
+        },
+        {
+            "name":"AIGC_server_offline_description",
+            "value":"[TS_1122457]_This feature is temporarily unavailable while we make some improvements."
+        },
+        {
+            "name": "unsupported_content",
+            "value": "[TS_1124543]_Contains characters that aren't supported"
+        }
+    ]
+}

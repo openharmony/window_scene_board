@@ -1,0 +1,200 @@
+{
+    "string":[
+        {
+            "name":"Emergency_note",
+            "value":"*Nếu thoát chế độ Tiết kiệm pin, thiết bị của bạn có thể không còn đủ pin để tiếp tục hoạt động.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_cancel_this_edit",
+            "value":"Hủy các thay đổi",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_dialog_title_exit",
+            "value":"Thoát chế độ Dự trữ pin?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Emergency_back",
+            "value":"Trở lại",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"emergency_enter_dialog_title",
+            "value":"Pin cực yếu",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_save_this_edit",
+            "value":"Lưu các thay đổi",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Thermal_safe_note",
+            "value":"Không sử dụng thiết bị nếu có thể. Chế độ làm nguội sẽ tự động thoát khi thiết bị nguội đi.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_dialog_not_remind",
+            "value":"Không hiện lại",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_shutdown_dialog_title_exit",
+            "value":"Thoát chế độ Tiết kiệm pin và tắt nguồn?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_title",
+            "value":"Chế độ Tiết kiệm pin",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_all_application",
+            "value":"Tất cả ứng dụng",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_button_exit",
+            "value":"Thoát",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_remove",
+            "value":"Kéo vào đây để xóa",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_title_dialog_enter",
+            "value":"Pin cực yếu. Chế độ Tiết kiệm pin đã được bật để kéo dài thời lượng pin.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_button_determined",
+            "value":"OK",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_button_cancel",
+            "value":"Hủy",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"emergency_exit_with_charge_dialog_content",
+            "value":"Nếu bạn thoát bây giờ, thiết bị của bạn có thể không còn đủ pin để tiếp tục hoạt động.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_add_application",
+            "value":"Thêm ứng dụng",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_search_application",
+            "value":"Tìm kiếm ứng dụng",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"thermal_safe_enter_dialog_dialog_title",
+            "value":"Thiết bị quá nóng",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_add",
+            "value":"Thêm",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"emergency_exit_without_charge_dialog_content",
+            "value":"Hãy nhớ sạc pin khi có cơ hội.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_edit",
+            "value":"Sửa",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"thermal_safe_enter_dialog_dialog_content",
+            "value":"Chế độ làm nguội đã được kích hoạt. Chế độ này sẽ thoát khi thiết bị của bạn nguội đi.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"emergency_enter_dialog_content",
+            "value":"Chế độ Tiết kiệm pin đã được bật để kéo dài thời lượng pin.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Thermal_safe_title",
+            "value":"Chế độ làm nguội",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_button_know",
+            "value":"OK",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Thermal_safe_dialog_title_enter",
+            "value":"Thiết bị quá nóng. Chế độ làm nguội đã được bật. Chế độ này sẽ tự động thoát khi thiết bị của bạn nguội đi.",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

@@ -1,0 +1,16 @@
+{
+  "id": "grid.sceneboard.serviceassistant",
+  "ver": 231,
+  "minSdkVer": 1,
+  "type": "comboCard",
+  "extraConfigs": {
+    "dataFormat": "compact",
+    "changeLog": "base version"
+  },
+  "hasSubSource": false,
+  "firstPageSize": 15,
+  "dataSourceFields": [],
+  "dependencies": {},
+  "entry": "src",
+  "data": "data"
+}

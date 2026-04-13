@@ -1,0 +1,151 @@
+{
+    "string":[
+        {
+            "name":"regular_verify_psd_for_security",
+            "value":"Veuillez saisir votre mot de passe pour plus de sécurité",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_incorrect_hardware_error",
+            "value":"Erreur de vérification",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"regular_verify_pin_for_security",
+            "value":"Veuillez saisir votre code",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"text_loading",
+            "value":"Chargement en cours.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"fp_incorrect_fp_try_again",
+            "value":"Veuillez vous assurer que le bout de votre doigt couvre entièrement le capteur, et essayez de le maintenir plus longtemps.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_enter_psd_mix",
+            "value":"Veuillez saisir le mot de passe",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_incorrect_will_locked",
+            "value":"Le code PIN est incorrect. Après %1$s, votre appareil sera verrouillé pendant %2$s.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"please_enter_psd_for_security",
+            "value":"Mot de passe requis pour plus de sécurité",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_incorrect_psd_try_again",
+            "value":"Le code PIN est incorrect. Veuillez réessayer.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pattern_incorrect_will_locked",
+            "value":"Schéma incorrect. Après %1$s, votre appareil sera verrouillé pendant %2$s.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_enter_psd",
+            "value":"Veuillez saisir le code PIN",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_incorrect_psd_try_again_mix",
+            "value":"Le code mot de passe est incorrect. Veuillez réessayer.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_try_again_after_time1",
+            "value":"Veuillez réessayer dans %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"restart_enter_pin",
+            "value":"Code PIN requis après redémarrage de l'appareil",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"restart_enter_psd",
+            "value":"Mot de passe requis après le redémarrage",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"fp_disable_enter_psd",
+            "value":"Reconnaissance d'empreinte digitale désactivée. Veuillez saisir votre code PIN.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"device_restart_enter_psd",
+            "value":"Mot de passe requis après le redémarrage",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pattern_psd_incorrect_psd_try_again",
+            "value":"Schéma incorrect",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"fingerprint_incorrect_will_locked",
+            "value":"Empreinte digitale non reconnue. Votre appareil sera verrouillé pendant %2$s après %1$s.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"please_enter_pin_for_security",
+            "value":"Un code est requis pour plus de sécurité",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pattern_psd_drawing_completed",
+            "value":"Schéma dessiné",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

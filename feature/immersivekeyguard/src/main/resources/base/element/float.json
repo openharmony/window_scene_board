@@ -1,0 +1,152 @@
+{
+  "float": [
+    {
+      "name": "immersive_card_radius",
+      "value": "32vp"
+    },
+    {
+      "name": "immersive_card_app_margin",
+      "value": "16vp"
+    },
+    {
+      "name": "immersive_card_app_margin_top",
+      "value": "5vp"
+    },
+    {
+      "name": "immersive_card_app_margin_bottom",
+      "value": "13vp"
+    },
+    {
+      "name": "immersive_live_card_app_margin",
+      "value": "24vp"
+    },
+    {
+      "name": "immersive_live_card_app_top",
+      "value": "20vp"
+    },
+    {
+      "name": "immersive_capsule_margin_top",
+      "value": "7vp"
+    },
+    {
+      "name": "immersive_capsule_margin_bottom",
+      "value": "7vp"
+    },
+    {
+      "name": "immersive_capsule_margin_right",
+      "value": "6vp"
+    },
+    {
+      "name": "immersive_card_content_margin_top",
+      "value": "4vp"
+    },
+    {
+      "name": "immersive_card_content_margin_top_small_fold",
+      "value": "0vp"
+    },
+    {
+      "name": "immersive_card_content_margin_horizontal",
+      "value": "12vp"
+    },
+    {
+      "name": "immersive_card_content_margin_horizontal_small_fold",
+      "value": "16vp"
+    },
+    {
+      "name": "immersive_card_content_margin_bottom",
+      "value": "8vp"
+    },
+    {
+      "name": "immersive_card_content_margin_bottom_small_fold",
+      "value": "12vp"
+    },
+    {
+      "name": "immersive_text_title_height",
+      "value": "20vp"
+    },
+    {
+      "name": "immersive_hide_content_margin_top",
+      "value": "2vp"
+    },
+    {
+      "name": "immersive_location_img_size",
+      "value": "100vp"
+    },
+    {
+      "name": "immersive_location_img_margin_top",
+      "value": "24vp"
+    },
+    {
+      "name": "immersive_location_img_margin_bottom",
+      "value": "8vp"
+    },
+    {
+      "name": "immersive_location_font_line_height",
+      "value": "19vp"
+    },
+    {
+      "name": "immersive_location_font_size",
+      "value": "14fp"
+    },
+    {
+      "name": "immersive_authorize_line_height",
+      "value": "21vp"
+    },
+    {
+      "name": "immersive_authorize_font_size",
+      "value": "16fp"
+    },
+    {
+      "name": "immersive_authorize_padding",
+      "value": "32vp"
+    },
+    {
+      "name": "immersive_authorize_padding_small_fold",
+      "value": "48vp"
+    },
+    {
+      "name": "immersive_location_info_margin_bottom",
+      "value": "16vp"
+    },
+    {
+      "name": "immersive_location_info_max_width",
+      "value": "448vp"
+    },
+    {
+      "name": "immersive_location_info_height",
+      "value": "40vp"
+    },
+    {
+      "name": "immersive_bottom_half_height_small_fold",
+      "value": "46vp"
+    },
+    {
+      "name": "immersive_title_line_height_small_fold",
+      "value": "20vp"
+    },
+    {
+      "name": "immersive_rich_text_line_height_small_fold",
+      "value": "16vp"
+    },
+    {
+      "name": "immersive_fixed_area_height_small_fold",
+      "value": "38vp"
+    },
+    {
+      "name": "immersive_card_tip_img_width",
+      "value": "48vp"
+    },
+    {
+      "name": "immersive_card_tip_img_height",
+      "value": "18vp"
+    },
+    {
+      "name": "immersive_card_tip_img_margin_top",
+      "value": "3vp"
+    },
+    {
+      "name": "immersive_card_tip_img_margin_bottom",
+      "value": "3vp"
+    }
+  ]
+}

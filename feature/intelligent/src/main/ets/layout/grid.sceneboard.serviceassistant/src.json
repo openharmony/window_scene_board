@@ -1,0 +1,11 @@
+{
+  "name": "grid.sceneboard.serviceassistant",
+  "type": "flnode",
+  "children": [
+    {
+      "type": "grid.card.sceneboard.serviceassistant",
+      "data": {
+      }
+    }
+  ]
+}

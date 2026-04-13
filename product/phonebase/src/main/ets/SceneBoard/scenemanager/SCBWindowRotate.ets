@@ -34,6 +34,7 @@ import {
   MidSceneConfig
 } from '@ohos/windowscene';
 import { viewMgrPolicy, ViewType, ApsUtils, RotateChangeEvent, EvtBus, DeviceHelper, } from '@ohos/frameworkwrapper';
+// import apsManager from '@hms.graphic.apsManager';
 import { StyleConstants } from '@ohos/launchercommon';
 import performanceMonitor from '@ohos.arkui.performanceMonitor';
 import transactionManager from '@ohos.transactionManager';

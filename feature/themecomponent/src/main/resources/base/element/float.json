@@ -1,0 +1,64 @@
+{
+  "float": [
+    {
+      "name": "Dialog_button_height",
+      "value": "40"
+    },
+    {
+      "name": "Font_creation_dialog_title_height",
+      "value": "56"
+    },
+    {
+      "name": "Font_creation_dialog_text_height",
+      "value": "63"
+    },
+    {
+      "name": "Font_creation_dialog_text_margin_bottom",
+      "value": "8"
+    },
+    {
+      "name": "Font_creation_dialog_text_lineHeight",
+      "value": "19"
+    },
+    {
+      "name": "Font_creation_dialog_margin",
+      "value": "16"
+    },
+    {
+      "name": "Font_creation_dialog_statement_height",
+      "value": "53"
+    },
+    {
+      "name": "Font_creation_dialog_statement_line_height",
+      "value": "12"
+    },
+    {
+      "name": "Font_creation_dialog_statement_margin_bottom",
+      "value": "3"
+    },
+    {
+      "name": "Font_creation_statement_back_image_size",
+      "value": "40"
+    },
+    {
+      "name": "Font_creation_statement_loading_image_size",
+      "value": "72"
+    },
+    {
+      "name": "Font_creation_dialog_stop_service_text_height",
+      "value": "42"
+    },
+    {
+      "name": "Font_creation_dialog_button_blank_height",
+      "value": "24"
+    },
+    {
+      "name": "Dialog_max_width",
+      "value": "400"
+    },
+    {
+      "name": "length_24",
+      "value": "24"
+    }
+  ]
+}

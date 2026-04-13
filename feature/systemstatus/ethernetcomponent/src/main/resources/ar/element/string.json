@@ -1,0 +1,18 @@
+{
+    "string":[
+        {
+            "name":"accessibility_ethernet_connected",
+            "value":"تم الاتصال بشبكة الإيثرنت",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_ethernet_disconnected",
+            "value":"تم قطع الاتصال بشبكة الإيثرنت",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

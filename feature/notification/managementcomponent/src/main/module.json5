@@ -1,0 +1,10 @@
+{
+  "module": {
+    "name": "managementcomponent",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ]
+  }
+}

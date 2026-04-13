@@ -1,0 +1,96 @@
+{
+  "color": [
+    {
+      "name": "Control_center_icon_default_color",
+      "value": "#FF000000"
+    },
+    {
+      "name": "Control_center_icon_on_bg_color",
+      "value": "#FF0A59F7"
+    },
+    {
+      "name": "Control_center_wifiBlue_icon_default_bg_color",
+      "value": "#FF000000"
+    },
+    {
+      "name": "Control_center_wifiBlue_icon_on_bg_color",
+      "value": "#0A59F7"
+    },
+    {
+      "name": "Control_center_network_icon_on_color",
+      "value": "#FFFFFF"
+    },
+    {
+      "name": "Control_center_long_button_font_default_color",
+      "value": "#FF000000"
+    },
+    {
+      "name": "Control_center_long_button_font_default_color_dark",
+      "value": "#FFFFFFFF"
+    },
+    {
+      "name": "Control_center_long_button_font_on_color",
+      "value": "#FF000000"
+    },
+    {
+      "name": "Control_center_icon_shadow_color",
+      "value": "#19000000"
+    },
+    {
+      "name": "Control_center_button_font_color",
+      "value": "#FF000000"
+    },
+    {
+      "name": "Control_center_blue_boarder_color",
+      "value": "#1AFFFFFF"
+    },
+    {
+      "name":"Control_center_white_boarder_color",
+      "value":"#33FAFAFA"
+    },
+    {
+      "name": "device_icon_bg_color",
+      "value": "#19FFFFFF"
+    },
+    {
+      "name": "Control_center_icon_on_color",
+      "value": "#FFFFFF"
+    },
+    {
+      "name": "Control_center_brightness_block_color",
+      "value": "#FFFAFAFA"
+    },
+    {
+      "name": "Control_center_icon_default_bg_color",
+      "value": "#FFFAFAFA"
+    },
+    {
+      "name": "control_center_header_button_color",
+      "value": "#18181A"
+    },
+    {
+      "name": "Control_center_brightness_bg_color",
+      "value": "#FF000000"
+    },
+    {
+      "name": "Control_center_long_button_font_on_color_dark",
+      "value": "#FFFFFFFF"
+    },
+    {
+      "name": "Control_center_brightness_subpage_bg_color",
+      "value": "#FF000000"
+    },
+    {
+      "name": "Control_center_brightness_subpage_block_color",
+      "value": "#FFFAFAFA"
+    },
+    {
+      "name": "Control_center_brightness_subpage_title_color",
+      "value": "#FF000000"
+    },
+    {
+      "name": "Control_center_brightness_subpage_settings_color",
+      "value": "#0A59F7"
+    }
+  ]
+}

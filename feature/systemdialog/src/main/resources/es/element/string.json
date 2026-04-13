@@ -1,0 +1,144 @@
+{
+    "string":[
+        {
+            "name":"off_find_alert_dialog_message",
+            "value":"Todavía se puede encontrar usando Buscar dispositivo. Si deshabilitas Buscar dispositivo ahora, se volverá a habilitar la próxima vez que se encienda el dispositivo.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"off_find_no_action_confirm",
+            "value":"Aceptar",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"off_find_checkbox",
+            "value":"Mantener la función Buscar dispositivo habilitada después de apagar",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"off_find_alert_dialog_title",
+            "value":"Este dispositivo seguirá localizable incluso tras apagarlo.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"off_find_disable_confirm",
+            "value":"Deshabilitar Buscar dispositivo",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"thermal_aware_toast",
+            "value":"Abre el teléfono para una mejor experiencia.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Poweroff_Button_Click_Reboot",
+            "value":"Pulsa para reiniciar",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"shutdown_dialog_title",
+            "value":"Nota",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"power_schedule_switch_reminder",
+            "value":"Encendido según lo programado (%s)",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Poweroff_Button_Reboot",
+            "value":"Reiniciar",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"poweroff_tips",
+            "value":"Mantén pulsados los botones de encendido/apagado y de disminución del volumen durante %d segundos como mínimo para forzar el reinicio",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Poweroff_Button_Click_Shutdown",
+            "value":"Pulsa para apagar",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"battery_emergency_dialog_content",
+            "value":"Batería extremadamente baja. Se activará el modo de reserva de energía en %d segundos.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"shutdown_dialog_content_new",
+            "value":"La batería está a punto de agotarse. Se apagará dentro de %d segundos.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Poweroff_Button_Shutdown",
+            "value":"Apagar",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"poweroff_fold_tips",
+            "value":"Mantén pulsados los botones de encendido/apagado y de disminución del volumen durante %d segundos como mínimo para forzar el reinicio",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"power_schedule_switch_toast",
+            "value":"El dispositivo no se volverá a encender automáticamente.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"accessibility_power_off",
+            "value":"Apagar",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_reboot",
+            "value":"Reiniciar",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_back",
+            "value":"Salir de pantalla de apagado",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

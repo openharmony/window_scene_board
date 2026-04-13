@@ -1,0 +1,10 @@
+{
+  "module": {
+    "name": "earphonecomponent",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ]
+  }
+}
