@@ -45,6 +45,18 @@ scene_board
 └─staticcommon        # common layer
 ```
 
+## 编译
+`SceneBoard` 是窗口子系统的部件之一，有以下两种方式进行编译：
+1. 仅编译`SceneBoard`:
+```
+./build.sh --product-name {product_name} --build-target SceneBoard --ccache 
+```
+
+2. 编译全部系统组件：
+```
+./build.sh --product-name {product_name} --ccache
+```
+
 ## 约束
 - 语言版本
     - ArkTS

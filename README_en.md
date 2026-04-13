@@ -46,6 +46,17 @@ scene_board
 └─staticcommon        # common layer
 ```
 
+## Build
+`SceneBoard` is a component of window system. There are two optional ways to build:
+1. only build `SceneBoard` component:
+```
+./build.sh --product-name {product_name} --build-target SceneBoard --ccache 
+```
+
+2. build product：
+```
+./build.sh --product-name {product_name} --ccache
+```
 
 ## Constraints
 - language
