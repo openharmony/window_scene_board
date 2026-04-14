@@ -1,0 +1,24 @@
+{
+  "color": [
+    {
+      "name":"transparent",
+      "value":"#00000000"
+    },
+    {
+      "name": "menu_text_color_dark",
+      "value": "#e5ffffff"
+    },
+    {
+      "name": "calendar_font_week_color",
+      "value": "#FFFFFFFF"
+    },
+    {
+      "name": "calendar_font_date_color",
+      "value": "#FF000000"
+    },
+    {
+      "name": "media_control_default_img_bgc",
+      "value": "#0C000000"
+    }
+  ]
+}

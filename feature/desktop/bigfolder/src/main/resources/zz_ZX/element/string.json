@@ -1,0 +1,88 @@
+{
+    "string":[
+        {
+            "name":"folder_add",
+            "value":"[TS_952475]_Add"
+        },
+        {
+            "name":"confirm_dialog",
+            "value":"[TS_952477]_OK"
+        },
+        {
+            "name":"d_app_dialog_cancel",
+            "value":"[TS_955108]_Ignore"
+        },
+        {
+            "name":"d_app_dialog_confirm",
+            "value":"[TS_955107]_Update now"
+        },
+        {
+            "name":"d_app_dialog_title",
+            "value":"[TS_961029]_New version available"
+        },
+        {
+            "name":"d_app_dialog_contents",
+            "value":"[TS_961275]_Update your app for an all-new experience. Please note that some app data may be lost when switching versions."
+        },
+        {
+            "name":"d_app_dialog_text",
+            "value":"[TS_977673]_%s is now available for OpenHarmony."
+        },
+        {
+            "name":"folder_items_limit_toast",
+            "value":"[TS_968029]_Folder is full."
+        },
+        {
+            "name":"uninstall_d_app_dialog_title",
+            "value":"[TS_983069]_Newer version installed"
+        },
+        {
+            "name":"uninstall_d_app_dialog_content",
+            "value":"[TS_983070]_You've already installed the OpenHarmony version of %s on this device. Uninstall the old version?"
+        },
+        {
+            "name":"open_harmony_app_dialog_content",
+            "value":"[TS_1094694]_You have the OpenHarmony version of %s on your device."
+        },
+        {
+            "name":"d_app_dialog_open",
+            "value":"[TS_1094695]_Open OpenHarmony version"
+        },
+        {
+            "name":"d_app_unavailable_dialog_title",
+            "value":"[TS_1000192]_App unavailable"
+        },
+        {
+            "name":"d_app_unavailable_dialog_content",
+            "value":"[TS_1000190]_To use this app, first download %s from AppGallery."
+        },
+        {
+            "name":"d_app_unavailable_dialog_know",
+            "value":"[TS_1000191]_OK"
+        },
+        {
+            "name":"d_app_pause_download_dialog_content",
+            "value":"[TS_1033968]_Download has been paused for %s. Resume?"
+        },
+        {
+            "name":"d_app_wait_download_dialog_content",
+            "value":"[TS_1033969]_%s is in the download queue. Do you want to prioritize this download?"
+        },
+        {
+            "name":"d_app_installing_dialog_content",
+            "value":"[TS_1033967]_%s is being installed. Please wait."
+        },
+        {
+            "name":"sheet_title_similar",
+            "value":"[TS_1080207]_Group similar apps"
+        },
+        {
+            "name":"sheet_sub_title_similar",
+            "value":"[TS_1082477]_Choose more apps to add to this folder."
+        },
+        {
+            "name":"sheet_title_recommended",
+            "value":"[TS_1080206]_Suggested apps"
+        }
+    ]
+}

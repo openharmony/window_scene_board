@@ -1,0 +1,18 @@
+{
+  "module": {
+    "name": "liveview",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ],
+    "requestPermissions": [
+      {
+        "name": "ohos.permission.RUNNING_STATE_OBSERVER"
+      },
+      {
+        "name": "ohos.permission.GET_RUNNING_INFO"
+      }
+    ]
+  }
+}

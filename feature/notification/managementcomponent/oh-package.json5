@@ -1,0 +1,14 @@
+{
+  "name": "@ohos/managementcomponent",
+  "description": "a npm package which contains managementcomponent function",
+  "version": "1.0.0",
+  "license": "ISC",
+  "types": "",
+  "main": "index.ets",
+  "dependencies": {
+    "@ohos/basicutils": "file:../../../staticcommon/basecommon/basicutils",
+    "@ohos/systemuicommon": "file:../../../staticcommon/systemuicommon",
+    "@ohos/frameworkwrapper": "file:../../../staticcommon/basecommon/frameworkwrapper",
+    "@ohos/frameworkpinyin": "file:../../../staticcommon/basecommon/frameworkpinyin",
+  }
+}

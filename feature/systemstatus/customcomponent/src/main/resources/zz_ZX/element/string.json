@@ -1,0 +1,16 @@
+{
+    "string":[
+        {
+            "name":"now_string_shortest",
+            "value":"[TS_935235]_Just now"
+        },
+        {
+            "name":"date_time_view_yesterday",
+            "value":"[TS_935232]_Yesterday"
+        },
+        {
+            "name":"accessibility_quick_settings_alarm_set",
+            "value":"[TS_1033960]_Alarm set"
+        }
+    ]
+}

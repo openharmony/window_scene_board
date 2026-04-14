@@ -1,0 +1,16 @@
+{
+  "float": [
+    {
+      "name": "status_bar_nfc_width",
+      "value": "14vp"
+    },
+    {
+      "name": "status_bar_nfc_height",
+      "value": "16vp"
+    },
+    {
+      "name": "icon_component_opacity",
+      "value": "1"
+    }
+  ]
+}

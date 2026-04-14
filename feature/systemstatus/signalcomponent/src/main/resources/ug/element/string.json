@@ -1,0 +1,165 @@
+{
+    "string":[
+        {
+            "name":"no_card_no_service",
+            "value":"\u200fSIM كارتا يوق | مۇلازىمەت يوق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"no_card_sos_only",
+            "value":"\u200fSIM كارتا يوق | پەقەت جىددىي تېلېفون ئىشلەيدۇ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sos_only",
+            "value":"پەقەت جىددىي تېلېفون ئىشلەيدۇ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"air_plane_mode",
+            "value":"ئۇچۇش ھالىتى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_airplane_mode",
+            "value":"ئۇچۇش ھالىتى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_satellite_mode",
+            "value":"سۈنئىي ھەمراھ تېلېفون",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_empty_signal",
+            "value":"سىگنال يوق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_sim1",
+            "value":"\u200fSIM %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_sim2",
+            "value":"\u200fSIM %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_no_service",
+            "value":"مۇلازىمەت يوق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_no_sim",
+            "value":"\u200fSIM كارتا يوق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_skytone",
+            "value":"دۇنيا كېزەر",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_no_signal_roaming_1_lan",
+            "value":"سىگنال بىر بالداق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_no_signal_roaming_2_lan",
+            "value":"سىگنال ئىككى بالداق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_no_signal_roaming_3_lan",
+            "value":"سىگنال ئۈچ بالداق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_no_signal_roaming_4_lan",
+            "value":"سىگنال تۆت بالداق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_no_signal_roaming_5_lan",
+            "value":"سىگنال تولۇق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"china_unicom",
+            "value":"جۇڭگو بىرلەشمە خەۋەرلىشىشى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"china_telecom",
+            "value":"جۇڭگو تېلېگرافى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"china_mobile",
+            "value":"جۇڭگو كۆچمە خەۋەرلىشىشى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"net_null",
+            "value":"مۇلازىمەت يوق",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"china_broadnet",
+            "value":"جۇڭگو رادىيو-تېلېۋىزىيە تورى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_distributed_mode",
+            "value":"ئورتاق ئالاقە",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

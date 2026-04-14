@@ -1,0 +1,14 @@
+{
+  "name": "@ohos/superprivacycomponent",
+  "description": "a npm package which contains superprivacycomponent function",
+  "version": "1.0.0",
+  "dependencies": {
+    "@ohos/basicutils": "file:../../../staticcommon/basecommon/basicutils",
+    "@ohos/commonconstants": "file:../../../staticcommon/basecommon/commonconstants",
+    "@ohos/frameworkwrapper": "file:../../../staticcommon/basecommon/frameworkwrapper",
+    "@ohos/systemuicommon": "file:../../../staticcommon/systemuicommon",
+    "@ohos/screenlockcommon": "file:../../../staticcommon/screenlockcommon",
+    "@ohos/windowscene": "file:../../../staticcommon/basecommon/windowscene",
+    "@ohos/controlcentercommon": "file:../../../staticcommon/controlcentercommon"
+  }
+}

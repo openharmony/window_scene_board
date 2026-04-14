@@ -1,0 +1,12 @@
+{
+    "string":[
+        {
+            "name":"control_center_complex_toggle_nfc_mode_title",
+            "value":"[TS_803114]_NFC"
+        },
+        {
+            "name":"accessibility_status_bar_nfc_open",
+            "value":"[TS_928806]_NFC on"
+        }
+    ]
+}

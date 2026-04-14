@@ -1,0 +1,80 @@
+{
+    "plural":[
+        {
+            "name":"cc_accessibility_str_timer_str_hour",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"%d hour",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"%d hours",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"cc_accessibility_str_timer_str_minute",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"%d minute",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"%d minutes",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"cc_accessibility_str_timer_str_second",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"%d second",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"%d seconds",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"ntf_pin_top_dialog_reach_limit_content",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"Up to %d app can be pinned to the top. Remove apps you no longer want to pin.",
+                    "attr":{
+                        "priority":"LT"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"Up to %d apps can be pinned to the top. Remove apps you no longer want to pin.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

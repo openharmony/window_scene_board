@@ -1,0 +1,165 @@
+{
+    "string":[
+        {
+            "name":"china_unicom",
+            "value":"China Unicom",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"china_telecom",
+            "value":"China Telecom",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sos_only",
+            "value":"SOS 전용",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_skytone",
+            "value":"SkyTone",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"china_mobile",
+            "value":"China Mobile",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"net_null",
+            "value":"서비스 불가",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"air_plane_mode",
+            "value":"비행기 모드",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"no_card_no_service",
+            "value":"SIM 없음 | 서비스 없음",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"no_card_sos_only",
+            "value":"SIM 없음 | SOS 전용",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_distributed_mode",
+            "value":"커뮤니케이션 공유",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_satellite_mode",
+            "value":"위성 통신",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"china_broadnet",
+            "value":"China Broadnet",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_no_sim",
+            "value":"SIM 없음",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_no_signal_roaming_1_lan",
+            "value":"셀룰러 신호, 막대 1개",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_no_signal_roaming_2_lan",
+            "value":"셀룰러 신호, 막대 2개",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_no_signal_roaming_3_lan",
+            "value":"셀룰러 신호, 막대 3개",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_airplane_mode",
+            "value":"비행기 탑승 모드",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_sim2",
+            "value":"SIM %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_sim1",
+            "value":"SIM %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_empty_signal",
+            "value":"신호 없음",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_no_signal_roaming_4_lan",
+            "value":"셀룰러 신호, 막대 4개",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_no_signal_roaming_5_lan",
+            "value":"셀룰러 신호, 꽉 참",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_no_service",
+            "value":"서비스 없음",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

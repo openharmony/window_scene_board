@@ -1,0 +1,18 @@
+{
+    "string":[
+        {
+            "name":"control_center_complex_toggle_location_title",
+            "value":"གནས་ཡུལ།",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_location",
+            "value":"ཉེར་སྤྱོད་ཀྱིས་ནུས་ལྡན་གནས་ཡུལ་གྱི་ཆ་འཕྲིན་འཐོབ་རྒྱུའི་རེ་ཞུ་བྱེད།",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

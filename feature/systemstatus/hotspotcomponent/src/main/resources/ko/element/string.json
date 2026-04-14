@@ -1,0 +1,25 @@
+{
+    "string":[
+        {
+            "name":"control_center_complex_toggle_hotspot_title",
+            "value":"개인용 핫스팟",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_hotspot_no_device",
+            "value":"장치 없음",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"statusbar_talkbackhotspot01",
+            "value":"핫스팟 실행됨",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

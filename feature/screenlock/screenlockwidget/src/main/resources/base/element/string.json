@@ -1,0 +1,403 @@
+{
+    "string":[
+        {
+            "name":"show_lock_screen_signature",
+            "value":"Lock screen signature",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"click_input_text",
+            "value":"Enter text",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"widgets_two_click_accessible",
+            "value":"Double-tap to activate",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"unchecked",
+            "value":"Not selected",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"checked",
+            "value":"Selected",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"service_form_area_accessible",
+            "value":"Zone for widgets",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"theme_edit_cancel",
+            "value":"Cancel",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"psd_back",
+            "value":"Back",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"theme_edit_apply",
+            "value":"Apply",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"clock_style",
+            "value":"Clock style %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"clock_font_style",
+            "value":"Font style %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"clock_font_color",
+            "value":"Font color %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation",
+            "value":"Create a font",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"more_edits",
+            "value":"More edits",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Double_click_and_hold_accessibility",
+            "value":"Double-tap and hold to open options menu",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"EnterpriseDeviceDefaultText",
+            "value":"This device is managed by your organization",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"EnterpriseDeviceText",
+            "value":"This device is managed by %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"service_form_delete_button_accessible",
+            "value":"Remove, button",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"layout_tab_default",
+            "value":"Digital clock",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"layout_tab_art",
+            "value":"Personalized poster",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"art_signature_style",
+            "value":"Poster style %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"art_signature_input_title",
+            "value":"Poster text",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"art_signature_input_error_len",
+            "value":"Character limit reached",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"art_signature_input_error_char",
+            "value":"This symbol is not supported currently.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"art_signature_input_error_language",
+            "value":"Chinese characters or letters only",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"art_signature_try_combined_characters",
+            "value":"Select combined Chinese characters",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"art_signature_displayed_as_combined_character",
+            "value":"Combine into one character",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"art_signature_combined_character",
+            "value":"Combined Chinese characters",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"art_signature_content_creation_failed",
+            "value":"Unable to create font.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"art_signature_text_button_tip",
+            "value":"Information",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"art_signature_input_tip",
+            "value":"Enter letters or up to %d Chinese characters.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"artfont_creation_no_network",
+            "value":"No Internet connection. Check your network settings.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"artfont_creation_reach_limit",
+            "value":"Font limit reached",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"artfont_creation_delete_notice",
+            "value":"Touch & hold a font to remove it and create a new one.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"artfont_creation_confirm",
+            "value":"OK",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_font_cannot_delete",
+            "value":"Fonts can't be deleted while in use.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"artfont_creation_ocr_err",
+            "value":"Identification unsuccessful. Please try again.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"artfont_creation_statement_agree",
+            "value":"Agree",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"artfont_AI_creation",
+            "value":"AI create",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"artfont_long_press_delete",
+            "value":"Touch & hold to edit or remove.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"artfont_delete_confirm",
+            "value":"Remove this font?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"artfont_delete_description",
+            "value":"If your personalized signature is using this font, it will revert to the default font.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"artfont_delete_remove_button",
+            "value":"Remove",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"AIGC_server_offline_title",
+            "value":"Font creation service is offline",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"AIGC_server_offline_description",
+            "value":"This feature is temporarily unavailable while we make some improvements.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screenlock_font_creation_service",
+            "value":"Lock screen font creation service",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_one",
+            "value":"This service uses cloud-based AI to generate fonts based on text contained in images. Generated fonts can be applied to your lock screen clock and signature.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_four",
+            "value":"Statement About Lock Screen Font Creation Service and Privacy",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_five",
+            "value":"Terms & conditions",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_three",
+            "value":"This service requires an Internet connection and needs to read and upload/transfer images to provide lock screen font creation features. We only collect personal information relevant to the features you use. For more information, refer to the %1$s and %2$s.\nPlease carefully read the above content. By tapping Agree, you agree to let us provide you with this service.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"card_deleted",
+            "value":"%s widget has been deleted",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"art_signature_text_tip_content",
+            "value":"Works best with %d Chinese characters or less.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"layout_tab_artsign",
+            "value":"Personalized signature",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"art_signature",
+            "value":"Personalized signature",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"please_input_text",
+            "value":"Enter text",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"switch_combined_characters_fonts_prompt",
+            "value":"Font switching is not available for combo characters.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"unsupported_content",
+            "value": "Contains characters that aren't supported",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

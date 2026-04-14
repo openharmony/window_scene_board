@@ -1,0 +1,42 @@
+{
+    "plural":[
+        {
+            "name":"stack_request_focus_front_text",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"Pila de widgets, %d widgets en total",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"one",
+                    "value":"Pila de widgets, %d widget en total",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"expand_stack_request_focus_after_text",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"%d elemento en total. Hay opciones disponibles. Pulsa dos veces para minimizar la pila y coloca este widget arriba. Pulsa dos veces y mantén pulsado para arrastrar el widget hacia arriba y abajo",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"%d elementos en total. Hay opciones disponibles. Pulsa dos veces para minimizar la pila y coloca este widget arriba. Pulsa dos veces y mantén pulsado para arrastrar el widget hacia arriba y abajo",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

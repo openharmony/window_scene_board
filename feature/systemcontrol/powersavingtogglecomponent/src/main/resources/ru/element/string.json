@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"control_center_complex_toggle_powersaving_title",
+            "value":"Экономный режим",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

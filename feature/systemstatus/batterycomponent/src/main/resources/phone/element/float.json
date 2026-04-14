@@ -1,0 +1,40 @@
+{
+  "float": [
+    {
+      "name": "battery_component_gap",
+      "value": "0vp"
+    },
+    {
+      "name": "battery_component_pic_body_height",
+      "value": "11vp"
+    },
+    {
+      "name": "battery_component_pic_body_width",
+      "value": "18.5vp"
+    },
+    {
+      "name": "battery_image_width",
+      "value": "28.75vp"
+    },
+    {
+      "name": "battery_image_height",
+      "value": "16vp"
+    },
+    {
+      "name": "battery_charging_image_width",
+      "value": "7.5vp"
+    },
+    {
+      "name": "battery_charging_image_height",
+      "value": "16vp"
+    },
+    {
+      "name": "battery_power_save_image_width",
+      "value": "8vp"
+    },
+    {
+      "name": "battery_power_save_image_height",
+      "value": "16vp"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+    "string":[
+        {
+            "name":"USBRemoved",
+            "value":"བདེ་འཇགས་ངང་སྤོ་འབུད།",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"usb_hover",
+            "value":"ཕྱི་མཐུད་ཉར་གསོག",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

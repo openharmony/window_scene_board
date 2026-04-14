@@ -1,0 +1,18 @@
+{
+    "string":[
+        {
+            "name":"control_center_complex_toggle_flashlight_title",
+            "value":"قولچىراق",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"flashlight_on_ntf_content",
+            "value":"قولچىراق ئوچۇق",
+            "attr":{
+                "priority":"LT"
+            }
+        }
+    ]
+}

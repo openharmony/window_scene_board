@@ -1,0 +1,508 @@
+{
+    "string":[
+        {
+            "name":"banners",
+            "value":"Tiras",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_style",
+            "value":"Estilo de notificación",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"clear",
+            "value":"Borrar",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_wake_screen_switch_text",
+            "value":"Activar la pantalla cuando se reciben notificaciones.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_lock_screen_switch_text",
+            "value":"No mostrar el contenido de las notificaciones cuando el teléfono esté bloqueado.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_and_status_bar_title",
+            "value":"Notificaciones y barra de estado",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_lock_screen_switch_title_new",
+            "value":"Ocultar contenido de notificaciones",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"status_bar_title",
+            "value":"Barra de estado",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_wake_screen_switch_title",
+            "value":"Activar la pantalla",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"more_ntf_setting",
+            "value":"Más ajustes",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"search_history",
+            "value":"Historial de búsqueda",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"no_banners",
+            "value":"Ninguno",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntfSoundModeOnlyVibration",
+            "value":"Vibrar",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"lock_screen_notification",
+            "value":"Pantalla de bloqueo",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"badges",
+            "value":"Globos",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"search_app",
+            "value":"Buscar aplicaciones",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notifications",
+            "value":"Notificaciones",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_not_banner",
+            "value":"Mostrar tiras en la pantalla principal",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"smart_reminder_learn_more",
+            "value":"Más información",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"smart_digest",
+            "value":"Agrupación inteligente",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntfSoundModeSilence",
+            "value":"Silencioso",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remind_banner",
+            "value":"Tiras",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"lock_screen_notification_style",
+            "value":"Mostrar como lista en la pantalla de bloqueo",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"entry_desc",
+            "value":"Notificaciones",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"set_face",
+            "value":"Configurar",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"hide_banner_content_desc",
+            "value":"Solo es aplicable a aplicaciones que tienen los ajustes de notificación del sistema.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"unified_notification_label",
+            "value":"Organización",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remind_disable",
+            "value":"Desactivadas",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remind_sound",
+            "value":"Sonido",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_pin_on_top",
+            "value":"Mostrar siempre las notificaciones de esta aplicación en la parte superior del Panel de notificaciones.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"hide_banner_content_title",
+            "value":"Mostrar contenido en tira",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"no_matching_results",
+            "value":"No hay resultados",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"splitter_format_for_4",
+            "value":"%1$s, %2$s, %3$s, %4$s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"splitter_format_for_2",
+            "value":"%1$s, %2$s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"splitter_format_for_3",
+            "value":"%1$s, %2$s, %3$s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"switch_screen_lock_ntf_style_forbidden",
+            "value":"Las notificaciones siempre se expanden al utilizar el desbloqueo con huella digital.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remind_vibration",
+            "value":"Vibrar",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"smart_reminder_tips_main",
+            "value":"Cuando esta opción esté activada, el contenido de las tiras solo se te mostrará a ti y las alertas de notificaciones serán menos intensas cuando estés mirando la pantalla. Esta función utiliza el reconocimiento facial. %s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"smart_reminder_tips_no_weak",
+            "value":"Cuando esta opción esté activada, el contenido de las tiras solo se te mostrará a ti. Esta función utiliza el reconocimiento facial.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"unified_notification_intro",
+            "value":"Agrupa las notificaciones de diferentes aplicaciones cuando estén relacionadas.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"show_tip_live_view_preview_when_screen_lock",
+            "value":"Activa esta opción para una mejor experiencia con Info actualizada.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remind_lock_screen",
+            "value":"Pantalla de bloqueo",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pad_pure_show_description",
+            "value":"Solo mostrar la hora, la red WLAN y la batería en la barra de estado.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntfSoundModeSettingTitle",
+            "value":"Tono de notificación",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remind_only_notification_center",
+            "value":"Solo en Panel de notificaciones",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"hide_banner_content_app_follow_system",
+            "value":"Como el sistema",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"hiding_banner_content_txt",
+            "value":"Cuando aparece una notificación con tira, su contenido no se mostrará si otras personas miran la pantalla. Esta función utiliza el reconocimiento facial.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"hide_banner_content_app_never",
+            "value":"No mostrar",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntfSoundModeOnlyRing",
+            "value":"Reproducir sonido",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"hide_banner_content_app_always",
+            "value":"Mostrar siempre",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"live_view_title",
+            "value":"Info actualizada",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"switch_badges_forbidden",
+            "value":"Primero, habilita “Mostrar globos” en Ajustes > Notificaciones y barra de estado > Más ajustes.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pure_show_description",
+            "value":"Muestra solo la hora, la red WLAN, la señal móvil y la batería en la barra de estado.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remind_type",
+            "value":"Tipo",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_switch_alarm_clock",
+            "value":"Alarma",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_switch_vpn",
+            "value":"VPN",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_switch_nearlink",
+            "value":"Conexión NearLink y Bluetooth",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_switch_icon_visible",
+            "value":"Gestionar iconos",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"enable_switch_ring_mode_silent",
+            "value":"Modo Silencioso",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_switch_ring_mode",
+            "value":"Silencioso/Vibración",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"enable_switch_head_phones",
+            "value":"Auriculares con cable",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_switch_bluetooth",
+            "value":"Conexión Bluetooth",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_switch_net_speed",
+            "value":"Velocidad de Internet en tiempo real",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_switch_nfc",
+            "value":"NFC",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_switch_notification_icon",
+            "value":"Icono de notificaciones",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"psd_back_accessible",
+            "value":"Volver, botón",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"lock_screen_notification_fold",
+            "value":"Notificación en pantalla de bloqueo, pantalla minimizada",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"silent_notification",
+            "value":"Notificaciones sutiles",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"silent_notification_description",
+            "value":"Silenciar notificaciones de esta aplicación y solo mostrarlas en el panel de notificaciones.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"lock_screen_notification_expand",
+            "value":"Notificación en pantalla de bloqueo, pantalla expandida",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"enable_switch_explain",
+            "value":"Los iconos de estado se muestran en el Panel de control y en el panel de notificaciones, incluso si están deseleccionados aquí.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"already_clear",
+            "value":"Se ha borrado",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

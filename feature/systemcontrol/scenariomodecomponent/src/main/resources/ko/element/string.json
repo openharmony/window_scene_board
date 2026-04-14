@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"control_center_complex_toggle_scenario_mode_title",
+            "value":"포커스",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

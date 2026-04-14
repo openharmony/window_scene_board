@@ -1,0 +1,42 @@
+{
+    "plural":[
+        {
+            "name":"stack_request_focus_front_text",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"Pile de widgets, %d widgets au total",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"one",
+                    "value":"Pile de widgets, %d widget au total",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"expand_stack_request_focus_after_text",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"%d élément au total. Plusieurs options sont disponibles. Toucher deux fois pour réduire la pile et placer ce widget en haut. Toucher deux fois et maintenir pour déplacer le widget vers le haut ou vers le bas",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"%d éléments au total. Plusieurs options sont disponibles. Toucher deux fois pour réduire la pile et placer ce widget en haut. Toucher deux fois et maintenir pour déplacer le widget vers le haut ou vers le bas",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

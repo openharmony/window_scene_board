@@ -1,0 +1,71 @@
+{
+    "string":[
+        {
+            "name":"module_desc",
+            "value":"module description"
+        },
+        {
+            "name":"control_center_eye_comfort_toggle_title",
+            "value":"Eye comfort",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"control_center_eye_comfort_smart_open",
+            "value":"Auto-enable",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"control_center_eye_comfort_always_on",
+            "value":"Enable all day",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"control_center_eye_comfort_scheduled_open",
+            "value":"Scheduled",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"control_center_eye_comfort_smart_open_subtitle_default",
+            "value":"Dynamically adjusts blue light filter",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"control_center_eye_comfort_smart_open_subtitle_active",
+            "value":"Eye fatigue detected. Filtering blue light.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"control_center_eye_comfort_smart_open_subtitle_normal",
+            "value":"No eye fatigue detected",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"control_center_eye_comfort_scheduled_open_subtitle_sunset",
+            "value":"Sunset to sunrise",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"control_center_eye_comfort_scheduled_next_day",
+            "value":"%1$s–%2$s (Next day)",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

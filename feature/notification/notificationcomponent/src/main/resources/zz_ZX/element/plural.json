@@ -1,0 +1,62 @@
+{
+    "plural":[
+        {
+            "name":"ntf_hide_content_count",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"[TS_817689]_%d notification"
+                },
+                {
+                    "quantity":"other",
+                    "value":"[TS_817678]_%d notifications"
+                },
+                {
+                    "quantity":"zero",
+                    "value":"[TS_817672]_%d notifications"
+                },
+                {
+                    "quantity":"few",
+                    "value":"[TS_817667]_%d notifications"
+                },
+                {
+                    "quantity":"many",
+                    "value":"[TS_817675]_%d notifications"
+                },
+                {
+                    "quantity":"two",
+                    "value":"[TS_817679]_%d notifications"
+                }
+            ]
+        },
+        {
+            "name":"live_hide_content",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"[TS_982107]_%d live view"
+                },
+                {
+                    "quantity":"other",
+                    "value":"[TS_982112]_%d live views"
+                },
+                {
+                    "quantity":"zero",
+                    "value":"[TS_982110]_%d live views"
+                },
+                {
+                    "quantity":"few",
+                    "value":"[TS_982108]_%d live views"
+                },
+                {
+                    "quantity":"many",
+                    "value":"[TS_982109]_%d live views"
+                },
+                {
+                    "quantity":"two",
+                    "value":"[TS_982111]_%d live views"
+                }
+            ]
+        }
+    ]
+}

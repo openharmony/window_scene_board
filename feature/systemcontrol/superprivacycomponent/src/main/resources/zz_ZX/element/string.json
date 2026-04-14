@@ -1,0 +1,44 @@
+{
+    "string":[
+        {
+            "name":"super_privacy_toggle",
+            "value":"[TS_921170]_Super Privacy"
+        },
+        {
+            "name":"super_privacy_toggle_fold_protect",
+            "value":"[TS_989094]_Turn on when folded"
+        },
+        {
+            "name":"super_privacy_toggle_always_protect",
+            "value":"[TS_989093]_Always on"
+        },
+        {
+            "name":"edm_super_privacy_content_mic",
+            "value":"[TS_1104344]_Super Privacy mode is unavailable because the Microphone switch is being managed by your organization."
+        },
+        {
+            "name":"edm_super_privacy_content_cam_loc",
+            "value":"[TS_1104347]_Super Privacy mode is unavailable because the Camera and Location Services switches are being managed by your organization."
+        },
+        {
+            "name":"edm_super_privacy_content_mic_loc",
+            "value":"[TS_1104346]_Super Privacy mode is unavailable because the Microphone and Location Services switches are being managed by your organization."
+        },
+        {
+            "name":"edm_super_privacy_content_cam",
+            "value":"[TS_1104343]_Super Privacy mode is unavailable because the Camera switch is being managed by your organization."
+        },
+        {
+            "name":"edm_super_privacy_content_loc",
+            "value":"[TS_1104348]_Super Privacy mode is unavailable because the Location Services switch is being managed by your organization."
+        },
+        {
+            "name":"edm_super_privacy_content_cam_mic",
+            "value":"[TS_1104345]_Super Privacy mode is unavailable because the Camera and Microphone switches are being managed by your organization."
+        },
+        {
+            "name":"edm_super_privacy_content_cam_mic_loc",
+            "value":"[TS_1104342]_Super Privacy mode is unavailable because the Camera, Microphone, and Location Services switches are being managed by your organization."
+        }
+    ]
+}

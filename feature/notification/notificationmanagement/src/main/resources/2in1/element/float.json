@@ -1,0 +1,92 @@
+{
+  "float": [
+    {
+      "name": "app_ntf_visual_remind_style_img_width",
+      "value": "160vp"
+    },
+    {
+      "name": "ntf_visual_reminder_view_text_margin_top",
+      "value": "16"
+    },
+    {
+      "name": "page_phrases_height",
+      "value": "40vp"
+    },
+    {
+      "name": "ntf_status_bar_search_bottom",
+      "value": "0vp"
+    },
+    {
+      "name": "title_text_margin_start",
+      "value": "24vp"
+    },
+    {
+      "name": "ntf_status_bar_search_item_padding",
+      "value": "24vp"
+    },
+    {
+      "name": "ntf_visual_reminder_view_text_margin_bottom",
+      "value": "4"
+    },
+    {
+      "name": "ntf_visual_reminder_top_padding",
+      "value": "32"
+    },
+    {
+      "name": "ntf_visual_reminder_view_text_font_size",
+      "value": "14"
+    },
+    {
+      "name": "ntf_visual_reminder_view_text_height",
+      "value": "19"
+    },
+    {
+      "name": "page_notice_and_status_bar_top_padding",
+      "value": "0vp"
+    },
+    {
+      "name": "ntf_status_bar_title_font_size",
+      "value": "20vp"
+    },
+    {
+      "name": "reminder_view_title_margin_top",
+      "value": "12vp"
+    },
+    {
+      "name": "label_toggle_view_height_single_line",
+      "value": "48"
+    },
+    {
+      "name": "label_toggle_view_padding",
+      "value": "0"
+    },
+    {
+      "name": "ntf_half_mode_view_padding_end",
+      "value": "0vp"
+    },
+    {
+      "name": "ntf_half_mode_padding_end",
+      "value": "0vp"
+    },
+    {
+      "name": "ntf_half_mode_border_radius",
+      "value": "16"
+    },
+    {
+      "name": "ntf_half_mode_view_padding_start",
+      "value": "24vp"
+    },
+    {
+      "name": "ntf_half_mode_view_margin_end",
+      "value": "24vp"
+    },
+    {
+      "name": "ntf_half_mode_view_margin_top",
+      "value": "16"
+    },
+    {
+      "name": "ntf_half_mode_view_margin_bottom",
+      "value": "24"
+    }
+  ]
+}

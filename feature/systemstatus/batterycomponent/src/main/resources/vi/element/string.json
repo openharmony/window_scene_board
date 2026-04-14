@@ -1,0 +1,88 @@
+{
+    "string":[
+        {
+            "name":"low_battery_ntf_title",
+            "value":"Pin yếu",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"low_battery_ntf_btn_text",
+            "value":"Bật Trình tiết kiệm pin",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"shutdown_dialog_title",
+            "value":"Lưu ý",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"battery_emergency_dialog_content",
+            "value":"Pin rất yếu. Chế độ tiết kiệm pin sẽ kích hoạt sau %d giây.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"shutdown_dialog_content",
+            "value":"Pin rất yếu. Thiết bị của bạn sắp tắt.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"shutdown_dialog_content_new",
+            "value":"Pin sắp hết. Tắt nguồn sau %d giây.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"low_battery_ntf_content",
+            "value":"Còn lại %s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"accessibility_battery_charge_double",
+            "value":"Đang sạc nhanh, pin đã được sạc %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_battery_supercharge",
+            "value":"SuperCharging, pin đã được sạc %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_battery_charge",
+            "value":"Đang sạc, pin đã được sạc %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_battery_power_saving",
+            "value":"Trình tiết kiệm pin",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_battery_level",
+            "value":"Mức pin, %s",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

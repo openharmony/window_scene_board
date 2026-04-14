@@ -1,0 +1,10 @@
+{
+  "module": {
+    "name": "systemuicommon",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ]
+  }
+}

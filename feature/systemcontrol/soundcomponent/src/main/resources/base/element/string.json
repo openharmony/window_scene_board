@@ -1,0 +1,130 @@
+{
+    "string":[
+        {
+            "name":"sound_title",
+            "value":"Audio settings",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"noise_reduction",
+            "value":"Noise canceling",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"base_none",
+            "value":"Off",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"spatial_audio_fixed",
+            "value":"Fixed",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"base_pass_through",
+            "value":"Awareness",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"base_noise_control",
+            "value":"Noise control",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"spatial_audio",
+            "value":"Spatial Audio",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"spatial_audio_follow",
+            "value":"Head tracked",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"toast_noise_control",
+            "value":"Put your earbuds in to use this feature.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"toast_voice_enhance",
+            "value":"Put your earbuds in to use this feature.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"HD_spatial_audio",
+            "value":"HD Spatial Audio",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"toast_wear_headphone",
+            "value":"Please put in both buds.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"toast_noise_control_amphora",
+            "value":"For noise canceling, wear both earbuds.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_volume",
+            "value":"Volume %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_change_volume_desc",
+            "value":"Volume bar, double-tap and hold, then slide left or right to adjust",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_change_vertical_volume_desc",
+            "value":"Volume bar, double tap and hold, then swipe up or down to adjust",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_change_volume",
+            "value":"Volume adjusted to %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"noise_on",
+            "value":"On",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

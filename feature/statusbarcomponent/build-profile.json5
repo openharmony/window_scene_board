@@ -1,0 +1,46 @@
+{
+  "apiType": "stageMode",
+  "buildOptionSet": [
+    {
+      "name": "release",
+      "arkOptions": {
+        "obfuscation": {
+          "ruleOptions": {
+            "enable": true,
+            "files": [
+              "./obfuscation-rules.txt"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "targets": [
+    {
+      "name": "ohosTest",
+      "resource": {
+        "directories": [
+          '../controlcentercomponent/src/main/resources',
+          '../systemcontrol/antipeepingcomponent/src/main/resources',
+          '../systemcontrol/brightnesscomponent/src/main/resources',
+          '../systemcontrol/eyecomfortcomponent/src/main/resources',
+          '../systemcontrol/focusmodecomponent/src/main/resources',
+          '../systemcontrol/hcastcomponent/src/main/resources',
+          '../systemcontrol/juvenilemodecomponent/src/main/resources',
+          '../systemcontrol/keymousesharecomponent/src/main/resources',
+          '../systemcontrol/meetingtogglecomponent/src/main/resources',
+          '../systemcontrol/musicservicetogglecomponent/src/main/resources',
+          '../systemcontrol/nearlinktogglecomponent/src/main/resources',
+          '../systemcontrol/powercomponent/src/main/resources',
+          '../systemcontrol/powersavingtogglecomponent/src/main/resources',
+          '../systemcontrol/scenariomodecomponent/src/main/resources',
+          '../systemcontrol/superhubtogglecomponent/src/main/resources',
+          '../systemstatus/autorotatecomponent/src/main/resources',
+          '../systemstatus/darkmodecomponent/src/main/resources',
+          '../systemstatus/mobiledatacomponent/src/main/resources',
+          '../systemstatus/flashlightcomponent/src/main/resources',
+        ]
+      }
+    }
+  ]
+}

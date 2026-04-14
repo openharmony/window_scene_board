@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px"
+     height="24px"
+     viewBox="0 0 24 24"
+     version="1.1"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>ic_Combined Shape</title>
+  <g
+      id="ic_Combined-Shape"
+      stroke="none"
+      stroke-width="1"
+      fill="none"
+      fill-rule="evenodd">
+
+
+    <path
+        d="M5.375,6.2501a1,1 0,0 0,-1 1v9.5a1,1 0,0 0,2 0v-9.5A1,1 0,0 0,5.375 6.2501ZM19.3979,6.6396a1.75,1.75 0,0 0,-2.385 -0.6609L9.0655,10.4773a1.75,1.75 0,0 0,0 3.0459L17.013,18.0216a1.75,1.75 0,0 0,2.612 -1.523L19.625,7.5016A1.75,1.75 0,0 0,19.3979 6.6396Z"
+        id="Combined-Shape"
+        fill="#000000"
+        fill-rule="nonzero"></path>
+  </g>
+
+</svg>

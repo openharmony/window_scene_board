@@ -1,0 +1,16 @@
+{
+  "float": [
+    {
+      "name": "status_bar_enterprise_space_icon_width",
+      "value": "20vp"
+    },
+    {
+      "name": "status_bar_enterprise_space_icon_height",
+      "value": "20vp"
+    },
+    {
+      "name": "status_bar_enterprise_space_icon_size",
+      "value": "20vp"
+    }
+  ]
+}

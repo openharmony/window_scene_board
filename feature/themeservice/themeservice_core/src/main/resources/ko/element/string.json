@@ -1,0 +1,18 @@
+{
+    "string":[
+        {
+            "name":"Desktop_individuation",
+            "value":"홈 화면 및 스타일",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"theme_title",
+            "value":"테마",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

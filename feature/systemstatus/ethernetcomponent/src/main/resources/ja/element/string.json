@@ -1,0 +1,18 @@
+{
+    "string":[
+        {
+            "name":"accessibility_ethernet_connected",
+            "value":"イーサネットに接続されています",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_ethernet_disconnected",
+            "value":"イーサネット接続が切断されました",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

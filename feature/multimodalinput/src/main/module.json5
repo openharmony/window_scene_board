@@ -1,0 +1,10 @@
+{
+  "module": {
+    "name": "multimodalinput",
+    "type": "har",
+    "description": "multimodalinput_module",
+    "deviceTypes": [
+      "default"
+    ]
+  }
+}

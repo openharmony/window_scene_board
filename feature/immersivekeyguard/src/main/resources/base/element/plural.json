@@ -1,0 +1,23 @@
+{
+    "plural":[
+        {
+            "name":"ntf_hide_content_tip",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"%d notification",
+                    "attr":{
+                        "priority":"LT"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"%d notifications",
+                    "attr":{
+                        "priority":"LT"
+                    }
+                }
+            ]
+        }
+    ]
+}

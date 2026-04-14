@@ -1,0 +1,95 @@
+{
+    "string":[
+        {
+            "name":"accessibility_str_two_finger_slide",
+            "value":"Desliza dos dedos hacia la izquierda o hacia la derecha para cambiar de pantalla",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"suggestion",
+            "value":"Sugerencias",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"form_center_notice_text",
+            "value":"Haz clic en los widgets o arrástralos para añadirlos a la pantalla principal",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_to_screen_lock",
+            "value":"Añadir a pantalla de bloqueo",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_theme_form_to_desktop_more",
+            "value":"Más widgets animados",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_form_to_intelligent",
+            "value":"Añadir a Assistant·TODAY",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"form_center_notice_button",
+            "value":"Aceptar",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"form_added",
+            "value":"Widget añadido.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"look_more_theme_form",
+            "value":"Más",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"splitter_format",
+            "value":"%1$s, %2$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_str_long_click_to_drag",
+            "value":"Pulsar dos veces y mantener pulsado para arrastrar",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"card_load_error",
+            "value":"Error al cargar widgets. Vuelve a intentarlo más tarde.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"onekeylock_shortcut",
+            "value":"Acceso directo a pantalla de bloqueo",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

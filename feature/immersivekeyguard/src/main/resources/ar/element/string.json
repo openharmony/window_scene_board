@@ -1,0 +1,64 @@
+{
+    "string":[
+        {
+            "name":"immersive_sys_no_auth_tips",
+            "value":"شغِّل خدمات الموقع للاستمتاع بالمزيد من الميزات.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"immersive_go_auth",
+            "value":"الإعدادات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"immersive_app_sys_no_auth_tips",
+            "value":"للاستمتاع بالمزيد من الميزات، امنح إذن الوصول إلى الموقع وتأكد من تشغيل خدمات الموقع.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"immersive_app_no_auth_tips",
+            "value":"امنح إذن الوصول إلى الموقع للاستمتاع بالمزيد من الميزات.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"immersive_card_tip_to_down",
+            "value":"طي، زر، انقر مرتين للتفعيل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"immersive_card_tip_to_up",
+            "value":"توسيع، زر، انقر مرتين للتفعيل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"immersive_card_tip_status_down",
+            "value":"تم طي البطاقة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"immersive_card_tip_status_up",
+            "value":"تم توسيع البطاقة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+      {
+        "name": "psd_back_accessible",
+        "value": "返回 按钮"
+      }
+    ]
+}

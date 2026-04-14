@@ -1,0 +1,18 @@
+{
+    "string":[
+        {
+            "name":"accessibility_ethernet_connected",
+            "value":"Ethernet branché.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_ethernet_disconnected",
+            "value":"Ethernet débranché.",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

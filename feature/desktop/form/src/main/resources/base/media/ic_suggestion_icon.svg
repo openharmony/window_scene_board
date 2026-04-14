@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  - Copyright (c) Huawei Technologies Co., Ltd. 2024-2025. All rights reserved.
+  - Licensed under the Apache License, Version 2.0 (the "License");
+  - you may not use this file except in compliance with the License.
+  - You may obtain a copy of the License at
+  -
+  -     http://www.apache.org/licenses/LICENSE-2.0
+  -
+  - Unless required by applicable law or agreed to in writing, software
+  - distributed under the License is distributed on an "AS IS" BASIS,
+  - WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  - See the License for the specific language governing permissions and
+  - limitations under the License.
+  -->
+
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>编组</title>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="112.628757%" id="linearGradient-1">
+            <stop stop-color="#18A2FC" offset="0%"></stop>
+            <stop stop-color="#1662F8" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="编组">
+            <path d="M7.6916556,-3.10752092e-16 L16.3083444,3.10752092e-16 C18.9829006,-1.80555915e-16 19.9527593,0.278476833 20.9305371,0.801398111 C21.9083149,1.32431939 22.6756806,2.09168511 23.1986019,3.06946289 C23.7215232,4.04724067 24,5.01709938 24,7.6916556 L24,16.3083444 C24,18.9829006 23.7215232,19.9527593 23.1986019,20.9305371 C22.6756806,21.9083149 21.9083149,22.6756806 20.9305371,23.1986019 C19.9527593,23.7215232 18.9829006,24 16.3083444,24 L7.6916556,24 C5.01709938,24 4.04724067,23.7215232 3.06946289,23.1986019 C2.09168511,22.6756806 1.32431939,21.9083149 0.801398111,20.9305371 C0.278476833,19.9527593 1.2037061e-16,18.9829006 -2.07168062e-16,16.3083444 L2.07168062e-16,7.6916556 C-1.2037061e-16,5.01709938 0.278476833,4.04724067 0.801398111,3.06946289 C1.32431939,2.09168511 2.09168511,1.32431939 3.06946289,0.801398111 C4.04724067,0.278476833 5.01709938,1.80555915e-16 7.6916556,-3.10752092e-16 Z" id="矩形" fill="url(#linearGradient-1)"></path>
+            <g id="服务中心" opacity="0.964029948" transform="translate(4.000000, 4.000000)">
+                <g id="ic_服务">
+                    <rect id="矩形" x="0" y="0" width="16" height="16" rx="0.486111111"></rect>
+                    <rect id="矩形" stroke-opacity="0.57" stroke="#3B6CFF" stroke-width="0.2" fill="#FFFFFF" opacity="0.923395647" style="mix-blend-mode: normal;" x="1.9" y="1.9" width="12.2" height="5.75555556" rx="0.972222222"></rect>
+                    <rect id="矩形备份" stroke-opacity="0.57" stroke="#3B6CFF" stroke-width="0.2" fill="#FFFFFF" opacity="0.923395647" style="mix-blend-mode: normal;" x="1.9" y="8.45555556" width="5.75555556" height="5.75555556" rx="0.972222222"></rect>
+                    <rect id="矩形备份-2" stroke-opacity="0.57" stroke="#3B6CFF" stroke-width="0.2" fill="#FFFFFF" opacity="0.634040179" style="mix-blend-mode: normal;" x="8.34444444" y="8.45555556" width="5.75555556" height="2.64444444" rx="0.631944444"></rect>
+                    <rect id="矩形备份-3" stroke-opacity="0.57" stroke="#3B6CFF" stroke-width="0.2" fill="#FFFFFF" opacity="0.634040179" style="mix-blend-mode: normal;" x="8.34444444" y="11.5666667" width="5.75555556" height="2.64444444" rx="0.631944444"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

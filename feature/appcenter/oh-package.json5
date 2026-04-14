@@ -1,0 +1,19 @@
+{
+  "devDependencies": {},
+  "name": "@ohos/appcenter",
+  "description": "a npm package which contains appcenter feature",
+  "main": "index.ets",
+  "version": "1.0.0",
+  "dependencies": {
+    "@ohos/launchercommon": "../../staticcommon/launchercommon",
+    "@ohos/pagedesktop": "../desktop/pagedesktop",
+    "@ohos/form": "../desktop/form",
+    "@ohos/basicutils": "../../staticcommon/basecommon/basicutils",
+    "@ohos/frameworkwrapper": "../../staticcommon/basecommon/frameworkwrapper",
+    "@ohos/componentdrag": "../../staticcommon/basecommon/componentdrag",
+    "@ohos/componenthelper": "../../staticcommon/basecommon/componenthelper",
+    "@ohos/frameworkpinyin": "../../staticcommon/basecommon/frameworkpinyin",
+    "@ohos/commonconstants": "../../staticcommon/basecommon/commonconstants",
+    "@ohos/windowscene": "../../staticcommon/basecommon/windowscene"
+  }
+}

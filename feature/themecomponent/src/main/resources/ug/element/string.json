@@ -1,0 +1,162 @@
+{
+    "string":[
+        {
+            "name":"screenlock_settings",
+            "value":"قۇلۇپ ئېكرانى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_stop_service_text",
+            "value":"مۇلازىمەتنى ئەتسىڭىز، رەسىمدىن ئۆزگىچە خەت نۇسخىسى ياساش ئىقتىدارى توختايدۇ، ئېتەمسىز؟",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"stop_font_creation_service",
+            "value":"مۇلازىمەتنى ئېتىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screenlock_font_creation_service_text",
+            "value":"قۇلۇپ ئېكرانى خەت نۇسخىسى ياساش مۇلازىمىتى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screenlock_font_creation_service",
+            "value":"قۇلۇپ ئېكرانى خەت نۇسخىسى ياساش مۇلازىمىتى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_one",
+            "value":"بۇ مۇلازىمەت تاللىغان رەسىمنى بۇلۇت AI ھېسابلاش ئۇسۇلى ئارقىلىق تونۇپ، ھەرخىل ئۇسلۇبتا خەت نۇسخىسى ئىشلەيدۇ؛ ئىشلىگەن خەت نۇسخىسىنى قۇلۇپ ئېكرانىدىكى سائەت ۋە ئىمزاغا قوللىنىشقا بولىدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_four",
+            "value":"قۇلۇپ ئېكرانى خەت نۇسخىسى ياساش مۇلازىمىتى ۋە مەخپىيەتلىك ھەققىدە بايانات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_setting_footbar_new",
+            "value":"بۇ مۇلازىمەت تور ئىشلىتىدۇ؛ رەسىم ئوقۇپ يۈكلەيدۇ؛ يۇقىرىقىلار قۇلۇپ ئېكرانى خەت نۇسخىسى ياساش ئىقتىدارى تەمىنلەش ئۈچۈن ئىشلىتىلىدۇ. ياسىغان خەت نۇسخىسىنى قۇلۇپ ئېكرانىدا سائەت ۋە ئىمزا ئۈچۈن قوللىنىشقا بولىدۇ. بىز پەقەت سىز كونكرېت ئىقتىدارنى ئىشلەتكەندە ئاندىن ئالاقىدار شەخسىي ئۇچۇرنى توپلايمىز. تەپسىلاتىنى «%1$s» ۋە «%2$s» ئارقىلىق كۆرۈڭ. بۇ تاللانمىنى ئاچسىڭىز، ئالاقىدار شەرتلەرنى چۈشەنگەن ھەمدە سىزگە بۇ ئەپنىڭ مۇلازىمەتلىرىنى تەمىنلىشىمىزگە قوشۇلغان بولىسىز.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_five",
+            "value":"مۇلازىمەت شەرتلىرى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_three",
+            "value":"بۇ مۇلازىمەت تور ئىشلىتىدۇ؛ رەسىم ئوقۇپ يۈكلەيدۇ؛ يۇقىرىقىلار قۇلۇپ ئېكرانى خەت نۇسخىسى ياساش ئىقتىدارى تەمىنلەش ئۈچۈن ئىشلىتىلىدۇ. بىز پەقەت سىز كونكرېت ئىقتىدارنى ئىشلەتكەندە ئاندىن ئالاقىدار شەخسىي ئۇچۇرنى توپلايمىز. تەپسىلاتىنى «%1$s» ۋە «%2$s» ئارقىلىق كۆرۈڭ.\nيۇقىرىقى باياناتنى ئەستايىدىل ئوقۇڭ. «قوشۇلىمەن» نى چەكسىڭىز، ئالاقىدار شەرتلەرنى چۈشەنگەن ھەمدە سىزگە بۇ ئەپنىڭ مۇلازىمەتلىرىنى تەمىنلىشىمىزگە قوشۇلغان بولىسىز.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"icon_settings",
+            "value":"سىنبەلگە",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"icon_settings_content",
+            "value":"ئۈستەليۈزىدىكى سىنبەلگە ئۆلچىمى ۋە نامىنى ئۆزگەرتەلەيسىز.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"icon_edit_not_support_small_step",
+            "value":"سىنبەلگە كىچىك كۆزنەكتە تەھرىرلەنمەيدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+      {
+        "name": "theme_title",
+        "value": "theme title"
+      },
+        {
+            "name": "notification_main_time_travel_ongoing_content",
+            "value": "notification main"
+        },
+        {
+            "name": "notification_main_time_travel_finish_content",
+            "value": "travel finish content"
+        },
+        {
+            "name": "time_travel_generate_failed",
+            "value": ""
+        },
+        {
+            "name": "notification_main_dimensional_travel_ongoing_content",
+            "value": ""
+        },
+        {
+            "name": "notification_main_dimensional_travel_finish_content",
+            "value": ""
+        },
+        {
+            "name": "dimensional_travel_generate_failed",
+            "value": ""
+        },
+        {
+            "name": "notification_dynamic_lead_ongoing_content",
+            "value": ""
+        },
+        {
+            "name": "notification_dynamic_lead_finish_content",
+            "value": ""
+        },
+        {
+            "name": "dynamic_lead_generate_failed",
+            "value": ""
+        },
+        {
+            "name": "notification_main_pandora_title",
+            "value": ""
+        },
+      {
+        "name":"edit_wallpaper",
+        "value":"تەگلىك",
+        "attr":{
+          "priority":"LT"
+        }
+      },
+      {
+        "name": "theme_chose",
+        "value": "رەسىمخانىدىن تاللاش"
+      },
+      {
+        "name": "current_wallpaper",
+        "value": "مىنىڭ دىۋار قەغىزىم"
+      },
+      {
+        "name": "managment",
+        "value": ""
+      },
+      {
+        "name": "wallpaper_editor",
+        "value": "قوللىنىش"
+      }
+    ]
+}

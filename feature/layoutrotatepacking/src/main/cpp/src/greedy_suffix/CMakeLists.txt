@@ -1,0 +1,5 @@
+add_library(greedy_suffix_partial STATIC src/build_layout.cpp)
+target_link_libraries(greedy_suffix_partial PUBLIC gui)
+
+add_library(greedy_suffix_algo STATIC src/apply_configuration.cpp)
+target_link_libraries(greedy_suffix_algo PUBLIC greedy_suffix_partial)

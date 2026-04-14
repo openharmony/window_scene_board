@@ -1,0 +1,5 @@
+-enable-filename-obfuscation
+-compact
+-remove-log
+-enable-toplevel-obfuscation
+-enable-export-obfuscation

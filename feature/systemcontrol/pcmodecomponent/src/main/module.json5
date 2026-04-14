@@ -1,0 +1,10 @@
+{
+  "module": {
+    "name": "pcmodecomponent",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ]
+  }
+}

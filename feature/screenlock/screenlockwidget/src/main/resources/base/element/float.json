@@ -1,0 +1,324 @@
+{
+  "float": [
+    {
+      "name": "colorbutton_middle_border_width",
+      "value": "2"
+    },
+    {
+      "name": "fontbutton_outer_radius",
+      "value": "8"
+    },
+    {
+      "name": "fontbutton_outer_border_width",
+      "value": "2"
+    },
+    {
+      "name": "layoutbutton_border_opacity",
+      "value": "0.8"
+    },
+    {
+      "name": "layoutbutton_outer_border_width",
+      "value": "2"
+    },
+    {
+      "name": "layoutbutton_outer_radius",
+      "value": "10"
+    },
+    {
+      "name": "sigbutton_height",
+      "value": "48"
+    },
+    {
+      "name": "sigbutton_margin",
+      "value": "0"
+    },
+    {
+      "name": "sigbutton_sig_height",
+      "value": "40"
+    },
+    {
+      "name": "sigbutton_sig_margin",
+      "value": "4"
+    },
+    {
+      "name": "sigbutton_sig_radius",
+      "value": "20"
+    },
+    {
+      "name": "sigbutton_sig_padding_h",
+      "value": "12"
+    },
+    {
+      "name": "sigpane_padding_bottom",
+      "value": "20"
+    },
+    {
+      "name": "sigpane_padding_h",
+      "value": "16"
+    },
+    {
+      "name": "toolbutton_image_width",
+      "value": "24"
+    },
+    {
+      "name": "toolbutton_image_height",
+      "value": "24"
+    },
+    {
+      "name": "collectionsposter_btn_opacity_pressed",
+      "value": "0.5"
+    },
+    {
+      "name": "collectionsposter_btn_opacity_normal",
+      "value": "1.0"
+    },
+    {
+      "name": "toolbutton_outer_width",
+      "value": "40"
+    },
+    {
+      "name": "toolbutton_outer_height",
+      "value": "40"
+    },
+    {
+      "name": "signature_dialog_height",
+      "value": "176"
+    },
+    {
+      "name": "font_creation_dialog_height",
+      "value": "247"
+    },
+    {
+      "name": "font_creation_dialog_title_height",
+      "value": "63"
+    },
+    {
+      "name": "font_creation_dialog_declaration_height",
+      "value": "53"
+    },
+    {
+      "name": "art_signature_dialog_height",
+      "value": "220"
+    },
+    {
+      "name": "art_signature_dialog_height_warn",
+      "value": "213"
+    },
+    {
+      "name": "signature_dialog_title_line_height",
+      "value": "56"
+    },
+    {
+      "name": "signature_dialog_deliver_line_height",
+      "value": "24"
+    },
+    {
+      "name": "signature_dialog_padding_horizontal",
+      "value": "16"
+    },
+    {
+      "name": "art_sign_text_input_border_width",
+      "value": "1"
+    },
+    {
+      "name": "art_sign_text_input_xmark_size",
+      "value": "16"
+    },
+    {
+      "name": "signature_dialog_padding_vertical",
+      "value": "8"
+    },
+    {
+      "name": "signature_dialog_padding_vertical_bottom",
+      "value": "24"
+    },
+    {
+      "name": "signature_sign_tab_height",
+      "value": "40"
+    },
+    {
+      "name": "art_sign_dialog_padding_bottom",
+      "value": "8"
+    },
+    {
+      "name": "art_sign_dialog_padding_bottom_with_warn",
+      "value": "24"
+    },
+    {
+      "name": "signature_input_confirm_vertical_bottom",
+      "value": "44"
+    },
+    {
+      "name": "signature_dialog_deliver_line_margin",
+      "value": "8"
+    },
+    {
+      "name": "signature_dialog_input_height",
+      "value": "40"
+    },
+    {
+      "name": "signature_dialog_button_height",
+      "value": "40"
+    },
+    {
+      "name": "signature_dialog_button_margin",
+      "value": "16"
+    },
+    {
+      "name": "signature_dialog_default_margin",
+      "value": "4"
+    },
+    {
+      "name": "signature_dialog_button_margin_top",
+      "value": "8"
+    },
+    {
+      "name": "art_sign_dialog_button_margin_top",
+      "value": "16"
+    },
+    {
+      "name": "dialog_corner",
+      "value": "32"
+    },
+    {
+      "name": "signature_dialog_max_width",
+      "value": "400"
+    },
+    {
+      "name": "signature_dialog_margin",
+      "value": "16"
+    },
+    {
+      "name": "colorpane_radius",
+      "value": "16"
+    },
+    {
+      "name": "actionsheet_padding_h",
+      "value": "24"
+    },
+    {
+      "name": "actionsheet_padding_v",
+      "value": "16"
+    },
+    {
+      "name": "edit_border_width",
+      "value": "2"
+    },
+    {
+      "name": "edit_border_width_drag",
+      "value": "1.5"
+    },
+    {
+      "name": "edit_border_width_full",
+      "value": "2.5"
+    },
+    {
+      "name": "fontpane_radius",
+      "value": "16"
+    },
+    {
+      "name": "layoutpane_radius",
+      "value": "16"
+    },
+    {
+      "name": "sigpane_radius",
+      "value": "16"
+    },
+    {
+      "name": "editbar_padding",
+      "value": "8"
+    },
+    {
+      "name": "editbar_width",
+      "value": "224"
+    },
+    {
+      "name": "editbar_radius",
+      "value": "20"
+    },
+    {
+      "name": "editbar_height",
+      "value": "64"
+    },
+    {
+      "name": "remove_btn_size",
+      "value": "18"
+    },
+    {
+      "name": "remove_btn_offset_x",
+      "value": "27"
+    },
+    {
+      "name": "remove_btn_offset_y",
+      "value": "-27"
+    },
+    {
+      "name": "show_as_compound_margin_left",
+      "value": "36"
+    },
+    {
+      "name": "show_as_compound_text_width",
+      "value": "36"
+    },
+    {
+      "name": "compound_image_width",
+      "value": "17"
+    },
+    {
+      "name": "compound_image_right_margin",
+      "value": "20.5"
+    },
+    {
+      "name": "try_compound_tip_height",
+      "value": "48"
+    },
+    {
+      "name": "try_compound_tip_top_margin",
+      "value": "16"
+    },
+    {
+      "name": "try_compound_total_margin",
+      "value": "60"
+    },
+    {
+      "name": "try_compound_left_margin",
+      "value": "32"
+    },
+    {
+      "name": "show_as_compound_dialog_height",
+      "value": "257"
+    },
+    {
+      "name": "show_as_compound_total_margin",
+      "value": "40"
+    },
+    {
+      "name": "show_as_compound_text_margin",
+      "value": "8"
+    },
+    {
+      "name": "compound_panel_height",
+      "value": "442"
+    },
+    {
+      "name": "compound_panel_key_top_margin",
+      "value": "4"
+    },
+    {
+      "name": "compound_panel_key_font_size",
+      "value": "14"
+    },
+    {
+      "name": "compound_panel_image_padding",
+      "value": "41"
+    },
+    {
+      "name": "font_preview_image_with",
+      "value": "58"
+    },
+    {
+      "name": "font_preview_loading_icon_width",
+      "value": "12"
+    }
+  ]
+}

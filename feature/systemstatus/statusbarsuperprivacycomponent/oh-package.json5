@@ -1,0 +1,17 @@
+{
+  "name": "@ohos/statusbarsuperprivacycomponent",
+  "version": "1.0.0",
+  "description": "Please describe the basic information.",
+  "main": "",
+  "author": "",
+  "license": "",
+  "dependencies": {
+    "@ohos/basicutils": "file:../../../staticcommon/basecommon/basicutils",
+    "@ohos/frameworkwrapper": "file:../../../staticcommon/basecommon/frameworkwrapper",
+    "@ohos/systemuicommon": "file:../../../staticcommon/systemuicommon",
+    "@ohos/screenlockcommon": "file:../../../staticcommon/screenlockcommon",
+    "@ohos/superprivacy": "file:../../superprivacy",
+    "@ohos/controlcentercommon": "file:../../../staticcommon/controlcentercommon"
+  }
+}
+

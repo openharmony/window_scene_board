@@ -1,0 +1,28 @@
+{
+    "plural":[
+        {
+            "name":"stack_request_focus_front_text",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"བྱང་བུ་སྤུངས་པ། ཁྱོན་བསྡོམས་ %d ཡོད།",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"expand_stack_request_focus_after_text",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"ཁྱོན་རྣམ་གྲངས་ %d ཡོད། བཀོལ་ཆོག་པའི་སྒྲིག་བཀོལ་འདུག མཛུབ་མོ་གཅིག་གིས་ཉིས་རྡེབ་བྱས་ཏེ་སྤུངས་བརྩེགས་སྡུད་ཐུབ་པ་མ་ཟད་བྱང་བུ་རྩེར་སྒྲིག་ཐུབ། ཉིས་རྡེབ་བྱས་ནས་མནན་ཚེ་ཡར་མར་འགུལ་འདྲུད་ཐུབ།",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

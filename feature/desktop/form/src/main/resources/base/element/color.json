@@ -1,0 +1,36 @@
+{
+  "color": [
+    {
+      "name": "transparent_form_background_color",
+      "value": "#33000000"
+    },
+    {
+      "name": "gradient_transparent_form_background_color",
+      "value": "#00000000"
+    },
+    {
+      "name": "normal_form_background_color",
+      "value": "#FFFFFFFF"
+    },
+    {
+      "name": "normal_form_manager_shadow_color",
+      "value": "#1F050505"
+    },
+    {
+      "name": "gradient_form_manager_shadow_color",
+      "value": "#00050505"
+    },
+    {
+      "name": "normal_form_center_shadow_color",
+      "value": "#1A050505"
+    },
+    {
+      "name": "outer_normal_form_center_shadow_color",
+      "value": "#3F6D441D"
+    },
+    {
+      "name": "form_center_form_inline_color",
+      "value": "#0DFFFFFF"
+    }
+  ]
+}

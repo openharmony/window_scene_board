@@ -1,0 +1,130 @@
+{
+    "string":[
+        {
+            "name":"sound_title",
+            "value":"الصوت",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"HD_spatial_audio",
+            "value":"الصوت المكاني عالي الوضوح",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"noise_on",
+            "value":"مشغّل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"base_none",
+            "value":"إغلاق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"base_noise_control",
+            "value":"التحكم بالضجيج",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"spatial_audio_follow",
+            "value":"تتبع الرأس",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"spatial_audio_fixed",
+            "value":"ثابت",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"base_pass_through",
+            "value":"إدراك الأصوات المحيطة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"toast_wear_headphone",
+            "value":"يُرجى ارتداء السماعتين",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"toast_noise_control_amphora",
+            "value":"لعزل الضجيج، ارتدِ كلا السماعتين",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_change_volume_desc",
+            "value":"شريط مستوى الصوت، انقر نقرًا مزدوجًا ثم اضغط مطولاً مع السحب لليمين أو اليسار لضبط مستوى الصوت",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"spatial_audio",
+            "value":"الصوت المكاني",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_change_volume",
+            "value":"تم ضبط مستوى الصوت على %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_volume",
+            "value":"مستوى الصوت %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"toast_voice_enhance",
+            "value":"يُرجى ارتداء سماعات الأذن لاستخدام هذه الميزة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"noise_reduction",
+            "value":"عزل الضجيج",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"toast_noise_control",
+            "value":"يُرجى ارتداء سماعات الأذن لاستخدام هذه الميزة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_change_vertical_volume_desc",
+            "value":"شريط مستوى الصوت، انقر مرتين ثم مطولاً، ثم اسحب لأعلى أو لأسفل للضبط",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

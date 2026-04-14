@@ -20,6 +20,7 @@ import { JSON } from '@kit.ArkTS';
 import { CheckEmptyUtils, LogDomain, LogHelper, SingletonHelper } from '@ohos/basicutils';
 import { DeviceHelper } from '@ohos/frameworkwrapper';
 // @ts-ignore
+// import hagServiceability from '@hms.atomicservicedistribution.hagCore';
 import { GlobalContext } from '@ohos/frameworkwrapper';
 import { BusinessError } from '@kit.BasicServicesKit';
 import dataPreferences from '@ohos.data.preferences';

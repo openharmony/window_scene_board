@@ -1,0 +1,36 @@
+{
+  "module": {
+    "name": "themeservice_core",
+    "type": "feature",
+    "description": "$string:module_desc",
+    "srcEntry": "./ets/entry/ThemeServiceStage.ets",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ],
+    "metadata": [
+      {
+        "name": "method_version",
+        "value": "1.0.101"
+      }
+    ],
+    "deliveryWithInstall": true,
+    "installationFree": false,
+    "extensionAbilities": [
+      {
+        "name": "ThemeServiceAbility",
+        "label": "$string:ThemeServiceAbility_label",
+        "exported": true,
+        "type": "service",
+        "srcEntry": "./ets/ability/service/ThemeServiceAbility.ets",
+        "permissions": ["ohos.permission.ACTIVATE_THEME_PACKAGE"],
+        "metadata": [
+          {
+            "name": "setSkin",
+            "value": "true"
+          }
+        ]
+      }
+    ]
+  }
+}

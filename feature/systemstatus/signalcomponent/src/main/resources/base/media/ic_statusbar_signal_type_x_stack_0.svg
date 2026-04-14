@@ -1,0 +1,17 @@
+<svg width="97.000000" height="64.000000" viewBox="0 0 97 64" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<desc>
+			Created with Pixso.
+	</desc>
+	<defs>
+		<clipPath id="clip67_618">
+			<rect id="上_x 短" width="97.000000" height="64.000000" fill="white" fill-opacity="0"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clip67_618)">
+		<mask id="mask_67_617" fill="white">
+			<path id="合并" d="M25.9994 11.8143L21.4086 7.99956L15.9996 14.3832L10.5907 7.99956L5.99988 11.8144L12.0881 18.9996L5.99939 26.1856L10.5902 30.0004L15.9996 23.6161L21.4092 30.0004L25.9999 26.1856L19.9113 18.9996L25.9994 11.8143Z" clip-rule="evenodd" fill="" fill-opacity="1.000000" fill-rule="evenodd"/>
+		</mask>
+		<path id="合并" d="M25.9994 11.8143L21.4086 7.99956L15.9996 14.3832L10.5907 7.99956L5.99988 11.8144L12.0881 18.9996L5.99939 26.1856L10.5902 30.0004L15.9996 23.6161L21.4092 30.0004L25.9999 26.1856L19.9113 18.9996L25.9994 11.8143Z" clip-rule="evenodd" fill="#FFFFFF" fill-opacity="1.000000" fill-rule="evenodd" mask="url(#mask_67_617)"/>
+		<path id="合并" d="" clip-rule="evenodd" fill="#979797" fill-opacity="0.000000" fill-rule="evenodd"/>
+	</g>
+</svg>

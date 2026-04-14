@@ -1,0 +1,16 @@
+{
+  "color": [
+    {
+      "name": "card_panel_bg",
+      "value": "#202224"
+    },
+    {
+      "name": "batch_modif_id_color_emphasize",
+      "value": "#317AF7"
+    },
+    {
+      "name": "selected_icon_color",
+      "value": "#E5FFFFFF"
+    }
+  ]
+}

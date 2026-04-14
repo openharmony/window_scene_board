@@ -1,0 +1,25 @@
+{
+    "string":[
+        {
+            "name":"control_center_complex_toggle_hotspot_title",
+            "value":"パーソナルホットスポット",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_hotspot_no_device",
+            "value":"デバイスなし",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"statusbar_talkbackhotspot01",
+            "value":"ホットスポット有効化済み",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

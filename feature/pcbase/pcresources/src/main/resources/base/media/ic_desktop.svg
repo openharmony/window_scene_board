@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+    <title>ic_desktop</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M19.0512821,3 C21.2320988,3 23,4.7628788 23,6.9375 L23,17.0625 C23,19.2371212 21.2320988,21 19.0512821,21 L4.94871795,21 C2.76790124,21 1,19.2371212 1,17.0625 L1,6.9375 C1,4.7628788 2.76790124,3 4.94871795,3 L19.0512821,3 Z M19.0512821,4.6875 L4.94871795,4.6875 C3.72604982,4.6875 2.73051355,5.65720437 2.69338141,6.86741831 L2.69230769,6.9375 L2.69230769,17.0625 C2.69230769,18.2816946 3.66477476,19.2744027 4.8784366,19.3114293 L4.94871795,19.3125 L19.0512821,19.3125 C20.2739502,19.3125 21.2694864,18.3427956 21.3066186,17.1325817 L21.3076923,17.0625 L21.3076923,6.9375 C21.3076923,5.71830536 20.3352252,4.72559732 19.1215634,4.68857067 L19.0512821,4.6875 Z" id="path-1"></path>
+    </defs>
+    <g id="ic_desktop" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+<!--        <g>-->
+<!--            <rect id="矩形" fill-rule="nonzero" x="0" y="0" width="24" height="24" rx="1"></rect>-->
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="形状结合" fill="#000000" fill-rule="nonzero" xlink:href="#path-1"></use>
+            <rect id="矩形" fill="#000000" x="18" y="6" width="2" height="2" rx="1"></rect>
+            <rect id="矩形备份-10" fill="#000000" x="4" y="6" width="4" height="4" rx="1"></rect>
+            <rect id="矩形备份-8" fill="#000000" x="18" y="9" width="2" height="2" rx="1"></rect>
+            <rect id="矩形备份-9" fill="#000000" x="18" y="12" width="2" height="2" rx="1"></rect>
+<!--        </g>-->
+    </g>
+</svg>

@@ -1,0 +1,12 @@
+{
+    "string":[
+        {
+            "name":"accessibility_ethernet_connected",
+            "value":"[TS_1071243]_Ethernet connected."
+        },
+        {
+            "name":"accessibility_ethernet_disconnected",
+            "value":"[TS_1071244]_Ethernet disconnected."
+        }
+    ]
+}

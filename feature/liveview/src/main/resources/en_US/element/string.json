@@ -1,0 +1,16 @@
+{
+  "string": [
+    {
+      "name": "module_desc",
+      "value": "module description"
+    },
+    {
+      "name": "LiveActivityAbility_desc",
+      "value": "description"
+    },
+    {
+      "name": "LiveActivityAbility_label",
+      "value": "label"
+    }
+  ]
+}

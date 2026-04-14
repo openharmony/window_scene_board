@@ -1,0 +1,116 @@
+{
+    "string":[
+        {
+            "name":"app_menu_more",
+            "value":"Еще",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"duplicate_add",
+            "value":"Уже добавлено.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remove_from_dock",
+            "value":"Удалить с панели",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_menu_exit",
+            "value":"Выйти",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"continue_mission_fail_device_connecting_to_another_device",
+            "value":"Сбой передачи задачи. Устройство %1$s взаимодействует с другим устройством.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"delete_app",
+            "value":"Удалить",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_add_to_dock",
+            "value":"Сбой добавления.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_center_menu_add_desktop",
+            "value":"Добавить на рабочий экран",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"continue_mission_fail_close_hotspot_and_try_again",
+            "value":"Сбой передачи задачи. Выключите личную точку доступа на устройстве %1$s и повторите попытку.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"continue_mission_fail",
+            "value":"Сбой передачи задачи.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_menu_open",
+            "value":"Открыть",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_menu_clean",
+            "value":"Очистить корзину",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"isUninstall",
+            "value":"Удалить приложение %s?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"continue_mission_waiting",
+            "value":"Передача задачи…",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"accessibility_dock",
+            "value":"Меню приложений",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_beyond_max",
+            "value":"Добавлено максимальное количество значков.",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

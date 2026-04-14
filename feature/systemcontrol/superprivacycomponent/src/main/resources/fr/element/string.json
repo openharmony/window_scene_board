@@ -1,0 +1,74 @@
+{
+    "string":[
+        {
+            "name":"super_privacy_toggle",
+            "value":"Super privé",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"super_privacy_toggle_always_protect",
+            "value":"Toujours activé",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"super_privacy_toggle_fold_protect",
+            "value":"Activer lorsque l'appareil est plié",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"edm_super_privacy_content_mic",
+            "value":"Le Mode super privé n'est pas disponible car l'option Microphone est gérée par votre organisation.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"edm_super_privacy_content_cam_loc",
+            "value":"Le Mode super privé n'est pas disponible car les options Appareil photo et Services de localisation sont gérées par votre organisation.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"edm_super_privacy_content_mic_loc",
+            "value":"Le Mode super privé n'est pas disponible car les options Microphone et Services de localisation sont gérées par votre organisation.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"edm_super_privacy_content_cam",
+            "value":"Le Mode super privé n'est pas disponible car l'option Appareil photo est gérée par votre organisation.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"edm_super_privacy_content_loc",
+            "value":"Le Mode super privé n'est pas disponible car l'option Services de localisation est gérée par votre organisation.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"edm_super_privacy_content_cam_mic",
+            "value":"Le Mode super privé n'est pas disponible car les options Appareil photo et Microphone sont gérées par votre organisation.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"edm_super_privacy_content_cam_mic_loc",
+            "value":"Le Mode super privé n'est pas disponible car les options Appareil photo, Microphone et Services de localisation sont gérées par votre organisation.",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

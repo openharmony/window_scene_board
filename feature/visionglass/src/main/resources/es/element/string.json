@@ -1,0 +1,116 @@
+{
+    "string":[
+        {
+            "name":"action_button_reply",
+            "value":"Responder",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"banner_hint_message",
+            "value":"Este mensaje no se puede mostrar en Vision Glass. Puedes verlo en el teléfono.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screenshot_privacy",
+            "value":"No se puede hacer una captura de pantalla. La pantalla actual puede contener información confidencial.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Input_prompt",
+            "value":"Desconecta e introduce texto en la aplicación del teléfono.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Incoming_call_prompt",
+            "value":"Recibe la llamada en tu teléfono",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"banner_toast_message",
+            "value":"Ve este mensaje en tu teléfono.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_phone_power_save_mode",
+            "value":"Modo Ahorro de energía",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_phone_cast_screen",
+            "value":"Duplicación del teléfono",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ScreenShot_label",
+            "value":"Captura de pantalla",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_adjustment",
+            "value":"Ajuste de graduación",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_screenshot_no_right",
+            "value":"Para hacer capturas de pantalla se requiere el permiso de Imágenes y vídeos. Otorga el permiso en la ventana emergente de tu teléfono o en Ajustes.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Incoming_call_title",
+            "value":"%s está llamando",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_wlan",
+            "value":"WLAN",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_app_to_glass_msg",
+            "value":"Añade %s a la Biblioteca de aplicaciones.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_bluetooth",
+            "value":"Bluetooth",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Incoming_call_flag",
+            "value":"Llamada entrante",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

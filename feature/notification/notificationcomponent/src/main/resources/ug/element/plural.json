@@ -1,0 +1,42 @@
+{
+    "plural":[
+        {
+            "name":"ntf_hide_content_count",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"%d ئۇقتۇرۇش",
+                    "attr":{
+                        "priority":"LT"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"%d ئۇقتۇرۇش",
+                    "attr":{
+                        "priority":"LT"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"live_hide_content",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"%d ھالەت",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"%d ھالەت",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

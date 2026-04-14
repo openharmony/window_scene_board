@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"control_center_complex_toggle_focus_mode_title",
+            "value":"通知の鳴動制限",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

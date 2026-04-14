@@ -1,0 +1,120 @@
+{
+    "string":[
+        {
+            "name":"psd_enter_psd_mix",
+            "value":"[TS_924885]_Enter password"
+        },
+        {
+            "name":"psd_incorrect_will_locked",
+            "value":"[TS_924745]_Incorrect PIN. After %1$s, your device will be locked for %2$s."
+        },
+        {
+            "name":"psd_incorrect_psd_try_again",
+            "value":"[TS_924827]_Incorrect PIN. Please try again."
+        },
+        {
+            "name":"psd_enter_psd",
+            "value":"[TS_924765]_Enter PIN"
+        },
+        {
+            "name":"psd_incorrect_psd_try_again_mix",
+            "value":"[TS_924728]_Incorrect password. Please try again."
+        },
+        {
+            "name":"psd_try_again_after_time1",
+            "value":"[TS_924884]_Try again in %s"
+        },
+        {
+            "name":"fp_disable_enter_psd",
+            "value":"[TS_924748]_Fingerprint recognition disabled. Please enter your PIN."
+        },
+        {
+            "name":"fingerprint_incorrect_will_locked",
+            "value":"[TS_924833]_Fingerprint not recognized. Device will be locked for %2$s after %1$s."
+        },
+        {
+            "name":"fp_incorrect_fp_try_again",
+            "value":"[TS_924770]_Cover the entire sensor with your finger."
+        },
+        {
+            "name":"please_enter_psd_for_security",
+            "value":"[TS_951241]_Password required for additional security"
+        },
+        {
+            "name":"please_enter_pin_for_security",
+            "value":"[TS_954579]_PIN required for additional security"
+        },
+        {
+            "name":"pattern_incorrect_will_locked",
+            "value":"[TS_947861]_Incorrect pattern. After %1$s, your device will be locked for %2$s."
+        },
+        {
+            "name":"restart_enter_psd",
+            "value":"[TS_951242]_Password required after restart"
+        },
+        {
+            "name":"device_restart_enter_psd",
+            "value":"[TS_951243]_Password required after restart"
+        },
+        {
+            "name":"pattern_psd_incorrect_psd_try_again",
+            "value":"[TS_947864]_Incorrect pattern"
+        },
+        {
+            "name":"pattern_psd_drawing_completed",
+            "value":"[TS_950577]_Pattern drawn"
+        },
+        {
+            "name":"psd_incorrect_hardware_error",
+            "value":"[TS_1052501]_Verification error"
+        },
+        {
+            "name":"restart_enter_pin",
+            "value":"[TS_954578]_PIN required after restart"
+        },
+        {
+            "name":"text_loading",
+            "value":"[TS_1044079]_Loading…"
+        },
+        {
+            "name":"regular_verify_psd_for_security",
+            "value":"[TS_1061112]_Password required for additional security"
+        },
+        {
+            "name":"regular_verify_pin_for_security",
+            "value":"[TS_1063154]_PIN required for additional security"
+        },
+        {
+            "name":"screenlock_settings",
+            "value":"[TS_1091045]_Screenlock Settings"
+        },
+        {
+            "name":"font_creation_dialog_stop_service_text",
+            "value":"[TS_1091052]_After stopping, you will not be able to intelligently learn the text style in the picture and create. Are you sure you want to stop?"
+        },
+        {
+            "name":"font_creation_dialog_part4",
+            "value":"[TS_1091054]_.For details on personal information processing, please refer to"
+        },
+        {
+            "name":"font_creation_dialog_part5",
+            "value":"[TS_1091053]_Screenlock Font Creation Service and Privacy Statement."
+        },
+        {
+            "name":"font_creation_dialog_part2",
+            "value":"[TS_1091055]_This service requires internet access to read and transmit images to provide font creation, generation, and application related functions. By clicking \"Agree\", you agree to the above content and"
+        },
+        {
+            "name":"font_creation_dialog_part3",
+            "value":"[TS_1091046]_Terms of Use for Lock Screen Font Creation Service"
+        },
+        {
+            "name":"font_creation_service",
+            "value":"[TS_1091047]_Font Creation Service"
+        },
+        {
+            "name":"font_creation_dialog_part1",
+            "value":"[TS_1091056]_字体创作服务支持智能学习图片内的文字风格并创作，该服务需要使用以下权限："
+        }
+    ]
+}

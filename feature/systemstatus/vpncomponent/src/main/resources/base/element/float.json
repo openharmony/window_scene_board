@@ -1,0 +1,12 @@
+{
+  "float": [
+    {
+      "name": "status_bar_vpn_width",
+      "value": "200vp"
+    },
+    {
+      "name": "status_bar_vpn_height",
+      "value": "16vp"
+    }
+  ]
+}

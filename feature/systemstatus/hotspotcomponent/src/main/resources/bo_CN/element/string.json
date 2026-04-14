@@ -1,0 +1,25 @@
+{
+    "string":[
+        {
+            "name":"control_center_complex_toggle_hotspot_title",
+            "value":"མི་སྒེར་གྱི་ཚ་གནས།",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"statusbar_talkbackhotspot01",
+            "value":"ཚ་གནས་ཁ་ཕྱེ་ཟིན།",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_hotspot_no_device",
+            "value":"སྒྲིག་ཆས་མེད།",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

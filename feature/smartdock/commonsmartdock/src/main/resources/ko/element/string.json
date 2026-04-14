@@ -1,0 +1,116 @@
+{
+    "string":[
+        {
+            "name":"duplicate_add",
+            "value":"이미 추가되었습니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remove_from_dock",
+            "value":"도크에서 제거",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_menu_exit",
+            "value":"종료",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"continue_mission_fail_device_connecting_to_another_device",
+            "value":"전달에 실패했습니다. %1$s에서 다른 장치와 상호 작용 중입니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"delete_app",
+            "value":"제거",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_add_to_dock",
+            "value":"추가할 수 없습니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_center_menu_add_desktop",
+            "value":"홈 화면에 추가",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"continue_mission_fail_close_hotspot_and_try_again",
+            "value":"전달에 실패했습니다. %1$s에서 개인용 핫스팟을 종료하고 다시 시도하십시오.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"continue_mission_fail",
+            "value":"전달에 실패했습니다.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_menu_open",
+            "value":"열기",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_menu_clean",
+            "value":"휴지통 비우기",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"isUninstall",
+            "value":"%s을(를) 제거하시겠습니까?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"continue_mission_waiting",
+            "value":"전달 중…",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_menu_more",
+            "value":"더 보기",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_dock",
+            "value":"도크",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_beyond_max",
+            "value":"최대 수의 아이콘이 추가되었습니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

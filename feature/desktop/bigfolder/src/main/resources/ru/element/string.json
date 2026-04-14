@@ -1,0 +1,151 @@
+{
+    "string":[
+        {
+            "name":"d_app_dialog_cancel",
+            "value":"Пропустить",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"d_app_dialog_confirm",
+            "value":"Обновить",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"d_app_unavailable_dialog_know",
+            "value":"OK",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"folder_add",
+            "value":"Добавление",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"d_app_unavailable_dialog_content",
+            "value":"Чтобы использовать это приложение, сначала загрузите приложение %s из AppGallery.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"d_app_dialog_contents",
+            "value":"Обновите ваше приложение для повышения качества обслуживания. Помните, что при переключении версий некоторые данные приложения могут быть утрачены.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"d_app_dialog_text",
+            "value":"Приложение %s стало доступно для OpenHarmony.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"uninstall_d_app_dialog_content",
+            "value":"Вы уже установили версию OpenHarmony приложения %s на этом устройстве. Удалить старую версию?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"open_harmony_app_dialog_content",
+            "value":"Вы уже установили версию приложения %s для OpenHarmony на этом устройстве.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"d_app_dialog_open",
+            "value":"Открыть версию для OpenHarmony",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"confirm_dialog",
+            "value":"OK",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"d_app_pause_download_dialog_content",
+            "value":"Загрузка приложения %s приостановлена. Возобновить?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"d_app_unavailable_dialog_title",
+            "value":"Приложение недоступно",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"d_app_dialog_title",
+            "value":"Доступна новая версия",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"uninstall_d_app_dialog_title",
+            "value":"Установлена более новая версия",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"d_app_wait_download_dialog_content",
+            "value":"Приложение %s ожидает загрузки в очереди. Загрузить его приоритетно?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"folder_items_limit_toast",
+            "value":"Папка заполнена.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"d_app_installing_dialog_content",
+            "value":"Приложение %s устанавливается. Подождите.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sheet_title_similar",
+            "value":"Группировка похожих приложений",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sheet_sub_title_similar",
+            "value":"Выберите приложения для добавления в папку.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sheet_title_recommended",
+            "value":"Рекомендуемые приложения",
+            "attr":{
+                "priority":"LT"
+            }
+        }
+    ]
+}

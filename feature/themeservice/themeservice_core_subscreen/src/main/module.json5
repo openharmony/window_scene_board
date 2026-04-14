@@ -1,0 +1,10 @@
+{
+  "module": {
+    "name": "themeservice_core_subscreen",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ]
+  }
+}

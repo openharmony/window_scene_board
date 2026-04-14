@@ -1,0 +1,234 @@
+{
+  "searchPages": [
+    {
+      "pageTitle": "$string:notification_and_status_bar_title",
+      "pageDescription": "",
+      "entryKey": "systemui_notification_settings",
+      "params": "",
+      "path": [
+        "$string:notification_and_status_bar_title"
+      ],
+      "searchItems": [
+        {
+          "itemName": "notifications & status bar",
+          "itemTitle": "$string:notification_and_status_bar_title",
+          "itemDescription": "Notifications & status bar",
+          "icon": ""
+        },
+        {
+          "itemName": "notification_not_banner",
+          "itemTitle": "$string:notification_not_banner",
+          "itemDescription": "",
+          "icon": ""
+        },
+        {
+          "itemName": "hide_banner_content_title",
+          "itemTitle": "$string:hide_banner_content_title",
+          "itemDescription": "",
+          "icon": ""
+        }
+      ]
+    },
+
+    {
+      "pageTitle": "$string:status_bar_title",
+      "pageDescription": "",
+      "entryKey": "systemui_notification_settings",
+      "params": "StatusBarSetting",
+      "path": [
+        "$string:notification_and_status_bar_title", "$string:status_bar_title"
+      ],
+      "supportDevices": [
+        "phone",
+        "tablet"
+      ],
+      "searchItems": [
+        {
+          "itemName": "status_bar",
+          "itemTitle": "$string:status_bar_title",
+          "itemDescription": "Status bar",
+          "icon": ""
+        },
+        {
+          "itemName": "simple_display",
+          "itemTitle": "$string:pure_show_title",
+          "itemDescription": "Simple display",
+          "icon": ""
+        },
+        {
+          "itemName": "show_app_notification_icons",
+          "itemTitle": "$string:show_notification_icon",
+          "itemDescription": "Show app notification icons",
+          "icon": ""
+        },
+        {
+          "itemName": "show_network_speed",
+          "itemTitle": "$string:show_real_time_network_speed",
+          "itemDescription": "Show network speed",
+          "icon": ""
+        },
+        {
+          "itemName": "enable_switch_icon_visible",
+          "itemTitle": "$string:enable_switch_icon_visible",
+          "itemDescription": "enable switch icon visible",
+          "icon": ""
+        },
+        {
+          "itemName": "enable_switch_notification_icon",
+          "itemTitle": "$string:enable_switch_notification_icon",
+          "itemDescription": "enable switch notification icon",
+          "icon": ""
+        },
+        {
+          "itemName": "enable_switch_net_speed",
+          "itemTitle": "$string:enable_switch_net_speed",
+          "itemDescription": "enable switch net speed",
+          "icon": ""
+        },
+        {
+          "itemName": "enable_switch_vpn",
+          "itemTitle": "$string:enable_switch_vpn",
+          "itemDescription": "enable switch vpn",
+          "icon": ""
+        },
+        {
+          "itemName": "enable_switch_ring_mode",
+          "itemTitle": "$string:enable_switch_ring_mode",
+          "itemDescription": "enable switch ring mode",
+          "icon": ""
+        },
+        {
+          "itemName": "enable_switch_silent",
+          "itemTitle": "$string:enable_switch_ring_mode_silent",
+          "itemDescription": "enable switch silent",
+          "icon": ""
+        },
+        {
+          "itemName": "enable_switch_nearlink",
+          "itemTitle": "$string:enable_switch_nearlink",
+          "itemDescription": "enable switch nearlink",
+          "icon": ""
+        },
+        {
+          "itemName": "enable_switch_bluetooth",
+          "itemTitle": "$string:enable_switch_bluetooth",
+          "itemDescription": "enable switch bluetooth",
+          "icon": ""
+        },
+        {
+          "itemName": "enable_switch_alarm_clock",
+          "itemTitle": "$string:enable_switch_alarm_clock",
+          "itemDescription": "enable switch alarm clock",
+          "icon": ""
+        },
+        {
+          "itemName": "enable_switch_nfc",
+          "itemTitle": "$string:enable_switch_nfc",
+          "itemDescription": "enable switch nfc",
+          "icon": ""
+        },
+        {
+          "itemName": "enable_switch_head_phones",
+          "itemTitle": "$string:enable_switch_head_phones",
+          "itemDescription": "enable switch head phones",
+          "icon": ""
+        }
+      ]
+    },
+
+    {
+      "pageTitle": "$string:more_ntf_setting",
+      "pageDescription": "",
+      "entryKey": "systemui_notification_settings",
+      "params": "NtfMoreSetting",
+      "path": [
+        "$string:notification_and_status_bar_title", "$string:more_ntf_setting"
+      ],
+      "searchItems": [
+        {
+          "itemName": "more_notification_settings",
+          "itemTitle": "$string:more_ntf_setting",
+          "itemDescription": "More Notification Settings",
+          "icon": ""
+        },
+        {
+          "itemName": "lock_screen_notification",
+          "itemTitle": "$string:lock_screen_notification",
+          "itemDescription": "Lock Screen Notification",
+          "icon": ""
+        },
+        {
+          "itemName": "wake_screen_when_receive_notification",
+          "itemTitle": "$string:wake_screen_when_receive_notification",
+          "itemDescription": "Wake Screen When Receive Notification",
+          "icon": ""
+        },
+        {
+          "itemName": "display_lock_Screen_notification_content",
+          "itemTitle": "$string:display_lock_Screen_notification_content",
+          "itemDescription": "Display Lock Screen Notification Content",
+          "icon": "",
+          "alias": "隐藏通知内容|显示通知内容|隐藏锁屏通知内容|显示锁屏通知内容|隐藏锁屏通知|显示锁屏通知|隐藏通知|显示通知"
+        },
+        {
+          "itemName": "display_banner_notification_content",
+          "itemTitle": "$string:display_banner_notification_content",
+          "itemDescription": "Display Banner Notification Content",
+          "icon": "",
+          "alias": "智能提醒|隐藏通知内容|显示通知内容|隐藏横幅通知内容|显示横幅通知内容|隐藏横幅通知|显示横幅通知|隐藏通知|显示通知"
+        },
+        {
+          "itemName": "display_live_window_content",
+          "itemTitle": "$string:display_live_window_content",
+          "itemDescription": "display live window content",
+          "icon": ""
+        },
+        {
+          "itemName": "show_desktop_badges",
+          "itemTitle": "$string:show_desktop_badges",
+          "itemDescription": "Show desktop badges",
+          "icon": "",
+          "alias": "lock_screen_notification"
+        },
+        {
+          "itemName": "allow_notification_distribution",
+          "itemTitle": "$string:allow_notification_distribution",
+          "itemDescription": "allow_notification_distribution",
+          "icon": "",
+          "enable": "false",
+          "supportDevices": [
+            "tablet"
+          ]
+        }
+      ]
+    },
+
+    {
+      "pageTitle": "$string:live_view_title",
+      "pageDescription": "",
+      "entryKey": "systemui_notification_settings",
+      "params": "NtfLiveViewSwitchPage",
+      "path": [
+        "$string:notification_and_status_bar_title", "$string:live_view_title"
+      ],
+      "searchItems": [
+        {
+          "itemName": "live_view",
+          "itemTitle": "$string:live_view_title",
+          "itemDescription": "Live View Settings",
+          "icon": ""
+        },
+        {
+          "itemName": "allow_live_view_distribution",
+          "itemTitle": "$string:allow_live_view_distribution",
+          "itemDescription": "allow_live_view_distribution",
+          "icon": "",
+          "enable": "false",
+          "supportDevices": [
+            "tablet"
+          ]
+        }
+      ]
+    }
+  ]
+}

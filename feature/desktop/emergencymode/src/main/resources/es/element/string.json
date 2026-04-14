@@ -1,0 +1,200 @@
+{
+    "string":[
+        {
+            "name":"accessibility_cancel_this_edit",
+            "value":"cancelar cambios",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_back",
+            "value":"Volver",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_save_this_edit",
+            "value":"guardar cambios",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_remove",
+            "value":"Eliminar",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_edit",
+            "value":"Editar",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_note",
+            "value":"*Si sales del modo Reserva de energía, es posible que el dispositivo no tenga suficiente energía para permanecer encendido.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_dialog_title_exit",
+            "value":"¿Salir del modo Reserva de energía?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"emergency_enter_dialog_title",
+            "value":"Batería extremadamente baja",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Thermal_safe_note",
+            "value":"Si es posible, no utilices el dispositivo. El modo Enfriamiento se cerrará automáticamente una vez que se haya enfriado.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_dialog_not_remind",
+            "value":"No volver a mostrar",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_shutdown_dialog_title_exit",
+            "value":"¿Quieres salir del modo Reserva de energía y apagarlo?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_title",
+            "value":"Modo Reserva de energía",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_all_application",
+            "value":"Todas las aplicaciones",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_button_exit",
+            "value":"Salir",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_title_dialog_enter",
+            "value":"Nivel de batería extremadamente bajo. Se ha habilitado el modo Reserva de energía para prolongar la autonomía de la batería.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_button_determined",
+            "value":"Aceptar",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_button_cancel",
+            "value":"Cancelar",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"emergency_exit_with_charge_dialog_content",
+            "value":"Si sales ahora, es posible que el dispositivo no tenga suficiente batería para permanecer encendido.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_add_application",
+            "value":"Añadir aplicaciones",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_search_application",
+            "value":"Buscar aplicaciones",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"thermal_safe_enter_dialog_dialog_title",
+            "value":"Dispositivo demasiado caliente",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_add",
+            "value":"Añadir",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"emergency_exit_without_charge_dialog_content",
+            "value":"Recuerda cargar el dispositivo lo antes posible.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"thermal_safe_enter_dialog_dialog_content",
+            "value":"Se ha activado el modo Enfriamiento. Este modo se cerrará una vez que el dispositivo se haya enfriado.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"emergency_enter_dialog_content",
+            "value":"Se ha habilitado el modo Reserva de energía para prolongar la autonomía de la batería.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Thermal_safe_title",
+            "value":"Modo Enfriamiento",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_button_know",
+            "value":"Aceptar",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Thermal_safe_dialog_title_enter",
+            "value":"Dispositivo demasiado caliente. Se ha habilitado el modo Enfriamiento. Este modo se cerrará automáticamente una vez que el dispositivo se haya enfriado.",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

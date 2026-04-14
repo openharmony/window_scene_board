@@ -1,0 +1,95 @@
+{
+    "string":[
+        {
+            "name":"accessibility_str_two_finger_slide",
+            "value":"Faire glisser deux doigts vers la gauche ou la droite pour changer d'écran",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"suggestion",
+            "value":"Suggestions",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"form_center_notice_text",
+            "value":"Vous pouvez cliquer sur des widgets ou les faire glisser pour les ajouter à l'écran d'accueil",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_to_screen_lock",
+            "value":"Ajouter à l'écran verrouillé",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_theme_form_to_desktop_more",
+            "value":"Plus de widgets en direct",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_form_to_intelligent",
+            "value":"Ajouter à Assistant·TODAY",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"form_center_notice_button",
+            "value":"OK",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"form_added",
+            "value":"Widget ajouté.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"look_more_theme_form",
+            "value":"Plus",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"splitter_format",
+            "value":"%1$s, %2$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_str_long_click_to_drag",
+            "value":"Toucher deux fois et maintenir pour déplacer",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"card_load_error",
+            "value":"Erreur de chargement de widget. Veuillez réessayer ultérieurement.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"onekeylock_shortcut",
+            "value":"Raccourci de l'écran verrouillé",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

@@ -1,0 +1,33 @@
+{
+    "plural":[
+        {
+            "name":"ntf_pin_top_dialog_reach_limit_content",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"[TS_818590]_Up to %d app can be pinned to the top. Remove apps you no longer want to pin."
+                },
+                {
+                    "quantity":"other",
+                    "value":"[TS_818591]_Up to %d apps can be pinned to the top. Remove apps you no longer want to pin."
+                },
+                {
+                    "quantity":"zero",
+                    "value":"[TS_818589]_Up to %d apps can be pinned to the top. Remove apps you no longer want to pin."
+                },
+                {
+                    "quantity":"few",
+                    "value":"[TS_818585]_Up to %d apps can be pinned to the top. Remove apps you no longer want to pin."
+                },
+                {
+                    "quantity":"many",
+                    "value":"[TS_818588]_Up to %d apps can be pinned to the top. Remove apps you no longer want to pin."
+                },
+                {
+                    "quantity":"two",
+                    "value":"[TS_818583]_Up to %d apps can be pinned to the top. Remove apps you no longer want to pin."
+                }
+            ]
+        }
+    ]
+}

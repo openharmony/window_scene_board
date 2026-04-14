@@ -1,0 +1,116 @@
+{
+  "color": [
+    {
+      "name": "control_center_component_background",
+      "value": "#D8202224"
+    },
+    {
+      "name": "icon_off_bg",
+      "value": "#1AFFFFFF"
+    },
+    {
+      "name": "batch_modif_id_color_emphasize",
+      "value": "#317AF7"
+    },
+    {
+      "name": "live_card_extend_button_bg",
+      "value": "#0dffffff"
+    },
+    {
+      "name": "flight_template_additional_text_color",
+      "value": "#4DFFFFFF"
+    },
+    {
+      "name": "flight_template_title_color",
+      "value": "#E6FFFFFF"
+    },
+    {
+      "name": "flight_template_content_color",
+      "value": "#99FFFFFF"
+    },
+    {
+      "name": "flight_template_space_text_color",
+      "value": "#99FFFFFF"
+    },
+    {
+      "name": "flight_template_space_text_border_color",
+      "value": "#66FFFFFF"
+    },
+    {
+      "name": "ntf_brightness_bg_color",
+      "value": "#FF000000"
+    },
+    {
+      "name": "live_card_divider_bg_color",
+      "value": "#FFFFFFFF"
+    },
+    {
+      "name": "theme_ntf_phone_action_divider_color",
+      "value": "#FF000000"
+    },
+    {
+      "name": "theme_ntf_phone_action_bg_color",
+      "value": "#FF000000"
+    },
+    {
+      "name": "theme_ntf_phone_group_divider_color",
+      "value": "#FF000000"
+    },
+    {
+      "name": "theme_ntf_phone_remaind_bg_color",
+      "value": "#FF000000"
+    },
+    {
+      "name": "live_ntf_disable_brightness_bg_color",
+      "value": "#4D000000"
+    },
+    {
+      "name": "live_heads_up_disable_brightness_bg_color",
+      "value": "#4D000000"
+    },
+    {
+      "name": "live_btn_default_disable_brightness_bg_color",
+      "value": "#24ffffff"
+    },
+    {
+      "name": "live_btn_on_disable_brightness_bg_color",
+      "value": "#e7ffffff"
+    },
+    {
+      "name": "live_btn_off_disable_brightness_bg_color",
+      "value": "#2e000000"
+    },
+    {
+      "name": "theme_ntf_phone_pin_text_color",
+      "value": "#FFFFFFFF"
+    },
+    {
+      "name": "control_center_sub_panel_selected_color",
+      "value": "#FFFFFF"
+    },
+    {
+      "name": "control_center_sub_panel_settings_color",
+      "value": "#FFFFFF"
+    },
+    {
+      "name": "ntf_phone_all_clear_no_brightness_bg_color",
+      "value": "#61000000"
+    },
+    {
+      "name": "theme_ntf_color_text_no_brightness_secondary",
+      "value": "#c2ffffff"
+    },
+    {
+      "name": "theme_ntf_color_text_no_brightness_tertiary",
+      "value": "#9dffffff"
+    },
+    {
+      "name": "ntf_blur_style_no_brightness_bg",
+      "value": "#83000000"
+    },
+    {
+      "name": "notification_colla_badge_bg_color",
+      "value": "#66000000"
+    }
+  ]
+}

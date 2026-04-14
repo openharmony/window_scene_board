@@ -1,0 +1,144 @@
+{
+    "string":[
+        {
+            "name":"title_login_openharmony_account",
+            "value":"Hãy đăng nhập để sử dụng tính năng Siêu thiết bị",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_name_desc",
+            "value":"Siêu thiết bị",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"account_button_login",
+            "value":"Đăng nhập",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"text_open_wlan_and_bluetooth_account",
+            "value":"Cần có quyền này để phát hiện và phối hợp với các thiết bị.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"super_device_title_open_wlan_and_bluetooth",
+            "value":"Hãy bật WLAN và Bluetooth để sử dụng tính năng Siêu thiết bị",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"super_device_disabled",
+            "value":"Bật chế độ Siêu thiết bị?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"button_enable",
+            "value":"Bật",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"device_connected_msg",
+            "value":"Đã kết nối",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"tablet",
+            "value":"Máy tính bảng",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"capsuleTips",
+            "value":"Chạm đúp để mở Siêu thiết bị",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"radarIconTipsBlank",
+            "value":"Nút Siêu thiết bị, chạm đúp để kích hoạt",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"appSateCollaborating",
+            "value":"Phối hợp",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"TV",
+            "value":"TV",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"switch_audio",
+            "value":"Đầu ra âm thanh được chuyển sang \"%s\".",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Phone",
+            "value":"Điện thoại",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Laptop",
+            "value":"Máy tính",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Car",
+            "value":"Ô tô",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"audio",
+            "value":"Thiết bị âm thanh",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"appSateCancel",
+            "value":"Kết thúc phối hợp",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"radarIconTips",
+            "value":"Nút để vào Siêu thiết bị, chạm đúp bằng một ngón tay để kích hoạt",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

@@ -1,0 +1,64 @@
+{
+    "plural":[
+        {
+            "name":"psd_incorrect_will_locked1",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"ཐེངས་ %d",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"psd_incorrect_will_locked2",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"སྐར་མ་ %d",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"psd_incorrect_will_locked3",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"སྐར་ཆ་ %d",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"psd_incorrect_psd_left_times",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"གསང་ཨང་ནོར་འདུག ད་དུང་ཚོད་ལྟ་ཐེངས་ %d བྱ་ཆོག",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"psd_incorrect_psd_left_times_mix",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"གསང་ཨང་ནོར་འདུག ད་དུང་ཚོད་ལྟ་ཐེངས་ %d བྱ་ཆོག",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

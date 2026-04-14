@@ -1,0 +1,18 @@
+{
+    "string":[
+        {
+            "name":"control_center_complex_toggle_auto_rotate_title",
+            "value":"画面方向のロック",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"multi_window_opened",
+            "value":"フリーウィンドウが有効です。これは、横表示モードでのみ機能します。",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

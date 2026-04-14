@@ -1,0 +1,10 @@
+{
+  "module": {
+    "name": "musicservicetogglecomponent",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ]
+  }
+}

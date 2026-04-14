@@ -1,0 +1,102 @@
+{
+    "string":[
+        {
+            "name":"expand_formstack",
+            "value":"Развернуть стопку",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"expand_stack_request_focus_front_text",
+            "value":"Элемент %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"delete_stack_form",
+            "value":"Виджет %s удален",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"talkback_expand_stack_moved_to",
+            "value":"Помещено как элемент %d в стопку",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"edit_formstack",
+            "value":"Изменить виджет %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"delete_formstack",
+            "value":"Удалить виджет %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"form_pinned_stack_text",
+            "value":"Виджет %1$s перемещен вверх стопки",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"stack_request_focus_after_text",
+            "value":"Это виджет %1$s. Есть доступные операции. Дважды нажмите и удерживайте для открытия меню опций.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"create_form_stack_text",
+            "value":"Создана стопка с виджетами %1$s и %2$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"expand_stack_text",
+            "value":"Развернуто, проведите двумя пальцами вниз для просмотра виджетов в стопке",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"delete_form_stack_text",
+            "value":"Удалить",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_form_stack_text",
+            "value":"Виджет %1$s помещен в стопку",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"close_stack_text",
+            "value":"Стопка виджетов свернута",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"talkback_expand_stack_move_to",
+            "value":"Перемещено к элементу %d",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

@@ -1,0 +1,352 @@
+{
+    "plural":[
+        {
+            "name":"psd_incorrect_will_locked1",
+            "value":[
+                {
+                    "quantity":"many",
+                    "value":"[TS_924867]_%d more attempts"
+                },
+                {
+                    "quantity":"few",
+                    "value":"[TS_924764]_%d more attempts"
+                },
+                {
+                    "quantity":"zero",
+                    "value":"[TS_924836]_%d more attempts"
+                },
+                {
+                    "quantity":"one",
+                    "value":"[TS_924853]_%d more attempt"
+                },
+                {
+                    "quantity":"other",
+                    "value":"[TS_924865]_%d more attempts"
+                },
+                {
+                    "quantity":"two",
+                    "value":"[TS_924876]_%d more attempts"
+                }
+            ]
+        },
+        {
+            "name":"psd_incorrect_will_locked2",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"[TS_924848]_%d minute"
+                },
+                {
+                    "quantity":"few",
+                    "value":"[TS_924760]_%d minutes"
+                },
+                {
+                    "quantity":"two",
+                    "value":"[TS_924877]_%d minutes"
+                },
+                {
+                    "quantity":"zero",
+                    "value":"[TS_924749]_%d minutes"
+                },
+                {
+                    "quantity":"many",
+                    "value":"[TS_924742]_%d minutes"
+                },
+                {
+                    "quantity":"other",
+                    "value":"[TS_924888]_%d minutes"
+                }
+            ]
+        },
+        {
+            "name":"psd_incorrect_will_locked3",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"[TS_924858]_%d second"
+                },
+                {
+                    "quantity":"few",
+                    "value":"[TS_924766]_%d seconds"
+                },
+                {
+                    "quantity":"zero",
+                    "value":"[TS_924751]_%d seconds"
+                },
+                {
+                    "quantity":"two",
+                    "value":"[TS_924870]_%d seconds"
+                },
+                {
+                    "quantity":"other",
+                    "value":"[TS_924812]_%d seconds"
+                },
+                {
+                    "quantity":"many",
+                    "value":"[TS_924866]_%d seconds"
+                }
+            ]
+        },
+        {
+            "name":"psd_incorrect_psd_left_times",
+            "value":[
+                {
+                    "quantity":"two",
+                    "value":"[TS_924780]_Incorrect PIN. %d attempts remaining."
+                },
+                {
+                    "quantity":"few",
+                    "value":"[TS_924755]_Incorrect PIN. %d attempts remaining."
+                },
+                {
+                    "quantity":"other",
+                    "value":"[TS_924810]_Incorrect PIN. %d attempts remaining."
+                },
+                {
+                    "quantity":"many",
+                    "value":"[TS_924773]_Incorrect PIN. %d attempts remaining."
+                },
+                {
+                    "quantity":"zero",
+                    "value":"[TS_924886]_Incorrect PIN. %d attempts remaining."
+                },
+                {
+                    "quantity":"one",
+                    "value":"[TS_924805]_Incorrect PIN. %d attempt remaining."
+                }
+            ]
+        },
+        {
+            "name":"psd_incorrect_psd_left_times_mix",
+            "value":[
+                {
+                    "quantity":"many",
+                    "value":"[TS_924798]_Incorrect password. %d attempts remaining."
+                },
+                {
+                    "quantity":"zero",
+                    "value":"[TS_924839]_Incorrect password. %d attempts remaining."
+                },
+                {
+                    "quantity":"other",
+                    "value":"[TS_924873]_Incorrect password. %d attempts remaining."
+                },
+                {
+                    "quantity":"one",
+                    "value":"[TS_924875]_Incorrect password. %d attempt remaining."
+                },
+                {
+                    "quantity":"few",
+                    "value":"[TS_924767]_Incorrect password. %d attempts remaining."
+                },
+                {
+                    "quantity":"two",
+                    "value":"[TS_924813]_Incorrect password. %d attempts remaining."
+                }
+            ]
+        },
+        {
+            "name":"sim_unlock_input_puk_tips",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"[TS_924868]_Enter PUK code (%d attempt remaining)"
+                },
+                {
+                    "quantity":"two",
+                    "value":"[TS_924852]_Enter PUK code (%d attempts remaining)"
+                },
+                {
+                    "quantity":"zero",
+                    "value":"[TS_924789]_Enter PUK code (%d attempts remaining)"
+                },
+                {
+                    "quantity":"few",
+                    "value":"[TS_924816]_Enter PUK code (%d attempts remaining)"
+                },
+                {
+                    "quantity":"many",
+                    "value":"[TS_924747]_Enter PUK code (%d attempts remaining)"
+                },
+                {
+                    "quantity":"other",
+                    "value":"[TS_924744]_Enter PUK code (%d attempts remaining)"
+                }
+            ]
+        },
+        {
+            "name":"sim_unlock_input_tips",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"[TS_924880]_Enter SIM PIN (%d attempt remaining)"
+                },
+                {
+                    "quantity":"two",
+                    "value":"[TS_924736]_Enter SIM PIN (%d attempts remaining)"
+                },
+                {
+                    "quantity":"zero",
+                    "value":"[TS_924777]_Enter SIM PIN (%d attempts remaining)"
+                },
+                {
+                    "quantity":"few",
+                    "value":"[TS_924847]_Enter SIM PIN (%d attempts remaining)"
+                },
+                {
+                    "quantity":"many",
+                    "value":"[TS_924743]_Enter SIM PIN (%d attempts remaining)"
+                },
+                {
+                    "quantity":"other",
+                    "value":"[TS_924857]_Enter SIM PIN (%d attempts remaining)"
+                }
+            ]
+        },
+        {
+            "name":"sim_unlock_pin_incorrect_tips",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"[TS_924729]_Incorrect SIM PIN. %d attempt remaining."
+                },
+                {
+                    "quantity":"two",
+                    "value":"[TS_924759]_Incorrect SIM PIN. %d attempts remaining."
+                },
+                {
+                    "quantity":"zero",
+                    "value":"[TS_924731]_Incorrect SIM PIN. %d attempts remaining."
+                },
+                {
+                    "quantity":"few",
+                    "value":"[TS_924863]_Incorrect SIM PIN. %d attempts remaining."
+                },
+                {
+                    "quantity":"many",
+                    "value":"[TS_924781]_Incorrect SIM PIN. %d attempts remaining."
+                },
+                {
+                    "quantity":"other",
+                    "value":"[TS_924820]_Incorrect SIM PIN. %d attempts remaining."
+                }
+            ]
+        },
+        {
+            "name":"sim_unlock_puk_incorrect_tips",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"[TS_924824]_Incorrect PUK code. %d attempt remaining. After the maximum number of attempts, your SIM card will be permanently unusable."
+                },
+                {
+                    "quantity":"two",
+                    "value":"[TS_924811]_Incorrect PUK code. %d attempts remaining. After the maximum number of attempts, your SIM card will be permanently unusable."
+                },
+                {
+                    "quantity":"zero",
+                    "value":"[TS_924761]_Incorrect PUK code. %d attempts remaining. After the maximum number of attempts, your SIM card will be permanently unusable."
+                },
+                {
+                    "quantity":"few",
+                    "value":"[TS_924778]_Incorrect PUK code. %d attempts remaining. After the maximum number of attempts, your SIM card will be permanently unusable."
+                },
+                {
+                    "quantity":"many",
+                    "value":"[TS_924800]_Incorrect PUK code. %d attempts remaining. After the maximum number of attempts, your SIM card will be permanently unusable."
+                },
+                {
+                    "quantity":"other",
+                    "value":"[TS_924768]_Incorrect PUK code. %d attempts remaining. After the maximum number of attempts, your SIM card will be permanently unusable."
+                }
+            ]
+        },
+        {
+            "name":"fp_fingerprint_not_match",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"[TS_945506]_Fingerprint not recognized. %d attempt remaining."
+                },
+                {
+                    "quantity":"other",
+                    "value":"[TS_945499]_Fingerprint not recognized. %d attempts remaining."
+                },
+                {
+                    "quantity":"zero",
+                    "value":"[TS_945500]_Fingerprint not recognized. %d attempts remaining."
+                },
+                {
+                    "quantity":"few",
+                    "value":"[TS_945504]_Fingerprint not recognized. %d attempts remaining."
+                },
+                {
+                    "quantity":"many",
+                    "value":"[TS_945501]_Fingerprint not recognized. %d attempts remaining."
+                },
+                {
+                    "quantity":"two",
+                    "value":"[TS_945503]_Fingerprint not recognized. %d attempts remaining."
+                }
+            ]
+        },
+        {
+            "name":"psd_totle_length",
+            "value":[
+                {
+                    "quantity":"few",
+                    "value":"[TS_968410]_%d digits in total"
+                },
+                {
+                    "quantity":"many",
+                    "value":"[TS_968407]_%d digits in total"
+                },
+                {
+                    "quantity":"one",
+                    "value":"[TS_968413]_%d digit in total"
+                },
+                {
+                    "quantity":"other",
+                    "value":"[TS_968408]_%d digits in total"
+                },
+                {
+                    "quantity":"two",
+                    "value":"[TS_968409]_%d digits in total"
+                },
+                {
+                    "quantity":"zero",
+                    "value":"[TS_968406]_%d digits in total"
+                }
+            ]
+        },
+        {
+            "name":"psd_entered_length",
+            "value":[
+                {
+                    "quantity":"zero",
+                    "value":"[TS_968411]_%d digits entered"
+                },
+                {
+                    "quantity":"two",
+                    "value":"[TS_968414]_%d digits entered"
+                },
+                {
+                    "quantity":"other",
+                    "value":"[TS_968404]_%d digits entered"
+                },
+                {
+                    "quantity":"one",
+                    "value":"[TS_968403]_%d digit entered"
+                },
+                {
+                    "quantity":"many",
+                    "value":"[TS_968412]_%d digits entered"
+                },
+                {
+                    "quantity":"few",
+                    "value":"[TS_968405]_%d digits entered"
+                }
+            ]
+        }
+    ]
+}

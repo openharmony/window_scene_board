@@ -1,0 +1,44 @@
+{
+    "string":[
+        {
+            "name":"immersive_sys_no_auth_tips",
+            "value":"[TS_950651]_Enable Location Services to enjoy more features."
+        },
+        {
+            "name":"immersive_go_auth",
+            "value":"[TS_950652]_Go to Settings"
+        },
+        {
+            "name":"module_desc",
+            "value":"[TS_950650]_module description"
+        },
+        {
+            "name":"immersive_app_no_auth_tips",
+            "value":"[TS_950654]_Grant Location access to enjoy more features."
+        },
+        {
+            "name":"immersive_app_sys_no_auth_tips",
+            "value":"[TS_956618]_To enjoy more features, grant Location access and make sure Location Services is on."
+        },
+        {
+            "name":"immersive_card_tip_to_down",
+            "value":"[TS_1053847]_Collapse, button, double tap to activate"
+        },
+        {
+            "name":"immersive_card_tip_to_up",
+            "value":"[TS_1053848]_Expand, button, double tap to activate"
+        },
+        {
+            "name":"immersive_card_tip_status_down",
+            "value":"[TS_1053846]_Card collapsed"
+        },
+        {
+            "name":"immersive_card_tip_status_up",
+            "value":"[TS_1053845]_Card expanded"
+        },
+      {
+        "name": "psd_back_accessible",
+        "value": "返回 按钮"
+      }
+    ]
+}

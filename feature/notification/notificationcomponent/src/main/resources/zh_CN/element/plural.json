@@ -1,0 +1,28 @@
+{
+    "plural":[
+        {
+            "name":"ntf_hide_content_count",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"%d 个通知",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"live_hide_content",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"%d 个实况",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

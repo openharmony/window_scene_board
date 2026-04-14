@@ -1,0 +1,10 @@
+{
+  "module": {
+    "name": "nfccomponent",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+    "string":[
+        {
+            "name":"app_center_menu_add_dock",
+            "value":"[TS_936769]_Add to dock"
+        },
+        {
+            "name":"app_menu_open",
+            "value":"[TS_936770]_Open"
+        },
+        {
+            "name":"app_menu_open_from_floating_window",
+            "value":"[TS_936772]_Open from the floating window"
+        },
+        {
+            "name":"app_menu_open_from_split_screen",
+            "value":"[TS_936773]_Open from split screen"
+        },
+        {
+            "name":"uninstall",
+            "value":"[TS_936765]_Uninstall"
+        },
+        {
+            "name":"isUninstall",
+            "value":"[TS_936771]_Uninstall %s?"
+        },
+        {
+            "name":"app_center_menu_add_desktop",
+            "value":"[TS_936768]_Add to home screen"
+        },
+        {
+            "name":"search_no_result",
+            "value":"[TS_948915]_No results"
+        },
+        {
+            "name":"drag_full",
+            "value":"[TS_995439]_Screen full. Can't add any more icons."
+        }
+    ]
+}

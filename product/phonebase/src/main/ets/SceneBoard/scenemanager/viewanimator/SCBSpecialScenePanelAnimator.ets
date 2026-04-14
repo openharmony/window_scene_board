@@ -35,6 +35,7 @@ import {
   CommonConstants,
   StyleConstants
 } from '@ohos/launchercommon';
+// import apsManager from '@hms.graphic.apsManager';
 import { ApsUtils, ViewManagerPolicy, ViewType } from '@ohos/frameworkwrapper';
 import { SCBConstants } from '@ohos/commonconstants';
 import { SCBSpecialScenePanelViewModel } from '../viewmodel/SCBSpecialScenePanelViewModel'

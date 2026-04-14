@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"app_not_support_full_screen",
+            "value":"应用不支持全屏",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

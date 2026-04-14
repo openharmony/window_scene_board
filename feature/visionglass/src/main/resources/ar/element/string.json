@@ -1,0 +1,116 @@
+{
+    "string":[
+        {
+            "name":"action_button_reply",
+            "value":"رد",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"banner_hint_message",
+            "value":"لا يمكن عرض هذه الرسالة على نظارة الشاشة الذكية. يمكنك عرضها على هاتفك.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screenshot_privacy",
+            "value":"يتعذر التقاط لقطة شاشة، قد تحتوي الشاشة الحالية على معلومات حساسة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Input_prompt",
+            "value":"يُرجى قطع الاتصال وإدخال نص في التطبيق على هاتفك.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Incoming_call_prompt",
+            "value":"يُرجى الرد على المكالمة على هاتفك",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"banner_toast_message",
+            "value":"يُرجى عرض هذه الرسالة على هاتفك.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_phone_power_save_mode",
+            "value":"وضع توفير الطاقة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_phone_cast_screen",
+            "value":"عرض شاشة الهاتف",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ScreenShot_label",
+            "value":"لقطة شاشة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_adjustment",
+            "value":"تعديل الوصفة الطبية",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_screenshot_no_right",
+            "value":"يتطلب التقاط لقطات شاشة إذن الصور ومقاطع الفيديو، يُرجى منح الإذن من النافذة المنبثقة على هاتفك أو من الإعدادات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Incoming_call_title",
+            "value":"مكالمة من %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_wlan",
+            "value":"الشبكة اللاسلكية",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_app_to_glass_msg",
+            "value":"يُرجى إضافة %s إلى مكتبة التطبيقات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_bluetooth",
+            "value":"البلوتوث",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Incoming_call_flag",
+            "value":"مكالمة واردة",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

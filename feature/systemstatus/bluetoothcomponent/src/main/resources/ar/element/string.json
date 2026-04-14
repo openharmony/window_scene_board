@@ -1,0 +1,32 @@
+{
+    "string":[
+        {
+            "name":"control_center_complex_toggle_bluetooth_title",
+            "value":"البلوتوث",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_nearlink_bluetooth_title",
+            "value":"البلوتوث وNearLink",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_bluetooth_connected",
+            "value":"تم الاتصال بالبلوتوث",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_bluetooth_open",
+            "value":"البلوتوث قيد التشغيل",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

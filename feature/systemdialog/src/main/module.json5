@@ -1,0 +1,17 @@
+{
+  "module": {
+    "name": "systemdialog",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ],
+    "metadata": [
+      {
+        "name": "ArkTSPartialUpdate",
+        "value": "true"
+      }
+    ],
+    "installationFree": false
+  }
+}

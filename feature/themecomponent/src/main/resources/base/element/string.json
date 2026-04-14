@@ -1,0 +1,206 @@
+{
+    "string":[
+        {
+            "name":"screenlock_font_creation_service",
+            "value":"Lock screen font creation service",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_one",
+            "value":"This service uses cloud-based AI to generate fonts based on text contained in images. Generated fonts can be applied to your lock screen clock and signature.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_four",
+            "value":"Statement About Lock Screen Font Creation Service and Privacy",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_stop_service_text",
+            "value":"If you disable this service, you will no longer be able to create fonts based on text contained in images.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screenlock_settings",
+            "value":"Lock screen",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"stop_font_creation_service",
+            "value":"Disable service",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screenlock_font_creation_service_text",
+            "value":"Lock screen font creation service",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_five",
+            "value":"Terms & conditions",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_setting_footbar_new",
+            "value":"This service requires an Internet connection and needs to read and upload/transfer images to provide lock screen font creation features. We only collect personal information relevant to the features you use. For more information, refer to the %1$s and %2$s. By turning this on, you agree to let us provide you with this service.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_three",
+            "value":"This service requires an Internet connection and needs to read and upload/transfer images to provide lock screen font creation features. We only collect personal information relevant to the features you use. For more information, refer to the %1$s and %2$s.\nPlease carefully read the above content. By tapping Agree, you agree to let us provide you with this service.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"icon_settings",
+            "value":"Icons",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"icon_edit_not_support_small_step",
+            "value":"Icons can't be adjusted while Settings is in a floating window.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"icon_settings_content",
+            "value":"Resize and rename home screen icons.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name": "theme_title",
+            "value": "theme title"
+        },
+        {
+            "name": "notification_main_time_travel_ongoing_content",
+            "value": "notification main"
+        },
+        {
+            "name": "notification_main_time_travel_finish_content",
+            "value": "travel finish content"
+        },
+        {
+            "name": "time_travel_generate_failed",
+            "value": ""
+        },
+        {
+            "name": "notification_main_dimensional_travel_ongoing_content",
+            "value": ""
+        },
+        {
+            "name": "notification_main_dimensional_travel_finish_content",
+            "value": ""
+        },
+        {
+            "name": "dimensional_travel_generate_failed",
+            "value": ""
+        },
+        {
+            "name": "notification_dynamic_lead_ongoing_content",
+            "value": ""
+        },
+        {
+            "name": "notification_dynamic_lead_finish_content",
+            "value": ""
+        },
+        {
+            "name": "dynamic_lead_generate_failed",
+            "value": ""
+        },
+        {
+            "name": "notification_main_pandora_title",
+            "value": ""
+        },
+        {
+            "name": "Desktop_setting",
+            "value": ""
+        },
+        {
+            "name": "icon",
+            "value": ""
+        },
+        {
+            "name": "Desktop_slide",
+            "value": ""
+        },
+        {
+            "name": "auto_align_content",
+            "value": ""
+        },
+        {
+            "name": "auto_align",
+            "value": ""
+        },
+        {
+            "name": "desktop_layout",
+            "value": ""
+        },
+        {
+            "name": "intelligent_status_off",
+            "value": ""
+        },
+        {
+            "name": "intelligent_status_on",
+            "value": ""
+        },
+        {
+            "name": "intelligent",
+            "value": ""
+        },
+      {
+        "name": "imagevideo_permission_reason",
+        "value": "需要读取相册图片"
+      },
+        {
+            "name": "file_access_reason",
+            "value": "需要访问文件权限"
+        },
+        {
+            "name":"edit_wallpaper",
+            "value":"wallpaper",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name": "theme_chose",
+            "value": "Select from the photo library"
+        },
+        {
+            "name": "current_wallpaper",
+            "value": "My wallpaper"
+        },
+        {
+            "name": "managment",
+            "value": "apply"
+        },
+        {
+            "name": "wallpaper_editor",
+            "value": ""
+        }
+    ]
+}

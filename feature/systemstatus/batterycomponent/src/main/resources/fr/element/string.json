@@ -1,0 +1,88 @@
+{
+    "string":[
+        {
+            "name":"low_battery_ntf_title",
+            "value":"Niveau de batterie bas",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"low_battery_ntf_btn_text",
+            "value":"Activer l'Économiseur de batterie",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"shutdown_dialog_title",
+            "value":"Remarque",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"battery_emergency_dialog_content",
+            "value":"Le niveau de batterie est extrêmement bas. Le mode d'économie d'énergie s'activera dans %d secondes.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"shutdown_dialog_content",
+            "value":"Le niveau de batterie est extrêmement bas. Votre appareil est sur le point de s'éteindre.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"shutdown_dialog_content_new",
+            "value":"La batterie est sur le point de s'épuiser. Extinction dans %d secondes.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"low_battery_ntf_content",
+            "value":"%s restants",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"accessibility_battery_charge_double",
+            "value":"Charge rapide en cours, batterie chargée à %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_battery_supercharge",
+            "value":"SuperCharge en cours, batterie chargée à %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_battery_charge",
+            "value":"Charge en cours, batterie chargée à %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_battery_power_saving",
+            "value":"Économiseur de batterie",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_battery_level",
+            "value":"Niveau de batterie, %s",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

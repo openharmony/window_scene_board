@@ -1,0 +1,74 @@
+{
+    "string":[
+        {
+            "name":"accessibility_status_bar_wifi_no",
+            "value":"لا توجد إشارة شبكة لاسلكية",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"shared_network_tips_network_messages",
+            "value":"يمكنك استخدام شبكة جوال \u202a%s\u202c للاتصال بالإنترنت وإرسال الرسائل واستلامها.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"shared_network_tips_network",
+            "value":"يمكنك استخدام شبكة جوال \u202a%s\u202c للاتصال بالإنترنت.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"shared_network_tips_network_calls",
+            "value":"يمكنك استخدام شبكة جوال \u202a%s\u202c للاتصال بالإنترنت وإجراء المكالمات واستقبالها.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"shared_network_tips1",
+            "value":"يمكنك استخدام شبكة جوال \u202a%s\u202c للاتصال بالإنترنت وإجراء المكالمات واستقبالها وإرسال الرسائل واستلامها.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"shared_network_tips",
+            "value":"يجري حاليًا استخدام شبكة جوال \u202a%s\u202c.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_wifi_4",
+            "value":"إشارة الشبكة اللاسلكية، كاملة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_wifi_3",
+            "value":"إشارة الشبكة اللاسلكية، ثلاث شُرط",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_wifi_2",
+            "value":"إشارة الشبكة اللاسلكية، شرطتان",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_wifi_1",
+            "value":"إشارة الشبكة اللاسلكية، شرطة واحدة",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

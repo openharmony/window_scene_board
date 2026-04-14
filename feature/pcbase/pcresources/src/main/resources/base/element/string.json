@@ -1,0 +1,1573 @@
+{
+    "string":[
+        {
+            "name":"edit_mode_panel_prompt",
+            "value":"Drag the icons to rearrange them. Icons at the top will appear in the Control Panel.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"input_menu_title",
+            "value":"Input methods"
+        },
+        {
+            "name":"camera_panel_title",
+            "value":"Camera"
+        },
+        {
+            "name":"camera_use_info",
+            "value":"%s is using the camera"
+        },
+        {
+            "name":"input_method_setting",
+            "value":"Settings"
+        },
+        {
+            "name":"keyboard_setting",
+            "value":"Settings"
+        },
+        {
+            "name":"suffix_recommend",
+            "value":"%s (Recommended)"
+        },
+        {
+            "name":"calendar_expand",
+            "value":"Show more",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"calendar_collapse",
+            "value":"Show less",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"hide_input_method_status_bar",
+            "value":"Hide toolbar",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"battery_menu_title",
+            "value":"Battery"
+        },
+        {
+            "name":"battery_charging_full_text",
+            "value":"Fully charged"
+        },
+        {
+            "name":"battery_smart_charging_text",
+            "value":"Smart charge in progress",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"battery_custom_charging_text",
+            "value":"Charging to custom charging limit",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"battery_charging_text",
+            "value":"Charging",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"battery_super_charging_text",
+            "value":"SuperCharging",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"battery_turbo_charging_text",
+            "value":"Turbo charging",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"apply_access_bluetooth_reason",
+            "value":"Apply ACCESS_BLUETOOTH permission"
+        },
+        {
+            "name":"battery_text",
+            "value":"Power source: Battery"
+        },
+        {
+            "name":"adapter_text",
+            "value":"Power source: Power adapter"
+        },
+        {
+            "name":"date_time_settings",
+            "value":"Date & time settings"
+        },
+        {
+            "name":"enterprise_right_warning",
+            "value":"This app has been restricted by your organization."
+        },
+        {
+            "name":"get_installed_bundle_list_reason",
+            "value":"SystemUI GetAllBundleInfo Request"
+        },
+        {
+            "name":"continue_mission_fail",
+            "value":"Handover failed."
+        },
+        {
+            "name":"continue_mission_waiting",
+            "value":"Handing over…"
+        },
+        {
+            "name":"continue_hap_come_from",
+            "value":"From \"%1$s\"."
+        },
+        {
+            "name":"entry_MainAbility",
+            "value":"SceneBoard"
+        },
+        {
+            "name":"mainability_description",
+            "value":"ETS_Empty Feature Ability"
+        },
+        {
+            "name":"cancel",
+            "value":"Cancel"
+        },
+        {
+            "name":"dock_all_app_entry",
+            "value":"All App"
+        },
+        {
+            "name":"dock_recents_entry",
+            "value":"Recents"
+        },
+        {
+            "name":"uninstall_success",
+            "value":"Uninstalled."
+        },
+        {
+            "name":"uninstall_failed",
+            "value":"Uninstallation failed."
+        },
+        {
+            "name":"disable_uninstall",
+            "value":"Uninstallation not allowed."
+        },
+        {
+            "name":"duplicate_add",
+            "value":"This has already been added."
+        },
+        {
+            "name":"delete_app",
+            "value":"Remove"
+        },
+        {
+            "name":"remove_from_desktop",
+            "value":"Remove from home screen"
+        },
+        {
+            "name":"remove_from_dock",
+            "value":"Remove from dock"
+        },
+        {
+            "name":"disable_add_to_dock",
+            "value":"Unable to add."
+        },
+        {
+            "name":"app_center_menu_add_dock",
+            "value":"Add to dock"
+        },
+        {
+            "name":"app_center_menu_add_desktop",
+            "value":"Add to home screen"
+        },
+        {
+            "name":"disable_to_move",
+            "value":"disable to move"
+        },
+        {
+            "name":"add_to",
+            "value":"Add to "
+        },
+        {
+            "name":"new_folder_name",
+            "value":"Folder"
+        },
+        {
+            "name":"rename_folder",
+            "value":"Rename"
+        },
+        {
+            "name":"add_to_desktop",
+            "value":"Add to home screen"
+        },
+        {
+            "name":"delete_form",
+            "value":"Remove"
+        },
+        {
+            "name":"is_delete_form",
+            "value":"Remove %s?"
+        },
+        {
+            "name":"form",
+            "value":"service widget"
+        },
+        {
+            "name":"edit_form_to_desktop",
+            "value":"Add widgets"
+        },
+        {
+            "name":"undo_s",
+            "value":"Undo: %s (U)"
+        },
+        {
+            "name":"redo_s",
+            "value":"Redo: %s (R)"
+        },
+        {
+            "name":"app_icon",
+            "value":"application icon"
+        },
+        {
+            "name":"remove_app_dialog_content",
+            "value":"You can add it again at any time from the App center."
+        },
+        {
+            "name":"remove_form_dialog_content",
+            "value":"You can add this widget again from the app's quick action menu."
+        },
+        {
+            "name":"No_running_apps_recently",
+            "value":"No recent apps"
+        },
+        {
+            "name":"No_available_window",
+            "value":"No app window available"
+        },
+        {
+            "name":"No_splittable_apps",
+            "value":"no splittable applications"
+        },
+        {
+            "name":"app_menu_open",
+            "value":"Open"
+        },
+        {
+            "name":"app_menu_open_new_window",
+            "value":"Open in new window"
+        },
+        {
+            "name":"app_menu_exit",
+            "value":"Quit"
+        },
+        {
+            "name":"airplane_mode",
+            "value":"Airplane mode"
+        },
+        {
+            "name":"control_center_complex_toggle_bluetooth_title",
+            "value":"Bluetooth"
+        },
+        {
+            "name":"control_center_complex_toggle_location_title",
+            "value":"Location"
+        },
+        {
+            "name":"control_center_complex_toggle_ring_mode_title_on",
+            "value":"Sound"
+        },
+        {
+            "name":"control_center_complex_toggle_ring_mode_title_off",
+            "value":"Silent"
+        },
+        {
+            "name":"control_center_complex_toggle_ring_mode_title_vibration",
+            "value":"Vibration"
+        },
+        {
+            "name":"control_center_complex_toggle_nfc_mode_title",
+            "value":"NFC"
+        },
+        {
+            "name":"system_settings",
+            "value":"System settings"
+        },
+        {
+            "name":"sleep",
+            "value":"Sleep"
+        },
+        {
+            "name":"reboot_device",
+            "value":"Restart"
+        },
+        {
+            "name":"shutdown_device",
+            "value":"Power off"
+        },
+        {
+            "name":"lock_screen",
+            "value":"Lock screen"
+        },
+        {
+            "name":"sound_menu_title",
+            "value":"Sounds"
+        },
+        {
+            "name":"sound_main",
+            "value":"Ringer，Messages，Notifications"
+        },
+        {
+            "name":"sound_media",
+            "value":"Music，Videos，Games"
+        },
+        {
+            "name":"sound_calls",
+            "value":"Calls"
+        },
+        {
+            "name":"sound_device_earpiece",
+            "value":"Receiver",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sound_output_device",
+            "value":"Output",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sound_output_device_local",
+            "value":"Internal speakers",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sound_output_device_soundx",
+            "value":"SoundX"
+        },
+        {
+            "name":"sound_output_device_earphone",
+            "value":"Wired headphones"
+        },
+        {
+            "name":"sound_output_device_usb_earphone",
+            "value":"USB headphones"
+        },
+        {
+            "name":"sound_output_device_bluetooth",
+            "value":"Bluetooth device"
+        },
+        {
+            "name":"sound_output_device_display_port",
+            "value":"DisplayPort device"
+        },
+        {
+            "name":"sound_output_device_remote_cast",
+            "value":"External display device"
+        },
+        {
+            "name":"sound_output_device_default",
+            "value":"External device"
+        },
+        {
+            "name":"sound_more_settings",
+            "value":"More settings"
+        },
+        {
+            "name":"sound_settings",
+            "value":"Settings"
+        },
+        {
+            "name":"sound_intput_device_local",
+            "value":"Internal microphone",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"microphone_using",
+            "value":"using"
+        },
+        {
+            "name":"microphone_input",
+            "value":"Input"
+        },
+        {
+            "name":"microphone_settings",
+            "value":"Settings"
+        },
+        {
+            "name":"single_quiet_space",
+            "value":"Voice isolation"
+        },
+        {
+            "name":"multiplayer_pure_vocal",
+            "value":"Multi-voice isolation",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"record_noise_reduct_on",
+            "value":"Enhanced audio recording | Off",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"record_noise_reduct_off",
+            "value":"Enhanced audio recording | On",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"external_screen_connect_left_button",
+            "value":"Monitor settings"
+        },
+        {
+            "name":"external_screen_connect_right_button",
+            "value":"Don't remind me again",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"external_screen_connect_notify_content",
+            "value":"Click for more display options.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"external_screen_connect_notify_title",
+            "value":"External monitor connected",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"extended_screen_dialog_title",
+            "value":"Unfold & switch to landscape orientation",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"extended_screen_dialog_content",
+            "value":"When a monitor is connected, your device only supports landscape orientation. For best results, make sure it is fully unfolded.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"confirm",
+            "value":"OK",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"microphone",
+            "value":"Microphone"
+        },
+        {
+            "name":"not_disturb_title",
+            "value":"Do not disturb"
+        },
+        {
+            "name":"microphone_mute_enable",
+            "value":"Muted",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sound_enable",
+            "value":"AI Audio Effects on",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"battery_more_settings",
+            "value":"Settings",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"common_cancel",
+            "value":"Cancel"
+        },
+        {
+            "name":"confirm_shutdown_tip",
+            "value":"Unsaved changes will be lost if you power off now."
+        },
+        {
+            "name":"confirm_reboot_tip",
+            "value":"Unsaved changes will be lost if you restart now."
+        },
+        {
+            "name":"confirm_shutdown_dialog_title",
+            "value":"Preparing to power off",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"confirm_restarting_dialog_title",
+            "value":"Preparing to restart",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"confirm_logout_dialog_title",
+            "value":"Log out?"
+        },
+        {
+            "name":"confirm_logout_dialog_content",
+            "value":"All apps will be closed.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"confirm_logout_button",
+            "value":"Log out",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"auth_by_fp_or_pwd",
+            "value":"Use fingerprint or password to unlock"
+        },
+        {
+            "name":"fp_incorrect_fp_try_again_pc",
+            "value":"Fingerprint not recognized. Cover the entire sensor and hold for a moment."
+        },
+        {
+            "name":"auth_enter_with_null",
+            "value":"Enter your password"
+        },
+        {
+            "name":"permission_reason_manage_install",
+            "value":"Used to call methods of pause, resume downloading from appGallery"
+        },
+        {
+            "name":"permission_reason_receive_install",
+            "value":"Used to receive common event of downloading status from appGallery"
+        },
+        {
+            "name":"permission_reason_receive_update_message",
+            "value":"Used to receive update message for param service"
+        },
+        {
+            "name":"prompt_boot_for_first",
+            "value":"Password required after restart"
+        },
+        {
+            "name":"enterprise_confirm",
+            "value":"OK"
+        },
+        {
+            "name":"low_battery_notification_title",
+            "value":"Low battery"
+        },
+        {
+            "name":"low_battery_notification_content",
+            "value":"Only %s battery remaining. Plug in your computer."
+        },
+        {
+            "name":"shutdown_ntf_title",
+            "value":"Low battery"
+        },
+        {
+            "name":"shutdown_ntf_text",
+            "value":"Your computer will power off soon unless you plug it in."
+        },
+        {
+            "name":"upper_shift_prompt",
+            "value":"CAPS LOCK on"
+        },
+        {
+            "name":"enter_old_psd",
+            "value":"Enter old password"
+        },
+        {
+            "name":"enter_new_psd",
+            "value":"Enter new password"
+        },
+        {
+            "name":"confirm_new_psd",
+            "value":"Confirm new password"
+        },
+        {
+            "name":"The_password_consists_of_6_32_characters",
+            "value":"Password must contain %1$d–%2$d characters"
+        },
+        {
+            "name":"password_contain_illegal_character",
+            "value":"Contains invalid characters"
+        },
+        {
+            "name":"psd_has_expired",
+            "value":"Your password has expired. Please change it, then log in."
+        },
+        {
+            "name":"change_lock_screen_psd",
+            "value":"Change password"
+        },
+        {
+            "name":"password_input_warning_message_not_equal",
+            "value":"Passwords don't match"
+        },
+        {
+            "name":"lenght_is_illegal",
+            "value":"Invalid password length"
+        },
+        {
+            "name":"psd_change_fail",
+            "value":"Unable to change lock screen password. Contact your IT admin.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"psd_change_fail_please_restart",
+            "value":"Unable to change password. Restart the computer and try again."
+        },
+        {
+            "name":"recovery_key_error",
+            "value":"Incorrect recovery key"
+        },
+        {
+            "name":"forgot_password",
+            "value":"Forgot password?"
+        },
+        {
+            "name":"restart_to_reset_password",
+            "value":"If you have forgotten your password, click here to restart the computer and reset it",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"enter_recovery_key_reset_password",
+            "value":"Enter recovery key to reset password"
+        },
+        {
+            "name":"psd_change_success_enter_pin",
+            "value":"Lock screen password successfully changed",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"recovery_key_cannot_be_empty",
+            "value":"Recovery key can't be blank"
+        },
+        {
+            "name":"psd_change_success",
+            "value":"Lock screen password successfully changed.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"password_complexity_is_illegal",
+            "value":"Password doesn't meet complexity requirements"
+        },
+        {
+            "name":"password_cannot_be_empty",
+            "value":"Cannot be blank"
+        },
+        {
+            "name":"pwd_expire_tips_title",
+            "value":"Time to update screen lock"
+        },
+        {
+            "name":"pwd_expire_tips_text",
+            "value":"Your password will expire on %s."
+        },
+        {
+            "name":"uninstall",
+            "value":"Uninstall"
+        },
+        {
+            "name":"isUninstall",
+            "value":"Uninstall %s?"
+        },
+        {
+            "name":"exit",
+            "value":"Quit"
+        },
+        {
+            "name":"domain_slot",
+            "value":"Enterprise"
+        },
+        {
+            "name":"user_log_limiting_prompt",
+            "value":"Max number of users logged in"
+        },
+        {
+            "name":"face_unlock_success_to_manual_login_pc",
+            "value":"Unlocked. Click anywhere to go to the home screen."
+        },
+        {
+            "name":"face_not_recognized_in_input_pwd_pc",
+            "value":"Face not recognized. Press & hold the spacebar to try again."
+        },
+        {
+            "name":"face_not_recognized_tip_pc",
+            "value":"Face not recognized. Click anywhere or press the spacebar to try again."
+        },
+        {
+            "name":"face_recognition_try_again_after_time_or_try_pwd_pc",
+            "value":"Face recognition disabled. Try again in %s, or enter your password."
+        },
+        {
+            "name":"face_recognition_try_again_after_time_or_try_others_pc",
+            "value":"Face recognition disabled. Try again in %s, or use another unlock method."
+        },
+        {
+            "name":"screen_unlock_with_pwd_face_fp_pc",
+            "value":"Unlock with your fingerprint, password, or face (hold down the spacebar)",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screen_unlock_with_pwd_or_face_tip_pc",
+            "value":"Unlock with your password, fingerprint, or face"
+        },
+        {
+            "name":"auth_by_face_or_pwd_pc",
+            "value":"Unlock with your password or face (hold down the spacebar)",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"auth_by_pwd_or_face_tip_pc",
+            "value":"Unlock with your password or face"
+        },
+        {
+            "name":"auth_by_pwd_after_pwd_disable",
+            "value":"Password required to unlock",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"low_battery_title",
+            "value":"Low battery"
+        },
+        {
+            "name":"low_battery_tip",
+            "value":"Only %s battery remaining. Plug your computer in or put it into Sleep mode.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sound_permission",
+            "value":"<body><span style='normal'>Huawei Device Co., Ltd. needs to extract voiceprint information from your voice to enhance the sound of your voice and reduce or remove any unwanted noise, so you come across crisp and clear on calls or in recordings. Your voiceprint information will not be saved, nor will it be backed up by Huawei.</span><span style='wrap'>\n-</span><span style='normal'>\nFor more information, refer to </span><span style='active'>About SOUND AI Audio Effects</span><span style='normal'>. </span><span style='wrap'>\n-</span><span style='normal'>\nBy clicking Agree, you agree to the processing of your voiceprint information.</span></body>"
+        },
+        {
+            "name":"permission_detail",
+            "value":"<body><span style='normal'>This device provides AI audio effects for audio input and output scenarios. For audio input scenarios (calling and audio recording), the Voice isolation feature is provided for picking up the voice of only one person, and the Multi-voice isolation feature is provided for picking up the voice of multiple persons, based on AI noise reduction algorithms. For audio output scenarios, the Vocal remover and Vocal isolator features are provided for audio processing during music and video playback, and the Call noise reduction feature is provided to enhance the quality of the audio from the other party during a call. </span><span style='wrap'>\n-</span><span style='title'>\nI. About Voice Isolation</span><span style='wrap'>\n-</span><span style='normal'>\nThis device offers the Voice isolation feature. It is a noise reduction and voice enhancement technology that uses voiceprint information to improve your voice signal quality during your call. Each time you speak through your device's microphone to have a call, this feature will identify your voice signals from the sound signals picked up by the microphone and enhance your voice signals while reducing or removing other interfering noise, so your speech can be transmitted more clearly to the other party. </span><span style='wrap'>\n-</span><span style='bold'>\nEvery technology has limitations and risks. Please note the following when using Voice isolation:</span><span style='normal'>\n%1$d. During the call, your voiceprint will be automatically extracted. This feature will only work if the extraction is successful.\n%2$d. If there is a high level of ambient noise for a continuous period during the call, the voiceprint extraction will be less likely to be successful, affecting the effectiveness of this feature.\n%3$d. How well the noise is reduced and your voice is enhanced during the call may vary depending the type of earphones you wear and how you wear them.\n%4$d. Only one speaker's voice can be enhanced during each call while this feature has started to work. If a different person replaces that one speaker to speak during the call, the voice signal quality of that different person will be lower. Manually disabling Voice isolation could resolve this problem.\n%5$d. Interfering human voices with similar voiceprints may not be reduced or removed as interfering noise. </span><span style='wrap'>\n-</span><span style='bold'>\nPrivacy Statement</span><span style='normal'>\nYour </span><span style='bold'>voiceprint</span><span style='normal'> will be strictly protected. Such information will not be saved, will not be backed up, and cannot be accessed by apps. For example, when you use Voice isolation, the call app can only receive the voice signals with noise reduced and your voice enhanced, but cannot access, back up, or obtain any </span><span style='bold'>voiceprint</span><span style='normal'>.\nYou have discretion over how and where your voiceprint will be used. For example, if you do not want to use Voice isolation, you can go to </span><span style='bold'>Settings </span><span style='normal'>></span><span style='bold'> Sound </span><span style='normal'>></span><span style='bold'> Input</span><span style='normal'> and disable </span><span style='bold'>Voice isolation</span><span style='normal'>. This feature will obtain your voiceprint again the next time you use this feature. </span><span style='wrap'>\n-</span><span style='title'>\nII. About Vocal Remover and Vocal Isolator</span><span style='wrap'>\n-</span><span style='normal'>\nThis device provides the </span><span style='bold'>Vocal remover</span><span style='normal'> and </span><span style='bold'>Vocal isolator</span><span style='normal'> features. Both features are based on AI models. </span><span style='bold'>Vocal remover</span><span style='normal'> can reduce the vocal sound and retain the background sound during audio or video playback, highlighting the accompaniment in real time for sing-along. </span><span style='bold'>Vocal isolator</span><span style='normal'> can reduce the background sound and retain the vocal sound during audio or video playback, enabling you to focus on speech when playing audio clips with much background noise. </span><span style='wrap'>\n-</span><span style='bold'>\nEvery technology has limitations and risks. Please note the following when using Vocal remover and Vocal isolator:</span><span style='normal'>\n%6$d. Such features only work with certain apps and certain devices (only speakers and earphones), and their effectiveness depends on actual usage conditions.\n%7$d. Vocal remover may leave some vocal sound remaining, depending on the audio content.\n%8$d. Vocal isolator may produce a result with vocal distortion, depending on the audio content.\n%9$d. The features will be automatically disabled after the device is restarted. </span><span style='wrap'>\n-</span><span style='bold'>\nDisclaimers</span><span style='normal'>\nTo use </span><span style='bold'>Vocal remover</span><span style='normal'> and </span><span style='bold'>Vocal isolator</span><span style='normal'>, you need to manually enable them. Both features are intended for personal daily use only. If any audio copyright disputes arise due to your actions, you will be solely responsible for the consequences. </span></body>",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sound",
+            "value":"SOUND AI Audio Effects"
+        },
+        {
+            "name":"ai_sound",
+            "value":"AI Audio Effects"
+        },
+        {
+            "name":"audio_privacy_hint",
+            "value":"Enhanced audio"
+        },
+        {
+            "name":"agree",
+            "value":"Agree"
+        },
+        {
+            "name":"sound_detail",
+            "value":"About SOUND AI Audio Effects"
+        },
+        {
+            "name":"ai_sound_detail",
+            "value":"About AI Audio Effects"
+        },
+        {
+            "name":"detail_version",
+            "value":"Last updated: %s"
+        },
+        {
+            "name":"enter_screenLock_password",
+            "value":"Password",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"enter_domain_password",
+            "value":"Enter work password"
+        },
+        {
+            "name":"permission_reason_access_near_link",
+            "value":"For accessing the near link interface"
+        },
+        {
+            "name":"reason_read_media",
+            "value":"Grant FileManager read media permission"
+        },
+        {
+            "name":"multispace_enterprise",
+            "value":"Work space",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"multispace_personal",
+            "value":"Personal space",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"multispace_isloading",
+            "value":"Loading…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"enterprise_space",
+            "value":"Work space",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"personal_space",
+            "value":"Personal space",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"exit_space",
+            "value":"Exit space"
+        },
+        {
+            "name":"space_switching",
+            "value":"Switch spaces",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"multiuser_confirm_shutdown_tip",
+            "value":"Other people are still using this computer. If you power off now, they could lose unsaved content.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"multiuser_confirm_reboot_tip",
+            "value":"Other people are still using this computer. If you restart now, they could lose unsaved content.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"multiuser_dialog_reboot",
+            "value":"Restart",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"restart_enter_pin",
+            "value":"Password required after restart",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"user_not_logged_in_enter_pin",
+            "value":"Password required to log in",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"multispace_enterprise_login_expired",
+            "value":"Offline login authentication expired. Connect to the company network to log in.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"multispace_enterprise_connect_failed",
+            "value":"Unable to connect to enterprise server. Check server and WLAN settings.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"enterprise_account_locked",
+            "value":"Account has been locked. Try again once it has been unlocked by the enterprise server.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"enterprise_auth_timeout",
+            "value":"Authentication timed out. Try again later.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"permission_reason_access_meeting",
+            "value":"For accessing the meeting interface"
+        },
+        {
+            "name":"logout",
+            "value":"Log out",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"switch_user",
+            "value":"Switch user",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"display_settings_title",
+            "value":"Display & brightness"
+        },
+        {
+            "name":"sound_ai",
+            "value":"AI Audio Effects"
+        },
+        {
+            "name":"account_limit_toast",
+            "value":"Maximum number of logged in users reached.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"voice_cancel",
+            "value":"Vocal remover",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"voice_extract",
+            "value":"Vocal isolator",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"call_noise_reduce_open",
+            "value":"Call noise reduction on",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"call_noise_reduce_off",
+            "value":"Call noise reduction off",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"voice_default_title",
+            "value":"%s off"
+        },
+        {
+            "name":"voice_effect_title",
+            "value":"%s on"
+        },
+        {
+            "name":"voice_default_desc",
+            "value":"You haven't used %1$s for a while. To avoid affecting audio playback, %2$s was automatically turned off.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"voice_cancel_desc",
+            "value":"Sing along to your heart's content. You are advised to turn this off after use.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"voice_extract_desc",
+            "value":"This feature can help make voices clearer. You are advised to turn this off after use.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"account_limit_developermode",
+            "value":"Only one user can be logged in when \"Developer options\" is on.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"desktop_trim",
+            "value":"Clean up",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"search_placeholder",
+            "value":"Search",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"edit_wall_paper",
+            "value":"Change wallpaper",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"desktop_auto_sort",
+            "value":"Clean up"
+        },
+        {
+            "name":"do_not_remind_again",
+            "value":"Don't remind me again",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"get_it_clock",
+            "value":"OK (%d)",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remove_keyboard",
+            "value":"Important",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"close_machine_warning",
+            "value":"Take the keyboard off the screen before folding.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"connect_keyboard",
+            "value":"Connect your keyboard",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"turn_on_keyboard",
+            "value":"%d. Flip the switch on the keyboard to connect.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pop_up_dialog",
+            "value":"%1$d. If connection fails, connect to the computer with a USB-C cable or press F3 for %2$ds to pair.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"next_step",
+            "value":"Next",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"switching_desktops",
+            "value":"Switch home screens",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"switch_desktops",
+            "value":"Swipe up or down with four fingers to switch between home screens.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"got_it",
+            "value":"OK",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"apply_wallpaper_to",
+            "value":"Apply wallpaper to"
+        },
+        {
+            "name":"apply_screen_lock",
+            "value":"Lock screen"
+        },
+        {
+            "name":"apply_desktop",
+            "value":"Home screen"
+        },
+        {
+            "name":"apply_wallpaper",
+            "value":"Apply"
+        },
+        {
+            "name":"image_decoding_failure",
+            "value":"Image error. Try again."
+        },
+        {
+            "name":"multispace_too_often_switch",
+            "value":"Switched user spaces too frequently. Try again in %ds.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"multispace_iscreating",
+            "value":"Adding…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"multispace_indevelopermode_cannot_switch",
+            "value":"Unable to switch spaces. Go to Settings > System, disable Developer options, and try again.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"multispace_in_low_memory",
+            "value":"System memory low. Try again later.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remove_region_folder",
+            "value":"Remove binder",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"create_empty_region_folder",
+            "value":"Binder",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"default_region_folder_name",
+            "value":"Binder %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"region_folder_exceed_capacity",
+            "value":"Binder is full.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"windows_vm",
+            "value":"Windows VM"
+        },
+        {
+            "name":"smart_cleanup_desktop",
+            "value":"Smart organize",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"please_enter_psd_for_security_fingerprint",
+            "value":"Password required for additional security",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"enterprise_space_manager",
+            "value":"Manage spaces",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"please_enter_psd_for_security_face",
+            "value":"Password required for additional security",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"please_enter_psd_for_security_fingerprint_face",
+            "value":"Password required for additional security",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"virtual_machine_updating",
+            "value":"Virtual machine is being updated"
+        },
+        {
+            "name":"virtual_machine_reboot_tips",
+            "value":"Restarting now may damage the virtual machine. Try again later.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"virtual_machine_shut_down_tips",
+            "value":"Powering off now may damage the virtual machine. Try again later.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"face_unlock_verifying_pc",
+            "value":"Verifying…\nPlease look straight at the camera",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"hopper_expand_reminder",
+            "value":"When unfolding your computer, be careful not to pinch your fingers or other objects in the hinge.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"friendly_reminder",
+            "value":"Note",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"desktop",
+            "value":"Home screen",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"compatible_mode_startup_title",
+            "value":"App scaling options",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"style_mode_label_origin",
+            "value":"Original ratio"
+        },
+        {
+            "name":"no_compatible_mode_apps",
+            "value":"No adjustable apps",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"style_mode_change",
+            "value":"Aspect ratio changed. This will take effect the next time the app is launched. There may be display issues.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"confirm_hibernate",
+            "value":"Sleep"
+        },
+        {
+            "name":"multispace_unable_switch_when_fold",
+            "value":"Unfold the screen before switching spaces.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"duplicate_file",
+            "value":"A file with the same name is included"
+        },
+        {
+            "name":"region_folder_take_in",
+            "value":"Add related items",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"region_folder_pre_app",
+            "value":"Apps",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"region_folder_pre_doc",
+            "value":"Documents",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"region_folder_pre_other",
+            "value":"Other"
+        },
+        {
+            "name":"undo_smart_cleanup_desktop",
+            "value":"Undo \"Smart organize\"",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"undo_region_folder_take_in",
+            "value":"Undo \"Add related items\"",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_window_open",
+            "value":"Playback controls are being shown",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_window_close",
+            "value":"Playback controls have been hidden",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_video_player",
+            "value":"Mini window playing video",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_close",
+            "value":"Close mini window",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_restore",
+            "value":"Restore to larger window",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_play_next",
+            "value":"Play next",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_play_previous",
+            "value":"Play previous",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_play_pause",
+            "value":"Pause",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_play",
+            "value":"Play",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_play_fast_backward",
+            "value":"Go back",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_play_fast_forward",
+            "value":"Fast forward",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_window_show",
+            "value":"Mini window is being shown",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"already_exist_pip_window_toast",
+            "value":"Close the existing mini window first.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"shutdown_warning_when_kiddo_update",
+            "value":"The virtual machine is being updated. Powering off now may damage it. Please try again after the update has finished.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"reboot_warning_when_kiddo_update",
+            "value":"The virtual machine is being updated. Restarting now may damage it. Please try again after the update has finished.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"install_app_calendar",
+            "value":"The Calendar app has been uninstalled. You can download it from AppGallery.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"continue_restart",
+            "value":"Restart now",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"continue_shutdown",
+            "value":"Power off now",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_not_saving",
+            "value":"Contains unsaved changes",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_modify_wallpaper_tips",
+            "value":"This feature has been disabled by your organization.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"logout_warning_when_kiddo_update",
+            "value":"Logging out now may damage the virtual machine. Try again later.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Control_center_icon_shadow_color",
+            "value":"#19000000"
+        },
+        {
+            "name":"cc_accessibility_str_long_click",
+            "value":"Double click and hold to bring up more options",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"crease_region_tip",
+            "value":"To avoid damaging the screen, don't press hard on the fold area.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"form_edit_finish",
+            "value":"OK"
+        },
+        {
+            "name":"central_log_tips",
+            "value":"Fold the device like a laptop to preview the effect.",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

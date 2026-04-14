@@ -1,0 +1,96 @@
+/*
+ * Copyright (c) Huawei Technologies Co., Ltd. 2024-2025. All rights reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { DockContinuableInfo,
+  DockItemInfo,
+  RecentBundleMissionInfo } from '@ohos/launchercommon/src/main/ets/TsIndex';
+import PcModeContinuableModel from '../../../../main/ets/default/pcmode/model/PcModeContinuableModel';
+
+export default function PcModeContinuableModelTest() {
+  describe('PcModeContinuableModelTest', () => {
+    // Defines a test suite. Two parameters are supported: test suite name and test suite function.
+    beforeAll(() => {
+      // Presets an action, which is performed only once before all test cases of the test suite start.
+      // This API supports only one parameter: preset action function.
+    })
+    beforeEach(() => {
+      // Presets an action, which is performed before each unit test case starts.
+      // The number of execution times is the same as the number of test cases defined by **it**.
+      // This API supports only one parameter: preset action function.
+    })
+    afterEach(() => {
+      // Presets a clear action, which is performed after each unit test case ends.
+      // The number of execution times is the same as the number of test cases defined by **it**.
+      // This API supports only one parameter: clear action function.
+    })
+    afterAll(() => {
+      // Presets a clear action, which is performed after all test cases of the test suite end.
+      // This API supports only one parameter: clear action function.
+    })
+    it('setContinuableItemDisappearInfoTest001', 0, () => {
+      let pcmodecontinuablemodel: PcModeContinuableModel = PcModeContinuableModel.getInstance();
+      pcmodecontinuablemodel.continuableItemDisappearInfo = null;
+      let result = pcmodecontinuablemodel.continuableItemDisappearInfo;
+      expect(result).assertNull();
+    });
+    it('getContinuableItemDisappearInfoTest001', 0, () => {
+      let pcmodecontinuablemodel: PcModeContinuableModel = PcModeContinuableModel.getInstance();
+      const result = pcmodecontinuablemodel.continuableItemDisappearInfo;
+      expect(result).assertNull();
+    });
+    it('setIsOpenPopupOnContinuableItemTest001', 0, () => {
+      let pcmodecontinuablemodel: PcModeContinuableModel = PcModeContinuableModel.getInstance();
+      pcmodecontinuablemodel.isOpenPopupOnContinuableItem = true;
+      expect(pcmodecontinuablemodel.isOpenPopupOnContinuableItem).assertEqual(true);
+    });
+    it('getIsOpenPopupOnContinuableIteTest001', 0, () => {
+      let pcmodecontinuablemodel: PcModeContinuableModel = PcModeContinuableModel.getInstance();
+      expect(pcmodecontinuablemodel.isOpenPopupOnContinuableItem).assertEqual(true);
+    });
+    it('getRealContinueItemIndexTest001', 0, () => {
+      let recentList: DockItemInfo[] = [];
+      let deviceInfo: DockContinuableInfo = new DockContinuableInfo();
+      let pcmodecontinuablemodel: PcModeContinuableModel = PcModeContinuableModel.getInstance();
+      const result = pcmodecontinuablemodel.isRealContinuableItemExist(recentList, deviceInfo);
+      expect(result).assertEqual(false);
+    });
+    it('updateDisappearContinuableItemTest001', 0, () => {
+      let pcmodecontinuablemodel: PcModeContinuableModel = PcModeContinuableModel.getInstance();
+      let list: Array<RecentBundleMissionInfo> = [];
+      pcmodecontinuablemodel.updateDisappearContinuableItem(list);
+      expect(pcmodecontinuablemodel instanceof PcModeContinuableModel).assertTrue();
+    });
+    it('updateDisappearContinuableItemTest002', 0, () => {
+      let pcmodecontinuablemodel: PcModeContinuableModel = PcModeContinuableModel.getInstance();
+      pcmodecontinuablemodel.continuableItemDisappearInfo = {
+        bundleName: 'com.ohos.example',
+        index: 1
+      };
+      let list: Array<RecentBundleMissionInfo> = [];
+      pcmodecontinuablemodel.updateDisappearContinuableItem(list);
+      expect(pcmodecontinuablemodel instanceof PcModeContinuableModel).assertTrue();
+    });
+    it('updateContinuableItemInListTest001', 0, () => {
+      let pcmodecontinuablemodel: PcModeContinuableModel = PcModeContinuableModel.getInstance();
+      let residentList: DockItemInfo[] = [];
+      let oldRecentList: DockItemInfo[] = [];
+      let localRecentList: DockItemInfo[] = [];
+      let deviceInfo: DockContinuableInfo = new DockContinuableInfo();
+      pcmodecontinuablemodel.updateContinuableItemInList(residentList, oldRecentList, localRecentList, deviceInfo);
+      expect(pcmodecontinuablemodel instanceof PcModeContinuableModel).assertTrue();
+    });
+  })
+}

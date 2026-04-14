@@ -1,0 +1,10 @@
+{
+  "module": {
+    "name": "superhubtogglecomponent",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ]
+  }
+}

@@ -1,0 +1,39 @@
+{
+    "string":[
+        {
+            "name":"control_center_complex_toggle_mobiledata_title",
+            "value":"Mobile data",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_mobiledata_title_on",
+            "value":"SIM %d data",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_mobiledata_title_on_esim",
+            "value":"eSIM %d data",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_mobiledata_toast",
+            "value":"Disable your SkyTone data package first.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_mobiledata_usage",
+            "value":"%s used",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

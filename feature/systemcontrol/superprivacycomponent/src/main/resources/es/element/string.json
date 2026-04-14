@@ -1,0 +1,74 @@
+{
+    "string":[
+        {
+            "name":"super_privacy_toggle",
+            "value":"Superprivacidad",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"super_privacy_toggle_always_protect",
+            "value":"Siempre activado",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"super_privacy_toggle_fold_protect",
+            "value":"Activar al cerrar",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"edm_super_privacy_content_mic",
+            "value":"El modo Superprivacidad no está disponible porque tu organización está gestionando el selector de Micrófono.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"edm_super_privacy_content_cam_loc",
+            "value":"El modo Superprivacidad no está disponible porque tu organización está gestionando los selectores de Cámara y Servicios de localización.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"edm_super_privacy_content_mic_loc",
+            "value":"El modo Superprivacidad no está disponible porque tu organización está gestionando los selectores de Micrófono y Servicios de localización.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"edm_super_privacy_content_cam",
+            "value":"El modo Superprivacidad no está disponible porque tu organización está gestionando el selector de Cámara.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"edm_super_privacy_content_loc",
+            "value":"El modo Superprivacidad no está disponible porque tu organización está gestionando el selector de Servicios de localización.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"edm_super_privacy_content_cam_mic",
+            "value":"El modo Superprivacidad no está disponible porque tu organización está gestionando los selectores de Cámara y Micrófono.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"edm_super_privacy_content_cam_mic_loc",
+            "value":"El modo Superprivacidad no está disponible porque tu organización está gestionando los selectores de Cámara, Micrófono y Servicios de localización.",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

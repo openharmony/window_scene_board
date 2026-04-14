@@ -1,0 +1,67 @@
+{
+    "string":[
+        {
+            "name":"app_center_menu_add_dock",
+            "value":"الإضافة إلى شريط الإرساء",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"search_no_result",
+            "value":"لا توجد نتائج",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_menu_open",
+            "value":"فتح",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_menu_open_from_floating_window",
+            "value":"فتح من النافذة العائمة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_menu_open_from_split_screen",
+            "value":"فتح من الشاشة المنقسمة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"uninstall",
+            "value":"إزالة التثبيت",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"isUninstall",
+            "value":"إزالة تثبيت %s؟",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_center_menu_add_desktop",
+            "value":"إضافة إلى الشاشة الرئيسية",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"drag_full",
+            "value":"الشاشة ممتلئة. تتعذر إضافة المزيد من الأيقونات.",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

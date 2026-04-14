@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"control_center_complex_toggle_dark_mode_title",
+            "value":"الوضع الليلي",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

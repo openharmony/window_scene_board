@@ -1,0 +1,72 @@
+{
+    "string":[
+        {
+            "name":"action_button_reply",
+            "value":"[TS_1033836]_Reply"
+        },
+        {
+            "name":"banner_hint_message",
+            "value":"[TS_1033822]_This message cannot be displayed on the Vision Glass. View it on your phone."
+        },
+        {
+            "name":"screenshot_privacy",
+            "value":"[TS_1039037]_Can't take a screenshot. The current screen may contain sensitive information."
+        },
+        {
+            "name":"Input_prompt",
+            "value":"[TS_1039028]_Disconnect and input text in the app on your phone."
+        },
+        {
+            "name":"Incoming_call_prompt",
+            "value":"[TS_1033823]_Take call on your phone"
+        },
+        {
+            "name":"banner_toast_message",
+            "value":"[TS_1033818]_View this message on your phone."
+        },
+        {
+            "name":"control_center_phone_power_save_mode",
+            "value":"[TS_1033830]_Power Saving mode"
+        },
+        {
+            "name":"mobile_phone_applications",
+            "value":"[TS_1033827]_Mobile phone applications"
+        },
+        {
+            "name":"control_center_phone_cast_screen",
+            "value":"[TS_1033819]_Phone mirroring"
+        },
+        {
+            "name":"ScreenShot_label",
+            "value":"[TS_1033832]_Screenshot"
+        },
+        {
+            "name":"control_center_adjustment",
+            "value":"[TS_1033833]_Prescription adjustment"
+        },
+        {
+            "name":"control_screenshot_no_right",
+            "value":"[TS_1033834]_Taking screenshots requires the Images & videos permission. Grant the permission in the pop-up window on your phone or in Settings."
+        },
+        {
+            "name":"Incoming_call_title",
+            "value":"[TS_1035501]_%s calling"
+        },
+        {
+            "name":"control_center_wlan",
+            "value":"[TS_1033826]_WLAN"
+        },
+        {
+            "name":"Incoming_call_flag",
+            "value":"[TS_1033828]_Incoming call"
+        },
+        {
+            "name":"control_center_bluetooth",
+            "value":"[TS_1033820]_Bluetooth"
+        },
+        {
+            "name":"add_app_to_glass_msg",
+            "value":"[TS_1049043]_Add %s to the App Library."
+        }
+    ]
+}

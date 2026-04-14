@@ -1,0 +1,25 @@
+{
+    "string":[
+        {
+            "name":"date_time_view_yesterday",
+            "value":"어제",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"now_string_shortest",
+            "value":"방금",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"accessibility_quick_settings_alarm_set",
+            "value":"알람 설정",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

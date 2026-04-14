@@ -1,0 +1,5 @@
+add_library(greedy_rightmost_partial STATIC src/build_layout.cpp)
+target_link_libraries(greedy_rightmost_partial gui)
+
+add_library(greedy_rightmost_algo STATIC src/apply_configuration.cpp)
+target_link_libraries(greedy_rightmost_algo PUBLIC greedy_rightmost_partial)

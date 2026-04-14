@@ -1,0 +1,18 @@
+{
+    "string":[
+        {
+            "name":"accessibility_ethernet_connected",
+            "value":"Đã kết nối Ethernet.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_ethernet_disconnected",
+            "value":"Đã ngắt kết nối Ethernet.",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

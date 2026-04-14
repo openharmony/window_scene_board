@@ -15,6 +15,7 @@
 
 import { afterAll, afterEach, beforeAll, beforeEach, it, describe, expect, MockKit, when, ArgumentMatchers } from '@ohos/hypium';
 import { ApsUtils } from '../../../../../../main/ets/utils/ApsUtils';
+import apsManager from '@hms.graphic.apsManager';
 import { LogDomain, LogHelper } from '@ohos/basicutils';
 
 const TAG = 'ApsUtilsTest';

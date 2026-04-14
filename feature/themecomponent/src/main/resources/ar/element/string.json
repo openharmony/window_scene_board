@@ -1,0 +1,162 @@
+{
+    "string":[
+        {
+            "name":"screenlock_settings",
+            "value":"شاشة القفل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_stop_service_text",
+            "value":"إذا أوقفت هذه الخدمة، فلن تتمكن بعد الآن من إنشاء الخطوط حسب نمط النص الموجود في الصور.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"stop_font_creation_service",
+            "value":"إيقاف الخدمة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screenlock_font_creation_service_text",
+            "value":"خدمة إنشاء خطوط شاشة القفل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screenlock_font_creation_service",
+            "value":"خدمة إنشاء خطوط شاشة القفل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_one",
+            "value":"تستخدم هذه الخدمة الذكاء الاصطناعي المستند إلى السحابة لإنشاء خطوط وفقًا للنصوص الموجودة في الصور. يمكن تطبيق الخطوط التي تم إنشاؤها على التوقيع والساعة في شاشة القفل.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_four",
+            "value":"البيان المتعلق بخدمة إنشاء خطوط شاشة القفل والخصوصية",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_setting_footbar_new",
+            "value":"تحتاج هذه الخدمة إلى الاتصال بالإنترنت وإلى قراءة ونقل/رفع الصور لتوفير ميزات إنشاء الواجهة الأمامية لشاشة القفل. نحن لا نجمع سوى المعلومات الشخصية اللازمة لاستخدام الميزات ذات الصلة فقط. يمكنك الاطلاع على %1$s و%2$s لمعرفة المزيد من المعلومات. بتشغيل هذا الخيار، فأنت تعني بذلك موافقتك على السماح لنا بتقديم هذه الخدمة.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_five",
+            "value":"الشروط والأحكام",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_three",
+            "value":"تحتاج هذه الخدمة إلى الاتصال بالإنترنت وإلى قراءة ورفع/نقل الصور لتوفير ميزات إنشاء خطوط شاشة القفل. نحن لا نجمع سوى المعلومات الشخصية المتعلقة بالميزات التي تستخدمها فقط. يمكنك الاطلاع على %1$s و%2$s لمعرفة المزيد من المعلومات. بالنقر على \"أوافق\"، فأنت تعني بذلك السماح لنا بتزويدك بهذه الخدمة.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"icon_settings",
+            "value":"الأيقونات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"icon_settings_content",
+            "value":"يمكنك تغيير حجم أيقونات الشاشة الرئيسية وإعادة تسميتها.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"icon_edit_not_support_small_step",
+            "value":"يتعذر تعديل الأيقونات عند فتح \"الإعدادات\" في نافذة عائمة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+      {
+        "name": "theme_title",
+        "value": "theme title"
+      },
+        {
+            "name": "notification_main_time_travel_ongoing_content",
+            "value": "notification main"
+        },
+        {
+            "name": "notification_main_time_travel_finish_content",
+            "value": "travel finish content"
+        },
+        {
+            "name": "time_travel_generate_failed",
+            "value": ""
+        },
+        {
+            "name": "notification_main_dimensional_travel_ongoing_content",
+            "value": ""
+        },
+        {
+            "name": "notification_main_dimensional_travel_finish_content",
+            "value": ""
+        },
+        {
+            "name": "dimensional_travel_generate_failed",
+            "value": ""
+        },
+        {
+            "name": "notification_dynamic_lead_ongoing_content",
+            "value": ""
+        },
+        {
+            "name": "notification_dynamic_lead_finish_content",
+            "value": ""
+        },
+        {
+            "name": "dynamic_lead_generate_failed",
+            "value": ""
+        },
+        {
+            "name": "notification_main_pandora_title",
+            "value": ""
+        },
+        {
+            "name":"edit_wallpaper",
+            "value":"الخلفيات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name": "theme_chose",
+            "value": "اختر من مكتبة الصور"
+        },
+        {
+            "name": "current_wallpaper",
+            "value": "خلفيتي"
+        },
+        {
+            "name": "managment",
+            "value": ""
+        },
+        {
+            "name": "wallpaper_editor",
+            "value": "استخدام"
+        }
+    ]
+}

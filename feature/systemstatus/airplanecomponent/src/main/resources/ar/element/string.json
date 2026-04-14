@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"airplane_mode",
+            "value":"وضع الطائرة",
+            "attr":{
+                "priority":"LT"
+            }
+        }
+    ]
+}

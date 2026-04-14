@@ -1,0 +1,18 @@
+{
+    "string":[
+        {
+            "name":"accessibility_ethernet_connected",
+            "value":"乙太網絡已連線",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_ethernet_disconnected",
+            "value":"乙太網絡已中斷連線",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

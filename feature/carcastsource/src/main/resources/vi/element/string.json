@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"app_not_support_full_screen",
+            "value":"Ứng dụng này không hỗ trợ hiển thị toàn màn hình.",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

@@ -1,0 +1,144 @@
+{
+    "string":[
+        {
+            "name":"off_find_alert_dialog_message",
+            "value":"Vous pouvez toujours utiliser H-Protect pour retrouver l'appareil. Si vous désactivez la fonctionnalité H-Protect maintenant, elle sera réactivée lors du prochain allumage de l'appareil.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"off_find_no_action_confirm",
+            "value":"OK",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"off_find_checkbox",
+            "value":"Garder H-Protect activé après la mise hors tension",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"off_find_alert_dialog_title",
+            "value":"Cet appareil pourra être retrouvé même après avoir été éteint",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"off_find_disable_confirm",
+            "value":"Désactiver H-Protect",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"thermal_aware_toast",
+            "value":"Veuillez déplier pour une meilleure expérience.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Poweroff_Button_Click_Reboot",
+            "value":"Veuillez toucher pour redémarrer",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"shutdown_dialog_title",
+            "value":"Remarque",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"power_schedule_switch_reminder",
+            "value":"Mise sous tension programmée (%s)",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Poweroff_Button_Reboot",
+            "value":"Redémarrer",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"poweroff_tips",
+            "value":"Appuyer et maintenir simultanément les boutons marche/arrêt et volume bas pendant au moins %d secondes pour forcer le redémarrage",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Poweroff_Button_Click_Shutdown",
+            "value":"Veuillez toucher pour éteindre",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"battery_emergency_dialog_content",
+            "value":"Le niveau de batterie est extrêmement bas. Le mode d'économie d'énergie s'activera dans %d secondes.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"shutdown_dialog_content_new",
+            "value":"La batterie est sur le point de s'épuiser. Extinction dans %d secondes.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Poweroff_Button_Shutdown",
+            "value":"Éteindre",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"poweroff_fold_tips",
+            "value":"Appuyer et maintenir simultanément les boutons marche/arrêt et volume bas pendant au moins %d secondes pour forcer le redémarrage",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"power_schedule_switch_toast",
+            "value":"Votre appareil ne se rallumera pas automatiquement.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"accessibility_power_off",
+            "value":"Éteindre",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_reboot",
+            "value":"Redémarrer",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_back",
+            "value":"Quitter l'écran de mise hors tension",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

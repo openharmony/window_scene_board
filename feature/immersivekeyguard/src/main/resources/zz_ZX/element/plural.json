@@ -1,0 +1,33 @@
+{
+    "plural":[
+        {
+            "name":"ntf_hide_content_tip",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"[TS_952978]_%d notification"
+                },
+                {
+                    "quantity":"other",
+                    "value":"[TS_952974]_%d notifications"
+                },
+                {
+                    "quantity":"zero",
+                    "value":"[TS_952977]_%d notifications"
+                },
+                {
+                    "quantity":"few",
+                    "value":"[TS_952973]_%d notifications"
+                },
+                {
+                    "quantity":"many",
+                    "value":"[TS_952976]_%d notifications"
+                },
+                {
+                    "quantity":"two",
+                    "value":"[TS_952975]_%d notifications"
+                }
+            ]
+        }
+    ]
+}

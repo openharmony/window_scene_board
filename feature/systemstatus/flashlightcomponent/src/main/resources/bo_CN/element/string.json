@@ -1,0 +1,18 @@
+{
+    "string":[
+        {
+            "name":"control_center_complex_toggle_flashlight_title",
+            "value":"གློག་སྒྲོན།",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"flashlight_on_ntf_content",
+            "value":"གློག་སྒྲོན་ཁ་ཕྱེ་ཟིན།",
+            "attr":{
+                "priority":"LT"
+            }
+        }
+    ]
+}

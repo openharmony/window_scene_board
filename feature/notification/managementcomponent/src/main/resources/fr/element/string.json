@@ -1,0 +1,529 @@
+{
+    "string":[
+        {
+            "name":"notification_tip_open",
+            "value":"Notifications activées",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"allowNotification",
+            "value":"Notifications autorisées",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"show_battery_soc",
+            "value":"Affichage du pourcentage de batterie restant",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"loading",
+            "value":"Chargement en cours.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"lock_screen",
+            "value":"Écran verrouillé",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"application",
+            "value":"Applications",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pure_show_title",
+            "value":"Affichage simple",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntfSoundModeOnlyVibration",
+            "value":"Vibration",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_tip_close",
+            "value":"Notifications désactivées",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"banner",
+            "value":"Bannière",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"allow_notification_distribution",
+            "value":"Afficher les notifications du téléphone",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"allow_live_view_distribution",
+            "value":"Afficher les vues en direct depuis le téléphone",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"show_preview_when_screen_lock",
+            "value":"Affichage des aperçus des notifications lorsque l'écran est verrouillé",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"slot_other",
+            "value":"Autre",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remind_vibration_in_list",
+            "value":"Vibration",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"slot_service_information",
+            "value":"Notifications de service",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notificationStyle",
+            "value":"Style des notifications",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"live_view_no_services",
+            "value":"Aucun service disponible pour le moment",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"badge",
+            "value":"Badges",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"live_view_apps",
+            "value":"Applications",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"version",
+            "value":"Version %s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"batch_Management",
+            "value":"Gérer toutes",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pinTopShowNotification",
+            "value":"Épingler en haut",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"noDisturb_none",
+            "value":"Désactiver",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"smart_hiding_of_banner_content",
+            "value":"Garder les bannières privées",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"slot_social_communication",
+            "value":"Réseaux sociaux",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"smart_reminder",
+            "value":"Notifications intelligentes",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"show_notification_icon",
+            "value":"Affichage des icônes de notification des applications",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"show_live_view_preview_when_screen_lock",
+            "value":"Affichage des aperçus de la vue en direct lorsque l'écran est verrouillé",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"meta_service",
+            "value":"Services",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remind_sound",
+            "value":"Son",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"confirm",
+            "value":"OK",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"splitter_format_for_4",
+            "value":"%1$s, %2$s, %3$s, %4$s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"splitter_format_for_5",
+            "value":"%1$s, %2$s, %3$s, %4$s, %5$s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"splitter_format_for_2",
+            "value":"%1$s, %2$s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"splitter_format_for_3",
+            "value":"%1$s, %2$s, %3$s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pinTopNotification",
+            "value":"Épingler les notifications",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"only_notification_center",
+            "value":"Panneau de notifications uniquement",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"slot_customer_service_message",
+            "value":"Messages du service clients",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"live_view_services",
+            "value":"Services",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"slotType",
+            "value":"Type de notification",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remind_lock_screen_in_list",
+            "value":"Écran verrouillé",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"empty_service",
+            "value":"Aucun service",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wake_screen_when_receive_notification",
+            "value":"Allumage de l'écran pour les notifications",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remind_only_notification_center",
+            "value":"Panneau de notifications uniquement",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"setting",
+            "value":"Paramètres",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntfSoundModeOnlyRing",
+            "value":"Lecture du son",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntf_pin_top_dialog_reach_limit_title",
+            "value":"Nombre maximum d'applications épinglées atteint",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"show_desktop_badges",
+            "value":"Affichage des badges",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remind_sound_in_list",
+            "value":"Son",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remind_banner_in_list",
+            "value":"Bannières",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"cancel",
+            "value":"Annuler",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"show_real_time_network_speed",
+            "value":"Affichage de la vitesse du réseau",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"live_view_no_apps",
+            "value":"Aucune application disponible pour le moment",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"slot_content_information",
+            "value":"Contenu et actualités",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notificationSound",
+            "value":"Tonalité des notifications",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"open_app_inner_ntf_mgmt",
+            "value":"Accéder à %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_list_loading_message",
+            "value":"Chargement en cours.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"network_error",
+            "value":"Erreur réseau. Veuillez vérifier vos paramètres réseau.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"login_button",
+            "value":"Se connecter",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"display_only_when_the_owner_is_looking",
+            "value":"Seulement quand je regarde",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"display_lock_Screen_notification_content_tip",
+            "value":"Cette option nécessite l'activation de la reconnaissance faciale.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"only_when_the_owner_is_looking_tip",
+            "value":"L'option \"Seulement quand je regarde\" n'est disponible que lorsque la reconnaissance faciale est activée. %s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"only_when_the_owner_is_looking_tip_button",
+            "value":"En savoir plus",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"need_login_service_tips",
+            "value":"Vous devez être connecté(e) avec votre Compte HUAWEI pour modifier ces paramètres.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"display_live_window_content",
+            "value":"Afficher le contenu de la vue en direct",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"display_live_window_content_tip",
+            "value":"Pour une expérience optimale avec la vue en direct, cette option doit être définie sur \"Toujours\".",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"display_lock_Screen_notification_content",
+            "value":"Afficher le contenu des notifications sur l'écran verrouillé",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"display_banner_notification_content",
+            "value":"Afficher le contenu de la bannière",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"always_display",
+            "value":"Toujours",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"display_when_unlocked",
+            "value":"Lorsque l'appareil est déverrouillé",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"psd_back_accessible",
+            "value":"Retour, bouton",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"check_box_unchecked",
+            "value":"Non sélectionné",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"check_box_selected",
+            "value":"Sélectionné",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"close_accessibility_text",
+            "value":"Fermer, bouton",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+{
+    "string":[
+        {
+            "name":"anti_peeping_title",
+            "value":"Screen Privacy",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"free_window_closed",
+            "value":"Turn on Free windows first.",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

@@ -1,0 +1,128 @@
+{
+    "string":[
+        {
+            "name":"EmergencyModeAbility_desc",
+            "value":"[TS_939436]_description"
+        },
+        {
+            "name":"Emergency_search_application",
+            "value":"[TS_939448]_Search apps"
+        },
+        {
+            "name":"Emergency_note",
+            "value":"[TS_939451]_*If you exit Power reserve mode, your device may not have enough power to stay on."
+        },
+        {
+            "name":"Emergency_dialog_title_exit",
+            "value":"[TS_939442]_Exit Power reserve mode?"
+        },
+        {
+            "name":"Emergency_add",
+            "value":"[TS_939433]_Add"
+        },
+        {
+            "name":"Thermal_safe_note",
+            "value":"[TS_939437]_If possible, don't use your device. Cooldown mode will exit automatically once it has cooled down."
+        },
+        {
+            "name":"Emergency_dialog_not_remind",
+            "value":"[TS_939449]_Don't show again"
+        },
+        {
+            "name":"Emergency_shutdown_dialog_title_exit",
+            "value":"[TS_939440]_Exit Power reserve mode and power off?"
+        },
+        {
+            "name":"Emergency_title",
+            "value":"[TS_939434]_Power reserve mode"
+        },
+        {
+            "name":"EmergencyModeAbility_label",
+            "value":"[TS_939432]_label"
+        },
+        {
+            "name":"Emergency_all_application",
+            "value":"[TS_939435]_All apps"
+        },
+        {
+            "name":"Emergency_button_exit",
+            "value":"[TS_939444]_Exit"
+        },
+        {
+            "name":"Emergency_title_dialog_enter",
+            "value":"[TS_939439]_Battery extremely low. Power reserve mode has been enabled to extend battery life."
+        },
+        {
+            "name":"Emergency_button_determined",
+            "value":"[TS_939438]_OK"
+        },
+        {
+            "name":"Emergency_button_cancel",
+            "value":"[TS_939450]_Cancel"
+        },
+        {
+            "name":"Thermal_safe_title",
+            "value":"[TS_939443]_Cooldown mode"
+        },
+        {
+            "name":"Emergency_button_know",
+            "value":"[TS_939431]_OK"
+        },
+        {
+            "name":"Thermal_safe_dialog_title_enter",
+            "value":"[TS_939447]_Device too hot. Cooldown mode has been enabled. This mode will exit automatically once your device has cooled down."
+        },
+        {
+            "name":"module_desc",
+            "value":"[TS_939446]_module description"
+        },
+        {
+            "name":"Emergency_add_application",
+            "value":"[TS_939445]_Add apps"
+        },
+        {
+            "name":"accessibility_cancel_this_edit",
+            "value":"[TS_994527]_cancel edits"
+        },
+        {
+            "name":"Emergency_back",
+            "value":"[TS_994526]_Back"
+        },
+        {
+            "name":"accessibility_save_this_edit",
+            "value":"[TS_994528]_save edits"
+        },
+        {
+            "name":"Emergency_remove",
+            "value":"[TS_994525]_Remove"
+        },
+        {
+            "name":"Emergency_edit",
+            "value":"[TS_994529]_Edit"
+        },
+        {
+            "name":"emergency_enter_dialog_title",
+            "value":"[TS_1003708]_Battery extremely low"
+        },
+        {
+            "name":"emergency_exit_with_charge_dialog_content",
+            "value":"[TS_1003706]_If you exit now, your device might not have enough power to stay on."
+        },
+        {
+            "name":"thermal_safe_enter_dialog_dialog_title",
+            "value":"[TS_1003709]_Device too hot"
+        },
+        {
+            "name":"emergency_exit_without_charge_dialog_content",
+            "value":"[TS_1003710]_Remember to charge up when you get the chance."
+        },
+        {
+            "name":"thermal_safe_enter_dialog_dialog_content",
+            "value":"[TS_1003705]_Cooldown mode has been activated. This mode will exit once your device has cooled down."
+        },
+        {
+            "name":"emergency_enter_dialog_content",
+            "value":"[TS_1003707]_Power reserve mode has been enabled to extend battery life."
+        }
+    ]
+}

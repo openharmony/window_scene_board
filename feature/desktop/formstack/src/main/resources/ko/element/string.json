@@ -1,0 +1,102 @@
+{
+    "string":[
+        {
+            "name":"expand_formstack",
+            "value":"스택 확장",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"edit_formstack",
+            "value":"%s 편집",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"delete_formstack",
+            "value":"%s 제거",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"expand_stack_request_focus_front_text",
+            "value":"항목 %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"delete_stack_form",
+            "value":"%s 위젯 삭제됨",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"talkback_expand_stack_moved_to",
+            "value":"스택에 %d번 항목으로 배치됨",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"form_pinned_stack_text",
+            "value":"%1$s 카드가 스택 상단으로 이동됨",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"stack_request_focus_after_text",
+            "value":"%1$s 위젯입니다. 수행할 수 있는 작업이 있습니다. 두 번 탭하고 길게 누르면 옵션 메뉴가 열립니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"create_form_stack_text",
+            "value":"%1$s %2$s 함께 스택됨",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"expand_stack_text",
+            "value":"확장됨, 두 손가락으로 아래로 스와이프하여 위젯 스크롤",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"delete_form_stack_text",
+            "value":"삭제",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_form_stack_text",
+            "value":"%1$s 항목이 스택에 배치됨",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"close_stack_text",
+            "value":"위젯 스택 축소됨",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"talkback_expand_stack_move_to",
+            "value":"%d번 항목으로 이동",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

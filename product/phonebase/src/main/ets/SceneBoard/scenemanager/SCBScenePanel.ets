@@ -4894,8 +4894,6 @@ export struct SCBScenePanel {
       this.recentDelete.destructContaierInNotShow();
       return;
     }
-    recentLog.info(`transparentView is show to ignore click`);
-    this.needTransparentSession = true;
     this.panelViewModel.publishScenePanelEventMsg(CEManager.CUSTOM_RECENT_EVENT, RecentEventType.RECENT_CLEAR_ALL);
     let screenWidth = px2vp(this.screenProperty.width);
     let screenHeight = px2vp(this.screenProperty.height);
@@ -5031,10 +5029,6 @@ export struct SCBScenePanel {
     CloseAppManager.getInstance().clearAdaptiveIconCache();
     CloseAppManager.getInstance().deleteCardCache();
     this.panelViewModel.restorePrepareContainerSession();
-    setTimeout(() => {
-      this.needTransparentSession = false;
-      recentLog.info(`transparentView is hide`);
-    }, delayTime + 1000)
   }
 
   private filterUnClearAbleSessions(): void {
@@ -5285,9 +5279,6 @@ export struct SCBScenePanel {
           .width('100%')
           .height('100%')
       }
-      .onClick(() => {
-        homeLog.info('onClick invoke transparentView');
-      })
     }
   }
 

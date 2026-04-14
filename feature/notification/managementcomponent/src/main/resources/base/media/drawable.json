@@ -1,0 +1,7 @@
+{
+  "layered-image":
+  {
+    "background" : "$media:adaptive_appcenter_background",
+    "foreground" : "$media:adaptive_appcenter_foreground"
+  }
+}

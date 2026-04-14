@@ -1,0 +1,10 @@
+{
+  "module": {
+    "name": "batterycomponent",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ]
+  }
+}

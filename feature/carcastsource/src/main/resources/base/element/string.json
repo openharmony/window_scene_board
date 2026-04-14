@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"app_not_support_full_screen",
+            "value":"This app does not support full-screen display.",
+            "attr":{
+                "priority":"LT"
+            }
+        }
+    ]
+}

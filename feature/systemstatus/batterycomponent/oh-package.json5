@@ -1,0 +1,13 @@
+{
+  "name": "@ohos/batterycomponent",
+  "description": "a npm package which contains batterycomponent function",
+  "version": "1.0.0",
+  "dependencies": {
+    "@ohos/basicutils": "file:../../../staticcommon/basecommon/basicutils",
+    "@ohos/frameworkwrapper": "file:../../../staticcommon/basecommon/frameworkwrapper",
+    "@ohos/windowscene": "file:../../../staticcommon/basecommon/windowscene",
+    "@ohos/componenthelper": "file:../../../staticcommon/basecommon/componenthelper",
+    "@ohos/systemuiutils": "file:../../../staticcommon/systemuibasic/systemuiutils",
+    "@ohos/systemuicommon": "file:../../../staticcommon/systemuicommon"
+  }
+}

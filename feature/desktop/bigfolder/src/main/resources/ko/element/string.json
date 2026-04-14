@@ -1,0 +1,151 @@
+{
+    "string":[
+        {
+            "name":"d_app_unavailable_dialog_content",
+            "value":"이 앱을 사용하려면 먼저 AppGallery에서 %s 다운로드를 받으십시오.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"d_app_dialog_contents",
+            "value":"완전 새로운 경험을 위해 앱을 업데이트하십시오. 버전을 전환하면 일부 앱 데이터가 손실될 수 있다는 점에 유의하십시오.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"d_app_dialog_cancel",
+            "value":"무시",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"d_app_dialog_text",
+            "value":"이제 %s 앱을 OpenHarmony에 사용할 수 있습니다.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"uninstall_d_app_dialog_content",
+            "value":"이 장치에 %s의 OpenHarmony 버전이 이미 설치되었습니다. 기존 버전을 제거하시겠습니까?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"open_harmony_app_dialog_content",
+            "value":"장치에 OpenHarmony 버전 %s이 있습니다.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"d_app_dialog_open",
+            "value":"OpenHarmony 버전 열기",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"confirm_dialog",
+            "value":"확인",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"d_app_dialog_confirm",
+            "value":"지금 업데이트",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"d_app_pause_download_dialog_content",
+            "value":"다운로드가 %s에 대해 일시 정지되었습니다. 다시 시작하시겠습니까?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"d_app_unavailable_dialog_title",
+            "value":"앱 사용 불가",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"d_app_dialog_title",
+            "value":"새 버전 사용 가능",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"uninstall_d_app_dialog_title",
+            "value":"최신 버전 설치됨",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"d_app_unavailable_dialog_know",
+            "value":"확인",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"d_app_wait_download_dialog_content",
+            "value":"%s은(는) 다운로드 대기열에 있습니다. 이 다운로드의 우선순위를 지정하시겠습니까?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"folder_items_limit_toast",
+            "value":"폴더가 가득 찼습니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"folder_add",
+            "value":"추가",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"d_app_installing_dialog_content",
+            "value":"%s 앱을 설치 중입니다. 기다려 주십시오.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sheet_title_similar",
+            "value":"유사한 앱 그룹화",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sheet_sub_title_similar",
+            "value":"이 폴더에 추가할 앱을 더 선택하십시오.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sheet_title_recommended",
+            "value":"추천 앱",
+            "attr":{
+                "priority":"LT"
+            }
+        }
+    ]
+}

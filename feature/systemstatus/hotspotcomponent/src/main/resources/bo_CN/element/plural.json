@@ -1,0 +1,28 @@
+{
+    "plural":[
+        {
+            "name":"control_center_complex_toggle_hotspot_device_count",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"སྒྲིག་ཆས་ %d",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"statusbar_talkbackhotspot02",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"སྒྲིག་ཆས་ %1$d སྦྲེལ་མཐུད་ཟིན་པ།",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

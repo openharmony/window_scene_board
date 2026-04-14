@@ -1,0 +1,67 @@
+{
+    "string":[
+        {
+            "name":"control_center_eye_comfort_scheduled_open",
+            "value":"Programado",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_eye_comfort_scheduled_next_day",
+            "value":"%1$s-%2$s (día siguiente)",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_eye_comfort_always_on",
+            "value":"Habilitar todo el día",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_eye_comfort_smart_open_subtitle_active",
+            "value":"Fatiga visual detectada. Filtrando luz azul.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_eye_comfort_scheduled_open_subtitle_sunset",
+            "value":"Del atardecer al amanecer",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_eye_comfort_smart_open",
+            "value":"Habilitar automáticamente",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_eye_comfort_toggle_title",
+            "value":"Modo Lectura",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_eye_comfort_smart_open_subtitle_normal",
+            "value":"No se ha detectado fatiga visual",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_eye_comfort_smart_open_subtitle_default",
+            "value":"Ajusta dinámicamente el filtro de luz azul",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

@@ -1,0 +1,116 @@
+{
+    "string":[
+        {
+            "name":"volume_channel_notification",
+            "value":"الإشعارات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"volume",
+            "value":"مستوى الصوت",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"volume_channel_ringer",
+            "value":"نغمات الرنين",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"volume_channel_voice_call",
+            "value":"المكالمات",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"volume_accessibility_expand_dialog",
+            "value":"سيتم إغلاق لوحة مستوى الصوت الموسعة، المغلقة عن طريق التمرير بإصبعين، تلقائيًا إذا لم يتم إجراء أي عملية لمدة %1$d من الثواني",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"volume_accessibility_media",
+            "value":"الإعدادات الصوتية للوسائط",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"volume_accessibility_icon_enabled",
+            "value":"مُمكَّن",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"volume_accessibility_icon_disabled",
+            "value":"مُعطَّل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"volume_accessibility_single",
+            "value":"%1$d في المائة، %2$s، شريط التقدم، الذي يمكن ضبطه بالضغط على زر مستوى الصوت، اسحب لليسار بإصبعين لتوسيع لوحة مستوى الصوت",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"volume_channel_alarm",
+            "value":"المنبهات",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"volume_accessibility_dialog",
+            "value":"%1$d في المائة، %2$s، شريط التقدم، والذي يمكن ضبطه بالضغط على زر مستوى الصوت",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"volume_accessibility_icon",
+            "value":"%1$s، %2$s، الزر، انقر نقرًا مزدوجًا للتفعيل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"volume_popup_note",
+            "value":"اسحب لليسار لعرض المزيد من عناصر التحكم في مستوى الصوت.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"volume_channel_media",
+            "value":"الوسائط",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"volume_channel_more_setting",
+            "value":"إعدادات إضافية",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"volume_accessibility_accessibility",
+            "value":"إمكانية الوصول",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

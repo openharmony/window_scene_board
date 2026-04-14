@@ -1,0 +1,10 @@
+{
+  "module": {
+    "name": "immersivekeyguard",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ]
+  }
+}

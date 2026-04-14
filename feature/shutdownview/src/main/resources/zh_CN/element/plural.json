@@ -1,0 +1,40 @@
+{
+    "plural":[
+        {
+            "name":"confirm_shutdown_tip",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"正在关闭 %d 个应用并关机，请稍候。若有未保存的更改内容，可点击取消后手动保存。",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"confirm_reboot_tip",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"正在关闭 %d 个应用并重启，请稍候。若有未保存的更改内容，可点击取消后手动保存。",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"confirm_mode_change_tip",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"正在关闭 %d 个应用并切换系统模式，请稍候。若有未保存的更改内容，可点击取消后手动保存。",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

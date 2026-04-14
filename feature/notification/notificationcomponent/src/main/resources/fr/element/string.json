@@ -1,0 +1,466 @@
+{
+    "string":[
+        {
+            "name":"accessibility_notification_setting_bar",
+            "value":"Paramètres",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntf_dialog_cancel",
+            "value":"Annuler",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntf_dialog_more_settings",
+            "value":"Plus de paramètres",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_extra_message_expand",
+            "value":"Afficher plus",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"nc_accessibility_unpinned_notification",
+            "value":"L'épinglage a été annulé.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntf_close_pkg_notification",
+            "value":"Désactiver les notifications",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_extra_message",
+            "value":"Plus de notifications",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_extra_message_collapse",
+            "value":"Afficher moins",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_center_title",
+            "value":"Panneau de notifications",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_notification_delete_bar",
+            "value":"Supprimer",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_ntf_swipe_remove_text",
+            "value":"Carte retirée",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"kg_ntf_collapse_tip",
+            "value":"Veuillez toucher deux fois pour afficher moins.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_setting_dialog_title",
+            "value":"%s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"smart_digest_setting_dialog_title",
+            "value":"Regroupement intelligent",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntf_close_meta_service_live_view_notification",
+            "value":"Désactiver la vue en direct",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_group_header_title",
+            "value":"%1$s · %2$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntf_download_progress",
+            "value":"Progression : %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_ntf_close_pkg_live_view",
+            "value":"Désactiver la vue en direct pour %s ?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"kg_ntf_click_tip",
+            "value":"Veuillez toucher deux fois pour ouvrir l'application.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_hide_content",
+            "value":"%d notification",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"imm_kg_ntf_click_tip",
+            "value":"Veuillez toucher et maintenir pour une vue agrandie.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"close_smart_digest",
+            "value":"Désactiver le Regroupement intelligent",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntf_pin_top_pkg_notification",
+            "value":"Épingler en haut",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sa_default_name",
+            "value":"Capacité Système",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_cancel_pin_top_pkg_notification",
+            "value":"Désépingler du haut",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntf_keyguard_click_tip",
+            "value":"Toucher à nouveau pour ouvrir.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntf_extra_message_brief_title",
+            "value":"Voir plus de notifications",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_extra_message_brief_content",
+            "value":"De %s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_extra_message_brief_app_tag",
+            "value":", %s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"topped_notification_flag",
+            "value":"Épinglé",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_close_pkg_live_view",
+            "value":"Désactiver la vue en direct",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"live_view_setting_dialog_title",
+            "value":"%s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"place_holder_input_content",
+            "value":"Texte",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_brief_remainder_count",
+            "value":"+ %d",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"is_ntf_close_pkg_notification",
+            "value":"Désactiver toutes les notifications pour %s ?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"kg_ntf_expand_tip",
+            "value":"Veuillez toucher deux fois pour étendre.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_download_file_detail",
+            "value":"Détails du fichier",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntf_close_meta_service_notification",
+            "value":"Désactiver les notifications",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_empty_text_tip",
+            "value":"Aucune notification",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_keyguard_no_content_click_tip",
+            "value":"Aucun détail disponible.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_app_locked_content",
+            "value":"Cette application est verrouillée",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"silence_app_notifications",
+            "value":"Utiliser les notifications discrètes",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"nc_accessibility_pinned_notification",
+            "value":"Notification épinglée",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_ntf_swipe_left_text",
+            "value":"Développé",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"nc_accessibility_close_notification",
+            "value":"La notification a été supprimée",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_notification_clear",
+            "value":"Effacer toutes les notifications",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"nc_accessibility_close_live_view",
+            "value":"Le message de Vue en direct a été supprimé",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_ntf_swipe_right_text",
+            "value":"Réduit",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_ntf_focused_action_tips",
+            "value":"Toucher deux fois et maintenir, puis faire glisser vers la gauche pour plus d'options",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_ntf_collapse_tips",
+            "value":"Toucher deux fois et maintenir, puis faire glisser vers la droite pour masquer les options supplémentaires",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_silent_notifications",
+            "value":"Désactiver les notifications discrètes",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_notification_and_start_bar_setting",
+            "value":"Paramètres de notification et de la barre d'état",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_notifications_icon",
+            "value":"Notification %1$s : %2$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"loading",
+            "value":"Chargement en cours.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"noDisturb_none",
+            "value":"Désactiver",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"open_app_inner_ntf_mgmt",
+            "value":"Accéder à %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"setting",
+            "value":"Paramètres",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"show_preview_when_screen_lock",
+            "value":"Affichage des aperçus des notifications lorsque l'écran est verrouillé",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"show_live_view_preview_when_screen_lock",
+            "value":"Affichage des aperçus de la vue en direct lorsque l'écran est verrouillé",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wake_screen_when_receive_notification",
+            "value":"Allumage de l'écran pour les notifications",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"smart_reminder",
+            "value":"Notifications intelligentes",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pure_show_title",
+            "value":"Affichage simple",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"show_notification_icon",
+            "value":"Affichage des icônes de notification des applications",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"show_real_time_network_speed",
+            "value":"Affichage de la vitesse du réseau",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"show_battery_soc",
+            "value":"Affichage du pourcentage de batterie restant",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"already_clear",
+            "value":"Effacé",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

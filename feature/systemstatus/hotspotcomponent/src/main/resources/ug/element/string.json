@@ -1,0 +1,25 @@
+{
+    "string":[
+        {
+            "name":"control_center_complex_toggle_hotspot_title",
+            "value":"تور نۇقتىسى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"statusbar_talkbackhotspot01",
+            "value":"تور نۇقتىسى ئوچۇق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_hotspot_no_device",
+            "value":"ئۈسكۈنە يوق",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

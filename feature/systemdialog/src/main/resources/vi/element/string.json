@@ -1,0 +1,144 @@
+{
+    "string":[
+        {
+            "name":"off_find_alert_dialog_message",
+            "value":"Bạn vẫn có thể tìm thấy thiết bị bằng cách sử dụng ứng dụng Tìm thiết bị. Nếu bạn tắt ứng dụng Tìm thiết bị bây giờ, ứng dụng này sẽ được bật lại vào lần tiếp theo bạn bật thiết bị.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"off_find_no_action_confirm",
+            "value":"OK",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"off_find_checkbox",
+            "value":"Đảm bảo ứng dụng Tìm thiết bị được bật sau khi tắt nguồn",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"off_find_alert_dialog_title",
+            "value":"Thiết bị này vẫn có thể được tìm thấy ngay cả khi đã tắt nguồn.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"off_find_disable_confirm",
+            "value":"Tắt Tìm thiết bị",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"thermal_aware_toast",
+            "value":"Mở thiết bị ra để có trải nghiệm tốt hơn.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Poweroff_Button_Click_Reboot",
+            "value":"Chạm để khởi động lại",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"shutdown_dialog_title",
+            "value":"Lưu ý",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"power_schedule_switch_reminder",
+            "value":"Bật nguồn theo lịch trình (%s)",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Poweroff_Button_Reboot",
+            "value":"Khởi động lại",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"poweroff_tips",
+            "value":"Nhấn và giữ nút Nguồn và Giảm âm lượng trong ít nhất %d giây để buộc khởi động lại",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Poweroff_Button_Click_Shutdown",
+            "value":"Chạm để tắt nguồn",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"battery_emergency_dialog_content",
+            "value":"Pin rất yếu. Chế độ tiết kiệm pin sẽ kích hoạt sau %d giây.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"shutdown_dialog_content_new",
+            "value":"Pin sắp hết. Tắt nguồn sau %d giây.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Poweroff_Button_Shutdown",
+            "value":"Tắt nguồn",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"poweroff_fold_tips",
+            "value":"Nhấn và giữ nút Nguồn và Giảm âm lượng trong ít nhất %d giây để buộc khởi động lại",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"power_schedule_switch_toast",
+            "value":"Thiết bị của bạn sẽ không tự động bật lại.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"accessibility_power_off",
+            "value":"Tắt nguồn",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_reboot",
+            "value":"Khởi động lại",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_back",
+            "value":"Thoát khỏi màn hình tắt nguồn",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

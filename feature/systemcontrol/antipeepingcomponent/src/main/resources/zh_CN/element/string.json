@@ -1,0 +1,18 @@
+{
+    "string":[
+        {
+            "name":"anti_peeping_title",
+            "value":"防窥保护",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"free_window_closed",
+            "value":"使用前，请开启自由多窗",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

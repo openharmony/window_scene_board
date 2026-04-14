@@ -1,0 +1,67 @@
+{
+    "string":[
+        {
+            "name":"title_open_wlan_and_bluetooth",
+            "value":"먼저 WLAN 및 블루투스를 실행하여 ScreenCast 사용하기",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"btn_turn_on",
+            "value":"실행",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wireless_projection_toggle",
+            "value":"ScreenCast",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"title_projection_fail",
+            "value":"연결 실패",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"text_open_wlan_and_bluetooth",
+            "value":"장치를 발견하고 오디오 및 비디오를 스트리밍하는 데 필요합니다.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"projection_privacy_statement",
+            "value":"이 서비스는 블루투스를 켜고 블루투스 및 WLAN을 사용하기 위해 장치 연결 권한이 필요합니다. 장치 오디오 및 화면 콘텐츠도 기록됩니다. 동의를 탭하면 해당 약관에 동의함을 의미합니다.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"error_text_code_2",
+            "value":"두 장치 모두에서 WLAN 및 블루투스를 다시 시작하고 다시 시도하십시오.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"privacy_hint",
+            "value":"내 화면을 더 큰 디스플레이에 방송할 수 있습니다.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"btn_agree",
+            "value":"동의",
+            "attr":{
+                "priority":"LT"
+            }
+        }
+    ]
+}

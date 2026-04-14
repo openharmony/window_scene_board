@@ -1,0 +1,474 @@
+{
+    "string":[
+        {
+            "name":"ntf_center_title",
+            "value":"Notification Panel",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_empty_text_tip",
+            "value":"No notifications",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_download_file_detail",
+            "value":"File details",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntf_keyguard_click_tip",
+            "value":"Tap again to open.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_keyguard_no_content_click_tip",
+            "value":"No details available.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_close_pkg_notification",
+            "value":"Disable notifications",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_close_pkg_live_view",
+            "value":"Disable live view",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_close_meta_service_live_view_notification",
+            "value":"Disable live view",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_ntf_close_pkg_notification",
+            "value":"Disable all notifications for %s?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"is_ntf_close_pkg_live_view",
+            "value":"Disable live view for %s?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntf_pin_top_pkg_notification",
+            "value":"Pin to top",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntf_cancel_pin_top_pkg_notification",
+            "value":"Unpin from top",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"topped_notification_flag",
+            "value":"Pinned",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_dialog_more_settings",
+            "value":"More settings",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_dialog_cancel",
+            "value":"Cancel",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"place_holder_input_content",
+            "value":"Type here",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntf_extra_message",
+            "value":"More notifications",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_brief_remainder_count",
+            "value":"+%d",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_download_progress",
+            "value":"Progress: %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntf_extra_message_expand",
+            "value":"Show more",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_extra_message_collapse",
+            "value":"Show less",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntf_extra_message_brief_title",
+            "value":"View more notifications",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_extra_message_brief_content",
+            "value":"From %s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_extra_message_brief_app_tag",
+            "value":", %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"kg_ntf_expand_tip",
+            "value":"Double-tap to expand.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"kg_ntf_collapse_tip",
+            "value":"Double-tap to show less.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"kg_ntf_click_tip",
+            "value":"Double-tap to open app.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"imm_kg_ntf_click_tip",
+            "value":"Touch & hold for large view.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_setting_dialog_title",
+            "value":"%s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"live_view_setting_dialog_title",
+            "value":"%s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"accessibility_notification_and_start_bar_setting",
+            "value":"Notification and status bar settings",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_notification_setting_bar",
+            "value":"Settings",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_notification_delete_bar",
+            "value":"Delete",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_notification_clear",
+            "value":"Clear all notifications",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_notifications_icon",
+            "value":"%1$s notification: %2$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntf_hide_content",
+            "value":"%d notification",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"smart_digest_setting_dialog_title",
+            "value":"Smart grouping",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"close_smart_digest",
+            "value":"Disable Smart grouping",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"intent_bg_dark",
+            "value":"rgba(0,0,0,0.6)"
+        },
+        {
+            "name":"intent_bg",
+            "value":"rgba(255,255,255,0.6)"
+        },
+        {
+            "name":"cc_accessibility_str_ntf_swipe_left_text",
+            "value":"Expanded",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_ntf_swipe_right_text",
+            "value":"Collapsed",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_ntf_swipe_remove_text",
+            "value":"Removed",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_ntf_focused_action_tips",
+            "value":"Double-tap and hold, then swipe left for additional options",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_ntf_collapse_tips",
+            "value":"Double-tap and hold, then swipe right to hide additional options",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"nc_accessibility_pinned_notification",
+            "value":"Notification pinned",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"nc_accessibility_unpinned_notification",
+            "value":"Unpinned.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntf_app_locked_content",
+            "value":"App is locked",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sa_default_name",
+            "value":"System Ability",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_group_header_title",
+            "value":"%1$s · %2$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntf_close_meta_service_notification",
+            "value":"Disable notifications",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"nc_accessibility_close_notification",
+            "value":"Notification has been deleted",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"nc_accessibility_close_live_view",
+            "value":"Live view message has been deleted",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"silence_app_notifications",
+            "value":"Use gentle notifications",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_silent_notifications",
+            "value":"Disable gentle notifications",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"loading",
+            "value":"Loading…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"noDisturb_none",
+            "value":"Disable",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"open_app_inner_ntf_mgmt",
+            "value":"Go to %s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"setting",
+            "value":"Settings",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"show_preview_when_screen_lock",
+            "value":"Show notification previews when locked",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"show_live_view_preview_when_screen_lock",
+            "value":"Show live view previews when locked",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wake_screen_when_receive_notification",
+            "value":"Wake screen for notifications",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"smart_reminder",
+            "value":"Smart notifications",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pure_show_title",
+            "value":"Simple display",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"show_notification_icon",
+            "value":"Show app notification icons",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"show_real_time_network_speed",
+            "value":"Show network speed",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"show_battery_soc",
+            "value":"Show battery percentage",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"already_clear",
+            "value":"Cleared",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

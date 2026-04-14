@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>ic_reboot</title>
+    <g id="设计稿" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="新方案主界面备份" transform="translate(-252.000000, -450.000000)">
+            <g id="编组-2" transform="translate(234.000000, 432.000000)">
+                <g id="icon" transform="translate(16.000000, 16.000000)">
+                    <polygon id="Fill-1" points="0 32 32 32 32 0 0 0"></polygon>
+                    <g id="Group" transform="translate(3.733387, 3.733387)" stroke="#FFFFFF" stroke-linecap="round" stroke-width="2.13333333">
+                        <line x1="12.2666133" y1="4.69786667" x2="12.2666133" y2="0" id="Stroke-6"></line>
+                        <line x1="12.2666133" y1="19.83536" x2="12.2666133" y2="24.5332267" id="Stroke-8"></line>
+                        <line x1="17.6184267" y1="6.9148" x2="20.94056" y2="3.59266667" id="Stroke-11"></line>
+                        <line x1="6.9148" y1="17.6184267" x2="3.59266667" y2="20.94056" id="Stroke-12"></line>
+                        <line x1="4.69786667" y1="12.2666133" x2="0" y2="12.2666133" id="Stroke-13"></line>
+                        <line x1="19.83536" y1="12.2666133" x2="24.5332267" y2="12.2666133" id="Stroke-15"></line>
+                        <line x1="6.9148" y1="6.9148" x2="3.59266667" y2="3.59266667" id="Stroke-18"></line>
+                        <line x1="17.6184267" y1="17.6184267" x2="20.94056" y2="20.94056" id="Stroke-19"></line>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

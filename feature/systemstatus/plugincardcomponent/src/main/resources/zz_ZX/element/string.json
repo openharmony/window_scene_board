@@ -1,0 +1,96 @@
+{
+    "string":[
+        {
+            "name":"Laptop",
+            "value":"[TS_938447]_Computer"
+        },
+        {
+            "name":"tablet",
+            "value":"[TS_938446]_Tablet"
+        },
+        {
+            "name":"capsuleTips",
+            "value":"[TS_938453]_Double-tap to open Super Device"
+        },
+        {
+            "name":"PlugincardcomponentAbility_label",
+            "value":"[TS_938451]_label"
+        },
+        {
+            "name":"app_name_desc",
+            "value":"[TS_938448]_Super Device"
+        },
+        {
+            "name":"PlugincardcomponentAbility_desc",
+            "value":"[TS_938454]_description"
+        },
+        {
+            "name":"appSateCollaborating",
+            "value":"[TS_938452]_Collaborating"
+        },
+        {
+            "name":"TV",
+            "value":"[TS_938443]_TV"
+        },
+        {
+            "name":"Phone",
+            "value":"[TS_938445]_Phone"
+        },
+        {
+            "name":"module_desc",
+            "value":"[TS_938449]_module description"
+        },
+        {
+            "name":"appSateCancel",
+            "value":"[TS_938450]_End collaboration"
+        },
+        {
+            "name":"radarIconTips",
+            "value":"[TS_938444]_Button to enter Super Device, double-tap with one finger to activate"
+        },
+        {
+            "name":"title_login_openharmony_account",
+            "value":"[TS_963321]_Log in to use Super Device"
+        },
+        {
+            "name":"account_button_login",
+            "value":"[TS_963322]_Log in"
+        },
+        {
+            "name":"text_open_wlan_and_bluetooth_account",
+            "value":"[TS_963325]_This is required to discover and collaborate with devices."
+        },
+        {
+            "name":"super_device_title_open_wlan_and_bluetooth",
+            "value":"[TS_963323]_Enable WLAN and Bluetooth to use Super Device"
+        },
+        {
+            "name":"button_enable",
+            "value":"[TS_963324]_Enable"
+        },
+        {
+            "name":"switch_audio",
+            "value":"[TS_970189]_Audio output switched to \"%s\"."
+        },
+        {
+            "name":"audio",
+            "value":"[TS_970188]_Audio device"
+        },
+        {
+            "name":"device_connected_msg",
+            "value":"[TS_970190]_Connected"
+        },
+        {
+            "name":"super_device_disabled",
+            "value":"[TS_972947]_Enable Super Device?"
+        },
+        {
+            "name":"Car",
+            "value":"[TS_981983]_Car"
+        },
+        {
+            "name":"radarIconTipsBlank",
+            "value":"[TS_1043343]_Super Device button, double tap to activate"
+        }
+    ]
+}

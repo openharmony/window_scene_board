@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"control_center_complex_toggle_dpin_title",
+            "value":"显示器模式",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

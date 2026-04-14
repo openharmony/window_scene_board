@@ -1,0 +1,18 @@
+{
+    "string":[
+        {
+            "name":"free_window_closed",
+            "value":"མ་བཀོལ་གོང་ལ། རང་འདོད་སྒེའུ་ཁུང་མང་པོ་ཁ་འབྱེད་རོགས།",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"anti_peeping_title",
+            "value":"ལྐོག་ལྟ་སྔོན་འགོག་སྲུང་སྐྱོབ།",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

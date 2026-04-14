@@ -1,0 +1,67 @@
+{
+    "string":[
+        {
+            "name":"control_center_eye_comfort_scheduled_open",
+            "value":"التشغيل المجدول",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_eye_comfort_scheduled_next_day",
+            "value":"‏%1$s‏ -‏ %2$s‏ (اليوم التالي)",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_eye_comfort_always_on",
+            "value":"تشغيل طوال اليوم",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_eye_comfort_toggle_title",
+            "value":"حماية البصر",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_eye_comfort_smart_open_subtitle_active",
+            "value":"لوحظ وجود إجهاد على العين. تصفية الضوء الأزرق جارية.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_eye_comfort_scheduled_open_subtitle_sunset",
+            "value":"من وقت غروب الشمس حتى شروقها",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_eye_comfort_smart_open",
+            "value":"تشغيل تلقائي",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_eye_comfort_smart_open_subtitle_normal",
+            "value":"لم يُلاحظ أي إجهاد على العين.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_eye_comfort_smart_open_subtitle_default",
+            "value":"ضبط ديناميكي لتصفية الضوء الأزرق.",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

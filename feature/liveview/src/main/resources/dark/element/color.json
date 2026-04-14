@@ -1,0 +1,12 @@
+{
+  "color": [
+    {
+      "name": "live_blur_style_bg",
+      "value": "#66000000"
+    },
+    {
+      "name": "ntf_blur_style_bg",
+      "value": "#4D000000"
+    }
+  ]
+}

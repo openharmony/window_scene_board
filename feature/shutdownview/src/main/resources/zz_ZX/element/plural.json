@@ -1,0 +1,91 @@
+{
+    "plural":[
+        {
+            "name":"confirm_reboot_tip",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"[TS_1082011]_Closing %d app and restarting. To go back and save your work, click Cancel and save manually."
+                },
+                {
+                    "quantity":"other",
+                    "value":"[TS_1082012]_Closing %d apps and restarting. To go back and save your work, click Cancel and save manually."
+                },
+                {
+                    "quantity":"zero",
+                    "value":"[TS_1082020]_Closing %d apps and restarting. To go back and save your work, click Cancel and save manually."
+                },
+                {
+                    "quantity":"few",
+                    "value":"[TS_1082018]_Closing %d apps and restarting. To go back and save your work, click Cancel and save manually."
+                },
+                {
+                    "quantity":"many",
+                    "value":"[TS_1082019]_Closing %d apps and restarting. To go back and save your work, click Cancel and save manually."
+                },
+                {
+                    "quantity":"two",
+                    "value":"[TS_1082013]_Closing %d apps and restarting. To go back and save your work, click Cancel and save manually."
+                }
+            ]
+        },
+        {
+            "name":"confirm_shutdown_tip",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"[TS_1082016]_Closing %d apps. To go back and save your work, click Cancel and save manually."
+                },
+                {
+                    "quantity":"one",
+                    "value":"[TS_1082014]_Closing %d app. To go back and save your work, click Cancel and save manually."
+                },
+                {
+                    "quantity":"zero",
+                    "value":"[TS_1082023]_Closing %d apps and powering off. To go back and save your work, click Cancel and save manually."
+                },
+                {
+                    "quantity":"few",
+                    "value":"[TS_1082021]_Closing %d apps and powering off. To go back and save your work, click Cancel and save manually."
+                },
+                {
+                    "quantity":"many",
+                    "value":"[TS_1082015]_Closing %d apps and powering off. To go back and save your work, click Cancel and save manually."
+                },
+                {
+                    "quantity":"two",
+                    "value":"[TS_1082010]_Closing %d apps and powering off. To go back and save your work, click Cancel and save manually."
+                }
+            ]
+        },
+        {
+            "name":"confirm_mode_change_tip",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"[TS_1105231]_Closing %d app. To go back and save your work, click Cancel and save manually."
+                },
+                {
+                    "quantity":"other",
+                    "value":"[TS_1105226]_Closing %d apps. To go back and save your work, click Cancel and save manually."
+                },
+                {
+                    "quantity":"zero",
+                    "value":"[TS_1105229]_Closing %d apps. To go back and save your work, click Cancel and save manually."
+                },
+                {
+                    "quantity":"few",
+                    "value":"[TS_1105230]_Closing %d apps. To go back and save your work, click Cancel and save manually."
+                },
+                {
+                    "quantity":"many",
+                    "value":"[TS_1105233]_Closing %d apps. To go back and save your work, click Cancel and save manually."
+                },
+                {
+                    "quantity":"two",
+                    "value":"[TS_1105228]_Closing %d apps. To go back and save your work, click Cancel and save manually."
+                }
+            ]
+        }
+    ]
+}

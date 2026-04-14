@@ -1,0 +1,18 @@
+{
+    "string":[
+        {
+            "name":"flashlight_on_ntf_content",
+            "value":"Linterna encendida",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_flashlight_title",
+            "value":"Linterna",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

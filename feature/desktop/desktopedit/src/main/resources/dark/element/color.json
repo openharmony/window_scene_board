@@ -1,0 +1,12 @@
+{
+  "color": [
+    {
+      "name": "bottomsheet_additive_black_color",
+      "value": "#66FFFFFF"
+    },
+    {
+      "name": "outer_edit_button_bg_color",
+      "value": "#33000000"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "module": {
+    "name": "meetingtogglecomponent",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ]
+  }
+}

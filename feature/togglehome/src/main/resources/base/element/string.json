@@ -1,0 +1,19 @@
+{
+    "string":[
+        {
+            "name":"togglehome_MainAbility",
+            "value":"togglehome_MainAbility"
+        },
+        {
+            "name":"mainability_description",
+            "value":"ETS_Empty Feature Ability"
+        },
+        {
+            "name":"back_home",
+            "value":"Back to home screen",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

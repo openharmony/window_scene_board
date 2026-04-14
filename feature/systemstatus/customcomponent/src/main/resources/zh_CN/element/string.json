@@ -1,0 +1,25 @@
+{
+    "string":[
+        {
+            "name":"now_string_shortest",
+            "value":"刚刚",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"date_time_view_yesterday",
+            "value":"昨天",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_quick_settings_alarm_set",
+            "value":"已设置闹钟",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

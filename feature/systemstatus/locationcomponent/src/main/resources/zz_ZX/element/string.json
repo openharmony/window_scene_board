@@ -1,0 +1,12 @@
+{
+    "string":[
+        {
+            "name":"control_center_complex_toggle_location_title",
+            "value":"[TS_784942]_Location"
+        },
+        {
+            "name":"accessibility_status_bar_location",
+            "value":"[TS_924295]_The app sent a valid location request"
+        }
+    ]
+}

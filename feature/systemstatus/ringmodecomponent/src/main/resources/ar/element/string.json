@@ -1,0 +1,39 @@
+{
+    "string":[
+        {
+            "name":"control_center_complex_toggle_ring_mode_title_on",
+            "value":"رنين",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_ring_mode_title_off",
+            "value":"صامت",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_ring_mode_title_vibration",
+            "value":"اهتزاز",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_ring_off_filled",
+            "value":"الاهتزاز موقوف",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_vibration_on",
+            "value":"الاهتزاز قيد التشغيل",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

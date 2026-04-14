@@ -1,0 +1,12 @@
+{
+  "name": "@ohos/multimodalinput",
+  "version": "1.0.0",
+  "description": "Please describe the basic information.",
+  "main": "",
+  "author": "",
+  "license": "",
+  "dependencies": {
+    "@ohos/basicutils": "../../staticcommon/basecommon/basicutils",
+    "libmultimodalinput.so": "file:./src/main/cpp/types/libmultimodalinput"
+  }
+}

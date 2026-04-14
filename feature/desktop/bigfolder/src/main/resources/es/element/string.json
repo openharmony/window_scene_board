@@ -1,0 +1,151 @@
+{
+    "string":[
+        {
+            "name":"d_app_dialog_cancel",
+            "value":"Ignorar",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"d_app_dialog_confirm",
+            "value":"Actualizar ahora",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"d_app_unavailable_dialog_know",
+            "value":"Aceptar",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"folder_add",
+            "value":"Añadir",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"d_app_unavailable_dialog_content",
+            "value":"Para usar esta aplicación, primero descarga %s desde AppGallery.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"d_app_dialog_contents",
+            "value":"Actualiza tu aplicación para una experiencia totalmente nueva. Ten en cuenta que algunos datos de la aplicación pueden perderse al cambiar de versión.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"d_app_dialog_text",
+            "value":"%s está disponible ahora para OpenHarmony.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"uninstall_d_app_dialog_content",
+            "value":"Ya has instalado la versión OpenHarmony de %s en este dispositivo. ¿Desinstalar la versión anterior?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"open_harmony_app_dialog_content",
+            "value":"Tienes la versión OpenHarmony de %s en tu dispositivo.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"d_app_dialog_open",
+            "value":"Abrir la versión OpenHarmony",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"confirm_dialog",
+            "value":"Aceptar",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"d_app_pause_download_dialog_content",
+            "value":"Se ha pausado la descarga de %s. ¿Reanudar?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"d_app_unavailable_dialog_title",
+            "value":"Aplicación no disponible",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"d_app_dialog_title",
+            "value":"Nueva versión disponible",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"uninstall_d_app_dialog_title",
+            "value":"Versión más reciente instalada",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"d_app_wait_download_dialog_content",
+            "value":"%s está en la cola de descarga. ¿Quieres dar prioridad a esta descarga?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"folder_items_limit_toast",
+            "value":"La carpeta está llena.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"d_app_installing_dialog_content",
+            "value":"Se está instalando %s. Espera.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sheet_title_similar",
+            "value":"Agrupar aplicaciones similares",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sheet_sub_title_similar",
+            "value":"Selecciona más aplicaciones para añadir a esta carpeta.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sheet_title_recommended",
+            "value":"Aplicaciones sugeridas",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

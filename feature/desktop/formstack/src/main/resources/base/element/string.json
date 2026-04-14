@@ -1,0 +1,106 @@
+{
+    "string":[
+        {
+            "name":"edit_formstack",
+            "value":"Edit %s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"delete_formstack",
+            "value":"Remove %s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"expand_formstack",
+            "value":"Expand stack",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"delete_form_stack_text",
+            "value":"Delete",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"create_form_stack_text",
+            "value":"%1$s stacked with %2$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_form_stack_text",
+            "value":"%1$s placed on stack",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"form_pinned_stack_text",
+            "value":"%1$s moved to top of stack",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"expand_stack_text",
+            "value":"Expanded, swipe down with two fingers to scroll the widgets",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"close_stack_text",
+            "value":"Widget stack collapsed",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"stack_request_focus_after_text",
+            "value":"This is the %1$s widget. There are actions you can perform. Double-tap and hold to open the options menu.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"expand_stack_request_focus_front_text",
+            "value":"Item %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"delete_stack_form",
+            "value":"%s widget deleted",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"talkback_expand_stack_move_to",
+            "value":"Move to item %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"talkback_expand_stack_moved_to",
+            "value":"Placed as item %d in stack",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+      {
+        "name": "app_name",
+        "value": "app name"
+      }
+    ]
+}

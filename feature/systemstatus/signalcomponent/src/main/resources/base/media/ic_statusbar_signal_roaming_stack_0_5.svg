@@ -1,0 +1,19 @@
+<svg width="72.000000" height="64.000000" viewBox="0 0 72 64" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<desc>
+			Created with Pixso.
+	</desc>
+	<defs>
+		<clipPath id="clip41_443">
+			<rect id="上_漫游_信号塔5" width="72.000000" height="64.000000" fill="white" fill-opacity="0"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clip41_443)">
+		<rect id="矩形 9" width="72.000000" height="64.000000" fill="#C4C4C4" fill-opacity="0"/>
+		<rect id="矩形" x="6.000000" y="21.000000" rx="4.000000" width="8.000000" height="9.000000" fill="#FFFFFF" fill-opacity="1.000000"/>
+		<rect id="矩形" x="19.000000" y="18.000000" rx="4.000000" width="8.000000" height="12.000000" fill="#FFFFFF" fill-opacity="1.000000"/>
+		<rect id="矩形" x="32.000000" y="16.000000" rx="4.000000" width="8.000000" height="14.000000" fill="#FFFFFF" fill-opacity="1.000000"/>
+		<rect id="矩形" x="45.000000" y="12.000000" rx="4.000000" width="8.000000" height="18.000000" fill="#FFFFFF" fill-opacity="1.000000"/>
+		<path id="矩形" d="M58 12C58 9.79 59.79 8 62 8C64.2 8 66 9.79 66 12L66 14L58 14L58 12Z" fill="#FFFFFF" fill-opacity="1.000000" fill-rule="evenodd"/>
+		<path id="Fill 26备份 4" d="M61.6042 25.6499L63.6875 30L67 30L64.4591 24.9614C65.0141 24.5939 65.4301 24.0831 65.7083 23.4269C65.9859 22.7714 66.125 21.9972 66.125 21.1049C66.125 19.6892 65.7708 18.5848 65.0625 17.7909C64.3542 16.9977 63.3333 16.6 62 16.6L58 16.6L58 30L60.9167 30L60.9167 25.6499L61.6042 25.6499ZM60.917 23.0686L60.917 19.1546L61.4795 19.1546C62.5078 19.1546 63.0212 19.8037 63.0212 21.1014C63.0212 21.771 62.8962 22.2663 62.6462 22.5873C62.3954 22.9091 62.0078 23.0686 61.4795 23.0686L60.917 23.0686Z" clip-rule="evenodd" fill="#FFFFFF" fill-opacity="1.000000" fill-rule="evenodd"/>
+	</g>
+</svg>

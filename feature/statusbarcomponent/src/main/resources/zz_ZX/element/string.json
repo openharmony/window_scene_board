@@ -1,0 +1,92 @@
+{
+    "string":[
+        {
+            "name":"status_bar_search",
+            "value":"[TS_976386]_Search"
+        },
+        {
+            "name":"status_bar_volume",
+            "value":"[TS_975535]_Volume (%1$s): %2$s"
+        },
+        {
+            "name":"location_statusbar_tips",
+            "value":"[TS_972495]_Location"
+        },
+        {
+            "name":"more",
+            "value":"[TS_968810]_More"
+        },
+        {
+            "name":"full_charge",
+            "value":"[TS_973911]_%s | Fully charged"
+        },
+        {
+            "name":"turbo_charge",
+            "value":"[TS_973912]_%s | Turbo charging"
+        },
+        {
+            "name":"normal_charge",
+            "value":"[TS_968807]_%s | Charging"
+        },
+        {
+            "name":"wlan_connect",
+            "value":"[TS_968808]_WLAN connected"
+        },
+        {
+            "name":"battery_power",
+            "value":"[TS_968805]_Battery: %s"
+        },
+        {
+            "name":"host_battery_power",
+            "value":"[TS_1049366]_Computer battery: %s"
+        },
+        {
+            "name":"keyboard_battery_power",
+            "value":"[TS_1049365]_Keyboard battery: %s"
+        },
+        {
+            "name":"personal_panel",
+            "value":"[TS_969886]_System"
+        },
+        {
+            "name":"wlan_disconnect",
+            "value":"[TS_968812]_WLAN not connected"
+        },
+        {
+            "name":"back_home",
+            "value":"[TS_968813]_Back to home screen"
+        },
+        {
+            "name":"super_charge",
+            "value":"[TS_968814]_%s | SuperCharging"
+        },
+        {
+            "name":"wlan_closed",
+            "value":"[TS_968811]_WLAN disabled"
+        },
+        {
+            "name":"key_mouse_sharing",
+            "value":"[TS_988907]_Keyboard & mouse sharing"
+        },
+        {
+            "name":"custom_charge",
+            "value":"[TS_1050728]_%s | Charging to custom charging limit"
+        },
+        {
+            "name":"smart_charge",
+            "value":"[TS_1050727]_%s | Smart charge in progress"
+        },
+        {
+            "name":"ethernet_status_connected",
+            "value":"[TS_1110111]_Wired network connected"
+        },
+        {
+            "name":"file_upload",
+            "value":"[TS_1124757]_Upload files"
+        },
+        {
+            "name":"settings",
+            "value":"[TS_1124758]_Settings"
+        }
+    ]
+}

@@ -1,0 +1,95 @@
+{
+    "string":[
+        {
+            "name":"suggestion",
+            "value":"Suggestions",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"splitter_format",
+            "value":"%1$s, %2$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"form_added",
+            "value":"Widget added.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"add_theme_form_to_desktop_more",
+            "value":"More live widgets",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"look_more_theme_form",
+            "value":"More",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"add_to_screen_lock",
+            "value":"Add to lock screen",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"form_center_notice_text",
+            "value":"Click or drag widgets to add to the home screen",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"form_center_notice_button",
+            "value":"OK",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_form_to_intelligent",
+            "value":"Add to Assistant·TODAY",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_str_long_click_to_drag",
+            "value":"Double tap and hold to drag",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_str_two_finger_slide",
+            "value":"Swipe left or right with two fingers to change screens",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"card_load_error",
+            "value":"Widget loading error. Try again later.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"onekeylock_shortcut",
+            "value":"Lock screen shortcut",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

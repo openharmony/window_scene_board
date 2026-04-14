@@ -1,0 +1,26 @@
+{
+  "license": "",
+  "devDependencies": {},
+  "author": "",
+  "name": "@ohos/carcastsource",
+  "description": "Please describe the basic information.",
+  "main": "",
+  "version": "1.0.0",
+  "dependencies": {
+    "@ohos/launchercommon": "../../staticcommon/launchercommon",
+    "@ohos/airplanecomponent": "../systemstatus/airplanecomponent",
+    "@ohos/batterycomponent": "../systemstatus/batterycomponent",
+    "@ohos/signalcomponent": "../systemstatus/signalcomponent",
+    "@ohos/clockcomponent": "../systemstatus/clockcomponent",
+    "@ohos/systemuicommon": "../../staticcommon/systemuicommon",
+    "@ohos/basicutils": "../../staticcommon/basecommon/basicutils",
+    "@ohos/frameworkwrapper": "../../staticcommon/basecommon/frameworkwrapper",
+    "@ohos/windowscene": "../../staticcommon/basecommon/windowscene",
+    "@ohos/componentdrag": "../../staticcommon/basecommon/componentdrag",
+    "@ohos/commonconstants": "../../staticcommon/basecommon/commonconstants",
+    "@ohos/frameworkcommon": "../../staticcommon/basecommon/frameworkcommon",
+    "@ohos/componenthelper": "../../staticcommon/basecommon/componenthelper",
+    "@ohos/componentanimator": "../../staticcommon/basecommon/componentanimator",
+    "@ohos/controlcentercommon": "file:../../staticcommon/controlcentercommon"
+  }
+}

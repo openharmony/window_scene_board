@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="128"
+     height="10">
+    <path
+        d="M5,0L123,0C125.761,-0 128,2.239 128,5C128,7.761 125.761,10 123,10L5,10C2.239,10 0,7.761 0,5C-0,2.239 2.239,0 5,0Z"
+        fill="@color/notification_drop_line_color"
+        stroke="#00000000"
+        stroke-width="1"/>
+</svg>

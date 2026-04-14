@@ -1,0 +1,67 @@
+{
+    "string":[
+        {
+            "name":"app_center_menu_add_dock",
+            "value":"Añadir a la barra inferior",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"search_no_result",
+            "value":"No se han encontrado resultados",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_menu_open",
+            "value":"Abrir",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_menu_open_from_floating_window",
+            "value":"Abrir desde la ventana flotante",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_menu_open_from_split_screen",
+            "value":"Abrir desde la pantalla dividida",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"uninstall",
+            "value":"Desinstalar",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"isUninstall",
+            "value":"¿Desinstalar %s?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_center_menu_add_desktop",
+            "value":"Añadir a pantalla principal",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"drag_full",
+            "value":"Pantalla llena. No se pueden añadir más iconos.",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

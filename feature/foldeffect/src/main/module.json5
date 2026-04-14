@@ -1,0 +1,10 @@
+{
+  "module": {
+    "name": "foldeffect",
+    "type": "har",
+    "description": "FoldEffect_module",
+    "deviceTypes": [
+      "default"
+    ]
+  }
+}

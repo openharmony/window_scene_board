@@ -1,0 +1,712 @@
+{
+    "string":[
+        {
+            "name":"app_center_menu_add_dock",
+            "value":"[TS_863954]_Add to dock"
+        },
+        {
+            "name":"download_installwait",
+            "value":"[TS_871029]_Waiting"
+        },
+        {
+            "name":"download_installing",
+            "value":"[TS_871030]_Installing"
+        },
+        {
+            "name":"uninstall_success",
+            "value":"[TS_863848]_Uninstalled."
+        },
+        {
+            "name":"launcher_layout",
+            "value":"[TS_864234]_Launcher Layout"
+        },
+        {
+            "name":"disable_uninstall",
+            "value":"[TS_863978]_Uninstallation not allowed."
+        },
+        {
+            "name":"delete_app",
+            "value":"[TS_864170]_Remove"
+        },
+        {
+            "name":"uninstall_failed",
+            "value":"[TS_863852]_Uninstallation failed."
+        },
+        {
+            "name":"uninstall",
+            "value":"[TS_863986]_Uninstall"
+        },
+        {
+            "name":"add_form_to_desktop_more",
+            "value":"[TS_864198]_More widgets"
+        },
+        {
+            "name":"Control_center_icon_on_color",
+            "value":"[TS_869903]_#CC000000"
+        },
+        {
+            "name":"layout_style",
+            "value":"[TS_864154]_Layout Style"
+        },
+        {
+            "name":"add_form_to_desktop",
+            "value":"[TS_864149]_Widgets"
+        },
+        {
+            "name":"delete_form",
+            "value":"[TS_863893]_Remove"
+        },
+        {
+            "name":"form_center",
+            "value":"[TS_863874]_Browse widgets"
+        },
+        {
+            "name":"download_pause",
+            "value":"[TS_871028]_Paused"
+        },
+        {
+            "name":"remove_app_dialog_content",
+            "value":"[TS_878147]_You can add it again at any time from the App center."
+        },
+        {
+            "name":"rename_folder",
+            "value":"[TS_864014]_Rename"
+        },
+        {
+            "name":"WorkSchedulerExtensionAbility_label",
+            "value":"[TS_879467]_ReportWorkSchedulerExtensionAbility"
+        },
+        {
+            "name":"remove_app_from_folder",
+            "value":"[TS_863989]_remove app from folder"
+        },
+        {
+            "name":"WorkSchedulerExtensionAbility_desc",
+            "value":"[TS_879466]_ReportWorkSchedulerExtensionAbility"
+        },
+        {
+            "name":"form_edit",
+            "value":"[TS_864098]_Edit"
+        },
+        {
+            "name":"notification_and_status_bar_title",
+            "value":"[TS_863889]_Notifications & status bar"
+        },
+        {
+            "name":"app_center_menu_add_desktop",
+            "value":"[TS_864190]_Add to home screen"
+        },
+        {
+            "name":"Control_center_icon_on_bg_color",
+            "value":"[TS_869894]_#00000000"
+        },
+        {
+            "name":"Control_center_icon_default_bg_color",
+            "value":"[TS_869900]_#00000000"
+        },
+        {
+            "name":"cancel",
+            "value":"[TS_864202]_Cancel"
+        },
+        {
+            "name":"download_wait",
+            "value":"[TS_871031]_Waiting"
+        },
+        {
+            "name":"app_menu_open",
+            "value":"[TS_864153]_Open"
+        },
+        {
+            "name":"app_menu_open_from_floating_window",
+            "value":"[TS_936772]_Open from the floating window"
+        },
+        {
+            "name":"app_menu_open_from_split_screen",
+            "value":"[TS_936773]_Open from split screen"
+        },
+        {
+            "name":"form_stack_max_number_limit",
+            "value":"[TS_872867]_This stack is full."
+        },
+        {
+            "name":"download_start",
+            "value":"[TS_871034]_Downloading"
+        },
+        {
+            "name":"add_to_desktop",
+            "value":"[TS_863917]_Add to home screen"
+        },
+        {
+            "name":"selected",
+            "value":"[TS_948040]_Selected"
+        },
+        {
+            "name":"unselected",
+            "value":"[TS_948041]_Not selected"
+        },
+        {
+            "name":"wait_data_recover_toast",
+            "value":"[TS_955110]_Data is being restored. Try again later."
+        },
+        {
+            "name":"wait_data_recover",
+            "value":"[TS_955111]_Restoring data"
+        },
+        {
+            "name":"double_tap_to_check",
+            "value":"[TS_953180]_Double-tap to select"
+        },
+        {
+            "name":"double_tap_to_uncheck",
+            "value":"[TS_953182]_Double-tap to deselect"
+        },
+        {
+            "name":"small_folder",
+            "value":"[TS_949968]_Small folder"
+        },
+        {
+            "name":"app_not_checked",
+            "value":"[TS_953183]_Not selected"
+        },
+        {
+            "name":"homepage_set_button",
+            "value":"[TS_1086659]_Button to set home screen, double tap to activate"
+        },
+        {
+            "name":"homepage_set",
+            "value":"[TS_1086658]_Current screen has been set as home screen"
+        },
+        {
+            "name":"tap_with_menu_reader_text",
+            "value":"[TS_952331]_Double-tap to activate, double-tap then hold for more options"
+        },
+        {
+            "name":"add_to_folder",
+            "value":"[TS_953184]_Add to %s"
+        },
+        {
+            "name":"enter_edit_mode",
+            "value":"[TS_948038]_Enter editing mode"
+        },
+        {
+            "name":"more_applications",
+            "value":"[TS_949970]_More apps"
+        },
+        {
+            "name":"big_folder",
+            "value":"[TS_949966]_Large folder"
+        },
+        {
+            "name":"app_checked",
+            "value":"[TS_953181]_Selected"
+        },
+        {
+            "name":"exit_edit_mode",
+            "value":"[TS_948039]_Exit editing mode"
+        },
+        {
+            "name":"is_delete_icon",
+            "value":"[TS_952339]_Remove %s?"
+        },
+        {
+            "name":"pinch_to_enter_the_editing_page",
+            "value":"[TS_952340]_To add this again, pinch two fingers together on the home screen, then go to %1$s > %2$s."
+        },
+        {
+            "name":"external_screen_application",
+            "value":"[TS_952341]_Cover screen apps"
+        },
+        {
+            "name":"delete",
+            "value":"[TS_863924]_Delete"
+        },
+        {
+            "name":"is_delete",
+            "value":"[TS_955215]_Delete %s?"
+        },
+        {
+            "name":"delete_clone_app_dialog_content",
+            "value":"[TS_955217]_This app duplicate and all its data will be permanently deleted."
+        },
+        {
+            "name":"delete_master_app_dialog_content",
+            "value":"[TS_955214]_Any duplicates of this app will also be uninstalled."
+        },
+        {
+            "name":"shortcuts_limit_tips",
+            "value":"[TS_955216]_No more shortcuts can be added for this app."
+        },
+        {
+            "name":"theme_form_applicationName",
+            "value":"[TS_968746]_Live widgets"
+        },
+        {
+            "name":"cancel_download",
+            "value":"[TS_966537]_Cancel download"
+        },
+        {
+            "name":"preferential_download",
+            "value":"[TS_999487]_Priority download"
+        },
+        {
+            "name":"wait_data_update_toast",
+            "value":"[TS_966536]_App is being updated. Please wait."
+        },
+        {
+            "name":"search",
+            "value":"[TS_864094]_Search"
+        },
+        {
+            "name":"no_matching_results",
+            "value":"[TS_971455]_No results"
+        },
+        {
+            "name":"double_tap_to_execute",
+            "value":"[TS_973761]_Double-tap to activate"
+        },
+        {
+            "name":"resume_extension",
+            "value":"[TS_973760]_Resume"
+        },
+        {
+            "name":"pause_extension",
+            "value":"[TS_993589]_Pause"
+        },
+        {
+            "name":"disconn_extension",
+            "value":"[TS_973759]_End"
+        },
+        {
+            "name":"add_exist_shortcut",
+            "value":"[TS_958579]_Shortcut already created."
+        },
+        {
+            "name":"add_form_to_outer_page",
+            "value":"[TS_969869]_Widgets"
+        },
+        {
+            "name":"experimental_apps",
+            "value":"[TS_966392]_Experimental"
+        },
+        {
+            "name":"premium_apps",
+            "value":"[TS_966394]_Recommended"
+        },
+        {
+            "name":"outer_experience_tips",
+            "value":"[TS_966390]_Experimental apps have more features, but there may be compatibility issues."
+        },
+        {
+            "name":"add_apps_to_outer_page",
+            "value":"[TS_970128]_Apps"
+        },
+        {
+            "name":"outer_emergency_note",
+            "value":"[TS_966396]_Battery very low. Plug your device in now."
+        },
+        {
+            "name":"outer_thermal_safe_note",
+            "value":"[TS_966389]_Device temperature high. Leave it to cool down."
+        },
+        {
+            "name":"outer_emergency_expand_note",
+            "value":"[TS_966395]_Unfold for emergency calls."
+        },
+        {
+            "name":"outer_emergency_enter_dialog_title",
+            "value":"[TS_972548]_Battery extremely low"
+        },
+        {
+            "name":"outer_emergency_enter_dialog_content",
+            "value":"[TS_972546]_Power reserve mode has been enabled to extend battery life."
+        },
+        {
+            "name":"outer_emergency_exit_without_charge_dialog_content",
+            "value":"[TS_972544]_Remember to charge up when you get the chance."
+        },
+        {
+            "name":"outer_emergency_exit_with_charge_dialog_content",
+            "value":"[TS_972545]_If you exit now, your device might not have enough power to stay on."
+        },
+        {
+            "name":"outer_thermal_safe_enter_dialog_dialog_title",
+            "value":"[TS_972543]_Device too hot"
+        },
+        {
+            "name":"outer_thermal_safe_enter_dialog_dialog_content",
+            "value":"[TS_972547]_Cooldown mode has been activated. This mode will exit once your device has cooled down."
+        },
+        {
+            "name":"lock_screen",
+            "value":"[TS_864017]_Lock screen"
+        },
+        {
+            "name":"accessibility_shown_big_folder",
+            "value":"[TS_986985]_Folder has been enlarged"
+        },
+        {
+            "name":"added_icon_to_outer_desktop",
+            "value":"[TS_982118]_%s added to cover screen."
+        },
+        {
+            "name":"accessibility_shown_small_folder",
+            "value":"[TS_986986]_Folder has been shrunk"
+        },
+        {
+            "name":"expand_phone_use",
+            "value":"[TS_982117]_Unfold the phone first."
+        },
+        {
+            "name":"not_have_add_app",
+            "value":"[TS_990654]_No apps to add"
+        },
+        {
+            "name":"add_outer_app_tips",
+            "value":"[TS_1015285]_%s added."
+        },
+        {
+            "name":"app_category_music",
+            "value":"[TS_1017435]_Music"
+        },
+        {
+            "name":"app_category_test",
+            "value":"[TS_1017429]_Test Apps"
+        },
+        {
+            "name":"app_category_lifestyle",
+            "value":"[TS_1017450]_Lifestyle"
+        },
+        {
+            "name":"app_category_social",
+            "value":"[TS_1017438]_Social"
+        },
+        {
+            "name":"app_category_infotainment",
+            "value":"[TS_1017454]_Info"
+        },
+        {
+            "name":"folder_intelligent_name",
+            "value":"[TS_1017432]_%1$s & %2$s"
+        },
+        {
+            "name":"app_category_medical",
+            "value":"[TS_1017440]_Medical"
+        },
+        {
+            "name":"app_category_leisure_puzzle",
+            "value":"[TS_1017447]_Casual Games"
+        },
+        {
+            "name":"app_category_art",
+            "value":"[TS_1017439]_Art"
+        },
+        {
+            "name":"app_category_efficiency",
+            "value":"[TS_1017448]_Productivity"
+        },
+        {
+            "name":"app_category_business_strategy",
+            "value":"[TS_1017424]_Strategy"
+        },
+        {
+            "name":"app_category_travel",
+            "value":"[TS_1017425]_Travel"
+        },
+        {
+            "name":"app_category_tools",
+            "value":"[TS_1017442]_Tools"
+        },
+        {
+            "name":"app_category_themes",
+            "value":"[TS_1017433]_Themes"
+        },
+        {
+            "name":"app_category_kids",
+            "value":"[TS_1017444]_Kids"
+        },
+        {
+            "name":"app_category_health",
+            "value":"[TS_1017445]_Health"
+        },
+        {
+            "name":"app_category_food",
+            "value":"[TS_1017436]_Food"
+        },
+        {
+            "name":"app_category_test_verification",
+            "value":"[TS_1017434]_Test Apps"
+        },
+        {
+            "name":"app_category_movies",
+            "value":"[TS_1017421]_Videos"
+        },
+        {
+            "name":"app_category_sports_racing",
+            "value":"[TS_1017452]_Sports Games"
+        },
+        {
+            "name":"app_category_business",
+            "value":"[TS_1017428]_Business"
+        },
+        {
+            "name":"app_category_card_board_games",
+            "value":"[TS_1017443]_Card Games"
+        },
+        {
+            "name":"app_category_role_playing",
+            "value":"[TS_1017451]_Role-Playing Games"
+        },
+        {
+            "name":"app_category_action_shooting",
+            "value":"[TS_1017431]_Action Games"
+        },
+        {
+            "name":"app_category_travel_navigation",
+            "value":"[TS_1017426]_Transportation"
+        },
+        {
+            "name":"app_category_photography",
+            "value":"[TS_1017427]_Photography"
+        },
+        {
+            "name":"app_category_cars",
+            "value":"[TS_1017453]_Cars"
+        },
+        {
+            "name":"app_category_reading",
+            "value":"[TS_1017437]_Reading"
+        },
+        {
+            "name":"app_category_news",
+            "value":"[TS_1017441]_News"
+        },
+        {
+            "name":"app_category_house",
+            "value":"[TS_1017455]_Property"
+        },
+        {
+            "name":"app_category_finance",
+            "value":"[TS_1017423]_Finance"
+        },
+        {
+            "name":"app_category_education",
+            "value":"[TS_1017446]_Education"
+        },
+        {
+            "name":"app_category_entertainment",
+            "value":"[TS_1017449]_Entertainment"
+        },
+        {
+            "name":"app_category_shopping",
+            "value":"[TS_1017430]_Shopping"
+        },
+        {
+            "name":"app_category_sports",
+            "value":"[TS_1017422]_Sports"
+        },
+        {
+            "name":"app_category_game",
+            "value":"[TS_1042291]_Games"
+        },
+        {
+            "name":"add_icon_to_outer_desktop",
+            "value":"[TS_1019426]_Add to cover screen"
+        },
+        {
+            "name":"delete_app_dialog_content",
+            "value":"[TS_989294]_All data for this app will be removed from your device."
+        },
+        {
+            "name":"remove_app_lock",
+            "value":"[TS_1011916]_Remove lock"
+        },
+        {
+            "name":"add_app_lock",
+            "value":"[TS_1011917]_Add lock"
+        },
+        {
+            "name":"active_card_lock",
+            "value":"[TS_1024183]_Hide contents"
+        },
+        {
+            "name":"outer_edit_discard_changes",
+            "value":"[TS_1010059]_Discard"
+        },
+        {
+            "name":"outer_edit_save_changes",
+            "value":"[TS_1009787]_Save"
+        },
+        {
+            "name":"outer_edit_is_save",
+            "value":"[TS_1009791]_Save changes?"
+        },
+        {
+            "name":"outer_not_app_and_form_to_add",
+            "value":"[TS_1009789]_No apps or widgets to add"
+        },
+        {
+            "name":"back",
+            "value":"[TS_864174]_Go back"
+        },
+        {
+            "name":"app_gallery",
+            "value":"[TS_1024843]_AppGallery"
+        },
+        {
+            "name":"share",
+            "value":"[TS_863884]_Share"
+        },
+        {
+            "name":"remove_title",
+            "value":"[TS_1024182]_Remove %s?"
+        },
+        {
+            "name":"uninstall_title",
+            "value":"[TS_1024180]_Uninstall %s?"
+        },
+        {
+            "name":"delete_title",
+            "value":"[TS_1024181]_Delete %s?"
+        },
+        {
+            "name":"remove_n_content",
+            "value":"[TS_1024185]_Data for this app will be deleted from your device."
+        },
+        {
+            "name":"delete_content",
+            "value":"[TS_1024176]_Data for this app will be deleted from your device."
+        },
+        {
+            "name":"uninstall_n_twin_content",
+            "value":"[TS_1024186]_Data for this app will be deleted from your device. Any duplicates of the app will also be uninstalled."
+        },
+        {
+            "name":"uninstall_content",
+            "value":"[TS_1024179]_Data for this app will be deleted from your device."
+        },
+        {
+            "name":"cancel_card_lock",
+            "value":"[TS_1024187]_Unhide contents"
+        },
+        {
+            "name":"external_screen_app_added",
+            "value":"[TS_1033363]_App has already been added to the cover screen"
+        },
+        {
+            "name":"outer_flashlight_tips",
+            "value":"[TS_1035742]_Flip to turn on flashlight, press Power to turn it off"
+        },
+        {
+            "name":"remove_button",
+            "value":"[TS_1009985]_Remove"
+        },
+        {
+            "name":"remove_content",
+            "value":"[TS_1009986]_All data for this app will be removed from your device."
+        },
+        {
+            "name":"is_remove",
+            "value":"[TS_1009987]_Remove %s?"
+        },
+        {
+            "name":"lab_application",
+            "value":"[TS_1054700]_Experimental apps aren't fully compatible with your device's cover screen and may not display and work properly."
+        },
+        {
+            "name":"desktop_current_page",
+            "value":"[TS_958580]_Screen %1$s of %2$s"
+        },
+        {
+            "name":"jump_to_homepage",
+            "value":"[TS_1099456]_You are now on the home screen, screen %1$s of %2$s"
+        },
+        {
+            "name":"cc_accessibility_str_edit_move_start",
+            "value":"[TS_1064040]_Item is being dragged"
+        },
+        {
+            "name":"talkback_delete_screen_success",
+            "value":"[TS_1061885]_Screen deleted"
+        },
+        {
+            "name":"talkback_add_screen_page",
+            "value":"[TS_1061883]_Add another screen to the home screen"
+        },
+        {
+            "name":"talkback_delete_screen",
+            "value":"[TS_1062996]_Delete screen"
+        },
+        {
+            "name":"talkback_add_screen_success",
+            "value":"[TS_1061881]_New screen added"
+        },
+        {
+            "name":"talkback_add_screen",
+            "value":"[TS_1063003]_Add new screen"
+        },
+        {
+            "name":"wait_installing_toast",
+            "value":"[TS_1067817]_App is being installed. Please wait."
+        },
+        {
+            "name":"desktop_layout_locked",
+            "value":"[TS_1083984]_Home screen layout locked."
+        },
+        {
+            "name":"talkback_double_click_press_drag",
+            "value":"[TS_1086298]_Double tap to exit home screen editing, double tap and hold, then drag to change the screen order"
+        },
+        {
+            "name":"view_detail",
+            "value":"[TS_1080209]_View details"
+        },
+        {
+            "name":"covertTo_bigFolder",
+            "value":"[TS_958581]_Enlarge"
+        },
+        {
+            "name":"covertTo_smallFolder",
+            "value":"[TS_958576]_Shrink"
+        },
+        {
+            "name":"add_icon_to_desktop_max",
+            "value":"[TS_958593]_No space on home screen. Try moving some items."
+        },
+        {
+            "name":"icon_out_of_limit",
+            "value":"[TS_1089109]_Max number of icons selected."
+        },
+        {
+            "name":"folder_add_sheet_other",
+            "value":"[TS_1080208]_Others"
+        },
+        {
+            "name":"reConfirm_remove",
+            "value":"[TS_1111473]_Uninstall"
+        },
+        {
+            "name":"remove_wechat_reConfirm_title",
+            "value":"[TS_1111475]_Uninstall WeChat?"
+        },
+        {
+            "name":"remove_wechat_reConfirm_content",
+            "value":"[TS_1111472]_This will delete all WeChat data on your device, including chat records and files. This cannot be undone."
+        },
+        {
+            "name":"remove_from_desktop_button",
+            "value":"[TS_1057996]_remove from desktop"
+        },
+        {
+            "name":"uninstall_app_button",
+            "value":"[TS_1057998]_uninstall App"
+        },
+        {
+            "name":"desktop_add_items_limit_toast",
+            "value":"[TS_1124481]_Max %d apps."
+        },
+        {
+            "name":"desktop_add",
+            "value":"[TS_1124480]_Add apps"
+        }
+    ]
+}

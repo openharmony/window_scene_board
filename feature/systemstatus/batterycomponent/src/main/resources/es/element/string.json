@@ -1,0 +1,88 @@
+{
+    "string":[
+        {
+            "name":"low_battery_ntf_title",
+            "value":"Nivel de batería bajo",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"low_battery_ntf_btn_text",
+            "value":"Activar Ahorro de batería",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"shutdown_dialog_title",
+            "value":"Nota",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"battery_emergency_dialog_content",
+            "value":"Batería extremadamente baja. Se activará el modo de reserva de energía en %d segundos.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"shutdown_dialog_content",
+            "value":"Batería extremadamente baja. Tu dispositivo está a punto de apagarse.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"shutdown_dialog_content_new",
+            "value":"La batería está a punto de agotarse. Se apagará dentro de %d segundos.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"low_battery_ntf_content",
+            "value":"%s restante",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"accessibility_battery_charge_double",
+            "value":"Carga rápida, batería cargada hasta el %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_battery_supercharge",
+            "value":"Cargando con SuperCharge, batería cargada hasta el %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_battery_charge",
+            "value":"Cargando, batería cargada hasta el %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_battery_power_saving",
+            "value":"Ahorro de batería",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_battery_level",
+            "value":"Nivel de batería, %s",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

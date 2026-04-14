@@ -1,0 +1,25 @@
+{
+    "string":[
+        {
+            "name":"date_time_view_yesterday",
+            "value":"تۈنۈگۈن",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"now_string_shortest",
+            "value":"بايا",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"accessibility_quick_settings_alarm_set",
+            "value":"قوڭغۇراق سائەت بېكىتكەن",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

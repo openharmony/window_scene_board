@@ -1,0 +1,102 @@
+{
+    "string":[
+        {
+            "name":"expand_formstack",
+            "value":"Développer l'empilement",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"edit_formstack",
+            "value":"Modifier %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"delete_formstack",
+            "value":"Supprimer %s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"expand_stack_request_focus_front_text",
+            "value":"Élément %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"delete_stack_form",
+            "value":"Widget %s supprimé",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"talkback_expand_stack_moved_to",
+            "value":"Placé comme élément %d dans la pile",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"form_pinned_stack_text",
+            "value":"%1$s déplacée en haut de la pile",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"stack_request_focus_after_text",
+            "value":"Ceci est le widget %1$s. Vous pouvez effectuer certaines actions. Toucher deux fois et maintenir pour ouvrir le menu des options.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"create_form_stack_text",
+            "value":"%1$s empilé avec %2$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"expand_stack_text",
+            "value":"Développé, faire glisser vers le bas avec deux doigts pour faire défiler les widgets",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"delete_form_stack_text",
+            "value":"Supprimer",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_form_stack_text",
+            "value":"%1$s placé dans la pile",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"close_stack_text",
+            "value":"Pile de widgets réduite",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"talkback_expand_stack_move_to",
+            "value":"Déplacer vers l'élément %d",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

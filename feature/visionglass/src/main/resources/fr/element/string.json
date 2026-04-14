@@ -1,0 +1,116 @@
+{
+    "string":[
+        {
+            "name":"action_button_reply",
+            "value":"Répondre",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"banner_hint_message",
+            "value":"Ce message ne peut pas être affiché sur le Vision Glass. Consultez-le sur votre téléphone.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screenshot_privacy",
+            "value":"La capture d'écran a échoué. L'écran actuel peut contenir des informations sensibles.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Input_prompt",
+            "value":"Déconnectez-vous et saisissez le texte dans l'application sur votre téléphone.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Incoming_call_prompt",
+            "value":"Prendre un appel sur votre téléphone",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"banner_toast_message",
+            "value":"Consultez ce message sur votre téléphone.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_phone_power_save_mode",
+            "value":"Mode de gestion d'alimentation Économie",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_phone_cast_screen",
+            "value":"Mise en miroir du téléphone",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ScreenShot_label",
+            "value":"Capture d'écran",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_adjustment",
+            "value":"Ajustement de prescription",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_screenshot_no_right",
+            "value":"La prise de captures d'écran nécessite l'autorisation Images et vidéos. Accordez l'autorisation dans la fenêtre contextuelle qui s'affiche sur votre téléphone ou dans les Paramètres.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Incoming_call_title",
+            "value":"%s communication en cours",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_wlan",
+            "value":"WLAN",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_app_to_glass_msg",
+            "value":"Ajouter %s à la bibliothèque d'applications.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_bluetooth",
+            "value":"Bluetooth",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Incoming_call_flag",
+            "value":"Appel entrant",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

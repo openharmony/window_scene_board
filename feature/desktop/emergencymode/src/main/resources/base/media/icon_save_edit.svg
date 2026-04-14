@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>TitleBar/item/right/icon备份 2</title>
+    <defs>
+        <path d="M10.2426407,15.9852814 C9.8521164,16.3758057 9.21895142,16.3758057 8.82842712,15.9852814 C8.4497369,15.6065912 8.43826144,14.9997429 8.79400074,14.6072249 L8.82842712,14.5710678 L13.9285339,9.46946609 L13.9861764,9.40020929 C14.1103459,9.21582522 14.0982996,8.96700418 13.9500376,8.79512281 L13.9246212,8.76776695 L12.5105339,7.35346609 L9.32842712,4.17157288 L3.57842712,-1.57842712 C3.18790283,-1.96895142 3.18790283,-2.6021164 3.57842712,-2.99264069 C3.95711735,-3.37133091 4.56396557,-3.38280637 4.95648355,-3.02706707 L4.99264069,-2.99264069 L10.7355339,2.75046609 L15.6923882,7.70710678 C16.4587,8.4734186 16.4731587,9.70687205 15.7357643,10.4908118 L15.6923882,10.5355339 L10.2426407,15.9852814 Z" id="path-1"></path>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="#illustration_低电量应急模式-图标加满编辑" transform="translate(-304.000000, -50.000000)">
+            <g id="TitleBar/item/right/icon备份-2" transform="translate(324.000000, 70.000000) rotate(-270.000000) translate(-324.000000, -70.000000) translate(304.000000, 50.000000)">
+                <circle id="椭圆形" fill-opacity="0.151961" fill="#FFFFFF" cx="20" cy="20" r="20"></circle>
+                <g id="ic/add" transform="translate(9.843146, 13.250000)">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <g id="形状结合" fill-rule="nonzero" transform="translate(9.781854, 6.496320) rotate(-270.000000) translate(-9.781854, -6.496320) "></g>
+                    <g id="Symbol/color-light/colorPrimary" mask="url(#mask-2)" fill="#FFFFFF" fill-opacity="0.858823529">
+                        <g transform="translate(-1.843146, -5.250000)" id="color/#000000">
+                            <rect x="0" y="0" width="24" height="24"></rect>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,136 @@
+{
+    "plural":[
+        {
+            "name":"cc_accessibility_str_timer_str_hour",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"%d часа",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"one",
+                    "value":"%d час",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"few",
+                    "value":"%d часа",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"many",
+                    "value":"%d часов",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"cc_accessibility_str_timer_str_minute",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"%d минут",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"one",
+                    "value":"%d минуты",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"few",
+                    "value":"%d минут",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"many",
+                    "value":"%d минут",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"ntf_pin_top_dialog_reach_limit_content",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"Можно закрепить вверху максимум %d приложение. Отмените закрепление ненужных приложений.",
+                    "attr":{
+                        "priority":"LT"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"Можно закрепить вверху максимум %d приложения. Отмените закрепление ненужных приложений.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"few",
+                    "value":"Можно закрепить вверху максимум %d приложения. Отмените закрепление ненужных приложений.",
+                    "attr":{
+                        "priority":"LT"
+                    }
+                },
+                {
+                    "quantity":"many",
+                    "value":"Можно закрепить вверху максимум %d приложений. Отмените закрепление ненужных приложений.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"cc_accessibility_str_timer_str_second",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"%d секунда",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"%d секунды",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"few",
+                    "value":"%d секунды",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"many",
+                    "value":"%d секунд",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

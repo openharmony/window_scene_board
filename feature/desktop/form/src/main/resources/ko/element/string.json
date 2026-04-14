@@ -1,0 +1,95 @@
+{
+    "string":[
+        {
+            "name":"accessibility_str_two_finger_slide",
+            "value":"두 손가락으로 왼쪽이나 오른쪽으로 스와이프하여 화면 변경",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"suggestion",
+            "value":"제안",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"form_center_notice_text",
+            "value":"홈 화면에 추가하려면 위젯을 클릭하거나 드래그합니다",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_to_screen_lock",
+            "value":"잠금 화면에 추가",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_theme_form_to_desktop_more",
+            "value":"라이브 위젯 더 보기",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_form_to_intelligent",
+            "value":"Assistant·TODAY에 추가",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"form_center_notice_button",
+            "value":"확인",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"form_added",
+            "value":"위젯이 추가되었습니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"look_more_theme_form",
+            "value":"더 보기",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"splitter_format",
+            "value":"%1$s, %2$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_str_long_click_to_drag",
+            "value":"두 번 탭하고 길게 누른 상태로 드래그",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"card_load_error",
+            "value":"위젯 로드 오류입니다. 나중에 다시 시도하십시오.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"onekeylock_shortcut",
+            "value":"화면 잠금 바로가기",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

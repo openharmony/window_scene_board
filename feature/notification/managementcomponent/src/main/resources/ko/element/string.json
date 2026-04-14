@@ -1,0 +1,529 @@
+{
+    "string":[
+        {
+            "name":"notification_tip_open",
+            "value":"알림 실행됨",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"allowNotification",
+            "value":"알림 허용",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"show_battery_soc",
+            "value":"배터리 잔량 표시",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"loading",
+            "value":"로드 중…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"lock_screen",
+            "value":"잠금 화면",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"application",
+            "value":"앱",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pure_show_title",
+            "value":"단순 표시",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntfSoundModeOnlyVibration",
+            "value":"진동",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_tip_close",
+            "value":"알림 종료됨",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"banner",
+            "value":"배너",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"allow_notification_distribution",
+            "value":"휴대폰에서 알림 표시",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"allow_live_view_distribution",
+            "value":"휴대폰에서 라이브 보기 표시",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"show_preview_when_screen_lock",
+            "value":"잠겼을 때 알림 미리보기 표시",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"slot_other",
+            "value":"기타",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remind_vibration_in_list",
+            "value":"진동",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"slot_service_information",
+            "value":"서비스 알림",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notificationStyle",
+            "value":"알림 스타일",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"live_view_no_services",
+            "value":"아직 사용 가능한 서비스 없음",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"badge",
+            "value":"배지",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"live_view_apps",
+            "value":"앱",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"version",
+            "value":"버전 %s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"batch_Management",
+            "value":"전체 관리",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pinTopShowNotification",
+            "value":"상단에 고정",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"noDisturb_none",
+            "value":"종료",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"smart_hiding_of_banner_content",
+            "value":"비공개로 배너 유지",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"slot_social_communication",
+            "value":"SNS",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"smart_reminder",
+            "value":"스마트 알림",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"show_notification_icon",
+            "value":"앱 알림 아이콘 표시",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"show_live_view_preview_when_screen_lock",
+            "value":"잠겼을 때 라이브 보기 미리보기 표시",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"meta_service",
+            "value":"서비스",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remind_sound",
+            "value":"소리",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"confirm",
+            "value":"확인",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"splitter_format_for_4",
+            "value":"%1$s, %2$s, %3$s, %4$s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"splitter_format_for_5",
+            "value":"%1$s, %2$s, %3$s, %4$s, %5$s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"splitter_format_for_2",
+            "value":"%1$s, %2$s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"splitter_format_for_3",
+            "value":"%1$s, %2$s, %3$s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pinTopNotification",
+            "value":"알림 고정",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"only_notification_center",
+            "value":"알림 패널만",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"slot_customer_service_message",
+            "value":"고객 서비스 메시지",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"live_view_services",
+            "value":"서비스",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"slotType",
+            "value":"알림 유형",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remind_lock_screen_in_list",
+            "value":"잠금 화면",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"empty_service",
+            "value":"서비스 없음",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wake_screen_when_receive_notification",
+            "value":"알림 화면 활성화",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remind_only_notification_center",
+            "value":"알림 패널만",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"setting",
+            "value":"설정",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntfSoundModeOnlyRing",
+            "value":"사운드 재생",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntf_pin_top_dialog_reach_limit_title",
+            "value":"최대 수의 앱이 고정됨",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"show_desktop_badges",
+            "value":"배지 표시",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remind_sound_in_list",
+            "value":"소리",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remind_banner_in_list",
+            "value":"배너",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"cancel",
+            "value":"취소",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"show_real_time_network_speed",
+            "value":"네트워크 속도 표시",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"live_view_no_apps",
+            "value":"아직 사용 가능한 앱 없음",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"slot_content_information",
+            "value":"콘텐츠 및 뉴스",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notificationSound",
+            "value":"알림톤",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"open_app_inner_ntf_mgmt",
+            "value":"%s(으)로 이동",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_list_loading_message",
+            "value":"로드 중…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"network_error",
+            "value":"네트워크 오류입니다. 네트워크 설정을 확인하십시오.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"login_button",
+            "value":"로그인",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"display_only_when_the_owner_is_looking",
+            "value":"내가 보고 있을 때만",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"display_lock_Screen_notification_content_tip",
+            "value":"이 옵션을 사용하려면 얼굴 인식 기능을 실행해야 합니다.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"only_when_the_owner_is_looking_tip",
+            "value":"\"내가 보고 있을 때만\" 옵션은 얼굴 인식이 실행된 경우에만 사용할 수 있습니다. %s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"only_when_the_owner_is_looking_tip_button",
+            "value":"자세히 알아보기",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"need_login_service_tips",
+            "value":"이러한 설정을 변경하려면 HUAWEI ID로 로그인해야 합니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"display_live_window_content",
+            "value":"라이브 보기 내용 표시",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"display_live_window_content_tip",
+            "value":"라이브 보기를 가장 잘 활용하려면 이 설정을 \"항상\"으로 설정하세요.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"display_lock_Screen_notification_content",
+            "value":"잠금 화면에 대한 알림 내용 표시",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"display_banner_notification_content",
+            "value":"배너 내용 표시",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"always_display",
+            "value":"항상",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"display_when_unlocked",
+            "value":"잠금 해제 시",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"psd_back_accessible",
+            "value":"뒤로, 버튼",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"check_box_unchecked",
+            "value":"선택되지 않음",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"check_box_selected",
+            "value":"선택됨",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"close_accessibility_text",
+            "value":"닫기, 버튼",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

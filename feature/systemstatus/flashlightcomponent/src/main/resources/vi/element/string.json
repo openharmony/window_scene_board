@@ -1,0 +1,18 @@
+{
+    "string":[
+        {
+            "name":"control_center_complex_toggle_flashlight_title",
+            "value":"Đèn pin",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"flashlight_on_ntf_content",
+            "value":"Đèn pin đang bật",
+            "attr":{
+                "priority":"LT"
+            }
+        }
+    ]
+}

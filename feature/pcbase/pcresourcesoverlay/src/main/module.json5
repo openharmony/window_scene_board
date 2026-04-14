@@ -1,0 +1,13 @@
+{
+  "module": {
+    "name": "pcresourcesoverlay",
+    "type": "shared",
+    "description": "$string:shared_desc",
+    "deviceTypes": [
+      "tablet"
+    ],
+    "targetModuleName": "pad_sceneboard",
+    "targetPriority": 1,
+    "deliveryWithInstall": true
+  }
+}

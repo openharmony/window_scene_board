@@ -1,0 +1,74 @@
+{
+    "string":[
+        {
+            "name":"super_privacy_toggle",
+            "value":"يۇقىرى مەخپىي",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"super_privacy_toggle_fold_protect",
+            "value":"قاتلاقتا قوغداش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"super_privacy_toggle_always_protect",
+            "value":"ئىزچىل قوغداش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"edm_super_privacy_content_mic",
+            "value":"مىكروفون ئۈزچاتنى ئورگان باشقۇرىدۇ. ئورگان باشقۇرغان مەزگىلدە يۇقىرى مەخپىيەتلىك ھالىتى ئېچىلمايدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"edm_super_privacy_content_cam_loc",
+            "value":"كامېرا ۋە ئورۇن مۇلازىمىتىنى ئورگان باشقۇرىدۇ. ئورگان باشقۇرغان مەزگىلدە يۇقىرى مەخپىيەتلىك ھالىتى ئېچىلمايدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"edm_super_privacy_content_mic_loc",
+            "value":"مىكروفون ۋە ئورۇن مۇلازىمىتىنى ئورگان باشقۇرىدۇ. ئورگان باشقۇرغان مەزگىلدە يۇقىرى مەخپىيەتلىك ھالىتى ئېچىلمايدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"edm_super_privacy_content_cam",
+            "value":"كامېرا ئۈزچاتنى ئورگان باشقۇرىدۇ. ئورگان باشقۇرغان مەزگىلدە يۇقىرى مەخپىيەتلىك ھالىتى ئېچىلمايدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"edm_super_privacy_content_loc",
+            "value":"ئورۇن مۇلازىمىتىنى ئورگان باشقۇرىدۇ. ئورگان باشقۇرغان مەزگىلدە يۇقىرى مەخپىيەتلىك ھالىتى ئېچىلمايدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"edm_super_privacy_content_cam_mic",
+            "value":"كامېرا ۋە مىكروفون ئۈزچاتنى ئورگان باشقۇرىدۇ. ئورگان باشقۇرغان مەزگىلدە يۇقىرى مەخپىيەتلىك ھالىتى ئېچىلمايدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"edm_super_privacy_content_cam_mic_loc",
+            "value":"كامېرا، مىكروفون ۋە ئورۇن مۇلازىمىتىنى ئورگان باشقۇرىدۇ. ئورگان باشقۇرغان مەزگىلدە يۇقىرى مەخپىيەتلىك ھالىتى ئېچىلمايدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

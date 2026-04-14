@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"control_center_complex_toggle_musicservice_title",
+            "value":"聽歌識曲",
+            "attr":{
+                "priority":"LT"
+            }
+        }
+    ]
+}

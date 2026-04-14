@@ -1,0 +1,16 @@
+{
+  "float": [
+    {
+      "name": "statusbar_focus_mode_width",
+      "value": "14.25vp"
+    },
+    {
+      "name": "statusbar_focus_mode_height",
+      "value": "16vp"
+    },
+    {
+      "name": "statusbar_focus_mode_size",
+      "value": "16vp"
+    }
+  ]
+}

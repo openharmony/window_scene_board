@@ -38,6 +38,7 @@ import { image } from '@kit.ImageKit';
 import screenSessionManager from '@ohos.screenSessionManager';
 import { HiDfxEventUtil } from '@ohos/frameworkwrapper';
 import { HiSysDataShowHide } from '@ohos/frameworkwrapper';
+// import apsManager from '@hms.graphic.apsManager';
 import { ApsUtils } from '@ohos/frameworkwrapper';
 import { WinLog, WinLogDomain } from '../../utils/WinLog';
 

@@ -1,0 +1,162 @@
+{
+    "string":[
+        {
+            "name":"screenlock_settings",
+            "value":"잠금 화면",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_stop_service_text",
+            "value":"이 서비스를 종료하면 이미지에 포함된 텍스트를 기반으로 더 이상 글꼴을 생성할 수 없습니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"stop_font_creation_service",
+            "value":"서비스 종료",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screenlock_font_creation_service_text",
+            "value":"잠금 화면 글꼴 생성 서비스",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screenlock_font_creation_service",
+            "value":"잠금 화면 글꼴 생성 서비스",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_one",
+            "value":"이 서비스는 클라우드 기반 AI를 사용하여 이미지에 포함된 텍스트를 기반으로 글꼴을 생성합니다. 생성된 글꼴은 잠금 화면 시계와 서명에 적용할 수 있습니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_four",
+            "value":"잠금 화면 글꼴 생성 서비스 및 개인 정보 보호에 대한 방침",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_setting_footbar_new",
+            "value":"이 서비스는 잠금 화면 전면 생성 기능을 제공하기 위해 인터넷 연결이 필요하며 이미지를 읽고 업로드/전송해야 합니다. 당사는 귀하가 사용하는 기능과 관련된 개인정보만 수집합니다. 자세한 정보는 %1$s 및 %2$s의 내용을 참조하십시오. 이 기능을 켜면 당사에서 이 서비스를 제공하는 데 동의함을 의미합니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_five",
+            "value":"이용 약관",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_three",
+            "value":"이 서비스는 인터넷 연결이 필요하며, 잠금 화면 전면 생성 기능을 제공하기 위해 이미지를 읽고 업로드/전송해야 합니다. 당사는 귀하가 사용하는 기능과 관련된 개인정보만 수집합니다. 자세한 정보는 %1$s, %2$s의 내용을 참조하십시오.\n위 내용을 주의 깊게 읽어주시기 바랍니다. 동의를 탭하면 당사에서 이 서비스를 제공하는 데 동의함을 의미합니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"icon_settings",
+            "value":"아이콘",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"icon_settings_content",
+            "value":"홈 화면 아이콘의 크기를 조절하고 이름을 변경합니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"icon_edit_not_support_small_step",
+            "value":"설정이 플로팅 윈도우에 있는 중에는 아이콘을 조정할 수 없습니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+      {
+        "name": "theme_title",
+        "value": "theme title"
+      },
+        {
+            "name": "notification_main_time_travel_ongoing_content",
+            "value": "notification main"
+        },
+        {
+            "name": "notification_main_time_travel_finish_content",
+            "value": "travel finish content"
+        },
+        {
+            "name": "time_travel_generate_failed",
+            "value": ""
+        },
+        {
+            "name": "notification_main_dimensional_travel_ongoing_content",
+            "value": ""
+        },
+        {
+            "name": "notification_main_dimensional_travel_finish_content",
+            "value": ""
+        },
+        {
+            "name": "dimensional_travel_generate_failed",
+            "value": ""
+        },
+        {
+            "name": "notification_dynamic_lead_ongoing_content",
+            "value": ""
+        },
+        {
+            "name": "notification_dynamic_lead_finish_content",
+            "value": ""
+        },
+        {
+            "name": "dynamic_lead_generate_failed",
+            "value": ""
+        },
+        {
+            "name": "notification_main_pandora_title",
+            "value": ""
+        },
+      {
+        "name":"edit_wallpaper",
+        "value":"배경화면",
+        "attr":{
+          "priority":"translate"
+        }
+      },
+      {
+        "name": "theme_chose",
+        "value": "갤러리에서 선택하기"
+      },
+      {
+        "name": "current_wallpaper",
+        "value": "내 배경화면"
+      },
+      {
+        "name": "managment",
+        "value": ""
+      },
+      {
+        "name": "wallpaper_editor",
+        "value": "적용"
+      }
+    ]
+}

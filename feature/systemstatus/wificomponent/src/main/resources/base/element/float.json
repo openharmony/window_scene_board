@@ -1,0 +1,16 @@
+{
+  "float": [
+    {
+      "name": "status_bar_wifi_width",
+      "value": "18.25vp"
+    },
+    {
+      "name": "status_bar_wifi_height",
+      "value": "16vp"
+    },
+    {
+      "name": "icon_component_opacity",
+      "value": "1"
+    }
+  ]
+}

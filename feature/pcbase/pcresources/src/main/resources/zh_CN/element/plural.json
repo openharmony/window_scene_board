@@ -1,0 +1,61 @@
+{
+    "plural":[
+        {
+            "name":"confirm_reboot",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"仍要重启 (%d 秒)"
+                }
+            ]
+        },
+        {
+            "name":"confirm_shutdown",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"仍要关机 (%d 秒)"
+                }
+            ]
+        },
+        {
+            "name":"confirm_hibernate",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"睡眠 (%d 秒)"
+                }
+            ]
+        },
+        {
+            "name":"common_cancel",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"取消 (%d 秒)"
+                }
+            ]
+        },
+        {
+            "name":"create_region_folder",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"收纳所选项 (%d 个项目)"
+                }
+            ]
+        },
+        {
+            "name":"confirm_shutdown_tip",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"正在关闭 %d 个应用并关机，请稍候。若有未保存的更改内容，可点击取消后手动保存。",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

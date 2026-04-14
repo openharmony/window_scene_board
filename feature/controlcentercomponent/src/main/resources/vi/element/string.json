@@ -1,0 +1,417 @@
+{
+    "string":[
+        {
+            "name":"control_center_edit_panel_tips_max_toggles",
+            "value":"Tối đa %d khóa chuyển.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"rotate_to_landscape",
+            "value":"Trước tiên, hãy xoay sang hướng ngang.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_privacy_page",
+            "value":"Quyền",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_anti_theft_for_toggle",
+            "value":"Không thể thực hiện thao tác trên thiết bị demo.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"control_center_edit_panel_collapse_library",
+            "value":"Đóng",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_edit_panel_tips_min_toggles",
+            "value":"Phải giữ ít nhất %d khóa chuyển.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_unlocked_for_editing",
+            "value":"Mở khóa để sửa.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_edit_panel_dialog_not_save",
+            "value":"Không lưu",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sound_recorder_name",
+            "value":"Máy ghi âm",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"calculator_widget_name",
+            "value":"Máy tính",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"privacy_sensor_multiple_application",
+            "value":"%s và các ứng dụng khác",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"brightness_title",
+            "value":"Độ sáng",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"combined_slider_title",
+            "value":"Thanh độ sáng và âm lượng",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_no_available_toggles",
+            "value":"Không có khóa chuyển để thêm",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screen_recorder_widget_name",
+            "value":"Trình quay phim màn hình",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_edit_panel_dialog_confirm",
+            "value":"Lưu thay đổi?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"scanner_widget_name",
+            "value":"Quét",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_super_privacy_for_location_toggle",
+            "value":"Đã chặn quyền truy cập vị trí. Trước tiên hãy tắt chế độ Siêu riêng tư.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remote_control_widget_name",
+            "value":"ĐK Từ xa",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessed_recently",
+            "value":"%s, vừa mới đây",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screen_shot_widget_name",
+            "value":"Ảnh chụp màn hình",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_edit_panel_dialog_save",
+            "value":"Lưu",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"multi_window_widget_name",
+            "value":"Cửa sổ tự do",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"clock_timer_widget_name",
+            "value":"Đếm ngược",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center",
+            "value":"Bảng điều khiển",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_edit_panel_title_edit",
+            "value":"Sửa",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pc_mode",
+            "value":"Chế độ máy tính",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pad_mode",
+            "value":"Chế độ máy tính bảng",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_edit_panel_tips_max_limit",
+            "value":"Đã thêm số lượng nút chuyển tối đa.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_change_vertical_brightness_desc",
+            "value":"Thanh độ sáng, chạm hai lần và giữ, sau đó vuốt lên hoặc xuống để điều chỉnh",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_privacy_string_camera",
+            "value":"Máy ảnh",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_exit_sub_page",
+            "value":"Thoát khỏi menu %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_entry_edit",
+            "value":"Sửa Bảng điều khiển",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_edit_move_end",
+            "value":"Đã đặt",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_library_opened",
+            "value":"Đã mở màn hình chỉnh sửa Bảng điều khiển",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_change_brightness_desc",
+            "value":"Thanh độ sáng, chạm đúp rồi giữ và trượt sang trái hoặc phải để điều chỉnh",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_privacy_string_location",
+            "value":"Vị trí",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_privacy_string_mic",
+            "value":"Micrô",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_edit_drag_description",
+            "value":"Chạm đúp và kéo để sắp xếp lại các biểu tượng",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_save_edit",
+            "value":"Lưu thay đổi",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_button_str",
+            "value":"Nút %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_change_brightness",
+            "value":"Đã điều chỉnh độ sáng thành %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_exit_edit_page",
+            "value":"Đóng màn hình chỉnh sửa",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_privacy_report_string",
+            "value":"%1$s đang truy cập %2$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_open_candidate_library",
+            "value":"Hiển thị thư viện",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_entry_edit_page",
+            "value":"Mở màn hình chỉnh sửa",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_library_closed",
+            "value":"Đã đóng màn hình chỉnh sửa Bảng điều khiển",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_enter_sub_page",
+            "value":"Mở menu %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_entry_setting",
+            "value":"Vào Cài đặt",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_collapse_library",
+            "value":"Đóng bảng điều khiển có các công tắc chưa được thêm",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_brightness",
+            "value":"Độ sáng màn hình %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_exit_edit",
+            "value":"Thoát khỏi chế độ sửa",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_edit_move_start",
+            "value":"Mục đang được kéo",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"multimedia_sensor_bracket_kit",
+            "value":"Điều khiển thiết bị chống rung",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"multimedia_sensor_sound_effects",
+            "value":"Hiệu ứng âm thanh",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"multimedia_sensor_video_effects",
+            "value":"Hiệu ứng video",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+      {
+        "name":"notepad_quick_note_title",
+        "value":"Ghi chú nhanh",
+        "attr":{
+          "priority":"LT"
+            }
+        },
+        {
+            "name":"unfold_to_g_state",
+            "value":"Trước tiên, hãy mở điện thoại ra hoàn toàn.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+          "name":"computer_mode",
+          "value":"Chế độ Máy tính để bàn",
+          "attr":{
+            "priority":"LT"
+          }
+        }
+    ]
+}

@@ -1,0 +1,10 @@
+{
+  "module": {
+    "name": "notificationcomponent",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+    "plural":[
+        {
+            "name":"stack_request_focus_front_text",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"ウィジェットスタック、合計%d個のウィジェット",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"expand_stack_request_focus_after_text",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"合計%d個のアイテム。オプションが利用できます。ダブルタップしてスタックを折りたたみ、このウィジェットをトップに配置します。ダブルタップして長押しし、ウィジェットを上下にドラッグします",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

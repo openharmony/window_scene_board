@@ -1,0 +1,32 @@
+{
+    "string":[
+        {
+            "name":"control_center_complex_toggle_bluetooth_title",
+            "value":"藍牙",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_bluetooth_open",
+            "value":"藍牙已啟用",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_bluetooth_connected",
+            "value":"藍牙已連接",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_nearlink_bluetooth_title",
+            "value":"星閃 | 藍牙",
+            "attr":{
+                "priority":"LT"
+            }
+        }
+    ]
+}

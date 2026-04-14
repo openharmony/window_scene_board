@@ -1,0 +1,14 @@
+{
+  "license": "",
+  "devDependencies": {},
+  "author": "",
+  "name": "@ohos/castengine",
+  "description": "Please describe the basic information.",
+  "main": "",
+  "version": "1.0.0",
+  "dependencies": {
+    "@ohos/launchercommon": "../../staticcommon/launchercommon",
+    "@ohos/basicutils": "../../staticcommon/basecommon/basicutils",
+    "@ohos/windowscene": "../../staticcommon/basecommon/windowscene"
+  }
+}

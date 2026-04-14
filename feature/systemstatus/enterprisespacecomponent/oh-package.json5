@@ -1,0 +1,14 @@
+{
+  "name": "@ohos/enterprisespacecomponent",
+  "version": "1.0.0",
+  "description": "Please describe the basic information.",
+  "main": "",
+  "author": "",
+  "license": "",
+  "dependencies": {
+    "@ohos/basicutils": "file:../../../staticcommon/basecommon/basicutils",
+    "@ohos/windowscene": "file:../../../staticcommon/basecommon/windowscene",
+    "@ohos/systemuicommon": "file:../../../staticcommon/systemuicommon"
+  }
+}
+

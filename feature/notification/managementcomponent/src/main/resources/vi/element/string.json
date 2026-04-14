@@ -1,0 +1,529 @@
+{
+    "string":[
+        {
+            "name":"notification_tip_open",
+            "value":"Đã bật thông báo",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"allowNotification",
+            "value":"Cho phép thông báo",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"show_battery_soc",
+            "value":"Hiện phần trăm pin",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"loading",
+            "value":"Đang tải…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"lock_screen",
+            "value":"Màn hình khóa",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"application",
+            "value":"Ứng dụng",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pure_show_title",
+            "value":"Hiển thị đơn giản",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntfSoundModeOnlyVibration",
+            "value":"Rung",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_tip_close",
+            "value":"Đã tắt thông báo",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"banner",
+            "value":"Biểu ngữ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"allow_notification_distribution",
+            "value":"Hiển thị thông báo từ điện thoại",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"allow_live_view_distribution",
+            "value":"Hiển thị chế độ xem trực tiếp từ điện thoại",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"show_preview_when_screen_lock",
+            "value":"Hiển thị bản xem trước thông báo khi bị khóa",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"slot_other",
+            "value":"Khác",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remind_vibration_in_list",
+            "value":"Rung",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"slot_service_information",
+            "value":"Thông báo dịch vụ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notificationStyle",
+            "value":"Cách thông báo",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"live_view_no_services",
+            "value":"Chưa có dịch vụ nào",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"badge",
+            "value":"Dấu báo",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"live_view_apps",
+            "value":"Ứng dụng",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"version",
+            "value":"Phiên bản %s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"batch_Management",
+            "value":"Quản lý tất cả",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pinTopShowNotification",
+            "value":"Ghim lên đầu",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"noDisturb_none",
+            "value":"Tắt",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"smart_hiding_of_banner_content",
+            "value":"Giữ các biểu ngữ ở chế độ riêng tư",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"slot_social_communication",
+            "value":"Mạng xã hội",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"smart_reminder",
+            "value":"Thông báo thông minh",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"show_notification_icon",
+            "value":"Hiện biểu tượng thông báo ứng dụng",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"show_live_view_preview_when_screen_lock",
+            "value":"Hiển thị xem trước chế độ xem trực tiếp khi bị khóa",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"meta_service",
+            "value":"Dịch vụ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remind_sound",
+            "value":"Âm thanh",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"confirm",
+            "value":"OK",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"splitter_format_for_4",
+            "value":"%1$s, %2$s, %3$s, %4$s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"splitter_format_for_5",
+            "value":"%1$s, %2$s, %3$s, %4$s, %5$s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"splitter_format_for_2",
+            "value":"%1$s, %2$s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"splitter_format_for_3",
+            "value":"%1$s, %2$s, %3$s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pinTopNotification",
+            "value":"Ghim thông báo",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"only_notification_center",
+            "value":"Chỉ Bảng thông báo",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"slot_customer_service_message",
+            "value":"Tin nhắn dịch vụ khách hàng",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"live_view_services",
+            "value":"Dịch vụ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"slotType",
+            "value":"Loại thông báo",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remind_lock_screen_in_list",
+            "value":"Màn hình khóa",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"empty_service",
+            "value":"Không có dịch vụ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wake_screen_when_receive_notification",
+            "value":"Đánh thức màn hình để xem thông báo",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remind_only_notification_center",
+            "value":"Chỉ Bảng thông báo",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"setting",
+            "value":"Cài đặt",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntfSoundModeOnlyRing",
+            "value":"Phát âm thanh",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntf_pin_top_dialog_reach_limit_title",
+            "value":"Đã đạt đến số ứng dụng tối đa có thể ghim",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"show_desktop_badges",
+            "value":"Hiển thị dấu báo",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remind_sound_in_list",
+            "value":"Âm thanh",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remind_banner_in_list",
+            "value":"Biểu ngữ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"cancel",
+            "value":"Hủy",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"show_real_time_network_speed",
+            "value":"Hiện tốc độ mạng",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"live_view_no_apps",
+            "value":"Chưa có ứng dụng nào hoạt động",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"slot_content_information",
+            "value":"Nội dung và tin tức",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notificationSound",
+            "value":"Âm thông báo",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"open_app_inner_ntf_mgmt",
+            "value":"Vào %s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_list_loading_message",
+            "value":"Đang tải…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"network_error",
+            "value":"Lỗi mạng. Hãy kiểm tra phần cài đặt mạng.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"login_button",
+            "value":"Đăng nhập",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"display_only_when_the_owner_is_looking",
+            "value":"Chỉ khi tôi đang nhìn",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"display_lock_Screen_notification_content_tip",
+            "value":"Tùy chọn này yêu cầu bật tính năng nhận dạng khuôn mặt.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"only_when_the_owner_is_looking_tip",
+            "value":"Tùy chọn \"Chỉ khi tôi đang nhìn\" chỉ khả dụng khi bật nhận dạng khuôn mặt. %s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"only_when_the_owner_is_looking_tip_button",
+            "value":"Tìm hiểu thêm",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"need_login_service_tips",
+            "value":"Bạn cần đăng nhập bằng ID HUAWEI của mình để thay đổi các cài đặt này.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"display_live_window_content",
+            "value":"Hiển thị nội dung xem trực tiếp",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"display_live_window_content_tip",
+            "value":"Để có trải nghiệm tốt nhất khi xem trực tiếp, hãy đặt thành \"Luôn luôn\".",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"display_lock_Screen_notification_content",
+            "value":"Hiển thị nội dung thông báo trên màn hình khóa",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"display_banner_notification_content",
+            "value":"Hiển thị nội dung biểu ngữ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"always_display",
+            "value":"Luôn luôn",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"display_when_unlocked",
+            "value":"Khi mở khóa",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"psd_back_accessible",
+            "value":"Trở lại, nút",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"check_box_unchecked",
+            "value":"Chưa chọn",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"check_box_selected",
+            "value":"Đã chọn",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"close_accessibility_text",
+            "value":"Nút Đóng",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

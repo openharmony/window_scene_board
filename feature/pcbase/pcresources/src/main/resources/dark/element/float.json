@@ -1,0 +1,12 @@
+{
+  "float": [
+    {
+      "name": "ntf_background_brightness_rate",
+      "value": "0.421"
+    },
+    {
+      "name": "ntf_background_brightness_degree",
+      "value": "-0.021"
+    }
+  ]
+}

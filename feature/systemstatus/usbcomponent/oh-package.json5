@@ -1,0 +1,13 @@
+{
+  "name": "@ohos/usbcomponent",
+  "version": "1.0.0",
+  "description": "a npm package which contains usb function.",
+  "dependencies": {
+    "@ohos/basicutils": "file:../../../staticcommon/basecommon/basicutils",
+    "@ohos/windowscene": "file:../../../staticcommon/basecommon/windowscene",
+    "@ohos/frameworkwrapper": "file:../../../staticcommon/basecommon/frameworkwrapper",
+    "@ohos/systemuicommon": "file:../../../staticcommon/systemuicommon",
+    "@ohos/controlcentercommon": "file:../../../staticcommon/controlcentercommon"
+  }
+}
+

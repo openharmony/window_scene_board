@@ -1,0 +1,74 @@
+{
+    "string":[
+        {
+            "name":"accessibility_status_bar_wifi_no",
+            "value":"WLAN བརྡ་རྟགས་མེད།",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_wifi_4",
+            "value":"WLAN བརྡ་རྟགས་དྲ་མིག་ཡོངས་རྫོགས་ཁེངས།",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_wifi_3",
+            "value":"WLAN བརྡ་རྟགས་དྲ་མིག་གསུམ་ཁེངས།",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_wifi_2",
+            "value":"WLAN བརྡ་རྟགས་དྲ་མིག་གཉིས་ཁེངས།",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_wifi_1",
+            "value":"WLAN བརྡ་རྟགས་དྲ་མིག་གཅིག་ཁེངས།",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"shared_network_tips1",
+            "value":"༼%s༽ཡི་འཕྲིན་གཏོང་ནུས་པ་བཀོལ་ནས་དྲར་ཞུགས་པ་དང་། ཁ་པར་གཏོང་ལེན། ཆ་འཕྲིན་སྐུར་འབྱོར་བཅས་བྱ་ཆོག",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"shared_network_tips",
+            "value":"༼%s༽ཡི་སྤོ་སྒུལ་གཞི་གྲངས་མཉམ་སྤྱོད་བྱེད་བཞིན་པ།",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"shared_network_tips_network_messages",
+            "value":"༼%s༽ཡི་འཕྲིན་གཏོང་ནུས་པ་བཀོལ་ནས་དྲར་ཞུགས་པ་དང་ཆ་འཕྲིན་སྐུར་འབྱོར་བྱ་ཆོག",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"shared_network_tips_network",
+            "value":"༼%s༽ཡི་འཕྲིན་གཏོང་ནུས་པ་བཀོལ་ནས་དྲར་ཞུགས་ཆོག",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"shared_network_tips_network_calls",
+            "value":"༼%s༽ཡི་འཕྲིན་གཏོང་ནུས་པ་བཀོལ་ནས་དྲར་ཞུགས་པ་དང་ཁ་པར་གཏོང་ལེན་བྱ་ཆོག",
+            "attr":{
+                "priority":"LT"
+            }
+        }
+    ]
+}

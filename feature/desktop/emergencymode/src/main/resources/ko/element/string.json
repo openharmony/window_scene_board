@@ -1,0 +1,200 @@
+{
+    "string":[
+        {
+            "name":"Emergency_note",
+            "value":"*절전 모드를 끝내면 계속 켜둘 만큼 충분한 전력이 남아 있지 않을 수 있습니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_cancel_this_edit",
+            "value":"변경사항 취소",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_dialog_title_exit",
+            "value":"절전 모드를 끝내시겠습니까?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_back",
+            "value":"뒤로",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"emergency_enter_dialog_title",
+            "value":"배터리 잔량 매우 부족",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_save_this_edit",
+            "value":"변경사항 저장",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Thermal_safe_note",
+            "value":"가능하다면 장치를 사용하지 마십시오. 쿨다운 모드는 온도가 내려가면 자동으로 종료됩니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_dialog_not_remind",
+            "value":"다시 보지 않기",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_shutdown_dialog_title_exit",
+            "value":"절전 모드를 끝내고 전원을 끄시겠습니까?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_title",
+            "value":"절전 모드",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_all_application",
+            "value":"모든 앱",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_button_exit",
+            "value":"끝내기",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_remove",
+            "value":"제거",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_title_dialog_enter",
+            "value":"배터리 잔량이 매우 부족합니다. 배터리 수명을 연장하기 위해 파워 리저브 모드가 실행되었습니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_button_determined",
+            "value":"확인",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_button_cancel",
+            "value":"취소",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"emergency_exit_with_charge_dialog_content",
+            "value":"지금 끝내면 전원 부족으로 장치가 켜진 상태로 유지되지 않을 수 있습니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_add_application",
+            "value":"앱 추가",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_search_application",
+            "value":"앱 검색",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"thermal_safe_enter_dialog_dialog_title",
+            "value":"장치 과열",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_add",
+            "value":"알람 추가",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"emergency_exit_without_charge_dialog_content",
+            "value":"기회가 있을 때 충전하는 것을 잊지 마십시오.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_edit",
+            "value":"편집",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"thermal_safe_enter_dialog_dialog_content",
+            "value":"쿨다운 모드가 활성화되었습니다. 이 모드는 장치 온도가 내려가면 종료됩니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"emergency_enter_dialog_content",
+            "value":"배터리 수명을 연장하기 위해 파워 리저브 모드가 실행되었습니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Thermal_safe_title",
+            "value":"쿨다운 모드",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_button_know",
+            "value":"확인",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Thermal_safe_dialog_title_enter",
+            "value":"장치 온도가 너무 높습니다. 쿨다운 모드가 실행되었습니다. 이 모드는 장치 온도가 내려가면 자동으로 종료됩니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

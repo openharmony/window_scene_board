@@ -1,0 +1,13 @@
+{
+  "name": "@ohos/musicservicetogglecomponent",
+  "description": "a npm package which contains musicservicetogglecomponent function",
+  "version": "1.0.0",
+  "dependencies": {
+    "@ohos/basicutils": "file:../../../staticcommon/basecommon/basicutils",
+    "@ohos/commonconstants": "file:../../../staticcommon/basecommon/commonconstants",
+    "@ohos/frameworkwrapper": "file:../../../staticcommon/basecommon/frameworkwrapper",
+    "@ohos/systemuicommon": "file:../../../staticcommon/systemuicommon",
+    "@ohos/windowscene": "file:../../../staticcommon/basecommon/windowscene",
+    "@ohos/controlcentercommon": "file:../../../staticcommon/controlcentercommon"
+  }
+}

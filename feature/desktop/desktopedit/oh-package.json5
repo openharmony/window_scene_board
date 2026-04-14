@@ -1,0 +1,23 @@
+{
+  "devDependencies": {},
+  "name": "@ohos/desktopedit",
+  "description": "a npm package which contains desktopedit feature",
+  "main": "index.ets",
+  "version": "1.0.0",
+  "dependencies": {
+    "@ohos/basicutils": "../../../staticcommon/basecommon/basicutils",
+    "@ohos/windowscene": "../../../staticcommon/basecommon/windowscene",
+    "@ohos/frameworkwrapper": "../../../staticcommon/basecommon/frameworkwrapper",
+    "@ohos/commonconstants": "../../../staticcommon/basecommon/commonconstants",
+    "@ohos/frameworkcommon": "../../../staticcommon/basecommon/frameworkcommon",
+    "@ohos/componenthelper": "../../../staticcommon/basecommon/componenthelper",
+    "@ohos/componentanimator": "../../../staticcommon/basecommon/componentanimator",
+    "@ohos/componentdrag": "../../../staticcommon/basecommon/componentdrag",
+    "@ohos/swiperdata": "../../../staticcommon/basecommon/swiperdata",
+    "@ohos/launchercommon": "../../../staticcommon/launchercommon",
+    "@ohos/form": "../form",
+    "@ohos/bigfolder": "../bigfolder",
+    "@ohos/themeservicekit": "../../../feature/themeservice/themeservice_kit",
+    "@ohos/systemuicommon": "../../../staticcommon/systemuicommon"
+  }
+}

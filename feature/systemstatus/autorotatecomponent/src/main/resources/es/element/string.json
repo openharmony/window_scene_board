@@ -1,0 +1,18 @@
+{
+    "string":[
+        {
+            "name":"control_center_complex_toggle_auto_rotate_title",
+            "value":"Bloqueo de orientación",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"multi_window_opened",
+            "value":"Función Ventanas libres habilitada. Solo puede usarse en modo horizontal.",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

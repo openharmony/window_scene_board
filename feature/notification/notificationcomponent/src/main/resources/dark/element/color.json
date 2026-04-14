@@ -1,0 +1,100 @@
+{
+  "color": [
+    {
+      "name": "colorDialogBg",
+      "value": "#202224"
+    },
+    {
+      "name": "ntf_phone_clear_bg_color",
+      "value": "#4C000000"
+    },
+    {
+      "name": "ntf_phone_clear_button_bg_color",
+      "value": "#FF000000"
+    },
+    {
+      "name": "ntf_pin_top_flag_border_color",
+      "value": "#33FFFFFF"
+    },
+    {
+      "name": "ntf_action_send_color",
+      "value": "#317AF7"
+    },
+    {
+      "name": "ntf_blur_style_bg",
+      "value": "#4D000000"
+    },
+    {
+      "name": "ntf_brightness_bg_color",
+      "value": "#FF000000"
+    },
+    {
+      "name": "pin_top_limit_dialog_bg",
+      "value": "#202224"
+    },
+    {
+      "name": "ntf_action_font_color",
+      "value": "#5291FF"
+    },
+    {
+      "name": "ntf_num_color",
+      "value": "#0DFFFFFF"
+    },
+    {
+      "name": "ntf_divider_color",
+      "value": "#FFFFFFFF"
+    },
+    {
+      "name": "ntf_phone_all_clear_bg_color",
+      "value": "#FF000000"
+    },
+    {
+      "name": "ntf_close_inner_border_color",
+      "value": "#30ffffff"
+    },
+    {
+      "name": "ntf_close_outer_border_color",
+      "value": "#47000000"
+    },
+    {
+      "name": "ntf_item_bg_color",
+      "value": "#00050505"
+    },
+    {
+      "name": "ntf_app_name_font_color",
+      "value": "#DEFFFFFF"
+    },
+    {
+      "name": "ntf_manager_icon_color",
+      "value": "#CCFFFFFF"
+    },
+    {
+      "name": "ntf_action_view_bg_color",
+      "value": "#0DFFFFFF"
+    },
+    {
+      "name": "ntf_heads_up_drop_color",
+      "value": "#66FFFFFF"
+    },
+    {
+      "name": "banner_to_floating_mask_color",
+      "value": "#66000000"
+    },
+    {
+      "name": "ntf_phone_all_clear_no_brightness_bg_color",
+      "value": "#61000000"
+    },
+    {
+      "name": "theme_ntf_color_text_no_brightness_secondary",
+      "value": "#c2ffffff"
+    },
+    {
+      "name": "theme_ntf_color_text_no_brightness_tertiary",
+      "value": "#9dffffff"
+    },
+    {
+      "name": "ntf_blur_style_no_brightness_bg",
+      "value": "#83000000"
+    }
+  ]
+}

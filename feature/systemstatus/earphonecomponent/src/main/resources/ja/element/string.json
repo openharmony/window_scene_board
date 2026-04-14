@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"accessibility_status_bar_ear",
+            "value":"ヘッドホン接続済み",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

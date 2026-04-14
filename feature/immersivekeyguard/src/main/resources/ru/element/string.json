@@ -1,0 +1,64 @@
+{
+    "string":[
+        {
+            "name":"immersive_sys_no_auth_tips",
+            "value":"Включите службы геолокации для доступа к большему числу функций.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"immersive_go_auth",
+            "value":"Перейти в Настройки",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"immersive_app_sys_no_auth_tips",
+            "value":"Для использования более широкого набора функций предоставьте доступ к геоданным и убедитесь, что службы геолокации включены.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"immersive_app_no_auth_tips",
+            "value":"Предоставьте доступ к геоданным для более широкого набора функций.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"immersive_card_tip_to_down",
+            "value":"Кнопка скрытия, нажмите дважды, чтобы активировать",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"immersive_card_tip_to_up",
+            "value":"Кнопка открытия, нажмите дважды, чтобы активировать",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"immersive_card_tip_status_down",
+            "value":"Карточка скрыта",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"immersive_card_tip_status_up",
+            "value":"Карточка раскрыта",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+      {
+        "name": "psd_back_accessible",
+        "value": "返回 按钮"
+      }
+    ]
+}

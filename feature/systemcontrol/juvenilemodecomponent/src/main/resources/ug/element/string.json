@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"juvenile_mode_toggle",
+            "value":"ئۆسمۈر ھالىتى",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

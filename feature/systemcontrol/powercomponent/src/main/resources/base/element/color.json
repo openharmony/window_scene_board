@@ -1,0 +1,105 @@
+{
+  "color": [
+    {
+      "name": "write",
+      "value": "#FFFFFF"
+    },
+    {
+      "name": "focus_color",
+      "value": "#66000000"
+    },
+    {
+      "name": "transparent",
+      "value": "#00000000"
+    },
+    {
+      "name": "shutdown_dialog_message_font_color",
+      "value": "#E6000000"
+    },
+    {
+      "name": "shutdown_dialog_positive_font_color",
+      "value": "#E84026"
+    },
+    {
+      "name": "shutdown_dialog_negative_font_color",
+      "value": "#0A59F7"
+    },
+    {
+      "name": "shutdown_dialog_negative_button_background",
+      "value": "#0D18181A"
+    },
+    {
+      "name": "shutdown_dialog_background",
+      "value": "#D9FAFAFA"
+    },
+    {
+      "name": "power_item_default_color",
+      "value": "#99ffffff"
+    },
+    {
+      "name": "power_item_hover_color",
+      "value": "#ffffff"
+    },
+    {
+      "name": "power_item_button_border",
+      "value": "#0dffffff"
+    },
+    {
+      "name": "power_item_out_border_border",
+      "value": "#19000000"
+    },
+    {
+      "name": "power_item_inner_border_color",
+      "value": "#33FFFFFF"
+    },
+    {
+      "name": "power_item_bright_color",
+      "value": "#CC000000"
+    },
+    {
+      "name": "power_item_dark_color",
+      "value": "#FFFFFFFF"
+    },
+    {
+      "name": "power_item_hover_bright_color",
+      "value": "#000000"
+    },
+    {
+      "name": "power_item_hover_dark_color",
+      "value": "#ffffff"
+    },
+    {
+      "name": "power_text_bright_color",
+      "value": "#99000000"
+    },
+    {
+      "name": "power_text_dark_color",
+      "value": "#CCFFFFFF"
+    },
+    {
+      "name": "power_text_hover_bright_color",
+      "value": "#000000"
+    },
+    {
+      "name": "power_text_hover_dark_color",
+      "value": "#ffffff"
+    },
+    {
+      "name": "power_text_shadow_color",
+      "value": "#99000000"
+    },
+    {
+      "name": "bg_color_bright",
+      "value": "#4D999999"
+    }
+  ,
+    {
+      "name": "bg_color_dark",
+      "value": "#4D666666"
+    },
+    {
+      "name": "bg_color",
+      "value": "#B3FFFFFF"
+    }
+  ]
+}

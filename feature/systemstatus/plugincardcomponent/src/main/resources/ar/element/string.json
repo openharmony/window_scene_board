@@ -1,0 +1,144 @@
+{
+    "string":[
+        {
+            "name":"title_login_openharmony_account",
+            "value":"سجل الدخول لاستخدام الجهاز الخارق",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_name_desc",
+            "value":"الجهاز الخارق",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"account_button_login",
+            "value":"تسجيل الدخول",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"text_open_wlan_and_bluetooth_account",
+            "value":"لتمكين الجهاز من اكتشاف الأجهزة الأخرى والتفاعل معها.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"super_device_title_open_wlan_and_bluetooth",
+            "value":"شغّل WLAN والبلوتوث لاستخدام الجهاز الخارق",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"super_device_disabled",
+            "value":"هل تريد تشغيل ميزة الجهاز الخارق؟",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"button_enable",
+            "value":"تشغيل",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"device_connected_msg",
+            "value":"متصل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"tablet",
+            "value":"الجهاز اللوحي",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"capsuleTips",
+            "value":"انقر مرتين لفتح الجهاز الخارق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"radarIconTipsBlank",
+            "value":"زر الجهاز الخارق، انقر مرتين للتفعيل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"appSateCollaborating",
+            "value":"قيد المشاركة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"TV",
+            "value":"التلفاز",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"switch_audio",
+            "value":"تم تبديل مخرج الصوت إلى \"%s\".",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Phone",
+            "value":"الهاتف",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Laptop",
+            "value":"الحاسوب",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Car",
+            "value":"السيارة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"audio",
+            "value":"جهاز الصوت",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"appSateCancel",
+            "value":"إنهاء المشاركة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"radarIconTips",
+            "value":"زر للدخول إلى الجهاز الخارق، انقر مرتين بإصبع واحدة للتفعيل",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

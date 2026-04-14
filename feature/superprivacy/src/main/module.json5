@@ -1,0 +1,10 @@
+{
+  "module": {
+    "name": "superprivacy",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ]
+  }
+}

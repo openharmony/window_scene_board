@@ -1,0 +1,28 @@
+{
+    "plural":[
+        {
+            "name":"stack_request_focus_front_text",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"Ngăn xếp tiện ích, tổng cộng %d tiện ích",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"expand_stack_request_focus_after_text",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"Tổng cộng %d mục. Có các tùy chọn dùng được. Chạm đúp để thu gọn ngăn xếp và đặt tiện ích này lên trên cùng. Chạm đúp và giữ để kéo tiện ích lên và xuống",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,16 @@
+{
+    "plural":[
+        {
+            "name":"ntf_pin_top_dialog_reach_limit_content",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"最多固定 %d 個應用程式。需要先取消固定部分應用程式，才可以固定其他應用程式。",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

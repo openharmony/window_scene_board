@@ -1,0 +1,1240 @@
+{
+    "string":[
+        {
+            "name":"battery_menu_title",
+            "value":"[TS_904529]_Battery"
+        },
+        {
+            "name":"control_center_complex_toggle_nfc_mode_title",
+            "value":"[TS_904475]_NFC"
+        },
+        {
+            "name":"app_menu_open",
+            "value":"[TS_904470]_Open"
+        },
+        {
+            "name":"uninstall_success",
+            "value":"[TS_904602]_Uninstalled."
+        },
+        {
+            "name":"uninstall_failed",
+            "value":"[TS_904396]_Uninstallation failed."
+        },
+        {
+            "name":"delete_app",
+            "value":"[TS_904627]_Remove"
+        },
+        {
+            "name":"app_dock_menu_suggest_title",
+            "value":"[TS_784793]_Suggested"
+        },
+        {
+            "name":"remove_app_from_folder",
+            "value":"[TS_904620]_remove app from folder"
+        },
+        {
+            "name":"add_icon_to_desktop_max",
+            "value":"[TS_784778]_No space here. Try moving some items."
+        },
+        {
+            "name":"No_running_apps_recently",
+            "value":"[TS_904411]_No recent apps"
+        },
+        {
+            "name":"add_to_desktop",
+            "value":"[TS_904364]_Add to home screen"
+        },
+        {
+            "name":"duplicate_add",
+            "value":"[TS_904413]_This has already been added."
+        },
+        {
+            "name":"add_to_dock",
+            "value":"[TS_786914]_Add to dock"
+        },
+        {
+            "name":"set_as_slide_up_card",
+            "value":"[TS_788716]_Set as expandable widget"
+        },
+        {
+            "name":"is_delete_form",
+            "value":"[TS_904390]_Remove %s?"
+        },
+        {
+            "name":"new_folder_name",
+            "value":"[TS_904379]_Folder"
+        },
+        {
+            "name":"isUninstall",
+            "value":"[TS_941092]_Uninstall %s?"
+        },
+        {
+            "name":"disable_add_to_fulled_smartdock",
+            "value":"[TS_832890]_Unable to add. Dock is full."
+        },
+        {
+            "name":"sound_more_settings",
+            "value":"[TS_904560]_More settings"
+        },
+        {
+            "name":"sound_output_device_local",
+            "value":"[TS_904592]_Internal speakers"
+        },
+        {
+            "name":"sound_menu_title",
+            "value":"[TS_904604]_Sounds"
+        },
+        {
+            "name":"reboot_device",
+            "value":"[TS_904576]_Restart"
+        },
+        {
+            "name":"sound_output_device",
+            "value":"[TS_904419]_Output"
+        },
+        {
+            "name":"battery_charging_text",
+            "value":"[TS_904613]_Charging"
+        },
+        {
+            "name":"battery_turbo_charging_text",
+            "value":"[TS_952398]_Turbo charging"
+        },
+        {
+            "name":"adapter_text",
+            "value":"[TS_904489]_Power source: Power adapter"
+        },
+        {
+            "name":"sleep",
+            "value":"[TS_904593]_Sleep"
+        },
+        {
+            "name":"No_available_window",
+            "value":"[TS_904480]_No app window available"
+        },
+        {
+            "name":"entry_MainAbility",
+            "value":"[TS_904618]_SceneBoard"
+        },
+        {
+            "name":"Control_center_icon_on_color",
+            "value":"[TS_904365]_#FFFFFFFF"
+        },
+        {
+            "name":"sound_calls",
+            "value":"[TS_904582]_通话"
+        },
+        {
+            "name":"add_to",
+            "value":"[TS_904481]_Add to "
+        },
+        {
+            "name":"auth_enter_with_null",
+            "value":"[TS_904583]_Enter your password"
+        },
+        {
+            "name":"rename_folder",
+            "value":"[TS_904559]_Rename"
+        },
+        {
+            "name":"form",
+            "value":"[TS_904635]_service widget"
+        },
+        {
+            "name":"mainability_description",
+            "value":"[TS_904485]_ETS_Empty Feature Ability"
+        },
+        {
+            "name":"suffix_recommend",
+            "value":"[TS_904398]_%s (Recommended)"
+        },
+        {
+            "name":"child_folder_confirm",
+            "value":"[TS_904588]_Got it"
+        },
+        {
+            "name":"auth_by_fp_or_pwd",
+            "value":"[TS_904392]_Use fingerprint or password to unlock"
+        },
+        {
+            "name":"launcher_layout",
+            "value":"[TS_904552]_Launcher Layout"
+        },
+        {
+            "name":"month",
+            "value":"[TS_904549]_月"
+        },
+        {
+            "name":"enterprise_right_warning",
+            "value":"[TS_904569]_This app has been restricted by your organization."
+        },
+        {
+            "name":"dock_all_app_entry",
+            "value":"[TS_904546]_All App"
+        },
+        {
+            "name":"Control_center_button_font_color",
+            "value":"[TS_904428]_#99000000"
+        },
+        {
+            "name":"app_center_menu_add_desktop",
+            "value":"[TS_904414]_Add to home screen"
+        },
+        {
+            "name":"control_center_complex_toggle_ring_mode_title_vibration",
+            "value":"[TS_904451]_Vibration"
+        },
+        {
+            "name":"PC_FILE_SYS_FORMAT",
+            "value":"[TS_904362]_FIle system format"
+        },
+        {
+            "name":"Control_center_icon_default_color",
+            "value":"[TS_904436]_#99000000"
+        },
+        {
+            "name":"sound_output_device_soundx",
+            "value":"[TS_904619]_SoundX"
+        },
+        {
+            "name":"sound_main",
+            "value":"[TS_904423]_来电、信息、通知"
+        },
+        {
+            "name":"control_center_complex_toggle_location_title",
+            "value":"[TS_904427]_Location"
+        },
+        {
+            "name":"fp_incorrect_fp_try_again_pc",
+            "value":"[TS_904518]_Fingerprint not recognized. Cover the entire sensor and hold for a moment."
+        },
+        {
+            "name":"no_space_left",
+            "value":"[TS_904612]_Disk space is not enough."
+        },
+        {
+            "name":"camera_panel_title",
+            "value":"[TS_904360]_Camera"
+        },
+        {
+            "name":"control_center_complex_toggle_ring_mode_title_off",
+            "value":"[TS_904540]_Silent"
+        },
+        {
+            "name":"sound_music",
+            "value":"[TS_904371]_音乐"
+        },
+        {
+            "name":"PC_FILE_FORMAT_CONFIRMATION",
+            "value":"[TS_904437]_Formatting will delete all data on the disk. Deleted data cannot be restored. Do you want to format it?"
+        },
+        {
+            "name":"permission_reason_receive_install",
+            "value":"[TS_904474]_Used to receive common event of downloading status from appGallery"
+        },
+        {
+            "name":"control_center_complex_toggle_ring_mode_title_on",
+            "value":"[TS_904598]_Sound"
+        },
+        {
+            "name":"sound_output_device_bluetooth",
+            "value":"[TS_904477]_Bluetooth device"
+        },
+        {
+            "name":"sound_output_device_remote_cast",
+            "value":"[TS_945908]_External display device"
+        },
+        {
+            "name":"sound_output_device_display_port",
+            "value":"[TS_945907]_DisplayPort device"
+        },
+        {
+            "name":"No_splittable_apps",
+            "value":"[TS_904590]_no splittable applications"
+        },
+        {
+            "name":"battery_text",
+            "value":"[TS_904356]_Power source: Battery"
+        },
+        {
+            "name":"disable_uninstall",
+            "value":"[TS_904465]_Uninstallation not allowed."
+        },
+        {
+            "name":"formatting",
+            "value":"[TS_904391]_Format In Progress"
+        },
+        {
+            "name":"same_name_file_recover",
+            "value":"[TS_904605]_The destination location already contains a file named \"%s\". Do you want to continue restore?"
+        },
+        {
+            "name":"storage_format_fail",
+            "value":"[TS_904638]_Failed to format storage"
+        },
+        {
+            "name":"delete_form",
+            "value":"[TS_904393]_Remove"
+        },
+        {
+            "name":"dock_recents_entry",
+            "value":"[TS_904533]_Recents"
+        },
+        {
+            "name":"remove_from_dock",
+            "value":"[TS_904524]_Remove from dock"
+        },
+        {
+            "name":"control_center_complex_toggle_bluetooth_title",
+            "value":"[TS_904512]_Bluetooth"
+        },
+        {
+            "name":"shutdown_device",
+            "value":"[TS_904433]_Power off"
+        },
+        {
+            "name":"battery_charging_full_text",
+            "value":"[TS_904553]_Fully charged"
+        },
+        {
+            "name":"prompt_boot_for_first",
+            "value":"[TS_904380]_Password required after restart"
+        },
+        {
+            "name":"Percentage",
+            "value":"[TS_904405]_%d%"
+        },
+        {
+            "name":"disable_to_move",
+            "value":"[TS_904367]_disable to move"
+        },
+        {
+            "name":"Control_center_icon_on_bg_color",
+            "value":"[TS_904358]_#FF0A59F7"
+        },
+        {
+            "name":"date_time_settings",
+            "value":"[TS_904416]_Date & time settings"
+        },
+        {
+            "name":"storage_free_size",
+            "value":"[TS_904542]_%s is available, "
+        },
+        {
+            "name":"input_menu_title",
+            "value":"[TS_904408]_Input methods"
+        },
+        {
+            "name":"remove_form_dialog_content",
+            "value":"[TS_904417]_You can add this widget again from the app's quick action menu."
+        },
+        {
+            "name":"can_not_move_across_disk",
+            "value":"[TS_904476]_This drive letter does not support cutting and pasting."
+        },
+        {
+            "name":"get_installed_bundle_list_reason",
+            "value":"[TS_904586]_SystemUI GetAllBundleInfo Request"
+        },
+        {
+            "name":"battery_super_charging_text",
+            "value":"[TS_904609]_SuperCharging"
+        },
+        {
+            "name":"continue_mission_waiting",
+            "value":"[TS_904591]_Handing over…"
+        },
+        {
+            "name":"system_settings",
+            "value":"[TS_904523]_System settings"
+        },
+        {
+            "name":"airplane_mode",
+            "value":"[TS_904625]_Airplane mode"
+        },
+        {
+            "name":"sound_output_device_usb_earphone",
+            "value":"[TS_904386]_USB headphones"
+        },
+        {
+            "name":"Control_center_icon_default_bg_color",
+            "value":"[TS_904381]_#66FAFAFA"
+        },
+        {
+            "name":"sound_media",
+            "value":"[TS_904503]_音乐、视频、游戏"
+        },
+        {
+            "name":"camera_use_info",
+            "value":"[TS_904534]_%s is using the camera"
+        },
+        {
+            "name":"enterprise_confirm",
+            "value":"[TS_904497]_OK"
+        },
+        {
+            "name":"remove_from_desktop",
+            "value":"[TS_904439]_Remove from home screen"
+        },
+        {
+            "name":"create_folder",
+            "value":"[TS_904643]_Create folder"
+        },
+        {
+            "name":"app_icon",
+            "value":"[TS_904570]_application icon"
+        },
+        {
+            "name":"disable_add_to_dock",
+            "value":"[TS_904389]_Unable to add."
+        },
+        {
+            "name":"lock_screen",
+            "value":"[TS_904432]_Lock screen"
+        },
+        {
+            "name":"stop_recover_file",
+            "value":"[TS_904349]_stop"
+        },
+        {
+            "name":"common_cancel",
+            "value":"[TS_904464]_Cancel"
+        },
+        {
+            "name":"app_center_menu_add_dock",
+            "value":"[TS_904495]_Add to dock"
+        },
+        {
+            "name":"storage_format_succeed",
+            "value":"[TS_904629]_Succeeded to format storage"
+        },
+        {
+            "name":"jump_over_recover_file",
+            "value":"[TS_904418]_jump over"
+        },
+        {
+            "name":"continue_hap_come_from",
+            "value":"[TS_904350]_From \"%1$s\"."
+        },
+        {
+            "name":"Control_center_icon_shadow_color",
+            "value":"[TS_904409]_#1F000000"
+        },
+        {
+            "name":"READONLY_FILE_SYSTEM",
+            "value":"[TS_904444]_Function not supported by enterprise control."
+        },
+        {
+            "name":"remove_app_dialog_content",
+            "value":"[TS_904450]_You can add it again at any time from the App center."
+        },
+        {
+            "name":"sound_output_device_earphone",
+            "value":"[TS_904490]_Wired headphones"
+        },
+        {
+            "name":"storage_total_size",
+            "value":"[TS_904557]_a total of %s"
+        },
+        {
+            "name":"permission_reason_manage_install",
+            "value":"[TS_904455]_Used to call methods of pause, resume downloading from appGallery"
+        },
+        {
+            "name":"continue_mission_fail",
+            "value":"[TS_904473]_Handover failed."
+        },
+        {
+            "name":"low_battery_notification_title",
+            "value":"[TS_904543]_Low battery"
+        },
+        {
+            "name":"apply_access_bluetooth_reason",
+            "value":"[TS_906521]_Apply ACCESS_BLUETOOTH permission"
+        },
+        {
+            "name":"low_battery_notification_content",
+            "value":"[TS_904610]_Only %s battery remaining. Plug in your computer."
+        },
+        {
+            "name":"shutdown_ntf_text",
+            "value":"[TS_906525]_Your computer will power off soon unless you plug it in."
+        },
+        {
+            "name":"shutdown_ntf_title",
+            "value":"[TS_906526]_Low battery"
+        },
+        {
+            "name":"cancel",
+            "value":"[TS_904346]_Cancel"
+        },
+        {
+            "name":"upper_shift_prompt",
+            "value":"[TS_922391]_CAPS LOCK on"
+        },
+        {
+            "name":"battery_more_settings",
+            "value":"[TS_917352]_Settings"
+        },
+        {
+            "name":"psd_change_fail",
+            "value":"[TS_934824]_Unable to change lock screen password. Contact your IT admin."
+        },
+        {
+            "name":"The_password_consists_of_6_32_characters",
+            "value":"[TS_926123]_Password must contain %1$d–%2$d characters"
+        },
+        {
+            "name":"confirm_new_psd",
+            "value":"[TS_926119]_Confirm new password"
+        },
+        {
+            "name":"password_complexity_is_illegal",
+            "value":"[TS_926118]_Password doesn't meet complexity requirements"
+        },
+        {
+            "name":"password_cannot_be_empty",
+            "value":"[TS_932031]_Cannot be blank"
+        },
+        {
+            "name":"password_input_warning_message_not_equal",
+            "value":"[TS_926124]_Passwords don't match"
+        },
+        {
+            "name":"enter_new_psd",
+            "value":"[TS_926125]_Enter new password"
+        },
+        {
+            "name":"password_contain_illegal_character",
+            "value":"[TS_926120]_Contains invalid characters"
+        },
+        {
+            "name":"enter_old_psd",
+            "value":"[TS_926117]_Enter old password"
+        },
+        {
+            "name":"change_lock_screen_psd",
+            "value":"[TS_926122]_Change password"
+        },
+        {
+            "name":"lenght_is_illegal",
+            "value":"[TS_926126]_Invalid password length"
+        },
+        {
+            "name":"psd_change_success",
+            "value":"[TS_934825]_Lock screen password successfully changed."
+        },
+        {
+            "name":"psd_has_expired",
+            "value":"[TS_926121]_Your password has expired. Please change it, then log in."
+        },
+        {
+            "name":"user_log_limiting_prompt",
+            "value":"[TS_929384]_Max number of users logged in"
+        },
+        {
+            "name":"uninstall",
+            "value":"[TS_941094]_Uninstall"
+        },
+        {
+            "name":"app_menu_exit",
+            "value":"[TS_920082]_Quit"
+        },
+        {
+            "name":"app_menu_open_new_window",
+            "value":"[TS_939498]_Open in new window"
+        },
+        {
+            "name":"exit",
+            "value":"[TS_941093]_Quit"
+        },
+        {
+            "name":"sound_settings",
+            "value":"[TS_941041]_Settings"
+        },
+        {
+            "name":"microphone_using",
+            "value":"[TS_980706]_using"
+        },
+        {
+            "name":"microphone_input",
+            "value":"[TS_980702]_Input"
+        },
+        {
+            "name":"account_limit_toast",
+            "value":"[TS_978920]_Maximum number of logged in users reached."
+        },
+        {
+            "name":"multiplayer_pure_vocal",
+            "value":"[TS_980700]_Multi-voice isolation"
+        },
+        {
+            "name":"microphone_settings",
+            "value":"[TS_980701]_Settings"
+        },
+        {
+            "name":"sound_intput_device_local",
+            "value":"[TS_980704]_Internal microphone"
+        },
+        {
+            "name":"record_noise_reduct_off",
+            "value":"[TS_980707]_Enhanced audio recording | On"
+        },
+        {
+            "name":"record_noise_reduct_on",
+            "value":"[TS_980708]_Enhanced audio recording | Off"
+        },
+        {
+            "name":"extended_screen_dialog_content",
+            "value":"[TS_1044139]_When a monitor is connected, your device only supports landscape orientation. For best results, make sure it is fully unfolded."
+        },
+        {
+            "name":"confirm",
+            "value":"[TS_904400]_OK"
+        },
+        {
+            "name":"extended_screen_dialog_title",
+            "value":"[TS_1044138]_Unfold & switch to landscape orientation"
+        },
+        {
+            "name":"microphone",
+            "value":"[TS_980703]_Microphone"
+        },
+        {
+            "name":"single_quiet_space",
+            "value":"[TS_980705]_Voice isolation"
+        },
+        {
+            "name":"edit_form_to_desktop",
+            "value":"[TS_950607]_Add widgets"
+        },
+        {
+            "name":"low_battery_tip",
+            "value":"[TS_958349]_Only %s battery remaining. Plug your computer in or put it into Sleep mode."
+        },
+        {
+            "name":"low_battery_title",
+            "value":"[TS_958351]_Low battery"
+        },
+        {
+            "name":"psd_change_fail_please_restart",
+            "value":"[TS_946393]_Unable to change password. Restart the computer and try again."
+        },
+        {
+            "name":"recovery_key_error",
+            "value":"[TS_946394]_Incorrect recovery key"
+        },
+        {
+            "name":"recovery_key_cannot_be_empty",
+            "value":"[TS_948558]_Recovery key can't be blank"
+        },
+        {
+            "name":"enter_recovery_key_reset_password",
+            "value":"[TS_946391]_Enter recovery key to reset password"
+        },
+        {
+            "name":"forgot_password",
+            "value":"[TS_946392]_Forgot password?"
+        },
+        {
+            "name":"psd_change_success_enter_pin",
+            "value":"[TS_951028]_Lock screen password successfully changed"
+        },
+        {
+            "name":"ai_sound_detail",
+            "value":"[TS_960430]_About AI Audio Effects"
+        },
+        {
+            "name":"face_recognition_try_again_after_time_or_try_others_pc",
+            "value":"[TS_961492]_Face recognition disabled. Try again in %s, or use another unlock method."
+        },
+        {
+            "name":"screen_unlock_with_pwd_face_fp_pc",
+            "value":"[TS_961493]_Unlock with your fingerprint, password, or face (hold down the spacebar)"
+        },
+        {
+            "name":"face_not_recognized_in_input_pwd_pc",
+            "value":"[TS_961491]_Face not recognized. Press & hold the spacebar to try again."
+        },
+        {
+            "name":"enterprise_space_manager",
+            "value":"[TS_1055930]_Manage spaces"
+        },
+        {
+            "name":"face_recognition_try_again_after_time_or_try_pwd_pc",
+            "value":"[TS_961494]_Face recognition disabled. Try again in %s, or enter your password."
+        },
+        {
+            "name":"face_unlock_success_to_manual_login_pc",
+            "value":"[TS_961490]_Unlocked. Click anywhere to go to the home screen."
+        },
+        {
+            "name":"sound",
+            "value":"[TS_960438]_SOUND AI Audio Effects"
+        },
+        {
+            "name":"agree",
+            "value":"[TS_960434]_Agree"
+        },
+        {
+            "name":"permission_detail",
+            "value":"[TS_1024125]_<body><span style='normal'>This device provides AI audio effects for audio input and output scenarios. For audio input scenarios (calling and audio recording), the Voice isolation feature is provided for picking up the voice of only one person, and the Multi-voice isolation feature is provided for picking up the voice of multiple persons, based on AI noise reduction algorithms. For audio output scenarios, the Vocal remover and Vocal isolator features are provided for audio processing during music and video playback, and the Call noise reduction feature is provided to enhance the quality of the audio from the other party during a call. </span><span style='wrap'>\n-</span><span style='title'>\nI. About Voice Isolation</span><span style='wrap'>\n-</span><span style='normal'>\nThis device offers the Voice isolation feature. It is a noise reduction and voice enhancement technology that uses voiceprint information to improve your voice signal quality during your call. Each time you speak through your device's microphone to have a call, this feature will identify your voice signals from the sound signals picked up by the microphone and enhance your voice signals while reducing or removing other interfering noise, so your speech can be transmitted more clearly to the other party. </span><span style='wrap'>\n-</span><span style='bold'>\nEvery technology has limitations and risks. Please note the following when using Voice isolation:</span><span style='normal'>\n%1$d. During the call, your voiceprint will be automatically extracted. This feature will only work if the extraction is successful.\n%2$d. If there is a high level of ambient noise for a continuous period during the call, the voiceprint extraction will be less likely to be successful, affecting the effectiveness of this feature.\n%3$d. How well the noise is reduced and your voice is enhanced during the call may vary depending the type of earphones you wear and how you wear them.\n%4$d. Only one speaker's voice can be enhanced during each call while this feature has started to work. If a different person replaces that one speaker to speak during the call, the voice signal quality of that different person will be lower. Manually disabling Voice isolation could resolve this problem.\n%5$d. Interfering human voices with similar voiceprints may not be reduced or removed as interfering noise. </span><span style='wrap'>\n-</span><span style='bold'>\nPrivacy Statement</span><span style='normal'>\nYour </span><span style='bold'>voiceprint</span><span style='normal'> will be strictly protected. Such information will not be saved, will not be backed up, and cannot be accessed by apps. For example, when you use Voice isolation, the call app can only receive the voice signals with noise reduced and your voice enhanced, but cannot access, back up, or obtain any </span><span style='bold'>voiceprint</span><span style='normal'>.\nYou have discretion over how and where your voiceprint will be used. For example, if you do not want to use Voice isolation, you can go to </span><span style='bold'>Settings </span><span style='normal'>></span><span style='bold'> Sound </span><span style='normal'>></span><span style='bold'> Input</span><span style='normal'> and disable </span><span style='bold'>Voice isolation</span><span style='normal'>. This feature will obtain your voiceprint again the next time you use this feature. </span><span style='wrap'>\n-</span><span style='title'>\nII. About Vocal Remover and Vocal Isolator</span><span style='wrap'>\n-</span><span style='normal'>\nThis device provides the </span><span style='bold'>Vocal remover</span><span style='normal'> and </span><span style='bold'>Vocal isolator</span><span style='normal'> features. Both features are based on AI models. </span><span style='bold'>Vocal remover</span><span style='normal'> can reduce the vocal sound and retain the background sound during audio or video playback, highlighting the accompaniment in real time for sing-along. </span><span style='bold'>Vocal isolator</span><span style='normal'> can reduce the background sound and retain the vocal sound during audio or video playback, enabling you to focus on speech when playing audio clips with much background noise. </span><span style='wrap'>\n-</span><span style='bold'>\nEvery technology has limitations and risks. Please note the following when using Vocal remover and Vocal isolator:</span><span style='normal'>\n%6$d. Such features only work with certain apps and certain devices (only speakers and earphones), and their effectiveness depends on actual usage conditions.\n%7$d. Vocal remover may leave some vocal sound remaining, depending on the audio content.\n%8$d. Vocal isolator may produce a result with vocal distortion, depending on the audio content.\n%9$d. The features will be automatically disabled after the device is restarted. </span><span style='wrap'>\n-</span><span style='bold'>\nDisclaimers</span><span style='normal'>\nTo use </span><span style='bold'>Vocal remover</span><span style='normal'> and </span><span style='bold'>Vocal isolator</span><span style='normal'>, you need to manually enable them. Both features are intended for personal daily use only. If any audio copyright disputes arise due to your actions, you will be solely responsible for the consequences. </span></body>"
+        },
+        {
+            "name":"audio_privacy_hint",
+            "value":"[TS_960432]_Enhanced audio"
+        },
+        {
+            "name":"detail_version",
+            "value":"[TS_960435]_Last updated: %s"
+        },
+        {
+            "name":"sound_permission",
+            "value":"[TS_960433]_<body><span style='normal'>Huawei Device Co., Ltd. needs to extract voiceprint information from your voice to enhance the sound of your voice and reduce or remove any unwanted noise, so you come across crisp and clear on calls or in recordings. Your voiceprint information will not be saved, nor will it be backed up by Huawei.</span><span style='wrap'>\n-</span><span style='normal'>\nFor more information, refer to </span><span style='active'>About SOUND AI Audio Effects</span><span style='normal'>. </span><span style='wrap'>\n-</span><span style='normal'>\nBy clicking Agree, you agree to the processing of your voiceprint information.</span></body>"
+        },
+        {
+            "name":"sound_detail",
+            "value":"[TS_960437]_About SOUND AI Audio Effects"
+        },
+        {
+            "name":"ai_sound",
+            "value":"[TS_960436]_AI Audio Effects"
+        },
+        {
+            "name":"enter_screenLock_password",
+            "value":"[TS_955205]_Password"
+        },
+        {
+            "name":"enter_domain_password",
+            "value":"[TS_955204]_Enter work password"
+        },
+        {
+            "name":"undo_s",
+            "value":"[TS_955206]_Undo: %s (U)"
+        },
+        {
+            "name":"redo_s",
+            "value":"[TS_956536]_Redo: %s (R)"
+        },
+        {
+            "name":"permission_reason_access_near_link",
+            "value":"[TS_941921]_For accessing the near link interface"
+        },
+        {
+            "name":"restart_enter_pin",
+            "value":"[TS_973672]_Password required after restart"
+        },
+        {
+            "name":"pwd_expire_tips_text",
+            "value":"[TS_931527]_Your password will expire on %s."
+        },
+        {
+            "name":"domain_slot",
+            "value":"[TS_929385]_Enterprise"
+        },
+        {
+            "name":"multispace_isloading",
+            "value":"[TS_956883]_Loading…"
+        },
+        {
+            "name":"multispace_personal",
+            "value":"[TS_956882]_Personal space"
+        },
+        {
+            "name":"pwd_expire_tips_title",
+            "value":"[TS_931526]_Time to update screen lock"
+        },
+        {
+            "name":"multispace_enterprise",
+            "value":"[TS_956884]_Work space"
+        },
+        {
+            "name":"enterprise_space",
+            "value":"[TS_962899]_Work space"
+        },
+        {
+            "name":"confirm_logout_dialog_title",
+            "value":"[TS_968737]_Log out?"
+        },
+        {
+            "name":"personal_space",
+            "value":"[TS_962897]_Personal space"
+        },
+        {
+            "name":"confirm_logout_dialog_content",
+            "value":"[TS_968736]_All apps will be closed."
+        },
+        {
+            "name":"exit_space",
+            "value":"[TS_962898]_Exit space"
+        },
+        {
+            "name":"confirm_logout_button",
+            "value":"[TS_968739]_Log out"
+        },
+        {
+            "name":"space_switching",
+            "value":"[TS_968607]_Switch spaces"
+        },
+        {
+            "name":"multiuser_dialog_reboot",
+            "value":"[TS_968738]_Restart"
+        },
+        {
+            "name":"multiuser_confirm_reboot_tip",
+            "value":"[TS_968740]_Other people are still using this computer. If you restart now, they could lose unsaved content."
+        },
+        {
+            "name":"multiuser_confirm_shutdown_tip",
+            "value":"[TS_968735]_Other people are still using this computer. If you power off now, they could lose unsaved content."
+        },
+        {
+            "name":"auth_by_face_or_pwd_pc",
+            "value":"[TS_974396]_Unlock with your password or face (hold down the spacebar)"
+        },
+        {
+            "name":"logout",
+            "value":"[TS_982450]_Log out"
+        },
+        {
+            "name":"switch_user",
+            "value":"[TS_982451]_Switch user"
+        },
+        {
+            "name":"display_settings_title",
+            "value":"[TS_981704]_Display & brightness"
+        },
+        {
+            "name":"sound_ai",
+            "value":"[TS_980114]_AI Audio Effects"
+        },
+        {
+            "name":"voice_cancel",
+            "value":"[TS_980111]_Vocal remover"
+        },
+        {
+            "name":"voice_extract",
+            "value":"[TS_980112]_Vocal isolator"
+        },
+        {
+            "name":"call_noise_reduce_open",
+            "value":"[TS_980113]_Call noise reduction on"
+        },
+        {
+            "name":"call_noise_reduce_off",
+            "value":"[TS_980110]_Call noise reduction off"
+        },
+        {
+            "name":"voice_default_title",
+            "value":"[TS_1127693]_%s off"
+        },
+        {
+            "name":"voice_default_desc",
+            "value":"[TS_1127695]_You haven't used %1$s for a while. To avoid affecting audio playback, %2$s was automatically turned off."
+        },
+        {
+            "name":"voice_extract_desc",
+            "value":"[TS_1127697]_This feature can help make voices clearer. You are advised to turn this off after use."
+        },
+        {
+            "name":"voice_effect_title",
+            "value":"[TS_1127696]_%s on"
+        },
+        {
+            "name":"voice_cancel_desc",
+            "value":"[TS_1127694]_Sing along to your heart's content. You are advised to turn this off after use."
+        },
+        {
+            "name":"multispace_enterprise_login_expired",
+            "value":"[TS_966891]_Offline login authentication expired. Connect to the company network to log in."
+        },
+        {
+            "name":"permission_reason_access_meeting",
+            "value":"[TS_977574]_For accessing the meeting interface"
+        },
+        {
+            "name":"account_limit_developermode",
+            "value":"[TS_982449]_Only one user can be logged in when \"Developer options\" is on."
+        },
+        {
+            "name":"auth_by_pwd_after_pwd_disable",
+            "value":"[TS_987883]_Password required to unlock"
+        },
+        {
+            "name":"input_method_setting",
+            "value":"[TS_977573]_Settings"
+        },
+        {
+            "name":"desktop_trim",
+            "value":"[TS_983146]_Clean up"
+        },
+        {
+            "name":"search_placeholder",
+            "value":"[TS_989160]_Search"
+        },
+        {
+            "name":"face_not_recognized_tip_pc",
+            "value":"[TS_993128]_Face not recognized. Click anywhere or press the spacebar to try again."
+        },
+        {
+            "name":"auth_by_pwd_or_face_tip_pc",
+            "value":"[TS_993129]_Unlock with your password or face"
+        },
+        {
+            "name":"screen_unlock_with_pwd_or_face_tip_pc",
+            "value":"[TS_993127]_Unlock with your password, fingerprint, or face"
+        },
+        {
+            "name":"ai_sound_enable",
+            "value":"[TS_982784]_AI Audio Effects on"
+        },
+        {
+            "name":"edit_wall_paper",
+            "value":"[TS_996498]_Change wallpaper"
+        },
+        {
+            "name":"calendar_collapse",
+            "value":"[TS_990514]_Show less"
+        },
+        {
+            "name":"not_disturb_title",
+            "value":"[TS_990513]_Do not disturb"
+        },
+        {
+            "name":"microphone_mute_enable",
+            "value":"[TS_982783]_Muted"
+        },
+        {
+            "name":"calendar_expand",
+            "value":"[TS_990515]_Show more"
+        },
+        {
+            "name":"keyboard_setting",
+            "value":"[TS_1000233]_Settings"
+        },
+        {
+            "name":"user_not_logged_in_enter_pin",
+            "value":"[TS_1004357]_Password required to log in"
+        },
+        {
+            "name":"multispace_enterprise_connect_failed",
+            "value":"[TS_1006446]_Unable to connect to enterprise server. Check server and WLAN settings."
+        },
+        {
+            "name":"hide_input_method_status_bar",
+            "value":"[TS_1007126]_Hide toolbar"
+        },
+        {
+            "name":"desktop_auto_sort",
+            "value":"[TS_1011694]_Clean up"
+        },
+        {
+            "name":"apply_wallpaper",
+            "value":"[TS_1034987]_Apply"
+        },
+        {
+            "name":"apply_desktop",
+            "value":"[TS_1034988]_Home screen"
+        },
+        {
+            "name":"apply_wallpaper_to",
+            "value":"[TS_1034989]_Apply wallpaper to"
+        },
+        {
+            "name":"apply_screen_lock",
+            "value":"[TS_1034990]_Lock screen"
+        },
+        {
+            "name":"remove_keyboard",
+            "value":"[TS_1021028]_Important"
+        },
+        {
+            "name":"switch_desktops",
+            "value":"[TS_1021030]_Swipe up or down with four fingers to switch between home screens."
+        },
+        {
+            "name":"do_not_remind_again",
+            "value":"[TS_1021025]_Don't remind me again"
+        },
+        {
+            "name":"switching_desktops",
+            "value":"[TS_1021031]_Switch home screens"
+        },
+        {
+            "name":"close_machine_warning",
+            "value":"[TS_1021029]_Take the keyboard off the screen before folding."
+        },
+        {
+            "name":"connect_keyboard",
+            "value":"[TS_1049360]_Connect your keyboard"
+        },
+        {
+            "name":"turn_on_keyboard",
+            "value":"[TS_1049362]_%d. Flip the switch on the keyboard to connect."
+        },
+        {
+            "name":"get_it_clock",
+            "value":"[TS_1049361]_OK (%d)"
+        },
+        {
+            "name":"pop_up_dialog",
+            "value":"[TS_1049363]_%1$d. If connection fails, connect to the computer with a USB-C cable or press F3 for %2$ds to pair."
+        },
+        {
+            "name":"next_step",
+            "value":"[TS_1021026]_Next"
+        },
+        {
+            "name":"multispace_too_often_switch",
+            "value":"[TS_1031579]_Switched user spaces too frequently. Try again in %ds."
+        },
+        {
+            "name":"sound_device_earpiece",
+            "value":"[TS_1040399]_Receiver"
+        },
+        {
+            "name":"multispace_iscreating",
+            "value":"[TS_1025808]_Adding…"
+        },
+        {
+            "name":"enterprise_account_locked",
+            "value":"[TS_1042339]_Account has been locked. Try again once it has been unlocked by the enterprise server."
+        },
+        {
+            "name":"multispace_indevelopermode_cannot_switch",
+            "value":"[TS_1038633]_Unable to switch spaces. Go to Settings > System, disable Developer options, and try again."
+        },
+        {
+            "name":"please_enter_psd_for_security_face",
+            "value":"[TS_1047136]_Password required for additional security"
+        },
+        {
+            "name":"please_enter_psd_for_security_fingerprint_face",
+            "value":"[TS_1047134]_Password required for additional security"
+        },
+        {
+            "name":"virtual_machine_updating",
+            "value":"[TS_1068261]_Virtual machine is being updated"
+        },
+        {
+            "name":"virtual_machine_shut_down_tips",
+            "value":"[TS_1068264]_Powering off now may damage the virtual machine. Try again later."
+        },
+        {
+            "name":"virtual_machine_reboot_tips",
+            "value":"[TS_1068262]_Restarting now may damage the virtual machine. Try again later."
+        },
+        {
+            "name":"face_unlock_verifying_pc",
+            "value":"[TS_1068263]_Verifying…\nPlease look straight at the camera"
+        },
+        {
+            "name":"hopper_expand_reminder",
+            "value":"[TS_1083988]_When unfolding your computer, be careful not to pinch your fingers or other objects in the hinge."
+        },
+        {
+            "name":"friendly_reminder",
+            "value":"[TS_1083989]_Note"
+        },
+        {
+            "name":"please_enter_psd_for_security_fingerprint",
+            "value":"[TS_1047135]_Password required for additional security"
+        },
+        {
+            "name":"desktop",
+            "value":"[TS_904462]_Home screen"
+        },
+        {
+            "name":"style_mode_label_origin",
+            "value":"[TS_1062114]_Original ratio"
+        },
+        {
+            "name":"compatible_mode_startup_title",
+            "value":"[TS_1062116]_App scaling options"
+        },
+        {
+            "name":"no_compatible_mode_apps",
+            "value":"[TS_1070909]_No adjustable apps"
+        },
+        {
+            "name":"style_mode_change",
+            "value":"[TS_1078027]_Aspect ratio changed. This will take effect the next time the app is launched. There may be display issues."
+        },
+        {
+            "name":"windows_vm",
+            "value":"[TS_1045616]_Windows VM"
+        },
+        {
+            "name":"battery_custom_charging_text",
+            "value":"[TS_1050876]_Charging to custom charging limit"
+        },
+        {
+            "name":"battery_smart_charging_text",
+            "value":"[TS_1050875]_Smart charge in progress"
+        },
+        {
+            "name":"confirm_hibernate",
+            "value":"[TS_1061817]_Sleep"
+        },
+        {
+            "name":"region_folder_pre_doc",
+            "value":"[TS_1055931]_Documents"
+        },
+        {
+            "name":"undo_region_folder_take_in",
+            "value":"[TS_1055934]_Undo \"Add related items\""
+        },
+        {
+            "name":"default_region_folder_name",
+            "value":"[TS_1042336]_Binder %d"
+        },
+        {
+            "name":"duplicate_file",
+            "value":"[TS_1055933]_A file with the same name is included"
+        },
+        {
+            "name":"region_folder_take_in",
+            "value":"[TS_1055936]_Add related items"
+        },
+        {
+            "name":"region_folder_pre_other",
+            "value":"[TS_1055932]_Other"
+        },
+        {
+            "name":"region_folder_pre_app",
+            "value":"[TS_1055935]_Apps"
+        },
+        {
+            "name":"region_folder_exceed_capacity",
+            "value":"[TS_1063929]_Binder is full."
+        },
+        {
+            "name":"smart_cleanup_desktop",
+            "value":"[TS_1045615]_Smart organize"
+        },
+        {
+            "name":"undo_smart_cleanup_desktop",
+            "value":"[TS_1050877]_Undo \"Smart organize\""
+        },
+        {
+            "name":"remove_region_folder",
+            "value":"[TS_1042338]_Remove binder"
+        },
+        {
+            "name":"multispace_unable_switch_when_fold",
+            "value":"[TS_1062115]_Unfold the screen before switching spaces."
+        },
+        {
+            "name":"create_empty_region_folder",
+            "value":"[TS_1042337]_Binder"
+        },
+        {
+            "name":"pip_play_fast_backward",
+            "value":"[TS_992748]_Go back"
+        },
+        {
+            "name":"pip_video_player",
+            "value":"[TS_992747]_Mini window playing video"
+        },
+        {
+            "name":"pip_window_close",
+            "value":"[TS_992744]_Playback controls have been hidden"
+        },
+        {
+            "name":"pip_window_open",
+            "value":"[TS_992740]_Playback controls are being shown"
+        },
+        {
+            "name":"pip_play_previous",
+            "value":"[TS_992749]_Play previous"
+        },
+        {
+            "name":"pip_play",
+            "value":"[TS_992742]_Play"
+        },
+        {
+            "name":"pip_play_next",
+            "value":"[TS_992745]_Play next"
+        },
+        {
+            "name":"pip_play_fast_forward",
+            "value":"[TS_992738]_Fast forward"
+        },
+        {
+            "name":"pip_window_show",
+            "value":"[TS_992746]_Mini window is being shown"
+        },
+        {
+            "name":"pip_restore",
+            "value":"[TS_992741]_Restore to larger window"
+        },
+        {
+            "name":"pip_close",
+            "value":"[TS_992739]_Close mini window"
+        },
+        {
+            "name":"pip_play_pause",
+            "value":"[TS_992743]_Pause"
+        },
+        {
+            "name":"already_exist_pip_window_toast",
+            "value":"[TS_995670]_Close the existing mini window first."
+        },
+        {
+            "name":"external_screen_connect_notify_content",
+            "value":"[TS_1071214]_Click for more display options."
+        },
+        {
+            "name":"external_screen_connect_right_button",
+            "value":"[TS_1071215]_Don't remind me again"
+        },
+        {
+            "name":"external_screen_connect_left_button",
+            "value":"[TS_1071213]_Monitor settings"
+        },
+        {
+            "name":"external_screen_connect_notify_title",
+            "value":"[TS_1071216]_External monitor connected"
+        },
+        {
+            "name":"install_app_calendar",
+            "value":"[TS_1061818]_The Calendar app has been uninstalled. You can download it from AppGallery."
+        },
+        {
+            "name":"image_decoding_failure",
+            "value":"[TS_1078028]_Image error. Try again."
+        },
+        {
+            "name":"disable_modify_wallpaper_tips",
+            "value":"[TS_1095363]_This feature has been disabled by your organization."
+        },
+        {
+            "name":"logout_warning_when_kiddo_update",
+            "value":"[TS_1085174]_Logging out now may damage the virtual machine. Try again later."
+        },
+        {
+            "name":"crease_region_tip",
+            "value":"[TS_1100287]_To avoid damaging the screen, don't press hard on the fold area."
+        },
+        {
+            "name":"edit_mode_panel_prompt",
+            "value":"[TS_1102518]_Drag the icons to rearrange them. Icons at the top will appear in the Control Panel."
+        },
+        {
+            "name":"restart_to_reset_password",
+            "value":"[TS_1078026]_If you have forgotten your password, click here to restart the computer and reset it"
+        },
+        {
+            "name":"multispace_in_low_memory",
+            "value":"[TS_1120455]_System memory low. Try again later."
+        },
+        {
+            "name":"enterprise_auth_timeout",
+            "value":"[TS_1122358]_Authentication timed out. Try again later."
+        },
+        {
+            "name":"central_log_tips",
+            "value":"[TS_1133652]_Fold the device like a laptop to preview the effect."
+        }
+    ]
+}

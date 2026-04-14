@@ -166,6 +166,7 @@ import { EditModeViewEvent } from '@ohos/desktopedit/src/main/ets/default/viewmo
 import { editModeViewManager } from '@ohos/desktopedit/src/main/ets/default/manager/EditModeViewManager';
 import { launcherVisualEffectMgr, UltraScreenExpandAnimUtils, } from '@ohos/launchercommon/Index';
 import { curves, performanceMonitor } from '@kit.ArkUI';
+// import apsManager from '@hms.graphic.apsManager';
 import { bundleManager } from '@kit.AbilityKit';
 import { GestureDockViewModel } from '../../gestureDock/dock/viewmodel/GestureDockViewModel';
 import { ContainerShowState, RecentNotShow } from '../../recent/scenepanel/recentpanel/RecentNotShow';

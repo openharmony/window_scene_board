@@ -1,0 +1,10 @@
+{
+  "module": {
+    "name": "nearlinktogglecomponent",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "module": {
+    "name": "airplanecomponent",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ]
+  }
+}

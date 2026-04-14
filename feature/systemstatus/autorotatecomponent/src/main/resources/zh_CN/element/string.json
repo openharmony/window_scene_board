@@ -1,0 +1,18 @@
+{
+    "string":[
+        {
+            "name":"control_center_complex_toggle_auto_rotate_title",
+            "value":"旋转锁定",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"multi_window_opened",
+            "value":"自由多窗已开启，需横屏使用",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

@@ -1,0 +1,10 @@
+{
+  "module": {
+    "name": "collaborationfwkdialog",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"juvenile_mode_toggle",
+            "value":"青少年モード",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

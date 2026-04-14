@@ -1,0 +1,39 @@
+{
+    "string":[
+        {
+            "name":"control_center_complex_toggle_mobiledata_title",
+            "value":"སྤོ་སྒུལ་གཞི་གྲངས།",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_mobiledata_title_on",
+            "value":"བྱང་བུ་ %d ཡི་གཞི་གྲངས།",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_mobiledata_toast",
+            "value":"ཕྱི་ཕྱོགས་དྲ་སྦྲེལ་གྱི་ཐུམ་སྒྲིལ་ཁ་བརྒྱབ་རྗེས། སྤོ་རུང་གཞི་གྲངས་ཀྱི་བསད་སྤར་ལ་དོ་དམ་བྱེད་པ།",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_mobiledata_usage",
+            "value":"%s བཀོལ་ཟིན།",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_mobiledata_title_on_esim",
+            "value":"eSIM %d གཞི་གྲངས།",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

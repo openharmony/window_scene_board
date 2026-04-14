@@ -1,0 +1,80 @@
+{
+    "plural":[
+        {
+            "name":"cc_accessibility_str_timer_str_hour",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"%d سائەت",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"%d سائەت",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"cc_accessibility_str_timer_str_minute",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"%d مىنۇت",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"%d مىنۇت",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"cc_accessibility_str_timer_str_second",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"%d سېكۇنت",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"%d سېكۇنت",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"ntf_pin_top_dialog_reach_limit_content",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"كۆپىدە %d ئەپ چوققىلىنىدۇ. ئىشلەتمەيدىغان ئەپلەرنى ئېلىۋېتىڭ.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"كۆپىدە %d ئەپ چوققىلىنىدۇ. ئىشلەتمەيدىغان ئەپلەرنى ئېلىۋېتىڭ.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

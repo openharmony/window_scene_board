@@ -1,0 +1,480 @@
+{
+    "string":[
+        {
+            "name":"more_settings",
+            "value":"Другие настройки",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"live_view_collapsed",
+            "value":"Скрыто",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"gesture_identified_successfully",
+            "value":"Жест определен.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"live_view_expanded",
+            "value":"Раскрыто",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntf_center_title",
+            "value":"Панель уведомлений",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"edm_operate_prohibit_tip",
+            "value":"Выполнение этой операции запрещено руководством компании.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_phone_timer_text",
+            "value":"Выполняется вызов",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_timing_timer_text",
+            "value":"Таймер включен",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_count_down_timer_text",
+            "value":"Обратный отсчет",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_timing_capsule_timer_text",
+            "value":"Запущен таймер",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_count_down_capsule_timer_text",
+            "value":"Обратный отсчет",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"automatic_brightness",
+            "value":"Авто",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_edit_panel_tips_max_toggles",
+            "value":"Максимум %d значков.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"live_view_authorization_confirm",
+            "value":"Да",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"live_view_authorization_tip",
+            "value":"Продолжить получать уведомления этого приложения в интерактивном режиме?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"confirm",
+            "value":"OK",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"please_unlock",
+            "value":"Разблокируйте устройство",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_edit_panel_tips_min_toggles",
+            "value":"Сохраните минимум %d значка.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"live_view_authorization_reject",
+            "value":"Нет",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"smart_screenshot",
+            "value":"Скриншот",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center",
+            "value":"Панель управления",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"live_view_hide_tip",
+            "value":"Разблокируйте, чтобы посмотреть сведения",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_pin_top_dialog_reach_limit_title",
+            "value":"Закреплено максимальное число приложений",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"talkback_temperature",
+            "value":"Максимальная температура – %1$s. Минимальная температура – %2$s.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"stop_font_creation_service",
+            "value":"Выключить службу",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_open_ringer_mode_silent",
+            "value":"Звук выключен",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_entry_page_text",
+            "value":"Перейти в панель управления",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"silence_dialog_title",
+            "value":"Включить умные уведомления для приложения %s?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_open_ringer_mode_vibrate",
+            "value":"Вибрация включена",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_close_state",
+            "value":"Выключено",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_edit_coordinates",
+            "value":"Строка %1$d, столбец %2$d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_edit_remove_toggle",
+            "value":"Добавить переключатель %s в библиотеку",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_edit_add_toggle_coordinates",
+            "value":"Добавлено, строка %1$d, столбец %2$d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_edit_add_toggle",
+            "value":"Добавить приложение %s на панель управления",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_ring_mode_click",
+            "value":"Дважды коснитесь, чтобы переключиться на %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_click",
+            "value":"Нажмите дважды, чтобы активировать",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_switch_click",
+            "value":"Нажмите дважды, чтобы включить %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_wifi_list",
+            "value":"Посмотреть список сетей WLAN",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"face_verifing",
+            "value":"Распознавание лица",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_wifi_open_def",
+            "value":"Включено. Не подключено к сети WLAN. Переключатель",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_open_ringer_mode_normal",
+            "value":"Сигнал уведомлений и вызовов включен",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_open_state",
+            "value":"Включено",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_bluetooth_close",
+            "value":"Выключено. Bluetooth выключен. Переключатель",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_switch",
+            "value":"Переключатель функции %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_wifi_open_conn",
+            "value":"Включено. Подключено к сети WLAN %s. Переключатель",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_edit_remove_toggle_action",
+            "value":"Добавлено в библиотеку",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_timer_str_hour_to_minute_to_second",
+            "value":"%1$s %2$s %3$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_bluetooth_open_conn",
+            "value":"Включено. Устройство %s подключено по Bluetooth. Переключатель",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_open_action",
+            "value":"Выключено",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_edit_remove_toggle_new",
+            "value":"Удалить переключатель %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_bluetooth_name",
+            "value":"Bluetooth",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_toggle_unavailable",
+            "value":"Недоступно",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_bluetooth_open_def",
+            "value":"Включено. Bluetooth-соединение не установлено. Переключатель",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_edit_move_toggle_coordinates",
+            "value":"Элемент %1$s в строке %2$d, столбец %3$d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"silent_notifications_dialog",
+            "value":"Умные уведомления работают в режиме Без звука и появляются только на панели уведомлений.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_wifi_close",
+            "value":"Выключено. Сеть WLAN выключена. Переключатель",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"face_auth_recognize_success",
+            "value":"Подтверждено",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_bluetooth_list",
+            "value":"Посмотреть сопряженные устройства",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_long_click",
+            "value":"Нажмите дважды и удерживайте для отображения других опций",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_close_action",
+            "value":"Включено",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_connect_state",
+            "value":"%s, подключено",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_common_button_str",
+            "value":"Кнопка %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_timer_str_minute_to_second",
+            "value":"%1$s %2$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"data_remain",
+            "value":"Осталось %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"data_total",
+            "value":"Всего %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"data_use_today",
+            "value":"Сегодня %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"data_exceed",
+            "value":"%s сверх лимита",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"meta_service_live_view_authorization_tip",
+            "value":"Продолжить получать уведомления этого сервиса в интерактивном виде?",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

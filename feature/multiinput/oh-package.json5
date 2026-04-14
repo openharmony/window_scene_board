@@ -1,0 +1,18 @@
+{
+  "devDependencies": {},
+  "name": "@ohos/multiinput",
+  "description": "a npm package which contains appcenter feature",
+  "main": "index.ets",
+  "version": "1.0.0",
+  "dependencies": {
+    "@ohos/basicutils": "file:../../staticcommon/basecommon/basicutils",
+    "@ohos/frameworkwrapper": "file:../../staticcommon/basecommon/frameworkwrapper",
+    "@ohos/frameworkcommon": "file:../../staticcommon/basecommon/frameworkcommon",
+    "@ohos/commonconstants": "file:../../staticcommon/basecommon/commonconstants",
+    "@ohos/windowscene": "file:../../staticcommon/basecommon/windowscene",
+    "@ohos/systemuicommon": "file:../../staticcommon/systemuicommon",
+    "@ohos/screenlockcommon": "file:../../staticcommon/screenlockcommon",
+    "@ohos/statusbarcomponent": "file:../../feature/statusbarcomponent",
+    "@ohos/launchercommon": "file:../../staticcommon/launchercommon"
+  }
+}

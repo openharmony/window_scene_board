@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Public/ic_public_more</title>
+    <defs>
+        <path d="M-3.75,9 C-2.78350169,9 -2,8.21649831 -2,7.25 C-2,6.28350169 -2.78350169,5.5 -3.75,5.5 C-4.71649831,5.5 -5.5,6.28350169 -5.5,7.25 C-5.5,8.21649831 -4.71649831,9 -3.75,9 Z M7.25,9 C8.21649831,9 9,8.21649831 9,7.25 C9,6.28350169 8.21649831,5.5 7.25,5.5 C6.28350169,5.5 5.5,6.28350169 5.5,7.25 C5.5,8.21649831 6.28350169,9 7.25,9 Z" id="path-1"></path>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_setting" transform="translate(-8.000000, -8.000000)">
+            <g id="ic_public_more" transform="translate(18.250000, 12.750000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <use id="形状结合" fill="#FFFFFF" transform="translate(1.750000, 7.250000) rotate(-270.000000) translate(-1.750000, -7.250000) " xlink:href="#path-1"></use>
+            </g>
+        </g>
+    </g>
+</svg>

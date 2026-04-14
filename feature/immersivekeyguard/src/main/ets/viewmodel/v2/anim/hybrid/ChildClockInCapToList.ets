@@ -1,0 +1,65 @@
+/*
+ * Copyright (c) Huawei Technologies Co., Ltd. 2024-2025. All rights reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+import { WAnimProperty, WBaseProperty } from '@ohos/screenlockcommon';
+import { WidgetPropertyConfig } from '@ohos/screenlockcommon/Index';
+import { ImmComPtConfig } from '../../../../model/data/config/ImmComPtConfig';
+import { ImmComAnimConfig } from '../../../../model/data/config/ImmComAnimConfig';
+import { ChildHybridBaseAnim } from './ChildHybridBaseAnim';
+
+/**
+ * 胶囊过渡列表动效中时钟子模块
+ * 时钟存在跟手位移时，需要动效复位
+ */
+export class ChildClockInCapToList extends ChildHybridBaseAnim {
+  public buildEndCfg(endCfg: ImmComPtConfig): void {
+  }
+
+  public onHybridAnim(animCfg: ImmComAnimConfig): void {
+    this.initEndClock(animCfg);
+  }
+
+  private initEndClock(animCfg: ImmComAnimConfig): void {
+    // 时钟无跟手偏移，无需动效复位
+    if (!this.getClockAnimVm()?.hasClockTranY()) {
+      return;
+    }
+    // 时钟跟随第一个动效条目复位
+    let startIndex = this.getListStaticSt()?.getStartIndex() ?? 0;
+    let endIndex = this.getListStaticSt()?.getEndIndex() ?? 0;
+    let listData = this.getListData();
+    for (let i = startIndex; i <= endIndex; i++) {
+      let groupKey = listData?.[i]?.groupKey;
+      if (groupKey === undefined || groupKey === this.extendAnimParam?.skipGroupKey) {
+        continue;
+      }
+      let clockAnimSt = this.getClockAnimVm()?.getClockViewAnimSt();
+      // 动效初始配置
+      let initCfg = animCfg.getInitCfg();
+      initCfg?.bindConfig(this.getClockV1Key(), WidgetPropertyConfig.wrap()
+        .bindConfig(WAnimProperty.ANIM_SCENE, this.animStartScene).addPtState(clockAnimSt));
+      // 动效结束配置
+      let finishCfg = animCfg.getFinishCfg();
+      finishCfg?.bindConfig(this.getClockV1Key(), WidgetPropertyConfig.wrap()
+        .bindConfig(WAnimProperty.ANIM_SCENE, this.animFinishScene).addPtState(clockAnimSt));
+      // 主动效终值配置
+      let endMainCfg = animCfg.getEndCfg(this.getCfgMainName(i));
+      endMainCfg?.bindConfig(this.getClockV1Key(), WidgetPropertyConfig.wrap()
+        .bindConfig(WBaseProperty.SCALE_X, 1).bindConfig(WBaseProperty.SCALE_Y, 1)
+        .bindConfig(WBaseProperty.TRAN_Y, 0).addPtState(clockAnimSt));
+      break;
+    }
+  }
+}

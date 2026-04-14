@@ -1,0 +1,18 @@
+{
+    "string":[
+        {
+            "name":"Desktop_individuation",
+            "value":"桌面和個人化",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"theme_title",
+            "value":"主題",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

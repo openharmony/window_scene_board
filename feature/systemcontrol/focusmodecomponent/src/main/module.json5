@@ -1,0 +1,10 @@
+{
+  "module": {
+    "name": "focusmodecomponent",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ]
+  }
+}

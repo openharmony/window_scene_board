@@ -1,0 +1,95 @@
+{
+    "string":[
+        {
+            "name":"remove_from_dock",
+            "value":"Retirer du dock",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dock_hover_text_recentcenter",
+            "value":"Centre des tâches",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_center_menu_add_desktop",
+            "value":"Ajouter à l'écran d'accueil",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"continue_hap_come_from",
+            "value":"Depuis l'appareil \"%1$s\"",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_menu_open_new_window",
+            "value":"Ouvrir une nouvelle fenêtre",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_menu_exit_multiple",
+            "value":"Fermer toutes les fenêtres",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_menu_open",
+            "value":"Ouvrir",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_menu_exit_single",
+            "value":"Fermer la fenêtre",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_menu_clean",
+            "value":"Vider la corbeille",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dock_hover_text_appcenter",
+            "value":"Centre d'applications",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dock_hover_text_recyclebin",
+            "value":"Corbeille",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"more_app_icon",
+            "value":"Plus d'applications",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_dock_menu_suggest_title",
+            "value":"Suggestions",
+            "attr":{
+                "priority":"LT"
+            }
+        }
+    ]
+}

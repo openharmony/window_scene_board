@@ -1,0 +1,128 @@
+{
+    "string":[
+        {
+            "name":"air_plane_mode",
+            "value":"[TS_837669]_Airplane mode"
+        },
+        {
+            "name":"china_unicom",
+            "value":"[TS_784947]_China Unicom"
+        },
+        {
+            "name":"no_card_no_service",
+            "value":"[TS_869993]_No SIM | No service"
+        },
+        {
+            "name":"sos_only",
+            "value":"[TS_945519]_SOS only"
+        },
+        {
+            "name":"plmn_46099",
+            "value":"[TS_869990]_46099|MAITEST"
+        },
+        {
+            "name":"china_telecom",
+            "value":"[TS_784948]_China Telecom"
+        },
+        {
+            "name":"plmn_46080",
+            "value":"[TS_869994]_46080|MAITEST"
+        },
+        {
+            "name":"plmn_46070",
+            "value":"[TS_869995]_46070|MAITEST"
+        },
+        {
+            "name":"net_null",
+            "value":"[TS_784945]_No service"
+        },
+        {
+            "name":"no_card_sos_only",
+            "value":"[TS_869991]_No SIM | SOS only"
+        },
+        {
+            "name":"net_default",
+            "value":"[TS_878161]_%s"
+        },
+        {
+            "name":"plmn_26201",
+            "value":"[TS_869992]_Telekom.de"
+        },
+        {
+            "name":"china_broadnet",
+            "value":"[TS_869996]_China Broadnet"
+        },
+        {
+            "name":"mainability_description",
+            "value":"[TS_803107]_JS_Phone_Empty Feature Ability"
+        },
+        {
+            "name":"china_mobile",
+            "value":"[TS_784861]_China Mobile"
+        },
+        {
+            "name":"plmn_00101",
+            "value":"[TS_869989]_00101|MAITEST"
+        },
+        {
+            "name":"net_custom",
+            "value":"[TS_903924]_custom"
+        },
+        {
+            "name":"accessibility_status_bar_airplane_mode",
+            "value":"[TS_916907]_Airplane mode"
+        },
+        {
+            "name":"accessibility_status_bar_distributed_mode",
+            "value":"[TS_958448]_Communication sharing"
+        },
+        {
+            "name":"accessibility_status_bar_satellite_mode",
+            "value":"[TS_916917]_Satellite communications"
+        },
+        {
+            "name":"accessibility_status_bar_empty_signal",
+            "value":"[TS_916922]_No signal"
+        },
+        {
+            "name":"accessibility_status_bar_sim1",
+            "value":"[TS_916911]_SIM %d"
+        },
+        {
+            "name":"accessibility_status_bar_sim2",
+            "value":"[TS_916921]_SIM %d"
+        },
+        {
+            "name":"accessibility_status_bar_skytone",
+            "value":"[TS_950660]_SkyTone"
+        },
+        {
+            "name":"accessibility_status_bar_no_service",
+            "value":"[TS_916909]_No service"
+        },
+        {
+            "name":"accessibility_status_bar_no_sim",
+            "value":"[TS_916915]_No SIM"
+        },
+        {
+            "name":"accessibility_status_bar_no_signal_roaming_1_lan",
+            "value":"[TS_916920]_Cellular signal, one bar"
+        },
+        {
+            "name":"accessibility_status_bar_no_signal_roaming_2_lan",
+            "value":"[TS_916906]_Cellular signal, two bars"
+        },
+        {
+            "name":"accessibility_status_bar_no_signal_roaming_3_lan",
+            "value":"[TS_916918]_Cellular signal, three bars"
+        },
+        {
+            "name":"accessibility_status_bar_no_signal_roaming_4_lan",
+            "value":"[TS_916903]_Cellular signal, four bars"
+        },
+        {
+            "name":"accessibility_status_bar_no_signal_roaming_5_lan",
+            "value":"[TS_916912]_Cellular signal, full"
+        }
+    ]
+}

@@ -37,6 +37,7 @@ import {
 import { performanceMonitor } from '@kit.ArkUI';
 import { SCBSceneSessionManager } from '../scene/session/SCBSceneSessionManager';
 import transactionManager from '@ohos.transactionManager';
+// import apsManager from '@hms.graphic.apsManager';
 import { RotationConstants } from '@ohos/commonconstants';
 import { SCBDeviceScreenConfig } from '../config/SCBDeviceScreenConfig';
 import { WinLog, WinLogDomain } from '../utils/WinLog';

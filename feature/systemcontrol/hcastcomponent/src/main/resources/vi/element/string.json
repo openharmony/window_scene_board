@@ -1,0 +1,67 @@
+{
+    "string":[
+        {
+            "name":"title_open_wlan_and_bluetooth",
+            "value":"Để sử dụng ScreenCast, trước tiên hãy bật WLAN và Bluetooth",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"btn_turn_on",
+            "value":"Bật",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wireless_projection_toggle",
+            "value":"ScreenCast",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"title_projection_fail",
+            "value":"Kết nối không thành công",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"text_open_wlan_and_bluetooth",
+            "value":"Cần có những quyền này để phát hiện các thiết bị cũng như phát âm thanh và video.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"projection_privacy_statement",
+            "value":"Dịch vụ này yêu cầu quyền Kết nối thiết bị để bật Bluetooth cũng như sử dụng Bluetooth và WLAN. Dịch vụ này sẽ ghi lại âm thanh của thiết bị và nội dung trên màn hình. Bằng việc chạm vào Đồng ý, bạn đồng ý với các điều khoản này.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"error_text_code_2",
+            "value":"Hãy khởi động lại WLAN và Bluetooth trên cả hai thiết bị rồi thử lại.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"privacy_hint",
+            "value":"Truyền màn hình của bạn sang màn hình lớn hơn.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"btn_agree",
+            "value":"Đồng ý",
+            "attr":{
+                "priority":"LT"
+            }
+        }
+    ]
+}

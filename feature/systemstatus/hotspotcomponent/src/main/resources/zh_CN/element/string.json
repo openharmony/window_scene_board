@@ -1,0 +1,25 @@
+{
+    "string":[
+        {
+            "name":"control_center_complex_toggle_hotspot_title",
+            "value":"个人热点",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"statusbar_talkbackhotspot01",
+            "value":"热点已开启",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_hotspot_no_device",
+            "value":"无设备",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"airplane_mode",
+            "value":"機内モード",
+            "attr":{
+                "priority":"LT"
+            }
+        }
+    ]
+}

@@ -1,0 +1,88 @@
+{
+    "string":[
+        {
+            "name":"shutdown_dialog_content",
+            "value":"གློག་ཚད་ཟད་ཚར་ལ་ཉེ། སྒྲིག་ཆས་ཏོག་ཙམ་ནས་རང་འགུལ་གྱིས་གློག་སྒོ་རྒྱག",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"shutdown_dialog_title",
+            "value":"ཡིད་གཟབ་གནང་དགོས་རྒྱུར།",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_battery_level",
+            "value":"གློག་རྫས་ཀྱི་གློག་ཚད་ %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_battery_charge",
+            "value":"གློག་གསོག་བཞིན་པ། %s ལེགས་འགྲུབ་བྱུང་།",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_battery_charge_double",
+            "value":"གློག་མགྱོགས་པོ་གསོག་བཞིན་པ། %s ལེགས་འགྲུབ་བྱུང་།",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_battery_supercharge",
+            "value":"རིམ་འདས་མགྱོགས་གསོག་བྱེད་བཞིན་པ། %s ལེགས་འགྲུབ་བྱུང་།",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"shutdown_dialog_content_new",
+            "value":"གློག་རྫོགས་ལ་ཉེ། སྒྲིག་ཆས་ཏོག་སྐར་ཆ་ %d ནས་རང་འགུལ་གྱིས་གློག་སྒོ་རྒྱག",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"battery_emergency_dialog_content",
+            "value":"གློག་རྫོགས་ལ་ཉེ། སྒྲིག་ཆས་སྐར་ཆ་ %d ནས་གློག་ཚད་དམའ་བའི་མཁོ་བསྟུན་རྣམ་པར་འཛུལ།",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"low_battery_ntf_title",
+            "value":"གློག་ཚད་དམའ་བ།",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"low_battery_ntf_content",
+            "value":"%s ལྷག",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"low_battery_ntf_btn_text",
+            "value":"གློག་བསྲི་དཔེ་རྣམ་ཁ་འབྱེད།",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_battery_power_saving",
+            "value":"གློག་བསྲི་དཔེ་རྣམ།",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

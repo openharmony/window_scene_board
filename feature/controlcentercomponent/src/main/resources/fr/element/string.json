@@ -1,0 +1,417 @@
+{
+    "string":[
+        {
+            "name":"rotate_to_landscape",
+            "value":"Veuillez d'abord faire pivoter en orientation paysage.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sound_recorder_name",
+            "value":"Enreg. sonore",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"calculator_widget_name",
+            "value":"Calculatrice",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"brightness_title",
+            "value":"Luminosité",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"combined_slider_title",
+            "value":"Barres de luminosité et de volume",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_edit_panel_dialog_confirm",
+            "value":"Enregistrer les modifications ?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remote_control_widget_name",
+            "value":"Télécommande intelligente",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"clock_timer_widget_name",
+            "value":"Minuteur",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center",
+            "value":"Panneau de contrôle",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pc_mode",
+            "value":"Mode ordinateur",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pad_mode",
+            "value":"Mode tablette",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"scanner_widget_name",
+            "value":"Scanner",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_anti_theft_for_toggle",
+            "value":"Opération indisponible sur l'appareil de démonstration.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"control_center_edit_panel_tips_min_toggles",
+            "value":"Au moins %d boutons doivent être gardés.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_unlocked_for_editing",
+            "value":"Veuillez déverrouiller pour modifier.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_edit_panel_dialog_not_save",
+            "value":"Ne pas enregistrer",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessed_recently",
+            "value":"%s, à l'instant",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screen_shot_widget_name",
+            "value":"Capture d'écran",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"multi_window_widget_name",
+            "value":"Fenêtres libres",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"control_center_edit_panel_tips_max_toggles",
+            "value":"%d boutons maximum.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_privacy_page",
+            "value":"Autorisations",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_edit_panel_collapse_library",
+            "value":"Fermer",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"privacy_sensor_multiple_application",
+            "value":"%s et autres",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"control_center_no_available_toggles",
+            "value":"Aucun bouton à ajouter",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screen_recorder_widget_name",
+            "value":"Capture vidéo d'écran",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_super_privacy_for_location_toggle",
+            "value":"Accès aux informations de localisation bloqué. Veuillez d'abord désactiver le mode Super privé.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_edit_panel_dialog_save",
+            "value":"Enregistrer",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_edit_panel_title_edit",
+            "value":"Modifier",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_edit_panel_tips_max_limit",
+            "value":"Le nombre maximum de commutateurs a déjà été ajouté.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_change_vertical_brightness_desc",
+            "value":"Barre de luminosité, veuillez toucher deux fois et maintenez, puis faites glisser vers le haut ou vers le bas pour ajuster",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_privacy_string_camera",
+            "value":"Appareil photo",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_exit_sub_page",
+            "value":"Quitter le menu %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_entry_edit",
+            "value":"Modifier le Panneau de contrôle",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_edit_move_end",
+            "value":"Placé",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_library_opened",
+            "value":"Écran de modification du Panneau de contrôle ouvert",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_change_brightness_desc",
+            "value":"Barre de luminosité, toucher deux fois puis maintenir et faire glisser vers la gauche ou la droite pour ajuster",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_privacy_string_location",
+            "value":"Informations de localisation",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_privacy_string_mic",
+            "value":"Microphone",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_edit_drag_description",
+            "value":"Toucher deux fois et déplacer pour réorganiser les icônes",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_save_edit",
+            "value":"Enregistrer les modifications",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_button_str",
+            "value":"Bouton %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_change_brightness",
+            "value":"Luminosité ajustée à %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_exit_edit_page",
+            "value":"Fermer l'écran de modification",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_privacy_report_string",
+            "value":"%1$s accède à %2$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_open_candidate_library",
+            "value":"Afficher la bibliothèque",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_entry_edit_page",
+            "value":"Ouvrir l'écran de modification",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_library_closed",
+            "value":"Écran de modification du Panneau de contrôle fermé",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_enter_sub_page",
+            "value":"Ouvrir le menu %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_entry_setting",
+            "value":"Accéder aux Paramètres",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_collapse_library",
+            "value":"Fermer le panneau avec les boutons non ajoutés",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_brightness",
+            "value":"Luminosité de l'écran %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_exit_edit",
+            "value":"Quitter la modification",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_edit_move_start",
+            "value":"Déplacement d'élément en cours",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"multimedia_sensor_bracket_kit",
+            "value":"Commandes du stabilisateur à cardan",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"multimedia_sensor_sound_effects",
+            "value":"Effets sonores",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"multimedia_sensor_video_effects",
+            "value":"Effets vidéo",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+        "name":"notepad_quick_note_title",
+        "value":"Note rapide",
+        "attr":{
+          "priority":"LT"
+            }
+        },
+        {
+            "name":"unfold_to_g_state",
+            "value":"Veuillez d'abord déplier entièrement votre téléphone.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+          "name":"computer_mode",
+          "value":"Mode bureau",
+          "attr":{
+            "priority":"LT"
+          }
+        }
+    ]
+}

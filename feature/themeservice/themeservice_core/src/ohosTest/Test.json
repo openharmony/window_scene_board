@@ -1,0 +1,23 @@
+{
+  "description": "Configuration for SceneBoard Tests",
+  "driver": {
+    "type": "OHJSUnitTest",
+    "test-timeout": "180000",
+    "bundle-name": "com.ohos.sceneboard",
+    "module-name": "themeservice_test",
+    "shell-timeout": "600000",
+    "testcase-timeout": "30000",
+    "compile-mode": "esmodule",
+    "coverage": true,
+    "package-tool-path": "D:\\Local\\coverage\\node_modules\\@ohos\\coverage"
+  },
+  "kits": [
+    {
+      "test-file-name": [
+        "ThemeServiceTest.hap"
+      ],
+      "type": "AppInstallKit",
+      "cleanup-apps": true
+    }
+  ]
+}

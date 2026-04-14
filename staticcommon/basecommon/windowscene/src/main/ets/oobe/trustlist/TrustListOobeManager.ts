@@ -16,6 +16,7 @@
 import bundleManager from '@ohos.bundle.bundleManager';
 
 import util from '@ohos.util';
+// import HelpsFwk from '@hms.hiviewdfx.helpsfwk';
 import { SingletonHelper } from '@ohos/basicutils';
 import { LogDomain, LogHelper } from '@ohos/basicutils';
 import { GlobalContext } from '@ohos/frameworkwrapper';

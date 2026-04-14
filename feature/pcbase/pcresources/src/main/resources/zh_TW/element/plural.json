@@ -1,0 +1,67 @@
+{
+    "plural":[
+        {
+            "name":"confirm_reboot",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"仍要重新啟動（%d 秒）"
+                }
+            ]
+        },
+        {
+            "name":"confirm_shutdown",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"仍要關機（%d 秒）"
+                }
+            ]
+        },
+        {
+            "name":"confirm_hibernate",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"睡眠（%d 秒）"
+                }
+            ]
+        },
+        {
+            "name":"common_cancel",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"取消（%d 秒）",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"create_region_folder",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"收納所選項目（%d 個項目）",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"confirm_shutdown_tip",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"正在關閉 %d 個應用程式並關機，請稍候。若有未儲存的變更內容，可輕觸取消，然後手動儲存。",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

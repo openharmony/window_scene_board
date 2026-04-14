@@ -1,0 +1,63 @@
+{
+  "module": {
+    "name": "default_notificationmanagement",
+    "type": "feature",
+    "srcEntry": "./ets/Application/AbilityStage.ets",
+    "description": "$string:mainability_description",
+    "mainElement": "com.ohos.sceneboard.notificationmanagement.MainAbility",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ],
+    "metadata": [
+      {
+        "name": "ArkTSPartialUpdate",
+        "value": "true"
+      },
+      {
+        "name": "action.settings.search.path",
+        "value": "searchConfig/searchPage.json"
+      }
+    ],
+    "deliveryWithInstall": true,
+    "installationFree": false,
+    "pages": "$profile:main_pages",
+    "abilities": [],
+    "requestPermissions": [
+      {
+        "name": "ohos.permission.ACCESS_SEARCH_SERVICE"
+      }
+    ],
+    "extensionAbilities": [
+      {
+        "name": "NotificationUIExtAbility",
+        "icon": "$media:Settings_notification",
+        "description": "NotificationUIExtAbility",
+        "type": "sys/commonUI",
+        "exported": false,
+        "srcEntry": "./ets/MainAbility/NotificationExtAbility.ets",
+        "metadata": [
+          {
+            "name": "ohos.extension.servicetype",
+            "value": "share"
+          }
+        ]
+      },
+      {
+        "name": "NotificationManangerUIExtensionAbility",
+        "icon": "$media:Settings_notification",
+        "description": "NotificationManangerUIExtensionAbility",
+        "type": "sys/commonUI",
+        "exported": true,
+        "extensionProcessMode": "instance",
+        "srcEntry": "./ets/MainAbility/NotificationManangerUIExtensionAbility.ets",
+        "metadata": [
+          {
+            "name": "ohos.extension.servicetype",
+            "value": "share"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "devDependencies": {},
+  "name": "@ohos/systemuicommon",
+  "version": "1.0.0",
+  "description": "Please describe the basic information.",
+  "main": "./src/main/ets/TsIndex.ts",
+  "dependencies": {
+    "@ohos/basicutils": "../basecommon/basicutils",
+    "@ohos/componenthelper": "../basecommon/componenthelper",
+    "@ohos/componentdrag": "../basecommon/componentdrag",
+    "@ohos/frameworkwrapper": "../basecommon/frameworkwrapper",
+    "@ohos/commonconstants": "../basecommon/commonconstants",
+    "@ohos/frameworkcommon": "../basecommon/frameworkcommon",
+    "@ohos/windowscene": "../basecommon/windowscene",
+    "@ohos/launchercommon": "../launchercommon",
+    "@ohos/systemuiutils": "../systemuibasic/systemuiutils",
+    "@ohos/windowsceneinterfaces": "../basecommon/windowsceneinterfaces"
+  }
+}

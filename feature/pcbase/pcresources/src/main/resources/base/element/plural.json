@@ -1,0 +1,113 @@
+{
+    "plural":[
+        {
+            "name":"confirm_reboot",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"Restart (%d)"
+                },
+                {
+                    "quantity":"other",
+                    "value":"Restart (%d)"
+                }
+            ]
+        },
+        {
+            "name":"confirm_shutdown",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"Power off (%d)"
+                },
+                {
+                    "quantity":"other",
+                    "value":"Power off (%d)"
+                }
+            ]
+        },
+        {
+            "name":"confirm_hibernate",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"Sleep (%d)"
+                },
+                {
+                    "quantity":"other",
+                    "value":"Sleep (%d)"
+                }
+            ]
+        },
+        {
+            "name":"common_cancel",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"Cancel (%d)"
+                },
+                {
+                    "quantity":"other",
+                    "value":"Cancel (%d)"
+                }
+            ]
+        },
+        {
+            "name":"create_region_folder",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"Smart organize (%d item)",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"Smart organize (%d items)",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"confirm_shutdown_tip",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"Closing %d app. To go back and save your work, click Cancel and save manually.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"Closing %d apps. To go back and save your work, click Cancel and save manually.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"confirm_reboot_tip",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"Closing %d app and restarting. To go back and save your work, click Cancel and save manually.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"Closing %d apps and restarting. To go back and save your work, click Cancel and save manually.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -11,5 +11,6 @@
     "@ohos/basicutils": "../basicutils",
     "@ohos/frameworkwrapper": "../frameworkwrapper",
     "@ohos/windowscene": "../windowscene",
+    "@ohos/swiperdata": "../swiperdata"
   }
 }

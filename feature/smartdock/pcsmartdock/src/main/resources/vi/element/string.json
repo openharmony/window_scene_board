@@ -1,0 +1,95 @@
+{
+    "string":[
+        {
+            "name":"remove_from_dock",
+            "value":"Gỡ khỏi thanh tác vụ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dock_hover_text_recentcenter",
+            "value":"Trung tâm nhiệm vụ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_center_menu_add_desktop",
+            "value":"Thêm vào màn hình chính",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"continue_hap_come_from",
+            "value":"Từ \"%1$s\".",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_menu_open_new_window",
+            "value":"Mở cửa sổ mới",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_menu_exit_multiple",
+            "value":"Đóng tất cả cửa sổ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_menu_open",
+            "value":"Mở",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_menu_exit_single",
+            "value":"Đóng cửa sổ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_menu_clean",
+            "value":"Làm trống Thùng rác",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dock_hover_text_appcenter",
+            "value":"Trung tâm ứng dụng",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dock_hover_text_recyclebin",
+            "value":"Thùng rác",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"more_app_icon",
+            "value":"Ứng dụng khác",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_dock_menu_suggest_title",
+            "value":"Đề xuất",
+            "attr":{
+                "priority":"LT"
+            }
+        }
+    ]
+}

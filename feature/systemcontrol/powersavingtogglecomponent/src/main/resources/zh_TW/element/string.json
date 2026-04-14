@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"control_center_complex_toggle_powersaving_title",
+            "value":"省電模式",
+            "attr":{
+                "priority":"LT"
+            }
+        }
+    ]
+}

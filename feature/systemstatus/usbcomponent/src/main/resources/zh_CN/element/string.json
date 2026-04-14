@@ -1,0 +1,12 @@
+{
+    "string":[
+        {
+            "name":"USBRemoved",
+            "value":"安全移除"
+        },
+        {
+            "name":"usb_hover",
+            "value":"外接存储"
+        }
+    ]
+}

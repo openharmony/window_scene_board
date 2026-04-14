@@ -1,0 +1,42 @@
+{
+    "plural":[
+        {
+            "name":"duration_minutes_shortest",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"%d min ago",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"%d min ago",
+                    "attr":{
+                        "priority":"LT"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"duration_minutes_shortest_future",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"In %d min",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"In %d min",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

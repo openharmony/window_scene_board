@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"text_open_wlan_and_bluetooth",
+            "value":"Estas funciones se requieren para detectar dispositivos y transmitir audio y vídeo.",
+            "attr":{
+                "priority":"LT"
+            }
+        }
+    ]
+}

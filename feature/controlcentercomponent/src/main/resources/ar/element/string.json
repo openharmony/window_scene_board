@@ -1,0 +1,417 @@
+{
+    "string":[
+        {
+            "name":"rotate_to_landscape",
+            "value":"قم بالتدوير إلى الاتجاه الأفقي أولاً",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sound_recorder_name",
+            "value":"مسجل الصوت",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"calculator_widget_name",
+            "value":"الآلة الحاسبة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"brightness_title",
+            "value":"السطوع",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"combined_slider_title",
+            "value":"أشرطة السطوع ومستوى الصوت",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_edit_panel_dialog_confirm",
+            "value":"هل تريد حفظ التغييرات؟",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remote_control_widget_name",
+            "value":"التحكم الذكي",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"clock_timer_widget_name",
+            "value":"المؤقت",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center",
+            "value":"لوحة التحكم",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pc_mode",
+            "value":"وضع الحاسوب",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pad_mode",
+            "value":"وضع الجهاز اللوحي",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_privacy_string_camera",
+            "value":"الكاميرا",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_exit_sub_page",
+            "value":"خروج من شاشة %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_entry_edit",
+            "value":"تحرير لوحة التحكم",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_edit_move_end",
+            "value":"تم ضبط الموضع",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_library_opened",
+            "value":"تمت توسعة شاشة تحرير لوحة التحكم",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_anti_theft_for_toggle",
+            "value":"هذه العملية غير متاحة على جهاز العرض",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_change_brightness_desc",
+            "value":"شريط السطوع، انقر نقرًا مزدوجًا ثم اضغط مطولاً مع السحب لليمين أو اليسار لضبط السطوع",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_edit_panel_tips_min_toggles",
+            "value":"يجب عرض %d أيقونات اختصارات على الأقل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_unlocked_for_editing",
+            "value":"مطلوب فتح القفل للتحرير",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_edit_panel_dialog_not_save",
+            "value":"عدم الحفظ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_privacy_string_location",
+            "value":"الموقع",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_privacy_string_mic",
+            "value":"الميكروفون",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_edit_drag_description",
+            "value":"انقر نقرًا مزدوجًا واسحب لإعادة ترتيب الأيقونات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_save_edit",
+            "value":"حفظ التغييرات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_button_str",
+            "value":"زر %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"scanner_widget_name",
+            "value":"قارئ الرموز",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessed_recently",
+            "value":"%s يستخدم هذا الإذن حاليًا",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screen_shot_widget_name",
+            "value":"لقطة شاشة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_change_brightness",
+            "value":"تم ضبط السطوع على %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"multi_window_widget_name",
+            "value":"النوافذ الحرة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_exit_edit_page",
+            "value":"إغلاق شاشة التحرير",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_privacy_report_string",
+            "value":"تطبيق %1$s يستخدم حاليًا إذن %2$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_edit_panel_tips_max_toggles",
+            "value":"يمكن عرض %d أيقونة اختصارات كحدٍ أقصى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_open_candidate_library",
+            "value":"توسعة شاشة تحرير لوحة التحكم",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_privacy_page",
+            "value":"الأذونات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_entry_edit_page",
+            "value":"فتح شاشة التحرير",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_library_closed",
+            "value":"تم طي شاشة تحرير لوحة التحكم",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_edit_panel_collapse_library",
+            "value":"إغلاق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_enter_sub_page",
+            "value":"فتح شاشة %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_entry_setting",
+            "value":"الدخول إلى الإعدادات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"privacy_sensor_multiple_application",
+            "value":"تطبيق %s وتطبيقات أخرى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_collapse_library",
+            "value":"إغلاق لوحة مفاتيح الاختصارات غير المُضافة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_brightness",
+            "value":"سطوع الشاشة %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_exit_edit",
+            "value":"خروج من شاشة التحرير",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_no_available_toggles",
+            "value":"لا توجد اختصارات لإضافتها",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_edit_move_start",
+            "value":"جاري سحب العنصر",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screen_recorder_widget_name",
+            "value":"تسجيل الشاشة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_super_privacy_for_location_toggle",
+            "value":"تم حظر الوصول إلى الموقع، يُرجى أولًا إيقاف تشغيل وضع الخصوصية الصارم",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_edit_panel_dialog_save",
+            "value":"حفظ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_edit_panel_title_edit",
+            "value":"تحرير",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_edit_panel_tips_max_limit",
+            "value":"تمت إضافة أقصى عدد من مفاتيح التبديل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_change_vertical_brightness_desc",
+            "value":"شريط السطوع، انقر مرتين ثم مطولاً، ثم اسحب لأعلى أو لأسفل للضبط",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"multimedia_sensor_bracket_kit",
+            "value":"عناصر التحكم في حامل الكاميرا",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"multimedia_sensor_sound_effects",
+            "value":"تأثيرات الصوت",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"multimedia_sensor_video_effects",
+            "value":"تأثيرات الفيديو",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notepad_quick_note_title",
+            "value":"ملاحظة سريعة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"unfold_to_g_state",
+            "value":"يُرجى أولًا فرد الهاتف بالكامل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"computer_mode",
+            "value":"وضع الحاسوب",
+            "attr":{
+                "priority":"LT"
+            }
+        }
+    ]
+}

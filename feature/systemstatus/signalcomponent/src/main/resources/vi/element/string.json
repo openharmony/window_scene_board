@@ -1,0 +1,165 @@
+{
+    "string":[
+        {
+            "name":"china_unicom",
+            "value":"China Unicom",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"china_telecom",
+            "value":"China Telecom",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sos_only",
+            "value":"Chỉ SOS",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_skytone",
+            "value":"SkyTone",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"china_mobile",
+            "value":"China Mobile",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"net_null",
+            "value":"Không có dịch vụ nào",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"air_plane_mode",
+            "value":"C.độ m.bay",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"no_card_no_service",
+            "value":"Không có SIM | Không có dịch vụ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"no_card_sos_only",
+            "value":"Không có SIM | Chỉ SOS",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_distributed_mode",
+            "value":"Chia sẻ thông tin liên lạc",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_satellite_mode",
+            "value":"Liên lạc qua vệ tinh",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"china_broadnet",
+            "value":"China Broadnet",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_no_sim",
+            "value":"Không có SIM",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_no_signal_roaming_1_lan",
+            "value":"Tín hiệu di động, một vạch",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_no_signal_roaming_2_lan",
+            "value":"Tín hiệu di động, hai vạch",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_no_signal_roaming_3_lan",
+            "value":"Tín hiệu di động, ba vạch",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_airplane_mode",
+            "value":"Chế độ Máy bay",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_sim2",
+            "value":"SIM %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_sim1",
+            "value":"SIM %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_empty_signal",
+            "value":"Không có tín hiệu",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_no_signal_roaming_4_lan",
+            "value":"Tín hiệu di động, bốn vạch",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_no_signal_roaming_5_lan",
+            "value":"Tín hiệu di động, đầy vạch",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_no_service",
+            "value":"Không có dịch vụ",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

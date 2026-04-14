@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"control_center_complex_toggle_musicservice_title",
+            "value":"노래 이름 찾기",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

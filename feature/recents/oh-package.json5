@@ -1,0 +1,16 @@
+{
+  "devDependencies": {},
+  "name": "@ohos/recents",
+  "description": "a npm package which contains recents feature",
+  "main": "index.ets",
+  "version": "1.0.0",
+  "dependencies": {
+    "@ohos/basicutils": "file:../../staticcommon/basecommon/basicutils",
+    "@ohos/commonconstants": "file:../../staticcommon/basecommon/commonconstants",
+    "@ohos/frameworkwrapper": "file:../../staticcommon/basecommon/frameworkwrapper",
+    "@ohos/windowscene": "file:../../staticcommon/basecommon/windowscene",
+    "@ohos/screenlockcommon": "file:../../staticcommon/screenlockcommon",
+    "@ohos/pagedesktop": "../desktop/pagedesktop",
+    "@ohos/launchercommon": "file:../../staticcommon/launchercommon",
+  }
+}

@@ -1,0 +1,44 @@
+{
+    "string":[
+        {
+            "name":"control_center_eye_comfort_toggle_title",
+            "value":"[TS_935254]_Eye comfort"
+        },
+        {
+            "name":"module_desc",
+            "value":"[TS_935252]_module description"
+        },
+        {
+            "name":"control_center_eye_comfort_scheduled_open",
+            "value":"[TS_1035546]_Scheduled"
+        },
+        {
+            "name":"control_center_eye_comfort_scheduled_next_day",
+            "value":"[TS_1040590]_%1$s–%2$s (Next day)"
+        },
+        {
+            "name":"control_center_eye_comfort_smart_open_subtitle_active",
+            "value":"[TS_1035539]_Eye fatigue detected. Filtering blue light."
+        },
+        {
+            "name":"control_center_eye_comfort_scheduled_open_subtitle_sunset",
+            "value":"[TS_1035538]_Sunset to sunrise"
+        },
+        {
+            "name":"control_center_eye_comfort_smart_open",
+            "value":"[TS_1035544]_Auto-enable"
+        },
+        {
+            "name":"control_center_eye_comfort_always_on",
+            "value":"[TS_1035542]_Enable all day"
+        },
+        {
+            "name":"control_center_eye_comfort_smart_open_subtitle_normal",
+            "value":"[TS_1035541]_No eye fatigue detected"
+        },
+        {
+            "name":"control_center_eye_comfort_smart_open_subtitle_default",
+            "value":"[TS_1035543]_Dynamically adjusts blue light filter"
+        }
+    ]
+}

@@ -1,0 +1,32 @@
+{
+    "string":[
+        {
+            "name":"control_center_complex_toggle_bluetooth_title",
+            "value":"Bluetooth",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_nearlink_bluetooth_title",
+            "value":"NearLink et Bluetooth",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_bluetooth_connected",
+            "value":"Bluetooth connecté",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_bluetooth_open",
+            "value":"Le Bluetooth est activé",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

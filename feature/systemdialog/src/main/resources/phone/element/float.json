@@ -1,0 +1,44 @@
+{
+  "float": [
+    {
+      "name": "poweroff_tips_width",
+      "value": "312vp"
+    },
+    {
+      "name": "poweroff_blank_bottom_height",
+      "value": "60vp"
+    },
+    {
+      "name": "poweroff_blank_bottom_height_large_landscape",
+      "value": "24vp"
+    },
+    {
+      "name": "poweroff_blank_bottom_height_outer_home_fold",
+      "value": "24vp"
+    },
+    {
+      "name": "poweroff_tips_line_height",
+      "value": "18"
+    },
+    {
+      "name": "poweroff_fold_tips_width",
+      "value": "312vp"
+    },
+    {
+      "name": "poweroff_fold_blank_bottom_height",
+      "value": "60vp"
+    },
+    {
+      "name": "poweroff_fold_blank_bottom_height_large_font",
+      "value": "40vp"
+    },
+    {
+      "name": "poweroff_fold_tips_line_height",
+      "value": "24"
+    },
+    {
+      "name": "poweroff_text_section_line_height",
+      "value": "15"
+    }
+  ]
+}

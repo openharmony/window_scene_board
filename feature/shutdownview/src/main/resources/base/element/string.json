@@ -1,0 +1,100 @@
+{
+  "string": [
+    {
+      "name":"common_cancel",
+      "value":"Cancel"
+    },
+    {
+      "name":"continue_restart",
+      "value":"Restart now",
+      "attr":{
+        "priority":"translate"
+      }
+    },
+    {
+      "name":"continue_shutdown",
+      "value":"Power off now",
+      "attr":{
+        "priority":"translate"
+      }
+    },
+    {
+      "name":"confirm_restarting_dialog_title",
+      "value":"Preparing to restart",
+      "attr":{
+        "priority":"translate"
+      }
+    },
+    {
+      "name":"confirm_shutdown_dialog_title",
+      "value":"Preparing to power off",
+      "attr":{
+        "priority":"translate"
+      }
+    },
+    {
+      "name":"confirm_shutdown_tip",
+      "value":"Unsaved changes will be lost if you power off now."
+    },
+    {
+      "name":"confirm_reboot_tip",
+      "value":"Unsaved changes will be lost if you restart now."
+    },
+    {
+      "name":"app_not_saving",
+      "value":"Contains unsaved changes",
+      "attr":{
+        "priority":"translate"
+      }
+    },
+    {
+      "name":"shutdown_warning_when_kiddo_update",
+      "value":"The virtual machine is being updated. Powering off now may damage it. Please try again after the update has finished.",
+      "attr":{
+        "priority":"translate"
+      }
+    },
+    {
+      "name":"reboot_warning_when_kiddo_update",
+      "value":"The virtual machine is being updated. Restarting now may damage it. Please try again after the update has finished.",
+      "attr":{
+        "priority":"translate"
+      }
+    },
+    {
+      "name":"got_it",
+      "value":"OK",
+      "attr":{
+        "priority":"translate"
+      }
+    },
+    {
+      "name": "shutdown_warning_when_kiddo_update_in_other_user",
+      "value": "Another user is currently updating a virtual machine. Powering off now may damage it. Try again later.",
+      "attr": {
+        "priority": "translate"
+      }
+    },
+    {
+      "name": "reboot_warning_when_kiddo_update_in_other_user",
+      "value": "Another user is currently updating a virtual machine. Restarting now may damage it. Try again later.",
+      "attr": {
+        "priority": "translate"
+      }
+    },
+    {
+      "name":"confirm_mode_change_dialog_title",
+      "value":"Preparing to switch system mode",
+      "attr":{
+        "priority":"translate"
+      }
+    },
+    {
+      "name":"continue_mode_change",
+      "value":"Switch now",
+      "attr":{
+        "priority":"translate"
+      }
+    }
+  ]
+}

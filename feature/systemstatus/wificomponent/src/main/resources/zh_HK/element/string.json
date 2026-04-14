@@ -1,0 +1,74 @@
+{
+    "string":[
+        {
+            "name":"accessibility_status_bar_wifi_no",
+            "value":"WLAN 無訊號",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_wifi_4",
+            "value":"WLAN 訊號滿格",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_wifi_3",
+            "value":"WLAN 訊號三格",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_wifi_2",
+            "value":"WLAN 訊號兩格",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_wifi_1",
+            "value":"WLAN 訊號一格",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"shared_network_tips1",
+            "value":"可使用 %s 的通訊能力上網、接打電話、收發短訊",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"shared_network_tips",
+            "value":"正在分享 %s 的流動數據",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"shared_network_tips_network_messages",
+            "value":"可以使用 %s 的通訊能力上網、接收和發送短訊",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"shared_network_tips_network",
+            "value":"可以使用 %s 的通訊能力上網",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"shared_network_tips_network_calls",
+            "value":"可以使用 %s 的通訊能力上網、接聽和撥打電話",
+            "attr":{
+                "priority":"LT"
+            }
+        }
+    ]
+}

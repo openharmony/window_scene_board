@@ -1,0 +1,10 @@
+{
+  "module": {
+    "name": "enterprisespacecomponent",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ]
+  }
+}

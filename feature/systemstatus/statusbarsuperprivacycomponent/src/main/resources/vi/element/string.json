@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"accessibility_status_bar_super_privacy_open",
+            "value":"Chế độ Siêu riêng tư đang bật",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

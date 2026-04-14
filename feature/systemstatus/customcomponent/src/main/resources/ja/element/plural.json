@@ -1,0 +1,28 @@
+{
+    "plural":[
+        {
+            "name":"duration_minutes_shortest",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"%d分前",
+                    "attr":{
+                        "priority":"LT"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"duration_minutes_shortest_future",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"%d分後",
+                    "attr":{
+                        "priority":"LT"
+                    }
+                }
+            ]
+        }
+    ]
+}

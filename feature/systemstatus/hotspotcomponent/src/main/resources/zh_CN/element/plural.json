@@ -1,0 +1,28 @@
+{
+    "plural":[
+        {
+            "name":"control_center_complex_toggle_hotspot_device_count",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"%d 个设备",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"statusbar_talkbackhotspot02",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"%1$d 个设备已连接热点",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

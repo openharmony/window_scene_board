@@ -1,0 +1,16 @@
+{
+  "color": [
+    {
+      "name": "colorDialogBg",
+      "value": "#202224"
+    },
+    {
+      "name": "dividerColor",
+      "value": "#33ffffff"
+    },
+    {
+      "name": "app_color_text_secondary",
+      "value": "#99FFFFFF"
+    }
+  ]
+}

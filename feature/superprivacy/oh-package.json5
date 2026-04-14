@@ -1,0 +1,13 @@
+{
+  "devDependencies": {},
+  "name": "@ohos/superprivacy",
+  "description": "",
+  "version": "1.0.0",
+  "dependencies": {
+    "@ohos/basicutils": "file:../../staticcommon/basecommon/basicutils",
+    "@ohos/frameworkwrapper": "file:../../staticcommon/basecommon/frameworkwrapper",
+    "@ohos/frameworkcommon": "file:../../staticcommon/basecommon/frameworkcommon",
+    "@ohos/windowscene": "file:../../staticcommon/basecommon/windowscene",
+    "@ohos/systemuicommon": "file:../../staticcommon/systemuicommon"
+  }
+}

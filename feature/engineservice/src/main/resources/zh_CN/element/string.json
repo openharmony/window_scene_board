@@ -1,0 +1,44 @@
+{
+  "string": [
+    {
+      "name": "module_desc",
+      "value": "module description"
+    },
+    {
+      "name": "EngineServiceAbility_desc",
+      "value": "description"
+    },
+    {
+      "name": "EngineServiceAbility_label",
+      "value": "label"
+    },
+    {
+      "name": "ThemeComponentAbility_desc",
+      "value": "description"
+    },
+    {
+      "name": "ThemePersonalizedEditingAbility_desc",
+      "value": "description"
+    },
+    {
+      "name": "ThemePersonalizedEditingAbility_label",
+      "value": "label"
+    },
+    {
+      "name": "ThemePersonalizedResourceAbility_desc",
+      "value": "description"
+    },
+    {
+      "name": "ThemePersonalizedResourceAbility_label",
+      "value": "label"
+    },
+    {
+      "name": "ThemeChargingAbility_desc",
+      "value": "description"
+    },
+    {
+      "name": "ThemeChargingAbility_label",
+      "value": "label"
+    }
+  ]
+}

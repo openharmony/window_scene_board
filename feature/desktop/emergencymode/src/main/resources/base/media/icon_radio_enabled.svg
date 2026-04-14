@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Selection/CheckBox/Phone/Unselected/Enabled</title>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="#illustration_低电量应急模式-首次进入" transform="translate(-43.000000, -698.000000)">
+            <g id="Selection/CheckBox/Phone/Unselected/Enabled" transform="translate(43.000000, 698.000000)">
+                <path d="M0,10 C0,4.4771525 4.47593818,0 10,0 L10,0 C15.5228475,0 20,4.47593818 20,10 L20,10 C20,15.5228475 15.5240618,20 10,20 L10,20 C4.4771525,20 0,15.5240618 0,10 L0,10 Z" id="Rectangle-2375-Copy" fill-opacity="0.2" fill="#000000"></path>
+                <path d="M10,0 C15.4292399,0 19.8479317,4.32549728 19.9961582,9.72003549 L20,10 C20,15.4292399 15.6745027,19.8479317 10.2799645,19.9961582 L10,20 C4.4771525,20 0,15.5240618 0,10 C0,4.57076009 4.32549728,0.152068282 9.72003549,0.00384179753 L10,0 Z M10,1 L9.73458127,1.00383711 C4.88575947,1.14420858 1,5.1181973 1,10 C1,14.9716556 5.02943725,19 10,19 L10.2654187,18.9961629 C15.1142405,18.8557914 19,14.8818027 19,10 L18.9961629,9.73458127 C18.8557914,4.88575947 14.8818027,1 10,1 Z" id="Rectangle-2375-Copy-2" fill-opacity="0.4" fill="#FFFFFF"></path>
+            </g>
+        </g>
+    </g>
+</svg>

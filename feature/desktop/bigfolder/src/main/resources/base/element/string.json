@@ -1,0 +1,151 @@
+{
+    "string":[
+        {
+            "name":"confirm_dialog",
+            "value":"OK",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"folder_add",
+            "value":"Add",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sheet_title_recommended",
+            "value":"Suggested apps",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sheet_title_similar",
+            "value":"Group similar apps",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sheet_sub_title_similar",
+            "value":"Choose more apps to add to this folder.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"folder_items_limit_toast",
+            "value":"Folder is full.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"d_app_dialog_title",
+            "value":"New version available",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"d_app_dialog_contents",
+            "value":"Update your app for an all-new experience. Please note that some app data may be lost when switching versions.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"d_app_dialog_text",
+            "value":"%s is now available for OpenHarmony.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"d_app_dialog_cancel",
+            "value":"Ignore",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"d_app_dialog_confirm",
+            "value":"Update now",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"uninstall_d_app_dialog_title",
+            "value":"Newer version installed",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"d_app_dialog_open",
+            "value":"Open OpenHarmony version",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"uninstall_d_app_dialog_content",
+            "value":"You've already installed the OpenHarmony version of %s on this device. Uninstall the old version?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"open_harmony_app_dialog_content",
+            "value":"You have the OpenHarmony version of %s on your device.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"d_app_unavailable_dialog_title",
+            "value":"App unavailable",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"d_app_unavailable_dialog_content",
+            "value":"To use this app, first download %s from AppGallery.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"d_app_unavailable_dialog_know",
+            "value":"OK",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"d_app_installing_dialog_content",
+            "value":"%s is being installed. Please wait.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"d_app_wait_download_dialog_content",
+            "value":"%s is in the download queue. Do you want to prioritize this download?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"d_app_pause_download_dialog_content",
+            "value":"Download has been paused for %s. Resume?",
+            "attr":{
+                "priority":"LT"
+            }
+        }
+    ]
+}

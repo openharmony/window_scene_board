@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 
+// import animPolicy from '@hms.resourceschedule.animationPolicy';
 import { LogDomain, LogHelper } from '@ohos/basicutils';
 import { EvtBus } from '../eventbus/EventBus';
 import { RssNotifyEvent } from '../eventbus/events/Events';

@@ -1,0 +1,10 @@
+{
+  "module": {
+    "name": "powercomponent",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ]
+  }
+}

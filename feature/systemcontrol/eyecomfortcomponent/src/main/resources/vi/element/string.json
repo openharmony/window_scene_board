@@ -1,0 +1,67 @@
+{
+    "string":[
+        {
+            "name":"control_center_eye_comfort_scheduled_open",
+            "value":"Theo lịch",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_eye_comfort_scheduled_next_day",
+            "value":"%1$s – %2$s (Ngày tiếp theo)",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_eye_comfort_smart_open_subtitle_active",
+            "value":"Đã phát hiện mỏi mắt. Đang lọc bỏ ánh sáng xanh.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_eye_comfort_scheduled_open_subtitle_sunset",
+            "value":"Từ hoàng hôn đến bình minh",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_eye_comfort_smart_open",
+            "value":"Tự động bật",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_eye_comfort_toggle_title",
+            "value":"Làm dịu mắt",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_eye_comfort_always_on",
+            "value":"Bật cả ngày",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_eye_comfort_smart_open_subtitle_normal",
+            "value":"Không phát hiện thấy mỏi mắt",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_eye_comfort_smart_open_subtitle_default",
+            "value":"Điều chỉnh linh hoạt bộ lọc ánh sáng xanh",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

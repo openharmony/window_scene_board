@@ -1,0 +1,9 @@
+{
+  "module": {
+    "name": "app_install",
+    "type": "har",
+    "deviceTypes": [
+      "default"
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "float": [
+    {
+      "name": "status_bar_bluetooth_width",
+      "value": "24vp"
+    },
+    {
+      "name": "status_bar_bluetooth_height",
+      "value": "24vp"
+    }
+  ]
+}

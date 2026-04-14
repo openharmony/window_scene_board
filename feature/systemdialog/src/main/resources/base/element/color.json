@@ -1,0 +1,28 @@
+{
+  "color": [
+    {
+      "name": "start_window_background",
+      "value": "#FFFFFF"
+    },
+    {
+      "name": "poweroff_button_background_color",
+      "value": "#19ffffff"
+    },
+    {
+      "name": "poweroff_text_reboot_color",
+      "value": "#FFFFFF"
+    },
+    {
+      "name": "poweroff_text_shutdown_color",
+      "value": "#dbffffff"
+    },
+    {
+      "name": "poweroff_text_tips_color",
+      "value": "#FFFFFF"
+    },
+    {
+      "name": "poweroff_page_background_color",
+      "value": "#ab000000"
+    }
+  ]
+}

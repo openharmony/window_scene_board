@@ -1,0 +1,480 @@
+{
+    "string":[
+        {
+            "name":"more_settings",
+            "value":"Plus de paramètres",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"live_view_collapsed",
+            "value":"Réduit",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"gesture_identified_successfully",
+            "value":"Le geste a été identifié !",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"live_view_expanded",
+            "value":"Agrandi",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntf_center_title",
+            "value":"Panneau de notifications",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"edm_operate_prohibit_tip",
+            "value":"Cette opération est interdite par la direction de l'entreprise.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_phone_timer_text",
+            "value":"Appel en cours",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_timing_timer_text",
+            "value":"Minuteur activé",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_count_down_timer_text",
+            "value":"Compte à rebours en cours",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_timing_capsule_timer_text",
+            "value":"Chronomètre",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aod_count_down_capsule_timer_text",
+            "value":"Compte à rebours en cours",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"automatic_brightness",
+            "value":"Automatique",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_edit_panel_tips_max_toggles",
+            "value":"Maximum de %d commutateurs autorisés.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"live_view_authorization_confirm",
+            "value":"Oui",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"live_view_authorization_tip",
+            "value":"Continuer à recevoir les mises à jour en direct de cette application ?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"confirm",
+            "value":"OK",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"please_unlock",
+            "value":"Veuillez déverrouiller votre appareil",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_edit_panel_tips_min_toggles",
+            "value":"Au moins %d commutateurs doivent être conservés.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"live_view_authorization_reject",
+            "value":"Non",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"smart_screenshot",
+            "value":"Capture d'écran",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center",
+            "value":"Panneau de contrôle",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"live_view_hide_tip",
+            "value":"Veuillez déverrouiller pour voir les détails",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_pin_top_dialog_reach_limit_title",
+            "value":"Nombre maximum d'applications épinglées atteint",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"talkback_temperature",
+            "value":"Température maximale %1$s. Température minimale %2$s.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"stop_font_creation_service",
+            "value":"Désactiver le service",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_open_ringer_mode_silent",
+            "value":"Son coupé",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_entry_page_text",
+            "value":"Ouvrir le Panneau de contrôle",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"silence_dialog_title",
+            "value":"Souhaitez-vous utiliser les notifications discrètes pour %s ?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_open_ringer_mode_vibrate",
+            "value":"Vibration activée",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_close_state",
+            "value":"Désactivés",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_edit_coordinates",
+            "value":"Ligne %1$d, colonne %2$d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_edit_remove_toggle",
+            "value":"Ajouter %s à la bibliothèque",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_edit_add_toggle_coordinates",
+            "value":"Ajouté à la ligne %1$d colonne %2$d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_edit_add_toggle",
+            "value":"Ajouter %s au Panneau de contrôle",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_ring_mode_click",
+            "value":"Toucher deux fois pour passer à %s,",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_click",
+            "value":"Toucher deux fois pour activer,",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_switch_click",
+            "value":"Toucher deux fois pour %s,",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_wifi_list",
+            "value":"Voir la liste des réseaux WLAN",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"face_verifing",
+            "value":"Reconnaissance faciale",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_wifi_open_def",
+            "value":"Activé. WLAN non connecté. Commutateur",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_open_ringer_mode_normal",
+            "value":"Sonnerie activée",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_open_state",
+            "value":"Activés",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_bluetooth_close",
+            "value":"Désactivé. Le Bluetooth est désactivé. Bouton",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_switch",
+            "value":"Commutateur %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_wifi_open_conn",
+            "value":"Activé. Le réseau WLAN est %s. Commutateur",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_edit_remove_toggle_action",
+            "value":"Ajouté à la bibliothèque",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_timer_str_hour_to_minute_to_second",
+            "value":"%1$s %2$s %3$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_bluetooth_open_conn",
+            "value":"Activé. Bluetooth %s. Bouton",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_open_action",
+            "value":"Désactivés",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_edit_remove_toggle_new",
+            "value":"Supprimer, %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_bluetooth_name",
+            "value":"Bluetooth",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_toggle_unavailable",
+            "value":"Ne répond pas",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_bluetooth_open_def",
+            "value":"Activé. Bluetooth non connecté. Commutateur",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_edit_move_toggle_coordinates",
+            "value":"%1$s est à la ligne %2$d colonne %3$d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"silent_notifications_dialog",
+            "value":"Les notifications discrètes sont silencieuses et n'apparaissent que sur le Panneau de notifications.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_wifi_close",
+            "value":"Désactivé. WLAN désactivé. Bouton",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"face_auth_recognize_success",
+            "value":"Vérifié",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_bluetooth_list",
+            "value":"Voir les appareils associés",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_long_click",
+            "value":"Toucher deux fois et maintenir pour faire apparaître d'autres options",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_close_action",
+            "value":"Activés",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_connect_state",
+            "value":"Connecté à %s,",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_common_button_str",
+            "value":"Bouton %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_timer_str_minute_to_second",
+            "value":"%1$s %2$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"data_remain",
+            "value":"%s restant(s)",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"data_total",
+            "value":"%s au total",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"data_use_today",
+            "value":"%s aujourd'hui",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"data_exceed",
+            "value":"%s au-dessus de la limite",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"meta_service_live_view_authorization_tip",
+            "value":"Continuer à recevoir les mises à jour en direct de ce service ?",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

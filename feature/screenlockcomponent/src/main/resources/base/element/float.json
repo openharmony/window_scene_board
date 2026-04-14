@@ -1,0 +1,1836 @@
+{
+  "float": [
+    {
+      "name": "psd_margin_top",
+      "value": "462vp"
+    },
+    {
+      "name": "pwd_dot_margin_bottom",
+      "value": "6vp"
+    },
+    {
+      "name": "pwd_error_font_size",
+      "value": "7.5fp"
+    },
+    {
+      "name": "pwd_prompt_margin_bottom",
+      "value": "0vp"
+    },
+    {
+      "name": "pwd_prompt_font_family",
+      "value": "HarmonyHeiTi"
+    },
+    {
+      "name": "pwd_prompt_width",
+      "value": "226vp"
+    },
+    {
+      "name": "pwd_prompt_height",
+      "value": "14vp"
+    },
+    {
+      "name": "pwd_contacts_group_height",
+      "value": "20vp"
+    },
+    {
+      "name": "pwd_contacts_group_circle_height",
+      "value": "40vp"
+    },
+    {
+      "name": "pwd_contacts_group_borderradius",
+      "value": "20vp"
+    },
+    {
+      "name": "pwd_contacts_group_margin_bottom",
+      "value": "4vp"
+    },
+    {
+      "name": "pwd_contacts_group_borderwidth",
+      "value": "1vp"
+    },
+    {
+      "name": "pwd_contacts_group_textfontsize",
+      "value": "14fp"
+    },
+    {
+      "name": "pwd_contacts_group_text_height",
+      "value": "19vp"
+    },
+    {
+      "name": "numkeyboard_height",
+      "value": "434vp"
+    },
+    {
+      "name": "numkeyboard_margin_bottom",
+      "value": "54vp"
+    },
+    {
+      "name": "numkeyboard_point_light_bloom_radius",
+      "value": "16vp"
+    },
+    {
+      "name": "pwd_textinput_width",
+      "value": "180vp"
+    },
+    {
+      "name": "pwd_textinput_horizon_relative_distance",
+      "value": "-22vp"
+    },
+    {
+      "name": "pwd_textinput_height",
+      "value": "21.5vp"
+    },
+    {
+      "name": "pwd_mix_textinput_height",
+      "value": "24vp"
+    },
+    {
+      "name": "pwd_large_mix_textinput_height",
+      "value": "72vp"
+    },
+    {
+      "name": "pwd_textinput_fontsize",
+      "value": "16vp"
+    },
+    {
+      "name": "mix_textinput_fontsize",
+      "value": "16fp"
+    },
+    {
+      "name": "pwd_textinput_margin_left",
+      "value": "12vp"
+    },
+    {
+      "name": "pwd_text_margin_left",
+      "value": "12vp"
+    },
+    {
+      "name": "pwd_icon_back_magin_right",
+      "value": "4vp"
+    },
+    {
+      "name": "phone_pwd_icon_back_magin_right",
+      "value": "14vp"
+    },
+    {
+      "name": "outer_phone_pwd_icon_back_magin_right",
+      "value": "10vp"
+    },
+    {
+      "name": "listitem_margin_right",
+      "value": "6vp"
+    },
+    {
+      "name": "pwd_row_width",
+      "value": "216vp"
+    },
+    {
+      "name": "pwd_row_height",
+      "value": "40vp"
+    },
+    {
+      "name": "pwd_row_border_width",
+      "value": "1vp"
+    },
+    {
+      "name": "pwd_row_border_radius",
+      "value": "20vp"
+    },
+    {
+      "name": "pwd_row_bottom",
+      "value": "8vp"
+    },
+    {
+      "name": "accounts_block",
+      "value": "8"
+    },
+    {
+      "name": "digitalpsd_prompt_fontsize",
+      "value": "14fp"
+    },
+    {
+      "name": "digitalpsd_passwdmask_dot_width",
+      "value": "12vp"
+    },
+    {
+      "name": "custpsd_passwdmask_dot_width",
+      "value": "8vp"
+    },
+    {
+      "name": "digitalpsd_passwdmask_width",
+      "value": "192vp"
+    },
+    {
+      "name": "digitalpsd_passwdmask_height",
+      "value": "18vp"
+    },
+    {
+      "name": "digitalpsd_passwdmask_margin",
+      "value": "0"
+    },
+    {
+      "name": "digitalpsd_row_height",
+      "value": "200"
+    },
+    {
+      "name": "digitalpsd_user_margin_bottom",
+      "value": "37vp"
+    },
+    {
+      "name": "del_pwd_padding_bottpm",
+      "value": "16vp"
+    },
+    {
+      "name": "num_key_margin_top",
+      "value": "14vp"
+    },
+    {
+      "name": "num_key_number_font_size",
+      "value": "28fp"
+    },
+    {
+      "name": "num_key_letter_font_size",
+      "value": "12fp"
+    },
+    {
+      "name": "num_key_number_height",
+      "value": "36vp"
+    },
+    {
+      "name": "num_key_letter_height",
+      "value": "16vp"
+    },
+    {
+      "name": "num_key_height",
+      "value": "352.5vp"
+    },
+    {
+      "name": "margin_value_8",
+      "value": "8vp"
+    },
+    {
+      "name": "margin_value_9",
+      "value": "9vp"
+    },
+    {
+      "name": "margin_value_9_half",
+      "value": "9.5vp"
+    },
+    {
+      "name": "margin_value_49",
+      "value": "49vp"
+    },
+    {
+      "name": "dot_parent_height",
+      "value": "16vp"
+    },
+    {
+      "name": "cust_psd_margin_left",
+      "value": "16vp"
+    },
+    {
+      "name": "mix_psd_margin_11",
+      "value": "11vp"
+    },
+    {
+      "name": "keyboard_column_width",
+      "value": "100vp"
+    },
+    {
+      "name": "keyboard_column_height",
+      "value": "52vp"
+    },
+    {
+      "name": "keyboard_icon_width",
+      "value": "36vp"
+    },
+    {
+      "name": "keyboard_margin_zero",
+      "value": "0vp"
+    },
+    {
+      "name": "keyboard_margin_right",
+      "value": "39vp"
+    },
+    {
+      "name": "keyboard_margin_bottom",
+      "value": "48vp"
+    },
+    {
+      "name": "keyboard_column_position_x",
+      "value": "1561vp"
+    },
+    {
+      "name": "keyboard_column_position_y",
+      "value": "960vp"
+    },
+    {
+      "name": "keyboard_column_border_radius",
+      "value": "12vp"
+    },
+    {
+      "name": "cust_list_margin_top",
+      "value": "7vp"
+    },
+    {
+      "name": "numkey_bg_width_height",
+      "value": "72vp"
+    },
+    {
+      "name": "numkey_bg_radius",
+      "value": "36vp"
+    },
+    {
+      "name": "numkey_num_padding_top",
+      "value": "4vp"
+    },
+    {
+      "name": "psd_username_padding_bottom",
+      "value": "12vp"
+    },
+    {
+      "name": "head_layout_margintop",
+      "value": "272vp"
+    },
+    {
+      "name": "head_layout_height",
+      "value": "178vp"
+    },
+    {
+      "name": "head_image_height",
+      "value": "106vp"
+    },
+    {
+      "name": "head_image_border_width",
+      "value": "4vp"
+    },
+    {
+      "name": "head_image_border_radius",
+      "value": "53vp"
+    },
+    {
+      "name": "head_image_margintop",
+      "value": "12vp"
+    },
+    {
+      "name": "circle_green_offset",
+      "value": "36vp"
+    },
+    {
+      "name": "circle_green_radius",
+      "value": "20vp"
+    },
+    {
+      "name": "head_stack_height",
+      "value": "118vp"
+    },
+    {
+      "name": "head_stack_width",
+      "value": "114vp"
+    },
+    {
+      "name": "head_username_height",
+      "value": "40vp"
+    },
+    {
+      "name": "head_username_txtsize",
+      "value": "30fp"
+    },
+    {
+      "name": "head_username_paddingtop",
+      "value": "10vp"
+    },
+    {
+      "name": "head_username_margintop",
+      "value": "20vp"
+    },
+    {
+      "name": "keybord_psd_height",
+      "value": "252vp"
+    },
+    {
+      "name": "keybord_psd_input_height",
+      "value": "62vp"
+    },
+    {
+      "name": "keybord_psd_magintop",
+      "value": "68vp"
+    },
+    {
+      "name": "keyboard_psd_switch_menu_font_size",
+      "value": "20fp"
+    },
+    {
+      "name": "screenLock_time_shadow_offset_y",
+      "value": "1"
+    },
+    {
+      "name": "screenLock_time_shadow_radio",
+      "value": "6"
+    },
+    {
+      "name": "screenLock_date_shadow_radio",
+      "value": "2"
+    },
+    {
+      "name": "screenLock_input_method_height",
+      "value": "20vp"
+    },
+    {
+      "name": "screenLock_input_method_width",
+      "value": "20vp"
+    },
+    {
+      "name": "screenLock_statusbar_height",
+      "value": "48vp"
+    },
+    {
+      "name": "screenLock_statusbar_padding_right",
+      "value": "26vp"
+    },
+    {
+      "name": "screenLock_statusbar_margin_top",
+      "value": "14vp"
+    },
+    {
+      "name": "screenLock_time_height",
+      "value": "200vp"
+    },
+    {
+      "name": "screenLock_time_font_size",
+      "value": "200fp"
+    },
+    {
+      "name": "screenLock_date_font_size",
+      "value": "32fp"
+    },
+    {
+      "name": "screenLock_account_user_height",
+      "value": "346vp"
+    },
+    {
+      "name": "screenLock_account_list_height",
+      "value": "480vp"
+    },
+    {
+      "name": "screenLock_account_reset_height",
+      "value": "504vp"
+    },
+    {
+      "name": "screenLock_account_page_menu_margin_bottom",
+      "value": "40vp"
+    },
+    {
+      "name": "screenLock_select_user_layout_border_width",
+      "value": "4vp"
+    },
+    {
+      "name": "screenLock_unselect_user_layout_border_width",
+      "value": "3vp"
+    },
+    {
+      "name": "screenLock_select_user_layout_shadow_radio",
+      "value": "60vp"
+    },
+    {
+      "name": "screenLock_user_layout_unselected_normal_opacity",
+      "value": "0.6"
+    },
+    {
+      "name": "screenLock_user_layout_hover_opacity",
+      "value": "0.9"
+    },
+    {
+      "name": "screenLock_keyboard_margin_top",
+      "value": "5vp"
+    },
+    {
+      "name": "screenLock_user_layout_padding_bottom",
+      "value": "20vp"
+    },
+    {
+      "name": "screenLock_user_layout_width",
+      "value": "442vp"
+    },
+    {
+      "name": "screenLock_user_name_shadow_offset_y",
+      "value": "2vp"
+    },
+    {
+      "name": "screenLock_user_name_shadow_radio",
+      "value": "1vp"
+    },
+    {
+      "name": "screenLock_user_item_space",
+      "value": "18vp"
+    },
+    {
+      "name": "screenLock_page_icon_height",
+      "value": "30vp"
+    },
+    {
+      "name": "screenLock_page_icon_width",
+      "value": "15vp"
+    },
+    {
+      "name": "screenLock_select_user_layout_width",
+      "value": "72vp"
+    },
+    {
+      "name": "screenLock_select_user_layout_height",
+      "value": "72vp"
+    },
+    {
+      "name": "screenLock_unselect_user_layout_width",
+      "value": "72vp"
+    },
+    {
+      "name": "screenLock_unselect_user_layout_height",
+      "value": "72vp"
+    },
+    {
+      "name": "screenLock_user_icon_border_radius",
+      "value": "72vp"
+    },
+    {
+      "name": "screenLock_select_user_layout_border_radius",
+      "value": "76vp"
+    },
+    {
+      "name": "screenLock_unselect_user_layout_border_radius",
+      "value": "80vp"
+    },
+    {
+      "name": "screenLock_power_margin_bottom",
+      "value": "160vp"
+    },
+    {
+      "name": "screenLock_user_item_width",
+      "value": "225vp"
+    },
+    {
+      "name": "pwd_page_margin_bottom",
+      "value": "156vp"
+    },
+    {
+      "name": "time_view_offset",
+      "value": "672.5vp"
+    },
+    {
+      "name": "screenLock_power_offset",
+      "value": "-4"
+    },
+    {
+      "name": "screenLock_status_bar_space",
+      "value": "24vp"
+    },
+    {
+      "name": "screenLock_status_bar_right_space",
+      "value": "20"
+    },
+    {
+      "name": "screenLock_battery_width",
+      "value": "22vp"
+    },
+    {
+      "name": "screenLock_battery_height",
+      "value": "13vp"
+    },
+    {
+      "name": "screenLock_time_shadow_radio_dark",
+      "value": "50"
+    },
+    {
+      "name": "screenLock_time_shadow_radio_bright",
+      "value": "0"
+    },
+    {
+      "name": "screenLock_date_shadow_radio_dark",
+      "value": "20"
+    },
+    {
+      "name": "screenLock_date_shadow_radio_bright",
+      "value": "0"
+    },
+    {
+      "name": "screenLock_user_layout_unselected_normal_dark_opacity",
+      "value": "0.4"
+    },
+    {
+      "name": "screenlock_flash_height",
+      "value": "40vp"
+    },
+    {
+      "name": "screenlock_flash_width",
+      "value": "10vp"
+    },
+    {
+      "name": "screenlock_flash_margin_top",
+      "value": "12vp"
+    },
+    {
+      "name": "screenlock_flash_margin_left",
+      "value": "12vp"
+    },
+    {
+      "name": "screenlock_shortcut_icon_container_size",
+      "value": "48vp"
+    },
+    {
+      "name": "screenlock_camera_flashlight_default_effectcomponent_height",
+      "value": "100vp"
+    },
+    {
+      "name": "screenlock_shortcut_icon_bg_border_radius",
+      "value": "48vp"
+    },
+    {
+      "name": "screenlock_shortcut_icon_width",
+      "value": "24vp"
+    },
+    {
+      "name": "screenlock_shortcut_icon_flash_height",
+      "value": "48vp"
+    },
+    {
+      "name": "screenlock_shortcut_icon_container_margin",
+      "value": "32vp"
+    },
+    {
+      "name": "screenlock_shortcut_icon_container_margin_phone",
+      "value": "16vp"
+    },
+    {
+      "name": "edit_clockwidget_grid_margin",
+      "value": "24"
+    },
+    {
+      "name": "edit_clockwidget_date_text_font_size",
+      "value": "18"
+    },
+    {
+      "name": "edit_clockwidget_date_text_font_size_2_4",
+      "value": "18"
+    },
+    {
+      "name": "edit_clockwidget_date_text_font_size_4_2",
+      "value": "18"
+    },
+    {
+      "name": "edit_clockwidget_date_text_margin_top_2_4",
+      "value": "18"
+    },
+    {
+      "name": "edit_clockwidget_date_text_line_height",
+      "value": "24"
+    },
+    {
+      "name": "edit_clockwidget_signature_margin_top",
+      "value": "4"
+    },
+    {
+      "name": "edit_clockwidget_signature_height",
+      "value": "19"
+    },
+    {
+      "name": "edit_clockwidget_signature_font_size",
+      "value": "14"
+    },
+    {
+      "name": "edit_clockwidget_signature_4_2_height",
+      "value": "26"
+    },
+    {
+      "name": "sim_card_height",
+      "value": "32vp"
+    },
+    {
+      "name": "sim_card_weight",
+      "value": "32vp"
+    },
+    {
+      "name": "accounts_top_margin",
+      "value": "244vp"
+    },
+    {
+      "name": "usericon_opacity",
+      "value": "1.0"
+    },
+    {
+      "name": "pwd_input_row_height",
+      "value": "36vp"
+    },
+    {
+      "name": "outer_pwd_input_row_height",
+      "value": "32vp"
+    },
+    {
+      "name": "pwd_input_row_width",
+      "value": "288vp"
+    },
+    {
+      "name": "pwd_input_row_border_radius",
+      "value": "18vp"
+    },
+    {
+      "name": "imageitem_margin_right",
+      "value": "3.5vp"
+    },
+    {
+      "name": "imageitem_margin_left",
+      "value": "3.5vp"
+    },
+    {
+      "name": "custompwd_passwdmask_dot_width_height",
+      "value": "9vp"
+    },
+    {
+      "name": "custom_pwd_input_row_width",
+      "value": "190vp"
+    },
+    {
+      "name": "pwd_input_row_margin_top",
+      "value": "24vp"
+    },
+    {
+      "name": "outer_pwd_input_row_margin_top",
+      "value": "10vp"
+    },
+    {
+      "name": "pwd_input_row_padding_left",
+      "value": "48vp"
+    },
+    {
+      "name": "num_keyboard_height",
+      "value": "288vp"
+    },
+    {
+      "name": "num_keyboard_height_pad_landscape",
+      "value": "398vp"
+    },
+    {
+      "name": "psd_bottom_margin_pad_landscape",
+      "value": "92vp"
+    },
+    {
+      "name": "digital_psd_flex_margin_numkeyboard_pad_landscape",
+      "value": "56vp"
+    },
+    {
+      "name": "parttern_psd_flex_margin_numkeyboard_pad_landscape",
+      "value": "75vp"
+    },
+    {
+      "name": "parttern_psd_text_margin_patternlock_pad_landscape",
+      "value": "44vp"
+    },
+    {
+      "name": "custom_psd_flex_margin_numkeyboard_pad_landscape",
+      "value": "40vp"
+    },
+    {
+      "name": "mix_psd_flex_margin_numkeyboard_pad_landscape",
+      "value": "424vp"
+    },
+    {
+      "name": "num_keyboard_height_pad_portrait",
+      "value": "428vp"
+    },
+    {
+      "name": "psd_bottom_margin_pad_portrait",
+      "value": "64vp"
+    },
+    {
+      "name": "digital_psd_flex_margin_numkeyboard_pad_portrait",
+      "value": "56vp"
+    },
+    {
+      "name": "parttern_psd_flex_margin_numkeyboard_pad_portrait",
+      "value": "116vp"
+    },
+    {
+      "name": "parttern_psd_text_margin_patternlock_pad_portrait",
+      "value": "44vp"
+    },
+    {
+      "name": "custom_psd_flex_margin_numkeyboard_pad_portrait",
+      "value": "106vp"
+    },
+    {
+      "name": "mix_psd_flex_margin_numkeyboard_pad_portrait",
+      "value": "488vp"
+    },
+    {
+      "name": "num_keyboard_height_fold_expand",
+      "value": "288vp"
+    },
+    {
+      "name": "psd_bottom_margin_fold_expand",
+      "value": "48vp"
+    },
+    {
+      "name": "digital_psd_flex_margin_numkeyboard_fold_expand",
+      "value": "76vp"
+    },
+    {
+      "name": "custom_psd_flex_margin_numkeyboard_fold_expand",
+      "value": "52vp"
+    },
+    {
+      "name": "mix_psd_flex_margin_numkeyboard_fold_expand",
+      "value": "410vp"
+    },
+    {
+      "name": "mix_psd_flex_margin_numkeyboard_small_fold",
+      "value": "12vp"
+    },
+    {
+      "name": "num_keyboard_height_phone_height_finger_print",
+      "value": "288vp"
+    },
+    {
+      "name": "num_keyboard_height_phone_small_fold",
+      "value": "156vp"
+    },
+    {
+      "name": "psd_bottom_margin_phone_height_finger_print",
+      "value": "6vp"
+    },
+    {
+      "name": "psd_bottom_margin_phone_height_small_fold",
+      "value": "14vp"
+    },
+    {
+      "name": "parttern_psd_bottom_margin_phone_height_finger_print",
+      "value": "0vp"
+    },
+    {
+      "name": "digital_psd_flex_margin_numkeyboard_phone_height_finger_print",
+      "value": "76vp"
+    },
+    {
+      "name": "custom_psd_flex_margin_numkeyboard_phone_height_finger_print",
+      "value": "52vp"
+    },
+    {
+      "name": "mix_psd_flex_margin_numkeyboard_phone_height_finger_print",
+      "value": "407vp"
+    },
+    {
+      "name": "num_keyboard_height_phone_low_finger_print",
+      "value": "288vp"
+    },
+    {
+      "name": "psd_bottom_margin_phone_low_finger_print",
+      "value": "133vp"
+    },
+    {
+      "name": "parttern_psd_bottom_margin_phone_low_finger_print",
+      "value": "151vp"
+    },
+    {
+      "name": "digital_psd_flex_margin_numkeyboard_phone_low_finger_print",
+      "value": "76vp"
+    },
+    {
+      "name": "custom_psd_flex_margin_numkeyboard_phone_low_finger_print",
+      "value": "52vp"
+    },
+    {
+      "name": "mix_psd_flex_margin_numkeyboard_phone_low_finger_print",
+      "value": "443vp"
+    },
+    {
+      "name": "num_keyboard_height_phone_no_print",
+      "value": "288vp"
+    },
+    {
+      "name": "psd_bottom_margin_phone_no_print",
+      "value": "96vp"
+    },
+    {
+      "name": "psd_bottom_margin_phone_fold_expand_horizontal",
+      "value": "68vp"
+    },
+    {
+      "name": "psd_bottom_margin_phone_g_landscape",
+      "value": "96vp"
+    },
+    {
+      "name": "psd_bottom_margin_phone_g_portrait",
+      "value": "192vp"
+    },
+    {
+      "name": "parttern_psd_bottom_margin_phone_no_print",
+      "value": "114vp"
+    },
+    {
+      "name": "parttern_psd_bottom_margin_phone_landscape",
+      "value": "86vp"
+    },
+    {
+      "name": "parttern_psd_bottom_margin_phone_g_portrait",
+      "value": "210vp"
+    },
+    {
+      "name": "parttern_psd_text_margin_patternlock_phone",
+      "value": "98vp"
+    },
+    {
+      "name": "digital_psd_flex_margin_numkeyboard_phone_no_print",
+      "value": "76vp"
+    },
+    {
+      "name": "custom_psd_flex_margin_numkeyboard_phone_no_print",
+      "value": "52vp"
+    },
+    {
+      "name": "mix_psd_flex_margin_numkeyboard_phone_no_print",
+      "value": "359vp"
+    },
+    {
+      "name": "custompwd_num_keyboard_margin_top",
+      "value": "110vp"
+    },
+    {
+      "name": "custompwd_num_keyboard_margin_top_pad_portrait",
+      "value": "122vp"
+    },
+    {
+      "name": "custompwd_num_keyboard_margin_top_with_fingerprint",
+      "value": "90vp"
+    },
+    {
+      "name": "pwd_prompt_margin_top",
+      "value": "208vp"
+    },
+    {
+      "name": "pwd_prompt_margin_top_pad_portrait",
+      "value": "538vp"
+    },
+    {
+      "name": "pwd_prompt_margin_top_when_fold_not_portrait",
+      "value": "140vp"
+    },
+    {
+      "name": "pwd_prompt_margin_top_with_fingerprint",
+      "value": "188vp"
+    },
+    {
+      "name": "pwd_prompt_margin_top_with_low_fingerprint",
+      "value": "168vp"
+    },
+    {
+      "name": "digital_pwd_combination_height",
+      "value": "150vp"
+    },
+    {
+      "name": "outer_digital_pwd_combination_height",
+      "value": "162vp"
+    },
+    {
+      "name": "digitalpwd_num_keyboard_margin_top",
+      "value": "134vp"
+    },
+    {
+      "name": "digitalpwd_num_keyboard_margin_top_pad_portrait",
+      "value": "146vp"
+    },
+    {
+      "name": "digitalpwd_num_keyboard_margin_top_nomarl",
+      "value": "0vp"
+    },
+    {
+      "name": "digitalpwd_num_keyboard_margin_top_outer",
+      "value": "12vp"
+    },
+    {
+      "name": "pwd_prompt_fontsize",
+      "value": "18fp"
+    },
+    {
+      "name": "outer_pwd_prompt_fontsize",
+      "value": "14fp"
+    },
+    {
+      "name": "pwd_prompt_min_font_size",
+      "value": "16fp"
+    },
+    {
+      "name": "pwd_special_key_fontsize",
+      "value": "16fp"
+    },
+    {
+      "name": "outer_pwd_special_key_fontsize",
+      "value": "11fp"
+    },
+    {
+      "name": "phone_pwd_prompt_height",
+      "value": "22vp"
+    },
+    {
+      "name": "phone_pwd_prompt_height_when_face_locked",
+      "value": "44vp"
+    },
+    {
+      "name": "mixed_pwd_combination_height",
+      "value": "222vp"
+    },
+    {
+      "name": "outer_mixed_pwd_combination_height",
+      "value": "104vp"
+    },
+    {
+      "name": "num_keyboard_letter_font_size",
+      "value": "10fp"
+    },
+    {
+      "name": "outer_num_keyboard_letter_font_size",
+      "value": "6fp"
+    },
+    {
+      "name": "num_keyboard_plus_sign_font_size",
+      "value": "18fp"
+    },
+    {
+      "name": "outer_num_keyboard_plus_sign_font_size",
+      "value": "9fp"
+    },
+    {
+      "name": "num_keyboard_letter_opacity",
+      "value": "0.7"
+    },
+    {
+      "name": "num_keyboard_row2_height",
+      "value": "16vp"
+    },
+    {
+      "name": "outer_num_keyboard_row2_height",
+      "value": "8vp"
+    },
+    {
+      "name": "num_keyboard_back_height",
+      "value": "21vp"
+    },
+    {
+      "name": "outer_num_keyboard_back_height",
+      "value": "16vp"
+    },
+    {
+      "name": "num_keyboard_number_font_size",
+      "value": "28fp"
+    },
+    {
+      "name": "outer_num_keyboard_number_font_size",
+      "value": "20fp"
+    },
+    {
+      "name": "num_keyboard_bg_width_height",
+      "value": "60.8vp"
+    },
+    {
+      "name": "outer_num_keyboard_bg_width_height",
+      "value": "38vp"
+    },
+    {
+      "name": "num_keyboard_bg_radius",
+      "value": "34vp"
+    },
+    {
+      "name": "num_keyboard_pecial_key_bg_radius",
+      "value": "10vp"
+    },
+    {
+      "name": "outer_num_keyboard_bg_radius",
+      "value": "24vp"
+    },
+    {
+      "name": "num_keyboard_button_margin",
+      "value": "20vp"
+    },
+    {
+      "name": "num_keyboard_button_margin_for_pad",
+      "value": "39vp"
+    },
+    {
+      "name": "num_keyboard_letter_spacing",
+      "value": "1"
+    },
+    {
+      "name": "num_keyboard_width",
+      "value": "60.8vp"
+    },
+    {
+      "name": "num_keyboard_col_gap",
+      "value": "32vp"
+    },
+    {
+      "name": "num_keyboard_row_gap",
+      "value": "16vp"
+    },
+    {
+      "name": "num_keyboard_brightness_default",
+      "value": "0"
+    },
+    {
+      "name": "num_keyboard_brightness_fraction_on",
+      "value": "0"
+    },
+    {
+      "name": "num_keyboard_brightness_fraction_off",
+      "value": "1"
+    },
+    {
+      "name": "num_keyboard_brightness_saturation",
+      "value": "5"
+    },
+    {
+      "name": "num_keyboard_brightness_text_tertiary_gloss_a",
+      "value": "0.5534"
+    },
+    {
+      "name": "num_keyboard_brightness_text_tertiary_gloss_b",
+      "value": "-0.0083"
+    },
+    {
+      "name": "num_keyboard_brightness_text_tertiary_gloss_n",
+      "value": "2"
+    },
+    {
+      "name": "num_keyboard_brightness_text_tertiary_gloss_redCof1",
+      "value": "2.3"
+    },
+    {
+      "name": "num_keyboard_brightness_text_tertiary_gloss_greenCof1",
+      "value": "4.5"
+    },
+    {
+      "name": "num_keyboard_brightness_text_tertiary_gloss_blueCof1",
+      "value": "2"
+    },
+    {
+      "name": "num_keyboard_brightness_text_tertiary_gloss_redCof2",
+      "value": "0.5"
+    },
+    {
+      "name": "num_keyboard_brightness_text_tertiary_gloss_greenCof2",
+      "value": "2"
+    },
+    {
+      "name": "num_keyboard_brightness_text_tertiary_gloss_blueCof2",
+      "value": "0.5"
+    },
+    {
+      "name": "num_keyboard_brightness_letter_white_font_rate",
+      "value": "0.5799"
+    },
+    {
+      "name": "num_keyboard_brightness_letter_white_font_lightUpDegree",
+      "value": "0.51"
+    },
+    {
+      "name": "num_keyboard_brightness_letter_white_font_saturation",
+      "value": "1.2"
+    },
+    {
+      "name": "num_keyboard_brightness_letter_white_font_redCof1",
+      "value": "1"
+    },
+    {
+      "name": "num_keyboard_brightness_letter_white_font_greenCof1",
+      "value": "1.4"
+    },
+    {
+      "name": "num_keyboard_brightness_letter_white_font_blueCof1",
+      "value": "0.2"
+    },
+    {
+      "name": "num_keyboard_brightness_letter_white_font_redCof2",
+      "value": "1.4"
+    },
+    {
+      "name": "num_keyboard_brightness_letter_white_font_greenCof2",
+      "value": "2"
+    },
+    {
+      "name": "num_keyboard_brightness_letter_white_font_blueCof2",
+      "value": "0.5"
+    },
+    {
+      "name": "num_keyboard_brightness_letter_black_font_rate",
+      "value": "0.3"
+    },
+    {
+      "name": "num_keyboard_brightness_letter_black_font_lightUpDegree",
+      "value": "0"
+    },
+    {
+      "name": "num_keyboard_brightness_letter_black_font_saturation",
+      "value": "1.3"
+    },
+    {
+      "name": "num_keyboard_brightness_letter_black_font_redCof1",
+      "value": "4"
+    },
+    {
+      "name": "num_keyboard_brightness_letter_black_font_greenCof1",
+      "value": "3"
+    },
+    {
+      "name": "num_keyboard_brightness_letter_black_font_blueCof1",
+      "value": "3"
+    },
+    {
+      "name": "num_keyboard_brightness_letter_black_font_redCof2",
+      "value": "2"
+    },
+    {
+      "name": "num_keyboard_brightness_letter_black_font_greenCof2",
+      "value": "1"
+    },
+    {
+      "name": "num_keyboard_brightness_letter_black_font_blueCof2",
+      "value": "1"
+    },
+    {
+      "name": "digitalpwd_passwdmask_dot_width_height",
+      "value": "12vp"
+    },
+    {
+      "name": "outer_digitalpwd_passwdmask_dot_width_height",
+      "value": "10vp"
+    },
+    {
+      "name": "digitalpwd_col_gap",
+      "value": "24vp"
+    },
+    {
+      "name": "digitalpwd_passwdmask_width",
+      "value": "202vp"
+    },
+    {
+      "name": "digitalpwd_passwdmask_height",
+      "value": "12vp"
+    },
+    {
+      "name": "digitalpwd_passwdmask_padding",
+      "value": "5vp"
+    },
+    {
+      "name": "digitalpwd_mask_margin_top",
+      "value": "24vp"
+    },
+    {
+      "name": "outer_digitalpwd_mask_margin_top",
+      "value": "8vp"
+    },
+    {
+      "name": "digitalpwd_num_keyboard_margin_top_with_fingerprint",
+      "value": "114vp"
+    },
+    {
+      "name": "mixed_password_face_image_tip_margin",
+      "value": "12vp"
+    },
+    {
+      "name": "outer_mixed_password_face_image_tip_margin",
+      "value": "4vp"
+    },
+    {
+      "name": "mixed_password_face_image_tip_size",
+      "value": "36vp"
+    },
+    {
+      "name": "outer_mixed_password_face_image_tip_size",
+      "value": "26vp"
+    },
+    {
+      "name": "outer_mixed_password_tip_size",
+      "value": "64vp"
+    },
+    {
+      "name": "input_tips_margin_top",
+      "value": "0vp"
+    },
+    {
+      "name": "outer_input_tips_margin_top",
+      "value": "0vp"
+    },
+    {
+      "name": "input_tips_with_face_margin_top",
+      "value": "0vp"
+    },
+    {
+      "name": "outer_input_tips_with_face_margin_top",
+      "value": "0vp"
+    },
+    {
+      "name": "password_prompt_margin_bottom",
+      "value": "24vp"
+    },
+    {
+      "name": "password_prompt_margin_bottom_fold_phone",
+      "value": "6vp"
+    },
+    {
+      "name": "outer_screen_password_prompt_margin_top",
+      "value": "0vp"
+    },
+    {
+      "name": "mixed_emc_row_height",
+      "value": "22vp"
+    },
+    {
+      "name": "pin_input_height_pad",
+      "value": "36vp"
+    },
+    {
+      "name": "pin_input_height_phone",
+      "value": "36vp"
+    },
+    {
+      "name": "pin_input_height_small_fold_phone",
+      "value": "32vp"
+    },
+    {
+      "name": "pin_top_flex_height_pad",
+      "value": "228vp"
+    },
+    {
+      "name": "pin_top_flex_height_phone",
+      "value": "286vp"
+    },
+    {
+      "name": "pin_top_flex_height_small_fold_phone",
+      "value": "78vp"
+    },
+    {
+      "name": "puk_top_flex_height_pad",
+      "value": "200vp"
+    },
+    {
+      "name": "puk_top_flex_height_phone",
+      "value": "296vp"
+    },
+    {
+      "name": "pin_keyboard_margin_bottom_pad_landscape",
+      "value": "53vp"
+    },
+    {
+      "name": "pin_keyboard_margin_bottom_pad_portrait",
+      "value": "72vp"
+    },
+    {
+      "name": "pin_keyboard_margin_bottom_phone",
+      "value": "96vp"
+    },
+    {
+      "name": "pin_keyboard_margin_bottom_phone_horizontal",
+      "value": "39.8vp"
+    },
+    {
+      "name": "pin_keyboard_margin_bottom_small_fold_phone",
+      "value": "14vp"
+    },
+    {
+      "name": "pin_dialog_width_pad_landscape",
+      "value": "448vp"
+    },
+    {
+      "name": "pin_dialog_width_pad_portrait",
+      "value": "440vp"
+    },
+    {
+      "name": "pin_dialog_width_phone",
+      "value": "336vp"
+    },
+    {
+      "name": "custom_top_flex_height",
+      "value": "174vp"
+    },
+    {
+      "name": "mix_psd_emergency_margin_top",
+      "value": "24vp"
+    },
+    {
+      "name": "sim_card_text_margin_left",
+      "value": "4vp"
+    },
+    {
+      "name": "sim_card_flag_margin_bottom",
+      "value": "12vp"
+    },
+    {
+      "name": "sim_card_input_tips_margin_top",
+      "value": "0vp"
+    },
+    {
+      "name": "outer_sim_card_input_tips_margin_top",
+      "value": "12vp"
+    },
+    {
+      "name": "sim_card_input_tips_margin_bottom",
+      "value": "24vp"
+    },
+    {
+      "name": "outer_sim_card_input_tips_margin_bottom",
+      "value": "7vp"
+    },
+    {
+      "name": "sim_card_input_tips_height",
+      "value": "66vp"
+    },
+    {
+      "name": "outer_sim_card_input_tips_height",
+      "value": "16vp"
+    },
+    {
+      "name": "sim_card_public_enter_margin",
+      "value": "6vp"
+    },
+    {
+      "name": "sim_card_puk_tips_height",
+      "value": "50vp"
+    },
+    {
+      "name": "outer_sim_card_puk_tips_height",
+      "value": "14vp"
+    },
+    {
+      "name": "outer_sim_card_puk_tips_margin_top",
+      "value": "4vp"
+    },
+    {
+      "name": "sim_card_keyboard_margin",
+      "value": "24vp"
+    },
+    {
+      "name": "screenlock_shortcut_icon_height",
+      "value": "24vp"
+    },
+    {
+      "name": "screenlock_shortcut_icon_container_margin_pad",
+      "value": "64vp"
+    },
+    {
+      "name": "screenlock_shortcut_app_container_height",
+      "value": "70vp"
+    },
+    {
+      "name": "editbar_btn_space",
+      "value": "16"
+    },
+    {
+      "name": "pad_editbar_width",
+      "value": "224"
+    },
+    {
+      "name": "colorbutton_outer_width",
+      "value": "36"
+    },
+    {
+      "name": "colorbutton_outer_height",
+      "value": "36"
+    },
+    {
+      "name": "colorbutton_outer_radius",
+      "value": "18"
+    },
+    {
+      "name": "colorbutton_outer_border_width",
+      "value": "2"
+    },
+    {
+      "name": "colorbutton_middle_width",
+      "value": "35"
+    },
+    {
+      "name": "colorbutton_middle_height",
+      "value": "35"
+    },
+    {
+      "name": "colorbutton_middle_radius",
+      "value": "17.5"
+    },
+    {
+      "name": "colorbutton_middle_border_width",
+      "value": "2"
+    },
+    {
+      "name": "pad_colorbutton_unselect_border_width",
+      "value": "2"
+    },
+    {
+      "name": "colorbutton_inner_width",
+      "value": "32"
+    },
+    {
+      "name": "colorbutton_inner_height",
+      "value": "32"
+    },
+    {
+      "name": "colorbutton_inner_radius",
+      "value": "16"
+    },
+    {
+      "name": "fontbutton_outer_width",
+      "value": "50"
+    },
+    {
+      "name": "fontbutton_outer_height",
+      "value": "50"
+    },
+    {
+      "name": "pad_fontbutton_outer_width",
+      "value": "58"
+    },
+    {
+      "name": "pad_fontbutton_outer_height",
+      "value": "58"
+    },
+    {
+      "name": "fontbutton_font_size",
+      "value": "26"
+    },
+    {
+      "name": "layoutbutton_outer_width",
+      "value": "56"
+    },
+    {
+      "name": "layoutbutton_outer_height",
+      "value": "56"
+    },
+    {
+      "name": "pad_layoutbutton_outer_width",
+      "value": "54"
+    },
+    {
+      "name": "pad_layoutbutton_outer_height",
+      "value": "54"
+    },
+    {
+      "name": "pad_layoutbutton_outer_radius",
+      "value": "8"
+    },
+    {
+      "name": "mediumbutton_outer_width",
+      "value": "60"
+    },
+    {
+      "name": "mediumbutton_outer_height",
+      "value": "32"
+    },
+    {
+      "name": "mediumbutton_outer_radius",
+      "value": "16"
+    },
+    {
+      "name": "sigbutton_checkbox_image_width_height",
+      "value": "24"
+    },
+    {
+      "name": "pad_sigbutton_checkbox_image_width_height",
+      "value": "24"
+    },
+    {
+      "name": "sigbutton_width",
+      "value": "240"
+    },
+    {
+      "name": "pad_sigbutton_width",
+      "value": "280"
+    },
+    {
+      "name": "pad_sigbutton_height",
+      "value": "48"
+    },
+    {
+      "name": "sigbutton_separator_height",
+      "value": "8"
+    },
+    {
+      "name": "toolbutton_outer_radius",
+      "value": "8"
+    },
+    {
+      "name": "colorpane_min_height",
+      "value": "64"
+    },
+    {
+      "name": "pad_colorpane_min_height",
+      "value": "68"
+    },
+    {
+      "name": "colorpane_min_width",
+      "value": "64"
+    },
+    {
+      "name": "colorpane_max_width",
+      "value": "304"
+    },
+    {
+      "name": "pad_colorpane_max_width",
+      "value": "312"
+    },
+    {
+      "name": "pad_colorpane_row_width",
+      "value": "280"
+    },
+    {
+      "name": "colorpane_padding",
+      "value": "16"
+    },
+    {
+      "name": "colorpane_btn_width",
+      "value": "36"
+    },
+    {
+      "name": "colorpane_btn_height",
+      "value": "36"
+    },
+    {
+      "name": "colorpane_btn_space",
+      "value": "12"
+    },
+    {
+      "name": "colorpane_row_space",
+      "value": "16"
+    },
+    {
+      "name": "fontpane_min_height",
+      "value": "82"
+    },
+    {
+      "name": "fontpane_min_width",
+      "value": "82"
+    },
+    {
+      "name": "pad_fontpane_min_height",
+      "value": "90"
+    },
+    {
+      "name": "pad_fontpane_min_width",
+      "value": "90"
+    },
+    {
+      "name": "fontpane_max_width",
+      "value": "264"
+    },
+    {
+      "name": "pad_fontpane_max_width",
+      "value": "312"
+    },
+    {
+      "name": "fontpane_btn_space",
+      "value": "16"
+    },
+    {
+      "name": "pad_fontpane_btn_space",
+      "value": "16"
+    },
+    {
+      "name": "sigpane_width",
+      "value": "264"
+    },
+    {
+      "name": "pad_sigpane_width",
+      "value": "312"
+    },
+    {
+      "name": "pad_sigbtn_width",
+      "value": "280"
+    },
+    {
+      "name": "sigpane_padding_top",
+      "value": "4"
+    },
+    {
+      "name": "layoutpane_single_height",
+      "value": "80"
+    },
+    {
+      "name": "pad_layoutpane_single_height",
+      "value": "86"
+    },
+    {
+      "name": "layoutpane_double_height",
+      "value": "168"
+    },
+    {
+      "name": "pad_layoutpane_double_height",
+      "value": "180"
+    },
+    {
+      "name": "layoutpane_separator_height",
+      "value": "8"
+    },
+    {
+      "name": "pad_layoutpane_row_width",
+      "value": "280"
+    },
+    {
+      "name": "layoutpane_width",
+      "value": "264"
+    },
+    {
+      "name": "pad_layoutpane_width",
+      "value": "312"
+    },
+    {
+      "name": "clocksheet_padding_h",
+      "value": "24"
+    },
+    {
+      "name": "clocksheet_padding_top",
+      "value": "96"
+    },
+    {
+      "name": "pad_clocksheet_padding_top",
+      "value": "190"
+    },
+    {
+      "name": "clocksheet_padding_bottom",
+      "value": "128"
+    },
+    {
+      "name": "pad_clocksheet_padding_bottom",
+      "value": "110"
+    },
+    {
+      "name": "clocksheet_status_bar_phone_height",
+      "value": "39"
+    },
+    {
+      "name": "clocksheet_grid_spacing_top",
+      "value": "48"
+    },
+    {
+      "name": "editsheet_pane_spacing",
+      "value": "8"
+    },
+    {
+      "name": "pad_editsheet_pane_spacing",
+      "value": "14"
+    },
+    {
+      "name": "Editor_tool_box_height",
+      "value": "68"
+    },
+    {
+      "name": "Editor_tool_box_width",
+      "value": "212"
+    },
+    {
+      "name": "Editor_tool_box_width_edit",
+      "value": "286"
+    },
+    {
+      "name": "Editor_tool_box_width_pad_no_aod",
+      "value": "140"
+    },
+    {
+      "name": "Editor_tool_box_width_pad",
+      "value": "220"
+    },
+    {
+      "name": "Editor_tool_box_width_pad_edit",
+      "value": "298"
+    },
+    {
+      "name": "Editor_tool_item_width",
+      "value": "60"
+    },
+    {
+      "name": "wallpaper_outline_width",
+      "value": "2.63"
+    },
+    {
+      "name": "wallpaper_outline_radius",
+      "value": "31.58"
+    },
+    {
+      "name": "wallpaper_outline_radius_small_fold",
+      "value": "20"
+    },
+    {
+      "name": "statusbar_hot_area_height",
+      "value": "39"
+    },
+    {
+      "name": "num_keyboard_grid_item_stack_size",
+      "value": "68vp"
+    },
+    {
+      "name": "outer_num_keyboard_grid_item_stack_size",
+      "value": "48vp"
+    },
+    {
+      "name": "edit_border_radius",
+      "value": "24"
+    },
+    {
+      "name": "pad_layoutpane_height",
+      "value": "180"
+    },
+    {
+      "name": "layoutpane_height",
+      "value": "164"
+    },
+    {
+      "name": "fontbutton_width_height",
+      "value": "58"
+    },
+    {
+      "name": "time_view_gap",
+      "value": "4vp"
+    },
+    {
+      "name": "special_signature_width",
+      "value": "204"
+    },
+    {
+      "name": "dialog_corner_pc",
+      "value": "16"
+    },
+    {
+      "name": "dialog_margin",
+      "value": "16"
+    },
+    {
+      "name": "parttern_reminder_text_height",
+      "value": "22vp"
+    },
+    {
+      "name": "parttern_reminder_text_opacity",
+      "value": "0.85"
+    },
+    {
+      "name": "parttern_reminder_text_lineHeight",
+      "value": "0.85"
+    },
+    {
+      "name": "parttern_reminder_text_margin_bottom",
+      "value": "98vp"
+    },
+    {
+      "name": "parttern_reminder_text_fontSize",
+      "value": "18vp"
+    },
+    {
+      "name": "parttern_reminder_PatternLock_circleRadius",
+      "value": "6vp"
+    },
+    {
+      "name": "parttern_reminder_PatternLock_pathStrokeWidth",
+      "value": "12vp"
+    },
+    {
+      "name": "parttern_special_key_text_fontSize",
+      "value": "16vp"
+    },
+    {
+      "name": "parttern_special_key_text_height",
+      "value": "40vp"
+    }
+  ]
+}

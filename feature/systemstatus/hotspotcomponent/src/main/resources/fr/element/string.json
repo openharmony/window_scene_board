@@ -1,0 +1,25 @@
+{
+    "string":[
+        {
+            "name":"control_center_complex_toggle_hotspot_title",
+            "value":"Point d'accès personnel",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_hotspot_no_device",
+            "value":"Aucun appareil",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"statusbar_talkbackhotspot01",
+            "value":"Point d'accès activé",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

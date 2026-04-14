@@ -1,0 +1,70 @@
+{
+    "plural":[
+        {
+            "name":"control_center_complex_toggle_hotspot_device_count",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"%d устройство",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"%d устройства",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"few",
+                    "value":"%d устройства",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"many",
+                    "value":"%d устройств",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"statusbar_talkbackhotspot02",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"Подключено 1 устройство",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"Подключено %1$d устройства",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"few",
+                    "value":"Подключено %1$d устройства",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"many",
+                    "value":"Подключено %1$d устройств",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

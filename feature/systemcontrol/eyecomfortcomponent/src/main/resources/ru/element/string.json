@@ -1,0 +1,67 @@
+{
+    "string":[
+        {
+            "name":"control_center_eye_comfort_scheduled_open",
+            "value":"Расписание",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_eye_comfort_scheduled_next_day",
+            "value":"%1$s–%2$s (следующий день)",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_eye_comfort_always_on",
+            "value":"Включить на весь день",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_eye_comfort_toggle_title",
+            "value":"Защита зрения",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_eye_comfort_smart_open_subtitle_active",
+            "value":"Определена усталость глаз. Выполняется фильтрация синего света.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_eye_comfort_scheduled_open_subtitle_sunset",
+            "value":"От заката до рассвета",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_eye_comfort_smart_open",
+            "value":"Автовключение",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_eye_comfort_smart_open_subtitle_normal",
+            "value":"Усталость глаз не определена",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_eye_comfort_smart_open_subtitle_default",
+            "value":"Динамическая регулировка синего света",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

@@ -1,0 +1,25 @@
+{
+    "string":[
+        {
+            "name":"date_time_view_yesterday",
+            "value":"昨日",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"now_string_shortest",
+            "value":"たった今",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"accessibility_quick_settings_alarm_set",
+            "value":"アラーム設定済み",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

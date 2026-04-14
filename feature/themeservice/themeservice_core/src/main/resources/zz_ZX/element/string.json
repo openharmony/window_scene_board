@@ -1,0 +1,24 @@
+{
+    "string":[
+        {
+            "name":"ThemeServiceAbility_label",
+            "value":"[TS_1104302]_label"
+        },
+        {
+            "name":"Desktop_individuation",
+            "value":"[TS_1104300]_Home screen & style"
+        },
+        {
+            "name":"theme_title",
+            "value":"[TS_1104303]_Themes"
+        },
+        {
+            "name":"module_desc",
+            "value":"[TS_1104301]_module description"
+        },
+        {
+            "name":"ThemeServiceAbility_desc",
+            "value":"[TS_1104299]_description"
+        }
+    ]
+}

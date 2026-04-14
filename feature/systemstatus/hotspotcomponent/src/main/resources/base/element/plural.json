@@ -1,0 +1,42 @@
+{
+    "plural":[
+        {
+            "name":"control_center_complex_toggle_hotspot_device_count",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"%d device",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"%d devices",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"statusbar_talkbackhotspot02",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"One device connected",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"%1$d devices connected",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

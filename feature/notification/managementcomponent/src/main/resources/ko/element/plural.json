@@ -1,0 +1,16 @@
+{
+    "plural":[
+        {
+            "name":"ntf_pin_top_dialog_reach_limit_content",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"최대 %d개의 앱을 상단에 고정할 수 있습니다. 더 이상 고정을 원하지 않는 앱을 제거하십시오.",
+                    "attr":{
+                        "priority":"LT"
+                    }
+                }
+            ]
+        }
+    ]
+}

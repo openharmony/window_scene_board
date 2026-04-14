@@ -1,0 +1,40 @@
+{
+  "float": [
+    {
+      "name": "Control_center_button_margin_bottom",
+      "value": "16"
+    },
+    {
+      "name": "Control_center_button_rowsGap",
+      "value": "22"
+    },
+    {
+      "name": "Control_center_button_columnsGap",
+      "value": "5"
+    },
+    {
+      "name": "Control_center_grid_bottom_fix",
+      "value": "6"
+    },
+    {
+      "name": "Control_center_button_margin",
+      "value": "13"
+    },
+    {
+      "name": "Control_center_grid_margin_left",
+      "value": "20"
+    },
+    {
+      "name": "Control_center_grid_margin_right",
+      "value": "20"
+    },
+    {
+      "name": "media_control_play_btn_size",
+      "value": "24"
+    },
+    {
+      "name": "media_control_btn_margin_right",
+      "value": "5"
+    }
+  ]
+}

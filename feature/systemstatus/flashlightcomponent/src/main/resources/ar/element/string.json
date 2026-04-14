@@ -1,0 +1,18 @@
+{
+    "string":[
+        {
+            "name":"flashlight_on_ntf_content",
+            "value":"المصباح مشغّل.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_flashlight_title",
+            "value":"المصباح",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

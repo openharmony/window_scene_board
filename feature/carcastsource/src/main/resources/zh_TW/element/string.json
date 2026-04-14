@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"app_not_support_full_screen",
+            "value":"應用程式不支援全螢幕",
+            "attr":{
+                "priority":"LT"
+            }
+        }
+    ]
+}

@@ -1,0 +1,12 @@
+{
+  "name": "@ohos/inputmethodcomponent",
+  "description": "a npm package which contains inputmethodcomponent function",
+  "version": "1.0.0",
+  "dependencies": {
+    "@ohos/basicutils": "file:../../../staticcommon/basecommon/basicutils",
+    "@ohos/frameworkwrapper": "file:../../../staticcommon/basecommon/frameworkwrapper",
+    "@ohos/windowscene": "file:../../../staticcommon/basecommon/windowscene",
+    "@ohos/systemuicommon": "file:../../../staticcommon/systemuicommon",
+    "@ohos/launchercommon": "file:../../../staticcommon/launchercommon",
+  }
+}

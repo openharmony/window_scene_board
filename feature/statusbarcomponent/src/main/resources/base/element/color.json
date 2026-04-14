@@ -1,0 +1,40 @@
+{
+  "color": [
+    {
+      "name": "plugin_icon_color_bg_none",
+      "value": "#00000000"
+    },
+    {
+      "name": "plugin_icon_color_bg_selected",
+      "value": "#19000000"
+    },
+    {
+      "name": "plugin_icon_color_bg_hovered",
+      "value": "#0C000000"
+    },
+    {
+      "name": "separator_color",
+      "value": "#66000000"
+    },
+    {
+      "name": "search_textShadow",
+      "value": "#33000000"
+    },
+    {
+      "name": "hover_light_bg_color",
+      "value": "#0C000000"
+    },
+    {
+      "name": "hover_dark_bg_color",
+      "value": "#19FFFFFF"
+    },
+    {
+      "name": "click_light_bg_color",
+      "value": "#19000000"
+    },
+    {
+      "name": "click_dark_bg_color",
+      "value": "#29FFFFFF"
+    }
+  ]
+}

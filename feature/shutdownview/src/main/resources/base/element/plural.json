@@ -1,0 +1,61 @@
+{
+    "plural":[
+        {
+            "name":"confirm_shutdown_tip",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"Closing %d app. To go back and save your work, click Cancel and save manually.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"Closing %d apps. To go back and save your work, click Cancel and save manually.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"confirm_reboot_tip",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"Closing %d app and restarting. To go back and save your work, click Cancel and save manually.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"Closing %d apps and restarting. To go back and save your work, click Cancel and save manually.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"confirm_mode_change_tip",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"Closing %d app. To go back and save your work, click Cancel and save manually.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"Closing %d apps. To go back and save your work, click Cancel and save manually.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

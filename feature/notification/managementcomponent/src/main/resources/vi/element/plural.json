@@ -1,0 +1,16 @@
+{
+    "plural":[
+        {
+            "name":"ntf_pin_top_dialog_reach_limit_content",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"Có thể ghim tối đa %d ứng dụng lên đầu. Hãy gỡ những ứng dụng bạn không muốn ghim nữa.",
+                    "attr":{
+                        "priority":"LT"
+                    }
+                }
+            ]
+        }
+    ]
+}

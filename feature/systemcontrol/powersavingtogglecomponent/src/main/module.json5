@@ -1,0 +1,10 @@
+{
+  "module": {
+    "name": "powersavingtogglecomponent",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ]
+  }
+}

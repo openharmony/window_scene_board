@@ -1,0 +1,30 @@
+{
+    "string":[
+        {
+            "name":"module_desc",
+            "value":"模块描述"
+        },
+        {
+            "name":"ThemeServiceAbility_desc",
+            "value":"description"
+        },
+        {
+            "name":"ThemeServiceAbility_label",
+            "value":"label"
+        },
+        {
+            "name":"Desktop_individuation",
+            "value":"桌面和个性化",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"theme_title",
+            "value":"主题",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

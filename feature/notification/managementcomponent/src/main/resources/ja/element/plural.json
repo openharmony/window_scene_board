@@ -1,0 +1,16 @@
+{
+    "plural":[
+        {
+            "name":"ntf_pin_top_dialog_reach_limit_content",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"最大%d個のアプリを上部にピン留めできます。ピン留めが不要になったアプリは削除してください。",
+                    "attr":{
+                        "priority":"LT"
+                    }
+                }
+            ]
+        }
+    ]
+}

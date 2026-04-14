@@ -1,0 +1,712 @@
+{
+  "float": [
+    {
+      "name": "page_margin_l",
+      "value": "12vp"
+    },
+    {
+      "name": "app_list_indexer_padding_left_right",
+      "value": "16vp"
+    },
+    {
+      "name": "page_margin_r",
+      "value": "12vp"
+    },
+    {
+      "name": "page_margin_t",
+      "value": "5"
+    },
+    {
+      "name": "page_margin_b",
+      "value": "5"
+    },
+    {
+      "name": "page_title_font",
+      "value": "24vp"
+    },
+    {
+      "name": "page_title_height",
+      "value": "56vp"
+    },
+    {
+      "name": "page_phrases_font",
+      "value": "14fp"
+    },
+    {
+      "name": "page_phrases_padding_t",
+      "value": "19vp"
+    },
+    {
+      "name": "applist_hieght",
+      "value": "404vp"
+    },
+    {
+      "name": "applist_hieght_phone",
+      "value": "800vp"
+    },
+    {
+      "name": "applist_hieght_bat",
+      "value": "584vp"
+    },
+    {
+      "name": "applist_hieght_bat_phone",
+      "value": "1022vp"
+    },
+    {
+      "name": "page_header_margin_t",
+      "value": "16vp"
+    },
+    {
+      "name": "applist_margin_t",
+      "value": "12vp"
+    },
+    {
+      "name": "app_list_indexer_template_bottom",
+      "value": "16vp"
+    },
+    {
+      "name": "app_list_indexer_template_divider",
+      "value": "74vp"
+    },
+    {
+      "name": "page_phrases_height",
+      "value": "56vp"
+    },
+    {
+      "name": "page_phrases_tittle_font",
+      "value": "20fp"
+    },
+    {
+      "name": "status_bar_setting_status_bar_height",
+      "value": "39vp"
+    },
+    {
+      "name": "status_bar_setting_bottom_height",
+      "value": "36vp"
+    },
+    {
+      "name": "status_bar_setting_status_bar_remain_height",
+      "value": "400vp"
+    },
+    {
+      "name": "dialog_title_font",
+      "value": "20fp"
+    },
+    {
+      "name": "dialog_title_margin_l",
+      "value": "50"
+    },
+    {
+      "name": "dialog_button_font",
+      "value": "20fp"
+    },
+    {
+      "name": "enable_radio_width",
+      "value": "20vp"
+    },
+    {
+      "name": "enable_radio_height",
+      "value": "20vp"
+    },
+    {
+      "name": "timeDialog_height",
+      "value": "310vp"
+    },
+    {
+      "name": "timeDialog_datePicker_height",
+      "value": "200vp"
+    },
+    {
+      "name": "repeatDialog_cont_font",
+      "value": "16fp"
+    },
+    {
+      "name": "repeatDialog_height",
+      "value": "320vp"
+    },
+    {
+      "name": "border_width",
+      "value": "1"
+    },
+    {
+      "name": "border_radius",
+      "value": "18vp"
+    },
+    {
+      "name": "scroll_padding",
+      "value": "24vp"
+    },
+    {
+      "name": "default_scroll_padding",
+      "value": "16vp"
+    },
+    {
+      "name": "hovered_border_radius",
+      "value": "14vp"
+    },
+    {
+      "name": "hover_item_padding_or_margin",
+      "value": "4vp"
+    },
+    {
+      "name": "image_border_radius",
+      "value": "15"
+    },
+    {
+      "name": "appitem_item_height",
+      "value": "72vp"
+    },
+    {
+      "name": "appitem_header_icon_width",
+      "value": "24vp"
+    },
+    {
+      "name": "appitem_header_icon_height",
+      "value": "24vp"
+    },
+    {
+      "name": "appitem_icon_width",
+      "value": "48vp"
+    },
+    {
+      "name": "appitem_icon_height",
+      "value": "48vp"
+    },
+    {
+      "name": "appitem_icon_info_margin_r",
+      "value": "0vp"
+    },
+    {
+      "name": "appitem_icon_info_list_margin_r",
+      "value": "0vp"
+    },
+    {
+      "name": "appitem_icon_margin_r",
+      "value": "16vp"
+    },
+    {
+      "name": "appitem_label_margin_t",
+      "value": "15"
+    },
+    {
+      "name": "appitem_label_margin_b",
+      "value": "2"
+    },
+    {
+      "name": "appitem_label_font",
+      "value": "20vp"
+    },
+    {
+      "name": "appitem_version_font",
+      "value": "18vp"
+    },
+    {
+      "name": "appitem_version_margin_b",
+      "value": "15"
+    },
+    {
+      "name": "appitem_version_margin_r",
+      "value": "10"
+    },
+    {
+      "name": "arrow_icon_width",
+      "value": "40"
+    },
+    {
+      "name": "arrow_icon_height",
+      "value": "40"
+    },
+    {
+      "name": "toggle_comp_width",
+      "value": "36vp"
+    },
+    {
+      "name": "toggle_comp_height",
+      "value": "20vp"
+    },
+    {
+      "name": "toggle_check_width",
+      "value": "20"
+    },
+    {
+      "name": "divider_stroke_width",
+      "value": "1"
+    },
+    {
+      "name": "divider_margin_l_info",
+      "value": "60vp"
+    },
+    {
+      "name": "divider_margin_l",
+      "value": "16vp"
+    },
+    {
+      "name": "divider_margin_r",
+      "value": "4vp"
+    },
+    {
+      "name": "divider_height",
+      "value": "24"
+    },
+    {
+      "name": "itemComp_height",
+      "value": "48vp"
+    },
+    {
+      "name": "itemComp_noDisturb_height",
+      "value": "72vp"
+    },
+    {
+      "name": "itemComp_titel_font",
+      "value": "20vp"
+    },
+    {
+      "name": "itemComp_value_font",
+      "value": "14fp"
+    },
+    {
+      "name": "itemComp_image_width",
+      "value": "12vp"
+    },
+    {
+      "name": "itemComp_image_height",
+      "value": "24vp"
+    },
+    {
+      "name": "itemComp_image_margin_left",
+      "value": "30"
+    },
+    {
+      "name": "itemComp_padding_l",
+      "value": "12vp"
+    },
+    {
+      "name": "itemComp_padding_r",
+      "value": "8vp"
+    },
+    {
+      "name": "itemComp_margin_b",
+      "value": "12vp"
+    },
+    {
+      "name": "slotComp_font",
+      "value": "20"
+    },
+    {
+      "name": "page_header_icon_margin_l",
+      "value": "12vp"
+    },
+    {
+      "name": "page_header_margin_l",
+      "value": "18vp"
+    },
+    {
+      "name": "slotComp_image_width",
+      "value": "18vp"
+    },
+    {
+      "name": "slotComp_image_height",
+      "value": "18vp"
+    },
+    {
+      "name": "slotComp_margin_t",
+      "value": "20"
+    },
+    {
+      "name": "switchComp_titel_font",
+      "value": "20"
+    },
+    {
+      "name": "switchComp_height",
+      "value": "56vp"
+    },
+    {
+      "name": "notification_style_margin_top",
+      "value": "28"
+    },
+    {
+      "name": "switchComp_height_double_text",
+      "value": "64vp"
+    },
+    {
+      "name": "status_bar_switchComp_height",
+      "value": "48vp"
+    },
+    {
+      "name": "switchComp_text_margin",
+      "value": "2vp"
+    },
+    {
+      "name": "switchComp_padding_r",
+      "value": "12vp"
+    },
+    {
+      "name": "hover_Comp_margin_padding",
+      "value": "8vp"
+    },
+    {
+      "name": "status_bar_switchComp_padding_r",
+      "value": "6vp"
+    },
+    {
+      "name": "switchComp_toggle_width_ratio",
+      "value": "20%"
+    },
+    {
+      "name": "switchComp_text_width_ratio",
+      "value": "80%"
+    },
+    {
+      "name": "slotComp_height",
+      "value": "56vp"
+    },
+    {
+      "name": "distance_24",
+      "value": "15"
+    },
+    {
+      "name": "page_notice_title_margin_t",
+      "value": "8vp"
+    },
+    {
+      "name": "page_NtfMoreSetting_title_margin",
+      "value": "12vp"
+    },
+    {
+      "name": "page_status_bar_setting_margin_t",
+      "value": "8vp"
+    },
+    {
+      "name": "page_status_bar_setting_show_notification_icon_margin_t",
+      "value": "12vp"
+    },
+    {
+      "name": "page_notice_part_margin_t",
+      "value": "24vp"
+    },
+    {
+      "name": "page_notice_row_margin_t",
+      "value": "18vp"
+    },
+    {
+      "name": "page_notice_and_status_bar_padding",
+      "value": "39vp"
+    },
+    {
+      "name": "page_notice_app_item_row_height",
+      "value": "72vp"
+    },
+    {
+      "name": "appitem_notice_info_icon_width_l",
+      "value": "64vp"
+    },
+    {
+      "name": "appitem_notice_info_icon_height_l",
+      "value": "64vp"
+    },
+    {
+      "name": "appitem_manage_icon_width",
+      "value": "48vp"
+    },
+    {
+      "name": "appitem_manage_icon_height",
+      "value": "48vp"
+    },
+    {
+      "name": "appitem_notice_info_icon_width",
+      "value": "40vp"
+    },
+    {
+      "name": "appitem_notice_info_icon_height",
+      "value": "40vp"
+    },
+    {
+      "name": "appitem_notice_infopop_icon_width",
+      "value": "22vp"
+    },
+    {
+      "name": "appitem_notice_infopop_icon_height",
+      "value": "22vp"
+    },
+    {
+      "name": "appitem_notice_infopop_icon_margin_r",
+      "value": "24vp"
+    },
+    {
+      "name": "appitem_notice_info_icon_margin_r",
+      "value": "12vp"
+    },
+    {
+      "name": "page_notice_info_label_margin",
+      "value": "16vp"
+    },
+    {
+      "name": "toggle_label_text_indentation",
+      "value": "12vp"
+    },
+    {
+      "name": "notice_title_height",
+      "value": "20vp"
+    },
+    {
+      "name": "notice_row_height",
+      "value": "56vp"
+    },
+    {
+      "name": "noDisturb_margin_lf",
+      "value": "4vp"
+    },
+    {
+      "name": "pure_show_margin_top",
+      "value": "12vp"
+    },
+    {
+      "name": "pure_show_margin_bottom",
+      "value": "8vp"
+    },
+    {
+      "name": "noDisturb_margin_16",
+      "value": "16vp"
+    },
+    {
+      "name": "noDisturb_offset_x",
+      "value": "0"
+    },
+    {
+      "name": "noDisturb_text_margin_vertical",
+      "value": "0vp"
+    },
+    {
+      "name": "noDisturb_text_margin_right",
+      "value": "0vp"
+    },
+    {
+      "name": "enableComp_margin_inside",
+      "value": "10vp"
+    },
+    {
+      "name": "enableComp_font_size",
+      "value": "16vp"
+    },
+    {
+      "name": "enableListComp_default_divider_width",
+      "value": "10vp"
+    },
+    {
+      "name": "enableListComp_default_item_width",
+      "value": "8vp"
+    },
+    {
+      "name": "enableListComp_default_item_width_land",
+      "value": "260vp"
+    },
+    {
+      "name": "lock_notification_style_img_phone_width",
+      "value": "60vp"
+    },
+    {
+      "name": "lock_notification_style_img_pad_width",
+      "value": "190vp"
+    },
+    {
+      "name": "pure_icon_height",
+      "value": "312vp"
+    },
+    {
+      "name": "pure_icon_width",
+      "value": "96vp"
+    },
+    {
+      "name": "pure_icon_margin_top",
+      "value": "16vp"
+    },
+    {
+      "name": "pure_icon_margin_bottom",
+      "value": "16vp"
+    },
+    {
+      "name": "appitem_notice_info_icon_border_radius",
+      "value": "12vp"
+    },
+    {
+      "name": "head_component_title_font_size",
+      "value": "24fp"
+    },
+    {
+      "name": "enableListComp_default_item_land_width",
+      "value": "60vp"
+    },
+    {
+      "name": "search_item_line_height",
+      "value": "21vp"
+    },
+    {
+      "name": "search_image_scale",
+      "value": "32vp"
+    },
+    {
+      "name": "search_history_font_size",
+      "value": "28vp"
+    },
+    {
+      "name": "search_result_empty_image_scale",
+      "value": "120vp"
+    },
+    {
+      "name": "page_label_phrases_height",
+      "value": "56vp"
+    },
+    {
+      "name": "enable_component_image_radius",
+      "value": "8vp"
+    },
+    {
+      "name": "nav_back_image_width_height",
+      "value": "20vp"
+    },
+    {
+      "name": "nav_back_image_margin_l",
+      "value": "10vp"
+    },
+    {
+      "name": "nav_back_image_bg_width_height",
+      "value": "40vp"
+    },
+    {
+      "name": "nav_back_image_bg_radius",
+      "value": "20vp"
+    },
+    {
+      "name": "nav_text_margin_l_button",
+      "value": "8"
+    },
+    {
+      "name": "nav_text_margin_l",
+      "value": "24"
+    },
+    {
+      "name": "appitem_notice_info_height",
+      "value": "56vp"
+    },
+    {
+      "name": "appitem_page_search_bottom",
+      "value": "8vp"
+    },
+    {
+      "name": "pc_back_button_margin_l",
+      "value": "4vp"
+    },
+    {
+      "name": "head_component_title_margin_top",
+      "value": "0vp"
+    },
+    {
+      "name": "mgmt_app_item_icon_radius",
+      "value": "16vp"
+    },
+    {
+      "name": "list_app_item_icon_size",
+      "value": "16vp"
+    },
+    {
+      "name": "search_bar_nav_margin",
+      "value": "16vp"
+    },
+    {
+      "name": "ntf_search_app_item_height",
+      "value": "72vp"
+    },
+    {
+      "name": "switchComp_padding_top",
+      "value": "6vp"
+    },
+    {
+      "name": "remind_sound_padding",
+      "value": "4"
+    },
+    {
+      "name": "hide_banner_content_title_padding",
+      "value": "6"
+    },
+    {
+      "name": "allow_notification_padding",
+      "value": "8vp"
+    },
+    {
+      "name": "app_item_divider_margin_left",
+      "value": "7.5"
+    },
+    {
+      "name": "app_item_divider_margin_right",
+      "value": "11.5"
+    },
+    {
+      "name": "app_item_divider_height",
+      "value": "29"
+    },
+    {
+      "name": "select_menu_item_width",
+      "value": "192vp"
+    },
+    {
+      "name": "select_menu_item_height",
+      "value": "48vp"
+    },
+    {
+      "name": "setting_panel_margin_bottom",
+      "value": "24vp"
+    },
+    {
+      "name": "setting_group_font_size",
+      "value": "14vp"
+    },
+    {
+      "name": "setting_group_line_height",
+      "value": "16vp"
+    },
+    {
+      "name": "setting_group_height",
+      "value": "20vp"
+    },
+    {
+      "name": "setting_group_margin_top",
+      "value": "28vp"
+    },
+    {
+      "name": "setting_group_margin_bottom",
+      "value": "8vp"
+    },
+    {
+      "name": "setting_group_padding_left_right",
+      "value": "12vp"
+    },
+    {
+      "name": "setting_item_padding_left_right",
+      "value": "11vp"
+    },
+    {
+      "name": "setting_group_radius",
+      "value": "20vp"
+    },
+    {
+      "name": "setting_group_item_padding_top_bottom",
+      "value": "3vp"
+    },
+    {
+      "name": "setting_icon_size",
+      "value": "24vp"
+    },
+    {
+      "name": "setting_icon_margin_r",
+      "value": "16vp"
+    },
+    {
+      "name": "setting_description_size",
+      "value": "16vp"
+    },
+    {
+      "name": "setting_description_height",
+      "value": "22vp"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "name": "@ohos/statusbarextensionservice",
+  "version": "1.0.0",
+  "description": "Please describe the basic information.",
+  "main": "./src/main/ets/TsIndex.ets",
+  "author": "",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@ohos/basicutils": "file:../../staticcommon/basecommon/basicutils",
+    "@ohos/frameworkwrapper": "file:../../staticcommon/basecommon/frameworkwrapper",
+    "@ohos/commonconstants": "file:../../staticcommon/basecommon/commonconstants"
+  }
+}

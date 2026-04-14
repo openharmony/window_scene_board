@@ -1,0 +1,512 @@
+{
+    "string":[
+        {
+            "name":"mainability_description",
+            "value":"JS_Phone_Empty Feature Ability"
+        },
+        {
+            "name":"hide_banner_content_title",
+            "value":"Show banner content",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"hide_banner_content_desc",
+            "value":"Only applies to apps following system notification settings.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"hide_banner_content_app_follow_system",
+            "value":"Follow system",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"hide_banner_content_app_always",
+            "value":"Always show",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"hide_banner_content_app_never",
+            "value":"Do not show",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"entry_desc",
+            "value":"Notifications",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_and_status_bar_title",
+            "value":"Notifications & status bar",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_lock_screen_switch_title_new",
+            "value":"Hide notification content",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_lock_screen_switch_text",
+            "value":"Notification content won't be shown while your phone is locked.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_wake_screen_switch_title",
+            "value":"Wake screen",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_wake_screen_switch_text",
+            "value":"Turn on the screen when notifications are received.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_not_banner",
+            "value":"Show banners on home screen",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notifications",
+            "value":"Notifications",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_style",
+            "value":"Notification style",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"banners",
+            "value":"Banners",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"no_banners",
+            "value":"None",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"lock_screen_notification",
+            "value":"Lock screen",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"status_bar_title",
+            "value":"Status bar",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"live_view_title",
+            "value":"Live view",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pure_show_description",
+            "value":"Only show time, WLAN, mobile signal, and battery in the status bar.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pad_pure_show_description",
+            "value":"Only show time, WLAN, and battery in the status bar.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntfSoundModeOnlyRing",
+            "value":"Play sound",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntfSoundModeSilence",
+            "value":"Silent",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntfSoundModeSettingTitle",
+            "value":"Notification tone",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntfSoundModeOnlyVibration",
+            "value":"Vibrate",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"more_ntf_setting",
+            "value":"More settings",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"search_app",
+            "value":"Search apps",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"no_matching_results",
+            "value":"No results",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"switch_screen_lock_ntf_style_forbidden",
+            "value":"Notifications are always expanded when using fingerprint unlock.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"unified_notification_label",
+            "value":"Organization",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"search_history",
+            "value":"Search history",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"clear",
+            "value":"Clear",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remind_type",
+            "value":"Type",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remind_sound",
+            "value":"Sound",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remind_vibration",
+            "value":"Vibrate",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remind_lock_screen",
+            "value":"Lock screen",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remind_banner",
+            "value":"Banners",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remind_only_notification_center",
+            "value":"Notification Panel only",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remind_disable",
+            "value":"Off",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"show_tip_live_view_preview_when_screen_lock",
+            "value":"Turn this on for a better experience with live view.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"hiding_banner_content_txt",
+            "value":"When a banner notification appears, its contents won't be shown if other people are looking at the screen. This feature uses face recognition.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"smart_reminder_tips_main",
+            "value":"When this is on, the contents of banners will be shown only to you, and notification alerts will be less intense while you're looking at the screen. This feature uses face recognition. %s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"smart_reminder_learn_more",
+            "value":"Learn more",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"smart_reminder_tips_no_weak",
+            "value":"When this is on, the contents of banners will be shown only to you. This feature uses face recognition.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"set_face",
+            "value":"Set up",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"splitter_format_for_2",
+            "value":"%1$s, %2$s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"splitter_format_for_3",
+            "value":"%1$s, %2$s, %3$s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"splitter_format_for_4",
+            "value":"%1$s, %2$s, %3$s, %4$s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"smart_digest",
+            "value":"Smart grouping",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"unified_notification_intro",
+            "value":"Group notifications from different apps when they are related.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"badges",
+            "value":"Badges",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"switch_badges_forbidden",
+            "value":"Enable \"Show badges\" in Settings > Notifications & status bar > More settings first.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_pin_on_top",
+            "value":"Always show notifications from this app at the top of the Notification Panel.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"lock_screen_notification_style",
+            "value":"Show as list on lock screen",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_back_accessible",
+            "value":"Back, button",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"lock_screen_notification_fold",
+            "value":"Lock screen notification, collapsed display",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"lock_screen_notification_expand",
+            "value":"Lock screen notification, expanded display",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"enable_switch_notification_icon",
+            "value":"Notification icon",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_switch_net_speed",
+            "value":"Real-time network speed",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_switch_vpn",
+            "value":"VPN",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_switch_ring_mode",
+            "value":"Silent/Vibration",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"enable_switch_ring_mode_silent",
+            "value":"Silent mode",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_switch_nearlink",
+            "value":"NearLink/Bluetooth connection",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_switch_bluetooth",
+            "value":"Bluetooth connection",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_switch_alarm_clock",
+            "value":"Alarm",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_switch_nfc",
+            "value":"NFC",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_switch_head_phones",
+            "value":"Wired headphones",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_switch_icon_visible",
+            "value":"Manage icons",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"enable_switch_explain",
+            "value":"Status icons are shown in the Control Panel and Notification Panel even if deselected here.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"silent_notification",
+            "value":"Gentle notifications",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"silent_notification_description",
+            "value":"Silence notifications from this app and only show them in the Notification Panel.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"already_clear",
+            "value":"Cleared",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

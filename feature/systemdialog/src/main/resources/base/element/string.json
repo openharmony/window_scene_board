@@ -1,0 +1,172 @@
+{
+    "string":[
+        {
+            "name":"mainability_description",
+            "value":"System-Dialog ServiceExtensionAbility"
+        },
+        {
+            "name":"PoweroffAbility_desc",
+            "value":"description"
+        },
+        {
+            "name":"PoweroffAbility_reason",
+            "value":"reboot or shutdown"
+        },
+        {
+            "name":"Poweroff_Button_Reboot",
+            "value":"Restart",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Poweroff_Button_Click_Reboot",
+            "value":"Tap to restart",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Poweroff_Button_Shutdown",
+            "value":"Power off",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Poweroff_Button_Click_Shutdown",
+            "value":"Tap to power off",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"accessibility_reboot",
+            "value":"Restart",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_power_off",
+            "value":"Power off",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_back",
+            "value":"Exit power off screen",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"poweroff_tips",
+            "value":"Press & hold the Power and Volume down buttons for at least %d seconds to force restart",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"poweroff_fold_tips",
+            "value":"Press & hold the Power and Volume down buttons for at least %d seconds to force restart",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"poweroff_button_space",
+            "value":"40vp"
+        },
+        {
+            "name":"poweroff_fold_button_space",
+            "value":"120vp"
+        },
+        {
+            "name":"poweroff_blank_top_height",
+            "value":"40%"
+        },
+        {
+            "name":"poweroff_fold_blank_top_height",
+            "value":"40%"
+        },
+        {
+            "name":"thermal_aware_toast",
+            "value":"Unfold for a better experience.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"power_schedule_switch_reminder",
+            "value":"Power on as scheduled (%s)",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"power_schedule_switch_toast",
+            "value":"Your device won't automatically power back on.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"off_find_checkbox",
+            "value":"Keep Find Device enabled after power off",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"off_find_alert_dialog_title",
+            "value":"This device will still be findable even after being powered off",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"off_find_alert_dialog_message",
+            "value":"It can still be found using Find Device. If you disable Find Device now, it will be re-enabled the next time the device is powered on.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"off_find_no_action_confirm",
+            "value":"OK",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"off_find_disable_confirm",
+            "value":"Disable Find Device",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"battery_emergency_dialog_content",
+            "value":"Battery extremely low. Power reserve mode activating in %d seconds.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"shutdown_dialog_content_new",
+            "value":"Battery is about to run out. Powering off in %d seconds.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"shutdown_dialog_title",
+            "value":"Note",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

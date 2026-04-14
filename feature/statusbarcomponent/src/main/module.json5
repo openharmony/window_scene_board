@@ -1,0 +1,15 @@
+{
+  "module": {
+    "name": "statusbarcomponent",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ],
+    "requestPermissions": [
+      {
+        "name": "ohos.permission.GET_BUNDLE_INFO_PRIVILEGED"
+      }
+    ]
+  }
+}

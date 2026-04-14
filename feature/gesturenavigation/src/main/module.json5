@@ -1,0 +1,9 @@
+{
+  "module": {
+    "name": "gesturenavigation",
+    "type": "har",
+    "deviceTypes": [
+      "default"
+    ]
+  }
+}

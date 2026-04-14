@@ -1,0 +1,14 @@
+{
+  "name": "@ohos/signalcomponent",
+  "description": "a npm package which contains signalcomponent function",
+  "version": "1.0.0",
+  "dependencies": {
+    "@ohos/basicutils": "file:../../../staticcommon/basecommon/basicutils",
+    "@ohos/frameworkwrapper": "file:../../../staticcommon/basecommon/frameworkwrapper",
+    "@ohos/componenthelper": "file:../../../staticcommon/basecommon/componenthelper",
+    "@ohos/windowscene": "file:../../../staticcommon/basecommon/windowscene",
+    "@ohos/airplanecomponent": "file:../airplanecomponent",
+    "@ohos/systemuicommon": "file:../../../staticcommon/systemuicommon",
+    "@ohos/controlcentercommon": "file:../../../staticcommon/controlcentercommon"
+  }
+}

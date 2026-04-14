@@ -1,0 +1,16 @@
+{
+  "string": [
+    {
+      "name": "module_desc",
+      "value": "模块描述"
+    },
+    {
+      "name": "GesturenavigationAbility_desc",
+      "value": "description"
+    },
+    {
+      "name": "GesturenavigationAbility_label",
+      "value": "label"
+    }
+  ]
+}

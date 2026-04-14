@@ -1,0 +1,14 @@
+{
+  "name": "@ohos/eyecomfortcomponent",
+  "version": "1.0.0",
+  "description": "Please describe the basic information.",
+  "dependencies": {
+    "@ohos/basicutils": "file:../../../staticcommon/basecommon/basicutils",
+    "@ohos/frameworkwrapper": "file:../../../staticcommon/basecommon/frameworkwrapper",
+    "@ohos/commonconstants": "file:../../../staticcommon/basecommon/commonconstants",
+    "@ohos/systemuicommon": "file:../../../staticcommon/systemuicommon",
+    "@ohos/windowscene": "file:../../../staticcommon/basecommon/windowscene",
+    "@ohos/controlcentercommon": "file:../../../staticcommon/controlcentercommon",
+  }
+}
+

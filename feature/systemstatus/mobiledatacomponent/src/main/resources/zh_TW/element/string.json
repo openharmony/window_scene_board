@@ -1,0 +1,39 @@
+{
+    "string":[
+        {
+            "name":"control_center_complex_toggle_mobiledata_title",
+            "value":"行動數據",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_mobiledata_title_on",
+            "value":"SIM 卡 %d 數據",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_mobiledata_toast",
+            "value":"請停用天際通方案，然後管理行動數據開關",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_mobiledata_usage",
+            "value":"已用 %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_mobiledata_title_on_esim",
+            "value":"eSIM %d 資料",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

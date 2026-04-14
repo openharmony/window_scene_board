@@ -1,0 +1,102 @@
+{
+    "string":[
+        {
+            "name":"expand_formstack",
+            "value":"يېيىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"edit_formstack",
+            "value":"\u200f«%s» نى تەھرىرلەش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"delete_formstack",
+            "value":"\u200f«%s» نى چىقىرىۋېتىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"delete_form_stack_text",
+            "value":"ئۆچۈرۈش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"create_form_stack_text",
+            "value":"‏%1$s بىلەن %2$s دۆۋىلەندى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_form_stack_text",
+            "value":"دۆۋىگە %1$s قويۇلدى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"form_pinned_stack_text",
+            "value":"نۆۋەتتە %1$s چوققىلاندى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"expand_stack_text",
+            "value":"ئېچىلدى، ئۈستى-ئاستىغا سىيرىپ كارتا ئالماشتۇرىسىز",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"close_stack_text",
+            "value":"كارتا دۆۋىسى يىغىلدى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"stack_request_focus_after_text",
+            "value":"نۆۋەتتىكىسى %1$s كارتىسى، مەشغۇلات يۈرگۈزۈشكە بولىدۇ، قوش بېسىپ تۇرسىڭىز مەشغۇلات تاللانمىلىرى چىقىدۇ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"expand_stack_request_focus_front_text",
+            "value":"%d-نەرسە",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"delete_stack_form",
+            "value":"كارتا %s ئۆچۈرۈلدى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"talkback_expand_stack_moved_to",
+            "value":"%d-ئورۇنغا قويۇلدى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"talkback_expand_stack_move_to",
+            "value":"%d-ئورۇنغا يۆتكەش",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

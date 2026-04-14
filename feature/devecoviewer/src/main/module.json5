@@ -1,0 +1,9 @@
+{
+  "module": {
+    "name": "devecoviewer",
+    "type": "har",
+    "deviceTypes": [
+      "tablet"
+    ]
+  }
+}

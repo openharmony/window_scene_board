@@ -1,0 +1,393 @@
+{
+    "string":[
+        {
+            "name":"show_lock_screen_signature",
+            "value":"قۇلۇپ ئېكران ئىمزاسى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"click_input_text",
+            "value":"چېكىپ كىرگۈزۈڭ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"widgets_two_click_accessible",
+            "value":"قوش چەكسىڭىز يۈرگۈزۈلىدۇ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"checked",
+            "value":"تاللاندى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"unchecked",
+            "value":"تاللانمىدى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"service_form_area_accessible",
+            "value":"مۇلازىمەت كارتىسى رايونى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"theme_edit_cancel",
+            "value":"بىكار قىلىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"psd_back",
+            "value":"قايتىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"theme_edit_apply",
+            "value":"قوللىنىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"clock_style",
+            "value":"سائەت ئۇسلۇبى %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"clock_font_style",
+            "value":"خەت ئۇسلۇبى %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"clock_font_color",
+            "value":"خەت رەڭگى %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation",
+            "value":"خەت نۇسخىسى ياساش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"more_edits",
+            "value":"باشقا تەھرىرلەش تاللانمىلىرى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Double_click_and_hold_accessibility",
+            "value":"قوش چېكىپ تۇرسىڭىز باشقا تاللانمىلار چىقىدۇ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"EnterpriseDeviceDefaultText",
+            "value":"بۇ ئۈسكۈنىنى ئىدارىڭىز باشقۇرىدۇ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"EnterpriseDeviceText",
+            "value":"بۇ ئۈسكۈنىنى %s باشقۇرىدۇ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"service_form_delete_button_accessible",
+            "value":"ئۆچۈرۈش، كۇنۇپكا",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"layout_tab_art",
+            "value":"خاس ئېلان",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"art_signature_input_error_language",
+            "value":"پەقەت ئىنگلىزچە ۋە خەنزۇچە قوللايدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"art_signature_input_tip",
+            "value":"ئىنگلىزچە/خەنزۇچە قوللايدۇ، كۆپىدە %d خەنزۇچە خەت.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"layout_tab_default",
+            "value":"سانلىق سائەت",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"art_signature_input_title",
+            "value":"مۇقاۋا خېتى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"art_signature_input_error_len",
+            "value":"ئۇزۇنلۇقى چەككە يەتتى.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"artfont_creation_reach_limit",
+            "value":"خەت نۇسخىسى چەككە يەتكەن",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_font_cannot_delete",
+            "value":"ئىشلىتىۋاتقان خەت نۇسخىسى ئۆچۈرۈلمەيدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"artfont_creation_no_network",
+            "value":"تور ئۇلانمىدى، تەكشۈرۈڭ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"artfont_creation_delete_notice",
+            "value":"ئىشلەتمەيدىغان خەت نۇسخىسىنى بېسىپ تۇرۇپ چىقىرىۋېتىپ، ئاندىن خەت نۇسخىسى ياساش بېتىگە كىرىڭ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"artfont_creation_confirm",
+            "value":"بىلدىم",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"artfont_creation_ocr_err",
+            "value":"تونۇلمىدى، قايتا سىناڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"art_signature_style",
+            "value":"مۇقاۋا ئۇسلۇبى %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_four",
+            "value":"قۇلۇپ ئېكرانى خەت نۇسخىسى ياساش مۇلازىمىتى ۋە مەخپىيەتلىك ھەققىدە بايانات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"artfont_creation_statement_agree",
+            "value":"قوشۇلىمەن",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screenlock_font_creation_service",
+            "value":"قۇلۇپ ئېكرانى خەت نۇسخىسى ياساش مۇلازىمىتى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_one",
+            "value":"بۇ مۇلازىمەت تاللىغان رەسىمنى بۇلۇت AI ھېسابلاش ئۇسۇلى ئارقىلىق تونۇپ، ھەرخىل ئۇسلۇبتا خەت نۇسخىسى ئىشلەيدۇ؛ ئىشلىگەن خەت نۇسخىسىنى قۇلۇپ ئېكرانىدىكى سائەت ۋە ئىمزاغا قوللىنىشقا بولىدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_five",
+            "value":"مۇلازىمەت شەرتلىرى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"art_signature_displayed_as_combined_character",
+            "value":"خەت بىرىكتۈرۈش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"art_signature_content_creation_failed",
+            "value":"مەزمۇن قۇرۇلمىدى.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"art_signature_try_combined_characters",
+            "value":"بىرىكمە خەت سىناپ بېقىڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"art_signature_combined_character",
+            "value":"بىرىكمە خەت",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_three",
+            "value":"بۇ مۇلازىمەت تور ئىشلىتىدۇ؛ رەسىم ئوقۇپ يۈكلەيدۇ؛ يۇقىرىقىلار قۇلۇپ ئېكرانى خەت نۇسخىسى ياساش ئىقتىدارى تەمىنلەش ئۈچۈن ئىشلىتىلىدۇ. بىز پەقەت سىز كونكرېت ئىقتىدارنى ئىشلەتكەندە ئاندىن ئالاقىدار شەخسىي ئۇچۇرنى توپلايمىز. تەپسىلاتىنى «%1$s» ۋە «%2$s» ئارقىلىق كۆرۈڭ.\nيۇقىرىقى باياناتنى ئەستايىدىل ئوقۇڭ. «قوشۇلىمەن» نى چەكسىڭىز، ئالاقىدار شەرتلەرنى چۈشەنگەن ھەمدە سىزگە بۇ ئەپنىڭ مۇلازىمەتلىرىنى تەمىنلىشىمىزگە قوشۇلغان بولىسىز.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"card_deleted",
+            "value":"‏%s كارتىسى ئۆچۈرۈلدى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"art_signature_text_button_tip",
+            "value":"ئەسكەرتىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"art_signature_text_tip_content",
+            "value":"كۆپىدە %d خەنزۇچە خەت بولسا ياخشى.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"artfont_AI_creation",
+            "value":"\u200fAI قۇرۇش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"please_input_text",
+            "value":"تېكىست كىرگۈزۈڭ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"artfont_delete_description",
+            "value":"چىقىرىۋەتسىڭىز، بۇ خەت نۇسخىسىنى ئىشلەتكەن ئىمزا سۈكۈت خەت نۇسخىسىدا كۆرۈنىدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"layout_tab_artsign",
+            "value":"ئىمزا",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"artfont_delete_confirm",
+            "value":"بۇ خەت نۇسخىسىنى چىقىرىۋېتەمسىز؟",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"artfont_delete_remove_button",
+            "value":"چىقىرىۋېتىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"artfont_long_press_delete",
+            "value":"بېسىپ تۇرۇپ تەھرىرلەش ھالىتىگە كىرىپ چىقىرىۋېتىشكە بولىدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"art_signature",
+            "value":"ئىمزا",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+      {
+            "name":"AIGC_server_offline_title",
+            "value":"خەت نۇسخىسى ياساش مۇلازىمىتى ھازىرچە ئىشلىمەيدۇ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"switch_combined_characters_fonts_prompt",
+            "value":"بىرىكمە خەتنىڭ خەت نۇسخىسى ئالماشمايدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"AIGC_server_offline_description",
+            "value":"بۇ مۇلازىمەتنى ياخشىلاش ئۈچۈن ۋاقىتلىق توختاتتۇق.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+      {
+        "name": "unsupported_content",
+        "value": "كىرگۈزگەن مەزمۇننى قوللىمايدۇ."
+      }
+    ]
+}

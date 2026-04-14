@@ -1,0 +1,18 @@
+{
+    "string":[
+        {
+            "name":"control_center_complex_toggle_location_title",
+            "value":"Vị trí",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_location",
+            "value":"Ứng dụng đã gửi một yêu cầu vị trí hợp lệ",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

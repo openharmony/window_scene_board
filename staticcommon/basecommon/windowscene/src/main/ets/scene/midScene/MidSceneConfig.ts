@@ -78,8 +78,13 @@ export class MidSceneConfig {
     systemParameterEnhance.getSync('persist.window.isSupportInclinedSnapshot', 'true') === 'true';
   // support size change app white list
   private static supportSizeChangeApps = [
+    'com.ss.hm.ugc.aweme',
     'com.app.xt.retouch',
+    'com.sina.news.hm.next',
+    'cn.com.spdb.mobilebank.hos.per',
     'com.lalamove.huolala.clienthar',
+    'com.mampod.ergedd.hm',
+    'com.duoduo.hm.erge',
     'com.ifeng.news.ohos',
     'com.feeyo.variflight',
     'com.huayi.zshy',
@@ -88,6 +93,7 @@ export class MidSceneConfig {
   private static enterMidSceneBlackListPad: Set<string> = new Set([
     'com.meitu.beautycam',
     'com.htinns.application',
+    'com.ohos.hicreate',
   ]);
 
   private static enterMidSceneBlackListPhone: Set<string> = new Set([

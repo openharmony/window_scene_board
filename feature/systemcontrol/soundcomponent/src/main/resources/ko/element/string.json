@@ -1,0 +1,130 @@
+{
+    "string":[
+        {
+            "name":"sound_title",
+            "value":"오디오 설정",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"HD_spatial_audio",
+            "value":"HD 공간 음향",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"noise_on",
+            "value":"켜짐",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"base_none",
+            "value":"꺼짐",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"base_noise_control",
+            "value":"소음 제어",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"spatial_audio_follow",
+            "value":"머리 추적",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"spatial_audio_fixed",
+            "value":"고정",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"base_pass_through",
+            "value":"상황 인식",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"toast_wear_headphone",
+            "value":"양쪽 버드를 모두 넣으십시오.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"toast_noise_control_amphora",
+            "value":"노이즈 캔슬링을 사용하려면 양쪽 이어버드를 모두 착용하십시오.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"spatial_audio",
+            "value":"공간 음향",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"toast_voice_enhance",
+            "value":"이 기능을 사용하려면 이어버드를 착용하십시오.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"noise_reduction",
+            "value":"노이즈 캔슬링",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"toast_noise_control",
+            "value":"이 기능을 사용하려면 이어버드를 착용하십시오.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_change_vertical_volume_desc",
+            "value":"볼륨 표시줄, 두 번 탭하고 길게 누른 상태에서 위나 아래로 스와이프하여 조정",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_change_volume_desc",
+            "value":"볼륨 막대, 두 번 탭하고 길게 누른 다음 왼쪽이나 오른쪽으로 밀어서 조정",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_change_volume",
+            "value":"볼륨이 %s 레벨로 조정됨",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_volume",
+            "value":"볼륨 %s",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

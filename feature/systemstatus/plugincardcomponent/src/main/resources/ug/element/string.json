@@ -1,0 +1,144 @@
+{
+    "string":[
+        {
+            "name":"app_name_desc",
+            "value":"ئالىي ئۈسكۈنە",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Laptop",
+            "value":"كومپيۇتېر",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"tablet",
+            "value":"تاختا كومپيۇتېر",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"capsuleTips",
+            "value":"قوش چېكىپ ئالىي ئۈسكۈنىگە كىرىڭ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"appSateCollaborating",
+            "value":"ھەمكارلىشىۋاتىدۇ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"TV",
+            "value":"تېلېۋىزور",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Phone",
+            "value":"يانفون",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"appSateCancel",
+            "value":"ھەمكارلىقنى ئاياغلاشتۇرۇش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"radarIconTips",
+            "value":"ئالىي ئۈسكۈنىگە كىرىش كۇنۇپكىسى، بىر بارماقتا قوش چەكسىڭىز يۈرگۈزۈلىدۇ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"title_login_openharmony_account",
+            "value":"«ئالىي ئۈسكۈنە» ئۈچۈن خۇاۋېي ھېسابىغا كىرىش كېرەك",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"account_button_login",
+            "value":"تىزىملاپ كىرىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"text_open_wlan_and_bluetooth_account",
+            "value":"بۇ ئىجازەت ئۈسكۈنە بايقاش ۋە ھەمكارلىشىش ئۈچۈن ئىشلىتىلىدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"super_device_title_open_wlan_and_bluetooth",
+            "value":"«ئالىي ئۈسكۈنە» ئۈچۈن WLAN ۋە كۆكچىشنى ئېچىش كېرەك",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"button_enable",
+            "value":"ئېچىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"device_connected_msg",
+            "value":"ئۇلاق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"switch_audio",
+            "value":"ئاۋاز چىقىمى «%s» غا ئالماشتى.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"audio",
+            "value":"ئاۋاز ئۈسكۈنىسى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"super_device_disabled",
+            "value":"ئالىي ئۈسكۈنىنى ئاچامسىز؟",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Car",
+            "value":"ماشىنا",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"radarIconTipsBlank",
+            "value":"ئالىي ئۈسكۈنە كۇنۇپكىسى، بىر بارماقتا قوش چەكسىڭىز يۈرگۈزۈلىدۇ",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

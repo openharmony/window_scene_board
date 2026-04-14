@@ -1,0 +1,68 @@
+{
+    "string":[
+        {
+            "name":"volume",
+            "value":"[TS_820227]_Volume"
+        },
+        {
+            "name":"volume_channel_ringer",
+            "value":"[TS_820225]_Ringtones"
+        },
+        {
+            "name":"volume_channel_more_setting",
+            "value":"[TS_920744]_More settings"
+        },
+        {
+            "name":"volume_channel_voice_call",
+            "value":"[TS_820224]_Calls"
+        },
+        {
+            "name":"volume_channel_media",
+            "value":"[TS_820226]_Media"
+        },
+        {
+            "name":"volume_popup_note",
+            "value":"[TS_880040]_Swipe left for more volume controls."
+        },
+        {
+            "name":"volume_channel_notification",
+            "value":"[TS_924890]_Notifications"
+        },
+        {
+            "name":"volume_channel_alarm",
+            "value":"[TS_924891]_Alarms"
+        },
+        {
+            "name":"volume_accessibility_expand_dialog",
+            "value":"[TS_1079411]_Expanded, volume panel, close by swiping with two fingers, will automatically close if no operation is performed for %1$d seconds"
+        },
+        {
+            "name":"volume_accessibility_media",
+            "value":"[TS_1079413]_Media audio"
+        },
+        {
+            "name":"volume_accessibility_icon_enabled",
+            "value":"[TS_1079412]_enabled"
+        },
+        {
+            "name":"volume_accessibility_icon_disabled",
+            "value":"[TS_1079414]_disabled"
+        },
+        {
+            "name":"volume_accessibility_single",
+            "value":"[TS_1079415]_%1$d percent, %2$s, progress bar, which can be adjusted by pressing the volume button, swipe left with two fingers to expand the volume panel"
+        },
+        {
+            "name":"volume_accessibility_dialog",
+            "value":"[TS_1079410]_%1$d percent, %2$s, progress bar, which can be adjusted by pressing the volume button"
+        },
+        {
+            "name":"volume_accessibility_icon",
+            "value":"[TS_1079409]_%1$s, %2$s, button, double tap to activate"
+        },
+        {
+            "name":"volume_accessibility_accessibility",
+            "value":"[TS_1091599]_Accessibility"
+        }
+    ]
+}

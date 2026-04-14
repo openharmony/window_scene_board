@@ -1,0 +1,162 @@
+{
+    "string":[
+        {
+            "name":"screenlock_settings",
+            "value":"ロック画面",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_stop_service_text",
+            "value":"本サービスを無効化すると、画像に含まれるテキストに基づいてフォントを作成することができなくなります。",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"stop_font_creation_service",
+            "value":"サービスを無効化",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screenlock_font_creation_service_text",
+            "value":"ロック画面のフォント作成サービス",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screenlock_font_creation_service",
+            "value":"ロック画面のフォント作成サービス",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_one",
+            "value":"このサービスは、画像内に含まれるテキストに基づき、クラウドベースのAIを使用してフォントを生成します。生成されたフォントは、ロック画面の時計と署名に適用できます。",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_four",
+            "value":"ロック画面のフォント作成サービスと個人情報保護に関する声明",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_setting_footbar_new",
+            "value":"このサービスはインターネット接続を必要とし、ロック画面のフロント画面作成機能を提供するため、画像を読み取り、アップロード/転送する必要があります。当社は、ユーザーが利用する機能に関連する個人情報のみを収集します。詳細については、%1$sおよび%2$sを参照してください。これをオンにすると、このサービスの提供に同意したものとみなされます。",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_five",
+            "value":"利用条件",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_three",
+            "value":"このサービスはインターネット接続を必要とします。また、ロック画面のフロント作成機能を提供するため、画像の読み込みおよびアップロード/転送を行う必要があります。当社は、ユーザーが利用する機能に関連する個人情報のみを収集します。詳しくは、%1$sおよび%2$sを参照してください。\n上記のコンテンツをよくお読みください。[同意する]をタップすると、このサービスの提供に同意したものとみなされます。",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"icon_settings",
+            "value":"アイコン",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"icon_settings_content",
+            "value":"ホーム画面のアイコンのサイズと名前を変更します。",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"icon_edit_not_support_small_step",
+            "value":"設定がフローティングウィンドウ表示中は、アイコンを調整できません。",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+      {
+        "name": "theme_title",
+        "value": "theme title"
+      },
+        {
+            "name": "notification_main_time_travel_ongoing_content",
+            "value": "notification main"
+        },
+        {
+            "name": "notification_main_time_travel_finish_content",
+            "value": "travel finish content"
+        },
+        {
+            "name": "time_travel_generate_failed",
+            "value": ""
+        },
+        {
+            "name": "notification_main_dimensional_travel_ongoing_content",
+            "value": ""
+        },
+        {
+            "name": "notification_main_dimensional_travel_finish_content",
+            "value": ""
+        },
+        {
+            "name": "dimensional_travel_generate_failed",
+            "value": ""
+        },
+        {
+            "name": "notification_dynamic_lead_ongoing_content",
+            "value": ""
+        },
+        {
+            "name": "notification_dynamic_lead_finish_content",
+            "value": ""
+        },
+        {
+            "name": "dynamic_lead_generate_failed",
+            "value": ""
+        },
+        {
+            "name": "notification_main_pandora_title",
+            "value": ""
+        },
+      {
+        "name":"edit_wallpaper",
+        "value":"壁紙",
+        "attr":{
+          "priority":"translate"
+        }
+      },
+      {
+        "name": "theme_chose",
+        "value": "ギャラリーから選択する"
+      },
+      {
+        "name": "current_wallpaper",
+        "value": "私の壁紙"
+      },
+      {
+        "name": "managment",
+        "value": ""
+      },
+      {
+        "name": "wallpaper_editor",
+        "value": "適用"
+      }
+    ]
+}

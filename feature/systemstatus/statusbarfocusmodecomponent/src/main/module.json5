@@ -1,0 +1,10 @@
+{
+  "module": {
+    "name": "statusbarfocusmodecomponent",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ]
+  }
+}

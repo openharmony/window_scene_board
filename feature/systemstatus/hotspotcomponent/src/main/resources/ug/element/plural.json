@@ -1,0 +1,42 @@
+{
+    "plural":[
+        {
+            "name":"control_center_complex_toggle_hotspot_device_count",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"%d ئۈسكۈنە",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"%d ئۈسكۈنە",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"statusbar_talkbackhotspot02",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"%1$dئۈسكۈنە تور نۇقتىسىغا ئۇلاندى",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"%1$dئۈسكۈنە تور نۇقتىسىغا ئۇلاندى",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

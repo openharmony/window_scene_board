@@ -1,0 +1,417 @@
+{
+    "string":[
+        {
+            "name":"control_center_edit_panel_tips_max_toggles",
+            "value":"최대 스위치 수는 %d개입니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"rotate_to_landscape",
+            "value":"먼저 가로 보기 방향으로 회전하십시오.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_privacy_page",
+            "value":"권한",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_anti_theft_for_toggle",
+            "value":"데모 장치에서 작업을 사용할 수 없습니다.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"control_center_edit_panel_collapse_library",
+            "value":"닫기",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_edit_panel_tips_min_toggles",
+            "value":"%d개 이상의 스위치를 유지해야 합니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_unlocked_for_editing",
+            "value":"편집하려면 잠금을 해제하십시오.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_edit_panel_dialog_not_save",
+            "value":"저장하지 않음",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sound_recorder_name",
+            "value":"녹음기",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"calculator_widget_name",
+            "value":"계산기",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"privacy_sensor_multiple_application",
+            "value":"%s 및 기타",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"brightness_title",
+            "value":"밝기",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"combined_slider_title",
+            "value":"밝기 및 볼륨 표시줄",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_no_available_toggles",
+            "value":"추가할 스위치 없음",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screen_recorder_widget_name",
+            "value":"화면 녹화",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_edit_panel_dialog_confirm",
+            "value":"변경 사항을 저장하시겠습니까?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"scanner_widget_name",
+            "value":"스캔",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_super_privacy_for_location_toggle",
+            "value":"위치 액세스가 차단되었습니다. 먼저 슈퍼 프라이버시를 종료하십시오.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remote_control_widget_name",
+            "value":"스마트 리모콘",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessed_recently",
+            "value":"%s, 방금",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screen_shot_widget_name",
+            "value":"스크린샷",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_edit_panel_dialog_save",
+            "value":"저장",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"multi_window_widget_name",
+            "value":"프리 윈도우",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"clock_timer_widget_name",
+            "value":"타이머",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center",
+            "value":"제어판",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_edit_panel_title_edit",
+            "value":"편집",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pc_mode",
+            "value":"컴퓨터 모드",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pad_mode",
+            "value":"태블릿 모드",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_edit_panel_tips_max_limit",
+            "value":"최대 스위치 수가 추가되었습니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_change_vertical_brightness_desc",
+            "value":"밝기 표시줄, 두 번 탭하고 길게 누른 상태에서 위나 아래로 스와이프하여 조정",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_privacy_string_camera",
+            "value":"카메라",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_exit_sub_page",
+            "value":"%s 메뉴 끝내기",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_entry_edit",
+            "value":"제어판 편집",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_edit_move_end",
+            "value":"배치됨",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_library_opened",
+            "value":"제어판 편집 화면 열림",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_change_brightness_desc",
+            "value":"밝기 막대, 두 번 탭하고 길게 누른 다음 왼쪽이나 오른쪽으로 밀어서 조정",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_privacy_string_location",
+            "value":"위치",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_privacy_string_mic",
+            "value":"마이크",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_edit_drag_description",
+            "value":"두 번 탭하고 드래그하여 아이콘 재배열",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_save_edit",
+            "value":"변경 사항 저장",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_button_str",
+            "value":"%s 버튼",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_change_brightness",
+            "value":"밝기가 %s 값으로 조정됨",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_exit_edit_page",
+            "value":"편집 화면 닫기",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_privacy_report_string",
+            "value":"%1$s에서 %2$s에 액세스 중",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_open_candidate_library",
+            "value":"라이브러리 표시",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_entry_edit_page",
+            "value":"편집 화면 열기",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_library_closed",
+            "value":"제어판 편집 화면 닫음",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_enter_sub_page",
+            "value":"%s 메뉴 열기",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_entry_setting",
+            "value":"설정 진입하기",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_collapse_library",
+            "value":"스위치가 추가되지 않은 패널 닫기",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_brightness",
+            "value":"화면 밝기 %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_exit_edit",
+            "value":"편집 끝내기",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_edit_move_start",
+            "value":"항목 드래그 중",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"multimedia_sensor_bracket_kit",
+            "value":"짐벌 제어",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"multimedia_sensor_sound_effects",
+            "value":"사운드 효과",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"multimedia_sensor_video_effects",
+            "value":"비디오 효과",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+        "name":"notepad_quick_note_title",
+        "value":"빠른 메모",
+        "attr":{
+          "priority":"LT"
+            }
+        },
+        {
+            "name":"unfold_to_g_state",
+            "value":"먼저 휴대폰을 완전히 펼치십시오.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"computer_mode",
+            "value":"데스크탑 모드",
+            "attr":{
+                "priority":"LT"
+            }
+        }
+    ]
+}

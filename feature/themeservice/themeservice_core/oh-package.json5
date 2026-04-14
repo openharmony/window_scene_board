@@ -1,0 +1,33 @@
+{
+  "name": "@ohos/themeservicecore",
+  "version": "1.0.0",
+  "description": "Please describe the basic information.",
+  "main": "",
+  "author": "",
+  "license": "",
+  "dependencies": {
+    "@ohos/themeservicebase": "../themeservice_base",
+    "@ohos/themeservice_inner_api": "../themeservice_inner_api",
+    "@ohos/themeservice_core_subscreen": "../themeservice_core_subscreen",
+    "@ohos/themeservice_core_lem": "../themeservice_core_lem"
+  },
+  "devDependencies": {
+    "@ohos/themeservicekit": "../themeservice_kit"
+  },
+  "extensionAbilities": [
+    {
+      "name": "ThemeServiceAbility",
+      "label": "label",
+      "exported": true,
+      "type": "service",
+      "srcEntry": "./ets/ability/service/ThemeServiceAbility.ets",
+      "permission": ["ohos.permission.ACTIVE_THEME_PACKAGE"],
+      "metadata": [
+        {
+          "name": "setSkin",
+          "value": "true"
+        }
+      ]
+    }
+  ]
+}

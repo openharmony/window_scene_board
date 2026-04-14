@@ -1,0 +1,10 @@
+{
+  "module": {
+    "name": "wificomponent",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ]
+  }
+}

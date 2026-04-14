@@ -1,0 +1,16 @@
+{
+    "plural":[
+        {
+            "name":"search_result_accessibility_text",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"%d개 검색 결과 아래에 표시됨",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

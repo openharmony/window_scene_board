@@ -1,0 +1,40 @@
+{
+  "color": [
+    {
+      "name": "control_center_component_background",
+      "value": "#D8202224"
+    },
+    {
+      "name": "center_edit_down_area_bg_color",
+      "value": "#4D000000"
+    },
+    {
+      "name": "colorDialogBg",
+      "value": "#202224"
+    },
+    {
+      "name": "blur_style_bg",
+      "value": "#66000000"
+    },
+    {
+      "name": "grid_item_text_color",
+      "value": "#FFFFFF"
+    },
+    {
+      "name": "grid_crad_background",
+      "value": "#00000000"
+    },
+    {
+      "name": "grid_item_switch_on",
+      "value": "#317AF7"
+    },
+    {
+      "name": "grid_item_switch_off",
+      "value": "#1AFFFFFF"
+    },
+    {
+      "name": "Control_center_subpanel_text_color",
+      "value": "#FFFFFF"
+    }
+  ]
+}

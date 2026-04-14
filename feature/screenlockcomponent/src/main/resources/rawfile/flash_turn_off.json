@@ -1,0 +1,50 @@
+{
+    "MetaData": {
+        "Create": "2023-11-02",
+        "Description": "Exported from RichTap Creator Pro",
+        "Version": 1.0,
+        "ChannelNumber": 1
+    },
+    "Channels": [
+        {
+            "Parameters": {
+                "Index": 0
+            },
+			"Pattern": [
+				{
+					"Event": {
+						"Type": "transient",
+						"Duration": 30,
+						"StartTime": 0,
+						"Parameters": {
+							"Intensity": 75,
+							"Frequency": 50,
+							"Curve": [
+								{
+									"Time": 0,
+									"Intensity": 0,
+									"Frequency": 15
+								},
+								{
+									"Time": 4,
+									"Intensity": 0.99,
+									"Frequency": 12
+								},
+								{
+									"Time": 15,
+									"Intensity": 0.37,
+									"Frequency": 0
+								},
+								{
+									"Time": 30,
+									"Intensity": 0,
+									"Frequency": 0
+								}
+							]
+						}
+					}
+				}
+			]
+        }
+    ]
+}

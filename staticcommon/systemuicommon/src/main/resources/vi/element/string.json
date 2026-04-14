@@ -1,0 +1,480 @@
+{
+    "string":[
+        {
+            "name":"more_settings",
+            "value":"Cài đặt khác",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"live_view_collapsed",
+            "value":"Đã thu gọn",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"gesture_identified_successfully",
+            "value":"Đã nhận dạng cử chỉ thành công!",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"live_view_expanded",
+            "value":"Đã mở rộng",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntf_center_title",
+            "value":"Bảng thông báo",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"edm_operate_prohibit_tip",
+            "value":"Thao tác này bị cấm bởi chính sách quản trị doanh nghiệp.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_phone_timer_text",
+            "value":"Cuộc gọi đang diễn ra",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_timing_timer_text",
+            "value":"Bộ hẹn giờ đang bật",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_count_down_timer_text",
+            "value":"Đếm ngược",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_timing_capsule_timer_text",
+            "value":"Đang tính thời gian",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_count_down_capsule_timer_text",
+            "value":"Đếm ngược",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"automatic_brightness",
+            "value":"Tự động",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_edit_panel_tips_max_toggles",
+            "value":"Tối đa %d khóa chuyển.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"live_view_authorization_confirm",
+            "value":"Có",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"live_view_authorization_tip",
+            "value":"Tiếp tục nhận nội dung cập nhật trực tiếp từ ứng dụng này?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"confirm",
+            "value":"OK",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"please_unlock",
+            "value":"Mở khóa thiết bị",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_edit_panel_tips_min_toggles",
+            "value":"Phải giữ ít nhất %d khóa chuyển.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"live_view_authorization_reject",
+            "value":"Không",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"smart_screenshot",
+            "value":"Chụp màn hình",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center",
+            "value":"Bảng điều khiển",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"live_view_hide_tip",
+            "value":"Mở khóa để xem chi tiết",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_pin_top_dialog_reach_limit_title",
+            "value":"Đã đạt đến số ứng dụng tối đa có thể ghim",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"talkback_temperature",
+            "value":"Nhiệt độ tối đa %1$s. Nhiệt độ tối thiểu %2$s.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"stop_font_creation_service",
+            "value":"Tắt dịch vụ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_open_ringer_mode_silent",
+            "value":"Đã tắt tiếng",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_entry_page_text",
+            "value":"Vào Bảng điều khiển",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"silence_dialog_title",
+            "value":"Sử dụng thông báo âm thầm cho %s?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_open_ringer_mode_vibrate",
+            "value":"Đã bật rung",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_close_state",
+            "value":"Đã tắt",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_edit_coordinates",
+            "value":"Hàng %1$d, cột %2$d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_edit_remove_toggle",
+            "value":"Thêm %s vào thư viện",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_edit_add_toggle_coordinates",
+            "value":"Đã thêm vào hàng %1$d cột %2$d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_edit_add_toggle",
+            "value":"Thêm %s vào Bảng điều khiển",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_ring_mode_click",
+            "value":"Chạm đúp để chuyển sang %s,",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_click",
+            "value":"Chạm đúp để kích hoạt,",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_switch_click",
+            "value":"Chạm đúp để %s,",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_wifi_list",
+            "value":"Xem danh sách mạng WLAN",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"face_verifing",
+            "value":"Nhận dạng khuôn mặt",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_wifi_open_def",
+            "value":"Đã bật. Không kết nối được WLAN. Nút chuyển",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_open_ringer_mode_normal",
+            "value":"Chuông đã được bật",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_open_state",
+            "value":"Đã bật",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_bluetooth_close",
+            "value":"Đã tắt. Bluetooth đã tắt. Nút chuyển",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_switch",
+            "value":"Nút chuyển %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_wifi_open_conn",
+            "value":"Đã bật. Mạng WLAN là %s. Nút chuyển",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_edit_remove_toggle_action",
+            "value":"Đã thêm vào thư viện",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_timer_str_hour_to_minute_to_second",
+            "value":"%1$s %2$s %3$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_bluetooth_open_conn",
+            "value":"Đã bật. Bluetooth %s. Nút chuyển",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_open_action",
+            "value":"Đã tắt",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_edit_remove_toggle_new",
+            "value":"Xóa, %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_bluetooth_name",
+            "value":"Bluetooth",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_toggle_unavailable",
+            "value":"Không phản hồi",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_bluetooth_open_def",
+            "value":"Đã bật. Chưa kết nối Bluetooth. Chuyển đổi",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_edit_move_toggle_coordinates",
+            "value":"%1$s nằm trên hàng %2$d cột %3$d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"silent_notifications_dialog",
+            "value":"Thông báo nhẹ nhàng không phát âm thanh và chỉ xuất hiện trên Bảng thông báo.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_wifi_close",
+            "value":"Đã tắt. Đã tắt WLAN. Nút chuyển",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"face_auth_recognize_success",
+            "value":"Đã xác minh",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_bluetooth_list",
+            "value":"Xem các thiết bị đã ghép cặp",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_long_click",
+            "value":"Chạm đúp và giữ để hiển thị thêm tùy chọn",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_close_action",
+            "value":"Đã bật",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_connect_state",
+            "value":"Đã kết nối với %s,",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_common_button_str",
+            "value":"Nút %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_timer_str_minute_to_second",
+            "value":"%1$s %2$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"data_remain",
+            "value":"Còn lại %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"data_total",
+            "value":"Tổng %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"data_use_today",
+            "value":"Hôm nay %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"data_exceed",
+            "value":"Vượt quá giới hạn %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"meta_service_live_view_authorization_tip",
+            "value":"Tiếp tục nhận nội dung cập nhật trực tiếp từ dịch vụ này?",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

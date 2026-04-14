@@ -1,0 +1,12 @@
+{
+  "float": [
+    {
+      "name": "statusbar_super_privacy_height",
+      "value": "16vp"
+    },
+    {
+      "name": "statusbar_super_privacy_width",
+      "value": "200vp"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"control_center_complex_toggle_dpin_title",
+            "value":"མངོན་སྟོན་ཆས་ཀྱི་རྣམ་པ།",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

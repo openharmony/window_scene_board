@@ -1,0 +1,64 @@
+{
+    "string":[
+        {
+            "name":"immersive_sys_no_auth_tips",
+            "value":"Bật Dịch vụ Vị trí để tận hưởng thêm nhiều tính năng.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"immersive_go_auth",
+            "value":"Vào Cài đặt",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"immersive_app_sys_no_auth_tips",
+            "value":"Để tận hưởng thêm nhiều tính năng, hãy cấp quyền truy cập Vị trí và đảm bảo bật Dịch vụ Vị trí.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"immersive_app_no_auth_tips",
+            "value":"Cấp quyền truy cập Vị trí để tận hưởng thêm nhiều tính năng.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"immersive_card_tip_to_down",
+            "value":"Thu gọn, nút, chạm đúp để kích hoạt",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"immersive_card_tip_to_up",
+            "value":"Mở rộng, nút, chạm đúp để kích hoạt",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"immersive_card_tip_status_down",
+            "value":"Đã thu gọn thẻ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"immersive_card_tip_status_up",
+            "value":"Đã mở rộng thẻ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+      {
+        "name": "psd_back_accessible",
+        "value": "返回 按钮"
+      }
+    ]
+}

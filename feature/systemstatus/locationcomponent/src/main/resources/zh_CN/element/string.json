@@ -1,0 +1,18 @@
+{
+    "string":[
+        {
+            "name":"control_center_complex_toggle_location_title",
+            "value":"位置",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_location",
+            "value":"应用发出了有效位置信息请求",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

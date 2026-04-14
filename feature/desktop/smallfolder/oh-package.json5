@@ -1,0 +1,19 @@
+{
+  "devDependencies": {},
+  "name": "@ohos/smallfolder",
+  "description": "a npm package which contains smallfolder feature",
+  "main": "index.ets",
+  "version": "1.0.0",
+  "dependencies": {
+    "@ohos/bigfolder": "../bigfolder",
+    "@ohos/basicutils": "../../../staticcommon/basecommon/basicutils",
+    "@ohos/windowscene": "../../../staticcommon/basecommon/windowscene",
+    "@ohos/frameworkwrapper": "../../../staticcommon/basecommon/frameworkwrapper",
+    "@ohos/commonconstants": "../../../staticcommon/basecommon/commonconstants",
+    "@ohos/frameworkcommon": "../../../staticcommon/basecommon/frameworkcommon",
+    "@ohos/componenthelper": "../../../staticcommon/basecommon/componenthelper",
+    "@ohos/componentanimator": "../../../staticcommon/basecommon/componentanimator",
+    "@ohos/componentdrag": "../../../staticcommon/basecommon/componentdrag",
+    "@ohos/launchercommon": "../../../staticcommon/launchercommon",
+  }
+}

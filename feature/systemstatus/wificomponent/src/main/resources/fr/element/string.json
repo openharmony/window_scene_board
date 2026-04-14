@@ -1,0 +1,74 @@
+{
+    "string":[
+        {
+            "name":"accessibility_status_bar_wifi_no",
+            "value":"Aucun signal WLAN",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"shared_network_tips_network_messages",
+            "value":"Vous pouvez utiliser le réseau mobile de %s pour accéder à Internet et envoyer/recevoir des messages.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"shared_network_tips_network",
+            "value":"Vous pouvez utiliser le réseau mobile de %s pour accéder à Internet.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"shared_network_tips_network_calls",
+            "value":"Vous pouvez utiliser le réseau mobile de %s pour accéder à Internet et passer/recevoir des appels.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"shared_network_tips1",
+            "value":"Vous pouvez utiliser le réseau mobile de %s pour accéder à Internet, passer/recevoir des appels et envoyer/recevoir des messages.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"shared_network_tips",
+            "value":"Utilisation du réseau mobile de %s en cours.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_wifi_4",
+            "value":"Signal WLAN, plein",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_wifi_3",
+            "value":"Signal WLAN, trois barres",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_wifi_2",
+            "value":"Signal WLAN, deux barres",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_wifi_1",
+            "value":"Signal WLAN, une barre",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

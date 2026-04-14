@@ -1,0 +1,18 @@
+{
+    "string":[
+        {
+            "name":"control_center_complex_toggle_flashlight_title",
+            "value":"손전등",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"flashlight_on_ntf_content",
+            "value":"손전등 켜짐",
+            "attr":{
+                "priority":"LT"
+            }
+        }
+    ]
+}

@@ -1,0 +1,76 @@
+{
+    "string":[
+        {
+            "name":"is_delete_form",
+            "value":"[TS_961784]_是否移除"
+        },
+        {
+            "name":"duplicate_add",
+            "value":"[TS_961762]_This has already been added."
+        },
+        {
+            "name":"remove_from_dock",
+            "value":"[TS_961767]_Remove from dock"
+        },
+        {
+            "name":"app_menu_exit",
+            "value":"[TS_961774]_Quit"
+        },
+        {
+            "name":"continue_mission_fail_device_connecting_to_another_device",
+            "value":"[TS_961768]_Handover failed. %1$s is interacting with another device."
+        },
+        {
+            "name":"delete_app",
+            "value":"[TS_961769]_Remove"
+        },
+        {
+            "name":"disable_add_to_dock",
+            "value":"[TS_961763]_Unable to add."
+        },
+        {
+            "name":"app_center_menu_add_desktop",
+            "value":"[TS_961777]_Add to home screen"
+        },
+        {
+            "name":"continue_mission_fail_close_hotspot_and_try_again",
+            "value":"[TS_961780]_Handover failed. Disable the personal hotspot on %1$s and try again."
+        },
+        {
+            "name":"continue_mission_fail",
+            "value":"[TS_961781]_Handover failed."
+        },
+        {
+            "name":"app_menu_open",
+            "value":"[TS_961778]_Open"
+        },
+        {
+            "name":"app_menu_clean",
+            "value":"[TS_961775]_Empty Recycle Bin"
+        },
+        {
+            "name":"isUninstall",
+            "value":"[TS_961779]_Uninstall %s?"
+        },
+        {
+            "name":"disable_to_move",
+            "value":"[TS_961770]_禁止移动"
+        },
+        {
+            "name":"continue_mission_waiting",
+            "value":"[TS_961764]_Handing over…"
+        },
+        {
+            "name":"app_menu_more",
+            "value":"[TS_961771]_More"
+        },
+        {
+            "name":"accessibility_dock",
+            "value":"[TS_1086660]_Dock"
+        },
+        {
+            "name":"add_beyond_max",
+            "value":"[TS_1113724]_Max number of icons added."
+        }
+    ]
+}

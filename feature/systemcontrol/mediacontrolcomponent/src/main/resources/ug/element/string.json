@@ -1,0 +1,396 @@
+{
+    "string":[
+        {
+            "name":"WiredDevice",
+            "value":"سىملىق تىڭشىغۇچ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"WiredCastDevice",
+            "value":"سىملىق سۇنۇش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"CallSpeaker",
+            "value":"ياڭراتقۇ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"toobar_title_pitching",
+            "value":"ئاۋاز سۇنۇش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"av_cast_cast_fail",
+            "value":"سۇنۇلمىدى، كېيىنرەك قايتا سىناڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"BluetoothDevice",
+            "value":"كۆكچىشلىق تىڭشىغۇچ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"CallEarpiece",
+            "value":"قۇلاق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"LocalDevice",
+            "value":"بۇ ئۈسكۈنە",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"av_cast_cast_disconnect",
+            "value":"قويۇش ئۈسكۈنىسى ئۈزۈلدى.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"no_media_title",
+            "value":"قويۇلمىدى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"RecentlyPlay",
+            "value":"يېقىندا قويغان",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"preference_setting",
+            "value":"مايىللىق",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"recommended_to_you",
+            "value":"سىزگە تەۋسىيە",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"av_cast_disconnect",
+            "value":"سۇنۇش ئۈزۈلۈپ، بۇ ئۈسكۈنىگە قايتتى.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"audio_usage",
+            "value":"بۇ يەردە چاقىرىق ئاۋازى ئالماشمايدۇ، چاقىرىق ئەپىدە ئالماشتۇرۇڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"device_error",
+            "value":"ئۈسكۈنە ياكى ئەپتە خاتالىق بار، سۇنۇلمىدى.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"switch_to_resource_cast",
+            "value":"مەنبە سۇنۇش ھالىتىگە ئالماشتى.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"wireless_usage",
+            "value":"ئاۋاز قانىلىنى سىمسىز سۇنغۇچ ئىشلىتىۋاتىدۇ، ئالماشمايدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"unAuthDevice",
+            "value":"باشقا ئۈسكۈنە",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"open_bluetooth",
+            "value":"بۇ ئۈسكۈنىگە سۇنۇش ئۈچۈن كۆكچىشنى ئېچىش كېرەك، ئېچىپ قايتا سىناڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_audio_control",
+            "value":"ئۈن-سىن سۇنۇش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_fast_forward",
+            "value":"تېز سۈرۈش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_pause",
+            "value":"تورمۇزلاش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_connected",
+            "value":"ئۇلاق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_rewind",
+            "value":"تېز قايتۇرۇش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_play",
+            "value":"قويۇش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_favorites",
+            "value":"يىغقۇچ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_cancel_favorites",
+            "value":"يىغقۇچتىن چىقىرىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_More",
+            "value":"كۆپرەك",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_cyclic_mode_shuffle",
+            "value":"قويۇش ھالىتى، ئىختىيارىي قويىدۇ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_cyclic_mode_sequential",
+            "value":"قويۇش ھالىتى، تەرتىپ بويىچە قويىدۇ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_notice",
+            "value":"بىلدۈرگۈ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_next",
+            "value":"كېيىنكى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_previous",
+            "value":"ئالدىنقى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_cyclic_mode_list",
+            "value":"قويۇش ھالىتى، تىزىملىكنى قايتىلايدۇ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_cyclic_mode_loop",
+            "value":"قويۇش ھالىتى، بىر ناخشىنى قايتىلايدۇ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_close",
+            "value":"ئېتىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_Favorited",
+            "value":"يىغقان",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_unavailable",
+            "value":"ئىشلىمەيدىغان",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"multi_screen_usage",
+            "value":"ئاۋازنى كۆپ ئېكران ھەمكارلىقى ئىشلىتىۋاتىدۇ، ئالماشمايدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"av_cast_banner_title",
+            "value":"ئېكران «%s» غا سۇنۇلۇۋاتىدۇ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"access_av_cast_volume_increase",
+            "value":"سۇنغان ئۈسكۈنىدە ئۈن يۇقىرىلىتىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_av_cast_volume_reduce",
+            "value":"سۇنغان ئۈسكۈنىدە ئۈن تۆۋەنلىتىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_media_volume_bar",
+            "value":"مېدىيا ئۈن بالدىقى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_media_broadcast_control_center",
+            "value":"مېدىيا تىزگىنى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sound_output_device_nearlink",
+            "value":"ئۇچقۇن ئۈسكۈنە (%s)",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"HearingAid",
+            "value":"ئاڭلىغۇچ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_total_duration",
+            "value":"ئومۇمىي ۋاقىت",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_switch_playback_device",
+            "value":"باشقا ئۈسكۈنىدە قويۇش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_playback_progress",
+            "value":"يۈرۈم بالدىقى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_expand_more_devices",
+            "value":"ئۈسكۈنە تىزىملىكىنى يېيىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_cover_image",
+            "value":"مۇقاۋا رەسىم",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"device_in_call",
+            "value":"چاقىرىق يۈرۈۋاتىدۇ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"access_call_volume_bar",
+            "value":"چاقىرىق ئۈن بالدىقى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"recently_played_songs",
+            "value":"يېقىندا قويغان ناخشا",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"you_may_like",
+            "value":"سىزگە تەۋسىيە",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

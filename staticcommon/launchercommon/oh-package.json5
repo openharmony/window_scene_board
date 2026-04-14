@@ -1,0 +1,19 @@
+{
+  "devDependencies": {},
+  "name": "@ohos/launchercommon",
+  "description": "a npm package which contains basic common function",
+  "main": "./src/main/ets/TsIndex.ts",
+  "version": "1.0.0",
+  "dependencies": {
+    "@ohos/basicutils": "../basecommon/basicutils",
+    "@ohos/windowscene": "../basecommon/windowscene",
+    "@ohos/frameworkwrapper": "../basecommon/frameworkwrapper",
+    "@ohos/commonconstants": "../basecommon/commonconstants",
+    "@ohos/componenthelper": "../basecommon/componenthelper",
+    "@ohos/componentdrag": "../basecommon/componentdrag",
+    "@ohos/componentanimator": "../basecommon/componentanimator",
+    "@ohos/frameworkpinyin": "../basecommon/frameworkpinyin",
+    "@ohos/frameworkcommon": "../basecommon/frameworkcommon",
+    "@ohos/swiperdata": "../basecommon/swiperdata"
+  }
+}

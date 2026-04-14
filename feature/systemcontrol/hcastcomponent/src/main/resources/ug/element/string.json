@@ -1,0 +1,67 @@
+{
+    "string":[
+        {
+            "name":"wireless_projection_toggle",
+            "value":"سىمسىز سۇنۇش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"projection_privacy_statement",
+            "value":"بۇ مۇلازىمەت كۆكچىشنى ئېچىش ئۈچۈن ئۈسكۈنە بايقاش ۋە ئۇلاش ئىجازىتى ئالىدۇ؛ كۆكچىش ۋە WLAN ئىقتىدارىنى ئىشلىتىدۇ؛ ئۈسكۈنىدە ئۈن ئېلىپ ۋە ئېكران خاتىرىلەپ، ئېكران سۇنۇش مۇلازىمەتلىرىنى تەمىنلەيدۇ. «قوشۇلىمەن» نى چەكسىڭىز، يۇقىرىقىلارغا قوشۇلغان بولىسىز.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"btn_agree",
+            "value":"قوشۇلىمەن",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"btn_turn_on",
+            "value":"ئېچىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"title_projection_fail",
+            "value":"ئۇلانمىدى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"title_open_wlan_and_bluetooth",
+            "value":"سىمسىز سۇنۇش ئۈچۈن WLAN ۋە كۆكچىشنى ئېچىش كېرەك",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"text_open_wlan_and_bluetooth",
+            "value":"بۇ ئۈسكۈنە بايقاش ۋە ئۈن-سىن يوللاش ئۈچۈن كېرەك.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"error_text_code_2",
+            "value":"بۇ ۋە قارشى ئۈسكۈنىدە WLAN ۋە كۆكچىشنى قايتا قوزغىتىپ، قايتا سىناڭ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"privacy_hint",
+            "value":"بۇ ئۈسكۈنە ئېكرانىنى چوڭ ئېكرانغا سىمسىز سۇنۇپ ئىشلىتەلەيسىز.",
+            "attr":{
+                "priority":"LT"
+            }
+        }
+    ]
+}

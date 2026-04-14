@@ -1,0 +1,72 @@
+{
+  "float": [
+    {
+      "name": "media_control_card_landscape_title_width",
+      "value": "160"
+    },
+    {
+      "name": "media_control_card_landscape_pic_size",
+      "value": "120"
+    },
+    {
+      "name": "media_control_card_lower_half_height",
+      "value": "84"
+    },
+    {
+      "name": "media_control_card_pic_size",
+      "value": "48"
+    },
+    {
+      "name": "media_control_card_title_height",
+      "value": "37"
+    },
+    {
+      "name": "media_control_card_btn_size",
+      "value": "24"
+    },
+    {
+      "name": "media_control_play_btn_size",
+      "value": "28"
+    },
+    {
+      "name": "media_control_rewind_fast_forward_btn_size",
+      "value": "20"
+    },
+    {
+      "name": "media_control_card_no_music_pic_size",
+      "value": "18"
+    },
+    {
+      "name": "media_control_card_landscape_margin_bottom_size",
+      "value": "16"
+    },
+    {
+      "name": "media_control_card_icon_size",
+      "value": "16"
+    },
+    {
+      "name": "media_control_card_margin_size",
+      "value": "12"
+    },
+    {
+      "name": "media_control_card_margin_bottom_size",
+      "value": "8"
+    },
+    {
+      "name": "media_control_card_margin_top_size",
+      "value": "4"
+    },
+    {
+      "name": "media_control_btn_margin_right",
+      "value": "5"
+    },
+    {
+      "name": "control_center_card_border_radius",
+      "value": "16"
+    },
+    {
+      "name": "control_center_title_space",
+      "value": "36"
+    }
+  ]
+}

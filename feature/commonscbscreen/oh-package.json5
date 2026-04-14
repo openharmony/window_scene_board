@@ -14,5 +14,7 @@
     "@ohos/componenthelper": "../../staticcommon/basecommon/componenthelper",
     "@ohos/componentanimator": "../../staticcommon/basecommon/componentanimator",
     "@ohos/componentdrag": "../../staticcommon/basecommon/componentdrag",
+    "@ohos/launchercommon": "../../staticcommon/launchercommon",
+    "@ohos/statusbarcomponent": "../statusbarcomponent"
   }
 }

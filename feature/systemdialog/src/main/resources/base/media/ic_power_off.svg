@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>ic_power_off</title>
+    <g id="设计稿" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="新方案主界面备份" transform="translate(-376.000000, -450.000000)">
+            <g id="编组-4" transform="translate(358.000000, 432.000000)">
+                <g id="icon" transform="translate(16.000000, 16.000000)">
+                    <polygon id="Fill-1" points="0 32 32 32 32 0 0 0"></polygon>
+                    <line x1="16" y1="3.73333333" x2="16" y2="14.9333333" id="Stroke-8" stroke="#FFFFFF" stroke-width="2.13333333" stroke-linecap="round"></line>
+                    <path d="M9.86744,5.37805333 C6.20157333,7.49912 3.73330667,11.4601867 3.73330667,15.99992 C3.73330667,22.7745867 9.22530667,28.2665867 15.9999733,28.2665867 C22.77464,28.2665867 28.26664,22.7745867 28.26664,15.99992 C28.26664,11.4601867 25.7983733,7.49912 22.1325067,5.37805333" id="Stroke-10" stroke="#FFFFFF" stroke-width="2.13333333" stroke-linecap="round"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

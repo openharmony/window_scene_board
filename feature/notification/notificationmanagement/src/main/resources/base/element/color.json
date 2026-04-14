@@ -1,0 +1,32 @@
+{
+  "color": [
+    {
+      "name": "startWindowBackground",
+      "value": "#ffffff"
+    },
+    {
+      "name": "dividerColor",
+      "value": "#33000000"
+    },
+    {
+      "name": "ntfSettingsItemSecondaryFontColor",
+      "value": "#81000000"
+    },
+    {
+      "name": "colorDialogBg",
+      "value": "#FFFFFF"
+    },
+    {
+      "name": "app_color_text_secondary",
+      "value": "#99000000"
+    },
+    {
+      "name": "status_bar_setting_icon_color_dark",
+      "value": "#FFFFFFFF"
+    },
+    {
+      "name": "status_bar_setting_icon_color_light",
+      "value": "#FF000000"
+    }
+  ]
+}

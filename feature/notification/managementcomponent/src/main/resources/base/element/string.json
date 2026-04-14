@@ -1,0 +1,529 @@
+{
+    "string":[
+        {
+            "name":"batch_Management",
+            "value":"Manage all",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"version",
+            "value":"Version %s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"allowNotification",
+            "value":"Allow notifications",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pinTopNotification",
+            "value":"Pin notifications",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"slotType",
+            "value":"Notification type",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pinTopShowNotification",
+            "value":"Pin to top",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"slot_social_communication",
+            "value":"Social",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"slot_service_information",
+            "value":"Service notifications",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"slot_content_information",
+            "value":"Content & news",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"slot_other",
+            "value":"Other",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"noDisturb_none",
+            "value":"Disable",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"cancel",
+            "value":"Cancel",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"confirm",
+            "value":"OK",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notificationStyle",
+            "value":"Notification style",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notificationSound",
+            "value":"Notification tone",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_tip_open",
+            "value":"Notifications enabled",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_tip_close",
+            "value":"Notifications disabled",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"loading",
+            "value":"Loading…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntfSoundModeOnlyRing",
+            "value":"Play sound",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntfSoundModeOnlyVibration",
+            "value":"Vibrate",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"lock_screen",
+            "value":"Lock screen",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"only_notification_center",
+            "value":"Notification Panel only",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"banner",
+            "value":"Banner",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"badge",
+            "value":"Badges",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"slot_customer_service_message",
+            "value":"Customer service messages",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"show_preview_when_screen_lock",
+            "value":"Show notification previews when locked",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"show_desktop_badges",
+            "value":"Show badges",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"allow_notification_distribution",
+            "value":"Show notifications from phone",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"allow_live_view_distribution",
+            "value":"Show live views from phone",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"live_view_apps",
+            "value":"Apps",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"live_view_services",
+            "value":"Services",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"live_view_no_apps",
+            "value":"No apps available yet",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"live_view_no_services",
+            "value":"No services available yet",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"show_live_view_preview_when_screen_lock",
+            "value":"Show live view previews when locked",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wake_screen_when_receive_notification",
+            "value":"Wake screen for notifications",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"smart_hiding_of_banner_content",
+            "value":"Keep banners private",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"smart_reminder",
+            "value":"Smart notifications",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pure_show_title",
+            "value":"Simple display",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"show_notification_icon",
+            "value":"Show app notification icons",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"show_real_time_network_speed",
+            "value":"Show network speed",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"show_battery_soc",
+            "value":"Show battery percentage",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"setting",
+            "value":"Settings",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remind_only_notification_center",
+            "value":"Notification Panel only",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remind_sound",
+            "value":"Sound",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"splitter_format_for_2",
+            "value":"%1$s, %2$s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"splitter_format_for_3",
+            "value":"%1$s, %2$s, %3$s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"splitter_format_for_4",
+            "value":"%1$s, %2$s, %3$s, %4$s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"splitter_format_for_5",
+            "value":"%1$s, %2$s, %3$s, %4$s, %5$s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remind_banner_in_list",
+            "value":"Banners",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remind_lock_screen_in_list",
+            "value":"Lock screen",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remind_sound_in_list",
+            "value":"Sound",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remind_vibration_in_list",
+            "value":"Vibrate",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"check_box_selected",
+            "value":"Selected",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"check_box_unchecked",
+            "value":"Not selected",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_back_accessible",
+            "value":"Back, button",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntf_pin_top_dialog_reach_limit_title",
+            "value":"Maximum number of apps pinned",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"empty_service",
+            "value":"No services",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"application",
+            "value":"Apps",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"meta_service",
+            "value":"Services",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_list_loading_message",
+            "value":"Loading…",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"need_login_service_tips",
+            "value":"You need to be logged in with your HUAWEI ID to change these settings.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"login_button",
+            "value":"Log in",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"network_error",
+            "value":"Network error. Check your network settings.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"display_only_when_the_owner_is_looking",
+            "value":"Only when I'm looking",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"display_lock_Screen_notification_content_tip",
+            "value":"This option requires face recognition to be enabled.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"only_when_the_owner_is_looking_tip",
+            "value":"The \"Only when I'm looking\" option is only available when face recognition is enabled. %s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"only_when_the_owner_is_looking_tip_button",
+            "value":"Learn more",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"open_app_inner_ntf_mgmt",
+            "value":"Go to %s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"display_live_window_content",
+            "value":"Show live view content",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"display_live_window_content_tip",
+            "value":"For the best experience with live view, set this to \"Always\".",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"display_lock_Screen_notification_content",
+            "value":"Show lock screen notification content",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"display_banner_notification_content",
+            "value":"Show banner content",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"always_display",
+            "value":"Always",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"display_when_unlocked",
+            "value":"When unlocked",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"close_accessibility_text",
+            "value":"Close, button",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

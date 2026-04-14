@@ -1,0 +1,288 @@
+{
+    "string":[
+        {
+            "name":"live_view_authorization_confirm",
+            "value":"[TS_912392]_Yes"
+        },
+        {
+            "name":"live_view_authorization_tip",
+            "value":"[TS_912391]_Continue receiving live updates from this app?"
+        },
+        {
+            "name":"live_view_authorization_reject",
+            "value":"[TS_912394]_No"
+        },
+        {
+            "name":"Control_center_button_font_color",
+            "value":"[TS_912396]_#B3FFFFFF"
+        },
+        {
+            "name":"cc_accessibility_str_open_ringer_mode_normal",
+            "value":"[TS_917731]_Ringer enabled"
+        },
+        {
+            "name":"cc_accessibility_str_open_state",
+            "value":"[TS_917733]_Enabled"
+        },
+        {
+            "name":"cc_accessibility_str_bluetooth_close",
+            "value":"[TS_917712]_Disabled. Bluetooth is disabled. Switch"
+        },
+        {
+            "name":"cc_accessibility_str_switch",
+            "value":"[TS_917719]_%s switch"
+        },
+        {
+            "name":"cc_accessibility_str_open_ringer_mode_silent",
+            "value":"[TS_917720]_Muted"
+        },
+        {
+            "name":"cc_accessibility_str_wifi_open_conn",
+            "value":"[TS_917736]_Enabled. WLAN network is %s. Switch"
+        },
+        {
+            "name":"cc_accessibility_str_edit_remove_toggle_action",
+            "value":"[TS_917729]_Added to library"
+        },
+        {
+            "name":"cc_accessibility_str_bluetooth_open_conn",
+            "value":"[TS_917715]_Enabled. Bluetooth %s. Switch"
+        },
+        {
+            "name":"cc_accessibility_str_open_action",
+            "value":"[TS_917734]_Disabled"
+        },
+        {
+            "name":"cc_accessibility_str_entry_page_text",
+            "value":"[TS_917710]_Enter Control Panel"
+        },
+        {
+            "name":"cc_accessibility_str_bluetooth_name",
+            "value":"[TS_917718]_Bluetooth"
+        },
+        {
+            "name":"cc_accessibility_str_toggle_unavailable",
+            "value":"[TS_917722]_Not responsive"
+        },
+        {
+            "name":"cc_accessibility_str_edit_panel_tips_min_toggles",
+            "value":"[TS_917738]_At least %d switches must be kept."
+        },
+        {
+            "name":"Control_center_icon_on_color",
+            "value":"[TS_912393]_#CC000000"
+        },
+        {
+            "name":"cc_accessibility_str_bluetooth_open_def",
+            "value":"[TS_917727]_Enabled. Bluetooth not connected. Switch"
+        },
+        {
+            "name":"cc_accessibility_str_open_ringer_mode_vibrate",
+            "value":"[TS_917732]_Vibration enabled"
+        },
+        {
+            "name":"cc_accessibility_str_edit_move_toggle_coordinates",
+            "value":"[TS_917711]_%1$s is on row %2$d column %3$d"
+        },
+        {
+            "name":"Control_center_icon_shadow_color",
+            "value":"[TS_912395]_#00000000"
+        },
+        {
+            "name":"cc_accessibility_str_wifi_close",
+            "value":"[TS_917717]_Disabled. WLAN disabled. Switch"
+        },
+        {
+            "name":"cc_accessibility_str_close_state",
+            "value":"[TS_917725]_Disabled"
+        },
+        {
+            "name":"cc_accessibility_str_edit_panel_tips_max_toggles",
+            "value":"[TS_917730]_Maximum of %d switches."
+        },
+        {
+            "name":"cc_accessibility_str_edit_remove_toggle",
+            "value":"[TS_917714]_Add %s to library"
+        },
+        {
+            "name":"cc_accessibility_str_edit_add_toggle_coordinates",
+            "value":"[TS_917713]_Added to row %1$d column %2$d"
+        },
+        {
+            "name":"cc_accessibility_str_bluetooth_list",
+            "value":"[TS_917723]_View paired devices"
+        },
+        {
+            "name":"cc_accessibility_str_edit_add_toggle",
+            "value":"[TS_917728]_Add %s to Control Panel"
+        },
+        {
+            "name":"cc_accessibility_str_close_action",
+            "value":"[TS_917716]_Enabled"
+        },
+        {
+            "name":"cc_accessibility_str_wifi_list",
+            "value":"[TS_917737]_View list of WLAN networks"
+        },
+        {
+            "name":"cc_accessibility_str_common_button_str",
+            "value":"[TS_924296]_%s button"
+        },
+        {
+            "name":"cc_accessibility_str_wifi_open_def",
+            "value":"[TS_917726]_Enabled. WLAN not connected. Switch"
+        },
+        {
+            "name":"ntf_center_title",
+            "value":"[TS_817681]_Notification Panel"
+        },
+        {
+            "name":"cc_accessibility_str_timer_str_hour_to_minute_to_second",
+            "value":"[TS_958838]_%1$s %2$s %3$s"
+        },
+        {
+            "name":"cc_accessibility_str_timer_str_minute_to_second",
+            "value":"[TS_958839]_%1$s %2$s"
+        },
+        {
+            "name":"live_view_expanded",
+            "value":"[TS_1059828]_Expanded"
+        },
+        {
+            "name":"live_view_collapsed",
+            "value":"[TS_1059827]_Collapsed"
+        },
+        {
+            "name":"more_settings",
+            "value":"[TS_966655]_More settings"
+        },
+        {
+            "name":"smart_screenshot",
+            "value":"[TS_971218]_Screenshot"
+        },
+        {
+            "name":"cc_accessibility_str_edit_remove_toggle_new",
+            "value":"[TS_966635]_Remove, %s"
+        },
+        {
+            "name":"cc_accessibility_str_click",
+            "value":"[TS_966637]_Double-tap to activate,"
+        },
+        {
+            "name":"cc_accessibility_str_long_click",
+            "value":"[TS_966638]_Double tap and hold to bring up more options"
+        },
+        {
+            "name":"cc_accessibility_str_ring_mode_click",
+            "value":"[TS_966633]_Double-tap to switch to %s,"
+        },
+        {
+            "name":"cc_accessibility_str_switch_click",
+            "value":"[TS_966634]_Double-tap to %s,"
+        },
+        {
+            "name":"cc_accessibility_str_connect_state",
+            "value":"[TS_966636]_Connected to %s,"
+        },
+        {
+            "name":"live_view_hide_tip",
+            "value":"[TS_982106]_Unlock to view details"
+        },
+        {
+            "name":"gesture_identified_successfully",
+            "value":"[TS_988775]_Gesture identified successfully!"
+        },
+        {
+            "name":"automatic_brightness",
+            "value":"[TS_1025105]_Automatic"
+        },
+        {
+            "name":"ntf_pin_top_dialog_reach_limit_title",
+            "value":"[TS_818584]_Maximum number of apps pinned"
+        },
+        {
+            "name":"confirm",
+            "value":"[TS_784936]_OK"
+        },
+        {
+            "name":"please_unlock",
+            "value":"[TS_1041229]_Unlock your device"
+        },
+        {
+            "name":"cc_accessibility_str_edit_coordinates",
+            "value":"[TS_1062491]_Row %1$d, column %2$d"
+        },
+        {
+            "name":"edm_operate_prohibit_tip",
+            "value":"[TS_1067853]_This operation is prohibited by enterprise management."
+        },
+        {
+            "name":"aod_phone_timer_text",
+            "value":"[TS_1075473]_Call in progress"
+        },
+        {
+            "name":"control_center",
+            "value":"[TS_802844]_Control Panel"
+        },
+        {
+            "name":"aod_timing_timer_text",
+            "value":"[TS_1075474]_Timer on"
+        },
+        {
+            "name":"aod_count_down_timer_text",
+            "value":"[TS_1075472]_Counting down"
+        },
+        {
+            "name":"aod_timing_capsule_timer_text",
+            "value":"[TS_1098121]_Timing"
+        },
+        {
+            "name":"aod_count_down_capsule_timer_text",
+            "value":"[TS_1098120]_Counting down"
+        },
+        {
+            "name":"talkback_temperature",
+            "value":"[TS_1080725]_Maximum temperature %1$s. Minimum temperature %2$s."
+        },
+        {
+            "name":"stop_font_creation_service",
+            "value":"[TS_1091057]_Disable service"
+        },
+        {
+            "name":"silence_dialog_title",
+            "value":"[TS_1091778]_Use gentle notifications for %s?"
+        },
+        {
+            "name":"face_verifing",
+            "value":"[TS_1098256]_Face recognition"
+        },
+        {
+            "name":"silent_notifications_dialog",
+            "value":"[TS_1091020]_Gentle notifications are silent and only appear in the Notification Panel."
+        },
+        {
+            "name":"face_auth_recognize_success",
+            "value":"[TS_1098255]_Verified"
+        },
+        {
+            "name":"data_remain",
+            "value":"[TS_1115144]_Remaining %s"
+        },
+        {
+            "name":"data_total",
+            "value":"[TS_1115146]_Total %s"
+        },
+        {
+            "name":"data_use_today",
+            "value":"[TS_1115145]_Today %s"
+        },
+        {
+            "name":"data_exceed",
+            "value":"[TS_1115143]_%s over limit"
+        },
+        {
+            "name":"meta_service_live_view_authorization_tip",
+            "value":"[TS_1124482]_Continue receiving live updates from this service?"
+        }
+    ]
+}

@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"accessibility_status_bar_super_privacy_open",
+            "value":"Mode super privé activé",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

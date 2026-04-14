@@ -1,0 +1,200 @@
+{
+    "string":[
+        {
+            "name":"accessibility_cancel_this_edit",
+            "value":"إلغاء التغييرات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_back",
+            "value":"رجوع",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_save_this_edit",
+            "value":"حفظ التغييرات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_remove",
+            "value":"إزالة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_edit",
+            "value":"تحرير",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_note",
+            "value":"* إذا غادرت وضع الطاقة الاحتياطية، فقد لا تكفي طاقة البطارية لتشغيل الجهاز.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"emergency_enter_dialog_title",
+            "value":"البطارية ضعيفة للغاية",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Thermal_safe_note",
+            "value":"يُرجى عدم استخدام جهازك إن أمكن ذلك. سيتم الخروج من وضع التبريد تلقائيًا بمجرد عودة جهازك إلى حرارته الطبيعية.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_dialog_not_remind",
+            "value":"عدم الإظهار مرةً أخرى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_title",
+            "value":"وضع الطاقة الاحتياطية",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_all_application",
+            "value":"جميع التطبيقات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_button_exit",
+            "value":"خروج",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_title_dialog_enter",
+            "value":"البطارية منخفضة للغاية، تم تشغيل وضع الطاقة الاحتياطية لإطالة عمر البطارية.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_button_determined",
+            "value":"موافق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_button_cancel",
+            "value":"إلغاء",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"emergency_exit_with_charge_dialog_content",
+            "value":"إذا غادرت الآن فقد لا تكفي طاقة البطارية لتشغيل الجهاز.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_add_application",
+            "value":"إضافة تطبيقات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_search_application",
+            "value":"بحث عن التطبيقات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"thermal_safe_enter_dialog_dialog_title",
+            "value":"الهاتف ساخن جدًا",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_add",
+            "value":"إضافة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"emergency_exit_without_charge_dialog_content",
+            "value":"تذكر شحن الجهاز عندما تتاح لك الفرصة.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"thermal_safe_enter_dialog_dialog_content",
+            "value":"تم تنشيط وضع التبريد. سيتم الخروج من هذا الوضع بمجرد أن يبرد جهازك.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"emergency_enter_dialog_content",
+            "value":"تم تشغيل وضع الطاقة الاحتياطية لتمديد عمر البطارية.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Thermal_safe_title",
+            "value":"وضع التبريد",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_button_know",
+            "value":"حسنًا",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Thermal_safe_dialog_title_enter",
+            "value":"الجهاز ساخن للغاية. تم تشغيل وضع التبريد، وسيتم الخروج من هذا الوضع تلقائيًا بمجرد عودة جهازك إلى حرارته الطبيعية.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_dialog_title_exit",
+            "value":"هل تريد الخروج من وضع الطاقة الاحتياطية؟",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_shutdown_dialog_title_exit",
+            "value":"هل تريد الخروج من وضع الطاقة الاحتياطية وإيقاف التشغيل؟",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

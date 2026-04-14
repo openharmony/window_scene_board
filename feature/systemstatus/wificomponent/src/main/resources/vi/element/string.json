@@ -1,0 +1,74 @@
+{
+    "string":[
+        {
+            "name":"accessibility_status_bar_wifi_no",
+            "value":"Không có tín hiệu WLAN",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"shared_network_tips_network_messages",
+            "value":"Bạn có thể sử dụng mạng di động của %s để truy cập Internet cũng như gửi và nhận tin nhắn.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"shared_network_tips_network",
+            "value":"Bạn có thể sử dụng mạng di động của %s để truy cập Internet.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"shared_network_tips_network_calls",
+            "value":"Bạn có thể sử dụng mạng di động của %s để truy cập Internet cũng như thực hiện và nhận cuộc gọi.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"shared_network_tips1",
+            "value":"Bạn có thể sử dụng mạng di động của %s để truy cập Internet, thực hiện và nhận cuộc gọi, gửi và nhận tin nhắn.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"shared_network_tips",
+            "value":"Đang sử dụng mạng di động của %s.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_wifi_4",
+            "value":"Tín hiệu WLAN, đầy vạch",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_wifi_3",
+            "value":"Tín hiệu WLAN, ba vạch",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_wifi_2",
+            "value":"Tín hiệu WLAN, hai vạch",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_wifi_1",
+            "value":"Tín hiệu WLAN, một vạch",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

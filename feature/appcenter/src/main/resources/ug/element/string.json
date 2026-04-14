@@ -1,0 +1,67 @@
+{
+    "string":[
+        {
+            "name":"app_center_menu_add_dock",
+            "value":"تېزلەتمە بالداققا قوشۇش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_menu_open",
+            "value":"ئېچىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_menu_open_from_floating_window",
+            "value":"پلاۋىڭ ۋىندودىن ئېچىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_menu_open_from_split_screen",
+            "value":"بىرىكمە ئېكراندىن ئېچىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"uninstall",
+            "value":"ئۆچۈرۈش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_center_menu_add_desktop",
+            "value":"ئۈستەليۈزىگە قوشۇش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"isUninstall",
+            "value":"\u200f«%s» نى ئۆچۈرەمسىز؟",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"search_no_result",
+            "value":"نەتىجە يوق",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"drag_full",
+            "value":"بەت توشۇپ كەتتى، سىنبەلگە يۆتكەلمەيدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        }
+    ]
+}

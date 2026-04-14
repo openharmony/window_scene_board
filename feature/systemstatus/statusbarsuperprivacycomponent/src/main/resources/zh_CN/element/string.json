@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"accessibility_status_bar_super_privacy_open",
+            "value":"超级隐私保护中",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

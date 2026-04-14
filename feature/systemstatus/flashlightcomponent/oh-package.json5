@@ -1,0 +1,13 @@
+{
+  "name": "@ohos/flashlightcomponent",
+  "description": "a npm package which contains flashlightcomponent function",
+  "version": "1.0.0",
+  "dependencies": {
+    "@ohos/basicutils": "file:../../../staticcommon/basecommon/basicutils",
+    "@ohos/frameworkwrapper": "file:../../../staticcommon/basecommon/frameworkwrapper",
+    "@ohos/commonconstants": "file:../../../staticcommon/basecommon/commonconstants",
+    "@ohos/systemuicommon": "file:../../../staticcommon/systemuicommon",
+    "@ohos/screenlockcommon": "file:../../../staticcommon/screenlockcommon",
+    "@ohos/controlcentercommon": "file:../../../staticcommon/controlcentercommon"
+  }
+}

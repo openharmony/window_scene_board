@@ -1,0 +1,10 @@
+{
+  "module": {
+    "name": "plugincomponent",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ]
+  }
+}

@@ -1,0 +1,80 @@
+{
+    "plural":[
+        {
+            "name":"cc_accessibility_str_timer_str_hour",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"%d horas",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"one",
+                    "value":"%d hora",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"cc_accessibility_str_timer_str_minute",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"%d minutos",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"one",
+                    "value":"%d minuto",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"ntf_pin_top_dialog_reach_limit_content",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"Se puede anclar arriba hasta %d aplicación. Elimina las aplicaciones que ya no quieras anclar.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"Se pueden anclar arriba hasta %d aplicaciones. Elimina las aplicaciones que ya no quieras anclar.",
+                    "attr":{
+                        "priority":"LT"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"cc_accessibility_str_timer_str_second",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"%d segundo",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"%d segundos",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

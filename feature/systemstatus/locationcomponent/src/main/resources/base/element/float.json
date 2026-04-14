@@ -1,0 +1,24 @@
+{
+  "float": [
+    {
+      "name": "status_bar_location_width",
+      "value": "12.75vp"
+    },
+    {
+      "name": "status_bar_location_height",
+      "value": "16vp"
+    },
+    {
+      "name": "pc_status_bar_location_width",
+      "value": "24vp"
+    },
+    {
+      "name": "pc_status_bar_location_height",
+      "value": "24vp"
+    },
+    {
+      "name": "icon_component_opacity",
+      "value": "1"
+    }
+  ]
+}

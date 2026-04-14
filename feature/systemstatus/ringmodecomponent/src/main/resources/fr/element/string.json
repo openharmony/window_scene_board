@@ -1,0 +1,39 @@
+{
+    "string":[
+        {
+            "name":"control_center_complex_toggle_ring_mode_title_on",
+            "value":"Son",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_ring_mode_title_off",
+            "value":"Silencieux",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_ring_mode_title_vibration",
+            "value":"Vibreur",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_ring_off_filled",
+            "value":"La vibration est désactivée",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_vibration_on",
+            "value":"La vibration est activée",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

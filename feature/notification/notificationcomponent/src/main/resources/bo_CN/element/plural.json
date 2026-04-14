@@ -1,0 +1,28 @@
+{
+    "plural":[
+        {
+            "name":"ntf_hide_content_count",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"བརྡ་ཐོ་ %d",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"live_hide_content",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"དུས་དངོས་གནས་ཚུལ་ %d",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

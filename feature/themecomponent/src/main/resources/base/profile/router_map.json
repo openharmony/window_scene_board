@@ -1,0 +1,17 @@
+{
+  "routerMap": [
+    {
+      "name": "wallpaperSetting",
+      "pageSourceFile": "src/main/ets/pages/ShowWallpaperPage.ets",
+      "buildFunction": "ShowWallpaperPageBuilder",
+      "data": {
+        "description": "this is pageOne"
+      }
+    },
+    {
+      "name": "wallpaperEditor",
+      "pageSourceFile": "src/main/ets/pages/WallpaperEditPage.ets",
+      "buildFunction": "WallpaperEditPageBuilder"
+    }
+  ]
+}

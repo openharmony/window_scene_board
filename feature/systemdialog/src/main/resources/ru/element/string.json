@@ -1,0 +1,144 @@
+{
+    "string":[
+        {
+            "name":"off_find_alert_dialog_message",
+            "value":"Его по-прежнему можно найти с помощью функции Поиск устройства. Если вы сейчас выключите функцию Поиск устройства, она будет включена при следующем включении устройства.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"off_find_no_action_confirm",
+            "value":"OK",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"off_find_checkbox",
+            "value":"Не выключать функцию Поиск устройства при выключении устройства",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"off_find_alert_dialog_title",
+            "value":"Устройство можно будет найти после его выключения",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"off_find_disable_confirm",
+            "value":"Выключить Поиск устройства",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"thermal_aware_toast",
+            "value":"Раскройте устройство для оптимального опыта использования.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Poweroff_Button_Click_Reboot",
+            "value":"Нажмите, чтобы перезагрузить",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"shutdown_dialog_title",
+            "value":"Внимание",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"power_schedule_switch_reminder",
+            "value":"Включить по расписанию (%s)",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Poweroff_Button_Reboot",
+            "value":"Перезагрузить",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"poweroff_tips",
+            "value":"Нажмите и удерживайте кнопки питания и уменьшения громкости минимум %d секунд для принудительной перезагрузки",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Poweroff_Button_Click_Shutdown",
+            "value":"Нажмите, чтобы выключить",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"battery_emergency_dialog_content",
+            "value":"Батарея почти полностью разряжена. Режим максимального энергосбережения активируется через %d секунд.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"shutdown_dialog_content_new",
+            "value":"Батарея почти разряжена. Устройство выключится через %d секунд.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Poweroff_Button_Shutdown",
+            "value":"Выключить",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"poweroff_fold_tips",
+            "value":"Нажмите и удерживайте кнопки питания и уменьшения громкости минимум %d секунд для принудительной перезагрузки",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"power_schedule_switch_toast",
+            "value":"Ваше устройство не включится автоматически.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"accessibility_power_off",
+            "value":"Выключить",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_reboot",
+            "value":"Перезагрузить",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_back",
+            "value":"Закрыть экран выключения",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

@@ -1,0 +1,24 @@
+{
+  "float": [
+    {
+      "name": "icon_component_opacity",
+      "value": "1"
+    },
+    {
+      "name": "linkspeed_font_size",
+      "value": "8vp"
+    },
+    {
+      "name": "linkspeed_width",
+      "value": "17vp"
+    },
+    {
+      "name": "linkspeed_margin_top",
+      "value": "-2vp"
+    },
+    {
+      "name": "linkspeed_width_null",
+      "value": "0vp"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "float": [
+    {
+      "name": "normal_form_manager_radius",
+      "value": "100"
+    },
+    {
+      "name": "normal_form_manager_offset",
+      "value": "24"
+    },
+    {
+      "name": "normal_form_center_radius",
+      "value": "60"
+    },
+    {
+      "name": "normal_form_center_offset",
+      "value": "24"
+    },
+    {
+      "name": "outer_normal_form_center_radius",
+      "value": "30"
+    },
+    {
+      "name": "form_back_radius",
+      "value": "100"
+    },
+    {
+      "name": "form_name_gap",
+      "value": "2"
+    },
+    {
+      "name": "form_name_height",
+      "value": "-1"
+    }
+  ]
+}

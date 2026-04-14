@@ -1,0 +1,103 @@
+{
+    "string":[
+        {
+            "name":"confirm_shutdown_dialog_title",
+            "value":"ئۈسكۈنە ئېتىلمەكچى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"confirm_shutdown_tip",
+            "value":"ئۈسكۈنىنى ئەتسىڭىز، ساقلانمىغان مەزمۇن يوقىلىشى مۇمكىن.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"confirm_reboot_tip",
+            "value":"قايتا قوزغاتسىڭىز، ساقلانمىغان مەزمۇن يوقىلىشى مۇمكىن.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"confirm_restarting_dialog_title",
+            "value":"ئۈسكۈنە قايتا قوزغالماقچى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"common_cancel",
+            "value":"بىكار قىلىش"
+        },
+        {
+            "name":"got_it",
+            "value":"بىلدىم"
+        },
+        {
+            "name":"shutdown_warning_when_kiddo_update",
+            "value":"مەۋھۇم ئۈسكۈنە يېڭىلىنىۋاتىدۇ، ھازىر ئەتسىڭىز مەۋھۇم ئۈسكۈنە بۇزۇلۇشى مۇمكىن، كېيىنرەك قايتا سىناڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"reboot_warning_when_kiddo_update",
+            "value":"مەۋھۇم ئۈسكۈنە يېڭىلىنىۋاتىدۇ، ھازىر قايتا قوزغاتسىڭىز مەۋھۇم ئۈسكۈنە بۇزۇلۇشى مۇمكىن، كېيىنرەك قايتا سىناڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_not_saving",
+            "value":"بۇ ئەپتە ساقلىمىغان ئۆزگەرتىشلەر بار.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"continue_restart",
+            "value":"قايتا قوزغىتىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"continue_shutdown",
+            "value":"ئۈسكۈنە ئېتىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"shutdown_warning_when_kiddo_update_in_other_user",
+            "value":"باشقا ئىشلەتكۈچى نامىدىكى مەۋھۇم ئۈسكۈنە يېڭىلىنىۋاتىدۇ، ھازىر ئەتسىڭىز مەۋھۇم ئۈسكۈنە بۇزۇلۇشى مۇمكىن، كېيىنرەك قايتا سىناڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"reboot_warning_when_kiddo_update_in_other_user",
+            "value":"باشقا ئىشلەتكۈچى نامىدىكى مەۋھۇم ئۈسكۈنە يېڭىلىنىۋاتىدۇ، ھازىر قايتا قوزغاتسىڭىز مەۋھۇم ئۈسكۈنە بۇزۇلۇشى مۇمكىن، كېيىنرەك قايتا سىناڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"continue_mode_change",
+            "value":"ئالماشتۇرۇش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"confirm_mode_change_dialog_title",
+            "value":"سىستېما ھالىتى ئالماشماقچى",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

@@ -52,6 +52,7 @@ function ohpm_install_deps() {
     cd ${PROJECT_PATH}
     ohpm -v
     ohpm_install "${PROJECT_PATH}"
+    ohpm_install "${PROJECT_PATH}/staticcommon/screenlockcommon"
     ohpm_install "${PROJECT_PATH}/feature/appcenter"
     ohpm_install "${PROJECT_PATH}/feature/carcastsource"
     ohpm_install "${PROJECT_PATH}/feature/castengine"
@@ -125,6 +126,8 @@ function ohpm_install_deps() {
     ohpm_install "${PROJECT_PATH}/feature/statusbarextension"
     ohpm_install "${PROJECT_PATH}/product/phone"
     ohpm_install "${PROJECT_PATH}/product/pc"
+    ohpm_install "${PROJECT_PATH}/staticcommon/systemuicommon"
+    ohpm_install "${PROJECT_PATH}/staticcommon/launchercommon"
     ohpm_install "${PROJECT_PATH}/feature/themeservice/themeservice_base"
     ohpm_install "${PROJECT_PATH}/feature/themeservice/themeservice_inner_api"
     ohpm_install "${PROJECT_PATH}/feature/themeservice/themeservice_core_lem"

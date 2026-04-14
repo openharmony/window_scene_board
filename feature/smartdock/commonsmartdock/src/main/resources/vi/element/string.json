@@ -1,0 +1,116 @@
+{
+    "string":[
+        {
+            "name":"duplicate_add",
+            "value":"Đã được thêm rồi.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remove_from_dock",
+            "value":"Gỡ khỏi thanh tác vụ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_menu_exit",
+            "value":"Thoát",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"continue_mission_fail_device_connecting_to_another_device",
+            "value":"Chuyển giao không thành công. %1$s đang tương tác với một thiết bị khác.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"delete_app",
+            "value":"Gỡ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_add_to_dock",
+            "value":"Không thêm được.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_center_menu_add_desktop",
+            "value":"Thêm vào màn hình chính",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"continue_mission_fail_close_hotspot_and_try_again",
+            "value":"Chuyển giao không thành công. Tắt điểm phát sóng cá nhân trên %1$s và thử lại.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"continue_mission_fail",
+            "value":"Chuyển giao không thành công.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_menu_open",
+            "value":"Mở",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_menu_clean",
+            "value":"Làm trống Thùng rác",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"isUninstall",
+            "value":"Gỡ cài đặt %s?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"continue_mission_waiting",
+            "value":"Đang chuyển giao…",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_menu_more",
+            "value":"Xem thêm",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_dock",
+            "value":"Thanh dock",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_beyond_max",
+            "value":"Đã thêm số lượng biểu tượng tối đa.",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

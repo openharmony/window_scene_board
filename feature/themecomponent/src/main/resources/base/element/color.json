@@ -1,0 +1,24 @@
+{
+  "color": [
+    {
+      "name": "start_window_background",
+      "value": "#00000000"
+    },
+    {
+      "name": "pandora_start_window_background",
+      "value": "#FF000000"
+    },
+    {
+      "name": "stop_dialog_service",
+      "value": "#E84026"
+    },
+    {
+      "name": "dialog_background_color",
+      "value": "#00000000"
+    },
+    {
+      "name": "transparent",
+      "value": "#00000000"
+    }
+  ]
+}

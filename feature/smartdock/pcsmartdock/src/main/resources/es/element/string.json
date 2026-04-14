@@ -1,0 +1,95 @@
+{
+    "string":[
+        {
+            "name":"remove_from_dock",
+            "value":"Eliminar de la barra inferior",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dock_hover_text_recentcenter",
+            "value":"Centro de tareas",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_center_menu_add_desktop",
+            "value":"Añadir a pantalla principal",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"continue_hap_come_from",
+            "value":"De “%1$s”.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_menu_open_new_window",
+            "value":"Abrir nueva ventana",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_menu_exit_multiple",
+            "value":"Cerrar todas las ventanas",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_menu_open",
+            "value":"Abrir",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_menu_exit_single",
+            "value":"Cerrar ventana",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_menu_clean",
+            "value":"Vaciar papelera de reciclaje",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dock_hover_text_appcenter",
+            "value":"Centro de apps",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dock_hover_text_recyclebin",
+            "value":"Papelera de reciclaje",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"more_app_icon",
+            "value":"Más aplicaciones",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_dock_menu_suggest_title",
+            "value":"Sugerencias",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

@@ -1,0 +1,162 @@
+{
+    "string":[
+        {
+            "name":"screenlock_settings",
+            "value":"Bloquear pantalla",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_stop_service_text",
+            "value":"Si desactivas este servicio, ya no podrás crear fuentes basadas en el texto contenido en las imágenes.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"stop_font_creation_service",
+            "value":"Deshabilitar servicio",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screenlock_font_creation_service_text",
+            "value":"Servicio de creación de fuentes de la pantalla de bloqueo",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screenlock_font_creation_service",
+            "value":"Servicio de creación de fuentes de la pantalla de bloqueo",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_one",
+            "value":"Este servicio utiliza IA basada en la nube para generar fuentes a partir del texto contenido en imágenes. Las fuentes generadas se pueden aplicar al reloj y a la firma de la pantalla de bloqueo.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_four",
+            "value":"Declaración acerca del Servicio de creación de fuentes de la pantalla de bloqueo y la privacidad",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_setting_footbar_new",
+            "value":"Este servicio requiere conexión a Internet y necesita leer y cargar/transferir imágenes para proporcionar funciones de creación de la pantalla de bloqueo frontal. Solo recopilamos información personal relacionada con las funciones que utilizas. Para más información, consulta la %1$s y los %2$s. Si activas este selector, indicas que aceptas que te proporcionemos este servicio.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_five",
+            "value":"Términos y condiciones",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_creation_dialog_part_three",
+            "value":"Este servicio requiere conexión a Internet y necesita leer y cargar/transferir imágenes para proporcionar funciones de creación de la pantalla de bloqueo frontal. Solo recopilamos información personal relacionada con las funciones que utilizas. Para obtener más información, consulta la %1$s y los %2$s.\nLee detenidamente el contenido anterior. Si pulsas Acepto, significa que aceptas que te proporcionemos este servicio.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"icon_settings",
+            "value":"Iconos",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"icon_settings_content",
+            "value":"Cambia el tamaño y el nombre de los iconos de la pantalla principal.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"icon_edit_not_support_small_step",
+            "value":"No se pueden ajustar los iconos cuando Ajustes esté abierto en una ventana flotante.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+      {
+        "name": "theme_title",
+        "value": "theme title"
+      },
+        {
+            "name": "notification_main_time_travel_ongoing_content",
+            "value": "notification main"
+        },
+        {
+            "name": "notification_main_time_travel_finish_content",
+            "value": "travel finish content"
+        },
+        {
+            "name": "time_travel_generate_failed",
+            "value": ""
+        },
+        {
+            "name": "notification_main_dimensional_travel_ongoing_content",
+            "value": ""
+        },
+        {
+            "name": "notification_main_dimensional_travel_finish_content",
+            "value": ""
+        },
+        {
+            "name": "dimensional_travel_generate_failed",
+            "value": ""
+        },
+        {
+            "name": "notification_dynamic_lead_ongoing_content",
+            "value": ""
+        },
+        {
+            "name": "notification_dynamic_lead_finish_content",
+            "value": ""
+        },
+        {
+            "name": "dynamic_lead_generate_failed",
+            "value": ""
+        },
+        {
+            "name": "notification_main_pandora_title",
+            "value": ""
+        },
+      {
+        "name":"edit_wallpaper",
+        "value":"Fondos de pantalla",
+        "attr":{
+          "priority":"translate"
+        }
+      },
+      {
+        "name": "theme_chose",
+        "value": "Seleccionar de la galería"
+      },
+      {
+        "name": "current_wallpaper",
+        "value": "Mi fondo de pantalla"
+      },
+      {
+        "name": "managment",
+        "value": ""
+      },
+      {
+        "name": "wallpaper_editor",
+        "value": "Aplicar"
+      }
+    ]
+}

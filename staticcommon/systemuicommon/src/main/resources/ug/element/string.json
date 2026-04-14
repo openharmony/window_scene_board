@@ -1,0 +1,480 @@
+{
+    "string":[
+        {
+            "name":"live_view_authorization_confirm",
+            "value":"شۇنداق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"live_view_authorization_tip",
+            "value":"بۇ ئەپنىڭ ھالەت كۆزنىكىنى داۋاملىق كۆرەمسىز؟",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"live_view_authorization_reject",
+            "value":"ياق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_open_ringer_mode_normal",
+            "value":"سايراش ھالىتى ئوچۇق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_open_state",
+            "value":"ئوچۇق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_bluetooth_close",
+            "value":"ئېتىك، كۆكچىش ئېتىك، ئۈزچات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_switch",
+            "value":"\u200f%s ئۈزچات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_open_ringer_mode_silent",
+            "value":"تىنچ ھالەت ئوچۇق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_wifi_open_conn",
+            "value":"ئوچۇق، WLAN تورى %s، ئۈزچات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_edit_remove_toggle_action",
+            "value":"ئامبارغا قوشۇلدى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_bluetooth_open_conn",
+            "value":"ئوچۇق، كۆكچىش %s، ئۈزچات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_open_action",
+            "value":"ئېتىك",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_entry_page_text",
+            "value":"تىزگىنلەش مەركىزىگە كىرىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_bluetooth_name",
+            "value":"كۆكچىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_toggle_unavailable",
+            "value":"چېكىلمەيدۇ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_bluetooth_open_def",
+            "value":"ئوچۇق، كۆكچىش ئۇلانمىدى، ئۈزچات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_open_ringer_mode_vibrate",
+            "value":"تىترەش ھالىتى ئوچۇق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_edit_move_toggle_coordinates",
+            "value":"نۆۋەتتە %1$s بەتتىكى %2$d-قۇر %3$d-رەتتە",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_wifi_close",
+            "value":"ئېتىك، WLAN ئېتىك، ئۈزچات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_close_state",
+            "value":"ئېتىك",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_edit_remove_toggle",
+            "value":"\u200f%s نى ئامبارغا قوشۇش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_edit_add_toggle_coordinates",
+            "value":"%1$d-قۇر %2$d-رەتكە قوشۇلدى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_bluetooth_list",
+            "value":"جۈپلەك ئۈسكۈنىلەرنى كۆرۈش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_edit_add_toggle",
+            "value":"تىزگىنلەش مەركىزىگە %s نى قوشۇش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_close_action",
+            "value":"ئوچۇق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_wifi_list",
+            "value":"\u200fWLAN تورى تىزىملىكىنى كۆرۈش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_wifi_open_def",
+            "value":"ئوچۇق، WLAN ئۇلانمىدى، ئۈزچات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_edit_panel_tips_min_toggles",
+            "value":"كەمىدە %d ئۈزچاتنى ساقلاپ قېلىش كېرەك.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_edit_panel_tips_max_toggles",
+            "value":"كۆپىدە %d ئۈزچات كۆرۈنىدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_common_button_str",
+            "value":"‏%s كۇنۇپكىسى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntf_center_title",
+            "value":"ئۇقتۇرۇش مەركىزى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_timer_str_minute_to_second",
+            "value":"%1$s %2$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_timer_str_hour_to_minute_to_second",
+            "value":"%1$s %2$s %3$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"live_view_expanded",
+            "value":"يېيىلدى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"live_view_collapsed",
+            "value":"يىغىلدى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"more_settings",
+            "value":"باشقا تەڭشەكلەر",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"smart_screenshot",
+            "value":"دائىرىلىك ئېكران تۇتۇش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_edit_remove_toggle_new",
+            "value":"چىقىرىۋېتىش، %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_click",
+            "value":"قوش چەكسىڭىز يۈرگۈزۈلىدۇ،",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_long_click",
+            "value":"قوش چېكىپ تۇرسىڭىز باشقا تاللانمىلار چىقىدۇ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_ring_mode_click",
+            "value":"بىر بارماقتا قوش چەكسىڭىز %s ئالمىشىدۇ،",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_switch_click",
+            "value":"%s ئۈچۈن بىر بارماقتا قوش چېكىڭ،",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_connect_state",
+            "value":"نۆۋەتتە %s ئۇلاندى،",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"live_view_hide_tip",
+            "value":"يوشۇرۇن ئۇچۇرلارنى كۆرۈش ئۈچۈن قۇلۇپ ئېچىڭ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"gesture_identified_successfully",
+            "value":"ئىشارە تونۇلدى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"automatic_brightness",
+            "value":"ئۆزلۈكىدىن تەڭشەش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntf_pin_top_dialog_reach_limit_title",
+            "value":"چوققىلاش چېكى توشتى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_edit_coordinates",
+            "value":"%1$d-قۇر، %2$d-رەت",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"confirm",
+            "value":"جەزملەش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"please_unlock",
+            "value":"قۇلۇپ ئېچىڭ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"edm_operate_prohibit_tip",
+            "value":"كارخانا تۈزۈمى بۇ مەشغۇلاتنى چەكلەيدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_count_down_timer_text",
+            "value":"تەتۈر ساناق...",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_timing_capsule_timer_text",
+            "value":"ۋاقىت ساناۋاتىدۇ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_count_down_capsule_timer_text",
+            "value":"تەتۈر ساناق",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"control_center",
+            "value":"تىزگىنلەش مەركىزى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aod_phone_timer_text",
+            "value":"سۆزلىشىۋاتىدۇ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_timing_timer_text",
+            "value":"تەتۈر ساناق ئوچۇق",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"talkback_temperature",
+            "value":"يۇقىرىسى ‎%1$s، تۆۋىنى ‎%2$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"stop_font_creation_service",
+            "value":"مۇلازىمەتنى ئېتىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"face_verifing",
+            "value":"يۈز تونۇۋاتىدۇ...",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"face_auth_recognize_success",
+            "value":"دەلىللەندى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"silence_dialog_title",
+            "value":"\u200f«%s» ئۈچۈن تىنچ ئۇقتۇرۇش بېكىتەمسىز؟",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"silent_notifications_dialog",
+            "value":"تىنچ ئۇقتۇرۇش سايرىمايدۇ، ئۇقتۇرۇش بالدىقىنى سىيرىسىڭىز كۆرۈنىدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"data_remain",
+            "value":"قالدۇق ‎%s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"data_total",
+            "value":"جەمئىي ‎%s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"data_use_today",
+            "value":"بۈگۈن ‎%s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"data_exceed",
+            "value":"چەكتىن ‎%s ئارتۇق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"meta_service_live_view_authorization_tip",
+            "value":"بۇ تۈپ مۇلازىمەتنىڭ ھالەت كۆزنىكىنى داۋاملىق كۆرەمسىز؟",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

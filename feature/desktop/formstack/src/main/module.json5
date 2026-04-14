@@ -1,0 +1,9 @@
+{
+  "module": {
+    "name": "launcher_formstack",
+    "type": "har",
+    "deviceTypes": [
+      "default"
+    ]
+  }
+}

@@ -1,0 +1,116 @@
+{
+    "string":[
+        {
+            "name":"action_button_reply",
+            "value":"Trả lời",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"banner_hint_message",
+            "value":"Không thể hiển thị tin nhắn này trên Vision Glass. Xem tin nhắn này trên điện thoại của bạn.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screenshot_privacy",
+            "value":"Không thể chụp ảnh màn hình. Màn hình hiện tại có thể chứa thông tin nhạy cảm.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Input_prompt",
+            "value":"Ngắt kết nối và nhập văn bản vào ứng dụng trên điện thoại của bạn.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Incoming_call_prompt",
+            "value":"Nhận cuộc gọi trên điện thoại của bạn",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"banner_toast_message",
+            "value":"Xem tin nhắn này trên điện thoại của bạn.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_phone_power_save_mode",
+            "value":"Chế độ tiết kiệm pin",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_phone_cast_screen",
+            "value":"Phản chiếu điện thoại",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ScreenShot_label",
+            "value":"Chụp màn hình",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_adjustment",
+            "value":"Điều chỉnh đơn kính",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_screenshot_no_right",
+            "value":"Chụp ảnh màn hình yêu cầu quyền truy cập Hình ảnh và video. Cấp quyền trong cửa sổ bật lên trên điện thoại hoặc trong Cài đặt.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Incoming_call_title",
+            "value":"%s đang gọi",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_wlan",
+            "value":"WLAN",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_app_to_glass_msg",
+            "value":"Thêm %s vào Thư viện ứng dụng.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_bluetooth",
+            "value":"Bluetooth",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Incoming_call_flag",
+            "value":"Cuộc gọi đến",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

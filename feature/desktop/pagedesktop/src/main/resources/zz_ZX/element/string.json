@@ -1,0 +1,256 @@
+{
+    "string":[
+        {
+            "name":"form_in_desktop_exceed",
+            "value":"[TS_899906]_Maximum number of widgets reached."
+        },
+        {
+            "name":"individuation",
+            "value":"[TS_899886]_Personalize"
+        },
+        {
+            "name":"delete_app",
+            "value":"[TS_899890]_Remove"
+        },
+        {
+            "name":"uninstall",
+            "value":"[TS_899892]_Uninstall"
+        },
+        {
+            "name":"covertTo_bigFolder",
+            "value":"[TS_899881]_Enlarge"
+        },
+        {
+            "name":"layoutmanager_MainAbility",
+            "value":"[TS_899889]_layoutmanager_MainAbility"
+        },
+        {
+            "name":"is_delete_card",
+            "value":"[TS_934937]_Remove %s widget?"
+        },
+        {
+            "name":"refresh",
+            "value":"[TS_899893]_Refresh"
+        },
+        {
+            "name":"rename_folder",
+            "value":"[TS_899894]_Rename"
+        },
+        {
+            "name":"remove_from_desktop",
+            "value":"[TS_899904]_Remove from home screen"
+        },
+        {
+            "name":"add_icon_to_desktop_max",
+            "value":"[TS_900173]_No space on home screen. Try moving some items."
+        },
+        {
+            "name":"add_form_to_desktop_max",
+            "value":"[TS_899895]_No space left on current screen."
+        },
+        {
+            "name":"paste",
+            "value":"[TS_899896]_Paste"
+        },
+        {
+            "name":"add_black_page_to_desktop_max",
+            "value":"[TS_899900]_Max number of home screens reached."
+        },
+        {
+            "name":"right_create",
+            "value":"[TS_899907]_New"
+        },
+        {
+            "name":"cancel",
+            "value":"[TS_899885]_Cancel"
+        },
+        {
+            "name":"covertTo_smallFolder",
+            "value":"[TS_899901]_Shrink"
+        },
+        {
+            "name":"form",
+            "value":"[TS_899902]_Card"
+        },
+        {
+            "name":"added_to_desktop",
+            "value":"[TS_899879]_Added to home screen."
+        },
+        {
+            "name":"right_create_folder",
+            "value":"[TS_899905]_Folder"
+        },
+        {
+            "name":"new_folder",
+            "value":"[TS_899880]_New folder"
+        },
+        {
+            "name":"mainability_description",
+            "value":"[TS_899882]_ETS_Empty Feature Ability"
+        },
+        {
+            "name":"add_to_desktop",
+            "value":"[TS_899899]_add to desktop"
+        },
+        {
+            "name":"home_screen",
+            "value":"[TS_921310]_Huawei home screen"
+        },
+        {
+            "name":"desktop_current_page",
+            "value":"[TS_921309]_Screen %1$s of %2$s"
+        },
+        {
+            "name":"can_not_remove_from_flod",
+            "value":"[TS_917610]_This app can't be moved out of this folder."
+        },
+        {
+            "name":"can_not_rename_flod",
+            "value":"[TS_917611]_This folder can't be renamed."
+        },
+        {
+            "name":"can_not_add_to_flod",
+            "value":"[TS_917608]_This app can't be added to this folder."
+        },
+        {
+            "name":"folder_is_closed",
+            "value":"[TS_949973]_Folder is closed"
+        },
+        {
+            "name":"folder_add",
+            "value":"[TS_949972]_Add"
+        },
+        {
+            "name":"d_app_dialog_content",
+            "value":"[TS_950190]_%s is now available for OpenHarmony. Update your app for an all new experience.\n\nPlease note that some app data may be lost when switching versions."
+        },
+        {
+            "name":"d_app_dialog_cancel",
+            "value":"[TS_950188]_Ignore"
+        },
+        {
+            "name":"d_app_dialog_confirm",
+            "value":"[TS_950189]_Update now"
+        },
+        {
+            "name":"sort_by_create_time",
+            "value":"[TS_960933]_Date created"
+        },
+        {
+            "name":"sort_by_type",
+            "value":"[TS_960932]_Type"
+        },
+        {
+            "name":"desktop_sort",
+            "value":"[TS_960928]_Sort by"
+        },
+        {
+            "name":"sort_by_modify_time",
+            "value":"[TS_960931]_Date modified"
+        },
+        {
+            "name":"sort_by_size",
+            "value":"[TS_960929]_Size"
+        },
+        {
+            "name":"sort_by_name",
+            "value":"[TS_960930]_Name"
+        },
+        {
+            "name":"folder_create_toast",
+            "value":"[TS_967376]_%1$s has been placed with %2$s in the \"%3$s\" folder on home screen %4$d."
+        },
+        {
+            "name":"folder_add_toast",
+            "value":"[TS_967377]_%1$s has been placed in the \"%2$s\" folder on home screen %3$d."
+        },
+        {
+            "name":"is_delete_app",
+            "value":"[TS_970200]_Remove %s?"
+        },
+        {
+            "name":"folder_rename_clear",
+            "value":"[TS_980581]_Clear text"
+        },
+        {
+            "name":"content_add_toast",
+            "value":"[TS_998054]_Unable to add. Not enough room if rotated."
+        },
+        {
+            "name":"right_collaboration",
+            "value":"[TS_1002966]_Import from another device"
+        },
+        {
+            "name":"right_shell",
+            "value":"[TS_1006775]_HiShell"
+        },
+        {
+            "name":"drag_page_tip",
+            "value":"[TS_1016163]_Hold & drag screens to change order"
+        },
+        {
+            "name":"app_cant_add_to_folder",
+            "value":"[TS_1018746]_Can't add app icons to folders."
+        },
+        {
+            "name":"cant_add_current_or_portrait",
+            "value":"[TS_1033937]_Unable to place. Widget won't fit in both orientations."
+        },
+        {
+            "name":"cant_add_current_or_landscape",
+            "value":"[TS_1033936]_Unable to place. Widget won't fit in both orientations."
+        },
+        {
+            "name":"desktop_current_page_tips",
+            "value":"[TS_1020446]_Screen %1$s of %2$s"
+        },
+        {
+            "name":"bigFolder_useGuidance_content",
+            "value":"[TS_1059811]_Touch & hold a folder, then drag the outline to enlarge it."
+        },
+        {
+            "name":"bigFolder_useGuidance_title",
+            "value":"[TS_1059809]_Resize folders"
+        },
+        {
+            "name":"bigFolder_useGuidance_button",
+            "value":"[TS_1059810]_Got it"
+        },
+        {
+            "name":"edit_mode_pinch_gesture_tip",
+            "value":"[TS_1042388]_Pinch with two fingers to add apps and widgets"
+        },
+        {
+            "name":"folder_rename_cleared",
+            "value":"[TS_1063157]_Cleared"
+        },
+        {
+            "name":"add_card_fail_desktop",
+            "value":"[TS_1063155]_Unable to add. Try again later."
+        },
+        {
+            "name":"add_card_success_desktop",
+            "value":"[TS_1063156]_Successfully added."
+        },
+        {
+            "name":"photo_table",
+            "value":"[TS_1104710]_Smart frame"
+        },
+        {
+            "name":"gacha_card_name",
+            "value":"[TS_1104709]_Random movie picker"
+        },
+        {
+            "name":"smart_assistant_today",
+            "value":"[TS_1109917]_Assistant·TODAY"
+        },
+        {
+            "name":"toast_the_app_no_support_move",
+            "value":"[TS_1114075]_This app can't be moved."
+        },
+        {
+            "name":"desktop_had_existed_the_app",
+            "value":"[TS_1066144]_This app is already on the home screen."
+        }
+    ]
+}

@@ -1,0 +1,212 @@
+{
+    "string":[
+        {
+            "name":"module_desc",
+            "value":"module description"
+        },
+        {
+            "name":"EmergencyModeAbility_desc",
+            "value":"description"
+        },
+        {
+            "name":"EmergencyModeAbility_label",
+            "value":"label"
+        },
+        {
+            "name":"Emergency_title",
+            "value":"Power reserve mode",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Emergency_note",
+            "value":"*If you exit Power reserve mode, your device may not have enough power to stay on.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Thermal_safe_title",
+            "value":"Cooldown mode",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Thermal_safe_note",
+            "value":"If possible, don't use your device. Cooldown mode will exit automatically once it has cooled down.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Emergency_add",
+            "value":"Add",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Emergency_add_application",
+            "value":"Add apps",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Emergency_search_application",
+            "value":"Search apps",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Emergency_all_application",
+            "value":"All apps",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Emergency_dialog_not_remind",
+            "value":"Don't show again",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Emergency_button_know",
+            "value":"OK",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Emergency_button_exit",
+            "value":"Exit",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Emergency_button_cancel",
+            "value":"Cancel",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Emergency_button_determined",
+            "value":"OK",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Emergency_dialog_title_exit",
+            "value":"Exit Power reserve mode?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Emergency_shutdown_dialog_title_exit",
+            "value":"Exit Power reserve mode and power off?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Emergency_title_dialog_enter",
+            "value":"Battery extremely low. Power reserve mode has been enabled to extend battery life.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Thermal_safe_dialog_title_enter",
+            "value":"Device too hot. Cooldown mode has been enabled. This mode will exit automatically once your device has cooled down.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Emergency_edit",
+            "value":"Edit",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_remove",
+            "value":"Remove",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Emergency_back",
+            "value":"Back",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_cancel_this_edit",
+            "value":"cancel edits",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_save_this_edit",
+            "value":"save edits",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"emergency_exit_with_charge_dialog_content",
+            "value":"If you exit now, your device might not have enough power to stay on.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"emergency_exit_without_charge_dialog_content",
+            "value":"Remember to charge up when you get the chance.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"emergency_enter_dialog_title",
+            "value":"Battery extremely low",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"emergency_enter_dialog_content",
+            "value":"Power reserve mode has been enabled to extend battery life.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"thermal_safe_enter_dialog_dialog_title",
+            "value":"Device too hot",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"thermal_safe_enter_dialog_dialog_content",
+            "value":"Cooldown mode has been activated. This mode will exit once your device has cooled down.",
+            "attr":{
+                "priority":"LT"
+            }
+        }
+    ]
+}

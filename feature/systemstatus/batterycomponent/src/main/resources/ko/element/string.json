@@ -1,0 +1,88 @@
+{
+    "string":[
+        {
+            "name":"low_battery_ntf_title",
+            "value":"배터리 부족",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"low_battery_ntf_btn_text",
+            "value":"배터리 세이버 켜기",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"shutdown_dialog_title",
+            "value":"참고",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"battery_emergency_dialog_content",
+            "value":"배터리가 매우 부족합니다. %d초 후에 파워 리저브 모드가 활성화됩니다.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"shutdown_dialog_content",
+            "value":"배터리가 매우 부족합니다. 장치가 곧 종료됩니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"shutdown_dialog_content_new",
+            "value":"배터리가 곧 소진됩니다. %d초 후에 전원이 꺼집니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"low_battery_ntf_content",
+            "value":"잔량 %s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"accessibility_battery_charge_double",
+            "value":"고속 충전 중, 배터리 %s 충전됨",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_battery_supercharge",
+            "value":"SuperCharge 중, 배터리 %s 충전됨",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_battery_charge",
+            "value":"충전 중, 배터리 %s 충전됨",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_battery_power_saving",
+            "value":"배터리 세이버",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_battery_level",
+            "value":"배터리 잔량, %s",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

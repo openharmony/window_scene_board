@@ -1,0 +1,11 @@
+{
+  "module": {
+    "name": "antipeepingcomponent_test",
+    "type": "feature",
+    "deviceTypes": [
+      "tablet"
+    ],
+    "deliveryWithInstall": true,
+    "installationFree": false
+  }
+}

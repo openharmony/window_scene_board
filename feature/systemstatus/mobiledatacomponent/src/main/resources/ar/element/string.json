@@ -1,0 +1,39 @@
+{
+    "string":[
+        {
+            "name":"control_center_complex_toggle_mobiledata_toast",
+            "value":"يُرجى أولًا إيقاف باقة بيانات SkyTone",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_mobiledata_title",
+            "value":"بيانات الجوال",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_mobiledata_title_on",
+            "value":"بيانات البطاقة %d",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_mobiledata_usage",
+            "value":"البيانات المستخدمة %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_mobiledata_title_on_esim",
+            "value":"بيانات بطاقة eSIM %d",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

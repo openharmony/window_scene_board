@@ -1,0 +1,116 @@
+{
+    "string":[
+        {
+            "name":"action_button_reply",
+            "value":"답장",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"banner_hint_message",
+            "value":"이 메시지는 Vision 글래스에 표시할 수 없습니다. 휴대폰에서 확인하십시오.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screenshot_privacy",
+            "value":"스크린샷을 찍을 수 없습니다. 현재 화면에는 민감한 정보가 포함되어 있을 수 있습니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Input_prompt",
+            "value":"휴대폰의 앱에서 연결 해제하고 텍스트를 입력하십시오.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Incoming_call_prompt",
+            "value":"휴대폰에서 전화를 겁니다",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"banner_toast_message",
+            "value":"휴대폰에서 이 메시지를 확인하십시오.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_phone_power_save_mode",
+            "value":"절전 모드",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_phone_cast_screen",
+            "value":"휴대폰 미러링",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ScreenShot_label",
+            "value":"스크린샷",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_adjustment",
+            "value":"도수 조정",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_screenshot_no_right",
+            "value":"스크린샷을 촬영하려면 이미지 및 비디오 권한이 필요합니다. 휴대폰의 팝업 창이나 설정에서 권한을 부여합니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Incoming_call_title",
+            "value":"%s 통화",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_wlan",
+            "value":"WLAN",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_app_to_glass_msg",
+            "value":"앱 라이브러리에 %s을 (를) 추가합니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_bluetooth",
+            "value":"블루투스",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Incoming_call_flag",
+            "value":"수신 전화",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

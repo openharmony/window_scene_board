@@ -1,0 +1,12 @@
+{
+    "string":[
+        {
+            "name":"control_center_complex_toggle_auto_rotate_title",
+            "value":"[TS_784879]_Orientation lock"
+        },
+        {
+            "name":"multi_window_opened",
+            "value":"[TS_1099449]_Free windows is enabled. This feature only works in landscape mode."
+        }
+    ]
+}

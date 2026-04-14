@@ -1,0 +1,10 @@
+{
+  "module": {
+    "name": "customcomponent",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ]
+  }
+}

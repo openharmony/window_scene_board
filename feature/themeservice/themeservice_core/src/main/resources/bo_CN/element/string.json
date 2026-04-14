@@ -1,0 +1,18 @@
+{
+    "string":[
+        {
+            "name":"Desktop_individuation",
+            "value":"ཅོག་ངོས་དང་སྒེར་གཤིས་ཅན།",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"theme_title",
+            "value":"བརྗོད་གཞི།",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

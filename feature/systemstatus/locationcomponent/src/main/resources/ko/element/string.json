@@ -1,0 +1,18 @@
+{
+    "string":[
+        {
+            "name":"control_center_complex_toggle_location_title",
+            "value":"위치",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_status_bar_location",
+            "value":"앱에서 유효한 위치 요청을 보냈습니다",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

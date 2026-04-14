@@ -1,0 +1,18 @@
+{
+    "string":[
+        {
+            "name":"Desktop_individuation",
+            "value":"تخصيص الشاشة الرئيسية",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"theme_title",
+            "value":"السمات",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

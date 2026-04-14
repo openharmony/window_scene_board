@@ -1,0 +1,60 @@
+{
+    "string":[
+        {
+            "name":"expand_formstack",
+            "value":"[TS_951212]_Expand stack"
+        },
+        {
+            "name":"edit_formstack",
+            "value":"[TS_951211]_Edit %s"
+        },
+        {
+            "name":"delete_formstack",
+            "value":"[TS_951202]_Remove %s"
+        },
+        {
+            "name":"delete_form_stack_text",
+            "value":"[TS_951203]_Delete"
+        },
+        {
+            "name":"create_form_stack_text",
+            "value":"[TS_951206]_%1$s stacked with %2$s"
+        },
+        {
+            "name":"add_form_stack_text",
+            "value":"[TS_951204]_%1$s placed on stack"
+        },
+        {
+            "name":"form_pinned_stack_text",
+            "value":"[TS_951209]_%1$s moved to top of stack"
+        },
+        {
+            "name":"expand_stack_text",
+            "value":"[TS_951207]_Expanded, swipe down with two fingers to scroll the widgets"
+        },
+        {
+            "name":"close_stack_text",
+            "value":"[TS_951210]_Widget stack collapsed"
+        },
+        {
+            "name":"expand_stack_request_focus_front_text",
+            "value":"[TS_976259]_Item %d"
+        },
+        {
+            "name":"stack_request_focus_after_text",
+            "value":"[TS_972386]_This is the %1$s widget. There are actions you can perform. Double-tap and hold to open the options menu."
+        },
+        {
+            "name":"delete_stack_form",
+            "value":"[TS_1041383]_%s widget deleted"
+        },
+        {
+            "name":"talkback_expand_stack_moved_to",
+            "value":"[TS_1048899]_Placed as item %d in stack"
+        },
+        {
+            "name":"talkback_expand_stack_move_to",
+            "value":"[TS_1048900]_Move to item %d"
+        }
+    ]
+}

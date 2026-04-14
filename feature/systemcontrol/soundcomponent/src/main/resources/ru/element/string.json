@@ -1,0 +1,130 @@
+{
+    "string":[
+        {
+            "name":"sound_title",
+            "value":"Настройки аудио",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"HD_spatial_audio",
+            "value":"Пространственное HD-аудио",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"noise_on",
+            "value":"Включено",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"base_none",
+            "value":"Выклю\u200bчено",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"base_noise_control",
+            "value":"Контроль уровня шума",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"spatial_audio_follow",
+            "value":"По положению головы",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"spatial_audio_fixed",
+            "value":"Статично",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"base_pass_through",
+            "value":"Звукопроницаемость",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"toast_wear_headphone",
+            "value":"Наденьте оба наушника.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"toast_noise_control_amphora",
+            "value":"Для использования режима шумоподавления наденьте оба наушника.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_change_volume_desc",
+            "value":"Шкала регулировки громкости, нажмите дважды, затем удерживайте и проведите влево или вправо для настройки",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"spatial_audio",
+            "value":"Пространственное аудио",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_change_volume",
+            "value":"Громкость настроена на уровне %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_volume",
+            "value":"Громкость %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"toast_voice_enhance",
+            "value":"Для использования функции вставьте наушники в уши.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"noise_reduction",
+            "value":"Шумоподавление",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"toast_noise_control",
+            "value":"Для использования функции вставьте наушники в уши.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_change_vertical_volume_desc",
+            "value":"Шкала регулировки громкости, нажмите дважды, затем удерживайте и проведите вверх или вниз для настройки",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

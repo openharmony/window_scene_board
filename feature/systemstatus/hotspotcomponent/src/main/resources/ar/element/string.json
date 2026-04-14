@@ -1,0 +1,25 @@
+{
+    "string":[
+        {
+            "name":"statusbar_talkbackhotspot01",
+            "value":"تم تشغيل نقطة الاتصال",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_hotspot_title",
+            "value":"نقطة اتصال شخصية",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_hotspot_no_device",
+            "value":"لا توجد أجهزة",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

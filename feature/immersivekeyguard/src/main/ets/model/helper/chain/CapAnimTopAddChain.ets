@@ -1,0 +1,32 @@
+/*
+ * Copyright (c) Huawei Technologies Co., Ltd. 2024-2025. All rights reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+import { CapAnimScene, CapShowType } from '../../../common/constants/ImmCapConst';
+import { CapAnimBaseChain } from './CapAnimBaseChain';
+
+/**
+ * 胶囊生命周期动效顶部新增数据动效检测器
+ */
+export class CapAnimTopAddChain extends CapAnimBaseChain {
+  public checkLifeCycleAnim(): CapAnimScene | undefined {
+    // 新增胶囊数据，排序为内容胶囊，则执行顶部新增数据堆叠动效
+    let addData = this.getCapCheckList()?.get(CapShowType.CAP_ADD);
+    if (addData && addData.getCapShowType() === CapShowType.CAP_CONTENT) {
+      return CapAnimScene.ANIM_TOP_ADD;
+    }
+    // 下游检测
+    return super.checkLifeCycleAnim();
+  }
+}

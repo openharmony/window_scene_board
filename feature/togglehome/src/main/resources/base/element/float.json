@@ -1,0 +1,28 @@
+{
+  "float": [
+    {
+      "name": "layout_toggle_width",
+      "value": "20vp"
+    },
+    {
+      "name": "layout_toggle_height",
+      "value": "20vp"
+    },
+    {
+      "name": "layout_margin_left",
+      "value": "20vp"
+    },
+    {
+      "name": "layout_margin_top",
+      "value": "20vp"
+    },
+    {
+      "name": "layout_window_height",
+      "value": "48"
+    },
+    {
+      "name": "layout_window_width",
+      "value": "48"
+    }
+  ]
+}

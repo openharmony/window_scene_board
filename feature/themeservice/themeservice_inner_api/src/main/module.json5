@@ -1,0 +1,10 @@
+{
+  "module": {
+    "name": "themeservice_inner_api",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ]
+  }
+}

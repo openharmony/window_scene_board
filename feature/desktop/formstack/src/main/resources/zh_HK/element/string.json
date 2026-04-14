@@ -1,0 +1,102 @@
+{
+    "string":[
+        {
+            "name":"expand_formstack",
+            "value":"展開堆疊",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"edit_formstack",
+            "value":"編輯%s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"delete_formstack",
+            "value":"移除%s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"delete_form_stack_text",
+            "value":"刪除",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"create_form_stack_text",
+            "value":"%1$s 已與 %2$s 形成堆疊",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_form_stack_text",
+            "value":"%1$s 已放入堆疊",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"form_pinned_stack_text",
+            "value":"%1$s 卡片已固定",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"expand_stack_text",
+            "value":"已展開，雙指上下滑動即可捲動所有卡片",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"close_stack_text",
+            "value":"卡片堆疊已收起",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"stack_request_focus_after_text",
+            "value":"目前 %1$s卡片，有可用的操作，輕觸兩下並按住即可彈出更多選項",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"expand_stack_request_focus_front_text",
+            "value":"第 %d 項",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"delete_stack_form",
+            "value":"卡片 %s 已刪除",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"talkback_expand_stack_moved_to",
+            "value":"已放置到第 %d 項",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"talkback_expand_stack_move_to",
+            "value":"移至第 %d 項",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

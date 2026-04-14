@@ -1,0 +1,29 @@
+{
+  "color": [
+    {
+      "name": "title_font_color",
+      "value": "#000000"
+    },
+    {
+      "name": "pannel_background_color",
+      "value": "#33000000"
+    },
+    {
+      "name": "pannel_background_dark_color",
+      "value": "#FF505256"
+    },
+    {
+      "name": "mic_reminder_bg_color",
+      "value": "#FFFFFFFF"
+    },
+    {
+      "name": "mic_reminder_border_color",
+      "value": "#33FFFFFF"
+    },
+    {
+      "name": "mic_reminder_outline_color",
+      "value": "#1A000000"
+
+    }
+  ]
+}

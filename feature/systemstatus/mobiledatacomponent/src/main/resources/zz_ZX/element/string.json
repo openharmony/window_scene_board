@@ -1,0 +1,24 @@
+{
+    "string":[
+        {
+            "name":"control_center_complex_toggle_mobiledata_title",
+            "value":"[TS_922495]_Mobile data"
+        },
+        {
+            "name":"control_center_complex_toggle_mobiledata_title_on",
+            "value":"[TS_922498]_SIM %d data"
+        },
+        {
+            "name":"control_center_complex_toggle_mobiledata_toast",
+            "value":"[TS_988773]_Disable your SkyTone data package first."
+        },
+        {
+            "name":"control_center_complex_toggle_mobiledata_usage",
+            "value":"[TS_1084909]_%s used"
+        },
+        {
+            "name":"control_center_complex_toggle_mobiledata_title_on_esim",
+            "value":"[TS_1108537]_eSIM %d data"
+        }
+    ]
+}

@@ -1,0 +1,108 @@
+{
+  "color": [
+    {
+      "name": "immersive_color",
+      "value": "#33ffffff"
+    },
+    {
+      "name": "immersive_capsule_color",
+      "value": "#33ffffff"
+    },
+    {
+      "name": "immersive_backgroud_color_dark",
+      "value": "#FF000000"
+    },
+    {
+      "name": "immersive_backgroud_color",
+      "value": "#FFFFFFFF"
+    },
+    {
+      "name": "immersive_capsule_main_text",
+      "value": "#000000"
+    },
+    {
+      "name": "immersive_capsule_main_text2",
+      "value": "#FFFFFF"
+    },
+    {
+      "name": "immersive_capsule_default",
+      "value": "#000000"
+    },
+    {
+      "name": "immersive_capsule_default2",
+      "value": "#FFFFFF"
+    },
+    {
+      "name": "immersive_capsule_second_text",
+      "value": "#cc000000"
+    },
+    {
+      "name": "immersive_capsule_second_text2",
+      "value": "#ccffffff"
+    },
+    {
+      "name": "immersive_capsule_progress_bg_color",
+      "value": "#d9fdfdfd"
+    },
+    {
+      "name": "immersive_capsule_progress_bg_color2",
+      "value": "#19ffffff"
+    },
+    {
+      "name": "immersive_capsule_progress_color",
+      "value": "#5291FF"
+    },
+    {
+      "name": "immersive_capsule_progress_color2",
+      "value": "#0A59F7"
+    },
+    {
+      "name": "immersive_capsule_btn_background",
+      "value": "#e8fdfdfd"
+    },
+    {
+      "name": "immersive_capsule_btn_background2",
+      "value": "#0dffffff"
+    },
+    {
+      "name": "immersive_capsule_button_color",
+      "value": "#33ffffff"
+    },
+    {
+      "name": "immersive_capsule_effect_color",
+      "value": "#0debebeb"
+    },
+    {
+      "name": "immersive_capsule_shade_style_color",
+      "value": "#33000000"
+    },
+    {
+      "name": "immersive_capsule_shade_effect",
+      "value": "#1A000000"
+    },
+    {
+      "name": "immersive_capsule_shade_effect2",
+      "value": "#1AFFFFFF"
+    },
+    {
+      "name": "card_tip_fill_color",
+      "value": "#FF000000"
+    },
+    {
+      "name": "immersive_card_default_bg_color",
+      "value": "#24FFFFFF"
+    },
+    {
+      "name": "back_btn_foreground_color",
+      "value": "#7B000000"
+    },
+    {
+      "name": "back_btn_background_color",
+      "value": "#16ffffff"
+    },
+    {
+      "name": "back_btn_light_color",
+      "value": "#0Dffffff"
+    }
+  ]
+}

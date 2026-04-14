@@ -1,0 +1,508 @@
+{
+    "string":[
+        {
+            "name":"notification_wake_screen_switch_title",
+            "value":"ئېكران يورۇتۇش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"more_ntf_setting",
+            "value":"باشقا تەڭشەكلەر",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"banners",
+            "value":"بالداق",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_style",
+            "value":"ئۇقتۇرۇش ئۇسۇلى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntfSoundModeSilence",
+            "value":"تىنچ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"entry_desc",
+            "value":"ئۇقتۇرۇش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_wake_screen_switch_text",
+            "value":"ئېكران ئېتىك چاغدا ئۇقتۇرۇش كەلسە يورۇيدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"lock_screen_notification",
+            "value":"قۇلۇپ ئېكرانى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntfSoundModeSettingTitle",
+            "value":"ئۇقتۇرۇش ئاۋازى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_lock_screen_switch_text",
+            "value":"يانفون قۇلۇپلاق چاغدا ئۇقتۇرۇش مەزمۇنى كۆرۈنمەيدۇ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_and_status_bar_title",
+            "value":"ئۇقتۇرۇش ۋە ھالەت بالدىقى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_lock_screen_switch_title_new",
+            "value":"ئۇقتۇرۇش مەزمۇنىنى يوشۇرۇش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"search_app",
+            "value":"ئەپ ياكى تۈپ مۇلازىمەت ئىزدەش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pure_show_description",
+            "value":"سۈكۈتتە ۋاقىت، WLAN، سىگنال ۋە توك ھالىتى كۆرۈنىدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"status_bar_title",
+            "value":"ھالەت بالدىقى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notifications",
+            "value":"ئۇقتۇرۇش باشقۇرۇش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"no_matching_results",
+            "value":"ماس نەتىجە يوق",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"search_history",
+            "value":"ئىزدەش تارىخى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"switch_screen_lock_ntf_style_forbidden",
+            "value":"ئۈسكۈنە قۇلۇپى بارماق ئىزى ئارقىلىق ئېچىلسا، تىزىملىك كۆرۈنىدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remind_vibration",
+            "value":"تىترەش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ntfSoundModeOnlyVibration",
+            "value":"تىترەش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"clear",
+            "value":"تازىلاش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remind_banner",
+            "value":"بالداق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remind_lock_screen",
+            "value":"قۇلۇپ ئېكرانى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remind_only_notification_center",
+            "value":"پەقەت ئۇقتۇرۇش مەركىزى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ntfSoundModeOnlyRing",
+            "value":"سايراش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remind_disable",
+            "value":"ئېتىك",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remind_sound",
+            "value":"ئاۋاز",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remind_type",
+            "value":"تۈر",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"splitter_format_for_2",
+            "value":"%1$s، %2$s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"splitter_format_for_3",
+            "value":"%1$s، %2$s، %3$s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"splitter_format_for_4",
+            "value":"%1$s، %2$s، %3$s، %4$s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"show_tip_live_view_preview_when_screen_lock",
+            "value":"كۆرەك كۆرسىتىشنى ئېچىپ قويسىڭىز، ھالەت كۆزنىكىدىن تېخىمۇ ياخشى پايدىلىنالايسىز.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"hiding_banner_content_txt",
+            "value":"بۇ تاللانما ئوچۇق ھالەتتە ئۈسكۈنە ئىگىسىدىن باشقىلار ياكى كۆپ ئادەم ئېكرانغا قارىسا، ئۇقتۇرۇش يوشۇرۇنۇپ مەخپىيەتلىك قوغدىلىدۇ. بۇ ئىقتىدارنى ئىشلىتىش ئۈچۈن يۈز تونۇش ئىقتىدارىنى ئېچىش كېرەك.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"smart_reminder_tips_no_weak",
+            "value":"بالداق ئۇقتۇرۇش مەزمۇنى پەقەت ئۈسكۈنە ئىگىسىگە كۆرۈنىدۇ. بۇ ئىقتىدار يۈز تونۇپ قۇلۇپ ئاچىدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"set_face",
+            "value":"سەپلەش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"unified_notification_label",
+            "value":"ئاڭلىق ياردەم",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"unified_notification_intro",
+            "value":"تەكرار ئۇقتۇرۇشلار بىرلەشتۈرۈلۈپ ئۈزۈندى شەكلىدە كۆرسىتىلىدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"smart_digest",
+            "value":"ئاڭلىق ئۈزۈندى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"no_banners",
+            "value":"يوق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pad_pure_show_description",
+            "value":"سۈكۈتتە ۋاقىت، WLAN ۋە توك ھالىتى كۆرۈنىدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"badges",
+            "value":"تامغا",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"lock_screen_notification_style",
+            "value":"قۇلۇپ ئېكرانىدا تىزىملىك كۆرسىتىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_pin_on_top",
+            "value":"بۇ ئەپنىڭ ئۇقتۇرۇشلىرى ئىزچىل ئۇقتۇرۇش مەركىزىنىڭ بېشىدا كۆرۈنىدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"psd_back_accessible",
+            "value":"قايتىش كۇنۇپكىسى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"lock_screen_notification_expand",
+            "value":"قۇلۇپ ئېكرانى ئۇقتۇرۇشى يېيىق كۆرۈنۈش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"lock_screen_notification_fold",
+            "value":"قۇلۇپ ئېكرانى ئۇقتۇرۇشى يىغىق كۆرۈنۈش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_not_banner",
+            "value":"ئۈستەليۈزىدە بالداق ئۇقتۇرۇش كۆرسىتىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"hide_banner_content_desc",
+            "value":"«بالداق ئۇقتۇرۇش مەزمۇنىنى كۆرسىتىش» تەڭشىكى «سىستېما بويىچە» بېكىتىلگەن ئەپلەرگە قارىتا كۈچكە ئىگە.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"hide_banner_content_title",
+            "value":"بالداق ئۇقتۇرۇش مەزمۇنىنى كۆرسىتىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"hide_banner_content_app_follow_system",
+            "value":"سىستېما بويىچە",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"hide_banner_content_app_never",
+            "value":"يوق",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"hide_banner_content_app_always",
+            "value":"ئىزچىل كۆرسىتىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"switch_badges_forbidden",
+            "value":"«تامغا كۆرسىتىش» تاللانمىسى ئېتىك. تەڭشەك > ئۇقتۇرۇش ۋە ھالەت بالدىقى > باشقا تەڭشەكلەر دېگەن ئورۇندىن ئېچىڭ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"live_view_title",
+            "value":"ھالەت كۆزنىكى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"smart_reminder_tips_main",
+            "value":"بۇ ئوچۇق ھالەتتە، ئېكرانغا قارىغاندا ئۇقتۇرۇش ئاۋازى ۋە تىترەش ئاجىزلايدۇ، بالداق ئۇقتۇرۇش مەزمۇنى پەقەت ئۈسكۈنە ئىگىسىگە كۆرۈنىدۇ. بۇ ئىقتىدار يۈز تونۇپ قۇلۇپ ئاچىدۇ. %s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"smart_reminder_learn_more",
+            "value":"تەپسىلات",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"silent_notification",
+            "value":"تىنچ ئۇقتۇرۇش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"silent_notification_description",
+            "value":"ئۇقتۇرۇش ئۈنسىزلىنىدۇ، ئۇقتۇرۇش بالدىقىنى سىيرىپ كۆرىسىز.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_switch_alarm_clock",
+            "value":"قوڭغۇراق سائەت",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_switch_vpn",
+            "value":"\u200fVPN",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_switch_nearlink",
+            "value":"ئۇچقۇن ۋە كۆكچىش ئۇلىنىشى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_switch_icon_visible",
+            "value":"سىنبەلگە كۆرسىتىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"enable_switch_ring_mode_silent",
+            "value":"ئۈنسىز ھالەت",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_switch_ring_mode",
+            "value":"تىنچ ۋە تىترەش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"enable_switch_head_phones",
+            "value":"سىملىق تىڭشىغۇچ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_switch_bluetooth",
+            "value":"كۆكچىش ئۇلىنىشى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_switch_net_speed",
+            "value":"تور تېزلىكى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_switch_nfc",
+            "value":"\u200fNFC",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_switch_notification_icon",
+            "value":"ئۇقتۇرۇش سىنبەلگىسى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_switch_explain",
+            "value":"تىزگىنلەش مەركىزى ۋە ئۇقتۇرۇش مەركىزىدە بارلىق ھالەت سىنبەلگىسى كۆرۈنىدۇ (بۇ يەردە تاللىمىغانلىرىمۇ شۇنداق).",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"already_clear",
+            "value":"تازىلاندى",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

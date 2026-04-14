@@ -1,0 +1,12 @@
+{
+    "string":[
+        {
+            "name":"accessibility_status_bar_nearlink_open",
+            "value":"[TS_1102631]_NearLink is on"
+        },
+        {
+            "name":"accessibility_status_bar_nearlink_connected",
+            "value":"[TS_944610]_NearLink connected"
+        }
+    ]
+}

@@ -1,0 +1,39 @@
+{
+    "string":[
+        {
+            "name":"control_center_complex_toggle_mobiledata_toast",
+            "value":"Primero deshabilita el paquete de datos SkyTone.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_mobiledata_title",
+            "value":"Datos móviles",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_mobiledata_title_on",
+            "value":"Datos de SIM %d",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_mobiledata_usage",
+            "value":"%s usados",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_mobiledata_title_on_esim",
+            "value":"Datos de eSIM %d",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

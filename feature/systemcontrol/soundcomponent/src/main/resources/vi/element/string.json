@@ -1,0 +1,130 @@
+{
+    "string":[
+        {
+            "name":"sound_title",
+            "value":"Cài đặt âm thanh",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"HD_spatial_audio",
+            "value":"Âm Thanh Không Gian HD",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"noise_on",
+            "value":"Bật",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"base_none",
+            "value":"Tắt",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"base_noise_control",
+            "value":"Kiểm soát tiếng ồn",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"spatial_audio_follow",
+            "value":"Theo dõi đầu",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"spatial_audio_fixed",
+            "value":"Cố định",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"base_pass_through",
+            "value":"Nhận biết",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"toast_wear_headphone",
+            "value":"Vui lòng đeo cả hai tai nghe.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"toast_noise_control_amphora",
+            "value":"Để khử tiếng ồn, hãy đeo cả hai tai nghe.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"spatial_audio",
+            "value":"Âm Thanh Không Gian",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"toast_voice_enhance",
+            "value":"Hãy đeo tai nghe để sử dụng tính năng này.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"noise_reduction",
+            "value":"Khử tiếng ồn",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"toast_noise_control",
+            "value":"Hãy đeo tai nghe để sử dụng tính năng này.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_change_vertical_volume_desc",
+            "value":"Thanh âm lượng, chạm hai lần và giữ, sau đó vuốt lên hoặc xuống để điều chỉnh",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_change_volume_desc",
+            "value":"Thanh âm lượng, chạm đúp rồi giữ, sau đó trượt sang trái hoặc phải để điều chỉnh",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_change_volume",
+            "value":"Đã điều chỉnh âm lượng thành %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_volume",
+            "value":"Âm lượng %s",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

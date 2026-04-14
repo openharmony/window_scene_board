@@ -1,0 +1,67 @@
+{
+    "string":[
+        {
+            "name":"title_open_wlan_and_bluetooth",
+            "value":"Para utilizar ScreenCast, habilita primero WLAN y Bluetooth",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"btn_turn_on",
+            "value":"Habilitar",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wireless_projection_toggle",
+            "value":"ScreenCast",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"title_projection_fail",
+            "value":"Error de conexión",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"text_open_wlan_and_bluetooth",
+            "value":"Estas funciones se requieren para detectar dispositivos y transmitir audio y vídeo.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"projection_privacy_statement",
+            "value":"Este servicio requiere el permiso de Conexión del dispositivo para activar Bluetooth y para utilizar Bluetooth y WLAN. También grabará el audio del dispositivo y el contenido que aparece en la pantalla. Si pulsas Acepto, indicas que aceptas estos términos.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"error_text_code_2",
+            "value":"Reinicia WLAN y Bluetooth en ambos dispositivos y vuelve a intentarlo.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"privacy_hint",
+            "value":"Proyecta tu pantalla en una pantalla más grande.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"btn_agree",
+            "value":"Acepto",
+            "attr":{
+                "priority":"LT"
+            }
+        }
+    ]
+}

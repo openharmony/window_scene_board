@@ -1,0 +1,10 @@
+{
+  "module": {
+    "name": "launcher_bigfolder",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ]
+  }
+}
