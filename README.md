@@ -1,6 +1,6 @@
-# scene_board
+# SceneBoard
 
-- [scene_board](#scene_board)
+- [SceneBoard](#SceneBoard)
   - [简介](#简介)
   - [架构说明](#架构说明)
   - [开发步骤](#开发步骤)
@@ -23,17 +23,18 @@
     - 管理主屏、扩展屏、虚拟屏等屏幕实例及其生命周期。
     - 感知屏幕尺寸、旋转、模式切换、接入断开等属性变化，并同步管理屏幕中的窗口。
     - 在屏幕控件中，为不同屏幕挂载对应的系统窗口以及窗口容器。
-3. 合一桌面 UI 界面管理的能力
+3. 合一桌面 UI 管理的能力
     - 以系统窗口的方式承载壁纸、桌面、状态栏、锁屏、通知、Dock 等合一桌面 UI 界面。
     - 将合一桌面的窗口与应用窗口等各种类型的窗口，全部纳入窗口控件管理框架中进行统一管理。
 4. 作为系统级应用，承载系统与用户交互的入口，支持 phone、pad、pc 等多种设备形态，提供全场景桌面体验。
 
+**SceneBoard 和 window_manager 的关系**
+1. `window_manager` 负责窗口管理服务和屏幕管理服务的Native实现，管理窗口和屏幕的实例以及生命周期。`SceneBoard` 负责窗口管理服务和屏幕管理服务的ArkTS实现，以及窗口和屏幕的布局、层级等业务逻辑实现。
+2. `window_manager` 负责应用与窗口管理子系统的交互，以及与其他系统子系统的交互。例如：元能力子系统、图形渲染、多模输入等。`SceneBoard` 需要借助 `window_manager` 才能实现与应用、其他子系统的交互。
+3. `SceneBoard` 与 `window_manager` 二者配合完成窗口和屏幕的管理，缺一不可。例如创建窗口的流程中，需要先由 `window_manager` 创建Native的窗口实例、再由 `SceneBoard` 创建ArkTS的窗口实例并控制窗口的布局和显示。
+
 **说明**：
 1. 需要注意的是，当前部件仅合一架构下生效。关于合一架构和配置方式，请参考说明：[合一架构](https://gitcode.com/openharmony/window_window_manager#3-%E5%88%86%E7%A6%BB%E6%9E%B6%E6%9E%84%E4%B8%8E%E5%90%88%E4%B8%80%E6%9E%B6%E6%9E%84%E8%AF%A6%E8%A7%A3)
-2. SceneBoard 构建于 `window_manager` 之上，并通过 `window_manager` 实现与其他子系统交互。
-
-![scene_board与window_manager](./docs/figures/sceneboard_with_windowmanager.png)
-
 
 ## 架构说明
 
