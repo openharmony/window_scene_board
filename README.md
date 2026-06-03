@@ -3,36 +3,41 @@
 - [SceneBoard](#SceneBoard)
   - [简介](#简介)
   - [架构说明](#架构说明)
-  - [开发步骤](#开发步骤)
+  - [编译构建](#编译构建)
+  - [开发](#开发)
   - [目录](#目录)
-  - [编译](#编译)
   - [约束](#约束)
+  - [参与贡献](#参与贡献)
   - [相关仓](#相关仓)
 
 ## 简介
-**SceneBoard** 是 OpenHarmony 窗口子系统的部件之一。作为系统级应用，承载系统与用户交互的入口，支持 phone、pad、pc 等多种设备形态，提供全场景桌面体验。
+**SceneBoard** 是 OpenHarmony 窗口管理子系统的部件之一。作为系统级应用，承载系统与用户交互的入口、以及系统UI的实现（例如：系统桌面、壁纸、锁屏等），支持 phone、pad、pc 等多种设备形态，提供全场景桌面体验。
 
 ![SceneBoard in OpenHarmony](./docs/figures/sceneboard_in_os.png)
+
 ### 核心能力
-1. 使用 `ServiceExtensionAbility` 作为主入口，系统启动时启动。
-	- 负责初始化屏幕和窗口控件管理模块，实现加载屏幕控件和窗口控件；
-	- 负责初始化和编排合一桌面 UI 的显示和层级关系，为用户提供桌面交互体验；
-2. 合一桌面 UI 管理
-    - 使用系统窗口加载合一桌面 UI 界面，例如：壁纸、桌面、状态栏、锁屏、通知、Dock 等；
-3. 屏幕和窗口控件管理
-    - 在 ArkUI 框架中，窗口子系统创建了屏幕控件和窗口控件，实现了应用 UI 框架的布局能力在屏幕和窗口管理上的复用。
-    - 通过窗口控件，管理应用主窗口、辅助窗口、系统窗口及其容器关系，管理窗口层级、焦点，以及布局、拖拽、旋转、动画等。
-    - 通过屏幕控件，管理主屏、扩展屏、虚拟屏等屏幕实例及其生命周期，感知屏幕尺寸、旋转等属性变化，并同步管理屏幕中的窗口。
+**系统交互入口**
+- 使用 `ServiceExtensionAbility` 作为主入口，系统启动时启动。
+- 负责初始化和编排合一桌面 UI 的显示和层级关系，为用户提供桌面交互体验。
+- 负责初始化屏幕和窗口控件管理模块，实现加载屏幕控件和窗口控件。
+
+**合一桌面 UI 管理**
+- 使用系统窗口加载合一桌面 UI 界面，例如：壁纸、桌面、状态栏、锁屏、通知、Dock 等。
+
+**屏幕和窗口控件管理**
+- 在 ArkUI 框架中，窗口子系统创建了屏幕控件和窗口控件，实现了应用 UI 框架的布局能力在屏幕和窗口管理上的复用。
+- 通过窗口控件，管理应用主窗口、辅助窗口、系统窗口及其容器关系，管理窗口层级、焦点，以及布局、拖拽、旋转、动画等。
+- 通过屏幕控件，管理主屏、扩展屏、虚拟屏等屏幕实例及其生命周期，感知屏幕尺寸、旋转等属性变化，并同步管理屏幕中的窗口。
 
 ### SceneBoard 与窗口管理服务的关系
-SceneBoard 依赖窗口管理服务，构建于窗口管理服务之上。
+SceneBoard 依赖窗口管理服务。
 
 **进程维度上** ：
 1. SceneBoard 与窗口管理服务运行同一个进程中。
 2. SceneBoard 主入口是一个 `ServiceExtensionAbility`，在系统启动时启动并常驻，启动后会先初始化窗口管理服务，再初始化屏幕和窗口控件、加载合一桌面UI。
 
 **职责和调用关系上**：
-1. SceneBoard 负责窗口和屏幕的显示、布局和层级等管理业务。窗口管理服务负责窗口和屏幕的实例以及生命周期的管理业务。
+1. SceneBoard 负责窗口和屏幕的显示、布局和层级等交互业务。窗口管理服务负责窗口和屏幕的实例以及生命周期等数据业务。
 2. 窗口管理服务负责与应用进程、以及与其他子系统（元能力子系统、图形渲染、多模输入等）的交互。
 3. SceneBoard 不直接与应用进程、以及其他子系统交互，需要借助窗口管理服务提供内部接口实现间接交互。例如：应用窗口的创建过程：
 	- 由应用进程通过窗口子系统提供的 SDK 接口，先与窗口管理服务交互；
@@ -122,13 +127,49 @@ SceneBoard 每一层都使用模块化设计，自下而上分别是：
 ## 编译构建
 ![build](./docs/figures/SceneBoard_build.png)
 
-在三层架构中，编译打包后：
+三层架构在编译态时，分别：
 1. 公共能力层：
     - 各模块按照业务边界和功能内聚的原则进行划分，分别编译为HAR包。
     - 原则上，该层的模块是必选模块。
+
+| 公共能力层模块    | 路径                                        | 编译产物                    |
+| ---------- | ----------------------------------------- | ----------------------- |
+| 基础工具       | staticcommon/basecommon/basicutils        | basicutils.har          |
+| 控件动画       | staticcommon/basecommon/componentanimator | componentanimator.har   |
+| 控件拖拽       | staticcommon/basecommon/componentdrag     | componentdrag.har       |
+| 屏幕与窗口控件管理  | staticcommon/basecommon/windowscene       | windowscene.har         |
+| 控制中心管理基础能力 | staticcommon/controlcentercommon          | controlcentercommon.har |
+| 系统桌面管理基础能力 | staticcommon/launchercommon               | launchercommon.har      |
+| 锁屏管理基础能力   | staticcommon/screenlockcommon             | screenlockcommon.har    |
+| 系统UI管理基础能力 | staticcommon/systemuicommon               | systemuicommon.har      |
+
 2. 特性层：
     - 各模块按照业务边界和功能内聚的原则进行划分，分别编译为HAR包。
     - 原则上，该层的模块是可选模块。
+
+| 特性层模块  | 路径                             | 编译产物                       |
+| ------ | ------------------------------ | -------------------------- |
+| 应用中心   | feature/appcenter              | appcenter.har              |
+| 应用安装管理 | feature/appinstall             | appinstall.har             |
+| 通用虚拟屏  | feature/commonscbscreen        | commonscbscreen.har        |
+| 控制中心   | feature/controlcentercomponent | controlcentercomponent.har |
+| 系统桌面   | feature/desktop                | desktop.har                |
+| 桌面文件夹  | feature/desktopfilefolder      | desktopfilefolder.har      |
+| 返回手势   | feature/gestureback            | gestureback.har            |
+| 导航手势   | feature/gesturenavigation      | gesturenavigation.har      |
+| 实况窗    | feature/liveview               | liveview.har               |
+| 通知     | feature/notification*          | notification*.har          |
+| 自由多窗   | feature/pcmode                 | pcmode.har                 |
+| 多任务    | feature/recents                | recents.har                |
+| 锁屏     | feature/screenlock             | screenlock.har             |
+| 关机     | feature/shutdownview           | shutdownview.har           |
+| 任务栏    | feature/smartdock              | smartdock.har              |
+| 系统弹窗   | feature/systemdialog           | systemdialog.har           |
+| 状态栏    | feature/statusbarcomponent     | statusbarcomponent.har     |
+| 主题服务   | feature/theme*                 | theme*.har                 |
+| 音量管理   | feature/volume*                | volume*.har                |
+| 壁纸管理   | feature/wallpapercomponent     | wallpapercomponent.har     |
+
 3. 产品层：
     - 该层按照不同产品进行划分，包含`ServiceExtensionAbility`作为入口，最终编译为 .hap 模块包。
 
@@ -180,10 +221,11 @@ SceneBoard 采用 ArkTS 语言开发，其中屏幕和窗口均通过控件的�
 ### 定制 UI
 以定制屏幕上的 UI 举例说明：
 - `SCBScreen` 是承载产品合一桌面的顶层控件，通过在不同层级上组合合一桌面 UI 组件即可实现该产品的桌面交互体验。
-- 例如，phone 产品定义的 [SCBScreen](product\phonebase\src\main\ets\SceneBoard\scenemanager\SCBScreen.ets)在不同层级上集成了：
+- 例如，phone 产品定义的 [SCBScreen](https://gitcode.com/openharmony-sig/window_scene_board/blob/master/product/phonebase/src/main/ets/SceneBoard/scenemanager/SCBScreen.ets)，就在不同层级上分别集成了：
 	- 壁纸(Wallpaper)、系统桌面(Desktop)、锁屏(ScreenLock)、状态栏(StatusBar)、输入法面板(KeyBoard)等合一桌面特性
 	- 以及各类ScenePanel(分别承载应用主窗口、全局悬浮窗、画中画、悬浮球等)。
-- 因此，定制开发过程中，可以在特定层级中引入已有的模块、或者自定义UI。
+- 开发过程中，可以在特定层级中引入已有的模块的UI、或者自定义UI。
+
 ``` arkts
 // phone产品的SCBScreen
 @Component
@@ -192,15 +234,13 @@ export struct SCBScreen {
   build() {
     // ...
     // Wallpaper
-    this.systemSceneBuilder(..., sceneSessionManager.SessionType.TYPE_WALLPAPER,
-      'SCBWallpaper', SCBDefaultZIndex.WALLPAPER, ...)
+    this.systemSceneBuilder(...)
 
     // Desktop
-    this.systemSceneBuilder(..., sceneSessionManager.SessionType.TYPE_DESKTOP, 
-      'SCBDesktop', SCBDefaultZIndex.DESKTOP, ...)
+    this.systemSceneBuilder(...)
       
     // **CustomUI**
-    CustomUI()
+    CustomUI(...)
 
     // ScenePanel for app main window or sub window
     SCBScenePanel(...)
@@ -215,15 +255,13 @@ export struct SCBScreen {
     SCBFloatingBallPanel(...)
 
     // ScreenLock
-    this.systemSceneBuilder(..., sceneSessionManager.SessionType.TYPE_KEYGUARD, 
-      'SCBScreenLock', SCBDefaultZIndex.SCREEN_LOCK, ...)
+    this.systemSceneBuilder(...)
 
     // StatusBar
-    this.systemSceneBuilder(..., sceneSessionManager.SessionType.TYPE_STATUS_BAR, 
-      'SCBStatusBar', SCBDefaultZIndex.STATUS_BAR, ...)
+    this.systemSceneBuilder(...)
 
     // KeyBoard
-    this.keyboardBuilder('AboveSpecificScene')
+    this.keyboardBuilder(...)
     // ...
   }
 }
@@ -233,47 +271,60 @@ export struct SCBScreen {
 适用场景：需要新增自定义产品形态，集成差异化能力。
 
 **步骤1：新增产品HAP包及依赖**
-1. 在 `product` 目录中新增产品HAP包，例如：`product/phone`
+1. 在 `product` 目录中新增产品HAP包，例如：`product/pc`
+
 2. 修改 `oh-package.json5`，按需集成不同的特性模块和公共能力模块。
-3. 修改 `module.json5`，配置HAP包的入口、权限声明等，例如：`product/phone/src/main/module.json5`
+    - `@ohos/windowscene` 是SceneBoard必选的核心模块，必选。
+
+3. 修改 `module.json5`，配置HAP包的入口、权限声明等，例如：`product/pc/src/main/module.json5`
+
 ```
 {
   "module": {
-    "name": "phone_sceneboard", // 编译HAP的名称  
+    "name": "pc_sceneboard",   // 编译HAP的名称  
     "type": "entry",
     "srcEntry": "./ets/Application/AbilityStage.ets",
     "description": "$string:mainability_description",
     "mainElement": "com.ohos.sceneboard.MainAbility",
     "deviceTypes": [
-      "default"             // 支持的设备形态，例如：default\tablet\2in1等，必选。支持同时配置多个
+      "2in1"             // 支持的设备形态，例如：default\tablet\2in1等，支持同时配置多个平台。
     ],
     "definePermissions": [] // 权限声明，按需，可选
 }
 ```
 
 **步骤2：新增主入口**
-1. 在HAP包中，新增 MainAbility并继承自 `ServiceExtensionAblity` ，加载主界面 `EntryView`。例如：phone产品 `product\phone\src\main\ets\MainAbility\MainAbility.ets` 及其主界面 `product\phone\src\main\ets\pages\EntryView.ets`。
+1. 在HAP包中，MainAbility 需要继承自 `ServiceExtensionAblity` ，并且需要初始化 `@ohos/windowscene` 模块、加载主界面 `EntryView`。
+    - 例如：pc产品 `product\pc\src\main\ets\MainAbility\MainAbility.ets` 及其主界面 `product\pc\src\main\ets\pages\EntryView.ets`。
+
 ```
 // MainAbility
 export default class MainAbility extends ServiceExtensionAbility {
   onCreate(want: Want): void {
-	//...  
-	SCBSceneSessionManager.getInstance().init(); // 初始化窗口管理服务
-	//...
-	SCBSceneSessionManager.getInstance().loadContent('pages/EntryView', ...); // 加载主界面
+    // ...
+
+    // 必选：使用@ohos/windowscene模块接口，初始化窗口管理服务。
+    SCBSceneSessionManager.getInstance().init();
+    // 必选：使用@ohos/windowscene模块接口，加载主界面。
+    SCBSceneSessionManager.getInstance().loadContent('page/EntryView');
+
+    // ...
   }
   //...
 }
 ```
 
 2. 在主界面中通过 `RootScene` 挂载 `SCBScreen` 或定制的特定屏幕。
+    - `RootScene` 为 SceneBoard 全局根节点，必须位于主界面的根节点。
+
 ```
 @Component
 struct EntryView {
+  // 必选：使用@ohos/windowscene模块接口获取SCBRootSceneSession。
   private rootSceneSession: SCBRootSceneSession = SCBSceneSessionManager.getInstance().getRootSceneSession();
 
   build() {
-    RootScene(this.rootSceneSession.session) {
+    RootScene(this.rootSceneSession.session) { // 全局根节点
       ForEach(this.screenSessionList, (item: SCBScreenSession) => {
         if (item.session.innerName === CUSTOM_SCB_SCREEN) {
           // 虚拟屏
@@ -339,7 +390,7 @@ scene_board
 │  ├─desktop                         # 系统桌面
 │  ├─gestureback                     # 返回手势
 │  ├─liveview                        # 实况窗
-│  ├─notifcation                     # 通知
+│  ├─notification                    # 通知
 │  ├─pcmode                          # PC 模式、自由窗与分屏能力
 │  ├─recents                         # 多任务、任务中心
 │  ├─screenlock                      # 锁屏
@@ -375,5 +426,4 @@ scene_board
 
 ## 相关仓
 - [window_manager](https://gitcode.com/openharmony/window_window_manager)
-- [scene_board_core](https://gitcode.com/openharmony/scene_board_core)
 - [arkui_ace_engine](https://gitcode.com/openharmony/arkui_ace_engine)
