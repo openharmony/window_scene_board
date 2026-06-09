@@ -45,18 +45,6 @@
           "storeFile": "signature/OpenHarmony.p12",
           "storePassword": "00000016EB891942C2DF6EF47CA1E40A5D867E5EF20FBA1034345FF005F019258B2142A3106F"
         }
-      },
-      {
-        "name": "default",
-        "material": {
-          "certpath": "C:/Users/EDY/.ohos/config/openharmony/default_scene_board_ext_-iCYGtKJ3kIFv-MT_-6n1OTofNdpH4JXwcMXyZFNbPA=.cer",
-          "keyAlias": "debugKey",
-          "keyPassword": "0000001B61039205E19EC0CAE88D33CE0EC59A7AEB58818C7010A2417AF5677BB0D559923E67D9B2E2574D",
-          "profile": "C:/Users/EDY/.ohos/config/openharmony/default_scene_board_ext_-iCYGtKJ3kIFv-MT_-6n1OTofNdpH4JXwcMXyZFNbPA=.p7b",
-          "signAlg": "SHA256withECDSA",
-          "storeFile": "C:/Users/EDY/.ohos/config/openharmony/default_scene_board_ext_-iCYGtKJ3kIFv-MT_-6n1OTofNdpH4JXwcMXyZFNbPA=.p12",
-          "storePassword": "0000001BCD119BF47B881729CF917EC0FDE0D1D054D96BC97BDFE7E7DADF2C09B79865C8177BE8DBE2FA84"
-        }
       }
     ]
   },
