@@ -1,30 +1,19 @@
 # SceneBoard
 
-- [SceneBoard](#SceneBoard)
-  - [简介](#简介)
-  - [架构说明](#架构说明)
-  - [编译构建](#编译构建)
-  - [开发](#开发)
-  - [目录](#目录)
-  - [约束](#约束)
-  - [参与贡献](#参与贡献)
-  - [相关仓](#相关仓)
-
 ## 简介
-**SceneBoard** 是 OpenHarmony 窗口子系统的部件之一。作为系统级应用，承载系统与用户交互的入口、以及系统UI的实现（例如：系统桌面、壁纸、锁屏等），支持 phone、pad、pc 等多种设备形态，提供全场景桌面体验。还承载了以屏幕控件和窗口控件的方式管理系统所有屏幕和窗口的系统服务能力。
+**SceneBoard** 是 OpenHarmony 窗口子系统的部件之一。作为系统级应用，承载系统与用户交互的入口、以及系统UI的实现（例如：系统桌面、壁纸、锁屏等），支持 Phone、Pad、PC 等多种设备形态，提供全场景桌面体验。还承载了管理系统所有屏幕和窗口的能力。
 
 ![SceneBoard in OpenHarmony](./docs/figures/sceneboard_in_os.png)
 
 ### 核心能力
 **系统交互入口**
-- 使用 `ServiceExtensionAbility` 作为主入口，系统启动时启动。
+- 使用 `ServiceExtensionAbility` 作为 SceneBoard 应用的主入口，SceneBoard会在系统启动时启动。
 - 负责初始化和编排合一桌面 UI 的显示和层级关系，为用户提供桌面交互体验。
 - 负责初始化屏幕和窗口控件管理模块，实现加载屏幕控件和窗口控件。
 
 > SceneBoard的定位是一个系统服务层的部件，需要以系统服务的形式常驻运行，因此需要以 ServiceExtensionAbility 作为主入口，而不是 UIAbility 。
 
-**合一桌面**
-- 使用系统窗口加载合一桌面 UI 界面，例如：壁纸、桌面、状态栏、锁屏、通知、Dock 等。
+**合一桌面**：使用系统窗口加载合一桌面 UI 界面，例如：壁纸、桌面、状态栏、锁屏、通知、Dock 等。
 
 **屏幕和窗口控件管理**
 - 通过窗口控件，管理应用主窗口、辅助窗口、系统窗口及其容器关系，管理窗口层级、焦点，以及布局、拖拽、旋转、动画等。
@@ -32,11 +21,11 @@
 
 > 屏幕控件和窗口控件：
 > 1. 窗口子系统基于 ArkUI 实现了屏幕控件和窗口控件，以达到复用UI 框架的布局、动画等 UI 能力。
-> 2. 基于控件方式的屏幕和窗口管理，在 MVVM 架构模式下解耦 View\ViewModel\Model 的三者，以达到在 1+8+N 产品上最大程度的复用基础的数据模型和业务管理框架。
+> 2. 基于控件方式的屏幕和窗口管理，在 MVVM 架构模式下解耦 View\ViewModel\Model 的三者，以达到在不同产品上最大程度的复用基础的数据模型和业务管理框架。
 
 **公共基础能力**
 - 提供公共基础能力，例如：日志、Dump、内存、性能等工具。
-- 提供特性间可复用的基础能力，例如：全局包信息、系统事件、设备事件和状态等。
+- 提供特性间可复用的基础能力，例如：全局已安装应用的包信息管理、系统事件管理、设备事件和状态管理等。
 
 ### SceneBoard 与 window_manager 的关系
 SceneBoard 和 window_manager 都是窗口子系统的部件，SceneBoard 依赖 window_manager。参考：[window_manager](https://gitcode.com/openharmony/window_window_manager)
@@ -76,16 +65,18 @@ SceneBoard 整体采用分层和模块化架构设计，分为三层：
 **基本原则**：层与层之间按照模块功能的可复用程度进行划分，每一层按照模块间的业务边界划分。
 
 **职责**
-1. 产品层：
-    - 承载：针对当前设备的个性化业务、以及对所需特性层和公共能力层的定制。
-    - 公共能力和不同特性又由产品层的主入口进行集成和定制，打包为可直接部署的HAP包。
-2. 特性层：
-    - 承载：抽象的公共特性的集合，每个特性高内聚、低耦合，且支持产品层进行定制。
-    - 基于系统窗口的合一桌面 UI（系统桌面、锁屏、壁纸等）按照业务边界拆分成不同的模块，放置在特性层；
-3. 公共能力层：
+1. 公共能力层：
     - 承载：SceneBoard 运行所需的基础能力集。
     - 注意：`staticcommon/basecommon/windowscene` 是屏幕和窗口控件管理的基础框架，是 SceneBoard 必选的最基础模块。
     - 特性层各个模块包含的公共业务，也可以下沉到公共能力层。例如：DFX 工具（日志、Dump、内存等工具）、锁屏状态管理等需要跨多个特性复用的模块，放置在公共能力层；
+
+2. 特性层：
+    - 承载：抽象的公共特性的集合，每个特性高内聚、低耦合，且支持产品层进行定制。
+    - 基于系统窗口的合一桌面 UI（系统桌面、锁屏、壁纸等）按照业务边界拆分成不同的模块，放置在特性层；
+
+3. 产品层：
+    - 承载：针对当前设备的个性化业务、以及对所需特性层和公共能力层的定制。
+    - 公共能力和不同特性又由产品层的主入口进行集成和定制，打包为可直接部署的HAP包。
 
 **关系**
 1. 公共能力层和特性层，均无法直接部署和运行，需要由产品层集成后编译出HAP包，才能运行。
@@ -108,8 +99,8 @@ SceneBoard 每一层都使用模块化设计，自下而上分别是：
 | 控件拖拽基础能力       | staticcommon/basecommon/componentdrag     | 提供用于桌面UI元素拖拽控制的框架能力 |
 
 2. 特性层：位于 `feature` 目录，主要包含可跨产品复用的特性能力，不同产品打包 SceneBoard 时可选集成不同特性。
-    - 合一桌面相关的特性能力有：桌面（desktop）、应用中心（appcenter）、锁屏（screenlock）等。
-    - 窗口和屏幕控件管理能力：自由窗口（pcmode）、虚拟屏（commonscbscreen）等。
+    - 合一桌面相关的特性能力有：桌面（desktop）、应用中心（apPCenter）、锁屏（screenlock）等。
+    - 窗口和屏幕控件管理能力：自由窗口（PCmode）、虚拟屏（commonscbscreen）等。
 
 | 特性层模块  | 路径                             | 说明 |
 | ------ | ------------------------------ | --- |
@@ -118,7 +109,7 @@ SceneBoard 每一层都使用模块化设计，自下而上分别是：
 | 状态栏    | feature/statusbarcomponent     | 状态栏布局、UI等 |
 | 锁屏     | feature/screenlock             | 锁屏布局、编辑、UI等 |
 | 任务栏    | feature/smartdock              | DOCK 布局、图标显示等 |
-| 应用中心   | feature/appcenter              | 应用中心布局、编辑、拖拽等 |
+| 应用中心   | feature/apPCenter              | 应用中心布局、编辑、拖拽等 |
 | 应用安装管理 | feature/appinstall             | 应用安装管理、UI等 |
 | 通用虚拟屏  | feature/commonscbscreen        | 基于屏幕和窗口控件管理公共能力，构建的各产品通用的异源虚拟屏能力，支持应用窗口的显示等 |
 | 控制中心   | feature/controlcentercomponent | 控制中心布局、编辑、拖拽等 |
@@ -126,21 +117,21 @@ SceneBoard 每一层都使用模块化设计，自下而上分别是：
 | 返回手势   | feature/gestureback            | 全局返回手势管理 |
 | 导航手势   | feature/gesturenavigation      | 底部导航手势管理 |
 | 实况窗    | feature/liveview               | 系统实况窗 |
-| 通知     | feature/notification*          | 全局系统通知管理 |
-| 自由多窗   | feature/pcmode                 | PC产品上常见的自由窗口样式特性模块 |
+| 通知     | feature/notification          | 全局系统通知管理 |
+| 自由多窗   | feature/PCmode                 | PC产品上常见的自由窗口样式特性模块 |
 | 多任务    | feature/recents                | 系统多任务界面和多任务卡片管理 |
 | 关机     | feature/shutdownview           | 全局系统关机界面 |
 | 系统弹窗   | feature/systemdialog           | 全局系统弹窗 |
-| 主题服务   | feature/theme*                 | 全局主题服务 |
-| 音量管理   | feature/volume*                | 全局音量管理 |
+| 主题服务   | feature/themeservice                 | 全局主题服务 |
+| 音量管理   | feature/volume                | 全局音量管理 |
 
 3. 产品层：位于 `product` 目录，主要包含面向不同设备的 UI，以及特有交互的适配、产品资源文件等。
 
 | 产品层模块  | 路径                             | 说明 |
 | ------ | ------------------------------ | --- |
-| phone   | product/phone                | Phone SceneBoard主入口和产品主界面、UI定义、Phone产品资源文件 |
-| pad   | product/pad                | Pad SceneBoard主入口和产品主界面、UI定义、Pad产品资源文件 |
-| pc   | product/pc                | PC SceneBoard主入口和产品主界面、UI定义、PC产品资源文件 |
+| Phone   | product/Phone                | Phone SceneBoard主入口和产品主界面、UI定义、Phone产品资源文件 |
+| Pad   | product/Pad                | Pad SceneBoard主入口和产品主界面、UI定义、Pad产品资源文件 |
+| PC   | product/PC                | PC SceneBoard主入口和产品主界面、UI定义、PC产品资源文件 |
 
 ## 编译构建
 ![build](./docs/figures/SceneBoard_build_from.png)
@@ -159,7 +150,7 @@ SceneBoard 每一层都使用模块化设计，自下而上分别是：
 
 ### 模块间依赖
 
-各个模块的 `oh-package.json5` 可配置当前模块的依赖模块。例如：phone产品的 `product/phone/oh-package.json5` 中：
+各个模块的 `oh-package.json5` 可配置当前模块的依赖模块。例如：Phone产品的 `product/Phone/oh-package.json5` 中：
 
 ```json
 {
@@ -183,15 +174,15 @@ SceneBoard 每一层都使用模块化设计，自下而上分别是：
 **产品对特性的差异化集成**
 
 产品层可通过集成不同的模块来实现不同 UI 界面和交互方式，例如：
-- phone 产品与 pc 产品按照各自产品的定义，可分别集成了不同的模块；
-- phone 产品集成了全局的导航手势模块，提供触摸屏手势的交互体验，而 pc 产品不需要该模块。
-- pc 产品集成了自由窗口、任务栏模块，提供不同于phone设备上的全屏窗口体验，以及桌面任务栏的交互体验，而 phone 产品不需要集成该模块。
-- 此外，如：壁纸、实况窗、通用虚拟屏等，phone 和 pc 产品都进行了集成，提供跨平台一致的体验。
+- Phone 产品与 PC 产品按照各自产品的定义，可分别集成了不同的模块；
+- Phone 产品集成了全局的导航手势模块，提供触摸屏手势的交互体验，而 PC 产品不需要该模块。
+- PC 产品集成了自由窗口、任务栏模块，提供不同于Phone设备上的全屏窗口体验，以及桌面任务栏的交互体验，而 Phone 产品不需要集成该模块。
+- 此外，如：壁纸、实况窗、通用虚拟屏等，Phone 和 PC 产品都进行了集成，提供跨平台一致的体验。
 
 | 产品 | 集成模块举例 | 说明 |
 | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
-| phone | // ...<br>@ohos/recents<br>@ohos/appcenter<br>@ohos/wallpapercomponent<br>@ohos/themeservice<br>@ohos/liveview<br>@ohos/gesturenavigation<br>@ohos/commonscbscreen<br>// ...<br> | 导航手势（仅phone需要）<br> 主题服务（仅phone需要）<br> 壁纸（通用）<br> 应用中心（通用）<br> 多任务（通用）<br> 实况窗（通用）<br> 通用虚拟屏（通用） |
-| pc    | //...<br>@ohos/pcmode<br>@ohos/pcbase<br>@ohos/smartdock<br>@ohos/appcenter<br>@ohos/wallpapercomponent<br>@ohos/liveview<br>@ohos/commonscbscreen<br>// ...                     | 自由多窗（仅pc需要） <br>  任务栏（仅pc需要） <br>  应用中心（通用） <br>  壁纸（通用） <br>  实况窗（通用） <br> 通用虚拟屏（通用）         |
+| Phone | // ...<br>@ohos/recents<br>@ohos/appcenter<br>@ohos/wallpapercomponent<br>@ohos/themeservice<br>@ohos/liveview<br>@ohos/gesturenavigation<br>@ohos/commonscbscreen<br>// ...<br> | 导航手势（仅Phone需要）<br> 主题服务（仅Phone需要）<br> 壁纸（通用）<br> 应用中心（通用）<br> 多任务（通用）<br> 实况窗（通用）<br> 通用虚拟屏（通用） |
+| PC    | //...<br>@ohos/pcmode<br>@ohos/pcbase<br>@ohos/smartdock<br>@ohos/appcenter<br>@ohos/wallpapercomponent<br>@ohos/liveview<br>@ohos/commonscbscreen<br>// ...                     | 自由多窗（仅PC需要） <br>  任务栏（仅PC需要） <br>  应用中心（通用） <br>  壁纸（通用） <br>  实况窗（通用） <br> 通用虚拟屏（通用）         |
 
 ### 编译命令
 SceneBoard 是系统部件，可使用下列两种方式进行编译：
@@ -205,7 +196,7 @@ SceneBoard 是系统部件，可使用下列两种方式进行编译：
 ./build.sh --product-name {product_name} --ccache
 ```
 
-## 开发
+## SceneBoard 开发
 
 SceneBoard 采用 ArkTS 语言开发，其中屏幕和窗口均通过控件的方式进行管理，也支持使用其他 ArkUI 能力，可开发参考：[ArkUI 开发概述](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/ui/arkts-ui-development-overview.md)
 
@@ -215,17 +206,17 @@ SceneBoard 采用 ArkTS 语言开发，其中屏幕和窗口均通过控件的�
 **对已有模块的集成或者裁剪**
 1. 参考上文模块间依赖的配置方式，对模块的依赖进行修改，按需新增或删除。
 2. 新集成时：
-    - 各模块的接口导出文件的声明位于 `{模块路径}\oh-package.json5` 中的。例如：`staticcommon/basecommon/basicutils` 模块，
+    - 各模块的接口导出文件的声明位于 `{模块路径}\oh-package.json5` 中的。例如：`staticcommon/basecommon/basicutils` 模块。
     ```json
-      {
-        "name": "@ohos/basicutils",
-        "version": "1.0.0",
-        "description": "Please describe the basic information.",
-        "main": "./src/main/ets/TsIndex.ts", // 接口声明文件
-        "author": "",
-        "license": "Apache-2.0",
-        "dependencies": {}
-      }
+    {
+      "name": "@ohos/basicutils",
+      "version": "1.0.0",
+      "description": "Please describe the basic information.",
+      "main": "./src/main/ets/TsIndex.ts", // 接口声明文件
+      "author": "",
+      "license": "Apache-2.0",
+      "dependencies": {}
+    }
     ```
     - 集成模块后，需要按照被集成模块声明的接口文件中提供接口进行功能开发。
 3. 裁剪时：
@@ -236,13 +227,13 @@ SceneBoard 采用 ArkTS 语言开发，其中屏幕和窗口均通过控件的�
 以定制屏幕上的 UI 举例说明：
 - 每个产品目录中，需要指定主入口`ServiceExtensionAbility`以及主界面`EntryView`，然后主界面需要定义自己的主屏幕。
 - 主屏幕使用`Screen`屏幕控件实现，是用于承载产品合一桌面的顶层控件，通过在不同层级上组合合一桌面 UI 组件即可实现该产品的桌面交互体验。
-- 例如，phone 产品目中封装的 [SCBScreen](https://gitcode.com/openharmony-sig/window_scene_board/blob/master/product/phonebase/src/main/ets/SceneBoard/scenemanager/SCBScreen.ets) 组件，就在不同层级上分别集成了：
+- 例如，Phone 产品目中封装的 [SCBScreen](https://gitcode.com/openharmony-sig/window_scene_board/blob/master/product/phonebase/src/main/ets/SceneBoard/scenemanager/SCBScreen.ets) 组件，就在不同层级上分别集成了：
 	- 壁纸(Wallpaper)、系统桌面(Desktop)、锁屏(ScreenLock)、状态栏(StatusBar)、输入法面板(KeyBoard)等合一桌面特性
 	- 以及各类ScenePanel(分别承载应用主窗口、全局悬浮窗、画中画、悬浮球等)。
 - 开发过程中，可以在特定层级中引入已有的模块的UI、或者自定义UI。
 
-``` arkts
-// phone产品的SCBScreen
+```typescript
+// Phone产品的SCBScreen
 @Component
 export struct SCBScreen {
 
@@ -273,7 +264,7 @@ export struct SCBScreen {
 
 3. 修改 `module.json5`，配置HAP包的入口、权限声明等，例如：`product/pc/src/main/module.json5`
 
-```
+```json
 {
   "module": {
     "name": "pc_sceneboard",   // 编译HAP的名称  
@@ -285,14 +276,15 @@ export struct SCBScreen {
       "2in1"             // 支持的设备形态，例如：default\tablet\2in1等，支持同时配置多个平台。
     ],
     "definePermissions": [] // 权限声明，按需，可选
+  }
 }
 ```
 
 **步骤2：新增主入口**
 1. 在HAP包中，MainAbility 需要继承自 `ServiceExtensionAblity` ，并且需要初始化 `@ohos/windowscene` 模块、加载主界面 `EntryView`。
-    - 例如：pc产品 `product\pc\src\main\ets\MainAbility\MainAbility.ets` 及其主界面 `product\pc\src\main\ets\pages\EntryView.ets`。
+    - 例如：PC产品 `product\pc\src\main\ets\MainAbility\MainAbility.ets` 及其主界面 `product\pc\src\main\ets\pages\EntryView.ets`。
 
-```
+```typescript
 // MainAbility
 export default class MainAbility extends ServiceExtensionAbility {
   onCreate(want: Want): void {
@@ -312,7 +304,7 @@ export default class MainAbility extends ServiceExtensionAbility {
 2. 在主界面中通过 `RootScene` 挂载 `SCBScreen` 或定制的特定屏幕。
     - `RootScene` 为 SceneBoard 全局根节点，必须位于主界面的根节点。
 
-```
+```typescript
 @Component
 struct EntryView {
   // 必选：使用@ohos/windowscene模块接口获取SCBRootSceneSession。
@@ -337,8 +329,10 @@ struct EntryView {
   }
 }
 ```
+
 3. 配置Ability作为启动入口。例如：`product\phone\src\main\module.json5`
-```
+
+```json
 {
   "module": {
     "name": "phone_sceneboard", // 编译HAP的名称  
