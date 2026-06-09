@@ -1,9 +1,9 @@
 /*
- * Copyright (c) Huawei Technologies Co., Ltd. 2024-2024. All rights reserved.
+ * Copyright (c) Huawei Device Co., Ltd. 2024-2024. All rights reserved.
  */
 
 /**
- * 各种字体在字号88的情况下，数字的宽高以及分隔符的宽度，通过getRectInfo接口实测得到；字体更新后，需要同步更新对应数据
+ * 锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟街猴拷88锟斤拷锟斤拷锟斤拷拢锟斤拷锟斤拷值目锟斤拷锟皆硷拷锟街革拷锟斤拷锟侥匡拷龋锟酵拷锟絞etRectInfo锟接匡拷实锟斤拷玫锟斤拷锟斤拷锟斤拷锟斤拷锟铰猴拷锟斤拷要同锟斤拷锟斤拷锟铰讹拷应锟斤拷锟斤拷
  */
 export class TextSizeConf {
   public fontSize: number = 88;

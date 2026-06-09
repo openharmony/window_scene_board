@@ -1,5 +1,5 @@
 /*
- * Copyright (c) Huawei Technologies Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved.
  */
 import { VersionCode } from "../utils/Constants";
 

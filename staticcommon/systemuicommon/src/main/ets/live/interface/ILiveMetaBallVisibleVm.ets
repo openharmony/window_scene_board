@@ -1,5 +1,5 @@
 /*
- * Copyright (c) Huawei Technologies Co., Ltd. 2024. All rights reserved.
+ * Copyright (c) Huawei Device Co., Ltd. 2024. All rights reserved.
  * 融球可见性控制VM，当前通过上下树控制
  * 1. 无实况时不显示融球
  * 2. 无孔时不显示融球（折叠屏展开，横屏）
