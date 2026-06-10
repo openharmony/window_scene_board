@@ -6,7 +6,7 @@ import PcDialogControllerTest from './ets/SceneBoard/systemscene/ViewModel/PcDia
 import GestureHelperTest from './ets/SceneBoard/gesturenavigation/common/GestureHelper.test'
 import SCBGestureNavBarViewModelTest from './ets/SceneBoard/gesturenavigation/viewmodel/SCBGestureNavBarViewModel.test'
 /*
- * Copyright (c) Huawei Technologies Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at

@@ -2,7 +2,7 @@ import PowerButtonManagerTest from './ets/manager/PowerButtonManager.test'
 import AnimSystemProfileTest from './ets/manager/AnimSystemProfile.test'
 import AiBarVisualEffectManagerTest from './ets/manager/AiBarVisualEffectManager.test';
 /*
- * Copyright (c) Huawei Technologies Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
