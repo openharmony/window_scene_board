@@ -54,13 +54,9 @@ SceneBoard 采用分层和模块化的架构设计，如图：
 
 ### 分层设计
 SceneBoard 整体采用分层和模块化架构设计，分为三层：
-```
-产品层 (product/)：产品适配相关
-  ↓
-特性层 (feature/)：模块化业务功能相关
-  ↓
-公共能力层 (staticcommon/)：基础管理框架、通用工具相关
-```
+- 公共能力层 (staticcommon/)：基础管理框架、通用工具相关
+- 特性层 (feature/)：模块化业务功能相关
+- 产品层 (product/)：产品适配相关
 
 **基本原则**：层与层之间按照模块功能的可复用程度进行划分，每一层按照模块间的业务边界划分。
 
@@ -284,51 +280,51 @@ export struct SCBScreen {
 1. 在HAP包中，MainAbility 需要继承自 `ServiceExtensionAblity` ，并且需要初始化 `@ohos/windowscene` 模块、加载主界面 `EntryView`。
     - 例如：PC产品 `product\pc\src\main\ets\MainAbility\MainAbility.ets` 及其主界面 `product\pc\src\main\ets\pages\EntryView.ets`。
 
-```typescript
-// MainAbility
-export default class MainAbility extends ServiceExtensionAbility {
-  onCreate(want: Want): void {
-    // ...
+    ```typescript
+    // MainAbility
+    export default class MainAbility extends ServiceExtensionAbility {
+      onCreate(want: Want): void {
+        // ...
 
-    // 必选：使用@ohos/windowscene模块接口，初始化窗口管理服务。
-    SCBSceneSessionManager.getInstance().init();
-    // 必选：使用@ohos/windowscene模块接口，加载主界面。
-    SCBSceneSessionManager.getInstance().loadContent('page/EntryView');
+        // 必选：使用@ohos/windowscene模块接口，初始化窗口管理服务。
+        SCBSceneSessionManager.getInstance().init();
+        // 必选：使用@ohos/windowscene模块接口，加载主界面。
+        SCBSceneSessionManager.getInstance().loadContent('page/EntryView');
 
-    // ...
-  }
-  //...
-}
-```
+        // ...
+      }
+      //...
+    }
+    ```
 
 2. 在主界面中通过 `RootScene` 挂载 `SCBScreen` 或定制的特定屏幕。
     - `RootScene` 为 SceneBoard 全局根节点，必须位于主界面的根节点。
 
-```typescript
-@Component
-struct EntryView {
-  // 必选：使用@ohos/windowscene模块接口获取SCBRootSceneSession。
-  private rootSceneSession: SCBRootSceneSession = SCBSceneSessionManager.getInstance().getRootSceneSession();
+    ```typescript
+    @Component
+    struct EntryView {
+      // 必选：使用@ohos/windowscene模块接口获取SCBRootSceneSession。
+      private rootSceneSession: SCBRootSceneSession = SCBSceneSessionManager.getInstance().getRootSceneSession();
 
-  build() {
-    RootScene(this.rootSceneSession.session) { // 全局根节点
-      ForEach(this.screenSessionList, (item: SCBScreenSession) => {
-        if (item.session.innerName === CUSTOM_SCB_SCREEN) {
-          // 虚拟屏
-        } else if (this.isExtendScreen(item)) {
-          // 扩展屏
-        } else if { xxx } {
-	      // CustomXXXScreen
-	      CustomScreen()
-        } else {
-          // 主屏
-          SCBScreen({ screenSession: item })
+      build() {
+        RootScene(this.rootSceneSession.session) { // 全局根节点
+          ForEach(this.screenSessionList, (item: SCBScreenSession) => {
+            if (item.session.innerName === CUSTOM_SCB_SCREEN) {
+              // 虚拟屏
+            } else if (this.isExtendScreen(item)) {
+              // 扩展屏
+            } else if { xxx } {
+            // CustomXXXScreen
+            CustomScreen()
+            } else {
+              // 主屏
+              SCBScreen({ screenSession: item })
+            }
+          }, (item: SCBScreenSession) => item.session.screenId.toString())
         }
-      }, (item: SCBScreenSession) => item.session.screenId.toString())
+      }
     }
-  }
-}
-```
+    ```
 
 3. 配置Ability作为启动入口。例如：`product\phone\src\main\module.json5`
 
