@@ -367,7 +367,7 @@ export struct SCBPictureInPictureScene {
     });
     this.specificSession?.registerSessionPrepareCloseCallback(() => {
       log.showInfo('registerSessionPrepareCloseCallback ');
-      this.processClose();
+      this.processClose(Constants.ACTION_REQUEST_CLOSE);
       if (this.isInSideManager) {
         this.isInSideManager = false;
       }
@@ -1288,19 +1288,19 @@ export struct SCBPictureInPictureScene {
       `rect = ${this.getSCBSessionRectInfo(this.rect)}`);
   }
 
-  private processClose() {
+  private processClose(closeType: string = Constsnts.ACTION_CLOSE) {
     Trace.start(`processClose_snapshot_${id}`);
     componentSnapshot.get(id).then((pixelMap: image.PixelMap) => {
-      this.processCloseInner(pixelMap);
+      this.processCloseInner(pixelMap, closeType);
       Trace.end(`processClose_snapshot_${id}`);
     }).catch((err: Error) => {
       log.showError(`processClose error, msg: ${err.message}`);
-      this.processCloseInner(null);
+      this.processCloseInner(null, closeType);
       Trace.end(`processClose_snapshot_${id}`);
     })
   }
 
-  private processCloseInner(pixelMap: image.PixelMap | null): void {
+  private processCloseInner(pixelMap: image.PixelMap | null, closeType: string): void {
     this.closed = true;
     this.useSnapshot = true;
     this.opacityNum = 1;
@@ -1308,7 +1308,7 @@ export struct SCBPictureInPictureScene {
     this.cachePixMap = pixelMap;
     const closeTimeId = setTimeout(()=> {
       this.specificSession.visibility = false;
-      this.specificSession?.session?.setPipActionEvent(Constants.ACTION_CLOSE);
+      this.specificSession?.session?.setPipActionEvent(closeType);
     }, Constants.DELAY_CLOSE_FOR_SNAPSHOT);
     this.timeoutIds.push(closeTimeId);
     this.shadowStyle = undefined;
@@ -1445,7 +1445,7 @@ export struct SCBPictureInPictureScene {
   private onActionClose(): void {
     log.showDebug('onActionClose');
     this.rectCalculator.savePipPositionAndLevel(this.overlayRect.left.getPx(), this.overlayRect.top.getPx());
-    this.processClose();
+    this.processClose(Constants.ACTION_PANEL_CLOSE);
   };
 
   private onActionRestore(): void {
