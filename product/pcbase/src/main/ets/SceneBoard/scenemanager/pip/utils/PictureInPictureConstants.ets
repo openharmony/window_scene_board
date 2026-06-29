@@ -17,6 +17,8 @@ import { OverlayButtonModifier } from '../style/OverlayButtonModifier';
 
 export class Constants {
   public static readonly ACTION_CLOSE = 'close';
+  public static readonly ACTION_REQUEST_CLOSE = 'request_close';
+  public static readonly ACTION_PANEL_CLOSE = 'panel_close';
   public static readonly ACTION_PRE_RESTORE = 'pre_restore';
   public static readonly ACTION_RESTORE = 'restore';
   public static readonly ACTION_PREPARE_SOURCE = 'prepare_source';
