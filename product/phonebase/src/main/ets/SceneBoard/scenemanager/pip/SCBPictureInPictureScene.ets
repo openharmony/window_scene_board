@@ -1869,7 +1869,7 @@ export struct SCBPictureInPictureScene {
       `rect = ${this.getSCBSessionRectInfo(this.rect)}`);
   }
 
-  private processClose(closeType: string = Constsnts.ACTION_CLOSE) {
+  private processClose(closeType: string = Constants.ACTION_CLOSE) {
     Trace.start(`processClose_snapshot_${id}`);
     componentSnapshot.get(id).then((pixelMap: image.PixelMap) => {
       this.processCloseInner(pixelMap, closeType);
