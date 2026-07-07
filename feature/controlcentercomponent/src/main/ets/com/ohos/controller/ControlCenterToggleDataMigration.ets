@@ -60,7 +60,7 @@ export class ControlCenterToggleDataRestore {
    */
   private retryCount: number = 0;
   /**
-   * 快捷开关名称映射
+   * 系统快捷开关名称映射
    */
   private togglesMatchMap: Map<string, string> = new Map();
   /**
@@ -147,6 +147,7 @@ export class ControlCenterToggleDataRestore {
     setTimeout(() => {
       try {
         this.reloadToggleDataSortSingle();
+        // 刷新设备克隆后按钮排序
         this.reloadToggleDataSort();
         log.showInfo('restore restoreQuickTogglesOrder done');
       } catch (error) {
@@ -179,7 +180,7 @@ export class ControlCenterToggleDataRestore {
         this.reportCCDataClone(nowTopToggleList, this.backupTopToggleList);
       }
     }
-    // 刷新当前按钮排序
+    // 刷新设备当前按钮排序
     QuickToggleController.getInstance().onToggleDataChange();
     return;
   }
@@ -245,6 +246,7 @@ export class ControlCenterToggleDataRestore {
   }
 
   private reloadToggleDataSort(): void {
+    // 获取设备字段
     let restoreTiles: string = sSettingsUtil.getSecureValue(ohos_TOGGLE_SORT_SECURE_DB_KEY, '');
     log.showInfo('restoreTiles: ' + restoreTiles);
     if (CommonUtils.isEmpty(restoreTiles)) {
@@ -309,7 +311,7 @@ export class ControlCenterToggleDataRestore {
     // 比较scb version
     let restoreOldVersion: string = sSettingsUtil.getSecureValue(SettingsKeyConstants.RESTORE_OLD_SCB_VERSION, '');
     log.showInfo(`initToggleSettingsData otaOldVersion=${restoreOldVersion}`);
-    // 克隆场景
+    // 系统迁移场景
     if (CheckEmptyUtils.checkStrIsEmpty(restoreOldVersion) || SPECIAL_BACKUP_VERSION.includes(restoreOldVersion)) {
       return '';
     }

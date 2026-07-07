@@ -38,7 +38,7 @@ import Constants from '../common/Constants';
 import taskpool from '@ohos.taskpool';
 import dataShare from '@ohos.data.dataShare';
 import type { BusinessError } from '@ohos.base';
-/*import superPrivacyManager from '@hms.security.superPrivacyManager';
+/*import superPrivacyManager from '@ohos.security.superPrivacyManager';
 import privacyIndicatorManager from '@hms.security.privacyIndicatorManager';*/
 import { DropDownPanelManager, EdmAdminManager } from '@ohos/systemuicommon/Index';
 import Prompt from '@ohos.promptAction';

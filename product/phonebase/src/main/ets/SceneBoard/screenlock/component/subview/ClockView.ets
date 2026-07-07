@@ -73,7 +73,7 @@ import { SlLockIconBindState } from '@ohos/screenlockcomponent/src/main/ets/pass
 import Constants from '@ohos/screenlockcomponent/src/main/ets/common/Constants';
 import { SlBindStateType } from '@ohos/screenlockcommon/src/main/ets/constants/SlStateType';
 import { ClockStaticStateType } from '@ohos/screenlockcommon/src/main/ets/constants/SlStateType';
-import lazy { UltraScreenExpandAnimationVc } from '../subviewcontrol/UltraScreenExpandAnimationVc';
+import lazy { TripleFoldExpandAnimationVc } from '../subviewcontrol/TripleFoldExpandAnimationVc';
 import { ClockAdapterFactory } from '@ohos/screenlockwidget/src/main/ets/clock/adapter/ClockAdapter';
 import { UseScene } from '@ohos/screenlockwidget/src/main/ets/common/adapter/Constans';
 import { ClockLayoutParam, clockLayoutParam } from '@ohos/screenlockwidget/src/main/ets/clock/common/ClockLayoutParam';
@@ -232,7 +232,7 @@ export struct ClockView {
     this.clockViewVc?.updateClockMargin();
     this.clockViewVc?.setScreenLockThemeChangeCallback(this._themeChangeCallback);
     this.parentVc?.updateClockTextBlurEnabled();
-    if (DeviceHelper.isUltraScreenProduct()) {
+    if (DeviceHelper.isThreeFoldProduct()) {
       this.clockViewVc.refreshPreClockPosition();
     }
     this.slClockStaticCtrl.setIsNeedRefreshClockLayout(false);
@@ -408,7 +408,7 @@ export struct ClockView {
     if (this.specialModeViewData?.curMode !== KeyGuardMode.DEFAULT) {
       return { x: 0, y: 0 };
     }
-    if (this.slClockAnimCtrl?.isSceneAnimating(this.getTripleAnimScene()) && DeviceHelper.isUltraScreenProduct()) {
+    if (this.slClockAnimCtrl?.isSceneAnimating(this.getTripleAnimScene()) && DeviceHelper.isThreeFoldProduct()) {
       return this.getTripleClockTran();
     }
     if (this.clockAnimState?.isWidgetAnimating()) { // 动效优先
@@ -420,8 +420,8 @@ export struct ClockView {
   }
 
   private getTripleAnimScene(): string | undefined {
-    if (DeviceHelper.isUltraScreenProduct()) {
-      return UltraScreenExpandAnimationVc.getInstance().getCurAnimScene();
+    if (DeviceHelper.isThreeFoldProduct()) {
+      return TripleFoldExpandAnimationVc.getInstance().getCurAnimScene();
     }
     return undefined;
   }

@@ -1,0 +1,2615 @@
+{
+    "string":[
+        {
+            "name":"keywords_during_call",
+            "value":"چاقىرىق ھەرىكىتى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"icon",
+            "value":"سىنبەلگە",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"more_online_themes",
+            "value":"كۆپرەك تور ئۇسلۇب",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"default_icon",
+            "value":"سۈكۈت سىنبەلگە",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_theme",
+            "value":"ئۇسلۇب قوللىنىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"preview",
+            "value":"كۆرەك",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"back",
+            "value":"قايتىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"my_wallpapers",
+            "value":"تەگلىكىم",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enableTheme",
+            "value":"ئۇسلۇب قوللىنىلىۋاتىدۇ...",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"show_lock_screen_signature",
+            "value":"قۇلۇپ ئېكران ئىمزاسى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remove_this_theme",
+            "value":"بۇ ئۇسلۇبنى چىقىرىۋېتەمسىز؟",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"theme_title",
+            "value":"ئۇسلۇب",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"default_font",
+            "value":"سۈكۈت خەت نۇسخىسى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"my_downloads",
+            "value":"چۈشۈرگەن",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"show_lunar_date",
+            "value":"دېھقانلار كالېندارى كۆرسىتىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"more_themes",
+            "value":"باشقا ئۇسلۇبلار",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wallpaper_title",
+            "value":"تەگلىك",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"customize",
+            "value":"ئۆزلەشتۈرۈش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"font_style",
+            "value":"خەت شەكلى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"show_date",
+            "value":"چېسلا كۆرسىتىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"click_input_text",
+            "value":"چېكىپ خەت كىرگۈزۈڭ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"add_theme",
+            "value":"ئۇسلۇب قوشۇش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"select_from_gallery",
+            "value":"ئامباردىن تاللاش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aesthetic",
+            "value":"گۈزەل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"apply",
+            "value":"قوللىنىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"more_online_icon",
+            "value":"كۆپرەك تور سىنبەلگە",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_theme",
+            "value":"ئىزچىل كۆرسىتىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"more_online_font",
+            "value":"كۆپرەك تور خەت نۇسخىسى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"applyWallpaper",
+            "value":"تەگلىك قوللىنىلىۋاتىدۇ...",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"picture_getting",
+            "value":"رەسىم ئوقۇلۇۋاتىدۇ...",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"preset_theme",
+            "value":"تەييار ئۇسلۇب",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"te_cancel",
+            "value":"بىكار قىلىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"preview_image",
+            "value":"كۆرەك",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"more_online_wallpapers",
+            "value":"كۆپرەك تەگلىك",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"resource_description",
+            "value":"مەنبە ھەققىدە",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"free_official_theme",
+            "value":"ئورگان تەرەپ ھەقسىز ئۇسلۇب",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"cancel",
+            "value":"بىكار قىلىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_failed",
+            "value":"قوللىنىلمىدى.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_success",
+            "value":"قوللىنىلدى.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"applying",
+            "value":"ئىشلەتكەن",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"in_use",
+            "value":"ئىشلەتكەن",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"outside_screen_show",
+            "value":"تاش ئېكران",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"recommend_theme",
+            "value":"تەپسىلات",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remove",
+            "value":"چىقىرىۋېتىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"keywords_outer_facard",
+            "value":"مۇلازىمەت كارتىسى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"keywords_outer_theme",
+            "value":"ئۇسلۇب",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"recover",
+            "value":"ئەسلىگە كەلتۈرۈش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"font_apply_failed",
+            "value":"خەت نۇسخىسى قوللىنىلمىدى.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wallpaper_recommendation",
+            "value":"تەۋسىيەلىك رەسىم",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_restored",
+            "value":"ئەپ ئەسلىگە كەلدى.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"recover_Theme_App_massage",
+            "value":"«ئۇسلۇب» ئەپى ئۆچۈرۈلگەن، بۇ ئىقتىدارنى ئىشلىتىش ئۈچۈن ئۇنى ئەسلىگە كەلتۈرۈش كېرەك.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"font_apply_successd",
+            "value":"خەت نۇسخىسى قوللىنىلدى.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"recover_Theme_App",
+            "value":"«ئۇسلۇب» نى ئەسلىگە كەلتۈرەمسىز؟",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"confirm",
+            "value":"جەزملەش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"homescreen",
+            "value":"ئۈستەليۈزى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"lockscreen",
+            "value":"قۇلۇپ ئېكرانى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"uncompleted",
+            "value":"بۇ ئىقتىدار ئىشلىنىۋاتىدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"full_screen_reading_enter",
+            "value":"تولۇق ئېكرانلىق كۆرەككە كىردىڭىز.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"full_screen_reading_exit",
+            "value":"تولۇق ئېكرانلىق كۆرەكتىن چېكىندىڭىز.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"image_decoding_failure",
+            "value":"رەسىم نورمالسىز، قايتا سىناڭ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"theme_card_accessibility_text",
+            "value":"ئىككى بارماقتا ئوڭ-سولغا سىيرىپ ئۇسلۇب ئالماشتۇرىسىز، ئىككى بارماقتا ئۈستىگە سىيرىپ ئۇسلۇب چىقىرىۋېتىسىز",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_wallpaper",
+            "value":"رەسىم قوشۇش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"been_lifted",
+            "value":"سۆرەلدى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"bottom_right",
+            "value":"ئوڭ ئاستى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"top_of_center",
+            "value":"ئۈستى مەركەز",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"clock_edit_tips",
+            "value":"بىر بارماقتا قوش چېكىپ تەھرىرلەش، قوش چېكىپ قويۇپ بەرمەي تۇرۇپ سۆرەپ سائەت ئورنىنى ئۆزگەرتىشكە بولىدۇ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_to",
+            "value":"‏%s غا سۆرەلدى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"checked",
+            "value":"تاللاندى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"clock_style",
+            "value":"سائەت ئۇسلۇبى %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"current_icon_checked",
+            "value":"نۆۋەتتىكى سىنبەلگە، تاللاندى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"clock_font_color",
+            "value":"سائەت خەت رەڭگى %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"set_as_lockscreen",
+            "value":"قۇلۇپ ئېكرانى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"top_right",
+            "value":"ئوڭ ئۈستى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"current_theme",
+            "value":"نۆۋەتتىكى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"right_of_center",
+            "value":"ئوڭ مەركەز",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"top_left",
+            "value":"سول ئۈستى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"current_wallpaper_checked",
+            "value":"نۆۋەتتىكى تەگلىك، تاللاندى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"clock_font_style",
+            "value":"سائەت خەت شەكلى %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screen_reading_other_page",
+            "value":"تەپسىلات %d-بېتى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"button_text",
+            "value":"ئۇسلۇب قوشۇش كۇنۇپكىسى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"switched_desktop_preview",
+            "value":"ئۈستەليۈزى كۆرەك ھالىتىگە ئالماشتى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"more_edits",
+            "value":"باشقا تەھرىرلەش تاللانمىلىرى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"lock_screen_clock",
+            "value":"قۇلۇپ ئېكران سائىتى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"blur",
+            "value":"تۇتۇقلاش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"blurred",
+            "value":"تۇتۇقلاشتى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"left_of_center",
+            "value":"سول مەركەز",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"switched_lock_screen_preview",
+            "value":"قۇلۇپ ئېكرانى كۆرەك ھالىتىگە ئالماشتى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"bottom_left",
+            "value":"سول ئاستى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"un_blurred",
+            "value":"تۇتۇقلاش بىكار قىلىندى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"bottom_of_center",
+            "value":"ئاستى مەركەز",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"toggle_view",
+            "value":"كۆرۈنۈش ئالماشتۇرۇش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"set_as_desktop",
+            "value":"ئۈستەليۈزى قىلىپ بېكىتىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"center",
+            "value":"مەركەز",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screen_reading_first_page",
+            "value":"سىستېما سۈكۈت خەت نۇسخىسى، تەپسىلات %d-بېتى، ئوڭ-سولغا سىيرىپ باشقا تەپسىلات بەتلىرىنى يۈكلەيسىز",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"full_screen_reading_page_one",
+            "value":"تەپسىلات %d-بېتى، ئىككى بارماقتا ئوڭ-سولغا سىيرىپ باشقا تەپسىلات بەتلىرىنى يۈكلەيسىز",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"female",
+            "value":"قىز/ئايال",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"save_success",
+            "value":"ساقلاندى.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"continue",
+            "value":"داۋاملاشتۇرۇش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"unchecked",
+            "value":"تاللانمىدى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"upload_photo",
+            "value":"يۈكلەش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"should_apply_current_theme",
+            "value":"بۇ ئۇسلۇبنى قوللىنامسىز؟",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keep_one_wallpaper",
+            "value":"كەمىدە بىر تەگلىكنى ساقلاپ قېلىش كېرەك.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"adult",
+            "value":"چوڭلار",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_main_pandora_title",
+            "value":"ئۈستەليۈزى ۋە خاسلاشتۇرۇش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"covertheme_settings_title",
+            "value":"ئۈستەليۈزى، تاشقى ئېكران ۋە خاسلاشتۇرۇش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"exiting_current_page",
+            "value":"بۇ بەتتىن ئايرىلسىڭىز، مەنبە قۇرۇشقا تەسىر يەتمەيدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"person_information",
+            "value":"ئادەم ئۇچۇرى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"continue_generating",
+            "value":"كۆپرەك قۇرۇش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"male",
+            "value":"ئوغۇل/ئەر",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"continue_upload_image",
+            "value":"رەسىم يېڭىلىسىڭىز، يېڭى ئۇسلۇب قۇرۇلىدۇ، نۆۋەتتىكى ئۇسلۇب ئۆچۈرۈلىدۇ، يېڭىلامسىز؟",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"infancy",
+            "value":"بالا",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"photo_not_meet",
+            "value":"بۇ رەسىم ئىشلىمەيدۇ، تەۋسىيەلىك ئادەم رەسىمىدىن تاللاڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"generating_ai_wallpaper",
+            "value":"\u200fAI تەگلىك قۇرۇلۇۋاتىدۇ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"reach_upper_limit",
+            "value":"تەگلىك سانى چەككە يەتكەن، ئىشلەتمەيدىغانلىرىنى ئۆچۈرۈپ، قايتا سىناڭ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"insufficient_quota",
+            "value":"بۇ ئايلىق چەك توشتى.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"login_failed",
+            "value":"تور يوق، كېيىنرەك قايتا سىناڭ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_main_pandora_fail_content",
+            "value":"قۇرۇلمىدى.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pandora_theme_description",
+            "value":"%1$d. يۈكلىگەن رەسىمدە بىرلا ئادەم بولسۇن، يۈز ئوچۇق كۆرۈنسۇن، توسۇلۇپ قالمىسۇن.\n%2$d. رەسىم AI ئارقىلىق قۇرۇلىدۇ، ئۈنۈمى ياخشى بولماسلىقىمۇ مۇمكىن.\n%3$d. رەسىمدە قوپال، زوراۋان، شەھۋانىي ياكى كەمسىتىش تۈرىدىكى مەزمۇنلار بولسا بولمايدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_main_pandora_ongoing_content",
+            "value":"\u200fAI تەگلىك قۇرۇۋاتىدۇ، چېكىپ كۆرۈڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_main_pandora_finish_content",
+            "value":"\u200fAI تەگلىك قۇرۇپ بولدى، چېكىپ كۆرسىڭىز ياكى ئىشلەتسىڭىز بولىدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"wallpaper_carousel_info",
+            "value":"تەگلىك يۆگەم (%1$d/%2$d)",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"generate_failed",
+            "value":"قۇرۇلمىدى.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"screen_off_theme",
+            "value":"ئىزچىل كۆرسىتىش تەڭشەكلىرى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_ways_display_awake_off",
+            "value":"ئېتىك",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"table_theme",
+            "value":"ئۈستەليۈزى تەڭشىكى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_all_day_display",
+            "value":"پۈتۈن كۈن كۆرسىتىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_ways_display_awake_intelligent",
+            "value":"ئاڭلىق كۆرسىتىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_ways_display_awake_scheduled",
+            "value":"قەرەللىك كۆرسىتىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"tip_button_text",
+            "value":"تەپسىلات",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"tip_title",
+            "value":"قۇلۇپ ئېكرانى ۋە ئۈستەليۈزىنى تېز خاسلاشتۇرۇش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"tip_content",
+            "value":"قۇلۇپ ئېكرانى ۋە ئۈستەليۈزىدە ئىككى بارماقنى يېيىپ ۋە يىغىپ ئۇسلۇب ئالماشتۇرۇش، تەگلىك ۋە مۇلازىمەت كارتىسى قاتارلىقلارنى ئۆزلەشتۈرۈشكە بولىدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"tip_cancel_text",
+            "value":"ئېتىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"theme_personalize_screen_reading_other_page",
+            "value":"ئېكران %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"theme_personalize_full_screen_reading_page_one",
+            "value":"ئېكران %d، ئوڭ-سولغا سىيرىسىڭىز باشقا تەگلىكلەر چىقىدۇ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"select_from_folder",
+            "value":"قىسقۇچتىن تاللاش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wallpaper_display_mode",
+            "value":"تەگلىك كۆرسىتىش ھالىتى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"scale_to_fill_screen",
+            "value":"سوزۇپ تولما",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"tiling",
+            "value":"يايما",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"center_the_original_image",
+            "value":"مەركەزداش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"fill_screen",
+            "value":"تولما",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"center_and_fit",
+            "value":"مەركەزداش ۋە ماس",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Desktop_setting",
+            "value":"ئۈستەليۈزى تەڭشىكى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"HiSearch_title",
+            "value":"شياۋيى ئىزدىگۈچ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Desktop_slide",
+            "value":"ئۈستەليۈزىنى تۆۋەنگە سىيرىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"desktop_layout",
+            "value":"لايىھە",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"auto_align",
+            "value":"ئۆزلۈكىدىن رەتلەش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"intelligent_settings",
+            "value":"قوشۇمچە ئېكران",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"auto_align_content",
+            "value":"ئەپ ئۆچۈرگەندە بوش قالغان ئورۇن تولدۇرۇلۇپ رەتلىنىدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"try_out",
+            "value":"سىناش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"device_temperature_too_high",
+            "value":"ئۈسكۈنە قىزىپ كەتتى، كېيىنرەك قايتا سىناڭ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"photo_not_meet_no_label",
+            "value":"بۇ رەسىم ئىشلىمەيدۇ، باشقا تاللاڭ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"got_it",
+            "value":"بىلدىم",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"apply_generating_ai_wallpaper",
+            "value":"«قوللىنىش» نى چەكسىڭىز، AI تەگلىك قۇرۇش باشلىنىدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"after_generate_wallpaper_enable_theme",
+            "value":"بۇ ئۇسلۇب ماسقەدەملىك قوللىنىلىدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_main_time_travel_ongoing_content",
+            "value":"ۋاقىت ئاتلىغۇچ AI تەگلىك قۇرۇۋاتىدۇ، چېكىپ كۆرۈڭ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_main_time_travel_finish_content",
+            "value":"ۋاقىت ئاتلىغۇچ AI تەگلىك قۇرۇپ بولدى، چېكىپ كۆرۈڭ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"generate_failed_origin_img_error",
+            "value":"قۇرۇلمىدى، رەسىم ئالماشتۇرۇڭ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"composition_failed",
+            "value":"قۇرۇلمىدى، قايتا رەسىم تاللاڭ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pandora_service_unavailable",
+            "value":"بۇ مۇلازىمەت ئىشلىمىدى، كېيىنرەك قايتا سىناڭ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wallpaper_cannot_be_edited_in_a_small_window",
+            "value":"تەگلىك كىچىك كۆزنەكتە تەھرىرلەنمەيدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"theme_cannot_be_edited_in_a_small_window",
+            "value":"ئۇسلۇب كىچىك كۆزنەكتە تەھرىرلەنمەيدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pandora_aesthetic_dialog_confirm",
+            "value":"جەزملەش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"intelligent_status_on",
+            "value":"ئوچۇق",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"intelligent_status_off",
+            "value":"ئېتىك",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"intelligent",
+            "value":"قوشۇمچە ئېكران",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remove_theme_info",
+            "value":"بۇ ئۇسلۇبتىكى تەگلىك، سىنبەلگە ئۇسلۇبى قاتارلىق مەلۇماتلار چىقىرىۋېتىلىدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_wallpaper_info",
+            "value":"تەگلىك قوللىنىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"change_wallpaper",
+            "value":"تەگلىك ئۆزگەرتىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"generate_failed_and_try_again",
+            "value":"قۇرۇلمىدى، قايتا سىناڭ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"regenerate",
+            "value":"قايتا قۇرۇش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"upload_photo_loading",
+            "value":"يۈكلەۋاتىدۇ...",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"choose_person_info",
+            "value":"ئادەم ئۇچۇرى تاللاڭ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_watch_info",
+            "value":"سائەت يۈزىگە ماسقەدەملەش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"do_camera_mover",
+            "value":"كىنو كۆز ئېچىلدى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"camera_mover",
+            "value":"كىنو كۆز",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"undo_camera_mover",
+            "value":"كىنو كۆز بىكار قىلىندى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pandora_theme_upload_photo_tips",
+            "value":"%1$d. يۈكلىگەن رەسىمدە بىرلا ئادەم بولسۇن، يۈز ئوچۇق كۆرۈنسۇن، توسۇلۇپ قالمىسۇن.\n%2$d. بەك كىچىك بالىلارنىڭ رەسىمىنى ئىشلەتسىڭىز ئۈنۈمى ياخشى چىقماسلىقى مۇمكىن.\n%3$d. تېخنىكا ۋە ئۈلگە چەكلىمىسى سەۋەبلىك، AI ئارقىلىق قۇرۇلغان رەسىم كۆڭۈلدىكىدەك بولماسلىقى مۇمكىن.\n%4$d. رەسىمدە قوپال، زوراۋان، شەھۋانىي ياكى كەمسىتىش تۈرىدىكى مەزمۇنلار بولسا بولمايدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wallpaper_carousel_gallery",
+            "value":"تەگلىك ئامبىرى (كۆپىدە %d)",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"update_photo",
+            "value":"رەسىم يېڭىلاش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"save_carousel",
+            "value":"ساقلاش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"login_in_settings",
+            "value":"سىستېما تەڭشىكىدىن خۇاۋېي ھېسابىغا تىزىملاپ كىرىڭ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"age_too_small_error",
+            "value":"رەسىمدىكى ئوبيېكت بەك كىچىك، قۇرۇلمايدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"generating_ai_wallpaper_need_time",
+            "value":"\u200fAI تەگلىك قۇرۇلۇۋاتىدۇ (تەخمىنەن %d مىنۇت كېتىدۇ)",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aigc_generation_prompt",
+            "value":"شياۋيى AI ئىشلىگەن",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"photo_not_meet_have_label",
+            "value":"بۇ رەسىم ئىشلىمەيدۇ، تەۋسىيەلىك ئادەم رەسىمىدىن تاللاڭ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"tip_play_text",
+            "value":"قويۇش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"my_theme_0",
+            "value":"ئۇسلۇبۇم",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"my_theme_d",
+            "value":"ئۇسلۇبۇم %d",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"unsupported_moving_photo_wallpaper",
+            "value":"ئۈستەليۈزى ھەرىكەتچان تەگلىك قوللىمايدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dynamic",
+            "value":"ھالەت",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pop_up_content",
+            "value":"ھەرىكەتچان ئۈنۈم ئېتىك، تىنچ ئۈنۈم ئىشلىتىشنى تەۋسىيە قىلىمىز.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"current_theme_style",
+            "value":"نۆۋەتتىكى ئۇسلۇب",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"save_picture",
+            "value":"رەسىمنى ساقلاش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"file_getting",
+            "value":"بۇلۇتتىن ھۆججەت چۈشۈۋاتىدۇ...",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"interactive",
+            "value":"ئۆزئارالىق",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_watch_info_toast",
+            "value":"سائەت يۈزىگە ماسقەدەملەنمىدى، قايتا سىناڭ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"untoggle_camera_mover",
+            "value":"قالدۇرسىڭىز، كىنو كۆز ئۈنۈمى كۈچتىن قالىدۇ، بىللە تاللاشنى تەۋسىيە قىلىمىز.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"management",
+            "value":"باشقۇرۇش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"preview_photo_loading",
+            "value":"يۈكلەۋاتىدۇ...",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_current_theme_first",
+            "value":"ئاۋۋال ئۇسلۇبنى قوللىنىڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"turn_off_dynamic",
+            "value":"ھەرىكەتچان ئۈنۈمنى ئېتىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"turn_on_dynamic",
+            "value":"ھەرىكەتچان ئۈنۈمنى ئېچىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keywords_outer_apply",
+            "value":"ئەپ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"magic_screen",
+            "value":"قوش ئېكران",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"keywords_cover_screen",
+            "value":"تاشقى ئۈستەليۈزى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"screenlock_sign_entry",
+            "value":"قۇلۇپ ئېكرانى ئىمزاسى بېكىتىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wallpaper_G_only",
+            "value":"ئۈچ ئېكرانلىق ھالەتكە قوللىنىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wallpaper_M_only",
+            "value":"قوش ئېكرانلىق ھالەتكە قوللىنىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wallpaper_F_only",
+            "value":"بىر ئېكرانلىق ھالەتكە قوللىنىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"interactive_theme_detail_tip",
+            "value":"ئەسكەرتىش: بۇ ئۇسلۇب قۇلۇپ ئېكرانىدا قىزىقارلىق ئۆزئارالىق ئىقتىدارى بىلەن تەمىنلەيدۇ. ئېكران يۈز تونۇتۇپ بىۋاسىتە قۇلۇپ ئاچىدىغان ھالەتتە بولسا، بۇ ئۇسلۇبنى قوللانغاندا يۈز تونۇتۇپ سىيرىپ قۇلۇپ ئېچىش ھالىتىگە ئۆزگىرىدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_sub_screen_info",
+            "value":"تاشقى ئېكرانغا قوللىنىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_sub_screen_info_subtext",
+            "value":"«تاش ئېكران ئۇسلۇبى» بېتىدە داۋاملىق تەھرىرلەشكە بولىدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"cover_screen",
+            "value":"تاشقى ئېكران",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_dialog_title",
+            "value":"ئۇسلۇب قوللىنىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"main_screen",
+            "value":"ئىچكى ئېكران",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"best_example_of_uploading_photos",
+            "value":"ئۆرنەك",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"side_face",
+            "value":"يانچە",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"i_know",
+            "value":"بىلدىم",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"style_choose",
+            "value":"ئۇسلۇب تاللاش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"get_best_results",
+            "value":"ئەڭ ياخشى ئۈنۈم",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"occlusion_exists",
+            "value":"توسۇق",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"clear_facial_features",
+            "value":"يۈز ئوچۇق",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"face_the_camera",
+            "value":"يۈز ئۇدۇل",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"end_of_service",
+            "value":"ئېتىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ai_wallpaper_service_name_3",
+            "value":"ۋاقىت ئاتلىغۇچ ئۇسلۇب مۇلازىمىتى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"end_of_service_1",
+            "value":"مۇلازىمەتنى ئېتىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ai_wallpaper_service_subtitle_1",
+            "value":"بۇ مۇلازىمەت سىز تاللىغان رەسىمنى بۇلۇت مۇلازىمىتېرغا يۈكلەپ، بۇلۇت AI ھېسابلاش ئۇسۇلى ئارقىلىق تەگلىك قۇرىدۇ. ئۇنىڭغا تۆۋەندىكى ئىجازەت كېرەك:",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"account_button_login",
+            "value":"كىرىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"network_unavailable",
+            "value":"تور ئۇلانمىدى، تەكشۈرۈڭ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"have_occlusion",
+            "value":"ئادەم توسۇلۇپ قالغان.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ai_wallpaper_service_description_1",
+            "value":"بۇ مۇلازىمەت %1$s ئىشلىتىدۇ؛ رەسىم ئوقۇپ ۋە يۈكلەپ، تەگلىك ئىقتىدارلىرىنى تەمىنلەيدۇ. «قوشۇلىمەن» نى چەكسىڭىز، «%2$s» ۋە يۇقىرىقىلارغا قوشۇلغان بولىسىز. شەخسىي ئۇچۇر بىر تەرەپ قىلىش ھەققىدىكى تەپسىلاتلارنى «%3$s» ئارقىلىق كۆرۈڭ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"have_no_people",
+            "value":"رەسىمدە ئادەم يوق.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"execution_timed_out",
+            "value":"يۈرگۈزۈش ۋاقتى ئېشىپ كەتتى.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"agree",
+            "value":"قوشۇلىمەن",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"random",
+            "value":"ئىختىيارىي",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ai_wallpaper_terms",
+            "value":"ۋاقىت ئاتلىغۇچ ئۇسلۇب سۈنئىي ئاڭ ئىقتىدارىنىڭ ئىشلىتىش شەرتلىرى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"have_multi_people",
+            "value":"رەسىمدە كۆپ ئادەم بار.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"big_angle",
+            "value":"بۇلۇڭ بەك يانتۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"low_pixel",
+            "value":"رەسىم ئېنىقلىقى بەك تۆۋەن.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"on_network",
+            "value":"تور",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ai_wallpaper_service_stop_note_1",
+            "value":"ۋاقىت ئاتلىغۇچ مۇلازىمىتىنى ئەتسىڭىز، ئالاقىدار ئىقتىدارلار ئىشلىمەيدۇ، ئېتەمسىز؟",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"content_reporting",
+            "value":"پاش قىلىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"end_aigc_service_text",
+            "value":"تەپسىلاتىنى «%1$s» ۋە «%2$s» ئارقىلىق كۆرۈڭ. بۇ مۇلازىمەت كېرەك بولمىسا، «%3$s» نى چېكىڭ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"update_available",
+            "value":"يېڭىلانما بار",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"delete_fail",
+            "value":"ئۆچۈرۈلمىدى.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"delete_wallpaper",
+            "value":"تەگلىك ئۆچۈرۈش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"icon_size",
+            "value":"سىنبەلگە چوڭلۇقى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"icon_size_tip",
+            "value":"تېزلەتمە بالداق سىنبەلگىلىرىنىڭ چوڭلۇقى تەڭشەلمەيدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"icon_size_restore_default",
+            "value":"سۈكۈت",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dock_color_style",
+            "value":"تېزلەتمە بالداق رەڭگى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dock_color_style_follow_window",
+            "value":"تەگلىك ۋە كۆزنەك بويىچە",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dock_color_style_follow_system",
+            "value":"سىستېما بويىچە",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dock_color_style_follow_window_tips",
+            "value":"تەگلىك ياكى چوڭ ئېچىلغان كۆزنەك قېنىق ھالەتكە ئۆتسە، تېزلەتمە بالداقمۇ قېنىق ھالەتكە ئۆتىدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dock_color_style_follow_system_tips",
+            "value":"قېنىق ھالەت ئېچىلسا، تېزلەتمە بالداقمۇ قېنىق ھالەتكە ئۆتىدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dock_auto_hide_style",
+            "value":"كۆزنەك چوڭايتقان ياكى ئېكران بۆلگەندە تېزلەتمە بالداق يوشۇرۇش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"window_animation_title",
+            "value":"كۆزنەك كىچىكلىتىش ئۈنۈمى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"window_animation_attraction",
+            "value":"ئاقار يۇلتۇز",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"window_animation_default",
+            "value":"سۈكۈت ئۈنۈم",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"undelete_toast",
+            "value":"بۇ تەگلىك ئۆچۈرۈلمەيدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"select_all",
+            "value":"ھەممىنى تاللاش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"no_select",
+            "value":"تاللانمىدى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"deselect_all",
+            "value":"قالدۇرۇش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"delete",
+            "value":"ئۆچۈرۈش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"edit_M_tip",
+            "value":"قوش ئېكرانلىق ھالەتتە ئېچىپ تەھرىرلەڭ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"edit_G_tip",
+            "value":"ئۈچ ئېكرانلىق ھالەتتە ئېچىپ تەھرىرلەڭ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"share_description",
+            "value":"ئورتاقلىشىش، ئۆزلەشتۈرۈش ۋە بېزەش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"share_card_hint",
+            "value":"يانفوننى تەگكۈزۈپ ياكى ھاۋادا يوللاپ ئۇسلۇب ئورتاقلاشسىڭىز بولىدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"desktop_style_title",
+            "value":"تېزلەتمە ۋە ھالەت بالدىقى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_main_dimensional_travel_ongoing_content",
+            "value":"ئۆلچەم ئاتلىغۇچ AI تەگلىك قۇرۇۋاتىدۇ، چېكىپ كۆرۈڭ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_main_dimensional_travel_finish_content",
+            "value":"ئۆلچەم ئاتلىغۇچ AI تەگلىك قۇرۇپ بولدى، چېكىپ كۆرۈڭ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"not_selected",
+            "value":"تاللانمىدى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"network_error",
+            "value":"توردا خاتالىق كۆرۈلدى، قايتا سىناڭ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"lock_layout_content",
+            "value":"بۇ تاللانما ئوچۇق ھالەتتە ئۈستەليۈزى لايىھەسى قۇلۇپلىنىدۇ، ئېلېمېنت يۆتكەش ياكى چىقىرىۋېتىش توسۇلىدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"lock_layout",
+            "value":"لايىھە قۇلۇپلاش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"insufficient_storage_toast",
+            "value":"ئىچكى بوشلۇق يېتەرسىز، ئۇسلۇب مۇلازىمىتى تەمىنلەنمەيدۇ. ئىشلەتمەيدىغان ھۆججەتلەرنى ئۆچۈرۈپ بوشلۇق ھازىرلاڭ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"blur_slider_read_notes",
+            "value":"بالداقنى چېكىپ تۇتۇقلاش قىممىتىنى تەڭشەيسىز",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"switch_to_desktop_preview",
+            "value":"ئۈستەليۈزى كۆرەك ھالىتىگە ئالماشتۇرۇش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"switch_to_lock_screen_preview",
+            "value":"قۇلۇپ ئېكرانى كۆرەك ھالىتىگە ئالماشتۇرۇش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"start_generating",
+            "value":"قۇرۇش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"exit_pandora_dialog",
+            "value":"نۆۋەتتىكىنى ساقلاپ قوللىنامسىز؟",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"theme_data_service_permissions",
+            "value":"ئىجازەت ئىشلىتىش كۆرسەتمىسى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"about",
+            "value":"ھەققىدە",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"stop_theme_data_service_title",
+            "value":"ئۇسلۇب مۇلازىمىتىنى ئېتىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"theme_data_service",
+            "value":"ئۇسلۇب مۇلازىمىتى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"more",
+            "value":"باشقىلار",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"theme_data_service_privacy",
+            "value":"ئۇسلۇب مۇلازىمىتى ۋە مەخپىيەتلىك ھەققىدە بايانات",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"theme_data_service_instructions",
+            "value":"بۇ مۇلازىمەت تور ئىشلىتىدۇ؛ ئورۇن، چېنىقىش مەلۇماتى، ئۈسكۈنە بايقاش ۋە ئۇلاش ئىجازىتى ئالىدۇ؛ ئورۇن، چېنىقىش ۋە ساغلاملىق مەلۇماتى، ئۈسكۈنە، رەسىم ۋە سىن ئۇچۇرىنى ئوقۇيدۇ؛ يۇقىرىقىلار ئۇسلۇب مۇلازىمەتلىرىنى ئىشلەتكەندە مەلۇماتلىرىڭىزنى كۆرسىتىش ۋە ئۇسلۇب ئۆزئارالىق ئىقتىدارلىرىنى تەمىنلەش قاتارلىقلار ئۈچۈن ئىشلىتىلىدۇ. شەخسىي ئۇچۇر بىر تەرەپ قىلىش ھەققىدىكى تەپسىلاتلارنى «%1$s» ۋە «%2$s» ئارقىلىق كۆرۈڭ. بۇ مۇلازىمەتنى ئاچسىڭىز، ئالاقىدار شەرتلەرنى چۈشەنگەن ۋە بۇ ئەپنىڭ مۇلازىمەتلىرىنى تەمىنلىشىمىزگە قوشۇلغان بولىسىز.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"stop_theme_data_service_message",
+            "value":"بۇ مەشغۇلات بۇ ئۈسكۈنىدە ئۇسلۇب مۇلازىمىتىنى ئېتىدۇ؛ ئىشلەتكەن ئۇسلۇب قاتارلىق مەنبەلەردە مەلۇمات كۆرۈنمەيدۇ ياكى ئۆزئارالىق ئىقتىدارلار ئىشلىمەيدۇ؛ مۇلازىمەتنى ئېتەمسىز؟",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"cam_mover_is_enabled_blur_is_not_supported",
+            "value":"كىنو كۆز ئېچىلىپ، تۇتۇقلاش ئېتىلدى.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"blur_is_enabled_Cam_mover_is_not_supported",
+            "value":"تۇتۇقلاش ئېچىلىپ، كىنو كۆز ئېتىلدى.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dof_off",
+            "value":"چوڭقۇر ھالەت ئېتىك",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_dof_to_experience_camera_mover",
+            "value":"كىنو كۆز ئۈنۈم ئىشلىتىش ئۈچۈن چوڭقۇر ھالەتنى ئېتىڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"digital_clock_does_not_overlap_with_main_subject",
+            "value":"سانلىق سائەت ئاساسىي گەۋدە بىلەن ئۈستىلەنمىگەن.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_camera_mover_to_experience_dof",
+            "value":"چوڭقۇر ھالەت ئۈنۈمىنى ئىشلىتىش ئۈچۈن كىنو كۆزنى ئېتىڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_dynamic_to_experience_camera_mover",
+            "value":"كىنو كۆز ئۈنۈم ئىشلىتىش ئۈچۈن ھەرىكەتچان رەسىمنى ئېتىڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_dynamic_to_experience_dof",
+            "value":"چوڭقۇر ھالەت ئۈنۈمىنى ئىشلىتىش ئۈچۈن ھەرىكەتچان رەسىمنى ئېتىڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"artistic_signature_does_not_overlap_with_main_subject",
+            "value":"ئىمزا ئاساسىي گەۋدە بىلەن ئۈستىلەنمىگەن.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_camera_mover_to_experience_dynamic",
+            "value":"ھەرىكەتچان رەسىم ئىشلىتىش ئۈچۈن كىنو كۆزنى ئېتىڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"image_does_not_recognize_dof",
+            "value":"رەسىمدىن چوڭقۇرلۇق تونۇلمىدى.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_dof_to_experience_dynamic",
+            "value":"ھەرىكەتچان رەسىم ئىشلىتىش ئۈچۈن چوڭقۇر ھالەتنى ئېتىڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dof_on",
+            "value":"چوڭقۇر ھالەت ئوچۇق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dof",
+            "value":"چوڭقۇر",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"multi_checkbox",
+            "value":"كۆپ تاللاش رامكىسى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screenlock_settings",
+            "value":"قۇلۇپ ئېكرانى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"paused",
+            "value":"تورمۇزلاندى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"applied",
+            "value":"قوللىنىلدى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_dynamic_lead_finish_content",
+            "value":"جانلىق ئوبرازلىق AI مەنبە قۇرۇلدى، چېكىپ كۆرسىڭىز ياكى ئىشلەتسىڭىز بولىدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_dynamic_lead_ongoing_content",
+            "value":"جانلىق ئوبرازلىق AI مەنبە قۇرۇلۇۋاتىدۇ، چېكىپ كۆرۈڭ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"played",
+            "value":"قويۇلدى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"settings_detail_page_tip",
+            "value":"بىر بارماقتا قوش چەكسىڭىز تەڭشەك تەپسىلات بېتى ئېچىلىدۇ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"continue_update_image",
+            "value":"رەسىم يېڭىلىسىڭىز، يېڭى ئۇسلۇب قۇرۇلىدۇ، نۆۋەتتىكى ئۇسلۇب ئۆچۈرۈلىدۇ، يېڭىلامسىز؟",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"time_travel_generate_failed",
+            "value":"ۋاقىت ۋە بوشلۇق ئاتلىغۇچ ئۇسلۇب قۇرۇلمىدى.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dimensional_travel_generate_failed",
+            "value":"ئۆلچەم ئاتلىغۇچ ئۇسلۇب قۇرۇلمىدى.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_dynamic_lead_fail_content",
+            "value":"جانلىق ئوبرازلىق AI مەنبە قۇرۇلمىدى، چېكىپ كۆرۈپ بېقىڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"detail_page",
+            "value":"تەپسىلات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_dynamic_lead_Unable_to_update_automatically",
+            "value":"جانلىق ئوبرازلىق مەنبە ئامبىرى توشۇپ كەتكەن، AI مەنبە ئۆزلۈكىدىن يېڭىلانمىدى، چېكىپ كىرىپ باشقۇرۇڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"lockscreen_preview",
+            "value":"قۇلۇپ ئېكرانى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"homescreen_preview",
+            "value":"ئۈستەليۈزى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_dynamic_lead_automatically_updated_finish_content",
+            "value":"جانلىق ئوبرازلىق AI مەنبە ئۆزلۈكىدىن يېڭىلاندى، چېكىپ كۆرۈپ بېقىڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aigc_theme_service_stop_note",
+            "value":"مۇلازىمەتنى ئەتسىڭىز، AI ئۇسلۇب مۇلازىمىتى ئىشلىمەيدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aigc_theme_service_privacy_statement",
+            "value":"\u200fAI ئۇسلۇب ۋە مەخپىيەتلىك ھەققىدە بايانات",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aigc_theme_service_description",
+            "value":"بۇ مۇلازىمەت %1$s ئىشلىتىدۇ؛ رەسىم ئوقۇپ يۈكلەيدۇ؛ يۇقىرىقىلار ئۇسلۇب مۇلازىمەتلىرىنى تەمىنلەش ئۈچۈن ئىشلىتىلىدۇ. بىز پەقەت سىز كونكرېت مۇلازىمەتنى ئىشلەتكەندە ئاندىن يۇقىرىدا دېيىلگەن شەخسىي ئۇچۇرلارنى توپلايمىز. تەپسىلاتىنى «%2$s» ئارقىلىق كۆرۈڭ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"read_theme_service_description_and_click_agree",
+            "value":"يۇقىرىقى باياناتنى ئەستايىدىل ئوقۇڭ. «قوشۇلىمەن» نى چەكسىڭىز، ئالاقىدار شەرتلەرنى چۈشەنگەن ھەمدە سىزگە بۇ مۇلازىمەتنى تەمىنلىشىمىزگە قوشۇلغان بولىسىز.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aigc_theme_service_subtitle",
+            "value":"بۇ مۇلازىمەت سىز تاللىغان رەسىمنى بۇلۇت مۇلازىمىتېرغا يۈكلەپ، AI ھېسابلاش ئۇسۇلى ئارقىلىق ئۇسلۇب مەنبەسى قۇرىدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aigc_theme_privacy_statement",
+            "value":"\u200fAI ئۇسلۇب مۇلازىمىتى ۋە مەخپىيەتلىك ھەققىدە بايانات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aigc_theme_service",
+            "value":"\u200fAI ئۇسلۇب مۇلازىمىتى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"photo_selected",
+            "value":"رەسىم تاللاندى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_off_Desktop_resource_center_title",
+            "value":"ئۈستەليۈزى مەنبە مەركىزىنى ئېتەمسىز؟",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_off_Desktop_resource_center_cancel",
+            "value":"بىكار قىلىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_off_Desktop_resource_center_close",
+            "value":"ئېتىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_off_Desktop_resource_center_content",
+            "value":"بۇنى ئەتسىڭىز، پەقەت ئەپ مەركىزىدە بار ئەپلەر ئۈستەليۈزىدىكى ئەڭ ئاخىرقى ئېكراندا يېڭى قىسقۇچ ئارقىلىق كۆرۈنىدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"desktop_resource_center",
+            "value":"ئۈستەليۈزى مەنبە مەركىزى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"desktop_resource_center_description",
+            "value":"ئۈستەليۈزىنى ئۈستىگە سىيرىسىڭىز مەنبە مەركىزى ئېچىلىپ، قاچىلىغان بارلىق ئەپ كۆرۈنىدۇ. ئەپ سىنبەلگىسىنى سۆرەپ ئۈستەليۈزىگە قوشۇشقا بولىدۇ. ئۈستەليۈزىدىن چىقىرىۋەتكەن سىنبەلگە ئۈستەليۈزىدە كۆرۈنمەيدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"waiting_closing_desktop_resource_center",
+            "value":"ئۈستەليۈزى مەنبە مەركىزى ئېتىلىۋاتىدۇ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_chest",
+            "value":"ئەپ مەركىزى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"is_off_app_chest_title",
+            "value":"«ئەپ مەركىزى» نى ئېتەمسىز؟",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"waiting_closing_app_chest",
+            "value":"«ئەپ مەركىزى» ئېتىلىۋاتىدۇ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_off_app_chest_content",
+            "value":"بۇنى ئەتسىڭىز، پەقەت ئەپ مەركىزىدە بار ئەپلەر ئۈستەليۈزىدىكى ئەڭ ئاخىرقى ئېكراندا يېڭى قىسقۇچ ئارقىلىق كۆرۈنىدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_chest_description",
+            "value":"ئۈستەليۈزىنى ئۈستىگە سىيرىسىڭىز ئەپ مەركىزى ئېچىلىپ، قاچىلىغان بارلىق ئەپ كۆرۈنىدۇ. ئەپ سىنبەلگىسىنى سۆرەپ ئۈستەليۈزىگە قوشۇشقا بولىدۇ. ئۈستەليۈزىدىن چىقىرىۋەتكەن سىنبەلگە ئۈستەليۈزىدە كۆرۈنمەيدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"theme_icon",
+            "value":"ئۇسلۇب سىنبەلگىسى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"moving_photo_dialog_content",
+            "value":"ھەرىكەتچان تەگلىك باشقا تەگلىك بىلەن ئارىلاش ئىشلىمەيدۇ، ئالماشتۇرسىڭىز تىنچ تەگلىككە ئايلىنىدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"moving_photo_dialog_toast",
+            "value":"ھەرىكەتچان تەگلىك ئارىلاش ئىشلىمەيدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"moving_photo_dialog_title",
+            "value":"تەگلىك ئالماشتۇرامسىز؟",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"nav_to_my_wallpaper_edit_tips",
+            "value":"قۇلۇپ ئېكرانىدىكى سائەت رايونىنى بارماقتا يېيىپ-يىغىپ ياكى بېسىپ تۇرۇپ تەھرىرلەيسىز.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"waiting_closing",
+            "value":"ئېتىلىۋاتىدۇ...",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_off_swipe_up_title",
+            "value":"«ئۈستەليۈزىدە ئۈستىگە سىيرىش» نى ئېتەمسىز؟",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Desktop_SwipeUp",
+            "value":"ئۈستەليۈزىدە ئۈستىگە سىيرىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_off_swipe_up_content",
+            "value":"بۇنى ئەتسىڭىز، ئەپ مەركىزىگە كىرگىلى بولمايدۇ. پەقەت ئەپ مەركىزىدە كۆرۈنىدىغان ئەپلەر ئۈستەليۈزىدىكى يېڭى قىسقۇچقا قوشۇلىدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"moment_x_settings",
+            "value":"يانكۆرەك تەڭشىكى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"moment_x_smart_display_mode_title",
+            "value":"ئاڭلىق كۆرسىتىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"moment_x_state_off",
+            "value":"ئېتىك",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"moment_x_all_day_display_mode_title",
+            "value":"پۈتۈن كۈن كۆرسىتىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"color_style_not_support_in_desktop_tips",
+            "value":"پەقەت ئۈستەليۈزىگە قوللانسىڭىز، تاللىغان سائەت ئۈنۈمى كۈچكە ئىگە بولمايدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"color_style_system_title",
+            "value":"سىستېما رەڭ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"color_style_explanation",
+            "value":"يورۇتما رەڭ ئۈستەليۈزى، قۇلۇپ ئېكرانى، ئىزچىل كۆرسىتىش ئېكرانى، ئۇقتۇرۇش مەركىزى، تىزگىنلەش مەركىزى قاتارلىقلاردىكى سائەت ۋە ئەپچىلەرگە قوللىنىلىدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"color_style_base_title",
+            "value":"ئاساس رەڭ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"color_style_suggested_title",
+            "value":"تەۋسىيەلىك رەڭ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"color_style_button_text",
+            "value":"يورۇتما رەڭ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"apply_Lockscreen",
+            "value":"قوللىنىلىۋاتىدۇ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"tip_share_text",
+            "value":"ئورتاقلىشىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dock_item_recentcenter",
+            "value":"ۋەزىپە مەركىزى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dock_item_filemanager",
+            "value":"ھۆججەت باشقۇرۇش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"touch",
+            "value":"تەگكۈزۈش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dock_item_recyclebin",
+            "value":"سېۋەت",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dock_item_visible",
+            "value":"تېزلەتمە بالداق سىنبەلگىلىرى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dock_item_appcenter",
+            "value":"ئەپ مەركىزى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"unlock_set",
+            "value":"يۈرۈشلۈك قۇلۇپىنى %1$s ئارقىلىق ئېچىشقا بولىدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"online_icons",
+            "value":"تور سىنبەلگە",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"online_wallpapers",
+            "value":"تور تەگلىك",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"online_themes",
+            "value":"تور ئۇسلۇب",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"online_fonts",
+            "value":"تور خەت نۇسخىسى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screen_load_other_detail_page",
+            "value":"ئىككى بارماقتا ئوڭ-سولغا سىيرىسىڭىز باشقا تەپسىلات بەتلىرى يۈكلىنىدۇ، بىر بارماقتا قوش چەكسىڭىز يۈرگۈزۈلىدۇ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screenlock_cannot_be_edited_in_a_small_window",
+            "value":"قۇلۇپ ئېكرانى كىچىك كۆزنەكتە تەھرىرلەنمەيدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

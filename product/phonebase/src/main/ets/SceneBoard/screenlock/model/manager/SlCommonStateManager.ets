@@ -199,7 +199,7 @@ class SlCommonStateManager {
     return slUiStateMgr.getSlState(type);
   }
 
-  private isLargeFold(): boolean { // 大大屏幕机
+  private isLargeFold(): boolean { // 大折叠机
     return this.deviceType === SlDeviceType.FOLD_LARGE;
   }
 

@@ -15,13 +15,30 @@
 
 import { EditableLeftIconType, EditableTitleBar } from '@kit.ArkUI';
 import { common } from '@kit.AbilityKit';
-import { picker } from '@kit.CoreFileKit';
 import { Log } from '../aigcServiceAbility/IdlService/Log';
+import { ImageUtils } from '../utils/ImageUtils';
+import { WallpaperCell } from './WallpaperCell';
+import { Constants } from '../constants/wallpaperPathConstants';
+import { LogUtil } from '@ohos/lottie';
+import { commonEventManager } from '@kit.BasicServicesKit';
 
 
 const TAG: string = 'ShowWallpaperPage';
 const CELL_WIDTH = 108
 const CELL_HEIGHT = 192
+const MY_NAME = 'app.string.current_wallpaper'
+
+export enum ImageShowStyle {
+  ImageShowStyleFullScreen = 0, //充满屏幕,
+  ImageShowStyleFitScreen = 1, //适合屏幕0
+  ImageShowStyleCenterScreen = 2, //居中显示
+  ImageShowStyleStretchScreen = 3, //拉伸铺满
+  ImageShowStyleTileScreen = 4 //平铺
+}
+
+const menuArr: Array<string | Resource> = [$r('app.string.screen_full'),$r('app.string.screen_fit'),
+  $r('app.string.screen_center'), $r('app.string.screen_sctetch'), $r('app.string.screen_tile')]
+
 @Builder
 export function ShowWallpaperPageBuilder(name: string, param: Object) {
   ShowWallpaperPage()
@@ -31,17 +48,148 @@ export function ShowWallpaperPageBuilder(name: string, param: Object) {
 @Component
 export struct ShowWallpaperPage {
   selectImageFromGallery?: () => void;
-  pickWallpaperToEdit?: (imageUrl: Resource) => void;
-  @State categories: ThemeCategory[] = [];//本地壁纸可以在这里加上
+  pickWallpaperToEdit?: (imageUrl: string, wallpaperStyle: ImageShowStyle) => void;
+  pushScreenSettingPage?: () => void
+  clickClose?: () => void
+  @State categories: ThemeCategory[] = [
+    new ThemeCategory(MY_NAME, [])
+  ];//本地壁纸可以在这里加上
   @State selectedWallpaperId: string = '1';
   private pageStack: NavPathStack = new NavPathStack();
   // 每个分组的滚动控制器
   private scrollerMap: Map<string, Scroller> = new Map();
   private uiContext: common.UIAbilityContext = getContext() as common.UIAbilityContext;
   private context = getContext(this) as common.UIAbilityContext;
+  private refreshWallpaperSubscriber: commonEventManager.CommonEventSubscriber | undefined = undefined
+  @State myImageList: string[] = []
+  @State refreshFlag: boolean = false
+  @StorageLink(Constants.LOCAL_WALLPAPER) localWallpaper: string = ''
+  @State wallpapers: WallpaperCard[] = []
+  @State currentImageStyle: ImageShowStyle = ImageShowStyle.ImageShowStyleFullScreen
+  @State isShowStyleMenu: boolean = false
+  @State currentValue: string | Resource = menuArr[0]
+  @State currentIndex: number = 0
+  @State currentPage: boolean = false
+  @State autoIsOn: boolean = false
 
-  aboutToAppear(): void {
+  async aboutToAppear(): Promise<void> {
     Log.info(TAG, 'aboutTo appear')
+    this.currentPage = true
+    this.getMyImageList()
+    this.subscribeRefreshWallpaperEvent();
+    this.subscribeCrossProcessEvent('ts.event.theme.close')
+  }
+
+  async subscribeRefreshWallpaperEvent(): Promise<void> {
+    try {
+      const subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+        events: [Constants.REFRESH_WALLPAPER],
+        priority: 100,
+      };
+      this.refreshWallpaperSubscriber = await commonEventManager.createSubscriber(subscribeInfo);
+      await new Promise<void>(async (resolve, reject) => {
+        commonEventManager.subscribe(this.refreshWallpaperSubscriber!, async (error, data) => {
+          if (error) {
+            Log.error(TAG, `subscribe refresh wallpaper failed
+                            name:${error?.name} message:${error?.message} stack:${error?.stack}`);
+            reject(error);
+          } else {
+            this.getMyImageList()
+            resolve();
+          }
+        });
+      });
+      Log.info(TAG, `subscribe refresh wallpaper success`);
+    } catch (error) {
+      let err = error as BusinessError;
+      Log.error(TAG, `subscribe refresh wallpaper error:
+                      name:${err?.name} message:${err?.message} stack:${err?.stack}`);
+    }
+  }
+
+  //订阅消息
+  async subscribeCrossProcessEvent(eventName: string): Promise<void> {
+    try {
+      // 创建订阅者信息
+      const subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+        events: [eventName],
+        priority: 100,
+      };
+      // 创建订阅者
+      let subscriber = await commonEventManager.createSubscriber(subscribeInfo);
+      // 订阅事件
+      await new Promise<void>(async (resolve, reject) => {
+        commonEventManager.subscribe(subscriber, async (error, data) => {
+          if (error) {
+            LogUtil.error(TAG, `subscribe failed: ${JSON.stringify(error)}`);
+            reject(error);
+          } else {
+            const eventTimestamp = data?.parameters!['timestamp'] as number;
+            const currentTime = Date.now()
+            if ((currentTime - eventTimestamp < 100) && (this.currentPage === true)) {
+              this.closeWallpaper()
+            }
+            resolve();
+          }
+        });
+      });
+
+      LogUtil.info( `subscribe success: ${eventName}`);
+    } catch (error) {
+      LogUtil.error(`error: ${JSON.stringify(error)}`);
+    }
+  }
+
+  aboutToDisappear(): void {
+    this.currentPage = false;
+    if (this.refreshWallpaperSubscriber) {
+      commonEventManager.unsubscribe(this.refreshWallpaperSubscriber, (error) => {
+        if (error) {
+          Log.error(TAG, `unsubscribe refresh wallpaper failed
+                          name:${error?.name} message:${error?.message} stack:${error?.stack}`);
+        } else {
+          Log.info(TAG, `unsubscribe refresh wallpaper success`);
+        }
+      });
+      this.refreshWallpaperSubscriber = undefined;
+    }
+  }
+  async getMyImageList() {
+    let localPath = await ImageUtils.saveResourceToSandbox(this.context)
+    const jsonPath = await ImageUtils.initJsonFile(this.context)
+    const dataList = await ImageUtils.readJsonFile(jsonPath)
+    if (!dataList.includes(localPath)) {
+      await ImageUtils.addData(jsonPath, dataList, localPath)
+    }
+    //获取默认图片并插入
+    let wallpapers: WallpaperCard[] = []
+    this.myImageList = await ImageUtils.readJsonFile(jsonPath)
+
+    this.myImageList.forEach((name: string, index: number) => {
+      let isSelected = index === 0 ? true : false
+      let card = this.wallpapers.find((item) => item.imageUrl === name) || new WallpaperCard(`${index}`, name, isSelected)
+      card.id = `${index}`;
+      card.isSelected = isSelected;
+      wallpapers.push(card)
+    })
+    this.categories[0].wallpapers = wallpapers;
+    this.wallpapers = wallpapers;
+  }
+
+
+  closeWallpaper() {
+    try {
+      // 核心：结束当前Ability，系统自动切回发起拉起的应用
+      this.context.terminateSelf((err) => {
+        if (err) {
+          Log.error(TAG, 'ReturnApp');
+        } else {
+          Log.info(TAG, 'ReturnApp');
+        }
+      });
+    } catch (e) {
+      Log.error(TAG, 'ReturnApp');
+    }
   }
 
   @Builder
@@ -50,21 +198,13 @@ export struct ShowWallpaperPage {
       // 壁纸标题
       EditableTitleBar({
         leftIconStyle: EditableLeftIconType.Back,
-        title: $r('app.string.edit_wallpaper'),
+        title: $r('app.string.Desktop_individuation'),
         menuItems: [],
         onCancel: () => {
-          try {
-            // 核心：结束当前Ability，系统自动切回发起拉起的应用
-            this.context.terminateSelf((err) => {
-              if (err) {
-                Log.error(TAG, 'ReturnApp');
-              } else {
-                Log.info(TAG, 'ReturnApp');
-              }
-            });
-          } catch (e) {
-            Log.error(TAG, 'ReturnApp');
+          if (this.clickClose) {
+            this.clickClose?.()
           }
+         this.closeWallpaper()
         },
         isSaveIconRequired: false
       }).backgroundColor($r('sys.color.ohos_id_color_titlebar_sub_bg'))
@@ -83,7 +223,7 @@ export struct ShowWallpaperPage {
       // 中间文字
       Text($r('app.string.theme_chose'))
         .fontSize(16)
-        .fontColor($r('sys.color.black'))
+        .fontColor($r('sys.color.font_primary'))
         .padding({
           left: 20
         })
@@ -99,7 +239,6 @@ export struct ShowWallpaperPage {
       top: 12,
       bottom: 12
     })
-    .backgroundColor(Color.White)
     .borderRadius(12)
     .width('95%')
     .margin({ top: 10 })
@@ -118,7 +257,7 @@ export struct ShowWallpaperPage {
         // 左侧标题
         Text($r('app.string.current_wallpaper'))
           .fontSize(18)
-          .fontColor($r('sys.color.black'))
+          .fontColor($r('sys.color.font_primary'))
           .fontWeight(FontWeight.Medium)
 
         // 右侧管理按钮
@@ -146,40 +285,35 @@ export struct ShowWallpaperPage {
 
   @Builder
   wallPageBuild() {
-    Scroll() {
-      Column() {
-        //我的壁纸
-        this.currentWallpaperBuilder()
-        // 遍历所有分类
-        ForEach(this.categories, (category: ThemeCategory, index: number) => {
-          this.ThemeCategory(category);
-        }, (category: ThemeCategory, index: number) => `${index}_${category.title}`);
-      }
-      .width('100%')
-      .height('100%')
-      .justifyContent(FlexAlign.Start)
-      .padding({
-        left: 16,
-        right: 16,
-        top: 12,
-        bottom: 12
-      });
+    Column() {
+      //我的壁纸
+      // this.currentWallpaperBuilder()
+      // 遍历所有分类
+      // ForEach(this.categories, (category: ThemeCategory, index: number) => {
+        this.ThemeCategory();
+      // }, (category: ThemeCategory, index: number) => `${index}_${category.title}`);
+
+      //下方新增一个自动对齐功能
+      this.showAutoAlignBuilder()
     }
     .width('100%')
-    .layoutWeight(1)
-    .scrollable(ScrollDirection.Vertical)
-    .scrollBar(BarState.Off)
-    .edgeEffect(EdgeEffect.Spring);
+    .justifyContent(FlexAlign.Start)
+    .padding({
+      left: 16,
+      right: 16,
+      top: 12,
+      bottom: 12
+    });
   }
 
   /**
    * 主题分类组件
    */
   @Builder
-  ThemeCategory(category: ThemeCategory) {
+  ThemeCategory() {
     Column() {
       // 分类标题
-      Text(category.title)
+      Text($r('app.string.current_wallpaper'))
         .fontSize(16)
         .fontWeight(FontWeight.Bold)
         .fontColor($r('sys.color.font_primary'))
@@ -187,98 +321,269 @@ export struct ShowWallpaperPage {
         .margin({ bottom: 12 });
 
       // 水平滚动容器
-      Scroll(this.scrollerMap.get(category.title)) {
+      Scroll(this.scrollerMap.get('current_wallpaper')) {
         Row({ space: 12 }) {
           // 渲染该分类下的所有壁纸卡片
-          ForEach(category.wallpapers, (wallpaper: WallpaperCard) => {
-            this.WallpaperCard(wallpaper);
-          }, (wallpaper: WallpaperCard) => wallpaper.id);
+          ForEach(this.wallpapers, (wallpaper: WallpaperCard) => {
+            WallpaperCell({
+              wallpaper: wallpaper,
+              selectWallpaperImage: (wallpaper: WallpaperCard) => {
+                this.pickWallpaperToEdit ? this.pickWallpaperToEdit(wallpaper.imageUrl, this.currentImageStyle) : "";
+              }
+            })
+          }, (wallpaper: WallpaperCard) => `${wallpaper.id}_${wallpaper.imageUrl}`);
         }
         .padding({ right: 8 })
-        .width('100%')
         .justifyContent(FlexAlign.Start)
       }
       .scrollable(ScrollDirection.Horizontal)
       .scrollBar(BarState.Off)
       .width('100%')
       .height(192)
-      .edgeEffect(EdgeEffect.Spring);
-    }
-    .width('100%')
-    .margin({ bottom: 24 });
-  }
+      .edgeEffect(EdgeEffect.Spring)
+      .align(Alignment.Start)
 
-  /**
-   * 壁纸卡片组件
-   */
-  @Builder
-  WallpaperCard(wallpaper: WallpaperCard) {
-    Stack() {
-      // 壁纸图片
-      Image($r('app.media.test_wallpaper')) //这里先用占位图
-      // Image(wallpaper.imageUrl)
-        .width(108)
-        .height(192)
-        .borderRadius(12)
-        .objectFit(ImageFit.Cover)
-        .border({
-          width: wallpaper.id === this.selectedWallpaperId ? 2 : 0,
-          color: '#0A59F7'
+      //新增模式显示
+      Divider()
+        .height(1)
+        .backgroundColor($r('sys.color.ohos_id_color_titlebar_sub_bg'))
+        .width('100%')
+        .margin({
+          top: 12,
         })
-        .onClick(() => { //在壁纸页面选择图片进入编辑页面
-          this.pickWallpaperToEdit ? this.pickWallpaperToEdit($r('app.media.test_wallpaper')) : "";
-          this.selectedWallpaperId = wallpaper.id;
-          Log.info(TAG, 'ScrollableGalleryPage', `选中壁纸: ${wallpaper.id}`);
-        })
-        .onError((error) => {
-          Log.error(TAG, 'ScrollableGalleryPage', `图片加载失败: ${error}`);
-        });
 
-      // 选中状态标记
-      if (wallpaper.id === this.selectedWallpaperId) {
-        // 右下角选中标记
-        Stack() {
-          Circle()
+      Row() {
+        Text($r('app.string.wallpaper_show_style'))
+          .fontSize(16)
+          .fontWeight(FontWeight.Medium)
+          .fontColor($r('sys.color.font_primary'))
+          .maxLines(2)
+          .textOverflow({
+            overflow: TextOverflow.Ellipsis
+          })
+          .width('60%')
+
+
+        Row() {
+          Text(this.currentValue)
+            .fontSize(14)
+            .fontColor($r('sys.color.font_primary'))
+            .maxLines(2)
+            .textOverflow({
+              overflow: TextOverflow.Ellipsis
+            })
+            // .wordBreak(WordBreak.BREAK_ALL)
+
+
+          Image($r('app.media.ic_arrow_down_new'))
+            .fillColor($r('sys.color.ohos_id_color_secondary'))
             .width(24)
             .height(24)
-            .fill('#0A59F7')
-            .position({ x: 84, y: 168 });
-
-          Image($r('sys.media.ohos_ic_public_ok'))
-            .width(14)
-            .height(14)
-            .fillColor('#FFFFFF')
-            .position({ x: 89, y: 173 });
         }
+        .width('35%')
+        .justifyContent(FlexAlign.End)
+
       }
+      .width('100%')
+      .justifyContent(FlexAlign.SpaceBetween)
+      .alignItems(VerticalAlign.Center)
+      .margin({
+        top: 12
+      })
+      .onClick(() => {
+        this.isShowStyleMenu = !this.isShowStyleMenu
+      })
+      .bindMenu(this.isShowStyleMenu, this.ShowStyleMenu, { placement: Placement.BottomRight })
     }
-    .width(CELL_WIDTH)
-    .height(CELL_HEIGHT);
+    .width('100%')
+    .margin({ bottom: 24 })
+    .backgroundColor($r('sys.color.comp_background_list_card'))
+    .padding(16)
+    .borderRadius(16)
   }
+
+  @Builder
+  ShowStyleMenu() {
+    Column() {
+      ForEach(menuArr, (value: string | Resource, index) => {
+        WallpaperMenuItem({
+          value: value,
+          index: index,
+          isSelected: this.currentIndex === index ? true : false,
+          clickItem: (value: string | Resource, index: number) => {
+            this.currentValue = value
+            this.currentIndex = index
+            this.isShowStyleMenu = false
+            switch (index) {
+              case 0:
+                this.currentImageStyle = ImageShowStyle.ImageShowStyleFullScreen
+                break;
+              case 1:
+                this.currentImageStyle = ImageShowStyle.ImageShowStyleFitScreen
+                  break;
+              case 2:
+                this.currentImageStyle = ImageShowStyle.ImageShowStyleCenterScreen
+                  break;
+              case 3:
+                this.currentImageStyle = ImageShowStyle.ImageShowStyleStretchScreen
+                  break;
+              case 4:
+                this.currentImageStyle = ImageShowStyle.ImageShowStyleTileScreen
+                  break;
+
+              default:
+                break;
+            }
+          }
+        })
+          .onDisAppear(() => {
+            this.isShowStyleMenu = false
+          })
+        if (index !== menuArr.length - 1) {
+          Line()
+            .width('100%')
+            .height(1)
+            .backgroundColor($r('sys.color.ohos_id_color_titlebar_sub_bg'))
+        }
+      })
+    }
+    .width(150)
+  }
+
+  @Builder
+  showAutoAlignBuilder() {
+    Row() {
+      Text($r('app.string.Desktop_setting'))
+        .fontSize(16)
+        .fontColor($r('sys.color.font_primary'))
+        .padding({
+          // left: 20
+        })
+
+      // 右侧箭头
+      Image($r("app.media.ic_settings_arrow"))
+        .width(20)
+        .height(20)
+
+    }
+    .padding({
+      top: 12,
+      bottom: 12,
+      left: 16,
+      right: 16
+    })
+    .justifyContent(FlexAlign.SpaceBetween)
+    .borderRadius(12)
+    .width('100%')
+    .margin({ top: 10 })
+    .backgroundColor($r('sys.color.comp_background_list_card'))
+    .onClick(() => {
+      if (this.pushScreenSettingPage) {
+        this.pushScreenSettingPage?.()
+      }
+    })
+  }
+
 
   build() {
     NavDestination() {
       Column() {
         this.navBuilder()
-        //从图库中选择
-        this.photosBuilder()
-        //整体管理
-        this.wallPageBuild()
+        Scroll() {
+          Column() {
+            //从图库中选择
+            this.photosBuilder()
+            //整体管理
+            this.wallPageBuild()
+          }
+          .width('100%')
+          .constraintSize({
+            minHeight: '100%'
+          })
+        }
+        .width('100%')
+        .layoutWeight(1)
+        .align(Alignment.Top)
+        .scrollable(ScrollDirection.Vertical)
+        .scrollBar(BarState.Off)
+        .edgeEffect(EdgeEffect.Spring)
       }
       .width('100%')
       .height('100%')
       .backgroundColor($r('sys.color.ohos_id_color_titlebar_sub_bg'))
     }
+    .onShown(() => {
+      this.currentPage = true
+    })
+    .onHidden(() => {
+      this.currentPage = false
+    })
   }
 }
 
-interface WallpaperCard {
+export class WallpaperCard {
   id: string; // 壁纸唯一标识
-  imageUrl: string | Resource; // 壁纸图片URL
+  imageUrl: string; // 壁纸图片URL
   isSelected?: boolean; // 是否选中状态
+  pixelMap?: PixelMap;
+
+  constructor(id: string, imageUrl: string, isSelected: boolean = false) {
+    this.id = id;
+    this.imageUrl = imageUrl
+    this.isSelected = isSelected
+
+    ImageUtils.readLocalImage(this.imageUrl).then((data: PixelMap | null) => {
+      if (data) {
+        this.pixelMap = data;
+      }
+      Log.info(TAG, `wallpaper1:${this.id} ${this.imageUrl} > ${this.pixelMap == null}`);
+    }).catch((error: ESObject) => {
+      Log.info(TAG, `wallpaper.imageUrl:${this.imageUrl} error: ${error}`);
+    })
+  }
 }
 
-interface ThemeCategory {
+@Observed
+export class  ThemeCategory {
   title: string; // 分组标题
   wallpapers: WallpaperCard[]; // 该分组下的壁纸列表
+  constructor(title: string, wallpapers: WallpaperCard[]) {
+    this.title = title;
+    this.wallpapers = wallpapers;
+  }
+}
+
+
+@Component
+struct WallpaperMenuItem {
+  @Prop value: string | Resource
+  @Prop index: number
+  @Prop isSelected: boolean
+  clickItem?: (value: string | Resource, index: number)=>void
+
+  build() {
+    Row() {
+      Text(this.value)
+        .fontSize(14)
+        .fontColor(this.isSelected ? $r('sys.color.ohos_id_color_emphasize') : $r('sys.color.font_primary'))
+        .maxLines(1)
+        .textOverflow({
+          overflow: TextOverflow.Ellipsis
+        })
+        .width('90%')
+    }
+    .margin({
+      left: 8,
+      right: 8
+    })
+    .borderRadius(8)
+    .height(38)
+    .width('100%')
+    .justifyContent(FlexAlign.Center)
+    .alignItems(VerticalAlign.Center)
+    .onClick(() => {
+      this.clickItem?.(this.value, this.index)
+    })
+  }
+
 }

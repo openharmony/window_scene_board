@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>主题播放按钮</title>
+    <defs>
+        <path d="M32.25,24 C32.25,23.5359087 32.0248875,23.1272163 31.6853625,22.8807404 C31.6853625,22.8807404 31.6860375,22.8797452 31.6867125,22.8790817 L20.82225,15.6310962 C20.82225,15.6310962 20.82225,15.6281106 20.82225,15.6310962 C20.5563,15.4761779 20.3446875,15.375 20.0564625,15.375 C19.333875,15.375 18.75,15.9850529 18.75,16.7364231 C18.75,16.7404038 18.7503375,16.7447163 18.7503375,16.7447163 L18.75,16.7480337 L18.7503375,31.2539567 C18.7503375,31.257274 18.75,31.2605913 18.75,31.2635769 C18.75,32.0152788 19.333875,32.625 20.0564625,32.625 C20.340975,32.625 20.60085,32.5281346 20.814825,32.3682404 L31.6867125,25.12125 L31.6853625,25.1202548 C32.0248875,24.8741106 32.25,24.4640913 32.25,24" id="path-1"></path>
+        <filter x="-74.1%" y="-46.4%" width="248.1%" height="215.9%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="3" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.233364292 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="主题播放按钮" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="编组-2">
+            <circle id="椭圆形" fill-opacity="0.38" fill="#FFFFFF" cx="24" cy="24" r="24"></circle>
+            <g id="Fill-1">
+                <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+            </g>
+        </g>
+    </g>
+</svg>

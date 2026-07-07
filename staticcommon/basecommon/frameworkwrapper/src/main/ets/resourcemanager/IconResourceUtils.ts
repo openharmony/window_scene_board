@@ -58,4 +58,36 @@ export class IconResourceUtils {
     log.showWarn(`getIconResource from bms getBundleResourceInfo for ${bundleName} ${appIndex}`);
     return bundleResourceManager.getBundleResourceInfo(bundleName, resourceFlag, appIndex);
   }
+
+  /**
+   * 如果应用图片采样为恶意透明图片，则替换为默认的背景兜底图片
+   *
+   * @param iconInfo iconInfo信息
+   * @param param 扩展参数
+   * @param tag 维测打印
+   */
+  static async replaceTransparentPixelMap(iconInfo: IconInfo, param: IconExtendParam, tag: string): Promise<void> {
+    if (param.bundleName?.endsWith(SCBConstants.BUNDLENAME_APPEND_TEMPLATE) &&
+    CheckTransparentUtils.isTransparentImage(iconInfo.combinePicSrc, tag + param.bundleName)) {
+      Trace.start(`replaceTransparentPixelMap, bundleName:${param.bundleName}`);
+      log.showWarn(TAG, `replace transparent bundleName: ${param.bundleName}`);
+      // 释放透明的图片pixelMap资源
+      iconInfo.combinePicSrc?.release();
+      try {
+        let resManager: resourceManager.ResourceManager = GlobalContext.getContext()?.resourceManager;
+        let imageDrawableDescriptor: DrawableDescriptor =
+          (resManager?.getDrawableDescriptor($r('app.media.default_background').id)) as DrawableDescriptor;
+        let pixelMap: image.PixelMap = imageDrawableDescriptor?.getPixelMap();
+        iconInfo.combinePicSrc = bundleManagerFwk.getHdsIcon('transparentImage', pixelMap);
+        iconInfo.combinePic = await GraphicUtils.changePixelToBase64(iconInfo.combinePicSrc);
+        iconInfo.iconType = IconPicType.NORMAL;
+        PixelMapUtil.addName(iconInfo.combinePicSrc, 'IconResourceUtils_replaceTransparent');
+      } catch (err) {
+        log.showError(TAG, `replaceTransparentImage error: ${err}`);
+      }
+      Trace.end(`replaceTransparentPixelMap, bundleName:${param.bundleName}`);
+      // 这里去除BUNDLENAME_APPEND_TEMPLATE是为了获得正常的备份应用包名
+      HiSysEventUtil.reportEvilAppDetected(param.bundleName.replace(SCBConstants.BUNDLENAME_APPEND_TEMPLATE, ''));
+    }
+  }
 }

@@ -30,6 +30,13 @@ struct AigcHome {
   @Provide isComplainShow: boolean = false;
   @Builder
   public PageMap(name: string) {
+    // if (name === Constants.AI_PET_THEME_EDITOR) {
+    //   AiPetThemeCover();
+    // } else if (name === Constants.PANDORA_THEME_EDITOR) {
+    //   PandoraThemeCover();
+    // } else if (name === Constants.DYNAMICS_THEME_EDITOR) {
+    //   DynamicThemeCover();
+    // }
   }
 
   public aboutToAppear() {

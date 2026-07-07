@@ -1,0 +1,53 @@
+{
+    "string":[
+        {
+            "name":"time_travel_generate_failed",
+            "value":"Generieren von Zeitreise-Hintergrundbil\u200bdern nicht möglich",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dimensional_travel_generate_failed",
+            "value":"Generieren von Animirror-Hintergrundbil\u200bdern nicht möglich",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_dynamic_lead_finish_content",
+            "value":"Dynamische Figur-Ressourcen generiert. \u200bZum Anzeigen und Anwenden antippen.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_main_time_travel_ongoing_content",
+            "value":"KI-Hintergrundbilder generieren … Zum \u200bAnzeigen antippen.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_main_time_travel_finish_content",
+            "value":"Neue Hintergrundbilder über Zeitreisen \u200bgeneriert. Zum Anzeigen und Anwenden antippen.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_dynamic_lead_ongoing_content",
+            "value":"Dynamische Figur-Ressourcen werden \u200bgeneriert. Zum Anzeigen antippen.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"screenlock_cannot_be_edited_in_a_small_window",
+            "value":"Der Sperrbildschirm kann in unverankerten Fenstern nicht bearbeitet werden.",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

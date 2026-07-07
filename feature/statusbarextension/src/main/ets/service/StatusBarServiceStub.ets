@@ -13,8 +13,8 @@
  * limitations under the License.
  */
 
-// import statusBar from '@hms.pcService.statusBar';
-import { LogDomain, LogHelper, PixelMapUtil } from '@ohos/basicutils';
+import statusBar from '@ohos.pcService.statusBar';
+import { LogDomain, LogHelper, PixelMapUtil, CapabilityUtil } from '@ohos/basicutils';
 import { DeviceHelper, SCBWindowSceneConfig } from '@ohos/frameworkwrapper';
 import { SCBConstants } from '@ohos/commonconstants';
 import { rpc } from '@kit.IPCKit';
@@ -45,14 +45,17 @@ interface ReplyMsg {
 class AddService implements IStatusBarService {
   getStatusBarData(rpcData: rpc.MessageSequence): StatusBarData | undefined {
     let statusBarData: StatusBarData = {};
-    /* let item: statusBar.StatusBarItem = statusBar.readStatusBarItemFromParcel(rpcData);
+    if (!CapabilityUtil.isStatusBarAvailable()) {
+      log.showInfo('addToStatusbar, StatusBar capability not enabled, skip processing');
+      return undefined;
+    }
+    let item: statusBar.StatusBarItem = statusBar.readStatusBarItemFromParcel(rpcData);
     if (item === undefined) {
       log.showError('addToStatusbar StatusbarItem unmarshalling failed');
       return undefined;
     }
     statusBarData.statusBarItem = item;
-    statusBarData.instanceKey = statusBar.readInstanceKeyToParcel(rpcData);*/
-    // log.showInfo('addToStatusbar StatusbarItem unmarshalling success. statusBarData: ' + JSON.stringify(statusBarData)+', '+item?.quickOperation?.title);
+    statusBarData.instanceKey = statusBar.readInstanceKeyToParcel(rpcData);
     log.showInfo('addToStatusbar StatusbarItem unmarshalling success ' + JSON.stringify(statusBarData));
     return statusBarData;
   }
@@ -61,7 +64,11 @@ class AddService implements IStatusBarService {
 class RemoveService implements IStatusBarService {
   getStatusBarData(rpcData: rpc.MessageSequence): StatusBarData | undefined {
     let statusBarData: StatusBarData = {};
-    // statusBarData.instanceKey = statusBar.readInstanceKeyToParcel(rpcData);
+    if (!CapabilityUtil.isStatusBarAvailable()) {
+      log.showInfo('RemoveService StatusBarItem, StatusBar capability not enabled, skip processing');
+      return undefined;
+    }
+    statusBarData.instanceKey = statusBar.readInstanceKeyToParcel(rpcData);
     log.showInfo('RemoveService StatusbarItem unmarshalling success ' + JSON.stringify(statusBarData));
     return statusBarData;
   }
@@ -70,13 +77,17 @@ class RemoveService implements IStatusBarService {
 class UpdateMenuService implements IStatusBarService {
   getStatusBarData(rpcData: rpc.MessageSequence): StatusBarData | undefined {
     let statusBarData: StatusBarData = {};
-    /*let groupMenu: statusBar.StatusBarGroupMenu[] = statusBar.readGroupMenuArrayFromParcel(rpcData);
+    if (!CapabilityUtil.isStatusBarAvailable()) {
+      log.showInfo('updateRightMenu, StatusBar capability not enabled, skip processing');
+      return undefined;
+    }
+    let groupMenu: statusBar.StatusBarGroupMenu[] = statusBar.readGroupMenuArrayFromParcel(rpcData);
     if (groupMenu === undefined) {
       log.showError('updateRightMenu StatusBarGroupMenu unmarshalling failed');
       return undefined;
     }
     statusBarData.statusBarMenu = groupMenu;
-    statusBarData.instanceKey = statusBar.readInstanceKeyToParcel(rpcData);*/
+    statusBarData.instanceKey = statusBar.readInstanceKeyToParcel(rpcData);
     log.showInfo('UpdateMenuService StatusbarItem unmarshalling success ' + JSON.stringify(statusBarData));
     return statusBarData;
   }
@@ -85,13 +96,17 @@ class UpdateMenuService implements IStatusBarService {
 class UpdateOperationHeight implements IStatusBarService {
   getStatusBarData(rpcData: rpc.MessageSequence): StatusBarData | undefined {
     try {
+      if (!CapabilityUtil.isStatusBarAvailable()) {
+        log.showInfo('UpdateOperationHeight, StatusBar capability not enabled, skip processing');
+        return undefined;
+      }
       let statusBarData: StatusBarData = {};
       let height = rpcData.readInt();
       if (height === undefined || height < 0) {
         return undefined;
       }
       statusBarData.operationHeight = height;
-      // statusBarData.instanceKey = statusBar.readInstanceKeyToParcel(rpcData);
+      statusBarData.instanceKey = statusBar.readInstanceKeyToParcel(rpcData);
       log.showInfo('UpdateOperationHeight StatusbarItem unmarshalling success ' + JSON.stringify(statusBarData));
       return statusBarData;
     } catch (err) {
@@ -104,6 +119,10 @@ class UpdateOperationHeight implements IStatusBarService {
 class UpdateIconService implements IStatusBarService {
   getStatusBarData(rpcData: rpc.MessageSequence): StatusBarData | undefined {
     try {
+      if (!CapabilityUtil.isStatusBarAvailable()) {
+        log.showInfo('UpdateIconService, StatusBar capability not enabled, skip processing');
+        return undefined;
+      }
       let statusBarData: StatusBarData = {};
       let whiteIcon = image.createPixelMapFromParcel(rpcData);
       let blackIcon = image.createPixelMapFromParcel(rpcData);
@@ -115,16 +134,42 @@ class UpdateIconService implements IStatusBarService {
       log.showInfo(`whiteIconInfo: ${JSON.stringify(whiteIconInfo)}, blackIconInfo: ${JSON.stringify(blackIconInfo)}`);
       PixelMapUtil.addName(whiteIcon, `StatusBarServiceStub_whiteIcon`);
       PixelMapUtil.addName(blackIcon, `StatusBarServiceStub_blackIcon`);
-      let icons: ESObject = {
+      let icons: statusBar.StatusBarIcon = {
         white: whiteIcon,
         black: blackIcon,
       };
       statusBarData.statusBarIcon = icons;
-      // statusBarData.instanceKey = statusBar.readInstanceKeyToParcel(rpcData);
+      statusBarData.instanceKey = statusBar.readInstanceKeyToParcel(rpcData);
       log.showInfo('UpdateIconService StatusbarItem unmarshalling success ' + JSON.stringify(statusBarData));
       return statusBarData;
     } catch (err) {
       log.showError(`UpdateIconService error code: ${err.code}`);
+      return undefined;
+    }
+  }
+}
+
+class UpdateHoverTips implements IStatusBarService {
+  getStatusBarData(rpcData: rpc.MessageSequence): StatusBarData | undefined {
+    try {
+      if (!CapabilityUtil.isStatusBarAvailable()) {
+        log.showInfo('UpdateHoverTips, StatusBar capability not enabled, skip processing');
+        return undefined;
+      }
+      let statusBarData: StatusBarData = {};
+
+      // let hoverTips: string = statusBar.readHoverTipsToParcel(rpcData);
+      let hoverTips: string = rpcData.readString();
+      if (hoverTips === undefined) {
+        return undefined;
+      }
+
+      statusBarData.hoverTips = hoverTips;
+      statusBarData.instanceKey = statusBar.readInstanceKeyToParcel(rpcData);
+      log.showInfo('UpdateHoverTips StatusbarItem unmarshalling success ' + JSON.stringify(statusBarData));
+      return statusBarData;
+    } catch (err) {
+      log.showError(`UpdateHoverTips error code: ${err.code}`);
       return undefined;
     }
   }
@@ -145,6 +190,7 @@ class StatusBarStub extends rpc.RemoteObject {
     this.statusBarServiceMap.set(StatusBarConnectEvent.UPDATE_QUICK_OPERATION_HEIGHT,
       () => new UpdateOperationHeight());
     this.statusBarServiceMap.set(StatusBarConnectEvent.UPDATE_STATUSBAR_ICON, () => new UpdateIconService());
+    this.statusBarServiceMap.set(StatusBarConnectEvent.UPDATE_HOVERTIPS, () => new UpdateHoverTips());
   }
 
   private async assigningValuesStatusBarData(code: number, callingTokenId: number, callingPid: number,
@@ -207,10 +253,14 @@ class StatusBarStub extends rpc.RemoteObject {
         return false;
       }
       if (code === StatusBarConnectEvent.UPDATE_RIGHT_MENU_CLICK_HANDLER) {
-        // let instanceKey: ESObject = statusBar.readInstanceKeyToParcel(data);
-        // let pluginSlot = callingSlot + typeof instanceKey === 'string' ? (instanceKey as string) : "";
-        // log.showInfo(`onRemoteMessageRequest code: ${code}, pluginSlot: ${pluginSlot}`);
-        // AppClientNotifier.getInstance().handleClientRegistration(callingP, bundleName, data);
+        if (!CapabilityUtil.isStatusBarAvailable()) {
+          log.showWarn('onRemoteMessageRequest, StatusBar capability not enabled');
+          return false;
+        }
+        let instanceKey: string = statusBar.readInstanceKeyToParcel(data);
+        let pluginSlot = callingSlot + instanceKey;
+        log.showInfo(`onRemoteMessageRequest code: ${code}, pluginSlot: ${pluginSlot}`);
+        AppClientNotifier.getInstance().handleClientRegistration(callingP, pluginSlot, data);
         reply.writeBoolean(true);
         return true;
       }

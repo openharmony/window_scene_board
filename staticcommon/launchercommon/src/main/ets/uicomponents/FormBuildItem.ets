@@ -15,7 +15,7 @@
 
 import { CheckEmptyUtils, LogDomain, LogHelper } from '@ohos/basicutils';
 import { editModeManager, EditModeState, FormManager, PageDesktopModel } from '../TsIndex';
-import { CommonConstants, FormLocation } from '../constants/CommonConstants';
+import { BundleConstants, CommonConstants, FormLocation } from '../constants/CommonConstants';
 import GridLayoutItemInfo from '../bean/GridLayoutItemInfo';
 import { FormCommonUtil } from '../utils/FormCommonUtil';
 import { CommonConfigData, FormStackItemBuildParam } from '../formstack/FormStackItemBuildParam';
@@ -23,6 +23,7 @@ import { FormStackConfig } from '../formstack/FormStackConfig';
 import { FormStackItemBuildInterface, FormStackItemViewType } from '../formstack/FormStackItemBuildInterface';
 import { FormStackItemViewData } from '../formstack/FormStackItemViewData';
 import { FormComponentConfig, FormComponentDisplayStyle } from '../form/model/FormComponentConfig';
+import { AiSuggestionUtil } from '../aisuggestion/AiSuggestionUtil';
 import { CardNodeController } from '../buildernode/CardNodeController';
 import {
   CardNodeControllerManager,
@@ -41,7 +42,8 @@ export class FormBuildItem implements FormStackItemBuildInterface {
   public type: FormStackItemViewType = FormStackItemViewType.FORM_COMPONENT;
 
   public isTypeMatch(layoutInfo: GridLayoutItemInfo): boolean {
-    return layoutInfo.typeId === CommonConstants.TYPE_CARD;
+    return layoutInfo.typeId === CommonConstants.TYPE_CARD &&
+      !AiSuggestionUtil.isVoiceAbilityForm(layoutInfo.bundleName, layoutInfo.abilityName);
   }
 
   public buildView(): WrappedBuilder<FormStackItemBuildParam[]> {

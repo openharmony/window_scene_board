@@ -23,6 +23,7 @@ import {
   CommonConstants,
   GridLayoutItemInfo,
   launcherAbilityManager,
+  DeliverUtil,
   AppInstallUtils
 } from '@ohos/launchercommon/src/main/ets/TsIndex';
 import { CacheManager } from './CacheManager';
@@ -104,7 +105,12 @@ export class InstallerManager {
    * @returns
    */
   private isCloneInstaller(appGalleryData: AppGalleryData, bundleName: string): boolean {
-    // ag发送的信息带有未OpenHarmony信息，直接使用clone的安装器
+    // ag发送的bundleName是未鸿蒙化包名，直接使用clone的安装器
+    if (bundleName.startsWith(DeliverUtil.WAIT_FOR_HARMONY_PREFIX)) {
+      log.showWarn(`findInstaller bundleName: ${bundleName}`);
+      return true;
+    }
+    // ag发送的信息带有未鸿蒙信息和设备包名，直接使用clone的安装器
     if (!CheckEmptyUtils.isEmptyArr(appGalleryData.legacyInfos) &&
     appGalleryData.legacyInfos && appGalleryData.legacyInfos[0].pkgName) {
       log.showWarn(`findInstaller pkgName: ${appGalleryData.legacyInfos[0].pkgName}`);

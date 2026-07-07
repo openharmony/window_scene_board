@@ -19,6 +19,10 @@
  * @since 2023-02-13
  */
 export default class FormConstants {
+  /**
+   * the bundle name of ai suggestion
+   */
+  public static readonly AI_SUGGESTION_BUNDLE_NAME = 'com.ohos.suggestion';
 
   /**
    * the bundle name of lite games suggestion
@@ -44,6 +48,11 @@ export default class FormConstants {
    * Threshold of high frequency apps in the service form pool
    */
   public static readonly SERVICE_FORM_POOL_HIGH_FREQUENCY_APP_THRESHOLD = 8;
+
+  /**
+   * Threshold of ai suggestion in the service form pool
+   */
+  public static readonly SERVICE_FORM_POOL_AI_SUGGESTION_THRESHOLD = 1;
 
   /**
    * Threshold of lite games suggestion in the service form pool

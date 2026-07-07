@@ -19,11 +19,14 @@ import type rpc from '@ohos.rpc';
 import { BaseServiceStub, IService } from '@ohos/componenthelper';
 import { Log } from '@ohos/basicutils';
 import { RecentDeviceService } from '@ohos/phonebase/src/main/ets/service/RecentDeviceService';
+// import { RestoringPhoneDesktopLayout } from '@ohos/phonebase/src/main/ets/backup/RestoringPhoneDesktopLayout';
+import { SampleDeviceService } from '@ohos/pagedesktop/src/main/ets/default/service/SampleDeviceService';
 import { DesktopIconService } from '@ohos/pagedesktop/src/main/ets/default/service/DesktopIconService';
 import { GlobalSearchLocationService } from '@ohos/phonebase/src/main/ets/service/GlobalSearchLocationService';
 import { CloneCloudService } from '@ohos/phonebase/src/main/ets/service/CloneCloudService';
 import { QueryDesktopAppService } from '@ohos/phonebase/src/main/ets/service/QueryDesktopAppService';
 import { ScenePerceptionService } from '@ohos/phonebase/src/main/ets/service/ScenePerceptionService';
+import { AiSuggestionService } from '@ohos/aisuggestion';
 import lazy DesktopProviderServiceProxy from '@ohos/pcbase/src/main/ets/service/DesktopProviderServiceProxy';
 import { DeviceHelper } from '@ohos/frameworkwrapper';
 
@@ -101,7 +104,9 @@ export default class DesktopProviderService extends ServiceExtensionAbility {
  * @since 2023-08-11
  */
 export class PhoneDesktopProviderServiceStub extends BaseServiceStub {
+  private static readonly aiSuggestion = 1;
   private static readonly cloneCloud = 2;
+  private static readonly aiVassiant = 3;
   private static readonly sampleDevice = 4;
   private static readonly recentDeleteDeviece = 5;
   private static readonly globalSearch = 6;
@@ -115,7 +120,10 @@ export class PhoneDesktopProviderServiceStub extends BaseServiceStub {
 
   protected initServiceMap(): Map<number, () => IService> {
     return new Map<number, () => IService>([
+      [PhoneDesktopProviderServiceStub.aiSuggestion, (): IService => new AiSuggestionService()],
       [PhoneDesktopProviderServiceStub.cloneCloud, (): IService => new CloneCloudService()],
+      // [PhoneDesktopProviderServiceStub.sampleDevice,
+      //   (): IService => new SampleDeviceService(new RestoringPhoneDesktopLayout())],
       [PhoneDesktopProviderServiceStub.recentDeleteDeviece, (): IService => new RecentDeviceService()],
       [PhoneDesktopProviderServiceStub.globalSearch, (): IService => new GlobalSearchLocationService()],
       [PhoneDesktopProviderServiceStub.queryNotInstall, (): IService => new QueryDesktopAppService()],

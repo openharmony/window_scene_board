@@ -29,7 +29,7 @@ import { immersiveNtfSceneHelper } from './ImmersiveNtfSceneHelper';
 import { ImmersiveNtfScene } from '../../common/anim/ImmersiveAnimConstants';
 import { UIExtentionLoadingStateMgr } from '../../model/manager/UIExtentionLoadingStateMgr';
 import { ImmersiveCardHandle } from '../viewevent/ImmersiveCardHandle';
-import { BaseNotification, immersiveKgMgr, SysTypeCode } from '@ohos/systemuicommon';
+import { BaseNotification, immersiveKgMgr, SysTypeCode, ImmersiveAodStyle } from '@ohos/systemuicommon';
 import { ImmersiveCapsuleVm } from '../ImmersiveCapsuleVm';
 import { immersiveStateMgr } from '../../common/manager/ImmersiveStateManager';
 
@@ -229,9 +229,10 @@ export class ImmersiveDataPreProcessor {
    * @returns boolean 直接切换锁屏通知状态
    */
   private isSwitchState(): boolean {
+    let aodStyle: ImmersiveAodStyle | undefined = immersiveKgMgr.getOneMirrorState().getAodStyle(true);
     let length: number = this.listVm?.getNtfList()?.length ?? 0;
-    log.showInfo(`length is ${length}`);
-    if (length === 0) {
+    log.showInfo(`isAod is ${aodStyle?.isAod} and length is ${length}`);
+    if (aodStyle?.isAod || length === 0) {
       return true;
     }
     return false;

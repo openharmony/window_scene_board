@@ -36,7 +36,8 @@ import {
   ResUtils,
   ScenePanelState,
   SpecificPanelZOrder,
-  SCBScreenSessionManager
+  SCBScreenSessionManager,
+  SystemSessionChangeCallback
 } from '@ohos/windowscene';
 import { WindowConstants } from '@ohos/commonconstants';
 import { AppStorageUtil, CommonUtils, LogDomain, LogHelper, Trace, } from '@ohos/basicutils';
@@ -184,7 +185,7 @@ export struct SCBPictureInPictureScene {
     isTouchable: true,
     privacyMode: false,
     isRotatable: true,
-    hitTestMode: HitTestMode.None,
+    hitTestMode: HitTestMode.Default,
     sceneType: sceneSessionManager.SceneType.SYSTEM_WINDOW_SCENE,
   };
 
@@ -200,11 +201,93 @@ export struct SCBPictureInPictureScene {
     sceneType: sceneSessionManager.SceneType.SYSTEM_WINDOW_SCENE,
   }
 
+  // overlay session change callback
+  private overlaySessionChangeCallback: SystemSessionChangeCallback = {
+    onVisibilityChange: (visibility: boolean) => {
+      log.showInfo(`overlaySession onVisibilityChange: ${visibility}`);
+    },
+    onActiveChange: (isActive: boolean) => {
+      log.showInfo(`overlaySession onActiveChange: ${isActive}`);
+    },
+    onFocusableChange: (isFocusable: boolean): void => {
+      log.showInfo(`overlaySession onRectChange: ${isFocusable}`);
+    },
+    onUpdateRect: (rect: SCBSessionRect) => {
+      log.showInfo(`overlaySession onUpdateRect: ${rect}`);
+    },
+    onTranslateChange: (x: number, y: number, z: number) => {
+      log.showInfo(`overlaySession onTranslateChange: ${x}, ${y}, ${z}`);
+    },
+    onBackgroundColorChange: (backgroundColor: string) => {
+      log.showInfo(`overlaySession onBackgroundColorChange: ${backgroundColor}`);
+    },
+    onBackdropBlurChange: (blur: number) => {
+      log.showInfo(`overlaySession onBackdropBlurChange: ${blur}`);
+    },
+    onBorderRadiusChange: (radius: number) => {
+      log.showInfo(`overlaySession onBorderRadiusChange: ${radius}`);
+    },
+    onShadowChange: (radius: number, color: string, offsetX: number, offsetY: number) => {
+      log.showInfo(`overlaySession onShadowChange: ${radius}, ${color}, ${offsetX}, ${offsetY}`);
+    },
+    onOpacityChange: (opacity: number) => {
+      log.showInfo(`overlaySession onOpacityChange: ${opacity}`);
+    },
+    onResponseRegionChange: (responseRegion: Array<Rectangle>) => {
+      log.showInfo(`overlaySession onResponseRegionChange: ${responseRegion.length}`);
+    },
+    onTouchableChange: (touchable: boolean) => {
+      log.showInfo(`overlaySession onTouchableChange: ${touchable}`);
+    },
+    onZIndexChange: (zIndex: number) => {
+      log.showInfo(`overlaySession onZIndexChange: ${zIndex}`);
+    },
+    onHitTestModeChange: (mode: number) => {
+      log.showInfo(`overlaySession onHitTestModeChange: ${mode}`);
+    },
+    onRotationChange: (screenProperty: SCBScreenProperty) => {
+      log.showInfo(`overlaySession onRotationChange: ${screenProperty.rotation}`);
+    },
+    onActiveModeChange: (oldMode: SCBScreenProperty, newMode: SCBScreenProperty) => {
+      log.showInfo(`overlaySession onActiveModeChange`);
+    },
+    onFoldChange:(screenProperty: SCBScreenProperty, reason: SCBPropertyChangeReason) =>{
+      log.showInfo(`overlaySession onFoldChange`);
+    },
+    onTouchOutside: (x: number, y: number) => {
+      log.showInfo(`overlaySession onTouchOutside: ${x}, ${y}`);
+      // 在侧边栏模式下，点击控制条区域时恢复画中画窗口
+      if (this.isInSideManager && this.shouldRestoreFromSideManagerTouchOutside(x, y)) {
+        this.clickInSideBar();
+      }
+    },
+  };
+  // 当前这个方法主要是为了解决当前随便点击屏幕或者下拉屏幕会导致画中画从关闭状态弹出
+  // 目前只会点击侧边条时才会弹出，后续如果有调整再进行改造
+  private shouldRestoreFromSideManagerTouchOutside(x: number, y: number): boolean {
+    const statusBarHeightPx: number = windowMgr.getWindowPosition(WindowConstants.WINDOW_NAME_STATUS_BAR).height;
+    const tolPx: number = vp2px(4);
+    const stripTopPx: number = Math.max(0, statusBarHeightPx - tolPx);
+    const stripBottomPx: number = statusBarHeightPx + vp2px(SIDE_EDGE_HEIGHT) + tolPx;
+    if (y < stripTopPx || y > stripBottomPx) {
+      return false;
+    }
+    const stripWidthPx: number = vp2px(SIDE_EDGE_WIDTH) + tolPx;
+    const direct = SCBPiPManager.getInstance().pipSideManagerInfo.sideDirect;
+    if (direct === 'left') {
+      return x <= stripWidthPx;
+    }
+    if (direct === 'right') {
+      return x >= (this.screenProperty.width - stripWidthPx);
+    }
+    return x <= stripWidthPx || x >= (this.screenProperty.width - stripWidthPx);
+  }
+
   private dragScaleSession: SCBSystemSceneSession = SCBSceneSessionManager.getInstance()
     .requestSystemSceneSession(this.dragScaleSessionInfo);
 
   private overlaySceneSession: SCBSystemSceneSession = SCBSceneSessionManager.getInstance()
-    .requestSystemSceneSession(this.overlaySystemSessionInfo);
+    .requestSystemSceneSession(this.overlaySystemSessionInfo, this.overlaySessionChangeCallback);
   // HiView info
   bundleName: string = '';
   private rectCalculator: PipRectCalculator = new PipRectCalculator();
@@ -229,12 +312,12 @@ export struct SCBPictureInPictureScene {
   @ObjectLink specificSession: SCBSpecificSession;
   @Link screenProperty: SCBScreenProperty;
   @ObjectLink rect: SCBSessionRect;
-  @State @Watch('overlayRectChange') overlayRect: SCBSessionRect = new SCBSessionRect(0, 0, 0, 0);
+  @State overlayRect: SCBSessionRect = new SCBSessionRect(0, 0, 0, 0);
   @State moveStartOverlayRect: SCBSessionRect = new SCBSessionRect(0, 0, 0, 0);
   @State moveStartRect: SCBSessionRect = new SCBSessionRect(0, 0, 0, 0);
   @State clickInSideBarRect: SCBSessionRect = new SCBSessionRect(0, 0, 0, 0);
   @State isInSideManager: boolean = false;
-  @State @Watch('scaleValueChange')scaleValue: number = 1;
+  @State scaleValue: number = 1;
   @State moveStartScale: number = 1;
   @State centerScaleX: string = '0';
   @State centerScaleY: string = '0';
@@ -287,6 +370,8 @@ export struct SCBPictureInPictureScene {
   private afterDragScale: number = 0;
   private rectSizeLevel: number = 0;
   @State blurScale: number = 0;
+  // 拖拽状态标志，用于防止拖拽过程中触发onTouchOutside关闭画中画
+  private isDragging: boolean = false;
 
   onMoveEdgeSpringBackAnimationFinished = (): void => {
     this.moveAnimateCount--;
@@ -301,7 +386,15 @@ export struct SCBPictureInPictureScene {
   recentCallback = (property: boolean): void => {
     this.isRecoveryAvoidInput = false;
     this.updateBottomAvoidHeight();
-    this.processEdgeSpringBack();
+    if (this.isInSideManager) {
+      if (property) {
+        this.showSideBar = false;
+      } else {
+        this.showSideBar = true;
+      }
+    } else {
+      this.processEdgeSpringBack();
+    }
   }
 
   // inputShowAvoid
@@ -416,15 +509,47 @@ export struct SCBPictureInPictureScene {
     PipReportEventUtil.reportPipDisplayEvent(PIP_SHOW, DisplayReason.BORDER, this.bundleName);
     this.isInSideManager = false;
     this.hasZoomed = false;
+    this.showSideBar = false;
+    this.clipPiPWindow = false;
+    
+    // 恢复画中画窗口的大小和位置
     this.scaleValue = SCBPiPManager.getInstance().pipSideManagerInfo.originScale;
     this.pipBorderRadius = Constants.DEFAULT_PIP_RADIUS;
+    this.rect.setRect(
+      SCBPiPManager.getInstance().pipSideManagerInfo.originRect.left,
+      SCBPiPManager.getInstance().pipSideManagerInfo.originRect.top,
+      SCBPiPManager.getInstance().pipSideManagerInfo.originRect.width,
+      SCBPiPManager.getInstance().pipSideManagerInfo.originRect.height
+    );
+    this.overlayRect.setRect(
+      SCBPiPManager.getInstance().pipSideManagerInfo.originRect.left,
+      SCBPiPManager.getInstance().pipSideManagerInfo.originRect.top,
+      SCBPiPManager.getInstance().pipSideManagerInfo.originRect.width,
+      SCBPiPManager.getInstance().pipSideManagerInfo.originRect.height
+    );
+    
+    // 确保 overlaySceneSession 的状态被正确恢复
     if (this.overlaySceneSession !== null && this.overlaySceneSession !== undefined) {
       this.overlaySceneSession.setVisibility(true);
       this.overlaySceneSession.setActive(true);
       this.overlaySceneSession.setSessionTouchable(true);
     }
+    // 确保 specificSession 的状态被正确恢复
+    if (this.specificSession) {
+      this.specificSession.isActive = true;
+      this.specificSession.visibility = true;
+      this.specificSession.setTouchable(true);
+    }
+    // 确保 specificSession 的状态被正确恢复
+    if (this.specificSession) {
+      this.specificSession.isActive = true;
+      this.specificSession.visibility = true;
+      this.specificSession.setTouchable(true);
+    }
+    
     this.resetPrivacyMode();
     this.updatePanelZIndex(SCBDefaultZIndex.PIP_SCENE_PANEL);
+    this.notifyPipActiveStatusToApp(true);
   }
 
   private clickInSideBar() {
@@ -451,6 +576,12 @@ export struct SCBPictureInPictureScene {
       this.overlaySceneSession.setActive(true);
       this.overlaySceneSession.setSessionTouchable(true);
     }
+    // 确保 specificSession 的状态被正确恢复
+    if (this.specificSession) {
+      this.specificSession.isActive = true;
+      this.specificSession.visibility = true;
+      this.specificSession.setTouchable(true);
+    }
     // side bar to pip window of a mirror to the end of the dynamic effect
     animateTo({
       curve: curves.springMotion(0.4, 0.8),
@@ -458,14 +589,24 @@ export struct SCBPictureInPictureScene {
         this.showSideBar = false;
         this.clipPiPWindow = false;
         this.isClickInSidebarInterrupt = false;
+        this.notifyPipActiveStatusToApp(true);
       }
     }, () => {
-      this.realRectWidth = this.overlayRect.width.getVp();
-      this.realRectHeight = this.overlayRect.height.getVp();
-      this.scaleValue = SCBPiPManager.getInstance().pipSideManagerInfo.originScale;
+      // 使用保存的原始窗口大小
+      this.realRectWidth = SCBPiPManager.getInstance().pipSideManagerInfo.originRect.width.getVp();
+      this.realRectHeight = SCBPiPManager.getInstance().pipSideManagerInfo.originRect.height.getVp();
+      // 不设置scaleValue，使用默认值1，确保窗口大小正确
+      this.scaleValue = 1;
       this.opacityNum = 1;
-      this.rect.setSizeNum(tempRect.width.getPx(), tempRect.height.getPx());
-      this.rect.setPosNum(tempRect.left.getPx(), tempRect.top.getPx());
+      // 使用保存的原始位置和大小
+      this.rect.setSizeNum(SCBPiPManager.getInstance().pipSideManagerInfo.originRect.width.getPx(), SCBPiPManager.getInstance().pipSideManagerInfo.originRect.height.getPx());
+      this.rect.setPosNum(SCBPiPManager.getInstance().pipSideManagerInfo.originRect.left.getPx(), SCBPiPManager.getInstance().pipSideManagerInfo.originRect.top.getPx());
+      this.overlayRect.setRect(
+        SCBPiPManager.getInstance().pipSideManagerInfo.originRect.left,
+        SCBPiPManager.getInstance().pipSideManagerInfo.originRect.top,
+        SCBPiPManager.getInstance().pipSideManagerInfo.originRect.width,
+        SCBPiPManager.getInstance().pipSideManagerInfo.originRect.height
+      );
       this.pipBorderRadius = Constants.DEFAULT_PIP_RADIUS;
       this.shadowStyle = ShadowStyle.OUTER_FLOATING_SM;
     })
@@ -487,6 +628,7 @@ export struct SCBPictureInPictureScene {
     this.shadowStyle = ShadowStyle.OUTER_FLOATING_SM;
     this.showSideBar = false;
     this.clipPiPWindow = false;
+    this.notifyPipActiveStatusToApp(true);
   }
 
   private onSceneRaiseToTop = (persistentId?: number): void => {
@@ -530,21 +672,6 @@ export struct SCBPictureInPictureScene {
       return '[]';
     }
     return `[ ${rect.left.getPx()}, ${rect.top.getPx()}, ${rect.width.getPx()}, ${rect.height.getPx()} ]`;
-  }
-
-  overlayRectChange() {
-    if (this.isInSideManager) {
-      log.showInfo(`overlayRectChange overlayRect: ${this.getSCBSessionRectInfo(this.overlayRect)}`);
-      SCBPiPManager.getInstance().pipSideManagerInfo.originRect.setRect(this.overlayRect.left, this.overlayRect.top,
-        this.rect.width, this.rect.height);
-    }
-  }
-
-  scaleValueChange() {
-    if (this.isInSideManager) {
-      log.showInfo(`scaleValueChange scaleValue: ${this.scaleValue}`);
-      SCBPiPManager.getInstance().pipSideManagerInfo.originScale = this.scaleValue;
-    }
   }
 
   private init() {
@@ -615,6 +742,18 @@ export struct SCBPictureInPictureScene {
     this.lastMode = this.getParentWindowMode();
     SCBSceneSessionManager.getInstance().on(SCBEventId.SESSION_RAISE_TO_TOP, this.screenProperty.screenId,
       this.onSceneRaiseToTop);
+    // 注册FLOATING_ENTER_SIDE_EDGE_BAR事件
+    SCBSceneSessionManager.getInstance().on(SCBEventId.FLOATING_ENTER_SIDE_EDGE_BAR, this.screenProperty.screenId,
+      (persistentId: number, containerId: number) => {
+        log.showInfo(`onFloatingEnterSideEdgeBar persistentId: ${persistentId}, containerId: ${containerId}`);
+        if (persistentId === this.specificSession.session.persistentId) {
+          log.showInfo(`PIP window entering side edge bar`);
+          this.isInSideManager = true;
+          this.showSideBar = true;
+          this.clipPiPWindow = true;
+          this.notifyPipActiveStatusToApp(false);
+        }
+      });
     let parentSession = SCBSceneSessionManager.getInstance().getSessionById(this.specificSession.session.parentId);
     if (parentSession !== null && parentSession instanceof SCBSceneSession) {
       parentSession.registerForegroundCallback(this.onParentForeground);
@@ -760,6 +899,14 @@ export struct SCBPictureInPictureScene {
     if (SCBPiPManager.getInstance().notifyPipSizeChange(this.notifyRect, this.rect, this.notifyScale,
       this.scaleValue)) {
       this.notifyScale = this.scaleValue;
+    }
+  }
+
+  private notifyPipActiveStatusToApp(isActive: boolean): void {
+    try {
+      this.specificSession?.session?.notifyPipActiveStatusChange(isActive);
+    } catch (err) {
+      log.showError(`notifyPipActiveStatusChange ${isActive} err`);
     }
   }
 
@@ -1586,12 +1733,18 @@ export struct SCBPictureInPictureScene {
     this.isEdgeHideInterrupt = true;
     PipReportEventUtil.reportPipDisplayEvent(PIP_HIDE, DisplayReason.BORDER, this.bundleName);
     this.showSideBar = true;
+    // 确保控制条可触摸
+    this.specificSession?.setTouchable(true);
+    if (this.overlaySceneSession) {
+      this.overlaySceneSession.setSessionTouchable(true);
+    }
     // store before hide in sideManager status
     SCBPiPManager.getInstance().pipSideManagerInfo.originScale = this.moveStartScale;
     SCBPiPManager.getInstance().pipSideManagerInfo.originRadius = this.pipBorderRadius / this.moveStartScale;
     SCBPiPManager.getInstance().pipSideManagerInfo.sideDirect = this.moveEndTransX < 0 ? 'left' : 'right';
+    // 使用overlayRect保存原始窗口大小，因为rect可能已经被缩放
     SCBPiPManager.getInstance().pipSideManagerInfo.originRect.setRect(this.moveStartOverlayRect.left,
-      this.moveStartOverlayRect.top, this.moveStartRect.width, this.moveStartRect.height);
+      this.moveStartOverlayRect.top, this.moveStartOverlayRect.width, this.moveStartOverlayRect.height);
     // cal real specificSession current rect
     this.realRectWidth = this.rect.width.getVp() * this.scaleValue;
     this.realRectHeight = this.rect.height.getVp() * this.scaleValue;
@@ -1615,9 +1768,10 @@ export struct SCBPictureInPictureScene {
       }
     }, () => {
       if (this.overlaySceneSession !== null && this.overlaySceneSession !== undefined) {
-        this.overlaySceneSession.setVisibility(false);
         this.overlaySceneSession.setActive(false);
         this.overlaySceneSession.setSessionTouchable(false);
+        // 确保overlaySceneSession保持可见
+        this.overlaySceneSession.setVisibility(true);
       }
       this.pipWindowHideAmin();
     })
@@ -1641,7 +1795,8 @@ export struct SCBPictureInPictureScene {
   private pipWindowHideAmin() {
     this.realRectWidth = SIDE_EDGE_WIDTH;
     this.realRectHeight = SIDE_EDGE_HEIGHT;
-    this.opacityNum = 0;
+    // 保持控制条可见，不要设置透明度为0
+    this.opacityNum = 1;
     this.shadowStyle = undefined;
     if (this.moveEndTransX < 0) {
       this.rect.setPosNum(vp2px(-SIDE_EDGE_WIDTH / 2), vp2px(0));
@@ -1653,17 +1808,34 @@ export struct SCBPictureInPictureScene {
   }
 
   private pipWindowHideInSideManager() {
+    // 保存画中画状态到侧边管理器
     let containerSession = SCBScenePanelManager.getInstance().getTotalSessionList().
     findByPersistentId(this.specificSession.session.parentId);
     if (containerSession) {
       SCBSceneSessionManager.getInstance().enterSideEdgeBar(containerSession.screenProperty.screenId,
         this.specificSession.session.persistentId);
     }
-    this.rect.setPosNum(this.moveStartOverlayRect.left.getPx(), this.moveStartOverlayRect.top.getPx());
-    this.overlayRect.setPosNum(this.moveStartOverlayRect.left.getPx(), this.moveStartOverlayRect.top.getPx());
+    // 保持控制条在边缘位置
+    if (this.moveEndTransX < 0) {
+      this.rect.setPosNum(vp2px(-SIDE_EDGE_WIDTH / 2), vp2px(0));
+    } else {
+      this.rect.setPosNum(this.screenProperty.width - vp2px(SIDE_EDGE_WIDTH / 2), vp2px(0));
+    }
+    this.overlayRect.setPosNum(this.rect.left.getPx(), this.rect.top.getPx());
+    // 进入侧边栏模式
     this.isInSideManager = true;
+    this.showSideBar = true;
+    // 确保控制条保持可见
     this.opacityNum = 1;
-    this.showSideBar = false;
+    // 确保overlaySceneSession保持可见
+    if (this.overlaySceneSession) {
+      this.overlaySceneSession.setVisibility(true);
+    }
+    // 确保 specificSession 的状态被正确保存
+    if (this.specificSession) {
+      this.specificSession.isActive = false;
+      this.specificSession.setTouchable(false);
+    }
   }
 
   private avoidHorizontalCamera(rect: SCBSessionRect, avoidRect: SCBSessionRect): SCBSessionRect {
@@ -1689,6 +1861,20 @@ export struct SCBPictureInPictureScene {
 
   private processEdgeSpringBack(onFinishCallback?: () => void) {
     log.showInfo('processEdgeSpringBack: start');
+    if (this.isInSideManager) {
+      this.realRectWidth = SIDE_EDGE_WIDTH;
+      this.realRectHeight = SIDE_EDGE_HEIGHT;
+      if (SCBPiPManager.getInstance().pipSideManagerInfo.sideDirect === 'left') {
+        this.rect.setPosNum(vp2px(-SIDE_EDGE_WIDTH / 2), vp2px(0));
+      } else {
+        this.rect.setPosNum(this.screenProperty.width - vp2px(SIDE_EDGE_WIDTH / 2), vp2px(0));
+      }
+      this.overlayRect.setPosNum(this.rect.left.getPx(), this.rect.top.getPx());
+      if (onFinishCallback) {
+        onFinishCallback();
+      }
+      return;
+    }
     let horAvoid = vp2px(Constants.DEFAULT_PIP_LEFT_AVOID_AREA);
     animateTo({
       curve: curves.springMotion(0.45, 0.825),
@@ -1802,13 +1988,22 @@ export struct SCBPictureInPictureScene {
         this.isRotating = false;
         SCBPiPManager.getInstance().isNeedRotation = false;
         this.updateBottomAvoidHeight();
-        this.processEdgeSpringBack();
+        if (this.isInSideManager === false) {
+          this.processEdgeSpringBack();
+        }
         }
       }, () => {
       if (this.isInSideManager === true) {
-        this.setRect(newRect);
         this.rect.setSizeNum(largeRect.width.getPx(), largeRect.height.getPx());
-        this.scaleValue = this.getScaleValue(this.rect, newRect);
+        this.realRectWidth = SIDE_EDGE_WIDTH;
+        this.realRectHeight = SIDE_EDGE_HEIGHT;
+        SCBPiPManager.getInstance().pipSideManagerInfo.originRect.copyFrom(newRect);
+        if (SCBPiPManager.getInstance().pipSideManagerInfo.sideDirect === 'left') {
+          this.rect.setPosNum(vp2px(-SIDE_EDGE_WIDTH / 2), vp2px(0));
+        } else {
+          this.rect.setPosNum(this.screenProperty.width - vp2px(SIDE_EDGE_WIDTH / 2), vp2px(0));
+        }
+        this.overlayRect.setPosNum(this.rect.left.getPx(), this.rect.top.getPx());
         this.zoomScale = this.scaleValue;
       } else {
         this.rect.setPosNum(newRect.left.getPx(), newRect.top.getPx());
@@ -1925,6 +2120,8 @@ export struct SCBPictureInPictureScene {
 
   private onActionMoveStart(event: GestureEvent): void {
     log.showInfo('onActionMoveStart');
+    // 设置拖拽状态为true
+    this.isDragging = true;
     SCBPiPManager.getInstance().needBlockShowOverlayCount++;
     // adjust zIndex to show above the input method when move.
     this.moveAnimateCount++;
@@ -1961,6 +2158,8 @@ export struct SCBPictureInPictureScene {
 
   private onActionMoveEndOrCancel(event?: GestureEvent): void {
     log.showInfo('onActionMoveEndOrCancel');
+    // 设置拖拽状态为false
+    this.isDragging = false;
     SCBPiPManager.getInstance().needBlockShowOverlayCount--;
     this.doGestureMoveRestore();
     this.doGestureMoveInertialSliding(event);
@@ -2224,6 +2423,9 @@ export struct SCBPictureInPictureScene {
   }
   private handleTouchEvent(event: TouchEvent) {
     if (event) {
+      // 阻止事件传递，确保侧边栏模式下的点击不会被桌面捕获
+      event.stopPropagation();
+      
       switch (event.type) {
         case TouchType.Down:
           AppStorageUtil.setOrCreate<boolean>(Constants.IS_DRAGGING_PIP, true);
@@ -2231,7 +2433,12 @@ export struct SCBPictureInPictureScene {
           break;
         case TouchType.Up:
         case TouchType.Cancel:
-          this.handleDragScaleEventCancel();
+          // 如果在侧边栏模式下，点击控制条时恢复画中画窗口
+          if (this.isInSideManager) {
+            this.clickInSideBar();
+          } else {
+            this.handleDragScaleEventCancel();
+          }
           break;
         default:
           break;
@@ -2559,11 +2766,11 @@ export struct SCBPictureInPictureScene {
     .size({ width: '100%', height: '100%' })
     .borderRadius(this.pipBorderRadius / this.scaleValue)
     .visibility(this.showSideBar ? Visibility.Visible : Visibility.None)
-    .opacity(1 - this.opacityNum)
+    .opacity(this.isInSideManager ? 1 : 1 - this.opacityNum)
   }
 
   build() {
-    if (this.enableShow() && !this.isInSideManager) {
+    if (this.enableShow() || this.isInSideManager) {
       Stack({ alignContent: Alignment.Center }) {
         Stack({ alignContent : this.moveEndTransX > 0 ? Alignment.Start : Alignment.End }) {
           WindowScene(this.specificSession?.session.persistentId) {
@@ -2572,14 +2779,14 @@ export struct SCBPictureInPictureScene {
           .zIndex(this.panelZIndex)
           .id(`session${this.specificSession?.session.persistentId}`)
           .size({ width: this.rect?.width.getPxSizeStr(), height: this.rect?.height.getPxSizeStr() })
-          .visibility(this.specificSession?.visibility ? Visibility.Visible : Visibility.Hidden)
+          .visibility((this.specificSession?.visibility && !this.isInSideManager) ? Visibility.Visible : Visibility.Hidden)
           .borderRadius(this.pipBorderRadius / this.scaleValue)
           .opacity(this.opacityNum)
           .freeze(this.isNeedFreeze)
           .renderFit(RenderFit.RESIZE_FILL)
           Image(this.cachePixMap)
             .size({ width: this.rect?.width.getPxSizeStr(), height: this.rect?.height.getPxSizeStr() })
-            .visibility(this.useSnapshot ? Visibility.Visible : Visibility.None)
+            .visibility((this.useSnapshot && !this.isInSideManager) ? Visibility.Visible : Visibility.None)
             .opacity(this.opacityNum)
           this.sideBarBackgroundBuilder();
         }
@@ -2613,7 +2820,7 @@ export struct SCBPictureInPictureScene {
 
   @Builder
   dragScaleBuilder() {
-    if (this.specificSession.isActive) {
+    if (this.specificSession.isActive || this.isInSideManager) {
       WindowScene(this.dragScaleSession?.session.persistentId) {
         Stack()
           .size({ width: '100%', height: '100%' })

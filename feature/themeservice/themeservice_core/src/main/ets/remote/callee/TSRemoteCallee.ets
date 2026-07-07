@@ -52,7 +52,7 @@ import { resetService } from '../../service/impl/TSResetServiceImpl';
 import { GlobalPersistInfo } from '../model/GlobalPersistInfo';
 import { OnlineThemeInfo } from '../model/OnlineThemeInfo';
 import { TrialThemeInfo } from '../model/TrialThemeInfo';
-import { openharmony_APP, RETAIL_APP } from './TrustCallerInfo';
+import { HW_APP, RETAIL_APP } from './TrustCallerInfo';
 import { TSParamChecker } from './TSParamChecker';
 import { TSRemoteCalleeApi } from './TSRemoteCalleeApi';
 import { updateThemeInfoService } from '../../service/impl/UpdateThemeInfoServiceImpl';
@@ -77,7 +77,7 @@ export class TSRemoteCallee implements RemoteCallee, TSRemoteCalleeApi {
     methodSet.register(TSRemoteMethod.GET_UPDATE_THEME_LIST, this.getUpdateThemeList);
     methodSet.register(TSRemoteMethod.IGNORE_UPDATE_THEME, this.ignoreUpdateTheme, { parallel: false });
     methodSet.register(TSRemoteMethod.CLEAR_UPDATE_THEME_ALL_CACHE, this.clearUpdateThemeAllCache, {
-      parallel: false, trustCallers: [openharmony_APP],
+      parallel: false, trustCallers: [HW_APP],
     });
     methodSet.register(TSRemoteMethod.ACTIVATE_THEME_STYLE, this.activateThemeStyle, { parallel: false });
     methodSet.register(TSRemoteMethod.SET_GLOBAL_PERSIST, this.setGlobalPersist, { parallel: false });
@@ -99,7 +99,7 @@ export class TSRemoteCallee implements RemoteCallee, TSRemoteCalleeApi {
     methodSet.register(TSRemoteMethod.GET_THEME_PROPERTY_VALUE, this.getThemePropertyValue);
     methodSet.register(TSRemoteMethod.REMOVE_THEME_PROPERTY_VALUE, this.removeThemePropertyValue);
     methodSet.register(TSRemoteMethod.NOTIFY_ONLINE_RECOMMEND_UPDATE, this.notifyOnlineRecommendationUpdate,
-      { trustCallers: [openharmony_APP] });
+      { trustCallers: [HW_APP] });
     methodSet.register(TSRemoteMethod.GET_ONLINE_RECOMMENDATION, this.getOnlineRecommendation);
     methodSet.register(TSRemoteMethod.SET_WALLPAPER, this.setWallPaper, { parallel: false, hasTimedOut: true });
     methodSet.register(TSRemoteMethod.ACTIVATE_THEME, this.activateTheme, { parallel: false, hasTimedOut: true });
@@ -108,22 +108,22 @@ export class TSRemoteCallee implements RemoteCallee, TSRemoteCalleeApi {
     methodSet.register(TSRemoteMethod.ACTIVATE_EDITED_THEME, this.activateEditedTheme,
       { parallel: false, hasTimedOut: true });
     methodSet.register(TSRemoteMethod.EDIT_THEME, this.editTheme, { parallel: false, hasTimedOut: true });
-    methodSet.register(TSRemoteMethod.DELETE_THEME, this.deleteTheme, { trustCallers: [openharmony_APP] });
-    methodSet.register(TSRemoteMethod.HOSTED_THEME_DOWNLOADED, this.hostedThemeDownloaded, { trustCallers: [openharmony_APP] });
+    methodSet.register(TSRemoteMethod.DELETE_THEME, this.deleteTheme, { trustCallers: [HW_APP] });
+    methodSet.register(TSRemoteMethod.HOSTED_THEME_DOWNLOADED, this.hostedThemeDownloaded, { trustCallers: [HW_APP] });
 
     // 主题app - 试用业务
-    methodSet.register(TSRemoteMethod.ACTIVATE_TRIAL_THEME, this.activateTrialTheme, { trustCallers: [openharmony_APP] });
-    methodSet.register(TSRemoteMethod.PROMOTE_TRIAL_THEME, this.promoteTrialTheme, { trustCallers: [openharmony_APP] });
-    methodSet.register(TSRemoteMethod.ROLLBACK_THEME, this.rollbackTheme, { trustCallers: [openharmony_APP] });
-    methodSet.register(TSRemoteMethod.GET_TRIAL_THEME, this.getTrialTheme, { trustCallers: [openharmony_APP] });
+    methodSet.register(TSRemoteMethod.ACTIVATE_TRIAL_THEME, this.activateTrialTheme, { trustCallers: [HW_APP] });
+    methodSet.register(TSRemoteMethod.PROMOTE_TRIAL_THEME, this.promoteTrialTheme, { trustCallers: [HW_APP] });
+    methodSet.register(TSRemoteMethod.ROLLBACK_THEME, this.rollbackTheme, { trustCallers: [HW_APP] });
+    methodSet.register(TSRemoteMethod.GET_TRIAL_THEME, this.getTrialTheme, { trustCallers: [HW_APP] });
 
     // 主题app - 会员到期
-    methodSet.register(TSRemoteMethod.GET_ONLINE_THEME_LIST, this.getOnlineThemeList, { trustCallers: [openharmony_APP] });
-    methodSet.register(TSRemoteMethod.UPDATE_ONLINE_THEME, this.updateOnlineTheme, { trustCallers: [openharmony_APP] });
+    methodSet.register(TSRemoteMethod.GET_ONLINE_THEME_LIST, this.getOnlineThemeList, { trustCallers: [HW_APP] });
+    methodSet.register(TSRemoteMethod.UPDATE_ONLINE_THEME, this.updateOnlineTheme, { trustCallers: [HW_APP] });
 
     // 主题app - 限时免费主题
     methodSet.register(TSRemoteMethod.CORRECT_LIMITED_FREE_THEME, this.correctLimitedFreeTheme,
-      { trustCallers: [openharmony_APP] });
+      { trustCallers: [HW_APP] });
 
     // 产品lem 远端接口注册
     TServiceApi.lem().registerRemoteMethod(methodSet);

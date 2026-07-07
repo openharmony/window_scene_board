@@ -156,8 +156,9 @@ export class FloatingBallRectVm extends FloatingBallBaseVm implements IFloatingB
 
   public updateInputMethodHeight(inputRealHeight: number): void {
     const isLandscape = DeviceHelper.isLandscape();
-    // 仅在竖屏更新，小外屏返回是横屏，但是需要避让
-    const height = 0;
+    // 输入法高度使用真实高度（px），由上层统一按是否显示/悬浮键盘等条件过滤
+    // 这里不做横竖屏屏蔽，pad/镜像等场景横屏同样需要避让
+    const height = inputRealHeight;
     log.showInfo(TAG, `updateInputMethodHeight ${isLandscape} realHeight:${inputRealHeight} h:${height}`);
     this.inputHeight = ArkUIAdapter.px2vp(height);
   }
@@ -467,8 +468,8 @@ export class FloatingBallRectVm extends FloatingBallBaseVm implements IFloatingB
    * 横屏下避让挖孔区域
    */
   private avoidCutoutArea(): void {
-    // 竖屏并且排除超大屏G态
-    if (!DeviceHelper.isLandscape() && !DeviceHelper.isUltraScreenGPortrait()) {
+    // 竖屏并且排除三折叠G态
+    if (!DeviceHelper.isLandscape() && !DeviceHelper.isThreeFoldGPortrait()) {
       log.showInfo(TAG, 'device is not landscape or is not G');
       return;
     }

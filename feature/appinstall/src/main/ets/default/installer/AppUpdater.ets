@@ -68,7 +68,7 @@ export class AppUpdater extends BaseAppInstaller {
    * @param bundleName
    */
   protected code512(data: AppGalleryData, event: CommonEvent): void {
-    // 标记出湖应用安装完成，触发dh数据往HM应用恢复
+    // 标记应用安装完成，触发dh数据往HM应用恢复
     DisposedEventManager.getInstance().handleAppInstalled(event);
     AppInstallingDataManager.getInstance().removeInstallingData(data.bundleName);
   }

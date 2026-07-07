@@ -155,7 +155,7 @@ export default function Test() {
     it('should_return_immediately_when_not_super_fold_machine', 0, () => {
       let mocker: MockKit = new MockKit();
 
-      when(mocker.mockFunc(DeviceHelper, DeviceHelper.isBigScreenMachine))(ArgumentMatchers.any).afterReturn(false);
+      when(mocker.mockFunc(DeviceHelper, DeviceHelper.isSuperFoldMachine))(ArgumentMatchers.any).afterReturn(false);
 
       let preProcessFromFoldDevice: () => void = () => {
         PCSCBSysDialog.preProcessFromFoldDevice();
@@ -163,13 +163,13 @@ export default function Test() {
 
       expect(preProcessFromFoldDevice).assertNothing();
 
-      mocker.ignoreMock(DeviceHelper, DeviceHelper.isBigScreenMachine);
+      mocker.ignoreMock(DeviceHelper, DeviceHelper.isSuperFoldMachine);
     });
 
     it('should_execute_all_steps_when_super_fold_machine', 0, () => {
       let mocker: MockKit = new MockKit();
 
-      when(mocker.mockFunc(DeviceHelper, DeviceHelper.isBigScreenMachine))(ArgumentMatchers.any).afterReturn(true);
+      when(mocker.mockFunc(DeviceHelper, DeviceHelper.isSuperFoldMachine))(ArgumentMatchers.any).afterReturn(true);
 
       let mockOnFoldStatusChangeListener: OnStateChangeListener = {
         onStateChanged: (state: IState) => {
@@ -187,7 +187,7 @@ export default function Test() {
 
       PCSCBSysDialog.preProcessFromFoldDevice();
 
-      mocker.ignoreMock(DeviceHelper, DeviceHelper.isBigScreenMachine);
+      mocker.ignoreMock(DeviceHelper, DeviceHelper.isSuperFoldMachine);
       mocker.ignoreMock(baseStateMgr, baseStateMgr.registerStateChangeListener);
       mocker.ignoreMock(LogHelper, LogHelper.showInfo);
       mocker.ignoreMock(LogHelper, LogHelper.showError);
@@ -196,7 +196,7 @@ export default function Test() {
     it('should_handle_error_when_registering_state_change_listener_fails', 0, () => {
       let mocker: MockKit = new MockKit();
 
-      when(mocker.mockFunc(DeviceHelper, DeviceHelper.isBigScreenMachine))(ArgumentMatchers.any).afterReturn(true);
+      when(mocker.mockFunc(DeviceHelper, DeviceHelper.isSuperFoldMachine))(ArgumentMatchers.any).afterReturn(true);
 
       let mockOnFoldStatusChangeListener: OnStateChangeListener = {
         onStateChanged: (state: IState) => {
@@ -211,7 +211,7 @@ export default function Test() {
 
       PCSCBSysDialog.preProcessFromFoldDevice();
 
-      mocker.ignoreMock(DeviceHelper, DeviceHelper.isBigScreenMachine);
+      mocker.ignoreMock(DeviceHelper, DeviceHelper.isSuperFoldMachine);
       mocker.ignoreMock(baseStateMgr, baseStateMgr.registerStateChangeListener);
       mocker.ignoreMock(LogHelper, LogHelper.showError);
     });
@@ -322,10 +322,10 @@ export default function Test() {
     });
 
 
-    it('should_return_rotateHeight_when_isBigScreenMachine_is_false_and_isOrientationLandscape_is_false', 0, () => {
+    it('should_return_rotateHeight_when_isSuperFoldMachine_is_false_and_isOrientationLandscape_is_false', 0, () => {
       let mocker: MockKit = new MockKit();
       let deviceHelper: DeviceHelper = DeviceHelper.INSTANCE;
-      let mockfunc: Function = mocker.mockFunc(deviceHelper, deviceHelper.isBigScreenMachine);
+      let mockfunc: Function = mocker.mockFunc(deviceHelper, deviceHelper.isSuperFoldMachine);
       when(mockfunc)(ArgumentMatchers.any).afterReturn(false);
       let mockfunc2: Function = mocker.mockFunc(deviceHelper, deviceHelper.isOrientationLandscape);
       when(mockfunc2)(ArgumentMatchers.any).afterReturn(false);
@@ -338,14 +338,14 @@ export default function Test() {
       const result = testObj.getRealHeight();
       expect(result).assertEqual('100%');
 
-      mocker.ignoreMock(deviceHelper, deviceHelper.isBigScreenMachine);
+      mocker.ignoreMock(deviceHelper, deviceHelper.isSuperFoldMachine);
       mocker.ignoreMock(deviceHelper, deviceHelper.isOrientationLandscape);
     });
 
-    it('should_return_rotateHeight_when_isBigScreenMachine_is_true_and_isOrientationLandscape_is_false', 0, () => {
+    it('should_return_rotateHeight_when_isSuperFoldMachine_is_true_and_isOrientationLandscape_is_false', 0, () => {
       let mocker: MockKit = new MockKit();
       let deviceHelper: DeviceHelper = DeviceHelper.INSTANCE;
-      let mockfunc: Function = mocker.mockFunc(deviceHelper, deviceHelper.isBigScreenMachine);
+      let mockfunc: Function = mocker.mockFunc(deviceHelper, deviceHelper.isSuperFoldMachine);
       when(mockfunc)(ArgumentMatchers.any).afterReturn(true);
       let mockfunc2: Function = mocker.mockFunc(deviceHelper, deviceHelper.isOrientationLandscape);
       when(mockfunc2)(ArgumentMatchers.any).afterReturn(false);
@@ -358,14 +358,14 @@ export default function Test() {
       const result = testObj.getRealHeight();
       expect(result).assertEqual('50%');
 
-      mocker.ignoreMock(deviceHelper, deviceHelper.isBigScreenMachine);
+      mocker.ignoreMock(deviceHelper, deviceHelper.isSuperFoldMachine);
       mocker.ignoreMock(deviceHelper, deviceHelper.isOrientationLandscape);
     });
 
-    it('should_return_50_when_isBigScreenMachine_is_false_and_isOrientationLandscape_is_true', 0, () => {
+    it('should_return_50_when_isSuperFoldMachine_is_false_and_isOrientationLandscape_is_true', 0, () => {
       let mocker: MockKit = new MockKit();
       let deviceHelper: DeviceHelper = DeviceHelper.INSTANCE;
-      let mockfunc: Function = mocker.mockFunc(deviceHelper, deviceHelper.isBigScreenMachine);
+      let mockfunc: Function = mocker.mockFunc(deviceHelper, deviceHelper.isSuperFoldMachine);
       when(mockfunc)(ArgumentMatchers.any).afterReturn(false);
       let mockfunc2: Function = mocker.mockFunc(deviceHelper, deviceHelper.isOrientationLandscape);
       when(mockfunc2)(ArgumentMatchers.any).afterReturn(true);
@@ -378,14 +378,14 @@ export default function Test() {
       const result = testObj.getRealHeight();
       expect(result).assertEqual('50%');
 
-      mocker.ignoreMock(deviceHelper, deviceHelper.isBigScreenMachine);
+      mocker.ignoreMock(deviceHelper, deviceHelper.isSuperFoldMachine);
       mocker.ignoreMock(deviceHelper, deviceHelper.isOrientationLandscape);
     });
 
-    it('should_return_50_when_isBigScreenMachine_is_true_and_isOrientationLandscape_is_true', 0, () => {
+    it('should_return_50_when_isSuperFoldMachine_is_true_and_isOrientationLandscape_is_true', 0, () => {
       let mocker: MockKit = new MockKit();
       let deviceHelper: DeviceHelper = DeviceHelper.INSTANCE;
-      let mockfunc: Function = mocker.mockFunc(deviceHelper, deviceHelper.isBigScreenMachine);
+      let mockfunc: Function = mocker.mockFunc(deviceHelper, deviceHelper.isSuperFoldMachine);
       when(mockfunc)(ArgumentMatchers.any).afterReturn(true);
       let mockfunc2: Function = mocker.mockFunc(deviceHelper, deviceHelper.isOrientationLandscape);
       when(mockfunc2)(ArgumentMatchers.any).afterReturn(true);
@@ -398,14 +398,14 @@ export default function Test() {
       const result = testObj.getRealHeight();
       expect(result).assertEqual('50%');
 
-      mocker.ignoreMock(deviceHelper, deviceHelper.isBigScreenMachine);
+      mocker.ignoreMock(deviceHelper, deviceHelper.isSuperFoldMachine);
       mocker.ignoreMock(deviceHelper, deviceHelper.isOrientationLandscape);
     });
 
-    it('should_return_50_when_isBigScreenMachine_is_false_and_isKeyboardOn_is_true', 0, () => {
+    it('should_return_50_when_isSuperFoldMachine_is_false_and_isKeyboardOn_is_true', 0, () => {
       let mocker: MockKit = new MockKit();
       let deviceHelper: DeviceHelper = DeviceHelper.INSTANCE;
-      let mockfunc: Function = mocker.mockFunc(deviceHelper, deviceHelper.isBigScreenMachine);
+      let mockfunc: Function = mocker.mockFunc(deviceHelper, deviceHelper.isSuperFoldMachine);
       when(mockfunc)(ArgumentMatchers.any).afterReturn(false);
       let mockfunc2: Function = mocker.mockFunc(deviceHelper, deviceHelper.isOrientationLandscape);
       when(mockfunc2)(ArgumentMatchers.any).afterReturn(false);
@@ -418,14 +418,14 @@ export default function Test() {
       const result = testObj.getRealHeight();
       expect(result).assertEqual('50%');
 
-      mocker.ignoreMock(deviceHelper, deviceHelper.isBigScreenMachine);
+      mocker.ignoreMock(deviceHelper, deviceHelper.isSuperFoldMachine);
       mocker.ignoreMock(deviceHelper, deviceHelper.isOrientationLandscape);
     });
 
-    it('should_return_100_when_isBigScreenMachine_is_true_and_isKeyboardOn_is_true', 0, () => {
+    it('should_return_100_when_isSuperFoldMachine_is_true_and_isKeyboardOn_is_true', 0, () => {
       let mocker: MockKit = new MockKit();
       let deviceHelper: DeviceHelper = DeviceHelper.INSTANCE;
-      let mockfunc: Function = mocker.mockFunc(deviceHelper, deviceHelper.isBigScreenMachine);
+      let mockfunc: Function = mocker.mockFunc(deviceHelper, deviceHelper.isSuperFoldMachine);
       when(mockfunc)(ArgumentMatchers.any).afterReturn(true);
       let mockfunc2: Function = mocker.mockFunc(deviceHelper, deviceHelper.isOrientationLandscape);
       when(mockfunc2)(ArgumentMatchers.any).afterReturn(false);
@@ -438,14 +438,14 @@ export default function Test() {
       const result = testObj.getRealHeight();
       expect(result).assertEqual('100%');
 
-      mocker.ignoreMock(deviceHelper, deviceHelper.isBigScreenMachine);
+      mocker.ignoreMock(deviceHelper, deviceHelper.isSuperFoldMachine);
       mocker.ignoreMock(deviceHelper, deviceHelper.isOrientationLandscape);
     });
 
-    it('should_return_100_when_isBigScreenMachine_is_false_and_isFold_is_true', 0, () => {
+    it('should_return_100_when_isSuperFoldMachine_is_false_and_isFold_is_true', 0, () => {
       let mocker: MockKit = new MockKit();
       let deviceHelper: DeviceHelper = DeviceHelper.INSTANCE;
-      let mockfunc: Function = mocker.mockFunc(deviceHelper, deviceHelper.isBigScreenMachine);
+      let mockfunc: Function = mocker.mockFunc(deviceHelper, deviceHelper.isSuperFoldMachine);
       when(mockfunc)(ArgumentMatchers.any).afterReturn(false);
       let mockfunc2: Function = mocker.mockFunc(deviceHelper, deviceHelper.isOrientationLandscape);
       when(mockfunc2)(ArgumentMatchers.any).afterReturn(false);
@@ -458,7 +458,7 @@ export default function Test() {
       const result = testObj.getRealHeight();
       expect(result).assertEqual('100%');
 
-      mocker.ignoreMock(deviceHelper, deviceHelper.isBigScreenMachine);
+      mocker.ignoreMock(deviceHelper, deviceHelper.isSuperFoldMachine);
       mocker.ignoreMock(deviceHelper, deviceHelper.isOrientationLandscape);
     });
 

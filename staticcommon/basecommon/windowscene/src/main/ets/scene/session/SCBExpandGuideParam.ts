@@ -33,8 +33,8 @@ export class SCBExpandGuideParam {
   public static getPcInPhoneList(): string[] {
     log.showInfo(TAG,`initPcInPhoneList begin`);
     let pcInPhoneList: string[] = [];
-    if (!DeviceHelper.isUltraScreenProduct()) {
-      log.showError(TAG,`not getPcInPhoneList device not ultraScreenProduct`);
+    if (!DeviceHelper.isThreeFoldProduct()) {
+      log.showError(TAG,`not getPcInPhoneList device not threeFoldProduct`);
       return pcInPhoneList;
     }
     try {

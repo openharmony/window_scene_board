@@ -1,5 +1,5 @@
 /*
- * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -20,6 +20,7 @@ import {
   UIContextHelper,
   LogDomain,
   LogHelper,
+  OutdoorConfig,
   SingleBase,
   SingleContext,
   singleManager,
@@ -33,7 +34,8 @@ import {
   ScreenState,
   ScreenOrientation,
   ScreenStateModel,
-  ScreenStateMonitor
+  ScreenStateMonitor,
+  LightOutdoorConfig
 } from '@ohos/frameworkwrapper';
 import GridLayoutItemInfo from '../bean/GridLayoutItemInfo';
 import { CommonConstants, DesktopLayoutState, DeviceState } from '../constants/CommonConstants';
@@ -79,6 +81,7 @@ const EXPANDING_FOLD_APP_ITEM_PADDING = 10;
 const EXPANDING_FOLD_DESKTOP_NAME_SIZE = 0;
 const MAC_SYSUI_HEIGHT = 40;
 const WIN_SYSUI_HEIGHT = 0;
+const OUTDOORMODE = 'isInOutdoorMode';
 
 /**
  * layout viewmodel
@@ -126,7 +129,13 @@ export class LayoutViewModel extends SingleBase {
   initDesktopLayoutModel(): void {
     let launcherModel: string = settings.getValueSync(GlobalContext.getContext(), CommonConstants.SIMPLE_MODE_KEY, '0');
     this.mDesktopModel = (launcherModel === String(DesktopLayoutState.SIMPLE_LAUNCHER_MODEL)) ?
-    DesktopLayoutState.SIMPLE_LAUNCHER_MODEL : DesktopLayoutState.HOME_LAUNCHER_MODE;
+      DesktopLayoutState.SIMPLE_LAUNCHER_MODEL : DesktopLayoutState.HOME_LAUNCHER_MODE;
+    if (OutdoorConfig.getInstance().isInOutdoorMode()) {
+      this.mDesktopModel = DesktopLayoutState.OUTDOOR_MODE;
+      desktopItemDraggableManager.setEnableDrag(false, OUTDOORMODE);
+    } else if (LightOutdoorConfig.getInstance().isOnLightOutdoorMode()) {
+      this.mDesktopModel = DesktopLayoutState.LIGHT_OUTDOOR_MODE;
+    }
     launcherStatusUtil.setSimpleModeStatus(this.isSimpleLauncherMode());
   }
 
@@ -294,7 +303,8 @@ export class LayoutViewModel extends SingleBase {
    * @param openFolderConfig layoutInfo
    * @param isInPreviewMode boolean
    */
-  calculateOpenFolder(openFolderConfig: GridLayoutItemInfo | FolderLayoutStruct, isInPreviewMode?: boolean): CalculateOpenFolderRst {
+  calculateOpenFolder(openFolderConfig: GridLayoutItemInfo | FolderLayoutStruct,
+    isInPreviewMode?: boolean): CalculateOpenFolderRst {
     return this.mLayoutRulesController?.calculateOpenFolder(openFolderConfig,
       isInPreviewMode) ?? new CalculateOpenFolderRst();
   }
@@ -322,7 +332,8 @@ export class LayoutViewModel extends SingleBase {
    * @param width 屏幕宽度
    * @param height 屏幕高度
    */
-  calculateAppCenter(screenId: number = 0, isRefresh: boolean = false, width?: number, height?: number): CalculateAppCenterRst {
+  calculateAppCenter(screenId: number = 0, isRefresh: boolean = false, width?: number,
+    height?: number): CalculateAppCenterRst {
     return this.mLayoutRulesController?.calculateAppCenter(screenId, isRefresh, width,
       height) ?? new CalculateAppCenterRst();
   }
@@ -335,7 +346,8 @@ export class LayoutViewModel extends SingleBase {
     return this.mLayoutRulesController?.getSpaceOfColumn() ?? 0;
   }
 
-  refreshConfig(screenWidth: number, screenHeight: number, foldStatus: number, isPortrait: boolean, desktopModel: number, screenId?: number): void {
+  refreshConfig(screenWidth: number, screenHeight: number, foldStatus: number, isPortrait: boolean,
+    desktopModel: number, screenId?: number): void {
     this.mDesktopModel = desktopModel;
     launcherStatusUtil.setSimpleModeStatus(this.isSimpleLauncherMode());
     this.mBaseConfig.reInit(screenWidth, screenHeight, foldStatus, isPortrait, desktopModel, screenId);
@@ -548,8 +560,19 @@ export class BaseConfig {
   }
 
   public resetScreenSize(width: number, height: number, foldStatus: number, screenId: number = 0): void {
-    this.mScreenWidth = UIContextHelper.px2vp(screenId, width);
-    this.mScreenHeight = UIContextHelper.px2vp(screenId, height);
+    // 对于手机设备，强制使用竖屏尺寸
+    let adjustedWidth = width;
+    let adjustedHeight = height;
+    if (DeviceHelper.isPhone() && width > height) {
+      // 交换宽度和高度，确保使用竖屏尺寸
+      adjustedWidth = height;
+      adjustedHeight = width;
+      log.showInfo(`resetScreenSize Phone device detected, swapping screen dimensions in BaseConfig: width=${width},
+        height=${height} -> adjustedWidth=${adjustedWidth}, adjustedHeight=${adjustedHeight}`);
+    }
+
+    this.mScreenWidth = UIContextHelper.px2vp(screenId, adjustedWidth);
+    this.mScreenHeight = UIContextHelper.px2vp(screenId, adjustedHeight);
     this.mFoldStatus = foldStatus;
     this.setFoldScreenWidth(this.mScreenWidth);
     log.showInfo(`initScreen screenWidth: ${this.mScreenWidth}, screenHeight: ${this.mScreenHeight}, foldStatus: ${foldStatus}`);
@@ -581,7 +604,7 @@ export class BaseConfig {
     return GlobalContext.getContext();
   }
 
-  private flushsysUITopHeight = (statusBarType: number) : void => {
+  private flushsysUITopHeight = (statusBarType: number): void => {
     if (StatusBarUtils.isMacStyle(statusBarType)) {
       this.mSysUITopHeight = MAC_SYSUI_HEIGHT;
     } else {
@@ -592,7 +615,7 @@ export class BaseConfig {
 
 
   /**
-   * 该方法针对超大屏 G态返回有问题， M态返回正常
+   * 该方法针对三折屏 G态返回有问题， M态返回正常
    * @returns
    */
   private getFolderStatus(): number {
@@ -607,7 +630,7 @@ export class BaseConfig {
     }
     return displayMode === display.FoldDisplayMode.FOLD_DISPLAY_MODE_FULL ||
       displayMode === display.FoldDisplayMode.FOLD_DISPLAY_MODE_SUB ?
-    DeviceState.EXPAND_STATE : DeviceState.FOLDED_STATE;
+      DeviceState.EXPAND_STATE : DeviceState.FOLDED_STATE;
   }
 
   public initParams(): void {
@@ -621,16 +644,16 @@ export class BaseConfig {
     if (DeviceHelper.isPhone() && !this.getNavigationBarStatus()) {
       dockMarginBottomHideBar = this.mLauncherLayoutStyleConfig.mDockMarginBottom;
     }
-    // 超大屏，G态，竖屏，调整距离
-    let isUltraScreenGPortrait: boolean = DeviceHelper.isUltraScreenGPortrait();
-    if (isUltraScreenGPortrait) {
+    // 三折叠，G态，竖屏，调整距离
+    let isThreeFoldGPortrait: boolean = DeviceHelper.isThreeFoldGPortrait();
+    if (isThreeFoldGPortrait) {
       dockMarginBottomHideBar += this.mLauncherLayoutStyleConfig.mGPortraitMargin;
     }
     if (!DeviceHelper.isPC()) {
       let desktopIconChangeSize: number | undefined = AppStorage.get<number>('settingIconChange');
       if (desktopIconChangeSize !== undefined) {
         mDockIconSize += desktopIconChangeSize;
-        if (DeviceHelper.isPhone() && !isUltraScreenGPortrait) {
+        if (DeviceHelper.isPhone() && !isThreeFoldGPortrait) {
           let addMargin: number = 0;
           addMargin = (PresetStyleConstants.DEFAULT_DOCK_HEIGHT -
             (mDockIconSize + StyleConstants.DEFAULT_2 * this.mLauncherLayoutStyleConfig.mDockPadding)) / 2;
@@ -649,7 +672,8 @@ export class BaseConfig {
     }
     this.mDockHeight = mDockIconSize + StyleConstants.DEFAULT_2 * this.mLauncherLayoutStyleConfig.mDockPadding +
       dockMarginBottomHideBar;
-    this.mDockBackgroundHeight = mDockIconSize + StyleConstants.DEFAULT_2 * this.mLauncherLayoutStyleConfig.mDockPadding;
+    this.mDockBackgroundHeight =
+      mDockIconSize + StyleConstants.DEFAULT_2 * this.mLauncherLayoutStyleConfig.mDockPadding;
     this.mWorkSpaceHeight = (this.mScreenHeight ?? 0) - (this.mSysUIBottomHeight ?? 0) - this.mDockHeight;
     this.mUninstallDialogWidth = this.mLauncherLayoutStyleConfig.mUninstallDialogWidth;
     // 初始化图标布局信息

@@ -1,10 +1,10 @@
 /*
- * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) 2026 Hunan OpenValley Digital Industry Development Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ *  http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { StyleConstants } from '@ohos/launchercommon';
+import { CommonConstants, StyleConstants, vibratorMgr } from '@ohos/launchercommon';
 import { LogDomain, LogHelper, } from '@ohos/basicutils';
 import {
   GestureNavigationState,
@@ -34,8 +34,10 @@ import {
 import { SCBDefaultZIndex } from './SCBScreen';
 import sceneSessionManager from '@ohos.sceneSessionManager';
 import pointer from '@ohos.multimodalInput.pointer';
-import { SCBSplitLayoutHelper } from './multiwindow/utils/SCBSplitLayoutHelper';
+import { SCBSplitManager } from './multiwindow/SCBSplitManager';
 import { DividerStyleConstants, WindowConstants } from '@ohos/commonconstants';
+import { curves } from '@kit.ArkUI';
+import { DeviceHelper } from '@ohos/frameworkwrapper';
 
 const TAG = 'SCBDivider';
 const log = LogHelper.getLogHelper(LogDomain.SCB, TAG);
@@ -48,7 +50,7 @@ enum TypeOfFixed {
 
 @Component
 export struct SCBDivider {
-  @Link dividerParam: SCBDividerParam;
+  @Link @Watch('onOrientationChanged')dividerParam: SCBDividerParam;
   @ObjectLink primarySceneParam: SceneParam;
   @ObjectLink secondarySceneParam: SceneParam;
   @Link sceneContainerSession: SCBSceneContainerSession;
@@ -56,8 +58,12 @@ export struct SCBDivider {
   onGestureChange: Function = (): void => {
   };
   beginPrimaryWidth: number = 0;
+  beginSecondaryWidth: number = 0;
   beginPrimaryHeight: number = 0;
   beginSecondaryHeight: number = 0;
+  private oldOrientation: boolean = this.dividerParam.isUpDownSplit();
+  private preOffset: number = 0;
+  private isVibration: boolean = false;
   private lastOffsetX: number = 0;
   private dragStartDisplayId: number = -1;
   private isAllowSetOffsize: boolean = true;
@@ -104,6 +110,17 @@ export struct SCBDivider {
     return true;
   }
 
+  private onOrientationChanged() {
+    let isUpDownSplit = this.dividerParam.isUpDownSplit();
+    if (this.oldOrientation === isUpDownSplit) {
+      return;
+    }
+    log.showInfo('onOrientationChanged, isUpDownSplit: ' + isUpDownSplit);
+    this.oldOrientation = isUpDownSplit;
+    this.refreshOverlayScene();
+    this.refreshSplitScene();
+  }
+
   private getSplitWidth(needPrimaryWidth: boolean): number {
     if (this.dividerParam.isSplitPrimaryMode && needPrimaryWidth ||
       !this.dividerParam.isSplitPrimaryMode && !needPrimaryWidth) {
@@ -145,43 +162,41 @@ export struct SCBDivider {
     return Number.parseFloat(this.dividerParam.secondary.height) * 0.01 * px2vp(this.screenProperty.height);
   }
 
-  private updateWidthRatio(isFixed: boolean, type: TypeOfFixed, currentPrimaryWidth: number): void {
+  private updateWidthRatio(isFixed: boolean, type: TypeOfFixed, offsetX: number): void {
     if (isFixed) {
       switch (type) {
         case TypeOfFixed.TYPE_PRIMARY_MIN:
           animateTo({
             curve: Curve.EaseOut,
-            duration: 200,
-            onFinish: () => {
-              this.sceneContainerSession.needRenderSplitBackgroundColor.backgroundColor = Color.Transparent;
-            }
+            duration: 200
           }, () => {
             const priMinWidth = this.getMinWidthPx(true) / this.screenProperty.width;
             const height = Number.parseFloat(this.dividerParam.primary.height) / 100;
             this.dividerParam.setScenePctSize(priMinWidth, height, true);
-            this.dividerParam.setScenePctSize(1 - priMinWidth -
-              vp2px(DividerStyleConstants.DIVIDER_HEIGHT) / this.screenProperty.width, height, false);
+            const dividerRatio = DividerStyleConstants.DIVIDER_HEIGHT / px2vp(this.screenProperty.width);
+            this.dividerParam.setScenePctSize(1 - priMinWidth - dividerRatio, height, false);
             this.dividerParam.positionX = `${this.getSplitWidth(true)}`;
-            SCBSplitLayoutHelper.refreshSplitContainer(this.sceneContainerSession,
-              this.screenProperty, this.getUIContext(), true);
+            if (this.dividerParam.secondary) {
+              this.dividerParam.secondary.posX = `${(Number.parseFloat(this.dividerParam.primary.width) / 100 + dividerRatio) * 100}%`;
+            }
+            SCBSplitManager.getInstance().refreshSplitContainer(this.sceneContainerSession, this.screenProperty, true);
           })
           break;
         case TypeOfFixed.TYPE_PRIMARY_MAX:
           animateTo({
             curve: Curve.EaseOut,
-            duration: 200,
-            onFinish: () => {
-              this.sceneContainerSession.needRenderSplitBackgroundColor.backgroundColor = Color.Transparent;
-            }
+            duration: 200
           }, () => {
             const secMinWidth = this.getMinWidthPx(false) / this.screenProperty.width;
             const height = Number.parseFloat(this.dividerParam.primary.height) / 100;
             this.dividerParam.setScenePctSize(secMinWidth, height, false);
-            this.dividerParam.setScenePctSize(1 - secMinWidth -
-              vp2px(DividerStyleConstants.DIVIDER_HEIGHT) / this.screenProperty.width, height, true);
+            const dividerRatio = DividerStyleConstants.DIVIDER_HEIGHT / px2vp(this.screenProperty.width);
+            this.dividerParam.setScenePctSize(1 - secMinWidth - dividerRatio, height, true);
             this.dividerParam.positionX = `${this.getSplitWidth(true)}`;
-            SCBSplitLayoutHelper.refreshSplitContainer(this.sceneContainerSession,
-              this.screenProperty, this.getUIContext(), true);
+            if (this.dividerParam.secondary) {
+              this.dividerParam.secondary.posX = `${(Number.parseFloat(this.dividerParam.primary.width) / 100 + dividerRatio) * 100}%`;
+            }
+            SCBSplitManager.getInstance().refreshSplitContainer(this.sceneContainerSession, this.screenProperty, true);
           })
           break;
         default:
@@ -193,23 +208,60 @@ export struct SCBDivider {
         log.showError(`Set pointer style failed, error: ${JSON.stringify(error, ['code', 'message'])}`);
       }
     } else {
-      let primaryW = currentPrimaryWidth / px2vp(this.screenProperty.width);
-      let secondaryW = 1 - primaryW - vp2px(DividerStyleConstants.DIVIDER_BUTTON_HOT_WIDTH) / this.screenProperty.width;
-      if (this.dividerParam.primary.maxWidthRatio <= primaryW) {
-        primaryW = this.dividerParam.primary.maxWidthRatio;
-        secondaryW = 1 - this.dividerParam.primary.maxWidthRatio -
-          vp2px(DividerStyleConstants.DIVIDER_HEIGHT) / this.screenProperty.width;
-      } else if (this.dividerParam.secondary.maxWidthRatio <= secondaryW) {
-        secondaryW = this.dividerParam.secondary.maxWidthRatio;
-        primaryW = 1 - this.dividerParam.secondary.maxWidthRatio -
-          vp2px(DividerStyleConstants.DIVIDER_HEIGHT) / this.screenProperty.width;
-      }
       const height = Number.parseFloat(this.dividerParam.primary.height) / 100;
-      this.dividerParam.setScenePctSize(primaryW, height, true);
-      this.dividerParam.setScenePctSize(secondaryW, height, false);
-      this.dividerParam.positionX = `${this.getSplitWidth(true)}`;
-      SCBSplitLayoutHelper.refreshSplitContainer(this.sceneContainerSession,
-        this.screenProperty, this.getUIContext(), true);
+      const offsetXRatio = offsetX / px2vp(this.screenProperty.width);
+      this.dividerParam.setScenePctSize(this.beginPrimaryWidth + offsetXRatio, height, true);
+      this.dividerParam.setScenePctSize(this.beginSecondaryWidth - offsetXRatio, height, false);
+      if (this.sceneContainerSession.isOneStepSplit()) {
+        let moveOffset: number = this.dividerParam.calOneStepDefaultTrans(this.screenProperty);
+        this.dividerParam.positionX = `${moveOffset + this.getSplitWidth(true)}`;
+      } else {
+        this.dividerParam.positionX = `${this.getSplitWidth(true)}`;
+      }
+      if (this.dividerParam.secondary) {
+        const dividerRatio = DividerStyleConstants.DIVIDER_HEIGHT / px2vp(this.screenProperty.width);
+        this.dividerParam.secondary.posX = `${(Number.parseFloat(this.dividerParam.primary.width) / 100 + dividerRatio) * 100}%`;
+      }
+      if (!this.sceneContainerSession.isOneStepSplit()) {
+        const primaryWidth = Math.floor(this.getSplitWidth(true));
+        const secondaryWidth = Math.floor(this.getSplitWidth(false));
+        const minWidth = StyleConstants.DEFAULT_SPLIT_EXIT_MIN_THRESHOLD_HEIGHT;
+        if (this.preOffset > offsetX) {
+          if (primaryWidth <= minWidth && !this.isVibration) {
+            this.isVibration = true;
+            vibratorMgr.startVibration(CommonConstants.VIBRATION_EFFECT_DRAG,
+              CommonConstants.VIBRATION_ATTRIBUTE_LONG_PRESS, TAG);
+          }
+          if (primaryWidth > minWidth) {
+            this.isVibration = false;
+          }
+        }
+        if (this.preOffset < offsetX) {
+          if (secondaryWidth <= minWidth && !this.isVibration) {
+            this.isVibration = true;
+            vibratorMgr.startVibration(CommonConstants.VIBRATION_EFFECT_DRAG,
+              CommonConstants.VIBRATION_ATTRIBUTE_LONG_PRESS, TAG);
+          }
+          if (secondaryWidth > minWidth) {
+            this.isVibration = false;
+          }
+        }
+        this.preOffset = offsetX;
+      } else {
+        if (this.preOffset < offsetX) {
+          const positionX = Number.parseFloat(this.dividerParam.positionX);
+          const minWidth = this.dividerParam.primary.minWidth;
+          if (positionX >= minWidth && !this.isVibration) {
+            this.isVibration = true;
+            vibratorMgr.startVibration(CommonConstants.VIBRATION_EFFECT_DRAG,
+              CommonConstants.VIBRATION_ATTRIBUTE_LONG_PRESS, TAG);
+          }
+          if (positionX < minWidth) {
+            this.isVibration = false;
+          }
+        }
+        this.preOffset = offsetX;
+      }
     }
   }
 
@@ -233,8 +285,7 @@ export struct SCBDivider {
               this.dividerParam.secondary.posY = `${(this.dividerParam.statusBarPct
                 + Number.parseFloat(this.dividerParam.primary.height) / 100 + dividerRatio) * 100}%`;
             }
-            SCBSplitLayoutHelper.refreshSplitContainer(this.sceneContainerSession,
-              this.screenProperty, this.getUIContext(), true);
+            SCBSplitManager.getInstance().refreshSplitContainer(this.sceneContainerSession, this.screenProperty, true);
           })
           break;
         case TypeOfFixed.TYPE_PRIMARY_MAX:
@@ -253,8 +304,7 @@ export struct SCBDivider {
               this.dividerParam.secondary.posY = `${(this.dividerParam.statusBarPct
                 + Number.parseFloat(this.dividerParam.primary.height) / 100 + dividerRatio) * 100}%`;
             }
-            SCBSplitLayoutHelper.refreshSplitContainer(this.sceneContainerSession,
-              this.screenProperty, this.getUIContext(), true);
+            SCBSplitManager.getInstance().refreshSplitContainer(this.sceneContainerSession, this.screenProperty, true);
           })
           break;
         default:
@@ -270,18 +320,64 @@ export struct SCBDivider {
       const offsetYRatio = offsetY / px2vp(this.screenProperty.height);
       this.dividerParam.setScenePctSize(width, this.beginPrimaryHeight + offsetYRatio, true);
       this.dividerParam.setScenePctSize(width, this.beginSecondaryHeight - offsetYRatio, false);
-      this.dividerParam.positionY = `${statusbarHeight + this.getSplitHeight(true)}`;
+      if (this.sceneContainerSession.isOneStepSplit()) {
+        let moveOffset: number = this.dividerParam.calOneStepDefaultTrans(this.screenProperty);
+        this.dividerParam.positionY = `${moveOffset + this.getSplitHeight(true)}`;
+      } else {
+        this.dividerParam.positionY = `${statusbarHeight + this.getSplitHeight(true)}`;
+      }
       if (this.dividerParam.secondary) {
         const dividerRatio = DividerStyleConstants.DIVIDER_HEIGHT / px2vp(this.screenProperty.height);
         this.dividerParam.secondary.posY = `${(this.dividerParam.statusBarPct
           + Number.parseFloat(this.dividerParam.primary.height) / 100 + dividerRatio) * 100}%`;
       }
-      SCBSplitLayoutHelper.refreshSplitContainer(this.sceneContainerSession,
-        this.screenProperty, this.getUIContext(), true);
+      if (!this.sceneContainerSession.isOneStepSplit()) {
+        const primaryHeight = Math.floor(this.getSplitHeight(true));
+        const secondaryHeight = Math.floor(this.getSplitHeight(false));
+        const minHeight = StyleConstants.DEFAULT_SPLIT_EXIT_MIN_THRESHOLD_HEIGHT;
+        if (this.preOffset > offsetY) {
+          if (primaryHeight <= minHeight && !this.isVibration) {
+            this.isVibration = true;
+            vibratorMgr.startVibration(CommonConstants.VIBRATION_EFFECT_DRAG,
+              CommonConstants.VIBRATION_ATTRIBUTE_LONG_PRESS, TAG);
+          }
+          if (primaryHeight > minHeight) {
+            this.isVibration = false;
+          }
+        }
+        if (this.preOffset < offsetY) {
+          if (secondaryHeight <= minHeight && !this.isVibration) {
+            this.isVibration = true;
+            vibratorMgr.startVibration(CommonConstants.VIBRATION_EFFECT_DRAG,
+              CommonConstants.VIBRATION_ATTRIBUTE_LONG_PRESS, TAG);
+          }
+          if (secondaryHeight > minHeight) {
+            this.isVibration = false;
+          }
+        }
+        this.preOffset = offsetY;
+      } else {
+        if (this.preOffset < offsetY) {
+          const positionY = Number.parseFloat(this.dividerParam.positionY);
+          const minHeight = this.dividerParam.primary.minHeight;
+          if (positionY >= minHeight && !this.isVibration) {
+            this.isVibration = true;
+            vibratorMgr.startVibration(CommonConstants.VIBRATION_EFFECT_DRAG,
+              CommonConstants.VIBRATION_ATTRIBUTE_LONG_PRESS, TAG);
+          }
+          if (positionY < minHeight) {
+            this.isVibration = false;
+          }
+        }
+        this.preOffset = offsetY;
+      }
     }
   }
 
   private getStatusBarHeight(): number {
+    if (DeviceHelper.isPad()) {
+      return 0;
+    }
     let statusBarH: number = px2vp(windowMgr.getWindowPosition(WindowConstants.WINDOW_NAME_STATUS_BAR).height);
     if (statusBarH !== 0) {
       statusBarH++;
@@ -326,7 +422,7 @@ export struct SCBDivider {
   }
 
   private refreshSplitScene(): void {
-    if (this.dividerParam.isExpandUpDownSplit()) {
+    if (this.dividerParam.isUpDownSplit()) {
       this.refreshSceneHeight();
     } else {
       this.refreshSceneWidth();
@@ -336,7 +432,6 @@ export struct SCBDivider {
   private refreshSceneWidth(): void {
     if (this.sceneContainerSession && this.sceneContainerSession.primarySession &&
     this.sceneContainerSession.secondarySession) {
-      this.updateWidthRatio(false, TypeOfFixed.TYPE_UNDEFINED, this.getSplitWidth(true));
       const primaryWidth = this.getSplitWidth(true);
       const secondaryWidth = this.getSplitWidth(false);
       const primaryModeSession = this.dividerParam.isSplitPrimaryMode ?
@@ -345,16 +440,14 @@ export struct SCBDivider {
         this.sceneContainerSession.secondarySession : this.sceneContainerSession.primarySession;
       if (primaryWidth <= StyleConstants.DEFAULT_SPLIT_EXIT_MIN_THRESHOLD_WIDTH) {
         this.exitSplit(secondaryModeSession.persistentId);
-      } else if (primaryWidth > StyleConstants.DEFAULT_SPLIT_EXIT_MIN_THRESHOLD_WIDTH &&
-        vp2px(primaryWidth) <= this.getMinWidthPx(true)) {
-        this.updateWidthRatio(true, TypeOfFixed.TYPE_PRIMARY_MIN, this.getSplitWidth(true));
-      } else if (secondaryWidth > StyleConstants.DEFAULT_SPLIT_EXIT_MIN_THRESHOLD_WIDTH &&
-        vp2px(secondaryWidth) <= this.getMinWidthPx(false)) {
-        this.updateWidthRatio(true, TypeOfFixed.TYPE_PRIMARY_MAX, this.getSplitWidth(true));
       } else if (secondaryWidth <= StyleConstants.DEFAULT_SPLIT_EXIT_MIN_THRESHOLD_WIDTH) {
         this.exitSplit(primaryModeSession.persistentId);
-      } else {
-        this.sceneContainerSession.needRenderSplitBackgroundColor.backgroundColor = Color.Transparent;
+      } else if (primaryWidth > StyleConstants.DEFAULT_SPLIT_EXIT_MIN_THRESHOLD_WIDTH &&
+        vp2px(primaryWidth) <= this.getMinWidthPx(true)) {
+        this.updateWidthRatio(true, TypeOfFixed.TYPE_PRIMARY_MIN, 0);
+      } else if (secondaryWidth > StyleConstants.DEFAULT_SPLIT_EXIT_MIN_THRESHOLD_WIDTH &&
+        vp2px(secondaryWidth) <= this.getMinWidthPx(false)) {
+        this.updateWidthRatio(true, TypeOfFixed.TYPE_PRIMARY_MAX, 0);
       }
       this.isAllowSetOffsize = true;
       this.refreshOverlayScene();
@@ -385,7 +478,7 @@ export struct SCBDivider {
   }
 
   private getScaleCenterX(): number {
-    if (this.dividerParam.isExpandUpDownSplit()) {
+    if (this.dividerParam.isUpDownSplit()) {
       return px2vp(this.getDividerWidth()) / 2;
     }
     return this.sceneContainerSession.getSceneContainerWidth() / 2 - this.getPositionX() +
@@ -393,7 +486,7 @@ export struct SCBDivider {
   }
 
   private getScaleCenterY(): number {
-    if (this.dividerParam.isExpandUpDownSplit()) {
+    if (this.dividerParam.isUpDownSplit()) {
       const startBarHeight = windowMgr.getWindowPosition(WindowConstants.WINDOW_NAME_STATUS_BAR).height;
       return this.sceneContainerSession.getSceneContainerHeight() / 2 + px2vp(startBarHeight) - this.getPositionY() +
         (DividerStyleConstants.DIVIDER_BUTTON_HOT_WIDTH - DividerStyleConstants.DIVIDER_HEIGHT) / 2;
@@ -447,22 +540,16 @@ export struct SCBDivider {
   private onActionStart(event: GestureEvent): void {
     this.dividerParam.isDividerDragging = true;
     this.gestureRecord.recordCurGesture(GestureNavigationState.START, event);
-    if (!this.sceneContainerSession.primarySession && this.sceneContainerSession.secondarySession) {
-      const sessionIdTemp: number | undefined = this.sceneContainerSession.secondarySession.session.persistentId;
-      log.showInfo(`exit split, primarySession is null`);
-      this.exitSplit(sessionIdTemp);
-    } else if (this.sceneContainerSession.primarySession && !this.sceneContainerSession.secondarySession) {
-      const sessionIdTemp: number | undefined = this.sceneContainerSession.primarySession.session.persistentId;
-      log.showInfo(`exit split, secondarySession is null`);
-      this.exitSplit(sessionIdTemp);
-    }
 
     if (this.sceneContainerSession.primarySession) {
       SCBSceneSessionManager.getInstance().requestToTop(
         this.sceneContainerSession.primarySession.sceneInfo.screenId,
         this.sceneContainerSession.primarySession.session.persistentId);
     }
-    this.beginPrimaryWidth = this.getSplitWidth(true);
+    this.beginPrimaryWidth = Number.parseFloat(this.dividerParam.isSplitPrimaryMode ?
+      this.dividerParam.primary.width : this.dividerParam.secondary.width) / 100;;
+    this.beginSecondaryWidth = Number.parseFloat(this.dividerParam.isSplitPrimaryMode ?
+      this.dividerParam.secondary.width : this.dividerParam.primary.width) / 100;;
     this.beginPrimaryHeight = Number.parseFloat(this.dividerParam.isSplitPrimaryMode ?
       this.dividerParam.primary.height : this.dividerParam.secondary.height) / 100;
     this.beginSecondaryHeight = Number.parseFloat(this.dividerParam.isSplitPrimaryMode ?
@@ -490,11 +577,11 @@ export struct SCBDivider {
     this.gestureRecord.recordCurGesture(GestureNavigationState.UPDATE, event);
     this.isAllowSetOffsize = false;
     this.updateSplitSizeChangeReason(sceneSessionManager.SessionSizeChangeReason.SPLIT_DRAG);
-    if (this.dividerParam.isExpandUpDownSplit()) {
+    this.dividerParam.enableUseBlurStandIn(true);
+    if (this.dividerParam.isUpDownSplit()) {
       this.updateHeightRatio(false, TypeOfFixed.TYPE_UNDEFINED, (this.getOffset(event).y as number));
     } else {
-      this.updateWidthRatio(false, TypeOfFixed.TYPE_UNDEFINED,
-        this.beginPrimaryWidth + (this.getOffset(event).x as number));
+      this.updateWidthRatio(false, TypeOfFixed.TYPE_UNDEFINED, (this.getOffset(event).x as number));
     }
   }
 
@@ -529,27 +616,67 @@ export struct SCBDivider {
 
   private onActionCancel(): void {
     this.gestureRecord.recordCurGesture(GestureNavigationState.CANCEL);
-    this.isAllowSetOffsize = true;
-    if (this.sceneContainerSession.primarySession && this.sceneContainerSession.secondarySession) {
-      this.refreshOverlayScene();
-    }
-    this.dividerParam.isDividerDragging = false;
+    this.stopDrag();
   }
 
   private onActionEnd(): void {
     this.gestureRecord.recordCurGesture(GestureNavigationState.END);
+    this.stopDrag();
+  }
+
+  private stopDrag() {
     this.isAllowSetOffsize = true;
     if (this.sceneContainerSession.primarySession && this.sceneContainerSession.secondarySession) {
       this.refreshOverlayScene();
     }
     this.dividerParam.isDividerDragging = false;
+    this.dividerParam.enableUseBlurStandIn(false);
+    if (this.dividerParam.isUpDownSplit() ) {
+      this.dividerParam.setFirstScenePct(Number.parseFloat(this.dividerParam.primary.height) * 0.01);
+      this.dividerParam.setSecondScenePct(Number.parseFloat(this.dividerParam.secondary.height) * 0.01);
+    } else {
+      this.dividerParam.setFirstScenePct(Number.parseFloat(this.dividerParam.primary.width) * 0.01);
+      this.dividerParam.setSecondScenePct(Number.parseFloat(this.dividerParam.secondary.width) * 0.01);
+    }
+    SCBSplitManager.getInstance().refreshSplitContainer(this.sceneContainerSession, this.screenProperty, true);
+    this.preOffset = 0;
+    this.isVibration = false;
+    if (this.sceneContainerSession.isOneStepSplit()) {
+      const positionDivider = this.dividerParam.isUpDownSplit() ? Number.parseFloat(this.dividerParam.positionY) : Number.parseFloat(this.dividerParam.positionX);
+      const minHeight = this.dividerParam.isUpDownSplit() ? this.dividerParam.primary.minHeight : this.dividerParam.primary.minWidth;
+      if (positionDivider >= minHeight) {
+        if (!this.sceneContainerSession.primarySession && this.sceneContainerSession.secondarySession) {
+          const sessionIdTemp: number | undefined = this.sceneContainerSession.secondarySession.session.persistentId;
+          log.showInfo(`exit split, primarySession is null`);
+          this.exitSplit(sessionIdTemp);
+        } else if (this.sceneContainerSession.primarySession && !this.sceneContainerSession.secondarySession) {
+          const sessionIdTemp: number | undefined = this.sceneContainerSession.primarySession.session.persistentId;
+          log.showInfo(`exit split, secondarySession is null`);
+          this.exitSplit(sessionIdTemp);
+        }
+      } else {
+        animateToImmediately({
+          curve: curves.springMotion(0.55, 0.85),
+          delay: 400,
+          onFinish: () => {
+            log.showInfo('one step split end');
+            SCBSplitManager.getInstance().refreshSplitContainer(this.sceneContainerSession, this.sceneContainerSession.screenProperty);
+          }
+        }, () => {
+          let oneStepTrans: number = this.dividerParam.calOneStepDefaultTrans(this.sceneContainerSession.screenProperty);
+          log.showInfo(`reenter oneStep:oneStepTrans=${oneStepTrans}`);
+          this.dividerParam.setOneStepDefaultPos(oneStepTrans, this.sceneContainerSession.screenProperty);
+          this.dividerParam.notifyPositionChange();
+        })
+      }
+    }
   }
 
   private onDividerHover(isHover: boolean, event: HoverEvent, persistentId: number): void {
     if (this.sceneContainerSession.primarySession && this.sceneContainerSession.secondarySession) {
       let pointerStyle = pointer.PointerStyle.DEFAULT;
       if (isHover && event.source === SourceType.Mouse) {
-        if (this.dividerParam.isExpandUpDownSplit()) {
+        if (this.dividerParam.isUpDownSplit()) {
           pointerStyle = pointer.PointerStyle.NORTH_SOUTH;
         } else {
           pointerStyle = pointer.PointerStyle.WEST_EAST;
@@ -584,7 +711,7 @@ export struct SCBDivider {
     if (typeof this.sceneContainerSession.dividerParam.dividerWidth === 'number') {
       dividerWidth = vp2px(this.sceneContainerSession.dividerParam.dividerWidth);
     }
-    if (this.dividerParam.isExpandUpDownSplit()) {
+    if (this.dividerParam.isUpDownSplit()) {
       return dividerWidth;
     }
     const posX = vp2px(this.getPositionX());
@@ -596,7 +723,7 @@ export struct SCBDivider {
     if (typeof this.sceneContainerSession.dividerParam.dividerHeight === 'number') {
       dividerHeight = vp2px(this.sceneContainerSession.dividerParam.dividerHeight);
     }
-    if (this.dividerParam.isExpandUpDownSplit()) {
+    if (this.dividerParam.isUpDownSplit()) {
       const primaryHeight = vp2px(this.getSplitHeight(true));
       return Math.round(primaryHeight - Math.round(primaryHeight) + dividerHeight);
     }
@@ -604,7 +731,7 @@ export struct SCBDivider {
   }
 
   private getDividerPosition(): Position {
-    if (this.dividerParam.isExpandUpDownSplit()) {
+    if (this.dividerParam.isUpDownSplit()) {
       return {
         x: Math.round(vp2px(this.getPositionX())) + 'px',
         y: Math.round(vp2px(this.getPositionY())) -
@@ -619,7 +746,7 @@ export struct SCBDivider {
   }
 
   private getResponseRegion(width: number): Rectangle {
-    if (this.dividerParam.isExpandUpDownSplit()) {
+    if (this.dividerParam.isUpDownSplit()) {
       return {
         x: (DividerStyleConstants.DIVIDER_BUTTON_HEIGHT - DividerStyleConstants.DIVIDER_BUTTON_HOT_HEIGHT) / 2,
         y: (DividerStyleConstants.DIVIDER_BUTTON_WIDTH - width) / 2,
@@ -654,9 +781,9 @@ export struct SCBDivider {
                 .padding(0)
                 .id(`${TAG}_Button_Divider`)
                 .backgroundColor('#FFFFFF')
-                .width(this.dividerParam.isExpandUpDownSplit() ? DividerStyleConstants.DIVIDER_BUTTON_HEIGHT :
+                .width(this.dividerParam.isUpDownSplit() ? DividerStyleConstants.DIVIDER_BUTTON_HEIGHT :
                   DividerStyleConstants.DIVIDER_BUTTON_WIDTH + 'vp')
-                .height(this.dividerParam.isExpandUpDownSplit() ? DividerStyleConstants.DIVIDER_BUTTON_WIDTH :
+                .height(this.dividerParam.isUpDownSplit() ? DividerStyleConstants.DIVIDER_BUTTON_WIDTH :
                   DividerStyleConstants.DIVIDER_BUTTON_HEIGHT + 'vp')
                 .responseRegion(this.getResponseRegion(DividerStyleConstants.DIVIDER_BUTTON_HOT_WIDTH))
                 .mouseResponseRegion(this.getResponseRegion(DividerStyleConstants.DIVIDER_HEIGHT))
@@ -673,26 +800,28 @@ export struct SCBDivider {
                   this.onDividerHover(isHover, event, this.dividerButtonSession?.session?.persistentId);
                 })
             } else  {
-              Row() {
+              Flex({direction: this.dividerParam.isUpDownSplit() ? FlexDirection.Row : FlexDirection.Column, justifyContent: FlexAlign.Center}) {
                 ForEach([0, 1, 2], (index: number) => {
                   Row()
                     .margin({
-                      left: DividerStyleConstants.DIVIDER_CIRCLE_MARGIN,
-                      right: DividerStyleConstants.DIVIDER_CIRCLE_MARGIN
+                      left: this.dividerParam.isUpDownSplit() ? DividerStyleConstants.DIVIDER_CIRCLE_MARGIN : 0,
+                      right: this.dividerParam.isUpDownSplit() ? DividerStyleConstants.DIVIDER_CIRCLE_MARGIN : 0,
+                      top: this.dividerParam.isUpDownSplit() ? 0 : DividerStyleConstants.DIVIDER_CIRCLE_MARGIN,
+                      bottom: this.dividerParam.isUpDownSplit() ? 0 : DividerStyleConstants.DIVIDER_CIRCLE_MARGIN,
                     })
                     .id(`${TAG}_Button_Divider_${index}`)
                     .backgroundColor('#FFFFFF')
-                    .width(this.dividerParam.isExpandUpDownSplit() ? DividerStyleConstants.DIVIDER_CIRCLE_WIDTH + 'vp':
+                    .width(this.dividerParam.isUpDownSplit() ? DividerStyleConstants.DIVIDER_CIRCLE_WIDTH + 'vp':
                       DividerStyleConstants.DIVIDER_CIRCLE_HEIGHT + 'vp')
-                    .height(this.dividerParam.isExpandUpDownSplit() ? DividerStyleConstants.DIVIDER_CIRCLE_HEIGHT + 'vp':
+                    .height(this.dividerParam.isUpDownSplit() ? DividerStyleConstants.DIVIDER_CIRCLE_HEIGHT + 'vp':
                       DividerStyleConstants.DIVIDER_CIRCLE_WIDTH + 'vp')
-                    .borderRadius(this.dividerParam.isExpandUpDownSplit() ? DividerStyleConstants.DIVIDER_CIRCLE_WIDTH / 2 :
+                    .borderRadius(this.dividerParam.isUpDownSplit() ? DividerStyleConstants.DIVIDER_CIRCLE_WIDTH / 2 :
                       DividerStyleConstants.DIVIDER_CIRCLE_HEIGHT / 2)
                 })
-              }.justifyContent(FlexAlign.Center)
-              .width(this.dividerParam.isExpandUpDownSplit() ? DividerStyleConstants.DIVIDER_BUTTON_HEIGHT + 'vp' :
+              }
+              .width(this.dividerParam.isUpDownSplit() ? DividerStyleConstants.DIVIDER_BUTTON_HEIGHT + 'vp' :
                 DividerStyleConstants.DIVIDER_BUTTON_WIDTH + 'vp')
-              .height(this.dividerParam.isExpandUpDownSplit() ? DividerStyleConstants.DIVIDER_BUTTON_WIDTH + 'vp' :
+              .height(this.dividerParam.isUpDownSplit() ? DividerStyleConstants.DIVIDER_BUTTON_WIDTH + 'vp' :
                 DividerStyleConstants.DIVIDER_BUTTON_HEIGHT + 'vp')
               .responseRegion(this.getResponseRegion(DividerStyleConstants.DIVIDER_BUTTON_HOT_WIDTH))
               .mouseResponseRegion(this.getResponseRegion(DividerStyleConstants.DIVIDER_HEIGHT))
@@ -712,9 +841,9 @@ export struct SCBDivider {
           }.width('100%')
           .height('100%')
         }
-        .width(this.dividerParam.isExpandUpDownSplit() ? DividerStyleConstants.DIVIDER_BUTTON_HOT_HEIGHT :
+        .width(this.dividerParam.isUpDownSplit() ? DividerStyleConstants.DIVIDER_BUTTON_HOT_HEIGHT :
           DividerStyleConstants.DIVIDER_BUTTON_HOT_WIDTH + 'vp')
-        .height(this.dividerParam.isExpandUpDownSplit() ? DividerStyleConstants.DIVIDER_BUTTON_HOT_WIDTH :
+        .height(this.dividerParam.isUpDownSplit() ? DividerStyleConstants.DIVIDER_BUTTON_HOT_WIDTH :
           DividerStyleConstants.DIVIDER_BUTTON_HOT_HEIGHT + 'vp')
       }
       .position(this.getDividerPosition())
@@ -730,8 +859,8 @@ export struct SCBDivider {
       })
       .transition(this.dividerAnimate)
       .opacity(this.dividerParam.dividerOpacity)
-      .width(this.dividerParam.isExpandUpDownSplit() ? '100%' : DividerStyleConstants.DIVIDER_BUTTON_HOT_WIDTH + 'vp')
-      .height(this.dividerParam.isExpandUpDownSplit() ? DividerStyleConstants.DIVIDER_BUTTON_HOT_WIDTH + 'vp' : '100%')
+      .width(this.dividerParam.isUpDownSplit() ? '100%' : DividerStyleConstants.DIVIDER_BUTTON_HOT_WIDTH + 'vp')
+      .height(this.dividerParam.isUpDownSplit() ? DividerStyleConstants.DIVIDER_BUTTON_HOT_WIDTH + 'vp' : '100%')
     }
   }
 }

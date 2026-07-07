@@ -306,7 +306,7 @@ export default function MultiSceneThemeManagerTest() {
       }
       qualifier = ThemeScene.UNFOLDED2;
       let mocker: MockKit = new MockKit();
-      let mockFunction: Function = mocker.mockFunc(DeviceHelper, DeviceHelper.isUltraScreenProduct);
+      let mockFunction: Function = mocker.mockFunc(DeviceHelper, DeviceHelper.isThreeFoldProduct);
       when(mockFunction)(ArgumentMatchers.any).afterReturn(true);
       let result1 = mockMultiSceneThemeManager.getDefaultThemeParams(qualifier);
       expect(result1 !== undefined).not().assertNull();

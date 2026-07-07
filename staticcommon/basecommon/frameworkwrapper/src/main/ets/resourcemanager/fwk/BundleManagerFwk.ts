@@ -112,6 +112,59 @@ export class BundleManagerFwk implements IconCacheFwkInterface {
   }
 
   /**
+   * 获取应用图标接口
+   *
+   * @param bundleName 包名
+   * @param moduleName 模块名
+   * @param abilityName 应用abilityName
+   * @returns IconInfo
+   */
+  public async getAppIconResourceInner(param: IconExtendParam, bundleName: string, moduleName: string,
+    abilityName: string): Promise<IconInfo> {
+    let iconInfo: IconInfo = new IconInfo();
+    try {
+      let iconId = await this.getIconId(bundleName, moduleName, abilityName);
+      let resMgr: resourceManager.ResourceManager = (GlobalContext.getInstance().getObject('desktopContext') as
+      ctx.ServiceExtensionContext).createModuleResourceManager(bundleName, moduleName);
+      let imageDescriptor: DrawableDescriptor = (resMgr.getDrawableDescriptor(Number(iconId), undefined, 1));
+      // MemoryUtils.removeNapiWrap(resMgr, false);
+      if (CheckEmptyUtils.isEmpty(imageDescriptor)) {
+        log.showWarn(TAG, `bundleName: ${bundleName}, imageDescriptor is empty: ${imageDescriptor == null}`);
+        return iconInfo;
+      }
+      let imagePixelMap = await GraphicUtils.getCombinePixelMap(param.bundleName, this.iconSizeOfGrid,
+        imageDescriptor, this.getMaskImage(), param);
+      PixelMapUtil.addName(imagePixelMap, 'BundleMgr_getCombine');
+      if (imageDescriptor instanceof LayeredDrawableDescriptor) {
+        log.showInfo(TAG, `getAppIconResourceInner LayeredDrawableDescriptor`);
+        let layerImageDescriptor: LayeredDrawableDescriptor = imageDescriptor as LayeredDrawableDescriptor;
+        let backGround = layerImageDescriptor.getBackground().getPixelMap();
+        PixelMapUtil.addName(backGround, 'BundleMgr_backGround');
+        let foreGround = layerImageDescriptor.getForeground().getPixelMap();
+        PixelMapUtil.addName(foreGround, 'BundleMgr_foreGround');
+        if (backGround !== null && foreGround !== null) {
+          let fore = await GraphicUtils.changePixelToBase64(foreGround);
+          let back = await GraphicUtils.changePixelToBase64(backGround);
+          iconInfo.adaptivePic = [back, fore];
+          iconInfo.iconType = IconPicType.ADAPTIVE;
+          await backGround.release();
+          await foreGround.release();
+        }
+      } else {
+        log.showInfo(TAG, `getAppIconResourceInner normal`);
+        iconInfo.iconType = IconPicType.NORMAL;
+      }
+      iconInfo.combinePicSrc = imagePixelMap;
+      iconInfo.combinePic = await GraphicUtils.changePixelToBase64(imagePixelMap);
+      PixelMapUtil.addName(imagePixelMap, 'BundleMgr_getAppIconResourceInner');
+      await IconResourceUtils.replaceTransparentPixelMap(iconInfo, param, 'getAppIconResourceInner');
+    } catch (error) {
+      log.showError(TAG, `getAppIconResourceInner error ${error}`);
+    }
+    return iconInfo;
+  }
+
+  /**
    * 通过包管理获取到iconId
    *
    * @param bundleName 包名
@@ -243,6 +296,7 @@ async function getIconResourceBatch(taskInfos: TaskInfo[], iconSizeOfGrid: numbe
       iconInfo.iconType = IconPicType.NORMAL;
     }
     PixelMapUtil.addName(iconInfo.combinePicSrc, 'BundleMgr_getIconResourceBatch');
+    await IconResourceUtils.replaceTransparentPixelMap(iconInfo, iconInfo.param, 'getIconResourceBatch');
     iconInfo.combinePicSrc?.setTransferDetached(true);
     iconInfos.push(iconInfo);
   }
@@ -294,6 +348,7 @@ async function getIconResource(bundleName: string, moduleName: string, abilityNa
     iconInfo.iconType = IconPicType.NORMAL;
   }
   PixelMapUtil.addName(iconInfo.combinePicSrc, 'BundleMgr_getIconResource');
+  await IconResourceUtils.replaceTransparentPixelMap(iconInfo, param, 'getIconResource');
   iconInfo.combinePicSrc?.setTransferDetached(true);
   return iconInfo;
 }

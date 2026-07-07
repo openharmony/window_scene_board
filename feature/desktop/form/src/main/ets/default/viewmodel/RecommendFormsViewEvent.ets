@@ -147,6 +147,7 @@ export class RecommendFormsViewEvent {
 
     FormCenterViewManager.getInstance().closeFormCenterView();
     AppStorage.setOrCreate('isDrag', true);
+    AppStorage.setOrCreate('isDragFomCenter', true);
     AppStorage.setOrCreate('dragItemType', CommonConstants.DRAG_FROM_FORM_SERVICE);
     AppStorage.setOrCreate('dragItemInfo', formItem);
     FormCenterViewModel.getInstance().dealUndoDragFormVisible();

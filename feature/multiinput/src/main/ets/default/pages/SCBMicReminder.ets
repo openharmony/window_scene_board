@@ -144,14 +144,14 @@ export struct SCBMicReminder {
     this.updateMicReminderRect();
   }
 
-  onBigScreenStatusChange = async (bigScreenStateProperty: SCBFoldStatePropertyChangeEvent) => {
-    log.showInfo(`onBigScreenStatusChange property, bSideHeight: ${bigScreenStateProperty.bSideHeight}, ` +
-      `curState: ${bigScreenStateProperty.curState}, tarState: ${bigScreenStateProperty.tarState}`);
+  onSuperFoldStatusChange = async (superFoldStateProperty: SCBFoldStatePropertyChangeEvent) => {
+    log.showInfo(`onSuperFoldStatusChange property, bSideHeight: ${superFoldStateProperty.bSideHeight}, ` +
+      `curState: ${superFoldStateProperty.curState}, tarState: ${superFoldStateProperty.tarState}`);
     // 键盘避让
-    if (bigScreenStateProperty.tarState === SCBFoldState.HALF_FOLDED_PHYSICAL_KEYBOARD ||
-      bigScreenStateProperty.tarState === SCBFoldState.HALF_FOLDED_VIRTUAL_KEYBOARD) {
-      this.screenHeight = px2vp(bigScreenStateProperty.bSideHeight);
-      this.screenWidth = px2vp(bigScreenStateProperty.bSideWidth);
+    if (superFoldStateProperty.tarState === SCBFoldState.HALF_FOLDED_PHYSICAL_KEYBOARD ||
+      superFoldStateProperty.tarState === SCBFoldState.HALF_FOLDED_VIRTUAL_KEYBOARD) {
+      this.screenHeight = px2vp(superFoldStateProperty.bSideHeight);
+      this.screenWidth = px2vp(superFoldStateProperty.bSideWidth);
     } else {
       this.screenHeight = px2vp(this.screenProp.height);
       this.screenWidth = px2vp(this.screenProp.width);
@@ -168,7 +168,7 @@ export struct SCBMicReminder {
     this.screenWidth = px2vp(this.screenProp.width);
     this.screenHeight = px2vp(this.screenProp.height);
     SCBScreenSessionManager.getInstance().registerScreenPropertyChangeCallbacks(this.screenPCPropertyChangeCallbacks);
-    this.eventManager.on(SCBFoldStatePropertyChangeEvent, this.onBigScreenStatusChange);
+    this.eventManager.on(SCBFoldStatePropertyChangeEvent, this.onSuperFoldStatusChange);
   }
 
   aboutToDisappear(): void {

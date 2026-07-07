@@ -1,7 +1,7 @@
 {
     "string":[
         {
-            "name":"title_login_openharmony_account",
+            "name":"title_login_hw_account",
             "value":"Hãy đăng nhập để sử dụng tính năng Siêu thiết bị",
             "attr":{
                 "priority":"LT"

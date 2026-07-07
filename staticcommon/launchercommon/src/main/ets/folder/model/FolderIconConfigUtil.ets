@@ -138,7 +138,7 @@ export class FolderIconConfigUtil {
         middle: { anchor: '__container__', align: HorizontalAlign.Center }
       })
       .setEnableOverlayIcon(true)
-      .setIsAdaptiveLayout(!DeviceHelper.isUltraScreenProduct())
+      .setIsAdaptiveLayout(!DeviceHelper.isThreeFoldProduct())
       .setEnableDrag(false)
       .setAppDataOfTransactionController(AppDataWrapper.getDefaultAppData(item,
         iconRadius).setIsOpenFolder(false).setStartType(FolderIconConfigUtil.getFolderStartType(item.typeId)))

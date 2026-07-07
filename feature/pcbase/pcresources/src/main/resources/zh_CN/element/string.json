@@ -229,6 +229,10 @@
             "value":"通话"
         },
         {
+            "name":"sound_ai_voice",
+            "value":"智慧语音"
+        },
+        {
             "name":"sound_output_device",
             "value":"输出",
             "attr":{
@@ -369,8 +373,8 @@
             "value":"已静音"
         },
         {
-            "name":"sound_enable",
-            "value":"已开启音效",
+            "name":"ai_sound_enable",
+            "value":"已开启 AI 音效",
             "attr":{
                 "priority":"translate"
             }
@@ -397,6 +401,13 @@
         {
             "name":"suffix_recommend",
             "value":"%s (推荐)"
+        },
+        {
+            "name":"recommend_input_method",
+            "value":"语音助手输入法",
+            "attr":{
+                "priority":"translate"
+            }
         },
         {
             "name":"hide_input_method_status_bar",
@@ -711,7 +722,11 @@
         },
         {
             "name":"sound",
-            "value":"音效"
+            "value":"SOUND AI 音效"
+        },
+        {
+            "name":"ai_sound",
+            "value":"AI 音效"
         },
         {
             "name":"audio_privacy_hint",
@@ -723,7 +738,11 @@
         },
         {
             "name":"sound_detail",
-            "value":"关于音效功能的说明"
+            "value":"关于 SOUND AI 音效功能的说明"
+        },
+        {
+            "name":"ai_sound_detail",
+            "value":"关于 AI 音效功能的说明"
         },
         {
             "name":"detail_version",
@@ -836,6 +855,10 @@
         {
             "name":"not_disturb_title",
             "value":"免打扰"
+        },
+        {
+            "name":"sound_ai",
+            "value":"AI 音效"
         },
         {
             "name":"account_limit_toast",

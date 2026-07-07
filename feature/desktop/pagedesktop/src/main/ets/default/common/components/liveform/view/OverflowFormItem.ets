@@ -78,6 +78,7 @@ const OVERFLOW_FORM_ICON_CONFIG: Record<string, OverflowFormIconConfig> = {
 const LIVE_FORM_CLICK_TIMEOUT_MS = 200;
 const UNDEFINED_TIME_ID = -1;
 const IMAGE_DECODED_FINISH: number = 1;
+const CLOUD_MODE_NORMAL: string = '16';
 
 @Builder
 function extensionPlaceholder(param: ExtensionPlaceholderParams) {
@@ -650,6 +651,10 @@ export default struct OverflowFormItem {
 
     try {
       let status: string = systemParameterEnhance.getSync('persist.phone_focus.advance.mode.status');
+      if (status !== CLOUD_MODE_NORMAL) {
+        log.showInfo(`enter cloud mode, ${status}`);
+        this.canSupportPauseStatus = true;
+      }
     } catch(err) {
       log.showError('systemParameterEnhance getSync failed');
     }

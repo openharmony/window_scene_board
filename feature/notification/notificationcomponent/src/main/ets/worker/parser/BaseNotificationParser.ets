@@ -44,7 +44,8 @@ import { image } from '@kit.ImageKit';
 import { LogWithHa } from '@ohos/systemuicommon/src/main/ets/maintenance/CommonExceptionMaintenance';
 import { NotificationExceptionCode } from '../../maintenance/NotificationExceptionCode';
 import { RdbStoreManager } from '@ohos/launchercommon/src/main/ets/db/RdbStoreManager';
-import { NotificationCategory } from '@ohos/systemuicommon/src/main/ets/model/NotificationContent';
+import { default as GridLayoutItemInf } from '@ohos/launchercommon/src/main/ets/bean/GridLayoutItemInfo';
+import { DeliverInstallSource, NotificationCategory } from '@ohos/systemuicommon/src/main/ets/model/NotificationContent';
 import { WantAgentUtil } from '@ohos/systemuicommon/newTsIndex';
 
 const log = LogHelper.getLogHelper(LogDomain.NC, 'BaseNotificationParser');
@@ -128,7 +129,7 @@ export class BaseNotificationParser<T extends BaseNotification> {
   }
 
   private setCustomAppname(request: notificationManager.NotificationRequest): void {
-    const hwCustomAppname: string = request?.extraInfo?.openharmony_custom_appname;
+    const hwCustomAppname: string = request?.extraInfo?.hw_custom_appname;
     if (hwCustomAppname && this.entry?.isFromSystemApp) {
       log.showInfo(`setCustomAppname hwCustomAppname: ${hwCustomAppname}`);
       this.entry.appLabel = hwCustomAppname;
@@ -144,7 +145,7 @@ export class BaseNotificationParser<T extends BaseNotification> {
     this.entry.slotType = request.notificationSlotType ?? notificationManager.SlotType.UNKNOWN_TYPE;
     this.entry.isOngoing = request.isOngoing ?? false;
     this.entry.isAutoDelete = request.tapDismissed ?? true;
-    this.entry.isHiddenInKg = request.extraInfo?.openharmony_live_view_hidden_when_keyguard === true;
+    this.entry.isHiddenInKg = request.extraInfo?.hw_live_view_hidden_when_keyguard === true;
     this.entry.isNoClear = request.isUnremovable ?? false;
     this.entry.isRemoveAllowed = request.isRemoveAllowed ?? true;
     this.entry.isAlertOnce = request.isAlertOnce ?? false;
@@ -153,7 +154,10 @@ export class BaseNotificationParser<T extends BaseNotification> {
     this.entry.largeIcon = request.content.picture?.picture ?? request.largeIcon;
     this.entry.smallIconOrigin = request.smallIcon;
     this.entry.overlayIcon = request.overlayIcon;
-    this.entry.overlayIconStyle = request.extraInfo?.openharmony_overlay_style ?? OverlayIconStyle.CIRCLE;
+    if (this.entry.isDeliverNotification) {
+      this.entry.overlayIcon = undefined;
+    }
+    this.entry.overlayIconStyle = request.extraInfo?.hw_overlay_style ?? OverlayIconStyle.CIRCLE;
     this.entry.wantAgent = request.wantAgent!;
     this.entry.removalWantAgent = request.removalWantAgent;
     this.entry.contentType = request.content.notificationContentType;
@@ -165,6 +169,11 @@ export class BaseNotificationParser<T extends BaseNotification> {
    * 填充extra信息
    */
   private fillExtraInfo(request: NotificationRequest): void {
+    this.entry.isDeliverNotification = request.extraInfo?.is_deliverNotification === true;
+    this.entry.deliverNotificationKey = request.extraInfo?.deliver_notification_key ?? '';
+    this.entry.isDeliverFullScreen = request.extraInfo?.isDeliverFullScreen ?? false;
+    this.entry.deliverInstallSource = request.extraInfo?.hw_deliver_install_source;
+    this.entry.channelId = request.extraInfo?.hw_deliver_channel_id;
     log.showInfo(`_oh_ans_sys_traceid accquired from ANS: ${request.extraInfo?._oh_ans_sys_traceid}`);
     this.entry.traceId = request.extraInfo?._oh_ans_sys_traceid;
     this.entry.isCollaNotification = request.extendInfo?.notification_collaboration_flag === true;
@@ -307,7 +316,7 @@ export class BaseNotificationParser<T extends BaseNotification> {
     const agentUid = request.agentBundle?.uid;
 
     let config =
-      await notificationConfigManager.getConfig(uid ?? 0, request?.creatorBundleName);
+      await notificationConfigManager.getConfig(uid ?? 0, request?.creatorBundleName, this.entry.isDeliverNotification);
     if (!config) {
       log.showInfo(`Add notification config for ${request?.creatorBundleName}`);
       config = await notificationConfigManager.addConfig(request.creatorBundleName ?? '', uid ?? 0);
@@ -359,6 +368,27 @@ export class BaseNotificationParser<T extends BaseNotification> {
     const wantAgentInfo = await WantAgentUtil.parseWantAgentInfo(request.wantAgent);
     if (!wantAgentInfo) {
       return;
+    }
+
+    try {
+      this.entry.wantAgentInfo = wantAgentInfo;
+      // 判断是否是deliverPush通知，如果该参数不存在则点击不在往下进行
+      const pushDeliverLaunchInfo =
+        this.entry?.wantAgentInfo?.want?.parameters?.[SystemuiConstants.KEY_PUSH_DELIVER_LAUNCH_INFO];
+      if (this.entry.isDeliverNotification && pushDeliverLaunchInfo && typeof pushDeliverLaunchInfo === 'string' &&
+      pushDeliverLaunchInfo.trim()) {
+        this.entry.isDeliverPushNotification = true;
+        this.entry.deliverPushLauncherInfo = pushDeliverLaunchInfo;
+        this.entry.deliverAbilityName = this.getDeliverPushAbilityName(pushDeliverLaunchInfo);
+        this.entry.deliverPushWantAgentInfo =
+          wantAgentInfo.want?.parameters?.[SystemuiConstants.KEY_PUSH_DELIVER_WANT_AGENT_INFO] as wantAgent.WantAgentInfo;
+      }
+      if (this.entry.isDeliverNotification && !this.entry.isDeliverPushNotification &&
+        this.entry.deliverInstallSource === DeliverInstallSource.DELIVER_TONG) {
+        this.entry.deliverAbilityName = this.getAbilityName(this.entry.creatorBundleName);
+      }
+    } catch (e) {
+      LogWithHa.error(log, `setWantAgentInfo failed: ${e}`, NotificationExceptionCode.SET_WANT_AGENT_FAIL, e);
     }
   }
 
@@ -417,7 +447,7 @@ export class BaseNotificationParser<T extends BaseNotification> {
   }
 
   private isShowHeadsUp(request: notificationManager.NotificationRequest): boolean {
-    if (request.extraInfo?.openharmony_heads_up_enable === true) {
+    if (request.extraInfo?.hw_heads_up_enable === true) {
       return true;
     }
 
@@ -490,6 +520,20 @@ export class BaseNotificationParser<T extends BaseNotification> {
       }
       log.error(`Check is sa for ${uid} error:`, e);
       return false;
+    }
+  }
+
+  /**
+   * 获取push通知对应的应用主页信息
+   * @param deliverPushLauncherInfo
+   */
+  private async getDeliverPushAbilityName(deliverPushLauncherInfo: string): Promise<string> {
+    try {
+      const dispPkgName: string = JSON.parse(deliverPushLauncherInfo)?.dispPkgName;
+      return this.getAbilityName(dispPkgName);
+    } catch (e) {
+      log.showError('setDeliverPushAbilityName err, code:%{public}d, msg:%{public}s', e?.code, e?.message);
+      return '';
     }
   }
 

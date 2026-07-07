@@ -18,6 +18,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, MockK
   ArgumentMatchers } from '@ohos/hypium'
 import { DesktopLayoutCacheData } from '../../../../../../../main/ets/cache/layout/DesktopLayoutCacheData'
 import {
+  BundleConstants,
   CardItemInfo,
   CommonConstants,
   DefaultDesktopLayoutInfo, FormLayoutCacheManager,
@@ -228,6 +229,451 @@ export default function FormLayoutCacheManagerTest() {
         }
         // Defines a variety of assertion methods, which are used to declare expected boolean conditions.
         expect(res).assertEqual(demoCard);
+      }catch{};
+    })
+
+    it('selectAllAiSuggestionItems00', 0, () => {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      try{
+        let layoutCacheManager: FormLayoutCacheManager = FormLayoutCacheManager.getInstance();
+        let defaultLayout: DefaultDesktopLayoutInfo = DefaultDesktopLayoutInfo.getDefaultLayoutInfo();
+        let layoutInfoList: GridLayoutItemInfo[] = [];
+        let infoId: string = '1';
+        let bundleName: string = 'com.openharmony.demoApp';
+        let keyName: string = 'com.openharmony.demoAppPhoneEntryAbility';
+        let demoCard: GridLayoutItemInfo = new GridLayoutItemInfo();
+        demoCard.infoId = infoId;
+        demoCard.bundleName = BundleConstants.AI_SUGGESTION_BUNDLE;
+        demoCard.abilityName = BundleConstants.AI_SUGGESTION_ABILITY;
+        demoCard.typeId = CommonConstants.TYPE_CARD;
+        demoCard.page = 0;
+        demoCard.row = 0;
+        demoCard.column = 0;
+        demoCard.area = [2, 2];
+        demoCard.keyName = keyName;
+        demoCard.cardId = '1';
+        layoutInfoList.push(demoCard);
+        defaultLayout.layoutInfo = layoutInfoList;
+
+        // 条件1
+        let layoutCacheData: DesktopLayoutCacheData = new DesktopLayoutCacheData(defaultLayout);
+        layoutCacheManager.reInit(layoutCacheData);
+
+        let res: GridLayoutItemInfo[] = layoutCacheManager.selectAllAiSuggestionItems();
+
+        // Defines a variety of assertion methods, which are used to declare expected boolean conditions.
+        expect(res.length).assertEqual(1);
+      }catch{};
+    })
+
+    it('selectFormStackItemByFormStackId00', 0, () => {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      try{
+        let layoutCacheManager: FormLayoutCacheManager = FormLayoutCacheManager.getInstance();
+        let defaultLayout: DefaultDesktopLayoutInfo = DefaultDesktopLayoutInfo.getDefaultLayoutInfo();
+        let layoutInfoList: GridLayoutItemInfo[] = [];
+        let infoId: string = '1';
+        let bundleName: string = 'com.openharmony.demoApp';
+        let keyName: string = 'com.openharmony.demoAppPhoneEntryAbility';
+        let demoCard: GridLayoutItemInfo = new GridLayoutItemInfo();
+        demoCard.infoId = infoId;
+        demoCard.bundleName = BundleConstants.AI_SUGGESTION_BUNDLE;
+        demoCard.abilityName = BundleConstants.AI_SUGGESTION_ABILITY;
+        demoCard.typeId = CommonConstants.TYPE_FORM_STACK;
+        demoCard.page = 0;
+        demoCard.row = 0;
+        demoCard.column = 0;
+        demoCard.area = [2, 2];
+        demoCard.keyName = keyName;
+        demoCard.cardId = '1';
+        demoCard.formStackId = '11';
+        layoutInfoList.push(demoCard);
+        defaultLayout.layoutInfo = layoutInfoList;
+
+        // 条件1
+        let layoutCacheData: DesktopLayoutCacheData = new DesktopLayoutCacheData(defaultLayout);
+        layoutCacheManager.reInit(layoutCacheData);
+
+        let res: GridLayoutItemInfo = layoutCacheManager.selectFormStackItemByFormStackId('11');
+
+        // Defines a variety of assertion methods, which are used to declare expected boolean conditions.
+        expect(res).assertUndefined();
+      }catch{};
+    })
+
+    it('selectAllFormsAndFormStack00', 0, () => {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      try{
+        let layoutCacheManager: FormLayoutCacheManager = FormLayoutCacheManager.getInstance();
+        let defaultLayout: DefaultDesktopLayoutInfo = DefaultDesktopLayoutInfo.getDefaultLayoutInfo();
+        let layoutInfoList: GridLayoutItemInfo[] = [];
+        let infoId: string = '1';
+        let bundleName: string = 'com.openharmony.demoApp';
+        let keyName: string = 'com.openharmony.demoAppPhoneEntryAbility';
+        let demoCard: GridLayoutItemInfo = new GridLayoutItemInfo();
+        demoCard.infoId = infoId;
+        demoCard.bundleName = BundleConstants.AI_SUGGESTION_BUNDLE;
+        demoCard.abilityName = BundleConstants.AI_SUGGESTION_ABILITY;
+        demoCard.typeId = CommonConstants.TYPE_FORM_STACK;
+        demoCard.page = 0;
+        demoCard.row = 0;
+        demoCard.column = 0;
+        demoCard.area = [2, 2];
+        demoCard.keyName = keyName;
+        demoCard.cardId = '1';
+        demoCard.formStackId = '11';
+        layoutInfoList.push(demoCard);
+        defaultLayout.layoutInfo = layoutInfoList;
+
+        // 条件1
+        let layoutCacheData: DesktopLayoutCacheData = new DesktopLayoutCacheData(defaultLayout);
+        layoutCacheManager.reInit(layoutCacheData);
+
+        let res: GridLayoutItemInfo[] = layoutCacheManager.selectAllFormsAndFormStack();
+
+        // Defines a variety of assertion methods, which are used to declare expected boolean conditions.
+        expect(res.length).assertEqual(1);
+      }catch{};
+    })
+
+    it('deleteGridLayoutItemByItemId00', 0, () => {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      try{
+        let layoutCacheManager: FormLayoutCacheManager = FormLayoutCacheManager.getInstance();
+        let defaultLayout: DefaultDesktopLayoutInfo = DefaultDesktopLayoutInfo.getDefaultLayoutInfo();
+        let layoutInfoList: GridLayoutItemInfo[] = [];
+        let infoId: string = '1';
+        let bundleName: string = 'com.openharmony.demoApp';
+        let keyName: string = 'com.openharmony.demoAppPhoneEntryAbility';
+        let demoCard: GridLayoutItemInfo = new GridLayoutItemInfo();
+        demoCard.infoId = infoId;
+        demoCard.bundleName = BundleConstants.AI_SUGGESTION_BUNDLE;
+        demoCard.abilityName = BundleConstants.AI_SUGGESTION_ABILITY;
+        demoCard.typeId = CommonConstants.TYPE_CARD;
+        demoCard.page = 0;
+        demoCard.row = 0;
+        demoCard.column = 0;
+        demoCard.area = [2, 2];
+        demoCard.keyName = keyName;
+        demoCard.cardId = '1';
+        layoutInfoList.push(demoCard);
+        defaultLayout.layoutInfo = layoutInfoList;
+
+        // 条件1
+        let layoutCacheData: DesktopLayoutCacheData = new DesktopLayoutCacheData(defaultLayout);
+        layoutCacheManager.reInit(layoutCacheData);
+
+        layoutCacheManager.deleteGridLayoutItemByItemId('1', 'DT', true);
+        let res: GridLayoutItemInfo[] = layoutCacheManager.getAllGridLayoutItemList('DT');
+
+        // Defines a variety of assertion methods, which are used to declare expected boolean conditions.
+        expect(res.length).assertEqual(0);
+      }catch{};
+    })
+
+    it('deleteGridLayoutItemByItemId01', 0, () => {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      try{
+        let layoutCacheManager: FormLayoutCacheManager = FormLayoutCacheManager.getInstance();
+        let defaultLayout: DefaultDesktopLayoutInfo = DefaultDesktopLayoutInfo.getDefaultLayoutInfo();
+        let layoutInfoList: GridLayoutItemInfo[] = [];
+        let infoId: string = '1';
+        let bundleName: string = 'com.openharmony.demoApp';
+        let keyName: string = 'com.openharmony.demoAppPhoneEntryAbility';
+        let demoCard: GridLayoutItemInfo = new GridLayoutItemInfo();
+        demoCard.infoId = infoId;
+        demoCard.bundleName = BundleConstants.AI_SUGGESTION_BUNDLE;
+        demoCard.abilityName = BundleConstants.AI_SUGGESTION_ABILITY;
+        demoCard.typeId = CommonConstants.TYPE_CARD;
+        demoCard.page = 0;
+        demoCard.row = 0;
+        demoCard.column = 0;
+        demoCard.area = [2, 2];
+        demoCard.keyName = keyName;
+        demoCard.cardId = '1';
+        layoutInfoList.push(demoCard);
+        defaultLayout.layoutInfo = layoutInfoList;
+
+        // 条件1
+        let layoutCacheData: DesktopLayoutCacheData = new DesktopLayoutCacheData(defaultLayout);
+        layoutCacheManager.reInit(layoutCacheData);
+        let outerGridLayoutList = layoutCacheData.getGridLayoutItemList(true)??[];
+        outerGridLayoutList.push(demoCard);
+        layoutCacheData.setGridLayoutItemList(outerGridLayoutList,true);
+
+        layoutCacheManager.deleteGridLayoutItemByItemId('1', 'DT', true);
+        let res: GridLayoutItemInfo[] = layoutCacheManager.getAllGridLayoutItemList('DT');
+
+        // Defines a variety of assertion methods, which are used to declare expected boolean conditions.
+        expect(res.length).assertEqual(0);
+      }catch{};
+    })
+
+    it('updateGridLayoutItemByPosition00', 0, () => {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      try{
+        let layoutCacheManager: FormLayoutCacheManager = FormLayoutCacheManager.getInstance();
+        let defaultLayout: DefaultDesktopLayoutInfo = DefaultDesktopLayoutInfo.getDefaultLayoutInfo();
+        let layoutInfoList: GridLayoutItemInfo[] = [];
+        let infoId: string = '1';
+        let bundleName: string = 'com.openharmony.demoApp';
+        let keyName: string = 'com.openharmony.demoAppPhoneEntryAbility';
+        let demoCard: GridLayoutItemInfo = new GridLayoutItemInfo();
+        demoCard.infoId = infoId;
+        demoCard.bundleName = BundleConstants.AI_SUGGESTION_BUNDLE;
+        demoCard.abilityName = BundleConstants.AI_SUGGESTION_ABILITY;
+        demoCard.typeId = CommonConstants.TYPE_CARD;
+        demoCard.page = 0;
+        demoCard.row = 0;
+        demoCard.column = 0;
+        demoCard.area = [2, 2];
+        demoCard.keyName = keyName;
+        demoCard.cardId = '1';
+        layoutInfoList.push(demoCard);
+        defaultLayout.layoutInfo = layoutInfoList;
+
+        // 条件1
+        let layoutCacheData: DesktopLayoutCacheData = new DesktopLayoutCacheData(defaultLayout);
+        layoutCacheManager.reInit(layoutCacheData);
+        let newCard: GridLayoutItemInfo = ObjectCopyUtil.deepClone(demoCard);
+        newCard.page = 1;
+
+        layoutCacheManager.updateGridLayoutItemByPosition(0, 0, 0, null, 'DT', true);
+        layoutCacheManager.updateGridLayoutItemByPosition(5, 0, 0, null, 'DT', true);
+        layoutCacheManager.updateGridLayoutItemByPosition(0, 0, 0, newCard, 'DT', true);
+        let res: GridLayoutItemInfo[] = layoutCacheManager.getAllGridLayoutItemList('DT');
+        let card: GridLayoutItemInfo | undefined = undefined;
+        if (res.length >= 1) {
+          card = res[0];
+        }
+
+        // Defines a variety of assertion methods, which are used to declare expected boolean conditions.
+        expect(card?.page).assertEqual(1);
+      }catch{};
+    })
+
+    it('updateFormStackItemById00', 0, () => {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      try{
+        let layoutCacheManager: FormLayoutCacheManager = FormLayoutCacheManager.getInstance();
+        let defaultLayout: DefaultDesktopLayoutInfo = DefaultDesktopLayoutInfo.getDefaultLayoutInfo();
+        let layoutInfoList: GridLayoutItemInfo[] = [];
+        let infoId: string = '1';
+        let bundleName: string = 'com.openharmony.demoApp';
+        let keyName: string = 'com.openharmony.demoAppPhoneEntryAbility';
+        let demoCard: GridLayoutItemInfo = new GridLayoutItemInfo();
+        demoCard.infoId = infoId;
+        demoCard.bundleName = BundleConstants.AI_SUGGESTION_BUNDLE;
+        demoCard.abilityName = BundleConstants.AI_SUGGESTION_ABILITY;
+        demoCard.typeId = CommonConstants.TYPE_FORM_STACK;
+        demoCard.page = 0;
+        demoCard.row = 0;
+        demoCard.column = 0;
+        demoCard.area = [2, 2];
+        demoCard.keyName = keyName;
+        demoCard.cardId = '1';
+        demoCard.formStackId = '1';
+        layoutInfoList.push(demoCard);
+        defaultLayout.layoutInfo = layoutInfoList;
+
+        // 条件1
+        let layoutCacheData: DesktopLayoutCacheData = new DesktopLayoutCacheData(defaultLayout);
+        layoutCacheManager.reInit(layoutCacheData);
+        let newCard: GridLayoutItemInfo = ObjectCopyUtil.deepClone(demoCard);
+        newCard.page = 1;
+
+        layoutCacheManager.updateFormStackItemById(null, 'DT');
+        newCard.formStackId = '2';
+        layoutCacheManager.updateFormStackItemById(newCard, 'DT');
+        newCard.formStackId = '1';
+        layoutCacheManager.updateFormStackItemById(newCard, 'DT');
+        let res: GridLayoutItemInfo[] = layoutCacheManager.getAllGridLayoutItemList('DT');
+        let card: GridLayoutItemInfo | undefined = undefined;
+        if (res.length >= 1) {
+          card = res[0];
+        }
+
+        // Defines a variety of assertion methods, which are used to declare expected boolean conditions.
+        expect(card?.page).assertEqual(1);
+      }catch{};
+    })
+
+    it('updateFormItemInfoById00', 0, () => {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      try{
+        let layoutCacheManager: FormLayoutCacheManager = FormLayoutCacheManager.getInstance();
+        let defaultLayout: DefaultDesktopLayoutInfo = DefaultDesktopLayoutInfo.getDefaultLayoutInfo();
+        let layoutInfoList: GridLayoutItemInfo[] = [];
+        let infoId: string = '1';
+        let bundleName: string = 'com.openharmony.demoApp';
+        let keyName: string = 'com.openharmony.demoAppPhoneEntryAbility';
+        let demoCard: GridLayoutItemInfo = new GridLayoutItemInfo();
+        demoCard.infoId = infoId;
+        demoCard.bundleName = BundleConstants.AI_SUGGESTION_BUNDLE;
+        demoCard.abilityName = BundleConstants.AI_SUGGESTION_ABILITY;
+        demoCard.typeId = CommonConstants.TYPE_CARD;
+        demoCard.page = 0;
+        demoCard.row = 0;
+        demoCard.column = 0;
+        demoCard.area = [2, 2];
+        demoCard.keyName = keyName;
+        demoCard.cardId = '1';
+        layoutInfoList.push(demoCard);
+        defaultLayout.layoutInfo = layoutInfoList;
+
+        // 条件1
+        let layoutCacheData: DesktopLayoutCacheData = new DesktopLayoutCacheData(defaultLayout);
+        layoutCacheManager.reInit(layoutCacheData);
+        let newCard: GridLayoutItemInfo = ObjectCopyUtil.deepClone(demoCard);
+        layoutCacheManager.updateFormItemInfoById(null, 'DT');
+        layoutCacheManager.updateFormItemInfoById(newCard, 'DT');
+        let res: GridLayoutItemInfo[] = layoutCacheManager.getAllGridLayoutItemList('DT');
+
+        // Defines a variety of assertion methods, which are used to declare expected boolean conditions.
+        expect(res.length).assertEqual(2);
+      }catch{};
+    })
+
+    it('insertFormToFormStack00', 0, () => {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      try{
+        let layoutCacheManager: FormLayoutCacheManager = FormLayoutCacheManager.getInstance();
+        let defaultLayout: DefaultDesktopLayoutInfo = DefaultDesktopLayoutInfo.getDefaultLayoutInfo();
+        let layoutInfoList: GridLayoutItemInfo[] = [];
+        let infoId: string = '1';
+        let bundleName: string = 'com.openharmony.demoApp';
+        let keyName: string = 'com.openharmony.demoAppPhoneEntryAbility';
+        let demoCard: GridLayoutItemInfo = new GridLayoutItemInfo();
+        demoCard.infoId = infoId;
+        demoCard.bundleName = BundleConstants.AI_SUGGESTION_BUNDLE;
+        demoCard.abilityName = BundleConstants.AI_SUGGESTION_ABILITY;
+        demoCard.typeId = CommonConstants.TYPE_CARD;
+        demoCard.page = 0;
+        demoCard.row = 0;
+        demoCard.column = 0;
+        demoCard.area = [2, 2];
+        demoCard.keyName = keyName;
+        demoCard.cardId = '1';
+        layoutInfoList.push(demoCard);
+        defaultLayout.layoutInfo = layoutInfoList;
+
+        // 条件1
+        let layoutCacheData: DesktopLayoutCacheData = new DesktopLayoutCacheData(defaultLayout);
+        layoutCacheManager.reInit(layoutCacheData);
+        layoutCacheManager.insertFormToFormStack(null, [], 'DT', true);
+        layoutCacheManager.insertFormToFormStack(demoCard, [], 'DT', true);
+        let res: string = 'test';
+
+        // Defines a variety of assertion methods, which are used to declare expected boolean conditions.
+        expect(res).assertEqual('test');
+      }catch{};
+    })
+
+    it('addCardItemToDesktop00', 0, () => {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      try{
+        let layoutCacheManager: FormLayoutCacheManager = FormLayoutCacheManager.getInstance();
+        let defaultLayout: DefaultDesktopLayoutInfo = DefaultDesktopLayoutInfo.getDefaultLayoutInfo();
+        let layoutInfoList: GridLayoutItemInfo[] = [];
+        let infoId: string = '1';
+        let bundleName: string = 'com.openharmony.demoApp';
+        let keyName: string = 'com.openharmony.demoAppPhoneEntryAbility';
+        let demoCard: GridLayoutItemInfo = new GridLayoutItemInfo();
+        demoCard.infoId = infoId;
+        demoCard.bundleName = BundleConstants.AI_SUGGESTION_BUNDLE;
+        demoCard.abilityName = BundleConstants.AI_SUGGESTION_ABILITY;
+        demoCard.typeId = CommonConstants.TYPE_CARD;
+        demoCard.page = 0;
+        demoCard.row = 0;
+        demoCard.column = 0;
+        demoCard.area = [2, 2];
+        demoCard.keyName = keyName;
+        demoCard.cardId = '1';
+        layoutInfoList.push(demoCard);
+        defaultLayout.layoutInfo = layoutInfoList;
+
+        // 条件1
+        let layoutCacheData: DesktopLayoutCacheData = new DesktopLayoutCacheData(defaultLayout);
+        layoutCacheManager.reInit(layoutCacheData);
+        let newCard: CardItemInfo = new CardItemInfo();
+        layoutCacheManager.addCardItemToDesktop(null, 'DT', false);
+        layoutCacheManager.addCardItemToDesktop(newCard, 'DT', false);
+        let res: GridLayoutItemInfo[] = layoutCacheManager.getAllGridLayoutItemList('DT');
+
+        // Defines a variety of assertion methods, which are used to declare expected boolean conditions.
+        expect(res.length).assertEqual(2);
+      }catch{};
+    })
+
+    it('insertFormStackItemInfo00', 0, () => {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      try{
+        let layoutCacheManager: FormLayoutCacheManager = FormLayoutCacheManager.getInstance();
+        let defaultLayout: DefaultDesktopLayoutInfo = DefaultDesktopLayoutInfo.getDefaultLayoutInfo();
+        let layoutInfoList: GridLayoutItemInfo[] = [];
+        let infoId: string = '1';
+        let bundleName: string = 'com.openharmony.demoApp';
+        let keyName: string = 'com.openharmony.demoAppPhoneEntryAbility';
+        let demoCard: GridLayoutItemInfo = new GridLayoutItemInfo();
+        demoCard.infoId = infoId;
+        demoCard.bundleName = BundleConstants.AI_SUGGESTION_BUNDLE;
+        demoCard.abilityName = BundleConstants.AI_SUGGESTION_ABILITY;
+        demoCard.typeId = CommonConstants.TYPE_CARD;
+        demoCard.page = 0;
+        demoCard.row = 0;
+        demoCard.column = 0;
+        demoCard.area = [2, 2];
+        demoCard.keyName = keyName;
+        demoCard.cardId = '1';
+        layoutInfoList.push(demoCard);
+        defaultLayout.layoutInfo = layoutInfoList;
+
+        // 条件1
+        let layoutCacheData: DesktopLayoutCacheData = new DesktopLayoutCacheData(defaultLayout);
+        layoutCacheManager.reInit(layoutCacheData);
+        let newCard: GridLayoutItemInfo = new GridLayoutItemInfo();
+        layoutCacheManager.insertFormStackItemInfo(null, [], 'DT', []);
+        layoutCacheManager.insertFormStackItemInfo(newCard, [], 'DT', []);
+        let res: GridLayoutItemInfo[] = layoutCacheManager.getAllGridLayoutItemList('DT');
+
+        // Defines a variety of assertion methods, which are used to declare expected boolean conditions.
+        expect(res.length).assertEqual(2);
+      }catch{};
+    })
+
+    it('updateCardsFormDesktopToFormStack00', 0, () => {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      try{
+        let layoutCacheManager: FormLayoutCacheManager = FormLayoutCacheManager.getInstance();
+        let defaultLayout: DefaultDesktopLayoutInfo = DefaultDesktopLayoutInfo.getDefaultLayoutInfo();
+        let layoutInfoList: GridLayoutItemInfo[] = [];
+        let infoId: string = '1';
+        let bundleName: string = 'com.openharmony.demoApp';
+        let keyName: string = 'com.openharmony.demoAppPhoneEntryAbility';
+        let demoCard: GridLayoutItemInfo = new GridLayoutItemInfo();
+        demoCard.infoId = infoId;
+        demoCard.bundleName = BundleConstants.AI_SUGGESTION_BUNDLE;
+        demoCard.abilityName = BundleConstants.AI_SUGGESTION_ABILITY;
+        demoCard.typeId = CommonConstants.TYPE_CARD;
+        demoCard.page = 0;
+        demoCard.row = 0;
+        demoCard.column = 0;
+        demoCard.area = [2, 2];
+        demoCard.keyName = keyName;
+        demoCard.cardId = '1';
+        layoutInfoList.push(demoCard);
+        defaultLayout.layoutInfo = layoutInfoList;
+
+        // 条件1
+        let layoutCacheData: DesktopLayoutCacheData = new DesktopLayoutCacheData(defaultLayout);
+        layoutCacheManager.reInit(layoutCacheData);
+        let newCard: GridLayoutItemInfo = new GridLayoutItemInfo();
+        layoutCacheManager.updateCardsFormDesktopToFormStack(null, [], 'DT', [], true);
+        layoutCacheManager.updateCardsFormDesktopToFormStack(newCard, [demoCard], 'DT', [], true);
+        let res: string = 'test';
+
+        // Defines a variety of assertion methods, which are used to declare expected boolean conditions.
+        expect(res).assertEqual('test');
       }catch{};
     })
 
@@ -789,6 +1235,85 @@ export default function FormLayoutCacheManagerTest() {
       mocker.clearAll();
     })
 
+    it('test_selectFormStackItemByFormStackId_checkAndDealDirtyStack001', 0, () => {
+      let layoutCacheManager: FormLayoutCacheManager = FormLayoutCacheManager.getInstance();
+      let defaultLayout: DefaultDesktopLayoutInfo = DefaultDesktopLayoutInfo.getDefaultLayoutInfo();
+      let layoutInfoList: GridLayoutItemInfo[] = [];
+      let infoId: string = '1';
+      let keyName: string = 'com.openharmony.demoAppPhoneEntryAbility';
+      let formStackId: string = 'testFormStackid';
+      let demoCard: GridLayoutItemInfo = new GridLayoutItemInfo();
+      demoCard.infoId = infoId;
+      demoCard.bundleName = BundleConstants.AI_SUGGESTION_BUNDLE;
+      demoCard.abilityName = BundleConstants.AI_SUGGESTION_ABILITY;
+      demoCard.typeId = CommonConstants.TYPE_FORM_STACK;
+      demoCard.page = 0;
+      demoCard.row = 0;
+      demoCard.column = 0;
+      demoCard.area = [2, 2];
+      demoCard.keyName = keyName;
+      demoCard.cardId = '1';
+      demoCard.formStackId = formStackId;
+      layoutInfoList.push(demoCard);
+      defaultLayout.layoutInfo = layoutInfoList;
+      let layoutCacheData: DesktopLayoutCacheData = new DesktopLayoutCacheData(defaultLayout);
+      layoutCacheManager.reInit(layoutCacheData);
+      let mocker: MockKit = new MockKit();
+      try {
+        const mockerFunc1 = mocker.mockFunc(layoutCacheData, layoutCacheData.getGridLayoutItemList);
+        when(mockerFunc1)(ArgumentMatchers.any).afterReturn([demoCard]);
+        let res: GridLayoutItemInfo = layoutCacheManager.selectFormStackItemByFormStackId('11');
+        expect(res).assertUndefined();
+        let res1: GridLayoutItemInfo = layoutCacheManager.selectFormStackItemByFormStackId(formStackId);
+        expect(res1).assertUndefined();
+        let item1: GridLayoutItemInfo = new GridLayoutItemInfo();
+        item1.infoId = infoId;
+        item1.bundleName = BundleConstants.AI_SUGGESTION_BUNDLE;
+        item1.abilityName = BundleConstants.AI_SUGGESTION_ABILITY;
+        item1.typeId = CommonConstants.TYPE_FORM_STACK;
+        item1.cardId = '12230';
+        demoCard.layoutInfo = [[item1]];
+        when(mockerFunc1)(ArgumentMatchers.any).afterReturn([demoCard]);
+        let res2: GridLayoutItemInfo = layoutCacheManager.selectFormStackItemByFormStackId(formStackId);
+        expect(res2).assertUndefined();
+        let item2: GridLayoutItemInfo = new GridLayoutItemInfo();
+        item2.infoId = infoId;
+        item2.bundleName = BundleConstants.AI_SUGGESTION_BUNDLE;
+        item2.abilityName = BundleConstants.AI_SUGGESTION_ABILITY;
+        item2.typeId = CommonConstants.TYPE_FORM_STACK;
+        item2.cardId = '1223';
+        let item3: GridLayoutItemInfo = new GridLayoutItemInfo();
+        item3.infoId = infoId;
+        item3.bundleName = BundleConstants.AI_SUGGESTION_BUNDLE;
+        item3.abilityName = BundleConstants.AI_SUGGESTION_ABILITY;
+        item3.typeId = CommonConstants.TYPE_FORM_STACK;
+        item3.cardId = '12233';
+        demoCard.layoutInfo = [[item2, item3]];
+        when(mockerFunc1)(ArgumentMatchers.any).afterReturn([demoCard]);
+        let res3: GridLayoutItemInfo = layoutCacheManager.selectFormStackItemByFormStackId(formStackId);
+        expect(res3).not().assertUndefined();
+      } catch (e) {
+      }
+      mocker.clear(layoutCacheData);
+      mocker.clearAll();
+    })
+
+    it('test_selectAllAiSuggestionItems_001', 0, () => {
+      let layoutCacheManager: FormLayoutCacheManager = FormLayoutCacheManager.getInstance();
+      let cacheData: DesktopLayoutCacheData = layoutCacheManager['layoutCacheData'];
+      let mocker: MockKit = new MockKit();
+      try{
+        const mockerFunc1 = mocker.mockFunc(cacheData, cacheData.getGridLayoutItemList);
+        let items: GridLayoutItemInfo[] = createLayoutItems();
+        when(mockerFunc1)().afterReturn(items);
+        let res: GridLayoutItemInfo[] = layoutCacheManager.selectAllAiSuggestionItems();
+        expect(res.length > 0).assertTrue();
+      } catch (e) {
+      }
+      mocker.clear(cacheData);
+      mocker.clearAll();
+    })
+
     it('test_selectAllFormsList_0023', 0, () => {
       let layoutCacheManager: FormLayoutCacheManager = FormLayoutCacheManager.getInstance();
       let mocker: MockKit = new MockKit();
@@ -826,6 +1351,43 @@ export default function FormLayoutCacheManagerTest() {
       mocker.clearAll();
     })
 
+    it('test_updateGridLayoutItemByPosition_001', 0, async (done: Function) => {
+      try{
+        let layoutCacheManager: FormLayoutCacheManager = FormLayoutCacheManager.getInstance();
+        let defaultLayout: DefaultDesktopLayoutInfo = DefaultDesktopLayoutInfo.getDefaultLayoutInfo();
+        let layoutInfoList: GridLayoutItemInfo[] = [];
+        let infoId: string = '1';
+        let keyName: string = 'com.openharmony.demoAppPhoneEntryAbility';
+        let demoCard: GridLayoutItemInfo = new GridLayoutItemInfo();
+        demoCard.infoId = infoId;
+        demoCard.bundleName = BundleConstants.AI_SUGGESTION_BUNDLE;
+        demoCard.abilityName = BundleConstants.AI_SUGGESTION_ABILITY;
+        demoCard.typeId = CommonConstants.TYPE_CARD;
+        demoCard.page = 0;
+        demoCard.row = 0;
+        demoCard.column = 0;
+        demoCard.area = [2, 2];
+        demoCard.keyName = keyName;
+        demoCard.cardId = '1';
+        demoCard.layoutInfo = [[]];
+        layoutInfoList.push(demoCard);
+        defaultLayout.layoutInfo = layoutInfoList;
+        let layoutCacheData: DesktopLayoutCacheData = new DesktopLayoutCacheData(defaultLayout);
+        layoutCacheManager.reInit(layoutCacheData);
+        let newCard: GridLayoutItemInfo = ObjectCopyUtil.deepClone(demoCard);
+        newCard.page = 1;
+        await layoutCacheManager.updateGridLayoutItemByPosition(0, 0, 0, nullParam() as GridLayoutItemInfo, 'DT', true);
+        expect(CheckEmptyUtils.isEmpty(newCard)).assertFalse();
+        await layoutCacheManager.updateGridLayoutItemByPosition(5, 0, 0, nullParam() as GridLayoutItemInfo, 'DT', true);
+        expect(demoCard.page).not().assertEqual(5);
+        await layoutCacheManager.updateGridLayoutItemByPosition(0, 0, 0, newCard, 'DT', true);
+        expect(demoCard.page).not().assertEqual(5);
+        await layoutCacheManager.updateGridLayoutItemByPosition(0, 0, 0, newCard, 'DT', false);
+        expect(newCard.page).not().assertEqual(demoCard.page);
+      }catch{};
+      done();
+    })
+
     it('test_changeStackToCard_001', 0, () => {
       try{
         let layoutCacheManager: FormLayoutCacheManager = FormLayoutCacheManager.getInstance();
@@ -847,6 +1409,90 @@ export default function FormLayoutCacheManagerTest() {
         layoutCacheManager.changeStackToCard(item, remainingCard);
         expect(remainingCard).not().assertEqual(item);
       }catch{};
+    })
+
+    it('test_updateFormItemInfoById_001', 0,  async (done: Function) => {
+      let layoutCacheManager: FormLayoutCacheManager = FormLayoutCacheManager.getInstance();
+      let defaultLayout: DefaultDesktopLayoutInfo = DefaultDesktopLayoutInfo.getDefaultLayoutInfo();
+      let layoutInfoList: GridLayoutItemInfo[] = [];
+      let infoId: string = '1';
+      let bundleName: string = 'com.openharmony.demoApp';
+      let keyName: string = 'com.openharmony.demoAppPhoneEntryAbility';
+      let demoCard: GridLayoutItemInfo = new GridLayoutItemInfo();
+      demoCard.infoId = infoId;
+      demoCard.bundleName = BundleConstants.AI_SUGGESTION_BUNDLE;
+      demoCard.abilityName = BundleConstants.AI_SUGGESTION_ABILITY;
+      demoCard.typeId = CommonConstants.TYPE_CARD;
+      demoCard.page = 0;
+      demoCard.row = 0;
+      demoCard.column = 0;
+      demoCard.area = [2, 2];
+      demoCard.keyName = keyName;
+      demoCard.cardId = '1';
+      layoutInfoList.push(demoCard);
+      defaultLayout.layoutInfo = layoutInfoList;
+      let layoutCacheData: DesktopLayoutCacheData = new DesktopLayoutCacheData(defaultLayout);
+      layoutCacheManager.reInit(layoutCacheData);
+      let newCard: GridLayoutItemInfo = ObjectCopyUtil.deepClone(demoCard);
+      let mocker: MockKit = new MockKit();
+      try {
+        layoutCacheManager.updateFormItemInfoById(nullParam() as GridLayoutItemInfo, 'DT');
+        let needFalse: boolean = CheckEmptyUtils.isEmpty(nullParam());
+        layoutCacheManager.updateFormItemInfoById(newCard, 'DT');
+        let mockerFunc = mocker.mockFunc(CheckEmptyUtils, CheckEmptyUtils.isEmpty);
+        when(mockerFunc)(ArgumentMatchers.any).afterReturn(true);
+        let mockerFunc1 = mocker.mockFunc(LauncherLayoutCacheUtil, LauncherLayoutCacheUtil.updateFormInfoByIdChange);
+        when(mockerFunc1)(ArgumentMatchers.any).afterThrow('testeeror');
+        layoutCacheManager.updateFormItemInfoById(newCard, 'DT', true);
+        layoutCacheManager.updateFormItemInfoById(newCard, 'DT', false);
+        expect(needFalse).assertTrue();
+      } catch (e) {
+      }
+      mocker.clear(LauncherLayoutCacheUtil);
+      mocker.clear(CheckEmptyUtils);
+      mocker.clearAll();
+      done();
+    })
+
+    it('test_addCardItemToDesktop_001', 0, async (done: Function)  => {
+      let layoutCacheManager: FormLayoutCacheManager = FormLayoutCacheManager.getInstance();
+      let mocker: MockKit = new MockKit();
+       try{
+         layoutCacheManager.addCardItemToDesktop(nullParam() as CardItemInfo, 'DT');
+         let needFalse: boolean = CheckEmptyUtils.isEmpty(nullParam());
+         expect(needFalse).assertTrue();
+         let defaultLayout: DefaultDesktopLayoutInfo = DefaultDesktopLayoutInfo.getDefaultLayoutInfo();
+         let layoutInfoList: GridLayoutItemInfo[] = [];
+         let infoId: string = '1';
+         let keyName: string = 'com.openharmony.demoAppPhoneEntryAbility';
+         let demoCard: GridLayoutItemInfo = new GridLayoutItemInfo();
+         demoCard.infoId = infoId;
+         demoCard.bundleName = BundleConstants.AI_SUGGESTION_BUNDLE;
+         demoCard.abilityName = BundleConstants.AI_SUGGESTION_ABILITY;
+         demoCard.typeId = CommonConstants.TYPE_CARD;
+         demoCard.page = 0;
+         demoCard.row = 0;
+         demoCard.column = 0;
+         demoCard.area = [2, 2];
+         demoCard.keyName = keyName;
+         demoCard.cardId = '1';
+         layoutInfoList.push(demoCard);
+         defaultLayout.layoutInfo = layoutInfoList;
+         let layoutCacheData: DesktopLayoutCacheData = new DesktopLayoutCacheData(defaultLayout);
+         layoutCacheManager.reInit(layoutCacheData);
+         let newCard: CardItemInfo = new CardItemInfo();
+         layoutCacheManager.addCardItemToDesktop(newCard, 'DT');
+         let res: GridLayoutItemInfo[] = layoutCacheManager.getAllGridLayoutItemList('DT');
+         let mockerFunc1 = mocker.mockFunc(LauncherLayoutCacheUtil, LauncherLayoutCacheUtil.updateFormInfoByIdChange);
+         when(mockerFunc1)(ArgumentMatchers.any).afterThrow('testeeror');
+         layoutCacheManager.addCardItemToDesktop(newCard, 'DT');
+         expect(res.length > 0).assertTrue();
+       } catch (e) {
+       }
+      mocker.clear(LauncherLayoutCacheUtil);
+      mocker.clearAll();
+      done();
+
     })
 
     it('test_insertFormStackItemInfo_001', 0, () => {
@@ -908,6 +1554,8 @@ function gridItem1(): GridLayoutItemInfo {
   let keyName: string = 'com.openharmony.demoAppPhoneEntryAbility';
   let demoCard: GridLayoutItemInfo = new GridLayoutItemInfo();
   demoCard.infoId = infoId;
+  demoCard.bundleName = BundleConstants.AI_SUGGESTION_BUNDLE;
+  demoCard.abilityName = BundleConstants.AI_SUGGESTION_ABILITY;
   demoCard.typeId = CommonConstants.TYPE_CARD;
   demoCard.page = 0;
   demoCard.row = 0;
@@ -969,6 +1617,8 @@ function createLayoutItems(): GridLayoutItemInfo[] {
   for (let index = 0; index < 3; index++) {
     let item0: GridLayoutItemInfo = new GridLayoutItemInfo();
     item0.typeId = CommonConstants.TYPE_CARD;
+    item0.bundleName = BundleConstants.AI_SUGGESTION_BUNDLE;
+    item0.abilityName = BundleConstants.AI_SUGGESTION_ABILITY;
     item1LayoutInfo.push(item0);
   }
   item1.layoutInfo = [item1LayoutInfo];

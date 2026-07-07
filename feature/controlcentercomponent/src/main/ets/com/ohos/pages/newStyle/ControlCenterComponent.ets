@@ -139,6 +139,7 @@ import TopToggleRow from './TopToggleRow';
 import { sBrightnessSubPageLayoutController } from '../../controller/BrightnessSubPageLayoutController';
 import { soundSubPageController } from '@ohos/soundcomponent';
 import { SliderButtonShareData } from '@ohos/controlcentercommon/src/main/ets/sliderButton/SliderButtonViewData';
+import { CloudMode, CloudModeManager } from '../../viewModel/CloudModeManager';
 import { DisplayUtils } from '@ohos/screenlockcommon';
 
 const EXPECTED_FRAME_RATE_RANGE: ExpectedFrameRateRange = {
@@ -421,6 +422,7 @@ export default struct ControlCenterComponent {
   @State quickToggles: string[] = [];
   @State topToggleArray: string[][] = [];
   @State @Watch('onDesktopModeChange') desktopMode: DesktopMode = EmergencyManager.getInstance().getData();
+  @State @Watch('onCloudModeChange') CloudMode: CloudMode = CloudModeManager.getInstance().getData();
 
   // 底部点击收起的空白区域高度
   @State tapBlankAreaHeight: number = 0;
@@ -474,6 +476,8 @@ export default struct ControlCenterComponent {
 
   handleToggleDataChanged() {
     if (this.desktopMode.desktopMode === DesktopModeEnum.EMERGENCY_MODE) {
+      return;
+    } else if (this.CloudMode.isOutdoorCloudMode || this.CloudMode.isOutDoorCloudMode) {
       return;
     }
     // 添加头部1*2开关
@@ -582,6 +586,31 @@ export default struct ControlCenterComponent {
     this.contentIndexArr.push(IOT_ITEM_NAME + this.contentIndexArr.length);
   }
 
+  onCloudModeChange() {
+    if (this.CloudMode.isOutdoorCloudMode || this.CloudMode.isOutDoorCloudMode) {
+      this.handleCloudMode();
+    } else {
+      log.showInfo('out CloudMode');
+      this.handleToggleDataChanged();
+    }
+  }
+
+  handleCloudMode() {
+    const cloudToggles = CloudModeManager.CLOUD_TOGGLES;
+    const cloudTopToggleArr = CloudModeManager.CLOUD_TOP_TOGGLES_ARRAY;
+    this.quickToggles = cloudToggles;
+    this.topToggleArray = cloudTopToggleArr;
+    this.lastToggles = this.quickToggles.join(',');
+    this.lastTopToggles = this.topToggleArray.join(',');
+    let currentToggles:string = this.toggleData.quickToggle.join(',');
+    DropDownPanelManager.updateQuickToggleData(currentToggles);
+    this.contentIndexArr = CloudModeManager.CLOUD_CONTENT_INDEX_ARR;
+    this.animationViewModel.updateViewDataArray(this.contentIndexArr.length + 1, Controller.isControlCenterVisible());
+    let toggleRowLen: number = Math.ceil(cloudToggles.length / QuickToggleController.getInstance().getToggleColumn());
+    this.toggleAreaHeight = toggleRowLen * 100;
+    this.setBottomBlankAreaHeight();
+  }
+
   onDesktopModeChange() {
     if (this.desktopMode.desktopMode === DesktopModeEnum.EMERGENCY_MODE) {
       log.showInfo('into emergency');
@@ -596,6 +625,8 @@ export default struct ControlCenterComponent {
       this.contentIndexArr = ['topToggleRow_0', 'addMoreTopButton', 'quickToggleRow_0'];
       this.animationViewModel.updateViewDataArray(this.contentIndexArr.length + 1, Controller.isControlCenterVisible());
       this.setBottomBlankAreaHeight();
+    } else if (this.CloudMode.isOutdoorCloudMode || this.CloudMode.isOutDoorCloudMode) {
+      this.handleCloudMode();
     }
     else {
       log.showInfo('out emergency');
@@ -609,6 +640,7 @@ export default struct ControlCenterComponent {
 
   aboutToAppear() {
     this.onDesktopModeChange();
+    this.onCloudModeChange();
     this.displaySyncObject = displaySync.create();
     // 设置DisplaySync期望的帧率
     this.displaySyncObject?.setExpectedFrameRateRange(EXPECTED_FRAME_RATE_RANGE);
@@ -697,6 +729,7 @@ export default struct ControlCenterComponent {
     Controller.setHomeViewData(undefined);
     Controller.setShowToastMethod(undefined);
     EmergencyManager.getInstance().unRegisterDesktopModeChange();
+    CloudModeManager.getInstance().unRegisterDesktopModeChange();
     this.eventMgr?.offAll();
     this.scrollBlurController?.unregister();
     VolumeController.getInstance().releaseVolumeChangeCallback();
@@ -1289,7 +1322,7 @@ export default struct ControlCenterComponent {
       .height(this.iotHeight + PADDING_HEIGHT)
       .padding({top: PADDING_HEIGHT})
       .visibility(VisibilityController.getIOTVisibility(
-        this.backgroundOpacity.backgroundOpacity, this.desktopMode, this.lockStatus))
+        this.backgroundOpacity.backgroundOpacity, this.desktopMode, this.lockStatus, this.CloudMode))
   }
 
   /**
@@ -1426,7 +1459,7 @@ export default struct ControlCenterComponent {
   loadPrivacySensor() {
     PrivacySensor({ animationData: this.animationDataArray[INDEX_HEADER] })
       .visibility(VisibilityController.getHeadVisibility(
-        this.data.state, this.backgroundOpacity.backgroundOpacity, this.desktopMode))
+        this.data.state, this.backgroundOpacity.backgroundOpacity, this.desktopMode, this.CloudMode))
       .height(this.isAccessibilityMode ?
         this.privacySensorParentComponentHeight + this.privacySensorData.privacySensorHeight : 0)
       .scale(this.data.state === ControlCenterState.MAIN_LAYOUT ?
@@ -1573,13 +1606,13 @@ export default struct ControlCenterComponent {
         .margin(CC_LAYOUT_CONFIGS[this.ccLayoutIndex].headerMargin)
         .scale(this.getHeaderLayoutScale())
         .visibility(VisibilityController.getHeadVisibility(
-          this.data.state, this.backgroundOpacity.backgroundOpacity, this.desktopMode))
+          this.data.state, this.backgroundOpacity.backgroundOpacity, this.desktopMode, this.CloudMode))
     }
     .direction(Direction.Ltr)
     .width(CC_LAYOUT_CONFIGS[this.ccLayoutIndex].headerWidth ?? '100%')
     .justifyContent(CC_LAYOUT_CONFIGS[this.ccLayoutIndex].headerWidth ? FlexAlign.Center : FlexAlign.End)
     .visibility(VisibilityController.getHeadLayoutVisibility(
-      this.data.state, this.backgroundOpacity.backgroundOpacity))
+      this.data.state, this.backgroundOpacity.backgroundOpacity, this.CloudMode))
     .onAppear(() => {
       this.uiContextRequestFocus('Ctrl.HeaderLayout_Image_edit_btn');
     })

@@ -33,6 +33,7 @@ import {
   CardItemInfo,
   CloseAppManager,
   Extend1Data,
+  FormRelationManager,
 } from '@ohos/launchercommon/src/main/ets/TsIndex';
 import { FormStackItemEventCb } from '@ohos/launchercommon/Index';
 import CardLockManager from '@ohos/launchercommon/src/main/ets/manager/CardLockManager';
@@ -94,6 +95,11 @@ export class FormStackItemEvent implements FormStackItemEventCb {
   }
 
   public onUpdateId(newCardId: string): void {
+    if (FormRelationManager.getInstance().isSceneBoardCard(this.mCardItem.bundleName, this.mCardItem.cardName)) {
+      log.showInfo(`onUpdateId cardId: ${this.mCardItem.cardId}, is sceneBoard card, return!`)
+      return;
+    }
+
     log.showWarn(`onUpdateId newCard: ${newCardId}, currentCard: ${this.mCardItem.cardId}, ` +
       `extend1: ${this.mCardItem.extend1}.`);
     if (this.mCardItem.cardId !== newCardId || this.mCardItem.extend1) {

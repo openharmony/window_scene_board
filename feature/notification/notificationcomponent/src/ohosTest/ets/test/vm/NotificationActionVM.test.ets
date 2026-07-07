@@ -175,6 +175,7 @@ export default function NtfActionVMTest() {
 
     let entry: NotificationEntry = new NotificationEntry();
     entry.isAutoDelete = true;
+    entry.isDeliverNotification = true;
     entry.hashCode = 1;
     let action: NotificationAction = new NotificationAction();
     action.wantAgent = new WantAgent();
@@ -217,6 +218,7 @@ export default function NtfActionVMTest() {
 
     let entry: NotificationEntry = new NotificationEntry();
     entry.isAutoDelete = true;
+    entry.isDeliverNotification = true;
     entry.hashCode = 1;
     let action: NotificationAction = new NotificationAction();
     action.wantAgent = new WantAgent();
@@ -259,6 +261,7 @@ export default function NtfActionVMTest() {
 
     let entry: NotificationEntry = new NotificationEntry();
     entry.isAutoDelete = true;
+    entry.isDeliverNotification = true;
     entry.hashCode = 1;
     let action: NotificationAction = new NotificationAction();
     action.wantAgent = new WantAgent();

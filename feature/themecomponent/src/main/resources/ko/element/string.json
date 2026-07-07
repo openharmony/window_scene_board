@@ -14,6 +14,13 @@
                 "priority":"translate"
             }
         },
+      {
+        "name":"Desktop_setting",
+        "value":"홈 화면 설정",
+        "attr":{
+          "priority":"translate"
+        }
+      },
         {
             "name":"stop_font_creation_service",
             "value":"서비스 종료",
@@ -157,6 +164,54 @@
       {
         "name": "wallpaper_editor",
         "value": "적용"
+      },
+      {
+        "name": "cancle",
+        "value": "취소"
+      },
+      {
+        "name": "set_wallpaper_all",
+        "value": "동시 설정"
+      },
+      {
+        "name": "set_wallpaper_desktop",
+        "value": "바탕 화면 배경 화면 설정"
+      },
+      {
+        "name": "set_wallpaper_lock",
+        "value": "잠금 화면 배경 화면 설정"
+      },
+      {
+        "name": "wallpaper_show_style",
+        "value": "배경 화면을 표시하는 방법"
+      },
+      {
+        "name": "screen_fit",
+        "value": "화면에 적합함"
+      },
+      {
+        "name": "screen_full",
+        "value": "화면을 가득 채우세요"
+      },
+      {
+        "name": "screen_center",
+        "value": "센터"
+      },
+      {
+        "name": "screen_sctetch",
+        "value": "가득 뻗다"
+      },
+      {
+        "name": "screen_tile",
+        "value": "타일"
+      },
+      {
+        "name": "image_decoding_failure",
+        "value": "이미지 오류입니다. 다시 시도하십시오."
+      },
+      {
+        "name":"Desktop_individuation",
+        "value":"홈 화면 및 스타일"
       }
     ]
 }

@@ -16,7 +16,7 @@ import { DeviceHelper } from '@ohos/frameworkwrapper/src/main/ets/TsIndex';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, MockKit, when } from '@ohos/hypium'
 import { SizeBreakPoint } from '../../../../../main/ets/constants/ScreenBreakPoint';
 import { DisplayUtils } from '../../../../../main/ets/TsIndex'
-import { UltraScreenStatus } from '../../../../../main/ets/utils/DisplayUtils'
+import { ThreeFoldStatus } from '../../../../../main/ets/utils/DisplayUtils'
 
 export default function DisplayUtilsTest() {
   let mocker: MockKit;
@@ -31,22 +31,22 @@ export default function DisplayUtilsTest() {
     afterAll(() => {
       mocker.clearAll();
     })
-    it('DisplayUtilsTest_getUltraScreenStatus', 0, () => {
-      const status = DisplayUtils.getUltraScreenStatus();
-      expect(status === UltraScreenStatus.F_STATUS || status === UltraScreenStatus.M_STATUS ||
-        status === UltraScreenStatus.G_STATUS || status === undefined).assertTrue();
+    it('DisplayUtilsTest_getThreeFoldStatus', 0, () => {
+      const status = DisplayUtils.getThreeFoldStatus();
+      expect(status === ThreeFoldStatus.F_STATUS || status === ThreeFoldStatus.M_STATUS ||
+        status === ThreeFoldStatus.G_STATUS || status === undefined).assertTrue();
     })
-    it('DisplayUtilsTest_isUltraScreenFMGStatus', 0, () => {
-      const isFStatus = DisplayUtils.isUltraScreenFStatus();
-      const isMStatus = DisplayUtils.isUltraScreenMStatus();
-      const isGStatus = DisplayUtils.isUltraScreenGStatus();
+    it('DisplayUtilsTest_isThreeFoldFMGStatus', 0, () => {
+      const isFStatus = DisplayUtils.isThreeFoldFStatus();
+      const isMStatus = DisplayUtils.isThreeFoldMStatus();
+      const isGStatus = DisplayUtils.isThreeFoldGStatus();
       expect(isFStatus && isMStatus && isGStatus).assertFalse();
     })
     it('DisplayUtilsTest_isLargeScreen', 0, () => {
       let mockerFun1 = mocker.mockFunc(DeviceHelper, DeviceHelper.isPad);
-      let mockerFun2 = mocker.mockFunc(DisplayUtils, DisplayUtils.getUltraScreenStatus);
+      let mockerFun2 = mocker.mockFunc(DisplayUtils, DisplayUtils.getThreeFoldStatus);
       when(mockerFun1)().afterReturn(false);
-      when(mockerFun2)().afterReturn(UltraScreenStatus.G_STATUS);
+      when(mockerFun2)().afterReturn(ThreeFoldStatus.G_STATUS);
       expect(DisplayUtils.isLargeScreen()).assertTrue();
       mocker.clear(DeviceHelper);
       mocker.clear(DisplayUtils);

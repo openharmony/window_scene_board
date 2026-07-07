@@ -33,6 +33,7 @@ import {
   BadgeItemInfo,
   CommonConstants,
   DeleteDockItem,
+  DeliverUtil,
   DockContinuableInfo,
   DockItemInfo,
   RdbStoreManager,

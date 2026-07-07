@@ -52,6 +52,7 @@
     "@ohos/wallpapercomponent": "../../feature/wallpapercomponent",
     "@ohos/systemdialog": "../../feature/systemdialog",
     "@ohos/collaborationfwkdialog": "../../feature/collaborationfwkdialog",
+    "@ohos/aisuggestion": "../../feature/desktop/aisuggestion",
     "@ohos/liveview": "../../feature/liveview",
     "@ohos/formstack": "../../feature/desktop/formstack",
     "@ohos/gesturenavigation": "../../feature/gesturenavigation",
@@ -81,6 +82,7 @@
     "@ohos/plugincardcomponent": "../../feature/systemstatus/plugincardcomponent",
     "@ohos/pcmode": "../../feature/pcmode",
     "@ohos/volumepanelcomponent": "../../feature/volume/volumepanelcomponent",
+    "@ohos/voiceagent": "file:../../feature/voiceagent",
     "@ohos/screenlockwidget": "file:../../feature/screenlock/screenlockwidget",
     "@ohos/appinstall": "../../feature/appinstall",
   }

@@ -32,6 +32,7 @@ import { SystemSceneBuilderParam } from '@ohos/windowscene/Index';
 import { BaseViewController } from '@ohos/frameworkcommon';
 import { DeviceHelper, rdbStoreConfig, viewMgrPolicy, ViewType } from '@ohos/frameworkwrapper';
 import { CommonStyleManager } from '@ohos/systemuicommon';
+import { CommonScbScreen } from '@ohos/commonscbscreen';
 import lazy {
   TouchBoardGestureManager
 } from '@ohos/phonebase/src/main/ets/SceneBoard/touchboardgesture/TouchBoardGestureManager';

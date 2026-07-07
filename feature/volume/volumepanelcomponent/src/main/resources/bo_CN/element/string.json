@@ -106,6 +106,13 @@
             }
         },
         {
+            "name":"volume_accessibility_voice_assistant",
+            "value":"ཞའོ་དབྱི་ཡི་སྒྲ།",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
             "name":"volume_accessibility_accessibility",
             "value":"འགལ་རྐྱེན་མེད།",
             "attr":{

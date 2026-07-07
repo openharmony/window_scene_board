@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { AppItemInfo, AppStatus, CommonConstants } from '../TsIndex';
+import { AppItemInfo, AppStatus, CommonConstants, DeliverUtil } from '../TsIndex';
 import { image } from '@kit.ImageKit';
 import fileuri from '@ohos.file.fileuri';
 import fs from '@ohos.file.fs';
@@ -81,6 +81,10 @@ export class RestoreLauncherDataManager {
           log.showDebug(`the icon resource path is abnormal, iconResource: ${item.iconResource}`);
           continue;
         }
+        if (DeliverUtil.isContainerItem(item.intent ?? '')) {
+          log.showDebug(`this icon is an application in the lake, intent: ${item.intent}`);
+          continue;
+        }
         count++;
         await this.getIconScaleUri(item.iconResource);
         log.showDebug(`icon resource after enlargement: ${item.iconResource}`);
@@ -138,6 +142,7 @@ export class RestoreLauncherDataManager {
       pixelMap = await this.loadImageFromDisk(iconUri);
       if (pixelMap) {
         const size: image.Size = pixelMap.getImageInfoSync().size;
+        // 将设备图标放大1.12倍
         await pixelMap.scale(CommonConstants.MIGRATE_PLACEHOLDER_ICON_SCALE,
           CommonConstants.MIGRATE_PLACEHOLDER_ICON_SCALE);
         let region: image.Region = {
@@ -145,7 +150,7 @@ export class RestoreLauncherDataManager {
           y: (CommonConstants.MIGRATE_PLACEHOLDER_ICON_SCALE - 1) * size.height / 2,
           size: { height: size.height, width: size.width }
         };
-        // 裁剪多余部分
+        // 裁剪多余部分，裁剪成设备图标规格
         await pixelMap.crop(region);
         await this.saveImage2Disk(iconUri, pixelMap);
         return;
@@ -212,6 +217,7 @@ export class RestoreLauncherDataManager {
       pixelMap = await this.loadImageFromDisk(iconUri);
       if (pixelMap) {
         const size: image.Size = pixelMap.getImageInfoSync().size;
+        // 将设备图标放大1.12倍
         await pixelMap.scale(CommonConstants.MIGRATE_PLACEHOLDER_ICON_SCALE,
           CommonConstants.MIGRATE_PLACEHOLDER_ICON_SCALE);
         let region: image.Region = {
@@ -219,7 +225,7 @@ export class RestoreLauncherDataManager {
           y: (CommonConstants.MIGRATE_PLACEHOLDER_ICON_SCALE - 1) * size.height / 2,
           size: { height: size.height, width: size.width }
         };
-        // 裁剪多余部分
+        // 裁剪多余部分，裁剪成设备图标规格
         await pixelMap.crop(region);
         let srcUriObject = new fileuri.FileUri(iconUri);
         let dstPath: string = this.filesDir + ICONS_DIR + srcUriObject.name;

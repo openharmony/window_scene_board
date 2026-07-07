@@ -42,6 +42,8 @@ export { TsLog, TsLog as Logger } from './src/main/ets/log/TsLog';
 
 export { JsonUtils } from './src/main/ets/utils/JsonUtils';
 
+export { CloudUtils } from './src/main/ets/utils/CloudUtils';
+
 export type { ClassConstructor,
   MapType,
   MapTypes,

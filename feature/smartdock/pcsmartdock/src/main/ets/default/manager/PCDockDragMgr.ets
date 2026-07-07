@@ -19,8 +19,13 @@ import { SCBConstants, DragConstants } from '@ohos/commonconstants';
 import { DragEventCallback } from '@ohos/componentdrag';
 import { dragSnapshotHelper, SnapshotType } from '@ohos/componenthelper';
 import { DragControllerParams } from '@ohos/componenthelper/Index';
-import { localEventManager, GlobalContext, SCBWindowSceneConfig, IconResourceManager,
-  DeviceHelper } from '@ohos/frameworkwrapper';
+import {
+  localEventManager,
+  GlobalContext,
+  SCBWindowSceneConfig,
+  IconResourceManager,
+  DeviceHelper
+} from '@ohos/frameworkwrapper';
 import { ResUtils, SCBTransitionManager } from '@ohos/windowscene';
 import { SCBCompanionManager } from '@ohos/windowscene/Index';
 import {
@@ -94,7 +99,6 @@ export class PCDockDragMgr {
   private lastDragMoveX: number = 0;
   private lastDragMoveY: number = 0;
   private dragParams: DragControllerParams = {};
-
   public foldHappen: boolean = false;
   public dropFrameDockItem: DockItemInfo | undefined = undefined;
 
@@ -181,6 +185,7 @@ export class PCDockDragMgr {
     }
     Trace.start(Trace.CORE_METHOD_DRAG_START);
     this.isDockDragging = true;
+    AppStorage.setOrCreate<boolean>('isDrag', true);
     localEventManager.sendLocalEvent(EventConstants.EVENT_PC_DOCK_DRAG_CHANGE, 'true');
     // 落位框出现
     const isLastResidentItem: boolean = this.isLastResidentItem(info);
@@ -194,7 +199,8 @@ export class PCDockDragMgr {
       this.dragItemDockType = dockType;
       this.dropItem = nextItem;
       this.dropFrameDockType = dockType;
-      this.cancelSqueezedInDockWithDelay();
+      // 不要在拖拽开始后立即取消落位框，只有当拖拽真正结束时才取消
+      // this.cancelSqueezedInDockWithDelay();
     }
     this.setDragMovePos(event.getWindowX(), event.getWindowY());
     Trace.end(Trace.CORE_METHOD_DRAG_START);
@@ -222,11 +228,6 @@ export class PCDockDragMgr {
       log.showInfo(`delayCancelSqueezedInDock onDockListNumChangeInDrag addResident: ${addResident}, addRecent: ${addRecent}`);
       this.onDockListNumChangeInDrag?.(addResident, addRecent, true);
       this.cancelSqueezedInDock(this.dropItem);
-      // 常驻区和运行区图标不变化情况下，取消拖拽时isDockDragging设置为false
-      if (addResident === 0 && addRecent === 0) {
-        this.isDockDragging = false;
-        localEventManager.sendLocalEvent(EventConstants.EVENT_PC_DOCK_DRAG_CHANGE, 'true');
-      }
       this.cancelSqueezedInDockTimerId = 0;
     }, MIN_INTERNAL)
   }
@@ -261,10 +262,13 @@ export class PCDockDragMgr {
       // 在运行区移动时不处理
       return false;
     }
-    // 文件管理，双中心、回收站不允许移动，但是回收站允许enter做落位，以方便能够落位到垃圾桶旁边
-    if (info.abilityName === CommonConstants.APPCENTER_ABILITY ||
-        info.abilityName === CommonConstants.RECENT_ABILITY ||
-        PCDockUtils.isPcFileManager(info.bundleName)) {
+    if (this.shouldOnlyDropAfterSystemItems(SmartDockConstants.RESIDENT_DOCK_TYPE)) {
+      // 常驻可删除区为空时，需要允许在系统尾部图标上触发落位框
+      return true;
+    }
+    // 文件管理图标不允许作为落位目标；双中心仅禁止起拖，允许作为落位锚点
+    // 避免在常驻区仅剩系统图标时，外部图标拖入没有可触发的添加框
+    if (PCDockUtils.isPcFileManager(info.bundleName)) {
       return false;
     }
     return true;
@@ -290,8 +294,9 @@ export class PCDockDragMgr {
 
   isDragFromDock(): boolean {
     return this.dragItemDockType === SmartDockConstants.RESIDENT_DOCK_TYPE ||
-    this.dragItemDockType === SmartDockConstants.RECENT_DOCK_TYPE;
+      this.dragItemDockType === SmartDockConstants.RECENT_DOCK_TYPE;
   }
+
   /**
    * 是否可以添加到快捷栏
    * @param info
@@ -300,7 +305,7 @@ export class PCDockDragMgr {
   private canAddToDock(info: DockItemInfo): boolean {
     let noAppDesktopIconList: string[] = AppStorage.get('noAppDesktopIconList') ?? [];
     return (info.itemType !== CommonConstants.TYPE_FUNCTION && !noAppDesktopIconList.includes(info.bundleName) &&
-      CheckEmptyUtils.isEmpty(info.persistentId));
+    CheckEmptyUtils.isEmpty(info.persistentId));
   }
 
   private checkDragMoveParams(info: DockItemInfo, moveItemRect: Rectangle): boolean {
@@ -347,6 +352,16 @@ export class PCDockDragMgr {
     return SmartDockModel.getInstance().checkSameDockItem(this.localResidentList[len - 1], info);
   }
 
+  /**
+   * 常驻可删除区为空时，仅允许落位在不可删除系统图标尾部
+   */
+  private shouldOnlyDropAfterSystemItems(dockType: number): boolean {
+    return dockType === SmartDockConstants.RESIDENT_DOCK_TYPE &&
+      !this.isDragFromDock() &&
+      this.localResidentList.length === 0 &&
+      this.systemResidentList.length > 0;
+  }
+
   public setDragMovePos(dragMouseX: number, dragMouseY: number): void {
     if (!this.isDropAnimating) {
       this.lastDragMoveX = dragMouseX;
@@ -376,6 +391,19 @@ export class PCDockDragMgr {
     this.setDragMovePos(event.getWindowX(), event.getWindowY());
 
     if (!this.checkDragMoveParams(info, moveItemRect)) {
+      return;
+    }
+    if (this.shouldOnlyDropAfterSystemItems(dockType)) {
+      this.isDockDragging = true;
+      localEventManager.sendLocalEvent(EventConstants.EVENT_PC_DOCK_DRAG_CHANGE, 'true');
+      const lastSystemItem = this.systemResidentList[this.systemResidentList.length - 1];
+      if (lastSystemItem && this.isSameItem(info, lastSystemItem)) {
+        this.updateDropFrame(lastSystemItem, dockType, true, true);
+      } else if (this.isShowDropFrame) {
+        // 仅允许在系统尾部显示落位框，其他位置隐藏
+        this.cancelSqueezedInDock(this.dropItem);
+        this.dropItem = undefined;
+      }
       return;
     }
     this.isDockDragging = true;
@@ -452,8 +480,19 @@ export class PCDockDragMgr {
       log.showInfo('no dock item');
       return;
     }
+    // 不可删除快捷方式区(systemResidentList)前/中间不允许出现落位框：
+    // 只允许落在不可删除区之后，也就是系统区最后一个图标的右侧。
+    if (dockType === SmartDockConstants.RESIDENT_DOCK_TYPE && this.systemResidentList.length > 0) {
+      const sysIndex: number = this.systemResidentList.findIndex((sysItem: DockItemInfo) => {
+        return SmartDockModel.getInstance().checkSameDockItem(sysItem, dropFrameItem);
+      });
+      if (sysIndex >= 0) {
+        dropFrameItem = this.systemResidentList[this.systemResidentList.length - 1];
+        isShowRight = true;
+      }
+    }
     if (this.dropItem && this.dropItem === dropFrameItem &&
-        this.isShowDropFrame && (this.isShowRightDropFrame == isShowRight)) {
+    this.isShowDropFrame && (this.isShowRightDropFrame == isShowRight)) {
       log.showInfo(`isShowRight:${isShowRight} isShowRightDropFrame:${this.isShowRightDropFrame}`)
       return;
     }
@@ -494,6 +533,7 @@ export class PCDockDragMgr {
       }
     });
   }
+
   unInit(): void {
     log.showDebug('unInit unregister Drag Event');
     this.getContext()?.eventHub.off(DragConstants.DRAG_PREPARE_STATUS_CHANGE_EVENT);
@@ -542,19 +582,23 @@ export class PCDockDragMgr {
   }
 
   private getDragStartInDockEvent(appInfo: DockItemInfo | AppItemInfo): string {
-    return `${DragConstants.DRAG_START_EVENT}${appInfo.bundleName}_${appInfo.abilityName}_${appInfo.appIndex}_${appInfo?.shortcutId || ''}_${appInfo.persistentId || ''}_${appInfo.appInstanceKey}_FromDock`;
+    return `${DragConstants.DRAG_START_EVENT}${appInfo.bundleName}_${appInfo.abilityName}_${appInfo.appIndex}_${appInfo?.shortcutId ||
+      ''}_${appInfo.persistentId || ''}_${appInfo.appInstanceKey}_FromDock`;
   }
 
   private getItemSqueezedCancelEvent(appInfo: DockItemInfo | AppItemInfo): string {
-    return `${DragConstants.ITEM_SQUEEZED_CANCEL_EVENT}${appInfo.bundleName}_${appInfo.abilityName}_${appInfo.appIndex}_${appInfo?.shortcutId || ''}_${appInfo.persistentId || ''}_${appInfo.appInstanceKey}_FromDock`;
+    return `${DragConstants.ITEM_SQUEEZED_CANCEL_EVENT}${appInfo.bundleName}_${appInfo.abilityName}_${appInfo.appIndex}_${appInfo?.shortcutId ||
+      ''}_${appInfo.persistentId || ''}_${appInfo.appInstanceKey}_FromDock`;
   }
 
   private getItemSqueezedStartEvent(appInfo: DockItemInfo | AppItemInfo): string {
-    return `${DragConstants.ITEM_SQUEEZED_START_EVENT}${appInfo.bundleName}_${appInfo.abilityName}_${appInfo.appIndex}_${appInfo?.shortcutId || ''}_${appInfo.persistentId || ''}_${appInfo.appInstanceKey}_FromDock`;
+    return `${DragConstants.ITEM_SQUEEZED_START_EVENT}${appInfo.bundleName}_${appInfo.abilityName}_${appInfo.appIndex}_${appInfo?.shortcutId ||
+      ''}_${appInfo.persistentId || ''}_${appInfo.appInstanceKey}_FromDock`;
   }
 
   private getDropAnimationEndEvent(appInfo: DockItemInfo | AppItemInfo): string {
-    return `${DragConstants.DROP_ANIMATION_END_EVENT}${appInfo.bundleName}_${appInfo.abilityName}_${appInfo.appIndex}_${appInfo?.shortcutId || ''}_${appInfo.persistentId || ''}_${appInfo.appInstanceKey}_FromDock`;
+    return `${DragConstants.DROP_ANIMATION_END_EVENT}${appInfo.bundleName}_${appInfo.abilityName}_${appInfo.appIndex}_${appInfo?.shortcutId ||
+      ''}_${appInfo.persistentId || ''}_${appInfo.appInstanceKey}_FromDock`;
   }
 
   private getContext(): ctx.ServiceExtensionContext {
@@ -567,7 +611,8 @@ export class PCDockDragMgr {
    */
   public onDragLeave(info: DockItemInfo): void {
     log.showInfo(`onDragLeave ${info.bundleName},${info.appIndex}`);
-    this.cancelSqueezedInDockWithDelay();
+    // 不要在拖拽过程中取消落位框，只有当拖拽真正结束时才取消
+    // this.cancelSqueezedInDockWithDelay();
   }
 
   /**
@@ -664,7 +709,7 @@ export class PCDockDragMgr {
     // 当使用dragController时，准备截图位置数据
     if (this.dragParams?.key?.length === 1 && !this.dragSnapshotRelativeRect) {
       const snapshot: image.PixelMap | undefined = dragSnapshotHelper.getSnapshot(SnapshotType.DRAG,
-      this.dragParams.key[0]);
+        this.dragParams.key[0]);
       if (!snapshot) {
         log.error(`dealDragParams: unready snapshot ${this.dragParams.key[0]}`);
         return;
@@ -677,7 +722,9 @@ export class PCDockDragMgr {
         height: px2vp(iconSize.height)
       });
       this.dragParams = {};
-    } else {
+    } else if (!this.dragSnapshotRelativeRect && this.dragItemDockType !== SmartDockConstants.RESIDENT_DOCK_TYPE &&
+      this.dragItemDockType !== SmartDockConstants.RECENT_DOCK_TYPE) {
+      // 只对从dock外拖拽的情况进行getDragItemRect检查，从dock内部拖拽时跳过
       const rect = dragTriggerUtil.getDragItemRect();
       if (!rect) {
         log.error('getDragItemRect undefined');
@@ -735,6 +782,7 @@ export class PCDockDragMgr {
     this.isDropAnimating = false;
     AppStorage.set<boolean>('isDropAnimationGoing', false)
     this.isDockDragging = false;
+    AppStorage.setOrCreate<boolean>('isDrag', false);
     localEventManager.sendLocalEvent(EventConstants.EVENT_PC_DOCK_DRAG_CHANGE, 'true');
     PcModeDockUtils.callHideDock();
   }
@@ -753,10 +801,17 @@ export class PCDockDragMgr {
   public onDrop(dockIconRadius: number): void {
     log.showInfo('onDrop start');
     if (!this.isShowDropFrame || this.dropFrameRectBundleName !== this.dropItem?.bundleName ||
-    !this.dragSnapshotRelativeRect) {
+      !this.dragSnapshotRelativeRect) {
       // 如果落位框没有显示，或者落位框位置数据没有准备好, 不处理
       log.showInfo('onDrop params invalid: isShowDropFrame = ' + this.isShowDropFrame + ', dropFrameRectBundleName = ' +
-      this.dropFrameRectBundleName + ', dropItem.bundleName = ' + this.dropItem?.bundleName + ', dragSnapshotRelativeRect = ' + this.dragSnapshotRelativeRect);
+      this.dropFrameRectBundleName + ', dropItem.bundleName = ' + this.dropItem?.bundleName +
+        ', dragSnapshotRelativeRect = ' + this.dragSnapshotRelativeRect);
+      return;
+    }
+    if (this.shouldOnlyDropAfterSystemItems(this.dropFrameDockType)) {
+      // 仅系统图标场景下直接落位，避免动画回调链导致不入dock
+      this.changeDockList();
+      this.handleDockDragEnd(false, true);
       return;
     }
     Trace.start(Trace.CORE_METHOD_DRAG_DROP);
@@ -772,7 +827,7 @@ export class PCDockDragMgr {
       iconNumber: this.dragItem?.appIconId ?? 0,
       appIndex: this.dragItem?.appIndex as number,
       shortcutId: this.dragItem?.shortcutId ?? '',
-      appInstanceKey:this.dragItem?.appInstanceKey as string,
+      appInstanceKey: this.dragItem?.appInstanceKey as string,
       iconRadius: 0,
       startAppType: StartType.APP,
       cardId: '',
@@ -801,7 +856,7 @@ export class PCDockDragMgr {
     want.set('appIndex', this.dragItem?.appIndex);
     want.set('appInstanceKey', this.dragItem?.appInstanceKey);
     if (ResUtils.getNumberFromLength(this.dropFrameRect?.width) > 0 &&
-    ResUtils.getNumberFromLength(this.dropFrameRect?.height) > 0) {
+      ResUtils.getNumberFromLength(this.dropFrameRect?.height) > 0) {
       const scaleX = ResUtils.getNumberFromLength(this.dragSnapshotRelativeRect?.width) /
       ResUtils.getNumberFromLength(this.dropFrameRect?.width);
       const scaleY = ResUtils.getNumberFromLength(this.dragSnapshotRelativeRect?.height) /
@@ -819,7 +874,8 @@ export class PCDockDragMgr {
       want.set('iconResource', this.dragItem?.iconResource);
     }
     want.set('startType', StartType.DOCK_APP);
-    log.showInfo('generateDropAnim end, drop to area: ' + want.get('posX') + ' y: ' + want.get('posY') + ' width: ' + want.get('width') + ' height: ' + want.get('height') + ' scaleX: ' + want.get('scaleX'));
+    log.showInfo('generateDropAnim end, drop to area: ' + want.get('posX') + ' y: ' + want.get('posY') + ' width: ' +
+    want.get('width') + ' height: ' + want.get('height') + ' scaleX: ' + want.get('scaleX'));
     compViewController?.backward?.(want);
   }
 
@@ -884,7 +940,7 @@ export class PCDockDragMgr {
       return;
     }
     log.showInfo(`moveResidentItem ${this.dragItem?.bundleName} before ${this.dropItem?.bundleName}, from ` +
-    `${itemIndex} to ${insertIndex}, ${this.isShowRightDropFrame}, ${this.globalResidentList.length}`);
+      `${itemIndex} to ${insertIndex}, ${this.isShowRightDropFrame}, ${this.globalResidentList.length}`);
     if (this.isShowRightDropFrame) {
       this.moveResidentItemToBack(itemIndex);
     } else {

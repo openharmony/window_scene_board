@@ -46,6 +46,7 @@ export class SpecialModeViewData extends BaseViewData {
   public lowPositionConf: MirrorAniConfig = new MirrorAniConfig();
   public isPadPortrait: boolean = false;
   public gridWidth: number = 0;
+  public isShowGestureNavAiBar: boolean = true;
 
   getSpecialModeTextInfo(): string {
     if (this.curMode === KeyGuardMode.LOST_MODE) {

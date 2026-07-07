@@ -40,7 +40,8 @@ import {
   IconResourceManager,
   PackageCommonEvent,
   onLineThemeUtil,
-  SettingsUtil
+  SettingsUtil,
+  LightOutdoorConfig
 } from '@ohos/frameworkwrapper';
 import { launcherStatusUtil } from '@ohos/windowscene';
 import { EventConstants } from '../constants/EventConstants';
@@ -48,6 +49,7 @@ import { CommonConstants, DeleteItemType } from '../constants/CommonConstants';
 import { FormModel } from './FormModel';
 import { AppItemInfo } from '../bean/AppItemInfo';
 import { DockItemInfo } from '../bean/DockItemInfo';
+import { BaseDeliverUtil } from '../utils/BaseDeliverUtil';
 import GridLayoutUtil from '../utils/GridLayoutUtil';
 import { launcherAbilityManager } from '../abilitymanager/LauncherAbilityManager';
 import { AtomicServiceAppModel } from './AtomicServiceAppModel';
@@ -287,12 +289,52 @@ export class AppModel {
 
     let isThemeChange: boolean =
       (bundleResourceChangeType & EventConstants.BUNDLE_RESOURCE_CHANGE_TYPE_SYSTEM_THEME_CHANGE) !== 0;
+    if (isThemeChange) {
+      // 云端2切云端1时，不做任何处理
+      if (onLineThemeUtil.switchBetweenCloud()) {
+        log.showWarn('BUNDLE_RESOURCES_CHANGED: switch between cloud');
+        return;
+      }
+      // （云端2切普通模式，且上一次切主题完成时）或者 普通模式切换到云端2 ，只清理memorycache，然后通知图标刷新
+      if ((onLineThemeUtil.switchBetweenCloudAndNormal() && this.checkThemeChangeStatus()) ||
+      LightOutdoorConfig.getInstance().isOnLightOutdoorMode()) {
+        this.handleSwitchBetweenCloudAndNormal();
+        return;
+      }
+    }
     // 切换语言、隐私空间不清理图标缓存
     let isNeedClearCache: boolean = bundleResourceChangeType !== EventConstants.BUNDLE_RESOURCE_CHANGE_TYPE_SYSTEM_LANGUAGE_CHANGE &&
       bundleResourceChangeType !== EventConstants.BUNDLE_RESOURCE_CHANGE_TYPE_SYSTEM_USER_ID_CHANGE;
     if (isNeedClearCache) {
       this.clearAppResourceCache();
     }
+  }
+
+  private async handleSwitchBetweenCloudAndNormal(): Promise<void> {
+    log.showInfo('BUNDLE_RESOURCES_CHANGED: handleSwitchBetweenCloudAndNormal');
+    this.notifyClearCache();
+    // 清理动态图标缓存
+    this.deleteDynamicIconCache();
+    // 清除快捷图标缓存
+    ResourceManager.getInstance().clearAppResourceCache();
+    AdaptiveIconManager.getInstance().clearIconResources('bundle resource change');
+    await IconResourceManager.getInstance().clearCachedIconFromMemoryCache(`${TAG} CLOUD_MODE_CHANGE`);
+    this.mIconChangeListener.forEach(listener => listener.onIconResourceChange());
+    localEventManager.sendLocalEvent(EventConstants.EVENT_REFRESH_ALL_SMALL_FOLDER_IMAGE, null);
+    localEventManager.sendLocalEventSticky(EventConstants.EVENT_ICON_RESOURCE_REFRESH, {
+      type: UpdateType.FULL,
+      bundleNames: null
+    });
+    // 云端模式切到普通模式时，做一次checkversion，刷新图标
+    if (!LightOutdoorConfig.getInstance().isOnLightOutdoorMode()) {
+      await IconResourceManager.getInstance().checkSystemStateAndVersion();
+    }
+  }
+
+  private checkThemeChangeStatus(): boolean {
+    let themeChangeStatus: string = SettingsUtil.getValueEx(settings.domainName.USER_PROPERTY,
+      SettingsKeyConstants.THEME_CHANGE_STATUS, '');
+    return themeChangeStatus === '' || themeChangeStatus === SettingsConstants.THEME_CHANGE_STATUS_FINISH;
   }
 
   private async clearAppResourceCache(): Promise<void> {
@@ -308,7 +350,18 @@ export class AppModel {
     ResourceManager.getInstance().clearAppResourceCache();
     AdaptiveIconManager.getInstance().clearIconResources('bundle resource change');
     // 清除快捷图标背景图缓存
+    // 切换主题，如果有dh应用，先从缓存读取所有应用图标，切换主题后如果读不到应用图标时，再使用此缓存图标展示
     let deliverAppIconInfosMap: Map<string, IconInfo> = new Map<string, IconInfo>();
+    if (BaseDeliverUtil.isHaveDeliverApps()) {
+      await Promise.all(this.getAppList().map(async appItem => {
+        if (appItem.codePath === DELIVER_APP_CODE_PATH) {
+          let iconInfo: IconInfo = await IconResourceManager.getInstance().getIconResource(appItem.bundleName, appItem.moduleName,
+            appItem.abilityName);
+          deliverAppIconInfosMap.set(appItem.bundleName, iconInfo);
+        }
+      }));
+      IconResourceManager.getInstance().setDeliverAppIconInfosMap(deliverAppIconInfosMap);
+    }
 
     await IconResourceManager.getInstance().clearAppResourceCache(`${TAG} THEME_CHANGE`);
     await RefreshStrategyManager.getInstance().refreshLayout(this.mIconChangeListener, deliverAppIconInfosMap);
@@ -323,7 +376,9 @@ export class AppModel {
     }
     let themeChangeStatus: string = SettingsUtil.getValueEx(settings.domainName.USER_PROPERTY,
       SettingsKeyConstants.THEME_CHANGE_STATUS, '');
-    let status: string = themeChangeStatus === SettingsConstants.THEME_CHANGE_STATUS_STOP ?
+    // TODO 存库操作是异步进行，有概率出现存库过程中被打断，切主题过程中未发生打断,且没有进入云端2，则标记主题切换完成
+    let status: string = LightOutdoorConfig.getInstance().isOnLightOutdoorMode() ||
+      themeChangeStatus === SettingsConstants.THEME_CHANGE_STATUS_STOP ?
       SettingsConstants.THEME_CHANGE_STATUS_STOP : SettingsConstants.THEME_CHANGE_STATUS_FINISH;
     SettingsUtil.setValueEx(settings.domainName.USER_PROPERTY,
       SettingsKeyConstants.THEME_CHANGE_STATUS, status);
@@ -659,6 +714,52 @@ export class AppModel {
     this.callBack = [];
     log.showInfo(`setAppListAsync--->allAbilityList length after filtration: ${launcherAbilityList.length}`);
     return launcherAbilityList;
+  }
+
+  /**
+   *
+   * @param appItemInfo  app info  set app info to mBundleInfoList
+   *
+   */
+  public setAppListByDelivery(appItemInfo: AppItemInfo): void {
+    if (!appItemInfo.appIndex) {
+      // mBundleInfoMap只缓存主应用，不涉及分身
+      this.mBundleInfoMap.set(appItemInfo.bundleName, appItemInfo);
+    }
+    let keyName = AppItemInfo.getKeyName(appItemInfo);
+    let bundleInfo = this.isExistBundleInfoList(keyName);
+    if (bundleInfo) {
+      this.deleteBundleItem(bundleInfo);
+    }
+    log.showInfo('setAppListByDelivery---> keyNameNew: %{public}s', keyName);
+    let appName: string = IconResourceManager.getInstance().getCachedIconNameSync(appItemInfo.bundleName,
+      appItemInfo.moduleName, appItemInfo.abilityName);
+    if (appName) {
+      appItemInfo.appName = appName;
+    }
+    this.mBundleInfoList.push(appItemInfo);
+  }
+
+  /**
+   * delete uninstall apps from mBundleInfoList and mBundleInfoMap
+   *
+   * @param deliverApps installed appinfos
+   */
+  public deleteAppsByDelivery(deliverApps: AppItemInfo[]): void {
+    if (!BaseDeliverUtil.isSupportDeliver() || deliverApps === undefined || deliverApps === null) {
+      return;
+    }
+    this.mBundleInfoList = this.mBundleInfoList.filter(appItem => {
+      if (appItem?.codePath !== DELIVER_APP_CODE_PATH || appItem?.appStatus !== AppStatus.INSTALLED) {
+        return true;
+      }
+      if (!deliverApps.some(deliverAppItem => deliverAppItem.bundleName === appItem.bundleName)) {
+        log.showWarn(`remove uninstalled deliverApp, bundleName = ${appItem.bundleName}`);
+        this.appItemRemove(appItem.bundleName, 0);
+        return false;
+      }
+      return true;
+    });
   }
 
   private checkIconMissWhenPowerOn(bundleInfoList: AppItemInfo[]): void {

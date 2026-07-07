@@ -36,7 +36,9 @@ export class WinPluginGroupCalculate extends PluginGroupCalculateBase {
         [PluginGroupType.THIRD_GROUP, PluginSlot.SLOT_STATUS_CONTROL_CENTER],
         [PluginGroupType.FOURTH_GROUP, PluginSlot.SLOT_STATUS_NOTIFICATION_PANEL],
       ])],
-      ]);
+      [PluginPositionType.ASSISTANT_VOICE, new Map([
+        [PluginGroupType.FIRST_GROUP, PluginSlot.SLOT_STATUS_ASSISTANT_VOICE]
+      ])]]);
 
     this.slotInWhereMap = new Map([
       [PluginPositionType.BOTTOM_LEFT, new Map([
@@ -64,6 +66,10 @@ export class WinPluginGroupCalculate extends PluginGroupCalculateBase {
         [PluginSlot.SLOT_STATUS_IDESK, PluginGroupType.TEMPORARY],
         [PluginSlot.SLOT_STATUS_vpn, PluginGroupType.TEMPORARY],
         [PluginSlot.SLOT_STATUS_ICPM, PluginGroupType.TEMPORARY]
+      ])
+      ],
+      [PluginPositionType.ASSISTANT_VOICE, new Map([
+        [PluginSlot.SLOT_STATUS_ASSISTANT_VOICE, PluginGroupType.FIRST_GROUP]
       ])
       ]
     ]);

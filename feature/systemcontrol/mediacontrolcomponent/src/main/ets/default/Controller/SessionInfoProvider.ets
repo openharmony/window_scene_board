@@ -1,5 +1,5 @@
 /*
- * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -380,6 +380,9 @@ export default class SessionInfoProvider {
     }
     for (let i = 0; i < descriptors.length; i++) {
       let aliveSessionDes: AVSessionManager.AVSessionDescriptor = descriptors[i];
+      if (aliveSessionDes.sessionTag === 'deliver_audio') {
+        continue;
+      }
       const sessionId = aliveSessionDes.sessionId;
       // 通话卡片
       if (aliveSessionDes.type === 'voice_call' || aliveSessionDes.type === 'video_call') {
@@ -514,6 +517,9 @@ export default class SessionInfoProvider {
 
   private topSessionChangeCallback = async (session: AVSessionManager.AVSessionDescriptor) => {
     log.showInfo(`topSessionChange: ${session.type}, ${session.isTopSession}, ${session.sessionTag}`);
+    if (session.sessionTag === 'deliver_audio') {
+      return;
+    }
     this.topSessionId = session.sessionId;
     if (!DeviceHelper.isPC() && !!session.isTopSession) {
       AppStorage.setOrCreate('MediaType', session.type);
@@ -525,6 +531,9 @@ export default class SessionInfoProvider {
     const isColdStarting = globalStorage.getBooleanByKey('isColdStarting');
     log.showInfo(`on sessionCreate: ${session.sessionId?.length < 10 ? '' : (session.sessionId?.substr(0, 5) + '**' +
     session.sessionId?.substr(session.sessionId?.length - 5))}, ${isColdStarting}, ${session.sessionTag}`);
+    if (session.sessionTag === 'deliver_audio') {
+      return;
+    }
     this.avSessionDescriptorMap[session.sessionId] = session;
     if (this.enableDc) {
       // 通知子线程

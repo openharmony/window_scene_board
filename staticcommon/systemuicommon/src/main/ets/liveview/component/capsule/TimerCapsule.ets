@@ -23,6 +23,7 @@ import { LiveViewCapsuleStyle } from '../../common/LiveViewCapsuleStyle';
 import { LengthMetrics } from '@ohos.arkui.node';
 import { LiveAccessibilityUtil } from '../../common/liveAccessibilityUtil';
 import { LiveViewCommonConstants } from '../../common/LiveConstants';
+import { ImmersiveAodStyle } from '../../../immersivekeyguardcommon/base/interface/ImmersiveAodStyle';
 import { immersiveKgMgr } from '../../../immersivekeyguardcommon/manager/ImmersiveKeyguardStateManager';
 import { ResUtils } from '@ohos/windowscene/src/main/ets/TsIndex';
 
@@ -40,6 +41,10 @@ export enum TimeState {
 @Component
 export default struct TimerCapsule {
   @State capsuleListState: CapsuleListState = capsuleStateMgr.getCapsuleState();
+  /**
+   * AOD显示样式
+   */
+  @State aodStyle: ImmersiveAodStyle | undefined = immersiveKgMgr.getOneMirrorState().getAodStyle(true);
   @ObjectLink @Watch('refreshCapsule') data: LiveCapsuleData;
   @ObjectLink timeData: LiveTimerData;
   @Prop textOpacity: number;
@@ -125,7 +130,7 @@ export default struct TimerCapsule {
 
   private getExtendText(): string | undefined {
     if (this.isOuterHomeAod) {
-      return LiveViewCommonConstants.COUNTDOWN_TEXT;
+      return LiveViewCommonConstants.AOD_COUNTDOWN_TEXT;
     }
     return this.data?.extend ?? '';
   }

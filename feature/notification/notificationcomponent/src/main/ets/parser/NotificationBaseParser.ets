@@ -32,6 +32,7 @@ import { NtfControlConfig } from '@ohos/systemuicommon/src/main/ets/model/NtfCon
 import { BundleResourceParser, NotificationBase, NotificationUtil } from '@ohos/systemuicommon/newTsIndex';
 import { HdsIconTaskUtil } from '@ohos/systemuicommon/src/main/ets/utils/HdsIconTaskUtil';
 import { wantAgent } from '@kit.AbilityKit';
+import { DeliverInstallSource } from '@ohos/systemuicommon/src/main/ets/model/NotificationContent';
 import { process } from '@kit.ArkTS';
 import { RdbStoreManager } from '@ohos/launchercommon/src/main/ets/db/RdbStoreManager';
 import { WantAgentUtil } from '@ohos/systemuicommon/src/main/ets/utils/WantAgentUtil';
@@ -92,6 +93,7 @@ export abstract class NotificationBaseParser<T extends NotificationBase = Notifi
     this.parseCreatorInfo();
     await Promise.all([
       this.parseAppConfig(this.oldNtf),
+      this.parseWantAgentInfo(),
       this.parseSmallIcon(),
       this.parseCollaborationData(),
     ]);
@@ -140,6 +142,9 @@ export abstract class NotificationBaseParser<T extends NotificationBase = Notifi
     this.ntf.overlayIconStyle = this.parseOverlayIconStyle();
     this.ntf.smallIconOrigin = this.request.smallIcon;
     this.ntf.overlayIcon = this.request.overlayIcon;
+    if (this.ntf.isDeliverNotification) {
+      this.ntf.overlayIcon = undefined;
+    }
     this.ntf.wantAgent = this.request.wantAgent!;
     this.ntf.removalWantAgent = this.request.removalWantAgent;
     this.ntf.deliveryTime = this.request.deliveryTime ?? 0;
@@ -154,8 +159,11 @@ export abstract class NotificationBaseParser<T extends NotificationBase = Notifi
 
   private setHeadsUpStick(): void {
     this.ntf.isHeadsUpStick =
-      this.request.extraInfo?.openharmony_keep_headsup_sticky && this.request.extraInfo?.openharmony_keep_headsup_sticky === true &&
-      this.ntf.isFromSystemApp;
+      this.request.extraInfo?.hw_keep_headsup_sticky && this.request.extraInfo?.hw_keep_headsup_sticky === true
+       // && this.ntf.isFromSystemApp;
+    log.showInfo(`_oh_ans_sys_traceid accquired from ANS: ${this.request.extraInfo?._oh_ans_sys_traceid}`);
+    log.showInfo(`_oh_ans_sys_traceid accquired from ANS: ${ this.ntf.isFromSystemApp}`)
+
   }
 
   /**
@@ -172,7 +180,12 @@ export abstract class NotificationBaseParser<T extends NotificationBase = Notifi
    * 填充extra信息
    */
   private fillExtraInfo(): void {
-    this.ntf.isHiddenInKg = this.request.extraInfo?.openharmony_live_view_hidden_when_keyguard === true;
+    this.ntf.isHiddenInKg = this.request.extraInfo?.hw_live_view_hidden_when_keyguard === true;
+    this.ntf.isDeliverNotification = this.request.extraInfo?.is_deliverNotification === true;
+    this.ntf.deliverNotificationKey = this.request.extraInfo?.deliver_notification_key ?? '';
+    this.ntf.deliverInstallSource = this.request.extraInfo?.hw_deliver_install_source;
+    this.ntf.isDeliverFullScreen = this.request.extraInfo?.isDeliverFullScreen ?? false;
+    this.ntf.channelId = this.request.extraInfo?.hw_deliver_channel_id;
     this.ntf.isCollaNotification = this.request.extendInfo?.notification_collaboration_flag === true;
     log.showInfo(`_oh_ans_sys_traceid accquired from ANS: ${this.request.extraInfo?._oh_ans_sys_traceid}`);
     this.ntf.traceId = this.request.extraInfo?._oh_ans_sys_traceid;
@@ -180,15 +193,16 @@ export abstract class NotificationBaseParser<T extends NotificationBase = Notifi
 
   /**
    * 解析Overlay图标样式
-   * 1、听歌识曲场景需要通知 openharmony_overlay_style 解析
-   * 2、其他场景不解析此字段（变向做权限管控）
+   * 1、听歌识曲场景需要通知 hw_overlay_style 解析
+   * 2、deliver通知需要 hw_overlay_style 解析
+   * 3、其他场景不解析此字段（变向做权限管控）
    *
    * @returns
    */
   private parseOverlayIconStyle(): OverlayIconStyle {
-    if (this.request.content.systemLiveView?.typeCode === SysTypeCode.NAME_THAT_TUNE ||
+    if (this.request.content.systemLiveView?.typeCode === SysTypeCode.NAME_THAT_TUNE || this.ntf.isDeliverNotification ||
       this.ntf.isCollaNotification) {
-      return this.request.extraInfo?.openharmony_overlay_style ?? OverlayIconStyle.CIRCLE;
+      return this.request.extraInfo?.hw_overlay_style ?? OverlayIconStyle.CIRCLE;
     }
     return OverlayIconStyle.CIRCLE;
   }
@@ -231,7 +245,7 @@ export abstract class NotificationBaseParser<T extends NotificationBase = Notifi
 
     log.showInfo(`start get app config for uid ${uid}, isSA: ${this.request.extendInfo?.notification_publish_by_sa}`);
     const config =
-      await notificationConfigManager.getConfig(uid, this.request.creatorBundleName);
+      await notificationConfigManager.getConfig(uid, this.request.creatorBundleName, this.ntf.isDeliverNotification);
     const isSa = this.request.extendInfo?.notification_publish_by_sa === '1';
     log.showInfo(`get app config finish, config ${config}, bundle ${config?.bundle} agentUid ${agentUid}, uid ${uid}`);
 
@@ -270,6 +284,58 @@ export abstract class NotificationBaseParser<T extends NotificationBase = Notifi
   }
 
   /**
+   * 解析通知跳转信息
+   * @returns
+   */
+  private async parseWantAgentInfo(): Promise<void> {
+    this.ntf.wantAgentInfo = (await WantAgentUtil.parseWantAgentInfo(this.request.wantAgent))!;
+
+    try {
+      if (!this.ntf.wantAgentInfo) {
+        return;
+      }
+      // 判断是否是deliverPush通知，如果该参数不存在则点击不在往下进行
+      const pushDeliverLaunchInfo: Object | undefined =
+        this.ntf?.wantAgentInfo?.want?.parameters ?
+        this.ntf?.wantAgentInfo?.want?.parameters[SystemuiConstants.KEY_PUSH_DELIVER_LAUNCH_INFO] : undefined;
+      if (this.ntf.isDeliverNotification && pushDeliverLaunchInfo && typeof pushDeliverLaunchInfo === 'string' &&
+      pushDeliverLaunchInfo.trim()) {
+        this.ntf.isDeliverPushNotification = true;
+        this.ntf.deliverPushLauncherInfo = pushDeliverLaunchInfo;
+        this.ntf.deliverAbilityName = NotificationUtil.getDeliverPushAbilityName(pushDeliverLaunchInfo);
+        this.ntf.deliverPushWantAgentInfo =
+          this.ntf?.wantAgentInfo?.want?.parameters ?
+            this.ntf?.wantAgentInfo?.want
+            ?.parameters[SystemuiConstants.KEY_PUSH_DELIVER_WANT_AGENT_INFO] as wantAgent.WantAgentInfo : undefined;
+        this.ntf.overlayIcon = undefined;
+      }
+      if (this.ntf.isDeliverNotification && !this.ntf.isDeliverPushNotification &&
+        this.ntf.deliverInstallSource === DeliverInstallSource.DELIVER_TONG) {
+        this.ntf.deliverAbilityName = NotificationUtil.getAbilityName(this.ntf.creatorBundleName);
+      }
+      log.showInfo('bundleName %{public}s operationType %{public}d wantBundleName %{public}s',
+        this.ntf.wantAgentInfo?.bundleName,
+        this.ntf.wantAgentInfo?.operationType, this.ntf.wantAgentInfo?.want?.bundleName);
+    } catch (e) {
+      log.error('check is deliver push notification failed ' + e);
+    }
+  }
+
+  /**
+   * 获取DH push通知对应的应用主页信息
+   * @param deliverPushLauncherInfo
+   */
+  private async getDeliverPushAbilityName(deliverPushLauncherInfo: string): Promise<string> {
+    try {
+      const dispPkgName: string = JSON.parse(deliverPushLauncherInfo)?.dispPkgName;
+      return this.getAbilityName(dispPkgName);
+    } catch (e) {
+      log.showError('setDeliverPushAbilityName err, code:%{public}d, msg:%{public}s', e?.code, e?.message);
+      return '';
+    }
+  }
+
+  /**
    * 获取应用主页信息
    * @param bundleName
    */
@@ -295,6 +361,8 @@ export abstract class NotificationBaseParser<T extends NotificationBase = Notifi
         return;
       }
       this.ntf.smallIcon =this.ntf.smallIconOrigin
+      // await HdsIconTaskUtil.getHdsIcon(GlobalContext.getContext(),
+      //   this.ntf.hashCode, this.ntf.smallIconOrigin, process.tid);
     }
   }
 
@@ -359,7 +427,7 @@ export abstract class NotificationBaseParser<T extends NotificationBase = Notifi
    * 解析自定义应用名称
    */
   private parseCustomAppName(): void {
-    const hwCustomAppname: string = this.request?.extraInfo?.openharmony_custom_appname;
+    const hwCustomAppname: string = this.request?.extraInfo?.hw_custom_appname;
     if (hwCustomAppname && this.ntf?.isFromSystemApp) {
       log.showInfo(`parseCustomAppName: ${hwCustomAppname}`);
       this.ntf.appLabel = hwCustomAppname;

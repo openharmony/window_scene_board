@@ -1,5 +1,5 @@
 /**
- * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -14,15 +14,14 @@
  */
 import { LogDomain, LogHelper } from '@ohos/basicutils';
 import {
-  DeviceHelper,
-  EventConstants,
-  GlobalContext,
-  HiSysBackEventData,
   HiSysEventUtil,
-  obtainLocalEvent,
-  SCBWindowSceneConfig,
+  EventConstants,
   sEventManager,
-  viewMgrPolicy
+  viewMgrPolicy,
+  obtainLocalEvent,
+  HiSysBackEventData,
+  SCBWindowSceneConfig,
+  DeviceHelper
 } from '@ohos/frameworkwrapper';
 import { BaseViewController } from '@ohos/frameworkcommon';
 import { SCBConstants } from '@ohos/commonconstants';
@@ -34,13 +33,13 @@ import {
   scbEventExclusiveManager,
   scbGestureManager,
   SCBPropertyChangeReason,
-  SCBScenePanelManager,
   SCBSceneSessionManager,
   SCBScreenProperty,
   SCBScreenSessionManager,
+  ScenePanelState,
   SCBTransitionManager,
   SCBUnlockTransitionController,
-  ScenePanelState,
+  SCBScenePanelManager,
 } from '@ohos/windowscene';
 import { SmallFolderConstants, StyleConstants } from '@ohos/launchercommon';
 import FeatureConstants from '@ohos/bigfolder/src/main/ets/default/common/constants/FeatureConstants';
@@ -48,16 +47,22 @@ import { SCBDefaultZIndex } from '../scenemanager/SCBScreen';
 import singletonBackViewModel, {
   SCBGestureBackViewModel
 } from '../gesturenavigation/back/viewmodel/SCBGestureBackViewModel';
-import { BackEventViewModel } from '@ohos/gestureback/src/main/ets/backevent/viewmodel/BackEventViewModel';
+import { SCBAiBarConstants } from '../aiBar/SCBAiBarConstants';
 import {
-  BackEventViewModelCallBack,
-  GestureFailReason
-} from '@ohos/gestureback/src/main/ets/backevent/viewmodel/BackEventViewModelCallBack';
+  BackEventViewModel
+} from '@ohos/gestureback/src/main/ets/backevent/viewmodel/BackEventViewModel';
+import { GestureFailReason,
+  BackEventViewModelCallBack } from '@ohos/gestureback/src/main/ets/backevent/viewmodel/BackEventViewModelCallBack';
 import { DebugCommandsUtils } from '../gesturenavigation/back/utils/DebugCommandsUtils';
 import { BackEventView } from '../gesturenavigation/back/view/BackEventView';
+import { GlobalContext } from '@ohos/frameworkwrapper';
 import { PowerStatusEnum, PowerStatusMonitor, PowerStatusNotice } from '@ohos/screenlockcommon/Index';
+import { AiBarRegisterFunc, SCBAiBarProxyManager } from '../aiBar/proxy/SCBAiBarProxyManager';
 import { GestureBackMetaBallModel } from '@ohos/gestureback/src/main/ets/metaball/viewmodel/GestureBackMetaBallModel';
 import { GestureBackMetaBall } from '@ohos/gestureback/src/main/ets/metaball/view/GestureBackMetaBall';
+import { systemDateTime } from '@kit.BasicServicesKit';
+// import { GestureDockPullOutModel } from '../gesturenavigation/back/model/GestureDockPullOutModel';
+// import { GestureDockPullOutData } from '../gesturenavigation/back/model/GestureDockPullOutData';
 import lazy { SwipeInwardBackModel } from '../touchboardgesture/SwipeInwardBackModel';
 import lazy { PadBackEventViewModel } from '../gesturenavigation/back/viewmodel/PadBackEventViewModel';
 import {
@@ -65,6 +70,7 @@ import {
 } from '@ohos/gestureback/src/main/ets/metaball/viewmodel/GestureBackMetaBallCallBack';
 import { GestureDockViewModel } from '../gestureDock/dock/viewmodel/GestureDockViewModel';
 import { gestureBackSettings } from '@ohos/gestureback/src/main/ets/common/GestureBackSettings';
+import { FloatingNavigationManager } from '../aiBar/proxy/FloatingNavigationManager';
 
 const TAG = 'SCBGestureBack';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.GESTURE, TAG);
@@ -260,6 +266,7 @@ export struct SCBGestureBack {
     SCBTransitionManager.getInstance().registerUnlockTransitionController(this.unLockTransitionController, false);
     SCBScreenSessionManager.getInstance()
       .registerScreenPropertyChangeCallbacks((screenProperty: SCBScreenProperty, reason: SCBPropertyChangeReason) => {
+        log.showInfo(`${TAG} registerScreenPropertyChangeCallbacks ${this.viewController.getPersistentId()} ${reason}`);
         if (reason === SCBPropertyChangeReason.ROTATION && this.isInBackGesture) {
           let responseViewModel = this.isLeftGesture ? this.leftResponseViewModel : this.rightResponseViewModel;
           responseViewModel?.onPanGestureActionCancel();
@@ -273,7 +280,7 @@ export struct SCBGestureBack {
         this.screenX = screenProperty.width;
         this.screenY = screenProperty.height;
         this.backViewModel?.setBackResponseRegion(false, this.screenX, this.screenY);
-      })
+      }, undefined, true, this.persistentId)
     scbGestureManager.registerGestureEnabledCallback(GestureType.BACK, (isEnable: boolean) => {
       if (this.isGestureEnabled !== isEnable) {
         log.showInfo(`${TAG} registerGestureEnabledCallback ${isEnable}`);
@@ -305,7 +312,7 @@ export struct SCBGestureBack {
   }
 
   private initResponseViewModel(): void {
-    if (this.isPad || DeviceHelper.isUltraScreenProduct()) {
+    if (this.isPad || DeviceHelper.isThreeFoldProduct()) {
       this.leftResponseViewModel = new PadBackEventViewModel(this.persistentId,
         SCBDefaultZIndex.GESTURE_BACK, true, this.backResponseViewModelCallBack);
       this.rightResponseViewModel = new PadBackEventViewModel(this.persistentId,
@@ -339,7 +346,7 @@ export struct SCBGestureBack {
     this.backViewModel?.unRegisterRotateAnimaChangeCallBack();
     scbGestureManager.unRegisterGestureEnabledCallback(GestureType.BACK);
     scbGestureManager.unregisterPcKeyCallback(TAG);
-    if (this.isPad || DeviceHelper.isUltraScreenProduct()) {
+    if (this.isPad || DeviceHelper.isThreeFoldProduct()) {
       this.swipeInwardBackModel?.unRegisterSwipeInwardCallback();
       this.swipeInwardBackModel = null;
     }

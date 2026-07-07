@@ -22,6 +22,7 @@ import {
 } from './style/ContractedFolderLayoutStyleFactory';
 import {
   CommonConstants,
+  DeliverUtil,
   DisappearLastAppData,
   editModeManager,
   EventConstants,
@@ -505,7 +506,7 @@ export class ContractedFolderLayoutViewModel {
    * @returns true 创建文件夹
    */
   public isCreateFolder(folderId: string): boolean {
-    return false;
+    return DeliverUtil.isCreateFolder(this.getFolderDataById(folderId).getGridInfo());
   }
 
   /**
@@ -513,7 +514,9 @@ export class ContractedFolderLayoutViewModel {
    *
    * @param isCreate 创建文件夹
    */
-  public setIsCreateFolder(isCreate: boolean): void {}
+  public setIsCreateFolder(isCreate: boolean): void {
+    DeliverUtil.setIsCreateFolder(isCreate);
+  }
 
   /**
    * 更新打开态文件夹状态

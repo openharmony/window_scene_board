@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-// import statusBar from '@hms.pcService.statusBar';
+import statusBar from '@ohos.pcService.statusBar';
 import {
   LogDomain,
   LogHelper,
@@ -30,7 +30,8 @@ export enum StatusBarConnectEvent {
   UPDATE_QUICK_OPERATION_HEIGHT = 4,
   UPDATE_STATUSBAR_ICON = 5,
   UPDATE_RIGHT_MENU_CLICK_HANDLER = 6,
-  ON_ICON_CLICK = 7
+  ON_ICON_CLICK = 7,
+  UPDATE_HOVERTIPS = 8
 }
 
 export interface StatusBarServiceInfo {
@@ -43,14 +44,12 @@ export interface StatusBarServiceInfo {
 }
 
 export interface StatusBarData {
-  //   statusBarItem?: ESObject;
-  //   statusBarMenu?: ESObject;
-  //   statusBarIcon?: ESObject;
-  statusBarItem?: ESObject;
-  statusBarMenu?: ESObject;
-  statusBarIcon?: ESObject;
+  statusBarItem?: statusBar.StatusBarItem;
+  statusBarMenu?: statusBar.StatusBarGroupMenu[];
+  statusBarIcon?: statusBar.StatusBarIcon;
   operationHeight?: number;
   instanceKey?: string;
+  hoverTips?: string;
 }
 
 type StatusBarServiceListener = (data: StatusBarServiceInfo, callback?: Function) => void;

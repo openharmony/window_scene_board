@@ -1,0 +1,410 @@
+{
+    "string":[
+        {
+            "name":"form_in_desktop_exceed",
+            "value":"ئۈستەليۈزىدىكى كارتا سانى چەككە يەتتى.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"individuation",
+            "value":"ئۈستەليۈزى ۋە خاسلاشتۇرۇش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"add_icon_to_desktop_max",
+            "value":"ئۈستەليۈزى توشۇق، رەتلەپ قايتا سىناڭ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"add_form_to_desktop_max",
+            "value":"ئېكراندا بوشلۇق يوق.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"is_delete_card",
+            "value":"\u200f«%s» كارتىسىنى چىقىرىۋېتەمسىز؟",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"right_create",
+            "value":"قۇرۇش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"right_create_folder",
+            "value":"قىسقۇچ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remove_from_desktop",
+            "value":"ئۈستەليۈزىدىن چىقىرىۋېتىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"delete_app",
+            "value":"چىقىرىۋېتىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"bigFolder_useGuidance_content",
+            "value":"قىسقۇچنى بېسىپ تۇرۇپ تۇتقۇچنى تارتىپ چوڭ-كىچىكلىكىنى تەڭشەپ تېخىمۇ كۆپ ئەپ كۆرسىتىشكە بولىدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"bigFolder_useGuidance_title",
+            "value":"قىسقۇچنى بېسىپ تۇرۇپ چوڭ-كىچىكلىتىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"bigFolder_useGuidance_button",
+            "value":"بىلدىم",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"uninstall",
+            "value":"ئۆچۈرۈش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"covertTo_bigFolder",
+            "value":"چوڭايتىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"paste",
+            "value":"چاپلاش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"cancel",
+            "value":"بىكار قىلىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"covertTo_smallFolder",
+            "value":"كىچىكلىتىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"rename_folder",
+            "value":"نام ئۆزگەرتىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"added_to_desktop",
+            "value":"ئۈستەليۈزىگە قوشۇلدى.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"add_black_page_to_desktop_max",
+            "value":"ئۈستەليۈزى سانى چەككە يەتتى.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"can_not_remove_from_flod",
+            "value":"ئەپ بۇ قىسقۇچتىن يۆتكەلمەيدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"can_not_rename_flod",
+            "value":"بۇ قىسقۇچنىڭ نامى ئۆزگەرمەيدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"can_not_add_to_flod",
+            "value":"ئەپ بۇ قىسقۇچقا يۆتكەلمەيدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"desktop_current_page",
+            "value":"%1$s-ئېكران، جەمئىي %2$s ئېكران",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"desktop_current_page_tips",
+            "value":"%1$s-ئېكران، جەمئىي %2$s ئېكران",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"folder_is_closed",
+            "value":"قىسقۇچ يېپىق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"folder_add",
+            "value":"قوشۇش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"folder_rename_clear",
+            "value":"تېكىستنى تازىلاش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"home_screen",
+            "value":"خۇاۋېي ئۈستەليۈزى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"deliver_app_dialog_content",
+            "value":"\u200f«%s» نۆۋەتتە OpenHarmony ئۈچۈن ماسلاشتۇرۇپ ئىشلەندى، يېڭىلاپ ئىشلىتىڭ. يېڭىلىغاندىن كېيىن بەزى كونا ئەپ مەلۇماتلىرى ماسلىق مەسىلىسى سەۋەبلىك يوقىلىشى مۇمكىن.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"deliver_app_dialog_cancel",
+            "value":"ئېتىبارسىزلاش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"deliver_app_dialog_confirm",
+            "value":"يېڭىلاش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sort_by_create_time",
+            "value":"قۇرغان كۈن",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sort_by_type",
+            "value":"تۈر",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"desktop_sort",
+            "value":"تىزىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sort_by_modify_time",
+            "value":"ئۆزگەرتكەن كۈن",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sort_by_size",
+            "value":"سىغىم",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sort_by_name",
+            "value":"نام",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"folder_create_toast",
+            "value":"\u200f«%1$s» بىلەن «%2$s» بىرىكتۈرۈلۈپ، ئۈستەليۈزى %4$d دىكى «%3$s» دېگەن قىسقۇچقا قويۇلدى.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"folder_add_toast",
+            "value":"\u200f«%1$s» ئۈستەليۈزى %3$d دىكى «%2$s» دېگەن قىسقۇچقا قويۇلدى.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"is_delete_app",
+            "value":"\u200f«%s» سىنبەلگىسىنى چىقىرىۋېتەمسىز؟",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"content_add_toast",
+            "value":"چۆرۈگەندە سىغمايدۇ، شۇڭا قوشۇلمايدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"right_collaboration",
+            "value":"باشقا ئۈسكۈنىدىن كىرگۈزۈش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"right_shell",
+            "value":"تېرمىنال",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"drag_page_tip",
+            "value":"بەتنى سۆرەپ تەرتىپ ئۆزگەرتىسىز.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_cant_add_to_folder",
+            "value":"سىنبەلگە قىسقۇچقا قوشۇلمايدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"cant_add_current_or_portrait",
+            "value":"نۆۋەتتە ياكى تىكبوي ئۈستەليۈزىدە بوشلۇق يېتەرسىز، قويۇلمايدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"cant_add_current_or_landscape",
+            "value":"نۆۋەتتە ياكى تۈزبوي ئۈستەليۈزىدە بوشلۇق يېتەرسىز، قويۇلمايدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"edit_mode_pinch_gesture_tip",
+            "value":"ئىككى بارماقنى يېيىپ-يىغىپ ئەپ ۋە كارتا قوشىسىز.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"only_deliver_app_can_add_to_fold",
+            "value":"بۇ قىسقۇچقا پەقەت deliver ئەپلىرى يۆتكىلىدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"folder_rename_cleared",
+            "value":"تازىلاندى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_card_fail_desktop",
+            "value":"قوشۇلمىدى، كېيىنرەك قايتا سىناڭ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_card_success_desktop",
+            "value":"قوشۇلدى.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"photo_table",
+            "value":"ئاڭلىق رەسىم رامكىسى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"gacha_card_name",
+            "value":"تەلەي تۇتقۇچ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"smart_assistant_today",
+            "value":"ئاڭلىق ياردەمچى . بۈگۈن",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"toast_the_app_no_support_move",
+            "value":"بۇ ئەپ يۆتكەلمەيدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"desktop_had_existed_the_app",
+            "value":"ئۈستەليۈزىدە بۇ ئەپ بار.",
+            "attr":{
+                "priority":"LT"
+            }
+        }
+    ]
+}

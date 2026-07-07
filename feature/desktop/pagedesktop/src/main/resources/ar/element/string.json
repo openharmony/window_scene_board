@@ -1,0 +1,389 @@
+{
+    "string":[
+        {
+            "name":"add_card_fail_desktop",
+            "value":"يتعذر الإضافة، يُرجى إعادة المحاولة لاحقًا",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_card_success_desktop",
+            "value":"تمت الإضافة بنجاح",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"deliver_app_dialog_cancel",
+            "value":"تجاهل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"deliver_app_dialog_confirm",
+            "value":"تحديث الآن",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_cant_add_to_folder",
+            "value":"لا يمكن إضافة أيقونات التطبيقات إلى المجلدات.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"individuation",
+            "value":"تخصيص",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sort_by_create_time",
+            "value":"تاريخ الإنشاء",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"delete_app",
+            "value":"إزالة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"covertTo_bigFolder",
+            "value":"تكبير",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_delete_card",
+            "value":"هل تريد إزالة أداة %s؟",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"is_delete_app",
+            "value":"إزالة %s؟",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"right_collaboration",
+            "value":"استيراد من جهاز آخر",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"rename_folder",
+            "value":"إعادة التسمية",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remove_from_desktop",
+            "value":"إزالة من الشاشة الرئيسية",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_icon_to_desktop_max",
+            "value":"لا توجد مساحة على الشاشة الرئيسية. جرب نقل بعض العناصر.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"folder_create_toast",
+            "value":"تم وضع %1$s مع %2$s في المجلد \"%3$s\" على الشاشة الرئيسية %4$d.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_form_to_desktop_max",
+            "value":"لا توجد مساحة خالية في الشاشة الحالية",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"right_shell",
+            "value":"HiShell",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"covertTo_smallFolder",
+            "value":"تقليص",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"added_to_desktop",
+            "value":"تمت الإضافة إلى الشاشة الرئيسية.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"can_not_remove_from_flod",
+            "value":"لا يمكن نقل هذا التطبيق من هذا المجلد.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"can_not_rename_flod",
+            "value":"لا يمكن إعادة تسمية هذا المجلد.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_page_tip",
+            "value":"أمسك الشاشات واسحبها لتغيير الترتيب",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cant_add_current_or_portrait",
+            "value":"يتعذر وضع العنصر. لن تتلاءم الأدوات في كلا الاتجاهين.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"form_in_desktop_exceed",
+            "value":"بلغ عدد التطبيقات المصغرة الحد الأقصى.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sort_by_type",
+            "value":"النوع",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"uninstall",
+            "value":"إزالة التثبيت",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"content_add_toast",
+            "value":"تتعذر الإضافة. لا توجد مساحة كافية إذا تم تدويرها.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"edit_mode_pinch_gesture_tip",
+            "value":"ضع إصبعين وضمهما لبعضهما لإضافة التطبيقات والأدوات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"desktop_sort",
+            "value":"فرز حسب",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sort_by_modify_time",
+            "value":"تاريخ التعديل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"deliver_app_dialog_content",
+            "value":"%s متوفر الآن لنظام OpenHarmony. حدِّث تطبيقك للحصول على تجربة جديدة كليًا.\n\nيُرجى ملاحظة أن بعض بيانات التطبيق قد تُفقد عند تبديل الإصدارات.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"folder_add_toast",
+            "value":"تم وضع %1$s في المجلد \"%2$s\" على الشاشة الرئيسية %3$d.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"paste",
+            "value":"لصق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_black_page_to_desktop_max",
+            "value":"بلغ عدد الشاشات الرئيسية الحد الأقصى.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cant_add_current_or_landscape",
+            "value":"يتعذر وضع العنصر. لن تتلاءم الأدوات في كلا الاتجاهين.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"right_create",
+            "value":"جديد",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cancel",
+            "value":"إلغاء",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"right_create_folder",
+            "value":"المجلد",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sort_by_size",
+            "value":"الحجم",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"can_not_add_to_flod",
+            "value":"لا يمكن إضافة هذا التطبيق إلى هذا المجلد.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sort_by_name",
+            "value":"الاسم",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"bigFolder_useGuidance_content",
+            "value":"انقر مطولاً على مجلد، ثم اسحب الحد الخارجي لتكبيره.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"bigFolder_useGuidance_title",
+            "value":"تغيير حجم المجلدات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"bigFolder_useGuidance_button",
+            "value":"حسنًا",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"only_deliver_app_can_add_to_fold",
+            "value":"يمكن إضافة تطبيقات deliver فقط إلى هذا المجلد",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"folder_rename_clear",
+            "value":"مسح النص",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"desktop_current_page_tips",
+            "value":"الشاشة %1$s من %2$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"folder_add",
+            "value":"إضافة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"home_screen",
+            "value":"شاشة هواوي الرئيسية",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"folder_is_closed",
+            "value":"المجلد مغلق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"desktop_current_page",
+            "value":"الشاشة %1$s من %2$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"folder_rename_cleared",
+            "value":"تم المسح",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"smart_assistant_today",
+            "value":"المساعد ∙ اليوم",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"desktop_had_existed_the_app",
+            "value":"هذا التطبيق موجود بالفعل على الشاشة الرئيسية.",
+            "attr":{
+                "priority":"LT"
+            }
+        }
+    ]
+}

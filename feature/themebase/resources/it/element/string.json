@@ -1,0 +1,2601 @@
+{
+    "string":[
+        {
+            "name":"best_example_of_uploading_photos",
+            "value":"Esempi",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_chest",
+            "value":"Cassetto delle app",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"played",
+            "value":"Riproduzione in corso",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"wallpaper_G_only",
+            "value":"Applica solo a triplo schermo",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"been_lifted",
+            "value":"Trascinamento avviato",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"lockscreen_preview",
+            "value":"Schermata di blocco",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"female",
+            "value":"Femmina",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"not_selected",
+            "value":"Nessuna selezione",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aigc_theme_service_privacy_statement",
+            "value":"Informativa su Temi AI e sulla Privacy",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_dynamic_lead_fail_content",
+            "value":"Generazione di risorse Dynamic Persona non riuscita. Tocca per i dettagli.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_wallpaper",
+            "value":"Aggiungi immagine",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"account_button_login",
+            "value":"Accedi",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_dynamic_lead_finish_content",
+            "value":"Risorse Dynamic Persona generate. Tocca per visualizzarle e applicarle.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_main_pandora_title",
+            "value":"Schermata Home e stile",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_main_time_travel_ongoing_content",
+            "value":"Generazione di sfondi IA. Tocca per visualizzarli.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"time_travel_generate_failed",
+            "value":"Impossibile generare sfondi Time Travel.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"save_success",
+            "value":"Salvato.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"lock_layout_content",
+            "value":"Quando questa opzione è attiva, gli elementi della schermata Home non possono essere spostati o rimossi.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aigc_theme_service_description",
+            "value":"Questo servizio richiede una connessione %1$s e deve poter leggere e caricare/trasferire immagini. Per fornire funzioni correlate ai temi. Raccogliamo soltanto le informazioni personali pertinenti alle funzioni che utilizzi. Per i dettagli, consulta l'%2$s.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"full_screen_reading_exit",
+            "value":"Hai chiuso l'anteprima a schermo intero",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"apply",
+            "value":"Applica",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"set_as_lockscreen",
+            "value":"Imposta come schermata di blocco",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"save_picture",
+            "value":"Salva immagine",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"nav_to_my_wallpaper_edit_tips",
+            "value":"Nella schermata di blocco, avvicina le dita o tieni premuta l'area dell'orologio per modificare.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_main_dimensional_travel_ongoing_content",
+            "value":"Generazione di sfondi Animirror. Tocca per visualizzarli.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_off_app_chest_title",
+            "value":"Disabilita cassetto delle app",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"read_theme_service_description_and_click_agree",
+            "value":"Leggi attentamente l'Informativa di cui sopra. Toccando Accetta, ci autorizzi a fornirti questo servizio.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"is_off_Desktop_resource_center_title",
+            "value":"Disabilita cassetto delle app",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"detail_page",
+            "value":"Pagina di anteprima",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"tip_button_text",
+            "value":"Maggiori dettagli",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wallpaper_M_only",
+            "value":"Applica solo a doppio schermo",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"waiting_closing_app_chest",
+            "value":"Disabilitazione del cassetto delle app…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"homescreen_preview",
+            "value":"Schermata Home",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"free_official_theme",
+            "value":"Tema ufficiale gratuito",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"desktop_layout",
+            "value":"Layout",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"full_screen_reading_enter",
+            "value":"Hai aperto l'anteprima a schermo intero",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_off_app_chest_content",
+            "value":"Quando questa opzione è disabilitata, puoi trovare le app presenti nel cassetto delle app che non vengono visualizzate altrove nella nuova cartella nella parte inferiore della schermata Home.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aod_ways_display_awake_intelligent",
+            "value":"Intelligente",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"i_know",
+            "value":"OK",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"management",
+            "value":"Gestisci",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"is_off_Desktop_resource_center_cancel",
+            "value":"Annulla",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keywords_during_call",
+            "value":"Animazione di chiamata",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aigc_theme_service_subtitle",
+            "value":"Questo servizio carica le immagini selezionate sul Cloud, dove utilizza l'AI per generare le risorse del tema.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"is_off_Desktop_resource_center_close",
+            "value":"Disabilita",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"show_date",
+            "value":"Mostra data",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_dynamic_lead_Unable_to_update_automatically",
+            "value":"La libreria di risorse Dynamic Persona è piena. Le risorse non verranno pertanto aggiornate automaticamente. Tocca per gestire la libreria.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"select_from_gallery",
+            "value":"Seleziona da Galleria",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"is_off_Desktop_resource_center_content",
+            "value":"Quando questa opzione è disabilitata, puoi trovare le app presenti nel cassetto delle app che non vengono visualizzate altrove nella nuova cartella nella parte inferiore della schermata Home.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cancel",
+            "value":"Annulla",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_main_dimensional_travel_finish_content",
+            "value":"Nuovi sfondi Animirror generati. Tocca per visualizzarli e applicarli.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"full_screen_reading_page_one",
+            "value":"Schermata di anteprima numero %d, scorri verso sinistra o verso destra con due dita per caricare altre schermate dei dettagli",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_chest_description",
+            "value":"Scorri verso l'alto sulla schermata Home per visualizzare tutte le app installate. Trascina un'app per aggiungerla alla schermata Home. Rimuovi un'app dalla schermata Home tenendola premuta e toccando Rimuovi.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"agree",
+            "value":"Accetta",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wallpaper_F_only",
+            "value":"Applica solo a schermo singolo",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"paused",
+            "value":"Pausa",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aigc_theme_privacy_statement",
+            "value":"Informativa sul Servizio Temi AI e sulla Privacy",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"outside_screen_show",
+            "value":"Schermo esterno",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"settings_detail_page_tip",
+            "value":"Tocca due volte per i dettagli",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"show_lock_screen_signature",
+            "value":"Firma schermata di blocco",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"theme_title",
+            "value":"Temi",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"te_cancel",
+            "value":"Annulla",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wallpaper_title",
+            "value":"Sfondi",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"uncompleted",
+            "value":"Funzionalità in arrivo.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"checked",
+            "value":"Selezione",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"exiting_current_page",
+            "value":"La generazione continuerà anche se lasci questa schermata.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aigc_theme_service",
+            "value":"Servizio Temi AI",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"network_error",
+            "value":"Errore di rete. Riprova.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dimensional_travel_generate_failed",
+            "value":"Impossibile generare sfondi Animirror.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"top_right",
+            "value":"In alto a destra",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aod_theme",
+            "value":"Display sempre attivo",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"photo_selected",
+            "value":"Foto selezionata",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"preset_theme",
+            "value":"Tema preimpostato",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"device_temperature_too_high",
+            "value":"Temperatura del dispositivo troppo elevata. Riprova più tardi.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"more_online_wallpapers",
+            "value":"Altri sfondi",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_main_time_travel_finish_content",
+            "value":"Nuovi sfondi Viaggio nel tempo generati. Tocca per visualizzarli e applicarli.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"icon",
+            "value":"Icone",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"continue_upload_image",
+            "value":"Il tema corrente verrà eliminato e ne verrà generato uno nuovo. Vuoi continuare?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"tip_cancel_text",
+            "value":"Chiudi",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aigc_theme_service_stop_note",
+            "value":"Questo servizio non sarà più disponibile dopo la disabilitazione. Vuoi disabilitare comunque?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"applied",
+            "value":"Applicato",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"preview",
+            "value":"Anteprima",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"blur",
+            "value":"Sfocatura",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aesthetic",
+            "value":"Composizione intelligente",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"moving_photo_dialog_content",
+            "value":"Poiché gli sfondi animati non possono essere utilizzati insieme ad altri sfondi, il presente verrà applicato come sfondo statico.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"my_wallpapers",
+            "value":"I miei sfondi",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"desktop_resource_center",
+            "value":"Cassetto delle app",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"moving_photo_dialog_toast",
+            "value":"Gli sfondi animati non possono essere utilizzati insieme ad altri sfondi.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"theme_icon",
+            "value":"Da Temi",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"my_downloads",
+            "value":"Scaricati",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"preview_photo_loading",
+            "value":"Caricamento...",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"on_network",
+            "value":"Internet",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"more_themes",
+            "value":"Altri temi",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"desktop_resource_center_description",
+            "value":"Scorri verso l'alto sulla schermata Home per visualizzare tutte le app installate. Trascina un'app per aggiungerla alla schermata Home. Rimuovi un'app dalla schermata Home tenendola premuta e toccando Rimuovi.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_dynamic_lead_automatically_updated_finish_content",
+            "value":"Le risorse Dynamic Persona sono state aggiornate automaticamente. Tocca per visualizzarle.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"waiting_closing_desktop_resource_center",
+            "value":"Disabilitazione del cassetto delle app…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"continue_update_image",
+            "value":"Il tema corrente verrà eliminato e ne verrà generato uno nuovo. Vuoi continuare?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keywords_outer_theme",
+            "value":"Temi",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"theme_data_service_instructions",
+            "value":"Questo servizio richiede una connessione a Internet e le autorizzazioni Posizione, Attività fisica e Connessione dispositivo, e deve poter leggere i dati relativi a posizione, salute e fitness, dispositivo e contenuti multimediali (immagini e video). Queste informazioni sono necessarie per i temi che devono visualizzarle e per fornire funzioni interattive dei temi. Per maggiori dettagli sulle modalità di trattamento delle informazioni personali dell'utente, consultare l'%1$s e l'%2$s. Attivando questa opzione, l'utente ci autorizza a fornirgli questo servizio.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"tip_play_text",
+            "value":"Riproduci",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"moving_photo_dialog_title",
+            "value":"Vuoi modificare lo sfondo?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_dynamic_lead_ongoing_content",
+            "value":"Generazione di risorse Dynamic Persona. Tocca per visualizzarle.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"artistic_signature_does_not_overlap_with_main_subject",
+            "value":"La firma personalizzata non si sovrappone al soggetto principale.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_camera_mover_to_experience_dynamic",
+            "value":"Disabilita l'effetto Dinamico per usare \"Immagini in movimento\".",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"recover_Theme_App_massage",
+            "value":"Occorre installare Temi per utilizzare questa funzione.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"image_does_not_recognize_dof",
+            "value":"Nessun soggetto profondità di campo riconosciuto nell'immagine.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Desktop_setting",
+            "value":"Impostazioni schermata Home",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_dof_to_experience_camera_mover",
+            "value":"Disabilita l'effetto DoF per usare l'effetto Dinamico.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"digital_clock_does_not_overlap_with_main_subject",
+            "value":"L'orologio digitale non si sovrappone al soggetto principale.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_camera_mover_to_experience_dof",
+            "value":"Disabilita l'effetto Dinamico per usare l'effetto DoF.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_dynamic_to_experience_camera_mover",
+            "value":"Disabilita l'effetto \"Immagini in movimento\" per usare l'effetto Dinamico.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_dynamic_to_experience_dof",
+            "value":"Disabilita l'effetto \"Immagini in movimento\" per usare l'effetto DoF.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"covertheme_settings_title",
+            "value":"Schermata Home, schermo esterno e stile",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_dof_to_experience_dynamic",
+            "value":"Disabilita l'effetto DoF per usare \"Immagini in movimento\".",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"side_face",
+            "value":"Profilo laterale",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_theme",
+            "value":"Applica tema",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"back",
+            "value":"Indietro",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dock_color_style_follow_system_tips",
+            "value":"In Modalità scura, il colore del menu veloce diventa più scuro.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"select_from_folder",
+            "value":"Sfoglia cartelle",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"adult",
+            "value":"Adulto",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"got_it",
+            "value":"OK",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"insufficient_quota",
+            "value":"Limite di generazione IA per questo mese raggiunto.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"auto_align",
+            "value":"Auto-allinea",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"current_theme_style",
+            "value":"Segui il tema",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"exit_pandora_dialog",
+            "value":"Vuoi salvare e applicare?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"start_generating",
+            "value":"Genera",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remove_this_theme",
+            "value":"Vuoi rimuovere questo tema?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wallpaper_display_mode",
+            "value":"Scegli una modalità di visualizzazione",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"my_theme_0",
+            "value":"Il mio tema",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"clock_edit_tips",
+            "value":"Tocca due volte per modificare, tocca due volte e tieni premuto per spostare l'orologio.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"icon_size_tip",
+            "value":"Non si applica al menu veloce.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"theme_data_service_permissions",
+            "value":"Avviso autorizzazioni",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"theme_personalize_screen_reading_other_page",
+            "value":"Schermata numero %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"switch_to_desktop_preview",
+            "value":"Passa all'anteprima della schermata Home",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"about",
+            "value":"Informazioni",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"picture_getting",
+            "value":"Ottenimento immagine…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_apply_failed",
+            "value":"Impossibile applicare il carattere.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"generate_failed",
+            "value":"Impossibile generare.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"switch_to_lock_screen_preview",
+            "value":"Passa all'anteprima della schermata di blocco",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"confirm",
+            "value":"Conferma",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"customize",
+            "value":"Personalizza",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"clock_style",
+            "value":"Stile dell'orologio %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screen_off_theme",
+            "value":"Display sempre attivo",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"blur_slider_read_notes",
+            "value":"Tocca il cursore per attivarlo e regolare la sfocatura",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"multi_checkbox",
+            "value":"Casella di controllo multi-selezione",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_main_pandora_fail_content",
+            "value":"Generazione dello sfondo non riuscita.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"current_icon_checked",
+            "value":"Icone correnti, selezionate",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"wallpaper_recommendation",
+            "value":"Suggeriti",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remove_theme_info",
+            "value":"Questo tema, insieme allo sfondo e al pacchetto di icone, verrà rimosso.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"click_input_text",
+            "value":"Inserisci il testo",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screenlock_settings",
+            "value":"Schermata di blocco",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"stop_theme_data_service_title",
+            "value":"Disabilita il servizio Temi",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"insufficient_storage_toast",
+            "value":"Impossibile fornire i servizi dei temi poiché la memoria interna è insufficiente. Elimina dei file per liberare spazio.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"continue_generating",
+            "value":"Genera altro",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"waiting_closing",
+            "value":"Disabilitazione…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aod_ways_display_awake_off",
+            "value":"Disattivato",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"have_occlusion",
+            "value":"Il volto nell'immagine è oscurato.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"top_left",
+            "value":"In alto a sinistra",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"current_wallpaper_checked",
+            "value":"Sfondo corrente, selezionato",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"wallpaper_cannot_be_edited_in_a_small_window",
+            "value":"Gli sfondi non possono essere modificati in finestre piccole.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"end_of_service",
+            "value":"Disabilita",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ai_wallpaper_service_description_1",
+            "value":"Questo servizio richiede una connessione %1$s e deve leggere e caricare/trasferire le immagini per fornire le funzioni relative agli sfondi. Toccando Accetta, l'utente dichiara di accettare questi termini e i %2$s. Per maggiori dettagli sulle modalità di trattamento delle informazioni personali, consultare l'%3$s.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"clock_font_style",
+            "value":"Carattere dell'orologio %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"HiSearch_title",
+            "value":"voice Search",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"theme_data_service",
+            "value":"Servizio Temi",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ai_wallpaper_service_name_3",
+            "value":"Servizio del Tema Viaggi nel tempo",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"photo_not_meet_have_label",
+            "value":"Questa foto non può essere utilizzata. Selezionane un'altra dalle immagini suggerite.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"image_decoding_failure",
+            "value":"Errore dell'immagine. Riprova.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"table_theme",
+            "value":"Schermata Home",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"magic_screen",
+            "value":"Anteprima doppia",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"edit_M_tip",
+            "value":"Apri in modalità a doppio schermo per modificare.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"have_no_people",
+            "value":"Nessun volto rilevato.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"turn_off_dynamic",
+            "value":"Disattiva effetto dinamico",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"generate_failed_origin_img_error",
+            "value":"Impossibile generare.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"window_animation_title",
+            "value":"Riduci finestre a icona usando",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"window_animation_attraction",
+            "value":"Animazione genio",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_all_day_display",
+            "value":"Tutto il giorno",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screenlock_sign_entry",
+            "value":"Come impostare la firma della schermata di blocco",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"intelligent_status_on",
+            "value":"Attivato",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"share_description",
+            "value":"Condividi, personalizza e accessorizza",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"enableTheme",
+            "value":"Applicazione tema…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"apply_generating_ai_wallpaper",
+            "value":"Tocca Applica per generare uno sfondo.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"update_photo",
+            "value":"Aggiorna",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"execution_timed_out",
+            "value":"Operazione scaduta.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"blurred",
+            "value":"Sfocato",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"more",
+            "value":"Altro",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dock_color_style",
+            "value":"Adatta il colore del menu veloce a",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"continue",
+            "value":"Continua",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_main_pandora_finish_content",
+            "value":"Sfondi IA generati. Tocca per visualizzare e applicare.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"left_of_center",
+            "value":"A sinistra del centro",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"tip_content",
+            "value":"Avvicina le dita sulla schermata di blocco o sulla schermata Home per cambiare rapidamente il tema e personalizzare lo sfondo e i widget.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_wallpaper_info",
+            "value":"Applica sfondo a",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"recover",
+            "value":"Ripristina",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"delete_fail",
+            "value":"Impossibile eliminare.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"center_the_original_image",
+            "value":"Centro",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"theme_card_accessibility_text",
+            "value":"Scorri verso sinistra o destra con due dita per cambiare tema. Scorri verso l'alto con due dita per rimuovere il tema.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_off_swipe_up_title",
+            "value":"Vuoi disabilitare \"Scorri verso l'alto sulla schermata Home\"?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Desktop_SwipeUp",
+            "value":"Scorri verso l'alto sulla schermata Home",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"window_animation_default",
+            "value":"Animazione predefinita",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"cover_screen",
+            "value":"Schermo esterno",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"bottom_of_center",
+            "value":"In basso al centro",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"toggle_view",
+            "value":"Cambia visualizzazione",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"end_of_service_1",
+            "value":"Disabilita servizio",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remove",
+            "value":"Rimuovi",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dock_color_style_follow_window_tips",
+            "value":"Il menu veloce cambierà colore in base al colore dello sfondo o al contenuto di una finestra ingrandita.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"auto_align_content",
+            "value":"Riempi automaticamente gli spazi vuoti dopo la rimozione delle app.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"theme_personalize_full_screen_reading_page_one",
+            "value":"Schermata numero %d, scorri verso sinistra o destra per caricare altri sfondi.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"interactive_theme_detail_tip",
+            "value":"Nota: L'applicazione di questo tema modificherà il metodo di sblocco col sorriso da \"Sblocco diretto\" a \"Scorri per sbloccare\".",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pandora_service_unavailable",
+            "value":"Temporaneamente non disponibile. Riprova più tardi.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"lock_layout",
+            "value":"Blocca il layout",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"recover_Theme_App",
+            "value":"Vuoi ripristinare l'app Temi?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"center",
+            "value":"Centro",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"upload_photo_loading",
+            "value":"Caricamento…",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"turn_on_dynamic",
+            "value":"Attiva effetto dinamico",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"reach_upper_limit",
+            "value":"Numero massimo di sfondi raggiunto. Eliminane alcuni per aggiungerne di nuovi.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"desktop_style_title",
+            "value":"Barra delle scorciatoie e barra di stato",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"apply_success",
+            "value":"Applicazione riuscita.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"intelligent",
+            "value":"Assistant·TODAY",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"resource_description",
+            "value":"Descrizione",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"more_online_themes",
+            "value":"Altri temi",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"should_apply_current_theme",
+            "value":"Vuoi applicare questo tema?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"default_icon",
+            "value":"Preimpostazione",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keep_one_wallpaper",
+            "value":"È necessario almeno uno sfondo.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_failed",
+            "value":"Impossibile applicare.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cam_mover_is_enabled_blur_is_not_supported",
+            "value":"L'effetto dinamico è stato abilitato e il bokeh è stato disabilitato.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"blur_is_enabled_Cam_mover_is_not_supported",
+            "value":"Il bokeh è stato abilitato e l'effetto dinamico è stato disabilitato.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dof_off",
+            "value":"Profondità di campo disattivata",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"bottom_right",
+            "value":"In basso a destra",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"top_of_center",
+            "value":"In alto al centro",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_off_swipe_up_content",
+            "value":"Quando questa opzione è disabilitata, non sarà possibile aprire il cassetto delle app. Le app presenti nel cassetto delle app che non sono visualizzate da nessun'altra parte saranno accessibili in una nuova cartella nella schermata Home.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Desktop_slide",
+            "value":"Scorri verso il basso per cercare",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keywords_outer_apply",
+            "value":"App",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"random",
+            "value":"Casuale",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"recommend_theme",
+            "value":"Visualizza dettagli",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dof_on",
+            "value":"Profondità di campo attivata",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"login_failed",
+            "value":"Nessuna connessione Internet. Riprova più tardi.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aigc_generation_prompt",
+            "value":"Generato da voice AI",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"default_font",
+            "value":"Preimpostazione",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"theme_cannot_be_edited_in_a_small_window",
+            "value":"I temi non possono essere modificati in finestre piccole.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"intelligent_settings",
+            "value":"Assistant·TODAY",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pandora_theme_upload_photo_tips",
+            "value":"%1$d. Carica la foto di una persona che mostri chiaramente il volto.\n%2$d. La generazione di immagini potrebbe non funzionare con soggetti più giovani.\n%3$d. Le immagini generate dall'IA potrebbero non essere soddisfacenti.\n%4$d. Non caricare foto che includano contenuti volgari, violenti o discriminatori.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"show_lunar_date",
+            "value":"Mostra data lunare",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"undelete_toast",
+            "value":"Questo sfondo non può essere eliminato.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_to",
+            "value":"Trascinato a: %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"update_available",
+            "value":"Aggiornamenti disponibili",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_style",
+            "value":"Caratteri",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"select_all",
+            "value":"Seleziona tutto",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"person_information",
+            "value":"Caratteristiche",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"try_out",
+            "value":"Fai una prova",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_restored",
+            "value":"L'app è stata ripristinata.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"regenerate",
+            "value":"Riprova",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"no_select",
+            "value":"Nessuna selezione",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"untoggle_camera_mover",
+            "value":"Deselezionando questa opzione disattiverai l'effetto dinamico.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dof",
+            "value":"PdC",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"clock_font_color",
+            "value":"Colore testo dell'orologio %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"apply_watch_info",
+            "value":"Applica al quadrante",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"wallpaper_carousel_gallery",
+            "value":"Sfondi (massimo %d)",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"more_online_icon",
+            "value":"Altre icone",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"current_theme",
+            "value":"Corrente",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"keywords_outer_facard",
+            "value":"Widget",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"right_of_center",
+            "value":"A destra del centro",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"apply_dialog_title",
+            "value":"Applica tema a",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"more_online_font",
+            "value":"Altri caratteri",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"homescreen",
+            "value":"Schermata Home",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"do_camera_mover",
+            "value":"Effetto dinamico attivato",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"generate_failed_and_try_again",
+            "value":"Impossibile generare. Riprova.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"style_choose",
+            "value":"Stile",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"icon_size_restore_default",
+            "value":"Reimposta",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"camera_mover",
+            "value":"Dinamico",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"lockscreen",
+            "value":"Schermata di blocco",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"network_unavailable",
+            "value":"Nessuna connessione Internet. Verifica le impostazioni di rete.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"delete_wallpaper",
+            "value":"Elimina sfondo",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ai_wallpaper_terms",
+            "value":"Termini di utilizzo delle funzionalità di IA generativa del Tema Viaggi nel tempo",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"share_card_hint",
+            "value":"Per condividere, posiziona il tuo dispositivo a contatto con un altro dispositivo oppure afferra e rilascia",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pandora_theme_description",
+            "value":"%1$d. Carica la foto di una persona che mostri chiaramente il volto.\n%2$d. Le immagini generate dall'IA potrebbero essere inaccurate o inappropriate.\n%3$d. Non caricare foto che includano contenuti volgari, violenti o discriminatori.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"male",
+            "value":"Maschio",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"screen_reading_other_page",
+            "value":"Pagina%d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"have_multi_people",
+            "value":"L'immagine deve contenere una sola persona.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"applying",
+            "value":"In uso",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"tip_title",
+            "value":"Personalizza rapidamente la schermata di blocco e la schermata Home",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"photo_not_meet_no_label",
+            "value":"Impossibile utilizzare questa foto. Selezionane un'altra.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pop_up_content",
+            "value":"Effetto statico consigliato. Effetto dinamico disabilitato.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"button_text",
+            "value":"Aggiungi tasto Tema",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"switched_desktop_preview",
+            "value":"Passaggio all'anteprima della schermata Home effettuato",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"infancy",
+            "value":"Bambino",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"scale_to_fill_screen",
+            "value":"Estendi",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"more_edits",
+            "value":"Altre modifiche",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"tiling",
+            "value":"Riquadro",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"lock_screen_clock",
+            "value":"Orologio schermata di blocco",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"undo_camera_mover",
+            "value":"Effetto dinamico disattivato",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"big_angle",
+            "value":"Angolazione non adatta.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_main_pandora_ongoing_content",
+            "value":"Generazione sfondi IA in corso.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"get_best_results",
+            "value":"Scopri come ottenere risultati migliori",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_sub_screen_info",
+            "value":"Applica allo schermo esterno",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"icon_size",
+            "value":"Dimensioni icone schermata Home",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"choose_person_info",
+            "value":"Seleziona le tue caratteristiche.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"theme_data_service_privacy",
+            "value":"Informativa sul servizio Temi e sulla Privacy",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"low_pixel",
+            "value":"Risoluzione dell'immagine troppo bassa.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"apply_watch_info_toast",
+            "value":"Impossibile sincronizzare. Riprova.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dock_color_style_follow_system",
+            "value":"Modalità display",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"change_wallpaper",
+            "value":"Cambia sfondo",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"switched_lock_screen_preview",
+            "value":"Passaggio all'anteprima della schermata di blocco effettuato",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"apply_current_theme_first",
+            "value":"Applica prima il tema.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dynamic",
+            "value":"Dinamico",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"save_carousel",
+            "value":"Salva",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"bottom_left",
+            "value":"In basso a sinistra",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"login_in_settings",
+            "value":"Accedi prima al tuo HUAWEI ID nelle Impostazioni.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"photo_not_meet",
+            "value":"Questa foto non può essere utilizzata. Selezionane un'altra dai ritratti in evidenza.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pandora_aesthetic_dialog_confirm",
+            "value":"OK",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"deselect_all",
+            "value":"Deseleziona tutto",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"age_too_small_error",
+            "value":"Impossibile generare. Il soggetto è troppo giovane.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ai_wallpaper_service_subtitle_1",
+            "value":"Le immagini selezionate verranno caricate sul server Cloud per generare gli sfondi utilizzando algoritmi di IA basati sul Cloud. Richiede le seguenti autorizzazioni:",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"generating_ai_wallpaper",
+            "value":"Generazione sfondo IA…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"fill_screen",
+            "value":"Riempi",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"generating_ai_wallpaper_need_time",
+            "value":"Generazione… (richiede circa %d min)",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"edit_G_tip",
+            "value":"Apri in modalità a triplo schermo per modificare.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"un_blurred",
+            "value":"Non sfocato",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"composition_failed",
+            "value":"Impossibile comporre.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"unchecked",
+            "value":"Nessuna selezione",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ai_wallpaper_service_stop_note_1",
+            "value":"Questo servizio non sarà più disponibile dopo la disabilitazione. Vuoi disabilitare comunque?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"delete",
+            "value":"Elimina",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_theme",
+            "value":"Aggiungi tema",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dock_color_style_follow_window",
+            "value":"Sfondo e finestre",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"occlusion_exists",
+            "value":"Ostruito",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"my_theme_d",
+            "value":"Il mio tema %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"file_getting",
+            "value":"Download dei file dal Cloud…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"clear_facial_features",
+            "value":"Lineamenti definiti",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"font_apply_successd",
+            "value":"Carattere applicato.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"wallpaper_carousel_info",
+            "value":"Sequenza sfondi (%1$d/%2$d)",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"after_generate_wallpaper_enable_theme",
+            "value":"Questo tema verrà applicato contemporaneamente.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_ways_display_awake_scheduled",
+            "value":"Programmato",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"set_as_desktop",
+            "value":"Imposta come schermata Home",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"stop_theme_data_service_message",
+            "value":"Questa azione disabiliterà il servizio Temi su questo dispositivo. I tuoi temi e le altre risorse perderanno la loro interattività e non saranno più in grado di visualizzare i tuoi dati. Vuoi disabilitare comunque?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"unsupported_moving_photo_wallpaper",
+            "value":"Gli sfondi live non sono supportati nella schermata Home.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"applyWallpaper",
+            "value":"Applicazione sfondo…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"content_reporting",
+            "value":"Segnala contenuto",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"keywords_cover_screen",
+            "value":"Schermo esterno",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"face_the_camera",
+            "value":"Volto rivolto in avanti",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"end_aigc_service_text",
+            "value":"Per i dettagli, consulta i %1$s e l'%2$s. Se non desideri utilizzare più questo servizio, tocca %3$s.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"center_and_fit",
+            "value":"Adatta",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"screen_reading_first_page",
+            "value":"Carattere predefinito del sistema, numero della pagina di anteprima %d, scorri verso sinistra o verso destra per caricare altre schermate dei dettagli",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"upload_photo",
+            "value":"Carica",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"main_screen",
+            "value":"Schermo principale",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dock_auto_hide_style",
+            "value":"Nascondi il menu veloce quando le finestre sono ingrandite o divise",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"apply_sub_screen_info_subtext",
+            "value":"Puoi modificarlo in Temi schermo esterno.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"intelligent_status_off",
+            "value":"Disattivato",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"moment_x_settings",
+            "value":"SideShow",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"moment_x_smart_display_mode_title",
+            "value":"Intelligente",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"moment_x_state_off",
+            "value":"Disattivato",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"moment_x_all_day_display_mode_title",
+            "value":"Tutto il giorno",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"color_style_not_support_in_desktop_tips",
+            "value":"Se il tema viene applicato solo alla schermata Home, lo stile dell'orologio non verrà applicato.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"color_style_system_title",
+            "value":"Colori del sistema",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"color_style_explanation",
+            "value":"I colori di evidenziazione vengono applicati all'orologio e ai widget nella schermata Home, della schermata di blocco e del Display sempre attivo, nonché nell'area notifiche e nel pannello di controllo.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"color_style_base_title",
+            "value":"Colori di base",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"color_style_suggested_title",
+            "value":"Colori consigliati",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"color_style_button_text",
+            "value":"Colori di evidenziazione",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"apply_Lockscreen",
+            "value":"Applicazione alla schermata di blocco…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"tip_share_text",
+            "value":"Condividi",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dock_item_recentcenter",
+            "value":"Centro attività",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dock_item_filemanager",
+            "value":"Gestione file",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"touch",
+            "value":"tocca per condividere",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dock_item_recyclebin",
+            "value":"Cestino",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dock_item_visible",
+            "value":"Mostra nel menu veloce",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dock_item_appcenter",
+            "value":"Cassetto delle app",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"unlock_set",
+            "value":"Puoi %1$s questo tema con altri.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"preview_image",
+            "value":"Anteprima immagine",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"online_icons",
+            "value":"Icone scaricabili",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"online_wallpapers",
+            "value":"Sfondi scaricabili",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"online_themes",
+            "value":"Temi scaricabili",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"online_fonts",
+            "value":"Caratteri scaricabili",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screen_load_other_detail_page",
+            "value":"Scorri verso sinistra o verso destra con due dita per caricare altre anteprime. Tocca due volte un'anteprima per attivarla.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screenlock_cannot_be_edited_in_a_small_window",
+            "value":"La schermata di blocco non può essere modificata nelle finestre mobili.",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

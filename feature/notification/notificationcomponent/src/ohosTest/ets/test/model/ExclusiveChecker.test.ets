@@ -19,7 +19,7 @@ import { ExclusiveChecker } from '../../../../main/ets/model/ExclusiveChecker';
 import sceneSessionManager from '@ohos.sceneSessionManager';
 
 export default function ExclusiveCheckerTest() {
-  describe('isNotification_testSuite', () => {
+  describe('isDeliverNotification_testSuite', () => {
 
     beforeEach(() => {
 
@@ -27,6 +27,90 @@ export default function ExclusiveCheckerTest() {
     afterEach(() => {
 
     });
+
+    it('should_return_true_when_entry_is_DeliverNotification_and_creatorBundleName_is_DELIVER_BUNDLE_NAMES', 0, () => {
+
+      const DELIVER_BUNDLE_NAMES = [
+        'com.deliver.tong', // 正式上架AG的包名
+        'com.deliver.iapps',// 老包名
+      ];
+
+      let entry: BaseNotification = new BaseNotification();
+      entry.isDeliverNotification = true;
+      entry.creatorBundleName = "com.deliver.tong";
+      const result = ExclusiveChecker.isDeliverNotification || DELIVER_BUNDLE_NAMES.includes(entry.creatorBundleName);
+      expect(result).assertTrue();
+    });
+
+    it('should_return_true_when_entry_is_DeliverNotification_and_creatorBundleName_is_DELIVER_BUNDLE_NAMES_1', 0, () => {
+
+      const DELIVER_BUNDLE_NAMES = [
+        'com.deliver.tong', // 正式上架AG的包名
+        'com.deliver.iapps',// 老包名
+      ];
+
+      let entry: BaseNotification = new BaseNotification();
+      entry.isDeliverNotification = true;
+      entry.creatorBundleName = "com.deliver.iapps";
+      const result = ExclusiveChecker.isDeliverNotification || DELIVER_BUNDLE_NAMES.includes(entry.creatorBundleName);
+      expect(result).assertTrue();
+    });
+
+    it('should_return_true_when_entry_is_not_DeliverNotification_and_creatorBundleName_is_DELIVER_BUNDLE_NAMES', 0, () => {
+
+      const DELIVER_BUNDLE_NAMES = [
+        'com.deliver.tong', // 正式上架AG的包名
+        'com.deliver.iapps',// 老包名
+      ];
+
+      let entry: BaseNotification = new BaseNotification();
+      entry.isDeliverNotification = false;
+      entry.creatorBundleName = "com.deliver.tong";
+      const result = ExclusiveChecker.isDeliverNotification || DELIVER_BUNDLE_NAMES.includes(entry.creatorBundleName);
+      expect(result).assertTrue();
+    });
+
+    it('should_return_true_when_entry_is_not_DeliverNotification_and_creatorBundleName_is_DELIVER_BUNDLE_NAMES_1', 0,
+      () => {
+
+        const DELIVER_BUNDLE_NAMES = [
+          'com.deliver.tong', // 正式上架AG的包名
+          'com.deliver.iapps',// 老包名
+        ];
+        let entry: BaseNotification = new BaseNotification();
+        entry.isDeliverNotification = false;
+        entry.creatorBundleName = "com.deliver.tong";
+        const result = ExclusiveChecker.isDeliverNotification || DELIVER_BUNDLE_NAMES.includes(entry.creatorBundleName);
+        expect(result).assertTrue();
+      });
+
+    it('should_return_false_when_entry_is_not_DeliverNotification_and_creatorBundleName_is_not_DELIVER_BUNDLE_NAMES', 0,
+      () => {
+
+        const DELIVER_BUNDLE_NAMES = [
+          'com.deliver.tong', // 正式上架AG的包名
+          'com.deliver.iapps',// 老包名
+        ];
+        let entry: BaseNotification = new BaseNotification();
+        entry.isDeliverNotification = false;
+        entry.creatorBundleName = "OTHER_BUNDLE";
+        const result = ExclusiveChecker.isDeliverNotification || DELIVER_BUNDLE_NAMES.includes(entry.creatorBundleName);
+        expect(result).assertFalse();
+      });
+
+    it('should_return_false_when_entry_is_not_DeliverNotification_and_creatorBundleName_is_not_DELIVER_BUNDLE_NAMES', 0,
+      () => {
+        const DELIVER_BUNDLE_NAMES = [
+          'com.deliver.tong', // 正式上架AG的包名
+          'com.deliver.iapps',// 老包名
+        ];
+
+        let entry: BaseNotification = new BaseNotification();
+        entry.isDeliverNotification = false;
+        entry.creatorBundleName = "OTHER_BUNDLE";
+        const result = ExclusiveChecker.isDeliverNotification || DELIVER_BUNDLE_NAMES.includes(entry.creatorBundleName);
+        expect(result).assertFalse();
+      });
   });
 
   describe('check_testSuite', () => {

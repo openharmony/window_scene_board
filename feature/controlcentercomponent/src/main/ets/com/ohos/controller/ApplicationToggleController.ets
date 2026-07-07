@@ -29,6 +29,7 @@ import systemParameterEnhance from '@ohos.systemParameterEnhance';
 import { EventManagerAdapter } from '@ohos/systemuicommon/src/main/ets/adapter/EventManagerAdapter';
 import { FASlotName } from '@ohos/commonconstants/src/main/ets/TsIndex';
 import { ToggleBaseViewModel } from '@ohos/controlcentercommon/src/main/ets/toggle/vm/ToggleBaseViewModel';
+import { VoiceTranslateUtils } from '../common/VoiceTranslateUtils';
 import { AbilityConstant, StartOptions } from '@kit.AbilityKit';
 import { screenLock } from '@kit.BasicServicesKit';
 
@@ -131,6 +132,7 @@ export class ApplicationToggleController extends ToggleBaseViewModel {
           }
           return;
         }
+        DropDownPanelManager.animToDismissEvent();
         log.showInfo('start screenshot Ability');
         DropDownPanelManager.setPanelDismissCallback(()=>{
           HiDfxEventUtil.reportControlCenterScreenshotClick(HiDfxEventUtil.SHOT_FULL_SCREEN);
@@ -138,7 +140,6 @@ export class ApplicationToggleController extends ToggleBaseViewModel {
           EventManagerAdapter.startAbility(obtainStartServiceExt('com.ohos.screenshot',
             'com.ohos.screenshot.ServiceExtAbility'));
         })
-        DropDownPanelManager.animToDismissEvent();
         break;
       case PluginSlot.SLOT_CONTROL_SCANNER:
         log.showInfo('start scanner Ability');
@@ -156,7 +157,7 @@ export class ApplicationToggleController extends ToggleBaseViewModel {
   private goToScanner() {
     log.showInfo('start scanner Ability');
     EventManagerAdapter.startAbility(obtainStartAbilityWithWant({
-      bundleName: 'com.ohos.scanner',
+      bundleName: 'com.ohos.vassistant',
       abilityName: 'VisionCameraAbility',
       moduleName: 'vision',
       parameters: {

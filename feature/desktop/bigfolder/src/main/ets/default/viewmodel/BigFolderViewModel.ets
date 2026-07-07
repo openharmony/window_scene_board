@@ -51,6 +51,7 @@ import {
   StyleConstants,
   DockItemInfo,
   FolderReporter,
+  DeliverUtil,
   NotHarmonyUtil,
   MultiSelectListenerType,
   MultiSelectManager,
@@ -269,6 +270,11 @@ export class BigFolderViewModel extends FolderViewModel {
     selectedItemMap.forEach((selectAppList: GridLayoutItemInfo[], folder: GridLayoutItemInfo) => {
       const isFolderOpened = openedFolder?.folderId === folder.folderId;
       const removedUniqueList: string[] = selectAppList.map(item => {
+        // 吸附从文件夹中删除应用时候，检查是不是克隆应用应用
+        if (DeliverUtil.isdeliverApp(item.intent)) {
+          log.showInfo(`clear deliver app folder cache: ${item.bundleName}`);
+          localEventManager.sendLocalEventSticky(EventConstants.EVENT_FOLDER_APP_PACKAGE_CHANGED, item.bundleName);
+        }
         return GridLayoutUtil.generateUniqueKey(item);
       });
       const cacheFolder = this.mFolderLayout.selectGridLayoutItemByItem(folder);
@@ -526,7 +532,8 @@ export class BigFolderViewModel extends FolderViewModel {
     // 从OpenFolderData中获取不带添加按钮的分页后的layoutInfo信息
     const folderLayoutInfo: GridLayoutItemInfo[][] =
       this.filterFolderPage(this.getAppListInFolder(openFolderData));
-    if (folderLayoutInfo.length === 1 && folderLayoutInfo[0].length === 1) {
+    if (folderLayoutInfo.length === 1 && folderLayoutInfo[0].length === 1 &&
+      !DeliverUtil.isContainerFolder(openFolderData.folderId)) {
       log.showInfo('will close folder data');
       openFolderData.folderId = '';
       openFolderData.layoutInfo = [];
@@ -993,7 +1000,8 @@ export class BigFolderViewModel extends FolderViewModel {
     const folderIndex = this.mFolderLayout.selectIndexInLayout(folderItemInLayout);
     if (!folderItemInLayout || folderIndex === CommonConstants.INVALID_VALUE) {
       log.showWarn('deleteAppFromOpenFolder layoutInfo find folderIndex is -1');
-      if(folderLayoutInfo.flat().length <= 1){
+      // 删除dock区文件夹，不涉及desktop逻辑
+      if (DeliverUtil.checkFolderIsReleased(openFolderData.folderId, folderLayoutInfo.flat().length)) {
         RdbStoreManager.getInstance().deleteItemByInfoId(openFolderData.folderId);
         SmallFolderIconFileUtil.deleteFolderIcon(openFolderData.folderId);
       }
@@ -1004,7 +1012,7 @@ export class BigFolderViewModel extends FolderViewModel {
       folderIndex, openFolderData?.folderId);
 
     const appListInfo: GridLayoutItemInfo[] = this.mSettingsModel.getAppListInfo();
-    if (folderLayoutInfo.flat().length <= 1) {
+    if (DeliverUtil.checkFolderIsReleased(openFolderData.folderId, folderLayoutInfo.flat().length)) {
       if (folderLayoutInfo.length === 1 && folderLayoutInfo[0].length === 1) {
         // 文件夹消失动效：将folderId和两个app的bundleName存入AppStore
         this.setDisappearFolderData(openFolderData.folderId, folderLayoutInfo[0][0].keyName, appInfo.keyName);
@@ -1077,7 +1085,7 @@ export class BigFolderViewModel extends FolderViewModel {
    * @param folder 文件夹
    */
   async dragAppLeaveFolder(newLayout: GridLayoutItemInfo[], folder: GridLayoutItemInfo): Promise<void> {
-    if (!newLayout || !folder || newLayout.length <= 1 ||
+    if (!newLayout || !folder || DeliverUtil.checkFolderIsReleased(folder.folderId, newLayout.length) ||
     NotHarmonyUtil.isNotHarmonyFolderShouldReleased(folder.folderId, newLayout.length, newLayout)) {
       log.showError('dragAppLeaveFolder param error');
       return;
@@ -1115,7 +1123,7 @@ export class BigFolderViewModel extends FolderViewModel {
     removeFolderApp = this.layoutInfoToList(folderItem);
     log.showInfo('updateFolderAppList id:%{public}s container:%{public}s', folderItem?.folderId, folderItem?.container);
     // checked app <= 1
-    if (appInfos.length <= 1 &&
+    if (DeliverUtil.checkFolderIsReleased(folderItem?.folderId, appInfos.length) &&
     NotHarmonyUtil.isNotHarmonyFolderShouldReleased(folderItem?.folderId, appInfos.length, appInfos)) {
       if (folderItem?.container === CommonConstants.CONTAINER_DOCK) {
         this.updateToReleaseFolderOnDock(appInfos, folderItem, removeFolderApp);
@@ -1491,7 +1499,7 @@ export class BigFolderViewModel extends FolderViewModel {
       if (appInfosRemaining.length === 0) {
         // 其它文件内应用被迁移完后需要删除
         this.mFolderLayout.deleteGridLayoutItemByItemId(item.folderId, 'from folder by moveAppFromOtherFolders', true);
-      } else if (appInfosRemaining.length <= 1 &&
+      } else if (DeliverUtil.checkFolderIsReleased(item.folderId, appInfosRemaining.length) &&
       NotHarmonyUtil.isNotHarmonyFolderShouldReleased(item.folderId, appInfosRemaining.length,
         appInfosRemaining)) {
         // 剩下的一个应用继承文件夹的位置
@@ -2197,7 +2205,7 @@ export class BigFolderViewModel extends FolderViewModel {
       if (folderAppList.length === 0) {
         this.mFolderLayout.deleteGridLayoutItemByIndex(folderIndex, 'from folder by RemoveShortIconInEditMode', true);
         localEventManager.sendLocalEventSticky(EventConstants.EVENT_REQUEST_PAGEDESK_LIGHT_REFRESH, null);
-      } else if (folderAppList.length <= 1&&
+      } else if (DeliverUtil.checkFolderIsReleased(folderItemInLayout?.folderId, folderAppList.length) &&
       NotHarmonyUtil.isNotHarmonyFolderShouldReleased(folderItemInLayout?.folderId, folderAppList.length,
         folderAppList)) {
         const appLayoutInfo: GridLayoutItemInfo = ObjectCopyUtil.deepClone(folderAppList[0]);
@@ -2255,7 +2263,7 @@ export class BigFolderViewModel extends FolderViewModel {
         }
         RdbStoreManager.getInstance().deleteInfoByBundle(bundleName, undefined, appIndex);
         folderAppList.splice(m, 1);
-        if ((folderAppList.length <= 1) &&
+        if (DeliverUtil.checkFolderIsReleased(dockDataItem?.appId, folderAppList.length) &&
         NotHarmonyUtil.isNotHarmonyFolderShouldReleased(dockDataItem?.appId, folderAppList.length,
           folderAppList)) {
           let gridItemInfo: GridLayoutItemInfo = GridLayoutUtil.dockItemToGridLayout(dockDataList[i]);
@@ -2276,7 +2284,7 @@ export class BigFolderViewModel extends FolderViewModel {
     folderAppList: GridLayoutItemInfo[]): void {
     let folderIndex: number = this.mFolderLayout.selectIndexInLayout(folderItemInLayout, false);
     // 需要解散的文件夹如果还剩余一个应用时需要替换为剩余图标，避免桌面刷新时重新找位，若没有剩余应用则直接删除数据
-    if ((folderAppList.length <= 1) && folderIndex >= 0 &&
+    if (DeliverUtil.checkFolderIsReleased(folderItemInLayout.folderId, folderAppList.length) && folderIndex >= 0 &&
     NotHarmonyUtil.isNotHarmonyFolderShouldReleased(folderItemInLayout.folderId, folderAppList.length,
       folderAppList)) {
       // 仅桌面解散逻辑，当前桌面缓存有一份异常的dock布局缓存，暂做保护处理，避免数据刷新异常。默认在桌面上
@@ -2305,7 +2313,9 @@ export class BigFolderViewModel extends FolderViewModel {
   }
 
   private releaseFolderAddDhAppToDesktop(addToDesktopElement: GridLayoutItemInfo): boolean {
-    return false;
+    return addToDesktopElement && GridLayoutUtil.isAppInstalled(addToDesktopElement) &&
+    DeliverUtil.isContainerItem(addToDesktopElement.intent) &&
+      !AppModel.getInstance().getAppInfoByBundleName(addToDesktopElement.bundleName);
   }
 
   removeFolderAfterUninstallIfNeeded(openFolderData: GridLayoutItemInfo, folderAppList: GridLayoutItemInfo[],
@@ -2395,7 +2405,7 @@ export class BigFolderViewModel extends FolderViewModel {
     folderItemInLayout: GridLayoutItemInfo, appListInfo: GridLayoutItemInfo[]): void {
     if (folderLayoutInfo.length === 1 &&
       folderLayoutInfo[0].length <= 1 &&
-    (folderLayoutInfo[0].length <= 1) &&
+    DeliverUtil.checkFolderIsReleased(openFolderData.folderId, folderLayoutInfo[0].length) &&
     NotHarmonyUtil.isNotHarmonyFolderShouldReleased(openFolderData.folderId, folderLayoutInfo[0].length,
       folderLayoutInfo[0])
     ) {
@@ -2667,7 +2677,8 @@ export class BigFolderViewModel extends FolderViewModel {
       return;
     }
     // 文件夹未解散更新
-    let isOneMoreApps: boolean = NotHarmonyUtil.isNotHarmonyFolderHasOneOrMoreApp(tempOpenFolderData.folderId, itemArr.length);
+    let isOneMoreApps: boolean = DeliverUtil.checkFolderIsOneMoreApps(tempOpenFolderData.folderId, itemArr.length) ||
+      NotHarmonyUtil.isNotHarmonyFolderHasOneOrMoreApp(tempOpenFolderData.folderId, itemArr.length);
     // 单应用定制文件夹，最后一个应用移除时不能落位到dock区
     if (isOneMoreApps) {
       let findFolder: DockItemInfo = residentList[findIndex];

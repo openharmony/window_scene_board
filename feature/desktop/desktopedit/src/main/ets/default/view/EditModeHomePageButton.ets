@@ -40,7 +40,7 @@ const TAG: string = 'EditModeHomePageButton';
 const log: Logger = Logger.getLogHelper(LogDomain.HOME);
 
 /**
- * 编辑模式空白页删除按钮
+ * 设置主屏按钮
  */
 @Component
 export struct EditModeHomePageButton {

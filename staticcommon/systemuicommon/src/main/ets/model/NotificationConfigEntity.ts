@@ -84,6 +84,18 @@ export class NotificationConfigEntity extends TableEntity {
   public systemApp: boolean = false;
 
   /**
+   * 是否为应用
+   */
+  @Column({ name: 'isDeliver', type: 'boolean' })
+  public isDeliver: boolean = false;
+
+  /**
+   * 是否为克隆应用安装应用
+   */
+  @Column({ name: 'isdeliverApp', type: 'boolean' })
+  public isdeliverApp: boolean = false;
+
+  /**
    * 是否隐藏通知设置入口
    */
   @Column({ name: 'settingIgnore', type: 'boolean' })

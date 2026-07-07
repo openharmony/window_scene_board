@@ -28,6 +28,8 @@ import lazy OuterScreenLockFormViewModel from './vm/OuterScreenLockFormViewModel
 import { LogDomain, LogHelper } from '@ohos/basicutils';
 import { FormComponentBuilder } from './vm/FormComponentBuilder';
 import { BrightnessOptionUtils } from '@ohos/systemuicommon/Index';
+import { AodStyleType, ImmersiveAodStyle } from '@ohos/systemuicommon';
+import { immersiveKgMgr } from '@ohos/systemuicommon';
 import curves from '@ohos.curves';
 import { SlWidgetId } from '@ohos/screenlockcommon/src/main/ets/constants/SlWidgetConst';
 import { LengthMetrics } from '@ohos.arkui.node';
@@ -162,6 +164,7 @@ class GridLayoutOptionRect {
 @Component
 struct OuterScreenLockFormComponent {
   @Prop isAod: boolean;
+  @State aodStyle?: ImmersiveAodStyle | undefined = immersiveKgMgr.getOneMirrorState()?.getAodStyle(true);
   @Prop clockStrokeColor?: string = '';
   @Prop isLightWallpaper: boolean = false;
   @Link @Watch('onFormConfigChange') outerFormViewModel: OuterScreenLockFormViewModel;
@@ -220,11 +223,14 @@ struct OuterScreenLockFormComponent {
   }
 
   private getTransitionEffect(): TransitionEffect {
-    return TransitionEffect.OPACITY.animation({
-      duration: Constants.OUTER_SCREEN_CARD_OPACITY_DURATION,
-      curve: Curve.Linear
-    })
-
+    if (this.aodStyle?.isAod) {
+      return TransitionEffect.IDENTITY;
+    } else {
+      return TransitionEffect.OPACITY.animation({
+        duration: Constants.OUTER_SCREEN_CARD_OPACITY_DURATION,
+        curve: Curve.Linear
+      })
+    }
   }
 
   build() {
@@ -279,10 +285,15 @@ struct OuterScreenLockFormCard {
   @Link outerFormViewModel: OuterScreenLockFormViewModel;
   @Link displayMode: number;
   @Prop isAod: boolean;
+  @State aodStyle?: ImmersiveAodStyle | undefined = immersiveKgMgr.getOneMirrorState()?.getAodStyle(true);
   @Prop clockStrokeColor?: string = '';
   @Prop isLightWallpaper: boolean = false;
   @State formScale: number = 1;
-
+  // private keyguardCardDarkBgOption: BrightnessOptions = BrightnessOptionUtils.keyguardCardBackgroundDarkOption;
+  // private keyguardCardLightBgOption: BrightnessOptions = BrightnessOptionUtils.keyguardCardBackgroundLightOption;
+  // private keyguardTimeDarkOption: BrightnessOptions = BrightnessOptionUtils.keyguardTimeDarkOption;
+  // private keyguardTimeLightOption: BrightnessOptions = BrightnessOptionUtils.keyguardTimeLightOption;
+  // private aodFormBackboardLightOption: BrightnessOptions = BrightnessOptionUtils.aodFormBackboardLightOption;
   private keyguardCardDarkBgOption: BackgroundBrightnessOptions = BrightnessOptionUtils.keyguardCardBackgroundDarkOption;
   private keyguardCardLightBgOption: BackgroundBrightnessOptions = BrightnessOptionUtils.keyguardCardBackgroundLightOption;
   private keyguardTimeDarkOption: BackgroundBrightnessOptions = BrightnessOptionUtils.keyguardTimeDarkOption;
@@ -314,6 +325,23 @@ struct OuterScreenLockFormCard {
   private getBackgroundColor(): ResourceColor | undefined {
     return BrightnessOptionUtils.changeColor(this.clockStrokeColor) ?? this.brightColor;
   }
+
+  private getAodBackgroundColor(): ResourceColor | undefined {
+    let isChangeColor = slStateHelper.getSlClockStaticState()?.getChangeColorState();
+    if (aodHardwareConfig.isSupportBackgroundEffect() && !isChangeColor) {
+      return this.aodStyle?.getStyleValue(AodStyleType.SCREEN_LOCK_CLOCK_COLOR);
+    }
+    return this.aodStyle?.getStyleValue(AodStyleType.SCREEN_LOCK_CLOCK_COLOR);
+  }
+
+  // private getBrightnessOption(): BrightnessOptions {
+  //   if (this.clockStrokeColor !== WidgetConstants.CLOCK_DEFAULT_FOREGROUND_COLOR) {
+  //     return this.isLightWallpaper ?
+  //       BrightnessOptionUtils.keyguardTimeDarkOptionForFillColor :
+  //       BrightnessOptionUtils.keyguardTimeLightOptionForFillColor;
+  //   }
+  //   return this.isLightWallpaper ? this.keyguardTimeDarkOption : this.keyguardTimeLightOption;
+  // }
 
 
   private getBrightnessOption(): BackgroundBrightnessOptions {
@@ -352,24 +380,36 @@ struct OuterScreenLockFormCard {
   build() {
     Stack() {
       Stack() {
-        Stack() {
+        if (this.aodStyle?.isAod) {
           Column() {
           }
+          .backgroundColor(this?.aodStyle?.getStyleValue(AodStyleType.AOD_FORM_PANEL_COLOR))
           .width('100%')
           .height('100%')
           .borderRadius(this.radius)
-          .useEffect(true)
-          .visibility(this.displayMode === NONE_EDIT_MODE ? Visibility.Visible : Visibility.Hidden)
+        } else {
+          Stack() {
+            Column() {
+            }
+            .width('100%')
+            .height('100%')
+            .borderRadius(this.radius)
+            .useEffect(true)
+            .visibility(this.displayMode === NONE_EDIT_MODE ? Visibility.Visible : Visibility.Hidden)
 
-          Column() {
+            Column() {
+            }
+            .width('100%')
+            .height('100%')
+            .backgroundColor(this.brightColor)
+            // .backgroundBrightnessInternal(this.aodStyle?.isAod ? this.aodFormBackboardLightOption :
+            //   this.getBgBrightnessOption())
+            .backgroundBrightness(this.aodStyle?.isAod ? this.aodFormBackboardLightOption :
+            this.getBgBrightnessOption())
+            .borderRadius(this.radius)
           }
-          .width('100%')
-          .height('100%')
-          .backgroundColor(this.brightColor)
-          .backgroundBrightness(this.getBgBrightnessOption())
-          .borderRadius(this.radius)
+          .hitTestBehavior(HitTestMode.Transparent)
         }
-        .hitTestBehavior(HitTestMode.Transparent)
       }
       .accessibilityLevel('no-hide-descendants')
       .margin({
@@ -417,8 +457,8 @@ struct OuterScreenLockFormCard {
           width: '100%'
         })
         .scale({
-          x: this.formScale,
-          y: this.formScale
+          x: this.aodStyle?.isAod ? 1 : this.formScale,
+          y: this.aodStyle?.isAod ? 1 : this.formScale
         })
         .onTouch((event: TouchEvent) => {
           if (event.type === TouchType.Down) {
@@ -441,6 +481,7 @@ struct OuterScreenLockFormCard {
         Column() {
         }
         .hitTestBehavior(HitTestMode.Transparent)
+        .useEffect(!this.aodStyle?.isAod)
         .width('100%')
         .height('100%')
         .blendMode(BLEND_MODE_SRC_IN)
@@ -451,11 +492,13 @@ struct OuterScreenLockFormCard {
         .hitTestBehavior(HitTestMode.Transparent)
         .width('100%')
         .height('100%')
-        .backgroundColor(this.getBackgroundColor())
-        .backgroundBrightness(this.getBrightnessOption())
+        .backgroundColor(this.aodStyle?.isAod ?
+        this.getAodBackgroundColor() : this.getBackgroundColor())
+        // .backgroundBrightnessInternal(this.aodStyle?.isAod ? this.getAodBrightnessOption() : this.getBrightnessOption())
+        .backgroundBrightness(this.aodStyle?.isAod ? this.getAodBrightnessOption() : this.getBrightnessOption())
         .accessibilityLevel('no')
 
-        if (this.clockStrokeColor !== WidgetConstants.CLOCK_DEFAULT_FOREGROUND_COLOR) {
+        if (!this.aodStyle?.isAod && this.clockStrokeColor !== WidgetConstants.CLOCK_DEFAULT_FOREGROUND_COLOR) {
           Column() {
           }
           .hitTestBehavior(HitTestMode.Transparent)

@@ -73,7 +73,7 @@ export class StatusBarCommonPaddingVm extends StatusBarPaddingBaseVm {
     // 锁屏只支持正向竖屏（除pad、折叠屏展开态），不响应其它角度数据更新
     if (!DeviceHelper.isPad() && EnvVm.instance.isScreenLock && this.cutoutVm.isLandscape &&
       !DeviceHelper.isFoldExpanded() &&
-      DeviceHelper.getFoldProductType() !== FoldPhoneTypeValue.EXPANDING_ULTRA_SCREEN_PRODUCT) {
+      DeviceHelper.getFoldProductType() !== FoldPhoneTypeValue.EXPANDING_THREE_FOLD_PRODUCT) {
       return;
     }
 

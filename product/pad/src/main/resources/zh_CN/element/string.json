@@ -116,7 +116,7 @@
             }
         },
         {
-            "name":"folder_name_oh",
+            "name":"folder_name_system_apps",
             "value":"应用",
             "attr":{
                 "priority":"translate"
@@ -299,98 +299,98 @@
             }
         },
         {
-            "name":"openharmony_multiwindow_not_support_multiwindows",
+            "name":"oh_multiwindow_not_support_multiwindows",
             "value":"“%1$s”不支持多个窗口",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"openharmony_multiwindow_not_support_split",
+            "name":"oh_multiwindow_not_support_split",
             "value":"“%1$s”不支持分屏",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"openharmony_multiwindow_not_support_vertical_split_new",
+            "name":"oh_multiwindow_not_support_vertical_split_new",
             "value":"%1$s不支持左右分屏",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"openharmony_multiwindow_not_support_horizontal_split_new",
+            "name":"oh_multiwindow_not_support_horizontal_split_new",
             "value":"%1$s不支持上下分屏",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"openharmony_multiwindow_not_support_split_ratio",
+            "name":"oh_multiwindow_not_support_split_ratio",
             "value":"游戏应用不支持分屏比例调节",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"openharmony_multiwindow_save_group",
+            "name":"oh_multiwindow_save_group",
             "value":"保存组合",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"openharmony_multiwindow_horizontal_split",
+            "name":"oh_multiwindow_horizontal_split",
             "value":"上下分屏",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"openharmony_multiwindow_vertical_split",
+            "name":"oh_multiwindow_vertical_split",
             "value":"左右分屏",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"openharmony_multiwindow_horizontal_exchange",
+            "name":"oh_multiwindow_horizontal_exchange",
             "value":"上下互换",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"openharmony_multiwindow_vertical_exchange",
+            "name":"oh_multiwindow_vertical_exchange",
             "value":"左右互换",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"openharmony_multiwindow_not_support_split_for_folded_new",
+            "name":"oh_multiwindow_not_support_split_for_folded_new",
             "value":"%1$s在设备折叠状态不支持分屏",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"openharmony_multiwindow_click_application_form_split_screen",
+            "name":"oh_multiwindow_click_application_form_split_screen",
             "value":"点击桌面应用即可形成分屏",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"openharmony_multiwindow_not_support_float_window",
+            "name":"oh_multiwindow_not_support_float_window",
             "value":"“%1$s”不支持悬浮窗",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"openharmony_multiwindow_minimize_all_float_due_to_rss",
+            "name":"oh_multiwindow_minimize_all_float_due_to_rss",
             "value":"为保障体验流畅，悬浮窗暂时收入侧边",
             "attr":{
                 "priority":"translate"
@@ -405,7 +405,7 @@
             "value":"用于接收应用市场下载状态公共事件"
         },
         {
-            "name":"openharmony_multiwindow_app_is_open",
+            "name":"oh_multiwindow_app_is_open",
             "value":"此应用已打开",
             "attr":{
                 "priority":"translate"
@@ -573,6 +573,13 @@
             }
         },
         {
+            "name":"HiSearch_title",
+            "value":"语音助手搜索",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
             "name":"Desktop_individuation",
             "value":"桌面和个性化",
             "attr":{
@@ -609,6 +616,97 @@
             "value":"用于访问星闪接口"
         },
         {
+            "name":"Ai_bar_setting",
+            "value":"系统导航",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Ai_bar_back",
+            "value":"返回",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Ai_bar_vassistant_dialogue",
+            "value":"语音助手对话",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Ai_bar_back_click_navigation",
+            "value":"点击导航条返回",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Ai_bar_vassistant_dialogue_longpress",
+            "value":"长按触发语音助手对话",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Ai_bar_back_detail",
+            "value":"点击底部导航条，返回上一级",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Ai_bar_gesture_back_detail",
+            "value":"从屏幕左/右侧向内滑动，返回上一级",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Ai_bar_vassistant",
+            "value":"长按底部导航条，可触发语音助手对话",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Ai_bar_return_home",
+            "value":"回到桌面",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Ai_bar_return_home_detail",
+            "value":"从屏幕底部边缘上滑",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Ai_bar_recent",
+            "value":"进入最近任务",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Ai_bar_recent_detail",
+            "value":"从屏幕底部边缘上滑并停顿",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Ai_bar",
+            "value":"导航条",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
             "name":"System",
             "value":"系统",
             "attr":{
@@ -639,6 +737,27 @@
         {
             "name":"learn_more",
             "value":"了解更多",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_to_voice",
+            "value":"拖给语音助手",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"let_go_drag_to_voice",
+            "value":"松手发给语音助手",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_to_voice_detail",
+            "value":"长按内容至浮起，可拖拽到底部语音助手",
             "attr":{
                 "priority":"translate"
             }
@@ -1232,8 +1351,22 @@
             }
         },
         {
+            "name":"ai_bar_accessibility_text",
+            "value":"导航条，点按两次后长按即可触发语音助手对话",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
             "name":"keyboard_panel_world_access_text",
             "value":"键盘切换，按钮",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_to_voice_reminder",
+            "value":"拖入语音助手，松手即可执行",
             "attr":{
                 "priority":"translate"
             }
@@ -1386,21 +1519,21 @@
             }
         },
         {
-            "name":"openharmony_multiwindow_click_application_form_midScene_waiting_state",
+            "name":"oh_multiwindow_click_application_form_midScene_waiting_state",
             "value":"点击桌面应用加入全景多窗",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"openharmony_multiwindow_does_not_support_panoramic_multiwindow",
+            "name":"oh_multiwindow_does_not_support_panoramic_multiwindow",
             "value":"当前应用不支持全景多窗",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"openharmony_multiwindow_back_to_middle_scene_using_gesture",
+            "name":"oh_multiwindow_back_to_middle_scene_using_gesture",
             "value":"多指捏合返回全景多窗",
             "attr":{
                 "priority":"translate"
@@ -1414,7 +1547,7 @@
             }
         },
         {
-            "name":"openharmony_multiwindow_does_not_support_panoramic_multiwindow_in_current_state",
+            "name":"oh_multiwindow_does_not_support_panoramic_multiwindow_in_current_state",
             "value":"当前状态不支持全景多窗",
             "attr":{
                 "priority":"translate"

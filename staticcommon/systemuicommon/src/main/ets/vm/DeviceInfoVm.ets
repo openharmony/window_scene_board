@@ -29,7 +29,7 @@ import { EmergencyThermalSafeManager } from '../manager/EmergencyThermalSafeMana
 import { LayoutUtils, XTLayoutType } from '@ohos/systemuiutils/src/main/ets/base/LayoutUtils';
 import lazy {
   SCBTripleStateChange
-} from '@ohos/launchercommon/src/main/ets/utils/UltraScreenExpandAnimUtils';
+} from '@ohos/launchercommon/src/main/ets/utils/TripleFoldExpandAnimUtils';
 import { ResourceVm } from './ResourceVm';
 import { DeviceRotateVm } from './DeviceRotateVm';
 import { EventEmitter } from '../utils/EventEmitter';

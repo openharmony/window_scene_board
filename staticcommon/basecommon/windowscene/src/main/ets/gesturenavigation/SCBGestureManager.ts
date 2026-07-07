@@ -1,5 +1,5 @@
 /*
- * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -103,7 +103,9 @@ class SCBGestureManager {
   private touchEventCallBack: Map<GestureType, Map<string, Function>> = new Map();
   // 手势Home、Recent、Back事件键值对
   private gestureCallBackMap: Map<number, Map<number, Function>> = new Map();
+  private aiBarRect: ViewArea = { left: 0, top: 0, width: 0, height: 0 };
   private pcKeyEventCallBack: Map<string, Function> = new Map();
+  private aiBarChangeAnimCallBack: Function;
   private enableStateChangeCallBack: Function;
 
   // win + backspace, eg KEYCODE_BACK
@@ -613,6 +615,31 @@ class SCBGestureManager {
     eventFuncMap?.set(persistentId, callback);
   }
 
+  public setAiBarRect(areaRect: ViewArea): void {
+    this.aiBarRect = areaRect;
+  }
+
+  /**
+   * get ai bar rect in vp
+   *
+   * @return rect
+   */
+  public getAiBarRect(): ViewArea {
+    return this.aiBarRect;
+  }
+
+  /**
+   * unRegister AiBarChangeAnim Callback
+   *
+   * @param callback
+   */
+  public unRegisterAiBarChangeAnim(): void {
+    this.aiBarChangeAnimCallBack = null;
+  }
+
+  public registerAiBarChangeAnim(callback: Function): void {
+    this.aiBarChangeAnimCallBack = callback;
+  }
 
   public registerGestureEnableStateChange(callback: Function): void {
     this.enableStateChangeCallBack = callback;
@@ -620,6 +647,12 @@ class SCBGestureManager {
 
   public unRegisterGestureEnableStateChange(): void {
     this.enableStateChangeCallBack = null;
+  }
+
+  public aiBarChange(type: number): void {
+    if (this.aiBarChangeAnimCallBack) {
+      this.aiBarChangeAnimCallBack(type);
+    }
   }
 
   private registerPCKey(): void {

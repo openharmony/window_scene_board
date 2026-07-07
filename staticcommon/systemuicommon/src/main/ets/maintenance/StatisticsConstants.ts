@@ -42,6 +42,7 @@ export enum ClickRegion {
   CAPSULE_BUTTON = 22,
   APP_FOREGROUND = 23,
   APP_BACKGROUND = 24,
+  NTF_DELIVER = 25,
   CLOSE_META_SERVICE_NTF_ENABLE = 26,
   UI_LITE_MODE = 27,
   CAPSULE_COLLAPSE = 28,
@@ -55,7 +56,11 @@ export enum ClickRegion {
  * 通知类型
  */
 export enum RemindType {
-  NORMAL = 0
+  NORMAL = 0,
+  DELIVER_PLAY = 1,
+  DELIVER_STOP = 2,
+  SEND_DELIVER_PLAY = 3,
+  SEND_DELIVER_STOP = 4
 }
 
 /**

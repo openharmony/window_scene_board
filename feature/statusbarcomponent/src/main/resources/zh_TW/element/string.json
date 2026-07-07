@@ -57,6 +57,13 @@
             }
         },
         {
+            "name":"ai_assistant",
+            "value":"語言助手",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
             "name":"battery_power",
             "value":"電量：%s",
             "attr":{
@@ -136,6 +143,27 @@
         {
             "name":"ethernet_status_connected",
             "value":"有線網路已連線",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"voice_search",
+            "value":"語言助手搜尋",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"voice_translate",
+            "value":"語言助手翻譯",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"voice_notetaker",
+            "value":"語言助手慧記",
             "attr":{
                 "priority":"translate"
             }

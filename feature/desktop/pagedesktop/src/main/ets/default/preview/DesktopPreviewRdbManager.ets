@@ -27,6 +27,7 @@ import Common from '@ohos.app.ability.common';
 import {
   AppStatus,
   CommonConstants,
+  DeliverUtil,
   DesktopParam,
   GridLayoutItemInfo
 } from '@ohos/launchercommon/src/main/ets/TsIndex';
@@ -230,6 +231,11 @@ export class DesktopPreviewRdbManager {
   public getItemName(item: GridLayoutItemInfo, desktopParam: DesktopParam, callBack?: Function): void {
     if (PreviewUtils.isEmpty(item) && callBack) {
       callBack(item.appName);
+      return;
+    }
+    if (PreviewUtils.isVoiceAbilityForm(item.bundleName, item.abilityName) && callBack) {
+    Log.showInfo(TAG, `isVoiceAbilityForm name ${desktopParam.voiceCardName}`);
+      callBack(desktopParam.voiceCardName);
       return;
     }
     let res: string = '';

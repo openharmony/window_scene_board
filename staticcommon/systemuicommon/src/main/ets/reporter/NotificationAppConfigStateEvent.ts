@@ -119,9 +119,9 @@ export class NotificationAppConfigStateEvent {
       const userId = await AccountMgr.getCurrentAccountId();
       const predicates = NotificationConfigEntity.getPredicates()
         .inCondition({ userId: [userId, ZERO_USER_ID] })
-        .equalTo({ settingIgnore: false })
+        .equalTo({ settingIgnore: false, isDeliver: false })
         .or()
-        .equalTo({ settingIgnore: false, systemApp: false })
+        .equalTo({ settingIgnore: false, isDeliver: true, systemApp: false, isdeliverApp: true })
       appList = await NotificationConfigEntity.queryList(predicates, { columns: ['bundle', 'uid'] });
       log.showInfo(TAG, `Get app list success: ${appList.length}`);
     } catch (e) {

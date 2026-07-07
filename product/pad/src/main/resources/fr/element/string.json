@@ -1,0 +1,1607 @@
+{
+    "string":[
+        {
+            "name":"MultiWindow_guidance_button_next",
+            "value":"Suivant",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Ai_bar_recent_detail",
+            "value":"Faire glisser le doigt vers le haut depuis le bas de l'écran et maintenir permet de voir les tâches récentes.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_does_not_support_panoramic_multiwindow_in_current_state",
+            "value":"L'affichage multitâche n'est pas pris en charge.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Ai_bar_recent",
+            "value":"Affichage des tâches récentes",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_not_support_multiwindows",
+            "value":"%1$s ne prend pas en charge l'affichage multi-fenêtres.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"maximize_window",
+            "value":"Agrandir",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"oh_multiwindow_vertical_split",
+            "value":"Partitionner verticalement",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"folder_name_tools",
+            "value":"Outils",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_click_application_form_midScene_waiting_state",
+            "value":"Toucher l'icône d'une application pour l'ajouter à l'affichage multitâche.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"replace_window",
+            "value":"Permuter",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"oh_multiwindow_minimize_all_float_due_to_rss",
+            "value":"Pour une expérience plus fluide, la fenêtre flottante a été placée sur le côté.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"search_apps",
+            "value":"Rechercher des applications",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_ring_mode_title_vibration",
+            "value":"Vibration",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_click_application_form_split_screen",
+            "value":"Veuillez ouvrir une autre application pour partitionner l'écran.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"folder_name_system_apps",
+            "value":"Applications ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_window",
+            "value":"Ajouter",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"flip_the_phone",
+            "value":"Veuillez retourner le téléphone pour allumer la lampe-torche",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_ring_mode_title_off",
+            "value":"Silencieux",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"learn_more",
+            "value":"En savoir plus",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_ring_mode_title_on",
+            "value":"Son",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_does_not_support_panoramic_multiwindow",
+            "value":"Cette application ne prend pas en charge l'affichage multitâche.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_focused_switch_content_fold",
+            "value":"Toucher une fenêtre permet de la sélectionner.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"oh_multiwindow_not_support_split",
+            "value":"%1$s ne fonctionne pas avec la partition d'écran.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"System",
+            "value":"Système",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add",
+            "value":"Ajouter",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"delete_form",
+            "value":"Retirer",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_button_quit",
+            "value":"Ultérieurement",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"close_window",
+            "value":"Fermer",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_bluetooth_title",
+            "value":"Bluetooth",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_split_screen_title",
+            "value":"Partition d'écran",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_nfc_mode_title",
+            "value":"NFC",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"forbid_pip_window_size_adjust",
+            "value":"La taille de la fenêtre ne peut pas être ajustée sur l'écran de couverture.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_horizontal_split",
+            "value":"Partitionner horizontalement",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_modify_mode_smart_text",
+            "value":"Ce thème d'écran éteint ne prend en charge que le mode intelligent. Le mode d'affichage a été automatiquement ajusté.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"one_hand_mode",
+            "value":"Interface de navigation à une main",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_poup_confirm",
+            "value":"OK",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aod_list_title_more_style",
+            "value":"Plus de thèmes d'écran éteint",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"folder_name_preload",
+            "value":"Meilleures Applications",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"one_hand_mode_accessibility_str_entry_setting",
+            "value":"Paramètres",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Desktop_individuation",
+            "value":"Style et écran d'accueil",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"airplane_mode",
+            "value":"Mode avion",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_horizontal_exchange",
+            "value":"Inverser les écrans en haut/en bas",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"title_bar_menu_maximize_window",
+            "value":"Agrandir",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_focused_switch_title_fold",
+            "value":"Basculement de fenêtres",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"oh_multiwindow_save_group",
+            "value":"Enregistrer l'arrangement",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"next_step",
+            "value":"Suivant",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"title_bar_menu_close_window",
+            "value":"Fermer",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_change_views_title",
+            "value":"Changement rapide de vue",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_vertical_exchange",
+            "value":"Inverser les écrans gauche/delivert",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"title_bar_menu_minimize_window",
+            "value":"Réduire",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"running_apps_recently",
+            "value":"Applications récentes",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Ai_bar_return_home_detail",
+            "value":"Le retour à l'écran d'accueil se fait en glissant le doigt vers le haut depuis le bas de l'écran.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_back_to_middle_scene_using_gesture",
+            "value":"Pincer l'écran avec quatre doigts pour revenir à l'affichage multitâche.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"one_hand_mode_exit",
+            "value":"Toucher la zone vide pour quitter.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_button_more",
+            "value":"En savoir plus",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"know",
+            "value":"OK",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"compatible_application_display_desc",
+            "value":"Autoriser les applications tierces prises en charge à s'ouvrir en orientation paysage.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"compatible_application_display",
+            "value":"Applications compatibles",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_floating_windows_title",
+            "value":"Fenêtre flottante",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_multi_finger_knead_title",
+            "value":"Entrer en/quitter l'affichage en plein écran",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_show_not_support_small_step",
+            "value":"%1$s ne prend pas en charge l'affichage en mini-fenêtre.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_split_adjust_to_mid_title",
+            "value":"Accéder à l'affichage multitâche par redimensionnement de fenêtres",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_Mid_View_contents",
+            "value":"Dans l'affichage en partition d'écran, faites glisser vers le haut ou redimensionnez les fenêtres pour accéder à l'affichage parallèle.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"minimize_window",
+            "value":"Réduire",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Ai_bar_vassistant_dialogue_longpress",
+            "value":"Toucher et maintenir pour voice",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Ai_bar_return_home",
+            "value":"Retour à l'accueil",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_adjust_mid_window_title",
+            "value":"Ajuster les fenêtres",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_slid_delete_title",
+            "value":"Faire glisser pour fermer les applications",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_add_window_content",
+            "value":"Vous pouvez ajouter une autre fenêtre à ce groupe depuis le menu en haut.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"not_harmony_apps",
+            "value":"Disponible prochainement",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"already_exist_pip_window_toast",
+            "value":"Veuillez fermer d'abord la mini-fenêtre existante.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_split_swap_title",
+            "value":"Retourner des fenêtres",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"force_split2full_tips",
+            "value":"Le mode plein écran prendra effet à la prochaine ouverture de l'application.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Ai_bar_back_click_navigation",
+            "value":"Retour en arrière en touchant",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_pip_switch_title",
+            "value":"Incrustation d'image",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_not_support_split_ratio",
+            "value":"La taille des écrans ne peut pas être ajustée pour les jeux.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_split_to_float_title",
+            "value":"Passer de la partition d'écran à la fenêtre flottante",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"oh_multiwindow_not_support_split_for_folded_new",
+            "value":"%1$s n'est pas disponible en partition d'écran lorsque l'appareil est plié.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"No_available_window",
+            "value":"Aucune fenêtre d'application disponible",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"duplicate_add",
+            "value":"Cette application a déjà été ajoutée.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Ai_bar_back",
+            "value":"Retour en arrière",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"uninstall",
+            "value":"Désinstaller",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_not_support_horizontal_split_new",
+            "value":"%1$s ne prend pas en charge la partition d'écran horizontale.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"title_search_result",
+            "value":"Résultats",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"recover_Theme_App_massage",
+            "value":"L'application Thèmes doit être installée pour utiliser cette fonctionnalité.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_three_finger_cross_slip_content",
+            "value":"Faire glisser vers la gauche ou la deliverte avec trois doigts.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_add_window_title",
+            "value":"Ajouter une nouvelle fenêtre",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_floating_windows_contents",
+            "value":"Les applications peuvent être ouvertes en fenêtres flottantes et manipulées en utilisant des gestes pour les réduire, les agrandir ou les fermer.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_Mid_View_title",
+            "value":"Affichage en fenêtre parallèle",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_center_menu_add_desktop",
+            "value":"Ajouter à l'écran d'accueil",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Desktop_setting",
+            "value":"Paramètres de l'écran d'accueil",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aod_cancel",
+            "value":"Annuler",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"HiSearch_title",
+            "value":"voice Search",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"delete_app",
+            "value":"Retirer",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"style_mode_label_small",
+            "value":"Petite (%1$d : %2$d)",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_location_title",
+            "value":"Localisation",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"style_mode_label_split",
+            "value":"Affichage en colonnes",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"landscape_app_full_ratio",
+            "value":"Format plein écran",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Ai_bar_gesture_back_detail",
+            "value":"Vous pouvez revenir à l'écran précédent en faisant glisser vers l'intérieur depuis le bord gauche ou delivert.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_floating_tip",
+            "value":"Toucher ici permet de voir les commandes.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_button_know",
+            "value":"OK",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_delete_form",
+            "value":"Retirer le widget ?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_split_tip",
+            "value":"Toucher ici permet de voir les commandes.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"mid_scene_tip_label",
+            "value":"Veuillez relâcher pour accéder à l'affichage multitâche",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"continue",
+            "value":"Suivant",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"recover",
+            "value":"Restaurer",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"restoring_tips_btn",
+            "value":"OK",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Ai_bar_vassistant",
+            "value":"Vous pouvez parler à voice en touchant et maintenant la barre de navigation.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_one_step_mid_title",
+            "value":"Accéder à l'affichage multitâche par glissement",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"continue_mission_fail_device_connecting_to_another_device",
+            "value":"Le transfert a échoué. %1$s est en interaction avec un autre appareil.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_uninstall",
+            "value":"La désinstallation n'est pas permise.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"force_split_tips",
+            "value":"La vue en colonnes prendra effet à la prochaine ouverture de l'application.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_not_support_float_window",
+            "value":"%1$s ne peut pas être ouvert en fenêtre flottante.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"style_mode_label_full",
+            "value":"Plein écran",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_swap_content",
+            "value":"Toucher et maintenir la barre supérieure d'une fenêtre, puis la déplacer sur une autre fenêtre.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"new_folder_name",
+            "value":"Dossier %1$d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Ai_bar_back_detail",
+            "value":"Vous pouvez revenir à l'écran précédent en touchant la barre de navigation.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"gesture_dock_add_limit",
+            "value":"Un maximum de %1$d applications peut être ajouté.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"confirm_pcmod_tips",
+            "value":"OK",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"recover_Theme_App",
+            "value":"Restaurer l'application Thèmes ?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"enter_pc_mode_tips",
+            "value":"Le mode Free windows est sur le point d'être activé. Ce mode est uniquement disponible en orientation paysage.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"close_flashlight_tips",
+            "value":"Toucher le bouton marche/arrêt permet d'éteindre la lampe-torche",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"floating_three_button_navigation",
+            "value":"Commandes de navigation flottantes",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cancel",
+            "value":"Annuler",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_menu_open",
+            "value":"Ouvrir",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_to_voice",
+            "value":"Déplacer vers voice",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_to_voice_detail",
+            "value":"Toucher et maintenir un élément jusqu'à ce qu'il flotte, puis le déplacer vers le bas.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"uninstall_success",
+            "value":"Désinstallée.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"uninstall_failed",
+            "value":"La désinstallation a échoué.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"title_recently_use",
+            "value":"Récents",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_to_voice_reminder",
+            "value":"Déplacer vers voice et relâcher pour activer",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_adjust_mid_window_content",
+            "value":"Les fenêtres peuvent être redimensionnées en les déplaçant.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"landscape_startup_title",
+            "value":"Options de dimensionnement d'application",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aod_dialog_title",
+            "value":"Thème d'écran éteint",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Desktop_slide",
+            "value":"Recherche en faisant glisser vers le bas",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_app_is_open",
+            "value":"L'application est déjà ouverte.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"oh_multiwindow_not_support_vertical_split_new",
+            "value":"%1$s ne prend pas en charge la partition d'écran verticale.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_swap_title",
+            "value":"Inverser la position des fenêtres",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"continue_mission_fail_close_hotspot_and_try_again",
+            "value":"Le transfert a échoué. Veuillez désactiver le point d'accès personnel sur %1$s et réessayer.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Ai_bar_setting",
+            "value":"Navigation système",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"title_all_apps",
+            "value":"Toutes les applications",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"No_running_apps_recently",
+            "value":"Aucune application récente",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"floating_three_button_navigation_detail",
+            "value":"Les touches de navigation peuvent être repositionnées en les déplaçant.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_button_finish",
+            "value":"Terminer",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"style_mode_label_medium",
+            "value":"Moyenne",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_split_swap_content_phone",
+            "value":"Toucher et maintenir la barre supérieure d'une fenêtre, puis la déplacer sur une autre fenêtre.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"add_to_desktop",
+            "value":"Ajouter à l'écran d'accueil",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"landscape_view_force",
+            "value":"Mode paysage forcé",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remove_form_dialog_content",
+            "value":"Vous pouvez ajouter à nouveau ce widget dans le menu d'actions rapides de l'application.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_one_step_mid_content",
+            "value":"Faire glisser du bas de l'écran vers le haut, puis sélectionner une application.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_float_to_split_title",
+            "value":"Passer de la fenêtre flottante au mode partition d'écran",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_restored",
+            "value":"L'application a été restaurée.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"covertheme_settings_title",
+            "value":"Écran d'accueil, écran de couverture et style",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dragging_to_mid_tip",
+            "value":"Veuillez relâcher pour accéder à l'affichage multitâche",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_three_finger_cross_slip_title",
+            "value":"Basculer entre les applications",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"title_bar_menu_enlarge_window",
+            "value":"Agrandir",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"continue_mission_waiting",
+            "value":"Transfert en cours.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_float_to_split_content",
+            "value":"Toucher et maintenir la barre supérieure d'une fenêtre, puis la déplacer pour accéder à l'affichage en partition d'écran.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"title_bar_menu_shrink_window",
+            "value":"Réduire",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Ai_bar_vassistant_dialogue",
+            "value":"voice Chat",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_dock_title",
+            "value":"Dock multi-fenêtres",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_split_to_float_content_phone",
+            "value":"Toucher et maintenir la barre supérieure d'une fenêtre, puis la déplacer pour passer à une fenêtre flottante.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_dialog_content",
+            "value":"La fonctionnalité Thème d'écran éteint doit être activée. Activer maintenant ?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_pip_switch_desc",
+            "value":"Lorsque cette option est activée, les appels vidéo et MeeTime continuent dans une mini-fenêtre lorsque vous ouvrez une autre application ou revenez à l'écran d'accueil.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"title_support_multiWindow",
+            "value":"Plus",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"restoring_tips_message",
+            "value":"Cette option est indisponible pendant la restauration des données. Veuillez réessayer ultérieurement.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"split_to_float",
+            "value":"Fenêtre flottante",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Ai_bar",
+            "value":"Barre de navigation",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"split_screen",
+            "value":"Partition d'écran",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_menu_exit",
+            "value":"Quitter",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_split_adjust_to_mid_content",
+            "value":"Dans l'affichage en partition d'écran, déplacer la ligne de séparation jusqu'à ce que l'affichage change.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_mid_view_guidance_floating_tip",
+            "value":"Les fenêtres peuvent être redimensionnées en les déplaçant ici.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_multi_finger_knead_content",
+            "value":"Écarter le pouce et les trois doigts, ou les pincer ensemble.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"one_handed_mode_diag_title",
+            "value":"Interface de navigation à une main",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aod_enable",
+            "value":"Activer",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_split_screen_contents",
+            "value":"Déplacer la barre supérieure pour faire défiler les fenêtres ou ouvrir une fenêtre flottante. Redimensionner en déplaçant le centre.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_split_swap_content_fold",
+            "value":"Toucher et maintenir la barre supérieure d'une fenêtre, puis la déplacer sur une autre fenêtre.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"one_handed_mode_diag_content",
+            "value":"Pour accéder à l'interface de navigation à une main, veuillez glisser votre doigt le long du bas de l'écran et le maintenir brièvement enfoncé.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_center_menu_add_dock",
+            "value":"Ajouter au dock",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"gesture_return_desktop",
+            "value":"Revenir à l'écran d'accueil",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_change_views_contents",
+            "value":"Une fenêtre flottante peut être ouverte en faisant glisser vers le coin supérieur delivert, ou une partition d'écran en faisant glisser vers le coin supérieur gauche.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_dock_contents",
+            "value":"Le dock peut être ouvert en faisant glisser depuis le bord de l'écran. La fenêtre flottante peut être ouverte en touchant une application. Ou un affichage en partition d'écran peut être activé en déplaçant une application sur l'écran.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_slid_delete_content",
+            "value":"Toucher et maintenir la barre supérieure d'une fenêtre, puis la faire glisser rapidement vers le bas de l'écran.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_split_to_float_content_fold",
+            "value":"Toucher et maintenir la barre supérieure d'une fenêtre, puis la déplacer pour passer à une fenêtre flottante.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"one_handed_mode_diag_cancel",
+            "value":"J'ai compris",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"display_brightness",
+            "value":"Affichage & luminosité",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_title",
+            "value":"Multi-fenêtres",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"multi_window_force_switch_title",
+            "value":"Mode de compatibilité",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"gesture_enter_recent_task",
+            "value":"Voir les tâches récentes",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"gesture_return",
+            "value":"Revenir en arrière",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"out_pcmod_tips",
+            "value":"Pour quitter ce mode, veuillez d'abord fermer %s.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_float_to_split_content_fold",
+            "value":"Toucher et maintenir la barre supérieure d'une fenêtre, puis la déplacer pour accéder à l'affichage en partition d'écran.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"switch_floating_window",
+            "value":"Fenêtre flottante",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dragging_to_full_tip",
+            "value":"Veuillez relâcher pour accéder à l'affichage en plein écran",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_dock_switch_contents",
+            "value":"Le dock peut être ouvert en faisant glisser depuis le bord de l'écran, en maintenant, puis en relâchant.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"continue_mission_fail",
+            "value":"Le transfert a échoué.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_dock_switch_title",
+            "value":"Dock multi-fenêtres",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_show_not_support_adjust_window",
+            "value":"La fenêtre %1$s ne prend pas en charge le redimensionnement.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"one_hand_compatibility_mode_prompt_string",
+            "value":"Si vous rencontrez des problèmes d'affichage, essayez de relancer l'application.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"one_handed_mode_diag_confirm",
+            "value":"En savoir plus",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dragging_to_one_to_two_split_tip",
+            "value":"Veuillez relâcher pour activer la partition d'écran %1$d:%2$d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dragging_to_two_to_one_split_tip",
+            "value":"Veuillez relâcher pour activer la partition d'écran %2$d:%1$d",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"landscape_desc_force",
+            "value":"Les applications s'ouvrent en mode affichage en paysage, même si elles ne le prennent pas en charge. Vous pouvez modifier le format d'image ci-dessous.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"force_split2other",
+            "value":"Le format d'image a été modifié. Il peut y avoir des problèmes d'affichage.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"enter_free_windows_tips",
+            "value":"Pour le mode Free windows, veuillez faire pivoter votre appareil en orientation paysage.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"keyboard_panel_smart_access_text",
+            "value":"Autres modes de saisie, bouton",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"unlock_app",
+            "value":"%s est déverrouillé",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_video_player",
+            "value":"Vidéo lue dans la mini-fenêtre",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keyboard_panel_world_access_text",
+            "value":"Changer de clavier, bouton",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_window_open",
+            "value":"Les commandes de lecture sont affichées",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_play",
+            "value":"Lire",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keyboard_thumb_access_text",
+            "value":"Clavier pouce, bouton",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"lock_app",
+            "value":"%s verrouillée",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ai_bar_accessibility_text",
+            "value":"Barre de navigation, toucher deux fois et maintenir pour parler à voice",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keyboard_float_access_text",
+            "value":"Clavier flottant, bouton",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_restore",
+            "value":"Restaurer en fenêtre plus grande",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_play_fast_backward",
+            "value":"Retour",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keyboard_common_access_text",
+            "value":"Clavier standard, bouton",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_window_close",
+            "value":"Les commandes de lecture ont été masquées",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_locked",
+            "value":"%s est verrouillé",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_play_previous",
+            "value":"Lire précédente",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keyboard_one_hand_access_text",
+            "value":"Clavier à une main, bouton",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_play_next",
+            "value":"Lire suivante",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_play_fast_forward",
+            "value":"Avance rapide",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"let_go_drag_to_voice",
+            "value":"Relâcher pour envoyer à voice",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_window_show",
+            "value":"La mini-fenêtre est affichée",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_close",
+            "value":"Fermer la mini-fenêtre",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"recent_unlock",
+            "value":"Déverrouiller %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_play_pause",
+            "value":"Suspendre",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

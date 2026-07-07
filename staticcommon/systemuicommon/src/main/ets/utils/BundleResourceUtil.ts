@@ -26,16 +26,16 @@ export interface BundleResource {
 
 export class BundleResourceUtil {
   public static getBundleResource(context: Context, bundleName: string, bundleType: bundleManager.BundleType,
-    parseIcon: boolean): Promise<BundleResource> {
+    isDeliver: boolean, parseIcon: boolean): Promise<BundleResource> {
     if (process.tid === process.pid) {
-      return taskpool.execute(doGetBundleResource, context, bundleName, bundleType, parseIcon) as Promise<BundleResource>;
+      return taskpool.execute(doGetBundleResource, context, bundleName, bundleType, isDeliver, parseIcon) as Promise<BundleResource>;
     }
-    return doGetBundleResource(context, bundleName, bundleType, parseIcon);
+    return doGetBundleResource(context, bundleName, bundleType, isDeliver, parseIcon);
   }
 }
 
 async function doGetBundleResource(context: Context, bundleName: string, bundleType: bundleManager.BundleType,
-  parseIcon: boolean):
+  isDeliver: boolean, parseIcon: boolean):
   Promise<BundleResource> {
   'use concurrent';
 
@@ -55,7 +55,8 @@ async function doGetBundleResource(context: Context, bundleName: string, bundleT
     if (!parseIcon) {
       return resource;
     }
-    const hdsBundleName = bundleName;
+    // 应用在包名后拼接任意字符串使HDS不使用原始图标走合成逻辑，否则某些主题下通知图标展示异常
+    const hdsBundleName = isDeliver ? bundleName + 'Notification' : bundleName;
     // 元服务图标为透明图标，不能调用hds处理
     pixelMap =
       bundleType === bundleManager.BundleType.ATOMIC_SERVICE ?

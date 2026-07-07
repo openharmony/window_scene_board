@@ -40,7 +40,7 @@ import {
 } from '../../constants/CommonConstants';
 import { AppGalleryDownloadManager } from '../../manager/AppGalleryDownloadManager';
 import { AppInstallImageVm } from './AppInstallImageVm';
-import { NotHarmonyUtil } from '../../TsIndex';
+import { NotHarmonyUtil, AppReserveType } from '../../TsIndex';
 
 const TAG = 'AppInstallImageEvent';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.ICON, TAG);
@@ -176,6 +176,9 @@ export class AppInstallImageEvent {
         }
         break;
       case AppStatus.PENDING:
+        if (CommonUtils.jsonStrToMap(this.itemInfo.intent).get('appType') === AppReserveType.ENTERPRISE) {
+          this.installImageVm.isProgressShow = false;
+        }
         this.itemInfo.appStatus = appStatus;
         break;
       case AppStatus.WAITING:

@@ -57,7 +57,7 @@ export class LiveSystemTemplateParser implements Parse<LiveSystemTemplate> {
     newData.setTitle(request.content?.systemLiveView?.title);
     newData.setContent(request.content?.systemLiveView?.text);
     newData.setOverlayIcon(request.overlayIcon);
-    newData.setOverlayIconStyle(request.extraInfo?.openharmony_overlay_style ?? OverlayIconStyle.CIRCLE);
+    newData.setOverlayIconStyle(request.extraInfo?.hw_overlay_style ?? OverlayIconStyle.CIRCLE);
     newData.setWantAgent(request.wantAgent);
     // 将解析系统卡片扩展区数据的任务交给责任链
     this.headParser.parse(request, newData);
@@ -65,10 +65,14 @@ export class LiveSystemTemplateParser implements Parse<LiveSystemTemplate> {
     // 通话类型，允许SIM卡标
     let typCode = request.content?.systemLiveView?.typeCode;
     if (typCode === SysTypeCode.PHONE) {
-      let status = request.extraInfo?.openharmony_sim_icon_status;
+      let status = request.extraInfo?.hw_sim_icon_status;
       if (CommonUtils.isNumber(status)) {
         newData.setSimIconStatus(status);
       }
+    }
+    let isDeliverNotification = request?.extraInfo?.is_deliverNotification;
+    if (CommonUtils.isBoolean(isDeliverNotification)) {
+      newData.setIsDeliverLiveNotification(isDeliverNotification);
     }
     return newData;
   }

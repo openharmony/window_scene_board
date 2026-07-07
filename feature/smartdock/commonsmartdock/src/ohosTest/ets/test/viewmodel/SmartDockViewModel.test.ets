@@ -1956,6 +1956,27 @@ export default function SmartDockViewModelTest() {
       mock.clearAll();
     })
 
+    it('test_updateFormAfterAppInstall_01', 0, async () => {
+      let mock = new MockKit();
+      try {
+        let mockFunc: Function = mock.mockFunc(CheckEmptyUtils, CheckEmptyUtils.isEmptyArr);
+        when(mockFunc)(ArgumentMatchers.any).afterReturn(false);
+
+        let instance: SmartDockViewModel = new SmartDockViewModel();
+        (instance as object)['updateFormAfterAppInstall']('com.ohos.contacts');
+        await sleep(1000);
+        expect(instance instanceof SmartDockViewModel).assertTrue();
+      } catch (e) {
+        expect(JSON.stringify(e)).assertInstanceOf('String');
+      }
+      mock.clear(CheckEmptyUtils);
+      mock.clearAll();
+    })
+
+
+
+
+
     interface DeletDockItem {
       bundleName?: string,
       keyName?: string

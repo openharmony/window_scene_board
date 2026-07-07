@@ -23,6 +23,7 @@ import {
 import { ResUtils } from '@ohos/windowscene';
 import { BigFolderViewModel } from '@ohos/bigfolder/src/main/ets/default/viewmodel/BigFolderViewModel';
 import type ctx from '@ohos.app.ability.common';
+import { AiSuggestionUtil } from '@ohos/launchercommon/src/main/ets/aisuggestion/AiSuggestionUtil';
 
 const TAG: string = 'DesktopAccessibilityUtils';
 const log = LogHelper.getLogHelper(LogDomain.HOME, TAG);
@@ -45,13 +46,15 @@ export class DesktopAccessibilityUtils {
       if (item.typeId === CommonConstants.TYPE_FOLDER) {
         return 'no';
       }
-      if (item.typeId === CommonConstants.TYPE_CARD ) {
+      if (item.typeId === CommonConstants.TYPE_CARD &&
+        !AiSuggestionUtil.isVoiceAbilityForm(item.bundleName, item.abilityName)) {
         return 'no';
       }
       if (item.typeId === CommonConstants.TYPE_FORM_STACK && (item.layoutInfo?.[0]?.length ?? 0) > 1) {
         return 'no';
       }
-      if (item.typeId === CommonConstants.TYPE_CARD) {
+      if (item.typeId === CommonConstants.TYPE_CARD &&
+      AiSuggestionUtil.isVoiceAbilityForm(item.bundleName, item.abilityName)) {
         return 'no';
       }
     }

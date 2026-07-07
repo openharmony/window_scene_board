@@ -46,9 +46,9 @@ export class LiveNotificationSystemParser extends LiveNotificationBaseParser {
   protected parseLiveViewCommonData(): void {
     super.parseLiveViewCommonData();
     this.ntf.typeCode = this.request.content.systemLiveView?.typeCode!;
-    this.ntf.customerAccessibilityText = this.request?.extraInfo?.openharmony_customer_accessibility_text;
+    this.ntf.customerAccessibilityText = this.request?.extraInfo?.hw_customer_accessibility_text;
     if (this.ntf.isFromSystemApp) {
-      this.ntf.isHeadsUpStick = this.request.extraInfo?.openharmony_keep_headsup_sticky === true;
+      this.ntf.isHeadsUpStick = this.request.extraInfo?.hw_keep_headsup_sticky === true;
     }
     this.ntf.stage = this.request.extraInfo?.stage;
     if (this.ntf.isPhoneCall()) {
@@ -81,7 +81,7 @@ export class LiveNotificationSystemParser extends LiveNotificationBaseParser {
     cardData.content = systemLiveView?.text ?? '';
     log.showInfo(`system card info: ${cardData.title.length}, ${cardData.content.length}`);
     if (this.ntf.typeCode === SysTypeCode.PHONE) {
-      cardData.simIconStatus = this.request.extraInfo?.openharmony_sim_icon_status;
+      cardData.simIconStatus = this.request.extraInfo?.hw_sim_icon_status;
     }
 
     this.parseTimeData(cardData);
@@ -94,9 +94,9 @@ export class LiveNotificationSystemParser extends LiveNotificationBaseParser {
   }
 
   protected parseRemindFlag(): void {
-    this.ntf.remindConfig.setBanner(this.request.extraInfo?.openharmony_heads_up_enable === true ||
+    this.ntf.remindConfig.setBanner(this.request.extraInfo?.hw_heads_up_enable === true ||
       (this.request.content.systemLiveView?.typeCode === SysTypeCode.NAME_THAT_TUNE &&
-        this.request.extraInfo?.openharmony_remind));
+        this.request.extraInfo?.hw_remind));
     this.ntf.isSoundEnable = this.request.extraInfo?.isMute === false;
     this.ntf.isVibrationEnable = this.request.extraInfo?.isMute === false;
   }
@@ -138,8 +138,8 @@ export class LiveNotificationSystemParser extends LiveNotificationBaseParser {
     progressData.maxValue = progress.maxValue ?? 1;
     progressData.currentValue = progress.currentValue ?? 0;
     progressData.isPercentage = progress.isPercentage ?? true;
-    if (typeof this.request.extraInfo?.openharmony_live_process_color === 'string') {
-      progressData.color = this.request.extraInfo?.openharmony_live_process_color;
+    if (typeof this.request.extraInfo?.hw_live_process_color === 'string') {
+      progressData.color = this.request.extraInfo?.hw_live_process_color;
     }
     cardData.progress = progressData;
   }
@@ -152,9 +152,9 @@ export class LiveNotificationSystemParser extends LiveNotificationBaseParser {
     if (!buttons.length) {
       return;
     }
-    cardData.buttonPriority = this.request.extraInfo?.openharmony_button_priority ?? [];
-    const buttonAccessibilityText: string[] = this.request.extraInfo?.openharmony_button_accessibility_text ?? [];
-    const buttonOnOffState: string[] = this.request.extraInfo?.openharmony_button_state_on ?? [];
+    cardData.buttonPriority = this.request.extraInfo?.hw_button_priority ?? [];
+    const buttonAccessibilityText: string[] = this.request.extraInfo?.hw_button_accessibility_text ?? [];
+    const buttonOnOffState: string[] = this.request.extraInfo?.hw_button_state_on ?? [];
     const cardButtons: LiveButtonModel[] = [];
 
     for (let i = 0; i < buttons.length; i++) {
@@ -215,7 +215,7 @@ export class LiveNotificationSystemParser extends LiveNotificationBaseParser {
       cardData.isImmersiveInteraction = true;
     }
     // 标示是否允许常亮
-    cardData.isKeepScreenOnEnable = String(immParameters['openharmony_live_view_keep_screen_on']).toString() === 'true';
+    cardData.isKeepScreenOnEnable = String(immParameters['hw_live_view_keep_screen_on']).toString() === 'true';
     // 标示UIExtension的加载want
     cardData.immersiveWant = {
       bundleName: bundleName,
@@ -230,10 +230,11 @@ export class LiveNotificationSystemParser extends LiveNotificationBaseParser {
       return undefined;
     }
 
-    const capsuleSticky = (this.ntf.isFromSystemApp && this.request.extraInfo?.openharmony_capsule_sticky) === true;
+    const capsuleSticky = (this.ntf.isFromSystemApp && this.request.extraInfo?.hw_capsule_sticky) === true;
 
-    if (AppLifeCycleManager.instance.appSwitchObserverId === undefined && !capsuleSticky) {
-      log.showWarn(`App ${this.ntf.creatorBundleName}_${this.ntf.creatorUid} ` +
+    if (AppLifeCycleManager.instance.appSwitchObserverId === undefined &&
+    this.ntf.isDeliverNotification && !capsuleSticky) {
+      log.showWarn(`DeliverApp ${this.ntf.hashCode} App ${this.ntf.creatorBundleName}_${this.ntf.creatorUid} ` +
         'no need capsule, appSwitchObserverId is undefined');
       return undefined;
     }
@@ -247,8 +248,8 @@ export class LiveNotificationSystemParser extends LiveNotificationBaseParser {
     } else if (cardData.progress) {
       capsuleData = new LiveCapsuleProgressModel();
       let progress = cardData.progress;
-      if (typeof this.request.extraInfo?.openharmony_capsule_process_color === 'string') {
-        progress.color = this.request.extraInfo?.openharmony_capsule_process_color;
+      if (typeof this.request.extraInfo?.hw_capsule_process_color === 'string') {
+        progress.color = this.request.extraInfo?.hw_capsule_process_color;
       }
       (capsuleData as LiveCapsuleProgressModel).progress = progress;
       if (this.ntf.typeCode === SysTypeCode.CHARGE) {
@@ -273,7 +274,7 @@ export class LiveNotificationSystemParser extends LiveNotificationBaseParser {
     capsuleData.sticky = capsuleSticky;
     // 设置Ability销毁时隐藏胶囊，解决通话挂断时胶囊闪烁的问题
     if (this.ntf.typeCode === SysTypeCode.PHONE) {
-      capsuleData.hideWhenRemoveSession = this.request.extraInfo?.openharmony_capsule_hidden_when_terminate === true;
+      capsuleData.hideWhenRemoveSession = this.request.extraInfo?.hw_capsule_hidden_when_terminate === true;
     }
     this.parseScreenRecordInfo(capsuleData);
     this.parseMediaPlayerInfo(capsuleData);
@@ -378,7 +379,7 @@ export class LiveNotificationSystemParser extends LiveNotificationBaseParser {
   private parseMediaPlayerInfo(capsuleData: LiveCapsuleModel): void {
     // 播控的切歌动效定制
     if (this.ntf.typeCode === SysTypeCode.BROADCASTING_CENTER) {
-      capsuleData.iconAnimationType = this.request.extraInfo?.openharmony_capsule_icon_animation_type;
+      capsuleData.iconAnimationType = this.request.extraInfo?.hw_capsule_icon_animation_type;
     }
   }
 

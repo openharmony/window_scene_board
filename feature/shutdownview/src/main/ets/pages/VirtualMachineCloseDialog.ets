@@ -15,10 +15,10 @@
 
 import { appManager, bundleResourceManager } from '@kit.AbilityKit';
 import bundleResource from '@ohos.bundle.bundleResourceManager';
-// import statusBar from '@hms.pcService.statusBar';
+import statusBar from '@ohos.pcService.statusBar';
 import osAccount from '@ohos.account.osAccount';
 import { ResUtils } from '@ohos/windowscene';
-import { LogDomain, LogHelper, CheckEmptyUtils } from '@ohos/basicutils';
+import { LogDomain, LogHelper, CheckEmptyUtils, CapabilityUtil } from '@ohos/basicutils';
 import { viewMgrPolicy, ViewType, settingsDataManager } from '@ohos/frameworkwrapper';
 import { KeyCodeConstants } from '@ohos/commonconstants';
 import { ShutdownViewConstant } from './ShutdownViewConstants';
@@ -77,7 +77,7 @@ export struct VirtualMachineCloseDialog {
         return;
       }
       log.showInfo(`exit ${this.runningVirtualMachine} app pid list size : ${pidList.length}`);
-      // statusBar.exitProcesses(pidList);
+      CapabilityUtil.isStatusBarAvailable() && statusBar.exitProcesses(pidList);
     } catch (e) {
       log.showError(`virtualMachineTerminate error, code: ${e?.code}, message: ${e?.message}`);
     }

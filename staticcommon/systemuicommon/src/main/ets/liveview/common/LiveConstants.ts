@@ -806,14 +806,14 @@ export class LiveViewCommonConstants {
   TimeItem.MILLISECOND_ITEM;
 
   /**
-   * 倒计时文本
+   * AOD界面倒计时文本
    */
-  static readonly COUNTDOWN_TEXT = '--:--';
+  static readonly AOD_COUNTDOWN_TEXT = '--:--';
 
   /**
-   * 大字体倒计时文本字号
+   * AOD界面大字体倒计时文本字号
    */
-  static readonly BIG_TIMER_FONT_SIZE = 14;
+  static readonly AOD_BIG_TIMER_FONT_SIZE = 14;
 
   /**
    * 数字正则表达式，匹配整数或小数，小数最多4位

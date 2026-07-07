@@ -69,6 +69,7 @@ import {
   DeleteNotificationMaintenance
 } from '@ohos/systemuicommon/src/main/ets/maintenance/DeleteNotificationMaintenance';
 import { ParseNotificationMaintenance } from '../maintenance/ParseNotificationMaintenance';
+import { NotificationRestoreManager } from '../backup/NotificationRestoreManager';
 import { DeleteNotificationType } from '@ohos/systemuicommon/src/main/ets/maintenance/StatisticsConstants';
 import { AppProtectedVm } from '@ohos/systemuicommon/src/main/ets/vm/AppProtectedVm';
 import { LogWithHa } from '@ohos/systemuicommon/src/main/ets/maintenance/CommonExceptionMaintenance';
@@ -275,9 +276,12 @@ class NotificationListener {
       // 监听系统铃声震动模式
       this.initVolumeGroupManager();
 
+      // 监听应用级数据恢复
+      NotificationRestoreManager.get().init();
+
       crossModuleCallUtil.register('hasNotification', this.hasNotification);
 
-      // 通知维测事件订阅
+      // deliver通知维测事件订阅
       NotificationMaintenanceEvent.instance.subscribeCastConnectState();
 
       // 智能提醒开关去使能搜索项
@@ -1216,6 +1220,7 @@ class NotificationListener {
       isNtfTonePlayAllow: ntfEntry.isSoundEnable,
       soundDuration: ntfEntry.soundDuration,
       isSysTonePlayAllow: this.isSysTonePlayAllow,
+      isDeliverPush: ntfEntry.isDeliverPushNotification,
       channelId: ntfEntry.channelId,
       appIndex: ntfEntry.appIndex,
     }, ntfEntry.classification ?? '');
@@ -1412,7 +1417,7 @@ class NotificationListener {
   private setHeadsUpStick(request: notificationManager.NotificationRequest, baseNotification?: BaseNotification): void {
     if (baseNotification) {
       baseNotification.isHeadsUpStick =
-        (request.extraInfo?.openharmony_keep_headsup_sticky === true && baseNotification.isFromSystemApp) ?? false;
+        (request.extraInfo?.hw_keep_headsup_sticky === true && baseNotification.isFromSystemApp) ?? false;
     }
   }
 

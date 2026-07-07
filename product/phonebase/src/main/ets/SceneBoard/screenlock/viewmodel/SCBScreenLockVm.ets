@@ -307,12 +307,19 @@ export class SCBScreenLockVm extends BaseViewVm {
     if (!CoreStateTypeUtils.isInUnlockPage(oldState) && CoreStateTypeUtils.isInUnlockPage(newState)) {
       log.showInfo('exit screenlock');
       this.onScreenOffUnlock(oldState, newState);
+      // 锁屏解锁后，立即隐藏锁屏
+      animateToImmediately(
+        { duration: 0 },
+        () => {
+          slStateHelper.getSlBindState().setSlVisibility(Visibility.Hidden);
+        })
       SceneBoardStateManager.getInstance().consumeEvent(SCBCoreEventType.ENTER_DESKTOP);
       return;
     }
   }
 
   private onScreenOffUnlock(oldState: CoreStateType, newState: CoreStateType): void {
+    log.showInfo(`onScreenOffUnlock：${CoreStateType[oldState]} > ${CoreStateType[newState]}`);
     if (!CoreStateTypeUtils.isScreenOffUnlockState(oldState) && CoreStateTypeUtils.isScreenOffUnlockState(newState)) {
       // 不支持时钟一镜到底动画时，在熄屏非锁屏态提前将锁屏隐藏，避免黑屏指纹解锁时闪锁屏
       if (OneMirrorService.getInstance().isClockOneShotAnimAvailableOnScreenOffFp()) {
@@ -329,8 +336,8 @@ export class SCBScreenLockVm extends BaseViewVm {
         animateToImmediately(
           { duration: 0 },
           () => {
-          slStateHelper.getSlBindState().setSlVisibility(Visibility.Hidden);
-        })
+            slStateHelper.getSlBindState().setSlVisibility(Visibility.Hidden);
+          })
       }
     }
   }

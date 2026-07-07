@@ -1,20 +1,9 @@
 /*
- * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Copyright (c) Huawei Technologies Co., Ltd. 2024-2024. All rights reserved.
  */
 
 /**
- * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öºï¿½88ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â£ï¿½ï¿½ï¿½ï¿½ÖµÄ¿ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½È£ï¿½Í¨ï¿½ï¿½getRectInfoï¿½Ó¿ï¿½Êµï¿½ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Âºï¿½ï¿½ï¿½ÒªÍ¬ï¿½ï¿½ï¿½ï¿½ï¿½Â¶ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½
+ * ¸÷ÖÖ×ÖÌåÔÚ×ÖºÅ88µÄÇé¿öÏÂ£¬Êý×ÖµÄ¿í¸ßÒÔ¼°·Ö¸ô·ûµÄ¿í¶È£¬Í¨¹ýgetRectInfo½Ó¿ÚÊµ²âµÃµ½£»×ÖÌå¸üÐÂºó£¬ÐèÒªÍ¬²½¸üÐÂ¶ÔÓ¦Êý¾Ý
  */
 export class TextSizeConf {
   public fontSize: number = 88;

@@ -156,6 +156,7 @@ export struct SCBPictureInPictureScenePanel {
 
   aboutToAppear(): void {
     log.showInfo('aboutToAppear');
+    SCBSceneSessionManager.getInstance().setPipIsPipEnabled(true);
     this.pipSceneList = SCBPcScenePanelManager.getInstance().getSpecificSessionList(this.zorder);
     this.sessionStateChange = (parentId: number, persistentId: number,
       state: sceneSessionManager.SessionState): void => this.onSessionStateChange(parentId, persistentId, state);

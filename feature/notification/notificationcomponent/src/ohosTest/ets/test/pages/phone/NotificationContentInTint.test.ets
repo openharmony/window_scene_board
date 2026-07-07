@@ -46,6 +46,7 @@ import { LengthMetrics } from '@kit.ArkUI';
 import { NotificationUtils } from '../../../../main/ets/common/NotificationUtils';
 import { NtfSingleItemVM } from '../../../../main/ets/vm/NtfSingleItemVM';
 import { ColorModeNCViewData } from '@ohos/systemuicommon/src/main/ets/template/newStyle/ColorModeNCViewData';
+import { DeliverBadge } from '@ohos/systemuicommon/src/main/ets/view/DeliverBadge';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, MockKit, when, ArgumentMatchers } from '@ohos/hypium';
 import {  } from '../../../../main/ets/pages/phone/NotificationContentInTint';
 export default function Test() {

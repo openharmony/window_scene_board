@@ -26,7 +26,7 @@ const ABOVE_PADDING_OFFSET = 5;
 const TAG = 'HorizontalFoldPhoneLayoutRulesController';
 
 /**
- * 大屏屏开态横屏，超大屏M态横屏布局器
+ * 二折屏开态横屏，三折M态横屏布局器
  */
 export class HorizontalFoldPhoneLayoutRulesController extends FoldPhoneLayoutRulesController {
   public static singleName: string = 'HorizontalFoldPhoneLayoutRulesController';
@@ -71,7 +71,7 @@ export class HorizontalFoldPhoneLayoutRulesController extends FoldPhoneLayoutRul
 
   initGridIconSize(): void {
     // 图标大小
-    if (DeviceHelper.isUltraScreenProduct()) {
+    if (DeviceHelper.isThreeFoldProduct()) {
       this.iconSizeOfGrid = ICON_SIZE_50;
     } else {
       this.iconSizeOfGrid = StyleConstants.DEFAULT_48;
@@ -84,7 +84,7 @@ export class HorizontalFoldPhoneLayoutRulesController extends FoldPhoneLayoutRul
 
   initRowAndColumnGap(): void {
     // 列, 行间距设置
-    if (DeviceHelper.isUltraScreenProduct()) {
+    if (DeviceHelper.isThreeFoldProduct()) {
       this.spaceOfColumn = StyleConstants.DEFAULT_32;
       this.spaceOfRow = StyleConstants.DEFAULT_36;
     } else {
@@ -102,7 +102,7 @@ export class HorizontalFoldPhoneLayoutRulesController extends FoldPhoneLayoutRul
     let allIconWidth = this.iconSizeOfGrid * this.columnNumOfGrid * StyleConstants.DEFAULT_2;
     // spaceX: 图标到屏幕侧边的空白距离
     let paddingOffset = StyleConstants.DEFAULT_32;
-    if (DeviceHelper.isUltraScreenProduct()) { // 如果是超大屏的M态， 设置其两屏的间距为60
+    if (DeviceHelper.isThreeFoldProduct()) { // 如果是三折屏的M态， 设置其两屏的间距为60
       paddingOffset = offset; //offset由父类传入，固定值 2
     }
     let spaceX: number = (scrWidth * StyleConstants.DEFAULT_2 - allIconWidth - StyleConstants.DEFAULT_6 *
@@ -115,7 +115,7 @@ export class HorizontalFoldPhoneLayoutRulesController extends FoldPhoneLayoutRul
     // above + below = real
     // above + fixpad : below = 1 : 2
     let space = (realSpace - fixedPaddinOfStatus * StyleConstants.DEFAULT_2) / StyleConstants.DEFAULT_3;
-    if (DeviceHelper.isUltraScreenProduct()) {
+    if (DeviceHelper.isThreeFoldProduct()) {
       space = space + ABOVE_PADDING_OFFSET;
     }
     return space;
@@ -123,7 +123,7 @@ export class HorizontalFoldPhoneLayoutRulesController extends FoldPhoneLayoutRul
 
   getMarginBottomOfIndicator(belowSpace: number): number {
     let indicatorHeight = this.mBaseConfig.getIndicatorHeight();
-    if (DeviceHelper.isUltraScreenProduct()) {
+    if (DeviceHelper.isThreeFoldProduct()) {
       return (belowSpace - indicatorHeight - ABOVE_PADDING_OFFSET) / StyleConstants.DEFAULT_2;
     }
     return (belowSpace - indicatorHeight) / StyleConstants.DEFAULT_2;

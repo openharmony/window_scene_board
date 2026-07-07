@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import { Singleton } from '../utils/Singleton';
-// import abilityFrameworkBroker from '@hms.virtService.abilityFrameworkBroker';
+// import abilityFrameworkBroker from '@ohos.virtService.abilityFrameworkBroker';
 import { abilityManager, appManager } from '@kit.AbilityKit';
 import { LogDomain, LogHelper, ThreadUtil } from '@ohos/basicutils';
 import { EventEmitter } from '../utils/EventEmitter';
@@ -66,6 +66,8 @@ export class AppLifeCycleManager {
   @Singleton.decorate()
   public static get instance(): AppLifeCycleManager { return new AppLifeCycleManager(); }
 
+  public static DELIVER_SHELL_ASSISTANT: string = 'com.openharmony.shell_assistant';
+
   public readonly emitter = new EventEmitter<AppLifeCycleEvent>();
 
   /**
@@ -75,9 +77,22 @@ export class AppLifeCycleManager {
   private foregroundInfo: Map<number, Set<string>> = new Map();
 
   /**
-   * 注册应用状态监听后的标识ID
+   * bundleName → UIDs 映射，用于代理通知的前台判断
+   */
+  private bundleNameToUids: Map<string, Set<number>> = new Map();
+
+  public isDeliverShellForeground: boolean = false;
+
+  /**
+   * 注册备份应用状态监听后的标识ID
    */
   public appSwitchObserverId?: number;
+
+  /**
+   * 前台备份应用uid集
+   * 小窗场景存在多个前台应用
+   */
+  private deliverForegroundInfo: Map<number, string> = new Map();
 
   /**
    * 应用前台状态变化事件
@@ -107,10 +122,23 @@ export class AppLifeCycleManager {
         this.foregroundInfo.set(abilityState.uid, foregroundAbilities);
       }
       foregroundAbilities.add(key);
+      // 维护 bundleName → uid 映射
+      if (!this.bundleNameToUids.has(abilityState.bundleName)) {
+        this.bundleNameToUids.set(abilityState.bundleName, new Set());
+      }
+      this.bundleNameToUids.get(abilityState.bundleName)!.add(abilityState.uid);
     } else if (foregroundAbilities) {
       foregroundAbilities.delete(key);
       if (!foregroundAbilities.size) {
         this.foregroundInfo.delete(abilityState.uid);
+        // 该 uid 不再有前台 ability，从映射中移除
+        const uids = this.bundleNameToUids.get(abilityState.bundleName);
+        if (uids) {
+          uids.delete(abilityState.uid);
+          if (!uids.size) {
+            this.bundleNameToUids.delete(abilityState.bundleName);
+          }
+        }
       }
     }
 
@@ -119,6 +147,9 @@ export class AppLifeCycleManager {
       .join(',')}`);
     if (oldAppForegroundFlag !== newAppForegroundFlag) {
       log.showInfo(`App foreground state changed, uid: ${abilityState.uid}, ${newAppForegroundFlag}`);
+      if (abilityState.bundleName === AppLifeCycleManager.DELIVER_SHELL_ASSISTANT) {
+        this.isDeliverShellForeground = newAppForegroundFlag;
+      }
       this.emitter.emit('appForegroundStateChanged', {
         uid: abilityState.uid,
         isForeground: newAppForegroundFlag,
@@ -166,8 +197,43 @@ export class AppLifeCycleManager {
   };
 
   private subscribeRGMStatusChanged = (event: RgmStatusChangeEvent): void => {
-
+    if (event.parameters?.rgmStatus === 'rgm_user_unlocked') {
+      log.showWarn('DeliverApp rgm_user_unlocked');
+      this.initDeliverApp();
+    }
   }
+
+  /**
+   * 备份应用前台状态变化事件
+   */
+  // private onAppSwitch = (appSwitchData: abilityFrameworkBroker.AppSwitchData): void => {
+  //   log.warn('DeliverApp onAppSwitch: ', appSwitchData);
+  //
+  //   if (this.deliverForegroundInfo.has(appSwitchData.fromUid)) {
+  //     this.deliverForegroundInfo.delete(appSwitchData.fromUid);
+  //     this.emitter.emit('appForegroundStateChanged', {
+  //       uid: appSwitchData.fromUid,
+  //       isForeground: false,
+  //       switchAbilityState: appManager.ApplicationState.STATE_BACKGROUND,
+  //       bundleName: appSwitchData.fromBundleName
+  //     });
+  //   }
+  //   if (!this.deliverForegroundInfo.has(appSwitchData.toUid) && appSwitchData.toUid !== -1) {
+  //     this.deliverForegroundInfo.set(appSwitchData.toUid, appSwitchData.toBundleName);
+  //     this.emitter.emit('appForegroundStateChanged', {
+  //       uid: appSwitchData.toUid,
+  //       isForeground: true,
+  //       switchAbilityState: appManager.ApplicationState.STATE_FOREGROUND,
+  //       bundleName: appSwitchData.toBundleName
+  //     });
+  //   }
+  //
+  //   log.showInfo(`DeliverApp onAppSwitch: new deliverForegroundInfo: ${Array.from(this.deliverForegroundInfo.values())}`);
+  // };
+
+  // private appSwitchObserver: abilityFrameworkBroker.AppSwitchObserver = {
+  //   onAppSwitch: this.onAppSwitch
+  // };
 
   /**
    * 初始化
@@ -184,8 +250,44 @@ export class AppLifeCycleManager {
       }
       InnerEventUtil.on(AbilityStateChangedEvent, this.abilityStatusChangeCallback);
       InnerEventUtil.on(RgmStatusChangeEvent, this.subscribeRGMStatusChanged);
+      this.initDeliverApp();
     } catch (e) {
       log.error('Init error:', e);
+    }
+  }
+
+  /**
+   * 注册备份应用状态监听
+   */
+  private async initDeliverApp(): Promise<void> {
+    if (SystemUICcmConfig.instance.isEnabledWorker && ThreadUtil.isMainThread) {
+      return;
+    }
+    if (NotificationUtil.isDeliverNotStarted()) {
+      log.showWarn('DeliverApp no need init. The container has not started.');
+      return;
+    }
+    try {
+      log.showInfo('DeliverApp initDeliverApp start');
+      if (this.appSwitchObserverId !== undefined) {
+        // abilityFrameworkBroker.unregisterAppSwitchObserver(this.appSwitchObserverId);
+      }
+      // this.appSwitchObserverId = abilityFrameworkBroker.registerAppSwitchObserver(this.appSwitchObserver);
+      log.showWarn('DeliverApp registerAppSwitchObserver success, appSwitchObserverId: ' + this.appSwitchObserverId);
+      // const deliverAppStates = await abilityFrameworkBroker.getForegroundDeliverApps();
+      // for (const deliverAppState of deliverAppStates) {
+      //   if (deliverAppState.state === 1) {
+      //     // this.onAppSwitch({
+      //     //   fromBundleName: '',
+      //     //   toBundleName: deliverAppState.bundleName,
+      //     //   fromUid: -1,
+      //     //   toUid: deliverAppState.uid
+      //     // })
+      //   }
+      // }
+      log.showInfo('DeliverApp initDeliverApp end');
+    } catch (err) {
+      log.error(`DeliverApp initDeliverApp error: ${err}`);
     }
   }
 
@@ -201,20 +303,36 @@ export class AppLifeCycleManager {
       return false;
     }
 
-    if (live) {
-      if ((this.foregroundInfo.get(uid)?.size ?? 0) > 0) {
+    if (live && live.isDeliverNotification) {
+      if (this.deliverForegroundInfo.has(uid) && this.isDeliverShellForeground) {
+        log.showInfo(`DeliverApp uid: ${live.creatorUid}, bundleName: ${live.creatorBundleName} isDeliverForeground`);
         return true;
       }
+    } else if ((this.foregroundInfo.get(uid)?.size ?? 0) > 0) {
+      return true;
+    }
 
-      if (live) {
-        if (PipSceneManager.instance.isPipLive(live)) {
-          log.showInfo(`live ${live.hashCode} is in pip scene`);
-          return true;
+    // 代理通知：creatorUid 被系统覆盖为发布进程UID，
+    // 通过 wantAgentInfo.bundleName 查找真实应用是否在前台
+    if (live?.wantAgentInfo?.bundleName) {
+      const targetUids = this.bundleNameToUids.get(live.wantAgentInfo.bundleName);
+      if (targetUids) {
+        for (const targetUid of targetUids) {
+          if ((this.foregroundInfo.get(targetUid)?.size ?? 0) > 0) {
+            return true;
+          }
         }
       }
-
-      return false;
     }
+
+    if (live) {
+      if (PipSceneManager.instance.isPipLive(live)) {
+        log.showInfo(`live ${live.hashCode} is in pip scene`);
+        return true;
+      }
+    }
+
+    return false;
   }
 
   /**

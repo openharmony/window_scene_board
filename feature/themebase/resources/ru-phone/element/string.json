@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"camera_mover",
+            "value":"Динами\u200bка",
+            "attr":{
+                "priority":"LT"
+            }
+        }
+    ]
+}

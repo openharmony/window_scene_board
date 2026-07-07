@@ -186,24 +186,24 @@ export class SCBSplitParam {
   private _needDelayTitleAppear: boolean = true;
 
   /**
-   * 超大屏产品，定制固定分屏比例的persistentId
+   * 三折叠产品，定制固定分屏比例的persistentId
    */
   public fixedSplitRatioPersistentId: number = 0;
 
   /**
-   * 超大屏产品，应用定制固定分屏比例
+   * 三折叠产品，应用定制固定分屏比例
    */
   public fixedSplitRatioType: SplitRatioEnum = SplitRatioEnum.UNDEFINED;
 
   /**
-   * 超大屏产品，应用定制固定分屏比例，多个应用无法组成适当的比例的分屏，则进入中景
+   * 三折叠产品，应用定制固定分屏比例，多个应用无法组成适当的比例的分屏，则进入中景
    */
   public needPairMidScene: boolean = false;
 
   private changeSplitRatioCallback?: Function;
 
   /**
-   * 超大屏产品，应用定制固定分屏比例，强制改变比例，注册回调
+   * 三折叠产品，应用定制固定分屏比例，强制改变比例，注册回调
    */
   public registerChangeSplitRatioCallback(callback: Function): void {
     log.showInfo(`[SCBSplit] registerChangeSplitRatioCallback`);
@@ -211,7 +211,7 @@ export class SCBSplitParam {
   }
 
   /**
-   * 超大屏产品，应用定制固定分屏比例，强制改变比例，解注册
+   * 三折叠产品，应用定制固定分屏比例，强制改变比例，解注册
    */
   public unregisterChangeSplitRatioCallback(): void {
     log.showInfo(`[SCBSplit] unregisterChangeSplitRatioCallback`);
@@ -219,7 +219,7 @@ export class SCBSplitParam {
   }
 
   /**
-   * 超大屏产品，应用定制固定分屏比例，强制改变比例
+   * 三折叠产品，应用定制固定分屏比例，强制改变比例
    */
   public changeSplitRatio(): boolean {
     if (this.changeSplitRatioCallback) {
@@ -293,8 +293,8 @@ export class SCBSplitParam {
    *
    * @param splitRatio split-ratio enum
    */
-  public setUltraScreenSplitRatioCache(splitRatio: SplitRatioEnum): void {
-    if (!DeviceHelper.isUltraScreenProduct()) {
+  public setThreeFoldSplitRatioCache(splitRatio: SplitRatioEnum): void {
+    if (!DeviceHelper.isThreeFoldProduct()) {
       return;
     }
     if (DeviceHelper.isFoldExpanded()) {
@@ -411,7 +411,7 @@ export class SCBSplitParam {
    * clear split ratio cache
    */
   public clearGModeSplitRatioCache(): void {
-    if (!DeviceHelper.isUltraScreenProduct()) {
+    if (!DeviceHelper.isThreeFoldProduct()) {
       return;
     }
     log.showInfo(`[SCBSplit] clean G-mode splitRatio`);
@@ -422,7 +422,7 @@ export class SCBSplitParam {
    * clear prev split ratio cache
    */
   public clearPrevSplitRatio(): void {
-    if (!DeviceHelper.isUltraScreenProduct()) {
+    if (!DeviceHelper.isThreeFoldProduct()) {
       return;
     }
     log.showInfo(`[SCBSplit] splitRatio reset prevSplitRatio`);

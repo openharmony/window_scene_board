@@ -20,6 +20,7 @@ import { SettingsUtil } from '../TsIndex';
 
 const TAG = 'OnLineThemeUtil';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.SCB, TAG);
+const CLOUD = 'cloud';
 
 class OnLineThemeUtil {
   private themeOrigin: string = '';
@@ -83,6 +84,24 @@ class OnLineThemeUtil {
     }
     log.showInfo(`setThemeId same: ${themeId}, old: ${oldThemeId}`);
     this.isNewThemeId = false;
+  }
+
+  /**
+   * 是否是普通模式和云端模式互相切换场景
+   *
+   * @returns true：是 / false： 否
+   */
+  public switchBetweenCloudAndNormal(): boolean {
+    return (this.oldThemeId === CLOUD || this.curThemeId === CLOUD) && this.oldThemeId !== this.curThemeId;
+  }
+
+  /**
+   * 是否是云端2和云端1互相切换场景
+   *
+   * @returns true：是 / false： 否
+   */
+  public switchBetweenCloud(): boolean {
+    return this.oldThemeId === CLOUD && this.curThemeId === CLOUD;
   }
 
   /**

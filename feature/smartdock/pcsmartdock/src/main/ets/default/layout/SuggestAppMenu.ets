@@ -16,11 +16,7 @@
 import { CheckEmptyUtils, LogDomain, LogHelper } from '@ohos/basicutils';
 import { ResourceManager, IconResourceManager, localEventManager } from '@ohos/frameworkwrapper';
 import {
-  CommonConstants,
-  MenuInfo,
-  StyleConstants,
-  EventConstants,
-  AppModel
+  CommonConstants, MenuInfo, StyleConstants, EventConstants, AppModel
 } from '@ohos/launchercommon';
 import measure from '@ohos.measure';
 import { LengthMetrics } from '@kit.ArkUI';
@@ -37,8 +33,10 @@ const NAME_SIZE = 16;
 @Component
 export struct SuggestAppMenu {
   private minSuggestMenuTextWidth: number = 108;
-  private menuOnAppear: Function = () => {};
-  private menuOnDisAppear: Function = () => {};
+  private menuOnAppear: Function = () => {
+  };
+  private menuOnDisAppear: Function = () => {
+  };
   private mAppModel: AppModel = AppModel.getInstance();
   menuInfoList: Array<MenuInfo> = [];
   closeMenu: Function = () => {
@@ -184,7 +182,8 @@ struct HorizontalMenuItem {
   };
   private mResourceManager: ResourceManager = ResourceManager.getInstance();
   private menuInfo: MenuInfo = new MenuInfo();
-  private menuOnDisAppear: Function = () => {};
+  private menuOnDisAppear: Function = () => {
+  };
   index: number = 0;
   lastIndex: number = 0;
   private ratio: number = 1;
@@ -229,9 +228,22 @@ struct HorizontalMenuItem {
   public updateIcon() {
     if (this.menuInfo?.shortcutIconId != -1 && this.menuInfo?.menuImgSrc != '' && this.menuInfo?.menuImgSrc != null) {
       IconResourceManager.getInstance()
-        .getCombIcon(this.menuInfo?.bundleName, this.menuInfo?.moduleName)
+        .getCombIcon(this.menuInfo?.bundleName, this.menuInfo?.moduleName, this.menuInfo?.menuAbility)
         .then((iconResource: string | PixelMap) => {
-          this.shortcutIconLoadCallback(iconResource);
+          // 如果获取到的图标为空，使用menuImgSrc作为备用图标
+          if (iconResource === null || iconResource === undefined ||
+            (typeof iconResource === 'object' && CheckEmptyUtils.isEmptyPixelMap(iconResource as image.PixelMap))) {
+            log.showWarn(`getCombIcon return empty, use menuImgSrc as fallback,
+              bundleName: ${this.menuInfo?.bundleName}`);
+            this.shortcutIconLoadCallback(this.menuInfo?.menuImgSrc as (string | PixelMap));
+          } else {
+            this.shortcutIconLoadCallback(iconResource);
+          }
+        })
+        .catch((error: Error) => {
+          log.showError(`getCombIcon failed, use menuImgSrc as fallback,
+            bundleName: ${this.menuInfo?.bundleName}, error: ${error}`);
+          this.shortcutIconLoadCallback(this.menuInfo?.menuImgSrc as (string | PixelMap));
         });
     } else {
       this.shortcutIconLoadCallback(this.menuInfo?.menuImgSrc as (string | PixelMap));
@@ -285,7 +297,7 @@ struct HorizontalMenuItem {
             width: StyleConstants.POPUP_IMAGE_BORDER_WIDTH * this.ratio,
             radius: StyleConstants.POPUP_IMAGE_BORDER_RADIUS * this.ratio,
             color: this.menuInfo?.menuType === CommonConstants.MENU_TYPE_FIXED ?
-            StyleConstants.DEFAULT_TRANSPARENT_COLOR : StyleConstants.POPUP_IMAGE_BORDER_COLOR
+              StyleConstants.DEFAULT_TRANSPARENT_COLOR : StyleConstants.POPUP_IMAGE_BORDER_COLOR
           })
       } else if (this.needShowImage) {
         Image('')

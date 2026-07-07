@@ -18,7 +18,7 @@ import GridLayoutItemInfo from '../bean/GridLayoutItemInfo';
 import GridLayoutItemDbBuilder from './GridLayoutItemDbBuilder';
 import type rdb from '@ohos.data.relationalStore';
 import { CommonConstants } from '../constants/CommonConstants';
-import { commonBundleManager } from '@ohos/frameworkwrapper';
+import { commonBundleManager, LightOutdoorConfig } from '@ohos/frameworkwrapper';
 import { GridLayoutInfoEnums } from '../db/column/GridLayoutInfoColumns';
 import { OverflowFormInfoUtil } from '../utils/OverflowFormInfoUtil';
 
@@ -523,6 +523,10 @@ export default class GridLayoutItemInfoDataBase {
       gridlayoutItemDbBuilder.setInfoId(item.infoId);
     } else if (item.typeId === CommonConstants.TYPE_FORM_STACK) {
       gridlayoutItemDbBuilder.setInfoId(item.formStackId);
+    } else if (item.typeId === CommonConstants.TYPE_ADD) {
+      if (LightOutdoorConfig.getInstance().isOnLightOutdoorMode()) {
+        gridlayoutItemDbBuilder.setInfoId(CommonConstants.LIGHT_OUTDOOR_ADD_ICON_INFO_ID);
+      }
     }
   }
 }

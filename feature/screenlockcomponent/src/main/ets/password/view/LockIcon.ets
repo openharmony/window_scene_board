@@ -33,6 +33,7 @@ import { ResUtils, SCBSceneSessionManager, SCBSystemBarProperty } from '@ohos/wi
 import TemporaryPromptViewModel from '../../fingerprint/TemporaryPromptViewModel';
 import { DynamicFontSize, sFontScaleUtil } from '@ohos/screenlockwidget/src/main/ets/common/utils/FontScaleUtil';
 import measure from '@ohos.measure';
+import { ImmersiveAodStyle, immersiveKgMgr } from '@ohos/systemuicommon/src/main/ets/TsIndex';
 import { BrightnessOptionUtils } from '@ohos/systemuicommon/Index';
 import { slStateHelper } from '../../common/helper/SlStateHelper';
 import { SlLockIconBindState } from '../viewmodel/SlLockIconBindState';
@@ -102,6 +103,10 @@ export default struct LockIcon {
   @State isSpecialMode: boolean =
     SpecialModeManager.getInstance().getSpecialModeViewData().curMode !== KeyGuardMode.DEFAULT;
   @State curState: CoreStateType = CoreStateType.INIT_STATE;
+  /**
+   * Aod显示样式
+   */
+  @State aodStyle: ImmersiveAodStyle | undefined = immersiveKgMgr.getOneMirrorState().getAodStyle(true);
   @Prop clockStrokeColor?: string = '';
   @State slLockIconBindState: SlLockIconBindState = slStateHelper.getSlLockBindState(); // 锁头布局状态管理
   @State slLockIconAnimCtrl: WidgetAnimState | undefined = slStateHelper.getSlLockAnimState(); // 锁头动效状态管理
@@ -285,7 +290,7 @@ export default struct LockIcon {
       .height('100%')
       .accessibilityLevel('no')
 
-      if (this.enableBright && this.enableEffect) {
+      if (!this.aodStyle?.isAod && this.enableBright && this.enableEffect) {
         Column() {
         }
         .width('100%')

@@ -23,7 +23,9 @@
     "@ohos/desktopfilefolder": "../../desktopfilefolder",
     "@ohos/form": "../form",
     "@ohos/formstack": "../formstack",
+    "@ohos/aisuggestion": "../aisuggestion",
     "@ohos/desktopedit": "../desktopedit",
+    "@ohos/voiceagent": "file:../../voiceagent",
     "@ohos/frameworkpinyin": "../../../staticcommon/basecommon/frameworkpinyin"
   }
 }

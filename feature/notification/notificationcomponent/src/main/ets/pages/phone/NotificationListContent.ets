@@ -2469,11 +2469,6 @@ export struct NotificationListContent {
                 .translate({
                   y: this.translateYArr[this.getMainNtfListWithMemory().length]
                 })
-                ForEach(this.getExtraNtfListWithMemory(), (entry: NotificationEntry, index: number) => {
-                  this.buildExtraNtfItem(entry);
-                }, (entry: NotificationEntry, index: number): string => { //请勿删除index，否则会导致组件销毁重建
-                  return entry.uid;
-                })
               }
               if (this.isShowBottomTransCard) {
                 // 新增一个透明占位卡片，使滑动到最底部与一键删除垃圾桶不重叠
@@ -2763,7 +2758,7 @@ export struct NotificationListContent {
           : $r('app.float.ntf_list_item_padding_bottom')
       }
     }
-    // 是否设置通知左右边距，小折叠类按直板机处理，超大屏单屏按直板机处理
+    // 是否设置通知左右边距，小折叠类按直板机处理，三折叠单屏按直板机处理
     let noLeftRightPadding = this.isDisplayLand ||
       (this.isFoldFullDisplay && !this.ntfListVM?.isSmallFold() && !LayoutUtils.isMatchXTFoldMode(XTLayoutType.F));
     return {

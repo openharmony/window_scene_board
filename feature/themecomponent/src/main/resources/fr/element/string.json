@@ -14,6 +14,13 @@
                 "priority":"translate"
             }
         },
+      {
+        "name":"Desktop_setting",
+        "value":"Paramètres de l'écran d'accueil",
+        "attr":{
+          "priority":"translate"
+        }
+      },
         {
             "name":"stop_font_creation_service",
             "value":"Désactiver le service",
@@ -157,6 +164,54 @@
       {
         "name": "wallpaper_editor",
         "value": "Appliquer"
+      },
+      {
+        "name": "cancle",
+        "value": "Annuler"
+      },
+      {
+        "name": "set_wallpaper_all",
+        "value": "Configurer en même temps"
+      },
+      {
+        "name": "set_wallpaper_desktop",
+        "value": "Configurer un fond d'écran de bureau"
+      },
+      {
+        "name": "set_wallpaper_lock",
+        "value": "Set lockscreen Fonds d'écran"
+      },
+      {
+        "name": "wallpaper_show_style",
+        "value": "Comment afficher le fond d'écran"
+      },
+      {
+        "name": "screen_fit",
+        "value": "Convient pour l'écran"
+      },
+      {
+        "name": "screen_full",
+        "value": "remplir l'écran"
+      },
+      {
+        "name": "screen_center",
+        "value": "Centre"
+      },
+      {
+        "name": "screen_sctetch",
+        "value": "s'étirer complètement"
+      },
+      {
+        "name": "screen_tile",
+        "value": "plat"
+      },
+      {
+        "name": "image_decoding_failure",
+        "value": "Erreur d'image. Veuillez réessayer."
+      },
+      {
+        "name":"Desktop_individuation",
+        "value":"Style et écran d'accueil"
       }
     ]
 }

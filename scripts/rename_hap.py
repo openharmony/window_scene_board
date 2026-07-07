@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved.
+# Copyright (c) 2023 Huawei Device Co., Ltd.
 # Licensed under the Apache License, Version 2.0 (the 'License');
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -40,6 +40,10 @@ def get_hap_path(args):
             args.path, 'SceneBoard_app-themeservice_core-default-signed.hap')
     phone_themeservice_hap = os.path.join(args.path, 'SceneBoard_ThemeServiceCore.hap')
 
+    phone_metaballsturbo_hap_old = os.path.join(
+        args.path, 'SceneBoard_app-metaballsturbo-default-signed.hap')
+    phone_metaballsturbo_hap = os.path.join(args.path, 'SceneBoard_MetaBallsTurbo.hap')
+
     phone_onekeylock_hap_old = os.path.join(
         args.path, 'SceneBoard_app-onekeylock-default-signed.hap')
     phone_onekeylock_hap = os.path.join(args.path, 'SceneBoard_onekeylock.hap')
@@ -72,6 +76,10 @@ def get_hap_path(args):
         args.path, 'SceneBoard_app-onekeylock-default-signed.hap')
     pc_onekeylock_hap = os.path.join(args.path, 'SceneBoard_onekeylock.hap')
 
+    pc_metaballsturbo_hap_old = os.path.join(
+        args.path, 'SceneBoard_app-metaballsturbo-default-signed.hap')
+    pc_metaballsturbo_hap = os.path.join(args.path, 'SceneBoard_MetaBallsTurbo.hap')
+
     basecommon_hsp_old = os.path.join(
         args.path, 'SceneBoard_app-basecommon-default-signed.hsp')
     basecommon_hsp = os.path.join(args.path, 'basecommon.hsp')
@@ -97,9 +105,10 @@ def get_hap_path(args):
             phone_coverthemecomponent_hap_old, phone_coverthemecomponent_hap, pad_hap_old, pad_hap,
             pcresourcesoverlay_hsp_old, pcresourcesoverlay_hsp, pc_hap_old, pc_hap,
             pc_notification_management_hap_old, pc_notification_management_hap,
-            phone_onekeylock_hap_old, phone_onekeylock_hap,
+            phone_metaballsturbo_hap_old, phone_metaballsturbo_hap, phone_onekeylock_hap_old, phone_onekeylock_hap,
             pc_engineservice_hap_old, pc_engineservice_hap, pc_themecomponent_hap_old, pc_themecomponent_hap,
             pc_themeservice_hap_old, pc_themeservice_hap, pc_onekeylock_hap_old, pc_onekeylock_hap,
+            pc_metaballsturbo_hap_old, pc_metaballsturbo_hap,
             basecommon_hsp_old, basecommon_hsp, car_hap_old, car_hap, tv_hap_old, tv_hap, collaborationfwkdialog_hsp_old,
             collaborationfwkdialog_hsp]
 
@@ -128,9 +137,10 @@ def main():
      phone_coverthemecomponent_hap_old, phone_coverthemecomponent_hap, pad_hap_old, pad_hap,
      pcresourcesoverlay_hsp_old, pcresourcesoverlay_hsp, pc_hap_old, pc_hap,
      pc_notification_management_hap_old, pc_notification_management_hap,
-     phone_onekeylock_hap_old, phone_onekeylock_hap,
+     phone_metaballsturbo_hap_old, phone_metaballsturbo_hap, phone_onekeylock_hap_old, phone_onekeylock_hap,
      pc_engineservice_hap_old, pc_engineservice_hap, pc_themecomponent_hap_old, pc_themecomponent_hap,
      pc_themeservice_hap_old, pc_themeservice_hap, pc_onekeylock_hap_old, pc_onekeylock_hap,
+     pc_metaballsturbo_hap_old, pc_metaballsturbo_hap,
      basecommon_hsp_old, basecommon_hsp,  car_hap_old, car_hap, tv_hap_old, tv_hap, collaborationfwkdialog_hsp_old,
      collaborationfwkdialog_hsp] = get_hap_path(args)
 
@@ -150,6 +160,7 @@ def main():
         move_hap(pc_themecomponent_hap, pc_themecomponent_hap_old)
         move_hap(pc_themeservice_hap, pc_themeservice_hap_old)
         move_hap(pc_onekeylock_hap, pc_onekeylock_hap_old)
+        move_hap(pc_metaballsturbo_hap, pc_metaballsturbo_hap_old)
         remove_hap(basecommon_hsp_old)
         remove_hap(phone_hap_old)
         remove_hap(pad_hap_old)
@@ -157,6 +168,7 @@ def main():
         remove_hap(phone_engineservice_hap_old)
         remove_hap(phone_themecomponent_hap_old)
         remove_hap(phone_themeservice_hap_old)
+        remove_hap(phone_metaballsturbo_hap_old)
         remove_hap(phone_onekeylock_hap_old)
         remove_hap(phone_coverthemecomponent_hap_old)
         remove_hap(tv_hap_old)
@@ -166,6 +178,7 @@ def main():
         move_hap(phone_notification_management_hap, phone_notification_management_hap_old)
         move_hap(phone_engineservice_hap, phone_engineservice_hap_old)
         move_hap(phone_themecomponent_hap, phone_themecomponent_hap_old)
+        move_hap(phone_metaballsturbo_hap, phone_metaballsturbo_hap_old)
         move_hap(phone_onekeylock_hap, phone_onekeylock_hap_old)
         move_hap(phone_themeservice_hap, phone_themeservice_hap_old)
         move_hap(basecommon_hsp, basecommon_hsp_old)
@@ -178,6 +191,7 @@ def main():
         remove_hap(pc_themecomponent_hap_old)
         remove_hap(pc_themeservice_hap_old)
         remove_hap(pc_onekeylock_hap_old)
+        remove_hap(pc_metaballsturbo_hap_old)
         remove_hap(tv_hap_old)
         remove_hap(pcresourcesoverlay_hsp_old)
     elif (args.product == 'pad'):
@@ -186,6 +200,7 @@ def main():
         move_hap(phone_notification_management_hap, phone_notification_management_hap_old)
         move_hap(phone_engineservice_hap, phone_engineservice_hap_old)
         move_hap(phone_themecomponent_hap, phone_themecomponent_hap_old)
+        move_hap(phone_metaballsturbo_hap, phone_metaballsturbo_hap_old)
         move_hap(phone_onekeylock_hap, phone_onekeylock_hap_old)
         move_hap(phone_themeservice_hap, phone_themeservice_hap_old)
         move_hap(basecommon_hsp, basecommon_hsp_old)
@@ -198,6 +213,7 @@ def main():
         remove_hap(pc_themecomponent_hap_old)
         remove_hap(pc_themeservice_hap_old)
         remove_hap(pc_onekeylock_hap_old)
+        remove_hap(pc_metaballsturbo_hap_old)
         remove_hap(tv_hap_old)
     elif (args.product == 'car'):
         move_hap(car_hap, car_hap_old)
@@ -208,12 +224,14 @@ def main():
         remove_hap(pc_themecomponent_hap_old)
         remove_hap(pc_themeservice_hap_old)
         remove_hap(pc_onekeylock_hap_old)
+        remove_hap(pc_metaballsturbo_hap_old)
         remove_hap(phone_hap_old)
         remove_hap(pad_hap_old)
         remove_hap(phone_notification_management_hap_old)
         remove_hap(phone_engineservice_hap_old)
         remove_hap(phone_themecomponent_hap_old)
         remove_hap(phone_themeservice_hap_old)
+        remove_hap(phone_metaballsturbo_hap_old)
         remove_hap(phone_onekeylock_hap_old)
         remove_hap(phone_coverthemecomponent_hap_old)
         remove_hap(tv_hap_old)
@@ -234,6 +252,7 @@ def main():
         remove_hap(pc_themecomponent_hap_old)
         remove_hap(pc_themeservice_hap_old)
         remove_hap(pc_onekeylock_hap_old)
+        remove_hap(pc_metaballsturbo_hap_old)
         remove_hap(car_hap_old)
         remove_hap(pcresourcesoverlay_hsp_old)
     else:
@@ -241,6 +260,7 @@ def main():
         move_hap(phone_notification_management_hap, phone_notification_management_hap_old)
         move_hap(phone_engineservice_hap, phone_engineservice_hap_old)
         move_hap(phone_themecomponent_hap, phone_themecomponent_hap_old)
+        move_hap(phone_metaballsturbo_hap, phone_metaballsturbo_hap_old)
         move_hap(phone_onekeylock_hap, phone_onekeylock_hap_old)
         move_hap(phone_themeservice_hap, phone_themeservice_hap_old)
         move_hap(basecommon_hsp, basecommon_hsp_old)
@@ -251,6 +271,7 @@ def main():
         remove_hap(pc_themecomponent_hap_old)
         remove_hap(pc_themeservice_hap_old)
         remove_hap(pc_onekeylock_hap_old)
+        remove_hap(pc_metaballsturbo_hap_old)
         remove_hap(tv_hap_old)
         remove_hap(pcresourcesoverlay_hsp_old)
 

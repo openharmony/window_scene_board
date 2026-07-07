@@ -38,7 +38,7 @@ import { LengthMetricsUtil } from '../common/LengthMetricsUtil';
 import { PcStatusBarDragMgr } from '../manager/PcStatusBarDragMgr';
 import { StatusBarEventId, StatusBarEventManager } from '../manager/StatusBarEventManager';
 import { CustomEvent, StatusBarCustomEvent } from '../utils/events';
-import { BigScreenStatus } from '../common/BigScreenStatus';
+import { SuperFoldStatus } from '../common/SuperFoldStatus';
 import { trayPanelMenuVM } from '../viewmodel/TrayPanelMenuVM'
 import { windowMgr } from '@ohos/windowscene';
 import { StyleType } from '../utils/enum';
@@ -107,7 +107,7 @@ export struct PcPluginRootComponent {
   @Provide @Watch('onMenuOpenChange') isMenuOpen: boolean = false;
   @Provide isMenuOpenNotTray: boolean = false;
   @StorageLink('isPluginMenuOpen') isPluginMenuOpen: boolean = false;
-  private bigScreenStatus: BigScreenStatus = BigScreenStatus.getInstance();
+  private superFoldStatus: SuperFoldStatus = SuperFoldStatus.getInstance();
 
   /**
    * 图标被点击时动效，用于PC图标
@@ -157,17 +157,15 @@ export struct PcPluginRootComponent {
   }
 
   aboutToAppear(): void {
-    log.showDebug('aboutToAppear slot: ' + this.property?.getSlot());
+    log.showInfo('aboutToAppear slot: ' + this.property?.getSlot());
     this.property?.getGroupMenuInfo();
     this.stateProperty = StateManager.getInstance().getState(this.property.getSlot());
     this.animProperty = AnimManager.getInstance().getAnim(this.property.getSlot());
     this.pluginRootVM = new PluginRootViewModel(this.property, this.rootParentId);
-    this.pluginStyle = StyleManager.getInstance()
-      .requestStyle(StyleType.PLUGIN, this.property.getSlot()) as PluginStyle;
+    this.pluginStyle = StyleManager.getInstance().requestStyle(StyleType.PLUGIN, this.property.getSlot()) as PluginStyle;
     this.updatePropertyMargin?.(this.property.getSlot(), this.property.index, this.statusBarType, this.property.isLast);
     this.pluginRootVM.init();
-    this.eventMgr
-      .on(SCBFoldStatePropertyChangeEvent, this.onBigScreenStatusChange);
+    this.eventMgr.on(SCBFoldStatePropertyChangeEvent, this.onSuperFoldStatusChange);
   }
 
   aboutToDisappear(): void {
@@ -220,6 +218,19 @@ export struct PcPluginRootComponent {
     })
   }
 
+  // ai走的这里
+  @Builder
+  remotePlugin() {
+    PcRemotePluginComponent({
+      property: this.property,
+      pluginStyle: this.pluginStyle as PluginStyle,
+      iconWidth: this.pluginStyle?.iconWidth,
+      iconHeight: this.pluginStyle?.iconHeight,
+      animProperty: this.animProperty,
+      mAnimation: this.getAnimation(),
+    })
+  }
+
   @Builder
   accessPlugin() {
     PcAccessPluginComponent({
@@ -242,6 +253,8 @@ export struct PcPluginRootComponent {
       this.localPlugin()
     } else if (this.property?.isPluginTypeAccess()) {
       this.accessPlugin()
+    } else {
+      this.remotePlugin()
     }
   }
 
@@ -343,7 +356,7 @@ export struct PcPluginRootComponent {
   }
 
   private getPluginRootWidth(): Length | undefined {
-    // 适配OpenHarmony环光效，宽度增加到60vp，避免光效被切割
+    // 适配鸿蒙环光效，宽度增加到60vp，避免光效被切割
     if (this.property.getSlot() === PluginSlot.SLOT_STATUS_HOS_KEY) {
       return ResUtils.getNumberFromLength('60vp');
     }
@@ -470,15 +483,15 @@ export struct PcPluginRootComponent {
         StatusBarCustomEvent.createEvent(event, this.property.getSlot(), this.property.getSlot(), 'hover', isHover));
   }
 
-  onBigScreenStatusChange = (bigScreenStateProperty: SCBFoldStatePropertyChangeEvent) => {
+  onSuperFoldStatusChange = (superFoldStateProperty: SCBFoldStatePropertyChangeEvent) => {
     let groupName: string = this.getGroupName();
     if (!StateManager.getInstance().getState(groupName).isHovered) {
       return;
     }
-    log.showInfo(`onBigScreenStatusChange property, bSideWidth: ${bigScreenStateProperty.bSideWidth}, ` +
-      `curState: ${bigScreenStateProperty.curState}, tarState: ${bigScreenStateProperty.tarState}`);
+    log.showInfo(`onSuperFoldStatusChange property, bSideWidth: ${superFoldStateProperty.bSideWidth}, ` +
+      `curState: ${superFoldStateProperty.curState}, tarState: ${superFoldStateProperty.tarState}`);
     // 横竖屏旋转时清除hover状态
-    if (this.bigScreenStatus.isRotateStatus(bigScreenStateProperty)) {
+    if (this.superFoldStatus.isRotateStatus(superFoldStateProperty)) {
       log.showInfo(`groupName: ${groupName}, slot: ${this.property.getSlot()}`);
       // 清除分组的父组件hover
       if (this.isNeedPostHoverEvent()) {
@@ -645,10 +658,13 @@ export struct PcPluginRootComponent {
   build() {
     if (this.property) {
       if (this.isGroupPlugin) {
+        // pc状态栏右侧固定的icon
         this.groupPluginBuilder()
       } else if (this.isTray) {
+        // pc更多面板的icon
         this.trayBuilder()
       } else {
+        // pc更多面板拖拽到状态后生成的icon
         this.singlePluginBuilder()
       }
     }

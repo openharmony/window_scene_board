@@ -80,13 +80,15 @@ import type common from '@ohos.app.ability.common';
 import rpc from '@ohos.rpc';
 import inputMethod from '@ohos.inputMethod';
 import { ScreenLockApi } from '@ohos/screenlockcommon/src/main/ets/api/ScreenLockApi';
-import { screenLockInnerStateManager as screenLockStateManager } from '@ohos/screenlockcommon/src/main/ets/base/ScreenLockInnerStateManager';
+import {
+  screenLockInnerStateManager as screenLockStateManager
+} from '@ohos/screenlockcommon/src/main/ets/base/ScreenLockInnerStateManager';
 import settings from '@ohos.settings';
 import { BusinessError } from '@ohos.base';
 import audio from '@ohos.multimedia.audio';
 import { TimerUtil } from '../util/TimerUtil';
 import { MultimodalInputManager } from '@ohos/systemuicommon';
-import { MultiInputRecentProxy} from './MultiInputRecentProxy';
+import { MultiInputRecentProxy } from './MultiInputRecentProxy';
 import AbilityConstant from '@ohos.app.ability.AbilityConstant';
 import { osAccount, screenLock } from '@kit.BasicServicesKit';
 import { ReceiveEventInfo, VisibleInfo } from '../constants/ReceiveEventInfo';
@@ -105,7 +107,7 @@ const SHOT_TYPE = 'shot_type';
 let callOutDelayTimer: number | null = null;
 const ENTER_RECENT_DELAY = 220;
 const PLUGIN_TOGGLE_CLICK_CODE = 1001;
-const PUBLISH_EVENT_CAST_DISCONNECTED: string = 'huaweicast.event.CAST_DISCONNECTED';
+const PUBLISH_EVENT_CAST_DISCONNECTED: string = 'ohcast.event.CAST_DISCONNECTED';
 const SCREEN_LOCK_WALL_PAPER_ZINDEX = 1999;
 const uiType = SCBWindowSceneConfig.getInstance().windowSceneConfig?.uiType;
 
@@ -153,6 +155,7 @@ export class MultiInputViewModel {
   public isHandleWinEvent: boolean = false;
   // 用于判断沉浸式场景鼠标从标题栏平移到另一个屏幕的场景
   private lastScreenId: number | undefined = undefined;
+
   private constructor() {
     this.registerMultiInputEvent();
     this.mLayoutViewModel = LayoutViewModel.getInstance();
@@ -187,7 +190,7 @@ export class MultiInputViewModel {
         `isCtrlAltDelPanelShow: ${isCtrlAltDelPanelShow}`);
       multiInputManager.hisearchShortcutExcuted = viewMgrPolicy.isViewShowing(ViewType.GLOBAL_SEARCH);
       if (isLocked || isOobeEnable || SCBSceneSessionManager.getInstance().isScreenLocked() ||
-        sSampleManager.isSampleManagerChecked() || isCtrlAltDelPanelShow) {
+      sSampleManager.isSampleManagerChecked() || isCtrlAltDelPanelShow) {
         return;
       }
       let isHandleThreeFingersSwipe: boolean = SCBSceneSessionManager.getInstance().getIsHandleThreeFingerSwiper();
@@ -349,7 +352,7 @@ export class MultiInputViewModel {
 
   private findMainSceneSessionForFocusedScene(
     focusedSession: SCBSpecificSession | SCBSceneSession | SCBSystemSceneSession):
-    SCBSceneSession | SCBSpecificSession | SCBSystemSceneSession {
+  SCBSceneSession | SCBSpecificSession | SCBSystemSceneSession {
     if (focusedSession instanceof SCBSceneSession) {
       return focusedSession;
     }
@@ -420,7 +423,7 @@ export class MultiInputViewModel {
             log.showError(`[ERROR]PrepareTerminate Callback:${err}`);
             SCBSceneSessionManager.getInstance().close(session.sceneInfo.screenId, session.sceneInfo.persistentId);
           });
-      } catch(error) {
+      } catch (error) {
         log.showError(`[ERROR]asyncPrepareTerminate: ${error}`);
       }
     }
@@ -457,11 +460,11 @@ export class MultiInputViewModel {
         };
         try {
           (getContext() as common.UIAbilityContext).startAbility(wantInfo);
-        } catch(error) {
+        } catch (error) {
           log.showError(`[ERROR]startAbilit: ${error}`);
         }
       }
-    } else if (DeviceHelper.isPad() || DeviceHelper.isUltraScreenProduct()) {
+    } else if (DeviceHelper.isPad() || DeviceHelper.isThreeFoldProduct()) {
       let scenePanelState: ScenePanelState | undefined = AppStorage.get('scenePanelState');
       if (scenePanelState === ScenePanelState.FULLSCENE) {
         return;
@@ -488,7 +491,7 @@ export class MultiInputViewModel {
   private changeGlobalSearchStateInDevicePcType(): void {
     const lastGlobalSearchState = sOutSideWindowMgr.isShowGlobalSearch();
     const isGlobalSearchViewShow: boolean = viewMgrPolicy.isViewShowing(ViewType.GLOBAL_SEARCH);
-    if (lastGlobalSearchState  && isGlobalSearchViewShow) {
+    if (lastGlobalSearchState && isGlobalSearchViewShow) {
       this.hideGlobalSearch();
     } else if (!lastGlobalSearchState || !isGlobalSearchViewShow) {
       this.showGlobalSearch();
@@ -593,7 +596,7 @@ export class MultiInputViewModel {
     let screenHeight = vp2px(this.mLayoutViewModel?.getScreenHeight());
     this.dockHeight = vp2px(this.mLayoutViewModel?.getDockHeight());
     if (!viewMgrPolicy.isViewShowing(ViewType.SMART_DOCK) && canUpdateDock &&
-      this.isInDockVisibleRegion(mouseEvent)) {
+    this.isInDockVisibleRegion(mouseEvent)) {
       this.callOutDockWithDelay(DELAY_CALL_OUT_DOCK_MS);
       return;
     }
@@ -637,10 +640,10 @@ export class MultiInputViewModel {
       this.lastScreenId = curScreenId;
     }
     let isAppCenterShow: boolean = curScreenId !== SCBSceneSessionManager.getInstance().mainScreenId ?
-    viewMgrPolicy.isViewShowing(ViewType.APP_CENTER_EXT) : viewMgrPolicy.isViewShowing(ViewType.APP_CENTER);
+      viewMgrPolicy.isViewShowing(ViewType.APP_CENTER_EXT) : viewMgrPolicy.isViewShowing(ViewType.APP_CENTER);
     let isDropDown: boolean = viewMgrPolicy.isViewShowing(ViewType.DROPDOWN);
     let notShowStatus: boolean = isAppCenterShow || AppStorage.get('showRecent') || isDropDown ||
-      SCBSceneSessionManager.getInstance().isScenePanelInState(curScreenId, ScenePanelState.SPLIT);
+    SCBSceneSessionManager.getInstance().isScenePanelInState(curScreenId, ScenePanelState.SPLIT);
     if (CheckEmptyUtils.isEmpty(mouseEvent) || notShowStatus) {
       return;
     }
@@ -677,7 +680,7 @@ export class MultiInputViewModel {
     this.isPreventHideTitleBar = true;
     let floatingTitleRealHeight = 0;
     if (this.mFirstFullOrSplitContainer?.primarySession?.getRealLayoutFullScreen() ||
-      this.mFirstFullOrSplitContainer?.primarySession?.sessionData.isMaximizeFullScreen) {
+    this.mFirstFullOrSplitContainer?.primarySession?.sessionData.isMaximizeFullScreen) {
       floatingTitleRealHeight = floatingTitleHeight;
     }
     if (this.canHideStatusBar(systemSceneSession, sessionList, curScreenId) && mouseEvent.screenY >
@@ -732,7 +735,7 @@ export class MultiInputViewModel {
         }
       }
       if (item !== null && item.isActive && item.primarySession !== null &&
-          ((item.isSplit && item.secondarySession !== null) || item.primarySession.layoutFullScreen)) {
+        ((item.isSplit && item.secondarySession !== null) || item.primarySession.layoutFullScreen)) {
         if (item.primarySession.currRect.top.getPx() < vp2px(this.mLayoutViewModel.getScreenHeight() / 2)) {
           continue;
         }
@@ -752,7 +755,7 @@ export class MultiInputViewModel {
   }
 
   showCSideFloatingTitle(): void {
-    if (!SCBSceneSessionManager.getInstance().isInBigScreenStatus()) {
+    if (!SCBSceneSessionManager.getInstance().isInSuperFoldStatus()) {
       return;
     }
     let sessionList: SCBSceneContainerSessionArray = SCBSceneSessionManager.getInstance().getContainerSessionList();
@@ -774,7 +777,7 @@ export class MultiInputViewModel {
   }
 
   updateCSideTitleFromGesture(isShow: boolean): void {
-    if (!SCBSceneSessionManager.getInstance().isInBigScreenStatus()) {
+    if (!SCBSceneSessionManager.getInstance().isInSuperFoldStatus()) {
       return;
     }
     let sessionList: SCBSceneContainerSessionArray = SCBSceneSessionManager.getInstance().getContainerSessionList();
@@ -873,7 +876,7 @@ export class MultiInputViewModel {
     // skip hide status and floating when maximize menu toast
     let focusedSession = SCBSceneSessionManager.getInstance().getFocusedSession();
     if (!this.mTopFullScreenSubSession && focusedSession instanceof SCBSpecificSession &&
-      this.isTitleBarMenuSubWindow(focusedSession) &&
+    this.isTitleBarMenuSubWindow(focusedSession) &&
       focusedSession.session?.type === sceneSessionManager.SessionType.TYPE_SUB_APP &&
       mouseEvent?.action === Action.MOVE && this.judgsSubwindowIsTargetSub(focusedSession.session.parentId)) {
       this.isPreventHideTitleBar = true;
@@ -887,7 +890,7 @@ export class MultiInputViewModel {
     }
     //hide floating title
     if (this.mTopFullScreenSubSession && this.mTopFullScreenSubSession.layoutFullScreen &&
-      this.isInTargetSide(mouseEvent.screenY, this.mTopFullScreenSubSession.currRect.top.getPx())) {
+    this.isInTargetSide(mouseEvent.screenY, this.mTopFullScreenSubSession.currRect.top.getPx())) {
       this.updateTitleForSubWindow(false, statusHeight);
     } else {
       this.updateTitleForContainer(false, statusHeight);
@@ -950,7 +953,7 @@ export class MultiInputViewModel {
 
   // mouseEvent is in target session top area
   private isInTargetSide(mouseY: number, top: number): boolean {
-    if (!SCBSceneSessionManager.getInstance().isInBigScreenStatus()) {
+    if (!SCBSceneSessionManager.getInstance().isInSuperFoldStatus()) {
       return true;
     }
     const screenHeight = this.mLayoutViewModel?.getScreenHeight();
@@ -980,7 +983,7 @@ export class MultiInputViewModel {
     if ((mouseEvent?.action === Action.BUTTON_DOWN || mouseEvent?.action === Action.BUTTON_UP) &&
       focusedSession instanceof SCBSpecificSession && focusedSession.isSubWindow() &&
       focusedSession.session.persistentId === mouseEvent?.windowId &&
-      this.judgsSubwindowIsTargetSub(focusedSession.session.parentId)) {
+    this.judgsSubwindowIsTargetSub(focusedSession.session.parentId)) {
       this.isPreventHideTitleBar = true;
       return true;
     }
@@ -1026,8 +1029,8 @@ export class MultiInputViewModel {
         ((item.isSplit && item.secondarySession !== null) ||
           item.primarySession.sceneInfo.windowMode === SCBSceneMode.FULLSCREEN) &&
         curScreenId === item.screenProperty.screenId) {
-        if (SCBSceneSessionManager.getInstance().isInBigScreenStatus() &&
-            item.primarySession.currRect.top.getPx() > vp2px(this.mLayoutViewModel.getScreenHeight() / 2)) {
+        if (SCBSceneSessionManager.getInstance().isInSuperFoldStatus() &&
+          item.primarySession.currRect.top.getPx() > vp2px(this.mLayoutViewModel.getScreenHeight() / 2)) {
           continue;
         }
         if (this.mHideTitleSessionList.has(item)) {
@@ -1191,14 +1194,14 @@ export class MultiInputViewModel {
     let micMuteStatus: boolean = audioVolumeGroupManager.isMicrophoneMuteSync();
     audioVolumeGroupManager.setMicMute(!micMuteStatus).then(() => {
       log.showInfo(`Muted Microphone: ${!micMuteStatus}`);
-      if (!DeviceHelper.isUltraScreenProduct()) {
+      if (!DeviceHelper.isThreeFoldProduct()) {
         log.showInfo('Set Microphone Reminder');
         AppStorage.setOrCreate('isMicMuteState', !micMuteStatus);
       }
     }).catch((error: BusinessError) => {
       log.showError(`handleClick error: ${error.code}`);
     });
-}
+  }
 
   private fnSwitchVideoModeCallBack(): void {
     log.showInfo('fnSwitchVideoModeCallBack invoke');
@@ -1247,7 +1250,7 @@ export class MultiInputViewModel {
     }
     HiSysEventUtil.reportKey(EventConstants.EVENT_FN_SWITCHVIDEOMODE);
     (getContext() as common.UIAbilityContext).connectServiceExtensionAbility({
-      bundleName: 'com.ohos.huaweicast',
+      bundleName: 'com.ohos.ohcast',
       abilityName: 'CastSourceServiceAbility',
     }, options);
     log.showInfo('f8_callback done');
@@ -1277,7 +1280,7 @@ export class MultiInputViewModel {
       }).catch((err: BusinessError) => {
         log.showError(`getForegroundOsAccountLocalId err: ${err}`);
       });
-    } catch(err) {
+    } catch (err) {
       log.showError(`getForegroundOsAccountLocalId exception: ${err}`);
     }
   }
@@ -1304,7 +1307,7 @@ export class MultiInputViewModel {
 
   private hoskeyLaunch(): void {
     log.showInfo(`uiType is ${uiType}`);
-    if (uiType !== SCBConstants.UITYPE_PAD && !DeviceHelper.isUltraScreenProduct()) {
+    if (uiType !== SCBConstants.UITYPE_PAD && !DeviceHelper.isThreeFoldProduct()) {
       this.dealHosKeyShortCutKey();
     }
   }
@@ -1428,7 +1431,7 @@ export class MultiInputViewModel {
   }
 
   private checkSessionOperable(focusedSession: SCBSceneSession): boolean {
-    if(focusedSession.useControlList?.[0] === ControlType.PARENT_CONTROL ||
+    if (focusedSession.useControlList?.[0] === ControlType.PARENT_CONTROL ||
       focusedSession.useControlList?.[0] === ControlType.APP_LOCK) {
       log.showInfo('session has been controlled, return');
       return false;
@@ -1466,7 +1469,7 @@ export class MultiInputViewModel {
       SCBSceneSessionManager.getInstance().startSceneFromRecent(focusedSession.sceneInfo.screenId,
         focusedSession.sceneInfo.persistentId);
     } else if (focusedSession.sceneInfo.windowMode === SCBSceneMode.FLOATING &&
-      focusedSession.isSupportFullScreenMode()) {
+    focusedSession.isSupportFullScreenMode()) {
       focusedSession.windowLayoutEvent(SCBSessionEventId.EVENT_MAXIMIZE);
     }
     AppStorage.setOrCreate('focusedSessionId', focusedSession.sceneInfo.persistentId);
@@ -1508,7 +1511,7 @@ export class MultiInputViewModel {
 
   private splitPreCheck(focusedSession: SCBSceneSession): boolean {
     if (focusedSession.isClosing || focusedSession.isMinimizing || !focusedSession.isActive ||
-      focusedSession.getRealLayoutFullScreen()) {
+    focusedSession.getRealLayoutFullScreen()) {
       log.showInfo(`can not enter split-mode in the current state of the Session.`);
       return false;
     }
@@ -1516,8 +1519,8 @@ export class MultiInputViewModel {
       log.showInfo(`it is not Support SplitMode :${focusedSession.sceneInfo.bundleName}`);
       return false;
     }
-    let containerSession: SCBSceneContainerSession | null = SCBSceneSessionManager.getInstance().
-      getSceneContainerSessionFromScenePanel(focusedSession.sceneInfo.persistentId, focusedSession.sceneInfo.screenId);
+    let containerSession: SCBSceneContainerSession | null = SCBSceneSessionManager.getInstance()
+      .getSceneContainerSessionFromScenePanel(focusedSession.sceneInfo.persistentId, focusedSession.sceneInfo.screenId);
     if (!containerSession || containerSession.secondarySession) {
       log.showInfo(`is already two-split, return`);
       return false;
@@ -1548,9 +1551,9 @@ export class MultiInputViewModel {
       return;
     }
     if (this.isSpilt() && focusedSession.sceneInfo?.windowMode === SCBSceneMode.SECONDARY) {
-        //当焦点窗口是右预分屏，执行log+左就退出预分屏，否则就执行左预分屏
-        SCBSceneSessionManager.getInstance().exitActiveSplit(focusedSession.sceneInfo.screenId);
-        return;
+      //当焦点窗口是右预分屏，执行log+左就退出预分屏，否则就执行左预分屏
+      SCBSceneSessionManager.getInstance().exitActiveSplit(focusedSession.sceneInfo.screenId);
+      return;
     }
     focusedSession.windowLayoutEvent(SCBSessionEventId.EVENT_SPLIT_PRIMARY);
     AppStorage.setOrCreate('focusedSessionId', focusedSession.sceneInfo.persistentId);
@@ -1575,9 +1578,9 @@ export class MultiInputViewModel {
       return;
     }
     if (this.isSpilt() && focusedSession.sceneInfo?.windowMode === SCBSceneMode.PRIMARY) {
-        //若当焦点窗口是左预分屏，执行log+右就退出预分屏，否则就执行右预分屏
-        SCBSceneSessionManager.getInstance().exitActiveSplit(focusedSession.sceneInfo.screenId);
-        return;
+      //若当焦点窗口是左预分屏，执行log+右就退出预分屏，否则就执行右预分屏
+      SCBSceneSessionManager.getInstance().exitActiveSplit(focusedSession.sceneInfo.screenId);
+      return;
     }
     focusedSession.windowLayoutEvent(SCBSessionEventId.EVENT_SPLIT_SECONDARY);
     AppStorage.setOrCreate('focusedSessionId', focusedSession.sceneInfo.persistentId);
@@ -1801,6 +1804,13 @@ export class MultiInputViewModel {
           .getObject('hideAppCenterWithAnimation')) as Function;
         hideAppCenterWithAnimation();
       }
+    } else {
+      if (AppStorage.get('toggleHomeShow') === true) {
+        AppStorage.setOrCreate('toggleHomeShow', false);
+      } else {
+        HiSysEventUtil.reportKey(EventConstants.EVENT_WIN_D);
+        AppStorage.setOrCreate('toggleHomeShow', true);
+      }
     }
   }
 
@@ -1823,7 +1833,7 @@ export class MultiInputViewModel {
     StartAbilityUtil.startServiceExtensionAbility({
       bundleName: 'com.ohos.screenshot',
       abilityName: 'com.ohos.screenshot.ServiceExtAbility',
-      parameters: DeviceHelper.isUltraScreenProduct() ? undefined : screenshotParameters
+      parameters: DeviceHelper.isThreeFoldProduct() ? undefined : screenshotParameters
     });
   }
 
@@ -1844,7 +1854,7 @@ export class MultiInputViewModel {
       this.closeAll();
       this.hideStatusBarPanel();
       this.hideNotifyContolCenter();
-      if (uiType === SCBConstants.UITYPE_PAD || DeviceHelper.isUltraScreenProduct()) {
+      if (uiType === SCBConstants.UITYPE_PAD || DeviceHelper.isThreeFoldProduct()) {
         AppStorage.setOrCreate('showRecent', false);
       }
       let isSplit: boolean | undefined = AppStorage.get('split');
@@ -1868,7 +1878,7 @@ export class MultiInputViewModel {
 
   private winFCallBack(): void {
     log.showInfo('winFCallBack');
-    if (uiType === SCBConstants.UITYPE_PAD || DeviceHelper.isUltraScreenProduct()) {
+    if (uiType === SCBConstants.UITYPE_PAD || DeviceHelper.isThreeFoldProduct()) {
       this.hideGlobalSearch();
       this.hideNotifyContolCenter();
       AppStorage.setOrCreate('showRecent', false);
@@ -1903,7 +1913,7 @@ export class MultiInputViewModel {
 
   public winLCallBack(): void {
     log.showInfo('winLCallBack');
-    if (DeviceHelper.isPad() || DeviceHelper.is2In1DevicePcType() || DeviceHelper.isUltraScreenProduct()) {
+    if (DeviceHelper.isPad() || DeviceHelper.is2In1DevicePcType() || DeviceHelper.isThreeFoldProduct()) {
       HiSysEventUtil.reportKey(EventConstants.EVENT_WIN_L);
       screenLock.lock().then((result: Boolean) => {
         if (!AppStorage.get<boolean>('isScreenOn') || ScreenLockApi.isScreenLockShow()) {
@@ -1933,8 +1943,8 @@ export class MultiInputViewModel {
 
   private winSlashCallBack(): void {
     log.showInfo('winSlashCallBack');
-    if (DeviceHelper.isUltraScreenProduct() && !DeviceHelper.isGState()) {
-      log.showInfo('winSlashCallBack, UltraScreenProduct but not G state');
+    if (DeviceHelper.isThreeFoldProduct() && !DeviceHelper.isGState()) {
+      log.showInfo('winSlashCallBack, ThreeFoldProduct but not G state');
       return;
     }
     this.closeAll();
@@ -2074,25 +2084,25 @@ export class MultiInputViewModel {
       return;
     }
     if (focusedSession instanceof SCBSceneSession) {
-      if(focusedSession.useControlList?.[0] === ControlType.PARENT_CONTROL ||
+      if (focusedSession.useControlList?.[0] === ControlType.PARENT_CONTROL ||
         focusedSession.useControlList?.[0] === ControlType.APP_LOCK) {
         log.showInfo('session has been controlled, return');
         return;
       }
       SCBSceneSessionManager.getInstance().asyncPrepareTerminate(focusedSession.sceneInfo.persistentId,
         (err, isPrepareTerminate) => {
-        if (isPrepareTerminate) {
-          if (focusedSession instanceof SCBSceneSession) {
-            log.showInfo(`isPrepareTerminate: ${isPrepareTerminate},
+          if (isPrepareTerminate) {
+            if (focusedSession instanceof SCBSceneSession) {
+              log.showInfo(`isPrepareTerminate: ${isPrepareTerminate},
             persistentID: ${focusedSession?.sceneInfo.persistentId}`);
+            }
+            return;
           }
-          return;
-        }
-        if (focusedSession instanceof SCBSceneSession) {
-          SCBSceneSessionManager.getInstance().close(focusedSession.sceneInfo.screenId,
-            focusedSession.sceneInfo.persistentId);
-        }
-      });
+          if (focusedSession instanceof SCBSceneSession) {
+            SCBSceneSessionManager.getInstance().close(focusedSession.sceneInfo.screenId,
+              focusedSession.sceneInfo.persistentId);
+          }
+        });
     } else if (focusedSession instanceof SCBSpecificSession) {
       SCBSceneSessionManager.getInstance().asyncPrepareTerminate(focusedSession.session.persistentId,
         (err, isPrepareTerminate) => {
@@ -2106,12 +2116,12 @@ export class MultiInputViewModel {
           if (focusedSession instanceof SCBSpecificSession) {
             focusedSession.requestSpecificSessionClose();
           }
-      });
+        });
     }
   }
 
   private findAltF4OperableSession(session: SCBSpecificSession | SCBSceneSession | SCBSystemSceneSession):
-      SCBSceneSession | SCBSpecificSession | SCBSystemSceneSession | null {
+  SCBSceneSession | SCBSpecificSession | SCBSystemSceneSession | null {
     if (session === undefined || session === null || session instanceof SCBSystemSceneSession) {
       return null;
     }
@@ -2270,7 +2280,7 @@ export class MultiInputViewModel {
     if (windowMgr.isShowing(PluginSlot.SLOT_STATUS_EDIT_MODE_PANEL)) {
       windowMgr.hideWindowWithAnim(PluginSlot.SLOT_STATUS_EDIT_MODE_PANEL);
     }
-    if (uiType === SCBConstants.UITYPE_PAD || DeviceHelper.isUltraScreenProduct()) {
+    if (uiType === SCBConstants.UITYPE_PAD || DeviceHelper.isThreeFoldProduct()) {
       DropDownPanelManagerWrapper.getInstance().hideWindowDirectly();
     }
   }
@@ -2409,19 +2419,19 @@ export class MultiInputViewModel {
     }
   }
 
-  setSpiltState(splitState : boolean): void {
+  setSpiltState(splitState: boolean): void {
     this.mIsSplit = splitState;
   }
 
-  public addHideTitleSessionList(hideTitleSession : SCBSceneContainerSession): void {
+  public addHideTitleSessionList(hideTitleSession: SCBSceneContainerSession): void {
     this.mHideTitleSessionList.add(hideTitleSession);
   }
 
-  public deleteHideTitleSessionList(hideTitleSession : SCBSceneContainerSession): void {
+  public deleteHideTitleSessionList(hideTitleSession: SCBSceneContainerSession): void {
     this.mHideTitleSessionList.delete(hideTitleSession);
   }
 
-  registerKeyObserver() : void {
+  registerKeyObserver(): void {
     let context = GlobalContext.getInstance().getObject('desktopContext') as context.ServiceExtensionContext;
     if (context === undefined) {
       return;
@@ -2446,12 +2456,12 @@ export class MultiInputViewModel {
     }
   }
 
-  deskGestureParamChanged() : void {
+  deskGestureParamChanged(): void {
     log.showInfo(`${TAG}, deskGestureParamChanged`);
     MultiInputViewModel.getInstance()?.getDeskGestureParam();
   }
 
-  unregisterKeyObserver() : void {
+  unregisterKeyObserver(): void {
     let context = GlobalContext.getInstance().getObject('desktopContext') as context.ServiceExtensionContext;
     if (context === undefined) {
       return;

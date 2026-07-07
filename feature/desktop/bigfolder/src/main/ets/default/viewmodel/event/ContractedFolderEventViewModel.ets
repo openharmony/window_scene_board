@@ -45,6 +45,7 @@ import {
   ContractedFolderLayoutViewModel,
   ContractedFolderViewModelManager,
   ContractedFolderViewModelType,
+  DeliverUtil,
   DesktopLayoutState,
   DeviceState,
   DownloadStatusInfo,
@@ -480,6 +481,9 @@ class ContractedFolderEventViewModel implements IContractedFolderEventViewModel 
   private execIconTouchEvent(msg: string, item: GridLayoutItemInfo, event: TouchEvent): void {
     if (event.type === CommonConstants.TOUCH_TYPE_DOWN) {
       log.showInfo(TAG, '(%{public}s) onTouch down start: %{public}s', msg, item.bundleName);
+      if (DeliverUtil.isSupportAppType(item.bundleName) && DeliverUtil.isSupportDeliver()) {
+        SCBSceneSessionManager.getInstance().preloadApp(item?.bundleName);
+      }
       this.mIsAppTouch = true;
       CloseAppManager.getInstance().setAdaptiveIcon(item.bundleName, item.moduleName, item.abilityName, item.appIconId);
     }

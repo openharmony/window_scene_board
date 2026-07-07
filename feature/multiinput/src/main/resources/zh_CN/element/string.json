@@ -162,6 +162,13 @@
             }
         },
         {
+            "name":"system_function_voice_search",
+            "value":"语音助手搜索",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
             "name":"system_function_open_file_manager",
             "value":"打开文件管理器",
             "attr":{

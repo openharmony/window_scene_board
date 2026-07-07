@@ -241,6 +241,13 @@ export struct SCBKeyboardScene {
     .borderRadius(this.keyboardSession?.GetKeyboardBorderRadius())
     .clip(this.keyboardSession?.isFloatGravity() ? true : false)
     .translate({ x: 0 + 'px', y: this.keyboardSession?.translatePosY + 'px' })
+    .shadow(this.keyboardPanelSession?.panelShadow?.radius > 0 ?
+      {
+        radius: this.keyboardPanelSession?.panelShadow?.radius,
+        color: this.keyboardPanelSession?.panelShadow?.color,
+        offsetX: this.keyboardPanelSession?.panelShadow?.offsetX,
+        offsetY: this.keyboardPanelSession?.panelShadow?.offsetY
+      }: { radius: 0 })
   }
 
   @Builder
@@ -272,6 +279,13 @@ export struct SCBKeyboardScene {
       centerX: '50%',
       centerY: '50%',
     })
+    .shadow(this.keyboardPanelSession?.panelShadow?.radius > 0 ?
+      {
+        radius: this.keyboardPanelSession?.panelShadow?.radius,
+        color: this.keyboardPanelSession?.panelShadow?.color,
+        offsetX: this.keyboardPanelSession?.panelShadow?.offsetX,
+        offsetY: this.keyboardPanelSession?.panelShadow?.offsetY
+      }: { radius: 0 })
 
     if (this.keyboardSession.animSnapshot !== undefined) {
       Image(this.keyboardSession.animSnapshot)

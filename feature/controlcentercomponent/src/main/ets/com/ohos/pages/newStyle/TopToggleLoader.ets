@@ -42,6 +42,9 @@ import {
 } from '../../controller/BrightnessSubPageLayoutController';
 import { LengthMetrics } from '@kit.ArkUI';
 import lazy { ResUtils } from '@ohos/windowscene/src/main/ets/utils/ResourceUtils';
+import { AccessibilityVm } from '@ohos/systemuicommon/src/main/ets/vm/AccessibilityVm';
+import { StorageAdapter } from '@ohos/controlcentercommon/src/main/ets/adapter/StorageAdapter';
+import { OutdoorConfig } from '@ohos/basicutils/src/main/ets/utils/OutdoorConfig';
 
 const TAG = 'Ctrl.TopToggleLoader';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.CC, TAG);
@@ -58,6 +61,7 @@ export default struct TopToggleLoader {
   @StorageLink('ControlCenterState') controlCenterState: ControlCenterState = ControlCenterState.MAIN_LAYOUT;
   @StorageProp('isAccessibilityMode') isAccessibilityMode: boolean = false;
   @Consume ccLayoutIndex: ControlCenterLayoutIndex;
+  @State isSuperDeviceUnavailable: boolean = OutdoorConfig.getInstance().isInOutdoorMode();
 
   aboutToAppear(): void {
     log.showInfo('aboutToAppear ' + this.toggleSlot);
@@ -170,8 +174,8 @@ export default struct TopToggleLoader {
     .borderRadius($r('app.float.Control_center_long_button_radius'))
     .width(this.style.newCardWidth)
     .height(this.style.newCardHeight)
-    .opacity(1)
-    .enabled(true)
+    .opacity(this.isSuperDeviceUnavailable ? 0.6 : 1)
+    .enabled(!this.isSuperDeviceUnavailable)
   }
 
   @Builder

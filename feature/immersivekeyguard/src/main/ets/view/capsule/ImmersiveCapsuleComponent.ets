@@ -17,7 +17,7 @@ import { CommonUtils } from '@ohos/basicutils';
 import { SlWidgetId } from '@ohos/screenlockcommon';
 import { CapsulePositionType } from '../../common/ImmersiveConstants';
 import { immersiveVm } from '../../viewmodel/ImmersiveVm';
-import { immersiveKgMgr, ImmersiveState, ImmersiveType } from '@ohos/systemuicommon';
+import { ImmersiveAodStyle, immersiveKgMgr, ImmersiveState, ImmersiveType } from '@ohos/systemuicommon';
 import { ImmersiveCapsuleVm } from '../../viewmodel/ImmersiveCapsuleVm';
 import { ImmersiveCapsuleList } from '../../viewmodel/viewdata/ImmersiveCapsuleList';
 import { ImmersiveCapsuleItem } from './ImmersiveCapsuleItem';
@@ -70,6 +70,10 @@ export struct ImmersiveCapsuleComponent {
    */
   @State animState?: WidgetAnimState = this.animMgr.getCapsuleAnimState(ImmersiveAnimKey.IMMERSIVE_CAPSULE_ROOT);
   @Provide notificationType: number = NotificationType.TYPE_PHONE_KEYGUARD;
+  /**
+   * Aod显示样式
+   */
+  @State aodStyle: ImmersiveAodStyle | undefined = immersiveKgMgr.getOneMirrorState().getAodStyle(true);
 
   build() {
     Stack({ alignContent: Alignment.TopStart }) {
@@ -237,10 +241,10 @@ export struct ImmersiveCapsuleComponent {
    *
    * @returns 状态栏高度（vp）
    */
-  private getStatusBarHeight(): number {
+  private getScreenLockTranslate(): number {
 
-    return DeviceHelper.isPC() ? ResUtils.getNumber($r('app.float.status_bar_pc_height')) :
-      ResUtils.getNumber($r('app.float.status_bar_phone_height'));
+    return DeviceHelper.isPC() ? ResUtils.getNumber($r('app.float.screen_lock_capsule_pc_translate')) :
+      ResUtils.getNumber($r('app.float.screen_lock_capsule_phone_translate'));
   }
 
   /**
@@ -249,17 +253,17 @@ export struct ImmersiveCapsuleComponent {
    * @returns translateOptions
    */
   private getCapsuleTranslate(): TranslateOptions {
-    // 获取状态栏高度，避免胶囊与状态栏重合
-    const statusBarHeight = this.getStatusBarHeight();
+    // 锁屏胶囊态偏移,防止和屏幕底部贴合
+    const screenLockHeight = this.getScreenLockTranslate();
     if (this.animState?.isSceneAnimating()) {
       return {
         x: this.animState?.getTranX() ?? 0,
-        y: statusBarHeight,
+        y: screenLockHeight,
       };
     }
     return {
       x: 0,
-      y: statusBarHeight,
+      y: screenLockHeight,
     };
   }
 

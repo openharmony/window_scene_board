@@ -13,8 +13,8 @@
  * limitations under the License.
  */
 
-import { CheckEmptyUtils, LogDomain, LogHelper } from '@ohos/basicutils';
-import { DeviceHelper, IconResourceManager, ResourceManager } from '@ohos/frameworkwrapper';
+import { CheckEmptyUtils, OutdoorConfig, LogDomain, LogHelper } from '@ohos/basicutils';
+import { DeviceHelper, IconResourceManager, ResourceManager, LightOutdoorConfig } from '@ohos/frameworkwrapper';
 import { AppItemInfo } from '../../bean/AppItemInfo';
 import GridLayoutItemInfo from '../../bean/GridLayoutItemInfo';
 import { CommonConstants} from '../../constants/CommonConstants';
@@ -57,6 +57,12 @@ export class ContactCacheManager {
    * @param dockItemList
    */
   public checkToAddContactShortcut(dockItemList?: DockItemInfo[]): void {
+    // 云端模式不支持联系人
+    if (OutdoorConfig.getInstance().isInOutdoorMode() ||
+      LightOutdoorConfig.getInstance().isOnLightOutdoorMode()) {
+      log.showInfo('not add contact shortcut due to cloud');
+      return;
+    }
     let isSupportVoice: boolean = DeviceHelper.isSupportVoiceCapability();
     let contactShortcuts: ShortcutInfo[] | undefined = AppModel.getInstance().getShortcutInfo(CONTACT_BUNDLE_NAME);
     if (CheckEmptyUtils.isEmptyArr(contactShortcuts) || !isSupportVoice) {

@@ -301,6 +301,9 @@
         "name": "ohos.permission.MANAGE_CAMERA_CONFIG"
       },
       {
+        "name": "ohos.permission.GET_LOCAL_ACCOUNTS"
+      },
+      {
         "name": "ohos.permission.MANAGE_LOCAL_ACCOUNTS"
       },
       {
@@ -507,8 +510,10 @@
         "reason": "$string:get_installed_bundle_list_reason",
         "usedScene": {
           "abilities": [
-            "EntryFormAbility"
-          ]
+            "EntryFormAbility",
+            "MainAbility"
+          ],
+          "when": "always"
         }
       },
       {
@@ -572,6 +577,9 @@
           ],
           "when": "always"
         }
+      },
+      {
+        "name": "ohos.permission.SET_WINDOW_TRANSPARENT"
       }
     ]
 

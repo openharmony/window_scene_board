@@ -38,7 +38,8 @@ import {
   RdbStoreManager,
   ShortcutViewModel,
   vibratorMgr,
-  HiEditModeEventUtils
+  HiEditModeEventUtils,
+  DeliverUtil
 } from '../TsIndex';
 import GridLayoutUtil from '../utils/GridLayoutUtil';
 import GridLayoutItemInfo from '../bean/GridLayoutItemInfo';
@@ -103,6 +104,12 @@ export struct AppMenu {
       this.addPreDownloadMenu();
       for (let menuInfo of this.menuInfoList) {
         if (menuInfo.menuType === CommonConstants.MENU_TYPE_FIXED) {
+          if (this.appItem && this.appItem.typeId === CommonConstants.TYPE_APP &&
+            !GridLayoutUtil.isAppInstalled(this.appItem) && DeliverUtil.isHideDhRemoveMenu(this.appItem.bundleName) &&
+            menuInfo.menuImgSrc === '/common/pics/ic_public_remove.svg') {
+            log.showWarn('download deliver and custom folder exist , can not remove');
+            continue;
+          }
           this.fixedMenuList.push(menuInfo);
         } else {
           this.dynamicMenuList.push(menuInfo);

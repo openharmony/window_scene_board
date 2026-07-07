@@ -40,6 +40,7 @@ import {
   FormLayoutCacheManager,
   EventConstants,
 } from '@ohos/launchercommon';
+import { emitter } from '@kit.BasicServicesKit';
 import { FormStyleConfig } from '../../common/FormStyleConfig';
 import { FormItemBuilderInterface } from '../../common/FormItemBuilderInterface';
 import DesktopForm from '../DesktopForm';
@@ -55,7 +56,6 @@ import { SingleAppResult } from '../../../formcenter/util/FusionSearchUtil';
 const TAG = 'GridStyleFormItem';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.HOME, TAG);
 
-const DRAG_CARD_END_INTERVAL: number = 500;
 const DEFAULT_CARD_ID: string = '0';
 
 @Component
@@ -77,6 +77,7 @@ export struct GridStyleFormItem {
   private extCardID: string = DEFAULT_CARD_ID;
   private isDisappearing: boolean = false;
   private addCard: Callback<void> | undefined = undefined;
+  private canBeDragged: boolean = false;
   @State needExt: boolean = false;
   @State displayName: string | undefined = undefined;
   @State formDescription: string | undefined = undefined;
@@ -129,6 +130,20 @@ export struct GridStyleFormItem {
     this.updateFormDescription(this.formItem);
     this.initFormSnapId();
     this.refreshSearchResult();
+    GlobalContext.getContext().eventHub.on('myOnDragEnd', () => {
+      this.mEvent?.onDragEnd(false);
+      const DRAG_CARD_END_INTERVAL: number = 500;
+      setTimeout(() => {
+        // 创建成功后，再次拉起
+        log.showWarn('openFormCenterView');
+        let param: FormCenterViewParam = new FormCenterViewParam();
+        param.bundleName = this.formItem.bundleName;
+        param.formInfo = this.formItem;
+        FormCenterViewManager.getInstance().openFormCenterView(param);
+        AppStorage.setOrCreate('isDragFomCenter', false);
+      }, DRAG_CARD_END_INTERVAL);
+      GlobalContext.getContext().eventHub.off('monDragEnd');
+    })
     log.showDebug('aboutToAppear');
   }
 
@@ -223,8 +238,16 @@ export struct GridStyleFormItem {
       }
     })
     .onDragStart((event: DragEvent, extraParams?: string) => {
+      AppStorage.setOrCreate('setFormOpacity', 0);
+      if (!this.canBeDragged) {
+        return;
+      }
+      this.canBeDragged = false;
       // 如果从大文件夹打开，需要关闭大文件夹
       AppStorage.setOrCreate('openFolderStatus', CommonConstants.FOLDER_STATUS_REQUEST_CLOSE);
+      AppStorage.setOrCreate('dragStart', true);
+      AppStorage.setOrCreate('formItem', this.formItem);
+      AppStorage.setOrCreate('formDragStart', true)
       this.isDragForm = true;
       FormCenterViewModel.getInstance().setCloseReason(CloseReason.CLOSE_BY_ADD_FORM);
       performanceMonitor.begin(HiSysEventUtil.FORM_MANAGER_CREATE_FORM, performanceMonitor.ActionType.LAST_DOWN);
@@ -232,16 +255,8 @@ export struct GridStyleFormItem {
         this.mEvent?.getDragStartPositionOffset(this.formSnapId, event),
         this.dragSnapshot, ImageFit.Fill);
     })
-    .onDragEnd((event: DragEvent) => {
-      this.mEvent?.onDragEnd(false);
-      setTimeout(() => {
-        // 创建成功后，再次拉起
-        log.showWarn('openFormCenterView');
-        let param: FormCenterViewParam = new FormCenterViewParam();
-        param.bundleName = this.formItem.bundleName;
-        param.formInfo = this.formItem;
-        FormCenterViewManager.getInstance().openFormCenterView(param);
-      }, DRAG_CARD_END_INTERVAL);
+    .onDragEnd(() => {
+      AppStorage.setOrCreate('formDragStart', false)
     })
     .dragPreviewOptions({
       mode: DragPreviewMode.DISABLE_SCALE,
@@ -299,6 +314,7 @@ export struct GridStyleFormItem {
             this.cardId = cardId;
           },
           onLoad: () => {
+            this.canBeDragged = true;
           }
         }
       })

@@ -47,6 +47,9 @@ import { BannerSlideUpEvent, NtfCenterDropDownEvent } from '@ohos/systemuicommon
 import { notificationConfigManager } from './NotificationConfigManager';
 import { EnvVm } from '@ohos/systemuicommon/newIndex';
 import { NotificationFlashReminder } from './NotificationFlashReminder';
+import { OutdoorVm } from '@ohos/systemuicommon/src/main/ets/vm/OutdoorVm';
+import { vibratorMgr } from '@ohos/launchercommon';
+import { vibrator } from '@kit.SensorServiceKit';
 
 /**
  * 播放器类型
@@ -65,6 +68,8 @@ enum PlayingType {
 const TAG = 'SysUI_RemindPlayManager';
 
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.NC, TAG);
+const NOTIFICATION_HAPTIC_DEFAULT: string = 'haptic.common.long_press3';
+const NOTIFICATION_HAPTIC: vibrator.Usage = 'notification';
 
 export class RemindPlayManager {
   @Singleton.decorate()
@@ -125,11 +130,13 @@ export class RemindPlayManager {
       LogWithHa.error(log, `get system sound manager failed, ${e}`,
         NotificationExceptionCode.GET_SOUND_FAIL, e);
     }
+    OutdoorVm.instance.emitter.on('outdoorRemoveApp', this.onOutdoorRemoveApp);
   }
 
   public destroy(): void {
     CommonEventSubscribeManager.getInstance().unsubscribe(CommonEventSubscribeManager.KEY_PRESS_COMMON_EVENT,
       this.onKeyPress);
+    OutdoorVm.instance.emitter.off('outdoorRemoveApp', this.onOutdoorRemoveApp);
   }
 
   private onKeyPress: CommonEventListener = (data: CommonEventManager.CommonEventData): void => {
@@ -234,13 +241,15 @@ export class RemindPlayManager {
     ringParams.classification = classification;
     this.addCandidate(ringParams);
     await this.getRingSettingsData(ringParams);
-    if (!ringParams.isTonePlayAllow && !ringParams.isVibrationAllow) {
-      log.showWarn(`can not play remind after get ring setting`);
-      this.removeCandidate(ringParams);
-      return;
-    }
+    // if (!ringParams.isTonePlayAllow && !ringParams.isVibrationAllow) {
+    //   log.showWarn(`can not play remind after get ring setting`);
+    //   this.removeCandidate(ringParams);
+    //   return;
+    // }
     ringParams.maintenanceInfo =
       this.getMaintenanceInfo(ringParams, classification === Classification.VOIP ? PlayerType.VOIP : PlayerType.NORMAL);
+    //  自定义铃声 可以播铃声或者可以播振动且有自定义振动
+    vibratorMgr.startVibration(NOTIFICATION_HAPTIC_DEFAULT, NOTIFICATION_HAPTIC, TAG);
     // 开始播放逻辑
       // 自定义铃声 可以播铃声或者可以播振动且有自定义振动
       if (ringParams.soundDescriptor && (ringParams.isTonePlayAllow || ringParams.isCustomVibration)) {
@@ -402,6 +411,9 @@ export class RemindPlayManager {
       case StopReason.BANNER_SLIDE_UP:
         await this.stopAllAudio(StopReason.BANNER_SLIDE_UP);
         break;
+      case StopReason.CLOUD_REMOVE_APP:
+        await this.stopByBundleName(params);
+        break;
       default:
         this.removeCandidateByStopParam(params);
         LogWithHa.error(log, `unkonwn stop reason ${reason}`);
@@ -465,6 +477,7 @@ export class RemindPlayManager {
       if (this.playingType === PlayingType.NORMAL_CUSTOM) {
         await this.normalPlayer.stop(reason);
       }
+      // 由于外可能调用系统SysTonePlayer播放振动
       // 因此在每次停止播放时都要停止SysTonePlayer
       await SysTonePlayerInstanceManager.instance().stop(reason);
       this.ringParams = undefined;
@@ -562,5 +575,18 @@ export class RemindPlayManager {
   private onStaticMemory = async (): Promise<void> => {
     this.normalPlayer.onStaticMemory();
     this.voipPlayer.onStaticMemory();
+  };
+
+  /**
+   * 云端模式移除自定义应用，停止通知
+   */
+  private onOutdoorRemoveApp = (bundleNameList: string[]): void => {
+    log.showInfo('onOutdoorRemoveApp');
+    const stopParams: StopParam[] = bundleNameList.map(bundleName => {
+      return {
+        bundleName,
+      } as StopParam;
+    });
+    this.stop(StopReason.CLOUD_REMOVE_APP, stopParams);
   };
 }

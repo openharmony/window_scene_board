@@ -17,6 +17,7 @@ import {
   AppModel,
   AppStatus,
   CommonConstants,
+  DeliverUtil,
   CommonConstants as DeskConstants,
   DesktopDragResult,
   DesktopManager,
@@ -28,9 +29,8 @@ import {
   EditModeState,
   EditModeUtils,
   EventConstants,
-  FolderData,
   FolderManager,
-  FolderState,
+  FormRelationManager,
   GridLayoutConfig,
   GridLayoutItemInfo,
   GridLayoutUtil,
@@ -38,12 +38,12 @@ import {
   LayoutDescription,
   layoutLockUtil,
   LayoutViewModel,
+  ListenerItemType,
   lockLayoutManager,
-  MultiSelectManager,
   MultiSelectItemType,
   MultiSelectListenerType,
   multiSelectListenManger,
-  ListenerItemType,
+  MultiSelectManager,
   PageInfoManager,
   PresetStyleConstants,
   ReceiveEventInfo,
@@ -51,7 +51,8 @@ import {
   StyleConstants,
   SwiperLoadManager,
   textShadowMgr,
-  UninstallListener
+  UninstallListener,
+  PageDesktopModel
 } from '@ohos/launchercommon';
 import systemParameter from '@ohos.systemparameter';
 import { PageDesktopGridStyleConfig } from '@ohos/launchercommon/src/main/ets/layoutconfig/PageDesktopGridStyleConfig';
@@ -60,6 +61,7 @@ import {
   AnimateToScheduleUtils,
   CheckEmptyUtils,
   DomainName,
+  OutdoorConfig,
   LanguageUtils,
   LogDomain,
   LogHelper,
@@ -70,22 +72,21 @@ import {
   TraceUtil
 } from '@ohos/basicutils';
 import {
-  ApsUtils,
   DeviceHelper,
   GlobalContext,
+  GlobalSearchStatus,
   HiDfxEventUtil,
   HiSysEventUtil,
+  LightOutdoorConfig,
   localEventManager,
   NegativeScreenConstants,
-  ResourceManager,
   SCBDesktopCacheManager,
   ScreenState,
   sOutSideWindowMgr,
   ViewCallback,
   ViewManagerPolicy,
   viewMgrPolicy,
-  ViewType,
-  GlobalSearchStatus
+  ViewType
 } from '@ohos/frameworkwrapper';
 import { DropAnimationDestination, DropAnimationParam } from '@ohos/componentanimator';
 import { desktopUtil, ItemUtils, RTLUtil } from '@ohos/componenthelper';
@@ -101,7 +102,6 @@ import {
   sSCBOobeManager
 } from '@ohos/windowscene';
 import { DragConstants, KeyCodeConstants, RotationConstants } from '@ohos/commonconstants';
-// import apsManager from '@hms.graphic.apsManager';
 import featureConstants from '../constants/FeatureConstants';
 import curves from '@ohos.curves';
 import { BigFolderViewModel } from '@ohos/bigfolder';
@@ -112,7 +112,6 @@ import ServiceExtensionContext from 'application/ServiceExtensionContext';
 import { GridLayoutOptionRet } from './GridLayoutOptionRet';
 import {
   batchUninstallChain,
-  CardNodeControllerManager,
   ContractedFolderCommonViewModel,
   DeskTopItemStyle,
   DisplayCountViewModel,
@@ -120,16 +119,14 @@ import {
   FocusUtil,
   FoldAnimationConstants,
   FolderStyleManager,
-  ForwardType,
   FoldExpandAnimUtils,
+  ForwardType,
   ItemAnimationParams,
-  launcherVisualEffectMgr,
   PageDesktopOneShotManager,
   pageEditManager,
   PageEditViewModel,
   SwiperPageManager
 } from '@ohos/launchercommon/Index';
-import display from '@ohos.display';
 import { SwiperPageWhiteBoxComponent } from '@ohos/desktopedit/src/main/ets/default/view/SwiperPageWhiteBoxComponent';
 import performanceMonitor from '@ohos.arkui.performanceMonitor';
 import pasteboard from '@ohos.pasteboard';
@@ -138,12 +135,7 @@ import { DesktopAccessibilityUtils } from '../DesktopAccessibilityUtils';
 import { editModeManager } from '@ohos/launchercommon/src/main/ets/editmode/model/EditModeManager';
 import UTD from '@ohos.data.uniformTypeDescriptor';
 import { FormConstants, FormStyleConfig, FormViewModel } from '@ohos/form';
-import {
-  dropAnimationManager,
-  ForceType,
-  GravityAnimationConfig,
-  GravityAnimationManager
-} from '@ohos/componentanimator/Index';
+import { dropAnimationManager, ForceType, GravityAnimationConfig, GravityAnimationManager } from '@ohos/componentanimator/Index';
 import { editModeViewManager } from '@ohos/desktopedit/src/main/ets/default/manager/EditModeViewManager';
 import { SwiperPageLoadCallBack } from '@ohos/launchercommon/src/main/ets/cache/layout/SwiperLoadManager';
 import { AppListInfo } from '../dao/AppListInfo';
@@ -156,11 +148,7 @@ import { DesktopStyleConfig } from '@ohos/launchercommon/src/main/ets/manager/Te
 import { SpaceAnimationUtils } from '@ohos/launchercommon/src/main/ets/animation/SpaceAnimationUtils';
 import { CommonConstants as LockCommonConstants } from '@ohos/screenlockcommon';
 import { ISlStateChangeListener } from '@ohos/screenlockcommon/src/main/ets/interface/ISlStateChangeListener';
-import {
-  SlMainStateType,
-  SlStaticStateType,
-  SlSubStateType
-} from '@ohos/screenlockcommon/src/main/ets/constants/SlStateType';
+import { SlMainStateType, SlStaticStateType, SlSubStateType } from '@ohos/screenlockcommon/src/main/ets/constants/SlStateType';
 import { slUiStateMgr } from '@ohos/screenlockcommon/src/main/ets/manager/ScreenLockUiStateManager';
 import { SwiperPageFocusManager } from '../SwiperPageFocusManager';
 import FocusManager from '../../manager/FocusManager';
@@ -173,18 +161,12 @@ import { DragDataType, DragType } from '@ohos/componentdrag/src/main/ets/TsIndex
 import type ctx from '@ohos.app.ability.common';
 import { SwiperPageVM } from '../viewmodel/SwiperPageVM';
 import { BusinessType } from '@ohos/launchercommon/src/main/ets/constants/CommonConstants';
-import lazy { outerAddAppIconManager } from '@ohos/launchercommon/src/main/ets/manager/OuterAddAppIconManager';
 import lazy { SCBTripleController } from '@ohos/windowscene/src/main/ets/animation/SCBTransitionController';
-import lazy {
-  SCBTripleStateChange,
-  UltraScreenExpandAnimUtils,
-} from '@ohos/launchercommon/src/main/ets/utils/UltraScreenExpandAnimUtils';
-import lazy {
-  UltraScreenAnimationConstants
-} from '@ohos/launchercommon/src/main/ets/constants/UltraScreenAnimationConstants';
+import lazy { SCBTripleStateChange, TripleFoldExpandAnimUtils, } from '@ohos/launchercommon/src/main/ets/utils/TripleFoldExpandAnimUtils';
+import lazy { TripleFoldAnimationConstants } from '@ohos/launchercommon/src/main/ets/constants/TripleFoldAnimationConstants';
 import { FormCenterViewModel } from '@ohos/form/src/main/ets/formcenter/viewmodel/FormCenterViewModel';
 import { PageDragViewModel } from '../viewmodel/PageDragViewModel';
-import { UIExceptionDetection, UIExceptionCaller } from '@ohos/windowscene/Index';
+import { UIExceptionCaller, UIExceptionDetection } from '@ohos/windowscene/Index';
 import { openFolderLayout } from '@ohos/bigfolder/src/main/ets/default/viewmodel/OpenFolderLayout';
 import { OverflowViewModel } from './liveform/viewmodel/OverflowViewModel';
 
@@ -195,9 +177,7 @@ const INVALID_IDX = -1;
 const LOAD_TEXT_SHADOW_TIMEOUT = 200;
 const ACCESSIBILITY_ANNOUNCE_DESKTOP_TIMEOUT = 20;
 const MAX_GRIDITEM_COUNT = 30;
-const EXPANDING_FOLD_GRID_GAP = 10;
 const CLOCK_WEATHER_CARD_NAME: string = 'ClockWeatherCard';
-const CLOCK_WEATHER_BUNDLE_NAME: string = 'com.ohos.totemweather';
 const TRANSITION_UNINSTALL: TransitionEffect = TransitionEffect.asymmetric(
   TransitionEffect.IDENTITY,
   TransitionEffect.opacity(0)
@@ -275,8 +255,7 @@ export default struct SwiperPage {
   @StorageProp('wallpaperSnapshotChangeFlag') @Watch('notifyUpdateTextShadow') wallpaperSnapshotValue: boolean = false;
   @StorageLink('isDrag') isDrag: boolean = false;
   @StorageLink('isGameEngineValid') mIsGameEngineValid: boolean = false;
-  @StorageProp('editModeFolderBlurEffect') @Watch('notifyEditModeFolderBlurEffect')
-    editModeFolderBlurEffectValue: boolean = false;
+  @StorageProp('editModeFolderBlurEffect') @Watch('notifyEditModeFolderBlurEffect') editModeFolderBlurEffectValue: boolean = false;
   @StorageProp('transitionInRegionFolders') transitionInRegionFolders: string[] = [];
   @State swiperPageCache: boolean = false;
   @State mFoldPaddingRight: number = 0;
@@ -320,7 +299,7 @@ export default struct SwiperPage {
   private isPad: boolean = false;
   private isPhone: boolean = false;
   private isPc: boolean = DeviceHelper.isPC();
-  private isBigScreen: boolean = false;
+  private isSuperFold: boolean = false;
   private mFocusManager = FocusManager.getInstance();
   private isDesktopEditGesture: boolean = false;
   @State mIconSize: number = 0;
@@ -350,7 +329,7 @@ export default struct SwiperPage {
       }
     },
     uninstallAppResult: (bundleName: string, resultCode: number, appIndex?: number, shortcutId?: string): void => {
-      log.showWarn('Not support uninstallAppResult');
+      log.showInfo('Not support uninstallAppResult');
       this.uninstallParam.mUninstalledBundleName = '';
       this.uninstallParam.mUninstalledAppIndex = 0;
       this.uninstallParam.mUninstalledShortcutId = '';
@@ -469,13 +448,13 @@ export default struct SwiperPage {
   }
 
   private updateGridWhenRTLChange(): void {
-    if (!this.isBigScreen) {
+    if (!this.isSuperFold) {
       return;
     }
     if (this.mIsPortrait) {
       return;
     }
-    this.initBigScreenUniqueConfig();
+    this.initSuperFoldUniqueConfig();
   }
 
   private onScreenWidth() {
@@ -501,7 +480,7 @@ export default struct SwiperPage {
   }
 
   private folderStatusChange(): void {
-    if (DeviceHelper.isUltraScreenProduct()) {
+    if (DeviceHelper.isThreeFoldProduct()) {
       return;
     }
     this.changeSwiperState();
@@ -516,19 +495,20 @@ export default struct SwiperPage {
 
   private onPortraitStatusChange() {
     log.showInfo(`onPortraitStatusChange: ${this.mIsPortrait}`);
-    if (DeviceHelper.isUltraScreenProduct()) {
+    if (DeviceHelper.isThreeFoldProduct()) {
       return;
     }
     this.changeSwiperState();
   }
 
   private changeSwiperState(label?: string): void {
+    log.showInfo(`changeSwiperState:${label}`);
     this.cancelPortraitTimeout();
     // super fold共两页, 一屏可见, 两页都要立即计算
-    if (PageInfoManager.getInstance().isCurrentPageShow(this.indexInSwiper, this.pageIndex) || this.isBigScreen) {
+    if (PageInfoManager.getInstance().isCurrentPageShow(this.indexInSwiper, this.pageIndex) || this.isSuperFold) {
       this.portraitStatusChangeImediately();
     } else if (label === 'screenChangeRotationAnim' && (this.indexInSwiper - desktopUtil.getPageIndexValue()) <= 3) {
-      // 超大屏设备34 转 123场景，第4页需要立马刷新
+      // 三折设备34 转 123场景，第4页需要立马刷新
       this.portraitStatusChangeImediately();
     } else {
       this.portraitTimeId = setTimeout(() => {
@@ -539,7 +519,7 @@ export default struct SwiperPage {
 
   private portraitStatusChangeImediately() {
     this.initConfig();
-    if (DeviceHelper.isPad() || this.isBigScreen) {
+    if (DeviceHelper.isPad() || this.isSuperFold) {
       this.changeConfig();
     }
     this.paddingSideUpdate();
@@ -597,8 +577,8 @@ export default struct SwiperPage {
 
     let desktopParam: DesktopParam = DesktopManager.getInstance().getDesktopParam();
     desktopParam.gridMarginTop = this.mWorkSpaceMarginTop + LayoutViewModel.getInstance(this.singleContext).getSysUITopHeight();
-    if (this.isBigScreen) {
-      this.initBigScreenUniqueConfig();
+    if (this.isSuperFold) {
+      this.initSuperFoldUniqueConfig();
     }
     log.showInfo('build item page: %{public}d, swiperKey: %{public}d, mMargin: %{public}d, mColumnsGap: %{public}d, mRowsGap: %{public}d,' +
       'mItemPadding: %{public}d, mNameLines: %{public}d, mMaxNameLines: %{public}d, mWorkSpaceMarginTop: %{public}d, mGridWidth: %{public}d,' +
@@ -620,7 +600,7 @@ export default struct SwiperPage {
     }
   }
 
-  private initBigScreenUniqueConfig(): void {
+  private initSuperFoldUniqueConfig(): void {
     if (this.mIsPortrait) {
       // 竖屏状态下，C面有 paddingBottom，无 paddingTop
       if (this.indexInSwiper & 1) {
@@ -747,7 +727,7 @@ export default struct SwiperPage {
           item.componentId = oldItem?.componentId;
         }
         if (item.appStatus !== AppStatus.INSTALLED) {
-          log.showWarn(`refreshAppListComponentId, bundleName: ${item.bundleName}, appStatus: ${item.appStatus},` +
+          log.showInfo(`refreshAppListComponentId, bundleName: ${item.bundleName}, appStatus: ${item.appStatus},` +
             `iconResource is invalid: ${CheckEmptyUtils.checkStrIsEmpty(item.iconResource)},` +
             `isOuterDesktop: ${this.isOuterDesktop}`);
         }
@@ -945,7 +925,7 @@ export default struct SwiperPage {
   aboutToAppear(): void {
     this.mPageDragViewModel.initDeviceInfo(this.isOuterDesktop);
     this.folderStatus = (AppStorage.get('folderStatus') ?? DeviceState.DEFAULT_STATE) as number;
-    this.isBigScreen = DeviceHelper.isBigScreenMachine();
+    this.isSuperFold = DeviceHelper.isSuperFoldMachine();
     DesktopManager.getInstance().registerScreenChangeListener(this.singleHandChange);
     this.paddingSideUpdate();
     if (this.isHiddenForFirstEnter()) {
@@ -982,15 +962,15 @@ export default struct SwiperPage {
     };
     SCBTransitionManager.getInstance().registerFoldAnimationController(this.foldController);
     SCBTransitionManager.getInstance().registerExpandAnimationController(this.expandController);
-    if (DeviceHelper.isUltraScreenProduct()) {
+    if (DeviceHelper.isThreeFoldProduct()) {
       this.tripleController = {
         itemId: `${TAG}_desktopItem`,
         onTripleAnimation: (oldState: ScreenState, newState: ScreenState, isNeedAnimation: boolean) =>
           this.tripleAnimationCtrl(oldState, newState, isNeedAnimation),
       };
       SCBTransitionManager.getInstance().registerTripleAnimationController(this.tripleController);
-      UltraScreenExpandAnimUtils.updateCurrentMainIndex();
-      UltraScreenExpandAnimUtils.setScreenProperty(this.mMarginLeft, this.mMarginRight, this.mFoldPaddingLeft,
+      TripleFoldExpandAnimUtils.updateCurrentMainIndex();
+      TripleFoldExpandAnimUtils.setScreenProperty(this.mMarginLeft, this.mMarginRight, this.mFoldPaddingLeft,
         this.mFoldPaddingRight, this.mWorkSpaceWidth);
     }
     this.registerEventHub();
@@ -998,7 +978,7 @@ export default struct SwiperPage {
     this.initLoadSwiperPageCall();
     this.registerScreenIdChange();
     this.mIsGameEngineValid = HiSysEventUtil.isGameEngineValid();
-    if (DeviceHelper.isUltraScreenProduct()) {
+    if (DeviceHelper.isThreeFoldProduct()) {
       let swiperManager: SwiperPageManager = SwiperPageManager.getInstance();
       swiperManager
         .updateScreenData(!swiperManager.getFirstPowerOnTriple(), this.mWorkSpaceWidth,
@@ -1010,7 +990,7 @@ export default struct SwiperPage {
     }
     this.registerMultiSelectListener();
     log.showDebug(`swiperPage aboutToAppear end, index: ${this.indexInSwiper}`);
-    if (this.isBigScreen) {
+    if (this.isSuperFold) {
       RTLUtil.registerRtlChangeCallback(this.onRTLChangeEvent);
     }
   }
@@ -1176,18 +1156,18 @@ export default struct SwiperPage {
       log.showInfo('swipePage noneed tripleAnimation');
       return;
     }
-    let stateChange: SCBTripleStateChange = UltraScreenExpandAnimUtils.getTripleDesktopStateChange(newState, oldState);
+    let stateChange: SCBTripleStateChange = TripleFoldExpandAnimUtils.getTripleDesktopStateChange(newState, oldState);
     if (stateChange === SCBTripleStateChange.INVALID) {
       log.showError('get stateChange invalid, return;');
       return;
     }
-    UltraScreenExpandAnimUtils.updateCurrentMainIndex();
+    TripleFoldExpandAnimUtils.updateCurrentMainIndex();
     let mainPageIndex: number = desktopUtil.getPageIndexValue();
     if (this.indexInSwiper === mainPageIndex) {
-      UltraScreenExpandAnimUtils.setScreenProperty(this.mMarginLeft, this.mMarginRight, this.mFoldPaddingLeft,
+      TripleFoldExpandAnimUtils.setScreenProperty(this.mMarginLeft, this.mMarginRight, this.mFoldPaddingLeft,
         this.mFoldPaddingRight, this.mWorkSpaceWidth);
     }
-    let isThreeDisplay: boolean = UltraScreenExpandAnimUtils.getIsThreeScreenDisplay();
+    let isThreeDisplay: boolean = TripleFoldExpandAnimUtils.getIsThreeScreenDisplay();
     if (isThreeDisplay) {
       this.threeDisplayAnimation(stateChange);
     } else {
@@ -1233,15 +1213,15 @@ export default struct SwiperPage {
           return;
         }
         checkAppSet.add(itemKey);
-        itemRow = UltraScreenExpandAnimUtils.getSwiperPageRows(item);
+        itemRow = TripleFoldExpandAnimUtils.getSwiperPageRows(item);
         itemColumn =
-          UltraScreenExpandAnimUtils.getSwiperPageColumns(item, this.indexInSwiper, this.getTotalColumns(), stateChange);
+          TripleFoldExpandAnimUtils.getSwiperPageColumns(item, this.indexInSwiper, this.getTotalColumns(), stateChange);
         let itemAnimation: ItemAnimationParams = new ItemAnimationParams(itemKey, item.appName as string);
         itemAnimation.calculateItemFoldProperty(this.screenWidth, this.screenHeight, itemColumn, itemRow);
         this.gridItemAnimList.push(itemAnimation);
-        let transX: number = UltraScreenExpandAnimUtils.initTripleItemTransX(this.screenWidth, stateChange, itemColumn,
+        let transX: number = TripleFoldExpandAnimUtils.initTripleItemTransX(this.screenWidth, stateChange, itemColumn,
           item, SwiperPageManager.getInstance().getScreenData());
-        let alpha: number = UltraScreenExpandAnimUtils.initTripleItemAlpha(stateChange, itemColumn);
+        let alpha: number = TripleFoldExpandAnimUtils.initTripleItemAlpha(stateChange, itemColumn);
         newDesktopList[itemAnimation.itemKey] = new DeskTopItemStyle(transX, 0, alpha, 1, true);
       });
     }
@@ -1267,13 +1247,13 @@ export default struct SwiperPage {
         return;
       }
       checkAppSet.add(itemKey);
-      itemRow = UltraScreenExpandAnimUtils.getSwiperPageRows(item);
-      itemColumn = UltraScreenExpandAnimUtils.getThreeDisplayColumn(item, this.indexInSwiper, mainIndex,
+      itemRow = TripleFoldExpandAnimUtils.getSwiperPageRows(item);
+      itemColumn = TripleFoldExpandAnimUtils.getThreeDisplayColumn(item, this.indexInSwiper, mainIndex,
         this.getTotalColumns(), stateChange);
       let itemAnimation: ItemAnimationParams = new ItemAnimationParams(itemKey, item.appName as string);
       itemAnimation.calculateItemFoldProperty(this.screenWidth, this.screenHeight, itemColumn, itemRow);
       this.gridItemAnimList.push(itemAnimation);
-      let initAnimationParams: number[] = UltraScreenExpandAnimUtils.initThreeDisplayItemAnimationParam(this.screenWidth,
+      let initAnimationParams: number[] = TripleFoldExpandAnimUtils.initThreeDisplayItemAnimationParam(this.screenWidth,
         stateChange, isReversed, this.indexInSwiper);
       newDesktopList[itemAnimation.itemKey] = new DeskTopItemStyle(initAnimationParams[0], 0, initAnimationParams[1],
         initAnimationParams[2], true);
@@ -1295,19 +1275,19 @@ export default struct SwiperPage {
     let maxDelay: number = 0;
     let alphaDelay: number = 0;
     this.gridItemAnimList.forEach((itemAnimation) => {
-      alphaDelay = UltraScreenExpandAnimUtils.getUltraScreenExpandAlphaDelayTime(itemAnimation.column, stateChange);
+      alphaDelay = TripleFoldExpandAnimUtils.getTripleFoldExpandAlphaDelayTime(itemAnimation.column, stateChange);
       maxDelay = Math.max(maxDelay, alphaDelay);
       this.foldAnimCount++;
       animateTo({
         curve: Curve.Linear,
         delay: alphaDelay,
-        duration: UltraScreenAnimationConstants.ALPHA_DURATION,
+        duration: TripleFoldAnimationConstants.ALPHA_DURATION,
       }, () => {
         this.desktopList[itemAnimation.itemKey].alpha = 1;
       });
       animateTo({
-        curve: UltraScreenExpandAnimUtils.getIconUltraScreenExpandAnimCurve(itemAnimation.column, stateChange),
-        duration: UltraScreenAnimationConstants.ANIMATION_DURATION,
+        curve: TripleFoldExpandAnimUtils.getIconTripleFoldExpandAnimCurve(itemAnimation.column, stateChange),
+        duration: TripleFoldAnimationConstants.ANIMATION_DURATION,
         onFinish: () => {
           this.foldAnimCount--;
           if (this.foldAnimCount === 0 && !CheckEmptyUtils.isEmpty(this.desktopList[itemAnimation.itemKey])) {
@@ -1327,27 +1307,27 @@ export default struct SwiperPage {
     log.showInfo(`threeDisplayAnimation, stateChange is ${stateChange}`);
     let mainPageIndex: number = desktopUtil.getPageIndexValue();
     // 避免部分场景下页面突然消失的问题以及保证动画的接续性，控制部分非实际显示页面延迟下树并同步执行动效
-    if (!UltraScreenExpandAnimUtils.isCurrentPageWithAnimation(this.indexInSwiper, mainPageIndex, stateChange)) {
+    if (!TripleFoldExpandAnimUtils.isCurrentPageWithAnimation(this.indexInSwiper, mainPageIndex, stateChange)) {
       return;
     }
     this.initThreeDisplayAnimation(stateChange, mainPageIndex);
-    let maxDelay: number = UltraScreenAnimationConstants.ALPHA_DELAY_TWO_HUNDRED;
+    let maxDelay: number = TripleFoldAnimationConstants.ALPHA_DELAY_TWO_HUNDRED;
     let alphaDelay: number = 0;
     this.gridItemAnimList.forEach((itemAnimation) => {
-      alphaDelay = UltraScreenExpandAnimUtils.getThreeDisplayAlphaDelayTime(itemAnimation.column, stateChange);
+      alphaDelay = TripleFoldExpandAnimUtils.getThreeDisplayAlphaDelayTime(itemAnimation.column, stateChange);
       this.foldAnimCount++;
       animateTo({
         curve: Curve.Linear,
         delay: alphaDelay,
-        duration: UltraScreenAnimationConstants.ALPHA_DURATION,
+        duration: TripleFoldAnimationConstants.ALPHA_DURATION,
       }, () => {
         this.desktopList[itemAnimation.itemKey].alpha = 1;
         this.desktopList[itemAnimation.itemKey].scale = 1;
       });
       animateTo({
-        curve: UltraScreenExpandAnimUtils.getThreeDisplayItemCurves(itemAnimation.column, this.indexInSwiper,
+        curve: TripleFoldExpandAnimUtils.getThreeDisplayItemCurves(itemAnimation.column, this.indexInSwiper,
           mainPageIndex, stateChange),
-        duration: UltraScreenExpandAnimUtils.getThreeDisplayItemDuration(stateChange),
+        duration: TripleFoldExpandAnimUtils.getThreeDisplayItemDuration(stateChange),
         onFinish: () => {
           this.foldAnimCount--;
           if (this.foldAnimCount === 0 && this.indexInSwiper === mainPageIndex) {
@@ -1390,7 +1370,7 @@ export default struct SwiperPage {
     viewMgrPolicy.unRegisterViewCallback(ViewType.KEYGUARD, this.keyguardCallback);
     SCBTransitionManager.getInstance().unRegisterFoldAnimationController(this.foldController);
     SCBTransitionManager.getInstance().unRegisterExpandAnimationController(this.expandController);
-    if (DeviceHelper.isUltraScreenProduct()) {
+    if (DeviceHelper.isThreeFoldProduct()) {
       SCBTransitionManager.getInstance().unRegisterTripleAnimationController(this.tripleController);
     }
     this.mPageDesktopViewModel.unregisterUninstallListener(this.unInstallListener);
@@ -1407,11 +1387,11 @@ export default struct SwiperPage {
       this.desktopContext?.eventHub.off(CommonConstants.DESKTOP_SELECT_STATUS_CHANGE);
       this.desktopContext?.eventHub.off(EventConstants.EVENT_WORKSPACE_POSITION_CHANGE, this.workSpacePostionChange);
     }
-    if (this.isBigScreen) {
+    if (this.isSuperFold) {
       RTLUtil.unregisterRtlChangeCallback(this.onRTLChangeEvent);
     }
     GridItemsPool.getInstance().release();
-    if (DeviceHelper.isUltraScreenProduct()) {
+    if (DeviceHelper.isThreeFoldProduct()) {
       localEventManager.unregisterEventListener(this.mUpdateScreenDataListener);
     }
     this.unRegisterMultiSelectListener();
@@ -1443,6 +1423,9 @@ export default struct SwiperPage {
       const openFolder: GridLayoutItemInfo = FolderManager.getInstance().getOpenedFolder();
       const curPage: number = openFolder.page ?? CommonConstants.INVALID_VALUE;
       if (layoutLockUtil.isLockedPage(curPage, 'itemMove on SwiperPage')) {
+        return;
+      }
+      if (!DeliverUtil.canFolderItemDragOut(openFolder.folderId, dragItemInfo.bundleName)) {
         return;
       }
     }
@@ -1554,6 +1537,7 @@ export default struct SwiperPage {
     for (let i = 0; i < row; i++) {
       this.rowsTemplate += '1fr '
     }
+    log.showInfo(`changeConfig pad,column:${column}, row:${row}`)
   }
 
 
@@ -1628,6 +1612,16 @@ export default struct SwiperPage {
     if (this.isUninstallApp(item)) {
       return TRANSITION_UNINSTALL;
     }
+    if (item?.typeId === CommonConstants.TYPE_CARD &&
+    FormRelationManager.getInstance().isSceneBoardCard(item.bundleName, item.cardName)) {
+      return TRANSITION_CARD_REPLACE;
+    }
+    if (item?.typeId === CommonConstants.TYPE_FORM_STACK && item.layoutInfo &&
+      item.layoutInfo[0]?.findIndex((singleCardItem) => {
+        return FormRelationManager.getInstance().isSceneBoardCard(singleCardItem.bundleName, singleCardItem.cardName);
+      }) !== CommonConstants.INVALID_VALUE) {
+      return TRANSITION_CARD_REPLACE;
+    }
     return undefined;
   }
 
@@ -1694,7 +1688,7 @@ export default struct SwiperPage {
   }
 
   private isEnableMultiSelect(): boolean {
-    if (this.isBigScreen) {
+    if (this.isSuperFold) {
       return false;
     }
     return this.isPc ? !this.isPreparingDrag : this.isPreparingDrag;
@@ -1744,7 +1738,46 @@ export default struct SwiperPage {
   }
 
   private containsFolder(): boolean {
+    log.info(`containsFolder mAppListInfo: ${this.mAppListInfo?.some(item => item.typeId === CommonConstants.TYPE_FOLDER) ?? false}`);
     return this.mAppListInfo?.some(item => item.typeId === CommonConstants.TYPE_FOLDER) ?? false;
+  }
+
+  private gridAreaChange(newValue: Area): void {
+    if (AppStorage.get('isDeskSwipe') || this.indexInSwiper !== PageDesktopModel.getInstance().getPageIndex()) {
+      return;
+    }
+    // 布局区域数据变化通知桌面布局重新计算
+    let config = PageDesktopViewModel.getInstance(this.singleContext).getPageDesktopStyleConfig();
+    let submit = false;
+    let nWidth = Number(newValue.width);
+    let nHeight = Number(newValue.height);
+    let mTop = Number(newValue.globalPosition?.y ?? 0);
+    let lTop = Number(newValue.globalPosition?.x ?? 0);
+    if (config.mGridWidth !== nWidth) {
+      log.showInfo(`swiperpage change GridWidth:${config.mGridWidth} 》 ${nWidth}`);
+      config.realGridWidth = nWidth;
+      submit = true;
+    }
+    if (config.mGridHeight !== nHeight) {
+      log.showInfo(`swiperpage change GridHeight:${config.mGridHeight} 》 ${nHeight}`);
+      config.realGridHeight = nHeight;
+      submit = true;
+    }
+    if (config.realPaddingTop !== mTop) {
+      log.showInfo(`swiperpage change PaddingTop:${config.realPaddingTop} 》 ${mTop}`);
+      config.realPaddingTop = mTop;
+      submit = true;
+    }
+    if (config.realPaddingLeft !== lTop) {
+      log.showInfo(`swiperpage change PaddingLeft:${config.realPaddingLeft} 》 ${lTop}`);
+      config.realPaddingLeft = lTop;
+      submit = true;
+    }
+    if (submit) {
+      // 通知九宫格重新计算
+      log.showInfo(`swiperpage change emit ${EventConstants.EVENT_CHANGE_DESKTOP_DISPLAY_COUNT}; ${this.swiperKey} ${JSON.stringify(newValue)}`);
+      this.desktopContext?.eventHub.emit(EventConstants.EVENT_CHANGE_DESKTOP_DISPLAY_COUNT);
+    }
   }
 
   build() {
@@ -1881,6 +1914,7 @@ export default struct SwiperPage {
           })
         }
       }
+      .onAreaChange((oldValue: Area, newValue: Area) => this.gridAreaChange(newValue))
       .visibility(this.visible)
       .multiSelectable(this.isEnableMultiSelect())
       .clip(CommonConstants.DEFAULT_CLIP_FALSE)
@@ -1890,7 +1924,7 @@ export default struct SwiperPage {
       .columnsGap(this.mColumnsGap)
       .rowsGap(this.mRowsGap)
       .width(this.mWorkSpaceWidth)
-      .height(this.mWorkSpaceHeight)
+      .height(DeviceHelper.isPC() ? undefined : this.mWorkSpaceHeight)
       .foregroundEffect({ radius: this.mBlur })
       .accessibilityLevel(this.isAccessibilityMode ? 'no' : 'auto')
       .allowDrop(this.getAllowedDropTypes())
@@ -1898,12 +1932,12 @@ export default struct SwiperPage {
       .margin(RTLUtil.isRTL() ?
         { left: this.mMarginLeft + this.mFoldPaddingRight,
           right: this.mMarginRight + this.mFoldPaddingLeft,
-          top: this.getGridMarginTop() } :
+          top: DeviceHelper.isPC() ? undefined : this.getGridMarginTop() } :
         { right: this.mMarginRight + this.mFoldPaddingRight,
           left: this.mMarginLeft + this.mFoldPaddingLeft,
-          top: this.getGridMarginTop(),
+          top: DeviceHelper.isPC() ? undefined : this.getGridMarginTop(),
         })
-      .padding({
+      .padding(DeviceHelper.isPC() ? undefined : {
         right: this.mWorkSpacePaddingRight,
         left: this.mWorkSpacePaddingLeft,
         top: this.mWorkSpacePaddingTop,
@@ -1916,7 +1950,7 @@ export default struct SwiperPage {
         if (this.isPc) {
           this.mPageDesktopViewModel.setFileFolderBadge(event, extraParams);
         }
-        if (this.isBigScreen) {
+        if (this.isSuperFold) {
           this.mPageDesktopDragHandler.setDragPageIndex(this.indexInSwiper);
         }
         this.mPageDesktopDragHandler.dealSwiperPageOnDragEnter(this.indexInSwiper, event, extraParams);
@@ -1967,7 +2001,7 @@ export default struct SwiperPage {
         if (this.isPc) {
           const isPcStatusBarDrag: boolean = AppStorage.get(PC_STATUSBAR_DRAG_KEY) as boolean;
           if (isPcStatusBarDrag) {
-            log.showWarn('pc statusbar is Dragging, no need set Badge!');
+            log.showInfo('pc statusbar is Dragging, no need set Badge!');
             return;
           }
           this.mPageDesktopViewModel.setFileFolderBadge(event, extraParams);
@@ -2005,7 +2039,7 @@ export default struct SwiperPage {
       })
       .onDragLeave((event: DragEvent, extraParams?: string) => {
         let tag = `${CommonConstants.SWIPER_GRID_WORKSPACE_TAG}${this.indexInSwiper} onDragLeave`;
-        log.showWarn(`${tag} (event: [${event?.getX()}, ${event?.getY()}], pageIndex:
+        log.showInfo(`${tag} (event: [${event?.getX()}, ${event?.getY()}], pageIndex:
           ${desktopUtil.getPageIndexValue()}, indexInSwiper:${this.indexInSwiper})`);
         if (formZoomController.isMenuPreviewDragging(extraParams)) {
           return;
@@ -2034,7 +2068,7 @@ export default struct SwiperPage {
         }
         if (openFolderLayout.getGridSwiperLayout().isShowOpenFolder) {
           // 文件夹打开状态, 不能落位, 编辑模式快速拖拽文件夹展开态图标到旁边页会触发这里
-          log.showWarn('A folder was opened');
+          log.showInfo('A folder was opened');
           return;
         }
         dropAnimationManager.prepareDropItem(DropAnimationDestination.DESKTOP);
@@ -2067,6 +2101,7 @@ export default struct SwiperPage {
     .renderGroup(this.surfaceCacheFlag())
     .width(StyleConstants.PERCENTAGE_100)
     .height(StyleConstants.PERCENTAGE_100)
+    .padding({ top: 5 }) // 顶部留白，防止角标截断
     .clip(this.isDeskSwipe && !this.isDrag && !this.containsFolder())
     .opacity(this.editModeSingePageViewDataGetOpacity())
     .enabled(this.isDesktopEnabled)
@@ -2074,7 +2109,7 @@ export default struct SwiperPage {
     .onGestureJudgeBegin((gestureInfo: GestureInfo) => {
       if (gestureInfo.type === GestureControl.GestureType.PAN_GESTURE) {
         if (this.isDrag) {
-          log.showWarn('dragging desktop item, enter negative screen need not response');
+          log.showInfo('dragging desktop item, enter negative screen need not response');
           return GestureJudgeResult.REJECT;
         }
       }
@@ -2119,6 +2154,11 @@ export default struct SwiperPage {
     if (this.isDisableSwiperToIntelligent && this.isDisableSwiperToIntelligent()) {
       log.showInfo(`PanGesture isDisableSwiperToIntelligent: ${this.isDisableSwiperToIntelligent},
             isDisableSwiperToIntelligent: ${this.isDisableSwiperToIntelligent()}`);
+      return true;
+    }
+    if (OutdoorConfig.getInstance().isInOutdoorMode() ||
+      LightOutdoorConfig.getInstance().isOnLightOutdoorMode()) {
+      log.showInfo('isSkipPanGesture due to OutdoorMode');
       return true;
     }
     if (sOutSideWindowMgr.getGlobalSearchStatus() === GlobalSearchStatus.SHOW) {
@@ -2282,27 +2322,27 @@ export default struct SwiperPage {
 
   dropAnimation(dropX: number, dropY: number, dragResult: DesktopDragResult,
     previewRectWidth: number, previewRectHeight: number): DropAnimationParam | null {
-    let dragItemInfo = PageDesktopDragHandler.getInstance(this.singleContext).getSingleDragItemInfo();
+    let dragHandler = PageDesktopDragHandler.getInstance(this.singleContext);
+    let dragItemInfo = dragHandler.getSingleDragItemInfo();
     if (!dragItemInfo) {
       log.showError('dragItemInfo is undefined');
       return null;
     }
-    let fallPosition: number[] | undefined =
-      PageDesktopDragHandler.getInstance(this.singleContext).getFallPosition(dragResult.dropToDock, dragItemInfo.isFormDimension1x4);
+    let fallPosition: number[] | undefined = dragHandler.getFallPosition(dragResult.dropToDock, dragItemInfo.isFormDimension1x4);
     if (!fallPosition || fallPosition.length < 2) {
       log.showError('fall position is null');
       return null;
     }
-    if ((PageDesktopDragHandler.getInstance(this.singleContext).getDragItems()?.length ?? 0) > 1) {
+    if ((dragHandler.getDragItems()?.length ?? 0) > 1) {
       // 多选元素拖拽时不做落位动效
       return null;
     }
     let translateXForScreenSplit: number = AppStorage.get<number>('translateXForScreenSplit') ?? 0 as number;
     let param: DropAnimationParam = new DropAnimationParam(GridLayoutUtil.generateUniqueKey(dragItemInfo), dropX, dropY,
       fallPosition[0] + translateXForScreenSplit, fallPosition[1]);
-    log.showWarn(`dropAnimation translateXForScreenSplit ${translateXForScreenSplit} , fallPosition ${fallPosition.toString()}`);
+    log.showInfo(`dropAnimation translateXForScreenSplit ${translateXForScreenSplit} , fallPosition ${fallPosition.toString()}`);
     this.adjustDropAnimationParam(param, dragItemInfo, dragResult);
-    log.showWarn(`dropAnimation previewRect.width${previewRectWidth} , previewRect.height${previewRectHeight}`);
+    log.showInfo(`dropAnimation previewRect.width${previewRectWidth} , previewRect.height${previewRectHeight}`);
     param.startWidth = previewRectWidth;
     param.startHeight = previewRectHeight;
     // dock缩放后，图标大小与桌面不一致
@@ -2312,6 +2352,7 @@ export default struct SwiperPage {
       param.endHeight = this.mPageDesktopStyleConfig.mIconSize;
       param.endRadius = this.mPageDesktopStyleConfig.mIconRadius;
     }
+    log.showInfo(`dropAnimation startDropAnimation param${JSON.stringify(param)}`);
     dropAnimationManager.startDropAnimation(DropAnimationDestination.DESKTOP, param, (isCancel: boolean) => {
       if (isCancel) {
         this.cancelGravityAnimation();
@@ -2444,9 +2485,9 @@ export default struct SwiperPage {
       return;
     }
     let selectMode: string = '';
-    if (DeviceHelper.isBigScreenMachine()) {
+    if (DeviceHelper.isSuperFoldMachine()) {
       if (startItem.page === undefined || endItem.page === undefined) {
-        log.showWarn('startItem.page or endItem.page is undefined');
+        log.showInfo('startItem.page or endItem.page is undefined');
         return;
       }
       const startRow: number =
@@ -2880,7 +2921,7 @@ export default struct SwiperPage {
   }
 
   private getMarginTop(): number {
-    if (this.isBigScreen && this.mIsPortrait && this.indexInSwiper === 1) {
+    if (this.isSuperFold && this.mIsPortrait && this.indexInSwiper === 1) {
       return 0;
     }
     if (this.isPc) {
@@ -2891,8 +2932,9 @@ export default struct SwiperPage {
       let editModeBgTranslateY = this.editModeSingePageViewData.getEditModeBgTranslateY();
       return this.pageEditViewModel.getGridMarginTopFromSwiper(editModeBgTranslateY, this.offsetY);
     }
-    return this.mPageDesktopStyleConfig.mWorkSpaceMarginTop as number -
-    LayoutViewModel.getInstance().getSysUITopHeight() + 12;
+    let mt = this.mPageDesktopStyleConfig.mWorkSpaceMarginTop as number - LayoutViewModel.getInstance().getSysUITopHeight();
+    log.showInfo(`getMarginTop: ${this.mPageDesktopStyleConfig.mWorkSpaceMarginTop} - ${LayoutViewModel.getInstance().getSysUITopHeight()} = ${mt}`);
+    return mt < 0 ? 0 : mt;
   }
 }
 

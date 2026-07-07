@@ -88,16 +88,16 @@ export struct EngineContainer {
    * 当壁纸大小和屏幕大小不一致时，需要计算engineSize来初始化
    */
   private initEngineSize(): void {
-    // 非大屏设备或扩展屏使用默认大小即可，无需调整
+    // 非superfold设备或扩展屏使用默认大小即可，无需调整
     if (!this.isUseEngineSize()) {
       return;
     }
     if (this.themeSrvHelper.isUseStaticWallpaper()) {
-      // 大屏设备的主屏使用静态壁纸时，旋转可露黑角，优先保证不拉伸，边长为屏幕实际大小
+      // superfold设备的主屏使用静态壁纸时，旋转可露黑角，优先保证不拉伸，边长为屏幕实际大小
       this.engineWidth = this.screenProp.width;
       this.engineHeight = this.screenProp.height;
     } else {
-      // 大屏设备的主屏使用动态壁纸时，旋转不露黑角，需要将壁纸边长放大为window view的对角线长度
+      // superfold设备的主屏使用动态壁纸时，旋转不露黑角，需要将壁纸边长放大为window view的对角线长度
       this.engineWidth = Math.ceil(Math.sqrt(this.screenProp.width * this.screenProp.width +
         this.screenProp.height * this.screenProp.height));
       this.engineHeight = this.engineWidth;

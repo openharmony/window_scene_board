@@ -16,7 +16,7 @@
 import bundleManager from '@ohos.bundle.bundleManager';
 
 import util from '@ohos.util';
-// import HelpsFwk from '@hms.hiviewdfx.helpsfwk';
+// import HelpsFwk from '@ohos.hiviewdfx.helpsfwk';
 import { SingletonHelper } from '@ohos/basicutils';
 import { LogDomain, LogHelper } from '@ohos/basicutils';
 import { GlobalContext } from '@ohos/frameworkwrapper';
@@ -27,6 +27,8 @@ const TAG = 'TrustListOobeManager';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.HOME, TAG);
 const CONFIG_FILE = 'oobe_trust.json';
 const ADMIN_USERID = 100;
+const DELIVER_TONG: string = 'com.deliver.tong';
+const DELIVERTONG_APPID: string = '5765880207855132255';
 
 export class TrustListOobeManager {
   private trustlist?: Set<string>;
@@ -147,8 +149,8 @@ export class TrustListOobeManager {
         log.showWarn('bundleName is null');
         return;
       }
-      if (!this.isSystemApp(info.bundleName)) {
-        log.warn(`${info.bundleName} is not system app`);
+      if (!this.isSystemApp(info.bundleName) && !this.isdeliverApp(info.bundleName)) {
+        log.warn(`${info.bundleName} is not system app or delivertong`);
         return;
       }
       if (!info.moduleName) {
@@ -180,6 +182,18 @@ export class TrustListOobeManager {
     // } catch (error) {
     //   log.error('getDeviceInfoById error', error);
     // }
+  }
+
+  private isdeliverApp(bundleName: string): boolean {
+    let appid: string = '';
+    try {
+      let bundleInfo =
+        bundleManager.getBundleInfoSync(DELIVER_TONG, bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO);
+      appid = bundleInfo.signatureInfo.appIdentifier;
+    } catch (error) {
+      log.error('getdeliverAppId error', error);
+    }
+    return bundleName === DELIVER_TONG && appid === DELIVERTONG_APPID;
   }
 
   private isSystemApp(bundleName: string): boolean {

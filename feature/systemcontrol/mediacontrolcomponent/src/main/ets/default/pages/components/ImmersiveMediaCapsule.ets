@@ -14,6 +14,10 @@
  */
 
 import {
+  AodStyleType,
+  ImmersiveAodStyle,
+} from '@ohos/systemuicommon/src/main/ets/immersivekeyguardcommon/base/interface/ImmersiveAodStyle';
+import {
   immersiveKgMgr,
 } from '@ohos/systemuicommon/src/main/ets/immersivekeyguardcommon/manager/ImmersiveKeyguardStateManager';
 import { LogDomain, LogHelper } from '@ohos/basicutils/src/main/ets/utils/LogHelper';
@@ -84,6 +88,10 @@ export struct ImmersiveMediaCapsule {
    */
   @Prop textAlpha: number | undefined;
 
+  /**
+   * Aod显示样式
+   */
+  @State aodStyle: ImmersiveAodStyle | undefined = immersiveKgMgr.getOneMirrorState().getAodStyle(true);
 
   // 胶囊UI绑定状态
   @State capBindSt?: ISlState = slUiStateMgr.getSlState(SlMainStateType.SL_CAP_WG_BIND_STATE);
@@ -136,7 +144,8 @@ export struct ImmersiveMediaCapsule {
   }
 
   hasMediaBackground(): number | Resource | Color | undefined {
-    return this.isHasMediaImage() ? Color.Transparent :$r('app.color.menu_divider_color_dark')
+    return this.isHasMediaImage() ? Color.Transparent :
+      (this.aodStyle?.isAod ? this.aodStyle?.getStyleValue(AodStyleType.MEDIA_BACKGROUND_COLOR) : $r('app.color.menu_divider_color_dark'))
   }
 
   isRTL() {
@@ -161,7 +170,8 @@ export struct ImmersiveMediaCapsule {
             .alt($r('app.media.ic_nomusic_img'))
             .width(MediaImmersiveConstants.CAPSULE_ICON_SPECS)
             .height(MediaImmersiveConstants.CAPSULE_ICON_SPECS)
-            .fillColor(MediaImmersiveConstants.getMainTextFontColor())
+            .fillColor(this.aodStyle?.isAod ? this.aodStyle?.getStyleValue(AodStyleType.CAPSULE_MUSIC_COLOR) :
+              MediaImmersiveConstants.getMainTextFontColor())
             .objectFit(ImageFit.Cover)
             .draggable(false)
             .borderRadius(MediaImmersiveConstants.CAPSULE_EXTEND_ICON_RADIUS)
@@ -173,10 +183,10 @@ export struct ImmersiveMediaCapsule {
             .zIndex(100)
             .autoResize(false)
             .interpolation(ImageInterpolation.Medium)
-            .renderGroup(this.isMarkingRenderGroup) // 增加UI缓存，防止丢帧
+            .renderGroup(this.aodStyle?.isOneMirror ? false : this.isMarkingRenderGroup) // 增加UI缓存，防止丢帧
         }
       }
-      .opacity(undefined)
+      .opacity(this.aodStyle?.isAod ? this.aodStyle.getStyleValue(AodStyleType.NTF_APP_ICON_ALPHA) : undefined)
       .width(MediaImmersiveConstants.getIconAreaSpecs())
       .height(MediaImmersiveConstants.getIconAreaSpecs())
 
@@ -190,15 +200,19 @@ export struct ImmersiveMediaCapsule {
             .width(MediaImmersiveConstants.CAPSULE_EXTEND_SPECS)
             .height(MediaImmersiveConstants.CAPSULE_EXTEND_SPECS)
             .borderRadius(MediaImmersiveConstants.CAPSULE_EXTEND_SPECS / 2)
-            .backgroundColor($r('app.color.menu_divider_color_dark'))
+            .backgroundColor(this.aodStyle?.isAod ?
+            this.aodStyle?.getStyleValue(AodStyleType.MEDIA_BUTTON_BACKGROUND_COLOR) :
+            $r('app.color.menu_divider_color_dark'))
           SymbolGlyph(this.isPlaying ? $r(ButtonIconName.PAUSE_SYMBOL) : $r(ButtonIconName.PLAY_SYMBOL))
-            .fontColor([MediaImmersiveConstants.getMainTextFontColor()])
+            .fontColor(this.aodStyle?.isAod ? [this.aodStyle?.getStyleValue(AodStyleType.MEDIA_BUTTON_COLOR)] :
+              [MediaImmersiveConstants.getMainTextFontColor()])
             .fontSize('20vp')
-            .foregroundBrightness(MediaImmersiveConstants.getMainTextBrightColor(this.isDarkMode()))
+            .foregroundBrightness(this.aodStyle?.isAod ? undefined :
+            MediaImmersiveConstants.getMainTextBrightColor(this.isDarkMode()))
             .draggable(false)
             .rotate({ angle: this.isRTL() ? 180 : 0 })
             .symbolEffect(new ReplaceSymbolEffect(EffectScope.WHOLE), this.isPlayButtonVisible)
-            .renderGroup(this.isMarkingRenderGroup) // 增加UI缓存，防止丢帧
+            .renderGroup(this.aodStyle?.isOneMirror ? false : this.isMarkingRenderGroup) // 增加UI缓存，防止丢帧
         }
       }
       .stateEffect(false)
@@ -257,8 +271,10 @@ export struct ImmersiveMediaCapsule {
         isStartMarquee: this.isPlaying && this.isMarqueeStart,
         fontSize: MediaImmersiveConstants.CAPSULE_MAIN_TEXT_FONT_SIZE,
         fontWeight: FontWeight.Medium,
-        fontColor: MediaImmersiveConstants.getMainTextFontColor(),
-        foreGroundBrightness: MediaImmersiveConstants.getMainTextBrightColor(this.isDarkMode()),
+        fontColor: this.aodStyle?.isAod ? this.aodStyle?.getStyleValue(AodStyleType.CAPSULE_MAIN_FONT_COLOR) :
+          MediaImmersiveConstants.getMainTextFontColor(),
+        foreGroundBrightness: this.aodStyle?.isAod ? undefined :
+        MediaImmersiveConstants.getMainTextBrightColor(this.isDarkMode()),
       }).height((this.fontSizeScale === 1) ? 21 : 23)
 
       // 次文本区域
@@ -267,8 +283,11 @@ export struct ImmersiveMediaCapsule {
         isStartMarquee: this.isPlaying && this.isMarqueeStart,
         fontSize: MediaImmersiveConstants.CAPSULE_SECONDARY_TEXT_FONT_SIZE,
         fontWeight: FontWeight.Regular,
-        fontColor: MediaImmersiveConstants.getSecondaryTextFontColor(),
-        foreGroundBrightness: MediaImmersiveConstants.getSecondaryBrightColor(this.isDarkMode()),
+        fontColor: this.aodStyle?.isAod ?
+          this.aodStyle?.getStyleValue(AodStyleType.CAPSULE_SECONDARY_FONT_COLOR) :
+        MediaImmersiveConstants.getSecondaryTextFontColor(),
+        foreGroundBrightness: this.aodStyle?.isAod ? undefined :
+        MediaImmersiveConstants.getSecondaryBrightColor(this.isDarkMode()),
       })
         .height((this.fontSizeScale === 1) ? 16 : 19)
         .visibility(this.artist ? Visibility.Visible : Visibility.None)

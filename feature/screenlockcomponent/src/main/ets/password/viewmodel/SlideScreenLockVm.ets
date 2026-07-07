@@ -93,8 +93,8 @@ const FINGER_SQRT_2: number = 2;
 const SCREEN_MIDDLE_PERCENT: number = 0.5;
 // 大折叠密码宽度比例
 const BIG_FOLD_GRID_PERCENT = 0.5;
-// 超大屏G态横屏, 锁屏滑动宫格比例
-const ULTRA_SCREEN_G_LANDSCAPE_GRID_PERCENT = 1 / 3;
+// 三折叠G态横屏, 锁屏滑动宫格比例
+const THREE_FOLD_G_LANDSCAPE_GRID_PERCENT = 1 / 3;
 
 const DEFALUT_ANIMATION_DURING: number = 1000;
 
@@ -474,9 +474,9 @@ export default class SlideScreenLockVm {
       log.showError('calculateKeyboardPosition getDefaultDisplaySync fail');
     }
     let gridLeftPosPercent: number;
-    if (DeviceHelper.isUltraScreenProduct() && DeviceHelper.isGState()) {
+    if (DeviceHelper.isThreeFoldProduct() && DeviceHelper.isGState()) {
       if (ScreenStateMonitor.getInstance().getCurrentScreenStateModel().orientation === ScreenOrientation.LANDSCAPE) {
-        gridLeftPosPercent = ULTRA_SCREEN_G_LANDSCAPE_GRID_PERCENT;
+        gridLeftPosPercent = THREE_FOLD_G_LANDSCAPE_GRID_PERCENT;
       } else {
         const keyboardWidthPercent: number = ScreenLockKeyboardTipUtil.getGStateKeyboardWidthPercent(displayWidth,
           false);
@@ -521,7 +521,7 @@ export default class SlideScreenLockVm {
    * @returns 宫格左边的X坐标
    */
   private getGridPosByKeyboardWidth(keyboardWidthPercent: number): number {
-    // 超大屏G态竖屏、M态，以及大屏展开态下, 在锁屏滑动时, 如果滑动起点、终点都位于宫格内，则密码盘显示在中间
+    // 三折叠G态竖屏、M态，以及双折叠展开态下, 在锁屏滑动时, 如果滑动起点、终点都位于宫格内，则密码盘显示在中间
     // 宫格计算方法：分别取左、中、右密码盘中心点，左中心点和中中心点连线的中点为宫格左侧坐标， 宫格右侧坐标与左坐标基于中线对称
     // 根据密码盘宽度的比例，计算出宫格左侧的X坐标
     return SCREEN_MIDDLE_PERCENT - (SCREEN_MIDDLE_PERCENT - keyboardWidthPercent / 2) / 2;

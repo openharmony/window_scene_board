@@ -51,7 +51,7 @@ export enum FoldAcGridLayoutConstants {
 }
 
 /**
- * 大屏幕机专用VM
+ * 折叠机专用VM
  */
 export class FoldedDeviceAcViewModel {
   public static readonly FOLD_STATE_CHANGE_EVT_NAME = 'hopper_state_change';
@@ -65,7 +65,7 @@ export class FoldedDeviceAcViewModel {
   private static readonly ANIMATION_TIME_FOLDED_DESC: number[] = [310, 305, 300];
   private static readonly ANIMATION_TIME_UNFOLDED_DESC: number[] = [380, 350, 320, 300];
   /**
-   * 是否大屏幕机设备
+   * 是否折叠机设备
    */
   private mIsFoldedDevice: boolean = false;
   private mCurrentFoldState: SCBFoldedState;
@@ -141,7 +141,7 @@ export class FoldedDeviceAcViewModel {
   }
 
   /**
-   * 获取大屏幕机状态
+   * 获取折叠机状态
    * @returns
    */
   public getCurrentFoldState(): SCBFoldedState {
@@ -149,7 +149,7 @@ export class FoldedDeviceAcViewModel {
   }
 
   /**
-   * 设置大屏幕机状态
+   * 设置折叠机状态
    * @param cs
    */
   public setFoldState(cs: number): void {
@@ -187,15 +187,15 @@ export class FoldedDeviceAcViewModel {
   }
 
   /**
-   * 是否是大屏幕机-PC
-   * @returns 是否是大屏幕机设备
+   * 是否是折叠机-PC
+   * @returns 是否是折叠机设备
    */
   public isFoldedDevice(): boolean {
     return this.mIsFoldedDevice;
   }
 
   /**
-   * 设置-是否大屏幕机-PC
+   * 设置-是否折叠机-PC
    * @param fd
    */
   public setIsFoldedDevice(fd: boolean): void {

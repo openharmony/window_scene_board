@@ -36,6 +36,11 @@ export function NotificationMgmtViewDataTest01() {
       expect(res).assertInstanceOf('Boolean');
     })
 
+    it('NotificationMgmtViewData_setDeliverAppFlagTest01', 0, (): void => {
+      nNotificationMgmtViewData.setDeliverAppFlag(true);
+      expect((nNotificationMgmtViewData as object)['deliverAppFlag']).assertTrue();
+    })
+
     it('NotificationMgmtViewData_isOnTest01', 0, (): void => {
       const isOn: boolean = nNotificationMgmtViewData.isOn();
       expect(isOn).assertInstanceOf('Boolean');

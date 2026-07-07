@@ -1,5 +1,5 @@
 /**
- * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) 2021-2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -58,6 +58,7 @@ import {
   LayoutDescription,
   DesktopModeManager,
   LauncherLayoutCacheUtil,
+  DeliverUtil,
   FormLayoutCacheManager,
   ResidentLayoutCacheMgr,
   RecentLayoutCacheMgr,
@@ -230,7 +231,7 @@ export class PageDesktopModel extends SingleBase {
       log.showInfo(`deleteBlankPageFromLayoutInfo, page ${page} is home page`);
       return false;
     }
-    if (DeviceHelper.isBigScreenMachine()) {
+    if (DeviceHelper.isSuperFoldMachine()) {
       return false;
     }
     let launcherLayoutCache: LaunchLayoutCacheManager = LaunchLayoutCacheManager.getInstance();
@@ -756,9 +757,9 @@ export class PageDesktopModel extends SingleBase {
       exitInfo.iconRect.right = centerOfWidth + outerStackWidth;
       sceneContainerSession.companionIconInfo.iconRadius *= outerStackExitPosScale;
     }
-    if (exitInfo.iconRect?.left === 0 &&
+    if (iconId.includes(SCBConstants.AI_SUGGESTION_BUNDLE_NAME) && exitInfo.iconRect?.left === 0 &&
       exitInfo.iconRect?.top === 0) {
-      // 且获取位置为0,0,0,0
+      // iconId包含语音助手建议包名，且获取位置为0,0,0,0,改变语音助手建议的iconId尝试获取
       let oobeExitInfo = this.getOObeIconRect(exitInfo, sceneContainerSession);
       return oobeExitInfo as AppExitLocationInfo;
     }
@@ -860,7 +861,12 @@ export class PageDesktopModel extends SingleBase {
   }
 
   private getIconRectInfo(companionIconInfo: CompanionIconInfo, isInScreen: boolean, iconId: string): RectInfo | null {
+    // 正式商用版本上定制文件夹中不显示克隆应用与应用应用，因此需要定制处理
     const folderId: string = FolderManager.getInstance().getOpenedFolder().folderId;
+    if (DeliverUtil.isContainerPkg(companionIconInfo?.bundleName) &&
+      DeliverUtil.isContainerFolder(folderId)) {
+      return null;
+    }
     let iconRectInfo: RectInfo | null = null;
     if (!isInScreen) {
       isInScreen = this.searchInScreen(companionIconInfo)?.isInScreen;
@@ -909,6 +915,17 @@ export class PageDesktopModel extends SingleBase {
       return { appInFolderInfo: null, app: null };
     }
 
+    // 语音助手建议优先找位，找到则返回
+    if (this.isFromSuggestion(companionIconInfo)) {
+      // 需注意语音助手建议子图标不在appListInfo里面
+      const suggestionInfo = this.findAppInCurrentShowingPageWithMethod(this.findSuggestAppInPageItems, appGridInfo,
+        companionIconInfo, 'findAppSuggestInfo');
+      if (suggestionInfo?.app != null) {
+        log.showWarn(`findAppInCurrentShowingPage find suggest icon success, iconId:${companionIconInfo?.iconId}`);
+        return suggestionInfo;
+      }
+    }
+
     return this.findAppInCurrentShowingPageWithMethod(this.findAppInCurrentPage, appGridInfo,
       companionIconInfo, 'findAppInfo');
   }
@@ -930,7 +947,7 @@ export class PageDesktopModel extends SingleBase {
       log.showWarn(`findAppInCurrentShowingPageWithMethod page: ${page} componentId:${appTransitionInfo?.app?.componentId} msg:${msg}`);
       return appTransitionInfo;
     }
-    // 超大屏需要查找关联显示页
+    // 三折叠需要查找关联显示页
     if (desktopUtil.isThreeScreenGState()) {
       PageInfoManager.getInstance().loopPageCallback(page, (callbackPage: number) : boolean => {
         appTransitionInfo = findAppInPageMethod(appGridInfo[callbackPage], companionIconInfo);
@@ -940,7 +957,7 @@ export class PageDesktopModel extends SingleBase {
       }, false);
       return appTransitionInfo;
     }
-    // 大屏展开态需要查找隔壁页
+    // 双折叠展开态需要查找隔壁页
     if (desktopUtil.isFoldExpandStatus()) {
       return findAppInPageMethod(appGridInfo[this.getNeighborPage(page)], companionIconInfo);
     }
@@ -948,7 +965,22 @@ export class PageDesktopModel extends SingleBase {
   }
 
   /**
-   * 桌面普通元素查找方法
+   * 语音助手建议查找元素方法
+   */
+  private findSuggestAppInPageItems: FindAppInPageMethod =
+    (eleInCurrentPage: GridLayoutItemInfo[], companionIconInfo: CompanionIconInfo): AppTransitionInfo => {
+    const app: GridLayoutItemInfo | undefined = eleInCurrentPage?.find((appInfo: GridLayoutItemInfo) => {
+      if (appInfo === null || appInfo === undefined) {
+        log.showWarn(`findSuggestAppInPageItems startAppType is AI_SUGGESTION_APP appInfo is ${appInfo}`);
+        return false;
+      }
+      return this.isFoundAiSuggestion(appInfo, companionIconInfo);
+    });
+    return { appInFolderInfo: null, app: app };
+  }
+
+  /**
+   * 桌面普通元素(非语音助手建议图标)查找方法
    */
   private findAppInCurrentPage: FindAppInPageMethod =
     (eleInCurrentPage: GridLayoutItemInfo[], companionIconInfo: CompanionIconInfo): AppTransitionInfo => {
@@ -973,6 +1005,42 @@ export class PageDesktopModel extends SingleBase {
       }
     });
     return { appInFolderInfo: appInFolderInfo, app: app };
+  }
+
+  private isFoundAiSuggestion(appInfo: GridLayoutItemInfo, companionIconInfo: CompanionIconInfo): boolean {
+    log.showDebug(`isFoundAiSuggestion startAppType=%{public}d, LayoutCardId=%{public}s, LayoutTypeId=%{public}d, companionExtraId=%{public}s`,
+      companionIconInfo.startAppType, appInfo.cardId, appInfo.typeId, companionIconInfo.extraId);
+    if (appInfo?.typeId === CommonConstants.TYPE_FORM_STACK) {
+      const formStackId: string | undefined = appInfo.formStackId;
+      const gridLayoutItemInfo =
+        FormLayoutCacheManager.getInstance().selectGridLayoutItemByFormstackId(formStackId ?? '');
+      let stackCards: GridLayoutItemInfo[] = gridLayoutItemInfo?.layoutInfo?.[0] ?? [];
+      const endIndex = (stackCards?.length ?? 1) - 1;
+      let isStackTop: boolean = stackCards?.[endIndex]?.cardId === companionIconInfo.extraId;
+      if (isStackTop) {
+        log.showWarn(`found in formStack cardId: ${companionIconInfo.extraId}, iconId: ${companionIconInfo.iconId}`);
+        return true;
+      }
+    }
+    if (appInfo?.cardId !== companionIconInfo.extraId) {
+      return false;
+    }
+    if (companionIconInfo.startAppType === StartType.AI_SUGGESTION_APP) {
+      const iconIdList: string[] = (GlobalContext.getInstance().getObject('AiSuggestionSubItems') as string[]) ?? [];
+      let isFound: boolean = iconIdList.includes(companionIconInfo.iconId);
+      if (isFound) {
+        log.showWarn(`found in AiSuggestion cardId: ${companionIconInfo.extraId}, iconId: ${companionIconInfo.iconId}`);
+      } else {
+        let subItems: string = iconIdList.filter(iconId => iconId.endsWith(companionIconInfo.extraId ?? '')).toString();
+        log.showWarn(`find app in AiSuggestion error, cardId: ${companionIconInfo.extraId}, subitems: ${subItems}`);
+      }
+      return isFound;
+    }
+    log.showInfo('isFoundAiSuggestion  startAppType=%{public}d, LayoutCardId=%{public}s, LayoutTypeId=%{public}d,' +
+      ' companionExtraId=%{public}s LayoutKeyName=%{public}s',
+      companionIconInfo.startAppType, appInfo.cardId, appInfo.typeId, companionIconInfo.extraId, appInfo.keyName);
+    // 语音助手推荐中服务卡片，直接返回true
+    return true;
   }
 
   public searchInCurrentDeskTopPage(companionIconInfo: CompanionIconInfo): AppExitLocationInfo {

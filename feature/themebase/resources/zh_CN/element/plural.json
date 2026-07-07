@@ -1,0 +1,68 @@
+{
+    "plural":[
+        {
+            "name":"item_select",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"已选择 %d 项"
+                },
+                {
+                    "quantity":"two",
+                    "value":"已选择 %d 项"
+                },
+                {
+                    "quantity":"zero",
+                    "value":"已选择 %d 项"
+                },
+                {
+                    "quantity":"few",
+                    "value":"已选择 %d 项"
+                },
+                {
+                    "quantity":"many",
+                    "value":"已选择 %d 项"
+                },
+                {
+                    "quantity":"other",
+                    "value":"已选择 %d 项",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"delete_select_wallpapers",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"是否删除所选壁纸？"
+                },
+                {
+                    "quantity":"two",
+                    "value":"是否删除所选壁纸？"
+                },
+                {
+                    "quantity":"zero",
+                    "value":"是否删除所选壁纸？"
+                },
+                {
+                    "quantity":"few",
+                    "value":"是否删除所选壁纸？"
+                },
+                {
+                    "quantity":"many",
+                    "value":"是否删除所选壁纸？"
+                },
+                {
+                    "quantity":"other",
+                    "value":"是否删除所选壁纸？",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

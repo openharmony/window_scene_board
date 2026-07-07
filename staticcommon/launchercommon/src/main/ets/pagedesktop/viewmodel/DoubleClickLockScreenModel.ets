@@ -13,13 +13,13 @@
  * limitations under the License.
  */
 
-import { LogDomain, Logger } from '@ohos/basicutils';
+import { OutdoorConfig, LogDomain, Logger } from '@ohos/basicutils';
 import { DeviceHelper, GlobalContext, ReportParams } from '@ohos/frameworkwrapper/src/main/ets/TsIndex';
 import power from '@ohos.power';
 import taskPool from '@ohos.taskpool';
 import { DesktopModeManager } from '../../desktopmode/statemanager/DesktopModeManager';
 import { settings } from '@kit.BasicServicesKit';
-import { HiSysEventUtil } from '@ohos/frameworkwrapper';
+import { HiSysEventUtil, LightOutdoorConfig } from '@ohos/frameworkwrapper';
 import { hiSysEvent } from '@kit.PerformanceAnalysisKit';
 import { editModeManager } from '../../editmode/model/EditModeManager';
 
@@ -125,6 +125,11 @@ export class DoubleClickLockScreenModel {
     }
     if (DesktopModeManager.getInstance().isInEmergencyOrThermalSafeMode()) {
       log.showInfo(TAG, `${caller} double click lock screen return for emergency mode`);
+      return;
+    }
+    if (OutdoorConfig.getInstance().isInOutdoorMode() ||
+    LightOutdoorConfig.getInstance().isOnLightOutdoorMode()) {
+      log.showInfo(TAG, `${caller} double click lock screen return for out door mode`);
       return;
     }
     try {

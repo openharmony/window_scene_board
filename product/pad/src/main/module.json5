@@ -129,6 +129,11 @@
           {
             "name": "ohos.extension.version",
             "value": "12"
+          },
+          // 语音助手建议特性码仅供语音助手建议使用
+          {
+            "name": "aisuggestion.feature.version",
+            "value": "6"
           }
         ]
       },
@@ -203,6 +208,25 @@
         "type": "sys/commonUI",
         "exported": true,
         "srcEntry": "./ets/desktopsetting/ability/DesktopSettingAbilityRedirect.ets"
+      },
+      {
+        "name": "ThreeButtonUpgradeDSExtAbility",
+        "srcEntry": "./ets/SceneBoard/aiBar/ability/ThreeButtonUpgradeDSExtAbilityRedirect.ets",
+        "description": "ThreeButtonUpgradeDSExtAbility",
+        "type": "dataShare",
+        "uri": "datashare://ThreeButtonUpgradeDSExtAbility",
+        "exported": true,
+        "readPermission": "ohos.permission.ALLOW_UPGRADE_GUIDE_ACCESS"
+      },
+      {
+        "name": "ThreeButtonUpgradeUIExtAbility",
+        "description": "ThreeButtonUpgradeUIExtAbility",
+        "type": "sys/commonUI",
+        "exported": true,
+        "srcEntry": "./ets/SceneBoard/aiBar/ability/ThreeButtonUpgradeUIExtAbilityRedirect.ets",
+        "permissions": [
+          "ohos.permission.ALLOW_UPGRADE_GUIDE_ACCESS"
+        ]
       },
       {
         "name": "SceneBoardFormAbility",
@@ -513,8 +537,12 @@
         "name": "ohos.permission.ACCESS_SYSTEM_SETTINGS"
       },
       {
-        // 通知中心用于升级/克隆单场景恢复延迟安装应用的开关 事件监听位置：NotificationRestoreManager#subscriberDelayedRestore()
+        // 通知中心用于系统迁移/双克隆单场景恢复延迟安装应用的开关 事件监听位置：NotificationRestoreManager#subscriberDelayedRestore()
         "name": "ohos.permission.START_RESTORE_NOTIFICATION"
+      },
+      {
+        // 通知中心用于DH应用系统迁移/双克隆单场景恢复延迟安装应用的开关 事件监听位置：NotificationRestoreManager#subscriberDeliverRestoreStart()
+        "name": "ohos.permission.RECEIVE_BMS_BROKER_MESSAGES"
       },
       {
         "name": "ohos.permission.ACCESS_APP_LOCK"
@@ -1002,8 +1030,12 @@
 //        "name": "ohos.permission.ACCESS_SYSTEM_SETTINGS"
 //      },
 //      {
-//        // 通知中心用于升级/克隆场景恢复延迟安装应用的开关 事件监听位置：NotificationRestoreManager#subscriberDelayedRestore()
+//        // 通知中心用于系统迁移/双克隆单场景恢复延迟安装应用的开关 事件监听位置：NotificationRestoreManager#subscriberDelayedRestore()
 //        "name": "ohos.permission.START_RESTORE_NOTIFICATION"
+//      },
+//      {
+//        // 通知中心用于DH应用系统迁移/双克隆单场景恢复延迟安装应用的开关 事件监听位置：NotificationRestoreManager#subscriberDeliverRestoreStart()
+//        "name": "ohos.permission.RECEIVE_BMS_BROKER_MESSAGES"
 //      },
 //      {
 //        "name": "ohos.permission.ACCESS_APP_LOCK"

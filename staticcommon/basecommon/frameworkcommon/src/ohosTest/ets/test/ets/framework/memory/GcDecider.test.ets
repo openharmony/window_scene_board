@@ -27,6 +27,7 @@ import {
 } from '@ohos/hypium';
 import { MemoryInfo } from '../../../../../../main/ets/memory/MemoryInfo';
 import { ClearMissionFullGcDecider, PssGcDecider } from '../../../../../../main/ets/memory/GcDecider';
+import { DEFAULT_MEMORY_GC_PSS_KB, MemoryUtils } from '@hw-ohos/memorytool';
 
 export function GcDeciderTest() {
   describe('GcDeciderTest', () => {

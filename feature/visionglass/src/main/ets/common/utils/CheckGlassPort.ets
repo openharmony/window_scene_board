@@ -14,6 +14,7 @@
  */
 
 import { LogDomain, LogHelper } from '@ohos/basicutils';
+import xrGlassesAppService from '@hms.xrGlassesService.xrGlassesAppService';
 import { SettingsUtil } from '@ohos/frameworkwrapper';
 import { settings, usbManager } from '@kit.BasicServicesKit';
 import { bundleManager } from '@kit.AbilityKit';
@@ -42,6 +43,11 @@ export function checkIsGlassPort(): boolean {
     let privacyValue: string = SettingsUtil.getValueEx(settings.domainName.USER_PROPERTY, PRIVACY_AGREEMENT_VALUE_NAME);
     if (privacyValue !== PRIVACY_AGREEMENT_VALUE_TRUE) {
       log.showWarn(`checkIsGlassPort privacyValue is fasle`);
+      return false;
+    }
+    let currentSpaceMode: number = xrGlassesAppService.getSpaceMode();
+    if (currentSpaceMode !== 1) {
+      log.showWarn(`checkIsGlassPort fail, getSpaceMode is ${currentSpaceMode}`);
       return false;
     }
     let glassPort: usbManager.USBDevice | undefined =

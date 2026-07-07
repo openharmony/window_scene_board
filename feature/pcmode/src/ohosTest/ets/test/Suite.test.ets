@@ -26,7 +26,7 @@ import { SCBFreeWindowsViewModelManagerTest } from './ets/viewmodel/SCBFreeWindo
 import { SCBSystemSceneUtilsTest } from './ets/utils/SCBSystemSceneUtilsTest.test';
 
 export default function PipelineDemoSuite() {
-  describe("scene_board_ext", () => {
+  describe("window_scene_board", () => {
     InstanceTest();
     UtilsTest();
     ViewModelTest();

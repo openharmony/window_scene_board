@@ -176,9 +176,10 @@ export default struct AppItemComponent {
       appIcon: this.item.appIcon,
       index: this.item.appIndex,
       appIconId: COMPONENT_ID_APP_ICON,
-      compMargin: undefined,
+      compMargin: this.isdeliverApp() ? { end: LengthMetrics.vp(APP_LIST_BADGE_ICON_SIZE - DEFAULT_BADGE_ICON_SIZE) } :
+        undefined,
       appIconSize: LengthMetrics.resource($r('app.float.appitem_manage_icon_width')).value,
-      needShowBadgeIcon: false,
+      needShowBadgeIcon: this.isdeliverApp(),
     })
   }
 
@@ -253,6 +254,12 @@ export default struct AppItemComponent {
       LogWithHa.error(log, `SetPinTopState to false error by ${e.code}`, SettingExceptionCode.SET_PIN_TOP_STATE_FAIL, e,
         TAG);
     }
+  }
+
+  private isdeliverApp(): boolean {
+    const isdeliverApp: boolean = this.item.isdeliverApp ?? false;
+    log.showInfo(`check ${TAG} isdeliver, bundleName = ${this.item.appBundleName}, isdeliver = ${isdeliverApp}`)
+    return isdeliverApp;
   }
 
   private getIsEnableChange(): boolean {

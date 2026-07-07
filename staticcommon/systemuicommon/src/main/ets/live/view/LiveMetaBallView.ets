@@ -14,7 +14,7 @@
  */
 
 import { LiveVmInjector } from '../LiveVmInjector';
-// import { Metaball, MetaballAttribute, BallParams } from '@hms.hds.Metaball';
+// import { Metaball, MetaballAttribute, BallParams } from '@ohos.hds.Metaball';
 import { ILiveMetaBallVm } from '../interface/ILiveMetaBallVm';
 import { StatusBarCapsulePosition } from '../../statusbar/model/StatusBarCapsulePosition';
 import { LogDomain, LogHelper } from '@ohos/basicutils';

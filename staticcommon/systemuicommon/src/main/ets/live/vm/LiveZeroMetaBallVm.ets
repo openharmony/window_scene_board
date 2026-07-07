@@ -14,7 +14,7 @@
  */
 import { StatusBarCapsulePosition } from '../../statusbar/model/StatusBarCapsulePosition';
 import { LiveMetaBallBaseVm } from './LiveMetaBallBaseVm';
-// import { BallParams } from '@hms.hds.Metaball';
+// import { BallParams } from '@ohos.hds.Metaball';
 import { LogDomain, LogHelper } from '@ohos/basicutils';
 import type { Hole } from '../../statusbar/vm/CutoutVm';
 

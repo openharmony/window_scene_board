@@ -1,5 +1,5 @@
 /*
- * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved. 2024-2025. All rights reserved.
+ * Copyright (c) 2021-2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -854,9 +854,9 @@ declare class TextAttribute extends CommonMethod<TextAttribute> {
    * Called when the font list of text is set.
    *
    * <p><strong>NOTE</strong>:
-   * <br>Default font: 'HarmonyOS Sans'
-   * <br>The 'HarmonyOS Sans' font and registered custom fonts are supported for applications.
-   * <br>Only the 'HarmonyOS Sans' font is supported for widgets.
+   * <br>Default font: 'OpenHarmony Sans'
+   * <br>The 'OpenHarmony Sans' font and registered custom fonts are supported for applications.
+   * <br>Only the 'OpenHarmony Sans' font is supported for widgets.
    * </p>
    *
    * @param { string | Resource } value

@@ -87,5 +87,16 @@ export default function SwitchIntentExecutorTest() {
       expect(rsp !== null).assertEqual(true);
       done();
     })
+
+    it('setSwitchInternal', 0, async (done: Function): Promise<void> => {
+      let intentExecutor: SwitchIntentExecutorImpl = new SwitchIntentExecutorImpl();
+      let itemName: string = 'desktop_slide';
+      let switchFlag: number = 0;
+      await intentExecutor.setSwitchInternal(itemName, switchFlag);
+      switchFlag = 1;
+      await intentExecutor.setSwitchInternal(itemName, switchFlag);
+      expect(true).assertTrue();
+      done();
+    })
   })
 }

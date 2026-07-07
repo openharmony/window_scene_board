@@ -21,7 +21,7 @@ import { GestureDockConstants } from '../GestureDockConstants';
 import { GestureDockItemInfo } from '../../dockbar/model/GestureDockItemInfo';
 import Prompt from '@ohos.promptAction';
 import { AppItemInfo, CommonConstants, DockItemInfo, RdbStoreManager } from '@ohos/launchercommon/src/main/ets/TsIndex';
-import lazy { AppModel } from '@ohos/launchercommon/src/main/ets/TsIndex';
+import lazy { AppModel, DeliverUtil } from '@ohos/launchercommon/src/main/ets/TsIndex';
 import { inputMethod } from '@kit.IMEKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
@@ -208,7 +208,7 @@ export class GestureDockUtil {
   }
 
   /**
-   * 构建一个SceneInfo
+   * 构建一个SceneInfo，如果是备份应用，取得实际启动的应用
    * @param appItemInfo
    * @param parameters
    * @returns 目标应用信息
@@ -219,10 +219,26 @@ export class GestureDockUtil {
     let moduleName: string;
     let abilityName: string;
     let appIndex = appItemInfo.appIndex;
-    bundleName = appItemInfo.bundleName;
-    moduleName = appItemInfo.moduleName ?? '';
-    abilityName = appItemInfo.abilityName;
-    log.showInfo(`appItemInfo bundleName:${appItemInfo.bundleName} target bundleName:${bundleName}`);
+    let isDeliver = false;
+    if (isDeliver && DeliverUtil.isStartContainerApp(appItemInfo.bundleName)) {
+      let deliverItemInfo = DeliverUtil.getAppItemByBundleName(appItemInfo.bundleName);
+      let installSource = DeliverUtil.getInstallSourceByIntent(deliverItemInfo?.intent);
+      let newBundleName = GestureDockUtil.getTargetBundleName(installSource);
+      let newModuleName = DeliverUtil.DELIVER_APP_MODULE_NAME;
+      let newAbilityName = installSource === DeliverUtil.ABROAD_APP_PKG ?
+        DeliverUtil.ABROAD_APP_APP_ABILITY_NAME : DeliverUtil.DELIVER_APP_ABILITY_NAME;
+      bundleName = newBundleName;
+      moduleName = newModuleName;
+      abilityName = newAbilityName;
+      parameters[GestureDockConstants.REAL_BUNDLE_NAME] = appItemInfo.bundleName;
+      parameters[GestureDockConstants.REAL_MODULE_NAME] = appItemInfo.moduleName ?? '';
+      parameters[GestureDockConstants.REAL_ABILITY_NAME] = appItemInfo.abilityName;
+    } else {
+      bundleName = appItemInfo.bundleName;
+      moduleName = appItemInfo.moduleName ?? '';
+      abilityName = appItemInfo.abilityName;
+    }
+    log.showInfo(`appItemInfo bundleName:${appItemInfo.bundleName} target bundleName:${bundleName} isDeliver:${isDeliver}`);
     let sceneInfo: SCBSceneInfo = SceneInfoAdapterUtil.getAdapterSceneInfo(bundleName, moduleName,
       abilityName, appIndex);
     let queryKey = bundleName + moduleName + abilityName;
@@ -246,7 +262,13 @@ export class GestureDockUtil {
    */
   public static getTargetBundleName(installSource: string): string {
     let newBundleName: string;
-    newBundleName = '';
+    if (installSource === DeliverUtil.ABROAD_APP_PKG) {
+      newBundleName = AppModel.getInstance().getAppInfoByBundleName(DeliverUtil.ABROAD_APP_APP_BUNDLE_NAME_REAL) ?
+        DeliverUtil.ABROAD_APP_APP_BUNDLE_NAME_REAL : DeliverUtil.ABROAD_APP_APP_BUNDLE_NAME;
+    } else {
+      newBundleName = AppModel.getInstance().getAppInfoByBundleName(DeliverUtil.DELIVER_APP_BUNDLE_NAME_REAL) ?
+        DeliverUtil.DELIVER_APP_BUNDLE_NAME_REAL : DeliverUtil.DELIVER_APP_BUNDLE_NAME;
+    }
     log.showDebug(`getTargetBundleName, newBundleName = ${newBundleName} installSource ${installSource}`);
     return newBundleName;
   }

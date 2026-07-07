@@ -1,0 +1,886 @@
+{
+    "string":[
+        {
+            "name":"face_not_recognized",
+            "value":"تعذر التعرف على الوجه. انقر نقرًا مزدوجًا لإعادة المحاولة.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"two_click_accessible",
+            "value":"انقر نقرًا مزدوجًا للتفعيل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"camera_muted",
+            "value":"تم إيقاف تشغيل الكاميرا، التعرف على الوجه غير مُتاح",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"flash_light_accessible",
+            "value":"المصباح",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cover_normal_charging",
+            "value":"جارٍ الشحن %s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ic_tools_two_click_back_accessible",
+            "value":"النقر نقرًا مزدوجًا لإغلاق لوحة الأدوات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ic_tools_timer_accessible",
+            "value":"المؤقت",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cover_turbo_charging",
+            "value":"قيد الشحن النفاث %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ic_tools_back_around_accessible",
+            "value":"إغلاق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cover_super_charging",
+            "value":"الشحن فائق السرعة SuperCharge %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ic_camera_button_accessible",
+            "value":"الكاميرا",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_card_psd_confirm_accessible",
+            "value":"تأكيد",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pad_notes_accessible",
+            "value":"المفكرة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_locking_popup",
+            "value":"جاري فتح قفل بطاقة SIM...",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"emergency_call_accessible",
+            "value":"مكالمة طوارئ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"out_sensor_fp_dirty_try_again",
+            "value":"تعذر التعرف على بصمة إصبعك",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"flash_light_open_accessible",
+            "value":"مشغَّل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_remember_tips",
+            "value":"تذكر رمز PIN",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_unlock_num_keyboard_cancel",
+            "value":"إلغاء",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_back_accessible",
+            "value":"رجوع",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"flash_light_close_accessible",
+            "value":"مغلق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"fp_hold_finger",
+            "value":"حاول أن تبقي إصبعك على قارئ بصمات الأصابع مدة أطول",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"fp_incorrect_fp_try_again",
+            "value":"تأكد من تغطية إصبعك لقارئ البصمات بالكامل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_remember_popup",
+            "value":"سيتم إدخال رمز PIN تلقائيًا في كل مرة تقوم فيها بإعادة تشغيل جهازك أو إعادة إدخال بطاقة SIM",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cover_fully_charged",
+            "value":"اكتمل الشحن",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ic_tools_memorandum_accessible",
+            "value":"المفكرة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"del_pwd_accessible",
+            "value":"حذف",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cover_quick_charging",
+            "value":"يتم الآن الشحن السريع للجهاز %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"face_unlock_success",
+            "value":"اسحب للأعلى للفتح",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"edit_theme",
+            "value":"السمات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ic_tools_clock_accessible",
+            "value":"الساعة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ic_tools_accessible",
+            "value":"الأدوات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"show_date",
+            "value":"إظهار التاريخ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_unlock_num_keyboard_cancel_accessible",
+            "value":"إلغاء",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ic_tools_vassistant_accessible",
+            "value":"مسح",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ic_tools_calculator_accessible",
+            "value":"الآلة الحاسبة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"emergency_call",
+            "value":"الطوارئ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"custom_mix_psd_ok_accessible",
+            "value":"تأكيد",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"reset_pin_tip",
+            "value":"لقد عينت مؤخرًا كلمة مرور جديدة. إذا كنت قد نسيتها، فيمكنك إعادة ضبطها عن طريق إدخال رقم الدخول/كلمة المرور السابقة.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"reset_psd_tip",
+            "value":"لقد عيّنت رقم دخول جديد مؤخرًا. إذا كنت قد نسيته، فيمكنك إعادة ضبطه عن طريق إدخال رقم الدخول/كلمة المرور السابقة.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"reset_pin",
+            "value":"إعادة ضبط",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"card_edit",
+            "value":"تخصيص",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"edit_wallpaper",
+            "value":"الخلفيات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keypad_password_six",
+            "value":"ستة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"face_unlock_ready_in_input_pwd",
+            "value":"استخدم بصمة الوجه أو أدخل كلمة المرور",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"lock_icon_tip_with_fingerprint",
+            "value":"استخدم بصمة الإصبع أو اسحب من أسفل الشاشة نحو الأعلى لفتح القفل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_area_accessible",
+            "value":"مربع إدخال كلمة المرور",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keyboard_delete_remainder",
+            "value":"تم حذف %1$s و%2$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_to_screen_lock",
+            "value":"إضافة إلى شاشة القفل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keypad_password_three",
+            "value":"ثلاثة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"press_fingerprint_sensor_area",
+            "value":"اضغط للمتابعة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"face_locked_in_input_pwd",
+            "value":"تم إيقاف بصمة الوجه، يُرجى إدخال كلمة المرور.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_enter_psd",
+            "value":"أدخل رقم الدخول",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_incorrect_psd_try_again_mix",
+            "value":"كلمة مرور خاطئة، يُرجى إعادة المحاولة.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"fp_disable_enter_psd",
+            "value":"تم إيقاف ميزة بصمة الإصبع، يُرجى إدخال رقم الدخول.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ic_tools_unavailable_accessible",
+            "value":"%1$s غير متاح",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keypad_password_nine",
+            "value":"تسعة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_unlock_unavailable_tips",
+            "value":"لا يمكن استخدام بطاقة SIM هذه. يُرجى التواصل مع شركة الاتصالات للحصول على المساعدة.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"show_lunar_date",
+            "value":"إظهار التاريخ القمري",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keypad_password_five",
+            "value":"خمسة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keypad_password_zero",
+            "value":"صفر",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"exit_outscreen_theme_selection_accessible",
+            "value":"الخروج من وضع تحديد السمة لشاشة الغطاء",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"confirm",
+            "value":"موافق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_confirm_tips",
+            "value":"موافق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"toast_prompt_face_unlock_success",
+            "value":"تم فتح القفل باستخدام بصمة الوجه",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screen_lock_edit_accessible",
+            "value":"شاشة تحرير شاشة القفل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_unlock_puk_tips",
+            "value":"رمز PUK مختلف عن رمز PIN لبطاقة SIM. يمكنك الحصول عليه من شركة الاتصالات الخاصة بك.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"fp_try_again_psd_after_time",
+            "value":"تم إيقاف ميزة بصمة الإصبع، يُرجى إدخال كلمة المرور بعد %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Double_click_and_hold_accessibility",
+            "value":"انقر نقرًا مزدوجًا مع الاستمرار لفتح قائمة الخيارات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keypad_password_input_success",
+            "value":"تعداد نقطي",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"face_recognition_try_again_after_time",
+            "value":"تم إيقاف بصمة الوجه، يُرجى إعادة المحاولة بعد %s.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"face_locked_in_input_pin",
+            "value":"تم إيقاف بصمة الوجه، يُرجى إدخال رقم الدخول.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keypad_password_two",
+            "value":"اثنان",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"face_not_recognized_in_input_pwd",
+            "value":"تعذر التعرف على الوجه. انقر هنا لإعادة المحاولة.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_unlock_pin_format_tips",
+            "value":"أدخل رمز PIN المكون من %1$s إلى %2$s أرقام",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_pin_area_accessible",
+            "value":"مربع إدخال رمز PIN لبطاقة SIM",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_unlock_reset_pin_confirm_tips",
+            "value":"يُرجى تأكيد رمز PIN",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keypad_password_seven",
+            "value":"سبعة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"emergency_mode_title",
+            "value":"وضع الطاقة الاحتياطية",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keypad_password_four",
+            "value":"أربعة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_incorrect_will_locked",
+            "value":"رقم دخول خاطئ. سيتم قفل الجهاز لمدة %2$s بعد %1$s.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"fp_try_again_after_time_pc",
+            "value":"تم إيقاف ميزة بصمة الإصبع. يُرجى إعادة المحاولة بعد %s أو استخدم طريقة أخرى لإلغاء القفل.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keypad_password_one",
+            "value":"واحد",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"face_locked_in_input_pwd_when_finger_enable",
+            "value":"تم إيقاف بصمة الوجه، استخدم بصمة الإصبع أو رقم الدخول لفتح القفل.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_unlock_puk_format_tips",
+            "value":"أدخل رمز PUK المكون من %1$s أرقام",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ic_tools_opened",
+            "value":"مشغّل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_unlock_pin_exhausting_tips",
+            "value":"رمز PIN لبطاقة SIM غير صحيح، أدخل رمز PUK لفتح قفل هاتفك.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keyboard_simple_delete_remainder_accessible",
+            "value":"تم الحذف.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"face_unlock_verifying",
+            "value":"جارٍ التحقق...",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"exit_edit_mode_accessible",
+            "value":"الخروج من وضع التحرير",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_delete",
+            "value":"حذف",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keypad_password_eight",
+            "value":"ثمانية",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_incorrect_psd_try_again",
+            "value":"رقم دخول خاطئ. يُرجى إعادة المحاولة.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"enter_outscreen_theme_selection_accessible",
+            "value":"الدخول إلى وضع تحديد السمة لشاشة الغطاء",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pattern_psd_error",
+            "value":"نمط دخولٍ خاطئ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"face_unlock_ready_in_input_pin",
+            "value":"استخدم بصمة الوجه أو أدخل رقم الدخول",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"input_pwd_tip_when_face_and_finger_locked",
+            "value":"تم إيقاف ميزة بصمة الوجه والإصبع، يُرجى إدخال رقم الدخول.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"fingerprint_incorrect_will_locked",
+            "value":"تعذر التعرف على بصمة الإصبع، سيتم قفل الجهاز لمدة %2$s بعد %1$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_unlock_reset_pin_tips",
+            "value":"أدخل رمز PIN الجديد",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pattern_psd_enter_psd",
+            "value":"ارسم نمط الدخول الخاص بك",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"finger_print_area_accessible",
+            "value":"منطقة قارئ بصمات الأصابع",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"edit_after_unlock",
+            "value":"فتح القفل لتحرير معلومات شاشة القفل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"custom_mix_psd_area_accessible",
+            "value":"مربع إدخال كلمة المرور. انقر نقرًا مزدوجًا لإدخال نص.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_other_users",
+            "value":"المستخدمون الآخرون",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"fp_try_again_after_time",
+            "value":"تم إيقاف ميزة بصمة الإصبع. يُرجى إعادة المحاولة بعد %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ic_tools_widgets_two_click_accessible",
+            "value":"%1$s، انقر نقرًا مزدوجًا للتفعيل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"face_unlock_ready",
+            "value":"انقر نقرًا مزدوجًا للتعرف على الوجه",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_unlock_pin_not_match",
+            "value":"رمزا PIN غير متطابقين",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"start_drawing_pattern",
+            "value":"ارسم نمط فتح القفل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_unlock_solt_flag",
+            "value":"البطاقة %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_form_to_screen_lock_editor_max",
+            "value":"لا توجد مساحة كافية للإضافة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pattern_area",
+            "value":"منطقة رسم نمط القفل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ic_tools_disable_battery_low",
+            "value":"تعذر تشغيل الفلاش. البطارية منخفضة للغاية.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pattern_psd_drawing_completed",
+            "value":"تم رسم نمط الدخول",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"edit_aod",
+            "value":"العرض الدائم",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_enter_psd_mix",
+            "value":"أدخل كلمة المرور",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"fp_try_again_pin_after_time",
+            "value":"تم إيقاف ميزة بصمة الإصبع. يُرجى إدخال رقم الدخول بعد %s.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"fp_disable_forever",
+            "value":"تم إيقاف ميزة بصمة الإصبع، يُرجى إدخال رقم الدخول.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"enter_edit_mode_accessible",
+            "value":"الدخول إلى وضع التحرير",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cancel",
+            "value":"إلغاء",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_try_again_after_time1",
+            "value":"أعد المحاولة بعد %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"lock_icon_tip",
+            "value":"اسحب من أسفل الشاشة نحو الأعلى لفتح القفل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"fingerprint_antitouch_notification_camera",
+            "value":"تم تشغيل ميزة منع اللمس غير المقصود. لا تغطِّ الكاميرا.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"exit_clock_edit_mode_accessible",
+            "value":"الخروج من وضع تعديل الساعة.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"enter_clock_edit_mode_accessible",
+            "value":"الدخول إلى وضع تعديل الساعة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"esim_unlock_slot_flag",
+            "value":"‏eSIM %s",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

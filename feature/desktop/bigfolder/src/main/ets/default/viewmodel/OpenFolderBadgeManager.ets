@@ -18,6 +18,7 @@ import { GlobalContext, EventConstants } from '@ohos/frameworkwrapper'
 import {
   FolderModel,
   GridLayoutItemInfo,
+  DeliverUtil,
   FolderManager,
   FolderCommonUtil
 } from '@ohos/launchercommon/src/main/ets/TsIndex';

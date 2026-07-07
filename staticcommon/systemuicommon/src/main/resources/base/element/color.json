@@ -397,11 +397,11 @@
       "value": "#40000000"
     },
     {
-      "name": "immersive_capsule_d_aod_color",
+      "name": "immersive_capsule_deliver_aod_color",
       "value": "#40ffffff"
     },
     {
-      "name": "immersive_capsule_d_default_color",
+      "name": "immersive_capsule_deliver_default_color",
       "value": "#ffffff"
     },
     {

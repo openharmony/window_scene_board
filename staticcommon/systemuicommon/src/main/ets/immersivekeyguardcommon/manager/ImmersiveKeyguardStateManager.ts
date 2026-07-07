@@ -21,6 +21,7 @@ import type { OnStateChangeListener } from '@ohos/systemuiutils/src/main/ets/sys
 import { StateListenerRegister } from '@ohos/systemuiutils/src/main/ets/sysdialog/StateListenerRegister';
 import type { FingerprintState, ImmersiveState, ImmersiveTypeScene } from '../common/ImmersiveKeyguardState';
 import { ImmersiveKeyguardState, ImmersiveType } from '../common/ImmersiveKeyguardState';
+import { OneMirrorState } from '../base/anim/OneMirrorState';
 import { SlNtfStyleChangeEvent } from '../../datasharemanager/SysUIDataShareEvent';
 import { DefaultImmersiveUtils } from '../utils/DefaultImmersiveUtils';
 import { slGreetUtils } from '../../utils/SlGreetUtils';
@@ -38,6 +39,11 @@ export class ImmersiveKeyguardStateManager {
    * 状态监听器
    */
   private stateListeners: StateListenerRegister = new StateListenerRegister();
+
+  /**
+   * 通知一镜到底状态
+   */
+  private oneMirrorState: OneMirrorState = new OneMirrorState();
 
   /**
    * 多事件管理器
@@ -67,6 +73,15 @@ export class ImmersiveKeyguardStateManager {
 
   constructor() {
     this.eventMgr.on(SlNtfStyleChangeEvent, this.onSlNtfStyleChangeEvent);
+  }
+
+  /**
+   * 一镜到底动效状态管理
+   *
+   * @returns 动效状态
+   */
+  public getOneMirrorState(): OneMirrorState {
+    return this.oneMirrorState;
   }
 
   /**

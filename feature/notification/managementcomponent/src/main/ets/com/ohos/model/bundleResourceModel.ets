@@ -28,6 +28,7 @@ const LINUX_APPLICATION = '2';
 
 const TAG = 'NotificationManagement-BundleResourceModel';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.NC, TAG);
+const DELIVER_TONG_BUNDLE_NAME: string = 'com.deliver.appstore.lite';
 
 export default class BundleResourceModel {
   async getBundleInfoAsync(param: Object): Promise<KeyValPair> {
@@ -69,6 +70,7 @@ export default class BundleResourceModel {
     result.appSwitch = bundleInfo.appSwitch ?? false;
     result.appSlot = bundleInfo.appSlot ?? 0;
     result.appTitle = bundleInfo.appTitle;
+    result.isdeliverApp = bundleInfo.isdeliverApp ?? false;
     return result;
   }
 
@@ -99,10 +101,12 @@ export default class BundleResourceModel {
     let allAppInfo = await notificationSettingManager.getAppItem(appInfo.uid, appInfo.name);
     let appTitle = allAppInfo?.label;
     let appIcon = allAppInfo?.icon;
+    const isDeliver = ['1', '2'].includes(appInfo.codePath);
+    const isdeliverApp = appInfo.installSource === DELIVER_TONG_BUNDLE_NAME;
     if (!allAppInfo) {
       log.showInfo(`getAppItem fail, appInfo.uid=${appInfo.uid}, bundleName=${data.name}`);
       let labelAndIcon = await notificationSettingManager.getAppResource(ContextManager.getContext(), data.name,
-        data.appInfo.bundleType);
+        data.appInfo.bundleType, isDeliver);
       appTitle = labelAndIcon.label;
       appIcon = labelAndIcon.icon;
     }
@@ -113,9 +117,24 @@ export default class BundleResourceModel {
       appUid: appInfo.uid,
       systemApp: appInfo.systemApp,
       appIcon: appIcon ?? '',
-      appIndex
+      appIndex,
+      isdeliverApp: isdeliverApp,
     };
     return bundleInfo;
+  }
+
+  /**
+   * 是否为应用
+   * @param bundleName 应用的bundleName
+   *
+   * @returns 是否为应用
+   */
+  async isDeliverApplication(bundleName: string): Promise<boolean> {
+    let userId = await osAccount.getAccountManager().getOsAccountLocalId();
+    let bundleInfo = await bundleManager.getBundleInfo(bundleName, IS_INCLUDE_ABILITY_INFO, userId);
+    let appInfo = bundleInfo.appInfo;
+    log.showInfo('isDeliverApplication appInfo: ' + appInfo.codePath);
+    return appInfo.codePath === ohos_APPLICATION || appInfo.codePath === LINUX_APPLICATION;
   }
 
   /**

@@ -23,11 +23,13 @@ import { FileUtilTest } from './ets/framework/utils/FileUtils.test';
 import { LogHelperTest } from './ets/framework/utils/LogHelper.test';
 import { JsonUtilsTest } from './ets/framework/manager/serialization/JsonUtils.test';
 import { AppStorageUtilTest } from './ets/framework/utils/AppStorageUtil.test';
+import { FwkDeliverUtilTest } from './ets/framework/utils/DeliverUtil.test';
 import { AudioManagerHelperTest } from './ets/component/utils/AudioManagerHelper.test';
 import UnionArrayTest from './ets/recent/UnionArray.test';
 import { SingleManagerTest } from './ets/component/utils/SingleManager/SingleManager.test';
 import { SolidColorAlgorithmUtilsTest } from './ets/framework/utils/SolidColorAlgorithmUtils.test';
 import { AnimateToScheduleUtilsTest } from './ets/framework/utils/AnimateToScheduleUtils.test';
+import { OutdoorConfigTest } from './ets/framework/utils/OutdoorConfig.test';
 import TaskPoolTest from './ets/taskpool/TaskPool.test';
 import TaskManagerTest from './ets/taskpool/viewmodel/viewhandler/TaskManager.test';
 
@@ -48,7 +50,9 @@ export function FrameworkTestSuite() {
   LogHelperTest();
   JsonUtilsTest();
   AppStorageUtilTest();
+  FwkDeliverUtilTest();
   AnimateToScheduleUtilsTest();
+  OutdoorConfigTest();
   TaskPoolTest();
   TaskManagerTest();
 }

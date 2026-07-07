@@ -66,7 +66,7 @@ export class LaunchLayoutCacheManager extends BaseLayoutCacheManager implements 
   }
 
   static getInstance(): LaunchLayoutCacheManager {
-    // PC使用LauncherLayoutCacheConfig获取LaunchLayoutCacheManager，BigScreenLayoutCacheManager为Hpr
+    // PC使用LauncherLayoutCacheConfig获取LaunchLayoutCacheManager，SuperFoldLayoutCacheManager为Hpr
     if (LauncherLayoutCacheConfig.getInstance().hasLayoutCacheManager()) {
       let layoutCacheManager: LaunchLayoutCacheManager | undefined =
         LauncherLayoutCacheConfig.getInstance().getLayoutCacheManager();
@@ -877,7 +877,7 @@ updateLayoutIfDuplicate(): void {}
       }
     });
     if (label === BusinessType.BUSINESS_DRAG && (!LauncherLayoutCacheUtil.getIsFirstRotate() ||
-      LauncherLayoutCacheUtil.getBigScreenLazyRotate())) {
+      LauncherLayoutCacheUtil.getSuperFoldLazyRotate())) {
       LauncherLayoutCacheUtil.changeLazyRotateSettings(gridLayoutItemList);
       updateInfo = LauncherLayoutCacheUtil.getLazyRotateChangeItemsForCache(updateInfo);
       LauncherLayoutCacheUtil.getLazyRotateChangeItemsForCache(updateItems);
@@ -925,7 +925,7 @@ updateLayoutIfDuplicate(): void {}
       return;
     }
     if (label === BusinessType.BUSINESS_BASIC_DESKTOP && LauncherLayoutCacheUtil.getIsLazyRotate() &&
-      DeviceHelper.isBigScreenMachine()) {
+      DeviceHelper.isSuperFoldMachine()) {
       // 右键排序业务适配双缓存
       updateItems = LauncherLayoutCacheUtil.getLazyRotateChangeItemsForCache(updateItems);
       LauncherLayoutCacheUtil.changeLazyRotateSettings(updateItems);

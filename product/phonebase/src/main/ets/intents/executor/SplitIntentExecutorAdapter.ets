@@ -18,7 +18,11 @@ import {
   LogDomain,
   Logger
 } from '@ohos/basicutils';
+import { window } from '@kit.ArkUI';
 import insightIntent from '@ohos.app.ability.insightIntent';
+import lazy {
+  SCBSceneWindowAiSplitSwitchUtils
+} from '@ohos/windowscene/src/main/ets/scene/utils/SCBSceneWindowAiSplitSwitchUtils';
 
 const TAG: string = 'IntentExecutorAdaptor';
 const log: Logger = Logger.getLogHelper(LogDomain.WINDOW);
@@ -62,6 +66,7 @@ export default class SplitIntentExecutorAdapter extends InsightIntentExecutor {
    */
   private viewSplitScreen(param: Record<string, Object>): Promise<insightIntent.ExecuteResult> {
     log.showInfo(TAG, '[ExecuteIntent] start intent: view split screen');
+    SCBSceneWindowAiSplitSwitchUtils.getInstance().notifyListenerToSplitScreen();
     return Promise.resolve({
       code: 0,
       result: {

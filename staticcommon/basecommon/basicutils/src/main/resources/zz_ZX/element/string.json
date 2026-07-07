@@ -137,6 +137,10 @@
             "value":"[TS_871034]_Downloading"
         },
         {
+            "name":"app_others",
+            "value":"[TS_878149]_deliver"
+        },
+        {
             "name":"add_to_desktop",
             "value":"[TS_863917]_Add to home screen"
         },

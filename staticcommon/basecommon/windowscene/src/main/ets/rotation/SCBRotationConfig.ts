@@ -152,7 +152,7 @@ export class SCBRotationConfig {
   private isFoldAndExpandScreenType(foldScreenType: FoldPhoneTypeValue): boolean {
     if (foldScreenType === FoldPhoneTypeValue.STRAIGHT || foldScreenType === FoldPhoneTypeValue.LARGE_FOLD ||
       foldScreenType === FoldPhoneTypeValue.EXTERNAL_FOLD ||
-      foldScreenType === FoldPhoneTypeValue.EXPANDING_BIG_SCREEN) {
+      foldScreenType === FoldPhoneTypeValue.EXPANDING_SUPER_FOLD) {
       return true;
     }
     return false;
@@ -179,7 +179,7 @@ export class SCBRotationConfig {
    * @returns {boolean} isFoldAndExpandScreenType 屏幕形态是否是F态M态G态
    */
   private isFMGScreenType(foldScreenType: FoldPhoneTypeValue): boolean {
-    return foldScreenType === FoldPhoneTypeValue.EXPANDING_ULTRA_SCREEN_PRODUCT;
+    return foldScreenType === FoldPhoneTypeValue.EXPANDING_THREE_FOLD_PRODUCT;
   }
 
   /**
@@ -222,7 +222,7 @@ export class SCBRotationConfig {
     }
 
     // M态 或 展开态
-    if ((DeviceHelper.isUltraScreenProduct() && DeviceHelper.isMState()) ||
+    if ((DeviceHelper.isThreeFoldProduct() && DeviceHelper.isMState()) ||
         screenSession?.isExpandStatus) {
       return CONFIG_INDEX_ONE;
     }

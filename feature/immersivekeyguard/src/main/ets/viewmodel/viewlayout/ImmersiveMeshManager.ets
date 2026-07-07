@@ -25,6 +25,7 @@ import {
 } from '@ohos/screenlockcommon';
 import { WidgetStyleStateV2 } from '@ohos/screenlockcommon/Index';
 import {
+  ImmersiveAodStyle,
   immersiveKgMgr, ImmersiveState,
   IState,
   OnStateChangeListener,
@@ -601,9 +602,13 @@ export class ImmersiveMeshManager implements IImmersiveMeshVm {
     }
 
     this.isReachMax = isReachMax;
+    let aodStyle: ImmersiveAodStyle | undefined = immersiveKgMgr.getOneMirrorState().getAodStyle(true);
+    if (aodStyle) {
+      aodStyle.setNtfMeshReachMax(isReachMax);
+    }
 
     // 息屏状态、非列表态不做动效
-    if (!this.immersiveState.isShowList()) {
+    if (aodStyle?.isAod || !this.immersiveState.isShowList()) {
       this.setListPanelAlign();
       return;
     }

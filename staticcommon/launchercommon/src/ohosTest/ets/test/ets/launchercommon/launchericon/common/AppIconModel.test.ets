@@ -25,8 +25,8 @@ import {
   when,
   ArgumentMatchers
 } from '@ohos/hypium';
-import { StartType } from '@ohos/basicutils';
-import { SCBVisualEffectMgr } from '@ohos/componenthelper';
+import { OutdoorConfig, StartType } from '@ohos/basicutils';
+import { OutdoorCcmManager, SCBVisualEffectMgr } from '@ohos/componenthelper';
 import { bundleManagerFwk, DeviceHelper, onLineThemeUtil, ResourceManager } from '@ohos/frameworkwrapper';
 import {
   AppStatus,
@@ -205,6 +205,25 @@ export function AppIconModelTest() {
 
       ret = instance.isValidCloneItem(null);
       expect(ret).assertNull();
+    });
+
+    it('isIconBadgeInvisible', 0, () => {
+      let instance: AppIconModel = AppIconModel.getInstance();
+
+      let ret = instance.isIconBadgeInvisible(undefined);
+      expect(ret).assertFalse();
+
+      let outdoorConfig: OutdoorConfig = OutdoorConfig.getInstance();
+      let outdoorCcmManager: OutdoorCcmManager = OutdoorCcmManager.getInstance();
+      let mocker: MockKit = new MockKit();
+      let isInOutdoor = mocker.mockFunc(outdoorConfig, outdoorConfig.isInOutdoorMode);
+      let isBadgeInvisible = mocker.mockFunc(outdoorCcmManager, outdoorCcmManager.isIconBadgeInvisible);
+      when(isInOutdoor)(ArgumentMatchers.any).afterReturn(true);
+      when(isBadgeInvisible)(ArgumentMatchers.any).afterReturn(true);
+      expect(instance.isIconBadgeInvisible(CommonConstants.SETTINGS_BUNDLE)).assertTrue();
+      mocker.ignoreMock(outdoorConfig, outdoorConfig.isInOutdoorMode);
+      mocker.ignoreMock(outdoorCcmManager, outdoorCcmManager.isIconBadgeInvisible);
+      mocker.clearAll();
     });
   });
 }

@@ -52,11 +52,16 @@ import { notificationStyle } from '../../vm/style/NotificationStyle';
 import { NotificationGroupDetail } from './NotificationGroupDetail';
 import {
   AccessibilityUtil,
+  AodStyleType,
   bannerMgr,
+  ImmersiveAodStyle,
+  immersiveKgMgr,
   NotificationSysEventReporter
 } from '@ohos/systemuicommon';
 import { NotificationType } from '../../common/NotificationType';
-import { ScreenLockNotificationConst } from '@ohos/screenlockcommon/src/main/ets/constants/ScreenLockNotificationConstants';
+import {
+  ScreenLockNotificationConst
+} from '@ohos/screenlockcommon/src/main/ets/constants/ScreenLockNotificationConstants';
 import { NotificationAnimationParas } from '../../common/NotificationAnimationParas';
 import { NotificationConfig } from '../../common/NotificationConfig';
 import { screenLockSysFloatTipControl } from '@ohos/screenlockcommon/src/main/ets/manager/SysFloatTipController';
@@ -97,6 +102,7 @@ const GROUP_PRE_TWICE = 3;
 const GROUP_MAX_SHOW_SIZE = 8;
 
 const ANIM_KG_DELAY = 25;
+
 /**
  * 条目裁剪动效
  *
@@ -127,62 +133,49 @@ export struct NotificationGroupItem {
    * 分组通知对象一般不会变
    */
   private ntfEntry?: NotificationEntry;
-
   /**
    * 组通知展开变化回调
    */
   private changeItemExpand?: (isExpand: boolean) => void;
-
   /**
    * 通知列表类型
    */
   @Consume notificationType: number;
-
   @StorageLink('contract') @Watch('contractEvent') contract: boolean = false;
-
   /**
    * 面板触摸事件down点
    */
   @Consume @Watch('onGlobalDownYChange') panelDownGlobalY: number;
-
   /**
    * 面板触摸事件down点X轴坐标
    */
   @Consume @Watch('onGlobalDownXChange') panelDownGlobalX: number;
-
   /**
    * 窗口是否可见
    */
   @Consume @Watch('onWindowShowChange') isNtfWindowShow: boolean;
-
   // 叠加动效参数
   @ObjectLink ntfAniParameters: NotificationAnimationParas;
-
   /**
    * 通知列表滑动动效
    */
   private ntfScrollAnimation: NtfScrollAnimation = new NtfScrollAnimation();
-
   /**
    * 叠加缩放参数
    */
   @Prop outScale: number;
-
   /**
    * 当前分组是否展开
    */
   @State @Watch('onIsGroupExpandedChange') isGroupExpanded: boolean = false;
-
   /**
    * 触摸动效scale参数
    */
   @State groupItemScale: number = 1;
-
   /**
    * 分组通知个数
    */
   @Provide groupRemainderCount: string = '';
-
   /**
    * 隐藏通知内容时，几个通知
    */
@@ -207,17 +200,14 @@ export struct NotificationGroupItem {
    * 分组子通知列表
    */
   @State ntfChildrenList: Array<NotificationEntry> = [];
-
   /**
    * 圆角
    */
   @Prop radius: number = 0;
-
   /**
    * 组通知横滑动画
    */
   private groupItemTranAnim: AnimateParam | null = null;
-
   /**
    * 组通知最后一个Item的hash code，用于判断是否是最后一个item。
    */
@@ -234,121 +224,95 @@ export struct NotificationGroupItem {
    * 分组头数据VM
    */
   private headerVM: NtfHeaderVM = new NtfHeaderVM();
-
   /**
    * 组通知条目横滑控制器
    */
   private swipeController: NtfItemSwipeController = new NtfItemSwipeController();
-
   /**
    * close按钮VM
    */
   @Consume private closeVM?: NtfCloseVM;
-
   @State groupItemModifier: NtfGroupItemModifier = new NtfGroupItemModifier(this.closeVM);
-
   @State groupItemAreaModifier: GroupItemAreaModifier = new GroupItemAreaModifier(this.ntfAniParameters);
-
   @State hoverScaleRate: number = 1;
-
   private touchStartX: number = 0;
   private touchStartY: number = 0;
-
   /**
    * 多事件统一管理
    */
   private eventMgr: EventManager = EvtBus.createEventManager();
-
   private singleItemVm: NtfSingleItemVM = new NtfSingleItemVM();
-
   /**
    * 组通知GroupBrief的高度
    */
   static briefHeight: number = 0;
-
   /**
    * 组通知与子通知数据交换
    */
   private groupChildDataChannel: GroupChildNtfDataChannel | null = null;
-
   /**
    * the width of menu
    */
   private menuWidth: number = 0;
-
   /**
    * 锁屏左滑菜单的宽度
    */
   @State slMenuWidth: number = 0;
-
   /**
    * the height of menu
    */
   private menuClipHeight: number = 0;
-
   private isUseEffect: boolean = false;
-
   /**
    * 订阅函数列表
    */
   private unsubscribeFuncArr: Array<unsubscribe> = [];
-
   private deleteAnimSyncFlag: boolean = false;
-
   private deleteAnimSyncData: NotificationEntry | undefined;
-
   @Prop canExpand: boolean = true;
-
   @Prop isGestureEnabled: boolean = true;
-
   /**
    * 简介图标距离顶部的位置
    */
   @State briefIconPositionY: number = 0;
-
   /**
    * 是否显示通知时间
    */
   private showDateTime: boolean = true;
-
   /**
    * 记录左滑状态的通知的哈希值，用于左滑状态互斥（同一时刻，只允许一条通知左滑）
    */
   @Consume @Watch('onSwipeIdChange') swipeHashCode: string;
-
   /**
    * 记录通知是否被拖动过，用于控制menu加载
    */
   @State isDragged: boolean = false;
-
   @Prop itemTranslateY: number = 0;
-
   private hasCalledAboutToDisappear: boolean = false;
   /**
    * 记录展示按钮的通知的哈希值，用于互斥操作
    */
   @Consume displayButtonsHashCode: string;
-
   /**
    * 锁屏是否加锁状态
    */
   @Consume @Watch('onLockStateChange') isKeyguardLock: boolean;
-
   /**
    * 锁屏条目宽度记录
    */
   @State slItemWidth?: SlNtfItemWidth = undefined;
-
   /**
    * 通知条目样式
    */
   @State itemStyle: NotificationItemStyle = notificationStyle.item;
-
+  /**
+   * Aod显示样式
+   */
+  @State aodStyle?: ImmersiveAodStyle = undefined;
   /**
    * 通知动效vm
    */
   ntfAnimVM: NtfAnimVM | undefined = undefined;
-
   @State colorModeVM: NtfColorModeVM | undefined = undefined;
   /**
    * 裁剪参数
@@ -358,20 +322,14 @@ export struct NotificationGroupItem {
    * 叠加缩放中心
    */
   @Prop outScaleCenterY: string | number = '50%';
-
   /**
    * 是否开启辅助功能朗读模式
    */
   @StorageProp('isAccessibilityMode') isAccessibilityMode: boolean = false;
-
   @State itemGestureModifier: ItemGestureModifier = new ItemGestureModifier();
-
   private dataChangeInterrupt?: PromiseInterrupt = undefined;
-
   private isRTL: boolean = RTLUtil.isRTL();
-
   private groupItemArea: Area | undefined = undefined;
-
   /**
    * 通知数据是否在更新
    */
@@ -380,19 +338,17 @@ export struct NotificationGroupItem {
    * 当前通知条目可以显示左滑按钮
    */
   private canShowMenuRow: boolean = false;
-
   private ntfProductConfig: NtfListContentConfig = ntfViewConfigManager.getListContentConfig();
   private isBrightModeCentralized: boolean = (this.ntfProductConfig.brightnessMode === NtfBrightnessMode.Centralized);
   @State @Watch('onOverlayAnimDataChanged') overlayAnimData: OverlayAnimData = new OverlayAnimData();
   private ancestorsOverlayAnimData?: OverlayAnimData[];
-
   @Prop @Watch('onLockStateChange') isNeedPanelInScreenLock: boolean = false;
   @Prop isShowBannerFromScreenLock: boolean = false;
   @Prop @Watch('onLockStateChange') isLockScreen: boolean = false;
   @Prop @Watch('onLockStateChange') isSecureAndLocked: boolean = false;
-
   private updateDataInterceptor?: ActionInterceptor;
-  private scrollUpIfNeed = (groupTypeKey?: string): void => {};
+  private scrollUpIfNeed = (groupTypeKey?: string): void => {
+  };
 
   onSwipeIdChange() {
     log.showDebug(`onSwipeIdChange:${this.ntfEntry?.getGroupKey()}, ${this.swipeHashCode}}`);
@@ -481,6 +437,7 @@ export struct NotificationGroupItem {
     }));
 
     if (NotificationType.isKeyguard(this.notificationType)) {
+      this.aodStyle = immersiveKgMgr.getOneMirrorState().getAodStyle(true);
       this.slItemWidth = this.swipeController?.getSlItemWidth();
       this.unsubscribeFuncArr.push(sEventManager.subscribe(
         ScreenLockNotificationConst.SCREENLOCK_NTF_NEED_TO_SWIPE_TO_COLLAPSE,
@@ -647,7 +604,9 @@ export struct NotificationGroupItem {
     .id(TAG + '_GroupBrief_' + this.ntfEntry?.getGroupTypeKey())
     // 无障碍场景双击响应click
     .onClick(this.isKeyguardLock ? undefined : (this.canExpand ? (this.isHideNtfContent ? undefined :
-      (this.isAccessibilityMode ? () => { this.onGroupBriefClick(2); } : undefined)) : undefined))
+      (this.isAccessibilityMode ? () => {
+        this.onGroupBriefClick(2);
+      } : undefined)) : undefined))
     .onGestureJudgeBegin((info) => {
       return this.swipeController?.onGestureJudgeBegin(this.notificationType, info);
     })
@@ -697,11 +656,17 @@ export struct NotificationGroupItem {
       }
       .clip(true)
       .borderRadius(this.radius)
-      .backgroundColor(this.colorModeVM?.themeBgColor)
-      .backgroundBrightnessInternal(this.colorModeVM?.themeBgBrightnessOption)
+      .backgroundColor(this.aodStyle?.isAod ? this.aodStyle?.getStyleValue(AodStyleType.LIST_CARD_BACKGROUND_COLOR) :
+        this.colorModeVM?.themeBgColor)
+      .backgroundBrightnessInternal(this.aodStyle?.isAod ? BrightnessOptionUtils.aodScreenNtfBaseboardLightOption :
+        this.colorModeVM?.themeBgBrightnessOption)
     }
-    .scale({ x: this.getScale(), y: this.getScale(), centerX: '50%',
-      centerY: this.ntfAniParameters?.itemScaleCenterY})
+    .scale({
+      x: this.getScale(),
+      y: this.getScale(),
+      centerX: '50%',
+      centerY: this.ntfAniParameters?.itemScaleCenterY
+    })
     .useEffect(this.isUseEffect)
     .shadow(this.itemStyle.shadow) // 阴影、裁切保持同步
     .itemClip(this.getItemClipStyle())
@@ -721,8 +686,8 @@ export struct NotificationGroupItem {
       }
     })
     .pointLight({
-      illuminated: NotificationType.isKeyguard(this.notificationType) ?
-      IlluminatedType.BORDER : IlluminatedType.NONE
+      illuminated: NotificationType.isKeyguard(this.notificationType) && !this.aodStyle?.isAod ?
+        IlluminatedType.BORDER : IlluminatedType.NONE
     })
   }
 
@@ -757,7 +722,8 @@ export struct NotificationGroupItem {
         .width(this.overlayAnimData.isAnimating ? this.overlayAnimData.contentWidth : undefined)
         .height(this.overlayAnimData.isAnimating ? this.overlayAnimData.contentHeight : undefined)
         .opacity(this.overlayAnimData.isAnimating ? this.overlayAnimData.contentOpacity : undefined)
-        .onAppear(() => { sEventManager.publish(obtainLocalEvent(
+        .onAppear(() => {
+          sEventManager.publish(obtainLocalEvent(
             NotificationConstants.PHONE_LOCK_IS_GROUP_EXPANDED, this.isGroupExpanded));
         })
     } else {
@@ -807,8 +773,9 @@ export struct NotificationGroupItem {
         .width(this.overlayAnimData.isAnimating ? this.overlayAnimData.contentWidth : undefined)
         .height(this.overlayAnimData.isAnimating ? this.overlayAnimData.contentHeight : undefined)
         .opacity(this.overlayAnimData.isAnimating ? this.overlayAnimData.contentOpacity : undefined)
-        .onAppear(() => { sEventManager.publish(obtainLocalEvent(
-          NotificationConstants.PHONE_LOCK_IS_GROUP_EXPANDED, this.isGroupExpanded));
+        .onAppear(() => {
+          sEventManager.publish(obtainLocalEvent(
+            NotificationConstants.PHONE_LOCK_IS_GROUP_EXPANDED, this.isGroupExpanded));
         })
     } else {
       this.buildNotificationGroupBriefKeyguard();
@@ -857,7 +824,8 @@ export struct NotificationGroupItem {
       }
       .backgroundColor(this.isBrightModeCentralized && this.colorModeVM?.isBrightnessEffect ? undefined :
         this.colorModeVM?.themeBgColor)
-      .backgroundBrightnessInternal(this.isBrightModeCentralized ? undefined : this.colorModeVM?.themeBgBrightnessOption)
+      .backgroundBrightnessInternal(this.isBrightModeCentralized ? undefined :
+        this.colorModeVM?.themeBgBrightnessOption)
       .width(this.overlayAnimData.isAnimating ? this.overlayAnimData.bgWidth : undefined)
       .height(this.overlayAnimData.isAnimating ? this.overlayAnimData.bgHeight : undefined)
       .borderRadius(this.overlayAnimData.isAnimating ? this.overlayAnimData.bgRadius : undefined)
@@ -870,7 +838,7 @@ export struct NotificationGroupItem {
       y: this.outScale * this.groupItemScale,
       centerX: '50%',
       centerY: this.outScale < 1 && NotificationType.isDropdown(this.notificationType) ?
-      this.outScaleCenterY : this.ntfAniParameters?.itemScaleCenterY
+        this.outScaleCenterY : this.ntfAniParameters?.itemScaleCenterY
     })
     .borderRadius(this.overlayAnimData.isAnimating ? this.overlayAnimData.bgRadius : this.radius)
     .clip(this.clipParam)
@@ -921,8 +889,8 @@ export struct NotificationGroupItem {
       log.showInfo(`onDisAppear`);
       this.closeVM?.cancelItemHover(this.ntfEntry!);
     })
-    .scale({x: this.hoverScaleRate, y: this.hoverScaleRate})
-    .animation({duration: 300, curve: Curve.Sharp})
+    .scale({ x: this.hoverScaleRate, y: this.hoverScaleRate })
+    .animation({ duration: 300, curve: Curve.Sharp })
     .accessibilityLevel('no')
     .onTouch(this.ntfOnTouch)
     .visibility(this.closeVM?.deletingItem === this.ntfEntry
@@ -930,11 +898,12 @@ export struct NotificationGroupItem {
     .width('100%')
     .borderRadius(this.radius)
     .clip(this.overlayAnimData.isAnimating ? false : NotificationType.isPc(this.notificationType) ? true :
-    (!this.itemStyle.shadow || (!this.isKeyguardLock && NotificationType.isDropdown(this.notificationType))))
+      (!this.itemStyle.shadow || (!this.isKeyguardLock && NotificationType.isDropdown(this.notificationType))))
     // 当swipe展开时，点击收起swipe
     .onClick(this.isSwipeExpand() ? () => {
       this.swipeController?.swipe2Collapse();
-    } : () => {})
+    } : () => {
+    })
     .onGestureJudgeBegin((info) => {
       return this.swipeController?.onGestureJudgeBegin(this.notificationType, info);
     })
@@ -1019,15 +988,15 @@ export struct NotificationGroupItem {
   private ntfMenuRowClip(): PathAttribute | RectAttribute | boolean {
     let marginTopVal = this.isGroupExpanded ? NotificationConstants.NTF_MENU_ROW_MARGIN_TOP : 0;
     return NotificationType.isKeyguard(this.notificationType) ?
-    this.swipeController?.buildKgMenuClipRect({
-      menuWidth: this.slMenuWidth,
-      menuHeight: this.menuClipHeight,
-      offsetY: this.ntfAniParameters?.ntfItemClipOffsetY,
-      marginTopVal: marginTopVal
-    }) : false;
+      this.swipeController?.buildKgMenuClipRect({
+        menuWidth: this.slMenuWidth,
+        menuHeight: this.menuClipHeight,
+        offsetY: this.ntfAniParameters?.ntfItemClipOffsetY,
+        marginTopVal: marginTopVal
+      }) : false;
   }
 
-  private getAlignment() : Alignment {
+  private getAlignment(): Alignment {
     return this.isGroupExpanded ? Alignment.TopEnd : Alignment.End
   }
 
@@ -1094,17 +1063,20 @@ export struct NotificationGroupItem {
     if (event.type === TouchType.Move) {
       if (Math.abs(this.touchStartX - event.changedTouches[0].windowX) > 4 ||
         Math.abs(this.touchStartY - event.changedTouches[0].windowY) > 4) {
-        animateTo(NotificationConfig.NOTIFICATION_SCALE_ANIM, () => { this.groupItemScale = 1; })
+        animateTo(NotificationConfig.NOTIFICATION_SCALE_ANIM, () => {
+          this.groupItemScale = 1;
+        })
       }
       return;
     }
 
     if (event.type === TouchType.Up || event.type === TouchType.Cancel) {
-      animateTo(NotificationConfig.NOTIFICATION_SCALE_ANIM, () => { this.groupItemScale = 1; })
+      animateTo(NotificationConfig.NOTIFICATION_SCALE_ANIM, () => {
+        this.groupItemScale = 1;
+      })
       return;
     }
   }
-
   private collapseGroupNtf = (): void => {
     this.swipeController?.swipe2Collapse();
   }
@@ -1225,14 +1197,17 @@ export struct NotificationGroupItem {
   }
 
   private refreshDataListWithAni(func: (size: number) => void, size: number): void {
-    let isKg = NotificationType.isKeyguard(this.notificationType);
+    let isKg = NotificationType.isKeyguard(this.notificationType) && !this.aodStyle?.isAod;
     let anim: AnimateParam = { duration: 350, curve: Curve.Friction }; // 堆叠效果同步动效
     if (isKg) {
       this.ntfAniParameters?.updateClipAnim(anim).setClipAnimWait().updateItemPresSize();
     }
     let delay = isKg && !this.isClicked ? ANIM_KG_DELAY : 0; // 锁屏面板时延
     this.isDataUpdate = true;
-    animateTo({ delay: delay, duration: 350, curve: Curve.Friction,
+    animateTo({
+      delay: delay,
+      duration: 350,
+      curve: Curve.Friction,
       onFinish: () => {
         log.showInfo(`[ani_finish] refreshDataListWithAni`);
         this.isDataUpdate = false;
@@ -1253,9 +1228,10 @@ export struct NotificationGroupItem {
       let totalCount = Math.min(ArrayUtils.getSize(this.ntfEntry?.childrenEntry), SINGLE_APP_LIMIT);
       let remainderCount = totalCount - GROUP_PRE_TWICE;
       if (remainderCount > 0) {
-        ResUtils.getInnerStringNum($r('app.string.ntf_brief_remainder_count'), remainderCount).then((result: string) => {
-          this.groupRemainderCount = result;
-        });
+        ResUtils.getInnerStringNum($r('app.string.ntf_brief_remainder_count'), remainderCount)
+          .then((result: string) => {
+            this.groupRemainderCount = result;
+          });
       } else {
         this.groupRemainderCount = '';
       }
@@ -1335,7 +1311,7 @@ export struct NotificationGroupItem {
 
       if (clickCount === ScreenLockNotificationConst.NTF_FIRST_CLICK) {
         log.showInfo(`onKgGroupBriefTap, clickCount: 1, hash: ${firstChild.hashCode}`);
-        this.kgBriefClickTip(true);
+        this.kgBriefClickTip(!(AppStorage.get<boolean>('reboot_ntf_msg') ?? false));
       } else if (clickCount === ScreenLockNotificationConst.NTF_SECOND_CLICK) {
         log.showInfo(`onKgGroupBriefTap, clickCount: 2, hash: ${firstChild.hashCode}`);
         this.singleItemVm.startAgentOnLock(true, firstChild, true);
@@ -1419,7 +1395,7 @@ export struct NotificationGroupItem {
       return false;
     }
     let componentId: string = this.isNtfKeyguard() ?
-    ScreenLockNotificationConst.NTF_OUT_DROPDOWN_PANEL_KEY_GUARD_TIP : ScreenLockNotificationConst.NTF_KEY_GUARD_TIP;
+      ScreenLockNotificationConst.NTF_OUT_DROPDOWN_PANEL_KEY_GUARD_TIP : ScreenLockNotificationConst.NTF_KEY_GUARD_TIP;
     if (clickCount === ScreenLockNotificationConst.NTF_FIRST_CLICK && this.isKeyguardLocked()) {
       screenLockSysFloatTipControl.setTipMessage(componentId,
         ResUtils.getInnerStringByName(ScreenLockNotificationConst.DOUBLE_CLICK_EXPAND_TIP));

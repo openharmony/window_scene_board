@@ -18,7 +18,9 @@ import { NotificationConfig } from '../../common/NotificationConfig';
 import { CommonUtils, LogDomain, LogHelper } from '@ohos/basicutils';
 import { ItemUtils, RTLUtil } from '@ohos/componenthelper';
 import { DeviceHelper } from '@ohos/frameworkwrapper';
-import { ObservedItem, OverlayIconStyle} from '@ohos/systemuicommon/src/main/ets/TsIndex';
+import { AodStyleType, ImmersiveAodStyle, immersiveKgMgr,
+  ObservedItem,
+  OverlayIconStyle} from '@ohos/systemuicommon/src/main/ets/TsIndex';
 import { fontScaleManager, FontScaleState } from '@ohos/systemuicommon';
 import { NotificationItemStyle } from '../../vm/style/NotificationItemStyle';
 import { notificationStyle } from '../../vm/style/NotificationStyle';
@@ -42,6 +44,7 @@ import { NtfCloseVM } from '../../vm/NtfCloseVM';
 import { NtfGroupItemModifier } from '../../model/NtfItemModifier';
 import { ResUtils } from '@ohos/windowscene';
 import { AccessibilityCollapsedState } from '@ohos/systemuicommon/src/main/ets/accessibility/AccessibilityAppName';
+import { DeliverBadge } from '@ohos/systemuicommon/src/main/ets/view/DeliverBadge';
 import { NotificationCollaBadgeViewV1 } from '@ohos/systemuicommon/src/main/ets/view/NotificationCollaBadgeViewV1';
 
 const TAG = 'NotificationGroupBrief';
@@ -115,6 +118,12 @@ export struct NotificationGroupBrief {
    * 通知面板类型
    */
   @Consume notificationType: number;
+
+  /**
+   * Aod显示样式
+   */
+  @State aodStyle: ImmersiveAodStyle | undefined = immersiveKgMgr.getOneMirrorState().getAodStyle(
+    this.notificationType === NotificationType.TYPE_PHONE_KEYGUARD);
   /**
    * 应用名称
    */
@@ -170,7 +179,7 @@ export struct NotificationGroupBrief {
     onNtfDataUpdate: (): void => {
       log.info(`ntfDataUpdateListener onNtfDataUpdate: ${this.ntfEntry?.uid} ${this.ntfEntry?.childrenEntry?.length}`);
       // 锁屏面板动效刷新
-      if (this.notificationType === NotificationType.TYPE_PHONE_KEYGUARD) {
+      if (this.notificationType === NotificationType.TYPE_PHONE_KEYGUARD && !this.aodStyle?.isAod) {
         this.onNtfEntryChange(this.itemStyle?.itemUpdateAnim);
         return;
       }
@@ -244,7 +253,9 @@ export struct NotificationGroupBrief {
         .id(TAG + '_ntf_flag')
         .border({
           width: $r('app.float.ntf_pin_top_flag_border_width'),
-          color: this.colorModeVM?.bgPinTextColor,
+          color: this.aodStyle?.isAod
+            ? this.aodStyle?.getStyleValue(AodStyleType.FONT_COLOR)
+            : this.colorModeVM?.bgPinTextColor,
           radius: $r('app.float.ntf_pin_top_flag_border_radius'),
           style: BorderStyle.Solid
         })
@@ -258,9 +269,12 @@ export struct NotificationGroupBrief {
         .fontWeight(FontWeight.Medium)
         .margin({ end: LengthMetrics.resource($r('app.float.ntf_item_date_time_margin')) })
         .geometryTransition(this.getGeometryTransitionId(), this.getGeometryTransitionOptions())
-        .fontColor(this.colorModeVM?.bgPinTextColor)
-        .foregroundBrightness(this.colorModeVM?.themeTimestampForegroundBrightnessOptions)
-        .renderGroup(true)
+        .fontColor(this.aodStyle?.isAod
+          ? this.aodStyle?.getStyleValue(AodStyleType.FONT_COLOR)
+          : this.colorModeVM?.bgPinTextColor)
+        .foregroundBrightness(this.aodStyle?.isAod ? BrightnessOptionUtils.aodTimeLightOptionForFillColor :
+          this.colorModeVM?.themeTimestampForegroundBrightnessOptions)
+        .renderGroup(this.aodStyle?.isOneMirror ? false : true)
     }
   }
 
@@ -278,9 +292,9 @@ export struct NotificationGroupBrief {
         .textOverflow({ overflow: TextOverflow.Ellipsis })
         .id(`${TAG}_Text_${(this.ntfEntry as NotificationEntry).hashCode}`)
         .transition(TransitionEffect.translate({ y: this.isClicked ? 30 : 0 }))
-        .visibility(Visibility.Visible)
+        .visibility(this.aodStyle?.isAod ? Visibility.Hidden : Visibility.Visible)
         .height(this.fontScaleState.getScaleSize($r('app.float.ntf_text_title_height')))
-        .renderGroup(true)
+        .renderGroup(this.aodStyle?.isOneMirror ? false : true)
     }
   }
 
@@ -310,7 +324,7 @@ export struct NotificationGroupBrief {
         { hierarchyStrategy: TransitionHierarchyStrategy.NONE })
       .transition(this.checkAnimState() ? undefined : NotificationGroupExpandAnimation.getIconTransEffect(false,
         this.briefIconPositionY))
-      .opacity(undefined)
+      .opacity(this.aodStyle?.isAod ? this.aodStyle.getStyleValue(AodStyleType.NTF_APP_ICON_ALPHA) : undefined)
       .id(this.ntfEntry?.getGroupTypeKey() + '_' + this.notificationType + '_BriefAppIcon')
   }
 
@@ -327,13 +341,19 @@ export struct NotificationGroupBrief {
           { hierarchyStrategy: TransitionHierarchyStrategy.NONE })
         .transition(this.checkAnimState() ? undefined : NotificationGroupExpandAnimation.getIconTransEffect(false,
           this.briefIconPositionY))
-        .opacity(undefined)
+        .opacity(this.aodStyle?.isAod ? this.aodStyle.getStyleValue(AodStyleType.NTF_APP_ICON_ALPHA) : undefined)
         .id(this.ntfEntry?.getGroupTypeKey() + '_' + this.notificationType + '_BriefAppIcon')
       if(this.ntfEntry?.isCollaNotification) {
         // 全场景通知，组通知未展开时显示设备来源
         NotificationCollaBadgeViewV1({
           geometryTransitionId : this.notificationType === NotificationType.TYPE_PHONE_KEYGUARD ? '' :
             this.ntfEntry?.getGroupTypeKey() + '_' + this.notificationType + '_CollaBadge'
+        })
+      } else {
+        DeliverBadge({
+          geometryTransitionId: this.notificationType === NotificationType.TYPE_PHONE_KEYGUARD ? '' :
+            this.ntfEntry?.getGroupTypeKey() + '_' + this.notificationType + '_OverlayIcon',
+          isKgScene: this.notificationType === NotificationType.TYPE_PHONE_KEYGUARD,
         })
       }
     }
@@ -371,8 +391,10 @@ export struct NotificationGroupBrief {
         .fontSize($r('app.float.ntf_remainder_count_font_size'))
         .maxFontScale(FontScaleState.systemUIMaxScale)
         .fontWeight(FontWeight.Medium)
-        .fontColor(this.colorModeVM?.ntfRemainderCountTextColor)
-        .foregroundBrightness(this.colorModeVM?.themeFontForegroundBrightnessOptions)
+        .fontColor(this.aodStyle?.isAod ? this.aodStyle?.getStyleValue(AodStyleType.CAPSULE_MAIN_FONT_COLOR) :
+          this.colorModeVM?.ntfRemainderCountTextColor)
+        .foregroundBrightness(this.aodStyle?.isAod ? this.colorModeVM?.aodTimeLightOptionForFillColor :
+          this.colorModeVM?.themeFontForegroundBrightnessOptions)
         .flexShrink(0)
         .opacity(DeviceHelper.isPC() ? 1 : 0.6)
     }
@@ -385,7 +407,8 @@ export struct NotificationGroupBrief {
     })
     .borderRadius('14vp')
     .backgroundColor(this.colorModeVM?.themeRemainderCountColor)
-    .backgroundBrightnessInternal(this.colorModeVM?.themeGroupRemainderCountOptions)
+    .backgroundBrightnessInternal(this.aodStyle?.isAod ? this.colorModeVM?.aodTimeLightOptionForButtonBgColor :
+      this.colorModeVM?.themeGroupRemainderCountOptions)
     .transition(this.isClicked ? TransitionEffect.translate({ y: 30 })
       .animation({ curve: NtfAnimationConsts.GROUP_DETAIL_EXPAND_CURVE })
       .combine(TransitionEffect.OPACITY.animation({ duration: 100 })) : undefined)
@@ -414,12 +437,13 @@ export struct NotificationGroupBrief {
             .draggable(false)
             .id(TAG + '_appName')
             .fontSize(this.fontScaleState.getScaleSize($r('app.float.ntf_title_font_size')))
-            .fontColor($r('app.color.theme_ntf_color_text_primary'))
+            .fontColor(this.aodStyle?.isAod ? this.aodStyle?.getStyleValue(AodStyleType.FONT_COLOR)
+              : $r('app.color.theme_ntf_color_text_primary'))
             .fontWeight(FontWeight.Medium)
             .fontFeature('\"ss08\" on')
             .maxLines(NotificationConfig.LAYOUT_WEIGHT_ONE)
             .textOverflow({ overflow: TextOverflow.Ellipsis })
-            .renderGroup(true)
+            .renderGroup(this.aodStyle?.isOneMirror ? false : true)
             .flexShrink(1)
 
           Row() {
@@ -445,8 +469,10 @@ export struct NotificationGroupBrief {
           .fontWeight(FontWeight.Regular)
           .fontSize($r('app.float.ntf_title_font_size'))
           .maxFontScale(FontScaleState.systemUIMaxScale)
-          .fontColor(this.colorModeVM?.themeFontForegroundColor)
-          .foregroundBrightness(this.colorModeVM?.themeFontForegroundBrightnessOptions)
+          .fontColor(this.aodStyle?.isAod ? this.aodStyle?.getStyleValue(AodStyleType.CARD_SECONDARY_FONT_COLOR) :
+            this.colorModeVM?.themeFontForegroundColor)
+          .foregroundBrightness(this.aodStyle?.isAod ? this.colorModeVM?.themeFontForegroundOptions :
+            this.colorModeVM?.themeFontForegroundBrightnessOptions)
           .lineHeight(this.fontScaleState.getScaleSize($r('app.float.ntf_text_line_height')))
           .maxLines(NotificationConfig.ITEM_CONTENT_SINGLE_LINE)
           .textOverflow({ overflow: TextOverflow.Ellipsis })
@@ -483,7 +509,8 @@ export struct NotificationGroupBrief {
       Span(this.getBriefTitleText(hashcode))
         .fontWeight(FontWeight.Medium)
         .fontSize(this.fontScaleState.getScaleSize($r('app.float.ntf_title_font_size')))
-        .fontColor(this.colorModeVM?.ntfThemeTextPrimaryColor)
+        .fontColor(this.aodStyle?.isAod ? this.aodStyle?.getStyleValue(AodStyleType.FONT_COLOR) :
+          this.colorModeVM?.ntfThemeTextPrimaryColor)
       // 这里利用中文空格，并设置宽度为8vp，使其达到8vp的宽度占用
       if (!RTLUtil.isRTL()) {
         Span('\u3000')
@@ -503,7 +530,7 @@ export struct NotificationGroupBrief {
     .transition(this.isClicked && this.checkIsFirstNtf(hashcode) ? this.getTitleTransition() : undefined)
     .flexShrink(0)
     .height(this.fontScaleState.getScaleSize($r('app.float.ntf_text_line_height')))
-    .renderGroup((this.textEmojiHelper.isEmoji(this.getBriefTitleText(hashcode))) ?
+    .renderGroup((this.aodStyle?.isOneMirror || this.textEmojiHelper.isEmoji(this.getBriefTitleText(hashcode))) ?
       false : true)
   }
 
@@ -528,7 +555,8 @@ export struct NotificationGroupBrief {
       Span(this.getBriefContentText(hashcode))
         .fontWeight(FontWeight.Regular)
         .fontSize(this.fontScaleState.getScaleSize($r('app.float.ntf_title_font_size')))
-        .fontColor(this.colorModeVM?.ntfThemeTextSecondaryColor)
+        .fontColor(this.aodStyle?.isAod ? this.aodStyle?.getStyleValue(AodStyleType.CARD_SECONDARY_FONT_COLOR) :
+          this.colorModeVM?.ntfThemeTextSecondaryColor)
     }
     .textAlign(TextAlign.Start)
     .foregroundBrightness(this.colorModeVM?.themeFontForegroundOptions)
@@ -542,6 +570,7 @@ export struct NotificationGroupBrief {
     .transition(this.isClicked ? this.getTextTranEffect(index ?? 0) : TransitionEffect.IDENTITY)
     .height(this.fontScaleState.getScaleSize($r('app.float.ntf_text_line_height')))
     .renderGroup((DeviceHelper.isPC() ||
+      this.aodStyle?.isOneMirror ||
       this.textEmojiHelper.isEmoji(this.getBriefContentText(hashcode))) ?
       false : true)
     .layoutWeight(1)

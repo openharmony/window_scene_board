@@ -14,7 +14,7 @@
  */
 import { LogDomain, LogHelper } from '@ohos/basicutils';
 import { ScreenState } from '@ohos/frameworkwrapper';
-import { AppSearchUltraScreenConstants, UltraScreenConstants } from '../CommonConstants';
+import { AppSearchThreeFoldConstants, ThreeFoldConstants } from '../CommonConstants';
 import { FoldExpandStyle } from '../FoldExpandStyle';
 
 const TAG = 'FoldExpandStyleConfig';
@@ -35,27 +35,27 @@ export class FoldExpandStyleConfig {
   public static initEmergencyMap(): void {
     // 创建F态
     let foldExpandStyleF: FoldExpandStyle = new FoldExpandStyle();
-    foldExpandStyleF.setGridParam(UltraScreenConstants.GRID_NUMBER_BETWEEN_ICON_F,
-      UltraScreenConstants.GUTTER_NUMBER_BETWEEN_ICON_F, UltraScreenConstants.GRID_NUMBER_F,
-      UltraScreenConstants.GRID_MARGIN_F, UltraScreenConstants.COMMON_PADDING_F);
-    foldExpandStyleF.setAppSearchParam(AppSearchUltraScreenConstants.COLNUM_F, AppSearchUltraScreenConstants.ROWGAP_F,
-      AppSearchUltraScreenConstants.GRID_PADDING_F, UltraScreenConstants.APP_GRID_GUTTER_Y);
+    foldExpandStyleF.setGridParam(ThreeFoldConstants.GRID_NUMBER_BETWEEN_ICON_F,
+      ThreeFoldConstants.GUTTER_NUMBER_BETWEEN_ICON_F, ThreeFoldConstants.GRID_NUMBER_F,
+      ThreeFoldConstants.GRID_MARGIN_F, ThreeFoldConstants.COMMON_PADDING_F);
+    foldExpandStyleF.setAppSearchParam(AppSearchThreeFoldConstants.COLNUM_F, AppSearchThreeFoldConstants.ROWGAP_F,
+      AppSearchThreeFoldConstants.GRID_PADDING_F, ThreeFoldConstants.APP_GRID_GUTTER_Y);
     FoldExpandStyleConfig._emergencyMap.set(ScreenState.F, foldExpandStyleF);
     // 创建M态
     let foldExpandStyleM: FoldExpandStyle = new FoldExpandStyle();
-    foldExpandStyleM.setGridParam(UltraScreenConstants.GRID_NUMBER_BETWEEN_ICON_M,
-      UltraScreenConstants.GUTTER_NUMBER_BETWEEN_ICON_M, UltraScreenConstants.GRID_NUMBER_M,
-      UltraScreenConstants.GRID_MARGIN_M, UltraScreenConstants.COMMON_PADDING_M);
-    foldExpandStyleM.setAppSearchParam(AppSearchUltraScreenConstants.COLNUM_M, AppSearchUltraScreenConstants.ROWGAP_M,
-      AppSearchUltraScreenConstants.GRID_PADDING_M, UltraScreenConstants.APP_GRID_GUTTER_Y);
+    foldExpandStyleM.setGridParam(ThreeFoldConstants.GRID_NUMBER_BETWEEN_ICON_M,
+      ThreeFoldConstants.GUTTER_NUMBER_BETWEEN_ICON_M, ThreeFoldConstants.GRID_NUMBER_M,
+      ThreeFoldConstants.GRID_MARGIN_M, ThreeFoldConstants.COMMON_PADDING_M);
+    foldExpandStyleM.setAppSearchParam(AppSearchThreeFoldConstants.COLNUM_M, AppSearchThreeFoldConstants.ROWGAP_M,
+      AppSearchThreeFoldConstants.GRID_PADDING_M, ThreeFoldConstants.APP_GRID_GUTTER_Y);
     FoldExpandStyleConfig._emergencyMap.set(ScreenState.M, foldExpandStyleM);
     // 创建G态
     let foldExpandStyleG: FoldExpandStyle = new FoldExpandStyle();
-    foldExpandStyleG.setGridParam(UltraScreenConstants.GRID_NUMBER_BETWEEN_ICON_G,
-      UltraScreenConstants.GUTTER_NUMBER_BETWEEN_ICON_G, UltraScreenConstants.GRID_NUMBER_G,
-      UltraScreenConstants.GRID_MARGIN_G, UltraScreenConstants.COMMON_PADDING_G);
-    foldExpandStyleG.setAppSearchParam(AppSearchUltraScreenConstants.COLNUM_G, AppSearchUltraScreenConstants.ROWGAP_G,
-      AppSearchUltraScreenConstants.GRID_PADDING_G, UltraScreenConstants.APP_GRID_GUTTER_Y);
+    foldExpandStyleG.setGridParam(ThreeFoldConstants.GRID_NUMBER_BETWEEN_ICON_G,
+      ThreeFoldConstants.GUTTER_NUMBER_BETWEEN_ICON_G, ThreeFoldConstants.GRID_NUMBER_G,
+      ThreeFoldConstants.GRID_MARGIN_G, ThreeFoldConstants.COMMON_PADDING_G);
+    foldExpandStyleG.setAppSearchParam(AppSearchThreeFoldConstants.COLNUM_G, AppSearchThreeFoldConstants.ROWGAP_G,
+      AppSearchThreeFoldConstants.GRID_PADDING_G, ThreeFoldConstants.APP_GRID_GUTTER_Y);
     FoldExpandStyleConfig._emergencyMap.set(ScreenState.G, foldExpandStyleG);
   }
 
@@ -66,21 +66,21 @@ export class FoldExpandStyleConfig {
   public static initThermalMap(): void {
     // 创建F态
     let foldExpandStyleF: FoldExpandStyle = new FoldExpandStyle();
-    foldExpandStyleF.setGridParam(UltraScreenConstants.GRID_NUMBER_BETWEEN_ICON_F,
-      UltraScreenConstants.GUTTER_NUMBER_BETWEEN_ICON_F, UltraScreenConstants.GRID_NUMBER_F,
-      UltraScreenConstants.GRID_MARGIN_F, UltraScreenConstants.COMMON_PADDING_F);
+    foldExpandStyleF.setGridParam(ThreeFoldConstants.GRID_NUMBER_BETWEEN_ICON_F,
+      ThreeFoldConstants.GUTTER_NUMBER_BETWEEN_ICON_F, ThreeFoldConstants.GRID_NUMBER_F,
+      ThreeFoldConstants.GRID_MARGIN_F, ThreeFoldConstants.COMMON_PADDING_F);
     FoldExpandStyleConfig._thermalMap.set(ScreenState.F, foldExpandStyleF);
     // 创建M态
     let foldExpandStyleM: FoldExpandStyle = new FoldExpandStyle();
-    foldExpandStyleM.setGridParam(UltraScreenConstants.GRID_NUMBER_BETWEEN_ICON_M,
-      UltraScreenConstants.GUTTER_NUMBER_BETWEEN_ICON_M, UltraScreenConstants.GRID_NUMBER_M,
-      UltraScreenConstants.GRID_MARGIN_M, UltraScreenConstants.COMMON_PADDING_M);
+    foldExpandStyleM.setGridParam(ThreeFoldConstants.GRID_NUMBER_BETWEEN_ICON_M,
+      ThreeFoldConstants.GUTTER_NUMBER_BETWEEN_ICON_M, ThreeFoldConstants.GRID_NUMBER_M,
+      ThreeFoldConstants.GRID_MARGIN_M, ThreeFoldConstants.COMMON_PADDING_M);
     FoldExpandStyleConfig._thermalMap.set(ScreenState.M, foldExpandStyleM);
     // 创建G态
     let foldExpandStyleG: FoldExpandStyle = new FoldExpandStyle();
-    foldExpandStyleG.setGridParam(UltraScreenConstants.GRID_NUMBER_BETWEEN_ICON_G,
-      UltraScreenConstants.GUTTER_NUMBER_BETWEEN_ICON_G, UltraScreenConstants.GRID_NUMBER_G,
-      UltraScreenConstants.GRID_MARGIN_G, UltraScreenConstants.COMMON_PADDING_G);
+    foldExpandStyleG.setGridParam(ThreeFoldConstants.GRID_NUMBER_BETWEEN_ICON_G,
+      ThreeFoldConstants.GUTTER_NUMBER_BETWEEN_ICON_G, ThreeFoldConstants.GRID_NUMBER_G,
+      ThreeFoldConstants.GRID_MARGIN_G, ThreeFoldConstants.COMMON_PADDING_G);
     FoldExpandStyleConfig._thermalMap.set(ScreenState.G, foldExpandStyleG);
   }
 

@@ -63,7 +63,7 @@ export default function ConfigParseUtilTest() {
     })
     it('test_getAllConfigExist', 0, async() =>  {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      const configFile: string = 'etc/openharmony_launcher_default_workspace.json';
+      const configFile: string = 'etc/hw_launcher_default_workspace.json';
       const res = await ConfigParseUtil.getAllConfig(configFile);
       log.info('test_getAllConfig res: ' + res + '.');
       expect(res.length).assertLarger(0);

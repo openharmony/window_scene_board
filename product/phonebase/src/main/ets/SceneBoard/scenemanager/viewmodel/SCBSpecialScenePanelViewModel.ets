@@ -14,7 +14,7 @@
  */
 
 import { curves } from '@kit.ArkUI';
-// import apsManager from '@hms.graphic.apsManager';
+// import apsManager from '@ohos.graphic.apsManager';
 import transactionManager from '@ohos.transactionManager';
 import sceneSessionManager from '@ohos.sceneSessionManager';
 import { power } from '@kit.BasicServicesKit';
@@ -87,6 +87,7 @@ import { SingleStartFrom } from '@ohos/windowscene/src/main/ets/scene/session/SC
 import { SCBSpecialPanelMissionHandler } from './missionmanagement/SCBSpecialPanelMissionHandler';
 import { scbStatusBarVM } from '../../statusbar/viewmodel/SCBStatusBarVM';
 import { SCBSceneStartInterceptor, StartInterceptions } from '@ohos/windowscene/src/main/ets/scene/framework/missions/SCBSceneStartInterceptor';
+import { SCBVassistantMissionHandler } from './missionmanagement/SCBVassistantMissionHandler';
 import { WinLog, WinLogDomain } from '@ohos/windowscene/src/main/ets/utils/WinLog';
 import systemParameter from '@ohos.systemParameterEnhance';
 
@@ -146,6 +147,7 @@ export class SCBSpecialScenePanelViewModel extends SCBBaseScenePanelViewModel<SC
     this.registerSceneMissionManagementCallback();
     this.registerSceneRotationCallback();
     this.registerScreenPropertyChangeScenePanelCallback();
+    this.registerSceneStartingInterceptorRules();
   }
 
   public release(): void {
@@ -153,6 +155,7 @@ export class SCBSpecialScenePanelViewModel extends SCBBaseScenePanelViewModel<SC
     this.panelStateCollectionHandler = null;
     this.unregisterSceneMissionManagementCallback();
     this.unregisterSceneRotationCallback();
+    this.unregisterSceneStartingInterceptorRules();
   }
 
   public getContainerSessionList(): SCBSceneContainerSessionArray {
@@ -228,9 +231,26 @@ export class SCBSpecialScenePanelViewModel extends SCBBaseScenePanelViewModel<SC
     SCBSceneSessionManager.getInstance().unregisterSpecialScenePanelExitSceneWithRotationRecoverCallback();
   }
 
+  private registerSceneStartingInterceptorRules(): void {
+    SCBSceneStartInterceptor.getInstance().registerInterceptorRule(this.interceptRuleForVassistant, this.screenId, this.panelId);
+  }
+
+  private unregisterSceneStartingInterceptorRules(): void {
+    SCBSceneStartInterceptor.getInstance().unregisterInterceptorRule(this.interceptRuleForVassistant, this.screenId, this.panelId);
+  }
+
   // ----------------------------------------------------------------------------------------------------
   // Scene Start Interceptor rules
   // ----------------------------------------------------------------------------------------------------
+
+  // 检查是否需要语音助手拦截
+  private interceptRuleForVassistant = (sceneInfo: SCBSceneInfo, startFrom: StartInterceptions) => {
+    const result = SCBVassistantMissionHandler.getInstance().startInterceptor(sceneInfo, startFrom);
+    if (result) {
+      log.showWarn(`start ${startFrom} intercepted by Vassistant`);
+    }
+    return result;
+  }
 
   // ----------------------------------------------------------------------------------------------------
   // Scene Mission Management
@@ -1318,7 +1338,9 @@ export class SCBSpecialScenePanelViewModel extends SCBBaseScenePanelViewModel<SC
       let radius = screenLockInfo.originIconInfo.borderRadius / (iconSize / shortWidth);
       sessionContainer.companionIconInfo.iconRadius = radius;
       if (isSetRadius) {
-        sessionContainer.needRenderBorderRadius.setBorderRadiusWithDfx(radius, TAG, 'createAppStartIcon',
+        // sessionContainer.needRenderBorderRadius.setBorderRadiusWithDfx(radius, TAG, 'createAppStartIcon',
+        //   sessionContainer.getName());
+        sessionContainer.needRenderBorderRadius.setBorderRadiusWithDfx(0, TAG, 'createAppStartIcon',
           sessionContainer.getName());
       }
       sessionContainer.needRenderTranslate.setTranslateXWithDfx(newRectInfo.left + (iconSize - shortWidth) / 2, TAG,

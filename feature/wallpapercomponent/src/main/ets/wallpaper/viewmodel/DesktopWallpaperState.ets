@@ -70,9 +70,10 @@ export class DesktopWallpaperState {
   /**
    * 获取默认壁纸路径
    * */
-  public async getDefaultWallpaperPath(context: common.UIAbilityContext):  Promise<PixelMap | null> {
+  public async getDefaultWallpaperPath(context: common.UIAbilityContext, isLock: boolean):  Promise<PixelMap | null> {
     try {
-      const savePath = 'data/storage/el2/base/haps/themecomponent/files/wallpaper_image.webp';
+      const lockStr = isLock ? 'lock' : 'unlock'
+      const savePath = `data/storage/el2/base/haps/themecomponent/files/wallpaper_${lockStr}_image.webp`;
       const file = fs.openSync(savePath, fs.OpenMode.READ_ONLY)
       const stat = fs.statSync(savePath)
       const fileSize = stat.size

@@ -39,6 +39,7 @@ import RestoringDesktopLayoutTest from './ets/default/service/impl/RestoringDesk
 import SetPinShortcutLimitInfoTest from './ets/default/service/impl/SetPinShortcutLimitInfo.test';
 import SampleDeviceServiceTest from './ets/default/service/SampleDeviceService.test';
 import { DesktopFormStackViewModelTest } from './common/viewmodel/DesktopFormStackViewModel.test';
+import GlobalSearchLocationHandlerTest from './common/viewmodel/GlobalSearchLocationHandler.test';
 
 import DesktopPreviewViewModelTest from './ets/default/preview/DesktopPreviewViewModel.test'
 import PreviewUtilsTest from './ets/default/preview/PreviewUtils.test'
@@ -92,6 +93,7 @@ export default function PageDesktopTestSuite() {
   PageDesktopCloseAppHandlerForPCTest();
   SwiperGestureHandlerTest();
   PageDesktopViewModelTest();
+  GlobalSearchLocationHandlerTest();
   PageDesktopViewModelUtilsTest();
   SwiperIndicatorTest();
   PageDesktopLayoutTest();

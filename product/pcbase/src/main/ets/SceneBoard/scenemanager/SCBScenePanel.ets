@@ -1,5 +1,5 @@
 /*
- * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,143 +13,87 @@
  * limitations under the License.
  */
 
-import BundleManager from '@ohos.bundle.bundleManager';
+import { EventConstants, InputMethodManager, LayoutViewModel, StyleConstants } from '@ohos/launchercommon';
 import {
-  EventConstants,
-  AppModel,
-  PageDesktopModel,
-  KeyConstants,
-  AppItemInfo,
-  DockItemInfo,
-  RecentBundleMissionInfo,
-  FormCenterViewManager,
-  InputMethodManager,
-} from '@ohos/launchercommon';
-import { SCBCompanionManager } from '@ohos/windowscene/Index';
-import screenSessionManager from '@ohos.screenSessionManager';
-import { ItemUtils, RTLUtil } from '@ohos/componenthelper';
-import {
-  RectInfo,
-  StartType,
-  CheckEmptyUtils,
-  Trace,
-  LogDomain,
-  DomainName,
-  LogHelper,
-  TraceUtil,
-  CommonUtils,
   AnimateToScheduleUtils,
+  ArrayUtils,
+  CheckEmptyUtils,
+  DomainName,
+  LogDomain,
+  LogHelper,
   OptFromRecentType,
-  SwipeDirectionUpType,
-  singleManager,
+  RectInfo,
   SingleContext,
+  Trace,
+  TraceUtil
 } from '@ohos/basicutils';
+import { PowerStatus, SCBConstants, SceneConstants } from '@ohos/commonconstants';
 import {
-  CallToState,
-  PowerStatus,
-  WindowConstants,
-  SceneConstants,
-  SCBConstants,
-  DividerStyleConstants,
-  RotationConstants
-} from '@ohos/commonconstants';
-import {
-  ViewCallback,
-  localEventManager,
-  HiSysEventUtil,
-  DfxEvent,
-  reportIntervalMgr,
-  ViewController,
-  windowCommonEventManager,
-  GlobalContext,
-  ViewArea,
-  SCBWindowSceneConfig,
   DebugCommand,
   DebugCommandManager,
-  WallpaperType,
+  DfxEvent,
+  GlobalContext,
+  HiSysEventUtil,
+  localEventManager,
+  reportIntervalMgr,
+  SCBWindowSceneConfig,
+  ViewArea,
+  ViewCallback,
   viewMgrPolicy,
   ViewType,
-  EvtBus,
-  ApsUtils,
   WallpaperManager,
-  DeviceHelper,
+  WallpaperType,
+  windowCommonEventManager
 } from '@ohos/frameworkwrapper';
 import fileUri from '@ohos.file.fileuri';
+import type { ExecuteCallbackExtraInfo } from '@ohos/windowscene';
 import {
-  SCBTransitionController,
-  SCBScreenProperty,
-  SCBTransitionManager,
+  BackgroundReason,
+  FocusChangeReason,
+  GestureNavigationState,
+  GestureType,
+  SCBBackgroundBlurSession,
   SCBContainerRotationReason,
-  SCBSpecificSceneSessionList,
-  SpecificPanelZOrder,
-  SystemSessionInfo,
-  SCBSystemSceneSession,
-  SCBSceneContainerSessionArray,
-  SCBSceneContainerSession,
-  SCBSceneInfo,
-  SCBSceneMode,
-  SCBSceneOrientation,
-  SCBSceneSessionManager,
-  SCBScreenSessionManager,
-  SCBSessionRect,
-  SCBSceneSession,
-  ActiveReason,
-  SCBEventId,
-  SCBPropertyChangeReason,
-  SCBGestureActionId,
   SCBGestureAction,
+  SCBGestureActionId,
+  scbGestureManager,
+  SCBPropertyChangeReason,
   SCBRecentGestureModel,
-  sSCBOobeManager,
-  SCBSpecificSession,
+  SCBRecentSessionHelper,
   SCBRecentSessionInfo,
   SCBRecentSessionState,
-  SCBRecentSessionHelper,
-  SCBRecoverManager,
-  WindowDragHotAreaType,
+  SCBSceneContainerSession,
+  SCBSceneContainerSessionArray,
+  SCBSceneInfo,
+  SCBSceneMode,
   SCBScenePanelDebugCommands,
-  SCBUnlockTransitionController,
-  FocusChangeReason,
-  sSampleManager,
-  ScbNumber,
-  SplitStyle,
-  SCBBackgroundBlurSession,
+  SCBSceneSession,
+  SCBSceneSessionManager,
+  SCBScreenProperty,
+  SCBScreenSessionManager,
   SCBSessionEventId,
-  SCBWindowRaiseReason,
-  SCBSceneMemoryInfo,
-  SessionChangeInfo,
-  SessionDisplayChangeReason,
-  scbGestureManager,
-  GestureType,
-  GestureNavigationState,
-  PreferenceStore,
-  SystemBarType,
-  ControlType,
-  ScenePanelState,
+  SCBSessionRect,
+  SCBSpecificSceneSessionList,
+  SCBSpecificSession,
   SCBSpecificSessionSource,
+  SCBSystemSceneSession,
+  SCBUnlockTransitionController,
+  ScenePanelState,
+  SpecificPanelZOrder,
+  SplitStyle,
+  sSCBOobeManager,
+  SystemBarType,
+  SystemSessionInfo,
+  WindowDragHotAreaType
 } from '@ohos/windowscene';
-import { AttributeUpdater, Position as ArkPosition } from '@kit.ArkUI';
-import { CommonConstants, vibratorMgr } from '@ohos/launchercommon';
-import { SCBSceneContainer } from './SCBSceneContainer';
-import { StyleConstants } from '@ohos/launchercommon';
-import { FixedDockResource } from '@ohos/smartdock/src/main/ets/default/common/constants/PcModeDockConstants';
+import { Position as ArkPosition, AttributeUpdater } from '@kit.ArkUI';
 import PcSmartDockViewModel from '@ohos/pcsmartdock/src/main/ets/default/viewmodel/SmartDockViewModel';
-import { PcDockIndepentIconMgr } from '@ohos/pcsmartdock/src/main/ets/default/manager/PcDockIndependentIconMgr';
 import sceneSessionManager from '@ohos.sceneSessionManager';
 import { SCBSceneContainerRefresh } from './SCBSceneContainerRefresh';
-// import apsManager from '@hms.graphic.apsManager';
+// import apsManager from '@ohos.graphic.apsManager';
 import curves from '@ohos.curves';
 import performanceMonitor from '@ohos.arkui.performanceMonitor';
-import { SplitState } from '@ohos/windowscene/src/main/ets/scene/session/SCBSceneContainerSession';
-import inputMonitor from '@ohos.multimodalInput.inputMonitor';
-import {
-  ActionType,
-  ThreeFingersSwipe,
-  FourFingersSwipe,
-  ThreeFingersTap,
-  TouchGestureAction,
-  TouchGestureEvent
-} from '@ohos.multimodalInput.gestureEvent'
-import HashMap from '@ohos.util.HashMap';
+import { ActionType, FourFingersSwipe, ThreeFingersTap, TouchGestureAction, TouchGestureEvent } from '@ohos.multimodalInput.gestureEvent';
 import { MemoryHelper, SCBRecentSessionsViewModel } from '../recentview/SCBRecentSessionsViewModel';
 import { SCBRecentMinBackgroundViewModel } from '../recentview/SCBRecentMinBackgroundViewModel';
 import { SCBRecentSubSceneViewModel } from '../recentview/SCBRecentSubSceneViewModel';
@@ -157,105 +101,76 @@ import { SCBRecentCover } from '../recentview/SCBRecentCover';
 import { SCBRecentTitleViewModel } from '../recentview/SCBRecentTitleViewModel';
 import { SCBRecentCardViewModel } from '../recentview/SCBRecentCardViewModel';
 import { SCBRecentHoverViewModel } from '../recentview/SCBRecentHoverViewModel';
-import { SwipeDirection, ThreeFingerSwipeConstants } from '../../common/constants/ThreeFingerSwipeConstants';
-import { settingsDataManager } from '@ohos/frameworkwrapper';
+import { ThreeFingerSwipeConstants } from '../../common/constants/ThreeFingerSwipeConstants';
 import { SCBDefaultZIndex } from './SCBScreen';
 import commonEventManager from '@ohos.commonEventManager';
 import display from '@ohos.display';
-import { LayoutViewModel } from '@ohos/launchercommon';
 import { SCBRecentEmptyView, SCBSplitRecentEmptyView } from '../recentview/SCBRecentEmptyView';
 import { SCBRecentStyleConstants } from '../recentview/SCBRecentStyleConstants';
-import { multiInputManager } from '@ohos/multiinput';
-import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+import { multiInputManager, MultiInputViewModel } from '@ohos/multiinput';
 import KeyCodeConstants from '@ohos/multiinput/src/main/ets/default/common/constants/KeyCodeConstants';
 import image from '@ohos.multimedia.image';
 import PowerStatusChangeAnimationController from './PowerStatusChangeAnimationController';
-import SmartDockModel from '@ohos/smartdock/src/main/ets/default/model/SmartDockModel';
 import LockScreenAnimationController from '../screenlock/common/LockScreenAnimationController';
 import { CallbackParameter } from '../control/animationcontroller/AnimationController';
 import { styleMgr } from '@ohos/systemuicommon';
-import { emitter, systemParameterEnhance } from '@kit.BasicServicesKit';
-import accountModel, { AuthSubType } from '../screenlock/refactor/AccountsModel';
-import { MultiInputViewModel } from '@ohos/multiinput';
+import { systemDateTime, systemParameterEnhance } from '@kit.BasicServicesKit';
 import { ShortcutKeyConstants } from '../../common/constants/ShortcutKeyConstants';
-import { INVALID_SCREEN_ID } from '@ohos/windowscene';
-import type { ExecuteCallbackExtraInfo } from '@ohos/windowscene';
-import { systemDateTime } from '@kit.BasicServicesKit';
 import { WallpaperModel } from '@ohos/wallpapercomponent/src/main/ets/wallpaper/model/WallpaperModel';
-import bundleManager from '@ohos.bundle.bundleManager';
 import { PcDockAnimationMgr } from '@ohos/pcsmartdock/src/main/ets/default/manager/PcDockAnimationMgr';
-import { CloseAppManager, StartSubtype } from '@ohos/launchercommon';
 import { PcHiSysEventMgr } from '../../common/manager/PcHiSysEventMgr';
-import { pointer } from '@kit.InputKit';
-import ctrlAltDelPanelModel from '../ctrlaltdelpanel/model/CtrlAltDelPanelModel';
 import { SCBMultiRecentManager } from '../recentview/SCBMultiRecentManager';
 import { PCUtils } from '../../common/utils/PCUtils';
 import PcFileFolderManager from '../../common/controller/PcFileFolderManager';
 import { SCBRecentEnter } from '../recentview/SCBRecentEnter';
 import { SCBRecentExit } from '../recentview/SCBRecentExit';
 import { SCBRecentDelete } from '../recentview/SCBRecentDelete';
-import { SCBRecentState, recentStateManager, SCBRecentStateEvents } from '../recentview/SCBRecentState';
+import { recentStateManager, SCBRecentState } from '../recentview/SCBRecentState';
 import { RecentFocusController } from '../recentview/recentFocus/RecentFocusController';
 import { RecentFocusManager } from '../recentview/recentFocus/RecentFocusManager';
 import { SCBRecentFeatureBridge } from '../recentview/SCBRecentFeatureBridge';
-import { SCBRecentFoldManager } from '../recentview/foldMachine/SCBRecentFoldManager';
 import { SCBRecentStyle, SCBRecentStyleManager } from '../recentview/foldMachine/SCBRecentStyle';
 import { SCBRecentFoldHalfVM } from '../recentview/foldMachine/SCBRecentFoldHalfVM';
-import { AnimationType, CustomAnimateParam,
-  SCBRecentFoldMachineVM } from '../recentview/foldMachine/SCBRecentFoldMachineVM';
+import { CustomAnimateParam } from '../recentview/foldMachine/SCBRecentFoldMachineVM';
 import { gestureHelperInstance } from '../gesturenavigation/common/GestureHelper';
 import { RecentAndAppCenterSwitchManager } from '../../common/manager/RecentAndAppCenterSwitchManager';
-import data_preferences from '@ohos.data.preferences';
 import { CloneWallpaperMgr } from '../systemscene/ViewModel/CloneWallpaperMgr';
 import { SCBRecentNotShowViewModel } from '../recentview/SCBRecentNotShowViewModel';
-import { enterpriseRecentEvent, EnterpriseRecentPanel } from '../enterprisespace/EnterpriseRecentPanel'
+import { enterpriseRecentEvent, EnterpriseRecentPanel } from '../enterprisespace/EnterpriseRecentPanel';
 import { MultiSpace } from '../../common/EnterpriseMultiSpaceController';
-import { SessionRectChangeInfo } from '@ohos/windowscene/src/main/ets/scene/session/SCBSceneSessionManager';
 import { SCBPiPManager } from './pip/SCBPiPManager';
-import { PCDockUtils } from '@ohos/pcsmartdock/src/main/ets/default/utils/PCDockUtils';
 import { SCBRecentAnimation } from '../recentview/SCBRecentAnimation';
 import { SCBRecentPanelManager, SCBRecentPanelViewModel } from '../recentview/SCBRecentPanelViewModel';
 import { SCBRecentPrepareManager } from '../recentview/SCBRecentPrepareManager';
 import {
-  IFreeWindowsViewModel,
-  SCBPcScenePanelManager,
-  ViewModelType,
+  DividerStyle,
   ExitSplitParam,
+  IFreeWindowsViewModel,
+  LayoutPolicyHelper,
+  MonitorExitSplitName,
   PcSCBSceneContainerSessionArray,
+  RealScreenInfo,
+  SCBFreeWindowsViewModelManager,
+  SCBPcScenePanelManager,
+  SCBSceneHelper,
   SCBScenePanelProxy,
   SCBSessionListManager,
+  SCBSplitLayoutHelper,
   SwipeGestureManager,
   SystemAnimatedScene,
   systemAniSceneCtrl,
-  DividerStyle,
-  SCBFreeWindowsViewModelManager,
-  SCBSplitLayoutHelper,
-  RealScreenInfo,
-  ScreenForm,
-  MonitorExitSplitName,
-  SCBSceneHelper,
-  LayoutPolicyHelper } from '@ohos/pcmode';
+  ViewModelType
+} from '@ohos/pcmode';
 import { DesktopSwitchController, VmStateCallBack } from '../virtualmachine/DesktopSwitchController';
 import { FourFingerSwipeController } from '../virtualmachine/FourFingerSwipeController';
-import { FoldShutdownViewProxyManager } from '@ohos/shutdownview'
 import { SCBRecentUiFirst } from '../recentview/SCBRecentUiFirst';
 
 const TAG = 'SCBScenePanel';
 const log = LogHelper.getLogHelper(LogDomain.SCB, TAG);
-const homeLog: LogHelper = LogHelper.getLogHelper(LogDomain.HOME, TAG);
 const RECENT_TAG = 'RecentPanel';
 const recentLog = LogHelper.getLogHelper(LogDomain.RECENT, RECENT_TAG);
-const FIRST_START_VIRTUAL: string = 'FIRST_START_VIRTUAL';
-const CLINK_NOTIFICATION_SWIPE: string = 'CLINK_NOTIFICATION_SWIPE';
-const ROTATE_POLICY: number = Number.parseInt(systemParameterEnhance.getSync('const.window.device.rotate_policy', '0'));
-const ROTATE_STRATEGY_WINDOW: number = 0;
-const INVALID_PERSISTENT_ID: number = 0;
-const START_CURVE: ICurve = curves.cubicBezierCurve(0.1, 0, 0.4, 1);
-const START_TIME: number = 250;
-const B_C_DISTINGUISH_LINE = 1608;
 const INVISIBLEWINDOW_DURATION_TIME: number = 1;
 const INVISIBLEWINDOW_DELAY_TIME: number = 16;
-const RESETSCALEANIMATION_TIMEOUT: number = 7000;
 const ENTERPRISE_RECENT_HEIGHT_RATIO: number = 0.16;
 
 const EVENT_DESKTOP_HIDE_SEARCH_PANEL: string = 'usual.event.pcsettings.searchpanel.hide';
@@ -265,15 +180,12 @@ const EVENT_DESKTOP_HIDE_SEARCH_PANEL: string = 'usual.event.pcsettings.searchpa
 const WINDOW_HOTAREA_MARGIN = 20;
 const INVALID_INDEX = -1;
 const SCREEN_INDEX = 1000;
-const BASE_DENSITY: number = 160;
 
 /**
  * speed params in threeFingerSwipeUp
  */
-const MAX_SPEED_IN_CLEAR_SCENE: number = 20;
-const MIN_SPEED_IN_CLEAR_SCENE: number = 7;
-const SPEED_TIMES: number = 1.5;
 const HOT_AREA_IN_CLEAR_SCENE = 4;
+const GET_INFO_TIMEOUT_IN_CLEAR_SCENE = 200;
 
 export enum RecentChain {
   RECENT_CHAIN_DEFAULT,
@@ -452,6 +364,7 @@ export struct SCBScenePanel {
   private needRenderDistanceMap: Map<number, number> = new Map();
   private screenHeight = 0;
   private screenWidth = 0;
+  @StorageLink('recentOpacity') recentOpacity: number = 1;
   @StorageLink('showRecent') @Watch('changeRecent') showRecent: boolean = false;
   @StorageLink('isOpenFromPopup') isOpenFromPopup: boolean = false;
   @StorageLink('cardWidth') cardWidth: number = 0;
@@ -515,95 +428,29 @@ export struct SCBScenePanel {
   private isOneFingerUp: boolean = false;
   private apsApsSessionId: string = '';
   private recentStyleManager: SCBRecentStyleManager = SCBRecentStyleManager.getInstance(this.singleContext);
-  private recentNotShowViewModel: SCBRecentNotShowViewModel =
-    SCBRecentNotShowViewModel.getInstance(this.screenProperty.screenId);
+  private recentNotShowViewModel: SCBRecentNotShowViewModel = SCBRecentNotShowViewModel.getInstance(this.screenProperty.screenId);
   @State private scenePanelScale: number = 1;
   @State private scenePanelOpacity: number = 1;
   // 手势区分主屏与扩展屏
   private gestureSceneType: string = TAG + this.screenProperty.screenId;
   private recentAnimation: SCBRecentAnimation = new SCBRecentAnimation();
-  private recentPanelViewModel: SCBRecentPanelViewModel =
-    SCBRecentPanelManager.getInstance().getRecentPanelViewModel(this.screenProperty.screenId);
+  private recentPanelViewModel: SCBRecentPanelViewModel = SCBRecentPanelManager.getInstance().getRecentPanelViewModel(this.screenProperty.screenId);
   private recentPreparePersistentIds: number[] = [];
-  private recentSubSceneViewModel: SCBRecentSubSceneViewModel =
-    new SCBRecentSubSceneViewModel(this.screenProperty.screenId);
+  private recentSubSceneViewModel: SCBRecentSubSceneViewModel = new SCBRecentSubSceneViewModel(this.screenProperty.screenId);
   private handleSceneWhenPreLockCallback = (): void => {
     this.handleSceneWhenPreLock();
   }
   @State enterpriseRecentHeight: number = 0;
   private recentUiFirst = new SCBRecentUiFirst();
-
-  private doScaleAnimation(containerSession: SCBSceneContainerSession): void {
-    const animationProp = containerSession?.primarySession?.getAnimationProperty();
-    if (!animationProp) {
-      log.showError('doScaleAnimation no animation property');
-      return;
-    }
-    log.showInfo(`doScaleAnimation persistentId: ${containerSession.primarySession?.sceneInfo.persistentId} ` +
-      `on screenId: ${this.screenProperty.screenId}  scale: ${animationProp.targetScale}`);
-    performanceMonitor.begin('WINDOW_DO_SCALE_ANIMATION', performanceMonitor.ActionType.LAST_UP,
-      containerSession?.primarySession?.sceneInfo?.bundleName);
-    clearTimeout(this.scaleAnimationTimerId);
-    const options = this.getAnimationOption(containerSession);
-    if (animationProp.targetScale !== 1) {
-      this.scaleAnimationTimerId = setTimeout(() => {
-        this.doResetScaleAnimation(containerSession);
-      }, RESETSCALEANIMATION_TIMEOUT);
-    } else {
-      containerSession?.primarySession?.resetAnimationProperty();
-    }
-    this.getUIContext()?.animateTo({
-      duration: options[1],
-      curve: options[0],
-      onFinish: () => {
-        performanceMonitor.end('WINDOW_DO_SCALE_ANIMATION');
-      }
-    }, () => {
-      containerSession?.primarySession?.setScale(animationProp.targetScale, animationProp.targetScale);
-    });
-  }
-
-  private doResetScaleAnimation(containerSession: SCBSceneContainerSession): void {
-    const animationProp = containerSession?.primarySession?.getAnimationProperty();
-    if (!animationProp) {
-      log.showError('doResetScaleAnimation no animation property');
-      return;
-    }
-    log.showInfo(`doResetScaleAnimation persistentId: ${containerSession.primarySession?.sceneInfo.persistentId} ` +
-      `on screenId: ${this.screenProperty.screenId}`);
-    performanceMonitor.begin('WINDOW_DO_RESET_SCALE_ANIMATION', performanceMonitor.ActionType.LAST_UP,
-      containerSession?.primarySession?.sceneInfo?.bundleName);
-    const options = this.getAnimationOption(containerSession);
-    this.getUIContext()?.animateTo({
-      duration: options[1],
-      curve: options[0],
-      onFinish: () => {
-        performanceMonitor.end('WINDOW_DO_RESET_SCALE_ANIMATION');
-      }
-    }, () => {
-      containerSession?.primarySession?.setScale(1, 1);
-    });
-    containerSession?.primarySession?.resetAnimationProperty();
-  }
-
-  private getAnimationOption(containerSession: SCBSceneContainerSession): [Curve | ICurve, number] {
-    const animationOption = containerSession?.primarySession?.getAnimationOption();
-    let customCurve: Curve | ICurve = Curve.Linear;
-    let customDuration: number = 200;
-    if (animationOption) {
-      if (animationOption.curve === sceneSessionManager.WindowAnimationCurve.LINEAR) {
-        customCurve = Curve.Linear;
-        if (!!animationOption.duration) {
-          customDuration = animationOption.duration;
-        }
-      } else if (animationOption.curve === sceneSessionManager.WindowAnimationCurve.INTERPOLATION_SPRING &&
-        !!animationOption.param && animationOption.param.length == 4) {
-        customCurve = curves.interpolatingSpring(animationOption.param[0], animationOption.param[1],
-          animationOption.param[2], animationOption.param[3]);
-      }
-    }
-    return [customCurve, customDuration];
-  }
+  @StorageLink('toggleHomeShow') @Watch('toggleHome') toggleHomeShow: boolean = false;
+  toggleHomeScene: Array<SCBSceneContainerSession | SCBSpecificSession> = [];
+  private inClearSceneStatus: boolean = false;
+  toggleHomeSceneRequestBackCnt: number = 0;
+  private isStartSceneWhenClearScene: boolean = false;
+  private isStartSceneWhenClearSceneCnt: number = 0;
+  private isOnLockWhenClearScene: boolean = false;
+  private isClearToggleHomeScene: boolean = false;
+  private isToggleHomeActivating: boolean = false;
 
   // windowscene
   private systemSessionInfo: SystemSessionInfo = {
@@ -612,7 +459,7 @@ export struct SCBScenePanel {
     sceneZIndex: SCBDefaultZIndex.SYSTEM_SCENE_PANEL,
     isFocusable: false,
     isTouchable: false,
-    isRotatable: false,
+    isRotatable: true,
     privacyMode: false,
     hitTestMode: HitTestMode.Default,
     sceneType: sceneSessionManager.SceneType.PANEL_SCENE,
@@ -640,6 +487,649 @@ export struct SCBScenePanel {
       log.showError(`onDesktopWallpaperChange get themePath error ${error.code} ${error.message}`);
     }
     log.showInfo(`onDesktopWallpaperChange themePath ${this.themePath}`);
+  }
+
+  private toggleHome(): void {
+    log.showInfo(`toggleHome----- ${this.scenePanelState}`)
+    if (DesktopSwitchController.getInstance().isVmDesktop()) {
+      log.showInfo('vmDesktop is active, toggleHome disabled!');
+      return;
+    }
+    if (this.scenePanelState === ScenePanelState.SPLIT) {
+      const curActiveContainerSession = this.containerSessionList.getTopActiveSession();
+      if (curActiveContainerSession?.isSplit) {
+        const persistentId = curActiveContainerSession.getPersistentId();
+        this.exitSplitView(persistentId);
+      }
+      log.showInfo(`toggleHome, ${this.screenProperty.screenId}, split end`);
+      return;
+    }
+    if (this.scenePanelState === ScenePanelState.RECENT) {
+      this.multiRecentManger.disableChangeRecentResponsive();
+      this.exitRecentView();
+      log.showInfo(`toggleHome, ${this.screenProperty.screenId}, disableChangeRecentResponsive and exitRecentView`);
+      return;
+    }
+    if (this.windowIsMoving() || this.dividerIsDragging()) {
+      log.showInfo(`toggleHome, ${this.screenProperty.screenId}, windowIsMoving:${this.windowIsMoving()}, dividerIsDragging:${this.dividerIsDragging()}`);
+      return;
+    }
+    Trace.start(Trace.CORE_METHOD_TOGGLE_HOME);
+    this.closeHiSearch();
+    this.closeHosKey();
+    InputMethodManager.getInstance().stopInputSession();
+    const frontScene = this.queryFrontForWIND();
+    log.showInfo(`toggleHome, frontScene:${frontScene?.length}, toggleHomeScene:${this.toggleHomeScene?.length}`);
+    if (ArrayUtils.isEmpty(frontScene) && ArrayUtils.isEmpty(this.toggleHomeScene)) {
+      return;
+    }
+    AnimateToScheduleUtils.attachBigCoreCPU(AnimateToScheduleUtils.ACTION_ATTACH_START);
+    AnimateToScheduleUtils.raiseAnimateToSchedulePriority(AnimateToScheduleUtils.VALUE_START);
+    AnimateToScheduleUtils.raiseAnimateToGCPriority(AnimateToScheduleUtils.VALUE_START);
+
+    if (!ArrayUtils.isEmpty(frontScene)) {
+      // 有前台窗口，执行隐藏窗口，显示桌面的操作
+      performanceMonitor.begin('PC_SHORTCUT_RESTORE_DESKTOP', performanceMonitor.ActionType.LAST_DOWN);
+      this.inClearSceneStatus = true;
+      SCBSceneSessionManager.getInstance().fullScreenLayoutChange(false, this.screenProperty.screenId, 'SCBStatusBar');
+      SCBSceneSessionManager.getInstance().fullScreenLayoutChange(false, this.screenProperty.screenId, 'FixedLayout');
+      SCBSceneSessionManager.getInstance().updateSystemBarProperty();
+      viewMgrPolicy.hideView(ViewType.GESTURE_TOP_BAR + this.screenProperty.screenId * SCREEN_INDEX);
+      multiInputManager.recoverMouseEvent();
+      performanceMonitor.begin('PC_SHORTCUT_SHOW_DESKTOP', performanceMonitor.ActionType.LAST_DOWN);
+      this.showDesktopAnimate(true, frontScene, ThreeFingerSwipeConstants.DEFAULT_SPEED);
+    } else {
+      log.showInfo(`toggleHome, to show:${this.toggleHomeScene.length}`);
+      // 无前台窗口，执行显示窗口操作
+      performanceMonitor.begin('PC_SHORTCUT_RESTORE_DESKTOP', performanceMonitor.ActionType.LAST_DOWN);
+      this.inClearSceneStatus = false;
+      this.restoreDesktopAnimate();
+    }
+
+    AnimateToScheduleUtils.raiseAnimateToGCPriority(AnimateToScheduleUtils.VALUE_END);
+    AnimateToScheduleUtils.raiseAnimateToSchedulePriority(AnimateToScheduleUtils.VALUE_END);
+    AnimateToScheduleUtils.attachBigCoreCPU(AnimateToScheduleUtils.ACTION_ATTACH_END);
+  }
+
+  private restoreDesktopAnimate() {
+    // 清屏场景下树的窗口，还原时先上树再做动效
+    this.toggleHomeScene.forEach((containerSession) => {
+      if (containerSession instanceof SCBSceneContainerSession && !containerSession.toggleHomeState) {
+        containerSession.toggleHomeState = true;
+      }
+      if (containerSession instanceof SCBSceneContainerSession) {
+        containerSession.addTransitionCount();
+      }
+    });
+    systemAniSceneCtrl.enqueue(SystemAnimatedScene.ENTER_WIND_RECOVER);
+    this.toggleHomeSceneRequestBackCnt++;
+
+    const len = this.toggleHomeScene.length;
+    let invisibleScenes: SCBSceneContainerSession[] = [];
+    let thirdScenes: (SCBSceneContainerSession | SCBSpecificSession)[] = [];
+    let secondScene: SCBSceneContainerSession | SCBSpecificSession | undefined = undefined;
+    let firstScene: SCBSceneContainerSession | SCBSpecificSession | undefined = undefined;
+    
+    // 收集需要激活的窗口
+    const scenesToActivate: SCBSceneContainerSession[] = [];
+    for (let i = len - 1; i >= 0; --i) {
+      let scene = this.toggleHomeScene[i];
+      // 提前设置可见性，而不是等待激活完成
+      if (scene instanceof SCBSceneContainerSession) {
+        scene.needRenderVisibility.setVisibilityWithDfx(true, TAG, 'recoverVisibilityRestoreDesktop', scene.getName());
+        // 收集需要激活的窗口，后续并行处理
+        if (!scene.isActive && !this.isToggleHomeActivating) {
+          scenesToActivate.push(scene);
+        }
+      }
+      
+      if ((len - i) === 1) {
+        firstScene = scene;
+      } else if (scene instanceof SCBSceneContainerSession && scene.invisible.value) {
+        invisibleScenes.push(scene);
+      } else if ((len - i) === 2) {
+        secondScene = scene;
+      } else {
+        thirdScenes.push(scene);
+      }
+    }
+    
+    this.isToggleHomeActivating = true;
+    log.showInfo(`restoreDesktopAnimate toggleHomeScene length: ${this.toggleHomeScene.length}`);
+    // 并行激活所有需要激活的窗口，减少串行等待时间
+    this.activateScenesParallel(scenesToActivate).then(() => {
+      this.handleRestoreDesktopAnimate(firstScene, secondScene, thirdScenes, invisibleScenes);
+    }).catch(() => {
+      // 激活失败时仍继续执行动画
+      this.handleRestoreDesktopAnimate(firstScene, secondScene, thirdScenes, invisibleScenes);
+    });
+
+    if (firstScene === undefined) {
+      this.toggleHomeScene = [];
+    }
+    SCBSceneSessionManager.getInstance().updateSystemBarProperty();
+  }
+
+  /**
+   * 并行激活多个窗口，减少串行等待时间
+   * @param scenes 需要激活的窗口列表
+   */
+  private async activateScenesParallel(scenes: SCBSceneContainerSession[]): Promise<void> {
+    if (scenes.length === 0) {
+      return;
+    }
+    // 并行执行所有窗口的激活操作
+    const activationPromises = scenes.map((scene) => {
+      return new Promise<void>((resolve) => {
+        scene.requestActivationWithPersist(false, false);
+        resolve();
+      });
+    });
+    await Promise.all(activationPromises);
+  }
+
+  private handleRestoreDesktopAnimate(firstScene: SCBSceneContainerSession | SCBSpecificSession | undefined,
+    secondScene: SCBSceneContainerSession | SCBSpecificSession | undefined,
+    thirdScenes: (SCBSceneContainerSession | SCBSpecificSession)[],
+    invisibleScenes: SCBSceneContainerSession[]) {
+    if (firstScene !== undefined) {
+      let animateCnt = this.toggleHomeSceneRequestBackCnt;
+      this.getUIContext()?.animateTo({
+        curve: curves.interpolatingSpring(0, 1, 200, 25),
+        onFinish: () => {
+          Trace.end(Trace.CORE_METHOD_TOGGLE_HOME);
+          performanceMonitor.end('PC_SHORTCUT_RESTORE_DESKTOP');
+          performanceMonitor.end('PC_CLICK_ARROW_RESTORE_DESKTOP');
+          systemAniSceneCtrl.dequeue(SystemAnimatedScene.ENTER_WIND_RECOVER);
+          if (this.toggleHomeSceneRequestBackCnt === animateCnt) {
+            this.handleRestoreDesktopFinishEvent(firstScene, secondScene, thirdScenes, invisibleScenes);
+            this.toggleHomeScene = [];
+          }
+          this.isToggleHomeActivating = false;
+        }
+      }, () => {
+        this.setSceneTransitionInRestoreDesktop(firstScene);
+      });
+    }
+    if (secondScene !== undefined) {
+      this.getUIContext()?.animateTo({
+        curve: curves.interpolatingSpring(0, 1, 200, 25),
+      }, () => {
+        this.setSceneTransitionInRestoreDesktop(secondScene);
+      });
+    }
+    if (thirdScenes.length > 0) {
+      this.getUIContext()?.animateTo({
+        curve: curves.interpolatingSpring(0, 1, 200, 25),
+        delay: 10
+      }, () => {
+        for (const scene of thirdScenes) {
+          this.setSceneTransitionInRestoreDesktop(scene);
+        }
+      });
+    }
+  }
+
+  private handleRestoreDesktopFinishEvent(firstScene: SCBSceneContainerSession | SCBSpecificSession | undefined,
+    secondScene: SCBSceneContainerSession | SCBSpecificSession | undefined,
+    thirdScenes: (SCBSceneContainerSession | SCBSpecificSession)[],
+    invisibleScenes: SCBSceneContainerSession[]){
+    if (firstScene instanceof SCBSceneContainerSession && firstScene !== undefined && !firstScene.isActive &&
+      !firstScene.primarySession?.isMinimizing) {
+      firstScene.setActivationAtToggleHomeScenario();
+    }
+    if (secondScene instanceof SCBSceneContainerSession && secondScene !== undefined && !secondScene.isActive &&
+      !secondScene.primarySession?.isMinimizing) {
+      secondScene.setActivationAtToggleHomeScenario();
+    }
+    if (thirdScenes.length > 0) {
+      for (let i = thirdScenes.length - 1; i >= 0; --i) {
+        const scene = thirdScenes[i];
+        if (scene instanceof SCBSceneContainerSession && scene !== undefined && !scene.isActive &&
+          !scene.primarySession?.isMinimizing) {
+          scene.setActivationAtToggleHomeScenario();
+        }
+      }
+    }
+    if (invisibleScenes.length > 0) {
+      this.invisibleScenesRestore(invisibleScenes);
+    }
+  }
+
+  private invisibleScenesRestore(invisibleScenes: SCBSceneContainerSession[]): void {
+    log.showInfo(`restoreDesktopAnimate invisibleScenes length: ${invisibleScenes.length}`);
+    for (let i = invisibleScenes.length - 1; i >= 0; --i) {
+      const scene = invisibleScenes[i];
+      if (!scene.needRenderShowInRecent.showInRecent) {
+        this.setSceneTransition(scene, 1, 0, 0);
+      }
+      this.setSceneOpacity(scene, 1);
+      if (scene !== undefined && !scene.isActive && !scene.primarySession?.isMinimizing) {
+        scene.setActivationAtToggleHomeScenario();
+      }
+    }
+    this.requestFocusedInvisibleRestore();
+  }
+
+  private requestFocusedInvisibleRestore(): void {
+    const topContainerSession = SCBSceneSessionManager.getInstance().getContainerSessionList().getTopSession();
+    if (topContainerSession && topContainerSession.primarySession) {
+      SCBSceneSessionManager.getInstance().requestFocus(topContainerSession.primarySession.persistentId,
+        undefined, FocusChangeReason.REQUEST_WITH_CHECK_SUB_WINDOW);
+    }
+  }
+
+  private setSceneTransition(scene: SCBSceneContainerSession | undefined, scale: number,
+    translateX: number, translateY: number): void {
+    if (scene === undefined) {
+      return;
+    }
+    log.showInfo(`setTranX: ${translateX}, setTranY: ${translateY}, extra info: ${scene.getName()}`)
+    scene.primarySession?.setScale(scale, scale);
+    scene.secondarySession?.setScale(scale, scale);
+    scene.primarySession?.setTran(translateX, translateY);
+    scene.secondarySession?.setTran(translateX, translateY);
+    scene.dividerParam.dividerTranslateX = translateX;
+    scene.dividerParam.dividerTranslateY = translateY;
+    scene.dividerParam.scaleX = scale;
+    scene.dividerParam.scaleY = scale;
+  }
+
+  private closeHosKey(): void {
+    let focusedSession = SCBSceneSessionManager.getInstance().getFocusedSession(this.screenProperty.screenId);
+    if (focusedSession && focusedSession.session?.type === sceneSessionManager.SessionType.TYPE_GLOBAL_SEARCH) {
+      SCBSceneSessionManager.getInstance()
+        .requestUnfocus(focusedSession.session.persistentId, FocusChangeReason.SCB_SESSION_REQUEST_UNFOCUS);
+    }
+  }
+
+  private showDesktopAnimate(isWinD: boolean, frontScenes: Array<SCBSceneContainerSession | SCBSpecificSession>, speed: number) {
+    if (isWinD) {
+      this.closeFocusedHoverMenu();
+      // systemAniSceneCtrl.enqueue(SystemAnimatedScene.ENTER_WIND_CLEAR);
+    }
+    // 如果是刚解锁时触发清屏操作，保证缩放中心一致
+    const isWindowScenesUnlock = AppStorage.get('isWindowScenesUnlock') as boolean;
+    if (isWindowScenesUnlock) {
+      AppStorage.setOrCreate<boolean>('isWindowScenesUnlock', false);
+    }
+    // 避免超时和正常逻辑中同时走入清屏动效，添加标志位
+    let isExecuteAnimation: boolean = false;
+    sceneSessionManager.getAllWindowVisibilityInfos()
+      .then((windowInfoList: Array<sceneSessionManager.WindowVisibilityInfo>) => {
+        if (isExecuteAnimation || this.isRecentOrSplitState()) {
+          log.showInfo(`toggleHome executed: ${isExecuteAnimation}, isRecentOrSplit:${this.isRecentOrSplitState()}.`);
+          return;
+        }
+        isExecuteAnimation = true;
+        this.isWindowOccluded(windowInfoList, frontScenes);
+        this.doAnimation(isWinD, frontScenes, speed);
+      }).catch(() => {
+      log.showError(`getAllWindowVisibilityInfos error`);
+      if (isExecuteAnimation || this.isRecentOrSplitState()) {
+        log.showInfo(`toggleHome executed1: ${isExecuteAnimation}, isRecentOrSplit:${this.isRecentOrSplitState()}.`);
+        return;
+      }
+      isExecuteAnimation = true;
+      this.doAnimation(isWinD, frontScenes, speed);
+    })
+    setTimeout(() => {
+      if (isExecuteAnimation || this.isRecentOrSplitState()) {
+        log.showInfo(`toggleHome executed2: ${isExecuteAnimation}, isRecentOrSplit:${this.isRecentOrSplitState()}.`);
+        return;
+      }
+      // 如果获取遮挡关系超时，也需要执行doAnimation动画
+      log.showWarn(`getAllWindowVisibilityInfos timeout`);
+      isExecuteAnimation = true;
+      this.doAnimation(isWinD, frontScenes, speed);
+    }, GET_INFO_TIMEOUT_IN_CLEAR_SCENE);
+  }
+
+  private doAnimation(isWinD: boolean, frontScenes: Array<SCBSceneContainerSession | SCBSpecificSession>, speed: number) {
+    this.toggleHomeSceneRequestBackCnt++;
+    for (const scene of frontScenes) {
+      if (scene instanceof SCBSceneContainerSession) {
+        scene.addTransitionCount();
+      }
+    }
+    const len = frontScenes.length;
+    let invisibleScenes: SCBSceneContainerSession[] = [];
+    let fourthScenes: (SCBSceneContainerSession | SCBSpecificSession)[] = [];
+    let thirdScene: SCBSceneContainerSession | SCBSpecificSession | undefined = undefined;
+    let secondScene: SCBSceneContainerSession | SCBSpecificSession | undefined = undefined;
+    let firstScene: SCBSceneContainerSession | SCBSpecificSession | undefined = undefined;
+    for (let i = 0; i < len; i++) {
+      const scene = frontScenes[i];
+      if ((len - i) === 1) {
+        firstScene = scene;
+      } else if (scene instanceof SCBSceneContainerSession && scene.invisible.value && isWinD) {
+        invisibleScenes.push(scene);
+      } else if ((len - i) === 2) {
+        secondScene = scene;
+      } else if ((len - i) === 3) {
+        thirdScene = scene;
+      } else {
+        fourthScenes.push(scene);
+      }
+    }
+    if (invisibleScenes.length > 0) {
+      log.showInfo(`showDesktopAnimate invisibleScenes length: ${invisibleScenes.length}, ${fourthScenes.length}`);
+      for (const scene of invisibleScenes) {
+        this.setSceneOpacity(scene, 0);
+        this.processAnimateFinalValue(scene, 0.27, 0.6);
+      }
+    }
+    this.clearSceneAnimate(isWinD, frontScenes, firstScene, secondScene, thirdScene, fourthScenes, speed);
+    log.showInfo(`showDesktopAnimate frontScenes length: ${frontScenes.length}`);
+    this.toggleHomeScene = frontScenes;
+  }
+
+  private clearFirstSceneAnimate(isWinD: boolean, frontScenes: Array<SCBSceneContainerSession | SCBSpecificSession>,
+    firstScene: SCBSceneContainerSession | SCBSpecificSession | undefined,
+    curve: ICurve, duration: number) {
+    if (firstScene !== undefined) {
+      let animateCnt = this.toggleHomeSceneRequestBackCnt;
+      let startSceneCnt: number = this.isStartSceneWhenClearSceneCnt;
+      let singleAnimateCntMap: Map<number, Array<number>> = new Map();
+      const countScenes: SCBSceneContainerSession[] = frontScenes.filter((scene) => scene instanceof SCBSceneContainerSession) as SCBSceneContainerSession[];
+      const len = countScenes.length;
+      for (let i = 0; i < len; i++) {
+        const scene = countScenes[i];
+        if (scene.primarySession) {
+          singleAnimateCntMap.set(scene.primarySession.sceneInfo.persistentId, [scene.getTransitionCount(), scene.screenProperty.screenId]);
+        }
+      }
+      this.getUIContext()?.animateToImmediately({
+        duration: duration + ThreeFingerSwipeConstants.ANIMATION_DELAY * ThreeFingerSwipeConstants.THREE,
+        curve: curve,
+        onFinish: () => {
+          log.showInfo(`clearFirstSceneAnimate, this.toggleHomeSceneRequestBackCnt: ${this.toggleHomeSceneRequestBackCnt}`);
+          const scenes: SCBSceneContainerSession[] = frontScenes.filter((scene) => scene instanceof SCBSceneContainerSession) as SCBSceneContainerSession[];
+          if (isWinD) {
+            Trace.end(Trace.CORE_METHOD_TOGGLE_HOME);
+            if (this.toggleHomeSceneRequestBackCnt === animateCnt && !this.isRecentOrSplitState()) {
+              this.clearSceneFinishEvent(scenes, singleAnimateCntMap);
+            } else {
+              this.clearSingleSceneFinishEvent(scenes, singleAnimateCntMap);
+            }
+            performanceMonitor.end('PC_SHORTCUT_SHOW_DESKTOP');
+            performanceMonitor.end('PC_CLICK_ARROW_SHOW_DESKTOP');
+            systemAniSceneCtrl.dequeue(SystemAnimatedScene.ENTER_WIND_CLEAR);
+          } else {
+            if (this.toggleHomeSceneRequestBackCnt === animateCnt && !this.isRecentOrSplitState()) {
+              HiSysEventUtil.reportShowDesktopGestureEvent(true, false);
+              this.clearSceneFinishEvent(scenes, singleAnimateCntMap);
+            } else {
+              this.clearSingleSceneFinishEvent(scenes, singleAnimateCntMap);
+            }
+            performanceMonitor.end('PC_SHOW_DESKTOP_GESTURE_OPERATION');
+            this.gestureFirstMove = true;
+            systemAniSceneCtrl.dequeue(SystemAnimatedScene.EXIT_TFU_WINDOW);
+          }
+          if (startSceneCnt === this.isStartSceneWhenClearSceneCnt) {
+            this.isStartSceneWhenClearScene = false;
+            this.isStartSceneWhenClearSceneCnt = 0;
+          }
+        }
+      }, () => {
+        this.setSceneOpacity(firstScene, 1);
+        this.processAnimateFinalValue(firstScene, 0.4, 0.75);
+      })
+    }
+  }
+
+  private clearSceneAnimate(isWinD: boolean, frontScenes: Array<SCBSceneContainerSession | SCBSpecificSession>,
+    firstScene: SCBSceneContainerSession | SCBSpecificSession | undefined,
+    secondScene: SCBSceneContainerSession | SCBSpecificSession | undefined,
+    thirdScene: SCBSceneContainerSession | SCBSpecificSession | undefined,
+    fourthScenes: (SCBSceneContainerSession | SCBSpecificSession)[], speed: number) {
+    if (fourthScenes.length > 0) {
+      for (const scene of fourthScenes) {
+        this.setSceneOpacity(scene, 1);
+        this.processAnimateFinalValue(scene, 0.27, 0.6);
+      }
+    }
+    if (thirdScene !== undefined) {
+      this.setSceneOpacity(thirdScene, 1);
+      this.processAnimateFinalValue(thirdScene, 0.3, 0.65);
+    }
+    if (secondScene !== undefined) {
+      this.setSceneOpacity(secondScene, 1);
+      this.processAnimateFinalValue(secondScene, 0.35, 0.7);
+    }
+    let curve: ICurve = curves.interpolatingSpring(0, 1, 400, 38);
+    this.clearFirstSceneAnimate(isWinD, frontScenes, firstScene, curve, speed)
+  }
+
+  private closeFocusedHoverMenu(): void {
+    // hide window title Max hover menu
+    const focusedSession = SCBSceneSessionManager.getInstance().getFocusedSession(this.screenProperty.screenId);
+    if (focusedSession instanceof SCBSpecificSession &&
+      focusedSession.source === SCBSpecificSessionSource.TYPE_ARKUI) {
+      SCBSceneSessionManager.getInstance()
+        .requestUnfocus(focusedSession.session.persistentId, FocusChangeReason.SCB_SESSION_REQUEST_UNFOCUS);
+    }
+  }
+
+  private isWindowOccluded(windowInfoList: Array<sceneSessionManager.WindowVisibilityInfo>, frontScenes: Array<SCBSceneContainerSession | SCBSpecificSession>) {
+    windowInfoList.forEach((windowInfo: sceneSessionManager.WindowVisibilityInfo) => {
+      frontScenes.forEach((scene: SCBSceneContainerSession | SCBSpecificSession) => {
+        if (scene instanceof SCBSceneContainerSession && scene.primarySession?.session.persistentId === windowInfo.windowId) {
+          scene.invisible.value = (windowInfo.visibility === sceneSessionManager.WindowVisibility.COMPLETE_OCCLUSION) ? true : false;
+          log.showInfo(`windowOccluded:${windowInfo.windowId} ${windowInfo.visibility} ${scene.invisible.value}`)
+        }
+      })
+    })
+  }
+
+  private processAnimateFinalValue(scene: SCBSceneContainerSession | SCBSpecificSession | undefined, scale: number, ratio: number) {
+    if (scene === undefined) {
+      return;
+    }
+    if (scene instanceof SCBSpecificSession && scene.screenId === this.screenProperty.screenId) {
+      scale = scene.scaleX * scale;
+      scene.scaleX = scale;
+      scene.scaleY = scale;
+      let finalRect: SCBSessionRect = SCBSceneHelper.preHandleSubSessionRectClearScene(scene, this.screenProperty);
+      let dialogDx = (this.screenWidth / 2 - finalRect.left.getVp() - finalRect.width.getVp() * 0.5) * ratio;
+      let dialogDy: number = -(finalRect.top.getVp() + (finalRect.height.getVp() * (1 + scale)) / 2 + HOT_AREA_IN_CLEAR_SCENE);
+      /*const parentContainerSession = this.panelMgr.getParentContainerSession(scene.session.parentId);
+      if (parentContainerSession && this.isNeedResetPosition(parentContainerSession)) {
+        dialogDx = ((this.screenWidth - finalRect.width.getVp() * scale) * 0.5 - finalRect.left.getVp());
+        dialogDy = -(finalRect.top.getVp() + finalRect.height.getVp() * scale + HOT_AREA_IN_CLEAR_SCENE);
+      }*/
+      scene.translateX = dialogDx;
+      scene.translateY = dialogDy;
+      scene.transformData.translateX = dialogDx;
+      scene.transformData.translateY = dialogDy;
+      scene.transformData.scale = scale;
+      return;
+    } else if (scene instanceof SCBSceneContainerSession && scene.primarySession !== null &&
+      scene.primarySession.sceneInfo.screenId === this.screenProperty.screenId) {
+      scene.needRenderVisibility.setVisibilityWithDfx(false, TAG, 'setVisibilityClearScene', scene.getName());
+      // scale = scene.primarySession.scaleX * scale;
+      // let sceneContainerWidth = scene.getSceneContainerWidth();
+      // let sceneContainerHeight = scene.getSceneContainerHeight();
+      // let sceneSession: SCBSceneSession = scene.primarySession;
+      // if (scene.isSplit && scene.secondarySession !== null &&
+      //   scene.primarySession.sceneInfo.windowMode === SCBSceneMode.SECONDARY) {
+      //   sceneSession = scene.secondarySession;
+      // }
+      // let finalRect = sceneSession.currRect;
+      // if (SCBCompatibilityModeManager.getInstance().isCompatibilityModeScale(sceneSession)) {
+      //   finalRect = SCBCompatibilityModeManager.getInstance().windowScaleTransfer(finalRect,
+      //     sceneSession.getCompatibleScale(), true);
+      //   sceneContainerWidth = finalRect.width.getVp();
+      //   sceneContainerHeight = finalRect.height.getVp();
+      // }
+      // const translateX: number = finalRect.left.getVp();
+      // const newX = sceneContainerWidth * (1 - scale) / 2 + translateX;
+      // let dx = ((this.screenWidth - sceneContainerWidth * scale) * 0.5 - newX) * ratio;
+      // let dy: number = -(finalRect.top.getVp() +
+      //   (sceneContainerHeight * (1 + scale)) / 2 + HOT_AREA_IN_CLEAR_SCENE);
+      // if (this.isNeedResetPosition(scene)) {
+      //   dx = ((this.screenWidth - sceneContainerWidth * scale) * 0.5 - translateX);
+      //   dy = -(finalRect.top.getVp() + sceneContainerHeight * scale + HOT_AREA_IN_CLEAR_SCENE);
+      // }
+      // scene.transformData.translateX = dx;
+      // scene.transformData.translateY = dy;
+      // scene.transformData.scale = scale;
+      // SCBRecentCardViewModel.setSceneTranslate(scene, dx, dy);
+      // SCBRecentCardViewModel.getSceneScale(scene, scale);
+      // SCBRecentCardViewModel.getInstance().setSceneBorderRadiusInClearScene(scene, 1, 1);
+    }
+  }
+
+  private clearSceneFinishEvent(frontScenes: Array <SCBSceneContainerSession>, singleAnimateCntMap: Map<number, Array<number>>) {
+    log.showInfo(`clearSceneFinishEvent requestSceneBackground, screenId: ${this.screenProperty.screenId}.`);
+    sceneSessionManager.requestAllAppSessionUnfocus();
+    const len = frontScenes.length;
+    this.toggleHomeSceneRequestBackCnt = 0;
+    // 针对状态切换的场景，如果清屏动画前后的设备state不一致，则下树
+    // const curSuperFoldStatus = SCBFoldSceneStateManager.getInstance().getCurSuperFoldStatus();
+    // let isChangeState: boolean = curSuperFoldStatus !== lastSuperFoldStatus;
+    for (let i = len - 1; i > -1; i--) {
+      const scene = frontScenes[i];
+      if (!scene.primarySession) {
+        continue;
+      }
+      let animateCntMessageArray = singleAnimateCntMap.get(scene.primarySession.sceneInfo.persistentId);
+      let isChangeScreen: boolean = false;
+      if (animateCntMessageArray){
+        // 如果清屏过程中触发屏幕切换，也需要设置toggleHomeState为false让窗口下树
+        isChangeScreen = scene.screenProperty.screenId !== animateCntMessageArray[1];
+      }
+      // 增加isMinimizing的判断，用于处理清屏时点击使窗口最小化的特殊场景
+      if (!scene.needRenderVisibility.visibility && !scene.primarySession?.isMinimizing) {
+        // 隐私窗口要下树，启动应用时窗口也要下树
+        scene.toggleHomeState = scene.primarySession?.sessionData.isPrivacyWindow ? false :
+          (this.isStartSceneWhenClearScene ? false : true);
+        if (scene.toggleHomeState && (this.isOnLockWhenClearScene || this.isClearToggleHomeScene || isChangeScreen)) {
+          scene.toggleHomeState = false;
+        }
+        log.showDebug(`name: ${scene.getName()}, isChangeScreen: ${isChangeScreen}.`);
+        scene.requestSceneBackground(false, false, true, false, BackgroundReason.QUICK_BATCH_BACKGROUND);
+      } else {
+        log.showInfo(`name: ${scene.getName()}, visibility: ${scene.needRenderVisibility.visibility}.` +
+          `isMinimizing: ${scene.primarySession?.isMinimizing}, requestBackground fail.`);
+      }
+    }
+    this.isOnLockWhenClearScene = false;
+    this.isClearToggleHomeScene = false;
+    this.resetClearSceneStatus();
+  }
+
+  private clearSingleSceneFinishEvent(frontScenes: Array<SCBSceneContainerSession>, singleAnimateCntMap: Map<number, Array<number>>) {
+    if (this.isRecentOrSplitState()) {
+      return;
+    }
+    log.showInfo('clearSceneFinishEvent interrupt');
+    const len = frontScenes.length;
+    for (let i = 0; i < len; i++) {
+      const scene = frontScenes[i];
+      if (!scene.primarySession) {
+        continue;
+      }
+      let currentAnimationCnt = scene.getTransitionCount();
+      let animateCntMessageArray = singleAnimateCntMap.get(scene.primarySession.sceneInfo.persistentId);
+      if (!animateCntMessageArray || currentAnimationCnt !== animateCntMessageArray[0]) {
+        continue;
+      }
+      // 增加isMinimizing的判断，用于处理清屏时点击使窗口最小化的特殊场景
+      if (!scene.needRenderVisibility.visibility && !scene.primarySession?.isMinimizing) {
+        // 走入单窗口计数器判断能否退后台的场景已经是特殊的打断场景，不需要上树
+        scene.toggleHomeState = false;
+        scene.requestSceneBackground(false, false, true, false, BackgroundReason.QUICK_BATCH_BACKGROUND);
+        singleAnimateCntMap.delete(scene.primarySession.sceneInfo.persistentId);
+      } else {
+        log.showInfo(`name: ${scene.getName()}, visibility: ${scene.needRenderVisibility.visibility}` +
+          `isMinimizing: ${scene.primarySession?.isMinimizing}, requestBackground fail.`);
+      }
+    }
+    this.isOnLockWhenClearScene = false;
+    this.isClearToggleHomeScene = false;
+    this.resetClearSceneStatus();
+  }
+
+  private resetClearSceneStatus(): void {
+    if (this.inClearSceneStatus) {
+      this.inClearSceneStatus = false;
+      SCBSceneSessionManager.getInstance().updateSystemBarProperty();
+    }
+  }
+
+  /**
+   * isNeedResetPosition 多任务场景动效过程中 是否需要将缩放中心调整为左上角
+   * @param sceneContainerSession
+   */
+  private isNeedResetPosition(sceneContainerSession: SCBSceneContainerSession): boolean {
+    if (!sceneContainerSession) {
+      recentLog.showError('isNeedResetPosition sceneContainerSession is empty. ');
+      return false;
+    }
+    if (!sceneContainerSession.primarySession) {
+      recentLog.showError('isNeedResetPosition primarySession is empty. ');
+      return false;
+    }
+    if (sceneContainerSession.primarySession && sceneContainerSession.secondarySession) {
+      recentLog.showError('isNeedResetPosition split status. ');
+      return false;
+    }
+    /*if (sceneContainerSession.primarySession.pcWindowShowType !== PCWindowShowType.DEFAULTWINDOW) {
+      return true;
+    }*/
+    return false;
+  }
+
+  private queryFrontForWIND(): (SCBSceneContainerSession | SCBSpecificSession)[] {
+    const frontScenes: (SCBSceneContainerSession | SCBSpecificSession)[] = [];
+    const containerScenes = this.containerSessionList.filter((scene) => {
+      const isSatisfiedClearScene: boolean = scene.needRenderVisibility.visibility &&
+        !scene.primarySession?.isMinimizing && !scene.showInRecent;
+      if (!isSatisfiedClearScene && scene.isActive) {
+        log.showInfo(`${scene.primarySession?.getName()} is not added into frontScenes,` +
+          `visibility: ${scene.needRenderVisibility.visibility},` +
+          `isMinimizing: ${scene.primarySession?.isMinimizing}` +
+          `showInRecent: ${scene.needRenderShowInRecent.showInRecent}`);
+      }
+      return isSatisfiedClearScene;
+    });
+    for (const containerScene of containerScenes) {
+      frontScenes.push(containerScene);
+      let dialogSceneList: SCBSpecificSession[] = [];
+      if (containerScene.primarySession !== null) {
+        dialogSceneList.push(...containerScene.primarySession.dialogSessionList);
+        if (containerScene.primarySession.subSessionList !== null){
+          this.traverseSubList(containerScene.primarySession.subSessionList, dialogSceneList);
+        }
+      }
+      if (containerScene.isSplit && containerScene.secondarySession !== null) {
+        dialogSceneList.push(...containerScene.secondarySession.dialogSessionList);
+        if (containerScene.secondarySession.subSessionList !== null){
+          this.traverseSubList(containerScene.secondarySession.subSessionList, dialogSceneList);
+        }
+      }
+      if (dialogSceneList.length > 0) {
+        const dialogSceneForWINDList = dialogSceneList.filter((dialogScene) => {
+          return dialogScene.isActive;
+        });
+        if (dialogSceneForWINDList.length <= 0) {
+          continue;
+        }
+        frontScenes.push(...dialogSceneForWINDList);
+      }
+    }
+    return frontScenes;
+  }
+
+  private getToggleHomeScene: Function = (screenId: number): Array<SCBSceneContainerSession | SCBSpecificSession> => this.getToggleHomeSceneFunc(screenId);
+
+  private getToggleHomeSceneFunc(screenId: number): Array<SCBSceneContainerSession | SCBSpecificSession> {
+    if (screenId === this.screenProperty.screenId) {
+      return this.toggleHomeScene;
+    } else {
+      return [];
+    }
   }
 
   updateScreenProperty() {
@@ -720,7 +1210,7 @@ export struct SCBScenePanel {
 
   private setSceneTitleFocus(element: SCBSceneContainerSession): void {
     const bundleName = element.primarySession?.sceneInfo.bundleName ?? '';
-    const persistentId = element.primarySession?.session.persistentId ?? -1;
+    const persistentId: number = element.primarySession?.session.persistentId ?? -1;
     const id = SCBRecentTitleViewModel.getRecentTitleAppNameId(persistentId, bundleName);
     try {
       this.getUIContext().getFocusController().requestFocus(id);
@@ -861,7 +1351,7 @@ export struct SCBScenePanel {
     const scale = SCBRecentCardViewModel.getSceneContainerRecentScale(container, currSelectedContainer.height);
     const cardHeight: number = this.getRecentCoverHeight(sceneContainerHeight, scale);
     const titleHeight: number = SCBRecentStyleConstants.DOUBLE_LIST_APP_INFO_BOTTOM_MARGIN * 2 +
-      SCBRecentStyleConstants.DOUBLE_LIST_DEFAULT_APP_ICON_SIZE;
+    SCBRecentStyleConstants.DOUBLE_LIST_DEFAULT_APP_ICON_SIZE;
     const recentViewHeight: number = this.mRecentSessionsViewModel.getCurrentShowHeight() - this.dockHeight;
     let offsetY: number = Number(currSelectedContainer.top) - titleHeight + cardHeight - recentViewHeight +
       this.screenHeight * this.recentStyleManager.getStyle().cardLineSpacePercent;
@@ -1632,7 +2122,7 @@ export struct SCBScenePanel {
         (element) => element.sessionId == containerSession.primarySession?.session.persistentId);
       if (recentSession === undefined) {
         recentLog.showError('cannot find recent session, screenId: %{public}d bundleName = %{public}s ',
-        this.screenProperty.screenId, containerSession.primarySession?.sceneInfo.bundleName);
+          this.screenProperty.screenId, containerSession.primarySession?.sceneInfo.bundleName);
         return;
       }
       if (containerSession.isBackground()) {
@@ -1734,12 +2224,12 @@ export struct SCBScenePanel {
     }
     if (focusType === KeyCodeConstants.KEYCODE_DPAD_DOWN) {
       dstSessionList = recentSessions[index].rowNum === recentSessions[len - 1].rowNum ?
-      recentSessions.filter(session => Number(session.rowNum) === 0) :
-      recentSessions.filter(session => Number(session.rowNum) === recentSessions[index].rowNum + 1);
+        recentSessions.filter(session => Number(session.rowNum) === 0) :
+        recentSessions.filter(session => Number(session.rowNum) === recentSessions[index].rowNum + 1);
     } else if (focusType === KeyCodeConstants.KEYCODE_DPAD_UP) {
       dstSessionList = recentSessions[index].rowNum === 0 ?
-      recentSessions.filter(session => Number(session.rowNum) === recentSessions[len - 1].rowNum) :
-      recentSessions.filter(session => Number(session.rowNum) === recentSessions[index].rowNum - 1);
+        recentSessions.filter(session => Number(session.rowNum) === recentSessions[len - 1].rowNum) :
+        recentSessions.filter(session => Number(session.rowNum) === recentSessions[index].rowNum - 1);
     }
     let resultIndex: number = this.memoryHelper.getCache(dstSessionList[0].rowNum);
     if (resultIndex !== undefined && resultIndex !== INVALID_INDEX) {
@@ -1820,7 +2310,9 @@ export struct SCBScenePanel {
     }
     log.showInfo(`handleEnterRecentFocus ${this.screenProperty.screenId}, focusType： ${focusType}`);
     this.mRecentFocusManager.doChangeFocus(this.selectedIndex, focusType, this.screenProperty.screenId,
-      (focusType: number) => { this.changeFocusInCurrPanel(focusType); });
+      (focusType: number) => {
+        this.changeFocusInCurrPanel(focusType);
+      });
   }
 
   /**
@@ -1870,7 +2362,7 @@ export struct SCBScenePanel {
       // 左右二分屏
       if (focusType === KeyCodeConstants.KEYCODE_DPAD_RIGHT) {
         if (containerSession.primarySession?.sceneInfo.windowMode === SCBSceneMode.PRIMARY &&
-          containerSession.isPrimarySelected) {
+        containerSession.isPrimarySelected) {
           containerSession.isPrimarySelected = false;
           containerSession.setPrimarySelectedWithMutex(false);
           return true;
@@ -1890,7 +2382,7 @@ export struct SCBScenePanel {
           return true;
         }
         if (containerSession.primarySession?.sceneInfo.windowMode === SCBSceneMode.SECONDARY &&
-          containerSession.isPrimarySelected) {
+        containerSession.isPrimarySelected) {
           containerSession.isPrimarySelected = false;
           containerSession.setPrimarySelectedWithMutex(false);
           return true;
@@ -2100,7 +2592,8 @@ export struct SCBScenePanel {
   }
 
   private bgWindowsToRecentVisiableWithAnimation(sceneContainerSessionList: SCBSceneContainerSession[],
-    onFinishCallback: Function = () => {}): void {
+    onFinishCallback: Function = () => {
+    }): void {
     this.getUIContext()?.animateToImmediately({
       duration: 0,
     }, () => {
@@ -2609,7 +3102,8 @@ export struct SCBScenePanel {
     sceneContainerSessionList.forEach((sceneContainerSession) => {
       SCBRecentCardViewModel.resetShowInRecent(sceneContainerSession);
     });
-    this.getUIContext()?.animateTo({}, () => {});
+    this.getUIContext()?.animateTo({}, () => {
+    });
   }
 
   /**
@@ -2807,8 +3301,8 @@ export struct SCBScenePanel {
     let secTranslate = (sceneSession?.currRect.height.getVp() as number + DividerStyle.DIVIDER_WIDTH) *
       (1 - sceneSession.scaleY) / 2;
     if (sceneSession.sceneInfo.windowMode === SCBSceneMode.SECONDARY) {
-      priTranslate = - priTranslate;
-      secTranslate = - secTranslate;
+      priTranslate = -priTranslate;
+      secTranslate = -secTranslate;
       sceneSession.translateY += SCBRecentStyleConstants.SPLIT_UP_DOWN_SPACE;
     }
     sceneSession.translateY += priTranslate;
@@ -2818,7 +3312,7 @@ export struct SCBScenePanel {
   }
 
   private updaterRecentCoverTranslate(newSceneContainerSession: SCBSceneContainerSession,
-                                      currContainerSession: SCBSceneContainerSession, windowMode: number) : void {
+    currContainerSession: SCBSceneContainerSession, windowMode: number): void {
     if (!newSceneContainerSession || !currContainerSession) {
       return;
     }
@@ -2841,10 +3335,10 @@ export struct SCBScenePanel {
   }
 
   private updateRecentInfoAfterExitForSplit(newSceneContainerSession: SCBSceneContainerSession,
-                                            currContainerSession: SCBSceneContainerSession,
-                                            primarySession: SCBSceneSession,
-                                            secondarySession: SCBSceneSession | null,
-                                            isEnterPair: boolean = false): void {
+    currContainerSession: SCBSceneContainerSession,
+    primarySession: SCBSceneSession,
+    secondarySession: SCBSceneSession | null,
+    isEnterPair: boolean = false): void {
     if (currContainerSession.dividerParam.isExpandUpDownSplit()) {
       this.updateRecentInfoAfterExitForUpDownSplit(newSceneContainerSession, currContainerSession, primarySession,
         secondarySession, isEnterPair);
@@ -2898,7 +3392,7 @@ export struct SCBScenePanel {
   }
 
   private addSceneContainerSession(sceneContainerSession: SCBSceneContainerSession,
-                                   needRefreshZOrder: boolean = true): void {
+    needRefreshZOrder: boolean = true): void {
     if (!sceneContainerSession) {
       return;
     }
@@ -3253,7 +3747,7 @@ export struct SCBScenePanel {
       let currContainerSession = this.containerSessionList.getTopActiveSession();
       if (currContainerSession && currContainerSession.isOneStepSplit() && currContainerSession.primarySession) {
         const stackHeightChange = currContainerSession.primarySession.translateY + this.screenHeight -
-          this.scrollStackHeight;
+        this.scrollStackHeight;
         if (stackHeightChange > 0) {
           currContainerSession.primarySession.translateY -= stackHeightChange;
           currContainerSession.dividerParam.dividerTranslateY -= stackHeightChange;
@@ -3263,7 +3757,7 @@ export struct SCBScenePanel {
   }
 
   private setScenePropertyAnimateEndState(containerSession: SCBSceneContainerSession, sceneSession: SCBSceneSession,
-                                          recentSession: SCBRecentSessionInfo, isOpen: boolean): void {
+    recentSession: SCBRecentSessionInfo, isOpen: boolean): void {
     let sceneContainerWidth = containerSession.getSceneContainerWidth();
     let sceneContainerHeight = containerSession.getSceneContainerHeight();
     let posX = sceneSession.currRect.left.getVp();
@@ -3306,7 +3800,7 @@ export struct SCBScenePanel {
   }
 
   private updateRecentInfoWhenResizeScenePropertyForPair(containerSession: SCBSceneContainerSession, scale: number,
-                                                         recentSession: SCBRecentSessionInfo) {
+    recentSession: SCBRecentSessionInfo) {
     this.calculateSplitRecentCardOffSetXForPair(containerSession, scale);
     this.calculateSplitRecentCardInfoForPair(containerSession, recentSession);
   }
@@ -3337,7 +3831,7 @@ export struct SCBScenePanel {
   }
 
   recentOrSplitClose(containerSession: SCBSceneContainerSession, isException?: boolean,
-                    isSaveSnapshot?: boolean, extraInfo?: ExecuteCallbackExtraInfo): void {
+    isSaveSnapshot?: boolean, extraInfo?: ExecuteCallbackExtraInfo): void {
     let time = systemDateTime.getTime(false);
     performanceMonitor.recordInputEventTime(performanceMonitor.ActionType.LAST_UP,
       performanceMonitor.SourceType.PERF_MOUSE_EVENT, time);
@@ -3434,7 +3928,7 @@ export struct SCBScenePanel {
     const originRecentList: SCBSceneContainerSessionArray =
       this.mRecentSessionsViewModel.getShowInRecentContainerSessionList();
     let recentContainerList = originRecentList.filter((item: SCBSceneContainerSession) =>
-      this.removeContainerSessionList.findIndex((id) => id === item.getPersistentId()) === -1);
+    this.removeContainerSessionList.findIndex((id) => id === item.getPersistentId()) === -1);
     if (this.isSplitState()) {
       const curActiveContainerSession = this.containerSessionList.getTopActiveSession();
       if (curActiveContainerSession?.isSplit) {
@@ -3657,7 +4151,7 @@ export struct SCBScenePanel {
     }
     viewMgrPolicy.hideView(ViewType.STATUS_BAR);
     if (RecentAndAppCenterSwitchManager.getInstance().getRecentToAppCenter() ||
-      RecentAndAppCenterSwitchManager.getInstance().getOneFrameVisible(this.screenProperty.screenId)) {
+    RecentAndAppCenterSwitchManager.getInstance().getOneFrameVisible(this.screenProperty.screenId)) {
       return;
     }
     SCBSceneSessionManager.getInstance().resetLastStatusBarProperty(this.screenProperty.screenId);
@@ -3812,7 +4306,7 @@ export struct SCBScenePanel {
   }
 
   private playMoveUpAnimate(containerSession: SCBSceneContainerSession,
-                            offsetY: number, durationTime: number = 200, playTempo: number = 1): void {
+    offsetY: number, durationTime: number = 200, playTempo: number = 1): void {
     const recentSession = this.currentRecentSessionInfo.find(
       (element) => element.sessionId == containerSession.primarySession?.session.persistentId);
     if (CheckEmptyUtils.isEmpty(recentSession)) {
@@ -3912,7 +4406,9 @@ export struct SCBScenePanel {
     containerSession.primarySession?.setIsClosing(true);
     performanceMonitor.begin(HiSysEventUtil.APP_EXIT_FROM_RECENT, performanceMonitor.ActionType.LAST_UP,
       containerSession.companionIconInfo?.bundleName);
-    this.recentSceneCloseAnimate(containerSession, () => { onFinish(containerSession as SCBSceneContainerSession) });
+    this.recentSceneCloseAnimate(containerSession, () => {
+      onFinish(containerSession as SCBSceneContainerSession)
+    });
     this.handleCloseInRecent(containerSession);
   }
 
@@ -3923,7 +4419,7 @@ export struct SCBScenePanel {
     }
     const persistentId = containerSession.getPersistentId();
     const index = this.removeContainerSessionList.findIndex(removePersistentId => {
-        return removePersistentId === persistentId;
+      return removePersistentId === persistentId;
     })
 
     if (index != -1) {
@@ -4042,7 +4538,7 @@ export struct SCBScenePanel {
   }
 
   private isMoveUpCloseSceneReady(containerSession: SCBSceneContainerSession,
-                                  event: GestureEvent): boolean | undefined {
+    event: GestureEvent): boolean | undefined {
     const recentSession = this.currentRecentSessionInfo.find(
       (element) => element.sessionId === containerSession.primarySession?.session.persistentId);
     if (CheckEmptyUtils.isEmpty(recentSession)) {
@@ -4305,7 +4801,7 @@ export struct SCBScenePanel {
     this.scrollBarHeight = pcUsableScreenHeight * SCBRecentStyleConstants.SCROLL_BAR_HEIGHT_PERCENT;
     this.scrollBarOffsetX = this.screenWidth - SCBRecentStyleConstants.SCROLL_BAR_MARGIN_RIGHT;
     this.scrollBarOffsetY = workSpaceHeight / 2 - this.scrollBarHeight / 2;
-    this.recentStyleManager = SCBRecentStyleManager.getInstance({extendScreenId: this.screenProperty.screenId});
+    this.recentStyleManager = SCBRecentStyleManager.getInstance({ extendScreenId: this.screenProperty.screenId });
     this.recentSubSceneViewModel.updateScreenID(this.screenProperty.screenId);
     this.recentPanelViewModel.updateRsID(this.screenProperty.rsId);
   }
@@ -4662,7 +5158,7 @@ export struct SCBScenePanel {
   }
 
   private changeSceneProperty(sceneContainer: SCBSceneContainerSession, blurRadius: number, opacity: number,
-                              scale: number): void {
+    scale: number): void {
     if (sceneContainer.isSplit) {
       if (sceneContainer.needRenderAlpha) {
         sceneContainer.needRenderAlpha.setNeedRenderAlphaWithDfx(opacity, TAG, 'changeSceneProperty',
@@ -4733,9 +5229,9 @@ export struct SCBScenePanel {
   private onLockReceived(): void {
     log.showInfo('onLockReceived scenePanelState = ' + this.scenePanelState);
     this.containerSessionList.forEach((containerSession) => {
-      if (containerSession.isActive && !containerSession.isShowWhenLocked()) {
-        containerSession.isDisappearing = true;
-      }
+      // if (containerSession.isActive && !containerSession.isShowWhenLocked()) {
+      //   containerSession.isDisappearing = true;
+      // }
     });
     AppStorage.setOrCreate('isLock', true);
     let systemSceneSession = SCBSceneSessionManager.getInstance()
@@ -4751,7 +5247,8 @@ export struct SCBScenePanel {
     this.containerSessionList.forEach((containerSession) => {
       containerSession.isDisappearing = false;
       // winD清屏后立刻触发锁屏时，还原可能被加到activeList中清屏窗口的缩放、位移、透明度
-      if (!containerSession.needRenderVisibility.visibility && containerSession.isActive) {
+      // if (!containerSession.needRenderVisibility.visibility && containerSession.isActive) {
+      if (containerSession.isActive) {
         containerSession.needRenderVisibility.setVisibilityWithDfx(true, TAG, 'onUnlockReceived',
           containerSession.getName());
         this.setSceneOpacity(containerSession, 1);
@@ -4859,7 +5356,6 @@ export struct SCBScenePanel {
         containerSession?.primarySession?.resetAnimationProperty();
         return;
       }
-      this.doScaleAnimation(containerSession);
     }, this.screenProperty.screenId);
   }
 
@@ -5227,8 +5723,12 @@ export struct SCBScenePanel {
 
   initRecentFocusController(): void {
     this.mRecentFocusController.registerRecentFocusModel({
-      setRecentSelectedIndexCallback : ((index: number) => { this.updateSelectedIndex(index); }),
-      getRecentSelectedIndexCallback: (() => { return this.selectedIndex; }),
+      setRecentSelectedIndexCallback: ((index: number) => {
+        this.updateSelectedIndex(index);
+      }),
+      getRecentSelectedIndexCallback: (() => {
+        return this.selectedIndex;
+      }),
     })
   }
 
@@ -5254,9 +5754,9 @@ export struct SCBScenePanel {
       .addCallback(LockScreenAnimationController.SCENE_ARRAY_CALLBACK, this.screenProperty.screenId);
     LockScreenAnimationController.getInstance()
       .registerCallback(LockScreenAnimationController.SCENE_ARRAY_CALLBACK + this.screenProperty.screenId,
-      () => {
-        this.handleSceneWhenUnlockScreen(this.getContainerListWhenUnlockScreen());
-      });
+        () => {
+          this.handleSceneWhenUnlockScreen(this.getContainerListWhenUnlockScreen());
+        });
     if (!this.sysSceneSession) {
       log.showWarn(`${this.systemSessionInfo.sceneName} system scene session is null! `);
       this.sysSceneSession = SCBSceneSessionManager.getInstance().requestSystemSceneSession(this.systemSessionInfo);
@@ -5272,6 +5772,9 @@ export struct SCBScenePanel {
     SCBPcScenePanelManager.getInstance().registerGetIsPairSplitCallback(() => {
       return this.isPairSplit;
     }, this.screenProperty.screenId);
+    this.addToToggleHomeScene = (session: SCBSpecificSession): void => {
+      this.addSessionToToggleHomeScene(session);
+    }
     SCBSceneSessionManager.getInstance().registerIsPairSplitCallback(() => {
       return this.isPairSplit;
     }, this.screenProperty.screenId);
@@ -5279,6 +5782,14 @@ export struct SCBScenePanel {
       return this.isHandleThreeFingerSwiper;
     }, this.screenProperty.screenId);
     SCBPiPManager.getInstance().registerAutoStartPipStatusChange();
+  }
+
+  private addToToggleHomeScene = (session: SCBSpecificSession): void => {
+    this.addSessionToToggleHomeScene(session);
+  }
+
+  addSessionToToggleHomeScene(session: SCBSpecificSession) {
+    this.toggleHomeScene.push(session);
   }
 
   private debugGetContainerSession(args: string[]): string {
@@ -5490,7 +6001,7 @@ export struct SCBScenePanel {
         continue;
       }
       if (this.isSplitState() && containerSession.isSplit && containerSession.isOneStepSplit() ||
-        containerSession.sessionData.attributeChanged) {
+      containerSession.sessionData.attributeChanged) {
         this.scrollTranslate += yOffset;
         const translate = Math.round(vp2px(this.scrollTranslate));
         attributeModifier.attribute?.translate({ y: translate + 'px' });
@@ -5554,6 +6065,8 @@ export struct SCBScenePanel {
             isPairSplit: this.isPairSplit,
             getScreenDpiDensity: this.getScreenDpiDensity,
             scenePanelState: $scenePanelState,
+            addToToggleHomeScene: this.addToToggleHomeScene,
+            getToggleHomeScene: this.getToggleHomeScene,
             deleteSceneCardInRecent: this.deleteSceneCardInRecent,
             singleContext: this.singleContext,
           })
@@ -5562,10 +6075,11 @@ export struct SCBScenePanel {
       .hitTestBehavior(HitTestMode.None)
       // 企业数字空间场景，最近任务中心可滚动区域增加20%。使最下窗口可以滚动到屏幕中间。
       .height(this.isSpaceEnableAndRecent() ?
-        (this.isShowScrollBar ? 
+        (this.isShowScrollBar ?
           this.scrollStackHeight : (this.scrollStackHeight - this.enterpriseRecentHeight - this.dockHeight)) :
         this.scrollStackHeight)
     }
+    .opacity(this.recentOpacity)
     .hitTestBehavior(this.isRecentOrSplitState() ? HitTestMode.Default : HitTestMode.None)
     .clip(this.getRecentClipRect())
     .size({
@@ -5585,7 +6099,7 @@ export struct SCBScenePanel {
       }
       SCBRecentFoldHalfVM.getInstance().runScrollAnimate(this.screenProperty.screenId, y);
     })
-    .onDidScroll((x, y, scrollState)=>{
+    .onDidScroll((x, y, scrollState) => {
       this.remainStillInScroll(x, y, scrollState)
     })
     .onScrollStart(() => {
@@ -5649,7 +6163,7 @@ export struct SCBScenePanel {
     Stack() {
     }
     .size({ width: this.screenProperty.width, height: this.screenProperty.height / 2 })
-    .position({ x: 0, y: px2vp(this.screenProperty.height / 2 ) })
+    .position({ x: 0, y: px2vp(this.screenProperty.height / 2) })
     .hitTestBehavior(HitTestMode.Block)
     .onClick((event: ClickEvent) => {
     })

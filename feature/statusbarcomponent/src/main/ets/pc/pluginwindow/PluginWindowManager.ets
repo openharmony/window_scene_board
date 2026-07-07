@@ -48,7 +48,7 @@ import { DisplayMgr, SCBFoldStatePropertyChangeEvent,
   SCBScreenSessionManager,
   windowMgr } from '@ohos/windowscene/src/main/ets/TsIndex';
 import { WindowConstants } from '@ohos/commonconstants/src/main/ets/TsIndex';
-import { BigScreenStatus } from '../common/BigScreenStatus';
+import { SuperFoldStatus } from '../common/SuperFoldStatus';
 import { statusbarPlCtrl } from '../../common/StatusBarPanelController';
 import { PluginDisplayStyle } from '../common/PluginConstants';
 import { PluginStyleUtil } from '../common/PluginStyleUtil';
@@ -95,7 +95,7 @@ export class PluginWindowManager extends PluginNotifyBase implements PluginStyle
   /**
    * 是否处于形态变化中
    */
-  public isBigScreenStatusChange: boolean = false;
+  public isSuperFoldStatusChange: boolean = false;
   /**
    * 定时器id
    */
@@ -117,7 +117,7 @@ export class PluginWindowManager extends PluginNotifyBase implements PluginStyle
   /**
    * 形态变化时状态管理
    */
-  private bigScreenStatus: BigScreenStatus = BigScreenStatus.getInstance();
+  private superFoldStatus: SuperFoldStatus = SuperFoldStatus.getInstance();
   /**
    * 托盘位置(px)
    */
@@ -160,7 +160,7 @@ export class PluginWindowManager extends PluginNotifyBase implements PluginStyle
     StatusBarEventManager.getInstance()
       .on(TAG, WindowPositionChangeEvent, this.handleWindowPositionEvent)
       .on(TAG, HideWindowPanelEvent, this.hideWindowPanel)
-      .on(TAG, SCBFoldStatePropertyChangeEvent, this.onBigScreenStatusChange)
+      .on(TAG, SCBFoldStatePropertyChangeEvent, this.onSuperFoldStatusChange)
       .on(TAG, WindowEvent, this.handleWindowEvent)
       .on(TAG, StatusBarTintEvent, this.handleStatusBarTintEvent)// PC、桌面状态栏需要响应沉浸式效果，PC只关注窗口隐藏/显示，桌面状态栏关注全场景
       .onSpecial(TAG, StatusBarEventId.PLUGIN_AREA_EVENT, this.onPluginAreaEvent);
@@ -218,6 +218,11 @@ export class PluginWindowManager extends PluginNotifyBase implements PluginStyle
    * 隐藏应用中心或者多任务中心窗口
    */
   public hideAppOrRecentWindow(): void {
+    // Heads-up notification banner展示时不应触发“互斥隐藏应用中心/任务中心”
+    // 有些链路会直接调用该方法（不带 windowName），这里再做一层兜底。
+    if (windowMgr.isShowing(WindowConstants.WINDOW_NAME_BANNER)) {
+      return;
+    }
     if (viewMgrPolicy.isViewShowing(ViewType.APP_CENTER)) {
       if (GlobalContext.getInstance().hasObject('hideAppCenterWithAnimation')) {
         let hideAppCenterWithAnimation = (GlobalContext.getInstance()
@@ -322,7 +327,7 @@ export class PluginWindowManager extends PluginNotifyBase implements PluginStyle
   }
 
   private updateWindowPosition(slot: string, position: window.Rect): void {
-    if (this.inBigScreenStatusChange()) {
+    if (this.inSuperFoldStatusChange()) {
       log.showInfo(`${slot} is in status change, no update WindowPostion!`);
       return;
     }
@@ -332,35 +337,35 @@ export class PluginWindowManager extends PluginNotifyBase implements PluginStyle
     windowMgr.updateWindowPosition(slot, position);
   }
 
-  private inBigScreenStatusChange(): boolean {
-    return this.isBigScreenStatusChange;
+  private inSuperFoldStatusChange(): boolean {
+    return this.isSuperFoldStatusChange;
   }
 
-  private onBigScreenStatusChange = (bigScreenStateProperty: SCBFoldStatePropertyChangeEvent) => {
-    log.showInfo(`onBigScreenStatusChange property, bSideHeight: ${bigScreenStateProperty.bSideHeight}, ` +
-      `curState: ${bigScreenStateProperty.curState}, tarState: ${bigScreenStateProperty.tarState}`);
-    this.updateScreenInfo(bigScreenStateProperty);
-    this.closeWindowOnStatusChange(bigScreenStateProperty);
+  private onSuperFoldStatusChange = (superFoldStateProperty: SCBFoldStatePropertyChangeEvent) => {
+    log.showInfo(`onSuperFoldStatusChange property, bSideHeight: ${superFoldStateProperty.bSideHeight}, ` +
+      `curState: ${superFoldStateProperty.curState}, tarState: ${superFoldStateProperty.tarState}`);
+    this.updateScreenInfo(superFoldStateProperty);
+    this.closeWindowOnStatusChange(superFoldStateProperty);
   }
 
-  private updateScreenInfo(bigScreenStateProperty: SCBFoldStatePropertyChangeEvent): void {
+  private updateScreenInfo(superFoldStateProperty: SCBFoldStatePropertyChangeEvent): void {
     // 虚拟键盘和磁吸键盘存在
-    if (this.bigScreenStatus.isKeyBoardExist(bigScreenStateProperty)) {
-      this.adaptiveScreenHeight = bigScreenStateProperty.bSideHeight;
-      this.adaptiveScreenWidth = bigScreenStateProperty.bSideWidth;
+    if (this.superFoldStatus.isKeyBoardExist(superFoldStateProperty)) {
+      this.adaptiveScreenHeight = superFoldStateProperty.bSideHeight;
+      this.adaptiveScreenWidth = superFoldStateProperty.bSideWidth;
     } else {
       // 获取的整个屏幕的宽高
       let screenSession = SCBScreenSessionManager.getInstance().getMainScreenSession();
       // px
       this.adaptiveScreenHeight = screenSession.scbScreenProperty.height;
       this.adaptiveScreenWidth = screenSession.scbScreenProperty.width;
-      log.showInfo('onBigScreenStatusChange, other state');
+      log.showInfo('onSuperFoldStatusChange, other state');
     }
     log.showInfo(`screenHeight: ${this.adaptiveScreenHeight}, screenWidth: ${this.adaptiveScreenWidth}`);
   }
 
-  private closeWindowOnStatusChange(bigScreenStateProperty: SCBFoldStatePropertyChangeEvent) {
-    if (BigScreenStatus.getInstance().isRotateStatus(bigScreenStateProperty)) {
+  private closeWindowOnStatusChange(superFoldStateProperty: SCBFoldStatePropertyChangeEvent) {
+    if (SuperFoldStatus.getInstance().isRotateStatus(superFoldStateProperty)) {
       log.showInfo('this is rotating, no deal now');
       return;
     }
@@ -380,11 +385,11 @@ export class PluginWindowManager extends PluginNotifyBase implements PluginStyle
 
   private setStatusDuringTimer(during: number): void {
     this.clearStatusDuringTimerId();
-    this.isBigScreenStatusChange = true;
-    log.showInfo(`status change begin, isBigScreenStatusChange: ${this.isBigScreenStatusChange}`);
+    this.isSuperFoldStatusChange = true;
+    log.showInfo(`status change begin, isSuperFoldStatusChange: ${this.isSuperFoldStatusChange}`);
     this.statusDuringTimerId = setTimeout(() => {
-      this.isBigScreenStatusChange = false;
-      log.showInfo(`status change end, isBigScreenStatusChange: ${this.isBigScreenStatusChange}`);
+      this.isSuperFoldStatusChange = false;
+      log.showInfo(`status change end, isSuperFoldStatusChange: ${this.isSuperFoldStatusChange}`);
       this.clearStatusDuringTimerId();
     }, during);
   }

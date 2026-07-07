@@ -80,6 +80,7 @@ export class NotificationGlassVm extends BaseNotification {
     this.deliveryTime = notificationEntry.deliveryTime;
     this.notificationContent = notificationEntry.notificationContent;
     this.actionButtons = notificationEntry.actionButtons;
+    this.isDeliverNotification = notificationEntry.isDeliverNotification;
     this.appIcon = notificationEntry.appIcon;
     this.isFromSystemApp = notificationEntry.isFromSystemApp;
     this.smallIcon = notificationEntry.smallIcon;
@@ -111,6 +112,11 @@ export class NotificationGlassVm extends BaseNotification {
    * @return image.PixelMap | string | undefined
    * */
   public getAppIcon(isOnlyUseAppIcon: boolean): image.PixelMap | string | undefined {
+    // 优先级最高
+    if (this.isDeliverNotification && this.appIcon) {
+      log.showInfo('getAppIcon, isDeliverNotification == true, return appIcon');
+      return this.appIcon;
+    }
     // 系统应用支持自定义图标，使用小图标代替应用图标
     if (this.isFromSystemApp && !CommonUtils.isInvalid(this.smallIcon)) {
       log.showInfo('getAppIcon, isFromSystemApp == true, return smallIcon');

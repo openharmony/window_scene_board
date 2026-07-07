@@ -24,6 +24,11 @@ export class FormCenterTitleStyle {
   public textLineHeight: Length = FormStyleConstants.FORM_MGR_FORM_NAME_LINE_HEIGHT;
   public fontSize: number | string | Resource = $r('sys.float.ohos_id_text_size_headline8');
   public titleHeight: Length = FormStyleConstants.FORM_CENTER_TITLE_HEIGHT;
+  public closeButtonSize: number = 40;
+  public closeButtonIconSize: number = 18;
+  public closeButtonMarginEnd: number = 16;
+  public closeButtonBgColor: ResourceColor = $r('app.color.media_control_default_img_bgc');
+  public closeButtonIconColor: ResourceColor = $r('sys.color.ohos_id_color_primary');
 
   adaptPC() {
     this.titlePadding = {

@@ -75,6 +75,8 @@ export class NtfListContentConfig {
   public brightnessMode: NtfBrightnessMode = NtfBrightnessMode.Distributed;
   // 一键删除时通知卡片动效计算参数
   public clearAllAnimationDelayParam = 250;
+  // 通知中心是否展示通知
+  public isShowDeliver = true;
   // 通知中心卡片列表头尾卡片是否有内折效果
   public isNtfListFold = true;
   // 通知中心高度默认值 = 屏幕高度 - 状态栏高度

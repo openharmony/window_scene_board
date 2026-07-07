@@ -43,7 +43,7 @@ export class SheetModel {
     try {
       if (((DeviceHelper.isPad() || DeviceHelper.isFoldExpandedOrHalfButNotSmallFoldProduct()) &&
         ContextManager.windowWidthByVp >= px2vp(display.getDefaultDisplaySync().width)) ||
-        DeviceHelper.isBigScreenDevice()) {
+        DeviceHelper.isSuperFoldDevice()) {
         return Math.min(ContextManager.windowWidthByVp, ContextManager.windowHeightByVp) * 0.9;
       }
     } catch (error) {

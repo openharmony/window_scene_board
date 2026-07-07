@@ -17,6 +17,7 @@ import { CacheManager } from '../manager/CacheManager';
 import {
   CheckEmptyUtils,
   CommonUtils,
+  OutdoorConfig,
   LogDomain,
   LogHelper
 } from '@ohos/basicutils/src/main/ets/TsIndex';
@@ -28,9 +29,12 @@ import {
   launcherAbilityManager,
   GridLayoutItemInfo
 } from '@ohos/launchercommon';
+import { LightOutdoorConfig } from '@ohos/frameworkwrapper';
 
 const TAG = 'appInstall_BMSListener';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.HOME, TAG);
+const DELIVER_BUNDLE_STATUS_DEFAULT: number = 1;
+const BMS_BROKER_UID: number = 5557;
 
 /**
  * BMS监听
@@ -95,6 +99,14 @@ export class BMSListener {
       case PackageCommonEvent.EVENT_PACKAGE_CHANGED:
         this.handlePackageAddOrChangeEvent(event);
         break;
+      case PackageCommonEvent.EVENT_UPDATING_DELIVER_BUNDLE_STATUS:
+        if (event.userId !== launcherAbilityManager.getUserId() || event.uid !== BMS_BROKER_UID) {
+          log.showWarn('user or uid is not current');
+          return;
+        }
+        CacheManager.getInstance().updateInstallingData(event.parameters?.bundleName ?? '',
+          event.parameters?.status ?? DELIVER_BUNDLE_STATUS_DEFAULT);
+        break;
       default:
         log.showInfo('handlePackageEvent package event invalid');
         break;
@@ -107,6 +119,51 @@ export class BMSListener {
    * @returns
    */
   private async handlePackageAddOrChangeEvent(event: PackageCommonEvent): Promise<void> {
+    if (OutdoorConfig.getInstance().isInOutdoorMode()) {
+      this.handlePackageAddOrChangeEventForOutdoorMode(event);
+    } else if (LightOutdoorConfig.getInstance().isOnLightOutdoorMode()) {
+      this.handlePackageAddOrChangeEventForLightOutdoorMode(event);
+    } else {
+      // 包更新或者安装事件
+      CacheManager.getInstance().appAddedOrUpdated(event, event.bundleName!);
+    }
+  }
+
+  /**
+   * 处理户外模式模式下的包添加或更新逻辑
+   * 当bundleName 对应的应用在预制布局中才会走添加/更新逻辑
+   * @param event
+   * @returns
+   */
+  private async handlePackageAddOrChangeEventForOutdoorMode(event: PackageCommonEvent): Promise<void> {
+    let bundleName: string = event.bundleName!;
+    let finalLayout = await GetLayoutInfoFromConfig.getInstance().getOutdoorLayoutConfigFile();
+    let listInConfigFiles: GridLayoutItemInfo[] = finalLayout.layoutInfo.filter((item) => {
+      return item.bundleName === event.bundleName;
+    });
+    // 如果通知中的应用不在预置布局中，则不处理。
+    if (CheckEmptyUtils.isEmptyArr(listInConfigFiles)) {
+      log.showWarn(`OutdoorMode not support ${bundleName}`);
+      return;
+    } else {
+      log.showWarn(`OutdoorMode support ${bundleName}`)
+    }
+    // 包更新或者安装事件
+    CacheManager.getInstance().appAddedOrUpdated(event, event.bundleName!);
+  }
+
+  private async handlePackageAddOrChangeEventForLightOutdoorMode(event: PackageCommonEvent): Promise<void> {
+    let bundleName: string = event.bundleName!;
+    let layoutInfoList: GridLayoutItemInfo[] = CacheManager.getInstance().getAllGridLayoutItemList();
+    let listInConfigFiles = layoutInfoList.filter((item) => {
+      return item.bundleName === event.bundleName;
+    });
+    if (CheckEmptyUtils.isEmptyArr(listInConfigFiles)) {
+      log.showWarn(`LightOutdoorMode not support ${bundleName}`);
+      return;
+    } else {
+      log.showWarn(`LightOutdoorMode support ${bundleName}`)
+    }
     // 包更新或者安装事件
     CacheManager.getInstance().appAddedOrUpdated(event, event.bundleName!);
   }

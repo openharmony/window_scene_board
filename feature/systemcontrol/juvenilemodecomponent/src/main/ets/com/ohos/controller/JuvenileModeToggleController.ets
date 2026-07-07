@@ -28,7 +28,7 @@ import { FASlotName } from '@ohos/commonconstants';
 import { sToggleSubWindowController } from '@ohos/controlcentercommon/src/main/ets/windowmanager/ToggleSubWindowController';
 import common from '@ohos.app.ability.common';
 import { BusinessError } from '@ohos.base';
-// import minorsProtection from '@hms.core.account.minorsProtection';
+// import minorsProtection from '@ohos.core.account.minorsProtection';
 import { settings } from '@kit.BasicServicesKit';
 import Constants from '../common/Constants'
 import { default as DropDownPanelManager } from '@ohos/systemuicommon/src/main/ets/manager/DropDownPanelManager';
@@ -178,7 +178,7 @@ export class JuvenileModeToggleController extends ToggleBaseViewModel {
     //       clickType: 'window',
     //       bundleName: 'com.ohos.huaweiid',
     //       abilityName: 'AccountUIExtensionAbility',
-    //       uiExtensionType: 'hms/account',
+    //       uiExtensionType: 'ohos/account',
     //       requestType: 25
     //     } as PluginClickInfo);
     //   }

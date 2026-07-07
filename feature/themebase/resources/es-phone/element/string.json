@@ -1,0 +1,32 @@
+{
+    "string":[
+        {
+            "name":"no_select",
+            "value":"No hay nada seleccionado",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"side_face",
+            "value":"Perfil",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"occlusion_exists",
+            "value":"Vista parcial",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"preview_image",
+            "value":"Vista previa de la imagen",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

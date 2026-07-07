@@ -31,7 +31,7 @@ import {
 import { SpaceAnimationUtils } from '@ohos/launchercommon/src/main/ets/animation/SpaceAnimationUtils';
 import curves from '@ohos.curves';
 import { PageDesktopViewModel } from '@ohos/pagedesktop';
-// import apsManager from '@hms.graphic.apsManager';
+// import apsManager from '@ohos.graphic.apsManager';
 
 const TAG = 'SmartDock_VM_DockRegionLayoutEvent';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.ICON, TAG);
@@ -47,7 +47,7 @@ export class DockRegionAnimationEvent {
   }
 
   /**
-   * 大屏展开动效
+   * 双折叠展开动效
    *
    * @param screenWidth 屏幕宽度
    * @param layoutWidth 布局宽度

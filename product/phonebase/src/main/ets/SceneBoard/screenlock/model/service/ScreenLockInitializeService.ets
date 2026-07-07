@@ -58,6 +58,7 @@ export class ScreenLockInitializeService implements IInitialized {
     slUiStateMgr.setSlState(SlMainStateType.SL_ONE_MIRROR_STATIC_STATE, slStateHelper.getOneMirrorState());
     slUiStateMgr.setSlState(SlMainStateType.SL_EDIT_STATIC_STATE, slStateHelper.getEditStaticState());
     slUiStateMgr.setSlState(SlMainStateType.SL_FOLDABLE_PSD_STATIC_STATE, slStateHelper.getSlFoldablePSDStaticState());
+    slUiStateMgr.setSlState(SlMainStateType.SL_DELIVER_BADGE_BIND_STATE, slStateHelper.getSlDeliverBadgeBindState());
     slUiStateMgr.setSlState(SlMainStateType.SL_EDIT_BIND_STATE, slStateHelper.getEditUIState());
 
     // V2状态初始化

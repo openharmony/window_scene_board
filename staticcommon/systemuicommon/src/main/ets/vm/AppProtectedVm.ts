@@ -15,7 +15,7 @@
 
 import { LogDomain, LogHelper, SingletonHelper } from '@ohos/basicutils';
 import { GlobalContext } from '@ohos/frameworkwrapper';
-// import appLock from '@hms.security.appLock';
+// import appLock from '@ohos.security.appLock';
 import osAccount from '@ohos.account.osAccount';
 import { LogWithHa } from '../maintenance/CommonExceptionMaintenance';
 import { CommonExceptionCode } from '../maintenance/CommonExceptionCode';

@@ -1,0 +1,88 @@
+{
+    "string":[
+        {
+            "name":"not_pin",
+            "value":"Annuler l'épinglage",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pin",
+            "value":"Épingler",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aisuggestion_app_name",
+            "value":"Suggestions de voice",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pin_this_app",
+            "value":"Épingler",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"unpin_this_app",
+            "value":"Annuler l'épinglage",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"reduce_recommend_this_card",
+            "value":"Proposer moins souvent",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"not_recommend_this_card",
+            "value":"Ne plus proposer",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"manage_card",
+            "value":"Gérer le widget",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"not_recommend_this_app",
+            "value":"Ne plus suggérer",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"subscribe_this_card",
+            "value":"Épingler le widget",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"unsubscribe_this_card",
+            "value":"Annuler l'épinglage du widget",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"manage_app",
+            "value":"Gérer l'application",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

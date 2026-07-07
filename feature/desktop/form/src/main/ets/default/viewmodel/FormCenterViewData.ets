@@ -203,7 +203,7 @@ export class FormCenterViewData {
     this.mViewData.bindSheetWidth =
       DeviceHelper.isPC() ? 900 : gridRowUtil.getSpanWidth(this.mViewData.bindSheetColumns);
     // UX规定半模态宽度小于600时的展示规格
-    if ((DeviceHelper.isPad() || (DeviceHelper.isUltraScreenProduct() && DeviceHelper.isGState())) &&
+    if ((DeviceHelper.isPad() || (DeviceHelper.isThreeFoldProduct() && DeviceHelper.isGState())) &&
       this.mViewData.bindSheetWidth < 600) {
       this.mViewData.navDestinationViewData.column = 4;
       this.mViewData.appListWidth = this.mViewData.bindSheetWidth * 0.4;

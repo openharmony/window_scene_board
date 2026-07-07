@@ -34,12 +34,12 @@ export type UserEventResultType = 0 | 1;
 export enum SwitchUserType {
   SCREEN_LOCK = 'HoverScreenLock', // 锁屏 hover 用户头像
   CTRL_ALT_DEL_PANEL = 'CtrlAltDelPanel', // CtrlAltDel 快捷面板
-  HOS_KEY = 'HosKey' // OpenHarmony键
+  HOS_KEY = 'HosKey' // 系统键
 }
 
 export enum LogoutUserType {
   CTRL_ALT_DEL_PANEL = 'CtrlAltDelPanel', // CtrlAltDel 快捷面板
-  HOS_KEY = 'HosKey' // OpenHarmony键
+  HOS_KEY = 'HosKey' // 系统键
 }
 
 interface UserEventParams {

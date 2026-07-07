@@ -71,10 +71,10 @@ export class ViewManager {
       this.intoFormManagerView(formInfo, param, true);
     } else {
       // 菜单点击卡片场景，延时拉起卡片管理，降低首帧负载，提升响应时延
-      let timer: number = setTimeout(() => {
+      // let timer: number = setTimeout(() => {
         this.intoFormManagerView(formInfo, param, false);
-        clearTimeout(timer);
-      }, 10);
+      //   clearTimeout(timer);
+      // }, 10);
     }
   }
 

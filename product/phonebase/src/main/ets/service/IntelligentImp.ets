@@ -16,6 +16,9 @@ import { LogDomain, LogHelper } from '@ohos/basicutils';
 import { EventType, scbEventExclusiveManager } from '@ohos/windowscene';
 
 import { IExecutor } from '@ohos/launchercommon/src/main/ets/TsIndex';
+import {
+  GlobalSearchLocationHandler
+} from '@ohos/pagedesktop/src/main/ets/default/common/viewmodel/GlobalSearchLocationHander';
 import { NegativeScreenConstants, sOutSideWindowMgr } from '@ohos/frameworkwrapper';
 
 const TAG = 'IntelligentImp';
@@ -28,8 +31,12 @@ export class IntelligentImp implements IExecutor {
   async execute(extra: object): Promise<string> {
     log.showInfo('%{public}s execute', TAG);
     sOutSideWindowMgr.hideIntelligent();
+    scbEventExclusiveManager.setEventExclusive(EventType.GLOBALSEARCH_LOCATIONAPPSHOW, true);
+    AppStorage.setOrCreate('globalSearchAnimation', true);
     setTimeout(() => {
       const searchParms: SearchParam = extra as SearchParam;
+      GlobalSearchLocationHandler.getInstance().beginLocationAnimation(searchParms.bundleName,
+        searchParms.abilityName, searchParms.moduleName, searchParms.typeId, searchParms.entityId);
     }, NegativeScreenConstants.DURATION_AUTO_DISAPPEAR);
     return DataShareResultCode.HANDLE_SUCCESS;
   }

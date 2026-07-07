@@ -1,5 +1,5 @@
 /*
- * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -59,6 +59,7 @@ interface SystemSceneOptionsInterface {
   responseRegion?:Array<Rectangle>;
   landscapeStartRotatable?: boolean;
   followDeskTop?: boolean;
+  followFocus?: boolean; // 跟随焦点窗口旋转
   enableActiveModeChange?: boolean;
   alwaysNeedAnimateWhenRotation?: boolean;
 }
@@ -73,6 +74,7 @@ export class SystemSceneOptions {
   public visibility: boolean = false;
   public opacity: number = 1;
   public followDeskTop: boolean = false;
+  public followFocus: boolean = false;
   public scbKeepKeyboardFlag: boolean = false;
   public systemBarType: SystemBarType = SystemBarType.UNDEFINE;
   public sceneType: sceneSessionManager.SceneType = sceneSessionManager.SceneType.SYSTEM_WINDOW_SCENE;
@@ -96,6 +98,7 @@ export class SystemSceneOptions {
     this.responseRegion = obj.responseRegion ?? [];
     this.landscapeStartRotatable = obj.landscapeStartRotatable ?? true;
     this.followDeskTop = obj.followDeskTop ?? false;
+    this.followFocus = obj.followFocus ?? false;
     this.enableActiveModeChange = obj.enableActiveModeChange ?? true;
     this.alwaysNeedAnimateWhenRotation = obj.alwaysNeedAnimateWhenRotation ?? false;
   }
@@ -154,27 +157,27 @@ export struct SCBSystemScene {
       this.sysSceneSession.hitTestMode = hitTestMode;
     },
 
+    // 窗口旋转
     onRotationChange: (screenProperty: SCBScreenProperty) => {
       if (!this.sysSceneSession) {
-        log.showError(`${this.systemSessionInfo.sceneName} onRotationChange: ${screenProperty.rotation} is null `);
+        log.showWarn(`${this.systemSessionInfo.sceneName} onRotationChange: ${screenProperty.rotation} is null `);
         return;
       }
       const uiType: string = SCBWindowSceneConfig.getInstance().windowSceneConfig?.uiType;
-      if ((!this.sysSceneSession.isRotatable || !this.sysSceneSession.isLandscapeStartRotatable) &&
-        (uiType === SCBConstants.UITYPE_PHONE || uiType === SCBConstants.UITYPE_PAD)) {
+      if ( !this.sysSceneSession.isLandscapeStartRotatable && (uiType === SCBConstants.UITYPE_PHONE || uiType === SCBConstants.UITYPE_PAD)) {
+        log.showWarn(`${this.systemSessionInfo.sceneName} onRotationChange not allow`);
         return;
       }
 
       // need change rect with rotation
       this.transformRect.setSizeNum(screenProperty.width, screenProperty.height);
       // pc no need to rotate since screen has rotate, only phone need set since screen not rotate
-      if ((uiType === SCBConstants.UITYPE_PHONE) ||
-        uiType === SCBConstants.UITYPE_PAD) {
+      if ((uiType === SCBConstants.UITYPE_PHONE) || uiType === SCBConstants.UITYPE_PAD) {
         this.transformRect.setPosNum(screenProperty.getTranslateX(), screenProperty.getTranslateY());
         this.sysSceneSession.rotation = screenProperty.rotation;
       }
-      log.showDebug('[SCBSystem]onRotationChange after systemName: ' + this.sysSceneSession.name + ' transformRect: ' +
-        this.transformRect.printPx() + ' rotation: ' + screenProperty.rotation +
+      log.showInfo('[SCBSystem]onRotationChange after systemName: ' + this.sysSceneSession.name + ' transformRect: ' +
+      this.transformRect.printPx() + ' rotation: ' + screenProperty.rotation +
         ' screenProperty: ' + JSON.stringify(screenProperty));
     },
 
@@ -183,12 +186,12 @@ export struct SCBSystemScene {
         log.showError(`${this.systemSessionInfo.sceneName} onActiveModeChange: sysSceneSession is null `);
         return;
       }
-      log.showDebug('onActiveModeChange systemName: ' + this.sysSceneSession.name +
+      log.showInfo('onActiveModeChange systemName: ' + this.sysSceneSession.name +
         'before change currRect: ' + JSON.stringify(this.sysSceneSession.currRect));
       let left = this.sysSceneSession.currRect.left.getPx() * newScreenProperty.width / oldScreenProperty.width;
       let top = this.sysSceneSession.currRect.top.getPx() * newScreenProperty.height / oldScreenProperty.height;
       this.sysSceneSession.currRect.setPosNum(left, top);
-      log.showDebug('onActiveModeChange systemName: ' + this.sysSceneSession.name + ' currRect: ' +
+      log.showInfo('onActiveModeChange systemName: ' + this.sysSceneSession.name + ' currRect: ' +
         JSON.stringify(this.sysSceneSession.currRect) + ' rotation: ' + newScreenProperty.rotation +
        ' screenProperty: ' + JSON.stringify(newScreenProperty));
     },
@@ -244,7 +247,7 @@ export struct SCBSystemScene {
       }
       // need change rect with rotation
       this.transformRect.setSizeNum(screenProperty.width, screenProperty.height);
-      log.showDebug('onFoldChange after systemName: ' + this.sysSceneSession.name + ' transformRect: ' +
+      log.showInfo('onFoldChange after systemName: ' + this.sysSceneSession.name + ' transformRect: ' +
         this.transformRect.printPx() + ' rotation: ' + screenProperty.rotation +
         ' screenProperty: ' + JSON.stringify(screenProperty));
     },
@@ -256,16 +259,20 @@ export struct SCBSystemScene {
       }
       log.showInfo('[SCBSystem][WMSLayout]onUpdateRect: ' + JSON.stringify(rect) + ' name: ' + this.sysSceneSession?.name);
       if (this.sysSceneSession.currRect.equals(rect)) {
-        log.showDebug('session rect not change');
+        log.showInfo('session rect not change');
         return;
       }
       if (!this.floatNearEqual(rect.width.getPx(), 0) && !this.floatNearEqual(rect.height.getPx(), 0)) {
         this.sysSceneSession.currRect = rect;
+        log.showInfo(`updateRect finish:${JSON.stringify(this.sysSceneSession.currRect)}`);
+        if (this.sysSceneSession.systemBarType != SystemBarType.UNDEFINE) {
+          SCBSceneSessionManager.getInstance().refreshAvailableArea(this.screenProperty.screenId);
+        }
       }
     },
 
     onTouchOutside: (x, y) => {
-      log.showDebug(`onTouchOutside ${this.systemSessionInfo.sceneName}`);
+      log.showInfo(`onTouchOutside ${this.systemSessionInfo.sceneName}`);
       let allIconCaches = windowMgr.getAllStatusIconCaches();
       if (allIconCaches === undefined || allIconCaches === null || allIconCaches.size === 0) {
         return;
@@ -293,7 +300,8 @@ export struct SCBSystemScene {
         return;
       }
       if (viewMgrPolicy.isViewShowing(viewType)) {
-        if ((viewType === PluginSlot.SLOT_STATUS_QUICK_NOTE) &&
+        if ((viewType === PluginSlot.SLOT_STATUS_QUICK_NOTE ||
+          viewType === PluginSlot.SLOT_STATUS_ASSISTANT_TRANSLATE) &&
           (this.isClickOnSoftInput(x, y) || this.isClickOnKeyBoardPanel(x, y))) {
           log.showInfo(`onTouchOutside ${viewType} click on softInput or click on keyboard panel`);
           return;
@@ -405,6 +413,7 @@ export struct SCBSystemScene {
         log.showError(`${this.systemSessionInfo.sceneName} onResponseRegionChange is null`);
         return;
       }
+      log.showInfo(`onResponseRegionChange ${this.systemSessionInfo.sceneName}(${this.sysSceneSession?.session.persistentId}):${JSON.stringify(responseRegion)}`);
       this.sysSceneSession.responseRegion = responseRegion;
     },
   }

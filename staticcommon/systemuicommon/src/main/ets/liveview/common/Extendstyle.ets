@@ -55,6 +55,7 @@ export interface ExtendStyle {
   buttonLength?: number;
   buttonBorderRadius?: number;
   buttonBackground?: ResourceColor;
+  deliverLiveButtonBackground?: ResourceColor;
   buttonColor?: ResourceColor;
 
   /**

@@ -77,6 +77,11 @@ export const CUSTOM_EVENT_WEEK_SCHEDULER_REPORTER = 'WEEK_SCHEDULER_REPORTER';
 const PERMISSION_RECEIVE_APP_INSTALL_INFO_CHANGE = 'ohos.permission.RECEIVE_APP_INSTALL_INFO_CHANGE';
 
 /**
+ * 应用包更新安装事件
+ */
+const EVENT_UPDATING_STATUS = 'usual.event.UPDATING_DELIVER_BUNDLE_STATUS';
+
+/**
  * 广播数据转内部数据的结构类型
  */
 type InnerEvent<T extends CommonEvent> = new (eventData: CommonEventData) => T;
@@ -128,6 +133,7 @@ class CommonEventManagerA {
     {
       events: [
         CES.Support.COMMON_EVENT_PACKAGE_ADDED, // 新应用安装
+        EVENT_UPDATING_STATUS, // 应用更新安装
         CES.Support.COMMON_EVENT_PACKAGE_REMOVED, // 应用卸载
         CES.Support.COMMON_EVENT_PACKAGE_FULLY_REMOVED, // 应用完全卸载
         CES.Support.COMMON_EVENT_PACKAGE_REPLACED, // 应用更新安装
@@ -197,6 +203,7 @@ class CommonEventManagerA {
   private initInnerEventMap(): void {
     // 包管理事件
     this.allInnerEvents.set(CES.Support.COMMON_EVENT_PACKAGE_ADDED, PackageCommonEvent);
+    this.allInnerEvents.set(EVENT_UPDATING_STATUS, PackageCommonEvent);
     this.allInnerEvents.set(CES.Support.COMMON_EVENT_PACKAGE_REMOVED, PackageCommonEvent);
     this.allInnerEvents.set(CES.Support.COMMON_EVENT_PACKAGE_FULLY_REMOVED, PackageCommonEvent);
     this.allInnerEvents.set(CES.Support.COMMON_EVENT_PACKAGE_REPLACED, PackageCommonEvent);

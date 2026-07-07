@@ -57,6 +57,7 @@ import {
   LaunchLayoutCacheManager,
   PadLaunchLayoutCacheManager,
   LayoutDescription,
+  DeliverUtil,
   FolderData,
 } from '../../../../../../main/ets/TsIndex';
 import { AppTransitionInfo } from '../../../../../../main/ets/pagedesktop/model/PageDesktopModel';
@@ -397,6 +398,44 @@ export default function PageDesktopModelTest() {
       }
       let retValue = model['findAppInCurrentPage'](null, companionIconInfo);
       expect(retValue).not().assertNull();
+    })
+
+    it('test_isFoundAiSuggestion', 0, () => {
+      let model = PageDesktopModel.getInstance();
+      let companionIconInfo: CompanionIconInfo = {
+        iconId: '',
+        bundleName: '',
+        abilityName: '',
+        moduleName: '',
+        iconNumber: 0,
+        iconRadius: 0,
+        startAppType: StartType.APP,
+        cardId: ''
+      }
+      let itemInfo = new GridLayoutItemInfo();
+      let retValue = model['isFoundAiSuggestion'](itemInfo, companionIconInfo);
+      expect(retValue).assertInstanceOf('Boolean');
+      itemInfo.typeId = 6;
+      retValue = model['isFoundAiSuggestion'](itemInfo, companionIconInfo);
+      expect(retValue).assertInstanceOf('Boolean');
+
+      itemInfo.layoutInfo = [[new GridLayoutItemInfo()]];
+      retValue = model['isFoundAiSuggestion'](itemInfo, companionIconInfo);
+      expect(retValue).assertInstanceOf('Boolean');
+
+      itemInfo.typeId = 0;
+      companionIconInfo.extraId = '10';
+      itemInfo.cardId = '1';
+      retValue = model['isFoundAiSuggestion'](itemInfo, companionIconInfo);
+      expect(retValue).assertInstanceOf('Boolean');
+
+      companionIconInfo.extraId = '1';
+      retValue = model['isFoundAiSuggestion'](itemInfo, companionIconInfo);
+      expect(retValue).assertInstanceOf('Boolean');
+
+      companionIconInfo.startAppType = StartType.AI_SUGGESTION_APP;
+      retValue = model['isFoundAiSuggestion'](itemInfo, companionIconInfo);
+      expect(retValue).assertInstanceOf('Boolean');
     })
 
     it('test_searchInCurrentDeskTopPage', 0, () => {
@@ -1438,7 +1477,12 @@ export default function PageDesktopModelTest() {
         extraId: '996'
       };
       let mocker: MockKit = new MockKit();
+      let mockFunc: Function = mocker.mockFunc(DeliverUtil, DeliverUtil.isContainerPkg);
+      let mockFunc2: Function = mocker.mockFunc(DeliverUtil, DeliverUtil.isContainerFolder);
+      when(mockFunc)(ArgumentMatchers.any).afterReturn(true);
+      when(mockFunc2)(ArgumentMatchers.any).afterReturn(true);
       expect(instance['getIconRectInfo'](companionIconInfo, true, '996')).assertNull();
+      mocker.clear(DeliverUtil);
       mocker.clearAll();
     })
 
@@ -1667,6 +1711,7 @@ export default function PageDesktopModelTest() {
         extraId: '996'
       };
       let mocker: MockKit = new MockKit();
+      const mockerFunc = mocker.mockFunc(instance, instance['isFoundAiSuggestion']);
       when(mockerFunc)(ArgumentMatchers.any).afterReturn(true);
       let result: AppTransitionInfo = instance['findAppInCurrentPage'](eleInCurrentPage, companionIconInfo);
       expect(result.app.cardId).assertEqual('007');
@@ -1782,6 +1827,8 @@ export default function PageDesktopModelTest() {
         const mockerFunc1 = mocker.mockFunc(instance, instance['getOObeIconRect']);
         when(mockerFunc)(ArgumentMatchers.any).afterReturn(new RectInfo(0, 0, 0, 0));
         when(mockerFunc1)(ArgumentMatchers.any).afterReturn(appInfo);
+        result = instance['getAppExitLocationInfo'](appInfo, SCBConstants.AI_SUGGESTION_BUNDLE_NAME, session);
+        expect(result.isInScreen).assertTrue();
         when(mockerFunc)(ArgumentMatchers.any).afterReturn(new RectInfo(1, 1, 1, 1));
         expect(result.iconRect?.left).assertEqual(0);
         instance.setOuterFormStackExitScale(0.5);

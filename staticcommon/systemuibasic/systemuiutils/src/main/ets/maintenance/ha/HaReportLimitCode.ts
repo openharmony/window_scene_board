@@ -19,5 +19,7 @@ export enum HaReportLimitCode {
   /** 本地消息限制特殊错误码 */
   BASE_LIMIT_ERRCODE_LOCAL = 10001,
   /** 云推消息限制特殊错误码 */
-  BASE_LIMIT_ERRCODE_PUSH = 10002
+  BASE_LIMIT_ERRCODE_PUSH = 10002,
+  /** deliver统一默认打点限制特殊错误码 */
+  BASE_LIMIT_ERRCODE_DELIVER_DEFAULT = 10003,
 }

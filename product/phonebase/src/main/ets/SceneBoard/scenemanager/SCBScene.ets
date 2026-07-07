@@ -1,5 +1,5 @@
 /*
- * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -42,15 +42,21 @@ import {
   ResourceManager,
   commonBundleManager,
   SCBWindowSceneConfig,
-  GlobalContext
+  GlobalContext,
+  GraphicUtils,
+  IconExtendParam,
+  IconPicType,
+  IconResourceManager,
+  localEventManager
 } from '@ohos/frameworkwrapper';
+import IconInfo from '@ohos/frameworkwrapper/src/main/ets/resourcemanager/IconInfo';
 import { SCBScreenSessionManager } from '@ohos/windowscene';
 import { LogHelper, LogDomain, PixelMapUtil, CommonUtils } from '@ohos/basicutils';
-import { SCBConstants } from '@ohos/commonconstants';
+import { SCBConstants, UpdateType } from '@ohos/commonconstants';
 import sceneSessionManager from '@ohos.sceneSessionManager'
 import { SCBKeyboardPanel } from '../keyboard/SCBKeyboardPanel';
 import { SCBSpecificScene } from './SCBSpecificScene';
-import { StyleConstants } from '@ohos/launchercommon';
+import { EventConstants, StyleConstants } from '@ohos/launchercommon';
 import { ScenePanelState } from './SCBScenePanel';
 import image from '@ohos.multimedia.image';
 import { SCBAppUseControlComponent } from '@ohos/windowscene/Index';
@@ -58,6 +64,7 @@ import { SCBSceneViewModel } from './viewmodel/SCBSceneViewModel';
 import { ConfigurationConstant } from '@kit.AbilityKit';
 import { ControlType, SCBKioskModeManager } from '@ohos/windowscene';
 import { DeviceHelper } from '@ohos/frameworkwrapper';
+import RecentDockModel from '@ohos/smartdock/src/main/ets/default/model/RecentDockModel';
 
 const TAG = 'SCBScene'
 const log = LogHelper.getLogHelper(LogDomain.WINDOW, TAG);
@@ -564,20 +571,82 @@ export struct SCBScene {
   }
 
   private async onUpdateSessionIcon(iconPath: string): Promise<void> {
+    log.showInfo(`onUpdateSessionIcon start, iconPath: ${iconPath}`);
     if (!this.sceneSession) {
+      log.showInfo('onUpdateSessionIcon sceneSession is null, return');
       return;
     }
+    log.showInfo(`onUpdateSessionIcon sceneSession exists, persistentId: ${this.sceneSession.session?.persistentId}`);
+
     let iconPixelMap: image.PixelMap | null = null;
-    await image.createImageSource(iconPath)?.createPixelMap().then((pixelMap: image.PixelMap) => {
+    const imageSource = image.createImageSource(iconPath);
+    log.showInfo(`onUpdateSessionIcon createImageSource result: ${imageSource ? 'success' : 'fail'}`);
+
+    await imageSource?.createPixelMap().then((pixelMap: image.PixelMap) => {
       iconPixelMap = pixelMap;
       PixelMapUtil.addName(iconPixelMap, `SCBScene_onUpdateSessionIcon`);
       log.showInfo('onUpdateSessionIcon getIconPixelmap success');
-    });
-    let itemInfo = await commonBundleManager.getAbilityInfoByAbilityName(this.sceneSession.sceneInfo.bundleName, this.sceneSession.sceneInfo.abilityName);
+    }).catch(()=>{
+      log.showInfo('onUpdateSessionIcon getIconPixelmap fail');
+    })
+
+    log.showInfo(`onUpdateSessionIcon createPixelMap result: ${iconPixelMap ? 'success' : 'fail'}`);
+
+    let itemInfo = await commonBundleManager.getAbilityInfoByAbilityName(
+      this.sceneSession.sceneInfo.bundleName,
+      this.sceneSession.sceneInfo.abilityName
+    );
+    log.showInfo(`onUpdateSessionIcon getAbilityInfo result: ${itemInfo ? 'success' : 'fail'}`);
+    if (itemInfo) {
+      log.showInfo(`onUpdateSessionIcon bundleName: ${itemInfo.bundleName}, iconId: ${itemInfo.iconId}, moduleName: ${itemInfo.moduleName}`);
+    }
+
     if (itemInfo && iconPixelMap) {
       const cacheKey = `${itemInfo.iconId}${itemInfo.bundleName}${itemInfo.moduleName}`;
+      log.showInfo(`onUpdateSessionIcon setAppResourceCache, cacheKey: ${cacheKey}`);
       ResourceManager.getInstance().setAppResourceCache(cacheKey, 'icon', iconPixelMap);
+      // 清除IconResourceManager缓存
+      IconResourceManager.getInstance().deleteIconResource(itemInfo.bundleName);
+      // 添加新Icon到IconResourceManager缓存
+      log.showInfo(`onUpdateSessionIcon setIconResourceCache, bundleName: ${itemInfo.bundleName}`);
+      try {
+        let iconInfo = new IconInfo();
+        iconInfo.bundleName = itemInfo.bundleName;
+        iconInfo.moduleName = itemInfo.moduleName;
+        iconInfo.abilityName = this.sceneSession.sceneInfo.abilityName;
+        iconInfo.combinePicSrc = iconPixelMap;
+        iconInfo.combinePic = await GraphicUtils.changePixelToBase64(iconPixelMap);
+        iconInfo.iconType = IconPicType.NORMAL;
+
+        let param = new IconExtendParam();
+        param.appIndex = 0;
+        param.hasBorder = false;
+
+        IconResourceManager.getInstance().setIconResourceCache(
+          itemInfo.bundleName,
+          itemInfo.moduleName,
+          this.sceneSession.sceneInfo.abilityName,
+          iconInfo,
+          param
+        );
+        log.showInfo(`onUpdateSessionIcon setIconResourceCache success, bundleName: ${itemInfo.bundleName}`);
+      } catch (error) {
+        log.showError(`onUpdateSessionIcon setIconResourceCache failed, error: ${error}`);
+      }
+
+      log.showInfo(`onUpdateSessionIcon addToRecentDockList, bundleName: ${itemInfo.bundleName}`);
+      RecentDockModel.getInstance().addToRecentDockList(itemInfo.bundleName, 0);
+
+      // 触发任务栏刷新
+      log.showInfo(`onUpdateSessionIcon send EVENT_ICON_RESOURCE_REFRESH, bundleName: ${itemInfo.bundleName}`);
+      localEventManager.sendLocalEvent(EventConstants.EVENT_ICON_RESOURCE_REFRESH, {
+        type: UpdateType.UPDATE,
+        bundleNames: [itemInfo.bundleName]
+      });
+    } else {
+      log.error(`onUpdateSessionIcon skip cache, itemInfo: ${itemInfo ? 'exists' : 'not exists'}, iconPixelMap: ${iconPixelMap ? 'exists' : 'not exists'}`);
     }
+    log.showInfo('onUpdateSessionIcon end');
   }
 
   private onSessionTouchableChange(isTouchable: boolean): void {
@@ -714,6 +783,18 @@ export struct SCBScene {
   }
 
   @Builder
+  privacyWindowMaskBuilder() {
+    Stack()
+      .width(StyleConstants.PERCENTAGE_100)
+      .height(StyleConstants.PERCENTAGE_100)
+      .backgroundColor(Color.Black)
+      .opacity(0.8)
+      .foregroundBlurStyle(BlurStyle.COMPONENT_THICK, {
+        scale: 1
+      }, { disableSystemAdaptation: true })
+  }
+
+  @Builder
   splitAnimateStackBuilder() {
     if (this.sceneSession?.splitOpacity > 0) {
       Stack()
@@ -830,6 +911,11 @@ export struct SCBScene {
       if (!this.isRecentState()) {
         this.maskBuilder()
         this.splitAnimateStackBuilder();
+      }
+
+      // 隐私窗口在多任务中心需要显示模糊遮挡
+      if (this.isRecentState() && this.sceneSession?.sessionData.isPrivacyWindow) {
+        this.privacyWindowMaskBuilder();
       }
     }
     .size({

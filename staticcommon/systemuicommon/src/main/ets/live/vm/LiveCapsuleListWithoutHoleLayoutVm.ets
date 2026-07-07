@@ -62,7 +62,7 @@ implements ILiveCapsuleListLayoutVm {
       new NotificationArray<LiveNotification>()]; /* 分别记录进度，录屏和长时胶囊数 */
 
   protected readonly showCapsuleTypeSequence: number[] =
-    [CapsuleShowType.TOP, CapsuleShowType.SELF_ADAPTIVE_ROUND_CAKE, CapsuleShowType.ROUND_CAKE];
+    [CapsuleShowType.TOP, CapsuleShowType.ROUND_CAKE, CapsuleShowType.SHADOW];
   protected readonly capsuleSpaceAllocationSequence: CapsuleType[] =
     [CapsuleType.PROGRESS, CapsuleType.SCREEN_RECORDING, CapsuleType.PERSISTENT];
 
@@ -236,25 +236,25 @@ implements ILiveCapsuleListLayoutVm {
     }
     const totalCnt: number = showTypeArray.length;
     let currentCnt: number = capsuleList.length;
-    const currentShowType = showTypeArray[currentCnt] ?? CapsuleShowType.NONE;
+    let currentShowType: CapsuleShowType;
     if (currentCnt < totalCnt) {
-      /* 过滤后的列表中没有，则设置显示类型后，添加进入过来后的列表 */
-      if (capsuleList.findIndex((value) => value.hashCode === liveCapsule.hashCode) === -1) {
-        capsuleVm.fixedShowType = currentShowType;
-        capsuleVm.isShow = true;
-        capsuleList.push(liveCapsule);
-      }
+      currentShowType = showTypeArray[currentCnt] ?? CapsuleShowType.NONE;
+    } else {
+      // 超过序列长度的胶囊都不显示，只保留一个阴影胶囊
+      // 当胶囊总数超过2个时，只展示一个阴影胶囊
+      currentShowType = CapsuleShowType.NONE;
+      capsuleVm.isShow = false;
+      capsuleVm.fixedWidth = 0;
+      capsuleVm.fixedOffsetX = 0;
       return;
     }
-    /* 有记录过，则已经修改过vm中的showType，不能再进行修改 */
-    if (capsuleList.findIndex((value) => value.hashCode === liveCapsule.hashCode) !== -1) {
-      return;
+    /* 过滤后的列表中没有，则设置显示类型后，添加进入过来后的列表 */
+    if (capsuleList.findIndex((value) => value.hashCode === liveCapsule.hashCode) === -1) {
+      capsuleVm.fixedShowType = currentShowType;
+      capsuleVm.isShow = true;
+      capsuleList.push(liveCapsule);
     }
-    /* 其他的胶囊，均设置为不显示 */
-    capsuleVm.isShow = false;
-    capsuleVm.fixedShowType = CapsuleShowType.NONE;
-    capsuleVm.fixedWidth = 0;
-    capsuleVm.fixedOffsetX = 0;
+    return;
   }
 
   protected getCapsuleGap(liveCapsuleVm: ILiveCapsuleVm): number {
@@ -302,7 +302,7 @@ implements ILiveCapsuleListLayoutVm {
       if (capsuleVm.fixedShowType === CapsuleShowType.SELF_ADAPTIVE_ROUND_CAKE) {
         usedSpace =
           this.computeSelfAdaptiveRoundCakeCapsule(usedSpace, liveCapsule, isFoundHideCapsuleMap, freeSpace, capsuleVm);
-      } else {
+      }  else {
         usedSpace = this.computeSingleCapsuleShowFlag(liveCapsule, isFoundHideCapsuleMap, usedSpace, freeSpace);
       }
 
@@ -432,7 +432,8 @@ implements ILiveCapsuleListLayoutVm {
   protected isNeedShow(capsuleVm: ILiveCapsuleVm): boolean {
     return capsuleVm.fixedShowType === CapsuleShowType.TOP ||
       capsuleVm.fixedShowType === CapsuleShowType.ROUND_CAKE ||
-      capsuleVm.fixedShowType === CapsuleShowType.RETRACTABLE_ROUND_CAKE;
+      capsuleVm.fixedShowType === CapsuleShowType.RETRACTABLE_ROUND_CAKE ||
+      capsuleVm.fixedShowType === CapsuleShowType.SHADOW;
   }
 
   protected getFreeSpace(capsuleLeftMin: number, capsuleRightMax: number): number {
@@ -472,6 +473,23 @@ implements ILiveCapsuleListLayoutVm {
       totalOffset = totalOffset + (this.getCapsuleGap(currentCapsuleVm) + lastCapsuleVm.fixedWidth);
       currentCapsuleVm.fixedOffsetX = totalOffset;
     }
+    
+    this.updateShadowFixedOffset();
+  }
+  
+  protected updateShadowFixedOffset(): void {for (const liveCapsule of this.showCapsuleList[CapsuleType.PROGRESS]) {
+    const capsuleVm = this.vmInjector.getCapsuleVm(liveCapsule);
+    if (!capsuleVm.isShow) {
+      continue;
+    }
+    if (capsuleVm.fixedShowType === CapsuleShowType.SHADOW) {
+      capsuleVm.fixedWidth = LiveStyle.SHADOW_CAPSULE_CIRCLE_WIDTH;
+      capsuleVm.fixedOffsetX =
+        capsuleVm.fixedOffsetX - (LiveStyle.SHADOW_CAPSULE_CIRCLE_WIDTH - LiveStyle.SHADOW_CAPSULE_SHOW_WIDTH);
+      log.showInfo(`updateShadowFixedOffset capsule type(${capsuleVm.fixedShowType}) ${liveCapsule.hashCode} offset ${capsuleVm.fixedOffsetX}).`);
+      break;
+    }
+  }
   }
 
   protected printFixedWithAndeOffset(liveList: LiveNotification[]) {

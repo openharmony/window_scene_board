@@ -55,7 +55,7 @@ import { DfxFaultEventTag, HiKGReportBase } from '../record/report/PerformanceMo
 import slClockOneShotToDesktopService from '../base/SlClockOneShotToDesktopService';
 import { TraceTag } from '../record/trace/TraceTag';
 import { SLAutoTestService } from './autoTest/SLAutoTestService';
-// import apsManager from '@hms.graphic.apsManager';
+// import apsManager from '@ohos.graphic.apsManager';
 
 const TAG = 'ScreenLockUnlockService';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.KG, TAG);

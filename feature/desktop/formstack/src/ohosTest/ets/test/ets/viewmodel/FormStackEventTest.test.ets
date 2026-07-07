@@ -27,12 +27,14 @@ import {
 } from '@ohos/hypium';
 import {
   CardItemInfo,
+  BundleConstants,
   editModeManager,
   GridLayoutItemBuilder,
   GridLayoutItemInfo,
   AppItemInfo,
   FormRelationManager,
 } from '@ohos/launchercommon';
+import { AbilityFormUtil } from '../../../../../../../aisuggestion/src/main/ets/default/utils/AbilityFormUtil';
 import { FormStackAnimate } from '../../../../../main/ets/viewmodel/FormStackAnimate';
 import { FormStackEvent } from '../../../../../main/ets/viewmodel/FormStackEvent';
 import { FormStackTestUtil } from '../common/FormStackTestUtil';
@@ -111,6 +113,51 @@ export function FormStackEventTest() {
       expect(event.mFormItemList.length).assertEqual(3);
       event.syncFormItemList([new CardItemInfo(), new CardItemInfo()]);
       expect(event.mFormItemList.length).assertEqual(2);
+    });
+
+    it('getAppName', 0, () => {
+      const event: FormStackEvent = new FormStackEvent();
+      const formStackInfo = FormStackTestUtil.createFormStackItemInfo(FormStackTestUtil.TEST_FORM_STACK_ID);
+      expect(event.initData(formStackInfo, formStackInfo.layoutInfo[0], new FormStackAnimate())).assertTrue();
+
+      let mockKit = new MockKit();
+      let mockFunc: Function =
+        mockKit.mockFunc(ResourceManager.getInstance(), ResourceManager.getInstance().getAppNameWithCache);
+      when(mockFunc)(ArgumentMatchers.any).afterReturn(undefined);
+      expect(event.getAppName({} as CardItemInfo, (name) => {
+      })).assertTrue();
+      expect(event.getAppName(formStackInfo.layoutInfo[0][0], (name) => {
+      })).assertTrue();
+
+      formStackInfo.layoutInfo[0][0].bundleName = BundleConstants.AI_SUGGESTION_BUNDLE;
+      expect(event.getAppName(formStackInfo.layoutInfo[0][0], (name) => {
+      })).assertTrue();
+
+      formStackInfo.layoutInfo[0][0].bundleName = '';
+      formStackInfo.layoutInfo[0][0].abilityName = BundleConstants.AI_SUGGESTION_ABILITY;
+      expect(event.getAppName(formStackInfo.layoutInfo[0][0], (name) => {
+      })).assertTrue();
+
+      formStackInfo.layoutInfo[0][0].bundleName = BundleConstants.AI_SUGGESTION_BUNDLE;
+      event.getAppName(formStackInfo.layoutInfo[0][0], (name) => {
+        expect(name).assertEqual(AbilityFormUtil.getDefaultNameOfAiSuggestion());
+      });
+
+      const card = formStackInfo.layoutInfo[0][0];
+      card.abilityName = '';
+      card.appLabelId = Number(card.cardId);
+      card.cardName = 'appName';
+
+      let cards: CardItemInfo[] =
+        FormStackManager.getInstance().getFormStackSubCards(FormStackTestUtil.TEST_FORM_STACK_ID);
+      cards.push(card);
+
+      event.getAppName(card, (name) => {
+        expect(name).assertEqual('appName');
+      });
+
+      mockKit.clear(ResourceManager.getInstance());
+      mockKit.clearAll();
     });
 
     it('updateAppName', 0, () => {

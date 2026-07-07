@@ -1,21 +1,21 @@
 {
     "string":[
         {
-            "name":"d_app_dialog_cancel",
+            "name":"deliver_app_dialog_cancel",
             "value":"Ignorer",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"d_app_dialog_confirm",
+            "name":"deliver_app_dialog_confirm",
             "value":"Mettre à jour maintenant",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"d_app_unavailable_dialog_know",
+            "name":"deliver_app_unavailable_dialog_know",
             "value":"OK",
             "attr":{
                 "priority":"LT"
@@ -29,28 +29,28 @@
             }
         },
         {
-            "name":"d_app_unavailable_dialog_content",
+            "name":"deliver_app_unavailable_dialog_content",
             "value":"Pour utiliser cette application, veuillez d'abord télécharger %s depuis AppGallery.",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"d_app_dialog_contents",
+            "name":"deliver_app_dialog_contents",
             "value":"Votre application peut être mise à jour pour vous offrir une toute nouvelle expérience. Veuillez noter que certaines données d'application peuvent être perdues lors du changement de version.",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"d_app_dialog_text",
+            "name":"deliver_app_dialog_text",
             "value":"%s est maintenant disponible pour OpenHarmony.",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"uninstall_d_app_dialog_content",
+            "name":"uninstall_deliver_app_dialog_content",
             "value":"La version OpenHarmony de l'application %s est déjà installée sur cet appareil. Désinstaller l'ancienne version ?",
             "attr":{
                 "priority":"LT"
@@ -64,7 +64,7 @@
             }
         },
         {
-            "name":"d_app_dialog_open",
+            "name":"deliver_app_dialog_open",
             "value":"Ouvrir la version OpenHarmony",
             "attr":{
                 "priority":"LT"
@@ -78,35 +78,35 @@
             }
         },
         {
-            "name":"d_app_pause_download_dialog_content",
+            "name":"deliver_app_pause_download_dialog_content",
             "value":"Le téléchargement de l'application %s a été mis en pause. Reprendre ?",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"d_app_unavailable_dialog_title",
+            "name":"deliver_app_unavailable_dialog_title",
             "value":"Application indisponible",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"d_app_dialog_title",
+            "name":"deliver_app_dialog_title",
             "value":"Nouvelle version disponible",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"uninstall_d_app_dialog_title",
+            "name":"uninstall_deliver_app_dialog_title",
             "value":"Nouvelle version installée",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"d_app_wait_download_dialog_content",
+            "name":"deliver_app_wait_download_dialog_content",
             "value":"%s est dans la file d'attente de téléchargement. Mettre son téléchargement en priorité ?",
             "attr":{
                 "priority":"LT"
@@ -120,7 +120,7 @@
             }
         },
         {
-            "name":"d_app_installing_dialog_content",
+            "name":"deliver_app_installing_dialog_content",
             "value":"Installation de l'application %s en cours. Veuillez patienter.",
             "attr":{
                 "priority":"translate"

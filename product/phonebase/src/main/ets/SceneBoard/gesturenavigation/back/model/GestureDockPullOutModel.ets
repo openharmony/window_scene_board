@@ -160,7 +160,7 @@ export class GestureDockPullOutModel {
   }
 
   /**
-   * 箭头变OpenHarmony环
+   * 箭头变鸿蒙环
    */
   private changeToDockImg(): void {
     log.showInfo(`changeToDockImg.`);
@@ -171,7 +171,7 @@ export class GestureDockPullOutModel {
   }
 
   /**
-   * 箭头变OpenHarmony环动效完成后
+   * 箭头变鸿蒙环动效完成后
    */
   private changeToDockImgAnimFinish = (isLeft: boolean) => {
     log.showInfo(`changeToDockImgAnimFinish.actionUpTime: ${this.pullOutData.actionUpTime} \
@@ -179,7 +179,7 @@ export class GestureDockPullOutModel {
     this.pullOutData.isChangeDockImgAnimRunning = false;
     GestureDockViewModel.getInstance().getViewEvent()?.onChangeToDockImgAnimFinish();
     if (this.pullOutData.actionUpTime === 0) {
-      // 未松手，动效做完了，OpenHarmony环也呼出了，松手呼出Dock
+      // 未松手，动效做完了，鸿蒙环也呼出了，松手呼出Dock
       // back回收动效执行了，不执行呼出Dock
       if (!this.isDockOutEnable()) {
         log.showInfo(`changeToDockImgAnimFinish.gesture dock is not enable.`);
@@ -199,7 +199,7 @@ export class GestureDockPullOutModel {
       this.pullOutData.isPullOutDock = true;
     } else if (this.pullOutData.actionUpTime - this.pullOutData.startChangeDockImgTime >
       GestureDockConstants.GESTURE_DOCK_STAY_DURATION) {
-      // 松手了，动效做完了，OpenHarmony环也呼出了，呼出Dock栏
+      // 松手了，动效做完了，鸿蒙环也呼出了，呼出Dock栏
       if (!this.isDockOutEnable()) {
         log.showInfo(`changeToDockImgAnimFinish.gesture dock is not enable.`);
         return;
@@ -219,7 +219,7 @@ export class GestureDockPullOutModel {
       this.pullOutGestureDock();
       this.pullOutData.isPullOutDock = true;
     } else {
-      // 松手了，动效做完了，OpenHarmony环未呼出了，发送back手势
+      // 松手了，动效做完了，鸿蒙环未呼出了，发送back手势
       this.pullOutData.isBackImageChange = false;
       let dockViewData = GestureDockViewModel.getInstance().getViewData();
       if (dockViewData && dockViewData.getGestureDockDirection() === GestureDockState.GESTURE_DOCK_IN) {

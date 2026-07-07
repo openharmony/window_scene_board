@@ -324,7 +324,7 @@ export class SwipeAppToCapsuleAnimation {
    * 获取应用上滑锚点位置
    */
   private getAnchor(): Position {
-    // 超大屏适配
+    // 三折叠适配
     if (DeviceInfoVm.instance.isXTSpecialState()) {
       const position: Position = {
         x: CutoutVm.instance.left + CutoutVm.instance.holeRadius + LiveStyle.CAPSULE_HEIGHT / 2 +

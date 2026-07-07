@@ -18,6 +18,7 @@ import { DarkModeState, fontScaleManager, FontScaleState } from '@ohos/systemuiu
 import { LiveViewData } from '../../../data/LiveViewData';
 import { OtherBaseTemplate } from '../../../data/template/OtherBaseTemplate';
 import { LiveUseScene, LiveViewCommonConstants } from '../../../common/LiveConstants';
+import { AodStyleType, ImmersiveAodStyle } from '../../../../immersivekeyguardcommon/base/interface/ImmersiveAodStyle';
 import { immersiveKgMgr } from '../../../../immersivekeyguardcommon/manager/ImmersiveKeyguardStateManager';
 import { NotificationType } from '../../../../constants/NotificationType';
 import { ColorModeViewData } from '../../../../template/newStyle/ColorModeViewData';
@@ -44,6 +45,12 @@ export struct ServiceButtonComponent {
    * 通知面板类型
    */
   @Consume notificationType: number;
+
+  /**
+   * AOD显示样式
+   */
+  @State aodStyle: ImmersiveAodStyle | undefined = immersiveKgMgr.getOneMirrorState().getAodStyle(
+    this.notificationType === NotificationType.TYPE_PHONE_KEYGUARD);
 
   @State colorModeViewData: ColorModeViewData = ColorModeViewModel.getInstance().getViewData();
   /**
@@ -74,8 +81,9 @@ export struct ServiceButtonComponent {
         .height(22)
         .visibility(this.getDividerVisible())
         .color($r('app.color.theme_ntf_phone_action_divider_color'))
-        .opacity(1)
-        .foregroundBrightness(this.colorModeViewData?.foregroundDividerOption)
+        .opacity(this.aodStyle?.isAod ? 0.1 : 1)
+        .foregroundBrightness(this.aodStyle?.isAod ? BrightnessOptionUtils.getInstance().foregroundDividerDarkOption :
+          this.colorModeViewData?.foregroundDividerOption)
         .flexShrink(0)
     }
   }
@@ -85,8 +93,9 @@ export struct ServiceButtonComponent {
     Stack() {
       Text(this.data.serviceButtons[index]?.actionTitle)
         .draggable(false)
-        .fontColor($r('sys.color.ohos_id_color_text_secondary'))
-        .opacity(1)
+        .fontColor(this.aodStyle?.isAod ? this.aodStyle?.getStyleValue(AodStyleType.AUTH_TIP_BUTTON_COLOR) :
+        $r('sys.color.ohos_id_color_text_secondary'))
+        .opacity(this.aodStyle?.isAod ? 0.1 : 1)
         .fontWeight(FontWeight.Medium)
         .fontSize($r('sys.float.ohos_id_text_size_sub_title3'))
         .maxFontScale(this.fontScaleState.getFontScale())

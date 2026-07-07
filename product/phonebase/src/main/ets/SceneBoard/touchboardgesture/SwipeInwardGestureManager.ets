@@ -92,7 +92,7 @@ export class TouchBoardSwipeInwardGestureManager {
   }
 
   public isSupportSwipeInwardGestureFeature(): boolean {
-    return uiType === SCBConstants.UITYPE_PAD || DeviceHelper.isUltraScreenProduct();
+    return uiType === SCBConstants.UITYPE_PAD || DeviceHelper.isThreeFoldProduct();
   }
 
   private onSwipeInwardEvent(gesture: SwipeInward): void {

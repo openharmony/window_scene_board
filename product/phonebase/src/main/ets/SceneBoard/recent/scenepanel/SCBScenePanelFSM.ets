@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023-Huawei Device Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) 2023-2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the 'License');
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -42,6 +42,7 @@ import { RecentScrollFling } from './recentpanel/RecentScrollFling';
 import { RecentScrollFollowing } from './recentpanel/RecentScrollFollowing';
 import { ScreenLockState } from './homepanel/ScreenLockState';
 import { OverViewFollowingFromHome } from './homepanel/OverViewFollowingHome';
+import { OutdoorIdle } from './homepanel/OutdoorIdle';
 
 const TAG = 'SCBScenePanelFSM';
 const log = LogHelper.getLogHelper(LogDomain.RECENT, TAG);
@@ -77,6 +78,7 @@ export class SCBScenePanelFSM extends FSM {
       .addState(new QuickSwitchIdle(this.panelManager))
       .addState(new SplitIdle(this.panelManager))
       .addState(new EmergencyHomeIdle(this.panelManager))
+      .addState(new OutdoorIdle(this.panelManager))
       .addState(new ScreenLockState(this.panelManager));
 
     this.allStates().forEach((item) => {
@@ -203,6 +205,11 @@ export class SCBScenePanelFSM extends FSM {
     this.currentState = this.getState(ScenePanelStates.STATE_SCREEN_LOCK) as FSMState;
   }
 
+  public setCurrentStateToOutdoor(): void {
+    log.showWarn('setCurrentStateToOutdoor.');
+    this.currentState = this.getState(ScenePanelStates.STATE_OUTDOOR_IDLE) as FSMState;
+  }
+
   private setCallbacks: FsmSetCallbackItem[] = [
     {
       name: 'HomeIdleCallback',
@@ -264,6 +271,13 @@ export class SCBScenePanelFSM extends FSM {
       name: 'EmergencyHomeIdleCallback',
       func: (callback: GestureCallbackBase) => {
         let stat = this.getState(ScenePanelStates.STATE_EMERGENCY_HOME_IDLE) as RecentIdle;
+        stat.setCallback(callback);
+      }
+    },
+    {
+      name: 'OutdoorIdleCallback',
+      func: (callback: GestureCallbackBase) => {
+        let stat = this.getState(ScenePanelStates.STATE_OUTDOOR_IDLE) as RecentIdle;
         stat.setCallback(callback);
       }
     },

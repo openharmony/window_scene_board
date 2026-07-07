@@ -63,9 +63,9 @@ import { DesktopSwitchController } from './DesktopSwitchController';
 import { SwipeGestureManager, SwipeGestureDirection } from '@ohos/pcmode';
 import { FourFingerSwipeConstants } from './FourFingerSwipeConstants';
 import { FourFingerSwipeEvent } from './FourFingerSwipeEvent';
-// import virtualization from '@hms.virtService.vmManagerInner';
+// import virtualization from '@ohos.virtService.vmManagerInner';
 import screenSessionManager from '@ohos.screenSessionManager';
-// import apsManager from '@hms.graphic.apsManager';
+// import apsManager from '@ohos.graphic.apsManager';
 import { common } from '@kit.AbilityKit';
 import { MultiSpaceSwitchOneGoCtrl, SwitchEnterpriseMultiSpaceType } from '../../common/EnterpriseMultiSpaceController';
 import ctrlAltDelPanelModel from '../ctrlaltdelpanel/model/CtrlAltDelPanelModel';
@@ -115,6 +115,7 @@ const SCREEN_NUMBER_ONE = 1;
 const CTRL_LOGO_LEFT: string = 'CTRL_LOGO_LEFT';
 const CTRL_LOGO_RIGHT: string = 'CTRL_LOGO_RIGHT';
 const VM_SNAPSHOT_PIXEL_MAP_NAME: string = 'vmSnapshot_Pixel_Map';
+const HARMONY_SNAPSHOT_PIXEL_MAP_NAME: string = 'hmSnapshot_Pixel_Map';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.HOME, TAG);
 const BLUR_MIN: number = 0;
 const BLUR_MAX: number = 100;
@@ -231,6 +232,7 @@ export class FourFingerSwipeController {
   private startFourFingerTouch: boolean = false;
   private originalPosition: Position | null = null;
   public isQXSDevice: boolean = this.isSupportWindowPcModeSwitch();
+  private harmonySnapshotScale: number = 1;
   private vmSnapshotScale: number = 0.9;
   private dropSnapshot: boolean = false;
   private canInterrupt: boolean = true;
@@ -244,6 +246,7 @@ export class FourFingerSwipeController {
   private lastUseVmTime: number = 0;
   private revokeAnimate: boolean = false;
   private isVmSnapshotFoldState: SnapshotFoldState = SnapshotFoldState.NONE;
+  private isHarmonySnapshotFoldState: SnapshotFoldState = SnapshotFoldState.NONE;
   private windowWidth: number = 0;
   private windowHeight: number = 0;
   private apsSessionId: string = '';
@@ -319,6 +322,18 @@ export class FourFingerSwipeController {
     }
     if (!this.canInterrupt) {
       log.showWarn(`can interrupt ${this.canInterrupt}`);
+      return false;
+    }
+    return true;
+  }
+
+  private switchToHarmony(): boolean {
+    if (!this.getVmDesktop()) {
+      log.showInfo(`getVmDesktop is ${this.getVmDesktop()}`);
+      return false;
+    }
+    if (!this.canInterrupt) {
+      log.showInfo(`can interrupt ${this.canInterrupt}`);
       return false;
     }
     return true;
@@ -470,6 +485,7 @@ export class FourFingerSwipeController {
       if (swipeCallback?.getMotionScreenId() === this.motionScreenId) {
         this.swipeCallback = swipeCallback;
         this.vmSnapshot();
+        this.harmonyScreenshot();
         this.updateShowPrefabrication(false);
         this.updateScreenSize();
         this.updateWindowSize(vp2px(this.screenWidth), vp2px(this.screenHeight));
@@ -612,6 +628,38 @@ export class FourFingerSwipeController {
     this.recentVmState = VmState.VM_HPR_FULL_SCREEN;
   }
 
+  private enterHarmonyFoldedState(skipDisableInterruptEffect: boolean = false): void {
+    log.showInfo('enterHarmonyFoldedState');
+    if (this.motionScreenId !== SCBSceneSessionManager.getInstance().mainScreenId) {
+      log.showInfo('The screen is not the main display, enterHarmonyFoldedState not execute');
+      return;
+    }
+    this.setScreenWidth(DevicesScreenWitch.HOPPER_FOLD);
+    this.updateWindowSize(FOLD_SCREEN_WIDTH, FOLD_SCREEN_HEIGHT);
+    this.windowWidth = FOLD_SCREEN_WIDTH;
+    this.windowHeight = FOLD_SCREEN_HEIGHT;
+    this.setMotionRect(FOLD_SCREEN_WIDTH, FOLD_SCREEN_HEIGHT);
+    if (!skipDisableInterruptEffect) {
+      this.disableInterruptEffect();
+    }
+  }
+
+  private enterHarmonyFullScreenState(skipDisableInterruptEffect: boolean = false): void {
+    log.showInfo('enterHarmonyFullScreenState');
+    if (this.motionScreenId !== SCBSceneSessionManager.getInstance().mainScreenId) {
+      log.showInfo('The screen is not the main display, enterHarmonyFullScreenState not execute');
+      return;
+    }
+    this.setScreenWidth(DevicesScreenWitch.HOPPER_FULL);
+    this.updateWindowSize(FULL_SCREEN_WIDTH, FULL_SCREEN_HEIGHT);
+    this.windowWidth = FULL_SCREEN_WIDTH;
+    this.windowHeight = FULL_SCREEN_HEIGHT;
+    this.setMotionRect(FULL_SCREEN_WIDTH, FULL_SCREEN_HEIGHT);
+    if (!skipDisableInterruptEffect) {
+      this.disableInterruptEffect();
+    }
+  }
+
   private disableInterruptEffect(): void {
     log.showInfo('disableInterruptEffect');
     this.canInterrupt = false;
@@ -628,6 +676,37 @@ export class FourFingerSwipeController {
 
   public getPhysicalKeyboard(): boolean {
     return this.physicalKeyboard;
+  }
+
+  private blurringHarmonyAnimation(toggleMotionType: ToggleMotionType): void {
+    log.showInfo('blurringHarmonyAnimation');
+    this.updateWallpaperIndexToShowDesktop();
+    this.updateShowBackground(false);
+    animateTo({
+      duration: 200,
+      curve: Curve.Friction,
+      playMode: PlayMode.Normal,
+      onFinish: () => {
+        this.updateShowBackground(true);
+        this.updateHarmonySnapshotOpacity(OPACITY_MAX);
+        switch (toggleMotionType) {
+          case ToggleMotionType.FOLLOW_HAND:
+            this.backRightMotionFinish();
+            break;
+          case ToggleMotionType.QUICK_SWIPE:
+            this.quickBackRightMotionFinish();
+            break;
+          case ToggleMotionType.ONE_TIME:
+            this.oneTimeRightSwipeMotionFinish();
+            break;
+          default:
+            log.showError('blurringHarmonyAnimation err');
+        }
+      }
+    }, () => {
+      this.updateHarmonySnapshotOpacity(OPACITY_MIN);
+      this.updateHarmonySnapshotBlurScale(BLUR_MIN);
+    })
   }
 
   private blurringVmAnimation(toggleMotionType: ToggleMotionType): void {
@@ -660,6 +739,28 @@ export class FourFingerSwipeController {
       this.updateVmSnapshotOpacity(OPACITY_MIN);
       this.updateVmSnapshotBlurScale(BLUR_MIN);
     })
+  }
+
+  private snapshotBlur(harmonySnapshotBlur: boolean): void {
+    log.showInfo(`Harmony snapshot fold state: ${this.isHarmonySnapshotFoldState} ` +
+      `Vm snapshot fold state: ${this.isVmSnapshotFoldState} `);
+    if (harmonySnapshotBlur) {
+      if (this.isHarmonySnapshotFoldState === SnapshotFoldState.FOLD) {
+        // Harmony截图半屏 -> 全屏返回Harmony
+        this.updateHarmonySnapshotBlurScale(BLUR_MAX);
+      } else if (this.isHarmonySnapshotFoldState === SnapshotFoldState.EXPAND) {
+        // Harmony截图全屏 -> 半屏返回Harmony
+        this.updateHarmonySnapshotBlurScale(BLUR_MAX);
+      }
+    } else {
+      if (this.isVmSnapshotFoldState === SnapshotFoldState.FOLD) {
+        // VM截图半屏 -> 全屏返回VM
+        this.updateVmSnapshotBlurScale(BLUR_MAX);
+      } else if (this.isVmSnapshotFoldState === SnapshotFoldState.EXPAND) {
+        // VM截图全屏 -> 半屏返回VM
+        this.updateVmSnapshotBlurScale(BLUR_MAX);
+      }
+    }
   }
 
   public unregisterOnFocusedScreenChangeCallback(): void {
@@ -832,7 +933,7 @@ export class FourFingerSwipeController {
     if (Math.abs(this.originalPosition.x - position.x) === Math.abs(this.originalPosition.y - position.y)) {
       return false;
     }
-    if (Math.abs(this.originalPosition.x - position.x) <= DEBOUNCE_THRESHOLD ) {
+    if (Math.abs(this.originalPosition.x - position.x) <= DEBOUNCE_THRESHOLD) {
       return false;
     }
     return true;
@@ -1032,6 +1133,8 @@ export class FourFingerSwipeController {
     if (this.direction == SwipeGestureDirection.RIGHT && this.getVmDesktop()) {
       if (!this.isShow) {
         log.showInfo('showView switch desktop right motion');
+        // this.updateVmSwitchAnimationPhase(virtualization.AnimationPhase.HAND_GESTURE_START);
+        this.snapshotBlur(true);
         this.updateMotionWindowVisible(true);
         Trace.start(Trace.CORE_METHOD_FOUR_FINGER_SWIPE_ANIMATION);
         this.isShow = true;
@@ -1040,6 +1143,8 @@ export class FourFingerSwipeController {
     } else if (this.direction == SwipeGestureDirection.LEFT && !this.getVmDesktop()) {
       if (!this.isShow) {
         log.showInfo('showView switch desktop left motion');
+        // this.updateVmSwitchAnimationPhase(virtualization.AnimationPhase.HAND_GESTURE_START);
+        this.snapshotBlur(false);
         this.updateMotionWindowVisible(true);
         Trace.start(Trace.CORE_METHOD_FOUR_FINGER_SWIPE_ANIMATION);
         this.isShow = true;
@@ -1053,12 +1158,14 @@ export class FourFingerSwipeController {
   private updateMotionWindowVisible(isShow: boolean): void {
     log.showInfo(`updateMotionWindowVisible isShow: ${isShow}, motionScreenId: ${this.motionScreenId}`);
     if (isShow) {
+      // this.apsSessionId = ApsUtils.startApsPersistentSession(apsManager.SceneAnimation.SWITCH_DESKTOP);
       ViewManagerPolicy.showView(this.motionScreenId === MAIN_SCREEN_ID ?
-      ViewType.DESKTOP_SWITCHER : ViewType.DESKTOP_SWITCHER_EXT_SCREEN);
+        ViewType.DESKTOP_SWITCHER : ViewType.DESKTOP_SWITCHER_EXT_SCREEN);
     } else {
+      // ApsUtils.stopApsSession(this.apsSessionId);
       this.apsSessionId = '';
       ViewManagerPolicy.hideView(this.motionScreenId === MAIN_SCREEN_ID ?
-      ViewType.DESKTOP_SWITCHER : ViewType.DESKTOP_SWITCHER_EXT_SCREEN);
+        ViewType.DESKTOP_SWITCHER : ViewType.DESKTOP_SWITCHER_EXT_SCREEN);
     }
   }
 
@@ -1079,6 +1186,29 @@ export class FourFingerSwipeController {
       currentPercent = Math.max(0, Math.min(currentPercent, FourFingerSwipeConstants.MAX_PERCENT));
     }
     let currentTranslateX = this.screenWidth * (1 - currentPercent);
+    if (this.harmonySnapshotScale === SCALE_MAX) {
+      this.updateVmSnapshotScale(SCALE_MIN);
+      animateToImmediately({
+        duration: 300,
+        curve: Curves.springMotion(),
+        iterations: 1,
+        playMode: PlayMode.Normal,
+      }, () => {
+        this.updateHarmonySnapshotScale(SCALE_MIDDLE);
+      })
+    } else if (this.harmonySnapshotScale <= SCALE_MIDDLE) {
+      animateToImmediately({
+        curve: Curves.responsiveSpringMotion(),
+      }, () => {
+        this.updateVmSnapshotScale(SCALE_MIN + 0.2 * currentPercent);
+        this.updateVmSnapshotX(currentTranslateX);
+        this.updateVmSnapshotRotate(-(1 - currentPercent) * ROTATE_ANGLE_MAX);
+        this.updateHarmonySnapshotScale(SCALE_MIDDLE - 0.2 * currentPercent);
+        this.updateHarmonySnapshotX(currentTranslateX - this.screenWidth);
+        this.updateHarmonySnapshotRotate(currentPercent * ROTATE_ANGLE_MAX);
+        this.updateHarmonySnapshotOpacity(OPACITY_MAX - currentPercent);
+      })
+    }
   }
 
   public swipeUpdateRight(): void {
@@ -1089,6 +1219,7 @@ export class FourFingerSwipeController {
     currentPercent = Math.max(currentPercent, -1);
     let currentTranslateX = -(this.screenWidth) * currentPercent;
     if (this.vmSnapshotScale === SCALE_MAX) {
+      this.updateHarmonySnapshotScale(SCALE_MIN);
       animateToImmediately({
         duration: 300,
         curve: Curves.springMotion(),
@@ -1101,6 +1232,9 @@ export class FourFingerSwipeController {
       animateToImmediately({
         curve: Curves.responsiveSpringMotion(),
       }, () => {
+        this.updateHarmonySnapshotScale(SCALE_MIN - 0.2 * currentPercent);
+        this.updateHarmonySnapshotX(currentTranslateX - this.screenWidth);
+        this.updateHarmonySnapshotRotate((1 + currentPercent) * ROTATE_ANGLE_MAX);
         this.updateVmSnapshotScale(SCALE_MIDDLE + 0.2 * currentPercent);
         this.updateVmSnapshotX(currentTranslateX);
         this.updateVmSnapshotRotate(currentPercent * ROTATE_ANGLE_MAX);
@@ -1144,6 +1278,7 @@ export class FourFingerSwipeController {
         this.reportFourFingerSwipe(SwipeGestureDirection.LEFT);
         // this.updateVmSwitchAnimationPhase(virtualization.AnimationPhase.HG_MANUAL_TO_AUTO_END);
         this.reset();
+        this.initHarmonySnapshotDesktop();
         this.updateSettingsData(true);
         this.quickBackLeftMotionSnapshot();
       } else {
@@ -1187,7 +1322,10 @@ export class FourFingerSwipeController {
   }
 
   private followFingerBackLeftMotion(): boolean {
-    log.showInfo('back left motion snapshot scale is max');
+    if (this.harmonySnapshotScale !== SCALE_MAX) {
+      return false;
+    }
+    log.showInfo('back left motion harmony snapshot scale is max');
     this.canInterrupt = true;
     this.updateMotionWindowVisible(false);
     AnimateToScheduleUtils.attachBigCoreCPU(AnimateToScheduleUtils.ACTION_ATTACH_END);
@@ -1229,19 +1367,31 @@ export class FourFingerSwipeController {
       playMode: PlayMode.Normal,
       onFinish: () => {
         this.setVmDesktop(false);
-        this.backRightMotionFinish();
+        if (this.isHarmonySnapshotFoldState === SnapshotFoldState.FOLD) {
+          this.blurringHarmonyAnimation(ToggleMotionType.FOLLOW_HAND);
+        } else if (this.isHarmonySnapshotFoldState === SnapshotFoldState.EXPAND) {
+          this.blurringHarmonyAnimation(ToggleMotionType.FOLLOW_HAND);
+        } else {
+          this.backRightMotionFinish();
+        }
       }
     }, () => {
       this.updateVmSnapshotX(this.screenWidth);
       this.updateVmSnapshotRotate(-ROTATE_ANGLE_MAX);
       this.updateVmSnapshotOpacity(OPACITY_MIN);
       this.updateVmSnapshotScale(SCALE_MIN);
+      this.updateHarmonySnapshotX(PLACE_START);
+      this.updateHarmonySnapshotRotate(ROTATE_ANGLE_MIN);
+      this.updateHarmonySnapshotScale(SCALE_MIDDLE);
     })
     animateToImmediately({
       duration: 800,
       curve: Curves.springMotion(0.45, 0.8),
       playMode: PlayMode.Normal,
-    }, () => {})
+    }, () => {
+      this.updateHarmonySnapshotScale(SCALE_MAX);
+      this.updateHarmonySnapshotOpacity(OPACITY_MAX);
+    })
   }
 
   private backRightMotionFinish(): void {
@@ -1264,12 +1414,16 @@ export class FourFingerSwipeController {
     if (DesktopSwitchController.getInstance().getVmSceneContainerSession()?.isForeground()) {
       log.showError('Vm session is foreground, adjust state as in Vm');
       this.resetVmDesktopState();
+    } else {
+      this.releaseHarmonySnapshot();
     }
   }
 
   public quickBackLeftSwipeMotion(): void {
     this.setPointerVisible(false);
     this.updateSwitching(true);
+    this.initHarmonySnapshotDesktop();
+    this.snapshotBlur(false);
     performanceMonitor.begin('SWITCH_DESKTOP', performanceMonitor.ActionType.FIRST_MOVE, 'SWITCH_DESKTOP');
     Trace.start(Trace.CORE_METHOD_DESKTOP_SWITCH_LEFT);
     this.updateMotionWindowVisible(true);
@@ -1279,7 +1433,7 @@ export class FourFingerSwipeController {
         DesktopSwitchController
           .getInstance()
           .getVmSceneContainerSession()
-          ?.getPersistentId());
+        ?.getPersistentId());
     animateToImmediately({
       delay: 150,
       curve: Curves.springMotion(0.45, 0.8),
@@ -1308,6 +1462,9 @@ export class FourFingerSwipeController {
 
   public quickBackRightMotionSnapshot(): void {
     log.showInfo('quick back right motion snapshot');
+    if (!this.switchToHarmony()) {
+      return;
+    }
     this.canInterrupt = false;
     this.updateSwitching(true);
     this.quickMotionDesktopSnapshot(true);
@@ -1316,6 +1473,7 @@ export class FourFingerSwipeController {
   public quickBackRightSwipeMotion(): void {
     this.setPointerVisible(false);
     this.initVmDesktop();
+    this.snapshotBlur(true);
     performanceMonitor.begin('SWITCH_DESKTOP', performanceMonitor.ActionType.FIRST_MOVE, 'SWITCH_DESKTOP');
     Trace.start(Trace.CORE_METHOD_DESKTOP_SWITCH_RIGHT);
     this.updateMotionWindowVisible(true);
@@ -1330,7 +1488,10 @@ export class FourFingerSwipeController {
         this.updateVmSnapshotRadius(RADIUS_MIN);
         this.updateVmSnapshotScale(SCALE_MIN);
       }
-    }, () => {})
+    }, () => {
+      this.updateHarmonySnapshotRadius(RADIUS_MIN);
+      this.updateHarmonySnapshotScale(SCALE_MAX);
+    })
   }
 
   public quickBackLeftSwipeMotionBuild(): void {
@@ -1342,7 +1503,10 @@ export class FourFingerSwipeController {
       onFinish: () => {
         this.updateVmSnapshotRadius(RADIUS_MAX);
       }
-    }, () => {})
+    }, () => {
+      this.updateHarmonySnapshotScale(SCALE_MIDDLE);
+      this.updateHarmonySnapshotRadius(RADIUS_MAX);
+    })
     animateToImmediately({
       finishCallbackType: FinishCallbackType.LOGICALLY,
       delay: 150,
@@ -1363,6 +1527,10 @@ export class FourFingerSwipeController {
       this.updateVmSnapshotX(PLACE_START);
       this.updateVmSnapshotRotate(ROTATE_ANGLE_MIN);
       this.updateVmSnapshotScale(SCALE_MIDDLE);
+      this.updateHarmonySnapshotX(-this.screenWidth);
+      this.updateHarmonySnapshotRotate(ROTATE_ANGLE_MAX);
+      this.updateHarmonySnapshotOpacity(OPACITY_MIN);
+      this.updateHarmonySnapshotScale(SCALE_MIN);
     })
   }
 
@@ -1371,8 +1539,11 @@ export class FourFingerSwipeController {
     DesktopSwitchController.getInstance().vmTopmost();
     ViewManagerPolicy.hideView(ViewType.APP_CENTER);
     AppStorage.setOrCreate('openAppCenterPageIndex', 0);
+    this.updateHarmonySnapshotRadius(RADIUS_MIN);
     this.dropSnapshot = false;
     this.canInterrupt = true;
+    this.updateHarmonySnapshotScale(SCALE_MIN);
+    this.updateHarmonySnapshotOpacity(OPACITY_MAX);
     if (this.memoryRelease) {
       log.showInfo('Memory release does not exit the dynamic effect');
       this.memoryReleasing();
@@ -1391,11 +1562,14 @@ export class FourFingerSwipeController {
   }
 
   public quickBackRightSwipeMotionBuild(): void {
+    this.updateHarmonySnapshotScale(SCALE_MIN);
     animateToImmediately({
       curve: Curves.springMotion(),
       iterations: 1,
       playMode: PlayMode.Normal,
-      onFinish: () => {}
+      onFinish: () => {
+        this.updateHarmonySnapshotRadius(RADIUS_MAX);
+      }
     }, () => {
       this.updateVmSnapshotScale(SCALE_MIDDLE);
       this.updateVmSnapshotRadius(RADIUS_MAX);
@@ -1408,13 +1582,22 @@ export class FourFingerSwipeController {
       playMode: PlayMode.Normal,
       onFinish: () => {
         this.setVmDesktop(false);
-        this.quickBackRightMotionFinish();
+        if (this.isHarmonySnapshotFoldState === SnapshotFoldState.FOLD) {
+          this.blurringHarmonyAnimation(ToggleMotionType.QUICK_SWIPE);
+        } else if (this.isHarmonySnapshotFoldState === SnapshotFoldState.EXPAND) {
+          this.blurringHarmonyAnimation(ToggleMotionType.QUICK_SWIPE);
+        } else {
+          this.quickBackRightMotionFinish();
+        }
       }
     }, () => {
       this.updateVmSnapshotX(this.screenWidth);
       this.updateVmSnapshotRotate(-ROTATE_ANGLE_MAX);
       this.updateVmSnapshotOpacity(OPACITY_MIN);
       this.updateVmSnapshotScale(SCALE_MIN);
+      this.updateHarmonySnapshotX(PLACE_START);
+      this.updateHarmonySnapshotRotate(ROTATE_ANGLE_MIN);
+      this.updateHarmonySnapshotScale(SCALE_MIDDLE);
     })
   }
 
@@ -1438,6 +1621,8 @@ export class FourFingerSwipeController {
     if (DesktopSwitchController.getInstance().getVmSceneContainerSession()?.isForeground()) {
       log.showError('Vm session is foreground, adjust state as in Vm');
       this.resetVmDesktopState();
+    } else {
+      this.releaseHarmonySnapshot();
     }
   }
 
@@ -1451,7 +1636,7 @@ export class FourFingerSwipeController {
         DesktopSwitchController
           .getInstance()
           .getVmSceneContainerSession()
-          ?.getPersistentId());
+        ?.getPersistentId());
     animateToImmediately({
       finishCallbackType: FinishCallbackType.LOGICALLY,
       duration: 800,
@@ -1471,6 +1656,10 @@ export class FourFingerSwipeController {
       this.updateVmSnapshotX(PLACE_START);
       this.updateVmSnapshotRotate(ROTATE_ANGLE_MIN);
       this.updateVmSnapshotScale(SCALE_MIDDLE);
+      this.updateHarmonySnapshotX(-this.screenWidth);
+      this.updateHarmonySnapshotRotate(ROTATE_ANGLE_MAX);
+      this.updateHarmonySnapshotOpacity(OPACITY_MIN);
+      this.updateHarmonySnapshotScale(SCALE_MIN);
     })
     animateToImmediately({
       duration: 800,
@@ -1488,6 +1677,7 @@ export class FourFingerSwipeController {
     ViewManagerPolicy.hideView(ViewType.APP_CENTER);
     AppStorage.setOrCreate('openAppCenterPageIndex', 0);
     DesktopSwitchController.getInstance().vmTopmost();
+    this.updateHarmonySnapshotOpacity(OPACITY_MAX);
     this.canInterrupt = true;
     if (this.memoryRelease) {
       log.showInfo('Memory release does not exit the dynamic effect');
@@ -1613,6 +1803,7 @@ export class FourFingerSwipeController {
       if (swipeCallback?.getMotionScreenId() === this.motionScreenId) {
         this.swipeCallback = swipeCallback;
         this.vmSnapshot();
+        this.harmonyScreenshot();
         this.updateShowPrefabrication(false);
         this.updateScreenSize();
         this.updateWindowSize(vp2px(this.screenWidth), vp2px(this.screenHeight));
@@ -1653,8 +1844,8 @@ export class FourFingerSwipeController {
     DesktopSwitchController
       .getInstance()
       .getVmSceneContainerSession()
-      ?.primarySession
-      ?.registerSessionDisplayChangeCallback(this.sessionDisplayChange);
+    ?.primarySession
+    ?.registerSessionDisplayChangeCallback(this.sessionDisplayChange);
   }
 
   private startFromSleeping(): void {
@@ -1669,19 +1860,21 @@ export class FourFingerSwipeController {
     log.showInfo('oneTimeLeftSwipeMotion begin');
     this.setPointerVisible(false);
     this.updateSwitching(true);
+    this.snapshotBlur(false);
     performanceMonitor.begin('SWITCH_DESKTOP', performanceMonitor.ActionType.FIRST_MOVE, 'SWITCH_DESKTOP');
     Trace.start(Trace.CORE_METHOD_DESKTOP_SWITCH_LEFT);
     this.updateMotionWindowVisible(true);
     // this.updateVmSwitchAnimationPhase(virtualization.AnimationPhase.SHORTCUT_TO_VM_START);
     DesktopSwitchController.getInstance().onVmDesktopShow();
     DesktopSwitchController.getInstance().vmTopmost();
+    this.initHarmonySnapshotDesktop();
     this.oneTimeLeftSwipeMotionBuild();
     SCBSceneSessionManager.getInstance()
       .startSceneFromRecent(this.motionScreenId,
         DesktopSwitchController
           .getInstance()
           .getVmSceneContainerSession()
-          ?.getPersistentId());
+        ?.getPersistentId());
     animateToImmediately({
       delay: 150,
       curve: Curves.springMotion(),
@@ -1707,7 +1900,10 @@ export class FourFingerSwipeController {
     DesktopSwitchController.getInstance().vmTopmost();
     ViewManagerPolicy.hideView(ViewType.APP_CENTER);
     AppStorage.setOrCreate('openAppCenterPageIndex', 0);
+    this.updateHarmonySnapshotRadius(RADIUS_MIN);
     this.canInterrupt = true;
+    this.updateHarmonySnapshotScale(SCALE_MIN);
+    this.updateHarmonySnapshotOpacity(OPACITY_MAX);
     if (this.memoryRelease) {
       log.showInfo('Memory release does not exit the dynamic effect');
       this.memoryReleasing();
@@ -1737,6 +1933,9 @@ export class FourFingerSwipeController {
       DesktopSwitchController.getInstance().publishCommonEvent();
       return;
     }
+    if (!this.switchToHarmony()) {
+      return;
+    }
     let showRecent = AppStorage.get('showRecent') as boolean;
     if (showRecent) {
       this.onFourFingerMotionEnd();
@@ -1751,6 +1950,7 @@ export class FourFingerSwipeController {
 
   public oneTimeRightSwipeMotion(): void {
     this.setPointerVisible(false);
+    this.snapshotBlur(true);
     performanceMonitor.begin('SWITCH_DESKTOP', performanceMonitor.ActionType.FIRST_MOVE, 'SWITCH_DESKTOP');
     Trace.start(Trace.CORE_METHOD_DESKTOP_SWITCH_RIGHT);
     this.updateMotionWindowVisible(true);
@@ -1765,8 +1965,17 @@ export class FourFingerSwipeController {
       playMode: PlayMode.Normal,
       onFinish: () => {
         this.setVmDesktop(false);
+        if (this.isHarmonySnapshotFoldState === SnapshotFoldState.FOLD) {
+          this.blurringHarmonyAnimation(ToggleMotionType.ONE_TIME);
+        } else if (this.isHarmonySnapshotFoldState === SnapshotFoldState.EXPAND) {
+          this.blurringHarmonyAnimation(ToggleMotionType.ONE_TIME);
+        } else {
+          this.oneTimeRightSwipeMotionFinish();
+        }
       }
-    }, () => {})
+    }, () => {
+      this.updateHarmonySnapshotScale(SCALE_MAX);
+    })
   }
 
   private oneTimeRightSwipeMotionFinish(): void {
@@ -1785,6 +1994,7 @@ export class FourFingerSwipeController {
     Trace.end(Trace.CORE_METHOD_DESKTOP_SWITCH_RIGHT);
     performanceMonitor.end('SWITCH_DESKTOP');
     this.setPointerVisible(true);
+    this.releaseHarmonySnapshot();
     if (this.isVmSnapshotFoldState !== SnapshotFoldState.FOLD && this.physicalKeyboard) {
       log.showInfo('Vm to Host, Reason: keyboard mount');
     }
@@ -1798,6 +2008,8 @@ export class FourFingerSwipeController {
       iterations: 1,
       playMode: PlayMode.Normal,
     }, () => {
+      this.updateHarmonySnapshotScale(SCALE_MIDDLE);
+      this.updateHarmonySnapshotRadius(RADIUS_MAX);
       this.updateVmSnapshotRadius(RADIUS_MAX);
     })
     animateToImmediately({
@@ -1809,6 +2021,10 @@ export class FourFingerSwipeController {
       this.updateVmSnapshotX(PLACE_START);
       this.updateVmSnapshotRotate(ROTATE_ANGLE_MIN);
       this.updateVmSnapshotScale(SCALE_MIDDLE);
+      this.updateHarmonySnapshotX(-this.screenWidth);
+      this.updateHarmonySnapshotRotate(ROTATE_ANGLE_MAX);
+      this.updateHarmonySnapshotOpacity(OPACITY_MIN);
+      this.updateHarmonySnapshotScale(SCALE_MIN);
     })
   }
 
@@ -1823,6 +2039,8 @@ export class FourFingerSwipeController {
     this.gettingSnapshot = true;
     if (isVm) {
       this.getVmSnapshot();
+    } else {
+      this.getHarmonyScreenshot();
     }
   }
 
@@ -1840,6 +2058,24 @@ export class FourFingerSwipeController {
     }).catch((err: BusinessError) => {
       log.showWarn('getVmSnapshot failed');
       this.resetOnScreenshotError(err);
+    });
+  }
+
+  private harmonyScreenshot(): void {
+    log.showInfo(`get Harmony screenshot, screenId: ${this.motionScreenId}`);
+    let screenshotOptions: screenshot.ScreenshotOptions = {
+      'rotation': 0,
+      'displayId': this.motionScreenId
+    };
+    screenshot.save(screenshotOptions, (err: BusinessError, pixelMap) => {
+      log.showInfo('get harmony screenshot end');
+      if (err) {
+        log.showError('get harmony screenshot error');
+        this.resetOnScreenshotError(err);
+        return;
+      }
+      PixelMapUtil.addName(pixelMap, HARMONY_SNAPSHOT_PIXEL_MAP_NAME);
+      this.updateHarmonySnapshot(pixelMap);
     });
   }
 
@@ -1881,7 +2117,47 @@ export class FourFingerSwipeController {
     });
   }
 
+  private getHarmonyScreenshot(quickMotion: boolean = false): void {
+    log.showInfo(`get Harmony screenshot, screenId: ${this.motionScreenId}`);
+    if (quickMotion) {
+      if (this.gettingSnapshot) {
+        log.showInfo('quick motion, still gettingSnapshot, set flag.');
+        this.quickMotionFlag = true;
+      } else {
+        log.showInfo('quick motion, is not gettingSnapshot');
+        this.quickBackLeftSwipeMotion();
+        this.updateSwitching(true);
+      }
+      return;
+    }
+    let screenshotOptions: screenshot.ScreenshotOptions = {
+      'rotation': 0,
+      'displayId': this.motionScreenId
+    };
+    screenshot.save(screenshotOptions, (err: BusinessError, pixelMap) => {
+      Trace.end(Trace.CORE_METHOD_FOUR_FINGER_SWIPE_GET_SNAPSHOT);
+      log.showInfo('get harmony screenshot end');
+      if (err) {
+        log.showError('get harmony screenshot error');
+        this.resetOnScreenshotError(err);
+        return;
+      }
+      this.gettingSnapshot = false;
+      PixelMapUtil.addName(pixelMap, HARMONY_SNAPSHOT_PIXEL_MAP_NAME);
+      this.updateHarmonySnapshot(pixelMap);
+      if (this.quickMotionFlag) {
+        this.quickBackLeftSwipeMotion();
+        this.quickMotionFlag = false;
+      }
+      if (!this.dropSnapshot) {
+        this.initHarmonySnapshotDesktop();
+      }
+      this.updateSwitching(true);
+    })
+  }
+
   public oneTimeRightSwipeMotionBuild(): void {
+    this.updateHarmonySnapshotScale(SCALE_MIN);
     animateToImmediately({
       curve: Curve.Friction,
       iterations: 1,
@@ -1889,6 +2165,7 @@ export class FourFingerSwipeController {
     }, () => {
       this.updateVmSnapshotScale(SCALE_MIDDLE);
       this.updateVmSnapshotRadius(RADIUS_MAX);
+      this.updateHarmonySnapshotRadius(RADIUS_MAX);
     })
     animateToImmediately({
       delay: 150,
@@ -1900,6 +2177,9 @@ export class FourFingerSwipeController {
       this.updateVmSnapshotRotate(-ROTATE_ANGLE_MAX);
       this.updateVmSnapshotOpacity(OPACITY_MIN);
       this.updateVmSnapshotScale(SCALE_MIN);
+      this.updateHarmonySnapshotX(PLACE_START);
+      this.updateHarmonySnapshotRotate(ROTATE_ANGLE_MIN);
+      this.updateHarmonySnapshotScale(SCALE_MIDDLE);
     })
   }
 
@@ -1994,9 +2274,32 @@ export class FourFingerSwipeController {
     AccountHelper.getInstance().unRegisterUserSwitchListener('switching', this.onSwitchingUser);
   }
 
+  private initHarmonySnapshotDesktop(): void {
+    log.showInfo('initHarmonySnapshotDesktop');
+    this.setVmDesktop(false);
+
+    this.updateHarmonySnapshotX(PLACE_START);
+    this.updateHarmonySnapshotScale(SCALE_MAX);
+    this.updateHarmonySnapshotRotate(ROTATE_ANGLE_MIN);
+    this.updateHarmonySnapshotOpacity(OPACITY_MAX);
+    this.updateHarmonySnapshotRadius(RADIUS_MAX);
+
+    this.updateVmSnapshotX(this.screenWidth);
+    this.updateVmSnapshotScale(SCALE_INIT);
+    this.updateVmSnapshotRotate(-ROTATE_ANGLE_MAX);
+    this.updateVmSnapshotOpacity(OPACITY_MAX);
+    this.updateVmSnapshotRadius(RADIUS_MAX);
+  }
+
   private initVmDesktop(): void {
     log.showInfo('initVmDesktop');
     this.setVmDesktop(true);
+
+    this.updateHarmonySnapshotX(-this.screenWidth);
+    this.updateHarmonySnapshotScale(SCALE_INIT);
+    this.updateHarmonySnapshotRotate(ROTATE_ANGLE_MAX);
+    this.updateHarmonySnapshotOpacity(OPACITY_MAX);
+    this.updateHarmonySnapshotRadius(RADIUS_MAX);
 
     this.updateVmSnapshotX(PLACE_START);
     this.updateVmSnapshotScale(SCALE_MAX);
@@ -2009,6 +2312,8 @@ export class FourFingerSwipeController {
     log.showInfo('quick motion desktop snapshot');
     if (isVmDesktop) {
       this.getVmSnapshot(true);
+    } else {
+      this.getHarmonyScreenshot(true);
     }
   }
 
@@ -2029,6 +2334,8 @@ export class FourFingerSwipeController {
     Trace.start(Trace.CORE_METHOD_FOUR_FINGER_SWIPE_GET_SNAPSHOT);
     if (isVm) {
       this.getVmSnapshotOneTimeEffect();
+    } else {
+      this.updateHarmonyScreenshot();
     }
   }
 
@@ -2049,6 +2356,27 @@ export class FourFingerSwipeController {
       log.showWarn('get vm snapshot one time effect failed');
       this.resetOnScreenshotError(err);
     });
+  }
+
+  private updateHarmonyScreenshot() {
+    log.showInfo(`update Harmony screenshot, screenId: ${this.motionScreenId}`);
+    let screenshotOptions: screenshot.ScreenshotOptions = {
+      'rotation': 0,
+      'displayId': this.motionScreenId
+    };
+    screenshot.save(screenshotOptions, (err: BusinessError, pixelMap) => {
+      Trace.end(Trace.CORE_METHOD_FOUR_FINGER_SWIPE_GET_SNAPSHOT);
+      log.showInfo('update Harmony screenshot end');
+      if (err) {
+        log.showError('updateSnapshot screenshot save error.');
+        this.resetOnScreenshotError(err);
+        return;
+      }
+      PixelMapUtil.addName(pixelMap, HARMONY_SNAPSHOT_PIXEL_MAP_NAME);
+      this.updateHarmonySnapshot(pixelMap);
+      this.updateSettingsData(true);
+      this.oneTimeLeftSwipeMotion();
+    })
   }
 
   private updateSettingsData(enterVm: boolean): void {
@@ -2134,6 +2462,7 @@ export class FourFingerSwipeController {
           this.updateSwitching(false);
         }
         this.updateMotionWindowVisible(false);
+        this.initHarmonySnapshotDesktop();
       } else {
         this.updateShowPrefabrication(false);
         this.updateSettingsData(true);
@@ -2198,21 +2527,21 @@ export class FourFingerSwipeController {
     }
   }
 
-private hasLowMemoryWindow(): boolean {
-  const taskManagerBundleName = 'com.ohos.taskmanager';
-  const lowMemoryAbilityName = 'LowMemoryAbility';
-  const activeContainerSessionList = SCBSceneSessionManager
-    .getInstance()
-    .getContainerSessionList()
-    .getActiveSessionList();
-  const hasLowMemoryWindow = activeContainerSessionList.some(containerSession => {
-    const bundleName = containerSession.getBundleName();
-    const abilityName = containerSession.primarySession?.sceneInfo?.abilityName;
-    return bundleName === taskManagerBundleName && abilityName === lowMemoryAbilityName;
-  });
-  log.showInfo(`hasLowMemoryWindow: ${hasLowMemoryWindow}`);
-  return hasLowMemoryWindow;
-}
+  private hasLowMemoryWindow(): boolean {
+    const taskManagerBundleName = 'com.ohos.taskmanager';
+    const lowMemoryAbilityName = 'LowMemoryAbility';
+    const activeContainerSessionList = SCBSceneSessionManager
+      .getInstance()
+      .getContainerSessionList()
+      .getActiveSessionList();
+    const hasLowMemoryWindow = activeContainerSessionList.some(containerSession => {
+      const bundleName = containerSession.getBundleName();
+      const abilityName = containerSession.primarySession?.sceneInfo?.abilityName;
+      return bundleName === taskManagerBundleName && abilityName === lowMemoryAbilityName;
+    });
+    log.showInfo(`hasLowMemoryWindow: ${hasLowMemoryWindow}`);
+    return hasLowMemoryWindow;
+  }
 
   private checkMemorySwitch(): boolean {
     if (this.memoryRelease) {
@@ -2326,12 +2655,14 @@ private hasLowMemoryWindow(): boolean {
     log.showInfo('closeVmInit');
     this.revokeAnimate = false;
     this.isVmSnapshotFoldState = SnapshotFoldState.NONE;
+    this.isHarmonySnapshotFoldState = SnapshotFoldState.NONE;
+    this.updateHarmonySnapshotBlurScale(BLUR_MIN);
     this.updateVmSnapshotBlurScale(BLUR_MIN);
     DesktopSwitchController
       .getInstance()
       .getVmSceneContainerSession()
-      ?.primarySession
-      ?.unregisterSessionDisplayChangeCallback(this.sessionDisplayChange);
+    ?.primarySession
+    ?.unregisterSessionDisplayChangeCallback(this.sessionDisplayChange);
   }
 
   public getMotionScreenId(): number {
@@ -2370,6 +2701,50 @@ private hasLowMemoryWindow(): boolean {
     }
   }
 
+  public updateHarmonySnapshot(harmonySnapshot: image.PixelMap): void {
+    if (this.swipeCallback && harmonySnapshot) {
+      this.swipeCallback.updateHarmonySnapshot(harmonySnapshot);
+    }
+  }
+
+  public updateHarmonySnapshotX(harmonySnapshotX: number): void {
+    if (this.swipeCallback) {
+      this.swipeCallback.updateHarmonySnapshotX(harmonySnapshotX);
+    }
+  }
+
+  public updateHarmonySnapshotScale(harmonySnapshotScale: number): void {
+    this.harmonySnapshotScale = harmonySnapshotScale;
+    if (this.swipeCallback) {
+      this.swipeCallback.updateHarmonySnapshotScale(harmonySnapshotScale);
+    }
+  }
+
+  public updateHarmonySnapshotRotate(harmonySnapshotRotate: number): void {
+    if (this.swipeCallback) {
+      this.swipeCallback.updateHarmonySnapshotRotate(harmonySnapshotRotate);
+    }
+  }
+
+  public updateHarmonySnapshotOpacity(harmonySnapshotOpacity: number): void {
+    if (this.swipeCallback) {
+      this.swipeCallback.updateHarmonySnapshotOpacity(harmonySnapshotOpacity);
+    }
+  }
+
+  public updateHarmonySnapshotRadius(harmonySnapshotRadius: number): void {
+    if (this.swipeCallback) {
+      this.swipeCallback.updateHarmonySnapshotRadius(harmonySnapshotRadius);
+    }
+  }
+
+  public updateHarmonySnapshotBlurScale(harmonySnapshotBlurScale: number): void {
+    if (this.swipeCallback) {
+      log.showInfo('harmonySnapshotBlurScale: ' + harmonySnapshotBlurScale);
+      this.swipeCallback.updateHarmonySnapshotBlurScale(harmonySnapshotBlurScale);
+    }
+  }
+
   public updateVmSnapshot(vmSnapshot: image.PixelMap | null): void {
     if (this.swipeCallback) {
       this.swipeCallback.updateVmSnapshot(vmSnapshot);
@@ -2381,6 +2756,13 @@ private hasLowMemoryWindow(): boolean {
       this.swipeCallback.releaseVmSnapshot();
     }
   }
+
+  public releaseHarmonySnapshot(): void {
+    if (this.swipeCallback) {
+      this.swipeCallback.releaseHarmonySnapshot();
+    }
+  }
+
   public updateVmSnapshotX(vmSnapshotX: number): void {
     if (this.swipeCallback) {
       this.swipeCallback.updateVmSnapshotX(vmSnapshotX);
@@ -2664,14 +3046,20 @@ private hasLowMemoryWindow(): boolean {
       log.showInfo('undoSwitch, still in Vm');
       DesktopSwitchController.getInstance().onRearAni(true);
     } else {
-      log.showInfo('undoSwitch');
+      log.showInfo('undoSwitch, still in Harmony');
       DesktopSwitchController.getInstance().onRearAni(false);
     }
     this.resetParameter();
   }
 
   public judgmentOnDragAcrossScreen(sessionChangeInfo: SessionChangeInfo): void {
-    log.showDebug(`Not switch, vm is ${this.vmDesktop}, targetScreenId is ${sessionChangeInfo.targetScreenId}`);
+    if (this.vmDesktop && sessionChangeInfo.targetScreenId === this.motionScreenId) {
+      log.showInfo('judgmentOnDragAcrossScreen, do switch to Harmony');
+      HiSysEventUtil.reportSwitchingDesktopEvent('DRAG_BACK_HARMONY', this.getTime());
+      this.oneTimeRightSwipeMotionSnapshot();
+    } else {
+      log.showDebug(`Not switch, vm is ${this.vmDesktop}, targetScreenId is ${sessionChangeInfo.targetScreenId}`);
+    }
   }
 
   private reportSwipeGesture(distance: number): void {
@@ -2722,6 +3110,11 @@ export interface FourFingerMotionCallback {
   getMotionScreenId(): number;
 
   /**
+   * 更新harmony桌面截图
+   */
+  updateHarmonySnapshot(harmonySnapshot: image.PixelMap | null): void;
+
+  /**
    * 更新虚拟机桌面截图
    */
   updateVmSnapshot(vmSnapshot: image.PixelMap | null): void;
@@ -2730,6 +3123,11 @@ export interface FourFingerMotionCallback {
    * 释放虚拟机桌面截图
    */
   releaseVmSnapshot(): void;
+
+  /**
+   * 释放鸿蒙桌面截图
+   */
+  releaseHarmonySnapshot(): void;
 
   /**
    * 更新切换状态
@@ -2745,6 +3143,36 @@ export interface FourFingerMotionCallback {
    * 是否为内存不足场景
    */
   updateShowMemoryRelease(show: boolean): void;
+
+  /**
+   * 更新harmony桌面截图位置
+   */
+  updateHarmonySnapshotX(harmonySnapshotX: number): void;
+
+  /**
+   * 更新harmony桌面截图大小
+   */
+  updateHarmonySnapshotScale(harmonySnapshotScale: number): void;
+
+  /**
+   * 更新harmony桌面截图旋转角度
+   */
+  updateHarmonySnapshotRotate(harmonySnapshotRotate: number): void;
+
+  /**
+   * 更新harmony不透明度
+   */
+  updateHarmonySnapshotOpacity(harmonySnapshotOpacity: number): void;
+
+  /**
+   * 更新harmony桌面截图圆角
+   */
+  updateHarmonySnapshotRadius(harmonySnapshotRadius: number): void;
+
+  /**
+   * 更新harmony桌面截图模糊
+   */
+  updateHarmonySnapshotBlurScale(harmonySnapshotBlurScale: number): void
 
   /**
    * 更新虚拟机桌面截图位置

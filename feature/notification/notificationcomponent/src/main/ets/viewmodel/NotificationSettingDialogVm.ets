@@ -260,7 +260,7 @@ export class NotificationSettingDialogVm extends NotificationBaseVm implements I
   }
 
   private isShowPintTopButton(): boolean {
-    if (this.isMetaService()) {
+    if (this.ntf?.isDeliverNotification || this.isMetaService()) {
       return false;
     }
     return true;

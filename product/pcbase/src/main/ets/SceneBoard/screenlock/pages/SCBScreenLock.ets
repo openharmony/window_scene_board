@@ -74,7 +74,7 @@ import { CustomizePromptViewModel } from '../vm/CustomizePromptViewModel';
 import {
   PromptShowType
 } from '@ohos/screenlockcomponent/src/main/ets/fingerprint/BasePromptViewModel';
-import { systemParameter } from '@kit.BasicServicesKit';
+import { commonEventManager, systemParameter } from '@kit.BasicServicesKit';
 import Constants from '../common/Constants';
 import { KeyCode } from '@ohos.multimodalInput.keyCode';
 import StyleManager from '../style/StyleManager';
@@ -104,6 +104,8 @@ import { CommonEventData } from 'commonEvent/commonEventData';
 import { tipPriorityScheduler } from '../common/TipPriority';
 import { ScreenOnOffMediator } from '@ohos/screenlockcommon';
 import { inspector } from '@kit.ArkUI'
+import { DesktopWallpaperState } from '@ohos/wallpapercomponent/src/main/ets/wallpaper/viewmodel/DesktopWallpaperState';
+import common from '@ohos.app.ability.common';
 
 const TAG = 'ScreenLock-SCBScreenLock';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.KG, TAG);
@@ -169,6 +171,8 @@ export struct SCBScreenLock {
     createComponentObserver(COMPONENT_ID_SCREEN_LOCK_HOME);
   // 用于标记启动阶段，锁屏是否可以显示
   @State private isReadyToShow: boolean = false;
+  private context = getContext(this) as common.UIAbilityContext;
+  @State pixelMap: PixelMap | null = null
 
   private onLayoutComplete:()=>void=():void=>{
     log.showInfo('onLayoutComplete');
@@ -416,7 +420,7 @@ export struct SCBScreenLock {
     });
   }
 
-  aboutToAppear() {
+  async aboutToAppear() {
     log.showInfo('aboutToAppear');
     this.listener.on('layout', this.onLayoutComplete);
     GlobalContext.getContext()?.eventHub.on('wallpaperRemoteReady', this.onWallpaperRemoteReady);
@@ -467,6 +471,62 @@ export struct SCBScreenLock {
     this.registerFoldStateChangeListener();
     HibernateEvent.registerHibernateEventCallback(this.hibernateEventCallback);
     this.checkAutoUnlockAfterReboot();
+    this.pixelMap = await new DesktopWallpaperState().getDefaultWallpaperPath(this.context, true)
+    this.subscribeCrossProcessEvent('ts.event.theme.change')
+  }
+
+  //订阅消息
+  async subscribeCrossProcessEvent(eventName: string): Promise<void> {
+    try {
+      // 创建订阅者信息
+      const subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+        events: [eventName],
+        priority: 100,
+      };
+      // 创建订阅者
+      let subscriber = await commonEventManager.createSubscriber(subscribeInfo);
+      // 订阅事件
+      await new Promise<void>(async (resolve, reject) => {
+        commonEventManager.subscribe(subscriber, async (error, data) => {
+          if (error) {
+            log.error(`subscribe failed: ${JSON.stringify(error)}`);
+            reject(error);
+          } else {
+            log.info(`eventanme: ${eventName}`);
+            this.pixelMap = await new DesktopWallpaperState().getDefaultWallpaperPath(this.context, true)
+            resolve();
+          }
+        });
+      });
+
+      log.info( `subscribe success: ${eventName}`);
+    } catch (error) {
+      log.error(`error: ${JSON.stringify(error)}`);
+    }
+  }
+
+  @Builder
+  lockWallpaperBuilder() {
+    Column() {
+      if (this.pixelMap === null) {
+        // EngineWallpaper({ screenProp: this.screenProp })
+        Image($r('app.media.wallpaperdefault'))
+          .width('100%')
+          .height('100%')
+      } else {
+        Image(this.pixelMap)
+          .draggable(false)
+          .width('100%')
+          .height('100%')
+          .objectFit(ImageFit.Cover)
+          .hoverEffect(HoverEffect.None)
+          .interpolation(ImageInterpolation.Low)
+          .width('100%')
+          .height('100%')
+      }
+    }
+    .width('100%')
+    .height('100%')
   }
 
   private hibernateEventCallback: (data: CommonEventData) => void = (data: CommonEventData): void => {
@@ -861,6 +921,7 @@ export struct SCBScreenLock {
   build() {
     if (this.viewController.isShowing()) {
       Stack({ alignContent: Alignment.Bottom }) {
+        this.lockWallpaperBuilder()
         if (this.remoteLockController.isRemoteLocked()) {
           Column()
           .backgroundColor($r('sys.color.black'))
@@ -924,6 +985,12 @@ export struct SCBScreenLock {
         } else {
           let isSuccess: boolean = focusControl.requestFocus(Constants.PC_COMPONENT_ID_PASSWORD);
           log.showInfo(`requestPwdFocus: ${isSuccess}`);
+        }
+      })
+      .onTouch((event?: TouchEvent) => {
+        if (event?.type === TouchType.Down) {
+          // 点击空白处时清除焦点
+          this.getUIContext().getFocusController().clearFocus();
         }
       })
       .onKeyEvent((event?: KeyEvent) => {

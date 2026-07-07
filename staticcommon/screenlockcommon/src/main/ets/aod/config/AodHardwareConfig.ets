@@ -19,7 +19,7 @@ import { CcmOption } from '../../constants/CommonConstants';
 import { SlVisualConfigManager } from '../../visual/SlVisualConfigManager';
 
 const TAG = 'AodHardwareConfig';
-const log: LogHelper = LogHelper.getLogHelper(LogDomain.SCB, TAG);
+const log: LogHelper = LogHelper.getLogHelper(LogDomain.AOD, TAG);
 const AOD_HARDWARE_CONFIG_KEY = 'const.aod.hardware_config';
 
 type IndexRange = [number, number];

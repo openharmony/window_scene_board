@@ -29,14 +29,14 @@ import systemParameter from '@ohos.systemParameterEnhance';
 import { curves, performanceMonitor } from '@kit.ArkUI';
 import { RecentLayoutManager } from '../../common/RecentLayoutManager';
 import { RecentStyle } from '../../RecentStyle';
-import { RecentTitleViewModel } from '../../viewmodel/RecentTitleViewModel';
+// import { RecentTitleViewModel } from '../../viewmodel/RecentTitleViewModel';
 import { RecentStartSceneCallback } from './RecentCallbacks';
 import {
-  animateExAddOnFinish,
+  // animateExAddOnFinish,
   AnimateExArgsType,
   animateExBreak,
   animateExNew,
-  animateExStart
+  // animateExStart
 } from '@ohos/windowscene/Index';
 import { quickSwitchViewModel } from '../quickswitchpanel/QuickSwitchViewModel';
 import { RecentGestureEventManager } from '../../common/RecentGestureEventManager';
@@ -45,6 +45,7 @@ import { recentStateManagerInstance } from '../../innerstate/RecentStates';
 
 const TAG = 'RecentStartScene';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.RECENT, TAG);
+const START_SCENE_FINISH_CALLBACK_DELAY = 200;
 
 export class RecentStartScene {
   private readonly panelManager: SCBScenePanelManager;
@@ -148,21 +149,50 @@ export class RecentStartScene {
     callback: RecentStartSceneCallback) {
     let animationNum = containerSession.getTransitionCount();
     animateExBreak('startSceneAnimationInSingleRow', 'playStartSceneAnimationInSingleRow');
-    animateExAddOnFinish('startSceneAnimationInSingleRow', this.unbreakableFinishCallBack, false);
-    animateExStart('startSceneAnimationInSingleRow', clickIndex, callback, containerSession, animationNum);
-    RecentTitleViewModel.playTitleDisAppearAnimation(containerSession);
+    // animateExAddOnFinish('startSceneAnimationInSingleRow', this.unbreakableFinishCallBack, false);
+    // animateExStart('startSceneAnimationInSingleRow', clickIndex, callback, containerSession, animationNum);
+    // RecentTitleViewModel.playTitleDisAppearAnimation(containerSession);
+    this.hideRecentTitleImmediately(containerSession);
+    this.finishStartSceneWithoutAnimation(() => {
+      this.startSceneAnimationEventInSingleRow(clickIndex, callback, containerSession, animationNum);
+    }, containerSession, animationNum, callback, true);
   }
 
   private playStartSceneAnimationInMultiRow(clickIndex: number, containerSession: SCBSceneContainerSession,
     callback: RecentStartSceneCallback, autoCenterColumn: number) {
-    RecentTitleViewModel.playTitleDisAppearAnimation(containerSession);
-    containerSession.needRenderBorderRadius.setBorderRadiusWithDfx(CommonConstants.getDeviceRadius(), TAG,
-      'playStartSceneAnimationInMultiRow', containerSession.getName());
+    // RecentTitleViewModel.playTitleDisAppearAnimation(containerSession);
+    this.hideRecentTitleImmediately(containerSession);
+    // containerSession.needRenderBorderRadius.setBorderRadiusWithDfx(CommonConstants.getDeviceRadius(), TAG,
+    //   'playStartSceneAnimationInMultiRow', containerSession.getName());
+    containerSession.needRenderBorderRadius.setBorderRadiusWithDfx(0, TAG, 'playStartSceneAnimationInMultiRow',
+      containerSession.getName());
     let animationNum = containerSession.getTransitionCount();
     animateExBreak('startSceneAnimationInMultiRow', 'playStartSceneAnimationInMultiRow');
-    animateExAddOnFinish('startSceneAnimationInMultiRow', this.unbreakableFinishCallBack, false);
-    animateExStart('startSceneAnimationInMultiRow', clickIndex, callback, containerSession, animationNum,
-      autoCenterColumn);
+    // animateExAddOnFinish('startSceneAnimationInMultiRow', this.unbreakableFinishCallBack, false);
+    // animateExStart('startSceneAnimationInMultiRow', clickIndex, callback, containerSession, animationNum,
+    //   autoCenterColumn);
+    this.finishStartSceneWithoutAnimation(() => {
+      this.startSceneAnimationEventInMultiRow(clickIndex, callback, containerSession, animationNum, autoCenterColumn);
+    }, containerSession, animationNum, callback);
+  }
+
+  private hideRecentTitleImmediately(containerSession: SCBSceneContainerSession): void {
+    containerSession.needRenderTitleViewAlpha.setTitleViewAlpha(0);
+    containerSession.needRenderShowRecentTitle.setShowRecentTitle(false);
+  }
+
+  private finishStartSceneWithoutAnimation(startSceneAnimationEvent: () => void,
+    containerSession: SCBSceneContainerSession, animationNum: number, callback: RecentStartSceneCallback,
+    needDeliverStartSceneEnd: boolean = false): void {
+    startSceneAnimationEvent();
+    containerSession.setNeedSyncSessionRect(true);
+    this.unbreakableFinishCallBack();
+    if (needDeliverStartSceneEnd) {
+      this.startSceneFinishInnerCallback(containerSession);
+    }
+    setTimeout(() => {
+      callback.onFinish(containerSession, animationNum);
+    }, START_SCENE_FINISH_CALLBACK_DELAY);
   }
 
   private adjustSessionParamForStartSceneAnimation(containerSession: SCBSceneContainerSession, idx: number,
@@ -229,6 +259,11 @@ export class RecentStartScene {
         containerSession.needRenderScale.setScaleYWithDfx(idx == clickIndex ? 1 : 0.85, TAG,
           'playStartSceneAnimationInSingleRow',
           containerSession.getName());
+        if (idx === clickIndex) {
+          containerSession.needRenderBorderRadius.setBorderRadiusWithDfx(0, TAG, 'playStartSceneAnimationInSingleRow',
+            containerSession.getName());
+          containerSession.needRenderBlurRadius.reset();
+        }
       }
     });
   }
@@ -247,6 +282,8 @@ export class RecentStartScene {
         containerSession.needRenderScale.setScaleYWithDfx(1, TAG, 'playStartSceneAnimationInMultiRow',
           containerSession.getName());
         containerSession.needRenderRotate.setAngleWithDfx(0, TAG, 'playStartSceneAnimationInMultiRow',
+          containerSession.getName());
+        containerSession.needRenderBorderRadius.setBorderRadiusWithDfx(0, TAG, 'playStartSceneAnimationInMultiRow',
           containerSession.getName());
         containerSession.needRenderBlurRadius.reset();
       } else {

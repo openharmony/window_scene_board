@@ -15,7 +15,10 @@
 
 import curves from '@ohos.curves';
 import { LogDomain, LogHelper } from '@ohos/basicutils';
+import { ImmersiveAodStyle, immersiveKgMgr } from '@ohos/systemuicommon';
+import { OneMirrorState } from '@ohos/systemuicommon/src/main/ets/immersivekeyguardcommon/base/anim/OneMirrorState';
 import { MirrorsScene } from '../constants/MirrorToEndConst';
+import IAodProxy from '../model/IAodProxy';
 import { ImmersiveAni } from '../model/ImmersiveAni';
 import MirrorAniConfig from '../model/MirrorAnimationConf';
 import { FinishCallback, MirrorScene } from '../service/OneMirrorService';
@@ -270,10 +273,13 @@ export class OneMirrorAnimateCallback {
 }
 
 export class ImmersiveOneMirror {
+  private aodStyle?: ImmersiveAodStyle;
+  
   private immersiveConfImpl: ImmersiveAni;
 
-  constructor(immersiveConf: MirrorAniConfig) {
-    this.immersiveConfImpl = new ImmersiveAni(immersiveConf);
+  constructor(immersiveConf: MirrorAniConfig, aodProxy: IAodProxy, aodStyle?: ImmersiveAodStyle) {
+    this.aodStyle = aodStyle;
+    this.immersiveConfImpl = new ImmersiveAni(immersiveConf, aodProxy);
   }
 
   /**
@@ -293,10 +299,17 @@ export class ImmersiveOneMirror {
     }
     // ScreenOff --> ScreenLock
     if (fromScene === MirrorScene.SCREEN_OFF && toScene === MirrorScene.SCREEN_LOCK) {
+      if (this.aodStyle) {
+        this.aodStyle.isOneMirror++;
+        this.aodStyle.isKgWallpaperScale = true;
+      }
       animateTo({
         duration: 400,
         delay: 50,
         onFinish: () => {
+          if (this.aodStyle) {
+            this.aodStyle.isOneMirror--;
+          }
           oneMirrorAnimateCallback?.finish();
         },
         curve: curves.cubicBezierCurve(0.2, 0, 0.2, 1)
@@ -307,11 +320,17 @@ export class ImmersiveOneMirror {
     }
     // ScreenOff --> Unlock
     if ((fromScene === MirrorScene.SCREEN_OFF) && toScene === MirrorScene.UNLOCK) {
+      if (this.aodStyle) {
+        this.aodStyle.isKgNtfHidden = true;
+      }
       animateTo({
         duration: 400,
         delay: 0,
         onFinish: () => {
           this.immersiveConfImpl.doWhenAODToDesktop();
+          if (this.aodStyle) {
+            this.aodStyle.isKgNtfHidden = false;
+          }
           oneMirrorAnimateCallback?.finish();
         },
         curve: curves.cubicBezierCurve(0.2, 0, 0.2, 1)
@@ -355,13 +374,22 @@ export class ImmersiveOneMirror {
   }
 
   private doImmersiveAodToUnlock(hasAnim: boolean, oneMirrorAnimateCallback?: OneMirrorAnimateCallback) {
+    if (this.aodStyle) {
+      this.aodStyle.isKgNtfHidden = true;
+    }
     if (!hasAnim) {
       this.immersiveConfImpl.doWhenAODToDesktop();
+      if (this.aodStyle) {
+        this.aodStyle.isKgNtfHidden = false;
+      }
       return;
     }
     animateTo({ duration: 400, delay: 0,
       onFinish: () => {
         this.immersiveConfImpl.doWhenAODToDesktop();
+        if (this.aodStyle) {
+          this.aodStyle.isKgNtfHidden = false;
+        }
         oneMirrorAnimateCallback?.finish();
       },
       curve: curves.cubicBezierCurve(0.2, 0, 0.2, 1)
@@ -371,12 +399,21 @@ export class ImmersiveOneMirror {
   }
 
   private immersiveScreenLockToAod(hasAnim: boolean, oneMirrorAnimateCallback?: OneMirrorAnimateCallback): void {
+    if (this.aodStyle) {
+      this.aodStyle.isOneMirror++;
+    }
     if (!hasAnim) {
       this.immersiveConfImpl?.doWhenOffScreen();
+      if (this.aodStyle) {
+        this.aodStyle.isOneMirror--;
+      }
       return;
     } else {
       animateTo({ duration: 400, delay: 0, finishCallbackType: FinishCallbackType.LOGICALLY,
         onFinish: () => {
+          if (this.aodStyle) {
+            this.aodStyle.isOneMirror--;
+          }
           oneMirrorAnimateCallback?.finish();
           log.info('immersiveConfImpl?.doWhenOffScreen onFinish');
         },
@@ -390,6 +427,9 @@ export class ImmersiveOneMirror {
     animateTo({
       duration: 0
     }, () => {
+      if (this.aodStyle) {
+        this.aodStyle.isKgWallpaperScale = false;
+      }
     });
   }
 
@@ -400,15 +440,24 @@ export class ImmersiveOneMirror {
       animateTo({
         duration: 0
       }, () => {
+        if (this.aodStyle) {
+          this.aodStyle.isKgWallpaperScale = true;
+        }
       });
       log.info('immersiveAodToScreenLock no anim');
       return;
+    }
+    if (this.aodStyle) {
+      this.aodStyle.isOneMirror++;
     }
     animateTo({
       duration: 400,
       delay: 0,
       finishCallbackType: FinishCallbackType.LOGICALLY,
       onFinish: () => {
+        if (this.aodStyle) {
+          this.aodStyle.isOneMirror--;
+        }
         oneMirrorAnimateCallback?.finish();
         log.info('immersiveAodToScreenLock onFinish');
       },
@@ -431,6 +480,9 @@ export class ImmersiveOneMirror {
     animateTo({
       duration: 0
     }, () => {
+      if (this.aodStyle) {
+        this.aodStyle.isKgWallpaperScale = true;
+      }
     });
   }
 }

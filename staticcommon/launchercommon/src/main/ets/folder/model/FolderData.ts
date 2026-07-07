@@ -18,6 +18,7 @@ import { FolderState, FolderStateManager } from './FolderStateManager';
 import {
   CommonConstants,
   ContractedFolderCommonViewModel,
+  DeliverUtil,
   DockItemInfo,
   FolderLayoutCacheManager,
   FolderManager,
@@ -140,10 +141,12 @@ export class FolderData {
       want = folder;
     }
     if (want && want.layoutInfo) {
+      DeliverUtil.addAddIcon(want, 'getItemsInFolder');
       return want.layoutInfo.flat();
     }
     let wantInDock: GridLayoutItemInfo[][] = this.getFolderDataAppListInDock(folder);
     if (wantInDock) {
+      DeliverUtil.addAddIconToLayoutInfo(wantInDock, 'getItemsInFolder dock', folder.folderId);
       return wantInDock.flat();
     }
     return [];

@@ -197,6 +197,13 @@
             }
         },
         {
+            "name":"voice_translate_name",
+            "value":"voice 번역",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
             "name":"control_center_edit_panel_tips_max_limit",
             "value":"최대 스위치 수가 추가되었습니다.",
             "attr":{
@@ -208,6 +215,13 @@
             "value":"밝기 표시줄, 두 번 탭하고 길게 누른 상태에서 위나 아래로 스와이프하여 조정",
             "attr":{
                 "priority":"translate"
+            }
+        },
+        {
+            "name":"cloud_lai",
+            "value":"펭라이 모드",
+            "attr":{
+                "priority":"LT"
             }
         },
         {

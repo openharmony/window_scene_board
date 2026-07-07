@@ -23,7 +23,7 @@ import {
   FolderManager,
   GridLayoutItemInfo
 } from '@ohos/launchercommon/src/main/ets/TsIndex';
-// import apsManager from '@hms.graphic.apsManager';
+// import apsManager from '@ohos.graphic.apsManager';
 
 const TAG: string = 'OpenCloseActionLifeCycleStatusManager';
 const log: Logger = Logger.getLogHelper(LogDomain.HOME);

@@ -77,6 +77,7 @@ export class SwiperLayoutFormEvent implements FormItemEventInterface {
   protected formItemUIConfig: FormItemData = new FormItemData();
   protected shortcutFormSize: number = 0;
   protected shortcutFormRadius: number = 0;
+  private canBeDragged: boolean = false;
 
   constructor(
     formItem: CardItemInfo,
@@ -197,6 +198,10 @@ export class SwiperLayoutFormEvent implements FormItemEventInterface {
       // 传-1可以绕过底座老接口走新接口（老接口有问题）、新接口会读取dragPreviewOptions中设置的值
       extraInfo: new DragExtraInfo(DragDataType.FORM).setRadius(-1).toString(),
     };
+    if (!this.canBeDragged) {
+      return dragItemInfo;
+    }
+    this.canBeDragged = false;
     let formItem: CardItemInfo = this.copyCard();
     let scale: number = FormCenterViewData.getInstance().getFormDimensionScale(formItem.cardDimension);
     let formWidth: number = FormCenterViewModel.getInstance().getFormDisplaySize(formItem.cardDimension, true);
@@ -278,12 +283,13 @@ export class SwiperLayoutFormEvent implements FormItemEventInterface {
   }
 
   public onCardLoad(cardId: string): void {
+    this.canBeDragged = true;
     if (this.isCurrentIndex(this.index)) {
       let bundleName: string = FormCenterViewModel.getInstance().isCurrentSuggestion ?
         FormStyleConstants.FORM_CENTER_DEFAULT_ITEM : this.formItem.bundleName;
-      setTimeout(() => {
-        AppStorage.setOrCreate('formManagerId', FormCenterFormCommonUtil.getFormItemId(bundleName, this.index));
-      }, 50);
+      // setTimeout(() => {
+      AppStorage.setOrCreate('formManagerId', FormCenterFormCommonUtil.getFormItemId(bundleName, this.index));
+      // }, 50);
     }
   }
 

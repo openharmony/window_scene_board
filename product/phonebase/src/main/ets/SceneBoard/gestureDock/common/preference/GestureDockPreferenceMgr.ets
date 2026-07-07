@@ -264,8 +264,11 @@ export class GestureDockPreferenceMgr {
       return;
     }
     GestureDockViewModel.getInstance().getViewEvent()?.resetPositionWithoutAnimation();
+    let adapterBundleName = SceneInfoAdapterUtil.getAdapterBundleName(bundleName);
     let appList = AppModel.getInstance().getAppList();
-    let appItem = appList.find((item) => item.appIndex === appIndex && item.abilityName === abilityName);
+    let appItem = appList.find((item) =>
+    item.bundleName === adapterBundleName && item.appIndex === appIndex &&
+      item.abilityName === abilityName);
     if (appItem === undefined) {
       appItem = GestureDockDataController.getInstance().getAppItemInfo(bundleName, appIndex, abilityName);
     }
@@ -282,7 +285,8 @@ export class GestureDockPreferenceMgr {
       recentApps = [];
       recentApps.push(recentTaskInfo);
     } else {
-      let index = recentApps.findIndex((item) => item.appIndex === appIndex && item.abilityName === abilityName);
+      let index = recentApps.findIndex((item) => item.bundleName === adapterBundleName &&
+        item.appIndex === appIndex && item.abilityName === abilityName);
       log.showInfo(`Index is ${index}`);
       switch (index) {
         case -1:

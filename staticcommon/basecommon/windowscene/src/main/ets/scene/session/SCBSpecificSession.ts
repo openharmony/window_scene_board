@@ -1,5 +1,5 @@
  /*
- * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -485,6 +485,9 @@ export class SCBSpecificSession {
   private registerFullscreenChangeCallback(): void {
     this.session.on('layoutFullScreenChange', (isLayoutFullScreen: boolean) => {
       this.layoutFullScreen = isLayoutFullScreen;
+      if (this.isSubWindow() || this.isDialogWindow()) {
+        this.onUpdateMaximizeRect();
+      }
     });
 
     this.session.on('titleAndDockHoverShowChange', (isTitleHoverShowEnabled: boolean, isDockHoverShowEnabled: boolean) => {
@@ -541,7 +544,7 @@ export class SCBSpecificSession {
       };
     }
     return {
-      width: mainSession.isHideShadow ? 0 : px2vp(mainSession.strokeConfig.outlineWidth),
+      width: mainSession.isHideShadow ? 0 : mainSession.strokeConfig.outlineWidth,
       color: mainSession.isHideShadow ? '#00000000' : mainSession.strokeConfig.outlineColor,
       radius: this.specialBoarderRadius
     };

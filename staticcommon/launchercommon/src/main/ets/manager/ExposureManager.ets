@@ -448,7 +448,7 @@ export class ExposureManager {
   /**
    * 处理折叠屏
    * @param isFoldStatus
-   * @param isUltraScreen
+   * @param isThreeFold
    * @returns
    */
   public async handleFolderChange(isFoldStatus: boolean): Promise<void> {

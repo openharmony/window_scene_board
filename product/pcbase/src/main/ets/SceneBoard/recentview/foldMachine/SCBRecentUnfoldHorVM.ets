@@ -22,7 +22,7 @@ const TAG = 'Recent-SCBRecentUnfoldHorVM';
 const log = LogHelper.getLogHelper(LogDomain.RECENT, TAG);
 
 /**
- * 大屏幕机横向展开态
+ * 折叠机横向展开态
  */
 export class SCBRecentUnfoldHorVM extends SCBRecentFoldMachineVM {
 

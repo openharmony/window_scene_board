@@ -275,11 +275,16 @@ export class StartAppOneMirrorAnimation {
     containerSession.needRenderAlpha.setNeedRenderAlphaWithDfx(0, TAG, 'init', sessionName);
     containerSession.needRenderScale.setScaleXWithDfx(1, TAG, 'init', sessionName);
     containerSession.needRenderScale.setScaleYWithDfx(1, TAG, 'init', sessionName);
-    containerSession.needRenderBorderRadius.setBorderRadius(this.prepareParams!.cardRadius);
-    containerSession.needRenderClip.setClipWidth(vp2px(cardRect.width));
-    containerSession.needRenderClip.setClipHeight(vp2px(cardRect.height));
-    containerSession.needRenderTranslate.setTranslateXWithDfx(cardRect.x, TAG, 'init', sessionName);
-    containerSession.needRenderTranslate.setTranslateYWithDfx(cardRect.y, TAG, 'init', sessionName);
+    // containerSession.needRenderBorderRadius.setBorderRadius(this.prepareParams!.cardRadius);
+    containerSession.needRenderBorderRadius.setBorderRadius(0);
+    // containerSession.needRenderClip.setClipWidth(vp2px(cardRect.width));
+    // containerSession.needRenderClip.setClipHeight(vp2px(cardRect.height));
+    // containerSession.needRenderTranslate.setTranslateXWithDfx(cardRect.x, TAG, 'init', sessionName);
+    // containerSession.needRenderTranslate.setTranslateYWithDfx(cardRect.y, TAG, 'init', sessionName);
+    containerSession.needRenderClip.setClipWidth(containerSession.screenProperty.width);
+    containerSession.needRenderClip.setClipHeight(containerSession.screenProperty.height);
+    containerSession.needRenderTranslate.setTranslateXWithDfx(0, TAG, 'init', sessionName);
+    containerSession.needRenderTranslate.setTranslateYWithDfx(0, TAG, 'init', sessionName);
   }
 
   /**
@@ -314,27 +319,38 @@ export class StartAppOneMirrorAnimation {
     const sessionName = containerSession.getName();
     const panelManager = overlayTransitionParam.scenePanelManager;
 
-    return this.animation.executeAnimation([
-      {
-        duration: 50,
-        curve: this.curve,
-        event: () => {
-          containerSession.needRenderAlpha.setNeedRenderAlphaWithDfx(1, TAG, 'final', sessionName);
-        },
-      },
-      {
-        duration: 400,
-        curve: this.curve,
-        event: () => {
-          containerSession.needRenderBorderRadius.setBorderRadius(DeviceHelper.getDeviceRadius());
-          containerSession.needRenderClip.setClipWidth(screenProperty.width);
-          containerSession.needRenderClip.setClipHeight(screenProperty.height);
-          containerSession.needRenderTranslate.setTranslateXWithDfx(0, TAG, 'final', sessionName);
-          containerSession.needRenderTranslate.setTranslateYWithDfx(0, TAG, 'final', sessionName);
-          panelManager.onBlurTransitionActive(1.0, TAG);
-        }
-      },
-    ])
+    return Promise.resolve().then(() => {
+      containerSession.needRenderAlpha.setNeedRenderAlphaWithDfx(1, TAG, 'final', sessionName);
+      containerSession.needRenderBorderRadius.setBorderRadius(0);
+      containerSession.needRenderClip.setClipWidth(screenProperty.width);
+      containerSession.needRenderClip.setClipHeight(screenProperty.height);
+      containerSession.needRenderTranslate.setTranslateXWithDfx(0, TAG, 'final', sessionName);
+      containerSession.needRenderTranslate.setTranslateYWithDfx(0, TAG, 'final', sessionName);
+      containerSession.needRenderScale.setScaleXWithDfx(1, TAG, 'final', sessionName);
+      containerSession.needRenderScale.setScaleYWithDfx(1, TAG, 'final', sessionName);
+      panelManager.onBlurTransitionActive(1.0, TAG);
+    });
+    // return this.animation.executeAnimation([
+    //   {
+    //     duration: 50,
+    //     curve: this.curve,
+    //     event: () => {
+    //       containerSession.needRenderAlpha.setNeedRenderAlphaWithDfx(1, TAG, 'final', sessionName);
+    //     },
+    //   },
+    //   {
+    //     duration: 400,
+    //     curve: this.curve,
+    //     event: () => {
+    //       containerSession.needRenderBorderRadius.setBorderRadius(0);
+    //       containerSession.needRenderClip.setClipWidth(screenProperty.width);
+    //       containerSession.needRenderClip.setClipHeight(screenProperty.height);
+    //       containerSession.needRenderTranslate.setTranslateXWithDfx(0, TAG, 'final', sessionName);
+    //       containerSession.needRenderTranslate.setTranslateYWithDfx(0, TAG, 'final', sessionName);
+    //       panelManager.onBlurTransitionActive(1.0, TAG);
+    //     }
+    //   },
+    // ])
   }
 
   /**
@@ -423,50 +439,21 @@ export class StartAppOneMirrorAnimation {
     const scale = animationParams.width / px2vp(screenProperty.width);
 
     // 初始化遮罩
-    overlayCardState.overlayCardBgAlpha = 0.7;
+    overlayCardState.overlayCardBgAlpha = 0;
     // 初始化面板
-    containerSession.needRenderClip.setClipWidth(panelWidth);
-    containerSession.needRenderClip.setClipHeight(panelHeight);
-    containerSession.needRenderBorderRadius.setBorderRadius(radius);
-    containerSession.needRenderTranslate.setTranslateXWithDfx(tranX, TAG, 'init', sessionName);
-    containerSession.needRenderTranslate.setTranslateYWithDfx(tranY, TAG, 'init', sessionName);
-    containerSession.needRenderScale.setScaleXWithDfx(scale, TAG, 'init', sessionName);
-    containerSession.needRenderScale.setScaleYWithDfx(scale, TAG, 'init', sessionName);
-
-    return animation.executeAnimation([
-      {
-        duration: 80,
-        delay: 50,
-        curve: Curve.Linear,
-        event: () => {
-          containerSession.needRenderAlpha.setNeedRenderAlphaWithDfx(1, TAG, 'final', sessionName);
-        },
-      },
-      {
-        curve: animationParams.curveX,
-        event: () => {
-          containerSession.needRenderTranslate.setTranslateXWithDfx(0, TAG, 'final', sessionName);
-          containerSession.needRenderScale.setScaleXWithDfx(1, TAG, 'final', sessionName);
-          containerSession.needRenderBorderRadius.setBorderRadius(45);
-          overlayCardState.overlayCardBgAlpha = 0;
-          panelManager.onBlurTransitionActive(1.0, TAG);
-        }
-      },
-      {
-        curve: animationParams.curveY,
-        event: () => {
-          containerSession.needRenderTranslate.setTranslateYWithDfx(0, TAG, 'final', sessionName);
-          containerSession.needRenderScale.setScaleYWithDfx(1, TAG, 'final', sessionName);
-          containerSession.needRenderClip.setClipHeight(screenProperty.height);
-        }
-      },
-      {
-        curve: animationParams.curveX,
-        delay: 167,
-        event: () => {
-          containerSession.needRenderBorderRadius.setBorderRadius(DeviceHelper.getDeviceRadius());
-        }
-      },
-    ]);
+    containerSession.needRenderClip.setClipWidth(screenProperty.width);
+    containerSession.needRenderClip.setClipHeight(screenProperty.height);
+    containerSession.needRenderBorderRadius.setBorderRadius(0);
+    containerSession.needRenderTranslate.setTranslateXWithDfx(0, TAG, 'init', sessionName);
+    containerSession.needRenderTranslate.setTranslateYWithDfx(0, TAG, 'init', sessionName);
+    containerSession.needRenderScale.setScaleXWithDfx(1, TAG, 'init', sessionName);
+    containerSession.needRenderScale.setScaleYWithDfx(1, TAG, 'init', sessionName);
+    containerSession.needRenderAlpha.setNeedRenderAlphaWithDfx(1, TAG, 'final', sessionName);
+    panelManager.onBlurTransitionActive(1.0, TAG);
+    return Promise.resolve();
+    // const panelWidth = screenProperty.width;
+    // const panelHeight = screenProperty.width * animationParams.height / animationParams.width;
+    // ...
+    // return animation.executeAnimation([...]);
   }
 }

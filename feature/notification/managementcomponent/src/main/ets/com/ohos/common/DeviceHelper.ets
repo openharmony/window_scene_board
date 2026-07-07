@@ -52,11 +52,11 @@ export const enum FoldPhoneTypeValue {
   /**
    * super fold
    */
-  EXPANDING_BIG_SCREEN = 5,
+  EXPANDING_SUPER_FOLD = 5,
   /**
-   * 超大屏设备
+   * 三折设备
    */
-  EXPANDING_ULTRA_SCREEN_PRODUCT = 6,
+  EXPANDING_THREE_FOLD_PRODUCT = 6,
 }
 
 /**
@@ -249,7 +249,7 @@ export class DeviceHelper {
   }
 
   /**
-   * 是否为大屏幕机产品展开态OR半展开态（非小内折）
+   * 是否为折叠机产品展开态OR半展开态（非小内折）
    *
    * @returns true是，false不是
    */
@@ -313,14 +313,14 @@ export class DeviceHelper {
    * @returns true:XT产品 false:非XT产品
    */
   static isXTProductType(): boolean {
-    return DeviceHelper.getFoldProductType() === FoldPhoneTypeValue.EXPANDING_ULTRA_SCREEN_PRODUCT;
+    return DeviceHelper.getFoldProductType() === FoldPhoneTypeValue.EXPANDING_THREE_FOLD_PRODUCT;
   }
 
   /**
    * 是否hopper
    * @returns true:是hopper false:非hopper
    */
-  static isBigScreenDevice(): boolean {
-    return DeviceHelper.getFoldProductType() === FoldPhoneTypeValue.EXPANDING_BIG_SCREEN;
+  static isSuperFoldDevice(): boolean {
+    return DeviceHelper.getFoldProductType() === FoldPhoneTypeValue.EXPANDING_SUPER_FOLD;
   }
 }

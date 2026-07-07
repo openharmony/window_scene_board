@@ -506,7 +506,9 @@ export struct NtfSettingsDialog {
    * @returns true显示
    */
   private isTopNtfShow(): boolean {
-    return !this.isMetaService();
+    const isDeliverApplication = this.ntfEntry?.isDeliverNotification ?? false;
+    log.showInfo(`Deliver flag is: ${isDeliverApplication}`);
+    return !isDeliverApplication && !this.isMetaService();
   }
 
   private getClickRegion(): ClickRegion {
@@ -544,6 +546,9 @@ export struct NtfSettingsDialog {
             ClickNotificationMaintenance.updateErrorCode(ClickNotificationErrorCode.SET_PIN_TOP_FAIL);
           }
         });
+        if (this.ntfEntry?.isDeliverNotification) {
+          ntfMgr.sendNotificationRemoveEvent(this.ntfEntry, true);
+        }
         // 关闭通知
         ntfMgr.enablePkgNotification(this.ntfEntry?.creatorBundleName, this.ntfEntry?.creatorUid, false);
       }

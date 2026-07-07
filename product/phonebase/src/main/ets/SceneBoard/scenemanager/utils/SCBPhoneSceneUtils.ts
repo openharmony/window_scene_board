@@ -50,6 +50,7 @@ export class SCBPhoneSceneUtils {
     let phoneSceneList = [
       { bundleName: 'com.ohos.callui', moduleName: '', abilityName: 'com.ohos.callui.MainAbility', appIndex: 0 },
       { bundleName: 'com.ohos.meetimeservice', moduleName: '', abilityName: 'CallUIKitAbility', appIndex: 0 },
+      { bundleName: 'com.ohos.vassistant', moduleName: '', abilityName: 'VisionResultAbility', appIndex: 0 }
     ];
 
     for (let item of phoneSceneList) {

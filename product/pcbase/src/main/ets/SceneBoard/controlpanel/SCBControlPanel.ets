@@ -99,7 +99,7 @@ export struct SCBControlPanel {
   @Provide microphoneDialogIsOpen: boolean = false;
   @StorageLink('controlCenterFontScale') controlCenterFontScale: number = 1;
   @StorageLink('needReleaseToggleIcon') needReleaseToggleIcon: boolean = false;
-  @Provide hwCastDialogIsOpen: boolean = false;
+  @Provide castDialogIsOpen: boolean = false;
   @Provide superDeviceDialogIsOpen: boolean = false;
   private mTimeMeter: number = 0;
   private viewCallback: ViewCallback = {

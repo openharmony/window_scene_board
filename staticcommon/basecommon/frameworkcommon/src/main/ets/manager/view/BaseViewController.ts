@@ -146,8 +146,10 @@ export class BaseViewController implements ViewController {
   updateRect(area: ViewArea): void {
     let systemSceneSession = SCBSceneSessionManager.getInstance().getSystemSceneSessionWithId(this.persistentId, this.screenId);
     if (systemSceneSession) {
-      log.showInfo(`updateRect: ${this.readableViewType(this.viewType)},left:%{public}d,top:%{public}d,width:%{public}d,height:%{public}d`, area.left, area.top, area.width, area.height);
+      log.showInfo(`updateRect: ${this.readableViewType(this.viewType)},area:${JSON.stringify(area)}`);
       systemSceneSession.updateRect(area.left, area.top, area.width, area.height);
+    } else {
+      log.showInfo(`updateRect faild,systemSceneSession is null ${this.persistentId},${this.screenId}`);
     }
   }
 

@@ -1,0 +1,886 @@
+{
+    "string":[
+        {
+            "name":"face_not_recognized",
+            "value":"Visage non reconnu. Veuillez tapoter deux fois pour réessayer.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"two_click_accessible",
+            "value":"Veuillez toucher deux fois pour activer",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"camera_muted",
+            "value":"La reconnaissance faciale n'est pas disponible car l'appareil photo est désactivé.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"flash_light_accessible",
+            "value":"Lampe-torche",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cover_normal_charging",
+            "value":"En charge, %s chargés",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ic_tools_two_click_back_accessible",
+            "value":"Veuillez toucher deux fois permet de fermer le panneau d'outils",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ic_tools_timer_accessible",
+            "value":"Minuteur",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cover_turbo_charging",
+            "value":"Turbo-charge en cours (%s)",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ic_tools_back_around_accessible",
+            "value":"Fermer",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ic_camera_button_accessible",
+            "value":"Appareil photo",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_card_psd_confirm_accessible",
+            "value":"Confirmer",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pad_notes_accessible",
+            "value":"Bloc-notes",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_locking_popup",
+            "value":"Déverrouillage de la carte SIM en cours.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"face_not_recognized_in_input_pwd",
+            "value":"Le visage n'a pas été reconnu. Veuillez toucher ici pour réessayer.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"emergency_call_accessible",
+            "value":"Appel d'urgence",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"out_sensor_fp_dirty_try_again",
+            "value":"Empreinte digitale non reconnue.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"flash_light_open_accessible",
+            "value":"Activé",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_remember_tips",
+            "value":"Mémoriser le code PIN",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_unlock_num_keyboard_cancel",
+            "value":"Annuler",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_back_accessible",
+            "value":"Retour",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"flash_light_close_accessible",
+            "value":"Désactivé",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"fp_hold_finger",
+            "value":"Veuillez maintenir votre doigt un peu plus longtemps",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"fp_incorrect_fp_try_again",
+            "value":"Veuillez vous assurer que le bout de votre doigt couvre entièrement le capteur, et essayez de le maintenir plus longtemps.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_remember_popup",
+            "value":"Le code PIN est automatiquement saisi à chaque redémarrage de l'appareil ou réinsertion de la carte SIM.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cover_fully_charged",
+            "value":"Complètement chargé",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ic_tools_memorandum_accessible",
+            "value":"Bloc-notes",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"del_pwd_accessible",
+            "value":"Supprimer",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cover_quick_charging",
+            "value":"Charge rapide en cours (%s)",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"face_unlock_success",
+            "value":"Faire glisser vers le haut pour ouvrir",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"edit_theme",
+            "value":"Thèmes",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ic_tools_clock_accessible",
+            "value":"Horloge",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ic_tools_accessible",
+            "value":"Outils",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"show_date",
+            "value":"Affichage de la date",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_unlock_num_keyboard_cancel_accessible",
+            "value":"Annuler",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ic_tools_vassistant_accessible",
+            "value":"Scanner",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ic_tools_calculator_accessible",
+            "value":"Calculatrice",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"emergency_call",
+            "value":"Appel d'urgence",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"custom_mix_psd_ok_accessible",
+            "value":"Confirmer",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"reset_pin_tip",
+            "value":"Vous avez récemment défini un nouveau mot de passe. Si vous l'avez oublié, vous pouvez le réinitialiser en saisissant votre ancien code/mot de passe.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"reset_psd_tip",
+            "value":"Vous avez récemment défini un nouveau code. Si vous l'avez oublié, vous pouvez le réinitialiser en saisissant votre code/mot de passe précédent.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"reset_pin",
+            "value":"Réinitialiser",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"card_edit",
+            "value":"Personnalisé",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"edit_wallpaper",
+            "value":"Fonds d'écran",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"face_unlock_ready_in_input_pwd",
+            "value":"Veuillez utiliser la reconnaissance faciale ou saisir le mot de passe",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"lock_icon_tip_with_fingerprint",
+            "value":"Veuillez utiliser l'empreinte digitale ou faire glisser du bas vers le haut pour déverrouiller",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_to_screen_lock",
+            "value":"Ajouter à l'écran verrouillé",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"press_fingerprint_sensor_area",
+            "value":"Appuyer pour continuer",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"face_locked_in_input_pwd",
+            "value":"Reconnaissance faciale désactivée. Veuillez saisir votre mot de passe.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_enter_psd",
+            "value":"Veuillez saisir le code PIN",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_incorrect_psd_try_again_mix",
+            "value":"Le code mot de passe est incorrect. Veuillez réessayer.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cover_super_charging",
+            "value":"SuperCharging %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"fp_disable_enter_psd",
+            "value":"Reconnaissance d'empreinte digitale désactivée. Veuillez saisir votre code PIN.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_unlock_unavailable_tips",
+            "value":"Cette carte SIM ne peut pas être utilisée. Veuillez contacter votre opérateur pour obtenir de l'aide.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"show_lunar_date",
+            "value":"Afficher la date lunaire",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"confirm",
+            "value":"OK",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_confirm_tips",
+            "value":"OK",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"toast_prompt_face_unlock_success",
+            "value":"Déverrouillé avec reconnaissance faciale.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_unlock_puk_tips",
+            "value":"Le code PUK est différent du code PIN de votre carte SIM. Vous pouvez l'obtenir auprès de votre opérateur.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"fp_try_again_psd_after_time",
+            "value":"Empreinte digitale désactivée. Veuillez essayer de saisir votre mot de passe dans %s.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"face_recognition_try_again_after_time",
+            "value":"Reconnaissance faciale désactivée. Veuillez réessayer dans %s.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"face_locked_in_input_pin",
+            "value":"Reconnaissance faciale désactivée. Veuillez saisir votre code PIN.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_unlock_pin_format_tips",
+            "value":"Veuillez saisir un code PIN de %1$s à %2$s chiffres",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_unlock_reset_pin_confirm_tips",
+            "value":"Confirmer le code PIN",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"emergency_mode_title",
+            "value":"Mode d'économie d'énergie",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_incorrect_will_locked",
+            "value":"Le code PIN est incorrect. Après %1$s, votre appareil sera verrouillé pendant %2$s.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"fp_try_again_after_time_pc",
+            "value":"Empreinte digitale désactivée. Veuillez réessayer dans %s ou utilisez une autre méthode de déverrouillage.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"face_locked_in_input_pwd_when_finger_enable",
+            "value":"La reconnaissance faciale a été désactivée. Veuillez utiliser votre empreinte digitale ou votre code PIN pour déverrouiller.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_unlock_puk_format_tips",
+            "value":"Veuillez saisir le code PUK à %1$s chiffres",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_unlock_pin_exhausting_tips",
+            "value":"Le code PIN de la carte SIM est incorrect. Veuillez saisir le code PUK pour déverrouiller votre appareil.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"face_unlock_verifying",
+            "value":"Vérification en cours.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_delete",
+            "value":"Supprimer",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_incorrect_psd_try_again",
+            "value":"Le code PIN est incorrect. Veuillez réessayer.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pattern_psd_error",
+            "value":"Schéma incorrect",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"face_unlock_ready_in_input_pin",
+            "value":"Veuillez utiliser la reconnaissance faciale ou saisir le code PIN",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"input_pwd_tip_when_face_and_finger_locked",
+            "value":"Reconnaissance faciale et d'empreinte digitale désactivées. Veuillez saisir votre code PIN.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"fingerprint_incorrect_will_locked",
+            "value":"Empreinte digitale non reconnue. Votre appareil sera verrouillé pendant %2$s après %1$s.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_unlock_reset_pin_tips",
+            "value":"Saisir le nouveau code PIN",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pattern_psd_enter_psd",
+            "value":"Dessinez votre schéma",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"edit_after_unlock",
+            "value":"Déverrouiller pour modifier l'écran verrouillé",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_other_users",
+            "value":"Autres comptes utilisateurs",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"fp_try_again_after_time",
+            "value":"Empreinte digitale suspendue. Veuillez réessayer dans %s.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"face_unlock_ready",
+            "value":"Veuillez toucher deux fois pour la reconnaissance faciale",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_unlock_pin_not_match",
+            "value":"Les codes PIN ne correspondent pas",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_unlock_solt_flag",
+            "value":"SIM %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_form_to_screen_lock_editor_max",
+            "value":"Espace insuffisant.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"edit_aod",
+            "value":"Affichage permanent",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_enter_psd_mix",
+            "value":"Veuillez saisir le mot de passe",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"fp_try_again_pin_after_time",
+            "value":"Empreinte digitale désactivée. Veuillez essayer de saisir votre code PIN dans %s.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"fp_disable_forever",
+            "value":"Reconnaissance d'empreinte digitale désactivée. Veuillez saisir votre code PIN.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cancel",
+            "value":"Annuler",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_try_again_after_time1",
+            "value":"Veuillez réessayer dans %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"lock_icon_tip",
+            "value":"Veuillez faire glisser du bas vers le haut pour déverrouiller",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"fingerprint_antitouch_notification_camera",
+            "value":"La fonctionnalité Prévention contacts non voulus est activée. Ne couvrez pas l'appareil photo.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keypad_password_six",
+            "value":"six",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_area_accessible",
+            "value":"Zone de saisie du mot de passe",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keyboard_delete_remainder",
+            "value":"Supprimé, %1$s, %2$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keypad_password_three",
+            "value":"trois",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ic_tools_unavailable_accessible",
+            "value":"%1$s, non disponible",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keypad_password_nine",
+            "value":"neuf",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keypad_password_five",
+            "value":"cinq",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keypad_password_zero",
+            "value":"zéro",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"exit_outscreen_theme_selection_accessible",
+            "value":"Quitter la sélection du thème de l'écran de couverture",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screen_lock_edit_accessible",
+            "value":"Écran de modification de l'écran verrouillé",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Double_click_and_hold_accessibility",
+            "value":"Toucher deux fois et maintenir pour ouvrir le menu des options",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keypad_password_input_success",
+            "value":"Point",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keypad_password_two",
+            "value":"deux",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_pin_area_accessible",
+            "value":"Zone de saisie du code de la carte SIM",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keypad_password_seven",
+            "value":"sept",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keypad_password_four",
+            "value":"quatre",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keypad_password_one",
+            "value":"un",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ic_tools_opened",
+            "value":"Allumée",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keyboard_simple_delete_remainder_accessible",
+            "value":"Supprimé.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"exit_edit_mode_accessible",
+            "value":"Mode de modification quitté",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keypad_password_eight",
+            "value":"huit",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"enter_outscreen_theme_selection_accessible",
+            "value":"Ouverture du mode de sélection du thème de l'écran de couverture",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"finger_print_area_accessible",
+            "value":"Zone du capteur d'empreinte digitale",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"custom_mix_psd_area_accessible",
+            "value":"Zone de saisie du mot de passe. Toucher deux fois pour saisir du texte.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ic_tools_widgets_two_click_accessible",
+            "value":"%1$s, toucher deux fois pour activer",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"start_drawing_pattern",
+            "value":"Commencer à dessiner le schéma",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pattern_area",
+            "value":"Zone de dessin du schéma",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ic_tools_disable_battery_low",
+            "value":"Batterie trop faible pour allumer la lampe-torche.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pattern_psd_drawing_completed",
+            "value":"Schéma dessiné",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"enter_edit_mode_accessible",
+            "value":"Mode de modification ouvert",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"exit_clock_edit_mode_accessible",
+            "value":"Quitter le mode de modification de l'horloge.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"enter_clock_edit_mode_accessible",
+            "value":"Entrer dans le mode de modification de l'horloge",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"esim_unlock_slot_flag",
+            "value":"eSIM %s",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

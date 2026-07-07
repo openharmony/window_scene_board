@@ -56,6 +56,7 @@ import {
   RecentBundleMissionInfo,
   launcherAbilityManager,
   LayoutViewModel,
+  DeliverUtil,
   SmartDockLayoutConfig
 } from '@ohos/launchercommon';
 import SmartDockConstants from '../../../../main/ets/default/common/constants/SmartDockConstants';
@@ -1604,11 +1605,16 @@ export default function SmartDockModelTest() {
       try{
         let mockFunc: Function = mocker.mockFunc(launcherAbilityManager, launcherAbilityManager.getAppInfoByBundleName);
         when(mockFunc)(ArgumentMatchers.any).afterReturn(undefined);
+        let mockFunc2: Function = mocker.mockFunc(DeliverUtil, DeliverUtil.isSupportDeliver);
+        when(mockFunc2)(ArgumentMatchers.any).afterReturn(true);
+        let mockFunc3: Function = mocker.mockFunc(DeliverUtil, DeliverUtil.isContainerItem);
+        when(mockFunc3)(ArgumentMatchers.any).afterReturn(true);
         await (instance as object)['createDockFolderInfo'](dockItemInfo, appItemInfo, index);
         expect( appItemInfo.appIconId).assertEqual(234881117);
       } catch (e) {
       }
       mocker.clear(launcherAbilityManager);
+      mocker.clear(DeliverUtil);
       mocker.clearAll();
     });
 
@@ -2527,6 +2533,14 @@ export default function SmartDockModelTest() {
       item.layoutInfo = [[gridItem]];
       let residentList: DockItemInfo[] = [];
       let mocker: MockKit = new MockKit();
+      try{
+        let mockFunc: Function = mocker.mockFunc(DeliverUtil, DeliverUtil.checkFolderIsOneMoreApps);
+        when(mockFunc)(ArgumentMatchers.any).afterReturn(true);
+        (instance as object)['dealDockFolder'](item, residentList);
+        expect(residentList.length).assertLargerOrEqual(0);
+      } catch (e) {
+      }
+      mocker.clear(DeliverUtil);
       mocker.clearAll();
     })
 
@@ -3154,6 +3168,9 @@ export default function SmartDockModelTest() {
     })
 
     it('test_fillRecentMissionInfoList_04', 0, (): void => {
+      const GUIDE_BUNDLE_NAME = 'com.ohos.startupguide';
+      const VASSISTANT_BUNDLE_NAME = 'com.ohos.vassistant';
+      const VOICE_PC_ABILITY_NAME = 'VoicePcAbility';
       let instance: SmartDockModel = SmartDockModel.getInstance();
       let mocker: MockKit = new MockKit();
       try {
@@ -3181,6 +3198,7 @@ export default function SmartDockModelTest() {
         let containerSession4: SCBSceneContainerSession = new SCBSceneContainerSession(sceneSession4, screenProperty);
         containerSession4.secondarySession = sceneSession;
 
+        let sceneInfo5: SCBSceneInfo = new SCBSceneInfo(VASSISTANT_BUNDLE_NAME, 'exampleModule', VOICE_PC_ABILITY_NAME);
         let sceneSession5: SCBSceneSession =
           new SCBSceneSession(sceneSessionManager.requestSceneSession(sceneInfo5), sceneInfo5);
         let containerSession5: SCBSceneContainerSession = new SCBSceneContainerSession(sceneSession5, screenProperty);

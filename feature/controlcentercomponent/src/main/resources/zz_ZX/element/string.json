@@ -217,12 +217,20 @@
             "value":"[TS_1081107]_Tablet mode"
         },
         {
+            "name":"voice_translate_name",
+            "value":"[TS_1084910]_Voice Translate"
+        },
+        {
             "name":"control_center_edit_panel_tips_max_limit",
             "value":"[TS_1077916]_Max number of switches added."
         },
         {
             "name":"cc_accessibility_str_change_vertical_brightness_desc",
             "value":"[TS_1086255]_Brightness bar, double tap and hold, then swipe up or down to adjust"
+        },
+        {
+            "name":"cloud_lai",
+            "value":"[TS_1085008]_Cloud mode"
         },
         {
             "name":"multimedia_sensor_bracket_kit",

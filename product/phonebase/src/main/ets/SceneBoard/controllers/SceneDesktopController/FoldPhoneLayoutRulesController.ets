@@ -58,7 +58,7 @@ interface DesktopStatus {
   iconMarginHorizontal: number
 };
 /**
- * 大屏的展开态，超大屏的M态竖屏布局器
+ * 二折的展开态，三折的M态竖屏布局器
  */
 export class FoldPhoneLayoutRulesController extends PhoneLayoutRulesController {
   public static singleName: string = 'FoldPhoneLayoutRulesController';
@@ -242,7 +242,7 @@ export class FoldPhoneLayoutRulesController extends PhoneLayoutRulesController {
     let indicatorHeight = this.mBaseConfig.getIndicatorHeight();
     let margin = belowSpace / StyleConstants.DEFAULT_2 - indicatorHeight / StyleConstants.DEFAULT_2 +
       this.navigationOffset / StyleConstants.DEFAULT_2;
-    if (DeviceHelper.isUltraScreenProduct()) {
+    if (DeviceHelper.isThreeFoldProduct()) {
       return margin - this.mLauncherLayoutStyleConfig.mDockPadding;
     }
     return margin;
@@ -251,7 +251,7 @@ export class FoldPhoneLayoutRulesController extends PhoneLayoutRulesController {
   protected getRealSpace(realGridHeight: number): number {
     let space = this.mBaseConfig.getWorkSpaceHeight() - this.mBaseConfig.getSysUITopHeight() -
       realGridHeight + this.mBaseConfig.getItemPadding() * StyleConstants.DEFAULT_2;
-    if (DeviceHelper.isUltraScreenProduct()) {
+    if (DeviceHelper.isThreeFoldProduct()) {
       return space + this.mLauncherLayoutStyleConfig.mDockPadding;
     }
     return space;

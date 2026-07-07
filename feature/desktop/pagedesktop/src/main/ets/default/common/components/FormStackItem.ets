@@ -32,6 +32,7 @@ import FormStyleConstants from '@ohos/form/src/main/ets/default/common/constants
 import { FormStackUtil } from '@ohos/formstack/src/main/ets/common/FormStackUtil';
 import { AccessibilityManager } from '@ohos/frameworkwrapper';
 import {
+  AiFormBasicParams,
   CardNodeControllerManager,
   FormBasicParams,
   FormOccupyParams,
@@ -96,10 +97,30 @@ export default struct FormStackItem {
     for (let i = 0; i < cards.length; i++) {
       // 更新cardNode
       const cardId: string = cards[i].cardId;
-      const controller = CardNodeControllerManager.getCardController(cardId) as CardNodeController;
+      // 优先寻找语音助手建议
+      const controller = (CardNodeControllerManager.getAiCardController(cardId) ||
+      CardNodeControllerManager.getCardController(cardId)) as CardNodeController;
       if (controller) {
-        const params = controller.formParams as (FormBasicParams);
-        if (params instanceof FormBasicParams) {
+        const params = controller.formParams as (AiFormBasicParams | FormBasicParams);
+        if (params instanceof AiFormBasicParams) {
+          const formStyleConfig = FormViewModel.getInstance().getFormStyleConfig();
+          params.basicData.width = Number(formStyleConfig.mFormWidth.get(String(cards[i].cardDimension)));
+          params.basicData.height = Number(formStyleConfig.mFormHeight.get(String(cards[i].cardDimension)));
+          params.basicData.borderRadius = formStyleConfig.getFormBorderRadius(cards[i].cardDimension);
+          CardNodeControllerManager.getAiCardNode(cardId)?.update(params);
+          // 尝试更新占位FC节点
+          const fcController = CardNodeControllerManager.getCardController(cardId) as CardNodeController;
+          if (fcController) {
+            const fcFormParams = fcController.formParams as FormOccupyParams;
+            const fcParams = fcFormParams?.formParams;
+            if (fcParams) {
+              fcParams.basicData.width = params.basicData.width;
+              fcParams.basicData.height = params.basicData.height;
+              fcParams.basicData.borderRadius = params.basicData.borderRadius;
+              CardNodeControllerManager.getCardNode(cardId)?.update(fcParams);
+            }
+          }
+        } else if (params instanceof FormBasicParams) {
           params.basicData.width = this.isOuterDesktop ? mFormComponentStyle?.formLayoutSize?.width as number :
             this.mViewData.mFormStackItemWidth;
           params.basicData.height = this.isOuterDesktop ? mFormComponentStyle?.formLayoutSize?.height as number :

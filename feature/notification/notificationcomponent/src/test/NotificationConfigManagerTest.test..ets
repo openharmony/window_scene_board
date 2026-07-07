@@ -20,9 +20,11 @@ import { bundleManager } from './bundleManager';
 import { launcherBundleManager } from './launcherBundleManager';
 import { NotificationConfigEntity } from './NotificationConfigEntity';
 import { SystemuiConstants } from './SystemuiConstants';
+import { VassistantConstants } from './VassistantConstants';
 import { ExtAppConstants } from './ExtAppConstants';
 import { SettingsKeyConstants } from './SettingsKeyConstants';
 import { SettingsConstants } from './SettingsConstants';
+import { DELIVER_CODE_PATH_LIST } from './Constants';
 
 export default function NotificationDataVmTest() {
   // 模拟依赖
@@ -127,6 +129,11 @@ export default function NotificationDataVmTest() {
         const config = await notificationConfigManager.getConfig(0, 'testBundle');
         assert.strictEqual(config, undefined);
       });
+
+      it('应该处理 isDeliver 为 true 的情况', async () => {
+        const config = await notificationConfigManager.getConfig(123, 'testBundle', true);
+        assert.strictEqual(config?.isDeliver, true);
+      });
     });
 
     describe('同步配置', () => {
@@ -138,7 +145,8 @@ export default function NotificationDataVmTest() {
           launcherUidSet: new Set([456]),
           userId: 'testUser',
           language: 'en-US',
-          hiddenBundleList: []
+          hiddenBundleList: [],
+          deliverSystemBundleList: []
         };
 
         await notificationConfigManager.syncNotificationConfig(syncParam);
@@ -157,7 +165,8 @@ export default function NotificationDataVmTest() {
           launcherUidSet: new Set([456]),
           userId: 'testUser',
           language: 'en-US',
-          hiddenBundleList: []
+          hiddenBundleList: [],
+          deliverSystemBundleList: []
         };
 
         await notificationConfigManager.syncNotificationConfig(syncParam);
@@ -172,7 +181,8 @@ export default function NotificationDataVmTest() {
           launcherUidSet: new Set([456]),
           userId: 'testUser',
           language: 'en-US',
-          hiddenBundleList: []
+          hiddenBundleList: [],
+          deliverSystemBundleList: []
         };
 
         await notificationConfigManager.syncNotificationConfig(syncParam);
@@ -200,7 +210,7 @@ export default function NotificationDataVmTest() {
               name: 'testBundle2',
               systemApp: true,
               bundleType: 1,
-              codePath: ''
+              codePath: 'deliver'
             },
             versionName: '2.0.0'
           }
@@ -210,7 +220,8 @@ export default function NotificationDataVmTest() {
           launcherUidSet: new Set([456]),
           userId: 'testUser',
           language: 'en-US',
-          hiddenBundleList: []
+          hiddenBundleList: [],
+          deliverSystemBundleList: []
         };
 
         await notificationConfigManager.syncNotificationConfig(syncParam);
@@ -288,6 +299,22 @@ export default function NotificationDataVmTest() {
 
         const config = await notificationConfigManager.createNotificationConfig(bundleInfo);
         assert.strictEqual(config.bundleType, 1);
+      });
+
+      it('应该处理 bundleInfo 中 codePath 包含 DELIVER 的情况', async () => {
+        const bundleInfo = {
+          name: 'testBundle',
+          appInfo: {
+            uid: 123,
+            systemApp: false,
+            bundleType: 0,
+            codePath: 'deliver'
+          },
+          versionName: '1.0.0'
+        };
+
+        const config = await notificationConfigManager.createNotificationConfig(bundleInfo);
+        assert.strictEqual(config.isDeliver, true);
       });
     });
 

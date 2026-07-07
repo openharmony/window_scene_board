@@ -15,18 +15,25 @@
 
 import { NotificationEntryEvent, UnifiedGroupUpdateEvent } from '../common/event/NotificationEvent';
 import NtfMgr from '@ohos.notificationManager';
-import notificationManager from '@ohos.notificationManager';
-import { ArrayUtils, CommonUtils, Equality, LogDomain, LogHelper } from '@ohos/basicutils';
+import {
+  ArrayUtils,
+  CommonUtils,
+  Equality,
+  LogDomain,
+  LogHelper
+} from '@ohos/basicutils';
 import { DeviceHelper, EvtBus } from '@ohos/frameworkwrapper';
 // import { MemoryUtils } from '@ohos/basicutils';
-import {
-  BaseNotification,
+import { BaseNotification,
   getIsInEmergencyOrThermalSafeMode,
   IComponentData,
   IImmersiveData,
   ImmersiveKgParserCtrlType,
-  NotificationAction,
-  NotificationBaseContent,
+  LiveBaseTemplate,
+  LiveSystemTemplate,
+  LiveType,
+  LiveViewCommonConstants,
+  NotificationAction, NotificationBaseContent,
   notificationCcmConfig,
   NotificationCreatorType,
   NtfLongTextContent,
@@ -34,16 +41,23 @@ import {
   NtfPictureContent,
   NtfReminderConfig,
   ObservedItem,
+  OtherBaseTemplate,
+  OverlayIconStyle,
   ParserController,
   parserCtrlMgr,
-  SysTypeCode
-} from '@ohos/systemuicommon';
+  SystemuiConstants,
+  SysTypeCode} from '@ohos/systemuicommon';
 import { SINGLE_APP_LIMIT } from './NotificationListLimiter';
 import { image } from '@kit.ImageKit';
 import { Context } from '@kit.AbilityKit';
 import resourceManager from '@ohos.resourceManager';
+import notificationManager from '@ohos.notificationManager';
+import dataParserController from '@ohos/systemuicommon/src/main/ets/liveview/parse/DataParserController';
+import { bundleManager } from '@kit.AbilityKit';
 import { DeviceModeEnum } from '@ohos/commonconstants/src/main/ets/TsIndex';
 import { NotificationType } from '../common/NotificationType';
+import { LiveFlightTemplate } from '@ohos/systemuicommon/src/main/ets/liveview/data/template/LiveFlightTemplate';
+import { deliverSystemBundleVerity } from '@ohos/systemuicommon/src/main/ets/utils/BundleVerityUtil';
 
 const TAG = 'SysUI_NotificationEntry';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.NC, TAG);
@@ -483,6 +497,7 @@ export class NotificationEntry extends BaseNotification implements Equality {
     groupEntry.remindConfig = this.remindConfig;
     groupEntry.updateGroup(this);
     groupEntry.addUpdateChildEntry(this);
+    groupEntry.isDeliverNotification = this.isDeliverNotification;
     groupEntry.isSettingIgnore = this.isSettingIgnore;
     groupEntry.appName = this.appName;
     groupEntry.appIcon = this.appIcon;
@@ -492,6 +507,9 @@ export class NotificationEntry extends BaseNotification implements Equality {
     groupEntry.creatorType = this.creatorType;
     groupEntry.overlayIconStyle = this.overlayIconStyle;
     groupEntry.isCollaNotification = this.isCollaNotification;
+    if (this.isDeliverNotification) {
+      groupEntry.deliverNotificationKey = this.deliverNotificationKey;
+    }
 
     // 组通知添加字段用于判断元服务通知
     groupEntry.isFromPush = this.isFromPush;
@@ -945,6 +963,11 @@ export class NotificationEntry extends BaseNotification implements Equality {
       log.showInfo('getAppIcon, isProtected == true, return appIcon');
       return this.appIcon;
     }
+    // 优先级最高
+    const deliverNotificationIcon = this.getDeliverNotificationIcon();
+    if (deliverNotificationIcon) {
+      return deliverNotificationIcon;
+    }
     // 系统应用支持自定义图标，使用小图标代替应用图标
     if (this.isFromSystemApp && !CommonUtils.isInvalid(this.smallIcon)) {
       log.showInfo('getAppIcon, isFromSystemApp == true, return smallIcon');
@@ -965,6 +988,22 @@ export class NotificationEntry extends BaseNotification implements Equality {
       return $r('app.media.icon');
     }
     return this.appIcon;
+  }
+
+  private getDeliverNotificationIcon(): image.PixelMap | string | undefined {
+    if (!this.isDeliverNotification) {
+      return undefined;
+    }
+    if (this.checkIsDeliverSystemNotification() && this.smallIcon) {
+      // 系统应用支持自定义图标，使用小图标代替应用图标
+      log.showInfo('getAppIcon, isDeliverSystemNotification == true, return smallIcon');
+      return this.smallIcon;
+    }
+    if (this.appIcon) {
+      log.showInfo('getAppIcon, isDeliverNotification == true, return appIcon');
+      return this.appIcon;
+    }
+    return undefined;
   }
 
   private isAppIconInValid(): boolean {
@@ -1019,8 +1058,9 @@ export class NotificationEntry extends BaseNotification implements Equality {
   canShowSetting(notificationType: number, isInGroup: boolean, isOuterHome: boolean): boolean {
     const deviceModeState: DeviceModeEnum = AppStorage.get('deviceModeState') ?? DeviceModeEnum.BASE_MODE;
     const isEditSwitchAllowed =
-      (!this.isLiveType() && !this.isSettingIgnore) ||
-      Boolean(this.isLiveType() && !this.isConvertFromNormal && this.liveViewData?.isEditSwitchAllowed && !this.liveViewData?.isLiveSystem());
+      (!this.isLiveType() && !this.isSettingIgnore && !this.checkIsDeliverSystemNotification()) ||
+      Boolean(this.isLiveType() && !this.isConvertFromNormal && this.liveViewData?.isEditSwitchAllowed &&
+        !this.liveViewData?.isLiveSystem());
     const isInEmergency = getIsInEmergencyOrThermalSafeMode(deviceModeState);
     const isSaCreator = this.creatorType === NotificationCreatorType.SA;
     const isOuterHomeFold: boolean = isOuterHome ? DeviceHelper.isFoldExpanded() : true;
@@ -1029,6 +1069,18 @@ export class NotificationEntry extends BaseNotification implements Equality {
         !isInGroup &&
         !isSaCreator && isOuterHomeFold;
     return isNeedSetting;
+  }
+
+  /**
+   * 校验是否为系统通知
+   * @returns
+   */
+  public checkIsDeliverSystemNotification(): boolean {
+    if (!this.isDeliverNotification) {
+      return false;
+    }
+    const isSystemApp = notificationCcmConfig.getDeliverSystemBundleList().some(item => item === this.creatorBundleName);
+    return isSystemApp && deliverSystemBundleVerity(this.creatorUid);
   }
 
   /**

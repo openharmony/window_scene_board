@@ -1,5 +1,5 @@
 /**
- * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) 2021-2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -16,6 +16,7 @@
 import {
   AnimateToScheduleUtils,
   CheckEmptyUtils,
+  OutdoorConfig,
   FileUtils,
   LogDomain,
   LogHelper,
@@ -45,6 +46,7 @@ import { DesktopLayoutCacheData } from '../cache/layout/DesktopLayoutCacheData';
 import {
   CommonDockModel,
   ContactCacheManager,
+  DeliverUtil,
   DesktopDataLoader,
   DockItemInfo,
   FolderLayoutCacheManager,
@@ -234,6 +236,9 @@ export class PageDesktopLayoutConfig extends ILayoutConfig {
       this.mGridLayoutInfo = defaultConfig;
     }
     let shouldReadFromDb = (configFromRdb && configFromRdb.length > 0) || (configFromRdb && this.isConfigExist() && rdbStartVersion > 0);
+    if (OutdoorConfig.getInstance().isInOutdoorMode()) {
+      shouldReadFromDb = false;
+    }
     if (shouldReadFromDb) {
       LauncherStartup.getInstance().passStep(StartupStep.LOAD_DB, `len:${configFromRdb?.length}`);
       configFromRdb = await GetHideAppsFromConfig.getInstance().autoAlignGridLayoutItem(
@@ -242,6 +247,9 @@ export class PageDesktopLayoutConfig extends ILayoutConfig {
         await launcherAbilityManager.getLauncherAbilityList(launcherAbilityManager.getUserId());
       LauncherStartup.getInstance().passStep(StartupStep.LOAD_BMS, `len:${installedApps?.length}`);
       let dockDataList: DockItemInfo[] = await this.mDesktopDataLoader?.loadSmartDockItemsFromRdb() ?? [];
+      // 桌面出现多个克隆应用/应用文件夹兜底清除
+      DeliverUtil.checkAndMergeDeliveryFolder(configFromRdb);
+      DeliverUtil.checkAndMergeAbroadFolder(configFromRdb);
       await this.initGridLayoutCorrector(configFromRdb, installedApps, dockDataList);
       let pageDeletedSet: Set<number> = new Set();
       gridLayoutCorrector.addGridLayoutCorrector(new DirtyFormCorrector(pageDeletedSet));
@@ -336,13 +344,28 @@ export class PageDesktopLayoutConfig extends ILayoutConfig {
       if (item.typeId === CommonConstants.TYPE_APP) {
         return this.filterLayoutItem(item, installedApps, removedList, undefined, isOuter);
       } else if (item.typeId === CommonConstants.TYPE_FOLDER) {
+        DeliverUtil.copyDesktopOldDataToIntent(item);
         item.layoutInfo = item.layoutInfo?.map(folderPage =>
         folderPage.filter(itemInPage => {
           log.showInfo(`dbList item in ${isOuter} folderPage is ${this.getInfo(itemInPage)}`);
+          DeliverUtil.setContainerAppNameCache(itemInPage, item.intent ?? '');
           return this.filterLayoutItem(itemInPage, installedApps, removedList, item, isOuter);
         })
         );
+        if (DeliverUtil.isContainerItem(item.intent ?? '') && item.layoutInfo && item.layoutInfo.flat().length > 0) {
+          DeliverUtil.setContainerFolderMapInDesktop(item);
+          log.showWarn(`containerFolder in ${isOuter} desktop is ${JSON.stringify(item)}`);
+        }
         return true;
+      }
+      // 卡片需检查对应包名是否已安装，无包名则过滤
+      if (item.typeId === CommonConstants.TYPE_CARD) {
+        let appExist = installedApps.some(app => app.bundleName === item.bundleName);
+        if (!appExist) {
+          removedList.push(item);
+          log.showWarn('filterDbListByInstalled remove card: %{public}s', item.bundleName);
+        }
+        return appExist;
       }
       return true;
     });
@@ -359,6 +382,11 @@ export class PageDesktopLayoutConfig extends ILayoutConfig {
     if (item.typeId === CommonConstants.TYPE_SHORTCUT_ICON) {
       return true;
     }
+    if (DeliverUtil.isRemovedDeliverApp(item.bundleName)) {
+      log.showInfo('isRemovedDeliverApp bundleName = ' + item.bundleName);
+      removedList.push(item);
+      return false;
+    }
     let installInfo: AppItemInfo | undefined = item as Object as AppItemInfo;
     if (item.typeId !== CommonConstants.TYPE_SHORTCUT_ICON) {
       installInfo = installedApps.find((appItem: AppItemInfo) => appItem.keyName === item.keyName);
@@ -373,6 +401,7 @@ export class PageDesktopLayoutConfig extends ILayoutConfig {
       }
       if (installInfo) {
         installInfo.codePath = String(NumberConstants.CONSTANT_NUMBER_ONE);
+        AppModel.getInstance().setAppListByDelivery(installInfo);
       }
     }
     let isAppStatusInstalled = GridLayoutUtil.isAppInstalled(item);
@@ -399,7 +428,7 @@ export class PageDesktopLayoutConfig extends ILayoutConfig {
   }
 
   private isShowInDeliveryFolder(item: GridLayoutItemInfo): boolean {
-    return false;
+    return DeliverUtil.isContainerItem(item.intent ?? '') && item.appStatus === AppStatus.INSTALLED;
   }
 
   private checkRemoveFromDb(removedApps: GridLayoutItemInfo[], isOuter: boolean): void {
@@ -434,6 +463,7 @@ export class PageDesktopLayoutConfig extends ILayoutConfig {
     }
     log.showInfo(`loadLayoutInfoFromConfig -> start this.mGridLayoutInfo.layoutInfo.length : ${JSON.stringify(this
       .mGridLayoutInfo.layoutInfo.length)}`);
+    await this.updatePLPageCount(pageCount);
     // 筛选出正确的数据
     if (this.mGridLayoutInfo && this.mGridLayoutInfo.layoutInfo) {
       AppModel.getInstance().getAppList(() => {
@@ -442,6 +472,33 @@ export class PageDesktopLayoutConfig extends ILayoutConfig {
         // 绑定文件夹和文件夹里图标的关系
         this.bindAppAndFolder();
       });
+    }
+  }
+
+  /**
+   * 云端模式预置布局pageCount校验纠正
+   *
+   * @param currentPageCount
+   * @returns
+   */
+  private async updatePLPageCount(currentPageCount: number): Promise<void> {
+    try {
+      if (!OutdoorConfig.getInstance().isInOutdoorMode()) {
+        return;
+      }
+      let desktopLayoutInfo: DefaultDesktopLayoutInfo =
+        await GetLayoutInfoFromConfig.getInstance().getOutdoorLayoutConfigFile()
+      let pageCount: number = desktopLayoutInfo.layoutDescription.pageCount;
+      if (pageCount === currentPageCount) {
+        log.showInfo(`not need to updatePLPageCount and currentPageCount:${currentPageCount}`);
+        return;
+      }
+      log.showError(`updatePLPageCount pageCount:${pageCount} and currentPageCount:${currentPageCount}`);
+      this.mGridLayoutInfo.layoutDescription.pageCount = pageCount;
+      PageInfoManager.getInstance().updatePageCount(pageCount, 'updatePLPageCount');
+      RdbStoreManager.getInstance().updateDesktopPageCount(pageCount);
+    } catch (error) {
+      log.showError(`updatePLPageCount error, code: ${error?.code}, message: ${error?.message}`);
     }
   }
 
@@ -527,6 +584,10 @@ export class PageDesktopLayoutConfig extends ILayoutConfig {
         return item.layoutInfo.flat().length >= 2;
       }
       if (item.typeId !== CommonConstants.TYPE_APP) {
+        // 卡片需检查对应包名是否已安装，无包名则不预装卡片
+        if (item.typeId === CommonConstants.TYPE_CARD) {
+          return this.updateAppInfoFromBMS(item, totalAppInfoList);
+        }
         return true;
       }
       return this.updateAppInfoFromBMS(item, totalAppInfoList);
@@ -575,7 +636,9 @@ export class PageDesktopLayoutConfig extends ILayoutConfig {
         LauncherStartup.getInstance().passStep(StartupStep.CONFIG_INTO_DB);
         log.showWarn('bindAppAndFolder -> insertGridLayoutResult ok! length:%{public}d', layoutInfoItems.length);
         // 首次加载预置布局后，刷新桌面布局表中的图标名称信息
-        AppModel.getInstance().updateInfoNameOfApp(false, false);
+        if (!OutdoorConfig.getInstance().isInOutdoorMode()) { //云端模式不更新
+          AppModel.getInstance().updateInfoNameOfApp(false, false);
+        }
         PreviewLayoutCheckTool.getInstance().startCheck(PRELOAD_CHECK_NAME);
       } else {
         log.showError('bindAppAndFolder -> insertGridLayoutResult fail!');

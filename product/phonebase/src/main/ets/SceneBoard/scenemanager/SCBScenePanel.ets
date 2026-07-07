@@ -14,31 +14,36 @@
  * limitations under the License.
  */
 import {
-  CloseAppManager,
   CommonConstants,
-  ContractedFolderCommonViewModel,
-  DesktopModeEnum,
-  DesktopModeManager,
-  EventConstants,
-  FolderData,
-  FolderManager,
-  FolderOperationFlag,
-  FormCenterViewManager,
-  FormConstants,
-  GridLayoutItemInfo,
-  LauncherAnimUtil,
-  PageDesktopModel,
-  StartAndExitVisualEffectManager,
+  ViewManager,
   StyleConstants,
+  PageDesktopModel,
+  CloseAppManager,
+  EventConstants,
+  GrayAppListManager,
+  GridLayoutItemInfo,
   vibratorMgr,
-  ViewManager
+  FormCenterViewManager,
+  DesktopModeManager,
+  DesktopModeEnum,
+  FolderData,
+  StartAndExitVisualEffectManager,
+  FolderOperationFlag,
+  ContractedFolderCommonViewModel,
+  FolderManager,
+  LauncherAnimUtil,
+  DeliverUtil,
+  FormConstants
 } from '@ohos/launchercommon';
 import { EditModeViewEvent } from '@ohos/desktopedit/src/main/ets/default/viewmodel/EditModeViewEvent';
-import { DropDownPanelManager, FloatingDisplayMode } from '@ohos/systemuicommon/Index';
+import { DropDownPanelManager, OverlayStartAnimHelper, FloatingDisplayMode } from '@ohos/systemuicommon/Index';
 import { BackgroundBlurView } from './BackgroundBlurView';
 import { SCBSceneContainer } from './SCBSceneContainer';
+import bundleManager from '@ohos.bundle.bundleManager';
 import sceneSessionManager from '@ohos.sceneSessionManager';
+// import apsManager from '@ohos.graphic.apsManager';
 import curves from '@ohos.curves';
+import { image } from '@kit.ImageKit';
 import { RecentEmptyView } from '../recent/RecentEmptyView';
 import RecentClearAllView from '../recent/RecentClearAllView';
 import UnLockConstants from '@ohos/screenlockcomponent/src/main/ets/common/Constants';
@@ -47,116 +52,142 @@ import { SCBDefaultZIndex } from './SCBScreen';
 import InputConsumer from '@ohos.multimodalInput.inputConsumer';
 import { ContainerBuilder } from '../recent/common/ContainerBuild';
 import ServiceExtensionContext from 'application/ServiceExtensionContext';
+import common from '@ohos.app.ability.common';
 import {
-  AnimateToScheduleUtils,
-  CheckEmptyUtils,
-  CommonUtils,
-  CompanionIconInfo,
+  RectInfo,
+  Trace,
+  TraceUtil,
   DomainName,
   LogDomain,
   LogHelper,
-  Trace,
-  TraceUtil
+  AnimateToScheduleUtils,
+  CheckEmptyUtils,
+  CommonUtils,
+  FileUtils,
+  StartType,
+  CompanionIconInfo,
+  OutdoorConfig
 } from '@ohos/basicutils';
 import {
-  AnimPolicyConstant,
-  AnimPolicyRegistry,
-  CEManager,
-  DeviceHelper,
-  EventManager,
-  EvtBus,
-  HiSysEventUtil,
-  IntelligentCache,
-  localEventManager,
-  NavBarEventType,
-  RecentEventType,
-  RotateChangeEvent,
-  SCBDesktopCacheManager,
-  SCBTriFoldManager,
-  SCBUltraScreenState,
-  SCBWindowSceneConfig,
-  sOutSideWindowMgr,
-  TrimLevel,
-  ViewCallback,
+  ViewType,
   ViewManagerPolicy,
+  GlobalSearchStatus,
+  sOutSideWindowMgr,
+  HiSysEventUtil,
+  CEManager,
+  ApsUtils,
+  localEventManager,
+  RecentEventType,
+  ReturnDesktopEventType,
+  EvtBus,
+  EventManager,
+  SCBDesktopCacheManager,
+  DeviceHelper,
+  ResultType,
+  HiSysReturnHomeData,
+  RotateChangeEvent,
+  ExitOneStepSplitReason,
+  PairSplitResult,
+  SCBWindowSceneConfig,
+  IntelligentCache,
   viewMgrPolicy,
-  ViewType
+  ViewCallback,
+  IconResourceManager,
+  OperateResult,
+  AnimPolicyRegistry,
+  AnimPolicyConstant,
+  NavBarEventType,
+  TrimLevel,
+  SCBTriFoldManager,
+  SCBTripleFoldState,
+  MultiWindowRotateChangeEvent
 } from '@ohos/frameworkwrapper';
 import {
-  ActiveReason,
-  CommonResult,
-  ContainerDataCategory,
-  EventType,
-  FocusChangeReason,
-  FSMCallbackArgsType,
-  FSMState,
-  GestureNavigationEvent,
-  gestureNavigationObserver,
-  GestureNavigationState,
-  GestureType,
-  KeyboardState,
-  NavigationType,
-  PcKeyType,
-  RecentsStyleConstants,
-  RecentViewParam,
-  SCBBackgroundBlurSession,
-  SCBContainerRotationReason,
-  SCBDividerParam,
-  scbEventExclusiveManager,
-  SCBEventId,
-  SCBGestureAction,
-  SCBGestureActionId,
-  scbGestureManager,
-  SCBKeyboardManager,
-  SCBKeyboardPanelSession,
-  SCBKeyboardSession,
-  SCBOobeManager,
-  SCBPropertyChangeReason,
   SCBRecoverManager,
-  SCBRotateChangeReason,
-  SCBRotationConfig,
-  SCBSceneContainerSession,
-  SCBSceneContainerSessionArray,
-  SCBSceneContainerState,
-  SCBSceneInfo,
-  SCBSceneMissionManager,
-  SCBSceneMode,
-  SCBSceneOrientation,
-  SCBScenePanelDebugCommands,
-  SCBScenePanelManager,
-  SCBScenePanelSession,
-  SCBSceneSession,
-  SCBSceneSessionManager,
+  SCBTransitionController,
   SCBScreenProperty,
-  SCBScreenSession,
   SCBScreenSessionManager,
+  SCBRotateChangeReason,
+  SCBPropertyChangeReason,
+  GestureNavigationState,
   SCBSessionEventId,
+  SCBSceneContainerSessionArray,
+  SCBSceneContainerSession,
+  SCBSceneInfo,
+  SCBSceneMode,
+  SCBSceneSessionManager,
+  SCBKeyboardSession,
+  SCBSceneSession,
+  ActiveReason,
+  SCBEventId,
   SCBSessionShowInScreenIndex,
-  SCBSystemSceneSession,
+  SCBGestureActionId,
+  SCBGestureAction,
   SCBTransitionManager,
   SCBUnlockTransitionController,
+  scbGestureManager,
+  KeyboardState,
+  SCBContainerRotationReason,
+  SCBScenePanelSession,
+  SCBBackgroundBlurSession,
+  SCBScenePanelManager,
+  SystemSessionInfo,
+  SCBSystemSceneSession,
+  SCBDividerParam,
+  SCBSceneOrientation,
+  RecentViewParam,
+  RecentsStyleConstants,
+  GestureType,
+  PcKeyType,
+  SCBSceneContainerState,
+  SCBKeyboardManager,
+  SCBKeyboardPanelSession,
+  FocusChangeReason,
+  SCBSpecificSession,
+  SCBSessionRect,
+  SCBScreenSession,
+  SCBTogManager,
+  StartFrom,
+  FSMCallbackArgsType,
+  AppExitLocationInfo,
+  scbEventExclusiveManager,
+  EventType,
+  SCBOobeManager,
+  SceneParam,
+  SCBScenePanelDebugCommands,
+  FSMState,
   SCBWindowRaiseReason,
+  SceneInfoAdapterUtil,
   SCBWindowRotateController,
+  SCBSceneMissionManager,
+  ContainerDataCategory,
+  gestureNavigationObserver,
   SceneCaller,
-  SplitStyle,
-  SystemSessionInfo
+  GestureNavigationEvent,
+  NavigationType,
+  CommonResult,
+  SCBRotationConfig,
+  SplitStyle
 } from '@ohos/windowscene';
-import { CurrentMemScene, MemoryManager, PerformanceReporter } from '@ohos/frameworkcommon';
+import { MemoryManager } from '@ohos/frameworkcommon';
 import {
-  KeyCodeConstants,
-  NumberConstants,
+  CallToState,
   RotationConstants,
+  SplitType,
+  KeyCodeConstants,
+  DividerStyleConstants,
   SCBConstants,
   SceneConstants,
-  VisualEffectConstants
+  NumberConstants
 } from '@ohos/commonconstants';
-import { AnimationType, themeWallpaperAniMgr } from '@ohos/themeservice';
-import { desktopUtil, ItemUtils, SCBVisualEffectMgr } from '@ohos/componenthelper';
-import { ExecuteCallbackExtraInfo } from '@ohos/windowscene/src/main/ets/scene/session/SCBSceneSessionManager';
-import {
-  SCBStatusBarSettingFlag,
-  SCBSystemBarProperty
-} from '@ohos/windowscene/src/main/ets/scene/session/SCBSceneSession';
+import { PerformanceReporter, CurrentMemScene, } from '@ohos/frameworkcommon';
+import { themeWallpaperAniMgr, AnimationType } from '@ohos/themeservice';
+import { ItemUtils, desktopUtil, SCBVisualEffectMgr } from '@ohos/componenthelper';
+import { VisualEffectConstants } from '@ohos/commonconstants';
+import { ExecuteCallbackExtraInfo }
+  from '@ohos/windowscene/src/main/ets/scene/session/SCBSceneSessionManager';
+import { SCBSystemBarProperty, SCBStatusBarSettingFlag  }
+  from '@ohos/windowscene/src/main/ets/scene/session/SCBSceneSession';
 import { recentLayoutConfigInstance } from '@ohos/recents';
 import { SCBScenePanelFSM } from '../recent/scenepanel/SCBScenePanelFSM';
 import { RecentScrollFollowing } from '../recent/scenepanel/recentpanel/RecentScrollFollowing';
@@ -166,17 +197,17 @@ import {
   RecentDelete,
   RecentDeleteConfig
 } from '../recent/scenepanel/recentpanel/RecentDelete';
-import { RecentClearAll } from '../recent/scenepanel/recentpanel/RecentClearAll';
+import { RecentClearAll} from '../recent/scenepanel/recentpanel/RecentClearAll';
 import { recentLockModel } from '../recent/settings/RecentLockModel';
 import { recentMediaPlayInstance } from '../recent/scenepanel/recentpanel/RecentMediaPlay';
 import { AppFloating } from '../recent/scenepanel/apppanel/AppFloating';
 import { ContainerShowState } from '../recent/scenepanel/recentpanel/RecentNotShow';
 import { RecentZoomAlarm } from '../recent/scenepanel/recentpanel/RecentZoomAlarm';
 import { editModeManager } from '@ohos/launchercommon/src/main/ets/editmode/model/EditModeManager';
-import { RecentLayoutManager } from '../recent/common/RecentLayoutManager';
-import { CcmOption, ScreenLockApi, SlVisualConfigManager } from '@ohos/screenlockcommon';
+import { RecentLayoutManager} from '../recent/common/RecentLayoutManager';
+import { ScreenLockApi, SlVisualConfigManager, CcmOption } from '@ohos/screenlockcommon';
 import systemDateTime from '@ohos.systemDateTime';
-import { RecentStateManager } from '../recent/innerstate/RecentStates';
+import { RecentStateManager, recentStateManagerInstance } from '../recent/innerstate/RecentStates';
 import { QuickSwitchRaiseTopAlarm } from '../recent/scenepanel/quickswitchpanel/QuickSwitchRaiseTopAlarm';
 import { RecentDockRefreshAlarm } from '../recent/scenepanel/recentpanel/RecentDockRefreshAlarm';
 import { QuickSwitchAnimations } from '../recent/scenepanel/quickswitchpanel/QuickSwitchAnimations';
@@ -184,46 +215,62 @@ import { SplitLifeCycle } from '@ohos/windowscene/src/main/ets/scene/session/SCB
 import {
   AppIdleCallback,
   FarAwayFollowingFromAppCallback,
-  QuickSwitchFollowingFromAppCallback,
   RecentFollowingFromAppCallback,
-  ZoomFollowingFromAppCallback
+  ZoomFollowingFromAppCallback,
+  QuickSwitchFollowingFromAppCallback
 } from '../recent/scenepanel/apppanel/AppCallbacks';
 import { RecentClickReason } from '../recent/scenepanel/ScenePanelStates';
 import { RecentRotationUtil } from '../recent/common/RecentRotationUtil';
-import { AnimateExArgsType } from '@ohos/windowscene/Index';
+import { AnimateExArgsType, animateExBreak } from '@ohos/windowscene/Index';
 import {
-  RecentClearAllCallback,
   RecentDeleteFollowingCallback,
   RecentIdleCallback,
+  RecentScrollFollowingCallback,
   RecentScrollFlingCallback,
-  RecentScrollFollowingCallback
+  RecentClearAllCallback
 } from '../recent/scenepanel/recentpanel/RecentCallbacks';
 import { RecentStartScene } from '../recent/scenepanel/recentpanel/RecentStartScene';
-import { RecentTitleViewModel } from '../recent/viewmodel/RecentTitleViewModel';
-import { RecentLockIconModel } from '../recent/scenepanel/recentpanel/RecentLockIconModel';
+// import { RecentTitleViewModel } from '../recent/viewmodel/RecentTitleViewModel';
+// import { RecentLockIconModel } from '../recent/scenepanel/recentpanel/RecentLockIconModel';
 import {
   EmergencyHomeIdleCallback,
   HomeIdleCallback,
-  OverViewFollowingFromHomeCallback
+  OverViewFollowingFromHomeCallback,
+  OutdoorIdleCallback
 } from '../recent/scenepanel/homepanel/HomeCallbacks';
 import { recentRuntimeInstance } from '../recent/scenepanel/recentpanel/RecentRuntimeModel';
+import {
+  MultiWindowEventConstants,
+  VassistantConstants
+} from '@ohos/commonconstants/src/main/ets/constants/SCBConstants';
 import { recentDisplayManager } from '@ohos/recents/src/main/ets/TsIndex';
+import { AiBarChangeType } from '../aiBar/SCBAiBarConstants';
+import { QuitAppRectViewModel } from '@ohos/pagedesktop/src/main/ets/default/common/viewmodel/QuitAppRectViewModel';
 import { RecentAccessibilityUtils } from '../recent/scenepanel/recentpanel/RecentAccessibilityUtils';
-import lazy {
-  ThreeFingerSwiperCallback,
-  TouchBoardGestureManager
-} from '../touchboardgesture/TouchBoardGestureManager';
+import lazy { ThreeFingerSwiperCallback, TouchBoardGestureManager } from '../touchboardgesture/TouchBoardGestureManager';
 import lazy { ThreeFingerSwipeController } from '../touchboardgesture/ThreeFingerSwipeController';
-import lazy { ThreeFingerSwipeConstants, ThreeFingerSwipeType } from '../touchboardgesture/ThreeFingerSwipeConstants';
+import lazy {
+  ThreeFingerSwipeType,
+  ThreeFingerSwipeConstants
+} from '../touchboardgesture/ThreeFingerSwipeConstants';
+import { SmallFolderModelManager } from '@ohos/smallfolder/src/main/ets/default/common/SmallFolderModelManager';
 import { SCBRotateUtils } from './utils/SCBRotateUtils';
 import { SCBWindowRotate } from './SCBWindowRotate';
+import { RecentLayoutCalculatorFactory } from '../recent/common/RecentLayoutCalculatorFactory';
+import {
+  BusinessError, commonEventManager, configPolicy
+} from '@kit.BasicServicesKit';
 import { SCBKeyboardPanel } from '../keyboard/SCBKeyboardPanel';
+import { FlashlightTipsUtil } from '@ohos/screenlockcommon/src/main/ets/utils/FlashlightTipsUtil';
 
 import { RecentForegroundBlurAniMgr } from '../recent/scenepanel/recentpanel/RecentForegroundBlurAniMgr';
+import { ReplaceReason } from '@ohos/frameworkwrapper/src/main/ets/hisysevent/ReportParams';
+import { bannerMgr } from '@ohos/systemuicommon';
 import lazy { SCBOuterScenePanelManager } from './SCBOuterScenePanelManager';
 import lazy { SCBPiPManager } from './pip/SCBPiPManager';
 import { display } from '@kit.ArkUI';
 import { ZoomFollowingAnimations } from '../recent/scenepanel/apppanel/ZoomFollowingAnimations';
+import { TouchGestureAction, TouchGestureEvent } from '@ohos.multimodalInput.gestureEvent';
 import lazy { MattesRotateStrategy } from '@ohos/foldeffect/src/main/ets/mattesstrategy/MattesRotateStrategy';
 import lazy { FolderExpandSnapshotView } from './FolderExpandSnapshotView';
 import {
@@ -233,11 +280,12 @@ import {
   ScenePanelStateCollectionHandler
 } from './viewmodel/SCBScenePanelViewModel';
 import { GestureDockPreferenceMgr } from '../gestureDock/common/preference/GestureDockPreferenceMgr';
+import { GestureDockViewModel } from '../gestureDock/dock/viewmodel/GestureDockViewModel';
 import {
-  FoldAnimationConstants,
-  FoldExpandAnimUtils,
   launcherVisualEffectMgr,
-  UltraScreenExpandAnimUtils,
+  FoldExpandAnimUtils,
+  TripleFoldExpandAnimUtils,
+  FoldAnimationConstants,
 } from '@ohos/launchercommon/Index';
 import { homeViewModel } from '../recent/scenepanel/homepanel/HomeViewModel';
 import { SCBGestureNavBarViewModel } from '../gesturenavigation/SCBGestureNavBarViewModel';
@@ -245,7 +293,7 @@ import {
   RotateFuncType,
   WrapRotationEntryParam,
 } from '@ohos/windowscene/src/main/ets/screen/session/SCBScreenSessionManager';
-import { SCBTripleStateChange } from '@ohos/launchercommon/src/main/ets/utils/UltraScreenExpandAnimUtils';
+import { SCBTripleStateChange } from '@ohos/launchercommon/src/main/ets/utils/TripleFoldExpandAnimUtils';
 import { RecentGestureEventManager } from '../recent/common/RecentGestureEventManager';
 import { RecentGestureEvent } from '../recent/common/constants/RecentGestureConstants';
 import { recentViewModel } from '../recent/scenepanel/recentpanel/RecentViewModel';
@@ -253,13 +301,15 @@ import { quickSwitchViewModel } from '../recent/scenepanel/quickswitchpanel/Quic
 import { quickSwitchRequestActiveAlarm } from '../recent/scenepanel/quickswitchpanel/QuickSwitchRequestActiveAlarm';
 import { SCBPhoneSceneUtils } from './utils/SCBPhoneSceneUtils';
 import { SCBMinimizeSceneOpts } from '@ohos/windowscene/src/main/ets/scene/SceneModuleIndex';
-import {
-  SCBSceneStartInterceptor,
-  StartInterceptions
-} from '@ohos/windowscene/src/main/ets/scene/framework/missions/SCBSceneStartInterceptor';
+import { SCBSceneStartInterceptor, StartInterceptions } from '@ohos/windowscene/src/main/ets/scene/framework/missions/SCBSceneStartInterceptor';
 import lazy { SCBRecentPrepareManager } from './pcmode/SCBRecentPrepareManager';
 import lazy { singleDisplayPocketUtil } from './utils/SingleDisplayPocketUtil';
+import { FloatingNavigationManager } from '../aiBar/proxy/FloatingNavigationManager';
 import transactionManager from '@ohos.transactionManager';
+import lazy {
+  SCBSceneWindowAiSplitSwitchUtils,
+  ViewSplitListener
+} from '@ohos/windowscene/src/main/ets/scene/utils/SCBSceneWindowAiSplitSwitchUtils';
 import { SnapshotNodeType } from '@ohos/windowscene/src/main/ets/common/SnapshotNodeType';
 import { WinLog, WinLogDomain } from '@ohos/windowscene/src/main/ets/utils/WinLog';
 
@@ -402,6 +452,10 @@ export struct SCBScenePanel {
   private foldExpandSnapShotSessionId: number = -1;
   private foldExpandStateChange: SCBTripleStateChange = SCBTripleStateChange.INVALID;
   @State needScrollClip: boolean = true;
+
+  // 在锁屏前后保持桌面跟壁纸的隐藏状态不变
+  private needRestoreHideDesktop: boolean = false;
+  private needRestoreHideWallpaper: boolean = false;
 
   // 控制是否上报多任务滑动打点，每次进入多任务只上报一次
   private doReport: boolean = false;
@@ -1076,7 +1130,9 @@ export struct SCBScenePanel {
         .deliverGestureEvent(RecentGestureEvent.ENTER_APP_IDLE_FROM_ZOOM_FOLLOWING,
           this.containerSessionList.getTopActiveSession());
       this.onEnterAppFullScreen();
+      homeLog.showInfo(`EVENT_AI_BAR_STATUS_CHANGE`);
       this.recentInnerState.onInit();
+      localEventManager.sendLocalEvent(EventConstants.EVENT_AI_BAR_STATUS_CHANGE, AiBarChangeType.SHOW_BAR);
     }
   };
   private recentFollowFromAppCallback: RecentFollowingFromAppCallback = {
@@ -1574,6 +1630,18 @@ export struct SCBScenePanel {
     }
   }
 
+  private outdoorIdleCallback: EmergencyHomeIdleCallback = {
+    name: 'OutdoorIdleCallback',
+    enterHomeIdle: (offsetX: number, offsetY: number) => {
+      if (this.scenePanelState === ScenePanelState.HOME) {
+        homeLog.showInfo(`outdoorIdleCallback enterHome`);
+        homeViewModel.onEnterHome(true);
+      }
+      SCBSceneSessionManager.getInstance().updateSystemBarProperty();
+      this.panelViewModel.minimizeAllScene();
+    }
+  }
+
   private onGestureChange = (action: SCBGestureAction) => {
     homeLog.showInfo(`onGestureChange! action: ${action.actionId} sceneState: ${this.scenePanelState}`);
     switch (action.actionId) {
@@ -1605,6 +1673,7 @@ export struct SCBScenePanel {
   }
 
   private updateScrollEnableMode(): void {
+    FloatingNavigationManager.getInstance()?.setScenePanelState(this.scenePanelState);
     if (!this.checkIsUseThisScenePanel()) {
       homeLog.showInfo('current scene panel is not use, no need response updateScrollEnableMode');
       return;
@@ -1657,8 +1726,8 @@ export struct SCBScenePanel {
     if (topContainerSession === null || topContainerSession === undefined) {
       return;
     }
-    if (topContainerSession.primarySession?.isPcAppInPad && DeviceHelper.isUltraScreenProduct() &&
-      SCBTriFoldManager.getInstance().getCurTriFoldState() === SCBUltraScreenState.G) {
+    if (topContainerSession.primarySession?.isPcAppInPad && DeviceHelper.isThreeFoldProduct() &&
+      SCBTriFoldManager.getInstance().getCurTriFoldState() === SCBTripleFoldState.G) {
       this.beforeFoldExpandForPCSession(topContainerSession);
     } else {
       this.panelViewModel.showSnapShotOnExpand(topContainerSession);
@@ -1824,10 +1893,10 @@ export struct SCBScenePanel {
       let isGModeRotationReason = (reason === SCBPropertyChangeReason.FOLD_SCREEN_ROTATION &&
         SCBScreenSessionManager.getInstance().isSecondaryFoldablePhoneExpandStatus());
       this.panelViewModel.handleSplitScreen(topContainerSession, screenProperty, isGModeRotationReason);
-      this.panelViewModel.updateSplitOnUltraScreen(topContainerSession);
+      this.panelViewModel.updateSplitOnThreeFold(topContainerSession);
     }
     SCBSceneSessionManager.getInstance().requestPIPScenePanelRotation(screenProperty.screenId);
-    if (DeviceHelper.isUltraScreenProduct() && this.foldAnimNum === 0) {
+    if (DeviceHelper.isThreeFoldProduct() && this.foldAnimNum === 0) {
       this.panelViewModel.folderSnapshotSize =
         { width: px2vp(this.screenProperty.width), height: px2vp(this.screenProperty.height) };
     }
@@ -1842,7 +1911,7 @@ export struct SCBScenePanel {
   }
 
   private setSnapColorAsBackground(): void {
-    if (!DeviceHelper.isUltraScreenProduct()) {
+    if (!DeviceHelper.isThreeFoldProduct()) {
       return;
     }
     let snapShotStartTime: number = Date.now();
@@ -1977,8 +2046,8 @@ export struct SCBScenePanel {
       translateFactor = 0;
     }
 
-    if (DeviceHelper.isUltraScreenProduct()) {
-      translateFactor = -1 * UltraScreenExpandAnimUtils.getScenePanelAnimFactor(this.foldExpandStateChange);
+    if (DeviceHelper.isThreeFoldProduct()) {
+      translateFactor = -1 * TripleFoldExpandAnimUtils.getScenePanelAnimFactor(this.foldExpandStateChange);
     }
 
     if (rotation === RotationConstants.ROTATION_90) {
@@ -2063,6 +2132,7 @@ export struct SCBScenePanel {
     }
     let actualRequestedOrientation: SCBSceneOrientation = requestedOrientation;
     let fromUser: boolean = true;
+    const isPageRotationRequest: boolean = !needAnimation;
     if (SCBSceneSessionManager.getInstance().isUserPageOrientation(actualRequestedOrientation)) {
       actualRequestedOrientation = SCBSceneSessionManager.getInstance().convertUserPageOrientationToUserOrientation(actualRequestedOrientation);
       fromUser = false;
@@ -2083,6 +2153,9 @@ export struct SCBScenePanel {
     WinLog.showWarn(WinLogDomain.WMS_ROTATION, '[onContainerRequestedOrientationChange] Convert requested orientation from: ' +
       containerSession.requestOrientation + ' to: ' + newRequestedOrientation);
     containerSession.sessionData.requestOrientation = newRequestedOrientation;
+    containerSession.setPendingPageRotation(false, 'onContainerRequestedOrientationChange');
+    const pendingPageRotationRequest: boolean = isPageRotationRequest ||
+      containerSession.isOrientationUnrelatedToSensor(newRequestedOrientation);
 
     if (DeviceHelper.isLargeInFoldProduct()) {
       if (this.mattesLock) {
@@ -2104,10 +2177,12 @@ export struct SCBScenePanel {
       return;
     }
     if (this.sysSceneSession.isTouchable) {
+      containerSession.setPendingPageRotation(pendingPageRotationRequest, 'onContainerRequestedOrientationChangeRecent');
       WinLog.showWarn(WinLogDomain.WMS_ROTATION, `[onContainerRequestedOrientationChange] cannot rotate when in recent state.`);
       return;
     }
     if (SCBWindowRotateController.getInstance().isLandscapeStartNotSync()) {
+      containerSession.setPendingPageRotation(pendingPageRotationRequest, 'onContainerRequestedOrientationChangeLandscapeStart');
       WinLog.showWarn(WinLogDomain.WMS_ROTATION, `[onContainerRequestedOrientationChange] cannot rotate ` +
         `when is in landscapeStart state.`);
       return;
@@ -2125,13 +2200,13 @@ export struct SCBScenePanel {
             'rotationAnimCnt: ' + this.rotationAnimCnt + ' screenRotationAnimCnt: ' + this.screenRotationAnimCnt);
           return;
         }
-        let isPageRotation: boolean = false;
-        if (!needAnimation) {
-          isPageRotation = true;
-        }
-        this.panelViewModel.startSceneWithRotationIfNeed(containerSession, needAnimation, false, fromUser, isPageRotation);
+        this.panelViewModel.startSceneWithRotationIfNeed(containerSession, needAnimation, false, fromUser,
+          isPageRotationRequest);
+      } else {
+        containerSession.setPendingPageRotation(pendingPageRotationRequest, 'onContainerRequestedOrientationChangeStartAnimating');
       }
     } else {
+      containerSession.setPendingPageRotation(pendingPageRotationRequest, 'onContainerRequestedOrientationChangeInactive');
       // no need to rotation if no active session
       WinLog.showInfo(WinLogDomain.WMS_ROTATION, '[onContainerRequestedOrientationChange] no animation name: ' +
       containerSession.primarySession?.sceneInfo.bundleName +
@@ -2664,35 +2739,37 @@ export struct SCBScenePanel {
     this.panelMgr.addSceneContainerSession(sceneContainerSession);
     this.panelMgr.raiseSceneToTop(sceneContainerSession);
     let animationNum = sceneContainerSession.getTransitionCount();
-    animateTo({
-      duration: 0,
-      curve: Curve.Linear,
-      onFinish: () => {
-        if (animationNum == sceneContainerSession.getTransitionCount()) {
-          if (CommonUtils.equals(sceneContainerSession?.needRenderScale.scaleX, 1.0)) {
-            sceneContainerSession.needRenderBorderRadius.setBorderRadiusWithDfx(CommonConstants.DEFAULT_WINDOWS_RADIUS_0,
-              TAG, 'sceneContainerZoomInAA', sceneContainerSession.getName());
-          }
-          sceneContainerSession.clearTransitionCount();
-          AnimateToScheduleUtils.raiseAppStartToCPUPriority(1);
-        }
-      },
-    }, () => {
-      sceneContainerSession.onTransitionInactive();
-      this.panelMgr.onBlurTransitionActive(1.0, 'SCBScenePanel > sceneContainerZoomInAA');
-    })
+    // animateTo({
+    //   duration: 0,
+    //   curve: Curve.Linear,
+    //   onFinish: () => {
+    sceneContainerSession.onTransitionInactive();
+    this.panelMgr.onBlurTransitionActive(1.0, 'SCBScenePanel > sceneContainerZoomInAA');
+    if (animationNum == sceneContainerSession.getTransitionCount()) {
+      if (CommonUtils.equals(sceneContainerSession?.needRenderScale.scaleX, 1.0)) {
+        sceneContainerSession.needRenderBorderRadius.setBorderRadiusWithDfx(CommonConstants.DEFAULT_WINDOWS_RADIUS_0,
+          TAG, 'sceneContainerZoomInAA', sceneContainerSession.getName());
+      }
+      sceneContainerSession.clearTransitionCount();
+      AnimateToScheduleUtils.raiseAppStartToCPUPriority(1);
+    }
+    //   },
+    // }, () => {
+    //   sceneContainerSession.onTransitionInactive();
+    //   this.panelMgr.onBlurTransitionActive(1.0, 'SCBScenePanel > sceneContainerZoomInAA');
+    // })
     // 模糊
     this.panelMgr.disableBlurComponent('sceneContainerZoomInAA');
     sceneContainerSession.needRenderAlpha.setNeedRenderAlphaWithDfx(0.0, TAG, 'sceneContainerZoomInAA',
       sceneContainerSession.getName());
     IntelligentCache.getInstance().doAnimOpen();
-    animateTo({
-      duration: 350,
-      curve: curves.cubicBezierCurve(0.2, 0, 0.2, 1)
-    }, () => {
-      sceneContainerSession.needRenderAlpha.setNeedRenderAlphaWithDfx(1.0, TAG, 'sceneContainerZoomInAA',
-        sceneContainerSession.getName());
-    })
+    // animateTo({
+    //   duration: 350,
+    //   curve: curves.cubicBezierCurve(0.2, 0, 0.2, 1)
+    // }, () => {
+    sceneContainerSession.needRenderAlpha.setNeedRenderAlphaWithDfx(1.0, TAG, 'sceneContainerZoomInAA',
+      sceneContainerSession.getName());
+    // })
   }
 
   private onStartSceneFromVirtual = (sceneInfo: SCBSceneInfo, fromInfo?: SCBSceneInfo): void => {
@@ -3112,6 +3189,9 @@ export struct SCBScenePanel {
 
   private sceneContainerTransitionOutForOneStepSplit(sceneContainerSession: SCBSceneContainerSession): void {
     let bundleName = sceneContainerSession.primarySession?.sceneInfo.bundleName;
+    if (bundleName === VassistantConstants.VASSISTANT_BUNDLE_NAME) {
+      bundleName = VassistantConstants.VASSISTANT_LAUNCHER_BUNDLE_NAME;
+    }
     let controller = SCBTransitionManager.getInstance().findTransitionController(
       bundleName, () => {
         return PageDesktopModel.getInstance().getCloseAppData(
@@ -3561,7 +3641,7 @@ export struct SCBScenePanel {
   }
 
   private transferToBackgroundForSinglePocket(foldStatus: display.FoldStatus) {
-    if (foldStatus !== display.FoldStatus.FOLD_STATUS_UNKNOWN) {
+    if (foldStatus !== display.FoldStatus.FOLD_STATUS_FOLDED) {
       return;
     }
     homeLog.showInfo('beforeScreenPropertyChange transferToBackgroundForSinglePocket');
@@ -3579,6 +3659,31 @@ export struct SCBScenePanel {
     this.panelVisible = Visibility.Hidden;
     homeLog.showInfo(`The screen expand status changed. Exit Rencent immediately.`);
     this.panelViewModel.exitRecentAndNotifyFloat(true, true);
+  }
+
+  private onViewSplitListenerCalled: ViewSplitListener = {
+    // when need to split screen
+    viewSplitScreen: (primaryAppSceneInfo, secondaryAppSceneInfo, switchType) => {
+      let topContainerSession: SCBSceneContainerSession | null = this.containerSessionList.getTopActiveSession();
+      this.panelViewModel.viewSplitScreen(primaryAppSceneInfo, secondaryAppSceneInfo, topContainerSession, switchType);
+    },
+    // when need to call intent as frequent switch
+    setSplitIntentByFrequentSwitch: (primaryAppSceneInfo, secondaryAppSceneInfo) => {
+      this.panelViewModel.setSplitIntent(primaryAppSceneInfo, secondaryAppSceneInfo);
+    },
+    // when need to call intent as natural switch
+    setSplitIntentByNaturalSwitch: (fromSceneInfo, toSceneInfo) => {
+      let containerSession: SCBSceneContainerSession | null = this.containerSessionList.getTopActiveSession();
+      let isNeedShareIntent: boolean = SCBSceneWindowAiSplitSwitchUtils.getInstance()
+        .isNeedToShareIntentAsNaturalSwitch(fromSceneInfo, toSceneInfo, containerSession);
+      if (isNeedShareIntent) {
+        this.panelViewModel.setSplitIntent(fromSceneInfo, toSceneInfo);
+        SCBSceneWindowAiSplitSwitchUtils.getInstance().saveNaturalSceneInfo(fromSceneInfo, toSceneInfo);
+      }
+    },
+    deleteSplitIntent: () => {
+      // SCBSceneWindowAiSplitSwitchUtils.getInstance().deleteSplitIntent();
+    }
   }
 
   private onCameraCompatibleViewChange = (container: SCBSceneContainerSession, isEnterCompatibleView: boolean): void => {
@@ -3611,6 +3716,7 @@ export struct SCBScenePanel {
     this.panelFsm.setCallback(this.recentScrollFlingCallback);
     this.panelFsm.setCallback(this.recentDeleteFollowingCallback);
     this.panelFsm.setCallback(this.emergencyHomeIdleCallback);
+    this.panelFsm.setCallback(this.outdoorIdleCallback);
     homeViewModel.recentEnterAnimations = this.recentEnter;
   }
 
@@ -3763,12 +3869,22 @@ export struct SCBScenePanel {
     if (TouchBoardGestureManager.isSupportTouchBoardGestureFeature()) {
       TouchBoardGestureManager.getInstance().registerThreeFingerSwipeCallback(this.threeFingerSwiperCallback);
     }
-    if (DeviceHelper.isUltraScreenProduct()) {
+    if (DeviceHelper.isThreeFoldProduct()) {
       recentLayoutConfigInstance.updateMultiRowLayout(desktopUtil.isFoldExpandStatus());
       RecentForegroundBlurAniMgr.getInstance().updateFoldExpandStatus(desktopUtil.isFoldExpandStatus());
       this.initRecentLayoutParam();
       this.viewParam.initAll();
     }
+  }
+
+  public recoverPersistentCallback = (): void => {
+    if (SCBSceneSessionManager.getInstance().getScenePersistent().hasRecover) {
+      homeLog.showWarn("SCBScenePersistent has been recovered");
+      return;
+    }
+    SCBSceneSessionManager.getInstance().getScenePersistent().recoverSessionList(
+      this.containerSessionList, this.screenProperty, this.recoverContainerSessionListCallback);
+    SCBSceneSessionManager.getInstance().getScenePersistent().hasRecover = true;
   }
 
   private sceneSessionManagerRegisterCallback(): void {
@@ -3778,10 +3894,12 @@ export struct SCBScenePanel {
     if (SCBRecoverManager.getInstance().isAbnormalRecovery()) {
       SCBSceneSessionManager.getInstance().registerRecoverSessionCallback(this.recoverContainerSessionListCallback);
       SCBRecoverManager.getInstance().setOnRecoverFinishedCallback(this.recoverFinishedCallback);
-    } else {
+    } else if (!SCBSceneSessionManager.getInstance().getScenePersistent().hasRecover) {
       SCBSceneSessionManager.getInstance().getScenePersistent().recoverSessionList(
         this.containerSessionList, this.screenProperty, this.recoverSessionListCallback);
+      SCBSceneSessionManager.getInstance().getScenePersistent().hasRecover = true;
     }
+    SCBSceneSessionManager.getInstance().registerRecoverPersistentCallback(this.recoverPersistentCallback);
     SCBSceneSessionManager.getInstance().registerGetContainerSessionListCallback(this.getContainerSessionListCallback);
     SCBSceneSessionManager.getInstance().registerGetContainerSessionListNotShowRecentCallback(
       this.getContainerSessionListNotShowRecentCallback, this.screenProperty.screenId);
@@ -3893,11 +4011,14 @@ export struct SCBScenePanel {
           return;
         }
         homeLog.showInfo('enable Blur in onFoldRotateStatusChange');
-        this.isHideBlurInRotate = false;
-        this.panelMgr.enableBlurComponent('onFoldRotateStatusChange rotate status end');
         if (topContainerSession && topContainerSession.isSplitView()) {
           topContainerSession.dividerParam.grayscaleOpacity = 1;
+          if (!topContainerSession.dividerParam.isUpDownSplit() || !DeviceHelper.isPhone()) {
+            return;
+          }
         }
+        this.isHideBlurInRotate = false;
+        this.panelMgr.enableBlurComponent('onFoldRotateStatusChange rotate status end');
         break;
       case RotateChangeEvent.ROTATE_STATUS_CANCEL:
         if (!this.isHideBlurInRotate) {
@@ -4036,11 +4157,30 @@ export struct SCBScenePanel {
         }
         if (gestureType !== GestureType.PC_BACK) {
           sceneSessionManager.processBackEvent();
+          let isShow = AppStorage.get('showWallpaperPage') as boolean
+          if (isShow === true) {
+            this.notifyApplyTheme()
+          }
         }
         break;
       }
       default:
         break;
+    }
+  }
+
+  notifyApplyTheme(): void {
+    const option: commonEventManager.CommonEventPublishData = {
+      subscriberPermissions: ['ohos.permission.ACTIVATE_THEME_PACKAGE'],
+      isOrdered: false,
+      isSticky: true,
+      parameters: {
+        timestamp: Date.now()
+      }
+    }
+    try {
+      commonEventManager.publish('ts.event.theme.close', option, (error) => {});
+    } catch (error) {
     }
   }
 
@@ -4144,11 +4284,15 @@ export struct SCBScenePanel {
     if (DesktopModeManager.getInstance().isInEmergencyOrThermalSafeMode()) {
       this.panelFsm.setCurrentStateToEmergencyHome();
     }
+    if (OutdoorConfig.getInstance().isInOutdoorMode()) {
+      this.panelFsm.setCurrentStateToOutdoor();
+    }
     quickSwitchViewModel.onInit();
   }
 
   private prepareEnterRecentViewForSplit(): void {
     this.doBreakMaxSplitViewAnimation();
+    this.panelViewModel.showWallpaperAfterRotate();
     let container = this.containerSessionList.getTopActiveSession();
     if (container === null || container === undefined || container.isSplit === false) {
       return;
@@ -4330,6 +4474,8 @@ export struct SCBScenePanel {
       recentLog.showInfo('onHomeKeyInput ignore,GESTURE_NAVBAR is exclusive');
       return;
     }
+    // 显示壁纸，避免桌面黑屏
+    this.panelViewModel.showWallpaperAfterRotate();
     gestureNavigationObserver.sendGestureNavigationEvent(GestureNavigationState.START, NavigationType.FLOATING);
     gestureNavigationObserver.sendGestureNavigationEvent(GestureNavigationState.END, NavigationType.FLOATING);
     // 关闭快捷键面板
@@ -4350,6 +4496,7 @@ export struct SCBScenePanel {
         if (SCBSceneSessionManager.getInstance()?.processSystemHomeEvent(this.screenProperty.screenId)) {
           return;
         }
+        DeliverUtil.closeSystemWindows();
         this.prepareEnterRecentViewForSplit();
         this.zoomFollowingFromAppCallback.enterHomeIdle(0, 0);
         this.panelFsm.setCurrentStateToHome();
@@ -4405,6 +4552,7 @@ export struct SCBScenePanel {
       }
       case ScenePanelState.FULLSCENE: {
         recentLog.showInfo('onRecentKeyInput to FULLSCENE');
+        DeliverUtil.closeSystemWindows();
         this.panelMgr.setSceneContainerSessionListForView(this.containerSessionList.filterClone());
         ViewManagerPolicy.showView(ViewType.WALLPAPER);
         this.prepareEnterRecentViewForSplit();
@@ -4558,7 +4706,7 @@ export struct SCBScenePanel {
 
   aboutToDisappear(): void {
     this.doReport = false;
-    if (TouchBoardGestureManager.isSupportTouchBoardGestureFeature() || DeviceHelper.isUltraScreenProduct()) {
+    if (TouchBoardGestureManager.isSupportTouchBoardGestureFeature() || DeviceHelper.isThreeFoldProduct()) {
       TouchBoardGestureManager.getInstance().unRegisterThreeFingerSwipeCallback(this.threeFingerSwiperCallback);
       this.swipeController = null;
     }
@@ -4598,10 +4746,22 @@ export struct SCBScenePanel {
       this.panelViewModel.exitSplitViewInFixedMultiWindowOrientation(currContainerSession.primarySession?.sceneInfo.persistentId,
         currContainerSession.containerId);
     }
+    if (this.needRestoreHideDesktop) {
+      this.needRestoreHideDesktop = false;
+      ViewManagerPolicy.hideView(ViewType.DESKTOP);
+    }
+    if (this.needRestoreHideWallpaper) {
+      this.needRestoreHideWallpaper = false;
+      ViewManagerPolicy.hideView(ViewType.WALLPAPER);
+    }
     if (this.scenePanelState !== ScenePanelState.FULLSCENE && !sOutSideWindowMgr.isShowGlobalSearch()
       && !ViewManagerPolicy.isViewShowing(ViewType.NEGATIVE_SCREEN)) {
       SCBTransitionManager.getInstance().onUnlockTransitionEnterHome();
       this.unLockScale = UnLockConstants.MIN_SCENE_SCALE;
+      // 兜底：确保桌面和壁纸显示
+      winLog.showInfo(`[UnlockDebug] onUnLockReceived force show desktop and wallpaper`);
+      this.showDesktopIfNeed('unlockToHome');
+      this.showWallpaperIfNeed('unlockToHome');
       // if horizontal above keyguard, unlock with current this.screenProperty
       homeLog.showDebug('onUnLockReceived screenProperty: ' + JSON.stringify(this.screenProperty));
       return;
@@ -4619,7 +4779,16 @@ export struct SCBScenePanel {
 
   private onLockReceived() {
     homeLog.showInfo('onLockReceived scenePanelState = ' + this.scenePanelState);
+    if (!ViewManagerPolicy.isViewShowing(ViewType.DESKTOP)) {
+      this.needRestoreHideDesktop = true;
+      ViewManagerPolicy.showView(ViewType.DESKTOP);
+    }
+    if (!ViewManagerPolicy.isViewShowing(ViewType.WALLPAPER)) {
+      this.needRestoreHideWallpaper = true;
+      ViewManagerPolicy.showView(ViewType.WALLPAPER);
+    }
     quickSwitchRequestActiveAlarm.onAlarm();
+    FloatingNavigationManager.getInstance()?.setIsScreenLock(true);
     let currContainerSession = this.containerSessionList.getTopActiveSession();
     this.lockPrepareForSplit();
     if (this.scenePanelState !== ScenePanelState.FULLSCENE && !sOutSideWindowMgr.isShowGlobalSearch()
@@ -4700,42 +4869,45 @@ export struct SCBScenePanel {
     this.recentClearAll.clearRecentListIfNeed(animationCount, sceneContainerSession);
   }
 
-  private unclearableContainerDisappearForClearAll(sceneContainerSession: SCBSceneContainerSession, index: number,
-    isDelayUnClearableAnimate: boolean): void {
+  // private unclearableContainerDisappearForClearAll(sceneContainerSession: SCBSceneContainerSession, index: number,
+  //   isDelayUnClearableAnimate: boolean): void {
+  private unclearableContainerDisappearForClearAll(sceneContainerSession: SCBSceneContainerSession,
+    index: number): void {
     if (!sceneContainerSession) {
       return;
     }
     let animationCount = sceneContainerSession.getTransitionCount();
     sceneContainerSession.requestBackground();
-    let param: AnimateParam = {
-      curve: Curve.FastOutLinearIn,
-      delay: 150,
-      duration: 350,
-      onFinish: () => {
-        this.clearAllAnimCnt--;
-        recentLog.info(`doSceneSessionDisappear ${sceneContainerSession.getName()} ${this.clearAllAnimCnt}`);
-        if (animationCount === sceneContainerSession.getTransitionCount()) {
-          sceneContainerSession.needRenderShowInRecent.setShowInRecentWithDfx(false, TAG,
-            'playUnclearAbleAnimation');
-        }
-        if (index === SCBSessionShowInScreenIndex.INDEX_RIGHT) {
-          this.recentGesture.containerUnsinking(sceneContainerSession);
-        }
-        performanceMonitor.end(HiSysEventUtil.CLEAR_All_RECENT_ANI);
-        this.resetParamForClearAllOnFinish(animationCount, sceneContainerSession);
-        this.recentDelete.showClearAllMissionsToast(index);
-      }
+    // let param: AnimateParam = {
+    //   curve: Curve.FastOutLinearIn,
+    //   delay: 150,
+    //   duration: 350,
+    //   onFinish: () => {
+    sceneContainerSession.needRenderAlpha.setNeedRenderAlphaWithDfx(0, TAG, 'playUnclearAbleAnimation',
+      sceneContainerSession.getName());
+    recentLog.info(`doSceneSessionDisappear ${sceneContainerSession.getName()} ${this.clearAllAnimCnt}`);
+    if (animationCount === sceneContainerSession.getTransitionCount()) {
+      sceneContainerSession.needRenderShowInRecent.setShowInRecentWithDfx(false, TAG,
+        'playUnclearAbleAnimation');
     }
-    if (isDelayUnClearableAnimate) {
-      param.delay = 450;
+    if (index === SCBSessionShowInScreenIndex.INDEX_RIGHT) {
+      this.recentGesture.containerUnsinking(sceneContainerSession);
     }
-    animateToImmediately(param, () => {
-      sceneContainerSession.needRenderAlpha.setNeedRenderAlphaWithDfx(0, TAG, 'playUnclearAbleAnimation',
-        sceneContainerSession.getName());
-    })
+    this.recentDelete.showClearAllMissionsToast(index);
+    //   },
+    // }
+    // if (isDelayUnClearableAnimate) {
+    //   param.delay = 450;
+    // }
+    // animateToImmediately(param, () => {
+    //   sceneContainerSession.needRenderAlpha.setNeedRenderAlphaWithDfx(0, TAG, 'playUnclearAbleAnimation',
+    //     sceneContainerSession.getName());
+    // })
   }
 
-  private clearableContainerDisappearForClearAll(sceneContainerSession: SCBSceneContainerSession, delay: number,
+  // private clearableContainerDisappearForClearAll(sceneContainerSession: SCBSceneContainerSession, delay: number,
+  //   index: number): void {
+  private clearableContainerDisappearForClearAll(sceneContainerSession: SCBSceneContainerSession,
     index: number): void {
     this.recentClearAll.containerDestructionForClearAll(sceneContainerSession);
     sceneContainerSession.addTransitionCount();
@@ -4744,29 +4916,31 @@ export struct SCBScenePanel {
       sceneContainerSession.floatingParam.floatInRecentFinished = true;
     }
 
-    let animationCount = sceneContainerSession.getTransitionCount();
-    animateToImmediately({
-      curve: Curve.FastOutLinearIn,
-      delay: delay,
-      duration: 350,
-      onFinish: () => {
-        performanceMonitor.end(HiSysEventUtil.CLEAR_All_RECENT_ANI);
-        // pad PC 预关闭应用，不销毁窗口
-        this.clearAllAnimCnt--;
-        recentLog.info(`doSceneSessionDisappear ${sceneContainerSession.getName()} ${this.clearAllAnimCnt}`);
-        // 点击垃圾桶业务逻辑无法被打断
-        this.panelMgr.removeSceneContainerSession(sceneContainerSession);
-        this.panelMgr.removeFloatSceneContainerSession(sceneContainerSession);
-        this.recentDelete.showClearAllMissionsToast(index);
-        this.resetParamForClearAllOnFinish(animationCount, sceneContainerSession);
-      }
-    }, () => {
-      sceneContainerSession.needRenderRotate.setAngle(-90);
-    })
-    RecentTitleViewModel.playTitleDisAppearAnimation(sceneContainerSession);
+    // let animationCount = sceneContainerSession.getTransitionCount();
+    // animateToImmediately({
+    //   curve: Curve.FastOutLinearIn,
+    //   delay: delay,
+    //   duration: 350,
+    //   onFinish: () => {
+    // performanceMonitor.end(HiSysEventUtil.CLEAR_All_RECENT_ANI);
+    // this.clearAllAnimCnt--;
+    recentLog.info(`doSceneSessionDisappear ${sceneContainerSession.getName()} ${this.clearAllAnimCnt}`);
+    this.panelMgr.removeSceneContainerSession(sceneContainerSession);
+    this.panelMgr.removeFloatSceneContainerSession(sceneContainerSession);
+    this.recentDelete.showClearAllMissionsToast(index);
+    // this.resetParamForClearAllOnFinish(animationCount, sceneContainerSession);
+    //   },
+    // }, () => {
+    //   sceneContainerSession.needRenderRotate.setAngle(-90);
+    // })
+    // RecentTitleViewModel.playTitleDisAppearAnimation(sceneContainerSession);
+    sceneContainerSession.needRenderTitleViewAlpha.setTitleViewAlpha(0);
+    sceneContainerSession.needRenderShowRecentTitle.setShowRecentTitle(false);
   }
 
-  private doSceneSessionDisappearFromRecentAnimation(delay: number, sceneContainerSession: SCBSceneContainerSession,
+  // private doSceneSessionDisappearFromRecentAnimation(delay: number, sceneContainerSession: SCBSceneContainerSession,
+  //   index: SCBSessionShowInScreenIndex): void {
+  private doSceneSessionDisappearFromRecentAnimation(sceneContainerSession: SCBSceneContainerSession,
     index: SCBSessionShowInScreenIndex): void {
     // animation not need calc icon pos with rotation, thus can clear session data before animation
     // set true for clear session flag if the destruction operation is from recent view
@@ -4776,20 +4950,23 @@ export struct SCBScenePanel {
     recentLog.info(`doSceneSessionDisappear ${sceneContainerSession.getName()} ${this.clearAllAnimCnt}`);
     // 可删除卡片动效
     if (!unclearAble) {
-      this.clearableContainerDisappearForClearAll(sceneContainerSession, delay, index);
+      // this.clearableContainerDisappearForClearAll(sceneContainerSession, delay, index);
+      this.clearableContainerDisappearForClearAll(sceneContainerSession, index);
       return;
     }
 
-    let isDelayUnClearableAnimate = RecentLockIconModel.isDelayUnClearableAnimate(this.recentGesture) &&
-      this.clearAllAnimCnt > 0;
+    // let isDelayUnClearableAnimate = RecentLockIconModel.isDelayUnClearableAnimate(this.recentGesture) &&
+    //   this.clearAllAnimCnt > 0;
     if (!sceneContainerSession.isFloat) {
-      this.unclearableContainerDisappearForClearAll(sceneContainerSession, index, isDelayUnClearableAnimate);
+      // this.unclearableContainerDisappearForClearAll(sceneContainerSession, index, isDelayUnClearableAnimate);
+      this.unclearableContainerDisappearForClearAll(sceneContainerSession, index);
     } else {
       this.floatToFullWhenUnclearAble(sceneContainerSession, index);
     }
     this.recentClearAll.resetIsKillParam(sceneContainerSession);
-    this.recentClearAll.titleDisappearAnimationForUnClearable(sceneContainerSession, this.uiContext,
-      isDelayUnClearableAnimate);
+    // this.recentClearAll.titleDisappearAnimationForUnClearable(sceneContainerSession, this.uiContext,
+    //   isDelayUnClearableAnimate);
+    this.recentClearAll.titleDisappearAnimationForUnClearable(sceneContainerSession);
     HiSysEventUtil.reportClearSingleAppInRecent(sceneContainerSession.companionIconInfo?.bundleName, false);
   }
 
@@ -4798,34 +4975,34 @@ export struct SCBScenePanel {
     homeLog.showInfo(`floatToFullWhenUnclearAble, name: ${sceneContainerSession.getName()}`);
     sceneContainerSession.requestBackground();
     sceneContainerSession.isDisappearing = true;
-    let isDelayUnClearableAnimate = RecentLockIconModel.isDelayUnClearableAnimate(this.recentGesture) &&
-      this.clearAllAnimCnt > 0;
+    // let isDelayUnClearableAnimate = RecentLockIconModel.isDelayUnClearableAnimate(this.recentGesture) &&
+    //   this.clearAllAnimCnt > 0;
     sceneContainerSession.isFloatView = true;
     let floatingParam = sceneContainerSession.floatingParam;
     floatingParam.isClosingFloat = true;
     floatingParam.minAnimationNum++;
     let animationCount = sceneContainerSession.getTransitionCount();
-    let param: AnimateParam = {
-      curve: Curve.FastOutLinearIn,
-      delay: 150,
-      duration: 350,
-      onFinish: () => {
-        this.clearAllAnimCnt--;
-        recentLog.info(`floatToFullWhenUnclearAble ${sceneContainerSession.getName()} ${this.clearAllAnimCnt}`);
-        sceneContainerSession.isDisappearing = false;
-        performanceMonitor.end(HiSysEventUtil.CLEAR_All_RECENT_ANI);
-        this.resetParamForClearAllOnFinish(animationCount, sceneContainerSession);
-        this.recentDelete.showClearAllMissionsToast(index);
-      }
-    }
-    if (isDelayUnClearableAnimate) {
-      param.delay = 450;
-    }
-    animateToImmediately(param, () => {
-      sceneContainerSession.updateScaleForFloat(1);
-      sceneContainerSession.needRenderAlpha.setNeedRenderAlphaWithDfx(0, TAG, 'playUnclearAbleAnimation',
-        sceneContainerSession.getName());
-    })
+    // let param: AnimateParam = {
+    //   curve: Curve.FastOutLinearIn,
+    //   delay: 150,
+    //   duration: 350,
+    //   onFinish: () => {
+    sceneContainerSession.updateScaleForFloat(1);
+    sceneContainerSession.needRenderAlpha.setNeedRenderAlphaWithDfx(0, TAG, 'playUnclearAbleAnimation',
+      sceneContainerSession.getName());
+    recentLog.info(`floatToFullWhenUnclearAble ${sceneContainerSession.getName()} ${this.clearAllAnimCnt}`);
+    sceneContainerSession.isDisappearing = false;
+    this.recentDelete.showClearAllMissionsToast(index);
+    //   },
+    // }
+    // if (isDelayUnClearableAnimate) {
+    //   param.delay = 450;
+    // }
+    // animateToImmediately(param, () => {
+    //   sceneContainerSession.updateScaleForFloat(1);
+    //   sceneContainerSession.needRenderAlpha.setNeedRenderAlphaWithDfx(0, TAG, 'playUnclearAbleAnimation',
+    //     sceneContainerSession.getName());
+    // })
   }
 
   private initFloatingWhenClearAll(container: SCBSceneContainerSession): void {
@@ -4870,9 +5047,10 @@ export struct SCBScenePanel {
   }
 
   private backToHomAfterClearAll(blurAnimDelayTime?: number) {
-    let delayTime = RecentLockIconModel.isDelayUnClearableAnimate(this.recentGesture) &&
-      this.isStartClearAll ? 450 : 0;
-    this.panelViewModel.updateScenePanelState(ScenePanelState.HOME, false, delayTime, blurAnimDelayTime);
+    // let delayTime = RecentLockIconModel.isDelayUnClearableAnimate(this.recentGesture) &&
+    //   this.isStartClearAll ? 450 : 0;
+    // this.panelViewModel.updateScenePanelState(ScenePanelState.HOME, false, delayTime, blurAnimDelayTime);
+    this.panelViewModel.finishClearAllToHome();
     this.recentInnerState.onInit();
     this.isStartClearAll = false;
     HiSysEventUtil.reportClearAllAppInRecent(this.recentDelete.getUnClearAbleBundleNameList(
@@ -4888,17 +5066,19 @@ export struct SCBScenePanel {
     if (notRemovingSessionLength < 1) {
       recentLog.info(`clearRecentMissions back to home`);
       this.backToHomAfterClearAll();
-      this.panelViewModel.startBlurAnimationForContainer(0);
+      // this.panelViewModel.startBlurAnimationForContainer(0);
       this.recentDelete.showStatusBarIfNeedOnfinish(this.scenePanelState, 1);
       // 删除不显示多任务的container
       this.recentDelete.destructContaierInNotShow();
       return;
     }
+    recentLog.info(`transparentView is show to ignore click`);
+    this.needTransparentSession = true;
     this.panelViewModel.publishScenePanelEventMsg(CEManager.CUSTOM_RECENT_EVENT, RecentEventType.RECENT_CLEAR_ALL);
     let screenWidth = px2vp(this.screenProperty.width);
     let screenHeight = px2vp(this.screenProperty.height);
     let curIndex = recentRuntimeInstance.autoCenterColumn;
-    let delay: number = 0;
+    // let delay: number = 0;
     let rightIndex: number = recentRuntimeInstance.getSafeIndex(curIndex + 1);
     let leftIndex: number = recentRuntimeInstance.getSafeIndex(curIndex - 1);
     let cloneList = recentRuntimeInstance.notRemovingSessionList.filterClone();
@@ -4920,18 +5100,20 @@ export struct SCBScenePanel {
           this.recentGesture.containerSinking(rightIndex);
           let centerX = this.recentGesture.calculateCenterX(rightIndex);
           rightSession.needRenderRotate.setCenterX(centerX);
-          this.doSceneSessionDisappearFromRecentAnimation(delay, rightSession, SCBSessionShowInScreenIndex.INDEX_RIGHT);
+          // this.doSceneSessionDisappearFromRecentAnimation(delay, rightSession, SCBSessionShowInScreenIndex.INDEX_RIGHT);
+          this.doSceneSessionDisappearFromRecentAnimation(rightSession, SCBSessionShowInScreenIndex.INDEX_RIGHT);
           inScreenContainer.push(rightSession);
-          delay += 50;
+          // delay += 50;
         }
       }
 
       let curSession = cloneList[curIndex];
       if (curSession) {
         curSession.needRenderRotate.setCenterX(screenWidth / 2);
-        this.doSceneSessionDisappearFromRecentAnimation(delay, curSession, SCBSessionShowInScreenIndex.INDEX_MIDDLE);
+        // this.doSceneSessionDisappearFromRecentAnimation(delay, curSession, SCBSessionShowInScreenIndex.INDEX_MIDDLE);
+        this.doSceneSessionDisappearFromRecentAnimation(curSession, SCBSessionShowInScreenIndex.INDEX_MIDDLE);
         inScreenContainer.push(curSession);
-        delay += 50;
+        // delay += 50;
       }
 
       if (leftIndex !== curIndex) {
@@ -4939,7 +5121,8 @@ export struct SCBScenePanel {
         if (leftSession) {
           let centerX = this.recentGesture.calculateCenterX(leftIndex);
           leftSession.needRenderRotate.setCenterX(centerX);
-          this.doSceneSessionDisappearFromRecentAnimation(delay, leftSession, SCBSessionShowInScreenIndex.INDEX_LEFT);
+          // this.doSceneSessionDisappearFromRecentAnimation(delay, leftSession, SCBSessionShowInScreenIndex.INDEX_LEFT);
+          this.doSceneSessionDisappearFromRecentAnimation(leftSession, SCBSessionShowInScreenIndex.INDEX_LEFT);
           inScreenContainer.push(leftSession);
         }
       }
@@ -4999,18 +5182,21 @@ export struct SCBScenePanel {
       // 双行 一键删除的 不显示多任务卡片 删除和销毁
       this.recentDelete.destructContaierInNotShow();
 
-      delay = 100;
+      // delay = 100;
       for (let rightSession of rightSessions) {
         rightSession.needRenderRotate.setCenterX('50%');
-        this.doSceneSessionDisappearFromRecentAnimation(delay, rightSession, SCBSessionShowInScreenIndex.INDEX_RIGHT);
+        // this.doSceneSessionDisappearFromRecentAnimation(delay, rightSession, SCBSessionShowInScreenIndex.INDEX_RIGHT);
+        this.doSceneSessionDisappearFromRecentAnimation(rightSession, SCBSessionShowInScreenIndex.INDEX_RIGHT);
       }
       for (let midSession of midSessions) {
         midSession.needRenderRotate.setCenterX('50%');
-        this.doSceneSessionDisappearFromRecentAnimation(delay, midSession, SCBSessionShowInScreenIndex.INDEX_MIDDLE);
+        // this.doSceneSessionDisappearFromRecentAnimation(delay, midSession, SCBSessionShowInScreenIndex.INDEX_MIDDLE);
+        this.doSceneSessionDisappearFromRecentAnimation(midSession, SCBSessionShowInScreenIndex.INDEX_MIDDLE);
       }
       for (let leftSession of leftSessions) {
         leftSession.needRenderRotate.setCenterX('50%');
-        this.doSceneSessionDisappearFromRecentAnimation(delay, leftSession, SCBSessionShowInScreenIndex.INDEX_LEFT);
+        // this.doSceneSessionDisappearFromRecentAnimation(delay, leftSession, SCBSessionShowInScreenIndex.INDEX_LEFT);
+        this.doSceneSessionDisappearFromRecentAnimation(leftSession, SCBSessionShowInScreenIndex.INDEX_LEFT);
       }
       // 由于scroll的改变，屏幕的卡片需要重新设置新scroll下的pos
       this.recentClearAll.setInScreenConatinerPos(rightSessions, this.recentScroll.currentOffsetX);
@@ -5020,15 +5206,31 @@ export struct SCBScenePanel {
       // 屏幕外卡片的处理逻辑
       this.recentClearAll.removeAndDestructOffScreenSessions(offScreenSessions, this.recentClearAllCallback);
     }
-    let existLockedSessionInScreen = RecentLockIconModel.isDelayUnClearableAnimate(this.recentGesture);
-    let delayTime =
-      this.recentClearAll.delayTimeForBlurAnimation(existLockedSessionInScreen, inScreenContainer);
-    recentLog.info(`delay blur ${delayTime}`);
-    this.backToHomAfterClearAll(delayTime);
-    this.panelViewModel.startBlurAnimationForContainer(delayTime);
+    // let existLockedSessionInScreen = RecentLockIconModel.isDelayUnClearableAnimate(this.recentGesture);
+    // let delayTime =
+    //   this.recentClearAll.delayTimeForBlurAnimation(existLockedSessionInScreen, inScreenContainer);
+    recentLog.info(`delay blur 0`);
+    this.clearAllAnimCnt = 0;
+    performanceMonitor.end(HiSysEventUtil.CLEAR_All_RECENT_ANI);
+    let finishSession = inScreenContainer.length > 0 ?
+      inScreenContainer[inScreenContainer.length - 1] : cloneList[curIndex];
+    if (finishSession) {
+      this.resetParamForClearAllOnFinish(finishSession.getTransitionCount(), finishSession);
+    } else {
+      RecentGestureEventManager.getInstance().deliverGestureEvent(RecentGestureEvent.CLEAR_ALL_MISSIONS_END);
+      recentRuntimeInstance.exit();
+    }
+    this.backToHomAfterClearAll();
+    // this.panelViewModel.startBlurAnimationForContainer(delayTime);
     CloseAppManager.getInstance().clearAdaptiveIconCache();
     CloseAppManager.getInstance().deleteCardCache();
     this.panelViewModel.restorePrepareContainerSession();
+    // setTimeout(() => {
+    //   this.needTransparentSession = false;
+    //   recentLog.info(`transparentView is hide`);
+    // }, delayTime + 1000)
+    this.needTransparentSession = false;
+    recentLog.info(`transparentView is hide`);
   }
 
   private filterUnClearAbleSessions(): void {
@@ -5279,6 +5481,9 @@ export struct SCBScenePanel {
           .width('100%')
           .height('100%')
       }
+      .onClick(() => {
+        homeLog.info('onClick invoke transparentView');
+      })
     }
   }
 

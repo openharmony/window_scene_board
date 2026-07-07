@@ -43,14 +43,14 @@
             }
         },
         {
-            "name":"openharmony_multiwindow_app_is_open",
+            "name":"oh_multiwindow_app_is_open",
             "value":"此應用程式已開啟",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"openharmony_multiwindow_not_support_multiwindows",
+            "name":"oh_multiwindow_not_support_multiwindows",
             "value":"「%1$s」不支援多個視窗",
             "attr":{
                 "priority":"LT"
@@ -71,14 +71,14 @@
             }
         },
         {
-            "name":"openharmony_multiwindow_not_support_split",
+            "name":"oh_multiwindow_not_support_split",
             "value":"「%1$s」不支援分割屏幕",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"openharmony_multiwindow_not_support_float_window",
+            "name":"oh_multiwindow_not_support_float_window",
             "value":"「%1$s」不支援浮動視窗",
             "attr":{
                 "priority":"LT"
@@ -106,7 +106,7 @@
             }
         },
         {
-            "name":"openharmony_multiwindow_click_application_form_split_screen",
+            "name":"oh_multiwindow_click_application_form_split_screen",
             "value":"輕觸主屏幕應用程式即可形成分割屏幕",
             "attr":{
                 "priority":"LT"
@@ -122,6 +122,13 @@
         {
             "name":"control_center_complex_toggle_bluetooth_title",
             "value":"藍牙",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"HiSearch_title",
+            "value":"語言助手搜尋",
             "attr":{
                 "priority":"translate"
             }
@@ -183,6 +190,83 @@
             }
         },
         {
+            "name":"Ai_bar_return_home",
+            "value":"返回主屏幕",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Ai_bar_recent_detail",
+            "value":"從屏幕底部邊緣向上滑動並停頓",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Ai_bar_recent",
+            "value":"前往最近任務",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Ai_bar_setting",
+            "value":"系統導覽",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_list_title_more_style",
+            "value":"更多線上樣式",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Ai_bar_back",
+            "value":"返回",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Ai_bar_vassistant_dialogue",
+            "value":"語言助手對話",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Ai_bar_gesture_back_detail",
+            "value":"從屏幕左/右側向內滑動，即可返回上一頁",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Ai_bar_vassistant",
+            "value":"長按底部導航列，即可觸發語言助手對話",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Ai_bar_return_home_detail",
+            "value":"從屏幕底部邊緣向上滑動",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Ai_bar_back_detail",
+            "value":"輕觸底部導航列，即可返回上一頁",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
             "name":"app_menu_exit",
             "value":"退出",
             "attr":{
@@ -225,7 +309,7 @@
             }
         },
         {
-            "name":"openharmony_multiwindow_not_support_split_ratio",
+            "name":"oh_multiwindow_not_support_split_ratio",
             "value":"遊戲應用程式不支援分割屏幕比例調節",
             "attr":{
                 "priority":"translate"
@@ -234,6 +318,13 @@
         {
             "name":"MultiWindow_dock_title",
             "value":"智能多窗應用程式欄",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Ai_bar",
+            "value":"導航列",
             "attr":{
                 "priority":"LT"
             }
@@ -316,6 +407,27 @@
             }
         },
         {
+            "name":"drag_to_voice",
+            "value":"拖給語言助手",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"let_go_drag_to_voice",
+            "value":"鬆手發給語言助手",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"drag_to_voice_detail",
+            "value":"長按內容直至浮起，即可拖曳至底部語言助手",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
             "name":"MultiWindow_guidance_split_swap_title",
             "value":"分割屏幕互換",
             "attr":{
@@ -323,7 +435,7 @@
             }
         },
         {
-            "name":"openharmony_multiwindow_not_support_vertical_split_new",
+            "name":"oh_multiwindow_not_support_vertical_split_new",
             "value":"%1$s不支援左右分割屏幕",
             "attr":{
                 "priority":"LT"
@@ -358,7 +470,7 @@
             }
         },
         {
-            "name":"openharmony_multiwindow_not_support_horizontal_split_new",
+            "name":"oh_multiwindow_not_support_horizontal_split_new",
             "value":"%1$s不支援上下分割屏幕",
             "attr":{
                 "priority":"LT"
@@ -491,7 +603,7 @@
             }
         },
         {
-            "name":"openharmony_multiwindow_not_support_split_for_folded_new",
+            "name":"oh_multiwindow_not_support_split_for_folded_new",
             "value":"%1$s在裝置折疊狀態時不支援分割屏幕",
             "attr":{
                 "priority":"LT"
@@ -547,14 +659,14 @@
             }
         },
         {
-            "name":"openharmony_multiwindow_horizontal_split",
+            "name":"oh_multiwindow_horizontal_split",
             "value":"上下分割屏幕",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"openharmony_multiwindow_vertical_split",
+            "name":"oh_multiwindow_vertical_split",
             "value":"左右分割屏幕",
             "attr":{
                 "priority":"LT"
@@ -568,21 +680,21 @@
             }
         },
         {
-            "name":"openharmony_multiwindow_horizontal_exchange",
+            "name":"oh_multiwindow_horizontal_exchange",
             "value":"上下互換",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"openharmony_multiwindow_save_group",
+            "name":"oh_multiwindow_save_group",
             "value":"儲存組合",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"openharmony_multiwindow_vertical_exchange",
+            "name":"oh_multiwindow_vertical_exchange",
             "value":"左右互換",
             "attr":{
                 "priority":"LT"
@@ -761,8 +873,8 @@
             }
         },
         {
-            "name":"folder_name_oh",
-            "value":"應用程式",
+            "name":"folder_name_system_apps",
+            "value":"華為應用程式",
             "attr":{
                 "priority":"LT"
             }
@@ -777,6 +889,20 @@
         {
             "name":"new_folder_name",
             "value":"資料夾 %1$d",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Ai_bar_vassistant_dialogue_longpress",
+            "value":"長按以觸發語言助手對話",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Ai_bar_back_click_navigation",
+            "value":"輕觸導航列返回",
             "attr":{
                 "priority":"LT"
             }
@@ -835,6 +961,13 @@
             "value":"最多新增 %1$d 個應用程式",
             "attr":{
                 "priority":"LT"
+            }
+        },
+        {
+            "name":"ai_bar_accessibility_text",
+            "value":"導航條，輕觸兩下後長按即可觸發語言助手對話",
+            "attr":{
+                "priority":"translate"
             }
         },
         {
@@ -994,6 +1127,13 @@
         {
             "name":"enter_pc_mode_tips",
             "value":"即將啟用自由多視窗，為了更好的體驗，此模式僅支援在橫向屏幕下使用。",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_to_voice_reminder",
+            "value":"拖入語言助手，鬆手即可執行",
             "attr":{
                 "priority":"translate"
             }
@@ -1244,21 +1384,21 @@
             }
         },
         {
-            "name":"openharmony_multiwindow_click_application_form_midScene_waiting_state",
+            "name":"oh_multiwindow_click_application_form_midScene_waiting_state",
             "value":"輕觸主屏幕應用程式加入全景多窗",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"openharmony_multiwindow_does_not_support_panoramic_multiwindow",
+            "name":"oh_multiwindow_does_not_support_panoramic_multiwindow",
             "value":"目前應用程式不支援全景多窗",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"openharmony_multiwindow_back_to_middle_scene_using_gesture",
+            "name":"oh_multiwindow_back_to_middle_scene_using_gesture",
             "value":"多指收合返回全景多窗",
             "attr":{
                 "priority":"LT"
@@ -1272,7 +1412,7 @@
             }
         },
         {
-            "name":"openharmony_multiwindow_does_not_support_panoramic_multiwindow_in_current_state",
+            "name":"oh_multiwindow_does_not_support_panoramic_multiwindow_in_current_state",
             "value":"目前狀態不支援全景多窗",
             "attr":{
                 "priority":"LT"
@@ -1440,28 +1580,28 @@
             }
         },
         {
-            "name":"openharmony_multiwindow_minimize_all_float_due_to_rss",
+            "name":"oh_multiwindow_minimize_all_float_due_to_rss",
             "value":"為確保流暢體驗，浮動視窗暫時歸入側邊",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"openharmony_multiwindow_not_support_change_split_ratio",
+            "name":"oh_multiwindow_not_support_change_split_ratio",
             "value":"「%1$s」不支援分割屏幕比例調節",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"openharmony_multiwindow_not_support_split_this_way_currently",
+            "name":"oh_multiwindow_not_support_split_this_way_currently",
             "value":"目前裝置狀態，「%1$s」不支援此種方式啟用分割屏幕",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"openharmony_multiwindow_not_support_split_currently",
+            "name":"oh_multiwindow_not_support_split_currently",
             "value":"目前裝置狀態，「%1$s」不支援分割屏幕",
             "attr":{
                 "priority":"translate"

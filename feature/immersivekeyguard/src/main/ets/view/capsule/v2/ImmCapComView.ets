@@ -75,7 +75,7 @@ export struct ImmCapComView {
 
   // 小图标样式
   @Computed get sIconStyle(): WidgetStyleStateV2 | undefined {
-    // 区分通用样式
+    // 区分克隆应用样式与通用样式
     let suffix = this.capData?.isOverlyReverse() ?
       CapStyleSuffix.ITEM_SMALL_ICON_REVERSE_STYLE : CapStyleSuffix.ITEM_SMALL_ICON_STYLE;
     return this.getCapStyle(suffix);
@@ -83,7 +83,7 @@ export struct ImmCapComView {
 
   // 小图标背景样式
   @Computed get sIconBgStyle(): WidgetStyleStateV2 | undefined {
-    // 区分通用样式
+    // 区分克隆应用样式与通用样式
     let suffix = this.capData?.isOverlyReverse() ?
       CapStyleSuffix.ITEM_SMALL_ICON_BG_REVERSE_STYLE : CapStyleSuffix.ITEM_SMALL_ICON_BG_STYLE;
     return this.getCapStyle(suffix);

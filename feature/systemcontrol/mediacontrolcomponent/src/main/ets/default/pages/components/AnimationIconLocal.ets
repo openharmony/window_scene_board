@@ -17,6 +17,12 @@ import animator, { AnimatorResult } from '@ohos.animator';
 import { LogDomain, LogHelper } from '@ohos/basicutils/src/main/ets/utils/LogHelper';
 import { ThreadUtil } from '@ohos/basicutils/src/main/ets/utils/ThreadUtil';
 import { DeviceHelper } from '@ohos/frameworkwrapper/src/main/ets/base/DeviceHelper';
+import { EvtBus } from '@ohos/frameworkwrapper/src/main/ets/eventbus/EventBus';
+import { ConfigurationEvent } from '@ohos/frameworkwrapper/src/main/ets/eventbus/events/Events';
+import {
+  AodStyleType,
+  ImmersiveAodStyle,
+} from '@ohos/systemuicommon/src/main/ets/immersivekeyguardcommon/base/interface/ImmersiveAodStyle';
 import {
   immersiveKgMgr,
 } from '@ohos/systemuicommon/src/main/ets/immersivekeyguardcommon/manager/ImmersiveKeyguardStateManager';
@@ -66,6 +72,11 @@ export default struct AnimationIconLocal {
   @Prop isControlCenter: string;
   @Prop sceneType: string;
   @StorageLink('isSysColor') isSysColor: boolean = true;
+
+  /**
+   * AOD显示样式
+   */
+  @State aodStyle: ImmersiveAodStyle | undefined = immersiveKgMgr.getOneMirrorState().getAodStyle(true);
 
   private linkAnimator1: AnimatorResult | undefined;
   private linkAnimator2: AnimatorResult | undefined;
@@ -147,19 +158,23 @@ export default struct AnimationIconLocal {
     if (isSink) {
       return '#FFFFFFFF';
     }
-    if (this.active) {
-      if (this.isPC) {
-        return $r('app.color.media_control_item_icon_primary');
-      } else {
-        return !this.isControlCenter ? $r('app.color.media_control_icon_primary') : (this.isControlCenter === 'center' ?
-        $r('app.color.media_control_center_icon_primary') : $r('app.color.media_control_item_icon_primary'));
-      }
+    if (this.isControlCenter !== 'center' && this.aodStyle?.isAod) {
+      return this.aodStyle.getStyleValue(AodStyleType.MEDIA_BUTTON_COLOR);
     } else {
-      if (this.isPC) {
-        return $r('app.color.media_control_center_icon_disable_pc');
+      if (this.active) {
+        if (this.isPC) {
+          return $r('app.color.media_control_item_icon_primary');
+        } else {
+          return !this.isControlCenter ? $r('app.color.media_control_icon_primary') : (this.isControlCenter === 'center' ?
+          $r('app.color.media_control_center_icon_primary') : $r('app.color.media_control_item_icon_primary'));
+        }
       } else {
-        return !this.isControlCenter ? $r('app.color.media_control_icon_disable') : (this.isControlCenter === 'center' ?
-        $r('app.color.media_control_center_icon_disable') : $r('app.color.media_control_item_icon_disable'));
+        if (this.isPC) {
+          return $r('app.color.media_control_center_icon_disable_pc');
+        } else {
+          return !this.isControlCenter ? $r('app.color.media_control_icon_disable') : (this.isControlCenter === 'center' ?
+          $r('app.color.media_control_center_icon_disable') : $r('app.color.media_control_item_icon_disable'));
+        }
       }
     }
   }
@@ -234,13 +249,14 @@ export default struct AnimationIconLocal {
         Row() {
           Image($r('app.media.ic_sing_play'))
             .fillColor(this.doFillColor())
-            .foregroundBrightness(this.isControlCenter === 'sinks' ? undefined : ((this.isControlCenter !== 'center') ? undefined : this.getForegroundBrightnessBrightness()))
+            .foregroundBrightness(this.isControlCenter === 'sinks' ? undefined : ((this.isControlCenter !== 'center' &&
+              this.aodStyle?.isAod) ? undefined : this.getForegroundBrightnessBrightness()))
             .width(TRIANGLE_SIZE_MAX)
             .height(TRIANGLE_SIZE_MAX)
             .scale({ x: this.size1 / TRIANGLE_SIZE_MAX, y: this.size1 / TRIANGLE_SIZE_MAX })
             .rotate({ centerX: '50%', centerY: '50%', angle: this.isRTL() ? 180 : 0 })
             .draggable(false)
-            .renderGroup(this.isMarkingRenderGroupOfControl) // 增加UI缓存，防止丢帧
+            .renderGroup(this.aodStyle?.isOneMirror ? false : this.isMarkingRenderGroupOfControl) // 增加UI缓存，防止丢帧
         }
         .size({ width: this.size1, height: this.size1 })
         .translate({ x: this.translateX1 * (this.isRTL() ? -1 : 1) })
@@ -252,13 +268,14 @@ export default struct AnimationIconLocal {
         Row() {
           Image($r('app.media.ic_sing_play'))
             .fillColor(this.doFillColor())
-            .foregroundBrightness(this.isControlCenter === 'sinks' ? undefined : ((this.isControlCenter !== 'center') ? undefined : this.getForegroundBrightnessBrightness()))
+            .foregroundBrightness(this.isControlCenter === 'sinks' ? undefined : ((this.isControlCenter !== 'center' &&
+              this.aodStyle?.isAod) ? undefined : this.getForegroundBrightnessBrightness()))
             .width(TRIANGLE_SIZE_MAX)
             .height(TRIANGLE_SIZE_MAX)
             .scale({ x: this.size2 / TRIANGLE_SIZE_MAX, y: this.size2 / TRIANGLE_SIZE_MAX })
             .rotate({ centerX: '50%', centerY: '50%', angle: this.isRTL() ? 180 : 0 })
             .draggable(false)
-            .renderGroup(this.isMarkingRenderGroupOfControl) // 增加UI缓存，防止丢帧
+            .renderGroup(this.aodStyle?.isOneMirror ? false : this.isMarkingRenderGroupOfControl) // 增加UI缓存，防止丢帧
         }
         .size({ width: this.size2, height: this.size2 })
         .translate({ x: this.translateX2 * (this.isRTL() ? -1 : 1) })
@@ -270,7 +287,8 @@ export default struct AnimationIconLocal {
         Row()
           .size({ width: LINE_WIDTH, height: LINE_HEIGHT })
           .backgroundColor(this.doFillColor())
-          .foregroundBrightness(this.isControlCenter === 'sinks' ? undefined : ((this.isControlCenter !== 'center') ? undefined : this.getForegroundBrightnessBrightness()))
+          .foregroundBrightness(this.isControlCenter === 'sinks' ? undefined : ((this.isControlCenter !== 'center' &&
+            this.aodStyle?.isAod) ? undefined : this.getForegroundBrightnessBrightness()))
           .borderRadius(LINE_WIDTH / 2)
           .alignRules({
             center: { anchor: '__container__', align: VerticalAlign.Center },

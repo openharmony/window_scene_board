@@ -123,22 +123,22 @@ export default function EmergencyUtilsTest() {
       expect(style.appGridWidth).assertLarger(0);
     });
 
-    it('test_getUltraScreenGridWidthAndGutter', 0, () => {
+    it('test_getThreeFoldGridWidthAndGutter', 0, () => {
       FoldExpandStyleConfig.initEmergencyMap();
       let style: FoldExpandStyle | undefined = FoldExpandStyleConfig.getEmergencyMap().get(ScreenState.F);
       let rst: number[] = [];
       if (style) {
-        rst = EmergencyUtils.getUltraScreenGridWidthAndGutter(style);
+        rst = EmergencyUtils.getThreeFoldGridWidthAndGutter(style);
         expect(rst[0]).assertLarger(0);
       }
       style = FoldExpandStyleConfig.getEmergencyMap().get(ScreenState.M);
       if (style) {
-        rst = EmergencyUtils.getUltraScreenGridWidthAndGutter(style);
+        rst = EmergencyUtils.getThreeFoldGridWidthAndGutter(style);
         expect(rst[0]).assertLarger(0);
       }
       style = FoldExpandStyleConfig.getEmergencyMap().get(ScreenState.G);
       if (style) {
-        rst = EmergencyUtils.getUltraScreenGridWidthAndGutter(style);
+        rst = EmergencyUtils.getThreeFoldGridWidthAndGutter(style);
         expect(rst[0]).assertLarger(0);
       }
     });

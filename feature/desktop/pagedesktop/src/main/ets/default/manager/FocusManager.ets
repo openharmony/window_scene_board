@@ -37,7 +37,7 @@ const log: LogHelper = LogHelper.getLogHelper(LogDomain.HOME, TAG);
  * 用于桌面走焦逻辑的utils
  */
 export default class FocusManager {
-  private isBigScreen = false;
+  private isSuperFold = false;
 
   private mGridConfig = SettingsModel.getInstance().getGridConfig();
 
@@ -103,7 +103,7 @@ export default class FocusManager {
     }
     //当前页顶层元素,只有在第二页并且是竖屏的时候才能继续往上走焦 page - 1
     const isPortrait: boolean = AppStorage.get<boolean>('isPortrait') as boolean;
-    const needFindInOtherPage = this.isBigScreen && fromItem.page === 1 && isPortrait;
+    const needFindInOtherPage = this.isSuperFold && fromItem.page === 1 && isPortrait;
     if (!needFindInOtherPage) {
       return undefined;
     }
@@ -135,7 +135,7 @@ export default class FocusManager {
     }
     //当前页最底层元素,只有在第一页并且是竖屏的时候才能继续向下走焦 page + 1
     const isPortrait: boolean = AppStorage.get<boolean>('isPortrait') as boolean;
-    const needFindInOtherPage = this.isBigScreen && fromItem.page === 0 && isPortrait;
+    const needFindInOtherPage = this.isSuperFold && fromItem.page === 0 && isPortrait;
     if (!needFindInOtherPage) {
       return undefined;
     }
@@ -167,7 +167,7 @@ export default class FocusManager {
     }
     //当前页最左边元素,只有在第二页并且是横屏的时候才能继续向左走焦 page - 1
     const isPortrait: boolean = AppStorage.get<boolean>('isPortrait') as boolean;
-    const needFindInOtherPage = this.isBigScreen && fromItem.page === 1 && !isPortrait;
+    const needFindInOtherPage = this.isSuperFold && fromItem.page === 1 && !isPortrait;
     if (!needFindInOtherPage) {
       return undefined;
     }
@@ -199,7 +199,7 @@ export default class FocusManager {
     }
     //当前页最右边元素,只有在第一页并且是横屏的时候才能继续向右走焦 page + 1
     const isPortrait: boolean = AppStorage.get<boolean>('isPortrait') as boolean;
-    const needFindInOtherPage = this.isBigScreen && fromItem.page === 0 && !isPortrait;
+    const needFindInOtherPage = this.isSuperFold && fromItem.page === 0 && !isPortrait;
     if (!needFindInOtherPage) {
       return undefined;
     }

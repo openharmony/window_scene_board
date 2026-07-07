@@ -402,7 +402,7 @@ export { ScreenLockApi } from './src/main/ets/api/ScreenLockApi';
 
 export { DoubleCenterHelper } from './src/main/ets/utils/DoubleCenterHelper';
 
-export { DisplayUtils, UltraScreenStatus } from './src/main/ets/utils/DisplayUtils';
+export { DisplayUtils, ThreeFoldStatus } from './src/main/ets/utils/DisplayUtils';
 
 export type { SlObject } from './src/main/ets/interface/ISlState';
 

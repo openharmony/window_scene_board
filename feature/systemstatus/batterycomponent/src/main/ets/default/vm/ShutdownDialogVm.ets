@@ -23,6 +23,7 @@ import { EvtBus } from '@ohos/frameworkwrapper/src/main/ets/eventbus/EventBus';
 import { ShowBatteryDialogEvent } from '@ohos/systemuicommon/src/main/ets/event/ShowBatteryDialogEvent';
 import Constants from '../common/constants';
 import { OnBackPressListener } from '@ohos/systemuiutils';
+import { OutdoorVm } from '@ohos/systemuicommon/src/main/ets/vm/OutdoorVm';
 
 // instrument ignore file
 const TAG = 'ShutdownDialogVm';
@@ -176,6 +177,11 @@ class ShutdownDialogVm {
    * @returns true弹框
    */
   private isShowDialog(info: ShowBatteryDialogEvent): boolean {
+    // 云端模式下不显示弹框
+    if (OutdoorVm.instance.isInOutdoorMode) {
+      log.showInfo('isInOutdoorMode');
+      return false;
+    }
     return !info.isCharging && info.batterySoc <= this.getShutDownSoc() && !this.isEmergencyModeState;
   }
 

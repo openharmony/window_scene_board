@@ -1,0 +1,44 @@
+{
+    "string":[
+        {
+            "name":"pin_this_app",
+            "value":"[TS_1080679]_Pin"
+        },
+        {
+            "name":"unpin_this_app",
+            "value":"[TS_1080680]_Unpin"
+        },
+        {
+            "name":"aisuggestion_app_name",
+            "value":"[TS_898530]_Voice Suggestions"
+        },
+        {
+            "name":"not_recommend_this_app",
+            "value":"[TS_1040607]_Don't suggest again"
+        },
+        {
+            "name":"reduce_recommend_this_card",
+            "value":"[TS_1057383]_Suggest less often"
+        },
+        {
+            "name":"not_recommend_this_card",
+            "value":"[TS_1057384]_Don't suggest again"
+        },
+        {
+            "name":"manage_card",
+            "value":"[TS_1057385]_Manage widget"
+        },
+        {
+            "name":"subscribe_this_card",
+            "value":"[TS_1057381]_Pin widget"
+        },
+        {
+            "name":"unsubscribe_this_card",
+            "value":"[TS_1057386]_Unpin widget"
+        },
+        {
+            "name":"manage_app",
+            "value":"[TS_1057382]_Manage app"
+        }
+    ]
+}

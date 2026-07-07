@@ -82,6 +82,7 @@ import {
   MenuInfo,
   layoutConfigManager,
   PresetStyleConstants,
+  DeliverUtil,
   GrayAppListManager,
   DockUtils,
   AppGalleryDownloadManager,
@@ -1364,6 +1365,9 @@ export struct PcModeResidentAppItem {
       }
       if (event?.type === CommonConstants.TOUCH_TYPE_DOWN) {
         log.showInfo('onTouch down start');
+        if (DeliverUtil.isSupportAppType(this.appInfo.bundleName) && DeliverUtil.isSupportDeliver()) {
+          SCBSceneSessionManager.getInstance().preloadApp(this.appInfo.bundleName);
+        }
         const isSmallFolder = this.appInfo.itemType === CommonConstants.TYPE_FOLDER;
         if (isSmallFolder) {
           let smallFolderCachedIcon = ResourceManager.getInstance().getCachedAppIcon(this.appInfo.keyName, '', '');
@@ -1414,6 +1418,9 @@ export struct PcModeResidentAppItem {
     }
     if (event?.type === CommonConstants.TOUCH_TYPE_DOWN) {
       log.showInfo('onTouch down start');
+      if (DeliverUtil.isSupportAppType(this.appInfo.bundleName) && DeliverUtil.isSupportDeliver()) {
+        SCBSceneSessionManager.getInstance().preloadApp(this.appInfo.bundleName);
+      }
       const isSmallFolder = this.appInfo.itemType === CommonConstants.TYPE_FOLDER;
       if (isSmallFolder) {
         let smallFolderCachedIcon = ResourceManager.getInstance().getCachedAppIcon(this.appInfo.keyName, '', '');
@@ -2013,7 +2020,7 @@ export struct PcModeResidentAppItem {
   private getScaleOptions(): ScaleOptions {
     let centerX : string | number = 0;
     let centerY : string | number = 0;
-    if (!(SCBSceneSessionManager.getInstance().isPcMode() && DeviceHelper.isUltraScreenProduct())) {
+    if (!(SCBSceneSessionManager.getInstance().isPcMode() && DeviceHelper.isThreeFoldProduct())) {
       centerX = this.animationVm.centerX;
       centerY = this.animationVm.centerY;
     }

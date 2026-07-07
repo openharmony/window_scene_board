@@ -1,0 +1,1180 @@
+{
+    "string":[
+        {
+            "name":"app_category_music",
+            "value":"Nhạc",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"download_installwait",
+            "value":"Đang chờ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"download_installing",
+            "value":"Đang cài đặt",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"active_card_lock",
+            "value":"Ẩn nội dung",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"external_screen_app_added",
+            "value":"Ứng dụng đã được thêm vào màn hình ngoài",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"uninstall_success",
+            "value":"Đã gỡ cài đặt.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_category_test",
+            "value":"Ứng dụng thử nghiệm",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"uninstall_failed",
+            "value":"Gỡ cài đặt không thành công.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"not_have_add_app",
+            "value":"Không có ứng dụng để thêm",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"add_form_to_outer_page",
+            "value":"Tiện ích",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"add_form_to_desktop_more",
+            "value":"Tiện ích khác",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"delete_app_dialog_content",
+            "value":"Mọi dữ liệu của ứng dụng này sẽ bị gỡ khỏi thiết bị của bạn.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_category_lifestyle",
+            "value":"Lối sống",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"download_pause",
+            "value":"Đã tạm dừng",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remove_n_content",
+            "value":"Dữ liệu của ứng dụng này sẽ bị xóa khỏi thiết bị của bạn.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_category_social",
+            "value":"Mạng xã hội",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"outer_emergency_exit_without_charge_dialog_content",
+            "value":"Hãy nhớ sạc pin khi có cơ hội.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"delete_master_app_dialog_content",
+            "value":"Mọi bản sao của ứng dụng này cũng sẽ bị gỡ cài đặt.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"search",
+            "value":"Tìm kiếm",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_category_infotainment",
+            "value":"Thông tin",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"folder_intelligent_name",
+            "value":"%1$s và %2$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_and_status_bar_title",
+            "value":"Thông báo và thanh trạng thái",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"outer_flashlight_tips",
+            "value":"Lật để bật đèn pin, nhấn nút Nguồn để tắt",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"delete_content",
+            "value":"Dữ liệu của ứng dụng này sẽ bị xóa khỏi thiết bị của bạn.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_gallery",
+            "value":"AppGallery",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_not_checked",
+            "value":"Chưa chọn",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"homepage_set_button",
+            "value":"Nút để thiết lập màn hình chính, chạm đúp để kích hoạt",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"homepage_set",
+            "value":"Màn hình hiện tại đã được đặt làm màn hình chính",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_category_medical",
+            "value":"Y tế",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_to_desktop",
+            "value":"Thêm vào màn hình chính",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"talkback_delete_screen_success",
+            "value":"Đã xóa màn hình",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remove_app_lock",
+            "value":"Gỡ khóa",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"no_matching_results",
+            "value":"Không có kết quả nào",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_category_leisure_puzzle",
+            "value":"Trò chơi giải trí",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remove_button",
+            "value":"Gỡ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_category_art",
+            "value":"Nghệ thuật",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"uninstall",
+            "value":"Gỡ cài đặt",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"outer_thermal_safe_enter_dialog_dialog_content",
+            "value":"Chế độ làm nguội đã được kích hoạt. Chế độ này sẽ thoát khi thiết bị của bạn nguội đi.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"form_center",
+            "value":"Duyệt xem tiện ích",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"preferential_download",
+            "value":"Tải xuống ưu tiên",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_to_folder",
+            "value":"Thêm vào %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remove_title",
+            "value":"Gỡ %s?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"accessibility_shown_small_folder",
+            "value":"Thư mục đã được thu gọn",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pinch_to_enter_the_editing_page",
+            "value":"Để thêm lại tiện ích này, hãy đưa hai ngón tay về gần nhau trên màn hình chính, sau đó vào %1$s > %2$s.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"uninstall_n_twin_content",
+            "value":"Dữ liệu của ứng dụng này sẽ bị xóa khỏi thiết bị của bạn. Mọi bản sao của ứng dụng cũng sẽ bị gỡ cài đặt.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"add_app_lock",
+            "value":"Thêm khóa",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_delete",
+            "value":"Xóa %s?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_category_efficiency",
+            "value":"Năng suất",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"form_edit",
+            "value":"Sửa",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_category_business_strategy",
+            "value":"Chiến thuật",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_category_travel",
+            "value":"Du lịch",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"delete_clone_app_dialog_content",
+            "value":"Bản sao ứng dụng này và mọi dữ liệu đi kèm sẽ bị xóa vĩnh viễn.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"desktop_current_page",
+            "value":"Màn hình %1$s / %2$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"wait_data_recover_toast",
+            "value":"Dữ liệu đang được khôi phục. Hãy thử lại sau.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_category_tools",
+            "value":"Công cụ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"big_folder",
+            "value":"Thư mục lớn",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_center_menu_add_desktop",
+            "value":"Thêm vào màn hình chính",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cancel_download",
+            "value":"Hủy tải xuống",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cancel_card_lock",
+            "value":"Bỏ ẩn nội dung",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"talkback_add_screen_page",
+            "value":"Thêm một màn hình khác vào màn hình chính",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_category_themes",
+            "value":"Chủ đề",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"outer_emergency_note",
+            "value":"Pin rất yếu. Hãy cắm điện ngay cho thiết bị.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_category_kids",
+            "value":"Trẻ em",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"outer_emergency_enter_dialog_content",
+            "value":"Chế độ Tiết kiệm pin đã được bật để kéo dài thời lượng pin.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wait_data_update_toast",
+            "value":"Ứng dụng đang được cập nhật. Vui lòng đợi.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"download_wait",
+            "value":"Đang chờ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_category_health",
+            "value":"Sức khỏe",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"outer_edit_discard_changes",
+            "value":"Bỏ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_category_food",
+            "value":"Đồ ăn",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_category_test_verification",
+            "value":"Ứng dụng thử nghiệm",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_category_movies",
+            "value":"Video",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"wait_data_recover",
+            "value":"Đang khôi phục dữ liệu",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_category_sports_racing",
+            "value":"Trò chơi thể thao",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_category_business",
+            "value":"Kinh doanh",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_icon_to_outer_desktop",
+            "value":"Thêm vào màn hình ngoài",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"delete_app",
+            "value":"Gỡ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_category_card_board_games",
+            "value":"Trò chơi bài",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_category_role_playing",
+            "value":"Trò chơi nhập vai",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"uninstall_content",
+            "value":"Dữ liệu của ứng dụng này sẽ bị xóa khỏi thiết bị của bạn.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_form_to_desktop",
+            "value":"Tiện ích",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"outer_edit_save_changes",
+            "value":"Lưu",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"uninstall_title",
+            "value":"Gỡ cài đặt %s?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"talkback_delete_screen",
+            "value":"Xóa màn hình",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remove_content",
+            "value":"Mọi dữ liệu của ứng dụng này sẽ bị gỡ khỏi thiết bị của bạn.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"outer_thermal_safe_enter_dialog_dialog_title",
+            "value":"Thiết bị quá nóng",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_category_action_shooting",
+            "value":"Trò chơi hành động",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"outer_emergency_exit_with_charge_dialog_content",
+            "value":"Nếu bạn thoát bây giờ, thiết bị của bạn có thể không còn đủ pin để tiếp tục hoạt động.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"outer_emergency_expand_note",
+            "value":"Mở điện thoại ra để thực hiện cuộc gọi khẩn cấp.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_category_travel_navigation",
+            "value":"Giao thông",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_shown_big_folder",
+            "value":"Thư mục đã được mở rộng",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"experimental_apps",
+            "value":"Thử nghiệm",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"lock_screen",
+            "value":"Màn hình khóa",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"small_folder",
+            "value":"Thư mục nhỏ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"form_stack_max_number_limit",
+            "value":"Ngăn xếp này đã đầy.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_category_photography",
+            "value":"Chụp ảnh",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_category_cars",
+            "value":"Xe hơi",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"external_screen_application",
+            "value":"Ứng dụng màn hình ngoài",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_center_menu_add_dock",
+            "value":"Thêm vào thanh tác vụ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_category_reading",
+            "value":"Đọc sách",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"theme_form_applicationName",
+            "value":"Tiện ích trực tiếp",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"premium_apps",
+            "value":"Đề xuất",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"outer_experience_tips",
+            "value":"Ứng dụng thử nghiệm có nhiều tính năng hơn, nhưng có thể có vấn đề về khả năng tương thích.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"share",
+            "value":"Chia sẻ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_category_news",
+            "value":"Tin tức",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_uninstall",
+            "value":"Không cho phép gỡ cài đặt.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"outer_thermal_safe_note",
+            "value":"Nhiệt độ thiết bị cao. Hãy để thiết bị nguội đi.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wait_installing_toast",
+            "value":"Ứng dụng đang được cài đặt. Vui lòng chờ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pause_extension",
+            "value":"Tạm dừng",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_category_house",
+            "value":"Bất động sản",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"added_icon_to_outer_desktop",
+            "value":"Đã thêm %s vào màn hình ngoài.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"add_outer_app_tips",
+            "value":"Đã thêm %s.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"delete_form",
+            "value":"Kéo vào đây để xóa",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"delete_title",
+            "value":"Xóa %s?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"talkback_add_screen_success",
+            "value":"Đã thêm màn hình mới",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_remove",
+            "value":"Gỡ %s?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remove_app_dialog_content",
+            "value":"Bạn có thể thêm lại bất kỳ lúc nào từ Trung tâm ứng dụng.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_category_finance",
+            "value":"Tài chính",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"delete",
+            "value":"Xóa",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_exist_shortcut",
+            "value":"Lối tắt đã được tạo.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"outer_emergency_enter_dialog_title",
+            "value":"Pin cực yếu",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"expand_phone_use",
+            "value":"Trước tiên, hãy mở điện thoại ra.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_category_game",
+            "value":"Trò chơi",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_delete_icon",
+            "value":"Gỡ %s?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"jump_to_homepage",
+            "value":"Bạn đang ở màn hình chính, màn hình %1$s trong tổng số %2$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cc_accessibility_str_edit_move_start",
+            "value":"Mục đang được kéo",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_apps_to_outer_page",
+            "value":"Ứng dụng",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_category_education",
+            "value":"Giáo dục",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cancel",
+            "value":"Hủy",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"talkback_add_screen",
+            "value":"Thêm màn hình mới",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_menu_open",
+            "value":"Mở",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_menu_open_from_floating_window",
+            "value":"Mở từ cửa sổ nổi",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_menu_open_from_split_screen",
+            "value":"Mở từ màn hình chia",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_checked",
+            "value":"Đã chọn",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"outer_edit_is_save",
+            "value":"Lưu thay đổi?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_category_entertainment",
+            "value":"Giải trí",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_category_shopping",
+            "value":"Mua sắm",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_category_sports",
+            "value":"Thể thao",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"outer_not_app_and_form_to_add",
+            "value":"Không có ứng dụng hoặc tiện ích để thêm",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"download_start",
+            "value":"Đang tải xuống",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"shortcuts_limit_tips",
+            "value":"Không thể thêm lối tắt nào cho ứng dụng này nữa.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"desktop_layout_locked",
+            "value":"Đã khóa bố cục màn hình chính.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"view_detail",
+            "value":"Xem chi tiết",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"icon_out_of_limit",
+            "value":"Đã chọn số lượng biểu tượng tối đa.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"add_icon_to_desktop_max",
+            "value":"Không có chỗ trống trên màn hình chính. Hãy thử di chuyển một số mục.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"lab_application",
+            "value":"Các ứng dụng thử nghiệm không hoàn toàn tương thích với màn hình ngoài của thiết bị, đồng thời có thể không hiển thị và hoạt động bình thường.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"folder_add_sheet_other",
+            "value":"Khác",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"talkback_double_click_press_drag",
+            "value":"Chạm đúp để thoát khỏi chế độ sửa màn hình chính, chạm đúp và giữ, sau đó kéo để thay đổi thứ tự màn hình",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"covertTo_bigFolder",
+            "value":"Phóng to",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"covertTo_smallFolder",
+            "value":"Thu nhỏ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"double_tap_to_execute",
+            "value":"Chạm đúp để kích hoạt",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"double_tap_to_check",
+            "value":"Chạm đúp để chọn",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"back",
+            "value":"Trở lại",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"resume_extension",
+            "value":"Tiếp tục",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"enter_edit_mode",
+            "value":"Vào chế độ chỉnh sửa",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"more_applications",
+            "value":"Ứng dụng khác",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"unselected",
+            "value":"Chưa chọn",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"exit_edit_mode",
+            "value":"Thoát khỏi chế độ chỉnh sửa",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"double_tap_to_uncheck",
+            "value":"Chạm đúp để bỏ chọn",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"tap_with_menu_reader_text",
+            "value":"Chạm đúp để kích hoạt, chạm đúp sau đó giữ để xem thêm các tùy chọn khác",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disconn_extension",
+            "value":"Kết thúc",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"selected",
+            "value":"Đã chọn",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"reConfirm_remove",
+            "value":"Gỡ cài đặt",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remove_wechat_reConfirm_title",
+            "value":"Gỡ cài đặt WeChat?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remove_wechat_reConfirm_content",
+            "value":"Thao tác này sẽ xóa toàn bộ dữ liệu WeChat trên thiết bị của bạn, bao gồm cả lịch sử trò chuyện và tệp tin. Không thể hoàn tác thao tác này.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remove_from_desktop_button",
+            "value":"Xóa khỏi màn hình chính",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"uninstall_app_button",
+            "value":"Gỡ cài đặt",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"desktop_add_items_limit_toast",
+            "value":"Tối đa %d ứng dụng.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"desktop_add",
+            "value":"Thêm ứng dụng",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

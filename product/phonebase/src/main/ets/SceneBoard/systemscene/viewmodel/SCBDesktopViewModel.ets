@@ -24,7 +24,8 @@ import {
   sOutSideWindowMgr,
   viewMgrPolicy,
   ViewManagerPolicy,
-  ViewType
+  ViewType,
+  LightOutdoorConfig
 } from '@ohos/frameworkwrapper';
 import {
   AppStorageUtil,
@@ -65,6 +66,7 @@ import {
   DefaultDesktopLayoutInfo,
   GridLayoutUtil,
   FolderCommonUtil,
+  DeliverUtil,
   NotHarmonyUtil,
   LaunchLayoutCacheManager,
   LauncherLayoutCacheUtil,
@@ -84,6 +86,9 @@ import { FormCenterViewData } from '@ohos/form/src/main/ets/default/viewmodel/Fo
 import { ItemLocation } from '@ohos/launchercommon/Index';
 import { BigFolderViewModel } from '@ohos/bigfolder';
 import { SCBDesktopAddViewModel } from '@ohos/pagedesktop';
+import {
+  LightOutdoorDesktopViewModel
+} from '@ohos/pagedesktop/src/main/ets/default/common/viewmodel/LightOutdoorDesktopViewModel';
 
 const TAG = 'SCBDesktopViewModel';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.HOME, TAG);
@@ -109,6 +114,26 @@ export class SCBDesktopViewModel extends SingleBase {
     log.showInfo(`constructor the curDesktopModel ${this.mDesktopViewData.launcherModel}`);
     this.updateDesktopModel(this.mDesktopViewData.launcherModel);
     this.setIsSmallPad();
+  }
+
+  /**
+   * 退出云端模式2
+   */
+  public exitLightOutdoorMode(): void {
+    let launcherModel: string = settings.getValueSync(GlobalContext.getContext(), CommonConstants.SIMPLE_MODE_KEY, '0');
+    this.changeLauncherModel(Number(launcherModel));
+    LightOutdoorDesktopViewModel.getInstance().updateIsOnLightOutdoorModeStatus(false);
+    settings.setValueSync(GlobalContext.getContext(), CommonConstants.LIGHT_OUTDOOR_MODE_KEY, '0');
+  }
+
+  /**
+   * 进入云端2
+   */
+  public enterLightOutdoorMode(): void {
+    this.changeLauncherModel(DesktopLayoutState.LIGHT_OUTDOOR_MODE);
+    LightOutdoorDesktopViewModel.getInstance().updateIsOnLightOutdoorModeStatus(true);
+    settings.setValueSync(GlobalContext.getContext(), CommonConstants.LIGHT_OUTDOOR_MODE_KEY, '1');
+    SCBDesktopAddViewModel.getInstance().refreshAllAppList();
   }
 
   private setIsSmallPad(): void {
@@ -293,10 +318,11 @@ export class SCBDesktopViewModel extends SingleBase {
 
 
   private transFolderItems(inheritItems: GridLayoutItemInfo[]): void {
-    // 所有普通大文件夹转换为小文件夹，特殊文件夹大于2*2转化为2*2文件夹,同步设置folderID前缀,避免加载异常
+    // 所有普通大文件夹转换为小文件夹，特殊文件夹(克隆应用/应用/未鸿蒙化)大于2*2转化为2*2文件夹,同步设置folderID前缀,避免加载异常
     inheritItems.forEach((item: GridLayoutItemInfo) => {
       if (item.typeId === CommonConstants.TYPE_FOLDER) {
-        if (!NotHarmonyUtil.isNotHarmonyFolderById(item.folderId)) {
+        if (!DeliverUtil.isContainerFolder(item.folderId) &&
+          !NotHarmonyUtil.isNotHarmonyFolderById(item.folderId)) {
           item.area = [1, 1];
         } else if (item.area && item.area.length === 2 && (item.area[0] > 2 || item.area[1] > 2)) {
           item.area = [2, 2];
@@ -362,11 +388,11 @@ export class SCBDesktopViewModel extends SingleBase {
   }
 
   private swapContainerFoldersToLastTwoPages(inheritItems: GridLayoutItemInfo[], i: number): void {
-    // 倒数两屏，优先处理放置特殊文件夹
+    // 倒数两屏，优先处理放置克隆应用/应用/未鸿蒙化特殊文件夹
     log.showInfo('swapContainerFoldersInLastTwoPages over 16 pages');
     let leftInheritItems = inheritItems.slice(i);
     let leftContainerFolders = leftInheritItems.filter((item: GridLayoutItemInfo) => {
-      return NotHarmonyUtil.isNotHarmonyFolderById(item.folderId);
+      return DeliverUtil.isContainerFolder(item.folderId) || NotHarmonyUtil.isNotHarmonyFolderById(item.folderId);
     });
     for (let j = 0; j < leftContainerFolders.length; j++) {
       log.showInfo(`swapContainerFoldersInLastTwoPages containerFolder:${leftContainerFolders[j].folderId}`);
@@ -421,7 +447,7 @@ export class SCBDesktopViewModel extends SingleBase {
   }
 
   /**
-   * 模式状态切换， 当前在普通桌面，简易 两种状态切换
+   * 模式状态切换， 当前在普通桌面，简易，云端2三种状态切换
    * @param launcherModel
    */
   private changeLauncherModel(launcherModel: number): void {
@@ -454,6 +480,7 @@ export class SCBDesktopViewModel extends SingleBase {
    * @param isNeedCloseFolder 是否需要关闭文件夹
    */
   public screenChangeRotationNoAnim(isPortrait: boolean, isNeedCloseFolder: boolean): void {
+    log.showInfo(`screenChangeRotationNoAnim: isPadUiType:${this.isPadUiType()}; ${isPortrait}; ${isNeedCloseFolder}；`);
     AppStorageUtil.setOrCreate<boolean>('isPortrait', isPortrait);
     if (this.isPadUiType()) {
       PageDesktopViewModel.getInstance().changeCurrentLayoutCache(isPortrait);
@@ -462,7 +489,7 @@ export class SCBDesktopViewModel extends SingleBase {
     if (isNeedCloseFolder) {
       this.closeFolderImmediately();
     }
-   this.sendRefreshSwiperPageEventForUltraScreenPhone();
+    this.sendRefreshSwiperPageEventForThreeFoldPhone();
   }
 
   /**
@@ -486,7 +513,7 @@ export class SCBDesktopViewModel extends SingleBase {
     }
     AppStorageUtil.setOrCreate<boolean>('isPortrait', isPortrait);
     BigFolderViewModel.getInstance().reLayoutFolder();
-    this.sendRefreshSwiperPageEventForUltraScreenPhone();
+    this.sendRefreshSwiperPageEventForThreeFoldPhone();
     DesktopManager.getInstance().saveDesktopParam();
   }
 
@@ -504,14 +531,14 @@ export class SCBDesktopViewModel extends SingleBase {
       }
     }
     localEventManager.sendLocalEventSticky(EventConstants.EVENT_REQUEST_PAGEDESK_LIGHT_REFRESH, false);
-    this.sendRefreshSwiperPageEventForUltraScreenPhone('screenChangeRotationAnim');
+    this.sendRefreshSwiperPageEventForThreeFoldPhone('screenChangeRotationAnim');
   }
 
   /**
-   * 在超大屏手机上，每次折展，旋转事件发出后都需要刷布局
+   * 在三折叠手机上，每次折展，旋转事件发出后都需要刷布局
    */
-  private sendRefreshSwiperPageEventForUltraScreenPhone(label?: string) {
-    if (DeviceHelper.isUltraScreenProduct()) {
+  private sendRefreshSwiperPageEventForThreeFoldPhone(label?: string) {
+    if (DeviceHelper.isThreeFoldProduct()) {
       localEventManager.sendLocalEvent(EventConstants.EVENT_REFRESH_SWIPER_PAGE, label);
     }
   }

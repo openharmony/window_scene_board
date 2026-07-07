@@ -332,9 +332,10 @@ class SysDialogManager {
       return;
     }
     log.showInfo(`setEnableRotate ${isEnableRotate}`);
-    screenSession?.setEnableRotate(isEnableRotate, 'sysDialog');
     if (isEnableRotate) {
-      screenSession?.rotationChangeEntry(screenSession.sensorScreenProperty.rotation, 'unlock sysDialog rotation');
+      // 投票旋转策略
+      screenSession?.setEnableRotate(isEnableRotate, 'sysDialog');
+      SCBScreenSessionManager.getInstance().handleRotationIfNeeded(screenSession);
     }
   }
 

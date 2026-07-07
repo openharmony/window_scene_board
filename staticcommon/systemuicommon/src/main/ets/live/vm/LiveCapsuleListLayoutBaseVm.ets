@@ -175,7 +175,7 @@ export class LiveCapsuleListLayoutBaseVm extends LiveBaseVm {
     }
 
     if (capsuleVm.fixedShowType === CapsuleShowType.SHADOW) {
-      return LiveStyle.SHADOW_CAPSULE_SHOW_WIDTH;
+      return LiveStyle.SHADOW_CAPSULE_CIRCLE_WIDTH;
     }
 
     return 0;
@@ -285,7 +285,7 @@ export class LiveCapsuleListLayoutBaseVm extends LiveBaseVm {
     realCapsuleWidth?: number): number {
     const capsuleVm = this.vmInjector.getCapsuleVm(live);
     if (capsuleVm.fixedShowType === CapsuleShowType.SHADOW) {
-      return LiveStyle.SHADOW_CAPSULE_SHOW_WIDTH;
+      return LiveStyle.SHADOW_CAPSULE_CIRCLE_WIDTH;
     }
 
     if (capsuleVm.fixedShowType === CapsuleShowType.RETRACTABLE_ROUND_CAKE) {

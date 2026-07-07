@@ -143,9 +143,23 @@ export struct FormZoomComponent {
       this.mFormZoomEvent.setFormZoomSize({ width: this.mFormItemWidth, height: this.mFormItemHeight });
       this.inDrag = false;
       this.mFormZoomShow = true;
+
+      // 预加载当前卡片尺寸的截图到缓存，避免拖拽时异步加载导致闪烁
+      this.preloadCurrentCardSnapshot(param.formComponentId);
     } catch (err) {
       log.showError(`open form zoom view failed: ${err?.message}`);
     }
+  }
+
+  /**
+   * 预加载当前卡片尺寸的截图到缓存
+   * @param formComponentId 当前卡片组件ID
+   */
+  private preloadCurrentCardSnapshot(formComponentId: string): void {
+    log.showInfo(`preloadCurrentCardSnapshot: formComponentId=${formComponentId}`);
+
+    // 立即异步加载当前尺寸的截图（用于初始显示和拖拽）
+    FormZoomManager.getInstance().setFormZoomSnapshot(formComponentId, undefined);
   }
 
   private closeView(): void {

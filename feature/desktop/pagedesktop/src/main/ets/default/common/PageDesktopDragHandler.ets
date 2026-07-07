@@ -18,6 +18,7 @@ import prompt from '@ohos.promptAction';
 import {
   CardItemInfo,
   CommonConstants,
+  DeliverUtil,
   NotHarmonyUtil,
   DesktopDragResult,
   DeviceState,
@@ -95,7 +96,8 @@ import {
   HiSysEventUtil,
   localEventManager,
   DeviceHelper,
-  IconResourceManager
+  IconResourceManager,
+  LightOutdoorConfig
 } from '@ohos/frameworkwrapper';
 import {
   SqueezeExtraParam,
@@ -155,6 +157,8 @@ import FeatureConstants from './constants/FeatureConstants';
 import { PageInfoManager } from '@ohos/launchercommon/src/main/ets/cache/layout/PageInfoManager'
 import { DragProxyManager, DragHandlerType, IDesktopDragHandler } from '@ohos/launchercommon/Index';
 import { DomainName, TraceUtil } from '@ohos/basicutils';
+import { LightOutdoorDesktopViewModel } from './viewmodel/LightOutdoorDesktopViewModel';
+import { emitter } from '@kit.BasicServicesKit';
 
 const TAG = 'PageDesktopDragHandler';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.HOME, TAG);
@@ -222,7 +226,7 @@ export class PageDesktopDragHandler extends BaseDragHandler implements IDesktopD
   private isLeaveSwiperPage: boolean = false;
   private isPc: boolean = false;
   private isPhone: boolean = false;
-  private isBigScreen: boolean = false;
+  private isSuperFold: boolean = false;
   private hasCancelSqueezeAnimation: boolean = true;
   private isDropFileToDesktop: boolean = false;
   private isPortrait: boolean = false;
@@ -288,7 +292,7 @@ export class PageDesktopDragHandler extends BaseDragHandler implements IDesktopD
     let device: string = AppStorage.get('device') as string;
     this.isPhone = (device === CommonConstants.DEFAULT_DEVICE_TYPE);
     this.isPc = DeviceHelper.isPC();
-    this.isBigScreen = DeviceHelper.isBigScreenMachine();
+    this.isSuperFold = DeviceHelper.isSuperFoldMachine();
     this.mFolderMgr = FolderManager.getInstance();
     // 拖拽手势自愈订阅
     scbEventExclusiveManager.registerEventExclusive(EventType.DESKTOP_DRAG, this.dragEventCancel);
@@ -431,7 +435,7 @@ export class PageDesktopDragHandler extends BaseDragHandler implements IDesktopD
    */
   public getCurrentPageIndex(): number {
     let pageIndex: number = this.getDragPageIndex();
-    if (this.isBigScreen) {
+    if (this.isSuperFold) {
       return pageIndex;
     }
     return this.getRTLShowPage(pageIndex);
@@ -579,7 +583,7 @@ export class PageDesktopDragHandler extends BaseDragHandler implements IDesktopD
         offset = screenWidth / count * indexInFoldExpand + this.mPageDesktopStyleConfig.mMargin;
       }
     } else {
-      offset = this.isBigScreen ? this.mPageDesktopStyleConfig.mWorkSpacePadding : this.mPageDesktopStyleConfig.mMargin;
+      offset = this.isSuperFold ? this.mPageDesktopStyleConfig.mWorkSpacePadding : this.mPageDesktopStyleConfig.mMargin;
     }
     let paddingLeftOffset: number = offset - this.mPaddingLeft;
     this.mPaddingLeft = offset;
@@ -595,7 +599,7 @@ export class PageDesktopDragHandler extends BaseDragHandler implements IDesktopD
 
   public getPageIndex(): number {
     let pageIndex: number = desktopUtil.getPageIndexValue();
-    if (this.isBigScreen) {
+    if (this.isSuperFold) {
       if (pageIndex % NUM_HALF !== 0) {
         pageIndex--;
       }
@@ -615,7 +619,7 @@ export class PageDesktopDragHandler extends BaseDragHandler implements IDesktopD
   }
 
   private isFoldExpandStatus(): boolean {
-    if (!DeviceHelper.isUltraScreenProduct()) {
+    if (!DeviceHelper.isThreeFoldProduct()) {
       return desktopUtil.isFoldExpandStatus();
     }
     return !DeviceHelper.isFState();
@@ -626,15 +630,15 @@ export class PageDesktopDragHandler extends BaseDragHandler implements IDesktopD
       log.showError('getItemIndex: x or y invalid');
       return CommonConstants.INVALID_VALUE;
     }
-    let res = this.isBigScreen ? GridLayoutUtil.getRowAndColumnAndPage(x, y, this.isPortrait) :
+    let res = this.isSuperFold ? GridLayoutUtil.getRowAndColumnAndPage(x, y, this.isPortrait) :
     GridLayoutUtil.getRowAndColumn(x, y, this.getCurrentPageIndex());
     const rowVal = res.row;
     const columnVal = res.column;
     const column = this.mGridConfig?.column ?? 0;
     const row = this.mGridConfig?.row ?? 0;
     if (rowVal !== CommonConstants.INVALID_VALUE && columnVal !== CommonConstants.INVALID_VALUE) {
-      if (this.isBigScreen && this.isExpandStatus) {
-        return this.getItemIndexForBigScreen(columnVal, rowVal, res.page);
+      if (this.isSuperFold && this.isExpandStatus) {
+        return this.getItemIndexForSuperFold(columnVal, rowVal, res.page);
       }
       return this.isPc ? columnVal * row + rowVal : rowVal * column + columnVal;
     }
@@ -648,8 +652,8 @@ export class PageDesktopDragHandler extends BaseDragHandler implements IDesktopD
     let column = this.isPc ? Math.floor(index / this.mGridConfig.row) : index % this.mGridConfig.column;
     let row = this.isPc ? index % this.mGridConfig.row : Math.floor(index / this.mGridConfig.column);
     let pageIndex: number = this.getCurrentPageIndex();
-    if (this.isBigScreen && this.isExpandStatus) {
-      const position: DragGridPosition = this.getItemByIndexForBigScreen(index);
+    if (this.isSuperFold && this.isExpandStatus) {
+      const position: DragGridPosition = this.getItemByIndexForSuperFold(index);
       column = position.column;
       row = position.row;
       pageIndex = position.page ?? -1;
@@ -729,7 +733,7 @@ export class PageDesktopDragHandler extends BaseDragHandler implements IDesktopD
       log.showError('getTouchPosition: x or y invalid');
       return position;
     }
-    if (this.isBigScreen) {
+    if (this.isSuperFold) {
       const touchPosition: DragGridPosition = GridLayoutUtil.getRowAndColumnAndPage(x, y, this.isPortrait);
       position.column = touchPosition.column;
       position.row = touchPosition.row;
@@ -777,8 +781,8 @@ export class PageDesktopDragHandler extends BaseDragHandler implements IDesktopD
   }
 
   private getPositionByRowAndColumn(row: number, column: number, page?: number): number[] {
-    const position: number[] = this.isBigScreen ?
-    GridLayoutUtil.getBigScreenGridItemPosition(row, column, page ?? this.getCurrentPageIndex(), this.isPortrait) :
+    const position: number[] = this.isSuperFold ?
+    GridLayoutUtil.getSuperFoldGridItemPosition(row, column, page ?? this.getCurrentPageIndex(), this.isPortrait) :
     GridLayoutUtil.getGridItemPosition(row, column, page ?? this.getCurrentPageIndex());
     log.showInfo('get position by row %{public}d, column %{public}d and page %{public}d.' +
       ' position is [%{public}d, %{public}d]', row, column, page ?? this.getCurrentPageIndex(), position[0], position[1]);
@@ -895,6 +899,7 @@ export class PageDesktopDragHandler extends BaseDragHandler implements IDesktopD
     if (dragItemInfo.typeId === CommonConstants.TYPE_FOLDER) {
       log.showInfo(`dragFolder length ${dragItemInfo.layoutInfo?.flat().length}`);
     }
+    LightOutdoorDesktopViewModel.getInstance().removeAddIcon();
     DragEventManager.getInstance(launcherStatusUtil.getShowOutLauncherStatus()).dragStartInDesktop(this.getItemEventKey(dragItemInfo));
     this.mStartPosition = undefined;
     this.isSqueezeSuccess = false;
@@ -1170,7 +1175,7 @@ export class PageDesktopDragHandler extends BaseDragHandler implements IDesktopD
     }
     let dragTranslate: number[] = [];
     if (RTLUtil.isRTL()) {
-      if (this.isBigScreen && this.isLeaveSwiperPage) {
+      if (this.isSuperFold && this.isLeaveSwiperPage) {
         dragTranslate = this.getDragTranslate(dropY ?? 0);
         isShow = dragTranslate.length === 0 ? false : isShow;
       } else {
@@ -1182,7 +1187,7 @@ export class PageDesktopDragHandler extends BaseDragHandler implements IDesktopD
         isShow = this.needHideWhiteEdge() ? false : isShow;
       }
     } else {
-      if (this.isBigScreen && this.isLeaveSwiperPage) {
+      if (this.isSuperFold && this.isLeaveSwiperPage) {
         dragTranslate = this.getDragTranslate(dropY ?? 0);
         isShow = dragTranslate.length === 0 ? false : isShow;
       } else {
@@ -1212,7 +1217,7 @@ export class PageDesktopDragHandler extends BaseDragHandler implements IDesktopD
 
   private needHideWhiteEdge(): boolean {
     let needHideWhiteEdge: boolean = false;
-    if (this.isBigScreen && this.currentMoveItemList.length === 0) {
+    if (this.isSuperFold && this.currentMoveItemList.length === 0) {
       const dragItemInfo: GridLayoutItemInfo | undefined = this.getSingleDragItemInfo();
       if (!this.mEndPosition) {
         return false;
@@ -1378,8 +1383,8 @@ export class PageDesktopDragHandler extends BaseDragHandler implements IDesktopD
     }
     let paddingTop: number = this.mPaddingTop;
     let paddingLeft: number = this.mPaddingLeft;
-    if (this.isBigScreen) {
-      const paddings: number[] = this.uniquePaddingForBigScreen();
+    if (this.isSuperFold) {
+      const paddings: number[] = this.uniquePaddingForSuperFold();
       paddingTop = paddings[0];
       paddingLeft = paddings[1];
     }
@@ -1388,7 +1393,7 @@ export class PageDesktopDragHandler extends BaseDragHandler implements IDesktopD
   }
 
   private initFolderPaddingLeftForTrifold(paddingLeft: number): number {
-    if (!DeviceHelper.isUltraScreenProduct()) {
+    if (!DeviceHelper.isThreeFoldProduct()) {
       return paddingLeft;
     }
     if (DeviceHelper.isFState()) {
@@ -1397,7 +1402,7 @@ export class PageDesktopDragHandler extends BaseDragHandler implements IDesktopD
     return this.mPaddingLeft;
   }
 
-  private uniquePaddingForBigScreen(): number[] {
+  private uniquePaddingForSuperFold(): number[] {
     let paddingTop: number = 0;
     let paddingLeft: number = 0;
     if (this.isPortrait) {
@@ -1460,6 +1465,11 @@ export class PageDesktopDragHandler extends BaseDragHandler implements IDesktopD
     const targetIndex: number = this.getIndexByPosition(result[1], result[0]);
     if (itemInfo && this.canCover(x, y, dragItemInfo, itemInfo) && this.needToCover(itemInfo) &&
       !lockLayoutManager.isLockLayout()) {
+      if (LightOutdoorConfig.getInstance().isOnLightOutdoorMode()) {
+        this.resetSqueezeStatus();
+        this.handleFallItemAnimation(false);
+        return false;
+      }
       if (GridLayoutUtil.checkGridItemEqual(this.coveredItem, itemInfo)) {
         return false;
       }
@@ -1487,11 +1497,19 @@ export class PageDesktopDragHandler extends BaseDragHandler implements IDesktopD
       if (!this.shouldSqueeze(targetIndex, itemInfo)) {
         return false;
       }
+      // 云端2底部元素是预制元素，不挤位
+      if (LightOutdoorConfig.getInstance().isOnLightOutdoorMode() &&
+        !desktopItemDraggableManager.isItemDraggable(itemInfo as Object as GridLayoutItemInfo)) {
+        this.resetSqueezeStatus();
+        this.handleFallItemAnimation(!GridLayoutUtil.isValidLayoutItem(itemInfo));
+        log.showInfo('onLightOutdoorMode under preItem no need to squeeze');
+        return false;
+      }
 
       if (!this.zSqueeze && (dragItemInfo.typeId === CommonConstants.TYPE_CARD ||
         dragItemInfo.typeId === CommonConstants.TYPE_REGION_FOLDER)) {
         this.computeCardSqueeze(dragDelegate);
-        const isShowFallItemAnimation: boolean = this.isSqueezeSuccess || (this.isBigScreen && this.isLeaveSwiperPage);
+        const isShowFallItemAnimation: boolean = this.isSqueezeSuccess || (this.isSuperFold && this.isLeaveSwiperPage);
         this.handleFallItemAnimation(isShowFallItemAnimation, y);
         this.isSqueezeSuccess = false;
         return true;
@@ -1744,7 +1762,7 @@ export class PageDesktopDragHandler extends BaseDragHandler implements IDesktopD
   }
 
   private changeToExpandDragDelegate(dragDelegate: CellLayoutDragDelegate): CellLayoutDragDelegate {
-    if (!this.isBigScreen || !this.isExpandStatus || !this.mGridConfig) {
+    if (!this.isSuperFold || !this.isExpandStatus || !this.mGridConfig) {
       return dragDelegate;
     }
     let row: number = this.mGridConfig.row;
@@ -1758,7 +1776,7 @@ export class PageDesktopDragHandler extends BaseDragHandler implements IDesktopD
       column = column * 2;
       width = width * 2;
     }
-    const paddings: number[] = this.uniquePaddingForBigScreen();
+    const paddings: number[] = this.uniquePaddingForSuperFold();
     return new CellLayoutDragDelegate(paddings[1], paddings[0], row, column, width, height,
       this.mPageDesktopStyleConfig.mRowsGap, this.mPageDesktopStyleConfig.mColumnsGap);
   }
@@ -1769,7 +1787,7 @@ export class PageDesktopDragHandler extends BaseDragHandler implements IDesktopD
     }
     let position: DragGridPosition = { row: this.mEndPosition?.row ?? 0, column: this.mEndPosition?.column ?? 0,
       page: this.mEndPosition?.page ?? -1 };
-    if (this.isBigScreen && this.isExpandStatus) {
+    if (this.isSuperFold && this.isExpandStatus) {
       position = GridLayoutUtil.changeDragGridPositionToExpand(position, this.isPortrait, this.mGridConfig?.row ?? 0,
         this.mGridConfig?.column ?? 0);
     }
@@ -1975,7 +1993,7 @@ export class PageDesktopDragHandler extends BaseDragHandler implements IDesktopD
       this.showSqueezeContinueItem(gridItem, curPage);
       Cache2RdbHelper.getInstance().addItem(CommonConstants.DRAG_RDB_EVENT, gridItem);
     });
-    if (this.isBigScreen && this.isLeaveSwiperPage) {
+    if (this.isSuperFold && this.isLeaveSwiperPage) {
       curPage = fallItemData.result[2] ?? curPage;
     }
     log.showInfo(`desktop drag isDragPaste: ${this.isDragPaste}, pcMultiDragCount: ${this.pcMultiDragCount}, currentMoveItemList length: ${this.currentMoveItemList.length}`);
@@ -2102,7 +2120,7 @@ export class PageDesktopDragHandler extends BaseDragHandler implements IDesktopD
     if (this.isPc && this.dragPageIndex === 0) {
       endPosition.y = endPosition.y + this.mPageDesktopStyleConfig.mWorkSpaceMarginTop;
     }
-    if (this.isBigScreen) {
+    if (this.isSuperFold) {
       if (this.dragPageIndex & 1) {
         if (this.isPortrait) {
           endPosition.y = this.isExpandStatus ? endPosition.y - this.mPageDesktopStyleConfig.mWorkSpaceHeight
@@ -2125,6 +2143,7 @@ export class PageDesktopDragHandler extends BaseDragHandler implements IDesktopD
       let neighborPage = this.getNeighborPageForWhiteBox(pageIndex);
       (GlobalContext.getInstance().getObject('desktopContext') as ctx.ServiceExtensionContext).eventHub.emit(`rect${neighborPage}`, false, null);
     }
+    log.showInfo(`notifyGridWhiteEdgeShow end: ${endPosition.x},${endPosition.y}`)
   }
 
   private notifyGridWhiteEdgeHide(pageIndex: number): void {
@@ -2230,7 +2249,6 @@ export class PageDesktopDragHandler extends BaseDragHandler implements IDesktopD
    * @returns 落位位置的中心点
    */
   public getFallPosition(dropToDock: boolean, isRealCenter?: boolean): number[] | undefined {
-    const startPosition: DragItemPosition = AppStorage.get<DragItemPosition>('startPosition') as DragItemPosition;
     if (dropToDock) {
       const startPosition: DragItemPosition = AppStorage.get<DragItemPosition>('startPosition') as DragItemPosition;
       if (CheckEmptyUtils.isEmpty(startPosition)) {
@@ -2248,7 +2266,7 @@ export class PageDesktopDragHandler extends BaseDragHandler implements IDesktopD
     let column = dropPosition[0] ?? lastDragItem.result[0];
     let row = dropPosition[1] ?? lastDragItem.result[1];
     let page = dropPosition[2] ?? this.getCurrentPageIndex();
-    if (this.isBigScreen && this.mPageDesktopViewModel.getKeyBoardStatus() === FeatureConstants.KEYBOARD_PAGE_C) {
+    if (this.isSuperFold && this.mPageDesktopViewModel.getKeyBoardStatus() === FeatureConstants.KEYBOARD_PAGE_C) {
       // 折叠产品滑动到C面，实际显示效果替换为page 0
       page = 0;
     }
@@ -2468,7 +2486,7 @@ export class PageDesktopDragHandler extends BaseDragHandler implements IDesktopD
 
   private onCreaseRegionDrag(dropY: number, fallItemData: DragItem, dragItemInfo: GridLayoutItemInfo,
     dragResult: DesktopDragResult): DesktopDragResult {
-    if (!this.isBigScreen) {
+    if (!this.isSuperFold) {
       log.showInfo('not super fold leave swiperPage, drop return');
       return dragResult;
     }
@@ -2626,7 +2644,8 @@ export class PageDesktopDragHandler extends BaseDragHandler implements IDesktopD
       dragItemType === CommonConstants.DRAG_FROM_FOLDER ||
       dragItemType === CommonConstants.DRAG_FROM_FOLDER_IN_DOCK) {
       // 拦截定制文件夹应用被异常拖出时的落位
-      if (NotHarmonyUtil.isInNotHarmonyFolder(dragItemInfo) && dragItemInfo.appStatus === AppStatus.WAIT_FOR_HARMONY) {
+      if (DeliverUtil.isDisableOperationsOnFolder(dragItemInfo.folderId, dragItemInfo.intent) ||
+        (NotHarmonyUtil.isInNotHarmonyFolder(dragItemInfo) && dragItemInfo.appStatus === AppStatus.WAIT_FOR_HARMONY)) {
         log.showInfo('leave container folder, drop return');
         return dragResult;
       }
@@ -2689,7 +2708,8 @@ export class PageDesktopDragHandler extends BaseDragHandler implements IDesktopD
       log.showWarn(`desktop drag flag updateGridList, currentItemInfo: ${DesktopUtils.desktopItemsToString(itemInfo)}, endPosition:${JSON.stringify(endPosition)}`);
 
       // 因为挤位定时器机制，需在落位时强行触发挤位场景：1.dragMove时无挤位但落位时有元素  2.dragMove时有挤位但落位位置有变化
-      let isNeedReSqueezeDrop = (this.currentMoveItemList.length === 0 && itemInfo !== undefined) ||
+      // 3. 云端2模式 落位不需要重新挤位
+      let isNeedReSqueezeDrop = !LightOutdoorConfig.getInstance().isOnLightOutdoorMode() && (this.currentMoveItemList.length === 0 && itemInfo !== undefined) ||
         (this.currentMoveItemList.length > 0 && !this.isCorrectDropSolution(this.currentMoveItemList, fallItemData) && !this.isNearReArrangeSolutionSuccess);
       log.showWarn(`desktop drag isNeedReSqueezeDrop:${isNeedReSqueezeDrop}, currentMoveItemList:${this.currentMoveItemList.length}`);
       let isReSqueezeSuccess: boolean = false;
@@ -2729,6 +2749,12 @@ export class PageDesktopDragHandler extends BaseDragHandler implements IDesktopD
     }
 
     endLayoutInfo = this.getItemByPosition(this.mEndPosition) as GridLayoutItemInfo;
+    if (LightOutdoorConfig.getInstance().isOnLightOutdoorMode() && endLayoutInfo !== undefined) {
+      log.showInfo('onLightOutdoorMode onDragDropFinal, not drop.');
+      return dragResult;
+    }
+    let isDropdeliverFolder = DeliverUtil.isdeliverFolder(endLayoutInfo?.folderId);
+    let isDropAbroadFolder = DeliverUtil.isAbroadFolder(endLayoutInfo?.folderId);
     if (dragItems.length > 1 && GridLayoutUtil.isIconType(endLayoutInfo?.typeId) &&
       !FolderViewModel.canFolderDropIn(endLayoutInfo, dragItems)) {
       // 多选超过文件夹容量上限的图标落位图标试图生成小文件夹时，阻止落位，走挤位
@@ -2747,6 +2773,11 @@ export class PageDesktopDragHandler extends BaseDragHandler implements IDesktopD
         // 满文件夹场景
         // 多选落位满文件夹被阻止后，重置落位信息以规避后续合并文件夹，走挤位失败逻辑
         log.showInfo(`FolderIsFullAfterAppsDropIn`);
+        // 非鸿蒙化文件夹-提示不支持图标移入打点
+        if (DeliverUtil.isContainerFolder(endLayoutInfo?.folderId)) {
+          FolderReporter.getInstance()
+            .reportDragIconIntoNotHarmonyFolder(dragItemInfo, endLayoutInfo, endLayoutInfo?.folderId);
+        }
         endLayoutInfo = new GridLayoutItemInfo();
         this.clearLastCoveredItemAnimation();
       }
@@ -2762,13 +2793,23 @@ export class PageDesktopDragHandler extends BaseDragHandler implements IDesktopD
     // 不让落位的定制布局
     let waitForHarmony: boolean =
       NotHarmonyUtil.isNotHarmonyApps(dragItems) && dragItemInfo.typeId === CommonConstants.TYPE_APP;
+    let isMixedDropdeliver = isDropdeliverFolder && dragItems.length > 1 && !DeliverUtil.isAlldeliverApps(dragItems);
     if (GridLayoutUtil.isIconType(dragItemInfo?.typeId) &&
-      (NotHarmonyUtil.isNotHarmonyFolderById(endLayoutInfo?.folderId) && !waitForHarmony)) {
+      (DeliverUtil.isDisableOperationsOnFolder(endLayoutInfo?.folderId, dragItemInfo.intent) ||
+        (NotHarmonyUtil.isNotHarmonyFolderById(endLayoutInfo?.folderId) && !waitForHarmony) ||
+        isMixedDropdeliver || isDropAbroadFolder)) {
       log.showInfo('cannot drag item to flod');
-      prompt.showToast({
-        message: ResourceManager.getInstance().getStringByName('can_not_add_to_flod')
-      });
-      // 非OpenHarmony化文件夹-提示不支持图标移入打点
+      if (isMixedDropdeliver) {
+        prompt.showToast({
+          message: ResourceManager.getInstance().getStringByName('only_deliver_app_can_add_to_fold')
+        });
+      } else {
+        prompt.showToast({
+          message: ResourceManager.getInstance().getStringByName('can_not_add_to_flod')
+        });
+      }
+
+      // 非鸿蒙化文件夹-提示不支持图标移入打点
       FolderReporter.getInstance()
         .reportDragIconIntoNotHarmonyFolder(dragItemInfo, endLayoutInfo, endLayoutInfo?.folderId);
       this.refreshResident(dragItemInfo, dragItemType);
@@ -2784,6 +2825,11 @@ export class PageDesktopDragHandler extends BaseDragHandler implements IDesktopD
 
     // 编辑模式文件夹打开态，不可拖出元素落位兜底
     const openFolderData: GridLayoutItemInfo = this.mFolderMgr.getOpenedFolder();
+    let isNotAbleToDragOut: boolean = !DeliverUtil.canFolderItemDragOut(openFolderData.folderId, dragItemInfo.bundleName);
+    if (dragItems.length === 1 && isNotAbleToDragOut) {
+      Trace.end(Trace.CORE_METHOD_DRAG_DROP);
+      return dragResult;
+    }
 
     // 合并文件夹
     if (dragItems.length === 1 && this.addIconToFolder(x, y, dragItemType, deviceType, dragItemInfo,
@@ -2962,7 +3008,8 @@ export class PageDesktopDragHandler extends BaseDragHandler implements IDesktopD
   }
 
   private isShowNoFreeAreaToast(dragDelegate: CellLayoutDragDelegate, dragItemInfo: GridLayoutItemInfo): void {
-    if (!this.isBigScreen || (this.isBigScreen && !this.isExpandStatus)) {
+    GlobalContext.getContext().eventHub.emit('myOnDragEnd');
+    if (!this.isSuperFold || (this.isSuperFold && !this.isExpandStatus)) {
       prompt.showToast({
         message: $r('app.string.add_form_to_desktop_max')
       });
@@ -3047,7 +3094,7 @@ export class PageDesktopDragHandler extends BaseDragHandler implements IDesktopD
       log.showWarn('needUpdateEndPosIfNSqueeze: drag pos invalid');
       return false;
     }
-    let gridOfDragPos: DragGridPosition = this.isBigScreen ?
+    let gridOfDragPos: DragGridPosition = this.isSuperFold ?
     GridLayoutUtil.getRowAndColumnAndPage(dragX, dragY, this.isPortrait) :
     GridLayoutUtil.getRowAndColumn(dragX, dragY, this.getCurrentPageIndex());
     if (!gridOfDragPos) {
@@ -3414,6 +3461,11 @@ export class PageDesktopDragHandler extends BaseDragHandler implements IDesktopD
           FolderDropType.DROP_REFRESH_FOLDER, DragViewModelUtil.getDragParams([dragItemInfo]));
       }
     }
+    if (DeliverUtil.isdeliverApp(dragItemInfo.intent)) {
+      log.showInfo(`clear deliver app folder cache: ${dragItemInfo.bundleName}`);
+      localEventManager.sendLocalEventSticky(EventConstants.EVENT_FOLDER_APP_PACKAGE_CHANGED,
+        dragItemInfo.bundleName);
+    }
     ContractedFolderCommonViewModel.getInstance().drop('drag to folder', endLayoutInfo.folderId,
       FolderDropType.DROP_IN_FOLDER, DragViewModelUtil.getDragParams([dragItemInfo]));
     if (dragItemType === CommonConstants.DRAG_FROM_DOCK || dragItemType === CommonConstants.DRAG_FROM_FOLDER_IN_DOCK &&
@@ -3716,7 +3768,7 @@ export class PageDesktopDragHandler extends BaseDragHandler implements IDesktopD
     let count: number = PageInfoManager.getInstance().getDisplayCount();
     const leftPageIndex = Math.floor(pageIndex / count) * count;
     let nearPage: number = pageIndex;
-    let foldStatus: boolean = this.isFoldExpandStatus() || this.isBigScreen;
+    let foldStatus: boolean = this.isFoldExpandStatus() || this.isSuperFold;
     if (foldStatus) {
       const currentDisplayCount = PageInfoManager.getInstance().getDisplayCount();
       if (this.indexInFoldExpand % currentDisplayCount === 0) {
@@ -3736,7 +3788,7 @@ export class PageDesktopDragHandler extends BaseDragHandler implements IDesktopD
         }
       }
     }
-    if (this.isBigScreen) {
+    if (this.isSuperFold) {
       return this.getCurrentPageIndex() ? 0 : 1;
     }
     log.showInfo(`getNearPage current ${this.indexInFoldExpand + pageIndex} target ${nearPage}`);
@@ -4046,7 +4098,7 @@ export class PageDesktopDragHandler extends BaseDragHandler implements IDesktopD
       .emit(EventConstants.EVENT_UPDATE_CURRENT_PAGE, pageIndex, curPageInfo);
 
     // 折叠屏展开态下，需要刷新当前可见的两页
-    let foldStatus: boolean = this.isFoldExpandStatus() || this.isBigScreen;
+    let foldStatus: boolean = this.isFoldExpandStatus() || this.isSuperFold;
     if (foldStatus) {
       let nearPage = this.getNearPage();
       let nearPageInfo = this.mLayoutCacheManager.selectGridLayoutItemsByPage(nearPage);
@@ -4440,7 +4492,7 @@ export class PageDesktopDragHandler extends BaseDragHandler implements IDesktopD
       return [oldPosition[0], positionY];
     }
     const row: number = isSqueezeBackwards ? this.mGridConfig.row - 1 : 0;
-    const squeezePosition = this.isBigScreen ? this.getPositionByRowAndColumn(row, 0, item.page) :
+    const squeezePosition = this.isSuperFold ? this.getPositionByRowAndColumn(row, 0, item.page) :
     this.getPositionByRowAndColumn(row, 0);
     positionY = isSqueezeBackwards ? squeezePosition[1] + this.mGridItemHeight :
       squeezePosition[1] - this.mGridItemHeight;
@@ -4519,7 +4571,7 @@ export class PageDesktopDragHandler extends BaseDragHandler implements IDesktopD
           itemNewPosPage = itemNewPos.page ?? 0;
         }
       }
-      let newIndex: number = this.isBigScreen ? this.getItemIndexForBigScreen(itemNewPosColumn, itemNewPosRow, itemNewPosPage) :
+      let newIndex: number = this.isSuperFold ? this.getItemIndexForSuperFold(itemNewPosColumn, itemNewPosRow, itemNewPosPage) :
         itemNewPosColumn * this.mGridConfig.row + itemNewPosRow;
       // 判断新位置是否有空
       const findItem: GridLayoutItemInfo | undefined = this.getItemByIndex(newIndex);
@@ -4587,7 +4639,7 @@ export class PageDesktopDragHandler extends BaseDragHandler implements IDesktopD
   }
 
   private getIndexByRowAndColumn(row: number, column: number): number {
-    return this.isBigScreen ? this.getItemIndexForBigScreen(column, row) :
+    return this.isSuperFold ? this.getItemIndexForSuperFold(column, row) :
       column * (this.mGridConfig?.row ?? 0) + row;
   }
 
@@ -4598,9 +4650,9 @@ export class PageDesktopDragHandler extends BaseDragHandler implements IDesktopD
     if (!this.mGridConfig) {
       return false;
     }
-    const startIndex: number = this.isBigScreen ? this.getItemIndexForBigScreen(dropPos[1], dropPos[0]) :
+    const startIndex: number = this.isSuperFold ? this.getItemIndexForSuperFold(dropPos[1], dropPos[0]) :
       dropPos[1] * this.mGridConfig.row + dropPos[0];
-    const endIndex: number = (this.isBigScreen && this.isExpandStatus) ? this.mGridConfig.row * this.mGridConfig.column * 2 - 1 :
+    const endIndex: number = (this.isSuperFold && this.isExpandStatus) ? this.mGridConfig.row * this.mGridConfig.column * 2 - 1 :
       this.mGridConfig.row * this.mGridConfig.column - 1;
     log.showInfo(`dropRestItem startIndex: ${startIndex}, endIndex: ${endIndex}, length: ${items.length}`);
 
@@ -4634,7 +4686,7 @@ export class PageDesktopDragHandler extends BaseDragHandler implements IDesktopD
     if (!findItem ||
       (findItem && this.multiDragItemPosMap.has(this.getItemEventKey(findItem)))) {
       const findItem: MoveItem | undefined = tempMoveItemList.find((item: MoveItem) => {
-        const index: number = this.isBigScreen ? this.getItemIndexForBigScreen(item.column, item.row) :
+        const index: number = this.isSuperFold ? this.getItemIndexForSuperFold(item.column, item.row) :
           item.column * (this.mGridConfig?.row ?? 0) + item.row;
         return index === i;
       });
@@ -4643,7 +4695,7 @@ export class PageDesktopDragHandler extends BaseDragHandler implements IDesktopD
         return;
       }
       const item: GridLayoutItemInfo | undefined = items.shift();
-      const newPos: DragGridPosition = this.getItemByIndexForBigScreen(i);
+      const newPos: DragGridPosition = this.getItemByIndexForSuperFold(i);
       if (item && newPos) {
         let moveItem: MoveItem = this.transformItemToMoveItem(item, newPos.row, newPos.column, newPos.page ?? 0, true);
         tempMoveItemList.push(moveItem);
@@ -4674,10 +4726,10 @@ export class PageDesktopDragHandler extends BaseDragHandler implements IDesktopD
     let moveItem = MoveItem.fromGridItem(item);
     moveItem.squeezeExtraParam = {delayTime: 0, opacity: 1};
     let translatePosition: number[][] = [];
-    const oldPosition = this.isBigScreen ? this.getPositionByRowAndColumn(item.row ?? 0, item.column ?? 0, item.page) :
+    const oldPosition = this.isSuperFold ? this.getPositionByRowAndColumn(item.row ?? 0, item.column ?? 0, item.page) :
     this.getPositionByRowAndColumn(item.row ?? 0, item.column ?? 0);
     translatePosition[0] = oldPosition;
-    const newColAndRow: DragGridPosition = this.getItemByIndexForBigScreen(index);
+    const newColAndRow: DragGridPosition = this.getItemByIndexForSuperFold(index);
     log.showDebug(`desktop drag index ${index}, item ${item.appName}, old row ${item.row}, old column ${item.column}
       , new row ${newColAndRow.row}, new column ${newColAndRow.column}`);
     moveItem.isShowSqueezeAnimation = isShowSqueezeAnimation;
@@ -4694,7 +4746,7 @@ export class PageDesktopDragHandler extends BaseDragHandler implements IDesktopD
     moveItem.row = newColAndRow.row;
     moveItem.column = newColAndRow.column;
     moveItem.position = translatePosition;
-    if (this.isBigScreen) {
+    if (this.isSuperFold) {
       moveItem.page = newColAndRow.page ?? 0;
     }
     moveItem.isRepeatItem = this.isRepeatMoveItem(moveItem);
@@ -4712,7 +4764,7 @@ export class PageDesktopDragHandler extends BaseDragHandler implements IDesktopD
     let isShowSqueezeAnimation: boolean = true;
     // 从前往后挤，不能挤出最后一个，从后往前挤，不能挤出第一个
     const minIndex: number = 0;
-    const maxIndex: number = (this.isBigScreen && this.isExpandStatus) ? this.mGridConfig.row * this.mGridConfig.column * 2 - 1 :
+    const maxIndex: number = (this.isSuperFold && this.isExpandStatus) ? this.mGridConfig.row * this.mGridConfig.column * 2 - 1 :
       this.mGridConfig.row * this.mGridConfig.column - 1;
     let i = 0;
     log.showInfo(`desktop drag calculate Squeezed list ${isSqueezeBackwards}, start ${startSqueezeIndex}, end ${endSqueezeIndex}`);
@@ -4757,7 +4809,7 @@ export class PageDesktopDragHandler extends BaseDragHandler implements IDesktopD
   }
 
   private isShowSqueezeAnimation(moveItem: GridLayoutItemInfo, newColAndRow: DragGridPosition, isSqueezeBackwards: boolean): boolean {
-    if (!this.isBigScreen || (this.isBigScreen && !this.isExpandStatus)) {
+    if (!this.isSuperFold || (this.isSuperFold && !this.isExpandStatus)) {
       if (moveItem.column !== newColAndRow.column) {
         return false;
       }
@@ -4791,7 +4843,7 @@ export class PageDesktopDragHandler extends BaseDragHandler implements IDesktopD
         // index 2（dragStartItemIndex） 移至 11（dragEndItemIndex）  后向挤位，原11-end
         startSqueezeIndex = this.dragEndItemIndex;
         if (this.mGridConfig) {
-          endSqueezeIndex = this.isBigScreen ? this.mGridConfig.row * this.mGridConfig.column * 2 - 1 :
+          endSqueezeIndex = this.isSuperFold ? this.mGridConfig.row * this.mGridConfig.column * 2 - 1 :
             this.mGridConfig.row * this.mGridConfig.column - 1;
         }
       }
@@ -4848,6 +4900,11 @@ export class PageDesktopDragHandler extends BaseDragHandler implements IDesktopD
       if (thisItem.area && (thisItem.area[0] !== 1 || thisItem.area[1] !== 1)) {
         continue;
       }
+      // 云端2小元素挤位需跳过不可拖拽的预制元素
+      if (LightOutdoorConfig.getInstance().isOnLightOutdoorMode() &&
+        !desktopItemDraggableManager.isItemDraggable(thisItem as Object as GridLayoutItemInfo)) {
+        continue;
+      }
 
       let itemRow = thisItem.row ?? 0;
       let itemColumn = thisItem.column ?? 0;
@@ -4869,7 +4926,8 @@ export class PageDesktopDragHandler extends BaseDragHandler implements IDesktopD
       }
       let count: number = 0;
       if (isSqueezeBackwards) {
-        while (count === 0 || (tempItemInfo && (!this.isGridItem1x1(tempItemInfo)))) {
+        while (count === 0 || (tempItemInfo && ((LightOutdoorConfig.getInstance().isOnLightOutdoorMode() &&
+          !desktopItemDraggableManager.isItemDraggable(tempItemInfo as Object as GridLayoutItemInfo)) || !this.isGridItem1x1(tempItemInfo)))) {
           if (itemColumn < this.mGridConfig.column - 1) {
             itemColumn = itemColumn + 1;
           } else {
@@ -4887,7 +4945,8 @@ export class PageDesktopDragHandler extends BaseDragHandler implements IDesktopD
           break;
         }
       } else {
-        while (count === 0 || (tempItemInfo && (!this.isGridItem1x1(tempItemInfo)))) {
+        while (count === 0 || (tempItemInfo && ((LightOutdoorConfig.getInstance().isOnLightOutdoorMode() &&
+          !desktopItemDraggableManager.isItemDraggable(tempItemInfo as Object as GridLayoutItemInfo)) || !this.isGridItem1x1(tempItemInfo)))) {
           if (itemColumn > 0) {
             itemColumn = itemColumn - 1;
           } else {
@@ -5218,13 +5277,13 @@ export class PageDesktopDragHandler extends BaseDragHandler implements IDesktopD
     }
   }
 
-  public setBigScreenStatus(isPortrait: boolean, isExpandStatus: boolean): void {
+  public setSuperFoldStatus(isPortrait: boolean, isExpandStatus: boolean): void {
     if (this.mGridConfig) {
-      CardSqueezer.getInstance().setBigScreenStatus(isPortrait, isExpandStatus, this.mGridConfig);
+      CardSqueezer.getInstance().setSuperFoldStatus(isPortrait, isExpandStatus, this.mGridConfig);
     }
     this.isExpandStatus = isExpandStatus;
     this.isPortrait = isPortrait;
-    log.showInfo(`bigScreen isExpandStatus ${this.isExpandStatus} isPortrait ${this.isPortrait}`);
+    log.showInfo(`superFold isExpandStatus ${this.isExpandStatus} isPortrait ${this.isPortrait}`);
   }
 
   private isNeedWhiteBox(extraParams?: string): boolean {
@@ -5438,13 +5497,13 @@ export class PageDesktopDragHandler extends BaseDragHandler implements IDesktopD
     if (!this.mGridConfig) {
       return undefined;
     }
-    const index: number = this.isBigScreen ? this.getItemIndexForBigScreen(column, row) :
+    const index: number = this.isSuperFold ? this.getItemIndexForSuperFold(column, row) :
       this.mGridConfig.row * column + row;
     log.showInfo(`getItemByPos: row:${row}, column:${column}, index:${index}`);
     return this.getItemByIndex(index);
   }
 
-  private getItemIndexForBigScreen(column: number, row: number, pageId?: number): number {
+  private getItemIndexForSuperFold(column: number, row: number, pageId?: number): number {
     let index: number = CommonConstants.INVALID_VALUE;
     if (!this.mGridConfig) {
       return index;
@@ -5463,14 +5522,14 @@ export class PageDesktopDragHandler extends BaseDragHandler implements IDesktopD
     return index;
   }
 
-  private getItemByIndexForBigScreen(index: number): DragGridPosition {
+  private getItemByIndexForSuperFold(index: number): DragGridPosition {
     let column: number = 0;
     let row: number = 0;
     let pageIndex: number = this.dragPageIndex;
     if (!this.mGridConfig) {
       return {column: column, row: row, page: pageIndex};
     }
-    if (!this.isBigScreen || (this.isBigScreen && !this.isExpandStatus)) {
+    if (!this.isSuperFold || (this.isSuperFold && !this.isExpandStatus)) {
       column = Math.floor(index / this.mGridConfig.row);
       row = index % this.mGridConfig.row;
       return {column: column, row: row, page: pageIndex};
@@ -5569,7 +5628,7 @@ export class PageDesktopDragHandler extends BaseDragHandler implements IDesktopD
    * @returns true:位于中轴区,false:不位于中轴区或非折叠屏折叠态
    */
   private isDragInCentral(y: number): boolean {
-    if (this.isBigScreen && !this.isExpandStatus) {
+    if (this.isSuperFold && !this.isExpandStatus) {
       const bottom : number = LayoutViewModel.getInstance().getScreenHeight() / 2 + this.mDragCreaseHeight / 2;
       const top : number = bottom - this.mPageDesktopStyleConfig.mFoldCreaseRegionHeight;
       return y > top && y < bottom;
@@ -5754,8 +5813,8 @@ export class PageDesktopDragHandler extends BaseDragHandler implements IDesktopD
     if (!this.mGridConfig || row < 0 || row >= this.mGridConfig.row || column < 0 || column >= this.mGridConfig.column) {
       return CommonConstants.INVALID_VALUE;
     }
-    if (this.isBigScreen && this.isExpandStatus) {
-      return this.getItemIndexForBigScreen(column, row);
+    if (this.isSuperFold && this.isExpandStatus) {
+      return this.getItemIndexForSuperFold(column, row);
     }
     return this.zSqueeze ? row * this.mGridConfig.column + column : column * this.mGridConfig.row + row;
   }

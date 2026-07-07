@@ -1,0 +1,1607 @@
+{
+    "string":[
+        {
+            "name":"MultiWindow_guidance_button_next",
+            "value":"Далее",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Ai_bar_recent_detail",
+            "value":"Проведите вверх с нижней части экрана и задержите палец, чтобы посмотреть недавние задачи.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_does_not_support_panoramic_multiwindow_in_current_state",
+            "value":"Режим многозадачности не поддерживается.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Ai_bar_recent",
+            "value":"Просмотр текущих задач",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_not_support_multiwindows",
+            "value":"Приложение %1$s не поддерживает многооконный режим.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"maximize_window",
+            "value":"Развернуть",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"oh_multiwindow_vertical_split",
+            "value":"Разделить по вертикали",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"folder_name_tools",
+            "value":"Инструменты",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_click_application_form_midScene_waiting_state",
+            "value":"Нажмите на значок приложения, чтобы добавить его в режим многозадачности.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"replace_window",
+            "value":"Переключить",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"oh_multiwindow_minimize_all_float_due_to_rss",
+            "value":"Для удобства плавающее окно было скрыто в боковой части экрана.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"search_apps",
+            "value":"Поиск приложений",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_ring_mode_title_vibration",
+            "value":"Вибрация",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_click_application_form_split_screen",
+            "value":"Откройте другое приложение, чтобы включить режим разделения экрана.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"folder_name_system_apps",
+            "value":"Приложения ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_window",
+            "value":"Добавить",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"flip_the_phone",
+            "value":"Переверните устройство, чтобы включить фонарик",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_ring_mode_title_off",
+            "value":"Без звука",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"learn_more",
+            "value":"Подробнее",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_ring_mode_title_on",
+            "value":"Звук",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_does_not_support_panoramic_multiwindow",
+            "value":"Это приложение не поддерживает режим многозадачности.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_focused_switch_content_fold",
+            "value":"Нажмите на окно, чтобы выбрать его.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"oh_multiwindow_not_support_split",
+            "value":"Приложение %1$s не поддерживает режим нескольких окон.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"System",
+            "value":"Система",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add",
+            "value":"Добавить",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"delete_form",
+            "value":"Удалить",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_button_quit",
+            "value":"Позже",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"close_window",
+            "value":"Закрыть",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_bluetooth_title",
+            "value":"Bluetooth",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_split_screen_title",
+            "value":"Разделение экрана",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_nfc_mode_title",
+            "value":"NFC",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"forbid_pip_window_size_adjust",
+            "value":"Невозможно настроить размер окна на внешнем экране.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_horizontal_split",
+            "value":"Разделить по горизонтали",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_modify_mode_smart_text",
+            "value":"Эта заставка экрана постоянного отображения поддерживает только умный режим. Режим отображения автоматически переключен.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"one_hand_mode",
+            "value":"Управление одной рукой",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_poup_confirm",
+            "value":"OK",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aod_list_title_more_style",
+            "value":"Другие заставки",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"folder_name_preload",
+            "value":"Популярные приложения",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"one_hand_mode_accessibility_str_entry_setting",
+            "value":"Настройки",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Desktop_individuation",
+            "value":"Рабочий экран",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"airplane_mode",
+            "value":"Режим полета",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_horizontal_exchange",
+            "value":"Поменять верх/низ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"title_bar_menu_maximize_window",
+            "value":"Развернуть",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_focused_switch_title_fold",
+            "value":"Переключение окон",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"oh_multiwindow_save_group",
+            "value":"Сохранить комбинацию",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"next_step",
+            "value":"Далее",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"title_bar_menu_close_window",
+            "value":"Закрыть",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_change_views_title",
+            "value":"Быстрое изменение режимов отображения",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_vertical_exchange",
+            "value":"Поменять право/лево",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"title_bar_menu_minimize_window",
+            "value":"Свернуть",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"running_apps_recently",
+            "value":"Недавние приложения",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Ai_bar_return_home_detail",
+            "value":"Проведите вверх с нижней части экрана, чтобы перейти на рабочий экран",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_back_to_middle_scene_using_gesture",
+            "value":"Сведите четыре пальца, чтобы вернуться в режим многозадачности.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"one_hand_mode_exit",
+            "value":"Нажмите на пустую область, чтобы выйти.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_button_more",
+            "value":"Подробнее",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"know",
+            "value":"OK",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"compatible_application_display_desc",
+            "value":"Открытие поддерживаемых сторонних приложений в горизонтальной ориентации.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"compatible_application_display",
+            "value":"Совместимые приложения",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_floating_windows_title",
+            "value":"Плавающее окно",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_multi_finger_knead_title",
+            "value":"Переход в полноэкранный режим и выход из него",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_show_not_support_small_step",
+            "value":"Приложение %1$s не поддерживает отображение в мини-окне.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_split_adjust_to_mid_title",
+            "value":"Переход в режим многозадачности изменением размера окон",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_Mid_View_contents",
+            "value":"В режиме разделения экрана проведите вверх или измените размер окон для параллельного отображения окон.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"minimize_window",
+            "value":"Свернуть",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Ai_bar_vassistant_dialogue_longpress",
+            "value":"Нажатие и удержание для использования voice",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Ai_bar_return_home",
+            "value":"Рабочий экран",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_adjust_mid_window_title",
+            "value":"Настройка окон",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_slid_delete_title",
+            "value":"Закрытие приложений проведением",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_add_window_content",
+            "value":"В верхнем меню вы можете добавить другое окно в эту группу.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"not_harmony_apps",
+            "value":"Скоро будет доступно",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"already_exist_pip_window_toast",
+            "value":"Сначала закройте существующее мини-окно.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_split_swap_title",
+            "value":"Изменение расположения окон",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"force_split2full_tips",
+            "value":"Отображение во весь экран будет применено при следующем открытии приложения.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Ai_bar_back_click_navigation",
+            "value":"Нажатие для возврата",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_pip_switch_title",
+            "value":"Картинка в картинке",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_not_support_split_ratio",
+            "value":"Размер экрана невозможно скорректировать для игр.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keyboard_panel_smart_access_text",
+            "value":"Кнопка других методов ввода",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_split_to_float_title",
+            "value":"Переключение из режима разделения экрана в плавающее окно",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"unlock_app",
+            "value":"Блокировка приложения %s отменена",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_not_support_split_for_folded_new",
+            "value":"Приложение %1$s не поддерживает режим разделения экрана, когда устройство сложено.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"No_available_window",
+            "value":"Нет доступных окон приложений",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_video_player",
+            "value":"Воспроизведение видео в мини-окне",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"duplicate_add",
+            "value":"Уже добавлено.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Ai_bar_back",
+            "value":"Назад",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"uninstall",
+            "value":"Удалить",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keyboard_panel_world_access_text",
+            "value":"Кнопка переключения клавиатур",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_not_support_horizontal_split_new",
+            "value":"Приложение %1$s не поддерживает отображение в режиме горизонтального разделения экрана.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"title_search_result",
+            "value":"Результаты",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"recover_Theme_App_massage",
+            "value":"Для использования этой функции приложение Темы должно быть установлено.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_three_finger_cross_slip_content",
+            "value":"Проведите тремя пальцами влево или вправо.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_add_window_title",
+            "value":"Добавление нового окна",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_floating_windows_contents",
+            "value":"Открывайте приложения в плавающих окнах и используйте жесты, чтобы сворачивать, разворачивать или закрывать их.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_Mid_View_title",
+            "value":"Параллельное отображение окон",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_center_menu_add_desktop",
+            "value":"Добавить на рабочий экран",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Desktop_setting",
+            "value":"Настройки рабочего экрана",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aod_cancel",
+            "value":"Отмена",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"HiSearch_title",
+            "value":"Поиск с voice",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_window_open",
+            "value":"Элементы управления воспроизведением отображаются",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_play",
+            "value":"Воспроизвести",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"delete_app",
+            "value":"Удалить",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"style_mode_label_small",
+            "value":"Мелко (%1$d:%2$d)",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_location_title",
+            "value":"Геолокация",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"style_mode_label_split",
+            "value":"Столбцы",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"landscape_app_full_ratio",
+            "value":"Адаптация к полноэкранному режиму",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Ai_bar_gesture_back_detail",
+            "value":"Проведите в центр от левого или правого края экрана, чтобы вернуться на предыдущий экран.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keyboard_thumb_access_text",
+            "value":"Кнопка клавиатуры ввода большими пальцами",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_floating_tip",
+            "value":"Нажмите для просмотра элементов управления.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_button_know",
+            "value":"OK",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_delete_form",
+            "value":"Удалить этот виджет?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_split_tip",
+            "value":"Нажмите для просмотра элементов управления.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"mid_scene_tip_label",
+            "value":"Отпустите, чтобы включить режим многозадачности",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"continue",
+            "value":"Далее",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"recover",
+            "value":"Восстановить",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"lock_app",
+            "value":"К приложению %s применена блокировка",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"restoring_tips_btn",
+            "value":"OK",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Ai_bar_vassistant",
+            "value":"Нажмите и удерживайте панель навигации, чтобы обратиться к voice.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_one_step_mid_title",
+            "value":"Переход в режим многозадачности проведением по экрану",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"continue_mission_fail_device_connecting_to_another_device",
+            "value":"Сбой передачи задачи. Устройство %1$s взаимодействует с другим устройством.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_uninstall",
+            "value":"Удаление запрещено.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ai_bar_accessibility_text",
+            "value":"Панель навигации, нажмите дважды и удерживайте, чтобы обратиться к voice",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"force_split_tips",
+            "value":"Отображение в формате столбцов будет применено при следующем открытии приложения.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_not_support_float_window",
+            "value":"Приложение %1$s невозможно открыть в плавающем окне.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"style_mode_label_full",
+            "value":"Во весь экран",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"keyboard_float_access_text",
+            "value":"Кнопка плавающей клавиатуры",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_swap_content",
+            "value":"Нажмите и удерживайте верхнюю панель окна, затем перетащите его над другим окном.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"new_folder_name",
+            "value":"Папка %1$d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Ai_bar_back_detail",
+            "value":"Нажмите на панель навигации, чтобы вернуться на предыдущий экран.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"gesture_dock_add_limit",
+            "value":"Можно добавить максимум %1$d приложений.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_restore",
+            "value":"Восстановить большое окно",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"confirm_pcmod_tips",
+            "value":"OK",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"recover_Theme_App",
+            "value":"Восстановить приложение Темы?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"enter_pc_mode_tips",
+            "value":"Будет включен режим плавающих окон. Этот режим доступен только в горизонтальной ориентации.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"close_flashlight_tips",
+            "value":"Нажмите на кнопку питания, чтобы выключить фонарик",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"floating_three_button_navigation",
+            "value":"Плавающие элементы навигации",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cancel",
+            "value":"Отмена",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_menu_open",
+            "value":"Открыть",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_to_voice",
+            "value":"Перетаскивание для voice",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_to_voice_detail",
+            "value":"Нажмите и удерживайте элемент, чтобы он стал плавающим, затем перетащите его вниз.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"uninstall_success",
+            "value":"Удалено.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"uninstall_failed",
+            "value":"Сбой удаления.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"title_recently_use",
+            "value":"Недавние",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_to_voice_reminder",
+            "value":"Перетащите для использования voice, отпустите для активации",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_adjust_mid_window_content",
+            "value":"Перетащите, чтобы изменить размер окон.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pip_play_fast_backward",
+            "value":"Назад",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"landscape_startup_title",
+            "value":"Калибровка приложений",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aod_dialog_title",
+            "value":"Заставка",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Desktop_slide",
+            "value":"Поиск проведением вниз по экрану",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_app_is_open",
+            "value":"Приложение уже открыто.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"oh_multiwindow_not_support_vertical_split_new",
+            "value":"Приложение %1$s не поддерживает отображение в режиме вертикального разделения экрана.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_swap_title",
+            "value":"Переключение окон",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"continue_mission_fail_close_hotspot_and_try_again",
+            "value":"Сбой передачи задачи. Выключите личную точку доступа на устройстве %1$s и повторите попытку.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Ai_bar_setting",
+            "value":"Системная навигация",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"title_all_apps",
+            "value":"Все приложения",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"No_running_apps_recently",
+            "value":"Нет недавних приложений",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"floating_three_button_navigation_detail",
+            "value":"Перетаскивайте навигационные кнопки, чтобы изменить их положение.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_button_finish",
+            "value":"Готово",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"style_mode_label_medium",
+            "value":"Средне",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_split_swap_content_phone",
+            "value":"Нажмите и удерживайте верхнюю панель окна, затем перетащите его над другим окном.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"add_to_desktop",
+            "value":"Добавить на рабочий экран",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keyboard_common_access_text",
+            "value":"Кнопка обычной клавиатуры",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"landscape_view_force",
+            "value":"Принудительное горизонтальное отображение",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remove_form_dialog_content",
+            "value":"Вы можете добавить этот виджет снова в меню быстрого доступа приложения.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_one_step_mid_content",
+            "value":"Проведите по экрану снизу вверх, затем выберите приложение.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_float_to_split_title",
+            "value":"Переключение из плавающего окна в режим разделения экрана",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_restored",
+            "value":"Приложение восстановлено.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"covertheme_settings_title",
+            "value":"Рабочий экран и внешний экран",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dragging_to_mid_tip",
+            "value":"Отпустите, чтобы включить режим многозадачности",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_three_finger_cross_slip_title",
+            "value":"Переключение приложений",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"title_bar_menu_enlarge_window",
+            "value":"Увеличить",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"continue_mission_waiting",
+            "value":"Передача задачи…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_float_to_split_content",
+            "value":"Нажмите и удерживайте верхнюю панель окна, затем перетащите для перехода в режим разделения экрана.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"title_bar_menu_shrink_window",
+            "value":"Уменьшить",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pip_window_close",
+            "value":"Элементы управления воспроизведением скрыты",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Ai_bar_vassistant_dialogue",
+            "value":"Общение с voice",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_dock_title",
+            "value":"Панель режима нескольких окон",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_split_to_float_content_phone",
+            "value":"Нажмите и удерживайте верхнюю панель окна, затем перетащите для переключения на плавающее окно.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_dialog_content",
+            "value":"Требуется включить Заставку. Включить?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_pip_switch_desc",
+            "value":"Когда эта функция включена, воспроизведение видео и вызовы MeeTime будут выполняться в мини-окне, если вы откроете другое приложение или вернетесь на рабочий экран.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"title_support_multiWindow",
+            "value":"Еще",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"restoring_tips_message",
+            "value":"Недоступно во время восстановления данных. Повторите попытку позже.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"split_to_float",
+            "value":"Плавающее окно",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Ai_bar",
+            "value":"Панель навигации",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_locked",
+            "value":"Применена блокировка к приложению %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_play_previous",
+            "value":"Воспроизвести предыдущую композицию",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"split_screen",
+            "value":"Разделение экрана",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_menu_exit",
+            "value":"Выйти",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_split_adjust_to_mid_content",
+            "value":"В режиме разделения экрана перетаскивайте разделяющую линию, пока вид не изменится.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_mid_view_guidance_floating_tip",
+            "value":"Перетащите сюда, чтобы изменить размер окон.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_multi_finger_knead_content",
+            "value":"Разведите большой палец и три других пальца либо сведите их вместе.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"keyboard_one_hand_access_text",
+            "value":"Кнопка клавиатуры режима Управление одной рукой",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"one_handed_mode_diag_title",
+            "value":"Управление одной рукой",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aod_enable",
+            "value":"Включить",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_split_screen_contents",
+            "value":"Перетащите верхнюю панель, чтобы поменять окна местами или открыть плавающее окно. Перетащите к центру, чтобы изменить размер.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_split_swap_content_fold",
+            "value":"Нажмите и удерживайте верхнюю панель окна, затем перетащите его над другим окном.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"one_handed_mode_diag_content",
+            "value":"Для управления одной рукой проведите пальцем вдоль нижнего края экрана и недолго удерживайте его.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pip_play_next",
+            "value":"Воспроизвести следующую композицию",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_center_menu_add_dock",
+            "value":"Добавить на панель внизу экрана",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_play_fast_forward",
+            "value":"Перемотка вперед",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"gesture_return_desktop",
+            "value":"Возврат на рабочий экран",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_change_views_contents",
+            "value":"Проведите в правый верхний угол для открытия плавающего окна или в левый верхний угол для разделения экрана.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_dock_contents",
+            "value":"Проведите в центр от края для отображения панели. Нажмите на приложение, чтобы открыть плавающее окно. Или перетащите приложение на экран, чтобы перейти в режим разделения экрана.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_slid_delete_content",
+            "value":"Нажмите и удерживайте верхнюю панель окна, затем быстро проведите к нижней части экрана.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_split_to_float_content_fold",
+            "value":"Нажмите и удерживайте верхнюю панель окна, затем перетащите для переключения на плавающее окно.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"one_handed_mode_diag_cancel",
+            "value":"OK",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"display_brightness",
+            "value":"Экран и яркость",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_title",
+            "value":"Несколько окон",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"multi_window_force_switch_title",
+            "value":"Режим совместимости",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"gesture_enter_recent_task",
+            "value":"Просмотр текущих задач",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"gesture_return",
+            "value":"Назад",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"out_pcmod_tips",
+            "value":"Чтобы выйти из этого режима, сначала закройте приложение %s.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"let_go_drag_to_voice",
+            "value":"Отпустите, чтобы отправить voice",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_float_to_split_content_fold",
+            "value":"Нажмите и удерживайте верхнюю панель окна, затем перетащите для перехода в режим разделения экрана.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pip_window_show",
+            "value":"Отображается мини-окно",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"switch_floating_window",
+            "value":"Плавающее окно",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dragging_to_full_tip",
+            "value":"Отпустите, чтобы включить полноэкранный режим",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_dock_switch_contents",
+            "value":"Проведите в центр от края и удерживайте, а затем отпустите для отображения панели.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_close",
+            "value":"Закрыть мини-окно",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"recent_unlock",
+            "value":"Отменить блокировку приложения %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"continue_mission_fail",
+            "value":"Сбой передачи задачи.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_dock_switch_title",
+            "value":"Панель режима нескольких окон",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_show_not_support_adjust_window",
+            "value":"Размер окна приложения %1$s невозможно изменить.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pip_play_pause",
+            "value":"Пауза",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"one_hand_compatibility_mode_prompt_string",
+            "value":"При проблемах отображения попробуйте перезапустить приложение.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"one_handed_mode_diag_confirm",
+            "value":"Подробнее",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dragging_to_one_to_two_split_tip",
+            "value":"Отпустите для разделения экрана %1$d:%2$d",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dragging_to_two_to_one_split_tip",
+            "value":"Отпустите для разделения экрана %2$d:%1$d",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"landscape_desc_force",
+            "value":"Отображение приложений в горизонтальном режиме, даже если они не поддерживают этот режим. Вы можете изменить соотношение сторон ниже.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"force_split2other",
+            "value":"Соотношение сторон изменено. Могут возникать проблемы отображения.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"enter_free_windows_tips",
+            "value":"Чтобы использовать режим плавающих окон, поверните устройство по горизонтали.",
+            "attr":{
+                "priority":"LT"
+            }
+        }
+    ]
+}

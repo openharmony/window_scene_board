@@ -32,3 +32,7 @@ export interface OverViewFollowingFromHomeCallback extends GestureCallbackBase {
   enterQuickSwitchIdle: GestureCallbackType;
   onExitOverView: () => void;
 }
+
+export interface OutdoorIdleCallback extends GestureCallbackBase {
+  enterHomeIdle: GestureCallbackType;
+}

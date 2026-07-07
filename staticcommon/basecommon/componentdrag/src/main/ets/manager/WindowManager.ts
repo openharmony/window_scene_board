@@ -68,7 +68,7 @@ class WindowManager {
 
   SYSTEM_BAR_TINT_CHANGE = 'systemBarTintChange';
 
-  STARTUP_GUIDE_PROCESS_NAME = 'com.ohos.hwstartupguide';
+  STARTUP_GUIDE_PROCESS_NAME = 'com.ohos.startupguide';
 
   mWindowInfos: Map<string, WindowInfo> = new Map();
 

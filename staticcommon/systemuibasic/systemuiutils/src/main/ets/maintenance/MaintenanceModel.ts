@@ -33,8 +33,12 @@ export enum MaintenanceRecordType {
   INTERFACE_EXCEPTION = 6,
   /* 音量面板 */
   VOLUME_PANEL = 7,
-  /* 通知提醒 */
+  /* deliver通知提醒 */
+  DELIVER_NOTIFICATION_REMIND = 8,
+  /* deliver通知提醒 */
   ANS_REPORT = 9,
+  /* deliver默认异常打点 */
+  DELIVER_NOTIFICATION_DEFAULT = 10,
   /* 状态栏 */
   STATUS_BAR = 12
 }

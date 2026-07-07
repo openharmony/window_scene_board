@@ -60,12 +60,7 @@ const BUTTON_ITEM_LIST: ButtonModel[] = [
     key: EditModeDockConstants.ICON_KEY,
     name: EditModeDockConstants.ICON_KEY,
     icon: 'square_fill_grid_2x2'
-  },
-  {
-    key: EditModeDockConstants.THEME_KEY,
-    name: EditModeDockConstants.THEME_KEY,
-    icon: 'brush_fill'
-  },
+  }
 ];
 
 const BUTTON_ITEM_LIST_2D: ButtonModel[] = [

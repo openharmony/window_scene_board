@@ -14,7 +14,7 @@
  */
 
 import { LogHelper, LogDomain, } from '@ohos/basicutils';
-import { localEventManager, ViewArea, viewMgrPolicy, ViewType, } from '@ohos/frameworkwrapper';
+import { localEventManager, ViewArea, viewMgrPolicy, ViewType, GlobalContext } from '@ohos/frameworkwrapper';
 import {
   SCBScreenProperty,
   SCBSceneSessionManager,
@@ -119,6 +119,28 @@ export struct SCBSmartDockMask {
     .height(DOCK_MASK_HEIGHT + 'px')
     .focusable(false)
     .opacity(0)
+    .onHover((isHover) => {
+      log.showInfo(`SCBSmartDockMask onHover: ${isHover}, screenId: ${this.screenProp.screenId}`);
+      if (isHover) {
+        // 鼠标悬停时显示dock栏
+        AppStorage.setOrCreate('clearDelayHideDock', {
+          isHover: true,
+          screenId: this.screenProp.screenId
+        });
+        // 触发dock栏显示
+        if (GlobalContext.getInstance().hasObject('showDockViewWithAnimation')) {
+          let showDockViewWithAnimation = (GlobalContext.getInstance()
+            .getObject('showDockViewWithAnimation')) as Function;
+          showDockViewWithAnimation();
+        }
+      } else {
+        // 鼠标离开时隐藏dock栏
+        AppStorage.setOrCreate('clearDelayHideDock', {
+          isHover: false,
+          screenId: this.screenProp.screenId
+        });
+      }
+    })
   }
 }
 

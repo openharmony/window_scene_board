@@ -44,8 +44,10 @@ export class DockVisibilityMgr {
       return;
     }
     try {
-      this.isAutoHide = settings.getValueSync(context, DATA_SHARE_DOCK_AUTO_HIDE_STYLE, '0',
-        settings.domainName.USER_PROPERTY) === '1';
+      // 设置为开源该开关，先写死设置为 false
+      this.isAutoHide = true;
+      // this.isAutoHide = settings.getValueSync(context, DATA_SHARE_DOCK_AUTO_HIDE_STYLE, '0',
+      //   settings.domainName.USER_PROPERTY) === '1';
       settings.registerKeyObserver(context, DATA_SHARE_DOCK_AUTO_HIDE_STYLE, settings.domainName.USER_PROPERTY,
         () => {
           this.settingDataChanged();
@@ -67,7 +69,8 @@ export class DockVisibilityMgr {
     if (this.isAutoHide === isAutoHide) {
       return;
     }
-    this.isAutoHide = isAutoHide;
+    //设置中没有设置自动隐藏dock的开关
+    this.isAutoHide = true;
     HiSysEventUtil.reportDockAutoHide(isAutoHide);
     AppStorage.setOrCreate('isDockAutoHide', this.isAutoHide);
   }

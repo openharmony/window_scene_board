@@ -55,6 +55,7 @@ import { bundleManager } from '@kit.AbilityKit';
 import { DeviceModeEnum } from '@ohos/commonconstants/src/main/ets/TsIndex';
 import { NotificationType } from '../../../main/ets/common/NotificationType';
 import { LiveFlightTemplate } from '@ohos/systemuicommon/src/main/ets/liveview/data/template/LiveFlightTemplate';
+import { deliverSystemBundleVerity } from '@ohos/systemuicommon/src/main/ets/utils/BundleVerityUtil';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, MockKit, when, ArgumentMatchers } from '@ohos/hypium';
 import { getAppName } from '../../../main/ets/model/NotificationEntry';
 export default function getAppNameTest() {

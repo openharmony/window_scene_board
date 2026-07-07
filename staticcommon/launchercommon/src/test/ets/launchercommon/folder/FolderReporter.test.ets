@@ -1074,6 +1074,9 @@ export default function FolderReporterTest() {
       const instance: FolderReporter = FolderReporter.getInstance();
       let folderInfo: GridLayoutItemInfo = {} as GridLayoutItemInfo;
 
+      let item1: GridLayoutItemInfo = new GridLayoutItemInfo();
+      item1.bundleName = 'com.ohos.sceneboard';
+      item1.typeId = CommonConstants.TYPE_FOLDER;
       let item2: GridLayoutItemInfo = new GridLayoutItemInfo();
       item2.bundleName = 'com.ohos.sceneboard';
       item2.typeId = CommonConstants.TYPE_FOLDER;

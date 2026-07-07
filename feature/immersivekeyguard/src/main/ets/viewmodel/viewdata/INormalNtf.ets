@@ -62,6 +62,16 @@ export interface INormalNtf {
   template: NtfMgr.NotificationTemplate;
 
   /**
+   * 是否是通知
+   */
+  isDeliverNotification: boolean;
+
+  /**
+   * 通知名称资源id
+   */
+  deliverLabelId: number;
+
+  /**
    * 通知头标签，资源id
    */
   labelRes: ResMgr.Resource;
@@ -71,6 +81,13 @@ export interface INormalNtf {
    *
    */
   getGroupKey: () => string;
+
+  /**
+   * 通知图标
+   *
+   * @returns
+   */
+  getDeliverAppIcon: () => number;
 
   /**
    * 普通通知图标
@@ -85,6 +102,13 @@ export interface INormalNtf {
    * @return true 下载模板通知
    */
   isDownloadTemplate: () => boolean;
+
+  /**
+   * 获取应用名称资源
+   *
+   * @return app nameId
+   */
+  getDeliverAppName: () => number;
 
   /**
    * 获取label res

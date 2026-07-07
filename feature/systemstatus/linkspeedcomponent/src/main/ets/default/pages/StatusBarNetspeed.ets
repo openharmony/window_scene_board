@@ -105,7 +105,7 @@ export default struct StatusBarNetspeed {
           .fontWeight(FontWeight.Bold)
           .textAlign(TextAlign.Center)
           .fontSize($r('app.float.linkspeed_font_size'))
-          .fontFamily('HarmonyOS-Sans') // 使用系统字体，不跟随主题字体切换而切换
+          .fontFamily('HarmonyOS-Sans') // 使用系统字体，不跟随主题字体切换而切换，与设备保持一致
         Text(this.unitDisplay).draggable(false)
           .id(COMPONENT_ID_UNIT)
           .fontColor(this.contentColor)
@@ -113,7 +113,7 @@ export default struct StatusBarNetspeed {
           .fontWeight(FontWeight.Bold)
           .textAlign(TextAlign.Center)
           .fontSize($r('app.float.linkspeed_font_size'))
-          .fontFamily('HarmonyOS-Sans') // 使用系统字体，不跟随主题字体切换而切换
+          .fontFamily('HarmonyOS-Sans') // 使用系统字体，不跟随主题字体切换而切换，与设备保持一致
           .margin({ top: $r('app.float.linkspeed_margin_top') })
       }
     }

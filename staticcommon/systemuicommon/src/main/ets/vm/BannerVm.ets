@@ -46,7 +46,7 @@ interface BannerVmEvent {
  * PAD、折叠屏宽度固定值vp
  */
 const PAD_OR_FOLD_NTF_WIDTH: number = 532;
-const CARD_WIDTH = 328;
+const CARD_WIDTH = 500;
 const TAG = 'SystemUI_BannerVm';
 const log: Logger = Logger.getLogHelper(LogDomain.SYS_UI);
 
@@ -394,6 +394,7 @@ export class BannerVm {
 
   // 是否为卡片居中布局场景。 1. 中挖孔
   public isCardCenterLayout(): boolean {
+    log.showInfo(TAG, `isCardCenterLayout: ${this.cutoutVm.isMiddleCutout()}`);
     return this.cutoutVm.isMiddleCutout();
   }
 }

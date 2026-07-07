@@ -140,6 +140,21 @@ export const GRID_LAYOUT_MAP_REPLACE_INFO_CONST: GridLayoutMapReplaceFile =
         mappingType: [MappingTypeConstants.TYPE_APP],
         oldInfo: [
           {
+            bundleName: 'com.ohos.vassistant',
+            moduleName: 'entry',
+            abilityName: 'VoiceAbility'
+          }
+        ],
+        newInfo: {
+          bundleName: 'com.ohos.vassistant.launcher',
+          moduleName: 'entry',
+          abilityName: 'VoiceAbility'
+        }
+      },
+      {
+        mappingType: [MappingTypeConstants.TYPE_APP],
+        oldInfo: [
+          {
             bundleName: 'com.ohos.filemanager',
             moduleName: 'pc',
             abilityName: 'MainAbility'
