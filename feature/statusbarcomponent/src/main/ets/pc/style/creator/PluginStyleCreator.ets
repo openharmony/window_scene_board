@@ -114,6 +114,9 @@ export class PluginStyleCreator extends StyleCreatorBase {
     );
     // PC需要icon背景
     result.isNeedIconBg = true;
+    if (info?.getSlot() === PluginSlot.SLOT_STATUS_ASSISTANT_VOICE) {
+      result.isNeedIconBg = false;
+    }
     // 图标包裹34*34，图标20*20
     let smallIconSize = this.getSmallIconSize(info);
     result.iconWidth = info?.getSlot() === PluginSlot.SLOT_STATUS_BATTERY_PANEL ?
@@ -122,7 +125,7 @@ export class PluginStyleCreator extends StyleCreatorBase {
       case PluginSlot.SLOT_STATUS_SEARCH:
         result.iconHeight = $r('app.float.icon_container_size_window');
         break;
-      // OpenHarmony环容器宽高调整为60vp
+      // 鸿蒙环容器宽高调整为60vp
       case PluginSlot.SLOT_STATUS_HOS_KEY:
         result.iconHeight = $r('app.float.hos_key_icon_width_window');
         break;
@@ -135,7 +138,8 @@ export class PluginStyleCreator extends StyleCreatorBase {
     let smallBgRadius = $r('app.float.plugin_small_bg_radius');
     result.iconBgWidth = result.iconWidth;
     result.iconBgHeight = result.iconHeight;
-    if (PluginStyleUtil.isWindowStyle()) {
+    if (PluginStyleUtil.isWindowStyle() ||
+      info?.getSlot() === PluginSlot.SLOT_STATUS_ASSISTANT_VOICE) {
       this.updateSmallTypeStyleWindow(info, result);
     }
 
@@ -152,6 +156,12 @@ export class PluginStyleCreator extends StyleCreatorBase {
     result.iconContainerHeight = $r('app.float.icon_container_size_window');
     result.iconBgHeight = $r('app.float.icon_container_size_window');
     switch (info?.getSlot()) {
+      case PluginSlot.SLOT_STATUS_ASSISTANT_VOICE:
+        result.iconContainerWidth = $r('app.float.icon_container_size_window');
+        result.iconBgWidth = $r('app.float.icon_container_size_window');
+        result.iconHeight = $r('app.float.icon_container_size_window');
+        result.iconWidth = $r('app.float.icon_container_size_window');
+        break;
       case PluginSlot.SLOT_STATUS_INPUT_PANEL:
       case PluginSlot.SLOT_STATUS_INPUT_METHOD:
       case PluginSlot.SLOT_STATUS_PERSONAL:
@@ -330,6 +340,9 @@ export class PluginStyleCreator extends StyleCreatorBase {
   }
 
   private getSmallIconSize(info: PluginProperty): Resource {
+    if (info?.getSlot() === PluginSlot.SLOT_STATUS_ASSISTANT_VOICE) {
+      return $r('app.float.ai_icon_width_window');
+    }
     if (info?.getSlot() === PluginSlot.SLOT_STATUS_HOS_KEY) {
       return $r('app.float.hos_key_icon_width_window');
     }

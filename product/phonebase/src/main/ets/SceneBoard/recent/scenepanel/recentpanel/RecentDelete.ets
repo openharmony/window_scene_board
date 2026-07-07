@@ -193,10 +193,7 @@ export class RecentDelete {
    * 禁止删除的任务包名list, listLen 当前有几张卡片做动效
    */
   public showStatusBarIfNeedOnfinish(scenePanelState: ScenePanelState, listLen: number): void {
-    // 删除单张卡片时的打断场景
-    if (scenePanelState === ScenePanelState.RECENT) {
-      return;
-    }
+    // 最后一张卡片删除动画结束时恢复状态栏（scenePanelState 可能尚未切 HOME）
     if (listLen === 1) {
       SCBSceneSessionManager.getInstance().enterRecentTask(false);
     }

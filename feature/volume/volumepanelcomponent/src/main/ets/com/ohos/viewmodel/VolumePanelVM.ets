@@ -76,7 +76,7 @@ interface VolumeValue {
 export class VolumePanelVM {
   public mIsStart: boolean = false;
   public mAllVolumeTypes = [audio.AudioVolumeType.VOICE_CALL, audio.AudioVolumeType.ALARM,
-    audio.AudioVolumeType.RINGTONE, audio.AudioVolumeType.MEDIA, 
+    audio.AudioVolumeType.RINGTONE, audio.AudioVolumeType.MEDIA, audio.AudioVolumeType.VOICE_ASSISTANT,
     audio.AudioVolumeType.ACCESSIBILITY, audio.AudioVolumeType.ULTRASONIC];
   public mVolumeBaseMap: Record<number, VolumeValue> = {};
   public mVolumeChangedListeners = new Set<VolumeChangedListener>();
@@ -111,6 +111,10 @@ export class VolumePanelVM {
       channelId: 'call',
       volumeType: audio.AudioVolumeType.VOICE_CALL,
       channelName: $r('app.string.volume_channel_voice_call'),
+    }], [audio.AudioVolumeType.VOICE_ASSISTANT, {
+      channelId: 'assistant',
+      volumeType: audio.AudioVolumeType.VOICE_ASSISTANT,
+      channelName: $r('app.string.volume_accessibility_voice_assistant'),
     }]]);
   public globalVolumeActiveTypes: boolean[] = [];
   public globalCurrentVolumeActive: audio.AudioVolumeType = audio.AudioVolumeType.MEDIA;
@@ -553,6 +557,8 @@ export class VolumePanelVM {
     volumeChannels.push(this.globalVolumeChannelMap.get(audio.AudioVolumeType.ALARM)!);
     // 通话
     volumeChannels.push(this.globalVolumeChannelMap.get(audio.AudioVolumeType.VOICE_CALL)!);
+    // 语音助手
+    volumeChannels.push(this.globalVolumeChannelMap.get(audio.AudioVolumeType.VOICE_ASSISTANT)!);
     // 无障碍
     volumeChannels.push(this.globalVolumeChannelMap.get(audio.AudioVolumeType.ACCESSIBILITY)!);
     return volumeChannels;

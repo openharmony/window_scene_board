@@ -1,0 +1,2615 @@
+{
+    "string":[
+        {
+            "name":"keywords_during_call",
+            "value":"통화 애니메이션",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"best_example_of_uploading_photos",
+            "value":"예",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wallpaper_G_only",
+            "value":"삼중 화면에만 적용",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"side_face",
+            "value":"측면 프로필",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"been_lifted",
+            "value":"드래그를 시작함",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"apply_theme",
+            "value":"테마 적용",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"back",
+            "value":"뒤로",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"female",
+            "value":"여성",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"select_from_folder",
+            "value":"폴더 검색",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"adult",
+            "value":"성인",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"got_it",
+            "value":"확인",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"insufficient_quota",
+            "value":"이번 달 AI 생성 한도에 도달했습니다.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"auto_align",
+            "value":"자동 정렬",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"current_theme_style",
+            "value":"테마 따르기",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remove_this_theme",
+            "value":"이 테마를 제거하시겠습니까?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wallpaper_display_mode",
+            "value":"표시 모드 선택",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"add_wallpaper",
+            "value":"이미지 추가",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"my_theme_0",
+            "value":"내 테마",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"account_button_login",
+            "value":"로그인",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_main_pandora_title",
+            "value":"홈 화면 및 스타일",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"picture_getting",
+            "value":"이미지 가져오는 중…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_main_time_travel_ongoing_content",
+            "value":"AI 배경화면을 생성하고 있습니다. 탭하여 확인하십시오.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_apply_failed",
+            "value":"글꼴을 적용할 수 없습니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"generate_failed",
+            "value":"생성할 수 없습니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"save_success",
+            "value":"저장이 완료되었습니다.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"confirm",
+            "value":"확인",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"customize",
+            "value":"사용자 설정",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"screen_off_theme",
+            "value":"항상 표시",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_main_pandora_fail_content",
+            "value":"배경화면이 생성되지 않았습니다.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wallpaper_recommendation",
+            "value":"추천",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remove_theme_info",
+            "value":"이 테마는 배경화면 및 아이콘 팩과 함께 제거됩니다.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"click_input_text",
+            "value":"텍스트 입력",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"continue_generating",
+            "value":"추가 생성",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"full_screen_reading_exit",
+            "value":"전체 화면 미리보기를 종료했습니다",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aesthetic",
+            "value":"스마트 구성",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"apply",
+            "value":"적용",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"set_as_lockscreen",
+            "value":"잠금 화면으로 설정",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"save_picture",
+            "value":"이미지 저장",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"recover_Theme_App_massage",
+            "value":"이 기능을 사용하려면 테마를 설치해야 합니다.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_main_dimensional_travel_ongoing_content",
+            "value":"Animirror 배경화면을 생성하고 있습니다. 탭하여 확인하십시오.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_ways_display_awake_off",
+            "value":"꺼짐",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"have_occlusion",
+            "value":"이미지의 얼굴이 가려졌습니다.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wallpaper_cannot_be_edited_in_a_small_window",
+            "value":"작은 창에서는 배경화면을 편집할 수 없습니다.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"end_of_service",
+            "value":"종료",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Desktop_setting",
+            "value":"홈 화면 설정",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ai_wallpaper_service_description_1",
+            "value":"이 서비스는 배경화면 관련 기능을 제공하기 위해 %1$s 연결이 필요하며 이미지를 읽고 업로드/전송해야 합니다. 동의를 탭하면 해당 약관과 %2$s에 동의함을 의미합니다. 개인정보 처리 방법에 대한 상세정보는 %3$s의 내용을 참조하십시오.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"HiSearch_title",
+            "value":"voice 검색",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ai_wallpaper_service_name_3",
+            "value":"시간 여행 테마 서비스",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"photo_not_meet_have_label",
+            "value":"이 사진은 사용할 수 없습니다. 추천 이미지에서 다른 항목을 선택하십시오.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"tip_button_text",
+            "value":"자세히 알아보기",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wallpaper_M_only",
+            "value":"이중 화면에만 적용",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"image_decoding_failure",
+            "value":"이미지 오류입니다. 다시 시도하십시오.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"table_theme",
+            "value":"홈 화면",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"magic_screen",
+            "value":"듀얼 미리보기",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"edit_M_tip",
+            "value":"편집하려면 이중 화면 모드로 펼칩니다.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"free_official_theme",
+            "value":"무료 공식 테마",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"have_no_people",
+            "value":"얼굴이 감지되지 않았습니다.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"generate_failed_origin_img_error",
+            "value":"생성할 수 없습니다.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"desktop_layout",
+            "value":"레이아웃",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"full_screen_reading_enter",
+            "value":"전체 화면 미리보기를 시작했습니다",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aod_all_day_display",
+            "value":"하루 종일",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"in_use",
+            "value":"사용 중",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screenlock_sign_entry",
+            "value":"잠금 화면 서명을 설정하는 방법",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"intelligent_status_on",
+            "value":"켜짐",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"share_description",
+            "value":"공유, 사용자 설정 및 액세서리",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enableTheme",
+            "value":"테마 적용 중…",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_generating_ai_wallpaper",
+            "value":"배경화면을 생성하려면 적용을 탭합니다.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"update_photo",
+            "value":"업데이트",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"execution_timed_out",
+            "value":"작업 시간이 초과되었습니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"continue",
+            "value":"계속",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_main_pandora_finish_content",
+            "value":"AI 배경화면이 생성되었습니다. 확인하고 적용하려면 탭합니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"tip_content",
+            "value":"잠금 화면이나 홈 화면에서 두 손가락을 모아 테마를 빠르게 변경하고 배경화면과 위젯을 사용자 설정할 수 있습니다.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_ways_display_awake_intelligent",
+            "value":"스마트",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"apply_wallpaper_info",
+            "value":"배경화면 적용 대상",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"recover",
+            "value":"복원",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"delete_fail",
+            "value":"삭제할 수 없습니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"i_know",
+            "value":"확인",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"management",
+            "value":"관리",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"center_the_original_image",
+            "value":"중앙",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"show_date",
+            "value":"날짜 표시",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cover_screen",
+            "value":"커버 화면",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remove",
+            "value":"제거",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"auto_align_content",
+            "value":"앱이 제거되면 빈 공간을 자동으로 채웁니다.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"select_from_gallery",
+            "value":"갤러리에서 선택",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"interactive_theme_detail_tip",
+            "value":"참고: 이 테마를 적용하면 얼굴 인식으로 잠금해제 방법이 \"직접 잠금 해제\"에서 \"스와이프하여 잠금 해제\"로 변경됩니다.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pandora_service_unavailable",
+            "value":"일시적으로 사용할 수 없습니다. 나중에 다시 시도하십시오.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"recover_Theme_App",
+            "value":"테마 앱을 복원하시겠습니까?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"upload_photo_loading",
+            "value":"로드 중…",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"reach_upper_limit",
+            "value":"배경화면 최대 수에 도달했습니다. 새로 추가하려면 일부를 삭제하십시오.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"cancel",
+            "value":"취소",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"preview_image",
+            "value":"이미지 미리보기",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"intelligent",
+            "value":"Assistant·TODAY",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"resource_description",
+            "value":"설명",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_main_dimensional_travel_finish_content",
+            "value":"새로운 Animirror 배경화면이 생성되었습니다. 탭하여 확인하고 적용하십시오.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"more_online_themes",
+            "value":"테마 더 보기",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"should_apply_current_theme",
+            "value":"이 테마를 적용하시겠습니까?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"default_icon",
+            "value":"사전 설정",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"keep_one_wallpaper",
+            "value":"하나 이상의 배경화면이 필요합니다.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_failed",
+            "value":"적용할 수 없습니다.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"agree",
+            "value":"동의",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wallpaper_F_only",
+            "value":"단일 화면에만 적용",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Desktop_slide",
+            "value":"아래로 스와이프하여 검색",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"keywords_outer_apply",
+            "value":"앱",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"random",
+            "value":"무작위",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"outside_screen_show",
+            "value":"커버 화면",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"recommend_theme",
+            "value":"상세정보 보기",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"login_failed",
+            "value":"인터넷 연결이 없습니다. 나중에 다시 시도하십시오.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"show_lock_screen_signature",
+            "value":"잠금 화면 서명",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aigc_generation_prompt",
+            "value":"voice AI에서 생성됨",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"theme_title",
+            "value":"테마",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"default_font",
+            "value":"사전 설정",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"theme_cannot_be_edited_in_a_small_window",
+            "value":"작은 창에서는 테마를 편집할 수 없습니다.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"intelligent_settings",
+            "value":"Assistant·TODAY",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"te_cancel",
+            "value":"취소",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pandora_theme_upload_photo_tips",
+            "value":"%1$d. 얼굴이 뚜렷하게 나온 인물 사진을 업로드합니다.\n%2$d. 나이가 어린 피사체의 경우 이미지 생성이 효과적이지 않을 수 있습니다.\n%3$d. AI에서 생성된 이미지는 만족스럽지 않을 수 있습니다.\n%4$d. 저속하거나 폭력적이거나 차별적인 콘텐츠가 담긴 사진은 업로드하지 마십시오.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"show_lunar_date",
+            "value":"음력 날짜 표시",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"undelete_toast",
+            "value":"이 배경화면은 삭제할 수 없습니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"wallpaper_title",
+            "value":"배경화면",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"uncompleted",
+            "value":"기능이 곧 출시됩니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"checked",
+            "value":"선택됨",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"exiting_current_page",
+            "value":"이 화면에서 나가도 계속 생성됩니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"update_available",
+            "value":"업데이트 사용 가능",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_style",
+            "value":"글꼴",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"select_all",
+            "value":"모두 선택",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"person_information",
+            "value":"특징",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"try_out",
+            "value":"체험하기",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_restored",
+            "value":"앱이 복원되었습니다.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"regenerate",
+            "value":"다시 시도",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"covertheme_settings_title",
+            "value":"홈 화면, 커버 화면 및 스타일",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"no_select",
+            "value":"선택 항목 없음",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"untoggle_camera_mover",
+            "value":"이를 선택 해제하면 다이나믹 효과가 꺼집니다.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_watch_info",
+            "value":"워치 화면에 적용",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wallpaper_carousel_gallery",
+            "value":"배경화면(최대 %d개)",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"top_right",
+            "value":"오른쪽 상단",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"more_online_icon",
+            "value":"아이콘 더 보기",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aod_theme",
+            "value":"항상 표시",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"keywords_outer_facard",
+            "value":"위젯",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_dialog_title",
+            "value":"테마 적용 대상",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"more_online_font",
+            "value":"글꼴 더 보기",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"homescreen",
+            "value":"홈 화면",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"generate_failed_and_try_again",
+            "value":"생성할 수 없습니다. 다시 시도하십시오.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"preset_theme",
+            "value":"사전 설정된 테마",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"device_temperature_too_high",
+            "value":"장치 온도가 너무 높습니다. 나중에 다시 시도하십시오.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"style_choose",
+            "value":"스타일",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"more_online_wallpapers",
+            "value":"배경화면 더 보기",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"camera_mover",
+            "value":"다이나믹",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"lockscreen",
+            "value":"잠금 화면",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_main_time_travel_finish_content",
+            "value":"새로운 시간 여행 배경화면이 생성되었습니다. 탭하여 확인하고 적용하십시오.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"network_unavailable",
+            "value":"인터넷 연결이 없습니다. 네트워크 설정을 확인하십시오.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"delete_wallpaper",
+            "value":"배경화면 삭제",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"icon_size",
+            "value":"홈 화면 아이콘 크기",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"icon_size_tip",
+            "value":"도크에 적용되지 않습니다.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"icon_size_restore_default",
+            "value":"재설정",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dock_color_style",
+            "value":"도크 색상 적응 대상",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dock_color_style_follow_window",
+            "value":"배경화면 및 창",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dock_color_style_follow_system",
+            "value":"디스플레이 모드",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dock_color_style_follow_window_tips",
+            "value":"도크는 배경화면 색상이나 최대화된 창의 내용에 따라 색이 변경됩니다.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dock_color_style_follow_system_tips",
+            "value":"다크 모드에서는 도크의 색상이 더 어두워집니다.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dock_auto_hide_style",
+            "value":"창이 최대화되거나 분할되면 도크 숨기기",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"window_animation_title",
+            "value":"창 최소화 방법",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"window_animation_attraction",
+            "value":"지니 애니메이션",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"window_animation_default",
+            "value":"기본 애니메이션",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ai_wallpaper_terms",
+            "value":"시간 여행 테마의 생성형 AI 기능에 대한 사용 약관",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"share_card_hint",
+            "value":"다른 장치에 대고 탭하거나 그랩 앤 드롭하여 공유",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pandora_theme_description",
+            "value":"%1$d. 얼굴이 뚜렷하게 나온 인물 사진을 업로드합니다.\n%2$d. AI에서 생성된 이미지는 정확하지 않거나 적절하지 않을 수 있습니다.\n%3$d. 저속하거나 폭력적이거나 차별적인 콘텐츠가 담긴 사진은 업로드하지 마십시오.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"male",
+            "value":"남성",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"icon",
+            "value":"아이콘",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"have_multi_people",
+            "value":"이미지는 한 사람만 포함해야 합니다.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"continue_upload_image",
+            "value":"현재 테마가 삭제되고 새 테마가 생성됩니다. 계속하시겠습니까?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"tip_cancel_text",
+            "value":"닫기",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"tip_title",
+            "value":"잠금 화면 및 홈 화면을 빠르게 사용자 설정 가능",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"photo_not_meet_no_label",
+            "value":"이 사진을 사용할 수 없습니다. 다른 항목을 선택하십시오.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pop_up_content",
+            "value":"고정 효과가 권장됩니다. 라이브가 종료되었습니다.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"infancy",
+            "value":"어린이",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"scale_to_fill_screen",
+            "value":"늘리기",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"tiling",
+            "value":"타일",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"preview",
+            "value":"미리보기",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"blur",
+            "value":"블러",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"big_angle",
+            "value":"적절하지 않은 각도입니다.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_main_pandora_ongoing_content",
+            "value":"AI 배경화면을 생성하는 중입니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"get_best_results",
+            "value":"더 나은 결과를 받는 방법 알아보기",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"my_wallpapers",
+            "value":"내 배경화면",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_sub_screen_info",
+            "value":"커버 화면에 적용",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"choose_person_info",
+            "value":"특징을 선택하십시오.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"low_pixel",
+            "value":"이미지 해상도가 너무 낮습니다.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_watch_info_toast",
+            "value":"동기화할 수 없습니다. 다시 시도하십시오.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"my_downloads",
+            "value":"다운로드됨",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"change_wallpaper",
+            "value":"배경화면 변경",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"preview_photo_loading",
+            "value":"로드 중…",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"on_network",
+            "value":"인터넷",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_current_theme_first",
+            "value":"먼저 테마를 적용하십시오.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dynamic",
+            "value":"라이브",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"interactive",
+            "value":"인터랙티브",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"save_carousel",
+            "value":"저장",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"login_in_settings",
+            "value":"먼저 설정에서 HUAWEI ID에 로그인하십시오.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"more_themes",
+            "value":"테마 더 보기",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"photo_not_meet",
+            "value":"이 사진은 사용할 수 없습니다. 추천 포트레이트에서 다른 항목을 선택하십시오.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pandora_aesthetic_dialog_confirm",
+            "value":"확인",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"deselect_all",
+            "value":"모두 선택 취소",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"age_too_small_error",
+            "value":"생성할 수 없습니다. 피사체가 너무 어립니다.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ai_wallpaper_service_subtitle_1",
+            "value":"클라우드 기반 AI 알고리즘을 사용한 배경화면을 생성하기 위한 목적으로 선택된 이미지가 클라우드 서버에 업로드됩니다. 다음 권한이 필요합니다.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"generating_ai_wallpaper",
+            "value":"AI 배경화면 생성 중…",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"fill_screen",
+            "value":"채우기",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"generating_ai_wallpaper_need_time",
+            "value":"생성 중…(약 %d분 소요)",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"edit_G_tip",
+            "value":"편집하려면 3중 화면 모드로 펼칩니다.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"composition_failed",
+            "value":"구성할 수 없습니다.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ai_wallpaper_service_stop_note_1",
+            "value":"종료하면 이 서비스를 더 이상 사용할 수 없게 됩니다. 그래도 종료하시겠습니까?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"delete",
+            "value":"삭제",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"add_theme",
+            "value":"테마 추가",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"keywords_outer_theme",
+            "value":"테마",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"occlusion_exists",
+            "value":"가려짐",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"my_theme_d",
+            "value":"내 테마 %d",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"file_getting",
+            "value":"클라우드에서 파일 다운로드 중…",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"clear_facial_features",
+            "value":"맑게 보정 기능",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"font_apply_successd",
+            "value":"글꼴이 적용되었습니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"wallpaper_carousel_info",
+            "value":"배경화면 회전목마(%1$d/%2$d)",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"after_generate_wallpaper_enable_theme",
+            "value":"동시에 이 테마가 적용됩니다.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"tip_play_text",
+            "value":"재생",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aod_ways_display_awake_scheduled",
+            "value":"예약",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"unsupported_moving_photo_wallpaper",
+            "value":"라이브 배경화면은 홈 화면에서 지원되지 않습니다.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"applyWallpaper",
+            "value":"배경화면 적용 중…",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"content_reporting",
+            "value":"콘텐츠 신고",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"keywords_cover_screen",
+            "value":"커버 화면",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"face_the_camera",
+            "value":"전면 보기",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"end_aigc_service_text",
+            "value":"상세정보는 %1$s 및 %2$s의 내용을 참조하십시오. 이 서비스를 사용하지 않으려면 %3$s를 탭합니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"center_and_fit",
+            "value":"맞추기",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"upload_photo",
+            "value":"업로드",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"main_screen",
+            "value":"기본 화면",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_sub_screen_info_subtext",
+            "value":"커버 화면 테마에서 편집할 수 있습니다.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"intelligent_status_off",
+            "value":"꺼짐",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"desktop_style_title",
+            "value":"바로가기 표시줄 및 상태 표시줄",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"not_selected",
+            "value":"선택되지 않음",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"network_error",
+            "value":"네트워크 오류입니다. 다시 시도하십시오.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"insufficient_storage_toast",
+            "value":"내부 저장소 공간이 부족하여 테마 서비스를 제공할 수 없습니다. 파일을 삭제하여 여유 공간을 확보하십시오.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"lock_layout_content",
+            "value":"켜져 있으면 홈 화면 요소를 이동하거나 제거할 수 없습니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"lock_layout",
+            "value":"레이아웃 잠금",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"end_of_service_1",
+            "value":"서비스 종료",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_success",
+            "value":"적용되었습니다.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"full_screen_reading_page_one",
+            "value":"미리보기 화면 번호 %d, 두 손가락으로 왼쪽 또는 오른쪽으로 스와이프하여 다른 상세정보 화면 로드",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"current_theme",
+            "value":"현재",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"screen_reading_other_page",
+            "value":"미리보기 페이지 번호 %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"applying",
+            "value":"사용 중",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"switch_to_desktop_preview",
+            "value":"홈 화면 미리보기로 전환",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"switch_to_lock_screen_preview",
+            "value":"잠금 화면 미리보기로 전환",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"blur_slider_read_notes",
+            "value":"슬라이더를 탭하여 활성화하고 블러를 조정합니다",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"theme_data_service_permissions",
+            "value":"권한 공지",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"about",
+            "value":"정보",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"stop_theme_data_service_title",
+            "value":"테마 서비스 종료",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"theme_data_service",
+            "value":"테마 서비스",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"more",
+            "value":"더 보기",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"theme_data_service_privacy",
+            "value":"테마 서비스 및 개인 정보 보호에 대한 방침",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"theme_data_service_instructions",
+            "value":"이 서비스는 인터넷 연결과 위치, 신체 활동, 장치 연결 권한이 필요하며, 위치, 피트니스 및 건강, 장치, 미디어(이미지 및 비디오) 데이터를 읽어야 합니다. 이 정보를 표시하고 대화형 테마 기능을 제공해야 하는 테마를 지원하기 위한 목적입니다. 개인정보 처리 방법에 대한 상세정보는 %1$s, %2$s의 내용을 참조하십시오. 켜는 경우, 당사에서 이 서비스를 제공하는 데 동의함을 의미합니다.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"stop_theme_data_service_message",
+            "value":"이 장치에서 테마 서비스가 종료됩니다. 테마 및 기타 리소스는 상호 작용할 수 없고 더 이상 데이터를 표시할 수 없게 됩니다. 그래도 종료하시겠습니까?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"cam_mover_is_enabled_blur_is_not_supported",
+            "value":"동적 효과가 실행되었으며 보케는 종료되었습니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"blur_is_enabled_Cam_mover_is_not_supported",
+            "value":"보케가 실행되었으며 동적 효과는 종료되었습니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dof_off",
+            "value":"심도 꺼짐",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_dof_to_experience_camera_mover",
+            "value":"동적 효과를 경험하려면 DoF 효과를 종료하십시오.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"digital_clock_does_not_overlap_with_main_subject",
+            "value":"디지털 시계가 기본 피사체와 겹치지 않습니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_camera_mover_to_experience_dof",
+            "value":"DoF 효과를 경험하려면 동적 효과를 종료하십시오.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_dynamic_to_experience_camera_mover",
+            "value":"동적 효과를 경험하려면 \"사진 이동\"을 종료하십시오.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_dynamic_to_experience_dof",
+            "value":"DoF 효과를 경험하려면 \"사진 이동\"을 종료하십시오.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"artistic_signature_does_not_overlap_with_main_subject",
+            "value":"맞춤형 서명이 기본 피사체와 겹치지 않습니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_camera_mover_to_experience_dynamic",
+            "value":"\"사진 이동\"을 경험하려면 동적 효과를 종료하십시오.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"image_does_not_recognize_dof",
+            "value":"이미지에서 인식된 심도의 피사체가 없습니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_dof_to_experience_dynamic",
+            "value":"\"사진 이동\"을 경험하려면 DoF 효과를 종료하십시오.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dof_on",
+            "value":"심도 켜짐",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dof",
+            "value":"DoF",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"exit_pandora_dialog",
+            "value":"저장하고 적용하시겠습니까?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"multi_checkbox",
+            "value":"다중 선택 체크박스",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screenlock_settings",
+            "value":"잠금 화면",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"clock_edit_tips",
+            "value":"두 번 탭하여 편집하고, 두 번 탭하고 길게 눌러 시계를 이동합니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"theme_personalize_screen_reading_other_page",
+            "value":"화면 번호 %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"clock_style",
+            "value":"시계 스타일 %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"current_icon_checked",
+            "value":"현재 아이콘, 선택됨",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"top_left",
+            "value":"왼쪽 상단",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"current_wallpaper_checked",
+            "value":"현재 배경화면, 선택됨",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"clock_font_style",
+            "value":"시계 글꼴 %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"turn_off_dynamic",
+            "value":"라이브 끄기",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"blurred",
+            "value":"블러 처리됨",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"left_of_center",
+            "value":"중앙 왼쪽",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"theme_card_accessibility_text",
+            "value":"두 손가락으로 왼쪽이나 오른쪽으로 스와이프하면 테마가 전환됩니다. 두 손가락으로 위로 스와이프하면 테마가 제거됩니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"bottom_of_center",
+            "value":"중앙 하단",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"toggle_view",
+            "value":"보기 전환",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"theme_personalize_full_screen_reading_page_one",
+            "value":"화면 번호 %d, 왼쪽이나 오른쪽으로 스와이프하면 다른 배경화면이 로드됩니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"center",
+            "value":"중앙",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"turn_on_dynamic",
+            "value":"라이브 켜기",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"bottom_right",
+            "value":"오른쪽 하단",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"top_of_center",
+            "value":"중앙 상단",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_to",
+            "value":"%s으로 드래그함",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"clock_font_color",
+            "value":"시계 텍스트 색상 %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"right_of_center",
+            "value":"중앙 오른쪽",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"do_camera_mover",
+            "value":"동적 효과 켜짐",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"button_text",
+            "value":"테마 추가 버튼",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"switched_desktop_preview",
+            "value":"홈 화면 미리보기로 전환됨",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"more_edits",
+            "value":"편집 더 보기",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"lock_screen_clock",
+            "value":"잠금 화면 시계",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"undo_camera_mover",
+            "value":"동적 효과 꺼짐",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"switched_lock_screen_preview",
+            "value":"잠금 화면 미리보기로 전환됨",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"bottom_left",
+            "value":"왼쪽 하단",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"un_blurred",
+            "value":"블러 해제 처리됨",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"unchecked",
+            "value":"선택되지 않음",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"set_as_desktop",
+            "value":"홈 화면으로 설정",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screen_reading_first_page",
+            "value":"시스템 기본 글꼴, 미리보기 페이지 번호 %d, 왼쪽 또는 오른쪽으로 스와이프하여 다른 상세정보 화면 로드",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"start_generating",
+            "value":"생성",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"paused",
+            "value":"일시 정지됨",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"applied",
+            "value":"적용됨",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_dynamic_lead_finish_content",
+            "value":"다이나믹 페르소나 리소스가 생성되었습니다. 확인하고 적용하려면 탭하십시오.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_dynamic_lead_ongoing_content",
+            "value":"다이나믹 페르소나 리소스를 생성 중입니다. 확인하려면 탭하십시오.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"played",
+            "value":"재생 중",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"settings_detail_page_tip",
+            "value":"두 번 탭하여 상세정보 보기",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"continue_update_image",
+            "value":"현재 테마가 삭제되고 새 테마가 생성됩니다. 계속하시겠습니까?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"time_travel_generate_failed",
+            "value":"시간 여행 배경화면을 생성할 수 없습니다.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dimensional_travel_generate_failed",
+            "value":"애니미러 배경화면을 생성할 수 없습니다.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_dynamic_lead_fail_content",
+            "value":"다이나믹 페르소나 리소스 생성에 실패했습니다. 상세정보를 보려면 탭하십시오.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"detail_page",
+            "value":"미리보기 페이지",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_dynamic_lead_Unable_to_update_automatically",
+            "value":"다이나믹 페르소나 리소스 라이브러리가 꽉 찼습니다. 따라서 리소스가 자동으로 업데이트되지 않습니다. 라이브러리를 관리하려면 탭하십시오.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"lockscreen_preview",
+            "value":"잠금 화면",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"homescreen_preview",
+            "value":"홈 화면",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_dynamic_lead_automatically_updated_finish_content",
+            "value":"다이나믹 페르소나 리소스가 자동으로 업데이트되었습니다. 확인하려면 탭하십시오.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aigc_theme_service_stop_note",
+            "value":"종료하면 이 서비스를 더 이상 사용할 수 없게 됩니다. 그래도 종료하시겠습니까?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aigc_theme_service_privacy_statement",
+            "value":"AI 테마 및 개인 정보 보호에 대한 방침",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aigc_theme_service_description",
+            "value":"이 서비스는 %1$s 연결이 필요하며 이미지를 읽고 업로드/전송해야 합니다. 테마 관련 기능을 제공하기 위한 목적입니다. 당사는 귀하가 사용하는 기능과 관련된 개인정보만 수집합니다. 상세정보는 %2$s의 내용을 참조하십시오.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"read_theme_service_description_and_click_agree",
+            "value":"위 방침을 주의 깊게 읽어주십시오. 동의를 탭하면 당사에서 이 서비스를 제공하는 데 동의함을 의미합니다.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aigc_theme_service_subtitle",
+            "value":"이 서비스는 선택한 이미지를 클라우드에 업로드하며, 클라우드는 AI를 활용하여 테마 리소스를 생성합니다.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aigc_theme_privacy_statement",
+            "value":"AI 테마 서비스 및 개인 정보 보호에 대한 방침",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aigc_theme_service",
+            "value":"AI 테마 서비스",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"photo_selected",
+            "value":"선택된 사진",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_off_Desktop_resource_center_title",
+            "value":"앱 상자 종료",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_off_Desktop_resource_center_cancel",
+            "value":"취소",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_off_Desktop_resource_center_close",
+            "value":"종료",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_off_Desktop_resource_center_content",
+            "value":"종료되어 있으면 다른 곳에 표시되지 않는 앱 상자의 앱을 홈 화면 하단의 새 폴더에서 찾을 수 있습니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"desktop_resource_center",
+            "value":"앱 상자",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"desktop_resource_center_description",
+            "value":"홈 화면을 위로 스와이프하면 설치된 모든 앱이 표시됩니다. 앱을 홈 화면으로 드래그하여 추가합니다. 홈 화면에서 앱을 제거하려면 앱을 길게 터치한 후 제거를 탭하십시오.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"waiting_closing_desktop_resource_center",
+            "value":"앱 상자 종료 중…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_chest",
+            "value":"앱 상자",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"is_off_app_chest_title",
+            "value":"앱 상자 종료",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"waiting_closing_app_chest",
+            "value":"앱 상자 종료 중…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_off_app_chest_content",
+            "value":"종료되어 있으면 다른 곳에 표시되지 않는 앱 상자의 앱을 홈 화면 하단의 새 폴더에서 찾을 수 있습니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_chest_description",
+            "value":"홈 화면을 위로 스와이프하면 설치된 모든 앱이 표시됩니다. 앱을 홈 화면으로 드래그하여 추가합니다. 홈 화면에서 앱을 제거하려면 앱을 길게 터치한 후 제거를 탭하십시오.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"theme_icon",
+            "value":"출처: 테마",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"moving_photo_dialog_content",
+            "value":"라이브 배경화면은 다른 배경화면과 함께 사용할 수 없으므로 정지 배경화면으로 적용됩니다.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"moving_photo_dialog_toast",
+            "value":"라이브 배경화면은 다른 배경화면과 함께 사용할 수 없습니다.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"moving_photo_dialog_title",
+            "value":"배경화면을 변경하시겠습니까?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"nav_to_my_wallpaper_edit_tips",
+            "value":"잠금 화면에서 시계 영역을 손가락으로 오므리거나 길게 터치하여 편집합니다.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"waiting_closing",
+            "value":"종료 중…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_off_swipe_up_title",
+            "value":"\"홈 화면에서 위로 스와이프\"를 종료하시겠습니까?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Desktop_SwipeUp",
+            "value":"홈 화면에서 위로 스와이프",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_off_swipe_up_content",
+            "value":"종료하면 앱 상자를 열 수 없습니다. 앱 상자에 있는 다른 곳에 표시되지 않는 앱은 홈 화면의 새 폴더에서 액세스할 수 있습니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"moment_x_settings",
+            "value":"사이드쇼",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"moment_x_smart_display_mode_title",
+            "value":"스마트",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"moment_x_state_off",
+            "value":"꺼짐",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"moment_x_all_day_display_mode_title",
+            "value":"하루 종일",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"color_style_not_support_in_desktop_tips",
+            "value":"테마가 홈 화면에만 적용되면 해당 시계 스타일은 적용되지 않습니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"color_style_system_title",
+            "value":"시스템 색상",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"color_style_explanation",
+            "value":"형광펜 색상은 홈 화면, 잠금 화면, 항상 표시의 시계 및 위젯과 알림 패널 및 제어판에 적용됩니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"color_style_base_title",
+            "value":"기본 색상",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"color_style_suggested_title",
+            "value":"추천 색상",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"color_style_button_text",
+            "value":"형광펜 색상",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"apply_Lockscreen",
+            "value":"잠금 화면에 적용 중…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"tip_share_text",
+            "value":"공유",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dock_item_recentcenter",
+            "value":"작업 센터",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dock_item_filemanager",
+            "value":"파일",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"touch",
+            "value":"탭하여 다른 사람과 공유",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dock_item_recyclebin",
+            "value":"휴지통",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dock_item_visible",
+            "value":"도크에 표시",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dock_item_appcenter",
+            "value":"앱 상자",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"unlock_set",
+            "value":"이 테마를 %1$s할 수 있습니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"online_icons",
+            "value":"다운로드 가능한 아이콘",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"online_wallpapers",
+            "value":"다운로드 가능한 배경화면",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"online_themes",
+            "value":"다운로드 가능한 테마",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"online_fonts",
+            "value":"다운로드 가능한 글꼴",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screen_load_other_detail_page",
+            "value":"두 손가락으로 왼쪽 또는 오른쪽으로 스와이프하여 다른 미리보기를 로드합니다. 미리보기를 두 번 탭하여 활성화합니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screenlock_cannot_be_edited_in_a_small_window",
+            "value":"잠금 화면은 플로팅 윈도우에서 편집할 수 없습니다.",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

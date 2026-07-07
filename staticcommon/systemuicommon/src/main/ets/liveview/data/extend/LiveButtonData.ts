@@ -39,7 +39,7 @@ function getIconKey(): string {
 }
 
 // 按钮优先级字段
-const openharmony_button_priority: string = 'openharmony_button_priority';
+const hw_button_priority: string = 'hw_button_priority';
 
 /**
  * 实况卡片扩展数据，按钮信息
@@ -322,9 +322,9 @@ export class LiveButtonArray extends Array<LiveButtonData> implements ILiveExten
    */
   setButtonArray(names: Array<string>, icons: Array<image.PixelMap>, iconResource: Array<Resource>,
     request: ntfManager.NotificationRequest): void {
-    this.buttonPriority = request.extraInfo?.openharmony_button_priority;
-    this.buttonAccessibilityText = request.extraInfo?.openharmony_button_accessibility_text;
-    this.buttonOnOffState = request.extraInfo?.openharmony_button_state_on; // 应用接入button on/off状态
+    this.buttonPriority = request.extraInfo?.hw_button_priority;
+    this.buttonAccessibilityText = request.extraInfo?.hw_button_accessibility_text;
+    this.buttonOnOffState = request.extraInfo?.hw_button_state_on; // 应用接入button on/off状态
     this.updateButtonArray(request.content.systemLiveView?.progress ? MAX_COUNT - 1 : MAX_COUNT,
       (index): LiveButtonData => {
       let name = ArrayUtils.findArr(names, index);

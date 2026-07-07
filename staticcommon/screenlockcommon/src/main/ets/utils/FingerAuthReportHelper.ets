@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-// import fingerprintMgr from '@hms.userIAM.fingerAuthManager';
+// import fingerprintMgr from '@ohos.userIAM.fingerAuthManager';
 import type { BusinessError } from '@ohos.base';
 import { LogDomain, LogHelper } from '@ohos/basicutils';
 import { AuthType } from './AccountHelper';

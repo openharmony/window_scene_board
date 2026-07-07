@@ -17,6 +17,7 @@ import { CastPhoneConstants } from '../constants/CastPhoneConstants';
 import { calculateSize } from '../constants/WifiConstants';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { LogDomain, LogHelper } from '@ohos/basicutils/src/main/ets/TsIndex';
+import xrGlassesAppService from '@hms.xrGlassesService.xrGlassesAppService';
 
 const TAG = 'CastPhoneComponent';
 const log = LogHelper.getLogHelper(LogDomain.VISION_GLASS, TAG);
@@ -47,7 +48,19 @@ export struct CastPhoneComponent {
       .borderRadius(calculateSize(this.windowSize.height as number, CastPhoneConstants.CAPSULE_HEIGHT_SCALE))
       .justifyContent(FlexAlign.Center)
       .backgroundColor(CastPhoneConstants.BUTTON_BACKGROUND_COLOR)
-      .onClick(() => {})
+      .onClick(() => {
+        try {
+          xrGlassesAppService.setSpaceMode(0)
+            .then((result: number) => {
+              log.showInfo(`setSpaceMode mirror success,result is ${result}`);
+            })
+            .catch((err: BusinessError) => {
+              log.showError(`setSpaceMode mirror fail,error is ${err.code}`);
+            })
+        } catch (err) {
+          log.showError(`setSpaceMode mirror fail2,error is ${err.code}`);
+        }
+      })
 
       Row()
         .size({

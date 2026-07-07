@@ -213,10 +213,13 @@ export struct NtfSearchResultView {
       AppIconWithIndexSubIcon({
         appIcon: this.appMapping.get(item.bundleName)?.icon,
         appIconSize: LengthMetrics.resource($r('app.float.search_image_scale')).value,
-        compMargin: { end: LengthMetrics.resource($r('app.float.ntf_search_icon_margin_right')) },
+        compMargin: this.isdeliverApp(item) ? {
+          end: LengthMetrics.vp(LengthMetrics.resource($r('app.float.ntf_search_icon_margin_right')).value +
+            (SEARCH_RESULT_BADGE_ICON_SIZE - DEFAULT_BADGE_ICON_SIZE))
+        } : { end: LengthMetrics.resource($r('app.float.ntf_search_icon_margin_right')) },
         subIconSize: '12vp',
         index: item.appIndex,
-        needShowBadgeIcon: false,
+        needShowBadgeIcon: this.isdeliverApp(item),
       })
       Row() {
         Text(item.appName)
@@ -253,5 +256,11 @@ export struct NtfSearchResultView {
     bundleResourceModule.getBundleInfo(item.bundleName, (bundleInfo: KeyValPair | PromiseLike<KeyValPair>) => {
       this.pageInfos.pushPath({ name: PageConstants.NTF_MGMT_VIEW_NAME, param: bundleInfo });
     }, item.appIndex);
+  }
+
+  private isdeliverApp(item: ResultItemInfo): boolean {
+    const isdeliverApp: boolean = this.appMapping.get(item.bundleName)?.isdeliverApp ?? false;
+    log.showInfo(`check ${TAG} isdeliver, bundleName = ${item.bundleName}, isdeliver = ${isdeliverApp}`)
+    return isdeliverApp;
   }
 }

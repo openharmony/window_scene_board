@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 import { TimeTextStyle } from '../../../../immersivekeyguardcommon/base/interface/TimeTextStyle';
+import { ImmersiveAodStyle } from '../../../../immersivekeyguardcommon/base/interface/ImmersiveAodStyle';
 import { LiveTimerData } from '../../../data/extend/LiveTimerData';
 
 /**
@@ -30,4 +31,5 @@ export class LiveTimeParams extends Object {
   public isBigTextTimer?: boolean = false;
   public isTitle?: boolean = true;
   public notificationType?: number;
+  public aodStyle?: ImmersiveAodStyle;
 }

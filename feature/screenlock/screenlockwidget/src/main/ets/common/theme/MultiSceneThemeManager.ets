@@ -72,8 +72,8 @@ const DISPLAY_FOLD_MODE_FULL_FLAG = 0x0001;
 const DISPLAY_FOLD_MODE_MAIN_FLAG = 0x0002;
 const ORIENTATION_LANDSCAPE_FLAG = 0x0004;
 const ORIENTATION_PORTRAIT_FLAG = 0x0008;
-const ULTRA_SCREEN_G_STATUS = 0x0010;
-const FOLD_MODE_FLAG = DISPLAY_FOLD_MODE_FULL_FLAG | DISPLAY_FOLD_MODE_MAIN_FLAG | ULTRA_SCREEN_G_STATUS;
+const THREE_FOLD_G_STATUS = 0x0010;
+const FOLD_MODE_FLAG = DISPLAY_FOLD_MODE_FULL_FLAG | DISPLAY_FOLD_MODE_MAIN_FLAG | THREE_FOLD_G_STATUS;
 const ORIENTATION_FLAG = ORIENTATION_LANDSCAPE_FLAG | ORIENTATION_PORTRAIT_FLAG;
 const QUALIFIER_PRIORITY_LIST = [ThemeScene.LAND_UNFOLDED2, ThemeScene.UNFOLDED2,
   ThemeScene.LAND_UNFOLDED, ThemeScene.UNFOLDED, ThemeScene.LAND, ThemeScene.BASE];
@@ -85,7 +85,7 @@ const TAG = `MultiSceneThemeManager`;
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.KG, TAG);
 
 /**
- * 多场景主题管理，处理大屏幕机、平板的锁屏多场景主题，直板机不涉及：
+ * 多场景主题管理，处理折叠机、平板的锁屏多场景主题，直板机不涉及：
  * 锁屏在不同场景下展示不同主题信息，如用户在折叠态和展开态分别编辑锁屏信息，则展示不同锁屏主题元素
  * 所有UI显示使用一份UI状态量控制显示，但每个场景的主题信息在themeInfos都有存储
  * 当场景切换时，根据切换后的场景从存储中获取对应的主题信息，用以刷新UI状态量，而不从主题中读取。
@@ -111,10 +111,10 @@ export class MultiSceneThemeManager {
     [ORIENTATION_PORTRAIT_FLAG, ThemeScene.BASE],
     // 平板横屏
     [ORIENTATION_LANDSCAPE_FLAG, ThemeScene.LAND],
-    [ULTRA_SCREEN_G_STATUS | ORIENTATION_PORTRAIT_FLAG, ThemeScene.UNFOLDED2],
-    [ULTRA_SCREEN_G_STATUS | ORIENTATION_LANDSCAPE_FLAG, ThemeScene.LAND_UNFOLDED2]
+    [THREE_FOLD_G_STATUS | ORIENTATION_PORTRAIT_FLAG, ThemeScene.UNFOLDED2],
+    [THREE_FOLD_G_STATUS | ORIENTATION_LANDSCAPE_FLAG, ThemeScene.LAND_UNFOLDED2]
   ]);
-  // 锁屏主题是否存在多场景：大屏幕机内外屏独立编辑生成主题、大屏幕机横屏美学构图生成主题、PAD横屏美学构图生成主题
+  // 锁屏主题是否存在多场景：折叠机内外屏独立编辑生成主题、折叠机横屏美学构图生成主题、PAD横屏美学构图生成主题
   protected isMultiSceneThemeProduct = (DeviceHelper.isFoldButNotSmallFoldProduct() ||
   DeviceHelper.isPadOr2in1PcType());
   private isScreenOnEnd: boolean = AppStorage.get<boolean>('isEndScreenOn') as boolean;
@@ -227,9 +227,9 @@ export class MultiSceneThemeManager {
 
   protected combineFoldModeFlag(isFolded: boolean) {
     let foldFlag = isFolded ? DISPLAY_FOLD_MODE_MAIN_FLAG : DISPLAY_FOLD_MODE_FULL_FLAG;
-    if (DeviceHelper.isUltraScreenProduct()) {
-      foldFlag = DisplayUtils.isUltraScreenFStatus() ? DISPLAY_FOLD_MODE_MAIN_FLAG :
-        (DisplayUtils.isUltraScreenMStatus() ? DISPLAY_FOLD_MODE_FULL_FLAG : ULTRA_SCREEN_G_STATUS);
+    if (DeviceHelper.isThreeFoldProduct()) {
+      foldFlag = DisplayUtils.isThreeFoldFStatus() ? DISPLAY_FOLD_MODE_MAIN_FLAG :
+        (DisplayUtils.isThreeFoldMStatus() ? DISPLAY_FOLD_MODE_FULL_FLAG : THREE_FOLD_G_STATUS);
     }
     this.sceneFlags &= ~FOLD_MODE_FLAG;
     this.sceneFlags |= foldFlag;
@@ -484,7 +484,7 @@ export class MultiSceneThemeManager {
 
   /**
    * 获取需要同步写入的关联路劲限定符。
-   * 如大屏幕机展开态或平板的横屏和竖屏，不支持独立编辑锁屏主题。但美学构图可在横屏和竖屏生成的时钟的差异信息，并分开存放。
+   * 如折叠机展开态或平板的横屏和竖屏，不支持独立编辑锁屏主题。但美学构图可在横屏和竖屏生成的时钟的差异信息，并分开存放。
    * 为保证数据一致性，在锁屏编辑器编辑时，需同步写入关联的限定符路径中。此处返回关联的限定符。
    * @param qualifier 主题路劲限定符
    * @returns 关联的主题路劲限定符
@@ -560,7 +560,7 @@ export class MultiSceneThemeManager {
           let curClockStyle = uiThemeInfo as AnyClock;
           curClockStyle.x = cacheThemeInfo.clock.positionX;
           curClockStyle.y = cacheThemeInfo.clock.positionY;
-          if (DeviceHelper.isUltraScreenProduct()) {
+          if (DeviceHelper.isThreeFoldProduct()) {
             needRefreshUI = true;
             curClockStyle.layout = cacheThemeInfo?.clock?.layout;
             curClockStyle.clockFontFamily = cacheThemeInfo?.clock?.fontFamily;

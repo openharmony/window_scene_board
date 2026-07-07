@@ -1,0 +1,1667 @@
+{
+    "string":[
+        {
+            "name":"uninstall_success",
+            "value":"ئۆچۈرۈلدى.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"delete_app",
+            "value":"چىقىرىۋېتىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_location_title",
+            "value":"ئورۇن",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_nfc_mode_title",
+            "value":"NFC",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Desktop_slide",
+            "value":"ئۈستەليۈزىنى تۆۋەنگە سىيرىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_ring_mode_title_off",
+            "value":"تىنچ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_app_is_open",
+            "value":"بۇ ئەپ ئوچۇق.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"oh_multiwindow_not_support_multiwindows",
+            "value":"\u200f%1$s كۆپ كۆزنەك قوللىمايدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_ring_mode_title_on",
+            "value":"قوڭغۇراق",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"duplicate_add",
+            "value":"تەكرار قوشۇلمايدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_not_support_split",
+            "value":"\u200f«%1$s» ئېكران بۆلۈشنى قوللىمايدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"oh_multiwindow_not_support_float_window",
+            "value":"\u200f«%1$s» لەيلىمە كۆزنەكتە ئېچىلمايدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"airplane_mode",
+            "value":"ئۇچۇش ھالىتى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_center_menu_add_desktop",
+            "value":"ئۈستەليۈزىگە قوشۇش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_ring_mode_title_vibration",
+            "value":"تىترەش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_click_application_form_split_screen",
+            "value":"ئۈستەليۈزىدىن يەنە بىر ئەپ ئېچىپ ئېكران بۆلەلەيسىز.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Desktop_setting",
+            "value":"ئۈستەليۈزى تەڭشىكى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_bluetooth_title",
+            "value":"كۆكچىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"HiSearch_title",
+            "value":"شياۋيى ئىزدىگۈچ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_menu_open",
+            "value":"ئېچىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"uninstall_failed",
+            "value":"ئۆچۈرۈلمىدى.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_center_menu_add_dock",
+            "value":"تېزلەتمە بالداققا قوشۇش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_uninstall",
+            "value":"ئۆچۈرۈش چەكلىنىدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"delete_form",
+            "value":"چىقىرىۋېتىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"No_running_apps_recently",
+            "value":"يېقىندا يۈرگەن ئەپ يوق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"No_available_window",
+            "value":"كۆزنەك يوق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_delete_form",
+            "value":"چىقىرىۋېتەمسىز؟",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Ai_bar_return_home",
+            "value":"ئۈستەليۈزىگە قايتىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Ai_bar_recent_detail",
+            "value":"ئېكراننىڭ ئاستىدىن ئۈستىگە سىيرىپ تۇرۇڭ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Ai_bar_recent",
+            "value":"يېقىنقى ۋەزىپە",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Ai_bar_setting",
+            "value":"سىستېما يېتەكلىگۈچ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_list_title_more_style",
+            "value":"كۆپرەك ئۇسلۇب",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Ai_bar_back",
+            "value":"قايتىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Ai_bar_vassistant_dialogue",
+            "value":"شياۋيى سۆھبەت",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Ai_bar_gesture_back_detail",
+            "value":"ئېكراننىڭ ئوڭ/سول قىرىدىن ئىچىگە سىيرىسىڭىز ئالدىنقى بەتكە قايتىدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Ai_bar_vassistant",
+            "value":"ئاستىدىكى يېتەكلەش بالدىقىنى بېسىپ تۇرسىڭىز شياۋيى سۆھبەت ئېچىلىدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Ai_bar_return_home_detail",
+            "value":"ئېكراننىڭ ئاستى قىرىدىن ئۈستىگە سىيرىڭ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Ai_bar_back_detail",
+            "value":"ئاستىدىكى يېتەكلەش بالدىقىنى بېسىپ ئالدىنقى بەتكە قايتىسىز.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_menu_exit",
+            "value":"چېكىنىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aod_dialog_title",
+            "value":"ئىزچىل كۆرسىتىشنى ئېچىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_dialog_content",
+            "value":"«ئىزچىل كۆرسىتىش» ئىقتىدارى ئېتىك. ئاچامسىز؟",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_cancel",
+            "value":"بىكار قىلىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_enable",
+            "value":"ئېچىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_button_next",
+            "value":"كېيىنكى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"oh_multiwindow_not_support_split_ratio",
+            "value":"ئويۇن ئەپتە ئېكران نىسبىتى تەڭشەلمەيدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_dock_title",
+            "value":"كۆپ كۆزنەكلىك ئەپ بالدىقى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Ai_bar",
+            "value":"يېتەكلەش بالدىقى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"next_step",
+            "value":"كېيىنكى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_button_know",
+            "value":"بىلدىم",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"learn_more",
+            "value":"تەپسىلات",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_change_views_title",
+            "value":"ئېكران بۆلۈش/كىچىكلىتىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_change_views_contents",
+            "value":"تولۇق ئېكرانلىق ھالەتتە ئېكراننىڭ ئاستىدىن ئوڭ ئۈستىگە سىيرىسىىز ئەپ لەيلىمە كۆزنەكتە ئېچىلىدۇ، سول ئۈستىگە سىيرىسىڭىز ئېكران بۆلۈنىدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"System",
+            "value":"سىستېما",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_title",
+            "value":"كۆپ كۆزنەك",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_button_more",
+            "value":"تەپسىلات",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"know",
+            "value":"بىلدىم",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_split_screen_title",
+            "value":"ئېكران بۆلۈش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_dock_switch_title",
+            "value":"كۆپ كۆزنەكلىك ئەپ بالدىقى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"drag_to_voice",
+            "value":"شياۋيىغا سۆرەش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"let_go_drag_to_voice",
+            "value":"قويۇپ بەرسىڭىز شياۋيىغا يوللىنىدۇ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"drag_to_voice_detail",
+            "value":"مەزمۇننى بېسىپ تۇرۇپ، لەيلىگەندە ئاستىدىكى شياۋيىغا سۆرىسىڭىز بولىدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_split_swap_title",
+            "value":"ئېكران ئالماشتۇرۇش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"oh_multiwindow_not_support_vertical_split_new",
+            "value":"\u200f%1$s ئوڭ-سول ئېكران بۆلۈشنى قوللىمايدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_pip_switch_title",
+            "value":"رەسىمدىكى رەسىم",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_split_to_float_title",
+            "value":"بۆلمە ئېكراننى لەيلىمە كۆزنەككە ئالماشتۇرۇش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_float_to_split_title",
+            "value":"لەيلىمە كۆزنەكنى بۆلمە ئېكرانغا ئالماشتۇرۇش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_floating_windows_title",
+            "value":"لەيلىمە كۆزنەك",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"oh_multiwindow_not_support_horizontal_split_new",
+            "value":"\u200f%1$s ئۈستى-ئاستى ئېكران بۆلۈشنى قوللىمايدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_float_to_split_content",
+            "value":"ئۈستىدىكى تىزگىن بالدىقىنى بېسىپ تۇرۇپ، نىشان ئورۇنغا تارتىپ قويۇپ بەرسىڭىز ئېكران بۆلۈنىدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_floating_windows_contents",
+            "value":"ئەپلەرنى لەيلىمە كۆزنەكتە ئېچىش، ئىشارە ئارقىلىق ئەڭ كىچىكلىتىش، تولۇق ئېكرانلىق كۆرسىتىش ۋە ئېتىشكە بولىدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_pip_switch_desc",
+            "value":"ئۈستەليۈزىگە قايتقان ياكى باشقا ئەپ ئاچقاندا، سىن ياكى تەلراۋان چاقىرىق قاتارلىقلار كىچىكلەپ «رەسىمدىكى رەسىم» شەكلىدە داۋاملىشىدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_floating_tip",
+            "value":"تىزگىن كۆرسىتىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_split_tip",
+            "value":"تىزگىن كۆرسىتىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_split_screen_contents",
+            "value":"ئۈستى بالداقنى بېسىپ تۇرۇپ سۆرەپ كۆزنەكلەرنى ئۆزئارا ئالماشتۇرۇش ياكى لەيلىمە كۆزنەككە ئالماشتۇرۇشقا بولىدۇ؛ ئوتتۇرىدىكى بالداقنى سۆرەپ ئېكران بۆلۈش نىسبىتىنى تەڭشەشكە بولىدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_adjust_mid_window_title",
+            "value":"كۆزنەك تەڭشەش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_add_window_title",
+            "value":"كۆزنەك قوشۇش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_add_window_content",
+            "value":"چوققا تىزىملىكنى چەكسىڭىز، يېڭى كۆزنەك نۆۋەتتىكى كۆزنەككە قوشۇلىدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_adjust_mid_window_content",
+            "value":"ئېكران بۆلۈش بالدىقىنى تارتىپ كۆزنەك چوڭلۇقىنى تەڭشەيسىز.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_focused_switch_title_fold",
+            "value":"كۆزنەك ئالماشتۇرۇش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_focused_switch_content_fold",
+            "value":"ياندىكى كۆزنەكنى چەكسىڭىز، كۆزنەك ئېكران ئىچىگە يۆتكىلىدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_dock_contents",
+            "value":"ئېكران قىرىدىن ئىچىگە سىيرىپ قويۇپ بەرسىڭىز، ئەپ بالدىقى ئېچىلىدۇ؛ بالداقتىكى ئەپ سىنبەلگىسىنى چەكسىڭىز، لەيلىمە كۆزنەكتە ئېچىلىدۇ؛ ئەپ سىنبەلگىسىنى ئېكران ئىچىگە سۆرەپ تاشلىسىڭىز، ئېكران بۆلۈنىدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_button_quit",
+            "value":"كېيىنچە",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_dock_switch_contents",
+            "value":"ئېكران قىرىدىن ئىچىگە سىيرىپ قويۇپ بەرسىڭىز، ئەپ بالدىقى ئېچىلىدۇ؛ ئاندىن ئېكران بۆلۈش ياكى لەيلىمە كۆزنەكتە ئەپ ئېچىشقا بولىدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"folder_name_tools",
+            "value":"قوراللار",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_Mid_View_contents",
+            "value":"ئېكران بۆلۈك ھالەتتە ئۈستىگە سىيرىپ ياكى ئېكران بۆلۈش نىسبىتىنى تەڭشەپ، تەڭداش ھالەتكە كىرەلەيسىز.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_split_swap_content_phone",
+            "value":"ئۈستىدىكى تىزگىن بالدىقىنى بېسىپ تۇرۇپ، نىشان ئورۇنغا تارتىپ ئورۇن ئالماشتۇرۇشقا بولىدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"oh_multiwindow_not_support_split_for_folded_new",
+            "value":"ئۈسكۈنە قاتلاق ھالەتتە «%1$s» ئېكران بۆلۈشنى قوللىمايدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_Mid_View_title",
+            "value":"تەڭداش كۆزنەك",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_split_to_float_content_phone",
+            "value":"ئۈستىدىكى تىزگىن بالدىقىنى بېسىپ تۇرۇپ، نىشان ئورۇنغا تارتىپ قويۇپ بەرسىڭىز لەيلىمە كۆزنەكلىك ھالەتكە ئۆتىدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_split_swap_content_fold",
+            "value":"ئۈستىدىكى تىزگىن بالدىقىنى بېسىپ تۇرۇپ، نىشان ئورۇنغا تارتىپ ئورۇن ئالماشتۇرۇشقا بولىدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_split_to_float_content_fold",
+            "value":"ئۈستىدىكى تىزگىن بالدىقىنى بېسىپ تۇرۇپ، نىشان ئورۇنغا تارتىپ قويۇپ بەرسىڭىز لەيلىمە كۆزنەكلىك ھالەتكە ئۆتىدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"cancel",
+            "value":"بىكار قىلىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aod_modify_mode_smart_text",
+            "value":"بۇ ئۇسلۇب پەقەت «ئاڭلىق كۆرسىتىش» ھالىتىدە ئىشلەيدۇ. كۆرسىتىش ھالىتى ئۆزلۈكىدىن تەڭشەلدى.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_poup_confirm",
+            "value":"بىلدىم",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"oh_multiwindow_horizontal_split",
+            "value":"ئۈستۈن-تۆۋەن بۆلۈش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"oh_multiwindow_vertical_split",
+            "value":"ئوڭ-سول بۆلۈش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_button_finish",
+            "value":"پۈتتى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_horizontal_exchange",
+            "value":"ئۈستۈن/تۆۋەن ئالماشتۇرۇش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"oh_multiwindow_save_group",
+            "value":"بىرىكمە ساقلاش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"oh_multiwindow_vertical_exchange",
+            "value":"ئوڭ/سول ئالماشتۇرۇش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"add",
+            "value":"قوشۇش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"restoring_tips_message",
+            "value":"مەلۇمات ئەسلىگە كېلىۋاتىدۇ، كېيىنرەك قايتا سىناڭ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"restoring_tips_btn",
+            "value":"بىلدىم",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"running_apps_recently",
+            "value":"يېقىنقى ئەپلەر",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"rename_folder",
+            "value":"نام ئۆزگەرتىش"
+        },
+        {
+            "name":"landscape_startup_title",
+            "value":"ئەپ كۆرسىتىش نىسبىتى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"compatible_application_display",
+            "value":"ئەپ ماسلىقى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"style_mode_label_medium",
+            "value":"ئوتتۇرىھال",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"landscape_view_force",
+            "value":"مەجبۇرىي تۈزبوي كۆرسىتىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"uninstall",
+            "value":"ئۆچۈرۈش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"style_mode_label_split",
+            "value":"رەتلىك",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"landscape_app_full_ratio",
+            "value":"تولۇق ئېكرانلىق نىسبەت",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"style_mode_label_full",
+            "value":"تولۇق ئېكران",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"style_mode_label_small",
+            "value":"كىچىك (%1$d:%2$d)",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"landscape_desc_force",
+            "value":"تۈزبوي ھالەتكە ماسلاشتۇرۇلمىغان ئەپلەرمۇ تۈزبوي ئېكرانلىق ئېچىلىدۇ ھەمدە كۆرسىتىش نىسبىتىنى تەڭشەشكە بولىدۇ. نىسبەت تەڭشەلسە، ئەپ نورمال كۆرۈنمەسلىكى مۇمكىن.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"continue_mission_fail_close_hotspot_and_try_again",
+            "value":"ئۆتكۈزۈلمىدى، %1$s نىڭ تور نۇقتىسىنى ئېتىپ قايتا سىناڭ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"continue_mission_fail_device_connecting_to_another_device",
+            "value":"ئۆتكۈزۈلمىدى، %1$s باشقا ئۈسكۈنە بىلەن ئۆزئارالىقتا.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_restored",
+            "value":"ئەپ ئەسلىگە كەلدى.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"recover_Theme_App_massage",
+            "value":"«ئۇسلۇب» ئەپى ئۆچۈرۈلگەن، بۇ ئىقتىدارنى ئىشلىتىش ئۈچۈن ئۇنى ئەسلىگە كەلتۈرۈش كېرەك.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"recover",
+            "value":"ئەسلىگە كەلتۈرۈش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"recover_Theme_App",
+            "value":"«ئۇسلۇب» نى ئەسلىگە كەلتۈرەمسىز؟",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remove_form_dialog_content",
+            "value":"ئەپنى بېسىپ تۇرۇپ «كارتا» بېتىگە كىرىپ، قايتا قوشالايسىز.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"continue_mission_fail",
+            "value":"ئۆتكۈزۈلمىدى.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"continue_mission_waiting",
+            "value":"ئۆتكۈزۈلۈۋاتىدۇ...",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_to_desktop",
+            "value":"ئۈستەليۈزىگە قوشۇش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"folder_name_system_apps",
+            "value":"خۇاۋېي ئەپلىرى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"folder_name_preload",
+            "value":"سەرخىل ئەپ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"new_folder_name",
+            "value":"قىسقۇچ %1$d",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Ai_bar_vassistant_dialogue_longpress",
+            "value":"بېسىپ تۇرۇپ شياۋيى سۆھبەتنى ئېچىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Ai_bar_back_click_navigation",
+            "value":"چېكىپ قايتىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"force_split_tips",
+            "value":"رەتلىك كۆرۈنۈش ئەپنى قايتا قوزغاتقاندا كۈچكە ئىگە بولىدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"force_split2full_tips",
+            "value":"تولۇق ئېكرانلىق ھالەت ئەپنى قايتا قوزغاتقاندا كۈچكە ئىگە بولىدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"out_pcmod_tips",
+            "value":"بۇ ھالەتتىن چېكىنىش ئۈچۈن ئاۋۋال «%s» نى ئېتىڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"confirm_pcmod_tips",
+            "value":"بىلدىم",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"not_harmony_apps",
+            "value":"چىقماقچى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"covertheme_settings_title",
+            "value":"ئۈستەليۈزى، تاشقى ئېكران ۋە خاسلاشتۇرۇش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"display_brightness",
+            "value":"كۆرسىتىش ۋە يورۇقلۇق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"gesture_dock_add_limit",
+            "value":"كۆپىدە %1$d ئەپ قوشۇلىدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ai_bar_accessibility_text",
+            "value":"يېتەكلەش بالدىقى، ئۈچ چېكىپ قويۇپ بەرمەي تۇرسىڭىز شياۋيى سۆھبەت ئويغىنىدۇ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"title_recently_use",
+            "value":"يېقىنقى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"title_all_apps",
+            "value":"بارلىق ئەپ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"title_search_result",
+            "value":"ئىزدەش نەتىجىسى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"search_apps",
+            "value":"ئەپ ئىزدەش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"split_to_float",
+            "value":"لەيلىمە كۆزنەك",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"title_support_multiWindow",
+            "value":"كۆپ كۆزنەك قوللايدىغان ئەپلەر",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_multi_finger_knead_title",
+            "value":"تولۇق ئېكران",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_split_adjust_to_mid_title",
+            "value":"بۆلۈنمە تەڭشەپ پۈتۈن كۆرۈنۈشلۈك كۆپ كۆزنەككە كىرىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_slid_delete_title",
+            "value":"ئاستىغا تارتىپ ئېتىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_swap_title",
+            "value":"ئورۇن ئالماشتۇرۇش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_one_step_mid_content",
+            "value":"ئېكراننىڭ ئاستىدىن ئۈستىدىكى نىشان ئورۇنغا سىيرىپ، ئاندىن ئۈستەليۈزىدىن ئەپ تاللاپ، پۈتۈن كۆرۈنۈشلۈك كۆپ كۆزنەكلىك ھالەتكە كىرەلەيسىز.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_three_finger_cross_slip_title",
+            "value":"ئۈچ بارماقتا ئەپ ئالماشتۇرۇش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_three_finger_cross_slip_content",
+            "value":"ئۈچ بارماقتا سىيرىپ پۈتۈن كۆرۈنۈشلۈك كۆپ كۆزنەكلەرنى ئالماشتۇرۇشقا بولىدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_split_adjust_to_mid_content",
+            "value":"ئېكران بۆلۈش بالدىقىنى تارتىپ، نىسبەت چەككە يەتكەندە پۈتۈن كۆرۈنۈشلۈك كۆپ كۆزنەكلىك ھالەتكە كىرىدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_mid_view_guidance_floating_tip",
+            "value":"ئېكران بۆلۈش بالدىقىنى تارتىپ كۆزنەك چوڭلۇقىنى تەڭشەيسىز.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_multi_finger_knead_content",
+            "value":"كۆپ بارماقنى يايسىڭىز تولۇق ئېكرانلىق ھالەت، يىغسىڭىز كۆپ كۆزنەكلىك ھالەت ئېچىلىدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_slid_delete_content",
+            "value":"ئەپنىڭ ئۈستىدىكى تىزگىن بالدىقىنى تۇتۇپ، تېزلىكتە ئاستىغا تارتىپ ئەپنى ئېتىشكە بولىدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_one_step_mid_title",
+            "value":"پۈتۈن كۆرۈنۈشلۈك كۆپ كۆزنەك",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_swap_content",
+            "value":"ئۈستىدىكى تىزگىن بالدىقىنى بېسىپ تۇرۇپ، نىشان ئورۇنغا تارتىپ ئورۇن ئالماشتۇرۇشقا بولىدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_float_to_split_content_fold",
+            "value":"ئۈستىدىكى تىزگىن بالدىقىنى بېسىپ تۇرۇپ، نىشان ئورۇنغا تارتىپ قويۇپ بەرسىڭىز ئېكران بۆلۈنىدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"flip_the_phone",
+            "value":"يانفوننى ئۆرۈپ قولچىراق ئېچىڭ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"close_flashlight_tips",
+            "value":"توك مەنبەنى باسسىڭىز، قولچىراق ئېتىلىدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enter_pc_mode_tips",
+            "value":"ئەركىن كۆزنەك ھالىتى ئېچىلماقچى، بۇ ھالەت پەقەت تۈزبوي ئىشلىتىشنى قوللايدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_to_voice_reminder",
+            "value":"شياۋيىغا سۆرەپ تاشلاپ يۈرگۈزەلەيسىز.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keyboard_panel_smart_access_text",
+            "value":"باشقا كىرگۈزگۈچ ئالماشتۇرۇش، كۇنۇپكا",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keyboard_common_access_text",
+            "value":"ئۆلچەملىك كىرگۈزگۈچ، كۇنۇپكا",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keyboard_panel_world_access_text",
+            "value":"كىرگۈزگۈچ ئالماشتۇرۇش، كۇنۇپكا",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keyboard_one_hand_access_text",
+            "value":"بىر قوللۇق كىرگۈزگۈچ، كۇنۇپكا",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keyboard_thumb_access_text",
+            "value":"باش بارماقلىق كىرگۈزگۈچ، كۇنۇپكا",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keyboard_float_access_text",
+            "value":"لەيلىمە كىرگۈزگۈچ، كۇنۇپكا",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_video_player",
+            "value":"رەسىمدىكى رەسىم",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_window_open",
+            "value":"قويۇش تىزگىنى بالدىقى يېيىلدى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_play",
+            "value":"قويۇش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_restore",
+            "value":"رەسىمدىكى رەسىمنى ئەسلىگە كەلتۈرۈش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_play_fast_backward",
+            "value":"تېز قايتۇرۇش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_window_close",
+            "value":"قويۇش تىزگىنى بالدىقى يىغىلدى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_play_previous",
+            "value":"ئالدىنقىنى قويۇش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_play_next",
+            "value":"كېيىنكىنى قويۇش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_play_fast_forward",
+            "value":"تېز سۈرۈش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_window_show",
+            "value":"رەسىمدىكى رەسىم كۆرسىتىلدى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_close",
+            "value":"رەسىمدىكى رەسىمنى ئېتىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_play_pause",
+            "value":"قويۇشنى تورمۇزلاش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"already_exist_pip_window_toast",
+            "value":"نۆۋەتتە رەسىمدىكى رەسىم ھالىتىدە، ئېتىپ قايتا ئېچىڭ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Desktop_individuation",
+            "value":"ئۈستەليۈزى ۋە خاسلاشتۇرۇش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"maximize_window",
+            "value":"ئەڭ چوڭ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"replace_window",
+            "value":"كۆزنەك ئالماشتۇرۇش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"add_window",
+            "value":"كۆزنەك قوشۇش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"close_window",
+            "value":"كۆزنەكنى ئېتىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"minimize_window",
+            "value":"ئەڭ كىچىكلىتىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"title_bar_menu_maximize_window",
+            "value":"چوڭايتىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"title_bar_menu_close_window",
+            "value":"ئېتىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"title_bar_menu_minimize_window",
+            "value":"كىچىكلىتىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"title_bar_menu_enlarge_window",
+            "value":"چوڭايتىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"title_bar_menu_shrink_window",
+            "value":"كىچىكلىتىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"split_screen",
+            "value":"ئېكران بۆلۈش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"switch_floating_window",
+            "value":"لەيلىمە كۆزنەك",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_show_not_support_small_step",
+            "value":"\u200f%1$s لەيلىمە كۆزنەك ئەسكەرتمىسى قوللىمايدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dragging_to_mid_tip",
+            "value":"قويۇپ بەرسىڭىز پۈتۈن كۆرۈنۈشلۈك كۆپ كۆزنەك ئېچىلىدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dragging_to_full_tip",
+            "value":"قويۇپ بەرسىڭىز تولۇق ئېكرانلىق ھالەتكە ئۆتىدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"oh_multiwindow_click_application_form_midScene_waiting_state",
+            "value":"ئۈستەليۈزىدە ئەپ سىنبەلگىسى چەكسىڭىز، شۇ ئەپ پۈتۈن كۆرۈنۈشلۈك كۆپ كۆزنەككە قوشۇلىدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"oh_multiwindow_does_not_support_panoramic_multiwindow",
+            "value":"بۇ ئەپ پۈتۈن كۆرۈنۈشلۈك كۆپ كۆزنەك قوللىمايدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"oh_multiwindow_back_to_middle_scene_using_gesture",
+            "value":"كۆپ بارماقنى يىغىپ كۆپ كۆزنەككە قايتىسىز.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"mid_scene_tip_label",
+            "value":"قويۇپ بەرسىڭىز كۆپ كۆزنەك ئېچىلىدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"oh_multiwindow_does_not_support_panoramic_multiwindow_in_current_state",
+            "value":"نۆۋەتتىكى ھالەت پۈتۈن كۆرۈنۈشلۈك كۆپ كۆزنەك قوللىمايدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"continue",
+            "value":"داۋاملاشتۇرۇش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"gesture_return",
+            "value":"قايتىش ئىشارىسى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"gesture_return_desktop",
+            "value":"ئۈستەليۈزىگە قايتىش ئىشارىسى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"gesture_enter_recent_task",
+            "value":"يېقىنقى ۋەزىپە ئىشارىسى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_show_not_support_adjust_window",
+            "value":"\u200f%1$s كۆزنەك چوڭلۇقىنى تەڭشەشنى قوللىمايدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"force_split2other",
+            "value":"بوي نىسبىتى ئۆزگەردى، ئەپ نورمال كۆرۈنمەسلىكى مۇمكىن.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"unlock_app",
+            "value":"‏%s ئوچۇق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"lock_app",
+            "value":"‏%s قۇلۇپلاق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_locked",
+            "value":"‏%s قۇلۇپلاندى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"recent_unlock",
+            "value":"‏%s ئېچىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"one_hand_mode",
+            "value":"بىر قوللۇق ھالەت",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"one_hand_mode_exit",
+            "value":"كىچىك ئېكراننىڭ سىرتىنى چېكىپ چېكىنىسىز.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"one_hand_mode_accessibility_str_entry_setting",
+            "value":"تەڭشەك",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"floating_three_button_navigation",
+            "value":"لەيلىمە ئۈچ كۇنۇپكىلىق يېتەكلىگۈچ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"floating_three_button_navigation_detail",
+            "value":"بېسىپ تۇرۇپ تارتىپ لەيلىمە ئۈچ كۇنۇپكىلىق يېتەكلىگۈچنىڭ ئورنىنى ئۆزگەرتەلەيسىز.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"one_hand_compatibility_mode_prompt_string",
+            "value":"ئارايۈزدە خاتالىق كۆرۈلسە، ئەپنى قايتا ئېچىڭ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"one_handed_mode_diag_title",
+            "value":"بىر قوللۇق ماس ھالەت",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"one_handed_mode_diag_content",
+            "value":"ئېكران ئاستى قىرىدا تۈزبوي سىيرىپ توختاپ، بىر قوللۇق ماس ھالەتكە كىرىپ، ئەپنى تولۇق كۆرسىتىشكە بولىدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"one_handed_mode_diag_confirm",
+            "value":"تەپسىلات",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"one_handed_mode_diag_cancel",
+            "value":"بىلدىم",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dragging_to_one_to_two_split_tip",
+            "value":"قويۇپ بەرسىڭىز %1$d:%2$d ئېكران بۆلۈنىدۇ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dragging_to_two_to_one_split_tip",
+            "value":"قويۇپ بەرسىڭىز %2$d:%1$d ئېكران بۆلۈنىدۇ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"forbid_pip_window_size_adjust",
+            "value":"تاشقى ئېكراندا كۆزنەك چوڭلۇقى تەڭشەلمەيدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_minimize_all_float_due_to_rss",
+            "value":"راۋان ئىشلىتىشىڭىز ئۈچۈن لەيلىمە كۆزنەك يانغا يىغىلدى.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"oh_multiwindow_not_support_change_split_ratio",
+            "value":"\u200f«%1$s» ئېكران بۆلۈش نىسبىتىنى تەڭشەشنى قوللىمايدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_not_support_split_this_way_currently",
+            "value":"نۆۋەتتىكى ئۈسكۈنە ھالىتىدە «%1$s» بۇ ئۇسۇلدا ئېكران بۆلۈشنى قوللىمايدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_not_support_split_currently",
+            "value":"نۆۋەتتىكى ئۈسكۈنە ھالىتىدە «%1$s» ئېكران بۆلۈشنى قوللىمايدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"enter_free_windows_tips",
+            "value":"ئەركىن كۆزنەك ھالىتى ئېچىلماقچى، تۈزبوي ئىشلىتىڭ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"multi_window_force_switch_title",
+            "value":"كۆپ كۆزنەكلىك ماسلاشما ھالەت",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"creation_results",
+            "value":"ئىشلىگەن نەتىجە",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"creation_results_apply",
+            "value":"قوللىنىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"content_creation",
+            "value":"مەزمۇن ئىشلىنىۋاتىدۇ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"desktop_layout",
+            "value":"لايىھە",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"auto_align",
+            "value":"ئۆزلۈكىدىن رەتلەش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"auto_align_content",
+            "value":"ئەپ ئۆچۈرگەندە بوش قالغان ئورۇن تولدۇرۇلۇپ رەتلىنىدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        }
+    ]
+}

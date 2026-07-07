@@ -70,11 +70,11 @@ export const enum FoldPhoneTypeValue {
   /**
    * super fold
    */
-  EXPANDING_BIG_SCREEN = 5,
+  EXPANDING_SUPER_FOLD = 5,
   /**
-   * 超大屏设备
+   * 三折设备
    */
-  EXPANDING_ULTRA_SCREEN_PRODUCT = 6,
+  EXPANDING_THREE_FOLD_PRODUCT = 6,
 }
 
 /**
@@ -149,7 +149,7 @@ export class DeviceHelper {
   /**
    * device type super fold
    */
-  private static isBigScreen: boolean | undefined = undefined;
+  private static isSuperFold: boolean | undefined = undefined;
 
   /**
    * LEM内屏Id
@@ -450,12 +450,12 @@ export class DeviceHelper {
    * @returns boolean 如果为super fold返回true
    */
 
-  public static isBigScreenMachine(): boolean {
-    if (DeviceHelper.isBigScreen !== undefined) {
-      return DeviceHelper.isBigScreen;
+  public static isSuperFoldMachine(): boolean {
+    if (DeviceHelper.isSuperFold !== undefined) {
+      return DeviceHelper.isSuperFold;
     }
-    DeviceHelper.isBigScreen = FoldPhoneTypeValue.EXPANDING_BIG_SCREEN === DeviceHelper.getFoldProductType();
-    return DeviceHelper.isBigScreen;
+    DeviceHelper.isSuperFold = FoldPhoneTypeValue.EXPANDING_SUPER_FOLD === DeviceHelper.getFoldProductType();
+    return DeviceHelper.isSuperFold;
   }
 
   /**
@@ -485,8 +485,8 @@ export class DeviceHelper {
    * 是否是三屏设备
    * @returns true是，false不是
    */
-  static isUltraScreenProduct(): boolean {
-    return FoldPhoneTypeValue.EXPANDING_ULTRA_SCREEN_PRODUCT === DeviceHelper.getFoldProductType();
+  static isThreeFoldProduct(): boolean {
+    return FoldPhoneTypeValue.EXPANDING_THREE_FOLD_PRODUCT === DeviceHelper.getFoldProductType();
   }
 
   /**
@@ -512,15 +512,15 @@ export class DeviceHelper {
   }
 
   /**
-   * 超大屏G态，竖屏
+   * 三折叠G态，竖屏
    * @returns
    */
-  static isUltraScreenGPortrait(): boolean {
-    return DeviceHelper.isUltraScreenProduct() && DeviceHelper.isGState() && !DeviceHelper.isLandscape();
+  static isThreeFoldGPortrait(): boolean {
+    return DeviceHelper.isThreeFoldProduct() && DeviceHelper.isGState() && !DeviceHelper.isLandscape();
   }
 
   /**
-   * 是否为大屏幕机产品展开态（非小内折）
+   * 是否为折叠机产品展开态（非小内折）
    *
    * @returns true是，false不是
    */
@@ -529,7 +529,7 @@ export class DeviceHelper {
   }
 
   /**
-   * 是否为大屏幕机产品展开态OR半展开态（非小内折）
+   * 是否为折叠机产品展开态OR半展开态（非小内折）
    *
    * @returns true是，false不是
    */
@@ -538,7 +538,7 @@ export class DeviceHelper {
   }
 
   /**
-   * 是否为非小折叠的大屏幕机产品（非小内折）
+   * 是否为非小折叠的折叠机产品（非小内折）
    *
    * @returns true是，false不是
    */
@@ -547,7 +547,7 @@ export class DeviceHelper {
   }
 
   /**
-   * 是否为非小折叠和非singleDisplay的大屏幕机产品（非小内折）
+   * 是否为非小折叠和非singleDisplay的折叠机产品（非小内折）
    *
    * @returns true是，false不是
    */
@@ -705,7 +705,7 @@ export class DeviceHelper {
    * @returns true, 表示是大屏
    */
   public static isLargeScreen(): boolean {
-    return DeviceHelper.isPad() || (DeviceHelper.isUltraScreenProduct() && DeviceHelper.isGState());
+    return DeviceHelper.isPad() || (DeviceHelper.isThreeFoldProduct() && DeviceHelper.isGState());
   }
 
   /**

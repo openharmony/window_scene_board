@@ -387,7 +387,11 @@ export class NtfListVm {
    * @param event 事件
    */
   private onNtfHideContentEvent = (event: NtfHideContentEvent): void => {
-    this.isNtfHideContent = event.isNtfHideContentEnable();
+    if(AppStorage.get<boolean>('reboot_ntf_msg') === true) {
+      this.isNtfHideContent = true;
+    } else {
+      this.isNtfHideContent = event.isNtfHideContentEnable();
+    }
     this.checkShouldHideNtfContent();
   }
 
@@ -713,8 +717,14 @@ export class NtfListVm {
     entry.notifyDataChanged();
   }
 
+  /**
+   * 存在uid和包名一对多的情况需要使用包名和uid一起匹配唯一数据，使用uid
+   * @returns
+   */
   private findConfigForEntry(ntfConfig: NotificationConfigEntity, ntfEntry: NotificationEntry): boolean {
-    return ntfConfig.bundle === ntfEntry.creatorBundleName && ntfConfig.uid === ntfEntry.creatorUid;
+    return ntfEntry.isDeliverNotification
+      ? ntfConfig.bundle === ntfEntry.creatorBundleName && ntfConfig.uid === ntfEntry.creatorUid :
+      ntfConfig.uid === ntfEntry.creatorUid;
   }
 
   private async setSmallIcon(entry: NotificationEntry): Promise<void> {
@@ -1407,6 +1417,7 @@ export class NtfListVm {
     return false;
   }
 
+  // 灭屏场景下 亮屏是否添加通知
   private isAddNtf(entry: NotificationEntry): boolean {
     if (!this.isKeyguard()) {
       return true;

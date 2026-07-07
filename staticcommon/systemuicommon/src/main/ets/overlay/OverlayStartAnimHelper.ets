@@ -59,7 +59,7 @@ import { FloatingBallOneMirrorAnimation } from '../animation/FloatingBallOneMirr
 import { CapsuleListState } from '../liveview/info/capsule/CapsuleListState';
 import { LiveApp2CapsuleEvent } from '../event/LiveViewEvent';
 import { InnerEventUtil } from '../utils/InnerEventUtil';
-// import apsManager from '@hms.graphic.apsManager';
+// import apsManager from '@ohos.graphic.apsManager';
 import { APSSceneState } from '../constants/SystemuiConstants';
 
 const TAG = 'OverlayStartAnimHelper';
@@ -774,19 +774,23 @@ export class OverlayStartAnimHelper {
 
       OverlayStartAnimHelper.raisePanelAboveByCard(cardInfo, panelSession);
       OverlayStartAnimHelper.showSceneAlphaAnim(containerSession, cardInfo.isStartFromLockScreen());
-      animateTo({
-        duration: sceneParam.duration,
-        curve: sceneParam.curve,
-        onFinish: () => {
-          OverlayStartAnimHelper.startAnimFromCardInfo.onFinish?.();
-          OverlayStartAnimHelper.startAnimFromCardInfo.onFinish = undefined;
-        },
-      }, () => {
-        HiTrace.startTrace(TRACE_TAG, 3);
-        OverlayStartAnimHelper.onOverlayTransitionInactive(containerSession);
-        panelMgr.onBlurTransitionActive(1.0, 'OverlayStartAnimHelper > StartAnimFromCardPanelPart');
-        HiTrace.finishTrace(TRACE_TAG, 3);
-      });
+      // animateTo({
+      //   duration: sceneParam.duration,
+      //   curve: sceneParam.curve,
+      //   onFinish: () => {
+      HiTrace.startTrace(TRACE_TAG, 3);
+      OverlayStartAnimHelper.onOverlayTransitionInactive(containerSession);
+      panelMgr.onBlurTransitionActive(1.0, 'OverlayStartAnimHelper > StartAnimFromCardPanelPart');
+      HiTrace.finishTrace(TRACE_TAG, 3);
+      OverlayStartAnimHelper.startAnimFromCardInfo.onFinish?.();
+      OverlayStartAnimHelper.startAnimFromCardInfo.onFinish = undefined;
+      //   },
+      // }, () => {
+      //   HiTrace.startTrace(TRACE_TAG, 3);
+      //   OverlayStartAnimHelper.onOverlayTransitionInactive(containerSession);
+      //   panelMgr.onBlurTransitionActive(1.0, 'OverlayStartAnimHelper > StartAnimFromCardPanelPart');
+      //   HiTrace.finishTrace(TRACE_TAG, 3);
+      // });
     } else {
       log.showWarn('SceneParam is null.');
       DropDownPanelManager.hideWindowDirectly();
@@ -941,46 +945,47 @@ export class OverlayStartAnimHelper {
       .getSystemSceneSessionWithSystemType(SceneSessionManager.SessionType.TYPE_STATUS_BAR);
     TraceUtil.startAnimTrace(DomainName.HOME, TraceUtil.CORE_METHOD_START_APP_ANI, TraceUtil.CUSTOM_ANIMATOR_PREFIX);
     // 应用窗口位置大小变化动效
-    animateTo({
-      curve: cardInfo?.sceneSizeAndPositionAnimParam?.curve,
-      onFinish: () => {
-        TraceUtil.endAnimTrace(DomainName.HOME, TraceUtil.CORE_METHOD_START_APP_ANI, TraceUtil.CUSTOM_ANIMATOR_PREFIX);
-        log.showInfo('StartFromIconAnim finish');
-        // 动效结束后恢复应用窗口的模糊层
-        panelSession?.setBgBlurEnable(true, 'StartFromIconPanelAnim');
-        // 恢复启动应用动效计数
-        SCBTransitionManager.getInstance().reduceStartExitAnimationCount();
-        // overlay动效参数复位，解冻桌面及停止标记节点组
-        containerSession.transitionInFinishIfNeed(animationNum);
-        containerSession.overlayCardTransition = null;
-        // 面板层级复位
-        panelSession?.setPanelZIndex(panelSession?.defaultPanelZIndex ?? DefaultPanelZIndex.PANEL_SCENE_PANEL);
-        if (sysSession) {
-          sysSession.zIndex = DefaultPanelZIndex.PANEL_STATUS_BAR;
-        }
-      },
-    }, () => {
-      OverlayStartAnimHelper.setFromIconAnimPanelEndpoint(containerSession);
-    });
+    // animateTo({
+    //   curve: cardInfo?.sceneSizeAndPositionAnimParam?.curve,
+    //   onFinish: () => {
+    OverlayStartAnimHelper.setFromIconAnimPanelEndpoint(containerSession);
+    TraceUtil.endAnimTrace(DomainName.HOME, TraceUtil.CORE_METHOD_START_APP_ANI, TraceUtil.CUSTOM_ANIMATOR_PREFIX);
+    log.showInfo('StartFromIconAnim finish');
+    panelSession?.setBgBlurEnable(true, 'StartFromIconPanelAnim');
+    SCBTransitionManager.getInstance().reduceStartExitAnimationCount();
+    containerSession.transitionInFinishIfNeed(animationNum);
+    containerSession.overlayCardTransition = null;
+    panelSession?.setPanelZIndex(panelSession?.defaultPanelZIndex ?? DefaultPanelZIndex.PANEL_SCENE_PANEL);
+    if (sysSession) {
+      sysSession.zIndex = DefaultPanelZIndex.PANEL_STATUS_BAR;
+    }
+    //   },
+    // }, () => {
+    //   OverlayStartAnimHelper.setFromIconAnimPanelEndpoint(containerSession);
+    // });
 
     // 应用窗口圆角变化动效
-    animateTo({
-      curve: cardInfo?.sceneBorderRadiusAnimParam?.curve,
-      duration: cardInfo?.sceneBorderRadiusAnimParam?.duration
-    }, () => {
-      let deviceRadius =
-        DeviceHelper.getDeviceRadius(SCBScreenSessionManager.getInstance().isFoldablePhoneExpandStatus());
-      containerSession.needRenderBorderRadius.setBorderRadiusWithDfx(deviceRadius, TAG, 'onOverlayTransitionActive',
-        containerSession.getName());
-    });
+    // animateTo({
+    //   curve: cardInfo?.sceneBorderRadiusAnimParam?.curve,
+    //   duration: cardInfo?.sceneBorderRadiusAnimParam?.duration
+    // }, () => {
+    //   let deviceRadius =
+    //     DeviceHelper.getDeviceRadius(SCBScreenSessionManager.getInstance().isFoldablePhoneExpandStatus());
+    //   containerSession.needRenderBorderRadius.setBorderRadiusWithDfx(deviceRadius, TAG, 'onOverlayTransitionActive',
+    //     containerSession.getName());
+    // });
+    containerSession.needRenderBorderRadius.setBorderRadiusWithDfx(0, TAG, 'onOverlayTransitionActive',
+      containerSession.getName());
 
     // 应用页面透明度变化
-    animateTo({
-      curve: cardInfo?.sceneAlphaAnimParam?.curve,
-      duration: cardInfo?.sceneAlphaAnimParam?.duration
-    }, () => {
-      containerSession.needRenderAlpha.setNeedRenderAlphaWithDfx(1, TAG, 'onOverlayTransitionActive', containerSession.getName());
-    })
+    // animateTo({
+    //   curve: cardInfo?.sceneAlphaAnimParam?.curve,
+    //   duration: cardInfo?.sceneAlphaAnimParam?.duration
+    // }, () => {
+    //   containerSession.needRenderAlpha.setNeedRenderAlphaWithDfx(1, TAG, 'onOverlayTransitionActive', containerSession.getName());
+    // })
+    containerSession.needRenderAlpha.setNeedRenderAlphaWithDfx(1, TAG, 'onOverlayTransitionActive',
+      containerSession.getName());
   }
 
   private static cancelStartAnimFromIcon(cardInfo: OverlayCardInfo, containerSession: SCBSceneContainerSession) {
@@ -1016,32 +1021,39 @@ export class OverlayStartAnimHelper {
     session.needRenderAlpha.setNeedRenderAlphaWithDfx(0, TAG, 'initFromIconTransition', session.getName());
 
     // 应用窗口初始裁剪大小
-    let shortPxSize = Math.min(session.screenProperty.width, session.screenProperty.height);
-    let shortWidth = px2vp(shortPxSize);
-    session.needRenderClip.setClipHeight(shortPxSize);
-    let width = session.needRenderClip.clipHeight.copy();
-    session.needRenderClip.setClipWidth(width);
+    // let shortPxSize = Math.min(session.screenProperty.width, session.screenProperty.height);
+    // let shortWidth = px2vp(shortPxSize);
+    // session.needRenderClip.setClipHeight(shortPxSize);
+    // let width = session.needRenderClip.clipHeight.copy();
+    // session.needRenderClip.setClipWidth(width);
+    session.needRenderClip.setClipWidth(session.screenProperty.width);
+    session.needRenderClip.setClipHeight(session.screenProperty.height);
     // 赋值给卡片内容（icon）大小
-    cardState.iconWidth = shortWidth;
+    // cardState.iconWidth = shortWidth;
 
     let cardBgWidth: number = cardInfo.getBgWidth();
     // 应用窗口初始缩放比例
-    session.needRenderScale.setScaleXWithDfx(cardBgWidth / shortWidth, TAG, 'startApp', session.getName());
-    session.needRenderScale.setScaleYWithDfx(cardBgWidth / shortWidth, TAG, 'startApp', session.getName());
+    // session.needRenderScale.setScaleXWithDfx(cardBgWidth / shortWidth, TAG, 'startApp', session.getName());
+    // session.needRenderScale.setScaleYWithDfx(cardBgWidth / shortWidth, TAG, 'startApp', session.getName());
+    session.needRenderScale.setScaleXWithDfx(1, TAG, 'startApp', session.getName());
+    session.needRenderScale.setScaleYWithDfx(1, TAG, 'startApp', session.getName());
 
     //  应用窗口初始圆角值
-    if (!CommonUtils.isInvalid(cardInfo.cardRadius)) {
-      let cardRadius:number = cardInfo.cardRadius.topLeft;
-      // 页面初始圆角与卡片圆角保持一致，将缩放比例考虑进去重新计算
-      session.needRenderBorderRadius.setBorderRadiusWithDfx(cardRadius / (cardBgWidth / shortWidth), TAG, 'initFromIconTransition',
-        session.getName());
-    }
+    // if (!CommonUtils.isInvalid(cardInfo.cardRadius)) {
+    //   let cardRadius:number = cardInfo.cardRadius.topLeft;
+    //   // 页面初始圆角与卡片圆角保持一致，将缩放比例考虑进去重新计算
+    //   session.needRenderBorderRadius.setBorderRadiusWithDfx(cardRadius / (cardBgWidth / shortWidth), TAG, 'initFromIconTransition',
+    //     session.getName());
+    // }
+    session.needRenderBorderRadius.setBorderRadiusWithDfx(0, TAG, 'initFromIconTransition', session.getName());
     // 应用窗口初始位移位置
-    if (!CommonUtils.isInvalid(cardInfo.cardBgPosition)) {
-      let cardBgPosition = cardInfo.cardBgPosition;
-      session.needRenderTranslate.setTranslateXWithDfx(cardBgPosition.left + (cardBgWidth - shortWidth) / 2, TAG, 'startApp', session.getName());
-      session.needRenderTranslate.setTranslateYWithDfx(cardBgPosition.top + (cardBgWidth - shortWidth) / 2, TAG, 'startApp', session.getName());
-    }
+    // if (!CommonUtils.isInvalid(cardInfo.cardBgPosition)) {
+    //   let cardBgPosition = cardInfo.cardBgPosition;
+    //   session.needRenderTranslate.setTranslateXWithDfx(cardBgPosition.left + (cardBgWidth - shortWidth) / 2, TAG, 'startApp', session.getName());
+    //   session.needRenderTranslate.setTranslateYWithDfx(cardBgPosition.top + (cardBgWidth - shortWidth) / 2, TAG, 'startApp', session.getName());
+    // }
+    session.needRenderTranslate.setTranslateXWithDfx(0, TAG, 'startApp', session.getName());
+    session.needRenderTranslate.setTranslateYWithDfx(0, TAG, 'startApp', session.getName());
   }
 
   /**
@@ -1075,40 +1087,49 @@ export class OverlayStartAnimHelper {
     cardState.overlayCardScaleY = cardInfo.cardScaleY;
 
     // 圆角初始值
-    if (!CommonUtils.isInvalid(cardInfo.cardRadius)) {
-      let cardRadius = cardInfo.cardRadius;
-
-      // 页面初始圆角与卡片圆角保持一致
-      session.needRenderBorderRadius.setDiffBorderRadiusWithDfx(
-        cardRadius?.topLeft,
-        cardRadius?.topRight,
-        cardRadius?.bottomLeft,
-        cardRadius?.bottomRight);
-      log.showInfo(`[${TAG}]set NeedRenderBorderRadius different border Radius. reason: initOverlayTransition, extra info:${session.getName()}`);
-    }
+    // if (!CommonUtils.isInvalid(cardInfo.cardRadius)) {
+    //   let cardRadius = cardInfo.cardRadius;
+    //
+    //   // 页面初始圆角与卡片圆角保持一致
+    //   session.needRenderBorderRadius.setDiffBorderRadiusWithDfx(
+    //     cardRadius?.topLeft,
+    //     cardRadius?.topRight,
+    //     cardRadius?.bottomLeft,
+    //     cardRadius?.bottomRight);
+    //   log.showInfo(`[${TAG}]set NeedRenderBorderRadius different border Radius. reason: initOverlayTransition, extra info:${session.getName()}`);
+    // }
+    session.needRenderBorderRadius.setBorderRadiusWithDfx(0, TAG, 'initOverlayTransition', session.getName());
 
     // 裁剪大小、位置初始值
-    let cardBgPosition = cardInfo.cardBgPosition;
-    if (CommonUtils.isInvalid(cardBgPosition)) {
-      log.showWarn('CardBgPosition is invalid.');
-      return;
-    }
-
-    const cardBgWidth = vp2px(cardInfo.getBgWidth());
-    const cardBgHeight = vp2px(cardInfo.getBgHeight());
-    const bgTranX = cardBgPosition.left;
-    const bgTranY = cardBgPosition.top;
-
-    // 页面初始大小与卡片大小保持一致
-    session.needRenderClip.clipWidth.setNumber(cardBgWidth);
-    session.needRenderClip.clipHeight.setNumber(cardBgHeight);
-    session.needRenderTranslate.setTranslateXWithDfx(bgTranX, TAG, 'initOverlayTransition', session.getName());
-    session.needRenderTranslate.setTranslateYWithDfx(bgTranY, TAG, 'initOverlayTransition', session.getName());
-
-    cardState.containerTranX = bgTranX;
-    cardState.containerTranY = bgTranY;
-    cardState.overlayCardEndTranX = bgTranX;
-    cardState.overlayCardEndTranY = bgTranY;
+    // let cardBgPosition = cardInfo.cardBgPosition;
+    // if (CommonUtils.isInvalid(cardBgPosition)) {
+    //   log.showWarn('CardBgPosition is invalid.');
+    //   return;
+    // }
+    //
+    // const cardBgWidth = vp2px(cardInfo.getBgWidth());
+    // const cardBgHeight = vp2px(cardInfo.getBgHeight());
+    // const bgTranX = cardBgPosition.left;
+    // const bgTranY = cardBgPosition.top;
+    //
+    // // 页面初始大小与卡片大小保持一致
+    // session.needRenderClip.clipWidth.setNumber(cardBgWidth);
+    // session.needRenderClip.clipHeight.setNumber(cardBgHeight);
+    // session.needRenderTranslate.setTranslateXWithDfx(bgTranX, TAG, 'initOverlayTransition', session.getName());
+    // session.needRenderTranslate.setTranslateYWithDfx(bgTranY, TAG, 'initOverlayTransition', session.getName());
+    //
+    // cardState.containerTranX = bgTranX;
+    // cardState.containerTranY = bgTranY;
+    // cardState.overlayCardEndTranX = bgTranX;
+    // cardState.overlayCardEndTranY = bgTranY;
+    session.needRenderClip.setClipWidth(session.screenProperty.width);
+    session.needRenderClip.setClipHeight(session.screenProperty.height);
+    session.needRenderTranslate.setTranslateXWithDfx(0, TAG, 'initOverlayTransition', session.getName());
+    session.needRenderTranslate.setTranslateYWithDfx(0, TAG, 'initOverlayTransition', session.getName());
+    cardState.containerTranX = 0;
+    cardState.containerTranY = 0;
+    cardState.overlayCardEndTranX = 0;
+    cardState.overlayCardEndTranY = 0;
   }
 
   /**
@@ -1141,10 +1162,11 @@ export class OverlayStartAnimHelper {
     session.needRenderAlpha.setNeedRenderAlphaWithDfx(1.0, TAG, 'initOverlayTransition', session.getName());
 
     // 圆角终值
-    let deviceRadius =
-      DeviceHelper.getDeviceRadius(SCBScreenSessionManager.getInstance().isFoldablePhoneExpandStatus());
-    session.needRenderBorderRadius.setBorderRadiusWithDfx(deviceRadius, TAG, 'onOverlayTransitionInactive',
-      session.getName());
+    // let deviceRadius =
+    //   DeviceHelper.getDeviceRadius(SCBScreenSessionManager.getInstance().isFoldablePhoneExpandStatus());
+    // session.needRenderBorderRadius.setBorderRadiusWithDfx(deviceRadius, TAG, 'onOverlayTransitionInactive',
+    //   session.getName());
+    session.needRenderBorderRadius.setBorderRadiusWithDfx(0, TAG, 'onOverlayTransitionInactive', session.getName());
 
     // 位移终值
     session.needRenderTranslate.setTranslateXWithDfx(0, TAG, 'onOverlayTransitionInactive', session.getName());

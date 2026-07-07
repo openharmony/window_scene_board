@@ -32,6 +32,7 @@ import { SlGreetSBindState } from '@ohos/screenlockcomponent/src/main/ets/greet/
 import { defaultManifestParam, LockManifest } from '@ohos/screenlockwidget/src/main/ets/common/theme/ThemeHelperUtil';
 import ScreenLockWallPaper from '@ohos/screenlockcomponent/src/main/ets/wallpaper/ScreenLockWallpaper';
 import { OneMirrorService } from '@ohos/screenlockcomponent/src/main/ets/onemirror/service/OneMirrorService';
+import { ImmersiveAodStyle, immersiveKgMgr } from '@ohos/systemuicommon/src/main/ets/TsIndex';
 import { SlBindState } from '../model/data/SlBindState';
 import { slStateHelper } from '../model/helper/SlStateHelper';
 
@@ -52,6 +53,7 @@ export struct BackGroundView {
   @Consume wallPaperEffectOpacity: number;
   @State lockManifestParam: LockManifest = defaultManifestParam;
   @State slBindState: SlBindState = slStateHelper.getSlBindState();
+  @State aodStyle: ImmersiveAodStyle | undefined = immersiveKgMgr.getOneMirrorState().getAodStyle(true);
   @State specialModeViewData: SpecialModeViewData = SpecialModeManager.getInstance().getSpecialModeViewData();
   @State wallpaperData: WallpaperData = WallpaperManager.getInstance().wallpaperData;
   @State slWallpaperState: SLWallpaperState = slWallpaperMgr.getSlWallpaperState();
@@ -71,6 +73,19 @@ export struct BackGroundView {
   }
 
   private getScreenLockWallpaperScale(): ScaleOptions {
+    if (this.aodStyle?.isKgWallpaperScale) {
+      let normalScale = Constants.DEFAULT_WALLPAPER_SCALE;
+      if (IS_PAD || !this.slBindState.getIsStaticTheme()) {
+        normalScale = Constants.DEFAULT_WALLPAPER_SCALE_PAD;
+      } else if (OneMirrorService.getInstance().isConfigSupportToEnd()) {
+        normalScale = this.wallpaperData.wallpaperScale;
+      } else {
+        let wallPaperScale: number = this.slWallpaperState.wallpaperScale;
+        normalScale = wallPaperScale *
+          (ScreenLockThemeManager.getInstance().isStaticWallpaper() ? Constants.DEFAULT_WALLPAPER_SCALE : 1);
+      }
+      return { x: normalScale, y: normalScale };
+    }
     return { x: 1, y: 1 };
   }
 

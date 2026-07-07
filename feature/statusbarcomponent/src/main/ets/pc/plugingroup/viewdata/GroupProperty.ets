@@ -51,8 +51,9 @@ export class GroupProperty {
   constructor(position: PluginPositionType, type: PluginGroupType) {
     this.positionType = position;
     this.groupType = type;
-    this.openPanel = StyleFactory.getInstance().getStyleManager()!.getPluginSlotMapping()!.getGroupOpenChannel(
-      this.positionType, this.groupType);
+    //使用非空断言"!"，会导致D3000M在开机启动时报crash,改为使用"?"操作符。
+    this.openPanel = StyleFactory.getInstance().getStyleManager()?.getPluginSlotMapping()?.getGroupOpenChannel(
+      this.positionType, this.groupType) ?? '';
     this.groupName = PluginGroupType[this.groupType] + '_' + PluginPositionType[this.positionType];
     log.info('groupName:' + this.groupName);
   }

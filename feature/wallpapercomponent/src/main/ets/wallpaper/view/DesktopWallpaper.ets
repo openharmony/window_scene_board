@@ -69,7 +69,7 @@ export struct DesktopWallpaper {
       WallpaperModel.getInstance().registerWallpaperChange();
     }
     EvtBus.on(ThemeActivationEvent, this.onThemeActivationEvent);
-    this.pixelMap = await this.wallpaperState.getDefaultWallpaperPath(this.context)
+    this.pixelMap = await this.wallpaperState.getDefaultWallpaperPath(this.context, false)
     this.subscribeCrossProcessEvent('ts.event.theme.change')
   }
 
@@ -91,7 +91,7 @@ export struct DesktopWallpaper {
             reject(error);
           } else {
             log.info(`eventanme: ${eventName}`);
-            this.pixelMap = await this.wallpaperState.getDefaultWallpaperPath(this.context)
+            this.pixelMap = await this.wallpaperState.getDefaultWallpaperPath(this.context, false)
             resolve();
           }
         });
@@ -210,6 +210,8 @@ export struct DesktopWallpaper {
 
   build() {
     Column() {
+      // Image(this.wallpaperState.getDefaultsWallpaperImg())
+
       if (this.wallpaperState.isShowDefaultsWallpaper() || this.pixelMap !== null) {
         // Image(this.pixelMap === null ? $r('app.media.adaptive_multitask_background') : this.pixelMap)
         Image(this.pixelMap === null ? this.wallpaperState.getDefaultsWallpaperImg() : this.pixelMap)

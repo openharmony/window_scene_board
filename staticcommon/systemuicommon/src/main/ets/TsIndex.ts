@@ -348,6 +348,8 @@ export type { ICapsuleData } from './immersivekeyguardcommon/data/ICapsuleData';
 
 export { BaseConstants } from './base/common/BaseConstants';
 
+export { AodStyleType, ImmersiveAodStyle } from './immersivekeyguardcommon/base/interface/ImmersiveAodStyle';
+
 export { LiveNavigationTemplate } from './liveview/data/template/LiveNavigationTemplate';
 
 export { AccessibilityUtil } from './accessibility/AccessibilityUtil';

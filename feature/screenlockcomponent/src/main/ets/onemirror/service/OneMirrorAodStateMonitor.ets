@@ -84,7 +84,7 @@ export class OneMirrorAodStateMonitor {
     }
     this.isConsumerAod = newVal;
     // 刷新电量
-    slBindState?.setBatteryLayout(this.isConsumerAod ? BatteryLayout.DEFAULT_LAYOUT :
-    BatteryLayout.DEFAULT_LAYOUT);
+    slBindState?.setBatteryLayout(this.isConsumerAod ? BatteryLayout.PART_AOD_LAYOUT :
+    BatteryLayout.FULL_AOD_LAYOUT);
   }
 }

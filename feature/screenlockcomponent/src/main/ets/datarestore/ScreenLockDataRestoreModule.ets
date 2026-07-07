@@ -30,7 +30,7 @@ const SCREENLOCKDB_BACK = 'locksettings_back.db';
 const BACK_DATABASE_PATH = 'restore/com.openharmony.systemui';
 const ACTIVITE_THEME_EVENT = 'com.ohos.ActivateTheme';
 const ACTIVATE_FLAG: number = 1;
-const SUB_USER_CONVERTS = 91 // 升级子用户转换规则: 双的userId + 91
+const SUB_USER_CONVERTS = 91 // 系统迁移子用户转换规则: 双的userId + 91
 const DEFAULT_USER = 100;
 const INVALID_USER_ID: number = -1;
 

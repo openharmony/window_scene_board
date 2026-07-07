@@ -236,6 +236,10 @@
             }
         },
         {
+            "name":"system_function_voice_search",
+            "value":"[TS_999195]_Voice Search"
+        },
+        {
             "name":"system_function_show_desktop_key_question_mark",
             "value":"[TS_1024211]_?"
         },

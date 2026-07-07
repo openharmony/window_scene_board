@@ -31,6 +31,14 @@ const LITTLE_ICON_SIZE = 16;
 const LITTLE_ICON_RIGHT_BOTTOM_OFFSET = -4;
 const LITTLE_ICON_RADIUS = 4;
 const CONTAINER_EXPAND_SIZE = 4;
+const DELIVER_BADGE_WIDTH = BIG_ICON_SIZE * 0.5;
+const DELIVER_BADGE_HEIGHT = DELIVER_BADGE_WIDTH * 0.8;
+const DELIVER_IMAGE_WIDTH = DELIVER_BADGE_WIDTH * 0.43;
+const DELIVER_IMAGE_HEIGHT = DELIVER_BADGE_HEIGHT * 0.5;
+const DELIVER_BADGE_RIGHT_BOTTOM_OFFSET = 3;
+const DELIVER_BG_OPACITY = 0.3;
+const DELIVER_BG_TOP_LEFT_BOTTOM_RIGHT_RADIUS = BIG_ICON_SIZE * 0.2;
+const DELIVER_BG_TOP_RIGHT_BOTTOM_LEFT_RADIUS = 1.5;
 
 const COLLA_IMAGE_WIDTH: number = 10;
 const COLLA_BADGE_WIDTH = BIG_ICON_SIZE * 0.5;
@@ -116,6 +124,7 @@ interface NotificationIconViewParams {
 }
 
 function getBigIcon($$: NotificationIconViewParams): string | image.PixelMap | undefined {
+  // 通知大图标直接显示应用图标或小图标
   if ($$.ntf.overlayIconStyle === OverlayIconStyle.REVERSE) {
     return $$.ntf.getAppIcon();
   }
@@ -129,6 +138,7 @@ function getBigIcon($$: NotificationIconViewParams): string | image.PixelMap | u
 
 
 function getBigIconRadius($$: NotificationIconViewParams): Length {
+  // 通知大图标不显示圆角
   if ($$.ntf.overlayIconStyle === OverlayIconStyle.REVERSE) {
     return BIG_ICON_RADIUS * getScale($$);
   }
@@ -146,6 +156,9 @@ function getLittleIcon($$: NotificationIconViewParams): string | image.PixelMap 
     // 全场景通知不显示右下角设备来源图标场景：1. 导航模板类实况 2. isHideLitterIcon为true
     return ($$.ntf.isLiveView() && $$.ntf.card?.cardType === LiveCardType.NAVIGATION) || $$.isHideLittleIcon ?
       undefined : 'Colla';
+  }
+  if ($$.ntf.overlayIconStyle === OverlayIconStyle.REVERSE) {
+    return 'Deliver';
   }
   return !$$.isOnlyUseAppIcon && $$.ntf.overlayIcon ? $$.ntf.getAppIcon() : undefined;
 }
@@ -176,6 +189,46 @@ function buildLittleIconBg($$: NotificationIconViewParams) {
       })
   }
 }
+
+/**
+ * 克隆应用标识
+ */
+@Builder
+export function NotificationDeliverBadgeView($$: NotificationIconViewParams) {
+  Stack() {
+    Column()
+      .backgroundColor($r('sys.color.black'))
+      .width(DELIVER_BADGE_WIDTH * getScale($$))
+      .height(DELIVER_BADGE_HEIGHT * getScale($$))
+      .borderRadius({
+        topStart: LengthMetrics.vp(DELIVER_BG_TOP_LEFT_BOTTOM_RIGHT_RADIUS * getScale($$)),
+        topEnd: LengthMetrics.vp(DELIVER_BG_TOP_RIGHT_BOTTOM_LEFT_RADIUS * getScale($$)),
+        bottomStart: LengthMetrics.vp(DELIVER_BG_TOP_RIGHT_BOTTOM_LEFT_RADIUS * getScale($$)),
+        bottomEnd: LengthMetrics.vp(DELIVER_BG_TOP_LEFT_BOTTOM_RIGHT_RADIUS * getScale($$)),
+      })
+      .opacity(DELIVER_BG_OPACITY)
+
+    Image($r('app.media.app_icon_deliver'))
+      .draggable(false)
+      .syncLoad(true)
+      .autoResize(false)
+      .width(DELIVER_IMAGE_WIDTH * getScale($$))
+      .height(DELIVER_IMAGE_HEIGHT * getScale($$))
+      .objectFit(ImageFit.Contain)
+  }
+  .id(getId($$, 'deliverBadge'))
+  .geometryTransition($$.needGeometryTransition ? getId($$, 'deliverBadge') : undefined, {
+    hierarchyStrategy: TransitionHierarchyStrategy.NONE
+  })
+  .width(DELIVER_BADGE_WIDTH * getScale($$))
+  .height(DELIVER_BADGE_HEIGHT * getScale($$))
+  .position({
+    end: LengthMetrics.vp(DELIVER_BADGE_RIGHT_BOTTOM_OFFSET * getScale($$)),
+    bottom: LengthMetrics.vp(DELIVER_BADGE_RIGHT_BOTTOM_OFFSET * getScale($$)),
+  })
+  .enabled(false)
+}
+
 
 /**
  * 全场景标识
@@ -242,7 +295,9 @@ export function NotificationIconView($$: NotificationIconViewParams) {
           log.showError(`Load big icon error, key: [${$$.scene}]${$$.ntf.hashCode}, message: ${e.message}`);
         })
 
-      if (getLittleIcon($$) === 'Colla') {
+      if (getLittleIcon($$) === 'Deliver') {
+        NotificationDeliverBadgeView($$)
+      } else if (getLittleIcon($$) === 'Colla') {
         NotificationCollaBadgeView($$)
       } else if (!$$.isHideLittleIcon && getLittleIcon($$)) {
         buildLittleIconBg($$)

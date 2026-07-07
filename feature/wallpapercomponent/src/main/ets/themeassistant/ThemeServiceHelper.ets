@@ -63,6 +63,7 @@ const WALLPAPER_SCALE_LOCK: number = 1.1;
 const WALLPAPER_SCALE_HOME: number = 1.0;
 
 const WALLPAPER_SCALE_MAP: Map<ScbState, number> = new Map([
+  [ScbState.AOD, WALLPAPER_SCALE_AOD],
   [ScbState.LOCKSCREEN, WALLPAPER_SCALE_LOCK],
   [ScbState.DESKTOP, WALLPAPER_SCALE_HOME],
   [ScbState.SLEEP, WALLPAPER_SCALE_AOD],
@@ -298,6 +299,15 @@ export class ThemeServiceHelper {
 
     // 注册桌面应用打开状态监听
     TsSceneBoardStateListenerManager.getInstance().registerDesktopFsmListener(this.desktopAppStateListener, TAG);
+
+    try {
+      if (!power.isActive()) {
+        this.scbState = ScbState.AOD;
+        LOG.info(TAG, 'Set default scb state to aod because screen is off.');
+      }
+    } catch (error) {
+      LOG.error(TAG, `Failed to get screen state when start up. ${error?.code} - ${error?.message}`);
+    }
   }
 
   private modeChangeCallBack = (preDesktopMode: DesktopModeEnum, targetDesktopMode: DesktopModeEnum): void => {

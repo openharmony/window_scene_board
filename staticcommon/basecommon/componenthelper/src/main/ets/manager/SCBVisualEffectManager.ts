@@ -159,7 +159,7 @@ export class SCBVisualEffectManager {
     [VisualEffectConstants.ICON_START_EXIT_BLUR_DISABLE, 'false'],
     [VisualEffectConstants.ICON_CARD_SHADOW_DISABLE, 'false'],
     [VisualEffectConstants.IS_RECENT_BLUR_DISABLED, 'false'],
-    [VisualEffectConstants.ICON_START_EXIT_BLUR_DISABLE, 'false'],
+    [VisualEffectConstants.ICON_START_EXIT_BLUR_DISABLE, 'true'],
     [VisualEffectConstants.IS_NEGATIVESCREEN_BLUR_DISABLED, 'false'],
     [VisualEffectConstants.AIBAR_BLUR_INVERT_EFFECT_DISABLE, 'false'],
     [VisualEffectConstants.GLOBAL_SEARCH_BLUR_EFFECT_DISABLE, 'false'],

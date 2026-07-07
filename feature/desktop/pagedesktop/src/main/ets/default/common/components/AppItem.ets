@@ -19,6 +19,7 @@ import {
   CommonConstants,
   GrayAppListManager,
   AppItemInfo,
+  DeliverUtil,
   MenuInfo,
   AppGalleryDownloadManager,
   UninstallDialogStatus,
@@ -127,9 +128,9 @@ const UNINSTALL_APP_DURATION = 500;
 const TAG = 'Desktop-AppItem';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.HOME, TAG);
 const FOREGROUND_BLUR_RADIUS = 70;
-const MAX_HOVER_TIPS_WIDTH : number = 480;
+const MAX_HOVER_TIPS_WIDTH: number = 480;
 const CLICK_DELAY: number = 300;
-const defaultMenuOffset: Position = {x: 0, y: 5};
+const defaultMenuOffset: Position = { x: 0, y: 5 };
 const POPUP_WIDTH_FROM_THE_SCREEN: number = 8;
 const HOVER_MENU_FONT_SIZE: number = 14;
 const TEXTAREA_MIN_HEIGHT: number = 22;
@@ -179,7 +180,6 @@ export default struct AppItem {
   private onAppItemAccessibilityClickEvent: Function = (): void => this.appItemAccessibilityClickEvent();
   private onAppGalleryStatusChangeEvent: Function = (eventInfo: AppGalleryEventInfo):
     void => this.appGalleryStatusChangeEvent(eventInfo);
-
   @ObjectLink @Watch('onDesktopStyleChange') desktopStyle: DeskTopItemStyle;
   @StorageLink('itemPadding') @Watch('onItemPaddingChange') itemPadding: number = 0;
   private appIconContainerModifier: AppIconContainerModifier = new AppIconContainerModifier(
@@ -195,14 +195,14 @@ export default struct AppItem {
   private dBackPlaneSize: number = StyleConstants.DEFAULT_8;
   @State iconMenuVm: DeskTopIconMenuVm = new DeskTopIconMenuVm();
   private menuOffset: Position = defaultMenuOffset;
-  private layoutRegionMargin: Margin | undefined = DeviceHelper.isBigScreenMachine() ? {
+  private layoutRegionMargin: Margin | undefined = DeviceHelper.isSuperFoldMachine() ? {
     top: 0,
     left: 0,
     right: 0,
     bottom: 0
   } : undefined;
   private rectangleSelect: boolean = false;
-  @State appNameHover : boolean = false;
+  @State appNameHover: boolean = false;
   @State isShowNameHoverTips: boolean = false;
   @State hoverTipAppNameLenVp: number = 0;
   @Link isDragStart: boolean;
@@ -217,14 +217,15 @@ export default struct AppItem {
   @Consume itemOpacity: number;
   @StorageLink('isDrag') isDrag: boolean = true;
   private unInstallListener: UninstallListener = {
-    uninstallApp: (bundleName: string): void => {},
+    uninstallApp: (bundleName: string): void => {
+    },
     uninstallAppResult: (bundleName: string, resultCode: number, appIndex?: number, shortcutId?: string):
       void => this.uninstallAppResult(bundleName, resultCode, appIndex, shortcutId)
   };
   private itemKey: string = '';
   private appGalleryStatusChangeEventId: string = '';
   private isClicked: boolean = false;
-  styleConfig:PageDesktopGridStyleConfig = this.mPageDesktopViewModel.getPageDesktopStyleConfig();
+  styleConfig: PageDesktopGridStyleConfig = this.mPageDesktopViewModel.getPageDesktopStyleConfig();
   @Prop mIconSize: number = this.styleConfig.mIconSize;
   @State mAppNameSize: number = this.styleConfig.mNameSize;
   @Prop mAppNameWidth: number = this.styleConfig.mNameWidth;
@@ -232,7 +233,7 @@ export default struct AppItem {
   private marginValue: Margin = {
     top: PresetStyleConstants.DEFAULT_ICON_NAME_GAP
   };
-  private paddingValue : Padding = {
+  private paddingValue: Padding = {
     bottom: StyleConstants.DEFAULT_2,
     top: StyleConstants.DEFAULT_2,
     left: StyleConstants.DEFAULT_2,
@@ -352,9 +353,11 @@ export default struct AppItem {
 
   dialogController: CustomDialogController | null = new CustomDialogController({
     builder: UninstallDialog({
-      cancel: () => {},
+      cancel: () => {
+        HiSysEventUtil.reportCancelUninstallSingleApp(this.appInfo.bundleName, DeliverUtil.FOLDER_TYPE_NOTFOLDER);
+      },
       confirm: () => {
-        if (this.isPad) {
+        if (this.isPad || DeviceHelper.isPC()) {
           this.mPageDesktopViewModel.deleteAppItem({
             bundleName: this.appInfo.bundleName,
             keyName: this.appInfo.keyName,
@@ -365,13 +368,16 @@ export default struct AppItem {
             typeId: CommonConstants.TYPE_APP
           });
         } else {
+          HiSysEventUtil.reportUninstallApp(this.appInfo?.bundleName as string, DeliverUtil.FOLDER_TYPE_NOTFOLDER,
+            false);
           this.updateItemPosition(this.appInfo);
           this.mPageDesktopViewModel.uninstallApp(this.appInfo.bundleName as string,
             this.appInfo.isUninstallAble as boolean);
           this.mPageDesktopViewModel.autoAlignAfterUninstall([this.appInfo]);
         }
       },
-      dialogName: this.isPad ? $r('app.string.is_delete_app', this.appInfo.appName) : $r('app.string.isUninstall', this.appInfo.appName),
+      dialogName: (this.isPad || DeviceHelper.isPC()) ? $r('app.string.is_delete_app', this.appInfo.appName) :
+        $r('app.string.isUninstall', this.appInfo.appName),
       isFromDesktop: true,
       isBusinessStyle: true
     }),
@@ -381,7 +387,6 @@ export default struct AppItem {
     showInSubWindow: true,
     alignment: DialogAlignment.Center,
   });
-
   /**
    * Dialog for form manager view (pad adaptation).
    */
@@ -639,6 +644,9 @@ export default struct AppItem {
     let iconPositionInDesktop: string =
       'SCREENCOUNT:' + screenPageCount + 'SCREENINDEX:' + this.item.page + 'CELLX:' + this.item.column +
         'CELLY:' + this.item.row + 'isInDock:false';
+    let itemAppType: number = DeliverUtil.getAppType(this.item);
+    HiSysEventUtil.reportClickAppIcon(component, containerType, iconPositionInDesktop, '-1', '-1', 'false', 'false',
+      '-1', itemAppType, this.item.appIndex, '', '');
     if (this.item.typeId === CommonConstants.TYPE_SHORTCUT_ICON) {
       HiSysEventUtil.reportClickShortcut(component, this.item.shortcutId, containerType, iconPositionInDesktop,
         '-1', '-1', '-1');
@@ -758,9 +766,10 @@ export default struct AppItem {
   }
 
   private getMenuInfo(): MenuInfo[] {
-    let removeShortcutItem = () => {};
+    let removeShortcutItem = () => {
+    };
     return this.mPageDesktopViewModel.buildMenuInfoList(this.item,
-    this.dialogController, undefined, this.formManagerDialogController, (): void => this.setStartAppInfo(),
+      this.dialogController, undefined, this.formManagerDialogController, (): void => this.setStartAppInfo(),
       this.containerBelong ? removeShortcutItem : undefined);
   }
 
@@ -770,7 +779,7 @@ export default struct AppItem {
 
   private initIconMenuVm(): void {
     this.iconMenuVm.setBackgroundBlurStyle(DeviceHelper.is2In1DevicePcType() ? BlurStyle.COMPONENT_ULTRA_THICK :
-    BlurStyle.COMPONENT_REGULAR);
+      BlurStyle.COMPONENT_REGULAR);
     this.iconMenuVm.setMenuOffset(defaultMenuOffset);
   }
 
@@ -787,19 +796,27 @@ export default struct AppItem {
         }
         return this.defaultDragStart(event, this.item.componentId);
       },
-      onDragEnd: (event: DragEvent): void => { return this.handlerDragEnd(event); },
-      onPreDrag: (preDragStatus: PreDragStatus): void => {},
-      getDragPreviewBuilder: (): string | CustomBuilder | DragItemInfo => {}
+      onDragEnd: (event: DragEvent): void => {
+        return this.handlerDragEnd(event);
+      },
+      onPreDrag: (preDragStatus: PreDragStatus): void => {
+      },
+      getDragPreviewBuilder: (): string | CustomBuilder | DragItemInfo => {
+      }
     }
     const appIconTouchEvent: DesktopAppIconTouchEvent = new DesktopAppIconTouchEvent();
     appIconTouchEvent.initEventParam({
       itemInfo: this.appInfo,
       iconData: this.iconData,
       appIconConfig: this.appIconConfig,
-      touchDownCb: (event: TouchEvent) => { this.setAppMenuPosition(event); },
-      iconScaleCb: (scale: number) => {},
+      touchDownCb: (event: TouchEvent) => {
+        this.setAppMenuPosition(event);
+      },
+      iconScaleCb: (scale: number) => {
+      },
       iconSizeCb: () => this.mIconSize,
-      iconLongPressAnimation: (isZoomOut: boolean) => {}
+      iconLongPressAnimation: (isZoomOut: boolean) => {
+      }
     });
     const appIconGestureJudge: AppIconGestureJudgeIface = {
       onGestureJudgeBegin: (gestureInfo: GestureInfo, event: BaseGestureEvent) => {
@@ -860,12 +877,14 @@ export default struct AppItem {
     if (this.containerBelong?.typeId === CommonConstants.TYPE_REGION_FOLDER) {
       return this.mMaxNameLines;
     }
-    let fontSizeScale = (GlobalContext.getInstance().getObject('desktopContext') as ctx.ServiceExtensionContext).config.fontSizeScale ||
-      1;
+    let fontSizeScale =
+      (GlobalContext.getInstance().getObject('desktopContext') as ctx.ServiceExtensionContext).config.fontSizeScale ||
+        1;
     return fontSizeScale > 1.15 ? 1 : 2
   }
 
   private isHoverTips(): boolean {
+    log.showInfo(`appName: ` + this.item.appName);
     this.hoverTipAppNameLenVp = px2vp(Number(this.getTextSizeWidth(this.item.appName).width));
     let appNameOver: boolean = this.hoverTipAppNameLenVp > this.mAppNameWidth * this.getMaxNameLines();
     log.showInfo(`AppNameOver: ${appNameOver}, AppNameLenVp: ${this.hoverTipAppNameLenVp},mAppNameWidth:${this.mAppNameWidth} getMaxNameLines ${this.getMaxNameLines()}`);
@@ -897,9 +916,12 @@ export default struct AppItem {
 
   private updateMenuInfoAndOffset(event?: MouseEvent): void {
     if (event && event.button === MouseButton.Right && event.action === MouseAction.Press) {
-      this.iconEvent?.getIconMenuEvent()?.setMenuInfo((): MenuInfo[] => { return this.getMenuInfo(); });
+      this.iconEvent?.getIconMenuEvent()?.setMenuInfo((): MenuInfo[] => {
+        return this.getMenuInfo();
+      });
       const menuInfo = this.isMultiSelectedItems() ? this.getMixMenuInfo() : this.getMenuInfo();
-      this.menuOffset = PageDesktopViewModelForPC.getInstance().getRightMenuViewModel()?.getMenuOffset(event, menuInfo, TAG);
+      this.menuOffset =
+        PageDesktopViewModelForPC.getInstance().getRightMenuViewModel()?.getMenuOffset(event, menuInfo, TAG);
       this.iconMenuVm.setMenuOffset(this.menuOffset);
       log.showInfo(`updateMenuInfoAndOffset: ${this.menuOffset.y}`);
     }
@@ -914,7 +936,8 @@ export default struct AppItem {
       const menuInfo = this.isMultiSelectedItems() ? this.getMixMenuInfo() : this.getMenuInfo();
       const menuPlacement = PageDesktopViewModelForPC.getInstance().getRightMenuViewModel().getMenuPlacement(event,
         menuInfo, TAG);
-      const offset = PageDesktopViewModelForPC.getInstance().getRightMenuViewModel().getMenuOffset(event, menuInfo, TAG);
+      const offset =
+        PageDesktopViewModelForPC.getInstance().getRightMenuViewModel().getMenuOffset(event, menuInfo, TAG);
       this.iconMenuVm.setMenuOffset(offset);
       this.iconMenuVm.setMenuPlacement(menuPlacement ?? Placement.BottomLeft);
       log.showInfo(`setAppMenuPosition: ${menuPlacement} ${offset.x} ${offset.y}`);
@@ -969,7 +992,7 @@ export default struct AppItem {
       return;
     }
     let cachedPos: number[] = [];
-    if (DeviceHelper.isBigScreenMachine()) {
+    if (DeviceHelper.isSuperFoldMachine()) {
       this.mPageDesktopViewModel.setMultiDragStart(true);
       const isPortrait: boolean = AppStorage.get<boolean>('isPortrait') as boolean;
       const page: number = cachedItemInfo.page ?? 0;
@@ -1123,7 +1146,6 @@ export default struct AppItem {
         this.rectangleSelect = false;
       }
     }
-
   appNameModifier: DesktopAppNameDefaultModifier = new DesktopAppNameDefaultModifier(
     this.selectItem,
     (event?: MouseEvent) => {
@@ -1140,11 +1162,12 @@ export default struct AppItem {
       this.triggerDrag(event, true);
     },
   )
-
   iconModifier: DesktopAppIconDefaultModifier = new DesktopAppIconDefaultModifier(
     this.selectItem,
     this.dBackPlaneSize,
-    (event?: MouseEvent) => { this.updateMenuInfoAndOffset(event); }
+    (event?: MouseEvent) => {
+      this.updateMenuInfoAndOffset(event);
+    }
   );
 
   private hoverTipPositionHandle(): Position {
@@ -1161,7 +1184,7 @@ export default struct AppItem {
     } else {
       res.x = this.hoverTipPosition.x;
     }
-      res.y = Number(this.hoverTipPosition.y) + HOVER_MENU_FONT_SIZE + StyleConstants.DEFAULT_8;
+    res.y = Number(this.hoverTipPosition.y) + HOVER_MENU_FONT_SIZE + StyleConstants.DEFAULT_8;
     return res;
   };
 
@@ -1188,9 +1211,9 @@ export default struct AppItem {
     return itemLenWithPX;
   }
 
-  private hoverTipOverScreen() : boolean {
+  private hoverTipOverScreen(): boolean {
     // Hopper折叠屏无键盘场景使用screenHeight，其他场景|其他设备 使用displayHeight
-    let isFoldNoKeyboard: boolean = DeviceHelper.isBigScreenMachine() &&
+    let isFoldNoKeyboard: boolean = DeviceHelper.isSuperFoldMachine() &&
       this.mPageDesktopViewModel.getKeyBoardStatus() === NO_KEYBOARD_STATUS;
     let realScreenHeight: number = isFoldNoKeyboard ? AppStorage.get<number>('screenHeight') ?? 0 : this.displayHeight;
     if (Number(this.hoverTipDisPlayPosition.y) - Number(this.hoverTipPosition.y) + HOVER_MENU_FONT_SIZE +
@@ -1208,7 +1231,7 @@ export default struct AppItem {
   private setHoverParameter(event: MouseEvent) {
     this.hoverTipDisPlayPosition.x = event.displayX;
     this.hoverTipDisPlayPosition.y = event.displayY;
-    let newPosition: Position = { x: event.x, y: event.y - Number(event.target.area.height)};
+    let newPosition: Position = { x: event.x, y: event.y - Number(event.target.area.height) };
     this.hoverTipPosition = newPosition;
   }
 
@@ -1251,7 +1274,8 @@ export default struct AppItem {
     return !this.isDrag && isOneLine && this.enableRenderGroup;
   }
 
-  @Builder hoverAppNameTipsBuilder() {
+  @Builder
+  hoverAppNameTipsBuilder() {
     Row() {
       Text(this.item.appName)
         .wordBreak(WordBreak.BREAK_ALL)
@@ -1333,7 +1357,7 @@ export default struct AppItem {
           })
       )
     )
-    .onBlur(()=> {
+    .onBlur(() => {
       log.showInfo(`onBlur appitem: ${this.item.componentId}`);
       this.isFocused = false;
     })
@@ -1356,21 +1380,24 @@ export default struct AppItem {
     .onTouch((event?: TouchEvent): void => {
       if (event?.type === CommonConstants.TOUCH_TYPE_DOWN) {
         log.showInfo('onTouch down start');
+        if (DeliverUtil.isSupportAppType(this.item.bundleName) && DeliverUtil.isSupportDeliver()) {
+          SCBSceneSessionManager.getInstance().preloadApp(this.item.bundleName);
+        }
       }
     })
     .focusBox({ strokeWidth: new LengthMetrics(0) })
     .width(StyleConstants.PERCENTAGE_100)
     .height(StyleConstants.PERCENTAGE_100)
     .bindPopup(this.isShowNameHoverTips, {
-      builder:this.hoverAppNameTipsBuilder(),
+      builder: this.hoverAppNameTipsBuilder(),
       placement: this.hoverTipOverScreen() ? Placement.TopLeft : Placement.BottomLeft,
       mask: false,
       enableArrow: false,
-      targetSpace:StyleConstants.DEFAULT_8,
+      targetSpace: StyleConstants.DEFAULT_8,
       showInSubWindow: true,
       backgroundBlurStyle: BlurStyle.COMPONENT_REGULAR,
       transition: TransitionEffect.OPACITY,
-      width:this.isHoverTipsWidth(),
+      width: this.isHoverTipsWidth(),
       offset: this.hoverTipPositionHandle(),
       onStateChange: (event) => {
         // 当系统状态变为隐藏时，进行tips隐藏后续处理
@@ -1483,12 +1510,12 @@ export default struct AppItem {
     this.mPageDesktopDragHandler?.onDragStart(event.getWindowX(), event.getWindowY());
     multiSelectListenerManger.executeDragging();
     // PC上，图标位于背板中，由于设置了居中，且背板size比图标大，导致图标顶部到背板顶部有间隙，落位点需要设置偏差
-    const iconAroundMargin: number = DeviceHelper.isBigScreenMachine() ?
+    const iconAroundMargin: number = DeviceHelper.isSuperFoldMachine() ?
       this.dBackPlaneSize / 2 + this.backPlaneTopMargin -
-      GridLayoutUtil.getFloorVp(this.mPageDesktopViewModel.getIconMarginVertical()):
-    GridLayoutUtil.getFloorVp((StyleConstants.APPICON_BACKGROUND_HEIGHT - this.mIconSize) / 2);
+      GridLayoutUtil.getFloorVp(this.mPageDesktopViewModel.getIconMarginVertical()) :
+      GridLayoutUtil.getFloorVp((StyleConstants.APPICON_BACKGROUND_HEIGHT - this.mIconSize) / 2);
     dropAnimationManager.getDropViewModel(DropAnimationScene.SCENE_DESKTOP, this.itemKey)
-      ?.setWidth(EditModeUtils.convertWithDesktopScale(this.mIconSize))
+    ?.setWidth(EditModeUtils.convertWithDesktopScale(this.mIconSize))
       .setHeight(EditModeUtils.convertWithDesktopScale(this.mIconSize))
       .setRadius(EditModeUtils.convertWithDesktopScale(this.iconRadius))
       .setOffset(0, iconAroundMargin);
@@ -1544,31 +1571,25 @@ export default struct AppItem {
     log.showInfo('app is on desktop');
     return this.mPageDesktopViewModel.getCurrentSelectItems().length;
   }
-
   getDragEventData = () => {
     return this.mPageDesktopViewModel.getDragEventData(this.containerItem);
   }
-
   getMultiSelectMap = () => {
     return this.mPageDesktopViewModel.getMultiSelectMap();
   }
-
   getSelectItemContainCurrentApp = () => {
     let key: string = this.mPageDesktopViewModel?.getItemKeyByType(this.item as GridLayoutItemInfo) as string;
     let isExistInDesktop = this.mPageDesktopViewModel.getCurrentSelectItems().indexOf(key) !== -1;
     log.showInfo(`isExistInDesktop:${isExistInDesktop}`);
     return isExistInDesktop;
   }
-
   isCurrentDragSnapInMap = () => {
     let key: string = this.mPageDesktopViewModel?.getItemKeyByType(this.item as GridLayoutItemInfo) as string;
     return this.mPageDesktopViewModel.isCurrentItemInMultiMap(key);
   }
-
   getCurrentTouchItem = () => {
     return this.mPageDesktopViewModel.getCurrentTouchItem(this.item as Object as GridLayoutItemInfo);
   }
-
   getItemKey = () => {
     return this.mPageDesktopViewModel?.getItemKeyByType(this.item as GridLayoutItemInfo) as string;
   }
@@ -1582,7 +1603,7 @@ export default struct AppItem {
       color: Color.Transparent
     });
     this.backplaneVm.modifier.attribute?.backgroundColor(this.isSelect ?
-    $r('sys.color.ohos_id_color_bottom_tab_icon_auxcolor_off01') : undefined);
+      $r('sys.color.ohos_id_color_bottom_tab_icon_auxcolor_off01') : undefined);
     this.backplaneVm.modifier.attribute?.borderRadius(this.iconRadius + StyleConstants.DEFAULT_2)
   }
 }
@@ -1594,7 +1615,8 @@ class DesktopAppNameDefaultModifier extends AppNameModifier {
   private isAppnameHover: Function;
   private appNameTouchEvent: Function;
 
-  constructor(selectItem: Function, updateMenuInfoAndOffset: Function, setHoverParameter: Function, isAppnameHover: Function,
+  constructor(selectItem: Function, updateMenuInfoAndOffset: Function, setHoverParameter: Function,
+    isAppnameHover: Function,
     appNameTouchEvent: Function) {
     super();
     this.selectItem = selectItem;
@@ -1615,12 +1637,12 @@ class DesktopAppNameDefaultModifier extends AppNameModifier {
         }
         event?.stopPropagation();
       })
-      .focusBox({strokeWidth: new LengthMetrics(0)})
+      .focusBox({ strokeWidth: new LengthMetrics(0) })
       .onHover((isHover: boolean, event: HoverEvent) => {
         this.isAppnameHover?.(isHover);
         log.showInfo(`initAppNameModifier: ${isHover} `);
       })
-      .onTouch((event:TouchEvent):void=>{
+      .onTouch((event: TouchEvent): void => {
         this.appNameTouchEvent?.(event);
         event?.stopPropagation();
       })
@@ -1672,7 +1694,6 @@ class DesktopAppIconTouchEvent extends AppIconTouchEvent {
 
 @Observed
 export class DeskTopIconMenuVm extends AppIconMenuVm {
-
   public getMenuPlacement(isLongPressMenu?: boolean): Placement | undefined {
     if (isLongPressMenu) {
       return this.menuPlacement;
@@ -1697,10 +1718,10 @@ export class DeskTopIconMenuVm extends AppIconMenuVm {
       contextMenu.scale = animScale;
     }
   }
-
 }
 
-@Builder export function AppItemBuilder($$: AppItemViewIf) {
+@Builder
+export function AppItemBuilder($$: AppItemViewIf) {
   AppItem({
     desktopStyle: $$.desktopStyle,
     item: $$.item,

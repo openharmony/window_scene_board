@@ -32,13 +32,13 @@ export const N4_CLOCK_LAYOUT_WIDTH_AMOUNT: number = 4;
 export const DEFAULT_CLOCK_LAYOUT_WIDTH_AMOUNT: number = 2;
 
 const IS_DEVICE_PAD = DeviceHelper.isPadOr2in1PcType();
-const IS_ULTRA_SCREEN = DeviceHelper.isUltraScreenProduct();
+const IS_THREE_FOLD = DeviceHelper.isThreeFoldProduct();
 const IS_SMALL_FOLD: boolean = DeviceHelper.isSmallFoldProduct();
 const IS_FOLD_DEVICE: boolean = DeviceHelper.isFold();
 
 // Layout margin in horizontal
 const NORMAL_GRID_MARGIN: number = 24;
-const ULTRA_SCREEN_M_GRID_MARGIN = 54;
+const THREE_FOLD_M_GRID_MARGIN = 54;
 const PAD_GRID_MARGIN: number = 99;
 const SMALL_FOLD_GRID_MARGIN: number = 20;
 
@@ -155,11 +155,11 @@ export class ClockLayoutHelper {
     if (!DeviceHelper.isFoldButNotSmallFoldProduct()) {
       return false;
     }
-    if (IS_ULTRA_SCREEN) {
+    if (IS_THREE_FOLD) {
       return false;
     }
     let screenBp = slStateHelper.getSlStaticState()?.getSlState(SlStaticStateType.SCREEN_BP) as ScreenBp;
-    // 屏幕高度断点为md，则表示大屏幕机展开状态
+    // 屏幕高度断点为md，则表示折叠机展开状态
     let isFoldExpanded = screenBp?.heightBp === SizeBp.MD;
     return isFoldExpanded;
   }
@@ -171,12 +171,12 @@ export class ClockLayoutHelper {
    */
   public getHorizontalGridMargin(isPortrait: boolean): number {
     if (IS_DEVICE_PAD || (this.isFoldExpanded() && !IS_SMALL_FOLD) ||
-      (IS_ULTRA_SCREEN && !DisplayUtils.isUltraScreenFStatus())) {
+      (IS_THREE_FOLD && !DisplayUtils.isThreeFoldFStatus())) {
       return this.calculateGridMargin(isPortrait, this.getScreenWidth());
     }
     // 折叠屏未展开场景，锁屏时钟保持竖屏
     if (IS_FOLD_DEVICE && !this.isFoldExpanded() && !IS_SMALL_FOLD ||
-      (IS_ULTRA_SCREEN && DisplayUtils.isUltraScreenFStatus())) {
+      (IS_THREE_FOLD && DisplayUtils.isThreeFoldFStatus())) {
       return this.calculateGridMargin(isPortrait, Math.min(this.getScreenHeight(), this.getScreenWidth()));
     }
     return NORMAL_GRID_MARGIN;
@@ -207,7 +207,7 @@ export class ClockLayoutHelper {
    * @returns 横向网格数
    */
   public getLayoutGridAmount(isPortrait: boolean, isSubScreen?: boolean): GridAmount {
-    // PAD或超大屏G态，区分横竖屏
+    // PAD或三折叠G态，区分横竖屏
     if (this.isUseLargeLayoutAmount()) {
       if (isPortrait) {
         return { x: PAD_GRID_INSIDE_AMOUNT_Y, y: PAD_GRID_INSIDE_AMOUNT_X };
@@ -215,7 +215,7 @@ export class ClockLayoutHelper {
       return { x: PAD_GRID_INSIDE_AMOUNT_X, y: PAD_GRID_INSIDE_AMOUNT_Y };
     }
 
-    // 折叠展开或超大屏M态
+    // 折叠展开或三折叠M态
     if (this.isUseMediumLayoutAmount(this.isFullDisplayMode())) {
       return { x: FOLDER_GRID_INSIDE_AMOUNT_X, y: FOLDER_GRID_INSIDE_AMOUNT_Y };
     }
@@ -223,11 +223,11 @@ export class ClockLayoutHelper {
   }
 
   private isUseLargeLayoutAmount(): boolean {
-    return IS_DEVICE_PAD || (IS_ULTRA_SCREEN && DisplayUtils.isUltraScreenGStatus());
+    return IS_DEVICE_PAD || (IS_THREE_FOLD && DisplayUtils.isThreeFoldGStatus());
   }
 
   private isUseMediumLayoutAmount(isFoldExpanded: boolean): boolean {
-    return isFoldExpanded && !IS_SMALL_FOLD || (IS_ULTRA_SCREEN && DisplayUtils.isUltraScreenMStatus());
+    return isFoldExpanded && !IS_SMALL_FOLD || (IS_THREE_FOLD && DisplayUtils.isThreeFoldMStatus());
   }
 
   /**
@@ -278,8 +278,8 @@ export class ClockLayoutHelper {
         calcWidth = Math.min(screenWidth, screenHeight);
         calcHeight = Math.max(screenWidth, screenHeight);
       }
-      if (IS_ULTRA_SCREEN) {
-        return this.getLayoutGridWidthUltraScreen(layoutGridAmount, calcWidth, calcHeight, isLandscape);
+      if (IS_THREE_FOLD) {
+        return this.getLayoutGridWidthThreeFold(layoutGridAmount, calcWidth, calcHeight, isLandscape);
       }
       let singleWidth = (calcWidth - (NORMAL_GRID_MARGIN) * 2) / layoutGridAmount.x;
       let singleHeight =
@@ -295,7 +295,7 @@ export class ClockLayoutHelper {
     }
   }
 
-  private getLayoutGridWidthUltraScreen(layoutGridAmount: GridAmount, screenWidth: number, screenHeight: number,
+  private getLayoutGridWidthThreeFold(layoutGridAmount: GridAmount, screenWidth: number, screenHeight: number,
     isLandscape:boolean): number {
     if (!layoutGridAmount || !layoutGridAmount.x || !layoutGridAmount.y) {
       log.showWarn('layoutGridAmount invalid');
@@ -303,13 +303,13 @@ export class ClockLayoutHelper {
     }
     let singleWidth = (screenWidth - NORMAL_GRID_MARGIN * 2) / layoutGridAmount.x;
     let singleHeight = (screenHeight - NORMAL_VERTICAL_GRID_MARGIN * 2) / layoutGridAmount.y;
-    if (DisplayUtils.isUltraScreenMStatus() && !isLandscape) {
-      singleWidth = (screenWidth - ULTRA_SCREEN_M_GRID_MARGIN * 2) / layoutGridAmount.x;
+    if (DisplayUtils.isThreeFoldMStatus() && !isLandscape) {
+      singleWidth = (screenWidth - THREE_FOLD_M_GRID_MARGIN * 2) / layoutGridAmount.x;
     }
-    if (DisplayUtils.isUltraScreenMStatus() && isLandscape) {
+    if (DisplayUtils.isThreeFoldMStatus() && isLandscape) {
       singleHeight = (screenHeight - NORMAL_VERTICAL_GRID_MARGIN - FOLD_GRID_MARGIN_BOTTOM) / layoutGridAmount.y;
     }
-    if (DisplayUtils.isUltraScreenGStatus()) {
+    if (DisplayUtils.isThreeFoldGStatus()) {
       singleWidth = (Math.min(screenWidth, screenHeight) - PAD_GRID_MARGIN - PAD_GRID_MARGIN_BOTTOM) /
       Math.min(layoutGridAmount.x, layoutGridAmount.y);
       singleHeight = (Math.max(screenWidth, screenHeight) - PAD_GRID_MARGIN - PAD_GRID_MARGIN_BOTTOM) /
@@ -321,7 +321,7 @@ export class ClockLayoutHelper {
         ` height ${screenHeight} and grid amount x:${layoutGridAmount.x} y:${layoutGridAmount.y}`);
       return FOLD_GRID_WIDTH;
     }
-    log.showInfo(`getLayoutGridWidthUltraScreen singleGridWidth : ${singleGridWidth}, ${screenWidth}, ${screenHeight}`);
+    log.showInfo(`getLayoutGridWidthThreeFold singleGridWidth : ${singleGridWidth}, ${screenWidth}, ${screenHeight}`);
     return singleGridWidth;
   }
 
@@ -337,7 +337,7 @@ export class ClockLayoutHelper {
 
   private isFoldFixedGrid(isFold: boolean, isLandscape: boolean): boolean {
     // 折叠屏竖屏场景或非展开场景
-    return isFold && (!isLandscape || !this.isFoldExpanded()) && !IS_ULTRA_SCREEN;
+    return isFold && (!isLandscape || !this.isFoldExpanded()) && !IS_THREE_FOLD;
   }
 
   /**

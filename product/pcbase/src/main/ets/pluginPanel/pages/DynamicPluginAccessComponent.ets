@@ -106,6 +106,10 @@ export struct DynamicPluginAccessComponent {
       if (panelRect.height > this.windowMaxHeight) {
         panelRect.height = this.windowMaxHeight;
       }
+      const computedTop = this.getPanelTopVP(panelRect.height);
+      if (computedTop !== undefined) {
+        panelRect.top = computedTop;
+      }
       this.pluginPanelCtrl.updateArea(panelRect);
       this.pluginPanelCtrl.updateRect(panelRect);
       let area: window.Rect = {
@@ -190,6 +194,19 @@ export struct DynamicPluginAccessComponent {
     }
   }
 
+  /**
+   * 计算面板应显示的 top（vp），使面板紧贴状态栏上方，避免与状态栏重叠。
+   * 首次打开时 getWindowPosition 可能未就绪，需用此结果校正位置。
+   */
+  private getPanelTopVP(panelHeightVP: number): number | undefined {
+    const statusBarHeight = styleMgr.px2vpStatusBarPCHeight();
+    if (this.screenHeight <= 0 || this.dockHeight < 0 || statusBarHeight <= 0) {
+      return undefined;
+    }
+    return this.screenHeight - this.dockHeight - statusBarHeight - panelHeightVP -
+      StyleConstant.PC_STATUS_BAR_PANEL_MARGIN_BOTTOM;
+  }
+
   private getPanelHeight(): number {
     return this.windowHeight > this.windowMaxHeight ? this.windowMaxHeight : this.windowHeight;
   }
@@ -240,9 +257,11 @@ export struct DynamicPluginAccessComponent {
     const oldPosition = windowMgr.getWindowPosition(this.pluginInfo?.getSlot());
     this.windowHeight = this.getWindowHeight();
     const panelHeight = this.getPanelHeight();
+    const computedTop = this.getPanelTopVP(panelHeight);
+    const topVP = computedTop !== undefined ? computedTop : px2vp(oldPosition.top);
     let rect: ViewArea = {
       left: px2vp(oldPosition.left),
-      top: px2vp(oldPosition.top),
+      top: px2vp(topVP),
       width: px2vp(windowWidth),
       height: panelHeight
     };

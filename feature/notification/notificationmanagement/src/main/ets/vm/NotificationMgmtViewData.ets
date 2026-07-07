@@ -67,8 +67,12 @@ export class NotificationMgmtViewData {
   private hideBackButton: boolean = true;
   /* 是否从主页（通知和状态栏）跳转过来，false表示由其他场景（如左滑通知卡片，更多设置）直接跳转 */
   private fromMainPage: boolean = false;
+  /* 是否为备份应用 */
+  private deliverAppFlag: boolean = false;
   /* 是否来自应用和元服务 */
   private fromAppAndMeta: boolean = false;
+  /* 是否克隆应用安装应用 */
+  private deliverTongAppFlag: boolean = false;
 
   public isEnabled(): boolean {
     return this.enabled;
@@ -80,7 +84,19 @@ export class NotificationMgmtViewData {
 
   /* 是否为原生应用 */
   public isNativeApp(): boolean {
-    return true;
+    return !this.deliverAppFlag;
+  }
+
+  public setDeliverAppFlag(isDeliverApp: boolean): void {
+    this.deliverAppFlag = isDeliverApp;
+  }
+
+  public isdeliverApp(): boolean {
+    return this.deliverTongAppFlag;
+  }
+
+  public setdeliverAppFlag(deliverTongAppFlag: boolean): void {
+    this.deliverTongAppFlag = deliverTongAppFlag;
   }
 
   public isOn(): boolean {

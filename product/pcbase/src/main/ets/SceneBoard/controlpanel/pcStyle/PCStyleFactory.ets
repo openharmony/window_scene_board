@@ -54,6 +54,9 @@ export class PCToggleFactory implements AbstractToggleStyleFactory {
         })
         .onIconLongPressOnAction((viewModel: ToggleBaseViewModel, event?: GestureEvent) => {
           console.log('PC not handle one-click-run through longPress');
+          if (event?.source === SourceType.Mouse) {
+            return;
+          }
           // 按照优先级处理
           if (viewModel?.openDetailPageFunc) {
             viewModel.openDetailPageFunc();
@@ -72,6 +75,9 @@ export class PCToggleFactory implements AbstractToggleStyleFactory {
         })
         .onLabelLongPressOnAction((viewModel: ToggleBaseViewModel, event?: GestureEvent) => {
           console.log('PC not handle one-click-run through longPress');
+          if (event?.source === SourceType.Mouse) {
+            return;
+          }
           // 按照优先级处理
           if (viewModel?.openDetailPageFunc) {
             viewModel.openDetailPageFunc();

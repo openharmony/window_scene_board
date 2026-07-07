@@ -134,6 +134,60 @@ export struct SliderButtonComponent {
     }
   }
 
+  /**
+   * 亮度自动调节组件
+   */
+  @Builder
+  automaticBrightness() {
+    Row() {
+      Text($r('app.string.automatic_brightness'))
+        .fontWeight(FontWeight.Medium)
+        .fontColor($r('sys.color.font_primary'))
+        .fontSize($r('sys.float.Body_L'))
+      Toggle({ type: ToggleType.Switch, isOn: this.switchState })
+        .onChange((isOn: boolean) => {
+           this.sliderOperation.onSwitchChange?.(isOn);
+        })
+    }
+    .padding({
+      start: LengthMetrics.resource($r('sys.float.padding_level6')),
+      end: LengthMetrics.resource($r('sys.float.padding_level6'))
+    })
+    .visibility((this.isExpand && this.geometryTag.startsWith('brightness')) ? Visibility.Visible : Visibility.None)
+    .borderRadius($r('sys.float.corner_radius_level8'))
+    .justifyContent(FlexAlign.SpaceBetween)
+    .alignItems(VerticalAlign.Center)
+    .backgroundColor(!DISABLE_BRIGHTNESS ? this.colorModeViewData.subpageBrightnessBgColor :
+      this.colorModeViewData.brightnessBgColor)
+    .backgroundBrightnessInternal(this.colorModeViewData.getBrightnessOption(
+      this.colorModeViewData.subpageBrightnessBgOption))
+    .alignRules({
+      middle: { anchor: '__container__', align: HorizontalAlign.Center },
+      top: { anchor: '__container__', align: VerticalAlign.Top }
+    })
+    .width(this.viewData.sliderWidth)
+    .height(this.viewData.sliderHeight)
+    .margin({ top: 154 })
+    .opacity(this.animViewData.subpageOpacity)
+    .scale(this.animViewData.subpageScale)
+    .geometryTransition('automatic' + this.geometryTag)
+    .transition(TransitionEffect.asymmetric(
+      TransitionEffect.OPACITY,
+      TransitionEffect.OPACITY.animation({
+        duration: this.geometryTag.endsWith('Vertical') ? 50 : 100,
+        curve: Curve.Friction
+      })
+    ))
+    .shadow(this.animViewData.subpageHide ? {
+      radius: this.animViewData.shadowRadius,
+      color: '#26000000',
+      offsetY: 0,
+      offsetX: 0
+    } : undefined)
+    .opacity(this.animViewData.subpageHide ? 0 : 1)
+    .id('automaticBrightness' + this.geometryTag)
+  }
+
   build() {
     RelativeContainer() {
       this.loadBackground();
@@ -145,6 +199,7 @@ export struct SliderButtonComponent {
         this.buildVerticalSubpageItem()
       }
       this.loadSliderLayer();
+      this.automaticBrightness()
       this.loadIcon();
     }
     .shadow(this.animViewData.subpageHide ? undefined : {

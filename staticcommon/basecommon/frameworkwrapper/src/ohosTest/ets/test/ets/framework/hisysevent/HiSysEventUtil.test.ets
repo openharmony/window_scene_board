@@ -273,6 +273,11 @@ export function HiSysEventUtilTest() {
       expect(ret == null).assertTrue();
     })
 
+    it('HiSysEventUtilTest_reportAssistantTranslateClick_004', 0, (): void => {
+      let ret = HiSysEventUtil.reportAssistantTranslateClick();
+      expect(ret == null).assertTrue();
+    })
+
     it('HiSysEventUtilTest_reportQuickNoteClick_005', 0, (): void => {
       let ret = HiSysEventUtil.reportQuickNoteClick();
       expect(ret == null).assertTrue();
@@ -280,6 +285,7 @@ export function HiSysEventUtilTest() {
 
     it('HiSysEventUtilTest_hiSysOnIconItemClick_006', 0, (): void => {
       expect(HiSysEventUtil.hiSysOnIconItemClick(PluginSlot.SLOT_STATUS_TRAY_PANEL) === undefined).assertTrue();
+      expect(HiSysEventUtil.hiSysOnIconItemClick(PluginSlot.SLOT_STATUS_ASSISTANT_TRANSLATE) === undefined).assertTrue();
       expect(HiSysEventUtil.hiSysOnIconItemClick(PluginSlot.SLOT_STATUS_QUICK_NOTE) === undefined).assertTrue();
     })
 
@@ -559,6 +565,26 @@ export function HiSysEventUtilTest() {
     it('HiSysEventUtilTest_reportLightIconInNotHarmonyFolder', 0, () => {
       let lighticonInfo: LightIconInNotHarmonyFolderBean = new LightIconInNotHarmonyFolderBean();
       let ret = HiSysEventUtil.reportLightIconInNotHarmonyFolder(lighticonInfo);
+      expect(ret == null).assertTrue();
+    })
+
+    it('HiSysEventUtilTest_reportdeliverDialogOpen', 0, () => {
+      let ret = HiSysEventUtil.reportdeliverDialogOpen('test');
+      expect(ret == null).assertTrue();
+      ret = HiSysEventUtil.reportdeliverDialogOpen('');
+      expect(ret == null).assertTrue();
+      ret = HiSysEventUtil.reportdeliverDialogOpen(null);
+      expect(ret == null).assertTrue();
+    })
+
+    it('HiSysEventUtilTest_reportdeliverDialogOperation', 0, () => {
+      let ret = HiSysEventUtil.reportdeliverDialogOperation('test', 1, 'test');
+      expect(ret == null).assertTrue();
+      ret = HiSysEventUtil.reportdeliverDialogOperation('', 1, 'test');
+      expect(ret == null).assertTrue();
+      ret = HiSysEventUtil.reportdeliverDialogOperation('test', 1, null);
+      expect(ret == null).assertTrue();
+      ret = HiSysEventUtil.reportdeliverDialogOperation('test', -1, 'test');
       expect(ret == null).assertTrue();
     })
 

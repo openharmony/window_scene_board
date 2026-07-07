@@ -300,6 +300,58 @@ export default function NotificationStarterVmTest() {
       mocker.ignoreMock(notificationstartervm, notificationstartervm.isExcludeForStartApp);
     });
 
+
+    it('should_return_false_when_isDeliverNotification_is_false', 0, () => {
+      let notificationstartervm: NotificationStarterVm = new NotificationStarterVm();
+      let params: NotificationStartWantAgentParams = new NotificationStartWantAgentParams();
+      params.cardVm = new NotificationBaseVm();
+      params.cardVm.ntf = new NotificationBase();
+      let result = notificationstartervm.isExcludeForStartApp(params);
+      expect(result).assertEqual(false);
+    });
+
+    it('should_return_true_when_isDeliverNotification_is_true_and_check_result_is_false', 0, () => {
+      let notificationstartervm: NotificationStarterVm = new NotificationStarterVm();
+      let params: NotificationStartWantAgentParams = new NotificationStartWantAgentParams();
+      params.cardVm = new NotificationBaseVm();
+      params.cardVm.ntf = new NotificationBase();
+      params.wantAgentInfo = new NotificationWantAgentInfo();
+      params.wantAgentInfo.bundleName = 'testBundle';
+      let mocker: MockKit = new MockKit();
+      let mockfunc: Function = mocker.mockFunc(ExclusiveChecker, ExclusiveChecker.isDeliverNotification);
+      when(mockfunc)(ArgumentMatchers.any).afterReturn(true);
+      let mockfunc2: Function = mocker.mockFunc(ExclusiveChecker, ExclusiveChecker.check);
+      when(mockfunc2)(ArgumentMatchers.anyString, ArgumentMatchers.anyString,
+        ArgumentMatchers.anyBoolean).afterReturn({
+        result: false
+      });
+      let result = notificationstartervm.isExcludeForStartApp(params);
+      expect(result).assertEqual(true);
+      mocker.ignoreMock(ExclusiveChecker, ExclusiveChecker.isDeliverNotification);
+      mocker.ignoreMock(ExclusiveChecker, ExclusiveChecker.check);
+    });
+
+    it('should_return_false_when_isDeliverNotification_is_true_and_check_result_is_true', 0, () => {
+      let notificationstartervm: NotificationStarterVm = new NotificationStarterVm();
+      let params: NotificationStartWantAgentParams = new NotificationStartWantAgentParams();
+      params.cardVm = new NotificationBaseVm();
+      params.cardVm.ntf = new NotificationBase();
+      params.wantAgentInfo = new NotificationWantAgentInfo();
+      params.wantAgentInfo.bundleName = 'testBundle';
+      let mocker: MockKit = new MockKit();
+      let mockfunc: Function = mocker.mockFunc(ExclusiveChecker, ExclusiveChecker.isDeliverNotification);
+      when(mockfunc)(ArgumentMatchers.any).afterReturn(true);
+      let mockfunc2: Function = mocker.mockFunc(ExclusiveChecker, ExclusiveChecker.check);
+      when(mockfunc2)(ArgumentMatchers.anyString, ArgumentMatchers.anyString,
+        ArgumentMatchers.anyBoolean).afterReturn({
+        result: true
+      });
+      let result = notificationstartervm.isExcludeForStartApp(params);
+      expect(result).assertEqual(false);
+      mocker.ignoreMock(ExclusiveChecker, ExclusiveChecker.isDeliverNotification);
+      mocker.ignoreMock(ExclusiveChecker, ExclusiveChecker.check);
+    });
+
     it('should_report_start_want_agent_when_notification_is_not_null', 0, async () => {
       let notificationstartervm: NotificationStarterVm = new NotificationStarterVm();
       let mocker: MockKit = new MockKit();

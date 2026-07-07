@@ -36,7 +36,7 @@ export class StatusBarMaintenance extends FreqLimitMaintenance<StatusBarMaintena
   }
 
   /**
-   * 默认异常打点
+   * deliver默认异常打点
    * @param errorCode 异常Code
    * @param info 打点信息
    */
@@ -48,7 +48,7 @@ export class StatusBarMaintenance extends FreqLimitMaintenance<StatusBarMaintena
       }
       this.report();
     } catch (e) {
-      log.error(TAG, 'report default error, ' + e);
+      log.error(TAG, 'report deliver default error, ' + e);
     }
   }
 }

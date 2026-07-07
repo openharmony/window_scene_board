@@ -62,7 +62,7 @@ export class SCBSampleManager {
   private initTrustlist(): void {
     this.trueList = new Set([
       'com.ohos.samplemanagement:entry:MainAbility',
-      'com.ohos.hwstartupguide:pc_hwstartupguide:com.ohos.hwstartupguide.MainAbility',
+      'com.ohos.startupguide:pc_startupguide:com.ohos.startupguide.MainAbility',
       'com.ohos.browser:entry:MainAbility',
       'com.ohos.browser:entry:CustomTabAbility',
       'com.ohos.inputmethod:default:MainAbility',

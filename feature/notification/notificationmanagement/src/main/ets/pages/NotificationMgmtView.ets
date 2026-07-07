@@ -15,9 +15,12 @@
 
 import { image } from '@kit.ImageKit';
 import HeadComponent from '@ohos/managementcomponent/src/main/ets/com/ohos/view/component/headComponent';
-import { NotificationMgmtViewData, ObservedArray,
+import {
+  NotificationMgmtViewData,
+  ObservedArray,
   SlotViewData,
-  VisualReminderConfig } from '../vm/NotificationMgmtViewData';
+  VisualReminderConfig
+} from '../vm/NotificationMgmtViewData';
 import { NotificationMgmtViewEvent } from '../vm/NotificationMgmtViewEvent';
 import { LogDomain, LogHelper } from '@ohos/managementcomponent/src/main/ets/com/ohos/common/BasicCommon';
 import { DeviceHelper, fontScaleManager, FontScaleState } from '@ohos/managementcomponent';
@@ -51,9 +54,10 @@ import { PageStorages } from '@ohos/managementcomponent/src/main/ets/com/ohos/co
 import { StatusBarModel } from '../model/StatusBarModel';
 import { ResourceUtil } from '@ohos/managementcomponent/src/main/ets/com/ohos/common/ResourceUtil';
 import NtfConfigUtil from '../config/NtfConfigUtil';
-import { HdsNavDestination, HdsNavDestinationAttribute } from '@kit.UIDesignKit';
+// import { HdsNavDestination, HdsNavDestinationAttribute } from '@kit.UIDesignKit';
 import { SysUIHdsNavigations } from '../common/SysUIHdsNavigations';
 import { PageContext } from '@ohos/managementcomponent/src/main/ets/com/ohos/model/SystemUISettingSession';
+import { bundleResourceManager } from '@kit.AbilityKit';
 
 const borderRadius: Length = '20vp';
 const pcBorderRadius: Length = '16vp';
@@ -88,7 +92,6 @@ export struct NotificationMgmtView {
     top: DeviceHelper.isPC() ? LengthMetrics.vp(0) : LengthMetrics.vp(this.statusBarModel.height)
   };
   private pageInfos?: NavPathStack;
-
   @State appIcon: image.PixelMap | string | Resource | undefined = undefined;
   @State appTitle: string = '';
   // 应用内通知管理AbilityName
@@ -112,7 +115,7 @@ export struct NotificationMgmtView {
       this.viewData.isFromMainPage() || DeviceHelper.isPhoneOrPad() ? LengthMetrics.vp(0) : this.contentPadding.top;
     this.setVisualReminderConfigs();
     notificationSettingManager.subscribeChangeEvent(this.onConfigChange);
-    this.appIcon = this.appInfo.appIcon;
+    this.upDateAppIcon();
     this.appTitle = this.appInfo.appTitle;
   }
 
@@ -120,6 +123,17 @@ export struct NotificationMgmtView {
     log.showInfo('AboutToDisappear.');
     this.eventView.destroy();
     notificationSettingManager.unsubscribeChangeEvent(this.onConfigChange)
+  }
+
+  private upDateAppIcon(): void {
+    if (!!this.appInfo.appIcon) {
+      this.appIcon = this.appInfo.appIcon;
+    } else {
+      log.showInfo('this.appInfo.appIcon is null.');
+      let bundleResInfo = bundleResourceManager.getBundleResourceInfo(this.appInfo.appBundleName,
+        bundleResourceManager.ResourceFlag.GET_RESOURCE_INFO_WITH_ICON, this.appInfo.appIndex);
+      this.appIcon = bundleResInfo.icon;
+    }
   }
 
   private initEnv(): void {
@@ -130,6 +144,10 @@ export struct NotificationMgmtView {
       this.appIndex = this.appInfo.appIndex;
     } else {
       this.initEnvFromAbility();
+    }
+
+    if (this.appInfo.isdeliverApp != null) {
+      this.viewData.setdeliverAppFlag(this.appInfo.isdeliverApp);
     }
 
     this.setDestinationEntryType();
@@ -215,7 +233,6 @@ export struct NotificationMgmtView {
       this.pageContext.isLaunch2SubPage = false;
     }
   }
-
   private onDestinationBackPressed = (): boolean => {
     log.showInfo('OnDestinationBackPressed. isHideBackButton: %{public}s', this.viewData.isHideBackButton());
     if (!this.viewData.isFromMainPage()) {
@@ -243,7 +260,7 @@ export struct NotificationMgmtView {
       .title(ResourceUtil.getStringSync(pageTitle) ?? '',
         {
           paddingStart: this.navMode === NavigationMode.Split && DeviceHelper.isPhoneOrPad() ? LengthMetrics.vp(24) :
-          LengthMetrics.vp(16)
+            LengthMetrics.vp(16)
         })
       .backgroundColor($r('sys.color.ohos_id_color_sub_background'))
       .padding({ top: DeviceHelper.isPC() ? 4 : this.statusBarModel.height });
@@ -259,7 +276,7 @@ export struct NotificationMgmtView {
 
   @Builder
   buildContentView() {
-    Row().height($r('app.float.page_title_height')).margin({ top: this.statusBarModel.height })
+    // Row().height($r('app.float.page_title_height')).margin({ top: this.statusBarModel.height })
     Scroll() {
       Column() {
         this.buildBundleInfoView();
@@ -340,10 +357,11 @@ export struct NotificationMgmtView {
         top: { anchor: '__container__', align: VerticalAlign.Top },
         left: { anchor: '__container__', align: HorizontalAlign.Start }
       },
-      compMargin: undefined,
+      compMargin: this.isdeliverApp() ?
+        { end: LengthMetrics.vp(MGMT_VIEW_BADGE_ICON_SIZE - DEFAULT_BADGE_ICON_SIZE) } : undefined,
       appIconId: 'NotificationMgmtView_ICON',
       appIconSize: LengthMetrics.resource($r('app.float.appitem_notice_info_icon_width_l')).value,
-      needShowBadgeIcon: false,
+      needShowBadgeIcon: this.isdeliverApp(),
     })
   }
 
@@ -376,6 +394,7 @@ export struct NotificationMgmtView {
       .justifyContent(FlexAlign.Center)
       .alignItems(HorizontalAlign.Start)
     }
+    .margin({ top: LengthMetrics.vp(8) })
     .padding({
       end: LengthMetrics.vp(64)
     })
@@ -627,7 +646,7 @@ export struct NotificationMgmtView {
 
   private statusBarHeightChange() {
     this.contentPadding.top = this.viewData.isFromMainPage() || DeviceHelper.isPhoneOrPad() ? LengthMetrics.vp(0) :
-    LengthMetrics.vp(this.statusBarModel.height);
+      LengthMetrics.vp(this.statusBarModel.height);
   }
 
   // 适老化布局，菜单按钮内边距取值 默认8vp；字体1.75倍以上16vp；字体2倍以上20vp
@@ -635,5 +654,11 @@ export struct NotificationMgmtView {
     let paddingValue: number =
       this.fontScaleState.fontSizeScale < 1.75 ? 8 : (this.fontScaleState.fontSizeScale < 2 ? 16 : 20);
     return { top: paddingValue + basePadding, bottom: paddingValue + basePadding };
+  }
+
+  private isdeliverApp(): boolean {
+    const isdeliverApp: boolean = this.viewData.isdeliverApp();
+    log.showInfo(`check ${TAG} isdeliver, bundleName = ${this.appInfo.appBundleName}, isdeliver = ${isdeliverApp}`)
+    return isdeliverApp;
   }
 }

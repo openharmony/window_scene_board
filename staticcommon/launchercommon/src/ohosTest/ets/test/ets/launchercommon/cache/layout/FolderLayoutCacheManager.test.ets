@@ -32,6 +32,7 @@ import {
   BadgeItemInfo,
   CommonConstants,
   DefaultDesktopLayoutInfo,
+  DeliverUtil,
   FolderData,
   FolderLayoutCacheManager,
   FolderLayoutStruct,
@@ -1483,10 +1484,13 @@ export default function FolderLayoutCacheManagerTest() {
       defaultLayout.layoutInfo = layoutInfoList;
       let mocker: MockKit = new MockKit();
       try{
+        let isContainerFolder = mocker.mockFunc(DeliverUtil, DeliverUtil.isContainerFolder);
+        when(isContainerFolder)(ArgumentMatchers.any).afterReturn(true);
         let result = layoutCacheManager.isAppExistNotDragOutFolder(bundleName);
         expect(result).assertTrue();
       } catch (e) {
       }
+      mocker.ignoreMock(DeliverUtil, DeliverUtil.isContainerFolder);
     })
 
     it('test_FolderLayoutCacheManager_updateFolderAppLocation', 0, () => {
@@ -1719,6 +1723,32 @@ export default function FolderLayoutCacheManagerTest() {
         layoutCacheManager['convertFolderSize'](info, true, '996', false);
         expect(layoutCacheManager).not().assertNull();
       }catch{};
+    })
+
+    it('test_FolderLayoutCacheManager_updateAddIcon', 0, () => {
+      let layoutCacheManager: FolderLayoutCacheManager = FolderLayoutCacheManager.getInstance();
+      let info: GridLayoutItemInfo = new GridLayoutItemInfo();
+      info.bundleName = 'com';
+      info.abilityName = 'openharmony';
+      info.row = 1;
+      info.column = 1;
+      info.page = 0;
+      info.folderId = '996';
+      info.typeId = CommonConstants.TYPE_FOLDER;
+      info.area = [2, 1];
+      let mocker: MockKit = new MockKit();
+      let mockFunc: Function = mocker.mockFunc(DeliverUtil, DeliverUtil.isContainerFolder)
+      let mockFunc1: Function = mocker.mockFunc(GridLayoutUtil, GridLayoutUtil.isSmallFolder)
+      let mockFunc2: Function = mocker.mockFunc(FolderData.getInstance(), FolderData.getInstance().getOpenFolderId)
+      when(mockFunc)(ArgumentMatchers.any).afterReturn(false);
+      when(mockFunc1)(ArgumentMatchers.any).afterReturn(false);
+      when(mockFunc2)(ArgumentMatchers.any).afterReturn('996');
+      AppStorage.setOrCreate<boolean>('isAddIconHidden', false);
+      layoutCacheManager['updateAddIcon']('996', info);
+      expect(layoutCacheManager).not().assertNull();
+      mocker.clear(DeliverUtil);
+      mocker.clear(GridLayoutUtil);
+      mocker.clear(FolderData.getInstance());
     })
 
     it('test_FolderLayoutCacheManager_updateFolderSizeByFolderItem', 0, () => {
@@ -2039,6 +2069,70 @@ export default function FolderLayoutCacheManagerTest() {
       expect(result.typeId).assertEqual(CommonConstants.TYPE_FOLDER);
       mocker.clear(layoutCacheManager['layoutCacheData']);
       mocker.clear(LauncherLayoutCacheUtil);
+    })
+
+    it('test_FolderLayoutCacheManager_selectAllFoldersWithAppCheck', 0, () => {
+      let layoutCacheManager: FolderLayoutCacheManager = FolderLayoutCacheManager.getInstance();
+      let installApp: AppItemInfo = new AppItemInfo();
+      installApp.keyName = 'openharmony';
+      installApp.appIconId = 7;
+      installApp.abilityName = 'com';
+      let mocker: MockKit = new MockKit();
+      try{
+        let result: GridLayoutItemInfo[] = layoutCacheManager.selectAllFoldersWithAppCheck([]);
+        expect(result.length).assertEqual(0);
+        let info: GridLayoutItemInfo = new GridLayoutItemInfo();
+        info.bundleName = 'com';
+        info.abilityName = 'openharmony';
+        info.keyName = 'openharmony';
+        info.row = 1;
+        info.column = 1;
+        info.page = 0;
+        info.appIndex = 9;
+        info.appStatus = AppStatus.INSTALLED;
+        info.folderId = '996';
+        info.folderName = '${not_harmony_apps}';
+        info.moduleName = '996';
+        info.intent = '996';
+        info.typeId = CommonConstants.TYPE_FOLDER;
+        info.area = [2, 1];
+        let itemInfo: GridLayoutItemInfo = new GridLayoutItemInfo();
+        itemInfo.bundleName = 'com';
+        itemInfo.abilityName = 'openharmony';
+        itemInfo.keyName = 'openharmony';
+        itemInfo.row = 1;
+        itemInfo.column = 1;
+        itemInfo.page = 0;
+        itemInfo.folderId = '996';
+        itemInfo.moduleName = '996';
+        itemInfo.appStatus = AppStatus.INSTALLED;
+        itemInfo.typeId = CommonConstants.TYPE_ADD;
+        itemInfo.area = [2, 1];
+        itemInfo.intent = '996';
+        itemInfo.folderName = '${not_harmony_apps}';
+        itemInfo.layoutInfo = [[info]];
+        let map: Map<string, Object> = new Map();
+        let mockFunc: Function = mocker.mockFunc(layoutCacheManager['layoutCacheData'], layoutCacheManager['layoutCacheData'].getGridLayoutItemList);
+        let mockFunc1: Function = mocker.mockFunc(DeliverUtil, DeliverUtil.isContainerItem);
+        let mockFunc2: Function = mocker.mockFunc(NotHarmonyUtil, NotHarmonyUtil.isNotHarmonyFolderByIntent);
+        let mockFunc3: Function = mocker.mockFunc(CommonUtils, CommonUtils.jsonStrToMap);
+        let mockFunc4: Function = mocker.mockFunc(DeliverUtil, DeliverUtil.isContainerItem);
+        let mockFunc5: Function = mocker.mockFunc(DeliverUtil, DeliverUtil.isContainerFolder);
+        let mockFunc6: Function = mocker.mockFunc(NotHarmonyUtil, NotHarmonyUtil.isNotHarmonyFolderById);
+        when(mockFunc)(ArgumentMatchers.any).afterReturn([itemInfo]);
+        when(mockFunc1)(ArgumentMatchers.any).afterReturn(true);
+        when(mockFunc2)(ArgumentMatchers.any).afterReturn(false);
+        when(mockFunc3)(ArgumentMatchers.any).afterReturn(map);
+        when(mockFunc4)(ArgumentMatchers.any).afterReturn(true);
+        when(mockFunc5)(ArgumentMatchers.any).afterReturn(false);
+        when(mockFunc6)(ArgumentMatchers.any).afterReturn(true);
+        let result1: GridLayoutItemInfo[] = layoutCacheManager.selectAllFoldersWithAppCheck([installApp]);
+        expect(result1.length).assertEqual(0);
+      } catch (e) {}
+      mocker.clear(layoutCacheManager['layoutCacheData']);
+      mocker.clear(DeliverUtil);
+      mocker.clear(NotHarmonyUtil);
+      mocker.clear(CommonUtils);
     })
   })
 }

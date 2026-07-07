@@ -291,6 +291,7 @@ struct DesktopFormItem {
           this.onAcquired(this.cardId);
         })
         .onLoad(() => {
+          log.showInfo(TAG, 'FormComponent onLoad');
           this.onLoad();
         })
         .onError((error) => {

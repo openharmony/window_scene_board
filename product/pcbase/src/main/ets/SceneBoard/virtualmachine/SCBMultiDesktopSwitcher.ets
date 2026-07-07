@@ -50,6 +50,13 @@ export struct SCBMultiDesktopSwitcher {
   @State showPrefabrication: boolean = true;
   @State memoryReleaseShow: boolean = false;
   @State motionPrefabrication: image.PixelMap | null = null;
+  @State harmonySnapshot: image.PixelMap | null = null;
+  @State harmonySnapshotX: number = 0;
+  @State harmonySnapshotScale: number = 1;
+  @State harmonySnapshotRotate: number = 0;
+  @State harmonySnapshotOpacity: number = 1;
+  @State harmonySnapshotRadius: number = 15;
+  @State harmonySnapshotBlurScale: number = 0;
   @State vmSnapshot: image.PixelMap | null = null;
   @State vmSnapshotX: number = this.screenWidth;
   @State vmSnapshotScale: number = 0.8;
@@ -170,6 +177,22 @@ export struct SCBMultiDesktopSwitcher {
     this.screenWidth = screenWidth;
   }
 
+  public updateHarmonySnapshot(harmonySnapshot: image.PixelMap): void {
+    if (this.harmonySnapshot) {
+      log.showInfo(`release last harmony snapshot`);
+      this.harmonySnapshot.release((err: BusinessError) => {
+        if (err) {
+          log.showError(`releasePixelMap error: ${err.message}`);
+        } else {
+          log.showInfo('Succeeded in releasing old harmonySnapshot, update to new harmonySnapshot');
+        }
+        this.harmonySnapshot = harmonySnapshot;
+      });
+    } else {
+      this.harmonySnapshot = harmonySnapshot;
+    }
+  }
+
   public updateVmSnapshot(vmSnapshot: image.PixelMap): void {
     if (this.vmSnapshot) {
       log.showInfo(`release last vm snapshot`);
@@ -198,6 +221,18 @@ export struct SCBMultiDesktopSwitcher {
     });
   }
 
+  public releaseHarmonySnapshot(): void {
+    log.showInfo('releaseHarmonySnapshot');
+    this.harmonySnapshot?.release((err: BusinessError) => {
+      if (err) {
+        log.showError(`releasePixelMap error: ${err.message}`);
+      } else {
+        log.showInfo('Succeeded in releasing HarmonySnapshot');
+        this.harmonySnapshot = null;
+      }
+    });
+  }
+
   public getMotionScreenId(): number {
     return this.screenProp?.screenId;
   }
@@ -214,8 +249,32 @@ export struct SCBMultiDesktopSwitcher {
     this.memoryReleaseShow = show;
   }
 
+  public updateHarmonySnapshotX(harmonySnapshotX: number): void {
+    this.harmonySnapshotX = harmonySnapshotX;
+  }
+
+  public updateHarmonySnapshotScale(harmonySnapshotScale: number): void {
+    this.harmonySnapshotScale = harmonySnapshotScale;
+  }
+
+  public updateHarmonySnapshotRotate(harmonySnapshotRotate: number): void {
+    this.harmonySnapshotRotate = harmonySnapshotRotate;
+  }
+
+  public updateHarmonySnapshotOpacity(harmonySnapshotOpacity: number): void {
+    this.harmonySnapshotOpacity = harmonySnapshotOpacity;
+  }
+
+  public updateHarmonySnapshotRadius(harmonySnapshotRadius: number): void {
+    this.harmonySnapshotRadius = harmonySnapshotRadius;
+  }
+
   public updateVmSnapshotX(vmSnapshotX: number): void {
     this.vmSnapshotX = vmSnapshotX;
+  }
+
+  public updateHarmonySnapshotBlurScale(harmonySnapshotBlurScale: number): void {
+    this.harmonySnapshotBlurScale = harmonySnapshotBlurScale;
   }
 
   public updateVmSnapshotScale(vmSnapshotScale: number): void {
@@ -256,6 +315,30 @@ export struct SCBMultiDesktopSwitcher {
       .draggable(false)
       .brightness(BACKGROUND_BRIGHTNESS)
       .visibility(this.showBackground ? Visibility.Visible : Visibility.Hidden)
+  }
+
+  @Builder
+  buildHarmonyDesktop() {
+    Image(this.harmonySnapshot)
+      .syncLoad(true)
+      .width(this.screenWidth)
+      .height(this.screenHeight)
+      .scale({ x: this.harmonySnapshotScale, y: this.harmonySnapshotScale })
+      .translate({ x: this.harmonySnapshotX })
+      .rotate({
+        x: 0,
+        y: -1,
+        z: 0,
+        angle: this.harmonySnapshotRotate,
+        centerX: '50%',
+        centerY: '50%'
+      })
+      .borderRadius(this.harmonySnapshotRadius)
+      .opacity(this.harmonySnapshotOpacity)
+      .draggable(false)
+      .interpolation(ImageInterpolation.Low)
+      .blur(this.harmonySnapshotBlurScale)
+      .objectFit(ImageFit.Fill)
   }
 
   @Builder
@@ -340,6 +423,7 @@ export struct SCBMultiDesktopSwitcher {
     if (this.isSwitching) {
       Stack() {
         this.buildBackground();
+        this.buildHarmonyDesktop();
         this.buildWindowsDesktop();
         if (this.memoryReleaseShow) {
           this.buildMemoryRelease();

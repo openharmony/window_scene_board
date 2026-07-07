@@ -13,8 +13,8 @@
  * limitations under the License.
  */
 
-import { LogDomain, Logger } from '@ohos/basicutils';
-import { DeviceHelper } from '@ohos/frameworkwrapper';
+import { OutdoorConfig, LogDomain, Logger } from '@ohos/basicutils';
+import { DeviceHelper, LightOutdoorConfig } from '@ohos/frameworkwrapper';
 import {
   AppItemInfo,
   AppModel,
@@ -27,7 +27,8 @@ import {
   PageInfoManager,
   RdbStoreManager,
   LayoutViewModel,
-  LaunchLayoutCacheManager
+  LaunchLayoutCacheManager,
+  DeliverUtil
 } from '@ohos/launchercommon';
 import PageIndexTypeInfo from '@ohos/launchercommon/src/main/ets/bean/PageIndexTypeInfo';
 import lazy {
@@ -53,14 +54,14 @@ export default class PhonePageDesktopLayoutConfig extends PageDesktopLayoutConfi
    * 应用找位的默认起始页
    * 直板机从第1页开始找位
    * 大折叠屏从第2页开始找位
-   * 超大屏从第3页开始找位
+   * 三折屏从第3页开始找位
    */
   protected findPositionStartPage: number = 1;
 
   /**
    * 重启需要检查最后空白页的个数
    * 如果是双折设备，检查最后1页的空白页是否可以删除
-   * 如果是超大屏设备，检查最后2页的空白页是否可以删除
+   * 如果是三折设备，检查最后2页的空白页是否可以删除
    */
   private checkLastBlankPageCount: number = 0;
 
@@ -69,7 +70,7 @@ export default class PhonePageDesktopLayoutConfig extends PageDesktopLayoutConfi
     if (DeviceHelper.isLargeInFoldProduct()) {
       this.findPositionStartPage = StyleConstants.DEFAULT_2;
       this.checkLastBlankPageCount = 1;
-    } else if (DeviceHelper.isUltraScreenProduct()) {
+    } else if (DeviceHelper.isThreeFoldProduct()) {
       this.findPositionStartPage = StyleConstants.DEFAULT_3;
       this.checkLastBlankPageCount = StyleConstants.DEFAULT_2;
     }
@@ -114,6 +115,12 @@ export default class PhonePageDesktopLayoutConfig extends PageDesktopLayoutConfi
    * @param desktopMode
    */
   protected checkAppList(desktopMode?: number): void {
+    // 如果是云端模式，不执行查询所有应用
+    if (OutdoorConfig.getInstance().isInOutdoorMode() ||
+      LightOutdoorConfig.getInstance().isOnLightOutdoorMode()) {
+      super.checkAppList(desktopMode);
+      return;
+    }
     // 获取系统所有图标集合
     const totalAppInfoList = AppModel.getInstance().getAppList();
     this.notInCCMBundleNameSet = new Set<string>();
@@ -142,6 +149,11 @@ export default class PhonePageDesktopLayoutConfig extends PageDesktopLayoutConfi
    * @param totalAppInfoList BMS中所有的应用
    */
   protected dealNotInCCMApp(): void {
+    // 如果是云端模式，不处理不在CCM中的应用
+    if (OutdoorConfig.getInstance().isInOutdoorMode() ||
+      LightOutdoorConfig.getInstance().isOnLightOutdoorMode()) {
+      return;
+    }
     if (!this.notInCCMBundleNameSet || this.notInCCMBundleNameSet.size === 0) {
       return;
     }
@@ -150,9 +162,14 @@ export default class PhonePageDesktopLayoutConfig extends PageDesktopLayoutConfi
     let res = LayoutViewModel.getInstance(this.singleContext).calculateDesktop();
     const rows = res.mRows ?? this.mGridLayoutInfo.layoutDescription.row;
     const columns = res.mColumns ?? this.mGridLayoutInfo.layoutDescription.column;
+    let isSupportDeliver: boolean = DeliverUtil.isSupportDeliver();
     this.notInCCMBundleNameSet.forEach((bundleName: string) => {
       let findApp = totalAppInfoList.find((item: AppItemInfo) => item.bundleName === bundleName);
       if (!findApp) {
+        return;
+      }
+      if (isSupportDeliver && !Number.isNaN(Number(findApp.codePath))) {
+        log.showInfo(TAG, 'not in CCM app is deliver app bundleName:%{public}s', findApp.bundleName);
         return;
       }
       let info: GridLayoutItemInfo = new GridLayoutItemInfo();
@@ -163,6 +180,7 @@ export default class PhonePageDesktopLayoutConfig extends PageDesktopLayoutConfi
       info.area = [1, 1];
       info.container = CommonConstants.CONTAINER_DESKTOP;
       if(!Number.isNaN(Number(findApp.codePath))){
+        DeliverUtil.setInstallSourceAndIntent(findApp, findApp.intent);
         info.intent = findApp.intent;
       }
 

@@ -20,8 +20,11 @@ import { NtfAppIconModifier } from '../../vm/style/NtfAppIconModifier';
 import { DateTimeView } from '@ohos/customcomponent/src/main/ets/pages/DateTimeView';
 import { LogDomain, LogHelper } from '@ohos/basicutils';
 import {
+  AodStyleType,
   FontScaleState,
   fontScaleManager,
+  ImmersiveAodStyle,
+  immersiveKgMgr,
   ObservedItem,
   OverlayIconStyle
 } from '@ohos/systemuicommon';
@@ -32,6 +35,7 @@ import { NtfColorModeVM } from '../../vm/NtfColorModeVM';
 import { AppProtectedVm } from '@ohos/systemuicommon/src/main/ets/vm/AppProtectedVm';
 import { LengthMetrics } from '@kit.ArkUI';
 import { ResUtils } from '@ohos/windowscene/src/main/ets/TsIndex';
+import { DeliverBadge } from '@ohos/systemuicommon/src/main/ets/view/DeliverBadge';
 
 const TAG = 'NotificationHideContentItem';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.NC, TAG);
@@ -61,6 +65,11 @@ export struct NotificationHideContentItem {
    */
   @Consume notificationType: number;
 
+  /**
+   * AOD显示样式
+   */
+  @State aodStyle: ImmersiveAodStyle | undefined = immersiveKgMgr.getOneMirrorState().getAodStyle(
+    this.notificationType === NotificationType.TYPE_PHONE_KEYGUARD);
   /**
    * 应用名称
    */
@@ -118,8 +127,10 @@ export struct NotificationHideContentItem {
       .fontWeight(FontWeight.Regular)
       .fontSize($r('app.float.ntf_title_font_size'))
       .maxFontScale(FontScaleState.systemUIMaxScale)
-      .fontColor(this.colorModeVM?.themeFontForegroundColor)
-      .foregroundBrightness(this.colorModeVM?.themeFontForegroundBrightnessOptions)
+      .fontColor(this.aodStyle?.isAod ? this.aodStyle?.getStyleValue(AodStyleType.CARD_SECONDARY_FONT_COLOR) :
+        this.colorModeVM?.themeFontForegroundColor)
+      .foregroundBrightness(this.aodStyle?.isAod ? this.colorModeVM?.themeFontForegroundOptions :
+        this.colorModeVM?.themeFontForegroundBrightnessOptions)
       .lineHeight(this.fontScaleState.getScaleSize($r('app.float.ntf_text_line_height')))
       .maxLines(NotificationConfig.ITEM_CONTENT_SINGLE_LINE)
       .textOverflow({ overflow: TextOverflow.Ellipsis })
@@ -133,7 +144,9 @@ export struct NotificationHideContentItem {
       .id(TAG + '_ntf_flag')
       .border({
         width: $r('app.float.ntf_pin_top_flag_border_width'),
-        color: this.colorModeVM?.bgPinTextColor,
+        color: this.aodStyle?.isAod
+          ? this.aodStyle?.getStyleValue(AodStyleType.FONT_COLOR)
+          : this.colorModeVM?.bgPinTextColor,
         radius: $r('app.float.ntf_pin_top_flag_border_radius'),
         style: BorderStyle.Solid
       })
@@ -146,8 +159,11 @@ export struct NotificationHideContentItem {
       .fontSize($r('app.float.ntf_pin_top_flag_font_size'))
       .fontWeight(FontWeight.Medium)
       .margin({ end: LengthMetrics.vp(ResUtils.getNumber($r('app.float.ntf_hidden_pin_top_time_margin'))) })
-      .fontColor(this.colorModeVM?.bgPinTextColor)
-      .foregroundBrightness(this.colorModeVM?.themeTimestampForegroundBrightnessOptions)
+      .fontColor(this.aodStyle?.isAod
+        ? this.aodStyle?.getStyleValue(AodStyleType.FONT_COLOR)
+        : this.colorModeVM?.bgPinTextColor)
+      .foregroundBrightness(this.aodStyle?.isAod ? BrightnessOptionUtils.aodTimeLightOptionForFillColor :
+        this.colorModeVM?.themeTimestampForegroundBrightnessOptions)
   }
 
   build() {
@@ -166,11 +182,12 @@ export struct NotificationHideContentItem {
               .id(TAG + '_AppName')
               .fontSize($r('app.float.ntf_title_font_size'))
               .maxFontScale(FontScaleState.systemUIMaxScale)
-              .fontColor($r('app.color.theme_ntf_color_text_primary'))
+              .fontColor(this.aodStyle?.isAod ? this.aodStyle?.getStyleValue(AodStyleType.FONT_COLOR) :
+              $r('app.color.theme_ntf_color_text_primary'))
               .fontWeight(FontWeight.Medium)
               .maxLines(NotificationConfig.LAYOUT_WEIGHT_ONE)
               .textOverflow({ overflow: TextOverflow.Ellipsis })
-              .renderGroup(true)
+              .renderGroup(this.aodStyle?.isOneMirror ? false : true)
               .flexShrink(1)
 
             Row() {
@@ -188,7 +205,7 @@ export struct NotificationHideContentItem {
               })
                 .opacity(0.4)
                 .flexShrink(0)
-                .visibility(Visibility.Visible)
+                .visibility(this.aodStyle?.isAod ? Visibility.Hidden : Visibility.Visible)
             }
             .margin({
               start: LengthMetrics.vp(ResUtils.getNumber($r('app.float.ntf_item_padding_start_end'))),
@@ -218,7 +235,7 @@ export struct NotificationHideContentItem {
       .id(this.ntfEntry?.hashCode + '_app_icon')
       .attributeModifier(new NtfAppIconModifier($r('app.float.ntf_small_icon_size_phone'), $r('app.float.ntf_item_right_icon_radius')))
       .flexShrink(0)
-      .opacity(undefined)
+      .opacity(this.aodStyle?.isAod ? this.aodStyle.getStyleValue(AodStyleType.NTF_APP_ICON_ALPHA) : undefined)
   }
 
   @Builder
@@ -228,7 +245,10 @@ export struct NotificationHideContentItem {
         .id(this.ntfEntry?.hashCode + '_app_icon')
         .attributeModifier(new NtfAppIconModifier($r('app.float.ntf_small_icon_size_phone'),
           $r('app.float.ntf_item_right_icon_radius')))
-        .opacity(undefined)
+        .opacity(this.aodStyle?.isAod ? this.aodStyle.getStyleValue(AodStyleType.NTF_APP_ICON_ALPHA) : undefined)
+      DeliverBadge({
+        isKgScene: this.notificationType === NotificationType.TYPE_PHONE_KEYGUARD,
+      })
     }
     .flexShrink(0)
     .width($r('app.float.ntf_small_icon_size_phone'))

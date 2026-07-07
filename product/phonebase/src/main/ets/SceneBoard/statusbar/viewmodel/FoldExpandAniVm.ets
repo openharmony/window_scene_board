@@ -21,13 +21,13 @@ import lazy { SCBExpandController, SCBFoldController,
   SCBTransitionManager } from '@ohos/windowscene/src/main/ets/TsIndex';
 import { Singleton, threadCall } from '@ohos/systemuicommon/newTsIndex';
 import lazy { SCBTripleController } from '@ohos/windowscene/src/main/ets/animation/SCBTransitionController';
-import lazy { UltraScreenAnimationConstants } from '@ohos/launchercommon/src/main/ets/constants/UltraScreenAnimationConstants';
+import lazy { TripleFoldAnimationConstants } from '@ohos/launchercommon/src/main/ets/constants/TripleFoldAnimationConstants';
 import lazy { FoldExpandAnimUtils } from '@ohos/launchercommon/src/main/ets/utils/FoldExpandAnimUtils';
 import lazy { FoldAnimationConstants } from '@ohos/launchercommon/src/main/ets/constants/FoldAnimationConstants';
 import lazy {
-  UltraScreenExpandAnimUtils,
+  TripleFoldExpandAnimUtils,
   SCBTripleStateChange,
-} from '@ohos/launchercommon/src/main/ets/utils/UltraScreenExpandAnimUtils';
+} from '@ohos/launchercommon/src/main/ets/utils/TripleFoldExpandAnimUtils';
 import { sharedData } from '@ohos/systemuicommon/src/main/ets/model/SendableData';
 import lazy { SCBTriFoldManager } from '@ohos/frameworkwrapper/src/main/ets/utils/SCBTriFoldManager';
 
@@ -62,7 +62,7 @@ export class FoldExpandAniVm {
     log.showInfo('unInit');
     SCBTransitionManager.getInstance().unRegisterFoldAnimationController(this.foldController);
     SCBTransitionManager.getInstance().unRegisterExpandAnimationController(this.expandController);
-    if (DeviceHelper.isUltraScreenProduct()) {
+    if (DeviceHelper.isThreeFoldProduct()) {
       SCBTransitionManager.getInstance().unRegisterTripleAnimationController(this.tripleController);
     }
   }
@@ -122,17 +122,17 @@ export class FoldExpandAniVm {
     log.showInfo(`statusbar execute tripleAnimation, oldState is ${oldState}, newState is ${newState}`);
     let systemSceneSession: SCBSystemSceneSession =
       SCBSceneSessionManager.getInstance().getSystemSceneSessionWithId(sharedData.statusBarPersistentId);
-    let stateChange: SCBTripleStateChange = UltraScreenExpandAnimUtils.getTripleDesktopStateChange(newState, oldState);
+    let stateChange: SCBTripleStateChange = TripleFoldExpandAnimUtils.getTripleDesktopStateChange(newState, oldState);
     if (stateChange === SCBTripleStateChange.INVALID) {
       log.showWarn('get stateChange invalid, return;');
       return;
     }
     if (systemSceneSession) {
       systemSceneSession.translateX =
-        UltraScreenExpandAnimUtils.initTripleStatusBarTransX(px2vp(sharedData.statusBarWidth), stateChange);
+        TripleFoldExpandAnimUtils.initTripleStatusBarTransX(px2vp(sharedData.statusBarWidth), stateChange);
     }
     animateTo({
-      curve: UltraScreenAnimationConstants.TRANSLATE_CURVES
+      curve: TripleFoldAnimationConstants.TRANSLATE_CURVES
     }, () => {
       if (systemSceneSession) {
         systemSceneSession.translateX = 0;
@@ -155,7 +155,7 @@ export class FoldExpandAniVm {
   }
 
   private registerTripleAnimationController(): void {
-    if (!DeviceHelper.isUltraScreenProduct()) {
+    if (!DeviceHelper.isThreeFoldProduct()) {
       return;
     }
     let systemSceneSession = SCBSceneSessionManager.getInstance().getSystemSceneSessionWithId(sharedData.statusBarPersistentId);
@@ -169,7 +169,7 @@ export class FoldExpandAniVm {
 
   @threadCall()
   public StatusBarFoldOrExpandAnimation(reason: SCBPropertyChangeReason): void {
-    if (this.isUltraScreenFMSwitch()) {
+    if (this.isTripleFoldFMSwitch()) {
       return;
     }
     if (reason === SCBPropertyChangeReason.EXPAND_TO_FOLD) {
@@ -184,13 +184,13 @@ export class FoldExpandAniVm {
    * ���۵�Ӧ����ǰ̨����������F��M̬״̬����Ч
    * @returns
    */
-  private isUltraScreenFMSwitch(): boolean {
-    if (!DeviceHelper.isUltraScreenProduct()) {
+  private isTripleFoldFMSwitch(): boolean {
+    if (!DeviceHelper.isThreeFoldProduct()) {
       return false;
     }
     const currentTripleState = SCBTriFoldManager.getInstance().getCurTriFoldState();
     const prevTripleState = SCBTriFoldManager.getInstance().getPrevTriFoldState();
-    const stateChange = UltraScreenExpandAnimUtils.getTripleStateChange(currentTripleState, prevTripleState);
+    const stateChange = TripleFoldExpandAnimUtils.getTripleStateChange(currentTripleState, prevTripleState);
     if (stateChange === SCBTripleStateChange.F_TO_M || stateChange === SCBTripleStateChange.M_TO_F) {
       return true;
     }

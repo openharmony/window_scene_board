@@ -197,6 +197,13 @@
             }
         },
         {
+            "name":"voice_translate_name",
+            "value":"Traducción de voice",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
             "name":"control_center_edit_panel_tips_max_limit",
             "value":"Número máximo de selectores añadidos.",
             "attr":{
@@ -206,6 +213,13 @@
         {
             "name":"cc_accessibility_str_change_vertical_brightness_desc",
             "value":"Barra de brillo: mantén pulsado dos veces y desliza el dedo hacia arriba o hacia abajo para ajustarla",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cloud_lai",
+            "value":"Modo Cloud",
             "attr":{
                 "priority":"translate"
             }

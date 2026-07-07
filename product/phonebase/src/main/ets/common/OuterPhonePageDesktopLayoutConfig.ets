@@ -1,5 +1,5 @@
 /**
- * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) 2021-2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -40,6 +40,7 @@ import {
   layoutLockUtil,
   PageDesktopLayoutConfig,
   RdbStoreManager,
+  DeliverUtil,
   LauncherLayoutCacheUtil,
   PageInfoManager,
   PreInstallUtils
@@ -182,6 +183,9 @@ export default class OuterPhonePageDesktopLayoutConfig extends PageDesktopLayout
       let dockDataList: DockItemInfo[] = await CommonDockModel.getInstance().querySmartDock(false);
       let installedApps: AppItemInfo[] =
         await launcherAbilityManager.getLauncherAbilityList(launcherAbilityManager.getUserId());
+
+      // 桌面出现多个克隆应用文件夹兜底清除
+      DeliverUtil.checkAndMergeDeliveryFolder(configFromRdb);
 
       // 桌面脏数据矫正清理
       gridLayoutCorrector.initCorrectorChain();

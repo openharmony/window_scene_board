@@ -50,6 +50,7 @@ import { componentSnapshot, Frame, Position, Prompt, Size } from '@kit.ArkUI';
 import {
   AppItemInfo,
   CommonConstants,
+  DeliverUtil,
   DesktopManager,
   EditModeUtils,
   FolderActionLifeCycleEvent,
@@ -251,7 +252,7 @@ export class MultiSelectManager {
       log.showError('cannot select when layout locked');
       return false;
     }
-    if (checkboxInfo.parentType === CheckboxParentEnum.Folder) {
+    if (checkboxInfo.parentType === CheckboxParentEnum.Folder || this.isDeliverApp(checkboxInfo)) {
       log.showError(`click folder of click app in deliverFolder ${parentId}`);
       return false;
     }
@@ -1447,6 +1448,10 @@ export class MultiSelectManager {
       log.showInfo('illegalsGather: without gatherIcon or folderIcon');
       return true;
     }
+    if (this.isDeliverApp(gatherIcon)) {
+      log.showInfo('illegalsGather: deliverApp not allow');
+      return true;
+    }
     return false;
   }
 
@@ -1557,6 +1562,25 @@ export class MultiSelectManager {
       scale: Number((selectItemList.width / defaultIconSize).toFixed(2)),
     };
     return targetItem;
+  }
+
+  /**
+   * 判断是不是备份应用
+   * @param checkboxInfo
+   */
+  private isDeliverApp(checkboxInfo: CheckboxInfoType): boolean {
+    if (checkboxInfo.parentType === CheckboxParentEnum.AppInFolder) {
+      let folderCheckboxInfo: CheckboxInfoType | undefined =
+        this.checkboxInfoMap.get(checkboxInfo.belongFolderCheckboxId ?? '');
+      if (!folderCheckboxInfo) {
+        return false;
+      }
+      let parentItemInfo = folderCheckboxInfo.parentItemInfo as Object as GridLayoutItemInfo;
+      return (DeliverUtil.isContainerFolder(parentItemInfo.folderId) &&
+        !DeliverUtil.isdeliverFolder(parentItemInfo.folderId ?? '')) ||
+        NotHarmonyUtil.isNotHarmonyFolderById(parentItemInfo.folderId);
+    }
+    return false;
   }
 
   // 获取当前展开态文件夹信息

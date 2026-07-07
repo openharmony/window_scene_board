@@ -1,0 +1,2674 @@
+{
+    "string":[
+        {
+            "name":"get_read_imagevideo_reason",
+            "value":"Used to obtain the media image data permission and provide aesthetic display of wallpapers"
+        },
+        {
+            "name":"theme_title",
+            "value":"Themes",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"recommend_theme",
+            "value":"View details",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"icon",
+            "value":"Icons",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"customize",
+            "value":"Customize",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"try_out",
+            "value":"Try it out",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"in_use",
+            "value":"In use",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"current_theme",
+            "value":"Current",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"my_wallpapers",
+            "value":"My wallpapers",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"more_online_wallpapers",
+            "value":"More wallpapers",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"more_online_themes",
+            "value":"More themes",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"more_themes",
+            "value":"More themes",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply",
+            "value":"Apply",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"lockscreen",
+            "value":"Lock screen",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"homescreen",
+            "value":"Home screen",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"lockscreen_preview",
+            "value":"Lock screen",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"homescreen_preview",
+            "value":"Home screen",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wallpaper_title",
+            "value":"Wallpapers",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"select_from_gallery",
+            "value":"Select from Gallery",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"select_from_folder",
+            "value":"Browse folders",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"my_downloads",
+            "value":"Downloaded",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"show_date",
+            "value":"Show date",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"show_lunar_date",
+            "value":"Show lunar date",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"show_lock_screen_signature",
+            "value":"Lock screen signature",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"click_input_text",
+            "value":"Enter text",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"confirm",
+            "value":"Confirm",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"uncompleted",
+            "value":"Feature coming soon.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"applyWallpaper",
+            "value":"Applying wallpaper…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"picture_getting",
+            "value":"Obtaining image…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"file_getting",
+            "value":"Downloading files from cloud…",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_failed",
+            "value":"Unable to apply.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_success",
+            "value":"Applied successfully.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"applying",
+            "value":"In use",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"unlock_set",
+            "value":"You can %1$s this theme with others.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"touch",
+            "value":"tap to share",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aod_theme",
+            "value":"Always On Display",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"font_style",
+            "value":"Fonts",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"default_font",
+            "value":"Preset",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"more_online_font",
+            "value":"More fonts",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"resource_description",
+            "value":"Description",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"free_official_theme",
+            "value":"Free official theme",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"preset_theme",
+            "value":"Preset theme",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"more_online_icon",
+            "value":"More icons",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"default_icon",
+            "value":"Preset",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"theme_icon",
+            "value":"From Themes",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"preview",
+            "value":"Preview",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"back",
+            "value":"Back",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"add_theme",
+            "value":"Add theme",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_theme",
+            "value":"Apply theme",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enableTheme",
+            "value":"Applying theme…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remove_this_theme",
+            "value":"Remove this theme?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remove",
+            "value":"Remove",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"tip_share_text",
+            "value":"Share",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"te_cancel",
+            "value":"Cancel",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cancel",
+            "value":"Cancel",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"preview_image",
+            "value":"Preview image",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keywords_outer_theme",
+            "value":"Themes",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"keywords_outer_facard",
+            "value":"Widgets",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"outside_screen_show",
+            "value":"Cover screen",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wallpaper_recommendation",
+            "value":"Suggested",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"recover_Theme_App",
+            "value":"Restore the Themes app?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"recover_Theme_App_massage",
+            "value":"Themes needs to be installed to use this feature.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"recover",
+            "value":"Restore",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_restored",
+            "value":"App has been restored.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"font_apply_successd",
+            "value":"Font applied.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"font_apply_failed",
+            "value":"Unable to apply font.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"screen_reading_first_page",
+            "value":"System default font, preview page number %d, swipe left or right to load other details screens",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"full_screen_reading_page_one",
+            "value":"Preview screen number %d, swipe left or right with two fingers to load other details screens",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screen_load_other_detail_page",
+            "value":"Swipe left or right with two fingers to load other previews. Double tap a preview to activate it.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screen_reading_other_page",
+            "value":"Preview page number %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"theme_card_accessibility_text",
+            "value":"Swipe left or right with two fingers to switch themes. Swipe up with two fingers to remove the theme.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"button_text",
+            "value":"Add theme button",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"image_decoding_failure",
+            "value":"Image error. Try again.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"full_screen_reading_enter",
+            "value":"You have entered full-screen preview",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"full_screen_reading_exit",
+            "value":"You have exited full-screen preview",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"checked",
+            "value":"Selected",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"unchecked",
+            "value":"Not selected",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"lock_screen_clock",
+            "value":"Lock screen clock",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"clock_edit_tips",
+            "value":"Double-tap to edit, double-tap and hold to move the clock.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"clock_font_color",
+            "value":"Clock text color %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"clock_style",
+            "value":"Clock style %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"clock_font_style",
+            "value":"Clock font %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"blur",
+            "value":"Blur",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"camera_mover",
+            "value":"Dynamic",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"more_edits",
+            "value":"More edits",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"blurred",
+            "value":"Blurred",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"un_blurred",
+            "value":"Unblurred",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"do_camera_mover",
+            "value":"Dynamic effect on",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"undo_camera_mover",
+            "value":"Dynamic effect off",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"untoggle_camera_mover",
+            "value":"Deselecting this will turn off the dynamic effect.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"cam_mover_is_enabled_blur_is_not_supported",
+            "value":"Dynamic effect has been enabled and bokeh has been disabled.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"blur_is_enabled_Cam_mover_is_not_supported",
+            "value":"Bokeh has been enabled and dynamic effect has been disabled.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dof",
+            "value":"DoF",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dof_on",
+            "value":"Depth of field is on",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dof_off",
+            "value":"Depth of field is off",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_dof_to_experience_camera_mover",
+            "value":"Disable the DoF effect to experience the Dynamic effect.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_dynamic_to_experience_camera_mover",
+            "value":"Disable \"Moving picture\" to experience the Dynamic effect.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_camera_mover_to_experience_dof",
+            "value":"Disable the Dynamic effect to experience the DoF effect.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_dynamic_to_experience_dof",
+            "value":"Disable \"Moving picture\" to experience the DoF effect.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"digital_clock_does_not_overlap_with_main_subject",
+            "value":"The digital clock doesn't overlap with the main subject.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"artistic_signature_does_not_overlap_with_main_subject",
+            "value":"Personalized signature doesn't overlap with the main subject.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"image_does_not_recognize_dof",
+            "value":"No depth-of-field subject recognized in the image.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_camera_mover_to_experience_dynamic",
+            "value":"Disable the Dynamic effect to experience \"Moving picture\".",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_dof_to_experience_dynamic",
+            "value":"Disable the DoF effect to experience \"Moving picture\".",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"toggle_view",
+            "value":"Switch views",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"current_icon_checked",
+            "value":"Current icons, selected",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"current_wallpaper_checked",
+            "value":"Current wallpaper, selected",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"switched_desktop_preview",
+            "value":"Switched to home screen preview",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"switched_lock_screen_preview",
+            "value":"Switched to lock screen preview",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"been_lifted",
+            "value":"Started dragging",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_to",
+            "value":"Dragged to %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"set_as_lockscreen",
+            "value":"Set as lock screen",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"set_as_desktop",
+            "value":"Set as home screen",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"top_left",
+            "value":"Top left",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"top_right",
+            "value":"Top right",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"bottom_left",
+            "value":"Bottom left",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"bottom_right",
+            "value":"Bottom right",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"top_of_center",
+            "value":"Top of center",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"left_of_center",
+            "value":"Left of center",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"right_of_center",
+            "value":"Right of center",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"bottom_of_center",
+            "value":"Bottom of center",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"center",
+            "value":"Center",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_wallpaper",
+            "value":"Add image",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"upload_photo",
+            "value":"Upload",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"save_success",
+            "value":"Saved successfully.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"continue",
+            "value":"Continue",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"should_apply_current_theme",
+            "value":"Apply this theme?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"continue_upload_image",
+            "value":"The current theme will be deleted and a new one generated. Continue?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"generating_ai_wallpaper",
+            "value":"Generating AI wallpaper…",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"exiting_current_page",
+            "value":"Generation will continue even if you leave this screen.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"reach_upper_limit",
+            "value":"Maximum number of wallpapers reached. Delete some to add new ones.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"keep_one_wallpaper",
+            "value":"At least one wallpaper is required.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"continue_generating",
+            "value":"Generate more",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wallpaper_carousel_info",
+            "value":"Wallpaper carousel (%1$d/%2$d)",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"person_information",
+            "value":"Characteristics",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"infancy",
+            "value":"Child",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"adult",
+            "value":"Adult",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"male",
+            "value":"Male",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"female",
+            "value":"Female",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pandora_theme_description",
+            "value":"%1$d. Upload a photo of a person that clearly shows their face.\n%2$d. Images generated by AI may be inaccurate or inappropriate.\n%3$d. Do not upload photos that contain vulgar, violent, or discriminatory content.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"photo_not_meet",
+            "value":"This photo can't be used. Select another from the featured portraits.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"photo_not_meet_no_label",
+            "value":"Unable to use this photo. Please select another one.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"got_it",
+            "value":"OK",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"apply_generating_ai_wallpaper",
+            "value":"Tap Apply to generate a wallpaper.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"after_generate_wallpaper_enable_theme",
+            "value":"This theme will be applied at the same time.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"login_failed",
+            "value":"No Internet connection. Try again later.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"insufficient_quota",
+            "value":"AI generation limit for this month reached.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"generate_failed",
+            "value":"Unable to generate.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"time_travel_generate_failed",
+            "value":"Unable to generate Time Travel wallpapers.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dimensional_travel_generate_failed",
+            "value":"Unable to generate Animirror wallpapers.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"device_temperature_too_high",
+            "value":"Device temperature too high. Try again later.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"composition_failed",
+            "value":"Unable to compose.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"generate_failed_origin_img_error",
+            "value":"Unable to generate.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"interactive",
+            "value":"Interactive",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_main_pandora_title",
+            "value":"Home screen & style",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"covertheme_settings_title",
+            "value":"Home screen, cover screen & style",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_main_pandora_finish_content",
+            "value":"AI wallpapers generated. Tap to view and apply.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_main_pandora_ongoing_content",
+            "value":"Generating AI wallpapers.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_main_time_travel_finish_content",
+            "value":"New Time Travel wallpapers generated. Tap to view and apply.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_main_time_travel_ongoing_content",
+            "value":"Generating AI wallpapers. Tap to view.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_main_pandora_fail_content",
+            "value":"Wallpaper generation unsuccessful.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pandora_service_unavailable",
+            "value":"Temporarily unavailable. Try again later.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"tip_title",
+            "value":"Quickly personalize your lock screen and home screen",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"tip_content",
+            "value":"Pinch two fingers together on the lock screen or home screen to quickly change the theme and customize the wallpaper and widgets.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"tip_button_text",
+            "value":"Learn more",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"tip_cancel_text",
+            "value":"Close",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"theme_personalize_full_screen_reading_page_one",
+            "value":"Screen number %d, swipe left or right to load other wallpapers.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"theme_personalize_screen_reading_other_page",
+            "value":"Screen number %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aod_ways_display_awake_intelligent",
+            "value":"Smart",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_ways_display_awake_off",
+            "value":"Off",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_ways_display_awake_scheduled",
+            "value":"Scheduled",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_all_day_display",
+            "value":"All day",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"table_theme",
+            "value":"Home screen",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"desktop_style_title",
+            "value":"Shortcut bar and status bar",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"screen_off_theme",
+            "value":"Always On Display",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wallpaper_display_mode",
+            "value":"Choose a fit",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"fill_screen",
+            "value":"Fill",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"scale_to_fill_screen",
+            "value":"Stretch",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"center_the_original_image",
+            "value":"Center",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"center_and_fit",
+            "value":"Fit",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"tiling",
+            "value":"Tile",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aesthetic",
+            "value":"Smart composition",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"HiSearch_title",
+            "value":"voice Search",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Desktop_setting",
+            "value":"Home screen settings",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Desktop_slide",
+            "value":"Swipe down to search",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"intelligent_settings",
+            "value":"Assistant·TODAY",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"desktop_layout",
+            "value":"Layout",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"auto_align",
+            "value":"Auto-align",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"auto_align_content",
+            "value":"Automatically fill empty spaces when apps are removed.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"desktop_resource_center",
+            "value":"App chest",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"waiting_closing_desktop_resource_center",
+            "value":"Disabling app chest…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"desktop_resource_center_description",
+            "value":"Swipe up on the home screen to display all installed apps. Drag an app to add it to the home screen. Remove an app from the home screen by touching & holding it and tapping Remove.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_off_Desktop_resource_center_title",
+            "value":"Disable app chest",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_off_Desktop_resource_center_content",
+            "value":"When this is disabled, apps in the app chest that are not displayed anywhere else can be found in the new folder at the bottom of the home screen.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_off_Desktop_resource_center_cancel",
+            "value":"Cancel",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_off_Desktop_resource_center_close",
+            "value":"Disable",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_chest",
+            "value":"App chest",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"waiting_closing_app_chest",
+            "value":"Disabling app chest…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_chest_description",
+            "value":"Swipe up on the home screen to display all installed apps. Drag an app to add it to the home screen. Remove an app from the home screen by touching & holding it and tapping Remove.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_off_app_chest_title",
+            "value":"Disable app chest",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_off_app_chest_content",
+            "value":"When this is disabled, apps in the app chest that are not displayed anywhere else can be found in the new folder at the bottom of the home screen.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Desktop_SwipeUp",
+            "value":"Swipe up on home screen",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_off_swipe_up_title",
+            "value":"Disable \"Swipe up on home screen\"?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_off_swipe_up_content",
+            "value":"When this is disabled, you won't be able to open the app chest. Apps in the app chest that are not displayed anywhere else will be accessible in a new folder on the home screen.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"waiting_closing",
+            "value":"Disabling…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"lock_layout",
+            "value":"Lock layout",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"lock_layout_content",
+            "value":"When this is on, home screen elements cannot be moved or removed.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"wallpaper_cannot_be_edited_in_a_small_window",
+            "value":"Wallpapers can't be edited in small windows.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"theme_cannot_be_edited_in_a_small_window",
+            "value":"Themes can't be edited in small windows.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pandora_aesthetic_dialog_confirm",
+            "value":"OK",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"intelligent_status_on",
+            "value":"On",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"intelligent_status_off",
+            "value":"Off",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"intelligent",
+            "value":"Assistant·TODAY",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remove_theme_info",
+            "value":"This theme, along with its wallpaper and icon pack, will be removed.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_wallpaper_info",
+            "value":"Apply wallpaper to",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"change_wallpaper",
+            "value":"Change wallpaper",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"generate_failed_and_try_again",
+            "value":"Unable to generate. Please try again.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"regenerate",
+            "value":"Try again",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"upload_photo_loading",
+            "value":"Loading…",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"choose_person_info",
+            "value":"Please select your characteristics.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_watch_info",
+            "value":"Apply to watch face",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"apply_watch_info_toast",
+            "value":"Unable to sync. Please try again.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"age_too_small_error",
+            "value":"Unable to generate. Subject is too young.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"update_photo",
+            "value":"Update",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wallpaper_carousel_gallery",
+            "value":"Wallpapers (Max of %d)",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"save_carousel",
+            "value":"Save",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"generating_ai_wallpaper_need_time",
+            "value":"Generating… (Takes around %d min)",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pandora_theme_upload_photo_tips",
+            "value":"%1$d. Upload a photo of a person that clearly shows their face.\n%2$d. Image generation may not work with younger subjects.\n%3$d. Images generated by AI may be unsatisfactory.\n%4$d. Do not upload photos that contain vulgar, violent, or discriminatory content.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"login_in_settings",
+            "value":"Log in to your HUAWEI ID in Settings first.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aigc_generation_prompt",
+            "value":"Generated by voice AI",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"photo_not_meet_have_label",
+            "value":"This photo can't be used. Select another from the suggested images.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"my_theme_0",
+            "value":"My theme",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"my_theme_d",
+            "value":"My theme %d",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"tip_play_text",
+            "value":"Play",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"unsupported_moving_photo_wallpaper",
+            "value":"Live wallpapers not supported on home screen.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dynamic",
+            "value":"Live",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pop_up_content",
+            "value":"Static effect recommended. Live disabled.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"current_theme_style",
+            "value":"Follow theme",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"save_picture",
+            "value":"Save image",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"management",
+            "value":"Manage",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"turn_on_dynamic",
+            "value":"Turn on live",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"turn_off_dynamic",
+            "value":"Turn off live",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"preview_photo_loading",
+            "value":"Loading…",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_current_theme_first",
+            "value":"Apply the theme first.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keywords_outer_apply",
+            "value":"Apps",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"magic_screen",
+            "value":"Dual preview",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"keywords_cover_screen",
+            "value":"Cover screen",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"screenlock_sign_entry",
+            "value":"How to set lock screen signature",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wallpaper_F_only",
+            "value":"Only apply to single screen",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wallpaper_M_only",
+            "value":"Only apply to dual screen",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wallpaper_G_only",
+            "value":"Only apply to triple screen",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"interactive_theme_detail_tip",
+            "value":"Note: Applying this theme will change your face unlock method from \"Direct unlock\" to \"Swipe to unlock\".",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_sub_screen_info",
+            "value":"Apply to cover screen",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_sub_screen_info_subtext",
+            "value":"You can edit it in Cover screen themes.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_dialog_title",
+            "value":"Apply theme to",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"main_screen",
+            "value":"Main screen",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"cover_screen",
+            "value":"Cover screen",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"random",
+            "value":"Random",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"agree",
+            "value":"Agree",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ai_wallpaper_service_description_1",
+            "value":"This service requires an %1$s connection and needs to read and upload/transfer images to provide wallpaper-related features. By tapping Agree, you agree to these terms and the %2$s. For more details about how your personal information is processed, refer to the %3$s.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"on_network",
+            "value":"Internet",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ai_wallpaper_terms",
+            "value":"Terms of Use for Generative AI Capabilities of Time Travel Theme",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ai_wallpaper_service_stop_note_1",
+            "value":"This service will no longer be available if you disable it. Disable anyway?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ai_wallpaper_service_subtitle_1",
+            "value":"Selected images will be uploaded to the cloud server to generate wallpapers using cloud-based AI algorithms. This requires the following permissions:",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ai_wallpaper_service_name_3",
+            "value":"Time Travel theme service",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"end_of_service",
+            "value":"Disable",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"end_aigc_service_text",
+            "value":"For details, refer to the %1$s and %2$s. If you don't want to use this service anymore, tap %3$s.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"end_of_service_1",
+            "value":"Disable service",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"execution_timed_out",
+            "value":"Operation timed out.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"have_occlusion",
+            "value":"Face in image is obscured.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"have_multi_people",
+            "value":"Image should contain only one person.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"have_no_people",
+            "value":"No face detected.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"low_pixel",
+            "value":"Image resolution too low.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"edit_M_tip",
+            "value":"Unfold to dual screen mode to edit.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"edit_G_tip",
+            "value":"Unfold to triple screen mode to edit.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"big_angle",
+            "value":"Unsuitable angle.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"content_reporting",
+            "value":"Report content",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"get_best_results",
+            "value":"Learn how to get better results",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"best_example_of_uploading_photos",
+            "value":"Examples",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"clear_facial_features",
+            "value":"Clear features",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"face_the_camera",
+            "value":"Looking forward",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"occlusion_exists",
+            "value":"Obstructed",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"side_face",
+            "value":"Side profile",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"i_know",
+            "value":"Got it",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"style_choose",
+            "value":"Style",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"account_button_login",
+            "value":"Log in",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"network_unavailable",
+            "value":"No Internet connection. Check your network settings.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"update_available",
+            "value":"Updates are available",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_main_dimensional_travel_ongoing_content",
+            "value":"Generating Animirror wallpapers. Tap to view.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_main_dimensional_travel_finish_content",
+            "value":"New Animirror wallpapers generated. Tap to view and apply.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"no_select",
+            "value":"None selected",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"select_all",
+            "value":"Select all",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"deselect_all",
+            "value":"Deselect all",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"delete",
+            "value":"Delete",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"undelete_toast",
+            "value":"This wallpaper cannot be deleted.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"delete_fail",
+            "value":"Unable to delete.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"delete_wallpaper",
+            "value":"Delete wallpaper",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"icon_size",
+            "value":"Home screen icon size",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"icon_size_tip",
+            "value":"Does not apply to the dock.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"icon_size_restore_default",
+            "value":"Reset",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dock_color_style",
+            "value":"Dock color adapts to",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dock_color_style_follow_window",
+            "value":"Wallpaper & windows",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dock_color_style_follow_system",
+            "value":"Display mode",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dock_color_style_follow_window_tips",
+            "value":"The dock will change color in response to the color of the wallpaper or the content of a maximized window.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dock_color_style_follow_system_tips",
+            "value":"In Dark mode, the color of the dock will become darker.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dock_auto_hide_style",
+            "value":"Hide the dock when windows are maximized or split",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"window_animation_title",
+            "value":"Minimize windows using",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"window_animation_attraction",
+            "value":"Genie animation",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"window_animation_default",
+            "value":"Default animation",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"share_description",
+            "value":"Share, customize, and accessorize",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"share_card_hint",
+            "value":"To share, tap against another device or grab & drop",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"not_selected",
+            "value":"Not selected",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"insufficient_storage_toast",
+            "value":"Unable to provide theme services due to insufficient internal storage. Delete files to free up space.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"network_error",
+            "value":"Network error. Please try again.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"blur_slider_read_notes",
+            "value":"Tap the slider to activate it and adjust the blur",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"switch_to_desktop_preview",
+            "value":"Switch to home screen preview",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"switch_to_lock_screen_preview",
+            "value":"Switch to lock screen preview",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screenlock_settings",
+            "value":"Lock screen",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"start_generating",
+            "value":"Generate",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"exit_pandora_dialog",
+            "value":"Save and apply?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"about",
+            "value":"About",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"theme_data_service",
+            "value":"Themes Service",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"theme_data_service_instructions",
+            "value":"This service requires an Internet connection and needs the Location, Physical activity, and Device connection permissions, and to read location, fitness and health, device, and media (images and videos) data. This is to support themes that need to display this information and to provide interactive theme features. For more details about how your personal information is processed, refer to the %1$s and %2$s. By turning this on, you agree to let us provide you with this service.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"theme_data_service_privacy",
+            "value":"Statement About Themes Service and Privacy",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"theme_data_service_permissions",
+            "value":"Permissions Notice",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"stop_theme_data_service_title",
+            "value":"Disable Themes Service",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"stop_theme_data_service_message",
+            "value":"This will disable Themes Service on this device. Your themes and other resources will lose their interactivity and will no longer be able to display your data. Disable anyway?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"more",
+            "value":"More",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"multi_checkbox",
+            "value":"Multi-select checkbox",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_dynamic_lead_ongoing_content",
+            "value":"Generating Dynamic Persona resources. Tap to view.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_dynamic_lead_finish_content",
+            "value":"Dynamic Persona resources generated. Tap to view and apply.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_dynamic_lead_automatically_updated_finish_content",
+            "value":"Dynamic Persona resources have been updated automatically. Tap to view.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_dynamic_lead_Unable_to_update_automatically",
+            "value":"The Dynamic Persona resource library is full. This means that resources will not update automatically. Tap to manage the library.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_dynamic_lead_fail_content",
+            "value":"Dynamic Persona resource generation failed. Tap for details.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"applied",
+            "value":"Applied",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"played",
+            "value":"Playing",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"paused",
+            "value":"Paused",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"settings_detail_page_tip",
+            "value":"Double-tap for details",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"settings_font_detail_page_tip",
+            "value":"Double-tap for font details",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"continue_update_image",
+            "value":"The current theme will be deleted and a new one generated. Continue?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"detail_page",
+            "value":"Preview page",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"photo_selected",
+            "value":"Photo selected",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aigc_theme_service",
+            "value":"AI Themes Service",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aigc_theme_service_privacy_statement",
+            "value":"Statement About AI Themes and Privacy",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aigc_theme_privacy_statement",
+            "value":"Statement About AI Themes Service and Privacy",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aigc_theme_service_subtitle",
+            "value":"This service uploads selected images to the cloud, where it uses AI to generate theme resources.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aigc_theme_service_description",
+            "value":"This service requires an %1$s connection and needs to read and upload/transfer images. This is to provide theme-related features. We only collect personal information relevant to the features you use. For details, refer to the %2$s.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"read_theme_service_description_and_click_agree",
+            "value":"Please read the above statement carefully. By tapping Agree, you agree to let us provide you with this service.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aigc_theme_service_stop_note",
+            "value":"This service will no longer be available if you disable it. Disable anyway?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"keywords_during_call",
+            "value":"Call animation",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"moving_photo_dialog_title",
+            "value":"Change wallpaper?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"moving_photo_dialog_content",
+            "value":"This will be applied as a static wallpaper because live wallpapers can't be used in conjunction with other wallpapers.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"moving_photo_dialog_toast",
+            "value":"Live wallpapers can't be used in conjunction with other wallpapers.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"nav_to_my_wallpaper_edit_tips",
+            "value":"On the lock screen, pinch or touch & hold the clock area to edit.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dock_item_appcenter",
+            "value":"App chest",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dock_item_recentcenter",
+            "value":"Task center",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dock_item_filemanager",
+            "value":"Files",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dock_item_recyclebin",
+            "value":"Recycle Bin",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dock_item_visible",
+            "value":"Show in dock",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"moment_x_settings",
+            "value":"SideShow",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"moment_x_state_off",
+            "value":"Off",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"moment_x_smart_display_mode_title",
+            "value":"Smart",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"moment_x_all_day_display_mode_title",
+            "value":"All day",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"color_style_not_support_in_desktop_tips",
+            "value":"If the theme is applied to the home screen only, its clock style will not be applied.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"color_style_system_title",
+            "value":"System colors",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"color_style_button_text",
+            "value":"Highlight colors",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"color_style_suggested_title",
+            "value":"Suggested colors",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"color_style_base_title",
+            "value":"Basic colors",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"color_style_explanation",
+            "value":"Highlight colors are applied to the clock and widgets on the home screen, lock screen, and Always On Display, and in the Notification Panel and Control Panel.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"apply_Lockscreen",
+            "value":"Applying to lock screen…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"online_themes",
+            "value":"Downloadable themes",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"online_wallpapers",
+            "value":"Downloadable wallpapers",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"online_fonts",
+            "value":"Downloadable fonts",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"online_icons",
+            "value":"Downloadable icons",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"chroma_translucence",
+            "value":"Chroma Translucence",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"chroma_translucence_description",
+            "value":"Supports different levels of colorful light transmission effects. \"Weak\" provides a more blurred effect, enhancing the contrast of the content above. \"Strong\" offers a more transparent effect, making the content below more visible. ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"chroma_translucence_weak",
+            "value":"weak",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"chroma_translucence_standard",
+            "value":"Default",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"chroma_translucence_strong",
+            "value":"strong",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"chroma_translucence_transparency",
+            "value":"Transparency",
+            "attr":{
+                "priority":"translate"
+            }
+        },{
+            "name":"on_click_tip",
+            "value":"Double tap a preview to activate it.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screenlock_cannot_be_edited_in_a_small_window",
+            "value":"The lock screen can't be edited in floating windows.",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

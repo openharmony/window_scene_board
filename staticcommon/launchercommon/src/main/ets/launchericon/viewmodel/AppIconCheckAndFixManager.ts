@@ -14,7 +14,7 @@
  */
 
 import { HashMap } from '@kit.ArkTS';
-import { LogDomain, LogHelper } from '@ohos/basicutils';
+import { OutdoorConfig, LogDomain, LogHelper } from '@ohos/basicutils';
 import lazy { AppIconChecker } from '../common/AppIconChecker';
 import lazy { AppIconFixer } from '../common/AppIconFixer';
 import { AppIconCheckAndFixIface } from '../interface/AppIconCheckAndFixIface';
@@ -124,6 +124,11 @@ export class AppIconCheckAndFixManager {
    * @returns 图标异常信息
    */
   public async checkIcon(bundleName?: string): Promise<HashMap<number, LostBundleInfo[]>> {
+    // 户外模式模式不支持图标检测
+    if (OutdoorConfig.getInstance().isInOutdoorMode()) {
+      log.showWarn('unsupport app icon check in OutdoorMode');
+      return new HashMap();
+    }
     this.appIconChecker = new AppIconChecker();
     this.appIconChecker.checkIconImage(bundleName, this.appIconCheckAndFix);
     this.appIconChecker.checkIconOpacity(bundleName, this.appIconCheckAndFix);

@@ -21,7 +21,7 @@ import { SCBScenePanelManager, SCBScreenSessionManager, ScenePanelState } from '
 import display from '@ohos.display';
 import { RoPropConstants } from '@ohos/commonconstants';
 import { launcherStatusUtil } from '@ohos/windowscene';
-// import apsManager from '@hms.graphic.apsManager';
+// import apsManager from '@ohos.graphic.apsManager';
 
 const TAG = 'DesktopUtil';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.HOME, TAG);
@@ -246,7 +246,7 @@ export class DesktopUtil {
    * @returns 是否是是三屏设备且为G态场景
    */
   public isThreeScreenGState(): boolean {
-    return DeviceHelper.isUltraScreenProduct() && DeviceHelper.isGState();
+    return DeviceHelper.isThreeFoldProduct() && DeviceHelper.isGState();
   }
 
   /**

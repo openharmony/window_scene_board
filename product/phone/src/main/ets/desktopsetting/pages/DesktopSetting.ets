@@ -27,6 +27,7 @@ const log: LogHelper = LogHelper.getLogHelper(LogDomain.SCS, TAG);
 @Component
 export default struct SettingPage {
   public static readonly PIFLOOW_MINE_STATE: string = 'piflow_mine_state';
+  @StorageLink('hiSearchStatus') hiSearchStatus: boolean = true;
   @StorageLink('autoAlignStatus') autoAlignStatus: boolean = false;
   deviceType: string = DeviceInfo.deviceType || 'phone';
   @State cardMargin: number = 16;
@@ -142,12 +143,38 @@ export default struct SettingPage {
   }
 
   @Builder
+  hiSearchLayout() {
+    Row() {
+      Text($r('app.string.HiSearch_title'))
+        .fontSize($r('sys.float.ohos_id_text_size_sub_title3'))
+        .fontColor($r('sys.color.ohos_id_color_text_secondary'))
+        .fontWeight(FontWeight.Medium)
+        .fontFamily('HarmonyHeiTi-Medium')
+        .padding({ left: 12 })
+    }
+    .width('100%')
+    .margin({ bottom: 10 })
+    Row() {
+      Text($r('app.string.Desktop_slide')).fontSize($r('sys.float.ohos_id_text_size_sub_title2')).fontWeight(500)
+      Toggle({ type: ToggleType.Switch, isOn: this.hiSearchStatus as boolean })
+        .onChange((isOn: boolean) => {
+          this.hiSearchStatus = isOn;
+        })
+        .hoverEffect(HoverEffect.None)
+    }
+    .padding({left: 12, right: 12, top: 14, bottom: 14})
+    .backgroundColor($r('sys.color.ohos_id_color_card_bg'))
+    .borderRadius(16)
+    .width('100%')
+    .justifyContent(FlexAlign.SpaceBetween)
+  }
 
   build() {
     Column() {
       this.title()
       Scroll() {
         Column() {
+          // this.hiSearchLayout()
           this.desktopLayoutSwitch()
         }
         .padding({ top: 28, bottom: 14 })

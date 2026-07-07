@@ -58,6 +58,23 @@
       "column": 0
     },
     {
+      "bundleName": "com.ohos.suggestion",
+      "abilityName": "ParentFormAbility",
+      "moduleName": "entry",
+      "formConfigAbility": "",
+      "cardName": "minVoiceRecCard",
+      "cardDimension": 2,
+      "container": -100,
+      "typeId": 1,
+      "area": [
+        2,
+        2
+      ],
+      "page": 0,
+      "row": 3,
+      "column": 0
+    },
+    {
       "bundleName": "com.ohos.health",
       "abilityName": "EntryStepCardFormAbility",
       "moduleName": "entry",

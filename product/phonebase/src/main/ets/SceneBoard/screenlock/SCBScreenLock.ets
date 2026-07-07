@@ -15,19 +15,17 @@
 
 import { LogDomain, LogHelper, Trace } from '@ohos/basicutils';
 import { BaseViewController } from '@ohos/frameworkcommon';
-import { DeviceHelper, ViewManagerPolicy, ViewType } from '@ohos/frameworkwrapper';
+import { DeviceHelper, ViewManagerPolicy, ViewType, WallpaperManager, WallpaperData } from '@ohos/frameworkwrapper';
 import { SCBPropertyChangeReason, SCBScreenProperty, SCBSystemSceneSession } from '@ohos/windowscene';
 import { NotificationSettingBtn } from '@ohos/notificationcomponent/src/main/ets/pages/common/NotificationSettingBtn';
 import { ScreenLockBlurButtonVM, screenLockBlurButtonVM } from '@ohos/notificationcomponent/src/main/ets/vm/ScreenLockBlurButtonVM';
 import { NotificationType } from '@ohos/notificationcomponent/src/main/ets/common/NotificationType';
 import { SlStateBaseMgr } from '@ohos/screenlockcommon/src/main/ets/TsIndex';
 import { DisplayStateManager, DisplayStateListener } from '@ohos/screenlockcommon/Index';
-import { ImmInvertColorMgr } from '@ohos/screenlockcommon/Index';
 import Constants from '@ohos/screenlockcomponent/src/main/ets/common/Constants';
 import { defaultManifestParam, LockManifest } from '@ohos/screenlockwidget/src/main/ets/common/theme/ThemeHelperUtil';
 import { BouncerView } from './component/BouncerView';
 import { MainPageView } from './component/MainPageView';
-import { BackGroundView } from './component/BackGroundView';
 import { RootVc } from './controller/RootVc';
 import { COMPONENT_ID_SCREEN_LOCK_ROOT, SCBScreenLockVm } from './viewmodel/SCBScreenLockVm';
 import { clockLayoutHelper } from '@ohos/screenlockwidget/src/main/ets/clock/common/ClockLayoutHelper';
@@ -37,7 +35,7 @@ import { slWallpaperMgr } from '@ohos/screenlockcommon/src/main/ets/wallpaper/Sc
 import { slStateHelper } from './model/helper/SlStateHelper';
 import { SlBindState } from './model/data/SlBindState';
 import { ScreenOffAnimationManager } from './component/subviewcontrol/ScreenOffAnimationManager';
-import lazy { UltraScreenExpandAnimationVc } from './component/subviewcontrol/UltraScreenExpandAnimationVc';
+import lazy { TripleFoldExpandAnimationVc } from './component/subviewcontrol/TripleFoldExpandAnimationVc';
 import { OuterHomeManagerUtil } from './utils/OuterHomeManagerUtil';
 import { PowerSaveModeManager } from '@ohos/screenlockcommon/src/main/ets/manager/PowerSaveModeManager';
 
@@ -98,9 +96,16 @@ export struct SCBScreenLock {
   @Provide ntfSilenceDialogClose: boolean = true;
   @Provide pinTopLimitDialogClose: boolean = true;
   @StorageLink('folderStatus') @Watch('onFoldStatusChange') foldStatus: number = AppStorage.get<number>('folderStatus') as number;
+  @State @Watch('onWallpaperDataChange') wallpaperData: WallpaperData = WallpaperManager.getInstance().wallpaperData;
+  @State wallpaperScale: number = 1;
 
   onFoldStatusChange(): void {
     DisplayStateManager.getInstance().updateFoldStatus();
+  }
+
+  onWallpaperDataChange(): void {
+    log.showInfo(`showBackWallpaper:${this.wallpaperData?.showBackWallpaper}`)
+    this.wallpaperScale = this.wallpaperData?.showBackWallpaper ? 0.8 : 1;
   }
 
   aboutToAppear(): void {
@@ -125,11 +130,10 @@ export struct SCBScreenLock {
     this.screenLockVm.init();
 
     slWallpaperMgr.init();
-    if (DeviceHelper.isUltraScreenProduct()) {
-      UltraScreenExpandAnimationVc.getInstance().registerUltraScreenExpandAnimation();
+    if (DeviceHelper.isThreeFoldProduct()) {
+      TripleFoldExpandAnimationVc.getInstance().registerTripleFoldExpandAnimation();
     }
     Trace.end(Trace.CORE_METHOD_SCREEN_LOCK_INIT);
-    log.showInfo('aboutToAppear end.');
   }
 
   aboutToDisappear(): void {
@@ -139,22 +143,21 @@ export struct SCBScreenLock {
     DisplayStateManager.getInstance().unRegisterObserver(this._screenPropertyChangeCallback);
     DisplayStateManager.getInstance().release();
     PowerSaveModeManager.getInstance().release();
+    ScreenOffAnimationManager.getInstance().release();
     slWallpaperMgr.release();
-    if (DeviceHelper.isUltraScreenProduct()) {
-      UltraScreenExpandAnimationVc.getInstance().unRegisterUltraScreenExpandAnimation();
+    if (DeviceHelper.isThreeFoldProduct()) {
+      TripleFoldExpandAnimationVc.getInstance().unRegisterTripleFoldExpandAnimation();
     }
   }
 
   build() {
     Stack({ alignContent: Alignment.Bottom }) {
       if (!this.slBindState.getBlankScreen()) {
-        BackGroundView({ lockManifestParam: this.lockManifestParam });
         MainPageView({
           persistentId: this.persistentId,
           screenProp: this.screenProp,
           lockManifestParam: this.lockManifestParam
         })
-
         NotificationSettingBtn({
           type: NotificationType.TYPE_PHONE_KEYGUARD
         });

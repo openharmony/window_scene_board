@@ -44,6 +44,26 @@ export default function MediaControllerVideoTest() {
     let driver = Driver.create();
 
     /**
+     * 打开视频
+     */
+    it('open_hmsapp_video', 0, async (done: Function) => {
+      try {
+        hilog.info(0x0, TAG, 'open_himovie begin');
+        await startAbility('com.ohos.himovie', 'MainAbility');
+        hilog.info(0x0, TAG, 'open_himovie end');
+        await driver.delayMs(8000);
+
+        let openVideo = await driver.findComponent(ON.id('ImageTextSlimCard.Image.imageUrl'));
+        await openVideo.click();
+        await driver.delayMs(15000);
+        expect(true).assertTrue();
+        done()
+      } catch(e) {
+        hilog.info(0x0, TAG, 'open_hmsapp_video' + e.message);
+      }
+    })
+
+    /**
      * 下拉通知中心
      */
     it('item_video_swipedown', 0, async (done: Function) => {

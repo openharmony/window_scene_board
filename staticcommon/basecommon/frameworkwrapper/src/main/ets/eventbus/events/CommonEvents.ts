@@ -183,6 +183,11 @@ export class PackageCommonEvent extends CommonEvent {
   static readonly EVENT_PACKAGE_CHANGED = commonEvent.Support.COMMON_EVENT_PACKAGE_CHANGED;
 
   /**
+   * 包更新安装状态事件
+   */
+  static readonly EVENT_UPDATING_DELIVER_BUNDLE_STATUS = 'usual.event.UPDATING_DELIVER_BUNDLE_STATUS';
+
+  /**
    * 动态图标使能/去使能事件
    */
 
@@ -453,7 +458,7 @@ export class UpdateMigrateStatusChangeEvent extends CommonEvent {
 }
 
 /**
- * OpenHarmony化状态变化事件
+ * 鸿蒙化状态变化事件
  */
 export class BundleMappingChangeEvent extends CommonEvent {
   static eventTypeName = 'BundleMappingChangeEvent';

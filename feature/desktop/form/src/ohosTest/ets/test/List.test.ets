@@ -45,6 +45,7 @@ import { FormPreLoaderTest } from './ets/default/common/FormPreLoader.test';
 import { FormViewModelTest } from './ets/default/viewmodel/FormViewModel.test';
 import { HighFrequencyAppDataSourceTest } from './ets/default/datasource/HighFrequencyAppDataSource.test';
 import { IncrementDataSourceTest } from './ets/default/datasource/IncrementDataSource.test';
+import { AIDataSourceTest } from './ets/default/datasource/AIDataSource.test';
 import { ServiceFormManagerTest } from './ets/default/manager/ServiceFormManager.test';
 import { ServiceFormManagerBackupTest } from './ets/default/manager/ServiceFormManagerBackup.test';
 import { RecommendCardsDataPoolTest } from './ets/default/datapool/RecommendCardsDataPool.test';
@@ -82,6 +83,7 @@ export default function FormTestSuite() {
   FormViewModelTest();
   HighFrequencyAppDataSourceTest();
   IncrementDataSourceTest();
+  AIDataSourceTest();
   ServiceFormManagerTest();
   ServiceFormManagerBackupTest();
   RecommendCardsDataPoolTest();

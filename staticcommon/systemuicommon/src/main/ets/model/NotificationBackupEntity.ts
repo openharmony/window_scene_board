@@ -70,4 +70,10 @@ export class NotificationBackupEntity extends TableEntity {
    */
   @Column({ name: 'vibrationEnable', type: 'string' })
   public vibrationEnable?: string;
+
+  /**
+   * 是否是设备包名
+   */
+  @Column({ name: 'isPkgName', type: 'boolean' })
+  public isPkgName?: boolean;
 }

@@ -22,7 +22,7 @@ import {
   WallpaperData,
   WallpaperManager
 } from '@ohos/frameworkwrapper';
-import { AppItemInfo, CardItemInfo, StyleConstants } from '@ohos/launchercommon';
+import { AppItemInfo, CardItemInfo, DesktopManager, EditModeUtils, StyleConstants } from '@ohos/launchercommon';
 import { DisplayStateListener, DisplayStateManager, SysFloatTipDialog } from '@ohos/screenlockcommon/Index';
 import { DisplayUtils, ScreenLockFormConstants } from '@ohos/screenlockcommon';
 import curves from '@ohos.curves';
@@ -52,6 +52,10 @@ import { MpEventType, MpStateType, MpStateTypeUtils } from '@ohos/screenlockcomm
 import { SlObserverProxy } from '@ohos/screenlockcomponent/src/main/ets/observer/SlObserverProxy';
 import { ScreenLockFsmProxy } from '@ohos/screenlockcommon/src/main/ets/fsm/ScreenLockFsmProxy';
 import { MainColor } from '@ohos/screenlockwidget/src/main/ets/editsheet/models/MainColor';
+import EditModeStyleConstants from '@ohos/desktopedit/src/main/ets/default/common/constants/EditModeStyleConstants';
+import { ScreenLockWallpaperView } from './ScreenLockWallpaperView';
+import { editModeDockViewModel } from '@ohos/desktopedit/src/main/ets/default/viewmodel/EditModeDockViewModel';
+import { EditModeAccessibilityUtil } from '@ohos/launchercommon/src/main/ets/editmode/utils/EditModeAccessibilityUtil';
 
 const TAG = 'ScreenLockEditView';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.KG, TAG);
@@ -102,6 +106,9 @@ export struct ScreenLockEditView {
   private screenSizeChangeListener: DisplayStateListener = {
     onScreenSizeChange: (width: number, height: number) => {
       log.showInfo('screen width changes');
+      if (this.artAiWant.parameters) {
+        this.uiExtensionProxy?.send({ 'isScreenChange': true})
+      }
       this.mDisplayWidth = clockLayoutHelper.getScreenWidth();
       this.mDisplayHeight = clockLayoutHelper.getScreenHeight();
       let isPortrait = this.mDisplayWidth < this.mDisplayHeight;
@@ -131,6 +138,7 @@ export struct ScreenLockEditView {
         this.mEditViewModel?.setCurMpState(newState);
         this.mEditViewModel?.updateMpFsmState(oldState, newState);
         if (!MpStateTypeUtils.isEditState(newState)) {
+          this.artAiWant = {};
           this.artState = AIGC_STATE_APPEAR;
         }
 
@@ -146,6 +154,7 @@ export struct ScreenLockEditView {
         }
 
         if (MpStateTypeUtils.isEditPreviewState(newState)) {
+          this.artAiWant = {};
           this.artState = AIGC_STATE_APPEAR;
           this.formViewModel.updateLayout(this.clockStyle.layout, this.clockStyle.y);
           this.buttonOpacity = 1;
@@ -217,10 +226,13 @@ export struct ScreenLockEditView {
   // 编辑面板UI绑定状态
   @State private slEditorBindState: SlEditorBindState = slWidgetStateHelper.getEditorBindState();
   @Provide uiExtensionProxy: UIExtensionProxy | undefined = undefined;
+  @Provide artAiWant: Want = {};
   @Provide @Watch('pirvacyDialogstateChange')dialogState: string = '';
   @Provide time: string = '';
   @Consume gridWidth: number;
   @Consume mainColor: MainColor;
+  @State want: Want = {}
+  @State isShow: boolean = false
 
   private coverClockData: ClockData = clockData;
 
@@ -293,7 +305,7 @@ export struct ScreenLockEditView {
     this.gridRows = layoutAmount.y;
     // 刷新缓存
     this.slEditorBindState?.setClockAmount(layoutAmount);
-    if (DeviceHelper.isPadOr2in1PcType() || DisplayUtils.isUltraScreenGStatus()) {
+    if (DeviceHelper.isPadOr2in1PcType() || DisplayUtils.isThreeFoldGStatus()) {
       this.initClockLayoutPad();
     }
     this.safeAreaInsets.bottom = this.mDisplayHeight -
@@ -378,6 +390,87 @@ export struct ScreenLockEditView {
     }
   }
 
+  private startAbility(want: Want, event: MpEventType): void {
+    this.want = want;
+    if (!(want?.parameters)) {
+      log.showError('want parameters is undefind');
+      return;
+    }
+    // ScreenLockFsmProxy.getInstance(this.persistentId).submitMainPageEvent(event);
+  }
+
+  @Builder
+  buttonItem() {
+    Column({ space: EditModeStyleConstants.EDIT_BUTTON_IMAGE_FONT_SPACE }) {
+      Stack() {
+        Row() {
+        }
+        .height(EditModeStyleConstants.EDIT_SWIPER_BUTTON_SIZE)
+        .width(EditModeStyleConstants.EDIT_SWIPER_BUTTON_SIZE)
+        .backgroundColor('#66FFFFFF')
+        .opacity(editModeDockViewModel.isDarkWallpaper() ? EditModeStyleConstants.EDIT_DOCK_BACKGROUND_OPACITY : 1)
+        .borderRadius(EditModeStyleConstants.EDIT_SWIPER_BUTTON_SIZE / 2)
+
+        SymbolGlyph($r(`sys.symbol.picture_fill`))
+          .draggable(false)
+          .fontSize(EditModeStyleConstants.EDIT_SWIPER_ICON_SIZE + 'vp')
+          .renderingStrategy(SymbolRenderingStrategy.SINGLE)
+          .fontColor([Color.White])
+      }
+      .height(EditModeStyleConstants.EDIT_SWIPER_BUTTON_SIZE)
+      .width(EditModeStyleConstants.EDIT_SWIPER_BUTTON_SIZE)
+
+      Row() {
+        Text($r(`app.string.wallpaper`))
+          .fontSize($r('sys.float.ohos_id_text_size_caption'))
+          .fontColor(Color.White)
+          .fontWeight(FontWeight.Regular)
+          .width(EditModeStyleConstants.PERCENTAGE_100)
+          .textAlign(TextAlign.Center)
+          .maxLines(StyleConstants.DEFAULT_APP_NAME_LINES)
+          .textOverflow({ overflow: TextOverflow.Ellipsis })
+          .margin({ top: EditModeStyleConstants.EDIT_SWIPER_BUTTON_NAME_MARGIN_TOP })
+      }
+      .height(EditModeStyleConstants.EDIT_MODE_BUTTON_TEXT_HEIGHT)
+      .alignItems(VerticalAlign.Top)
+    }
+    .margin({
+      bottom: 20
+    })
+    .width(EditModeStyleConstants.EDIT_SWIPER_BUTTON_WIDTH)
+    .justifyContent(FlexAlign.Center)
+    .transition(
+      TransitionEffect.asymmetric(
+        TransitionEffect.OPACITY.animation({
+          duration: EditModeStyleConstants.DOCK_TRANSITION_DURATION,
+          curve: Curve.Friction,
+          delay: EditModeStyleConstants.DOCK_TRANSITION_DELAY
+        }).combine(TransitionEffect.translate({ y: EditModeStyleConstants.DOCK_TRANSLATE_Y })),
+        TransitionEffect.OPACITY.animation({
+          duration: EditModeStyleConstants.DOCK_TRANSITION_DURATION,
+          curve: Curve.Friction
+        }).combine(TransitionEffect.translate({ y: EditModeStyleConstants.DOCK_TRANSLATE_Y })),
+      )
+    )
+    .onClick(() => {
+      this.isShow = true
+      let wallpaperWant: Want = {
+        bundleName: 'com.ohos.sceneboard',
+        abilityName: 'HomeThemeComponentExtAbility',
+        parameters: {
+          'ability.want.params.uiExtensionType': 'sys/commonUI',
+          'nav': 'wallpaperPicker',
+          'isFull': false,
+          'desktopParam': DesktopManager.getInstance().updateParam().updateExtendParam().getDesktopParam(),
+          // 'statusBarHeight': viewMgrPolicy.getViewController(ViewType.STATUS_BAR)?.getArea()?.height() ?? 0
+        }
+      };
+      this.startAbility(wallpaperWant, MpEventType.ENTER_EDIT_WALLPAPER);
+    })
+
+  }
+
+
   build() {
     if (MpStateTypeUtils.isEditState(this.curMpState) || this.needShowThemeUEC) {
       Stack() {
@@ -409,6 +502,10 @@ export struct ScreenLockEditView {
               }
             })
               .opacity(this.buttonOpacity)
+
+            if (this.curMpState === MpStateType.EDIT_NORMAL_STATE) {
+              this.buttonItem()
+            }
           }
           .justifyContent(FlexAlign.SpaceBetween)
           .height('100%')
@@ -448,6 +545,14 @@ export struct ScreenLockEditView {
                   break;
               }
             })
+        }
+
+        if (this.isShow) {
+          ScreenLockWallpaperView({
+            hiddenWallpaperView: ()=> {
+              this.isShow = false
+            }
+          })
         }
 
       }

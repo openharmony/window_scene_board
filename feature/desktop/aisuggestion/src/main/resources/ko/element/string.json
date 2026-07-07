@@ -1,0 +1,88 @@
+{
+    "string":[
+        {
+            "name":"not_pin",
+            "value":"핀 해제",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pin",
+            "value":"상단 고정",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aisuggestion_app_name",
+            "value":"voice 추천",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pin_this_app",
+            "value":"상단 고정",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"unpin_this_app",
+            "value":"핀 해제",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"reduce_recommend_this_card",
+            "value":"덜 추천",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"not_recommend_this_card",
+            "value":"다시 추천 안 함",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"manage_card",
+            "value":"위젯 관리",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"not_recommend_this_app",
+            "value":"다시 추천하지 않기",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"subscribe_this_card",
+            "value":"위젯 고정",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"unsubscribe_this_card",
+            "value":"위젯 고정 해제",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"manage_app",
+            "value":"앱 관리",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

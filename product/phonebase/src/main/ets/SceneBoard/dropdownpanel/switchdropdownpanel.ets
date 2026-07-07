@@ -683,8 +683,8 @@ export default struct SwitchDropdownPanel {
     this.isInOpacityAnim = true;
     animateTo({
       duration: !isShow && this.dropDownEvent.speedY < FAST_SPEED ?
-      DropDownPanelConstants.PANEL_OPACITY_DURATION_WITH_FAST_SPEED :
-      DropDownPanelConstants.PANEL_OPACITY_DURATION, // 动画时长
+        DropDownPanelConstants.PANEL_OPACITY_DURATION_WITH_FAST_SPEED :
+        DropDownPanelConstants.PANEL_OPACITY_DURATION, // 动画时长
       curve: isShow ? Curve.EaseIn : Curve.EaseOut, // 动画曲线
       delay: 0, // 动画延迟
       iterations: 1, // 播放次数

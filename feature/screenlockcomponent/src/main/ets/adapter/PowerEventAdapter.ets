@@ -25,6 +25,7 @@ import {
 import { CoreEventType, CoreStateTypeUtils } from '@ohos/screenlockcommon/src/main/ets/fsm/ScreenLockCoreFsm';
 import { ScreenLockFsmProxy } from '@ohos/screenlockcommon/src/main/ets/fsm/ScreenLockFsmProxy';
 import { SoEventType, SoStateTypeUtils } from '@ohos/screenlockcommon/src/main/ets/fsm/ScreenOffFsm';
+import { OneMirrorService } from '../onemirror/service/OneMirrorService';
 import { AbstractEventAdapter } from './AbstractEventAdapter';
 import { AodSlideAdapter } from './AodSlideAdapter';
 
@@ -104,7 +105,16 @@ export class PowerEventAdapter extends AbstractEventAdapter {
     } else {
       log.showInfo('onBeginSleep.');
       this.fsmProxy.submitCoreEvent(CoreEventType.PRE_SCREEN_OFF);
+      this.notifyCloseLcdIfNoScreenOffToEnd();
     }
+  }
+
+  private notifyCloseLcdIfNoScreenOffToEnd(): void {
+    if (OneMirrorService.getInstance().isSupportScreenOffToEnd()) {
+      return;
+    }
+    log.showInfo('onBeginSleep no screen off to end, notify close lcd.');
+    SCBScreenSessionManager.getInstance().notifyScreenLockEvent(PowerUtils.NOTIFY_OFF_SCREEN_CLOSE_LCD);
   }
 
   private handleEndSleep(): void {

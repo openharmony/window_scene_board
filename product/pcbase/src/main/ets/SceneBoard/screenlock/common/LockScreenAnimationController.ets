@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023-Huawei Device Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) 2023-2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -128,7 +128,7 @@ export default class LockScreenAnimationController extends AnimationController {
   public static readonly WALLPAPER_CALLBACK : string = 'wallpaperCallback';
 
   private static instance: LockScreenAnimationController;
-  private _isPlayShieldAnimation: boolean = false;
+  private _isPlayShieldAnimation: boolean = true;
 
   public set isPlayShieldAnimation(value: boolean) {
     this._isPlayShieldAnimation = value;
@@ -177,7 +177,7 @@ export default class LockScreenAnimationController extends AnimationController {
 
     // screen lock date
     LockScreenAnimationController.callbackMap.set(LockScreenAnimationController.DATE_CALLBACK,
-      new CallbackParameter((): void =>{}, this.COMM_CURVE, 0, 0, this.LOCK_SCREEN_STATUS_FINISH));
+      new CallbackParameter((): void =>{}, this.COMM_CURVE, 0, 0));
 
     // screen lock user item
     LockScreenAnimationController.callbackMap.set(LockScreenAnimationController.USER_ITEM_CALLBACK,

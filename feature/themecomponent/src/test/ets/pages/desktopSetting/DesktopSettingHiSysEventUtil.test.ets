@@ -41,6 +41,16 @@ export function DesktopSettingHiSysEventUtilTest() {
       expect(true).assertTrue();
     })
 
+    it('test_reportSettingVoiceSearchSwitch_true', Level.LEVEL0, (): void => {
+      DesktopSettingHiSysEventUtil.reportSettingVoiceSearchSwitch(true);
+      expect(true).assertTrue();
+    })
+
+    it('test_reportSettingVoiceSearchSwitch_false', Level.LEVEL0, (): void => {
+      DesktopSettingHiSysEventUtil.reportSettingVoiceSearchSwitch(false);
+      expect(true).assertTrue();
+    })
+
     it('test_reportSettingAutoAlignSwitch_true', Level.LEVEL0, (): void => {
       DesktopSettingHiSysEventUtil.reportSettingAutoAlignSwitch(true);
       expect(true).assertTrue();

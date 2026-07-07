@@ -2,11 +2,11 @@
     "string": [
       {
         "name": "toggle_data_default",
-        "value": "flashlight,ring_mode,auto_rotate,toggle_scanner,share,near_link,air_plane,mobile_data,hotspot,toggle_screenshot,toggle_screen_recorder,HuaweiCastToggle,music_service,location,nfc,eye_comfort,dark_mode,multi_window,toggle_Demo"
+        "value": "flashlight,ring_mode,auto_rotate,toggle_scanner,share,near_link,air_plane,mobile_data,hotspot,toggle_screenshot,toggle_screen_recorder,CastToggle,music_service,location,nfc,eye_comfort,dark_mode,multi_window,toggle_Demo"
       },
       {
         "name": "toggle_data_default_old",
-        "value": "flashlight,ring_mode,auto_rotate,toggle_scanner,share,near_link,air_plane,mobile_data,hotspot,toggle_screenshot,toggle_screen_recorder,HuaweiCastToggle,music_service,location,nfc,eye_comfort,dark_mode,toggle_Demo,multi_window"
+        "value": "flashlight,ring_mode,auto_rotate,toggle_scanner,share,near_link,air_plane,mobile_data,hotspot,toggle_screenshot,toggle_screen_recorder,CastToggle,music_service,location,nfc,eye_comfort,dark_mode,toggle_Demo,multi_window"
       }
     ]
   }

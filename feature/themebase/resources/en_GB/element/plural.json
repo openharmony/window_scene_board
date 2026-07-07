@@ -1,0 +1,42 @@
+{
+    "plural":[
+        {
+            "name":"delete_select_wallpapers",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"Delete the selected wallpapers?",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"one",
+                    "value":"Delete the selected wallpaper?",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"item_select",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"%d item selected",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"%d items selected",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

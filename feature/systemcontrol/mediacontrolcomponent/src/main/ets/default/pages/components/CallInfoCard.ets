@@ -463,7 +463,8 @@ export struct CallInfoCard {
     .padding({ left: Constants.COMMON_ROW_PADDING, right: Constants.COMMON_ROW_PADDING })
     .margin({ bottom: Constants.SLIDER_MARGIN / 2 })
     .onClick(() => {
-      if (this.callSession && !this.mediaTransitionFlag) {
+      //mediaTransitionFlag在一镜到底动画播放完后的值不为0，导致点击通话卡片，无法跳转到CallUI,暂不判断mediaTransitionFlag
+      if (this.callSession) {
         this.isJumping = true;
         this.mediaInfoProvider?.startAimApp(this.callSession.sessionId || '');
       }

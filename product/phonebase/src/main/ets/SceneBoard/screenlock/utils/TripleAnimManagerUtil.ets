@@ -15,7 +15,7 @@
 
 import { LogDomain, LogHelper } from '@ohos/basicutils';
 import { DeviceHelper } from '@ohos/frameworkwrapper';
-import { UltraScreenStatus } from '@ohos/screenlockcommon';
+import { ThreeFoldStatus } from '@ohos/screenlockcommon';
 import { TripleAnimConstants } from '../constant/TripleAnimConstants';
 
 const TAG: string = 'TripleAnimManagerUtil';
@@ -24,9 +24,9 @@ const log: LogHelper = LogHelper.getLogHelper(LogDomain.KG, TAG);
 const BOTTOM_TOOLS_MARGIN_F = 16;
 const BOTTOM_TOOLS_MARGIN_M = 32;
 const BOTTOM_TOOLS_MARGIN_G = 48;
-const IS_ULTRA_SCREEN = DeviceHelper.isUltraScreenProduct();
+const IS_THREE_FOLD = DeviceHelper.isThreeFoldProduct();
 
-// 超大屏状态切换
+// 三折叠状态切换
 export enum TripleStateChange {
   INVALID,
   F_TO_M,
@@ -198,7 +198,7 @@ const clockTransXCalculateMap: Map<TripleStateChange, TripleStateChangeFunction>
   }],
 ]);
 
-// 超大屏锁屏开合动效参数管理类
+// 三折叠锁屏开合动效参数管理类
 export class TripleAnimManagerUtil {
   private static mInstance: TripleAnimManagerUtil = new TripleAnimManagerUtil();
   // pre表示折叠前时钟组件位置
@@ -209,7 +209,7 @@ export class TripleAnimManagerUtil {
   private static isSkipClockMarginAnimation: boolean = false;
   // 组件与动效初始值计算函数映射关系
   private animationMap: Map<string, Map<TripleStateChange, TripleStateChangeFunction>> = new Map();
-  // 超大屏产品开合状态映射关系
+  // 三折叠产品开合状态映射关系
   private stateChangeMap: Map<string, TripleStateChange> = new Map();
 
   constructor() {
@@ -222,12 +222,12 @@ export class TripleAnimManagerUtil {
     this.animationMap.set(TripleAnimConstants.BOTTOM_CAMERA, bottomCameraTransXCalculateMap);
     this.animationMap.set(TripleAnimConstants.FOLDABLE_PSD, foldablePSDCalculateMap);
 
-    this.stateChangeMap.set(`${UltraScreenStatus.F_STATUS},${UltraScreenStatus.M_STATUS}`, TripleStateChange.F_TO_M);
-    this.stateChangeMap.set(`${UltraScreenStatus.F_STATUS},${UltraScreenStatus.G_STATUS}`, TripleStateChange.F_TO_G);
-    this.stateChangeMap.set(`${UltraScreenStatus.M_STATUS},${UltraScreenStatus.F_STATUS}`, TripleStateChange.M_TO_F);
-    this.stateChangeMap.set(`${UltraScreenStatus.M_STATUS},${UltraScreenStatus.G_STATUS}`, TripleStateChange.M_TO_G);
-    this.stateChangeMap.set(`${UltraScreenStatus.G_STATUS},${UltraScreenStatus.F_STATUS}`, TripleStateChange.G_TO_F);
-    this.stateChangeMap.set(`${UltraScreenStatus.G_STATUS},${UltraScreenStatus.M_STATUS}`, TripleStateChange.G_TO_M);
+    this.stateChangeMap.set(`${ThreeFoldStatus.F_STATUS},${ThreeFoldStatus.M_STATUS}`, TripleStateChange.F_TO_M);
+    this.stateChangeMap.set(`${ThreeFoldStatus.F_STATUS},${ThreeFoldStatus.G_STATUS}`, TripleStateChange.F_TO_G);
+    this.stateChangeMap.set(`${ThreeFoldStatus.M_STATUS},${ThreeFoldStatus.F_STATUS}`, TripleStateChange.M_TO_F);
+    this.stateChangeMap.set(`${ThreeFoldStatus.M_STATUS},${ThreeFoldStatus.G_STATUS}`, TripleStateChange.M_TO_G);
+    this.stateChangeMap.set(`${ThreeFoldStatus.G_STATUS},${ThreeFoldStatus.F_STATUS}`, TripleStateChange.G_TO_F);
+    this.stateChangeMap.set(`${ThreeFoldStatus.G_STATUS},${ThreeFoldStatus.M_STATUS}`, TripleStateChange.G_TO_M);
   }
 
   public static getInstance(): TripleAnimManagerUtil {
@@ -240,7 +240,7 @@ export class TripleAnimManagerUtil {
   // 更新时钟前一状态位置信息
   public setPreClockPosition(x: number | undefined, y: number | undefined): void {
     log.showInfo(`setPreClockPosition: posX is ${x}, posY is ${y}`);
-    if (!IS_ULTRA_SCREEN) {
+    if (!IS_THREE_FOLD) {
       return;
     }
     if (x === undefined || y === undefined) {
@@ -253,7 +253,7 @@ export class TripleAnimManagerUtil {
   // 更新时钟下一状态位置信息
   public setCurClockPosition(x: number, y: number): void {
     log.showInfo(`setCurClockPosition: posX is ${x}, posY is ${y}`);
-    if (!IS_ULTRA_SCREEN) {
+    if (!IS_THREE_FOLD) {
       return;
     }
     TripleAnimManagerUtil.curClockPosition[0] = x;
@@ -262,7 +262,7 @@ export class TripleAnimManagerUtil {
 
   // 设置是否需要跳过时钟组件的updateClockMargin()动画
   public setSkipClockMarginAnimation(isSkip: boolean): void {
-    if (!IS_ULTRA_SCREEN) {
+    if (!IS_THREE_FOLD) {
       log.showInfo('not triple fold product, dont skip animation');
       return;
     }
@@ -273,21 +273,21 @@ export class TripleAnimManagerUtil {
   // 判断当前是否需要跳过时钟组件updateClockMargin()动画
   public getSkipClockMarginAnimation(): boolean {
     log.showInfo(`getSkipClockMarginAnimation: ${TripleAnimManagerUtil.isSkipClockMarginAnimation}`);
-    if (!IS_ULTRA_SCREEN) {
+    if (!IS_THREE_FOLD) {
       log.showInfo('not triple fold product, return false');
       return false;
     }
     return TripleAnimManagerUtil.isSkipClockMarginAnimation;
   }
 
-  // 获取超大屏锁屏开合状态
-  public getTripleScreenLockStateChange(oldUltraScreenState: UltraScreenStatus,
-    newUltraScreenState: UltraScreenStatus): TripleStateChange {
-    log.showInfo(`getTripleScreenLockStateChange, old: ${oldUltraScreenState}, new: ${newUltraScreenState}`);
-    if (!IS_ULTRA_SCREEN) {
+  // 获取三折叠锁屏开合状态
+  public getTripleScreenLockStateChange(oldTripleFoldState: ThreeFoldStatus,
+    newTripleFoldState: ThreeFoldStatus): TripleStateChange {
+    log.showInfo(`getTripleScreenLockStateChange, old: ${oldTripleFoldState}, new: ${newTripleFoldState}`);
+    if (!IS_THREE_FOLD) {
       return TripleStateChange.INVALID;
     }
-    let key: string = `${oldUltraScreenState},${newUltraScreenState}`;
+    let key: string = `${oldTripleFoldState},${newTripleFoldState}`;
     if (this.stateChangeMap.get(key) !== undefined) {
       return this.stateChangeMap.get(key) as TripleStateChange;
     } else {

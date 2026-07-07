@@ -358,6 +358,13 @@
             }
         },
         {
+            "name":"voice_translate_name",
+            "value":"語言助手翻譯",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
             "name":"control_center_edit_panel_tips_max_limit",
             "value":"新增內容已達上限",
             "attr":{
@@ -367,6 +374,13 @@
         {
             "name":"cc_accessibility_str_change_vertical_brightness_desc",
             "value":"進度條，輕觸兩下並按住上下滑動即可調節",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cloud_lai",
+            "value":"蓬萊模式",
             "attr":{
                 "priority":"translate"
             }

@@ -28,15 +28,20 @@ export enum LogDomain {
   SYS_UI = 0x01a00, // SystemUI
   NC = 0x01a01, // Notification Center
   CC = 0x01b04, // Control Center
+  AOD = 0x01b05, // AOD
   KG = 0x01b06, // Keyguard
   AA = 0x0001b, // Negative Screen
   SEARCH = 0x0ff00, // Global Search
   RECENT = 0x01b09, // Recent
   GESTURE = 0x01b0a, // Gesture
+  AISUGGESTION = 0x01b0b, // AISuggestion
   WINDOW = 0x04200, // Window
+  HICAR = 0x01b0d, // HiCar
   SCS = 0x01b0e, // Desktop setting
   TE = 0x01b0f, // Theme Editor
   PRIVACY_INDICATOR = 0x01b10, // Privacy Indicator
+  WATCH_WF = 0X01c01, // watchface
+  WATCH_BC = 0X01c02, // borderless canvas
   LM = 0x01c03, // Layout Manager
   MC = 0x01c04, // Media Control
   FORM = 0x01c05, // SceneBoard Card
@@ -51,15 +56,20 @@ export const enum DomainName {
   SYS_UI = 'SysUI', // SystemUI
   NC = 'NC', // Notification Center
   CC = 'CC', // Control Center
+  AOD = 'AOD', // AOD
   KG = 'KG', // Keyguard
   AA = 'AA', // Negative Screen
   SEARCH = 'Search', // Global Search
   RECENT = 'Recent', // Recent
   GESTURE = 'Gesture', // Gesture
+  AISUGGESTION = 'AISuggestion', // AISuggestion
   WINDOW = 'Window', // Window
+  HICAR = 'HiCar', // HiCar
   DESKTOPSETTING = 'DesktopSetting', // Desktop setting
   TE = 'ThemeEditor', // Theme Editor
   PRIVACY_INDICATOR = 'PrivacyIndicator', // Privacy Indicator
+  WATCH_WF = 'Watchface', // Watchface
+  WATCH_BC = 'BorderlessCanvas', // Borderless Canvas
   LM = 'LayoutManager', // Layout Manager
   MC = 'MediaControl', // Media Control
   FORM = 'SceneBoardCard', // SceneBoard Card
@@ -76,15 +86,20 @@ export const LOG_ENABLE_MAP: Map<LogDomain, boolean> = new Map([
   [LogDomain.SYS_UI, true],
   [LogDomain.NC, true],
   [LogDomain.CC, true],
+  [LogDomain.AOD, true],
   [LogDomain.KG, true],
   [LogDomain.AA, true],
   [LogDomain.SEARCH, true],
   [LogDomain.RECENT, true],
   [LogDomain.GESTURE, true],
+  [LogDomain.AISUGGESTION, true],
   [LogDomain.WINDOW, true],
+  [LogDomain.HICAR, true],
   [LogDomain.SCS, true],
   [LogDomain.TE, true],
   [LogDomain.PRIVACY_INDICATOR, true],
+  [LogDomain.WATCH_WF, true],
+  [LogDomain.WATCH_BC, true],
   [LogDomain.LM, true],
   [LogDomain.MC, true],
   [LogDomain.FORM, true],

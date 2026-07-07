@@ -17,6 +17,7 @@ import image from '@ohos.multimedia.image';
 import { wantAgent, WantAgent } from '@kit.AbilityKit';
 import bundleManager from '@ohos.bundle.bundleManager';
 import {
+  DeliverInstallSource,
   NotificationAction,
   NotificationCategory,
   NotificationCreatorType,
@@ -123,6 +124,32 @@ export default function NotificationBaseTest() {
       mocker.ignoreMock(notificationBase, notificationBase.getGroupKey);
     });
 
+    it('should_return_appIcon_when_isDeliverNotification_is_true_and_isOnlyUseAppIcon_is_false', 0, () => {
+      let notificationbase: NotificationBase = new NotificationBase();
+      notificationbase.isDeliverNotification = true;
+      notificationbase.appIcon = 'testAppIcon';
+      const result = notificationbase.getAppIcon();
+      expect(result).assertEqual('testAppIcon');
+    });
+
+    it('should_return_appIcon_when_isDeliverNotification_is_false_and_isFromSystemApp_is_true_and_smallIcon_is_not_null', 0, () => {
+      let notificationbase: NotificationBase = new NotificationBase();
+      notificationbase.isDeliverNotification = false;
+      notificationbase.isFromSystemApp = true;
+      notificationbase.smallIcon = 'testSmallIcon';
+      const result = notificationbase.getAppIcon();
+      expect(result).assertEqual('testSmallIcon');
+    });
+
+    it('should_return_appIcon_when_isDeliverNotification_is_false_and_isFromSystemApp_is_false', 0, () => {
+      let notificationbase: NotificationBase = new NotificationBase();
+      notificationbase.isDeliverNotification = false;
+      notificationbase.isFromSystemApp = false;
+      notificationbase.appIcon = 'testAppIcon';
+      const result = notificationbase.getAppIcon();
+      expect(result).assertEqual('testAppIcon');
+    });
+
     it('should_return_overlayIcon_when_overlayIconStyle_is_not_REVERSE', 0, () => {
       let notificationbase: NotificationBase = new NotificationBase();
       notificationbase.overlayIconStyle = OverlayIconStyle.DEFAULT;
@@ -257,6 +284,32 @@ export default function NotificationBaseTest() {
       mocker.ignoreMock(notificationBase, notificationBase.getGroupKey);
     });
 
+    it('should_return_appIcon_when_isDeliverNotification_is_true_and_isOnlyUseAppIcon_is_false', 0, () => {
+      let notificationbase: NotificationBase = new NotificationBase();
+      notificationbase.isDeliverNotification = true;
+      notificationbase.appIcon = 'testAppIcon';
+      const result = notificationbase.getAppIcon();
+      expect(result).assertEqual('testAppIcon');
+    });
+
+    it('should_return_appIcon_when_isDeliverNotification_is_false_and_isFromSystemApp_is_true_and_smallIcon_is_not_null', 0, () => {
+      let notificationbase: NotificationBase = new NotificationBase();
+      notificationbase.isDeliverNotification = false;
+      notificationbase.isFromSystemApp = true;
+      notificationbase.smallIcon = 'testSmallIcon';
+      const result = notificationbase.getAppIcon();
+      expect(result).assertEqual('testSmallIcon');
+    });
+
+    it('should_return_appIcon_when_isDeliverNotification_is_false_and_isFromSystemApp_is_false', 0, () => {
+      let notificationbase: NotificationBase = new NotificationBase();
+      notificationbase.isDeliverNotification = false;
+      notificationbase.isFromSystemApp = false;
+      notificationbase.appIcon = 'testAppIcon';
+      const result = notificationbase.getAppIcon();
+      expect(result).assertEqual('testAppIcon');
+    });
+
     it('should_return_overlayIcon_when_overlayIconStyle_is_not_REVERSE', 0, () => {
       let notificationbase: NotificationBase = new NotificationBase();
       notificationbase.overlayIconStyle = OverlayIconStyle.DEFAULT;
@@ -389,6 +442,32 @@ export default function NotificationBaseTest() {
 
       mocker.ignoreMock(notificationBase, notificationBase.getCategory);
       mocker.ignoreMock(notificationBase, notificationBase.getGroupKey);
+    });
+
+    it('should_return_appIcon_when_isDeliverNotification_is_true_and_isOnlyUseAppIcon_is_false', 0, () => {
+      let notificationbase: NotificationBase = new NotificationBase();
+      notificationbase.isDeliverNotification = true;
+      notificationbase.appIcon = 'testAppIcon';
+      const result = notificationbase.getAppIcon();
+      expect(result).assertEqual('testAppIcon');
+    });
+
+    it('should_return_appIcon_when_isDeliverNotification_is_false_and_isFromSystemApp_is_true_and_smallIcon_is_not_null', 0, () => {
+      let notificationbase: NotificationBase = new NotificationBase();
+      notificationbase.isDeliverNotification = false;
+      notificationbase.isFromSystemApp = true;
+      notificationbase.smallIcon = 'testSmallIcon';
+      const result = notificationbase.getAppIcon();
+      expect(result).assertEqual('testSmallIcon');
+    });
+
+    it('should_return_appIcon_when_isDeliverNotification_is_false_and_isFromSystemApp_is_false', 0, () => {
+      let notificationbase: NotificationBase = new NotificationBase();
+      notificationbase.isDeliverNotification = false;
+      notificationbase.isFromSystemApp = false;
+      notificationbase.appIcon = 'testAppIcon';
+      const result = notificationbase.getAppIcon();
+      expect(result).assertEqual('testAppIcon');
     });
 
     it('should_return_overlayIcon_when_overlayIconStyle_is_not_REVERSE', 0, () => {

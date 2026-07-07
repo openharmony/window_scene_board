@@ -14,6 +14,13 @@
                 "priority":"translate"
             }
         },
+      {
+        "name":"disable_modify_wallpaper_tips",
+        "value":"ئورگان بۇ ئىقتىدارنى چەكلىگەن.",
+        "attr":{
+          "priority":"translate"
+        }
+      },
         {
             "name":"stop_font_creation_service",
             "value":"مۇلازىمەتنى ئېتىش",
@@ -21,6 +28,13 @@
                 "priority":"translate"
             }
         },
+      {
+        "name":"Desktop_setting",
+        "value":"ئۈستەليۈزى تەڭشىكى",
+        "attr":{
+          "priority":"translate"
+        }
+      },
         {
             "name":"screenlock_font_creation_service_text",
             "value":"قۇلۇپ ئېكرانى خەت نۇسخىسى ياساش مۇلازىمىتى",
@@ -157,6 +171,54 @@
       {
         "name": "wallpaper_editor",
         "value": "قوللىنىش"
+      },
+      {
+        "name": "cancle",
+        "value": "بىكار قويۇڭ"
+      },
+      {
+        "name": "set_wallpaper_all",
+        "value": "بىللە تەڭشەڭ"
+      },
+      {
+        "name": "set_wallpaper_desktop",
+        "value": "ئۈستەل بېتىنىڭ كەسكىن تەڭشەش"
+      },
+      {
+        "name": "set_wallpaper_lock",
+        "value": "قۇلپاق كۆزنىڭ كەسكىن تەڭشەش"
+      },
+      {
+        "name": "wallpaper_show_style",
+        "value": "دىۋار قەغەزى كۆرسىتىش ئۇسۇلى"
+      },
+      {
+        "name": "screen_fit",
+        "value": "ئېكرانغا ماس كېلىدۇ"
+      },
+      {
+        "name": "screen_full",
+        "value": "ئېكراننى تولدۇرۇش"
+      },
+      {
+        "name": "screen_center",
+        "value": "ئوتتۇرىغا تەڭشەش"
+      },
+      {
+        "name": "screen_sctetch",
+        "value": "وغرىلاپ تولدۇرۇش"
+      },
+      {
+        "name": "screen_tile",
+        "value": "كاھىش"
+      },
+      {
+        "name": "image_decoding_failure",
+        "value": "رەسىم نورمالسىز، قايتا سىناڭ."
+      },
+      {
+        "name":"Desktop_individuation",
+        "value":"ئۈستەليۈزى ۋە خاسلاشتۇرۇش"
       }
     ]
 }

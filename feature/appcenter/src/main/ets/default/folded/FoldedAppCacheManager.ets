@@ -496,7 +496,7 @@ export class FoldedAppCacheManager extends DefaultAppCacheManager {
 
   /**
    *
-   * 大屏幕机安装新应用专用，会走两次
+   * 折叠机安装新应用专用，会走两次
    *
    * @param appGridLayoutItemList
    * @param newAddItem

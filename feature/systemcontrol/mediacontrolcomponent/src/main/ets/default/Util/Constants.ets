@@ -358,7 +358,7 @@ export default class Constants {
   // 折叠屏字体最大倍数
   public static EXPAND_TEXT_MAX_FONT_SCALE = 1.45;
 
-  // 平板、折叠屏、超大屏展开态弹窗高度
+  // 平板、折叠屏、三折叠展开态弹窗高度
   public static FOLD_DEVICE_EXPAND_PANEL_HEIGHT = 600;
 
   // 直板机弹窗高度
@@ -814,6 +814,7 @@ export enum AudioVolumeType {
   VOICE_CALL = 0,
   RINGTONE = 2,
   MEDIA = 3,
+  VOICE_ASSISTANT = 9
 }
 
 export enum HostType {

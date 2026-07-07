@@ -30,12 +30,12 @@ export default class DefaultDesktopLayoutInfo {
   static getDefaultLayoutInfo(): DefaultDesktopLayoutInfo {
     let defaultLayoutInfo = new DefaultDesktopLayoutInfo();
     const isPc: boolean = DeviceHelper.isPC();
-    const isBigScreen: boolean = DeviceHelper.isBigScreenMachine();
+    const isSuperFold: boolean = DeviceHelper.isSuperFoldMachine();
     defaultLayoutInfo.layoutDescription = {
-      pageCount: isBigScreen ? 2 : 1,
+      pageCount: isSuperFold ? 2 : 1,
       row: !isPc ? 6 : 9,
       column: !isPc ? 4 : 16,
-      maxPage: !isPc ? 18 : (isBigScreen ? 2 : 1),
+      maxPage: !isPc ? 18 : (isSuperFold ? 2 : 1),
       maxForm: 80
     };
     return defaultLayoutInfo;

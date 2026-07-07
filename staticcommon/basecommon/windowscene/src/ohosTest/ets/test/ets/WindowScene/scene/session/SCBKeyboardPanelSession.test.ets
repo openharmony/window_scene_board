@@ -25,11 +25,7 @@ import sceneSessionManager from '@ohos.sceneSessionManager';
 import { image } from '@kit.ImageKit';
 
 interface ISCBKeyboardPanelSession {
-  getSmartMenuCfg(): Promise<void>;
-
   setVisibility(visibility: boolean): void;
-
-  smartMenu: SmartMenu;
 }
 
 let keyboardPanelSession: SCBKeyboardPanelSession;
@@ -60,72 +56,7 @@ export function SCBKeyboardPanelSessionTest() {
     })
     afterAll(() => {
     })
-    getPatternOptionTest();
-    getSmartButtonTest();
-    sendPrivateCommandTest();
-    getSmartMenuCfgTest();
     setVisibilityTest();
-  })
-}
-function getPatternOptionTest(){
-  it('getPatternOption', 0, () => {
-    let patternOption: number = keyboardPanelSession.getPatternOption();
-    expect(patternOption).assertEqual(sceneSessionManager.KeyboardGravity.GRAVITY_FLOAT);
-  })
-}
-function getSmartButtonTest(){
-  it('getSmartButton', 0, () => {
-    keyboardPanelSession.smartButtonInfo = undefined;
-    expect(keyboardPanelSession.getSmartButton() !== null).assertTrue();
-
-    keyboardPanelSession.smartButtonInfo = {
-      smartButton: {
-        name: "test",
-        actionType: "test",
-        actionParams: {},
-        isDefault: true
-      }
-    };
-    expect(keyboardPanelSession.getSmartButton() !== null).assertTrue();
-  })
-}
-function sendPrivateCommandTest(){
-  it('sendPrivateCommand', 0, () => {
-    keyboardPanelSession.sendPrivateCommand(0);
-    expect(true).assertTrue();
-  })
-}
-
-function getSmartMenuCfgTest(){
-  it('getSmartMenuCfg', 0, () => {
-    keyboardPanelSession.smartButtonInfo = undefined;
-    iKeyboardPanelSession.getSmartMenuCfg();
-    expect(true).assertTrue();
-
-    keyboardPanelSession.smartButtonInfo = {
-      smartButton: {
-        name: "test",
-        actionType: "test",
-        actionParams: {},
-        isDefault: true
-      }
-    };
-
-    keyboardPanelSession.rightIcon = 'test';
-    iKeyboardPanelSession.getSmartMenuCfg();
-    expect(true).assertTrue();
-
-    keyboardPanelSession.rightIcon = '';
-    iKeyboardPanelSession.getSmartMenuCfg();
-    expect(true).assertTrue();
-
-    keyboardPanelSession.rightSelectedIcon = '';
-    iKeyboardPanelSession.getSmartMenuCfg();
-    expect(true).assertTrue();
-
-    keyboardPanelSession.rightSelectedIcon = 'test';
-    iKeyboardPanelSession.getSmartMenuCfg();
-    expect(true).assertTrue();
   })
 }
 

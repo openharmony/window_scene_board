@@ -1,0 +1,88 @@
+{
+    "string":[
+        {
+            "name":"not_pin",
+            "value":"Отменить закрепление",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pin",
+            "value":"Закрепить",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aisuggestion_app_name",
+            "value":"Рекомендации voice",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pin_this_app",
+            "value":"Закрепить",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"unpin_this_app",
+            "value":"Открепить",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"reduce_recommend_this_card",
+            "value":"Рекомендовать реже",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"not_recommend_this_card",
+            "value":"Больше не рекомендовать",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"manage_card",
+            "value":"Управление виджетом",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"not_recommend_this_app",
+            "value":"Больше не рекомендовать",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"subscribe_this_card",
+            "value":"Закрепить виджет",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"unsubscribe_this_card",
+            "value":"Открепить виджет",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"manage_app",
+            "value":"Управление приложением",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

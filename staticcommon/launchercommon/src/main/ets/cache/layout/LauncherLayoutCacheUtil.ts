@@ -28,7 +28,7 @@ import { AppItemInfo } from '../../bean/AppItemInfo';
 import { PageUpdateItem } from '../../bean/PageUpdateItem';
 import BadgeItemInfo from '../../bean/BadgeItemInfo';
 import GridLayoutItemInfo from '../../bean/GridLayoutItemInfo';
-import { AppStatus, CommonConstants, BigScreenConstants, DeleteItemType, DownloadInfoItem } from '../../constants/CommonConstants';
+import { AppStatus, CommonConstants, SuperFoldConstants, DeleteItemType, DownloadInfoItem } from '../../constants/CommonConstants';
 import { ExtraInfo, RdbStoreManager } from '../../db/RdbStoreManager';
 import GridLayoutUtil from '../../utils/GridLayoutUtil';
 import { SmallFolderIconFileUtil } from '../../utils/SmallFolderIconFileUtil';
@@ -139,8 +139,8 @@ export class LauncherLayoutCacheUtil {
     return LauncherLayoutCacheUtil.padRotateAfterBackup;
   }
 
-  static getBigScreenLazyRotate(): boolean {
-    return LauncherLayoutCacheUtil.isLazyRotate && DeviceHelper.isBigScreenMachine();
+  static getSuperFoldLazyRotate(): boolean {
+    return LauncherLayoutCacheUtil.isLazyRotate && DeviceHelper.isSuperFoldMachine();
   }
 
   static dealWithRotateAfterBackup(isExist: boolean, backupUrl?: string, copyUrl?: string): boolean {
@@ -1133,7 +1133,7 @@ export class LauncherLayoutCacheUtil {
       return defaultDesktopLayoutInfo;
     }
     // hopper设备
-    if (DeviceHelper.isBigScreenMachine()) {
+    if (DeviceHelper.isSuperFoldMachine()) {
       return LauncherLayoutCacheUtil.getLazyRotateLayout(defaultDesktopLayoutInfo, isPadPortrait, newGrid,
         forceRotate);
     } else if (DeviceHelper.isPad()) {
@@ -2128,8 +2128,8 @@ export class LauncherLayoutCacheUtil {
     let changedItems: GridLayoutItemInfo[];
     let changeMap: HashMap<string, GridLayoutItemInfo> = new HashMap();
     if (LauncherLayoutCacheUtil.isDefaultPortrait) {
-      const newGrid: number[] = [BigScreenConstants.DEFAULT_NON_PORTRAIT_ROW,
-        BigScreenConstants.DEFAULT_NON_PORTRAIT_COLUMN];
+      const newGrid: number[] = [SuperFoldConstants.DEFAULT_NON_PORTRAIT_ROW,
+        SuperFoldConstants.DEFAULT_NON_PORTRAIT_COLUMN];
       tempLayoutInfo = LauncherLayoutCacheUtil.getRotateLayout(LauncherLayoutCacheUtil.portraitDesktopLayoutInfo,
         false, [], newGrid);
       changedItems = LauncherLayoutCacheUtil.getChangedLayout(LauncherLayoutCacheUtil.landscapeDesktopLayoutInfo,
@@ -2180,9 +2180,9 @@ export class LauncherLayoutCacheUtil {
 
   private static updateHorizontalPosition(gridList: GridLayoutItemInfo[],
     cardInfo: CardItemInfo | GridLayoutItemInfo): boolean {
-    const row: number = BigScreenConstants.DEFAULT_NON_PORTRAIT_ROW;
-    const column: number = BigScreenConstants.DEFAULT_NON_PORTRAIT_COLUMN;
-    const page: number = BigScreenConstants.DEFAULT_PAGE_COUNT;
+    const row: number = SuperFoldConstants.DEFAULT_NON_PORTRAIT_ROW;
+    const column: number = SuperFoldConstants.DEFAULT_NON_PORTRAIT_COLUMN;
+    const page: number = SuperFoldConstants.DEFAULT_PAGE_COUNT;
     for (let i = page - 1; i >= 0; i--) {
       for (let x = column; x >= 0; x--) {
         if (LauncherLayoutCacheUtil.isRowValidCycle(gridList, cardInfo, column, row, i, x)) {
@@ -2195,9 +2195,9 @@ export class LauncherLayoutCacheUtil {
 
   private static updatePortraitPosition(gridList: GridLayoutItemInfo[],
     cardInfo: CardItemInfo | GridLayoutItemInfo): boolean {
-    const row: number = BigScreenConstants.DEFAULT_PORTRAIT_ROW;
-    const column: number = BigScreenConstants.DEFAULT_PORTRAIT_COLUMN;
-    const page: number = BigScreenConstants.DEFAULT_PAGE_COUNT;
+    const row: number = SuperFoldConstants.DEFAULT_PORTRAIT_ROW;
+    const column: number = SuperFoldConstants.DEFAULT_PORTRAIT_COLUMN;
+    const page: number = SuperFoldConstants.DEFAULT_PAGE_COUNT;
     for (let x = column; x >= 0; x--) {
       for (let i = 0; i < page; i++) {
         if (LauncherLayoutCacheUtil.isRowValidCycle(gridList, cardInfo, column, row, i, x)) {
@@ -2224,8 +2224,8 @@ export class LauncherLayoutCacheUtil {
       log.showWarn('findCardAnotherStatusPosition error, info is null');
       return false;
     }
-    if (!DeviceHelper.isBigScreenMachine()) {
-      log.showWarn('isBigScreenMachine device mismatch return!')
+    if (!DeviceHelper.isSuperFoldMachine()) {
+      log.showWarn('isSuperFoldMachine device mismatch return!')
       return true;
     }
     if (LauncherLayoutCacheUtil.isPadPortrait) {
@@ -2254,12 +2254,12 @@ export class LauncherLayoutCacheUtil {
     let column: number = 0;
     let page: number = 0;
     if (LauncherLayoutCacheUtil.isPadPortrait) {
-      row = BigScreenConstants.DEFAULT_NON_PORTRAIT_ROW;
-      column = BigScreenConstants.DEFAULT_NON_PORTRAIT_COLUMN;
+      row = SuperFoldConstants.DEFAULT_NON_PORTRAIT_ROW;
+      column = SuperFoldConstants.DEFAULT_NON_PORTRAIT_COLUMN;
       page = 2;
     } else {
-      row = BigScreenConstants.DEFAULT_PORTRAIT_ROW;
-      column = BigScreenConstants.DEFAULT_PORTRAIT_COLUMN;
+      row = SuperFoldConstants.DEFAULT_PORTRAIT_ROW;
+      column = SuperFoldConstants.DEFAULT_PORTRAIT_COLUMN;
       page = 2;
     }
     if (DeviceHelper.isPad()) {
@@ -2639,7 +2639,7 @@ export class LauncherLayoutCacheUtil {
    * 判断另一屏位置是否合理
    */
   private static isLazyRotatePositionOccupied(gridList: GridLayoutItemInfo[], page: number, column: number, row: number): boolean {
-    const isBigScreen = DeviceHelper.isBigScreenMachine();
+    const isSuperFold = DeviceHelper.isSuperFoldMachine();
     for (const item of gridList) {
       if (!item.area) {
         continue;
@@ -2649,9 +2649,9 @@ export class LauncherLayoutCacheUtil {
           continue;
         }
         const xMatch = (column >= item.landscapeColumn)
-          && (column < item.landscapeColumn + (isBigScreen ? item.landscapeArea[0] : item.area[0]));
+          && (column < item.landscapeColumn + (isSuperFold ? item.landscapeArea[0] : item.area[0]));
         const yMatch = (row >= item.landscapeRow)
-          && (row < item.landscapeRow + (isBigScreen ? item.landscapeArea[1] : item.area[1]));
+          && (row < item.landscapeRow + (isSuperFold ? item.landscapeArea[1] : item.area[1]));
         if (xMatch && yMatch) {
           return true;
         }
@@ -2660,9 +2660,9 @@ export class LauncherLayoutCacheUtil {
           continue;
         }
         const xMatch = (column >= item.portraitColumn)
-          && (column < item.portraitColumn + (isBigScreen ? item.portraitArea[0] : item.area[0]));
+          && (column < item.portraitColumn + (isSuperFold ? item.portraitArea[0] : item.area[0]));
         const yMatch = (row >= item.portraitRow)
-          && (row < item.portraitRow + (isBigScreen ? item.portraitArea[1] : item.area[1]));
+          && (row < item.portraitRow + (isSuperFold ? item.portraitArea[1] : item.area[1]));
         if (xMatch && yMatch) {
           return true;
         }
@@ -2776,7 +2776,7 @@ export class LauncherLayoutCacheUtil {
    */
   public static changeLazyRotateSettings(curItems: GridLayoutItemInfo[]): void {
     log.showInfo(`changeLazyRotateSettings: ${curItems?.length}`);
-    if (DeviceHelper.isBigScreenMachine()
+    if (DeviceHelper.isSuperFoldMachine()
       && LauncherLayoutCacheUtil.isLazyRotate && LauncherLayoutCacheUtil.isDefaultPortrait !==
       LauncherLayoutCacheUtil.isPadPortrait && LauncherLayoutCacheUtil.getIsFirstRotate()) {
       LauncherLayoutCacheUtil.putIsFirstRotate(false).then((ret: boolean) => {

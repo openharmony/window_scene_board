@@ -335,9 +335,28 @@ export default function UpdateRdbManagerTest() {
       expect(instance).not().assertNull();
     })
 
+    it('saveHiSearchStatus', TestType.FUNCTION, async () => {
+      let instance: UpdateRdbManager = UpdateRdbManager.getInstance();
+
+      let preference: preferences.Preferences = await preferences.getPreferences((GlobalContext.getInstance()
+        .getObject('desktopContext') as ctx.ServiceExtensionContext), 'LAUNCHER_SETTINGS');
+      preference.putSync('hisearch_open_state', true);
+      await preference.flush();
+
+      instance.saveDesktopSettings();
+      expect(instance).not().assertNull();
+    });
+
     it('test_queryIconDbDesktopInfo', 0, async (done: Function) => {
       let instance: UpdateRdbManager = UpdateRdbManager.getInstance();
       await instance['queryIconDbDesktopInfo'](false);
+      expect(instance).not().assertNull();
+      done();
+    });
+
+    it('test_saveDbDesktopDefault', 0, async (done: Function) => {
+      let instance: UpdateRdbManager = UpdateRdbManager.getInstance();
+      await instance['saveDbDesktopDefault']();
       expect(instance).not().assertNull();
       done();
     });
@@ -404,6 +423,22 @@ export default function UpdateRdbManagerTest() {
       expect(instance).not().assertNull();
       done();
     });
+
+    it('test_transLauncherSetting1', 0, async (done: Function) => {
+      let info: BackupSettingsInfo = new BackupSettingsInfo();
+      info.filename = 'LAUNCHER_SETTINGS';
+      info.name = 'hisearch_open_preference';
+      info.id = 1314;
+      info.type = 'type';
+      info.value = 'value';
+      let list: BackupSettingsInfo[] = [];
+      list.push(info);
+
+      let instance: UpdateRdbManager = UpdateRdbManager.getInstance();
+      await instance['transLauncherSetting'](list);
+      expect(instance).not().assertNull();
+      done();
+    })
 
     it('test_transLauncherSetting2', 0, async (done: Function) => {
       let info: BackupSettingsInfo = new BackupSettingsInfo();

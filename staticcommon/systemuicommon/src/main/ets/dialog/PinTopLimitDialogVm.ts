@@ -46,7 +46,7 @@ export class PinTopLimitDialogVm implements PinTopLimitDialogInterface {
     if (LayoutUtils.isXTProductType()) {
       return LayoutUtils.isMatchXTFoldMode(XTLayoutType.F) ? true : false;
     }
-    // 大大屏幕机，折叠态按直板机处理
+    // 大折叠机，折叠态按直板机处理
     if (DeviceHelper.isFold()) {
       return foldStatus === display.FoldStatus.FOLD_STATUS_FOLDED;
     }

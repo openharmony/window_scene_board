@@ -177,6 +177,10 @@
       "value": "2vp"
     },
     {
+      "name": "ai_icon_width_window",
+      "value": "32vp"
+    },
+    {
       "name": "sound_icon_width_window",
       "value": "33vp"
     },
@@ -345,6 +349,10 @@
       "value": "5vp"
     },
     {
+      "name": "had_capsule_assistant_translate_margin",
+      "value": "4vp"
+    },
+    {
       "name": "had_capsule_quick_note_margin",
       "value": "4vp"
     },
@@ -391,6 +399,10 @@
     {
       "name": "pc_capsule_drop_frame_width",
       "value": "34vp"
+    },
+    {
+      "name": "ai_translate_icon_width_window",
+      "value": "24vp"
     },
     {
       "name": "quick_note_icon_width",

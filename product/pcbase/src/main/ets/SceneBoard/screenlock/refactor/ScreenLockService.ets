@@ -16,12 +16,7 @@
 import osAccount from '@ohos.account.osAccount';
 import hiSysEvent from '@ohos.hiSysEvent';
 import {
-  Trace,
-  LogDomain,
-  LogHelper,
-  SingletonHelper,
-  CommonUtils,
-  ObjUtil
+  Trace, LogDomain, LogHelper, SingletonHelper, CommonUtils, ObjUtil
 } from '@ohos/basicutils';
 import {
   EvtBus,
@@ -54,8 +49,8 @@ import {
 } from '@ohos/windowscene';
 import ScreenLockModel from './ScreenLockModel';
 import { SystemParamUtils } from '@ohos/screenlockcommon/src/main/ets/utils/SystemParamUtils';
-import accountModel,
-{ AuthType,
+import accountModel, {
+  AuthType,
   AuthSubType,
   AuthTurstLevel,
   IAMAuthResult,
@@ -70,12 +65,16 @@ import type { IUserData } from '@ohos/screenlockcommon/src/main/ets/bean/IUserDa
 import power from '@ohos.power';
 
 import Constants, { CancelAuthPWDReason } from '@ohos/screenlockcommon/src/main/ets/constants/CommonConstants';
-import { SensorType,
+import {
+  SensorType,
   FingerprintConstants,
   FingerprintVerifyState,
 } from '@ohos/screenlockcommon/src/main/ets/constants/FingerprintConstants';
-import { FaceUnlockConstants, FaceUnlockReason, FaceUnlockVerifyState }
-  from '@ohos/screenlockcommon/src/main/ets/constants/FaceUnlockConstants';
+import {
+  FaceUnlockConstants,
+  FaceUnlockReason,
+  FaceUnlockVerifyState
+} from '@ohos/screenlockcommon/src/main/ets/constants/FaceUnlockConstants';
 import type { IAMAuthExtraInfo } from '@ohos/screenlockcommon/src/main/ets/bean/IAMAuthExtraInfo';
 import { KeyGuardMode } from '@ohos/screenlockcommon/src/main/ets/bean/KeyGuardStatusEnum';
 
@@ -85,31 +84,37 @@ import { fingerprintReporter, UnlockStage } from '@ohos/screenlockcommon/src/mai
 import type { ScreenUnlockEventParams } from '@ohos/frameworkwrapper';
 import {
   screenLockInnerStateManager as screenLockStateManager,
-  ScreenLockState, ScreenLockTransitionState
+  ScreenLockState,
+  ScreenLockTransitionState
 } from '@ohos/screenlockcommon/src/main/ets/base/ScreenLockInnerStateManager';
 import commonEventManager from '@ohos.commonEventManager';
-import { GlobalStatusCache,
+import {
+  GlobalStatusCache,
   KeyGuardCacheKey,
   LockEventType,
   LockOperateResult,
   PowerUtils,
   slClockOneShotToDesktopService,
   SlServerHelper,
-  StatusCacheConst } from '@ohos/screenlockcommon';
+  StatusCacheConst
+} from '@ohos/screenlockcommon';
 import { slUiStateMgr } from '@ohos/screenlockcommon/src/main/ets/manager/ScreenLockUiStateManager';
-import { OneMirrorStaticStateType, SlMainStateType, SlStaticStateType }
-  from '@ohos/screenlockcommon/src/main/ets/constants/SlStateType';
+import {
+  OneMirrorStaticStateType,
+  SlMainStateType,
+  SlStaticStateType
+} from '@ohos/screenlockcommon/src/main/ets/constants/SlStateType';
 import ScreenLockMar from '@ohos.screenLock';
 import { privacySpaceManager, AuthState } from './PrivacySpaceManager';
 import commonEventMonitor from '@ohos/screenlockcommon/src/main/ets/base/CommonEventMonitor';
 import camera from '@ohos.multimedia.camera';
 import { strongAuthManager } from '@ohos/screenlockcommon/src/main/ets/manager/StrongAuthManager';
-import PerformanceMonitorUtil, { Constants as PerformanceMonitorConstans}
-  from '@ohos/screenlockcommon/src/main/ets/record/report/PerformanceMonitorUtil';
+import PerformanceMonitorUtil, {
+  Constants as PerformanceMonitorConstans
+} from '@ohos/screenlockcommon/src/main/ets/record/report/PerformanceMonitorUtil';
 import { ScreenLockToDesktopConsts } from '@ohos/screenlockcommon/src/main/ets/constants/ScreenLockToDesktopConsts';
 import { immersiveKgMgr } from '@ohos/systemuicommon/src/main/ets/TsIndex';
-import { SpecificScreenLockStateManager }
-  from '../common/SpecificScreenLockStateManager';
+import { SpecificScreenLockStateManager } from '../common/SpecificScreenLockStateManager';
 import accountsModelApi from '@ohos/screenlockcommon/src/main/ets/api/AccountsModelApi';
 import ScreenlockEventMonitor from './ScreenlockEventMonitor';
 import { AcquireResultCode } from '@ohos/screenlockcommon';
@@ -240,7 +245,7 @@ export const SCREENLOCK_AUTH_TYPE: string = 'ScreenlockAuthType';
  */
 export class ScreenLockService {
   public isOtherElementsFullInScreenLock: boolean = false;
-  public isUnlockScreen:boolean = false;
+  public isUnlockScreen: boolean = false;
   public isPinSubType: boolean = false;
   public deviceStatus: string = '';
   public screenLockModel: ScreenLockModel = new ScreenLockModel();
@@ -269,10 +274,12 @@ export class ScreenLockService {
   public onFaceAuthSuccessAnimation: Callback<ScreenLockFaceUnlockAnimationType> = () => {
   };
   public onFingerprintAcquireInfo: Function = (module: number, acquire: number,
-    fingerprintExtraInfo: IAMAuthExtraInfo) => {};
+    fingerprintExtraInfo: IAMAuthExtraInfo) => {
+  };
   public onUserSwitchedCallback: Function = (isNeedLockScreen: boolean) => {
   };
-  private onUserSwitchingCallback: Function = (): void => {};
+  private onUserSwitchingCallback: Function = (): void => {
+  };
   public isNeedUpdate: boolean = false;
   public mEventSubscriber: Record<string, Object> | undefined;
   public startSlidingUnlock: number = 0;
@@ -286,15 +293,16 @@ export class ScreenLockService {
   public pwdUi: string = '';
   public resultRecieved: boolean = false;
   private isCameraMuted: boolean | undefined = undefined;
-  private customizeUnlock: Callback<void> = () => {};
-  private fingerprintContextId : Uint8Array | null = null;
-  private faceAuthContextId : Uint8Array | null = null;
+  private customizeUnlock: Callback<void> = () => {
+  };
+  private fingerprintContextId: Uint8Array | null = null;
+  private faceAuthContextId: Uint8Array | null = null;
   private pwdContextIds: Uint8Array[] = [];
   private domainContextIds: Uint8Array[] = [];
-  private displayWidth : number = 0;
-  public displayHeight : number = 0;
-  private readonly thousandths : number = 1000;
-  private readonly authDelay : number = 1000;
+  private displayWidth: number = 0;
+  public displayHeight: number = 0;
+  private readonly thousandths: number = 1000;
+  private readonly authDelay: number = 1000;
   // Face Unlock
   private isLoadedFaceUnlockEnv: boolean = false;
   private needSlideUnlockAfterFaceRecognized: boolean = true;
@@ -323,23 +331,18 @@ export class ScreenLockService {
   private resetFolderStatusChangeTimeoutId: number = -1;
   private unlockFlowTimeMap: Map<ScreenUnlockReportType, UnlockFlowTimeEntry> = new Map();
   private faceUnlockType: string = FaceUnlockConstants.FACE_UNLOCK_CONFIG_SLIDE_VALUE;
-
   /**
    * 锁屏状态事件
    */
   private screenLockEvent: ScreenLockEvent = new ScreenLockEvent();
-
   private isFoldable: boolean = this.isFoldDevice();
-
   private foldStatus: display.FoldStatus = this.getFoldStatusService();
-
-  private setWallPaperToShowDesktop: Function = () : void => {};
-
-  private setWallPaperToHideDesktop: Function = () : void => {};
-
-  private setExitKeyguardFromBouncer: Function = () : void => {};
-
-
+  private setWallPaperToShowDesktop: Function = (): void => {
+  };
+  private setWallPaperToHideDesktop: Function = (): void => {
+  };
+  private setExitKeyguardFromBouncer: Function = (): void => {
+  };
   private foldStatusChangeCallback: Callback<display.FoldStatus> = (newFoldStatus: display.FoldStatus): void => {
     this.foldStatus = newFoldStatus;
     let slStaticState = slUiStateMgr.getSlState(SlMainStateType.SL_STATIC_STATE); // 刷新折叠展开状态
@@ -386,20 +389,18 @@ export class ScreenLockService {
   private onEnterHostCallback: Function = () => {
     if (strongAuthManager.isNeedStrongAuth() &&
     strongAuthManager.hasFingerprint()) {
-      this.authUserByFingerprint(() => {});
+      this.authUserByFingerprint(() => {
+      });
     }
   }
-
   private onEnterBouncerCallback: Function = () => {
     if (strongAuthManager.isNeedStrongAuth()) {
       this.cancelAuthOfFingerprint();
     }
   }
-
   private isScreenLockDisabled: Function = () => {
     return ScreenlockEventMonitor.getDisabledScreenlockFlag();
   }
-
   private handleAccountSwitch: accountSwitchCallback = {
     onSwitched: (data: OsAccountSwitchEventData): void => {
       const mCurrentId = accountModel.getCurrentUserId();
@@ -428,15 +429,12 @@ export class ScreenLockService {
     accountModel.unRegisterAccountSwitchCallback('commonEvent');
     this.commonEventCallback = undefined;
   }
-
   private getLockCallback: Function = (): boolean => {
     return this.getLock();
   }
-
   private getCurrentUserIdCallback: Function = (): number => {
     return accountModel.getCurrentUserId();
   }
-
   private updateCurrentUserIdCallback: Function = async (): Promise<number> => {
     let user: number = NORMAL_USER_ID;
     await accountModel.updateCurrentUserId(() => {
@@ -448,7 +446,6 @@ export class ScreenLockService {
     }
     return user;
   }
-
   private requestUnlockCallback: Function = (callback?: LockUnlockCallback, withDelay: boolean = false,
     cancelCallback?: Callback<void>): void => {
     if (cancelCallback) {
@@ -459,19 +456,15 @@ export class ScreenLockService {
       screenLockService.requestUnlock(callback?.success);
     }
   }
-
   private unlockWhenNoPswCallback: Function = (): void => {
     this.unlockWhenNoPsw();
   }
-
   private notifyUnlockTransitionCallback: Function = (): void => {
     this.notifyUnlockTransition();
   }
-
   private isScreenLockShowCallback: Function = (): boolean => {
     return screenLockStateManager.currentState !== ScreenLockState.EXIT_KEYGUARD;
   }
-
   private isDeviceLockedCallback: Function = (): boolean => {
     return !this.canUnlockWithoutPassword();
   }
@@ -754,7 +747,8 @@ export class ScreenLockService {
 
     accountModel.registerUserSwitchListener('switched', this.handleUserSwitched);
 
-    accountModel.accountEventListener(() => {});
+    accountModel.accountEventListener(() => {
+    });
 
     commonEventMonitor.initCallback(this.registerObserverCallback, this.unRegisterObserverCallback);
     commonEventMonitor.init();
@@ -982,7 +976,7 @@ export class ScreenLockService {
   /**
    * 通知WMS锁屏状态
    */
-  notifyEarlyUnlockTransition() : void {
+  notifyEarlyUnlockTransition(): void {
     log.showWarn('notifyEarlyUnlockTransition');
     SCBSceneSessionManager.getInstance().notifyWMSIsLockReceived(false);
   };
@@ -1277,7 +1271,7 @@ export class ScreenLockService {
    * unlock Screen
    */
   unlockScreen(isHideView: boolean = true): void {
-    let isSimLocked: boolean | undefined= AppStorage.get<boolean>('screenSimLocked');
+    let isSimLocked: boolean | undefined = AppStorage.get<boolean>('screenSimLocked');
     log.showInfo(`isSimLocked = ${isSimLocked}`);
     if (this.isOobeEnableNoPwd() || isSimLocked) {
       log.showInfo('oobe is enable unlock the screen');
@@ -1315,7 +1309,7 @@ export class ScreenLockService {
    * hide scene after animation finish
    */
   unlockingWithoutHide(isPlayWallpaperAnimation: boolean = true, authType ?: osAccount.AuthType,
-                       notifyUnlock: boolean = true, isHideView: boolean = false): void {
+    notifyUnlock: boolean = true, isHideView: boolean = false): void {
     // 双指捏合触发的解锁，统一不播放壁纸动画
     if (this.isPinchGestureSlide) {
       isPlayWallpaperAnimation = false;
@@ -1407,7 +1401,7 @@ export class ScreenLockService {
     SCBTransitionManager.getInstance().notifyLockTransition();
     // 锁屏时需要保障桌面图标退场动效，故SL_LOCK_STATE变量变化放在notifyLockTransition之后
     if (!slUiStateMgr.getSlState(SlMainStateType.SL_ONE_MIRROR_STATIC_STATE)
-      ?.getSlState(OneMirrorStaticStateType.IS_NEED_SHOW_IMMERSIVE) || !immersiveKgMgr.getDefaultImmersiveSwitch()) {
+    ?.getSlState(OneMirrorStaticStateType.IS_NEED_SHOW_IMMERSIVE) || !immersiveKgMgr.getDefaultImmersiveSwitch()) {
       slUiStateMgr.getSlState(SlMainStateType.SL_STATIC_STATE)?.setSlState(SlStaticStateType.SL_LOCK_STATE, true);
     } else {
       log.showInfo('need to show immersive card, do not play the desktop exit effect.');
@@ -1572,9 +1566,9 @@ export class ScreenLockService {
   notifyLockScreenResult(result: LockResult): void {
     this.screenLockModel.sendScreenLockEvent(LOCK_SCREEN_RESULT, result,
       (error: BusinessError, data: string | number) => {
-      log.showInfo('notifyLockScreenResult');
-      SpecificScreenLockStateManager.setIsNotifyLockScreen(true);
-    });
+        log.showInfo('notifyLockScreenResult');
+        SpecificScreenLockStateManager.setIsNotifyLockScreen(true);
+      });
   }
 
   protected publishByUser(eventName: string, activeAccountId: number): void {
@@ -1616,8 +1610,8 @@ export class ScreenLockService {
     // notify the base service that the screen is loaded
     this.screenLockModel.sendScreenLockEvent(SCREENLOCK_DRAW_DONE, 0,
       (error: BusinessError, result: string | number) => {
-      log.showInfo('notifyDrawDone');
-    });
+        log.showInfo('notifyDrawDone');
+      });
   }
 
   /**
@@ -1673,13 +1667,13 @@ export class ScreenLockService {
       log.showInfo('registerDomainPWDInputer success');
       let domainContextId: Uint8Array = await accountModel.authUser(CHALLENGE_INT, AuthType.DOMAIN, AuthTurstLevel.ATL3,
         (result: number, extraInfo: string) => {
-        log.showInfo(`authUser callback: ${result} extraInfo`);
-        accountModel.unregisterDomainInputer();
-        this.printPsdErrorTimes(result);
-        this.refreshAuthEndTime(osAccount.AuthType.PIN);
-        fingerprintReporter.kgUnlockReport(osAccount.AuthType.PIN, UnlockStage.START_UNLOCK);
-        callback(result, extraInfo);
-      });
+          log.showInfo(`authUser callback: ${result} extraInfo`);
+          accountModel.unregisterDomainInputer();
+          this.printPsdErrorTimes(result);
+          this.refreshAuthEndTime(osAccount.AuthType.PIN);
+          fingerprintReporter.kgUnlockReport(osAccount.AuthType.PIN, UnlockStage.START_UNLOCK);
+          callback(result, extraInfo);
+        });
       this.domainContextIds.push(domainContextId);
     }).catch((err: BusinessError) => {
       log.showInfo('registerDomainPWDInputer fails error');
@@ -1694,54 +1688,54 @@ export class ScreenLockService {
       let pwdContextId: Uint8Array =
         await accountModel.authUser(CHALLENGE_INT, AuthType.PIN, authTurstLevel,
           (result: IAMAuthResult, extraInfo: osAccount.AuthResult) => {
-          log.showInfo(`authUser callback: ${result} extraInfo and ${JSON.stringify(extraInfo)}`);
-          if (result === IAMAuthResult.AUTH_IS_CANCELED) {
-            // 收到取消的结果，锁屏不做处理：抢占机制可能在密码输入过程中收到取消resultCode
-            log.showWarn('Authentication is canceled');
-            return;
-          }
-          this.cancelAuthOfPassword('onResult');
-          accountModel.inputData = null;
-          if (authPsdEnd && extraInfo?.pinValidityPeriod === 0) {
-            callback(result, extraInfo);
-            return;
-          }
-          let isAccountSwitch: boolean = AppStorage.get<boolean>('accountSwitch') as boolean;
-          if (isAccountSwitch || (extraInfo?.accountId !== undefined &&
-          accountModel.isUserIdValid(extraInfo?.accountId) &&
-            extraInfo.accountId !== accountModel.getCurrentUserId())) {
-            log.showInfo('Ignore the result because user is switching or authUserId is not currentUserId.');
-            return;
-          }
-          if (authPsdEnd) {
-            log.showInfo('Ignore the result because the authentication is successful.');
-            return;
-          }
-          if (extraInfo?.accountId && !accountModel.isUserIdValid(extraInfo?.accountId)) {
-            result = 1;
-            log.showInfo(`authPIN result userId ${extraInfo?.accountId} is inValid.`);
-          }
-          accountModel.unregisterInputer();
-          this.printPsdErrorTimes(result);
-          this.refreshAuthEndTime(osAccount.AuthType.PIN);
-          fingerprintReporter.kgUnlockReport(osAccount.AuthType.PIN, UnlockStage.START_UNLOCK);
-          callback(result, extraInfo);
-        }, async (module: number, acquire: number, extraJsonInfo: IAMAuthExtraInfo) => {
-          log.showInfo(`authUser authUser onAcquireInfo. module is ${module}, acquire is ${acquire}.`);
-          PasswordManager.getInstance().isHardwareError = acquire === 1 &&
-            extraJsonInfo.authResult === AcquireResultCode.HARDWARE_ERROR;
-          if (acquire === 1 && extraJsonInfo.authResult === AcquireResultCode.SUCCESS) {
-            authPsdEnd = true;
+            log.showInfo(`authUser callback: ${result} extraInfo and ${JSON.stringify(extraInfo)}`);
+            if (result === IAMAuthResult.AUTH_IS_CANCELED) {
+              // 收到取消的结果，锁屏不做处理：抢占机制可能在密码输入过程中收到取消resultCode
+              log.showWarn('Authentication is canceled');
+              return;
+            }
+            this.cancelAuthOfPassword('onResult');
+            accountModel.inputData = null;
+            if (authPsdEnd && extraInfo?.pinValidityPeriod === 0) {
+              callback(result, extraInfo);
+              return;
+            }
+            let isAccountSwitch: boolean = AppStorage.get<boolean>('accountSwitch') as boolean;
+            if (isAccountSwitch || (extraInfo?.accountId !== undefined &&
+            accountModel.isUserIdValid(extraInfo?.accountId) &&
+              extraInfo.accountId !== accountModel.getCurrentUserId())) {
+              log.showInfo('Ignore the result because user is switching or authUserId is not currentUserId.');
+              return;
+            }
+            if (authPsdEnd) {
+              log.showInfo('Ignore the result because the authentication is successful.');
+              return;
+            }
+            if (extraInfo?.accountId && !accountModel.isUserIdValid(extraInfo?.accountId)) {
+              result = 1;
+              log.showInfo(`authPIN result userId ${extraInfo?.accountId} is inValid.`);
+            }
             accountModel.unregisterInputer();
-            this.printPsdErrorTimes(0);
+            this.printPsdErrorTimes(result);
             this.refreshAuthEndTime(osAccount.AuthType.PIN);
             fingerprintReporter.kgUnlockReport(osAccount.AuthType.PIN, UnlockStage.START_UNLOCK);
-            screenLockStateManager.onAuthFPSuccess();
-            callback(0, extraJsonInfo);
-          } else if (PasswordManager.getInstance().isHardwareError) {
-            callback(AcquireResultCode.HARDWARE_ERROR, extraJsonInfo);
-          }
-        });
+            callback(result, extraInfo);
+          }, async (module: number, acquire: number, extraJsonInfo: IAMAuthExtraInfo) => {
+            log.showInfo(`authUser authUser onAcquireInfo. module is ${module}, acquire is ${acquire}.`);
+            PasswordManager.getInstance().isHardwareError = acquire === 1 &&
+              extraJsonInfo.authResult === AcquireResultCode.HARDWARE_ERROR;
+            if (acquire === 1 && extraJsonInfo.authResult === AcquireResultCode.SUCCESS) {
+              authPsdEnd = true;
+              accountModel.unregisterInputer();
+              this.printPsdErrorTimes(0);
+              this.refreshAuthEndTime(osAccount.AuthType.PIN);
+              fingerprintReporter.kgUnlockReport(osAccount.AuthType.PIN, UnlockStage.START_UNLOCK);
+              screenLockStateManager.onAuthFPSuccess();
+              callback(0, extraJsonInfo);
+            } else if (PasswordManager.getInstance().isHardwareError) {
+              callback(AcquireResultCode.HARDWARE_ERROR, extraJsonInfo);
+            }
+          });
       this.pwdContextIds.push(pwdContextId);
     }).catch((err: BusinessError) => {
       log.showInfo('registerPWDInputer fails error');
@@ -1807,8 +1801,8 @@ export class ScreenLockService {
     }, Constants.MILLISECOND_TO_SECOND);
     Trace.start(Trace.CORE_METHOD_CHECK_FACE_UNLOCK_SETTING);
     const faceKeyGuardEnableConf: string =
-    sSettingsUtil.getValueBySECURE(FaceUnlockConstants.KEY_FACE_KEYGUARD_ENABLE,
-      FaceUnlockConstants.FACE_CONFIG_DEFAULT_VALUE);
+      sSettingsUtil.getValueBySECURE(FaceUnlockConstants.KEY_FACE_KEYGUARD_ENABLE,
+        FaceUnlockConstants.FACE_CONFIG_DEFAULT_VALUE);
     const isFaceUnlockSwitchOpen = (faceKeyGuardEnableConf === FaceUnlockConstants.FACE_SWITCH_ENABLE);
     log.showInfo(`the faceUnlock switch open is (${isFaceUnlockSwitchOpen})`);
     if (!isFaceUnlockSwitchOpen) {
@@ -1832,7 +1826,9 @@ export class ScreenLockService {
     // 若是切换用户，需要直接启动人脸
     if (andThenInvoke) {
       log.showInfo('check faceUnlock Setting with invoke face verify.');
-      setTimeout(() => { this.invokeFaceVerify(reason); }, delay);
+      setTimeout(() => {
+        this.invokeFaceVerify(reason);
+      }, delay);
     }
   }
 
@@ -1882,7 +1878,8 @@ export class ScreenLockService {
    * 启动人脸识别
    */
   public invokeFaceVerify(reason: string = FaceUnlockReason.UNKNOWN, invokeWhenScreenOn: boolean = true,
-    onSuccess: Callback<number> = (): void => {}): boolean {
+    onSuccess: Callback<number> = (): void => {
+    }): boolean {
     if (!this.checkFaceRecognitionState()) {
       return false;
     }
@@ -1933,17 +1930,17 @@ export class ScreenLockService {
    */
   public checkFaceRecognitionState(): boolean {
     const conditions: Record<string, Function> = {
-      'faceUnlockSwitchOff': () =>!AppStorage.get(FaceUnlockConstants.IS_FACE_UNLOCK_SWITCH_OPEN),
+      'faceUnlockSwitchOff': () => !AppStorage.get(FaceUnlockConstants.IS_FACE_UNLOCK_SWITCH_OPEN),
       'specialMode': () => KeyguardStatusService.isSpecialMode() ||
       KeyguardStatusService.isMode(KeyGuardMode.QUICK_TOOLS),
       'coverMode': () => KeyguardStatusService.isCoverMode(),
-      'faceRecognitionDisabled': () =>!this.isFaceRecognitionEnabled,
+      'faceRecognitionDisabled': () => !this.isFaceRecognitionEnabled,
       'offScreenUnlocking': () => this.isOffScreenUnlocking,
       'lockStatusUnlocked': () => AppStorage.get('lockStatus') !== ScreenLockStatus.LOCKING,
       'isNotificationWakeUp': () => AppStorage.has('isNotificationWakeUp'),
       'strongAuthNeeded': () => strongAuthManager.isNeedStrongAuth(),
       'isBeginSleepStart': () => ((this.isFoldable && DeviceHelper.isLargeInFoldProduct()) ||
-        DeviceHelper.isSmallFoldProduct()) && AppStorage.get<boolean>('isBeginSleepStart'),
+      DeviceHelper.isSmallFoldProduct()) && AppStorage.get<boolean>('isBeginSleepStart'),
       'faceUnlockVerifyingOrLocked': (): boolean => {
         let faceUnlockVerifyState: FaceUnlockVerifyState | undefined =
           AppStorage.get(FaceUnlockConstants.FACE_UNLOCK_VERIFY_STATE);
@@ -1968,39 +1965,39 @@ export class ScreenLockService {
    *
    */
   public async authUserByFace(invokeWhenScreenOn: boolean, onSuccess: Callback<number> = (): void => {
-    }): Promise<void> {
+  }): Promise<void> {
     this.refreshUnlockStartTime(osAccount.AuthType.FACE);
     this.refreshAuthStartTime(osAccount.AuthType.FACE);
     let authFaceEnd: boolean = false;
     let faceAuthId =
       await accountModel.authUser(CHALLENGE_INT, AuthType.FACE, AuthTurstLevel.ATL3,
         (result: number, extraInfo: osAccount.AuthResult) => {
-        log.showWarn(`FaceAuth end. result: ${result}, pinValidityPeriod: ${extraInfo?.pinValidityPeriod}`);
-        log.showInfo(`onresult current=${faceAuthId} contextId=${this.faceAuthContextId}`);
-        if (this.faceAuthContextId !== faceAuthId) {
-          log.showInfo(`onresult not the same id,no need handle auth result`);
-          this.setFaceRecognitionState(FaceUnlockVerifyState.READY);
-          return;
-        }
-        if (authFaceEnd) {
-          log.showInfo('Ignore the result because the faceAuth is successful.');
-          return;
-        }
-        this.handleFaceAuthResult(faceAuthId, invokeWhenScreenOn, result, extraInfo, onSuccess);
-      }, async (module: number, acquire: number, extraJsonInfo: IAMAuthExtraInfo) => {
-        log.showDebug(`faceUnlock authUser onAcquireInfo. module is ${module}, acquire is ${acquire}.`);
-        if (this.faceAuthContextId !== faceAuthId) {
-          log.showInfo(`onAcquireInfo not the same id,no need handle auth result`);
-          this.setFaceRecognitionState(FaceUnlockVerifyState.READY);
-          return;
-        }
-        if (acquire === FaceUnlockConstants.FACE_AUTH_TIP_AUTH_SUCCESS) {
-          authFaceEnd = true;
-          this.handleFaceAuthResult(faceAuthId, invokeWhenScreenOn, IAMAuthResult.SUCCEED, undefined,
-            onSuccess);
-          this.sendFaceUnlockEvent();
-        }
-      });
+          log.showWarn(`FaceAuth end. result: ${result}, pinValidityPeriod: ${extraInfo?.pinValidityPeriod}`);
+          log.showInfo(`onresult current=${faceAuthId} contextId=${this.faceAuthContextId}`);
+          if (this.faceAuthContextId !== faceAuthId) {
+            log.showInfo(`onresult not the same id,no need handle auth result`);
+            this.setFaceRecognitionState(FaceUnlockVerifyState.READY);
+            return;
+          }
+          if (authFaceEnd) {
+            log.showInfo('Ignore the result because the faceAuth is successful.');
+            return;
+          }
+          this.handleFaceAuthResult(faceAuthId, invokeWhenScreenOn, result, extraInfo, onSuccess);
+        }, async (module: number, acquire: number, extraJsonInfo: IAMAuthExtraInfo) => {
+          log.showDebug(`faceUnlock authUser onAcquireInfo. module is ${module}, acquire is ${acquire}.`);
+          if (this.faceAuthContextId !== faceAuthId) {
+            log.showInfo(`onAcquireInfo not the same id,no need handle auth result`);
+            this.setFaceRecognitionState(FaceUnlockVerifyState.READY);
+            return;
+          }
+          if (acquire === FaceUnlockConstants.FACE_AUTH_TIP_AUTH_SUCCESS) {
+            authFaceEnd = true;
+            this.handleFaceAuthResult(faceAuthId, invokeWhenScreenOn, IAMAuthResult.SUCCEED, undefined,
+              onSuccess);
+            this.sendFaceUnlockEvent();
+          }
+        });
     this.faceAuthContextId = faceAuthId;
   }
 
@@ -2118,50 +2115,50 @@ export class ScreenLockService {
     }
     let fingerprintContextId = await accountModel.authUser(CHALLENGE_INT, AuthType.FINGERPRINT, AuthTurstLevel.ATL3,
       (result: number, extraInfo: osAccount.AuthResult) => {
-      log.showInfo('AuthFp end. result, extraInfo');
-      SystemParamUtils.setHighFrame(false);
-      onResultCallback?.(result, extraInfo);
-      switch (result) {
-        case IAMAuthResult.SUCCEED:
-          this.fingerAuthRemainCount = 3;
-          this.fingerprintContextId = null;
-          this.setScreenLockAuthState(AuthType.FINGERPRINT, accountModel.getCurrentUserId(), true);
-          AppStorage.setOrCreate('fingerprintVerifyState', FingerprintVerifyState.NOT_READY);
-          break;
-        case IAMAuthResult.AUTH_IS_CANCELED:
-          log.showInfo(`AuthFp IAMAuth is canceled, is same context id:
+        log.showInfo('AuthFp end. result, extraInfo');
+        SystemParamUtils.setHighFrame(false);
+        onResultCallback?.(result, extraInfo);
+        switch (result) {
+          case IAMAuthResult.SUCCEED:
+            this.fingerAuthRemainCount = 3;
+            this.fingerprintContextId = null;
+            this.setScreenLockAuthState(AuthType.FINGERPRINT, accountModel.getCurrentUserId(), true);
+            AppStorage.setOrCreate('fingerprintVerifyState', FingerprintVerifyState.NOT_READY);
+            break;
+          case IAMAuthResult.AUTH_IS_CANCELED:
+            log.showInfo(`AuthFp IAMAuth is canceled, is same context id:
           ${fingerprintContextId === this.fingerprintContextId}`);
-          this.fingerprintContextId =
-            fingerprintContextId === this.fingerprintContextId ? null : this.fingerprintContextId;
-          break;
-        case IAMAuthResult.SYS_SERVICE_EXCEPTION:
-          setTimeout(() => {
-            if (isLocked && this.fingerAuthRemainCount > 0) {
-              this.fingerAuthRemainCount--;
-              log.showInfo('authUser again when fingerprint has exception!');
-              this.authUserByFingerprint(onResultCallback);
-            } else {
-              this.fingerAuthRemainCount = 3;
-            }
-          }, this.authDelay);
-        default:
-          break;
-      }
-    }, async (module: number, acquire: number, extraJsonInfo: IAMAuthExtraInfo) => {
-      try {
-        this.onFingerprintAcquireInfo(module, acquire, extraJsonInfo);
-        if (acquire === FINGERPRINT_TIP_SINGLE_RESULT && extraJsonInfo.authResult !== osAccount.ResultCode.CANCELED) {
-          if (strongAuthManager.isNeedStrongAuth()) {
-            let isBackAnimPlaying = GlobalStatusCache.getInstance()
-              .getStatus(StatusCacheConst.IS_PLAY_PWD_BACK_ANIMATION, false);
-            // 密码界面正在执行退出动效，延迟重新解锁
-            setTimeout(() => strongAuthManager.strongAuthRequestUnlock(), isBackAnimPlaying ? 100 : 0);
-          }
+            this.fingerprintContextId =
+              fingerprintContextId === this.fingerprintContextId ? null : this.fingerprintContextId;
+            break;
+          case IAMAuthResult.SYS_SERVICE_EXCEPTION:
+            setTimeout(() => {
+              if (isLocked && this.fingerAuthRemainCount > 0) {
+                this.fingerAuthRemainCount--;
+                log.showInfo('authUser again when fingerprint has exception!');
+                this.authUserByFingerprint(onResultCallback);
+              } else {
+                this.fingerAuthRemainCount = 3;
+              }
+            }, this.authDelay);
+          default:
+            break;
         }
-      } catch (e) {
-        log.showError('onFingerprintAcquireInfo fail, exception');
-      }
-    });
+      }, async (module: number, acquire: number, extraJsonInfo: IAMAuthExtraInfo) => {
+        try {
+          this.onFingerprintAcquireInfo(module, acquire, extraJsonInfo);
+          if (acquire === FINGERPRINT_TIP_SINGLE_RESULT && extraJsonInfo.authResult !== osAccount.ResultCode.CANCELED) {
+            if (strongAuthManager.isNeedStrongAuth()) {
+              let isBackAnimPlaying = GlobalStatusCache.getInstance()
+                .getStatus(StatusCacheConst.IS_PLAY_PWD_BACK_ANIMATION, false);
+              // 密码界面正在执行退出动效，延迟重新解锁
+              setTimeout(() => strongAuthManager.strongAuthRequestUnlock(), isBackAnimPlaying ? 100 : 0);
+            }
+          }
+        } catch (e) {
+          log.showError('onFingerprintAcquireInfo fail, exception');
+        }
+      });
     this.fingerprintContextId = fingerprintContextId;
     log.showDebug(`authUserByFingerprint, fingerprintContextId is null or undefined,
     the authContextId is ${this.fingerprintContextId}`);
@@ -2186,7 +2183,7 @@ export class ScreenLockService {
     result: number,
     extraInfo?: osAccount.AuthResult,
     onSuccess?: Callback<number>): void {
-    const currentFaceUnlockVerifyState: FaceUnlockVerifyState | undefined  =
+    const currentFaceUnlockVerifyState: FaceUnlockVerifyState | undefined =
       AppStorage.get(FaceUnlockConstants.FACE_UNLOCK_VERIFY_STATE);
     if (FaceUnlockVerifyState.LOCKED === currentFaceUnlockVerifyState) {
       log.showWarn('faceUnlock has been Locked.');
@@ -2552,7 +2549,8 @@ export class ScreenLockService {
   /**
    * check fingerprint for current user
    */
-  public checkFingerprintForCurrentUser(successCallback: Callback<void> = (): void => { },
+  public checkFingerprintForCurrentUser(successCallback: Callback<void> = (): void => {
+  },
     errorCallback?: (error: Error) => void): void {
     log.showDebug('checkFingerprintForCurrentUser begin');
     let isCurrentUserHasFingerprint: boolean | undefined =
@@ -2594,9 +2592,9 @@ export class ScreenLockService {
           AppStorage.setOrCreate(FingerprintConstants.FINGERPRINT_SENSOR_TYPE_KEY, sensorType);
           if (sensorInfo && !!sensorType && (sensorType === SensorType.UNDER_SCREEN_SENSOR ||
             sensorType === SensorType.BOTH_SENSOR)) {
-            let coordinateX : number = (sensorInfo.udSensorCenterXInThousandth /
+            let coordinateX: number = (sensorInfo.udSensorCenterXInThousandth /
             this.thousandths) * this.displayWidth - sensorInfo.udSensorRadiusInPx;
-            let coordinateY : number = (sensorInfo.udSensorCenterYInThousandth /
+            let coordinateY: number = (sensorInfo.udSensorCenterYInThousandth /
             this.thousandths) * this.displayHeight - sensorInfo.udSensorRadiusInPx;
             log.showInfo('getFingerprintSensorInfo udSensorCenterX: %{public}d, udSensorCenterY: %{public}d, ' +
               'udSensorRadiusInPx: %{public}d, coordinateX: %{public}d, coordinateY: %{public}d',
@@ -2764,7 +2762,7 @@ export class ScreenLockService {
     if (result === 0) {
       this.psdErrorTimes = 0;
     } else {
-      ++ this.psdErrorTimes;
+      ++this.psdErrorTimes;
     }
     log.showInfo(`authUser psdErrorTimes = ${this.psdErrorTimes}`);
   }
@@ -2960,6 +2958,7 @@ export class ScreenLockService {
   public doUnLockAnimation(unLockCallback: Function): void {
     LockScreenAnimationController.getInstance().doCallbacks();
     unLockCallback();
+    LockScreenAnimationController.getInstance().doLockScreenFinishAnimation();
   }
 }
 

@@ -22,6 +22,7 @@ import { RTLUtil } from '@ohos/componenthelper';
 import { DarkModeState, StateType } from '@ohos/systemuiutils/src/main/ets/sysdialog/BaseState';
 import { baseStateMgr } from '@ohos/systemuiutils/src/main/ets/sysdialog/BaseStateManager';
 import { immersiveKgMgr } from '../../../../immersivekeyguardcommon/manager/ImmersiveKeyguardStateManager';
+import { AodStyleType, ImmersiveAodStyle } from '../../../../immersivekeyguardcommon/base/interface/ImmersiveAodStyle';
 import { NotificationType } from '../../../../constants/NotificationType';
 import { LengthMetrics } from '@ohos.arkui.node';
 import { ProgressCardAnimVm } from '../../vm/ProgressCardAnimVm';
@@ -53,11 +54,19 @@ interface ProgressDot {
 export struct ProgressVisualComponent {
   @ObjectLink @Watch('updateProgressData') data: LiveProgressTemplate;
   private isDarkMode?: boolean;
-  @State darkModeState: DarkModeState = baseStateMgr.getBaseState(StateType.TYPE_DARK_MODE) as DarkModeState;
+  @State @Watch('onAodOrDarkModeStateChange') darkModeState: DarkModeState = baseStateMgr.getBaseState(StateType.TYPE_DARK_MODE) as DarkModeState;
   /**
    * 通知面板类型
    */
   @Consume notificationType: number;
+
+  private isAod?: boolean;
+
+  /**
+   * AOD显示样式
+   */
+  @State @Watch('onAodOrDarkModeStateChange') aodStyle: ImmersiveAodStyle | undefined = immersiveKgMgr.getOneMirrorState().getAodStyle(
+    this.notificationType === NotificationType.TYPE_PHONE_KEYGUARD);
 
   /**
    * 进度条总宽度
@@ -127,7 +136,7 @@ export struct ProgressVisualComponent {
       }
       .height(this.isSmallFoldOuterScreen ? 46 : 72)
       .width('100%')
-      .opacity(undefined)
+      .opacity(this.aodStyle?.isAod ? this.aodStyle.getStyleValue(AodStyleType.NTF_EXTEND_COMPONENT_ALPHA) : undefined)
       .padding(this.isSmallFoldOuterScreen ? undefined : {
         left: this.stackPadding,
         right: this.stackPadding,
@@ -277,6 +286,9 @@ export struct ProgressVisualComponent {
   }
 
   public getLineBackgroundColor(): string {
+    if (this.aodStyle?.isAod) {
+      return DARK_BGCOLOR;
+    }
     if (this.data.backgroundColor) {
       return this.data.backgroundColor;
     }
@@ -396,6 +408,14 @@ export struct ProgressVisualComponent {
       this.smallFoldOuterScreenCalcDots();
     } else {
       this.calcDots();
+    }
+  }
+
+  onAodOrDarkModeStateChange() {
+    if (this.isAod !== this.aodStyle?.isAod || this.isDarkMode !== this.darkModeState.isDarkMode) {
+      this.calDotsLayout();
+      this.isAod = this.aodStyle?.isAod;
+      this.isDarkMode = this.darkModeState.isDarkMode;
     }
   }
 }

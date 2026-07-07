@@ -52,7 +52,7 @@ import {
 } from '../../../../../main/ets/default/common/viewmodel/PageDesktopViewModelUtils'
 import { CardItemInfo } from '@ohos/launchercommon'
 import { GridLayoutItemInfo } from '@ohos/launchercommon'
-import { AppModel } from '@ohos/launchercommon'
+import { AppModel, DeliverUtil } from '@ohos/launchercommon'
 import { CheckEmptyUtils } from '@ohos/basicutils';
 import { NumberConstants } from '@ohos/commonconstants';
 import { CommonEvent, GlobalContext, EvtBus, ResourceManager } from '@ohos/frameworkwrapper';
@@ -344,6 +344,8 @@ export default function PageDesktopViewModelUtilsTest() {
       let mockfunc2 = mocker2.mockFunc(Number, Number.isNaN);
       when(mockfunc2)(ArgumentMatchers.anyNumber).afterReturn(true);
       let mocker3 = new MockKit();
+      let mockfunc3 = mocker3.mockFunc(DeliverUtil, DeliverUtil.isSupportDeliver);
+      when(mockfunc3)(ArgumentMatchers.any).afterReturn(false);
       let itemInfo = new AppItemInfo();
       try {
         itemInfo.bundleName = bundleName;
@@ -352,6 +354,7 @@ export default function PageDesktopViewModelUtilsTest() {
       } catch (err) {}
       mocker1.clear(AppModel);
       mocker2.clear(Number);
+      mocker3.clear(DeliverUtil);
       done();
     });
 
@@ -367,6 +370,8 @@ export default function PageDesktopViewModelUtilsTest() {
       let mockfunc2 = mocker2.mockFunc(Number, Number.isNaN);
       when(mockfunc2)(ArgumentMatchers.anyNumber).afterReturn(false);
       let mocker3 = new MockKit();
+      let mockfunc3 = mocker3.mockFunc(DeliverUtil, DeliverUtil.isSupportDeliver);
+      when(mockfunc3)(ArgumentMatchers.any).afterReturn(true);
       let mocker4 = new MockKit();
       let mockfunc4 = mocker4.mockFunc(instance, (instance as object)['checkInSmartDock']);
       when(mockfunc4)(ArgumentMatchers.anyString).afterReturn(true);
@@ -378,6 +383,7 @@ export default function PageDesktopViewModelUtilsTest() {
       } catch (err) {}
       mocker1.clear(AppModel);
       mocker2.clear(Number);
+      mocker3.clear(DeliverUtil);
       mocker4.clear(instance);
       done();
     });
@@ -393,6 +399,8 @@ export default function PageDesktopViewModelUtilsTest() {
       let mockfunc2 = mocker2.mockFunc(Number, Number.isNaN);
       when(mockfunc2)(ArgumentMatchers.anyNumber).afterReturn(false);
       let mocker3 = new MockKit();
+      let mockfunc3 = mocker3.mockFunc(DeliverUtil, DeliverUtil.isSupportDeliver);
+      when(mockfunc3)(ArgumentMatchers.any).afterReturn(true);
       let mocker4 = new MockKit();
       let mockfunc4 = mocker4.mockFunc(instance, (instance as object)['checkInSmartDock']);
       when(mockfunc4)(ArgumentMatchers.anyString).afterReturn(true);
@@ -404,6 +412,7 @@ export default function PageDesktopViewModelUtilsTest() {
       } catch (err) {}
       mocker1.clear(AppModel);
       mocker2.clear(Number);
+      mocker3.clear(DeliverUtil);
       mocker4.clear(instance);
       done();
     });
@@ -419,6 +428,8 @@ export default function PageDesktopViewModelUtilsTest() {
       let mockfunc2 = mocker2.mockFunc(Number, Number.isNaN);
       when(mockfunc2)(ArgumentMatchers.anyNumber).afterReturn(false);
       let mocker3 = new MockKit();
+      let mockfunc3 = mocker3.mockFunc(DeliverUtil, DeliverUtil.isSupportDeliver);
+      when(mockfunc3)(ArgumentMatchers.any).afterReturn(true);
       let mocker4 = new MockKit();
       let mockfunc4 = mocker4.mockFunc(instance, (instance as object)['checkInSmartDock']);
       when(mockfunc4)(ArgumentMatchers.anyString).afterReturn(true);
@@ -430,6 +441,7 @@ export default function PageDesktopViewModelUtilsTest() {
       } catch (err) {}
       mocker1.clear(AppModel);
       mocker2.clear(Number);
+      mocker3.clear(DeliverUtil);
       mocker4.clear(instance);
       done();
     });
@@ -843,6 +855,173 @@ export default function PageDesktopViewModelUtilsTest() {
       } catch (err) {}
     });
 
+    it("addOutNewInstalledInfo1", 0, async (done: Function) => {
+      try {
+        const viewModel: PageDesktopViewModel = PageDesktopViewModel.getInstance();
+        let a ='test';
+        const instance: PageDesktopViewModelUtils = new PageDesktopViewModelUtils(viewModel);
+        let item1: GridLayoutItemInfo = new GridLayoutItemInfo();
+        item1.cardId = '1';
+        item1.typeId = 1;
+        item1.bundleName = 'com.deliver.appstore.lite';
+        item1.moduleName = 'moduleName';
+        item1.abilityName = 'abilityName';
+        let outerLayoutInfoList: GridLayoutItemInfo[] = [];
+        outerLayoutInfoList = [item1, item1];
+        let pageDesktopInfo: GridLayoutItemInfo[] = [];
+        let cardItem1: GridLayoutItemInfo = new GridLayoutItemInfo();
+        cardItem1.cardId = '1';
+        cardItem1.bundleName = 'com.deliver.appstore.lite';
+        cardItem1.moduleName = 'moduleName';
+        cardItem1.abilityName = 'abilityName';
+        pageDesktopInfo = [cardItem1, cardItem1];
+        instance.addOutNewInstalledInfo(outerLayoutInfoList, pageDesktopInfo);
+        expect(a).assertEqual('test');
+      } catch (err) {}
+      done();
+    })
+
+    it("addOutNewInstalledInfo2", 0, async (done: Function) => {
+      try {
+        const viewModel: PageDesktopViewModel = PageDesktopViewModel.getInstance();
+        let a ='test';
+        const instance: PageDesktopViewModelUtils = new PageDesktopViewModelUtils(viewModel);
+        let item1: GridLayoutItemInfo = new GridLayoutItemInfo();
+        item1.cardId = '1';
+        item1.typeId = 2;
+        item1.bundleName = 'com.deliver.appstore.lite';
+        item1.moduleName = 'moduleName';
+        item1.abilityName = 'abilityName';
+        let outerLayoutInfoList: GridLayoutItemInfo[] = [];
+        outerLayoutInfoList = [item1, item1];
+        let pageDesktopInfo: GridLayoutItemInfo[] = [];
+        let cardItem1: GridLayoutItemInfo = new GridLayoutItemInfo();
+        cardItem1.cardId = '1';
+        cardItem1.bundleName = 'com.deliver.appstore.lite';
+        cardItem1.moduleName = 'moduleName';
+        cardItem1.abilityName = 'abilityName';
+        pageDesktopInfo = [cardItem1, cardItem1];
+        instance.addOutNewInstalledInfo(outerLayoutInfoList, pageDesktopInfo);
+        expect(a).assertEqual('test');
+      } catch (err) {}
+      done();
+    })
+
+    it("addOutNewInstalledInfo3", 0, async (done: Function) => {
+      try {
+        const viewModel: PageDesktopViewModel = PageDesktopViewModel.getInstance();
+        let a ='test';
+        const instance: PageDesktopViewModelUtils = new PageDesktopViewModelUtils(viewModel);
+        let item1: GridLayoutItemInfo = new GridLayoutItemInfo();
+        item1.cardId = '1';
+        item1.typeId = 2;
+        item1.bundleName = 'com.deliver.appstore.lite';
+        item1.moduleName = 'moduleName1';
+        item1.abilityName = 'abilityName1';
+        let outerLayoutInfoList: GridLayoutItemInfo[] = [];
+        outerLayoutInfoList = [item1, item1];
+        let pageDesktopInfo: GridLayoutItemInfo[] = [];
+        let cardItem1: GridLayoutItemInfo = new GridLayoutItemInfo();
+        cardItem1.cardId = '1';
+        cardItem1.bundleName = 'com.deliver.appstore.lite';
+        cardItem1.moduleName = 'moduleName';
+        cardItem1.abilityName = 'abilityName';
+        pageDesktopInfo = [cardItem1, cardItem1];
+        instance.addOutNewInstalledInfo(outerLayoutInfoList, pageDesktopInfo);
+        expect(a).assertEqual('test');
+      } catch (err) {}
+      done();
+    })
+
+    it("initOuterInstalledInfo1", 0, async (done: Function) => {
+      try {
+        const viewModel: PageDesktopViewModel = PageDesktopViewModel.getInstance();
+        let a ='test';
+        const instance: PageDesktopViewModelUtils = new PageDesktopViewModelUtils(viewModel);
+        let item1: AppItemInfo = new AppItemInfo();
+        item1.typeId = 1;
+        item1.bundleName = 'com.deliver.appstore.lite';
+        item1.moduleName = 'moduleName1';
+        item1.abilityName = 'abilityName1';
+        let totalAppInfoList: AppItemInfo[] = [];
+        totalAppInfoList = [item1, item1];
+
+        let item2: GridLayoutItemInfo = new GridLayoutItemInfo();
+        item2.cardId = '1';
+        item2.typeId = 1;
+        item2.bundleName = 'com.deliver.appstore.lite';
+        item2.moduleName = 'moduleName1';
+        item2.abilityName = 'abilityName1';
+        let totalAppInfoList2: GridLayoutItemInfo[] = [];
+        totalAppInfoList2 = [item2, item2];
+        instance.initOuterInstalledInfo(totalAppInfoList, [], totalAppInfoList2);
+        expect(a).assertEqual('test');
+      } catch (err) {}
+      done();
+    })
+
+    it("initOuterInstalledInfo2", 0, async (done: Function) => {
+      try {
+        const viewModel: PageDesktopViewModel = PageDesktopViewModel.getInstance();
+        let a ='test';
+        const instance: PageDesktopViewModelUtils = new PageDesktopViewModelUtils(viewModel);
+        let item1: GridLayoutItemInfo = new GridLayoutItemInfo();
+        item1.cardId = '1';
+        item1.typeId = 1;
+        item1.bundleName = 'com.deliver.appstore.lite';
+        item1.moduleName = 'moduleName1';
+        item1.abilityName = 'abilityName1';
+        let totalAppInfoList: GridLayoutItemInfo[] = [];
+        totalAppInfoList = [item1, item1];
+
+        let item: AppItemInfo = new AppItemInfo();
+        item.typeId = 1;
+        item.bundleName = 'com.deliver.appstore.lite';
+        item.moduleName = 'moduleName1';
+        item.abilityName = 'abilityName1';
+        let totalAppInfoList1: AppItemInfo[] = [];
+        totalAppInfoList1 = [item, item];
+        instance.initOuterInstalledInfo(totalAppInfoList1, [], totalAppInfoList);
+        expect(a).assertEqual('test');
+      } catch (err) {}
+      done();
+    })
+
+    it("initOuterInstalledInfo3", 0, async (done: Function) => {
+      try {
+        const viewModel: PageDesktopViewModel = PageDesktopViewModel.getInstance();
+        let a ='test';
+        const instance: PageDesktopViewModelUtils = new PageDesktopViewModelUtils(viewModel);
+        let item1: GridLayoutItemInfo = new GridLayoutItemInfo();
+        item1.cardId = '1';
+        item1.typeId = 1;
+        item1.bundleName = 'com.deliver.appstore.lite';
+        item1.moduleName = 'moduleName1';
+        item1.abilityName = 'abilityName1';
+        let item2: GridLayoutItemInfo = new GridLayoutItemInfo();
+        item2.cardId = '1';
+        item2.typeId = 1;
+        item2.bundleName = 'com.deliver.appstore.lite';
+        item2.moduleName = 'moduleName';
+        item2.abilityName = 'abilityName';
+        let totalAppInfoList: GridLayoutItemInfo[] = [];
+        let outerLayoutInfoList: GridLayoutItemInfo[] = [];
+        totalAppInfoList = [item1, item1];
+        outerLayoutInfoList = [item2, item2];
+
+        let item: AppItemInfo = new AppItemInfo();
+        item.typeId = 1;
+        item.bundleName = 'com.deliver.appstore.lite';
+        item.moduleName = 'moduleName1';
+        item.abilityName = 'abilityName1';
+        let totalAppInfoList1: AppItemInfo[] = [];
+        totalAppInfoList1 = [item, item];
+        instance.initOuterInstalledInfo(totalAppInfoList1, [], outerLayoutInfoList);
+        expect(a).assertEqual('test');
+      } catch (err) {}
+      done();
+    })
+
     it('buildGridLayoutInfoFromItemInfo', 0, async(done:Function) => {
       try {
         const viewModel: PageDesktopViewModel = PageDesktopViewModel.getInstance();
@@ -876,6 +1055,207 @@ export default function PageDesktopViewModelUtilsTest() {
       done();
     });
 
+    it("dealWithContainerApp1", 0, async (done: Function) => {
+      const viewModel: PageDesktopViewModel = PageDesktopViewModel.getInstance();
+      const instance: PageDesktopViewModelUtils = new PageDesktopViewModelUtils(viewModel);
+      let appItemInfo = new AppItemInfo();
+      appItemInfo.bundleName = 'com.deliver.appstore.lite';
+      appItemInfo.intent = `{'installSource':'com.deliver.appstore.lite'}`;
+      appItemInfo.installSource = 'com.deliver.appstore.lite';
+      let residentItem1 = new DockItemInfo();
+      residentItem1.itemType = CommonConstants.TYPE_FOLDER;
+      residentItem1.typeId = CommonConstants.TYPE_FOLDER;
+      residentItem1.bundleName = 'com.deliver.appstore.lite';
+      let residentItem2 = new DockItemInfo();
+      residentItem2.itemType = CommonConstants.TYPE_FOLDER;
+      residentItem2.typeId = CommonConstants.TYPE_FOLDER;
+      residentItem2.bundleName = 'com.deliver.appstore.lite';
+      let residentItem3 = new DockItemInfo();
+      residentItem3.itemType = CommonConstants.TYPE_FOLDER;
+      residentItem3.typeId = CommonConstants.TYPE_FOLDER;
+      residentItem3.bundleName = 'com.deliver.appstore.lite';
+      let residentList = [residentItem1, residentItem2, residentItem3];
+      let mocker: MockKit = new MockKit();
+      let mockFunction: Function = mocker.mockFunc(AppStorage, AppStorage.Get);
+      when(mockFunction)('residentList').afterReturn(residentList);
+      let gridLayoutItemInfo: GridLayoutItemInfo = {
+        bundleName: 'anyBundleName',
+        typeId: CommonConstants.TYPE_FOLDER,
+        abilityName: 'anyAbilityName',
+        moduleName: 'anyModuleName',
+        keyName: 'anyKeyName',
+        badgeNumber: 1,
+        area: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+        appName: 'anyAppName',
+        appIconId: 88888,
+        appLabelId: 77777,
+        kindId: 66666,
+        bundleType: 2,
+        applicationName: 'anyAppliucationName',
+        appStatus: 0,
+        downloadProgress: 0,
+        iconResource: 'anyIconResource',
+        callerName: 'anyCallerName',
+        folderName: 'anyFolderName',
+        folderId: 'anyFolderId',
+        container: 111,
+        extend1: 'anyExtend1',
+        layoutInfo: [[
+          {
+            bundleName: 'bundleName',
+            folderId: '1'
+          },
+          {
+            bundleName: 'bundleName',
+            folderId: ''
+          },
+          {
+            bundleName: 'com.deliver.appstore.lite',
+            folderId: ''
+          },
+          {
+            bundleName: 'com.deliver.appstore.lite',
+            folderId: '1'
+          }
+        ]]
+      } as GridLayoutItemInfo;
+      let layoutCacheManager: LaunchLayoutCacheManager = LaunchLayoutCacheManager.getInstance();
+      let mockFunction3: Function = mocker.mockFunc(layoutCacheManager['layoutCacheData'],
+        layoutCacheManager['layoutCacheData'].getGridLayoutItemList);
+      when(mockFunction3)(ArgumentMatchers.any).afterReturn([gridLayoutItemInfo]);
+      let mockFunction4: Function = mocker.mockFunc(DeliverUtil, DeliverUtil.isContainerFolder);
+      when(mockFunction4)(ArgumentMatchers.any).afterReturn(true);
+      let a ='test';
+      try {
+        instance.dealWithContainerApp(appItemInfo, true);
+        expect(a).assertEqual('test');
+      } catch (err) {}
+      mocker.clear(AppStorage);
+      mocker.clear(layoutCacheManager['layoutCacheData']);
+      mocker.clear(DeliverUtil);
+      mocker.clearAll();
+      done();
+    })
+
+    it("dealWithContainerApp2", 0, async (done: Function) => {
+      const viewModel: PageDesktopViewModel = PageDesktopViewModel.getInstance();
+      const instance: PageDesktopViewModelUtils = new PageDesktopViewModelUtils(viewModel);
+      let appItemInfo = new AppItemInfo();
+      appItemInfo.bundleName = 'com.deliver.appstore.lite';
+      appItemInfo.intent = `{'installSource':'com.deliver.appstore.lite'}`;
+      appItemInfo.installSource = 'com.deliver.appstore.lite';
+      let residentItem1 = new DockItemInfo();
+      residentItem1.itemType = CommonConstants.TYPE_APP;
+      residentItem1.typeId = CommonConstants.TYPE_APP;
+      residentItem1.bundleName = 'com.deliver.appstore.lite';
+      let residentItem2 = new DockItemInfo();
+      residentItem2.itemType = CommonConstants.TYPE_FOLDER;
+      residentItem2.typeId = CommonConstants.TYPE_FOLDER;
+      residentItem2.bundleName = 'com.deliver.appstore.lite';
+      let residentItem3 = new DockItemInfo();
+      residentItem3.itemType = CommonConstants.TYPE_ADD;
+      residentItem3.typeId = CommonConstants.TYPE_ADD;
+      residentItem3.bundleName = 'com.deliver.appstore.lite';
+      let residentList = [residentItem1, residentItem2, residentItem3];
+      let mocker: MockKit = new MockKit();
+      let mockFunction: Function = mocker.mockFunc(AppStorage, AppStorage.Get);
+      when(mockFunction)('residentList').afterReturn(residentList);
+      let mockFunction1: Function =
+        mocker.mockFunc(instance, (instance as object)['checkInLayout']);
+      when(mockFunction1)(ArgumentMatchers.any).afterReturn(false);
+      let layoutCacheManager: LaunchLayoutCacheManager = LaunchLayoutCacheManager.getInstance();
+      let a = 'test';
+      try {
+        instance.dealWithContainerApp(appItemInfo, true);
+        expect(a).assertEqual('test');
+      } catch (err) {}
+      mocker.clear(AppStorage);
+      mocker.clear(instance);
+      mocker.clearAll();
+      done();
+    })
+
+    it("dealWithContainerApp3", 0, async (done: Function) => {
+      const viewModel: PageDesktopViewModel = PageDesktopViewModel.getInstance();
+      const instance: PageDesktopViewModelUtils = new PageDesktopViewModelUtils(viewModel);
+      let appItemInfo = new AppItemInfo();
+      appItemInfo.bundleName = 'com.deliver.appstore.lite';
+      appItemInfo.intent = `{'installSource':'com.deliver.appstore.lite'}`;
+      appItemInfo.installSource = 'com.deliver.appstore.lite';
+      let residentItem1 = new DockItemInfo();
+      residentItem1.itemType = CommonConstants.TYPE_APP;
+      residentItem1.typeId = CommonConstants.TYPE_APP;
+      residentItem1.bundleName = 'com.deliver.appstore.lite';
+      let residentItem2 = new DockItemInfo();
+      residentItem2.itemType = CommonConstants.TYPE_FOLDER;
+      residentItem2.typeId = CommonConstants.TYPE_FOLDER;
+      residentItem2.bundleName = 'com.deliver.appstore.lite';
+      let residentItem3 = new DockItemInfo();
+      residentItem3.itemType = CommonConstants.TYPE_ADD;
+      residentItem3.typeId = CommonConstants.TYPE_ADD;
+      residentItem3.bundleName = 'com.deliver.appstore.lite';
+      let residentList = [residentItem1, residentItem2, residentItem3];
+      let mocker: MockKit = new MockKit();
+      let mockFunction: Function = mocker.mockFunc(AppStorage, AppStorage.Get);
+      when(mockFunction)('residentList').afterReturn(residentList);
+      let layoutCacheManager: LaunchLayoutCacheManager = LaunchLayoutCacheManager.getInstance();
+      let mockFunction1: Function =
+        mocker.mockFunc(instance, (instance as object)['checkInLayout']);
+      when(mockFunction1)(ArgumentMatchers.any).afterReturn(false);
+      let mockFunction3: Function = mocker.mockFunc(instance, (instance as object)['getContainerFolderIndex']);
+      when(mockFunction3)(ArgumentMatchers.any).afterReturn(-1);
+      let mockFunction5: Function = mocker.mockFunc(instance, (instance as object)['makeContainerFolderToDesktop']);
+      when(mockFunction5)(ArgumentMatchers.any).afterReturn(Promise.reject());
+      let a ='test';
+      try {
+        instance.dealWithContainerApp(appItemInfo, true);
+        expect(a).assertEqual('test');
+      } catch (err) {}
+      mocker.clear(AppStorage);
+      mocker.clear(instance);
+      mocker.clearAll();
+      done();
+    })
+
+    it("dealWithContainerApp4", 0, async (done: Function) => {
+      const viewModel: PageDesktopViewModel = PageDesktopViewModel.getInstance();
+      const instance: PageDesktopViewModelUtils = new PageDesktopViewModelUtils(viewModel);
+      let appItemInfo = new AppItemInfo();
+      appItemInfo.bundleName = 'com.deliver.appstore.lite';
+      appItemInfo.intent = `{'installSource':'com.deliver.appstore.lite'}`;
+      appItemInfo.installSource = 'com.deliver.appstore.lite';
+      let residentItem1 = new DockItemInfo();
+      residentItem1.itemType = CommonConstants.TYPE_APP;
+      residentItem1.typeId = CommonConstants.TYPE_APP;
+      residentItem1.bundleName = 'com.deliver.appstore.lite';
+      let residentItem2 = new DockItemInfo();
+      residentItem2.itemType = CommonConstants.TYPE_FOLDER;
+      residentItem2.typeId = CommonConstants.TYPE_FOLDER;
+      residentItem2.bundleName = 'com.deliver.appstore.lite';
+      let residentItem3 = new DockItemInfo();
+      residentItem3.itemType = CommonConstants.TYPE_ADD;
+      residentItem3.typeId = CommonConstants.TYPE_ADD;
+      residentItem3.bundleName = 'com.deliver.appstore.lite';
+      let residentList = [residentItem1, residentItem2, residentItem3];
+      let mocker: MockKit = new MockKit();
+      let mockFunction: Function = mocker.mockFunc(AppStorage, AppStorage.Get);
+      when(mockFunction)('residentList').afterReturn(residentList);
+      let mockFunction1: Function =
+        mocker.mockFunc(instance, (instance as object)['checkInLayout']);
+      when(mockFunction1)(ArgumentMatchers.any).afterReturn(false);
+      let mockFunction3: Function = mocker.mockFunc(instance, (instance as object)['getContainerFolderIndex']);
+      when(mockFunction3)(ArgumentMatchers.any).afterReturn(1);
+      let a ='test';
+      try {
+        instance.dealWithContainerApp(appItemInfo, true);
+        expect(a).assertEqual('test');
+      } catch (err) {}
+      mocker.clear(AppStorage);
+      mocker.clear(instance);
+      mocker.clearAll();
+      done();
+    })
+
     it("updateFolderAppLocation", 0, async (done: Function) => {
       try {
         const viewModel: PageDesktopViewModel = PageDesktopViewModel.getInstance();
@@ -907,7 +1287,15 @@ export default function PageDesktopViewModelUtilsTest() {
           page: 1,
           layoutInfo: [[
             {
+              bundleName: 'com.deliver.appstore.lite',
+              folderId: '1'
+            },
+            {
               bundleName: 'bundleName',
+              folderId: ''
+            },
+            {
+              bundleName: 'com.deliver.appstore.lite',
               folderId: ''
             }
           ]]
@@ -962,18 +1350,30 @@ export default function PageDesktopViewModelUtilsTest() {
         page: 1,
         layoutInfo: [[
           {
+            bundleName: 'com.deliver.appstore.lite',
+            folderId: '1'
+          },
+          {
             bundleName: 'bundleName',
+            folderId: ''
+          },
+          {
+            bundleName: 'com.deliver.appstore.lite',
             folderId: ''
           }
         ]]
       } as GridLayoutItemInfo;
       let layoutList = [gridLayoutItemInfo, gridLayoutItemInfo, gridLayoutItemInfo];
       let mocker: MockKit = new MockKit();
+      let mockFunction: Function =
+        mocker.mockFunc(DeliverUtil.DEFAULT_DELIVER_APP_SORT, DeliverUtil.DEFAULT_DELIVER_APP_SORT.has);
+      when(mockFunction)(ArgumentMatchers.any).afterReturn(true);
       let a ='test';
       try {
         (instance as object)['sortDeliverFolderApp'](layoutList);
         expect(a).assertEqual('test');
       } catch (err) {}
+      mocker.clear(DeliverUtil.DEFAULT_DELIVER_APP_SORT);
       mocker.clearAll();
       done();
     })
@@ -1009,18 +1409,96 @@ export default function PageDesktopViewModelUtilsTest() {
         page: 1,
         layoutInfo: [[
           {
+            bundleName: 'com.deliver.appstore.lite',
+            folderId: '1'
+          },
+          {
             bundleName: 'bundleName',
+            folderId: ''
+          },
+          {
+            bundleName: 'com.deliver.appstore.lite',
             folderId: ''
           }
         ]]
       } as GridLayoutItemInfo;
       let layoutList = [gridLayoutItemInfo, gridLayoutItemInfo, gridLayoutItemInfo];
       let mocker: MockKit = new MockKit();
+      let mockFunction: Function =
+        mocker.mockFunc(DeliverUtil.DEFAULT_DELIVER_APP_SORT, DeliverUtil.DEFAULT_DELIVER_APP_SORT.has);
+      when(mockFunction)(ArgumentMatchers.any).afterReturn(false);
       let a = 'test';
       try {
         (instance as object)['sortDeliverFolderApp'](layoutList);
         expect(a).assertEqual('test');
       } catch (err) {}
+      mocker.clear(DeliverUtil.DEFAULT_DELIVER_APP_SORT);
+      mocker.clearAll();
+      done();
+    })
+
+    it("makeContainerFolderToDesktop1", 0, async (done: Function) => {
+      const viewModel: PageDesktopViewModel = PageDesktopViewModel.getInstance();
+      const instance: PageDesktopViewModelUtils = new PageDesktopViewModelUtils(viewModel);
+      let appItemInfo = new AppItemInfo();
+      appItemInfo.bundleName = 'com.deliver.appstore.lite';
+      appItemInfo.intent = `{'installSource':'com.deliver.appstore.lite'}`;
+      appItemInfo.installSource = 'com.deliver.appstore.lite';
+      let mocker: MockKit = new MockKit();
+      let mockFunction: Function =
+        mocker.mockFunc(viewModel, (viewModel as object)['updateElementLocation']);
+      when(mockFunction)(ArgumentMatchers.any).afterReturn(false);
+      let a ='test';
+      try {
+        (instance as object)['makeFolder'](appItemInfo,true);
+        (instance as object)['makeContainerFolderToDesktop'](appItemInfo, true);
+        expect(a).assertEqual('test');
+      } catch (err) {}
+      mocker.clear(viewModel);
+      mocker.clearAll();
+      done();
+    })
+
+    it("makeContainerFolderToDesktop2", 0, async (done: Function) => {
+      const viewModel: PageDesktopViewModel = PageDesktopViewModel.getInstance();
+      const instance: PageDesktopViewModelUtils = new PageDesktopViewModelUtils(viewModel);
+      let appItemInfo = new AppItemInfo();
+      appItemInfo.bundleName = 'com.deliver.appstore.lite';
+      appItemInfo.intent = `{'installSource':'com.deliver.appstore.lite'}`;
+      appItemInfo.installSource = 'com.deliver.appstore.lite';
+      let mocker: MockKit = new MockKit();
+      let mockFunction: Function =
+        mocker.mockFunc(viewModel, (viewModel as object)['updateElementLocation']);
+      when(mockFunction)(ArgumentMatchers.any).afterReturn(false);
+      let a ='test';
+      try {
+        (instance as object)['makeFolder'](appItemInfo,false);
+        (instance as object)['makeContainerFolderToDesktop'](appItemInfo, false);
+        expect(a).assertEqual('test');
+      } catch (err) {}
+      mocker.clear(viewModel);
+      mocker.clearAll();
+      done();
+    })
+
+    it("makeContainerFolderToDesktop3", 0, async (done: Function) => {
+      const viewModel: PageDesktopViewModel = PageDesktopViewModel.getInstance();
+      const instance: PageDesktopViewModelUtils = new PageDesktopViewModelUtils(viewModel);
+      let appItemInfo = new AppItemInfo();
+      appItemInfo.bundleName = 'com.deliver.appstore.lite';
+      appItemInfo.intent = `{'installSource':'com.deliver.appstore.lite'}`;
+      appItemInfo.installSource = 'com.deliver.appstore.lite';
+      let mocker: MockKit = new MockKit();
+      let mockFunction: Function =
+        mocker.mockFunc(viewModel, (viewModel as object)['updateElementLocation']);
+      when(mockFunction)(ArgumentMatchers.any).afterReturn(false);
+      let a ='test';
+      try {
+        (instance as object)['makeFolder'](appItemInfo);
+        (instance as object)['makeContainerFolderToDesktop'](appItemInfo);
+        expect(a).assertEqual('test');
+      } catch (err) {}
+      mocker.clear(viewModel);
       mocker.clearAll();
       done();
     })
@@ -1107,7 +1585,15 @@ export default function PageDesktopViewModelUtilsTest() {
           page: 1,
           layoutInfo: [[
             {
+              bundleName: 'com.deliver.appstore.lite',
+              folderId: '1'
+            },
+            {
               bundleName: 'bundleName',
+              folderId: ''
+            },
+            {
+              bundleName: 'com.deliver.appstore.lite',
               folderId: ''
             }
           ]]
@@ -1136,6 +1622,317 @@ export default function PageDesktopViewModelUtilsTest() {
         let infoList = [itemInfo];
         let a ='test';
         (instance as object)['checkInLayout'](infoList, 'bundleName');
+        expect(a).assertEqual('test');
+      } catch (err) {}
+      done();
+    })
+
+    it("getContainerFolderIndex", 0, async (done: Function) => {
+      const viewModel: PageDesktopViewModel = PageDesktopViewModel.getInstance();
+      const instance: PageDesktopViewModelUtils = new PageDesktopViewModelUtils(viewModel);
+      let itemInfo = new DockItemInfo();
+      itemInfo.itemType = CommonConstants.TYPE_FOLDER;
+      itemInfo.typeId = CommonConstants.TYPE_FOLDER;
+      itemInfo.bundleName = 'bundleName';
+      itemInfo.appId = 'appId';
+      itemInfo.installSource = 'com.deliver.appstore.lite';
+      let mocker: MockKit = new MockKit();
+      let mockFunction: Function =
+        mocker.mockFunc(DeliverUtil, DeliverUtil.isContainerFolder);
+      when(mockFunction)(ArgumentMatchers.any).afterReturn(true);
+      let mockFunction1: Function =
+        mocker.mockFunc(NotHarmonyUtil, NotHarmonyUtil.isNotHarmonyFolderById);
+      when(mockFunction1)(ArgumentMatchers.any).afterReturn(true);
+      let a ='test';
+      try {
+        (instance as object)['getContainerFolderIndex']([itemInfo], 'com.deliver.appstore.lite');
+        expect(a).assertEqual('test');
+      } catch (err) {}
+      mocker.clear(DeliverUtil);
+      mocker.clear(NotHarmonyUtil);
+      mocker.clearAll();
+      done();
+    })
+
+    it("makeFolder1", 0, async (done: Function) => {
+      try {
+        const viewModel: PageDesktopViewModel = PageDesktopViewModel.getInstance();
+        const instance: PageDesktopViewModelUtils = new PageDesktopViewModelUtils(viewModel);
+        let appItemInfo = new AppItemInfo();
+        appItemInfo.typeId = CommonConstants.TYPE_FOLDER;
+        appItemInfo.bundleName = 'com.deliver.appstore.lite';
+        appItemInfo.intent = `{'installSource':'com.deliver.appstore.lite'}`;
+        appItemInfo.installSource = 'com.deliver.appstore.lite';
+        appItemInfo.page = 1;
+        appItemInfo.row = 1;
+        appItemInfo.column = 1;
+        let a ='test';
+        (instance as object)['makeFolder'](appItemInfo, false);
+        expect(a).assertEqual('test');
+      } catch (err) {}
+      done();
+    })
+
+    it("makeFolder2", 0, async (done: Function) => {
+      try {
+        const viewModel: PageDesktopViewModel = PageDesktopViewModel.getInstance();
+        const instance: PageDesktopViewModelUtils = new PageDesktopViewModelUtils(viewModel);
+        let appItemInfo = new AppItemInfo();
+        appItemInfo.typeId = CommonConstants.TYPE_FOLDER;
+        appItemInfo.bundleName = 'com.deliver.appstore.lite';
+        appItemInfo.intent = `{'installSource':'com.deliver.appstore.lite'}`;
+        appItemInfo.installSource = 'com.deliver.appstore.lite';
+        appItemInfo.page = 1;
+        appItemInfo.row = 1;
+        appItemInfo.column = 1;
+        let a ='test';
+        (instance as object)['makeFolder'](appItemInfo, true);
+        expect(a).assertEqual('test');
+      } catch (err) {}
+      done();
+    })
+
+    it("makeFolder3", 0, async (done: Function) => {
+      try {
+        const viewModel: PageDesktopViewModel = PageDesktopViewModel.getInstance();
+        const instance: PageDesktopViewModelUtils = new PageDesktopViewModelUtils(viewModel);
+        let appItemInfo = new AppItemInfo();
+        appItemInfo.typeId = CommonConstants.TYPE_FOLDER;
+        appItemInfo.bundleName = 'com.deliver.appstore.lite';
+        appItemInfo.intent = `{'installSource':'com.deliver.appstore.lite'}`;
+        appItemInfo.installSource = 'com.deliver.appstore.lite';
+        appItemInfo.page = 1;
+        appItemInfo.row = 1;
+        appItemInfo.column = 1;
+        let a ='test';
+        (instance as object)['makeFolder'](appItemInfo);
+        expect(a).assertEqual('test');
+      } catch (err) {}
+      done();
+    })
+
+    it("addInfoToDockFolder1", 0, async (done: Function) => {
+      const viewModel: PageDesktopViewModel = PageDesktopViewModel.getInstance();
+      const instance: PageDesktopViewModelUtils = new PageDesktopViewModelUtils(viewModel);
+      let gridLayoutItemInfo: GridLayoutItemInfo = {
+        bundleName: 'bundleName',
+        typeId: CommonConstants.TYPE_FOLDER,
+        abilityName: 'anyAbilityName',
+        moduleName: 'anyModuleName',
+        keyName: 'anyKeyName',
+        badgeNumber: 1,
+        area: [1, 2],
+        appName: 'anyAppName',
+        appIconId: 88888,
+        appLabelId: 77777,
+        kindId: 66666,
+        bundleType: 2,
+        applicationName: 'anyAppliucationName',
+        appStatus: 0,
+        downloadProgress: 0,
+        iconResource: 'anyIconResource',
+        callerName: 'anyCallerName',
+        folderName: 'anyFolderName',
+        folderId: 'anyFolderId',
+        container: 111,
+        extend1: 'anyExtend1',
+        intent: `{'name':'value'}`,
+        row: 1,
+        column: 1,
+        page: 1,
+        layoutInfo: [[
+          {
+            bundleName: 'com.deliver.appstore.lite',
+            folderId: '1'
+          },
+          {
+            bundleName: 'bundleName',
+            folderId: ''
+          },
+          {
+            bundleName: 'com.deliver.appstore.lite',
+            folderId: ''
+          }
+        ]]
+      } as GridLayoutItemInfo;
+      let appItemInfo = new AppItemInfo();
+      appItemInfo.typeId = CommonConstants.TYPE_FOLDER;
+      appItemInfo.intent = `{'installSource':'com.deliver.appstore.lite'}`;
+      appItemInfo.installSource = 'com.deliver.appstore.lite';
+      appItemInfo.page = 1;
+      appItemInfo.row = 1;
+      appItemInfo.column = 1;
+      let itemInfo = new DockItemInfo();
+      itemInfo.itemType = CommonConstants.TYPE_FOLDER;
+      itemInfo.typeId = CommonConstants.TYPE_FOLDER;
+      itemInfo.bundleName = 'bundleName';
+      itemInfo.appId = 'appId';
+      itemInfo.installSource = 'com.deliver.appstore.lite';
+      itemInfo.layoutInfo = [[gridLayoutItemInfo, gridLayoutItemInfo]];
+      let residentList = [itemInfo, itemInfo, itemInfo, itemInfo];
+      let mocker: MockKit = new MockKit();
+      let mockFunction: Function =
+        mocker.mockFunc(DeliverUtil.DEFAULT_DELIVER_APP_SORT, DeliverUtil.DEFAULT_DELIVER_APP_SORT.has);
+      when(mockFunction)(ArgumentMatchers.any).afterReturn(true);
+      let promise = Promise.resolve();
+      let rdbStoreManagerInstance:RdbStoreManager = RdbStoreManager.getInstance();
+      let mockFunction1: Function =
+        mocker.mockFunc(rdbStoreManagerInstance, rdbStoreManagerInstance.addInfoToDockFolder);
+      when(mockFunction1)(ArgumentMatchers.any).afterReturn(promise);
+      let a ='test';
+      try {
+        (instance as object)['addInfoToDockFolder'](residentList, 0, appItemInfo);
+        expect(a).assertEqual('test');
+      } catch (err) {}
+      mocker.clear(DeliverUtil.DEFAULT_DELIVER_APP_SORT);
+      mocker.clear(rdbStoreManagerInstance);
+      mocker.clearAll();
+      done();
+    })
+
+    it("addInfoToDockFolder2", 0, async (done: Function) => {
+      const viewModel: PageDesktopViewModel = PageDesktopViewModel.getInstance();
+      const instance: PageDesktopViewModelUtils = new PageDesktopViewModelUtils(viewModel);
+      let gridLayoutItemInfo: GridLayoutItemInfo = {
+        bundleName: 'bundleName',
+        typeId: CommonConstants.TYPE_FOLDER,
+        abilityName: 'anyAbilityName',
+        moduleName: 'anyModuleName',
+        keyName: 'anyKeyName',
+        badgeNumber: 1,
+        area: [1, 2],
+        appName: 'anyAppName',
+        appIconId: 88888,
+        appLabelId: 77777,
+        kindId: 66666,
+        bundleType: 2,
+        applicationName: 'anyAppliucationName',
+        appStatus: 0,
+        downloadProgress: 0,
+        iconResource: 'anyIconResource',
+        callerName: 'anyCallerName',
+        folderName: 'anyFolderName',
+        folderId: 'anyFolderId',
+        container: 111,
+        extend1: 'anyExtend1',
+        intent: `{'name':'value'}`,
+        row: 1,
+        column: 1,
+        page: 1,
+        layoutInfo: [[
+          {
+            bundleName: 'com.deliver.appstore.lite',
+            folderId: '1'
+          },
+          {
+            bundleName: 'bundleName',
+            folderId: ''
+          },
+          {
+            bundleName: 'com.deliver.appstore.lite',
+            folderId: ''
+          }
+        ]]
+      } as GridLayoutItemInfo;
+      let appItemInfo = new AppItemInfo();
+      appItemInfo.typeId = CommonConstants.TYPE_FOLDER;
+      appItemInfo.bundleName = 'com.deliver.appstore.lite';
+      appItemInfo.intent = `{'installSource':'com.deliver.appstore.lite'}`;
+      appItemInfo.installSource = 'com.deliver.appstore.lite';
+      appItemInfo.page = 1;
+      appItemInfo.row = 1;
+      appItemInfo.column = 1;
+      let itemInfo = new DockItemInfo();
+      itemInfo.itemType = CommonConstants.TYPE_FOLDER;
+      itemInfo.typeId = CommonConstants.TYPE_FOLDER;
+      itemInfo.bundleName = 'bundleName';
+      itemInfo.appId = 'appId';
+      itemInfo.installSource = 'com.deliver.appstore.lite';
+      itemInfo.layoutInfo = [[gridLayoutItemInfo, gridLayoutItemInfo]];
+      let residentList = [itemInfo, itemInfo, itemInfo, itemInfo];
+      let mocker: MockKit = new MockKit();
+      let mockFunction: Function =
+        mocker.mockFunc(DeliverUtil.DEFAULT_DELIVER_APP_SORT, DeliverUtil.DEFAULT_DELIVER_APP_SORT.has);
+      when(mockFunction)(ArgumentMatchers.any).afterReturn(false);
+      let folderDataInstance:FolderData = FolderData.getInstance();
+      let rdbStoreManagerInstance:RdbStoreManager = RdbStoreManager.getInstance();
+      let promise = Promise.resolve();
+      let mockFunction1: Function =
+        mocker.mockFunc(rdbStoreManagerInstance, rdbStoreManagerInstance.insertGridLayoutInfoWithCheck);
+      when(mockFunction1)(ArgumentMatchers.any).afterReturn(promise);
+      let mockFunction2: Function =
+        mocker.mockFunc(rdbStoreManagerInstance, rdbStoreManagerInstance.addInfoToDockFolder);
+      when(mockFunction2)(ArgumentMatchers.any).afterReturn(promise);
+      let mockFunction3: Function =
+        mocker.mockFunc(folderDataInstance, folderDataInstance.getOpenedFolder);
+      when(mockFunction3)(ArgumentMatchers.any).afterReturn(gridLayoutItemInfo);
+      let a ='test';
+      try {
+        (instance as object)['addInfoToDockFolder'](residentList, 0, appItemInfo);
+        expect(a).assertEqual('test');
+      } catch (err) {}
+      mocker.clear(DeliverUtil.DEFAULT_DELIVER_APP_SORT);
+      mocker.clear(rdbStoreManagerInstance);
+      mocker.clear(folderDataInstance);
+      mocker.clearAll();
+      done();
+    })
+
+    it("getGridLayoutItemInfo", 0, async (done: Function) => {
+      try {
+        const viewModel: PageDesktopViewModel = PageDesktopViewModel.getInstance();
+        const instance: PageDesktopViewModelUtils = new PageDesktopViewModelUtils(viewModel);
+        let gridLayoutItemInfo: GridLayoutItemInfo = {
+          bundleName: 'bundleName',
+          typeId: CommonConstants.TYPE_ADD,
+          abilityName: 'anyAbilityName',
+          moduleName: 'anyModuleName',
+          keyName: 'anyKeyName',
+          badgeNumber: 1,
+          area: [1, 2],
+          appName: 'anyAppName',
+          appIconId: 88888,
+          appLabelId: 77777,
+          kindId: 66666,
+          bundleType: 2,
+          applicationName: 'anyAppliucationName',
+          appStatus: 0,
+          downloadProgress: 0,
+          iconResource: 'anyIconResource',
+          callerName: 'anyCallerName',
+          folderName: 'anyFolderName',
+          folderId: 'anyFolderId',
+          container: 111,
+          extend1: 'anyExtend1',
+          intent: `{'name':'value'}`,
+          row: 1,
+          column: 1,
+          page: 1,
+          layoutInfo: [[
+            {
+              bundleName: 'com.deliver.appstore.lite',
+              folderId: '1'
+            },
+            {
+              bundleName: 'bundleName',
+              folderId: ''
+            },
+            {
+              bundleName: 'com.deliver.appstore.lite',
+              folderId: ''
+            }
+          ]]
+        } as GridLayoutItemInfo;
+        let appItemInfo = new AppItemInfo();
+        appItemInfo.typeId = CommonConstants.TYPE_ADD;
+        appItemInfo.bundleName = 'com.deliver.appstore.lite';
+        appItemInfo.intent = `{'installSource':'com.deliver.appstore.lite'}`;
+        appItemInfo.installSource = 'com.deliver.appstore.lite';
+        appItemInfo.page = 1;
+        appItemInfo.row = 1;
+        appItemInfo.column = 1;
+        let a ='test';
+        (instance as object)['getGridLayoutItemInfo'](gridLayoutItemInfo, appItemInfo);
         expect(a).assertEqual('test');
       } catch (err) {}
       done();
@@ -1217,6 +2014,158 @@ export default function PageDesktopViewModelUtilsTest() {
       done();
     })
 
+    it("sortAndChangeForAutoAlign2", 0, async (done: Function) => {
+      const viewModel: PageDesktopViewModel = PageDesktopViewModel.getInstance();
+      const instance: PageDesktopViewModelUtils = new PageDesktopViewModelUtils(viewModel);
+      let gridLayoutItemInfo: GridLayoutItemInfo = {
+        bundleName: 'bundleName',
+        typeId: CommonConstants.TYPE_ADD,
+        abilityName: 'anyAbilityName',
+        moduleName: 'anyModuleName',
+        keyName: 'anyKeyName',
+        badgeNumber: 1,
+        area: [1, 2],
+        appName: 'anyAppName',
+        appIconId: 88888,
+        appLabelId: 77777,
+        kindId: 66666,
+        bundleType: 2,
+        applicationName: 'anyAppliucationName',
+        appStatus: 0,
+        downloadProgress: 0,
+        iconResource: 'anyIconResource',
+        callerName: 'anyCallerName',
+        folderName: 'anyFolderName',
+        folderId: 'anyFolderId',
+        container: 111,
+        extend1: 'anyExtend1',
+        intent: `{'name':'value'}`,
+        row: 1,
+        column: 1,
+        page: 1,
+        layoutInfo: [[
+          {
+            bundleName: 'com.deliver.appstore.lite',
+            folderId: '1'
+          },
+          {
+            bundleName: 'bundleName',
+            folderId: ''
+          },
+          {
+            bundleName: 'com.deliver.appstore.lite',
+            folderId: ''
+          }
+        ]]
+      } as GridLayoutItemInfo;
+      let appItemInfo = new AppItemInfo();
+      appItemInfo.typeId = CommonConstants.TYPE_ADD;
+      appItemInfo.bundleName = 'com.deliver.appstore.lite';
+      appItemInfo.intent = `{'installSource':'com.deliver.appstore.lite'}`;
+      appItemInfo.installSource = 'com.deliver.appstore.lite';
+      appItemInfo.page = 1;
+      appItemInfo.row = 1;
+      appItemInfo.column = 1;
+      appItemInfo.shortcutId = '';
+      let itemList = [gridLayoutItemInfo, gridLayoutItemInfo];
+      let mocker: MockKit = new MockKit();
+      let launchLayoutCacheManager: LaunchLayoutCacheManager = LaunchLayoutCacheManager.getInstance();
+      let layoutDes = {
+        pageCount: 1,
+        row: 1,
+        column: 1,
+        maxPage: 1,
+        maxForm: 1,
+      } as LayoutDescription;
+      let mockFunction: Function =
+        mocker.mockFunc(launchLayoutCacheManager, launchLayoutCacheManager.selectLayoutDescription);
+      when(mockFunction)(ArgumentMatchers.any).afterReturn(layoutDes);
+      let a ='test';
+      try {
+        instance.sortAndChangeForAutoAlign(itemList, [appItemInfo]);
+        expect(a).assertEqual('test');
+      } catch (err) {}
+      mocker.clear(launchLayoutCacheManager);
+      mocker.clearAll();
+      done();
+    })
+
+    it("sortAndChangeForAutoAlign3", 0, async (done: Function) => {
+      const viewModel: PageDesktopViewModel = PageDesktopViewModel.getInstance();
+      const instance: PageDesktopViewModelUtils = new PageDesktopViewModelUtils(viewModel);
+      let gridLayoutItemInfo: GridLayoutItemInfo = {
+        bundleName: 'bundleName',
+        typeId: CommonConstants.TYPE_ADD,
+        abilityName: 'anyAbilityName',
+        moduleName: 'anyModuleName',
+        keyName: 'anyKeyName',
+        badgeNumber: 1,
+        area: [1, 2],
+        appName: 'anyAppName',
+        appIconId: 88888,
+        appLabelId: 77777,
+        kindId: 66666,
+        bundleType: 2,
+        applicationName: 'anyAppliucationName',
+        appStatus: 0,
+        downloadProgress: 0,
+        iconResource: 'anyIconResource',
+        callerName: 'anyCallerName',
+        folderName: 'anyFolderName',
+        folderId: 'anyFolderId',
+        container: 111,
+        extend1: 'anyExtend1',
+        intent: `{'name':'value'}`,
+        row: 1,
+        column: 1,
+        page: 1,
+        layoutInfo: [[
+          {
+            bundleName: 'com.deliver.appstore.lite',
+            folderId: '1'
+          },
+          {
+            bundleName: 'bundleName',
+            folderId: ''
+          },
+          {
+            bundleName: 'com.deliver.appstore.lite',
+            folderId: ''
+          }
+        ]]
+      } as GridLayoutItemInfo;
+      let appItemInfo = new AppItemInfo();
+      appItemInfo.typeId = CommonConstants.TYPE_ADD;
+      appItemInfo.bundleName = 'com.deliver.appstore.lite';
+      appItemInfo.intent = `{'installSource':'com.deliver.appstore.lite'}`;
+      appItemInfo.installSource = 'com.deliver.appstore.lite';
+      appItemInfo.page = 1;
+      appItemInfo.row = 1;
+      appItemInfo.column = 1;
+      appItemInfo.shortcutId = 'shortcutId';
+      let itemList = [gridLayoutItemInfo, gridLayoutItemInfo];
+      let mocker: MockKit = new MockKit();
+      let launchLayoutCacheManager: LaunchLayoutCacheManager = LaunchLayoutCacheManager.getInstance();
+      let layoutDes = {
+        pageCount: 1,
+        row: 1,
+        column: 1,
+        maxPage: 1,
+        maxForm: 1,
+      } as LayoutDescription;
+      let mockFunction: Function =
+        mocker.mockFunc(launchLayoutCacheManager, launchLayoutCacheManager.selectLayoutDescription);
+      when(mockFunction)(ArgumentMatchers.any).afterReturn(layoutDes);
+      let a ='test';
+      try {
+        instance.sortAndChangeForAutoAlign(itemList, [appItemInfo]);
+        expect(a).assertEqual('test');
+      } catch (err) {}
+      mocker.clear(launchLayoutCacheManager);
+      mocker.clearAll();
+      done();
+    })
+
     it("compareGridLayoutItemByLocation", 0, async (done: Function) => {
       try {
         const viewModel: PageDesktopViewModel = PageDesktopViewModel.getInstance();
@@ -1260,7 +2209,15 @@ export default function PageDesktopViewModelUtilsTest() {
           page: 1,
           layoutInfo: [[
             {
+              bundleName: 'com.deliver.appstore.lite',
+              folderId: '1'
+            },
+            {
               bundleName: 'bundleName',
+              folderId: ''
+            },
+            {
+              bundleName: 'com.deliver.appstore.lite',
               folderId: ''
             }
           ]]
@@ -1272,6 +2229,235 @@ export default function PageDesktopViewModelUtilsTest() {
       done();
     })
 
+    it("autoAlignGridLayoutItem1", 0, async (done: Function) => {
+      try {
+        const viewModel: PageDesktopViewModel = PageDesktopViewModel.getInstance();
+        const instance: PageDesktopViewModelUtils = new PageDesktopViewModelUtils(viewModel);
+        let gridLayoutItemInfo: GridLayoutItemInfo = {
+          bundleName: 'bundleName',
+          typeId: CommonConstants.TYPE_ADD,
+          abilityName: 'anyAbilityName',
+          moduleName: 'anyModuleName',
+          keyName: 'anyKeyName',
+          badgeNumber: 1,
+          area: [1, 2],
+          appName: 'anyAppName',
+          appIconId: 88888,
+          appLabelId: 77777,
+          kindId: 66666,
+          bundleType: 2,
+          applicationName: 'anyAppliucationName',
+          appStatus: 0,
+          downloadProgress: 0,
+          iconResource: 'anyIconResource',
+          callerName: 'anyCallerName',
+          folderName: 'anyFolderName',
+          folderId: 'anyFolderId',
+          container: 111,
+          extend1: 'anyExtend1',
+          intent: `{'name':'value'}`,
+          row: 1,
+          column: 1,
+          page: 1,
+          layoutInfo: [[
+            {
+              bundleName: 'com.deliver.appstore.lite',
+              folderId: '1'
+            },
+            {
+              bundleName: 'bundleName',
+              folderId: ''
+            },
+            {
+              bundleName: 'com.deliver.appstore.lite',
+              folderId: ''
+            }
+          ]]
+        } as GridLayoutItemInfo;
+        let appItemInfo = new AppItemInfo();
+        appItemInfo.typeId = CommonConstants.TYPE_ADD;
+        appItemInfo.bundleName = 'com.deliver.appstore.lite';
+        appItemInfo.intent = `{'installSource':'com.deliver.appstore.lite'}`;
+        appItemInfo.installSource = 'com.deliver.appstore.lite';
+        appItemInfo.page = 1;
+        appItemInfo.row = 1;
+        appItemInfo.column = 1;
+        appItemInfo.shortcutId = 'shortcutId';
+        let itemList = [gridLayoutItemInfo, gridLayoutItemInfo];
+        let a ='test';
+        (instance as object)['autoAlignGridLayoutItem'](itemList, [appItemInfo]);
+        expect(a).assertEqual('test');
+      } catch (err) {}
+      done()
+    })
+
+    it("autoAlignGridLayoutItem2", 0, async (done: Function) => {
+      try {
+        const viewModel: PageDesktopViewModel = PageDesktopViewModel.getInstance();
+        const instance: PageDesktopViewModelUtils = new PageDesktopViewModelUtils(viewModel);
+        let gridLayoutItemInfo: GridLayoutItemInfo = {
+          bundleName: 'bundleName',
+          typeId: CommonConstants.TYPE_ADD,
+          abilityName: 'anyAbilityName',
+          moduleName: 'anyModuleName',
+          keyName: 'anyKeyName',
+          shortcutId: 'shortcutId123',
+          badgeNumber: 1,
+          area: [1, 2],
+          appName: 'anyAppName',
+          appIconId: 88888,
+          appLabelId: 77777,
+          kindId: 66666,
+          bundleType: 2,
+          applicationName: 'anyAppliucationName',
+          appStatus: 0,
+          downloadProgress: 0,
+          iconResource: 'anyIconResource',
+          callerName: 'anyCallerName',
+          folderName: 'anyFolderName',
+          folderId: 'anyFolderId',
+          container: 111,
+          extend1: 'anyExtend1',
+          intent: `{'name':'value'}`,
+          row: 1,
+          column: 1,
+          page: 1,
+          layoutInfo: [[
+            {
+              bundleName: 'com.deliver.appstore.lite',
+              folderId: '1'
+            },
+            {
+              bundleName: 'bundleName',
+              folderId: ''
+            },
+            {
+              bundleName: 'com.deliver.appstore.lite',
+              folderId: ''
+            }
+          ]]
+        } as GridLayoutItemInfo;
+        let gridLayoutItemInfo1: GridLayoutItemInfo = {
+          bundleName: 'bundleName',
+          typeId: CommonConstants.TYPE_ADD,
+          abilityName: 'anyAbilityName',
+          moduleName: 'anyModuleName',
+          keyName: 'anyKeyName',
+          shortcutId: 'shortcutId123',
+          badgeNumber: 1,
+          area: [1, 2],
+          appName: 'anyAppName',
+          appIconId: 88888,
+          appLabelId: 77777,
+          kindId: 66666,
+          bundleType: 2,
+          applicationName: 'anyAppliucationName',
+          appStatus: 0,
+          downloadProgress: 0,
+          iconResource: 'anyIconResource',
+          callerName: 'anyCallerName',
+          folderName: 'anyFolderName',
+          folderId: 'anyFolderId',
+          container: 111,
+          extend1: 'anyExtend1',
+          intent: `{'name':'value'}`,
+          row: 2,
+          column: 2,
+          page: 2,
+          layoutInfo: [[
+            {
+              bundleName: 'com.deliver.appstore.lite',
+              folderId: '1'
+            },
+            {
+              bundleName: 'bundleName',
+              folderId: ''
+            },
+            {
+              bundleName: 'com.deliver.appstore.lite',
+              folderId: ''
+            }
+          ]]
+        } as GridLayoutItemInfo;
+        let appItemInfo = new AppItemInfo();
+        appItemInfo.typeId = CommonConstants.TYPE_ADD;
+        appItemInfo.bundleName = 'com.deliver.appstore.lite';
+        appItemInfo.intent = `{'installSource':'com.deliver.appstore.lite'}`;
+        appItemInfo.installSource = 'com.deliver.appstore.lite';
+        appItemInfo.page = 1;
+        appItemInfo.row = 1;
+        appItemInfo.column = 1;
+        appItemInfo.shortcutId = 'shortcutId';
+        let itemList = [gridLayoutItemInfo, gridLayoutItemInfo1];
+        let a ='test';
+        (instance as object)['autoAlignGridLayoutItem'](itemList, [appItemInfo]);
+        expect(a).assertEqual('test');
+      } catch (err) {}
+      done();
+    })
+
+    it("autoAlignGridLayoutItem3", 0, async (done: Function) => {
+      try {
+        const viewModel: PageDesktopViewModel = PageDesktopViewModel.getInstance();
+        const instance: PageDesktopViewModelUtils = new PageDesktopViewModelUtils(viewModel);
+        let gridLayoutItemInfo: GridLayoutItemInfo = {
+          bundleName: 'bundleName',
+          typeId: CommonConstants.TYPE_ADD,
+          abilityName: 'anyAbilityName',
+          moduleName: 'anyModuleName',
+          keyName: 'anyKeyName',
+          badgeNumber: 1,
+          area: [1, 2],
+          appName: 'anyAppName',
+          appIconId: 88888,
+          appLabelId: 77777,
+          kindId: 66666,
+          bundleType: 2,
+          applicationName: 'anyAppliucationName',
+          appStatus: 0,
+          downloadProgress: 0,
+          iconResource: 'anyIconResource',
+          callerName: 'anyCallerName',
+          folderName: 'anyFolderName',
+          folderId: 'anyFolderId',
+          container: 111,
+          extend1: 'anyExtend1',
+          intent: `{'name':'value'}`,
+          row: 1,
+          column: 1,
+          page: 1,
+          layoutInfo: [[
+            {
+              bundleName: 'com.deliver.appstore.lite',
+              folderId: '1'
+            },
+            {
+              bundleName: 'bundleName',
+              folderId: ''
+            },
+            {
+              bundleName: 'com.deliver.appstore.lite',
+              folderId: ''
+            }
+          ]]
+        } as GridLayoutItemInfo;
+        let appItemInfo = new AppItemInfo();
+        appItemInfo.typeId = CommonConstants.TYPE_ADD;
+        appItemInfo.bundleName = 'com.deliver.appstore.lite';
+        appItemInfo.intent = `{'installSource':'com.deliver.appstore.lite'}`;
+        appItemInfo.installSource = 'com.deliver.appstore.lite';
+        appItemInfo.page = 1;
+        appItemInfo.row = 1;
+        appItemInfo.column = 1;
+        appItemInfo.shortcutId = 'shortcutId';
+        let itemList = [gridLayoutItemInfo, gridLayoutItemInfo];
+        let result: SqueezeGridLayout[] = (instance as object)['autoAlignGridLayoutItem'](itemList, [appItemInfo]);
+        let a = 'test';
+        expect(result.length).assertInstanceOf('Number');
+      } catch (err) {}
+      done();
+    })
+
     it("isBundleNameAppExistInDock1", 0, async (done: Function) => {
       const viewModel: PageDesktopViewModel = PageDesktopViewModel.getInstance();
       const instance: PageDesktopViewModelUtils = new PageDesktopViewModelUtils(viewModel);
@@ -1279,6 +2465,81 @@ export default function PageDesktopViewModelUtilsTest() {
       let mockFunction: Function =
         mocker.mockFunc(AppStorage, AppStorage.get);
       when(mockFunction)(ArgumentMatchers.any).afterReturn(undefined);
+      let a ='test';
+      try {
+        instance.isBundleNameAppExistInDock('bundleName', 1);
+        expect(a).assertEqual('test');
+      } catch (err) {}
+      mocker.clear(AppStorage);
+      mocker.clearAll();
+      done();
+    })
+
+    it("isBundleNameAppExistInDock2", 0, async (done: Function) => {
+      const viewModel: PageDesktopViewModel = PageDesktopViewModel.getInstance();
+      const instance: PageDesktopViewModelUtils = new PageDesktopViewModelUtils(viewModel);
+      let mocker: MockKit = new MockKit();
+      let itemInfo = new DockItemInfo();
+      itemInfo.itemType = CommonConstants.TYPE_APP;
+      itemInfo.typeId = CommonConstants.TYPE_APP;
+      itemInfo.bundleName = 'bundleName';
+      itemInfo.appId = 'appId';
+      itemInfo.appIndex = 1;
+      itemInfo.installSource = 'com.deliver.appstore.lite';
+      let residentList = [itemInfo];
+      let mockFunction: Function =
+        mocker.mockFunc(AppStorage, AppStorage.get);
+      when(mockFunction)(ArgumentMatchers.any).afterReturn(residentList);
+      let a ='test';
+      try {
+        instance.isBundleNameAppExistInDock('bundleName', 1);
+        expect(a).assertEqual('test');
+      } catch (err) {}
+      mocker.clear(AppStorage);
+      mocker.clearAll();
+      done();
+    })
+
+    it("isBundleNameAppExistInDock3", 0, async (done: Function) => {
+      const viewModel: PageDesktopViewModel = PageDesktopViewModel.getInstance();
+      const instance: PageDesktopViewModelUtils = new PageDesktopViewModelUtils(viewModel);
+      let mocker: MockKit = new MockKit();
+      let itemInfo = new DockItemInfo();
+      itemInfo.itemType = CommonConstants.TYPE_FOLDER;
+      itemInfo.typeId = CommonConstants.TYPE_FOLDER;
+      itemInfo.bundleName = 'bundleName';
+      itemInfo.appId = 'appId';
+      itemInfo.appIndex = 1;
+      itemInfo.installSource = 'com.deliver.appstore.lite';
+      let residentList = [itemInfo];
+      let mockFunction: Function =
+        mocker.mockFunc(AppStorage, AppStorage.get);
+      when(mockFunction)(ArgumentMatchers.any).afterReturn(residentList);
+      let a = 'test';
+      try {
+        instance.isBundleNameAppExistInDock('bundleName', 1);
+        expect(a).assertEqual('test');
+      } catch (err) {}
+      mocker.clear(AppStorage);
+      mocker.clearAll();
+      done();
+    })
+
+    it("isBundleNameAppExistInDock4", 0, async (done: Function) => {
+      const viewModel: PageDesktopViewModel = PageDesktopViewModel.getInstance();
+      const instance: PageDesktopViewModelUtils = new PageDesktopViewModelUtils(viewModel);
+      let mocker: MockKit = new MockKit();
+      let itemInfo = new DockItemInfo();
+      itemInfo.itemType = CommonConstants.TYPE_ADD;
+      itemInfo.typeId = CommonConstants.TYPE_ADD;
+      itemInfo.bundleName = 'bundleName';
+      itemInfo.appId = 'appId';
+      itemInfo.appIndex = 1;
+      itemInfo.installSource = 'com.deliver.appstore.lite';
+      let residentList = [itemInfo];
+      let mockFunction: Function =
+        mocker.mockFunc(AppStorage, AppStorage.get);
+      when(mockFunction)(ArgumentMatchers.any).afterReturn(residentList);
       let a ='test';
       try {
         instance.isBundleNameAppExistInDock('bundleName', 1);
@@ -1362,7 +2623,15 @@ export default function PageDesktopViewModelUtilsTest() {
         page: 1,
         layoutInfo: [[
           {
+            bundleName: 'com.deliver.appstore.lite',
+            folderId: '1'
+          },
+          {
             bundleName: 'bundleName',
+            folderId: ''
+          },
+          {
+            bundleName: 'com.deliver.appstore.lite',
             folderId: ''
           }
         ]]
@@ -1418,7 +2687,15 @@ export default function PageDesktopViewModelUtilsTest() {
         page: 1,
         layoutInfo: [[
           {
+            bundleName: 'com.deliver.appstore.lite',
+            folderId: '1'
+          },
+          {
             bundleName: 'bundleName',
+            folderId: ''
+          },
+          {
+            bundleName: 'com.deliver.appstore.lite',
             folderId: ''
           }
         ]]
@@ -1473,6 +2750,119 @@ export default function PageDesktopViewModelUtilsTest() {
       done();
     })
 
+    it("refreshDeliverAppList2", 0, async (done: Function) => {
+      const viewModel: PageDesktopViewModel = PageDesktopViewModel.getInstance();
+      const instance: PageDesktopViewModelUtils = new PageDesktopViewModelUtils(viewModel);
+      let mocker: MockKit = new MockKit();
+      let itemInfo = new DockItemInfo();
+      itemInfo.itemType = CommonConstants.TYPE_ADD;
+      itemInfo.typeId = CommonConstants.TYPE_ADD;
+      itemInfo.bundleName = 'bundleName';
+      itemInfo.appId = 'appId';
+      itemInfo.appIndex = 1;
+      itemInfo.appName = 'appName';
+      itemInfo.codePath = String(NumberConstants.CONSTANT_NUMBER_ONE);
+      itemInfo.installSource = 'com.deliver.appstore.lite';
+      let residentList = [itemInfo];
+      let promise = Promise.resolve(residentList)
+      let appInstance = AppModel.getInstance();
+      let mockFunction: Function =
+        mocker.mockFunc(launcherAbilityManager, launcherAbilityManager.getLauncherAbilityList);
+      when(mockFunction)(ArgumentMatchers.any).afterReturn(promise);
+      let mockFunction1: Function =
+        mocker.mockFunc(appInstance, appInstance.deleteAppsByDelivery);
+      when(mockFunction1)(ArgumentMatchers.any).afterReturn([]);
+      let a ='test';
+      try {
+        instance.refreshDeliverAppList();
+        expect(a).assertEqual('test');
+      } catch (err) {}
+      mocker.clear(launcherAbilityManager);
+      mocker.clear(appInstance);
+      mocker.clearAll();
+      done();
+    })
+
+    it("refreshDeliverAppList3", 0, async (done: Function) => {
+      const viewModel: PageDesktopViewModel = PageDesktopViewModel.getInstance();
+      const instance: PageDesktopViewModelUtils = new PageDesktopViewModelUtils(viewModel);
+      let mocker: MockKit = new MockKit();
+      let itemInfo = new DockItemInfo();
+      itemInfo.itemType = CommonConstants.TYPE_ADD;
+      itemInfo.typeId = CommonConstants.TYPE_ADD;
+      itemInfo.bundleName = 'bundleName';
+      itemInfo.appId = 'appId';
+      itemInfo.appIndex = 1;
+      itemInfo.appName = 'appName';
+      itemInfo.codePath = String(NumberConstants.CONSTANT_NUMBER_ONE);
+      itemInfo.installSource = 'com.deliver.appstore.lite';
+      let residentList = [itemInfo]
+      let promise = Promise.resolve(residentList)
+      let mockFunction: Function =
+        mocker.mockFunc(launcherAbilityManager, launcherAbilityManager.getLauncherAbilityList);
+      when(mockFunction)(ArgumentMatchers.any).afterReturn(promise);
+      let appInstance = AppModel.getInstance();
+      let mockFunction1: Function =
+        mocker.mockFunc(appInstance, appInstance.deleteAppsByDelivery);
+      when(mockFunction1)(ArgumentMatchers.any).afterReturn(residentList);
+      let mockFunction2: Function =
+        mocker.mockFunc(appInstance, appInstance.getAppInfoByBundleName);
+      when(mockFunction2)(ArgumentMatchers.any).afterReturn(undefined);
+      let a ='test';
+      try {
+        instance.refreshDeliverAppList();
+        expect(a).assertEqual('test');
+      } catch (err) {}
+      mocker.clear(launcherAbilityManager);
+      mocker.clear(appInstance);
+      mocker.clearAll();
+      done();
+    })
+
+    it("refreshDeliverAppList4", 0, async (done: Function) => {
+      const viewModel: PageDesktopViewModel = PageDesktopViewModel.getInstance();
+      const instance: PageDesktopViewModelUtils = new PageDesktopViewModelUtils(viewModel);
+      let mocker: MockKit = new MockKit();
+      let itemInfo = new DockItemInfo();
+      itemInfo.itemType = CommonConstants.TYPE_ADD;
+      itemInfo.typeId = CommonConstants.TYPE_ADD;
+      itemInfo.bundleName = 'bundleName';
+      itemInfo.appId = 'appId';
+      itemInfo.appIndex = 1;
+      itemInfo.appName = 'appName';
+      itemInfo.codePath = String(NumberConstants.CONSTANT_NUMBER_ONE);
+      itemInfo.installSource = 'com.deliver.appstore.lite';
+      let itemInfo1 = new DockItemInfo();
+      itemInfo1.itemType = CommonConstants.TYPE_ADD;
+      itemInfo1.typeId = CommonConstants.TYPE_ADD;
+      itemInfo1.bundleName = 'bundleName';
+      itemInfo1.appId = 'appId';
+      itemInfo1.appIndex = 1;
+      itemInfo1.codePath = String(NumberConstants.CONSTANT_NUMBER_ONE);
+      itemInfo1.installSource = 'com.deliver.appstore.lite';
+      let residentList = [itemInfo]
+      let promise = Promise.resolve(residentList);
+      let appInstance = AppModel.getInstance();
+      let mockFunction1: Function =
+        mocker.mockFunc(appInstance, appInstance.deleteAppsByDelivery);
+      let mockFunction: Function =
+        mocker.mockFunc(launcherAbilityManager, launcherAbilityManager.getLauncherAbilityList);
+      when(mockFunction)(ArgumentMatchers.any).afterReturn(promise);
+      when(mockFunction1)(ArgumentMatchers.any).afterReturn(residentList);
+      let mockFunction2: Function =
+        mocker.mockFunc(appInstance, appInstance.getAppInfoByBundleName);
+      when(mockFunction2)(ArgumentMatchers.any).afterReturn(itemInfo1);
+      let a ='test';
+      try {
+        instance.refreshDeliverAppList();
+        expect(a).assertEqual('test');
+      } catch (err) {}
+      mocker.clear(appInstance);
+      mocker.clear(launcherAbilityManager);
+      mocker.clearAll();
+      done();
+    })
+
     it("getCardDimension1", 0, async (done: Function) => {
       try {
         const viewModel: PageDesktopViewModel = PageDesktopViewModel.getInstance();
@@ -1506,7 +2896,15 @@ export default function PageDesktopViewModelUtilsTest() {
           page: 2,
           layoutInfo: [[
             {
+              bundleName: 'com.deliver.appstore.lite',
+              folderId: '1'
+            },
+            {
               bundleName: 'bundleName',
+              folderId: ''
+            },
+            {
+              bundleName: 'com.deliver.appstore.lite',
               folderId: ''
             }
           ]]
@@ -1552,7 +2950,15 @@ export default function PageDesktopViewModelUtilsTest() {
           page: 2,
           layoutInfo: [[
             {
+              bundleName: 'com.deliver.appstore.lite',
+              folderId: '1'
+            },
+            {
               bundleName: 'bundleName',
+              folderId: ''
+            },
+            {
+              bundleName: 'com.deliver.appstore.lite',
               folderId: ''
             }
           ]]
@@ -1655,6 +3061,139 @@ export default function PageDesktopViewModelUtilsTest() {
       done();
     })
 
+    it("findPositionForContainerApp1", 0, async (done: Function) => {
+      const viewModel: PageDesktopViewModel = PageDesktopViewModel.getInstance();
+      const instance: PageDesktopViewModelUtils = new PageDesktopViewModelUtils(viewModel);
+      let appItemInfo = new AppItemInfo();
+      appItemInfo.typeId = CommonConstants.TYPE_APP;
+      appItemInfo.codePath = '123'
+      appItemInfo.area = [1, 2];
+      appItemInfo.moduleName = 'moduleName';
+      appItemInfo.abilityName = 'moduleName';
+      appItemInfo.bundleName = 'com.deliver.appstore.lite';
+      appItemInfo.intent = `{'installSource':'com.deliver.appstore.lite'}`;
+      appItemInfo.installSource = 'com.deliver.appstore.lite';
+      let mocker: MockKit = new MockKit();
+      let mockFunction: Function =
+        mocker.mockFunc(instance, instance.dealWithContainerApp);
+      when(mockFunction)(ArgumentMatchers.any).afterReturn(undefined);
+      let a ='test';
+      try {
+        let result = instance.findPositionForContainerApp(appItemInfo, true);
+        expect(result).assertEqual(true);
+      } catch (err) {}
+      mocker.clear(instance);
+      mocker.clearAll();
+      done();
+    })
+
+    it("findPositionForContainerApp2", 0, async (done: Function) => {
+      const viewModel: PageDesktopViewModel = PageDesktopViewModel.getInstance();
+      const instance: PageDesktopViewModelUtils = new PageDesktopViewModelUtils(viewModel);
+      let appItemInfo = new AppItemInfo();
+      appItemInfo.typeId = CommonConstants.TYPE_ADD;
+      appItemInfo.appStatus = AppStatus.INSTALLED;
+      appItemInfo.codePath = '123'
+      appItemInfo.bundleName = 'com.deliver.appstore.lite';
+      appItemInfo.intent = `{'installSource':'com.deliver.appstore.lite'}`;
+      appItemInfo.installSource = 'com.deliver.appstore.lite';
+      let mocker: MockKit = new MockKit();
+      let mockFunction: Function =
+        mocker.mockFunc(instance, instance.dealWithContainerApp);
+      when(mockFunction)(ArgumentMatchers.any).afterReturn(undefined);
+      let a ='test';
+      try {
+        instance.findPositionForContainerApp(appItemInfo, true);
+        expect(a).assertEqual('test');
+      } catch (err) {}
+      mocker.clear(instance);
+      mocker.clearAll();
+      done();
+    })
+
+    it("findPositionForContainerApp3", 0, async (done: Function) => {
+      const viewModel: PageDesktopViewModel = PageDesktopViewModel.getInstance();
+      const instance: PageDesktopViewModelUtils = new PageDesktopViewModelUtils(viewModel);
+      let appItemInfo = new AppItemInfo();
+      appItemInfo.typeId = CommonConstants.TYPE_ADD;
+      appItemInfo.appStatus = AppStatus.WAIT_FOR_HARMONY;
+      appItemInfo.codePath = '123'
+      appItemInfo.bundleName = 'com.deliver.appstore.lite';
+      appItemInfo.intent = `{'installSource':'com.deliver.appstore.lite'}`;
+      appItemInfo.installSource = 'com.deliver.appstore.lite';
+      let mocker: MockKit = new MockKit();
+      let appInstance = AppModel.getInstance();
+      let mockFunction: Function =
+        mocker.mockFunc(appInstance, appInstance.getAppInfoByBundleName);
+      when(mockFunction)(ArgumentMatchers.any).afterReturn(appItemInfo);
+      let a ='test';
+      try {
+        instance.findPositionForContainerApp(appItemInfo, true);
+        expect(a).assertEqual('test');
+      } catch (err) {}
+      mocker.clear(appInstance);
+      mocker.clearAll();
+      done();
+    })
+
+    it("findPositionForContainerApp4", 0, async (done: Function) => {
+      const viewModel: PageDesktopViewModel = PageDesktopViewModel.getInstance();
+      const instance: PageDesktopViewModelUtils = new PageDesktopViewModelUtils(viewModel);
+      let appItemInfo = new AppItemInfo();
+      appItemInfo.typeId = CommonConstants.TYPE_ADD;
+      appItemInfo.appStatus = AppStatus.PENDING;
+      appItemInfo.codePath = '123'
+      appItemInfo.bundleName = 'com.deliver.appstore.lite';
+      appItemInfo.intent = `{'installSource':'com.deliver.appstore.lite'}`;
+      appItemInfo.installSource = 'com.deliver.appstore.lite';
+      let mocker: MockKit = new MockKit();
+      let appInstance = AppModel.getInstance();
+      let mockFunction: Function =
+        mocker.mockFunc(appInstance, appInstance.getAppInfoByBundleName);
+      when(mockFunction)(ArgumentMatchers.any).afterReturn(appItemInfo);
+      let a ='test';
+      try {
+        instance.findPositionForContainerApp(appItemInfo, true);
+        expect(a).assertEqual('test');
+      } catch (err) {}
+      mocker.clear(appInstance);
+      mocker.clearAll();
+      done();
+    })
+
+    it("findPositionForContainerApp5", 0, async (done: Function) => {
+      const viewModel: PageDesktopViewModel = PageDesktopViewModel.getInstance();
+      const instance: PageDesktopViewModelUtils = new PageDesktopViewModelUtils(viewModel);
+      let appItemInfo = new AppItemInfo();
+      appItemInfo.typeId = CommonConstants.TYPE_ADD;
+      appItemInfo.appStatus = AppStatus.PENDING;
+      appItemInfo.codePath = '123'
+      appItemInfo.bundleName = 'com.deliver.appstore.lite';
+      appItemInfo.intent = `{'installSource':'111'}`;
+      appItemInfo.installSource = 'com.deliver.appstore.lite';
+      let mocker: MockKit = new MockKit();
+      let appInstance = AppModel.getInstance();
+      let mockFunction: Function =
+        mocker.mockFunc(appInstance, appInstance.getAppInfoByBundleName);
+      when(mockFunction)(ArgumentMatchers.any).afterReturn(appItemInfo);
+      let mockFunction1: Function =
+        mocker.mockFunc(DeliverUtil, DeliverUtil.isContainerItem);
+      when(mockFunction1)(ArgumentMatchers.any).afterReturn(true);
+      let mockFunction2: Function =
+        mocker.mockFunc(instance, instance.dealWithContainerApp);
+      when(mockFunction2)(ArgumentMatchers.any).afterReturn(undefined);
+      let a ='test';
+      try {
+        instance.findPositionForContainerApp(appItemInfo, true);
+        expect(a).assertEqual('test');
+      } catch (err) {}
+      mocker.clear(appInstance);
+      mocker.clear(DeliverUtil);
+      mocker.clear(instance);
+      mocker.clearAll();
+      done();
+    })
+
     it("SqueezeGridLayout", 0, async (done: Function) => {
       try {
         let updateItemsInfo = new GridLayoutItemInfo();
@@ -1680,6 +3219,193 @@ export default function PageDesktopViewModelUtilsTest() {
         instance.appendFormStackData(folderInfoList, bundleInfoList);
         expect(a).assertEqual('test');
       } catch (err) {}
+      done();
+    })
+
+    it("test_dealWithContainerApp1", 0, async(done:Function) => {
+      const viewModel: PageDesktopViewModel = PageDesktopViewModel.getInstance();
+      const instance: PageDesktopViewModelUtils = new PageDesktopViewModelUtils(viewModel);
+      let layoutCacheManager: LaunchLayoutCacheManager = LaunchLayoutCacheManager.getInstance();
+      let appItemInfo: GridLayoutItemInfo = new GridLayoutItemInfo();
+      appItemInfo.bundleName = 'bundleName';
+      let mocker: MockKit = new MockKit();
+      let mockFunction: Function =
+        mocker.mockFunc(instance, (instance as object)['checkInLayout']);
+      when(mockFunction)(ArgumentMatchers.any).afterReturn(false);
+      let mockFunction1: Function =
+        mocker.mockFunc(DeliverUtil, DeliverUtil.setInstallSourceAndIntent);
+      when(mockFunction1)(ArgumentMatchers.any).afterReturn(undefined);
+      let a = 'test';
+      try {
+        instance.appendFormStackData([appItemInfo], [appItemInfo]);
+        expect(appItemInfo.bundleName).not().assertUndefined();
+      } catch (err) {}
+      mocker.clear(instance);
+      mocker.clear(DeliverUtil);
+      mocker.clearAll();
+      done();
+    })
+
+    it("test_dealWithContainerApp2", 0, async(done:Function) => {
+      const viewModel: PageDesktopViewModel = PageDesktopViewModel.getInstance();
+      const instance: PageDesktopViewModelUtils = new PageDesktopViewModelUtils(viewModel);
+      let layoutCacheManager: LaunchLayoutCacheManager = LaunchLayoutCacheManager.getInstance();
+      let appItemInfo = new GridLayoutItemInfo();
+      appItemInfo.bundleName = 'bundleName';
+      appItemInfo.area = [1,2];
+      appItemInfo.typeId = CommonConstants.TYPE_APP;
+      let mocker: MockKit = new MockKit();
+      let mockFunction: Function =
+        mocker.mockFunc(instance, (instance as object)['checkInLayout']);
+      when(mockFunction)(ArgumentMatchers.any).afterReturn(false);
+      let mockFunction1: Function =
+        mocker.mockFunc(DeliverUtil, DeliverUtil.setInstallSourceAndIntent);
+      when(mockFunction1)(ArgumentMatchers.any).afterReturn(undefined);
+      let mockFunction3: Function =
+        mocker.mockFunc(instance, (instance as object)['getContainerFolderIndex']);
+      when(mockFunction3)(ArgumentMatchers.any).afterReturn(-1);
+      let mockFunction4: Function =
+        mocker.mockFunc(instance, (instance as object)['makeContainerFolderToDesktop']);
+      when(mockFunction4)(ArgumentMatchers.any).afterReturn(Promise.reject());
+      let mockFunction5: Function =
+        mocker.mockFunc(instance, (instance as object)['addInfoToDockFolder']);
+      when(mockFunction5)(ArgumentMatchers.any).afterReturn(undefined);
+      let mockFunction6: Function =
+        mocker.mockFunc(DeliverUtil, DeliverUtil.delAddIconForResidentList);
+      when(mockFunction6)(ArgumentMatchers.any).afterReturn(undefined);
+      let a ='test';
+      try {
+        instance.appendFormStackData([appItemInfo], [appItemInfo]);
+        expect(a).assertEqual('test');
+      } catch (err) {}
+      mocker.clear(instance);
+      mocker.clear(DeliverUtil);
+      mocker.clearAll();
+      done();
+    })
+
+    it("test_dealWithContainerApp3", 0, async(done:Function) => {
+      const viewModel: PageDesktopViewModel = PageDesktopViewModel.getInstance();
+      const instance: PageDesktopViewModelUtils = new PageDesktopViewModelUtils(viewModel);
+      let layoutCacheManager: LaunchLayoutCacheManager = LaunchLayoutCacheManager.getInstance();
+      let appItemInfo = new GridLayoutItemInfo();
+      appItemInfo.bundleName = 'bundleName';
+      appItemInfo.area = [1,2];
+      appItemInfo.typeId = CommonConstants.TYPE_APP;
+      let mocker: MockKit = new MockKit();
+      let mockFunction: Function =
+        mocker.mockFunc(instance, (instance as object)['checkInLayout']);
+      when(mockFunction)(ArgumentMatchers.any).afterReturn(false);
+      let mockFunction1: Function =
+        mocker.mockFunc(DeliverUtil, DeliverUtil.setInstallSourceAndIntent);
+      when(mockFunction1)(ArgumentMatchers.any).afterReturn(undefined);
+      let mockFunction3: Function =
+        mocker.mockFunc(instance, (instance as object)['getContainerFolderIndex']);
+      when(mockFunction3)(ArgumentMatchers.any).afterReturn(10);
+      let mockFunction4: Function =
+        mocker.mockFunc(instance, (instance as object)['addInfoToDockFolder']);
+      when(mockFunction4)(ArgumentMatchers.any).afterReturn(undefined);
+      let mockFunction5: Function =
+        mocker.mockFunc(DeliverUtil, DeliverUtil.delAddIconForResidentList);
+      when(mockFunction5)(ArgumentMatchers.any).afterReturn(undefined);
+      let a = 'test';
+      try {
+        instance.appendFormStackData([appItemInfo], [appItemInfo]);
+        expect(a).assertEqual('test');
+      } catch (err) {}
+      mocker.clear(instance);
+      mocker.clear(DeliverUtil);
+      mocker.clear(layoutCacheManager);
+      mocker.clearAll();
+      done();
+    })
+
+    it("test_addInfoToDeskTopFolder1", 0, async(done:Function) => {
+      const viewModel: PageDesktopViewModel = PageDesktopViewModel.getInstance();
+      const instance: PageDesktopViewModelUtils = new PageDesktopViewModelUtils(viewModel);
+      let layoutCacheManager: LaunchLayoutCacheManager = LaunchLayoutCacheManager.getInstance();
+      let appItemInfo = new AppItemInfo();
+      let folderGridLayoutItemInfo = new GridLayoutItemInfo();
+      let layoutItem = new GridLayoutItemInfo();
+      folderGridLayoutItemInfo.layoutInfo = [[layoutItem]];
+      let mocker: MockKit = new MockKit();
+      let mockFunction: Function =
+        mocker.mockFunc(layoutCacheManager, layoutCacheManager.selectGridLayoutItemByIndex);
+      when(mockFunction)(ArgumentMatchers.any).afterReturn(folderGridLayoutItemInfo);
+      let mockFunction1: Function =
+        mocker.mockFunc(DeliverUtil, DeliverUtil.delAddIconForOpenFolderData);
+      when(mockFunction1)(ArgumentMatchers.any).afterReturn(undefined);
+      let mockFunction2: Function =
+        mocker.mockFunc(instance, (instance as object)['getGridLayoutItemInfo']);
+      when(mockFunction2)(ArgumentMatchers.any).afterReturn(layoutItem);
+      let mockFunction3: Function =
+        mocker.mockFunc(instance, (instance as object)['sortDeliverFolderApp']);
+      when(mockFunction3)(ArgumentMatchers.any).afterReturn([layoutItem]);
+      let mockFunction4: Function =
+        mocker.mockFunc(instance, (instance as object)['updateFolderAppLocation']);
+      when(mockFunction4)(ArgumentMatchers.any).afterReturn(undefined);
+      let mockFunction5: Function =
+        mocker.mockFunc(FolderLayoutCacheManager.getInstance(), FolderLayoutCacheManager.getInstance().updateFolderItemLayoutInfoByFolderId);
+      when(mockFunction5)(ArgumentMatchers.any).afterReturn(undefined);
+      let mockFunction6: Function =
+        mocker.mockFunc(instance, (instance as object)['refreshAddIcon']);
+      when(mockFunction6)(ArgumentMatchers.any).afterReturn(undefined);
+      let a ='test';
+      try {
+        (instance as object)['addInfoToDeskTopFolder'](layoutCacheManager,0,'com.deliver.appstore.transfer',appItemInfo);
+        expect(a).assertEqual('test');
+      } catch (err) {}
+      mocker.clear(instance);
+      mocker.clear(layoutCacheManager);
+      mocker.clear(DeliverUtil);
+      mocker.clear(FolderLayoutCacheManager.getInstance());
+      mocker.clearAll();
+      done();
+    })
+
+    it("test_addInfoToDeskTopFolder2", 0, async(done:Function) => {
+      const viewModel: PageDesktopViewModel = PageDesktopViewModel.getInstance();
+      const instance: PageDesktopViewModelUtils = new PageDesktopViewModelUtils(viewModel);
+      let layoutCacheManager: LaunchLayoutCacheManager = LaunchLayoutCacheManager.getInstance();
+      let appItemInfo = new AppItemInfo();
+      let folderGridLayoutItemInfo = new GridLayoutItemInfo();
+      let layoutItem = new GridLayoutItemInfo();
+      folderGridLayoutItemInfo.layoutInfo = [[layoutItem]];
+      let mocker: MockKit = new MockKit();
+      let mockFunction: Function =
+        mocker.mockFunc(layoutCacheManager, layoutCacheManager.selectGridLayoutItemByIndex);
+      when(mockFunction)(ArgumentMatchers.any).afterReturn(folderGridLayoutItemInfo);
+      let mockFunction1: Function =
+        mocker.mockFunc(DeliverUtil, DeliverUtil.delAddIconForOpenFolderData);
+      when(mockFunction1)(ArgumentMatchers.any).afterReturn(undefined);
+      let mockFunction2: Function =
+        mocker.mockFunc(instance, (instance as object)['getGridLayoutItemInfo']);
+      when(mockFunction2)(ArgumentMatchers.any).afterReturn(layoutItem);
+      let mockFunction3: Function =
+        mocker.mockFunc(instance, (instance as object)['sortDeliverFolderApp']);
+      when(mockFunction3)(ArgumentMatchers.any).afterReturn([layoutItem]);
+      let mockFunction4: Function =
+        mocker.mockFunc(instance, (instance as object)['updateFolderAppLocation']);
+      when(mockFunction4)(ArgumentMatchers.any).afterReturn(undefined);
+      let mockFunction5: Function =
+        mocker.mockFunc(FolderLayoutCacheManager.getInstance(), FolderLayoutCacheManager.getInstance().updateFolderItemLayoutInfoByFolderId);
+      when(mockFunction5)(ArgumentMatchers.any).afterReturn(undefined);
+      let mockFunction6: Function =
+        mocker.mockFunc(instance, (instance as object)['refreshAddIcon']);
+      when(mockFunction6)(ArgumentMatchers.any).afterReturn(undefined);
+      let mockFunction7: Function =
+        mocker.mockFunc(instance, (instance as object)['addInfoToFolder']);
+      when(mockFunction7)(ArgumentMatchers.any).afterReturn(undefined);
+      let a = 'test';
+      try {
+        (instance as object)['addInfoToDeskTopFolder'](layoutCacheManager,0,'123',appItemInfo);
+        expect(a).assertEqual('test');
+      } catch (err) {}
+      mocker.clear(instance);
+      mocker.clear(layoutCacheManager);
+      mocker.clear(DeliverUtil);
+      mocker.clear(FolderLayoutCacheManager.getInstance());
+      mocker.clearAll();
       done();
     })
 
@@ -1732,6 +3458,22 @@ export default function PageDesktopViewModelUtilsTest() {
       done();
     })
 
+    it("test_getContainerFolderIndex1", 0, async(done:Function) => {
+      const viewModel: PageDesktopViewModel = PageDesktopViewModel.getInstance();
+      const instance: PageDesktopViewModelUtils = new PageDesktopViewModelUtils(viewModel);
+      let dockItemInfo = new DockItemInfo();
+      dockItemInfo.itemType = 3;
+      let residentList = [dockItemInfo];
+      let mocker: MockKit = new MockKit();
+      let a ='test';
+      try {
+        (instance as object)['getContainerFolderIndex'](residentList,'111');
+        expect(a).assertEqual('test');
+      } catch (err) {}
+      mocker.clearAll();
+      done();
+    })
+
     it("test_addInfoToFolder1", 0, async(done:Function) => {
       const viewModel: PageDesktopViewModel = PageDesktopViewModel.getInstance();
       const instance: PageDesktopViewModelUtils = new PageDesktopViewModelUtils(viewModel);
@@ -1776,6 +3518,107 @@ export default function PageDesktopViewModelUtilsTest() {
       mocker.clear(CheckEmptyUtils);
       mocker.clear(instance);
       mocker.clear(FolderLayoutCacheManager.getInstance());
+      mocker.clearAll();
+      done();
+    })
+
+    it("test_addInfoToDockFolder1", 0, async(done:Function) => {
+      const viewModel: PageDesktopViewModel = PageDesktopViewModel.getInstance();
+      const instance: PageDesktopViewModelUtils = new PageDesktopViewModelUtils(viewModel);
+      let folderItemInfo = new GridLayoutItemInfo();
+      folderItemInfo.layoutInfo = [[]];
+      folderItemInfo.page = 0;
+      folderItemInfo.folderId = '';
+      let newAppItem = new AppItemInfo();
+      newAppItem.page = 0;
+      newAppItem.bundleName = 'com.deliver.appstore.transfer';
+      let dockItemInfo = new DockItemInfo();
+      dockItemInfo.layoutInfo = [[folderItemInfo]];
+      dockItemInfo.itemType = 3;
+      dockItemInfo.bundleName = '';
+      let residentList = [dockItemInfo];
+      let mocker: MockKit = new MockKit();
+      let mockFunction: Function =
+        mocker.mockFunc(instance, (instance as object)['getGridLayoutItemInfo']);
+      when(mockFunction)(ArgumentMatchers.any).afterReturn(folderItemInfo);
+      let mockFunction1: Function =
+        mocker.mockFunc(instance, (instance as object)['sortDeliverFolderApp']);
+      when(mockFunction1)(ArgumentMatchers.any).afterReturn([folderItemInfo]);
+      let mockFunction2: Function =
+        mocker.mockFunc(instance, (instance as object)['updateFolderAppLocation']);
+      when(mockFunction2)(ArgumentMatchers.any).afterReturn(undefined);
+      let mockFunction3: Function =
+        mocker.mockFunc(RdbStoreManager.getInstance(),  RdbStoreManager.getInstance().addInfoToDockFolder);
+      when(mockFunction3)(ArgumentMatchers.any).afterReturn(Promise.resolve());
+      let mockFunction4: Function =
+        mocker.mockFunc(DeliverUtil, DeliverUtil.translateFolderLayout);
+      when(mockFunction4)(ArgumentMatchers.any).afterReturn([[folderItemInfo]]);
+      let mockFunction5: Function =
+        mocker.mockFunc(LayoutViewModel.getInstance(), LayoutViewModel.getInstance().updateResidentDockLayout);
+      when(mockFunction5)(ArgumentMatchers.any).afterReturn(undefined);
+      let a = 'test';
+      try {
+        (instance as object)['addInfoToDockFolder'](residentList,0,newAppItem);
+        expect(a).assertEqual('test');
+      } catch (err) {}
+      mocker.clear(instance);
+      mocker.clear(RdbStoreManager.getInstance());
+      mocker.clear(DeliverUtil);
+      mocker.clear(LayoutViewModel.getInstance());
+      mocker.clearAll();
+      done();
+    })
+
+    it("test_addInfoToDockFolder2", 0, async(done:Function) => {
+      const viewModel: PageDesktopViewModel = PageDesktopViewModel.getInstance();
+      const instance: PageDesktopViewModelUtils = new PageDesktopViewModelUtils(viewModel);
+      let folderItemInfo = new GridLayoutItemInfo();
+      folderItemInfo.layoutInfo = [[]];
+      folderItemInfo.page = 0;
+      folderItemInfo.folderId = '';
+      let newAppItem = new AppItemInfo();
+      newAppItem.bundleName = '';
+      newAppItem.page = 0;
+      let dockItemInfo = new DockItemInfo();
+      dockItemInfo.layoutInfo = [[folderItemInfo]];
+      dockItemInfo.itemType = 3;
+      dockItemInfo.bundleName = '';
+      let residentList = [dockItemInfo];
+      let mocker: MockKit = new MockKit();
+      let mockFunction: Function =
+        mocker.mockFunc(instance, (instance as object)['getGridLayoutItemInfo']);
+      when(mockFunction)(ArgumentMatchers.any).afterReturn(folderItemInfo);
+      let mockFunction1: Function =
+        mocker.mockFunc(instance, (instance as object)['sortDeliverFolderApp']);
+      when(mockFunction1)(ArgumentMatchers.any).afterReturn([folderItemInfo]);
+      let mockFunction2: Function =
+        mocker.mockFunc(instance, (instance as object)['updateFolderAppLocation']);
+      when(mockFunction2)(ArgumentMatchers.any).afterReturn(undefined);
+      let mockFunction3: Function =
+        mocker.mockFunc(RdbStoreManager.getInstance(),  RdbStoreManager.getInstance().insertGridLayoutInfoWithCheck);
+      when(mockFunction3)(ArgumentMatchers.any).afterReturn(Promise.resolve());
+      let mockFunction4: Function =
+        mocker.mockFunc(RdbStoreManager.getInstance(),  RdbStoreManager.getInstance().addInfoToDockFolder);
+      when(mockFunction4)(ArgumentMatchers.any).afterReturn(Promise.resolve());
+      let mockFunction5: Function =
+        mocker.mockFunc(LayoutViewModel.getInstance(), LayoutViewModel.getInstance().updateResidentDockLayout);
+      when(mockFunction5)(ArgumentMatchers.any).afterReturn(undefined);
+      let mockFunction6: Function =
+        mocker.mockFunc(FolderData.getInstance(), FolderData.getInstance().getOpenedFolder);
+      when(mockFunction6)(ArgumentMatchers.any).afterReturn(folderItemInfo);
+      let mockFunction7: Function =
+        mocker.mockFunc(FolderData.getInstance(), FolderData.getInstance().refreshView);
+      when(mockFunction7)(ArgumentMatchers.any).afterReturn(undefined);
+      let a = 'test';
+      try {
+        (instance as object)['addInfoToDockFolder'](residentList,0,newAppItem);
+        expect(a).assertEqual('test');
+      } catch (err) {}
+      mocker.clear(instance);
+      mocker.clear(RdbStoreManager.getInstance());
+      mocker.clear(DeliverUtil);
+      mocker.clear(LayoutViewModel.getInstance());
+      mocker.clear(FolderData.getInstance());
       mocker.clearAll();
       done();
     })
@@ -2147,6 +3990,118 @@ export default function PageDesktopViewModelUtilsTest() {
       } catch (err) {}
       mocker.clear(launcherAbilityManager);
       mocker.clear(CheckEmptyUtils);
+      mocker.clearAll();
+      done();
+    })
+
+    it("test_refreshDeliverAppList2", 0, async(done:Function) => {
+      const viewModel: PageDesktopViewModel = PageDesktopViewModel.getInstance();
+      const instance: PageDesktopViewModelUtils = new PageDesktopViewModelUtils(viewModel);
+      let appItem = new AppItemInfo();
+      appItem.codePath = String(NumberConstants.CONSTANT_NUMBER_ONE);
+      appItem.appLabelId = 1;
+      appItem.bundleName = 'bundleName';
+      appItem.moduleName = 'moduleName';
+      appItem.appName = 'appName';
+      let appList = [appItem];
+      let mocker: MockKit = new MockKit();
+      let mockFunction: Function =
+        mocker.mockFunc(launcherAbilityManager, launcherAbilityManager.getLauncherAbilityList);
+      when(mockFunction)(ArgumentMatchers.any).afterReturn(Promise.resolve(appList));
+      let mockFunction1: Function =
+        mocker.mockFunc(AppModel.getInstance(), AppModel.getInstance().deleteAppsByDelivery);
+      when(mockFunction1)(ArgumentMatchers.any).afterReturn(appList);
+      let mockFunction2: Function =
+        mocker.mockFunc(AppModel.getInstance(), AppModel.getInstance().getAppInfoByBundleName);
+      when(mockFunction2)(ArgumentMatchers.any).afterReturn(undefined);
+      let mockFunction3: Function =
+        mocker.mockFunc(ResourceManager.getInstance(), ResourceManager.getInstance().updateAppNameSync);
+      when(mockFunction3)(ArgumentMatchers.any).afterReturn(Promise.resolve('appName'));
+      let mockFunction4: Function =
+        mocker.mockFunc(DeliverUtil, DeliverUtil.setInstallSourceAndIntent);
+      when(mockFunction4)(ArgumentMatchers.any).afterReturn(undefined);
+      let mockFunction5: Function =
+        mocker.mockFunc(AppModel.getInstance(), AppModel.getInstance().setAppListByDelivery);
+      when(mockFunction5)(ArgumentMatchers.any).afterReturn(undefined);
+      let mockFunction6: Function =
+        mocker.mockFunc((instance as object)['pageDesktopViewModel'], (instance as object)['pageDesktopViewModel'].loadGridList);
+      when(mockFunction6)(ArgumentMatchers.any).afterReturn(Promise.resolve());
+      let mockFunction7: Function =
+        mocker.mockFunc(DeliverUtil, DeliverUtil.refreshFolderAppsInDock);
+      when(mockFunction7)(ArgumentMatchers.any).afterReturn(undefined);
+      let a ='test';
+      try {
+        instance.refreshDeliverAppList();
+        expect(a).assertEqual('test');
+      } catch (err) {}
+      mocker.clear(launcherAbilityManager);
+      mocker.clear(AppModel.getInstance());
+      mocker.clear(ResourceManager.getInstance());
+      mocker.clear(DeliverUtil);
+      mocker.clear((instance as object)['pageDesktopViewModel']);
+      mocker.clearAll();
+      done();
+    })
+
+    it("test_refreshDeliverAppList3", 0, async(done:Function) => {
+      const viewModel: PageDesktopViewModel = PageDesktopViewModel.getInstance();
+      const instance: PageDesktopViewModelUtils = new PageDesktopViewModelUtils(viewModel);
+      let appItem = new AppItemInfo();
+      appItem.codePath = String(NumberConstants.CONSTANT_NUMBER_ONE);
+      appItem.appLabelId = 1;
+      appItem.bundleName = 'bundleName';
+      appItem.moduleName = 'moduleName';
+      appItem.appName = 'appName';
+      appItem.abilityName = 'abilityName';
+      appItem.typeId = CommonConstants.TYPE_APP;
+      let appItem1 = new AppItemInfo();
+      appItem1.codePath = String(NumberConstants.CONSTANT_NUMBER_ONE);
+      appItem1.appLabelId = 1;
+      appItem1.bundleName = 'bundleName';
+      appItem1.moduleName = 'moduleName';
+      appItem1.appName = '';
+      appItem1.abilityName = 'abilityName';
+      appItem1.typeId = CommonConstants.TYPE_APP;
+      let appList = [appItem];
+      let mocker: MockKit = new MockKit();
+      let mockFunction: Function =
+        mocker.mockFunc(launcherAbilityManager, launcherAbilityManager.getLauncherAbilityList);
+      when(mockFunction)(ArgumentMatchers.any).afterReturn(Promise.resolve(appList));
+      let mockFunction1: Function =
+        mocker.mockFunc(AppModel.getInstance(), AppModel.getInstance().deleteAppsByDelivery);
+      when(mockFunction1)(ArgumentMatchers.any).afterReturn(appList);
+      let mockFunction2: Function =
+        mocker.mockFunc(AppModel.getInstance(), AppModel.getInstance().getAppInfoByBundleName);
+      when(mockFunction2)(ArgumentMatchers.any).afterReturn(appItem1);
+      let mockFunction3: Function =
+        mocker.mockFunc(ResourceManager.getInstance(), ResourceManager.getInstance().updateAppNameSync);
+      when(mockFunction3)(ArgumentMatchers.any).afterReturn(Promise.resolve('appName'));
+      let mockFunction4: Function =
+        mocker.mockFunc(RdbStoreManager.getInstance(), RdbStoreManager.getInstance().updateAppNameByAbilityInfoAndType);
+      when(mockFunction4)(ArgumentMatchers.any).afterReturn(Promise.resolve());
+      let mockFunction5: Function =
+        mocker.mockFunc(DeliverUtil, DeliverUtil.setInstallSourceAndIntent);
+      when(mockFunction5)(ArgumentMatchers.any).afterReturn(undefined);
+      let mockFunction6: Function =
+        mocker.mockFunc(AppModel.getInstance(), AppModel.getInstance().setAppListByDelivery);
+      when(mockFunction6)(ArgumentMatchers.any).afterReturn(undefined);
+      let mockFunction7: Function =
+        mocker.mockFunc((instance as object)['pageDesktopViewModel'], (instance as object)['pageDesktopViewModel'].loadGridList);
+      when(mockFunction7)(ArgumentMatchers.any).afterReturn(Promise.resolve());
+      let mockFunction9: Function =
+        mocker.mockFunc(DeliverUtil, DeliverUtil.refreshFolderAppsInDock);
+      when(mockFunction9)(ArgumentMatchers.any).afterReturn(undefined);
+      let a ='test';
+      try {
+        instance.refreshDeliverAppList();
+        expect(a).assertEqual('test');
+      }catch(err){}
+      mocker.clear(launcherAbilityManager);
+      mocker.clear(AppModel.getInstance());
+      mocker.clear(ResourceManager.getInstance());
+      mocker.clear(RdbStoreManager.getInstance());
+      mocker.clear(DeliverUtil);
+      mocker.clear((instance as object)['pageDesktopViewModel']);
       mocker.clearAll();
       done();
     })

@@ -743,6 +743,13 @@
             }
         },
         {
+            "name":"ic_tools_vassistant_accessible",
+            "value":"Scan",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
             "name":"ic_tools_memorandum_accessible",
             "value":"Notepad",
             "attr":{

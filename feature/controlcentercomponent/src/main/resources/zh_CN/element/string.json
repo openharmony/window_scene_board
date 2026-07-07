@@ -372,8 +372,22 @@
             }
         },
         {
+            "name":"voice_translate_name",
+            "value":"语音助手翻译",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
             "name":"control_center_edit_panel_tips_max_limit",
             "value":"添加内容已达上限",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cloud_lai",
+            "value":"云端模式",
             "attr":{
                 "priority":"translate"
             }

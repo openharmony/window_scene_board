@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023-Huawei Device Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) 2023-2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -14,6 +14,7 @@
  */
 import curves from '@ohos.curves';
 import SystemPanelModel from '../systempanel/model/SystemPanelModel';
+import screenLockMediator from '../screenlock/refactor/ScreenLockMediator';
 import { LogDomain, LogHelper } from '@ohos/basicutils';
 import { PowerStatusController, sSCBOobeManager, SCBKeyboardManager } from '@ohos/windowscene';
 import { PowerStatus } from '@ohos/commonconstants';
@@ -22,6 +23,7 @@ import { osAccount } from '@kit.BasicServicesKit';
 
 const TAG: string = 'PowerStatusChangeAnimationController';
 const log = LogHelper.getLogHelper(LogDomain.SCB, TAG);
+const LOGOUT_IN_PROGRESS_KEY: string = 'powerStatusLogoutInProgress';
 
 export default class PowerStatusChangeAnimationController extends PowerStatusController {
   public static readonly DEFAULT_BLUR_RADIUS: number = 0;
@@ -238,6 +240,17 @@ export default class PowerStatusChangeAnimationController extends PowerStatusCon
     }
   }
 
+  private static showLogoutKeyguardFallback(reason: string): void {
+    log.showWarn(`show logout keyguard fallback, reason:${reason}`);
+    AppStorage.setOrCreate('powerStatus', PowerStatus.RUNNING);
+    AppStorage.setOrCreate(LOGOUT_IN_PROGRESS_KEY, false);
+    try {
+      screenLockMediator.showKeyGuardWithoutLockStatusChange();
+    } catch (error) {
+      log.showError(`show logout keyguard fallback fail! code: ${error?.code}, message: ${error?.message}`);
+    }
+  }
+
   public registerExitAppDialogCallback(callback: Function): void {
     this.exitAppDialogAnimation = callback;
   }
@@ -311,6 +324,7 @@ export default class PowerStatusChangeAnimationController extends PowerStatusCon
     // Handle exit app dialog
     const hasRunExitAppDialog: boolean = this.exitAppDialogAnimation();
 
+    // Handle exit specific scene dialog e.g AI
     const hasRunExitSpecificSceneDialog: boolean = this.exitSpecificSceneAnimation();
 
     if (hasRunExitAppDialog || hasRunExitSpecificSceneDialog) {
@@ -320,14 +334,28 @@ export default class PowerStatusChangeAnimationController extends PowerStatusCon
   }
 
   private static async logoutAnimator(): Promise<void> {
+    if (AppStorage.get<PowerStatus>('powerStatus') !== PowerStatus.LOGOUT) {
+      log.showWarn('power status is not logout, skip logout request.');
+      return;
+    }
+    if (AppStorage.get<boolean>(LOGOUT_IN_PROGRESS_KEY)) {
+      log.showWarn('logout already in progress, skip duplicate request.');
+      return;
+    }
+    AppStorage.setOrCreate(LOGOUT_IN_PROGRESS_KEY, true);
     log.showInfo('start logout');
     let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
     try {
       let currentUserId: number = await accountManager.getOsAccountLocalId();
       log.showInfo(`logout localUserId:${currentUserId}`);
-      accountManager.deactivateOsAccount(currentUserId);
+      await accountManager.deactivateOsAccount(currentUserId);
     } catch (error) {
       log.showError(`logout fail! code: ${error?.code}, message: ${error?.message}`);
+      PowerStatusChangeAnimationController.showLogoutKeyguardFallback('deactivate account failed');
+    } finally {
+      setTimeout(() => {
+        AppStorage.setOrCreate(LOGOUT_IN_PROGRESS_KEY, false);
+      }, PowerStatusChangeAnimationController.SHUT_DOWN_PROTECT_TIMEOUT);
     }
   }
 }

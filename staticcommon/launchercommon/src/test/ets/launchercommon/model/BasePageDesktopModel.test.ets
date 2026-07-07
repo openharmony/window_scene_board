@@ -340,6 +340,44 @@ export default function BasePageDesktopModelTest() {
       expect(retValue).not().assertNull();
     })
 
+    it('test_isFoundAiSuggestion', 0, () => {
+      let model = PageDesktopModel.getInstance();
+      let companionIconInfo: CompanionIconInfo = {
+        iconId: '',
+        bundleName: '',
+        abilityName: '',
+        moduleName: '',
+        iconNumber: 0,
+        iconRadius: 0,
+        startAppType: StartType.APP,
+        cardId: 0
+      }
+      let itemInfo = new GridLayoutItemInfo();
+      let retValue = model['isFoundAiSuggestion'](itemInfo, companionIconInfo);
+      expect(retValue).assertInstanceOf('Boolean');
+      itemInfo.typeId = 6;
+      retValue = model['isFoundAiSuggestion'](itemInfo, companionIconInfo);
+      expect(retValue).assertInstanceOf('Boolean');
+
+      itemInfo.layoutInfo = [[new GridLayoutItemInfo()]];
+      retValue = model['isFoundAiSuggestion'](itemInfo, companionIconInfo);
+      expect(retValue).assertInstanceOf('Boolean');
+
+      itemInfo.typeId = 0;
+      companionIconInfo.extraId = 10;
+      itemInfo.cardId = 1;
+      retValue = model['isFoundAiSuggestion'](itemInfo, companionIconInfo);
+      expect(retValue).assertInstanceOf('Boolean');
+
+      companionIconInfo.extraId = 1;
+      retValue = model['isFoundAiSuggestion'](itemInfo, companionIconInfo);
+      expect(retValue).assertInstanceOf('Boolean');
+
+      companionIconInfo.startAppType = StartType.AI_SUGGESTION_APP;
+      retValue = model['isFoundAiSuggestion'](itemInfo, companionIconInfo);
+      expect(retValue).assertInstanceOf('Boolean');
+    })
+
     it('test_searchInCurrentDeskTopPage', 0, () => {
       let model = PageDesktopModel.getInstance();
       let companionIconInfo: CompanionIconInfo = {

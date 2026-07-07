@@ -1,0 +1,20 @@
+{
+    "string":[
+        {
+            "name":"CloudcomponentAbility_desc",
+            "value":"[TS_1110150]_description"
+        },
+        {
+            "name":"CloudcomponentAbility_label",
+            "value":"[TS_1110149]_label"
+        },
+        {
+            "name":"cloud_lai",
+            "value":"[TS_1085008]_Cloud mode"
+        },
+        {
+            "name":"module_desc",
+            "value":"[TS_935252]_module description"
+        }
+    ]
+}

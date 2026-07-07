@@ -26,6 +26,13 @@
     "requestPermissions": [
       {
         "name": "ohos.permission.ACCESS_SEARCH_SERVICE"
+      },
+      {
+        "name": "ohos.permission.GET_INSTALLED_BUNDLE_LIST",
+        "reason": "$string:get_installed_bundle_list_reason",
+        "usedScene": {
+          "when": "always"
+        },
       }
     ],
     "extensionAbilities": [

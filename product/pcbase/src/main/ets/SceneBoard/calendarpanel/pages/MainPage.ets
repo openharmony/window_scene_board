@@ -323,7 +323,7 @@ export default struct MainPage {
             .margin({ left: 24, right: 24 })
             .color($r('sys.color.ohos_id_color_list_separator'))
 
-          this.dateAndSetting()
+          // this.dateAndSetting()
         }
       }
       .id(COMPONENT_ID_CALENDAR)

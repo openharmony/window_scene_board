@@ -53,13 +53,16 @@ export class GestureDockDataController {
       log.showWarn('getAppItemInfo, bundleName is null');
       return;
     }
+    let adapterBundleName = SceneInfoAdapterUtil.getAdapterBundleName(bundleName);
     let appItemInfos: AppItemInfo[] = AppModel.getInstance().getAppList();
     let appItem: AppItemInfo | undefined = undefined;
     if (appItemInfos) {
       appItem = appItemInfos.find((item) =>
-      item.appIndex === appIndex && item.abilityName === abilityName);
+      item.bundleName === adapterBundleName && item.appIndex === appIndex &&
+        item.abilityName === abilityName);
     }
     if (CheckEmptyUtils.isEmpty(appItem)) {
+      appItem = this.actionStrategy.getAppItemByStrategy(adapterBundleName, appIndex, abilityName);
     }
     return appItem;
   }

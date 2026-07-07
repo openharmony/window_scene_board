@@ -139,6 +139,11 @@ class ScreenLockMediator implements Subject {
     })
   }
 
+  public showKeyGuardWithoutLockStatusChange(): void {
+    log.showInfo('showKeyGuardWithoutLockStatusChange');
+    ScreenLockService.showKeyGuardWithoutLockStatusChange();
+  }
+
   /**
    * 返回到上一页
    */

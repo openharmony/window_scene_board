@@ -94,6 +94,10 @@ export class NtfListKeyGuard extends NtfListVm {
     if (this.isSecureAndLocked !== isSecureAndLocked) {
       this.isSecureAndLocked = isSecureAndLocked;
       this.callback?.onKgLockStateChange?.(isSecureAndLocked);
+      // 解锁时重置reboot_ntf_msg状态
+      if (!isSecureAndLocked) {
+        AppStorage.setOrCreate<boolean>('reboot_ntf_msg', false);
+      }
     }
     this.checkShouldHideNtfContent();
     this.checkShouldHideLiveViewContent();
@@ -183,6 +187,7 @@ export class NtfListKeyGuard extends NtfListVm {
     }
   }
 
+  // isOngoing为true才会走是否显示的逻辑
   private addToScreenList(entry: NotificationEntry, lockTime: number): boolean {
     if (entry.isHiddenInKeyGuard()) {
       return false;
@@ -190,6 +195,7 @@ export class NtfListKeyGuard extends NtfListVm {
     if (entry.isOngoing || entry.isLiveType() || entry.deliveryTime > lockTime) {
       return true;
     }
+
     return false;
   }
 

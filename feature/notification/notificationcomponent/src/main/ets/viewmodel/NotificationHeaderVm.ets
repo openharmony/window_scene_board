@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 import { CommonUtils, LogDomain, LogHelper } from '@ohos/basicutils/src/main/ets/TsIndex';
-import { DeviceHelper, EvtBus, TargetPanel } from '@ohos/frameworkwrapper/src/main/ets/TsIndex';
+import { DeviceHelper, EvtBus,
+  obtainLocalEvent, EventConstants,
+  sEventManager, TargetPanel } from '@ohos/frameworkwrapper/src/main/ets/TsIndex';
 import { OperatorClockChangeEvent } from '@ohos/systemuicommon';
 import {
   CellularDataVm,
@@ -212,6 +214,7 @@ export class NotificationHeaderVm extends NotificationBaseVm implements INotific
   public showBlurAndClockWhenFollowHand(): void {
     if (!this.vmInjector.getPanelVm().isLandscapeLayout &&
       DropdownVm.instance.dropdownEvent.target === TargetPanel.NOTIFICATION_PANEL) {
+      this.updateStatusBarVisible();
       // 运营商切换
       this.updateClockStatus();
       // 模糊
@@ -313,6 +316,30 @@ export class NotificationHeaderVm extends NotificationBaseVm implements INotific
       this.timeTextOpacity = Math.max(0, 1 + (1 / timeOpacityTranY * (firstCardTransY + timeOpacityStartTranY)));
     } else { this.timeTextOpacity = 1; }
   }
+
+  /**
+   * 通知中心列表上滑隐藏状态栏
+   */
+  private updateStatusBarVisible(): void {
+    if (this.timeTextOpacity === 0) {
+      animateTo({
+        duration: 350,
+        curve: Curve.Friction
+      }, () => {
+        sEventManager.publish(obtainLocalEvent(EventConstants.CONTROL_CENTER_SHOW_HIDE_BAR, false));
+      })
+      return;
+    }
+    if (this.timeTextOpacity > 0 && DropdownVm.instance.isDropDown) {
+      animateTo({
+        duration: 50,
+        curve: Curve.Friction
+      }, () => {
+        sEventManager.publish(obtainLocalEvent(EventConstants.CONTROL_CENTER_SHOW_HIDE_BAR, true));
+      })
+    }
+  }
+
   private updateClockStatus(): void {
     if (this.timeTextOpacity <= 0.4 && !this.isOperatorChange) {
       EvtBus.post(OperatorClockChangeEvent, new OperatorClockChangeEvent(true));

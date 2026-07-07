@@ -1,5 +1,5 @@
 /**
- * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved. 2024-2025. All rights reserved.
+ * Copyright (c) 2022-2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -41,6 +41,7 @@ import { PageDesktopGridStyleConfig } from '@ohos/launchercommon/src/main/ets/la
 import { FormViewModel } from '@ohos/form/src/main/ets/default/viewmodel/FormViewModel';
 import { FormStyleConfig } from '@ohos/form/src/main/ets/default/common/FormStyleConfig';
 import { FolderStyleManager } from '@ohos/launchercommon/src/main/ets/folder/next/common/FolderStyleManager';
+import { AiSuggestionUtil } from '@ohos/launchercommon/src/main/ets/aisuggestion/AiSuggestionUtil';
 
 const TAG = 'PageDesktopCloseAppHandler';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.HOME, TAG);
@@ -244,7 +245,8 @@ export class PageDesktopCloseAppHandler extends BaseCloseAppHandler {
               if (this.isMatchApp(item.bundleName, item.abilityName) && this.mStartAppType === StartType.CARD &&
               this.isMatchIconId(item.cardId ?? '')) {
                 return item;
-              } else if (this.mStartAppType === StartType.AI_SUGGESTION_APP) {
+              } else if (this.mStartAppType === StartType.AI_SUGGESTION_APP &&
+              AiSuggestionUtil.isVoiceAbilityForm(item.bundleName, item.abilityName)) {
                 return undefined;
               }
               break;

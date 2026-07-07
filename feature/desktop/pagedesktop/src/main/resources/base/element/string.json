@@ -73,7 +73,7 @@
         },
         {
             "name":"home_screen",
-            "value":"Huawei home screen",
+            "value":" home screen",
             "attr":{
                 "priority":"translate"
             }
@@ -258,6 +258,13 @@
             }
         },
         {
+            "name":"only_deliver_app_can_add_to_fold",
+            "value":"Only deliver apps can be added to this folder.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
             "name":"can_not_remove_from_flod",
             "value":"This app can't be moved out of this folder.",
             "attr":{
@@ -265,21 +272,21 @@
             }
         },
         {
-            "name":"d_app_dialog_content",
+            "name":"deliver_app_dialog_content",
             "value":"%s is now available for OpenHarmony. Update your app for an all new experience.\n\nPlease note that some app data may be lost when switching versions.",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"d_app_dialog_cancel",
+            "name":"deliver_app_dialog_cancel",
             "value":"Ignore",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"d_app_dialog_confirm",
+            "name":"deliver_app_dialog_confirm",
             "value":"Update now",
             "attr":{
                 "priority":"translate"

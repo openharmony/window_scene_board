@@ -98,6 +98,10 @@ export class NotificationCompatibleConverter {
     entry.wantAgent = ntf.wantAgent;
     entry.wantAgentInfo = ntf.wantAgentInfo;
     entry.deliveryTime = ntf.deliveryTime;
+    // entry.autoDeletedTime 用不上
+    entry.isDeliverNotification = ntf.isDeliverNotification;
+    entry.deliverNotificationKey = ntf.deliverNotificationKey;
+    entry.isDeliverPushNotification = ntf.isDeliverPushNotification;
     entry.groupName = (ntf.isLiveView() || ntf.isEmergencyNtf()) ? ntf.hashCode : ntf.groupName ?? '';
     // isBypassDnd 用不上
     entry.sound = ntf.sound;
@@ -123,6 +127,11 @@ export class NotificationCompatibleConverter {
     entry.contentType = ntf.contentType;
     entry.bundleIdxTag = `${ntf.creatorBundleName}_${ntf.appIndex}`;
     entry.overlayIconStyle = ntf.overlayIconStyle;
+    entry.deliverInstallSource = ntf.deliverInstallSource;
+    entry.isDeliverFullScreen = ntf.isDeliverFullScreen;
+    entry.deliverAbilityName = ntf.deliverAbilityName;
+    entry.deliverPushWantAgentInfo = ntf.deliverPushWantAgentInfo;
+    entry.deliverPushLauncherInfo = ntf.deliverPushLauncherInfo;
     entry.channelId = ntf.channelId;
     entry.traceId = ntf.traceId;
   }
@@ -168,6 +177,7 @@ export class NotificationCompatibleConverter {
     entry.liveViewData.appIndex = ntf.appIndex;
     entry.liveViewData.appName = new ObservedItem(ntf.appLabel);
     entry.liveViewData.isAtomicServiceFromPush = ntf.isAtomicServiceFromPush;
+    entry.liveViewData.isDeliverNotification = ntf.isDeliverNotification;
     entry.liveViewData.setCustomerAccessibilityText(ntf.customerAccessibilityText);
 
     if (ntf.card?.isSystemCard()) {
@@ -237,6 +247,7 @@ export class NotificationCompatibleConverter {
     template.setOverlayIconStyle(ntf.overlayIconStyle);
     template.setWantAgent(ntf.wantAgent);
     template.wantAgentInfo = ntf.wantAgentInfo;
+    template.setIsDeliverLiveNotification(ntf.isDeliverNotification);
   }
 
   private static convertOtherBaseTemplate(ntf: LiveNotification, entry: NotificationEntry,

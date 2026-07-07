@@ -15,9 +15,9 @@
 
 import Want from '@ohos.app.ability.Want';
 import common from '@ohos.app.ability.common';
-import { ArrayUtils, LogDomain, LogHelper } from '@ohos/basicutils';
+import { ArrayUtils, LogDomain, LogHelper, CapabilityUtil } from '@ohos/basicutils';
 import { PluginAccessInfo, GlobalContext, ViewType, PluginSlot, SettingsUtil } from '@ohos/frameworkwrapper';
-// import statusBar from '@hms.pcService.statusBar';
+import statusBar from '@ohos.pcService.statusBar';
 import { PluginProperty } from '../viewdata/PluginProperty';
 import { MenuStyle } from '@ohos/plugincomponent/src/main/ets/style/MenuStyle';
 import { AppClientNotifier } from '@ohos/statusbarextensionservice';
@@ -30,6 +30,8 @@ import { PluginDragEvent } from '../utils/events';
 
 const TAG = 'PcAccessRightMenu';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.SYS_UI, TAG);
+const HIAIMGR_BUNDLE_NAME = 'com.ohos.hmmodelfoundation';
+const HIAIMGR_EXIT_SETTING_KEY = 'hiaimgrShouldExit'; // 'true': 应用需要退出；应用侧监听，退出时置为 'false'
 
 @Component
 export struct PcAccessRightMenu {
@@ -40,25 +42,28 @@ export struct PcAccessRightMenu {
   @Consume isMenuOpenNotTray: boolean;
 
   @Builder
-  subMenu(subMenus: ESObject[]) {
+  subMenu(subMenus: statusBar.StatusBarSubMenuItem[]) {
     Menu() {
-      ForEach(subMenus, (subMenuItem: ESObject) => {
-        MenuItem({
-          content: subMenuItem.subTitle,
-        })
+      ForEach(subMenus, (subMenuItem: statusBar.StatusBarSubMenuItem) => {
+        MenuItem() {
+          Text(subMenuItem?.subTitle)
+            .maxLines(1)
+            .textOverflow({ overflow: TextOverflow.Ellipsis })
+            .wordBreak(WordBreak.BREAK_ALL)
+        }
           .id(`${TAG}_subRightMenuItem`)
           .onClick(() => {
             this.onMenuClick(subMenuItem.menuAction);
             ContextMenu.close();
           })
           .height(this.menuStyle.defaultMenuHeight)
-      }, (subMenuItem: ESObject) => JSON.stringify(subMenuItem))
+      }, (subMenuItem: statusBar.StatusBarSubMenuItem) => JSON.stringify(subMenuItem))
     }
     .width(this.menuStyle.defaultMenuWidth)
   }
 
   @Builder
-  mainMenuItem(item: ESObject, index: number) {
+  mainMenuItem(item: statusBar.StatusBarMenuItem, index: number) {
     MenuItem({
       content: item.title,
       endIcon: this.updateIcon(item.subMenu),
@@ -80,12 +85,12 @@ export struct PcAccessRightMenu {
   }
 
   @Builder
-  groupMenu(menuData: ESObject) {
+  groupMenu(menuData: statusBar.StatusBarGroupMenu) {
     if (!ArrayUtils.isEmpty(menuData)) {
       MenuItemGroup() {
-        ForEach(menuData, (item: ESObject, index: number) => {
+        ForEach(menuData, (item: statusBar.StatusBarMenuItem, index: number) => {
           this.mainMenuItem(item, index)
-        }, (item: ESObject) => JSON.stringify(item))
+        }, (item: statusBar.StatusBarMenuItem) => JSON.stringify(item))
       }
       .margin({
         bottom: StyleConstants.MENU_MARGIN
@@ -106,7 +111,7 @@ export struct PcAccessRightMenu {
   build() {
     Menu() {
       if (!ArrayUtils.isEmpty(this.property.groupMenuInfo)) {
-        ForEach(this.property.groupMenuInfo, (menuData: ESObject) => {
+        ForEach(this.property.groupMenuInfo, (menuData: statusBar.StatusBarGroupMenu) => {
           this.groupMenu(menuData)
         })
       }
@@ -137,14 +142,14 @@ export struct PcAccessRightMenu {
     .borderRadius(this.menuStyle.menuContainerRadius)
   }
 
-  private updateIcon(subMenus?: ESObject[]): Resource | undefined {
+  private updateIcon(subMenus?: statusBar.StatusBarSubMenuItem[]): Resource | undefined {
     if (subMenus && subMenus.length > 0) {
       return $r('sys.media.ohos_ic_public_arrow_right');
     }
     return undefined;
   }
 
-  private onMenuClick(menuAction?: ESObject): void {
+  private onMenuClick(menuAction?: statusBar.StatusBarMenuAction): void {
     if (!menuAction) {
       return;
     }
@@ -178,8 +183,19 @@ export struct PcAccessRightMenu {
       let exitPidArray: number[] = [];
       exitPidArray.push(...Array.from(accessPluginInfo.pids));
       exitPidArray.push(...Array.from(accessPluginInfo.attachPids));
+      CapabilityUtil.isStatusBarAvailable() && statusBar.exitProcesses(exitPidArray);
+      this.dealHiaimgrExit();
     }
     ContextMenu.close();
+  }
+
+  // AI模型管家监听 HIAIMGR_EXIT_SETTING_KEY 值变化主动退出应用
+  private dealHiaimgrExit(): void {
+    let bundleName: string = this.property.pluginInfo?.pluginParseInfo.bundleName ?? '';
+    if (bundleName === HIAIMGR_BUNDLE_NAME) {
+      let isSuccess = SettingsUtil.setSecureValue(HIAIMGR_EXIT_SETTING_KEY, 'true');
+      log.showInfo(`isSuccess: ${isSuccess}`);
+    }
   }
 
   aboutToAppear() {

@@ -134,7 +134,7 @@ export struct SwiperPageWhiteBoxComponent {
     this.mGridHeight = this.mPageDesktopStyleConfig.mGridHeight as number;
     this.mIconSize = this.mPageDesktopStyleConfig.mIconSize as number;
     this.mIconRadius = this.mPageDesktopStyleConfig.mIconRadius;
-    if (!DeviceHelper.isBigScreenMachine()) {
+    if (!DeviceHelper.isSuperFoldMachine()) {
       const screenWidth = AppStorage.get<number>('screenWidth') as number ?? 0;
       const displayCount: number = DisplayCountViewModel.getInstance().getDisplayCount();
       this.fallWhiteBoxWidth = screenWidth / displayCount;
@@ -288,7 +288,7 @@ export struct SwiperPageWhiteBoxComponent {
     // 由于swiperPage是从状态栏位置开始，因此需要额外减去状态栏高度
     const sysUITopHeight = LayoutViewModel.getInstance(this.singleContext).getSysUITopHeight();
     this.mWhiteBox[1] = endPosition.y as number - this.mIconSize / 2 - sysUITopHeight;
-    log.showInfo(`updateFallWhiteBoxPosition mWhiteBox=${this.mWhiteBox} endPosition=${endPosition.x},${endPosition.y}`);
+    log.showInfo(`updateFallWhiteBoxPosition mWhiteBox=${this.mWhiteBox} endPosition=${endPosition.x},${endPosition.y};mIconSize:${this.mIconSize}`);
   }
 
   private updateFallWhitBoxArea() {

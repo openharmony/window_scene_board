@@ -16,7 +16,7 @@
 import { bundleManager } from '@kit.AbilityKit';
 import { ArgumentMatchers, MockKit, when } from '@ohos/hypium';
 import { BundleUtils, CallerInfo, TsLog } from '@ohos/themeservicebase/Index';
-import { openharmony_APP, RETAIL_APP } from '../../../main/ets/remote/callee/TrustCallerInfo';
+import { HW_APP, RETAIL_APP } from '../../../main/ets/remote/callee/TrustCallerInfo';
 const TAG: string = 'BundleMocker';
 export class BundleMocker {
   public static mockRetailApp(): MockKit {
@@ -24,7 +24,7 @@ export class BundleMocker {
   }
 
   public static mockHwApp(): MockKit {
-    return BundleMocker.mock(openharmony_APP);
+    return BundleMocker.mock(HW_APP);
   }
 
   public static mock(callerInfo: CallerInfo): MockKit {

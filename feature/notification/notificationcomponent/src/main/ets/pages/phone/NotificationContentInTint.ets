@@ -32,10 +32,12 @@ import { ArrayUtils, LogDomain, LogHelper } from '@ohos/basicutils';
 import { RTLUtil } from '@ohos/componenthelper';
 import { DeviceHelper } from '@ohos/frameworkwrapper';
 import { ResUtils } from '@ohos/windowscene';
+import { ImmersiveAodStyle, immersiveKgMgr } from '@ohos/systemuicommon/src/main/ets/TsIndex';
 import {
   AccessibilityAppName,
   ColorModeViewData,
-  ColorModeViewModel
+  ColorModeViewModel,
+  NotificationType
 } from '@ohos/systemuicommon/Index';
 import { notificationStyle } from '../../vm/style/NotificationStyle';
 import measure from '@ohos.measure';
@@ -47,6 +49,7 @@ import { LengthMetrics } from '@kit.ArkUI';
 import { NotificationUtils, ChildFunctionWrapper } from '../../common/NotificationUtils';
 import { NtfSingleItemVM } from '../../vm/NtfSingleItemVM';
 import { ColorModeNCViewData } from '@ohos/systemuicommon/src/main/ets/template/newStyle/ColorModeNCViewData';
+import { DeliverBadge } from '@ohos/systemuicommon/src/main/ets/view/DeliverBadge';
 import { ArkUIAdapter } from '@ohos/systemuicommon/src/main/ets/utils/ArkUIAdapter';
 
 const SUB_TITLE_OPACITY: number = 1;
@@ -185,6 +188,11 @@ export struct NotificationContentInTint {
   @State colorModeVM: NtfColorModeVM | undefined = undefined;
   private colorModeNCViewData: ColorModeNCViewData = ColorModeViewModel.getInstance().getNCViewData();
 
+  /**
+   * Aod显示样式
+   */
+  @State aodStyle: ImmersiveAodStyle | undefined = immersiveKgMgr.getOneMirrorState().getAodStyle(
+    this.notificationType === NotificationType.TYPE_PHONE_KEYGUARD);
   /**
    * 时间戳VM
    */
@@ -482,7 +490,7 @@ export struct NotificationContentInTint {
       .maxLines(1)
       .textOverflow({ overflow: TextOverflow.Ellipsis })
       .id(`TimestampInTint_${this.ntfEntry.hashCode}`)
-      .visibility(Visibility.Visible)
+      .visibility(this.aodStyle?.isAod ? Visibility.Hidden : Visibility.Visible)
       .foregroundBrightness(this.colorModeVM?.themeTimestampForegroundBrightnessOptions)
       .flexShrink(0)
       .width(this.isExpand ? undefined : $r('app.float.ntf_button_size_in_tint'))
@@ -597,6 +605,11 @@ export struct NotificationContentInTint {
         .offset({ x: this.appIconOffset, y: this.appIconOffset })
         .autoResize(true)
         .interpolation(ImageInterpolation.Medium)
+      } else {
+        DeliverBadge({
+          iconSize: ResUtils.getNumber(this.iconSize),
+          isKgScene: this.notificationType === NotificationType.TYPE_PHONE_KEYGUARD,
+        })
       }
     }
     .flexShrink(0)

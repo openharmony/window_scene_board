@@ -15,18 +15,19 @@
 
 import ServiceExtensionAbility from '@ohos.app.ability.ServiceExtensionAbility';
 import Want from '@ohos.application.Want';
+import { appManager } from '@kit.AbilityKit';
 import {
   AppGalleryDownloadManager,
   AppLockManager,
   CommonConstants,
   desktopFontScaleManager,
-  DesktopManager,
   DesktopModeManager,
   EditModeCloneHelper,
   FormConstants,
   FormListInfoCacheManager,
   GrayAppListManager,
   IconChangeSizeManager,
+  DesktopManager,
   launcherAbilityManager,
   RdbStoreStarter,
   RecentBundleMissionInfo,
@@ -47,14 +48,21 @@ import { ScbServiceRemoteObject } from '@ohos/screenlockcomponent/src/main/ets/c
 import {
   AnimateToScheduleUtils,
   AppStorageUtil,
-  CheckEmptyUtils,
   DomainName,
-  FileUtils,
   LogDomain,
   LogHelper,
-  TraceUtil
+  // MemoryUtils,
+  TraceUtil,
+  CheckEmptyUtils,
+  FileUtils
 } from '@ohos/basicutils';
-import { CurrentCpuScene, CurrentMemScene, PerformanceReporter } from '@ohos/frameworkcommon';
+import {
+  CurrentCpuScene,
+  CurrentMemScene,
+  MemoryManager,
+  MemoryMonitor,
+  PerformanceReporter
+} from '@ohos/frameworkcommon';
 import { SCBConstants } from '@ohos/commonconstants';
 import { SCBGestureNavSetMgr, SCBVisualEffectMgr } from '@ohos/componenthelper';
 import {
@@ -68,7 +76,6 @@ import {
   sSCBOobeManager
 } from '@ohos/windowscene';
 import {
-  AccountMgr,
   bundleManagerFwk,
   dbCache,
   DebugCommandManager,
@@ -82,7 +89,8 @@ import {
   ResourceManager,
   SCBWindowSceneConfig,
   WallpaperColorManager,
-  WallpaperManager
+  WallpaperManager,
+  AccountMgr
 } from '@ohos/frameworkwrapper';
 import systemParameterEnhance from '@ohos.systemParameterEnhance';
 import call from '@ohos.telephony.call';
@@ -93,11 +101,15 @@ import { WallpaperModel } from '@ohos/wallpapercomponent/src/main/ets/wallpaper/
 import { multiInputManager } from '@ohos/multiinput/src/main/ets/default/common/MultiInputManager';
 import { ntfThemeActiveMgr } from '@ohos/notificationcomponent/src/main/ets/common/NotificationThemeActiveManager';
 import { RestoreLauncherDataManager } from '@ohos/launchercommon/src/main/ets/manager/RestoreLauncherDataManager';
+import { SystemUICcmConfig } from '@ohos/systemuicommon/src/main/ets/utils/SystemUICcmConfig';
 import { AppCategoryInfoManager } from '@ohos/launchercommon/src/main/ets/manager/AppCategoryInfoManager';
 import CardLockManager from '@ohos/launchercommon/src/main/ets/manager/CardLockManager';
 import MultiModalInputUtil from '@ohos/multimodalinput/src/main/ets/MultiModalInputUtil';
 import { NotificationIpc } from '@ohos/systemuicommon/src/main/ets/remote/Constant';
 import { NotificationRemoteObject } from '@ohos/notificationcomponent/src/main/ets/remote/NotificationRemoteObject';
+import {
+  AiBarSettingsDataMgr
+} from '@ohos/phonebase/src/main/ets/SceneBoard/aiBar/settings/preference/AiBarSettingsDataMgr';
 import { recentLockModel } from '@ohos/phonebase/src/main/ets/SceneBoard/recent/settings/RecentLockModel';
 import sceneSessionManager from '@ohos.sceneSessionManager';
 import PhonePageDesktopLayoutConfig from '@ohos/phonebase/src/main/ets/common/PhonePageDesktopLayoutConfig';
@@ -107,14 +119,17 @@ import { ControlCenterPluginMgr } from '@ohos/controlcentercommon/src/main/ets/b
 import { MatchCardDataManager } from '@ohos/launchercommon/src/main/ets/model/MatchCardDataManager';
 import { ModeChangeUtils } from '@ohos/frameworkwrapper/src/main/ets/utils/ModeChangeUtils';
 import osAccount from '@ohos.account.osAccount';
+import { overlay } from '@kit.AbilityKit';
 import { powerButtonManager } from '@ohos/componenthelper/src/main/ets/manager/PowerButtonManager';
-import { BaseTask, TaskPool } from '@ohos/basicutils/src/main/ets/taskpool/TaskPool';
+import { TaskPool, BaseTask } from '@ohos/basicutils/src/main/ets/taskpool/TaskPool';
 import util from '@ohos.util';
 import lazy { NotificationInitiator } from '@ohos/notificationcomponent/src/main/ets/NotificationInitiator';
 import { ReportFileSizeTimerUtil } from '@ohos/recents/src/main/ets/default/common/ReportFileSizeTimerUtil';
 import fs from '@ohos.file.fs';
 import { IconSettingsEvents } from '@ohos/desktopedit';
 import { DesktopIconShowNameManager } from '@ohos/launchercommon/Index';
+import { PadMemoryManager } from '../common/memory/PadMemoryManager';
+import { PadStrategyFactory } from '../common/memory/PadStrategyFactory';
 import { ToggleDataBridger } from '../SceneBoard/controlpanel/model/ToggleDataBridger';
 
 const TAG = 'SceneBoardMainAbility';
@@ -282,6 +297,9 @@ export default class MainAbility extends ServiceExtensionAbility {
     // Register wallpaper listener.
     this.initWallpaperManager();
 
+    // set ohos_gesture_bottom_height
+    this.initGestureBottomHeight();
+
     // set lock Preference for recent.
     this.initRecentLockPreference();
 
@@ -294,6 +312,7 @@ export default class MainAbility extends ServiceExtensionAbility {
     log.showWarn('initWithRenderServiceAdded start');
     SCBSceneSessionManager.getInstance().initWithRenderServiceAdded();
     log.showWarn('createBackupSubscriber start');
+    // backupEventManager.createBackupSubscriber();
     EditModeCloneHelper.getInstance().createBackupSubscriber();
     IconSettingsEvents.getInstance().createSubscriber();
 
@@ -329,6 +348,13 @@ export default class MainAbility extends ServiceExtensionAbility {
     this.initFileSizeTimer();
 
     log.showWarn('initSceneBoard ok');
+  }
+
+  /**
+   * 初始化导航条默认高度，外settingsData数据同步
+   */
+  private initGestureBottomHeight(): void {
+    AiBarSettingsDataMgr.getInstance().setGestureBottomHeight();
   }
 
   /**

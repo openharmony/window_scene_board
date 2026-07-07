@@ -33,6 +33,10 @@
             "value":"[TS_968808]_WLAN connected"
         },
         {
+            "name":"ai_assistant",
+            "value":"[TS_968806]_Voice"
+        },
+        {
             "name":"battery_power",
             "value":"[TS_968805]_Battery: %s"
         },
@@ -79,6 +83,18 @@
         {
             "name":"ethernet_status_connected",
             "value":"[TS_1110111]_Wired network connected"
+        },
+        {
+            "name":"voice_search",
+            "value":"[TS_1124760]_Voice Search"
+        },
+        {
+            "name":"voice_translate",
+            "value":"[TS_1124755]_Voice Translate"
+        },
+        {
+            "name":"voice_notetaker",
+            "value":"[TS_1124756]_Voice Notetaker"
         },
         {
             "name":"file_upload",

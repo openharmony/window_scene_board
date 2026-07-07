@@ -1,5 +1,5 @@
 /*
- * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -15,7 +15,7 @@
 import { SCBSceneMode } from './SCBSceneInfo';
 import { SCBScreenSessionManager } from '../../screen/session/SCBScreenSessionManager';
 import { DividerStyleConstants, RotationConstants, WindowConstants } from '@ohos/commonconstants';
-import { SplitStyle } from './SCBSceneContainerSession';
+import { SCBSceneContainerSession, SplitStyle } from './SCBSceneContainerSession';
 import { SCBScreenProperty } from '../../screen/session/SCBScreenSession';
 import { LogDomain, LogHelper } from '@ohos/basicutils';
 import { SCBSceneSessionManager } from '../../scene/session/SCBSceneSessionManager';
@@ -833,8 +833,8 @@ export class SCBDividerParam {
           `${(this.containerTranYPct + statusBarPct) * 100}%`;
         this.secondary.posY = `${(1 - this.secSizePct + this.containerTranYPct) * toPercent}%`;
       } else {
-        this.primary.posY = `${statusBarPct * toPercent}%`;
-        this.secondary.posY = `${statusBarPct * toPercent}%`;
+        this.primary.posY = this.needCutOut ? `${this.avoidYPct  * toPercent}%` : `0%`;
+        this.secondary.posY = this.needCutOut ? `${this.avoidYPct  * toPercent}%` : `0%`;
         this.primary.posX = this.needCutOut ? `${this.avoidXPct * toPercent}%` : `0%`;
         this.secondary.posX = `${(1 - this.secSizePct - this.getAvoidPctIfNeeded(screenProperty)) * toPercent}%`;
       }
@@ -844,8 +844,8 @@ export class SCBDividerParam {
         this.secondary.posY = this.needCutOut ? `${(this.avoidYPct + this.containerTranYPct) * toPercent}%` :
           `${(this.containerTranYPct + statusBarPct) * 100}%`;
       } else {
-        this.primary.posY = `${statusBarPct * toPercent}%`;
-        this.secondary.posY = `${statusBarPct * toPercent}%`;
+        this.primary.posY = this.needCutOut ? `${this.avoidYPct  * toPercent}%` : `0%`;
+        this.secondary.posY = this.needCutOut ? `${this.avoidYPct  * toPercent}%` : `0%`;
         this.secondary.posX = this.needCutOut ? `${this.avoidXPct * toPercent}%` : `0%`;
         this.primary.posX = `${(1 - this.primSizePct - this.getAvoidPctIfNeeded(screenProperty)) * toPercent}%`;
       }
@@ -881,11 +881,11 @@ export class SCBDividerParam {
         this.avoidXPct = 0;
         this.avoidYPct = 0;
       } else if (rotation === RotationConstants.ROTATION_270) {
-        this.avoidXPct = statusBarPct;
+        this.avoidXPct = 0;
         this.avoidYPct = 0;
       }
     }
-    log.showDebug(`update split avoidArea: avoidx ${this.avoidXPct} avoidy ${this.avoidYPct}` +
+    log.showInfo(`update split avoidArea: avoidx ${this.avoidXPct} avoidy ${this.avoidYPct}` +
       `statusBar ${statusBarPct}`);
   }
 
@@ -1777,12 +1777,12 @@ export class SCBDividerParam {
    */
   public updateDividerParamWithRatio(screenProperty: SCBScreenProperty, ratio: number = 1 / 2): void {
     // screenLength orthogonal to divider
-    this.needCutOut = true;
+    this.needCutOut = this.isUpDownSplit() ? true : false;
     this.splitOrderIsNotReverse = true;
     this.notifyAvoidAreaChange(screenProperty);
     let screenLength = this.isUpDownSplit() ? px2vp(screenProperty.height) : px2vp(screenProperty.width);
     let dividerPct = DividerStyleConstants.DIVIDER_HEIGHT / screenLength;
-    let statusBarPct = this.needCutOut ? this.statusBarPct : 0;
+    let statusBarPct = this.isUpDownSplit() ? (this.needCutOut ? this.statusBarPct : 0) : 0;
     this._primSizePct = ratio * (1 - dividerPct - statusBarPct);
     this._secSizePct = 1 - dividerPct - statusBarPct - this._primSizePct;
     this.updateDividerParam(screenProperty);
@@ -1790,11 +1790,11 @@ export class SCBDividerParam {
 
   public updateDividerParamWithRatioForMidScene(screenProperty: SCBScreenProperty, ratio: number = 1 / 2): void {
     this.notifyAvoidAreaChange(screenProperty);
-    const isUltraScreenStateG = SCBTriFoldManager.getInstance().isCurGState();
+    const isThreeFoldStateG = SCBTriFoldManager.getInstance().isCurGState();
     let screenLength =
-      this.isUpDownSplit() && !isUltraScreenStateG ? px2vp(screenProperty.height) : px2vp(screenProperty.width);
+      this.isUpDownSplit() && !isThreeFoldStateG ? px2vp(screenProperty.height) : px2vp(screenProperty.width);
     let dividerPct = DividerStyleConstants.DIVIDER_HEIGHT / screenLength;
-    let statusBarPct = this.needCutOut && !isUltraScreenStateG ? this.statusBarPct : 0;
+    let statusBarPct = this.needCutOut && !isThreeFoldStateG ? this.statusBarPct : 0;
     this._primSizePct = ratio * (1 - dividerPct - statusBarPct);
     this._secSizePct = 1 - dividerPct - statusBarPct - this._primSizePct;
     this.updateDividerParam(screenProperty);
@@ -1840,6 +1840,13 @@ export class SCBDividerParam {
   public resetBlurOpacity(): void {
     this.primary.blurScale = 0;
     this.secondary.blurScale = 0;
+  }
+
+  public enableUseBlurStandIn(enable: boolean): void {
+    this.primary.useBlurStandIn = enable;
+    this.secondary.useBlurStandIn = enable;
+    this.primary.blurScale = enable ? 1 : 0;
+    this.secondary.blurScale = enable ? 1 : 0;
   }
 
   public getFirstSceneTranslateX(): number {
@@ -2356,6 +2363,9 @@ export class SCBDividerParam {
   }
 
   private getStatusBarHeight(): number {
+    if (DeviceHelper.isPad()) {
+      return 0;
+    }
     let statusBarH: number = px2vp(windowMgr.getWindowPosition(WindowConstants.WINDOW_NAME_STATUS_BAR).height);
     if (statusBarH !== 0) {
       statusBarH++;
@@ -2570,6 +2580,27 @@ export class SCBDividerParam {
     }
     return 0;
   }
+
+  public initSplitWidthLimits(sceneContainerSession: SCBSceneContainerSession): void {
+    if (!sceneContainerSession || !sceneContainerSession.primarySession || !sceneContainerSession.secondarySession) {
+      log.showWarn('initSplitWidthLimits null session');
+      return;
+    }
+
+    const screenWidth = px2vp(sceneContainerSession.screenProperty.width);
+    const screenHeight = px2vp(sceneContainerSession.screenProperty.height);
+    const oneThirdWidth = (screenWidth - DividerStyleConstants.DIVIDER_HEIGHT) / 3;
+    const oneThirdHeight = (screenHeight - DividerStyleConstants.DIVIDER_HEIGHT - this.getStatusBarHeight()) / 3;
+
+    if (this.isUpDownSplit()) {
+      this.setPrimaryMinHeight(oneThirdHeight);
+      this.setSecondaryMinHeight(oneThirdHeight);
+    } else {
+      this.setPrimaryMinWidth(oneThirdWidth);
+      this.setSecondaryMinWidth(oneThirdWidth);
+    }
+    log.showInfo('initSplitWidthLimits primaryMinWidth:' + this.primary.minWidth + ' secondaryMinWidth: ' + this.secondary.minWidth + ' oneThirdWidth ' + oneThirdWidth);
+  }
 }
 
 export interface BorderRadiuses {
@@ -2606,7 +2637,7 @@ export function getOneStepSplitOffset(): number {
  * - A tri-fold of large fold is in M state.
  */
 export function isLargeFoldProductInExpand(): boolean {
-  if (DeviceHelper.isUltraScreenProduct()) {
+  if (DeviceHelper.isThreeFoldProduct()) {
     let foldStatus: display.FoldStatus = SCBScreenSessionManager.getInstance().getCurFoldStatus();
     if (foldStatus === display.FoldStatus.FOLD_STATUS_EXPANDED) {
       if (SCBTriFoldManager.getInstance().isCurFState()) {

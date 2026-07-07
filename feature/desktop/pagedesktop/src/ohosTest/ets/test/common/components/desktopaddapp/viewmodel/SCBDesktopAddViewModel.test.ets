@@ -16,6 +16,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import { GridLayoutItemInfo } from '@ohos/launchercommon'
 import {
   DesktopAddItemInfo,
+  OutdoorExplorationRule,
   SCBDesktopAddViewModel
 } from '../../../../../../../main/ets/default/common/components/desktopaddapp/SCBDesktopAddViewModel'
 
@@ -98,6 +99,12 @@ export default function SCBDesktopAddViewModelTest() {
       expect(instance).not().assertNull();
     });
 
+    it('getOutdoorExplorationConfig_01', 0, () => {
+      let instance: SCBDesktopAddViewModel = SCBDesktopAddViewModel.getInstance();
+      instance.getOutdoorExplorationConfig()
+      expect(instance).not().assertNull();
+    });
+
     it('getColumnsTemplate_01', 0, () => {
       let instance: SCBDesktopAddViewModel = SCBDesktopAddViewModel.getInstance();
       let columnTemplate = instance.getColumnsTemplate()
@@ -170,6 +177,21 @@ export default function SCBDesktopAddViewModelTest() {
       let checkedAppInfo: GridLayoutItemInfo = new GridLayoutItemInfo();
       instance.insertGridLayout(checkedAppInfo);
       expect(instance).not().assertNull();
+    });
+
+    it('getOutdoorExplorationConfigFromFile_01', 0, () => {
+      let sCBDesktopAddViewModel: SCBDesktopAddViewModel = new SCBDesktopAddViewModel();
+      let cfgFiles: string [] = [];
+      let outdoorExplorationRule: OutdoorExplorationRule =
+        (sCBDesktopAddViewModel as object)['getOutdoorExplorationConfigFromFile'](cfgFiles);
+      expect(outdoorExplorationRule).not().assertNull();
+    });
+
+    it('getOutdoorExplorationConfigByRawfile_01', 0, () => {
+      let sCBDesktopAddViewModel: SCBDesktopAddViewModel = new SCBDesktopAddViewModel();
+      let cfgFiles: string [] = [];
+      (sCBDesktopAddViewModel as object)['getOutdoorExplorationConfigByRawfile']();
+      expect(sCBDesktopAddViewModel).not().assertNull();
     });
 
     it('setDesktopAddItemInfoCatId_01', 0, () => {

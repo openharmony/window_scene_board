@@ -17,7 +17,7 @@ import { StatusBarTint } from '../../common/StatusBarTint';
 import { GroupStyle } from '../style/PcStatusBarGroupStyle';
 import { PluginProperty } from '../viewdata/PluginProperty';
 import { StateManager, StateProperty } from '../manager/StateManager';
-// import superPrivacyManager from '@hms.security.superPrivacyManager';
+// import superPrivacyManager from '@ohos.security.superPrivacyManager';
 import { LengthMetricsUtil } from '../common/LengthMetricsUtil';
 import { dragTriggerUtil } from '@ohos/launchercommon/src/main/ets/utils/DragTriggerUtil';
 import { PcStatusBarDragMgr } from '../manager/PcStatusBarDragMgr';
@@ -50,6 +50,7 @@ const log: LogHelper = LogHelper.getLogHelper(LogDomain.SYS_UI, TAG);
  */
 const ICON_CONTAINTER_MARGIN_MAP: Map<string | undefined, Resource | null> = new Map([
   [PluginSlot.SLOT_STATUS_SMART_SCREENSHOT, $r('app.float.had_capsule_screenshot_margin')],
+  [PluginSlot.SLOT_STATUS_ASSISTANT_TRANSLATE, $r('app.float.had_capsule_assistant_translate_margin')],
   [PluginSlot.SLOT_STATUS_QUICK_NOTE, $r('app.float.had_capsule_quick_note_margin')],
   [PluginSlot.SLOT_STATUS_CAPSULE_SCREENSHOT, $r('app.float.had_capsule_normal_screenshot_margin')],
   [undefined, null]

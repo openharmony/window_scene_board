@@ -108,6 +108,7 @@ import { BaseServiceStubTest } from './ets/WindowScene/oobe/service/BaseServiceS
 import { OobeTrustListServiceTest } from './ets/WindowScene/oobe/service/OobeTrustListService.test';
 import { TrustListOobeManagerTest } from './ets/WindowScene/oobe/trustlist/TrustListOobeManager.test';
 import SCBKeyboardManagerTest from './ets/WindowScene/scene/session/SCBKeyboardManager.test'
+import SCBSceneWindowAiSplitSwitchTest from './ets/scene/utils/SCBSceneWindowAiSplitSwitch.test';
 import { SCBSceneMissionManagerTest } from './ets/manager/SCBSceneMissionManagerTest.test';
 
 export default function WindowSceneSuite() {

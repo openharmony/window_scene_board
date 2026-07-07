@@ -1,7 +1,7 @@
 // module.exports = require('@ohos/hvigor-ohos-plugin').appTasks
 
 /**
- * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -28,6 +28,63 @@ import { execSync } from 'child_process';
 const hvigorNode = getHvigorNode(__filename) as Project;
 const appTask = appTasks(hvigorNode);
 
+// const config = {
+//   hvigor: hvigor,
+//   hvigorNode: getHvigorNode(__filename),
+//   templateEngName:'SceneBoard_xts_ohos_trunk_full_debug',
+//   modulesConfig:[
+//     {
+//       moduleName:'phone_sceneboard',
+//       appName:'SceneBoard',
+//       subModuleNames: ['launcher_desktopedit', 'launcher_recents', 'aod',
+//         'wallpapercomponent', 'launcher_form', 'controlcentercomponent', 'launcher_formstack', 'liveview',
+//         'aisuggestion', 'screenlockcomponent', 'gesturenavigation', 'themecomponent', 'batterycomponent',
+//         'ringmodecomponent', 'volumepanelcomponent', 'statusbarcomponent', 'airplanecomponent', 'cameracomponent',
+//         'hotspotcomponent', 'systemuicommon', 'launcher_bigfolder', 'launcher_pagedesktop',
+//         'launcher_smallfolder', 'launcher_smartDock', 'launchercommon',
+//         'immersivekeyguard', 'superprivacycomponent', 'pcmode', 'privacyindicator', 'basicutils', 'componentanimator',
+//         'componentdrag', 'componenthelper', 'frameworkcommon', 'frameworkwrapper', 'windowscene',
+//         'frameworkpinyin', 'swiperdata', 'phonebase', 'mediacontrolcomponent']
+//     },
+//     {
+//       moduleName:'pad_sceneboard',
+//       appName:'SceneBoard',
+//       subModuleNames: ['launcher_desktopedit', 'launcher_recents', 'aod',
+//         'wallpapercomponent', 'launcher_form', 'controlcentercomponent', 'launcher_formstack', 'liveview',
+//         'aisuggestion', 'screenlockcomponent', 'gesturenavigation', 'themecomponent', 'batterycomponent',
+//         'ringmodecomponent', 'volumepanelcomponent', 'statusbarcomponent', 'airplanecomponent', 'cameracomponent',
+//         'hotspotcomponent', 'systemuicommon', 'launcher_bigfolder', 'launcher_pagedesktop',
+//         'launcher_smallfolder', 'launcher_smartDock', 'launchercommon',
+//         'immersivekeyguard', 'superprivacycomponent', 'pcmode', 'privacyindicator', 'basicutils', 'componentanimator',
+//         'componentdrag', 'componenthelper', 'frameworkcommon', 'frameworkwrapper', 'windowscene',
+//         'frameworkpinyin', 'swiperdata', 'phonebase', 'superprivacy']
+//     },
+//     {
+//       moduleName:'pc_sceneboard',
+//       appName:'PCDockAndAppCenter',
+//       templateEngName:'SceneBoard_pc_xts_ohos_trunk_full'
+//     },
+//     {
+//       moduleName:'themeservice_core',
+//       appName:'ThemeService',
+//       templateEngName:'Theme_Service_xts_ohos_trunk_full'
+//     }
+//   ]
+// };
+//
+// function isDtInLinux():boolean {
+//   const temp = process.env.IS_DT_IN_LINUX;
+//   console.log(`isDtInLinux:${temp}`);
+//   if (temp === true || temp === 'true') {
+//     return true;
+//   }
+//   return false;
+// }
+//
+// if (isDtInLinux()) {
+//   uploadTestCases(config);
+// }
+
 function getFileHash(filePath: string): string {
   const hash = crypto.createHash('md5');
   const buffer = fs.readFileSync(filePath);
@@ -41,6 +98,8 @@ function copySignatureFile(sdkInfo): void {
   }
 
   console.log('Copy signature file begin');
+// sdkInfo 是= C:\Program Files\\DevEco Studio\sdk\default\openharmony
+// __dirname 是工程根目录 = D:\WorkSpace\test
   const hapSignTool = path.resolve(sdkInfo.getSdkToolchainsDir(), 'lib/hap-sign-tool.jar');
   fs.copyFileSync(hapSignTool, path.resolve(__dirname, 'signature/hap-sign-tool.jar'));
   const onlineSignTool = path.resolve(__dirname, 'signature/hapsign-online-plugin.jar');
@@ -55,7 +114,7 @@ function copySignatureFile(sdkInfo): void {
 
 // 主要用于模块检查规则的定义，尤其是在应用配置合规性校验中起到关键作用。以下是核心要点解析：
 function modifyArkDataSchemaConfig(sdkInfo): void {
-  const file = path.resolve(sdkInfo.getSdkToolchainsDir(), '../../hms/toolchains/modulecheck/arkDataSchema.json');
+  const file = path.resolve(sdkInfo.getSdkToolchainsDir(), '../../ohos/toolchains/modulecheck/arkDataSchema.json');
   let content = fs.readFileSync(file, 'utf8');
   if (content.length === 0) {
     console.warn('arkdata schema file content is null', content.length);

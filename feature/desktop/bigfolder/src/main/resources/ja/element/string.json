@@ -1,21 +1,21 @@
 {
     "string":[
         {
-            "name":"d_app_dialog_cancel",
+            "name":"deliver_app_dialog_cancel",
             "value":"無視",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"d_app_dialog_confirm",
+            "name":"deliver_app_dialog_confirm",
             "value":"今すぐ更新",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"d_app_unavailable_dialog_know",
+            "name":"deliver_app_unavailable_dialog_know",
             "value":"OK",
             "attr":{
                 "priority":"LT"
@@ -29,28 +29,28 @@
             }
         },
         {
-            "name":"d_app_unavailable_dialog_content",
+            "name":"deliver_app_unavailable_dialog_content",
             "value":"このアプリを使用するには、先にAppGalleryから%sをダウンロードしてください。",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"d_app_dialog_contents",
+            "name":"deliver_app_dialog_contents",
             "value":"アプリを更新してエクスペリエンスを一新できます。バージョンの切り替え時にアプリのデータが一部失われる可能性があります。",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"d_app_dialog_text",
+            "name":"deliver_app_dialog_text",
             "value":"%sをOpenHarmonyで利用できるようになりました。",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"uninstall_d_app_dialog_content",
+            "name":"uninstall_deliver_app_dialog_content",
             "value":"この端末には、すでにOpenHarmonyのバージョンの%sがインストールされています。古いバージョンをアンインストールしますか？",
             "attr":{
                 "priority":"LT"
@@ -64,7 +64,7 @@
             }
         },
         {
-            "name":"d_app_dialog_open",
+            "name":"deliver_app_dialog_open",
             "value":"OpenHarmonyバージョンを開く",
             "attr":{
                 "priority":"LT"
@@ -78,35 +78,35 @@
             }
         },
         {
-            "name":"d_app_pause_download_dialog_content",
+            "name":"deliver_app_pause_download_dialog_content",
             "value":"%sのダウンロードが一時停止されました。再開しますか？",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"d_app_unavailable_dialog_title",
+            "name":"deliver_app_unavailable_dialog_title",
             "value":"アプリが利用不可",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"d_app_dialog_title",
+            "name":"deliver_app_dialog_title",
             "value":"新しいバージョンが利用可能",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"uninstall_d_app_dialog_title",
+            "name":"uninstall_deliver_app_dialog_title",
             "value":"インストール済みの新しいバージョン",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"d_app_wait_download_dialog_content",
+            "name":"deliver_app_wait_download_dialog_content",
             "value":"%sはダウンロードキューにあります。このダウンロードを優先しますか？",
             "attr":{
                 "priority":"LT"
@@ -120,7 +120,7 @@
             }
         },
         {
-            "name":"d_app_installing_dialog_content",
+            "name":"deliver_app_installing_dialog_content",
             "value":"%sをインストール中です。お待ちください。",
             "attr":{
                 "priority":"translate"

@@ -36,7 +36,7 @@ import { PageStorages } from '@ohos/managementcomponent/src/main/ets/com/ohos/co
 import { StatusBarModel } from '../model/StatusBarModel';
 import { ResourceUtil } from '@ohos/managementcomponent/src/main/ets/com/ohos/common/ResourceUtil';
 import NftBadgeSwitchItemsComponent from './NftBadgeSwitchItemsComponent';
-import { HdsNavDestination, HdsNavDestinationAttribute } from '@kit.UIDesignKit';
+// import { HdsNavDestination, HdsNavDestinationAttribute } from '@kit.UIDesignKit';
 import { SysUIHdsNavigations } from '../common/SysUIHdsNavigations';
 import NtfDisplayContentSelectComponent from './NtfDisplayContentSelectComponent';
 import NtfDisplayLiveWindowContent from './NtfDisplayLiveWindowContent';

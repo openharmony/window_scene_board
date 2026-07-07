@@ -17,12 +17,12 @@ import { LogDomain, LogHelper } from '@ohos/basicutils';
 import { DeviceHelper } from '@ohos/frameworkwrapper/src/main/ets/TsIndex';
 import { ScreenBp, SizeBp } from '../immersivekgcommon/base/utils/ScreenBreakPoint';
 import { DisplayStateListener, DisplayStateManager } from '../manager/DisplayStateManager';
-import { UltraScreenStatus } from '../utils/DisplayUtils';
+import { ThreeFoldStatus } from '../utils/DisplayUtils';
 import { StateTransferable } from './StateTransferable';
 
 const TAG = 'SlViewController';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.KG, TAG);
-const IS_ULTRA_SCREEN = DeviceHelper.isUltraScreenProduct();
+const IS_THREE_FOLD = DeviceHelper.isThreeFoldProduct();
 
 /**
  * 基础锁屏视图控制器
@@ -84,24 +84,24 @@ export abstract class SlViewController<T> extends StateTransferable<T> implement
   }
 
   /**
-   * 获得超大屏当前状态
+   * 获得三折叠当前状态
    *
    * @returns 折展状态
    */
-  public getUltraScreenStatus(screenBp: ScreenBp): UltraScreenStatus | undefined {
-    if (!IS_ULTRA_SCREEN) {
+  public getThreeFoldStatus(screenBp: ScreenBp): ThreeFoldStatus | undefined {
+    if (!IS_THREE_FOLD) {
       return undefined;
     }
     if (!screenBp) {
-      return DeviceHelper.isFState() ? UltraScreenStatus.F_STATUS :
-        (DeviceHelper.isMState() ? UltraScreenStatus.M_STATUS : UltraScreenStatus.G_STATUS)
+      return DeviceHelper.isFState() ? ThreeFoldStatus.F_STATUS :
+        (DeviceHelper.isMState() ? ThreeFoldStatus.M_STATUS : ThreeFoldStatus.G_STATUS)
     }
     if (screenBp.widthBp === SizeBp.SM && screenBp.heightBp === SizeBp.LG) {
-      return UltraScreenStatus.F_STATUS;
+      return ThreeFoldStatus.F_STATUS;
     } else if (screenBp.widthBp === SizeBp.MD && screenBp.heightBp === SizeBp.MD) {
-      return UltraScreenStatus.M_STATUS;
+      return ThreeFoldStatus.M_STATUS;
     } else {
-      return UltraScreenStatus.G_STATUS;
+      return ThreeFoldStatus.G_STATUS;
     }
   }
 }

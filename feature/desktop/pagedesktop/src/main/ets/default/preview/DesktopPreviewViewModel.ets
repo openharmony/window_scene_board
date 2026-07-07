@@ -20,6 +20,7 @@ import {
   DesktopParam,
   FormCommonUtil,
   FormLocation,
+  FormRelationManager,
   GridLayoutItemInfo,
   GridLayoutUtil,
   launcherAbilityManager,
@@ -295,7 +296,7 @@ export class DesktopPreviewViewModel {
   }
 
   private async showTopName(stackData: StackData | FormItemData, item: GridLayoutItemInfo): Promise<void> {
-    if (!item.appLabelId) {
+    if (!PreviewUtils.isVoiceAbilityForm(item.bundleName, item.abilityName) && !item.appLabelId) {
       try {
         item.appLabelId = await launcherAbilityManager.getAppLabelId(item.bundleName);
       } catch (error) {
@@ -427,6 +428,10 @@ export class DesktopPreviewViewModel {
    * @returns true:需要 false:不需要
    */
   private cardNeedTextColor(mFormItem: GridLayoutItemInfo): boolean {
+    if (FormRelationManager.getInstance().isSceneBoardCard(mFormItem.bundleName, mFormItem.cardName)) {
+      Log.showInfo(TAG, `cardNeedTextColor cardId:${mFormItem.cardId}} is sceneBoard card `);
+      return false;
+    }
     let isWeatherCard = mFormItem.cardName === PreviewConstants.CLOCK_WEATHER_CARD_NAME &&
       mFormItem.bundleName === PreviewConstants.CLOCK_WEATHER_BUNDLE_NAME;
     if (!isWeatherCard) {

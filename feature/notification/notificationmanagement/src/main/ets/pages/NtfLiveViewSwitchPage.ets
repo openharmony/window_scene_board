@@ -31,7 +31,7 @@ import HeadComponent from '@ohos/managementcomponent/src/main/ets/com/ohos/view/
 import ConfigData from '../common/constants';
 import { AppItem } from '@ohos/managementcomponent/src/main/ets/com/ohos/vm/appLstComponentViewModel';
 import NtfSettingUtil from '@ohos/managementcomponent/src/main/ets/com/ohos/common/NtfSettingUtil';
-import { HdsNavDestination, HdsNavDestinationAttribute } from '@kit.UIDesignKit';
+// import { HdsNavDestination, HdsNavDestinationAttribute } from '@kit.UIDesignKit';
 import { SysUIHdsNavigations } from '../common/SysUIHdsNavigations';
 import { DeviceHelper } from '@ohos/managementcomponent';
 import LiveViewDistributeComponent from './LiveViewDistributeComponent';

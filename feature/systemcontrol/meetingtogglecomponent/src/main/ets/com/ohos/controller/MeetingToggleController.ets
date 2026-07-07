@@ -34,11 +34,22 @@ export class MeetingToggleController extends ToggleBaseViewModel {
 
   public startServiceFunc: (() => void) = () => {
     sEventManager.publish(obtainLocalEvent('hideControlPanel', ''));
+    try {
+      StartAbilityUtilAdapter.startServiceExtensionAbility({
+        bundleName: 'com.ohos.vassistant',
+        abilityName: 'VoicePcServiceExtAbility',
+        parameters: {
+          'launch_type': 'meeting_control'
+        }
+      });
+    } catch (error) {
+      log.showError(`startServiceExtensionAbility failed, message is ${error?.message}`);
+    }
   }
 
   constructor() {
     super();
-    this.getViewData().label = '';
+    this.getViewData().label = $r('app.string.control_center_complex_toggle_meeting_title');
     this.getViewData().icon = $r('app.media.ic_meeting');
   }
 

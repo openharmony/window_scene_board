@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-// import superPrivacyManager from '@hms.security.superPrivacyManager';
+// import superPrivacyManager from '@ohos.security.superPrivacyManager';
 import { SingletonHelper, LogDomain, Logger } from '@ohos/basicutils';
 import { BusinessError } from '@kit.BasicServicesKit';
 

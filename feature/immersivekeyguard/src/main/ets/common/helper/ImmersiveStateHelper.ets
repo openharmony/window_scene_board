@@ -46,6 +46,8 @@ class ImmersiveStateHelper {
   private slImmerseCapStaticState?: ISlState;
   // 一镜到底服务静态状态
   private slOneMirrorStaticState?: ISlState;
+  // 沉浸锁屏克隆应用角标组件状态
+  private slDeliverBadgeBindState?: ISlState;
 
   public getSlBindState(): ISlState | undefined {
     if (!this.slBindState) {
@@ -151,6 +153,13 @@ class ImmersiveStateHelper {
       this.slOneMirrorStaticState = slUiStateMgr.getSlState(SlMainStateType.SL_ONE_MIRROR_STATIC_STATE);
     }
     return this.slOneMirrorStaticState;
+  }
+
+  public getImmerseDeliverBadgeBindState(): ISlState | undefined {
+    if (!this.slDeliverBadgeBindState) {
+      this.slDeliverBadgeBindState = slUiStateMgr.getSlState(SlMainStateType.SL_DELIVER_BADGE_BIND_STATE);
+    }
+    return this.slDeliverBadgeBindState;
   }
 }
 

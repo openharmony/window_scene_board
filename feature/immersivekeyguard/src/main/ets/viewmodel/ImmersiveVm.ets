@@ -377,6 +377,11 @@ class ImmersiveVm {
   }
 
   handleImmersiveBackEvent(isSmallFoldOuterScreen: boolean = false): void {
+    const aodStyle = immersiveKgMgr.getOneMirrorState().getAodStyle(true);
+    if (aodStyle?.isOneMirrorToAod()) {
+      log.showInfo(`Do not handle back event, isOneMirror: ${aodStyle.isOneMirror}, isAod: ${aodStyle.isAod}`);
+      return;
+    }
     let immersiveState = immersiveKgMgr.getImmersiveDisplayState();
     let scene = ImmersiveTypeScene.SCENE_GESTURE_BACK;
     if (immersiveState.isList()) {

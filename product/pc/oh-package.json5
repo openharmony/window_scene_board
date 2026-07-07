@@ -55,6 +55,7 @@
     "@ohos/collaborationfwkdialog": "../../feature/collaborationfwkdialog",
     "@ohos/mediacontrolcomponent": "../../feature/systemcontrol/mediacontrolcomponent",
     "@ohos/systemuicommon": "../../staticcommon/systemuicommon",
+    "@ohos/aisuggestion": "../../feature/desktop/aisuggestion",
     "@ohos/liveview": "../../feature/liveview",
     "@ohos/statusbarextensionservice": "../../feature/statusbarextension",
     "@ohos/soundcomponent": "../../feature/systemcontrol/soundcomponent",

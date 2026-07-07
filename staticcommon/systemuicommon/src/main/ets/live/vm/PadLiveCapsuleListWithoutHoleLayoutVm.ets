@@ -112,7 +112,7 @@ export class PadLiveCapsuleListWithoutHoleLayoutVm extends LiveCapsuleListWithou
     return true;
   }
 
-  private updateShadowFixedOffset(): void {
+  protected updateShadowFixedOffset(): void {
     for (const liveCapsule of this.showCapsuleList[CapsuleType.PROGRESS]) {
       const capsuleVm = this.vmInjector.getCapsuleVm(liveCapsule);
       if (!capsuleVm.isShow) {

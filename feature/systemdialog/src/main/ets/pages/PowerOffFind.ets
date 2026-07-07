@@ -16,7 +16,7 @@
 import PowerOffStyleConstants from '../common/PoweroffStyleConstants';
 import { CustomContentDialog } from '@kit.ArkUI'
 import { poweroffController } from '../controller/PoweroffController';
-// import findNetwork from '@hms.core.findDevice.findNetwork';
+// import findNetwork from '@ohos.core.findDevice.findNetwork';
 import { LogDomain, Logger } from '@ohos/basicutils';
 
 const TAG = 'PowerOffFind';

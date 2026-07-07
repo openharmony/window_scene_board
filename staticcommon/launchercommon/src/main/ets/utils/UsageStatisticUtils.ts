@@ -18,6 +18,7 @@ import { SCBSceneInfo, SCBSceneSessionManager, SceneInfoAdapterUtil } from '@oho
 import { ObjectCopyUtil } from '@ohos/componenthelper';
 import { AppModel } from '../model/AppModel';
 import type { AppItemInfo } from '../bean/AppItemInfo';
+import { VassistantConstants } from '@ohos/commonconstants';
 
 const TAG = 'UsageStatisticUtils';
 const APP_MAX_AMOUNT: number = 20;
@@ -43,6 +44,10 @@ export class UsageStatisticUtils {
       let sceneInfo: SCBSceneInfo | undefined = sessionList[index].primarySession?.sceneInfo;
       if (!sceneInfo) {
         continue;
+      }
+      if (sceneInfo?.bundleName === VassistantConstants.VASSISTANT_BUNDLE_NAME) {
+        sceneInfo = SceneInfoAdapterUtil.getAdapterSceneInfo(sceneInfo.bundleName,
+          sceneInfo.moduleName, sceneInfo.abilityName, sceneInfo.appIndex);
       }
       let appInfo = ObjectCopyUtil.deepClone(AppModel.getInstance().getAppInfoByBundleName(
         sceneInfo.bundleName));

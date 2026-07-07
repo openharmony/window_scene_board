@@ -25,7 +25,7 @@ import ScreenLockFormViewModel from '@ohos/screenlockwidget/src/main/ets/form/vm
 
 // Layout margin in horizontal
 const NORMAL_GRID_MARGIN: number = 24;
-const ULTRA_SCREEN_M_GRID_MARGIN = 54;
+const THREE_FOLD_M_GRID_MARGIN = 54;
 const PAD_GRID_MARGIN: number = 99;
 const SMALL_FOLD_GRID_MARGIN: number = 20;
 
@@ -51,7 +51,7 @@ const GRID_AMOUNT_4: number = 4;
 export default function ClockLayoutHelperTest() {
   let mocker: MockKit = new MockKit();
   const isDevicePad: Function = mocker.mockFunc(DeviceHelper, DeviceHelper.isPad);
-  const IS_ULTRA_SCREEN: Function = mocker.mockFunc(DeviceHelper, DeviceHelper.isUltraScreenProduct);
+  const IS_THREE_FOLD: Function = mocker.mockFunc(DeviceHelper, DeviceHelper.isThreeFoldProduct);
   const IS_SMALL_FOLD: Function = mocker.mockFunc(DeviceHelper, DeviceHelper.isSmallFoldProduct);
   const IS_FOLD_DEVICE: Function = mocker.mockFunc(DeviceHelper, DeviceHelper.isFold);
   const isFoldButNot: Function = mocker.mockFunc(DeviceHelper, DeviceHelper.isFoldButNotSmallFoldProduct);
@@ -121,89 +121,89 @@ export default function ClockLayoutHelperTest() {
     it('test_isFullDisplayMode_01', 0, (): void => {
       when(isFoldButNot)().afterReturn(mockResultTrue);
 
-      when(IS_ULTRA_SCREEN)().afterReturn(mockResultTrue);
+      when(IS_THREE_FOLD)().afterReturn(mockResultTrue);
       let res = clockLayoutHelper.isFullDisplayMode();
       expect(res).assertFalse();
       mocker.ignoreMock(DeviceHelper,  DeviceHelper.isFoldButNotSmallFoldProduct);
 
-      mocker.ignoreMock(DeviceHelper,  DeviceHelper.isUltraScreenProduct);
+      mocker.ignoreMock(DeviceHelper,  DeviceHelper.isThreeFoldProduct);
     });
 
     it('test_isFullDisplayMode_02', 0, (): void => {
       when(isFoldButNot)().afterReturn(mockResultTrue);
 
-      when(IS_ULTRA_SCREEN)().afterReturn(mockResultFalse);
+      when(IS_THREE_FOLD)().afterReturn(mockResultFalse);
       let res = clockLayoutHelper.isFullDisplayMode();
       expect(res).assertFalse();
       mocker.ignoreMock(DeviceHelper,  DeviceHelper.isFoldButNotSmallFoldProduct);
 
-      mocker.ignoreMock(DeviceHelper,  DeviceHelper.isUltraScreenProduct);
+      mocker.ignoreMock(DeviceHelper,  DeviceHelper.isThreeFoldProduct);
     });
 
     it('test_isFullDisplayMode_03', 0, (): void => {
       when(isFoldButNot)().afterReturn(mockResultTrue);
       when(IS_SINGLE_DISPLAY_POCKET_FOLD)().afterReturn(mockResultFalse);
-      when(IS_ULTRA_SCREEN)().afterReturn(mockResultTrue);
+      when(IS_THREE_FOLD)().afterReturn(mockResultTrue);
       let res = clockLayoutHelper.isFullDisplayMode();
       expect(res).assertFalse();
       mocker.ignoreMock(DeviceHelper,  DeviceHelper.isFoldButNotSmallFoldProduct);
 
-      mocker.ignoreMock(DeviceHelper,  DeviceHelper.isUltraScreenProduct);
+      mocker.ignoreMock(DeviceHelper,  DeviceHelper.isThreeFoldProduct);
     });
 
     it('test_isFullDisplayMode_04', 0, (): void => {
       when(isFoldButNot)().afterReturn(mockResultTrue);
       when(IS_SINGLE_DISPLAY_POCKET_FOLD)().afterReturn(mockResultFalse);
-      when(IS_ULTRA_SCREEN)().afterReturn(mockResultFalse);
+      when(IS_THREE_FOLD)().afterReturn(mockResultFalse);
       let res = clockLayoutHelper.isFullDisplayMode();
       expect(res).not().assertNull();
       mocker.ignoreMock(DeviceHelper,  DeviceHelper.isFoldButNotSmallFoldProduct);
 
-      mocker.ignoreMock(DeviceHelper,  DeviceHelper.isUltraScreenProduct);
+      mocker.ignoreMock(DeviceHelper,  DeviceHelper.isThreeFoldProduct);
     });
 
     it('test_isFullDisplayMode_05', 0, (): void => {
       when(isFoldButNot)().afterReturn(mockResultFalse);
 
-      when(IS_ULTRA_SCREEN)().afterReturn(mockResultTrue);
+      when(IS_THREE_FOLD)().afterReturn(mockResultTrue);
       let res = clockLayoutHelper.isFullDisplayMode();
       expect(res).assertFalse();
       mocker.ignoreMock(DeviceHelper,  DeviceHelper.isFoldButNotSmallFoldProduct);
 
-      mocker.ignoreMock(DeviceHelper,  DeviceHelper.isUltraScreenProduct);
+      mocker.ignoreMock(DeviceHelper,  DeviceHelper.isThreeFoldProduct);
     });
 
     it('test_isFullDisplayMode_06', 0, (): void => {
       when(isFoldButNot)().afterReturn(mockResultFalse);
 
-      when(IS_ULTRA_SCREEN)().afterReturn(mockResultFalse);
+      when(IS_THREE_FOLD)().afterReturn(mockResultFalse);
       let res = clockLayoutHelper.isFullDisplayMode();
       expect(res).assertFalse();
       mocker.ignoreMock(DeviceHelper,  DeviceHelper.isFoldButNotSmallFoldProduct);
 
-      mocker.ignoreMock(DeviceHelper,  DeviceHelper.isUltraScreenProduct);
+      mocker.ignoreMock(DeviceHelper,  DeviceHelper.isThreeFoldProduct);
     });
 
     it('test_isFullDisplayMode_07', 0, (): void => {
       when(isFoldButNot)().afterReturn(mockResultFalse);
       when(IS_SINGLE_DISPLAY_POCKET_FOLD)().afterReturn(mockResultFalse);
-      when(IS_ULTRA_SCREEN)().afterReturn(mockResultTrue);
+      when(IS_THREE_FOLD)().afterReturn(mockResultTrue);
       let res = clockLayoutHelper.isFullDisplayMode();
       expect(res).assertFalse();
       mocker.ignoreMock(DeviceHelper,  DeviceHelper.isFoldButNotSmallFoldProduct);
 
-      mocker.ignoreMock(DeviceHelper,  DeviceHelper.isUltraScreenProduct);
+      mocker.ignoreMock(DeviceHelper,  DeviceHelper.isThreeFoldProduct);
     });
 
     it('test_isFullDisplayMode_08', 0, (): void => {
       when(isFoldButNot)().afterReturn(mockResultFalse);
       when(IS_SINGLE_DISPLAY_POCKET_FOLD)().afterReturn(mockResultFalse);
-      when(IS_ULTRA_SCREEN)().afterReturn(mockResultFalse);
+      when(IS_THREE_FOLD)().afterReturn(mockResultFalse);
       let res = clockLayoutHelper.isFullDisplayMode();
       expect(res).assertFalse();
       mocker.ignoreMock(DeviceHelper,  DeviceHelper.isFoldButNotSmallFoldProduct);
 
-      mocker.ignoreMock(DeviceHelper,  DeviceHelper.isUltraScreenProduct);
+      mocker.ignoreMock(DeviceHelper,  DeviceHelper.isThreeFoldProduct);
     });
 
     it('test_getHorizontalGridMargin_01', 0, (): void => {
@@ -224,10 +224,10 @@ export default function ClockLayoutHelperTest() {
     });
 
     it('test_getHorizontalGridMargin_04', 0, (): void => {
-      when(IS_ULTRA_SCREEN)().afterReturn(mockResultTrue);
+      when(IS_THREE_FOLD)().afterReturn(mockResultTrue);
       const result: number = clockLayoutHelper.getHorizontalGridMargin(true);
       expect(result).not().assertNull();
-      mocker.ignoreMock(DeviceHelper,  DeviceHelper.isUltraScreenProduct);
+      mocker.ignoreMock(DeviceHelper,  DeviceHelper.isThreeFoldProduct);
     });
 
     it('test_getHorizontalGridMargin_05', 0, (): void => {
@@ -243,10 +243,10 @@ export default function ClockLayoutHelperTest() {
     });
 
     it('test_getHorizontalGridMargin_07', 0, (): void => {
-      when(IS_ULTRA_SCREEN)().afterReturn(mockResultTrue);
+      when(IS_THREE_FOLD)().afterReturn(mockResultTrue);
       const result: number = clockLayoutHelper.getHorizontalGridMargin(false);
       expect(result).not().assertNull();
-      mocker.ignoreMock(DeviceHelper,  DeviceHelper.isUltraScreenProduct);
+      mocker.ignoreMock(DeviceHelper,  DeviceHelper.isThreeFoldProduct);
     });
 
     it('test_getHorizontalGridMargin_08', 0, (): void => {
@@ -371,92 +371,92 @@ export default function ClockLayoutHelperTest() {
 
     it('test_isUseLargeLayoutAmount_02', 0, (): void => {
       when(isDevicePad)().afterReturn(mockResultFalse);
-      when(IS_ULTRA_SCREEN)().afterReturn(mockResultTrue);
+      when(IS_THREE_FOLD)().afterReturn(mockResultTrue);
       const result: boolean = (clockLayoutHelper as object)['isUseLargeLayoutAmount']();
       expect(result).assertFalse();
       mocker.ignoreMock(DeviceHelper,  DeviceHelper.isPad);
-      mocker.ignoreMock(DeviceHelper,  DeviceHelper.isUltraScreenProduct);
+      mocker.ignoreMock(DeviceHelper,  DeviceHelper.isThreeFoldProduct);
     });
 
     it('test_isUseLargeLayoutAmount_03', 0, (): void => {
       when(isDevicePad)().afterReturn(mockResultFalse);
-      when(IS_ULTRA_SCREEN)().afterReturn(mockResultFalse);
+      when(IS_THREE_FOLD)().afterReturn(mockResultFalse);
       const result: boolean = (clockLayoutHelper as object)['isUseLargeLayoutAmount']();
       expect(result).assertFalse();
       mocker.ignoreMock(DeviceHelper,  DeviceHelper.isPad);
-      mocker.ignoreMock(DeviceHelper,  DeviceHelper.isUltraScreenProduct);
+      mocker.ignoreMock(DeviceHelper,  DeviceHelper.isThreeFoldProduct);
     });
 
     it('test_isUseMediumLayoutAmount_01', 0, (): void => {
       when(IS_SMALL_FOLD)().afterReturn(mockResultTrue);
-      when(IS_ULTRA_SCREEN)().afterReturn(mockResultTrue);
+      when(IS_THREE_FOLD)().afterReturn(mockResultTrue);
       const result: boolean = (clockLayoutHelper as object)['isUseLargeLayoutAmount'](true);
       expect(result).assertFalse();
       mocker.ignoreMock(DeviceHelper,  DeviceHelper.isSmallFoldProduct);
-      mocker.ignoreMock(DeviceHelper,  DeviceHelper.isUltraScreenProduct);
+      mocker.ignoreMock(DeviceHelper,  DeviceHelper.isThreeFoldProduct);
     });
 
     it('test_isUseMediumLayoutAmount_02', 0, (): void => {
       when(IS_SMALL_FOLD)().afterReturn(mockResultTrue);
-      when(IS_ULTRA_SCREEN)().afterReturn(mockResultFalse);
+      when(IS_THREE_FOLD)().afterReturn(mockResultFalse);
       const result: boolean = (clockLayoutHelper as object)['isUseLargeLayoutAmount'](true);
       expect(result).assertFalse();
       mocker.ignoreMock(DeviceHelper,  DeviceHelper.isSmallFoldProduct);
-      mocker.ignoreMock(DeviceHelper,  DeviceHelper.isUltraScreenProduct);
+      mocker.ignoreMock(DeviceHelper,  DeviceHelper.isThreeFoldProduct);
     });
 
     it('test_isUseMediumLayoutAmount_03', 0, (): void => {
       when(IS_SMALL_FOLD)().afterReturn(mockResultFalse);
-      when(IS_ULTRA_SCREEN)().afterReturn(mockResultTrue);
+      when(IS_THREE_FOLD)().afterReturn(mockResultTrue);
       const result: boolean = (clockLayoutHelper as object)['isUseLargeLayoutAmount'](true);
       expect(result).assertFalse();
       mocker.ignoreMock(DeviceHelper,  DeviceHelper.isSmallFoldProduct);
-      mocker.ignoreMock(DeviceHelper,  DeviceHelper.isUltraScreenProduct);
+      mocker.ignoreMock(DeviceHelper,  DeviceHelper.isThreeFoldProduct);
     });
 
     it('test_isUseMediumLayoutAmount_04', 0, (): void => {
       when(IS_SMALL_FOLD)().afterReturn(mockResultFalse);
-      when(IS_ULTRA_SCREEN)().afterReturn(mockResultFalse);
+      when(IS_THREE_FOLD)().afterReturn(mockResultFalse);
       const result: boolean = (clockLayoutHelper as object)['isUseLargeLayoutAmount'](true);
       expect(result).assertFalse();
       mocker.ignoreMock(DeviceHelper,  DeviceHelper.isSmallFoldProduct);
-      mocker.ignoreMock(DeviceHelper,  DeviceHelper.isUltraScreenProduct);
+      mocker.ignoreMock(DeviceHelper,  DeviceHelper.isThreeFoldProduct);
     });
 
     it('test_isUseMediumLayoutAmount_05', 0, (): void => {
       when(IS_SMALL_FOLD)().afterReturn(mockResultTrue);
-      when(IS_ULTRA_SCREEN)().afterReturn(mockResultTrue);
+      when(IS_THREE_FOLD)().afterReturn(mockResultTrue);
       const result: boolean = (clockLayoutHelper as object)['isUseLargeLayoutAmount'](false);
       expect(result).assertFalse();
       mocker.ignoreMock(DeviceHelper,  DeviceHelper.isSmallFoldProduct);
-      mocker.ignoreMock(DeviceHelper,  DeviceHelper.isUltraScreenProduct);
+      mocker.ignoreMock(DeviceHelper,  DeviceHelper.isThreeFoldProduct);
     });
 
     it('test_isUseMediumLayoutAmount_06', 0, (): void => {
       when(IS_SMALL_FOLD)().afterReturn(mockResultTrue);
-      when(IS_ULTRA_SCREEN)().afterReturn(mockResultFalse);
+      when(IS_THREE_FOLD)().afterReturn(mockResultFalse);
       const result: boolean = (clockLayoutHelper as object)['isUseLargeLayoutAmount'](false);
       expect(result).assertFalse();
       mocker.ignoreMock(DeviceHelper,  DeviceHelper.isSmallFoldProduct);
-      mocker.ignoreMock(DeviceHelper,  DeviceHelper.isUltraScreenProduct);
+      mocker.ignoreMock(DeviceHelper,  DeviceHelper.isThreeFoldProduct);
     });
 
     it('test_isUseMediumLayoutAmount_07', 0, (): void => {
       when(IS_SMALL_FOLD)().afterReturn(mockResultFalse);
-      when(IS_ULTRA_SCREEN)().afterReturn(mockResultTrue);
+      when(IS_THREE_FOLD)().afterReturn(mockResultTrue);
       const result: boolean = (clockLayoutHelper as object)['isUseLargeLayoutAmount'](false);
       expect(result).assertFalse();
       mocker.ignoreMock(DeviceHelper,  DeviceHelper.isSmallFoldProduct);
-      mocker.ignoreMock(DeviceHelper,  DeviceHelper.isUltraScreenProduct);
+      mocker.ignoreMock(DeviceHelper,  DeviceHelper.isThreeFoldProduct);
     });
 
     it('test_isUseMediumLayoutAmount_08', 0, (): void => {
       when(IS_SMALL_FOLD)().afterReturn(mockResultFalse);
-      when(IS_ULTRA_SCREEN)().afterReturn(mockResultFalse);
+      when(IS_THREE_FOLD)().afterReturn(mockResultFalse);
       const result: boolean = (clockLayoutHelper as object)['isUseLargeLayoutAmount'](false);
       expect(result).assertFalse();
       mocker.ignoreMock(DeviceHelper,  DeviceHelper.isSmallFoldProduct);
-      mocker.ignoreMock(DeviceHelper,  DeviceHelper.isUltraScreenProduct);
+      mocker.ignoreMock(DeviceHelper,  DeviceHelper.isThreeFoldProduct);
     });
 
     it('test_getLayoutAmount_01', 0, (): void => {
@@ -657,25 +657,25 @@ export default function ClockLayoutHelperTest() {
 
     });
 
-    it('test_getLayoutGridWidthUltraScreen_01', 0, (): void => {
+    it('test_getLayoutGridWidthThreeFold_01', 0, (): void => {
       let gridAmount: GridAmount = { x: 0, y: 100 }
-      const result: boolean = (clockLayoutHelper as object)['getLayoutGridWidthUltraScreen'](gridAmount, 300, 200, false);
+      const result: boolean = (clockLayoutHelper as object)['getLayoutGridWidthThreeFold'](gridAmount, 300, 200, false);
       expect(result).assertEqual(FOLD_GRID_WIDTH);
     });
 
-    it('test_getLayoutGridWidthUltraScreen_02', 0, (): void => {
+    it('test_getLayoutGridWidthThreeFold_02', 0, (): void => {
       let gridAmount: GridAmount = { x: 110, y: 0 }
-      const result: boolean = (clockLayoutHelper as object)['getLayoutGridWidthUltraScreen'](gridAmount, 300, 200, true);
+      const result: boolean = (clockLayoutHelper as object)['getLayoutGridWidthThreeFold'](gridAmount, 300, 200, true);
       expect(result).assertEqual(FOLD_GRID_WIDTH);
     });
 
-    it('test_getLayoutGridWidthUltraScreen_03', 0, (): void => {
-      const result: boolean = (clockLayoutHelper as object)['getLayoutGridWidthUltraScreen'](layoutGridAmount, 300, 200, false);
+    it('test_getLayoutGridWidthThreeFold_03', 0, (): void => {
+      const result: boolean = (clockLayoutHelper as object)['getLayoutGridWidthThreeFold'](layoutGridAmount, 300, 200, false);
       expect(result).not().assertNull();
     });
 
-    it('test_getLayoutGridWidthUltraScreen_03', 0, (): void => {
-      const result: boolean = (clockLayoutHelper as object)['getLayoutGridWidthUltraScreen'](layoutGridAmount, 300, 200, true);
+    it('test_getLayoutGridWidthThreeFold_03', 0, (): void => {
+      const result: boolean = (clockLayoutHelper as object)['getLayoutGridWidthThreeFold'](layoutGridAmount, 300, 200, true);
       expect(result).not().assertNull();
     });
 
@@ -685,59 +685,59 @@ export default function ClockLayoutHelperTest() {
     });
 
     it('test_isFoldFixedGrid_01', 0, (): void => {
-      when(IS_ULTRA_SCREEN)().afterReturn(mockResultTrue);
+      when(IS_THREE_FOLD)().afterReturn(mockResultTrue);
       const result: boolean = (clockLayoutHelper as object)['isFoldFixedGrid'](true, true);
       expect(result).assertTrue();
-      mocker.ignoreMock(DeviceHelper,  DeviceHelper.isUltraScreenProduct);
+      mocker.ignoreMock(DeviceHelper,  DeviceHelper.isThreeFoldProduct);
     });
 
     it('test_isFoldFixedGrid_02', 0, (): void => {
-      when(IS_ULTRA_SCREEN)().afterReturn(mockResultTrue);
+      when(IS_THREE_FOLD)().afterReturn(mockResultTrue);
       const result: boolean = (clockLayoutHelper as object)['isFoldFixedGrid'](true, false);
       expect(result).assertTrue();
-      mocker.ignoreMock(DeviceHelper,  DeviceHelper.isUltraScreenProduct);
+      mocker.ignoreMock(DeviceHelper,  DeviceHelper.isThreeFoldProduct);
     });
 
     it('test_isFoldFixedGrid_03', 0, (): void => {
-      when(IS_ULTRA_SCREEN)().afterReturn(mockResultTrue);
+      when(IS_THREE_FOLD)().afterReturn(mockResultTrue);
       const result: boolean = (clockLayoutHelper as object)['isFoldFixedGrid'](false, true);
       expect(result).assertFalse();
-      mocker.ignoreMock(DeviceHelper,  DeviceHelper.isUltraScreenProduct);
+      mocker.ignoreMock(DeviceHelper,  DeviceHelper.isThreeFoldProduct);
     });
 
     it('test_isFoldFixedGrid_04', 0, (): void => {
-      when(IS_ULTRA_SCREEN)().afterReturn(mockResultTrue);
+      when(IS_THREE_FOLD)().afterReturn(mockResultTrue);
       const result: boolean = (clockLayoutHelper as object)['isFoldFixedGrid'](false, false);
       expect(result).assertFalse();
-      mocker.ignoreMock(DeviceHelper,  DeviceHelper.isUltraScreenProduct);
+      mocker.ignoreMock(DeviceHelper,  DeviceHelper.isThreeFoldProduct);
     });
 
     it('test_isFoldFixedGrid_05', 0, (): void => {
-      when(IS_ULTRA_SCREEN)().afterReturn(mockResultFalse);
+      when(IS_THREE_FOLD)().afterReturn(mockResultFalse);
       const result: boolean = (clockLayoutHelper as object)['isFoldFixedGrid'](true, true);
       expect(result).assertTrue();
-      mocker.ignoreMock(DeviceHelper,  DeviceHelper.isUltraScreenProduct);
+      mocker.ignoreMock(DeviceHelper,  DeviceHelper.isThreeFoldProduct);
     });
 
     it('test_isFoldFixedGrid_06', 0, (): void => {
-      when(IS_ULTRA_SCREEN)().afterReturn(mockResultFalse);
+      when(IS_THREE_FOLD)().afterReturn(mockResultFalse);
       const result: boolean = (clockLayoutHelper as object)['isFoldFixedGrid'](true, false);
       expect(result).assertTrue();
-      mocker.ignoreMock(DeviceHelper,  DeviceHelper.isUltraScreenProduct);
+      mocker.ignoreMock(DeviceHelper,  DeviceHelper.isThreeFoldProduct);
     });
 
     it('test_isFoldFixedGrid_07', 0, (): void => {
-      when(IS_ULTRA_SCREEN)().afterReturn(mockResultFalse);
+      when(IS_THREE_FOLD)().afterReturn(mockResultFalse);
       const result: boolean = (clockLayoutHelper as object)['isFoldFixedGrid'](false, true);
       expect(result).assertFalse();
-      mocker.ignoreMock(DeviceHelper,  DeviceHelper.isUltraScreenProduct);
+      mocker.ignoreMock(DeviceHelper,  DeviceHelper.isThreeFoldProduct);
     });
 
     it('test_isFoldFixedGrid_08', 0, (): void => {
-      when(IS_ULTRA_SCREEN)().afterReturn(mockResultFalse);
+      when(IS_THREE_FOLD)().afterReturn(mockResultFalse);
       const result: boolean = (clockLayoutHelper as object)['isFoldFixedGrid'](false, false);
       expect(result).assertFalse();
-      mocker.ignoreMock(DeviceHelper,  DeviceHelper.isUltraScreenProduct);
+      mocker.ignoreMock(DeviceHelper,  DeviceHelper.isThreeFoldProduct);
     });
 
     it('test_getGridMarginBottom_01', 0, (): void => {

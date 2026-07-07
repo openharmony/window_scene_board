@@ -25,10 +25,16 @@ export class PreferenceStore {
   private context: common.Context | common.ApplicationContext;
   private storeName: string;
   private storePromise?: Promise<data_preferences.Preferences>;
+  private hiSearchStatus: boolean = true;
 
   constructor(context: common.Context | common.ApplicationContext, storeName = 'DesktopSetting') {
     this.context = context;
     this.storeName = storeName;
+    this.get('hiSearchStatus', true).then((res) => {
+      let tmpRes = res as boolean;
+      this.hiSearchStatus = tmpRes;
+      LOGGER.showWarn(`constructor created. hiSearchStatus: ${tmpRes}, preferencesDir: ${this.context.preferencesDir}`);
+    });
     this.subscribeChange('multiProcessChange', this.preferenceCallback);
   }
 
@@ -54,6 +60,11 @@ export class PreferenceStore {
     this.storePromise = undefined;
     await this.getStore();
     this.subscribeChange('multiProcessChange', this.preferenceCallback);
+  }
+
+  public getHiSearchStatus(): boolean {
+    LOGGER.showWarn(`get hiSearchStatus value is , ${this.hiSearchStatus}`);
+    return this.hiSearchStatus;
   }
 
   public async put(key: string, value: data_preferences.ValueType, isFlush: boolean = true): Promise<void> {
@@ -101,6 +112,8 @@ export class PreferenceStore {
   public preferenceCallback = async (key: string): Promise<void> => {
     try {
       await this.removeStoreCache();
+      this.hiSearchStatus = await this.get('hiSearchStatus', true) as boolean;
+      LOGGER.showWarn(`preferenceCallback, ${this.hiSearchStatus}`);
     } catch (err) {
       LOGGER.showError(`preference error:, ${(err as BusinessError).message}`);
     }

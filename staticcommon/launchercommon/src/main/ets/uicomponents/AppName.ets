@@ -26,7 +26,7 @@ import {
   TextColor,
   IconResourceManager
 } from '@ohos/frameworkwrapper';
-import { launcherStatusUtil } from '@ohos/windowscene';
+import { launcherStatusUtil, SCBSceneSessionManager } from '@ohos/windowscene';
 import { WallpaperConstants } from '@ohos/commonconstants';
 import { } from '@ohos/windowscene';
 import { PresetStyleConstants } from '../constants/PresetStyleConstants';
@@ -60,6 +60,7 @@ import {
 import { desktopFontScaleManager } from '../TsIndex';
 import { DesktopFontScaleState } from '../TsIndex';
 import { NoIconAppModel } from '../model/NoIconAppModel';
+import { DeliverUtil } from '@ohos/basicutils';
 import type ctx from '@ohos.app.ability.common';
 import { AppIconMenu } from '../launchericon/view/AppIconMenu';
 import { AppIconCommonEvent } from '../launchericon/viewmodel/AppIconCommonEvent';
@@ -67,6 +68,8 @@ import { AppIconMenuEvent } from '../launchericon/viewmodel/AppIconMenuEvent';
 import { AppInstallEventKey, AppInstallEventType } from '../appinstall/AppInstallEventKey';
 import { AppStatusNameMapping } from '../appinstall/AppStatusNameMapping';
 import { AppIconConfig } from '../launchericon/config/AppIconConfig';
+import { MenuInfo } from '../bean/MenuInfo';
+import { commonEventManager } from '@kit.BasicServicesKit';
 
 const TAG = "AppName";
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.ICON, TAG);
@@ -121,7 +124,8 @@ export struct AppName {
   @StorageProp('pageIndex') @Watch('updateShadowWhenTurnPage') swiperIndex: number = 0;
   @StorageProp('outerPageIndex') @Watch('updateShadowWhenTurnPage') outerSwiperIndex: number = 0;
   @StorageLink('folderStatus') @Watch('folderStatusChange') folderStatus: number = DeviceState.DEFAULT_STATE;
-  @StorageLink('foldStatusForOuterScreen') @Watch('folderStatusChange') foldStatusForOuterScreen: number = DeviceState.DEFAULT_STATE;
+  @StorageLink('foldStatusForOuterScreen') @Watch('folderStatusChange') foldStatusForOuterScreen: number =
+    DeviceState.DEFAULT_STATE;
   @State shadowOption: ShadowOptions = {
     radius: StyleConstants.APP_NAME_SHADOW_RADIUS,
     color: ColorUtil.convertRGBA2ResourceColor(0, 0, 0, 0),
@@ -153,7 +157,8 @@ export struct AppName {
   private itemStatus?: AppStatus = AppStatus.INSTALLED;
   private desktopContext?: ServiceExtensionContext = GlobalContext.getContext();
   @StorageLink('appListInfo') @Watch('updateShadowAfterAppListChange') appListInfo: AppListInfo = new AppListInfo();
-  @StorageLink('outAppListInfo') @Watch('updateShadowAfterAppListChange') outerAppListInfo: AppListInfo = new AppListInfo();
+  @StorageLink('outAppListInfo') @Watch('updateShadowAfterAppListChange') outerAppListInfo: AppListInfo =
+    new AppListInfo();
   private appNameObserver: inspector.ComponentObserver | null = null;
   private iconId: string = '';
   // 图标事件处理类
@@ -180,6 +185,7 @@ export struct AppName {
   appIconId: string = '';
   private isFolderAppName: boolean = false;
   private isHideLogName: boolean = false;
+  // @State showPopupHover: boolean = false;
   /**
    * 长辈模式字体
    */
@@ -187,7 +193,7 @@ export struct AppName {
   private marginValue: Margin = {
     top: this.marginTop
   };
-  private paddingValue : Padding = {
+  private paddingValue: Padding = {
     bottom: StyleConstants.DEFAULT_2,
     top: StyleConstants.DEFAULT_2,
     left: StyleConstants.DEFAULT_2,
@@ -219,11 +225,11 @@ export struct AppName {
     } else {
       // 兼容处理，目前只有手机适配了新的应用安装卸载，如果都适配了可以去掉
       let downloadStatusInfo: DownloadStatusInfo | undefined =
-      AppGalleryDownloadManager.getInstance().getDownDownloadTaskInfo(this.bundleName);
+        AppGalleryDownloadManager.getInstance().getDownDownloadTaskInfo(this.bundleName);
       if (downloadStatusInfo && !this.parentItem.appIndex) {
         this.itemStatus = downloadStatusInfo.status;
       }
-      if(this.itemStatus !== AppStatus.PENDING && this.itemStatus !== AppStatus.WAIT_FOR_HARMONY &&
+      if (this.itemStatus !== AppStatus.PENDING && this.itemStatus !== AppStatus.WAIT_FOR_HARMONY &&
         this.parentItem.typeId !== CommonConstants.TYPE_SHORTCUT_ICON) {
         this.appName = AppStatusNameMapping.getInstance().getDownloadEventNameByAppStatus(this.itemStatus);
       }
@@ -241,6 +247,46 @@ export struct AppName {
     this.desktopContext?.eventHub.on(EventConstants.EVENT_CHANGE_DESKTOP_MODE_NAME, this.onDesktopModeChangeEvent);
     if (DeviceHelper.isPC()) {
       this.desktopContext?.eventHub.on(CommonConstants.DESKTOP_ITEM_ENABLE_RENDER_GROUP, this.enableRenderGroupChange);
+    }
+    setTimeout(() => {
+      if (!this.appIconConfig?.externCb) {
+        log.showError('onMouse failed, appIconConfig.externCb is invalid');
+        return;
+      }
+      this.iconEvent.getIconMenuEvent()?.setMenuInfo?.(this.appIconConfig.externCb?.getMenuInfo,
+        this.appIconConfig.externCb.getNotInstalledMenuMap);
+    }, 0)
+
+    this.subscribeCrossProcessEvent('ts.event.theme.change')
+  }
+
+  //订阅消息
+  async subscribeCrossProcessEvent(eventName: string): Promise<void> {
+    try {
+      // 创建订阅者信息
+      const subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+        events: [eventName],
+        priority: 100,
+      };
+      // 创建订阅者
+      let subscriber = await commonEventManager.createSubscriber(subscribeInfo);
+      // 订阅事件
+      await new Promise<void>(async (resolve, reject) => {
+        commonEventManager.subscribe(subscriber, async (error, data) => {
+          if (error) {
+            log.error(`subscribe failed: ${JSON.stringify(error)}`);
+            reject(error);
+          } else {
+            log.info(`eventanme: ${eventName}`);
+            this.updateFontColor()
+            resolve();
+          }
+        });
+      });
+
+      log.info( `subscribe success: ${eventName}`);
+    } catch (error) {
+      log.error(`error: ${JSON.stringify(error)}`);
     }
   }
 
@@ -283,9 +329,23 @@ export struct AppName {
   }
 
   initDisposedRuleEvent(): void {
+    if (this.isPhone && DeliverUtil.isSupportDeliver()) {
+      let disposedRuleEventEventId: string = `disposedRuleEvent${this.bundleName}name`;
+      if (disposedRuleEventEventId) {
+        this.desktopContext?.eventHub.off(disposedRuleEventEventId, this.onDisposedRuleEvent);
+        this.desktopContext?.eventHub.on(disposedRuleEventEventId, this.onDisposedRuleEvent);
+        log.showInfo(`initDisposedRuleEvent for AppName ${disposedRuleEventEventId}`);
+      }
+    }
   }
 
   private offDisposedRuleEvent(): void {
+    if (this.isPhone && DeliverUtil.isSupportDeliver()) {
+      let disposedRuleEventEventId: string = `disposedRuleEvent${this.bundleName}name`;
+      if (disposedRuleEventEventId) {
+        this.desktopContext?.eventHub.off(disposedRuleEventEventId, this.onDisposedRuleEvent);
+      }
+    }
   }
 
   private onDisposedRuleEvent: Function = (params: number) => {
@@ -328,7 +388,7 @@ export struct AppName {
     }
     // 待整改，公共组件移除定制逻辑
     if (this.parentItem?.typeId === CommonConstants.TYPE_CARD &&
-      NoIconAppModel.getInstance().checkIfBundleIsNoIconApp(this.bundleName)) {
+    NoIconAppModel.getInstance().checkIfBundleIsNoIconApp(this.bundleName)) {
       this.getNoIconCardName();
       return;
     }
@@ -391,7 +451,8 @@ export struct AppName {
 
   private onTextShadowChangeEvent: Function = () => {
     if (this.getIndexInSwiper() === this.getSwiperIndex() ||
-      (this.folderStatus === DeviceState.EXPAND_STATE && this.getNeighborPage(this.getIndexInSwiper()) === this.swiperIndex)) {
+      (this.folderStatus === DeviceState.EXPAND_STATE &&
+        this.getNeighborPage(this.getIndexInSwiper()) === this.swiperIndex)) {
       this.isNeedUpdateShadow = true;
       this.updateShadowOption();
     }
@@ -474,19 +535,22 @@ export struct AppName {
     }
   }
 
-  public updateFontColor(): void {
-    if (!this.modifier.enableWallpaperFontColor) {
-      log.showInfo('updateFontColor return for not wallpaper font color.');
-      return;
-    }
-    let textColor: TextColor | undefined = WallpaperColorManager?.getInstance()?.mTextColor;
-    if (textColor === undefined || textColor.mTextColor === undefined) {
-      log.showError('textColor params error');
-      this.retryUpdateFontColor(MAX_RETRY_COUNT);
-      return;
-    }
-    log.showWarn(`updateFontColor:${textColor?.mTextColor}`);
-    this.nameFontColor = textColor.mTextColor;
+  public async updateFontColor(): Promise<void> {
+    //todo：目前壁纸不是按照原有逻辑实现，这一块需要改动
+    //获取锁屏壁纸的亮度等级
+    this.nameFontColor = await SCBSceneSessionManager.getInstance().updateLockViewColor(false)
+    // if (!this.modifier.enableWallpaperFontColor) {
+    //   log.showInfo('updateFontColor return for not wallpaper font color.');
+    //   return;
+    // }
+    // let textColor: TextColor | undefined = WallpaperColorManager?.getInstance()?.mTextColor;
+    // if (textColor === undefined || textColor.mTextColor === undefined) {
+    //   log.showError('textColor params error');
+    //   this.retryUpdateFontColor(MAX_RETRY_COUNT);
+    //   return;
+    // }
+    // log.showWarn(`updateFontColor:${textColor?.mTextColor}`);
+    // this.nameFontColor = textColor.mTextColor;
   }
 
   private retryUpdateFontColor(retryCount: number): void {
@@ -522,7 +586,8 @@ export struct AppName {
 
   private updateShadowAfterAppListChange(): void {
     if (this.getIndexInSwiper() === this.getSwiperIndex() && this.isPhone ||
-      (this.folderStatus === DeviceState.EXPAND_STATE && this.getNeighborPage(this.getIndexInSwiper()) === this.swiperIndex)) {
+      (this.folderStatus === DeviceState.EXPAND_STATE &&
+        this.getNeighborPage(this.getIndexInSwiper()) === this.swiperIndex)) {
       this.isNeedUpdateShadow = true;
       this.updateShadowOption();
     }
@@ -562,16 +627,17 @@ export struct AppName {
       .renderGroup(this.enableRenderGroup)
       .border({
         width: StyleConstants.DEFAULT_1,
-        color: this.isSelect ? $r('sys.color.ohos_id_color_switch_bg_off') : StyleConstants.DEFAULT_DESKTOP_BACKGROUND_COLOR,
+        color: this.isSelect ? $r('sys.color.ohos_id_color_switch_bg_off') :
+          StyleConstants.DEFAULT_DESKTOP_BACKGROUND_COLOR,
         radius: $r('sys.float.ohos_id_corner_radius_default_xs')
       })
       .backgroundColor(this.getNameBackgroundColor())
       .margin(this.marginValue)
       .bindContextMenu(this.appIconConfig.enableRightMenuFromName ? this.rightClickMenuBuilder : (): void => {},
         ResponseType.RightClick, this.getContextMenu())
-      .onMouse((event: MouseEvent) => {
-        this.handleMouseEvent(event);
-      })
+      // .onMouse((event: MouseEvent) => {
+      //   this.handleMouseEvent(event);
+      // })
       .attributeModifier(this.modifier)
       .dragPreview(this.iconId)
       .dragStyles()
@@ -579,11 +645,18 @@ export struct AppName {
       .onAreaChange((o, n) => {
         this.desktopMaxNameLines = this.getMaxNameLines();
       })
+    // .onHover((hover: boolean) => {
+    //   this.showPopupHover = hover
+    // })
+    // .bindPopup(this.showPopupHover,
+    //   { message: this.appName, mask: false })
   }
 
   @Styles
   dragStyles() {
-    .onDragStart((event: DragEvent) => { return this.iconEvent.getIconDragEventIface()?.onDragStart(event); })
+    .onDragStart((event: DragEvent) => {
+      return this.iconEvent.getIconDragEventIface()?.onDragStart(event);
+    })
     .onDragEnd((event: DragEvent) => this.iconEvent.getIconDragEventIface()?.onDragEnd(event))
     .onGestureJudgeBegin((gestureInfo: GestureInfo, event: BaseGestureEvent) => {
       return this.iconEvent.getIconGestureJudgeIface()?.onGestureJudgeBegin(gestureInfo, event);
@@ -603,7 +676,7 @@ export struct AppName {
       return;
     }
     if (event.button === MouseButton.Right && event.action === MouseAction.Press) {
-      this.iconEvent.getIconMenuEvent().setMenuInfo(this.appIconConfig.externCb.getMenuInfo,
+      this.iconEvent.getIconMenuEvent()?.setMenuInfo?.(this.appIconConfig.externCb?.getMenuInfo,
         this.appIconConfig.externCb.getNotInstalledMenuMap);
     }
   }
@@ -618,7 +691,7 @@ export struct AppName {
       iconSize: this.parentItem.appIconId,
       iconRadius: this.iconRadius,
       dragStart: this.appIconConfig.externCb?.onMenuDragStart,
-      appItem: this.parentItem as AppItemInfo,
+      appItem: this.parentItem as AppItemInfo
     })
   }
 
@@ -648,10 +721,10 @@ export struct AppName {
         })
         .shadow((this.isPhone && this.isNewStyle && this.desktopTextShadow &&
           !this.isInEditMode && !this.isFolderAppName && this.appIconConfig.enableNameShadow) ?
-        this.shadowOption : null)
+          this.shadowOption : null)
         .zIndex(this.zValue)
         .visibility(!this.showNameState.isShowName() || this.isOuterDesktop ?
-        Visibility.Hidden : Visibility.Visible)
+          Visibility.Hidden : Visibility.Visible)
         .alignRules(this.alignOption)
         .renderGroup(((this.isPhone && !this.isFolderAppName) || this.appIconConfig.isAppCenterItem))
         .opacity(this.mOpacity)
@@ -660,9 +733,9 @@ export struct AppName {
         .translate(this.mTranslate)
         .bindContextMenu(this.appIconConfig.enableRightMenuFromName ? this.rightClickMenuBuilder : (): void => {},
           ResponseType.RightClick, this.getContextMenu())
-        .onMouse((event: MouseEvent) => {
-          this.handleMouseEvent(event);
-        })
+        // .onMouse((event: MouseEvent) => {
+        //   this.handleMouseEvent(event);
+        // })
         .bindPopup(this.isAppNameHover, {
           message: this.appName,
           placement: this.popupPlacement,
@@ -699,7 +772,8 @@ export struct AppName {
     } else {
       const nameFontColorUpper = this.nameFontColor ? this.nameFontColor.toString().toUpperCase() : '';
       // return shadow only when this.nameFontColor is white
-      if (nameFontColorUpper === StyleConstants.APP_NAME_WHITE_COLOR || nameFontColorUpper === StyleConstants.APP_NAME_WHITE_COLOR_ALPHA) {
+      if (nameFontColorUpper === StyleConstants.APP_NAME_WHITE_COLOR ||
+        nameFontColorUpper === StyleConstants.APP_NAME_WHITE_COLOR_ALPHA) {
         if (this.isSingleShadow) {
           return {
             radius: StyleConstants.APP_CENTER_NAME_SHADOW_RADIUS,
@@ -798,7 +872,8 @@ export struct AppName {
       return false;
     }
     if (this.getIndexInSwiper() !== this.getSwiperIndex() &&
-      !(this.folderStatus === DeviceState.EXPAND_STATE && this.getNeighborPage(this.getIndexInSwiper()) === this.swiperIndex)) {
+      !(this.folderStatus === DeviceState.EXPAND_STATE &&
+        this.getNeighborPage(this.getIndexInSwiper()) === this.swiperIndex)) {
       log.showDebug('isNeedShadow, The shadow of appName does not need to be updated. getIndexInSwiper():%{public}d swiperIndex:%{public}d',
         this.getIndexInSwiper(), this.getSwiperIndex());
       return false;

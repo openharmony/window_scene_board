@@ -441,6 +441,10 @@
             "value":"[TS_992758]_Entered editing mode"
         },
         {
+            "name":"ic_tools_vassistant_accessible",
+            "value":"[TS_931152]_Scan"
+        },
+        {
             "name":"ic_tools_calculator_accessible",
             "value":"[TS_931150]_Calculator"
         },

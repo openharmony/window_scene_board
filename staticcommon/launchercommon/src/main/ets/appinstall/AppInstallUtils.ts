@@ -23,6 +23,7 @@ import fs from '@ohos.file.fs';
 import {
   AppItemInfo,
   AppModel,
+  AppReserveType,
   AppStatus,
   GridLayoutItemInfo,
   launcherAbilityManager,
@@ -32,6 +33,7 @@ import {
   DockItemInfo,
   GridLayoutUtil,
   CommonConstants,
+  DeliverUtil,
   ResidentLayoutCacheMgr
 } from '../TsIndex';
 import taskPool from '@ohos.taskpool';
@@ -315,9 +317,9 @@ export class AppInstallUtils {
   }
 
   /**
-   * 未OpenHarmony化包名转普通包名
+   * 未鸿蒙化包名转普通包名
    *
-   * @param waitForBundleName 未OpenHarmony化包名
+   * @param waitForBundleName 未鸿蒙化包名
    * @returns string 普通包名
    */
   public getNormalBundleName(waitForBundleName: string): string {
@@ -507,6 +509,21 @@ export class AppInstallUtils {
       // 分身:不要菜单，不计数
       return false;
     }
+    if (CommonUtils.jsonStrToMap(item.intent).get('appType') === AppReserveType.ENTERPRISE) {
+      // 企业应用:不弹优先下载；从AG开始下载后可以弹优先下载
+      let appList: GridLayoutItemInfo[] =
+        this.mLauncherLayoutCacheManager.getAllSameBundleNameAppItem(item.bundleName);
+      let status: number | undefined = appList[0]?.appStatus ?? item.appStatus;
+      return status !== AppStatus.PENDING;
+    }
+    if (CommonUtils.jsonStrToMap(item.intent).get('appType') === AppReserveType.TASTE_FRESH) {
+      // 尝鲜应用占位状态:不弹优先下载；从AG开始下载后可以弹优先下载
+      return false;
+    }
+    if (DeliverUtil.isContainerItem(item.intent ?? '')) {
+      // 应用:不要菜单，不计数
+      return false;
+    }
     return true;
   }
 
@@ -560,7 +577,7 @@ export class AppInstallUtils {
   }
 
   /**
-   * 查询并点亮未OpenHarmony化可出入湖应用
+   * 查询并点亮未鸿蒙化可出应用
    *
    * @param gridLayoutItemInfoList 未安装应用信息info
    */

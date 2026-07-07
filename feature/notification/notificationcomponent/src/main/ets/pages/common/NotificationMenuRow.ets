@@ -21,7 +21,12 @@ import { ItemUtils, RTLUtil } from '@ohos/componenthelper';
 import { HiDfxEventUtil, DeviceHelper } from '@ohos/frameworkwrapper';
 import { ResUtils, SCBSystemSceneSession, SCBSceneSessionManager } from '@ohos/windowscene';
 import { NotificationType } from '../../common/NotificationType';
-import { NotificationSysEventReporter, DefaultPanelZIndex } from '@ohos/systemuicommon';
+import {
+  immersiveKgMgr,
+  ImmersiveAodStyle,
+  NotificationSysEventReporter,
+  DefaultPanelZIndex
+} from '@ohos/systemuicommon';
 import { DropDownPanelManager } from '@ohos/systemuicommon/Index';
 import { BlurButtonVM, blurButtonVM } from '../../vm/BlurButtonVM';
 import { ScreenLockBlurButtonVM, screenLockBlurButtonVM } from '../../vm/ScreenLockBlurButtonVM';
@@ -197,6 +202,12 @@ export struct NotificationMenuRow {
    * 图标透明度动效
    */
   private menuAlphaAnim: AnimateParam | null = null;
+
+  /**
+   * AOD显示样式
+   */
+  @State aodStyle: ImmersiveAodStyle | undefined = immersiveKgMgr.getOneMirrorState().getAodStyle(
+    this.notificationType === NotificationType.TYPE_PHONE_KEYGUARD);
 
   /**
    * 无障碍模式下按钮播报文本
@@ -551,9 +562,10 @@ export struct NotificationMenuRow {
         // 按钮显示时设置点击事件
         .onClick(() => this.onClickMenuItem(menuItem))
         .accessibilityRole(AccessibilityRoleType.BUTTON)
-        // 不播报按钮名称，也不播报新手提醒（单指双击等），Description使用' '而不是''是为了适配无障碍的属性读取拼接方式变更
-        .accessibilityText(this.getAccessibilitySettingText(menuItem.menuName))
-        .accessibilityDescription(this.menuAccessibilityDescription)
+        // 在Aod模式下不播报按钮名称，也不播报新手提醒（单指双击等），Description使用' '而不是''是为了适配无障碍的属性读取拼接方式变更
+        // 规则见https://wiki.openharmony.com/domains/59814/wiki/85780/WIKI202410244894413
+        .accessibilityText(this.aodStyle?.isAod ? '' : this.getAccessibilitySettingText(menuItem.menuName))
+        .accessibilityDescription(this.aodStyle?.isAod ? ' ' : this.menuAccessibilityDescription)
         .alignRules({
           center: { anchor: '__container__', align: VerticalAlign.Center },
           end: {

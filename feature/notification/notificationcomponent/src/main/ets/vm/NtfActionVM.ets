@@ -91,7 +91,8 @@ export class NtfActionVM {
       log.showInfo('Cannot start ntf action, invalid entry');
       return;
     }
-    log.showInfo('startNtfAction: ' + entry?.hashCode + ', ' + entry?.getGroupTypeKey());
+    log.showInfo('startNtfAction: ' + entry?.hashCode + ', ' + entry?.getGroupTypeKey() + `,isDeliverNotification is:` +
+      entry?.isDeliverNotification);
     // 非横幅状态则为通知中心按钮触发，此时需关闭旋转锁定，防止拉起的应用方向不对
     if (!isHeadsUp) {
       const screenSession = SCBScreenSessionManager.getInstance().getMainScreenSession();
@@ -103,6 +104,7 @@ export class NtfActionVM {
       } else {
         NotificationPanelManager.collapseNtfPanel(this.callback ? this.callback.getNtfType() : 0, true);
       }
+      ClickNotificationMaintenance.reportClick(ClickNotificationErrorCode.DELIVER_EXCLUDE);
       return;
     }
     this.checkAndStart(action, isAutoCancel, inputContent);
@@ -153,7 +155,8 @@ export class NtfActionVM {
     isAutoCancel: boolean,
     operType: number,
     targetWant?: Want) {
-    let isAbility: boolean = Boolean(operType !== wantAgentController.OperationType.SEND_COMMON_EVENT);
+    let isAbility: boolean = Boolean(operType !== wantAgentController.OperationType.SEND_COMMON_EVENT ||
+      entry?.isDeliverNotification);
     if (this.callback?.getNtfType() === NotificationType.TYPE_PHONE_DROPDOWN && entry && this.ntfItemVM) {
       if (!this.callback?.isHeadsUpNtf || !this.callback?.isHeadsUpNtf()) {
         const ntfCenterVm = NTF_LIST_VM_HOLDER.getNtfListVmInstance(NotificationType.TYPE_PHONE_DROPDOWN);
@@ -329,7 +332,7 @@ export class NtfActionVM {
   }
 
   /**
-   * 通知拉起应用前
+   * 通知拉起应用前需要检查当前是否为重载业务，如果是则不打开应用，并且提示用户
    * @returns true表示当前不打开应用
    */
   private isExcludeForStartApp(entry: NotificationEntry): boolean {

@@ -34,6 +34,7 @@ import {
   LayoutDescription
 } from '@ohos/launchercommon';
 import { launcherVisualEffectMgr } from '@ohos/launchercommon/Index';
+import { DeliverUtil } from '@ohos/launchercommon/src/main/ets/TsIndex';
 import { AppIconBadgeVm } from '@ohos/launchercommon/src/main/ets/launchericon/viewmodel/AppIconBadgeVm';
 import { MeasureText } from '@kit.ArkUI';
 import common from '@ohos.app.ability.common';
@@ -43,6 +44,7 @@ import { DesktopAddItemInfo, DesktopAddItemInfoType, SCBDesktopAddViewModel } fr
 import { DesktopAddBubbleNodeParams } from './DesktopAddBubbleNodeParams';
 import DesktopAddDialogConstant from './DesktopAddDialogConstant';
 import { PageDesktopViewModel } from '../../viewmodel/PageDesktopViewModel';
+import { LightOutdoorDesktopViewModel } from '../../viewmodel/LightOutdoorDesktopViewModel';
 import { launcherStatusUtil } from '@ohos/windowscene';
 
 const SCROLL_SPEED_SCALING = 0.7;
@@ -144,7 +146,7 @@ export default struct SCBDesktopAddDialog {
   }
 
   private async initAddBubbleSheet(): Promise<void> {
-    this.checkedAppList = await this.desktopAddViewModel.getContainsItemList();
+    this.checkedAppList = await this.desktopAddViewModel.getContainsItemList();//获取云端模式2下已有的应用
     this.allAppList = await this.desktopAddViewModel.getAllDesktopAddItemInfos(this.checkedAppList, true);//获取全量可安装应用
     this.desktopAddDataSource.refreshData(this.allAppList);
   }
@@ -198,6 +200,8 @@ export default struct SCBDesktopAddDialog {
       return 'DialogBubbleClock';
     } else if (item.itemInfo.appIndex !== 0) {
       return 'DialogBubbleIndex';
+    } else if (DeliverUtil.isdeliverApp(item.itemInfo.intent)) {
+      return 'DialogBubbledeliver';
     } else if (GridLayoutUtil.isShortcutToDesktopInApp(item.itemInfo)) {
       return 'DialogBubbleShortcutToDesktop';
     } else {
@@ -239,7 +243,7 @@ export default struct SCBDesktopAddDialog {
   //点击确认后的处理
   private async onConfirmButtonClick(): Promise<void> {
     log.showInfo(TAG, `onConfirmButtonClick`)
-    let containList = await SCBDesktopAddViewModel.getInstance().getContainsItemList();
+    let containList = await SCBDesktopAddViewModel.getInstance().getContainsItemList();//云端2桌面用户自己添加的应用
     let removeList: GridLayoutItemInfo [] = [];
     //删除已有的
     containList.forEach(item => {
@@ -249,6 +253,7 @@ export default struct SCBDesktopAddDialog {
           item.typeId, '', true);
       }
     });
+    LightOutdoorDesktopViewModel.getInstance().removeAddIcon();
     //新增已选的
     this.checkedAppList.forEach(item => {
       if (!this.desktopAddViewModel.findApp(containList, item.bundleName)) {
@@ -264,6 +269,7 @@ export default struct SCBDesktopAddDialog {
     PageDesktopViewModel.getInstance().lightPagingFiltering(false, 'appendUserSelectedApp');
     this.desktopAddViewModel.refreshContainAppList(this.checkedAppList);
     this.desktopAddViewModel.refreshRemovedAppList(removeList);
+    LightOutdoorDesktopViewModel.getInstance().sendDesktopAppChangeEvent();
   }
 
   @Builder

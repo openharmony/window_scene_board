@@ -42,7 +42,7 @@ const mainScreenId: number = 0;
 
 export class MultiWindowToggleController extends ToggleBaseViewModel {
   // 控制中心多窗按钮开关状态, 默认为false
-  private isUltraScreenProduct: boolean = DeviceHelper.isUltraScreenProduct();
+  private isThreeFoldProduct: boolean = DeviceHelper.isThreeFoldProduct();
 
   private rotateChangeCallBack = (screenProperty: SCBScreenProperty, reason: SCBRotateChangeReason) => {
     if (reason === SCBRotateChangeReason.ROTATE_BEGIN) {
@@ -79,7 +79,7 @@ export class MultiWindowToggleController extends ToggleBaseViewModel {
     try {
       this.getViewData().isOn = DeviceInfoVm.instance.isMultiWinPcMode;
       AppStorage.setOrCreate('pcModeState', this.getViewData().isOn);
-      if (this.isUltraScreenProduct) {
+      if (this.isThreeFoldProduct) {
         this.getViewData().isUnavailable = true;
       } else {
         ScreenSessionAdapter.registerScreenRotateChangeCallbacks({
@@ -97,7 +97,7 @@ export class MultiWindowToggleController extends ToggleBaseViewModel {
   async unInit() {
     log.showInfo(`unInit`);
     try {
-      if (!this.isUltraScreenProduct) {
+      if (!this.isThreeFoldProduct) {
         ScreenSessionAdapter.unRegisterScreenRotateChangeCallbacks({
           callback: this.rotateChangeCallBack,
           mainScreenId: mainScreenId,
@@ -123,7 +123,7 @@ export class MultiWindowToggleController extends ToggleBaseViewModel {
     log.showInfo(`handleClick, isOn: ${this.getViewData().isOn}, isUnavailable: ${this.getViewData().isUnavailable}`);
     if (this.getViewData().isUnavailable) {
       let message: Resource = $r('app.string.rotate_to_landscape');
-      if (this.isUltraScreenProduct) {
+      if (this.isThreeFoldProduct) {
         let isGState: boolean = await ScreenSessionAdapter.isSecondaryFoldablePhoneExpandStatus();
         message = isGState ? message : $r('app.string.unfold_to_g_state');
       }

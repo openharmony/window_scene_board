@@ -129,11 +129,23 @@ export class OverlayAnimation extends AnimationBase {
   }
 
   public startAnimation(): Promise<void> {
-    this.addCardAlphaAnimation();
-    this.addStatusBarAnimation();
-    this.addSceneLayoutAnimation();
-    this.addSceneAlphaAnimation();
-    return super.startAnimation(undefined, 500);
+    // this.addCardAlphaAnimation();
+    // this.addStatusBarAnimation();
+    // this.addSceneLayoutAnimation();
+    // this.addSceneAlphaAnimation();
+    // return super.startAnimation(undefined, 500);
+    this.updateSceneFinalState();
+    this.containerWrapper.setAlpha(1.0, 'SceneAlpha');
+    this.executor.handleEndPoint(OverlayAnimStepEnum.CARD_ALPHA);
+    this.executor.updateAnimData((it) => it.contentOpacity = 0, 'HideContent');
+    this.executor.handleEndPoint(OverlayAnimStepEnum.STATUS_BAR);
+    const targetZIndex = this.panelSession?.panelZIndex ?? this.defPanelZIndex;
+    if (this.statusBarSession && this.statusBarSession.zIndex <= targetZIndex) {
+      this.statusBarSession?.setZIndex(targetZIndex + 1);
+    }
+    this.executor.handleEndPoint(OverlayAnimStepEnum.SCENE_LAYOUT);
+    this.startAnimationSync();
+    return Promise.resolve();
   }
 
   private addCardAlphaAnimation() {
@@ -167,8 +179,9 @@ export class OverlayAnimation extends AnimationBase {
   private updateSceneFinalState = (): void => {
     HiTrace.startTrace(TRACE_TAG, 3);
     this.containerWrapper.setClipByPx(this.screenProperty.width, this.screenProperty.height);
-    this.containerWrapper.setBorderRadius(DeviceHelper.getDeviceRadius(SCBScreenSessionManager.getInstance()
-      .isFoldablePhoneExpandStatus()), 'OverlayFinal');
+    // this.containerWrapper.setBorderRadius(DeviceHelper.getDeviceRadius(SCBScreenSessionManager.getInstance()
+    //   .isFoldablePhoneExpandStatus()), 'OverlayFinal');
+    this.containerWrapper.setBorderRadius(0, 'OverlayFinal');
     this.containerWrapper.setTranslate(0, 0, 'OverlayFinal');
     this.panelManager.onBlurTransitionActive(1.0, 'OverlayStartAnimHelper > StartAnimFromCardPanelPart');
 
@@ -248,17 +261,21 @@ export class OverlayAnimation extends AnimationBase {
   }
 
   private initContainerAnimState(): void {
-    this.containerWrapper.setAlpha(0.0, 'init');
+    // this.containerWrapper.setAlpha(0.0, 'init');
+    this.containerWrapper.setAlpha(1.0, 'init');
     this.containerWrapper.setScale(1.0, 1.0, 'init');
-    this.containerWrapper.setDiffBorderRadius(this.cardInfo.cardRadius);
+    // this.containerWrapper.setDiffBorderRadius(this.cardInfo.cardRadius);
+    this.containerWrapper.setBorderRadius(0, 'OverlayFinal');
 
-    let cardBgPos = this.cardInfo.cardBgPosition;
-    if (cardBgPos) {
-      this.containerWrapper.setClipByVp(this.cardBgPosClipByList?.width, this.cardBgPosClipByList?.height);
-      this.containerWrapper.setTranslate(this.cardBgPosClipByList?.left, this.cardBgPosClipByList?.top, 'init');
-    } else {
-      log.showWarn('CardBgPos is none.');
-    }
+    // let cardBgPos = this.cardInfo.cardBgPosition;
+    // if (cardBgPos) {
+    //   this.containerWrapper.setClipByVp(this.cardBgPosClipByList?.width, this.cardBgPosClipByList?.height);
+    //   this.containerWrapper.setTranslate(this.cardBgPosClipByList?.left, this.cardBgPosClipByList?.top, 'init');
+    // } else {
+    //   log.showWarn('CardBgPos is none.');
+    // }
+    this.containerWrapper.setClipByPx(this.screenProperty.width, this.screenProperty.height);
+    this.containerWrapper.setTranslate(0, 0, 'init');
   }
 
 

@@ -64,6 +64,7 @@ export class NotificationMgmtHalfModeViewEvent extends NotificationMgmtBaseViewE
    */
   public loadSwitchConfig = async () => {
     return Promise.all([
+      this.loadDeliverFlag(),
       this.loadPinTopConfig(),
       this.loadSilenceConfig(),
       this.loadHideBannerContentConfig(),
@@ -93,6 +94,11 @@ export class NotificationMgmtHalfModeViewEvent extends NotificationMgmtBaseViewE
   private async loadAllowState() {
     log.showDebug(TAG, 'loadAllowState.');
     await this.model?.getAllowState().then((isOn) => this.viewData?.updateAllowState(isOn));
+  }
+
+  private async loadDeliverFlag() {
+    log.showDebug(TAG, 'loadDeliverFlag.');
+    await this.model?.isDeliver().then((ret: boolean) => this.viewData?.setDeliverAppFlag(ret));
   }
 
   private async loadPinTopConfig() {

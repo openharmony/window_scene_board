@@ -37,6 +37,7 @@ import { DropDownPanelManager } from '@ohos/systemuicommon/Index';
 import { sToggleSubWindowController } from '@ohos/controlcentercommon/src/main/ets/windowmanager/ToggleSubWindowController';
 import wifiManager from '@ohos.wifiManager';
 import access from '@ohos.bluetooth.access';
+import { castReportUtils } from '../common/CastReportUtils';
 import { DialogInfo } from '../model/DialogInfo';
 import { ToggleBaseViewModel } from '@ohos/controlcentercommon/src/main/ets/toggle/vm/ToggleBaseViewModel';
 import { ToggleScene, ToggleStyle } from '@ohos/controlcentercommon/src/main/ets/toggle/interface/ToggleStyle';
@@ -47,7 +48,7 @@ const TAG = 'Model.CastToggleController';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.CC, TAG);
 const ACCESSIBILITY_MODE_DELAY_TIME : number = 700;
 
-@Builder function CastToggleBuilder() {
+@Builder function castToggleBuilder() {
   CastToggleComponent()
 }
 
@@ -61,7 +62,7 @@ export class CastToggleController extends ToggleBaseViewModel {
   private dialogHandlerId: number = -1;
   private activeTask: number = -1;
   public openDetailPageFunc: (() => void) | undefined = () => {
-    log.info('controlCenter Cast longClick');
+    log.info('controlCenter cast longClick');
     if (DeviceHelper.isPC()) {
       this.resetRetryConnectTimes();
       this.handleClickWithScreenLock((): void => this.connectProjectionService());
@@ -89,7 +90,7 @@ export class CastToggleController extends ToggleBaseViewModel {
     style.toggleParam?.isSymbolIcon(true)
       .symbolFontWeight(FontWeight.Medium)
       .symbolEffect(new PulseSymbolEffect())
-      .setDialogComponent(CastToggleBuilder)
+      .setDialogComponent(castToggleBuilder)
     return style;
   }
 
@@ -101,7 +102,7 @@ export class CastToggleController extends ToggleBaseViewModel {
     super.onStart();
     log.showInfo('onStart');
     if (DeviceHelper.isEmulator()) {
-      log.showInfo('Disable the Cast on the simulator');
+      log.showInfo('Disable the cast on the simulator');
       this.getViewData().isUnavailable = true;
       return;
     }
@@ -146,7 +147,7 @@ export class CastToggleController extends ToggleBaseViewModel {
   }
 
   handleOneClick(): void {
-    log.info('controlCenter Cast click');
+    log.info('controlCenter cast click');
     if (this.getViewData().isUnavailable) {
       log.showWarn('click disabled');
       return;
@@ -174,6 +175,7 @@ export class CastToggleController extends ToggleBaseViewModel {
   }
 
   private openWirelessProjection(): void {
+    castReportUtils.reportUEProjectionStart(1);
     if (!this.checkPrivateVersion()) {
       this.publishCommonEvent(Constants.PUBLISH_EVENT_CLOSE_CAST_DIALOG);
       return;
@@ -193,12 +195,16 @@ export class CastToggleController extends ToggleBaseViewModel {
     }
     if (dialogCode === Constants.DIALOG_WIFI_BLUETOOTH) {
       this.offWifiBluetooth();
+      castReportUtils.reportUEPrivacyDialogEvent(Constants.REPORT_DIALOG_CANCEL);
       this.execClick(() => {
         this.openWifiBluetooth();
+        castReportUtils.reportUEWifiBtDialogEvent(this.isWifiOpened, this.isBluetoothOpened,
+          Constants.REPORT_DIALOG_CONFIRM);
       });
     } else {
       this.execClick(() => {
         this.startCastSearch();
+        castReportUtils.reportUEFailDialogEvent(Constants.REPORT_DIALOG_CONFIRM, dialogCode);
       });
     }
   }
@@ -209,6 +215,10 @@ export class CastToggleController extends ToggleBaseViewModel {
     }
     if (dialogCode === Constants.DIALOG_WIFI_BLUETOOTH) {
       this.offWifiBluetooth();
+      castReportUtils.reportUEWifiBtDialogEvent(this.isWifiOpened, this.isBluetoothOpened,
+        Constants.REPORT_DIALOG_CANCEL);
+    } else {
+      castReportUtils.reportUEFailDialogEvent(Constants.REPORT_DIALOG_CANCEL, dialogCode);
     }
   }
 
@@ -264,7 +274,7 @@ export class CastToggleController extends ToggleBaseViewModel {
       }
     };
     let want: Want = {
-      bundleName: 'com.ohos.huaweicast',
+      bundleName: 'com.ohos.ohcast',
       abilityName: 'CastSourceServiceAbility'
     }
     if (DeviceHelper.isPC()) {
@@ -299,7 +309,7 @@ export class CastToggleController extends ToggleBaseViewModel {
       this.closeSubWindow();
       sToggleSubWindowController.showSubWindowByClickInfo(FASlotName.CAST, {
         clickType: 'window',
-        bundleName: 'com.ohos.huaweicast',
+        bundleName: 'com.ohos.ohcast',
         abilityName: 'CastSearchUIAbility',
         uiExtensionType: 'sys/commonUI',
         windowHeight: 398
@@ -338,7 +348,8 @@ export class CastToggleController extends ToggleBaseViewModel {
       Constants.PRIVACY_VERSION_NEWEST);
     if (privacyEnable !== Constants.PRIVACY_VERSION_NEWEST || reShowPrivacy !== Constants.PRIVACY_VERSION_NEWEST) {
       log.showInfo('privacy dialog show');
-      AppStorage.setOrCreate<number>('CastDialogCode', Constants.DIALOG_PRIVACY);
+      AppStorage.setOrCreate<number>('castDialogCode', Constants.DIALOG_PRIVACY);
+      castReportUtils.reportUEPrivacyDialogEvent(Constants.REPORT_DIALOG_SHOW);
     }
     return privacyEnable === Constants.PRIVACY_VERSION_NEWEST && reShowPrivacy === Constants.PRIVACY_VERSION_NEWEST;
   }
@@ -363,19 +374,19 @@ export class CastToggleController extends ToggleBaseViewModel {
     }
     if (!this.isWifiOpened || !this.isBluetoothOpened) {
       log.showInfo(`wifi bluetooth`);
-      AppStorage.setOrCreate<number>('CastDialogCode', Constants.DIALOG_WIFI_BLUETOOTH);
+      AppStorage.setOrCreate<number>('castDialogCode', Constants.DIALOG_WIFI_BLUETOOTH);
       try {
         // 如果弹出wifi蓝牙弹窗，需监听状态变化，便于开启后关闭弹窗
         if (!this.isBluetoothOpened) {
           access.on('stateChange', (data: access.BluetoothState) => {
-            if (AppStorage.get<number>('CastDialogCode') === Constants.DIALOG_WIFI_BLUETOOTH) {
+            if (AppStorage.get<number>('castDialogCode') === Constants.DIALOG_WIFI_BLUETOOTH) {
               this.wifiBluetoothChanged();
             }
           });
         }
         if (!this.isWifiOpened) {
           wifiManager.on('wifiStateChange', (wifiState) => {
-            if (AppStorage.get<number>('CastDialogCode') === Constants.DIALOG_WIFI_BLUETOOTH) {
+            if (AppStorage.get<number>('castDialogCode') === Constants.DIALOG_WIFI_BLUETOOTH) {
               this.wifiBluetoothChanged();
             }
           });
@@ -383,6 +394,8 @@ export class CastToggleController extends ToggleBaseViewModel {
       } catch (err) {
         log.showError(`bluetoothState register listener Error: ${err.code}, ${err.message}`);
       }
+      castReportUtils.reportUEWifiBtDialogEvent(this.isWifiOpened, this.isBluetoothOpened,
+        Constants.REPORT_DIALOG_SHOW);
     }
     return this.isWifiOpened && this.isBluetoothOpened;
   }
@@ -395,10 +408,10 @@ export class CastToggleController extends ToggleBaseViewModel {
         btState === access.BluetoothState.STATE_TURNING_ON;
       this.isWifiOpened = wifiState === 1 || wifiState === 2;
       log.showInfo(`bluetoothState: ${btState}, wifiState: ${wifiState}`);
-      if (this.isWifiOpened && this.isBluetoothOpened && AppStorage.get<number>('CastDialogCode') ===
+      if (this.isWifiOpened && this.isBluetoothOpened && AppStorage.get<number>('castDialogCode') ===
       Constants.DIALOG_WIFI_BLUETOOTH) {
         // 如果蓝牙wifi弹窗显示，检测到此时蓝牙wifi已打开，需关闭蓝牙wifi窗口
-        AppStorage.setOrCreate<number>('CastDialogCode', Constants.DIALOG_DEFAULT);
+        AppStorage.setOrCreate<number>('castDialogCode', Constants.DIALOG_DEFAULT);
         this.offWifiBluetooth();
         // 启动无线投屏二级页面
         this.startCastSearch();
@@ -516,7 +529,7 @@ export class CastToggleController extends ToggleBaseViewModel {
           this.phoneStartProjection();
         } else if (Constants.PUBLISH_EVENT_DIALOG_SHOW) {
           let dialogInfo: DialogInfo = data.parameters?.dialogInfo as DialogInfo;
-          log.showInfo(`CastDialogCode ${dialogInfo?.code}`);
+          log.showInfo(`castDialogCode ${dialogInfo?.code}`);
           if (dialogInfo?.code && DropDownPanelManager.getDropDownEvent().target === TargetPanel.CONTROL_CENTER_PANEL) {
             sToggleSubWindowController.hideWindow();
             this.showErrorDialog(dialogInfo);
@@ -539,7 +552,8 @@ export class CastToggleController extends ToggleBaseViewModel {
     this.dialogHandlerId = setTimeout(() => {
       this.dialogHandlerId = -1;
       AppStorage.setOrCreate<DialogInfo>('dialogInfo', dialogInfo);
-      AppStorage.setOrCreate<number>('CastDialogCode', dialogInfo?.code);
+      AppStorage.setOrCreate<number>('castDialogCode', dialogInfo?.code);
+      castReportUtils.reportUEFailDialogEvent(Constants.REPORT_DIALOG_SHOW, dialogInfo?.code);
     }, delayTime);
   }
 
@@ -587,7 +601,7 @@ export class CastToggleController extends ToggleBaseViewModel {
         bundleName: 'com.ohos.sceneboard'
       },
       target: {
-        bundleName: 'com.ohos.huaweicast'
+        bundleName: 'com.ohos.ohcast'
       },
       name: 'components/pages/plugin/PluginPcIcon.js',
       data: {},

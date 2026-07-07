@@ -46,6 +46,12 @@ export const soundPanelConfig: VolumeConfig = {
       label: $r('app.string.sound_calls'),
       iconDisable: $r('app.media.ic_public_phone'),
     },
+    {
+      id: AudioVolumeType.VOICE_ASSISTANT,
+      icon: $r('app.media.ic_public_voice'),
+      label: $r('app.string.sound_ai_voice'),
+      iconDisable: $r('app.media.ic_public_voice'),
+    },
   ],
 };
 
@@ -61,6 +67,11 @@ interface DeviceConfig {
 
 export const soundDeviceConfig: DeviceConfig = {
   deviceLayoutGroups: [
+    {
+      id: AudioDeviceType.SPEAKER,
+      icon: $r('app.media.ic_device_matebook'),
+      label: $r('app.string.sound_output_device_local'),
+    },
     {
       id: AudioDeviceType.BLUETOOTH_SCO,
       icon: $r('app.media.ic_device_soundx'),

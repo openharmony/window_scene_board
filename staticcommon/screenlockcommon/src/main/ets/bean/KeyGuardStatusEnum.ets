@@ -66,6 +66,10 @@ export enum KeyGuardMode {
   LEATHER_COVER = 1 << 8,
   // 快速工具模式
   QUICK_TOOLS = 1 << 9,
+  // 云端模式
+  CLOUD_LAI = 1 << 10,
+  // 云端模式二
+  CLOUD_LAI_2 = 1 << 11,
 }
 
 export enum KeyGuardLockStatus {

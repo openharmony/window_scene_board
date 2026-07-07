@@ -248,7 +248,7 @@ export class PcModeDockUtils {
   public static isSupportOpenMultiWindow(launchType: BundleManager.LaunchType, appInfo: DockItemInfo): boolean {
     return launchType === BundleManager.LaunchType.MULTITON || appInfo.enableNewAppInstance ||
       appInfo.bundleName === CommonConstants.FILE_MANAGER_BUNDLE ||
-      (!DeviceHelper.isUltraScreenProduct() && appInfo.bundleName === CommonConstants.BROWSER_BUNDLE) ||
+      (!DeviceHelper.isThreeFoldProduct() && appInfo.bundleName === CommonConstants.BROWSER_BUNDLE) ||
       (DeviceHelper.isPad() && appInfo.bundleName === CommonConstants.PHONE_FILE_MANAGER_BUNDLE);
   }
 

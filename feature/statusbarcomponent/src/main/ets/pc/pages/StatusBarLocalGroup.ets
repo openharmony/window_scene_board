@@ -124,7 +124,7 @@ export struct LocalGroup {
         .opacity(0.2)
         .id(`${TAG}_Divider`)
         .margin({
-          // 左侧OpenHarmony环容器变大，向左偏移10vp保证布局不变
+          // 左侧鸿蒙环容器变大，向左偏移10vp保证布局不变
           start: LengthMetrics.vp(this.positionPos === PluginPositionType.BOTTOM_LEFT ? -2 : 2),
           end: LengthMetrics.vp(this.positionPos === PluginPositionType.BOTTOM_LEFT ? 8 : 2)
         })
@@ -136,7 +136,10 @@ export struct LocalGroup {
     this.mySeparator()
     Row() {
       ForEach(this.localGroupProperty.getPluginList(), (property: PluginProperty, index: number) => {
-        this.pluginBuilder(property, index, false, true)
+        // todo PC输入法不开源，暂时屏蔽，后续放开
+        if (![PluginSlot.SLOT_STATUS_INPUT_PANEL, PluginSlot.SLOT_STATUS_INPUT_METHOD].includes(property.getSlot())) {
+          this.pluginBuilder(property, index, false, true)
+        }
       }, (property: PluginProperty) => property.getSlot())
     }
     .id(`PluginRootComponent_Stack_${this.localGroupProperty?.getOpenPanel()}`)
@@ -171,6 +174,8 @@ export struct LocalGroup {
     }
     switch (this.localGroupProperty.getPluginList()[0]?.pluginInfo?.pluginParseInfo.pluginSlot) {
       case PluginSlot.SLOT_STATUS_HOS_KEY:
+      case PluginSlot.SLOT_STATUS_ASSISTANT_VOICE:
+        return false;
       default:
         return true;
     }

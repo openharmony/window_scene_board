@@ -1,0 +1,11 @@
+{
+  "string":[
+    {
+      "name":"low_battery_tip",
+      "value":"Solo queda un %s de batería. Conecta tu ordenador o ponlo en reposo.",
+      "attr":{
+        "priority":"translate"
+      }
+    }
+  ]
+}

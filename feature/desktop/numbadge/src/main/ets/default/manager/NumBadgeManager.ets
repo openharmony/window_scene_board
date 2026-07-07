@@ -1,5 +1,5 @@
 /*
- * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -19,7 +19,7 @@ import {
   BadgeNumberCallbackData,
   SubscribeCallbackData,
 } from 'notification/notificationSubscriber';
-import { AppModel, BadgeManager, CommonConstants } from '@ohos/launchercommon';
+import { AppModel, BadgeManager, CommonConstants, DeliverUtil } from '@ohos/launchercommon';
 import { CheckEmptyUtils, LogDomain, LogHelper } from '@ohos/basicutils';
 import notificationManager from '@ohos.notificationManager';
 import BundleManager from '@ohos.bundle.bundleManager';
@@ -64,14 +64,66 @@ export class NumBadgeManager {
     onBadgeEnabledChanged: this.onBadgeEnabledChangedCallback.bind(this)
   }
 
+  /**
+   * 订阅NMS Broker应用角标变更通知
+   * 角标set场景(NMS)
+   */
+  private subscribeSetDeliverBadgeNumberEvent(): void {
+    const subscribeInfo: SubscribeInfo = {
+      events: ['event.notification.SET_DELIVER_BADGE_NUMBER'],
+      publisherPermission: 'ohos.permission.NOTIFICATION_CONTROLLER'
+    };
+    try {
+      commonEventManager.createSubscriber(subscribeInfo, (err, data) => {
+        if (err) {
+          log.showError(`createSubscriber error. Code is ${err.code}, message is ${err.message}`);
+          return;
+        }
+        log.showInfo(`createSubscriber success`);
+        this.subscriber = data;
+        if (!this.subscriber) {
+          log.showError('Failed to subscribe to SET_DELIVER_BADGE_NUMBER event - subscriber is undefined.');
+          return;
+        }
+        this.subscribeCommonEvent();
+      });
+    } catch (e) {
+      log.showError(`Subscribe ${subscribeInfo.events} error: ${e}`);
+    }
+  }
+
+  private subscribeCommonEvent(): void {
+    commonEventManager.subscribe(this.subscriber, async (err, event) => {
+      if (err) {
+        log.showError(`Receive SET_DELIVER_BADGE_NUMBER error: ${err}`);
+        return;
+      }
+      if (CheckEmptyUtils.isEmpty(event) || CheckEmptyUtils.isEmpty(event.parameters)) {
+        log.showError(`Receive SET_DELIVER_BADGE_NUMBER event, event is empty`);
+        return;
+      }
+
+      let bundleInfo: BaseBundleInfo = {
+      bundleName: event.parameters?.bundleName,
+      appIndex: 0,
+      abilityName: event.parameters?.className
+      };
+      let badgeNumber: number = event.parameters?.badgeNumber;
+      let lastBadgeNumber = await this.mBadgeManager.getCacheBundleBadge(bundleInfo);
+      log.showInfo(`Receive SET_DELIVER_BADGE_NUMBER event, bundleName: ${event.parameters?.bundleName} abilityName: ${event.parameters?.className}, badgeNumber: ${event.parameters?.badgeNumber}, lastBadgeNumber is ${lastBadgeNumber}, uid: ${event.parameters?.uid}`);
+      this.updateDeliverAppBadgeNumber(bundleInfo, badgeNumber, lastBadgeNumber, MSG_TYPE_NMS);
+    });
+  }
+
   private constructor() {
     this.mRegisterNumBadgeCallback = this.registerNumBadgeCallback.bind(this);
     this.mUnRegisterNumBadgeCallback = this.unRegisterNumBadgeCallback.bind(this);
+    this.subscribeSetDeliverBadgeNumberEvent();
     this.mBadgeManager = BadgeManager.getInstance();
   }
 
   /**
-   * 角标add场景
+   * 角标add场景+角标add+set场景(push)
    *
    * @param data 回调通知消息
    */
@@ -282,6 +334,28 @@ export class NumBadgeManager {
 
     let badgeNumber: number = data.request?.badgeNumber ?? 0;
 
+    // 应用角标单独处理
+    if (this.isDeliverApp(creatorBundleName)) {
+      // hw_badge_class为空时，不对消息做任何处理
+      if (CheckEmptyUtils.checkStrIsEmpty(data.request?.extraInfo?.hw_badge_class)) {
+        log.showWarn(`handleSubscribeCallbackData hw_badge_class is empty.`);
+        return;
+      }
+
+      let bundleInfo: BaseBundleInfo = {
+        bundleName: creatorBundleName,
+        appIndex: 0,
+        abilityName: data.request?.extraInfo?.hw_badge_class
+      };
+      // push端侧->ANS，extraInfo中存在hw_set_badge_num的时候，直接根据其值设置角标数值，否则根据badgeNumber做加法
+      let hwSetBadgeNumer: number = data.request?.extraInfo?.hw_set_badge_num;
+      let lastBadgeNumber = await this.mBadgeManager.getCacheBundleBadge(bundleInfo);
+      log.showWarn(`handleSubscribeCallbackData bundleName: ${creatorBundleName}, update deliver app badgeNumber, abilityName is ${bundleInfo.abilityName}, badgeNumber is ${badgeNumber}, lastBadgeNumber is ${lastBadgeNumber}, hwSetBadgeNumer ${hwSetBadgeNumer}`);
+      let badgeNumberRes = this.calcBadgeNumber(hwSetBadgeNumer, lastBadgeNumber, badgeNumber);
+      this.updateDeliverAppBadgeNumber(bundleInfo, badgeNumberRes, lastBadgeNumber, MSG_TYPE_PUSH);
+      return;
+    }
+
     if (badgeNumber === 0) {
       log.showWarn(`handleSubscribeCallbackData bundleName: ${creatorBundleName}, uid: ${creatorUid} badge change number is 0`);
       return;
@@ -294,6 +368,45 @@ export class NumBadgeManager {
     let newBadgeNumber: number = 0;
     newBadgeNumber = badgeNumber + lastBadgeNumber;
     this.handleBadgeChangedCallBackData(bundleInfo, newBadgeNumber);
+  }
+
+  private calcBadgeNumber(hwSetBadgeNumer: number, lastBadgeNumber: number, badgeNumber: number): number {
+    if (hwSetBadgeNumer !== null && hwSetBadgeNumer !== undefined) {
+      return hwSetBadgeNumer;
+    }
+    return lastBadgeNumber + badgeNumber;
+  }
+
+  private updateDeliverAppBadgeNumber(bundleInfo: BaseBundleInfo, badgeNumber: number, lastBadgeNumber: number,
+      msgType: number): void {
+    let dataFixedType: number = this.mBadgeManager.dataFixedType(bundleInfo.bundleName, bundleInfo.appIndex) ?? 0;
+    // 即将标记使用的修复类型
+    let type = dataFixedType === CommonConstants.BADGE_FIXED_TYPE_NMS ? CommonConstants.BADGE_FIXED_TYPE_NMS : msgType;
+    // 如果应用传入的className(abilityName)与图标的abilitName不匹配，首次收到消息是清空角标，后续不处理角标通知消息
+    if (CheckEmptyUtils.isEmpty(bundleInfo.abilityName) ||
+        AppModel.getInstance().getAppInfoByBundleName(bundleInfo.bundleName)?.abilityName !== bundleInfo.abilityName ||
+        msgType === MSG_TYPE_NMS && badgeNumber < 0) {
+      if (dataFixedType === CommonConstants.BADGE_FIXED_TYPE_NMS ||
+          msgType === MSG_TYPE_PUSH && dataFixedType === CommonConstants.BADGE_FIXED_TYPE_PUSH) {
+        log.showWarn(`handleSubscribeCallbackData bundleName: ${bundleInfo.bundleName}, error data has fixed, need not refresh badgeNumber`);
+        return;
+      }
+      // 当前应用角标异常数据未修复，设置角标为0，并标记已修复
+      log.showWarn(`handleSubscribeCallbackData bundleName: ${bundleInfo.bundleName}, error data has not fixed, set badgeNumber = 0`);
+      if (lastBadgeNumber !== 0) {
+        this.handleBadgeChangedCallBackData(bundleInfo, 0);
+      }
+      this.mBadgeManager.updateFixedBundles(bundleInfo.bundleName, bundleInfo.appIndex, type);
+      return;
+    }
+    if (badgeNumber !== lastBadgeNumber) {
+      this.handleBadgeChangedCallBackData(bundleInfo, badgeNumber);
+    }
+    this.mBadgeManager.updateFixedBundles(bundleInfo.bundleName, bundleInfo.appIndex, type);
+  }
+
+  private isDeliverApp(bundleName: string): boolean {
+    return DeliverUtil.isSupportDeliver() && DeliverUtil.isSupportAppType(bundleName);
   }
 
   private async handleEnabledNotificationChanged(callbackData: EnabledNotificationCallbackData): Promise<void> {

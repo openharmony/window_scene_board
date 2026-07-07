@@ -15,7 +15,7 @@
 
 import { LogDomain, LogHelper, CheckEmptyUtils } from '@ohos/basicutils';
 import { RTLUtil } from '@ohos/componenthelper';
-import { ResourceManager, PluginSlot, EventManager, EvtBus } from '@ohos/frameworkwrapper';
+import { ResourceManager, PluginSlot, EventManager, EvtBus, PluginAccessInfo } from '@ohos/frameworkwrapper';
 import { ResUtils } from '@ohos/windowscene';
 import { StatusBarTipsChangeEvent } from '@ohos/systemuicommon';
 import i18n from '@ohos.i18n';
@@ -37,6 +37,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { DeviceHelper } from '@ohos/frameworkwrapper';
 import { common } from '@kit.AbilityKit';
 import InputMethodUtils from '@ohos/inputmethodcomponent/src/main/ets/default/common/InputMethodUtils';
+import { PluginProperty } from '../viewdata/PluginProperty';
+import { PluginListAdapter } from '../pluginData/PluginListAdapter';
 
 const TAG = 'HoverTips';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.SYS_UI, TAG);
@@ -210,7 +212,19 @@ export struct HoverTips {
         });
         break;
       default:
-        this.getAppName();
+        const pluginInfo: PluginProperty | null  = PluginListAdapter.getInstance().getPluginPropertyBySlot(pluginSlot) as PluginProperty;
+
+        let hoverTips = '';
+        if (pluginInfo && pluginInfo.pluginInfo) {
+          hoverTips = (pluginInfo.pluginInfo as PluginAccessInfo).hoverTips;
+        }
+        log.showInfo('hoverTips = ' + hoverTips);
+
+        if(hoverTips?.trim()) {
+          this.hoverTipsContent = hoverTips;
+        } else {
+          this.getAppName();
+        }
         break;
     }
   }
@@ -461,6 +475,16 @@ export struct HoverTips {
         .textAlign(TextAlign.Start)
         .maxLines(2)
         .align(Alignment.Center)
+
+      if (this.pluginSlot === PluginSlot.SLOT_STATUS_SMART_SCREENSHOT) {
+        Image($r('app.media.shortcut_system_key'))
+          .width('20vp')
+          .height('20vp')
+          .objectFit(ImageFit.Contain)
+          .focusable(false)
+          .draggable(false)
+          .margin({ start: LengthMetrics.resource($r('sys.float.padding_level4')) })
+      }
 
       if (this.hoverTipsShortcutContent !== '') {
         Text(this.hoverTipsShortcutContent)

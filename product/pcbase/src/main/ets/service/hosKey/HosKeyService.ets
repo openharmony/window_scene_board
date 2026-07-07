@@ -44,7 +44,7 @@ class Response {
 }
 
 /**
- * 请求方法，与OpenHarmony键约定
+ * 请求方法，与系统键约定
  */
 enum RequestMethod {
   /**
@@ -170,7 +170,7 @@ class DeactiveExecutor implements IExecutor {
   }
 }
 /**
- * 启动OpenHarmony键，dock栏显示
+ * 启动系统键，dock栏显示
  * */
 class ShowDockExecuter implements IExecutor {
   async execute(extra?: object | undefined, remoteObject?: rpc.IRemoteObject | null | undefined): Promise<string> {
@@ -181,7 +181,7 @@ class ShowDockExecuter implements IExecutor {
 }
 
 /**
- * OpenHarmony键DOCK栏显示变化
+ * 系统键DOCK栏显示变化
  * */
 class ChangeDockExecuter implements IExecutor {
   async execute(extra?: object | undefined, remoteObject?: rpc.IRemoteObject | null | undefined): Promise<string> {
@@ -200,7 +200,7 @@ class SpaceRemoveExecutor implements IExecutor {
 }
 
 /**
- * OpenHarmony键业务服务
+ * 系统键业务服务
  *
  */
 export class HosKeyService implements IService {

@@ -190,8 +190,8 @@ export class FlashlightLiveManager {
         },
         extraInfo: {
           isMute: true,
-          openharmony_button_accessibility_text: [closeText],
-          openharmony_customer_accessibility_text: ntfTitle
+          hw_button_accessibility_text: [closeText],
+          hw_customer_accessibility_text: ntfTitle
         }
       };
       await notificationManager.publish(flashLightNtfRequest);

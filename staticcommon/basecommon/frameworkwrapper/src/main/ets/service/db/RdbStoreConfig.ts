@@ -50,13 +50,16 @@ interface RdbStoreConfig {
   dbName: string;
   badge: RdbInfo;
   formSwiper: TableNameInfo;
+  voiceCard: CreateTableInfo;
   gridLayoutInfo: TableNameInfo;
   pc_mode_gridLayoutInfo: TableNameInfo;
   cardInfo: TableNameInfo;
   appCenterLayoutInfo: TableNameInfo;
   outerGridLayoutInfo: TableNameInfo;
   simpleLayoutInfo: TableNameInfo;
+  outdoorLayoutInfo: TableNameInfo;
   drawerModeAppInfo: TableNameInfo;
+  lightOutdoorLayoutInfo: TableNameInfo;
   appCategoryInfo: RdbInfo;
   recentDockInfo: TableNameInfo;
   recentLockInfo: TableNameInfo;
@@ -91,6 +94,13 @@ const rdbStoreConfig: RdbStoreConfig = {
     tableName: 'form_swiper'
   },
 
+  voiceCard: {
+    tableName: 'voice_card',
+    createTable: 'CREATE TABLE IF NOT EXISTS voice_card ' +
+      '(id INTEGER PRIMARY KEY AUTOINCREMENT, ' +
+      'voice_info TEXT)'
+  },
+
   gridLayoutInfo: {
     tableName: 'gridlayout_info'
   },
@@ -113,6 +123,14 @@ const rdbStoreConfig: RdbStoreConfig = {
 
   simpleLayoutInfo: {
     tableName: 'simple_gridlayout_info'
+  },
+
+  outdoorLayoutInfo: {
+    tableName: 'outdoor_gridlayout_info',
+  },
+
+  lightOutdoorLayoutInfo: {
+    tableName: 'outdoor_gridlayout_info',
   },
 
   drawerModeAppInfo: {

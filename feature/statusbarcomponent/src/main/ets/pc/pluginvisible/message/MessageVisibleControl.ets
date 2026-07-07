@@ -58,8 +58,9 @@ export class MessageVisibleControl extends VisibleControlBase {
     PluginSlot.SLOT_STATUS_SUPER_PRIVACY_PADDLE,
     PluginSlot.SLOT_STATUS_SUPER_PRIVACY_PC_SOFT,
     PluginSlot.SLOT_STATUS_FOCUS_MODE_PADDLE,
+    PluginSlot.SLOT_STATUS_ASSISTANT_MEETING,
     PluginSlot.SLOT_STATUS_MICROPHONE_PANEL,
-    PluginSlot.SLOT_PLUGIN_STATUS_BAR_CAST,
+    PluginSlot.SLOT_PLUGIN_STATUS_BAR_OHCAST,
     PluginSlot.SLOT_STATUS_VIRTUAL_KEYBOARD
   ]);
 

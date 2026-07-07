@@ -14,7 +14,7 @@
  */
 
 import { appManager } from '@kit.AbilityKit';
-// import statusBar from '@hms.pcService.statusBar';
+import statusBar from '@ohos.pcService.statusBar';
 import { viewMgrPolicy, ViewType, settingsDataManager, DeviceHelper } from '@ohos/frameworkwrapper';
 import {
   SCBSceneSessionManager,
@@ -22,7 +22,7 @@ import {
   SCBSceneContainerSession,
   SCBSceneContainerSessionArray
 } from '@ohos/windowscene';
-import { SingletonHelper, LogDomain, LogHelper, CheckEmptyUtils } from '@ohos/basicutils';
+import { SingletonHelper, LogDomain, LogHelper, CheckEmptyUtils, CapabilityUtil } from '@ohos/basicutils';
 import { ModeChangeUtils } from '@ohos/frameworkwrapper/src/main/ets/utils/ModeChangeUtils';
 import { rpcShutdownPolicy } from '../policy/RpcShutdownPolicy';
 
@@ -59,7 +59,7 @@ class PcShutdownDialogVMP {
   private closeNewApp(pidList: number[], bundleName: string): void {
     log.showInfo('closeNewApp begin');
     try {
-      // statusBar.exitProcesses(pidList);
+      CapabilityUtil.isStatusBarAvailable() && statusBar.exitProcesses(pidList);
       log.showInfo(`closeNewApp bundle name: ${bundleName}`);
     } catch (e) {
       log.showError(`closeNewApp exitTrayProcess error, code: ${e?.code}, message: ${e?.message}`);

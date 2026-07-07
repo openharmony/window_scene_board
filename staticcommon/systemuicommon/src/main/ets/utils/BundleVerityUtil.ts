@@ -76,10 +76,20 @@ const NOTIFICATION_VERITY_BUNDLES: BundleVerityData[] = [
     appIdentifier: '5765880207854258395',
   },
   {
+    bundleName: 'com.ohos.vassistant.launcher',
+    appIdentifier: '5765880207855998521',
+  },
+  {
     bundleName: 'com.ohos.security.privacycenter',
     appIdentifier: '5765880207852998967',
   },
+  {
+    bundleName: 'com.ohos.cloudmodeassistant',
+    appIdentifier: '6917574548696548801'
+  },
 ];
+const DELIVER_MAX_UID = 100000;
+const DELIVER_MIN_UID = 10000;
 
 /**
  * 验证 bundleName 和 appIdentifier
@@ -101,4 +111,14 @@ export async function bundleVerity(bundleName: string): Promise<boolean> {
     log.error(`bundleVerity failed, code: ${err?.code}, message: ${err?.message}`);
     return false;
   }
+}
+
+/**
+ * 系统应用校验。通过uid进行校验，uid % 100000 < 10000的是系统应用
+ *
+ * @param uid
+ * @returns
+ */
+export function deliverSystemBundleVerity(uid: number): boolean {
+  return uid % DELIVER_MAX_UID < DELIVER_MIN_UID;
 }

@@ -60,6 +60,10 @@ import { systemUIWorkerManager } from '@ohos/systemuicommon/src/main/ets/manager
 import { ResourceVm } from '@ohos/systemuicommon/src/main/ets/vm/ResourceVm';
 import { MediaViewModelManager, MediaVMType } from '../viewmodel/MediaViewModelManager';
 import { SysConfigData } from '../viewmodel/SysConfigData';
+import { InnerEventUtil } from '@ohos/systemuicommon/src/main/ets/utils/InnerEventUtil';
+import { NotificationEvent } from '@ohos/systemuicommon/src/main/ets/event/NotificationEvent';
+import { LiveNotification } from '@ohos/systemuicommon/src/main/ets/live/model/LiveNotification';
+import { NotificationBase } from '@ohos/systemuicommon/src/main/ets/model/NotificationBase';
 
 const TAG = 'MediaCardComponent_debug';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.MC, TAG);
@@ -375,10 +379,27 @@ export default struct MediaCardComponent {
     }
   }
 
+  /**
+   * 当播控通知被删除时，暂停音乐播放
+   */
+  private handleNotificationEvent: (event: NotificationEvent) => void = (event: NotificationEvent) => {
+    log.showInfo(`handleNotificationEvent start`);
+    if (event.eventType === NotificationEvent.EVENT_TYPE_REMOVE) {
+       const notification: NotificationBase = event?.notificationList[0];
+      if (notification && (notification instanceof LiveNotification) &&
+      (notification as LiveNotification).isMediaPlayer()) {
+         log.showInfo(`pause media`);
+         this.controller.callShowingPause();
+       }
+    }
+  };
+
   aboutToAppear() {
     log.showInfo(`MediaCardComponent aboutToAppear`);
     this.controller.doSubscribeNotify();
     this.controller.startShowing(TAG);
+    //监听播控通知删除事件
+    InnerEventUtil.on(NotificationEvent, this.handleNotificationEvent);
     // 播控监听
     EvtBus.on(MediaControlEvent, this.onMediaControlCallback);
     this.eventMgr.on(ScreenOnOffEvent, (event: ScreenOnOffEvent): void => {
@@ -427,6 +448,7 @@ export default struct MediaCardComponent {
     log.showInfo('aboutToDisappear');
     this.eventMgr.offAll();
     EvtBus.off(MediaControlEvent, this.onMediaControlCallback);
+    InnerEventUtil.off(NotificationEvent, this.handleNotificationEvent);
     this.showPlayLoading = false;
     this.clearLoadingTimer();
   }
@@ -867,13 +889,13 @@ export default struct MediaCardComponent {
         Flex({ direction: FlexDirection.Column, justifyContent: FlexAlign.SpaceBetween,
           alignItems: ItemAlign.Center }) {
           Flex({ direction: FlexDirection.Column, justifyContent: FlexAlign.Start, alignItems: ItemAlign.Start }) {
-          if (this.checkCall()) {
-            this.CallImageBuilder()
-            this.CallTitleBuilder()
-          } else {
-            this.ImageBuilder()
-            this.TitleBuilder()
-          }
+            if (this.checkCall()) {
+              this.CallImageBuilder()
+              this.CallTitleBuilder()
+            } else {
+              this.ImageBuilder()
+              this.TitleBuilder()
+            }
         }
       }
         .id('control_media_card_title')

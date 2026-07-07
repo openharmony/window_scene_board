@@ -22,7 +22,8 @@ import {
   EventConstants,
   localEventManager,
   ResourceManager,
-  HiSysEventUtil
+  HiSysEventUtil,
+  LightOutdoorConfig
 } from '@ohos/frameworkwrapper';
 import { ObjectCopyUtil } from '@ohos/componenthelper';
 import {
@@ -82,6 +83,10 @@ export class DesktopShortcutViewModel {
    * 应用内快捷方式加桌
    */
   public async addShortcutToDesktop(shortcutInfo: ShortcutInfo): Promise<ResultCode> {
+    if (LightOutdoorConfig.getInstance().isOnLightOutdoorMode()) {
+      log.showWarn('not support adding shortcut to desktop due to LightOutdoorMode');
+      return ResultCode.FAILED_ON_LIGHT_OUTDOOR_MODE;
+    }
     // 桌面参数校验
     let checkResult: CheckResult = this.mShortcutViewModel.checkShortcut(shortcutInfo);
     if (checkResult.code !== ResultCode.SUCCESS) {

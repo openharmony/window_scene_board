@@ -18,6 +18,7 @@ import type image from '@ohos.multimedia.image';
 import type { wantAgent, WantAgent } from '@kit.AbilityKit';
 import bundleManager from '@ohos.bundle.bundleManager';
 import {
+  DeliverInstallSource,
   NotificationAction,
   NotificationCategory,
   NotificationCreatorType,
@@ -34,6 +35,7 @@ import type { NtfControlConfig } from './NtfControlFlags';
 import type { NtfReminderConfig } from './NtfRemindFlags';
 import lazy { NotificationUtil } from '../utils/NotificationUtil';
 import { notificationCcmConfig } from '../utils/NotificationCcmConfig';
+import { deliverSystemBundleVerity } from '../utils/BundleVerityUtil';
 import { LogDomain, LogHelper } from '@ohos/basicutils';
 import { SystemUICommonUtil } from '../utils/SystemUICommonUtil';
 
@@ -195,7 +197,7 @@ export class NotificationBase {
 
   /**
    * 堆叠图标样式
-   * 0: 圆形; 1: 方形; 2: 样式反转
+   * 0: 圆形; 1: 方形; 2: 样式反转 例:克隆应用图标覆盖;
    */
   overlayIconStyle?: OverlayIconStyle;
 
@@ -228,6 +230,46 @@ export class NotificationBase {
    * 通知发送时间，排序和显示使用
    */
   deliveryTime: number;
+
+  /**
+   * 是否是通知
+   */
+  isDeliverNotification: boolean = false;
+
+  /**
+   * 是否是push通知
+   */
+  isDeliverPushNotification: boolean = false;
+
+  /**
+   * 通知指向应用主页
+   */
+  deliverAbilityName?: Promise<string>;
+
+  /**
+   * push通知wantAgentInfo
+   */
+  deliverPushWantAgentInfo?: wantAgent.WantAgentInfo;
+
+  /**
+   * push通知LauncherInfo
+   */
+  deliverPushLauncherInfo?: string;
+
+  /**
+   * 通知的key
+   */
+  deliverNotificationKey: string = '';
+
+  /**
+   * APP安装来源
+   */
+  deliverInstallSource: DeliverInstallSource;
+
+  /**
+   * 是否拉起DELIVER全屏
+   */
+  isDeliverFullScreen: boolean = false;
 
   /**
    * 是否为协同通知
@@ -350,7 +392,7 @@ export class NotificationBase {
   actionButtons?: NotificationAction[];
 
   /**
-   * channelId
+   * deliver通知channelId
    */
   channelId?: string;
 
@@ -442,6 +484,10 @@ export class NotificationBase {
    * @returns 返回显示的应用图标
    */
   getAppIcon(isOnlyUseAppIcon: boolean = false): image.PixelMap | string | undefined {
+    const deliverNotificationIcon = this.getDeliverNotificationIcon();
+    if (deliverNotificationIcon) {
+      return deliverNotificationIcon;
+    }
     // 部分系统应用没有应用图标
     if (isOnlyUseAppIcon && this.appIcon) {
       return this.appIcon;
@@ -451,6 +497,34 @@ export class NotificationBase {
       return this.smallIcon;
     }
     return this.appIcon;
+  }
+
+  /**
+   * 校验是否为系统通知
+   * @returns
+   */
+  checkIsDeliverSystemNotification(): boolean {
+    if (!this.isDeliverNotification) {
+      return false;
+    }
+    const isSystemApp = notificationCcmConfig.getDeliverSystemBundleList().some(item => item === this.creatorBundleName);
+    return isSystemApp && deliverSystemBundleVerity(this.creatorUid);
+  }
+
+  private getDeliverNotificationIcon(): image.PixelMap | string | undefined {
+    if (!this.isDeliverNotification) {
+      return undefined;
+    }
+    if (this.checkIsDeliverSystemNotification() && this.smallIcon) {
+      // 系统应用支持自定义图标，使用小图标代替应用图标
+      log.showInfo('getAppIcon, isDeliverSystemNotification == true, return smallIcon');
+      return this.smallIcon;
+    }
+    if (this.appIcon) {
+      log.showInfo('getAppIcon, isDeliverNotification == true, return appIcon');
+      return this.appIcon;
+    }
+    return undefined;
   }
 
   /**

@@ -21,6 +21,7 @@ import {
   expect,
   it
 } from '@ohos/hypium'
+import { AiBarVisualEffectManager } from '../../../../../main/ets/manager/AiBarVisualEffectManager'
 import { thermal } from '@kit.BasicServicesKit'
 
 export default function AiBarVisualEffectManagerTest() {
@@ -90,9 +91,24 @@ export default function AiBarVisualEffectManagerTest() {
       expect(result).assertEqual(true);
     });
 
+    it('test_upgradeVass_1', 0, () => {
+      let aibarvisualeffectmanager: AiBarVisualEffectManager = AiBarVisualEffectManager.getInstance();
+      (aibarvisualeffectmanager as object)['profileParam'] = { animationLevel: 'full' };
+      aibarvisualeffectmanager.upgradeVass();
+      expect((aibarvisualeffectmanager as object)['isFullVisualEffect']).assertEqual(true);
+    });
+
+    it('test_upgradeVass_2', 0, () => {
+      let aibarvisualeffectmanager: AiBarVisualEffectManager = AiBarVisualEffectManager.getInstance();
+      (aibarvisualeffectmanager as object)['profileParam'] = { animationLevel: 'lite' };
+      aibarvisualeffectmanager.upgradeVass();
+      expect((aibarvisualeffectmanager as object)['isFullVisualEffect']).assertEqual(false);
+    });
+
     it('test_updateFullEffect_1', 0, () => {
       let aibarvisualeffectmanager: AiBarVisualEffectManager = AiBarVisualEffectManager.getInstance();
       (aibarvisualeffectmanager as object)['profileParam'] = { animationLevel: 'full' };
+      (aibarvisualeffectmanager as object)['isVassSupportNewEffect'] = true;
       aibarvisualeffectmanager.updateFullEffect(10);
       expect((aibarvisualeffectmanager as object)['isFullVisualEffect']).assertEqual(false);
     });
@@ -100,6 +116,7 @@ export default function AiBarVisualEffectManagerTest() {
     it('test_updateFullEffect_2', 0, () => {
       let aibarvisualeffectmanager: AiBarVisualEffectManager = AiBarVisualEffectManager.getInstance();
       (aibarvisualeffectmanager as object)['profileParam'] = { animationLevel: 'full' };
+      (aibarvisualeffectmanager as object)['isVassSupportNewEffect'] = true;
       aibarvisualeffectmanager.updateFullEffect(0);
       expect((aibarvisualeffectmanager as object)['isFullVisualEffect']).assertEqual(true);
     });
@@ -107,6 +124,7 @@ export default function AiBarVisualEffectManagerTest() {
     it('test_updateFullEffect_3', 0, () => {
       let aibarvisualeffectmanager: AiBarVisualEffectManager = AiBarVisualEffectManager.getInstance();
       (aibarvisualeffectmanager as object)['profileParam'] = { animationLevel: 'lite' };
+      (aibarvisualeffectmanager as object)['isVassSupportNewEffect'] = true;
       aibarvisualeffectmanager.updateFullEffect(10);
       expect((aibarvisualeffectmanager as object)['isFullVisualEffect']).assertEqual(false);
     });
@@ -114,6 +132,7 @@ export default function AiBarVisualEffectManagerTest() {
     it('test_updateFullEffect_4', 0, () => {
       let aibarvisualeffectmanager: AiBarVisualEffectManager = AiBarVisualEffectManager.getInstance();
       (aibarvisualeffectmanager as object)['profileParam'] = { animationLevel: 'lite' };
+      (aibarvisualeffectmanager as object)['isVassSupportNewEffect'] = true;
       aibarvisualeffectmanager.updateFullEffect(0);
       expect((aibarvisualeffectmanager as object)['isFullVisualEffect']).assertEqual(false);
     });
@@ -121,6 +140,7 @@ export default function AiBarVisualEffectManagerTest() {
     it('test_updateFullEffect_5', 0, () => {
       let aibarvisualeffectmanager: AiBarVisualEffectManager = AiBarVisualEffectManager.getInstance();
       (aibarvisualeffectmanager as object)['profileParam'] = { animationLevel: 'full' };
+      (aibarvisualeffectmanager as object)['isVassSupportNewEffect'] = false;
       aibarvisualeffectmanager.updateFullEffect(0);
       expect((aibarvisualeffectmanager as object)['isFullVisualEffect']).assertEqual(false);
     });
@@ -186,5 +206,10 @@ export default function AiBarVisualEffectManagerTest() {
       expect(aibarvisualeffectmanager.limitAppVsyncEnd() === undefined).assertTrue();
     });
 
+    it('test_checkVassMetaData_1', 0, () => {
+      let aibarvisualeffectmanager: AiBarVisualEffectManager = AiBarVisualEffectManager.getInstance();
+      const result: ESObject = (aibarvisualeffectmanager as object)['checkVassMetaData']();
+      expect(result).assertEqual(true);
+    });
   })
 }

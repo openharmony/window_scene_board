@@ -20,12 +20,19 @@ import { NtfItemSwipeController } from '../../controller/NtfItemSwipeController'
 import { ntfSettingsDC as NtfSettingsDC } from '../../controller/NtfSettingsDialogController';
 import { ArrayUtils, CommonUtils, LogDomain, LogHelper, Trace } from '@ohos/basicutils';
 import { ItemUtils, RTLUtil } from '@ohos/componenthelper';
-import { DeviceHelper, EventManager, EvtBus, sEventManager, TargetPanel, unsubscribe, } from '@ohos/frameworkwrapper';
+import {
+  EventManager,
+  EvtBus,
+  sEventManager,
+  unsubscribe,
+  DeviceHelper,
+  TargetPanel,
+} from '@ohos/frameworkwrapper';
 import { ResUtils } from '@ohos/windowscene';
 import {
-  DropdownPanelChangeFinishedEvent,
+  ResetItemSwipeEvent,
   NtfListScrollEvent,
-  ResetItemSwipeEvent
+  DropdownPanelChangeFinishedEvent
 } from '../../common/event/NotificationEvent';
 import GroupChildNtfDataChannel from '../../vm/GroupChildNtfDataChannel';
 import { NotificationConstants } from '../../common/NotificationConstants';
@@ -34,28 +41,33 @@ import { NotificationContent } from './NotificationContent';
 import curves from '@ohos.curves';
 import { image } from '@kit.ImageKit';
 import {
-  AccessibilityUtil,
-  BannerDeformState,
-  bannerMgr,
-  FrameCount,
-  immersiveKgMgr,
-  IState,
-  LiveBaseTemplate,
-  LiveType,
-  LiveUseScene,
   LiveViewData,
-  OnStateChangeListener,
+  immersiveKgMgr,
+  ImmersiveAodStyle,
+  FrameCount,
+  AccessibilityUtil,
+  bannerMgr,
   OverlayIconStyle,
+  AodStyleType,
+  LiveType,
   StateType,
-  SysTypeCode,
+  OnStateChangeListener,
+  IState,
 } from '@ohos/systemuicommon';
-import { DropDownPanelManager, OverlayAnimData } from '@ohos/systemuicommon/Index';
+import { OverlayAnimData, RootCard, DropDownPanelManager, BrightnessOptionUtils } from '@ohos/systemuicommon/Index';
+import { LiveCardDropdownView } from '@ohos/systemuicommon/src/main/ets/live/variant/dropdown/view/LiveCardDropdownView'
+import {
+  LiveUseScene,
+  LiveViewCommonConstants,
+  SysTypeCode
+} from '@ohos/systemuicommon';
+import { MediaPlaybackControllerItem } from '@ohos/mediacontrolcomponent';
+import { BannerDeformState } from '@ohos/systemuicommon';
 import { NtfCloseVM } from '../../vm/NtfCloseVM';
 import { notificationStyle } from '../../vm/style/NotificationStyle';
 import { NotificationType } from '../../common/NotificationType';
-import {
-  ScreenLockNotificationConst
-} from '@ohos/screenlockcommon/src/main/ets/constants/ScreenLockNotificationConstants';
+import { LiveBaseTemplate } from '@ohos/systemuicommon';
+import { ScreenLockNotificationConst } from '@ohos/screenlockcommon/src/main/ets/constants/ScreenLockNotificationConstants';
 import { NotificationConfig } from '../../common/NotificationConfig';
 import { NotificationItemStyle } from '../../vm/style/NotificationItemStyle';
 import { DEFAULT_CLIP, NtfClipAnimStyle } from '../../common/NtfClipAnimStyle';
@@ -79,7 +91,7 @@ import { NtfScrollAnimation } from '../../animation/NtfScrollAnimation';
 import util from '@ohos.util';
 import { SystemUICcmConfig } from '@ohos/systemuicommon/src/main/ets/utils/SystemUICcmConfig';
 import { NotificationAnimationParas } from '../../common/NotificationAnimationParas';
-import { PowerStatusEnum, PowerStatusMonitor } from '@ohos/screenlockcommon/src/main/ets/monitor/PowerStatusMonitor';
+import { PowerStatusMonitor, PowerStatusEnum } from '@ohos/screenlockcommon/src/main/ets/monitor/PowerStatusMonitor';
 import { LiveCardShowAnimationEventUtil } from '@ohos/systemuicommon/newTsIndex';
 import sDropDownPanelManager from '@ohos/systemuicommon/src/main/ets/manager/DropDownPanelManager';
 
@@ -376,6 +388,12 @@ export struct NotificationSingleItem {
    * 通知条目样式
    */
   @State itemStyle: NotificationItemStyle = notificationStyle.item;
+
+  /**
+   * AOD显示样式
+   */
+  @State aodStyle: ImmersiveAodStyle | undefined = immersiveKgMgr.getOneMirrorState().getAodStyle(
+    this.notificationType === NotificationType.TYPE_PHONE_KEYGUARD);
 
   /**
    * 分帧处理对象，仅需要记录到第2帧
@@ -734,7 +752,7 @@ export struct NotificationSingleItem {
    */
   onNtfDataUpdate(newEntry: NotificationEntry): void {
     // 锁屏通知数据变化动效刷新
-    if (this.notificationType === NotificationType.TYPE_PHONE_KEYGUARD &&
+    if (this.notificationType === NotificationType.TYPE_PHONE_KEYGUARD && !this.aodStyle?.isAod &&
       this.itemStyle?.itemUpdateAnim) {
       animateTo(this.itemStyle?.itemUpdateAnim, () => this.ntfEntry = newEntry);
     } else {
@@ -981,6 +999,9 @@ export struct NotificationSingleItem {
 
   private getBrightnessInternal(): BrightnessOptions | undefined {
     if (this.isUseColorMode()) {
+      if (this.aodStyle?.isAod) {
+        return BrightnessOptionUtils.aodScreenNtfBaseboardLightOption;
+      }
       return ((this.ntfEntry as NotificationEntry).isLiveType() ? this.colorModeVM?.liveBgBrightnessOption :
         this.colorModeVM?.themeBgBrightnessOption)
     }
@@ -990,6 +1011,10 @@ export struct NotificationSingleItem {
   private getBackgroundColor(): ResourceColor | undefined {
     if (!this.isUseColorMode()) {
       return undefined;
+    }
+
+    if (this.aodStyle?.isAod) {
+      return DEFAULT_AOD_NTF_BACK_COLOR;
     }
 
     return ((this.ntfEntry as NotificationEntry)?.isLiveType() ? this.colorModeVM?.liveNtfItemBgColor :
@@ -1025,7 +1050,7 @@ export struct NotificationSingleItem {
       }.justifyContent(FlexAlign.Center)
       .clip(this.clipParam)
       .pointLight({
-        illuminated: (NotificationType.isKeyguard(this.notificationType) && !this.isInGroup) ?
+        illuminated: (NotificationType.isKeyguard(this.notificationType) && !this.isInGroup && !this.aodStyle?.isAod) ?
         IlluminatedType.BORDER : IlluminatedType.NONE
       }).contentCommonProperty()
     } else {
@@ -1034,7 +1059,7 @@ export struct NotificationSingleItem {
       }.justifyContent(FlexAlign.Center)
       .itemClip(this.getItemClipStyle())
       .pointLight({
-        illuminated: (NotificationType.isKeyguard(this.notificationType) && !this.isInGroup) ?
+        illuminated: (NotificationType.isKeyguard(this.notificationType) && !this.isInGroup && !this.aodStyle?.isAod) ?
         IlluminatedType.BORDER : IlluminatedType.NONE
       }).contentCommonProperty()
     }
@@ -1182,7 +1207,7 @@ export struct NotificationSingleItem {
       // 只有当通知没有位移时才允许点击
       return;
     }
-    if (this.checkShouldClickItem()) {
+    if (this.checkShouldClickItem() && !(AppStorage.get<boolean>('reboot_ntf_msg') ?? false)) {
       // 如果通知消息带按钮，则第一次点击展示按钮，第二次点击进入应用（横幅通知除外）
       return;
     }
@@ -1278,7 +1303,6 @@ export struct NotificationSingleItem {
     log.showInfo(`PanGesture onActionStart: ${event.offsetX}`);
     this.swipeController?.onStartSwipe(event);
   }
-
   private handleActionUpdate(event? : GestureEvent): void {
     if (event?.axisVertical && event.axisVertical !== 0) {
       return;

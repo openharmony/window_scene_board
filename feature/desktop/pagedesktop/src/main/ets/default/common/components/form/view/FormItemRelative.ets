@@ -17,7 +17,9 @@ import { image } from '@kit.ImageKit';
 import { formInfo } from '@kit.FormKit';
 import componentSnapshot from '@ohos.arkui.componentSnapshot';
 import { BuilderNode } from '@kit.ArkUI';
-import { CheckEmptyUtils,
+import {
+  CheckEmptyUtils,
+  OutdoorConfig,
   LogDomain,
   LogHelper,
   PixelMapUtil,
@@ -31,14 +33,13 @@ import {
   localEventManager,
   ViewCallback,
   viewMgrPolicy,
-  ViewType
+  ViewType,
+  LightOutdoorConfig
 } from '@ohos/frameworkwrapper';
 import { launcherStatusUtil, ResUtils } from '@ohos/windowscene';
 import { NumberConstants, SCBConstants } from '@ohos/commonconstants';
 import {
-  FormConstants,
-  FormStyleConfig,
-  FormViewModel
+  FormConstants, FormStyleConfig, FormViewModel
 } from '@ohos/form';
 import {
   AppName,
@@ -75,7 +76,8 @@ import {
   FormHostService,
   FormModel,
   UninstallListener,
-  LiveFormSupportMgr
+  LiveFormSupportMgr,
+  FormRelationManager
 } from '@ohos/launchercommon/src/main/ets/TsIndex';
 import systemParameterEnhance from '@ohos.systemParameterEnhance';
 import { NoIconAppInfo, NoIconAppModel } from '@ohos/launchercommon/src/main/ets/model/NoIconAppModel';
@@ -110,10 +112,12 @@ import { HOT_AREA_HEIGHT, HOT_AREA_WIDTH, INVALID_FORM_ZOOM_ID } from '../../for
 import { FormZoomManager } from '../../formAdjust/common/FormZoomManager';
 import { formZoomController } from '../../formAdjust/viewModel/FormZoomController';
 import { OverflowViewModel } from '../../liveform/viewmodel/OverflowViewModel';
+import FeatureConstants from '../../../constants/FeatureConstants';
 
 const TAG = 'FormItemRelative';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.HOME, TAG);
 const CLOCK_WEATHER_CARD_NAME: string = 'ClockWeatherCard';
+const CLOUD_MODE_TWO: string = '64';
 const DELAY_THREE_SECOND: number = 3000;
 
 interface FormZoomSupportInfo {
@@ -148,8 +152,10 @@ export default struct FormItemRelative {
   private mViewModel: FormComponentModel = FormComponentModel.getInstance();
   private mAppNameVm: AppNameVm = new AppNameVm();
   private mAppNameEvent: AppNameEvent = new AppNameEvent(this.mAppNameVm);
+  @State setFormOpacity: number = 0;
   private unInstallListener: UninstallListener = {
-    uninstallApp: (bundleName: string): void => {},
+    uninstallApp: (bundleName: string): void => {
+    },
     uninstallAppResult: (bundleName: string, resultCode: number):
       void => this.mFormItemEvent.uninstallAppResultHandler(bundleName, resultCode)
   };
@@ -192,7 +198,9 @@ export default struct FormItemRelative {
   @StorageProp('isAccessibilityMode') isAccessibilityMode: boolean = false;
   @StorageProp('desktopIconChange') @Watch('updateFormSize') desktopIconChange: number = 0;
   @StorageProp('isClearInvalidCardsDone') isClearInvalidCardsDone: boolean = false;
+  @StorageProp('formDragStart') isFormCenterDrag: boolean = false;
 
+  private carType: string = FeatureConstants.CARD_TYPE_SECOND;
   private mFormZoomManager: FormZoomManager = FormZoomManager.getInstance();
   private isOuterDesktop: boolean = false;
   private isFunInteraction: boolean = false;
@@ -203,7 +211,6 @@ export default struct FormItemRelative {
     color: StyleConstants.FORM_SHADOW_COLOR,
     offsetY: StyleConstants.FORM_SHADOW_OFFSETY
   }
-
   private mDeleteOuterCardListener?: ReceiveEventInfo;
   private removeFormDialogController: CustomDialogController | null = null;
   private keyguardCallback: ViewCallback = {
@@ -215,7 +222,7 @@ export default struct FormItemRelative {
       onReceiveEvent: (event: string, params: string): void => {
         log.showInfo(`localEventListener receive event: ${event}, params: ${params}.`);
         if (event === EventConstants.EVENT_REQUEST_OUTER_CARD_DELETE && params === this.mFormItem.cardId) {
-          const formAnimateData: FormAnimateData = { cardId: this.mFormItem.cardId, isOpenRemoveFormDialog: true};
+          const formAnimateData: FormAnimateData = { cardId: this.mFormItem.cardId, isOpenRemoveFormDialog: true };
           AppStorage.setOrCreate('formAnimateData', formAnimateData);
           this.mFormItemEvent.doRemoveFormAnimate(this.mFormItem.page as number);
         }
@@ -410,6 +417,7 @@ export default struct FormItemRelative {
   }
 
   private updateDialogName(value: string): void {
+    // 将系统迁移场景的SceneBoard应用名称替换为设备应用名称
     this.mFormItemEvent.dealWithFromName().then((appName) => {
       if (!CheckEmptyUtils.checkStrIsEmpty(appName)) {
         log.showWarn(`set appName : ${appName}`);
@@ -446,7 +454,7 @@ export default struct FormItemRelative {
     }
 
     if (this.mFormItem.gameCardInfo.extensionType === OverflowConstants.ANIMATION_TYPE &&
-      LiveFormSupportMgr.getInstance().isSupportSceneAnimation()) {
+    LiveFormSupportMgr.getInstance().isSupportSceneAnimation()) {
       this.mFormItemEvent = new OverflowSceneAnimationFormEvent(this.mFormItemVm, this.mFormBackVm,
         this.mFormMaskVm, this.isOuterDesktop);
     } else if (this.isFunInteractionForm()) {
@@ -500,7 +508,8 @@ export default struct FormItemRelative {
   private getAccessFormName(formName: string, mFormItem: CardItemInfo): string {
     let accessFormName: string = formName;
     // SCENEBOARD_BUNDLE需要排除占位卡的情况
-    if (mFormItem.bundleName === CommonConstants.SCENEBOARD_BUNDLE) {
+    if (mFormItem.bundleName === CommonConstants.SCENEBOARD_BUNDLE &&
+      !FormRelationManager.getInstance().isSceneBoardCard(mFormItem.bundleName, mFormItem.cardName)) {
       accessFormName = ResourceManager.getInstance().getStringByName('lock_screen');
     }
     return `${accessFormName}${ResUtils.getInnerString($r('app.string.form_service'))}`;
@@ -537,7 +546,38 @@ export default struct FormItemRelative {
     });
   }
 
+  /**
+   * 根据拖动方式和卡片类型，计算得到 MARGIN 偏移 卡片落位会创建两次卡片 传入正常卡片ID框架异常返回一次卡片ID
+   * @param isCenterDrag  true = 从卡片中心拖动 | false = 在桌面拖动
+   * @param cardType 卡片类型：2x2 / 2x1 / 4x4 / 4x6
+   * @returns 最终偏移量
+   */
+  private getOffsetMargin(isFormCenterDrag: boolean, cardType: string): number {
+    switch (cardType) {
+      case FeatureConstants.CARD_TYPE_SECOND:
+        return isFormCenterDrag ? FeatureConstants.CARD_MARGIN_OFFSET_TWELVE :
+          FeatureConstants.CARD_MARGIN_OFFSET_FOURTTEN;
+      case FeatureConstants.CARD_TYPE_ONE:
+        return FeatureConstants.CARD_MARGIN_OFFSET_FIVE;
+      case FeatureConstants.CARD_TYPE_FOUR:
+        return isFormCenterDrag ? FeatureConstants.CARD_MARGIN_OFFSET_TWENTY_SEVEN :
+          FeatureConstants.CARD_MARGIN_OFFSET_TWENTY_EIGHT;
+      case FeatureConstants.CARD_TYPE_SIX:
+        return isFormCenterDrag ? FeatureConstants.CARD_MARGIN_OFFSET_FORTY_THREE :
+          FeatureConstants.CARD_MARGIN_OFFSET_FORTY_TWO;
+      default:
+        return FeatureConstants.CARD_MARGIN_OFFSET_ZERO;
+    }
+  }
+
   aboutToAppear(): void {
+    GlobalContext.getContext().eventHub.on('setFormOpacity', () => {
+      this.setFormOpacity = 1;
+    })
+    let carType: number[] | undefined = this.mFormItem.area;
+    if (carType) {
+      this.carType = carType[1].toString();
+    }
     this.checkCardDimension(this.mFormItem);
     log.showWarn(`build item form, cardId: %{public}s, default activate: %{public}s, area: %{public}s, cardName: %{public}s, bundleName=%{public}s, moduleName: %{public}s,` +
       ` cardDimension: %{public}d, page: %{public}d, column: %{public}d, row: %{public}d, isOuterDesktop: %{public}s`,
@@ -615,6 +655,7 @@ export default struct FormItemRelative {
       this.needUpdateLocation = true;
       this.updateLocation();
     }
+    // 将系统迁移场景的SceneBoard占位卡片名称替换为设备应用名称
     this.mFormItemEvent.dealWithFromName().then((appName) => {
       if (!CheckEmptyUtils.checkStrIsEmpty(appName)) {
         this.mFormName = appName;
@@ -635,7 +676,7 @@ export default struct FormItemRelative {
   }
 
   private loadFormZoomComponent(): void {
-   if (this.formZoomId !== this.mFormComponentId) {
+    if (this.formZoomId !== this.mFormComponentId) {
       this.showFormZoomSnapshot = false;
       if (this.mFormItem.cardId !== '0') {
         FormModel.getInstance().updateFormInfoById(this.mFormItem);
@@ -648,6 +689,9 @@ export default struct FormItemRelative {
 
   aboutToDisappear(): void {
     log.showInfo('FormItemRelative aboutToDisappear');
+    setTimeout(()=>{
+      GlobalContext.getContext().eventHub.off('setFormOpacity')
+    }, 3000)
     if (this.clearFormZoomTimeoutId) {
       clearTimeout(this.clearFormZoomTimeoutId);
       this.clearFormZoomTimeoutId = 0;
@@ -681,7 +725,7 @@ export default struct FormItemRelative {
     const timerId = setTimeout(() => {
       this.isClearInvalidCardsDone = true;
       clearTimeout(timerId);
-      }, DELAY_THREE_SECOND);
+    }, DELAY_THREE_SECOND);
   }
 
   private updateSatisfiedCardList(cardItemInfo: CardItemInfo) {
@@ -765,7 +809,7 @@ export default struct FormItemRelative {
         this.desktopStyle.centerX : FormStyleConstants.FORM_PORTRAIT_SCALE_X,
       centerY: !CheckEmptyUtils.isEmpty(this.desktopStyle) && this.desktopStyle.unLockAnimate ?
         this.desktopStyle.centerY : !this.mDefaultType ? FormStyleConstants.PC_FORM_PORTRAIT_SCALE_Y :
-        FormStyleConstants.FORM_PORTRAIT_SCALE_Y
+          FormStyleConstants.FORM_PORTRAIT_SCALE_Y
     }
   }
 
@@ -803,7 +847,7 @@ export default struct FormItemRelative {
     .parallelGesture(
       GestureGroup(GestureMode.Parallel,
         // 100ms 空长按手势确保图标优先于编辑模式背板响应长按手势
-        LongPressGesture({ repeat: false, duration: EditModeConstants.PAGE_DRAG_SKIP_GESTURE_TIME}),
+        LongPressGesture({ repeat: false, duration: EditModeConstants.PAGE_DRAG_SKIP_GESTURE_TIME }),
         LongPressGesture({ repeat: false, duration: NumberConstants.LONG_PRESS_VIBRATOR_TIME })
           .onAction((event: GestureEvent) => {
             this.mFormItemEvent.handleLongPressVibration(this.mFormMenuEvent, event);
@@ -938,7 +982,7 @@ export default struct FormItemRelative {
         moduleName: this.mFormItem.mainModuleName,
         labelId: this.mFormItem.appLabelId,
         appName: this.mFormName,
-        isBlockUpdateName:this.mFormItemEvent.isBlockUpdateName(),
+        isBlockUpdateName: this.mFormItemEvent.isBlockUpdateName(),
         nameHeight: this.mFormNameSizeInfo.mFormNameHeight,
         nameWidth: this.mFormNameSizeInfo.mFormNameWidth,
         nameSize: this.mFormNameSizeInfo.mFormNameSize,
@@ -983,6 +1027,13 @@ export default struct FormItemRelative {
     })
     .opacity(this.mFormNameVm.mNameOpacity)
     .bindContextMenu(this.RightClickMenuBuilder, ResponseType.RightClick, this.mFormMenuEvent.rightClickPCContext())
+    .onAppear(() => {
+      let isSetFormOpacity = AppStorage.get('setFormOpacity') === 0;
+      if (isSetFormOpacity) {
+        return;
+      }
+      this.setFormOpacity = 1
+    })
     .zIndex(-2)
   }
 
@@ -1011,6 +1062,15 @@ export default struct FormItemRelative {
           log.showInfo(`add activate default active form: ` +
             `${this.mFormItem.bundleName}, ${newCardId}, ${this.mFormItem.cardName}}`);
           this.mOverflowViewModel.addDefaultActivatedFormId(newCardId);
+          try {
+            let status: string = systemParameterEnhance.getSync('persist.phone_focus.advance.mode.status');
+            if (status === CLOUD_MODE_TWO) {
+              log.showWarn('enter cloud mode two, start activateDefaultActivatedForms');
+              this.mOverflowViewModel?.activateSceneAnimation(newCardId);
+            }
+          } catch (err) {
+            log.showError('systemParameterEnhance getSync failed');
+          }
         }
       },
       clickForm: (): void => {
@@ -1025,11 +1085,12 @@ export default struct FormItemRelative {
       isOuterDesktop: this.isOuterDesktop,
       skeletonEnable: skeletonEnable,
       shadowStyle: this.shadowStyle,
-    }).onClick((event: ClickEvent) => {
-      // 编辑模式屏蔽了卡片组件的hitTestBehavior 为None,
-      // 需要在这里捕获事件方式冒泡到桌面，触发桌面点击事件导致退出编辑模式
-      return;
     })
+      .onClick((event: ClickEvent) => {
+        // 编辑模式屏蔽了卡片组件的hitTestBehavior 为None,
+        // 需要在这里捕获事件方式冒泡到桌面，触发桌面点击事件导致退出编辑模式
+        return;
+      })
       .onTouch((event: TouchEvent) => {
         if (event.type === TouchType.Down) {
           // 在此处记录 formComponent 点击情况，作为后续主动触发卡片视乎，回调接口判断的依据
@@ -1072,7 +1133,6 @@ export default struct FormItemRelative {
     .size({ width: this.mFormItemWidth, height: this.mFormItemHeight })
     .borderRadius(this.mFormItemVm.mFormBorderRadius)
     .scale({ x: this.mFormItemVm.mDropAnimateScale, y: this.mFormItemVm.mDropAnimateScale })
-    .margin({ top: this.mFormMarginTop })
     .onTouch((event: TouchEvent): void => {
       this.mFormItemEvent.handleTouchEvent(event, this.mFormComponentId, this.isInDrag);
       this.mFormMenuEvent.setAppMenuPosition(event, this.mFormComponentId, this.mMenuInfo);
@@ -1080,8 +1140,9 @@ export default struct FormItemRelative {
   }
 
   private showContextMenu(): boolean {
-    let menuInfo: MenuInfo[] = this.mPageDesktopViewModel.buildCardMenuInfoList(this.mFormItem, this.removeFormDialogController,
-      FormConstants.FORM_MANAGER_SHOW_FROM_DESKTOP_FORM_RIGHT_MENU, this.deleteFormFunc);
+    let menuInfo: MenuInfo[] =
+      this.mPageDesktopViewModel.buildCardMenuInfoList(this.mFormItem, this.removeFormDialogController,
+        FormConstants.FORM_MANAGER_SHOW_FROM_DESKTOP_FORM_RIGHT_MENU, this.deleteFormFunc);
     if (menuInfo?.length > 0) {
       return true;
     }
@@ -1130,14 +1191,20 @@ export default struct FormItemRelative {
         })
       }
     }
+    .margin({ top: this.mFormMarginTop })
     .formCommonStyle()
     .bindContextMenu(this.RightClickMenuBuilder, ResponseType.RightClick, this.mFormMenuEvent.rightClickContext())
-    .bindContextMenu(this.mFormMenuVm.mIsMenuShow && !this.isOuterDesktop, this.showContextMenu() ?
-      this.LongPressMenuBuilder : (): void => {},
+    .bindContextMenu(!(OutdoorConfig.getInstance().isInOutdoorMode() ||
+    LightOutdoorConfig.getInstance().isOnLightOutdoorMode()) &&
+    this.mFormMenuVm.mIsMenuShow && !this.isOuterDesktop,
+      this.showContextMenu() ? this.LongPressMenuBuilder : (): void => {
+      },
       this.mFormMenuEvent.longPressContext(this.mFormItem.cardDimension, this.getMenuOffset(),
-        this.mFormItemEvent.enableFormZoom() ? () => { this.formZoomPreviewBuilder() } : undefined))
+        this.mFormItemEvent.enableFormZoom() ? () => {
+          this.formZoomPreviewBuilder()
+        } : undefined))
     .dragStyles()
-    .translate({y: this.mFormItemVm.mDropAnimateTranslateY})
+    .translate({ y: this.mFormItemVm.mDropAnimateTranslateY })
     .id(this.mFormComponentBuilderId)
     .alignRules(this.isLayoutCenterStyle ?
       {
@@ -1161,7 +1228,7 @@ export default struct FormItemRelative {
       this.mFormItemEvent.handleFormWrapperClickEvent();
     })
     .accessibilityLevel(this.isAccessibilityMode ?
-      (this.mFormItem.gameCardInfo && !this.mFormItemVm.isOverflowFormEnable ? 'yes' : 'no' ) : 'auto')
+      (this.mFormItem.gameCardInfo && !this.mFormItemVm.isOverflowFormEnable ? 'yes' : 'no') : 'auto')
     .attributeModifier(this.mFormItemEvent.getFormComponentModifier())
     .parallelGesture(
       LongPressGesture({ repeat: false, duration: NumberConstants.LONG_PRESS_ZOOM_IN_WITH_MENU })
@@ -1176,9 +1243,10 @@ export default struct FormItemRelative {
     Column() {
       this.BaseFormComponent(!this.isInDrag && !this.mViewModel.isInScreenRotateAni() ? true : undefined)
     }
-    .opacity(this.mFormComponentVm.mFormOpacity)
+    .opacity(this.setFormOpacity)
     .bindContextMenu(this.RightClickMenuBuilder, ResponseType.RightClick, this.mFormMenuEvent.rightClickPCContext())
     .bindContextMenu(this.mFormMenuVm.mIsMenuShow, this.LongPressMenuBuilder, this.mFormMenuEvent.longPressPCContext())
+    .margin({ top: this.mFormMarginTop + this.getOffsetMargin(this.isFormCenterDrag, this.carType)})
     .formCommonStyle()
     .id(this.mFormComponentBuilderId)
     .dragStyles()
@@ -1231,6 +1299,6 @@ export default struct FormItemRelative {
     .accessibilityText(this.isOuterDesktop ? DesktopAccessibilityUtils
       .getOuterDesktopCardAccessibilityText(this.mFormItem, this.isAccessibilityMode, this.isOuterDesktop) :
       this.getAccessFormName(this.formName, this.mFormItem)
-      )
+    )
   }
 }

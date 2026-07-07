@@ -1,0 +1,389 @@
+{
+    "string":[
+        {
+            "name":"add_card_fail_desktop",
+            "value":"Không thêm được. Vui lòng thử lại sau.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_card_success_desktop",
+            "value":"Đã thêm thành công.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_cant_add_to_folder",
+            "value":"Không thể thêm biểu tượng ứng dụng vào thư mục.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"individuation",
+            "value":"Cá nhân hóa",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sort_by_create_time",
+            "value":"Ngày tạo",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"delete_app",
+            "value":"Gỡ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"covertTo_bigFolder",
+            "value":"Phóng to",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_delete_card",
+            "value":"Gỡ tiện ích %s?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_delete_app",
+            "value":"Gỡ %s?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"right_collaboration",
+            "value":"Nhập từ thiết bị khác",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"rename_folder",
+            "value":"Đổi tên",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remove_from_desktop",
+            "value":"Xóa khỏi màn hình chính",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_icon_to_desktop_max",
+            "value":"Không có chỗ trống trên màn hình chính. Hãy thử di chuyển một số mục.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"folder_create_toast",
+            "value":"%1$s đã được đặt cùng %2$s trong thư mục \"%3$s\" trên màn hình chính %4$d.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_form_to_desktop_max",
+            "value":"Không còn chỗ trống nào trên màn hình hiện tại.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"right_shell",
+            "value":"HiShell",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"covertTo_smallFolder",
+            "value":"Thu nhỏ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"added_to_desktop",
+            "value":"Đã thêm vào màn hình chính.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"can_not_remove_from_flod",
+            "value":"Không thể di chuyển ứng dụng này ra khỏi thư mục này.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"can_not_rename_flod",
+            "value":"Không thể đổi tên thư mục này.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_page_tip",
+            "value":"Giữ và kéo màn hình để thay đổi thứ tự",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cant_add_current_or_portrait",
+            "value":"Không đặt được. Tiện ích sẽ không vừa theo cả hai hướng.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"form_in_desktop_exceed",
+            "value":"Đã đạt đến số tiện ích tối đa.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sort_by_type",
+            "value":"Loại",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"uninstall",
+            "value":"Gỡ cài đặt",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"content_add_toast",
+            "value":"Không thêm được. Không đủ chỗ nếu xoay.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"edit_mode_pinch_gesture_tip",
+            "value":"Đưa hai ngón tay về gần nhau để thêm ứng dụng và tiện ích",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"desktop_sort",
+            "value":"Sắp xếp theo",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sort_by_modify_time",
+            "value":"Ngày sửa đổi",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"deliver_app_dialog_content",
+            "value":"%s hiện có sẵn trên OpenHarmony. Hãy cập nhật ứng dụng để có trải nghiệm hoàn toàn mới.\n\nXin lưu ý rằng một số dữ liệu ứng dụng có thể bị mất khi chuyển đổi phiên bản.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"folder_add_toast",
+            "value":"%1$s đã được đặt vào thư mục \"%2$s\" trên màn hình chính %3$d.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"paste",
+            "value":"Dán",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_black_page_to_desktop_max",
+            "value":"Đã đạt đến số lượng màn hình chính tối đa.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cant_add_current_or_landscape",
+            "value":"Không đặt được. Tiện ích sẽ không vừa theo cả hai hướng.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"right_create",
+            "value":"Mới",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cancel",
+            "value":"Hủy",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"right_create_folder",
+            "value":"Thư mục",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sort_by_size",
+            "value":"Kích thước",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"can_not_add_to_flod",
+            "value":"Không thể thêm ứng dụng này vào thư mục này.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sort_by_name",
+            "value":"Tên",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"deliver_app_dialog_cancel",
+            "value":"Bỏ qua",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"deliver_app_dialog_confirm",
+            "value":"Cập nhật ngay",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"bigFolder_useGuidance_content",
+            "value":"Chạm và giữ một thư mục, sau đó kéo đường viền để phóng to thư mục đó.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"bigFolder_useGuidance_title",
+            "value":"Chỉnh cỡ thư mục",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"bigFolder_useGuidance_button",
+            "value":"Đã hiểu",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"only_deliver_app_can_add_to_fold",
+            "value":"Chỉ có thể thêm các ứng dụng deliver vào thư mục này.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"folder_rename_clear",
+            "value":"Xóa văn bản",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"desktop_current_page_tips",
+            "value":"Màn hình %1$s trên %2$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"folder_add",
+            "value":"Thêm",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"home_screen",
+            "value":"Màn hình chính của ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"folder_is_closed",
+            "value":"Thư mục đã đóng",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"desktop_current_page",
+            "value":"Màn hình %1$s trên %2$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"folder_rename_cleared",
+            "value":"Đã xóa",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"smart_assistant_today",
+            "value":"Assistant∙TODAY",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"desktop_had_existed_the_app",
+            "value":"Ứng dụng này đã có trên màn hình chính.",
+            "attr":{
+                "priority":"LT"
+            }
+        }
+    ]
+}

@@ -93,7 +93,8 @@ export class VolumeController extends BaseController<CommonData> {
     [audio.AudioVolumeType.VOICE_CALL, new VolumeValueInfo()],
     [audio.AudioVolumeType.RINGTONE, new VolumeValueInfo()],
     [audio.AudioVolumeType.MEDIA, new VolumeValueInfo()],
-    [audio.AudioVolumeType.ALARM, new VolumeValueInfo()]
+    [audio.AudioVolumeType.ALARM, new VolumeValueInfo()],
+    [audio.AudioVolumeType.VOICE_ASSISTANT, new VolumeValueInfo()]
   ]);
   // 音量调整最小只能调整到1的音频类型集合
   private minVolumeOneSet: Set<audio.AudioVolumeType> =
@@ -101,6 +102,8 @@ export class VolumeController extends BaseController<CommonData> {
   // 当前正在生效的音频流类型
   private currentVolumeType: audio.AudioVolumeType = audio.AudioVolumeType.MEDIA;
   private callbackMap: HashMap<string, VolumeChangeCallback> = new HashMap();
+  // 当前是否处于语音助手语音识别态
+  private isCapturerRunning: boolean = false;
   private refreshIconTimeout: number | null = null;
 
   constructor() {
@@ -232,8 +235,9 @@ export class VolumeController extends BaseController<CommonData> {
    */
   public updateVolumeUI(): void {
     try {
-      let audioVolumeType = this.audioVolumeGroupManager?.getActiveVolumeTypeSync(0);
-      log.showInfo(`get audioVolumeType ${audioVolumeType}`);
+      let audioVolumeType = this.isCapturerRunning ? audio.AudioVolumeType.VOICE_ASSISTANT :
+        this.audioVolumeGroupManager?.getActiveVolumeTypeSync(0);
+      log.showInfo(`get audioVolumeType ${audioVolumeType}, this.isCapturerRunning: ${this.isCapturerRunning}`);
       if (audioVolumeType !== undefined && this.volumeInfoMap.has(audioVolumeType)) {
         this.currentVolumeType = audioVolumeType;
       }
@@ -261,7 +265,14 @@ export class VolumeController extends BaseController<CommonData> {
     log.showInfo(`updateCapturerUICallback size: ${audioCapturerChangeInfoArray.length}`);
     audioCapturerChangeInfoArray.forEach((capturerInfo) => {
       if (capturerInfo?.capturerInfo?.source === audio.SourceType.SOURCE_TYPE_VOICE_RECOGNITION) {
-        if (capturerInfo?.capturerState > audio.AudioState.STATE_RUNNING) {
+        this.isCapturerRunning = capturerInfo?.capturerState === audio.AudioState.STATE_RUNNING;
+        if (this.isCapturerRunning) {
+          // 语音助手语音输入场景，切换对应通道
+          this.isCapturerRunning = true;
+          this.currentVolumeType = audio.AudioVolumeType.VOICE_ASSISTANT;
+          log.showInfo(`updateCapturerUICallback set currentVolumeType ${this.currentVolumeType}`);
+          this.refreshVolumeIconDelay();
+        } else if (capturerInfo?.capturerState > audio.AudioState.STATE_RUNNING) {
           this.updateVolumeUI();
         }
       }

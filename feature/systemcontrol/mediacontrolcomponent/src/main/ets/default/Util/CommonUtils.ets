@@ -25,9 +25,9 @@ import SmartSpeakerIconUtils from './SmartSpeakerIconUtils';
 import { DeviceHelper } from '@ohos/frameworkwrapper/src/main/ets/base/DeviceHelper';
 import display from '@ohos.display';
 import { ConfigurationConstant } from '@kit.AbilityKit';
-// import nearlinkDevice from '@hms.nearlink.remoteDevice';
+// import nearlinkDevice from '@ohos.nearlink.remoteDevice';
 import { GlobalContext } from '@ohos/frameworkwrapper/src/main/ets/utils/GlobalContext';
-// import nearlinkConstant from '@hms.nearlink.constant';
+// import nearlinkConstant from '@ohos.nearlink.constant';
 import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
 const TAG = 'CommonUtils_debug';
@@ -65,6 +65,8 @@ export default class CommonUtils {
         return $r('app.media.device_switch_bluetooth');
       case audio.DeviceType.WIRED_HEADPHONES:
         return $r('app.media.device_switch_earphone');
+      case 23:
+        return $r('app.media.ic_device_matebook');
       default:
         return $r('app.media.device_switch_earphone');
     }
@@ -250,8 +252,8 @@ export default class CommonUtils {
    *
    * @returns true是，false不是
    */
-  public static isUltraScreenProductInGState(): boolean {
-    return DeviceHelper.isUltraScreenProduct() && DeviceHelper.isGState();
+  public static isThreeFoldProductInGState(): boolean {
+    return DeviceHelper.isThreeFoldProduct() && DeviceHelper.isGState();
   }
 
   /**
@@ -263,7 +265,7 @@ export default class CommonUtils {
     let isFoldExpanded: boolean = false;
     try {
       isFoldExpanded = display.isFoldable() && (display.getFoldStatus() === display.FoldStatus.FOLD_STATUS_EXPANDED ||
-        CommonUtils.isUltraScreenProductInGState());
+        CommonUtils.isThreeFoldProductInGState());
       log.showInfo(`isFoldExpanded : getFoldStatus = ${display.getFoldStatus()},isFoldExpanded = ${isFoldExpanded}`);
     } catch (error) {
       log.showError('isFoldExpanded -> try error:', error);

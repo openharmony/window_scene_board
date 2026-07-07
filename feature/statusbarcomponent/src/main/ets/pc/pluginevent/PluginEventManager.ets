@@ -17,7 +17,7 @@ import { StatusBarEventId, StatusBarEventManager } from '../manager/StatusBarEve
 import { PluginListAdapter } from '../pluginData/PluginListAdapter';
 import { StatusBarCustomEvent } from '../utils/events';
 import { PluginProperty } from '../viewdata/PluginProperty';
-// import statusBar from '@hms.pcService.statusBar';
+import statusBar from '@ohos.pcService.statusBar';
 import measure from '@ohos.measure';
 import { CommonConstants } from '@ohos/launchercommon/src/main/ets/constants/CommonConstants';
 import { StyleConstants } from '@ohos/launchercommon/src/main/ets/constants/StyleConstants';
@@ -55,7 +55,9 @@ const REMOTE_PLUGIN_ARRAY = [
   PluginSlot.SLOT_STATUS_SMART_SCREENSHOT,
   PluginSlot.SLOT_STATUS_SCREEN_RECORDER,
   PluginSlot.SLOT_STATUS_QUICK_NOTE,
+  PluginSlot.SLOT_STATUS_ASSISTANT_TRANSLATE,
   PluginSlot.SLOT_STATUS_HOS_KEY,
+  PluginSlot.SLOT_STATUS_ASSISTANT_VOICE
 ];
 const TRIGGER_TYPE_VALUE = 'status-bar';
 const LOCAL_EVENT_TYPE = 'local';
@@ -337,6 +339,7 @@ export class PluginEventManager extends PluginNotifyBase {
         // 一步直达
         if (property.isPluginTypeAccess()) {
           AppClientNotifier.getInstance().notifyClientIconClicked(property.getSlot(), 'leftClick');
+          AppClientNotifier.getInstance().notifyClientIconClicked(property.getSlot(), 'leftClickType');
           PluginWindowManager.getInstance().hideAppOrRecentWindow();
           return false;
         }
@@ -383,6 +386,9 @@ export class PluginEventManager extends PluginNotifyBase {
           abilityName: abilityName,
           moduleName: moduleName
         })
+      }
+      if (bundleName === CommonConstants.HISEARCH_BUNDLE) {
+        AppStorage.setOrCreate('hisearchAbilityName', abilityName);
       }
       log.showInfo('ability startServiceExtensionAbility --zpan-- over');
     } else {
@@ -556,6 +562,7 @@ export class PluginEventManager extends PluginNotifyBase {
   private reportPluginTouch(slot: string) {
     if (slot === PluginSlot.SLOT_STATUS_CAPSULE_SCREENSHOT ||
       slot === PluginSlot.SLOT_STATUS_SMART_SCREENSHOT ||
+      slot === PluginSlot.SLOT_STATUS_ASSISTANT_VOICE ||
       slot === PluginSlot.SLOT_STATUS_SCREEN_RECORDER) {
       reportIntervalMgr.addEventCount(slot);
     }
@@ -598,8 +605,8 @@ export class PluginEventManager extends PluginNotifyBase {
     // 菜单宽度: 基础宽度为160vp
     let maxMenuWidth = ResUtils.getNumber($r('app.float.menu_min_width'));
     if (!ArrayUtils.isEmpty(property.groupMenuInfo)) {
-      property.groupMenuInfo.forEach((menus: Array<ESObject>) => {
-        menus.forEach((menuItem: ESObject) => {
+      property.groupMenuInfo.forEach((menus: Array<statusBar.StatusBarMenuItem>) => {
+        menus.forEach((menuItem: statusBar.StatusBarMenuItem) => {
           let curMenuWidth = this.setTextWidth(menuItem.title, menuItem.subMenu);
           maxMenuWidth = curMenuWidth > maxMenuWidth ? curMenuWidth : maxMenuWidth;
         })
@@ -625,7 +632,7 @@ export class PluginEventManager extends PluginNotifyBase {
    * @param subMenu 二级菜单
    * @returns 菜单项宽度值
    */
-  private setTextWidth(title: string, subMenu?: Array<ESObject>): number {
+  private setTextWidth(title: string, subMenu?: Array<statusBar.StatusBarSubMenuItem>): number {
     const needTextWidth = Math.round(px2vp(measure.measureText({
       textContent: title,
       fontSize: StyleConstants.MENU_FONTSIZE,

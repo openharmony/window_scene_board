@@ -39,6 +39,7 @@ import {
   AppModel,
   CloseAppManager,
   CommonConstants,
+  DeliverUtil,
   EventConstants,
   layoutConfigManager,
   RdbStoreManager,
@@ -50,6 +51,7 @@ import FeatureConstants from '../common/constants/FeatureConstants';
 import SmartDockModel from './SmartDockModel';
 import StatusBarServiceEventMgr from '../manager/StatusBarServiceEventMgr';
 import { image } from '@kit.ImageKit';
+import { VassistantConstants } from '@ohos/commonconstants/src/main/ets/constants/SCBConstants';
 
 const TAG = 'RecentDockModel';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.HOME, TAG);
@@ -128,7 +130,44 @@ export default class RecentDockModel extends SingleBase {
         log.showWarn('addToRecentDockList fail, bundleName is null');
         return;
       }
+      let adapterBundleName = SceneInfoAdapterUtil.getAdapterBundleName(bundleName);
+      // 常驻区存在的app和dh文件夹内的app，不添加到recent区
+      if (!this.isRecentElement(adapterBundleName, appIndex)) {
+        return;
+      }
       let recentDockList = this.mRecentCacheMgr.getAllDockItems();
+      let index = this.getAppIndexInRecentDockList(adapterBundleName, appIndex);
+      switch (index) {
+        case -1:
+          log.showInfo(`addToRecentDockList: ${bundleName} ${appIndex}`);
+          let appList = this.mAppModel.getAppList();
+          let appItem = appList.find(item => item.bundleName === adapterBundleName && item.appIndex === appIndex);
+          if (!appItem) {
+            log.showInfo('app not found in appList');
+            return;
+          }
+          let recentTaskInfo = SmartDockModel.getInstance().buildDockItemInfo(appItem);
+          recentTaskInfo.typeId = CommonConstants.TYPE_APP;
+          if (StatusBarServiceEventMgr.getInstance().isWpsAndRegister(recentDockList?.[0]?.bundleName)) {
+            recentDockList.splice(1, 0, recentTaskInfo);
+          } else {
+            recentDockList.unshift(recentTaskInfo);
+          }
+          break;
+        case 0:
+          // 如果当前应用已经在第一位了，则不需要刷新数据库和列表
+          log.showInfo('app is already first in recent dock');
+          return;
+        default:
+        // 如已在最近任务区存在，则把顺序调整为第一位
+          if (StatusBarServiceEventMgr.getInstance().isWpsAndRegister(recentDockList?.[0]?.bundleName)) {
+            recentDockList.splice(1, 0, recentDockList[index]);
+          } else {
+            recentDockList.unshift(recentDockList[index]);
+          }
+          recentDockList.splice(index + 1, 1);
+          break;
+      }
       if (recentDockList.length > this.mSmartDockStyleConfig.mRecentDockMaxNumber) {
         // 删除超出的元素
         this.cleanContinueItem();
@@ -156,6 +195,10 @@ export default class RecentDockModel extends SingleBase {
     if (residentList?.length > 0 &&
     residentList.find((item) => item.bundleName === bundleName && item.appIndex === appIndex && item.typeId === 0)) {
       log.showDebug(`app found in residentList: ${bundleName} ${appIndex}`);
+      return false;
+    }
+    if (DeliverUtil.isSupportAppType(bundleName)) {
+      log.showInfo(`app found in container folder: ${bundleName} ${appIndex}`);
       return false;
     }
     return true;
@@ -211,7 +254,12 @@ export default class RecentDockModel extends SingleBase {
       params.set(SCBConstants.START_APP_CLONE_INDEX, item.appIndex);
       StartAbilityUtil.startLauncherAbility(item.abilityName, item.bundleName, item.moduleName, params);
     } else {
-      StartAbilityUtil.startLauncherAbility(item.abilityName, item.bundleName, item.moduleName);
+      if (item.bundleName === VassistantConstants.VASSISTANT_LAUNCHER_BUNDLE_NAME) {
+        StartAbilityUtil.startLauncherAbility(VassistantConstants.VASSISTANT_ABILITY_NAME,
+          VassistantConstants.VASSISTANT_BUNDLE_NAME, VassistantConstants.DEFAULT_MODULE_NAME);
+      } else {
+        StartAbilityUtil.startLauncherAbility(item.abilityName, item.bundleName, item.moduleName);
+      }
     }
   }
 
@@ -281,7 +329,7 @@ export default class RecentDockModel extends SingleBase {
 
   public getDividerWidth(): number {
     if (DeviceHelper.isPad() ||
-      (SCBSceneSessionManager.getInstance().isPcMode() && DeviceHelper.isUltraScreenProduct())) {
+      (SCBSceneSessionManager.getInstance().isPcMode() && DeviceHelper.isThreeFoldProduct())) {
       return StyleConstants.DEFAULT_20;
     }
     let desktopIconChangeSize: number = AppStorage.get<number>('settingIconChange') ?? 0;

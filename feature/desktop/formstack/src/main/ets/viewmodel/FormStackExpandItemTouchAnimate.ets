@@ -162,16 +162,13 @@ export class FormStackExpandItemTouchAnimate {
       return;
     }
 
-    if (idx >= this.mLayoutModel.mLastShowItemIndex) {
-      log.showInfo('long press item is last show, need not avoid.');
-      return;
-    }
-
     if (!FormStackDebugCmd.getInstance().isNeedExpandAnimate()) {
       log.showWarn('need not to play card long press feedback animate, animate switch is closed.');
       this.longPressAvoid(itemList, idx, false);
       return;
     }
+
+    const lastShowItemIndex = this.mLayoutModel.mLastShowItemIndex
 
     log.showInfo(`start playing animate: card darkness isPress[true].`);
     animateTo({
@@ -181,6 +178,10 @@ export class FormStackExpandItemTouchAnimate {
         this.onItemTouchFeedback(idx, false)
       }
     }, () => {
+      if (idx >= lastShowItemIndex) {
+        log.showInfo('long press item is last show, need not avoid.');
+        return;
+      }
       this.longPressAvoid(itemList, idx, false);
     });
   }

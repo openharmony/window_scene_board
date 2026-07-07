@@ -1,0 +1,13 @@
+{
+  "name": "@ohos/cloudcomponent",
+  "version": "1.0.0",
+  "description": "a npm package which contains cloudcomponent function",
+  "dependencies": {
+    "@ohos/basicutils": "file:../../../staticcommon/basecommon/basicutils",
+    "@ohos/frameworkwrapper": "file:../../../staticcommon/basecommon/frameworkwrapper",
+    "@ohos/windowscene": "file:../../../staticcommon/basecommon/windowscene",
+    "@ohos/commonconstants": "file:../../../staticcommon/basecommon/commonconstants",
+    "@ohos/systemuicommon": "file:../../../staticcommon/systemuicommon",
+    "@ohos/controlcentercommon": "file:../../../staticcommon/controlcentercommon"
+  }
+}

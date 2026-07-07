@@ -18,7 +18,7 @@ import { PluginParseInfo } from './PluginParseInfo';
 import { PluginClickType } from './PluginConstants';
 import type { Equality } from '@ohos/basicutils';
 import PCM from '@ohos.pluginComponent';
-// import statusBar from '@hms.pcService.statusBar';
+import statusBar from '@ohos.pcService.statusBar';
 
 /**
  * plugin化接入，组件数据信息
@@ -211,12 +211,17 @@ export class PluginAccessInfo extends PluginInfo {
   /**
    * 右键菜单数据
    */
-  // menuInfo?: statusBar.StatusBarGroupMenu[];
+  menuInfo?: statusBar.StatusBarGroupMenu[];
 
   /**
    * 二级菜单动效使能
    */
   loadingStatus: boolean = false;
+
+  /**
+   * Hover时提示信息
+   */
+  hoverTips: string;
 
   equals(other: object): boolean {
     if (other instanceof PluginAccessInfo) {

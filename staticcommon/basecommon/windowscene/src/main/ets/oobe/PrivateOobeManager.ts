@@ -41,10 +41,10 @@ export class PrivateOobeManager extends BaseOobeManager {
   }
 
   /**
-   * 是否是升级迁移过来的隐私空间
+   * 是否是系统迁移迁移过来的隐私空间
    *
    * @param spaceNumber 用户空间ID（100/101等）
-   * @returns 是否是升级迁移过来的隐私空间
+   * @returns 是否是系统迁移迁移过来的隐私空间
    */
   public async isPrivateUserOobe(spaceNumber: number): Promise<boolean> {
     if (spaceNumber === ADMIN_USERID) {
@@ -52,7 +52,7 @@ export class PrivateOobeManager extends BaseOobeManager {
     }
     await this.initPrivateUser();
     if (this.isPrivateUser && this.isMigratePrivacy()) {
-      // 是隐私空间 且 是升级迁移过来的
+      // 是隐私空间 且 是系统迁移迁移过来的
       log.showInfo('isPrivateUserOobe user[%{public}d] is private', spaceNumber);
       this.finishPrivateOobe();
       return true;

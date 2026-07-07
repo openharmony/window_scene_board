@@ -109,6 +109,7 @@ export class PcStatusBarDragMgr extends PluginNotifyBase {
   public statusBarRightWidth: number = -1;
   public groupWrapperWidth: number = -1;
   public fixedAreaWidth: number = -1;
+  public assistantVoiceWidth: number = -1;
   public mStartPosition: DragItemPosition | undefined;
   public mLastPosOnMoving: DragItemPosition | undefined;
   private mEndPosition: DragItemPosition | undefined;
@@ -166,9 +167,19 @@ export class PcStatusBarDragMgr extends PluginNotifyBase {
     return this.fixedAreaWidth;
   }
 
+  public setAssistantVoiceWidth(width: number): void {
+    this.assistantVoiceWidth = width;
+    this.calGroupWrapperWidth();
+  }
+
+  public getAssistantVoiceWidth(): number {
+    return this.assistantVoiceWidth;
+  }
+
   private calGroupWrapperWidth(): void {
-    this.groupWrapperWidth = this.fixedAreaWidth;
-    log.showInfo('calGroupWrapperWidth, fixedAreaWidth:' + this.fixedAreaWidth  + ' groupWrapperWidth:' + this.groupWrapperWidth);
+    this.groupWrapperWidth = this.fixedAreaWidth + this.assistantVoiceWidth;
+    log.showInfo('calGroupWrapperWidth, fixedAreaWidth:' + this.fixedAreaWidth + ' assistantVoiceWidth:' +
+      this.assistantVoiceWidth + ' groupWrapperWidth:' + this.groupWrapperWidth);
   }
 
   public setInputItemRect(newArea: Area): void {
@@ -229,6 +240,7 @@ export class PcStatusBarDragMgr extends PluginNotifyBase {
     return dynamicProperty?.hasPlugin(pluginSlot) ?? false;
   }
 
+  //状态栏动态最大区域宽度
   public DynamicExceedMaxWidth(): boolean {
     log.showInfo(`DynamicExceedMaxWidth statusBarRightWidth ${this.statusBarRightWidth},` +
       `groupWrapperWidth: ${this.groupWrapperWidth}`);
@@ -251,7 +263,7 @@ export class PcStatusBarDragMgr extends PluginNotifyBase {
      'PrivacyLocationVisiable:${isPrivacyOrLocationVisiable}`);
     visibleNum = isPrivacyOrLocationVisiable ? visibleNum : (visibleNum + 1);
     let occupyWidth = visibleNum * (CONTAINER_WIDTH + SPACE_WIDTH);
-    log.showInfo(`DynamicExceedMaxWidth occupyWidth:${occupyWidth}`);
+    log.showInfo(`DynamicExceedMaxWidth occupyWidth:${occupyWidth} groupWrapperWidth: ${this.groupWrapperWidth} statusBarRightWidth: ${this.statusBarRightWidth}`);
     if ((this.groupWrapperWidth + occupyWidth) > this.statusBarRightWidth) {
       log.showInfo('DynamicExceedMaxWidth exceed statusBar right width!');
       return true;
@@ -1174,7 +1186,7 @@ export class PcStatusBarDragMgr extends PluginNotifyBase {
     }
     this.changeStatusBarListEx();
   }
-
+  // 状态栏动态区域的插件移动到托盘区域。当状态栏动态区域宽度超过最大限制时，会调用此方法将多余的插件转移到托盘
   addToTray(dynamicProperty: GroupProperty,
     dropIndex?: number): PluginProperty | undefined {
     const rightMap = StyleFactory.getInstance()
@@ -1669,10 +1681,6 @@ export class PcStatusBarDragMgr extends PluginNotifyBase {
       PluginGroupType.DYNAMIC_LEFT);
     const privacyPlugin: PluginProperty | null =
       dynamicProperty.getSpecificPluginBySlot(PluginSlot.SLOT_CAPSULE_KEY_MOUSE);
-    if (privacyPlugin === null) {
-      log.showError('status_bar_super_privacy_paddle not exist');
-      return;
-    }
     log.showInfo(`onDragEnterArrow ${event.getWindowX()}` + ' arrowRect : ' + JSON.stringify(this.arrowRect));
     let isEnterHotArea: boolean = ((event.getWindowX() < (ResUtils.getNumberFromLength(this.arrowRect.x) +
     ResUtils.getNumberFromLength(this.arrowRect.width))) &&
@@ -1758,10 +1766,6 @@ export class PcStatusBarDragMgr extends PluginNotifyBase {
       PluginGroupType.DYNAMIC_LEFT);
     const privacyPlugin: PluginProperty | null =
       dynamicProperty?.getSpecificPluginBySlot(PluginSlot.SLOT_CAPSULE_KEY_MOUSE);
-    if (privacyPlugin === null) {
-      log.showError('status_bar_super_privacy_paddle not exist');
-      return;
-    }
     const locationPlugin: PluginProperty | null =
       dynamicProperty?.getSpecificPluginBySlot(PluginSlot.SLOT_STATUS_LOCATION);
     if (locationPlugin === null) {
@@ -1778,7 +1782,7 @@ export class PcStatusBarDragMgr extends PluginNotifyBase {
     let isEnterHotArea: boolean = (event.getWindowX() > ResUtils.getNumberFromLength(this.inputItemRect.x) &&
       event.getWindowX() <= (ResUtils.getNumberFromLength(this.inputItemRect.x) +
         ResUtils.getNumberFromLength(this.inputItemRect.width) * INPUT_PERCENT_THRESHOLD));
-    if (this.isTrayAreaPluginProperty(pluginSlot) && !privacyPlugin.isVisible() && !locationPlugin?.isVisible() &&
+    if (this.isTrayAreaPluginProperty(pluginSlot) && !privacyPlugin?.isVisible() && !locationPlugin?.isVisible() &&
       !privacySoftPlugin?.isVisible() && isEnterHotArea) {
       this.clearCancelSqueezedInStatusBarTimer();
       this.showDropFrameIcon = false;

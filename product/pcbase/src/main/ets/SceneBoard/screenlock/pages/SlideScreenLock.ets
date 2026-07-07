@@ -832,7 +832,7 @@ export default struct SlideScreenLock {
       .visibility((this.isScreenLockNotVisibility() || this.selectedUserID === Constants.INVALID_USER_ID) ?
       Visibility.None : Visibility.Visible)
 
-      if (!DeviceHelper.isEmulator()) {
+      if (!DeviceHelper.isEmulator() && this.isLock && this.isPowerMenuPanelShowed) {
         SCBScreenLockPowerPanel({
           onDialogShow: () => {this.showPowerDialog()},
           onDialogHide: () => {this.cancelPowerDialog()},

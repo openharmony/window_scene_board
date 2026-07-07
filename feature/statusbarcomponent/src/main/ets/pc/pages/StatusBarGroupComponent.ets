@@ -82,9 +82,11 @@ export struct StatusBarGroupComponent {
           PluginGroupingManager.getInstance().getPluginPosition(PluginPositionType.BOTTOM_RIGHT);
         HiSysUtil.getInstance().hiSysOnIconItemsNumberChange(property);
       }
-      this.dynamicProperty?.getPluginList().forEach((plug: PluginProperty) => {
-        log.showInfo('plug:' + plug?.getSlot() + ', visible:' + plug?.isVisible());
-      })
+      setTimeout(() => {
+        this.dynamicProperty?.getPluginList().forEach((plug: PluginProperty) => {
+          log.showInfo('plug:' + plug?.getSlot() + ', visible:' + plug?.isVisible());
+        })
+      }, 0)
     })
     .margin(this.groupMargin)
   }
@@ -141,9 +143,10 @@ export struct CapsuleGroupComponent {
     log.showInfo('visibleCallback, lastNum:' + lastNum + ' currentNum:' + currentNum);
     this.capsuleGroupWidth = this.property.getVisualPluginNum() * (Constants.PC_CAPSULE_PLUG_WIDTH +
     Constants.PC_CAPSULE_PLUG_MARGIN);
-    if (!PcStatusBarDragMgr.getInstance().isStatusBarDragging && currentNum > lastNum) {
-      PcStatusBarDragMgr.getInstance().checkDynamicExceedMaxWidth();
-    }
+    //由于当状态栏图标数量过多，整个宽度超过状态栏显示区域时，应用无法添加到托盘，PcStatusBarDragMgr 的DynamicExceedMaxWidth方法会出现死循环，例如：在开启位置时，会导致AppFreeze。暂时先注释checkDynamicExceedMaxWidth()。
+    // if (!PcStatusBarDragMgr.getInstance().isStatusBarDragging && currentNum > lastNum) {
+    //   PcStatusBarDragMgr.getInstance().checkDynamicExceedMaxWidth();
+    // }
   }
 
   @Builder
@@ -259,9 +262,11 @@ struct GroupWrapperComponent {
           }
         }
         log.showInfo(`localGroups length is ${this.property.getPluginGroupListExcludeDynamic().length} + position: ${this.positionPos}`);
-        this.property.getPluginGroupListExcludeDynamic()?.forEach((group) => {
-          log.showInfo(`localGroup is ${group?.getGroupName()},type is ${PluginStyleUtil.getCurStatusBarType()}`);
-        })
+         setTimeout(() => {
+           this.property.getPluginGroupListExcludeDynamic()?.forEach((group) => {
+             log.showInfo(`localGroup is ${group?.getGroupName()},type is ${PluginStyleUtil.getCurStatusBarType()}`);
+           })
+         }, 0)
       })
     }
   }

@@ -20,7 +20,8 @@ import {
   AppDataWrapper,
   CommonConstants,
   ReceiveEventInfo,
-  vibratorMgr
+  vibratorMgr,
+  DeliverUtil
 } from '@ohos/launchercommon/src/main/ets/TsIndex';
 import { AppIconLongPressGestureEventIface } from '@ohos/launchercommon/Index';
 import GestureDockAllAppsItemViewDataMgr from '../viewdata/GestureDockAllAppsItemViewDataMgr';

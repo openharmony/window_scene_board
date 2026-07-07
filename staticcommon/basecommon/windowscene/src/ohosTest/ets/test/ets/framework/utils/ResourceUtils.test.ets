@@ -93,6 +93,15 @@ export function ResUtilsTest() {
       ResUtils.getOutString($r('app.string.cancel'));
     })
 
+    it('ResUtilsTest_getDeliverOutStringById', 0, async (done: Function) => {
+      let res = await ResUtils.getDeliverOutStringById(null, 'test');
+      expect(res).assertNull();
+      done();
+      let resOther = await ResUtils.getDeliverOutStringById(1000, 'test');
+      expect(resOther).assertNull();
+      done();
+    })
+
     it('ResUtilsTest_getInnerStringByName', 0, (): void => {
       expect(ResUtils.getInnerStringByName(null)).assertNull();
       ResUtils.getInnerStringByName('disable_uninstall');
@@ -162,6 +171,7 @@ export function ResUtilsTest() {
     it('ResUtilsTest_getInnerMediaBase64', 0, async (done: Function) => {
       let res = await ResUtils.getInnerMediaBase64(null);
       expect(res).assertNull();
+      res = await ResUtils.getInnerMediaBase64($r('app.media.drag_to_vassistant'));
       expect(res).assertInstanceOf('String');
       done();
     })
@@ -175,6 +185,7 @@ export function ResUtilsTest() {
     it('ResUtilsTest_getOutMediaBase64', 0, async (done: Function) => {
       let res = await ResUtils.getOutMediaBase64(null);
       expect(res).assertNull();
+      res = await ResUtils.getOutMediaBase64($r('app.media.drag_to_vassistant'));
       expect(res).assertInstanceOf('String');
       done();
     })

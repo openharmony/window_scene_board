@@ -27,6 +27,7 @@ import { systemParameterEnhance } from '@kit.BasicServicesKit';
 import { RdbStoreManager } from '@ohos/launchercommon/src/main/ets/db/RdbStoreManager';
 import { SCBConstants } from '@ohos/commonconstants';
 import { phoneAppMgr } from '../plugin/PhoneAppManager';
+import { SettingsUtil } from '@ohos/frameworkwrapper';
 
 const log = LogHelper.getLogHelper(LogDomain.SYS_UI, 'NotificationUtil');
 const KEY_NOT_FOUND_ERROR_CODE = 14700101;
@@ -82,6 +83,12 @@ const TRIGGER_WANTAGENT_FAIL = 2003;
 type BasePriority = (notification: NotificationBase) => number;
 type LivePriority = (live: LiveNotification) => LiveSortPriority;
 type CapPriority = (live: LiveNotification) => LiveCapsulePriority;
+
+export class DNDConstants {
+  public static FOCUS_MODE_ENABLED = 'focus_mode_enable';
+  public static NOT_DISTURB_VALUE_DISABLE = '0';
+  public static NOT_DISTURB_VALUE_ENABLE = '1';
+}
 
 export class NotificationUtil {
   /**
@@ -191,6 +198,16 @@ export class NotificationUtil {
   }
 
   /**
+   * 是否是push发送的deliver通知
+   * @param wantAgentInfo
+   * @returns
+   */
+  public static isDeliverPushNotification(wantAgentInfo?: NotificationWantAgentInfo): boolean {
+    const info = wantAgentInfo?.want?.parameters[SystemuiConstants.KEY_PUSH_DELIVER_LAUNCH_INFO];
+    return info && typeof info === 'string' && info.trim().length > 0;
+  }
+
+  /**
    * 获取通知的Sorting信息
    * @param request
    * @returns
@@ -228,6 +245,26 @@ export class NotificationUtil {
   }
 
   /**
+   * 判断Deliver容器是否未启动
+   * @returns
+   */
+  public static isDeliverNotStarted(): boolean {
+    const DELIVER_START_FINISHED_CODE = '1000';
+    let paramStartVirtService: string = String(SystemuiConstants.INVALID_VALUE);
+    try {
+      paramStartVirtService = systemParameterEnhance.getSync('ohos_fusion_mgr.container.start.phase', '');
+    } catch (error) {
+      log.showError('get systemParameterEnhance error%{public}d:%{public}s', error.code, error.message);
+      if (error.code !== KEY_NOT_FOUND_ERROR_CODE) {
+        paramStartVirtService = DELIVER_START_FINISHED_CODE;
+      }
+    }
+    log.showInfo('get getDeliverStartStatus %{public}s', paramStartVirtService);
+    return paramStartVirtService !== DELIVER_START_FINISHED_CODE;
+  }
+
+
+  /**
    * 获取应用主页信息
    * @param bundleName
    */
@@ -237,6 +274,20 @@ export class NotificationUtil {
       return abilityInfos.find(e => e.abilityName).abilityName ?? '';
     } catch (e) {
       log.error('getAbilityName err', e);
+      return '';
+    }
+  }
+
+  /**
+   * 获取push通知对应的应用主页信息
+   * @param deliverPushLauncherInfo
+   */
+  public static async getDeliverPushAbilityName(deliverPushLauncherInfo: string): Promise<string> {
+    try {
+      const dispPkgName: string = JSON.parse(deliverPushLauncherInfo)?.dispPkgName;
+      return this.getAbilityName(dispPkgName);
+    } catch (e) {
+      log.error('setDeliverPushAbilityName err', e);
       return '';
     }
   }
@@ -291,5 +342,17 @@ export class NotificationUtil {
     let containerSessionList = SCBSceneSessionManager.getInstance().getContainerSessionList();
     let curSession = containerSessionList.getTopActiveSession();
     return !!curSession?.isMidScene;
+  }
+
+  /**
+   * 免打扰开关状态
+   *
+   * @returns
+   */
+  public static async getDNDEnable(): Promise<boolean> {
+    let isDNDEnable: boolean = await SettingsUtil.getSecureValue(DNDConstants.FOCUS_MODE_ENABLED,
+      DNDConstants.NOT_DISTURB_VALUE_DISABLE) === DNDConstants.NOT_DISTURB_VALUE_ENABLE;
+    log.info(`get DND enable: ${isDNDEnable}`);
+    return isDNDEnable;
   }
 }

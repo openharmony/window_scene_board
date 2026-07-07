@@ -17,7 +17,7 @@ import { LogDomain, LogHelper } from '@ohos/basicutils';
 import IAodProxy from '../model/IAodProxy';
 
 const TAG = 'OneMirrorAodProxy';
-const log: LogHelper = LogHelper.getLogHelper(LogDomain.SCB, TAG);
+const log: LogHelper = LogHelper.getLogHelper(LogDomain.AOD, TAG);
 const DISPLAY_SCREEN_ON: number = 0;
 
 export class OneMirrorAodProxy {

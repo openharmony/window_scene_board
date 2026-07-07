@@ -57,6 +57,7 @@ const TAG = 'SCBshutdownView';
 const log = LogHelper.getLogHelper(LogDomain.SCB, TAG);
 const POWER_STATUS_HIBERNATE = 3;
 const MASTER_APPLICATION = 0;
+const BUNDLE_NAME_VASSISTANT = 'com.ohos.vassistant';
 const ONE_HALF_OF_SCREEN = 2;
 const QUARTER_OF_SCREEN = 4;
 
@@ -88,6 +89,7 @@ export struct ShutDownView {
   @State dialogOffsetY: number = 0;
   @State isReboot: boolean = false;
   @State isHibernate: boolean = true;
+  @State isModeChange: boolean = false;
   @StorageLink('DarkModeModel_DarkModeStatus') @Watch('onDarkModeChanged') darkModeData: CommonData = new CommonData();
   dialogController: CustomDialogController = new CustomDialogController({
     builder: ShutDownDialog({
@@ -95,6 +97,7 @@ export struct ShutDownView {
       dlgHeight: this.dlgHeight,
       isReboot: this.isReboot,
       isHibernate: this.isHibernate,
+      isModeChange: this.isModeChange,
     }),
     customStyle: true,
     maskColor: $r('app.color.transparent'),
@@ -114,7 +117,7 @@ export struct ShutDownView {
   })
 
   private updateDialogOffsetY(): void {
-    const curFoldState = FoldShutdownViewProxyManager.getInstance().getCurBigScreenStatus();
+    const curFoldState = FoldShutdownViewProxyManager.getInstance().getCurSuperFoldStatus();
     const curBSideHeight = FoldShutdownViewProxyManager.getInstance().getBSideRegion().height.getPx();
     switch (curFoldState) {
       case SCBFoldState.HALF_FOLDED_VIRTUAL_KEYBOARD:
@@ -253,12 +256,38 @@ export struct ShutDownView {
     const runningAppTemp: RunningAppListStateArray = [];
     for (const appBundleName of notifyRes) {
       try {
-        this.normalInitRunningAppList(runningAppTemp, appBundleName);
+        if (appBundleName === BUNDLE_NAME_VASSISTANT) {
+          const aiAppState = this.initRunningAppAI(appBundleName);
+          runningAppTemp.push(aiAppState)
+          log.showInfo(`${TAG} push app: ${aiAppState.appName}`);
+        } else {
+          this.normalInitRunningAppList(runningAppTemp, appBundleName);
+        }
       } catch (err) {
         log.showError(`${TAG} initRunningAppList failed! code: ${err?.code}, message: ${err?.message}`);
       }
     }
     return runningAppTemp;
+  }
+
+  private initRunningAppAI(bundleName: string): RunningAppListState {
+    log.showInfo(`${TAG} initRunningAppAI begin`);
+    const defaultState: RunningAppListState = new RunningAppListState();
+    try {
+      let resourceInfo: bundleResourceManager.BundleResourceInfo =
+        bundleResourceManager.getBundleResourceInfo(bundleName);
+      log.showInfo(`${TAG} get NoIconApp info, bundleName: ${bundleName}, label: ${resourceInfo.label}`);
+      const tempAppState: RunningAppListState = {
+        // 待完成，这里需要添加文档名称
+        icon: resourceInfo ? resourceInfo.icon : defaultState.icon,
+        appName: resourceInfo ? resourceInfo.label : defaultState.appName,
+        hasDivider: true
+      };
+      return tempAppState;
+    } catch (e) {
+      log.showError(`${TAG} getBundleResourceInfo failed! code: ${e?.code}, message: ${e?.message}`);
+      return defaultState;
+    }
   }
 
   private normalInitRunningAppList(runningAppList: RunningAppListStateArray, bundleName: string) {
@@ -474,8 +503,8 @@ export struct ShutDownView {
       if (!this.isReboot) {
         let hibernateVal: string = sSettingsUtil.getValue(ShutdownViewConstant.hibernateKey);
         if (!hibernateVal || hibernateVal === '') {
-          log.showInfo(`${TAG} get hibernateVal from db fail.`);
-          this.isHibernate = true;
+          log.showInfo(`${TAG} get hibernateVal from db fail, default to shutdown.`);
+          this.isHibernate = false;
         } else {
           this.isHibernate = hibernateVal === ShutdownViewConstant.isHibernateOpen;
           log.showInfo(`${TAG} get hibernateVal from db succ. hibernateVal: ${hibernateVal}, isHibernate: ${this.isHibernate}`);

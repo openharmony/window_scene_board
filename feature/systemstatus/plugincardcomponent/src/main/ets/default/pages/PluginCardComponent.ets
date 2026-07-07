@@ -285,7 +285,7 @@ export struct PluginCardComponent {
         this.confirmBtn = $r('app.string.button_enable');
         break;
       case Constants.DIALOG_ACCOUNT:
-        this.dialogTitle = $r('app.string.title_login_openharmony_account');
+        this.dialogTitle = $r('app.string.title_login_hw_account');
         this.dialogMessage = $r('app.string.text_open_wlan_and_bluetooth_account');
         this.confirmBtn = $r('app.string.account_button_login');
         break;

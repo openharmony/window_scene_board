@@ -163,13 +163,13 @@ export default class ScreenLockKeyboardTipUtil {
 
     // PHONE MIX PSD NO FINGER OR FOLD EXPAND
     if ((index === DeviceClassification.PSD_NO_FINGER || index === DeviceClassification.PSD_FOLD_EXPAND ||
-      index === DeviceClassification.PSD_ULTRA_SCREEN_G_HORIZONTAL) && pageType === KeyboardPageType.PSD_MIX) {
+      index === DeviceClassification.PSD_THREE_FOLD_G_HORIZONTAL) && pageType === KeyboardPageType.PSD_MIX) {
       return KeyBoardLayoutConstants.KEYBOARD_MIX_MARGIN_BOTTOM_PHONE_NO_FINGER;
     }
 
-    // ULTRA SCREEN MIX PSD G PORTRAIT
-    if (index === DeviceClassification.PSD_ULTRA_SCREEN_G_PORTRAIT && pageType === KeyboardPageType.PSD_MIX) {
-      return KeyBoardLayoutConstants.ULTRA_SCREEN_G_PORTRAIT_KEYBOARD_MIX_MARGIN_BOTTOM;
+    // THREE FOLD MIX PSD G PORTRAIT
+    if (index === DeviceClassification.PSD_THREE_FOLD_G_PORTRAIT && pageType === KeyboardPageType.PSD_MIX) {
+      return KeyBoardLayoutConstants.THREE_FOLD_G_PORTRAIT_KEYBOARD_MIX_MARGIN_BOTTOM;
     }
 
     // PHONE MIX PSD PSD_LOW_FINGER_PRINT_PHONE
@@ -195,22 +195,22 @@ export default class ScreenLockKeyboardTipUtil {
   }
 
   /**
-   * 获取超大屏G态密码盘宽度比例
+   * 获取三折叠G态密码盘宽度比例
    *
    * @param displayWidth 屏幕宽度
    * @param isLandscape 是否横屏
-   * @returns 超大屏G态密码盘宽度比例
+   * @returns 三折叠G态密码盘宽度比例
    */
   public static getGStateKeyboardWidthPercent(displayWidth: number, isLandscape: boolean): number {
-    const deviceClassification: DeviceClassification = isLandscape ? DeviceClassification.PSD_ULTRA_SCREEN_G_HORIZONTAL :
+    const deviceClassification: DeviceClassification = isLandscape ? DeviceClassification.PSD_THREE_FOLD_G_HORIZONTAL :
       DeviceClassification.PSD_FOLD_EXPAND;
     const deviceGrid = KeyBoardLayoutConstants.DEVICES_GRIDS.get(deviceClassification) as DevicesGrids;
     const columnWidth = (displayWidth -
-      deviceGrid.psdMargin * KeyBoardLayoutConstants.ULTRA_SCREEN_G_COUNT_MARGINS -
+      deviceGrid.psdMargin * KeyBoardLayoutConstants.THREE_FOLD_G_COUNT_MARGINS -
       deviceGrid.psdGutter * (deviceGrid.psdColumn - 1)) / deviceGrid.psdColumn;
-    const gStateKeyboardWidthPercent = (columnWidth * KeyBoardLayoutConstants.ULTRA_SCREEN_G_KEYBOARD_COUNT_COLUMNS +
-      deviceGrid.psdGutter * KeyBoardLayoutConstants.ULTRA_SCREEN_G_KEYBOARD_COUNT_GUTTERS +
-      deviceGrid.psdMargin * KeyBoardLayoutConstants.ULTRA_SCREEN_G_KEYBOARD_COUNT_MARGIN) / displayWidth;
+    const gStateKeyboardWidthPercent = (columnWidth * KeyBoardLayoutConstants.THREE_FOLD_G_KEYBOARD_COUNT_COLUMNS +
+      deviceGrid.psdGutter * KeyBoardLayoutConstants.THREE_FOLD_G_KEYBOARD_COUNT_GUTTERS +
+      deviceGrid.psdMargin * KeyBoardLayoutConstants.THREE_FOLD_G_KEYBOARD_COUNT_MARGIN) / displayWidth;
     log.showInfo(`displayWidth: ${displayWidth} gStateKeyboardWidthPercent: ${gStateKeyboardWidthPercent}`);
     return gStateKeyboardWidthPercent;
   }
@@ -223,7 +223,7 @@ export default class ScreenLockKeyboardTipUtil {
    * @returns 提示框的宽度
    */
   public static simPukTipColumnWidth(displayWidth: number, deviceGridData: DevicesGrids): number {
-    // 4col + 3gutter  大屏幕机展开态和pad
+    // 4col + 3gutter  折叠机展开态和pad
     let width: number = 0;
     if (deviceGridData.index === DeviceClassification.PSD_FOLD_EXPAND ||
     DeviceClassification.PSD_FOLD_EXPAND_HORIZONTAL ||

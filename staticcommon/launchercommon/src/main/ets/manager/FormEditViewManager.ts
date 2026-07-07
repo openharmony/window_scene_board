@@ -13,11 +13,12 @@
  * limitations under the License.
  */
 
+import { CardItemInfo } from '../TsIndex';
 import { bundleManager, Want } from '@kit.AbilityKit';
+import { SCBTransitionManager } from '@ohos/windowscene';
+import { CommonConstants } from '../constants/CommonConstants';
 import { CheckEmptyUtils, LogDomain, LogHelper } from '@ohos/basicutils/src/main/ets/TsIndex';
 import { GlobalContext, ViewController, viewMgrPolicy, ViewType } from '@ohos/frameworkwrapper';
-import { CardItemInfo } from '../TsIndex';
-import { CommonConstants } from '../constants/CommonConstants';
 
 const TAG = 'FormEditViewManager';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.HOME, TAG);
@@ -116,6 +117,7 @@ export class FormEditViewManager {
 
   public openFormEditView(param?: FormEditViewParam): void {
     log.showInfo('openFormEditView');
+    SCBTransitionManager.getInstance().cancelCloseAppAnimate();
     let viewParam: FormEditViewParam = param ?? new FormEditViewParam();
     if (CheckEmptyUtils.isEmpty(param)) {
       viewParam.bundleName = this.editingFormInfo.bundleName;

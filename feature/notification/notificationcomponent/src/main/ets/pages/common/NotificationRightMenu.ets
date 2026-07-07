@@ -33,7 +33,7 @@ const log: LogHelper = LogHelper.getLogHelper(LogDomain.NC, TAG);
 const COMPONENT_ID_MENU_TITLE = TAG + '_Text_menuTitle';
 const TEXT_WIDTH_PADDING: number = 25;
 const MENU_LEFT_AND_RIGHT_PADDING: number = 8;
-const MODULE_NAME = DeviceHelper.is2In1DevicePcType() ? 'phone_settings' : 'pc_settings';
+const MODULE_NAME = DeviceHelper.is2In1DevicePcType() ? 'phone' : 'phone';
 
 /**
  * 弹框menu标示

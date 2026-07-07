@@ -89,6 +89,7 @@ export enum ScbState {
   SLEEP = 0,
   LOCKSCREEN = 1,
   DESKTOP = 2,
+  AOD = 3,
   UNKNOWN = 4,
 
   // 接近光亮屏

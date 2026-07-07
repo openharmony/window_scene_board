@@ -17,12 +17,17 @@ import { Column, Table } from '../database/TableDecorator';
 import { TableEntity } from '../database/TableEntity';
 
 /**
- * 应用角标开关
+ * 系统迁移应用角标开关
  */
 @Table({
   name: 'BadgeRestore'
 })
 export class NotificationBadgeEntity extends TableEntity {
+  /**
+   * 应用设备包名
+   */
+  @Column({ name: 'packageName', type: 'string' })
+  public packageName: string;
 
   /**
    * 角标开关

@@ -309,7 +309,7 @@ const CAP_SM_ICON_BG_STYLE = BaseState.wrap<WidgetStyleStateV2>(WidgetStyleState
       .setVisibility(Visibility.Visible).setBgColor('#FF2D2D2D')
   );
 
-// 胶囊通用布局小图标样式
+// 胶囊通用布局小图标克隆应用样式
 const CAP_SMALL_ICON_REVERSE_STYLE = BaseState.wrap<WidgetStyleStateV2>(WidgetStyleStateV2, SizeBpSplice.DEFAULT)
   .setWidth(5.73).setHeight(5.33).setOffset({ x: -7.13, y: -6 })
   .addChildState( // 默认样式
@@ -321,7 +321,7 @@ const CAP_SMALL_ICON_REVERSE_STYLE = BaseState.wrap<WidgetStyleStateV2>(WidgetSt
       .setFillColor('#40FFFFFF')
   );
 
-// 胶囊通用布局小图标背景样式
+// 胶囊通用布局小图标背景克隆应用样式
 const CAP_SMALL_ICON_BG_REVERSE_STYLE = BaseState.wrap<WidgetStyleStateV2>(WidgetStyleStateV2, SizeBpSplice.DEFAULT)
   .setWidth(13.33).setHeight(10.67).setBorderRadiusTL(32 / 3).setBorderRadiusTR(2 / 3)
   .setBorderRadiusBL(2 / 3).setBorderRadiusBR(32 / 3).setOffset({ x: -3.33, y: -3.33 })
@@ -698,11 +698,11 @@ export class CapStyleConfigH implements ICapStyleConfigHelper {
       CapStyleSuffix.ITEM_SMALL_ICON_BG_STYLE,
       StyleStateConfig.wrap(CapStyleSuffix.ITEM_SMALL_ICON_BG_STYLE).bindConfig(CAP_SM_ICON_BG_STYLE)
     ],
-    [ // 小图标样式
+    [ // 小图标克隆应用样式
       CapStyleSuffix.ITEM_SMALL_ICON_REVERSE_STYLE,
       StyleStateConfig.wrap(CapStyleSuffix.ITEM_SMALL_ICON_REVERSE_STYLE).bindConfig(CAP_SMALL_ICON_REVERSE_STYLE)
     ],
-    [ // 小图标背景样式
+    [ // 小图标背景克隆应用样式
       CapStyleSuffix.ITEM_SMALL_ICON_BG_REVERSE_STYLE,
       StyleStateConfig.wrap(CapStyleSuffix.ITEM_SMALL_ICON_BG_REVERSE_STYLE).bindConfig(CAP_SMALL_ICON_BG_REVERSE_STYLE)
     ],

@@ -21,7 +21,7 @@ import { AppGalleryEventInfo,
   BadgeItemInfo,
   CardItemInfo,
   DeleteDockItem,
-  EventConstants,
+  DeliverUtil, EventConstants,
   FormLayoutCacheManager, GridLayoutItemInfo, LaunchLayoutCacheManager,
   ReceiveEventInfo,
   ResidentLayoutCacheMgr } from '@ohos/launchercommon';
@@ -46,6 +46,7 @@ import type { SmartDockEventInterface } from '../common/interfaces/SmartDockEven
 import { SmartDockEventMgr } from '../manager/SmartDockEventMgr';
 import lazy { PcModeDockUtils } from '../utils/PcModeDockUtils';
 import { BusinessType } from '@ohos/launchercommon/src/main/ets/constants/CommonConstants';
+import { FormRelationManager } from '@ohos/launchercommon';
 import { PageDesktopViewModel } from '@ohos/pagedesktop/src/main/ets/default/common/viewmodel/PageDesktopViewModel';
 import { FormModel } from '@ohos/launchercommon';
 const TAG = 'SmartDockViewModel';
@@ -137,9 +138,21 @@ export default class SmartDockViewModel extends BaseViewModel {
   }
 
   private appInstallBmsChangeEvent(eventData: AppInstallEventData): void {
+    this.updateFormAfterAppInstall(eventData.bundleName);
     this.regroupDataAppListChange([], eventData.eventName, eventData.bundleName, eventData.appIndex);
   }
 
+  private updateFormAfterAppInstall(bundleName: string): void {
+    // 更新数据库卡片信息
+    let relationCards: CardItemInfo[] = FormRelationManager.getInstance().updateFormAndStackInfoByBundleName(bundleName);
+    if (!CheckEmptyUtils.isEmptyArr(relationCards)) {
+      FormLayoutCacheManager.getInstance().updateFormAndStackInfos(relationCards, BusinessType.BUSINESS_BASIC_DESKTOP, true);
+      setTimeout(() => {
+        log.showInfo('update relation Cards');
+        localEventManager.sendLocalEventSticky(EventConstants.EVENT_REQUEST_PAGEDESK_LIGHT_REFRESH, null);
+      }, NumberConstants.CONSTANT_NUMBER_SIXTY);
+    }
+  }
 
   regroupDataAppListChange(callbackList: [], event: string, bundleName: string, appIndex?: number): void {
     log.showInfo(`regroupDataAppListChange, ${event}, ${bundleName}, ${appIndex}`);
@@ -191,6 +204,7 @@ export default class SmartDockViewModel extends BaseViewModel {
     this.waitingForInstallAni = true;
     const installAniFinishEvent: string = `smartDockInstallAniFinish${bundleName}`;
     const eventHub: ctx.EventHub = (GlobalContext.getInstance().getObject('desktopContext') as ctx.ServiceExtensionContext)?.eventHub;
+    this.updateFormAfterAppInstall(bundleName);
     if (installAniFinishEvent) {
       eventHub.off(installAniFinishEvent);
       eventHub.on(installAniFinishEvent, async(): Promise<void> => {
@@ -343,6 +357,7 @@ export default class SmartDockViewModel extends BaseViewModel {
         log.error('[UNINSTALL_FORBID showToast] failed, error -> ', err);
       }
     } else if (resultCode === CommonConstants.UNINSTALL_SUCCESS) {
+      DeliverUtil.removeRecentSpecialApp(bundleName);
       try {
         Prompt.showToast({
           message: $r('app.string.uninstall_success')
@@ -351,6 +366,10 @@ export default class SmartDockViewModel extends BaseViewModel {
         log.error('[UNINSTALL_SUCCESS showToast] failed, error -> ', err);
       }
     } else {
+      if (resultCode === -1 && DeliverUtil.isContainerPkg(bundleName)) {
+        log.info('UNINSTALL app not show toast in smart dock');
+        return;
+      }
       try {
         Prompt.showToast({
           message: $r('app.string.uninstall_failed')

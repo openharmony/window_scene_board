@@ -44,7 +44,8 @@ import { PCUtils } from '../../../common/utils/PCUtils';
 import { screenLockDataModel } from '../common/ScreenLockDataModel';
 import { SwitchAccountAnimationParameter } from './SwitchAccountAnimation';
 import {
-  TipConfigsIndex, tipPriorityScheduler as tipPrioritySchedulerTask } from '../common/TipPriority';
+  TipConfigsIndex, tipPriorityScheduler as tipPrioritySchedulerTask
+} from '../common/TipPriority';
 import { BaseSceneUnlockTip } from './BaseSceneUnlockTip';
 import { FingerPrintVerifyTip } from './FingerPrintVerifyTip';
 import { KeyCode } from '@kit.InputKit';
@@ -151,7 +152,12 @@ export default struct UserItem {
     }),
     customStyle: true,
     autoCancel: false,
-    maskRect: { x: 0, y: this.toastMaskOffset, width: '100%', height: $r('app.float.height_44') },
+    maskRect: {
+      x: 0,
+      y: this.toastMaskOffset,
+      width: '100%',
+      height: $r('app.float.height_44')
+    },
     // mask设置为透明
     maskColor: Color.Transparent,
     offset: { dx: 0, dy: this.toastTextOffset }
@@ -353,7 +359,7 @@ export default struct UserItem {
   }
 
   private startRecoverPC(): void {
-    log.showInfo(`isEndScreenOn = ${this.isEndScreenOn}` );
+    log.showInfo(`isEndScreenOn = ${this.isEndScreenOn}`);
     if (this.passwordType === 'NONE') {
       let isSuccess: boolean = focusControl.requestFocus(`ScreenLock-Accounts_Image_userIcon_${this.userData?.userId}`);
       let selectedUsr: number | undefined = AccountsViewModel.getInstance().selectedUserId;
@@ -375,7 +381,6 @@ export default struct UserItem {
     return (ScreenLockService.isDomainAuthType()) ? AuthSubType.DOMAIN_MIXED : AuthSubType.PIN_MIXED;
   }
 
-
   private isAuthMenuShow(): boolean | undefined {
     return this.userData?.isDomain && this.passwordType !== 'NONE';
   }
@@ -396,7 +401,7 @@ export default struct UserItem {
   private isDomain(): boolean | undefined {
     return this.userData?.availableAuthTypes?.includes(osAccount.AuthType.DOMAIN);
   }
-  
+
   private registerOpenCoverAnimationCallback(): void {
     OpenCoverAnimationController.getInstance().registerInitParamCallback(
       OpenCoverAnimationController.USER_VIEW_ANIMATION, () => {
@@ -643,6 +648,7 @@ export default struct UserItem {
 
   // 节流函数
   private lastExecTime: number = 0; // 上次执行时间戳
+
   private throttle(func: () => void, delay: number = 200) {
     const now: number = Date.now();
     // 只有当距离上次执行时间超过间隔时才执行
@@ -679,21 +685,27 @@ export default struct UserItem {
       this.requestFocus('onAppear');
       this.registerHideAnimation();
     })
-    .onFocus(()=>{
+    .onFocus(() => {
       log.showInfo(`automatically unlock without password when the user is switched`);
       this.unlockWithoutPW();
     })
     .width(this.accountsStyle?.userIconWidth)
     .height(this.accountsStyle?.userIconHeight)
     .border({
-      width: this.isPCMode ? '0px' : '1px',
+      width: this.isPCMode ? '0px' : '0px',
       color: $r('app.color.screen_lock_text_frame_outline'),
       radius: this.accountsStyle?.userIconWidth
     })
     .focusBox({
       strokeWidth: this.isPCMode ? LengthMetrics.vp(0) : LengthMetrics.vp(2)
     })
-    .scale({ x: this.userImagescale, y: this.userImagescale, z: this.userImagescale, centerX: '50%', centerY: '50%' })
+    .scale({
+      x: this.userImagescale,
+      y: this.userImagescale,
+      z: this.userImagescale,
+      centerX: '50%',
+      centerY: '50%'
+    })
     .onClick((event: ClickEvent) => {
       let userLength: number | undefined = AppStorage.get('createdListLen');
       log.showInfo(`ClickEvent:${userLength} ${this.isResetPwdPanelShow}`);
@@ -737,7 +749,7 @@ export default struct UserItem {
     .backgroundColor(this.isIconHover ? $r('sys.color.ohos_id_color_hover') : '#00000000')
     .margin({ top: 2 })
     .onHover(this.onHoverChanged)
-    .backgroundEffect({radius: this.userItemViewBlur})
+    .backgroundEffect({ radius: this.userItemViewBlur })
     .opacity(this.userItemViewOpacity)
     .scale({
       x: this.userItemViewScale,
@@ -751,11 +763,13 @@ export default struct UserItem {
       log.showInfo(`singleUserIcon - onFocus: ${this.getIconFocusable()}`);
     })
     .onKeyEvent((event: KeyEvent) => {
-      log.showInfo('singleUserIcon - onKeyevent');
+      log.showInfo('singleUserIcon - onKeyEvent');
       if (event.type === KeyType.Down &&
         (this.passwordType === 'NONE' || !AppStorage.get('isPwdVisible')) &&
         (this.viewModel.passwordNumber.has(event.keyCode) || event.keyCode === KeyCode.KEYCODE_ENTER ||
-          event.keyCode === KeyCode.KEYCODE_SPACE)) {
+          event.keyCode === KeyCode.KEYCODE_SPACE || event.keyCode === KeyCode.KEYCODE_DPAD_DOWN ||
+          event.keyCode === KeyCode.KEYCODE_DPAD_UP || event.keyCode === KeyCode.KEYCODE_DPAD_LEFT ||
+          event.keyCode === KeyCode.KEYCODE_DPAD_RIGHT || event.keyCode === KeyCode.KEYCODE_NUMPAD_ENTER)) {
         this.onUserIconClickHandle();
       }
     })
@@ -768,7 +782,7 @@ export default struct UserItem {
         this.enterpriseSpaceIcon()
       }
       if (!this.isPCMode) {
-        this.accountName()
+        // this.accountName()
       }
       if (!PCUtils.getIsEnterSpaceEnabled() && this.userItem?.isDomain) {
         DomainSlot({
@@ -784,7 +798,7 @@ export default struct UserItem {
     .margin({
       top: this.accountsStyle?.userNameTopMargin
     })
-    .backgroundEffect({radius: this.userItemViewBlur})
+    .backgroundEffect({ radius: this.userItemViewBlur })
     .opacity(this.userItemViewOpacity)
     .scale({
       x: this.userItemViewScale,
@@ -872,7 +886,7 @@ export default struct UserItem {
       })
     }
     .margin({ top: '8vp' })
-    .backgroundEffect({ radius: this.passwordViewBlur})
+    .backgroundEffect({ radius: this.passwordViewBlur })
     .opacity(this.passwordViewOpacity)
     .scale({
       x: this.passwordViewScale,
@@ -897,7 +911,7 @@ export default struct UserItem {
       })
       BaseSceneUnlockTip({ visible: this.baseScreenUnlockTipVisible })
     }
-    .backgroundEffect({radius: this.passwordViewBlur})
+    .backgroundEffect({ radius: this.passwordViewBlur })
     .opacity(this.passwordViewOpacity)
     .scale({
       x: this.passwordViewScale,
@@ -948,7 +962,7 @@ export default struct UserItem {
     .id(COMPONENT_ID_BUTTON_USER + this.userItem?.userId)
     .backgroundColor($r('app.color.transparent'))
     .height(this.isResetPwdPanelShow || this.isResetPwdPanelShow ?
-    $r('app.float.screenLock_user_layout_reset_pin_height') : $r('app.float.screenLock_user_layout_pin_height'))
+      $r('app.float.screenLock_user_layout_reset_pin_height') : $r('app.float.screenLock_user_layout_pin_height'))
     .width(this.singleUser ? $r('app.float.screenLock_user_layout_width') : this.accountsStyle?.userItemWidth)
     // 以后空格行为只能通过onKeyPreIme监听，不建议使用onKeyEvent和onclick
     .onKeyPreIme((event: KeyEvent) => {
@@ -985,7 +999,7 @@ export default struct UserItem {
   }
 
   private needShowKeyguardPassword(): boolean {
-    const isEnterpriseSpaceEnabled:boolean = PCUtils.getIsEnterSpaceEnabled();
+    const isEnterpriseSpaceEnabled: boolean = PCUtils.getIsEnterSpaceEnabled();
     const personalSpaceUID = 101;
     const isPersonalSpace = isEnterpriseSpaceEnabled && this.userData?.userId === personalSpaceUID;
     // it版本双空间场景下，快速切换，本地账号存在AuthType.DOMAIN，导致误认为需要强制密码

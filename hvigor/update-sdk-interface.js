@@ -22,51 +22,51 @@ const sdkBasePath = args[0];
 const copyHmsPathFileArray = [
     {
         path: './ets/api/',
-        file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@hms.hds.hdsBaseComponent.d.ets'
+        file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@ohos.hds.hdsBaseComponent.d.ets'
     },
     {
         path: './ets/api/',
-        file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@hms.hds.HdsVisualComponent.d.ets'
+        file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@ohos.hds.HdsVisualComponent.d.ets'
     },
     {
         path: './ets/api/',
-        file: '../product/pcbase/src/main/ets/SceneBoard/virtualmachine/@hms.virtService.vmManagerInner.d.ets'
+        file: '../product/pcbase/src/main/ets/SceneBoard/virtualmachine/@ohos.virtService.vmManagerInner.d.ets'
     },
-    {
-        path: './ets/kits/',
-        file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@kit.UIDesignKit.d.ts'
-    },
-    {
-        path: './ets/build-tools/ets-loader/kit_configs/',
-        file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@kit.UIDesignKit.json'
-    },
+    // {
+    //     path: './ets/kits/',
+    //     file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@kit.UIDesignKit.d.ts'
+    // },
+    // {
+    //     path: './ets/build-tools/ets-loader/kit_configs/',
+    //     file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@kit.UIDesignKit.json'
+    // },
     {
         path: './ets/api',
-        file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@hms.virtService.abilityFrameworkBroker.d.ts'
+        file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@ohos.virtService.abilityFrameworkBroker.d.ts'
     }
 ];
 
 const copyOHPathFileArray = [
     {
+        path: './ets/api/',
+        file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@ohos.pcService.statusBar.d.ts'
+    },
+    {
         path: './ets/api',
         file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@ohos.multimodalAwareness.motion.d.ts'
     },
     {
-        path: './ets/api',
-        file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@ohos.keyboardPanelManager.d.ts'
+        path: './ets/api/',
+        file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@ohos.hds.hdsBaseComponent.d.ets'
     },
-    // {
-    //     path: './ets/api/',
-    //     file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@hms.hds.hdsBaseComponent.d.ets'
-    // },
-    // {
-    //     path: './ets/api/',
-    //     file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@hms.hds.HdsVisualComponent.d.ets'
-    // },
-    // {
-    //     path: './ets/api/',
-    //     file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@hms.hds.hdsDrawable.d.ts'
-    // },
+    {
+        path: './ets/api/',
+        file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@ohos.hds.HdsVisualComponent.d.ets'
+    },
+    {
+        path: './ets/api/',
+        file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@ohos.hds.hdsDrawable.d.ts'
+    },
     {
         path: './ets/api',
         file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@kit.UIDesignKit.d.ts'
@@ -146,34 +146,34 @@ const copyOHPathFileArray = [
         path: './ets/api',
         file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@ohos.migrate.d.ts'
     },
-    // {
-    //     path: './ets/api',
-    //     file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@hms.security.privacyIndicatorManager.d.ts'
-    // },
-    // {
-    //     path: './ets/api',
-    //     file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@hms.graphic.apsManager.d.ts'
-    // },
-    // {
-    //     path: './ets/api',
-    //     file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@hms.pcService.statusBar.d.ts'
-    // },
-    // {
-    //     path: './ets/api',
-    //     file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@hms.pcService.scb_mode_change_napi.d.ts'
-    // },
-    // {
-    //     path: './ets/api',
-    //     file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@hms.nearlink.remoteDevice.d.ts'
-    // },
+    {
+        path: './ets/api',
+        file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@ohos.security.privacyIndicatorManager.d.ts'
+    },
+    {
+        path: './ets/api',
+        file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@ohos.graphic.apsManager.d.ts'
+    },
+    {
+        path: './ets/api',
+        file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@ohos.pcService.statusBar.d.ts'
+    },
+    {
+        path: './ets/api',
+        file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@ohos.pcService.scb_mode_change_napi.d.ts'
+    },
+    {
+        path: './ets/api',
+        file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@ohos.nearlink.remoteDevice.d.ts'
+    },
     {
         path: './ets/api',
         file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@ohos.graphics.uiEffect.d.ts'
     },
-    // {
-    //     path: './ets/api',
-    //     file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@hms.virtService.bmsBrokerAdapter.d.ts'
-    // },
+    {
+        path: './ets/api',
+        file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@ohos.virtService.bmsBrokerAdapter.d.ts'
+    },
     {
         path: './js/api/',
         file: '../product/watch/src/main/ets/common/interfaces/@ohos.arkui.ArcList.d.ts'
@@ -230,10 +230,10 @@ const copyOHPathFileArray = [
         path: './ets/api/',
         file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@ohos.app.form.formInfo.d.ts'
     },
-    // {
-    //     path: './ets/api',
-    //     file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@hms.xrGlassesService.xrGlassesAppService.d.ts'
-    // },
+    {
+        path: './ets/api',
+        file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@ohos.xrGlassesService.xrGlassesAppService.d.ts'
+    },
     {
         path: './ets/build-tools/ets-loader/declarations',
         file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/text.d.ts'
@@ -262,24 +262,24 @@ const copyOHPathFileArray = [
 
 const removeHmsPathFileArray = [
     {
-        path: './ets/api/@hms.hds.hdsBaseComponent.d.ts'
+        path: './ets/api/@ohos.hds.hdsBaseComponent.d.ts'
     }
 ];
 
 const removeOHPathFileArray = [
     {
-        path: './ets/api/@hms.hds.hdsBaseComponent.d.ts'
+        path: './ets/api/@ohos.hds.hdsBaseComponent.d.ts'
     }
 ];
 
 const replaceHmsPathFileArray = [
     {
         path: './ets/api/',
-        file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@hms.hds.hdsBaseComponent.d.ets'
+        file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@ohos.hds.hdsBaseComponent.d.ets'
     },
     {
         path: './ets/api/',
-        file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@hms.hds.HdsVisualComponent.d.ets'
+        file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@ohos.hds.HdsVisualComponent.d.ets'
     },
     {
         path: './ets/kits/',
@@ -291,7 +291,7 @@ const replaceHmsPathFileArray = [
     },
     {
         path: './ets/api/',
-        file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@hms.virtService.servicebrokerWms.d.ts'
+        file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@ohos.virtService.servicebrokerWms.d.ts'
     }
 ];
 
@@ -324,14 +324,14 @@ const replaceOHPathFileArray = [
         path: './ets/api',
         file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@ohos.window.d.ts'
     },
-    // {
-    //     path: './ets/api',
-    //     file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@hms.security.appLock.d.ts'
-    // },
-    // {
-    //     path: './ets/api',
-    //     file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@hms.utilityApplication.parentControl.d.ts'
-    // },
+    {
+        path: './ets/api',
+        file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@ohos.security.appLock.d.ts'
+    },
+    {
+        path: './ets/api',
+        file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@ohos.utilityApplication.parentControl.d.ts'
+    },
     {
         path: './ets/component',
         file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/effect_component.d.ts'
@@ -340,18 +340,18 @@ const replaceOHPathFileArray = [
         path: './ets/build-tools/ets-loader/declarations',
         file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/effect_component.d.ts'
     },
-    // {
-    //     path: './ets/api',
-    //     file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@hms.resourceschedule.animationPolicy.d.ts'
-    // },
-    // {
-    //     path: './ets/api',
-    //     file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@hms.ai.vision.imageGeneration.d.ts'
-    // },
-    // {
-    //     path: './ets/api',
-    //     file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@hms.fusionConnectivityExt.d.ts'
-    // },
+    {
+        path: './ets/api',
+        file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@ohos.resourceschedule.animationPolicy.d.ts'
+    },
+    {
+        path: './ets/api',
+        file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@ohos.ai.vision.imageGeneration.d.ts'
+    },
+    {
+        path: './ets/api',
+        file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@ohos.fusionConnectivityExt.d.ts'
+    },
     {
         path: './ets/api',
         file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@ohos.app.form.formHost.d.ts'
@@ -365,25 +365,25 @@ const replaceOHPathFileArray = [
         file:'../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/tsconfig.json'
     },
     {
-        path: '../hms/ets/kits',
+        path: '../ohos/ets/kits',
         file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@kit.UIDesignKit.d.ts'
     },
     {
-        path: '../hms/ets/build-tools/ets-loader/kit_configs',
+        path: '../ohos/ets/build-tools/ets-loader/kit_configs',
         file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@kit.UIDesignKit.json'
     },
-    // {
-    //     path: '../hms/ets/api',
-    //     file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@hms.hds.hdsBaseComponent.d.ets'
-    // },
-    // {
-    //     path: './ets/api/',
-    //     file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@hms.hds.hdsBaseComponent.d.ets'
-    // },
-    // {
-    //     path: './ets/api/',
-    //     file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@hms.hds.HdsVisualComponent.d.ets'
-    // },
+    {
+        path: '../ohos/ets/api',
+        file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@ohos.hds.hdsBaseComponent.d.ets'
+    },
+    {
+        path: './ets/api/',
+        file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@ohos.hds.hdsBaseComponent.d.ets'
+    },
+    {
+        path: './ets/api/',
+        file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@ohos.hds.HdsVisualComponent.d.ets'
+    },
     {
         path: './ets/kits/',
         file: '../staticcommon/basecommon/windowsceneinterfaces/src/main/ets/interfaces/@kit.UIDesignKit.d.ts'
@@ -521,8 +521,8 @@ function replaceFile(pathFile, basePath) {
 function updateSdkInterface() {
     try {
         console.log('Update SDK interface base path', sdkBasePath);
-        // 路径替换成  hms
-        // const hmsSdkBasePath = sdkBasePath.replace('openharmony', 'hms');
+        // 路径替换成  ohos
+        // const hmsSdkBasePath = sdkBasePath.replace('openharmony', 'ohos');
         // for (let pathFile of copyHmsPathFileArray) {
         //     copyFile(pathFile, hmsSdkBasePath);
         // }

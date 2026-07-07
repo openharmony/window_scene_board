@@ -1,5 +1,5 @@
 /**
- * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved. 2024-2025. All rights reserved.
+ * Copyright (c) 2022-2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -45,13 +45,17 @@ import BackupExtensionContext from '@ohos.file.BackupExtensionContext';
 import { common, Context, contextConstant } from '@kit.AbilityKit';
 import { CloneCloudRequestMethod } from '../constants/DesktopServiceConstant';
 import {
+  BlankPageTransFormItem,
+  dataConvert,
   Extend1Data,
   PageInfoManager,
   ShortcutInfo,
-  ShortcutViewModel
+  ShortcutViewModel,
+  TransformAppInfoManager
 } from '../TsIndex';
 import { image } from '@kit.ImageKit';
 import { IntentParseUtil } from '../utils/IntentParseUtil';
+import { AiBarCloneCallbackManager } from './AiBarCloneCallbackManager';
 
 const TAG = 'UpdateRdbManager';
 const log: Logger = Logger.getLogHelper(LogDomain.BACKUP);
@@ -71,6 +75,7 @@ const DB_SUFFIX_JOURNAL = '-journal';
 const FORM_MAPPING_RELATION_TABLE = 'form_mapping_relation_table.json';
 const BACK_FORM_RELATION_PATH = 'restore/' + FORM_MAPPING_RELATION_TABLE;
 const FORM_TRANSPARENT: string = '1';
+const HI_SEARCH_SP_KEY: string = 'hisearch_open_state';
 const HI_BOARD_SP_KEY: string = 'PIFLOW_NEWS_SWITCH';
 const HI_BOARD_DATABASE_KEY: string = 'piflow_mine_state';
 const INTENT_INFO_MAP_INDEX = 4;
@@ -143,9 +148,15 @@ class UpdateRdbManager {
     await this.startCopyIcon();
     this.copyOUCIconDb();
     this.copyShortcutIcon();
+    this.copyAbroadVirtualIcon();
     this.mLauncherRdbStore = await this.copyLauncherDb();
     await this.cloneAllSP();
     await this.copyFormMappingRelation();
+    TransformAppInfoManager.getInstance().init(this.filesDir, this.backupDir);
+    TransformAppInfoManager.getInstance().saveFilesToLocal();
+    TransformAppInfoManager.getInstance().loadHideIconAppList();
+    TransformAppInfoManager.getInstance().loadDisallowedHapListInPrivateSpace();
+    TransformAppInfoManager.getInstance().loadAbroadPackageInfos();
     await this.saveDesktopSettings();
   }
 
@@ -172,6 +183,23 @@ class UpdateRdbManager {
     FileUtils.createFolder(targetShortcutsDir);
     files.forEach(fileName => FileUtils.copyFile(`${srcShortcutsDir}/${fileName}`, `${targetShortcutsDir}/${fileName}`));
     log.showInfo(TAG, `copyShortcutIcon end, files length: ${files.length}`);
+  }
+
+  private copyAbroadVirtualIcon(): void {
+    let srcAbroadVirtualIconDir: string = this.backupDir + ABROAD_VIRTUALICON_PATH;
+    if (!FileUtils.isExist(srcAbroadVirtualIconDir)) {
+      log.showWarn(TAG, `copyAbroadVirtualIcon, srcAbroadVirtualIconDir: ${srcAbroadVirtualIconDir} not exist.`);
+      return;
+    }
+    let files: string[] = FileUtils.getFileList(srcAbroadVirtualIconDir);
+    if (CheckEmptyUtils.isEmptyArr(files)) {
+      log.showWarn(TAG, `copyAbroadVirtualIcon, srcAbroadVirtualIconDir: ${srcAbroadVirtualIconDir} has no files.`);
+      return;
+    }
+    let targetAbroadVirtualIconDir: string = this.filesDir + OLD_ICON_FOLDER_NAME;
+    FileUtils.createFolder(targetAbroadVirtualIconDir);
+    files.forEach(fileName => FileUtils.copyFile(`${srcAbroadVirtualIconDir}/${fileName}`, `${targetAbroadVirtualIconDir}/${fileName}`));
+    log.showInfo(TAG, `copyAbroadVirtualIcon end, files length: ${files.length}`);
   }
 
   public async generateIconByBundleNamesAndUserId(packageNames: string [], userId: number): Promise<void> {
@@ -244,7 +272,7 @@ class UpdateRdbManager {
   }
 
   /**
-   * 保存桌面下拉搜索开关选项、负一屏下拉、自动对齐开关、锁定布局开关
+   * 保存双 -> 单桌面下拉搜索开关选项、负一屏下拉、自动对齐开关、锁定布局开关
    * @returns
    */
   public async saveDesktopSettings(): Promise<void> {
@@ -259,8 +287,10 @@ class UpdateRdbManager {
       try {
         let sp = await preferences.getPreferences((GlobalContext.getInstance().getObject('desktopContext') as
         ctx.ServiceExtensionContext), 'LAUNCHER_SETTINGS');
-        let lockLayoutStatus: boolean = false;
+        let hiSearchOpenStatus: boolean = sp.getSync(HI_SEARCH_SP_KEY, true) as boolean;
+        let lockLayoutStatus: boolean = sp.getSync(DesktopSettingConstants.LOCK_LAYOUT_PREFERENCE, false) as boolean;
         let desktopSettingPreferences = await preferences.getPreferences(contextCallback, DesktopSettingConstants.PREFERENCES_NAME);
+        desktopSettingPreferences.putSync(DesktopSettingConstants.HI_SEARCH_OPEN_STATE, hiSearchOpenStatus);
         desktopSettingPreferences.putSync(DesktopSettingConstants.LOCK_LAYOUT_STATE, lockLayoutStatus);
         let hiBoardOpenStatus: boolean = sp.getSync(HI_BOARD_SP_KEY, true) as boolean;
         try {
@@ -271,14 +301,15 @@ class UpdateRdbManager {
           log.showError(TAG, 'saveDesktopSettings err : %{public}s', err?.message);
         }
         let settingSp = await preferences.getPreferences((GlobalContext.getInstance().getObject('desktopContext') as
-        ctx.ServiceExtensionContext), CloneCloudRequestMethod.RESTORE_LAUNCHER_LAYOUT + '_preferences');
-        let autoAlignStatus: boolean = false;
+        ctx.ServiceExtensionContext), CloneCloudRequestMethod.RESTORE_LAUNCHER_LAYOUT_FROM_HWLAUNCHER + '_preferences');
+        let autoAlignStatus: boolean = settingSp.getSync(DesktopSettingConstants.AUTOMATIC_FILLING_PREFERENCE, false) as boolean;
         desktopSettingPreferences.putSync(DesktopSettingConstants.AUTOMATIC_FILLING_STATE, autoAlignStatus);
         await desktopSettingPreferences.flush().then(() => {
           log.showInfo(TAG, 'save searchStatus:%{public}s,autoAlignStatus:%{public}s,lockLayoutStatus:%{public}s success',
-             autoAlignStatus, lockLayoutStatus);
+            hiSearchOpenStatus, autoAlignStatus, lockLayoutStatus);
         }).catch((error: Error) => {
-          log.showError(TAG, 'save searchStatus:%{public}s,autoAlignStatus:%{public}s fail,result = %{public}', autoAlignStatus, error?.message);
+          log.showError(TAG, 'save searchStatus:%{public}s,autoAlignStatus:%{public}s fail,result = %{public}', hiSearchOpenStatus,
+            autoAlignStatus, error?.message);
         });
       } catch (error) {
         log.showError(TAG, 'saveDesktopSettings error, %{public}s', error?.message);
@@ -352,7 +383,7 @@ class UpdateRdbManager {
         // 目前接口只提供packageName，暂时先用componentNameArray[0],后续恢复上面的文件名
         const fileName: string = componentNameArray[0];
         const profileId: number = resultSet.getLong(resultSet.getColumnIndex('profileId'));
-        // 剔除分身图标
+        // 剔除设备分身图标
         if (profileId < CLONEDPROFILE_USER_ID_MIN || profileId >= CLONEDPROFILE_USER_ID_MAX) {
           let scaleBmpBuffer: ArrayBufferLike = await this.scaleBmpBuffer(bmpBuffer);
           this.saveLocalIcon(fileName, scaleBmpBuffer);
@@ -364,6 +395,45 @@ class UpdateRdbManager {
       log.showError(TAG, 'queryIconDbDesktopInfo error: %{public}s', e?.message);
     }
     log.showInfo(TAG, 'queryIconDbDesktopInfo end');
+  }
+
+  /**
+   * 读取设备主屏配置并保存
+   *
+   * @returns void
+   */
+  public async saveDbDesktopDefault(): Promise<void> {
+    let resultSet: relationalStore.ResultSet | undefined;
+    try {
+      // 规避定制化词语
+      const TABLE_NAME = 'comhuaweiandr' + 'oid' + 'launchersettingssettings_tb';
+      log.showInfo(TAG, `queryDbDesktopDefault start from table ${TABLE_NAME}`);
+      const iconPredicates: relationalStore.RdbPredicates = new relationalStore.RdbPredicates(TABLE_NAME);
+      resultSet = await this.mIconRdbStore?.query(iconPredicates);
+      if (!resultSet) {
+        return;
+      }
+      let isLast: boolean = resultSet.goToFirstRow();
+      while (isLast) {
+        let fileName: string = resultSet.getString(resultSet.getColumnIndex('filename'));
+        let name: string = resultSet.getString(resultSet.getColumnIndex('name'));
+        // 设备主页数据对应字段
+        if (fileName === 'LAUNCHER_SETTINGS' && name === 'DESKTOP_DEFAULT') {
+          let desktopDefault: number = resultSet.getLong(resultSet.getColumnIndex('value')) ?? 0;
+          log.showInfo(TAG, `queryDbDesktopDefault desktopDefault>>>${desktopDefault}`);
+          PageInfoManager.getInstance().setHomePageIndex(desktopDefault, false);
+          break;
+        }
+        isLast = resultSet.goToNextRow();
+      }
+    } catch (e) {
+      log.showError(TAG, 'queryDbDesktopDefault error: %{public}s', e?.message);
+    } finally {
+      if (resultSet != null) {
+        resultSet.close();
+      }
+    }
+    log.showInfo(TAG, 'queryDbDesktopDefault end');
   }
 
   private async scaleBmpBuffer(buff: ArrayBufferLike): Promise<ArrayBufferLike> {
@@ -378,14 +448,14 @@ class UpdateRdbManager {
       });
       if (pixelMap) {
         const sizeBeforeScale = pixelMap.getImageInfoSync().size;
-        // 将图标放大1.12倍
+        // 将设备图标放大1.12倍
         await pixelMap.scale(CommonConstants.MIGRATE_PLACEHOLDER_ICON_SCALE, CommonConstants.MIGRATE_PLACEHOLDER_ICON_SCALE);
         let region: image.Region = {
           x: (CommonConstants.MIGRATE_PLACEHOLDER_ICON_SCALE - 1) * sizeBeforeScale.width / 2,
           y: (CommonConstants.MIGRATE_PLACEHOLDER_ICON_SCALE - 1) * sizeBeforeScale.height / 2,
           size: { height: sizeBeforeScale.height, width: sizeBeforeScale.width }
         };
-        // 裁剪多余部分
+        // 裁剪多余部分，裁剪成设备图标规格
         await pixelMap.crop(region);
         imagePacker = image.createImagePacker();
         let scaleBuffer: ArrayBufferLike = await imagePacker.packing(pixelMap, {
@@ -586,7 +656,7 @@ class UpdateRdbManager {
   }
 
   /**
-   * 获取克隆数据库，处理桌面设置数据
+   * 获取设备克隆数据库，处理桌面设置数据
    *
    * @returns void
    */
@@ -597,7 +667,7 @@ class UpdateRdbManager {
   }
 
   /**
-   * 写入克隆桌面设置
+   * 系统克隆桌面设置写入设备中
    *
    * @returns void
    */
@@ -623,6 +693,16 @@ class UpdateRdbManager {
       settingsInfoList.forEach(settingsInfo => {
         if (!desktopSettingPreferences) {
           return;
+        }
+        if (settingsInfo.name === DesktopSettingConstants.HI_SEARCH_OPEN_PREFERENCE) {
+          let res: boolean = settingsInfo.value === 'true';
+          desktopSettingPreferences.putSync(DesktopSettingConstants.HI_SEARCH_OPEN_STATE, res);
+        } else if (settingsInfo.name === DesktopSettingConstants.AUTOMATIC_FILLING_PREFERENCE) {
+          let res: boolean = settingsInfo.value === 'true';
+          desktopSettingPreferences.putSync(DesktopSettingConstants.AUTOMATIC_FILLING_STATE, res);
+        } else if (settingsInfo.name === DesktopSettingConstants.LOCK_LAYOUT_PREFERENCE) {
+          let res: boolean = settingsInfo.value === 'true';
+          desktopSettingPreferences.putSync(DesktopSettingConstants.LOCK_LAYOUT_STATE, res);
         }
       });
       desktopSettingPreferences.flush();
@@ -687,8 +767,10 @@ class UpdateRdbManager {
     if (!resultSet) {
       return backupInfoList;
     }
+    let maxPageIndex: number = BlankPageTransFormItem.getInstance().oldPageCount;
+    log.showInfo(TAG, `using maxPageIndex ${maxPageIndex}`);
     let isPageBlankRecord: Map<number, boolean> = new Map();
-    // 行数最小为5,列数最小为4
+    // 设备手机行数最小为5,列数最小为4
     let maxOldLayoutRow: number = NumberConstants.CONSTANT_NUMBER_FIVE;
     let maxOldLayoutColumn: number = NumberConstants.CONSTANT_NUMBER_FOUR;
     let count = resultSet.rowCount;
@@ -696,10 +778,12 @@ class UpdateRdbManager {
       log.showInfo(TAG, `${TAG}` + 'Query no results!');
     } else {
       resultSet.goToFirstRow();
+      await dataConvert.initShortcutData();
       this.shortcutSupportClone = GlobalContext.getInstance().getObject(CommonConstants.SHORTCUT_CLONE) as string === 'true';
       for (let i = 0; i < count; i++) {
         let item = GridLayoutItemDbBuilder.fromResultSet(resultSet).buildGridLayoutItemDB().toGridLayoutItemInfo();
         if (item.page !== undefined && item.container === -100) {
+          maxPageIndex = Math.max(item.page + 1, maxPageIndex);
           isPageBlankRecord.set(item.page, true);
         }
         // 需要恢复的应用且已经安装的不设置预下载状态
@@ -717,6 +801,13 @@ class UpdateRdbManager {
           item.callerName, item.intent);
         resultSet.goToNextRow();
       }
+      // 保留克隆时旧机的空白页
+      BlankPageTransFormItem.getInstance().oldBlankPageList = [];
+      for (let i = 0; i < maxPageIndex; i++) {
+        if (!isPageBlankRecord.has(i)) {
+          BlankPageTransFormItem.getInstance().oldBlankPageList.push(i);
+        }
+      }
     }
     GlobalContext.getInstance().setObject(CommonConstants.SHORTCUT_CLONE, '');
     GlobalContext.getInstance().setObject('maxOldLayoutSize', [maxOldLayoutColumn, maxOldLayoutRow]);
@@ -731,15 +822,23 @@ class UpdateRdbManager {
       backupInfoList.push(appInfo);
       return;
     }
+    let waitForHarmonyValue: Array<string> =
+      dataConvert.getWaitForHarmonyValue(appInfo?.bundleName, appInfo?.appIndex, restoreInfoMap);
     let keyName = appInfo?.bundleName + (appInfo?.appIndex ?? 0);
-    if (!restoreInfoMap.has(keyName)) {
+    if (!restoreInfoMap.has(keyName) && waitForHarmonyValue.length === 0) {
       log.showWarn(TAG, `dealBackupApp error as the app is not installed and not placeHolder keyName:${keyName}`);
       return;
     }
     // 针对RestoreLauncherData透传的图标进行资源补充，默认数据库uri
     let itemInfoList: string[] = [];
-    itemInfoList = restoreInfoMap.get(keyName) ?? [];
-    appInfo.appStatus = AppStatus.PENDING;
+    if (waitForHarmonyValue.length !== 0) {
+      itemInfoList = waitForHarmonyValue;
+      appInfo.appStatus = AppStatus.WAIT_FOR_HARMONY;
+      appInfo.bundleName = dataConvert.getWaitForHarmonyBundleName(appInfo?.bundleName);
+    } else {
+      itemInfoList = restoreInfoMap.get(keyName) ?? [];
+      appInfo.appStatus = AppStatus.PENDING;
+    }
     appInfo.iconResource = itemInfoList[0];
     appInfo.appName = itemInfoList[1];
     appInfo.callerName = itemInfoList[2];
@@ -865,7 +964,7 @@ class UpdateRdbManager {
     log.showInfo(TAG, `queryLauncherDbDesktopInfo start from table favorites${oldLayoutCol}x${oldLayoutRow}, isFromClone: ${isFromClone}`);
     let backupInfoList: BackupFavoriteInfo[] = [];
     let twoRowWidgetList: number[] = [];
-    // 行数最小为5,列数最小为4
+    // 设备手机行数最小为5,列数最小为4
     let maxOldLayoutRow: number = NumberConstants.CONSTANT_NUMBER_FIVE;
     let maxOldLayoutColumn: number = NumberConstants.CONSTANT_NUMBER_FOUR;
     try {
@@ -875,6 +974,7 @@ class UpdateRdbManager {
         return backupInfoList;
       }
       let isLast: boolean = resultSet.goToFirstRow();
+      let maxPageIndex: number = BlankPageTransFormItem.getInstance().oldPageCount;
       let isPageBlankRecord: Map<number, boolean> = new Map();
       while (isLast) {
         let backupInfo: BackupFavoriteInfo = {
@@ -893,6 +993,7 @@ class UpdateRdbManager {
           profileId: resultSet.getLong(resultSet.getColumnIndex('profileId'))
         };
         if (backupInfo.screen !== undefined && backupInfo.container === CommonConstants.CONTAINER_DESKTOP) {
+          maxPageIndex = Math.max(backupInfo.screen + 1, maxPageIndex);
           isPageBlankRecord.set(backupInfo.screen, true);
           maxOldLayoutRow = Math.max(maxOldLayoutRow, backupInfo.cellY + backupInfo.spanY);
           maxOldLayoutColumn = Math.max(maxOldLayoutColumn, backupInfo.cellX + backupInfo.spanX);
@@ -915,6 +1016,13 @@ class UpdateRdbManager {
         }
         backupInfoList.push(backupInfo);
         isLast = resultSet.goToNextRow();
+      }
+      // 保留克隆时旧机的空白页
+      BlankPageTransFormItem.getInstance().oldBlankPageList = [];
+      for (let i = 0; i < maxPageIndex; i++) {
+        if (!isPageBlankRecord.has(i)) {
+          BlankPageTransFormItem.getInstance().oldBlankPageList.push(i);
+        }
       }
       resultSet.close();
       GlobalContext.getInstance().setObject('maxOldLayoutSize', [maxOldLayoutColumn, maxOldLayoutRow]);
@@ -1055,14 +1163,14 @@ class UpdateRdbManager {
       }
     }
     GlobalContext.getInstance().setObject('oldLayoutGrid', [oldLayoutCol, oldLayoutRow]);
-    // 复制主屏设置
+    // 复制设备主屏设置
     let desktopDefault: number = sp.getSync('DESKTOP_DEFAULT', 0) as number;
     log.showInfo(TAG, `desktopDefault  => ${desktopDefault}`);
     PageInfoManager.getInstance().setHomePageIndex(desktopDefault, false);
   }
 
   public async restoreFloatingBallDb(floatingBallDb: relationalStore.RdbStore): Promise<void> {
-    // 克隆，恢复悬浮球手势开关
+    // 系统迁移，恢复悬浮球手势开关
     let resultSet: relationalStore.ResultSet | undefined;
     try {
       const TABLE_NAME = 'comopenharmonyFloatTasksproviderBackupProvidershared_prefs_tb'
@@ -1075,10 +1183,12 @@ class UpdateRdbManager {
         log.showError(TAG, 'context is null');
         return;
       }
+      let isCloneToOpenThreeKey =
+        await settings.getValue(context, AiBarCloneCallbackManager.getInstance().CLONE_TO_OPEN_THREE_KEY);
       while (isLast) {
         let floatTaskState: string = resultSet.getString(resultSet.getColumnIndex('float_task_state'));
-        log.showInfo(TAG, `floatTaskState is: ${floatTaskState}`);
-        if (floatTaskState) {
+        log.showInfo(TAG, `floatTaskState is: ${floatTaskState} isCloneToOpenThreeKey is:${isCloneToOpenThreeKey}`);
+        if (floatTaskState && !(isCloneToOpenThreeKey === 'true')) {
           // 双上悬浮球开关打开
           settings.setValue(context, 'floating_navigation_ball', floatTaskState,
             settings.domainName.USER_PROPERTY);
@@ -1086,6 +1196,7 @@ class UpdateRdbManager {
         }
         isLast = resultSet.goToNextRow();
       }
+      AiBarCloneCallbackManager.getInstance().isCloneToOpenThreeKey = false;
     } catch (e) {
       log.showError(TAG, 'restoreFloatingBallDb error: %{public}s', e?.message);
     } finally {

@@ -407,6 +407,13 @@
             }
         },
         {
+            "name":"system_function_voice_search",
+            "value":"شياۋيى ئىزدىگۈچ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
             "name":"system_function_show_desktop_key_question_mark",
             "value":"؟",
             "attr":{

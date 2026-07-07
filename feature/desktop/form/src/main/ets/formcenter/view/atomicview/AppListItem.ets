@@ -21,6 +21,7 @@ import { AppListItemInterface } from '../../interfaces/AppListInterface';
 import { AppListItemEvent, FormAppItemInfo } from '../../viewmodel/event/AppListEvent';
 import { SearchStateMgr } from './SearchComponent';
 import { SingleAppResult } from '../../util/FusionSearchUtil';
+import { DeviceHelper } from '@ohos/frameworkwrapper';
 
 const TAG = 'FormAppListItem';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.HOME, TAG);
@@ -223,8 +224,8 @@ export default struct AppListItem {
           .draggable(false)
           .matchTextDirection(true)
           .id(this.arrowId)
-          .width(this.style.arrowWidth)
-          .height(this.style.arrowHeight)
+          .width(DeviceHelper.isPC() ? '8%' : this.style.arrowWidth)
+          .height(DeviceHelper.isPC() ? '15%' : this.style.arrowHeight)
           .fillColor(this.style.arrowFillColor)
           .alignRules({
             end: { anchor: '__container__', align: HorizontalAlign.End },
@@ -232,8 +233,9 @@ export default struct AppListItem {
           })
       }
     }
+    .key(`App_List_Item_Group_${this.idIndex}`)
     .focusScopeId(`App_List_Item_Group_${this.idIndex}`, true)
-    .width(this.style.itemWidth)
+    .width(DeviceHelper.isPC() ? '100%' : this.style.itemWidth)
     .height(this.isShowResult ? (this.style.itemHeightSearch ?? this.style.itemHeight) : this.style.itemHeight)
     .stateStyles({
       normal: this.normalStyle,

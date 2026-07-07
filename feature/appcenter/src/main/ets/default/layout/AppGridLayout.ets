@@ -1,5 +1,5 @@
 /**
- * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) 2021-2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -54,7 +54,7 @@ import AppGridLayoutUtil from '../common/util/AppGridLayoutUtil';
 import AppGridLayoutCacheManager from '../common/cache/AppGridLayoutCacheManager';
 import { AppCenterDropFrame } from './AppCenterDropFrame';
 import { curves } from '@kit.ArkUI';
-// import apsManager from '@hms.graphic.apsManager';
+// import apsManager from '@ohos.graphic.apsManager';
 import { AppCenterSearchResultTask } from '../common/model/AppCenterSearchResultTask';
 import { FoldedDeviceAcViewModel, FoldStatusChangeEvent, SCBFoldedState } from '../folded/FoldedDeviceAcViewModel';
 import FeatureConstants from '../common/constants/FeatureConstants';
@@ -82,6 +82,7 @@ const DEFAULT_INDICATOR_HEIGHT: number = 435;
 const DEFAULT_INDICATOR_RIGHT_HPR: number = 67;
 const DEFAULT_INDICATOR_RIGHT_HORIZONTAL_HPR: number = 72;
 const INDICATOR_ANIM_DURATION = 400;
+const DELIVER_APP_BUNDLENAME= 'com.deliver.tong';
 
 @Component
 export struct AppGridLayout {
@@ -642,21 +643,22 @@ export struct AppGridLayout {
         }
       }
 
-
-    let addToDockMenu = new MenuInfo();
-    addToDockMenu.menuType = CommonConstants.MENU_TYPE_FIXED;
-    addToDockMenu.menuImgSrc = '/common/pics/ic_public_copy.svg';
-    addToDockMenu.menuText = $r('app.string.app_center_menu_add_dock');
-    addToDockMenu.onMenuClick = () => {
-      HiSysEventUtil.reportEventById(bundleName, 'appCenter add to dock');
-      if (typeof (appInfo.typeId) === 'undefined') {
-        // 应用中心typeId的默认为app
-        appInfo.typeId = CommonConstants.TYPE_APP;
+      if (appInfo.bundleName !== DELIVER_APP_BUNDLENAME) {
+        let addToDockMenu = new MenuInfo();
+        addToDockMenu.menuType = CommonConstants.MENU_TYPE_FIXED;
+        addToDockMenu.menuImgSrc = '/common/pics/ic_public_copy.svg';
+        addToDockMenu.menuText = $r('app.string.app_center_menu_add_dock');
+        addToDockMenu.onMenuClick = () => {
+          HiSysEventUtil.reportEventById(bundleName, 'appCenter add to dock');
+          if (typeof (appInfo.typeId) === 'undefined') {
+            // 应用中心typeId的默认为app
+            appInfo.typeId = CommonConstants.TYPE_APP;
+          }
+          log.showInfo(`click menu item add to Dock entry, bundleName = ${appInfo.bundleName} appindex:${appInfo.appIndex}` );
+          localEventManager.sendLocalEventSticky(EventConstants.EVENT_REQUEST_DOCK_ITEM_ADD, appInfo);
+        };
+        menuInfoList.push(addToDockMenu);
       }
-      log.showInfo(`click menu item add to Dock entry, bundleName = ${appInfo.bundleName} appindex:${appInfo.appIndex}` );
-      localEventManager.sendLocalEventSticky(EventConstants.EVENT_REQUEST_DOCK_ITEM_ADD, appInfo);
-    };
-    menuInfoList.push(addToDockMenu);
 
       // 后续和副屏桌面工作区需求同步上
       if (this.screenProp.screenId === SCBSceneSessionManager.getInstance().mainScreenId) {

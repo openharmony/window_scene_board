@@ -34,7 +34,7 @@ export class TouchBoardGestureManager {
   }
 
   static isSupportTouchBoardGestureFeature(): boolean {
-    return uiType === SCBConstants.UITYPE_PAD || DeviceHelper.isUltraScreenProduct();
+    return uiType === SCBConstants.UITYPE_PAD || DeviceHelper.isThreeFoldProduct();
   }
 
   static getInstance(): TouchBoardGestureManager {

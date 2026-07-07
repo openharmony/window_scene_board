@@ -1,0 +1,18 @@
+{
+    "string":[
+        {
+            "name":"add_card_fail_desktop",
+            "value":"Tidak dapat menambah. Cuba sebentar lagi.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_card_success_desktop",
+            "value":"Berjaya ditambahkan.",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

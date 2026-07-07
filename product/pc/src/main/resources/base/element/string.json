@@ -116,8 +116,8 @@
             }
         },
         {
-            "name":"folder_name_oh",
-            "value":"Huawei Apps",
+            "name":"folder_name_system_apps",
+            "value":" Apps",
             "attr":{
                 "priority":"LT"
             }
@@ -299,98 +299,98 @@
             }
         },
         {
-            "name":"openharmony_multiwindow_not_support_multiwindows",
+            "name":"oh_multiwindow_not_support_multiwindows",
             "value":"%1$s does not support multi window display.",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"openharmony_multiwindow_not_support_split",
+            "name":"oh_multiwindow_not_support_split",
             "value":"%1$s does not support split-screen display.",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"openharmony_multiwindow_not_support_vertical_split_new",
+            "name":"oh_multiwindow_not_support_vertical_split_new",
             "value":"%1$s does not support vertical split screen.",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"openharmony_multiwindow_not_support_horizontal_split_new",
+            "name":"oh_multiwindow_not_support_horizontal_split_new",
             "value":"%1$s does not support horizontal split screen.",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"openharmony_multiwindow_not_support_split_ratio",
+            "name":"oh_multiwindow_not_support_split_ratio",
             "value":"Screen sizes can't be adjusted for games.",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"openharmony_multiwindow_save_group",
+            "name":"oh_multiwindow_save_group",
             "value":"Save combo",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"openharmony_multiwindow_horizontal_split",
+            "name":"oh_multiwindow_horizontal_split",
             "value":"Split horizontally",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"openharmony_multiwindow_vertical_split",
+            "name":"oh_multiwindow_vertical_split",
             "value":"Split vertically",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"openharmony_multiwindow_horizontal_exchange",
+            "name":"oh_multiwindow_horizontal_exchange",
             "value":"Flip top/bottom",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"openharmony_multiwindow_vertical_exchange",
+            "name":"oh_multiwindow_vertical_exchange",
             "value":"Flip left/right",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"openharmony_multiwindow_not_support_split_for_folded_new",
+            "name":"oh_multiwindow_not_support_split_for_folded_new",
             "value":"%1$s not available in split-screen while device is folded.",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"openharmony_multiwindow_click_application_form_split_screen",
+            "name":"oh_multiwindow_click_application_form_split_screen",
             "value":"Open another app for split-screen view.",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"openharmony_multiwindow_not_support_float_window",
+            "name":"oh_multiwindow_not_support_float_window",
             "value":"%1$s can't be opened in a floating window.",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"openharmony_multiwindow_minimize_all_float_due_to_rss",
+            "name":"oh_multiwindow_minimize_all_float_due_to_rss",
             "value":"To ensure a smooth experience, the floating window has been tucked away to the side.",
             "attr":{
                 "priority":"LT"
@@ -405,7 +405,7 @@
             "value":"Used to receive common event of downloading status from appGallery"
         },
         {
-            "name":"openharmony_multiwindow_app_is_open",
+            "name":"oh_multiwindow_app_is_open",
             "value":"App is already open.",
             "attr":{
                 "priority":"LT"
@@ -531,6 +531,13 @@
             }
         },
         {
+            "name":"HiSearch_title",
+            "value":"voice Search",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
             "name":"Desktop_setting",
             "value":"Home screen settings",
             "attr":{
@@ -556,6 +563,13 @@
             "value":"Home screen, cover screen & style",
             "attr":{
                 "priority":"translate"
+            }
+        },
+        {
+            "name":"aod_list_title_more_style",
+            "value":"More AODs",
+            "attr":{
+                "priority":"LT"
             }
         },
         {
@@ -668,22 +682,120 @@
             }
         },
         {
-            "name":"dialog_title",
+            "name":"aod_dialog_title",
             "value":"Always On Display",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"dialog_content",
+            "name":"aod_dialog_content",
             "value":"Always On Display needs to be enabled. Enable now?",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"enable",
+            "name":"aod_cancel",
+            "value":"Cancel",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_enable",
             "value":"Enable",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Ai_bar_setting",
+            "value":"System navigation",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Ai_bar_back",
+            "value":"Go back",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Ai_bar_vassistant_dialogue",
+            "value":"voice Chat",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Ai_bar_back_click_navigation",
+            "value":"Tap to go back",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Ai_bar_vassistant_dialogue_longpress",
+            "value":"Touch & hold for voice",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Ai_bar_back_detail",
+            "value":"Tap the navigation bar to return to the previous screen.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Ai_bar_gesture_back_detail",
+            "value":"Swipe in from the left or right edge to return to the previous screen.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Ai_bar_vassistant",
+            "value":"Touch & hold the navigation bar to talk to voice.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Ai_bar_return_home",
+            "value":"Go home",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Ai_bar_return_home_detail",
+            "value":"Swipe up from the bottom to go to the home screen.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Ai_bar_recent",
+            "value":"View recent tasks",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Ai_bar_recent_detail",
+            "value":"Swipe up from the bottom and hold to view recent tasks.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Ai_bar",
+            "value":"Navigation bar",
             "attr":{
                 "priority":"LT"
             }
@@ -717,14 +829,35 @@
             }
         },
         {
-            "name":"pop_confirm",
+            "name":"drag_to_voice",
+            "value":"Drag to voice",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"let_go_drag_to_voice",
+            "value":"Release to send to voice",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"drag_to_voice_detail",
+            "value":"Touch & hold an item until it starts floating, then drag it to the bottom.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_poup_confirm",
             "value":"OK",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"modify_mode_smart_text",
+            "name":"aod_modify_mode_smart_text",
             "value":"This Always On Display only supports Smart mode. Your display mode has been automatically switched.",
             "attr":{
                 "priority":"LT"
@@ -1186,8 +1319,22 @@
             }
         },
         {
+            "name":"ai_bar_accessibility_text",
+            "value":"Navigation bar, tap twice and hold to speak to voice",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
             "name":"keyboard_panel_world_access_text",
             "value":"Switch keyboards, button",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_to_voice_reminder",
+            "value":"Drag to voice and release to activate",
             "attr":{
                 "priority":"translate"
             }
@@ -1368,21 +1515,21 @@
             }
         },
         {
-            "name":"openharmony_multiwindow_click_application_form_midScene_waiting_state",
+            "name":"oh_multiwindow_click_application_form_midScene_waiting_state",
             "value":"Tap an app icon to add to Multitask view.",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"openharmony_multiwindow_does_not_support_panoramic_multiwindow",
+            "name":"oh_multiwindow_does_not_support_panoramic_multiwindow",
             "value":"This app doesn't support Multitask view.",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"openharmony_multiwindow_back_to_middle_scene_using_gesture",
+            "name":"oh_multiwindow_back_to_middle_scene_using_gesture",
             "value":"Pinch four fingers together to return to Multitask view.",
             "attr":{
                 "priority":"LT"
@@ -1396,7 +1543,7 @@
             }
         },
         {
-            "name":"openharmony_multiwindow_does_not_support_panoramic_multiwindow_in_current_state",
+            "name":"oh_multiwindow_does_not_support_panoramic_multiwindow_in_current_state",
             "value":"Multitask view not supported.",
             "attr":{
                 "priority":"LT"

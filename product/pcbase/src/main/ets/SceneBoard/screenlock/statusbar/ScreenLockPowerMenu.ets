@@ -120,7 +120,7 @@ export default struct ScreenLockPowerMenu {
   });
 
   private shutdownDialogFoldController: CustomDialogController | null =
-    DeviceHelper.isBigScreenMachine() ? new CustomDialogController({
+    DeviceHelper.isSuperFoldMachine() ? new CustomDialogController({
       builder: PowerOffConfirmBuilder({
         vm: this.shutDownVm
       }),
@@ -143,7 +143,7 @@ export default struct ScreenLockPowerMenu {
   });
 
   private rebootDialogFoldController: CustomDialogController | null =
-    DeviceHelper.isBigScreenMachine() ? new CustomDialogController({
+    DeviceHelper.isSuperFoldMachine() ? new CustomDialogController({
       builder: PowerOffConfirmBuilder({
         vm: this.rebootVm
       }),
@@ -166,13 +166,14 @@ export default struct ScreenLockPowerMenu {
    * @description 弹窗确认回调
    */
   private onConfirm: () => void = () => {
-    log.showInfo(`onConfirm this.powerType = ${this.powerType}`);
+    log.showInfo(`onConfirm this.powerType = ${this.powerType} ${this.shutdownFlage}`);
     if (this.powerType === PowerMenuType.POWER_OFF) {
       if (!this.shutdownFlage) {
         return;
       }
       this.shutdownFlage = false;
-      let hibernateVal: string = sSettingsUtil.getValue(HIBERNATE_KEY);
+      // 关机查询设置导致不关机，逻辑注释，直接关机
+      /*let hibernateVal: string = sSettingsUtil.getValue(HIBERNATE_KEY);
       if (!hibernateVal || hibernateVal === '') {
         log.showInfo('get hibernateVal from db fail.');
         hibernateVal = IS_HIBERNATE_OPEN;
@@ -181,7 +182,9 @@ export default struct ScreenLockPowerMenu {
       if (!this.isSupportHibernate()) {
         onHibernate = false;
       }
-      onHibernate ? mModel.hibernate() : mModel.shutdown();
+      log.showInfo(`onConfirm onHibernate:${onHibernate},isSupportHibernate:${this.isSupportHibernate()}`);
+      onHibernate ? mModel.hibernate() : mModel.shutdown();*/
+      mModel.shutdown();
       this.dialogController.closeDialog();
       this.onCancel();
       return;
@@ -290,7 +293,7 @@ export default struct ScreenLockPowerMenu {
    * @description 构建悬浮态弹窗
    */
   private dialogFoldController: CustomDialogController | null =
-    DeviceHelper.isBigScreenMachine() ? new CustomDialogController({
+    DeviceHelper.isSuperFoldMachine() ? new CustomDialogController({
       builder: PowerDialog({
         positiveButton: this.textContent,
         dialogMessage: this.dialogMsg,

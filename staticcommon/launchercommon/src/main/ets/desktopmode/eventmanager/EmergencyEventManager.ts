@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { LogDomain, LogHelper, TaskpoolUtil } from '@ohos/basicutils';
+import { OutdoorConfig, LogDomain, LogHelper, TaskpoolUtil } from '@ohos/basicutils';
 import { SCBOobeManager } from '@ohos/windowscene';
 import commonEventManager from '@ohos.commonEventManager';
 import type { BusinessError } from '@ohos.base';
@@ -24,6 +24,7 @@ import { systemParameter } from '@kit.BasicServicesKit';
 import { DesktopModeManager } from '../statemanager/DesktopModeManager';
 import { BaseModeState } from '../statemanager/modelstate/BaseModeState';
 import { EmergencyThresholdManager } from './EmergencyThresholdManager';
+import { LightOutdoorConfig } from '@ohos/frameworkwrapper';
 
 const TAG = 'EmergencyEventManager';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.HOME, TAG);
@@ -31,6 +32,7 @@ const EMC_SCENE_NAME = 'low_power';
 const BOOST_POWER_OFF_STATE = 'BATTERY_EXIT_ECM=2';
 const EMC_DELAY_TIME = 30000;
 const INVALID_VALUE = -1;
+const OUTDOOR_OPEN_STATUS: number = 1;
 
 /**
  * EMC interaction preprocessing, including all cases for entering and exiting the emergency mode
@@ -77,6 +79,11 @@ export class EmergencyEventManager {
         return;
       }
 
+      if (this.idOutdoorMode()) {
+        log.showWarn('cloud mode does not support emergency mode');
+        return;
+      }
+
       if (SCBOobeManager.isOobeActivated()) {
         log.showWarn('Oobe is not allowed to go into emergency mode');
         this.oobeExitEmergencyMode(curPowerMode);
@@ -86,6 +93,11 @@ export class EmergencyEventManager {
       this.enterOrExitEmergencyView(curPowerMode, data);
     }
   };
+
+  private idOutdoorMode(): boolean {
+    return OutdoorConfig.getInstance().isInOutdoorMode() ||
+      LightOutdoorConfig.getInstance().isOnLightOutdoorMode();
+  }
 
   private enterOrExitEmergencyView(curPowerMode: power.DevicePowerMode,
     data: commonEventManager.CommonEventData): void {
@@ -130,7 +142,21 @@ export class EmergencyEventManager {
       log.showError('Need create subscriber!');
       return;
     }
+    this.registerLightOutdoorListener();
     log.showInfo('Init createSubscriberSync end');
+  }
+
+  /**
+   * 注册云端2模式切换监听
+   */
+  private registerLightOutdoorListener(): void {
+    LightOutdoorConfig.getInstance().registerLightOutdoorModeChangeListener(TAG, (action: number) => {
+      // 1 表示开启云端模式2
+      if (action === OUTDOOR_OPEN_STATUS) {
+        clearTimeout(this.emergencyEventTimer);
+        this.emergencyEventTimer = INVALID_VALUE;
+      }
+    });
   }
 
   /**
@@ -141,6 +167,10 @@ export class EmergencyEventManager {
     // 开机或者进程重新拉起，满足条件则直接拉起倒计时
     if (!this.isBatteryConfigSupported()) {
       log.showWarn('Current device does not support boost');
+      return;
+    }
+    if (this.idOutdoorMode()) {
+      log.showWarn('cloud mode does not support emergency mode');
       return;
     }
     if (SCBOobeManager.isOobeActivated()) {
@@ -261,11 +291,11 @@ export class EmergencyEventManager {
   }
 
   private setPowerMode(mode: power.DevicePowerMode): void {
-    power.setPowerMode(mode).then(() => {
-      log.showInfo(`Set device power mode to ${mode}` + ` success`);
-    }).catch((err: Error) => {
-      log.showError(`Set device power mode failed, errMessage: ${err.message}`);
-    });
+    // power.setPowerMode(mode).then(() => {
+    //   log.showInfo(`Set device power mode to ${mode}` + ` success`);
+    // }).catch((err: Error) => {
+    //   log.showError(`Set device power mode failed, errMessage: ${err.message}`);
+    // });
   }
 
    exitEmergencyPowerState(): void {

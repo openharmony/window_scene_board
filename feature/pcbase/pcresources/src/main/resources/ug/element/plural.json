@@ -1,0 +1,100 @@
+{
+    "plural":[
+        {
+            "name":"confirm_reboot",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"قايتا قوزغىتىش (%d)"
+                },
+                {
+                    "quantity":"one",
+                    "value":"قايتا قوزغىتىش (%d)"
+                }
+            ]
+        },
+        {
+            "name":"confirm_shutdown",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"ئېتىش (%d)"
+                },
+                {
+                    "quantity":"other",
+                    "value":"ئېتىش (%d)"
+                }
+            ]
+        },
+        {
+            "name":"confirm_hibernate",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"ئۇخلاش (%d)"
+                },
+                {
+                    "quantity":"other",
+                    "value":"ئۇخلاش (%d)"
+                }
+            ]
+        },
+        {
+            "name":"common_cancel",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"بىكار قىلىش (%d)",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"بىكار قىلىش (%d)",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"create_region_folder",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"تاللانما قاپلاش (%d)",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"تاللانما قاپلاش (%d)",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"confirm_shutdown_tip",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"%d ئەپ ئېتىلىپ، ئۈسكۈنە ئېتىلمەكچى. ساقلىمىغان ئۆزگەرتىشلەر بولسا، «بىكار قىلىش» نى تاللاپ ساقلاڭ.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"one",
+                    "value":"%d ئەپ ئېتىلىپ، ئۈسكۈنە ئېتىلمەكچى. ساقلىمىغان ئۆزگەرتىشلەر بولسا، «بىكار قىلىش» نى تاللاپ ساقلاڭ.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

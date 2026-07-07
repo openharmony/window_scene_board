@@ -1,0 +1,16 @@
+{
+    "plural":[
+        {
+            "name":"folder_is_open_and_total_screen",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"資料夾已開啟，共 %d 頁",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

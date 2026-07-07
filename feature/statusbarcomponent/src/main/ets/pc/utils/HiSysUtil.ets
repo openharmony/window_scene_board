@@ -21,6 +21,9 @@ import { PluginStyleUtil } from '../common/PluginStyleUtil';
 const TAG = 'HiSysUtil';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.SCB, TAG);
 
+// 语音助手语音图标单独分组，其图标个数
+const assistantVoiceNum: number = 1;
+
 export class HiSysUtil {
   private static instance: HiSysUtil;
   public isStart: boolean = false;
@@ -41,7 +44,7 @@ export class HiSysUtil {
   }
 
   private getPropertysNum(property: PositionProperty): number {
-    return property.getVisualPluginNumOnDock();
+    return property.getVisualPluginNumOnDock() + assistantVoiceNum;
   }
 
   public hiSysOnIconItemsNumberChange(property: PositionProperty): void {

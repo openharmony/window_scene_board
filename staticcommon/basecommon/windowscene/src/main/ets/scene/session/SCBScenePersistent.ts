@@ -64,6 +64,7 @@ export class SCBScenePersistent {
   private currentUserId: number = -1;
   private isRecoverFinished: boolean = false;
   private persistentExceptList: string[] = [];
+  private hasRecover_ = false;
 
   /**
    * Recover session persistent
@@ -78,6 +79,14 @@ export class SCBScenePersistent {
     callback(false);
     this.isRecoverFinished = true;
     this.scbPersistentCacheMap.clear();
+  }
+
+  public set hasRecover(hasRecover: boolean) {
+    this.hasRecover_ = hasRecover;
+  }
+
+  public get hasRecover(): boolean {
+    return this.hasRecover_;
   }
 
   /**
@@ -454,6 +463,7 @@ export class SCBScenePersistent {
           log.showError('failed to request scene session!');
           continue;
         }
+        sceneSession.lastUsedTimestamp = data.lastUsedTimestamp;
         data.persistentId = sceneInfo.persistentId;
         this.scbPersistentMap.set(data.persistentId, data);
         let sceneContainerSession = this.recoverToContainerSession(data.rotation, sceneSession, screenProperty);

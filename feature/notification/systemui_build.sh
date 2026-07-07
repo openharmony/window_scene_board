@@ -133,7 +133,7 @@ function package_testing() {
           -p isOhosTest=true \
           -p buildMode=test \
           -p ohos-test-coverage=true \
-          -p hvigor-obfuscation=false \
+          -p hvigor-obfuscation=true \
           -p module=$mode_name
     echo "package_testing success for ${mode_name}"
 }

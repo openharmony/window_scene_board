@@ -25,6 +25,7 @@ import { contextConstant } from '@kit.AbilityKit';
 
 const TAG: string = 'IntentBeanFactory';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.WINDOW, TAG);
+const KEY_SEARCH_STATUS: string = 'hiSearchStatus';
 const PREFERENCE_FILE_NAME: string = 'DesktopSetting';
 
 /**
@@ -121,10 +122,12 @@ export class IntentBeanFactory {
     try {
       let preference: data_preferences.Preferences = data_preferences.getPreferencesSync(
         applicationContext, options);
+      currentStatus = preference.getSync(KEY_SEARCH_STATUS, true) as boolean;
     } catch (e) {
       log.showInfo(`failed getPreferencesSync: [${e.code}]: ${e.message}`);
     }
     applicationContext.area = applicationContextArea;
+    log.showInfo(`getDesktopSlideSwitch currentStatus:` + currentStatus);
     return currentStatus;
   }
 
@@ -141,7 +144,11 @@ export class IntentBeanFactory {
     try {
       let preference: data_preferences.Preferences = data_preferences.getPreferencesSync(
         applicationContext, options);
+      preference?.putSync('hiSearchStatus', isOn);
       preference.flush();
+      AppStorage.setOrCreate('hiSearchStatus', isOn);
+      let currentStatus: boolean = preference.getSync(KEY_SEARCH_STATUS, true) as boolean;
+      log.showInfo(`putDesktopSlideSwitch currentStatus:` + currentStatus);
     } catch (e) {
       log.showInfo(`failed SlideSwitch: [${e.code}]: ${e.message}` );
     }

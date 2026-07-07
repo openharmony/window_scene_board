@@ -35,7 +35,7 @@ export class EmergencyThermalLayoutConfig {
 
   private static mInstance: EmergencyThermalLayoutConfig;
 
-  public static FILE_URL = 'etc/openharmony_launcher_emergency_thermal_default_apps.json';
+  public static FILE_URL = 'etc/hw_launcher_emergency_thermal_default_apps.json';
 
   public static DEFAULT_FILE_NAME = 'emergencyThermalDefaultApps.json';
 

@@ -83,6 +83,7 @@ export enum AudioVolumeType {
   VOICE_CALL = 0,
   RINGTONE = 2,
   MEDIA = 3,
+  VOICE_ASSISTANT = 9,
 }
 
 export enum AudioDeviceType {
@@ -139,6 +140,12 @@ export interface InputDeviceChangeListener { onInputDeviceChange: Function }
 
 export type FocusItemType = DeviceInfo | MenuType;
 
+export enum AISoundType {
+  AI_SING_ALONG_MODE = 101,
+  AI_VOICE_ENHANCE_MODE = 102,
+  AI_CALL_REDUCE_NOISE = 103,
+}
+
 export const AI_NOT_SUPPORT = 'AI_SOUND_NOT_SUPPORT';
 
 export class DNDConstants {
@@ -161,5 +168,5 @@ export class DNDConstants {
   public static DAYS_OF_WEEK_COUNT = 7;
 
   public static CLOCK_BUNDLE_NAME: string = 'com.ohos.clock';
-  public static HUAWEISHARE_BUNDLE_NAME: string = 'com.ohos.instantshare';
+  public static OHOS_SHARE_BUNDLE_NAME: string = 'com.ohos.instantshare';
 }

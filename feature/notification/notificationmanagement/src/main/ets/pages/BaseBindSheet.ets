@@ -35,7 +35,8 @@ export struct BaseBindSheet {
   }
 
   aboutToAppear() {
-    log.showInfo('AboutToAppear.');
+    this.sheetModel.calcHeight()
+    log.showInfo(`AboutToAppear.`);
   }
 
   aboutToDisappear(): void {

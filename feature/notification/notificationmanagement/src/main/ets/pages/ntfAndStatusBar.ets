@@ -25,13 +25,14 @@ import { PageStorages } from '@ohos/managementcomponent/src/main/ets/com/ohos/co
 import { KeyValPair, PageContext } from '@ohos/managementcomponent/src/main/ets/com/ohos/model/SystemUISettingSession';
 import { StatusBarModel } from '../model/StatusBarModel';
 import NtfSettingUtil from '@ohos/managementcomponent/src/main/ets/com/ohos/common/NtfSettingUtil';
-import { HdsNavDestination, HdsNavDestinationAttribute } from '@kit.UIDesignKit';
+// import { HdsNavDestination, HdsNavDestinationAttribute } from '@kit.UIDesignKit';
 import { SysUIHdsNavigations } from '../common/SysUIHdsNavigations';
 import curves from '@ohos.curves';
 import lazy { initLazyModulesForNtfAndStatusBar } from '../common/LazyModuleLoader';
 import lazy { initLazyModulesForNtfSettingPage } from '../common/LazyModulePageLoader';
-import lazy { NtfSettingSysEventReporter } from
-  '@ohos/managementcomponent/src/main/ets/com/ohos/common/NtfSettingSysEventReporter';
+import lazy {
+  NtfSettingSysEventReporter
+} from '@ohos/managementcomponent/src/main/ets/com/ohos/common/NtfSettingSysEventReporter';
 import Constants from '../common/constants';
 
 const TAG = 'NotificationManagement-Main';
@@ -51,10 +52,8 @@ export struct NtfAndStatusBar {
   @StorageLink('navigationMode')
   @Watch('onNavModeChanged') navMode: number = AppStorage.get('navigationMode') ?? -1;
   @StorageLink('isLandscape') isLandscape: boolean = false;
-
   @BuilderParam emptyPageMap: (name: string, param: ESObject) => void;
   @BuilderParam pageMap: (name: string, param: ESObject) => void;
-
   viewModelRefresh: (() => void) | undefined = undefined;
   @State curScale: number = 1;
   private eventMgr: EventManager = EvtBus.createEventManager();
@@ -74,7 +73,7 @@ export struct NtfAndStatusBar {
   build() {
     // HdsNavDestination() {
     NavDestination() {
-      Row().height($r('app.float.page_title_height')).margin({ top: this.statusBarModel.height })
+      // Row().height($r('app.float.page_title_height')).margin({ top: this.statusBarModel.height })
       this.buildSearchItem();
       this.NavigationRouter()
     }
@@ -98,7 +97,6 @@ export struct NtfAndStatusBar {
     this.transitionType = NavigationSystemTransitionType.DEFAULT;
     this.loadPageContent();
   }
-
   private onDestinationBackPressed = (): boolean => {
     log.showInfo('OnDestinationBackPressed. hideBack: %{public}s', this.hideBackButton);
     this.transitionType = NavigationSystemTransitionType.TITLE;

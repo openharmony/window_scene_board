@@ -21,7 +21,7 @@ import {
 } from '@ohos/basicutils';
 import commonEventManager from '@ohos.commonEventManager';
 import Base from '@ohos.base';
-// import virtualization from '@hms.virtService.vmManagerInner';
+// import virtualization from '@ohos.virtService.vmManagerInner';
 import {
   SCBSceneContainerSession,
   SCBSceneInfo,
@@ -159,6 +159,7 @@ export class DesktopSwitchController {
     FourFingerSwipeController.getInstance().setCanInterrupt(true);
     FourFingerSwipeController.getInstance().updateShowPrefabrication(true);
     FourFingerSwipeController.getInstance().releaseVmSnapshot();
+    FourFingerSwipeController.getInstance().releaseHarmonySnapshot();
     FourFingerSwipeController.getInstance().closeVmInit();
     FourFingerSwipeController.getInstance().memoryReleaseEnd();
     ViewManagerPolicy.hideView(ViewType.DESKTOP_SWITCHER);

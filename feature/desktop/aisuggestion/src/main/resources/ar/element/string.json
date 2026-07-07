@@ -1,0 +1,88 @@
+{
+    "string":[
+        {
+            "name":"not_pin",
+            "value":"إزالة من الأعلى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pin",
+            "value":"تثبيت بالأعلى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aisuggestion_app_name",
+            "value":"اقتراحات voice",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pin_this_app",
+            "value":"تثبيت",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"unpin_this_app",
+            "value":"إلغاء التثبيت",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"reduce_recommend_this_card",
+            "value":"اقتراح أقل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"not_recommend_this_card",
+            "value":"عدم الاقتراح مرة أخرى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"manage_card",
+            "value":"إدارة الأدوات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"not_recommend_this_app",
+            "value":"عدم الاقتراح مرة أخرى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"subscribe_this_card",
+            "value":"تثبيت الأدوات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"unsubscribe_this_card",
+            "value":"إلغاء تثبيت الأدوات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"manage_app",
+            "value":"إدارة التطبيق",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

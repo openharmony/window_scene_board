@@ -1,5 +1,5 @@
 /*
- * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -74,7 +74,7 @@ import {
 import { PowerStatus } from '@ohos/commonconstants';
 import { EventConstants, StyleConstants } from '@ohos/launchercommon'
 import { styleMgr } from '@ohos/systemuicommon';
-// import apsManager from '@hms.graphic.apsManager';
+// import apsManager from '@ohos.graphic.apsManager';
 import PowerStatusChangeAnimationController from './PowerStatusChangeAnimationController';
 import { SCBRecentStyleConstants } from '../recentview/SCBRecentStyleConstants';
 import curves from '@ohos.curves';
@@ -144,7 +144,7 @@ interface SCBSpecificSceneBuilderParam {
 }
 
 export enum WindowPosition {
-  NOT_BIG_SCREEN_DEVICE = -1,
+  NOT_SUPER_FOLD_DEVICE = -1,
   B_WINDOW,
   C_WINDOW,
 }
@@ -1359,15 +1359,30 @@ export struct SCBScene {
 
   private getDockHeight(screenId: number): number {
     let dockHeight = 0;
+
+    // 尝试通过 SCBSceneSessionManager 获取
     let dock = SCBSceneSessionManager.getInstance()
       .getSystemSceneSessionWithSystemBarType(SystemBarType.SMART_DOCK, screenId);
-    let mainScreenId = SCBSceneSessionManager.getInstance().mainScreenId;
-    if (dock && screenId === mainScreenId && viewMgrPolicy.isViewShowing(ViewType.SMART_DOCK)) {
+    if (dock) {
       dockHeight = dock.currRect.height.getPx();
+      log.showInfo(`Dock height from session: ${dockHeight}`);
+      return dockHeight;
     }
-    if (dock && screenId !== mainScreenId && viewMgrPolicy.isViewShowing(ViewType.SMART_DOCK_EXT_SCREEN)) {
-      dockHeight = dock.currRect.height.getPx();
+
+    // 尝试通过 LayoutViewModel 获取
+    try {
+      const layoutViewModel = LayoutViewModel.getInstance();
+      const dockHeightVp = layoutViewModel.getDockHeight();
+      dockHeight = vp2px(dockHeightVp);
+      log.showInfo(`Dock height from LayoutViewModel: ${dockHeight}`);
+      return dockHeight;
+    } catch (error) {
+      log.showError(`Get dock height via LayoutViewModel failed: ${error}`);
     }
+
+    // 使用硬编码默认值兜底
+    dockHeight = 99;
+    log.showInfo(`Dock not found, using default height: ${dockHeight}`);
     return dockHeight;
   }
 
@@ -1661,7 +1676,7 @@ export struct SCBScene {
   }
 
   private getWindowState(topPx: number): number {
-    let windowState: number = WindowPosition.NOT_BIG_SCREEN_DEVICE;
+    let windowState: number = WindowPosition.NOT_SUPER_FOLD_DEVICE;
     return windowState;
   }
 
@@ -2482,8 +2497,8 @@ export struct SCBScene {
         .position(this.getPxPositionStr())
         .translate(this.getTranslate())
         .scale({
-          x: 1,
-          y: 1,
+          x: this.sceneSession.scaleX,
+          y: this.sceneSession.scaleY,
           centerX: this.getScaleCenterX(),
           centerY: this.getScaleCenterY(),
         })

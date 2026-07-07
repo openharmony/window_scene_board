@@ -36,6 +36,7 @@ export enum ScenePanelStates {
 
   STATE_SCREEN_LOCK = 'ScreenLockState',
 
+  STATE_OUTDOOR_IDLE = 'OutdoorIdle',
 }
 
 export enum RecentClickReason {

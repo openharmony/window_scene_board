@@ -407,6 +407,13 @@
             }
         },
         {
+            "name":"system_function_voice_search",
+            "value":"語言助手搜尋",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
             "name":"system_function_show_desktop_key_question_mark",
             "value":"？",
             "attr":{

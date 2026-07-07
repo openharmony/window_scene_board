@@ -31,7 +31,8 @@ import {
   SCBUnlockTransitionController,
   scbEventExclusiveManager,
   EventType,
-  DisplayMgr
+  DisplayMgr,
+  SCBScenePanelManager
 } from '@ohos/windowscene';
 import { WindowConstants } from '@ohos/commonconstants';
 import {
@@ -47,6 +48,7 @@ import {
   TargetChangeState,
   ViewCallback,
   viewMgrPolicy,
+  ViewController,
   ViewType,
   WindowEvent,
   ConfigurationEvent,
@@ -168,12 +170,12 @@ import { OneMirrorService } from '@ohos/screenlockcomponent/src/main/ets/onemirr
 import { MultiInputViewModel } from '@ohos/multiinput/src/main/ets/default/common/viewmodel/MultiInputViewModel';
 import lazy { SCBTripleController } from '@ohos/windowscene/src/main/ets/animation/SCBTransitionController';
 import lazy {
-  UltraScreenExpandAnimUtils,
+  TripleFoldExpandAnimUtils,
   SCBTripleStateChange,
-} from '@ohos/launchercommon/src/main/ets/utils/UltraScreenExpandAnimUtils';
+} from '@ohos/launchercommon/src/main/ets/utils/TripleFoldExpandAnimUtils';
 import lazy {
-  UltraScreenAnimationConstants
-} from '@ohos/launchercommon/src/main/ets/constants/UltraScreenAnimationConstants';
+  TripleFoldAnimationConstants
+} from '@ohos/launchercommon/src/main/ets/constants/TripleFoldAnimationConstants';
 import { ColorModeLiveViewData } from '@ohos/systemuicommon/src/main/ets/template/newStyle/ColorModeLiveViewData';
 import { effectKit } from '@kit.ArkGraphics2D';
 import { ColorModeNCViewData } from '@ohos/systemuicommon/src/main/ets/template/newStyle/ColorModeNCViewData';
@@ -255,6 +257,7 @@ export struct SCBStatusBar {
   @Prop @Watch('onIsKeyguardViewHideChange') isKeyguardHide: Boolean = true;
   @StorageLink('screenLockMoveEvent') screenMoveEvent: TouchEvent | null = null;
   @State statusBarMaskState: StatusBarMaskState = statusBarMaskManager.getStatusBarMaskState();
+
   /**
    * 下拉事件
    */
@@ -288,9 +291,9 @@ export struct SCBStatusBar {
    */
   @Provide isFolded: boolean = this.getFolded(display.getFoldStatus());
   /**
-   * 超大屏设备屏幕显示状态
+   * 三折叠设备屏幕显示状态
    */
-  @Provide ultraScreenDisplayMode: XTLayoutType = LayoutUtils.getFoldDisplayModeByStatus(display.getFoldStatus());
+  @Provide threeFoldDisplayMode: XTLayoutType = LayoutUtils.getFoldDisplayModeByStatus(display.getFoldStatus());
 
   // titleBar显示类型
   private titleBarType: TitleBarType = TitleBarType.NONE;
@@ -967,8 +970,8 @@ export struct SCBStatusBar {
 
   private folderStatusChangeCallback = (newFoldStatus: display.FoldStatus) => {
     if (LayoutUtils.isXTProductType()) {
-      this.ultraScreenDisplayMode = LayoutUtils.getFoldDisplayModeByStatus(newFoldStatus);
-      log.showInfo(`folderStatusChangeCallback ultraScreenDisplayMode is ${this.ultraScreenDisplayMode}`);
+      this.threeFoldDisplayMode = LayoutUtils.getFoldDisplayModeByStatus(newFoldStatus);
+      log.showInfo(`folderStatusChangeCallback threeFoldDisplayMode is ${this.threeFoldDisplayMode}`);
       return;
     }
     this.isFolded = this.getFolded(newFoldStatus);
@@ -1100,16 +1103,16 @@ export struct SCBStatusBar {
   }
 
   /**
-   * 超大屏应用在前台场景，处理F与M态状态栏动效
+   * 三折叠应用在前台场景，处理F与M态状态栏动效
    * @returns
    */
-  private isUltraScreenFMSwitch(): boolean {
-    if (!DeviceHelper.isUltraScreenProduct()) {
+  private isTripleFoldFMSwitch(): boolean {
+    if (!DeviceHelper.isThreeFoldProduct()) {
       return false;
     }
     const currentTripleState = SCBTriFoldManager.getInstance().getCurTriFoldState();
     const prevTripleState = SCBTriFoldManager.getInstance().getPrevTriFoldState();
-    const stateChange = UltraScreenExpandAnimUtils.getTripleStateChange(currentTripleState, prevTripleState);
+    const stateChange = TripleFoldExpandAnimUtils.getTripleStateChange(currentTripleState, prevTripleState);
     if (stateChange === SCBTripleStateChange.F_TO_M || stateChange === SCBTripleStateChange.M_TO_F) {
       return true;
     }
@@ -1133,7 +1136,7 @@ export struct SCBStatusBar {
     }
     if ((reason === SCBPropertyChangeReason.FOLD_TO_EXPAND || reason === SCBPropertyChangeReason.EXPAND_TO_FOLD) &&
       this.scenePanelState === ScenePanelState.FULLSCENE && !ScreenLockApi.getLock() &&
-      this.isUltraScreenFMSwitch()) {
+      this.isTripleFoldFMSwitch()) {
       this.StatusBarFoldOrExpandAnimation(reason);
     }
     log.showInfo('onScreenPropertyChange old width:' + oldArea.width + 'new width:' + newAreaWidth);
@@ -1184,7 +1187,7 @@ export struct SCBStatusBar {
   }
 
   private registerTripleAnimationController(): void {
-    if (!DeviceHelper.isUltraScreenProduct()) {
+    if (!DeviceHelper.isThreeFoldProduct()) {
       return;
     }
     let systemSceneSession = SCBSceneSessionManager.getInstance().getSystemSceneSessionWithId(this.persistentId);
@@ -1476,18 +1479,18 @@ export struct SCBStatusBar {
     log.showInfo(`statusbar execute tripleAnimation, oldState is ${oldState}, newState is ${newState}`);
     let systemSceneSession: SCBSystemSceneSession =
       SCBSceneSessionManager.getInstance().getSystemSceneSessionWithId(this.persistentId);
-    let stateChange: SCBTripleStateChange = UltraScreenExpandAnimUtils.getTripleDesktopStateChange(newState, oldState);
+    let stateChange: SCBTripleStateChange = TripleFoldExpandAnimUtils.getTripleDesktopStateChange(newState, oldState);
     if (stateChange === SCBTripleStateChange.INVALID) {
       log.showWarn('get stateChange invalid, return;');
       return;
     }
     if (systemSceneSession) {
       systemSceneSession.translateX =
-        UltraScreenExpandAnimUtils.initTripleStatusBarTransX(px2vp(this.screenProp.width), stateChange);
+        TripleFoldExpandAnimUtils.initTripleStatusBarTransX(px2vp(this.screenProp.width), stateChange);
     }
     animateTo({
-      curve: UltraScreenAnimationConstants.TRANSLATE_CURVES,
-      duration: UltraScreenAnimationConstants.ANIMATION_DURATION,
+      curve: TripleFoldAnimationConstants.TRANSLATE_CURVES,
+      duration: TripleFoldAnimationConstants.ANIMATION_DURATION,
     }, () => {
       if (systemSceneSession) {
         systemSceneSession.translateX = 0;
@@ -1610,8 +1613,9 @@ export struct SCBStatusBar {
   private onViewShow = (): void => {
     let enable = this.isSystemBarEnable();
     log.showInfo(`onViewShow is coming, enable: ${enable} `);
-    if (!enable) {
-      // 沉浸式场景呼出状态栏，通知导航条也显示出来
+    // 手机模式下，状态栏下拉呼出后始终显示2秒然后自动隐藏，与分屏状态无关
+    if (!enable || this.isSplitMode() || !SCBSceneSessionManager.getInstance().isPcMode()) {
+      // 沉浸式或分屏场景呼出状态栏，通知导航条也显示出来
       localEventManager.sendLocalEvent(EventConstants.SYSTEM_BAR_CHANGE, SystemBarChangeType.SHOW_BAR);
       this.setDelayAwakeDismiss();
     }
@@ -1715,7 +1719,7 @@ export struct SCBStatusBar {
     localEventManager.unregisterEventListener(this.localEventListener);
     SCBTransitionManager.getInstance().unRegisterFoldAnimationController(this.foldController);
     SCBTransitionManager.getInstance().unRegisterExpandAnimationController(this.expandController);
-    if (DeviceHelper.isUltraScreenProduct()) {
+    if (DeviceHelper.isThreeFoldProduct()) {
       SCBTransitionManager.getInstance().unRegisterTripleAnimationController(this.tripleController);
     }
     SCBTransitionManager.getInstance().unRegisterUnlockTransitionController(this.unLockTransitionController, false);
@@ -1866,6 +1870,16 @@ export struct SCBStatusBar {
     clearTimeout(this.delayCheckDismiss);
   }
 
+  /**
+   * 是否分屏模式
+   *
+   * @return true分屏模式
+   */
+  private isSplitMode(): boolean {
+    let topActiveSession = SCBScenePanelManager.getInstance().getSceneContainerSessionList()?.getTopActiveSession();
+    return topActiveSession?.isSplit || false;
+  }
+
   private setDelayAwakeDismiss(): void {
     this.clearDelayAwakeDismiss();
     log.showInfo('setDelayAwakeDismiss');
@@ -1880,7 +1894,6 @@ export struct SCBStatusBar {
       }
       log.showInfo(`not receive touch during last ${CHECK_AWAKE_DISMISS} ms, dismiss panel`);
       SCBSceneSessionManager.getInstance().setIsShowStatusBarTemporary(false);
-
       if (!this.isSystemBarEnable() && !ViewManagerPolicy.isViewShowing(ViewType.DROPDOWN) &&
         !bannerMgr.isBannerPanelType(BannerPanelType.TYPE_LIVE_LIST)) {
         scbStatusBarVM.onIsBarShow(false, true);

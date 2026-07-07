@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023-Huawei Device Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) 2023-2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -25,7 +25,7 @@ import { CommonConstants,
     SettingsKeyConstants,
     SCBConstants } from '@ohos/commonconstants';
 import { SCBSceneSessionManager } from '@ohos/windowscene';
-// import parentControl from '@hms.utilityApplication.parentControl';
+// import parentControl from '@ohos.utilityApplication.parentControl';
 
 import { EventConstants } from '../constants/EventConstants';
 import { BaseBundleInfo } from '../bean/BaseBundleInfo';

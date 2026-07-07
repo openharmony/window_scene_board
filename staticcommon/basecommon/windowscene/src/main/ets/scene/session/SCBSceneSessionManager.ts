@@ -1,5 +1,5 @@
 /*
- * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -17,7 +17,6 @@ import { FocusChangeReason } from '../../common/FocusChangeReason';
 import { SCBWindowRaiseReason } from '../../common/SCBWindowRaiseReason';
 import { SnapshotNodeType } from '../../common/SnapshotNodeType';
 import BundleManager from '@ohos.bundle.bundleManager';
-import { image } from '@kit.ImageKit';
 import settings from '@ohos.settings';
 import sceneSessionManager from '@ohos.sceneSessionManager';
 import screenSessionManager from '@ohos.screenSessionManager';
@@ -38,7 +37,7 @@ import { SCBScenePersistent } from './SCBScenePersistent';
 import { SCBSpecificSession } from './SCBSpecificSession';
 import { DomainName, LogDomain, LogHelper } from '@ohos/basicutils';
 import { CallToState, RotationConstants, SCBConstants } from '@ohos/commonconstants';
-import { AbilityItemInfo, SCBAbilityItemInfo, SCBApplicationInfo } from '../../bean/AbilityItemInfo';
+import { AbilityItemInfo, SCBAbilityItemInfo, SCBApplicationInfo, ApplicationInfoItem } from '../../bean/AbilityItemInfo';
 import { SCBSessionCbType, SCBSystemBarProperty } from './SCBSceneSession';
 import { SCBSceneSession, ActiveReason } from './SCBSceneSession';
 import { SCBSceneContainerSession, SCBSceneSessionArray } from './SCBSceneContainerSession';
@@ -98,7 +97,7 @@ import lazy { sceneMissionInterceptor } from '../../TsIndex';
 import { ExtAppConstants } from '@ohos/commonconstants';
 import { ArrayList } from '@kit.ArkTS';
 import { ExclusiveChecker } from '../manager/ExclusiveChecker';
-import { TraceUtil } from '@ohos/basicutils';
+import { DeliverUtil, TraceUtil } from '@ohos/basicutils';
 import { inputMonitor } from '@kit.InputKit';
 import { TouchGestureEvent } from '@ohos.multimodalInput.gestureEvent';
 import { ScbNumber, SCBSessionRect } from './SCBSessionRect';
@@ -117,12 +116,17 @@ import { SceneBoardStateManager, CoreEventType } from '@ohos/frameworkwrapper/In
 import { MidSceneLifeCycle } from './SCBMidSceneParam';
 import { SCBSceneStartInterceptor } from '../framework/missions/SCBSceneStartInterceptor';
 import { WinLog, WinLogDomain } from '../../utils/WinLog';
+import effectKit from '@ohos.effectKit';
+import image from '@ohos.multimedia.image';
+import fs from '@ohos.file.fs';
+
+export const EXTREMELY_LIGHT_COLOR_PICTURE: number = 1;
 
 const TAG = 'SCBSSM';
 const log = LogHelper.getLogHelper(LogDomain.WINDOW, TAG);
 const INVALID_PERSISTENT_ID: number = 0;
 const DEFAULT_USERID = -1;
-const UNLOCK_SUCCESS_ZINDEX :number = 1;
+const UNLOCK_SUCCESS_ZINDEX: number = 1;
 const DEFAULT_SYSTEM_BAR_CB_DISPLAY_ID = -1;
 
 export const INVALID_SCREEN_ID: number = -1;
@@ -140,6 +144,10 @@ const INVALID_INDEX = -1;
 const SENSOR_ROTATION_CHANGE = 'sensor rotation change';
 const APP_MULTI_WINDOW_KEY = 'appMultiWindow';
 const DEFAULT_ACCOUNT_ID: number = 100; //main user account id
+const STATUS_HEIGHT: number = 135;
+const CHANNEL_NUMBER: number = 4;
+const DEFAULT_IMAGE_WIDTH_HEIGHT: number = 1600;
+const DEFAULT_IMAGE_BUFFER_SIZE: number = DEFAULT_IMAGE_WIDTH_HEIGHT * DEFAULT_IMAGE_WIDTH_HEIGHT * CHANNEL_NUMBER;
 
 export const enum TraverseSessionScenarios {
   REFRESH_ZORDER,
@@ -454,6 +462,7 @@ export class SCBSpecificSceneSessionList extends Array<SCBSpecificSession> {
 export class SCBDynamicSystemScene {
   zIndex: number;
   systemSceneList: SCBSpecificSceneSessionList;
+
   constructor(zIndex: number) {
     this.zIndex = zIndex;
     this.systemSceneList = new SCBSpecificSceneSessionList();
@@ -477,7 +486,7 @@ export interface SessionIconListener {
 }
 
 export interface AddSpecificSessionCallback {
-  (SCBSpecificSceneSessionList):void;
+  (SCBSpecificSceneSessionList): void;
 }
 
 /*
@@ -486,6 +495,11 @@ export interface AddSpecificSessionCallback {
 export enum UserSwitchEventType {
   SWITCHING,
   SWITCHED,
+}
+
+enum SetSpecificZIndexReason {
+  SET = 0,
+  RESET = 1,
 }
 
 /**
@@ -502,6 +516,7 @@ export class SCBSceneSessionManager {
   private createSpecificSceneCallbackMap: Map<number, Map<number, Function>> = new Map();
   // callbacks of destroy float window: Map<screenId, Map<zorder, Set<CallbackFunc>>
   private destroyFloatWindowCallbackMap: Map<number, Map<number, Set<Function>>> = new Map();
+  private specificZIndexChangeCallbackMap: Map<number, Map<number, Function>> = new Map();
   private getPluginSessionListCallback: Function;
   private requestFocusCallback: Function;
   private clearSceneStatusCallback: Map<number, Function> = new Map();
@@ -531,13 +546,14 @@ export class SCBSceneSessionManager {
   private specialCallbackMap: Map<number, Map<number, Array<Function>>> = new Map();
   private callbackFuncForSCBScenePanel: Function;
   private pipRestoreCallbackMap: Map<number, Function> = new Map();
+  private recoverPersistentCallback?: Function;
   private navChangeCallback: Function;
   private midSceneStateChangeCallBack: Function;
   private scenePersistent: SCBScenePersistent;
   private abilityInfoMap = new Map<string, AbilityItemInfo>(); // key is bundleName+moduleName+abilityName
   private sdkVersionMap = new Map<string, number>(); // key is bundleName+moduleName+abilityName
-  private applicationStartModeMap = new Map<string, SCBApplicationInfo>();
   private abilityHookMap: Map<string, boolean> = new Map(); // key is bundleName+moduleName+abilityName
+  private applicationInfoMap: Map<string, ApplicationInfoItem> = new Map(); // key is bundleName
   private readonly listener;
   private mCurrentUserId: number = DEFAULT_USERID;
   private desktopDefaultSystemBarProperty: SCBSystemBarProperty;
@@ -561,6 +577,8 @@ export class SCBSceneSessionManager {
   public splitFocusSessionList: SCBSceneSessionArray = new SCBSceneSessionArray();
   private specificSessionCacheMap: Map<number, Map<number, sceneSessionManager.SceneSession[]>> = new Map();
   private sessionTypeToPanelZorderMap: Map<sceneSessionManager.SessionType, SpecificPanelZOrder> = new Map();
+  public isAbnormalRecovery: boolean = false;
+  private hasRecover: boolean = false;
 
   private static gSystemId: number = 0;
 
@@ -631,8 +649,19 @@ export class SCBSceneSessionManager {
     new SCBSystemBarProperty(sceneSessionManager.SessionType.TYPE_UNDEFINED, true, '#00FFFFFF', '#FFFFFFFF');
 
   private recentTaskChangeProcess: 'in' | 'out' | undefined = undefined;
+
   public get isInRecentOutProcess() {
     return this.recentTaskChangeProcess === 'out';
+  }
+
+  /**
+   * 多任务是否仍强制隐藏状态栏
+   *
+   * @return true 状态栏被多任务强制隐藏
+   */
+  public isStatusBarForceHidden(): boolean {
+    return this.sceneBoardForceProperty.type === sceneSessionManager.SessionType.TYPE_STATUS_BAR
+      && !this.sceneBoardForceProperty.enable;
   }
 
   private mIsStatusBarShownForHover: boolean = false;
@@ -693,6 +722,7 @@ export class SCBSceneSessionManager {
 
   private getVirtualScreenSessionFuncMap:
     Map<number, ((id: number) => SCBSceneSession | SCBSpecificSession | undefined)> = new Map();
+  private specificPanelZIndexMap: Map<number, number> = new Map();
   private sceneStateChangeCallback: Map<number, SceneStateChangeCallback[]> = new Map();
   private readonly appExitListener = {
     onReceiveEvent: (event: string, params: boolean): void => {
@@ -742,6 +772,14 @@ export class SCBSceneSessionManager {
   private addGestureDockRecentItemCallback: Function | undefined;
 
   private handleWindowWhenPreLockCallbackMap: Map<number, Function> = new Map();
+
+  private recoverPersistentFunc = (): void => {
+    log.showWarn(`recoverPersistent: isAbnormalRecovery:${this.isAbnormalRecovery}, hasRecover:${this.hasRecover}`);
+    if (this.recoverPersistentCallback && !this.isAbnormalRecovery && !this.hasRecover) {
+      this.hasRecover = true;
+      this.recoverPersistentCallback();
+    }
+  }
 
   /**
    * registerPipCallback 注册pip小窗恢复到全屏显示回调
@@ -814,7 +852,7 @@ export class SCBSceneSessionManager {
    * @param { boolean } enable
    */
   public notifySCBSceneSetWindowRectAutoSave(sceneInfo: SCBSceneInfo, enable: boolean,
-      isEnableSpecified: boolean): void {
+    isEnableSpecified: boolean): void {
     if (this.setWindowRectAutoSaveCallback) {
       log.showInfo(`notifySCBSceneSetWindowRectAutoSave`);
       this.setWindowRectAutoSaveCallback(sceneInfo, enable, isEnableSpecified);
@@ -1098,6 +1136,7 @@ export class SCBSceneSessionManager {
     }
     return SCBSceneOrientation.UNSPECIFIED;
   }
+
   public unregisterSceneStateChangeCallback(screenId: number, sceneStateChange?: SceneStateChangeCallback): void {
     if (this.sceneStateChangeCallback.get(screenId) === undefined) {
       return;
@@ -1392,7 +1431,7 @@ export class SCBSceneSessionManager {
       `${this.recoverSceneSessionList.get(screenId)?.length}, screenid: ${screenId}`);
     this.isStartRecoverySet.add(screenId);
     while (this.recoverSceneSessionList.get(screenId)?.length > 0 && !this.getScenePersistent().getRecoverFinished() &&
-      this.recoverSessionCallbackMap.has(screenId)) {
+    this.recoverSessionCallbackMap.has(screenId)) {
       const info = this.recoverSceneSessionList.get(screenId).pop();
       const sceneSession = info[0];
       const sceneInfo = info[1];
@@ -1443,7 +1482,7 @@ export class SCBSceneSessionManager {
    * @param sceneSession
    */
   private onRecoverSession(sceneSession: sceneSessionManager.SceneSession,
-                           sceneInfo: sceneSessionManager.SceneRecoverInfo): void {
+    sceneInfo: sceneSessionManager.SceneRecoverInfo): void {
     WinLog.showInfo(WinLogDomain.WMS_RECOVER, `onRecoverSession presistentid: ${sceneSession.persistentId}, ` +
       `screenId: ${sceneSession.screenId}`);
     if (!this.recoverSessionCallbackMap.has(sceneSession.screenId)) {
@@ -1470,7 +1509,7 @@ export class SCBSceneSessionManager {
           containerSession.primarySession.sessionData.transitionAnimationConfig.set(Number(key),
             sceneInfo.transitionAnimationMap[key]);
           WinLog.showInfo(WinLogDomain.WMS_ANIMATION, `transitionType: ${key}, transitionAnimation: ` +
-            JSON.stringify(sceneInfo.transitionAnimationMap[key]));
+          JSON.stringify(sceneInfo.transitionAnimationMap[key]));
         }
       }
     }
@@ -1507,6 +1546,16 @@ export class SCBSceneSessionManager {
   public unRegisterRecoverSessionCallback(screenId: number): void {
     WinLog.showInfo(WinLogDomain.WMS_RECOVER, `unRegisterRecoverSessionCallback screenId: ${screenId}`);
     this.recoverSessionCallbackMap.delete(screenId);
+  }
+
+  public registerRecoverPersistentCallback(callback: Function, screenId: number = this.mainScreenId): void {
+    WinLog.showInfo(WinLogDomain.WMS_LIFE, `registerRecoverPersistentCallback screenId: ${screenId}`);
+    this.recoverPersistentCallback = callback;
+  }
+
+  public unregisterRecoverPersistentCallback(screenId: number): void {
+    WinLog.showInfo(WinLogDomain.WMS_LIFE, `unregisterRecoverPersistentCallback screenId: ${screenId}`);
+    this.recoverPersistentCallback = undefined;
   }
 
   /**
@@ -1960,6 +2009,10 @@ export class SCBSceneSessionManager {
       this.onCreateSpecificSession(specificSession);
     });
 
+    sceneSessionManager.on('setSpecificWindowZIndex', (sessionType, zIndex, reason) => {
+      this.onSetSpecificWindowZIndex(sessionType, zIndex, reason);
+    })
+
     // register native function for create keyboard session
     sceneSessionManager.on('createKeyboardSession', (keyboardSession, panelSession) => {
       SCBKeyboardManager.getInstance().onCreateKeyboardAndPanelSession(keyboardSession, panelSession);
@@ -2011,10 +2064,10 @@ export class SCBSceneSessionManager {
 
     try {
       sceneSessionManager.on('updateAppUseControl',
-        (type: ControlType, userId: number, controlInfos : ControlAppInfo[]) => {
-        log.showDebug(`[UseControl]updateControlAppInfo, type:${type} controlInfos:${JSON.stringify(controlInfos)}`);
-        SCBAppUseControlManager.getInstance().updateControlAppInfo(type, controlInfos);
-      });
+        (type: ControlType, userId: number, controlInfos: ControlAppInfo[]) => {
+          log.showDebug(`[UseControl]updateControlAppInfo, type:${type} controlInfos:${JSON.stringify(controlInfos)}`);
+          SCBAppUseControlManager.getInstance().updateControlAppInfo(type, controlInfos);
+        });
     } catch (err) {
       log.showError('[UseControl]Fail to register update app use control callback');
     }
@@ -2054,6 +2107,9 @@ export class SCBSceneSessionManager {
   // init fold crease region when screen connected
   public onScreenConnect(screenSession: SCBScreenSession): void {
     log.showInfo(`onScreenConnect screenId: ${screenSession.session.screenId}`);
+    if (screenSession.session.name === 'VoiceView' || screenSession.session.name === 'DevEcoViewer') {
+      this.windowFocusController.addFocusGroup(screenSession.session.screenId, screenSession.session.displayGroupId);
+    }
     SCBSceneMissionManager.getInstance().notifyScreenStateChange(screenSession.session.screenId, true);
   }
 
@@ -2064,33 +2120,33 @@ export class SCBSceneSessionManager {
     this.lastSystemBarPropertyMap.delete(screenId);
   }
 
-  private getCurBigScreenStatusFromDisplay(): screenSessionManager.BigScreenStatus {
+  private getCurSuperFoldStatusFromDisplay(): screenSessionManager.SuperFoldStatus {
     let foldStatus: display.FoldStatus = display.FoldStatus.FOLD_STATUS_UNKNOWN;
     try {
       foldStatus = display.getFoldStatus();
     } catch (error) {
-      log.showError(`getCurBigScreenStatusFromDisplay error.code: ${error?.code}, error.message: ${error?.message}`);
-      return screenSessionManager.BigScreenStatus.BIG_SCREEN_STATUS_UNKNOWN;
+      log.showError(`getCurSuperFoldStatusFromDisplay error.code: ${error?.code}, error.message: ${error?.message}`);
+      return screenSessionManager.SuperFoldStatus.SUPER_FOLD_STATUS_UNKNOWN;
     }
 
     // if (!foldStatus || foldStatus === display.FoldStatus.FOLD_STATUS_UNKNOWN) {
-    //   return screenSessionManager.BigScreenStatus.BIG_SCREEN_STATUS_UNKNOWN;
+    //   return screenSessionManager.SuperFoldStatus.SUPER_FOLD_STATUS_UNKNOWN;
     // }
 
     switch (foldStatus) {
       // case display.FoldStatus.FOLD_STATUS_EXPANDED:
-      //   return screenSessionManager.BigScreenStatus.BIG_SCREEN_STATUS_EXPANDED;
+      //   return screenSessionManager.SuperFoldStatus.SUPER_FOLD_STATUS_EXPANDED;
       // case display.FoldStatus.FOLD_STATUS_FOLDED:
-      //   return screenSessionManager.BigScreenStatus.BIG_SCREEN_STATUS_FOLDED;
+      //   return screenSessionManager.SuperFoldStatus.SUPER_FOLD_STATUS_FOLDED;
       // case display.FoldStatus.FOLD_STATUS_HALF_FOLDED:
-      //   return screenSessionManager.BigScreenStatus.BIG_SCREEN_STATUS_HALF_FOLDED;
+      //   return screenSessionManager.SuperFoldStatus.SUPER_FOLD_STATUS_HALF_FOLDED;
       default:
-        return screenSessionManager.BigScreenStatus.BIG_SCREEN_STATUS_UNKNOWN;
+        return screenSessionManager.SuperFoldStatus.SUPER_FOLD_STATUS_UNKNOWN;
     }
   }
 
-  public getCurBigScreenStatus(): screenSessionManager.BigScreenStatus {
-      return screenSessionManager.BigScreenStatus.BIG_SCREEN_STATUS_UNKNOWN;
+  public getCurSuperFoldStatus(): screenSessionManager.SuperFoldStatus {
+    return screenSessionManager.SuperFoldStatus.SUPER_FOLD_STATUS_UNKNOWN;
   }
 
   public isInFoldExpanedStatus(): boolean {
@@ -2110,7 +2166,7 @@ export class SCBSceneSessionManager {
     return false;
   }
 
-  public isInBigScreenStatus(): boolean {
+  public isInSuperFoldStatus(): boolean {
     if (!this.isPc()) {
       return false;
     }
@@ -2253,7 +2309,7 @@ export class SCBSceneSessionManager {
     }
     const isUserActive: boolean = userId === this.mCurrentUserId;
     WinLog.showInfo(WinLogDomain.WMS_MULTI_USER, `Handle user switch event, eventType: ${eventType}, switchToUserId: ${userId} ` +
-                 `currentUserId: ${this.mCurrentUserId}, isUserActive: ${isUserActive}`);
+      `currentUserId: ${this.mCurrentUserId}, isUserActive: ${isUserActive}`);
     if (eventType === UserSwitchEventType.SWITCHING) {
       this.handleUserSwitching(isUserActive);
     } else if (eventType === UserSwitchEventType.SWITCHED) {
@@ -2328,7 +2384,7 @@ export class SCBSceneSessionManager {
 
   public isPc(): boolean {
     return SCBWindowSceneConfig.getInstance().windowSceneConfig?.uiType === SCBConstants.UITYPE_PC ||
-      DeviceHelper.is2In1DevicePcType();
+    DeviceHelper.is2In1DevicePcType();
   }
 
   /**
@@ -2434,8 +2490,8 @@ export class SCBSceneSessionManager {
    *
    * @param containerSession is Session of a SceneContainer
    */
-  public transferToBackgroundWhenLocked(containerSession : SCBSceneContainerSession,
-    backgroundReason: BackgroundReason = BackgroundReason.DEFAULT) : void {
+  public transferToBackgroundWhenLocked(containerSession: SCBSceneContainerSession,
+    backgroundReason: BackgroundReason = BackgroundReason.DEFAULT): void {
     if (containerSession == null) {
       return;
     }
@@ -2469,7 +2525,7 @@ export class SCBSceneSessionManager {
     }
   }
 
-  private onUnLockReceived(): void {
+  private async onUnLockReceived(): Promise<void> {
     log.showInfo('onUnLockReceived');
     for (let controller of this.unlockTransitionCallbacks) {
       if (!controller) {
@@ -2477,6 +2533,7 @@ export class SCBSceneSessionManager {
       }
       controller.onUnlock();
     }
+    await this.updateStatusbarColor();
     this.updateSystemBarProperty();
     this.reOrderShowWhenLocked(true, false, 'OnUnLockReceived');
   }
@@ -2487,6 +2544,7 @@ export class SCBSceneSessionManager {
     this.notifyWMSIsLockReceived(false);
     sceneMissionInterceptor.onInterceptedFromUnlockToForeground(this.activeSessionList);
     this.requestActivationWhenUnLock();
+
     for (let controller of this.unlockTransitionCallbacks) {
       if (!controller || !controller.onUnlockStartScene) {
         continue;
@@ -2539,7 +2597,7 @@ export class SCBSceneSessionManager {
     let topActiveSession = this.getContainerSessionList().getTopActiveSession();
     let topSpecialActiveSession = this.getSpecialContainerSessionList().getTopActiveSession();
     let isTopActiveSession = (topActiveSession && topActiveSession.isActive) ||
-                             (topSpecialActiveSession && topSpecialActiveSession.isActive);
+      (topSpecialActiveSession && topSpecialActiveSession.isActive);
     if (this.restartOobeIfNeed(isTopActiveSession)) {
       log.showInfo('oobe is enabled, start oobe firstly.');
       return;
@@ -2598,7 +2656,7 @@ export class SCBSceneSessionManager {
         }
         // sideEdgeBar session no need interactive
         if (containerSession.mainSession.sceneInfo.windowMode === SCBSceneMode.FLOATING &&
-          containerSession.floatingParam.isMinimized) {
+        containerSession.floatingParam.isMinimized) {
           containerSession.notifyForegroundInteractiveStatus(false);
         }
       }
@@ -2613,7 +2671,9 @@ export class SCBSceneSessionManager {
   private getOobeContainerSession(): SCBSceneContainerSession | null {
     const containerSessionListInPanel = this.getContainerSessionList();
     let oobeSessionIndex = containerSessionListInPanel.findIndex((item) => {
-      if (!item) { return false; }
+      if (!item) {
+        return false;
+      }
       return item.primarySession?.sceneInfo.bundleName === ExtAppConstants.PKG_OOBE;
     });
     if (oobeSessionIndex !== -1) {
@@ -2718,7 +2778,7 @@ export class SCBSceneSessionManager {
   }
 
   private handleStartSceneWithRotationCallback(containerSession: SCBSceneContainerSession,
-                                               panelState: ScenePanelState): ScenePanelState {
+    panelState: ScenePanelState): ScenePanelState {
     let containerSessionList = this.getContainerSessionList();
     let index = containerSessionList.indexOf(containerSession);
     const uiType: string = SCBWindowSceneConfig.getInstance().windowSceneConfig?.uiType;
@@ -2755,7 +2815,7 @@ export class SCBSceneSessionManager {
     // start oobe after the account switchover is complete.
     sSCBOobeManager.startOobeAfterSwitchUser(userId);
     // query all ability info
-    this.getAllAbilityList(userId);
+    this.getAllAbilityList(userId, this.recoverPersistentFunc);
   }
 
   /**
@@ -2803,7 +2863,7 @@ export class SCBSceneSessionManager {
 
   private removeApplicationInfo(removeBundleName: string, userId: number): void {
     log.showInfo(`removeApplicationInfo: ${removeBundleName}`);
-    this.applicationStartModeMap.delete(removeBundleName);
+    this.applicationInfoMap.delete(removeBundleName);
   }
 
   private handlePackageEvent(event: PackageCommonEvent): void {
@@ -2877,7 +2937,7 @@ export class SCBSceneSessionManager {
    * @param userId
    * @returns
    */
-  public async getAllAbilityList(userId: number): Promise<void> {
+  public async getAllAbilityList(userId: number, postProcess?: Function): Promise<void> {
     try {
       let want: Want = {};
       log.showInfo('will async to getAllAbilityList');
@@ -2891,10 +2951,13 @@ export class SCBSceneSessionManager {
             this.abilityInfoMap.set(key, scbAbilityItemInfo.abilityItemInfo);
             this.sdkVersionMap.set(key, scbAbilityItemInfo.sdkVersion);
             this.abilityHookMap.set(key, scbAbilityItemInfo.isAbilityHook);
+            this.applicationInfoMap.set(scbAbilityItemInfo.abilityItemInfo.bundleName,
+              scbAbilityItemInfo.abilityItemInfo.applicationInfo);
           }
+          postProcess?.();
         }).catch((err) => {
-          log.showError(`getAllAbilityList failed: ${err.message}`);
-        });
+        log.showError(`getAllAbilityList failed: ${err.message}`);
+      });
     } catch (exception) {
       log.showError(`task to getAllAbilityList exception: ${exception}`);
     }
@@ -2922,7 +2985,7 @@ export class SCBSceneSessionManager {
       for (let index = 0; index < abilityItemInfoList.length; index++) {
         const scbAbilityItemInfo = abilityItemInfoList[index];
         let key = scbAbilityItemInfo.abilityItemInfo.bundleName + scbAbilityItemInfo.abilityItemInfo.moduleName +
-          scbAbilityItemInfo.abilityItemInfo.name;
+        scbAbilityItemInfo.abilityItemInfo.name;
         this.abilityInfoMap.set(key, scbAbilityItemInfo.abilityItemInfo);
         this.sdkVersionMap.set(key, scbAbilityItemInfo.sdkVersion);
         this.abilityHookMap.set(key, scbAbilityItemInfo.isAbilityHook);
@@ -2963,6 +3026,8 @@ export class SCBSceneSessionManager {
         this.abilityInfoMap.set(key, scbAbilityItemInfo.abilityItemInfo);
         this.sdkVersionMap.set(key, scbAbilityItemInfo.sdkVersion);
         this.abilityHookMap.set(key, scbAbilityItemInfo.isAbilityHook);
+        this.applicationInfoMap.set(scbAbilityItemInfo.abilityItemInfo.bundleName,
+          scbAbilityItemInfo.abilityItemInfo.applicationInfo);
       }
     } catch (err) {
       log.showError(`addOrModifyAbilityItemInfo failed: ${err.message}`);
@@ -2991,18 +3056,11 @@ export class SCBSceneSessionManager {
    * @returns
    */
   public getApplicationInfo(queryKey: string): SCBApplicationInfo {
-    if (this.applicationStartModeMap.has(queryKey)) {
-      return this.applicationStartModeMap.get(queryKey);
+    if (this.applicationInfoMap.has(queryKey)) {
+      return this.applicationInfoMap.get(queryKey) as SCBApplicationInfo;
     }
     log.showWarn(`getApplicationInfo not find: ${queryKey}`);
-    try {
-      let applicationInfo: SCBApplicationInfo = sceneSessionManager.getApplicationInfo(queryKey);
-      this.applicationStartModeMap.set(queryKey, applicationInfo);
-      return applicationInfo;
-    } catch (err) {
-      log.showError(`getApplicationInfo failed: ${err.message}`);
-      return new SCBApplicationInfo();
-    }
+    return new SCBApplicationInfo();
   }
 
   /**
@@ -3232,7 +3290,7 @@ export class SCBSceneSessionManager {
       // ABOVE_KEYGUARD
       { key: sceneSessionManager.SessionType.TYPE_POINTER, value: SpecificPanelZOrder.ABOVE_KEYGUARD },
       { key: sceneSessionManager.SessionType.TYPE_DRAGGING_EFFECT, value: SpecificPanelZOrder.ABOVE_KEYGUARD },
-      { key: sceneSessionManager.SessionType.TYPE_INPUT_METHOD_STATUS_BAR,                                                              
+      { key: sceneSessionManager.SessionType.TYPE_INPUT_METHOD_STATUS_BAR,
           value: this.getInputMethodStatusBarZorder() },
       // WALLET_SWIPE_CARD
       { key: sceneSessionManager.SessionType.TYPE_WALLET_SWIPE_CARD, value: SpecificPanelZOrder.WALLET_SWIPE_CARD },
@@ -3306,6 +3364,31 @@ export class SCBSceneSessionManager {
     }
   }
 
+  public getZIndexByPanelZOrder(panelZOrder: number): number | undefined {
+    return this.specificPanelZIndexMap.get(panelZOrder);
+  }
+
+  private onSetSpecificWindowZIndex(sessionType: number, zIndex: number, reason: number): void {
+    const panelZOrder: SpecificPanelZOrder | undefined = this.getPanelZorderByType(sessionType);
+    if (panelZOrder === undefined) {
+      return;
+    }
+    if (reason === SetSpecificZIndexReason.RESET) {
+      this.specificPanelZIndexMap.delete(panelZOrder);
+    } else {
+      this.specificPanelZIndexMap.set(panelZOrder, zIndex);
+    }
+    if (this.specificZIndexChangeCallbackMap.has(panelZOrder)) {
+      this.specificZIndexChangeCallbackMap.get(panelZOrder)?.forEach((callback, screenId) => {
+        try {
+          callback();
+        } catch (err) {
+          ;
+        }
+      })
+    }
+  }
+
   private saveActiveSession(sceneSession: sceneSessionManager.SceneSession): void {
     if (this.activeSessionList.includes(sceneSession.persistentId)) {
       log.showError(`Already in activeSessionList: ${sceneSession.persistentId}`);
@@ -3315,18 +3398,19 @@ export class SCBSceneSessionManager {
   }
 
   private onRecoverSceneSession(sceneSession: sceneSessionManager.SceneSession,
-                                sceneInfo: sceneSessionManager.SceneRecoverInfo): void {
-    WinLog.showInfo(WinLogDomain.WMS_RECOVER, `onRecoverSceneSession bundleName:${sceneInfo.bundleName}, moduleName:${sceneInfo.moduleName}, abilityName:${sceneInfo.abilityName}, ` +
-    `appIndex:${sceneInfo.appIndex}, sessionType:${sceneInfo.sessionType}, windowMode:${sceneInfo.windowMode}, ` +
-    `sessionState:${sceneInfo.sessionState}, requestOrientation:${sceneInfo.requestOrientation} isLayoutFullScreen:${sceneInfo.layoutFullScreen}, ` +
-    `mainWindowTopMost:${sceneInfo.mainWindowTopmost}, WaterfallMode:${sceneInfo.isFullScreenWaterfallMode}`);
+    sceneInfo: sceneSessionManager.SceneRecoverInfo): void {
+    WinLog.showInfo(WinLogDomain.WMS_RECOVER,
+      `onRecoverSceneSession bundleName:${sceneInfo.bundleName}, moduleName:${sceneInfo.moduleName}, abilityName:${sceneInfo.abilityName}, ` +
+        `appIndex:${sceneInfo.appIndex}, sessionType:${sceneInfo.sessionType}, windowMode:${sceneInfo.windowMode}, ` +
+        `sessionState:${sceneInfo.sessionState}, requestOrientation:${sceneInfo.requestOrientation} isLayoutFullScreen:${sceneInfo.layoutFullScreen}, ` +
+        `mainWindowTopMost:${sceneInfo.mainWindowTopmost}, WaterfallMode:${sceneInfo.isFullScreenWaterfallMode}`);
     if (sceneSession === null || sceneInfo === null) {
       WinLog.showError(WinLogDomain.WMS_RECOVER, 'sceneSession or sceneInfo is null, failed to recover scene session!');
       return;
     }
     sceneInfo.screenId = sceneSession.screenId;
     if (this.recoverSessionCallbackMap.has(sceneSession.screenId) && !this.getScenePersistent().getRecoverFinished() &&
-      this.isStartRecoverySet.has(sceneSession.screenId)) {
+    this.isStartRecoverySet.has(sceneSession.screenId)) {
       this.onRecoverSession(sceneSession, sceneInfo);
     } else {
       WinLog.showError(WinLogDomain.WMS_RECOVER, 'recoverSessionCallback is null, temporarily save it to recoverSceneSessionList');
@@ -3364,6 +3448,10 @@ export class SCBSceneSessionManager {
     TraceUtil.startTrace(DomainName.SCB, 'SCBSceneSessionManager');
     // init SCBSceneSessionManager, and make sure register early enough
     log.showInfo('init SCBSceneSessionManager');
+    // 异常重启场景，锁屏未就绪重置
+    systemParameter.setSync('bootevent.lockscreen.ready', 'false');
+    systemParameter.setSync('bootevent.launcher.ready', 'false');
+
     this.selfImpl.init();
     SCBSceneMissionManager.getInstance().init(SceneMissionMgmtStage.ON_SCB_INIT);
     // Init window scene config.
@@ -3596,6 +3684,20 @@ export class SCBSceneSessionManager {
     this.destroyFloatWindowCallbackMap.get(screenId)?.get(zorder)?.delete(callback);
   }
 
+  // register set specific window zIndex callback
+  public registerSpecificZIndexChangeCallback(callback: Function, zorder: number, screenId: number = this.mainScreenId): void {
+    if (!this.specificZIndexChangeCallbackMap.has(zorder)) {
+      this.specificZIndexChangeCallbackMap.set(zorder, new Map());
+    }
+    const currentSpecificZIndexChangeCallbackMap = this.specificZIndexChangeCallbackMap.get(zorder);
+    (currentSpecificZIndexChangeCallbackMap as Map<number, Function>).set(screenId, callback);
+  }
+
+  // unregister set specific window zIndex callback
+  public unregisterSpecificZIndexChangeCallback(zorder: number, screenId: number = this.mainScreenId): void {
+    this.specificZIndexChangeCallbackMap.get(zorder)?.delete(screenId);
+  }
+
   /**
    * register Request Focus Callback
    *
@@ -3667,7 +3769,7 @@ export class SCBSceneSessionManager {
     let containerList = this.getContainerSessionList(screenId);
     let floatingContainerList = this.getFloatingSessionList();
     return this.getSceneContainerFromList(persistentId, containerList) ||
-      this.getSceneContainerFromList(persistentId, floatingContainerList);
+    this.getSceneContainerFromList(persistentId, floatingContainerList);
   }
 
   public removeSceneContainerSession(session: SCBSceneContainerSession): boolean {
@@ -3738,7 +3840,7 @@ export class SCBSceneSessionManager {
   }
 
   private getSceneContainerFromList(persistentId: number,
-                                    containerList: SCBSceneContainerSessionArray): SCBSceneContainerSession | null {
+    containerList: SCBSceneContainerSessionArray): SCBSceneContainerSession | null {
     let index = containerList.findIndex((item) => {
       if (item.midSceneMap.has(persistentId)) {
         return true;
@@ -3902,7 +4004,7 @@ export class SCBSceneSessionManager {
     screenId: number): void {
     curZorderSessionListMap.forEach((sessionList, zOrder) => {
       sessionList.forEach((session) => {
-        if(session) {
+        if (session) {
           session.screenId = 0;
           this.updateSessionDisplayId(session.persistentId, session.screenId);
         }
@@ -4064,7 +4166,9 @@ export class SCBSceneSessionManager {
       return CommonResult.FAIL;
     }
     log.showInfo(`[SCBMain]startSceneInVirtual, bundleName: ${sceneInfo.bundleName}.`);
-    if (SCBSceneStartInterceptor.getInstance().isOobeIntercepted(sceneInfo)) { return CommonResult.FAIL; }
+    if (SCBSceneStartInterceptor.getInstance().isOobeIntercepted(sceneInfo)) {
+      return CommonResult.FAIL;
+    }
     this.notifyStartScene(sceneInfo.bundleName, sceneInfo.moduleName, sceneInfo.abilityName);
     if (sceneInfo.isCastScene && this.virtualScreenStartSceneFuncMap.get(sceneInfo.screenId) === undefined) {
       SCBSceneSessionManager.getInstance().storeCastTask(sceneInfo);
@@ -4123,7 +4227,7 @@ export class SCBSceneSessionManager {
     if (!this.isPcOrPcMode() || CommonUtils.isInvalid(info)) {
       return false;
     }
-    const sceneList : SCBSceneContainerSessionArray = this.getSceneList(info.persistentId, info);
+    const sceneList: SCBSceneContainerSessionArray = this.getSceneList(info.persistentId, info);
     const sceneListLength = sceneList.length;
     const appModalSessionIndex: number = this.getApplicationModalSessionIndex(sceneList, sceneListLength);
     if (appModalSessionIndex === -1) {
@@ -4201,7 +4305,9 @@ export class SCBSceneSessionManager {
    */
   public startFloatFromDock(sceneInfo: SCBSceneInfo): void {
     log.showInfo('[SCBMain]startFloatFromDock:' + sceneInfo?.toJsonString());
-    if (this.isStartSceneInterceptedUnderConditions(sceneInfo)) { return; }
+    if (this.isStartSceneInterceptedUnderConditions(sceneInfo)) {
+      return;
+    }
     this.executeStartSceneCallback(SCBEventId.START_FLOAT_FROM_DOCK, sceneInfo.screenId, sceneInfo);
   }
 
@@ -4291,7 +4397,7 @@ export class SCBSceneSessionManager {
     const sceneInfo: SCBSceneInfo = persistentId !== 0 ?
       containerSessionList.findByPersistentId(persistentId)?.primarySession?.sceneInfo : info;
     const containerSessionListLength: number = containerSessionList.length;
-    let sceneList : SCBSceneContainerSessionArray = new SCBSceneContainerSessionArray();
+    let sceneList: SCBSceneContainerSessionArray = new SCBSceneContainerSessionArray();
     if (CommonUtils.isInvalid(sceneInfo)) {
       return sceneList;
     }
@@ -4319,7 +4425,7 @@ export class SCBSceneSessionManager {
       this.notifySingleHandStartScene(recentBundleName);
       return;
     }
-    const sceneList : SCBSceneContainerSessionArray = this.getSceneList(persistentId);
+    const sceneList: SCBSceneContainerSessionArray = this.getSceneList(persistentId);
     const sceneListLength = sceneList.length;
     const appModalSessionIndex: number = this.getApplicationModalSessionIndex(sceneList, sceneListLength);
     log.showInfo(`appModalSessionIndex: ${appModalSessionIndex}`);
@@ -4377,7 +4483,7 @@ export class SCBSceneSessionManager {
     let startResult: CommonResult = SCBSceneMissionManager.getInstance().startSceneFromOther(sceneInfo);
     Trace.end(Trace.CORE_METHOD_START_SCENE_FROM_OTHER);
     return (callbackResult.isSuccess() || startResult.isSuccess()) ? CommonResult.SUCCESS :
-        CommonResult.FAIL;
+      CommonResult.FAIL;
   }
 
   /**
@@ -4524,7 +4630,9 @@ export class SCBSceneSessionManager {
   public startSceneFromOtherAboveKeyguard(sceneInfo: SCBSceneInfo): CommonResult {
     Trace.start(Trace.CORE_METHOD_START_SCENE_FROM_OTHER);
     log.showInfo('[SCBMain]startSceneFromOtherAboveKeyguard:' + sceneInfo?.toJsonString());
-    if (this.isStartSceneInterceptedUnderConditions(sceneInfo)) { return CommonResult.FAIL; }
+    if (this.isStartSceneInterceptedUnderConditions(sceneInfo)) {
+      return CommonResult.FAIL;
+    }
     this.notifyStartScene(sceneInfo.bundleName, sceneInfo.moduleName, sceneInfo.abilityName);
     let callbackResult: CommonResult = this.executeSpecialStartSceneCallback(SCBEventId.START_SCENE_FROM_OTHER,
       sceneInfo.screenId, sceneInfo);
@@ -4539,7 +4647,9 @@ export class SCBSceneSessionManager {
    */
   public startSceneByCall(toInfo: SCBSceneInfo, fromInfo: SCBSceneInfo): CommonResult {
     log.showInfo('[SCBMain]startSceneByCall, toInfo:' + toInfo?.toJsonString());
-    if (this.isStartSceneInterceptedUnderConditions(toInfo)) { return CommonResult.FAIL; }
+    if (this.isStartSceneInterceptedUnderConditions(toInfo)) {
+      return CommonResult.FAIL;
+    }
     this.notifyStartScene(toInfo.bundleName, toInfo.moduleName, toInfo.abilityName, toInfo.callState);
     this.notifySingleHandStartScene(toInfo.bundleName);
     TraceUtil.startTrace(DomainName.WINDOW, MissionManagementTraceUtil.START_SCENE_BY_CALL);
@@ -4569,7 +4679,7 @@ export class SCBSceneSessionManager {
       return;
     }
     const eventId: SCBEventId = visible ? SCBEventId.HIDDEN_TO_FOREGROUND_FROM_OTHER :
-    SCBEventId.FOREGROUND_TO_HIDDEN_FROM_OTHER;
+      SCBEventId.FOREGROUND_TO_HIDDEN_FROM_OTHER;
     this.executeStartSceneCallback(eventId, sceneInfo.screenId, sceneInfo);
   }
 
@@ -4584,13 +4694,13 @@ export class SCBSceneSessionManager {
   }
 
   public changeSessionVisWithStatusBarTransition(toInfo: SCBSceneInfo, fromInfo: SCBSceneInfo,
-      visible: boolean, isFromClient?: boolean): void {
+    visible: boolean, isFromClient?: boolean): void {
     log.showInfo('[SCBMain]changeSessionVisWithStatusBarTransition');
     if (toInfo.persistentId === fromInfo.persistentId) {
       this.changeSessionVisWithStatusBarFromOther(toInfo, visible);
     } else {
       const eventId: SCBEventId = visible ? SCBEventId.HIDDEN_TO_FOREGROUND_TRANSITION :
-      SCBEventId.FOREGROUND_TO_HIDDEN_TRANSITION;
+        SCBEventId.FOREGROUND_TO_HIDDEN_TRANSITION;
       this.executeStartSceneCallback(eventId, toInfo.screenId, toInfo, fromInfo, false, isFromClient);
     }
   }
@@ -4714,7 +4824,7 @@ export class SCBSceneSessionManager {
    * @param state isPendingToBackgroundState
    */
   public setIsPendingToBackgroundState(session: sceneSessionManager.SceneSession,
-      isPendingToBackgroundState: boolean): void {
+    isPendingToBackgroundState: boolean): void {
     log.showInfo(`[SCBMain]setIsPendingToBackgroundState, state:${isPendingToBackgroundState}`);
     try {
       session.setIsPendingToBackgroundState(isPendingToBackgroundState);
@@ -4795,15 +4905,17 @@ export class SCBSceneSessionManager {
    * @returns { number } destructionResult
    */
   public requestSceneSessionDestruction(session: sceneSessionManager.SceneSession, isDeletePersistentMap: boolean,
-                                        isSaveSnapshot?: boolean, isForceClean?: boolean,
-                                        isUserRequestedExit?: boolean): number {
+    isSaveSnapshot?: boolean, isForceClean?: boolean,
+    isUserRequestedExit?: boolean): number {
     log.showWarn(`[SCBMain][id:${session.persistentId}]requestSceneSessionDestruction,` +
       `isDeletePersistentMap:${isDeletePersistentMap}, isSaveSnapshot:${isSaveSnapshot}, ` +
       `isForceClean:${isForceClean}`);
     this.setIsPendingToBackgroundState(session, true);
     const destructionResult = SCBSceneMissionManager.getInstance().requestSceneSessionDestruction(session, {
-      isDeletePersistentMap: isDeletePersistentMap, isSaveSnapshot: isSaveSnapshot,
-      isForceClean: isForceClean, isUserRequestedExit: isUserRequestedExit
+      isDeletePersistentMap: isDeletePersistentMap,
+      isSaveSnapshot: isSaveSnapshot,
+      isForceClean: isForceClean,
+      isUserRequestedExit: isUserRequestedExit
     });
     let panelZOrder: SpecificPanelZOrder | undefined = this.getPanelZorderByType(session.type);
     if (panelZOrder === undefined) {
@@ -5157,7 +5269,7 @@ export class SCBSceneSessionManager {
     this.executeSpecialCallback(SCBEventId.SESSION_EXCEPTION, sceneInfo.screenId, persistentId, containerId);
     this.notifySessionException(sceneInfo.bundleName, sceneInfo.moduleName, sceneInfo.abilityName);
     SCBSceneMissionManager.getInstance().terminateScene(sceneInfo.screenId, persistentId, containerId,
-      {  needRemoveSession: needRemoveSession, shouldBackToCaller: shouldBackToCaller, extraInfo: extraInfo });
+      { needRemoveSession: needRemoveSession, shouldBackToCaller: shouldBackToCaller, extraInfo: extraInfo });
   }
 
   public updateWindowDragHotArea(screenId: number, persistentId: number): void {
@@ -5174,6 +5286,7 @@ export class SCBSceneSessionManager {
 
   private executeCallback(eventId: SCBEventId, screenId: number, persistentId?: number, containerId?: number,
     needRemoveSession?: boolean, shouldBackToCaller?: boolean, extraInfo?: ExecuteCallbackExtraInfo): void {
+    log.showInfo(`executeCallback: ${eventId} ${screenId} ${persistentId}`);
     if (!this.callbackMap.has(eventId)) {
       log.showError(`No scene func: ${eventId} has registered!`);
       return;
@@ -5261,11 +5374,16 @@ export class SCBSceneSessionManager {
   }
 
   private executeSpecialStartSceneCallback(eventId: SCBEventId, screenId: number,
-    toInfo: SCBSceneInfo, fromInfo?: SCBSceneInfo) : CommonResult {
+    toInfo: SCBSceneInfo, fromInfo?: SCBSceneInfo): CommonResult {
     if (!this.specialCallbackMap.has(eventId)) {
       log.showError(`No start scene func eventId:${eventId} has registered!`);
       // Add the start command to the queue when the callback is not registered
-      this.startAbilityQueue.push({ eventId: eventId, screenId: screenId, toInfo: toInfo, fromInfo: fromInfo });
+      this.startAbilityQueue.push({
+        eventId: eventId,
+        screenId: screenId,
+        toInfo: toInfo,
+        fromInfo: fromInfo
+      });
       return CommonResult.FAIL;
     }
     let startSceneFuncMap = this.specialCallbackMap.get(eventId);
@@ -5273,7 +5391,12 @@ export class SCBSceneSessionManager {
     if (!startSceneFuncMap.has(screenId)) {
       log.showError(`No start scene func: ${eventId} has registered mainScreenId: ${this.mainScreenId} and screenId: ${screenId}!`);
       // Add the start command to the queue when the callback is not registered
-      this.startAbilityQueue.push({ eventId: eventId, screenId: screenId, toInfo: toInfo, fromInfo: fromInfo });
+      this.startAbilityQueue.push({
+        eventId: eventId,
+        screenId: screenId,
+        toInfo: toInfo,
+        fromInfo: fromInfo
+      });
       return CommonResult.FAIL;
     }
     log.showInfo(`Start scene on screen with screenId: ${screenId}!`);
@@ -5303,7 +5426,12 @@ export class SCBSceneSessionManager {
       log.showError(`No start scene func eventId:${eventId} has registered!`);
       // Add the start command to the queue when the callback is not registered
       toInfo.forEach((v, i) => {
-        this.startAbilityQueue.push({ eventId: eventId, screenId: screenId, toInfo: v, fromInfo: fromInfo });
+        this.startAbilityQueue.push({
+          eventId: eventId,
+          screenId: screenId,
+          toInfo: v,
+          fromInfo: fromInfo
+        });
       });
       return CommonResult.SUCCESS;
     }
@@ -5315,7 +5443,12 @@ export class SCBSceneSessionManager {
         needReturn = true;
         log.showError(`No start scene func: ${eventId} has registered mainScreenId: ${this.mainScreenId} and screenId: ${screenId}!`);
         // Add the start command to the queue when the callback is not registered
-        this.startAbilityQueue.push({ eventId: eventId, screenId: screenId, toInfo: v, fromInfo: fromInfo });
+        this.startAbilityQueue.push({
+          eventId: eventId,
+          screenId: screenId,
+          toInfo: v,
+          fromInfo: fromInfo
+        });
       }
     });
     if (needReturn) {
@@ -5395,7 +5528,7 @@ export class SCBSceneSessionManager {
    */
   public getFocusedSession(
     displayId: number = DEFAULT_DISPLAY_GROUP_ID
-    ): SCBSceneSession | SCBSpecificSession | SCBSystemSceneSession | null {
+  ): SCBSceneSession | SCBSpecificSession | SCBSystemSceneSession | null {
     return this.windowFocusController.getFocusedSession(displayId);
   }
 
@@ -5507,7 +5640,7 @@ export class SCBSceneSessionManager {
     if (zPanel < 0) {
       return;
     }
-    let keyboardPanel : SCBSystemSceneSession = SCBKeyboardManager.getInstance().getPanelSession();
+    let keyboardPanel: SCBSystemSceneSession = SCBKeyboardManager.getInstance().getPanelSession();
     // pc input method
     const uiType: string = SCBWindowSceneConfig.getInstance().windowSceneConfig?.uiType;
     if (uiType === SCBConstants.UITYPE_PC) {
@@ -5536,30 +5669,23 @@ export class SCBSceneSessionManager {
       if (!(scbSession && scbSession.session)) {
         continue;
       }
-      if (scbSession.isOverlayScene){
+      if (scbSession.isOverlayScene) {
         continue;
       }
-      let keyboardSession : SCBKeyboardSession = SCBKeyboardManager.getInstance().getKeyboardSession();
-      let keyboardState : KeyboardState = SCBKeyboardManager.getInstance().getKeyboardState();
-      let keyboardDialog : SCBSystemSceneSession = SCBKeyboardPanelManager.getInstance().getPanelDialogSession();
+      let keyboardSession: SCBKeyboardSession = SCBKeyboardManager.getInstance().getKeyboardSession();
+      let keyboardState: KeyboardState = SCBKeyboardManager.getInstance().getKeyboardState();
       if (scbSession.zIndex > this.panelLists.get(screenId)[zPanel][0]) {
         // SHOW_IN_BELOW_SPECIFIC_SCENE
         if (zPanel + 1 === SCBPanelZOrder.SPECIFIC_ABOVE_SYSTEMUI && keyboardSession && keyboardSession.isKeyboardShowing() &&
           keyboardState === KeyboardState.SHOW_IN_BELOW_SPECIFIC_SCENE && scbSession.zIndex > keyboardSession.getZIndex()) {
           func(keyboardPanel);
           func(keyboardSession);
-          if (func(keyboardDialog)) {
-            return;
-          }
         }
         if (zPanel + 1 === SCBPanelZOrder.SPECIFIC_ABOVE_KEYGUARD && keyboardSession && keyboardSession.isKeyboardShowing() &&
           keyboardState === KeyboardState.SHOW_IN_ABOVE_SPECIFIC_SCENE &&
           scbSession.zIndex > keyboardSession.getZIndex()) {
           func(keyboardPanel);
           func(keyboardSession);
-          if (func(keyboardDialog)) {
-            return;
-          }
         }
       }
       // traverse panelList
@@ -5583,17 +5709,11 @@ export class SCBSceneSessionManager {
           (keyboardState === KeyboardState.SHOW_IN_BELOW_SCENE_PANEL || keyboardState === KeyboardState.SHOW_IN_ABOVE_SPLIT_SCENE)) {
           func(keyboardPanel);
           func(keyboardSession);
-          if (func(keyboardDialog)) {
-            return;
-          }
         }
         if (zPanel === SCBPanelZOrder.SPECIAL_SCENE_PANEL && keyboardSession && keyboardSession.isKeyboardShowing() &&
           keyboardState === KeyboardState.SHOW_IN_ABOVE_SCENE_PANEL) {
           func(keyboardPanel);
           func(keyboardSession);
-          if (func(keyboardDialog)) {
-            return;
-          }
         }
         if (this.traversePanelFromTopToBottom(panelList, func)) {
           return;
@@ -5608,9 +5728,6 @@ export class SCBSceneSessionManager {
         keyboardState === KeyboardState.SHOW_IN_ABOVE_FLOAT_CONTAINER_SCENE) {
         func(keyboardPanel);
         func(keyboardSession);
-        if (func(keyboardDialog)) {
-          return;
-        }
       }
       // traverse systemScene
       if (this.traverseFromTopToBottom(scbSession, func)) {
@@ -5782,19 +5899,14 @@ export class SCBSceneSessionManager {
     if (zPanel >= this.panelLists.get(screenId).length) {
       return;
     }
-    let keyboardSession : SCBKeyboardSession = SCBKeyboardManager.getInstance().getKeyboardSession();
-    let keyboardPanel : SCBSystemSceneSession = SCBKeyboardManager.getInstance().getPanelSession();
-    let keyboardState : KeyboardState = SCBKeyboardManager.getInstance().getKeyboardState();
-    let keyboardDialog : SCBSystemSceneSession = SCBKeyboardPanelManager.getInstance().getPanelDialogSession();
-
+    let keyboardSession: SCBKeyboardSession = SCBKeyboardManager.getInstance().getKeyboardSession();
+    let keyboardPanel: SCBSystemSceneSession = SCBKeyboardManager.getInstance().getPanelSession();
+    let keyboardState: KeyboardState = SCBKeyboardManager.getInstance().getKeyboardState();
     if (traverseScenario === TraverseSessionScenarios.GET_SESSION_BY_ID) {
       if (func(keyboardPanel)) {
         return;
       }
       if (func(keyboardSession)) {
-        return;
-      }
-      if (func(keyboardDialog)) {
         return;
       }
     }
@@ -5816,7 +5928,7 @@ export class SCBSceneSessionManager {
       if (!(scbSession && scbSession.session)) {
         continue;
       }
-      if (scbSession.isOverlayScene){
+      if (scbSession.isOverlayScene) {
         continue;
       }
       if (scbSession.zIndex > this.panelLists.get(screenId)[zPanel][0] && traverseScenario === TraverseSessionScenarios.REFRESH_ZORDER) {
@@ -5825,9 +5937,6 @@ export class SCBSceneSessionManager {
           keyboardState === KeyboardState.SHOW_IN_BELOW_SPECIFIC_SCENE && scbSession.zIndex > keyboardZindex) {
           func(keyboardPanel);
           func(keyboardSession);
-          if (func(keyboardDialog)) {
-            return;
-          }
         }
         if (!voiceInteraction && zPanel - 1 === SCBPanelZOrder.SPECIFIC_ABOVE_KEYGUARD &&
           keyboardSession && keyboardSession.isKeyboardShowing() &&
@@ -5835,9 +5944,6 @@ export class SCBSceneSessionManager {
           scbSession.zIndex > keyboardZindex) {
           func(keyboardPanel);
           func(keyboardSession);
-          if (func(keyboardDialog)) {
-            return;
-          }
         }
       }
       // traverse panelList
@@ -5861,26 +5967,17 @@ export class SCBSceneSessionManager {
           keyboardState === KeyboardState.SHOW_IN_ABOVE_SPECIFIC_SCENE && scbSession.zIndex > keyboardZindex) {
           func(keyboardPanel);
           func(keyboardSession);
-          if (func(keyboardDialog)) {
-            return;
-          }
         }
         // input method
         if (zPanel === SCBPanelZOrder.SCENE_PANEL && keyboardSession && keyboardSession.isKeyboardShowing() &&
           (keyboardState === KeyboardState.SHOW_IN_BELOW_SCENE_PANEL || keyboardState === KeyboardState.SHOW_IN_ABOVE_SPLIT_SCENE)) {
           func(keyboardPanel);
           func(keyboardSession);
-          if (func(keyboardDialog)) {
-            return;
-          }
         }
         if (zPanel === SCBPanelZOrder.SPECIAL_SCENE_PANEL && keyboardSession && keyboardSession.isKeyboardShowing() &&
           keyboardState === KeyboardState.SHOW_IN_ABOVE_SCENE_PANEL) {
           func(keyboardPanel);
           func(keyboardSession);
-          if (func(keyboardDialog)) {
-            return;
-          }
         }
         if (zPanel === SCBPanelZOrder.SCENE_PANEL && this.getMultiWindowDialogSession) {
           func(this.getMultiWindowDialogSession);
@@ -6171,10 +6268,32 @@ export class SCBSceneSessionManager {
     });
   }
 
-  /**
-   * 重置FocusedSession 废弃
-   */
-  public resetFocusedSession(): void {}
+  private getFocusedSceneRotation(screen: number, persistentId?: number): number {
+    // 应用窗口
+    let container = this.getTopActiveSessionForRotateCheck();
+    if (container && container?.getBundleName()) {
+      log.showInfo(`getFocusedSceneRotation from container: ${container?.getBundleName()} ${container?.getPersistentId()}`);
+      return SCBScreenSessionManager.getInstance().getScreenRotation(container?.screenProperty.screenId);
+    }
+    // 系统窗口
+    if (persistentId) {
+      const sceneSession = this.getSystemSceneSessionWithId(persistentId, screen);
+      if (sceneSession) {
+        log.showInfo(`getFocusedSceneRotation from sceneSession: ${sceneSession?.rotation}`);
+        return sceneSession?.rotation ?? 0;
+      }
+    }
+    let focusedSession = this.getFocusedSession();
+    if (focusedSession instanceof SCBSystemSceneSession) {
+      log.showInfo(`getFocusedSceneRotation from SCBSystemSceneSession:${focusedSession?.name} ${focusedSession?.rotation}`);
+      return focusedSession?.rotation ?? 0;
+    } else if (focusedSession instanceof SCBSceneSession) {
+      log.showInfo(`getFocusedSceneRotation from SCBSceneSession:${focusedSession?.getName()} ${focusedSession?.currentRotation}`);
+      return focusedSession?.currentRotation ?? 0;
+    }
+    log.showWarn(`getFocusedSceneRotation from defult: 0`);
+    return 0;
+  }
 
   private notifyFocusedScreenChange(fromScreen: number, toScreen: number, toPersistentId: number): void {
     log.showInfo(`notifyFocusedScreenChange fromScreen:${fromScreen}, toScreen:${toScreen}, ` +
@@ -6187,7 +6306,7 @@ export class SCBSceneSessionManager {
   }
 
   private dealNextSessionFocus(nextSession: SCBSceneSession | SCBSpecificSession | SCBSystemSceneSession,
-                               nextId: number): void {
+    nextId: number): void {
     if (this.isPcOrPcMode() && nextSession) {
       if (nextSession instanceof SCBSceneSession && (nextSession.sceneInfo.windowMode === SCBSceneMode.PRIMARY ||
         nextSession.sceneInfo.windowMode === SCBSceneMode.SECONDARY)) {
@@ -6223,8 +6342,8 @@ export class SCBSceneSessionManager {
    * @param reason
    */
   public requestToTop(screenId?: number, persistentId?: number,
-                      reason: SCBWindowRaiseReason = SCBWindowRaiseReason.DEFAULT,
-                      isIgnoreModalApplication: boolean = false): void {
+    reason: SCBWindowRaiseReason = SCBWindowRaiseReason.DEFAULT,
+    isIgnoreModalApplication: boolean = false): void {
     WinLog.showInfo(WinLogDomain.WMS_HIERARCHY, `request top id: ${persistentId}, ${reason}`);
     if (this.isPc()) {
       let screenSessionArray: SCBScreenSessionArray = SCBScreenSessionManager.getInstance().getScreenSessionList();
@@ -6237,8 +6356,8 @@ export class SCBSceneSessionManager {
   }
 
   private requestSingleScreenToTop(screenId?: number, persistentId?: number,
-                                   reason: SCBWindowRaiseReason = SCBWindowRaiseReason.DEFAULT,
-                                   isIgnoreModalApplication: boolean = false): void {
+    reason: SCBWindowRaiseReason = SCBWindowRaiseReason.DEFAULT,
+    isIgnoreModalApplication: boolean = false): void {
     if (persistentId === INVALID_PERSISTENT_ID) {
       return;
     }
@@ -6246,7 +6365,7 @@ export class SCBSceneSessionManager {
       this.executeBack(screenId, persistentId, reason);
       return;
     }
-    const sceneList : SCBSceneContainerSessionArray = this.getSceneList(persistentId, undefined, screenId);
+    const sceneList: SCBSceneContainerSessionArray = this.getSceneList(persistentId, undefined, screenId);
     const sceneListLength: number = sceneList.length;
     let appModalSessionIndex: number = this.getApplicationModalSessionIndex(sceneList, sceneListLength, false, true);
     if (appModalSessionIndex === -1) {
@@ -6288,7 +6407,7 @@ export class SCBSceneSessionManager {
       return;
     }
     let screenId: number | undefined = sourceContainer.primarySession ? sourceContainer.primarySession.session?.screenId :
-                                                                        sourceContainer.secondarySession?.session?.screenId;
+      sourceContainer.secondarySession?.session?.screenId;
     if ((screenId === undefined || screenId === INVALID_SCREEN_ID)) {
       WinLog.showError(WinLogDomain.WMS_HIERARCHY, 'raiseMainWindowAboveTarget failed, screen id not exit');
       return;
@@ -6639,7 +6758,7 @@ export class SCBSceneSessionManager {
     }
     if (!getStateCallback) {
       log.showError('isExpectedState failed to getScenePanelStateCallback with zIndex failed scenePanelZIndex:' +
-        this.panelZIndex.scenePanel + ' specialScenePanelZ: ' + this.panelZIndex.specialScenePanel);
+      this.panelZIndex.scenePanel + ' specialScenePanelZ: ' + this.panelZIndex.specialScenePanel);
       return false;
     }
     if (getStateCallback() === expectedState) {
@@ -6727,6 +6846,44 @@ export class SCBSceneSessionManager {
   }
 
   /**
+   * update statusbar color
+   */
+  public async updateStatusbarColor(): Promise<ESObject> {
+    // 根据壁纸深浅色适配状态栏颜色
+    const displayData: display.Display = display.getDefaultDisplaySync();
+    log.showInfo(`displayData(${displayData.width} ${displayData.height}) `);
+    const isLock = this.isScreenLock;
+    const desktopWallpaper = await this.getDefaultWallpaperPath(isLock)
+    const lightColorDegree: ESObject | null =
+      await this.getStatusBarAreaImageLightDegree(desktopWallpaper, displayData, 'launcher');
+    const contentColor = lightColorDegree === EXTREMELY_LIGHT_COLOR_PICTURE
+      ? '#ff000000' : '#ffffffff';
+    const backgroundColor = lightColorDegree === EXTREMELY_LIGHT_COLOR_PICTURE
+      ? '#00ffffff' : '#00000000';
+    log.showInfo(`updateStatusbarColor contentColor: ${contentColor}`)
+    isLock ? this.setLockDefaultSystemBarProperty(new SCBSystemBarProperty(
+      sceneSessionManager.SessionType.TYPE_STATUS_BAR, true, backgroundColor, contentColor, true, true)) :
+      this.setDesktopDefaultSystemBarProperty(new SCBSystemBarProperty(
+        sceneSessionManager.SessionType.TYPE_STATUS_BAR, true, backgroundColor, contentColor, true, true));
+    return {
+      contentColor,
+      backgroundColor
+    }
+  }
+
+  public async updateLockViewColor(isLock: boolean = true): Promise<string> {
+    let pixelMap: image.PixelMap | null = await this.getDefaultWallpaperPath(isLock)
+    if (pixelMap === null) {
+      return '#ffffffff'
+    } else {
+      const lightColorDegree: effectKit.PictureLightColorDegree | null =
+        await SCBSceneSessionManager.getLightDegree(pixelMap);
+      return lightColorDegree === EXTREMELY_LIGHT_COLOR_PICTURE
+        ? '#ff000000' : '#ffffffff';
+    }
+  }
+
+  /**
    * update System Bar Property
    */
   public updateSystemBarProperty(): void {
@@ -6755,7 +6912,7 @@ export class SCBSceneSessionManager {
       } else if (curScreenTopSessionWindowMode === CurTopWindowMode.SPLIT) {
         this.updateSystemBarPropertyInSplit(topContainerSession);
       } else if (curScreenTopSessionWindowMode === CurTopWindowMode.DEFAULT &&
-        this.topFullScreenSubSessionMap.get(screen.session.screenId)) {
+      this.topFullScreenSubSessionMap.get(screen.session.screenId)) {
         this.updateSystemBarPropertyInSubSession(screen.session.screenId, topContainerSession);
       } else {
         this.updateSystemBarPropertyInDesktop(screen.session.screenId);
@@ -6966,9 +7123,9 @@ export class SCBSceneSessionManager {
       this.updateSystemBarPropertyToCallbacks(this.lockDefaultSystemBarProperty, INVALID_PERSISTENT_ID, screenId);
     } else {
       WinLog.showInfo(WinLogDomain.WMS_IMMS, 'update prop, use desktop default');
-      const defaultProperty = {showHide: true, backgroundColor: '#00FFFFFF', contentColor: '#FFFFFFFF'};
+      const defaultProperty = { showHide: true, backgroundColor: '#00FFFFFF', contentColor: '#FFFFFFFF' };
       const desktopStatusBarConfig = SCBWindowSceneConfig.getInstance().windowSceneConfig.desktopStatusBarConfig;
-      const {showHide, contentColor, backgroundColor} = desktopStatusBarConfig ? desktopStatusBarConfig : defaultProperty;
+      const { showHide, contentColor, backgroundColor } = desktopStatusBarConfig ? desktopStatusBarConfig : defaultProperty;
       this.updateSystemBarPropertyToCallbacks(new SCBSystemBarProperty(
         sceneSessionManager.SessionType.TYPE_STATUS_BAR, showHide, backgroundColor, contentColor, true, true),
         INVALID_PERSISTENT_ID, screenId);
@@ -7054,7 +7211,7 @@ export class SCBSceneSessionManager {
     let secondarySpecificSession = secondaryResultList.pop();
     if (primarySpecificSession && ACTIVE_STATUS_MAP.get(primarySpecificSession.sessionData?.sessionState) &&
       screenId === primarySpecificSession.screenId && primarySpecificSession.windowMode === SCBSceneMode.FULLSCREEN &&
-      container.needRenderVisibility.visibility) {
+    container.needRenderVisibility.visibility) {
       this.mainSessionOfFullScreenSubSessionMap.set(screenId, container?.primarySession);
       return primarySpecificSession;
     } else if (secondarySpecificSession && ACTIVE_STATUS_MAP.get(secondarySpecificSession.sessionData?.sessionState) &&
@@ -7079,7 +7236,7 @@ export class SCBSceneSessionManager {
     for (let item of subSessionList) {
       if (item && ACTIVE_STATUS_MAP.get(item.sessionData?.sessionState) &&
         screenId === item.screenId && item.windowMode === SCBSceneMode.FULLSCREEN &&
-        container.isActive && item.currRect.top.getPx() < container.screenProperty.height / 2) {
+      container.isActive && item.currRect.top.getPx() < container.screenProperty.height / 2) {
         this.mainSessionOfFullScreenSubSessionMap.set(screenId, container?.primarySession);
         return item;
       }
@@ -7118,12 +7275,14 @@ export class SCBSceneSessionManager {
     let isTitleHoverShowEnabled: boolean = specificSession?.titleHoverShowEnabled ?? true;
     let isDockHoverShowEnabled: boolean = specificSession?.dockHoverShowEnabled ?? true;
     let isLayoutFullScreen: boolean = specificSession?.layoutFullScreen;
+    log.showInfo(`notifySystemBarVisibleCallback ${isLayoutFullScreen}`);
     if (isLayoutFullScreen) {
       let statusbar =
         this.getSystemSceneSessionWithSystemType(sceneSessionManager.SessionType.TYPE_STATUS_BAR, screenId);
       statusbar?.setFocusable(false);
+      // 在全屏模式下隐藏dock栏，根据isDockHoverShowEnabled决定是否启用热区
       this.dockVisibleCallback.get(screenId)?.(false);
-      this.executeDockMaskVisibleCallback(screenId, isDockHoverShowEnabled);
+      this.executeDockMaskVisibleCallback(screenId, isDockHoverShowEnabled); // 根据isDockHoverShowEnabled启用热区
       this.onGestureBarVisibleChange(isTitleHoverShowEnabled, screenId, specificSession);
     } else {
       this.fullScreenLayoutChange(true, screenId);
@@ -7151,8 +7310,9 @@ export class SCBSceneSessionManager {
         let statusbar = SCBSceneSessionManager.getInstance()
           .getSystemSceneSessionWithSystemType(sceneSessionManager.SessionType.TYPE_STATUS_BAR, screenId);
         statusbar?.setFocusable(false);
+        // 在全屏模式下隐藏dock栏，根据isDockHoverShowEnabled决定是否启用热区
         this.dockVisibleCallback.get(screenId)?.(false);
-        this.executeDockMaskVisibleCallback(screenId, isDockHoverShowEnabled);
+        this.executeDockMaskVisibleCallback(screenId, isDockHoverShowEnabled); // 根据isDockHoverShowEnabled启用热区
         this.onGestureBarVisibleChange(isTitleHoverShowEnabled, screenId, containerSession);
       } else {
         this.dockVisibleCallback.get(screenId)?.(false);
@@ -7186,7 +7346,7 @@ export class SCBSceneSessionManager {
 
   private getSystemBarPropertyInAPP(primarySession: SCBSceneSession): SCBSystemBarProperty {
     let systemBarProperty = primarySession.systemBarProperty.get(sceneSessionManager.SessionType.TYPE_STATUS_BAR) ??
-      this.appDefaultSystemBarProperty;
+    this.appDefaultSystemBarProperty;
     const uiType: string = SCBWindowSceneConfig.getInstance().windowSceneConfig?.uiType;
     WinLog.showInfo(WinLogDomain.WMS_IMMS, `get app prop:${systemBarProperty?.toString()}` +
       ` isSetEnable:${primarySession.isSetStatusBarEnable} uiType:${uiType}` +
@@ -7214,10 +7374,10 @@ export class SCBSceneSessionManager {
         }
       } else {
         let immersiveStatusBarBgColor = SCBWindowSceneConfig.getInstance().windowSceneConfig?.systemUIStatusBar?.
-          immersiveStatusBarBgColor;
+        immersiveStatusBarBgColor;
         let immersiveStatusBarContentColor = SCBWindowSceneConfig.getInstance().windowSceneConfig?.systemUIStatusBar?.
-          immersiveStatusBarContentColor;
-          WinLog.showInfo(WinLogDomain.WMS_IMMS, `immersiveColors:${immersiveStatusBarBgColor} ${immersiveStatusBarContentColor}`);
+        immersiveStatusBarContentColor;
+        WinLog.showInfo(WinLogDomain.WMS_IMMS, `immersiveColors:${immersiveStatusBarBgColor} ${immersiveStatusBarContentColor}`);
         newProperty.backgroundcolor = immersiveStatusBarBgColor ?? '#4D000000';
         newProperty.contentcolor = immersiveStatusBarContentColor ?? '#FFFFFFFF';
       }
@@ -7253,13 +7413,13 @@ export class SCBSceneSessionManager {
       // let systemBarProperty: SCBSystemBarProperty = new SCBSystemBarProperty(
       //   sceneSessionManager.SessionType.TYPE_STATUS_BAR, showHide, backgroundColor, contentColor);
       // if (containerSession.isSplitView() && containerSession.dividerParam.isUpDownSplit()) {
-        // const upDownStatusBarConfig = SCBWindowSceneConfig.getInstance().windowSceneConfig?.upDownStatusBarConfig;
-        // systemBarProperty.enable = systemBarProperty.showHide;
-        // systemBarProperty.backgroundcolor = systemBarProperty.backgroundColor;
+      // const upDownStatusBarConfig = SCBWindowSceneConfig.getInstance().windowSceneConfig?.upDownStatusBarConfig;
+      // systemBarProperty.enable = systemBarProperty.showHide;
+      // systemBarProperty.backgroundcolor = systemBarProperty.backgroundColor;
       // }
       // todo leftRightStatusBarConfig、upDownStatusBarConfig、desktopStatusBarConfig undefined
       let systemBarProperty = this.sceneBoardForceProperty.clone();
-      systemBarProperty.enable = true;
+      systemBarProperty.enable = containerSession.isSplitView() && containerSession.dividerParam.isUpDownSplit();
       if (this.isPc()) {
         if (isDockAutoHide) {
           this.onGestureBarVisibleChange(true, screenId, containerSession);
@@ -7553,7 +7713,7 @@ export class SCBSceneSessionManager {
    */
   public registerNavigationPropertyChangedCallback(callback: NavigationPropertyChangedCallback,
     screenId: number): void {
-      WinLog.showInfo(WinLogDomain.WMS_IMMS, `registerNavigationPropertyChangedCallback screenId:${screenId}`);
+    WinLog.showInfo(WinLogDomain.WMS_IMMS, `registerNavigationPropertyChangedCallback screenId:${screenId}`);
     this.navigationPropertyChangedCallbackMap.set(screenId, callback);
   }
 
@@ -7588,7 +7748,7 @@ export class SCBSceneSessionManager {
 
   /**
    * register raw system bar property change callback
-   * 
+   *
    * @param callback
    * @param screenId
    * @param callModule
@@ -7612,7 +7772,7 @@ export class SCBSceneSessionManager {
 
   /**
    * unregister raw system bar property change callback
-   * 
+   *
    * @param callback
    * @param screenId
    * @param callModule
@@ -7623,7 +7783,7 @@ export class SCBSceneSessionManager {
     const callbacks = this.rawSystemBarPropertyCallbackMap.get(displayId);
     if (callbacks) {
       callbacks.delete(callback);
-      WinLog.showInfo(WinLogDomain.WMS_IMMS, `unregister RawSystemBarPropertyCallback success 
+      WinLog.showInfo(WinLogDomain.WMS_IMMS, `unregister RawSystemBarPropertyCallback success
         call by: ${callModule ?? 'unknown'}`);
     }
   }
@@ -7863,7 +8023,7 @@ export class SCBSceneSessionManager {
     }
   }
 
-    /**
+  /**
    * request KeyboardPanel Session
    *
    * @param systemSessionInfo
@@ -7872,9 +8032,9 @@ export class SCBSceneSessionManager {
    * @returns
    */
   public requestKeyboardPanelSession(panelSession: sceneSessionManager.SceneSession,
-                                     systemSessionInfo: SystemSessionInfo,
-                                     sessionChangeCallback?: SystemSessionChangeCallback,
-                                     screenId?: number): SCBKeyboardPanelSession {
+    systemSessionInfo: SystemSessionInfo,
+    sessionChangeCallback?: SystemSessionChangeCallback,
+    screenId?: number): SCBKeyboardPanelSession {
     screenId = (screenId === undefined) ? this.mainScreenId : screenId;
     let sysSceneSession = new SCBKeyboardPanelSession(panelSession, systemSessionInfo, sessionChangeCallback);
     this.setSystemSessionMap(systemSessionInfo.sceneName, systemSessionInfo.sceneName);
@@ -7893,8 +8053,8 @@ export class SCBSceneSessionManager {
    * @returns
    */
   public requestSystemSceneSession(systemSessionInfo: SystemSessionInfo,
-                                   sessionChangeCallback?: SystemSessionChangeCallback, isKeyboardPanel?: boolean,
-                                   screenId?: number): SCBSystemSceneSession | SCBKeyboardPanelSession {
+    sessionChangeCallback?: SystemSessionChangeCallback, isKeyboardPanel?: boolean,
+    screenId?: number): SCBSystemSceneSession | SCBKeyboardPanelSession {
     screenId = screenId === undefined ? this.mainScreenId : screenId;
     let oriSceneName = systemSessionInfo.sceneName;
     let sceneName = oriSceneName + (++SCBSceneSessionManager.gSystemId).toString();
@@ -7912,7 +8072,7 @@ export class SCBSceneSessionManager {
       screenId: screenId,
       sceneType: systemSessionInfo.sceneType ?? sceneSessionManager.SceneType.SYSTEM_WINDOW_SCENE,
       isSetPointerAreas: systemSessionInfo.isSetPointerAreas,
-      isRotatable:systemSessionInfo.isRotatable,
+      isRotatable: systemSessionInfo.isRotatable,
       windowInputType: windowInputType,
       isAppUseControl: systemSessionInfo.isAppUseControl,
     });
@@ -7927,7 +8087,7 @@ export class SCBSceneSessionManager {
     this.addSystemSceneToList(sysSceneSession, screenId);
     this.setSysSessionNameIdMap(sceneName, sysSceneSession.session.persistentId);
     log.showInfo(`[SCBSystem]requestSystemSceneSession: ${sceneName}, screenId: ${screenId} ` +
-    `persistentId: ${sysSceneSession.session.persistentId} sceneType:${systemSessionInfo.sceneType}`);
+      `persistentId: ${sysSceneSession.session.persistentId} sceneType:${systemSessionInfo.sceneType}`);
     return sysSceneSession;
   }
 
@@ -7940,7 +8100,7 @@ export class SCBSceneSessionManager {
    */
   public getSystemSceneSessionWithId(persistentId: number, screenId?: number): SCBSystemSceneSession {
     screenId = screenId === undefined ? this.mainScreenId : screenId;
-    log.showDebug(`getSystemSceneSessionWithId persistentId:${persistentId}` +
+    log.showInfo(`getSystemSceneSessionWithId persistentId:${persistentId}` +
       `, mainScreenId:${this.mainScreenId}, screenId:${screenId}`);
     const index = this.systemSceneList.get(screenId)?.findIndex((item) => {
       return item.session.persistentId === persistentId;
@@ -7949,7 +8109,7 @@ export class SCBSceneSessionManager {
       log.showWarn('Failed to get system Session with session id: ' + persistentId);
       return null;
     }
-    log.showDebug('Find system scene session : ' + persistentId);
+    log.showInfo('Find system scene session : ' + persistentId);
     return this.systemSceneList.get(screenId)[index];
   }
 
@@ -7986,10 +8146,10 @@ export class SCBSceneSessionManager {
       return item?.systemBarType === systemBarType;
     });
     if (index === -1 || index === undefined) {
-      log.showWarn(`Failed to get system Session with systemType: ${systemBarType}}`);
+      log.showWarn(`Failed to get system Session with systemBarType: ${systemBarType}}`);
       return null;
     }
-      return this.systemSceneList.get(screenId)[index];
+    return this.systemSceneList.get(screenId)[index];
   }
 
   /**
@@ -8564,10 +8724,15 @@ export class SCBSceneSessionManager {
    * @param screenProperty
    */
   public notifySystemSceneToSetRotation(screenProperty: SCBScreenProperty): void {
-    this.systemSceneList.get(screenProperty.screenId).forEach((systemSceneSession: SCBSystemSceneSession) => {
+    log.showInfo(`notifySystemSceneToSetRotation ：${JSON.stringify(screenProperty)} `);
+    this.systemSceneList.get(screenProperty.screenId).forEach((session: SCBSystemSceneSession) => {
       const uiType: string = SCBWindowSceneConfig.getInstance().windowSceneConfig?.uiType;
-      if (systemSceneSession?.isRotatable || uiType !== SCBConstants.UITYPE_PHONE) {
-        systemSceneSession.setRotation(screenProperty);
+      if (session?.isRotatable || uiType !== SCBConstants.UITYPE_PHONE) {
+        log.showInfo(`${session.name} ${session.session.persistentId}start to rotation!`);
+        // 窗口旋转
+        session.setRotation(screenProperty);
+      } else {
+        log.showInfo(`${session.name} nonsupport to rotation!`);
       }
     });
   }
@@ -8584,11 +8749,11 @@ export class SCBSceneSessionManager {
       let needSetRotation = systemSceneSession?.isRotatable || uiType !== SCBConstants.UITYPE_PHONE;
       // systemSceene update rotation need animation
       let caseSystemWantAnimationSetRotate = systemWantAnimation && systemSceneSession?.
-        isAlwaysNeedAnimateWhenRotation && needSetRotation;
+      isAlwaysNeedAnimateWhenRotation && needSetRotation;
       // systemSceene update rotation not need animation
       let caseSystemNotWantAnimationSetRotate = !systemWantAnimation && !systemSceneSession?.
-        isAlwaysNeedAnimateWhenRotation && needSetRotation;
-
+      isAlwaysNeedAnimateWhenRotation && needSetRotation;
+      log.showInfo(`notifySetSystemSceneRotaion ${screenProperty.screenId} ${caseSystemWantAnimationSetRotate} ${caseSystemNotWantAnimationSetRotate}`);
       if (caseSystemWantAnimationSetRotate) {
         systemSceneSession.setRotation(screenProperty);
       } else if (caseSystemNotWantAnimationSetRotate) {
@@ -8798,8 +8963,8 @@ export class SCBSceneSessionManager {
   public isDesktopNeedProcessFloatWindow(displayId: number = DEFAULT_DISPLAY_GROUP_ID): Boolean {
     const focusedSessionId = this.getFocusedSessionId(displayId);
     if (this.getSessionById(focusedSessionId)?.session.type ===
-        sceneSessionManager.SessionType.TYPE_SYSTEM_FLOAT &&
-      this.isExpectedState(this.mainScreenId, ScenePanelState.HOME)) {
+    sceneSessionManager.SessionType.TYPE_SYSTEM_FLOAT &&
+    this.isExpectedState(this.mainScreenId, ScenePanelState.HOME)) {
       return true;
     }
     return false;
@@ -8835,8 +9000,9 @@ export class SCBSceneSessionManager {
     let sysSceneSession = this.getSystemSceneSessionWithId(focusedSessionId);
     if (sysSceneSession) {
       if ((this.isExpectedState(this.mainScreenId, ScenePanelState.RECENT) ||
-        (this.isExpectedState(this.mainScreenId, ScenePanelState.SPLIT) &&
-          sysSceneSession.systemType !== sceneSessionManager.SessionType.TYPE_GLOBAL_SEARCH)) &&
+        (this.isExpectedState(this.mainScreenId, ScenePanelState.SPLIT) ||
+          this.isExpectedState(this.mainScreenId, ScenePanelState.HOME) &&
+            sysSceneSession.systemType !== sceneSessionManager.SessionType.TYPE_GLOBAL_SEARCH)) &&
         (sysSceneSession.systemType === sceneSessionManager.SessionType.TYPE_DESKTOP ||
           sysSceneSession.systemType === sceneSessionManager.SessionType.TYPE_GLOBAL_SEARCH ||
           sysSceneSession.systemType === sceneSessionManager.SessionType.TYPE_NEGATIVE_SCREEN
@@ -8969,7 +9135,7 @@ export class SCBSceneSessionManager {
    */
   public isScenePanelInState(screenId: number, ...stateArray: ScenePanelState[]): boolean {
     if (!this.getScenePanelStateCallback.has(screenId)) {
-      log.showError('isExpectedState failed to getScenePanelStateCallback with screenId: ' + screenId);
+      log.showInfo('isExpectedState failed to getScenePanelStateCallback with screenId: ' + screenId);
       return false;
     }
     let getStateCallback: Function = null;
@@ -8979,11 +9145,13 @@ export class SCBSceneSessionManager {
       getStateCallback = this.getScenePanelStateCallback.get(screenId).get(this.panelZIndex.scenePanel);
     }
     if (!getStateCallback) {
-      log.showError('isExpectedState failed to getScenePanelStateCallback with zIndex failed scenePanelZIndex:' +
+      log.showInfo('isExpectedState failed to getScenePanelStateCallback with zIndex failed scenePanelZIndex:' +
       this.panelZIndex.scenePanel + ' specialScenePanelZ: ' + this.panelZIndex.specialScenePanel);
       return false;
     }
-    return stateArray.indexOf(getStateCallback()) > -1;
+    let nowState = getStateCallback();
+    log.showInfo(`scenePanelInState is ${nowState} screenId: ${screenId}`);
+    return stateArray.includes(nowState);
   }
 
   public skipSensorRotationChange(rotateReasonDescription: string): boolean {
@@ -9022,9 +9190,9 @@ export class SCBSceneSessionManager {
    * @returns [boolean, number] [是否可旋转，需要旋转到的角度]
    */
   public getPhoneTargetRotation(sensorRotation: number, currScreenRotation: number, screenId: number, isFromFoldToExpand: boolean = false): [boolean, number] {
-    WinLog.showInfo(WinLogDomain.WMS_ROTATION, `[getPhoneTargetRotation] sensorRotation:${sensorRotation}, ` + 
-                 `currScreenRotation:${currScreenRotation}, screenId:${screenId}, ` + 
-                 `isFromFoldToExpand:${isFromFoldToExpand}`);
+    WinLog.showInfo(WinLogDomain.WMS_ROTATION, `[getPhoneTargetRotation] sensorRotation:${sensorRotation}, ` +
+      `currScreenRotation:${currScreenRotation}, screenId:${screenId}, ` +
+      `isFromFoldToExpand:${isFromFoldToExpand}`);
     if (!isFromFoldToExpand && ViewManagerPolicy.isViewShowing(ViewType.KEYGUARD_BOUNCER)) {
       WinLog.showInfo(WinLogDomain.WMS_ROTATION, '[getPhoneTargetRotation] In bouncer interface, not handle sensor rotation');
       return [false, currScreenRotation];
@@ -9063,17 +9231,17 @@ export class SCBSceneSessionManager {
       return this.checkNeedRotate(isRotateScreen, screenId, sensorRotation, currScreenRotation, isFromFoldToExpand);
     }
     if ((activeSession.isSplit || activeSession.splitParam.getLifeCycle() ===
-            SplitLifeCycle.EXIT_SPLIT_TO_FULLSCREEN) && activeSession.splitParam.getNeedDelayRotation() > 0) {
+    SplitLifeCycle.EXIT_SPLIT_TO_FULLSCREEN) && activeSession.splitParam.getNeedDelayRotation() > 0) {
       WinLog.showInfo(WinLogDomain.WMS_ROTATION, '[getPhoneTargetRotation] delay rotation when dragging the title Bar or dock.');
       activeSession.setSkipRotation(true);
       return [false, currScreenRotation];
     }
     let targetRotation = currScreenRotation;
     if (activeSession && (this.isExpectedState(screenId, ScenePanelState.FULLSCENE) ||
-      this.isExpectedState(screenId, ScenePanelState.SPLIT))) {
+    this.isExpectedState(screenId, ScenePanelState.SPLIT))) {
       let targetRotation = activeSession.getTargetRotation(sensorRotation);
       WinLog.showInfo(WinLogDomain.WMS_ROTATION, `[getPhoneTargetRotation] active session rotation, targetRotation:${targetRotation}, ` +
-                   `currScreenRotation:${currScreenRotation}.`);
+        `currScreenRotation:${currScreenRotation}.`);
       if (currScreenRotation !== targetRotation) {
         return [true, targetRotation];
       }
@@ -9162,8 +9330,11 @@ export class SCBSceneSessionManager {
    * @returns
    */
   public isScreenNeedRotate(sensorRotation: number, curScreenRotation: number, screenId: number): boolean {
-    let isAutoRotationLocked = SCBScreenSessionManager.getInstance().getScreenOrientationLocked(screenId);
-    let screenSession = SCBScreenSessionManager.getInstance().getScreenSession(screenId);
+    if (systemParameter.getSync('bootevent.lockscreen.ready') !== 'true') {
+      // 开机未完成，不执行任何旋转
+      log.showInfo('bootevent.lockscreen.ready is false; not handleSensorRotation');
+      return false;
+    }
     if (SCBScreenSessionManager.getInstance().isSingleFoldablePhoneFoldStatus()) {
       log.showInfo(`isScreenNeedRotate, isSingleDisplayPocketFoldDevice: no need rotate`);
       return false;
@@ -9179,25 +9350,34 @@ export class SCBSceneSessionManager {
       log.showInfo('delay rotation');
       return false;
     }
-
     if (this.isDraggingFloatScene()) {
       let activeFloatSession = this.getFloatingSessionList().getTopActiveSession();
       activeFloatSession?.setSkipRotation(true);
       log.showInfo('Dragging float scene, not handleSensorRotation');
       return false;
     }
-
     if (this.isDraggingDock()) {
       log.showInfo('dock dragging, not handleSensorRotation');
       return false;
     }
-
     if (this.isDraggingPip()) {
       log.showInfo('pip dragging, not handleSensorRotation');
       return false;
     }
-
+    let isAutoRotationLocked = SCBScreenSessionManager.getInstance().getScreenOrientationLocked(screenId);
+    log.showInfo(`isAutoRotationLocked: ${isAutoRotationLocked}`);
+    //多任务中心界面不跟随屏幕旋转。
+    if (this.isScenePanelInState(screenId, ScenePanelState.RECENT)) {
+      return false;
+    }
+    // 处于桌面状态，判断是否开启锁定，桌面是否允许旋转
+    if (this.isScenePanelInState(screenId, ScenePanelState.HOME, ScenePanelState.RECENT, ScenePanelState.QUICK_SWITCH)) {
+      log.showInfo(`isScenePanelInState end:${SCBWindowRotateController.getInstance().isDesktopRotatable()}`);
+      return !isAutoRotationLocked && SCBWindowRotateController.getInstance().isDesktopRotatable();
+    }
+    // 有前台窗口，未锁定，直接下发事件
     if (!topActiveSession) {
+      log.showInfo(`no topActiveSession: ${isAutoRotationLocked}`);
       if (!isAutoRotationLocked && sensorRotation !== curScreenRotation &&
         !this.isScenePanelInState(screenId, ScenePanelState.RECENT, ScenePanelState.QUICK_SWITCH)) {
         log.showInfo('no active session rotate');
@@ -9205,8 +9385,8 @@ export class SCBSceneSessionManager {
       }
       return false;
     }
-    if (this.isScenePanelInState(screenId, ScenePanelState.FULLSCENE, ScenePanelState.SPLIT) &&
-      curScreenRotation !== targetRotation) {
+    // 全屏，分屏直接下发事件，窗口自己判断
+    if (this.isScenePanelInState(screenId, ScenePanelState.FULLSCENE, ScenePanelState.SPLIT) && curScreenRotation !== targetRotation) {
       log.showInfo('full or split container session rotate');
       return true;
     }
@@ -9467,13 +9647,13 @@ export class SCBSceneSessionManager {
       }
     }
     if (activeSession && !activeSession.isOneStepSplit() &&
-      this.isExpectedState(screenId, ScenePanelState.FULLSCENE)) {
+    this.isExpectedState(screenId, ScenePanelState.FULLSCENE)) {
       return true;
     }
     return false;
   }
 
-  private isFloatingSceneNeedDelayRotation():boolean {
+  private isFloatingSceneNeedDelayRotation(): boolean {
     let isFloatingDragging = AppStorage.get<boolean>('floatingDragging') ?? false;
     return isFloatingDragging;
   }
@@ -9554,7 +9734,12 @@ export class SCBSceneSessionManager {
   // 互斥业务
   public isExclusion(bundleName: string, sceneMode: SCBSceneMode, isToast: boolean = true): boolean {
     log.showWarn('isExclusion, app startup detect');
-    return false;
+    if (!DeliverUtil.isSupportDeliver()) {
+      return false;
+    }
+    let mode = (sceneMode === SCBSceneMode.FULLSCREEN) ? 'FULL_SCREEN' : 'FLOATING';
+    let exclusive = ExclusiveChecker.check(bundleName, mode, isToast);
+    return exclusive.result;
   }
 
   public requestStartUIAbilityBySCB(sceneSession: sceneSessionManager.SceneSession): void {
@@ -9566,9 +9751,9 @@ export class SCBSceneSessionManager {
   }
 
   public requestChangeUIAbilityVisibilityBySCB(sceneSession: sceneSessionManager.SceneSession,
-                                               visibility: boolean,
-                                               isFromClient: boolean = true,
-                                               isNewWant: boolean = false): void {
+    visibility: boolean,
+    isFromClient: boolean = true,
+    isNewWant: boolean = false): void {
     try {
       sceneSessionManager.changeUIAbilityVisibilityBySCB(sceneSession, visibility, isFromClient, isNewWant);
     } catch (err) {
@@ -9659,7 +9844,7 @@ export class SCBSceneSessionManager {
    */
   public notifyExitGameSplit(activeSceneContainerSession: SCBSceneContainerSession): void {
     if (activeSceneContainerSession && activeSceneContainerSession.hasFixedMultiWindowOrientationSession() &&
-      activeSceneContainerSession.isSplit) {
+    activeSceneContainerSession.isSplit) {
       this.exitGameSplitView(activeSceneContainerSession.screenProperty.screenId,
         activeSceneContainerSession.primarySession?.session.persistentId,
         activeSceneContainerSession.containerId);
@@ -9675,7 +9860,7 @@ export class SCBSceneSessionManager {
    * notify enter recent task status to native
    * @param enterRecent
    */
-  public notifyEnterRecentTask(enterRecent: boolean) : void {
+  public notifyEnterRecentTask(enterRecent: boolean): void {
     try {
       sceneSessionManager.notifyEnterRecentTask(enterRecent);
     } catch (err) {
@@ -9688,26 +9873,159 @@ export class SCBSceneSessionManager {
    *
    * @param enterRecent
    */
-  public enterRecentTask(enterRecent: boolean, enableAnimation: boolean = true): void {
+  public async enterRecentTask(enterRecent: boolean, enableAnimation: boolean = true): Promise<void> {
     WinLog.showInfo(WinLogDomain.WMS_IMMS, `enterRecent:${enterRecent}`);
     this.recentTaskChangeProcess = enterRecent ? 'in' : 'out';
+    const statusbarColor: ESObject = await this.updateStatusbarColor();
+    const backgroundColor = statusbarColor?.backgroundColor as string || '#00ffffff';
+    const contentColor = statusbarColor?.contentColor as string || '#ffffffff';
     if (enterRecent) {
       this.notifyEnterRecentTask(enterRecent);
       // 在进入多任务的情况下隐藏状态栏并更新状态栏属性
       this.updateSceneBoardForceProperty(new SCBSystemBarProperty(
-        sceneSessionManager.SessionType.TYPE_STATUS_BAR, false, '#00FFFFFF', '#FFFFFFFF', enableAnimation, true),
+        sceneSessionManager.SessionType.TYPE_STATUS_BAR, false, backgroundColor, contentColor, enableAnimation, true),
         'RecentTask in');
       this.updateSystemBarProperty();
     } else {
       // 离开多任务的情况下显示状态栏
       this.updateSceneBoardForceProperty(new SCBSystemBarProperty(
-        sceneSessionManager.SessionType.TYPE_UNDEFINED, false, '#00FFFFFF', '#FFFFFFFF', enableAnimation, true),
+        sceneSessionManager.SessionType.TYPE_UNDEFINED, false, backgroundColor, contentColor, enableAnimation, true),
         'RecentTask out');
       this.updateSystemBarProperty();
       this.notifyEnterRecentTask(enterRecent);
     }
     this.recentTaskChangeProcess = undefined;
   }
+
+  /**
+   * 获取默认壁纸路径
+   * */
+  public async getDefaultWallpaperPath(isLock: boolean): Promise<PixelMap | null> {
+    try {
+      const lockStr = isLock ? 'lock' : 'unlock'
+      const savePath = `data/storage/el2/base/haps/themecomponent/files/wallpaper_${lockStr}_image.webp`;
+      const file = fs.openSync(savePath, fs.OpenMode.READ_ONLY)
+      const stat = fs.statSync(savePath)
+      const fileSize = stat.size
+      const buffer = new ArrayBuffer(fileSize)
+      fs.readSync(file.fd, buffer)
+      fs.close(file)
+      const imageSource = image.createImageSource(buffer)
+      // 2. 创建PixelMap
+      const pixelMap = await imageSource.createPixelMap();
+      return pixelMap
+    } catch (error) {
+      const err = error as BusinessError;
+      return null;
+    }
+  }
+
+  /**
+   * 获取状态栏区域亮度等级
+   */
+  private async getStatusBarAreaImageLightDegree(pixelMap: image.PixelMap | null, displayData: display.Display,
+    tag: string): Promise<ESObject | null> {
+    if (!pixelMap) {
+      log.showError('image is null.');
+      return null;
+    }
+
+    try {
+      const imageInfo: image.ImageInfo = await pixelMap.getImageInfo();
+      const statusBarHeight =
+        42; //ArkUIAdapter.vp2px(ResourceVm.instance.getNumber($r('app.float.status_bar_phone_height')))
+      let cropRegionHeight: number = Math.min(imageInfo.size.height, statusBarHeight);
+      let cropRegionWidth: number = Math.min(imageInfo.size.width, displayData.width);
+      if ((displayData.width > imageInfo.size.width || statusBarHeight > imageInfo.size.height) &&
+        displayData?.height > 0) {
+        cropRegionHeight = imageInfo.size.height * (statusBarHeight / displayData?.height);
+        cropRegionWidth = imageInfo.size.width;
+      }
+      log.showInfo(`getStatusBarAreaImageLightDegree for ${tag}, imageInfo(${imageInfo.size.width}, ${imageInfo.size.height}), ` +
+        `region(width ${cropRegionWidth}, height ${cropRegionHeight})`);
+      const pickRegion = [0, 0, cropRegionWidth / imageInfo.size.width, cropRegionHeight / imageInfo.size.height];
+      const colorPicker: effectKit.ColorPicker = await effectKit.createColorPicker(pixelMap, pickRegion);
+      const degree: effectKit.PictureLightColorDegree = colorPicker.discriminatePitureLightDegree();
+      log.showInfo(`getStatusBarAreaImageLightDegree for ${tag} result(${degree}).`);
+      return degree;
+    } catch (e) {
+      log.error(`getStatusBarAreaImageLightDegree for ${tag}`);
+      return null;
+    }
+  }
+
+  public static async getLightDegree(pixelMap: image.PixelMap): Promise<effectKit.PictureLightColorDegree | null> {
+    log.showInfo(`getLightDegree begin`);
+    if (!pixelMap) {
+      log.showInfo('Invalid input for getLightDegree: pixelMap cannot be undefined or null');
+      return null;
+    }
+    let imagePixelMap: image.PixelMap | undefined = undefined;
+    let colorPicker: effectKit.ColorPicker | undefined = undefined;
+    try {
+      const imageInfo: image.ImageInfo = await pixelMap.getImageInfo();
+      imagePixelMap = await this.clonePixelMap(pixelMap);
+      if (imagePixelMap === undefined) {
+        log.error('Clone pixelmap failed, so cannot get status bar area image light degree');
+        return null;
+      }
+      let region: image.Region = {
+        x: 0,
+        y: 0,
+        size: { height: STATUS_HEIGHT, width: imageInfo.size.width }
+      };
+      await imagePixelMap.crop(region);
+      colorPicker = await effectKit.createColorPicker(imagePixelMap);
+      const degree: effectKit.PictureLightColorDegree = colorPicker.discriminatePitureLightDegree();
+      return degree;
+    } catch (err) {
+      log.error(`Get status bar area image light degree failed: code is ${err?.code}, msg is ${err?.message}`);
+      return null;
+    } finally {
+      if (colorPicker !== undefined) {
+        // MemoryUtils.removeNapiWrap(colorPicker, false);
+      }
+      imagePixelMap?.release();
+      log.showInfo('getLightDegree finish');
+    }
+  }
+
+  /**
+   * 复制一份pixelMap
+   * @param oriImage pixelMap源文件
+   * @return 返回一个新的PixelMap对象，如果出现错误则返回undefined
+   */
+  public static async clonePixelMap(oriImage: image.PixelMap): Promise<image.PixelMap | undefined> {
+    if (!oriImage) {
+      log.error('Invalid input for clonePixelMap: oriImage cannot be undefined or null');
+      return undefined;
+    }
+    try {
+      let imageInfo: image.ImageInfo = await oriImage.getImageInfo();
+      let pixelBytesNumber: number = oriImage.getPixelBytesNumber();
+      // if (pixelBytesNumber <= 0 || pixelBytesNumber > DEFAULT_IMAGE_BUFFER_SIZE) {
+      //   log.error( `Invalid input for clonePixelMap: pixel bytes is ${pixelBytesNumber}`);
+      //   return;
+      // }
+      const readBuffer: ArrayBuffer = new ArrayBuffer(pixelBytesNumber);
+      await oriImage.readPixelsToBuffer(readBuffer);
+      let opts: image.InitializationOptions = {
+        editable: true,
+        srcPixelFormat: image.PixelMapFormat.RGBA_8888,
+        pixelFormat: image.PixelMapFormat.RGBA_8888,
+        size: {
+          height: imageInfo.size.height,
+          width: imageInfo.size.width
+        }
+      };
+      let clonePixmap: image.PixelMap = await image.createPixelMap(readBuffer, opts);
+      return clonePixmap;
+    } catch (error) {
+      log.error(`Clone pixelmap failed: code is ${error?.code}, msg is ${error?.message}`);
+      return undefined;
+    }
+  }
+
 
   /**
    * whether to show status bar  temporariy
@@ -9832,7 +10150,7 @@ export class SCBSceneSessionManager {
   public isSupportCompatibilityMode(): boolean {
     const uiType: string = SCBWindowSceneConfig.getInstance().windowSceneConfig?.uiType;
     return uiType === SCBConstants.UITYPE_PAD || uiType === SCBConstants.UITYPE_PC ||
-      DeviceHelper.isUltraScreenProduct() || DeviceHelper.isLargeInFoldProduct();
+    DeviceHelper.isThreeFoldProduct() || DeviceHelper.isLargeInFoldProduct();
   }
 
   /*
@@ -10054,7 +10372,7 @@ export class SCBSceneSessionManager {
   public getFullScreenSubSessionList(): SCBSpecificSceneSessionList {
     let result: SCBSpecificSceneSessionList = new SCBSpecificSceneSessionList();
     let containerList = this.getContainerSessionList();
-    for (let i = 0; i < containerList.length; i++ ) {
+    for (let i = 0; i < containerList.length; i++) {
       let container = containerList[i];
       if (!container) {
         continue;
@@ -10063,12 +10381,12 @@ export class SCBSceneSessionManager {
       this.traverseSubSession(container.primarySession?.subSessionList, primaryResultList);
       let secondaryResultList: SCBSpecificSceneSessionList = new SCBSpecificSceneSessionList();
       this.traverseSubSession(container.secondarySession?.subSessionList, secondaryResultList);
-      primaryResultList.forEach((item)=>{
+      primaryResultList.forEach((item) => {
         if (item && item.windowMode === SCBSceneMode.FULLSCREEN) {
           result.push(item);
         }
       });
-      secondaryResultList.forEach((item)=>{
+      secondaryResultList.forEach((item) => {
         if (item && item.windowMode === SCBSceneMode.FULLSCREEN) {
           result.push(item);
         }
@@ -10157,8 +10475,7 @@ export class SCBSceneSessionManager {
    */
   public fullScreenLayoutChange(isFullScreenLayout: boolean, screenId?: number, notifyType?: string): void {
     let screen = screenId ? screenId : this.mainScreenId;
-    log.showInfo(`fullScreenLayoutChange screenId:${screenId} isFullScreenLayout:${isFullScreenLayout} ` +
-      `notifyType:${notifyType}`);
+    log.showInfo(`fullScreenLayoutChange screenId:${screenId} isFullScreenLayout:${isFullScreenLayout} notifyType:${notifyType}`);
     for (let [key, callbackMap] of this.fullScreenLayoutCallBack.entries()) {
       if (key !== screen) {
         continue;
@@ -10174,7 +10491,6 @@ export class SCBSceneSessionManager {
         callback(isFullScreenLayout, screen);
       }
     }
-    return;
   }
 
   /**
@@ -10334,7 +10650,7 @@ export class SCBSceneSessionManager {
       return 0;
     }
     const bundleFlags = BundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_HAP_MODULE |
-      BundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_ABILITY;
+    BundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_ABILITY;
     const mainSession: SCBSceneSession | null = this.findMainSessionById(persistentId);
     if (CommonUtils.isInvalid(mainSession)) {
       SCBSceneSessionManager.getInstance().refreshZOrder();
@@ -10537,7 +10853,7 @@ export class SCBSceneSessionManager {
     log.showInfo(`RestorebundleName: ${sceneInfo.bundleName}, RestorepersistentId: ${sceneInfo.persistentId},
       RestorecontainerSession: ${containerSession?.containerId}, screenId: ${sceneInfo.screenId}`);
     this.startSceneFromRecent(sceneInfo.screenId,
-      containerSession?.primarySession?.sceneInfo?.persistentId, containerSession?.containerId);
+      sceneInfo.persistentId, containerSession?.containerId);
     this.requestFocus(sceneInfo.persistentId, undefined, FocusChangeReason.MOVE_UP);
   }
 
@@ -10568,7 +10884,7 @@ export class SCBSceneSessionManager {
    */
   public existWindowOverlappedByDock(persistentId: number): boolean {
     let containerList = this.getContainerSessionList(this.mainScreenId);
-    for (let i = containerList.length - 1; i >= 0 ; i--) {
+    for (let i = containerList.length - 1; i >= 0; i--) {
       let container = containerList[i];
       if (!container || !container.isActive || !container.primarySession) {
         continue;
@@ -10602,7 +10918,7 @@ export class SCBSceneSessionManager {
   public existSubAppWindowOverlappedByDock(container: SCBSceneContainerSession, dockHeight: number,
     persistentId: number): boolean {
     let subSessionList = container.primarySession.subSessionList;
-    for (let i = subSessionList.length - 1; i >= 0 ; i--) {
+    for (let i = subSessionList.length - 1; i >= 0; i--) {
       let subSession = subSessionList[i];
       if (!subSession || !subSession.isActive || !subSession.visibility ||
         (subSession.session?.type !== sceneSessionManager.SessionType.TYPE_SUB_APP)) {
@@ -10637,7 +10953,7 @@ export class SCBSceneSessionManager {
       this.addGestureDockRecentItemCallback(bundleName, appIndex);
     }
   }
-  
+
   public setSupportFunctionType(funcType: sceneSessionManager.SupportFunctionType): void {
     sceneSessionManager.setSupportFunctionType(funcType);
   }
@@ -10727,6 +11043,17 @@ export class SCBSceneSessionManager {
   }
 
   /**
+   * init pip is enabled value
+   */
+  public setPipIsPipEnabled(isPipEnabled: boolean): void {
+    try {
+      sceneSessionManager.setIsPipEnabled(isPipEnabled);
+    } catch (err) {
+      log.showError('setPipIsPipEnabled failed, reason: ' + JSON.stringify(err));
+    }
+  }
+
+  /**
    * register callback for handle scene when pre lock
    *
    * @param screenId screen id
@@ -10769,19 +11096,18 @@ export class SCBSceneSessionManager {
     return isAppMultiWindow;
   }
 
-  public onStatusBarEnableChange(statusBarEnable: boolean, session: SCBSceneSession){
+  public onStatusBarEnableChange(statusBarEnable: boolean, session: SCBSceneSession) {
     log.showInfo(`onStatusBarEnableChange screenId: ${session.sceneInfo.screenId} statusBarEnable: ${statusBarEnable}`);
     this.statusBarEnableCallbacks.get(session.sceneInfo.screenId)?.(statusBarEnable, session.sceneInfo.persistentId);
   }
 
-  public registerStatusBarEnableChange(screenId: number, callback: (enable: boolean, persistentId:number) => void) {
+  public registerStatusBarEnableChange(screenId: number, callback: (enable: boolean, persistentId: number) => void) {
     this.statusBarEnableCallbacks.set(screenId, callback);
   }
 
   public unregisterStatusBarEnableChange(screenId: number): void {
     this.statusBarEnableCallbacks.delete(screenId);
   }
-
 }
 
 async function fetchAllAbilityInfoSync(userId: number, want: Want): Promise<Array<SCBAbilityItemInfo>> {

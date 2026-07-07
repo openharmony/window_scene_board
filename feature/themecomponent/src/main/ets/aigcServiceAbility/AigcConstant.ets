@@ -96,7 +96,7 @@ export class AigcConstant {
 
   public static PRODUCE_ID_HEAD: string = 'cv_photo_';
 
-  public static DEVICE_TYPE_LARGE_FOLD: string = 'BigScreenPhoneTheme';
+  public static DEVICE_TYPE_LARGE_FOLD: string = 'TwofoldPhoneTheme';
 
   public static DEVICE_TYPE_STRAIGHT: string = 'PhoneTheme';
 
@@ -146,6 +146,7 @@ export class TaskConfig {
   public errorCode: number = 0;
 }
 
+// 调用语音助手接口的参数
 export class VideoParameter {
   public scenario: string = '';
   public style: string = '';

@@ -27,6 +27,7 @@ import { SnapshotType, DragAccessibilityUtils, dragSnapshotHelper } from '@ohos/
 import {
   ResourceManager,
   HiSysEventUtil,
+  LightOutdoorConfig,
   DeviceHelper
 } from '@ohos/frameworkwrapper';
 import { batchUninstallChain, ForwardType } from '@ohos/launchercommon/Index';
@@ -285,6 +286,10 @@ export class OverflowFunInteractionFormEvent extends FormItemRelativeEvent {
     }
     // 锁定布局及其他不可拖拽场景禁止拖拽
     if (gestureInfo.type === GestureControl.GestureType.DRAG && !desktopItemDraggableManager.getEnableDrag()) {
+      return GestureJudgeResult.REJECT;
+    }
+    // 云端2卡片禁止拖拽
+    if(gestureInfo.type === GestureControl.GestureType.DRAG && LightOutdoorConfig.getInstance().isOnLightOutdoorMode()){
       return GestureJudgeResult.REJECT;
     }
     return GestureJudgeResult.CONTINUE;

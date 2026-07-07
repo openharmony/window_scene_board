@@ -20,7 +20,7 @@ const TAG = 'Recent-SCBRecentFoldVirtualVM';
 const log = LogHelper.getLogHelper(LogDomain.RECENT, TAG);
 
 /**
- * 大屏幕机物理键盘态
+ * 折叠机物理键盘态
  */
 export class SCBRecentFoldVirtualVM extends SCBRecentFoldPhysicalVM {
 

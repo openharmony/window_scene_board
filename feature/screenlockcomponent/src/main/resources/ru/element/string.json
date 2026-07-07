@@ -1,0 +1,886 @@
+{
+    "string":[
+        {
+            "name":"face_not_recognized",
+            "value":"Лицо не распознано. Нажмите дважды, чтобы повторить попытку.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"two_click_accessible",
+            "value":"Нажмите дважды, чтобы активировать",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"camera_muted",
+            "value":"Камера выключена. Распознавание лица недоступно.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"flash_light_accessible",
+            "value":"Фонарик",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cover_normal_charging",
+            "value":"Идет зарядка %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ic_tools_two_click_back_accessible",
+            "value":"Нажмите дважды, чтобы закрыть панель инструментов",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ic_tools_timer_accessible",
+            "value":"Таймер",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cover_turbo_charging",
+            "value":"Турбозарядка %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ic_tools_back_around_accessible",
+            "value":"Закрыть",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cover_super_charging",
+            "value":"Супербыстрая зарядка %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ic_camera_button_accessible",
+            "value":"Камера",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_card_psd_confirm_accessible",
+            "value":"Подтвердить",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pad_notes_accessible",
+            "value":"Заметки",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_locking_popup",
+            "value":"Разблокировка SIM-карты…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"face_not_recognized_in_input_pwd",
+            "value":"Лицо не распознано. Нажмите здесь, чтобы повторить попытку.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"emergency_call_accessible",
+            "value":"Экстренный вызов",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"out_sensor_fp_dirty_try_again",
+            "value":"Отпечаток не распознан.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"flash_light_open_accessible",
+            "value":"Включено",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_remember_tips",
+            "value":"Запомнить PIN-код",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_unlock_num_keyboard_cancel",
+            "value":"Отмена",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_back_accessible",
+            "value":"Назад",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"flash_light_close_accessible",
+            "value":"Выклю\u200bчено",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"fp_hold_finger",
+            "value":"Удерживайте палец немного дольше",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"fp_incorrect_fp_try_again",
+            "value":"Закройте датчик пальцем целиком.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_remember_popup",
+            "value":"PIN-код будет вводиться автоматически каждый раз, когда вы будете перезагружать устройство или устанавливать SIM-карту.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cover_fully_charged",
+            "value":"Полностью заряжено",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ic_tools_memorandum_accessible",
+            "value":"Заметки",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"del_pwd_accessible",
+            "value":"Удалить",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cover_quick_charging",
+            "value":"Быстрая зарядка %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"face_unlock_success",
+            "value":"Проведите вверх, чтобы открыть",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"edit_theme",
+            "value":"Темы",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ic_tools_clock_accessible",
+            "value":"Часы",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ic_tools_accessible",
+            "value":"Инструменты",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"show_date",
+            "value":"Отображение даты",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_unlock_num_keyboard_cancel_accessible",
+            "value":"Отмена",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ic_tools_vassistant_accessible",
+            "value":"Сканер",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ic_tools_calculator_accessible",
+            "value":"Калькулятор",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"emergency_call",
+            "value":"Экстренный вызов",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"custom_mix_psd_ok_accessible",
+            "value":"Подтвердить",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"reset_pin_tip",
+            "value":"Недавно вы настроили новый пароль. Если вы забыли его, вы можете сбросить его, введя старый PIN-код или пароль.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"reset_psd_tip",
+            "value":"Недавно вы настроили новый PIN-код. Если вы забыли его, вы можете сбросить его, введя старый PIN-код или пароль.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"reset_pin",
+            "value":"Сбросить",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"card_edit",
+            "value":"Настроить",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"edit_wallpaper",
+            "value":"Обои",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keypad_password_six",
+            "value":"шесть",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"face_unlock_ready_in_input_pwd",
+            "value":"Используйте распознавание лица или введите пароль",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"lock_icon_tip_with_fingerprint",
+            "value":"Для разблокировки отсканируйте отпечаток пальца или проведите вверх снизу экрана",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_area_accessible",
+            "value":"Поле ввода пароля",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keyboard_delete_remainder",
+            "value":"Удалено, %1$s, %2$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_to_screen_lock",
+            "value":"Добавить на экран блокировки",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keypad_password_three",
+            "value":"три",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"press_fingerprint_sensor_area",
+            "value":"Нажмите, чтобы продолжить",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"face_locked_in_input_pwd",
+            "value":"Распознавание лица выключено. Введите пароль.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_enter_psd",
+            "value":"Введите PIN-код",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_incorrect_psd_try_again_mix",
+            "value":"Неверный пароль. Повторите попытку.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"fp_disable_enter_psd",
+            "value":"Распознавание отпечатков пальцев выключено. Введите PIN-код.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ic_tools_unavailable_accessible",
+            "value":"%1$s, недоступна",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keypad_password_nine",
+            "value":"девять",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_unlock_unavailable_tips",
+            "value":"Эту SIM-карту невозможно использовать. Обратитесь к вашему оператору.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"show_lunar_date",
+            "value":"Лунный календарь",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keypad_password_five",
+            "value":"пять",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keypad_password_zero",
+            "value":"ноль",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"exit_outscreen_theme_selection_accessible",
+            "value":"Выход из режима выбора темы внешнего экрана",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"confirm",
+            "value":"OK",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_confirm_tips",
+            "value":"OK",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"toast_prompt_face_unlock_success",
+            "value":"Разблокировано с помощью распознавания лица.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screen_lock_edit_accessible",
+            "value":"Экран редактирования экрана блокировки",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_unlock_puk_tips",
+            "value":"PUK-код отличается от PIN-кода SIM-карты. Вы можете запросить его у вашего оператора связи.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"fp_try_again_psd_after_time",
+            "value":"Датчик отпечатков пальцев выключен. Попробуйте ввести пароль через %s.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Double_click_and_hold_accessibility",
+            "value":"Дважды нажмите и удерживайте для открытия меню опций",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keypad_password_input_success",
+            "value":"Номер",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"face_recognition_try_again_after_time",
+            "value":"Распознавание лица выключено. Повторите попытку через %s.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"face_locked_in_input_pin",
+            "value":"Распознавание лица выключено. Введите PIN-код.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keypad_password_two",
+            "value":"два",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_unlock_pin_format_tips",
+            "value":"Введите %1$s–%2$s-значный PIN-код",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_pin_area_accessible",
+            "value":"Поле ввода PIN-кода SIM-карты",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_unlock_reset_pin_confirm_tips",
+            "value":"Подтвердите PIN-код",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keypad_password_seven",
+            "value":"семь",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"emergency_mode_title",
+            "value":"Максимальное энергосбережение",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keypad_password_four",
+            "value":"четыре",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_incorrect_will_locked",
+            "value":"Неверный PIN-код. Через %1$s устройство будет заблокировано на %2$s.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"fp_try_again_after_time_pc",
+            "value":"Датчик отпечатков пальцев выключен. Повторите попытку через %s или используйте другой способ разблокировки.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keypad_password_one",
+            "value":"один",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"face_locked_in_input_pwd_when_finger_enable",
+            "value":"Распознавание лица выключено. Отсканируйте отпечаток пальца или введите PIN-код для разблокировки.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_unlock_puk_format_tips",
+            "value":"Введите %1$s-значный PUK-код",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ic_tools_opened",
+            "value":"Включено",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_unlock_pin_exhausting_tips",
+            "value":"Неверный PIN-код SIM-карты. Для разблокировки устройства введите PUK-код.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keyboard_simple_delete_remainder_accessible",
+            "value":"Удалено.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"face_unlock_verifying",
+            "value":"Подтверждение…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"exit_edit_mode_accessible",
+            "value":"Вы вышли из режима редактирования",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_delete",
+            "value":"Удалить",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keypad_password_eight",
+            "value":"восемь",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_incorrect_psd_try_again",
+            "value":"Неверный PIN-код. Повторите попытку.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"enter_outscreen_theme_selection_accessible",
+            "value":"Вы переходите в режим выбора темы внешнего экрана",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pattern_psd_error",
+            "value":"Неверный графический ключ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"face_unlock_ready_in_input_pin",
+            "value":"Используйте распознавание лица или введите PIN-код",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"input_pwd_tip_when_face_and_finger_locked",
+            "value":"Распознавание лица и отпечатков пальцев выключено. Введите PIN-код.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"fingerprint_incorrect_will_locked",
+            "value":"Отпечаток не распознан. Устройство будет заблокировано на %2$s через %1$s.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_unlock_reset_pin_tips",
+            "value":"Введите новый PIN-код",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pattern_psd_enter_psd",
+            "value":"Начертите графический ключ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"finger_print_area_accessible",
+            "value":"Зона датчика отпечатка пальца",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"edit_after_unlock",
+            "value":"Разблокируйте, чтобы изменить экран блокировки",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"custom_mix_psd_area_accessible",
+            "value":"Поле ввода пароля. Дважды нажмите, чтобы ввести текст.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_other_users",
+            "value":"Другие пользователи",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"fp_try_again_after_time",
+            "value":"Датчик отпечатков пальцев заблокирован. Повторите попытку через %s.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ic_tools_widgets_two_click_accessible",
+            "value":"%1$s, нажмите дважды, чтобы активировать",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"face_unlock_ready",
+            "value":"Нажмите дважды для распознавания лица",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_unlock_pin_not_match",
+            "value":"PIN-коды не совпадают",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"start_drawing_pattern",
+            "value":"Вы начали рисовать графический ключ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_unlock_solt_flag",
+            "value":"SIM %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_form_to_screen_lock_editor_max",
+            "value":"Недостаточно места.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pattern_area",
+            "value":"Область для рисования графического ключа",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ic_tools_disable_battery_low",
+            "value":"Батарея разряжена. Невозможно включить фонарик.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pattern_psd_drawing_completed",
+            "value":"Графический ключ начерчен",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"edit_aod",
+            "value":"Заставка",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_enter_psd_mix",
+            "value":"Введите пароль",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"fp_try_again_pin_after_time",
+            "value":"Датчик отпечатков пальцев выключен. Попробуйте ввести PIN-код через %s.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"fp_disable_forever",
+            "value":"Распознавание отпечатков пальцев выключено. Введите PIN-код.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"enter_edit_mode_accessible",
+            "value":"Вы перешли в режим редактирования",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cancel",
+            "value":"Отмена",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_try_again_after_time1",
+            "value":"Повторите попытку через %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"lock_icon_tip",
+            "value":"Для разблокировки проведите вверх снизу экрана",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"fingerprint_antitouch_notification_camera",
+            "value":"Предотвращение случайных операций включено. Не закрывайте камеру.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"exit_clock_edit_mode_accessible",
+            "value":"Выход из режима редактирования часов.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"enter_clock_edit_mode_accessible",
+            "value":"Переход в режим редактирования часов",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"esim_unlock_slot_flag",
+            "value":"eSIM %s",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

@@ -27,7 +27,7 @@ export async function ControlCenterEditComponentUiTest() {
     beforeAll(async () => {
       QuickToggleController.getInstance().saveQuickToggleData([
         'flashlight', 'ring_mode', 'auto_rotate', 'mobile_data', 'share', 'location', 'air_plane', 'hotspot',
-        'toggle_screenshot', 'toggle_screen_recorder', 'nfc', 'HuaweiCastToggle', 'dark_mode', 'camera', 'mic', 'sound'
+        'toggle_screenshot', 'toggle_screen_recorder', 'nfc', 'CastToggle', 'dark_mode', 'camera', 'mic', 'sound'
       ]);
       try {
         // 亮屏解锁

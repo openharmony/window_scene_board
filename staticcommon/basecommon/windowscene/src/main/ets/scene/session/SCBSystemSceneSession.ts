@@ -1,5 +1,5 @@
 /*
- * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -187,6 +187,7 @@ export interface SystemSessionInfo {
   screenId?: number;
   isAppUseControl?: boolean;
   isFollowDeskTop?: boolean;
+  isFollowFocus?: boolean;
   enableActiveModeChange?: boolean;
   alwaysNeedAnimateWhenRotation?: boolean;
 }
@@ -213,6 +214,7 @@ class SCBSystemSceneSessionData {
   transformRect: SCBSessionRect = new SCBSessionRect(0, 0, 0, 0);
   avoidRect?: SCBSessionRect;
   isFollowDeskTop: boolean = false;
+  isFollowFocus: boolean = false;
   enableActiveModeChange: boolean = true;
 }
 
@@ -283,6 +285,10 @@ export class SCBSystemSceneSession {
 
   get isFollowDeskTop(): boolean {
     return this.sessionData.isFollowDeskTop;
+  }
+
+  get isFollowFocus(): boolean {
+    return this.sessionData.isFollowFocus;
   }
 
   get isEnableActiveModeChange(): boolean {
@@ -446,6 +452,7 @@ export class SCBSystemSceneSession {
     this.sessionData.systemType = systemSessionInfo.systemType;
     this.sessionData.systemBarType = systemSessionInfo.systemBarType;
     this.sessionData.isFollowDeskTop = systemSessionInfo.isFollowDeskTop;
+    this.sessionData.isFollowFocus = systemSessionInfo.isFollowFocus;
     this.sessionData.enableActiveModeChange = systemSessionInfo.enableActiveModeChange ?? true;
   }
 
@@ -1041,8 +1048,7 @@ export class SCBSystemSceneSession {
    * @param screenProperty
    */
   public setRotation(screenProperty: SCBScreenProperty): void {
-    log.showInfo(`set ${this.name} setRotation: ${screenProperty.rotation}, ` +
-      `isRotatable ${this.sessionData.isRotatable}, getRotatable ${this.isRotatable}`);
+    log.showInfo(`set ${this.name} setRotation: ${screenProperty.rotation}, isRotatable ${this.sessionData.isRotatable}, getRotatable ${this.isRotatable}`);
     if (!this.sessionChangeCallback) {
       log.showError(`${this.name} sessionChangeCallback is null `);
     }

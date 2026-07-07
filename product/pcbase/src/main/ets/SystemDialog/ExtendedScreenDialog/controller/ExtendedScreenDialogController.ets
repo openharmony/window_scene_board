@@ -35,7 +35,7 @@ const settingKey :string = 'settings.ExtendedScreenDialog.enable';
 export class ExtendedScreenDialogController {
   private static instance: ExtendedScreenDialogController;
   private static isDialogOpen: boolean = false;
-  private isBigScreen: boolean = DeviceHelper.isBigScreenMachine() && DeviceHelper.isPC();
+  private isSuperFold: boolean = DeviceHelper.isSuperFoldMachine() && DeviceHelper.isPC();
   private isExtendScreen: boolean = false;
   private openDialogChance: boolean = false;
   private isLocked: boolean = false;
@@ -124,7 +124,7 @@ export class ExtendedScreenDialogController {
 
   private judgeOpenDialog(): void {
     log.showInfo(`judgeOpenDialog info: ${this.isExtendScreen} - ${ExtendedScreenDialogController.isDialogOpen} - ` +
-      `${sSCBOobeManager.isOobeActivated()} - ${AppStorage.get<boolean>('isLock')} - ${this.isBigScreen} - ` +
+      `${sSCBOobeManager.isOobeActivated()} - ${AppStorage.get<boolean>('isLock')} - ${this.isSuperFold} - ` +
       `${this.openDialogChance}`);
     if (this.openJudge()) {
       if (!ExtendedScreenDialogController.isDialogOpen) {
@@ -137,7 +137,7 @@ export class ExtendedScreenDialogController {
   }
 
   private openJudge(): boolean {
-    return this.isBigScreen && this.openDialogChance && this.isExtendScreen && !AppStorage.get<boolean>('isLock') &&
+    return this.isSuperFold && this.openDialogChance && this.isExtendScreen && !AppStorage.get<boolean>('isLock') &&
       !sSCBOobeManager.isOobeActivated() && sSettingsUtil.getSystemValue(settingKey, '0', this.context) !== '1';
   }
 

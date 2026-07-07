@@ -31,7 +31,7 @@ export default class LauncherBackupUtil {
    * 移除应用分身后，发布公共事件，通知迁移服务
    * @param bundleName 应用包名
    * @param appIndex 应用分身标识
-   * @param appSourceType 0:未OpenHarmony化应用  1：已OpenHarmony化应用
+   * @param appSourceType 0:未鸿蒙化应用  1：已鸿蒙化应用
    * @returns 
    */
   public static async reportRemoveAppTwin(bundleName: string, appIndex: number, appSourceType?: number): Promise<void> {

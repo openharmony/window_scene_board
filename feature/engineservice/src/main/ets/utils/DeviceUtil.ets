@@ -24,36 +24,36 @@ const FOLD_PRODUCT_TYPE: string = 'const.window.foldscreen.type';
 const DEFAULTS_FOLD_TYPE: string = '0,0,0,0';
 
 /**
- * 超大屏新增折展状态
+ * 三折叠新增折展状态
  */
-export enum UltraScreenStatus {
+export enum TriFoldStatus {
   /**
-   * 超大屏-G态
+   * 三折叠-G态
    */
-  ULTRA_SCREEN_FULL_EXPAND = 11,
+  TRI_FOLD_FULL_EXPAND = 11,
 
   /**
-   * 超大屏-N态
+   * 三折叠-N态
    */
   FOLD_INVALID = 12,
 
   /**
-   * 超大屏-半折和展开(G态),AB屏展开，C屏半折
+   * 三折叠-半折和展开(G态),AB屏展开，C屏半折
    */
   LEFT_EXPAND_RIGHT_HALF = 13,
 
   /**
-   * 超大屏-	展开和半折(G态),A屏半折，BC屏展开
+   * 三折叠-	展开和半折(G态),A屏半折，BC屏展开
    */
   LEFT_HALF_RIGHT_EXPAND = 21,
 
   /**
-   * 超大屏-	折叠和半折(F态),A屏半折，BC屏折叠
+   * 三折叠-	折叠和半折(F态),A屏半折，BC屏折叠
    */
   FOLD_LEFT_HALF_INVALID = 22,
 
   /**
-   * 超大屏-半折和半折(G态),A屏半折，C屏半折
+   * 三折叠-半折和半折(G态),A屏半折，C屏半折
    */
   LEFT_HALF_EXPAND_HALF = 23,
 }
@@ -90,12 +90,12 @@ const enum FoldableType {
   EXPANDING_NEX_FORMS = 4,
 
   /**
-   * 大屏设备
+   * 超级折叠设备
    */
-  BIG_SCREEN = 5,
+  SUPER_FOLD = 5,
 
   /**
-   * 超大屏
+   * 三折叠
    */
   TRI_FOLD = 6,
 }
@@ -149,7 +149,7 @@ export class DeviceUtil {
   public static readonly FOLD_INNER_INDEX: number = 2;
 
   /**
-   * 超大屏展开宽度索引
+   * 三折展开宽度索引
    */
   public static readonly FULL_FOLD_INNER_INDEX: number = 4;
 
@@ -159,20 +159,20 @@ export class DeviceUtil {
   private static FOLD_DEVICE_DISPLAY_INFO: number[] = [];
 
   /**
-   * 超大屏屏幕信息数据，屏幕方向以竖向为准 [0]: F态宽 [1]:F态高 [2]:M态宽 [3]:M态高 [4]:G态宽 [5]:G态高
+   * 三折叠屏幕信息数据，屏幕方向以竖向为准 [0]: F态宽 [1]:F态高 [2]:M态宽 [3]:M态高 [4]:G态宽 [5]:G态高
    */
   private static TRI_FOLD_DEVICE_DISPLAY_INFO: number[] = [];
 
-  private static FOLD_STATUS_ARRAY: number[] = [display.FoldStatus.FOLD_STATUS_FOLDED, UltraScreenStatus.FOLD_INVALID,
-    UltraScreenStatus.FOLD_LEFT_HALF_INVALID];
+  private static FOLD_STATUS_ARRAY: number[] = [display.FoldStatus.FOLD_STATUS_FOLDED, TriFoldStatus.FOLD_INVALID,
+    TriFoldStatus.FOLD_LEFT_HALF_INVALID];
   private static FOLD_EXPANDED_STATUS_ARRAY: number[] = [display.FoldStatus.FOLD_STATUS_EXPANDED,
-    UltraScreenStatus.ULTRA_SCREEN_FULL_EXPAND, display.FoldStatus.FOLD_STATUS_HALF_FOLDED,
-    UltraScreenStatus.LEFT_EXPAND_RIGHT_HALF, UltraScreenStatus.LEFT_HALF_RIGHT_EXPAND, UltraScreenStatus.LEFT_HALF_EXPAND_HALF];
+    TriFoldStatus.TRI_FOLD_FULL_EXPAND, display.FoldStatus.FOLD_STATUS_HALF_FOLDED,
+    TriFoldStatus.LEFT_EXPAND_RIGHT_HALF, TriFoldStatus.LEFT_HALF_RIGHT_EXPAND, TriFoldStatus.LEFT_HALF_EXPAND_HALF];
   private static TRI_FOLD_STATUS_G_ARRAY: number[] =
-    [UltraScreenStatus.ULTRA_SCREEN_FULL_EXPAND, UltraScreenStatus.LEFT_EXPAND_RIGHT_HALF,
-      UltraScreenStatus.LEFT_HALF_RIGHT_EXPAND, UltraScreenStatus.LEFT_HALF_EXPAND_HALF];
+    [TriFoldStatus.TRI_FOLD_FULL_EXPAND, TriFoldStatus.LEFT_EXPAND_RIGHT_HALF,
+      TriFoldStatus.LEFT_HALF_RIGHT_EXPAND, TriFoldStatus.LEFT_HALF_EXPAND_HALF];
   private static HALF_FOLDED_STATUS_ARRAY: number[] = [FoldStatus.FOLD_STATUS_HALF_FOLDED,
-    UltraScreenStatus.LEFT_EXPAND_RIGHT_HALF, UltraScreenStatus.LEFT_HALF_EXPAND_HALF, UltraScreenStatus.LEFT_HALF_RIGHT_EXPAND];
+    TriFoldStatus.LEFT_EXPAND_RIGHT_HALF, TriFoldStatus.LEFT_HALF_EXPAND_HALF, TriFoldStatus.LEFT_HALF_RIGHT_EXPAND];
   /**
    * 获取折叠屏屏幕信息数据
    *
@@ -204,9 +204,9 @@ export class DeviceUtil {
   }
 
   /**
-   * 获取超大屏屏幕信息数据
+   * 获取三折叠屏幕信息数据
    *
-   * @returns 超大屏屏幕信息数据
+   * @returns 三折叠屏幕信息数据
    */
   public static async getTriFoldDeviceScreenInfo(): Promise<number[]> {
     if (DeviceUtil.TRI_FOLD_DEVICE_DISPLAY_INFO.length > 0) {
@@ -300,7 +300,7 @@ export class DeviceUtil {
   /**
    * 是否为折叠半折叠状态
    * 双折场景: AB面半折
-   * 超大屏场景：AB面半折、BC面半折、AB面半折以及BC面半折
+   * 三折场景：AB面半折、BC面半折、AB面半折以及BC面半折
    *
    * @param foldStatusParaValue 变量foldStatus值
    * @param foldStatus getFoldStatus返回值
@@ -318,7 +318,7 @@ export class DeviceUtil {
   /**
    * 是否为折叠屏展开态
    * 双折场景：AB面之间组合：AB面半折，AB面全展
-   * 超大屏场景：ABC面之间的组合(AB展开&&BC展开,AB展开&&BC半折,AB半折&&BC展开,AB半折&&BC半折)
+   * 三折场景：ABC面之间的组合(AB展开&&BC展开,AB展开&&BC半折,AB半折&&BC展开,AB半折&&BC半折)
    *
    * @param foldStatus 折叠状态
    * @returns true表示当前是展开态
@@ -330,7 +330,7 @@ export class DeviceUtil {
   /**
    * 是否为折叠屏折叠态
    * 双折场景：折叠态
-   * 超大屏场景：F态，N态，折叠和半折
+   * 三折场景：F态，N态，折叠和半折
    *
    * @param foldStatus 折叠状态
    * @returns true表示当前是折叠态
@@ -471,20 +471,20 @@ export class DeviceUtil {
   }
 
   /**
-   * 是否是超大屏
+   * 是否是三折叠
    *
-   * @returns boolean 如果是超大屏返回true
+   * @returns boolean 如果是三折叠返回true
    */
   public static isTriFoldProduct(): boolean {
     return FoldableType.TRI_FOLD === DeviceUtil.getFoldProductType();
   }
 
   /**
-   * 是否是超大屏G态
+   * 是否是三折叠G态
    *
-   * @returns boolean 如果是超大屏G态返回true
+   * @returns boolean 如果是三折叠G态返回true
    */
-  public static isUltraScreenG(): boolean {
+  public static isTripleFoldG(): boolean {
     if (!DeviceUtil.isTriFoldProduct()) {
       return false;
     }
@@ -492,7 +492,7 @@ export class DeviceUtil {
       const foldStatus: display.FoldStatus = display.getFoldStatus();
       return DeviceUtil.TRI_FOLD_STATUS_G_ARRAY.includes(foldStatus);
     } catch (error) {
-      Log.error(TAG, `isUltraScreenG -> try error: ${error}`);
+      Log.error(TAG, `isTripleFoldG -> try error: ${error}`);
       return false;
     }
   }
@@ -516,12 +516,12 @@ export class DeviceUtil {
   }
 
   /**
-   * 是否是大屏设备
+   * 是否是超级折叠设备
    *
-   * @returns boolean 如果为大屏设备返回true
+   * @returns boolean 如果为超级折叠设备返回true
    */
-  public static isBigScreenProduct(): boolean {
-    return FoldableType.BIG_SCREEN === DeviceUtil.getFoldProductType();
+  public static isSuperFoldProduct(): boolean {
+    return FoldableType.SUPER_FOLD === DeviceUtil.getFoldProductType();
   }
 
   /**
@@ -573,7 +573,7 @@ export class DeviceUtil {
   }
 
   /**
-   * 判断当前设备是否为横屏（直板机/大屏幕机的折叠态）
+   * 判断当前设备是否为横屏（直板机/折叠机的折叠态）
    * 优先根据传入的screenOrientation判断横竖屏专题，如果未传入或者传入的是undefined，则从display获取orientation来判断横竖屏状态
    *
    * @param screenOrientation 设备旋转角度参数，可选参数，无此参数是自动从display获取

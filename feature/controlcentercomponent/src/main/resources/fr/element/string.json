@@ -197,6 +197,13 @@
             }
         },
         {
+            "name":"voice_translate_name",
+            "value":"Traduction voice",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
             "name":"control_center_edit_panel_tips_max_limit",
             "value":"Le nombre maximum de commutateurs a déjà été ajouté.",
             "attr":{
@@ -206,6 +213,13 @@
         {
             "name":"cc_accessibility_str_change_vertical_brightness_desc",
             "value":"Barre de luminosité, veuillez toucher deux fois et maintenez, puis faites glisser vers le haut ou vers le bas pour ajuster",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cloud_lai",
+            "value":"Mode Cloud",
             "attr":{
                 "priority":"translate"
             }
@@ -247,7 +261,7 @@
         },
         {
             "name":"cc_accessibility_str_change_brightness_desc",
-            "value":"Barre de luminosité, toucher deux fois puis maintenir et faire glisser vers la gauche ou la droite pour ajuster",
+            "value":"Barre de luminosité, toucher deux fois puis maintenir et faire glisser vers la gauche ou la deliverte pour ajuster",
             "attr":{
                 "priority":"translate"
             }

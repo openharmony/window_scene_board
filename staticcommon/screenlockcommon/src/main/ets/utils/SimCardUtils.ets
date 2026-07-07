@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-// import simRemember from '@hms.telephony.enhanced';
+// import simRemember from '@ohos.telephony.enhanced';
 import observer from '@ohos.telephony.observer';
 import sim from '@ohos.telephony.sim';
 import type { AsyncCallback, BusinessError, Callback } from '@ohos.base';

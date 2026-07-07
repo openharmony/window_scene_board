@@ -58,7 +58,7 @@ export class NotDisturbTimerManager implements PanelManagerBase {
   private timerId: number = DNDConstants.NO_TIMER;
   private timerRebootOpport: boolean = true;
   private systemTimeChangeEventSubscriber: commonEventManager.CommonEventSubscriber | undefined;
-  private whiteAppList: string[] = [DNDConstants.CLOCK_BUNDLE_NAME, DNDConstants.HUAWEISHARE_BUNDLE_NAME];
+  private whiteAppList: string[] = [DNDConstants.CLOCK_BUNDLE_NAME, DNDConstants.OHOS_SHARE_BUNDLE_NAME];
   private trustAppList: notificationManager.BundleOption[] = [];
   private subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
     events: [

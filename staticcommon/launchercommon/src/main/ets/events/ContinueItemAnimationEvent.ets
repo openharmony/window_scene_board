@@ -22,11 +22,11 @@ export class ContinueItemAnimationEvent {
    * event name
    */
   public static readonly eventTypeName: string = 'ContinueItemAnimationEvent';
-  public curUltraScreenState: ScreenState = ScreenState.F;
-  public lastUltraScreenState: ScreenState = ScreenState.F;
+  public curTripleFoldState: ScreenState = ScreenState.F;
+  public lastTripleFoldState: ScreenState = ScreenState.F;
 
   constructor(oldState: ScreenState, newState: ScreenState) {
-    this.lastUltraScreenState = oldState;
-    this.curUltraScreenState = newState;
+    this.lastTripleFoldState = oldState;
+    this.curTripleFoldState = newState;
   }
 }

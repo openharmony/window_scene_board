@@ -46,6 +46,7 @@ const SHADOW_OFFSET_Y: number = 4
 const CONTROL_CENTER_LONG_BUTTON_LEFT_PADDING: number = 4
 const HAD_CONTROL_CENTER_LONG_BUTTON_LEFT_PADDING: number = 4.5
 const GRID_GAP: number = 16;
+const MEDIA_CARD_TOGGLE_HEIGHT: number = 158;
 
 @Component
 export default struct ControlCenterMediaCardLayout {
@@ -64,7 +65,7 @@ export default struct ControlCenterMediaCardLayout {
   @Link data: ControlCenterData;
   @State isShowMedia: boolean = true; // 是否显示播控卡片
   @State animateScale: number = HoverConstants.HOVER_DEFAULT_SCALE;
-  @State isShowTerminalButton: boolean = true;
+  @State isShowTerminalButton: boolean = false;
   private eventMgr: EventManager = EvtBus.createEventManager();
   @State colorModeViewData: ColorModeViewData = ColorModeViewModel.getInstance().getViewData();
   private isHad: boolean = DeviceHelper.isHAD();
@@ -121,7 +122,8 @@ export default struct ControlCenterMediaCardLayout {
       .columnsGap(GRID_GAP)
       .rowsGap(GRID_GAP)
       .clip(false)
-      .height($r('app.float.control_center_top_toggle_height'))
+      .height(this.isShowTerminalButton ? $r('app.float.control_center_top_toggle_height') :
+        $r('app.float.Control_center_long_button_height'))
 
       if (this.hasMediaCard) {
         Row() {
@@ -157,7 +159,8 @@ export default struct ControlCenterMediaCardLayout {
       }
     }
     .width('100%')
-    .height($r('app.float.control_center_media_card_toggle_height'))
+    .height(this.isShowTerminalButton ? $r('app.float.control_center_media_card_toggle_height') :
+      MEDIA_CARD_TOGGLE_HEIGHT)
     .padding({
       left: $r('app.float.Control_center_padding'),
       right: $r('app.float.Control_center_padding')

@@ -105,7 +105,7 @@ struct WallpaperApplyPage {
    * 折叠态弹窗
    */
   private dialogFoldController: CustomDialogController | null =
-    DeviceHelper.isBigScreenMachine() ? new CustomDialogController({
+    DeviceHelper.isSuperFoldMachine() ? new CustomDialogController({
       builder: WallpaperApplyDialog({
         cancel: () => {
           this.closeDialog();
@@ -158,7 +158,7 @@ struct WallpaperApplyPage {
   private calculateAspectRatio(): void {
     log.showInfo('calculateAspectRatio start');
     try {
-      if (DeviceHelper.isBigScreenMachine()) {
+      if (DeviceHelper.isSuperFoldMachine()) {
         this.previewAspectRatio = DeviceHelper.isLandscape() ? 1 / HPR_FOLD_ASPECT_RATIO : HPR_FOLD_ASPECT_RATIO;
       }
     } catch (err) {

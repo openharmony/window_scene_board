@@ -27,6 +27,7 @@ import {
   WDefault,
   LiveExtendType
 } from '../../common/LiveConstants';
+import { AodStyleType, ImmersiveAodStyle } from '../../../immersivekeyguardcommon/base/interface/ImmersiveAodStyle';
 import { immersiveKgMgr } from '../../../immersivekeyguardcommon/manager/ImmersiveKeyguardStateManager';
 import { ObservedItem } from '../../../model/ObservedModel';
 import { fontScaleManager } from '@ohos/systemuiutils/src/main/ets/fontScale/fontScaleManager';
@@ -52,6 +53,7 @@ import { LiveCustomerStyle } from '../../info/card/LiveCustomerStyle';
 import { OverlayIconStyle } from '../../../model/NotificationContent';
 import { OuterHomeVm } from '../../../../ets/vm/OuterHomeVm'
 import { ColorModeLiveViewData } from '../../../template/newStyle/ColorModeLiveViewData';
+import { DeliverBadge } from '../../../view/DeliverBadge';
 import { ResUtils } from '@ohos/windowscene';
 import { LiveStyle } from '../../../live/constants/LiveStyle';
 import { SystemUICcmConfig } from '../../../utils/SystemUICcmConfig';
@@ -89,6 +91,12 @@ export struct SystemCard {
    * 通知面板类型
    */
   @Consume notificationType: number;
+
+  /**
+   * AOD显示样式
+   */
+  @State aodStyle: ImmersiveAodStyle | undefined = immersiveKgMgr.getOneMirrorState().getAodStyle(
+    this.notificationType === NotificationType.TYPE_PHONE_KEYGUARD);
 
   @State colorModeViewData: ColorModeViewData = ColorModeViewModel.getInstance().getViewData();
   @State colorModeLiveViewData: ColorModeLiveViewData = ColorModeViewModel.getInstance().getLiveViewData();
@@ -149,7 +157,8 @@ export struct SystemCard {
       const params = new LiveTimeParams();
       params.timeData = this.baseData?.getTimerData();
       params.viewFontSize = $r('sys.float.ohos_id_text_size_headline6');
-      params.viewFontColor =  $r('sys.color.ohos_id_color_text_primary');
+      params.viewFontColor = this.aodStyle?.isAod ?
+      this.aodStyle?.getStyleValue(AodStyleType.FONT_COLOR) : $r('sys.color.ohos_id_color_text_primary');
       params.marginBottom = 0;
       params.isBigTextTimer = true;
       const liveTimeControllerObj = new LiveTimeController(this.getUIContext(), params);
@@ -183,7 +192,10 @@ export struct SystemCard {
    * 深浅色切换更新NodeContainer资源
    */
   onDarkModeEvent = () => {
-    this.liveTimeController?.updateConfiguration();
+    // AOD不受深浅色模式切换影响
+    if (!this.aodStyle?.isAod) {
+      this.liveTimeController?.updateConfiguration();
+    }
   }
 
   checkIconResource(): boolean {
@@ -246,7 +258,7 @@ export struct SystemCard {
         })
         .autoResize(false)
         .accessibilityLevel(this.getAccessibilityLevel())
-        .opacity(WDefault.MAX_VALUE)
+        .opacity(this.aodStyle?.getNtfIconOpacity() ?? WDefault.MAX_VALUE)
         .onClick(this.baseData?.getIconClickListener(this.useScene, this.isNeedBannerInScreenLock,
           this.isShowBannerFromScreenLock))
 
@@ -260,6 +272,7 @@ export struct SystemCard {
             .offset({ x: $r('app.float.live_view_card_icon_offset'), y: $r('app.float.live_view_card_icon_offset') })
             .visibility(this.getSmallColumnVisibility())
             .accessibilityLevel(AccessibilityLevel.NO)
+            .backgroundColor(this.aodStyle?.getStyleValue(AodStyleType.LIST_CARD_BACKGROUND_COLOR))
           Image(this.data?.getLeftSmallIcon())
             .width(LiveViewCommonConstants.LIVE_SMALL_ICON_SIZE)
             .height(LiveViewCommonConstants.LIVE_SMALL_ICON_SIZE)
@@ -269,8 +282,12 @@ export struct SystemCard {
             .draggable(false)
             .interpolation(ImageInterpolation.Medium)
             .accessibilityLevel(AccessibilityLevel.NO)
-            .opacity(WDefault.MAX_VALUE)
+            .opacity(this.aodStyle?.getNtfIconOpacity() ?? WDefault.MAX_VALUE)
         }
+      } else {
+        DeliverBadge({
+          isKgScene: this.notificationType === NotificationType.TYPE_PHONE_KEYGUARD,
+        })
       }
     }
     .margin({
@@ -330,7 +347,8 @@ export struct SystemCard {
       .fontSize(this.fontScaleState.getScaleSize($r('sys.float.ohos_id_text_size_sub_title3'),
         this.outerHomeVm.isIgnoreFontScaleState))
       .fontFeature('\"ss08\" on')
-      .fontColor($r('sys.color.ohos_id_color_text_primary'))
+      .fontColor(this.aodStyle?.isAod ? this.aodStyle?.getStyleValue(AodStyleType.FONT_COLOR) :
+      $r('sys.color.ohos_id_color_text_primary'))
       .wordBreak(WordBreak.BREAK_ALL)
       .textAlign(TextAlign.Start)
       .maxLines(1)
@@ -340,7 +358,7 @@ export struct SystemCard {
       })
       .lineHeight(this.fontScaleState.getScaleSize($r('app.float.live_view_card_text_line_height'),
         this.outerHomeVm.isIgnoreFontScaleState))
-      .renderGroup(true)
+      .renderGroup(this.aodStyle?.isOneMirror ? false : true)
   }
 
   @Builder
@@ -358,7 +376,7 @@ export struct SystemCard {
         progressData: this.baseData.getProgressData(),
         extendStyle: this.extendStyle
       })
-        .opacity(undefined)
+        .opacity(this.aodStyle?.isAod ? this.aodStyle.getStyleValue(AodStyleType.NTF_APP_ICON_ALPHA) : undefined)
     }
 
     if (this.baseData?.getButtonData()?.length) {
@@ -395,6 +413,7 @@ export struct SystemCard {
           buttonData: buttonData,
           extendStyle: this.extendStyle,
           isDarkMode: this.darkMode.isDarkMode,
+          isAod: this.aodStyle?.isAod ?? false,
           bgBrightnessOption: this.getBrightnessOption(buttonData),
           isBrightnessDisable: this.colorModeViewData.isNtfBrightnessDisable,
           liveBtnNoBrightnessBgColor: this.colorModeViewData.calcSecondarySolidColor(
@@ -421,9 +440,11 @@ export struct SystemCard {
           LiveTimeComponent({
             timeData: this.baseData?.getTimerData(),
             viewFontSize: $r('sys.float.ohos_id_text_size_headline6'),
-            viewFontColor: $r('sys.color.ohos_id_color_text_primary'),
+            viewFontColor: this.aodStyle?.isAod ? this.aodStyle?.getStyleValue(AodStyleType.FONT_COLOR) :
+            $r('sys.color.ohos_id_color_text_primary'),
             marginBottom: 0,
             isBigTextTimer: true,
+            isAodText:this.getAodTimeText()
           })
         }
       } else {
@@ -452,9 +473,10 @@ export struct SystemCard {
         LiveTimeComponent({
           timeData: this.baseData?.getTimerData(),
           viewFontSize: $r('sys.float.ohos_id_text_size_body2'),
-          viewFontColor: $r('sys.color.ohos_id_color_text_secondary'),
+          viewFontColor: this.aodStyle?.isAod ? this.aodStyle?.getStyleValue(AodStyleType.CARD_SECONDARY_FONT_COLOR) :
+          $r('sys.color.ohos_id_color_text_secondary'),
           marginBottom: 0,
-          foreBrightnessOption: this.colorModeViewData.foregroundSecondaryOption
+          foreBrightnessOption: this.aodStyle?.isAod ? undefined : this.colorModeViewData.foregroundSecondaryOption
         })
           .onSizeChange((oldValue: SizeOptions, newValue: SizeOptions) => {
             this.setSimIconSize(newValue?.height as number);
@@ -468,7 +490,8 @@ export struct SystemCard {
             this.outerHomeVm.isIgnoreFontScaleState))
           .fontFeature('\"ss08\" on')
           .fontColor(this.getContentFontColor())
-          .foregroundBrightness(this.colorModeViewData.isSolidEnable() ? undefined : this.colorModeViewData.systemLiveFontOption)
+          .foregroundBrightness(this.aodStyle?.isAod ? undefined :
+            this.colorModeViewData.isSolidEnable() ? undefined : this.colorModeViewData.systemLiveFontOption)
           .wordBreak(WordBreak.BREAK_ALL)
           .maxLines(1)
           .textOverflow({ overflow: TextOverflow.Ellipsis })
@@ -476,7 +499,7 @@ export struct SystemCard {
           .onSizeChange((oldValue: SizeOptions, newValue: SizeOptions) => {
             this.setSimIconSize(newValue?.height as number);
           })
-          .renderGroup((this.hasEmoji()) ? false : true)
+          .renderGroup((this.aodStyle?.isOneMirror || this.hasEmoji()) ? false : true)
           .lineHeight(this.fontScaleState.getScaleSize($r('app.float.live_view_card_text_line_height'),
             this.outerHomeVm.isIgnoreFontScaleState))
       }
@@ -503,8 +526,10 @@ export struct SystemCard {
       .flexShrink(0)
   }
 
-  private getSmallColumnVisibility() {
-    if (this.useScene === LiveUseScene.SCENE_SCREEN_LOCK) {
+    private getSmallColumnVisibility() {
+    if (this.aodStyle?.isAod) {
+      return Visibility.Visible;
+    } else if (this.useScene === LiveUseScene.SCENE_SCREEN_LOCK) {
       return Visibility.Hidden;
     }
     return Visibility.None;
@@ -608,12 +633,20 @@ export struct SystemCard {
     if (this.shouldHideContent()) {
       return this.appName?.value ?? '';
     }
+    // 通知类型为含有计时器的通话类型，AOD下显示为正在通话
+    if (this.isPhoneAodTimer()) {
+      return ResUtils.getInnerString($r('app.string.aod_phone_timer_text'));
+    }
     return `${this.data?.title ?? ''}`;
   }
 
   private getSubtext(): string {
     if (this.shouldHideContent()) {
       return this.baseData?.contentHideText ?? '';
+    }
+    // 通知类型为含有计时器的通话类型，AOD下显示为正在通话
+    if (this.isPhoneAodTimer()) {
+      return ResUtils.getInnerString($r('app.string.aod_phone_timer_text'));
     }
     return `${this.data?.content ?? ''}`;
   }
@@ -658,11 +691,23 @@ export struct SystemCard {
     }
   }
 
+  /**
+   * 判断是否AOD下通知类型为含有计时器的通话类型
+   *
+   * @returns boolean AOD下通知类型为含有计时器的通话类型
+   */
+  private isPhoneAodTimer(): boolean {
+    return this.baseData?.sysTypeCode === SysTypeCode.PHONE && this.aodStyle?.isAod && this.isTimer() ? true : false;
+  }
+
   private isOuterScreenImmersiveLive2(): boolean {
     return SystemUICcmConfig.instance.isEnabledLive2 && this.isSmallFoldOuterScreen && this.isImmersiveLive;
   }
 
   private getTitleFontColor(): number | Resource | string | undefined {
+    if (this.aodStyle?.isAod) {
+      return this.aodStyle?.getStyleValue(AodStyleType.FONT_COLOR)
+    }
     if (this.isOuterScreenImmersiveLive2()) {
       return LiveStyle.LIVE_CARD_TITLE_FONT_COLOR;
     }
@@ -670,6 +715,10 @@ export struct SystemCard {
   }
 
   private getContentFontColor(): number | Resource | string | Color | undefined {
+    if (this.aodStyle?.isAod) {
+      return this.aodStyle?.getStyleValue(AodStyleType.CARD_SECONDARY_FONT_COLOR);
+    }
+
     if (this.isOuterScreenImmersiveLive2()) {
       return LiveStyle.LIVE_CARD_TEXT_FONT_COLOR;
     }

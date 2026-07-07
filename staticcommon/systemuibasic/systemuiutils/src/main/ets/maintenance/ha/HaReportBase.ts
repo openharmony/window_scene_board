@@ -14,7 +14,7 @@
  */
 
 import { LogDomain, LogHelper } from '@ohos/basicutils';
-// import hiAnalytics from '@hms.core.hiAnalytics';
+// import hiAnalytics from '@ohos.core.hiAnalytics';
 import { SingletonHelper } from '@ohos/basicutils';
 import { GlobalContext } from '@ohos/frameworkwrapper/src/main/ets/utils/GlobalContext';
 import CommonEventManager from '@ohos.commonEventManager';

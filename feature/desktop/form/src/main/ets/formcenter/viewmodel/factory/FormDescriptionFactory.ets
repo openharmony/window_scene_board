@@ -30,7 +30,7 @@ export class TileFormDescriptionFactory {
     if (FormCenterViewModel.getInstance().isScreenLock) {
       return {
         updateFormDescriptionVm: async (vm: FormDescriptionVm, item: CardItemInfo) => {
-          if (item.cardName === SCAN_CARD_NAME) {
+          if (item.bundleName === CommonConstants.AI_SERVICE_BUNDLE && item.cardName === SCAN_CARD_NAME) {
             vm.mDisplayName = await FormCenterFormCommonUtil.getResourceName(item.appName as string,
               item.displayNameId, 'displayName', item);
             return;

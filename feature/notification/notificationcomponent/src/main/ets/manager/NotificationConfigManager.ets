@@ -37,7 +37,8 @@ import {
   SCBConstants,
   SettingsConstants,
   SettingsKeyConstants,
-  UpdateType
+  UpdateType,
+  VassistantConstants
 } from '@ohos/commonconstants';
 import {
   IconChangeEventParam,
@@ -46,7 +47,7 @@ import {
   syncNotificationIcon } from './NotificationConfigSyncTask';
 import { taskpool } from '@kit.ArkTS';
 import { notificationCcmConfig } from '@ohos/systemuicommon/src/main/ets/utils/NotificationCcmConfig';
-import { bundleVerity } from '@ohos/systemuicommon/src/main/ets/utils/BundleVerityUtil';
+import { deliverSystemBundleVerity, bundleVerity } from '@ohos/systemuicommon/src/main/ets/utils/BundleVerityUtil';
 import {
   BasicStatementAgreedEvent, BasicStatementAgreedSecureEvent
 } from '@ohos/systemuicommon/src/main/ets/datasharemanager/SysUIDataShareEvent';
@@ -62,6 +63,7 @@ import { ReceiveEventInfo } from '@ohos/launchercommon/src/main/ets/bean/Receive
 import { LocalEventManagerAdapter } from '@ohos/systemuicommon/src/main/ets/adapter/LocalEventManagerAdapter';
 import { Pinyin } from '@ohos/frameworkpinyin/src/main/ets/utils/Pinyin';
 import { TablePredicates } from '@ohos/systemuicommon/src/main/ets/database/TablePredicates';
+import { OutdoorVm } from '@ohos/systemuicommon/src/main/ets/vm/OutdoorVm';
 
 interface BundleDroResource {
   label: string;
@@ -71,6 +73,10 @@ interface BundleDroResource {
 const TAG = 'NotificationConfigManager';
 const log = LogHelper.getLogHelper(LogDomain.NC, TAG);
 const BUNDLE_FLAG = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION;
+
+const MAX_CACHE_NUM = 10;
+
+const DELIVER_CODE_PATH_LIST = ['1', '2'];
 
 /**
  * 0用户ID，在所有用户下都需要显示通知设置
@@ -86,6 +92,9 @@ const NOTIFICATION_ENABLE_BUNDLES: string[] = [
   'com.ohos.ouc',
   'com.ohos.callui',
 ];
+
+const PKG_DELIVER_TONG: string = 'com.deliver.tong';
+const DELIVER_TONG_BUNDLE_NAME: string = 'com.deliver.appstore.lite';
 
 /**
  * 更新配置并发任务数
@@ -104,6 +113,7 @@ class NotificationConfigManager extends NotificationConfigBaseManager {
   private language: string = '';
 
   private hiddenBundleList: string[] = [];
+  private deliverSystemBundleList: string[] = [];
 
   /**
    * SA默认包名
@@ -111,6 +121,11 @@ class NotificationConfigManager extends NotificationConfigBaseManager {
   private saDefaultName: string = '';
 
   private getAllNtf?: () => Set<number>;
+
+  private deliverTongRes: BundleDroResource = {
+    label: '',
+    pixelMap: undefined
+  };
 
   /**
    * 初始化通知配置
@@ -124,7 +139,8 @@ class NotificationConfigManager extends NotificationConfigBaseManager {
       this.initUserId();
 
       await NotificationConfigEntity.initTable();
-      await this.waitForAgreement();
+      //暂时屏蔽，因为OOBE协议目前没有，所以一直是未同意，导致这里一直卡死
+      // await this.waitForAgreement();
       await this.enableAppNotification();
       await this.enableAppLiveView();
       await this.enableHiddenAppNotification();
@@ -135,6 +151,7 @@ class NotificationConfigManager extends NotificationConfigBaseManager {
         userId: this.userId,
         language: this.language,
         hiddenBundleList: notificationCcmConfig.getHiddenList(),
+        deliverSystemBundleList: notificationCcmConfig.getDeliverSystemBundleList(),
       } as NotificationConfigSyncTaskParam);
       await taskpool.execute(syncNotificationIcon, GlobalContext.getContext(), []);
       this.subscribeBundleResourceChangeEvent();
@@ -217,7 +234,7 @@ class NotificationConfigManager extends NotificationConfigBaseManager {
    * @param bundleName 包名
    * @returns
    */
-  public async getConfig(uid: number, bundleName?: string):
+  public async getConfig(uid: number, bundleName?: string, isDeliver?: boolean):
     Promise<NotificationConfigEntity | undefined> {
     log.showInfo(`start get config for uid ${bundleName}_${uid}`);
     let config = await this.queryConfig(uid, bundleName);
@@ -231,6 +248,9 @@ class NotificationConfigManager extends NotificationConfigBaseManager {
       } catch (e) {
         LogWithHa.error(log, `get config failed from bms (${bundleName}_${uid})`,
           NotificationExceptionCode.CREAT_CONFIG_FAIL, e, bundleName);
+        if (bundleName && isDeliver) {
+          return this.getFallbackDeliverConfig(uid, bundleName);
+        }
         return undefined;
       }
     }
@@ -252,6 +272,17 @@ class NotificationConfigManager extends NotificationConfigBaseManager {
       LogWithHa.warn(log, `QueryConfig for ${uid}_${bundle}, error: ${error?.message}`);
     }
     return config;
+  }
+
+  private async getFallbackDeliverConfig(uid: number, bundleName: string): Promise<NotificationConfigEntity | undefined> {
+    try {
+      const config = await this.createDeliverNotificationConfig(bundleName, uid);
+      log.showInfo(`createDeliverNotificationConfig (${bundleName}_${uid})`);
+      return config;
+    } catch (err) {
+      log.error('fallback createDeliverNotificationConfig error', err);
+    }
+    return undefined;
   }
 
   public async isSystem(bundleName?: string): Promise<boolean> {
@@ -324,7 +355,8 @@ class NotificationConfigManager extends NotificationConfigBaseManager {
     if (config.bundleType === bundleManager.BundleType.ATOMIC_SERVICE) {
       return;
     }
-    const icon = await IconResourceManager.getInstance().getIconBase64Batch([config?.bundle]);
+    const icon = await IconResourceManager.getInstance()
+      .getIconBase64Batch([config?.bundle], config?.isDeliver, OutdoorVm.instance.isEnabledOutdoorMode());
     if (icon?.hasKey(config?.bundle)) {
       config.icon = icon.get(config?.bundle);
       log.showInfo(`get icon from iconResourceManager success, isSave: ${isSave}, ${config?.bundle}, ${config.icon}`);
@@ -338,7 +370,9 @@ class NotificationConfigManager extends NotificationConfigBaseManager {
 
   public async syncNotificationIcon(bundleList: Array<string>, displayUid?: Set<number>): Promise<void> {
     const lowPriorityCommonBundles: string[] = [];
+    const lowPriorityDeliverBundles: string[] = [];
     const highPriorityCommonBundles: string[] = [];
+    const highPriorityDeliverBundles: string[] = [];
     let predicates: TablePredicates<NotificationConfigEntity>;
     if (!bundleList || bundleList.length === 0) {
       log.showInfo(`Sync all bundle icon.`);
@@ -354,23 +388,26 @@ class NotificationConfigManager extends NotificationConfigBaseManager {
     configList.filter(config => config.bundleType !== bundleManager.BundleType.ATOMIC_SERVICE)
       .forEach(config => {
         if (displayUid?.has(config.uid)) {
-          highPriorityCommonBundles.push(config.bundle);
+          config.isDeliver ? highPriorityDeliverBundles.push(config.bundle) : highPriorityCommonBundles.push(config.bundle);
         } else {
-          lowPriorityCommonBundles.push(config.bundle);
+          config.isDeliver ? lowPriorityDeliverBundles.push(config.bundle) : lowPriorityCommonBundles.push(config.bundle);
         }
       });
     if (displayUid?.size! > 0) {
       await this.syncIconFromIconResourceManager(highPriorityCommonBundles);
+      await this.syncIconFromIconResourceManager(highPriorityDeliverBundles, true);
       this.syncDisplayFinish();
     }
     await this.syncIconFromIconResourceManager(lowPriorityCommonBundles);
+    await this.syncIconFromIconResourceManager(lowPriorityDeliverBundles, true);
   }
 
-  private async syncIconFromIconResourceManager(bundleList: Array<string>): Promise<void> {
+  private async syncIconFromIconResourceManager(bundleList: Array<string>, isDeliver: boolean = false): Promise<void> {
     log.showInfo(`get icon start, ${bundleList.length}`);
     bundleList = bundleList.filter((bundle, index) => bundleList.indexOf(bundle) === index);
     try {
-      const iconMap = await IconResourceManager.getInstance().getIconBase64Batch(bundleList);
+      const iconMap = await IconResourceManager.getInstance()
+        .getIconBase64Batch(bundleList, isDeliver, OutdoorVm.instance.isEnabledOutdoorMode());
       log.showInfo(`get icon end, ${iconMap?.length}`);
       await Promise.allSettled(bundleList.map(async (bundle) => {
         const icon = iconMap.get(bundle);
@@ -401,6 +438,7 @@ class NotificationConfigManager extends NotificationConfigBaseManager {
     this.userId = param.userId;
     this.language = param.language;
     this.hiddenBundleList = param.hiddenBundleList;
+    this.deliverSystemBundleList = param.deliverSystemBundleList;
     log.showInfo(`Sync notification config with userid ${this.userId} begin, displayBundle ${param.displayUid?.size}`);
 
     // 开始批量处理, 避免重复打开关闭数据库, 即使开启失败也不会影响后续的正常处理
@@ -418,6 +456,7 @@ class NotificationConfigManager extends NotificationConfigBaseManager {
       const lowPriorityConfigs: NotificationConfigEntity[] = [];
       // 应用识别到到高、低优先级列表中
       this.identifyPriorityBundles(bundleList, highPriorityBundles, lowPriorityBundles, param.displayUid);
+      this.identifyPriorityConfigs(configList, highPriorityConfigs, lowPriorityConfigs, param.displayUid);
 
       // 处理高优先级应用列表
       TraceUtil.startTrace(DomainName.SYS_UI, 'syncHighPriorityBundles');
@@ -471,6 +510,31 @@ class NotificationConfigManager extends NotificationConfigBaseManager {
         lowPriorityBundles.push(bundle);
       }
     });
+  }
+
+  /**
+   * 根据优先级识别出待解析的配置列表
+   * @param configList          数据库中查询的配置列表
+   * @param highPriorityConfigs 高优先级待处理配置列表
+   * @param lowPriorityConfigs  低优先级待处理配置列表
+   * @param displayUid          通知中心当前展示的应用UID集合
+   */
+  private identifyPriorityConfigs(configList: NotificationConfigEntity[],
+    highPriorityConfigs: NotificationConfigEntity[], lowPriorityConfigs: NotificationConfigEntity[],
+    displayUid?: Set<number>): void {
+    // 应用列表: 环境未启动bundleList中没有应用,需同步应用通知
+    if (NotificationUtil.isDeliverNotStarted()) {
+      configList.forEach((config) => {
+        if (!config.isDeliver) {
+          return;
+        }
+        if (displayUid?.has(config.uid)) {
+          highPriorityConfigs.push(config);
+        } else {
+          lowPriorityConfigs.push(config);
+        }
+      });
+    }
   }
 
   /**
@@ -586,22 +650,47 @@ class NotificationConfigManager extends NotificationConfigBaseManager {
     config.versionName = bundle.versionName;
     config.language = this.language;
     config.systemApp = bundle.appInfo.systemApp;
+    config.isDeliver = DELIVER_CODE_PATH_LIST.includes(bundle.appInfo.codePath);
+    config.isdeliverApp = bundle.appInfo.installSource === DELIVER_TONG_BUNDLE_NAME;
     config.settingIgnore = await this.isSettingIgnore(config);
-    if (bundle.name === ExtAppConstants.PKG_BETACLUB) {
+    if (bundle.name === ExtAppConstants.PKG_BETACLUB || bundle.name === VassistantConstants.VASSISTANT_BUNDLE_NAME) {
       config.pinTop = true;
     }
-    const appIndex = await this.getAppIndex(bundle.appInfo.uid);
-    if (appIndex === -1) {
-      return undefined;
+    if (!config.isDeliver) {
+      const appIndex = await this.getAppIndex(bundle.appInfo.uid);
+      if (appIndex === -1) {
+        return undefined;
+      }
+      config.appIndex = appIndex;
     }
-    config.appIndex = appIndex;
     await this.setIconAndLabel(config);
     await this.setIcon(config);
     return config;
   }
 
   /**
-   * 保存通知配置
+   * 创建临时通知配置
+   */
+  private async createDeliverNotificationConfig(bundleName: string, uid: number): Promise<NotificationConfigEntity> {
+    const config = new NotificationConfigEntity();
+    config.bundle = bundleName;
+    config.userId = this.getUserIdFromUid(uid);
+    config.uid = uid;
+    config.bundleType = 0;
+    config.versionName = '';
+    config.language = this.language;
+    config.systemApp = false;
+    config.isDeliver = true;
+    config.settingIgnore = true;
+    config.pinTop = false;
+    config.appIndex = 0;
+    await this.setIconAndLabel(config);
+    await this.setIcon(config);
+    return config;
+  }
+
+  /**
+   * 保存通知配置,环境未启动没有包信息只能更新配置
    */
   private async saveNotificationConfig(
     bundle?: bundleManager.BundleInfo,
@@ -625,12 +714,15 @@ class NotificationConfigManager extends NotificationConfigBaseManager {
         config.versionName = bundle?.versionName ?? config.versionName;
         config.language = this.language;
         config.settingIgnore = await this.isSettingIgnore(config);
+        if (bundle) {
+          config.isdeliverApp = bundle.appInfo?.installSource === DELIVER_TONG_BUNDLE_NAME;
+        }
         await this.setIconAndLabel(config, eventType);
         // 比较数据是否发生变化
         if (!config.equals(oldConfig)) {
           // 更新应用配置,不更新图标
           await NotificationConfigEntity.updateByProps(config, { id: config.id },
-            ['versionName', 'language', 'settingIgnore', 'label', 'sortTag']);
+            ['versionName', 'language', 'settingIgnore', 'label', 'isdeliverApp', 'sortTag']);
           log.showInfo(`Save update ${config.bundle}_${config.uid} notificatication config success`);
         }
       }
@@ -644,10 +736,11 @@ class NotificationConfigManager extends NotificationConfigBaseManager {
   private async setIconAndLabel(config: NotificationConfigEntity, eventType?: number): Promise<void> {
     const bundleName = config.bundle;
     const bundleType = config.bundleType;
+    const isDeliver = config.isDeliver;
     // 语言更新不用刷新图标，非元服务应用从三缓获取图标不从bundleResource获取
     const parseIcon = eventType !== ResourceUpdateType.LANGUAGE_CHANGE &&
       bundleType === bundleManager.BundleType.ATOMIC_SERVICE;
-    let iconAndLabel = await this.getAppResource(GlobalContext.getContext(), bundleName, bundleType, parseIcon);
+    let iconAndLabel = await this.getAppResource(GlobalContext.getContext(), bundleName, bundleType, isDeliver, parseIcon);
     config.label = iconAndLabel.label;
     if (parseIcon) {
       config.icon = iconAndLabel.icon;
@@ -690,6 +783,12 @@ class NotificationConfigManager extends NotificationConfigBaseManager {
     // 没有桌面图标或者没发送过通知，则隐藏通知设置入口
     if (!await this.hasLauncherOrSlot(config.bundle, config.uid)) {
       log.showInfo(`Bundle ${config.bundle}_${config.uid} has no launcher or slot, ignore setting.`);
+      return true;
+    }
+
+    // 隐藏系统应用的设置入口。通过uid进行系统校验，uid % 100000 < 10000的是系统应用
+    if (this.deliverSystemBundleList.includes(config.bundle) && deliverSystemBundleVerity(config.uid)) {
+      log.showInfo(`Deliver system app, ignore setting.`);
       return true;
     }
 
@@ -752,6 +851,7 @@ class NotificationConfigManager extends NotificationConfigBaseManager {
         userId: this.userId,
         language: this.language,
         hiddenBundleList: notificationCcmConfig.getHiddenList(),
+        deliverSystemBundleList: notificationCcmConfig.getDeliverSystemBundleList(),
         displayUid: displayBundle,
         eventType: event?.parameters?.bundleResourceChangeType,
       } as NotificationConfigSyncTaskParam);
@@ -923,6 +1023,7 @@ class NotificationConfigManager extends NotificationConfigBaseManager {
   private async enableHiddenAppNotification(): Promise<void> {
     await notificationCcmConfig.initFinished;
     this.hiddenBundleList = notificationCcmConfig.getHiddenList();
+    this.deliverSystemBundleList = notificationCcmConfig.getDeliverSystemBundleList();
     await Promise.all(notificationCcmConfig.getHiddenList().map((bundle) => {
       return notificationManager.setNotificationEnable({ bundle: bundle }, true).then(() => {
         log.showInfo('Enable AppNotification for %{public}s success.', bundle);
@@ -983,6 +1084,7 @@ class NotificationConfigManager extends NotificationConfigBaseManager {
       config.versionName = bundle.versionName;
       config.language = this.language;
       config.settingIgnore = await this.isSettingIgnore(config);
+      config.isdeliverApp = bundle.appInfo.installSource === DELIVER_TONG_BUNDLE_NAME;
       await this.setIconAndLabel(config);
       await this.setIcon(config);
       await config.save();

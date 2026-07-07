@@ -345,7 +345,7 @@
         },
         {
             "name":"cc_accessibility_str_ntf_collapse_tips",
-            "value":"Toucher deux fois et maintenir, puis faire glisser vers la droite pour masquer les options supplémentaires",
+            "value":"Toucher deux fois et maintenir, puis faire glisser vers la deliverte pour masquer les options supplémentaires",
             "attr":{
                 "priority":"translate"
             }

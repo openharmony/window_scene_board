@@ -1,0 +1,10 @@
+{
+  "module": {
+    "name": "voiceagent",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ]
+  }
+}

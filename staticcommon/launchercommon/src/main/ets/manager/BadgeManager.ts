@@ -1,5 +1,5 @@
 /**
- * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) 2021-2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -69,6 +69,8 @@ export class BadgeManager {
     this.mDbStoreManager = RdbStoreManager.getInstance();
     this.listener = this.appRemovedCallBack.bind(this);
     this.registerAppListEvent();
+    // 用于应用角标脏数据清理，初始化已修复角标数值的应用列表
+    this.initFixedBundleMap();
   }
 
   /**

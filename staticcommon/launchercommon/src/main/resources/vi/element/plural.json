@@ -1,0 +1,100 @@
+{
+    "plural":[
+        {
+            "name":"talkback_n_page_move_back",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"Màn hình gốc %d đã tua lui một màn hình",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"remove_n_title",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"Gỡ %d ứng dụng?",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"delete_n_title",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"Xóa %d ứng dụng?",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"talkback_n_page_move_forward",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"Màn hình gốc %d đã tua tới một màn hình",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"number_of_notifications",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"%d thông báo",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"talkback_drag_page_to_n",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"Đã chuyển sang màn hình %d",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"uninstall_n_title",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"Gỡ cài đặt %d ứng dụng?",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"number_of_apps",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"%d ứng dụng",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

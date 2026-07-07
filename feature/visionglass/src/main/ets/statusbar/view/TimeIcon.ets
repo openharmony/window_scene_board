@@ -37,6 +37,6 @@ export default struct TimeIcon {
       .fontSize(GlassStatusBarStyle.FONT_SIZE_24)
       .fontWeight(FontWeight.Bold)
       .fontColor(this.contentColor)
-      .fontFamily('HarmonyOS Sans SC')
+      .fontFamily('OpenHarmony Sans SC')
   }
 }

@@ -749,7 +749,7 @@ export class HiDfxEventUtil {
    * 快捷开关点击打点
    *
    * @param slot 快捷开关唯一标识
-   * @param clickType 1：长按 | 0：单击
+   * @param clickType 2:语音助手建议| 1：长按 | 0：单击
    */
   static reportToggleClick(slot: string, clickType: number): void {
     let params: ClickParams = {

@@ -154,6 +154,13 @@ export function VolumeProgressControlTest() {
       done();
     })
 
+    it('isActive_success_VOICE_ASSISTANT', 0, (done) => {
+      let a = 100;
+      let b = 0.1;
+      expect(a).assertClose(99, b);
+      done();
+    })
+
     it('isActive_success_ULTRASONIC', 0, (done) => {
       let a = 100;
       let b = 0.1;

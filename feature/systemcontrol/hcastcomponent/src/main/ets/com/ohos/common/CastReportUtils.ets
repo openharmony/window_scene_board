@@ -57,6 +57,8 @@ export default class CastReportUtils {
   }
 }
 
+export const castReportUtils = new CastReportUtils();
+
 type UEEvent = UEProjectionStartEvent | UEPrivacyDialogEvent | UEWifiBtDialogEvent | UEFailDialogEvent;
 
 class UEProjectionStartEvent {

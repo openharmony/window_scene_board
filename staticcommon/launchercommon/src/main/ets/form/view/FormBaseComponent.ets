@@ -36,6 +36,7 @@ import {
 import { FormComponentConfig, FormComponentDisplayStyle } from '../model/FormComponentConfig';
 import { FormComponentEvent } from '../viewmodel/FormComponentEvent';
 import { FormComponentVm } from '../viewmodel/FormComponentVm';
+import { FormRelationManager } from '../../transformdata/FormRelationManager';
 import { OverflowConstants } from '@ohos/commonconstants';
 import { CardNodeController } from '../../buildernode/CardNodeController';
 import {
@@ -314,6 +315,9 @@ export struct FormBaseComponent {
         log.showInfo(`FormComponent card id is: ${form.idString}`);
         this.isErrorCard = false;
         this.rebuildTimes = 0;
+        if (FormRelationManager.getInstance().isSceneBoardCard(this.mFormItem.bundleName, this.mFormItem.cardName)) {
+          return;
+        }
         this.formId = String(form.idString);
         if (this.getFormId) {
           this.getFormId(this.formId);

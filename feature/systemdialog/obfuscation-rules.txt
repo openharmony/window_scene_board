@@ -124,7 +124,7 @@ AccountLogoutExtensionAbility
 extendService
 invoiceAssistant
 LoginPanel
-LoginWithHuaweiIDButton
+LoginWithOhosIDButton
 loginComponentManager
 minorsProtection
 myFamily

@@ -66,9 +66,9 @@ export class QueryDesktopApp implements IExecutor {
     if (CheckEmptyUtils.isEmptyArr(tempGridLayoutItemInfoList)) {
       return '';
     }
-    // 未OpenHarmony化应用打点未上报，补充一次未OpenHarmony化应用打点信息
+    // 未鸿蒙化应用打点未上报，补充一次未鸿蒙化应用打点信息
     this.reportNotHarmonyAppInfo(tempGridLayoutItemInfoList);
-    // 查询未点亮的可入湖应用点亮可入湖应用
+    // 查询未点亮的可应用点亮可应用
     NotHarmonyUtil.queryAndLightDeliverApp(tempGridLayoutItemInfoList);
     await this.initAllowedIconUri();
     let outAppInfoList: OutAppInfo[] = [];
@@ -93,7 +93,7 @@ export class QueryDesktopApp implements IExecutor {
   }
 
   /**
-   * 上报未OpenHarmony化打点任务,一周上报一次未OpenHarmony化应用
+   * 上报未鸿蒙化打点任务,一周上报一次未鸿蒙化应用
    *
    * @param gridLayoutItemInfoList 未安装应用信息info
    */
@@ -232,12 +232,12 @@ interface ExtraQueryScope {
  */
 export enum QueryScopeType {
   /**
-   * 桌面所有未OpenHarmony化的应用列表
+   * 桌面所有未鸿蒙化的应用列表
    */
   ALL_WAIT_FOR_HARMONY = 0,
 
   /**
-   * 表示查询桌面所有未安装，在桌面置灰显示的应用列表信息；（包括：未OpenHarmony化应用、以及各类下载过程中的应用）
+   * 表示查询桌面所有未安装，在桌面置灰显示的应用列表信息；（包括：未鸿蒙化应用、以及各类下载过程中的应用）
    */
   ALL_UNINSTALL = 1,
 }

@@ -26,6 +26,8 @@ export struct SCBSceneContainerRefresh {
   @Prop isPairSplit: boolean = false;
   @Link scenePanelState: ScenePanelState;
   onGestureChange: Function = (): void => {};
+  getToggleHomeScene: Function = (screenId: number): Array<SCBSceneContainerSession | SCBSpecificSession> => [];
+  addToToggleHomeScene: Function = (session: SCBSpecificSession): void => {};
   getScreenDpiDensity: Function = (): number => 0;
   onSceneRectChange: Function = (): void => {};
   deleteSceneCardInRecent: Function = (): void => {};

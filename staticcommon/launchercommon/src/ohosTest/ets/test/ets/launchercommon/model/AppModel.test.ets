@@ -30,6 +30,7 @@ import {
   AppItemInfo,
   AppModel,
   CommonConstants,
+  DeliverUtil,
   FormLayoutCacheManager,
   GridLayoutItemInfo,
   launcherAbilityManager,
@@ -449,6 +450,48 @@ export function AppModelTest() {
       done();
     });
 
+    it('test_deleteAppsByDelivery_01', 0, async (done: Function) => {
+      let deliverApps: AppItemInfo[] | undefined = undefined;
+      const instance: AppModel = AppModel.getInstance();
+      instance.deleteAppsByDelivery(deliverApps);
+      expect(true).not().assertEqual(true);
+      done();
+    });
+
+    it('test_deleteAppsByDelivery_02', 0, async (done: Function) => {
+      let deliverApps: AppItemInfo[] | null = null;
+      const instance: AppModel = AppModel.getInstance();
+      instance.deleteAppsByDelivery(deliverApps);
+      expect(true).not().assertEqual(true);
+      done();
+    });
+
+    it('test_deleteAppsByDelivery_03', 0, async (done: Function) => {
+      let deliverApps: AppItemInfo[] = [];
+      const instance: AppModel = AppModel.getInstance();
+      let mocker: MockKit = new MockKit();
+      let isSupportDeliver: Function = mocker.mockFunc(DeliverUtil, DeliverUtil.isSupportDeliver);
+      when(isSupportDeliver)(ArgumentMatchers.any).afterReturn(true);
+      instance.deleteAppsByDelivery(deliverApps);
+      expect(true).not().assertEqual(true);
+      mocker.clear(DeliverUtil);
+      mocker.clearAll();
+      done();
+    });
+
+    it('test_deleteAppsByDelivery_04', 0, async (done: Function) => {
+      let deliverApps: AppItemInfo[] = [];
+      const instance: AppModel = AppModel.getInstance();
+      let mocker: MockKit = new MockKit();
+      let isSupportDeliver: Function = mocker.mockFunc(DeliverUtil, DeliverUtil.isSupportDeliver);
+      when(isSupportDeliver)(ArgumentMatchers.any).afterReturn(false);
+      instance.deleteAppsByDelivery(deliverApps);
+      expect(instance).not().assertNull();
+      mocker.clear(DeliverUtil);
+      mocker.clearAll();
+      done();
+    });
+
     it('getAppItemIconId_01', 0, async (done: Function) => {
       const instance: AppModel = AppModel.getInstance();
       let mocker: MockKit = new MockKit();
@@ -470,6 +513,99 @@ export function AppModelTest() {
       expect(instance).not().assertNull();
       mocker.clear(CommonUtils);
       mocker.clearAll();
+      done();
+    });
+
+    it('setAppListByDelivery_01', 0, async (done: Function) => {
+      const instance: AppModel = AppModel.getInstance();
+      let appItemInfo: AppItemInfo = new AppItemInfo();
+      let mocker: MockKit = new MockKit();
+      let isSupportDeliver: Function = mocker.mockFunc(DeliverUtil, DeliverUtil.isSupportDeliver);
+      when(isSupportDeliver)(ArgumentMatchers.any).afterReturn(true);
+      instance.setAppListByDelivery(appItemInfo);
+      expect(instance).not().assertNull();
+      mocker.clear(DeliverUtil);
+      mocker.clearAll();
+      done();
+    });
+
+    it('setAppListByDelivery_02', 0, async (done: Function) => {
+      const instance: AppModel = AppModel.getInstance();
+      let appItemInfo: AppItemInfo = new AppItemInfo();
+      let mocker: MockKit = new MockKit();
+      let isSupportDeliver: Function = mocker.mockFunc(DeliverUtil, DeliverUtil.isSupportDeliver);
+      when(isSupportDeliver)(ArgumentMatchers.any).afterReturn(false);
+      instance.setAppListByDelivery(appItemInfo);
+      expect(instance).not().assertNull();
+      mocker.clear(DeliverUtil);
+      mocker.clearAll();
+      done();
+    });
+
+    it('setAppListByDelivery_03', 0, async (done: Function) => {
+      const instance: AppModel = AppModel.getInstance();
+      let appItemInfo: AppItemInfo = new AppItemInfo();
+      let mocker: MockKit = new MockKit();
+      let isSupportDeliver: Function = mocker.mockFunc(DeliverUtil, DeliverUtil.isSupportDeliver);
+      when(isSupportDeliver)(ArgumentMatchers.any).afterReturn(true);
+      appItemInfo.appIndex = 0;
+      instance.setAppListByDelivery(appItemInfo);
+      expect(instance).not().assertNull();
+      mocker.clear(DeliverUtil);
+      mocker.clearAll();
+      done();
+    });
+
+    it('setAppListByDelivery_04', 0, async (done: Function) => {
+      const instance: AppModel = AppModel.getInstance();
+      let appItemInfo: AppItemInfo = new AppItemInfo();
+      let mocker: MockKit = new MockKit();
+      let isSupportDeliver: Function = mocker.mockFunc(DeliverUtil, DeliverUtil.isSupportDeliver);
+      when(isSupportDeliver)(ArgumentMatchers.any).afterReturn(true);
+      appItemInfo.appIndex = 1;
+      instance.setAppListByDelivery(appItemInfo);
+      expect(instance).not().assertNull();
+      mocker.clear(DeliverUtil);
+      mocker.clearAll();
+      done();
+    });
+
+    it('setAppListByDelivery_05', 0, async (done: Function) => {
+      let mBundleInfoList: AppItemInfo[] = [];
+      mBundleInfoList[0] = {
+        abilityName: 'AppModel',
+        appName: 'AppModelName',
+        appIconId: 9999,
+        bundleName: 'com.ohos.appModel',
+        moduleName: 'model'
+      };
+      const instance: AppModel = AppModel.getInstance();
+      instance['mBundleInfoList'] = mBundleInfoList;
+      let appItemInfo: AppItemInfo = new AppItemInfo();
+      appItemInfo.bundleName='com.ohos.appModel';
+      appItemInfo.abilityName='AppModel';
+      appItemInfo.moduleName='model';
+      instance.setAppListByDelivery(appItemInfo);
+      expect(instance).not().assertNull();
+      done();
+    });
+
+    it('setAppListByDelivery_06', 0, async (done: Function) => {
+      let mBundleInfoList: AppItemInfo[] = [];
+      mBundleInfoList[0] = {
+        abilityName: 'AppModel',
+        appName: 'AppModelName',
+        appIconId: 9999,
+        bundleName: 'com.ohos.appModel',
+        moduleName: 'model'
+      };
+      const instance: AppModel = AppModel.getInstance();
+      instance['mBundleInfoList'] = mBundleInfoList;
+      let appItemInfo: AppItemInfo = new AppItemInfo();
+      appItemInfo.abilityName='AppModel';
+      appItemInfo.moduleName='model';
+      instance.setAppListByDelivery(appItemInfo);
+      expect(instance).not().assertNull();
       done();
     });
 
@@ -998,6 +1134,143 @@ export function AppModelTest() {
       done();
     });
 
+    //setAppListByDelivery
+    it('test_setAppListByDelivery_01', 0, async (done: Function) => {
+      let appModel: AppModel = AppModel.getInstance();
+      let mocker: MockKit = new MockKit();
+      let mockDeliverUtil: Function = mocker.mockFunc(DeliverUtil, DeliverUtil.isSupportDeliver);
+      when(mockDeliverUtil)().afterReturn(false);
+      let appItemInfo: AppItemInfo = new AppItemInfo();
+      appModel.setAppListByDelivery(appItemInfo);
+      expect(appModel['mBundleInfoMap'].has(appItemInfo.bundleName)).assertFalse();
+      mocker.ignoreMock(DeliverUtil, DeliverUtil.isSupportDeliver);
+      done();
+    });
+
+    it('test_setAppListByDelivery_02', 0, async (done: Function) => {
+      let appModel: AppModel = AppModel.getInstance();
+      let mocker: MockKit = new MockKit();
+      let mockDeliverUtil: Function = mocker.mockFunc(DeliverUtil, DeliverUtil.isSupportDeliver);
+      when(mockDeliverUtil)().afterReturn(true);
+      let appItemInfo: AppItemInfo = new AppItemInfo();
+      appItemInfo.appIndex = 0;
+      appModel.setAppListByDelivery(appItemInfo);
+      expect(appModel['mBundleInfoMap'].has(appItemInfo.bundleName)).assertTrue();
+      mocker.ignoreMock(DeliverUtil, DeliverUtil.isSupportDeliver);
+      done();
+    });
+
+    it('test_setAppListByDelivery_03', 0, async (done: Function) => {
+      let appModel: AppModel = AppModel.getInstance();
+      let mocker: MockKit = new MockKit();
+      let mockDeliverUtil: Function = mocker.mockFunc(DeliverUtil, DeliverUtil.isSupportDeliver);
+      when(mockDeliverUtil)().afterReturn(true);
+      let appItemInfo: AppItemInfo = new AppItemInfo();
+      appItemInfo.appIndex = -1;
+      appModel.setAppListByDelivery(appItemInfo);
+      appModel.setAppListByDelivery(appItemInfo);
+      expect(appModel['mBundleInfoList'].length).assertEqual(1);
+      mocker.ignoreMock(DeliverUtil, DeliverUtil.isSupportDeliver);
+      done();
+    });
+
+    it('test_setAppListByDelivery_04', 0, async (done: Function) => {
+      let appModel: AppModel = AppModel.getInstance();
+      let mocker: MockKit = new MockKit();
+      let mockDeliverUtil: Function = mocker.mockFunc(DeliverUtil, DeliverUtil.isSupportDeliver);
+      when(mockDeliverUtil)().afterReturn(true);
+      let appItemInfo: AppItemInfo = new AppItemInfo();
+      appItemInfo.appIndex = 1;
+      appModel.setAppListByDelivery(appItemInfo);
+      mocker.verify('showInfo', [ArgumentMatchers.anyString, ArgumentMatchers.any]).atLeast(0);
+      mocker.ignoreMock(DeliverUtil, DeliverUtil.isSupportDeliver);
+      done();
+    });
+
+    it('test_setAppListByDelivery_05', 0, async (done: Function) => {
+      let appModel: AppModel = AppModel.getInstance();
+      let mocker: MockKit = new MockKit();
+      let mockDeliverUtil: Function = mocker.mockFunc(DeliverUtil, DeliverUtil.isSupportDeliver);
+      when(mockDeliverUtil)().afterReturn(true);
+      let appItemInfo: AppItemInfo = new AppItemInfo();
+      appItemInfo.appIndex = 10;
+      appModel.setAppListByDelivery(appItemInfo);
+      expect(appModel['mBundleInfoList'].length).assertEqual(1);
+      mocker.ignoreMock(DeliverUtil, DeliverUtil.isSupportDeliver);
+      done();
+    });
+
+    //deleteAppsByDelivery
+    it('test_deleteAppsByDelivery_01', 0, async (done: Function) => {
+      let appModel: AppModel = AppModel.getInstance();
+      let mocker: MockKit = new MockKit();
+      let mockDeliverUtil: Function = mocker.mockFunc(DeliverUtil, DeliverUtil.isSupportDeliver);
+      when(mockDeliverUtil)().afterReturn(false);
+      appModel.deleteAppsByDelivery([]);
+      mocker.ignoreMock(DeliverUtil, DeliverUtil.isSupportDeliver);
+      done();
+    });
+
+    it('test_deleteAppsByDelivery_02', 0, async (done: Function) => {
+      let appModel: AppModel = AppModel.getInstance();
+      let mocker: MockKit = new MockKit();
+      let mockDeliverUtil: Function = mocker.mockFunc(DeliverUtil, DeliverUtil.isSupportDeliver);
+      when(mockDeliverUtil)().afterReturn(true);
+      appModel.deleteAppsByDelivery(undefined);
+      mocker.ignoreMock(DeliverUtil, DeliverUtil.isSupportDeliver);
+      done();
+    });
+
+    it('test_deleteAppsByDelivery_03', 0, async (done: Function) => {
+      let appModel: AppModel = AppModel.getInstance();
+      let mocker: MockKit = new MockKit();
+      let mockDeliverUtil: Function = mocker.mockFunc(DeliverUtil, DeliverUtil.isSupportDeliver);
+      when(mockDeliverUtil)().afterReturn(true);
+      appModel.deleteAppsByDelivery(null);
+      mocker.ignoreMock(DeliverUtil, DeliverUtil.isSupportDeliver);
+      done();
+    });
+
+    it('test_deleteAppsByDelivery_04', 0, async (done: Function) => {
+      let appModel: AppModel = AppModel.getInstance();
+      let mocker: MockKit = new MockKit();
+      let mockDeliverUtil: Function = mocker.mockFunc(DeliverUtil, DeliverUtil.isSupportDeliver);
+      when(mockDeliverUtil)().afterReturn(true);
+      expect(appModel['mBundleInfoMap'].has('bundle2')).assertFalse();
+      mocker.ignoreMock(DeliverUtil, DeliverUtil.isSupportDeliver);
+      done();
+    });
+
+    it('test_deleteAppsByDelivery_05', 0, async (done: Function) => {
+      let appModel: AppModel = AppModel.getInstance();
+      let mocker: MockKit = new MockKit();
+      let mockDeliverUtil: Function = mocker.mockFunc(DeliverUtil, DeliverUtil.isSupportDeliver);
+      when(mockDeliverUtil)().afterReturn(true);
+      expect(appModel['mBundleInfoMap']).not().assertNull();
+      mocker.ignoreMock(DeliverUtil, DeliverUtil.isSupportDeliver);
+      done();
+    });
+
+    it('test_deleteAppsByDelivery_06', 0, async (done: Function) => {
+      let appModel: AppModel = AppModel.getInstance();
+      let mocker: MockKit = new MockKit();
+      let mockDeliverUtil: Function = mocker.mockFunc(DeliverUtil, DeliverUtil.isSupportDeliver);
+      when(mockDeliverUtil)().afterReturn(true);
+      expect(appModel['mBundleInfoMap']).not().assertNull();
+      mocker.ignoreMock(DeliverUtil, DeliverUtil.isSupportDeliver);
+      done();
+    });
+
+    it('test_deleteAppsByDelivery_07', 0, async (done: Function) => {
+      let appModel: AppModel = AppModel.getInstance();
+      let mocker: MockKit = new MockKit();
+      let mockDeliverUtil: Function = mocker.mockFunc(DeliverUtil, DeliverUtil.isSupportDeliver);
+      when(mockDeliverUtil)().afterReturn(true);
+      expect(appModel['mBundleInfoMap']).not().assertNull();
+      mocker.ignoreMock(DeliverUtil, DeliverUtil.isSupportDeliver);
+      done();
+    });
+
     //getAppIconImageId
     it('test_getAppIconImageId_01', 0, async (done: Function) => {
       let appModel: AppModel = AppModel.getInstance();
@@ -1252,6 +1525,95 @@ export function AppModelTest() {
       done();
     });
 
+    it('test_handleResourceChangeEvent_01', 0, async (done: Function) => {
+      const mocker: MockKit = new MockKit();
+      const getInitAccountId = mocker.mockFunc(AccountMgr, AccountMgr.getInitAccountId);
+      const isHaveDeliverApps = mocker.mockFunc(DeliverUtil, DeliverUtil.isHaveDeliverApps);
+      when(getInitAccountId)().afterReturn(100);
+      when(isHaveDeliverApps)().afterReturn(false);
+      globalThis.AppModel = null;
+      const appModel: AppModel = AppModel.getInstance();
+      appModel['mIconChangeListener'] = [{
+        onIconResourceChange: () => {
+        }
+      }];
+      const parameters: ESObject = {
+        bundleResourceChangeType: 30,
+        userId: 100
+      };
+      const eventData: ESObject = {
+        parameters
+      };
+      try {
+        const handleResourceChangeEvent = await appModel['handleResourceChangeEvent'](eventData) as undefined;
+        expect(handleResourceChangeEvent).assertEqual(undefined);
+      } catch (e) {};
+      mocker.clear(AccountMgr);
+      mocker.clear(DeliverUtil);
+      done();
+    });
+
+    it('test_handleResourceChangeEvent_02', 0, async (done: Function) => {
+      const mocker: MockKit = new MockKit();
+      globalThis.AppModel = null;
+      const appModel: AppModel = AppModel.getInstance();
+      const getInitAccountId = mocker.mockFunc(AccountMgr, AccountMgr.getInitAccountId);
+      const isHaveDeliverApps = mocker.mockFunc(DeliverUtil, DeliverUtil.isHaveDeliverApps);
+      const getAppList = mocker.mockFunc(appModel, appModel.getAppList);
+      const isEmpty = mocker.mockFunc(CheckEmptyUtils, CheckEmptyUtils.isEmpty);
+      when(getInitAccountId)().afterReturn(100);
+      when(isHaveDeliverApps)().afterReturn(true);
+      when(getAppList)().afterReturn([{ codePath: '1', bundleName: '' }, { codePath: '2', bundleName: '' }]);
+      const parameters: ESObject = {
+        bundleResourceChangeType: 30,
+        userId: 100
+      };
+      when(isEmpty)(ArgumentMatchers.any).afterReturn(true);
+      const eventData: ESObject = {
+        parameters
+      };
+      try {
+        const handleResourceChangeEvent = await appModel['handleResourceChangeEvent'](eventData) as undefined;
+        expect(handleResourceChangeEvent).assertEqual(undefined);
+      } catch (e) {};
+      mocker.clear(AccountMgr);
+      mocker.clear(DeliverUtil);
+      mocker.clear(appModel);
+      mocker.clear(CheckEmptyUtils);
+      mocker.clearAll();
+      done();
+    });
+
+    it('test_handleResourceChangeEvent_03', 0, async (done: Function) => {
+      const mocker: MockKit = new MockKit();
+      const getInitAccountId = mocker.mockFunc(AccountMgr, AccountMgr.getInitAccountId);
+      const isHaveDeliverApps = mocker.mockFunc(DeliverUtil, DeliverUtil.isHaveDeliverApps);
+      const isPc = mocker.mockFunc(DeviceHelper, DeviceHelper.isPC);
+      when(getInitAccountId)().afterReturn(100);
+      when(isHaveDeliverApps)().afterReturn(false);
+      when(isPc)().afterReturn(true);
+      globalThis.AppModel = null;
+      const appModel: AppModel = AppModel.getInstance();
+      appModel['mIconChangeListener'] = [{
+        onIconResourceChange: () => {
+        }
+      }];
+      const parameters: ESObject = {
+        bundleResourceChangeType: 16,
+        userId: 100
+      };
+      const eventData: ESObject = {
+        parameters
+      };
+      try {
+        const handleResourceChangeEvent = await appModel['handleResourceChangeEvent'](eventData) as undefined;
+        expect(handleResourceChangeEvent).assertEqual(undefined);
+      } catch (e) {};
+      mocker.clear(AccountMgr);
+      mocker.clear(DeliverUtil);
+      done();
+    });
+
     it('test_subscribeBundleResourceChangeEvent_05', 0, async (done: Function) => {
       const mocker: MockKit = new MockKit();
       globalThis.AppModel = null;
@@ -1328,6 +1690,24 @@ export function AppModelTest() {
       done();
     });
 
+    it('test_deleteAppsByDelivery_08', 0, async (done: Function) => {
+      const mocker: MockKit = new MockKit();
+      const isSupportDeliver = mocker.mockFunc(DeliverUtil, DeliverUtil.isSupportDeliver);
+      when(isSupportDeliver)().afterReturn(true);
+      globalThis.AppModel = null;
+      const appModel: AppModel = AppModel.getInstance();
+      appModel['mBundleInfoMap'].set('newSet', {
+        codePath: '1',
+        appStatus: 0,
+        bundleName: 'bundleName',
+      } as AppItemInfo);
+      const deleteAppsByDelivery = appModel.deleteAppsByDelivery([{} as AppItemInfo]);
+      expect(Array.isArray(deleteAppsByDelivery)).assertFalse();
+      mocker.clear(DeliverUtil);
+      mocker.clearAll();
+      done();
+    })
+
     it('test_checkIconMissWhenPowerOn_03', 0, async (done: Function) => {
       const mocker: MockKit = new MockKit();
       const rdbStoreManager = RdbStoreManager.getInstance();
@@ -1392,6 +1772,21 @@ export function AppModelTest() {
       }
       await appModel['installationSubscriberCallBack'](eventType, bundleName, 0);
       expect(appModel).not().assertUndefined();
+      done();
+    })
+
+    it('test_installationSubscriberCallBack_02', 0, async (done: Function) => {
+      try {
+        globalThis.AppModel = null;
+        const appModel: AppModel = AppModel.getInstance();
+        const bundleName = '-bundleNameNOT-';
+        const eventType = EventConstants.EVENT_PACKAGE_REMOVED;
+        AppStorage.setOrCreate('updateAppBundleNameList', []);
+        DeliverUtil.DELIVER_APP_MAP.set(bundleName, eventType);
+        await appModel['installationSubscriberCallBack'](eventType, bundleName, 0);
+        expect(appModel).not().assertUndefined();
+      } catch (e) {
+      }
       done();
     })
 

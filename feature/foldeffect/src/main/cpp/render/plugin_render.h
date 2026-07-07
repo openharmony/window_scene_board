@@ -13,8 +13,8 @@
  * limitations under the License.
  */
 
-#ifndef SCENE_BOARD_EXT_PLUGIN_RENDER_H
-#define SCENE_BOARD_EXT_PLUGIN_RENDER_H
+#ifndef WINDOW_SCENE_BOARD_PLUGIN_RENDER_H
+#define WINDOW_SCENE_BOARD_PLUGIN_RENDER_H
 
 #include "egl_core.h"
 #include "napi/native_api.h"

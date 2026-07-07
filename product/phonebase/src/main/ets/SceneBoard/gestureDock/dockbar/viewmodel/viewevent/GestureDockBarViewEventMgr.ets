@@ -563,7 +563,7 @@ export default class GestureDockBarViewEventMgr implements GestureDockBarViewEve
     log.showInfo(`scrollToAddDockItemIndex direction: ${direction}, currentOffset: ${scroller.currentOffset().yOffset}, \
       yOffset: ${moveDistance}, index: ${index}, recentDistance:${recentDistance}, maxHeight:${dockMaxHight}`);
     if (moveDistance >= scroller.currentOffset().yOffset + dockMaxHight) {
-      // 每次到底多向下滑出1个
+      // 与设备体验对齐，每次到底多向下滑出1个
       scroller.scrollTo({
         xOffset: 0, yOffset: moveDistance - dockMaxHight + GestureDockConstants.GESTURE_DOCK_ITEM_DISTANCE +
           singleItemDistance

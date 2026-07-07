@@ -1,0 +1,100 @@
+{
+    "plural":[
+        {
+            "name":"number_of_apps",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"%d 個應用程式",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"number_of_notifications",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"%d 個通知",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"remove_n_title",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"移除 %d 個應用程式？",
+                    "attr":{
+                        "priority":"LT"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"delete_n_title",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"刪除 %d 個應用程式？",
+                    "attr":{
+                        "priority":"LT"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"uninstall_n_title",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"解除安裝 %d 個應用程式？",
+                    "attr":{
+                        "priority":"LT"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"talkback_n_page_move_back",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"原 %d 屏幕向後移",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"talkback_n_page_move_forward",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"原 %d 屏幕向前移",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"talkback_drag_page_to_n",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"移至第 %d 屏幕",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

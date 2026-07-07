@@ -1,5 +1,5 @@
 /*
- * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -44,6 +44,7 @@ export struct SCBSpecificScenePanel {
   zorder: number = 0;
   private panelViewModel: SCBSpecificScenePanelViewModel = new SCBSpecificScenePanelViewModel(this.screenProperty);
   @State systemSceneList: SCBSpecificSceneSessionList = this.panelViewModel.specificSceneSessionList;
+  @State panelZIndex: number = 0;
 
   // The floating window is hidden during recent shown.
   private hiddenFloatWindowList: SCBSpecificSceneSessionList = this.panelViewModel.hiddenFloatWindowList;
@@ -53,12 +54,21 @@ export struct SCBSpecificScenePanel {
     return this.systemSceneList;
   }
 
-  getZIndex(): number {
-    return ZORDER_TO_DEFAULTZINDEX.get(this.zorder) || 0;
+  private setZIndex(): void {
+    let zIndex = SCBSceneSessionManager.getInstance().getZIndexByPanelZOrder(this.zorder);
+    if (zIndex === undefined) {
+      zIndex = ZORDER_TO_DEFAULTZINDEX.get(this.zorder) || 0;
+    }
+    this.panelZIndex = zIndex || 0;
+  }
+
+  private specificZIndexChange = (): void => {
+    this.setZIndex();
   }
 
   aboutToAppear(): void {
     log.showInfo('aboutToAppear');
+    this.setZIndex();
     this.panelViewModel.init(this.zorder);
     SCBScreenSessionManager.getInstance().registerPropertyChangeScenePanelCallback((
       screenProperty: SCBScreenProperty,
@@ -80,6 +90,8 @@ export struct SCBSpecificScenePanel {
     }
     this.currSpecificSessionRect = new SCBSessionRect(this.screenProperty.left, this.screenProperty.top,
       this.screenProperty.width, this.screenProperty.height);
+    SCBSceneSessionManager.getInstance().registerSpecificZIndexChangeCallback(this.specificZIndexChange,
+      this.zorder, this.screenProperty.screenId);
   }
 
   private updateSpecificSessionWhenRotation(screenProperty: SCBScreenProperty,
@@ -190,13 +202,14 @@ export struct SCBSpecificScenePanel {
 
   aboutToDisappear(): void {
     this.panelViewModel.release();
+    SCBSceneSessionManager.getInstance().unregisterSpecificZIndexChangeCallback(this.zorder, this.screenProperty.screenId);
   }
 
   @Styles
   transformSceneStyles() {
     .id('SCBSpecificPanelTransformScene')
     .direction(Direction.Ltr)
-    .zIndex(this.getZIndex())
+    .zIndex(this.panelZIndex)
     .position({ x: this.screenProperty.left + 'px', y: this.screenProperty.top + 'px' })
     .translate(this.getScenePanelTranslateOptions())
     .size({ width: this.screenProperty.width + 'px', height: this.screenProperty.height + 'px' })

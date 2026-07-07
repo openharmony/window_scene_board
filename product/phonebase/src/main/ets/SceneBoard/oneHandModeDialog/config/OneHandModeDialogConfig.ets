@@ -44,6 +44,7 @@ export interface OneHandModeDialogConfigInfo {
   inOneHandThreshold: number;
   // <name：应用包名  popupThreshold：交互引导窗允许弹出的最大次数>
   normalAppMap: Map<string, number>;
+  deliverAppMap: Map<string, number>;
 }
 
 export class OneHandModeDialogConfig {
@@ -51,7 +52,8 @@ export class OneHandModeDialogConfig {
   private configInfo: OneHandModeDialogConfigInfo = {
     enable: false,
     inOneHandThreshold: 0,
-    normalAppMap: new Map()
+    normalAppMap: new Map(),
+    deliverAppMap: new Map()
   };
   private isInit: boolean = false;
 
@@ -77,6 +79,8 @@ export class OneHandModeDialogConfig {
       if (value && value.name && value.popupThreshold) {
         if (isNormal) {
           this.configInfo.normalAppMap.set(value.name, this.toNumber(value.popupThreshold));
+        } else {
+          this.configInfo.deliverAppMap.set(value.name, this.toNumber(value.popupThreshold));
         }
       }
     });
@@ -100,6 +104,9 @@ export class OneHandModeDialogConfig {
           break;
         case 'normal':
           this.processAppWhitelist(true, item.children?.[0]);
+          break;
+        case 'deliver':
+          this.processAppWhitelist(false, item.children?.[0]);
           break;
         default:
           break;

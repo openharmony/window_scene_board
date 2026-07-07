@@ -87,7 +87,8 @@ export class HdsIconUtil {
     } catch (e) {
       log.showError(`Get hds icon for ${bundleName} error: ${e.message}`);
     } finally {
-      await pixelMap?.release();
+      //这里不能释放，犹如result指向了pixelMap，如果释放掉，会导致后续用到result的地方出问题，这里先屏蔽
+      // await pixelMap?.release();
     }
     result?.setTransferDetached(true);
     SystemUICommonUtil.setPixelMapName(result, `${bundleName}_smallIcon`);

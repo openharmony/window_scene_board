@@ -13,6 +13,15 @@
  * limitations under the License.
  */
 
+import AodTestSuite from '../../../../../../feature/aod/src/ohosTest/ets/test/List.test';
+import { AodRotationAdapterFactoryTest } from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/aod/adapter/AodRotationAdapterFactory.test';
+import { SmallWindowUtilTest } from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/aod/personalization/utils/SmallWindowUtil.test';
+import {
+  AodViewControllerFullScreenFolderTest
+} from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/aod/factory/viewcontroller/AodViewControllerFullScreenFolder.test';
+import {
+  AodViewControllerSmartStickerFolderTest
+} from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/aod/factory/viewcontroller/AodViewControllerSmartStickerFolder.test';
 import CommonTestSuite from '@ohos/launchercommon/src/ohosTest/ets/test/List.test';
 import ControlCenterTestSuite from '../../../../../../feature/controlcentercomponent/src/ohosTest/ets/test/List.test';
 import HotSpotComponentTestSuite from '../../../../../../feature/systemstatus/hotspotcomponent/src/ohosTest/ets/test/List.test';
@@ -29,6 +38,7 @@ import FormTestSuite from '../../../../../../feature/desktop/form/src/ohosTest/e
 import FormStackTestSuite from '../../../../../../feature/desktop/formstack/src/ohosTest/ets/test/List.test';
 import FreezingTipUtilTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/screenlock/common/FreezingTipUtilTest.test';
 import RecentsTestSuite from '../../../../../../feature/recents/src/ohosTest/ets/test/List.test';
+import AiSuggestionTestSuite from '../../../../../../feature/desktop/aisuggestion/src/ohosTest/ets/test/List.test';
 import { PadScreenLockShortcutLayoutConfigTest } from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/screenlock/common/PadScreenLockShortcutLayoutConfig.test';
 import WallpapercomponentTestSuite from '../../../../../../feature/wallpapercomponent/src/ohosTest/ets/test/List.test';
 import RecentLayoutManagerTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/recent/common/RecentLayoutManagerTest';
@@ -62,7 +72,7 @@ import BatteryComponentTestSuite from '../../../../../../feature/systemstatus/ba
 import VolumepanelComponentTestSuite from '../../../../../../feature/volume/volumepanelcomponent/src/ohosTest/ets/test/List.test';
 import StatusBarComponentTestSuite from '../../../../../../feature/statusbarcomponent/src/ohosTest/ets/test/List.test';
 import WifiComponentTestSuite from '../../../../../../feature/systemstatus/wificomponent/src/ohosTest/ets/test/List.test';
-import HwCastTestSuite from '../../../../../../feature/systemcontrol/hcastcomponent/src/ohosTest/ets/test/List.test';
+import CastTestSuite from '../../../../../../feature/systemcontrol/hcastcomponent/src/ohosTest/ets/test/List.test';
 import SuperPrivacyTestSuite from '../../../../../../feature/systemcontrol/superprivacycomponent/src/ohosTest/ets/test/List.test';
 import SignalComponentTestSuite from '../../../../../../feature/systemstatus/signalcomponent/src/ohosTest/ets/test/List.test';
 import RingModeComponentTestSuite from '../../../../../../feature/systemstatus/ringmodecomponent/src/ohosTest/ets/test/List.test';
@@ -86,9 +96,13 @@ import InvokeAuthResultCallbackTest from 'sceneboard/src/ohosTest/ets/test/ets/s
 import InvokeFaceTest from 'sceneboard/src/ohosTest/ets/test/ets/service/exthome/executor/impl/InvokeFace.test';
 import ExtHomeServiceTest from 'sceneboard/src/ohosTest/ets/test/ets/service/exthome/ExtHomeService.test';
 
+import SCBAiBarProxyManagerTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/aiBar/SCBAiBarProxyManager.test';
+import SCBAiBarCallBackTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/aiBar/SCBAiBarCallBack.test';
+import AiBarServiceTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/aiBar/AiBarService.test';
 import SCBGestureBackViewModelTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/gesturenavigation/viewmodel/SCBGestureBackViewModel.test';
 import DebugCommandsUtilsTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/gesturenavigation/utils/DebugCommandsUtils.test';
 import GestureDockPullOutModelTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/gesturenavigation/model/GestureDockPullOutModel.test';
+import AiBarSettingsDataMgrTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/aiBar/settings/preference/AiBarSettingsDataMgr.test';
 import TextCodecTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/aiBar/util/TextCodec.test';
 import GestureDockAdapterTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/gestureDock/common/adapter/GestureDockAdapter.test';
 import GestureDockPreferenceMgrTest
@@ -404,7 +418,7 @@ import SCBSceneManagementOnPhoneTest from 'sceneboard/src/ohosTest/ets/test/ets/
 import ThreeButtonUpgradeDSExtAbilityTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/aiBar/ability/ThreeButtonUpgradeDSExtAbility.test';
 import ThreeButtonUpgradeUIExtAbilityTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/aiBar/ability/ThreeButtonUpgradeUIExtAbility.test';
 import ThreeButtonUpgradeViewModelTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/aiBar/AIBarModel/ThreeButtonUpgradeViewModel.test';
-import { AodRotationAdapterUltraScreenTest } from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/aod/adapter/AodRotationAdapterUltraScreen.test';
+import { AodRotationAdapterThreeFoldTest } from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/aod/adapter/AodRotationAdapterThreeFold.test';
 import SCBRotateUtilsTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/scenemanager/utils/SCBRotateUtilsTest.test';
 import MidSceneDraggingEventHandlerTest
   from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/scenemanager/multiwindow/midsceneforpad/MidSceneDraggingEventHandlerTest.test';
@@ -456,7 +470,7 @@ export default function testsuite() {
   MultiWindowTestSuite();
   LandscapeWindowTestSuite();
   FreeformSceneTestSuite();
-  HwCastTestSuite();
+  CastTestSuite();
   SuperPrivacyTestSuite();
   ControlCenterTestSuite();
   AirplaneComponentTestSuite();
@@ -468,6 +482,7 @@ export default function testsuite() {
   CameraComponentTestSuite();
   PadScreenLockShortcutLayoutConfigTest();
   WallpapercomponentTestSuite();
+  AiSuggestionTestSuite();
   PhoneAodSuite();
   GesturenavigationTestSuite();
   GestureBackTestSuite();
@@ -648,7 +663,7 @@ export function PhoneAodSuite() {
   OuterClockParamTest();
   AodWindowTest();
   AodPreviewImageManagerTest();
-  AodRotationAdapterUltraScreenTest();
+  AodRotationAdapterThreeFoldTest();
   AodViewControllerOuterDigitalClockTest();
 }
 
@@ -763,7 +778,7 @@ export function PhoneSystemUISuite() {
   BatteryComponentTestSuite();
   StatusBarComponentTestSuite();
   WifiComponentTestSuite();
-  HuaweiShareComponentTestSuite();
+  OhosShareComponentTestSuite();
   SignalComponentTestSuite();
 }
 

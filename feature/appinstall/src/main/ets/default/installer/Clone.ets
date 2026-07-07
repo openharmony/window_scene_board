@@ -19,6 +19,7 @@ import {
   CommonConstants,
   GridLayoutItemInfo,
   LaunchLayoutCacheManager,
+  AppReserveType,
   FolderLayoutCacheManager,
   DockItemInfo,
   LayoutViewModel,
@@ -27,7 +28,8 @@ import {
   LegacyInfo,
   ResidentLayoutCacheMgr,
   AppInstallUtils,
-  AppCategoryInfoManager
+  AppCategoryInfoManager,
+  DeliverUtil
 } from '@ohos/launchercommon/src/main/ets/TsIndex';
 import { BaseAppInstaller } from './BaseAppInstaller';
 import { InstallType } from '../constants/AppInstallConstants';
@@ -64,7 +66,7 @@ export class Clone extends BaseAppInstaller {
 
   protected buildInsertItem(data: AppGalleryData, appList?: GridLayoutItemInfo[]): GridLayoutItemInfo {
     let item: GridLayoutItemInfo = InstallUtils.buildInsertItem(data);
-    // 克隆，升级场景，根据ag传参构造oldBundleNames
+    // 克隆，升级场景，存在设备包名的占位图标，根据ag传参构造oldBundleNames
     if (!CheckEmptyUtils.isEmptyArr(data.legacyInfos) && data.legacyInfos) {
       item.oldBundleNames = [data.legacyInfos[0].pkgName];
     }
@@ -73,6 +75,9 @@ export class Clone extends BaseAppInstaller {
     }
     //企业应用保留apptype
     let intentMap: Map<string, Object> = CommonUtils.jsonStrToMap(item.intent);
+    if (CommonUtils.jsonStrToMap(appList[0].intent).get(APP_TYPE) === AppReserveType.ENTERPRISE) {
+      intentMap.set(APP_TYPE, AppReserveType.ENTERPRISE);
+    }
     // 加桌上限设置 需保留
     let limitNum = CommonUtils.jsonStrToMap(appList[0].intent).get(SHORTCUT_LIMIT_KEY);
     if (limitNum) {
@@ -104,7 +109,7 @@ export class Clone extends BaseAppInstaller {
       while (this.taskPoolNum < TASKPOOL_NUM && !CheckEmptyUtils.isEmptyArr(this.appGallerDatas)) {
         let eventData: AppGalleryData = this.appGallerDatas.shift() as AppGalleryData;
         let appList: GridLayoutItemInfo[] = this.getAppListByBundleName(eventData);
-        //处理未OpenHarmony化应用占位图标
+        //处理未鸿蒙化应用占位图标
         this.dealNotHarmonyTaskIfNeeded(eventData, appList);
         let item: GridLayoutItemInfo = this.buildInsertItem(eventData, appList);
         let bundleName: string = eventData.bundleName;
@@ -130,7 +135,7 @@ export class Clone extends BaseAppInstaller {
   }
 
   /**
-   * 处理未OpenHarmony化占位图标
+   * 处理未鸿蒙化占位图标
    * @param data ag传来的信息
    * @param appList 缓存中占位图标信息
    */
@@ -139,7 +144,7 @@ export class Clone extends BaseAppInstaller {
     if (CheckEmptyUtils.isEmpty(pkgName)) {
       return;
     }
-    // 存在未OpenHarmony化应用文件夹，需要删除掉应用和分身，否则需要更新包名，兼容之前用户的情况
+    // 存在未鸿蒙化应用文件夹，需要删除掉应用和分身，否则需要更新包名，兼容之前用户的情况
     if (FolderLayoutCacheManager.getInstance().isAppExistNotDragOutFolder(pkgName)) {
       for (let i = 0; i < appList?.length; i++) {
         CacheManager.getInstance().removeItem(appList[i].bundleName, appList[i].appIndex);
@@ -148,7 +153,8 @@ export class Clone extends BaseAppInstaller {
       }
       data.legacyInfos = [];
     } else {
-      // 如未OpenHarmony化应用在dock区，需单独先更新dock区缓存
+      // 不存在未鸿蒙化文件夹，需要更新设备包名未设备包名，避免图标异常导致新增异常图标
+      // 如未鸿蒙化应用在dock区，需单独先更新dock区缓存
       let residentList: DockItemInfo[] = ResidentLayoutCacheMgr.getInstance().getAllDockItems();
       appList.forEach(item => {
         for (let i = 0; i < residentList.length; i++) {
@@ -194,6 +200,7 @@ export class Clone extends BaseAppInstaller {
       return;
     }
     for (let i = 1; i < legacyInfos.length; i++) {
+      // 避免应用市场传递多个相同的设备包名导致异常问题
       if (legacyInfos[i].pkgName === legacyInfos[0].pkgName) {
         continue;
       }
@@ -208,6 +215,10 @@ export class Clone extends BaseAppInstaller {
   }
 
   protected code508(data: AppGalleryData): void {
+    if (data.bundleName.startsWith(DeliverUtil.WAIT_FOR_HARMONY_PREFIX)) {
+      this.deleteNotHarmonyItem(data);
+      return;
+    }
     log.showWarn('code508 bundleName: %{public}s', data.bundleName);
     this.deleteDownloadProgressInfo(data.bundleName);
     this.removeApp(data.bundleName);

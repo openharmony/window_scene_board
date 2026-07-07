@@ -22,6 +22,9 @@ import { fontScaleManager,
   FontScaleState,
   NotificationAction,
   NotificationSysEventReporter,
+  ImmersiveAodStyle,
+  immersiveKgMgr,
+  AodStyleType
 } from '@ohos/systemuicommon';
 import { BrightnessOptionUtils } from '@ohos/systemuicommon/Index';
 import { CommonUtils, LogDomain, LogHelper } from '@ohos/basicutils';
@@ -85,6 +88,9 @@ export struct NotificationActionView {
   @State ntfActionList: Array<NotificationAction> = [];
 
   @State colorModeVM: NtfColorModeVM | undefined = undefined;
+
+  @State aodStyle: ImmersiveAodStyle | undefined = immersiveKgMgr.getOneMirrorState().getAodStyle(
+    this.notificationType === NotificationType.TYPE_PHONE_KEYGUARD);
 
   @State currActIndex: number = -1;
 
@@ -187,7 +193,8 @@ export struct NotificationActionView {
         .height($r('app.float.ntf_buttons_divier_height'))
         .color(this.getDividerColor(index))
         .opacity(this.getDividerOpacity())
-        .foregroundBrightness(this.colorModeVM?.themeForegroundDividerOption)
+        .foregroundBrightness(this.aodStyle?.isAod ? BrightnessOptionUtils.getInstance().foregroundDividerDarkOption :
+          this.colorModeVM?.themeForegroundDividerOption)
         .flexShrink(0)
         .margin({ bottom: this.isDropBarVisible ? ResUtils.getNumber($r('app.float.ntf_has_drop_bar_add_height')) : 0 })
     }
@@ -263,21 +270,24 @@ export struct NotificationActionView {
   }
 
   private getDividerColor(index: number): Resource | ResourceColor | undefined {
-    return this.currActIndex === index || this.currActIndex + 1 === index
+    return this.aodStyle?.isAod
+      ? this.aodStyle?.getStyleValue(AodStyleType.AUTH_TIP_DIVIDER_COLOR)
+      : this.currActIndex === index || this.currActIndex + 1 === index
         ? Color.Transparent
         : this.colorModeVM?.themeActionDividerColor;
   }
 
   private getDividerOpacity(): number {
-    return 1;
+    return this.aodStyle?.isAod ? ACTION_DIVIDER_OPACITY_AOD : 1;
   }
 
   private getActionViewBackgroundBrightness(): BrightnessOptions | undefined {
-    return this.colorModeVM?.themeButtonBgBrightnessOptions;
+    return this.aodStyle?.isAod ? undefined : this.colorModeVM?.themeButtonBgBrightnessOptions;
   }
 
   private getActionViewBackgroundColor(): number | ResourceColor | undefined {
-    return this.colorModeVM?.themeButtonBgColor;
+    return this.aodStyle?.isAod ? this.aodStyle?.getStyleValue(AodStyleType.AUTH_TIP_BG_COLOR) :
+      this.colorModeVM?.themeButtonBgColor;
   }
 
   private onClickEvent(action: NotificationAction, index?: number): void {
@@ -465,6 +475,12 @@ struct ActionButton {
    */
   @Consume notificationType: number;
 
+  /**
+   * AOD显示样式
+   */
+  @State aodStyle: ImmersiveAodStyle | undefined = immersiveKgMgr.getOneMirrorState().getAodStyle(
+    this.notificationType === NotificationType.TYPE_PHONE_KEYGUARD);
+
   @State colorModeVM: NtfColorModeVM | undefined = undefined;
 
   /**
@@ -504,11 +520,13 @@ struct ActionButton {
   buildTextButton() {
     Text(this.action?.actionTitle).draggable(false)
       .id(COMPONENT_ID_ACTION_TITLE)
-      .fontColor(this.colorModeVM?.ntfThemeTextSecondaryColor)
-      .opacity(1)
+      .fontColor(this.aodStyle?.isAod ? this.aodStyle?.getStyleValue(AodStyleType.AUTH_TIP_BUTTON_COLOR) :
+        this.colorModeVM?.ntfThemeTextSecondaryColor)
+      .opacity(this.aodStyle?.isAod ? ACTION_BUTTON_OPACITY_AOD : 1)
       .fontWeight(FontWeight.Medium)
       .fontSize(this.fontScaleState.getScaleSize($r('app.float.ntf_title_font_size')))
-      .foregroundBrightness(undefined)
+      .foregroundBrightness(this.aodStyle?.isAod ? BrightnessOptionUtils.getInstance().foregroundSecondaryDarkOption :
+        undefined)
       .maxLines(NotificationConfig.ITEM_CONTENT_SINGLE_LINE)
       .textOverflow({ overflow: TextOverflow.Ellipsis })
       .fontWeight(FontWeight.Medium)

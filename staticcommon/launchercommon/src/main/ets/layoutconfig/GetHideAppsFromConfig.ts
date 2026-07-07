@@ -13,12 +13,15 @@
  * limitations under the License.
  */
 
-import { CheckEmptyUtils, FileUtils, LogDomain, LogHelper } from '@ohos/basicutils';
+import { Context } from '@kit.AbilityKit';
+import { settings } from '@kit.BasicServicesKit';
+import { CheckEmptyUtils, OutdoorConfig, FileUtils, LogDomain, LogHelper } from '@ohos/basicutils';
 import {
+  EnterpriseConfig,
   HideAppAutoAlignStatus,
   LoadHideAppType,
 } from '@ohos/commonconstants/src/main/ets/constants/Constants';
-import { EvtBus } from '@ohos/frameworkwrapper';
+import { GlobalContext, EvtBus, DeviceHelper, LightOutdoorConfig } from '@ohos/frameworkwrapper';
 import { HideAppConfigLoadEvent } from '@ohos/frameworkwrapper/src/main/ets/TsIndex';
 import { BaseIconInfo } from '../bean/BaseIconInfo';
 import HideAppsInfo from '../configs/HideDesktopLayoutInfo';
@@ -31,6 +34,7 @@ import {
   RdbStoreManager,
 } from '../TsIndex';
 import ConfigParseUtil from '../utils/ConfigParseUtil';
+import { SystemParameterUtil } from '../utils/SystemParameterUtil';
 
 const TAG = 'GetHideAppsFromConfig';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.HOME, TAG);
@@ -271,10 +275,30 @@ export class GetHideAppsFromConfig {
     if (loadHideConfigType !== LoadHideAppType.LOAD_BY_REFRESH && this.loadStatus) {
         return;
     }
+    // 云端，不支持隐藏应用。
+    if (OutdoorConfig.getInstance().isInOutdoorMode() ||
+      LightOutdoorConfig.getInstance().isOnLightOutdoorMode()) {
+      return;
+    }
     const hideKeys = new Set<string>();
+    // 企业定制场景隐藏数据仅在企业设备下允许读取
+    if (this.isEnterpriseDevice()) {
+      const context: Context = GlobalContext.getContext();
+      let userHideListStr = settings.getValueSync(context, EnterpriseConfig.ENTERPRISE_CUSTOM_HIDE_APP_LIST, '', settings.domainName.USER_PROPERTY);
+      let hideListStr = settings.getValueSync(context, EnterpriseConfig.ENTERPRISE_CUSTOM_HIDE_APP_LIST, '');
+      log.showInfo(`userhideListStr: ${userHideListStr}, HideListStr: ${hideListStr}`);
+      if (hideListStr.length > 0) {
+        const ccmHideApps: string[] = hideListStr.split(',');
+        ccmHideApps.forEach(hideAppBundleName => hideKeys.add(hideAppBundleName));
+      }
+      if (userHideListStr.length > 0) {
+        const userCcmHideApps: string[] = userHideListStr.split(',');
+        userCcmHideApps.forEach(userHideAppBundleName => hideKeys.add(userHideAppBundleName));
+      }
+    }
     // 通用场景CCM配置文件读取隐藏应用
     try {
-      const hideCfgPath = 'etc/openharmony_launcher_hide_workspace.json';
+      const hideCfgPath = 'etc/hw_launcher_hide_workspace.json';
       const hideCfgFiles = await ConfigParseUtil.getAllConfig(hideCfgPath);
       if (CheckEmptyUtils.isEmptyArr(hideCfgFiles)) {
         log.showWarn('hideCfgFiles is empty');
@@ -443,6 +467,24 @@ export class GetHideAppsFromConfig {
   // 是否为隐藏应用图标,并且不是卡片
   private isHideIcon(hideKeys: Set<string>, item: GridLayoutItemInfo): boolean {
     return hideKeys.has(item.bundleName) && item.typeId !== CommonConstants.TYPE_CARD;
+  }
+
+  /**
+   * 查询系统参数 const.edm.is_enterprise_device 是否为企业设备
+   * 系统参数值为true，则是企业设备，否则不是企业设备
+   * @returns 是否为企业设备
+   */
+  private isEnterpriseDevice(): boolean {
+    let isEnterpriseDevice: boolean = false;
+    try {
+      let isEnterpriseDeviceString: string =
+        SystemParameterUtil.getSync(EnterpriseConfig.IS_ENTERPRISE_DEVICE, 'false').toString();
+      isEnterpriseDevice = isEnterpriseDeviceString === 'true';
+    } catch (e) {
+      log.showError(`open session expection.  ${e?.code}, ${e?.message}`);
+    }
+    log.showInfo(`isEnterpriseDevice: ${isEnterpriseDevice}`);
+    return isEnterpriseDevice;
   }
 
   /**

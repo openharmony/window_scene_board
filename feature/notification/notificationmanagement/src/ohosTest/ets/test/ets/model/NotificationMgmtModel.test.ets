@@ -105,5 +105,10 @@ export function NotificationMgmtModelTest02() {
       const state: void = await nNotificationMgmtModel.setSlot(notificationManager.SlotType.SOCIAL_COMMUNICATION, true);
       expect(state === undefined).assertTrue();
     })
+
+    it('NotificationMgmtModel_isDeliverTest01', 0, async (): Promise<void> => {
+      const state: boolean = await nNotificationMgmtModel.isDeliver();
+      expect(state).assertInstanceOf('Boolean');
+    })
   })
 }

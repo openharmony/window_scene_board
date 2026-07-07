@@ -18,6 +18,7 @@ import { CheckEmptyUtils, Logger, LogDomain } from '@ohos/basicutils';
 import {
   FormBasicParams,
   CardNodeControllerManager,
+  AiFormBasicParams,
   FormOccupyParams,
   CardNodeOption,
 } from '../manager/CardNodeControllerManager';
@@ -49,9 +50,10 @@ function cardBuilder(params: FormBasicParams) {
     .hoverEffect(params.basicData.hoverEffect ?? HoverEffect.Auto)
     .allowUpdate(true)
     .onAcquired((form: FormCallbackInfo) => {
-      log.showInfo(TAG, `acquried card FormCallbackInfo is = ${form}, cardId = ${params.basicData.cardId};`);
+      log.showInfo(TAG, `CardNodeController FormComponent params cardId = ${params.basicData.cardId};
+                         acquried card form idString is = ${form.idString}, isLocked is = ${form.isLocked}, id is = ${form.id}`);
       if (CheckEmptyUtils.isEmpty(form)) {
-        log.showError(TAG, 'form item onAcquired formCallbackInfo invalid!');
+        log.showError(TAG, 'CardNodeController FormComponent form item onAcquired formCallbackInfo invalid!');
         return;
       }
       if (CardNodeControllerManager.getCardController(params.basicData.cardId)) {
@@ -63,7 +65,7 @@ function cardBuilder(params: FormBasicParams) {
         CardNodeControllerManager.updateCardController(params.basicData.cardId, form.idString);
         // 记录新ID、报错删卡需要删除缓存节点
         params.basicData.cardId = form.idString;
-        log.showInfo(TAG, `acquried card id is = ${form.idString}`);
+        log.showInfo(TAG, `CardNodeController FormComponent acquried card id is = ${form.idString}`);
         // 更新cardId
         if (controller.formParams instanceof FormBasicParams) {
           controller.formParams.basicData.cardId = form.idString;
@@ -92,17 +94,21 @@ function cardBuilder(params: FormBasicParams) {
       params.basicEvent.onAcquired?.(form);
     })
     .onRouter(() => {
+      log.showInfo(TAG, 'FormComponent onRouter');
       params.basicEvent.onRouter?.();
     })
     .onLoad(() => {
+      log.showInfo(TAG, 'FormComponent onLoad');
       params.basicEvent.onLoad?.();
     })
     .onError((error) => {
+      log.showError(TAG, `FormComponent onError msg = ${error?.msg}, errcode = ${error?.errcode};`);
       // 报错 都要移除节点緩存
       CardNodeControllerManager.destroyFormNodeByCardId(params.basicData.cardId);
       params.basicEvent.onError?.(error);
     })
     .onUninstall((form: FormCallbackInfo) => {
+      log.showInfo(TAG, `FormComponent onUninstall form idString is = ${form.idString}, isLocked is = ${form.isLocked}, id is = ${form.id}`);
       // 删卡 移除节点緩存
       CardNodeControllerManager.destroyFormNodeByCardId(params.basicData.cardId);
       params.basicEvent.onUninstall?.(form);
@@ -113,8 +119,14 @@ function cardBuilder(params: FormBasicParams) {
 }
 
 function createCard(uiContext: UIContext, controller: CardNodeController):
-  BuilderNode<[FormBasicParams]> | null {
-  const params: FormBasicParams = controller.formParams as FormBasicParams;
+  BuilderNode<[FormBasicParams | AiFormBasicParams]> | null {
+  const params: FormBasicParams | AiFormBasicParams = controller.formParams as FormBasicParams | AiFormBasicParams;
+  if (params instanceof AiFormBasicParams) { // 语音助手建议
+    const cardNode: BuilderNode<[AiFormBasicParams]> | null =
+      new BuilderNode<[AiFormBasicParams]>(uiContext);
+    cardNode.build(CardNodeControllerManager.getAiSuggestionBuildItem()?.buildView(), params);
+    return cardNode;
+  }
   const cardNode : BuilderNode<[FormBasicParams]> | null =
     new BuilderNode<[FormBasicParams]>(uiContext);
   cardNode.build(wrapBuilder(cardBuilder), params);
@@ -122,15 +134,16 @@ function createCard(uiContext: UIContext, controller: CardNodeController):
 }
 
 function getOrCreateCard(uiContext: UIContext, controller: CardNodeController):
-  BuilderNode<[FormBasicParams]> | null {
-  const params: FormBasicParams | FormOccupyParams = controller.formParams;
+  BuilderNode<[FormBasicParams | AiFormBasicParams]> | null {
+  const params: FormBasicParams | AiFormBasicParams | FormOccupyParams = controller.formParams;
   const controllerId: string = controller.uuid;
-  if (params instanceof FormBasicParams) {
+  // 普通卡片和语音助手建议区分不同的缓存
+  if (params instanceof FormBasicParams || params instanceof AiFormBasicParams) {
     const getFn: Function = params instanceof FormBasicParams ?
-      CardNodeControllerManager.getCardNode : CardNodeControllerManager.getCardNode;
+      CardNodeControllerManager.getCardNode : CardNodeControllerManager.getAiCardNode;
     const setFn: Function = params instanceof FormBasicParams ?
-      CardNodeControllerManager.setCardNode : CardNodeControllerManager.setCardNode;
-    let ret: BuilderNode<[FormBasicParams]> | null | undefined =
+      CardNodeControllerManager.setCardNode : CardNodeControllerManager.setAiCardNode;
+    let ret: BuilderNode<[FormBasicParams | AiFormBasicParams]> | null | undefined =
       getFn(params.basicData.cardId);
     if (!ret) { // 创建节点
       ret = createCard(uiContext, controller);
@@ -164,8 +177,9 @@ function getOrCreateCard(uiContext: UIContext, controller: CardNodeController):
     }
     return ret;
   } else {
-    const getFn: Function = CardNodeControllerManager.getCardNode;
-    const node: BuilderNode<[FormBasicParams]> | null = getFn(params.cardId);
+    const getFn: Function = params.isAiCard ? CardNodeControllerManager.getAiCardNode :
+      CardNodeControllerManager.getCardNode;
+    const node: BuilderNode<[FormBasicParams | AiFormBasicParams]> | null = getFn(params.cardId);
     log.showInfo(TAG, `${controllerId} occupyNode; cardId = ${controller.getCardId()}; from = ${controller.from} ;node = ${node}`);
     return node;
   }
@@ -174,7 +188,7 @@ function getOrCreateCard(uiContext: UIContext, controller: CardNodeController):
 export class CardNodeController extends NodeController {
   private isShow: boolean = true;
   private isDestroyed: boolean = false;
-  public formParams: FormBasicParams | FormOccupyParams = new FormOccupyParams('');
+  public formParams: FormBasicParams | AiFormBasicParams | FormOccupyParams = new FormOccupyParams('');
   public cardNodeOption: CardNodeOption = new CardNodeOption();
   public from: string = ''; // 来源
   public formInfo: FormCallbackInfo | null = null; // 卡片框架返回的结果
@@ -182,7 +196,7 @@ export class CardNodeController extends NodeController {
   // 链表
   public prev: CardNodeController | null = null; // 前一个节点
   public next: CardNodeController | null = null; // 后一个节点
-  constructor(params: FormBasicParams | FormOccupyParams, from: string,
+  constructor(params: FormBasicParams | AiFormBasicParams | FormOccupyParams, from: string,
     cardNodeOption = new CardNodeOption()) {
     super();
     this.uuid = PREFIX + '_' + Math.random().toString(HEXADECIMAL_VALUE).substring(2);
@@ -193,7 +207,7 @@ export class CardNodeController extends NodeController {
 
   getCardId(): string {
     let cardId = '';
-    if (this.formParams instanceof FormBasicParams) {
+    if (this.formParams instanceof FormBasicParams || this.formParams instanceof AiFormBasicParams) {
       cardId = this.formParams.basicData.cardId;
     } else {
       cardId = this.formParams.cardId;
@@ -208,19 +222,27 @@ export class CardNodeController extends NodeController {
     let setFn: Function = () => {};
     let cardId: string = this.getCardId();
     let current: CardNodeController | null = null;
-    if (params instanceof FormBasicParams || params instanceof FormBasicParams) {
+    if (params instanceof FormBasicParams || params instanceof AiFormBasicParams) {
       setFn = params instanceof FormBasicParams ?
-        CardNodeControllerManager.setCardController : CardNodeControllerManager.setCardController;
-      // 普通卡片、卡片ID不能为空
+        CardNodeControllerManager.setCardController : CardNodeControllerManager.setAiCardController;
+      // 普通卡片or语音助手建议、卡片ID不能为空
       if (FormCommonUtil.isCardIdInvalid(params.basicData.cardId)) {
         params.basicData.cardId = FormCommonUtil.getCardUUID();
         cardId = params.basicData.cardId;
+      } else {
+        const getFn = params instanceof FormBasicParams ?
+          CardNodeControllerManager.getCardController : CardNodeControllerManager.getAiCardController;
+        current = getFn(cardId) as CardNodeController; // 当前节点挂载的controller
       }
     } else {
       // 参数为FormOccupyParams、表示抢占节点、堆叠展开场景
-      const getFn = CardNodeControllerManager.getCardController;
-      setFn = CardNodeControllerManager.setCardController;
+      const getFn = params.isAiCard ? CardNodeControllerManager.getAiCardController :
+        CardNodeControllerManager.getCardController;
+      setFn = params.isAiCard ? CardNodeControllerManager.setAiCardController :
+        CardNodeControllerManager.setCardController;
       current = getFn(cardId) as CardNodeController; // 当前节点挂载的controller
+      // 记录抢占的参数信息
+      params.formParams = current?.formParams as (FormBasicParams | AiFormBasicParams);
     }
     const cur: string = current?.uuid ?? '';
     log.showInfo(TAG, `current = ${cur}; current.isDestroyed = ${current?.isDestroyed}`);
@@ -253,7 +275,12 @@ export class CardNodeController extends NodeController {
     const cardId: string = this.getCardId();
     const cur: string = this.uuid;
     log.showInfo(TAG, `${cur} unBind: cardId = ${cardId}; from = ${this.from}; this.isShow = ${this.isShow}`);
-    let setFn: Function = CardNodeControllerManager.setCardController;
+    let setFn: Function = this.formParams instanceof FormBasicParams ?
+      CardNodeControllerManager.setCardController : CardNodeControllerManager.setAiCardController;
+    if (this.formParams instanceof FormOccupyParams) {
+      setFn = this.formParams.isAiCard ? CardNodeControllerManager.setAiCardController :
+        CardNodeControllerManager.setCardController
+    }
     if (this.isShow) {
       // 归还节点
       this.isShow = false;
@@ -283,13 +310,19 @@ export class CardNodeController extends NodeController {
           // 清除桌面撤销卡片按钮
           AppStorage.setOrCreate('undoDragFormVisible', false);
           // 清除节点引用外部变量、防止内存泄漏
-          let params: (FormBasicParams | undefined | FormOccupyParams) = this.formParams;
+          let params: (AiFormBasicParams | FormBasicParams | undefined | FormOccupyParams) = this.formParams;
           if (params instanceof FormOccupyParams) {
             params = params?.formParams;
           }
           if (params) {
-            CardNodeControllerManager.getCardNode(cardId)?.update(params);
-            if (AppStorage.get<boolean>('isInTestEndPhrase')) {
+            params.basicEvent = {};
+            if (params instanceof AiFormBasicParams) {
+              CardNodeControllerManager.getAiCardNode(cardId)?.update(params);
+            } else {
+              CardNodeControllerManager.getCardNode(cardId)?.update(params);
+            }
+            if ((params instanceof AiFormBasicParams) && AppStorage.get<boolean>('isInTestEndPhrase')) {
+                // 语音助手建议预置卡片在isInTestEndPhrase模式无法隔离(原因未知)、手动删除节点
               CardNodeControllerManager.destroyNodeByCardId(cardId);
             }
           }
@@ -297,9 +330,10 @@ export class CardNodeController extends NodeController {
         } else {
           if (this.formParams instanceof FormBasicParams ||
             (this.formParams instanceof FormOccupyParams && !this.formParams.isAiCard)) {
-            // FC 或者FC的抢占节点 只删除FC节点
+            // FC 或者FC的抢占节点 只删除FC节点、语音助手会使用FC的cardId保存节点
             CardNodeControllerManager.destroyFormNodeByCardId(cardId);
           } else {
+            // 语音助手删除全部节点
             CardNodeControllerManager.destroyNodeByCardId(cardId);
           }
           setFn(cardId, null);
@@ -340,10 +374,17 @@ export class CardNodeController extends NodeController {
 
   log() {
     const formKeys: string[] = CardNodeControllerManager.getFormKey();
+    const aiFormKeys: string[] = CardNodeControllerManager.getAiFormKey();
     let detail = 'FORMS: ';
     for (let i = 0; i < formKeys.length; i++) {
       const key: string = formKeys[i];
       const controller = CardNodeControllerManager.getCardController(key) as CardNodeController;
+      detail += `#${key}/${controller?.from};`;
+    }
+    detail += 'AI_FORMS: '
+    for (let i = 0; i < aiFormKeys.length; i++) {
+      const key: string = aiFormKeys[i];
+      const controller = CardNodeControllerManager.getAiCardController(key) as CardNodeController;
       detail += `#${key}/${controller?.from};`;
     }
     log.showInfo(TAG, 'will bind: current = #%{public}s/%{public}s; size = %{public}d; %{public}s', this.getCardId(), this.from, CardNodeControllerManager.getNodeCacheSize(), detail);

@@ -1,0 +1,2615 @@
+{
+    "string":[
+        {
+            "name":"keywords_during_call",
+            "value":"Анимация вызова",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"best_example_of_uploading_photos",
+            "value":"Примеры",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wallpaper_G_only",
+            "value":"Применить только в режиме трех экранов",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"side_face",
+            "value":"Фото в профиль",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"been_lifted",
+            "value":"Перетаскивание началось",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"apply_theme",
+            "value":"Применить тему",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"back",
+            "value":"Назад",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"female",
+            "value":"Женщина",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"select_from_folder",
+            "value":"Обзор папок",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"adult",
+            "value":"Взрослый",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"got_it",
+            "value":"OK",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"insufficient_quota",
+            "value":"Достигнут лимит генераций на базе ИИ в этом месяце.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"auto_align",
+            "value":"Автовыравнивание",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"current_theme_style",
+            "value":"Стиль текущей темы",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remove_this_theme",
+            "value":"Удалить эту тему?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wallpaper_display_mode",
+            "value":"Режим отображения",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"add_wallpaper",
+            "value":"Добавить изображение",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"my_theme_0",
+            "value":"Моя тема",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"account_button_login",
+            "value":"Вход",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_main_pandora_title",
+            "value":"Рабочий экран",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"picture_getting",
+            "value":"Получение изображения…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_main_time_travel_ongoing_content",
+            "value":"Генерируются обои на базе ИИ. Нажмите, чтобы посмотреть.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_apply_failed",
+            "value":"Сбой применения шрифта.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"generate_failed",
+            "value":"Сбой генерации.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"save_success",
+            "value":"Сохранено.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"confirm",
+            "value":"OK",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"customize",
+            "value":"Настроить",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"screen_off_theme",
+            "value":"Заставка",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_main_pandora_fail_content",
+            "value":"Сбой генерации обоев.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wallpaper_recommendation",
+            "value":"Рекомендуемое",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remove_theme_info",
+            "value":"Эта тема (вместе с ее обоями и пакетом значков) будет удалена.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"click_input_text",
+            "value":"Введите текст",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"continue_generating",
+            "value":"Сгенерировать еще",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"full_screen_reading_exit",
+            "value":"Вы закрыли предпросмотр в полноэкранном режиме",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aesthetic",
+            "value":"Умная обрезка",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"apply",
+            "value":"Применить",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"set_as_lockscreen",
+            "value":"Использовать для экрана блокировки",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"save_picture",
+            "value":"Сохранить изображение",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"recover_Theme_App_massage",
+            "value":"Для использования этой функции приложение Темы должно быть установлено.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_main_dimensional_travel_ongoing_content",
+            "value":"Генерируются обои Перевоплощение с ИИ. Нажмите, чтобы посмотреть.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_ways_display_awake_off",
+            "value":"Выклю\u200bчено",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"have_occlusion",
+            "value":"Лицо на изображении закрыто.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wallpaper_cannot_be_edited_in_a_small_window",
+            "value":"Обои невозможно редактировать в маленьком окне.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"end_of_service",
+            "value":"Выключить",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Desktop_setting",
+            "value":"Настройки рабочего экрана",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ai_wallpaper_service_description_1",
+            "value":"Для предоставления функций, связанных с обоями, этой службе требуется доступ в %1$s, а также право чтения и выгрузки или передачи изображений. Нажимая Принимаю, вы принимаете вышеизложенные положения и положения документа %2$s. Дополнительные сведения об обработке ваших персональных данных см. в документе %3$s.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"HiSearch_title",
+            "value":"Поиск с voice",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ai_wallpaper_service_name_3",
+            "value":"Служба темы Путешествие во времени",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"photo_not_meet_have_label",
+            "value":"Это фото невозможно использовать. Выберите другое из рекомендуемых изображений.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"tip_button_text",
+            "value":"Подробнее",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wallpaper_M_only",
+            "value":"Применить только в режиме двух экранов",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"image_decoding_failure",
+            "value":"Ошибка изображения. Повторите попытку.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"table_theme",
+            "value":"Рабочий экран",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"magic_screen",
+            "value":"Двойной обзор",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"edit_M_tip",
+            "value":"Разложите в режим двух экранов, чтобы изменить.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"free_official_theme",
+            "value":"Бесплатная официальная тема",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"have_no_people",
+            "value":"Лицо не обнаружено.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"generate_failed_origin_img_error",
+            "value":"Сбой генерации.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"desktop_layout",
+            "value":"Ориентация",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"full_screen_reading_enter",
+            "value":"Вы включили предпросмотр в полноэкранном режиме",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aod_all_day_display",
+            "value":"Весь день",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"in_use",
+            "value":"Используется",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screenlock_sign_entry",
+            "value":"Как настроить подпись на экране блокировки",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"intelligent_status_on",
+            "value":"Включено",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"share_description",
+            "value":"Персонализация и передача на другое устройство",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"enableTheme",
+            "value":"Применение темы…",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_generating_ai_wallpaper",
+            "value":"Нажмите Применить, чтобы сгенерировать обои.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"update_photo",
+            "value":"Обновить",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"execution_timed_out",
+            "value":"Тайм-аут операции.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"continue",
+            "value":"Продолжить",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_main_pandora_finish_content",
+            "value":"Обои на базе ИИ сгенерированы. Нажмите, чтобы посмотреть и применить.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"tip_content",
+            "value":"Сведите два пальца на экране блокировки или рабочем экране, чтобы быстро изменить тему и настроить персональные обои и виджеты.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_ways_display_awake_intelligent",
+            "value":"Умный",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"apply_wallpaper_info",
+            "value":"Применение обоев",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"recover",
+            "value":"Восстановить",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"delete_fail",
+            "value":"Сбой удаления.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"i_know",
+            "value":"OK",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"management",
+            "value":"Управление",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"center_the_original_image",
+            "value":"По центру",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"show_date",
+            "value":"Отображение даты",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cover_screen",
+            "value":"Внешний экран",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remove",
+            "value":"Удалить",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"auto_align_content",
+            "value":"Автозаполнение пустых мест при удалении приложений.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"select_from_gallery",
+            "value":"Выбрать из Галереи",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"interactive_theme_detail_tip",
+            "value":"Внимание! При применении этой темы способ разблокировки с помощью распознавания лица изменится с режима Мгновенная разблокировка на режим Разблокировка проведением.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pandora_service_unavailable",
+            "value":"Временно недоступно. Повторите попытку позже.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"recover_Theme_App",
+            "value":"Восстановить приложение Темы?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"upload_photo_loading",
+            "value":"Загрузка…",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"reach_upper_limit",
+            "value":"Достигнуто максимальное количество обоев. Удалите некоторые из них, чтобы добавить новые.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"cancel",
+            "value":"Отмена",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"preview_image",
+            "value":"Изображение предпросмотра",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"intelligent",
+            "value":"Assistant·TODAY",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"resource_description",
+            "value":"Описание",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_main_dimensional_travel_finish_content",
+            "value":"Сгенерированы новые обои Перевоплощение с ИИ. Нажмите, чтобы посмотреть и применить.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"more_online_themes",
+            "value":"Другие темы",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"should_apply_current_theme",
+            "value":"Применить эту тему?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"default_icon",
+            "value":"Предустановленные",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"keep_one_wallpaper",
+            "value":"Требуются минимум одни обои.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_failed",
+            "value":"Не удается применить.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"agree",
+            "value":"Принимаю",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wallpaper_F_only",
+            "value":"Применить только в режиме одного экрана",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Desktop_slide",
+            "value":"Поиск проведением вниз по экрану",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"keywords_outer_apply",
+            "value":"Приложения",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"random",
+            "value":"Случайный",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"outside_screen_show",
+            "value":"Внешний экран",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"recommend_theme",
+            "value":"Сведения",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"login_failed",
+            "value":"Нет доступа в Интернет. Повторите попытку позже.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"show_lock_screen_signature",
+            "value":"Подпись на экране блокировки",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aigc_generation_prompt",
+            "value":"Сгенерировано voice AI",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"theme_title",
+            "value":"Темы",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"default_font",
+            "value":"Предустановленные",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"theme_cannot_be_edited_in_a_small_window",
+            "value":"Темы невозможно редактировать в маленьком окне.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"intelligent_settings",
+            "value":"Assistant·TODAY",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"te_cancel",
+            "value":"Отмена",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pandora_theme_upload_photo_tips",
+            "value":"%1$d. Выгрузите фото человека, лицо которого четко видно.\n%2$d. Генерация изображений может не сработать с фото маленьких детей.\n%3$d. Изображения, сгенерированные ИИ, могут быть неудовлетворительными.\n%4$d. Не выгружайте фото, содержащие вульгарный и дискриминационный контент либо сцены насилия.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"show_lunar_date",
+            "value":"Лунный календарь",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"undelete_toast",
+            "value":"Эти обои невозможно удалить.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"wallpaper_title",
+            "value":"Обои",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"uncompleted",
+            "value":"Скоро будет доступно.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"checked",
+            "value":"Выбрано",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"exiting_current_page",
+            "value":"Генерация продолжится, даже если вы покинете этот экран.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"update_available",
+            "value":"Доступны обновления",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_style",
+            "value":"Шрифты",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"select_all",
+            "value":"Выбрать все",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"person_information",
+            "value":"Характеристики",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"try_out",
+            "value":"Попробовать",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_restored",
+            "value":"Приложение восстановлено.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"regenerate",
+            "value":"Повторить",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"covertheme_settings_title",
+            "value":"Рабочий экран и внешний экран",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"no_select",
+            "value":"Не выбрано",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"untoggle_camera_mover",
+            "value":"Если отменить выбор, динамический эффект будет выключен.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_watch_info",
+            "value":"Применить к циферблату",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wallpaper_carousel_gallery",
+            "value":"Обои (максимум %d)",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"top_right",
+            "value":"Сверху справа",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"more_online_icon",
+            "value":"Другие значки",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aod_theme",
+            "value":"Заставка",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"keywords_outer_facard",
+            "value":"Виджеты",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_dialog_title",
+            "value":"Применить тему",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"more_online_font",
+            "value":"Другие шрифты",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"homescreen",
+            "value":"Рабочий экран",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"generate_failed_and_try_again",
+            "value":"Сбой генерации. Повторите попытку.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"preset_theme",
+            "value":"Предустановленная тема",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"device_temperature_too_high",
+            "value":"Слишком высокая температура устройства. Повторите попытку позже.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"style_choose",
+            "value":"Стиль",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"more_online_wallpapers",
+            "value":"Другие обои",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"camera_mover",
+            "value":"Динамика",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"lockscreen",
+            "value":"Экран блокировки",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_main_time_travel_finish_content",
+            "value":"Сгенерированы новые обои Путешествие во времени. Нажмите, чтобы посмотреть и применить.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"network_unavailable",
+            "value":"Нет интернет-соединения. Проверьте сетевые настройки.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"delete_wallpaper",
+            "value":"Удалить обои",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"icon_size",
+            "value":"Размер значков рабочего экрана",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"icon_size_tip",
+            "value":"Это не будет применяться к панели.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"icon_size_restore_default",
+            "value":"Сброс",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dock_color_style",
+            "value":"Адаптация цвета панели",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dock_color_style_follow_window",
+            "value":"Обои и окна",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dock_color_style_follow_system",
+            "value":"Режим отображения",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dock_color_style_follow_window_tips",
+            "value":"Панель будет менять цвет в зависимости от цвета обоев или контента в развернутом окне.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dock_color_style_follow_system_tips",
+            "value":"В Темном режиме цвета панели становятся более темными.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dock_auto_hide_style",
+            "value":"Скрытие панели, когда окна развернуты или открыты в режиме разделения экрана",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"window_animation_title",
+            "value":"Сворачивание окна",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"window_animation_attraction",
+            "value":"Анимация с эффектом",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"window_animation_default",
+            "value":"Анимация по умолчанию",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ai_wallpaper_terms",
+            "value":"Условия использования возможностей генеративного искусственного интеллекта темы Путешествие во времени",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"share_card_hint",
+            "value":"Можно передать, приложив к другому устройству или жестом в воздухе",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pandora_theme_description",
+            "value":"%1$d. Выгрузите фото человека, лицо которого четко видно.\n%2$d. Изображения, сгенерированные ИИ, могут быть неточными или неприемлемыми.\n%3$d. Не выгружайте фото, содержащие вульгарный и дискриминационный контент либо сцены насилия.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"male",
+            "value":"Мужчина",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"icon",
+            "value":"Значки",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"have_multi_people",
+            "value":"На изображении должен быть только один человек.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"continue_upload_image",
+            "value":"Текущая тема будет удалена, новая тема будет сгенерирована. Продолжить?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"tip_cancel_text",
+            "value":"Закрыть",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"tip_title",
+            "value":"Быстрая персонализация экрана блокировки и рабочего экрана",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"photo_not_meet_no_label",
+            "value":"Невозможно использовать это фото. Выберите другое.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pop_up_content",
+            "value":"Рекомендуется использовать статический эффект. Динамический эффект выключен.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"infancy",
+            "value":"Ребенок",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"scale_to_fill_screen",
+            "value":"Растянуть",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"tiling",
+            "value":"Плитка",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"preview",
+            "value":"Предпросмотр",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"blur",
+            "value":"Размытие",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"big_angle",
+            "value":"Некорректный угол наклона лица.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_main_pandora_ongoing_content",
+            "value":"Обои на базе ИИ генерируются.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"get_best_results",
+            "value":"Как получить лучшие результаты",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"my_wallpapers",
+            "value":"Мои обои",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_sub_screen_info",
+            "value":"Применить к внешнему экрану",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"choose_person_info",
+            "value":"Выберите характеристики.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"low_pixel",
+            "value":"Слишком низкое разрешение изображения.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_watch_info_toast",
+            "value":"Сбой синхронизации. Повторите попытку.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"my_downloads",
+            "value":"Загруженное",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"change_wallpaper",
+            "value":"Изменить обои",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"preview_photo_loading",
+            "value":"Загрузка...",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"on_network",
+            "value":"Интернет",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_current_theme_first",
+            "value":"Сначала примените тему.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dynamic",
+            "value":"Живые",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"interactive",
+            "value":"Интерактивные",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"save_carousel",
+            "value":"Сохранить",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"login_in_settings",
+            "value":"Сначала в Настройках войдите в аккаунт HUAWEI.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"more_themes",
+            "value":"Другие темы",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"photo_not_meet",
+            "value":"Это фото невозможно использовать. Выберите другое из портретных фото.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pandora_aesthetic_dialog_confirm",
+            "value":"OK",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"deselect_all",
+            "value":"Отменить выбор всех",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"age_too_small_error",
+            "value":"Сбой генерации. Слишком молодой человек.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ai_wallpaper_service_subtitle_1",
+            "value":"Выбранные изображения будут выгружаться на облачный сервер для создания обоев с использованием алгоритмов на базе облачных технологий искусственного интеллекта. Для этого требуются следующие права:",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"generating_ai_wallpaper",
+            "value":"Обои на базе ИИ генерируются…",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"fill_screen",
+            "value":"Во весь экран",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"generating_ai_wallpaper_need_time",
+            "value":"Генерация… (занимает около %d минуты)",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"edit_G_tip",
+            "value":"Разложите в режим трех экранов, чтобы изменить.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"composition_failed",
+            "value":"Сбой создания.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ai_wallpaper_service_stop_note_1",
+            "value":"Если вы выключите эту службу, она больше не будет доступна. Выключить?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"delete",
+            "value":"Удалить",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"add_theme",
+            "value":"Добавить тему",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"keywords_outer_theme",
+            "value":"Темы",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"occlusion_exists",
+            "value":"Лицо закрыто",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"my_theme_d",
+            "value":"Моя тема %d",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"file_getting",
+            "value":"Загрузка файлов из облака…",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"clear_facial_features",
+            "value":"Четкие черты",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"font_apply_successd",
+            "value":"Шрифт применен.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"wallpaper_carousel_info",
+            "value":"Обои по кругу (%1$d/%2$d)",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"after_generate_wallpaper_enable_theme",
+            "value":"Эта тема будет применена в это же время.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"tip_play_text",
+            "value":"Воспроизвести",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aod_ways_display_awake_scheduled",
+            "value":"Расписание",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"unsupported_moving_photo_wallpaper",
+            "value":"Живые обои не поддерживаются на рабочем экране.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"applyWallpaper",
+            "value":"Применение обоев…",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"content_reporting",
+            "value":"Жалоба на контент",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"keywords_cover_screen",
+            "value":"Внешний экран",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"face_the_camera",
+            "value":"Взгляд вперед",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"end_aigc_service_text",
+            "value":"Подробнее см. в документах %1$s и %2$s. Если вы больше не хотите использовать эту службу, нажмите %3$s.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"center_and_fit",
+            "value":"По размеру экрана",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"upload_photo",
+            "value":"Выгрузить",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"main_screen",
+            "value":"Основной экран",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_sub_screen_info_subtext",
+            "value":"Вы можете изменить ее в разделе Темы внешнего экрана.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"intelligent_status_off",
+            "value":"Выклю\u200bчено",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"desktop_style_title",
+            "value":"Строка со значками и строка состояния",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"not_selected",
+            "value":"Не выбрано",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"network_error",
+            "value":"Ошибка сети. Повторите попытку.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"insufficient_storage_toast",
+            "value":"Сбой работы службы Темы. Недостаточно места в памяти устройства. Удалите файлы, чтобы освободить место.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"lock_layout_content",
+            "value":"Когда функция включена, вы не сможете переместить или удалить элементы рабочего экрана.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"lock_layout",
+            "value":"Блокировка вида",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"end_of_service_1",
+            "value":"Выключить службу",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_success",
+            "value":"Применено.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"full_screen_reading_page_one",
+            "value":"Экран предпросмотра номер %d, проведите влево или вправо двумя пальцами для загрузки других экранов сведений",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"current_theme",
+            "value":"Сейчас",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"screen_reading_other_page",
+            "value":"Страница предпросмотра номер %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"applying",
+            "value":"Используется",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"switch_to_desktop_preview",
+            "value":"Переключение на предпросмотр рабочего экрана",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"switch_to_lock_screen_preview",
+            "value":"Переключение на предпросмотр экрана блокировки",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"blur_slider_read_notes",
+            "value":"Нажмите на ползунок, чтобы активировать функцию, и настройте размытие",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"theme_data_service_permissions",
+            "value":"Уведомление о правах",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"about",
+            "value":"Сведения",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"stop_theme_data_service_title",
+            "value":"Выключение службы Темы",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"theme_data_service",
+            "value":"Темы",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"more",
+            "value":"Дополнительно",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"theme_data_service_privacy",
+            "value":"Уведомление о службе Темы и конфиденциальности",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"theme_data_service_instructions",
+            "value":"Этой службе требуется доступ в Интернет, права доступа к геоданным и данным физической активности, право подключения устройств, а также читать геоданные, данные физической активности и здоровья, устройства и медиаданные (изображения и видео). Это необходимо для обеспечения работы тем, которым требуется отображать такие данные, и предоставления функции интерактивных тем. Дополнительные сведения об обработке ваших персональных данных см. в документах %1$s и %2$s. Включая эту функцию, вы разрешаете компании предоставлять вам эту службу.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"stop_theme_data_service_message",
+            "value":"Это действие выключит службу Темы на этом устройстве. Ваши темы и другие ресурсы больше не будут поддерживать взаимодействие и перестанут отображать ваши данные. Выключить?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"cam_mover_is_enabled_blur_is_not_supported",
+            "value":"Динамический эффект включен, эффект боке выключен.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"blur_is_enabled_Cam_mover_is_not_supported",
+            "value":"Эффект боке включен, динамический эффект выключен.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dof_off",
+            "value":"Глубина резкости выключена",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_dof_to_experience_camera_mover",
+            "value":"Выключите эффект глубины резкости, чтобы посмотреть отображение динамического эффекта.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"digital_clock_does_not_overlap_with_main_subject",
+            "value":"Цифровые часы не накладываются на основной объект.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_camera_mover_to_experience_dof",
+            "value":"Выключите динамический эффект, чтобы посмотреть отображение эффекта глубины резкости.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_dynamic_to_experience_camera_mover",
+            "value":"Выключите эффект Живое фото, чтобы посмотреть отображение динамического эффекта.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_dynamic_to_experience_dof",
+            "value":"Выключите эффект Живое фото, чтобы посмотреть отображение эффекта глубины резкости.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"artistic_signature_does_not_overlap_with_main_subject",
+            "value":"Персонализированная подпись не накладывается на основной объект.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_camera_mover_to_experience_dynamic",
+            "value":"Выключите динамический эффект, чтобы посмотреть отображение эффекта Живое фото.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"image_does_not_recognize_dof",
+            "value":"Объект, к которому можно применить эффект глубины резкости, не обнаружен на изображении.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_dof_to_experience_dynamic",
+            "value":"Выключите эффект глубины резкости, чтобы посмотреть отображение эффекта Живое фото.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dof_on",
+            "value":"Глубина резкости включена",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dof",
+            "value":"Глубина резкости",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"exit_pandora_dialog",
+            "value":"Сохранить и применить?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"multi_checkbox",
+            "value":"Поле для галочки с возможностью выбора нескольких опций",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screenlock_settings",
+            "value":"Экран блокировки",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"clock_edit_tips",
+            "value":"Нажмите дважды, чтобы изменить, нажмите дважды и удерживайте, чтобы переместить часы.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"theme_personalize_screen_reading_other_page",
+            "value":"Экран номер %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"clock_style",
+            "value":"Стиль часов %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"current_icon_checked",
+            "value":"Текущие значки, выбрано",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"top_left",
+            "value":"Вверху слева",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"current_wallpaper_checked",
+            "value":"Текущие обои, выбрано",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"clock_font_style",
+            "value":"Шрифт текста на часах %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"turn_off_dynamic",
+            "value":"Выключить эффект живого фото",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"blurred",
+            "value":"Размытие",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"left_of_center",
+            "value":"Слева от центра",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"theme_card_accessibility_text",
+            "value":"Чтобы переключить тему, проведите влево или вправо двумя пальцами. Чтобы удалить тему, проведите вверх двумя пальцами.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"bottom_of_center",
+            "value":"Внизу от центра",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"toggle_view",
+            "value":"Переключить вид",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"theme_personalize_full_screen_reading_page_one",
+            "value":"Экран номер %d, проведите влево или вправо для загрузки других обоев.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"center",
+            "value":"По центру",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"turn_on_dynamic",
+            "value":"Включить эффект живого фото",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"bottom_right",
+            "value":"Внизу справа",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"top_of_center",
+            "value":"Сверху от центра",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_to",
+            "value":"Перемещено в %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"clock_font_color",
+            "value":"Цвет текста на часах %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"right_of_center",
+            "value":"Справа от центра",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"do_camera_mover",
+            "value":"Динамический эффект включен",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"button_text",
+            "value":"Кнопка добавления темы",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"switched_desktop_preview",
+            "value":"Переключение на предпросмотр рабочего экрана",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"more_edits",
+            "value":"Другие опции",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"lock_screen_clock",
+            "value":"Часы на экране блокировки",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"undo_camera_mover",
+            "value":"Динамический эффект выключен",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"switched_lock_screen_preview",
+            "value":"Переключение на предпросмотр экрана блокировки",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"bottom_left",
+            "value":"Внизу слева",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"un_blurred",
+            "value":"Не размыто",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"unchecked",
+            "value":"Не выбрано",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"set_as_desktop",
+            "value":"Настроить как рабочий экран",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screen_reading_first_page",
+            "value":"Шрифт системы по умолчанию, страница предпросмотра номер %d, проведите влево или вправо для загрузки других экранов сведений",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"start_generating",
+            "value":"Сгенерировать",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"paused",
+            "value":"Приостановлено",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"applied",
+            "value":"Применено",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_dynamic_lead_finish_content",
+            "value":"Ресурсы функции Фото в движении сгенерированы. Нажмите, чтобы посмотреть и применить.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_dynamic_lead_ongoing_content",
+            "value":"Генерация ресурсов функции Фото в движении. Нажмите, чтобы посмотреть.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"played",
+            "value":"Воспроизводится",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"settings_detail_page_tip",
+            "value":"Дважды нажмите для просмотра сведений",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"continue_update_image",
+            "value":"Текущая тема будет удалена, новая тема будет сгенерирована. Продолжить?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"time_travel_generate_failed",
+            "value":"Сбой генерации обоев Путешествие во времени.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dimensional_travel_generate_failed",
+            "value":"Сбой генерации обоев Перевоплощение с ИИ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_dynamic_lead_fail_content",
+            "value":"Сбой генерации ресурсов функции Фото в движении. Нажмите, чтобы посмотреть сведения.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"detail_page",
+            "value":"Страница предпросмотра",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_dynamic_lead_Unable_to_update_automatically",
+            "value":"Библиотека ресурсов функции Фото в движении заполнена. Это означает, что ресурсы не будут обновляться автоматически. Нажмите для управления библиотекой.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"lockscreen_preview",
+            "value":"Экран блокировки",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"homescreen_preview",
+            "value":"Рабочий экран",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_dynamic_lead_automatically_updated_finish_content",
+            "value":"Ресурсы функции Фото в движении обновлены автоматически. Нажмите, чтобы посмотреть.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aigc_theme_service_stop_note",
+            "value":"Если вы выключите эту службу, она больше не будет доступна. Выключить?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aigc_theme_service_privacy_statement",
+            "value":"Уведомление о службе Темы с ИИ и конфиденциальности",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aigc_theme_service_description",
+            "value":"Этой службе требуется доступ в %1$s, а также право чтения и выгрузки или передачи изображений. Это необходимо для предоставления функций, связанных с темами. Компания собирает только персональные данные, связанные с функциями, которые вы используете. Дополнительные сведения см. в документе %2$s.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"read_theme_service_description_and_click_agree",
+            "value":"Внимательно прочтите вышеуказанное уведомление. Нажимая Принимаю, вы даете компании согласие на предоставление этой службы.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aigc_theme_service_subtitle",
+            "value":"Эта служба выгружает выбранные изображения в облако для генерации ресурсов тем с помощью технологий искусственного интеллекта.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aigc_theme_privacy_statement",
+            "value":"Уведомление о службе Темы с ИИ и конфиденциальности",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aigc_theme_service",
+            "value":"Служба Темы с ИИ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"photo_selected",
+            "value":"Фото выбрано",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_off_Desktop_resource_center_title",
+            "value":"Выключение хранилища приложений",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_off_Desktop_resource_center_cancel",
+            "value":"Отмена",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_off_Desktop_resource_center_close",
+            "value":"Выключить",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_off_Desktop_resource_center_content",
+            "value":"Когда эта функция выключена, значки приложений, отображающиеся только в этом разделе, будут помещены в специальную папку в нижней части рабочего экрана.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"desktop_resource_center",
+            "value":"Хранилище приложений",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"desktop_resource_center_description",
+            "value":"Проведите вверх по рабочему экрану для отображения всех установленных приложений. Перетащите значок приложения, чтобы добавить его на рабочий экран. Чтобы удалить приложение с рабочего экрана, нажмите на его значок и удерживайте, а затем нажмите Удалить.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"waiting_closing_desktop_resource_center",
+            "value":"Выключение хранилища приложений...",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_chest",
+            "value":"Хранилище приложений",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"is_off_app_chest_title",
+            "value":"Выключение хранилища приложений",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"waiting_closing_app_chest",
+            "value":"Выключение хранилища приложений...",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_off_app_chest_content",
+            "value":"Когда эта функция выключена, значки приложений, отображающиеся только в этом разделе, будут помещены в специальную папку в нижней части рабочего экрана.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_chest_description",
+            "value":"Проведите вверх по рабочему экрану для отображения всех установленных приложений. Перетащите значок приложения, чтобы добавить его на рабочий экран. Чтобы удалить приложение с рабочего экрана, нажмите на его значок и удерживайте, а затем нажмите Удалить.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"theme_icon",
+            "value":"Из приложения Темы",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"moving_photo_dialog_content",
+            "value":"Живые обои невозможно использовать в сочетании с обоями другого типа, поэтому они будут преобразованы в статичные.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"moving_photo_dialog_toast",
+            "value":"Живые обои невозможно использовать в сочетании с обоями другого типа.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"moving_photo_dialog_title",
+            "value":"Изменить обои?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"nav_to_my_wallpaper_edit_tips",
+            "value":"Чтобы изменить, сведите пальцы или нажмите и удерживайте область с часами на экране блокировки.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"waiting_closing",
+            "value":"Выключение...",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_off_swipe_up_title",
+            "value":"Выключить функцию Проведение вверх по рабочему экрану?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Desktop_SwipeUp",
+            "value":"Проведение вверх по рабочему экрану",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_off_swipe_up_content",
+            "value":"Когда эта функция выключена, вы не сможете открывать хранилище приложений. Значки приложений, отображающиеся только в этом разделе, будут помещены в специальную папку на рабочем экране.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"moment_x_settings",
+            "value":"Горизонтальная заставка",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"moment_x_smart_display_mode_title",
+            "value":"Умный режим",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"moment_x_state_off",
+            "value":"Выключено",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"moment_x_all_day_display_mode_title",
+            "value":"Весь день",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"color_style_not_support_in_desktop_tips",
+            "value":"Если тема будет использоваться только на рабочем экране, стиль часов темы не будет применяться.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"color_style_system_title",
+            "value":"Системные цвета",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"color_style_explanation",
+            "value":"Цвета выделения применяются к часам и виджетам на рабочем экране, экране блокировки, экране заставки постоянного отображения, а также на панели уведомлений и панели управления.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"color_style_base_title",
+            "value":"Базовые цвета",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"color_style_suggested_title",
+            "value":"Рекомендуемые цвета",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"color_style_button_text",
+            "value":"Цвета выделения",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"apply_Lockscreen",
+            "value":"Применение к экрану блокировки…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"tip_share_text",
+            "value":"Отправить",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dock_item_recentcenter",
+            "value":"Центр задач",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dock_item_filemanager",
+            "value":"Файлы",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"touch",
+            "value":"отправить касанием",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dock_item_recyclebin",
+            "value":"Корзина",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dock_item_visible",
+            "value":"Отображение на панели",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dock_item_appcenter",
+            "value":"Хранилище приложений",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"unlock_set",
+            "value":"Вы можете %1$s эту тему другим пользователям.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"online_icons",
+            "value":"Значки, доступные для загрузки",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"online_wallpapers",
+            "value":"Обои, доступные для загрузки",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"online_themes",
+            "value":"Темы, доступные для загрузки",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"online_fonts",
+            "value":"Шрифты, доступные для загрузки",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screen_load_other_detail_page",
+            "value":"Проведите влево или вправо двумя пальцами для загрузки других экранов предпросмотра. Нажмите дважды на экран предпросмотра, чтобы активировать его.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screenlock_cannot_be_edited_in_a_small_window",
+            "value":"Невозможно редактировать экран блокировки в плавающих окнах.",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

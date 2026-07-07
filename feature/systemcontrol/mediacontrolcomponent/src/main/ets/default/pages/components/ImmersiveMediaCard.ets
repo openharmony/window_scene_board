@@ -35,6 +35,10 @@ import { SLWallpaperType } from '@ohos/screenlockcommon/src/main/ets/wallpaper/S
 import { ImmInvertColorMgr } from '@ohos/screenlockcommon/src/main/ets/immersivekgcommon/immersivekg/manager/ImmInvertColorMgr';
 import { LocalEventCallback } from '../../Util/LocalEventCallBack';
 import {
+  AodStyleType,
+  ImmersiveAodStyle,
+} from '@ohos/systemuicommon/src/main/ets/immersivekeyguardcommon/base/interface/ImmersiveAodStyle';
+import {
   immersiveKgMgr,
 } from '@ohos/systemuicommon/src/main/ets/immersivekeyguardcommon/manager/ImmersiveKeyguardStateManager';
 import { globalStorage } from '../../Util/GlobalStorage';
@@ -153,6 +157,11 @@ export struct ImmersiveMediaCard {
   @State imageReady: boolean = false;
   @State private moveStartCachePosition: number = -1;
   @State isPhoneOrPad: boolean = DeviceHelper.isPhoneOrPad();
+
+  /**
+   * AOD显示样式
+   */
+  @State aodStyle: ImmersiveAodStyle | undefined = immersiveKgMgr.getOneMirrorState().getAodStyle(true);
   // 锁屏UI状态
   @State slBindSt?: ISlState = slUiStateMgr.getSlState(SlMainStateType.SL_BIND_STATE);
   @State colorModeViewData: ColorModeViewData = ColorModeViewModel.getInstance().getViewData();
@@ -186,7 +195,7 @@ export struct ImmersiveMediaCard {
   @State isOrGoExpandLayout: boolean = this.isExpandLayout();
   @Prop isSmallFoldOuterScreen: boolean;
   private isDoubleExpand: boolean = false; //true：双列控制中心展开态
-  private isUltraScreenProduct: boolean = DeviceHelper.isUltraScreenProduct();
+  private isThreeFoldProduct: boolean = DeviceHelper.isThreeFoldProduct();
   uiContext: UIContext = this.getUIContext();
   @State sysConfigData: SysConfigData =
     MediaViewModelManager.getData(MediaVMType.SYS_CONFIG_DATA, true) as SysConfigData;
@@ -195,7 +204,7 @@ export struct ImmersiveMediaCard {
   private hideLyric: boolean = false;
 
   async aboutToAppear() {
-    if (this.isUltraScreenProduct) {
+    if (this.isThreeFoldProduct) {
       this.registerFoldStatusChangeCallback();
     }
     this.showLyric = this.hasLyric;
@@ -221,7 +230,7 @@ export struct ImmersiveMediaCard {
   }
 
   aboutToDisappear() {
-    if (this.isUltraScreenProduct) {
+    if (this.isThreeFoldProduct) {
       this.unRegisterFoldStatusChangeCallback();
     }
     this.clearTimerAndProgressData(true)
@@ -376,9 +385,9 @@ export struct ImmersiveMediaCard {
       .alt($r('app.media.ic_nomusic_img'))
       .draggable(false)
       .objectFit(ImageFit.Contain)
-      .fillColor($r('sys.color.icon_fourth'))
+      .fillColor(this.aodStyle?.isAod ? this.aodStyle?.getStyleValue(AodStyleType.IMMERSIVE_MUSIC_COLOR) : $r('sys.color.icon_fourth'))
       .interpolation(ImageInterpolation.High)
-      .opacity(1)
+      .opacity(this.aodStyle?.isAod ? this.aodStyle.getStyleValue(AodStyleType.IMMERSIVE_CARD_PREVIEW_ALPHA) : 1)
       .onError(() => {
         log.showInfo('mediaImg show err ' + this.image)
         if (this.image && typeof this.image === 'object') {
@@ -403,7 +412,9 @@ export struct ImmersiveMediaCard {
       .transition(TransitionEffect.IDENTITY)
       .visibility(this.isAnimComponent ? Visibility.Hidden : Visibility.Visible)
       .zIndex(this.mediaAnimState.isListGeo ? imageZIndex : undefined)
-      .backgroundColor(this.mediaImgShow && this.image && this.isHasMediaImage() ? undefined : $r('sys.color.comp_background_secondary'))
+      .backgroundColor(this.mediaImgShow && this.image && this.isHasMediaImage() ? undefined :
+        (this.aodStyle?.isAod ? this.aodStyle?.getStyleValue(AodStyleType.MEDIA_BACKGROUND_COLOR) :
+        $r('sys.color.comp_background_secondary')))
   }
 
   @Builder normalImageBuilder() { //直板机形态
@@ -629,8 +640,8 @@ export struct ImmersiveMediaCard {
       Image((this.mediaImgShow && this.image) ? this.image : $r('app.media.ic_nomusic_img'))
         .alt($r('app.media.ic_nomusic_img'))
         .objectFit(ImageFit.Cover)
-        .fillColor($r('sys.color.icon_fourth'))
-        .opacity(1)
+        .fillColor(this.aodStyle?.isAod ? this.aodStyle?.getStyleValue(AodStyleType.IMMERSIVE_MUSIC_COLOR) : $r('sys.color.icon_fourth'))
+        .opacity(this.aodStyle?.isAod ? this.aodStyle.getStyleValue(AodStyleType.IMMERSIVE_CARD_PREVIEW_ALPHA) : 1)
     }
     .height(this.cardStyle.height)
     .width(this.cardStyle.width)
@@ -648,7 +659,7 @@ export struct ImmersiveMediaCard {
   @Builder buildBigMediaCard() {
     Flex({direction: FlexDirection.Column, justifyContent: FlexAlign.SpaceBetween}) {
       // album image
-      if (this.isUltraScreenProduct ? this.isOrGoExpandLayout : this.isExpandLayout()) {
+      if (this.isThreeFoldProduct ? this.isOrGoExpandLayout : this.isExpandLayout()) {
         this.expandImageBuilder()
       } else {
         this.normalImageBuilder()
@@ -668,8 +679,10 @@ export struct ImmersiveMediaCard {
                   src: this.getTitle()
                 })
                   .fontSize(MeasuringUtil.getFontSize(16, 1.75, this.fontSizeScale))
-                  .fontColor(this.isPhoneOrPad ? $r('app.color.media_control_temporary_text') : $r('sys.color.font_primary'))
-                  .foregroundBrightness(BrightnessUtils.getInstance().getItemTextBrightnessOption(true, 'immersive', this.isDarkMode))
+                  .fontColor(this.aodStyle?.isAod ? this.aodStyle?.getStyleValue(AodStyleType.WEIGHT_FONT_COLOR) :
+                    this.isPhoneOrPad ? $r('app.color.media_control_temporary_text') : $r('sys.color.font_primary'))
+                  .foregroundBrightness(this.aodStyle?.isAod ? undefined :
+                    BrightnessUtils.getInstance().getItemTextBrightnessOption(true, 'immersive', this.isDarkMode))
                   .fontWeight(ResUtils.getConvertNumber($r('app.float.Control_center_long_button_font_weight')))
                   .width('100%')
                   .align(!this.isRTL() ? Alignment.Start : Alignment.End)
@@ -678,8 +691,10 @@ export struct ImmersiveMediaCard {
               } else {
                 Text(this.getTitle())
                   .direction(this.isRTL() ? Direction.Rtl : Direction.Ltr)
-                  .fontColor(this.isPhoneOrPad ? $r('app.color.media_control_temporary_text') : $r('sys.color.font_primary'))
-                  .foregroundBrightness(BrightnessUtils.getInstance().getItemTextBrightnessOption(true, 'immersive', this.isDarkMode))
+                  .fontColor(this.aodStyle?.isAod ? this.aodStyle?.getStyleValue(AodStyleType.WEIGHT_FONT_COLOR) :
+                    this.isPhoneOrPad ? $r('app.color.media_control_temporary_text') : $r('sys.color.font_primary'))
+                  .foregroundBrightness(this.aodStyle?.isAod ? undefined :
+                    BrightnessUtils.getInstance().getItemTextBrightnessOption(true, 'immersive', this.isDarkMode))
                   .fontSize('16fp')
                   .maxFontScale(1.75)
                   .fontWeight(ResUtils.getConvertNumber($r('app.float.Control_center_long_button_font_weight')))
@@ -710,8 +725,10 @@ export struct ImmersiveMediaCard {
             })
               .fontSize(MeasuringUtil.getFontSize(14, 1.75, this.fontSizeScale))
               .fontWeight(FontWeight.Regular)
-              .fontColor(this.isPhoneOrPad ? $r('app.color.media_control_temporary_text') : $r('sys.color.font_secondary'))
-              .foregroundBrightness(BrightnessUtils.getInstance().getItemTextBrightnessOption(false, 'immersive', this.isDarkMode))
+              .fontColor(this.aodStyle?.isAod ? this.aodStyle?.getStyleValue(AodStyleType.FONT_COLOR) :
+                this.isPhoneOrPad ? $r('app.color.media_control_temporary_text') : $r('sys.color.font_secondary'))
+              .foregroundBrightness(this.aodStyle?.isAod ? undefined :
+                BrightnessUtils.getInstance().getItemTextBrightnessOption(false, 'immersive', this.isDarkMode))
               .width('100%')
               .align(!this.isRTL() ? Alignment.Start : Alignment.End)
               .visibility(this.isPlaying() && this.isMarqueeStart ? Visibility.Visible : Visibility.None)
@@ -724,8 +741,10 @@ export struct ImmersiveMediaCard {
               .fontSize(14)
               .maxFontScale(1.75)
               .fontWeight(FontWeight.Regular)
-              .fontColor(this.isPhoneOrPad ? $r('app.color.media_control_temporary_text') : $r('sys.color.font_secondary'))
-              .foregroundBrightness(BrightnessUtils.getInstance().getItemTextBrightnessOption(false, 'immersive', this.isDarkMode))
+              .fontColor(this.aodStyle?.isAod ? this.aodStyle?.getStyleValue(AodStyleType.FONT_COLOR) :
+                this.isPhoneOrPad ? $r('app.color.media_control_temporary_text') : $r('sys.color.font_secondary'))
+              .foregroundBrightness(this.aodStyle?.isAod ? undefined :
+                BrightnessUtils.getInstance().getItemTextBrightnessOption(false, 'immersive', this.isDarkMode))
               .width('100%')
               .visibility(this.isPlaying() && this.isMarqueeStart ? Visibility.None : Visibility.Visible)
           }
@@ -749,13 +768,15 @@ export struct ImmersiveMediaCard {
         Text(this.getProgressStart())
           .fontSize(10)
           .maxFontScale(1.45)
-          .fontColor(this.isPhoneOrPad ? $r('app.color.media_control_temporary_text') : $r('sys.color.font_secondary'))
-          .foregroundBrightness(BrightnessUtils.getInstance().getItemTextBrightnessOption(this.isClickSlider, 'immersive', this.isDarkMode))
+          .fontColor(this.aodStyle?.isAod ? this.aodStyle?.getStyleValue(AodStyleType.FONT_COLOR) :
+            this.isPhoneOrPad ? $r('app.color.media_control_temporary_text') : $r('sys.color.font_secondary'))
+          .foregroundBrightness(this.aodStyle?.isAod ? undefined :
+            BrightnessUtils.getInstance().getItemTextBrightnessOption(this.isClickSlider, 'immersive', this.isDarkMode))
           .flexShrink(0)
           .textAlign(TextAlign.Start)
-          .padding(undefined)
+          .padding(this.aodStyle?.isAod ? { right: 3 } : undefined)
           .accessibilityLevel('no')
-          .renderGroup(this.isMarkingRenderGroup) // 增加UI缓存，防止丢帧
+          .renderGroup(this.aodStyle?.isOneMirror ? false : this.isMarkingRenderGroup) // 增加UI缓存，防止丢帧
 
         if (!this.duration || this.duration === 0 || this.duration < 0) {
           Slider({
@@ -789,9 +810,11 @@ export struct ImmersiveMediaCard {
               right: 0
             },
             sliderTrackThickness: this.progressHeight,
-            sliderSelectedColor: ((this.isPhoneOrPad ? (this.isShowSeek ? $r('app.color.media_item_slider_primary') : $r('app.color.media_item_slider_normal')) :
+            sliderSelectedColor: (this.aodStyle?.isAod ? '#26FFFFFF' :
+              (this.isPhoneOrPad ? (this.isShowSeek ? $r('app.color.media_item_slider_primary') : $r('app.color.media_item_slider_normal')) :
               (this.isShowSeek ? $r('sys.color.icon_emphasize') : $r('sys.color.icon_fourth')))),
-            sliderTrackColor: ((this.isPhoneOrPad ? $r('app.color.media_item_slider_normal') : undefined)),
+            sliderTrackColor: (this.aodStyle?.isAod ? '#0DFFFFFF' : (this.isPhoneOrPad ?
+              $r('app.color.media_item_slider_normal') : undefined)),
             sliderBlockColor: ('#00ffffff'),
             sliderWidth: '100%',
             sliderFlexShrink: 1,
@@ -870,13 +893,15 @@ export struct ImmersiveMediaCard {
         Text(this.getProgressEnd())
           .fontSize(10)
           .maxFontScale(1.45)
-          .fontColor(this.isPhoneOrPad ? $r('app.color.media_control_temporary_text') : $r('sys.color.font_secondary'))
-          .foregroundBrightness(BrightnessUtils.getInstance().getItemTextBrightnessOption(this.isClickSlider, 'immersive', this.isDarkMode))
+          .fontColor(this.aodStyle?.isAod ? this.aodStyle?.getStyleValue(AodStyleType.FONT_COLOR) :
+            this.isPhoneOrPad ? $r('app.color.media_control_temporary_text') : $r('sys.color.font_secondary'))
+          .foregroundBrightness(this.aodStyle?.isAod ? undefined :
+            BrightnessUtils.getInstance().getItemTextBrightnessOption(this.isClickSlider, 'immersive', this.isDarkMode))
           .flexShrink(0)
           .textAlign(TextAlign.End)
-          .padding(undefined)
+          .padding(this.aodStyle?.isAod ? { right: 3 } : undefined)
           .accessibilityLevel('no')
-          .renderGroup(this.isMarkingRenderGroup) // 增加UI缓存，防止丢帧
+          .renderGroup(this.aodStyle?.isOneMirror ? false : this.isMarkingRenderGroup) // 增加UI缓存，防止丢帧
       }
       .width('100%')
       .height(40)
@@ -930,10 +955,18 @@ export struct ImmersiveMediaCard {
   }
 
   private getContentAlpha(): number | undefined {
+    // 内容透明度，AOD时0.9
+    if (this.aodStyle?.isAod) {
+      return this.aodStyle.getStyleValue(AodStyleType.LIST_CARD_BG_ALPHA);
+    }
     return this.cardStyle?.opacity;
   }
 
   private getPreviewAlpha(): number | undefined {
+    // 预览图透明度，AOD时内屏0.4，小外屏0
+    if (this.aodStyle?.isAod) {
+      return this.isSmallFoldOuterScreen ? 0 : 0.4;
+    }
     return undefined;
   }
 
@@ -1153,7 +1186,7 @@ export struct ImmersiveMediaCard {
     if (this.isChangeSong || this.isChangeApp) {
       this.hideLyric = false;
     }
-    if ((this.isMarqueeStart === null) && !this.isChangeSong &&
+    if ((this.aodStyle?.isAod || this.isMarqueeStart === null) && !this.isChangeSong &&
       (!mediaInfo?.musicAssetId || this.assetId === mediaInfo?.musicAssetId)) {
       return;
     }
@@ -1244,7 +1277,7 @@ export struct ImmersiveMediaCard {
     }
     this.timerId = setInterval(() => {
       this.checkPowerActive();
-      if (!this.isMarqueeStart) {
+      if (this.aodStyle?.isAod || !this.isMarqueeStart) {
         log.showError('do not start timer while screen off');
         return;
       }
@@ -1273,7 +1306,7 @@ export struct ImmersiveMediaCard {
 
   getProgressStart(): string {
     log.showInfo(` getProgressStart result: ${this.duration}`);
-    if (!this.duration || this.duration <= 0) {
+    if (!this.duration || this.duration <= 0 || this.aodStyle?.isAod) {
       return '--:--';
     }
     let curtime = Math.floor(this.trueMovePosition / 1000);
@@ -1290,7 +1323,7 @@ export struct ImmersiveMediaCard {
   }
 
   getProgressEnd(): string {
-    if (!this.duration || this.duration <= 0) {
+    if (!this.duration || this.duration <= 0 || this.aodStyle?.isAod) {
       return '--:--';
     }
     let hours = Math.floor(this.duration / 1000 / 3600)
@@ -1419,14 +1452,16 @@ export struct ImmersiveMediaCard {
   // 是否使用展开布局，当前为折叠屏展开态和pad场景
   isExpandLayout(): boolean {
     return (this.isFoldExpand()) || DeviceHelper.isPad() ||
-      CommonUtils.isUltraScreenProductInGState();
+      CommonUtils.isThreeFoldProductInGState();
   }
 
   getLyricColor(index: number): ResourceColor {
     if (index === this.lyricIndex) {
-      return $r('sys.color.font_primary');
+      return this.aodStyle?.isAod ? this.aodStyle?.getStyleValue(AodStyleType.WEIGHT_FONT_COLOR) as ResourceColor :
+      $r('sys.color.font_primary');
     } else {
-      return $r('sys.color.font_tertiary');
+      return this.aodStyle?.isAod ? this.aodStyle?.getStyleValue(AodStyleType.FONT_COLOR) as ResourceColor :
+      $r('sys.color.font_tertiary');
     }
   }
 }

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -52,10 +52,12 @@ import { GrayAppListManager } from '../manager/GrayAppListManager';
 import { AppIconModel } from '../../ets/launchericon/common/AppIconModel';
 import {
   AppItemInfo,
+  DeliverUtil,
   FolderDataModelManager,
   LauncherLayoutCacheUtil
 } from '../TsIndex';
 import { ShortcutViewModel } from '../launchericon/viewmodel/ShortcutViewModel';
+import { AiSuggestionCache } from '../aisuggestion/AiSuggestionCache';
 
 const TAG = 'CompanionIcon';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.ICON, TAG);
@@ -274,11 +276,21 @@ export struct CompanionIcon {
       moduleName: companionIconInfo.moduleName
     });
 
+    if (this.startType === StartType.AI_SUGGESTION_APP) {
+      this.appIcon =
+        AiSuggestionCache.getInstance().getIconCache(companionIconInfo?.bundleName + companionIconInfo?.extraId);
+      log.showInfo(`loadIconWithCache cacheKey: ${companionIconInfo?.bundleName +
+        companionIconInfo?.extraId} appIcon: ${this.appIcon?.length}`);
+      if (this.appIcon) {
+        this.singleIconOptimize(companionIconInfo.iconId);
+        return;
+      }
+    }
     if (!this.appIcon) {
       // 先获取融合图标资源，避免分层图标获取超时动效透明的问题
       IconResourceManager.getInstance().getCombIcon(companionIconInfo.bundleName,
         companionIconInfo.moduleName, companionIconInfo.abilityName, companionIconInfo.appIndex, TAG,
-      false).then((image: PixelMap) => {
+      DeliverUtil.isSupportAppType(companionIconInfo.bundleName)).then((image: PixelMap) => {
         this.appIcon = image;
       });
     }
@@ -525,7 +537,7 @@ export struct CompanionIcon {
       };
     }
     if (!this.isRelativeVerticalScreen) {
-      if (DeviceHelper.isUltraScreenProduct() && (DeviceHelper.isMState() || DeviceHelper.isGState())) {
+      if (DeviceHelper.isThreeFoldProduct() && (DeviceHelper.isMState() || DeviceHelper.isGState())) {
         return {
           x: 0,
           y: px2vp(this.screenProperty.height) / 2 - this.cardHeight * this.baseRatio / 2

@@ -570,10 +570,10 @@ export class FloatingBallPanelVm extends FloatingBallBaseVm implements IFloating
       }
       want.parameters[SCBConstants.START_APP_CLONE_INDEX] = parentSession.sceneInfo.appIndex;
       const isLaunchMultiAbility = this.isLaunchMultiAbility(parentSession, want);
-      if (!isLaunchMultiAbility) {
-        log.showInfo(TAG, `${parentId} is in side edge bar`);
-        return;
-      }
+      // if (!isLaunchMultiAbility) {
+      //   log.showInfo(TAG, `${parentId} is in side edge bar`);
+      //   return;
+      // }
       const isNeedOneMirror = !parentSession.isActive || isLaunchMultiAbility;
       let promise = Promise.resolve();
       if (isNeedOneMirror) {

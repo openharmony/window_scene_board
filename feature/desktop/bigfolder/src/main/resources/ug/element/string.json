@@ -8,14 +8,14 @@
             }
         },
         {
-            "name":"d_app_dialog_cancel",
+            "name":"deliver_app_dialog_cancel",
             "value":"ئېتىبارسىزلاش",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"d_app_dialog_confirm",
+            "name":"deliver_app_dialog_confirm",
             "value":"يېڭىلاش",
             "attr":{
                 "priority":"LT"
@@ -29,21 +29,21 @@
             }
         },
         {
-            "name":"d_app_dialog_title",
+            "name":"deliver_app_dialog_title",
             "value":"يېڭى نەشرى چىقتى",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"d_app_dialog_contents",
+            "name":"deliver_app_dialog_contents",
             "value":"يېڭى نەشرىنىڭ ئىشلىتىش تەسىراتى تېخىمۇ ئۆزگىچە. يېڭىلىغاندىن كېيىن بەزى كونا ئەپ مەلۇماتلىرى ماسلىق مەسىلىسى سەۋەبلىك يوقىلىشى مۇمكىن.",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"d_app_dialog_text",
+            "name":"deliver_app_dialog_text",
             "value":"\u200f«%s» نىڭ OpenHarmony نەشرى چىقتى، يېڭىلاپ ئىشلىتىڭ.",
             "attr":{
                 "priority":"LT"
@@ -57,14 +57,14 @@
             }
         },
         {
-            "name":"uninstall_d_app_dialog_title",
+            "name":"uninstall_deliver_app_dialog_title",
             "value":"يېڭىراق نەشرى قاچىلانغان",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"uninstall_d_app_dialog_content",
+            "name":"uninstall_deliver_app_dialog_content",
             "value":"بۇ ئۈسكۈنىدە «%s» نىڭ OpenHarmony نەشرى بار، بۇ ئەپنى ئۆچۈرەمسىز؟",
             "attr":{
                 "priority":"LT"
@@ -78,49 +78,49 @@
             }
         },
         {
-            "name":"d_app_dialog_open",
+            "name":"deliver_app_dialog_open",
             "value":"\u200fNEXT نەشرىنى ئېچىش",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"d_app_unavailable_dialog_title",
+            "name":"deliver_app_unavailable_dialog_title",
             "value":"ئەپ ئىشلىمەيدۇ",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"d_app_unavailable_dialog_content",
+            "name":"deliver_app_unavailable_dialog_content",
             "value":"ئەپ بازىرىدىن «%s» نى چۈشۈرۈڭ.",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"d_app_unavailable_dialog_know",
+            "name":"deliver_app_unavailable_dialog_know",
             "value":"بىلدىم",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"d_app_pause_download_dialog_content",
+            "name":"deliver_app_pause_download_dialog_content",
             "value":"\u200f«%s» نى چۈشۈرۈش تورمۇزلانغان، چۈشۈرۈشنى داۋاملاشتۇرامسىز؟",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"d_app_wait_download_dialog_content",
+            "name":"deliver_app_wait_download_dialog_content",
             "value":"\u200f«%s» چۈشۈرۈشنى كۈتۈۋاتىدۇ، ئاۋۋال چۈشۈرەمسىز؟",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"d_app_installing_dialog_content",
+            "name":"deliver_app_installing_dialog_content",
             "value":"\u200f«%s» قاچىلىنىۋاتىدۇ، سەل كۈتۈڭ.",
             "attr":{
                 "priority":"translate"

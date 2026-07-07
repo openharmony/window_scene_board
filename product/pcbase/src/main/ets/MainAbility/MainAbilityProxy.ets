@@ -80,6 +80,8 @@ import screenSessionManager from '@ohos.screenSessionManager';
 import { SystemUICcmConfig } from '@ohos/systemuicommon/src/main/ets/utils/SystemUICcmConfig';
 import call from '@ohos.telephony.call';
 import CardLockManager from '@ohos/launchercommon/src/main/ets/manager/CardLockManager';
+import { emitter, Callback } from '@kit.BasicServicesKit';
+import { EmitIddConstant } from '../common/constants/EmitId';
 
 const TAG = 'SceneBoardMainAbilityProxy';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.SCB, TAG);
@@ -116,12 +118,25 @@ export default class MainAbilityProxy {
     }
   }
 
+  emitConfigChange(config: Configuration) {
+    let event: emitter.InnerEvent = {
+      eventId: EmitIddConstant.CONFIG_EMIT_ID
+    };
+    let eventData: emitter.EventData = {
+      data: {
+        content: JSON.stringify(config)
+      }
+    };
+    emitter.emit(event, eventData);
+  }
+
   async initSceneBoard(want: Want, pageName: string, workUrl: string,
     context: common.ServiceExtensionContext): Promise<void> {
     // Save the context.
     log.showWarn('setContext start');
     GlobalContext.setContext(context);
     log.showWarn('sSCBOobeManager init context start');
+    this.emitConfigChange(GlobalContext.getContext().config);
     AppStorage.setOrCreate('currColorMode', GlobalContext.getContext().config.colorMode);
     await sSCBOobeManager.init(context);
     log.showWarn('SystemUIGlobalHelper appInit context start');
@@ -250,6 +265,7 @@ export default class MainAbilityProxy {
   async onConfigurationUpdated(config: Configuration, context: common.ServiceExtensionContext) {
     log.showInfo('onConfigurationUpdated, config?.language:%{public}s:', config?.language);
     //深色模式colorMode：0， 浅色模式colorMode：1
+    this.emitConfigChange(config);
     AppStorage.setOrCreate('currColorMode', config.colorMode);
     const systemLanguage: string = AppStorage.get('systemLanguage') as string ?? context.config.language;
     if (systemLanguage !== config.language) {
@@ -427,6 +443,7 @@ export default class MainAbilityProxy {
     SCBSceneSessionManager.getInstance().init();
     SCBSceneSessionManager.getInstance().setSupportFunctionType(
       sceneSessionManager.SupportFunctionType.ALLOW_KEYBOARD_WILL_ANIMATION_NOTIFICATION);
+
     // Enable sub window to follow the parent window
     SCBSceneSessionManager.getInstance().supportFollowParentWindowLayout();
     SCBSceneSessionManager.getInstance().supportFollowRelativePositionToParent();

@@ -31,6 +31,7 @@ import {
   AppModel,
   AppStatus,
   CommonConstants,
+  DeliverUtil,
   DockItemInfo,
   FolderLayoutCacheManager,
   GridLayoutItemInfo,
@@ -1022,10 +1023,14 @@ export default function AppGalleryDownloadManagerTest() {
       item.appStatus =  AppStatus.DOWNLOADING;
       manager['downloadTaskList'] = [];
       expect(manager['isPreDownloadMenuAppType'](item)).assertFalse();
-    })
-
-    it('test_clickAppToPreDownload', 0, () => {
-      let manager: AppGalleryDownloadManager = AppGalleryDownloadManager.getInstance();
+      let item1: GridLayoutItemInfo = new GridLayoutItemInfo();
+      item1.bundleName = 'bundleName';
+      item1.typeId = CommonConstants.TYPE_APP;
+      item1.appIndex = 0;
+      item1.appStatus =  AppStatus.DOWNLOADING;
+      item1.intent =  "{\"appType\":\"1\",\"installSource\":\"com.deliver.appstore.lite\"}";
+      manager['downloadTaskList'] = [];
+      expect(manager['isPreDownloadMenuAppType'](item1)).assertFalse();
       let downLoadInfo : DownloadStatusInfo = {
         bundleName: 'bundleName',
         status: AppStatus.PENDING,
@@ -1034,6 +1039,56 @@ export default function AppGalleryDownloadManagerTest() {
         appName: 'appgallery4',
       };
       manager['downloadTaskList'] = [downLoadInfo];
+      let item2: GridLayoutItemInfo = new GridLayoutItemInfo();
+      item2.bundleName = 'bundleName';
+      item2.typeId = CommonConstants.TYPE_APP;
+      item2.appIndex = 0;
+      item2.appStatus =  AppStatus.DOWNLOADING;
+      item2.intent =  "{\"appType\":\"1\",\"installSource\":\"com.deliver.appstore.lite\"}";
+      expect(manager['isPreDownloadMenuAppType'](item2)).assertFalse();
+      manager['downloadTaskList'] = [downLoadInfo];
+      let item3: GridLayoutItemInfo = new GridLayoutItemInfo();
+      item3.bundleName = 'bundleName';
+      item3.typeId = CommonConstants.TYPE_APP;
+      item3.appIndex = 0;
+      item3.appStatus =  AppStatus.DOWNLOADING;
+      item3.intent =  "{\"appType\":\"2\",\"installSource\":\"com.deliver.appstore.lite111\"}";
+      let res = CommonUtils.jsonStrToMap(item3.intent).get('appType') === 1;
+      expect(res).assertFalse();
+      let isContainer = DeliverUtil.isContainerItem(item3.intent);
+      expect(isContainer).assertFalse();
+      expect(manager['isPreDownloadMenuAppType'](item3)).assertTrue();
+    })
+
+    it('test_clickAppToPreDownload', 0, () => {
+      let manager: AppGalleryDownloadManager = AppGalleryDownloadManager.getInstance();
+      let item2: GridLayoutItemInfo = new GridLayoutItemInfo();
+      item2.bundleName = 'bundleName';
+      item2.typeId = CommonConstants.TYPE_APP;
+      item2.appIndex = 0;
+      item2.appStatus = AppStatus.WAIT_FOR_HARMONY;
+      let intentStr =
+        "{\"appType\":\"1\",\"requestBundleName\":\"testBundleName\",\"installSource\":\"com.deliver.appstore.lite\"}";
+      item2.intent = intentStr;
+      manager['downloadTaskList'] = [];
+      manager['clickAppToPreDownload'](item2);
+      expect(item2.appStatus).not().assertEqual(AppStatus.PENDING);
+      let downLoadInfo : DownloadStatusInfo = {
+        bundleName: 'bundleName',
+        status: AppStatus.PENDING,
+        updateStatus: 0,
+        legacyInfos: [],
+        appName: 'appgallery4',
+      };
+      manager['downloadTaskList'] = [downLoadInfo];
+      let item1: GridLayoutItemInfo = new GridLayoutItemInfo();
+      item1.bundleName = 'bundleName';
+      item1.typeId = CommonConstants.TYPE_APP;
+      item1.appIndex = 0;
+      item1.appStatus =  AppStatus.PENDING;
+      item1.intent =  "{\"appType\":\"1\",\"installSource\":\"com.deliver.appstore.lite\"}";
+      item1.callerName = 'com.ohos.clouddrive';
+      manager['clickAppToPreDownload'](item1);
       expect(manager['downloadTaskList'].length > 0).assertTrue();
       let downLoadInfo1 : DownloadStatusInfo = {
         bundleName: 'bundleName',
@@ -1043,6 +1098,14 @@ export default function AppGalleryDownloadManagerTest() {
         appName: 'appgallery4',
       };
       manager['downloadTaskList'] = [downLoadInfo1];
+      let item3: GridLayoutItemInfo = new GridLayoutItemInfo();
+      item3.bundleName = 'bundleName';
+      item3.typeId = CommonConstants.TYPE_APP;
+      item3.appIndex = 0;
+      item3.appStatus =  AppStatus.WAITING;
+      item3.intent =  "{\"appType\":\"1\",\"installSource\":\"com.deliver.appstore.lite\"}";
+      item3.callerName = 'com.ohos.clouddrive';
+      manager['clickAppToPreDownload'](item1);
       expect(manager['downloadTaskList'].length > 0).assertTrue();
     })
 

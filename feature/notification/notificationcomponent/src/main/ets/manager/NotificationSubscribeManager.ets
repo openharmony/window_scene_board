@@ -203,7 +203,7 @@ export class NotificationSubscribeManager {
       this.colorMode = event.config?.colorMode;
       this.fontSizeScale = event.config?.fontSizeScale;
     });
-    // 通知事件订阅
+    // deliver通知事件订阅
     NotificationMaintenanceEvent.instance.subscribeCastConnectState();
     log.showInfo('Init notification subscriber end');
   }
@@ -550,7 +550,8 @@ export class NotificationSubscribeManager {
       columns: ['uid', 'icon', 'label', 'bundle'],
     });
     NotificationDataManager.instance.ntfMap.forEach(ntf => {
-      const config = configList.find((config) => config.bundle === ntf.creatorBundleName && config.uid === ntf.creatorUid);
+      const config = configList.find((config) => ntf.isDeliverNotification ?
+        config.bundle === ntf.creatorBundleName && config.uid === ntf.creatorUid : config.uid === ntf.creatorUid);
       if (config) {
         if (!ntf.useCustomAppname) {
           ntf.appLabel = config.label;

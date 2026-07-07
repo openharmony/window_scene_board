@@ -1,0 +1,28 @@
+{
+    "plural":[
+        {
+            "name":"delete_select_wallpapers",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"ရွေးချယ်ထားသော နောက်ခံပုံများကို ဖျက်မည်လား။",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"item_select",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"%d ခုကို ရွေးချယ်ထားပြီး",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

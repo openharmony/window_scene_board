@@ -24,6 +24,7 @@ import {
   MockKit,
   when
 } from '@ohos/hypium';
+import { MemoryUtils } from '@hw-ohos/memorytool';
 import { MemoryManager, TrimScene } from '../../../../../../main/ets/memory/MemoryManager';
 import { DEFAULT_PSS_DECIDER } from '../../../../../../main/ets/memory/GcDecider';
 import {

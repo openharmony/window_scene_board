@@ -285,9 +285,9 @@ export class NotificationConfigBaseManager {
    * @returns
    */
   public async getAppResource(context, bundleName: string, bundleType: bundleManager.BundleType,
-    parseIcon: boolean = true): Promise<BundleResource> {
+    isDeliver: boolean, parseIcon: boolean = true): Promise<BundleResource> {
     const { BundleResourceUtil } = await import('../utils/BundleResourceUtil');
-    return BundleResourceUtil.getBundleResource(context, bundleName, bundleType, parseIcon);
+    return BundleResourceUtil.getBundleResource(context, bundleName, bundleType, isDeliver, parseIcon);
   }
 
   /**

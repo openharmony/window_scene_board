@@ -1,0 +1,25 @@
+{
+    "string":[
+        {
+            "name":"tip_content",
+            "value":"Theme ကို အမြန်ပြောင်းပြီး နောက်ခံပုံ\u200bနှင့် ဝစ်ဂျတ်များကို စိတ်ကြိုက်ပြင်ဆင်ရန် လော့ခ်မျက်နှာပြင် သို့မဟုတ် ပင်မ မျက်နှာပြင်ပေါ် လက်နှစ်ချောင်းကို ဆွဲစေ့ပါ။",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_main_time_travel_finish_content",
+            "value":"Time Travel နောက်ခံပုံ အသစ်များကို ဖန်တီး\u200bထားသည်။ ကြည့်ပြီး သုံးရန် နှိပ်ပါ။",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_dynamic_lead_ongoing_content",
+            "value":"Dynamic Persona ရင်းမြစ်များကို ဖန်တီးနေ\u200bသည်။ ကြည့်ရန် နှိပ်ပါ။",
+            "attr":{
+                "priority":"LT"
+            }
+        }
+    ]
+}

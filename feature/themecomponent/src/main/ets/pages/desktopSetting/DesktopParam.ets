@@ -95,6 +95,8 @@ export class DesktopParam {
 
   private _enableBlur: boolean = false;
 
+  private _voiceCardName: string = '';
+
   private _isDarkMode: boolean = false;
 
   private _wallpaperType: number = 0;
@@ -439,6 +441,14 @@ export class DesktopParam {
 
   public get curColorMode(): number {
     return this._curColorMode;
+  }
+
+  public set voiceCardName(value: string) {
+    this._voiceCardName = value;
+  }
+
+  public get voiceCardName(): string {
+    return this._voiceCardName;
   }
 
   public set isDarkMode(value: boolean) {

@@ -26,6 +26,7 @@ import { AppIconTouchEventIface } from '../interface/AppIconTouchEventIface';
 import { AppIconConfig } from '../config/AppIconConfig';
 import { AppIconData } from './AppIconData';
 import { ActionEffectFlag } from '../../constants/CommonConstants';
+import { DeliverUtil } from '../../utils/DeliverUtil';
 import { PreLaunchType, SCBConstants } from '@ohos/commonconstants';
 import { AppModel } from '../../model/AppModel';
 
@@ -114,6 +115,9 @@ export class AppIconTouchEvent implements AppIconTouchEventIface {
       this.itemInfo.moduleName ?? '', this.itemInfo.abilityName, this.itemInfo.appIconId);
     // 规避dh应用快速退出启动闪白屏的临时方案
     // dh应用响应点击事件时，打断应用退出动效，应用退出动效窗口一帧消失，与大文件夹闭合态体验一致
+    if (DeliverUtil.isContainerItem(this.itemInfo.intent)) {
+      SCBTransitionManager.getInstance().cancelCloseAppAnimate();
+    }
     if (this.itemInfo.bundleName === SCBConstants.CAMERA_BUNDLE) {
       log.showInfo(TAG, `${SCBConstants.CAMERA_BUNDLE} onTouchDown preLaunchCamera`);
       StartAbilityUtil.preLaunchCamera(PreLaunchType.TOUCH_DOWN);
@@ -142,9 +146,11 @@ export class AppIconTouchEvent implements AppIconTouchEventIface {
 
     if (this.appIconConfig.enableEffectFlag & ActionEffectFlag.EFFECT_LONG_PRESS) {
       this.desktopContext?.eventHub.on('appIconLongPressEffectCancel', this.onCancelLongPressAnimationCb);
-      this.iconLongPressAnimation?.(true);
+      // 解决响应时延问题，取消图标缩放动效。后续可考虑改DEFAULT_ENABLE_EFFECT_FLAG参数
+      // this.iconLongPressAnimation?.(true);
     } else {
-      this.iconScaleAnimation(0.9);
+      // 解决响应时延问题，取消图标缩放动效
+      // this.iconScaleAnimation(0.9);
     }
   }
 
@@ -171,7 +177,8 @@ export class AppIconTouchEvent implements AppIconTouchEventIface {
       this.desktopContext?.eventHub.off('appIconLongPressEffectCancel', this.onCancelLongPressAnimationCb);
     }
 
-    this.iconScaleAnimation(1.0);
+    // 解决响应时延问题，取消图标缩放动效
+    // this.iconScaleAnimation(1.0);
   }
 
   private onTouchMove(event: TouchEvent): void {
@@ -230,18 +237,20 @@ export class AppIconTouchEvent implements AppIconTouchEventIface {
    */
   private iconScaleAnimation(scale: number): void {
     log.showInfo(TAG, `icon scale: ${scale}.`);
-    animateToImmediately({
-      duration: 160,
-      curve: curves.interpolatingSpring(0, 1, 410, 38),
-      playMode: PlayMode.Normal,
-      onFinish: () => {
-        this.iconData?.setTouchMaskVisible(false);
-        log.showInfo(TAG, 'TouchScale play end.');
-      }
-    }, () => {
+    // animateToImmediately({
+    //   duration: 160,
+    //   curve: curves.interpolatingSpring(0, 1, 410, 38),
+    //   playMode: PlayMode.Normal,
+    //   onFinish: () => {
+    //     this.iconData?.setTouchMaskVisible(false);
+    //     log.showInfo(TAG, 'TouchScale play end.');
+    //   }
+    // }, () => {
       this.iconData?.setIconScale(scale);
       this.iconScaleCb?.(scale);
-    });
+      this.iconData?.setTouchMaskVisible(false);
+      log.showInfo(TAG, 'TouchScale play end.');
+    // });
   }
 
   private cancelLongPressAnimation(isNeedAnimation: boolean = false): void {

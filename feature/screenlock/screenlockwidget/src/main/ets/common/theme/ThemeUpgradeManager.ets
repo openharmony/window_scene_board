@@ -37,7 +37,7 @@ export class ThemeUpgradeManager {
    * @param themeParam 主题参数
    */
   public upgradeBaseScene(themeParam: LockscreenThemeConfig): void {
-    if (!themeParam || !themeParam.clock || !DeviceHelper.isUltraScreenProduct()) {
+    if (!themeParam || !themeParam.clock || !DeviceHelper.isThreeFoldProduct()) {
       log.showWarn('UpgradeBaseScene themeParam is invalid.');
       return;
     }
@@ -55,7 +55,7 @@ export class ThemeUpgradeManager {
    * @param themeParams 主题参数
    */
   public upgradeMultiScene(themeParams: Map<Qualifier, LockscreenThemeConfig>): void {
-    if (!themeParams || themeParams.size === 0 || !DeviceHelper.isUltraScreenProduct()) {
+    if (!themeParams || themeParams.size === 0 || !DeviceHelper.isThreeFoldProduct()) {
       log.showWarn('UpgradeMultiScene themeParams is invalid.');
       return;
     }
@@ -64,8 +64,8 @@ export class ThemeUpgradeManager {
       return;
     }
     let themeRemoteMgr: ThemeRemoteManager = new ThemeRemoteManager();
-    if (DeviceHelper.isUltraScreenProduct() && version < XT_VERSION) {
-      log.showInfo('UpgradeMultiScene ultraScreen exec.');
+    if (DeviceHelper.isThreeFoldProduct() && version < XT_VERSION) {
+      log.showInfo('UpgradeMultiScene threeFold exec.');
       themeParams.forEach((val, key) => {
         val.clock.version = this.currentVersion;
         this.upgradeXT(key, val);

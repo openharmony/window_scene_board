@@ -1,5 +1,5 @@
 /**
- * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved. 2024-2025. All rights reserved.
+ * Copyright (c) 2022-2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -42,10 +42,11 @@ import {
 import { AppGalleryEventStatus, AppStatus, CommonConstants } from '../constants/CommonConstants';
 import type ctx from '@ohos.app.ability.common';
 import GridLayoutItemInfo from '../bean/GridLayoutItemInfo';
-// import installInfoManager from '@hms.core.appgalleryservice.installInfoManager';
+// import installInfoManager from '@ohos.core.appgalleryservice.installInfoManager';
 import HashMap from '@ohos.util.HashMap';
 import { AppModel } from '../model/AppModel';
 import {
+  AppReserveType,
   DisposedEventManager,
   DockItemInfo,
   FolderLayoutCacheManager,
@@ -239,7 +240,7 @@ export class AppGalleryDownloadManager {
       log.showInfo('handleBundleMappingEventChange end, event parameters are null');
       return;
     }
-    // 根据应用市场通知去点亮或熄灭占位的未OpenHarmony化应用
+    // 根据应用市场通知去点亮或熄灭占位的未鸿蒙化应用
     let hasohosApp: string[] = event.parameters['ag.params.HARMONY_PKGS_ADDED'] as string[];
     let notohosApp: string[] = event.parameters['ag.params.HARMONY_PKGS_REMOVED'] as string[];
     let publicTestohosApp: string[] = event.parameters['ag.params.PUBLIC_TEST_APP_PKGS_ADDED'] as string[];
@@ -260,9 +261,9 @@ export class AppGalleryDownloadManager {
       });
     }
     this.dealNotohosApp(notohosApp, relationMap, publicTestRelationMap);
-    // 兼容老版本未OpenHarmony化应用平铺在桌面的场景
+    // 兼容老版本未鸿蒙化应用平铺在桌面的场景
     NotHarmonyUtil.lightingNotHarmonyAppIcons(relationMap, publicTestRelationMap);
-    // 刷新未OpenHarmony化应用文件夹中的应用排序状态
+    // 刷新未鸿蒙化应用文件夹中的应用排序状态
     if (!CheckEmptyUtils.isEmptyArr(notohosApp)) {
       for (let i = 0; i < notohosApp.length; i++) {
         relationMap.delete(notohosApp[i]);
@@ -464,7 +465,7 @@ export class AppGalleryDownloadManager {
       data.status = AppStatus.WAITING;
       this.addDownloadTaskInfo(data);
       let appList: GridLayoutItemInfo[] = [];
-      // 如果是未OpenHarmony化的应用，则需根据legacyInfos去缓存中查找是否存在分身应用
+      // 如果是未鸿蒙化的应用，则需根据legacyInfos去缓存中查找是否存在分身应用
       if (!data.legacyInfos || CheckEmptyUtils.isEmptyArr(data.legacyInfos) ||
         CheckEmptyUtils.checkStrIsEmpty(data.legacyInfos[0].pkgName)) {
         appList = LaunchLayoutCacheManager.getInstance().getAllSameBundleNameAppItem(data.bundleName);
@@ -490,7 +491,7 @@ export class AppGalleryDownloadManager {
       CheckEmptyUtils.isEmpty(data.legacyInfos[0].pkgName)) {
       return;
     }
-    // 存在未OpenHarmony化应用文件夹，需要删除掉应用和分身，否则需要更新包名，兼容之前用户的情况
+    // 存在未鸿蒙化应用文件夹，需要删除掉应用和分身，否则需要更新包名，兼容之前用户的情况
     if (FolderLayoutCacheManager.getInstance().isAppExistNotDragOutFolder(data.legacyInfos[0].pkgName)) {
       for (let i = 0; i < appList?.length; i++) {
         this.notifyDownloadCanceled(appList[i].bundleName, appList[i].appIndex ?? 0);
@@ -499,7 +500,8 @@ export class AppGalleryDownloadManager {
       }
       data.legacyInfos = [];
     } else {
-      // 如未OpenHarmony化应用在dock区，需单独先更新dock区缓存
+      // 不存在未鸿蒙化文件夹，需要更新设备包名未设备包名，避免图标异常导致新增异常图标
+      // 如未鸿蒙化应用在dock区，需单独先更新dock区缓存
       appList.forEach(item => {
         if (item.container === CommonConstants.CONTAINER_SMARTDOCK) {
           let residentList: DockItemInfo[] = ResidentLayoutCacheMgr.getInstance().getAllDockItems();
@@ -524,7 +526,7 @@ export class AppGalleryDownloadManager {
   private deleteOtherNotHarmonyTaskIfNeed(data: DownloadStatusInfo): void {
     if (data.legacyInfos && !CheckEmptyUtils.isEmptyArr(data.legacyInfos) && data.legacyInfos?.length > 1) {
       for (let i = 1; i < data.legacyInfos.length; i++) {
-        // 避免应用市场传递多个相同的包名导致异常问题
+        // 避免应用市场传递多个相同的设备包名导致异常问题
         if (data.legacyInfos[i].pkgName === data.legacyInfos[0].pkgName) {
           continue;
         }
@@ -626,6 +628,10 @@ export class AppGalleryDownloadManager {
     // 桌面取消了网络权限，所以无法从应用市场接口获取到图标时，不再使用iconUrl
     item.iconResource = (icon === undefined) ? undefined : FILE_PRE + icon;
     item.area = [1, 1];
+    if (!CheckEmptyUtils.isEmptyArr(appList) &&
+      CommonUtils.jsonStrToMap(appList[0].intent).get('appType') === AppReserveType.ENTERPRISE) {
+      item.intent = appList[0].intent;
+    }
     // 加桌上限设置 需保留
     const limitNum = !CheckEmptyUtils.isEmptyArr(appList) ? CommonUtils.jsonStrToMap(appList[0].intent)
       .get(SHORTCUT_LIMIT_KEY) : undefined;

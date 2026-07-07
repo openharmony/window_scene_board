@@ -358,6 +358,13 @@
             }
         },
         {
+            "name":"voice_translate_name",
+            "value":"Перевод voice",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
             "name":"control_center_edit_panel_tips_max_limit",
             "value":"Добавлено максимальное количество значков.",
             "attr":{
@@ -367,6 +374,13 @@
         {
             "name":"cc_accessibility_str_change_vertical_brightness_desc",
             "value":"Шкала регулировки яркости, нажмите дважды, затем удерживайте и проведите вверх или вниз для настройки",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cloud_lai",
+            "value":"Режим Пэнлай",
             "attr":{
                 "priority":"translate"
             }

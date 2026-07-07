@@ -47,7 +47,7 @@ export class GlassLayoutSize {
   // 字符间距
   public static readonly LETTERSPACING_SIZE_0: string = '0px';
   // 字体列表
-  public static readonly HARMONYOS_SANS_SC: string = 'HarmonyOS Sans SC';
+  public static readonly HARMONYOS_SANS_SC: string = 'OpenHarmony Sans SC';
   // 字体粗细
   public static readonly FONT_WEIGHT_400: number = 400;
   public static readonly FONT_WEIGHT_500: number = 500;

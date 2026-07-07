@@ -29,7 +29,7 @@ import {
 import { DeviceHelper, } from '@ohos/frameworkwrapper';
 import { RecentDelete } from './RecentDelete';
 import { SCBOuterScenePanelManager } from '../../../scenemanager/SCBOuterScenePanelManager';
-import { RecentLockIconModel } from './RecentLockIconModel';
+// import { RecentLockIconModel } from './RecentLockIconModel';
 import { RecentTitleViewModel } from '../../viewmodel/RecentTitleViewModel';
 import { launcherVisualEffectMgr } from '@ohos/launchercommon/src/main/ets/manager/LauncherVisualEffectManager';
 import { recentRuntimeInstance } from './RecentRuntimeModel';
@@ -170,35 +170,40 @@ export class RecentClearAll {
    */
   public delayTimeForBlurAnimation(isContainerLocked: boolean,
     inScreenContainer: SCBSceneContainerSessionArray): number {
-    if (isContainerLocked) {
-      return launcherVisualEffectMgr.isRecentBlurEffectDisabled() ? 550 : 450;
-    }
-    let delayTime = 0;
-    for (let container of inScreenContainer) {
-      if (this.recentDelete.isUnclearAbleWhenClearAll(container)) {
-        delayTime = launcherVisualEffectMgr.isRecentBlurEffectDisabled() ? 400 : 350;
-        break;
-      }
-    }
-    return delayTime;
+    // if (isContainerLocked) {
+    //   return launcherVisualEffectMgr.isRecentBlurEffectDisabled() ? 550 : 450;
+    // }
+    // let delayTime = 0;
+    // for (let container of inScreenContainer) {
+    //   if (this.recentDelete.isUnclearAbleWhenClearAll(container)) {
+    //     delayTime = launcherVisualEffectMgr.isRecentBlurEffectDisabled() ? 400 : 350;
+    //     break;
+    //   }
+    // }
+    // return delayTime;
+    return 0;
   }
 
   /**
    * 加锁卡片标题消失
    *
    * @param { SCBSceneContainerSession } sceneContainerSession - 做动效的卡片
-   * @param { UIContext } context - 设备类型.
-   * @param { boolean } isDelayUnClearableAnimate - 是否有加锁的卡片.
+   * // @param { UIContext } context - 设备类型.
+   * // @param { boolean } isDelayUnClearableAnimate - 是否有加锁的卡片.
    */
-  public titleDisappearAnimationForUnClearable(sceneContainerSession: SCBSceneContainerSession,
-    context: UIContext | undefined,
-    isDelayUnClearableAnimate: boolean): void {
-    if (sceneContainerSession.isAppLockedForbidDelete) {
-      RecentLockIconModel.lockIconPosChangeAnimate(sceneContainerSession, context);
-      RecentLockIconModel.lockIconZoomInAnimate(sceneContainerSession);
-      RecentLockIconModel.lockIconZoomOutAnimate(sceneContainerSession);
-    }
-    RecentTitleViewModel.playTitleDisAppearAnimation(sceneContainerSession, isDelayUnClearableAnimate);
+  // public titleDisappearAnimationForUnClearable(sceneContainerSession: SCBSceneContainerSession,
+  //   context: UIContext | undefined,
+  //   isDelayUnClearableAnimate: boolean): void {
+  //   if (sceneContainerSession.isAppLockedForbidDelete) {
+  //     RecentLockIconModel.lockIconPosChangeAnimate(sceneContainerSession, context);
+  //     RecentLockIconModel.lockIconZoomInAnimate(sceneContainerSession);
+  //     RecentLockIconModel.lockIconZoomOutAnimate(sceneContainerSession);
+  //   }
+  //   RecentTitleViewModel.playTitleDisAppearAnimation(sceneContainerSession, isDelayUnClearableAnimate);
+  // }
+  public titleDisappearAnimationForUnClearable(sceneContainerSession: SCBSceneContainerSession): void {
+    sceneContainerSession.needRenderTitleViewAlpha.setTitleViewAlpha(0);
+    sceneContainerSession.needRenderShowRecentTitle.setShowRecentTitle(false);
   }
 
   /**

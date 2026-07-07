@@ -924,7 +924,7 @@ export class RecentEnterAnimations {
       if (!isFromApp) {
         animationNum++;
         animateToImmediately({
-          curve: curves.springMotion(0.45, 1, 0),
+          duration: 0,
           onFinish: () => {
             animationNum--;
             callback.onFinish(animationNum, isFromNavigationCallback);
@@ -935,7 +935,7 @@ export class RecentEnterAnimations {
       }
       animationNum++;
       animateToImmediately({
-        curve: curves.springMotion(0.5, 0.75, 0),
+        duration: 0,
         onFinish: () => {
           animationNum--;
           callback.onFinish(animationNum, isFromNavigationCallback);
@@ -948,7 +948,7 @@ export class RecentEnterAnimations {
       if (this.isNewStyle) {
         animationNum++;
         animateToImmediately({
-          curve: curves.interpolatingSpring(0, 1, 224, 22),
+          duration: 0,
           onFinish: () => {
             animationNum--;
             callback.onFinish(animationNum, isFromNavigationCallback);
@@ -963,8 +963,8 @@ export class RecentEnterAnimations {
 
       animationNum++;
       animateToImmediately({
-        delay: this.isNewStyle ? 150 : 0,
-        curve: curves.interpolatingSpring(0, 1, 224, 22),
+        // delay: this.isNewStyle ? 150 : 0,
+        duration: 0,
         onFinish: () => {
           animationNum--;
           callback.onFinish(animationNum, isFromNavigationCallback);
@@ -979,7 +979,7 @@ export class RecentEnterAnimations {
       if (listLen > 2 && isFromApp) {
         animationNum++;
         animateToImmediately({
-          curve: curves.springMotion(0.70, 0.8, 0),
+          duration: 0,
           onFinish: () => {
             animationNum--;
             callback.onFinish(animationNum, isFromNavigationCallback);
@@ -990,7 +990,7 @@ export class RecentEnterAnimations {
 
         animationNum++;
         animateToImmediately({
-          curve: curves.interpolatingSpring(0, 1, 93, 14),
+          duration: 0,
           onFinish: () => {
             animationNum--;
             callback.onFinish(animationNum, isFromNavigationCallback);
@@ -1003,7 +1003,7 @@ export class RecentEnterAnimations {
         animationNum++;
         animateToImmediately({
           delay: 150,
-          curve: curves.interpolatingSpring(0, 1, 93, 14),
+          duration: 0,
           onFinish: () => {
             animationNum--;
             callback.onFinish(animationNum, isFromNavigationCallback);
@@ -1017,7 +1017,7 @@ export class RecentEnterAnimations {
       if (lastFirstSession) {
         animationNum++;
         animateToImmediately({
-          curve: curves.springMotion(0.459, 0.77, 0),
+          duration: 0,
           onFinish: () => {
             animationNum--;
             callback.onFinish(animationNum, isFromNavigationCallback);

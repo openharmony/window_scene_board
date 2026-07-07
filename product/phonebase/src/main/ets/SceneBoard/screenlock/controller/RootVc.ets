@@ -73,7 +73,7 @@ const log: LogHelper = LogHelper.getLogHelper(LogDomain.KG, TAG);
 const MILLISECOND_TO_HALF_SECOND: number = 500;
 
 const MAX_SCREEN_OFF_DELAY_TIME: number = 2000;
-const IS_ULTRA_SCREEN = DeviceHelper.isUltraScreenProduct();
+const IS_THREE_FOLD = DeviceHelper.isThreeFoldProduct();
 const FOLD_STATUS_EXPANDED: number = 1;
 const FOLD_STATUS_HALF_FOLDED: number = 3;
 const FOLD_STATUS_FOLDED_WITH_SECOND_EXPANDED: number = 12;
@@ -205,7 +205,7 @@ export class RootVc extends AbstractInitialAble {
   }
 
   private initCurrentFoldStatus(): void {
-    if (!IS_ULTRA_SCREEN) {
+    if (!IS_THREE_FOLD) {
       return;
     }
     this.currentFoldStatus = DisplayUtils.getFoldStatus();
@@ -217,7 +217,7 @@ export class RootVc extends AbstractInitialAble {
    *
    */
   private registerFoldStatusListener(): void {
-    if (!IS_ULTRA_SCREEN) {
+    if (!IS_THREE_FOLD) {
       return;
     }
     log.showInfo('registerFoldStatusListener enter');
@@ -232,7 +232,7 @@ export class RootVc extends AbstractInitialAble {
    * 注销折叠监听
    */
   private unRegisterFoldStatusListener(): void {
-    if (!IS_ULTRA_SCREEN) {
+    if (!IS_THREE_FOLD) {
       return;
     }
     log.showInfo('unRegisterListener enter');

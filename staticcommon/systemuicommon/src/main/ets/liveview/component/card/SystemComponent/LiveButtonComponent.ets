@@ -24,6 +24,7 @@ import { ClickRegion } from '../../../../maintenance/StatisticsConstants';
 
 const TAG = LiveViewCommonConstants.LOG_PREFIX + 'LiveButtonComponent';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.SYS_UI, TAG);
+const BUTTON_OPACITY_AOD = 0.1;
 
 export interface LiveButtonBuildParam {
   baseData?: LiveViewData;
@@ -32,6 +33,7 @@ export interface LiveButtonBuildParam {
   isDarkMode: boolean;
   isNotBorder?: boolean;
   isCapsule?: boolean;
+  isAod?: boolean;
   bgBrightnessOption?: BrightnessOptions;
   isBrightnessDisable?: boolean;
   liveBtnNoBrightnessBgColor?: ResourceColor
@@ -59,9 +61,11 @@ export function LiveButtonComponent($$: LiveButtonBuildParam) {
   .height($$.extendStyle.buttonHeight)
   .borderRadius($$.extendStyle.buttonBorderRadius)
   .clip(true)
-  .opacity(1)
-  .backgroundColor($$.isBrightnessDisable ? $$.liveBtnNoBrightnessBgColor : $$.extendStyle.buttonBackground)
-  .backgroundBrightnessInternal(($$.isBrightnessDisable) ? undefined :
+  .opacity($$.isAod ? BUTTON_OPACITY_AOD : 1)
+  .backgroundColor($$.baseData?.isDeliverNotification ?
+  $$.extendStyle.deliverLiveButtonBackground :
+    ($$.isBrightnessDisable ? $$.liveBtnNoBrightnessBgColor : $$.extendStyle.buttonBackground))
+  .backgroundBrightnessInternal(($$.baseData?.isDeliverNotification || $$.isBrightnessDisable) ? undefined :
   $$.bgBrightnessOption)
   .onClick(() => onLiveButtonClick($$.buttonData, $$.baseData))
 }

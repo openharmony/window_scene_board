@@ -1,0 +1,16 @@
+{
+    "plural":[
+        {
+            "name":"folder_is_open_and_total_screen",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"폴더 열림, %d개 화면이 있음",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

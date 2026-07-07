@@ -14,6 +14,9 @@
  */
 
 import { AnimValue,
+  AodStyleType,
+  ImmersiveAodStyle,
+  immersiveKgMgr,
   LiveNavigationTemplate,
   LiveType,
   LiveUseScene,
@@ -44,6 +47,7 @@ export struct ImmersiveCommonCard {
   @Prop cardStyle: ImmersiveCardStyle;
   @Prop previewAlpha: number;
   @Prop isSmallFoldOuterScreen: boolean = false;
+  @State aodStyle: ImmersiveAodStyle | undefined = immersiveKgMgr.getOneMirrorState().getAodStyle(true);
   @State bindCardStateCtrl: SlCardWidgetBindState | undefined =
     immersiveStateHelper.getImmerseCardBindState() as SlCardWidgetBindState;
 
@@ -84,11 +88,12 @@ export struct ImmersiveCommonCard {
   buildSmallFoldOuterCardTip() {
     Column() {
       Image(immersiveVm.getImmersiveCardVm()
-        .getCardTipImg(false, !!this.bindCardStateCtrl?.getIsCardFold()))
+        .getCardTipImg(!!this.aodStyle?.isAod, !!this.bindCardStateCtrl?.getIsCardFold()))
         .objectFit(ImageFit.Contain)
         .width($r('app.float.immersive_card_tip_img_width'))
         .height($r('app.float.immersive_card_tip_img_height'))
-        .fillColor($r('app.color.card_tip_fill_color'))
+        .fillColor(this.aodStyle?.isAod ? this.aodStyle?.getStyleValue(AodStyleType.CARD_TIP_FILL_COLOR) :
+        $r('app.color.card_tip_fill_color'))
         .draggable(false)
         .interpolation(ImageInterpolation.Medium)
         .autoResize(false)
@@ -129,14 +134,15 @@ export struct ImmersiveCommonCard {
       .translate(this.getCardContentTranslate())
       .scale(this.getCardContentScale())
       .clip(true)
-      .backgroundBlurStyle(BlurStyle.Regular)
+      .backgroundBlurStyle(this.aodStyle?.isAod ? BlurStyle.NONE : BlurStyle.Regular)
       .borderRadius(this.cardContentAnimState.getBorderRadiusTL() ?? 20)
       .margin(immersiveVm.getImmersiveCardVm()
-        .getCardMargin(false, !!this.bindCardStateCtrl?.getIsCardFold()))
-      .backgroundColor(undefined)
+        .getCardMargin(!!this.aodStyle?.isAod, !!this.bindCardStateCtrl?.getIsCardFold()))
+      .backgroundColor(this.aodStyle?.isAod ?
+      this.aodStyle?.getStyleValue(AodStyleType.SHADE_BACKGROUND_COLOR) : undefined)
       .id(SlIdHelper.getViewId(SlStateMgr.MGR_OUTER_SCREEN, SlWidgetId.IMMERSIVE_lIVE_CARD))
       .alignRules(immersiveVm.getImmersiveCardVm()
-        .getCardAlign(false, !!this.bindCardStateCtrl?.getIsCardFold()))
+        .getCardAlign(!!this.aodStyle?.isAod, !!this.bindCardStateCtrl?.getIsCardFold()))
     }
     .onClick(this.handleSmallFoldOuterCardClick)
     .height(this.cardStyle.height)

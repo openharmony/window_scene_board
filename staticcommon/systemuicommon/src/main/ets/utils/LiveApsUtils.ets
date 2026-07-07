@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-// import apsManager from '@hms.graphic.apsManager';
+// import apsManager from '@ohos.graphic.apsManager';
 import deviceInfo from '@ohos.deviceInfo';
 import { Logger, LogDomain } from '@ohos/basicutils';
 import { ApsUtils } from '@ohos/frameworkwrapper';

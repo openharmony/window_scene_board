@@ -49,6 +49,12 @@ export function AppIconStyleConfigTest() {
       style = AppIconStyleConfig.getCloneBadgeStyle(AppBadgeStyleType.SMALLER_ICON);
       expect(style.width).assertEqual(14);
       expect(style.height).assertEqual(14);
+      style = AppIconStyleConfig.getCloneBadgeStyle(AppBadgeStyleType.DELIVER_ICON);
+      expect(style.width).assertEqual(20);
+      expect(style.height).assertEqual(16);
+      style = AppIconStyleConfig.getCloneBadgeStyle(AppBadgeStyleType.SMALLER_DELIVER_ICON);
+      expect(style.width).assertEqual(14);
+      expect(style.height).assertEqual(11);
     });
 
     it('test_getIconShadowOptions', 0, () => {

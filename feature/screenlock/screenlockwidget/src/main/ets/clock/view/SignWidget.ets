@@ -14,6 +14,9 @@
  */
 
 import { RTLUtil } from '@ohos/componenthelper/src/main/ets/TsIndex';
+import { DeviceHelper } from '@ohos/frameworkwrapper';
+import { SlWidgetId } from '@ohos/screenlockcommon/src/main/ets/constants/SlWidgetConst';
+import { ImmersiveAodStyle, immersiveKgMgr } from '@ohos/systemuicommon/src/main/ets/TsIndex';
 
 const ROOT_ID = '__container__';
 
@@ -67,6 +70,9 @@ export struct SignWidget {
   // 文本缩放度
   @Prop signScale?: ScaleOptions = undefined;
 
+  // Aod显示样式
+  @State aodStyle?: ImmersiveAodStyle = immersiveKgMgr.getOneMirrorState().getAodStyle(true);
+
   // Aod电池图标可见性
   @Prop aodBatteryIconVisibility: Visibility = Visibility.Hidden;
 
@@ -106,7 +112,7 @@ export struct SignWidget {
         })// 最大宽度限制
         .padding({ right: HIDE_PADDING }) // 跑马灯文本宽度和组件宽度相等会开启，留边界
         .alignRules(this.getAlignRuleOption())
-        .visibility(this.isPreviewPage ? Visibility.Visible : Visibility.Hidden)
+        .visibility(this.aodStyle?.isAod || this.isPreviewPage ? Visibility.Visible : Visibility.Hidden)
         .offset({
           x: this.getOffset() + 'px',
         })
@@ -128,7 +134,7 @@ export struct SignWidget {
           left: { anchor: HIDE_TEXT_ID, align: HorizontalAlign.Start },
           right: { anchor: HIDE_TEXT_ID, align: HorizontalAlign.End }
         })
-        .visibility(this.isPreviewPage ? Visibility.Hidden : Visibility.Visible)
+        .visibility(this.aodStyle?.isAod || this.isPreviewPage ? Visibility.Hidden : Visibility.Visible)
         // 跑马灯跑2次后停下
         .marqueeOptions({ start: true, fromStart: true, step: STEP_COUNT, loop: LOOP_COUNT })
     }
@@ -142,7 +148,7 @@ export struct SignWidget {
 
   private getMainTextOverflow(): TextOverflow {
     // 熄屏后，停止跑马灯
-    return this.isPreviewPage ? TextOverflow.Ellipsis : TextOverflow.MARQUEE;
+    return this.aodStyle?.isAod || this.isPreviewPage ? TextOverflow.Ellipsis : TextOverflow.MARQUEE;
   }
 
   private getAlignRuleOption(): AlignRuleOption { // 对齐方式

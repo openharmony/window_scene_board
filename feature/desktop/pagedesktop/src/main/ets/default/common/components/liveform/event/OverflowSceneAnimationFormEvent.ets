@@ -23,7 +23,7 @@ import { CheckEmptyUtils, DomainName,
   TraceUtil,
   PixelMapUtil
 } from '@ohos/basicutils';
-import { ResourceManager } from '@ohos/frameworkwrapper';
+import { LightOutdoorConfig, ResourceManager } from '@ohos/frameworkwrapper';
 import { SnapshotType, dragSnapshotHelper } from '@ohos/componenthelper';
 import {
   CardItemInfo,
@@ -592,6 +592,9 @@ export class OverflowSceneAnimationFormEvent extends FormItemRelativeEvent imple
     let isUnableDrag: boolean = gestureInfo.type === GestureControl.GestureType.DRAG &&
       !desktopItemDraggableManager.getEnableDrag();
     if (isUnableDrag) {
+      return GestureJudgeResult.REJECT;
+    }
+    if (gestureInfo.type === GestureControl.GestureType.DRAG && LightOutdoorConfig.getInstance().isOnLightOutdoorMode()) {
       return GestureJudgeResult.REJECT;
     }
     if (!this.isActiveOverflowForm() || CheckEmptyUtils.isEmpty(gestureInfo)) {

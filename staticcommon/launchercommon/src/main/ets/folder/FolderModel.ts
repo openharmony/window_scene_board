@@ -1,5 +1,5 @@
 /**
- * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved. 2024-2025. All rights reserved.
+ * Copyright (c) 2021-2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -139,11 +139,11 @@ export class FolderModel {
 
   /**
    * 判断产品是否为pad或大折叠，如果是需要返回4x4布局，不是则返回3x4布局，
-   * UltraScreen需要使用单独的接口,避免返回值错误
+   * ThreeFold需要使用单独的接口,避免返回值错误
    * SCBScreenSession.isSingleDisplayPocketFoldDevice()为判断是否小折叠新产品
    */
   private isDevicePadOrBigFold(): boolean {
-    if (DeviceHelper.isUltraScreenProduct()) {
+    if (DeviceHelper.isThreeFoldProduct()) {
       return DeviceHelper.isGState() || DeviceHelper.isMState();
     }
     if (DeviceHelper.isPad()) {

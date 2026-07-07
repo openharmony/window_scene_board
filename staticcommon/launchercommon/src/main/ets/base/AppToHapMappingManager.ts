@@ -13,19 +13,20 @@
  * limitations under the License.
  */
 
-import { CheckEmptyUtils, CommonUtils, FileUtils, LogDomain, LogHelper } from '@ohos/basicutils';
+import { LogDomain, LogHelper, CheckEmptyUtils, CommonUtils, FileUtils } from '@ohos/basicutils';
 import { GlobalContext } from '@ohos/frameworkwrapper';
 import preferences from '@ohos.data.preferences';
 import common from '@ohos.app.ability.common';
-import { AppItemInfo, AppModel } from '../TsIndex';
-import { AppFoundationServiceExtensionManager, MappingInfo } from '../manager/AppFoundationServiceExtensionManager';
+import { AppItemInfo, AppModel, DeliverUtil } from '../TsIndex';
+import { AppFoundationServiceExtensionManager } from '../manager/AppFoundationServiceExtensionManager';
+import { MappingInfo } from '../manager/AppFoundationServiceExtensionManager';
 
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.HOME, 'AppToHapMappingManager');
 const MAPPING_KEY: string = 'mapping';
 const LAST_UPDATE_TIME_KEY: string = 'lastUpdateTime';
 const PREFERENCES_FILE_NAME: string = 'mappingFile';
 const DELIVERY_APP_STRATEGY_FILE_NAME: string = 'delivery_app_strategy.json';
-const LOCAL_PATH_PREFIX = '/';
+const LOCAL_PATH_PREFIX = '/deliverapps/';
 const DAY_IN_MILLIS = 1000 * 60 * 60 * 24;
 const APP_LEAVE_LAKE_BLOCK_TYPE: string = 'block';
 const APP_LEAVE_GRAY_TYPE: string = 'gray';
@@ -159,6 +160,11 @@ export class AppToHapMappingManager {
     return AppModel.getInstance().getAppInfoByBundleName(hapName) === undefined;
   }
 
+  private isStartdeliverApp(bundleName: string): boolean {
+    return DeliverUtil.isSupportDeliver() && DeliverUtil.isSupportAppType(bundleName) &&
+      DeliverUtil.getDeliverStartStatus() === DeliverUtil.DELIVER_START_FINISHED_CODE;
+  }
+
   /**
    * 应用是否强制更新/卸载
    * @param bundleName 应用包名
@@ -203,6 +209,52 @@ export class AppToHapMappingManager {
     }
     log.showInfo(`installedDialogType: ${installedDialogType}`);
     return installedDialogType;
+  }
+
+  public shouldOpenDialog(sourceBundleName: string): deliverDialogType {
+    log.showInfo('shouldOpenDialog sourceBundleName: %{public}s', sourceBundleName);
+    try {
+      if (!this.isStartdeliverApp(sourceBundleName)) {
+        return deliverDialogType.NOT_EXIST_MAPPING_NEXT_VERSION;
+      }
+      if (this.firstQueryMapping() || this.isQueryMappingAfter24Hours()) {
+        this.queryCloudAppMappingAndPersist();
+      }
+      // 映射策略里面不包含这个策略，先按照不处理
+      let appToHapDetail: AppToHapDetail | undefined = this.mMapping.get(sourceBundleName);
+      if (!appToHapDetail || CheckEmptyUtils.checkStrIsEmpty(appToHapDetail.bundleName)) {
+        return deliverDialogType.NOT_EXIST_MAPPING_NEXT_VERSION;
+      }
+      log.showInfo('appToHapDetail mAppToHapPolicyType: %{public}s, mappingType = %{public}s',
+        appToHapDetail.bundleName,
+        appToHapDetail.mappingType);
+      // 策略包名优先，兜底灰名单
+      let policyStrategy: AppToHapPolicyStrategy | undefined = this.appToHapPolicyMap.get(sourceBundleName);
+      if (!policyStrategy && appToHapDetail.mappingType) {
+        policyStrategy = this.appToHapPolicyMap.get(appToHapDetail.mappingType);
+      }
+      if (!policyStrategy) {
+        policyStrategy = this.appToHapPolicyMap.get(APP_LEAVE_GRAY_TYPE);
+      }
+      log.showInfo('shouldOpenDialog remindUpdate: %{public}s', policyStrategy?.remindUpdate);
+      if (policyStrategy?.remindUpdate !== true) {
+        return deliverDialogType.NOT_EXIST_MAPPING_NEXT_VERSION;
+      }
+      let mAppShowDialogDetail = this.mRecordMap.get(sourceBundleName);
+      if (this.mMapping.has(sourceBundleName) &&
+        this.checkRemindFrequencyAndCount(mAppShowDialogDetail, policyStrategy)) {
+        this.saveMyRecordMap(sourceBundleName, new Date().getTime());
+        let mAppToHapDetail = this.mMapping.get(sourceBundleName);
+        if (mAppToHapDetail && this.isUninstalled(mAppToHapDetail.bundleName)) {
+          return deliverDialogType.NEXT_VERSION_NOT_INSTALLED;
+        } else {
+          return deliverDialogType.NEXT_VERSION_INSTALLED;
+        }
+      }
+    } catch (e) {
+      log.showError(`shouldOpenDialog error:${e}`);
+    }
+    return deliverDialogType.NOT_EXIST_MAPPING_NEXT_VERSION;
   }
 
   /**
@@ -259,7 +311,11 @@ export class AppToHapMappingManager {
     let appServiceManager: AppFoundationServiceExtensionManager = AppFoundationServiceExtensionManager.getInstance();
     let totalAppArr: AppItemInfo[] = AppModel.getInstance().getAppList();
     let deliverPackageNameArr: string[] = [];
-    totalAppArr.forEach(item => {});
+    totalAppArr.forEach(item => {
+      if (item.codePath === DeliverUtil.ohos_APPLICATION) {
+        deliverPackageNameArr.push(item.bundleName);
+      }
+    });
     await appServiceManager.queryAppMappingInfo(deliverPackageNameArr);
     let relationMap: Map<string, MappingInfo> = appServiceManager.getohosAppMappingInfoMap();
     log.showInfo('queryAppMappingInfo res.length : %{public}d', relationMap.size);
@@ -270,9 +326,13 @@ export class AppToHapMappingManager {
           return;
         }
         let bundleName: string = value.harmonyInfos[0].bundleName;
+        let isAbroadTrust: boolean = (value.type & 1 << 11) > 0;
+        let isdeliverTrust: boolean = (value.type & 1 << 12) > 0;
         let isGray: boolean = (value.type & 1 << 13) > 0;
         if (isGray) {
           this.setMappingInfo(map, key, bundleName, APP_LEAVE_GRAY_TYPE);
+        } else if (isdeliverTrust || isAbroadTrust) {
+          this.setMappingInfo(map, key, bundleName, APP_LEAVE_TRUST_TYPE);
         } else {
           this.setMappingInfo(map, key, bundleName, APP_LEAVE_LAKE_BLOCK_TYPE);
         }
@@ -309,7 +369,7 @@ export class AppToHapMappingManager {
   }
 
   /**
-   *  初始化出湖策略
+   *  初始化策略
    */
   public initAppToHapPolicyMap(): void {
     let strategyPath = GlobalContext.getContext().filesDir + LOCAL_PATH_PREFIX + DELIVERY_APP_STRATEGY_FILE_NAME;
@@ -384,6 +444,12 @@ export class AppToHapMappingManager {
     this.mappingPreferences?.flush();
     log.info('resetDialogDetail reset increasingFlag success');
   }
+}
+
+export enum deliverDialogType {
+  NOT_EXIST_MAPPING_NEXT_VERSION = 0,
+  NEXT_VERSION_NOT_INSTALLED = 1,
+  NEXT_VERSION_INSTALLED = 2,
 }
 
 class AppToHapPolicyStrategy {

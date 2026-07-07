@@ -20,6 +20,7 @@ import { CommonConstants } from '../../constants/CommonConstants';
 import {
   AppItemInfo,
   AppModel,
+  DeliverUtil,
   DesktopUtils,
   launcherAbilityManager,
   RdbStoreManager,
@@ -107,6 +108,6 @@ export class ShortcutChangeCorrector extends AbstractGridLayoutCorrector {
    * @returns true是非定制文件夹
    */
   private isNormalFolder(folderItem: GridLayoutItemInfo): boolean {
-    return folderItem.typeId === CommonConstants.TYPE_FOLDER;
+    return folderItem.typeId === CommonConstants.TYPE_FOLDER && (!DeliverUtil.isContainerFolder(folderItem.folderId));
   }
 }

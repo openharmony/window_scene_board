@@ -13,7 +13,13 @@
  * limitations under the License.
  */
 
-import { BaseConstants, ImmersiveSysEventUtils } from '@ohos/systemuicommon';
+import {
+  AodStyleType,
+  ImmersiveAodStyle,
+  immersiveKgMgr,
+  BaseConstants,
+  ImmersiveSysEventUtils
+} from '@ohos/systemuicommon';
 import { NotificationAnimationParas } from '@ohos/notificationcomponent/src/main/ets/common/NotificationAnimationParas';
 import { NotificationEntry } from '@ohos/notificationcomponent/src/main/ets/model/NotificationEntry';
 import { NotificationListItem } from '@ohos/notificationcomponent/src/main/ets/pages/phone/NotificationListItem';
@@ -80,6 +86,12 @@ export struct ImmersiveListItem {
    * 子组件动效状态管理
    */
   @State innerState: WidgetAnimState | undefined = undefined;
+
+  /**
+   * Aod显示样式
+   */
+  @State @Watch('handleAodStyleChange')aodStyle: ImmersiveAodStyle | undefined =
+    immersiveKgMgr.getOneMirrorState().getAodStyle(true);
 
   /**
    * 锁屏条目提亮参数
@@ -149,7 +161,7 @@ export struct ImmersiveListItem {
     .enabled(this.isAccessibilityMode ? true : (this.ntfAnimParameters?.isItemEnable() ?? true))
     .borderRadius(this.listStaticState.itemRadius)
     .zIndex(this.getItemZIndex())
-    .transition(this.listStaticState.itemTransition)
+    .transition(this.aodStyle?.isAod ? undefined : this.listStaticState.itemTransition)
     .onAreaChange((old, newArea) => this.itemAreaChange?.(old, newArea))
     .onSizeChange((old, newSize) => this.listVm?.onItemSizeChange(this.getEntryGroupKey(), old, newSize))
     .onTouchIntercept((event: TouchEvent) => this.eventHandle.onItemTouchIntercept(event, this.getEntryGroupKey()))
@@ -397,6 +409,9 @@ export struct ImmersiveListItem {
    * @returns 透明度
    */
   private getItemAlpha(): number | undefined {
+    if (this.aodStyle?.isAod) {
+      return this.aodStyle.getStyleValue(AodStyleType.LIST_CARD_BG_ALPHA);
+    }
     // 动效透明度
     if (this.animState?.isSceneAnimating()) {
       return this.animState?.getAlpha();
@@ -447,5 +462,9 @@ export struct ImmersiveListItem {
    */
   private getEntryGroupKey(): string {
     return this.ntfEntry?.getGroupKey() ?? '';
+  }
+
+  private handleAodStyleChange(): void {
+    this.listVm.updateBackColorForAod();
   }
 }

@@ -21,6 +21,7 @@ import { StatusBarNotificationEvent } from '@ohos/systemuicommon/src/main/ets/ev
 import { InnerEventUtil, NotificationBase } from '@ohos/systemuicommon/newTsIndex';
 import { LiveType } from '@ohos/systemuicommon/src/main/ets/live/model/LiveCommonModel';
 import { image } from '@kit.ImageKit';
+import { OutdoorVm } from '@ohos/systemuicommon/src/main/ets/vm/OutdoorVm';
 
 const TAG = 'NotificationStatusBarEventManager';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.NC, TAG);
@@ -65,7 +66,8 @@ export class NotificationStatusBarEventManager {
    * 发送状态栏图标变化事件。
    */
   public postStatusBarNotificationEvent(inputNtfList: NotificationBase[]): void {
-    const ntfList = inputNtfList.filter(ntf => !ntf.isLiveView());
+    const ntfList = inputNtfList.filter(ntf => !ntf.isLiveView() &&
+      OutdoorVm.instance.isInOutdoorAppList(ntf));
 
     this.iconNtfList = ntfList;
 

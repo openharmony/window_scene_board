@@ -39,7 +39,7 @@ export async function ControlCenterComponentUiTest() {
     beforeAll(async () => {
       QuickToggleController.getInstance().saveQuickToggleData([
         'flashlight', 'ring_mode', 'auto_rotate', 'mobile_data', 'share', 'location', 'air_plane', 'hotspot',
-        'toggle_screenshot', 'toggle_screen_recorder', 'nfc', 'HuaweiCastToggle', 'dark_mode', 'camera', 'mic', 'sound'
+        'toggle_screenshot', 'toggle_screen_recorder', 'nfc', 'CastToggle', 'dark_mode', 'camera', 'mic', 'sound'
       ]);
       try {
         // 亮屏解锁
@@ -588,14 +588,14 @@ export async function ControlCenterComponentUiTest() {
       }
     });
 
-    it('ControlCenterComponentUiTest_HuaweiCastToggle', 0, async (done: Function) => {
+    it('ControlCenterComponentUiTest_CastToggle', 0, async (done: Function) => {
       try {
         // 下拉控制中心
         await driver.swipe(850, 10, 850, 400, 2000);
         await driver.delayMs(1500);
 
         // 点击声音进入二级页面
-        let btn = await driver.findComponent(ON.id('ToggleBaseComponent_Image_HuaweiCastToggle'));
+        let btn = await driver.findComponent(ON.id('ToggleBaseComponent_Image_CastToggle'));
         await btn.click();
         await driver.delayMs(3000);
 

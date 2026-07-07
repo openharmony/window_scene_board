@@ -25,6 +25,22 @@
       "column": 2
     },
     {
+      "cardName": "minVoiceRecCard",
+      "bundleName": "com.ohos.suggestion",
+      "abilityName": "ParentFormAbility",
+      "moduleName": "entry",
+      "formConfigAbility": "",
+      "cardDimension": 2,
+      "typeId": 1,
+      "area": [
+        2,
+        2
+      ],
+      "page": 0,
+      "row": 2,
+      "column": 0
+    },
+    {
       "cardName": "notesCard2x2ForPhone",
       "bundleName": "com.ohos.notepad",
       "abilityName": "FormAbility",

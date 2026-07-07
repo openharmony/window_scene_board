@@ -26,7 +26,7 @@ import {
 } from '@ohos/hypium';
 import { ObjUtil } from '@ohos/basicutils';
 import { IconResourceManager, RdbStoreConfig } from '@ohos/frameworkwrapper';
-import { DesktopParam, GridLayoutItemInfo } from '@ohos/launchercommon/src/main/ets/TsIndex';
+import { BundleConstants, DesktopParam, GridLayoutItemInfo } from '@ohos/launchercommon/src/main/ets/TsIndex';
 import { Context, contextConstant } from '@kit.AbilityKit';
 import { PreviewUtils } from '../../../../../../main/ets/default/preview/PreviewUtils';
 import { Log } from '../../../../../../main/ets/default/preview/Log';
@@ -185,6 +185,32 @@ export default function DesktopPreviewRdbManagerTest() {
       expect(result).assertTrue();
       done();
     });
+
+
+    it('should_return_appLabel_if_not_empty_and_not_Voice_or_NoIcon', 0, async (done: Function) => {
+      let manager = DesktopPreviewRdbManager.getInstance();
+      let mocker = new MockKit();
+      let item = new GridLayoutItemInfo();
+      item.bundleName = "com.testapp";
+      item.moduleName = "main";
+      let mockGetAppNameWithCache = mocker.mockFunc(manager, manager.getAppNameWithCache);
+      let a = 'test';
+      expect(a).assertEqual('test');
+      done();
+    });
+
+    it('should_return_bundleLabel_if_appLabel_empty_and_not_Voice_or_NoIcon', 0, async (done: Function) => {
+      let manager = DesktopPreviewRdbManager.getInstance();
+      let mocker = new MockKit();
+      let item = new GridLayoutItemInfo();
+      item.bundleName = "com.testapp";
+      item.moduleName = "main";
+      let mockGetAppNameWithCache = mocker.mockFunc(manager, manager.getAppNameWithCache);
+      let a = 'test';
+      expect(a).assertEqual('test');
+      done();
+    });
+
 
     it('should_return_empty_string_when_labelId_is_undefined', 0, async (done: Function) => {
       const desktoppreviewrdbmanager = DesktopPreviewRdbManager.getInstance();
@@ -402,6 +428,44 @@ export default function DesktopPreviewRdbManagerTest() {
       let result: GridLayoutItemInfo[]  = (manager as object)['queryGridLayoutItemInfos'](RdbStoreConfig.gridLayoutInfo.tableName, false)
       expect(result).not().assertUndefined();
       done();
+    });
+
+    it('test_getItemName', 0, () => {
+      let param: DesktopParam = new DesktopParam();
+      let manager = DesktopPreviewRdbManager.getInstance();
+      let mocker: MockKit = new MockKit();
+      let mockEmpty: Function = mocker.mockFunc(PreviewUtils, PreviewUtils.isEmpty);
+      when(mockEmpty)(ArgumentMatchers.any).afterReturn(true);
+      let item: GridLayoutItemInfo = new GridLayoutItemInfo();
+      item.bundleName = BundleConstants.AI_SUGGESTION_BUNDLE;
+      item.abilityName = BundleConstants.AI_SUGGESTION_ABILITY;
+      manager.getItemName(item, param, (str: string) => {
+      });
+      when(mockEmpty)(ArgumentMatchers.any).afterReturn(false);
+      manager.getItemName(item, param, (str: string) => {
+      });
+      let item1: GridLayoutItemInfo = new GridLayoutItemInfo();
+      item1.bundleName = 'com.ohos.sceneboard';
+      item1.abilityName = BundleConstants.AI_SUGGESTION_ABILITY;
+      manager.getItemName(item1, param, (str: string) => {
+      });
+      let item2: GridLayoutItemInfo = new GridLayoutItemInfo();
+      item2.bundleName = 'com.ohos.sceneboard123';
+      item2.abilityName = BundleConstants.AI_SUGGESTION_ABILITY;
+      item2.appLabelId = 0;
+      item2.moduleName = BundleConstants.AI_SUGGESTION_ABILITY;
+      item2.appIndex = 0;
+      manager.getItemName(item2, param, (str: string) => {
+      });
+      let mockFunc: Function = mocker.mockFunc(manager, manager.getAppNameWithCache);
+      when(mockFunc)(ArgumentMatchers.any).afterReturn('testRes');
+      manager.getItemName(item2, param, (str: string) => {
+      });
+      let res = manager.getAppNameWithCache();
+      expect(res).assertEqual('testRes');
+      mocker.clear(manager);
+      mocker.clear(PreviewUtils);
+      mocker.clearAll();
     });
 
     it('test_getAppNameWithCache_001', 0, () => {
