@@ -1,5 +1,5 @@
 /*
- * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -20,13 +20,18 @@ import {
   SCBSceneSessionManager,
   SCBScreenProperty,
   SCBSystemSceneSession,
-  SystemSessionInfo
+  SystemSessionInfo,
+  windowMgr
 } from "@ohos/windowscene"
 import { SCBDefaultZIndex } from "./SCBScreen";
 import sceneSessionManager from '@ohos.sceneSessionManager';
 import { SCBFloatManager } from "./multiwindow/SCBFloatManager";
+import { LogHelper, LogDomain } from "@ohos/basicutils";
+import { WindowConstants } from "@ohos/commonconstants";
 
 const TAG = 'SCBScalingScene';
+const log = LogHelper.getLogHelper(LogDomain.SCB, TAG);
+
 
 // 缩放灵敏度（越小越平滑，推荐 0.6 ~ 0.9）
 const SCALE_SENSITIVITY = 0.7;
@@ -44,10 +49,12 @@ const FLOATING_SCENE_UNFOCUSED_BORD_COLOR = '#B2B3B3B3';
 @Component
 export struct SCBScalingScene {
   @Link sceneContainerSession: SCBSceneContainerSession;
-  @Link screenProperty: SCBScreenProperty;
+  @Link @Watch('onOrientationChanged') screenProperty: SCBScreenProperty;
   @Link floatingParam: SCBFloatingParam;
-  private baseW: number = px2vp(this.screenProperty.width * FloatingScenePortraitStyle.DEFAULT_WIDTH_RATIO);
-  private baseH: number = this.baseW / FloatingScenePortraitStyle.ASPECT_RATIO;
+  @State baseW: number = px2vp(this.screenProperty.width * FloatingScenePortraitStyle.DEFAULT_WIDTH_RATIO);
+  @State baseH: number =
+    this.screenProperty.width < this.screenProperty.height ? this.baseW / FloatingScenePortraitStyle.ASPECT_RATIO :
+      this.baseW * FloatingScenePortraitStyle.ASPECT_RATIO;
   // windowscene
   private systemSessionInfo: SystemSessionInfo = {
     systemType: sceneSessionManager.SessionType.TYPE_PANEL,
@@ -66,6 +73,8 @@ export struct SCBScalingScene {
   // 缩放拖拽相关
   private startX: number = 0;
   private startY: number = 0;
+  private oldPosX: number = 0;
+  private oldPosY: number = 0;
   private startPosX: number = this.baseW * (1 - FloatingScenePortraitStyle.DEFAULT_WIDTH_RATIO) / 2;
   private startPosY: number = this.baseH * (1 - FloatingScenePortraitStyle.DEFAULT_WIDTH_RATIO) / 2;
   private startWidth: number = 0;
@@ -73,6 +82,7 @@ export struct SCBScalingScene {
   private startTouchY: number = 0;
   private startScale: number = 1;
   private scaleCenterX: number | string = 0;
+  private statusBarHeight: number = this.getStatusBarHeight();
   private minScale: number =
     FloatingScenePortraitStyle.ORIGINAL_MIN_WIDTH_RATIO / FloatingScenePortraitStyle.DEFAULT_WIDTH_RATIO;
   private maxScale: number =
@@ -98,8 +108,10 @@ export struct SCBScalingScene {
         if (this.floatingParam.isFloatDragging) {
           const deltaX = touchX - this.startX;
           const deltaY = touchY - this.startY;
-          this.sceneContainerSession.needRenderPos.setPosX(this.startPosX + deltaX);
-          this.sceneContainerSession.needRenderPos.setPosY(this.startPosY + deltaY);
+          this.oldPosX = this.startPosX + deltaX;
+          this.oldPosY = Math.max(this.startPosY + deltaY, this.statusBarHeight);
+          this.sceneContainerSession.needRenderPos.setPosX(this.oldPosX);
+          this.sceneContainerSession.needRenderPos.setPosY(this.oldPosY);
         }
         break;
 
@@ -170,7 +182,8 @@ export struct SCBScalingScene {
         }
         this.sceneContainerSession.needRenderScale.setScaleX(newScale);
         this.sceneContainerSession.needRenderScale.setScaleY(newScale);
-        this.sceneContainerSession.needRenderPos.setPosX(this.startPosX + offsetX);
+        this.oldPosX = this.startPosX + offsetX;
+        this.sceneContainerSession.needRenderPos.setPosX(this.oldPosX);
         break;
       }
 
@@ -181,6 +194,57 @@ export struct SCBScalingScene {
         break;
       }
     }
+  }
+  private oldOrientation: number = this.screenProperty.rotation;
+  private orientationTimer: number = -1;
+
+  private onOrientationChanged() {
+    let rotation = this.screenProperty.rotation;
+    if (this.oldOrientation === rotation) {
+      return;
+    }
+    if(Math.abs(this.oldOrientation - rotation) === 180) {
+      this.oldOrientation = rotation;
+      return;
+    }
+    log.showInfo('onOrientationChanged, rotation: ' + rotation);
+    // debounce 处理，因为有时会短时间内多次回调。
+    if (this.orientationTimer !== -1) {
+      clearTimeout(this.orientationTimer);
+    }
+    this.orientationTimer = setTimeout(() => {
+      this.onOrientation();
+      this.orientationTimer = -1;
+    }, 100);
+    this.oldOrientation = rotation;
+  }
+
+  private onOrientation() {
+    let tmp = this.baseW;
+    this.baseW = this.baseH;
+    this.baseH = tmp;
+    const statusBarHeight = this.getStatusBarHeight();
+    if (this.oldPosY === 0 && this.oldPosX === 0) {
+      this.sceneContainerSession.needRenderPos.setPosX(this.startPosY);
+      this.sceneContainerSession.needRenderPos.setPosY(this.startPosX);
+    } else if (this.oldPosY < statusBarHeight || this.oldPosX < statusBarHeight || this.oldPosY > this.baseH || this.oldPosX > this.baseW / 2) {
+      // 防止旋转后无法点击关闭或移动，在超界后归位到初始位置。
+      this.startPosX = this.baseW * (1 - FloatingScenePortraitStyle.DEFAULT_WIDTH_RATIO) / 2;
+      this.startPosY = this.baseH * (1 - FloatingScenePortraitStyle.DEFAULT_WIDTH_RATIO) / 2;
+      this.sceneContainerSession.needRenderPos.setPosX(this.startPosX);
+      this.sceneContainerSession.needRenderPos.setPosY(this.startPosY);
+    } else {
+      this.sceneContainerSession.needRenderPos.setPosX(this.oldPosY);
+      this.sceneContainerSession.needRenderPos.setPosY(this.oldPosX);
+    }
+  }
+
+  private getStatusBarHeight(): number {
+    let statusBarH: number = px2vp(windowMgr.getWindowPosition(WindowConstants.WINDOW_NAME_STATUS_BAR).height);
+    if (statusBarH !== 0) {
+      statusBarH++;
+    }
+    return Math.ceil(statusBarH);
   }
 
   private exitApp() {

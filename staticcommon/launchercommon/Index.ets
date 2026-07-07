@@ -154,6 +154,8 @@ export { UninstallDialogUtil } from './src/main/ets/utils/UninstallDialogUtil';
 
 export { DesktopSettingUtils } from './src/main/ets/utils/DesktopSettingUtil';
 
+export { DeliverDialogUtil } from './src/main/ets/utils/DeliverDialogUtil';
+
 export { GridPositionFindUtil, ItemLocation } from './src/main/ets/utils/GridPositionFindUtil'
 
 export {
@@ -177,6 +179,8 @@ export {
 } from './src/main/ets/editmode/viewModel/batchUninstall/BatchUninstallChain';
 
 export { BatchItemInfo, RemoveDialogConfig, IconImage } from './src/main/ets/editmode/viewModel/batchUninstall/DialogBatchUninstaller';
+
+export { BlankPageTransFormItem } from './src/main/ets/transformdata/transfromitem/BlankPageTransFormItem';
 
 export { PageEditAnimationManager, PageEditAnimateHook } from './src/main/ets/editmode/model/PageEditAnimationManager';
 
@@ -220,7 +224,7 @@ export { FoldExpandAnimUtils } from './src/main/ets/utils/FoldExpandAnimUtils';
 
 export { FoldAnimationConstants } from './src/main/ets/constants/FoldAnimationConstants';
 
-export { UltraScreenExpandAnimUtils } from './src/main/ets/utils/UltraScreenExpandAnimUtils';
+export { TripleFoldExpandAnimUtils } from './src/main/ets/utils/TripleFoldExpandAnimUtils';
 
 export { FolderSnapshotManager, FolderSnapInfo } from './src/main/ets/folder/next/common/manager/FolderSnapshotManager';
 

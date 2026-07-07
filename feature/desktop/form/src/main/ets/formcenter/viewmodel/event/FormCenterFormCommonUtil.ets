@@ -30,6 +30,12 @@ export class FormCenterFormCommonUtil {
     if (!CheckEmptyUtils.checkStrIsEmpty(name)) {
       return name;
     }
+
+    name = await ResUtils.getDeliverOutStringById(Number(id), item.bundleName);
+    if (!CheckEmptyUtils.checkStrIsEmpty(name)) {
+      ResourceManager.getInstance().setAppResourceCache(cacheKey, KEY_NAME, name);
+      return name;
+    }
     return defaultName;
   }
 

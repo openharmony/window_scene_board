@@ -45,9 +45,9 @@ export class ASCFWindowMgrAdapter {
   }
 
   private static isSupportAtomicServiceFloatScene(): boolean {
-    return DeviceHelper.isPad() || (DeviceHelper.isUltraScreenProduct() &&
+    return DeviceHelper.isPad() || (DeviceHelper.isThreeFoldProduct() &&
     SCBScreenSessionManager.getInstance().isSecondaryFoldablePhoneExpandStatus() &&
-      !DeviceHelper.isUltraScreenGPortrait()) ||
+      !DeviceHelper.isThreeFoldGPortrait()) ||
       (DeviceHelper.isPhone() && DeviceHelper.isFoldExpandedOrHalfButNotSmallFoldProduct());
   }
 }

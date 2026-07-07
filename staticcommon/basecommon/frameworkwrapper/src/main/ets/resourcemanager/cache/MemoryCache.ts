@@ -16,10 +16,11 @@
 import { IconCacheInterface } from '../IconCacheInterface';
 import IconInfo, { IconPicType } from '../IconInfo';
 import HashMap from '@ohos.util.HashMap';
-import { LogDomain, Logger, CheckEmptyUtils } from '@ohos/basicutils';
+import { LogDomain, Logger, CheckEmptyUtils, OutdoorConfig } from '@ohos/basicutils';
 import { image } from '@kit.ImageKit';
 import { IconExtendParam } from '../IconExtendParam';
 import { GraphicUtils } from '../GraphicsUtils';
+import { LightOutdoorConfig } from '../../service/config/LightOutdoorConfig';
 import { default as sSettingsUtil } from '../../setting/SettingsUtil';
 import { SettingsConstants, SettingsKeyConstants } from '@ohos/commonconstants';
 import { settings } from '@kit.BasicServicesKit';
@@ -68,7 +69,7 @@ export class MemoryCache implements IconCacheInterface {
   }
 
   /**
-   * 批量缓存图标
+   * 批量缓存图标，仅适用于非云端模式切主题场景
    *
    * @param iconInfos 需要缓存的图标信息
    * @returns
@@ -76,6 +77,15 @@ export class MemoryCache implements IconCacheInterface {
   public async setIconResourceArray(iconInfos: IconInfo[]): Promise<void> {
     log.showWarn(TAG, 'setIconResourceArray, size: ' + iconInfos.length);
     for (let iconInfo of iconInfos) {
+      // 切主题缓存过程中切到云端2，中止缓存操作
+      if (OutdoorConfig.getInstance().isInOutdoorMode() ||
+        LightOutdoorConfig.getInstance().isOnLightOutdoorMode()) {
+        log.showWarn(TAG, `switch to cloud mode, cancle cache icon`);
+        await this.deleteAllCache();
+        sSettingsUtil.setValueEx(settings.domainName.USER_PROPERTY,
+          SettingsKeyConstants.THEME_CHANGE_STATUS, SettingsConstants.THEME_CHANGE_STATUS_STOP);
+        break;
+      }
       await this.setIconResource(iconInfo.bundleName, iconInfo.moduleName, iconInfo.abilityName, iconInfo,
         iconInfo.param);
     }

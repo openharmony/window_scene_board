@@ -30,6 +30,7 @@ import { NotificationUtil } from '@ohos/systemuicommon/src/main/ets/utils/Notifi
 import { AccessibilityManager } from '@ohos/frameworkwrapper';
 import { WantAgentUtil } from '@ohos/systemuicommon/src/main/ets/utils/WantAgentUtil';
 import { SceneSessionAdapter, ScreenSessionAdapter } from '@ohos/systemuicommon';
+import { OutdoorVm } from '@ohos/systemuicommon/src/main/ets/vm/OutdoorVm';
 
 const TAG = 'BannerFloatingController';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.NC, TAG);
@@ -142,6 +143,10 @@ export class BannerFloatingController {
   }
 
   public async canOpenFloatingAsync(isSwipe: boolean, isImmersive?: boolean): Promise<boolean> {
+    // 云端模式下不允许打开悬浮窗
+    if (OutdoorVm.instance.isInOutdoorMode) {
+      return false;
+    }
     if (isSwipe || isImmersive) {
       return await this.isSupportFloatingAsync();
     }
@@ -158,6 +163,10 @@ export class BannerFloatingController {
    * @deprecated
    */
   public canOpenFloating(isSwipe: boolean, isImmersive?: boolean): boolean {
+    // 云端模式下不允许打开悬浮窗
+    if (OutdoorVm.instance.isInOutdoorMode) {
+      return false;
+    }
     if (isSwipe || isImmersive) {
       return this.isSupportFloating();
     }

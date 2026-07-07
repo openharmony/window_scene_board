@@ -45,9 +45,14 @@ export const enum CloneCloudRequestMethod {
   RESTORE_BUNDLE_INFO = 'syncRestoreBundleInfo',
 
   /**
-   * 桌面包名
+   * HwLauncher系统桌面包名
    */
-  RESTORE_LAUNCHER_LAYOUT = 'com.ohos.sceneboard',
+  RESTORE_LAUNCHER_LAYOUT_FROM_HWLAUNCHER = 'com.ohos.sceneboard',
+
+  /**
+   * HM系统桌面包名
+   */
+  RESTORE_LAUNCHER_LAYOUT_FROM_HM = 'com.ohos.sceneboard',
 
   /**
    * 克隆中途取消桌面回调
@@ -55,7 +60,7 @@ export const enum CloneCloudRequestMethod {
   CANCEL_RESTORE_LAUNCHER_DATA = 'cancelRestoreLauncherData',
 
   /**
-   * 更新未OpenHarmony化应用签名
+   * 更新未鸿蒙化应用签名
    */
   UPDATE_LEGACY_INFO = 'updateLegacyInfo',
 }

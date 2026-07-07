@@ -38,6 +38,7 @@ import {
 } from '@ohos/systemuicommon/src/main/ets/notification/model/NotificationMoreHeaderModel';
 import { StatusBarHeightVm } from '@ohos/systemuicommon/src/main/ets/statusbar/vm/StatusBarHeightVm';
 import { CutoutLayout } from '@ohos/systemuicommon/src/main/ets/notification/interface/INotificationClearButtonVm';
+import { OutdoorVm } from '@ohos/systemuicommon/src/main/ets/vm/OutdoorVm';
 
 const TAG = 'NotificationClearButtonVm';
 const log = LogHelper.getLogHelper(LogDomain.NC, TAG);
@@ -106,7 +107,15 @@ export class NotificationClearButtonVm extends NotificationBaseVm implements INo
 
     for (const ntf of ntfList) {
       if (!ntf.isNormalGroup()) {
+        if (this.isClearable(ntf)) {
+          clearNtfList.push(ntf);
+        }
         continue;
+      }
+      for (const child of ntf.children) {
+        if (this.isClearable(child)) {
+          clearNtfList.push(child);
+        }
       }
     }
     log.showInfo(`Pending clear ntf list length: ${clearNtfList.length}`);
@@ -295,6 +304,11 @@ export class NotificationClearButtonVm extends NotificationBaseVm implements INo
       CONTENT_DELETED_NUMBER: contentNtfCount,
       DELETED_NUMBER: allNtfCount
     });
+  }
+
+  private isClearable(ntf: NotificationBase): boolean {
+    return ntf.isClearAllowed && DeviceInfoVm.instance.isShowNotification(ntf.creatorBundleName) &&
+      OutdoorVm.instance.isInOutdoorAppList(ntf);
   }
 
   /**

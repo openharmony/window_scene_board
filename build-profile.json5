@@ -688,6 +688,18 @@
       ]
     },
     {
+      "name": "cloudcomponent",
+      "srcPath": "./feature/systemcontrol/cloudcomponent",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
       "name": "launcher_togglehome",
       "srcPath": "./feature/togglehome",
       "targets": [
@@ -726,6 +738,10 @@
     {
       "name": "cameraindicator",
       "srcPath": "./feature/systemstatus/cameraindicator"
+    },
+    {
+      "name": "aisuggestion",
+      "srcPath": "./feature/desktop/aisuggestion"
     },
     {
       "name": "liveview",
@@ -1258,6 +1274,10 @@
           ]
         }
       ]
+    },
+    {
+      "name": "voiceagent",
+      "srcPath": "./feature/voiceagent"
     },
     {
       "name": "commonscbscreen",

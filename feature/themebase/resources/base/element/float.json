@@ -1,0 +1,1476 @@
+{
+  "float": [
+    {
+      "name": "theme_gallery_scale",
+      "value": "0.6"
+    },
+    {
+      "name": "themeEditor_scale",
+      "value": "0.7"
+    },
+    {
+      "name": "theme_gallery_margin",
+      "value": "16"
+    },
+    {
+      "name": "themeEditor_margin",
+      "value": "12"
+    },
+    {
+      "name": "themeCard_margin",
+      "value": "8"
+    },
+    {
+      "name": "applybutton_radius",
+      "value": "20"
+    },
+    {
+      "name": "applybutton_height",
+      "value": "40"
+    },
+    {
+      "name": "applybutton_min_width",
+      "value": "200"
+    },
+    {
+      "name": "applysheet_title_height",
+      "value": "56"
+    },
+    {
+      "name": "applysheet_radius",
+      "value": "24"
+    },
+    {
+      "name": "applysheet_padding_h",
+      "value": "16"
+    },
+    {
+      "name": "applysheet_title_spacing",
+      "value": "48"
+    },
+    {
+      "name": "applysheet_title_spacing_fold_expand",
+      "value": "24"
+    },
+    {
+      "name": "applysheet_group_spacing",
+      "value": "16"
+    },
+    {
+      "name": "applysheet_fold_group_spacing_unfold",
+      "value": "24"
+    },
+    {
+      "name": "bezelcard_half_outer_margin",
+      "value": "4"
+    },
+    {
+      "name": "bezelcard_outer_margin",
+      "value": "6"
+    },
+    {
+      "name": "bezelcard_inner_radius",
+      "value": "16"
+    },
+    {
+      "name": "bezelcard_outer_radius",
+      "value": "19"
+    },
+    {
+      "name": "bezelcard_selected_border_width",
+      "value": "2"
+    },
+    {
+      "name": "bezelcard_label_spacing",
+      "value": "12"
+    },
+    {
+      "name": "bezelcard_group_spacing",
+      "value": "32"
+    },
+    {
+      "name": "bezelcard_group_spacing_fold_expand",
+      "value": "24"
+    },
+    {
+      "name": "floatingbutton_image_width",
+      "value": "20"
+    },
+    {
+      "name": "floatingbutton_image_height",
+      "value": "20"
+    },
+    {
+      "name": "circle_checkbox_margin_bottom",
+      "value": "16"
+    },
+    {
+      "name": "tab_button_image_width",
+      "value": "24"
+    },
+    {
+      "name": "tab_button_image_height",
+      "value": "24"
+    },
+    {
+      "name": "floatingbutton_tab_f_button_width",
+      "value": "52"
+    },
+    {
+      "name": "floatingbutton_tab_m_button_width",
+      "value": "30"
+    },
+    {
+      "name": "floatingbutton_tab_g_button_width",
+      "value": "52"
+    },
+    {
+      "name": "floatingbutton_minorimage_height",
+      "value": "16"
+    },
+    {
+      "name": "floatingbutton_width",
+      "value": "76"
+    },
+    {
+      "name": "changewallpaper_width",
+      "value": "96"
+    },
+    {
+      "name": "changewallpaper_height",
+      "value": "40"
+    },
+    {
+      "name": "floatingbutton_max_width",
+      "value": "79"
+    },
+    {
+      "name": "floatingbutton_height",
+      "value": "32"
+    },
+    {
+      "name": "floatingbutton_width_pad",
+      "value": "90"
+    },
+    {
+      "name": "floatingbutton_height_pad",
+      "value": "38"
+    },
+    {
+      "name": "floatingbutton_circle_width",
+      "value": "40"
+    },
+    {
+      "name": "floatingbutton_circle_height",
+      "value": "40"
+    },
+    {
+      "name": "floatingbutton_tab_width",
+      "value": "134"
+    },
+    {
+      "name": "floatingbutton_tab_height",
+      "value": "32"
+    },
+    {
+      "name": "floatingbutton_tab_selected_height",
+      "value": "28"
+    },
+    {
+      "name": "floatingbutton_tab_selected_width",
+      "value": "48"
+    },
+    {
+      "name": "floatingbutton_group_spacing",
+      "value": "32"
+    },
+    {
+      "name": "vcardlist_offset_end",
+      "value": "16"
+    },
+    {
+      "name": "vcardlist_space_pc",
+      "value": "12"
+    },
+    {
+      "name": "wallpaper_preview_margin_top_pc",
+      "value": "8"
+    },
+    {
+      "name": "wallpaper_preview_padding_h_pc",
+      "value": "48"
+    },
+    {
+      "name": "wallpaper_preview_vcardlist_space_pc",
+      "value": "24"
+    },
+    {
+      "name": "wallpaper_preview_inner_space_pc",
+      "value": "12"
+    },
+    {
+      "name": "lazycardlist_padding_h",
+      "value": "16"
+    },
+    {
+      "name": "lazycardlist_margin_pc",
+      "value": "24"
+    },
+    {
+      "name": "lazycardlist_padding_pc_left_right_bottom",
+      "value": "12"
+    },
+    {
+      "name": "lazycardlist_padding_pc_top",
+      "value": "4"
+    },
+    {
+      "name": "lazycardlist_total_margin_pc",
+      "value": "36"
+    },
+    {
+      "name": "lazycardlist_inner_space",
+      "value": "8"
+    },
+    {
+      "name": "lazycardlist_inner_space_pc",
+      "value": "8"
+    },
+    {
+      "name": "gallerybutton_height",
+      "value": "72"
+    },
+    {
+      "name": "gallerybutton_padding_inner_left",
+      "value": "12"
+    },
+    {
+      "name": "gallerybutton_padding_inner_right",
+      "value": "12"
+    },
+    {
+      "name": "gallerybutton_touch_layer_radius",
+      "value": "12.5"
+    },
+    {
+      "name": "gallerybutton_inner_radius",
+      "value": "16"
+    },
+    {
+      "name": "gallerybutton_image_width",
+      "value": "48"
+    },
+    {
+      "name": "gallerybutton_image_height",
+      "value": "48"
+    },
+    {
+      "name": "gallerybutton_arrow_width",
+      "value": "24"
+    },
+    {
+      "name": "gallerybutton_arrow_height",
+      "value": "24"
+    },
+    {
+      "name": "gallery_button_label_font_size",
+      "value": "16"
+    },
+    {
+      "name": "pad_gallery_button_label_font_size",
+      "value": "20"
+    },
+    {
+      "name": "gallerybutton_label_padding_leading",
+      "value": "16"
+    },
+    {
+      "name": "gallerybutton_border_width",
+      "value": "1"
+    },
+    {
+      "name": "gallerybutton_border_default_top_margin",
+      "value": "8"
+    },
+    {
+      "name": "cardsection_height_regular",
+      "value": "300"
+    },
+    {
+      "name": "cardsection_height_compact",
+      "value": "196"
+    },
+    {
+      "name": "cardsection_height_stacked",
+      "value": "236"
+    },
+    {
+      "name": "cardsection_spacing",
+      "value": "16"
+    },
+    {
+      "name": "detail_title_height",
+      "value": "32"
+    },
+    {
+      "name": "detail_size_padding_top",
+      "value": "4"
+    },
+    {
+      "name": "detail_resource_introduce_height",
+      "value": "21"
+    },
+    {
+      "name": "detail_introduce_padding_bottom",
+      "value": "8"
+    },
+    {
+      "name": "detail_button_margin_bottom",
+      "value": "8"
+    },
+    {
+      "name": "picker_title_padding_leading",
+      "value": "16"
+    },
+    {
+      "name": "picker_title_padding_trailing",
+      "value": "20"
+    },
+    {
+      "name": "cardsection_title_margin_bottom",
+      "value": "8"
+    },
+    {
+      "name": "cardsection_more_button_padding",
+      "value": "24"
+    },
+    {
+      "name": "roundbluricon_filling_width",
+      "value": "21"
+    },
+    {
+      "name": "roundbluricon_filling_height",
+      "value": "21"
+    },
+    {
+      "name": "roundbluricon_radius",
+      "value": "12"
+    },
+    {
+      "name": "roundbluricon_image_width",
+      "value": "24"
+    },
+    {
+      "name": "roundbluricon_image_height",
+      "value": "24"
+    },
+    {
+      "name": "roundbluricon_width",
+      "value": "24"
+    },
+    {
+      "name": "roundbluricon_height",
+      "value": "24"
+    },
+    {
+      "name": "roundedblurbadge_width",
+      "value": "72"
+    },
+    {
+      "name": "roundedblurbadge_height",
+      "value": "28"
+    },
+    {
+      "name": "roundedblurbadge_label_font_size",
+      "value": "12"
+    },
+    {
+      "name": "roundedblurbadge_radius",
+      "value": "16"
+    },
+    {
+      "name": "roundedplaincard_checkbox_size",
+      "value": "20"
+    },
+    {
+      "name": "roundedplaincard_checkbox_paddding",
+      "value": "8"
+    },
+    {
+      "name": "roundedplaincard_inner_border_width",
+      "value": "1.0"
+    },
+    {
+      "name": "roundedplaincard_outer_border_width",
+      "value": "2.0"
+    },
+    {
+      "name": "roundedplaincard_border_radius",
+      "value": "16"
+    },
+    {
+      "name": "roundedplaincard_inner_border_radius",
+      "value": "17"
+    },
+    {
+      "name": "roundedplaincard_outer_border_radius",
+      "value": "19"
+    },
+    {
+      "name": "roundedplaincard_outer_border_radius_pc",
+      "value": "10"
+    },
+    {
+      "name": "roundedplaincard_inner_padding",
+      "value": "15"
+    },
+    {
+      "name": "roundedplaincard_inner_padding_compact",
+      "value": "8"
+    },
+    {
+      "name": "roundedstackedcard_card_spacing",
+      "value": "6"
+    },
+    {
+      "name": "roundedstackedcard_card_double_spacing",
+      "value": "12"
+    },
+    {
+      "name": "roundedstackedcard_label_height",
+      "value": "20"
+    },
+    {
+      "name": "roundedstackedcard_label_opacity",
+      "value": "0.6"
+    },
+    {
+      "name": "roundedstackedcard_label_spacing",
+      "value": "8"
+    },
+    {
+      "name": "roundedstackedcard_label_max_width",
+      "value": "96"
+    },
+    {
+      "name": "sectiontitle_subtitle_spacing",
+      "value": "2"
+    },
+    {
+      "name": "picker_title_height",
+      "value": "56"
+    },
+    {
+      "name": "sectiontitle_with_subtitle_height",
+      "value": "64"
+    },
+    {
+      "name": "sectiontitle_padding_h",
+      "value": "12"
+    },
+    {
+      "name": "picker_title_padding_bottom",
+      "value": "8"
+    },
+    {
+      "name": "wallpapereditor_preview_image_width",
+      "value": "90"
+    },
+    {
+      "name": "wallpapereditor_preview_image_height",
+      "value": "212"
+    },
+    {
+      "name": "wallpapereditor_loading_indicator_width",
+      "value": "120"
+    },
+    {
+      "name": "wallpapereditor_loading_indicator_height",
+      "value": "60"
+    },
+    {
+      "name": "wallpapereditor_mock_clock_margin_top",
+      "value": "124"
+    },
+    {
+      "name": "wallpapereditor_lockscreen_cover_opacity",
+      "value": "1.0"
+    },
+    {
+      "name": "floatingbuttongroup_padding_top",
+      "value": "16"
+    },
+    {
+      "name": "floatingbuttongroup_padding_bottom",
+      "value": "42"
+    },
+    {
+      "name": "applysheet_margin_h",
+      "value": "16"
+    },
+    {
+      "name": "applysheet_margin_bottom",
+      "value": "12"
+    },
+    {
+      "name": "applysheet_height",
+      "value": "366"
+    },
+    {
+      "name": "collectionsposter_btn_opacity_pressed",
+      "value": "0.5"
+    },
+    {
+      "name": "collectionsposter_btn_opacity_normal",
+      "value": "1.0"
+    },
+    {
+      "name": "applysheet_bg_blur_radius",
+      "value": "22"
+    },
+    {
+      "name": "mediumbutton_bg_blur_radius",
+      "value": "10"
+    },
+    {
+      "name": "applysheet_bg_blur_saturation",
+      "value": "1.2"
+    },
+    {
+      "name": "pane_bg_blur_radius",
+      "value": "22"
+    },
+    {
+      "name": "toolbar_bg_blur_saturation",
+      "value": "1"
+    },
+    {
+      "name": "button_bg_blur_saturation",
+      "value": "0.3"
+    },
+    {
+      "name": "default_bg_blur_brightness",
+      "value": "1.0"
+    },
+    {
+      "name": "wallpaperpicker_photopicker_margin_bottom",
+      "value": "48"
+    },
+    {
+      "name": "length_16",
+      "value": "16"
+    },
+    {
+      "name": "length_8",
+      "value": "8"
+    },
+    {
+      "name": "length_12",
+      "value": "12"
+    },
+    {
+      "name": "length_18",
+      "value": "18"
+    },
+    {
+      "name": "length_10",
+      "value": "10"
+    },
+    {
+      "name": "height_300",
+      "value": "300"
+    },
+    {
+      "name": "length_24",
+      "value": "24"
+    },
+    {
+      "name": "length_14",
+      "value": "14"
+    },
+    {
+      "name": "length_20",
+      "value": "20"
+    },
+    {
+      "name": "length_36",
+      "value": "36"
+    },
+    {
+      "name": "padding_4",
+      "value": "4"
+    },
+    {
+      "name": "padding_5",
+      "value": "5"
+    },
+    {
+      "name": "margin_6",
+      "value": "6"
+    },
+    {
+      "name": "size_16",
+      "value": "16"
+    },
+    {
+      "name": "colorbutton_outer_width",
+      "value": "36"
+    },
+    {
+      "name": "colorbutton_outer_height",
+      "value": "36"
+    },
+    {
+      "name": "colorbutton_outer_radius",
+      "value": "18"
+    },
+    {
+      "name": "colorbutton_outer_border_width",
+      "value": "2"
+    },
+    {
+      "name": "colorbutton_middle_width",
+      "value": "35"
+    },
+    {
+      "name": "colorbutton_middle_height",
+      "value": "35"
+    },
+    {
+      "name": "colorbutton_middle_radius",
+      "value": "17.5"
+    },
+    {
+      "name": "colorbutton_middle_border_width",
+      "value": "2"
+    },
+    {
+      "name": "colorbutton_inner_width",
+      "value": "32"
+    },
+    {
+      "name": "colorbutton_inner_height",
+      "value": "32"
+    },
+    {
+      "name": "colorbutton_inner_radius",
+      "value": "16"
+    },
+    {
+      "name": "fontbutton_width_height",
+      "value": "58"
+    },
+    {
+      "name": "fontbutton_outer_radius",
+      "value": "8"
+    },
+    {
+      "name": "fontbutton_outer_border_width",
+      "value": "2"
+    },
+    {
+      "name": "fontbutton_font_size",
+      "value": "26"
+    },
+    {
+      "name": "layoutbutton_outer_width",
+      "value": "58"
+    },
+    {
+      "name": "layoutbutton_outer_height",
+      "value": "58"
+    },
+    {
+      "name": "layoutbutton_outer_radius",
+      "value": "8"
+    },
+    {
+      "name": "layoutbutton_outer_border_width",
+      "value": "2"
+    },
+    {
+      "name": "layoutbutton_border_opacity",
+      "value": "0.8"
+    },
+    {
+      "name": "mediumbutton_image_width",
+      "value": "20"
+    },
+    {
+      "name": "mediumbutton_image_height",
+      "value": "20"
+    },
+    {
+      "name": "mediumbutton_outer_width",
+      "value": "60"
+    },
+    {
+      "name": "mediumbutton_outer_height",
+      "value": "32"
+    },
+    {
+      "name": "mediumbutton_outer_radius",
+      "value": "16"
+    },
+    {
+      "name": "sigbutton_height",
+      "value": "48"
+    },
+    {
+      "name": "sigbutton_coloring_width",
+      "value": "65"
+    },
+    {
+      "name": "sigbutton_margin",
+      "value": "0"
+    },
+    {
+      "name": "sigbutton_text_height",
+      "value": "19"
+    },
+    {
+      "name": "sigbutton_text_sig_height",
+      "value": "16"
+    },
+    {
+      "name": "sigbutton_sig_height",
+      "value": "40"
+    },
+    {
+      "name": "sigbutton_sig_margin",
+      "value": "4"
+    },
+    {
+      "name": "sigbutton_separator_opacity",
+      "value": "0.05"
+    },
+    {
+      "name": "sigbutton_separator_height",
+      "value": "8"
+    },
+    {
+      "name": "toolbutton_image_width",
+      "value": "24"
+    },
+    {
+      "name": "toolbutton_image_height",
+      "value": "24"
+    },
+    {
+      "name": "toolbutton_outer_width",
+      "value": "40"
+    },
+    {
+      "name": "toolbutton_outer_height",
+      "value": "40"
+    },
+    {
+      "name": "toolbutton_outer_radius",
+      "value": "8"
+    },
+    {
+      "name": "colorpane_min_height",
+      "value": "64"
+    },
+    {
+      "name": "colorpane_min_width",
+      "value": "64"
+    },
+    {
+      "name": "colorpane_max_width",
+      "value": "304"
+    },
+    {
+      "name": "colorpane_padding",
+      "value": "16"
+    },
+    {
+      "name": "colorpane_radius",
+      "value": "16"
+    },
+    {
+      "name": "colorpane_btn_width",
+      "value": "36"
+    },
+    {
+      "name": "colorpane_btn_height",
+      "value": "36"
+    },
+    {
+      "name": "colorpane_btn_space",
+      "value": "12"
+    },
+    {
+      "name": "colorpane_row_space",
+      "value": "16"
+    },
+    {
+      "name": "fontpane_min_height",
+      "value": "90"
+    },
+    {
+      "name": "fontpane_min_width",
+      "value": "90"
+    },
+    {
+      "name": "fontpane_max_width",
+      "value": "264"
+    },
+    {
+      "name": "fontpane_radius",
+      "value": "16"
+    },
+    {
+      "name": "fontpane_btn_space",
+      "value": "16"
+    },
+    {
+      "name": "sigpane_width",
+      "value": "264"
+    },
+    {
+      "name": "sigpane_padding_top",
+      "value": "4"
+    },
+    {
+      "name": "sigpane_padding_bottom",
+      "value": "20"
+    },
+    {
+      "name": "sigpane_padding_h",
+      "value": "16"
+    },
+    {
+      "name": "sigpane_radius",
+      "value": "16"
+    },
+    {
+      "name": "sigpane_margin_bottom",
+      "value": "16"
+    },
+    {
+      "name": "editbar_width",
+      "value": "224"
+    },
+    {
+      "name": "editbar_height",
+      "value": "56"
+    },
+    {
+      "name": "editbar_radius",
+      "value": "16"
+    },
+    {
+      "name": "editbar_btn_space",
+      "value": "8"
+    },
+    {
+      "name": "editbar_padding",
+      "value": "8"
+    },
+    {
+      "name": "secondary_pane_width_Pad",
+      "value": "312"
+    },
+    {
+      "name": "layoutpane_single_height",
+      "value": "90"
+    },
+    {
+      "name": "layoutpane_height",
+      "value": "164"
+    },
+    {
+      "name": "layoutpane_separator_height",
+      "value": "16"
+    },
+    {
+      "name": "layoutpane_width",
+      "value": "238"
+    },
+    {
+      "name": "layoutpane_radius",
+      "value": "16"
+    },
+    {
+      "name": "sigbutton_sig_radius",
+      "value": "20"
+    },
+    {
+      "name": "sigbutton_sig_padding_h",
+      "value": "12"
+    },
+    {
+      "name": "clocksheet_padding_h",
+      "value": "24"
+    },
+    {
+      "name": "clocksheet_padding_top",
+      "value": "96"
+    },
+    {
+      "name": "pad_clocksheet_padding_top",
+      "value": "190"
+    },
+    {
+      "name": "clocksheet_padding_bottom",
+      "value": "128"
+    },
+    {
+      "name": "pad_clocksheet_padding_bottom",
+      "value": "110"
+    },
+    {
+      "name": "clocksheet_status_bar_phone_height",
+      "value": "39"
+    },
+    {
+      "name": "clocksheet_grid_spacing_top",
+      "value": "48"
+    },
+    {
+      "name": "editsheet_pane_spacing",
+      "value": "8"
+    },
+    {
+      "name": "actionsheet_padding_h",
+      "value": "32"
+    },
+    {
+      "name": "actionsheet_padding_v",
+      "value": "16"
+    },
+    {
+      "name": "gridsheet_opacity",
+      "value": "0.5"
+    },
+    {
+      "name": "gridview_opacity_even",
+      "value": "0.2"
+    },
+    {
+      "name": "gridview_opacity_odd",
+      "value": "0.1"
+    },
+    {
+      "name": "gridview_opacity",
+      "value": "0.4"
+    },
+    {
+      "name": "pad_wallpaper_gridview_opacity",
+      "value": "0.15"
+    },
+    {
+      "name": "wallpaper_outline_radius",
+      "value": "31.58"
+    },
+    {
+      "name": "gridview_clock_radius",
+      "value": "24"
+    },
+    {
+      "name": "gridview_clock_border_width",
+      "value": "3.0"
+    },
+    {
+      "name": "gridview_clock_border_width_wallpaper",
+      "value": "2.5"
+    },
+    {
+      "name": "pad_gridview_clock_border_width",
+      "value": "3.0"
+    },
+    {
+      "name": "remove_right_menu_width",
+      "value": "64"
+    },
+    {
+      "name": "remove_right_menu_height",
+      "value": "48"
+    },
+    {
+      "name": "floatingbutton_outer_radius",
+      "value": "20"
+    },
+    {
+      "name": "floatingbutton_outer_radius_pad",
+      "value": "24"
+    },
+    {
+      "name": "arror_image_width",
+      "value": "24"
+    },
+    {
+      "name": "arror_image_height",
+      "value": "48"
+    },
+    {
+      "name": "arror_column_size",
+      "value": "60"
+    },
+    {
+      "name": "arror_column_border_radius",
+      "value": "40"
+    },
+    {
+      "name": "delete_dialog_width",
+      "value": "400"
+    },
+    {
+      "name": "delete_dialog_height",
+      "value": "125"
+    },
+    {
+      "name": "pad_delete_dialog_width",
+      "value": "400"
+    },
+    {
+      "name": "pad_delete_dialog_height",
+      "value": "110"
+    },
+    {
+      "name": "pad_delete_dialog_button_width",
+      "value": "150"
+    },
+    {
+      "name": "pc_delete_dialog_button_width",
+      "value": "176"
+    },
+    {
+      "name": "delete_dialog_button_margin_bottom",
+      "value": "10"
+    },
+    {
+      "name": "delete_dialog_button_separator_height",
+      "value": "24"
+    },
+    {
+      "name": "delete_dialog_button_separator_margin_left_right",
+      "value": "4"
+    },
+    {
+      "name": "delete_dialog_button_margin_left_right",
+      "value": "16"
+    },
+    {
+      "name": "pc_delete_dialog_button_margin_bottom",
+      "value": "24"
+    },
+    {
+      "name": "pad_delete_dialog_button_margin_bottom",
+      "value": "16"
+    },
+    {
+      "name": "pad_delete_dialog_button_margin",
+      "value": "48"
+    },
+    {
+      "name": "delete_dialog_text_margin_top",
+      "value": "24"
+    },
+    {
+      "name": "delete_dialog_text_margin_bottom",
+      "value": "8"
+    },
+    {
+      "name": "pc_delete_dialog_text_margin_bottom",
+      "value": "16"
+    },
+    {
+      "name": "pc_more_button_margin_left",
+      "value": "16"
+    },
+    {
+      "name": "theme_title_height",
+      "value": "40"
+    },
+    {
+      "name": "pc_theme_title_height",
+      "value": "60"
+    },
+    {
+      "name": "ok_button_size",
+      "value": "40"
+    },
+    {
+      "name": "ok_button_margin_top",
+      "value": "10"
+    },
+    {
+      "name": "tablet_cardsection_height",
+      "value": "130"
+    },
+    {
+      "name": "tablet_cardsection_width",
+      "value": "210"
+    },
+    {
+      "name": "tablet_cardsection_margin",
+      "value": "12"
+    },
+    {
+      "name": "tablet_cardsection_title_padding_trailing",
+      "value": "16"
+    },
+    {
+      "name": "tablet_add_filled_margin_top",
+      "value": "40"
+    },
+    {
+      "name": "applybutton_min_width_pad",
+      "value": "368"
+    },
+    {
+      "name": "applysheet_radius_pad",
+      "value": "32"
+    },
+    {
+      "name": "applysheet_title_spacing_pad",
+      "value": "6"
+    },
+    {
+      "name": "bezelcard_outer_margin_pad",
+      "value": "4"
+    },
+    {
+      "name": "bezelcard_roundbluricon_padding_pad",
+      "value": "10"
+    },
+    {
+      "name": "bezelcard_outer_radius_pad",
+      "value": "16"
+    },
+    {
+      "name": "bezelcard_label_spacing_pad",
+      "value": "8"
+    },
+    {
+      "name": "wallpapereditor_preview_image_width_pad",
+      "value": "164"
+    },
+    {
+      "name": "wallpapereditor_preview_image_width_fold_land",
+      "value": "164"
+    },
+    {
+      "name": "wallpapereditor_preview_image_height_pad",
+      "value": "117"
+    },
+    {
+      "name": "wallpapereditor_mock_clock_margin_top_pad",
+      "value": "67.5"
+    },
+    {
+      "name": "applysheet_margin_h_pad",
+      "value": "22"
+    },
+    {
+      "name": "applysheet_width",
+      "value": "400"
+    },
+    {
+      "name": "applysheet_height_pad",
+      "value": "279"
+    },
+    {
+      "name": "exit_button_image_size",
+      "value": "30"
+    },
+    {
+      "name": "pad_floating_button_horizontal_margin",
+      "value": "48"
+    },
+    {
+      "name": "pad_floating_button_vertical_margin",
+      "value": "60"
+    },
+    {
+      "name": "theme_button_text_margin_top",
+      "value": "4"
+    },
+    {
+      "name": "pc_theme_button_text_margin_top",
+      "value": "6"
+    },
+    {
+      "name": "pad_sectiontitle_subtitle_height",
+      "value": "72"
+    },
+    {
+      "name": "pad_sectiontitle_title_height",
+      "value": "56"
+    },
+    {
+      "name": "pad_deletedialog_divider_height",
+      "value": "24"
+    },
+    {
+      "name": "pad_deletedialog_divider_width",
+      "value": "2"
+    },
+    {
+      "name": "pad_deletedialog_divider_opacity",
+      "value": "0.6"
+    },
+    {
+      "name": "pad_deletedialog_divider_margin_top",
+      "value": "8"
+    },
+    {
+      "name": "pad_deletedialog_divider_border_radius",
+      "value": "32"
+    },
+    {
+      "name": "pad_applysheet_group_spacing",
+      "value": "16"
+    },
+    {
+      "name": "pc_applysheet_title_margin_left",
+      "value": "24"
+    },
+    {
+      "name": "bezelcard_group_spacing_pad",
+      "value": "12"
+    },
+    {
+      "name": "pc_applysheet_width",
+      "value": "604"
+    },
+    {
+      "name": "pc_applysheet_height",
+      "value": "352"
+    },
+    {
+      "name": "pc_wallpapereditor_preview_image_height",
+      "value": "178"
+    },
+    {
+      "name": "pc_wallpapereditor_preview_image_width",
+      "value": "266"
+    },
+    {
+      "name": "signature_dialog_height",
+      "value": "176"
+    },
+    {
+      "name": "signature_dialog_max_width",
+      "value": "400"
+    },
+    {
+      "name": "signature_dialog_margin",
+      "value": "16"
+    },
+    {
+      "name": "signature_dialog_title_line_height",
+      "value": "56"
+    },
+    {
+      "name": "signature_dialog_padding_horizontal",
+      "value": "24"
+    },
+    {
+      "name": "signature_dialog_padding_vertical",
+      "value": "8"
+    },
+    {
+      "name": "signature_dialog_input_height",
+      "value": "40"
+    },
+    {
+      "name": "signature_dialog_deliver_line_margin",
+      "value": "4"
+    },
+    {
+      "name": "signature_dialog_deliver_line_height",
+      "value": "24"
+    },
+    {
+      "name": "signature_dialog_button_height",
+      "value": "40"
+    },
+    {
+      "name": "signature_dialog_button_margin",
+      "value": "16"
+    },
+    {
+      "name": "signature_dialog_button_margin_top",
+      "value": "8"
+    },
+    {
+      "name": "floatingbuttongroup_margin_top",
+      "value": "16"
+    },
+    {
+      "name": "tabbutton_margin_top",
+      "value": "52"
+    },
+    {
+      "name": "floatingbuttongroup_padding",
+      "value": "16"
+    },
+    {
+      "name": "floatingbuttongroup_padding_left",
+      "value": "8"
+    },
+    {
+      "name": "floatingbuttongroup_padding_right",
+      "value": "8"
+    },
+    {
+      "name": "edit_border_radius",
+      "value": "24"
+    },
+    {
+      "name": "edit_border_width",
+      "value": "2"
+    },
+    {
+      "name": "wallpapereditor_fold_preview_image_width",
+      "value": "164"
+    },
+    {
+      "name": "wallpapereditor_fold_land_preview_image_width",
+      "value": "164"
+    },
+    {
+      "name": "wallpapereditor_extra_fold_preview_image_width",
+      "value": "136"
+    },
+    {
+      "name": "wallpapereditor_preview_image_width_f_m",
+      "value": "132"
+    },
+    {
+      "name": "wallpapereditor_fold_preview_width",
+      "value": "400"
+    },
+    {
+      "name": "wallpapereditor_fold_preview_height",
+      "value": "420"
+    },
+    {
+      "name": "wallpapereditor_pad_preview_land_width",
+      "value": "164"
+    },
+    {
+      "name": "wallpapereditor_pad_preview_land_height",
+      "value": "114"
+    },
+    {
+      "name": "wallpapereditor_fold_preview_base_height",
+      "value": "196"
+    },
+    {
+      "name": "wallpapereditor_segment_fold_left",
+      "value": "16"
+    },
+    {
+      "name": "wallpapereditor_segment_fold_right",
+      "value": "16"
+    },
+    {
+      "name": "wallpapereditor_segment_fold_bottom_unfold",
+      "value": "30"
+    },
+    {
+      "name": "wallpapereditor_segment_fold_bottom_base",
+      "value": "24"
+    },
+    {
+      "name": "editor_preview_image_width",
+      "value": "176"
+    },
+    {
+      "name": "editor_preview_image_height_unfold2",
+      "value": "196"
+    },
+    {
+      "name": "editor_preview_image_width_f_mg",
+      "value": "135"
+    },
+    {
+      "name": "applysheet_checkbox_margin",
+      "value": "4"
+    },
+    {
+      "name": "dialog_corner",
+      "value": "32"
+    },
+    {
+      "name": "dialog_margin",
+      "value": "16"
+    },
+    {
+      "name": "recover_app_dialog",
+      "value": "21"
+    },
+    {
+      "name": "preview_image_border_width",
+      "value": "1"
+    },
+    {
+      "name": "preview_image_border_radius",
+      "value": "16"
+    },
+    {
+      "name": "pandora_carousel_button_label_font_size",
+      "value": "18"
+    },
+    {
+      "name":"tips_margin_default",
+      "value":"8"
+    },
+    {
+      "name":"tips_margin_top_pad",
+      "value":"16"
+    },
+    {
+      "name":"tips_margin_left_pad",
+      "value":"12"
+    },
+    {
+      "name":"tips_scroll_min_height",
+      "value":"60"
+    },
+    {
+      "name":"tips_scroll_min_height_pad",
+      "value":"40"
+    },
+    {
+      "name": "more_online_button_height",
+      "value": "40"
+    },
+    {
+      "name": "more_online_button_margin",
+      "value": "16"
+    },
+    {
+      "name": "more_online_button_margin_left_right",
+      "value": "16"
+    },
+    {
+      "name": "applysheet_apply_watch_text_margin",
+      "value": "8"
+    },
+    {
+      "name": "applysheet_apply_watch_margin",
+      "value": "12"
+    },
+    {
+      "name": "applysheet_apply_watch_padding",
+      "value": "24"
+    },
+    {
+      "name": "update_prompt_circle_diameter",
+      "value": "6"
+    },
+    {
+      "name": "update_prompt_text_margin",
+      "value": "8"
+    },
+    {
+      "name": "width_224",
+      "value": "224"
+    }
+  ]
+}

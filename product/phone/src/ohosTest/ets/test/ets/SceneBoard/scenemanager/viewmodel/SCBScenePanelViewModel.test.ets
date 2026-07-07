@@ -1715,6 +1715,29 @@ export default function SCBScenePanelViewModelTest() {
 
     /**
      * 用例描述: 测试requestNewSceneSession方法
+     * 预置条件: mock requestSceneSession方法和isDeliverApplication方法
+     * 测试场景: 当requestSceneSession方法正常返回sceneSession，且是deliverApp并且在containerSessionList中
+     * 预期结果: 从containerSessionList中获取对应的sceneSession
+     */
+    it('test_should_return_SCBSceneSession_when_requestSceneSession_returns_valid_session', Level.LEVEL0, () => {
+      let mockRequestSceneSession: Function =
+        mocker.mockFunc(SCBSceneSessionManager.getInstance(), SCBSceneSessionManager.getInstance().requestSceneSession);
+      let mockIsDeliverApplication: Function =
+        mocker.mockFunc(SCBSceneSessionManager.getInstance(), SCBSceneSessionManager.getInstance().isDeliverApplication);
+      when(mockRequestSceneSession)(ArgumentMatchers.any).afterReturn(sdkSceneSession);
+      when(mockIsDeliverApplication)(ArgumentMatchers.any).afterReturn(true);
+      scbScenePanelViewModel.getContainerSessionList().push(containerSession);
+
+      let result: SCBSceneSession | null = scbScenePanelViewModel.requestNewSceneSession(sceneInfo);
+
+      expect(result).assertEqual(sceneSession);
+      mocker.verify('isDeliverApplication', [sceneInfo.bundleName]).atLeast(1);
+      mocker.ignoreMock(SCBSceneSessionManager.getInstance(), SCBSceneSessionManager.getInstance().requestSceneSession);
+      mocker.ignoreMock(SCBSceneSessionManager.getInstance(), SCBSceneSessionManager.getInstance().isDeliverApplication);
+    });
+
+    /**
+     * 用例描述: 测试requestNewSceneSession方法
      * 预置条件: mock requestSceneSession方法
      * 测试场景: 当requestSceneSession方法抛异常
      * 预期结果: 返回结果为null
@@ -2256,6 +2279,71 @@ export default function SCBScenePanelViewModelTest() {
       mocker.ignoreMock(panelViewModel, panelViewModel.requestNewSceneSession);
       mocker.ignoreMock(panelViewModel, panelViewModel.getSceneSessionByPersistentId);
     });
+
+    it('test_when_persistentId_and_callerPersistentId_are_zero_NewInstance_is_true', Level.LEVEL0, () => {
+      let sceneInfo01: SCBSceneInfo = new SCBSceneInfo('testBundle', 'testModule', 'testAbility', 0, 0);
+      sceneInfo01.callerPersistentId = 0;
+      sceneInfo01.isNewInstance = true;
+      let sceneSession01: SCBSceneSession =
+        new SCBSceneSession(sceneSessionManager.requestSceneSession(sceneInfo01), sceneInfo01);
+      let mockGetSceneSessionFromOtherScreen: Function =
+        mocker.mockFunc(panelViewModel, panelViewModel.getSceneSessionFromOtherScreen);
+      let mockGetSceneSession: Function = mocker.mockFunc(panelViewModel, panelViewModel.getSceneSession);
+      let mockRequestNewSceneSession: Function = mocker.mockFunc(panelViewModel, panelViewModel.requestNewSceneSession);
+      let mockIsDeliverApplication: Function = mocker.mockFunc(SCBSceneSessionManager.getInstance(),
+        SCBSceneSessionManager.getInstance().isDeliverApplication);
+      when(mockGetSceneSessionFromOtherScreen)(ArgumentMatchers.any).afterReturn(undefined);
+      when(mockGetSceneSession)(ArgumentMatchers.any).afterReturn(null);
+      when(mockRequestNewSceneSession)(ArgumentMatchers.any).afterReturn(sceneSession01);
+      when(mockIsDeliverApplication)(ArgumentMatchers.any).afterReturn(true);
+
+      let result: SCBSceneSession | null = panelViewModel.requestSceneSession(sceneInfo01);
+
+      expect(result).assertEqual(sceneSession01);
+      if(result != null && result.sceneInfo != null){
+        mockLog.showInfo('result persistentID ' + result.sceneInfo.persistentId);
+        mockLog.showInfo('result callerPersistentId ' + result.sceneInfo.callerPersistentId);
+        expect(result.sceneInfo.callerPersistentId).assertEqual(0);
+      }
+      mocker.verify('requestNewSceneSession', [sceneInfo01]).atLeast(1);
+      mocker.ignoreMock(panelViewModel, panelViewModel.getSceneSessionFromOtherScreen);
+      mocker.ignoreMock(panelViewModel, panelViewModel.getSceneSession);
+      mocker.ignoreMock(SCBSceneSessionManager.getInstance(), SCBSceneSessionManager.getInstance().isDeliverApplication);
+      mocker.ignoreMock(panelViewModel, panelViewModel.requestNewSceneSession);
+    });
+
+    it('test_when_persistentId_and_callerPersistentId_are_zero_notNewInstance_notDeliverApp_and_want_is_not_Null',
+      Level.LEVEL0, () => {
+        let sceneInfo01: SCBSceneInfo = new SCBSceneInfo('testBundle', 'testModule', 'testAbility', 0, 0);
+        sceneInfo01.callerPersistentId = 0;
+        sceneInfo01.isNewInstance = false
+        let want: Want = {
+          abilityName: '',
+          bundleName: ''
+        };
+        sceneInfo01.want = want;
+        let sceneSession01: SCBSceneSession =
+          new SCBSceneSession(sceneSessionManager.requestSceneSession(sceneInfo01), sceneInfo01);
+        let mockGetSceneSessionFromOtherScreen: Function =
+          mocker.mockFunc(panelViewModel, panelViewModel.getSceneSessionFromOtherScreen);
+        let mockGetSceneSession: Function = mocker.mockFunc(panelViewModel, panelViewModel.getSceneSession);
+        let mockIsDeliverApplication: Function = mocker.mockFunc(SCBSceneSessionManager.getInstance(),
+          SCBSceneSessionManager.getInstance().isDeliverApplication);
+        when(mockGetSceneSessionFromOtherScreen)(ArgumentMatchers.any).afterReturn(undefined);
+        when(mockGetSceneSession)(ArgumentMatchers.any).afterReturn(sceneSession01);
+        when(mockIsDeliverApplication)(ArgumentMatchers.any).afterReturn(false);
+
+        let result: SCBSceneSession | null = panelViewModel.requestSceneSession(sceneInfo01);
+
+        expect(result).assertEqual(sceneSession01);
+        if(result != null && result.sceneInfo != null){
+          expect(result.sceneInfo.callerPersistentId).assertEqual(0);
+        }
+        mocker.verify('getSceneSession', [sceneInfo01]).atLeast(1);
+        mocker.ignoreMock(panelViewModel, panelViewModel.getSceneSessionFromOtherScreen);
+        mocker.ignoreMock(panelViewModel, panelViewModel.getSceneSession);
+        mocker.ignoreMock(SCBSceneSessionManager.getInstance(), SCBSceneSessionManager.getInstance().isDeliverApplication);
+      });
   });
 
   describe('SCBScenePanelViewModel_succeedBackToCaller_testSuite', () => {

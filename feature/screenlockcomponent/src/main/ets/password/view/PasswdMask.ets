@@ -77,7 +77,12 @@ export default struct PasswdMask {
   private verifyResultListener: VerifyStateListener = {
     onVerifyResult: (authType: AuthType, verifyResult: VerifyResult): void => {
       if (authType === AuthType.PIN && verifyResult === VerifyResult.FAIL) {
-        this.doErrorAnimation(this.credentialLength - 1);
+        // 直接关闭“密码错误动效”，避免动效期间 disableInputWhenAnim=true 导致再次输入短暂无响应
+        if (this.passwordVm) {
+          this.passwordVm.disableInputWhenAnim = false;
+        }
+        this.translateXArr.fill(PasswordConstants.DOT_ERR_ANI_DEFAULT);
+        this.dotOpacity.fill(0);
       }
     }
   };
@@ -87,6 +92,7 @@ export default struct PasswdMask {
     let passwordLength = this.passwordVm?.passwordLength ?? 0;
     for (let i = 0; i < this.credentialLength; i++) {
       this.dotOpacity.push(i < passwordLength ? 1 : 0);
+      this.translateXArr.push(PasswordConstants.DOT_ERR_ANI_DEFAULT);
       if (!this.isHddProduct) {
         this.shadowRadius.push(0);
       }

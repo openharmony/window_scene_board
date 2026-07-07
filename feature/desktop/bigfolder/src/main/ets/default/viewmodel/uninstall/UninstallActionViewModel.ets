@@ -18,6 +18,7 @@ import { RTLUtil } from '@ohos/componenthelper';
 import {
   ContractedFolderMode,
   ContractedFolderLayoutViewModel,
+  DeliverUtil,
   DisappearLastAppData,
   FolderManager,
   GridLayoutItemInfo,
@@ -107,18 +108,26 @@ export class UninstallActionViewModel {
   private getBackgroundAnimator(folderId: string, area: number[]): AnimatorParams {
     // 定制文件夹解散时背板不需要缩放和位移
     let aniParams: AnimatorParams = new AnimatorParams();
-    const appIconArea = [1, 1];
-    const styleManager = FolderStyleManager.getInstance();
-    const desktopGridWidth = styleManager.getDesktopGridWidth();
-    let normalAppIconSize = styleManager.getWidthByArea(appIconArea);
-    let folderWidth: number = styleManager.getWidthByArea(area);
-    let folderHeight: number = styleManager.getHeightByArea(area);
-    aniParams.folderBgScaleX = normalAppIconSize / folderWidth;
-    aniParams.folderBgScaleY = normalAppIconSize / folderHeight;
-    aniParams.folderBgTransX = desktopGridWidth * (1 - area[0] ?? 1) / 2 * RTLUtil.getRTLRate();
-    aniParams.folderBgTransY = normalAppIconSize / 2 - folderHeight / 2;
-    aniParams.folderBgOpacity = StyleConstants.DEFAULT_FOLDER_HIDDEN_VALUE;
-    aniParams.folderBgRadius = styleManager.getFolderRadiusByArea(appIconArea);
+    if (DeliverUtil.isContainerFolder(folderId)) {
+      aniParams.folderBgScaleX = 1.0;
+      aniParams.folderBgScaleY = 1.0;
+      aniParams.folderBgTransX = 0.0;
+      aniParams.folderBgTransY = 0.0;
+      aniParams.folderBgOpacity = StyleConstants.DEFAULT_FOLDER_HIDDEN_VALUE;
+    } else {
+      const appIconArea = [1, 1];
+      const styleManager = FolderStyleManager.getInstance();
+      const desktopGridWidth = styleManager.getDesktopGridWidth();
+      let normalAppIconSize = styleManager.getWidthByArea(appIconArea);
+      let folderWidth: number = styleManager.getWidthByArea(area);
+      let folderHeight: number = styleManager.getHeightByArea(area);
+      aniParams.folderBgScaleX = normalAppIconSize / folderWidth;
+      aniParams.folderBgScaleY = normalAppIconSize / folderHeight;
+      aniParams.folderBgTransX = desktopGridWidth * (1 - area[0] ?? 1) / 2 * RTLUtil.getRTLRate();
+      aniParams.folderBgTransY = normalAppIconSize / 2 - folderHeight / 2;
+      aniParams.folderBgOpacity = StyleConstants.DEFAULT_FOLDER_HIDDEN_VALUE;
+      aniParams.folderBgRadius = styleManager.getFolderRadiusByArea(appIconArea);
+    }
     return aniParams;
   }
 

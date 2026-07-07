@@ -45,8 +45,8 @@ export enum CapStyleSuffix {
   ITEM_LARGE_ICON_STYLE = '_item_large_icon_style', // 胶囊条目大图标样式后缀标识
   ITEM_SMALL_ICON_STYLE = '_item_small_icon_style', // 胶囊条目小图标样式后缀标识
   ITEM_SMALL_ICON_BG_STYLE = '_item_small_icon_bg_style', // 胶囊条目小图标背景样式后缀标识
-  ITEM_SMALL_ICON_REVERSE_STYLE = '_item_small_icon_reverse_style', // 胶囊条目小图标样式后缀标识
-  ITEM_SMALL_ICON_BG_REVERSE_STYLE = '_item_small_icon_bg_reverse_style', // 胶囊条目小图标背景样式后缀标识
+  ITEM_SMALL_ICON_REVERSE_STYLE = '_item_small_icon_reverse_style', // 胶囊条目小图标克隆应用样式后缀标识
+  ITEM_SMALL_ICON_BG_REVERSE_STYLE = '_item_small_icon_bg_reverse_style', // 胶囊条目小图标背景克隆应用样式后缀标识
   ITEM_MAIN_TEXT_STYLE = '_item_main_text_style', // 胶囊条目主文本样式后缀标识
   ITEM_SECONDARY_TEXT_STYLE = '_item_secondary_text_style', // 胶囊条目副文本样式后缀标识
   ITEM_EXTENSION_STYLE = '_item_extension_style', // 胶囊条目扩展区样式后缀标识

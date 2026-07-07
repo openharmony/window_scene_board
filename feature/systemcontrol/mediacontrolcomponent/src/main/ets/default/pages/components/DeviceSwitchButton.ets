@@ -24,7 +24,10 @@ import { AVCastPickerState, AVCastPickerStyle } from '@ohos.multimedia.avCastPic
 import Constants, { CurOutputDevTS, AVCastPickerDeviceIconName } from '../../Util/Constants';
 import { ColorModeViewData } from '@ohos/systemuicommon/src/main/ets/template/newStyle/ColorModeViewData';
 import { ColorModeViewModel } from '@ohos/systemuicommon/src/main/ets/template/newStyle/ColorModeViewModel';
+import { BrightnessOptionUtils } from '@ohos/systemuicommon/src/main/ets/template/newStyle/BrightnessOptionUtils';
 import StyleConfiguration, { MediaControlCardLayoutStyle } from '../../Util/StyleConfiguration';
+import { AodStyleType, ImmersiveAodStyle }
+  from '@ohos/systemuicommon/src/main/ets/immersivekeyguardcommon/base/interface/ImmersiveAodStyle';
 import { immersiveKgMgr }
   from '@ohos/systemuicommon/src/main/ets/immersivekeyguardcommon/manager/ImmersiveKeyguardStateManager';
 import BrightnessUtils from '../../Util/BrightnessUtils';
@@ -53,6 +56,10 @@ DeviceSwitchButton {
   @State style : MediaControlCardLayoutStyle = StyleConfiguration.getMediaControlCardLayoutStyle();
   @State isPhoneOrPad: boolean = DeviceHelper.isPhoneOrPad();
   @StorageLink('isSysColor') isSysColor: boolean = true;
+  /**
+   * AOD显示样式
+   */
+  @State aodStyle: ImmersiveAodStyle | undefined = immersiveKgMgr.getOneMirrorState().getAodStyle(true);
 
   /**
    * AVSession缺失设备类型，标识PC
@@ -131,7 +138,8 @@ DeviceSwitchButton {
       this.curOutputDev.networkId !== 'LocalDevice' &&
       !CommonUtils.isShowCarIcon(this.curOutputDev.networkId, this.curOutputDev.deviceType)) ||
       this.curOutputDev.deviceType === audio.DeviceType.EARPIECE ||
-      this.curOutputDev.deviceType == audio.DeviceType.REMOTE_CAST) && (this.curRemoteOutputDev < 0);
+      this.curOutputDev.deviceType == audio.DeviceType.REMOTE_CAST ||
+      !!this.aodStyle?.isAod) && (this.curRemoteOutputDev < 0 || !!this.aodStyle?.isAod);
   }
 
   getFillColor(): ResourceColor {
@@ -148,6 +156,9 @@ DeviceSwitchButton {
 
   getSwitchBackground(): ResourceColor {
     if (this.isLocalSpeaker()) {
+      if (this.aodStyle?.isAod) {
+        return $r('app.color.ohos_id_color_component_normal');
+      }
       return this.isPhoneOrPad ? $r('app.color.media_item_component_normal') :
         $r('app.color.ohos_id_color_component_normal');
     } else {
@@ -197,8 +208,10 @@ DeviceSwitchButton {
       .fontSize(!this.isSmallFoldOuterScreen ? Constants.COMMON_CAST_SMALL_SIZE : Constants.SMALL_SCREEN_CARD_CAST_ICON)
       .draggable(false)
       .id(COMPONENT_ID_OUTPUT_TYPE)
-      .fontColor([this.getFillColor()])
-      .foregroundBrightness(BrightnessUtils.getInstance().getItemTextBrightnessOption(!this.isLocalSpeaker(),
+      .fontColor(this.aodStyle?.isAod ? [this.aodStyle?.getStyleValue(AodStyleType.MEDIA_BUTTON_COLOR)] :
+        [this.getFillColor()])
+      .foregroundBrightness(this.aodStyle?.isAod ? undefined :
+        BrightnessUtils.getInstance().getItemTextBrightnessOption(!this.isLocalSpeaker(),
         this.isLiveCardStyle ? 'liveSwitch' : 'deviceSwitch', this.isDarkMode))
       .renderingStrategy(this.getRenderingStrategy(this.getCurSwitchIcon()))
   }
@@ -214,7 +227,8 @@ DeviceSwitchButton {
       .borderRadius(120)
       .justifyContent(FlexAlign.Center)
       .backgroundColor(this.getSwitchBackground())
-      .backgroundBrightnessInternal(BrightnessUtils.getInstance().getItemTextBrightnessOption(!this.isLocalSpeaker(),
+      .backgroundBrightnessInternal(this.aodStyle?.isAod ? undefined :
+        BrightnessUtils.getInstance().getItemTextBrightnessOption(!this.isLocalSpeaker(),
         this.isLiveCardStyle ? 'liveSwitchBgc' : 'deviceSwitchBgc', this.isDarkMode))
     }
     .width('100%')

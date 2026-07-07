@@ -17,8 +17,8 @@ import { AppItemInfo } from '@ohos/launchercommon';
 import lazy { ResourceManager } from '@ohos/frameworkwrapper';
 
 export class AppCastUtil {
-  public static isHuaweiCast(bundleName: string): boolean {
-    return bundleName === 'com.ohos.huaweicast';
+  public static isOhosCast(bundleName: string): boolean {
+    return bundleName === 'com.ohos.ohcast';
   }
 
   /**
@@ -27,7 +27,7 @@ export class AppCastUtil {
    * @returns
    */
   public static getMissionIcon(appInfo: AppItemInfo): PixelMap | undefined {
-    if (AppCastUtil.isHuaweiCast(appInfo.bundleName)) {
+    if (AppCastUtil.isOhosCast(appInfo.bundleName)) {
       return ResourceManager.getInstance()
         .getCachedIconPixelMap(appInfo.appIconId, appInfo.bundleName, appInfo.moduleName);
     }

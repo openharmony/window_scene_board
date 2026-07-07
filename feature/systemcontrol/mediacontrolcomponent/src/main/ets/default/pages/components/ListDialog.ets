@@ -1599,7 +1599,8 @@ export struct ListDialog {
    */
   clickCurSwitchIcon(isCallDev: boolean = false) {
     this.showDevStartTime = new Date().getTime();
-    if (!this.debounce() || this.mediaTransitionFlag > 0) {
+    //mediaTransitionFlag在一镜到底动画播放完后的值不为0，导致点击播控中心右上角切换图标，无法显示设备列表，暂时先不判断mediaTransitionFlag的值
+    if (!this.debounce()) {
       return;
     }
     this.isShowDeviceAnim = !this.isShowDeviceAnim;
@@ -1718,7 +1719,7 @@ export struct ListDialog {
 
   private getScreenState():boolean {
     if (DeviceHelper.isFoldExpandedOrHalfButNotSmallFoldProduct() || DeviceHelper.isPad() ||
-      CommonUtils.isUltraScreenProductInGState()) {
+      CommonUtils.isThreeFoldProductInGState()) {
       return false;
     } else {
       return true;

@@ -14,7 +14,7 @@
  */
 
 import { LogDomain, LogHelper } from '@ohos/basicutils/src/main/ets/utils/LogHelper';
-// import collaborationServiceManager from '@hms.collaboration.collaborationServiceManager'
+// import collaborationServiceManager from '@ohos.collaboration.collaborationServiceManager'
 
 const TAG = 'CollaborationRegisterManager';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.WINDOW, TAG);

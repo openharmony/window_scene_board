@@ -210,7 +210,7 @@ export default struct SinglePage {
   private initZIndex():void {
     if (this.isMidPage()) {
       this.modifier.zIndex = -1;
-    } else if (DeviceHelper.isBigScreenMachine()) {
+    } else if (DeviceHelper.isSuperFoldMachine()) {
       this.modifier.zIndex = this.pagesLength - this.index;
     } else {
       this.modifier.zIndex = this.index;
@@ -333,7 +333,7 @@ export default struct SinglePage {
 
   private displayCountDataChange(): void {
     this.updateCenterX();
-    //  对于超大屏来说，折叠展开的时候需要刷新下第3屏是否需要拉起负一屏
+    //  对于三折屏来说，折叠展开的时候需要刷新下第3屏是否需要拉起负一屏
     if (this.index === 2) {
       this.panGestureSetup();
     }

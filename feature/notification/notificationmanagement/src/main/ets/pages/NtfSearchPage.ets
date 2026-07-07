@@ -14,16 +14,19 @@
  */
 import { LogDomain, LogHelper } from '@ohos/managementcomponent/src/main/ets/com/ohos/common/BasicCommon';
 import { NtfSearchController, ResultItemInfo, ResultItemInfoTask } from '../common/NtfSearchController';
-import { NtfSettingSysEventReporter } from '@ohos/managementcomponent/src/main/ets/com/ohos/common/NtfSettingSysEventReporter';
+import {
+  NtfSettingSysEventReporter
+} from '@ohos/managementcomponent/src/main/ets/com/ohos/common/NtfSettingSysEventReporter';
 import { ContextManager } from '@ohos/managementcomponent/src/main/ets/com/ohos/manager/ContextManager';
 import { sSettingsUtil } from '@ohos/managementcomponent';
 import { SettingsKeyConstants } from '@ohos/managementcomponent/src/main/ets/com/ohos/common/constants';
 import { fontScaleManager, FontScaleState } from '@ohos/managementcomponent';
 import {
-    notificationSettingManager
+  notificationSettingManager
 } from '@ohos/managementcomponent/src/main/ets/com/ohos/manager/NotificationSettingManager';
 import {
-    NotificationConfigEvent, NotificationConfigEventType
+  NotificationConfigEvent,
+  NotificationConfigEventType
 } from '@ohos/managementcomponent/src/main/ets/com/ohos/common/BasicCommon';
 import { NotificationConfigEntity } from '@ohos/managementcomponent/src/main/ets/com/ohos/common/BasicCommon';
 import { LengthMetrics } from '@ohos.arkui.node';
@@ -45,7 +48,7 @@ const SEARCH_SOURCE_CHANNEL = '2';
 @Component
 export struct NtfSearchPage {
   searchController: NtfSearchController = new NtfSearchController();
-  @State historyMap : Map<string, number> = new Map();
+  @State historyMap: Map<string, number> = new Map();
   private appMapping: Map<string, NotificationConfigEntity> = new Map();
   @State searchResultList: ResultItemInfo[] = [];
   @State isSearchProcessed: boolean = false;
@@ -64,7 +67,7 @@ export struct NtfSearchPage {
   @State transY: number = 56;
   private backMargin: LocalizedMargin = {};
 
-  private historyListInit() : void {
+  private historyListInit(): void {
     let historyStr: string = sSettingsUtil.getSecureValue(SettingsKeyConstants.NTF_SEARCH_HISTORY_LIST, '') ?? '';
     if (historyStr !== '') {
       this.historyList = historyStr.split(',');
@@ -78,8 +81,8 @@ export struct NtfSearchPage {
     log.showInfo(`titleBar margin changed： ${this.titleBarMargin}`);
   }
 
-  private historyListSave() : void {
-    let historyStr : string = '';
+  private historyListSave(): void {
+    let historyStr: string = '';
     for (let idx = 0; idx < this.historyList.length; ++idx) {
       historyStr += this.historyList[idx];
       if (idx != this.historyList.length - 1) {
@@ -100,11 +103,10 @@ export struct NtfSearchPage {
   private initBackIconMargin = () => {
     this.backMargin = {
       start: DeviceHelper.isPC() ? LengthMetrics.resource($r('app.float.pc_back_button_margin_l')) :
-      LengthMetrics.resource($r('app.float.page_margin_l')),
+        LengthMetrics.resource($r('app.float.page_margin_l')),
       top: LengthMetrics.resource($r('app.float.head_component_title_margin_top'))
     };
   }
-
   private fusionSearchAdmissionStateChange = (isEnable: boolean): void => {
     log.showInfo('FusionSearchAdmissionStateChange, isEnable: %{public}s', isEnable);
     if (isEnable) {
@@ -148,16 +150,13 @@ export struct NtfSearchPage {
     });
     this.searchController.init();
   }
-
   private doPageHidden = () => {
     log.showInfo('DoPageHidden.');
   }
-
   private onBackPressed = (): boolean => {
     this.navBackBtnEvent();
     return true;
   }
-
   onInputFocus = () => {
 
   }
@@ -184,7 +183,7 @@ export struct NtfSearchPage {
   pressedStyles() {
     .backgroundColor($r('sys.color.ohos_id_color_click_effect'))
     .borderRadius(DeviceHelper.isPC() ? $r('app.float.enable_component_image_radius') :
-    $r('app.float.nav_back_image_bg_radius'))
+      $r('app.float.nav_back_image_bg_radius'))
   }
 
   private navBackBtnEvent = () => {
@@ -222,7 +221,7 @@ export struct NtfSearchPage {
       }
       this.pcBackButtonColor = isHover ? $r('sys.color.ohos_id_color_button_normal') : Color.Transparent;
       this.backButtonRadius = isHover ? DeviceHelper.isPC() ? $r('app.float.enable_component_image_radius') :
-      $r('sys.float.ohos_id_corner_radius_clicked') : $r('app.float.nav_back_image_bg_radius');
+        $r('sys.float.ohos_id_corner_radius_clicked') : $r('app.float.nav_back_image_bg_radius');
     })
     .margin(this.backMargin)
     .align(Alignment.Center)
@@ -235,7 +234,7 @@ export struct NtfSearchPage {
       this.buildNavBackButton()
       this.buildSearchComponent()
     }
-    .margin({ top: 8, left: 4 })
+    .margin({ top: -30, left: 4 })
     .alignSelf(ItemAlign.Start)
   }
 
@@ -252,7 +251,7 @@ export struct NtfSearchPage {
       .margin({
         start: LengthMetrics.vp(8),
         end: this.titleBarMargin === 0 ? LengthMetrics.resource($r('app.float.search_bar_nav_margin')) :
-        LengthMetrics.vp(this.titleBarMargin)
+          LengthMetrics.vp(this.titleBarMargin)
       })
       .geometryTransition('SEARCH_ONE_SHOT_TRANSITION_ID', { follow: true })
       .textFont({
@@ -404,7 +403,7 @@ export struct NtfSearchPage {
         .fontColor($r('sys.color.ohos_id_color_text_primary'))
         .fontWeight(FontWeight.Medium)
         .fontWeight(FontWeight.Bold)
-      Button(){
+      Button() {
         Image($r('app.media.trash'))
           .width($r('app.float.appitem_notice_infopop_icon_width'))
           .height($r('app.float.appitem_notice_infopop_icon_height'))
@@ -436,7 +435,7 @@ export struct NtfSearchPage {
       ForEach(this.historyList, (value: string) => {
         Text(value)
           .fontSize(this.getScaledSize(12))
-          .constraintSize({minHeight: $r('app.float.search_history_font_size')})
+          .constraintSize({ minHeight: $r('app.float.search_history_font_size') })
           .fontColor($r('sys.color.ohos_id_color_text_primary'))
           .constraintSize({ minWidth: $r('app.float.search_image_scale') })
           .textAlign(TextAlign.Center)

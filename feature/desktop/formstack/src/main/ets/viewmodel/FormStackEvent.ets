@@ -21,6 +21,7 @@ import {
   localEventManager,
   GlobalContext,
   ResourceManager,
+  LightOutdoorConfig,
   AccessibilityManager
 } from '@ohos/frameworkwrapper';
 import { ObjectCopyUtil } from '@ohos/componenthelper';
@@ -36,6 +37,7 @@ import {
 import { FormStackEventIdUtil } from '@ohos/launchercommon';
 import { GridLayoutItemInfo } from '@ohos/launchercommon';
 import { EventConstants } from '@ohos/launchercommon';
+import { FormRelationManager } from '@ohos/launchercommon';
 import { ResUtils } from '@ohos/windowscene';
 import {
   FormStackHiSysEventUtil,
@@ -50,6 +52,7 @@ import { formStackSnapShowManager } from '../common/FormStackSnapShowManager';
 import { FormStackAnimate } from './FormStackAnimate';
 import { FormStackMsgType, FormStackViewModel, AddInterfaceExtendParam } from './FormStackViewModel';
 import { FormStackAnimateItem } from './FormStackAnimateItem';
+import { AiSuggestionUtil } from '@ohos/launchercommon/src/main/ets/aisuggestion/AiSuggestionUtil';
 
 const TAG: string = 'FormStackEvent';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.FORM, TAG);
@@ -267,10 +270,12 @@ export class FormStackEvent {
     }
     cardInfo.appName = newName;
 
+    // 语音助手建议卡片在顶层，且名字和当前显示的名字不一样，才去做动效
     if (this.mFormStackTopCardId === cardId && newName !== currentMenuName) {
       log.showWarn(`update appName: ${newName} of card: ${cardId}, start name animate.`);
       this.formNameAnimate(cardId);
     }
+
     return true;
   }
 
@@ -337,6 +342,11 @@ export class FormStackEvent {
     let isAccessibilityMode: boolean = AccessibilityManager.getInstance().getIsAccessibilityMode();
     this.mFormStackViewModel.deleteCardsFromFormStack(this.mFormStackItem.formStackId,
       [formInfo.cardId], !isAccessibilityMode, this.mIsOuterDesktop);
+
+    // 处理系统迁移场景SceneBoard卡片映射关系文件
+    if (FormRelationManager.getInstance().isSceneBoardCard(formInfo.bundleName, formInfo.cardName)) {
+      FormRelationManager.getInstance().deleteSceneBoardFormRelationMapByCardId(formInfo.cardId);
+    }
   }
 
   public getFormIfNeedCover(): CardItemInfo | undefined {
@@ -355,6 +365,9 @@ export class FormStackEvent {
       if (editModeManager.isInEditMode() &&
         !editModeManager.isDraggable(this.mFormStackItem as Object as GridLayoutItemInfo) ||
         !desktopItemDraggableManager.getEnableDrag()) {
+        return GestureJudgeResult.REJECT;
+      }
+      if (LightOutdoorConfig.getInstance().isOnLightOutdoorMode()) {
         return GestureJudgeResult.REJECT;
       }
     }
@@ -793,6 +806,7 @@ export class FormStackEvent {
     }
 
     if (!CheckEmptyUtils.checkStrIsEmpty(topCardId)) {
+      // 语音助手服务推送卡片置顶，换位前刷新堆叠卡状态
       this.mFormStackAnimate.resetFormStackStatus();
     }
     this.swapCardOfMiddlePostionToTop(index, isNeedAnimate);
@@ -892,12 +906,16 @@ export class FormStackEvent {
   }
 
   private getAppNameFromCache(card: CardItemInfo): string {
+    if (!AiSuggestionUtil.isVoiceAbilityForm(card.bundleName, card.abilityName)) {
+      return '';
+    }
+
     const formStackId: string = this.mFormStackItem.formStackId as string;
     let cardInfo: CardItemInfo | undefined = FormStackManager.getInstance()
       .getFormStackSubCards(formStackId).find(ele => ele.cardId === card.cardId);
 
     if (CheckEmptyUtils.checkStrIsEmpty(cardInfo?.appName)) {
-      return ResUtils.getInnerString($r('app.string.app_name'));
+      return ResUtils.getInnerString($r('app.string.aisuggestion_app_name'));
     }
 
     return cardInfo?.appName ?? '';

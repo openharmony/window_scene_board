@@ -1,0 +1,67 @@
+{
+    "plural":[
+        {
+            "name":"confirm_reboot",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"མུ་མཐུད་བསྐྱར་སློང་། (སྐར་ཆ་ %d)"
+                }
+            ]
+        },
+        {
+            "name":"confirm_shutdown",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"མུ་མཐུད་གློག་སྒོ་རྒྱག (སྐར་ཆ་ %d)"
+                }
+            ]
+        },
+        {
+            "name":"confirm_hibernate",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"གཉིད་ཉལ། (སྐར་ཆ་ %d)"
+                }
+            ]
+        },
+        {
+            "name":"common_cancel",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"འདོར་བ། (སྐར་ཆ་ %d)",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"create_region_folder",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"བདམས་པའི་རྣམ་གྲངས་བསྡུ་འཇུག (རྣམ་གྲངས་ %d)",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"confirm_shutdown_tip",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"ཉེར་སྤྱོད་ %d ཁ་བརྒྱབ་ནས་གློག་སྒོ་རྒྱག་བཞིན་ཡོད། ཏོག་ཙམ་སྒུག་རོགས། གལ་ཏེ་ཉར་ཚགས་བྱས་མེད་པའི་བཅོས་པའི་ནང་དོན་ཡོད་ན། བརྡབས་ནས་དོར་རྗེས་ལག་པས་ཉར་ཚགས་བྱ་ཆོག",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

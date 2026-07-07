@@ -43,6 +43,11 @@ export class SCBConstants {
   static readonly OOBE_PKG: string = 'com.ohos.startupguide';
 
   /**
+   * 语音助手建议包名
+   */
+  static readonly AI_SUGGESTION_BUNDLE_NAME = 'com.ohos.suggestion';
+
+  /**
    * 玩机技巧包名
    */
   static readonly TIPS_BUNDLE_NAME = 'com.ohos.tips';
@@ -81,6 +86,7 @@ export class SCBConstants {
    * Default WindowRadius 38.
    */
   static readonly DEFAULT_WINDOWS_RADIUS = 38;
+  // static readonly DEFAULT_WINDOWS_RADIUS = 0;
 
   /**
    * Default WindowRadius 0.
@@ -383,6 +389,7 @@ export class DividerStyleConstants {
   static readonly SPLIT_RATIO_HALF = 0.5;
   static readonly RATIO_ONE_TO_THREE = 1 / 3;
   static readonly RATIO_TWO_TO_THREE = 2 / 3;
+  static readonly SPLIT_ICON_SIZE = 100;
 }
 
 export class MidSceneConstants {
@@ -599,4 +606,19 @@ export enum PreLaunchType {
  */
 export enum DBErrorCode {
   DEVICE_VERSION_GET_FAILED = 100001,
+}
+
+/**
+ * vassistant app constants
+ */
+export class VassistantConstants {
+  static readonly VASSISTANT_BUNDLE_NAME: string = 'com.ohos.vassistant';
+
+  static readonly VASSISTANT_ABILITY_NAME: string = 'VoiceAbility';
+
+  static readonly DEFAULT_MODULE_NAME: string = 'entry';
+
+  static readonly VASSISTANT_LAUNCHER_BUNDLE_NAME: string = 'com.ohos.vassistant.launcher';
+
+  static readonly VASSISTANT_ABILITY_FOR_LABEL: string = 'WakeupServiceExtAbility';
 }

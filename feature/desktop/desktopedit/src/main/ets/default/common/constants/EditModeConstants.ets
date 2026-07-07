@@ -101,7 +101,7 @@ export class EditModeConstants {
     ['meetime', 'calendar', 'appmarket', 'notepad', 'music', 'hwireader', 'thememanager', 'health']
   ];
   /**
-   * 超大屏全展态竖屏展示的图标
+   * 三折全展态竖屏展示的图标
    */
   public static readonly TRIFOLDER_MODEL_G_PORTRAIT_ICONS = [
     ['settings', 'clock', 'calculator', 'contacts', 'gallery', 'mms', 'camera', 'weather'],
@@ -109,7 +109,7 @@ export class EditModeConstants {
     ['gamecenter', 'himovie', 'ailife', 'wallet', 'vmall', 'clouddrive', 'filemanager', 'finddevice']
   ];
   /**
-   * 超大屏全展态三屏横屏展示的图标
+   * 三折全展态三屏横屏展示的图标
    */
   public static readonly TRIFOLDER_MODEL_G_TRI_SCREEN_ICONS = [
     ['settings', 'clock', 'calculator', 'contacts', 'gallery', 'mms', 'camera', 'weather', 'meetime', 'calendar', 'appmarket', 'notepad'],

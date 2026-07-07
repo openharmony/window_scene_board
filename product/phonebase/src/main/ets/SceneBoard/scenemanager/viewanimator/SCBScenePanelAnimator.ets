@@ -73,9 +73,9 @@ import {
 } from '@ohos/windowscene/src/main/ets/TsIndex';
 import { SceneBoardStateManager, CoreEventType as SCBCoreEventType } from '@ohos/frameworkwrapper/Index';
 import sceneSessionManager from '@ohos.sceneSessionManager'
-import { BlurEffectType, SCBConstants, VisualEffectConstants } from '@ohos/commonconstants';
+import { BlurEffectType, SCBConstants, VassistantConstants, VisualEffectConstants } from '@ohos/commonconstants';
 import { SCBScenePanelViewModel } from '../viewmodel/SCBScenePanelViewModel';
-// import apsManager from '@hms.graphic.apsManager';
+// import apsManager from '@ohos.graphic.apsManager';
 import { BigFolderViewModel } from '@ohos/bigfolder';
 import { QuitAppRectViewModel } from '@ohos/pagedesktop/src/main/ets/default/common/viewmodel/QuitAppRectViewModel';
 import { commonEventManager, configPolicy, systemDateTime } from '@kit.BasicServicesKit';
@@ -243,7 +243,9 @@ export class SCBScenePanelAnimator {
     this.vm.requestFromContainerBackgroundOrDestruction(fromContainerSession,
       isBackTransition, needRemoveSession, needTerminate);
     // init transition animation parameter
-    fromContainerSession.needRenderBorderRadius.setBorderRadiusWithDfx(CommonConstants.getDeviceRadius(), TAG,
+    // fromContainerSession.needRenderBorderRadius.setBorderRadiusWithDfx(CommonConstants.getDeviceRadius(), TAG,
+    //   'sceneContainerAppTransitionChange', fromContainerSession.getName());
+    fromContainerSession.needRenderBorderRadius.setBorderRadiusWithDfx(CommonConstants.DEFAULT_WINDOWS_RADIUS_0, TAG,
       'sceneContainerAppTransitionChange', fromContainerSession.getName());
     if (!isBackTransition) {
       if (!customTransitionFlag) {
@@ -255,7 +257,9 @@ export class SCBScenePanelAnimator {
       performanceMonitor.begin('APP_TRANSITION_TO_OTHER_APP', performanceMonitor.ActionType.LAST_UP,
         toContainerSession.primarySession?.sceneInfo?.bundleName);
     } else {
-      toContainerSession.needRenderBorderRadius.setBorderRadiusWithDfx(CommonConstants.getDeviceRadius(), TAG,
+      // toContainerSession.needRenderBorderRadius.setBorderRadiusWithDfx(CommonConstants.getDeviceRadius(), TAG,
+      //   'sceneContainerAppTransitionChange', toContainerSession.getName());
+      toContainerSession.needRenderBorderRadius.setBorderRadiusWithDfx(CommonConstants.DEFAULT_WINDOWS_RADIUS_0, TAG,
         'sceneContainerAppTransitionChange', toContainerSession.getName());
       if (!customTransitionFlag) {
         toContainerSession.needRenderTranslate.setTranslateXWithDfx(px2vp(-toContainerSession.screenProperty?.width),
@@ -458,32 +462,38 @@ export class SCBScenePanelAnimator {
    */
   private sceneContainerZoomIn(sceneContainerSession: SCBSceneContainerSession,
     finishCallback: (isInterrupted: boolean)=>void): void {
-    sceneContainerSession.startOther(); // 默认动画
-    animateToForWindow(WindowAnimationType.ZOOM_IN, sceneContainerSession, {
-      onFinish: finishCallback
-    }, {
-      curve: curves.springMotion(StartAndExitUtil.getResponse(StartAndExitResponse.OTHER_START), 1.157, 0),
-    }, () => {
-      sceneContainerSession.onTransitionInactive();
-      this.vm.getPanelManager().onBlurTransitionActive(1.0, 'SCBScenePanel > sceneContainerZoomIn');
-    })
-    animateTo({
-      delay: 20,
-      duration: 250,
-      curve: Curve.Linear,
-      onFinish: () => {
-        sceneContainerSession.needRenderMotionBlur.setMotionBlurRadius(0, 'sceneContainerZoomIn end');
-      }
-    }, () => {
-      sceneContainerSession.needRenderAlpha.setNeedRenderAlphaWithDfx(1.0, TAG, 'sceneContainerZoomIn',
-        sceneContainerSession.getName());
-      sceneContainerSession.needRenderScale.setScaleXWithDfx(1.0, TAG, 'sceneContainerZoomIn',
-        sceneContainerSession.getName());
-      sceneContainerSession.needRenderScale.setScaleYWithDfx(1.0, TAG, 'sceneContainerZoomIn',
-        sceneContainerSession.getName());
-      sceneContainerSession.needRenderMotionBlur.setMotionBlurRadius(SCBConstants.MOTION_BLUR_RADIUS,
-        'sceneContainerZoomIn');
-    })
+    // sceneContainerSession.startOther(); // 默认动画
+    sceneContainerSession.onTransitionInactive();
+    this.vm.getPanelManager().onBlurTransitionActive(1.0, 'SCBScenePanel > sceneContainerZoomIn');
+    sceneContainerSession.needRenderAlpha.setNeedRenderAlphaWithDfx(1.0, TAG, 'sceneContainerZoomIn',
+      sceneContainerSession.getName());
+    sceneContainerSession.needRenderMotionBlur.setMotionBlurRadius(0, 'sceneContainerZoomIn end');
+    finishCallback(false);
+    // animateToForWindow(WindowAnimationType.ZOOM_IN, sceneContainerSession, {
+    //   onFinish: finishCallback
+    // }, {
+    //   curve: curves.springMotion(StartAndExitUtil.getResponse(StartAndExitResponse.OTHER_START), 1.157, 0),
+    // }, () => {
+    //   sceneContainerSession.onTransitionInactive();
+    //   this.vm.getPanelManager().onBlurTransitionActive(1.0, 'SCBScenePanel > sceneContainerZoomIn');
+    // })
+    // animateTo({
+    //   delay: 20,
+    //   duration: 250,
+    //   curve: Curve.Linear,
+    //   onFinish: () => {
+    //     sceneContainerSession.needRenderMotionBlur.setMotionBlurRadius(0, 'sceneContainerZoomIn end');
+    //   }
+    // }, () => {
+    //   sceneContainerSession.needRenderAlpha.setNeedRenderAlphaWithDfx(1.0, TAG, 'sceneContainerZoomIn',
+    //     sceneContainerSession.getName());
+    //   sceneContainerSession.needRenderScale.setScaleXWithDfx(1.0, TAG, 'sceneContainerZoomIn',
+    //     sceneContainerSession.getName());
+    //   sceneContainerSession.needRenderScale.setScaleYWithDfx(1.0, TAG, 'sceneContainerZoomIn',
+    //     sceneContainerSession.getName());
+    //   sceneContainerSession.needRenderMotionBlur.setMotionBlurRadius(SCBConstants.MOTION_BLUR_RADIUS,
+    //     'sceneContainerZoomIn');
+    // })
   }
 
   /**
@@ -553,65 +563,55 @@ export class SCBScenePanelAnimator {
     }
     homeLog.showWarn(`sceneContainerTransitionIn animateToImmediately this.uiContext ${!!this.vm.getUiContext()}`);
     sceneContainerSession.executeInterruptedCallback(WindowAnimationType.TRANSITION_IN_DEFAULT);
-    this.vm.getUiContext()?.animateToImmediately({
-      curve: curves.springMotion((this.vm.isNewStyle ?
-      StartAndExitUtil.getResponse(StartAndExitResponse.NORMAL_START) : 0.285), 1.157, 0),
-      onFinish: () => {
-        homeLog.showWarn('sceneContainerTransitionIn animateToImmediately onFinish');
-        SCBWindowRotateController.getInstance().landscapeStartSync(sceneContainerSession, this.vm.getScreenProperty());
-        // ApsUtils.setApsSceneOfContainerInAndOut(bundleName, true, StyleConstants.DEFAULT_0);
-        performanceMonitor.end(PageDesktopModel.getInstance().
-        getSceneLaunchType(sceneContainerSession.companionIconInfo));
-        performanceMonitor.end('START_APP_ANI_FORM');
-        homeLog.showInfo('raiseAnimateToSchedulePriority:start app end');
-        AnimateToScheduleUtils.raiseAnimateToGCPriority(AnimateToScheduleUtils.VALUE_END);
-        TraceUtil.endAnimTrace(DomainName.HOME, TraceUtil.CORE_METHOD_START_APP_ANI, TraceUtil.CUSTOM_ANIMATOR_PREFIX);
-        homeLog.showWarn(`${TraceUtil.CORE_METHOD_START_APP_ANI}:end`);
-        LauncherAnimUtil.setIsUIBusy(TAG, false);
-        sceneContainerSession.needRenderMotionBlur.setMotionBlurRadius(0, 'sceneContainerTransitionIn end');
-        SCBTransitionManager.getInstance().reduceStartExitAnimationCount('sceneContainerTransitionIn end');
-        sceneContainerSession.transitionInFinishIfNeed(animationNum);
-        if (ENABLE_FORCE_CLOSE_HDR) {
-          SCBScreenSessionManager.getInstance().setForceCloseHdr(false);
-        }
-        SCBKeyboardManager.getInstance().removeUnInterruptableAnimationCallbackFlag();
-        if (!this.vm.getDataCollectionHandler()?.getIsTouchableByNavBar()) {
-          SCBKeyboardManager.getInstance().notifyKeyboardAboveFloatContainerStateChange(false);
-        }
-      },
-    }, () => {
-      sceneContainerSession.onTransitionInactive();
-      this.vm.getPanelManager().onBlurTransitionActive(1.0, 'SCBScenePanel > sceneContainerTransitionIn');
-    })
-
     sceneContainerSession.needRenderShowRecentTitle.setShowRecentTitle(false);
     SCBKeyboardManager.getInstance().addUnInterruptableAnimationCallbackFlag();
     SCBKeyboardManager.getInstance().notifyKeyboardAboveFloatContainerStateChange(true);
     this.vm.getStateCollectionHandler()?.updateBgGrayScaleDisableState(true);
     this.vm.preProcessBlurComponent('sceneContainerTransitionIn');
-
-    this.vm.getUiContext()?.animateTo({
-      delay: 15,
-      duration: 50,
-      curve: Curve.Linear,
-      onFinish: () => {
-        this.vm.getStateCollectionHandler()?.updateIconWithBadgeState(false);
-      }
-    }, () => {
-      sceneContainerSession.needRenderAlpha.setNeedRenderAlphaWithDfx(1.0, TAG, 'sceneContainerTransitionIn',
-        sceneContainerSession.getName());
-      if (this.vm.isNewStyle && this.vm.getStateCollectionHandler()?.getIconWithBadgeState()) {
-        sceneContainerSession.badgeAlpha = 0.0;
-      }
-    })
-
-    animateToImmediately({
-      delay: 55,
-      duration: 60,
-      curve: Curve.Linear
-    }, () => {
-      sceneContainerSession.iconAlpha = 0.0;
-    })
+    // this.vm.getUiContext()?.animateToImmediately({
+    //   curve: curves.springMotion((this.vm.isNewStyle ?
+    //   StartAndExitUtil.getResponse(StartAndExitResponse.NORMAL_START) : 0.285), 1.157, 0),
+    //   onFinish: () => {
+    sceneContainerSession.onTransitionInactive();
+    this.vm.getPanelManager().onBlurTransitionActive(1.0, 'SCBScenePanel > sceneContainerTransitionIn');
+    sceneContainerSession.needRenderAlpha.setNeedRenderAlphaWithDfx(1.0, TAG, 'sceneContainerTransitionIn',
+      sceneContainerSession.getName());
+    if (this.vm.isNewStyle && this.vm.getStateCollectionHandler()?.getIconWithBadgeState()) {
+      sceneContainerSession.badgeAlpha = 0.0;
+    }
+    if (sceneContainerSession.isSplitView()) {
+      ViewManagerPolicy.hideView(ViewType.DESKTOP);
+      ViewManagerPolicy.hideView(ViewType.WALLPAPER);
+    }
+    this.vm.getStateCollectionHandler()?.updateIconWithBadgeState(false);
+    sceneContainerSession.iconAlpha = 0.0;
+    homeLog.showWarn('sceneContainerTransitionIn animateToImmediately onFinish');
+    SCBWindowRotateController.getInstance().landscapeStartSync(sceneContainerSession, this.vm.getScreenProperty());
+    performanceMonitor.end(PageDesktopModel.getInstance().
+    getSceneLaunchType(sceneContainerSession.companionIconInfo));
+    performanceMonitor.end('START_APP_ANI_FORM');
+    homeLog.showInfo('raiseAnimateToSchedulePriority:start app end');
+    AnimateToScheduleUtils.raiseAnimateToGCPriority(AnimateToScheduleUtils.VALUE_END);
+    TraceUtil.endAnimTrace(DomainName.HOME, TraceUtil.CORE_METHOD_START_APP_ANI, TraceUtil.CUSTOM_ANIMATOR_PREFIX);
+    homeLog.showWarn(`${TraceUtil.CORE_METHOD_START_APP_ANI}:end`);
+    LauncherAnimUtil.setIsUIBusy(TAG, false);
+    sceneContainerSession.needRenderMotionBlur.setMotionBlurRadius(0, 'sceneContainerTransitionIn end');
+    SCBTransitionManager.getInstance().reduceStartExitAnimationCount('sceneContainerTransitionIn end');
+    sceneContainerSession.transitionInFinishIfNeed(animationNum);
+    if (ENABLE_FORCE_CLOSE_HDR) {
+      SCBScreenSessionManager.getInstance().setForceCloseHdr(false);
+    }
+    SCBKeyboardManager.getInstance().removeUnInterruptableAnimationCallbackFlag();
+    if (!this.vm.getDataCollectionHandler()?.getIsTouchableByNavBar()) {
+      SCBKeyboardManager.getInstance().notifyKeyboardAboveFloatContainerStateChange(false);
+    }
+    //   },
+    // }, () => {
+    //   sceneContainerSession.onTransitionInactive();
+    //   this.vm.getPanelManager().onBlurTransitionActive(1.0, 'SCBScenePanel > sceneContainerTransitionIn');
+    // })
+    // this.vm.getUiContext()?.animateTo({ ... alpha anim ... })
+    // animateToImmediately({ ... iconAlpha anim ... })
   }
 
   /**
@@ -895,6 +895,10 @@ export class SCBScenePanelAnimator {
     sceneContainerSession.resetTransitionOutData(CommonConstants.getDeviceRadius(), 'sceneContainerTransitionOut');
     // 没找到controller也需要初始化CompanionIconInfo
     let adapterSceneInfo: SCBSceneInfo | undefined = session?.sceneInfo;
+    if (adapterSceneInfo?.bundleName === VassistantConstants.VASSISTANT_BUNDLE_NAME) {
+      adapterSceneInfo = SceneInfoAdapterUtil.getAdapterSceneInfo(adapterSceneInfo.bundleName,
+        adapterSceneInfo.moduleName, adapterSceneInfo.abilityName, adapterSceneInfo.appIndex);
+    }
     sceneContainerSession.initCompanionIconInfo(adapterSceneInfo, controller);
     let appExitInfo = QuitAppRectViewModel.getInstance().buildAppExitInfoInExit(sceneContainerSession);
     let companionIconInfo = sceneContainerSession.companionIconInfo;

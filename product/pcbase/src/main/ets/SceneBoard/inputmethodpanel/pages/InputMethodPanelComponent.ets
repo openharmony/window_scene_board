@@ -52,6 +52,7 @@ export default struct InputMethodPanelComponent {
   @State mLanguageGroupList: Array<InputMethodSubtypeGroup> = [];
   @State style: InputMethodPanelComponentStyle = StyleConfiguration.getInputMethodPanelComponentStyle();
   @State colorModeViewData: ColorModeViewData = ColorModeViewModel.getInstance().getViewData();
+  @State isVoiceAbility: boolean = false;
   @State inputMethodStatusBarIsHide: boolean = false;
   @Consume pluginSlot: PluginSlot;
   @State isLanguage: boolean = this.pluginSlot === PluginSlot.SLOT_STATUS_INPUT_PANEL;
@@ -125,7 +126,7 @@ export default struct InputMethodPanelComponent {
   @Builder
   inputStateSetting() {
     Row() {
-      Text('')
+      Text($r('app.string.recommend_input_method'))
         .fontSize(14)
         .fontColor($r('sys.color.font_secondary'))
         .foregroundBrightness(this.colorModeViewData.foregroundPrimaryOption)
@@ -296,6 +297,10 @@ export default struct InputMethodPanelComponent {
         // 输入法列表
         this.InputListComponent()
         this.MyDivider()
+        // 语音助手输入法设置
+        if (this.isVoiceAbility && !DeviceHelper.is2In1DevicePcType()) {
+          this.inputStateSetting();
+        }
         // 输入法设置
         this.inputSetting();
       } else {
@@ -338,10 +343,13 @@ export default struct InputMethodPanelComponent {
 
   async updateInputMethodPanelWindow() {
     try {
+      let currentIme: inputMethod.InputMethodProperty | null = await InputMethodUtils.queryCurrentInputMethod();
+      this.isVoiceAbility = currentIme?.name === 'com.ohos.inputmethod';
       this.inputMethodStatusBarIsHide =
         settings.getValueSync(GlobalContext.getContext(), HIDE_INPUT_METHOD_STATUS_BAR, 'false') === 'true';
     } catch (error) {
       log.showError(`getCurrentInputMethod fail, error: ${error}`);
+      this.isVoiceAbility = false;
     }
   }
 

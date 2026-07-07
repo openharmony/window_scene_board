@@ -58,3 +58,5 @@ export { floatingNavigationInfoMgr, FloatingNavigationInfo, FloatingNavigationSh
 export { FrameSetTimeout } from './utils/FrameUtil';
 
 export { SceneSessionUIContextManager } from './utils/SceneSessionUIContextManager';
+
+export { OutdoorCcmManager } from './manager/OutdoorCcmManager';

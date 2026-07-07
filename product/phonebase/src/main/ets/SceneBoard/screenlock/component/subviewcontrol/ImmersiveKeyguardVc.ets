@@ -23,7 +23,7 @@ import {
 } from '@ohos/screenlockcommon';
 import { MpStateTypeUtils, MpStateType } from '@ohos/screenlockcommon/src/main/ets/fsm/MainPageFsm';
 import { SlBindState } from '../../model/data/SlBindState';
-import { immersiveKgMgr, ImmersiveState } from '@ohos/systemuicommon/src/main/ets/TsIndex';
+import { ImmersiveAodStyle, immersiveKgMgr, ImmersiveState } from '@ohos/systemuicommon/src/main/ets/TsIndex';
 import { AuthType } from '@ohos/screenlockcommon/src/main/ets/utils/AccountHelper';
 import { SlListWidgetBindState } from '@ohos/immersivekeyguard/src/main/ets/model/data/SlListWidgetBindState';
 import { ScreenLockSpaceAniData } from '@ohos/screenlockcommon/src/main/ets/manager/ScreenLockSpaceAniOptions';
@@ -52,6 +52,7 @@ export interface ImmersiveKeyguardParams {
   keyGuardMode: KeyGuardMode;
   slBindState: SlBindState;
   isNtfFingerprintConflict: boolean;
+  aodStyle: ImmersiveAodStyle | undefined;
   slClockBindCtrl: SlClockBindState;
   isDeviceWithOuter: boolean;
   isSmallFoldOuterScreen: boolean;
@@ -84,6 +85,9 @@ export class ImmersiveKeyguardVc {
       log.showError('Get immersive visibility error, params is null.');
       return Visibility.Hidden;
     }
+    if (immersiveKeyguardParams.aodStyle?.isKgNtfHidden) {
+      return Visibility.Hidden;
+    }
     if (immersiveKeyguardParams.slClockBindCtrl?.getClockAodToDesktop()) {
       return Visibility.Hidden;
     }
@@ -96,6 +100,9 @@ export class ImmersiveKeyguardVc {
   public getOuterImmVisibility(immKgParams: ImmersiveKeyguardParams): Visibility {
     if (!immKgParams) {
       log.showError('Get immersive visibility error, params is null.');
+      return Visibility.Hidden;
+    }
+    if (immKgParams.aodStyle?.isKgNtfHidden) {
       return Visibility.Hidden;
     }
     if (immKgParams.slClockBindCtrl?.getClockAodToDesktop()) {
@@ -225,7 +232,8 @@ export class ImmersiveKeyguardVc {
   private getCapsuleVisibility(immersiveKeyguardParams: ImmersiveKeyguardParams): Visibility {
     if ((MpStateTypeUtils.isEditState(immersiveKeyguardParams.currentState) ||
     MpStateTypeUtils.isBouncerState(immersiveKeyguardParams.currentState) ||
-    MpStateTypeUtils.isUnlockState(immersiveKeyguardParams.currentState))) {
+    MpStateTypeUtils.isUnlockState(immersiveKeyguardParams.currentState)) ||
+      immersiveKeyguardParams?.aodStyle?.isKgNtfHidden) {
       log.showInfo('getImmersiveCapsuleVisibility hidden');
       return Visibility.Hidden;
     }
@@ -234,7 +242,7 @@ export class ImmersiveKeyguardVc {
       log.showError('fingerprintInfo is null, show capsule anyway');
       return Visibility.Visible;
     }
-    if (fingerprintInfo.isSupportUnlock &&
+    if (immersiveKeyguardParams?.aodStyle?.isAod && fingerprintInfo.isSupportUnlock &&
     fingerprintInfo.hasLowFingerprint && immersiveKeyguardParams?.slFingerprintBindState?.getEnable()) {
       log.showInfo('there is low fingerprint enable, hide capsule');
       return Visibility.Hidden;

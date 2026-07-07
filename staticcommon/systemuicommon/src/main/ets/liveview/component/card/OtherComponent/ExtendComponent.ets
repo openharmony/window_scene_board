@@ -20,6 +20,7 @@ import { LiveOtherExtendData } from '../../../data/extend/LiveOtherExtendData';
 import { ExtendStyle } from '../../../common/Extendstyle';
 import { LiveViewExtendStyle } from '../../../data/extend/LiveViewExtendStyle';
 import { immersiveKgMgr } from '../../../../immersivekeyguardcommon/manager/ImmersiveKeyguardStateManager';
+import { AodStyleType, ImmersiveAodStyle } from '../../../../immersivekeyguardcommon/base/interface/ImmersiveAodStyle';
 import { NotificationType } from '../../../../constants/NotificationType';
 import { LiveViewData } from '../../../data/LiveViewData';
 import { ImmersiveSysEventUtils } from '../../../../immersivekeyguardcommon/common/ImmersiveSysEventUtil';
@@ -62,6 +63,11 @@ export struct ExtendComponent {
    * 使用系统图标规格
    */
   @Prop useSysIconSize?: boolean = undefined;
+  /**
+   * AOD显示样式
+   */
+  @State aodStyle: ImmersiveAodStyle | undefined = immersiveKgMgr.getOneMirrorState().getAodStyle(
+    this.notificationType === NotificationType.TYPE_PHONE_KEYGUARD);
 
   private extendStyle: ExtendStyle = new LiveViewExtendStyle();
 
@@ -186,7 +192,8 @@ export struct ExtendComponent {
     if (this.isCapsule) {
       return this.capsuleForegroundColor;
     }
-    return this.getMainTextFontColor(this.isLight);
+    return this.aodStyle?.isAod ? this.aodStyle?.getStyleValue(AodStyleType.CAPSULE_SECONDARY_FONT_COLOR) :
+      this.getMainTextFontColor(this.isLight);
   }
 
   private getMainTextFontColor(isLight?: boolean): ResourceColor | undefined {
@@ -241,13 +248,20 @@ export struct ExtendComponent {
    * @returns isRenderGroup
    */
   private isRenderGroup(text: string): boolean {
-    if (textEmojiHelper.isEmoji(text)) {
+    if (textEmojiHelper.isEmoji(text) || this.aodStyle?.isOneMirror || this.aodStyle?.isAod) {
       return false;
     }
     return true;
   }
 
   private getAlpha(): number | undefined {
+    if (this.aodStyle?.isAod) {
+      if (this.data.wantAgent) {
+        return this.aodStyle?.getStyleValue(AodStyleType.NTF_EXTEND_VIEW_ALPHA_BUTTON);
+      }
+      return this.aodStyle?.getStyleValue(AodStyleType.NTF_EXTEND_VIEW_ALPHA_CONTENT);
+    }
+
     if (this.data?.type === OtherFormExtendShowType.PICTURE || this.data?.type === OtherFormExtendShowType.ICON) {
       return this.otherCardExtendAnimVm.opacity;
     }
@@ -256,6 +270,7 @@ export struct ExtendComponent {
   }
 
   private getButtonTextAlpha(): number | undefined {
-    return undefined;
+    return this.aodStyle?.isAod ? this.aodStyle?.getStyleValue(AodStyleType.NTF_EXTEND_VIEW_ALPHA_BUTTON_TEXT) :
+      undefined;
   }
 }

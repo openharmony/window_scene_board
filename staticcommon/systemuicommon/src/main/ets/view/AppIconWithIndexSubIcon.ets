@@ -52,6 +52,7 @@ const DEFAULT_BORDER_RADIUS: BorderRadiuses = {
 };
 const RTL_MARGIN: Margin = { left: BADGE_MARGIN, bottom: BADGE_MARGIN };
 const DEFAULT_MARGIN: Margin = { right: BADGE_MARGIN, bottom: BADGE_MARGIN };
+const APP_ICON_RADIUS: number = 12;
 
 /**
  * 带下标的应用图标，使用此组件时，需要确保hap包内已经包含 appIndexResourceMap中的资源文件
@@ -100,7 +101,7 @@ export struct AppIconWithIndexSubIcon {
         .objectFit(ImageFit.Contain)
         .syncLoad(true)
 
-      // 角标
+      // 克隆应用角标
       Stack() {
         Stack()
           .backgroundColor(BADGE_COLOR)
@@ -109,7 +110,7 @@ export struct AppIconWithIndexSubIcon {
           .borderRadius(this.isSystemRTL() ? RTL_BORDER_RADIUS : DEFAULT_BORDER_RADIUS)
           .enabled(false)
           .opacity(BADGE_OPACITY)
-        Image('')
+        Image($r(`app.media.app_icon_deliver`))
           .width(TEXT_WIDTH)
           .height(TEXT_HEIGHT)
       }
@@ -143,6 +144,8 @@ export struct AppIconWithIndexSubIcon {
       .iconImageCommonProperty()
       .width(this.appIconSize)
       .height(this.appIconSize)
+      .borderRadius(APP_ICON_RADIUS)
+      .clip(true)
       .interpolation(ImageInterpolation.Medium)
       .autoResize(false)
       .objectFit(ImageFit.Contain)

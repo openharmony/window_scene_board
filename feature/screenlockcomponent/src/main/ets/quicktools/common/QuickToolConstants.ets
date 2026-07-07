@@ -82,6 +82,7 @@ export class QuickToolConstants {
   public static readonly FLASH_HIT_ICON_IMAGE: Resource = $r('sys.symbol.flashlight_on_fill');
   public static readonly CLOCK_ICON_IMAGE: Resource = $r('sys.symbol.timer_circle_fill');
   public static readonly CALCULATOR_ICON_IMAGE: Resource = $r('sys.symbol.calculator_fill');
+  public static readonly VASSISTANT_ICON_IMAGE: Resource = $r('sys.symbol.line_viewfinder');
   public static readonly MEMORANDUM_ICON_IMAGE: Resource = $r('sys.symbol.doc_plaintext_fill');
   public static readonly CHILD_UNIVERSAL_DELAY_ANIMATE: string = 'quickToolChildUniversalDelayAnimate';
   public static readonly BAR_ICON_DELAY_ANIMATE: string = 'quickToolBarIconDelayAnimate';
@@ -114,7 +115,8 @@ export enum ComponentFlag {
   FLASH = 'Flash',
   MEMORANDUM = 'Memorandum',
   CLOCK = 'Clock',
-  CALCULATOR = 'Calculator'
+  CALCULATOR = 'Calculator',
+  VASSISTANT = 'Vassistant'
 }
 
 export enum QuickToolsState {

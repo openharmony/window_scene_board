@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 
+import xrGlassesAppService from '@hms.xrGlassesService.xrGlassesAppService';
 import { LogDomain, LogHelper } from '@ohos/basicutils';
 
 const TAG = 'BrightnessManager';
@@ -25,6 +26,7 @@ export class BrightnessManager {
 
   constructor() {
     try {
+      this.brightnessValue = xrGlassesAppService.getGlassesBrightness();
       log.showInfo(`BrightnessManager init success`);
     } catch (err) {
       log.showInfo(`BrightnessManager init fail,error code is ${err.code}`);
@@ -39,6 +41,7 @@ export class BrightnessManager {
   public setBrightnessValue(value: number): void {
     try {
       this.brightnessValue = value;
+      xrGlassesAppService.setGlassesBrightness(this.brightnessValue);
     } catch (err) {
       log.showError(`setBrightnessValue fail,error code is ${err.code}`);
     }

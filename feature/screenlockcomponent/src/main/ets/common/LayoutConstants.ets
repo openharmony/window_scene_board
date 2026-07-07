@@ -63,13 +63,13 @@ export enum DeviceClassification {
    */
   PSD_SMALL_FOLD_PHONE = 7,
   /**
-   * 超大屏屏G态横屏
+   * 三折叠屏G态横屏
    */
-  PSD_ULTRA_SCREEN_G_HORIZONTAL = 8,
+  PSD_THREE_FOLD_G_HORIZONTAL = 8,
   /**
-   * 超大屏屏G态竖屏
+   * 三折叠屏G态竖屏
    */
-  PSD_ULTRA_SCREEN_G_PORTRAIT = 9,
+  PSD_THREE_FOLD_G_PORTRAIT = 9,
 }
 
 /**
@@ -204,11 +204,11 @@ export default class KeyBoardLayoutConstants {
       }
     ],
 
-    // 超大屏G态横屏
+    // 三折叠G态横屏
     [
-      DeviceClassification.PSD_ULTRA_SCREEN_G_HORIZONTAL,
+      DeviceClassification.PSD_THREE_FOLD_G_HORIZONTAL,
       {
-        index: DeviceClassification.PSD_ULTRA_SCREEN_G_HORIZONTAL,
+        index: DeviceClassification.PSD_THREE_FOLD_G_HORIZONTAL,
         psdMargin: 24,
         psdGutter: 24,
         psdColumn: 12,
@@ -337,11 +337,11 @@ export default class KeyBoardLayoutConstants {
       }
     ],
 
-    // 超大屏G态横屏
+    // 三折叠G态横屏
     [
-      DeviceClassification.PSD_ULTRA_SCREEN_G_HORIZONTAL,
+      DeviceClassification.PSD_THREE_FOLD_G_HORIZONTAL,
       {
-        index: DeviceClassification.PSD_ULTRA_SCREEN_G_HORIZONTAL,
+        index: DeviceClassification.PSD_THREE_FOLD_G_HORIZONTAL,
         numKeyboardHeight: $r('app.float.num_keyboard_height_fold_expand'),
         psdBottomMargin: $r('app.float.psd_bottom_margin_phone_g_landscape'),
         digitalPsdFlexMarginNumKeyBoard: $r('app.float.digital_psd_flex_margin_numkeyboard_fold_expand'),
@@ -352,11 +352,11 @@ export default class KeyBoardLayoutConstants {
       }
     ],
 
-    // 超大屏G态竖屏
+    // 三折叠G态竖屏
     [
-      DeviceClassification.PSD_ULTRA_SCREEN_G_PORTRAIT,
+      DeviceClassification.PSD_THREE_FOLD_G_PORTRAIT,
       {
-        index: DeviceClassification.PSD_ULTRA_SCREEN_G_PORTRAIT,
+        index: DeviceClassification.PSD_THREE_FOLD_G_PORTRAIT,
         numKeyboardHeight: $r('app.float.num_keyboard_height_fold_expand'),
         psdBottomMargin: $r('app.float.psd_bottom_margin_phone_g_portrait'),
         digitalPsdFlexMarginNumKeyBoard: $r('app.float.digital_psd_flex_margin_numkeyboard_fold_expand'),
@@ -459,7 +459,7 @@ export default class KeyBoardLayoutConstants {
   public static readonly KEYBOARD_WIDTH_SIM_CARD_PHONE: number = 260;
   public static readonly OUTER_KEYBOARD_WIDTH_SIM_CARD_PHONE: number = 208;
 
-  // keyBoard宽度计算参数 手机 或大屏幕机 3.5 columns + 3 gutter
+  // keyBoard宽度计算参数 手机 或折叠机 3.5 columns + 3 gutter
   public static readonly KEYBOARD_WIDTH_COUNT_COLUMNS: number = 3.5;
   public static readonly KEYBOARD_WIDTH_COUNT_GUTTER: number = 3;
 
@@ -496,7 +496,7 @@ export default class KeyBoardLayoutConstants {
   public static readonly KEYBOARD_MIX_MARGIN_BOTTOM_PHONE_LOW_FINGER: number = 468;
   public static readonly KEYBOARD_MIX_MARGIN_BOTTOM_PHONE_HIGH_FINGER: number = 432;
   public static readonly KEYBOARD_MIX_MARGIN_BOTTOM_PHONE_NO_FINGER: number = 410;
-  public static readonly ULTRA_SCREEN_G_PORTRAIT_KEYBOARD_MIX_MARGIN_BOTTOM: number = 530;
+  public static readonly THREE_FOLD_G_PORTRAIT_KEYBOARD_MIX_MARGIN_BOTTOM: number = 530;
   public static readonly KEYBOARD_MIX_MARGIN_BOTTOM_PHONE_OUTER_SCREEN: number = 207;
 
   public static readonly SCROLL_WIDTH_REDUCE:number = 98;
@@ -516,14 +516,14 @@ export default class KeyBoardLayoutConstants {
   // 手机图案密码页面宽度
   public static readonly PHONE_PATTERN_WIDTH:number = 288;
 
-  // 超大屏G态MARGIN个数
-  public static readonly ULTRA_SCREEN_G_COUNT_MARGINS: number = 2;
-  // 超大屏G态密码盘所占COLUMN个数
-  public static readonly ULTRA_SCREEN_G_KEYBOARD_COUNT_COLUMNS: number = 4;
-  // 超大屏G态密码盘所占GUTTER个数
-  public static readonly ULTRA_SCREEN_G_KEYBOARD_COUNT_GUTTERS: number = 4;
-  // 超大屏G态密码盘所占MARGIN个数
-  public static readonly ULTRA_SCREEN_G_KEYBOARD_COUNT_MARGIN: number = 1;
+  // 三折叠G态MARGIN个数
+  public static readonly THREE_FOLD_G_COUNT_MARGINS: number = 2;
+  // 三折叠G态密码盘所占COLUMN个数
+  public static readonly THREE_FOLD_G_KEYBOARD_COUNT_COLUMNS: number = 4;
+  // 三折叠G态密码盘所占GUTTER个数
+  public static readonly THREE_FOLD_G_KEYBOARD_COUNT_GUTTERS: number = 4;
+  // 三折叠G态密码盘所占MARGIN个数
+  public static readonly THREE_FOLD_G_KEYBOARD_COUNT_MARGIN: number = 1;
   // 数字密码 折叠展开态的竖屏  距离底部 96
   public static readonly PSD_FOLD_EXPAND_MARGIN_BOTTOM: number = 96;
   // 数字密码 折叠展开态的横屏 距离底部 68
@@ -534,7 +534,7 @@ export default class KeyBoardLayoutConstants {
   public static readonly PATTERN_FOLD_EXPAND_HORIZONTAL_MARGIN_BOTTOM: number = 86;
   // 箭头按键高度的一半
   public static readonly HALF_ARROW_HEIGHT: number = 16;
-  // 大屏幕机密码页面箭头宽度
+  // 折叠机密码页面箭头宽度
   public static readonly ARROW_WIDTH: number = 32;
   // SIM卡页prop距离侧边边距24vp 两侧48
   public static readonly SIM_PROP_MARGIN_BOTH_SIZE: number = 48;

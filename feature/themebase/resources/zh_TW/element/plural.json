@@ -1,0 +1,28 @@
+{
+    "plural":[
+        {
+            "name":"item_select",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"已選取 %d 項",
+                    "attr":{
+                        "priority":"LT"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"delete_select_wallpapers",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"是否刪除所選桌布？",
+                    "attr":{
+                        "priority":"LT"
+                    }
+                }
+            ]
+        }
+    ]
+}

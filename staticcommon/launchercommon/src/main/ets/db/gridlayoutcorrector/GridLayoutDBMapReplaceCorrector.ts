@@ -39,6 +39,7 @@ const log: LogHelper = LogHelper.getLogHelper(LogDomain.HOME, TAG);
  * 处理桌面图标映射方案
  * 目的：替换旧应用包名保存到数据库，使用新应用的包名替换老应用的位置；
  * 数据来源：配置文件内容由BMS开发提供。
+ * 做通用矫正器模板:本期针对语音助手壳应用替换。
  */
 export class GridLayoutDBMapReplaceCorrector {
   /**

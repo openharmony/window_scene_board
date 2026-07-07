@@ -54,6 +54,7 @@ import GridLayoutUtil, { ItemsCount } from '@ohos/launchercommon/src/main/ets/ut
 import { PageDesktopGridStyleConfig } from '@ohos/launchercommon/src/main/ets/layoutconfig/PageDesktopGridStyleConfig';
 import { FolderStyleManager, FolderViewData, SwiperPageManager } from '@ohos/launchercommon/Index';
 import { BaseIconInfo } from '@ohos/launchercommon/src/main/ets/bean/BaseIconInfo';
+import { VassistantConstants } from '@ohos/commonconstants/src/main/ets/constants/SCBConstants';
 import OpenFolderDragHandler from '@ohos/bigfolder/src/main/ets/default/common/OpenFolderDragHandler';
 
 const TAG = 'QuitAppRectViewModel';
@@ -133,6 +134,7 @@ export class QuitAppRectViewModel {
     }
 
     let iconInfo = container.companionIconInfo ?? {} as CompanionIconInfo;
+    iconInfo.bundleName = SceneInfoAdapterUtil.getAdapterBundleName(sceneInfo.bundleName ?? '');
     iconInfo.abilityName = sceneInfo.abilityName ?? '';
     iconInfo.moduleName = sceneInfo.moduleName ?? '';
     iconInfo.appIndex = sceneInfo.appIndex ?? 0;
@@ -236,6 +238,7 @@ export class QuitAppRectViewModel {
     if (appExitInfo && this.checkRectInfoNotEmpty(this.desktopLeftX, this.desktopRightX, appExitInfo.iconRect)) {
       return appExitInfo;
     }
+    log.showWarn(`buildAppExitInfo failed`);
     return { type: null, iconRect: null, pageIndex: null, isInScreen: false, appInFolderInfo: null };
   }
 
@@ -255,6 +258,11 @@ export class QuitAppRectViewModel {
       shortcutId: companionIconInfo.shortcutId,
       moduleName: companionIconInfo.moduleName,
       appIndex: companionIconInfo.appIndex,
+    }
+    if (companionIconInfo.bundleName === VassistantConstants.VASSISTANT_BUNDLE_NAME) {
+      iconInfo.bundleName = VassistantConstants.VASSISTANT_LAUNCHER_BUNDLE_NAME;
+      iconInfo.moduleName = VassistantConstants.DEFAULT_MODULE_NAME;
+      iconInfo.abilityName = VassistantConstants.VASSISTANT_ABILITY_NAME;
     }
     const keyName: string = AppItemInfo.getKeyName(iconInfo);
     let layoutCacheManager = LaunchLayoutCacheManager.getInstance();
@@ -858,15 +866,13 @@ export class BaseQuitAppRect {
    * @returns 待查询的应用或文件夹的位置信息
    */
   public getRectDesktop(itemInfo: GridLayoutItemInfo): RectInfo {
-    const difference: number = this.gridDesktopTopDistance - vp2px(GridLayoutUtil.getGridItemPosition(0, 0, 0)[1]);
     const position: number[] = GridLayoutUtil.getRealGridItemPosition(itemInfo);
-    const leftDistance: number = vp2px(position[0]);
+    log.showWarn(`getDesktopRect position:${position}`);
     const rectInfo: RectInfo = new RectInfo();
-    rectInfo.left = px2vp(leftDistance + this.desktopGridParam.gridItemLeftPadding);
+    rectInfo.left = px2vp(vp2px(position[0]) + this.desktopGridParam.gridItemLeftPadding);
     rectInfo.width = px2vp(Math.ceil(this.desktopGridParam.gridIconSize));
     rectInfo.right = rectInfo.left + rectInfo.width;
-    const topDistance: number = vp2px(position[1]) + difference;
-    rectInfo.top = px2vp(topDistance + this.desktopGridParam.gridItemTopPadding);
+    rectInfo.top = px2vp(vp2px(position[1]) + this.desktopGridParam.gridItemTopPadding);
     if (launcherStatusUtil.getShowOutLauncherStatus()) {
       rectInfo.top = rectInfo.top - CommonConstants.OUTER_SCREEN_OFFSET;
     }

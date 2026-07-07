@@ -715,6 +715,13 @@
             }
         },
         {
+            "name":"ic_tools_vassistant_accessible",
+            "value":"掃一掃",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
             "name":"ic_tools_calculator_accessible",
             "value":"計算機",
             "attr":{

@@ -26,6 +26,7 @@ import { DeviceHelper, ResourceManager } from '@ohos/frameworkwrapper/src/main/e
 import {
   AppItemInfo,
   CommonConstants,
+  DeliverUtil,
   DeviceState,
   DisappearLastAppData,
   DockItemInfo,
@@ -359,7 +360,7 @@ export class FolderCommonUtil {
    * @returns true 支持重命名
    */
   public static isFolderSupportRename(folderId: string): boolean {
-    return !NotHarmonyUtil.isNotHarmonyFolderById(folderId);
+    return !DeliverUtil.isDisableOperationsOnFolder(folderId) && !NotHarmonyUtil.isNotHarmonyFolderById(folderId);
   }
 
   /**
@@ -387,7 +388,7 @@ export class FolderCommonUtil {
    * @returns true需要解散
    */
   public static isNeedReleased(folderAppList: GridLayoutItemInfo[], folderId: string): boolean {
-    return folderAppList.length <= 1 && (folderAppList.length <= 1) &&
+    return folderAppList.length <= 1 && DeliverUtil.checkFolderIsReleased(folderId, folderAppList.length) &&
       NotHarmonyUtil.isNotHarmonyFolderShouldReleased(folderId, folderAppList.length, folderAppList);
   }
 
@@ -641,13 +642,13 @@ export class FolderCommonUtil {
   }
 
   /**
-   * 是否特殊定制文件夹
+   * 是否特殊定制文件夹：克隆应用、应用、未鸿蒙化
    *
    * @param folderId 文件夹id
    * @returns true是特殊定制文件夹
    */
   public static isCustomizedFolder(folderId: string): boolean {
-    return NotHarmonyUtil.isNotHarmonyFolderById(folderId);
+    return DeliverUtil.isContainerFolder(folderId) || NotHarmonyUtil.isNotHarmonyFolderById(folderId);
   }
 
   /**

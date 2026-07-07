@@ -49,7 +49,7 @@ export class FormStackSnapCommonData {
       return undefined;
     }
 
-    // 获取截图需要显示的位置，场景二：拖拽形成堆叠
+    // 获取截图需要显示的位置，场景一：语音助手场景卡入场退场|堆叠卡片移除，场景二：拖拽形成堆叠
     let targetComponentId: string = endLayoutInfo.typeId === CommonConstants.TYPE_CARD ?
       FormCommonUtil.getFormComponentId(endLayoutInfo) :
       FormCommonUtil.getFormStackComponentId(endLayoutInfo.formStackId);

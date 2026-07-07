@@ -106,6 +106,13 @@
             }
         },
         {
+            "name":"volume_accessibility_voice_assistant",
+            "value":"Шкала громкости голосовых уведомлений функции voice",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
             "name":"volume_accessibility_accessibility",
             "value":"Шкала громкости голосовых уведомлений функции Специальные возможности",
             "attr":{

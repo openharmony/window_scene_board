@@ -62,7 +62,7 @@ import { editModeDockViewModel } from '../viewmodel/EditModeDockViewModel';
 import lazy OuterEditConstants from '../common/constants/OuterEditConstants';
 import { launcherVisualEffectMgr } from '@ohos/launchercommon/Index';
 import { MoveItem } from '@ohos/launchercommon/src/main/ets/bean/MoveItem';
-// import apsManager from '@hms.graphic.apsManager';
+// import apsManager from '@ohos.graphic.apsManager';
 
 const TAG: string = 'EditModeViewManager';
 const ICONEDIT_BUTTON_ID: string = 'editModeDockButton2';

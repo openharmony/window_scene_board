@@ -19,6 +19,7 @@ import {
   AppStatus,
   CommonConstants,
   DefaultDesktopLayoutInfo,
+  DeliverUtil,
   DisappearLastAppData,
   DockItemInfo,
   FolderData,

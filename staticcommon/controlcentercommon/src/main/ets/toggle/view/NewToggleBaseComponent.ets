@@ -171,7 +171,7 @@ export struct ToggleComponent {
   @State labelHeight: string = '0';
   @State lastLabel: string | Resource | undefined = '';
 
-  @StorageLink('currColorMode')@Watch('onColorModeChange') currColorMode: number =
+  @State currColorMode: number =
     GlobalContext.getContext().config.colorMode as number;
   @StorageLink('isLandscape') isLandscape: boolean = false;
   @StorageLink('ControlCenterState') controlCenterState: number = 0;
@@ -268,7 +268,9 @@ export struct ToggleComponent {
     this.themeChangeEventMgr.on(ThemeChangeEvent, this.onProduceThemeUsingEvent);
     this.themeChangeEventMgr.on(DarkModeEvent, (event: DarkModeEvent) => {
       this.isDarkModeState = event.isDarkMode;
-      log.showInfo(`newToggleComponent change dark mode: ${this.isDarkModeState}`)
+      this.currColorMode = event.isDarkMode ? 0 : 1;
+      this.onColorModeChange();
+      log.showInfo(`newToggleComponent change dark mode: ${this.isDarkModeState}`);
     });
     this.touchDownCount = 0;
     this.isOn = this.toggleViewData?.isOn;
@@ -769,6 +771,7 @@ export struct ToggleComponent {
   lightOff() {
     log.showInfo(`light off, slot: ${this.toggleId}`);
     this.bloomValue = 0;
+    AppStorage.setOrCreate('isToggleLightEnabled', false);
     animateTo({
       curve: curves.springMotion(0.31, 0.94),
       finishCallbackType: FinishCallbackType.LOGICALLY,

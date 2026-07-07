@@ -14,6 +14,13 @@
                 "priority":"translate"
             }
         },
+      {
+        "name":"Desktop_setting",
+        "value":"ホーム画面設定",
+        "attr":{
+          "priority":"translate"
+        }
+      },
         {
             "name":"stop_font_creation_service",
             "value":"サービスを無効化",
@@ -157,6 +164,54 @@
       {
         "name": "wallpaper_editor",
         "value": "適用"
+      },
+      {
+        "name": "cancle",
+        "value": "キャンセル"
+      },
+      {
+        "name": "set_wallpaper_all",
+        "value": "同時に設定"
+      },
+      {
+        "name": "set_wallpaper_desktop",
+        "value": "デスクトップ壁紙の設定"
+      },
+      {
+        "name": "set_wallpaper_lock",
+        "value": "ロックスクリーン壁紙の設定"
+      },
+      {
+        "name": "wallpaper_show_style",
+        "value": "壁紙の表示方法"
+      },
+      {
+        "name": "screen_fit",
+        "value": "画面に合わせる"
+      },
+      {
+        "name": "screen_full",
+        "value": "画面いっぱいに"
+      },
+      {
+        "name": "screen_center",
+        "value": "中心"
+      },
+      {
+        "name": "screen_sctetch",
+        "value": "ストレッチフル"
+      },
+      {
+        "name": "screen_tile",
+        "value": "フラット"
+      },
+      {
+        "name": "image_decoding_failure",
+        "value": "画像エラーです。再試行してください。"
+      },
+      {
+        "name":"Desktop_individuation",
+        "value":"ホーム画面とスタイル"
       }
     ]
 }

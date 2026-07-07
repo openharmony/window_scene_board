@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"time_travel_generate_failed",
+            "value":"Tidak dapat membuat wallpaper Perjala\u200bnan Waktu.",
+            "attr":{
+                "priority":"LT"
+            }
+        }
+    ]
+}

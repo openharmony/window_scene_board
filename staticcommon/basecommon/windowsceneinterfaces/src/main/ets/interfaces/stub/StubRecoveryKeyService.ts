@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-// import recoveryKey from '@hms.pcService.recoveryKeyService';
+// import recoveryKey from '@ohos.pcService.recoveryKeyService';
 
 // 该接口在API20可用，SceneBoard仓升级到API20后删除该文件并使用系统提供的接口
 export function setResetUserPinMark(userId: number): Promise<void> {

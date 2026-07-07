@@ -26,6 +26,7 @@ import {
   MockKit
 } from '@ohos/hypium';
 import {
+  AiSuggestionUtil,
   CommonConstants,
   GridLayoutItemInfo,
   GridLayoutUtil,
@@ -90,9 +91,11 @@ export default function DesktopAccessibilityUtilsTest() {
       item.typeId = CommonConstants.TYPE_CARD;
       let isAccessibilityMode: boolean = true;
       let mocker: MockKit = new MockKit();
+      let mockFunc: Function = mocker.mockFunc(AiSuggestionUtil, AiSuggestionUtil.isVoiceAbilityForm);
       when(mockFunc)(ArgumentMatchers.any).afterReturn(true);
       let result:string = DesktopAccessibilityUtils.getDesktopItemAccessibilityLevel(item, isAccessibilityMode);
       expect(result).assertEqual('no');
+      mocker.clear(AiSuggestionUtil);
       mocker.clearAll();
     })
 
@@ -101,9 +104,11 @@ export default function DesktopAccessibilityUtilsTest() {
       item.typeId = CommonConstants.TYPE_CARD;
       let isAccessibilityMode: boolean = true;
       let mocker: MockKit = new MockKit();
+      let mockFunc: Function = mocker.mockFunc(AiSuggestionUtil, AiSuggestionUtil.isVoiceAbilityForm);
       when(mockFunc)(ArgumentMatchers.any).afterReturn(false);
       let result:string = DesktopAccessibilityUtils.getDesktopItemAccessibilityLevel(item, isAccessibilityMode);
       expect(result).not().assertNull();
+      mocker.clear(AiSuggestionUtil);
       mocker.clearAll();
     })
 

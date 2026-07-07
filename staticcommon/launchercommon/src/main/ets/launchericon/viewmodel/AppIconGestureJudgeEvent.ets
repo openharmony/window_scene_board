@@ -18,6 +18,7 @@ import { desktopItemDraggableManager } from '../../manager/DesktopItemDraggableM
 import { AppItemInfo, editModeManager, GridLayoutItemInfo, MultiSelectManager } from '../../TsIndex';
 import { AppIconData } from './AppIconData';
 import { AppIconGestureJudgeIface } from '../interface/AppIconGestureJudgeIface';
+import { LightOutdoorConfig } from '@ohos/frameworkwrapper';
 
 const TAG = 'AppIconGestureJudgeEvent';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.ICON, TAG);
@@ -74,6 +75,12 @@ export class AppIconGestureJudgeEvent implements AppIconGestureJudgeIface {
     }
 
     if (!desktopItemDraggableManager.getEnableDrag()) {
+      return GestureJudgeResult.REJECT;
+    }
+
+    // 云端2预制图标元素禁止拖拽
+    if (LightOutdoorConfig.getInstance().isOnLightOutdoorMode() &&
+      !desktopItemDraggableManager.isItemDraggable(this.itemInfo as Object as GridLayoutItemInfo)) {
       return GestureJudgeResult.REJECT;
     }
 

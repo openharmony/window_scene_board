@@ -1,0 +1,42 @@
+{
+    "plural":[
+        {
+            "name":"delete_select_wallpapers",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"Vuoi eliminare gli sfondi selezionati?",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"one",
+                    "value":"Vuoi eliminare lo sfondo selezionato?",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"item_select",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"%d elemento selezionato",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"%d elementi selezionati",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

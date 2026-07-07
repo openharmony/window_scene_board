@@ -150,8 +150,8 @@ class PoweroffController {
     if (!DeviceHelper.isLandscape()) {
       return false;
     }
-    // 超大屏
-    if (DeviceHelper.isUltraScreenProduct()) {
+    // 三折叠
+    if (DeviceHelper.isThreeFoldProduct()) {
       return LayoutUtils.getFoldDisplayMode() === XTLayoutType.F;
     }
     // 两折叠

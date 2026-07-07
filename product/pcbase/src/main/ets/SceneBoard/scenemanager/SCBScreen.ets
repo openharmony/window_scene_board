@@ -1,5 +1,5 @@
 /*
- * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -67,7 +67,7 @@ import { FixedScrollerComponent } from '@ohos/pcsmartdock/src/main/ets/default/l
 import { SCBCentralLogoMask } from '../systemscene/SCBCentralLogoMask';
 import { StyleConstants } from '@ohos/launchercommon';
 import { SCBSystemSceneLayout } from '../statusbar/SCBSceneLayout';
-// import apsManager from '@hms.graphic.apsManager';
+// import apsManager from '@ohos.graphic.apsManager';
 import { SCBCloneWallpaper } from '../systemscene/SCBCloneWallpaper';
 import { SCBCentralMask } from '../systemscene/SCBCentralMask';
 import screenSessionManager from '@ohos.screenSessionManager';
@@ -96,7 +96,8 @@ export enum SCBDefaultZIndex {
   DYNAMIC = 751,
   GLOBAL_SEARCH = 797,
   C_SIDE_GUESTURE_BAR = 798,
-  BANNER = 799,
+  // Heads-up banner需要覆盖应用中心/任务中心等系统大面板
+  BANNER = 910,
   STATUS_BAR = 800,
   SMART_DOCK_MASK = 901,
   APP_CENTER = 900,
@@ -304,6 +305,14 @@ export struct SCBScreen {
       newScreenProperty.screenId = this.screenSession.session.screenId;
       this.physicalScreenProperty.copy(screenProperty);
       SCBScreenSessionManager.getInstance().notifyScenePanelActiveModeChange(newScreenProperty);
+    } else if (reason === SCBPropertyChangeReason.SCREEN_CONNECT) {
+      this.scbScreenProperty.copy(screenProperty);
+      this.physicalScreenProperty.copy(screenProperty);
+      log.showInfo(' Update scbScreenProperty ' + JSON.stringify(this.scbScreenProperty));
+      this.scbScreenProperty.screenId = this.screenSession.session.screenId;
+      SCBScreenSessionManager.getInstance().updateScreenRotationProperty(this.scbScreenProperty);
+      SCBScreenSessionManager.getInstance().updateSystemRotation(this.scbScreenProperty);
+      SCBScreenSessionManager.getInstance().notifyScenePanelRotationChange(this.scbScreenProperty);
     } else {
       this.scbScreenProperty.copy(screenProperty);
       this.physicalScreenProperty.copy(screenProperty);
@@ -700,7 +709,8 @@ export struct SCBScreen {
         new SystemSceneOptions({
           touchable: true,
           hitTestMode: HitTestMode.Transparent,
-          enableActiveModeChange: false
+          enableActiveModeChange: false,
+          rotatable: true
         }))
 
       this.systemSceneBuilder(this.smartDockBuilder,
@@ -710,7 +720,9 @@ export struct SCBScreen {
         new SystemSceneOptions({
           touchable: true,
           hitTestMode: HitTestMode.Default,
-          enableActiveModeChange: false
+          systemBarType: SystemBarType.SMART_DOCK,
+          enableActiveModeChange: false,
+          rotatable: true
         }))
 
       this.systemSceneBuilder(this.companionViewBuilder,
@@ -725,7 +737,7 @@ export struct SCBScreen {
         SCBDefaultZIndex.POPUP_PANEL,
         new SystemSceneOptions({
           touchable: true,
-          rotatable: false
+          rotatable: true
         }))
 
       // TYPE_FLOAT

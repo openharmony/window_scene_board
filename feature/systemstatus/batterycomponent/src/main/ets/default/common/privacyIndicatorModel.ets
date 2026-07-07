@@ -17,7 +17,7 @@ import { AppStorageUtil, LogDomain, LogHelper } from '@ohos/basicutils';
 import { AccountMgr, DeviceHelper } from '@ohos/frameworkwrapper';
 import { ResUtils } from '@ohos/windowscene';
 import { RTLUtil } from '@ohos/componenthelper';
-// import privacyIndicatorManager from '@hms.security.privacyIndicatorManager';
+// import privacyIndicatorManager from '@ohos.security.privacyIndicatorManager';
 import DeviceInfo from '@ohos.deviceInfo';
 import componentUtils from '@ohos.arkui.componentUtils';
 import { COMPONENT_ID_BATTERY_BORDER, COMPONENT_ID_BATTERY_ICON } from './constants';

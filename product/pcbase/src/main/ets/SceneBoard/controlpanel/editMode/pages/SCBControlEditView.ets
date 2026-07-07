@@ -40,7 +40,7 @@ export struct SCBControlEditView {
   @StorageLink('QuickToggleData') @Watch('onToggleDataChange') toggleData: ToggleData =
     QuickToggleController.getInstance().getToggleData();
   @StorageLink('isLock') @Watch('onLock') isLock: boolean = true;
-  @Provide hwCastDialogIsOpen: boolean = false;
+  @Provide castDialogIsOpen: boolean = false;
   @Provide superDeviceDialogIsOpen: boolean = false;
   @Provide microphoneDialogIsOpen: boolean = false;
   // 编辑页Vm

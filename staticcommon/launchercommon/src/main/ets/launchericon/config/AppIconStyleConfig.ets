@@ -19,6 +19,8 @@ import { AppIconModel } from '../common/AppIconModel';
 export enum AppBadgeStyleType {
   DEFAULT,
   SMALLER_ICON,
+  DELIVER_ICON,
+  SMALLER_DELIVER_ICON,
   FUSION_ICON,
   SMALLER_FUSION_ICON
 }
@@ -41,6 +43,8 @@ export class AppIconStyleConfig {
     new Map<AppBadgeStyleType, CloneBadgeStyle>([
     [AppBadgeStyleType.DEFAULT, { width: 18, height: 18, offsetX: 6, offsetY: 2 }],
     [AppBadgeStyleType.SMALLER_ICON, { width: 14, height: 14, offsetX: 3, offsetY: 1 }],
+    [AppBadgeStyleType.DELIVER_ICON, { width: 20, height: 16, offsetX: -4, offsetY: -4 }],
+    [AppBadgeStyleType.SMALLER_DELIVER_ICON, { width: 14, height: 11, offsetX: -2.5, offsetY: -2.5 }],
     [AppBadgeStyleType.FUSION_ICON, { width: 32, height: 18, offsetX: 6, offsetY: 2 }],
     [AppBadgeStyleType.SMALLER_FUSION_ICON, { width: 25, height: 14, offsetX: 3, offsetY: 1 }],
   ]);

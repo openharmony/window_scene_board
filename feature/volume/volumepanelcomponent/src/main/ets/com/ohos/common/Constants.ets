@@ -37,6 +37,7 @@ export default class Constants {
   public static readonly SYMBOL_GLYPH_FONT_SIZE: string = '18vp';
   public static readonly SYMBOL_PHONE_FILL: Resource = $r('sys.symbol.phone_fill');
   public static readonly SYMBOL_ALARM_FILL: Resource = $r('sys.symbol.alarm_fill');
+  public static readonly SYMBOL_VOICE_FILL: Resource = $r('sys.symbol.Voice_fill');
   public static readonly SYMBOL_BELL_SLASH_FILL: Resource = $r('sys.symbol.bell_slash_fill');
   public static readonly SYMBOL_BELL_FILL: Resource = $r('sys.symbol.bell_fill');
   public static readonly SYMBOL_RECTANGLE_PORTRAIT_WAVE_2_FILL: Resource = $r('sys.symbol.rectangle_portrait_wave_2_fill');
@@ -44,7 +45,8 @@ export default class Constants {
   public static readonly SYMBOL_SPEAKER_WAVE_2_FILL: Resource = $r('sys.symbol.speaker_wave_2_fill');
   public static readonly SYMBOL_SPEAKER_WAVE_1_FILL: Resource = $r('sys.symbol.speaker_wave_1_fill');
   public static readonly VOLUME_TYPE_WEIGHTS =
-    [audio.AudioVolumeType.VOICE_CALL, audio.AudioVolumeType.RINGTONE, audio.AudioVolumeType.ALARM,
+    [audio.AudioVolumeType.VOICE_CALL, audio.AudioVolumeType.VOICE_ASSISTANT, audio.AudioVolumeType.RINGTONE,
+      audio.AudioVolumeType.ALARM,
       audio.AudioVolumeType.MEDIA, audio.AudioVolumeType.ACCESSIBILITY];
   public static readonly PANEL_CHANNELS =
     [audio.AudioVolumeType.VOICE_CALL, audio.AudioVolumeType.ALARM, audio.AudioVolumeType.RINGTONE,

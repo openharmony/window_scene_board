@@ -45,4 +45,8 @@ export enum StartMode {
 export enum BackgroundReason {
   DEFAULT,
   EXPAND_TO_FOLD_SINGLE_POCKET,
+  SCREEN_LOCK,
+  QUICK_BATCH_BACKGROUND,
+  BACK_TO_DESKTOP,
+  LAST_SCENE_TRANSFER,
 }

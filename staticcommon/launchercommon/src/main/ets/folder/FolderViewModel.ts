@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023-Huawei Device Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) 2023-2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -38,7 +38,7 @@ import GridLayoutUtil from '../utils/GridLayoutUtil';
 import type { FolderAppItemInfo } from './FolderItemInfo';
 import { FolderLayoutCacheManager } from '../cache/layout/FolderLayoutCacheManager';
 import { FolderData } from './model/FolderData';
-import { AppItemInfo, Cache2RdbHelper, ResidentLayoutCacheMgr, StyleConstants } from '../TsIndex';
+import { AppItemInfo, Cache2RdbHelper, DeliverUtil, ResidentLayoutCacheMgr, StyleConstants } from '../TsIndex';
 import { AppCategoryInfoManager } from '../manager/AppCategoryInfoManager';
 import { AppCategoryUtils } from '../utils/AppCategoryUtils';
 
@@ -118,6 +118,10 @@ export abstract class FolderViewModel extends BaseViewModel {
         badgeNum = folderItem.badgeNumber + (appInfo.badgeNumber ?? 0);
       } else {
         badgeNum = (appInfo.badgeNumber ?? 0);
+      }
+      if (DeliverUtil.isdeliverApp(appInfo.intent ?? '')) {
+        log.showInfo(`clear deliver app folder cache: ${appInfo.bundleName}`);
+        localEventManager.sendLocalEventSticky(EventConstants.EVENT_FOLDER_APP_PACKAGE_CHANGED, appInfo.bundleName);
       }
       needInsertAppList.push(appInfo);
       Cache2RdbHelper.getInstance().addItem(CommonConstants.DRAG_RDB_EVENT, appInfo);
@@ -578,6 +582,9 @@ export abstract class FolderViewModel extends BaseViewModel {
     if (ObjUtil.isInvalid(itemInfo)) {
       return false;
     }
+    if (DeliverUtil.isContainerFolder(itemInfo.folderId ?? '')) {
+      return false;
+    }
     if (itemInfo.typeId !== CommonConstants.TYPE_FOLDER) {
       return false;
     }
@@ -601,6 +608,14 @@ export abstract class FolderViewModel extends BaseViewModel {
       if (dragItems.length + 1 <= limit) {
         return true;
       }
+      return false;
+    }
+    // 落位container文件夹场景
+    if (DeliverUtil.isContainerFolder(itemInfo.folderId ?? '') && !DeliverUtil.isdeliverFolder(itemInfo.folderId ?? '')) {
+      return false;
+    }
+    // 落位克隆应用需判断多选图标是否都为应用,混选状态禁止拖入
+    if (DeliverUtil.isdeliverFolder(itemInfo.folderId ?? '') && !DeliverUtil.isAlldeliverApps(dragItems)) {
       return false;
     }
     // 落位文件夹场景

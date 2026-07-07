@@ -94,7 +94,7 @@ class NotificationSettingManager extends NotificationConfigBaseManager {
   public async getServiceList(usePreload = false): Promise<NotificationConfigEntity[]> {
     const predicates = NotificationConfigEntity.getPredicates()
       .inCondition({ userId: [this.userId, ZERO_USER_ID] })
-      .equalTo({ bundleType: bundleManager.BundleType.ATOMIC_SERVICE })
+      .equalTo({ bundleType: bundleManager.BundleType.ATOMIC_SERVICE, isDeliver: false })
       .orderByAsc('sortTag');
     return this.fetchAppList(usePreload, predicates);
   }
@@ -113,7 +113,9 @@ class NotificationSettingManager extends NotificationConfigBaseManager {
   public async getOriginAppList(usePreload = false): Promise<NotificationConfigEntity[]> {
     const predicates = NotificationConfigEntity.getPredicates()
       .inCondition({ userId: [this.userId, ZERO_USER_ID] })
-      .equalTo({ systemApp: false })
+      .equalTo({ isDeliver: false })
+      .or()
+      .equalTo({ isDeliver: true, systemApp: false, isdeliverApp: true })
       .orderByAsc('sortTag');
     return this.fetchAppList(usePreload, predicates);
   }

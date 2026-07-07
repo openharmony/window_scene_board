@@ -14,7 +14,7 @@
  */
 
 import bluetoothConnection from '@ohos.bluetooth.connection';
-/*import fusionConnectivityExt from '@hms.fusionConnectivityExt';
+/*import fusionConnectivityExt from '@ohos.fusionConnectivityExt';
 import nearlinkDevice from '@hms.nearlink.remoteDevice';
 import constant from '@hms.nearlink.constant';*/
 import { LogDomain, LogHelper } from '@ohos/basicutils';

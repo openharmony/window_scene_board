@@ -22,7 +22,7 @@ const TAG = 'Recent-SCBRecentFoldHalfVM';
 const log = LogHelper.getLogHelper(LogDomain.RECENT, TAG);
 
 /**
- * 大屏幕机半折叠态
+ * 折叠机半折叠态
  */
 export class SCBRecentFoldHalfVM extends SCBRecentFoldMachineVM {
 

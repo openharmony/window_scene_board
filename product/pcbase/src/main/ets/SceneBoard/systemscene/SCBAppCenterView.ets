@@ -1,5 +1,5 @@
 /**
- * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) 2021-2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -516,6 +516,7 @@ export struct SCBAppCenterView {
        * 从任务中心->应用中心，updateSystemBarProperty是在克隆壁纸层级切换后调用。
        * 如果快速切换，会导致updateSystemBarProperty不会调用，所以在应用中心隐藏时补一个
        */
+      AppStorage.setOrCreate('recentOpacity', 0);
       SCBSceneSessionManager.getInstance().updateSystemBarProperty();
       RecentAndAppCenterSwitchManager.getInstance().setAppCenterViewHiding(true);
       AnimateToScheduleUtils.attachBigCoreCPU(AnimateToScheduleUtils.ACTION_ATTACH_START);
@@ -575,6 +576,7 @@ export struct SCBAppCenterView {
           })
         }
         this.bkOpacity = 0;
+        AppStorage.setOrCreate('recentOpacity', 1);
       });
 
       let inSearch = this.searchInputText ? true : false;
@@ -977,6 +979,7 @@ export struct SCBAppCenterView {
       delayTime = 200;
       RecentAndAppCenterSwitchManager.getInstance().setOneFrameVisible(this.screenProp.screenId, true);
       this.closeAllCloneWallpaperWithoutId(this.screenProp.screenId);
+      CloneWallpaperMgr.getInstance(this.screenProp.screenId).updateZIndex(SCBDefaultZIndex.APP_CENTER - 1);
       AppStorage.setOrCreate('showRecent', false);
     } else {
       this.closeAllCloneWallpaperWithoutId(this.screenProp.screenId);
@@ -1108,7 +1111,7 @@ export struct SCBAppCenterView {
         if (!isRecentToAppCenter) {
           CloneWallpaperMgr.getInstance(this.screenProp.screenId).show();
         }
-        // hopper大屏幕机，显示应用中心的时候，不允许旋转操作
+        // hopper折叠机，显示应用中心的时候，不允许旋转操作
         if (FoldedDeviceAcViewModel.getInstance().isFoldedDevice()) {
           SCBScreenSessionManager.getInstance()
             .getScreenSession(this.screenProp.screenId)?.setEnableRotate(false, 'show appcenter');

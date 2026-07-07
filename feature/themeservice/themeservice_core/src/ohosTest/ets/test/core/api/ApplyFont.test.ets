@@ -25,46 +25,46 @@ export default function ApplyFontTest() {
   describe('applyFontTest', () => {
     it('test001_apply_success', 0, async () => {
       let ret: number = await TSOhosTestManger.getTsCoreRemoteApi()
-        .applyFont(`200000`, `system/fonts/HarmonyOS_Sans.ttf`, ORIGIN_PRESET);
+        .applyFont(`200000`, `system/fonts/OpenHarmony_Sans.ttf`, ORIGIN_PRESET);
       TsLog.debug(TAG, `applyFont ret:${ret}`);
       expect(ret).assertEqual(0)
     })
 
     it('test002_apply_ext_success', 0, async () => {
       let ret: number = await TSOhosTestManger.getTsCoreRemoteApi()
-        .applyFont(`200000`, `system/fonts/HarmonyOS_Sans.ttf`, ORIGIN_PRESET,
-          [`system/fonts/HarmonyOS_Sans.ttf`, `system/fonts/HarmonyOS_Sans.ttf`]);
+        .applyFont(`200000`, `system/fonts/penHarmony_Sans.ttf`, ORIGIN_PRESET,
+          [`system/fonts/penHarmony_Sans.ttf`, `system/fonts/penHarmony_Sans.ttf`]);
       TsLog.debug(TAG, `applyFont test004 ret:${ret}`);
       expect(ret).assertEqual(0)
     })
 
     it('test003_apply_fontId_right', 0, async () => {
-      await TSOhosTestManger.getTsCoreRemoteApi().applyFont(`200000`, `system/fonts/HarmonyOS_Sans.ttf`, ORIGIN_PRESET);
+      await TSOhosTestManger.getTsCoreRemoteApi().applyFont(`200000`, `system/fonts/penHarmony_Sans.ttf`, ORIGIN_PRESET);
       let currentFontId: Nullable<string> = await ActivateThemeGetter.getCurrentFontId();
       expect(currentFontId).assertEqual(`200000`);
     })
 
     it('test004_apply_fontId_ext_right', 0, async () => {
-      await TSOhosTestManger.getTsCoreRemoteApi().applyFont(`200000`, `system/fonts/HarmonyOS_Sans.ttf`, ORIGIN_PRESET,
-        [`system/fonts/HarmonyOS_Sans.ttf`, `system/fonts/HarmonyOS_Sans.ttf`]);
+      await TSOhosTestManger.getTsCoreRemoteApi().applyFont(`200000`, `system/fonts/penHarmony_Sans.ttf`, ORIGIN_PRESET,
+        [`system/fonts/penHarmony_Sans.ttf`, `system/fonts/penHarmony_Sans.ttf`]);
       let currentFontId: Nullable<string> = await ActivateThemeGetter.getCurrentFontId();
       expect(currentFontId).assertEqual(`200000`);
     })
 
     it('test005_apply_invalid_font', 0, async () => {
-      let result: number = await TSOhosTestManger.getTsCoreRemoteApi().applyFont(`200000`, `system/invalid/HarmonyOS_Sans.ttf`, ORIGIN_PRESET);
+      let result: number = await TSOhosTestManger.getTsCoreRemoteApi().applyFont(`200000`, `system/invalid/penHarmony_Sans.ttf`, ORIGIN_PRESET);
       expect(result).assertEqual(-1);
     })
 
     it('test006_apply_font_parallel', TestType.SECURITY | Level.LEVEL1, async () => {
       await AssertUtils.expectParallelInvoke(() =>
-      TSOhosTestManger.getTsCoreRemoteApi().applyFont(`200000`, `system/fonts/HarmonyOS_Sans.ttf`, ORIGIN_PRESET));
+      TSOhosTestManger.getTsCoreRemoteApi().applyFont(`200000`, `system/fonts/penHarmony_Sans.ttf`, ORIGIN_PRESET));
     })
 
     it('test007_apply_font_ext_parallel', TestType.SECURITY | Level.LEVEL1, async () => {
       await AssertUtils.expectParallelInvoke(() =>
-      TSOhosTestManger.getTsCoreRemoteApi().applyFont(`200000`, `system/fonts/HarmonyOS_Sans.ttf`, ORIGIN_PRESET,
-        [`system/fonts/HarmonyOS_Sans.ttf`, `system/fonts/HarmonyOS_Sans.ttf`]));
+      TSOhosTestManger.getTsCoreRemoteApi().applyFont(`200000`, `system/fonts/penHarmony_Sans.ttf`, ORIGIN_PRESET,
+        [`system/fonts/penHarmony_Sans.ttf`, `system/fonts/penHarmony_Sans.ttf`]));
     })
   })
 }

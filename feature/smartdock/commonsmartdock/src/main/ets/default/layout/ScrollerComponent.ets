@@ -259,7 +259,9 @@ export struct ScrollerComponent {
       return;
     }
     this.dataList = ([] as SnapshotInfo[]).concat(this.mSnapshotList as SnapshotInfo[]);
-    if (!CheckEmptyUtils.isEmptyArr(this.mSnapshotList)) {
+    // 语音助手壳应用包名和实际运行的应用包名不一致, 这里需要单独适配下
+    const snapshotBundleName: string = SceneInfoAdapterUtil.getAdapterBundleName(this.mSnapshotList[0]?.bundleName);
+    if (!CheckEmptyUtils.isEmptyArr(this.mSnapshotList) && snapshotBundleName != this.mPopItem.bundleName) {
       return;
     }
     this.baseNum = 0;

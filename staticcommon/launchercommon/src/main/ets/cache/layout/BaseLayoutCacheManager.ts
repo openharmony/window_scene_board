@@ -832,7 +832,7 @@ export class BaseLayoutCacheManager implements ILayoutCacheManager {
     log.showInfo('insertGridLayoutItemInfo item bundleName %{public}s, from %{public}s db %{public}s',
       gridlayoutItem.bundleName, label, isOperateDb);
     let gridLayoutItemList: GridLayoutItemInfo[] = this.layoutCacheData.getGridLayoutItemList(isOuter);
-    if (!LauncherLayoutCacheUtil.getIsFirstRotate() || LauncherLayoutCacheUtil.getBigScreenLazyRotate()) {
+    if (!LauncherLayoutCacheUtil.getIsFirstRotate() || LauncherLayoutCacheUtil.getSuperFoldLazyRotate()) {
       if (!LauncherLayoutCacheUtil.findLazyRotatePosition(gridLayoutItemList, gridlayoutItem)) {
         localEventManager.sendLocalEventSticky(EventConstants.EVENT_DESKTOP_CANT_ADD, null);
         log.showWarn('insertGridLayoutItemInfo not addable');
@@ -982,7 +982,7 @@ export class BaseLayoutCacheManager implements ILayoutCacheManager {
       log.showInfo(`deleteBlankPageFromLayoutInfo, page ${page} is home page`);
       return false;
     }
-    if (DeviceHelper.isBigScreenMachine()) {
+    if (DeviceHelper.isSuperFoldMachine()) {
       return false;
     }
     let pageCount: number = this.selectPageCount(isOuter);
@@ -1225,7 +1225,7 @@ export class BaseLayoutCacheManager implements ILayoutCacheManager {
    * 删除空白页后更新布局
    *
    * @param pageDeleteIndex 删除的空白页起始index
-   * @param pageDeleteNum 删除的数量 1-非大屏幕机展开态（直板机、平板）， 2-大屏幕机展开态
+   * @param pageDeleteNum 删除的数量 1-非折叠机展开态（直板机、平板）， 2-折叠机展开态
    * @param label 业务标识
    * @param isNeedOperationDb true需要数据库操作，false不需要
    */
@@ -1450,7 +1450,7 @@ export class BaseLayoutCacheManager implements ILayoutCacheManager {
     }
     changedPageSet.add(pageCount - 1);
     let blankPages: number[] = [];
-    let isFolder: boolean = DeviceHelper.isBigScreenMachine() || desktopUtil.isFoldExpandStatus();
+    let isFolder: boolean = DeviceHelper.isSuperFoldMachine() || desktopUtil.isFoldExpandStatus();
     let adaptivePage: number = PageInfoManager.getInstance().getDisplayCount();
     log.showInfo(`deleteBlankPageByCache ${Array.from(changedPageSet)} adaptivePage ${adaptivePage}`);
     let indexChanges: number[] = this.initIndexChanges(cacheList, isFolder, blankPages, adaptivePage, changedPageSet, isOuter);

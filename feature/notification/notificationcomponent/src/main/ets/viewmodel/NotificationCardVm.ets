@@ -48,6 +48,7 @@ const log: Logger = Logger.getLogHelper(LogDomain.NC);
 const LIST_ITEM_TRANSITION_CURVE = curves.interpolatingSpring(0, 1, 228, 28);
 const NTF_CARD_SCALE_CURVE = curves.interpolatingSpring(10, 1, 350, 35);
 const CLIP_HEIGHT = 50;
+const DELIVER_PRIVACY_ENABLE = 2;
 const MORE_BRIEF_TAG = 'NotificationMoreBriefView';
 const PRIVACY_VIEW_TAG = 'NotificationPrivacyView';
 
@@ -536,6 +537,21 @@ export class NotificationCardVm extends NotificationItemBaseVm implements INotif
       data: this.ntf,
       clickRegion: ClickRegion.NTF_MAIN,
     });
+
+    if (ntf?.isDeliverNotification) {
+      const privacyEnableState: number =
+        Number(sSettingsUtil.getSystemValue(NotificationConstants.DELIVER_PRIVACY_ENABLE_STATE,
+          NotificationConstants.DELIVER_PRIVACY_ENABLE_STATE_DEFAULT));
+      if (privacyEnableState !== DELIVER_PRIVACY_ENABLE) {
+        const privacyScene: string = JSON.stringify({ 'privacyEnableState': privacyEnableState });
+        ClickNotificationMaintenance.reportClick(ClickNotificationErrorCode.DELIVER_PRIVACY_DISABLE, {
+          clickRegion: ClickRegion.NTF_DELIVER,
+          data: ntf,
+          scene: privacyScene,
+        });
+      }
+      log.showInfo(TAG, `onDeliverNtfClick, privacyEnableState = ${privacyEnableState}`);
+    }
 
     const floatingVm = this.vmInjector.getCardFloatingVm(this.ntf);
     const params: NotificationCardFloatingWantAgentParams = {

@@ -14,35 +14,23 @@
  */
 import MirrorAniConfig from './MirrorAnimationConf';
 import IMirrorToEnd from './IMirrorToEnd';
+import { ImmersiveAodStyle, immersiveKgMgr } from '@ohos/systemuicommon/src/main/ets/TsIndex';
 import { LogDomain, LogHelper } from '@ohos/basicutils';
 import { sSCBOobeManager } from '@ohos/windowscene';
+import IAodProxy from '../model/IAodProxy';
+import MirrorAnimationUtil from '../utils/MirrorAnimationUtil';
 
 const TAG = 'ImmersiveAni';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.KG, TAG);
 
 export class ImmersiveAni implements IMirrorToEnd {
   private aniConf: MirrorAniConfig;
+  private aodProxy: IAodProxy;
+  private aodStyle: ImmersiveAodStyle | undefined = immersiveKgMgr.getOneMirrorState().getAodStyle(true);
 
-  public constructor(aniConf: MirrorAniConfig) {
+  public constructor(aniConf: MirrorAniConfig, aodProxy: IAodProxy) {
     this.aniConf = aniConf;
-  }
-
-  elemType?: number | undefined;
-
-  doWhenAODToDesktop(): void {
-    throw new Error('Method not implemented.');
-  }
-
-  doWhenAODToScreenLock(): void {
-    throw new Error('Method not implemented.');
-  }
-
-  doWhenAODSCL2AOD(): void {
-    throw new Error('Method not implemented.');
-  }
-
-  doWhenOffScreen2ScreenLockEnd(): void {
-    throw new Error('Method not implemented.');
+    this.aodProxy = aodProxy;
   }
 
   public doWhenBeginSleep(): void {
@@ -50,6 +38,7 @@ export class ImmersiveAni implements IMirrorToEnd {
   }
 
   public doWhenEndScreenOn(): void {
+    this.initScreenLock();
   }
 
   public doWhenOffScreen(): void {
@@ -67,11 +56,46 @@ export class ImmersiveAni implements IMirrorToEnd {
     this.hide();
   }
 
-  private hide(): void {
-    // Oobe阶段禁止进入AOD
-    if (sSCBOobeManager.isOobeActivated()) {
+  private initScreenLock(): void {
+    if (!this.aodStyle) {
+      log.showWarn('immersive one mirror initScreenLock failed.');
       return;
     }
+    if (!this.aodStyle.isAod) {
+      return;
+    }
+    log.showInfo('immersive one mirror set aod to false.');
+    this.aodStyle.isAod = false;
+  }
+
+  private hide(): void {
+    // Oobe阶段禁止进入AOD
+    if (sSCBOobeManager.isOobeActivated() || !this.aodProxy?.isAODEnable()) {
+      return;
+    }
+    if (!this.aodStyle) {
+      log.showWarn('immersive one mirror hide failed.');
+      return;
+    }
+    if (this.aodStyle.isAod) {
+      return;
+    }
+    log.showInfo('immersive one mirror set aod to true.');
+    this.aodStyle.isAod = true;
+  }
+
+  public doWhenAODToDesktop(): void {
+    this.initScreenLock();
+  }
+
+  public doWhenAODToScreenLock(): void {
+  }
+
+  public doWhenAODSCL2AOD(): void {
+  }
+
+  doWhenOffScreen2ScreenLockEnd(): void {
+    this.initScreenLock();
   }
 
   doWhenOffScreen2ScreenLockBegin(): void {

@@ -1,0 +1,886 @@
+{
+    "string":[
+        {
+            "name":"face_not_recognized",
+            "value":"Không nhận dạng được khuôn mặt. Nhấn đúp để thử lại.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"card_edit",
+            "value":"Tùy chỉnh",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"two_click_accessible",
+            "value":"Chạm đúp để kích hoạt",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"camera_muted",
+            "value":"Máy ảnh đã tắt. Nhận dạng khuôn mặt không khả dụng.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"flash_light_accessible",
+            "value":"Đèn pin",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"edit_wallpaper",
+            "value":"Hình nền",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"face_unlock_ready_in_input_pwd",
+            "value":"Sử dụng nhận dạng khuôn mặt hoặc nhập mật khẩu",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"lock_icon_tip_with_fingerprint",
+            "value":"Sử dụng vân tay hoặc vuốt lên từ cuối màn hình để mở khóa",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cover_normal_charging",
+            "value":"Đang sạc %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ic_tools_two_click_back_accessible",
+            "value":"Chạm đúp để đóng bảng công cụ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_to_screen_lock",
+            "value":"Thêm vào màn hình khóa",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ic_tools_timer_accessible",
+            "value":"Đếm ngược",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"press_fingerprint_sensor_area",
+            "value":"Nhấn để tiếp tục",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"face_locked_in_input_pwd",
+            "value":"Đã tắt Nhận dạng khuôn mặt. Vui lòng nhập mật khẩu của bạn.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_enter_psd",
+            "value":"Nhập mã PIN",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cover_turbo_charging",
+            "value":"Sạc nhanh %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ic_tools_back_around_accessible",
+            "value":"Đóng",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_incorrect_psd_try_again_mix",
+            "value":"Mật khẩu không chính xác. Vui lòng thử lại.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cover_super_charging",
+            "value":"Đang sạc SuperCharge %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"fp_disable_enter_psd",
+            "value":"Đã tắt nhận dạng vân tay. Vui lòng nhập mã PIN của bạn.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_unlock_unavailable_tips",
+            "value":"Không thể sử dụng thẻ SIM này. Liên hệ nhà mạng để được hỗ trợ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"show_lunar_date",
+            "value":"Hiển thị ngày âm lịch",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ic_camera_button_accessible",
+            "value":"Máy ảnh",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"confirm",
+            "value":"OK",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_confirm_tips",
+            "value":"OK",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"toast_prompt_face_unlock_success",
+            "value":"Đã mở khóa bằng nhận dạng khuôn mặt.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_unlock_puk_tips",
+            "value":"PUK khác với mã PIN của SIM. Bạn có thể nhận mã này từ nhà mạng.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_card_psd_confirm_accessible",
+            "value":"Xác nhận",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pad_notes_accessible",
+            "value":"Sổ tay",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"fp_try_again_psd_after_time",
+            "value":"Đã tắt vân tay. Thử nhập mật khẩu của bạn sau %s.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_locking_popup",
+            "value":"Đang mở khóa thẻ SIM…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"face_recognition_try_again_after_time",
+            "value":"Đã tắt Nhận dạng khuôn mặt. Thử lại sau %s.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"face_locked_in_input_pin",
+            "value":"Đã tắt Nhận dạng khuôn mặt. Vui lòng nhập mã PIN của bạn.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"face_not_recognized_in_input_pwd",
+            "value":"Không nhận dạng được khuôn mặt. Chạm vào đây để thử lại.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_unlock_pin_format_tips",
+            "value":"Nhập mã PIN gồm %1$s đến %2$s chữ số",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_unlock_reset_pin_confirm_tips",
+            "value":"Xác nhận mã PIN",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"emergency_call_accessible",
+            "value":"Cuộc gọi khẩn cấp",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"out_sensor_fp_dirty_try_again",
+            "value":"Không nhận dạng được vân tay.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"flash_light_open_accessible",
+            "value":"Bật",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"emergency_mode_title",
+            "value":"Chế độ Tiết kiệm pin",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_remember_tips",
+            "value":"Nhớ mã PIN",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_incorrect_will_locked",
+            "value":"Mã PIN không chính xác. Sau %1$s, thiết bị của bạn sẽ bị khóa trong %2$s.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"fp_try_again_after_time_pc",
+            "value":"Đã tắt vân tay. Thử lại sau %s hoặc sử dụng phương thức mở khóa khác.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"face_locked_in_input_pwd_when_finger_enable",
+            "value":"Đã tắt Nhận dạng khuôn mặt. Sử dụng vân tay hoặc mã PIN để mở khóa.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_unlock_puk_format_tips",
+            "value":"Nhập mã PUK gồm %1$s chữ số",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_unlock_num_keyboard_cancel",
+            "value":"Hủy",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_back_accessible",
+            "value":"Trở lại",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_unlock_pin_exhausting_tips",
+            "value":"Mã PIN của SIM không chính xác. Nhập mã PUK để mở khóa thiết bị của bạn.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"face_unlock_verifying",
+            "value":"Đang xác minh…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"flash_light_close_accessible",
+            "value":"Tắt",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_delete",
+            "value":"Xóa",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"fp_hold_finger",
+            "value":"Giữ ngón tay lâu hơn một chút",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"fp_incorrect_fp_try_again",
+            "value":"Đảm bảo ngón tay của bạn bao phủ toàn bộ cảm biến và thử nhấn giữ lâu hơn.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_remember_popup",
+            "value":"Mã PIN sẽ được nhập tự động mỗi khi bạn khởi động lại thiết bị hoặc lắp lại thẻ SIM.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_incorrect_psd_try_again",
+            "value":"Mã PIN không chính xác. Vui lòng thử lại.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cover_fully_charged",
+            "value":"Đã sạc đầy",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ic_tools_memorandum_accessible",
+            "value":"Sổ tay",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"del_pwd_accessible",
+            "value":"Xóa",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cover_quick_charging",
+            "value":"Đang Sạc Nhanh %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pattern_psd_error",
+            "value":"Sai mẫu hình",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"face_unlock_success",
+            "value":"Vuốt lên để mở",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"edit_theme",
+            "value":"Chủ đề",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"face_unlock_ready_in_input_pin",
+            "value":"Sử dụng nhận dạng khuôn mặt hoặc nhập mã PIN",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"input_pwd_tip_when_face_and_finger_locked",
+            "value":"Đã tắt nhận dạng khuôn mặt và vân tay. Vui lòng nhập mã PIN của bạn.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"fingerprint_incorrect_will_locked",
+            "value":"Không nhận dạng được vân tay. Thiết bị sẽ bị khóa trong %2$s sau %1$s.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_unlock_reset_pin_tips",
+            "value":"Nhập mã PIN mới",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pattern_psd_enter_psd",
+            "value":"Vẽ mẫu hình của bạn",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ic_tools_clock_accessible",
+            "value":"Đồng hồ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"edit_after_unlock",
+            "value":"Mở khóa để sửa màn hình khóa",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ic_tools_accessible",
+            "value":"Công cụ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_other_users",
+            "value":"Người dùng khác",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"show_date",
+            "value":"Hiển thị ngày",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"fp_try_again_after_time",
+            "value":"Đã tạm dừng vân tay. Thử lại sau %s.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"face_unlock_ready",
+            "value":"Chạm đúp để nhận dạng khuôn mặt",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_unlock_pin_not_match",
+            "value":"Mã PIN không khớp",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_unlock_solt_flag",
+            "value":"SIM %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_form_to_screen_lock_editor_max",
+            "value":"Không đủ không gian để đặt.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"edit_aod",
+            "value":"AOD",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_enter_psd_mix",
+            "value":"Nhập mật khẩu",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_unlock_num_keyboard_cancel_accessible",
+            "value":"Hủy",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"fp_try_again_pin_after_time",
+            "value":"Đã tắt vân tay. Thử nhập mã PIN của bạn sau %s.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"fp_disable_forever",
+            "value":"Đã tắt nhận dạng vân tay. Vui lòng nhập mã PIN của bạn.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ic_tools_vassistant_accessible",
+            "value":"Quét",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ic_tools_calculator_accessible",
+            "value":"Máy tính",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cancel",
+            "value":"Hủy",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_try_again_after_time1",
+            "value":"Thử lại sau %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"lock_icon_tip",
+            "value":"Vuốt lên từ cuối màn hình để mở khóa",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"emergency_call",
+            "value":"Khẩn cấp",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"custom_mix_psd_ok_accessible",
+            "value":"Xác nhận",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"reset_pin_tip",
+            "value":"Gần đây bạn đã đặt mật khẩu mới. Nếu quên, bạn có thể đặt lại bằng cách nhập mã PIN/mật khẩu trước đó.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"reset_psd_tip",
+            "value":"Gần đây bạn đã đặt mã PIN mới. Nếu quên, bạn có thể đặt lại bằng cách nhập mã PIN/mật khẩu trước đó.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"reset_pin",
+            "value":"Đặt lại",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"fingerprint_antitouch_notification_camera",
+            "value":"Đã bật Ngăn chạm nhầm. Không che máy ảnh.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keypad_password_six",
+            "value":"sáu",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_area_accessible",
+            "value":"Hộp nhập mật khẩu",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keyboard_delete_remainder",
+            "value":"Đã xóa, %1$s, %2$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keypad_password_three",
+            "value":"ba",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ic_tools_unavailable_accessible",
+            "value":"%1$s, không có sẵn",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keypad_password_nine",
+            "value":"chín",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keypad_password_five",
+            "value":"năm",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keypad_password_zero",
+            "value":"không",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"exit_outscreen_theme_selection_accessible",
+            "value":"Thoát khỏi chế độ chọn chủ đề cho màn hình ngoài",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screen_lock_edit_accessible",
+            "value":"Màn hình chỉnh sửa màn hình khóa",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Double_click_and_hold_accessibility",
+            "value":"Chạm đúp và giữ để mở menu tùy chọn",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keypad_password_input_success",
+            "value":"Dấu đầu dòng",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keypad_password_two",
+            "value":"hai",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_pin_area_accessible",
+            "value":"Hộp nhập mã PIN của SIM",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keypad_password_seven",
+            "value":"bảy",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keypad_password_four",
+            "value":"bốn",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keypad_password_one",
+            "value":"một",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ic_tools_opened",
+            "value":"Bật",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keyboard_simple_delete_remainder_accessible",
+            "value":"Đã xóa.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"exit_edit_mode_accessible",
+            "value":"Đã thoát chế độ chỉnh sửa",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keypad_password_eight",
+            "value":"tám",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"enter_outscreen_theme_selection_accessible",
+            "value":"Đang vào chế độ chọn chủ đề cho màn hình ngoài",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"finger_print_area_accessible",
+            "value":"Vùng cảm biến vân tay",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"custom_mix_psd_area_accessible",
+            "value":"Hộp nhập mật khẩu. Chạm đúp để nhập văn bản.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ic_tools_widgets_two_click_accessible",
+            "value":"%1$s, chạm đúp để kích hoạt",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"start_drawing_pattern",
+            "value":"Bắt đầu vẽ mẫu hình",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pattern_area",
+            "value":"Khu vực vẽ mẫu hình",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ic_tools_disable_battery_low",
+            "value":"Mức pin quá thấp, không bật được đèn pin.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pattern_psd_drawing_completed",
+            "value":"Đã vẽ mẫu hình",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"enter_edit_mode_accessible",
+            "value":"Đã vào chế độ chỉnh sửa",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"exit_clock_edit_mode_accessible",
+            "value":"Thoát chế độ chỉnh đồng hồ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"enter_clock_edit_mode_accessible",
+            "value":"Vào chế độ chỉnh đồng hồ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"esim_unlock_slot_flag",
+            "value":"eSIM %s",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

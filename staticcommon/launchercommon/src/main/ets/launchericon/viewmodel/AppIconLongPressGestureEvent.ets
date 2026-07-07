@@ -16,6 +16,7 @@
 import { curves } from '@kit.ArkUI';
 import {
   DomainName,
+  OutdoorConfig,
   LogDomain,
   LogHelper,
   StartType,
@@ -195,6 +196,12 @@ export class AppIconLongPressGestureEvent implements AppIconLongPressGestureEven
   public onLongPressVibrateAction(event: GestureEvent): void {
     log.showWarn(`onLongPressVibrateAction, bundleName: ${this.itemInfo?.bundleName}`);
     this.iconData?.setLongPressVibrated(true);
+
+    // 户外模式运动模式1 无需振动
+    if (OutdoorConfig.getInstance().isInOutdoorMode()) {
+      log.showWarn('long press in OutdoorMod');
+      return;
+    }
 
     // 锁定布局时弹出toast
     if (lockLayoutManager.isLockLayout()) {

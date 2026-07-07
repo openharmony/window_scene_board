@@ -14,6 +14,7 @@
  */
 import {
   DomainName,
+  OutdoorConfig,
   LogDomain,
   LogHelper,
   PixelMapUtil
@@ -33,6 +34,7 @@ import { CalendarCache } from './cache/CalendarCache';
 import { IconCacheInterface } from './IconCacheInterface';
 import { HashSet, List } from '@kit.ArkTS';
 import { IconCacheFwkInterface } from './IconCacheFwkInterface';
+import { DeliverUtil } from '@ohos/basicutils';
 import { image } from '@kit.ImageKit';
 import { AppIconIdLoader } from './AppIconIdLoader';
 import { TraceUtil } from '@ohos/basicutils';
@@ -48,6 +50,7 @@ import { TaskInfo } from './TaskInfo';
 import { IconTaskManager } from './IconTaskManager';
 import { iconBorderCropper } from './TransparentBorderIconCropper';
 import { ResourceManagerFwk } from './fwk/ResourceManagerFwk';
+import { LightOutdoorConfig } from '../service/config/LightOutdoorConfig';
 
 const TAG = 'IconResourceManager';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.SCB, TAG);
@@ -64,6 +67,8 @@ export class IconResourceManager {
   private calendarCache: CalendarCache;
   private checkAppVersionMap: HashMap<string, string>;
   private deletingIcons: HashSet<string>;
+  // 切换主题时,应用图标临时缓存列表
+  private mDeliverAppIconInfosMap: Map<string, IconInfo> = new Map<string, IconInfo>();
   //需要获取ability icon的iconInfo列表
   private requiresIconAbilities: HashSet<string>;
   private lastClearAppResourceCacheTag: string = 'None';
@@ -80,6 +85,11 @@ export class IconResourceManager {
       IconResourceManager.sInstance = new IconResourceManager();
     }
     return IconResourceManager.sInstance;
+  }
+
+  private isCloudMode(): boolean {
+    return OutdoorConfig.getInstance().isInOutdoorMode() ||
+    LightOutdoorConfig.getInstance().isOnLightOutdoorMode();
   }
 
   public setAppIconIdLoader(appIconIdLoader: AppIconIdLoader): void {
@@ -116,8 +126,8 @@ export class IconResourceManager {
    */
   public async getCombineIcon(bundleName: string, moduleName: string, abilityName: string,
     param: IconExtendParam): Promise<image.PixelMap> {
-    log.showInfo(`getCombIcon, bundleName: ${bundleName}, ${moduleName}, ` +
-      `${abilityName}, ${param.appIndex}, ${param.iconName}, ${param.hasBorder}`);
+    log.showInfo(`getCombIcon is cloud ${this.isCloudMode()}, bundleName: ${bundleName}, ${moduleName}, ` +
+      `${abilityName}, ${param.appIndex}, ${param.iconName}, ${param.isTemplatedIcon}, ${param.hasBorder}`);
     let combIcon: image.PixelMap = undefined;
     if (CheckEmptyUtils.isEmpty(bundleName)) {
       return combIcon;
@@ -175,6 +185,8 @@ export class IconResourceManager {
     let param = new IconExtendParam();
     param.appIndex = appIndex ?? 0;
     param.iconName = iconName;
+    param.isTemplatedIcon = isTemplatedIcon;
+    // 处理应用在线主题方形问题，取应用默认模板
     param.bundleName = isTemplatedIcon ? bundleName + SCBConstants.BUNDLENAME_APPEND_TEMPLATE : bundleName;
     param.hasBorder = false;
     param.isTransparentBorder = isTemplatedIcon && iconBorderCropper.isTransparentBorderIcon(bundleName);
@@ -194,6 +206,10 @@ export class IconResourceManager {
     return iconInfo?.combinePicSrc;
   }
 
+  public setDeliverAppIconInfosMap(deliverAppIconInfosMap: Map<string, IconInfo>): void {
+    this.mDeliverAppIconInfosMap = deliverAppIconInfosMap;
+  }
+
   private async getAppIconInfo(param: IconExtendParam, bundleName: string, moduleName?: string,
     abilityName?: string): Promise<IconInfo> {
     let iconInfo: IconInfo = null;
@@ -208,16 +224,67 @@ export class IconResourceManager {
       iconInfo = await this.fwkFactory.getIconResourceFromFwk(param, bundleName, moduleName, abilityName);
     }
     PixelMapUtil.addName(iconInfo.combinePicSrc, this.dfxPixelMapName(bundleName, 'getAppIconInfo'));
-    // 切换主题
-    if (CheckEmptyUtils.isEmpty(iconInfo?.combinePic)) {
-      log.showWarn(`getDeliverAppIconCache combinePic is empty bundleName = ${bundleName}`);
-      return new IconInfo();
+    if (this.needGetPicAgain(iconInfo, moduleName, abilityName)) {
+      log.showWarn(`getAppIconResourceInner bundleName: ${bundleName}`);
+      iconInfo = await BundleManagerFwk.getInstance().getAppIconResourceInner(param, bundleName, moduleName,
+        abilityName);
     }
+    if (this.needGetPicAgain(iconInfo, moduleName, abilityName)) {
+      log.showWarn(`getAppIconByBms bundleName: ${bundleName}`);
+      iconInfo = await this.getAppIconByBms(bundleName, param.isTemplatedIcon, param.isTransparentBorder);
+    }
+    // 切换主题，如果应用取不到图标，使用切主题前的缓存图标
+    if (CheckEmptyUtils.isEmpty(iconInfo?.combinePic)) {
+      log.showInfo(`getAppIconByBms bundleName: ${bundleName}`);
+      let iconInfoCache: IconInfo = this.mDeliverAppIconInfosMap.get(bundleName);
+      if (CheckEmptyUtils.isEmpty(iconInfoCache?.combinePic)) {
+        log.showWarn(`getDeliverAppIconCache combinePic is empty bundleName = ${bundleName}`);
+        return new IconInfo();
+      }
+      iconInfo = new IconInfo();
+      iconInfo.combinePic = iconInfoCache?.combinePic;
+      iconInfo.combinePicSrc = await GraphicUtils.changeBase64ToPixel(iconInfo.combinePic);
+      PixelMapUtil.addName(iconInfo.combinePicSrc, this.dfxPixelMapName(bundleName, 'getAppIconInfo'));
+      iconInfo.iconType = IconPicType.NORMAL;
+      log.showWarn(`getDeliverAppIconCache combinePic length = ${iconInfo?.combinePic?.length} bundleName: ${bundleName}`);
+    } else if (this.mDeliverAppIconInfosMap.has(bundleName)) {
+      this.mDeliverAppIconInfosMap.delete(bundleName);
+    }
+    PixelMapUtil.addName(iconInfo.combinePicSrc, this.dfxPixelMapName(bundleName, 'getAppIconInfo'));
+    return iconInfo;
   }
 
   private needGetPicAgain(iconInfo: IconInfo, moduleName: string, abilityName: string): boolean {
     return CheckEmptyUtils.checkStrIsEmpty(iconInfo?.combinePic) && !CheckEmptyUtils.checkStrIsEmpty(moduleName) &&
       !CheckEmptyUtils.checkStrIsEmpty(abilityName);
+  }
+
+  /**
+   * 场景下，通过缓存、资源管理取不到应用图标，再通过bms缓存接口取一次图标
+   */
+  private async getAppIconByBms(bundleName: string, isTemplatedIcon: boolean,
+    isTransparentBorder: boolean): Promise<IconInfo> {
+    let iconInfo: IconInfo = new IconInfo();
+    let appIconValue : string = ResourceManager.getInstance().getBundleAppIcon(bundleName);
+    if (CheckEmptyUtils.isEmpty(appIconValue) || appIconValue === SCBConstants.DEFAULT_ICON) {
+      log.showWarn(`getAppIconByBms appIconValue is empty bundleName = ${bundleName}`);
+      return iconInfo;
+    }
+    let pixelMap: image.PixelMap = await GraphicUtils.changeBase64ToPixel(appIconValue,
+      { desiredPixelFormat: image.PixelMapFormat.BGRA_8888 });
+    if (isTemplatedIcon) {
+      log.showInfo(`getAppIconByBms bundleName:${bundleName}, isTransparentBorder:${isTransparentBorder}`);
+      if (isTransparentBorder) {
+        await iconBorderCropper.cropByValidRegion(pixelMap, bundleName);
+      }
+      bundleName = bundleName + SCBConstants.BUNDLENAME_APPEND_TEMPLATE;
+    }
+    log.showWarn(`start getHdsIcon after getAppIconByBms ${bundleName}`);
+    iconInfo.combinePicSrc = bundleManagerFwk.getHdsIcon(bundleName, pixelMap);
+    iconInfo.combinePic = await GraphicUtils.changePixelToBase64(iconInfo.combinePicSrc);
+    iconInfo.iconType = IconPicType.NORMAL;
+    PixelMapUtil.addName(iconInfo.combinePicSrc, this.dfxPixelMapName(bundleName, 'getAppIconByBms'));
+    return iconInfo;
   }
 
   /**
@@ -336,6 +403,11 @@ export class IconResourceManager {
    * 开机校验图标数据库缓存
    */
   public async checkSystemStateAndVersion(): Promise<void> {
+    // 云端模式下不感知应用更新
+    if (this.isCloudMode()) {
+      log.showInfo('currentMode is cloud, skip checkSystemStateAndVersion');
+      return;
+    }
     log.showInfo('checkSystemStateAndVersion start');
     // 批量查询应用版本信息
     let bundleList: bundleManager.BundleInfo[] = await commonBundleManager.getAllBundleList(undefined,
@@ -361,6 +433,12 @@ export class IconResourceManager {
       let list: bundleManager.BundleInfo[] = bundleList.filter(bundle => bundle.name === bundleName);
       if (!CheckEmptyUtils.isEmptyArr(list)) {
         bmsAppVer = list[0].versionName;
+      }
+      // bmsAppVer不存在的情况，dhu特有开机查不到不删除icon
+      if (!bmsAppVer && DeliverUtil.isSupportDeliver()) {
+        log.showWarn('getVersionByBundleName bundle not exists %{public}s', bundleName);
+        isLast = resultset.goToNextRow();
+        continue;
       }
       log.showInfo('checkSystemStateAndVersion bundle %{public}s, %{public}s,%{public}s', bundleName, dbAppVer, bmsAppVer);
       if (dbAppVer !== bmsAppVer) {
@@ -576,11 +654,13 @@ export class IconResourceManager {
   /**
    * 批量获取图标资源base64
    *
-   * @param bundleList bundleName列表
+   * @param bundleList bundleName列表，一次请求的所有应用要么都是应用，要么都是应用
+   * @param isdeliverApp 是否是应用
+   * @param isCloud 是否云端模式
    *
    * @returns 返回bundleName和图标base64键值对
    */
-  public async getIconBase64Batch(bundleList: Array<string>):
+  public async getIconBase64Batch(bundleList: Array<string>, isdeliverApp: boolean = false, isCloud: boolean = false):
       Promise<HashMap<string, string>> {
     if (CheckEmptyUtils.isEmptyArr(bundleList)) {
       log.showWarn(`bundleList is emptyArr`);
@@ -590,7 +670,7 @@ export class IconResourceManager {
       log.showWarn(`bundleList is too large`);
     }
     // 先从DB获取图标
-    let result: HashMap<string, string> = await dbCache.getIconByBundles(bundleList, false);
+    let result: HashMap<string, string> = await dbCache.getIconByBundles(bundleList, false, isCloud);
     if (result.length === bundleList.length) {
       return result;
     }
@@ -603,7 +683,7 @@ export class IconResourceManager {
       }
       let param: IconExtendParam = new IconExtendParam();
       param.hasBorder = true;
-      param.bundleName = bundle;
+      param.bundleName = isdeliverApp ? bundle + SCBConstants.BUNDLENAME_APPEND_TEMPLATE : bundle;
       let taskInfo: TaskInfo = new TaskInfo(bundle, '', '', param);
       taskInfos.push(taskInfo);
     });
@@ -622,7 +702,7 @@ export class IconResourceManager {
       // pixelMap无需缓存，及时释放
       iconInfo.combinePicSrc?.release();
     }
-    dbCache.setIconResourceBatch(iconInfos);
+    dbCache.setIconResourceBatch(iconInfos, isCloud);
     return result;
   }
 
@@ -630,7 +710,7 @@ export class IconResourceManager {
     log.showWarn(`refreshIconResourceBatch start task length ${tasks.length}`);
     let iconInfos: IconInfo[] = await bundleManagerFwk.getIconResourceFromFwkBatch(tasks);
     await memoryCache.setIconResourceArray(iconInfos);
-    dbCache.setIconResourceBatch(iconInfos);
+    dbCache.setIconResourceBatch(iconInfos, false);
     log.showWarn(`refreshIconResourceBatch end`);
   }
 

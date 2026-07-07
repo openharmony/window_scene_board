@@ -16,6 +16,9 @@
 import { LogDomain, LogHelper } from '@ohos/basicutils';
 import {
   AnimValue,
+  AodStyleType,
+  ImmersiveAodStyle,
+  immersiveKgMgr,
   LiveNavigationTemplate,
   LiveSystemTemplate,
   LiveType,
@@ -65,6 +68,7 @@ export struct ImmersiveUiExtensionComponent {
   @Prop cardStyle: ImmersiveCardStyle;
   @Prop previewAlpha: number;
   @Prop isSmallFoldOuterScreen: boolean = false;
+  @State aodStyle: ImmersiveAodStyle | undefined = immersiveKgMgr.getOneMirrorState().getAodStyle(true);
   private immersiveCardVm: ImmersiveCardVm = immersiveVm.getImmersiveCardVm();
   private customerStyle: LiveCustomerStyle = this.immersiveCardVm?.getLiveStyle();
   private smallFoldOuterStyle: LiveCustomerStyle = immersiveVm.getImmersiveCardVm()?.getSmallFoldOuterStyle();
@@ -124,11 +128,12 @@ export struct ImmersiveUiExtensionComponent {
   @Builder
   buildSmallFoldOuterCardTip() {
     Column() {
-      Image(this.immersiveCardVm.getCardTipImg(false, !!this.bindCardStateCtrl?.getIsCardFold()))
+      Image(this.immersiveCardVm.getCardTipImg(!!this.aodStyle?.isAod, !!this.bindCardStateCtrl?.getIsCardFold()))
         .objectFit(ImageFit.Contain)
         .width($r('app.float.immersive_card_tip_img_width'))
         .height($r('app.float.immersive_card_tip_img_height'))
-        .fillColor($r('app.color.card_tip_fill_color'))
+        .fillColor(this.aodStyle?.isAod ? this.aodStyle?.getStyleValue(AodStyleType.CARD_TIP_FILL_COLOR) :
+        $r('app.color.card_tip_fill_color'))
         .draggable(false)
         .interpolation(ImageInterpolation.Medium)
         .autoResize(false)
@@ -149,7 +154,7 @@ export struct ImmersiveUiExtensionComponent {
     RelativeContainer() {
       this.buildSmallFoldOuterExtensionComponent()
       Column() {
-        if (SystemUICcmConfig.instance.isEnabledLive2) {
+        if (SystemUICcmConfig.instance.isEnabledLive2 && !this.aodStyle?.isAod) {
           this.buildOuterSmallCardBg()
         }
         this.buildSmallFoldOuterCardTip()
@@ -175,10 +180,11 @@ export struct ImmersiveUiExtensionComponent {
       .clip(true)
       .backgroundBlurStyle(this.getBackgroundBlurStyle())
       .borderRadius(ImmersiveCardConst.CARD_RADIUS_SMALL_FOLD)
-      .margin(this.immersiveCardVm.getCardMargin(false, !!this.bindCardStateCtrl?.getIsCardFold()))
-      .backgroundColor(undefined)
+      .margin(this.immersiveCardVm.getCardMargin(!!this.aodStyle?.isAod, !!this.bindCardStateCtrl?.getIsCardFold()))
+      .backgroundColor(this.aodStyle?.isAod ?
+      this.aodStyle?.getStyleValue(AodStyleType.SHADE_BACKGROUND_COLOR) : undefined)
       .id(this.getOuterLiveCardId())
-      .alignRules(this.immersiveCardVm.getCardAlign(false, !!this.bindCardStateCtrl?.getIsCardFold()))
+      .alignRules(this.immersiveCardVm.getCardAlign(!!this.aodStyle?.isAod, !!this.bindCardStateCtrl?.getIsCardFold()))
     }
     .onClick(this.cardData?.isSupportInteraction ? undefined : this.handleSmallFoldOuterCardClick)
     .height(this.cardStyle.widescreenHeight)
@@ -493,7 +499,7 @@ export struct ImmersiveUiExtensionComponent {
   }
 
   private getBackgroundBlurStyle() {
-    if (SystemUICcmConfig.instance.isEnabledLive2 && this.isSmallFoldOuterScreen) {
+    if (this.aodStyle?.isAod || SystemUICcmConfig.instance.isEnabledLive2 && this.isSmallFoldOuterScreen) {
       return BlurStyle.NONE;
     }
     return BlurStyle.Regular;
@@ -546,6 +552,9 @@ export struct ImmersiveUiExtensionComponent {
   }
 
   private getNoLocationBgColor(): ResourceColor | undefined {
+    if (this.aodStyle?.isAod) {
+      return undefined;
+    }
     return this.isSmallFoldOuterScreen ? $r('sys.color.ohos_id_color_sub_background') :
     this.colorModeViewData.noLocationBgc;
   }
@@ -560,6 +569,9 @@ export struct ImmersiveUiExtensionComponent {
   }
 
   private getSmallFoldOuterCardBgColor(): ResourceColor | undefined {
+    if (this.aodStyle?.isAod) {
+      return undefined;
+    }
     if (this.cardData?.immersiveWant) {
       if (this.isLocationError()) {
         return this.cardStyle.uiExtensionTipBackgroundColor ?? this.colorModeViewData.noPermissionBgc;

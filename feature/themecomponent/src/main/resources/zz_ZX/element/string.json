@@ -119,6 +119,54 @@
       {
         "name": "wallpaper_editor",
         "value": ""
+      },
+      {
+        "name": "cancle",
+        "value": ""
+      },
+      {
+        "name": "set_wallpaper_all",
+        "value": ""
+      },
+      {
+        "name": "set_wallpaper_desktop",
+        "value": ""
+      },
+      {
+        "name": "set_wallpaper_lock",
+        "value": ""
+      },
+      {
+        "name": "wallpaper_show_style",
+        "value": ""
+      },
+      {
+        "name": "screen_fit",
+        "value": ""
+      },
+      {
+        "name": "screen_full",
+        "value": ""
+      },
+      {
+        "name": "screen_center",
+        "value": ""
+      },
+      {
+        "name": "screen_sctetch",
+        "value": ""
+      },
+      {
+        "name": "screen_tile",
+        "value": ""
+      },
+      {
+        "name": "image_decoding_failure",
+        "value": ""
+      },
+      {
+        "name":"Desktop_individuation",
+        "value":"[TS_1104300]_Home screen & style"
       }
     ]
 }

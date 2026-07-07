@@ -19,7 +19,7 @@ import bundleManager from '@ohos.bundle.bundleManager';
 import { promptAction } from '@kit.ArkUI';
 import formHost from '@ohos.app.form.formHost';
 import { systemParameter } from '@kit.BasicServicesKit';
-// import cloudCapabilityManager from '@hms.core.deviceCloudGateway.cloudCapabilityManager';
+// import cloudCapabilityManager from '@ohos.core.deviceCloudGateway.cloudCapabilityManager';
 import {
   LogDomain,
   LogHelper,
@@ -37,7 +37,7 @@ import { launcherStatusUtil, SCBOobeManager } from '@ohos/windowscene';
 import { ObjectCopyUtil } from '@ohos/componenthelper';
 import { PinyinSort } from '@ohos/frameworkpinyin';
 import { EventConstants } from '../constants/EventConstants';
-import { BusinessType, CardCloneStatus, CommonConstants } from '../constants/CommonConstants';
+import { BundleConstants, BusinessType, CardCloneStatus, CommonConstants } from '../constants/CommonConstants';
 import { CardItemInfo } from '../bean/CardItemInfo';
 import { CardInfo, AppItemCardInfo } from '../bean/AppItemCardInfo';
 import GridLayoutUtil from '../utils/GridLayoutUtil';
@@ -55,7 +55,8 @@ import {
   FormCommonUtil,
   LaunchLayoutCacheManager,
   ReceiveEventInfo,
-  SettingsModel
+  SettingsModel,
+  FormRelationManager,
 } from '../TsIndex';
 import { NoIconAppModel } from './NoIconAppModel';
 
@@ -64,7 +65,7 @@ const log: LogHelper = LogHelper.getLogHelper(LogDomain.HOME, TAG);
 const KEY_FORM_LIST = 'formListInfo';
 const SCREEN_LOCK_FORM_WHITE_LIST: string[] = ['com.ohos.totemweather',
   'com.ohos.clock', 'com.openharmony.it.works', 'com.ohos.calculator', 'com.ohos.audioaccessorymanager',
-  'com.ohos.musicservice', 'com.openharmony.it.welink'];
+  'com.ohos.vassistant', 'com.ohos.musicservice', 'com.openharmony.it.welink'];
 const SCREEN_LOCK_AGC_PERMISSION_NAME: string = 'com.openharmony.service.screenlock.form';
 const NEW_SCREEN_LOCK_FORM_WHITE_LIST: string[] = ['com.ohos.health', 'com.ohos.soundrecorder', 'com.sinocare.ican'];
 
@@ -73,6 +74,11 @@ export const enum FormModelValidCardType {
    * 负一屏
    */
   INTELLIGENT = 'Intelligent',
+
+  /**
+   * 语音助手建议
+   */
+  AI_SUGGESTION = 'AiSuggestion',
 
   /**
    * 简易模式/小外屏等独立布局表
@@ -88,6 +94,11 @@ export const enum FormModelValidCardType {
    * qxs pc模式下卡片
    */
   QXS_PC_MODE_CARD = 'QxsPcModeCard',
+
+  /**
+   * 户外模式模式下的卡片
+   */
+  OUTDOOR_CARD = 'OutdoorCard'
 }
 
 /**
@@ -1242,8 +1253,8 @@ export class FormModel {
   }
 
   public isSupportFormCenterSplit(): boolean {
-    // 目前支持分栏样式设备,大折叠展开态、PAD、PC、超大屏G态和M态
-    if (DeviceHelper.isUltraScreenProduct()) {
+    // 目前支持分栏样式设备,大折叠展开态、PAD、PC、三折叠G态和M态
+    if (DeviceHelper.isThreeFoldProduct()) {
       return DeviceHelper.isGState() || DeviceHelper.isMState();
     }
     if (DeviceHelper.isPad() || DeviceHelper.isPC() ||
@@ -1315,6 +1326,11 @@ export class FormModel {
   }
 
   private async checkNormalCard(layoutItem: GridLayoutItemInfo, bundleNameSet: Set<String>): Promise<number> {
+    if (FormRelationManager.getInstance().isSceneBoardCard(layoutItem.bundleName, layoutItem.cardName)) {
+      // 不克隆旧机占位卡
+      log.showWarn('placeholder card not surrprt clone');
+      return CardCloneStatus.ABNORMAL_WITHOUT_CARD;
+    }
     const cards: CardItemInfo[] = await this.getFormsInfoByBundleName(layoutItem.bundleName);
     if (CheckEmptyUtils.isEmptyArr(cards)) {
       // 不具备添加bundleName应用所对应的一类卡片的能力

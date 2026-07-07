@@ -16,6 +16,7 @@
 import { CheckEmptyUtils, LogDomain, LogHelper } from '@ohos/basicutils';
 import {
   AppItemInfo,
+  DeliverUtil,
   DockItemInfo,
   GridLayoutItemInfo,
   GridLayoutUtil,
@@ -70,10 +71,12 @@ export class BundleChangeCorrector extends AbstractGridLayoutCorrector {
     dataList.filter((element) => {
       if (element.typeId === CommonConstants.TYPE_APP) {
         return this.dealAppItemData(element, iconBundleMapFormBMS, iconBundleMapFromDesktop, deleteElement, isOuter);
-      } else {
+      } else if (this.isNormalFolder(element)) {
         element.layoutInfo = element.layoutInfo?.map(folderPage =>
         folderPage.filter(itemInPage => this.dealAppItemData(itemInPage, iconBundleMapFormBMS,
           iconBundleMapFromDesktop, deleteElement, isOuter)));
+        return true;
+      } else {
         return true;
       }
     });
@@ -111,7 +114,18 @@ export class BundleChangeCorrector extends AbstractGridLayoutCorrector {
    */
   private isNormalInstalledApp(appItem: GridLayoutItemInfo): boolean {
     return appItem.typeId === CommonConstants.TYPE_APP && GridLayoutUtil.isAppInstalled(appItem) &&
-      appItem.appStatus !== AppStatus.WAIT_FOR_HARMONY;
+      !DeliverUtil.isContainerItem(appItem.intent ?? '') && appItem.appStatus !== AppStatus.WAIT_FOR_HARMONY;
+  }
+
+  /**
+   * 是否为非备份文件夹
+   *
+   * @param folderItem 文件夹
+   * @returns true是非备份文件夹
+   */
+  private isNormalFolder(folderItem: GridLayoutItemInfo): boolean {
+    return folderItem.typeId === CommonConstants.TYPE_FOLDER &&
+      (!DeliverUtil.isContainerFolder(folderItem.folderId ?? ''));
   }
 
   /**
@@ -227,7 +241,7 @@ export class BundleChangeCorrector extends AbstractGridLayoutCorrector {
     gridLayoutInfo.forEach((item) => {
       if (this.isNormalInstalledApp(item)) {
         allApps.push(item);
-      } else {
+      } else if (this.isNormalFolder(item)) {
         let folderLayoutList: GridLayoutItemInfo[] = item.layoutInfo?.flat() ?? [];
         folderLayoutList = folderLayoutList.filter(itemInFolder => this.isNormalInstalledApp(itemInFolder));
         allApps.push(...folderLayoutList);
@@ -236,7 +250,7 @@ export class BundleChangeCorrector extends AbstractGridLayoutCorrector {
     this.mDockItemList.forEach(item => {
       if (this.isNormalInstalledApp(item)) {
         allApps.push(item);
-      } else {
+      } else if (this.isNormalFolder(item)) {
         let folderLayoutList: GridLayoutItemInfo[] = item.layoutInfo?.flat() ?? [];
         folderLayoutList = folderLayoutList.filter(itemInFolder => this.isNormalInstalledApp(itemInFolder));
         allApps.push(...folderLayoutList);

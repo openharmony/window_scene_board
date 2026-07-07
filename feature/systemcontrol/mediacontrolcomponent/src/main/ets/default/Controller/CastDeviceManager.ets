@@ -1262,7 +1262,7 @@ export default class CastDeviceManager {
       });
     }
     globalStorage.setGlobalObjectByKey('mergedDeviceListTemp', this.mergedDeviceList);
-    this.notifyDeviceChanged();
+    this.notifyDeviceChanged(true);
   }
 
   private getSortDevice(deviceList: LocalDeviceInfo[]): LocalDeviceInfo[] {

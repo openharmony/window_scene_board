@@ -14,7 +14,7 @@
  */
 
 import { DeviceHelper } from '@ohos/frameworkwrapper';
-import { GridLayoutItemInfo } from '@ohos/launchercommon/src/main/ets/TsIndex';
+import { BundleConstants, GridLayoutItemInfo } from '@ohos/launchercommon/src/main/ets/TsIndex';
 
 /**
  * 预览帮助类
@@ -36,6 +36,10 @@ export class PreviewUtils {
    */
   public static checkStrIsEmpty(str: string): boolean {
     return str === undefined || str === null || str.trim().length === 0;
+  }
+
+  public static isVoiceAbilityForm(bundleName: string, abilityName: string): boolean {
+    return bundleName === BundleConstants.AI_SUGGESTION_BUNDLE && abilityName === BundleConstants.AI_SUGGESTION_ABILITY;
   }
 
   public static isFormSupportShadow(formItem: GridLayoutItemInfo): boolean {

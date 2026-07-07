@@ -88,6 +88,7 @@ const HOVER_LEAVE_TIPS_DELAY: number = 0;
 const POPUP_MIN_TEXT_WIDTH: number = 64;
 const HARMONY_RING_WIDTH: number = 60;
 const GROUP_COMPONENT_END_MARGIN: number = 2.5;
+const VASSISTANT_BUNDLE_NAME = 'com.ohos.vassistant';
 
 @Component
 export struct DockStatusBarComponent {
@@ -109,6 +110,7 @@ export struct DockStatusBarComponent {
   @State spaceRowWidth: number = 0;
   @State isVertical: boolean = false;
   private mScreenWidth: number = this.mSmartDockStyleConfig.mScreenWidth;
+  @State isAIHide: boolean = GetHideAppsFromConfig.getInstance().isHideApp(VASSISTANT_BUNDLE_NAME);
   /**
    * 多事件管理器
    */
@@ -126,7 +128,7 @@ export struct DockStatusBarComponent {
     log.showInfo('DockStatusBarComponent, aboutToAppear');
     // HXY默认初始化为横屏,根据当前屏幕状态初始化
     this.isVertical = this.isVerticalInit();
-    this.spaceRowWidth = DeviceHelper.isBigScreenMachine() && this.isVertical ?
+    this.spaceRowWidth = DeviceHelper.isSuperFoldMachine() && this.isVertical ?
       this.calculateSpaceRowWidth(VERTICAL_SPACING) : this.calculateSpaceRowWidth(SPACING);
     this.constraintSizeNumber = this.calculateMaxWidth();
     this.initWindowPolicy();
@@ -144,10 +146,10 @@ export struct DockStatusBarComponent {
 
   //是否应该竖屏初始化
   isVerticalInit(): boolean {
-    const curStatus = screenSessionManager.getBigScreenStatus();
+    const curStatus = screenSessionManager.getSuperFoldStatus();
     const curRotation = screenSessionManager.getSuperRotation();
     log.showInfo(`init curStatus: ${curStatus},  rotation: ${curRotation}`);
-    return !(curStatus === screenSessionManager.BigScreenStatus.BIG_SCREEN_STATUS_EXPANDED &&
+    return !(curStatus === screenSessionManager.SuperFoldStatus.SUPER_FOLD_STATUS_EXPANDED &&
       (curRotation === RotationConstants.ROTATION_90 ||
         curRotation === RotationConstants.ROTATION_270));
   }
@@ -192,23 +194,29 @@ export struct DockStatusBarComponent {
       .on(HideWindowPanelEvent, (event: HideWindowPanelEvent) => {
         this.hideWindowPanel();
       })
-      .on(SCBFoldStatePropertyChangeEvent, this.onBigScreenStatusChange)
+      .on(SCBFoldStatePropertyChangeEvent, this.onSuperFoldStatusChange)
+      .on(HideAppConfigLoadEvent, this.handleHideAppConfigLoadEvent);
   }
 
-  onBigScreenStatusChange = (bigScreenStateProperty: SCBFoldStatePropertyChangeEvent) => {
-    if (!bigScreenStateProperty.tarState || bigScreenStateProperty.tarState === SCBFoldState.UNKNOWN) {
+  handleHideAppConfigLoadEvent = (event: HideAppConfigLoadEvent): void => {
+    this.isAIHide = GetHideAppsFromConfig.getInstance().isHideApp(VASSISTANT_BUNDLE_NAME);
+    log.showInfo(`dockstatus handleHideAppConfigLoadEvent ${this.isAIHide}`);
+  }
+
+  onSuperFoldStatusChange = (superFoldStateProperty: SCBFoldStatePropertyChangeEvent) => {
+    if (!superFoldStateProperty.tarState || superFoldStateProperty.tarState === SCBFoldState.UNKNOWN) {
       log.showError('status error!');
       return;
     }
-    log.showInfo(`onBigScreenStatusChange property, bSideWidth: ${bigScreenStateProperty.bSideWidth}, ` +
-      `curState: ${bigScreenStateProperty.curState}, tarState: ${bigScreenStateProperty.tarState}`);
-    this.mScreenWidth = px2vp(bigScreenStateProperty.bSideWidth);
-    this.spaceRowWidthChangeOnBigScreenStatusChange(bigScreenStateProperty);
-    this.isVertical = bigScreenStateProperty.tarState !== SCBFoldState.UNFOLDED_HORIZONTAL;
+    log.showInfo(`onSuperFoldStatusChange property, bSideWidth: ${superFoldStateProperty.bSideWidth}, ` +
+      `curState: ${superFoldStateProperty.curState}, tarState: ${superFoldStateProperty.tarState}`);
+    this.mScreenWidth = px2vp(superFoldStateProperty.bSideWidth);
+    this.spaceRowWidthChangeOnSuperFoldStatusChange(superFoldStateProperty);
+    this.isVertical = superFoldStateProperty.tarState !== SCBFoldState.UNFOLDED_HORIZONTAL;
     this.constraintSizeNumber = this.calculateMaxWidth();
     log.showInfo(`constrainSizeNumber: ${this.constraintSizeNumber}`);
     // 竖屏时多余的图标放入托盘
-    if (bigScreenStateProperty.tarState === SCBFoldState.UNFOLDED_VERTICAL) {
+    if (superFoldStateProperty.tarState === SCBFoldState.UNFOLDED_VERTICAL) {
       PcStatusBarDragMgr.getInstance().slotToTray();
     }
   }
@@ -223,9 +231,9 @@ export struct DockStatusBarComponent {
   }
 
   // 状态变化时更新安全边距
-  private spaceRowWidthChangeOnBigScreenStatusChange(bigScreenStateProperty: SCBFoldStatePropertyChangeEvent) {
+  private spaceRowWidthChangeOnSuperFoldStatusChange(superFoldStateProperty: SCBFoldStatePropertyChangeEvent) {
     // 横屏时更新为48
-    if (bigScreenStateProperty.tarState === SCBFoldState.UNFOLDED_HORIZONTAL) {
+    if (superFoldStateProperty.tarState === SCBFoldState.UNFOLDED_HORIZONTAL) {
       this.spaceRowWidth = this.calculateSpaceRowWidth(SPACING);
     } else {
       this.spaceRowWidth = this.calculateSpaceRowWidth(VERTICAL_SPACING);
@@ -274,8 +282,8 @@ export struct DockStatusBarComponent {
   private calculateMaxWidth(): number {
     log.showInfo(`onWindowEvent mScreenWidth: ${this.mScreenWidth}`);
     let iconAreaScale: number = 1.0 / 3.0;
-    if (DeviceHelper.isBigScreenMachine() && this.isVertical) {
-      iconAreaScale = 2.0 / 5.0;
+    if (DeviceHelper.isSuperFoldMachine() && this.isVertical || this.mScreenWidth <= 840) {
+      iconAreaScale = 1.0 / 2.0;
       log.showInfo('calculateMaxWidth iconAreaScale:' + iconAreaScale);
     }
     PcStatusBarDragMgr.getInstance().statusBarRightWidth = this.mScreenWidth * iconAreaScale - BUTTON_WIDTH -
@@ -500,13 +508,28 @@ export struct DockStatusBarComponent {
           positionPos: PluginPositionType.BOTTOM_RIGHT
         }).height(BUTTON_SIZE)
           .opacity(this.pluginStyle.opacity)
-          .margin({ end: LengthMetrics.vp(GROUP_COMPONENT_END_MARGIN) })
+          .margin({ end: LengthMetrics.vp(this.isAIHide ? 0 : GROUP_COMPONENT_END_MARGIN) })
+        LocalGroup({
+          localGroupProperty: PluginGroupingManager.getInstance()
+            .getPluginGroup(PluginPositionType.ASSISTANT_VOICE, PluginGroupType.FIRST_GROUP),
+          positionPos: PluginPositionType.ASSISTANT_VOICE
+        }).height(BUTTON_SIZE)
+          .constraintSize({
+            maxWidth: BUTTON_SIZE
+          })
+          .width('auto')
+          .onSizeChange((oldValue: SizeOptions, newValue: SizeOptions) => {
+            log.showInfo(`assistantVoice width: ${newValue.width}`);
+            let width = Number(newValue.width) + GROUP_COMPONENT_END_MARGIN;
+            PcStatusBarDragMgr.getInstance().setAssistantVoiceWidth(width);
+          })
+          .visibility(this.isAIHide ? Visibility.None : Visibility.Visible)
         Row()
           .width(END_SPACE_RIGHT)
           .height('100%')
       } else {
         Row()
-          .width(END_SPACE_RIGHT - 10) // 右侧OpenHarmony环容器变大，宽度减小10vp保证布局不变
+          .width(END_SPACE_RIGHT - 10) // 右侧鸿蒙环容器变大，宽度减小10vp保证布局不变
           .height('100%')
         StatusBarGroupComponent({
           positionPos: PluginPositionType.BOTTOM_LEFT
@@ -523,8 +546,10 @@ export struct DockStatusBarComponent {
       log.showInfo(`onSizeChange ${newValue.width}`);
       if (this.isRight) {
         this.rightStatusBarWidth = Number(newValue.width);
+        log.showInfo(`rightStatusBarWidth ${this.rightStatusBarWidth}`);
       } else {
         this.leftStatusBarWidth = Number(newValue.width);
+        log.showInfo(`leftStatusBarWidth ${this.leftStatusBarWidth}`);
       }
     })
   }

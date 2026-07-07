@@ -47,9 +47,12 @@ import PcModeContinuableModel from '@ohos/smartdock/src/main/ets/default/pcmode/
 const TAG = 'PcSmartDockModel';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.HOME, 'PCDock-' + TAG);
 
-const GUIDE_BUNDLE_NAME = 'com.ohos.hwstartupguide';
+const GUIDE_BUNDLE_NAME = 'com.ohos.startupguide';
+const VASSISTANT_BUNDLE_NAME = 'com.ohos.vassistant';
 const VOICE_PC_ABILITY_NAME = 'VoicePcAbility';
 const VOICE_PAD_ABILITY_NAME = 'VoiceAbility';
+const HISEARCH_PC_BUNDLE_NAME = 'com.ohos.hisearch';
+const HMMODEL_PC_BUNDLE_NAME = 'com.ohos.hmmodelfoundation';
 
 /**
  * 回收站窗口状态信息
@@ -258,7 +261,10 @@ export class PcSmartDockModel extends SmartDockModel {
       }
 
       for (let currentSession of allSession) {
-        let isNotDealApp: boolean = (currentSession.sceneInfo.bundleName === GUIDE_BUNDLE_NAME) ||
+        let isNotDealApp: boolean = (currentSession.sceneInfo.bundleName === GUIDE_BUNDLE_NAME ||
+          currentSession.sceneInfo.bundleName === HMMODEL_PC_BUNDLE_NAME ||
+          this.isVassiatant(currentSession.sceneInfo.bundleName, currentSession.sceneInfo?.abilityName) ||
+          currentSession.sceneInfo.bundleName === HISEARCH_PC_BUNDLE_NAME) ||
           GetHideAppsFromConfig.getInstance().isHideApp(currentSession.sceneInfo.bundleName);
         if (isNotDealApp) {
           continue;
@@ -692,5 +698,11 @@ export class PcSmartDockModel extends SmartDockModel {
         }
       }
     }
+  }
+
+  private isVassiatant(bundleName: string, abilityName: string): boolean {
+    return (bundleName === VASSISTANT_BUNDLE_NAME &&
+      ((!DeviceHelper.is2In1DevicePcType() && abilityName === VOICE_PC_ABILITY_NAME) ||
+      (DeviceHelper.is2In1DevicePcType() && abilityName === VOICE_PAD_ABILITY_NAME)));
   }
 }

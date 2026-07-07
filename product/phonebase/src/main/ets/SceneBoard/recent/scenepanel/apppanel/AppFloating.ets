@@ -73,7 +73,7 @@ export class AppFloating {
           startSceneWithRotationIfNeed();
         }
         // ApsUtils.setApsScene(apsManager.SceneAnimation.FLOAT_WINDOW_TO_FULL, StyleConstants.DEFAULT_0);
-        if (container.primarySession?.sceneInfo.bundleName === 'com.ohos.huaweicast') {
+        if (container.primarySession?.sceneInfo.bundleName === 'com.ohos.ohcast') {
           this.transferSceneAndTerminateShellForCast(container);
         }
       }
@@ -181,7 +181,7 @@ export class AppFloating {
           startSceneWithRotationIfNeed();
         }
         // ApsUtils.setApsScene(apsManager.SceneAnimation.FLOAT_WINDOW_TO_FULL, StyleConstants.DEFAULT_0);
-        if (container.primarySession?.sceneInfo.bundleName === 'com.ohos.huaweicast') {
+        if (container.primarySession?.sceneInfo.bundleName === 'com.ohos.ohcast') {
           this.transferSceneAndTerminateShellForCast(container);
         }
       }
@@ -197,7 +197,7 @@ export class AppFloating {
   private transferSceneAndTerminateShellForCast(container: SCBSceneContainerSession): void {
     log.showInfo('floating scene to full animation end, transfer scene to target screen for cast');
     let activeSession: SCBSceneContainerSession | null =
-      SCBSceneMissionManager.getInstance().getTargetScreenTopActiveSceneSession(undefined, 'HwCast_AppModeDisplay');
+      SCBSceneMissionManager.getInstance().getTargetScreenTopActiveSceneSession(undefined, 'Cast_AppModeDisplay');
     let info: Record<string, Object> = {};
     info['floatingSceneToFull'] = true;
     SCBSceneMissionManager.getInstance().transferSceneToTargetScreen(activeSession?.getPersistentId(),

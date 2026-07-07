@@ -51,6 +51,14 @@ export class CommonEventSubscribeManager {
     events: ['usual.event.RESTORE_START']
   };
 
+  /**
+   * DH应用延迟安装事件. 系统公共事件
+   */
+  public static readonly COMMON_EVENT_DELIVER_RESTORE_START: commonEventManager.CommonEventSubscribeInfo = {
+    events: ['usual.event.DELIVER_RESTORE_START'],
+    publisherPermission: 'ohos.permission.RECEIVE_BMS_BROKER_MESSAGES',
+  };
+
   private static INSTANCE?: CommonEventSubscribeManager;
 
   private subListenerMapping: Map<commonEventManager.CommonEventSubscribeInfo, Subscriber> = new Map();

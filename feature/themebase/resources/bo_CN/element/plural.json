@@ -1,0 +1,28 @@
+{
+    "plural":[
+        {
+            "name":"item_select",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"%d བདམས་ཟིན།",
+                    "attr":{
+                        "priority":"LT"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"delete_select_wallpapers",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"བདམས་པའི་ལྡེབས་ཤོག་སུབ་བམ།",
+                    "attr":{
+                        "priority":"LT"
+                    }
+                }
+            ]
+        }
+    ]
+}

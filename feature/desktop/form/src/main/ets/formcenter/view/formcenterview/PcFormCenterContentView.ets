@@ -76,8 +76,8 @@ export struct PcFormCenterContentView {
       }
       FormCenterNoticeItem()
         .position({ bottom: 0 })
-        .width(this.formCenterStyle?.bindSheetWidth ?? this.style.sheetWidth)
     }
-    .height(this.formCenterStyle?.contentHeight ?? this.style.contentHeight)
+    .height('93%')
+    .width('100%')
   }
 }

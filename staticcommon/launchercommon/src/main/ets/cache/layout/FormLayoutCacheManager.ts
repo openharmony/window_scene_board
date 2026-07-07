@@ -19,7 +19,7 @@ import {
   LogHelper, SingleContext, Trace
 } from '@ohos/basicutils';
 import { DeviceHelper, localEventManager } from '@ohos/frameworkwrapper';
-import { CommonConstants, RdbHandleResult } from '../../constants/CommonConstants';
+import { BundleConstants, CommonConstants, RdbHandleResult } from '../../constants/CommonConstants';
 
 import GridLayoutItemInfo from '../../bean/GridLayoutItemInfo';
 import { ILayoutCacheManager } from './ILayoutCacheManager';
@@ -82,6 +82,39 @@ export class FormLayoutCacheManager extends BaseLayoutCacheManager implements IL
       return undefined;
     }
     return cardItem;
+  }
+
+  /**
+   * 查询所有语音助手建议卡片
+   *
+   * @returns 语音助手建议卡片
+   */
+  selectAllAiSuggestionItems(isOuter?: boolean): GridLayoutItemInfo[] {
+    let gridLayoutItemList: GridLayoutItemInfo[] = this.layoutCacheData.getGridLayoutItemList(isOuter);
+    let aiSuggestionItems: GridLayoutItemInfo[] = [];
+    for (let i = 0; i < gridLayoutItemList.length; i++) {
+      let info = gridLayoutItemList[i];
+      if (this.isVoiceAbilityForm(info)) {
+        aiSuggestionItems.push(gridLayoutItemList[i]);
+      } else if (info.typeId === CommonConstants.TYPE_FORM_STACK) {
+        let formStackItemInfo = info;
+        if (CheckEmptyUtils.isEmptyArr(formStackItemInfo.layoutInfo?.[0])) {
+          continue;
+        }
+        let itemList = formStackItemInfo.layoutInfo?.[0]
+          .filter(itemInfo => this.isVoiceAbilityForm(itemInfo));
+        itemList?.forEach(item => {
+          aiSuggestionItems.push(item as object as GridLayoutItemInfo);
+        });
+      }
+    }
+    return aiSuggestionItems;
+  }
+
+  private isVoiceAbilityForm(item: GridLayoutItemInfo): boolean {
+    return item.typeId === CommonConstants.TYPE_CARD &&
+      item.bundleName === BundleConstants.AI_SUGGESTION_BUNDLE &&
+      item.abilityName === BundleConstants.AI_SUGGESTION_ABILITY;
   }
 
   /**
@@ -486,7 +519,7 @@ export class FormLayoutCacheManager extends BaseLayoutCacheManager implements IL
     }
     let gridLayoutItemList: GridLayoutItemInfo[] = this.layoutCacheData.getGridLayoutItemList();
     let newGridLayoutItemList: GridLayoutItemInfo[] = gridLayoutItemList;
-    if (LauncherLayoutCacheUtil.getIsLazyRotate() && DeviceHelper.isBigScreenMachine()) {
+    if (LauncherLayoutCacheUtil.getIsLazyRotate() && DeviceHelper.isSuperFoldMachine()) {
       if (!LauncherLayoutCacheUtil.updateCardAnotherStatusPosition(gridLayoutItemList, cardItem)) {
         localEventManager.sendLocalEventSticky(EventConstants.EVENT_DESKTOP_CANT_ADD, null);
         log.showWarn('addCardItemToDesktop not addable');
@@ -627,7 +660,7 @@ export class FormLayoutCacheManager extends BaseLayoutCacheManager implements IL
   }
 
   /**
-   * 升级根据id更新卡片/堆叠缓存和数据库信息
+   * 系统迁移根据id更新卡片/堆叠缓存和数据库信息
    * @param remainingStackInfos 要保留的堆叠信息
    * @param deleteFormAndStackInfos 要删除的卡片和堆叠信息
    * @param label 业务标识

@@ -1,0 +1,232 @@
+{
+    "plural":[
+        {
+            "name":"sim_unlock_input_tips",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"Veuillez saisir le code PIN de la carte SIM (%d tentatives restantes)",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"one",
+                    "value":"Veuillez saisir le code PIN de la carte SIM (%d tentative restante)",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"psd_incorrect_will_locked1",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"%d tentatives restantes",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"one",
+                    "value":"%d tentative restante",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"psd_incorrect_will_locked2",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"%d minute",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"%d minutes",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"psd_incorrect_will_locked3",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"%d secondes",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"one",
+                    "value":"%d seconde",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"sim_unlock_input_puk_tips",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"Veuillez saisir le code PUK (%d tentatives restantes)",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"one",
+                    "value":"Veuillez saisir le code PUK (%d tentative restante)",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"psd_incorrect_psd_left_times",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"Le code PIN est incorrect. Il reste %d tentatives.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"one",
+                    "value":"Le code PIN est incorrect. Il reste %d tentative.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"psd_incorrect_psd_left_times_mix",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"Le mot de passe est incorrect. Il reste %d tentatives.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"one",
+                    "value":"Le mot de passe est incorrect. Il reste %d tentative.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"fp_fingerprint_not_match",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"Empreinte digitale non reconnue. %d tentative restante.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"Empreinte digitale non reconnue. %d tentatives restantes.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"sim_unlock_pin_incorrect_tips",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"Le code PIN de la carte SIM est incorrect. Il reste %d tentatives.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"one",
+                    "value":"Le code PIN de la carte SIM est incorrect. Il reste %d tentative.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"sim_unlock_puk_incorrect_tips",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"Le code PUK est incorrect. Il reste %d tentative. Après le nombre maximum de tentatives, votre carte SIM sera définitivement inutilisable.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"Le code PUK est incorrect. Il reste %d tentatives. Après le nombre maximum de tentatives, votre carte SIM sera définitivement inutilisable.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"psd_totle_length",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"%d chiffre au total",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"%d chiffres au total",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"psd_entered_length",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"%d chiffres saisis",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"one",
+                    "value":"%d chiffre saisi",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

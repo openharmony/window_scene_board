@@ -77,7 +77,7 @@ export class CcmConfigHelper {
   public isImmKgV2Enable(): boolean {
     if (this._isImmKgV2 === undefined) {
       try {
-        this._isImmKgV2 = systemParameterEnhance.getSync(IS_IMM_KG_V2, 'false') === 'true';
+        this._isImmKgV2 = systemParameterEnhance.getSync(IS_IMM_KG_V2, 'true') === 'true';
       } catch (e) {
         log.showError('isImmKgV2Enable get enable fail.');
       }

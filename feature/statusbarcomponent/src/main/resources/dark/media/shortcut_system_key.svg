@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>系统键_深色模式</title>
+    <defs>
+        <linearGradient x1="100%" y1="50%" x2="0%" y2="50%" id="linearGradient-1">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" stop-opacity="0.349051095" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="-0.289017341%" x2="50%" y2="100.289017%" id="linearGradient-2">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" stop-opacity="0" offset="20.3125%"></stop>
+            <stop stop-color="#FFFFFF" offset="49.5368157%"></stop>
+            <stop stop-color="#FFFFFF" stop-opacity="0.24" offset="72.9167%"></stop>
+            <stop stop-color="#FFFFFF" offset="100%"></stop>
+        </linearGradient>
+        <filter x="-22.3%" y="-22.3%" width="144.6%" height="144.6%" filterUnits="objectBoundingBox" id="filter-3">
+            <feGaussianBlur stdDeviation="2" in="SourceGraphic"></feGaussianBlur>
+        </filter>
+        <filter x="-0.9%" y="-0.9%" width="101.8%" height="101.8%" filterUnits="objectBoundingBox" id="filter-4">
+            <feGaussianBlur stdDeviation="0" in="SourceGraphic"></feGaussianBlur>
+        </filter>
+    </defs>
+    <g id="系统键_深色模式" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="圆环" transform="translate(20.000000, 20.000000) rotate(-270.000000) translate(-20.000000, -20.000000) translate(6.000000, 6.000000)">
+            <path d="M14,0 C6.26797701,0 0,6.26797701 0,14 C0,21.732023 6.26797701,28 14,28 C21.732023,28 28,21.732023 28,14 C28,6.26797701 21.732023,0 14,0 Z M5,14 C5,9.0294411 9.0294411,5 14,5 C18.9705589,5 23,9.0294411 23,14 C23,18.9705589 18.9705589,23 14,23 C9.0294411,23 5,18.9705589 5,14 Z" id="本体" fill="url(#linearGradient-1)" fill-rule="nonzero"></path>
+            <path d="M0,14 C0,6.26803468 6.26803468,0 14,0 C21.7319653,0 28,6.26803468 28,14 C28,21.7319653 21.7319653,28 14,28 C6.26803468,28 0,21.7319653 0,14 Z M14.5,5 C9.25332459,5 5,9.25332459 5,14.5 C5,19.7466754 9.25332459,24 14.5,24 C19.7466754,24 24,19.7466754 24,14.5 C24,9.25332459 19.7466754,5 14.5,5 Z" id="描边" stroke="url(#linearGradient-2)" stroke-width="0.5" filter="url(#filter-3)"></path>
+            <path d="M0,14 C0,6.26803468 6.26803468,0 14,0 C21.7319653,0 28,6.26803468 28,14 C28,21.7319653 21.7319653,28 14,28 C6.26803468,28 0,21.7319653 0,14 Z M14,5 C9.02946541,5 5,9.02946541 5,14 C5,18.9705346 9.02946541,23 14,23 C18.9705346,23 23,18.9705346 23,14 C23,9.02946541 18.9705346,5 14,5 Z" id="描边" stroke-opacity="0.7" stroke="#FFFFFF" stroke-width="0.5" filter="url(#filter-4)"></path>
+        </g>
+    </g>
+</svg>

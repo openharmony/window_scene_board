@@ -33,7 +33,7 @@ import { DefaultPanelZIndex } from '../../base/common/info/DefaultPanelZIndex';
 import { CardBorderRadius, OverlayAnimScene, OverlayCardInfo } from '../../overlay/OverlayCardInfo';
 import { performanceMonitor } from '@kit.ArkUI';
 import DropDownPanelManager from '../../manager/DropDownPanelManager';
-// import apsManager from '@hms.graphic.apsManager';
+// import apsManager from '@ohos.graphic.apsManager';
 import { APSSceneState } from '../../constants/SystemuiConstants';
 import OverlayAnimGuarantee from '../../overlay/OverlayAnimGuarantee';
 import { StartAbilityOverlayAnimate } from './StartAbilityOverlayAnimate';
@@ -154,6 +154,7 @@ class LiveItemStartAnimManager {
       param?.onPreComplete?.();
       return;
     }
+    // 没有包名不支持启动动效，如应用
     if (!param.startBundleName) {
       log.showInfo('StartAnimPre for none startBundleName');
       param?.onPreComplete?.();

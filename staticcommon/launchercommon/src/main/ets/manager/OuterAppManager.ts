@@ -23,6 +23,7 @@ import {
   AppItemInfo,
   AppModel,
   CommonConstants,
+  DeliverUtil,
   GridLayoutItemInfo,
   LaunchLayoutCacheManager,
   RdbStoreManager
@@ -209,6 +210,8 @@ export class OuterAppManager {
     // 获取全量应用名单
     let bundleNames: string[] = this.mAppModel.getAppList().map(item => item.bundleName);
     log.showInfo(`asyncProcessingTag start, length: ${bundleNames.length}`);
+    bundleNames = bundleNames.filter(bundleName => !DeliverUtil.isSupportAppTypeInOut(bundleName));
+    log.showInfo(`asyncProcessingTag filter isSupportAppTypeInOut end length: ${bundleNames.length}`);
     // taskpool.execute(asyncGetAppTagInfos, bundleNames).then((mTagInfosResult: Object) => {
     //   // let tagInfosResult = mTagInfosResult as appInfoManager.AppTagInfo[];
     //   // let isSaveNameList = true;
@@ -288,7 +291,14 @@ export class OuterAppManager {
         return;
       }
       this.updateDownloadBundleNameStatus = true;
-
+      try {
+        if (DeliverUtil.isSupportAppTypeInOut(bundleName)) {
+          log.showWarn('asyncGetAppTagInfosByDownLoad isSupportAppTypeInOut is deliver app type');
+          bundleName = null;
+        }
+      } catch (error) {
+        log.showError(`isSupportAppTypeInOut error, code: ${error?.code}, message: ${error?.message}`);
+      }
       // taskpool.execute(asyncGetAppTagInfosByDownLoad, bundleName ?? '').then((mtagInfosResult: Object) => {
       //   // let tagInfosResult: appInfoManager.AppTagInfo[] = mtagInfosResult as appInfoManager.AppTagInfo[];
       //   // let appNameMap: Map<string, string[]> = new Map();
@@ -719,7 +729,11 @@ export class OuterAppManager {
       log.showWarn(`isBlockApp ${bundleName} was added to outer screen`);
       return false;
     }
-
+    // 此类型应用判断为未适配
+    if (DeliverUtil.isSupportAppTypeInOut(bundleName)) {
+      log.showWarn(`isBlockApp ${bundleName} is deliver app type`);
+      return true;
+    }
     // 判断应用是否是未适配应用
     let ret: boolean = this.judgeAppIsBlock(bundleName);
     log.showInfo(`isBlockApp ${bundleName} ret = ${ret}`);
@@ -755,6 +769,10 @@ export class OuterAppManager {
         if (this.appIsInOuter(appInfo.bundleName, outerList)) {
           appInfo.appIsOuterSupport = true;
           this.checkAppInfoAbilityNames(bundleInfo, appInfo);
+        } else if (DeliverUtil.isSupportAppTypeInOut(appInfo.bundleName)) {
+          // 鸿蒙OS
+          appInfo.appIsOuterSupport = false;
+          this.checkAppInfoAbilityNames(bundleInfo, appInfo, false);
         } else {
           appInfo.appIsOuterSupport = !this.judgeAppIsBlock(appInfo.bundleName, blockAppNameList);
           this.checkAppInfoAbilityNames(bundleInfo, appInfo, appInfo.appIsOuterSupport);

@@ -1,0 +1,1426 @@
+{
+    "string":[
+        {
+            "name":"auth_enter_with_null",
+            "value":"پارول كىرگۈزۈڭ"
+        },
+        {
+            "name":"suffix_recommend",
+            "value":"\u200f%s (تەۋسىيە)"
+        },
+        {
+            "name":"duplicate_add",
+            "value":"تەكرار قوشۇلمايدۇ."
+        },
+        {
+            "name":"auth_by_fp_or_pwd",
+            "value":"بارماق ئىزى ياكى پارول ئارقىلىق ئېچىڭ"
+        },
+        {
+            "name":"enterprise_right_warning",
+            "value":"ئىدارە ئىجازەت بەرمىگەن."
+        },
+        {
+            "name":"app_center_menu_add_desktop",
+            "value":"ئۈستەليۈزىگە قوشۇش"
+        },
+        {
+            "name":"control_center_complex_toggle_ring_mode_title_vibration",
+            "value":"تىترەش"
+        },
+        {
+            "name":"delete_app",
+            "value":"چىقىرىۋېتىش"
+        },
+        {
+            "name":"control_center_complex_toggle_location_title",
+            "value":"ئورۇن ئۇچۇرى"
+        },
+        {
+            "name":"fp_incorrect_fp_try_again_pc",
+            "value":"بارماق تونۇلمىدى، بارماق سەزگۈچ تولۇق قاپلانسۇن، بارماقنى بېسىپ سەل تۇرۇڭ."
+        },
+        {
+            "name":"is_delete_form",
+            "value":"\u200f«%s» نى چىقىرىۋېتەمسىز؟"
+        },
+        {
+            "name":"control_center_complex_toggle_ring_mode_title_off",
+            "value":"تىنچ"
+        },
+        {
+            "name":"reboot_device",
+            "value":"قايتا قوزغىتىش"
+        },
+        {
+            "name":"control_center_complex_toggle_ring_mode_title_on",
+            "value":"قوڭغۇراق"
+        },
+        {
+            "name":"remove_from_dock",
+            "value":"تېزلەتمە بالداقتىن چىقىرىۋېتىش"
+        },
+        {
+            "name":"control_center_complex_toggle_bluetooth_title",
+            "value":"كۆكچىش"
+        },
+        {
+            "name":"app_menu_open",
+            "value":"ئېچىش"
+        },
+        {
+            "name":"uninstall_success",
+            "value":"ئۆچۈرۈلدى."
+        },
+        {
+            "name":"prompt_boot_for_first",
+            "value":"قايتا قوزغاتقاندىن كېيىن پارول سورىلىدۇ"
+        },
+        {
+            "name":"control_center_complex_toggle_nfc_mode_title",
+            "value":"NFC"
+        },
+        {
+            "name":"input_menu_title",
+            "value":"كىرگۈزگۈچ"
+        },
+        {
+            "name":"sound_more_settings",
+            "value":"باشقا ئاۋاز تەڭشەكلىرى"
+        },
+        {
+            "name":"airplane_mode",
+            "value":"ئۇچۇش ھالىتى"
+        },
+        {
+            "name":"sound_output_device_usb_earphone",
+            "value":"‏USB تىڭشىغۇچ"
+        },
+        {
+            "name":"enterprise_confirm",
+            "value":"جەزملەش"
+        },
+        {
+            "name":"remove_from_desktop",
+            "value":"ئۈستەليۈزىدىن چىقىرىۋېتىش"
+        },
+        {
+            "name":"remove_app_dialog_content",
+            "value":"كېيىن ئەپ مەركىزىدىن قايتا قوشالايسىز."
+        },
+        {
+            "name":"sound_output_device_default",
+            "value":"تاشقى ئۈسكۈنە"
+        },
+        {
+            "name":"sound_device_earpiece",
+            "value":"قۇلاق"
+        },
+        {
+            "name":"sound_output_device_local",
+            "value":"بۇ ئۈسكۈنە ياڭراتقۇسى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"No_available_window",
+            "value":"كۆزنەك يوق"
+        },
+        {
+            "name":"confirm_shutdown",
+            "value":"ئېتىش"
+        },
+        {
+            "name":"sound_menu_title",
+            "value":"ئاۋاز"
+        },
+        {
+            "name":"low_battery_notification_title",
+            "value":"توك ئاز"
+        },
+        {
+            "name":"sound_output_device",
+            "value":"چىقىم",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"battery_charging_text",
+            "value":"توكلاۋاتىدۇ..."
+        },
+        {
+            "name":"battery_turbo_charging_text",
+            "value":"بەك تېز Turbo توكلاۋاتىدۇ..."
+        },
+        {
+            "name":"camera_panel_title",
+            "value":"كامېرا"
+        },
+        {
+            "name":"sound_output_device_bluetooth",
+            "value":"كۆكچىشلىق ئۈسكۈنە"
+        },
+        {
+            "name":"sound_output_device_remote_cast",
+            "value":"يىراقتىن ئېكران سۇنىلىدىغان ئۈسكۈنە"
+        },
+        {
+            "name":"sound_output_device_display_port",
+            "value":"سۇنۇلىدىغان ئۈسكۈنە"
+        },
+        {
+            "name":"battery_text",
+            "value":"توك مەنبەسى: باتارېيە"
+        },
+        {
+            "name":"disable_uninstall",
+            "value":"ئۆچۈرۈش چەكلىنىدۇ."
+        },
+        {
+            "name":"delete_form",
+            "value":"چىقىرىۋېتىش"
+        },
+        {
+            "name":"shutdown_device",
+            "value":"ئېتىش"
+        },
+        {
+            "name":"battery_charging_full_text",
+            "value":"تولۇق توكلاندى"
+        },
+        {
+            "name":"uninstall_failed",
+            "value":"ئۆچۈرۈلمىدى."
+        },
+        {
+            "name":"date_time_settings",
+            "value":"چېسلا ۋە ۋاقىت تەڭشىكى"
+        },
+        {
+            "name":"No_running_apps_recently",
+            "value":"يېقىندا يۈرگەن ئەپ يوق"
+        },
+        {
+            "name":"battery_menu_title",
+            "value":"باتارېيە"
+        },
+        {
+            "name":"system_settings",
+            "value":"سىستېما تەڭشەكلىرى"
+        },
+        {
+            "name":"camera_use_info",
+            "value":"نۆۋەتتە «%s» كامېرا ئىشلىتىۋاتىدۇ"
+        },
+        {
+            "name":"confirm_reboot",
+            "value":"قايتا قوزغىتىش"
+        },
+        {
+            "name":"adapter_text",
+            "value":"توك مەنبەسى: توكلىغۇچ"
+        },
+        {
+            "name":"lock_screen",
+            "value":"ئېكران قۇلۇپلاش"
+        },
+        {
+            "name":"app_center_menu_add_dock",
+            "value":"تېزلەتمە بالداققا قوشۇش"
+        },
+        {
+            "name":"sound_output_device_earphone",
+            "value":"سىملىق تىڭشىغۇچ"
+        },
+        {
+            "name":"sleep",
+            "value":"ئۇخلاش"
+        },
+        {
+            "name":"rename_folder",
+            "value":"نام ئۆزگەرتىش"
+        },
+        {
+            "name":"add_to_desktop",
+            "value":"ئۈستەليۈزىگە قوشۇش"
+        },
+        {
+            "name":"remove_form_dialog_content",
+            "value":"ئەپنىڭ تىزىملىكىدىن كارتىغا كىرىپ قايتا قوشسىڭىز بولىدۇ."
+        },
+        {
+            "name":"low_battery_notification_content",
+            "value":"توك ‎%s قالدى، توكقا چېتىڭ."
+        },
+        {
+            "name":"shutdown_ntf_text",
+            "value":"توكقا چاتمىسىڭىز، كومپيۇتېر ئېتىلىدۇ."
+        },
+        {
+            "name":"shutdown_ntf_title",
+            "value":"توك ئاز"
+        },
+        {
+            "name":"cancel",
+            "value":"بىكار قىلىش"
+        },
+        {
+            "name":"ai_sound_enable",
+            "value":"\u200fAI ئاۋاز ئۈنۈمى ئوچۇق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"microphone_mute_enable",
+            "value":"ئۈنسىزلەندى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"battery_more_settings",
+            "value":"باتارېيە تەڭشەكلىرى"
+        },
+        {
+            "name":"disable_add_to_dock",
+            "value":"قوشۇلمايدۇ."
+        },
+        {
+            "name":"pwd_expire_tips_text",
+            "value":"ئېكران پارولىنىڭ قەرەلى %s توشىدۇ، دەرھال ئۆزگەرتىڭ."
+        },
+        {
+            "name":"pwd_expire_tips_title",
+            "value":"ئېكران پارولىنى ئۆزگەرتىڭ"
+        },
+        {
+            "name":"psd_change_fail",
+            "value":"ئېكران پارولى ئۆزگەرمىدى، IT باشقۇرغۇچى بىلەن ئالاقىلىشىڭ."
+        },
+        {
+            "name":"The_password_consists_of_6_32_characters",
+            "value":"پارول %1$d ~ %2$d ھەرپ-بەلگىدىن تۈزۈلىدۇ"
+        },
+        {
+            "name":"confirm_new_psd",
+            "value":"يېڭى پارولنى جەزملەش"
+        },
+        {
+            "name":"password_complexity_is_illegal",
+            "value":"پارول مۇرەككەپلىكى شەرتكە ئۇيغۇن ئەمەس"
+        },
+        {
+            "name":"password_cannot_be_empty",
+            "value":"پارول بوش قالمىسۇن"
+        },
+        {
+            "name":"password_input_warning_message_not_equal",
+            "value":"پاروللار بىردەك ئەمەس"
+        },
+        {
+            "name":"enter_new_psd",
+            "value":"يېڭى پارول"
+        },
+        {
+            "name":"password_contain_illegal_character",
+            "value":"پارولدا ئىناۋەتسىز بەلگە بار"
+        },
+        {
+            "name":"enter_old_psd",
+            "value":"كونا پارول"
+        },
+        {
+            "name":"change_lock_screen_psd",
+            "value":"ئېكران پارولىنى ئۆزگەرتىش"
+        },
+        {
+            "name":"lenght_is_illegal",
+            "value":"پارول ئۇزۇنلۇقى شەرتكە ئۇيغۇن ئەمەس"
+        },
+        {
+            "name":"psd_change_success",
+            "value":"ئېكران پارولى ئۆزگەردى."
+        },
+        {
+            "name":"psd_has_expired",
+            "value":"پارولنىڭ قەرەلى توشقان، ئۆزگەرتىپ تىزىملاپ كىرىڭ."
+        },
+        {
+            "name":"user_log_limiting_prompt",
+            "value":"كىرگەن ئىشلەتكۈچى سانى چەككە يەتكەن"
+        },
+        {
+            "name":"uninstall",
+            "value":"ئۆچۈرۈش"
+        },
+        {
+            "name":"upper_shift_prompt",
+            "value":"چوڭ ھەرپلىك ھالەت ئوچۇق"
+        },
+        {
+            "name":"app_menu_exit",
+            "value":"چېكىنىش"
+        },
+        {
+            "name":"app_menu_open_new_window",
+            "value":"يېڭى كۆزنەك ئېچىش"
+        },
+        {
+            "name":"exit",
+            "value":"چېكىنىش"
+        },
+        {
+            "name":"sound_settings",
+            "value":"ئاۋاز تەڭشىكى"
+        },
+        {
+            "name":"microphone_using",
+            "value":"ئىشلەتكەن",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"microphone_input",
+            "value":"كىرگۈزۈش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"account_limit_toast",
+            "value":"كىرگەن ئىشلەتكۈچى سانى چەككە يەتكەن، بەزىلىرىدىن چېكىنىپ قايتا سىناڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"multiplayer_pure_vocal",
+            "value":"كۆپ كىشىلىك ئاۋاز ئايرىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"microphone_settings",
+            "value":"مىكروفون تەڭشىكى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sound_intput_device_local",
+            "value":"بۇ ئۈسكۈنە مىكروفونى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"record_noise_reduct_off",
+            "value":"ئۈن ئالغاندا AI شاۋقۇنسىزلاشنى ئېتىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"record_noise_reduct_on",
+            "value":"ئۈن ئالغاندا AI شاۋقۇنسىزلاشنى ئېچىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"extended_screen_dialog_content",
+            "value":"ئۈسكۈنىگە ئېكران ئۇلانغاندا پەقەت تۈزبوي ئىشلىتىشنى قوللايدۇ، باشقا ھالەتتە ئىشلەتمەكچى بولسىڭىز، ئېكراننى چىقىرىۋېتىڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"confirm",
+            "value":"جەزملەش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"extended_screen_dialog_title",
+            "value":"ئېكران ئۇلاندى، تۈزبوي ئىشلىتىڭ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"microphone",
+            "value":"مىكروفون",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"single_quiet_space",
+            "value":"يالغۇز ئاۋاز ئايرىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"isUninstall",
+            "value":"\u200f‏«%s» نى ئۆچۈرەمسىز؟"
+        },
+        {
+            "name":"edit_form_to_desktop",
+            "value":"كارتا قوشۇش"
+        },
+        {
+            "name":"low_battery_tip",
+            "value":"توك ‎%s تىن ئاز، دەرھال توكقا چېتىڭ ياكى ئۇخلاش ھالىتىگە كىرگۈزۈڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"low_battery_title",
+            "value":"توك ئاز"
+        },
+        {
+            "name":"psd_change_fail_please_restart",
+            "value":"ئېكران پارولى ئۆزگەرمىدى. ئۈسكۈنىنى قايتا قوزغىتىپ قايتا سىناڭ."
+        },
+        {
+            "name":"recovery_key_error",
+            "value":"ئەسلىگە كەلتۈرۈش ئاچقۇچى خاتا"
+        },
+        {
+            "name":"recovery_key_cannot_be_empty",
+            "value":"ئەسلىگە كەلتۈرۈش ئاچقۇچى بوش قالسا بولمايدۇ."
+        },
+        {
+            "name":"enter_recovery_key_reset_password",
+            "value":"ئەسلىگە كەلتۈرۈش ئاچقۇچى"
+        },
+        {
+            "name":"forgot_password",
+            "value":"پارولنى ئۇنۇتتۇم"
+        },
+        {
+            "name":"psd_change_success_enter_pin",
+            "value":"ئېكران پارولى ئۆزگەردى، پارول كىرگۈزۈڭ."
+        },
+        {
+            "name":"ai_sound_detail",
+            "value":"\u200fAI ئاۋاز ئۈنۈمى ھەققىدە"
+        },
+        {
+            "name":"sound",
+            "value":"\u200fSOUND AI ئاۋاز ئۈنۈمى"
+        },
+        {
+            "name":"agree",
+            "value":"قوشۇلىمەن"
+        },
+        {
+            "name":"permission_detail",
+            "value":"<body><span style='normal'>بۇ ئۈسكۈنە ئاۋاز كىرگۈزۈش ۋە چىقىرىش كۆرۈنۈشلىرىدە AI ئاۋاز ئۈنۈمى ئىقتىدارى بىلەن تەمىنلەيدۇ. ئاۋاز كىرگۈزۈش (سۆزلىشىش ۋە ئۈن ئېلىش) كۆرۈنۈشلىرىدە AI شاۋقۇنسىزلاش ھېسابلاش ئۇسۇلى ئارقىلىق بىر كىشىلىك ئەھۋالدا «يالغۇز ئاۋاز ئايرىش» ئىقتىدارى بىلەن، كۆپ كىشىلىك ئەھۋالغا قارىتا «كۆپ كىشىلىك ئاۋاز ئايرىش» ئىقتىدارى بىلەن تەمىنلەيدۇ. ئاۋاز چىقىرىش كۆرۈنۈشلىرى ئۈچۈن، ئۈن-سىن قويۇش كۆرۈنۈشلىرىدە «AI تەڭكەش» ۋە «AI ئاۋاز گەۋدىلەندۈرۈش» ئىقتىدارى بىلەن، چاقىرىق كۆرۈنۈشلىرىدە «چاقىرىق شاۋقۇنسىزلاش» ئىقتىدارى بىلەن تەمىنلەيدۇ.</span><span style='wrap'>\n-</span><span style='title'>\nبىرىنچى، سۆزلەشكەندە يالغۇز ئاۋاز ئايرىش</span><span style='wrap'>\n-</span><span style='normal'>\nبۇ ئۈسكۈنىگە سۆزلەشكەندە يالغۇز ئاۋاز ئايرىش ئىقتىدارى سەپلەنگەن بولۇپ، بۇ ئىقتىدار ئاۋاز ئىزى ئۇچۇرى ئارقىلىق سۆزلەشكۈچىنىڭ ئاۋازىنى تونۇپ، باشقا شاۋقۇنلارنى توسىدۇ ياكى يوقىتىدۇ، بۇ ئارقىلىق سۆزلەشكۈچىنىڭ ئاۋازى قارشى تەرەپكە تېخىمۇ سۈزۈك يەتكۈزۈلىدۇ.</span><span style='wrap'>\n-</span><span style='bold'>\nھەرقانداق تېخنىكا چەكلىمە ۋە خەۋپتىن خالى ئەمەس، سۆزلەشكەندە ئاۋاز ئايرىش ئىقتىدارىنى ئىشلەتكەندە تۆۋەندىكىلەرگە دىققەت قىلىش كېرەك:</span><span style='normal'>\n%1$d. تېلېفونلاشقاندا سۆزلەشكۈچىنىڭ ئاۋاز ئىزى ئۆزلۈكىدىن ئېلىنىدۇ، بۇ ئىقتىدار ئاۋاز ئىزىنى ئېلىپ بولغاندىن كېيىن ئىشلەيدۇ.\n%2$d. تېلېفونلاشقاندا ئەتراپتىكى شاۋقۇن يۇقىرى بولسا، ئاۋاز ئىزى ئېلىشقا تەسىر يېتىپ، بۇ ئىقتىدار نورمال ئىشلىمەسلىكى مۇمكىن.\n%3$d. تاقىغان تىڭشىغۇچ ياكى تاقاش ئۇسۇلىغا قاراپ، شاۋقۇن تۆۋەنلىتىش ئۈنۈمىدە پەرق كۆرۈلۈشى مۇمكىن.\n%4$d. بۇ ئىقتىدار پەقەت شۇ قېتىملىق چاقىرىقتا بىر سۆزلەشكۈچىنىڭ ئاۋازىنى كۈچەيتىشكە ئىشلەيدۇ، سۆزلىشىۋاتقاندا سۆزلەشكۈچى ئالماشسا، ئاۋاز تۆۋەنلەپ كېتىشى مۇمكىن، بۇ ئەھۋالدا ئاۋاز ئايرىش ئىقتىدارىنى ئېتىشىڭىز كېرەك.\n%5$d. ئاۋاز ئىزى بىلەن شاۋقۇن ئوخشاپ قالسا، سۆزلەشكۈچىنىڭ ئاۋازى شاۋقۇن قاتارىدا توسۇلۇپ قېلىشى ياكى يوقىتىلىشى مۇمكىن.</span><span style='wrap'>\n-</span><span style='bold'>\nمەخپىيەتلىك باياناتى</span><span style='normal'>\n</span><span style='bold'>ئاۋاز ئىزى ئۇچۇرى</span><span style='normal'> قاتتىق قوغدىلىدۇ. بۇ ئۇچۇرلار ساقلانمايدۇ، خۇاۋېي ئۇلارنى زاپاسلىمايدۇ، ئەپمۇ ئۇلارنى ئوقۇيالمايدۇ. مەسىلەن، ئاۋاز ئايرىش ئىقتىدارى ئارقىلىق سۆزلەشكەندە، چاقىرىق ئەپى پەقەت شاۋقۇنسىزلاپ كۈچەيتىلگەن ئاۋاز سىگنالىنى قوبۇللايدۇ، </span><span style='bold'>ئاۋاز ئىزى</span><span style='normal'> ئۇچۇرىنى زىيارەت قىلالمايدۇ، زاپاسلىيالمايدۇ ياكى ئوقۇيالمايدۇ.\nئاۋاز ئىزى ئۇچۇرىنى باشقۇرۇش ھوقۇقى سىزدە، ئۇنى ئىشلىتىش ۋە ئىشلىتىش دائىرىسىنى ئۆزىڭىز خالىغانچە تىزگىنلەيسىز. يالغۇز ئاۋاز ئايرىش ئىقتىدارى كېرەك بولمىسا، تەڭشەك > ئاۋاز > كىرگۈزۈش دېگەن ئورۇندىن ئېتىپ قويسىڭىز بولىدۇ. كېيىن قايتا ئىشلەتسىڭىز، بۇ ئىقتىدار ئاۋاز ئىزى ئۇچۇرىنى قايتا ئوقۇيدۇ.</span><span style='wrap'>\n-</span><span style='title'>\nئىككىنچى، AI تەڭكەش ۋە AI ئاۋاز گەۋدىلەندۈرۈش</span><span style='wrap'>\n-</span><span style='normal'>\nبۇ ئۈسكۈنىگە </span><span style='bold'>AI تەڭكەش</span><span style='normal'> ۋە </span><span style='bold'>AI ئاۋاز گەۋدىلەندۈرۈش</span><span style='normal'> ئىقتىدارى سەپلەنگەن. </span><span style='bold'>AI تەڭكەش</span><span style='normal'> ئىقتىدارى قويۇۋاتقان ئۈن-سىندىكى ئادەم ئاۋازىنى AI ئۈلگە ئارقىلىق تۆۋەنلىتىپ، مۇزىكىنى ئايرىپ بېرەلەيدۇ؛ </span><span style='bold'>AI ئاۋاز گەۋدىلەندۈرۈش</span><span style='normal'> ئىقتىدارى قويغان ئۈن-سىندىكى مۇزىكىنى تۆۋەنلىتىپ، ئادەم ئاۋازىنى ئايرىپ بېرىدۇ، بۇ ئارقىلىق شاۋقۇنلۇق ئاۋازدىكى ئادەم ئاۋازىنى تېخىمۇ ئېنىق ئاڭلىغىلى بولىدۇ.</span><span style='wrap'>\n-</span><span style='bold'>\nھەرقانداق تېخنىكا چەكلىمە ۋە خەۋپتىن خالى ئەمەس، AI تەڭكەش ۋە AI ئاۋاز گەۋدىلەندۈرۈش ئىقتىدارىنى ئىشلەتكەندە تۆۋەندىكىلەرگە دىققەت قىلىش كېرەك:</span><span style='normal'>\n%6$d. بۇ ئىقتىدار پەقەت بىر قىسىم ئەپ ۋە بىر قىسىم ئۈسكۈنە (پەقەت ياڭراتقۇ ۋە تىڭشىغۇچ) دە ئىشلەيدۇ، نورمال ئىشلىگەن ئەمەلىي كۆرۈنۈش ئاساس.\n%7$d. ئاۋاز مەزمۇنىغا قاراپ AI تەڭكەش ئىقتىدارىنىڭ ئۈنۈمى ئوخشىمايدۇ، بەزىدە ئانچە-مۇنچە قالدۇق ئاۋازلار كۆرۈلۈشى مۇمكىن.\n%8$d. ئاۋاز مەزمۇنىغا قاراپ AI ئاۋاز گەۋدىلەندۈرۈش ئۈنۈمى ئوخشىمايدۇ، بەزىدە ئادەم ئاۋازى بۇزۇلۇپ كېتىشى مۇمكىن.\n%9$d. ئۈسكۈنىنى قايتا قوزغاتسىڭىز، بۇ ئىقتىدار ئۆزلۈكىدىن ئېتىلىدۇ.</span><span style='wrap'>\n-</span><span style='bold'>\nمەسئۇلىيەت باياناتى</span><span style='bold'>\nئۈسكۈنىگە سەپلەنگەن AI تەڭكەش</span><span style='normal'> ۋە </span><span style='bold'>AI ئاۋاز گەۋدىلەندۈرۈش</span><span style='normal'> ئىقتىدارلىرىنى قولدا ئېچىش كېرەك. بۇ ئىقتىدارلارنى ئىشلىتىش ئىشلەتكۈچىنىڭ شەخسىي ھەرىكىتىدۇر. بۇ ئىقتىدارلارنى ئىشلىتىش سەۋەبلىك ھەرقانداق نەشر ھوقۇقى تالاش-تارتىشلىرى كۆرۈلسە، بارلىق ئاقىۋەتكە ئىشلەتكۈچى ئۆزى ئىگە.</span></body>",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"audio_privacy_hint",
+            "value":"يۇقىرى تېخنىكا ۋە گۈزەللىك بىرلەشكەن ئاۋاز ئۈنۈمى"
+        },
+        {
+            "name":"detail_version",
+            "value":"يېڭىلانغان ۋاقىت: %s"
+        },
+        {
+            "name":"sound_permission",
+            "value":"<body><span style='normal'>خۇاۋېي تېرمىنال چەكلىك شىركىتى ئاۋازىڭىزدىن ئاۋاز ئىزى ئۇچۇرىنى ئايرىپ، تېلېفونلاشقان ۋە ئۈن ئالغاندا شۇ ئاۋاز ئىزى ئارقىلىق سىزنىڭ ئاۋازىڭىزنى تونۇپ ۋە كۈچەيتىپ، باشقا دەخلى ئاۋازلارنى توسىدۇ ياكى يوقىتىدۇ، بۇ ئارقىلىق ئاۋازىڭىز قارشى تەرەپكە تېخىمۇ سۈزۈك يەتكۈزۈلىدۇ. ئاۋاز ئىزى ئۇچۇرىڭىز ساقلانمايدۇ، خۇاۋېي ئۇلارنى زاپاسلىمايدۇ.</span><span style='wrap'>\n-</span><span style='normal'>\nباشقا تەپسىلاتلارنى </span><span style='active'>«SOUND AI ئاۋاز ئۈنۈمى ھەققىدە»</span><span style='normal'> دېگەن مەزمۇندىن كۆرۈڭ.</span><span style='wrap'>\n-</span><span style='normal'>\nتۆۋەندىن «قوشۇلىمەن» نى چەكسىڭىز، ئاۋاز ئىزى ئۇچۇرىڭىزنى بىر تەرەپ قىلىشىمىزغا قوشۇلغان بولىسىز.</span></body>"
+        },
+        {
+            "name":"sound_detail",
+            "value":"\u200fSOUND AI ئاۋاز ئۈنۈمى ھەققىدە"
+        },
+        {
+            "name":"ai_sound",
+            "value":"\u200fAI ئاۋاز ئۈنۈمى"
+        },
+        {
+            "name":"enter_screenLock_password",
+            "value":"ئېكران پارولىنى كىرگۈزۈڭ"
+        },
+        {
+            "name":"enter_domain_password",
+            "value":"كارخانا پارولىنى كىرگۈزۈڭ"
+        },
+        {
+            "name":"battery_super_charging_text",
+            "value":"بەك تېز توكلاۋاتىدۇ..."
+        },
+        {
+            "name":"continue_mission_waiting",
+            "value":"ئۆتكۈزۈلۈۋاتىدۇ..."
+        },
+        {
+            "name":"continue_hap_come_from",
+            "value":"مەنبە: %1$s"
+        },
+        {
+            "name":"continue_mission_fail",
+            "value":"ئۆتكۈزۈلمىدى."
+        },
+        {
+            "name":"face_recognition_try_again_after_time_or_try_others_pc",
+            "value":"يۈز تونۇغۇچ ئېتىك، %s كۈتۈپ قايتا سىناڭ ياكى باشقا ئۇسۇلدا قۇلۇپ ئېچىڭ."
+        },
+        {
+            "name":"screen_unlock_with_pwd_face_fp_pc",
+            "value":"بارماق ئىزى، پارول ئارقىلىق ياكى يۈز تونۇتۇپ (بوشلۇق كۇنۇپكىسىنى بېسىپ تۇرۇپ) قۇلۇپ ئېچىڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"auth_by_face_or_pwd_pc",
+            "value":"پارول ئارقىلىق ياكى يۈز تونۇتۇپ (بوشلۇق كۇنۇپكىسىنى بېسىپ تۇرۇپ) قۇلۇپ ئېچىڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"face_not_recognized_in_input_pwd_pc",
+            "value":"تونۇلمىدى، بوشلۇق كۇنۇپكىسىنى بېسىپ تۇرۇپ قايتا سىناڭ."
+        },
+        {
+            "name":"face_recognition_try_again_after_time_or_try_pwd_pc",
+            "value":"يۈز تونۇغۇچ ئېتىك، %s كۈتۈپ قايتا سىناڭ ياكى پارول كىرگۈزۈپ قۇلۇپ ئېچىڭ."
+        },
+        {
+            "name":"face_unlock_success_to_manual_login_pc",
+            "value":"قۇلۇپ ئېچىلدى، ئېكراننى چېكىپ ئۈستەليۈزىگە كىرىسىز."
+        },
+        {
+            "name":"undo_s",
+            "value":"يېنىش: %s (U)"
+        },
+        {
+            "name":"redo_s",
+            "value":"قايتىلاش: %s (R)"
+        },
+        {
+            "name":"multispace_isloading",
+            "value":"يۈكلەۋاتىدۇ..."
+        },
+        {
+            "name":"multispace_personal",
+            "value":"شەخسىي بوشلۇق"
+        },
+        {
+            "name":"multispace_enterprise",
+            "value":"كارخانا بوشلۇقى"
+        },
+        {
+            "name":"restart_enter_pin",
+            "value":"قايتا قوزغاتقاندىن كېيىن پارول سورىلىدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"enterprise_space",
+            "value":"كارخانا بوشلۇقى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"confirm_logout_dialog_title",
+            "value":"چېكىنەمسىز؟",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"personal_space",
+            "value":"شەخسىي بوشلۇق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"confirm_logout_dialog_content",
+            "value":"چېكىنسىڭىز، بارلىق ئەپ ئېتىلىدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"exit_space",
+            "value":"بوشلۇقتىن چېكىنىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"confirm_logout_button",
+            "value":"چېكىنىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"space_switching",
+            "value":"بوشلۇق ئالماشتۇرۇش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"multiuser_dialog_reboot",
+            "value":"قايتا قوزغىتىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"multiuser_confirm_reboot_tip",
+            "value":"بۇ كومپيۇتېرنى تۆۋەندىكى ئىشلەتكۈچى ئىشلىتىۋاتىدۇ، قايتا قوزغاتسىڭىز، ساقلىمىغان مەزمۇنلار يوقىلىشى مۇمكىن.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"multiuser_confirm_shutdown_tip",
+            "value":"بۇ كومپيۇتېرنى تۆۋەندىكى ئىشلەتكۈچى ئىشلىتىۋاتىدۇ، ئەتسىڭىز، ساقلىمىغان مەزمۇنلار يوقىلىشى مۇمكىن.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"multispace_enterprise_login_expired",
+            "value":"تورسىز تىزىملاپ كىرىش قەرەلى توشتى، شىركەت تورى ئارقىلىق ھېساباتقا تىزىملاپ كىرىڭ."
+        },
+        {
+            "name":"logout",
+            "value":"چېكىنىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"switch_user",
+            "value":"ئىشلەتكۈچى ئالماشتۇرۇش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"display_settings_title",
+            "value":"كۆرسىتىش ۋە يورۇقلۇق"
+        },
+        {
+            "name":"not_disturb_title",
+            "value":"ئاۋارە قىلماسلىق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sound_ai",
+            "value":"\u200fAI ئۈنۈم"
+        },
+        {
+            "name":"voice_cancel",
+            "value":"\u200fAI تەڭكەش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"voice_extract",
+            "value":"\u200fAI ئاۋاز گەۋدىلەندۈرۈش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"call_noise_reduce_open",
+            "value":"چاقىرىق شاۋقۇنسىزلاش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"call_noise_reduce_off",
+            "value":"چاقىرىق شاۋقۇنسىزلاش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"voice_default_title",
+            "value":"\u200f%s ئېتىلدى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"voice_default_desc",
+            "value":"\u200f%1$s ئۇزاققىچە ئىشلىتىلمىگەن، نورمال مېدىيا قويۇشقا تەسىر يەتمەسلىكى ئۈچۈن «%2$s» نى ئەتتۇق.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"voice_extract_desc",
+            "value":"بۇ ئىقتىدار ئادەم ئاۋازىنى كۈچەيتىدۇ، ئىشلىتىپ بولغاندا ئېتىشنى تەۋسىيە قىلىمىز.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"voice_effect_title",
+            "value":"\u200f%s ئېچىلدى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"voice_cancel_desc",
+            "value":"بۇ ئىقتىدار K-ناخشا تەسىراتى يەتكۈزىدۇ، ئىشلەتمىسىڭىز ئېتىپ قويۇڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"account_limit_developermode",
+            "value":"ئىجادچى تاللانمىلىرىغا كۆپ ئىشلەتكۈچى تىزىملاپ كىرەلمەيدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"auth_by_pwd_after_pwd_disable",
+            "value":"پارول دەلىللەش ئۇسۇلى ئېتىلىپ قالغان ئەھۋالدا باشقا ئۇسۇل ئىشلىمەيدۇ، چوقۇم پارول ئارقىلىق قۇلۇپ ئېچىش كېرەك.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"input_method_setting",
+            "value":"كىرگۈزگۈچ تەڭشىكى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"desktop_trim",
+            "value":"رەتلەش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"search_placeholder",
+            "value":"ئىزدەش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"calendar_collapse",
+            "value":"يىغىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"calendar_expand",
+            "value":"يېيىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"face_not_recognized_tip_pc",
+            "value":"يۈز تونۇلمىدى، ئېكران ياكى بوشلۇق كۇنۇپكىسىنى بېسىپ قايتا سىناڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"auth_by_pwd_or_face_tip_pc",
+            "value":"پارول ياكى يۈز ئارقىلىق ئېچىڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screen_unlock_with_pwd_or_face_tip_pc",
+            "value":"پارول، بارماق ئىزى ياكى يۈز ئارقىلىق ئېچىڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"edit_wall_paper",
+            "value":"تەگلىك تەھرىرلەش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keyboard_setting",
+            "value":"كىرگۈزگۈچ تەڭشەكلىرى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"user_not_logged_in_enter_pin",
+            "value":"تىزىملاپ كىرمىگەن ئىشلەتكۈچى پارول كىرگۈزۈشى كېرەك."
+        },
+        {
+            "name":"multispace_enterprise_connect_failed",
+            "value":"كارخانا مۇلازىمىتېرى ئۇلانمىدى، مۇلازىمىتېر ۋە WLAN سەپلىمىسى توغرىمۇ تەكشۈرۈڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"hide_input_method_status_bar",
+            "value":"ھالەت بالدىقىنى يوشۇرۇش"
+        },
+        {
+            "name":"desktop_auto_sort",
+            "value":"ئۆزلۈكىدىن"
+        },
+        {
+            "name":"apply_wallpaper",
+            "value":"قوللىنىش"
+        },
+        {
+            "name":"apply_desktop",
+            "value":"ئۈستەليۈزى"
+        },
+        {
+            "name":"apply_wallpaper_to",
+            "value":"تەگلىك قوللىنىش"
+        },
+        {
+            "name":"apply_screen_lock",
+            "value":"قۇلۇپ ئېكرانى"
+        },
+        {
+            "name":"remove_keyboard",
+            "value":"مۇھىم ئەسكەرتمە",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"switch_desktops",
+            "value":"تۆت بارماقتا تىك سىيرىپ ئۈستەليۈزى ئالماشتۇرۇشقا بولىدۇ."
+        },
+        {
+            "name":"do_not_remind_again",
+            "value":"ئەمدى ئەسكەرتمەسلىك"
+        },
+        {
+            "name":"switching_desktops",
+            "value":"ئۈستەليۈزى ئالماشتۇرۇش"
+        },
+        {
+            "name":"close_machine_warning",
+            "value":"بىۋاسىتە باسماڭ، بولمىسا ئېكران بۇزۇلىدۇ!",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"connect_keyboard",
+            "value":"كۇنۇپكا تاختىسى چېتىڭ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"turn_on_keyboard",
+            "value":"%d. كۇنۇپكا تاختا كۇنۇپكىسىنى تۆۋەنگە باسسىڭىز ئۆزلۈكىدىن ئۇلىنىدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"get_it_clock",
+            "value":"بىلدىم (%d)",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pop_up_dialog",
+            "value":"%1$d. ئۇلانمىسا USB-C سىم ئارقىلىق چېتىڭ ياكى F3 نى %2$d سېكۇنت بېسىپ تۇرۇپ جۈپلەڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"next_step",
+            "value":"كېيىنكى"
+        },
+        {
+            "name":"multispace_too_often_switch",
+            "value":"ئالماشتۇرۇش كۆپ بولۇپ كەتتى، %d سېكۇنتتىن كېيىن قايتا سىناڭ."
+        },
+        {
+            "name":"multispace_iscreating",
+            "value":"قوشۇلۇۋاتىدۇ...",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"enterprise_account_locked",
+            "value":"ھېسابات قۇلۇپلاق، كارخانا مۇلازىمىتېرىنىڭ قۇلۇپ ئېچىشىنى كۈتۈڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"multispace_indevelopermode_cannot_switch",
+            "value":"نۆۋەتتە بوشلۇق ئالماشمايدۇ، تەڭشەك > سىستېما دېگەن ئورۇندىن ئىجادچى تاللانمىلىرىنى ئېتىپ قايتا سىناڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"enterprise_space_manager",
+            "value":"كارخانا بوشلۇقى باشقۇرۇش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"please_enter_psd_for_security_face",
+            "value":"يۈز تونۇتۇش ئۈچۈن پارول كىرگۈزۈڭ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"please_enter_psd_for_security_fingerprint_face",
+            "value":"بارماق ۋە يۈز تونۇتۇش ئۈچۈن پارول كىرگۈزۈڭ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"virtual_machine_updating",
+            "value":"مەۋھۇم ئۈسكۈنە يېڭىلىنىۋاتىدۇ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"virtual_machine_shut_down_tips",
+            "value":"ئۈسكۈنىنى ھازىر ئەتسىڭىز، مەۋھۇم ئۈسكۈنە ئىشلىمەسلىكى مۇمكىن، يېڭىلاپ بولغاندا قايتا سىناڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"virtual_machine_reboot_tips",
+            "value":"ھازىر قايتا قوزغاتسىڭىز، مەۋھۇم ئۈسكۈنە ئىشلىمەسلىكى مۇمكىن، يېڭىلاپ بولغاندا قايتا سىناڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"face_unlock_verifying_pc",
+            "value":"يۈز تونۇۋاتىدۇ، كامېراغا ئۇدۇل قاراڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"hopper_expand_reminder",
+            "value":"ئەسكەرتىش: قاتلاقنى ئاچقاندا تېرە ياكى نەرسە-كېرەك قىسىلىپ قالمىسۇن.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"friendly_reminder",
+            "value":"ئەسكەرتىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"please_enter_psd_for_security_fingerprint",
+            "value":"بارماق تونۇتۇش ئۈچۈن پارول كىرگۈزۈڭ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"desktop",
+            "value":"ئۈستەليۈزى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"style_mode_label_origin",
+            "value":"ئەسلى نىسبەت",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"compatible_mode_startup_title",
+            "value":"ئەپ كۆرسىتىش لايىھەسى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"no_compatible_mode_apps",
+            "value":"تەڭشەيدىغان ئەپ يوق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"style_mode_change",
+            "value":"كۆرسىتىش نىسبىتى ئۆزگەردى، ئەپنى قايتا قوزغاتقاندا كۈچكە ئىگە بولىدۇ، ئەپ نورمال كۆرۈنمەسلىكى مۇمكىن.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"windows_vm",
+            "value":"مەۋھۇم Windows ئۈسكۈنە",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"battery_custom_charging_text",
+            "value":"ئۆزلەشتۈرمە توكلاش ئوچۇق.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"battery_smart_charging_text",
+            "value":"ئاڭلىق توكلاش ئوچۇق.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"confirm_hibernate",
+            "value":"ئۇخلىتىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"region_folder_pre_doc",
+            "value":"پۈتۈك",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"undo_region_folder_take_in",
+            "value":"تۈرداش قاپسىزلاش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"default_region_folder_name",
+            "value":"قاپ %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"duplicate_file",
+            "value":"ئوخشاش ناملىق ھۆججەت بار.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"region_folder_take_in",
+            "value":"تۈرداش قاپلاش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"region_folder_pre_other",
+            "value":"باشقا",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"region_folder_pre_app",
+            "value":"ئەپ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"smart_cleanup_desktop",
+            "value":"قاپلاش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"undo_smart_cleanup_desktop",
+            "value":"قاپسىزلاش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"region_folder_exceed_capacity",
+            "value":"قاپتىكى مەزمۇن چەككە يەتكەن.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remove_region_folder",
+            "value":"قاپ بوشىتىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"multispace_unable_switch_when_fold",
+            "value":"قاتلاق ھالەتتە بوشلۇق ئالماشمايدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"create_empty_region_folder",
+            "value":"قاپ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_video_player",
+            "value":"رەسىمدىكى رەسىم",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_window_open",
+            "value":"قويۇش تىزگىنى بالدىقى يېيىلدى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_play",
+            "value":"قويۇش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_restore",
+            "value":"رەسىمدىكى رەسىمنى ئەسلىگە كەلتۈرۈش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_play_fast_backward",
+            "value":"تېز قايتۇرۇش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_window_close",
+            "value":"قويۇش تىزگىنى بالدىقى يىغىلدى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_play_previous",
+            "value":"ئالدىنقىنى قويۇش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_play_next",
+            "value":"كېيىنكىنى قويۇش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_play_fast_forward",
+            "value":"تېز سۈرۈش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_window_show",
+            "value":"رەسىمدىكى رەسىم كۆرسىتىلدى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_close",
+            "value":"رەسىمدىكى رەسىمنى ئېتىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_play_pause",
+            "value":"قويۇشنى تورمۇزلاش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"already_exist_pip_window_toast",
+            "value":"نۆۋەتتە رەسىمدىكى رەسىم ھالىتىدە، ئېتىپ قايتا ئېچىڭ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"external_screen_connect_notify_content",
+            "value":"چېكىپ ئېكران سەپلىمىسىنى كۆرۈڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"external_screen_connect_right_button",
+            "value":"ئەمدى ئەسكەرتمەسلىك",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"external_screen_connect_left_button",
+            "value":"ئېكران تەڭشىكى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"external_screen_connect_notify_title",
+            "value":"ئېكران ئۇلاندى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"install_app_calendar",
+            "value":"كالېندار ئەپ ئۆچۈرۈلگەن، ئەپ بازىرىدىن چۈشۈرۈڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"image_decoding_failure",
+            "value":"رەسىم نورمالسىز، قايتا سىناڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_modify_wallpaper_tips",
+            "value":"ئورگان بۇ ئىقتىدارنى چەكلىگەن.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"recommend_input_method",
+            "value":"شياۋيى كىرگۈزگۈچ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"logout_warning_when_kiddo_update",
+            "value":"ھېساباتتىن چېكىنسىڭىز، مەۋھۇم ئۈسكۈنە ئىشلىمەسلىكى مۇمكىن، يېڭىلاپ بولغاندا قايتا سىناڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"crease_region_tip",
+            "value":"ئېكران بۇزۇلۇشتىن ساقلىنىش ئۈچۈن ئوق بار رايوننى باسماڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"edit_mode_panel_prompt",
+            "value":"سىنبەلگىلەرنى سۆرەپ رەتلىسىڭىز بولىدۇ، ئۈستىدىكىلىرى تىزگىنلەش مەركىزىدە كۆرۈنىدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"restart_to_reset_password",
+            "value":"قايتا قوزغىتىش ۋە پارولنى قايتا بېكىتىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"form_edit_finish",
+            "value":"پۈتتى"
+        },
+        {
+            "name":"multispace_in_low_memory",
+            "value":"سىستېما ساقلىغۇچ يېتەرسىز، كېيىنرەك قايتا سىناڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"enterprise_auth_timeout",
+            "value":"دەلىللەش ۋاقتى ئېشىپ كەتتى، كېيىنرەك قايتا سىناڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"central_log_tips",
+            "value":"مەركىزىي ئوق ئۈنۈم قاتلاق ھالەتتە كۆرۈنىدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

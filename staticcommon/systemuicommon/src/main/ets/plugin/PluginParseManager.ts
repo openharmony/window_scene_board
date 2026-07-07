@@ -796,7 +796,26 @@ class PluginParseManager {
     if (!ArrayUtils.isEmpty(remoteInfos)) {
       result = result.concat(remoteInfos);
     }
+    //PC设置不开源，导致PC状态栏没有外部接入的wifi图标，暂时在本地添加状态栏wifi组件的数据信息
+    this.addWifiPlugin(action, result);
     return result;
+  }
+
+  /**
+   * 创建wifi组件数据
+   * @param action
+   * @param pluginInfos
+   */
+  private addWifiPlugin(action: string, pluginInfos: Array<PluginParseInfo>): void {
+    let pluginInfo = new PluginParseInfo();
+    pluginInfo.bundleName = '';
+    pluginInfo.action = action;
+    pluginInfo.pluginSlot = PluginSlot.SLOT_STATUS_WIFI_PANEL;
+    pluginInfo.clickInfo = PluginParseManager.LOCAL_CLICK_INFO.get(PluginSlot.SLOT_STATUS_WIFI_PANEL);
+    pluginInfo.longClickInfo = PluginParseManager.LOCAL_LONG_CLICK_INFO.get(PluginSlot.SLOT_STATUS_WIFI_PANEL);
+    pluginInfo.isNeedRedHot = PluginParseManager.LOCAL_RED_HOT.get(PluginSlot.SLOT_STATUS_WIFI_PANEL) ?? false;
+    pluginInfo.checkParams();
+    pluginInfos.push(pluginInfo);
   }
 
   /**

@@ -20,7 +20,7 @@ const TAG: string = 'FoldedAppGridLayoutUtility';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.HOME, TAG);
 
 /**
- * 大屏幕机-宫格位置计算工具类
+ * 折叠机-宫格位置计算工具类
  */
 export class FoldedAppGridLayoutUtility extends CommonAppGridLayoutUtility {
   protected extraSpacing: number = 0;

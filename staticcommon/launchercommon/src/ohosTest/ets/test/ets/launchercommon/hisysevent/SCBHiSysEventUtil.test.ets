@@ -35,7 +35,7 @@ import {
   LocationTypes
 } from '../../../../../../main/ets/hisysevent/ReportParams'
 import { HiSysEventUtil, HiSysReportEvent, ResourceManager } from '@ohos/frameworkwrapper'
-import { CheckEmptyUtils, LogHelper } from '@ohos/basicutils'
+import { CheckEmptyUtils, DeliverUtil, LogHelper } from '@ohos/basicutils'
 
 export default function SCBHiSysEventUtilTest() {
   describe('SCBHiSysEventUtilTest', () => {

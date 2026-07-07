@@ -18,6 +18,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, MockK
   ArgumentMatchers } from '@ohos/hypium'
 import {
   AppToHapMappingManager,
+  deliverDialogType,
   AppToHapDetail,
   InstalledDialogType,
 } from '../../../../../../main/ets/base/AppToHapMappingManager';
@@ -47,6 +48,12 @@ export default function AppToHapMappingManagerTest() {
     afterAll(() => {
       // Presets a clear action, which is performed after all test cases of the test suite end.
       // This API supports only one parameter: clear action function.
+    })
+    it('test_AppToHapMappingManager', 0, () => {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      let dialogType: deliverDialogType = AppToHapMappingManager.getInstance().shouldOpenDialog('');
+      // Defines a variety of assertion methods, which are used to declare expected boolean conditions.
+      expect(dialogType === deliverDialogType.NOT_EXIST_MAPPING_NEXT_VERSION).assertTrue();
     })
 
     it("init", 0, async (done: Function) => {
@@ -180,9 +187,20 @@ export default function AppToHapMappingManagerTest() {
       done();
     })
 
+    it("isStartdeliverApp", 0, async (done: Function) => {
+      try {
+        let instance = AppToHapMappingManager.getInstance();
+        expect(instance['isStartdeliverApp']('name')).assertFalse();
+      } catch (e) {
+      }
+      done();
+    })
+
     it("shouldOpenDialog1", 0, async (done: Function) => {
       let instance = AppToHapMappingManager.getInstance();
       let mocker: MockKit = new MockKit();
+      let mockFunction: Function = mocker.mockFunc(instance, instance['isStartdeliverApp']);
+      when(mockFunction)(ArgumentMatchers.any).afterReturn(false);
       try {
         expect(instance['shouldOpenDialog']('name')).not().assertUndefined();
       } catch (e) {
@@ -196,6 +214,9 @@ export default function AppToHapMappingManagerTest() {
       let instance = AppToHapMappingManager.getInstance();
       let mocker: MockKit = new MockKit();
       instance['mapping'] = (new Map()).set('name','value')
+      let mockFunction1: Function =
+        mocker.mockFunc(instance, instance['isStartdeliverApp']);
+      when(mockFunction1)(ArgumentMatchers.any).afterReturn(true);
       let mockFunction2: Function =
         mocker.mockFunc(instance, instance['firstQueryMapping']);
       when(mockFunction2)(ArgumentMatchers.any).afterReturn(true);
@@ -214,6 +235,9 @@ export default function AppToHapMappingManagerTest() {
     it("shouldOpenDialog3", 0, async (done: Function) => {
       let instance = AppToHapMappingManager.getInstance();
       let mocker: MockKit = new MockKit();
+      let mockFunction1: Function =
+        mocker.mockFunc(instance, instance['isStartdeliverApp']);
+      when(mockFunction1)(ArgumentMatchers.any).afterReturn(true);
       instance['mapping'] = (new Map()).set('name','value')
       let mockFunction2: Function =
         mocker.mockFunc(instance, instance['isQueryMappingAfter24Hours']);
@@ -230,6 +254,9 @@ export default function AppToHapMappingManagerTest() {
     it("shouldOpenDialog4", 0, async (done: Function) => {
       let instance = AppToHapMappingManager.getInstance();
       let mocker: MockKit = new MockKit();
+      let mockFunction1: Function =
+        mocker.mockFunc(instance, instance['isStartdeliverApp']);
+      when(mockFunction1)(ArgumentMatchers.any).afterReturn(true);
       instance['mapping'] = (new Map()).set('name','value')
       let mockFunction2: Function =
         mocker.mockFunc(instance, instance['isQueryMappingAfter24Hours']);
@@ -250,6 +277,9 @@ export default function AppToHapMappingManagerTest() {
       let instance = AppToHapMappingManager.getInstance()
       let mocker: MockKit = new MockKit();
       instance['mapping'] = (new Map()).set('name','value')
+      let mockFunction1: Function =
+        mocker.mockFunc(instance, instance['isStartdeliverApp']);
+      when(mockFunction1)(ArgumentMatchers.any).afterReturn(true);
       let mockFunction2: Function =
         mocker.mockFunc(instance, instance['isQueryMappingAfter24Hours']);
       when(mockFunction2)().afterReturn(true);

@@ -40,11 +40,11 @@ export class FoldShutdownViewProxyManager {
    * @param screenId 屏幕id
    * @returns 折叠屏状态
    */
-  public getCurBigScreenStatus(screenId?: number): SCBFoldState {
+  public getCurSuperFoldStatus(screenId?: number): SCBFoldState {
     if (this.foldShutDownViewProxyImpl === null) {
       return SCBFoldState.UNKNOWN;
     }
-    return this.foldShutDownViewProxyImpl.getCurBigScreenStatus(screenId);
+    return this.foldShutDownViewProxyImpl.getCurSuperFoldStatus(screenId);
   }
 
   /**

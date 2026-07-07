@@ -1,9 +1,9 @@
 {
   "trustList":[
     {
-      "bundleName":"com.ohos.hwstartupguide",
-      "moduleName":"pc_hwstartupguide",
-      "abilityName":"com.ohos.hwstartupguide.MainAbility"
+      "bundleName":"com.ohos.startupguide",
+      "moduleName":"pc_startupguide",
+      "abilityName":"com.ohos.startupguide.MainAbility"
     },
     {
       "bundleName":"com.ohos.browser",

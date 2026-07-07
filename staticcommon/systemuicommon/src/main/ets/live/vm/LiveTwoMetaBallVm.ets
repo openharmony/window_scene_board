@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-// import { BallParams, MetaballAnimationScene } from '@hms.hds.Metaball';
+// import { BallParams, MetaballAnimationScene } from '@ohos.hds.Metaball';
 import { LogDomain, LogHelper } from '@ohos/basicutils';
 import { StatusBarCapsulePosition } from '../../statusbar/model/StatusBarCapsulePosition';
 import { LiveStyle } from '../constants/LiveStyle';

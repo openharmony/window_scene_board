@@ -300,7 +300,7 @@ export default struct AppItem {
     this.iconData.enableDrag = this.isAllowDockDragStart && !this.mPCDockDragMgr.isDockDragging && !this.isMinimize;
     if (this.isCollaborationItem) {
       this.appIconConfig.setEnableDrag(false);
-      this.iconData.enableDrag = false;
+      this.iconData.enableDrag = true;
       this.isAllowDockDragMoveOrDrop = false;
     }
     log.showInfo(`updateIsDraggable ${this.appInfo?.bundleName}, ${this.appInfo?.abilityName},` +
@@ -320,10 +320,7 @@ export default struct AppItem {
       if (this.iconData.containerScale !== companionScale) {
         log.showDebug(`triggerCompanionEffect,%{public}s,%{public}s,%{public}d,%{public}d`,
           this.appInfo?.bundleName, this.appInfo?.abilityName, companionScale, this.iconData.containerScale);
-        let config: PcDockStyleConfig = PcSmartDockStyleManager.getStyle(this.screenProp);
         this.iconData.containerScale = companionScale;
-        this.listItemWidth = config.mListItemWidth * this.iconData.containerScale +
-        config.mListItemGap;
       }
       log.showDebug(`triggerCompanionEffect,%{public}s,%{public}s,%{public}d,%{public}d`,
         this.appInfo?.bundleName, this.appInfo?.abilityName, shadowOffsetX, this.iconShadowOffsetX);
@@ -377,9 +374,9 @@ export default struct AppItem {
   private readonly dockItemHoverListener: ReceiveEventInfo = {
     onReceiveEvent: (event: string, params: HoverItemInfo): void => {
       if (event === EventConstants.EVENT_PC_DOCK_ITEM_HOVER_CHANGE && !CheckEmptyUtils.isEmpty(params) &&
-        this.screenId === params.screenId && PCDockUtils.getAppItemColumnId(this.appInfo) === params.hoverItemId &&
+        this.screenId === params.screenId && PCDockUtils.getAppItemColumnId(this.appInfo, this.residentFlag) === params.hoverItemId &&
         !this.isMousePressed) {
-        this.onHoverItemScale(true, (this.listItemWidth / 2));
+        this.onHoverItemScale(true, (this.getBaseListItemWidth() / 2));
       }
     }
   };
@@ -551,7 +548,7 @@ export default struct AppItem {
     if (isClickOpenPopup && !isItemPopupShowing) {
       this.popupMgr.setCurrItem(this.appInfo);
       this.popupMgr.setIsShowCloseButton(isTouchScreen);
-      this.popupMgr.show(this.screenId, this.appInfo, PCDockUtils.getAppItemColumnId(this.appInfo)); // 点击无须延时
+      this.popupMgr.show(this.screenId, this.appInfo, PCDockUtils.getAppItemColumnId(this.appInfo, this.residentFlag)); // 点击无须延时
       log.showInfo(`onClickItem ${isClickOpenPopup},currItem: ${this.popupMgr.getCurrItem()?.bundleName}`);
     } else if (!isClickOpenPopup && isItemPopupShowing) {
       // 单实例窗口预览窗出现时点击响应窗口最大化/最小化时候隐藏预览窗
@@ -573,7 +570,7 @@ export default struct AppItem {
     }
     this.isHover = isHover;
     AppStorage.setOrCreate<string>('hoverItemBundleName', isHover ? item?.bundleName ?? '' : '');
-    const itemId: string = PCDockUtils.getAppItemColumnId(this.appInfo);
+    const itemId: string = PCDockUtils.getAppItemColumnId(this.appInfo, this.residentFlag);
     const hoverItemColumnId: string = isHover ? itemId ?? '' : '';
     this.pcDockAnimationMgr.setHoverItemColumnId(hoverItemColumnId);
     this.popupMgr.updateHoverState(this.screenId, item, itemId, isDockInDragging, isHover);
@@ -785,29 +782,25 @@ export default struct AppItem {
 
   private onHoverAnimation(leftDistance: number = -1, topDistance: number = -1, menuAppear: boolean = false): void {
     Trace.start('onHoverScaleAnimation');
+    const baseListItemWidth: number = this.getBaseListItemWidth();
     if (!menuAppear) {
-      this.pcDockAnimationMgr.computeHoverScale(this.appInfo, leftDistance, this.appItemPadding, this.listItemWidth);
+      this.pcDockAnimationMgr.computeHoverScale(this.appInfo, leftDistance, this.appItemPadding, baseListItemWidth);
     }
     let config: PcDockStyleConfig = PcSmartDockStyleManager.getStyle(this.screenProp);
-    this.pcDockAnimationMgr.computeIconShadow(leftDistance, topDistance, this.listItemWidth, config.mDockHeight);
+    this.pcDockAnimationMgr.computeIconShadow(leftDistance, topDistance, baseListItemWidth, config.mDockHeight);
     const additionWidth: number = this.getAdditionWidth(config);
-    animateTo({
-      curve: HoverEffectConstants.FIXED_HOVER_EFFECT_CURVES,
-    }, () => {
-      if (this.iconData.containerScale !== this.pcDockAnimationMgr.getCurrentItemScale()) {
-        this.iconData.containerScale = this.pcDockAnimationMgr.getCurrentItemScale();
-        this.listItemWidth = config.mListItemWidth * this.iconData.containerScale +
-        config.mListItemGap;
-        this.listWidthChange(this.residentFlag, additionWidth);
-      }
-      this.iconShadowOffsetX = this.pcDockAnimationMgr.getCurrentIconShadowOffsetX();
-      this.iconShadowOffsetY = this.pcDockAnimationMgr.getCurrentIconShadowOffsetY();
-      if (this.appIconCommonEvent.getIconDynamicShadowEvent()) {
-        this.appIconCommonEvent.getIconDynamicShadowEvent().update(this.isMinimize ? 0 :
-          HoverEffectConstants.ITEM_SHADOW_RADIUS, this.iconShadowOffsetX, this.iconShadowOffsetY);
-      }
-      Trace.end('onHoverScaleAnimation');
-    })
+    const targetScale: number = this.pcDockAnimationMgr.getCurrentItemScale();
+    if (this.iconData.containerScale !== targetScale) {
+      this.iconData.containerScale = targetScale;
+    }
+    this.listWidthChange(this.residentFlag, additionWidth);
+    this.iconShadowOffsetX = this.pcDockAnimationMgr.getCurrentIconShadowOffsetX();
+    this.iconShadowOffsetY = this.pcDockAnimationMgr.getCurrentIconShadowOffsetY();
+    if (this.appIconCommonEvent.getIconDynamicShadowEvent()) {
+      this.appIconCommonEvent.getIconDynamicShadowEvent().update(this.isMinimize ? 0 :
+        HoverEffectConstants.ITEM_SHADOW_RADIUS, this.iconShadowOffsetX, this.iconShadowOffsetY);
+    }
+    this.pcDockAnimationMgr.doCompanionEffect(this.appInfo, false);
     log.showInfo(`onHoverItemScale, ${this.appInfo?.bundleName}, ${this.iconData.containerScale}, ${additionWidth}, ${this.listItemWidth}`);
   }
 
@@ -1114,9 +1107,13 @@ export default struct AppItem {
     }
   }
 
-  private updateListItemWidth(): void {
+  private getBaseListItemWidth(): number {
     let config: PcDockStyleConfig = PcSmartDockStyleManager.getStyle(this.screenProp);
-    this.listItemWidth = config.mListItemWidth + config.mListItemGap;
+    return config.mListItemWidth + config.mListItemGap;
+  }
+
+  private updateListItemWidth(): void {
+    this.listItemWidth = this.getBaseListItemWidth();
   }
 
   private recycleBinCallback = (isEmpty: boolean) => {
@@ -1502,7 +1499,7 @@ export default struct AppItem {
       Column() {
           this.defaultBuilder();
       }
-      .id(PCDockUtils.getAppItemColumnId(this.appInfo))
+      .id(PCDockUtils.getAppItemColumnId(this.appInfo, this.residentFlag))
       .visibility(this.itemVisibility)
       .width(this.listItemWidth)
       .padding({

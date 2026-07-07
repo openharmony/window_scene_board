@@ -23,12 +23,12 @@ import { BpCalculator, ScreenBp, SizeBp } from '../immersivekgcommon/base/utils/
 
 const TAG = 'DisplayUtils';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.KG, TAG);
-const IS_ULTRA_SCREEN: boolean = DeviceHelper.isUltraScreenProduct();
+const IS_THREE_FOLD: boolean = DeviceHelper.isThreeFoldProduct();
 
 /**
- * 超大屏状态
+ * 三折叠状态
  */
-export enum UltraScreenStatus {
+export enum ThreeFoldStatus {
   F_STATUS,
   M_STATUS,
   G_STATUS
@@ -105,13 +105,13 @@ export class DisplayUtils {
   }
 
   /**
-   * 获得超大屏当前状态
+   * 获得三折叠当前状态
    *
    * @param screenProperty 屏幕属性
    * @returns 折展状态
    */
-  public static getUltraScreenStatus(screenProperty?: SCBScreenProperty): UltraScreenStatus | undefined {
-    if (!IS_ULTRA_SCREEN) {
+  public static getThreeFoldStatus(screenProperty?: SCBScreenProperty): ThreeFoldStatus | undefined {
+    if (!IS_THREE_FOLD) {
       return undefined;
     }
     let screenBp: ScreenBp;
@@ -123,48 +123,48 @@ export class DisplayUtils {
         slUiStateMgr.getSlState(SlMainStateType.SL_STATIC_STATE)?.getSlState(SlStaticStateType.SCREEN_BP) as ScreenBp;
     }
     if (!screenBp) {
-      return DeviceHelper.isFState() ? UltraScreenStatus.F_STATUS :
-        (DeviceHelper.isMState() ? UltraScreenStatus.M_STATUS : UltraScreenStatus.G_STATUS);
+      return DeviceHelper.isFState() ? ThreeFoldStatus.F_STATUS :
+        (DeviceHelper.isMState() ? ThreeFoldStatus.M_STATUS : ThreeFoldStatus.G_STATUS);
     }
     // F态竖屏：宽MSmall，高Large；F态横屏：宽Medium，高Small；M态横&竖屏：宽Medium，高Medium
     if ((screenBp.widthBp === SizeBp.SM && screenBp.heightBp === SizeBp.LG) ||
       (screenBp.widthBp === SizeBp.MD && screenBp.heightBp === SizeBp.SM)) {
-      return UltraScreenStatus.F_STATUS;
+      return ThreeFoldStatus.F_STATUS;
     } else if (screenBp.widthBp === SizeBp.MD && screenBp.heightBp === SizeBp.MD) {
-      return UltraScreenStatus.M_STATUS;
+      return ThreeFoldStatus.M_STATUS;
     } else {
-      return UltraScreenStatus.G_STATUS;
+      return ThreeFoldStatus.G_STATUS;
     }
   }
 
   /**
-   * 超大屏是否是F态
+   * 三折叠是否是F态
    *
    * @param screenProperty 屏幕属性
-   * @returns true, 超大屏是F态
+   * @returns true, 三折叠是F态
    */
-  public static isUltraScreenFStatus(screenProperty?: SCBScreenProperty): boolean {
-    return DisplayUtils.getUltraScreenStatus(screenProperty) === UltraScreenStatus.F_STATUS;
+  public static isThreeFoldFStatus(screenProperty?: SCBScreenProperty): boolean {
+    return DisplayUtils.getThreeFoldStatus(screenProperty) === ThreeFoldStatus.F_STATUS;
   }
 
   /**
-   * 超大屏是否是M态
+   * 三折叠是否是M态
    *
    * @param screenProperty 屏幕属性
-   * @returns true, 超大屏是M态
+   * @returns true, 三折叠是M态
    */
-  public static isUltraScreenMStatus(screenProperty?: SCBScreenProperty): boolean {
-    return DisplayUtils.getUltraScreenStatus(screenProperty) === UltraScreenStatus.M_STATUS;
+  public static isThreeFoldMStatus(screenProperty?: SCBScreenProperty): boolean {
+    return DisplayUtils.getThreeFoldStatus(screenProperty) === ThreeFoldStatus.M_STATUS;
   }
 
   /**
-   * 超大屏是否是G态
+   * 三折叠是否是G态
    *
    * @param screenProperty 屏幕属性
-   * @returns true, 超大屏是G态
+   * @returns true, 三折叠是G态
    */
-  public static isUltraScreenGStatus(screenProperty?: SCBScreenProperty): boolean {
-    return DisplayUtils.getUltraScreenStatus(screenProperty) === UltraScreenStatus.G_STATUS;
+  public static isThreeFoldGStatus(screenProperty?: SCBScreenProperty): boolean {
+    return DisplayUtils.getThreeFoldStatus(screenProperty) === ThreeFoldStatus.G_STATUS;
   }
 
   /**
@@ -174,6 +174,6 @@ export class DisplayUtils {
    * @returns true, 表示是大屏
    */
   public static isLargeScreen(screenProperty?: SCBScreenProperty): boolean {
-    return DeviceHelper.isPadOr2in1PcType() || DisplayUtils.isUltraScreenGStatus(screenProperty);
+    return DeviceHelper.isPadOr2in1PcType() || DisplayUtils.isThreeFoldGStatus(screenProperty);
   }
 }

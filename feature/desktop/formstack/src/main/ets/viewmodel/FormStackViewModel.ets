@@ -146,21 +146,21 @@ export class FormStackViewModel extends BaseViewModel {
 
     // 用户拖拽形成堆叠, 需要等落位动效执行完毕，再进行缓存操作
     if (!isNeedAnimate) {
-      this.createFormStackWithoutAnimation(cards, cardIds, endLayoutInfo, !isBackToFormStack, isOuter);
+      this.createFormStackWithoutAnimation(cards, cardIds, endLayoutInfo, false, !isBackToFormStack, isOuter);
       return true;
     }
 
     // 不在同一内外屏，直接形成堆叠，无需动画
     if (launcherStatusUtil.getShowOutLauncherStatus() !== isOuter) {
       log.showInfo('not same screen, create formstack no need animation.');
-      this.createFormStackWithoutAnimation(cards, cardIds, endLayoutInfo, false, isOuter);
+      this.createFormStackWithoutAnimation(cards, cardIds, endLayoutInfo, undefined, false, isOuter);
       return true;
     }
 
     // 组件不在当前页，直接形成堆叠，无需动画
     if (!FormStackUtil.isTargetItemInCurPage(endLayoutInfo.page, isOuter)) {
       log.showInfo('not in cur page, create formstack no need animation.');
-      this.createFormStackWithoutAnimation(cards, cardIds, endLayoutInfo, false, isOuter);
+      this.createFormStackWithoutAnimation(cards, cardIds, endLayoutInfo, undefined, false, isOuter);
       return true;
     }
 
@@ -188,12 +188,12 @@ export class FormStackViewModel extends BaseViewModel {
       } else {
         // 截图无效导致无法使用遮罩过渡，直接形成堆叠
         log.showError('form snap image is empty when creating formstack!');
-        this.createFormStackWithoutAnimation(cards, cardIds, endLayoutInfo, false, isOuter);
+        this.createFormStackWithoutAnimation(cards, cardIds, endLayoutInfo, undefined, false, isOuter);
       }
     }, (error) => {
       // 截图异常不影响堆叠形成，保障基本功能正常
       log.showError('form snap image failed when creating formstack!');
-      this.createFormStackWithoutAnimation(cards, cardIds, endLayoutInfo, false, isOuter);
+      this.createFormStackWithoutAnimation(cards, cardIds, endLayoutInfo, undefined, false, isOuter);
     });
     return true;
   }
@@ -938,7 +938,7 @@ export class FormStackViewModel extends BaseViewModel {
   }
 
   private createFormStackWithoutAnimation(cards: GridLayoutItemInfo[], cardIds: string[],
-    endLayoutInfo: GridLayoutItemInfo, needToWait = false, isOuter?: boolean): void {
+    endLayoutInfo: GridLayoutItemInfo, isAiCommand: boolean = true, needToWait = false, isOuter?: boolean): void {
     const stackId: string = this.createFormStack(cards, endLayoutInfo, needToWait, isOuter);
     this.printInterfaceLog(FormStackMsgType.CREATE, stackId, cardIds);
     if (this.mAccessibilityManager.getIsAccessibilityMode()) {
@@ -946,6 +946,10 @@ export class FormStackViewModel extends BaseViewModel {
       let endName: string = FormStackUtil.updateName(endLayoutInfo as object as CardItemInfo);
       this.mAccessibilityManager.sendTextAnnouncedForAccessibility(
         ResUtils.getInnerStringNumS($r('app.string.create_form_stack_text'), `${name}`, `${endName}`), 'textAnnouncedForCreatFormStack');
+    }
+    // 语音助手服务推送才需要立即刷新桌面，用户拖拽形成不触发
+    if (isAiCommand) {
+      this.sendRefreshEvent(isOuter);
     }
   }
 

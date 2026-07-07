@@ -95,7 +95,8 @@ export class MatchCardDataManager {
       sSettingsUtil.getValueEx(settings.domainName.DEVICE_SHARED, MatchCardDataManager.MATCH_CARD_APP_LIST);
     if (CheckEmptyUtils.checkStrIsEmpty(appList)) {
       //桌面进程冷启动时如果BMS未随卡预装，需要注册监听bms后续随卡动作
-      MatchCardDataManager.registerBmsAppListChangeListener();
+      log.showWarn(TAG, 'initAppList appList is empty, setMatchCardIsFinished');
+      MatchCardDataManager.setMatchCardIsFinished();
     } else {
       MatchCardDataManager.getMatchCardAppList(appList);
     }
@@ -169,7 +170,7 @@ export class MatchCardDataManager {
    */
   private static async parseMatchCardLayoutJson(): Promise<string[]> {
     let autoInstallCfgFile: string = '';
-    let autoInstallConfigPath: string = 'etc/openharmony_launcher_cloud_workspace_autoinstall.json';
+    let autoInstallConfigPath: string = 'etc/hw_launcher_cloud_workspace_autoinstall.json';
     try {
       autoInstallCfgFile = ConfigParseUtil.getConfigSync(autoInstallConfigPath);
       let autoInstallLayout: DefaultDesktopLayoutInfo = FileUtils.readJsonFile(autoInstallCfgFile);

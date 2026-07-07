@@ -1,20 +1,29 @@
 # Define project specific obfuscation rules here.
 # You can include the obfuscation configuration files in the current module's build-profile.json5.
 #
+# For more details, see
+#   https://developer..com/consumer/cn/doc/harmonyos-guides/source-obfuscation
 
 # Obfuscation options:
-# 关闭所有混淆。如果你使用这个选项，那么构建出来的HAP或HAR将不会被混淆。
-# -disable-obfuscation
+# -disable-obfuscation: disable all obfuscations
+# -enable-property-obfuscation: obfuscate the property names
+# -enable-toplevel-obfuscation: obfuscate the names in the global scope
+# -compact: remove unnecessary blank spaces and all line feeds
+# -remove-log: remove all console.* statements
+# -print-namecache: print the name cache that contains the mapping from the old names to new names
+# -apply-namecache: reuse the given cache file
 
-# 开启顶层作用域名称混淆。 -keep-global-name 指定要保留的顶层作用域的名称
+# Keep options:
+# -keep-property-name: specifies property names that you want to keep
+# -keep-global-name: specifies names that you want to keep in the global scope
+
+# -enable-property-obfuscation
 -enable-toplevel-obfuscation
-
-# 删除文件中的所有注释，包括单行、多行，及JsDoc注释。-keep-comments 保留声明文件中元素上方的JsDoc注释
--remove-comments
-
-# 去除不必要的空格符和所有的换行符。如果使用这个选项，那么所有代码会被压缩到一行。
-# -compact
-
-# 混淆白名单
+-enable-filename-obfuscation
+-enable-export-obfuscation
 -keep-global-name
-ArkTools
+ItemsCount
+-keep-property-name
+SIZE_1
+SIZE_2
+SIZE_4

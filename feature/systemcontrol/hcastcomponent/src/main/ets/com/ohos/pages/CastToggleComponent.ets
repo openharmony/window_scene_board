@@ -22,6 +22,7 @@ import {
 import { CastToggleController } from '../controller/CastToggleController';
 import { AlertDialog, ButtonOptions, CustomContentDialog } from '@kit.ArkUI';
 import Constants from '../common/Constants';
+import { castReportUtils } from '../common/CastReportUtils';
 import { DialogInfo } from '../model/DialogInfo';
 import { i18n } from '@kit.LocalizationKit';
 import { ToggleViewData } from '@ohos/controlcentercommon/src/main/ets/toggle/vm/ToggleViewData';
@@ -39,10 +40,10 @@ export default struct CastToggleComponent {
   @State dialogMessage: ResourceStr = $r('app.string.text_open_wlan_and_bluetooth');
   @State cancelButton: ButtonOptions | undefined = undefined;
   @State confirmButton: ButtonOptions | undefined = undefined;
-  @StorageProp('CastDialogCode') @Watch('updateDialogType') CastDialogCode: number = Constants.DIALOG_DEFAULT;
+  @StorageProp('castDialogCode') @Watch('updateDialogType') castDialogCode: number = Constants.DIALOG_DEFAULT;
   @StorageLink('dropDownEvent') @Watch('onDropdownChanged')
   dropDownEvent: DropDownEvent = DropDownPanelManager.getDropDownEvent();
-  @Consume @Watch('refreshCloseDialog') CastDialogIsOpen: boolean;
+  @Consume @Watch('refreshCloseDialog') castDialogIsOpen: boolean;
   private activeTask: number = -1;
 
   private privacyController: CustomDialogController = new CustomDialogController({
@@ -55,14 +56,16 @@ export default struct CastToggleComponent {
       buttons: [{
         value: $r('app.string.cancel'),
         action: () => {
+          castReportUtils.reportUEPrivacyDialogEvent(Constants.REPORT_DIALOG_CANCEL);
           this.dialogClose();
         }
       },
         {
           value: $r('app.string.btn_agree'),
           action: () => {
-            this.CastDialogIsOpen = false;
+            this.castDialogIsOpen = false;
             CastToggleController.getInstance().setPrivacyAgree();
+            castReportUtils.reportUEPrivacyDialogEvent(Constants.REPORT_DIALOG_CONFIRM);
           }
         }],
       contentAreaPadding: {
@@ -76,6 +79,7 @@ export default struct CastToggleComponent {
     autoCancel: true,
     cancel: () => {
       log.showInfo(`privacyController cancel`)
+      castReportUtils.reportUEPrivacyDialogEvent(Constants.REPORT_DIALOG_CANCEL);
       this.dialogClose();
     }
   });
@@ -96,8 +100,8 @@ export default struct CastToggleComponent {
 
   private createConfirmButton(text: ResourceStr | undefined): ButtonOptions | undefined {
     return this.createDialogButton(text, () => {
-      CastToggleController.getInstance().confirmClick(this.CastDialogCode);
-      this.CastDialogIsOpen = false;
+      CastToggleController.getInstance().confirmClick(this.castDialogCode);
+      this.castDialogIsOpen = false;
     });
   }
 
@@ -114,8 +118,8 @@ export default struct CastToggleComponent {
 
   private dialogClose() {
     log.showInfo(`dialogController cancel`);
-    CastToggleController.getInstance().cancelClick(this.CastDialogCode);
-    this.CastDialogIsOpen = false;
+    CastToggleController.getInstance().cancelClick(this.castDialogCode);
+    this.castDialogIsOpen = false;
   }
 
   @Builder
@@ -159,20 +163,20 @@ export default struct CastToggleComponent {
   }
 
   updateDialogType(): void {
-    log.showInfo(`CastDialogCode: ${this.CastDialogCode}`);
-    if (this.CastDialogCode === Constants.DIALOG_DEFAULT) {
-      if (this.CastDialogIsOpen) {
+    log.showInfo(`castDialogCode: ${this.castDialogCode}`);
+    if (this.castDialogCode === Constants.DIALOG_DEFAULT) {
+      if (this.castDialogIsOpen) {
         // 如果正在显示，需关闭
-        this.CastDialogIsOpen = false;
+        this.castDialogIsOpen = false;
         this.dialogController.close();
         this.privacyController.close();
       }
       log.showWarn('not phone or dialog code default');
       return;
     }
-    if (this.CastDialogCode === Constants.DIALOG_PRIVACY) {
+    if (this.castDialogCode === Constants.DIALOG_PRIVACY) {
       this.privacyController.open();
-    } else if (this.CastDialogCode === Constants.DIALOG_WIFI_BLUETOOTH) {
+    } else if (this.castDialogCode === Constants.DIALOG_WIFI_BLUETOOTH) {
       this.dialogTitle = $r('app.string.title_open_wlan_and_bluetooth');
       this.dialogMessage = $r('app.string.text_open_wlan_and_bluetooth');
       this.confirmButton = this.createConfirmButton($r('app.string.btn_turn_on'));
@@ -187,22 +191,22 @@ export default struct CastToggleComponent {
       this.dialogController.open();
     }
     log.showInfo('dialogInfo success');
-    this.CastDialogIsOpen = true;
+    this.castDialogIsOpen = true;
   }
 
   onDropdownChanged() {
     if (this.dropDownEvent.target !== TargetPanel.CONTROL_CENTER_PANEL) {
       this.dialogController.close();
       this.privacyController.close();
-      this.CastDialogIsOpen = false;
+      this.castDialogIsOpen = false;
     }
   }
 
   refreshCloseDialog() {
-    if (!this.CastDialogIsOpen) {
+    if (!this.castDialogIsOpen) {
       this.dialogController.close();
       this.privacyController.close();
-      AppStorage.setOrCreate<number>('CastDialogCode', Constants.DIALOG_DEFAULT);
+      AppStorage.setOrCreate<number>('castDialogCode', Constants.DIALOG_DEFAULT);
     }
   }
 

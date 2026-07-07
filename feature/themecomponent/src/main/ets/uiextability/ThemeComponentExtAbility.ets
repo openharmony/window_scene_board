@@ -170,6 +170,7 @@ export default class ThemeComponentExtAbility extends UIExtensionAbility {
       customString: parameters['customstring'] as string,
       customizeData: parameters['customizeData'] as string,
       isSplitMode: parameters['isSplitMode'] as boolean,
+      isHybird: parameters['isHybird'] as boolean
     };
     // 全屏壁纸编辑
     if (parameters['wallpaperParam']) {
@@ -191,9 +192,14 @@ export default class ThemeComponentExtAbility extends UIExtensionAbility {
   }
 
   onSessionDestroy(session: UIExtensionContentSession): void {
-    session?.sendData({ 'back': 'pop' });
-     Log.info(TAG, 'ThemeComponentExtAbility onSessionDestroy');
-    // ThumbnailManager.getInstance(this.context).cancelOngoingTasks();
+    try {
+      session?.sendData({ 'back': 'pop' });
+      Log.info(TAG, 'ThemeComponentExtAbility onSessionDestroy');
+      // ThumbnailManager.getInstance(this.context).cancelOngoingTasks();
+    } catch (error) {
+      let err = error as BusinessError;
+      Log.error(TAG, `ThemeComponentExtAbility onSessionDestroy err:${err?.message}--${err?.code}`);
+    }
   }
 
   onDestroy(): void {
@@ -201,32 +207,8 @@ export default class ThemeComponentExtAbility extends UIExtensionAbility {
   }
 
   onBackground(): void {
-    // if (AestheticIsolation.isSupportAesthetic()) {
-    //   this.requestSuspendDelay();
-    // }
   }
 
-  // private searchRedirection(params: WantParams): void {
-  //   const id: string = this.nav.split('_')[1];
-    // const themeStruct = ParseResourceController.getThemeById(id);
-    // if (themeStruct === undefined) {
-      // Log.error(TAG, 'themeStruct is undefined');
-      // params.nav = Constants.THEME_PICKER;
-      // return;
-    // }
-    // let themePrams: ThemePrams = {
-    //   bundleSource: Constants.SEARCH_THEME_DETAIL,
-    //   themeStruct: themeStruct,
-    //   isFromSettingSearch: true,
-    // };
-    // params.themeParams = themePrams;
-    // params.source = Constants.SEARCH_THEME_DETAIL;
-    // if (DeviceHelper.isSettingSplitProduct()) {
-    //   params.nav = Constants.THEME_PICKER;
-    //   return;
-    // }
-    // params.nav = Constants.THEME_DETAIL;
-  // }
 
   private setupDarkModeEnvironment(): void {
     const darkMode: uiAppearance.DarkMode = uiAppearance.getDarkMode();
@@ -247,16 +229,6 @@ export default class ThemeComponentExtAbility extends UIExtensionAbility {
         AppStorage.setOrCreate('bottomAvoidHeight', 0);
       }
     }
-    // if (!DeviceHelper.isPhone() || DeviceHelper.isFoldButNotSmallFoldProduct()) {
-    //   if (type === window.AvoidAreaType.TYPE_SYSTEM) {
-    //     if (area.visible) {
-    //       const topAvoidAreaHeight: number = area.topRect.height / displayData.densityPixels;
-    //       AppStorage.setOrCreate('topAvoidAreaHeight', topAvoidAreaHeight);
-    //     } else {
-    //       AppStorage.setOrCreate('topAvoidAreaHeight', 0);
-    //     }
-    //   }
-    // }
   }
 
   private setupAvoidAreaEnvironment(): void {

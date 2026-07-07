@@ -133,7 +133,7 @@ export class FormMenuEvent {
       transition: TransitionEffect.asymmetric(
         TransitionEffect.opacity(0),
         TransitionEffect.IDENTITY.animation({ duration: 0 })),
-      layoutRegionMargin: DeviceHelper.isBigScreenMachine() ? { top: 0, left: 0, right: 0, bottom: 0 } : undefined
+      layoutRegionMargin: DeviceHelper.isSuperFoldMachine() ? { top: 0, left: 0, right: 0, bottom: 0 } : undefined
     };
   }
 

@@ -141,8 +141,9 @@ export class SceneSessionAdapter {
   }
 
   @threadCall()
-  public static updateSystemBarProperty(): void {
+  public static async updateSystemBarProperty(): Promise<void> {
     log.showInfo(`updateSystemBarProperty`)
+    await SCBSceneSessionManager.getInstance().updateStatusbarColor();
     return SCBSceneSessionManager.getInstance().updateSystemBarProperty();
   }
 

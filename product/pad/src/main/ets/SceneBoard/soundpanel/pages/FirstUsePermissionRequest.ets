@@ -166,8 +166,16 @@ export default struct FirstUsePermissionRequest {
 
   @Builder
   IntroduceDescription() {
+    if (this.isSupport) {
+      Image($r('app.media.ic_add'))
+        .margin({ top: StyleConstants.HEARD_MARGIN })
+        .width(StyleConstants.IC_SIZE)
+        .height(StyleConstants.IC_SIZE)
+        .draggable(false)
+        .fillColor($r('sys.color.ohos_id_color_activated'))
+    }
 
-    Text(this.isSupport ? $r('app.string.sound') : $r('app.string.sound'))
+    Text(this.isSupport ? $r('app.string.sound') : $r('app.string.ai_sound'))
       .margin({ top: this.isSupport ? StyleConstants.SUPPORTED_HEARD_MARGIN : StyleConstants.HEARD_MARGIN })
       .fontWeight(FontWeight.Medium)
       .textAlign(TextAlign.Center)

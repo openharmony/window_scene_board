@@ -1,0 +1,15 @@
+{
+  "name": "@ohos/voiceagent",
+  "version": "1.0.0",
+  "description": "Please describe the basic information.",
+  "main": "Index.ets",
+  "author": "",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@ohos/basicutils": "file:../../staticcommon/basecommon/basicutils",
+    "@ohos/frameworkwrapper": "file:../../staticcommon/basecommon/frameworkwrapper",
+    "@ohos/launchercommon": "file:../../staticcommon/launchercommon",
+    "@ohos/componenthelper": "file:../../staticcommon/basecommon/componenthelper",
+    "@ohos/systemuicommon": "file:../../staticcommon/systemuicommon",
+  }
+}

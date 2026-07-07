@@ -87,7 +87,7 @@ export class ScreenOffAnimationManager implements CustomScreenOffAnimationManage
    * @param viewController SystemTopPanel的界面控制器
    */
   public init(animationData?: ScreenOffAnimationViewData, viewController?: BaseViewController): void {
-    // ScreenOnOffService.getInstance().registerObserver(this.powerStateChangeListener);
+    ScreenOnOffService.getInstance().registerObserver(this.powerStateChangeListener);
     ScreenOnOffService.getInstance().setCustomAnimation(this);
     this.animationData = animationData;
     this.viewController = viewController;

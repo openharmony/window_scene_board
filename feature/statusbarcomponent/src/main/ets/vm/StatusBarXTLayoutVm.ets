@@ -20,7 +20,7 @@ import { StatusBarLayoutVm } from './StatusBarLayoutVm';
 import { display } from '@kit.ArkUI';
 import lazy {
   SCBTripleStateChange,
-} from '@ohos/launchercommon/src/main/ets/utils/UltraScreenExpandAnimUtils';
+} from '@ohos/launchercommon/src/main/ets/utils/TripleFoldExpandAnimUtils';
 import { ArkUIAdapter } from '@ohos/systemuicommon/src/main/ets/utils/ArkUIAdapter';
 // instrument ignore file
 

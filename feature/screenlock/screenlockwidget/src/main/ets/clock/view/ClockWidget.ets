@@ -16,7 +16,7 @@
 import { ArrayUtils, LogDomain, LogHelper } from '@ohos/basicutils';
 import { RTLUtil } from '@ohos/componenthelper';
 import { DeviceHelper } from '@ohos/frameworkwrapper';
-import { ResUtils } from '@ohos/windowscene';
+import { ResUtils, SCBSceneSessionManager } from '@ohos/windowscene';
 import { ClockStaticData } from '../model/data/ClockStaticData';
 import {
   ClockBindStateType,
@@ -49,13 +49,13 @@ import {
   DEFAULT_MERGE_MARGIN,
   ElementConf
 } from '../common/ClockLayoutParam';
-import { clockLayoutHelper } from '../common/ClockLayoutHelper';
+import { aodClockHelper, clockLayoutHelper } from '../common/ClockLayoutHelper';
 import { ClockLayout, ClockTextAlign, BatteryLayout } from '../../common/WidgetParam';
 import { ClockAnimData } from '../model/data/ClockAnimData';
 import { ClockBindData } from '../model/data/ClockBindData';
 import { clockData, ClockData, ClockDataListener } from '../model/data/ClockData';
 import { VisibleKeyWrapper } from '../common/SignFormKey';
-import { immersiveKgMgr, ImmersiveState } from '@ohos/systemuicommon';
+import { ImmersiveAodStyle, immersiveKgMgr, ImmersiveState } from '@ohos/systemuicommon';
 import { BrightnessOptionUtils } from '@ohos/systemuicommon/Index';
 import AdminManagerModel from '../viewmodel/AdminManagerModel';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -68,9 +68,11 @@ import { LengthMetrics } from '@ohos.arkui.node';
 import { UDFontAdapterUtil } from '../common/UDFontAdapterUtil';
 import { AnimScene } from '../viewmodel/viewanim/ClockWidgetAnimManager';
 import {
+  AodBatteryConstants,
   BatteryPosition,
   ClockConstants,
   ART_SIGN_SHADOW_STYLE,
+  ART_SIGN_SHADOW_STYLE_AOD,
   DATE_SHADOW_STYLE
 } from '../common/ClockConstants';
 import { PowerStatusEnum, PowerStatusMonitor, WidgetAnimState } from '@ohos/screenlockcommon/Index';
@@ -93,6 +95,11 @@ const CHAR_CLOCK_SEPARATOR: string = ':';
 const BLENDMODE_SRC_OVER: number = 1000;
 const BLENDMODE_DESTINATION_IN: number = 7;
 const DEFAULT_VALUE: number = 1;
+const AOD_CLOCK_WIDGET = 'Aod_ClockWidget';
+const AOD_CLOCK_WIDGET_LONG_TAKE = 'Aod_ClockWidget_PartialLongTake';
+const AOD_BATTERY_LUNAR_OFFSET_BY_MOUNTAIN_CLOCK_LAYOUT_SPECIAL = 46;
+const AOD_BATTERY_OFFSET_BY_MOUNTAIN_CLOCK_LAYOUT_SPECIAL = -78;
+const AOD_BATTERY_OFFSET_BY_MOUNTAIN_CLOCK_LAYOUT_SPECIAL_LEAP = -93;
 
 /**
  * 用于时钟监听时钟样式变化，立即更新时钟样式数据
@@ -177,6 +184,12 @@ export struct ClockWidget {
   @State fontScale: DynamicFontSize = sFontScaleUtil.realDynamicSize;
   @State signatureWidth: Length | undefined = undefined;
   @Prop isPosterShadow: boolean = false;
+  @State contentColor: string = ''
+  // await AigcWallpaperColorManager.getLightDegree(pixelMap);
+  /**
+   * Aod显示样式
+   */
+  @State aodStyle: ImmersiveAodStyle | undefined = immersiveKgMgr.getOneMirrorState().getAodStyle(true);
 
   private data: ClockData | null = clockData;
   private clockStyleChangeListeners?: ClockChangeListen[];
@@ -320,12 +333,17 @@ export struct ClockWidget {
     }
   };
 
-  aboutToAppear(): void {
+  async aboutToAppear(): Promise<void> {
     this.populateDataFromAdapter();
     let isLock = slUiStateMgr.getSlState(SlMainStateType.SL_STATIC_STATE)
     ?.getSlState(SlStaticStateType.SL_HOST_STATE) as boolean ?? true;
-    if (!isLock) {
+    if ((this.slClockStaticCtrl.getClockViewId() === AOD_CLOCK_WIDGET ||
+      this.isPartialLongTakeAodStyle()) && !isLock) {
+      log.showWarn('screen lock state is unlock, no need init aod clock widget.');
       return;
+    }
+    if (this.slClockStaticCtrl.getIsPreviewPage()) {
+      this.mClockViewModel.setClockHelper(aodClockHelper);
     }
     this.mClockViewModel.setIsNeedRefreshClockLayout(!!this.slClockStaticCtrl?.getIsNeedRefreshClockLayout());
     this.mClockViewModel.setClockViewId(this.slClockStaticCtrl.getClockViewId(),
@@ -348,6 +366,9 @@ export struct ClockWidget {
     this.dataManager.registerSlStateChangeListener(this.clockTextColorListener);
     this.dataManager.registerSlStateChangeListener(this.clockLayoutListener);
     this.dataManager.registerSlStateChangeListener(this.clockSignatureListener);
+    if (!this.isPartialLongTakeAodStyle()) {
+      this.mClockViewModel.setClockLayoutParam(this.layoutParam);
+    }
     UDFontAdapterUtil.handleLayoutChange(this.slClockBindCtrl.getClockLayout());
     UDFontAdapterUtil.handleFontChange(this.slClockBindCtrl.getFontFamily());
     this.mClockViewModel.updateClockLayout(this.slClockBindCtrl.getClockLayout(), this.slClockBindCtrl.getPositionX(),
@@ -359,11 +380,13 @@ export struct ClockWidget {
     this.mClockViewModel?.initClockOneShotAnim();
     PowerStatusMonitor.getInstance().subscribe(PowerStatusEnum.BEGIN_WAKE_UP, this.handleBeginWakeUp);
     this.slClockStaticCtrl.setIsClockMarginNeedAnim(true);
+    //获取锁屏壁纸的亮度等级
+    this.contentColor = await SCBSceneSessionManager.getInstance().updateLockViewColor()
     log.showInfo(`${this.slClockStaticCtrl.getClockViewId()} aboutToAppear ` +
       `clockLayout: ${this.slClockBindCtrl.getClockLayout()}` +
       `, textShadow:${this.slClockBindCtrl.getTextShadow()}` +
       `, blurEffect: ${this.slClockBindCtrl.getTextBlurEffect()}, textColor: ${this.slClockBindCtrl.getTextColor()}` +
-      `, sign:${this.getSignatureText()?.length ?? 0}` +
+      `, sign:${this.getSignatureText()?.length ?? 0} this.aodStyle?.isAod = ${this.aodStyle?.isAod}` +
       `, isExpand: ${ClockStaticData.sIsClockWidgetExpand}` +
       `, isToDesktop: ${this.mClockViewModel.getClockStaticState().isClockToCollapseOnDesktop}`);
   }
@@ -388,7 +411,9 @@ export struct ClockWidget {
 
   private isNeedRefreshLayoutParam(): boolean {
     return this.slClockStaticCtrl.getClockViewId() === ClockConstants.COMPONENT_ID_DIGITAL_VIEW ||
-      (!DeviceHelper.isPadOr2in1PcType() && (!this.slClockStaticCtrl.getIsPreviewPage()));
+      ((this.slClockStaticCtrl.getClockViewId() === AOD_CLOCK_WIDGET || this.isPartialLongTakeAodStyle()) &&
+        !DeviceHelper.isPadOr2in1PcType() && (!this.slClockStaticCtrl.getIsPreviewPage() ||
+      this.isPartialLongTakeAodStyle()));
   }
 
   private onEdmAdminEnableUpdated(): void {
@@ -484,6 +509,9 @@ export struct ClockWidget {
   }
 
   private getWidgetOffset(conf: ElementConf): Position { // 组件偏移
+    if (this.isAodBatteryShow() && conf.aodOffset) {
+      return conf.aodOffset;
+    }
     let offsetForOneShot = this.clockBindState.textOffSets.get(conf.id);
     if (offsetForOneShot) {
       return offsetForOneShot;
@@ -515,6 +543,9 @@ export struct ClockWidget {
   }
 
   private getWidgetAnchor(conf: ElementConf): Position { // 组件锚点
+    if (this.isAodBatteryShow() && conf.aodAnchor) {
+      return conf.aodAnchor;
+    }
     return conf.dynamicAnchor ?? conf.anchor;
   }
 
@@ -553,8 +584,16 @@ export struct ClockWidget {
     };
   }
 
+  private getAodBatteryScale(): number { // AodBattery组件缩放比例
+    if (this.slClockBindCtrl.getIsSmallOuter()) {
+      return AodBatteryConstants.AOD_BATTERY_SMALL_FOLD_SCALE;
+    }
+    return AodBatteryConstants.AOD_BATTERY_DEFAULT_SCALE;
+  }
+
   private getOpacity(): number { // 签名组件透明度
-    if (this.slClockStaticCtrl.getIsPreviewPage()) {
+    if (this.aodStyle?.isAod || this.slClockStaticCtrl.getIsPreviewPage()) {
+      // aod签名组件透明度由 this.clockBindState.noTimeViewOpacity 控制, getOpacity不进行处理
       return 1;
     }
     return this.slSignBindState?.getLayoutOpacity() ?? 1;
@@ -585,10 +624,14 @@ export struct ClockWidget {
       return undefined;
     }
     let brightnessOptions: BrightnessOptions;
-    brightnessOptions = this.slClockBindCtrl?.getBrightness() ?? BrightnessOptionUtils.keyguardTimeLightOption;
-    brightnessOptions = this.slClockBindCtrl?.getRemoveBrightness() && brightnessOptions ?
-      this.removeBrightnessByChangeFraction(brightnessOptions) : brightnessOptions;
-
+    if (this.slClockAnimCtrl?.isSceneAnimating() && !this.mClockViewModel.isImmersiveScene(this.slClockAnimCtrl)) {
+      brightnessOptions = this.slClockAnimCtrl.getFgBrightness() ??
+      BrightnessOptionUtils.aodTimeLightOptionForFillColor;
+    } else {
+      brightnessOptions = this.slClockBindCtrl?.getBrightness() ?? BrightnessOptionUtils.keyguardTimeLightOption;
+      brightnessOptions = this.slClockBindCtrl?.getRemoveBrightness() && brightnessOptions ?
+        this.removeBrightnessByChangeFraction(brightnessOptions) : brightnessOptions;
+    }
     if (brightnessOptions.fraction >= 1) {
       log.showWarn(`getBrightnessOption fraction : ${brightnessOptions.fraction}`);
     }
@@ -620,11 +663,12 @@ export struct ClockWidget {
   }
 
   private isShowSignature(): boolean {
-    if (this.immersiveState.isImmersive() && this.clockBindState.getDisplayMode() === NONE_EDIT_MODE) {
+    if (!this.isPartialLongTakeAodStyle() &&
+    this.immersiveState.isImmersive() && this.clockBindState.getDisplayMode() === NONE_EDIT_MODE) {
       return false;
     }
 
-    if (!this.isScreenOn) {
+    if (!this.isScreenOn && !this.aodStyle?.isAod) {
       return false;
     }
 
@@ -759,6 +803,9 @@ export struct ClockWidget {
           .geometryTransition(this.clockAnimData.lunarGeoId, { hierarchyStrategy: TransitionHierarchyStrategy.NONE })
           .transition(TransitionEffect.IDENTITY)
           .opacity(this.clockBindState.noTimeViewOpacity)
+          .offset({
+            x: this.getAodBatteryLunarOffset(),
+          })
       }
     }
     .direction(Direction.Ltr)
@@ -917,6 +964,8 @@ export struct ClockWidget {
       });
     }
     .id(isClockShadow ? 'shadow_clock' : 'normal_clock')
+    .width(`${clockLayoutHelper.alignSizeForAod(vp2px(this.layoutParam.gridParam.maxWidthSize))}px`)
+    .height(`${clockLayoutHelper.alignSizeForAod(vp2px(this.layoutParam.gridParam.maxHeightSize))}px`)
     .alignContent(Alignment.TopStart)
     .clip(false)
     .accessibilityGroup(true)
@@ -1018,11 +1067,12 @@ export struct ClockWidget {
           }
         })
       }
-      if (this.clockBindState.batteryPosition === BatteryPosition.SEPARATE) {
+      if (this.isAodBatteryShow() && this.clockBindState.batteryPosition === BatteryPosition.SEPARATE) {
         this.BatteryBuilder({
           sceneId: 'sep',
           offset: this.getWidgetOffset(this.layoutParam.batteryConf),
           anchor: this.getWidgetAnchor(this.layoutParam.batteryConf),
+          isBatteryVisible: this.isAodBatteryShow()
         })
       }
     }
@@ -1053,7 +1103,8 @@ export struct ClockWidget {
           }
           .width('100%')
           .height('100%')
-          .backgroundColor(this.getBackgroundColor())
+          // .backgroundColor(this.getBackgroundColor())
+          .backgroundColor(this.contentColor) //目前的壁纸由我们自己实现，所以没法检测主题颜色，需要自行检测
           .visualEffect(this.getVisualEffect())
           .accessibilityLevel('no')
         }
@@ -1095,7 +1146,11 @@ export struct ClockWidget {
               signOffset: this.getWidgetOffset(this.layoutParam.signConf),
               signAnchor: this.getWidgetAnchor(this.layoutParam.signConf),
               isPreviewPage: this.slClockStaticCtrl.getIsPreviewPage(),
+              aodBatteryIconVisibility: this.getSignAodBatteryVisibility(),
               isNotificationVisible: this.slClockBindCtrl.getIsNotificationVisible(),
+              isShowAodBattery: this.slClockStaticCtrl.getShowAodBattery(),
+              aodSignMaxWidth: this.slClockStaticCtrl.getAodSignMaxWidth(),
+              aodBatteryOffset: this.slClockStaticCtrl.getAodBatteryOffset(),
               isFullBatteryLayout: this.isFullBatteryLayout(),
             })
           }
@@ -1105,16 +1160,26 @@ export struct ClockWidget {
               sceneId: '_part',
               anchor: this.layoutParam.batteryConf.anchor,
               offset: this.getWidgetOffset(this.layoutParam.batteryConf),
+              isBatteryVisible: this.isPartAodBatteryShow(),
             })
           }
         }
+        // .blendMode(this.slClockBindCtrl.getTextBlurEffect() ? BLENDMODE_DESTINATION_IN : BlendMode.NORMAL,
+        //   this.slClockBindCtrl.getTextBlurEffect() ? BlendApplyType.OFFSCREEN : BlendApplyType.FAST)
         .blendMode(this.slClockBindCtrl.getTextBlurEffect() ? BLENDMODE_DESTINATION_IN : BlendMode.SRC_OVER,
           this.slClockBindCtrl.getTextBlurEffect() ? BlendApplyType.OFFSCREEN : BlendApplyType.FAST)
+        .width(`${clockLayoutHelper.alignSizeForAod(vp2px(this.layoutParam.gridParam.maxWidthSize))}px`)
+        .height(`${clockLayoutHelper.alignSizeForAod(vp2px(this.layoutParam.gridParam.maxHeightSize))}px`)
         .accessibilityLevel('yes')
       }
+      // .blendMode(this.slClockBindCtrl.getTextBlurEffect() ? BLENDMODE_SRC_OVER : BlendMode.NORMAL)
       .blendMode(this.slClockBindCtrl.getTextBlurEffect() ? BLENDMODE_SRC_OVER : BlendMode.SRC_OVER)
+      .width(`${clockLayoutHelper.alignSizeForAod(vp2px(this.layoutParam.gridParam.maxWidthSize))}px`)
+      .height(`${clockLayoutHelper.alignSizeForAod(vp2px(this.layoutParam.gridParam.maxHeightSize))}px`)
     }
     .id(this.slClockStaticCtrl.getClockViewId())
+    .width(`${clockLayoutHelper.alignSizeForAod(vp2px(this.layoutParam.gridParam.gridWidthSize))}px`)
+    .height(`${clockLayoutHelper.alignSizeForAod(vp2px(this.layoutParam.gridParam.gridHeightSize))}px`)
     .clip((!this.layoutParam.gridParam.isTimeSeparate && !this.getTextShadowEnable()))
     .onAreaChange((oldValue, newValue: Area) => {
       if (this.slClockStaticCtrl.getClockViewId() === ClockConstants.COMPONENT_ID_DIGITAL_VIEW &&
@@ -1134,11 +1199,13 @@ export struct ClockWidget {
     .scale(this.getClockScale())
     .opacity(this.getClockOpacity())
     .blur(this.getClockBlur(), undefined, { disableSystemAdaptation: true })
+    .shadow(this.aodStyle?.isAod ? ClockConstants.DEFAULT_CLOCK_SHADOW_OPTION : this.getShadowOption())
   }
 
   private getClockScale(): ScaleOptions {
     if ((this.slClockAnimCtrl?.isSceneAnimating(AnimScene.SCENE_INTO_IMMERSIVE) ||
-      this.slClockAnimCtrl?.isSceneAnimating(AnimScene.SCENE_EXIT_IMMERSIVE))) {
+      this.slClockAnimCtrl?.isSceneAnimating(AnimScene.SCENE_EXIT_IMMERSIVE)) &&
+      this.slClockStaticCtrl.getClockViewId() !== AOD_CLOCK_WIDGET) {
       return {
         x: this.slClockAnimCtrl.getScaleX() ?? DEFAULT_VALUE,
         y: this.slClockAnimCtrl.getScaleY() ?? DEFAULT_VALUE
@@ -1149,7 +1216,8 @@ export struct ClockWidget {
 
   private getClockOpacity(): number {
     if ((this.slClockAnimCtrl?.isSceneAnimating(AnimScene.SCENE_INTO_IMMERSIVE) ||
-    this.slClockAnimCtrl?.isSceneAnimating(AnimScene.SCENE_EXIT_IMMERSIVE))) {
+    this.slClockAnimCtrl?.isSceneAnimating(AnimScene.SCENE_EXIT_IMMERSIVE)) &&
+      this.slClockStaticCtrl.getClockViewId() !== AOD_CLOCK_WIDGET) {
       log.showWarn(`getClockOpacity : ${this.slClockAnimCtrl.getAlpha()}`);
       return this.slClockAnimCtrl.getAlpha() ?? DEFAULT_VALUE;
     }
@@ -1158,7 +1226,8 @@ export struct ClockWidget {
 
   private getClockBlur(): number {
     if ((this.slClockAnimCtrl?.isSceneAnimating(AnimScene.SCENE_INTO_IMMERSIVE) ||
-      this.slClockAnimCtrl?.isSceneAnimating(AnimScene.SCENE_EXIT_IMMERSIVE))) {
+      this.slClockAnimCtrl?.isSceneAnimating(AnimScene.SCENE_EXIT_IMMERSIVE)) &&
+      this.slClockStaticCtrl.getClockViewId() !== AOD_CLOCK_WIDGET) {
       return this.slClockAnimCtrl.getBlur() ?? 0;
     }
     return 0;
@@ -1202,6 +1271,68 @@ export struct ClockWidget {
     })
   }
 
+  private getAodBatteryLunarOffset(): number {
+    if (!this.isFullBatteryLayout()) {
+      return 0;
+    }
+    // 第七款时钟样式下，电池图标显示时，农历需要偏移
+    if (this.slClockBindCtrl.getClockLayout() === ClockLayout.MOUNTAIN_CLOCK_LAYOUT_SPECIAL &&
+      (this.getLunarAodBatteryVisibility() === Visibility.Visible)  &&
+    this.mClockViewModel.getIsClockWidgetExpand() && this.slClockBindCtrl.getIsNotificationVisible()) {
+      return this.slClockBindCtrl.getIsSmallOuter() ?
+        AodBatteryConstants.LUNAR_OFFSET_BY_MOUNTAIN_CLOCK_SPECIAL_FOR_SMALL_FOLD :
+        AOD_BATTERY_LUNAR_OFFSET_BY_MOUNTAIN_CLOCK_LAYOUT_SPECIAL;
+    }
+    return 0;
+  }
+
+  private getAodBatteryOffset(): number {
+    if (this.slClockBindCtrl.getClockLayout() !== ClockLayout.MOUNTAIN_CLOCK_LAYOUT_SPECIAL ||
+      !this.mClockViewModel.getIsClockWidgetExpand() || RTLUtil.isRTL()) {
+      return 0;
+    }
+    // 第七款时钟样式下，电池图标需要偏移到农历的左侧显示
+    if (this.slClockBindCtrl.getIsSmallOuter()) {
+      return this.isLeapMonth() ? AodBatteryConstants.AOD_BATTERY_OFFSET_BY_MOUNTAIN_CLOCK_SPECIAL_FOR_LEAP :
+      AodBatteryConstants.AOD_BATTERY_OFFSET_BY_MOUNTAIN_CLOCK_SPECIAL_FOR_SMALL_FOLD;
+    }
+    return this.isLeapMonth() ? AOD_BATTERY_OFFSET_BY_MOUNTAIN_CLOCK_LAYOUT_SPECIAL_LEAP :
+      AOD_BATTERY_OFFSET_BY_MOUNTAIN_CLOCK_LAYOUT_SPECIAL;
+  }
+
+  // 签名组件下的电池图标可见性
+  private getSignAodBatteryVisibility(): Visibility {
+    if (this.isPartialLongTakeAodStyle()) {
+      return Visibility.None;
+    }
+
+    if (this.isPartBatteryLayout() && this.slClockBindCtrl.getClockExpandOnAodAnim()) {
+      return Visibility.None;
+    }
+
+    if (!this.isMountainClockLayoutSeperator()) {
+      return Visibility.None;
+    }
+
+    if (!this.mClockViewModel.getIsClockWidgetExpand()) {
+      return Visibility.None;
+    }
+
+    if (!this.isShowSignature()) {
+      return Visibility.None;
+    }
+    return this.getAodBatteryVisibility();
+  }
+
+  // 农历组件下的电池图标可见性
+  private getLunarAodBatteryVisibility(): Visibility {
+    if (this.isMountainClockLayoutSeperator() && this.mClockViewModel.getIsClockWidgetExpand() &&
+      this.isShowSignature()) {
+      return Visibility.None;
+    }
+    return this.getAodBatteryVisibility();
+  }
+
   private isMountainClockLayoutSeperator(): boolean {
     return [ClockLayout.MOUNTAIN_CLOCK_LAYOUT_SEPERATOR,
       ClockLayout.MOUNTAIN_CLOCK_REVERSE_LAYOUT_SEPERATOR].includes(this.slClockBindCtrl.getClockLayout());
@@ -1214,8 +1345,38 @@ export struct ClockWidget {
     return calendar.get('is_leap_month') === 1;
   }
 
+  // 艺术签名样式电池图标可见性
+  private getArtSignAodBatteryVisibility(): Visibility {
+    if (!this.isArtSignLayout()) {
+      return Visibility.None;
+    }
+    return this.getAodBatteryVisibility();
+  }
+
   private isArtSignLayout(): boolean {
     return this.slClockBindCtrl.getClockLayout() >= 200;
+  }
+
+  // 艺术签名AOD电池图标是否显示
+  private isAodBatteryShow(): boolean {
+    return this.getArtSignAodBatteryVisibility() === Visibility.Visible && this.slClockStaticCtrl.getShowAodBattery() &&
+    this.slClockBindCtrl.getIsNotificationVisible();
+  }
+
+  private isPartAodBatteryShow(): boolean {
+    return this.getAodBatteryVisibility() === Visibility.Visible;
+  }
+
+  private getAodBatteryVisibility(): Visibility {
+    if (this.slClockStaticCtrl.getIsPreviewPage() || this.slClockStaticCtrl.getClockViewId() === AOD_CLOCK_WIDGET ||
+    this.isPartialLongTakeAodStyle()) {
+      return Visibility.Visible;
+    }
+    return this.slClockBindCtrl?.getBatteryVisibility() ?? Visibility.None;
+  }
+
+  private isPartialLongTakeAodStyle(): boolean {
+    return this.slClockStaticCtrl.getClockViewId() === AOD_CLOCK_WIDGET_LONG_TAKE;
   }
 
   /**
@@ -1223,7 +1384,7 @@ export struct ClockWidget {
    * @returns boolean
    */
   public isFullBatteryLayout(): boolean {
-    return false;
+    return this.slClockBindCtrl.getBatteryLayout() === BatteryLayout.FULL_AOD_LAYOUT;
   }
 
   /**
@@ -1231,7 +1392,7 @@ export struct ClockWidget {
    * @returns boolean
    */
   public isPartBatteryLayout(): boolean {
-    return false;
+    return this.slClockBindCtrl.getBatteryLayout() === BatteryLayout.PART_AOD_LAYOUT;
   }
 
 
@@ -1276,6 +1437,9 @@ export struct ClockWidget {
   }
 
   private getTextShadowStyle(isDate: boolean = false): ShadowOptions {
+    if (this.aodStyle?.isAod) {
+      return ART_SIGN_SHADOW_STYLE_AOD;
+    }
     return isDate ? DATE_SHADOW_STYLE : ART_SIGN_SHADOW_STYLE;
   }
 }

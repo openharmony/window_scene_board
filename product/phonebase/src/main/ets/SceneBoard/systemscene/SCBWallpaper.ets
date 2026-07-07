@@ -1,5 +1,5 @@
 /*
- * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -284,14 +284,15 @@ export struct SCBWallpaper {
         DesktopWallpaper({ screenProp: this.screenProp})
       }
       .opacity(this.wallPaperOpacity)
-      .borderRadius(this.wallpaperData.wallpaperScale < 1 ? $r('app.float.wallpaper_outline_radius') : 0)
       .clip(true)
       .width('100%')
       .height('100%')
+      // 锁屏壁纸功能已经删除，残留代码影响的正常壁纸，此处直接删除，后续需要缩放请换个变量名称
+      /*.borderRadius(this.wallpaperData.wallpaperScale < 1 ? $r('app.float.wallpaper_outline_radius') : 0)
       .scale({
         x: this.wallpaperData.wallpaperScale,
         y: this.wallpaperData.wallpaperScale
-      })
+      })*/
       .translate({ y: -this.editorTranslate })
 
       if (this.isInScreenLockState) {

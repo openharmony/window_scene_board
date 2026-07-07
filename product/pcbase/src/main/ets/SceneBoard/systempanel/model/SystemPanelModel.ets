@@ -149,7 +149,7 @@ export class SystemPanelModel {
   }
 
   /**
-   * OpenHarmony键睡眠通信接口
+   * 系统键睡眠通信接口
    * @returns
    */
   async sleepByHosKey(): Promise<void> {
@@ -159,7 +159,7 @@ export class SystemPanelModel {
   }
 
   /**
-   * OpenHarmony键锁屏通信接口
+   * 系统键锁屏通信接口
    * @returns
    */
   async lockScreenByHosKey(): Promise<void> {
@@ -169,7 +169,7 @@ export class SystemPanelModel {
   }
 
   /**
-   * OpenHarmony键重启通信接口
+   * 系统键重启通信接口
    * @returns
    */
   async rebootByHosKey(): Promise<void> {
@@ -195,7 +195,7 @@ export class SystemPanelModel {
   }
 
   /**
-   * OpenHarmony键关机通信接口
+   * 系统键关机通信接口
    * @returns
    */
   async shutdownByHosKey(): Promise<void> {

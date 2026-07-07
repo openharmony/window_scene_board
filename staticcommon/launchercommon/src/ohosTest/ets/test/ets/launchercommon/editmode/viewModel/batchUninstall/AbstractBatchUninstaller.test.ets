@@ -32,6 +32,7 @@ import { GlobalContext } from '@ohos/frameworkwrapper';
 import { launcherStatusUtil } from '@ohos/windowscene';
 import { ContactCacheManager } from '../../../../../../../../main/ets/cache/layout/ContactCacheManager';
 import { layoutLockUtil } from '../../../../../../../../main/ets/utils/LayoutLockUtil';
+import { DeliverUtil } from '../../../../../../../../main/ets/utils/DeliverUtil';
 
 export default function AbstractBatchUninstallerTest() {
   describe('AbstractBatchUninstallerTest', () => {
@@ -95,6 +96,9 @@ export default function AbstractBatchUninstallerTest() {
     const isContactShortcut: Function = mockKit.mockFunc(contactCacheManager, contactCacheManager.isContactShortcut);
     const isLocked: Function = mockKit.mockFunc(layoutLockUtil, layoutLockUtil.isLocked);
     const isLockedPage: Function = mockKit.mockFunc(layoutLockUtil, layoutLockUtil.isLockedPage);
+    const getAppType: Function = mockKit.mockFunc(DeliverUtil, DeliverUtil.getAppType);
+    const getDeliverStartStatus: Function = mockKit.mockFunc(DeliverUtil, DeliverUtil.getDeliverStartStatus);
+    const isHidedeliverRemoveMenu: Function = mockKit.mockFunc(DeliverUtil, DeliverUtil.isHideDhRemoveMenu);
 
     it('test_isUninstallable_1', 0, () => {
       when(getShowOutLauncherStatus)().afterReturn(false);
@@ -122,14 +126,41 @@ export default function AbstractBatchUninstallerTest() {
       expect(isUninstallable).assertTrue();
     })
 
+    it('test_isUninstallable_5', 0, () => {
+      when(getAppType)().afterReturn(DeliverUtil.APPTYPE_TYPE_DELIVER);
+      when(getDeliverStartStatus)().afterReturn('!' + DeliverUtil.DELIVER_START_FINISHED_CODE);
+      let isUninstallable: boolean = (uninstaller as object)['isUninstallable'](item1);
+      expect(isUninstallable).assertTrue();
+    })
+
+    it('test_isUninstallable_6', 0, () => {
+      item.typeId = CommonConstants.TYPE_APP;
+      item1.appStatus = AppStatus.DOWNLOADING;
+      when(isHidedeliverRemoveMenu)().afterReturn(true);
+      let isUninstallable: boolean = (uninstaller as object)['isUninstallable'](item1);
+      expect(isUninstallable).assertTrue();
+    })
+
     it('test_isUninstallable_7', 0, () => {
       item1.appStatus = AppStatus.INSTALLING;
       let isUninstallable: boolean = (uninstaller as object)['isUninstallable'](item1);
       expect(isUninstallable).assertFalse();
     })
 
+    it('test_isUninstallable_8', 0, () => {
+      when(getAppType)().afterReturn(DeliverUtil.APPTYPE_TYPE_EASY);
+      let isUninstallable: boolean = (uninstaller as object)['isUninstallable'](item1);
+      expect(isUninstallable).assertFalse();
+    })
+
     it('test_isUninstallable_9', 0, () => {
       item1.isUninstallAble = false;
+      let isUninstallable: boolean = (uninstaller as object)['isUninstallable'](item1);
+      expect(isUninstallable).assertFalse();
+    })
+
+    it('test_isUninstallable_10', 0, () => {
+      item1.bundleName = DeliverUtil.DELIVER_APP_BUNDLE_NAME;
       let isUninstallable: boolean = (uninstaller as object)['isUninstallable'](item1);
       expect(isUninstallable).assertFalse();
     })

@@ -32,7 +32,7 @@ const log: LogHelper = LogHelper.getLogHelper(LogDomain.SYS_UI, TAG);
 const COMPONENT_ID = 'screen_lock_wifi_icon';
 // 锁屏 Wifi 二级面板的窗口标识符
 const PANEL_NAME = WindowConstants.WINDOW_NAME_LOCK_SCREEN_WIFI_PANEL;
-// 设置包名 - 此包提供了 Wifi 元能力
+// 设备设置包名 - 此包提供了 Wifi 元能力
 const SETTINGS_BUNDLE_NAME = 'com.ohos.settings';
 
 // 锁屏 Wifi 图标尺寸, 与桌面内状态栏 Wifi 图标一致

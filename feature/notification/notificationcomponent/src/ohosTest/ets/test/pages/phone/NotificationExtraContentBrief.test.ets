@@ -13,17 +13,48 @@
  * limitations under the License.
  */
 
-import { NotificationEntry } from '../../../../main/ets/model/NotificationEntry';
+import { NotificationEntry, NtfDataUpdateListener } from '../../../../main/ets/model/NotificationEntry';
+import { NotificationConfig } from '../../../../main/ets/common/NotificationConfig';
+import { CommonUtils, LogDomain, LogHelper } from '@ohos/basicutils';
 import { RTLUtil } from '@ohos/componenthelper';
 import { ResUtils } from '@ohos/windowscene';
 import { NotificationExtraMenuRow } from '../../../../main/ets/pages/phone/NotificationExtraMenuRow';
 import { NtfItemSwipeController } from '../../../../main/ets/controller/NtfItemSwipeController';
 import { NotificationAnimationParas } from '../../../../main/ets/common/NotificationAnimationParas';
+import { AnimatorResult } from '@ohos.animator';
+import { ResetItemSwipeEvent } from '../../../../main/ets/common/event/NotificationEvent';
+import { NotificationUtils } from '../../../../main/ets/common/NotificationUtils';
+import curves from '@ohos.curves';
+import Curves from '@ohos.curves';
+import { notificationStyle } from '../../../../main/ets/vm/style/NotificationStyle';
+import {
+  ImmersiveAodStyle
+} from '@ohos/systemuicommon/src/main/ets/immersivekeyguardcommon/base/interface/ImmersiveAodStyle';
+import {
+  immersiveKgMgr
+} from '@ohos/systemuicommon/src/main/ets/immersivekeyguardcommon/manager/ImmersiveKeyguardStateManager';
+import {
+  NotificationConfigEvent,
+  NotificationConfigEventType
+} from '@ohos/systemuicommon/src/main/ets/model/NotificationConfigEvent';
+import { NotificationType } from '@ohos/systemuicommon/Index';
+import { NotificationItemStyle } from '../../../../main/ets/vm/style/NotificationItemStyle';
 import { NtfTimeVM } from '../../../../main/ets/vm/NtfTimeVM';
 import { NtfAppIconModifier } from '../../../../main/ets/vm/style/NtfAppIconModifier';
+import { NtfColorModeVM } from '../../../../main/ets/vm/NtfColorModeVM';
+import { NtfAnimationConsts } from '../../../../main/ets/common/NtfAnimationConsts';
+import { LengthMetrics } from '@ohos.arkui.node';
+import i18n from '@ohos.i18n';
+import { notificationConfigManager } from '../../../../main/ets/manager/NotificationConfigManager';
+import { NtfBrightnessMode, NtfListContentConfig } from '../../../../main/ets/vm/config/NtfViewConfig';
+import { ntfViewConfigManager } from '../../../../main/ets/vm/config/NtfViewConfigManager';
 import { NotificationAccessibilityUtil as AccessUtil } from '../../../../main/ets/common/NotificationAccessibilityUtil';
 import { ExtraNtfCollapsedAnimation } from '../../../../main/ets/animation/ExtraNtfCollapsedAnimation';
-import { afterEach, ArgumentMatchers, beforeEach, describe, expect, it, MockKit, when } from '@ohos/hypium';
+import { AccessibilityCollapsedState } from '@ohos/systemuicommon/src/main/ets/accessibility/AccessibilityAppName';
+import { OverlayIconStyle } from '@ohos/systemuicommon';
+import { DeliverBadge } from '@ohos/systemuicommon/src/main/ets/view/DeliverBadge';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, MockKit, when, ArgumentMatchers } from '@ohos/hypium';
+import {  } from '../../../../main/ets/pages/phone/NotificationExtraContentBrief';
 export default function Test() {
   describe('handleActionStart_testSuite', () => {
 

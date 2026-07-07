@@ -28,6 +28,7 @@ import FormDescription from '../atomicview/FormDescription';
 import { FormDescriptionVm } from '../../viewmodel/data/FormDescriptionVm';
 import { SearchStateMgr } from '../atomicview/SearchComponent';
 import { FormCenterViewModel } from '../../viewmodel/FormCenterViewModel';
+import { LazyDataSource } from '@ohos/launchercommon/src/main/ets/uicomponents/LazyDataSource';
 
 const TAG = 'SwiperLayout';
 const LOADING_DEFAULT_SIZE = 24;
@@ -51,10 +52,12 @@ export default struct SwiperLayout {
   private formCenterReaderText: string = '';
   private fadeInAnimation: boolean = false;
   private refreshSearchResultFlag: boolean = SearchStateMgr.getInstance().refreshFlag;
+  private appFormDataSource: LazyDataSource<CardItemInfo> = new LazyDataSource<CardItemInfo>();
 
   aboutToAppear(): void {
     log.showInfo(`FormSwipeLayoutStyle aboutToAppear ${this.mViewData?.mStartFormInfo?.bundleName}`);
     this.currentIndex = this.mViewData?.swipeTargetIndex ?? 0;
+    this.appFormDataSource = new LazyDataSource<CardItemInfo>(this.mViewData?.appFormList ?? []);
     this.style.adaptDescription(this.mBindSheetViewData.cardViewMargin);
     this.mEvent?.onAppear();
     if (this.mEvent?.getThemeFromLoading) {
@@ -203,13 +206,13 @@ export default struct SwiperLayout {
   build() {
     Column() {
       Swiper() {
-        ForEach(this.mViewData?.appFormList, (formItem: CardItemInfo, index: number) => {
+        LazyForEach(this.appFormDataSource, (formItem: CardItemInfo, index: number) => {
           this.appFormItemBuilder(index)
         }, (item: CardItemInfo, index: number): string => {
           return `${this.mViewData?.appFormList.length}${index}${this.mBindSheetViewData.formRate}`;
         })
       }
-      .cachedCount(0)
+      .cachedCount(1)
       .index(this.currentIndex)
       .attributeModifier(this.swiperAttributeUpdater)
       .width(this.style.swiperWidth)

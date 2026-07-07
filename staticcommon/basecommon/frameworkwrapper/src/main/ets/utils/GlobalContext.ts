@@ -25,7 +25,6 @@ export class GlobalContext {
   }
 
   private _objects = new Map<string, Object>();
-  private isDebug: boolean = false;
 
   /**
    * 获取 GlobalContext 单例的静态方法。
@@ -67,7 +66,7 @@ export class GlobalContext {
    */
   public getObject(key: string): Object | undefined {
     let result = this._objects.get(key);
-    this.printLog('getObject: ' + key + ' -> ' + (result != null));
+    log.showInfo(`getObject (${this._objects.size}): ${key} is null: ${(CheckEmptyUtils.isEmpty(result))}`);
     return result;
   }
 
@@ -89,7 +88,7 @@ export class GlobalContext {
    */
   public setObject(key: string, objectClass: Object): void {
     this._objects.set(key, objectClass);
-    this.printLog('setObject: ' + key);
+    log.showInfo(`setObject (${this._objects.size}): ${key} is null:${(CheckEmptyUtils.isEmpty(objectClass))}`);
   }
 
   /**
@@ -98,14 +97,8 @@ export class GlobalContext {
    * @param key map中映射的唯一标记。
    */
   public removeObject(key: string): boolean {
-    return this._objects.delete(key);
-    this.printLog('delete: ' + key);
-  }
-
-  private printLog(message: string): void {
-    if (!this.isDebug) {
-      return;
-    }
-    console.info(TAG, message);
+    let result = this._objects.delete(key);
+    log.showInfo(`removeObject (${this._objects.size}): ${key} > ${result}`);
+    return result;
   }
 }

@@ -17,7 +17,7 @@ import { describe, afterEach, beforeEach, it, expect } from "@ohos/hypium";
 import screenSessionManager from '@ohos.screenSessionManager';
 import { SCBTvCastEventManager } from "../../../../../main/ets/manager/SCBTvCastEventManager";
 
-const SCREEN_NAME_APP_CAST: string = 'HwCast_AppModeDisplay';
+const SCREEN_NAME_APP_CAST: string = 'Cast_AppModeDisplay';
 
 export function SCBTvCastEventManagerTest() {
   describe('SCBTvCastEventManagerTest', () => {

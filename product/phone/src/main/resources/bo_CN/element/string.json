@@ -43,14 +43,14 @@
             }
         },
         {
-            "name":"openharmony_multiwindow_app_is_open",
+            "name":"oh_multiwindow_app_is_open",
             "value":"ཉེར་སྤྱོད་དེ་ཁ་ཕྱེ་ཟིན།",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"openharmony_multiwindow_not_support_multiwindows",
+            "name":"oh_multiwindow_not_support_multiwindows",
             "value":"༼%1$s༽ཡིས་སྒེའུ་ཁུང་མང་པོར་རྒྱབ་སྐྱོར་མི་བྱེད།",
             "attr":{
                 "priority":"LT"
@@ -71,14 +71,14 @@
             }
         },
         {
-            "name":"openharmony_multiwindow_not_support_split",
+            "name":"oh_multiwindow_not_support_split",
             "value":"༼%1$s༽ཡིས་བརྙན་ཡོལ་བགོ་བར་རྒྱབ་སྐྱོར་མི་བྱེད།",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"openharmony_multiwindow_not_support_float_window",
+            "name":"oh_multiwindow_not_support_float_window",
             "value":"༼%1$s༽ཡིས་གཡེང་སྒྲོམ་ལ་རྒྱབ་སྐྱོར་མི་བྱེད།",
             "attr":{
                 "priority":"LT"
@@ -106,7 +106,7 @@
             }
         },
         {
-            "name":"openharmony_multiwindow_click_application_form_split_screen",
+            "name":"oh_multiwindow_click_application_form_split_screen",
             "value":"ཅོག་ངོས་ཐོག་གི་ཉེར་སྤྱོད་ལ་བརྡབས་ཚེ་ཡོལ་བགོ་ཐུབ།",
             "attr":{
                 "priority":"LT"
@@ -122,6 +122,13 @@
         {
             "name":"control_center_complex_toggle_bluetooth_title",
             "value":"སོ་སྔོན།",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"HiSearch_title",
+            "value":"ཞའོ་དབྱི་བཤེར་འཚོལ།",
             "attr":{
                 "priority":"translate"
             }
@@ -183,6 +190,83 @@
             }
         },
         {
+            "name":"Ai_bar_return_home",
+            "value":"ཅོག་ངོས་སུ་ལོག་པ།",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Ai_bar_recent_detail",
+            "value":"བརྙན་ཡོལ་གྱི་གཤམ་འོག་མཐའ་ནས་ཡར་འདྲུད་པ་མ་ཟད་ཅུང་ཙམ་སྡོད་པ།",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Ai_bar_recent",
+            "value":"ཉེ་ཆར་གྱི་ལས་འགན་ལ་འཛུལ་བ།",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Ai_bar_setting",
+            "value":"རྒྱུད་ཁོངས་ཕྱོགས་སྟོན།",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_list_title_more_style",
+            "value":"སྐུད་ཐོག་བཟོ་ལྟ་དེ་ལས་མང་བ།",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Ai_bar_back",
+            "value":"ཕྱིར་ལོག",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Ai_bar_vassistant_dialogue",
+            "value":"ཞའོ་དབྱི་གླེང་མོལ།",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Ai_bar_gesture_back_detail",
+            "value":"བརྙན་ཡོལ་གྱི་གཡས་/གཡོན་ནས་དཀྱིལ་དུ་འདེད་འགུལ་བྱས་ཏེ་རིམ་པ་གོང་མར་ཕྱིར་ལོག་ཐུབ།",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Ai_bar_vassistant",
+            "value":"མཐིལ་གྱི་ཕྱོགས་སྟོན་ཚན་བྱང་ལ་ཡུན་རིང་བརྡབས་ཚེ། ཞའོ་དབྱི་གླེང་མོལ་རྐྱེན་སློང་བྱེད་ཐུབ།",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Ai_bar_return_home_detail",
+            "value":"བརྙན་ཡོལ་གྱི་གཤམ་འོག་མཐའ་ནས་ཡར་འདྲུད།",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Ai_bar_back_detail",
+            "value":"མཐིལ་གྱི་ཕྱོགས་སྟོན་ཚན་བྱང་ལ་བརྡབས་ནས་རིམ་པ་གོང་མར་ཕྱིར་ལོག་ཐུབ།",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
             "name":"app_menu_exit",
             "value":"ཕྱིར་འཐེན།",
             "attr":{
@@ -225,17 +309,24 @@
             }
         },
         {
-            "name":"openharmony_multiwindow_not_support_split_ratio",
+            "name":"oh_multiwindow_not_support_split_ratio",
             "value":"རོལ་རྩེད་ཉེར་སྤྱོད་ཀྱིས་ཡོལ་བགོའི་བསྡུར་ཚད་སྙོམ་སྒྲིག་ལ་རྒྱབ་སྐྱོར་མི་བྱེད།",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name": "MultiWindow_dock_title",
-            "value": "རིག་ལྡན་སྒྲོམ་མང་ཉེར་སྤྱོད་ཚན་བྱང་།",
-            "attr": {
-                "priority": "LT"
+            "name":"MultiWindow_dock_title",
+            "value":"རིག་ལྡན་སྒྲོམ་མང་ཉེར་སྤྱོད་ཚན་བྱང་།",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Ai_bar",
+            "value":"ཕྱོགས་སྟོན་ཚན་བྱང་།",
+            "attr":{
+                "priority":"LT"
             }
         },
         {
@@ -316,6 +407,27 @@
             }
         },
         {
+            "name":"drag_to_voice",
+            "value":"ཞའོ་དབྱི་ལ་འདྲུད།",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"let_go_drag_to_voice",
+            "value":"གློད་ནས་ཞའོ་དབྱི་ལ་བསྐུར།",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"drag_to_voice_detail",
+            "value":"ནང་དོན་ལ་ཡུན་རིང་མནན་ཏེ་འཕྱོ་བར་བྱས་རྗེས། མཐིལ་གྱི་ཞའོ་དབྱི་ནང་འདྲུད་ཆོག",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
             "name":"MultiWindow_guidance_split_swap_title",
             "value":"ཡོལ་བགོ་བརྗེ་རེས།",
             "attr":{
@@ -323,7 +435,7 @@
             }
         },
         {
-            "name":"openharmony_multiwindow_not_support_vertical_split_new",
+            "name":"oh_multiwindow_not_support_vertical_split_new",
             "value":"༼%1$s༽ཡིས་གཡས་གཡོན་ཡོལ་བགོ་ལ་རྒྱབ་སྐྱོར་མི་བྱེད།",
             "attr":{
                 "priority":"LT"
@@ -358,7 +470,7 @@
             }
         },
         {
-            "name":"openharmony_multiwindow_not_support_horizontal_split_new",
+            "name":"oh_multiwindow_not_support_horizontal_split_new",
             "value":"༼%1$s༽ཡིས་སྟེང་འོག་ཡོལ་བགོ་ལ་རྒྱབ་སྐྱོར་མི་བྱེད།",
             "attr":{
                 "priority":"LT"
@@ -491,7 +603,7 @@
             }
         },
         {
-            "name":"openharmony_multiwindow_not_support_split_for_folded_new",
+            "name":"oh_multiwindow_not_support_split_for_folded_new",
             "value":"སྒྲིག་ཆས་ལྟེབ་བརྩེགས་བརྒྱབ་ནས་གནས་སྐབས། ༼%1$s༽ཡིས་ཡོལ་བགོ་ལ་རྒྱབ་སྐྱོར་མི་བྱེད།",
             "attr":{
                 "priority":"LT"
@@ -561,14 +673,14 @@
             }
         },
         {
-            "name":"openharmony_multiwindow_horizontal_split",
+            "name":"oh_multiwindow_horizontal_split",
             "value":"སྟེང་འོག་ཏུ་ཡོལ་བགོ་བ།",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"openharmony_multiwindow_vertical_split",
+            "name":"oh_multiwindow_vertical_split",
             "value":"གཡས་གཡོན་དུ་ཡོལ་བགོ་བ།",
             "attr":{
                 "priority":"LT"
@@ -582,21 +694,21 @@
             }
         },
         {
-            "name":"openharmony_multiwindow_horizontal_exchange",
+            "name":"oh_multiwindow_horizontal_exchange",
             "value":"སྟེང་འོག་བརྗེ་བ།",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"openharmony_multiwindow_save_group",
+            "name":"oh_multiwindow_save_group",
             "value":"མཉམ་སྡེབ་ཉར་ཚགས།",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"openharmony_multiwindow_vertical_exchange",
+            "name":"oh_multiwindow_vertical_exchange",
             "value":"གཡས་གཡོན་བརྗེ་བ།",
             "attr":{
                 "priority":"LT"
@@ -775,7 +887,7 @@
             }
         },
         {
-            "name":"folder_name_oh",
+            "name":"folder_name_system_apps",
             "value":"ཧྭ་ཝེ་ཉེར་སྤྱོད།",
             "attr":{
                 "priority":"LT"
@@ -791,6 +903,20 @@
         {
             "name":"new_folder_name",
             "value":"ཡིག་ཁུག་ %1$d",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Ai_bar_vassistant_dialogue_longpress",
+            "value":"ཡུན་རིང་མནན་ཏེ་ཞའོ་དབྱི་གླེང་མོལ་རྐྱེན་སློང་བྱེད།",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Ai_bar_back_click_navigation",
+            "value":"ཕྱོགས་སྟོན་ཚན་བྱང་ལ་བརྡབས་ནས་ཕྱིར་ལོག",
             "attr":{
                 "priority":"LT"
             }
@@ -849,6 +975,13 @@
             "value":"མང་ཤོས་སུ་ཉེར་སྤྱོད་ %1$d བསྣན་ཆོག",
             "attr":{
                 "priority":"LT"
+            }
+        },
+        {
+            "name":"ai_bar_accessibility_text",
+            "value":"ཕྱོགས་སྟོན་ཚན་བྱང་། ཐེངས་གཉིས་བརྡབས་ནས་ཡུན་རིང་མནན་ཚེ། ཞའོ་དབྱི་གླེང་མོལ་རྐྱེན་སློང་བྱེད་ཐུབ།",
+            "attr":{
+                "priority":"translate"
             }
         },
         {
@@ -1008,6 +1141,13 @@
         {
             "name":"enter_pc_mode_tips",
             "value":"རང་འདོད་སྒེའུ་ཁུང་ཁ་འབྱེད་ལ་ཉེ། ཉམས་ལེན་དེ་བས་ལེགས་པ་ཐོབ་ཆེད། རྣམ་པ་འདི་བརྙན་ཡོལ་འཕྲེད་འཇོག་སྐབས་ཁོ་ནར་བཀོལ་བར་རྒྱབ་སྐྱོར་བྱེད།",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_to_voice_reminder",
+            "value":"ཞའོ་དབྱི་ནང་དྲུད་དེ། ལག་པ་གློད་ཚེ་ལག་བསྟར་བྱེད་ཐུབ།",
             "attr":{
                 "priority":"translate"
             }
@@ -1237,7 +1377,7 @@
             }
         },
         {
-            "name":"openharmony_multiwindow_click_application_form_midScene_waiting_state",
+            "name":"oh_multiwindow_click_application_form_midScene_waiting_state",
             "value":"ཅོག་ངོས་ཉེར་སྤྱོད་ལ་བརྡབས་ནས་ཧྲིལ་ལྗོངས་སྒྲོམ་མང་ལ་ཞུགས་པ།",
             "attr":{
                 "priority":"LT"
@@ -1251,14 +1391,14 @@
             }
         },
         {
-            "name":"openharmony_multiwindow_does_not_support_panoramic_multiwindow",
+            "name":"oh_multiwindow_does_not_support_panoramic_multiwindow",
             "value":"མིག་སྔའི་ཉེར་སྤྱོད་ཀྱིས་ཧྲིལ་ལྗོངས་སྒྲོམ་མང་ལ་རྒྱབ་སྐྱོར་མི་བྱེད།",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"openharmony_multiwindow_back_to_middle_scene_using_gesture",
+            "name":"oh_multiwindow_back_to_middle_scene_using_gesture",
             "value":"མཛུབ་མོ་མང་པོས་བཙིར་ཏེ་ཧྲིལ་ལྗོངས་སྒྲོམ་མང་ལ་ཕྱིར་ལོག་ཐུབ།",
             "attr":{
                 "priority":"LT"
@@ -1272,7 +1412,7 @@
             }
         },
         {
-            "name":"openharmony_multiwindow_does_not_support_panoramic_multiwindow_in_current_state",
+            "name":"oh_multiwindow_does_not_support_panoramic_multiwindow_in_current_state",
             "value":"མིག་སྔའི་གནས་བབ་སྐབས་ཧྲིལ་ལྗོངས་སྒྲོམ་མང་ལ་རྒྱབ་སྐྱོར་མི་བྱེད།",
             "attr":{
                 "priority":"LT"
@@ -1440,28 +1580,28 @@
             }
         },
         {
-            "name":"openharmony_multiwindow_minimize_all_float_due_to_rss",
+            "name":"oh_multiwindow_minimize_all_float_due_to_rss",
             "value":"ཉམས་ལེན་བདེ་པོ་ཡོང་ཆེད། གཡེང་སྒྲོམ་གཞོགས་སུ་བསྡུ་རྒྱུ་ཡིན།",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"openharmony_multiwindow_not_support_change_split_ratio",
+            "name":"oh_multiwindow_not_support_change_split_ratio",
             "value":"༼%1$s༽ཀྱིས་ཡོལ་བགོའི་བསྡུར་ཚད་སྙོམ་སྒྲིག་བྱ་རྒྱུར་རྒྱབ་སྐྱོར་མི་བྱེད།",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"openharmony_multiwindow_not_support_split_this_way_currently",
+            "name":"oh_multiwindow_not_support_split_this_way_currently",
             "value":"མིག་སྔའི་སྒྲིག་ཆས་ཀྱི་གནས་བབ། ༼%1$s༽ཡིས་ཡོལ་བགོ་ཁ་འབྱེད་སྟངས་འདིར་རྒྱབ་སྐྱོར་མི་བྱེད།",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"openharmony_multiwindow_not_support_split_currently",
+            "name":"oh_multiwindow_not_support_split_currently",
             "value":"མིག་སྔའི་སྒྲིག་ཆས་ཀྱི་གནས་བབ། ༼%1$s༽ཡིས་ཡོལ་བགོ་ལ་རྒྱབ་སྐྱོར་མི་བྱེད།",
             "attr":{
                 "priority":"translate"

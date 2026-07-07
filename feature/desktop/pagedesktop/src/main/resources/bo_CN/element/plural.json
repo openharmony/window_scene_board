@@ -1,0 +1,16 @@
+{
+    "plural":[
+        {
+            "name":"folder_is_open_and_total_screen",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"ཡིག་ཁུག་ཁ་ཕྱེ་ཟིན། ཁྱོན་བརྙན་ཡོལ་ %d ཡོད།",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

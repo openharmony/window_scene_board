@@ -23,6 +23,7 @@ import { DesktopMenuOptionsInterface, DistanceRect } from './DesktopMenuOptionsI
 const DEFAULT_MENU_WIDTH = 160;
 const DIVIDER_HEIGHT = px2vp(1);
 const MENU_ITEM_HEIGHT = 40;
+const DISTANCE_ITEM_HEIGHT = 20;
 const TAG = 'DesktopBaseMenuOptions';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.HOME, TAG);
 
@@ -193,8 +194,17 @@ export class DesktopBaseMenuOptions implements DesktopMenuOptionsInterface {
       return offset;
     }
     const yPosition = this.getEventPosition(event).y as number;
-    log.showInfo('getClickMenuOffset, [%{public}d, %{public}d], [%{public}d], [%{public}d]',
-      menuInfoList.length, yPosition, offset.x, offset.y);
+    let menuHeight = this.getMenuHeight(menuInfoList);
+    const screenId: number = SCBSceneSessionManager.getInstance().mainScreenId;
+    const dockHeight = this.getStatusbarOrDockHeightVp(SystemBarType.SMART_DOCK, screenId);
+    const distanceToBottom = screenRect.height.getVp() - dockHeight - yPosition;
+    if (distanceToBottom < menuHeight) {
+      log.showInfo('distanceToBottom: ' + distanceToBottom)
+      log.showInfo('menuHeight: ' + menuHeight)
+      offset.y = distanceToBottom - menuHeight - DISTANCE_ITEM_HEIGHT;
+    }
+    log.showInfo('getClickMenuOffset, [%{public}d, %{public}d], [%{public}d, %{public}d], [%{public}d, %{public}d]',
+      menuInfoList.length, yPosition, offset.x, offset.y, menuHeight, dockHeight);
     return offset;
   }
 

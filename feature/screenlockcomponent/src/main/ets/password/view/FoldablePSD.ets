@@ -35,7 +35,7 @@ const TAG = 'FoldDigitalPSD';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.KG, TAG);
 const BIG_FOLD_ARROW_WIDTH: string = '50%';
 const PASSWORD_WIDTH: string = '50%';
-const ULTRA_SCREEN_G_STATE_ARROW_WIDTH: string = '25%';
+const THREE_FOLD_G_STATE_ARROW_WIDTH: string = '25%';
 
 @Component
 export default struct FoldablePSD {
@@ -89,7 +89,7 @@ export default struct FoldablePSD {
   }
 
   private getFoldablePSDTranslate(): TranslateOptions {
-    if (this.slFoldablePSDAnimCtrl?.isSceneAnimating() && DeviceHelper.isUltraScreenProduct()) {
+    if (this.slFoldablePSDAnimCtrl?.isSceneAnimating() && DeviceHelper.isThreeFoldProduct()) {
       return {
         x: this.slFoldablePSDAnimCtrl.getTranX() ?? 0,
       };
@@ -250,42 +250,42 @@ export default struct FoldablePSD {
   }
 
   private isRightArrow() {
-    this.isRight = this.keyboardPosition === Constants.SCREEN_LEFT || this.isUltraScreenGStatusMiddleKeyboard();
-    return this.keyboardPosition === Constants.SCREEN_LEFT || this.isUltraScreenGStatusMiddleKeyboard();
+    this.isRight = this.keyboardPosition === Constants.SCREEN_LEFT || this.isThreeFoldGStatusMiddleKeyboard();
+    return this.keyboardPosition === Constants.SCREEN_LEFT || this.isThreeFoldGStatusMiddleKeyboard();
   }
 
   private isLeftArrow() {
-    this.isLeft = this.keyboardPosition === Constants.SCREEN_RIGHT || this.isUltraScreenGStatusMiddleKeyboard();
-    return this.keyboardPosition === Constants.SCREEN_RIGHT || this.isUltraScreenGStatusMiddleKeyboard();
+    this.isLeft = this.keyboardPosition === Constants.SCREEN_RIGHT || this.isThreeFoldGStatusMiddleKeyboard();
+    return this.keyboardPosition === Constants.SCREEN_RIGHT || this.isThreeFoldGStatusMiddleKeyboard();
   }
 
   private getArrowWidth(isRight: boolean): Length {
     const needShowArrow: boolean = isRight ? this.isRightArrow() : this.isLeftArrow();
-    if (!this.mFoldablePSDModel.isUltraScreenGState) {
-      // 非超大屏G态时，箭头不显示或宽度固定50% (此时密码盘的宽度固定为50%)
+    if (!this.mFoldablePSDModel.isThreeFoldGState) {
+      // 非三折叠G态时，箭头不显示或宽度固定50% (此时密码盘的宽度固定为50%)
       return needShowArrow ? BIG_FOLD_ARROW_WIDTH : 0;
     }
-    // 超大屏G态场景
+    // 三折叠G态场景
     if (this.keyboardPosition === Constants.NO_TOUCH_OR_SCREEN_MIDDLE) {
       // 如果密码盘位于中间，此时需同时显示左右箭头，箭头宽度均设置成25%
-      return ULTRA_SCREEN_G_STATE_ARROW_WIDTH;
+      return THREE_FOLD_G_STATE_ARROW_WIDTH;
     } else {
-      // 超大屏G态, 且密码盘不位于中间, 需要调整密码盘与箭头的宽度比例
+      // 三折叠G态, 且密码盘不位于中间, 需要调整密码盘与箭头的宽度比例
       return needShowArrow ? (1 - this.mFoldablePSDModel.gStateKeyboardWidthPercent) * 100 + '%' : 0;
     }
   }
 
   private getPasswordWidth(): Length {
-    if (this.mFoldablePSDModel.isUltraScreenGState && this.keyboardPosition !== Constants.NO_TOUCH_OR_SCREEN_MIDDLE) {
-      // 超大屏G态, 且密码盘不位于中间, 需要调整密码盘与箭头的宽度比例
+    if (this.mFoldablePSDModel.isThreeFoldGState && this.keyboardPosition !== Constants.NO_TOUCH_OR_SCREEN_MIDDLE) {
+      // 三折叠G态, 且密码盘不位于中间, 需要调整密码盘与箭头的宽度比例
       return this.mFoldablePSDModel.gStateKeyboardWidthPercent * 100 + '%';
     } else {
       return PASSWORD_WIDTH;
     }
   }
 
-  private isUltraScreenGStatusMiddleKeyboard() : boolean {
-    return this.mFoldablePSDModel.isUltraScreenGState && this.keyboardPosition === Constants.NO_TOUCH_OR_SCREEN_MIDDLE;
+  private isThreeFoldGStatusMiddleKeyboard() : boolean {
+    return this.mFoldablePSDModel.isThreeFoldGState && this.keyboardPosition === Constants.NO_TOUCH_OR_SCREEN_MIDDLE;
   }
 
   private getBrightness(): BrightnessOptions {

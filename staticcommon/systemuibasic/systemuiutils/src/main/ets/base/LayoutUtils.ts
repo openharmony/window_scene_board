@@ -33,7 +33,7 @@ export enum XTLayoutType {
 }
 
 /**
- * 超大屏折叠状态类型
+ * 三折叠折叠状态类型
  */
 export enum XTFoldStatus {
   NONE = 0, //非XT设备
@@ -111,7 +111,7 @@ export class LayoutUtils {
   }
 
   /**
-   * 获取超大屏的折叠屏显示模式
+   * 获取三折叠的折叠屏显示模式
    *
    * @returns 折叠屏显示模式
    */

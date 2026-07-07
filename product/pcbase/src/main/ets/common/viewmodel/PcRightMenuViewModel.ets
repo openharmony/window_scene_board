@@ -346,8 +346,11 @@ export default class PcRightMenuViewModel extends RightMenuViewModel {
         this.isClicked = false;
       }, CLICK_DELAY);
     };
-    subMenuInfo.push(createSubFolder);
-    subMenuInfo.push(this.fileFolderManager.getCreateShortcutMenu());
+    // subMenuInfo.push(createSubFolder);
+    // subMenuInfo.push(this.fileFolderManager.getCreateShortcutMenu());
+    let  emptyMenu = new MenuInfo();
+    emptyMenu.menuText = '暂不支持';
+    subMenuInfo.push(emptyMenu);
     subMenuInfo.push(this.getSeparatorItem(MenuConstants.KEY_DIVIDER_CREATE_SHORTCUT));
     this.fileFolderManager.pushDefaultBlankFile(subMenuInfo);
     createMenu.subMenuList = subMenuInfo;

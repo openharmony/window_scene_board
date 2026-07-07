@@ -32,6 +32,7 @@ import { WantAgentUtil } from '../../utils/WantAgentUtil';
 import { FloatingDisplayMode } from '../../banner/common/BannerFloatingModel';
 import { ASCFWindowMgrAdapter } from '../../adapter/ASCFWindowMgrAdapter';
 import { NotificationWantAgentInfo } from '../../model/NotificationAppInfo';
+import { OutdoorVm } from '../../vm/OutdoorVm';
 
 const TAG = 'LiveCardFloatingVm';
 const log = Logger.getLogHelper(LogDomain.SYS_UI);
@@ -79,6 +80,14 @@ export class LiveCardFloatingVm extends LiveItemBaseVm implements ILiveCardFloat
   public async canOpenFloating(params: LiveCardFloatingWantAgentParams): Promise<boolean> {
     const agentInfo = params.wantAgentInfo ?? await WantAgentUtil.parseWantAgentInfo(params.wantAgent);
     params.wantAgentInfo = agentInfo;
+    if (OutdoorVm.instance.isInOutdoorMode) {
+      log.showInfo(TAG, 'isInOutdoorMode is not need floating');
+      return false;
+    }
+    if (this.live.isDeliverNotification) {
+      log.showInfo(TAG, `${this.live.key} is deliver live, no need floating`);
+      return false;
+    }
 
     if (params.wantAgentInfo && !WantAgentUtil.isStartApp(params.wantAgentInfo)) {
       log.showWarn(TAG, `${this.live.key} is start app, no need floating`);

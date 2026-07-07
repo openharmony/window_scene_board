@@ -1,6 +1,8 @@
 # Define project specific obfuscation rules here.
 # You can include the obfuscation configuration files in the current module's build-profile.json5.
 #
+# For more details, see
+#   https://developer..com/consumer/cn/doc/harmonyos-guides/source-obfuscation
 
 # Obfuscation options:
 # -disable-obfuscation: disable all obfuscations
@@ -15,9 +17,7 @@
 # -keep-property-name: specifies property names that you want to keep
 # -keep-global-name: specifies names that you want to keep in the global scope
 
--enable-toplevel-obfuscation
--enable-export-obfuscation
 -enable-property-obfuscation
-
--keep-property-name
-*
+-enable-toplevel-obfuscation
+-enable-filename-obfuscation
+-enable-export-obfuscation

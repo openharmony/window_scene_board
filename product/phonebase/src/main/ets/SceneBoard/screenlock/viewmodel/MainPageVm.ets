@@ -25,22 +25,11 @@ import {
   WindowEvent
 } from '@ohos/frameworkwrapper';
 import { AnimationType, InteractiveType, themeWallpaperAniMgr } from '@ohos/themeservice';
-import {
-  SCBEventId,
-  scbGestureManager,
-  SCBSceneSessionManager,
-  SCBScreenSessionManager,
-  sSCBOobeManager,
-  GestureType
-} from '@ohos/windowscene';
-import { ThemeFreezeReason  } from '@ohos/themeservice/src/main/ets/service/themeservice/ThemeWallpaperAnimationManager';
+import { GestureType, ResUtils, SCBEventId, scbGestureManager, SCBSceneSessionManager, SCBScreenSessionManager, sSCBOobeManager } from '@ohos/windowscene';
+import { ThemeFreezeReason } from '@ohos/themeservice/src/main/ets/service/themeservice/ThemeWallpaperAnimationManager';
 import { OccludeKeygaurdScene } from '@ohos/windowscene/src/main/ets/scene/session/SCBSceneSessionManager';
-import {
-  immersiveFgCtrl,
-  ImmersiveFingerListener
-} from '@ohos/immersivekeyguard/src/main/ets/model/service/ImmersiveFingerControll';
+import { immersiveFgCtrl, ImmersiveFingerListener } from '@ohos/immersivekeyguard/src/main/ets/model/service/ImmersiveFingerControll';
 import Constants from '@ohos/screenlockcomponent/src/main/ets/common/Constants';
-import { ResUtils } from '@ohos/windowscene';
 import { immersiveVm } from '@ohos/immersivekeyguard/src/main/ets/viewmodel/ImmersiveVm';
 import { screenLockBlurButtonVM } from '@ohos/notificationcomponent/src/main/ets/vm/ScreenLockBlurButtonVM';
 import {
@@ -50,17 +39,20 @@ import {
   CacheValue,
   ClockOneShortConsts,
   CommonConstants,
+  FaceUnlockReason,
   FingerprintAcquireCode,
   GlobalStatusCache,
+  KeyGuardCacheKey,
+  KeyGuardMode,
   KeyguardStatusService,
   MeshConfig,
   OccludedStateManager,
   OccludedStateManagerListener,
+  PerformanceMonitorUtil,
   PowerUtils,
   screenLockInnerStateManager,
   ScreenLockState,
   ScreenLockToDesktopConsts,
-  ScreenLockTransitionState,
   ScreenLockVerifyService,
   ScreenOnOffListener,
   ScreenOnOffService,
@@ -68,17 +60,9 @@ import {
   StrongAuthStateManager,
   VerifyDataManager,
   VerifyInfo,
-  vibratorMgr,
-  KeyGuardMode,
-  KeyGuardCacheKey,
-  FaceUnlockReason,
-  PerformanceMonitorUtil,
+  vibratorMgr
 } from '@ohos/screenlockcommon';
-import {
-  DisplayStateManager,
-  eyeGazeSwingEvent,
-  FsmCallback
-} from '@ohos/screenlockcommon/Index';
+import { DisplayStateManager, eyeGazeSwingEvent, FsmCallback } from '@ohos/screenlockcommon/Index';
 import { SlStateBaseMgr, SlStateMgr } from '@ohos/screenlockcommon/src/main/ets/TsIndex';
 import { ClockEditorEntryMethod } from '@ohos/screenlockcommon/src/main/ets/record/report/PerformanceMonitorUtil';
 import { WallpaperStratege } from '@ohos/screenlockcommon/src/main/ets/bean/KeyGuardStatusEnum';
@@ -92,56 +76,34 @@ import { slUiStateMgr } from '@ohos/screenlockcommon/src/main/ets/manager/Screen
 import ScreenLockThemeManager from '@ohos/screenlockwidget/src/main/ets/common/theme/ScreenLockThemeManager';
 import { LockscreenThemeConfig } from '@ohos/screenlockwidget/src/main/ets/common/WidgetParam';
 import ScreenLockFormViewModel from '@ohos/screenlockwidget/src/main/ets/form/vm/ScreenLockFormViewModel';
-import SlideScreenLockVm, {
-  PinchGestureActionType,
-  SlideTouchType
-} from '@ohos/screenlockcomponent/src/main/ets/password/viewmodel/SlideScreenLockVm';
-import {
-  QuickToolConstants,
-  QuickToolsState
-} from '@ohos/screenlockcomponent/src/main/ets/quicktools/common/QuickToolConstants';
-import { CoreEventType } from '@ohos/screenlockcommon/src/main/ets/fsm/ScreenLockCoreFsm';
+import SlideScreenLockVm, { PinchGestureActionType, SlideTouchType } from '@ohos/screenlockcomponent/src/main/ets/password/viewmodel/SlideScreenLockVm';
+import { QuickToolConstants, QuickToolsState } from '@ohos/screenlockcomponent/src/main/ets/quicktools/common/QuickToolConstants';
+import { CoreEventType, CoreStateTypeUtils } from '@ohos/screenlockcommon/src/main/ets/fsm/ScreenLockCoreFsm';
 import { QuickToolUtil } from '@ohos/screenlockcomponent/src/main/ets/quicktools/common/StatusCacheUtil';
 import MultiSceneThemeManager from '@ohos/screenlockwidget/src/main/ets/common/theme/MultiSceneThemeManager';
 import { GestureNaviUtil } from '@ohos/screenlockcomponent/src/main/ets/utils/GestureNaviUtil';
 import { AodSlideAdapter } from '@ohos/screenlockcomponent/src/main/ets/adapter/AodSlideAdapter';
-import {
-  CoreStateTypeUtils
-} from '@ohos/screenlockcommon/src/main/ets/fsm/ScreenLockCoreFsm';
-import { MpEvent, MpStateTypeUtils, MpStateType, MpEventType } from '@ohos/screenlockcommon/src/main/ets/fsm/MainPageFsm';
+import { MpEvent, MpEventType, MpStateType, MpStateTypeUtils } from '@ohos/screenlockcommon/src/main/ets/fsm/MainPageFsm';
 import { ScreenLockFsmProxy } from '@ohos/screenlockcommon/src/main/ets/fsm/ScreenLockFsmProxy';
 import { SoStateTypeUtils } from '@ohos/screenlockcommon/src/main/ets/fsm/ScreenOffFsm';
 import { VerifyTipsService } from '@ohos/screenlockcomponent/src/main/ets/tips/service/VerifyTipsService';
-import {
-  EnableBackGestureEvent,
-  immersiveKgMgr,
-  scbStatusBarStatusManager
-} from '@ohos/systemuicommon';
+import { EnableBackGestureEvent, immersiveKgMgr, scbStatusBarStatusManager } from '@ohos/systemuicommon';
 import { Qualifier } from '@ohos/themeservicekit/Index';
 import lazy { v2Helper } from '@ohos/immersivekeyguard';
 import { SCBDefaultZIndex } from '../../scenemanager/SCBScreen';
-import {
-  slStateHelper as screenLockStateHelper
-} from '@ohos/screenlockcomponent/src/main/ets/screenlockstate/model/helper/SlStateHelper';
+import { slStateHelper as screenLockStateHelper } from '@ohos/screenlockcomponent/src/main/ets/screenlockstate/model/helper/SlStateHelper';
 import { slStateHelper } from '../model/helper/SlStateHelper';
-import {
-  SpecialModeManager,
-  SpecialModeChangeListener
-} from '@ohos/screenlockcomponent/src/main/ets/common/SpecialModeManager';
+import { SpecialModeChangeListener, SpecialModeManager } from '@ohos/screenlockcomponent/src/main/ets/common/SpecialModeManager';
 import { VibratorManagerEffect } from '@ohos/screenlockcommon/src/main/ets/manager/VibratorManager';
 import { SlMainStateType, WidgetStaticStateType } from '@ohos/screenlockcommon/src/main/ets/constants/SlStateType';
-import { WidgetArea } from '@ohos/screenlockcommon/src/main/ets/interface/ISlState';
+import { DownPosition, WidgetArea } from '@ohos/screenlockcommon/src/main/ets/interface/ISlState';
 import { SlBindState } from '../model/data/SlBindState';
 import { ExtDeviceUnLockEvent } from '../utils/ExtDeviceUnLockEvent';
-import { DownPosition } from '@ohos/screenlockcommon/src/main/ets/interface/ISlState';
 import { scbStatusBarVM } from '../../statusbar/viewmodel/SCBStatusBarVM';
 import sceneSessionManager from '@ohos.sceneSessionManager';
 import { text } from '@kit.ArkGraphics2D';
 import { MainPageHeightManger } from './MainPageHeightManger';
-import { UseScene } from '@ohos/screenlockwidget/src/main/ets/common/adapter/Constans';
-import { ClockAdapterFactory } from '@ohos/screenlockwidget/src/main/ets/clock/adapter/ClockAdapter';
 import { SlListWidgetBindState } from '@ohos/immersivekeyguard/src/main/ets/model/data/SlListWidgetBindState';
-import ThemeHelperUtil from '@ohos/screenlockwidget/src/main/ets/common/theme/ThemeHelperUtil';
 
 const TAG = 'MainPageVm';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.KG, TAG);
@@ -895,7 +857,7 @@ export class MainPageVm extends BaseVerifyViewVm {
    */
   public initScreenLockMeshConfig(isPortrait: boolean): void {
     const gridAmountY: number = clockLayoutHelper.getLayoutGridAmount(isPortrait).y;
-    if (this.isFingerprintEnable || IS_PAD || DeviceHelper.isUltraScreenProduct()) {
+    if (this.isFingerprintEnable || IS_PAD || DeviceHelper.isThreeFoldProduct()) {
       MeshConfig.maxScreenLockMesh = gridAmountY;
     } else {
       MeshConfig.maxScreenLockMesh = NORMAL_GRID_AMOUNT_Y;

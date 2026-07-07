@@ -157,6 +157,61 @@
         {
             "name": "wallpaper_editor",
             "value": "استخدام"
+        },
+      {
+        "name": "cancle",
+        "value": "يلغي"
+      },
+      {
+        "name": "set_wallpaper_all",
+        "value": "تعيين في وقت واحد"
+      },
+      {
+        "name": "set_wallpaper_desktop",
+        "value": "تعيين خلفية سطح المكتب"
+      },
+      {
+        "name": "set_wallpaper_lock",
+        "value": "تعيين خلفية شاشة القفل"
+      },
+      {
+        "name": "wallpaper_show_style",
+        "value": "كيفية عرض ورق الحائط"
+      },
+      {
+        "name": "screen_fit",
+        "value": "صالح للشاشة"
+      },
+      {
+        "name": "screen_full",
+        "value": "املأ الشاشة"
+      },
+      {
+        "name": "screen_center",
+        "value": "مركز"
+      },
+      {
+        "name": "screen_sctetch",
+        "value": "تمتد بالكامل"
+      },
+      {
+        "name": "screen_tile",
+        "value": "بلاط"
+      },
+      {
+        "name":"Desktop_setting",
+        "value":"إعدادات الشاشة الرئيسية",
+        "attr":{
+          "priority":"translate"
         }
+      },
+      {
+        "name": "image_decoding_failure",
+        "value": "مشكلة في الصورة، يُرجى إعادة المحاولة"
+      },
+      {
+      "name":"Desktop_individuation",
+      "value":"تخصيص الشاشة الرئيسية"
+      }
     ]
 }

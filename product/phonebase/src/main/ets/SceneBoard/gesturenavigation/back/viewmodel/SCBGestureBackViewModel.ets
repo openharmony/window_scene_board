@@ -214,6 +214,7 @@ export class SCBGestureBackViewModel {
       return;
     }
     if (isFullScreenResponse) {
+      log.showInfo('BackResponseRegion fullScreenResponse.');
       sysSceneSession.setResponseRegion([{ x: 0, y: 0, width: screenX, height: screenY }]);
     } else {
       const windowWidth: number = ArkUIAdapter.vp2px(this.gestureNavSidWidth);
@@ -221,6 +222,7 @@ export class SCBGestureBackViewModel {
       this.navSideDistToBottom);
       const windowPositionY: number = ArkUIAdapter.vp2px(ResUtils.getNumber($r('app.float.status_bar_phone_height')));
 
+      log.showInfo(`backResponseRegion(${this.persistentId}): ${windowWidth},${windowHeight};${screenX}-${windowPositionY}  `);
       sysSceneSession.setResponseRegion([{
         x: 0,
         y: windowPositionY,

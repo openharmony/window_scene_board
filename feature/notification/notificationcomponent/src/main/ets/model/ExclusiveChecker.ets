@@ -26,6 +26,11 @@ import type { NotificationBase } from '@ohos/systemuicommon/src/main/ets/model/N
 const log = LogHelper.getLogHelper(LogDomain.NC, 'ExclusiveChecker');
 // 互斥业务资源类型
 const EXCLUSIVE_RES_TYPE = 501;
+// 克隆应用包名列表
+const DELIVER_BUNDLE_NAMES = [
+  'com.deliver.tong', // 正式上架AG的包名
+  'com.deliver.iapps', // 老包名
+];
 // toast提示时长，按照规范超过1行文本提示使用3500ms
 const EXCLUSIVE_TOAST_DURATION = 3500;
 // toast离底部的间距，单位vp
@@ -120,10 +125,11 @@ export class ExclusiveChecker {
       if (!appName) {
         return;
       }
+      const deliverAppName = ResUtils.getInnerString($r('app.string.app_others'));
       const bottom = this.getToastBottom();
       log.showInfo(`Exclusive toast appName: ${appName}, bottom: ${bottom}`);
       promptAction.showToast({
-        message: $r('app.string.app_running_mutex_toast', '', appName),
+        message: $r('app.string.app_running_mutex_toast', deliverAppName, appName),
         duration: EXCLUSIVE_TOAST_DURATION,
         bottom,
       });
@@ -155,12 +161,19 @@ export class ExclusiveChecker {
 
   /**
    * 获取互斥toast距离底部的距离
+   * 1、没有AIBar时toast距离屏幕底部EXCLUSIVE_TOAST_BOTTOM
+   * 2、有AIBar时距离AIBar顶部EXCLUSIVE_TOAST_BOTTOM，因此要加上AIBar的bottom值
    * @returns
    */
   private getToastBottom(): number {
     try {
-      return windowManager.getWindowHeight() + EXCLUSIVE_TOAST_BOTTOM;
+      const aiBarRect = scbGestureManager.getAiBarRect();
+      if (!aiBarRect.top || !aiBarRect.height) {
+        return EXCLUSIVE_TOAST_BOTTOM;
+      }
+      return windowManager.getWindowHeight() - aiBarRect.top + EXCLUSIVE_TOAST_BOTTOM;
     } catch (e) {
+      log.error('getAiBarHeight error:', e);
       return EXCLUSIVE_TOAST_BOTTOM;
     }
   }

@@ -1039,7 +1039,7 @@ export struct EditModeRemoveBar {
       rect.left, rect.top, rect.width, rect.height);
     if (this.isTrackScreen(rect, display)) {
       // 跑道屏，如P40Pro, P30, Mate40Pro
-      this.marginTop = px2vp(rect.top);
+      this.marginTop = Math.max(px2vp(rect.top), StyleConstants.DEFAULT_32);
       this.paddingLeft = px2vp(rect.left + rect.width) + StyleConstants.DEFAULT_16;
       this.updateDeleteIconBottom();
     } else if (this.isCameraInUpperLeftCorner(rect, display)) {
@@ -1075,7 +1075,7 @@ export struct EditModeRemoveBar {
       this.isOuter ? StyleConstants.DEFAULT_32 : this.editModeStyleConfig.pageEditRemoveBarPaddingRight;
     this.paddingLeft = this.editModeStyleConfig.pageEditRemoveBarPaddingLeft;
     this.marginTop =
-      this.isOuter ? StyleConstants.DEFAULT_8 : this.editModeStyleConfig.pageEditRemoveBarMarginTop;
+      this.isOuter ? StyleConstants.DEFAULT_32 : (this.editModeStyleConfig.pageEditRemoveBarMarginTop + StyleConstants.DEFAULT_16);
     this.updateDeleteIconBottom();
   }
 

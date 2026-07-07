@@ -1,0 +1,2615 @@
+{
+    "string":[
+        {
+            "name":"keywords_during_call",
+            "value":"Hình động trong cuộc gọi",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"best_example_of_uploading_photos",
+            "value":"Ví dụ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wallpaper_G_only",
+            "value":"Chỉ áp dụng cho ba màn hình",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"side_face",
+            "value":"Mặt nghiêng",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"been_lifted",
+            "value":"Đã bắt đầu kéo",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"apply_theme",
+            "value":"Áp dụng chủ đề",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"back",
+            "value":"Trở lại",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"female",
+            "value":"Nữ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"select_from_folder",
+            "value":"Duyệt xem thư mục",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"adult",
+            "value":"Người trưởng thành",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"got_it",
+            "value":"OK",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"insufficient_quota",
+            "value":"Đã đạt đến giới hạn tạo AI trong tháng này.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"auto_align",
+            "value":"Tự động sắp xếp",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"current_theme_style",
+            "value":"Theo dõi chủ đề",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remove_this_theme",
+            "value":"Xóa chủ đề này?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wallpaper_display_mode",
+            "value":"Chọn kiểu phù hợp",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"add_wallpaper",
+            "value":"Thêm hình ảnh",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"my_theme_0",
+            "value":"Chủ đề của tôi",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"account_button_login",
+            "value":"Đăng nhập",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_main_pandora_title",
+            "value":"Màn hình chính và phong cách",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"picture_getting",
+            "value":"Đang nhận hình ảnh…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_main_time_travel_ongoing_content",
+            "value":"Đang tạo hình nền AI. Hãy chạm để xem.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"font_apply_failed",
+            "value":"Không áp dụng được phông chữ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"generate_failed",
+            "value":"Không tạo được.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"save_success",
+            "value":"Đã lưu thành công.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"confirm",
+            "value":"Xác nhận",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"customize",
+            "value":"Tùy chỉnh",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"screen_off_theme",
+            "value":"Luôn hiển thị",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_main_pandora_fail_content",
+            "value":"Tạo hình nền không thành công.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wallpaper_recommendation",
+            "value":"Đề xuất",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remove_theme_info",
+            "value":"Chủ đề này cùng với hình nền và gói biểu tượng đi kèm sẽ bị xóa.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"click_input_text",
+            "value":"Nhập văn bản",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"continue_generating",
+            "value":"Tạo thêm",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"full_screen_reading_exit",
+            "value":"Bạn đã thoát chế độ xem trước toàn màn hình",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aesthetic",
+            "value":"Tạo bố cục thông minh",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"apply",
+            "value":"Áp dụng",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"set_as_lockscreen",
+            "value":"Đặt làm màn hình khóa",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"save_picture",
+            "value":"Lưu hình ảnh",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"recover_Theme_App_massage",
+            "value":"Bạn cần cài đặt ứng dụng Chủ đề để sử dụng tính năng này.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_main_dimensional_travel_ongoing_content",
+            "value":"Đang tạo hình nền Phản chiếu động. Hãy chạm để xem.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_ways_display_awake_off",
+            "value":"Tắt",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"have_occlusion",
+            "value":"Khuôn mặt trong ảnh bị che khuất.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wallpaper_cannot_be_edited_in_a_small_window",
+            "value":"Không thể chỉnh sửa hình nền trong cửa sổ nhỏ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"end_of_service",
+            "value":"Tắt",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Desktop_setting",
+            "value":"Cài đặt màn hình chính",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ai_wallpaper_service_description_1",
+            "value":"Dịch vụ này yêu cầu kết nối %1$s cũng như cần đọc và tải lên/truyền hình ảnh để cung cấp các tính năng liên quan đến hình nền. Bằng việc chạm vào Đồng ý, bạn đồng ý với các điều khoản này và %2$s. Để biết thêm chi tiết về cách thông tin của bạn được xử lý, hãy tham khảo %3$s.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"HiSearch_title",
+            "value":"voice Search",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ai_wallpaper_service_name_3",
+            "value":"Dịch vụ chủ đề Du hành thời gian",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"photo_not_meet_have_label",
+            "value":"Không thể sử dụng ảnh này. Hãy chọn ảnh khác từ những ảnh được gợi ý.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"tip_button_text",
+            "value":"Tìm hiểu thêm",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wallpaper_M_only",
+            "value":"Chỉ áp dụng cho hai màn hình",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"image_decoding_failure",
+            "value":"Lỗi hình ảnh. Hãy thử lại.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"table_theme",
+            "value":"Màn hình chính",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"magic_screen",
+            "value":"Xem trước kép",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"edit_M_tip",
+            "value":"Hãy mở ra để vào chế độ hai màn hình để sửa.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"free_official_theme",
+            "value":"Chủ đề chính thức miễn phí",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"have_no_people",
+            "value":"Không phát hiện được khuôn mặt nào.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"generate_failed_origin_img_error",
+            "value":"Không tạo được.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"desktop_layout",
+            "value":"Bố cục",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"full_screen_reading_enter",
+            "value":"Bạn đã vào chế độ xem trước toàn màn hình",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aod_all_day_display",
+            "value":"Cả ngày",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"in_use",
+            "value":"Đang sử dụng",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screenlock_sign_entry",
+            "value":"Cách thiết lập chữ ký trên màn hình khóa",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"intelligent_status_on",
+            "value":"Bật",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"share_description",
+            "value":"Chia sẻ, tùy chỉnh, nổi bật cùng phụ kiện",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"enableTheme",
+            "value":"Đang áp dụng chủ đề…",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_generating_ai_wallpaper",
+            "value":"Chạm vào Áp dụng để tạo hình nền.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"update_photo",
+            "value":"Cập nhật",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"execution_timed_out",
+            "value":"Đã hết thời gian thao tác.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"continue",
+            "value":"Tiếp tục",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_main_pandora_finish_content",
+            "value":"Đã tạo hình nền AI. Hãy chạm để xem và áp dụng.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"tip_content",
+            "value":"Đưa hai ngón tay về gần nhau trên màn hình khóa hoặc màn hình chính để nhanh chóng thay đổi chủ đề và tùy chỉnh hình nền cũng như tiện ích.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_ways_display_awake_intelligent",
+            "value":"Thông minh",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"apply_wallpaper_info",
+            "value":"Áp dụng hình nền cho",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"recover",
+            "value":"Khôi phục",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"delete_fail",
+            "value":"Không xóa được.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"i_know",
+            "value":"Đã hiểu",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"management",
+            "value":"Quản lý",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"center_the_original_image",
+            "value":"Giữa",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"show_date",
+            "value":"Hiển thị ngày",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cover_screen",
+            "value":"Màn hình ngoài",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remove",
+            "value":"Xóa",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"auto_align_content",
+            "value":"Tự động lấp các khoảng trống khi ứng dụng được gỡ bỏ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"select_from_gallery",
+            "value":"Chọn từ Bộ sưu tập",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"interactive_theme_detail_tip",
+            "value":"Lưu ý: Áp dụng chủ đề này sẽ thay đổi phương thức mở khóa bằng khuôn mặt của bạn từ \"Mở khóa trực tiếp\" thành \"Vuốt để mở khóa\".",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pandora_service_unavailable",
+            "value":"Tạm thời không khả dụng. Hãy thử lại sau.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"recover_Theme_App",
+            "value":"Khôi phục ứng dụng Chủ đề?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"upload_photo_loading",
+            "value":"Đang tải…",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"reach_upper_limit",
+            "value":"Đã đạt đến số lượng hình nền tối đa. Hãy xóa bớt một số hình nền để thêm hình nền mới.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"cancel",
+            "value":"Hủy",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"preview_image",
+            "value":"Hình ảnh xem trước",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"intelligent",
+            "value":"Assistant·TODAY",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"resource_description",
+            "value":"Mô tả",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_main_dimensional_travel_finish_content",
+            "value":"Đã tạo hình nền Phản chiếu động mới. Hãy chạm để xem và áp dụng.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"more_online_themes",
+            "value":"Chủ đề khác",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"should_apply_current_theme",
+            "value":"Áp dụng chủ đề này?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"default_icon",
+            "value":"Cài đặt sẵn",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"keep_one_wallpaper",
+            "value":"Cần có ít nhất một hình nền.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_failed",
+            "value":"Không áp dụng được.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"agree",
+            "value":"Đồng ý",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wallpaper_F_only",
+            "value":"Chỉ áp dụng cho một màn hình",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Desktop_slide",
+            "value":"Vuốt xuống để tìm kiếm",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"keywords_outer_apply",
+            "value":"Ứng dụng",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"random",
+            "value":"Ngẫu nhiên",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"outside_screen_show",
+            "value":"Màn hình ngoài",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"recommend_theme",
+            "value":"Xem chi tiết",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"login_failed",
+            "value":"Không có kết nối Internet. Hãy thử lại sau.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"show_lock_screen_signature",
+            "value":"Chữ ký màn hình khóa",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aigc_generation_prompt",
+            "value":"Được tạo bởi voice AI",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"theme_title",
+            "value":"Chủ đề",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"default_font",
+            "value":"Cài đặt sẵn",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"theme_cannot_be_edited_in_a_small_window",
+            "value":"Không thể chỉnh sửa chủ đề trong cửa sổ nhỏ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"intelligent_settings",
+            "value":"Assistant·TODAY",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"te_cancel",
+            "value":"Hủy",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pandora_theme_upload_photo_tips",
+            "value":"%1$d. Tải lên ảnh có thể nhìn rõ khuôn mặt của một người.\n%2$d. Việc tạo hình ảnh có thể không hiệu quả với những đối tượng nhỏ tuổi.\n%3$d. Hình ảnh được tạo ra bởi AI có thể không đạt yêu cầu.\n%4$d. Không tải lên ảnh có nội dung thô tục, bạo lực hoặc phân biệt đối xử.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"show_lunar_date",
+            "value":"Hiển thị ngày âm lịch",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"undelete_toast",
+            "value":"Không thể xóa hình nền này.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"wallpaper_title",
+            "value":"Hình nền",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"uncompleted",
+            "value":"Tính năng sắp ra mắt.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"checked",
+            "value":"Đã chọn",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"exiting_current_page",
+            "value":"Quá trình tạo sẽ tiếp tục ngay cả khi bạn rời khỏi màn hình này.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"update_available",
+            "value":"Đã có bản cập nhật",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_style",
+            "value":"Phông chữ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"select_all",
+            "value":"Chọn tất cả",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"person_information",
+            "value":"Đặc điểm",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"try_out",
+            "value":"Dùng thử",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_restored",
+            "value":"Ứng dụng đã được khôi phục.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"regenerate",
+            "value":"Thử lại",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"covertheme_settings_title",
+            "value":"Màn hình chính, màn hình ngoài và kiểu",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"no_select",
+            "value":"Chưa chọn",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"untoggle_camera_mover",
+            "value":"Bỏ chọn mục này sẽ tắt hiệu ứng động.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_watch_info",
+            "value":"Áp dụng cho mặt đồng hồ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wallpaper_carousel_gallery",
+            "value":"Hình nền (Tối đa %d)",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"top_right",
+            "value":"Trên cùng bên phải",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"more_online_icon",
+            "value":"Thêm biểu tượng",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aod_theme",
+            "value":"Luôn hiển thị",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"keywords_outer_facard",
+            "value":"Tiện ích",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_dialog_title",
+            "value":"Áp dụng chủ đề cho",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"more_online_font",
+            "value":"Thêm phông chữ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"homescreen",
+            "value":"Màn hình chính",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"generate_failed_and_try_again",
+            "value":"Không tạo được. Vui lòng thử lại.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"preset_theme",
+            "value":"Chủ đề cài đặt sẵn",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"device_temperature_too_high",
+            "value":"Nhiệt độ thiết bị quá cao. Hãy thử lại sau.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"style_choose",
+            "value":"Kiểu",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"more_online_wallpapers",
+            "value":"Hình nền khác",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"camera_mover",
+            "value":"Động",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"lockscreen",
+            "value":"Màn hình khóa",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_main_time_travel_finish_content",
+            "value":"Đã tạo hình nền Du hành thời gian mới. Hãy chạm để xem và áp dụng.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"network_unavailable",
+            "value":"Không có kết nối Internet. Hãy kiểm tra các cài đặt mạng của bạn.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"delete_wallpaper",
+            "value":"Xóa hình nền",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"icon_size",
+            "value":"Kích cỡ biểu tượng màn hình chính",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"icon_size_tip",
+            "value":"Thao tác này sẽ không áp dụng cho thanh tác vụ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"icon_size_restore_default",
+            "value":"Đặt lại",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dock_color_style",
+            "value":"Màu sắc của thanh tác vụ thích ứng với",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dock_color_style_follow_window",
+            "value":"Hình nền và cửa sổ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dock_color_style_follow_system",
+            "value":"Chế độ hiển thị",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dock_color_style_follow_window_tips",
+            "value":"Thanh tác vụ sẽ thay đổi màu sắc theo màu của hình nền hoặc nội dung của cửa sổ được phóng to.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dock_color_style_follow_system_tips",
+            "value":"Ở Chế độ Giao diện tối màu, màu của thanh tác vụ sẽ trở nên tối hơn.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dock_auto_hide_style",
+            "value":"Ẩn thanh dock khi cửa sổ được phóng to hoặc tách ra",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"window_animation_title",
+            "value":"Thu nhỏ cực tiểu cửa sổ bằng",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"window_animation_attraction",
+            "value":"Hoạt ảnh dạng thần đèn",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"window_animation_default",
+            "value":"Hoạt ảnh mặc định",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ai_wallpaper_terms",
+            "value":"Điều khoản Sử dụng cho Chức năng Tạo bằng AI của Chủ đề Du hành thời gian",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"share_card_hint",
+            "value":"Để chia sẻ, hãy chạm vào thiết bị khác hoặc kéo và thả",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pandora_theme_description",
+            "value":"%1$d. Tải lên ảnh có thể nhìn rõ khuôn mặt của một người.\n%2$d. Hình ảnh được tạo bởi AI có thể không chính xác hoặc không phù hợp.\n%3$d. Không tải lên ảnh có nội dung thô tục, bạo lực hoặc phân biệt đối xử.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"male",
+            "value":"Nam",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"icon",
+            "value":"Biểu tượng",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"have_multi_people",
+            "value":"Trong ảnh chỉ nên có một người.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"continue_upload_image",
+            "value":"Chủ đề hiện tại sẽ bị xóa và một chủ đề mới sẽ được tạo. Tiếp tục?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"tip_cancel_text",
+            "value":"Đóng",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"tip_title",
+            "value":"Cá nhân hóa nhanh màn hình khóa và màn hình chính",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"photo_not_meet_no_label",
+            "value":"Không sử dụng ảnh này được. Vui lòng chọn một ảnh khác.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pop_up_content",
+            "value":"Đã đề xuất sử dụng hiệu ứng tĩnh. Hiệu ứng sống động đã tắt.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"infancy",
+            "value":"Trẻ em",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"scale_to_fill_screen",
+            "value":"Kéo giãn",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"tiling",
+            "value":"Ô nhỏ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"preview",
+            "value":"Xem trước",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"blur",
+            "value":"Làm mờ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"big_angle",
+            "value":"Góc không thích hợp.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_main_pandora_ongoing_content",
+            "value":"Đang tạo hình nền AI.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"get_best_results",
+            "value":"Tìm hiểu cách để có được kết quả tốt hơn",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"my_wallpapers",
+            "value":"Hình nền của tôi",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_sub_screen_info",
+            "value":"Áp dụng cho màn hình ngoài",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"choose_person_info",
+            "value":"Vui lòng chọn đặc điểm của bạn.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"low_pixel",
+            "value":"Độ phân giải hình ảnh quá thấp.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_watch_info_toast",
+            "value":"Không đồng bộ được. Vui lòng thử lại.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"my_downloads",
+            "value":"Đã tải xuống",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"change_wallpaper",
+            "value":"Thay đổi hình nền",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"preview_photo_loading",
+            "value":"Đang tải…",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"on_network",
+            "value":"Internet",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_current_theme_first",
+            "value":"Trước tiên, hãy áp dụng chủ đề.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dynamic",
+            "value":"Sống động",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"interactive",
+            "value":"Tương tác",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"save_carousel",
+            "value":"Lưu",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"login_in_settings",
+            "value":"Trước tiên, hãy đăng nhập vào ID HUAWEI của bạn trong mục Cài đặt.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"more_themes",
+            "value":"Chủ đề khác",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"photo_not_meet",
+            "value":"Không thể sử dụng ảnh này. Hãy chọn ảnh khác từ các ảnh chân dung nổi bật.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pandora_aesthetic_dialog_confirm",
+            "value":"OK",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"deselect_all",
+            "value":"Bỏ chọn tất cả",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"age_too_small_error",
+            "value":"Không tạo được. Chủ thể còn quá trẻ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ai_wallpaper_service_subtitle_1",
+            "value":"Hình ảnh được chọn sẽ được tải lên máy chủ đám mây để tạo hình nền bằng thuật toán AI dựa trên đám mây. Dịch vụ này yêu cầu các quyền sau đây:",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"generating_ai_wallpaper",
+            "value":"Đang tạo hình nền AI…",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"fill_screen",
+            "value":"Lấy đầy",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"generating_ai_wallpaper_need_time",
+            "value":"Đang tạo… (Mất khoảng %d phút)",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"edit_G_tip",
+            "value":"Hãy mở ra để vào chế độ ba màn hình để sửa.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"composition_failed",
+            "value":"Không soạn thảo được.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ai_wallpaper_service_stop_note_1",
+            "value":"Dịch vụ này sẽ không còn hoạt động nếu bạn tắt dịch vụ. Vẫn tắt?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"delete",
+            "value":"Xóa",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"add_theme",
+            "value":"Thêm chủ đề",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"keywords_outer_theme",
+            "value":"Chủ đề",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"occlusion_exists",
+            "value":"Bị che khuất",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"my_theme_d",
+            "value":"Chủ đề của tôi %d",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"file_getting",
+            "value":"Đang tải tệp tin xuống từ đám mây…",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"clear_facial_features",
+            "value":"Tính năng làm rõ nét",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"font_apply_successd",
+            "value":"Đã áp dụng phông chữ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"wallpaper_carousel_info",
+            "value":"Hình nền xoay vòng (%1$d/%2$d)",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"after_generate_wallpaper_enable_theme",
+            "value":"Chủ đề này sẽ được áp dụng cùng lúc.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"tip_play_text",
+            "value":"Phát",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aod_ways_display_awake_scheduled",
+            "value":"Theo kế hoạch",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"unsupported_moving_photo_wallpaper",
+            "value":"Hình nền động không được hỗ trợ trên màn hình chính.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"applyWallpaper",
+            "value":"Đang áp dụng hình nền…",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"content_reporting",
+            "value":"Báo cáo nội dung",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"keywords_cover_screen",
+            "value":"Màn hình ngoài",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"face_the_camera",
+            "value":"Nhìn trực diện",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"end_aigc_service_text",
+            "value":"Để biết thông tin chi tiết, vui lòng tham khảo %1$s và %2$s. Nếu bạn không muốn sử dụng dịch vụ này nữa, hãy chạm vào %3$s.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"center_and_fit",
+            "value":"Vừa",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"upload_photo",
+            "value":"Tải lên",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"main_screen",
+            "value":"Màn hình chính",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_sub_screen_info_subtext",
+            "value":"Bạn có thể sửa trong chủ đề Màn hình ngoài.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"intelligent_status_off",
+            "value":"Tắt",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"desktop_style_title",
+            "value":"Thanh lối tắt và thanh trạng thái",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"not_selected",
+            "value":"Chưa chọn",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"network_error",
+            "value":"Lỗi mạng. Vui lòng thử lại.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"insufficient_storage_toast",
+            "value":"Không cung cấp được dịch vụ chủ đề do bộ nhớ trong không đủ. Xóa tệp tin để giải phóng dung lượng.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"lock_layout_content",
+            "value":"Khi bật khóa chuyển này, bạn sẽ không thể di chuyển hoặc xóa các thành phần trên màn hình chính.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"lock_layout",
+            "value":"Khóa bố cục",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"end_of_service_1",
+            "value":"Tắt dịch vụ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_success",
+            "value":"Đã áp dụng thành công.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"full_screen_reading_page_one",
+            "value":"Trang xem trước số %d, vuốt sang trái hoặc phải bằng hai ngón tay để tải các màn hình chi tiết khác",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"current_theme",
+            "value":"Hiện tại",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"screen_reading_other_page",
+            "value":"Trang xem trước số %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"applying",
+            "value":"Đang sử dụng",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"switch_to_desktop_preview",
+            "value":"Chuyển sang xem trước màn hình chính",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"switch_to_lock_screen_preview",
+            "value":"Chuyển sang xem trước màn hình khóa",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"blur_slider_read_notes",
+            "value":"Chạm vào thanh trượt để kích hoạt và điều chỉnh độ làm mờ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"theme_data_service_permissions",
+            "value":"Thông báo Quyền hạn",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"about",
+            "value":"Giới thiệu",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"stop_theme_data_service_title",
+            "value":"Tắt Dịch vụ Chủ đề",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"theme_data_service",
+            "value":"Dịch vụ Chủ đề",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"more",
+            "value":"Thêm",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"theme_data_service_privacy",
+            "value":"Tuyên bố về Dịch vụ Chủ đề và Quyền riêng tư",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"theme_data_service_instructions",
+            "value":"Dịch vụ này yêu cầu kết nối Internet và cần các quyền Vị trí, Hoạt động thể chất, Kết nối thiết bị, và phải đọc dữ liệu vị trí, tập luyện và sức khỏe, thiết bị cũng như phương tiện (hình ảnh và video). Quyền này dùng để hỗ trợ các chủ đề cần hiển thị thông tin này và cung cấp các tính năng chủ đề tương tác. Để biết thêm chi tiết về cách thông tin cá nhân của bạn được xử lý, hãy tham khảo %1$s và %2$s. Bằng việc bật nút chuyển này, bạn đồng ý để chúng tôi cung cấp dịch vụ này cho bạn.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"stop_theme_data_service_message",
+            "value":"Thao tác này sẽ tắt Dịch vụ Chủ đề trên thiết bị này. Chủ đề và các tài nguyên khác của bạn sẽ mất khả năng tương tác và không còn có thể hiển thị dữ liệu của bạn nữa. Vẫn tắt?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"cam_mover_is_enabled_blur_is_not_supported",
+            "value":"Hiệu ứng động đã được bật và hiệu ứng làm mờ đã bị tắt.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"blur_is_enabled_Cam_mover_is_not_supported",
+            "value":"Hiệu ứng làm mờ đã được bật và hiệu ứng động đã bị tắt.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dof_off",
+            "value":"Độ sâu của trường ảnh đã tắt",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_dof_to_experience_dynamic",
+            "value":"Tắt hiệu ứng DoF để trải nghiệm \"Hình ảnh động\".",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_dynamic_to_experience_camera_mover",
+            "value":"Tắt \"Hình ảnh động\" để trải nghiệm hiệu ứng Động.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_dynamic_to_experience_dof",
+            "value":"Tắt \"Hình ảnh động\" để trải nghiệm hiệu ứng DoF.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"artistic_signature_does_not_overlap_with_main_subject",
+            "value":"Chữ ký cá nhân hóa không che mất chủ thể chính.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_camera_mover_to_experience_dynamic",
+            "value":"Tắt hiệu ứng Động để trải nghiệm \"Hình ảnh động\".",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"image_does_not_recognize_dof",
+            "value":"Không nhận dạng được chủ thể có độ sâu trường ảnh trong hình ảnh.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_dof_to_experience_camera_mover",
+            "value":"Tắt hiệu ứng DoF để trải nghiệm hiệu ứng Động.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"digital_clock_does_not_overlap_with_main_subject",
+            "value":"Đồng hồ kỹ thuật số không che mất chủ thể chính.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_camera_mover_to_experience_dof",
+            "value":"Tắt hiệu ứng Động để trải nghiệm hiệu ứng DoF.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dof_on",
+            "value":"Độ sâu của trường ảnh đang bật",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dof",
+            "value":"DoF",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"exit_pandora_dialog",
+            "value":"Lưu và áp dụng?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"multi_checkbox",
+            "value":"Hộp kiểm chọn nhiều mục",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screenlock_settings",
+            "value":"Màn hình khóa",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"clock_edit_tips",
+            "value":"Chạm đúp để sửa, chạm đúp và giữ để di chuyển đồng hồ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"theme_personalize_screen_reading_other_page",
+            "value":"Màn hình số %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"clock_style",
+            "value":"Kiểu đồng hồ %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"current_icon_checked",
+            "value":"Biểu tượng hiện tại, đã chọn",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"top_left",
+            "value":"Trên cùng bên trái",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"current_wallpaper_checked",
+            "value":"Hình nền hiện tại, đã chọn",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"clock_font_style",
+            "value":"Phông chữ đồng hồ %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"turn_off_dynamic",
+            "value":"Tắt hiệu ứng ảnh động",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"blurred",
+            "value":"Mờ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"left_of_center",
+            "value":"Bên trái trung tâm",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"theme_card_accessibility_text",
+            "value":"Vuốt sang trái hoặc phải bằng hai ngón tay để chuyển đổi chủ đề. Vuốt lên bằng hai ngón tay để xóa chủ đề.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"bottom_of_center",
+            "value":"Dưới cùng trung tâm",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"toggle_view",
+            "value":"Chuyển đổi chế độ xem",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"theme_personalize_full_screen_reading_page_one",
+            "value":"Màn hình số %d, vuốt sang trái hoặc phải để tải các hình nền khác.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"center",
+            "value":"Giữa",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"turn_on_dynamic",
+            "value":"Bật hiệu ứng ảnh động",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"bottom_right",
+            "value":"Dưới cùng bên phải",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"top_of_center",
+            "value":"Trên cùng trung tâm",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_to",
+            "value":"Đã kéo đến %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"clock_font_color",
+            "value":"Màu chữ đồng hồ %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"right_of_center",
+            "value":"Bên phải trung tâm",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"do_camera_mover",
+            "value":"Hiệu ứng động đang bật",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"button_text",
+            "value":"Nút Thêm chủ đề",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"switched_desktop_preview",
+            "value":"Đã chuyển sang chế độ xem trước màn hình chính",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"more_edits",
+            "value":"Thêm chỉnh sửa",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"lock_screen_clock",
+            "value":"Đồng hồ màn hình khóa",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"undo_camera_mover",
+            "value":"Hiệu ứng động đã tắt",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"switched_lock_screen_preview",
+            "value":"Đã chuyển sang chế độ xem trước màn hình khóa",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"bottom_left",
+            "value":"Dưới cùng bên trái",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"un_blurred",
+            "value":"Không mờ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"unchecked",
+            "value":"Chưa chọn",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"set_as_desktop",
+            "value":"Đã đặt làm màn hình chính",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screen_reading_first_page",
+            "value":"Phông chữ mặc định của hệ thống, trang xem trước số %d, vuốt sang trái hoặc phải để tải các màn hình chi tiết khác",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"start_generating",
+            "value":"Tạo",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"paused",
+            "value":"Đã tạm dừng",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"applied",
+            "value":"Đã áp dụng",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_dynamic_lead_finish_content",
+            "value":"Đã tạo tài nguyên Nhân vật động. Hãy chạm để xem và áp dụng.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_dynamic_lead_ongoing_content",
+            "value":"Đang tạo tài nguyên Nhân vật động. Hãy chạm để xem.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"played",
+            "value":"Đang phát",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"settings_detail_page_tip",
+            "value":"Chạm đúp để biết chi tiết",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"continue_update_image",
+            "value":"Chủ đề hiện tại sẽ bị xóa và một chủ đề mới sẽ được tạo. Tiếp tục?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"time_travel_generate_failed",
+            "value":"Không tạo được hình nền Du hành thời gian.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dimensional_travel_generate_failed",
+            "value":"Không tạo được hình nền Animirror.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_dynamic_lead_fail_content",
+            "value":"Tạo tài nguyên Nhân vật động không thành công. Hãy chạm để xem chi tiết.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"detail_page",
+            "value":"Trang xem trước",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_dynamic_lead_Unable_to_update_automatically",
+            "value":"Thư viện tài nguyên Nhân vật động đã đầy. Điều này có nghĩa là các tài nguyên sẽ không tự động cập nhật. Chạm để quản lý thư viện.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"lockscreen_preview",
+            "value":"Màn hình khóa",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"homescreen_preview",
+            "value":"Màn hình chính",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_dynamic_lead_automatically_updated_finish_content",
+            "value":"Các tài nguyên Nhân vật động đã được tự động cập nhật. Hãy chạm để xem.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aigc_theme_service_stop_note",
+            "value":"Dịch vụ này sẽ không còn có sẵn nếu bạn tắt dịch vụ. Vẫn tắt?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aigc_theme_service_privacy_statement",
+            "value":"Tuyên bố về AI Chủ đề và Quyền riêng tư",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aigc_theme_service_description",
+            "value":"Dịch vụ này yêu cầu kết nối %1$s cũng như cần đọc và tải lên/truyền hình ảnh. Quyền này được dùng để cung cấp các tính năng liên quan đến chủ đề. Chúng tôi chỉ thu thập thông tin cá nhân liên quan đến các tính năng bạn sử dụng. Để biết chi tiết, hãy tham khảo %2$s.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"read_theme_service_description_and_click_agree",
+            "value":"Vui lòng đọc kỹ tuyên bố trên. Bằng việc chạm vào Đồng ý, bạn đồng ý cho chúng tôi cung cấp dịch vụ này cho bạn.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aigc_theme_service_subtitle",
+            "value":"Dịch vụ này tải các hình ảnh được chọn lên đám mây, tại đây, dịch vụ sử dụng AI để tạo các tài nguyên chủ đề.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aigc_theme_privacy_statement",
+            "value":"Tuyên bố về Dịch vụ AI Chủ đề và Quyền riêng tư",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aigc_theme_service",
+            "value":"Dịch vụ AI Chủ đề",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"photo_selected",
+            "value":"Đã chọn ảnh",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_off_Desktop_resource_center_title",
+            "value":"Tắt ngăn kéo ứng dụng",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_off_Desktop_resource_center_cancel",
+            "value":"Hủy",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_off_Desktop_resource_center_close",
+            "value":"Tắt",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_off_Desktop_resource_center_content",
+            "value":"Khi tắt tính năng này, bạn có thể tìm thấy các ứng dụng trong ngăn kéo ứng dụng không được hiển thị ở bất kỳ nơi nào khác trong thư mục mới ở dưới cùng của màn hình chính.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"desktop_resource_center",
+            "value":"Ngăn kéo ứng dụng",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"desktop_resource_center_description",
+            "value":"Vuốt lên trên màn hình chính để hiển thị tất cả các ứng dụng đã cài đặt. Kéo một ứng dụng để thêm ứng dụng đó vào màn hình chính. Gỡ ứng dụng khỏi màn hình chính bằng cách chạm và giữ ứng dụng đó rồi chạm vào Gỡ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"waiting_closing_desktop_resource_center",
+            "value":"Đang tắt ngăn kéo ứng dụng…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_chest",
+            "value":"Ngăn kéo ứng dụng",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"is_off_app_chest_title",
+            "value":"Tắt ngăn kéo ứng dụng",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"waiting_closing_app_chest",
+            "value":"Đang tắt ngăn kéo ứng dụng…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_off_app_chest_content",
+            "value":"Khi tắt tính năng này, bạn có thể tìm thấy các ứng dụng trong ngăn kéo ứng dụng không được hiển thị ở bất kỳ nơi nào khác trong thư mục mới ở dưới cùng của màn hình chính.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_chest_description",
+            "value":"Vuốt lên trên màn hình chính để hiển thị tất cả các ứng dụng đã cài đặt. Kéo một ứng dụng để thêm ứng dụng đó vào màn hình chính. Gỡ ứng dụng khỏi màn hình chính bằng cách chạm và giữ ứng dụng đó rồi chạm vào Gỡ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"theme_icon",
+            "value":"Từ Chủ đề",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"moving_photo_dialog_content",
+            "value":"Vì hình nền động không thể dùng đồng thời với các hình nền khác nên hình nền này sẽ được áp dụng dưới dạng hình nền tĩnh.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"moving_photo_dialog_toast",
+            "value":"Hình nền động không thể dùng cùng lúc với các hình nền khác.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"moving_photo_dialog_title",
+            "value":"Thay đổi hình nền?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"nav_to_my_wallpaper_edit_tips",
+            "value":"Trên màn hình khóa, hãy đưa hai ngón tay về gần nhau hoặc chạm và giữ khu vực đồng hồ để sửa.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"waiting_closing",
+            "value":"Đang tắt…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_off_swipe_up_title",
+            "value":"Tắt \"Vuốt lên trên màn hình chính\"?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Desktop_SwipeUp",
+            "value":"Vuốt lên trên màn hình chính",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_off_swipe_up_content",
+            "value":"Khi tắt tính năng này, bạn sẽ không thể mở ngăn kéo ứng dụng. Các ứng dụng trong ngăn kéo ứng dụng không được hiển thị ở bất kỳ nơi nào khác sẽ có thể truy cập được trong một thư mục mới trên màn hình chính.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"moment_x_settings",
+            "value":"Màn hình chờ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"moment_x_smart_display_mode_title",
+            "value":"Thông minh",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"moment_x_state_off",
+            "value":"Tắt",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"moment_x_all_day_display_mode_title",
+            "value":"Cả ngày",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"color_style_not_support_in_desktop_tips",
+            "value":"Nếu chủ đề chỉ được áp dụng cho màn hình chính, kiểu đồng hồ của chủ đề sẽ không được áp dụng.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"color_style_system_title",
+            "value":"Màu của hệ thống",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"color_style_explanation",
+            "value":"Màu tô sáng được áp dụng cho đồng hồ và tiện ích trên màn hình chính, màn hình khóa và màn hình Luôn hiển thị, cũng như trong Bảng thông báo và Bảng điều khiển.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"color_style_base_title",
+            "value":"Màu cơ bản",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"color_style_suggested_title",
+            "value":"Màu đề xuất",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"color_style_button_text",
+            "value":"Màu tô sáng",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"apply_Lockscreen",
+            "value":"Đang áp dụng cho màn hình khóa…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"tip_share_text",
+            "value":"Chia sẻ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dock_item_recentcenter",
+            "value":"Trung tâm nhiệm vụ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dock_item_filemanager",
+            "value":"Tệp tin",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"touch",
+            "value":"chạm để chia sẻ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dock_item_recyclebin",
+            "value":"Thùng rác",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dock_item_visible",
+            "value":"Hiển thị trong thanh tác vụ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dock_item_appcenter",
+            "value":"Ngăn kéo ứng dụng",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"unlock_set",
+            "value":"Bạn có thể %1$s chủ đề này với những người khác.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"online_icons",
+            "value":"Biểu tượng có thể tải xuống",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"online_wallpapers",
+            "value":"Hình nền có thể tải xuống",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"online_themes",
+            "value":"Chủ đề có thể tải xuống",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"online_fonts",
+            "value":"Phông chữ có thể tải xuống",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screen_load_other_detail_page",
+            "value":"Vuốt sang trái hoặc phải bằng hai ngón tay để tải các bản xem trước khác. Chạm đúp vào bản xem trước để kích hoạt bản xem trước đó.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screenlock_cannot_be_edited_in_a_small_window",
+            "value":"Không thể chỉnh sửa màn hình khóa trong cửa sổ di động.",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

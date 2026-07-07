@@ -22,7 +22,6 @@ import { AccessibilityLevel } from '@ohos/systemuicommon/src/main/ets/accessibil
 import { ThemeServiceHelper } from '@ohos/wallpapercomponent/src/main/ets/themeassistant/ThemeServiceHelper';
 import { ScbState } from '@ohos/wallpapercomponent/src/main/ets/themeassistant/ThemeConstant';
 import {
-  ApsUtils,
   DeviceHelper,
   EventConstants,
   EventManager,
@@ -32,120 +31,97 @@ import {
   ViewCallback,
   viewMgrPolicy,
   ViewType,
-  WallpaperData,
+  WallpaperData
 } from '@ohos/frameworkwrapper';
-import { ResUtils, SCBSceneSessionManager } from '@ohos/windowscene';
-import {
-  CoreStateType,
-  CoreStateTypeUtils
-} from '@ohos/screenlockcommon/src/main/ets/fsm/ScreenLockCoreFsm';
-import { FinishCallback } from '@ohos/screenlockcomponent/src/main/ets/onemirror/service/OneMirrorService';
-import { MirrorScene } from '@ohos/screenlockcomponent/src/main/ets/onemirror/service/OneMirrorService';
-import { OneMirrorListener } from '@ohos/screenlockcomponent/src/main/ets/onemirror/service/OneMirrorService';
-import { OneMirrorService } from '@ohos/screenlockcomponent/src/main/ets/onemirror/service/OneMirrorService';
-import { MpStateTypeUtils, MpStateType } from '@ohos/screenlockcommon/src/main/ets/fsm/MainPageFsm';
+import { ResUtils } from '@ohos/windowscene';
+import { CoreStateType, CoreStateTypeUtils } from '@ohos/screenlockcommon/src/main/ets/fsm/ScreenLockCoreFsm';
+import { FinishCallback, MirrorScene, OneMirrorListener, OneMirrorService } from '@ohos/screenlockcomponent/src/main/ets/onemirror/service/OneMirrorService';
+import { MpEventType, MpStateType, MpStateTypeUtils } from '@ohos/screenlockcommon/src/main/ets/fsm/MainPageFsm';
 import { SlObserverProxy } from '@ohos/screenlockcomponent/src/main/ets/observer/SlObserverProxy';
 import { VerifyResultInfo } from '@ohos/screenlockcomponent/src/main/ets/tips/service/VerifyTipsService';
 import {
   AccessibilityUtil,
   CacheValue,
+  CameraStateManager,
+  CcmOption,
+  ClockAniAvailableFromDesktopStateWrapper,
+  ClockAodAndDesktopAnimType,
+  CommonConstants,
+  FingerprintAcquireCode,
   GlobalStatusCache,
+  KeyGuardMode,
+  KeyguardStatusService,
   NotificationStateManager,
   PerformanceMonitorUtil,
+  ScreenBp,
   screenLockInnerStateManager,
   ScreenLockToDesktopConsts,
   slClockOneShotToDesktopService,
+  SlFeatureType,
+  SlStorageKey,
   slWallpaperMgr,
   SLWallpaperState,
   SLWallpaperType,
   SLWallpaperVisibleScene,
-  CameraStateManager,
-  VerifyDataManager,
-  CommonConstants,
-  FingerprintAcquireCode,
-  SlStorageKey,
-  KeyguardStatusService,
   StatusCacheConst,
-  SlFeatureType,
-  CcmOption,
-  KeyGuardMode,
-  ClockAniAvailableFromDesktopStateWrapper,
+  VerifyDataManager,
 } from '@ohos/screenlockcommon';
 import {
+  DisplayStateListener,
+  DisplayStateManager,
+  HiKGReportBase,
+  PNAMEID,
+  PVERSIONID,
+  SettingDbUtils,
+  SLUETag,
   StateTransferAction,
   TimerScene,
   TimerUtil,
-  SettingDbUtils,
-  DisplayStateManager,
-  DisplayStateListener,
-  HiKGReportBase,
-  SLUETag,
-  PNAMEID,
-  PVERSIONID,
   TraceTag,
 } from '@ohos/screenlockcommon/Index';
 import { SlStateBaseMgr } from '@ohos/screenlockcommon/src/main/ets/TsIndex';
 import { AuthType } from '@ohos/screenlockcommon/src/main/ets/utils/AccountHelper';
-import {
-  AestheticColorArgs,
-  ClockLayout,
-  IThemeParam,
-  LockscreenThemeConfig,
-} from '@ohos/screenlockwidget/src/main/ets/common/WidgetParam';
-import {
-  immersiveFgCtrl,
-  ImmersiveFingerListener
-} from '@ohos/immersivekeyguard/src/main/ets/model/service/ImmersiveFingerControll';
+import { AestheticColorArgs, ClockLayout, IThemeParam, LockscreenThemeConfig, } from '@ohos/screenlockwidget/src/main/ets/common/WidgetParam';
+import { immersiveFgCtrl, ImmersiveFingerListener } from '@ohos/immersivekeyguard/src/main/ets/model/service/ImmersiveFingerControll';
 import Constants from '@ohos/screenlockcomponent/src/main/ets/common/Constants';
 import ThemeHelperUtil, { LockManifest } from '@ohos/screenlockwidget/src/main/ets/common/theme/ThemeHelperUtil';
-import {
-  AnyClock,
-} from '@ohos/screenlockwidget/src/main/ets/editsheet/models/AnyClock';
+import { AnyClock, } from '@ohos/screenlockwidget/src/main/ets/editsheet/models/AnyClock';
 import {
   clockLayoutHelper,
   DEFAULT_CLOCK_LAYOUT_WIDTH_AMOUNT,
   N4_CLOCK_LAYOUT_WIDTH_AMOUNT
 } from '@ohos/screenlockwidget/src/main/ets/clock/common/ClockLayoutHelper';
 import { slStateHelper } from '../model/helper/SlStateHelper';
-import { slStateHelper as WidgetStateHelper} from '@ohos/screenlockwidget/src/main/ets/common/utils/SlStateHelper';
 import { SlLockIconBindState } from '@ohos/screenlockcomponent/src/main/ets/password/viewmodel/SlLockIconBindState';
-import ScreenLockFormViewModel, {
-  ShowFormPanelScene
-} from '@ohos/screenlockwidget/src/main/ets/form/vm/ScreenLockFormViewModel';
+import ScreenLockFormViewModel, { ShowFormPanelScene } from '@ohos/screenlockwidget/src/main/ets/form/vm/ScreenLockFormViewModel';
 import lazy OuterScreenLockFormViewModel from '@ohos/screenlockwidget/src/main/ets/form/vm/OuterScreenLockFormViewModel';
 import { SlBindState } from '../model/data/SlBindState';
 import { SlAnimScene } from '@ohos/screenlockcomponent/src/main/ets/common/anim/SlAnimConstants';
-import SlideScreenLockVm, {
-  SlideTouchType
-} from '@ohos/screenlockcomponent/src/main/ets/password/viewmodel/SlideScreenLockVm';
-import { LockscreenEditWeekParams, HiKGReportTimeout, TIMEOUT_PARAMS } from '@ohos/screenlockcommon/src/main/ets/record/report/PerformanceMonitorUtil';
+import SlideScreenLockVm, { SlideTouchType } from '@ohos/screenlockcomponent/src/main/ets/password/viewmodel/SlideScreenLockVm';
+import { HiKGReportTimeout, LockscreenEditWeekParams, TIMEOUT_PARAMS } from '@ohos/screenlockcommon/src/main/ets/record/report/PerformanceMonitorUtil';
 import { immersiveVm } from '@ohos/immersivekeyguard/src/main/ets/viewmodel/ImmersiveVm';
 import TemporaryPromptViewModel, { HidePromptCode } from '@ohos/screenlockcomponent/src/main/ets/fingerprint/TemporaryPromptViewModel';
 import { ScreenLockVc } from '@ohos/screenlockcomponent/src/main/ets/common/ScreenLockVc';
 import {
+  ImmersiveOneMirror,
+  OneMirrorAnimateCallback,
   OneMirrorAnimationPara,
   OneMirrorLayoutPara,
   OneMirrorLayoutType,
-  OneMirrorSceneParaData,
-  OneMirrorAnimateCallback,
-  ImmersiveOneMirror
+  OneMirrorSceneData,
+  OneMirrorSceneParaData
 } from '@ohos/screenlockcomponent/src/main/ets/onemirror/utils/OneMirrorParaUtil';
 import { OneMirrorStrategyContext } from '@ohos/screenlockcomponent/src/main/ets/onemirror/strategy/OneMirrorStrategyContext';
-import { SpecialModeViewData } from '@ohos/screenlockcomponent/src/main/ets/common/SpecialModeManager';
+import { SpecialModeChangeListener, SpecialModeManager, SpecialModeViewData } from '@ohos/screenlockcomponent/src/main/ets/common/SpecialModeManager';
 import { VerifyTipsUtils } from '@ohos/screenlockcomponent/src/main/ets/tips/utils/VerifyTipsUtils';
-import {
-  SpecialModeManager,
-  SpecialModeChangeListener
-} from '@ohos/screenlockcomponent/src/main/ets/common/SpecialModeManager';
 import ScreenLockFormPanelMeshConfig from '@ohos/screenlockwidget/src/main/ets/form/ScreenLockFormPanelMeshConfig';
-import { osAccount, systemParameterEnhance } from '@kit.BasicServicesKit';
+import { osAccount } from '@kit.BasicServicesKit';
 import { SlClockBindState } from '@ohos/screenlockwidget/src/main/ets/clock/model/data/SlClockBindState';
 import { SlClockLocateState } from '@ohos/screenlockwidget/src/main/ets/clock/model/data/SlClockLocateState';
 import { SlListWidgetBindState } from '@ohos/immersivekeyguard/src/main/ets/model/data/SlListWidgetBindState';
 import { SlFingerprintBindState } from '@ohos/screenlockcomponent/src/main/ets/screenlockstate/model/data/SlFingerprintBindState';
 import { SlClockStaticState } from '@ohos/screenlockwidget/src/main/ets/clock/model/data/SlClockStaticState';
-import ScreenLockSpaceAnimationViewModel
-  from '@ohos/screenlockcomponent/src/main/ets/password/viewmodel/ScreenLockSpaceAnimationViewModel';
+import ScreenLockSpaceAnimationViewModel from '@ohos/screenlockcomponent/src/main/ets/password/viewmodel/ScreenLockSpaceAnimationViewModel';
 import { ScreenLockSpaceBlurData } from '@ohos/screenlockcommon/src/main/ets/manager/ScreenLockSpaceAniOptions';
 import MirrorAniConfig from '@ohos/screenlockcomponent/src/main/ets/onemirror/model/MirrorAnimationConf';
 import { MainPageVm } from '../viewmodel/MainPageVm';
@@ -153,50 +129,30 @@ import MultiSceneThemeManager, { DataType } from '@ohos/screenlockwidget/src/mai
 import { clockLayoutParam } from '@ohos/screenlockwidget/src/main/ets/clock/common/ClockLayoutParam';
 import { clockWidgetConfigManager } from '@ohos/screenlockwidget/src/main/ets/clock/common/ClockWidgetConfigManager';
 import PasswordConstants from '@ohos/screenlockcomponent/src/main/ets/password/common/PasswordConstants';
-import {
-  immersiveKgMgr,
-  IState,
-  OnStateChangeListener,
-  StateType } from '@ohos/systemuicommon/src/main/ets/TsIndex';
-import { OneMirrorSceneData } from '@ohos/screenlockcomponent/src/main/ets/onemirror/utils/OneMirrorParaUtil';
-import OneMirrorAnimCtlFactory  from '@ohos/screenlockcomponent/src/main/ets/onemirror/viewmodel/OneMirrorAnimCtlFactory';
+import { ImmersiveAodStyle, immersiveKgMgr, IState, OnStateChangeListener, StateType } from '@ohos/systemuicommon/src/main/ets/TsIndex';
+import OneMirrorAnimCtlFactory from '@ohos/screenlockcomponent/src/main/ets/onemirror/viewmodel/OneMirrorAnimCtlFactory';
 import { screenLockBlurButtonVM } from '@ohos/notificationcomponent/src/main/ets/vm/ScreenLockBlurButtonVM';
 import { ClockViewVc } from '../component/subviewcontrol/ClockViewVc';
 import { CCMParamUtil } from '@ohos/screenlockwidget/src/main/ets/clock/common/CCMParamUtil';
-import {
-  ScreenLockWallpaperChangeEvent
-} from '@ohos/systemuicommon/src/main/ets/immersivekeyguardcommon/event/ImmersiveEvent';
+import { ScreenLockWallpaperChangeEvent } from '@ohos/systemuicommon/src/main/ets/immersivekeyguardcommon/event/ImmersiveEvent';
 import { screenLockGreetModel } from '@ohos/screenlockcomponent/src/main/ets/greet/model/ScreenLockGreetModel';
-import { SlBindStateType,
-  SlMainStateType,
-  SlStaticStateType,
-  SlSubStateType} from '@ohos/screenlockcommon/src/main/ets/constants/SlStateType';
+import { SlBindStateType, SlMainStateType, SlStaticStateType, SlSubStateType } from '@ohos/screenlockcommon/src/main/ets/constants/SlStateType';
 import { SlGreetModeReportScene } from '@ohos/screenlockcomponent/src/main/ets/greet/constant/Constants';
-import { UltraScreenStatus } from '@ohos/screenlockcommon/src/main/ets/utils/DisplayUtils';
-import { ScreenBp } from '@ohos/screenlockcommon';
+import { ThreeFoldStatus } from '@ohos/screenlockcommon/src/main/ets/utils/DisplayUtils';
 import { slUiStateMgr } from '@ohos/screenlockcommon/src/main/ets/manager/ScreenLockUiStateManager';
 import { ISlStateChangeListener } from '@ohos/screenlockcommon/src/main/ets/interface/ISlStateChangeListener';
-import { ScreenLockFsmProxy, EventCallback } from '@ohos/screenlockcommon/src/main/ets/fsm/ScreenLockFsmProxy';
-import { MpEventType } from '@ohos/screenlockcommon/src/main/ets/fsm/MainPageFsm';
+import { EventCallback, ScreenLockFsmProxy } from '@ohos/screenlockcommon/src/main/ets/fsm/ScreenLockFsmProxy';
 import { ICommand } from '@ohos/screenlockwidget/src/main/ets/common/command/Command';
 import { FormOutputEventType, IEvent } from '@ohos/screenlockwidget/src/main/ets/common/command/Event';
-import { BatteryLayout } from '@ohos/screenlockwidget/src/main/ets/common/WidgetParam';
 import { BaseConfig } from '@ohos/screenlockwidget/src/main/ets/common/adapter/FeatureConfig';
-import { ClockAdapterFactory } from '@ohos/screenlockwidget/src/main/ets/clock/adapter/ClockAdapter';
-import { UseScene } from '@ohos/screenlockwidget/src/main/ets/common/adapter/Constans';
-import { ClockAdapter } from '@ohos/screenlockwidget/src/main/ets/clock/adapter/ClockAdapter';
-import { ConfigType } from '@ohos/screenlockwidget/src/main/ets/common/adapter/Constans';
+import { ClockAdapter, ClockAdapterFactory } from '@ohos/screenlockwidget/src/main/ets/clock/adapter/ClockAdapter';
+import { ConfigType, UseScene } from '@ohos/screenlockwidget/src/main/ets/common/adapter/Constans';
 import { SlVisualVc } from '../visualManager/SlVisualVc';
 import lazy { ScreenLockFoldExpandAnimUtil } from '@ohos/screenlockcommon/src/main/ets/utils/ScreenLockFoldExpandAnimUtil';
 import { QuickToolUtil } from '@ohos/screenlockcomponent/src/main/ets/quicktools/common/StatusCacheUtil';
-import {
-  QuickToolConstants,
-  QuickToolsState
-} from '@ohos/screenlockcomponent/src/main/ets/quicktools/common/QuickToolConstants';
+import { QuickToolConstants, QuickToolsState } from '@ohos/screenlockcomponent/src/main/ets/quicktools/common/QuickToolConstants';
 import { MirrorsScene } from '@ohos/screenlockcomponent/src/main/ets/onemirror/constants/MirrorToEndConst';
-import OneMirrorAnimController
-  from '@ohos/screenlockcomponent/src/main/ets/onemirror/viewmodel/OneMirrorAnimController';
-import { PosterFontParams } from '@ohos/screenlockcommon/src/main/ets/record/report/PerformanceMonitorUtil';
+import OneMirrorAnimController from '@ohos/screenlockcomponent/src/main/ets/onemirror/viewmodel/OneMirrorAnimController';
 import lazy { v2Helper } from '@ohos/immersivekeyguard';
 import { TextEmojiHelper } from '@ohos/systemuicommon/src/main/ets/utils/TextEmojiHelper';
 import parameter from '@ohos.systemParameterEnhance';
@@ -213,7 +169,7 @@ const ANIMATION_DURATION_THRESHOLD: number = 8;
 const IS_PAD: boolean = DeviceHelper.isPadOr2in1PcType();
 const IS_SMALL_FOLD: boolean = DeviceHelper.isSmallFoldProduct();
 const IS_FOLD_BUT_NOT_SMALL_FOLD: boolean = DeviceHelper.isFoldButNotSmallFoldProduct();
-const IS_ULTRA_SCREEN = DeviceHelper.isUltraScreenProduct();
+const IS_THREE_FOLD = DeviceHelper.isThreeFoldProduct();
 const IS_LARGE_FOLD: boolean = DeviceHelper.isLargeInFoldProduct();
 
 const SHOW_EDITOR: string = 'showEditor';
@@ -249,6 +205,20 @@ const NORMAL_SHOW: MainPageViewParam = {
   slWallpaperScale: Constants.DEFAULT_WALLPAPER_SCALE,
   blurRadius: Constants.DEFAULT_BLUR_RADIUS,
   lockIconOpacity: Constants.DEFAULT_HOME_VIEW_OPACITY,
+  clockOpacity: Constants.DEFAULT_HOME_VIEW_OPACITY,
+  listVisibility: Visibility.Visible
+};
+
+const FAKE_AOD_SHOW: MainPageViewParam = {
+  slVisibility: Visibility.Visible,
+  wallpapreTranslate: 0,
+  zoomRatio: Constants.DEFAULT_ZOOM_RATIO,
+  slideRatio: Constants.DEFAULT_SLIDE_RATIO,
+  slOpacity: Constants.DEFAULT_HOME_VIEW_OPACITY,
+  wallpaperScale: undefined,
+  slWallpaperScale: Constants.DEFAULT_WALLPAPER_SCALE,
+  blurRadius: Constants.DEFAULT_BLUR_RADIUS,
+  lockIconOpacity: Constants.MAX_VIEW_OPACITY,
   clockOpacity: Constants.DEFAULT_HOME_VIEW_OPACITY,
   listVisibility: Visibility.Visible
 };
@@ -356,6 +326,7 @@ export interface MainPageOperateParams {
   lockManifestParam: LockManifest;
   themeClockParam?: IThemeParam;
   spaceAniBlurOpt: ScreenLockSpaceBlurData;
+  aodStyle?: ImmersiveAodStyle;
 }
 
 /**
@@ -376,6 +347,12 @@ export class MainPageVc extends ScreenLockVc<MpStateType> {
   private _specialModeViewData: SpecialModeViewData = SpecialModeManager.getInstance().getSpecialModeViewData();
   private clockAdapter: ClockAdapter = ClockAdapterFactory.wrapper(UseScene.MAIN_PAGE);
   private clockConfig: BaseConfig = new BaseConfig();
+  private clockAnimMap: Map<MirrorsScene, () => void> = new Map([
+    [MirrorsScene.SL_TO_AOD, () => slClockOneShotToDesktopService.doSlToPartAodClockAnim()],
+    [MirrorsScene.SL_TO_SCREEN_OFF, () => slClockOneShotToDesktopService.doNoMirrorToPartAod()],
+    [MirrorsScene.AOD_TO_SL, () => slClockOneShotToDesktopService.doPartAodToSlClockAnim()],
+    [MirrorsScene.SCREEN_OFF_TO_SL_END, () => slClockOneShotToDesktopService.doNoMirrorPartAodToSl()],
+  ]);
   // 当前是否关闭时钟阴影
   private disableClockShadow: boolean = false;
 
@@ -482,6 +459,7 @@ export class MainPageVc extends ScreenLockVc<MpStateType> {
   }
 
   private onPageShow() {
+    this.setMainPageParam(FAKE_AOD_SHOW);
     this.checkSetOneShotClockOpacity();
 
     if (CoreStateTypeUtils.isInMainPage(this.slObserverProxy.getCoreFsmState(this._persistentId))) {
@@ -505,17 +483,34 @@ export class MainPageVc extends ScreenLockVc<MpStateType> {
   }
 
   /**
-   * 重新唤醒
+   * 从假AOD态重新唤醒
    */
   private readonly _wakeUpStateTransferAction: StateTransferAction<MpStateType> = {
     isStateTransferMatched: (oldState: MpStateType, newState: MpStateType): boolean => {
-      return !MpStateTypeUtils.isScreenOffState(newState);
+      return MpStateTypeUtils.isFakeAodState(oldState) && !MpStateTypeUtils.isScreenOffState(newState);
     },
     targetAction: () => {
       log.showInfo('wakeUpStateTransferAction');
+      this._mainPageVm?.handleFakeAodRecover();
     }
   };
-
+  /**
+   * 进入锁屏Fake AOD
+   */
+  private readonly stateChangeToFakeAod: StateTransferAction<MpStateType> = {
+    isStateTransferMatched: (oldState: MpStateType, newState: MpStateType): boolean => {
+      return (!MpStateTypeUtils.isNormalShowState(oldState) && !MpStateTypeUtils.isEditPreviewState(oldState) &&
+        MpStateTypeUtils.isFakeAodState(newState));
+    },
+    prepareAction: () => {
+      slClockOneShotToDesktopService.doDesktopToAodClockAnim();
+      this.slBindState.setSlVisibility(Visibility.Visible);
+    },
+    targetAction: () => {
+      log.showInfo('enterNormalStateTransferAction');
+      this.setMainPageParam(FAKE_AOD_SHOW);
+    }
+  };
   /**
    * 锁屏首页进入锁屏编辑预览态
    */
@@ -595,12 +590,57 @@ export class MainPageVc extends ScreenLockVc<MpStateType> {
       this.resetWallpaperScale();
     }
   };
+  /**
+   * 编辑预览态-》锁屏态
+   */
+  private readonly stateChangeEditShowToFakeAod: StateTransferAction<MpStateType> = {
+    isStateTransferMatched: (oldState: MpStateType, newState: MpStateType): boolean => {
+      return (MpStateTypeUtils.isEditPreviewState(oldState) &&
+        (MpStateTypeUtils.isNormalShowState(newState) || MpStateTypeUtils.isFakeAodState(newState)));
+    },
+    prepareAction: () => {
+      this.updateBgWallpaperState(true);
+      slWallpaperMgr.exitSlWallpaperScene(SLWallpaperType.TYPE_EDIT_STYLE, SLWallpaperVisibleScene.SCENE_SCREEN_EDIT);
+      PerformanceMonitorUtil.setOutScreenLockEditorMoStart();
+      if (immersiveKgMgr.getImmersiveDisplayState().isImmersive()) {
+        this.slBindState.setIsImmersiveShowing(true);
+      }
+      Trace.start(HIDE_EDITOR);
+    },
+    animationParam: {
+      curve: curves.interpolatingSpring(0, Constants.PSD_MASS, 228, 30),
+      onFinish: () => {
+        Trace.end(HIDE_EDITOR);
+        PerformanceMonitorUtil.setOutScreenLockEditorMoEnd();
+        this.updateBgWallpaperState(false);
+      }
+    },
+    targetAction: () => {
+      log.info('stateChangeEditShowToFakeAod');
+      this.exitEditState();
+    }
+  };
+  /**
+   * 从编辑外部态或全屏态返回锁屏
+   */
+  private readonly stateChangeEditFullShowToFakeAod: StateTransferAction<MpStateType> = {
+    isStateTransferMatched: (oldState: MpStateType, newState: MpStateType): boolean => {
+      return (MpStateTypeUtils.isEditState(oldState) && !MpStateTypeUtils.isEditPreviewState(oldState) &&
+        (MpStateTypeUtils.isNormalShowState(newState) || MpStateTypeUtils.isFakeAodState(newState)));
+    },
+    targetAction: () => {
+      slWallpaperMgr.exitSlWallpaperScene(SLWallpaperType.TYPE_EDIT_STYLE, SLWallpaperVisibleScene.SCENE_SCREEN_EDIT);
+      this.exitEditState();
+    }
+  };
 
   private resetWallpaperScale(): void {
-    // 动态壁纸时为默认值1；锁屏时为1.1
+    // 动态壁纸时为默认值1；静态壁纸AOD时为1.05，锁屏时为1.1
     let scale = Constants.DEFAULT_WALLPAPER_SCALE;
     if (!this.slBindState.getIsStaticTheme()) {
       scale = Constants.DEFAULT_SCALE;
+    } else if (this.currentState === MpStateType.NORMAL_FAKE_AOD_STATE) {
+      scale = Constants.MIN_WALLPAPER_SCALE;
     }
 
     this.wallpaperData.wallpaperScale = scale;
@@ -611,8 +651,10 @@ export class MainPageVc extends ScreenLockVc<MpStateType> {
     if (this.isEnterEditMode() || isAnimationPlaying) {
       log.showInfo('show edit background wallpaper')
       this.wallpaperData.showBackWallpaper = true;
+      sEventManager.publish(obtainLocalEvent(EventConstants.CONTROL_CENTER_SHOW_HIDE_BAR, false));
       TimerUtil.clearTimerByScene(TimerScene.EDIT_BACKGROUND_WALLPAPER);
     } else {
+      sEventManager.publish(obtainLocalEvent(EventConstants.CONTROL_CENTER_SHOW_HIDE_BAR, true));
       TimerUtil.setTimer(TimerScene.EDIT_BACKGROUND_WALLPAPER, () => {
         log.showInfo(`hide edit wallpaper`);
         this.wallpaperData.showBackWallpaper = false;
@@ -620,9 +662,24 @@ export class MainPageVc extends ScreenLockVc<MpStateType> {
     }
   }
 
+  private hideEditBackgroundAndKeyguardBeforeExitScreenLock(): void {
+    if (!this.wallpaperData.showBackWallpaper) {
+      return;
+    }
+    log.showInfo('hide edit background and keyguard before exit screen lock');
+    TimerUtil.clearTimerByScene(TimerScene.EDIT_BACKGROUND_WALLPAPER);
+    this.wallpaperData.showBackWallpaper = false;
+    sEventManager.publish(obtainLocalEvent(EventConstants.CONTROL_CENTER_SHOW_HIDE_BAR, true));
+    viewMgrPolicy.hideView(ViewType.KEYGUARD);
+  }
+
   private exitEditState(): void {
     log.showInfo('exitEditState');
-    this.setMainPageParam(NORMAL_SHOW);
+    if (MpStateTypeUtils.isFakeAodState(this.slObserverProxy.getMpFsmState(this._persistentId))) {
+      this.setMainPageParam(FAKE_AOD_SHOW);
+    } else {
+      this.setMainPageParam(NORMAL_SHOW);
+    }
     this.resetWallpaperScale();
   }
 
@@ -665,6 +722,7 @@ export class MainPageVc extends ScreenLockVc<MpStateType> {
   };
   private _oneMirrorConfMap: Map<OneMirrorLayoutType, MirrorAniConfig> = new Map();
   private _immersiveOneMirror?: ImmersiveOneMirror;
+  private _aodStyle?: ImmersiveAodStyle;
   private animCtrlFactory: OneMirrorAnimCtlFactory;
   private fromScene: MirrorScene = MirrorScene.SCREEN_OFF;
   private toScene: MirrorScene = MirrorScene.SCREEN_OFF;
@@ -695,7 +753,7 @@ export class MainPageVc extends ScreenLockVc<MpStateType> {
   private themeClockParam: IThemeParam | undefined;
   private eventMgr: EventManager = EvtBus.createEventManager();
 
-  private updateToolsViewMarginForUltraScreen: ISlStateChangeListener = {
+  private updateToolsViewMarginForThreeFold: ISlStateChangeListener = {
     slMainStateType: SlMainStateType.SL_STATIC_STATE,
     onSlStateChange: (mainType: SlMainStateType, subType?: SlSubStateType): void => {
       if (subType === SlStaticStateType.SCREEN_BP) {
@@ -733,6 +791,7 @@ export class MainPageVc extends ScreenLockVc<MpStateType> {
     this.slWallpaperState = params.slWallpaperState;
     this.spaceAniBlurOpt = params.spaceAniBlurOpt;
     this.themeClockParam = params.themeClockParam;
+    this._aodStyle = params.aodStyle;
     this.animCtrlFactory = new OneMirrorAnimCtlFactory();
   }
 
@@ -797,8 +856,12 @@ export class MainPageVc extends ScreenLockVc<MpStateType> {
       log.info('slClockOneShotToDesktop NoPwdUnlockExitKeyguard');
       this.resetForClockOneshot(authType);
     });
+    slClockOneShotToDesktopService.setUpdateClockAodToDesktopState((isClockAodToDesktop: boolean) => {
+      this.slClockBindCtrl.setClockAodToDesktop(isClockAodToDesktop);
+    });
 
     slClockOneShotToDesktopService.setExitScreenLock(() => {
+      this.hideEditBackgroundAndKeyguardBeforeExitScreenLock();
       this._mainPageVm?.exitScreenLock();
     });
 
@@ -812,6 +875,10 @@ export class MainPageVc extends ScreenLockVc<MpStateType> {
 
     slClockOneShotToDesktopService.setIsSupportConsumerMirror((): boolean => {
       return OneMirrorService.getInstance().isSupportConsumerMirror();
+    });
+
+    slClockOneShotToDesktopService.setClockAodAndDesktopAnimType((): ClockAodAndDesktopAnimType => {
+      return ClockAodAndDesktopAnimType.NONE;
     });
 
     this.initObserverVerifyTips();
@@ -851,8 +918,8 @@ export class MainPageVc extends ScreenLockVc<MpStateType> {
       (event?: ScreenLockWallpaperChangeEvent) => { this.handleScreenLockWallpaperChangeEvent() });
     this.handleScreenLockWallpaperChangeEvent();
     slStateHelper.getSlBindState().setBottomViewMargin(this.getBottomToolsGadget())
-    if (IS_ULTRA_SCREEN) {
-      slUiStateMgr.registerSlStateChangeListener(this.updateToolsViewMarginForUltraScreen);
+    if (IS_THREE_FOLD) {
+      slUiStateMgr.registerSlStateChangeListener(this.updateToolsViewMarginForThreeFold);
     }
     SpecialModeManager.getInstance().registerObserver(this._specialModeListener);
     immersiveKgMgr.registerStateChangeListener(StateType.TYPE_IMMERSIVE_KEYGUARD_TYPE, this.onStateChange);
@@ -897,7 +964,7 @@ export class MainPageVc extends ScreenLockVc<MpStateType> {
     if (MpStateTypeUtils.isScreenOffState(oldState) && MpStateTypeUtils.isNormalShowState(newState)) {
       this.slBindState.setFocusDisabled(false);
     }
-    if (MpStateTypeUtils.isUnlockState(oldState)) {
+    if (MpStateTypeUtils.isUnlockState(oldState) && MpStateTypeUtils.isFakeAodState(newState)) {
       this.slBindState.setFocusDisabled(true);
     }
   }
@@ -910,6 +977,8 @@ export class MainPageVc extends ScreenLockVc<MpStateType> {
     // 密码页、编辑页面首页、编辑全屏页面都有动效在transfer中处理
     if (MpStateTypeUtils.isNormalShowState(newState)) {
       this.setMainPageParam(NORMAL_SHOW);
+    } else if (MpStateTypeUtils.isFakeAodState(newState)) {
+      this.setMainPageParam(FAKE_AOD_SHOW);
     }
   }
 
@@ -933,6 +1002,7 @@ export class MainPageVc extends ScreenLockVc<MpStateType> {
     // 解锁动效
     this.checkDoUnlockAnimation();
     this.checkDoLockAnimation();
+    this.doPartAodSlClockAnim();
 
     let oneMirrorAnimateCallback = new OneMirrorAnimateCallback(finishCallback);
     let coreState = this.slObserverProxy.getCoreFsmState(this._persistentId);
@@ -968,6 +1038,20 @@ export class MainPageVc extends ScreenLockVc<MpStateType> {
     return ret;
   }
 
+  private doPartAodSlClockAnim(): void {
+
+    if (!OneMirrorService.getInstance().isSupportConsumerMirror()) {
+      if (this.toScene === MirrorScene.SCREEN_LOCK) {
+        slClockOneShotToDesktopService.doNoMirrorPartAodToSl();
+      }
+      return;
+    }
+    const scene = OneMirrorSceneData.getAnimMirrorsScene(this.fromScene, this.toScene);
+    if (scene) {
+      this.clockAnimMap.get(scene)?.();
+    }
+  }
+
   /**
    * 是否跳过一镜到底动效
    *
@@ -991,6 +1075,7 @@ export class MainPageVc extends ScreenLockVc<MpStateType> {
       return;
     }
     log.info('checkDoUnlockAnimation start');
+    this.setAodToDesktopClockOneShot();
     if (slClockOneShotToDesktopService.doUnlockAnimationForClockOneshot()) {
       screenLockGreetModel.unLoadGreetViewWithoutAni(SlGreetModeReportScene.UNLOCK_FOR_CLOCK_ONE_SHOT);
       return;
@@ -1004,6 +1089,15 @@ export class MainPageVc extends ScreenLockVc<MpStateType> {
   private onFinishExitLockWithAnim(): void {
     slClockOneShotToDesktopService.finishRequestDirectUnlock();
     log.info('onFinishExitLockWithAnim');
+  }
+
+  private setAodToDesktopClockOneShot(): void {
+    if (this.fromScene === MirrorScene.AOD && this.toScene === MirrorScene.UNLOCK) {
+      if (slClockOneShotToDesktopService.isClockAodToDesktopAnimAvailable()) {
+        this.slClockBindCtrl.setClockAodToDesktop(true);
+        log.info('setClockAodToDesktop');
+      }
+    }
   }
 
   private doOneMirrorConf(hasAnim: boolean, oneMirrorAnimateCallback: OneMirrorAnimateCallback): boolean {
@@ -1452,15 +1546,22 @@ export class MainPageVc extends ScreenLockVc<MpStateType> {
     this.registerStateTransferAction(this.stateChangeEditFullToMpShow);
     this.registerStateTransferAction(this.stateChangeEditExtendToMpShow);
     this.registerStateTransferAction(this.stateChangeToScreenOff);
+    // AOD唤醒
     this.registerStateTransferAction(this._wakeUpStateTransferAction);
+    // 主页显示
+    this.registerStateTransferAction(this.stateChangeToFakeAod);
     // 编辑首页进入
     this.registerStateTransferAction(this.stateChangeToEditShow);
     // 编辑全屏返回编辑首页
     this.registerStateTransferAction(this.stateChangeEditFulToEditShow);
     // 编辑全屏进入
     this.registerStateTransferAction(this.stateChangeToEditFull);
+    // 编辑首页退出到锁屏主页/Fake AOD
+    this.registerStateTransferAction(this.stateChangeEditShowToFakeAod);
     // 密码页进入
     this.registerStateTransferAction(this.stateChangeToBouncer);
+    // 编辑全屏页/Extension页退出
+    this.registerStateTransferAction(this.stateChangeEditFullShowToFakeAod);
     ScreenLockFsmProxy.getInstance(this._persistentId).registerCoreEventCallback(this._fsmEventCallback);
   }
 
@@ -1468,7 +1569,7 @@ export class MainPageVc extends ScreenLockVc<MpStateType> {
     onFoldStateChange: (isFoldExpand: boolean): void => {
       clockLayoutHelper.setScreenSessionRotatable(DisplayStateManager.getInstance().getScreenSessionRotatable());
       OneMirrorStrategyContext.getInstance().getStrategy().onFold(!isFoldExpand,
-        ThemeServiceHelper.getInstance().getScbState() === ScbState.UNKNOWN, false);
+        ThemeServiceHelper.getInstance().getScbState() === ScbState.AOD, false);
     }
   }
 
@@ -1488,8 +1589,8 @@ export class MainPageVc extends ScreenLockVc<MpStateType> {
     this.unRegisterStateTransferActionList();
     this.eventMgr.offAll()
     this.destroyFormAdapter();
-    if (IS_ULTRA_SCREEN) {
-      slUiStateMgr.unregisterSlStateChangeListener(this.updateToolsViewMarginForUltraScreen);
+    if (IS_THREE_FOLD) {
+      slUiStateMgr.unregisterSlStateChangeListener(this.updateToolsViewMarginForThreeFold);
     }
     if (IS_LARGE_FOLD) {
       ScreenLockFoldExpandAnimUtil.getInstance().unRegisterClockAnimation();
@@ -1516,10 +1617,13 @@ export class MainPageVc extends ScreenLockVc<MpStateType> {
     this.unRegisterStateTransferAction(this.stateChangeToScreenOff);
 
     this.unRegisterStateTransferAction(this._wakeUpStateTransferAction);
+    this.unRegisterStateTransferAction(this.stateChangeToFakeAod);
     this.unRegisterStateTransferAction(this.stateChangeToEditShow);
     this.unRegisterStateTransferAction(this.stateChangeEditFulToEditShow);
     this.unRegisterStateTransferAction(this.stateChangeToEditFull);
     this.unRegisterStateTransferAction(this.stateChangeToBouncer);
+    this.unRegisterStateTransferAction(this.stateChangeEditShowToFakeAod);
+    this.unRegisterStateTransferAction(this.stateChangeEditFullShowToFakeAod);
     ScreenLockFsmProxy.getInstance(this._persistentId).unregisterCoreEventCallback(this._fsmEventCallback);
   }
 
@@ -1683,8 +1787,8 @@ export class MainPageVc extends ScreenLockVc<MpStateType> {
    * @returns 左右边距资源对象
    */
   public getBottomToolsGadget(): number {
-    if (IS_ULTRA_SCREEN) {
-      return this.getBottomToolsGadgetForUltraScreen();
+    if (IS_THREE_FOLD) {
+      return this.getBottomToolsGadgetForThreeFold();
     }
     if (IS_PAD) {
       return Constants.SCREEN_LOCK_GADGET_MARGIN_PAD;
@@ -1695,15 +1799,15 @@ export class MainPageVc extends ScreenLockVc<MpStateType> {
   }
 
   /**
-   * 获取超大屏产品底部工具栏左右边距
+   * 获取三折叠产品底部工具栏左右边距
    *
    * @returns 左右边距资源对象
    */
-  private getBottomToolsGadgetForUltraScreen(): number {
+  private getBottomToolsGadgetForThreeFold(): number {
     let screenBp = slStateHelper.getSlStaticState()?.getSlState(SlStaticStateType.SCREEN_BP) as ScreenBp;
-    if (UltraScreenStatus.G_STATUS === this.getUltraScreenStatus(screenBp)) {
+    if (ThreeFoldStatus.G_STATUS === this.getThreeFoldStatus(screenBp)) {
       return Constants.SCREEN_LOCK_GADGET_MARGIN_PAD;
-    } else if (UltraScreenStatus.M_STATUS === this.getUltraScreenStatus(screenBp)) {
+    } else if (ThreeFoldStatus.M_STATUS === this.getThreeFoldStatus(screenBp)) {
       return Constants.SCREEN_LOCK_GADGET_MARGIN_EXPAND;
     }
     return Constants.SCREEN_LOCK_GADGET_MARGIN;
@@ -1746,7 +1850,7 @@ export class MainPageVc extends ScreenLockVc<MpStateType> {
     if (isFoldExpand) {
       this._temporaryPromptViewModel?.hideTemporaryPrompt(HidePromptCode.FINGERPRINT_ANTI_TOUCH_CAMERA);
     }
-    if (IS_ULTRA_SCREEN) {
+    if (IS_THREE_FOLD) {
       return;
     }
     this.slBindState.setBottomViewMargin(this.getBottomToolsGadget());

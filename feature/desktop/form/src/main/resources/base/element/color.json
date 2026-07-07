@@ -31,6 +31,10 @@
     {
       "name": "form_center_form_inline_color",
       "value": "#0DFFFFFF"
+    },
+    {
+      "name": "formCenter_background",
+      "value": "#FFFFFFFF"
     }
   ]
 }

@@ -22,6 +22,7 @@ import { ObjectCopyUtil } from '@ohos/componenthelper';
 import {
   AppStatus,
   CommonConstants,
+  DeliverUtil,
   FolderData,
   GridLayoutItemInfo,
   RdbStoreManager,
@@ -66,7 +67,7 @@ class OpenFolderUninstallManager {
     //过滤被移除的APP
     let filterAppList: GridLayoutItemInfo[] = folderAppList.filter(appItem =>!LauncherLayoutCacheUtil
       .isSameAppByBundleName(deleteItem, appItem.bundleName, appItem.appIndex));
-    if ((folderAppList.length - 1) <= 1 &&
+    if (DeliverUtil.checkFolderIsReleased(openFolderData.folderId, folderAppList.length - 1) &&
     NotHarmonyUtil.isNotHarmonyFolderShouldReleased(openFolderData.folderId, folderAppList.length - 1, filterAppList)) {
       this.removeFolderItemAndDissolveFolder(deleteItem);
       return;
@@ -129,7 +130,7 @@ class OpenFolderUninstallManager {
     let isHarmony: boolean = deleteItem.appStatus !== AppStatus.WAIT_FOR_HARMONY;
     let appIndex: number = deleteItem.appIndex ?? 0;
     let bundleName: string = deleteItem.bundleName;
-    // 未OpenHarmony化应用需要传映射表的包名
+    // 未鸿蒙化应用需要传映射表的包名
     if (!isHarmony) {
       bundleName = CommonUtils.jsonStrToMap(deleteItem.intent).get('requestBundleName') as string ?? bundleName;
     }

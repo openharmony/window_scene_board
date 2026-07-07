@@ -1,5 +1,5 @@
 /*
- * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -40,6 +40,15 @@ export class SCBWindowSceneConfig {
   public loadWindowSceneConfig(): void {
     this.windowSceneConfig = sceneSessionManager.getWindowSceneConfig();
     this.systemConfig = sceneSessionManager.getSystemConfig();
+
+    // Convert uiType to match SCBConstants
+    if (this.windowSceneConfig.multiWindowUIType === 'HandsetSmartWindow') {
+      this.windowSceneConfig.uiType = SCBConstants.UITYPE_PHONE;
+    } else if (this.windowSceneConfig.multiWindowUIType === 'FreeFormMultiWindow') {
+      this.windowSceneConfig.uiType = SCBConstants.UITYPE_PC;
+    } else if (this.windowSceneConfig.multiWindowUIType === 'TabletSmartWindow') {
+      this.windowSceneConfig.uiType = SCBConstants.UITYPE_PAD;
+    }
 
     log.showInfo('Window scene config, floatCornerRadius: ' + this.windowSceneConfig.floatCornerRadius +
       ', focusedShadow offsetX: ' + this.windowSceneConfig.focusedShadow.offsetX + ', offsetY: ' +

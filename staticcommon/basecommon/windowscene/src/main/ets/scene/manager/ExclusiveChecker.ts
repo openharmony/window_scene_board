@@ -115,8 +115,9 @@ export class ExclusiveChecker {
         log.showWarn('appName is empty');
         return;
       }
+      const deliverTongAppName = ResUtils.getInnerString($r('app.string.app_others'));
       Prompt.showToast({
-        message: $r('app.string.app_running_mutex_toast', '', appName),
+        message: $r('app.string.app_running_mutex_toast', deliverTongAppName, appName),
       });
     } catch (err) {
       log.showError(`Show exclude toast error, code: ${err?.code}, message: ${err?.message}`);

@@ -38,6 +38,8 @@ export type { LockPreference } from './utils/RecentLockUtils';
 
 export { RecentLockUtils } from './utils/RecentLockUtils';
 
+export { DesktopStatusBarHelper } from './utils/DesktopStatusBarHelper';
+
 export { CardItemInfo } from './bean/CardItemInfo';
 
 export { SettingItemInfo } from './bean/SettingItemInfo';
@@ -166,6 +168,8 @@ export { PageDesktopViewModelForPC } from './pagedesktop/viewmodel/PageDesktopVi
 
 export { AppToHapMappingManager, InstalledDialogType } from './base/AppToHapMappingManager';
 
+export { DeliverAppStrategyPushConfigManager } from './base/DeliverAppStrategyPushConfigManager';
+
 export { BaseModulePreLoader } from './base/BaseModulePreLoader';
 
 export { BaseCloseAppHandler } from './base/BaseCloseAppHandler';
@@ -226,7 +230,7 @@ export { ShortcutViewModel } from './launchericon/viewmodel/ShortcutViewModel';
 
 export { KeyConstants, FolderActionFlag } from './constants/CommonConstants';
 
-export { ComponentConstants } from './constants/CommonConstants';
+export { BundleConstants, ComponentConstants } from './constants/CommonConstants';
 
 export { LayoutRulesController } from './viewmodel/LayoutRulesController';
 
@@ -356,6 +360,8 @@ export { AppCenterModel } from './model/AppCenterModel';
 
 export { BackupNotificationAppSettingsInfo, BackupNotificationSettingsInfo } from './manager/UpdateRdbManager';
 
+export { TransferLayoutManager } from './transformdata/TransferLayoutManager';
+
 export { RadiusUtil } from './utils/RadiusUtil';
 
 export { FolderLayoutStruct } from './folder/FolderLayoutInfo';
@@ -370,6 +376,8 @@ export { transferRelationManager } from './manager/TransferRelationManager';
 
 export { shortcutTransferRelationManager } from './manager/ShortcutTransferRelationManager';
 
+export { OhosSuperAdditionRelationManager } from './manager/OhosSuperAdditionRelationManager';
+
 export { EntryViewBlurStatusStruct } from './constants/EntryViewBlurStatus';
 
 export { HiEditModeDataExitType, HiEditModeDataEnterType } from './editmode/hisysevent/HiEditModeData';
@@ -377,6 +385,8 @@ export { HiEditModeDataExitType, HiEditModeDataEnterType } from './editmode/hisy
 export { ShowNameState } from './editmode/data/ShowNameState';
 
 export { EditModeViewData } from './editmode/data/EditModeViewData';
+
+export { TransformController } from './transformdata/TransformController';
 
 export { BackupFavoriteInfo } from './model/BackupFavoriteInfo';
 
@@ -424,11 +434,17 @@ export { default as IntelligentCommonDataColumns } from './bean/IntelligentCommo
 
 export { UpdateRdbManager } from './manager/UpdateRdbManager';
 
+export { default as dataConvert } from './transformdata/DataConvert';
+
+export { FormRelationManager } from './transformdata/FormRelationManager';
+
 export type { ContextMenuListener } from './listener/ContextMenuListener';
 
 export { GetLayoutInfoFromConfig } from './layoutconfig/GetLayoutInfoFromConfig';
 
 export { default as GridLayoutItemBuilder } from './bean/GridLayoutItemBuilder';
+
+export { default as VoiceColumns } from './db/column/VoiceColumns';
 
 export { default as BitSet } from './utils/BitSet';
 
@@ -437,6 +453,10 @@ export { default as ConfigParseUtil } from './utils/ConfigParseUtil';
 export { AppCategoryInfoManager } from './manager/AppCategoryInfoManager';
 
 export { AppCategoryUtils } from './utils/AppCategoryUtils';
+
+export { DeliverUtil } from './utils/DeliverUtil';
+
+export type { DialogConfig } from './utils/DeliverUtil';
 
 export { NotHarmonyUtil } from './utils/NotHarmonyUtil';
 
@@ -524,6 +544,12 @@ export { DesktopFontScaleState } from './base/pageDesktopFontScale/desktopFontSc
 
 export { desktopFontScaleManager } from './base/pageDesktopFontScale/desktopFontScaleManager';
 
+export { AppReservePolicyType, AppReserveType, AutoMigrateType, TransformAppInfoManager } from './transformdata/TransformAppInfoManager';
+
+export { LocalHapMigrateInfo } from './transformdata/LocalHapMigrateInfo';
+
+export { PackageInfo } from './transformdata/PackageInfo';
+
 export { MultiSelectManager } from './editmode/model/MultiSelectManager';
 
 export { MultiSelectStatusEnum, CheckboxParentEnum, MultiSelectItemType, MultiSelectListenerType, CheckboxParentLayoutEnum, BooleanState } from './editmode/data/MultiSelectData';
@@ -547,6 +573,8 @@ export { DesktopParam } from './bean/DesktopParam';
 export { NavBarHideAndShowManager } from './manager/NavBarHideAndShowManager';
 
 export { EditModePageTypeEnum, EditModePageUtil, EditModePageStaticData } from './editmode/data/PageEditData';
+
+export { BlankPageTransFormItem } from './transformdata/transfromitem/BlankPageTransFormItem';
 
 export { OpenFolderStyle } from './folder/model/OpenFolderStyle';
 
@@ -580,6 +608,10 @@ export { lockedAppUninstallModel } from './model/LockedAppUninstallModel';
 
 export { PerceptionSceneType, IconType } from './bean/DockItemInfo';
 
+export { Hm2HmLayoutManager } from './transformdata/Hm2HmLayoutManager';
+
+export { OhosCloneLayoutManager } from './transformdata/OhosCloneLayoutManager';
+
 export { EditModeCloneHelper } from './editmode/utils/EditModeCloneHelper';
 
 export { StoreAppNameController } from './editmode/model/StoreAppNameController';
@@ -589,6 +621,8 @@ export { GetHideAppsFromConfig } from './layoutconfig/GetHideAppsFromConfig';
 export { ResidentLayoutCacheMgr } from './dock/cache/ResidentLayoutCacheMgr';
 
 export { RecentLayoutCacheMgr } from './dock/cache/RecentLayoutCacheMgr';
+
+export { LogBatchPrint } from './transformdata/dfx/LogBatchPrint';
 
 export { GameCardInfo } from './bean/GameCardInfo';
 
@@ -737,3 +771,5 @@ export { DesktopItemVibratorManager } from './manager/DesktopItemVibratorManager
 export { ASCFWindowMgrListener } from './manager/ASCFWindowManagerListener';
 
 export { DirtyFormCorrector } from './db/gridlayoutcorrector/DirtyFormCorrector';
+
+export { AiBarCloneCallbackManager } from './manager/AiBarCloneCallbackManager';

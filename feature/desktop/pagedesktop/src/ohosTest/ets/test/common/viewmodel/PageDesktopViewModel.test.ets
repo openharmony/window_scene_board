@@ -55,6 +55,7 @@ import {
   KeyEventConstants,
   LayoutDescription,
   DesktopUtils,
+  DeliverUtil,
   FolderData,
   GridLayoutUtil,
   RdbStoreManager,
@@ -149,8 +150,8 @@ export default function PageDesktopViewModelTest() {
       let newItem: CardItemInfo = new CardItemInfo();
       newItem.id = '1573457366';
       newItem.cardId = '1573457366';
-      newItem.name = 'minRecCard';
-      newItem.cardName = 'minRecCard';
+      newItem.name = 'minVoiceRecCard';
+      newItem.cardName = 'minVoiceRecCard';
       newItem.bundleName = 'com.ohos.suggestion';
       newItem.abilityName = 'ParentFormAbility';
       newItem.moduleName = 'entry';
@@ -2404,7 +2405,7 @@ export default function PageDesktopViewModelTest() {
       mocker.clearAll();
     })
 
-    it('test_trimInBigScreen', 0, () => {
+    it('test_trimInSuperFold', 0, () => {
       try{
         const pageDesktopVM: PageDesktopViewModel = PageDesktopViewModel.getInstance();
         const layoutDescription: PageDesktopGridStyleConfig = PageDesktopGridStyleConfig.getInstance();
@@ -2417,7 +2418,7 @@ export default function PageDesktopViewModelTest() {
         file2.column = 1;
         newGridLayoutItems.push(file);
         newGridLayoutItems.push(file2);
-        (pageDesktopVM as object)['trimInBigScreen'](newGridLayoutItems, layoutDescription);
+        (pageDesktopVM as object)['trimInSuperFold'](newGridLayoutItems, layoutDescription);
         let a = 'test';
         expect(a).assertEqual('test');
       } catch (e) {
@@ -2888,6 +2889,34 @@ export default function PageDesktopViewModelTest() {
       mocker.clearAll();
     })
 
+
+    it('test_PageDesktopViewModel_reportAddCardToScreenByDragEvent', 0, (): void => {
+      let instance: PageDesktopViewModel = PageDesktopViewModel.getInstance();
+      let newItem: CardItemInfo = new CardItemInfo();
+      newItem.id = '1573457366';
+      newItem.cardId = '1573457366';
+      newItem.name = 'minVoiceRecCard';
+      newItem.cardName = 'minVoiceRecCard';
+      newItem.bundleName = 'com.ohos.suggestion';
+      newItem.abilityName = 'ParentFormAbility';
+      newItem.moduleName = 'entry';
+      newItem.dimension = 2;
+      newItem.cardDimension = 2;
+      newItem.page = undefined;
+      newItem.appLabelId = 0;
+      newItem.area = [2, 2];
+      newItem.isTransparent = false;
+      instance.reportAddCardToScreenByDragEvent(newItem, 1, 1);
+      expect(newItem.area.length).assertEqual(2);
+      newItem.page = 1;
+      instance.reportAddCardToScreenByDragEvent(newItem, CommonConstants.DRAG_FROM_FORM_STACK, 1);
+      expect(newItem.area.length).assertEqual(2);
+      instance.reportAddCardToScreenByDragEvent(newItem, CommonConstants.DRAG_FROM_MANAGE, 1);
+      expect(newItem.area.length).assertEqual(2);
+      instance.reportAddCardToScreenByDragEvent(newItem, CommonConstants.DOCK_SPACE, 1);
+      expect(newItem.area.length).assertEqual(2);
+    })
+
     it('test_PageDesktopViewModel_showNext', 0, () => {
       let instance: PageDesktopViewModel = PageDesktopViewModel.getInstance();
       instance.showNext();
@@ -3285,6 +3314,7 @@ export default function PageDesktopViewModelTest() {
       appInfo.typeId = CommonConstants.TYPE_APP;
       let mocker: MockKit = new MockKit();
       let mockFunc: Function = mocker.mockFunc(CheckEmptyUtils, CheckEmptyUtils.isEmpty);
+      let mockFunc1: Function = mocker.mockFunc(DeliverUtil, DeliverUtil.isContainerItem);
       when(mockFunc)(ArgumentMatchers.any).afterReturn(false);
       let result: boolean = instance.updateAppItemLayoutInfo(appInfo, false);
       expect(result).assertFalse();
@@ -3293,6 +3323,7 @@ export default function PageDesktopViewModelTest() {
       let result1: boolean = instance.updateAppItemLayoutInfo(appInfo, false);
       expect(result1).assertFalse();
       mocker.clear(CheckEmptyUtils);
+      mocker.clear(DeliverUtil);
       mocker.clearAll();
     })
 
@@ -3420,6 +3451,48 @@ export default function PageDesktopViewModelTest() {
       mocker.clearAll();
     })
 
+    it('test_PageDesktopViewModel_selectDeliveryAppWaitForInstall', 0, () => {
+      let instance: PageDesktopViewModel = PageDesktopViewModel.getInstance();
+      let info: GridLayoutItemInfo = new GridLayoutItemInfo();
+      info.bundleName = 'appName1';
+      info.abilityName = 'appName1';
+      info.keyName = 'com';
+      info.row = 1;
+      info.column = 1;
+      info.folderId = '996';
+      info.formStackId = '996';
+      info.typeId = CommonConstants.TYPE_APP;
+      info.area = [2, 1];
+      let info1: GridLayoutItemInfo = new GridLayoutItemInfo();
+      info1.bundleName = 'appName1';
+      info1.abilityName = 'appName1';
+      info1.keyName = 'com';
+      info1.row = 1;
+      info1.column = 1;
+      info1.folderId = '996';
+      info1.formStackId = '996';
+      info1.typeId = CommonConstants.TYPE_APP;
+      info1.area = [2, 1];
+      let appItemInfo: AppItemInfo = new AppItemInfo();
+      appItemInfo.appName = 'appName';
+      appItemInfo.appIndex = 1;
+      let mocker: MockKit = new MockKit();
+      let mockFunc: Function = mocker.mockFunc(DeliverUtil, DeliverUtil.isSupportDeliver);
+      let mockFunc1: Function = mocker.mockFunc(DeliverUtil, DeliverUtil.isSupportAppType);
+      when(mockFunc)(ArgumentMatchers.any).afterReturn(true);
+      when(mockFunc1)(ArgumentMatchers.any).afterReturn(false);
+      let result: GridLayoutItemInfo | undefined = (instance as object)['selectDeliveryAppWaitForInstall'](appItemInfo);
+      expect(result).assertUndefined();
+      when(mockFunc1)(ArgumentMatchers.any).afterReturn(true);
+      let mockFunc2: Function = mocker.mockFunc(LaunchLayoutCacheManager.getInstance(), LaunchLayoutCacheManager.getInstance().getAllGridLayoutItemList);
+      when(mockFunc2)(ArgumentMatchers.any).afterReturn([info, info1]);
+      let result1: GridLayoutItemInfo | undefined = (instance as object)['selectDeliveryAppWaitForInstall'](appItemInfo);
+      expect(result1).assertUndefined();
+      mocker.clear(DeliverUtil);
+      mocker.clear(LaunchLayoutCacheManager.getInstance());
+      mocker.clearAll();
+    })
+
     it('test_PageDesktopViewModel_cancelDownloadTask', 0, () => {
       let instance: PageDesktopViewModel = PageDesktopViewModel.getInstance();
       let info: GridLayoutItemInfo = new GridLayoutItemInfo();
@@ -3461,6 +3534,35 @@ export default function PageDesktopViewModelTest() {
       (instance as object)['registerInstalledAniFinishCallback'](info.bundleName, info.row);
       expect(info.bundleName).assertEqual('com');
       mocker.clear(CheckEmptyUtils);
+      mocker.clearAll();
+    })
+
+    it('test_PageDesktopViewModel_informUninstallResult', 0, () => {
+      let instance: PageDesktopViewModel = PageDesktopViewModel.getInstance();
+      let info: GridLayoutItemInfo = new GridLayoutItemInfo();
+      info.bundleName = 'com';
+      info.abilityName = 'openharmony';
+      info.keyName = 'com';
+      info.row = 1;
+      info.column = 1;
+      info.appStatus = AppStatus.WAIT_FOR_HARMONY;
+      info.folderId = '996';
+      info.formStackId = '996';
+      info.typeId = CommonConstants.TYPE_APP;
+      info.area = [2, 1];
+      instance.informUninstallResult(CommonConstants.UNINSTALL_FORBID, info.bundleName);
+      expect(info.bundleName).assertEqual('com');
+      instance.informUninstallResult(CommonConstants.UNINSTALL_SUCCESS, info.bundleName);
+      expect(info.bundleName).assertEqual('com');
+      let mocker: MockKit = new MockKit();
+      let mockFunc: Function = mocker.mockFunc(DeliverUtil, DeliverUtil.isContainerPkg);
+      when(mockFunc)(ArgumentMatchers.any).afterReturn(true);
+      instance.informUninstallResult(-1, info.bundleName);
+      expect(info.bundleName).assertEqual('com');
+      when(mockFunc)(ArgumentMatchers.any).afterReturn(false);
+      instance.informUninstallResult(-1, info.bundleName);
+      expect(info.bundleName).assertEqual('com');
+      mocker.clear(DeliverUtil);
       mocker.clearAll();
     })
 
@@ -3703,6 +3805,7 @@ export default function PageDesktopViewModelTest() {
     it('test_PageDesktopViewModel_startAppWithIndex', 0, () => {
       let instance: PageDesktopViewModel = PageDesktopViewModel.getInstance();
       let info: GridLayoutItemInfo = new GridLayoutItemInfo();
+      info.bundleName = 'com.ohos.vassistant.launcher';
       info.abilityName = 'openharmony';
       info.moduleName = 'com';
       info.keyName = 'com';
@@ -3724,6 +3827,7 @@ export default function PageDesktopViewModelTest() {
     it('test_PageDesktopViewModel_onAppClick', 0, () => {
       let instance: PageDesktopViewModel = PageDesktopViewModel.getInstance();
       let info: GridLayoutItemInfo = new GridLayoutItemInfo();
+      info.bundleName = 'com.ohos.vassistant.launcher';
       info.abilityName = 'openharmony';
       info.moduleName = 'com';
       info.keyName = 'com';
@@ -3736,6 +3840,27 @@ export default function PageDesktopViewModelTest() {
       info.area = [2, 1];
       (instance as object)['onAppClick'](info.abilityName, info.bundleName, info.moduleName, info.row);
       expect(instance).not().assertNull();
+    })
+
+    it('test_PageDesktopViewModel_checkIfNeedNextPage', 0, () => {
+      let instance: PageDesktopViewModel = PageDesktopViewModel.getInstance();
+      let newItem: CardItemInfo = new CardItemInfo();
+      newItem.id = '1573457366';
+      newItem.cardId = '1573457366';
+      newItem.name = 'minVoiceRecCard';
+      newItem.cardName = 'minVoiceRecCard';
+      newItem.bundleName = 'com.ohos.suggestion';
+      newItem.abilityName = 'ParentFormAbility';
+      newItem.moduleName = 'entry';
+      newItem.dimension = 2;
+      newItem.cardDimension = 2;
+      newItem.appLabelId = 0;
+      newItem.area = [2, 2];
+      newItem.isTransparent = false;
+      let result: boolean = (instance as object)['checkIfNeedNextPage'](newItem, 10000);
+      expect(result).assertTrue();
+      let result1: boolean = (instance as object)['checkIfNeedNextPage'](newItem, -2);
+      expect(result1).assertFalse();
     })
 
     it('test_PageDesktopViewModel_deleteFormItemEvent4Intelligent', 0, async (done: Function) => {

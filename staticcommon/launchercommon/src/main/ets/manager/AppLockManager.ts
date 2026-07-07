@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-// import appLock from '@hms.security.appLock';
+// import appLock from '@ohos.security.appLock';
 import { CommonUtils, LogDomain, Logger } from '@ohos/basicutils';
 import { AccountMgr, SystemParamUtils } from '@ohos/frameworkwrapper';
 

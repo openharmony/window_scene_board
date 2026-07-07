@@ -14,6 +14,7 @@
  */
 
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { MemoryUtils } from '@hw-ohos/memorytool';
 import relationalStore from '@ohos.data.relationalStore';
 
 export function MemoryUtilsTest() {

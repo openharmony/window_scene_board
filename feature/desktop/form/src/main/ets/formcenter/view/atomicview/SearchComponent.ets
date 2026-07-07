@@ -89,6 +89,7 @@ export struct SearchComponent {
         placeholder: $r('app.string.search'),
         controller: this.mController,
       })
+        .key('formCenter_Search')
         .margin(this.mStyle.searchMargin)
         .textFont({ size: this.mFontSize })
         .placeholderFont({ size: this.mFontSize })

@@ -16,7 +16,7 @@
 import { ConstantsTest } from './common/Constants.test';
 import { CastReportUtilsTest } from './common/CastReportUtils.test';
 
-export default function HwCastTestSuite() {
+export default function CastTestSuite() {
   ConstantsTest();
   CastReportUtilsTest();
 }

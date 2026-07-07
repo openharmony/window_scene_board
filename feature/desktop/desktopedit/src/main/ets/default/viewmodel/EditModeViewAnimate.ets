@@ -159,7 +159,7 @@ export class EditModeViewAnimate {
     return new Promise((resolve, reject) => {
       // 流光动效时取消编辑模式的动画
       let mattesPanelShow: boolean = AppStorage.get<boolean>('mattesPanelShow') as boolean;
-      if (mattesPanelShow || (DeviceHelper.isUltraScreenProduct() && !isEditMode)) {
+      if (mattesPanelShow || (DeviceHelper.isThreeFoldProduct() && !isEditMode)) {
         let singePageViewData: EditModeSingePageViewData = editModeViewManager.getEditModeSingePageViewData();
         singePageViewData.setSingePageSwiperScale(pageScale);
         singePageViewData.setOpacity(pageOpacity);

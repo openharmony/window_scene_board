@@ -1,5 +1,5 @@
 /**
- * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) 2021-2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -27,7 +27,8 @@ import {
   AppInstallUtils,
   RdbStoreManager,
   EnterpriseSpaceUtil,
-  ShortcutInfo
+  ShortcutInfo,
+  DeliverUtil
 } from '@ohos/launchercommon';
 import { CommonConstants, LayoutViewModel, ShortcutViewModel } from '@ohos/launchercommon';
 import { CheckEmptyUtils, LogDomain, LogHelper } from '@ohos/basicutils';
@@ -68,6 +69,7 @@ import { FoldAcGridLayoutConstants, FoldedDeviceAcViewModel } from '../../folded
 
 const TAG = 'AppListPresenter';
 const log = LogHelper.getLogHelper(LogDomain.HOME, TAG);
+const FILTER_APP_LIST_IN_QXS = ['com.ohos.vassistant.launcher'];
 const CACHE_TYPE_NAME = 'name';
 
 export class AppListPresenter extends BaseViewModel {
@@ -135,6 +137,7 @@ export class AppListPresenter extends BaseViewModel {
       appItemInfo.appId = RdbStoreManager.getInstance().generateRandomUUID();
       item.container = CommonConstants.INVALID_VALUE;
       item.infoId = '-' + appItemInfo.appId;
+      this.updateAppInfoInstallSource(appItemInfo);
       item.intent = appItemInfo.intent;
       result.push(appItemInfo);
       this.onPackageAdded(appItemInfo);
@@ -335,7 +338,27 @@ export class AppListPresenter extends BaseViewModel {
   }
 
   private filterApp(appList: AppItemInfo[]): AppItemInfo[] {
+    if (DeviceHelper.is2In1DevicePcType()) {
+      appList = appList.filter((item: AppItemInfo) => {
+        return !FILTER_APP_LIST_IN_QXS.includes(item.bundleName);
+      });
+    }
     return appList;
+  }
+
+  // 这里绕过了桌面文件夹的逻辑，后期pc要做克隆应用文件夹，需要整改
+  private updateAppListInstallSource(appList: AppItemInfo[]): void {
+    for (let i = 0; i < appList.length; i++) {
+      this.updateAppInfoInstallSource(appList[i]);
+    }
+  }
+
+  private updateAppInfoInstallSource(appInfo: AppItemInfo): void {
+    let isDeliverApp: boolean = DeliverUtil.isSupportDeliver() &&
+      !Number.isNaN(Number(appInfo.codePath));
+    if (isDeliverApp) {
+      DeliverUtil.setInstallSourceAndIntent(appInfo, appInfo.intent);
+    }
   }
 
   /**
@@ -373,6 +396,7 @@ export class AppListPresenter extends BaseViewModel {
       }
       appList = this.filterApp(appList);
       this.changeContactAppInfo(appList);
+      this.updateAppListInstallSource(appList);
       // 查询到数据之后，跟DB数据进行对比，差异项回刷
       if (CheckEmptyUtils.isEmptyArr(appCenterGridData)) {
         // 数据库查询为空，直接使用BMS拿到的数据，并分组
@@ -861,6 +885,7 @@ export class AppListPresenter extends BaseViewModel {
       return;
     }
     let isExist = false;
+    this.updateAppInfoInstallSource(newAddItem);
     cachedLayoutItemList.forEach((gridItemInfo: AppLayoutInfo) => {
       gridItemInfo.pageInfo.forEach((item: AppItemInfo) => {
         if (item.bundleName === newAddItem.bundleName && item.appIndex === newAddItem.appIndex) {
@@ -1026,6 +1051,7 @@ export class AppListPresenter extends BaseViewModel {
     if (!newAddItem) {
       return;
     }
+    this.updateAppInfoInstallSource(newAddItem);
     let cachedLayoutItemList = AppStorage.get<AppLayoutInfo[]>('appCenterLayoutInfo') as AppLayoutInfo[];
     if (!cachedLayoutItemList) {
       log.showInfo(`cachedLayoutItemList empty`);

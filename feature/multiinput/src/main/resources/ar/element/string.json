@@ -29,6 +29,13 @@
             }
         },
         {
+            "name":"system_function_voice_search",
+            "value":"بحث voice",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
             "name":"system_function_show_desktop_key_alt",
             "value":"Alt",
             "attr":{

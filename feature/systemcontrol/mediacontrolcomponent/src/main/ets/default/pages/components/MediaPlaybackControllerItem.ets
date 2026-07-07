@@ -33,6 +33,11 @@ import ControlButtonGroup from './ControlButtonGroup';
 import CommonUtils from '../../Util/CommonUtils';
 import CommunicationUtil from '../../Util/CommunicationUtil';
 import { default as DropDownPanelManager } from '@ohos/systemuicommon/src/main/ets/manager/DropDownPanelManager';
+import { BrightnessOptionUtils } from '@ohos/systemuicommon/src/main/ets/template/newStyle/BrightnessOptionUtils';
+import {
+  AodStyleType,
+  ImmersiveAodStyle,
+} from '@ohos/systemuicommon/src/main/ets/immersivekeyguardcommon/base/interface/ImmersiveAodStyle';
 import {
   immersiveKgMgr,
 } from '@ohos/systemuicommon/src/main/ets/immersivekeyguardcommon/manager/ImmersiveKeyguardStateManager';
@@ -217,6 +222,11 @@ export struct MediaPlaybackControllerItem {
    */
   @StorageProp('isAccessibilityMode') isAccessibilityMode: boolean = false;
 
+  /**
+   * AOD显示样式
+   */
+  @State @Watch('publishAodEvent') aodStyle: ImmersiveAodStyle | undefined = immersiveKgMgr.getOneMirrorState().getAodStyle(true);
+
   @State mediaAnimState: AnimationState = AnimationController.getAnimationState();
 
   @StorageLink('foldStatusForOuterScreen') @Watch('updateDeviceScreen') foldStatus: number =
@@ -363,6 +373,29 @@ export struct MediaPlaybackControllerItem {
     SCBTransitionManager.getInstance().unRegisterUnlockTransitionController(this.unLockTransitionController, false);
     if (this.scene === 'Live' || this.useScene === LiveUseScene.SCENE_LIVE_LIST) {
       bannerMgr.unregisterStateChangeListener(StateType.TYPE_BANNER_PANEL_TYPE, this.onBannerStateChange);
+    }
+  }
+
+  /**
+   * AOD通知menu消失
+   */
+  publishAodEvent() {
+    if (this.aodStyle && this.aodStyle.isAod) {
+      let options: commonEventManager.CommonEventPublishData = {
+        isSticky: true
+      };
+      try {
+        commonEventManager.publish('AOD_STYLE_CHANGE', options, (err: BusinessError) => {
+          if (err) {
+            log.showError(`publishAodEvent error: code: ${err.code} message: ${err.message}`);
+          } else {
+            log.showInfo('publishAodEvent success');
+          }
+        });
+      } catch (error) {
+        log.showError(`publishAodEvent catch error: ${error?.message}`);
+      }
+
     }
   }
 
@@ -638,7 +671,7 @@ export struct MediaPlaybackControllerItem {
       Row() {
         Image(this.goldFlagImage)
           .fillColor('#ffffff')
-          .renderGroup(this.isMarkingRenderGroup) // 增加UI缓存，防止丢帧
+          .renderGroup(this.aodStyle?.isOneMirror ? false : this.isMarkingRenderGroup) // 增加UI缓存，防止丢帧
         Row()
           .width('100%')
           .height(16)
@@ -678,9 +711,11 @@ export struct MediaPlaybackControllerItem {
    */
   getFontColor(isPrimary: boolean) {
     if (isPrimary) {
-      return this.isPhoneOrPad ? $r('app.color.media_control_temporary_text') : $r('sys.color.font_primary');
+      return this.aodStyle?.isAod ? this.aodStyle?.getStyleValue(AodStyleType.WEIGHT_FONT_COLOR) :
+        this.isPhoneOrPad ? $r('app.color.media_control_temporary_text') : $r('sys.color.font_primary');
     } else {
-      return this.isPhoneOrPad ? $r('app.color.media_control_temporary_text') : $r('sys.color.font_secondary');
+      return this.aodStyle?.isAod ? this.aodStyle?.getStyleValue(AodStyleType.FONT_COLOR) :
+        this.isPhoneOrPad ? $r('app.color.media_control_temporary_text') : $r('sys.color.font_secondary');
     }
   }
 
@@ -743,7 +778,8 @@ export struct MediaPlaybackControllerItem {
             this.getFontSizeScale()))
           .fontWeight(600)
           .fontColor(this.getFontColor(true))
-          .foregroundBrightness(BrightnessUtils.getInstance().getItemTextBrightnessOption(true, this.sceneType, this.isDarkMode()))
+          .foregroundBrightness(this.aodStyle?.isAod ? undefined :
+            BrightnessUtils.getInstance().getItemTextBrightnessOption(true, this.sceneType, this.isDarkMode()))
           .align(!this.isRTL() ? Alignment.Start : Alignment.End)
           .height(MeasuringUtil.getHeight(TITLE_SIZE, TITLE_MAX_SIZE,
             2, this.getFontSizeScale()))
@@ -753,7 +789,8 @@ export struct MediaPlaybackControllerItem {
       } else {
         Text(this.title || (this.curAppName ? this.curAppName.toString() : this.recentlyPlayTitle))
           .fontColor(this.getFontColor(true))
-          .foregroundBrightness(BrightnessUtils.getInstance().getItemTextBrightnessOption(true, this.sceneType, this.isDarkMode()))
+          .foregroundBrightness(this.aodStyle?.isAod ? undefined :
+            BrightnessUtils.getInstance().getItemTextBrightnessOption(true, this.sceneType, this.isDarkMode()))
           .fontSize('18fp')
           .maxFontScale(2.0)
           .fontWeight(600)
@@ -792,7 +829,8 @@ export struct MediaPlaybackControllerItem {
             this.getFontSizeScale()))
           .fontWeight(FontWeight.Regular)
           .fontColor(this.getFontColor(false))
-          .foregroundBrightness(BrightnessUtils.getInstance().getItemTextBrightnessOption(false, this.sceneType, this.isDarkMode()))
+          .foregroundBrightness(this.aodStyle?.isAod ? undefined :
+            BrightnessUtils.getInstance().getItemTextBrightnessOption(false, this.sceneType, this.isDarkMode()))
           .align(!this.isRTL() ? Alignment.Start : Alignment.End)
           .accessibilityLevel('no')
           .marqueeUpdateStrategy(MarqueeUpdateStrategy.PRESERVE_POSITION)
@@ -805,7 +843,8 @@ export struct MediaPlaybackControllerItem {
           .fontWeight(FontWeight.Regular)
           .fontColor(this.getFontColor(false))
           .textAlign(!this.isRTL() ? TextAlign.Start : TextAlign.End)
-          .foregroundBrightness(BrightnessUtils.getInstance().getItemTextBrightnessOption(false, this.sceneType, this.isDarkMode()))
+          .foregroundBrightness(this.aodStyle?.isAod ? undefined :
+            BrightnessUtils.getInstance().getItemTextBrightnessOption(false, this.sceneType, this.isDarkMode()))
       }
     }
     .width('100%')
@@ -825,7 +864,8 @@ export struct MediaPlaybackControllerItem {
                 .alt(this.checkImageShow('', $r('app.media.ic_nomusic_img')))
                 .draggable(false)
                 .objectFit(this.isFreeShow ? ImageFit.Contain : ImageFit.Cover)
-                .fillColor(this.isLiveCardStyle ? '#33FFFFFF' : $r('sys.color.ohos_id_color_fourth'))
+                .fillColor(this.isLiveCardStyle ? '#33FFFFFF' : this.aodStyle?.isAod ?
+                  this.aodStyle?.getStyleValue(AodStyleType.CAPSULE_MUSIC_COLOR) : $r('sys.color.ohos_id_color_fourth'))
                 .borderRadius($r('sys.float.corner_radius_level4'))
                 .onError(() => {
                   log.showInfo('mediaImg show err' + this.mediaImage);
@@ -848,14 +888,15 @@ export struct MediaPlaybackControllerItem {
                     }
                   }
                 })
-                .renderGroup(this.isMarkingRenderGroup)
+                .renderGroup(this.aodStyle?.isOneMirror ? false : this.isMarkingRenderGroup)
                 .id(this.isScreenLock ? 'mediaControllerImage_list' : '')
                 .geometryTransition(this.isScreenLock && this.mediaAnimState.isListGeo ?
                   'mediaControllerImage' : '', {hierarchyStrategy: TransitionHierarchyStrategy.ADAPTIVE})
                 .transition(TransitionEffect.IDENTITY)
                 .zIndex(this.mediaAnimState.isListGeo ? 100 : undefined)
                 .backgroundColor(this.mediaAnimState.isListShow && this.mediaImage && this.isHasMediaImage() ?
-                  Color.Transparent : (this.isLiveCardStyle ? '#19FFFFFF' : $r('sys.color.comp_background_secondary')))
+                  Color.Transparent : (this.isLiveCardStyle ? '#19FFFFFF' : this.aodStyle?.isAod ?
+                  this.aodStyle?.getStyleValue(AodStyleType.MEDIA_BACKGROUND_COLOR) : $r('sys.color.comp_background_secondary')))
                 .autoResize(false)
                 .interpolation(ImageInterpolation.Medium)
             }
@@ -865,7 +906,7 @@ export struct MediaPlaybackControllerItem {
           .justifyContent(FlexAlign.Center)
           .borderRadius(this.imgWidthSize === this.imgHeightSize ? $r('sys.float.ohos_id_corner_radius_default_m') : 4)
         }
-        .opacity(WDefault.MAX_VALUE)
+        .opacity(this.aodStyle?.getNtfIconOpacity() ?? WDefault.MAX_VALUE)
         .type(ButtonType.Normal)
         .clip(false)
         .size({
@@ -880,7 +921,8 @@ export struct MediaPlaybackControllerItem {
             .width(16)
             .height(16)
             .borderRadius(4)
-            .visibility(Visibility.Hidden)
+            .visibility(this.aodStyle?.isAod ? Visibility.Visible : Visibility.Hidden)
+            .backgroundColor(this.aodStyle?.getStyleValue(AodStyleType.MEDIA_BACKGROUND_COLOR))
             .position(this.isRTL() ? { right: this.imagesX, top: this.imagesY } :
               { left: this.imagesX, top: this.imagesY })
           Image(this.appIcon)
@@ -892,7 +934,7 @@ export struct MediaPlaybackControllerItem {
             .draggable(false)
             .position(this.isRTL() ? { right: this.imagesX, top: this.imagesY } :
               { left: this.imagesX, top: this.imagesY })
-            .opacity(WDefault.MAX_VALUE)
+            .opacity(this.aodStyle?.getNtfIconOpacity() ?? WDefault.MAX_VALUE)
         }
       }
       .borderRadius(8)
@@ -927,14 +969,16 @@ export struct MediaPlaybackControllerItem {
           Text(this.getProgressStart())
             .fontSize(10)
             .maxFontScale(1.45)
-            .fontColor(this.isPhoneOrPad ? $r('app.color.media_control_temporary_text') : $r('sys.color.font_secondary'))
-            .foregroundBrightness(BrightnessUtils.getInstance().getItemTextBrightnessOption(this.isClickSlider,
+            .fontColor(this.aodStyle?.isAod ? this.aodStyle?.getStyleValue(AodStyleType.FONT_COLOR) :
+              this.isPhoneOrPad ? $r('app.color.media_control_temporary_text') : $r('sys.color.font_secondary'))
+            .foregroundBrightness(this.aodStyle?.isAod ? undefined :
+              BrightnessUtils.getInstance().getItemTextBrightnessOption(this.isClickSlider,
                 this.sceneType, this.isDarkMode()))
             .flexShrink(0)
             .textAlign(TextAlign.Start)
-            .padding(undefined)
+            .padding(this.aodStyle?.isAod ? { right: 3 } : undefined)
             .accessibilityLevel('no')
-            .renderGroup(this.isMarkingRenderGroup) // 增加UI缓存，防止丢帧
+            .renderGroup(this.aodStyle?.isOneMirror ? false : this.isMarkingRenderGroup) // 增加UI缓存，防止丢帧
 
           if (!this.duration || this.duration === 0 || this.duration < 0) {
             Slider({
@@ -969,11 +1013,11 @@ export struct MediaPlaybackControllerItem {
                 right: 0
               },
               sliderTrackThickness: this.progressHeight,
-              sliderSelectedColor: ((this.isPhoneOrPad ? (this.isShowSeek ?
+              sliderSelectedColor: (this.aodStyle?.isAod ? '#26FFFFFF' : (this.isPhoneOrPad ? (this.isShowSeek ?
                   this.isLiveCardStyle ? '#FFFFFF' : $r('app.color.media_item_slider_primary') :
                   this.isLiveCardStyle ? '#19FFFFFF' : $r('app.color.media_item_slider_normal')) :
                   (this.isShowSeek ? $r('sys.color.icon_emphasize') : $r('sys.color.icon_fourth')))),
-              sliderTrackColor: (this.isLiveCardStyle ? '#19FFFFFF' : (
+              sliderTrackColor: (this.isLiveCardStyle ? '#19FFFFFF' : this.aodStyle?.isAod ? '#0DFFFFFF' : (
                 this.isPhoneOrPad ? $r('app.color.media_item_slider_normal') : undefined)),
               sliderBlockColor: ('#00ffffff'),
               sliderWidth: '100%',
@@ -1061,14 +1105,16 @@ export struct MediaPlaybackControllerItem {
           Text(this.getProgressEnd())
             .fontSize(10)
             .maxFontScale(1.45)
-            .fontColor(this.isPhoneOrPad ? $r('app.color.media_control_temporary_text') : $r('sys.color.font_secondary'))
-            .foregroundBrightness(BrightnessUtils.getInstance().getItemTextBrightnessOption(this.isClickSlider,
+            .fontColor(this.aodStyle?.isAod ? this.aodStyle?.getStyleValue(AodStyleType.FONT_COLOR) :
+              this.isPhoneOrPad ? $r('app.color.media_control_temporary_text') : $r('sys.color.font_secondary'))
+            .foregroundBrightness(this.aodStyle?.isAod ? undefined :
+              BrightnessUtils.getInstance().getItemTextBrightnessOption(this.isClickSlider,
                 this.sceneType, this.isDarkMode()))
             .flexShrink(0)
             .textAlign(TextAlign.End)
-            .padding(undefined)
+            .padding(this.aodStyle?.isAod ? { right: 3 } : undefined)
             .accessibilityLevel('no')
-            .renderGroup(this.isMarkingRenderGroup) // 增加UI缓存，防止丢帧
+            .renderGroup(this.aodStyle?.isOneMirror ? false : this.isMarkingRenderGroup) // 增加UI缓存，防止丢帧
         }
         .width('100%')
         .height(40)
@@ -1347,9 +1393,9 @@ export struct MediaPlaybackControllerItem {
     if (this.isChangeSong && !mediaInfo.displayTags) {
       this.isShowGoldFlag = false;
     }
-    if ((!this.isMarqueeStart) && !this.isChangeSong &&
+    if ((this.aodStyle?.isAod || !this.isMarqueeStart) && !this.isChangeSong &&
       (!mediaInfo?.musicAssetId || this.assetId === mediaInfo?.musicAssetId) && !mediaInfo?.forceUpdate) {
-      log.showInfo(`not update media data, isMarqueeStart: ${this.isMarqueeStart}
+      log.showInfo(`not update media data, isAod: ${this.aodStyle?.isAod}, isMarqueeStart: ${this.isMarqueeStart}
         , assetId: ${this.assetId}`);
       return;
     }
@@ -1474,7 +1520,7 @@ export struct MediaPlaybackControllerItem {
     this.timerId = setInterval(() => {
       let currentTime = this.isPlaying() ? new Date().getTime() : this.playbackPosition.updateTime;
       this.checkPowerActive();
-      if (!this.isMarqueeStart) {
+      if (this.aodStyle?.isAod || !this.isMarqueeStart) {
         log.showInfo(`startIntervalstartInterval: ${this.isMarqueeStart}`);
         return;
       }
@@ -1508,7 +1554,7 @@ export struct MediaPlaybackControllerItem {
 
   getProgressStart(): string {
     log.debug(` getProgressStart start: ${this.duration}、${this.movePosition}`);
-    if (!this.duration || this.duration <= 0) {
+    if (!this.duration || this.duration <= 0 || this.aodStyle?.isAod) {
       return '--:--';
     }
     if (this.trueMovePosition !== undefined && this.duration <= this.trueMovePosition) {
@@ -1528,7 +1574,7 @@ export struct MediaPlaybackControllerItem {
   }
 
   getProgressEnd(): string {
-    if (!this.duration || this.duration <= 0) {
+    if (!this.duration || this.duration <= 0 || this.aodStyle?.isAod) {
       return '--:--';
     }
     let hours = Math.floor(this.duration / 1000 / 3600)

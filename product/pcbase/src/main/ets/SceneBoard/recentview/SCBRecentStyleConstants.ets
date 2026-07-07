@@ -62,7 +62,7 @@ export class SCBRecentStyleConstants {
   public static readonly CARD_LINE_SPACE_PERCENT = 0.05;
   public static readonly SCROLL_BAR_HEIGHT_PERCENT = 0.44;
   public static readonly SCROLL_BAR_HEIGHT_PERCENT_VERTICAL = 0.22;
-  public static readonly SCROLL_BAR_MARGIN_RIGHT = 48;
+  public static readonly SCROLL_BAR_MARGIN_RIGHT = 40;
   public static readonly SCROLL_BAR_MARGIN_RIGHT_PERCENT_HPR = 0.6;
   public static readonly SCROLL_BAR_MARGIN_RIGHT_PERCENT_HPR_HOR = 0.05;
   public static readonly SCROLL_BAR_MARGIN_RIGHT_HORIZONTAL = 100;
@@ -103,7 +103,7 @@ export class SCBRecentStyleConstants {
   public static readonly RECENT_ANIM_TYPE_FADE_OUT = 1;
   public static readonly RECENT_ANIM_TYPE_CHAIN = 2;
 
-  public static readonly CARD_MAX_WIDTH = 384;
+  public static readonly CARD_MAX_WIDTH = 300;
 
   // close icon
   public static readonly RECENT_CLOSE_ICON_BACKGROUND_WIDTH = 32;

@@ -20,7 +20,7 @@ import {
   BuildOptions,
   DataModel,
   RegisterOptions
-} from '@oh-flexiblelayout/flexiblelayout';
+} from '@hw-flexiblelayout/flexiblelayout';
 import { feedbackLogger as log } from '../../util/FeedBackLogUtil';
 import {
   AgentServiceAssistantController,

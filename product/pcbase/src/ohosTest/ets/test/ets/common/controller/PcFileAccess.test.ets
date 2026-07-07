@@ -14,6 +14,16 @@
  */
 
 import PcFileAccess from '../../../../../../main/ets/common/controller/PcFileAccess';
+import { UnityStartMode } from '@hw-pc-filemanager/common';
+import {
+  FilesQueryTaskUtil,
+  FileInfo,
+  RightMenuInfo,
+  RightMenuClass,
+  RcmItem,
+  FileOperation
+} from '@hw-pc-filemanager/common/index';
+import { RightMenuViewUtils } from '@hw-pc-filemanager/right-menu/index';
 import context from '@ohos.app.ability.common';
 import { GlobalContext } from '@ohos/frameworkwrapper';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, MockKit, when,

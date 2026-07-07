@@ -74,6 +74,35 @@ export class FormHostService {
   }
 
   /**
+   * 注册卡片回收的监听，适用范围： 语音助手建议子卡
+   *
+   * @param cardId 卡片id
+   * @param listener 回收事件的回调
+   */
+  public registerFormRecycleListener(cardId: string, listener: RecycleChangeListener): void {
+    log.showInfo(`registerFormRecycleListener: ${cardId}`);
+    let listeners: ArrayList<RecycleChangeListener> =
+      this.formRecycleListenerMap.get(cardId) ?? new ArrayList<RecycleChangeListener>();
+    listeners.add(listener);
+    this.formRecycleListenerMap.set(cardId, listeners);
+  }
+
+  /**
+   * 反注册卡片回收的监听，适用范围： 语音助手建议子卡
+   *
+   * @param cardId 卡片id
+   * @param listener 回收事件的回调
+   */
+  public unRegisterFormRecycleListener(cardId: string, listener: RecycleChangeListener): void {
+    log.showInfo(`unRegisterFormRecycleListener: ${cardId}`);
+    let listeners: ArrayList<RecycleChangeListener> | undefined = this.formRecycleListenerMap.get(cardId);
+    listeners?.remove(listener);
+    if (listeners?.isEmpty()) {
+      this.formRecycleListenerMap.delete(cardId);
+    }
+  }
+
+  /**
    * 通知卡片的回收
    *
    * @param formList 需要通知的卡片列表

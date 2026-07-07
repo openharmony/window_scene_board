@@ -569,6 +569,9 @@ export class StyleConstants {
   public static readonly STYLE_BG_LARGE_LIGHT = 45;
   public static readonly STYLE_BG_XLARGE_LIGHT = 120;
 
+  /** 桌面图标 Image.sourceSize，与 HDS 网格图标资源规格一致 */
+  public static readonly APP_ICON_SOURCE_SIZE = 288;
+
   // 图标投影参数
   public static readonly APP_ICON_SHADOW_RADIUS = 40;
   public static readonly APP_ICON_SHADOW_COLOR = '#14000000';

@@ -33,9 +33,12 @@ const log: LogHelper = LogHelper.getLogHelper(LogDomain.HOME, TAG);
 const DOCK_PAGE_NUMBER: number = 18;
 const INVALID_PAGE_NUMBER: number = -1;
 
+// bms当前查询桌面应用接口会包含户外模式模式的应用，暂时采用白名单管控，包管理接口不再返回户外模式模式应用后整改删除
+// 当前紧急通信, 摩斯码应用为户外模式模式新增的桌面应用
 const UNSUPPORT_CACHE_CHECK_BUNDLE: string[] = [
   'com.ohos.sceneboard',
-  'com.ohos.emergencycommunication'
+  'com.ohos.emergencycommunication',
+  'com.ohos.cloudmodeassistant',
 ];
 
 /**

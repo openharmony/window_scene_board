@@ -1,0 +1,23 @@
+{
+    "plural":[
+        {
+            "name":"folder_is_open_and_total_screen",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"Le dossier est ouvert, il contient %d écran",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"Le dossier est ouvert, il contient %d écrans",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

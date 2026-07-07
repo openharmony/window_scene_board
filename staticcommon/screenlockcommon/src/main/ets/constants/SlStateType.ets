@@ -53,6 +53,7 @@ export enum SlMainStateType {
   SL_CLOCK_EDIT_BIND_STATE = 'sl_clock_edit_bind_state', // 锁屏时钟编辑界面UI绑定变量状态,
   SL_CLOCK_MODE_STATE = 'sl_clock_mode_state', // 锁屏时钟原数据
   SL_FOLDABLE_PSD_STATIC_STATE = 'sl_foldable_psd_static_state', // 锁屏密码面板静态变量状态
+  SL_DELIVER_BADGE_BIND_STATE = 'sl_deliver_badge_bind_state', // 沉浸锁屏克隆应用狡辩角标UI绑定变量状态
   SL_ART_LAYOUT_STATE = 'sl_ART_LAYOUT_state', // 锁屏编辑艺术签名样式编辑UI绑定状态
   SL_ART_SIGN_BIND_DATA = 'sl_art_sign_bind_data', // 艺术签名绑定数据
 }
@@ -526,6 +527,32 @@ export enum FoldablePSDStaticStateType {
 }
 
 /**
+ * 子状态类型，锁屏首页组件UI绑定变量状态类型，沉浸卡片特有属性
+ */
+export enum DeliverBadgeBindType {
+  // 克隆应用图标背板左上，右下圆角大小
+  BADGE_COLUMN_LEFT_RADIUS = 'badgeColumnLeftRadius',
+  // 克隆应用图标背板右上，左下圆角大小
+  BADGE_COLUMN_RIGHT_RADIUS = 'badgeColumnRightRadius',
+  // 克隆应用角标背板透明度
+  OPACITY = 'opacity',
+  // 克隆应用图标根组件宽度
+  BADGE_ROOT_WIDTH = 'badgeRootWidth',
+  // 克隆应用图标根组件高度
+  BADGE_ROOT_HEIGHT = 'badgeRootHeight',
+  // 克隆应用图标宽度
+  BADGE_ICON_WIDTH = 'badgeIconWidth',
+  // 克隆应用图标高度
+  BADGE_ICON_HEIGHT = 'badgeIconHeight',
+  // 克隆应用图标根组件右侧偏移量
+  ROOT_RIGHT_OFFSET = 'rootRightOffset',
+  // 克隆应用图标根组件底部偏移量
+  ROOT_BOTTOM_OFFSET = 'rootBottomOffset',
+  // 克隆应用角标svg填充色
+  BADGE_FILL_COLOR = 'badgeFillColor',
+}
+
+/**
  * 时钟桌面一镜到底动画类型
  */
 export enum ClockDeskTop2AodAnimType {
@@ -547,5 +574,5 @@ export type SlSubStateType = SlStaticStateType | SlBindStateType | ClockAnimStat
   DofWallpaperStaticStateType | FormWgStaticStateType | FingerprintBindStateType | FingerprintStaticStateType |
   OneMirrorStaticStateType | OuterFormBindStateType | OuterFormStaticStateType | SlGreetSBindStateType |
   SlGreetStaticStateType | EditStaticStateType | ClockModeDataType | OuterToolsBindStateType |
-  OuterToolsStaticStateType | FoldablePSDStaticStateType | SignatureBindStateType |
+  OuterToolsStaticStateType | FoldablePSDStaticStateType | DeliverBadgeBindType | SignatureBindStateType |
   EditBindStateType | ArtLayoutBindStateType | ClockEditBindStateType | FormBindStateType | ClockDeskTop2AodAnimType;

@@ -15,26 +15,34 @@
 
 import { NotificationEntry, NtfDataUpdateListener } from '../../model/NotificationEntry';
 import { NotificationConfig } from '../../common/NotificationConfig';
-import { ArrayUtils, CommonUtils, LogDomain, LogHelper } from '@ohos/basicutils';
+import {
+  ArrayUtils,
+  CommonUtils,
+  LogDomain,
+  LogHelper
+} from '@ohos/basicutils';
 import { DeviceHelper, EventManager, EvtBus } from '@ohos/frameworkwrapper';
 import { RTLUtil } from '@ohos/componenthelper';
 import { SCBConstants } from '@ohos/commonconstants';
 import { NotificationActionView } from '../common/NotificationActionView';
+import curves from '@ohos.curves';
 import NtfMgr from '@ohos.notificationManager';
 import {
+  AodStyleType,
   BannerDeformState,
   bannerMgr,
-  fontScaleManager,
-  FontScaleState,
+  ImmersiveAodStyle,
   immersiveKgMgr,
-  NtfMultiLineContent,
   ObservedItem,
   OverlayIconStyle
 } from '@ohos/systemuicommon';
-import { AccessibilityAppName, BrightnessOptionUtils, NotificationType } from '@ohos/systemuicommon/Index';
+import { fontScaleManager, FontScaleState, NtfMultiLineContent } from '@ohos/systemuicommon';
+import { BrightnessOptionUtils } from '@ohos/systemuicommon/Index';
+import { hideBannerNtfContentObj } from '../../model/HideBannerNtfContentObj';
 import { NtfAppIconModifier } from '../../vm/style/NtfAppIconModifier';
 import { NtfTimeVM } from '../../vm/NtfTimeVM';
 import { NtfColorModeVM } from '../../vm/NtfColorModeVM';
+import { AccessibilityAppName, NotificationType } from '@ohos/systemuicommon/Index';
 import { ntfViewConfigManager } from '../../vm/config/NtfViewConfigManager';
 import { NtfListContentConfig } from '../../vm/config/NtfViewConfig';
 import pinTopIcon from '../common/PinTopIcon';
@@ -50,8 +58,11 @@ import { NotificationGroupExpandAnimation } from '../../animation/NotificationGr
 import { NotificationUtils } from '../../common/NotificationUtils';
 import { ResUtils } from '@ohos/windowscene/src/main/ets/utils/ResourceUtils';
 import { ExtraNtfCollapseEvent } from '../../common/event/NotificationEvent';
-import { NotificationCollaBadgeViewV1 } from '@ohos/systemuicommon/src/main/ets/view/NotificationCollaBadgeViewV1';
+import { DeliverBadge } from '@ohos/systemuicommon/src/main/ets/view/DeliverBadge';
+import { NotificationCollaBadgeViewV1 } from '@ohos/systemuicommon/src/main/ets/view/NotificationCollaBadgeViewV1'
 import { NtfHeadsUpVM } from '../../vm/NtfHeadsUpVM';
+import { MediaPlaybackControllerItem } from '@ohos/mediacontrolcomponent';
+import { SysTypeCode } from '@ohos/systemuicommon';
 const TAG = 'NotificationContent';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.NC, TAG);
 
@@ -81,6 +92,12 @@ export struct NotificationContent {
    * 通知面板类型
    */
   @Consume notificationType: number;
+
+  /**
+   * AOD显示样式
+   */
+  @State aodStyle: ImmersiveAodStyle | undefined = immersiveKgMgr.getOneMirrorState().getAodStyle(
+    this.notificationType === NotificationType.TYPE_PHONE_KEYGUARD);
 
   @State colorModeVM: NtfColorModeVM | undefined = undefined;
   /**
@@ -250,7 +267,8 @@ export struct NotificationContent {
    */
   private isProtectedInScreenLocked(): boolean {
     let flag = this.protectedVm.isProtected(this.ntfEntry?.bundleIdxTag) &&
-      !((this.notificationType === NotificationType.TYPE_PHONE_KEYGUARD || !this.ntfEntry?.isAppLocked));
+      !((this.notificationType === NotificationType.TYPE_PHONE_KEYGUARD ||
+        this.notificationType === NotificationType.TYPE_PHONE_AOD) && !this.ntfEntry?.isAppLocked);
     return flag;
   }
 
@@ -370,9 +388,19 @@ export struct NotificationContent {
   }
 
   build() {
-    // 普通通知
-    if (this.isProtectedInScreenLocked() ||
+    // 媒体播放通知
+    if (this.isMediaPlayer()) {
+      MediaPlaybackControllerItem({
+        onIconClickV2: this.onMediaCenterIconClick,
+        isScreenLock: Boolean(this.onMediaCenterIconClick),
+        notifyId: this.ntfEntry?.hashCode,
+        isNotificationFromDeviceChange: false,
+        itemData: undefined,
+        ntfPanelVisible: true
+      })
+    } else if (this.isProtectedInScreenLocked() ||
     ArrayUtils.isEmpty(this.ntfEntry?.actionButtons)) {
+      // 普通通知
       this.buildNtfCommon();
     } else { // 帶按鈕通知
       Column() {
@@ -392,6 +420,15 @@ export struct NotificationContent {
         }
       }
     }
+  }
+
+  private isMediaPlayer(): boolean {
+    const liveViewData = this.ntfEntry?.liveViewData;
+    return liveViewData?.sysTypeCode === SysTypeCode.BROADCASTING_CENTER;
+  }
+
+  private onMediaCenterIconClick = (): void => {
+    // 处理媒体中心图标点击事件
   }
 
   @Builder
@@ -440,7 +477,7 @@ export struct NotificationContent {
           (this.ntfEntry.isCollaNotification && !this.isInGroup && !this.overlayIcon) ?
           this.appIcon : this.overlayIcon)
           .id('head_portrait' + this.ntfEntry.hashCode)
-          .opacity(WDefault.MAX_VALUE)
+          .opacity(this.aodStyle?.getNtfIconOpacity() ?? WDefault.MAX_VALUE)
           .transition(this.isHeadsUp || !this.isInGroup ? undefined :
           NotificationGroupExpandAnimation.getOverlayIconAnimation(this.index, this.lastIndex))
           .attributeModifier(new NtfAppIconModifier($r('app.float.ntf_small_icon_size_phone'),
@@ -463,6 +500,7 @@ export struct NotificationContent {
                 .width($r('app.float.ntf_small_icon_size'))
                 .height($r('app.float.ntf_small_icon_size'))
                 .borderRadius($r('app.float.ntf_action_button_radius'))
+                .backgroundColor(this.aodStyle?.getStyleValue(AodStyleType.LIST_CARD_BACKGROUND_COLOR))
                 .offset({ x: $r('app.float.ntf_small_icon_offset_phone'), y: $r('app.float.ntf_small_icon_offset_phone') })
               Image(this.appIcon)
                 .id(this.ntfEntry?.hashCode + '_app_icon')
@@ -470,10 +508,14 @@ export struct NotificationContent {
                   false).setOnErrorEvent(() => {
                   this.appIcon = $r('app.media.icon')
                 }))
-                .opacity(WDefault.MAX_VALUE)
+                .opacity(this.aodStyle?.getNtfIconOpacity() ?? WDefault.MAX_VALUE)
                 .offset({ x: $r('app.float.ntf_small_icon_offset_phone'), y: $r('app.float.ntf_small_icon_offset_phone') })
             }
           }
+        } else {
+          DeliverBadge({
+            isKgScene: this.notificationType === NotificationType.TYPE_PHONE_KEYGUARD,
+          })
         }
       }
       .margin({
@@ -506,7 +548,7 @@ export struct NotificationContent {
         end: LengthMetrics.resource($r('app.float.ntf_item_padding_start_end'))
       })
       .flexShrink(0)
-      .opacity(undefined)
+      .opacity(this.aodStyle?.isAod ? this.aodStyle.getStyleValue(AodStyleType.NTF_APP_ICON_ALPHA) : undefined)
   }
 
   @Builder
@@ -519,7 +561,9 @@ export struct NotificationContent {
         .id(TAG + '_ntf_flag')
         .border({
           width: $r('app.float.ntf_pin_top_flag_border_width'),
-          color: this.colorModeVM?.bgPinTextColor,
+          color: this.aodStyle?.isAod
+            ? this.aodStyle?.getStyleValue(AodStyleType.FONT_COLOR)
+            : this.colorModeVM?.bgPinTextColor,
           radius: $r('app.float.ntf_pin_top_flag_border_radius'),
           style: BorderStyle.Solid
         })
@@ -531,10 +575,13 @@ export struct NotificationContent {
         })
         .fontSize($r('app.float.ntf_pin_top_flag_font_size'))
         .fontWeight(FontWeight.Medium)
-        .renderGroup(true)
+        .renderGroup(this.aodStyle?.isOneMirror ? false : true)
         .margin({ right: $r('app.float.ntf_item_date_time_margin'), left: $r('app.float.ntf_item_date_time_margin') })
-        .fontColor(this.colorModeVM?.bgPinTextColor)
-        .foregroundBrightness(this.colorModeVM?.themeTimestampForegroundBrightnessOptions)
+        .fontColor(this.aodStyle?.isAod
+          ? this.aodStyle?.getStyleValue(AodStyleType.FONT_COLOR)
+          : this.colorModeVM?.bgPinTextColor)
+        .foregroundBrightness(this.aodStyle?.isAod ? BrightnessOptionUtils.aodTimeLightOptionForFillColor :
+          this.colorModeVM?.themeTimestampForegroundBrightnessOptions)
     }
   }
 
@@ -550,8 +597,8 @@ export struct NotificationContent {
       .maxLines(1)
       .textOverflow({ overflow: TextOverflow.Ellipsis })
       .id(`${TAG}_Text_${(this.ntfEntry as NotificationEntry).hashCode}`)
-      .visibility(Visibility.Visible)
-      .renderGroup(true)
+      .visibility(this.aodStyle?.isAod ? Visibility.Hidden : Visibility.Visible)
+      .renderGroup(this.aodStyle?.isOneMirror ? false : true)
   }
 
   private titleHaveEmoji(): boolean {
@@ -573,7 +620,8 @@ export struct NotificationContent {
         .fontWeight(FontWeight.Medium)
         .fontSize(this.fontScaleState.getScaleSize($r('app.float.ntf_title_font_size')))
         .fontFeature('\"ss08\" on')
-        .fontColor(this.colorModeVM?.ntfThemeTextPrimaryColor)
+        .fontColor(this.aodStyle?.isAod ? this.aodStyle?.getStyleValue(AodStyleType.FONT_COLOR) :
+          this.colorModeVM?.ntfThemeTextPrimaryColor)
         .foregroundBrightness(this.colorModeVM?.foregroundPrimaryOptionOnBackground)
         .wordBreak(WordBreak.BREAK_ALL)
         .flexShrink(1)
@@ -581,7 +629,7 @@ export struct NotificationContent {
         this.getTitleGeometryId(this.ntfEntry?.hashCode) : undefined, this.getGeometryTransitionOptions())
         .transition(this.isInGroup && this.checkIsFirstNtf() && this.isClicked ? this.getFirstTitleTransition() :
           undefined)
-        .renderGroup(!this.titleHaveEmoji())
+        .renderGroup(!(this.aodStyle?.isOneMirror) && !this.titleHaveEmoji())
         .lineHeight(this.fontScaleState.getScaleSize($r('app.float.ntf_text_line_height')))
         .clip(this.textClip)
         .textAlign(RTLUtil.isRTL() ? TextAlign.End : TextAlign.Start)
@@ -620,7 +668,8 @@ export struct NotificationContent {
       .fontWeight(FontWeight.Regular)
       .fontSize(this.fontScaleState.getScaleSize($r('app.float.ntf_title_font_size')))
       .fontFeature('\"ss08\" on')
-      .fontColor(this.colorModeVM?.themeFontForegroundColor)
+      .fontColor(this.aodStyle?.isAod ? this.aodStyle?.getStyleValue(AodStyleType.CARD_SECONDARY_FONT_COLOR) :
+        this.colorModeVM?.themeFontForegroundColor)
       .lineHeight(this.fontScaleState.getScaleSize($r('app.float.ntf_text_line_height')))
       .wordBreak(WordBreak.BREAK_ALL)
       .clip(this.textClip)
@@ -645,14 +694,15 @@ export struct NotificationContent {
         }
       }
     }
-    .foregroundBrightness(this.colorModeVM?.themeFontForegroundBrightnessOptions)
+    .foregroundBrightness(this.aodStyle?.isAod ? this.colorModeVM?.themeFontForegroundOptions :
+      this.colorModeVM?.themeFontForegroundBrightnessOptions)
     .alignItems(HorizontalAlign.Start)
     .id(TAG + '_MultiLines')
     .flexShrink(1)
     .padding({
       bottom: $r('app.float.ntf_item_padding_start_end')
     })
-    .renderGroup((this.hasMultiLineEmoji()) ? false : true)
+    .renderGroup((this.aodStyle?.isOneMirror || this.hasMultiLineEmoji()) ? false : true)
   }
 
   @Builder
@@ -669,8 +719,10 @@ export struct NotificationContent {
         .fontWeight(FontWeight.Regular)
         .fontSize(this.fontScaleState.getScaleSize($r('app.float.ntf_title_font_size')))
         .fontFeature('\"ss08\" on')
-        .fontColor( this.colorModeVM?.themeFontForegroundColor)
-        .foregroundBrightness(this.colorModeVM?.themeFontForegroundBrightnessOptions)
+        .fontColor(this.aodStyle?.isAod ? this.aodStyle?.getStyleValue(AodStyleType.CARD_SECONDARY_FONT_COLOR) :
+          this.colorModeVM?.themeFontForegroundColor)
+        .foregroundBrightness(this.aodStyle?.isAod ? this.colorModeVM?.themeFontForegroundOptions :
+          this.colorModeVM?.themeFontForegroundBrightnessOptions)
         .wordBreak(WordBreak.BREAK_ALL)
         .flexShrink(1)
         .padding({
@@ -678,7 +730,7 @@ export struct NotificationContent {
             : $r('app.float.ntf_item_padding_start_end')
         })
         .transition((this.getNtfEntry()?.isHeadsUp() || DeviceHelper.isPC()) ? null : this.getContentTranEffect())
-        .renderGroup((this.hasEmoji()) ? false : true)
+        .renderGroup((this.aodStyle?.isOneMirror || this.hasEmoji()) ? false : true)
         .lineHeight(this.fontScaleState.getScaleSize($r('app.float.ntf_text_line_height')))
         .clip(this.textClip)
     }

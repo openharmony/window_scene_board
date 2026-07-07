@@ -1,0 +1,232 @@
+{
+    "plural":[
+        {
+            "name":"psd_incorrect_will_locked1",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"%d قېتىم",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"%d قېتىم",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"psd_incorrect_will_locked2",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"%d مىنۇت",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"%d مىنۇت",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"psd_incorrect_will_locked3",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"%d سېكۇنت",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"%d سېكۇنت",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"psd_incorrect_psd_left_times",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"مەخپىي نومۇر خاتا، يەنە %d پۇرسەت قالدى.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"one",
+                    "value":"مەخپىي نومۇر خاتا، يەنە %d پۇرسەت قالدى.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"psd_incorrect_psd_left_times_mix",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"پارول خاتا، يەنە %d پۇرسەت قالدى.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"one",
+                    "value":"پارول خاتا، يەنە %d پۇرسەت قالدى.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"sim_unlock_input_puk_tips",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"\u200fPUK كىرگۈزۈڭ (%d پۇرسەت قالدى)",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"one",
+                    "value":"\u200fPUK كىرگۈزۈڭ (%d پۇرسەت قالدى)",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"sim_unlock_input_tips",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"\u200fSIM كارتىنىڭ PIN نومۇرى (%d پۇرسەت قالدى)",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"one",
+                    "value":"\u200fSIM كارتىنىڭ PIN نومۇرى (%d پۇرسەت قالدى)",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"sim_unlock_puk_incorrect_tips",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"كىرگۈزگەن PUK خاتا، يەنە %d قېتىم پۇرسەت قالدى. يەنىلا خاتا كىرگۈزسىڭىز، SIM كارتا مەڭگۈلۈك ئىشلىمەس بولۇپ قالىدۇ.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"كىرگۈزگەن PUK خاتا، يەنە %d قېتىم پۇرسەت قالدى. يەنىلا خاتا كىرگۈزسىڭىز، SIM كارتا مەڭگۈلۈك ئىشلىمەس بولۇپ قالىدۇ.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"sim_unlock_pin_incorrect_tips",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"كىرگۈزگەن PIN خاتا، يەنە %d قېتىم پۇرسەت قالدى.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"one",
+                    "value":"كىرگۈزگەن PIN خاتا، يەنە %d قېتىم پۇرسەت قالدى.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"fp_fingerprint_not_match",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"بارماق تونۇلمىدى. يەنە %d پۇرسەت بار.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"بارماق تونۇلمىدى. يەنە %d پۇرسەت بار.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"psd_totle_length",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"جەمئىي %d خانا",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"جەمئىي %d خانا",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"psd_entered_length",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"%d خانا كىرگۈزۈلدى",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"one",
+                    "value":"%d خانا كىرگۈزۈلدى",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

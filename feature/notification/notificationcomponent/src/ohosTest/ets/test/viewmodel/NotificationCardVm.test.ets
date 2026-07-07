@@ -270,6 +270,66 @@ export default function NotificationCardVmTest() {
       expect(notificationcardvm.itemClickScale).assertEqual(1);
     });
 
+    it('should_report_click_when_event_type_is_Up_and_ntf_is_deliver_notification_and_privacy_disabled', 0, () => {
+      let notificationcardvm: NotificationCardVm = new NotificationCardVm();
+      let event: TouchEvent = {
+        type: TouchType.Up,
+        changedTouches: [{ windowX: 100, windowY: 200 }]
+      };
+      let ntf: NotificationBase = {
+        isDeliverNotification: true,
+        wantAgent: {} as any,
+        wantAgentInfo: {} as any
+      };
+      let groupNtf: NormalNotificationGroup = {
+        notificationBase: ntf,
+        notificationType: NotificationCategory.ANNOUNCE
+      };
+      let mocker: MockKit = new MockKit();
+      let mockFunc1: Function = mocker.mockFunc(sSettingsUtil, sSettingsUtil.getSystemValue);
+      when(mockFunc1)(ArgumentMatchers.anyString, ArgumentMatchers.anyString).afterReturn(SettingsConstants.DELIVER_PRIVACY_ENABLE_STATE_DEFAULT);
+      let mockFunc2: Function = mocker.mockFunc(ClickNotificationMaintenance, ClickNotificationMaintenance.reportClick);
+      when(mockFunc2)(ArgumentMatchers.any, ArgumentMatchers.any).afterReturnNothing();
+      let mockFunc3: Function = mocker.mockFunc(LogHelper, LogHelper.showInfo);
+      when(mockFunc3)(ArgumentMatchers.any).afterReturnNothing();
+      notificationcardvm.isTouching = true;
+      notificationcardvm.touchStartX = 100;
+      notificationcardvm.touchStartY = 200;
+      notificationcardvm.itemClickScale = 0.95;
+      notificationcardvm.ntf = ntf;
+      notificationcardvm.vmInjector.getListVm = () => ({
+        getGroupNtf: () => groupNtf
+      }) as any;
+      notificationcardvm.vmInjector.getStarterVm = () => ({
+        startWantAgent: () => {}
+      }) as any;
+      notificationcardvm.onTouch(event);
+      expect(notificationcardvm.isTouching).assertFalse();
+      expect(notificationcardvm.itemClickScale).assertEqual(1);
+      mocker.ignoreMock(sSettingsUtil, sSettingsUtil.getSystemValue);
+      mocker.ignoreMock(ClickNotificationMaintenance, ClickNotificationMaintenance.reportClick);
+      mocker.ignoreMock(LogHelper, LogHelper.showInfo);
+    });
+
+    it('should_not_report_click_when_event_type_is_Up_and_ntf_is_not_deliver_notification_or_privacy_enabled', 0, () => {
+      let notificationcardvm: NotificationCardVm = new NotificationCardVm();
+      let event: TouchEvent = {
+        type: TouchType.Up,
+        changedTouches: [{
+          windowX: 100, windowY: 200
+        }]
+      };
+      let ntf: NotificationBase = {
+        isDeliverNotification: false,
+        wantAgent: {} as any,
+        wantAgentInfo: {} as any
+      };
+      let groupNtf: NormalNotificationGroup = {
+        notificationBase: ntf,
+        notificationType: NotificationCategory.ANNOUNCE
+      };
+      let mocker;
+    });
     it('should_set_isTouching_to_true_when_event_type_is_Down', 0, () => {
       let notificationcardvm: NotificationCardVm = new NotificationCardVm();
       let event: TouchEvent = {
@@ -362,6 +422,67 @@ export default function NotificationCardVmTest() {
       expect(notificationcardvm.touchStartX).assertEqual(100);
       expect(notificationcardvm.touchStartY).assertEqual(200);
       expect(notificationcardvm.itemClickScale).assertEqual(1);
+    });
+
+    it('should_report_click_when_event_type_is_Up_and_ntf_is_deliver_notification_and_privacy_disabled', 0, () => {
+      let notificationcardvm: NotificationCardVm = new NotificationCardVm();
+      let event: TouchEvent = {
+        type: TouchType.Up,
+        changedTouches: [{ windowX: 100, windowY: 200 }]
+      };
+      let ntf: NotificationBase = {
+        isDeliverNotification: true,
+        wantAgent: {} as any,
+        wantAgentInfo: {} as any
+      };
+      let groupNtf: NormalNotificationGroup = {
+        notificationBase: ntf,
+        notificationType: NotificationCategory.ANNOUNCE
+      };
+      let mocker: MockKit = new MockKit();
+      let mockFunc1: Function = mocker.mockFunc(sSettingsUtil, sSettingsUtil.getSystemValue);
+      when(mockFunc1)(ArgumentMatchers.anyString, ArgumentMatchers.anyString).afterReturn(SettingsConstants.DELIVER_PRIVACY_ENABLE_STATE_DEFAULT);
+      let mockFunc2: Function = mocker.mockFunc(ClickNotificationMaintenance, ClickNotificationMaintenance.reportClick);
+      when(mockFunc2)(ArgumentMatchers.any, ArgumentMatchers.any).afterReturnNothing();
+      let mockFunc3: Function = mocker.mockFunc(LogHelper, LogHelper.showInfo);
+      when(mockFunc3)(ArgumentMatchers.any).afterReturnNothing();
+      notificationcardvm.isTouching = true;
+      notificationcardvm.touchStartX = 100;
+      notificationcardvm.touchStartY = 200;
+      notificationcardvm.itemClickScale = 0.95;
+      notificationcardvm.ntf = ntf;
+      notificationcardvm.vmInjector.getListVm = () => ({
+        getGroupNtf: () => groupNtf
+      }) as any;
+      notificationcardvm.vmInjector.getStarterVm = () => ({
+        startWantAgent: () => {}
+      }) as any;
+      notificationcardvm.onTouch(event);
+      expect(notificationcardvm.isTouching).assertFalse();
+      expect(notificationcardvm.itemClickScale).assertEqual(1);
+      mocker.ignoreMock(sSettingsUtil, sSettingsUtil.getSystemValue);
+      mocker.ignoreMock(ClickNotificationMaintenance, ClickNotificationMaintenance.reportClick);
+      mocker.ignoreMock(LogHelper, LogHelper.showInfo);
+    });
+
+    it('should_not_report_click_when_event_type_is_Up_and_ntf_is_not_deliver_notification_or_privacy_enabled', 0, () => {
+      let notificationcardvm: NotificationCardVm = new NotificationCardVm();
+      let event: TouchEvent = {
+        type: TouchType.Up,
+        changedTouches: [{
+          windowX: 100, windowY: 200
+        }]
+      };
+      let ntf: NotificationBase = {
+        isDeliverNotification: false,
+        wantAgent: {} as any,
+        wantAgentInfo: {} as any
+      };
+      let groupNtf: NormalNotificationGroup = {
+        notificationBase: ntf,
+        notificationType: NotificationCategory.ANNOUNCE
+      };
+      let mocker
     });
 
     it('should_not_animate_itemClickScale_to_1_when_event_type_is_Move_and_scale_is_1', 0, () => {

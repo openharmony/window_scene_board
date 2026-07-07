@@ -28,13 +28,17 @@ import { ServiceType } from '../utils/ConfigParseUtil';
 
 const TAG: string = 'AppFoundationServiceExtensionManager';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.HOME, TAG);
-//第二位非空，表示找到了映射的商用上架OpenHarmony应用
+//第二位非空，表示找到了映射的商用上架鸿蒙应用
 const APP_HARMONY_ON_SHELF = 1 << 1;
-// 第六位非空，表示该应用不在分发清单，但是兜底允许入湖
+// 第四位非空，表示该应用在应用的分发清单内
+const APP_IN_ABROAD_APP_LIST = 1 << 3;
+// 第五位非空，表示该应用在克隆应用的分发清单内
+const APP_IN_DELIVER_TONG_LIST = 1 << 4;
+// 第六位非空，表示该应用不在分发清单，但是兜底允许
 const APP_NOT_IN_LIST = 1 << 5;
 
 /**
- * 获取应用市场OpenHarmony化应用映射类
+ * 获取应用市场鸿蒙化应用映射类
  *
  * @since 2024-09-20
  */
@@ -80,7 +84,7 @@ export class AppFoundationServiceExtensionManager {
   }
 
   /**
-   * 查询OpenHarmony化应用映射
+   * 查询鸿蒙化应用映射
    *
    * @param packageList 包名列表
    * @param context 上下文
@@ -184,27 +188,27 @@ export class AppFoundationServiceExtensionManager {
   }
 
   /**
-   * 获取查询到的OpenHarmony化应用列表
+   * 获取查询到的鸿蒙化应用列表
    *
-   * @returns OpenHarmony化应用列表
+   * @returns 鸿蒙化应用列表
    */
   public getohosAppMap(): Map<string, string[]> {
     return this.ohosAppMap;
   }
 
   /**
-   * 获取查询到的OpenHarmony化应用列表
+   * 获取查询到的鸿蒙化应用列表
    *
-   * @returns OpenHarmony化应用列表
+   * @returns 鸿蒙化应用列表
    */
   public getohosAppMappingInfoMap(): Map<string, MappingInfo> {
     return this.ohosAppMappingInfoMap;
   }
 
   /**
-   * 获取查询到的可入湖应用列表
+   * 获取查询到的可应用列表
    *
-   * @returns 可出入湖列表
+   * @returns 可出列表
    */
   public getDeliverBundleNamesMap(): Map<string, number> {
     return this.deliverBundleNamesMap;
@@ -394,7 +398,7 @@ export class AppFoundationServiceExtensionManager {
     this.queryResult = true;
     outputParam.mappingInfos.forEach((mappingInfo: MappingInfo) => {
       let type: number = mappingInfo.type;
-      if ((type & APP_NOT_IN_LIST) &&
+      if (((type & APP_IN_DELIVER_TONG_LIST) || (type & APP_IN_ABROAD_APP_LIST) || (type & APP_NOT_IN_LIST)) &&
         !CheckEmptyUtils.isEmpty(mappingInfo.pkgName)) {
         this.deliverBundleNamesMap.set(mappingInfo.pkgName, type);
       }

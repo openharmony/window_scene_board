@@ -28,6 +28,7 @@ import {
 } from '@ohos/controlcentercommon/src/main/ets/sliderButton/SliderButtonComponent';
 import { CC_LAYOUT_CONFIGS, ControlCenterLayoutIndex } from '../../controller/ControlCenterLayoutController';
 import { sBrightnessSubPageLayoutController } from '../../controller/BrightnessSubPageLayoutController';
+import { ResUtils } from '@ohos/windowscene';
 
 const TAG = 'Ctrl.BrightnessSubpageLayout';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.CC, TAG);
@@ -94,6 +95,10 @@ export default struct BrightnessSubpageLayout {
       this.viewData.setLargeFoldSliderButtonViewData(true);
     }
     this.viewModel.aboutToAppear();
+    this.viewData.moreSettingTopMargin =
+      ResUtils.getConvertNumber($r('app.float.Control_center_subpage_toggle_more_setting_top_margin'));
+    this.viewData.buttonHeight =
+      ResUtils.getConvertNumber($r('app.float.Control_center_subpage_slider_toggle_button_height'));
     this.geometryTag += (sBrightnessSubPageLayoutController.isHorizontal() ? '' : '_isVertical');
   }
 

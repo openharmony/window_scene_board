@@ -30,8 +30,7 @@ type AnyType = PrimitiveType | NonPrimitiveType;
 
 export enum LogDomain {
   WALLPAPER_EDIT = 0x04500, // WallpaperEdit
-}
-;
+};
 
 export class Log {
   public static debug(tag: string, message: string, ...args: AnyType[]): void {

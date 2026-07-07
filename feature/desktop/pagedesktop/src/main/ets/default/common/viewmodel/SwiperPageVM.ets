@@ -89,9 +89,9 @@ export class SwiperPageVM {
       endRow = temp;
     }
     log.showInfo(`shift from start: ${startRow}, ${startColumn}, end: ${endRow}, ${endColumn} pageIndex ${pageIndex}`);
-    const isBigScreen: boolean = DeviceHelper.isBigScreenMachine();
+    const isSuperFold: boolean = DeviceHelper.isSuperFoldMachine();
     const isPortrait: boolean = AppStorage.get('isPortrait') ?? true;
-    const data: GridLayoutItemInfo[] = isBigScreen ?
+    const data: GridLayoutItemInfo[] = isSuperFold ?
     LaunchLayoutCacheManager.getInstance().getAllGridLayoutItemList(BusinessType.BUSINESS_BASIC_DESKTOP) :
     this.getPageItems(pageIndex);
     data?.forEach((item: GridLayoutItemInfo) => {
@@ -101,7 +101,7 @@ export class SwiperPageVM {
       }
       let itemRow: number = 0;
       let itemColumn: number = 0;
-      if (isBigScreen) {
+      if (isSuperFold) {
         if (item.page === undefined) {
           log.showWarn('item page is undefined');
           return;

@@ -24,11 +24,15 @@ import {
   DofWallpaperStaticStateType,
   SlMainStateType
 } from '@ohos/screenlockcommon/src/main/ets/constants/SlStateType';
+import ScreenLockPreferencesUtil from '../../form/common/ScreenLockPreferencesUtil';
+import { GlobalContext } from '@ohos/frameworkwrapper';
+import { ScreenLockFormSaveUtils } from '../utils/ScreenLockFormSaveUtils'
 
 const TAG: string = 'ThemeRemoteManager';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.KG, TAG);
 
 const fileName: string = 'config.json';
+const JSON_FILE_NAME = 'ScreenLockForm_data.json';
 
 /**
  * 从TS服务端获取主题信息的Manager
@@ -49,6 +53,9 @@ export class ThemeRemoteManager {
     }];
     let config = this.getDofWallpaperConfig();
     this.mTConfigArg.push(...config);
+    const sandboxDir  = this.uiContext.filesDir;
+    const targetPath = `${sandboxDir}/${JSON_FILE_NAME}`;
+    ScreenLockFormSaveUtils.writeJsonFile(targetPath, JSON.stringify(lockscreenConfig.form));
     TSManager.getRemoteCaller(this.uiContext).setCurrentThemeCfg(this.mTConfigArg).then((result: boolean) => {
       log.showInfo(`setCurrentThemeCfg = ${result}`);
     });

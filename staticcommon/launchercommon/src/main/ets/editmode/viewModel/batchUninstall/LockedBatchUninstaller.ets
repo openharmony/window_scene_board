@@ -15,7 +15,7 @@
 
 import { LogDomain, LogHelper } from '@ohos/basicutils';
 import { AbstractBatchUninstaller } from './AbstractBatchUninstaller';
-// import appLock from '@hms.security.appLock';
+// import appLock from '@ohos.security.appLock';
 import { BusinessError } from '@ohos.base';
 import { ForwardType } from './BatchUninstallChain';
 import { CommonConstants, GridLayoutItemInfo } from '../../../TsIndex';

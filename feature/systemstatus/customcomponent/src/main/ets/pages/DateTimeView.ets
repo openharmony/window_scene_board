@@ -15,9 +15,14 @@
 
 import { CommonUtils, LogDomain, LogHelper } from '@ohos/basicutils';
 import { DateTimeVM } from '../vm/DateTimeVM';
+import { DateUtils } from '../common/DateUtils';
 import {
+  AodStyleType,
+  ImmersiveAodStyle,
+  immersiveKgMgr,
   FontScaleState
 } from '@ohos/systemuicommon/src/main/ets/TsIndex';
+import { NotificationType } from '@ohos/systemuicommon/Index';
 
 const TAG = 'DateTimeView'
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.SYS_UI, TAG);
@@ -65,6 +70,12 @@ export struct DateTimeView {
   @Consume notificationType: number;
 
   /**
+   * AOD显示样式
+   */
+  @State aodStyle: ImmersiveAodStyle | undefined = immersiveKgMgr.getOneMirrorState().getAodStyle(
+    this.notificationType === NotificationType.TYPE_PHONE_KEYGUARD);
+
+  /**
    * VM
    */
   private dateTimeVm: DateTimeVM = new DateTimeVM();
@@ -103,7 +114,7 @@ export struct DateTimeView {
       Text(this.timeText).draggable(false)
         .fontSize(this.fontSize)
         .maxFontScale(FontScaleState.timeMaxScale)
-        .fontColor(this.fontColor)
+        .fontColor(this.aodStyle?.isAod ? this.aodStyle?.getStyleValue(AodStyleType.FONT_COLOR) : this.fontColor)
         .fontWeight(this.fontWeight)
         .maxLines(1)
         .textOverflow({

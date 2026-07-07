@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-// import fusionConnectivityExt from '@hms.fusionConnectivityExt';
+// import fusionConnectivityExt from '@ohos.fusionConnectivityExt';
 import lottie from '@ohos/lottie';
 import { LogDomain, Logger, SingletonHelper } from '@ohos/basicutils';
 import { FASlotName } from '@ohos/commonconstants';
@@ -38,7 +38,7 @@ import bluetoothHid from '@ohos.bluetooth.hid';
 import { a2dp, baseProfile, hfp, hid } from '@kit.ConnectivityKit';
 import type { CommonEventSubscriber } from 'commonEvent/commonEventSubscriber';
 import type { CommonEventData } from 'commonEvent/commonEventData';
-/*import nearlinkDevice from '@hms.nearlink.remoteDevice';
+/*import nearlinkDevice from '@ohos.nearlink.remoteDevice';
 import manager from '@hms.nearlink.manager';
 import constant from '@hms.nearlink.constant';*/
 import { WifiDecorator } from '@ohos/controlcentercommon/src/main/ets/toggle/decorator/WifiDecorator';

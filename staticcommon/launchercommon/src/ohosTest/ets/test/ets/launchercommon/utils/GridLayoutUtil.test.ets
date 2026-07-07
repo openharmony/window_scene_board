@@ -27,6 +27,7 @@ import {
   DefaultDesktopLayoutInfo,
   LayoutDescription,
   AppItemInfo,
+  DeliverUtil,
   NotHarmonyUtil,
   BitSet
 } from '../../../../../../main/ets/TsIndex';
@@ -64,6 +65,7 @@ export default function GridLayoutUtilTest() {
       firstPageItems.push(itemInfo3);
 
       const itemInfo4 = new GridLayoutItemInfo();
+      itemInfo4.bundleName = 'com.ohos.vassistant';
       firstPageItems.push(itemInfo4);
 
       layoutInfo.push(firstPageItems);
@@ -1785,6 +1787,17 @@ export default function GridLayoutUtilTest() {
       expect(GridLayoutUtil.checkCurrentItemAppName(appInfo) === undefined).assertTrue();
     })
 
+    it('getdeliverAppName01', 0, () => {
+      let appInfo = new GridLayoutItemInfo();
+      expect(GridLayoutUtil.getdeliverAppName(appInfo.bundleName)).assertEqual('');
+    })
+
+    it('getdeliverAppName02', 0, () => {
+      let appInfo = new GridLayoutItemInfo();
+      appInfo.bundleName = 'com.deliver.browser';
+      expect(GridLayoutUtil.getdeliverAppName(appInfo.bundleName).length).assertLargerOrEqual(0);
+    })
+
     it('test_GridLayoutUtil_initGridPosition', 0, () => {
       let gridParam: DragGridParam = { paddingLeft: 1, paddingTop: 2, row: 3, column: 4, rowGap: 5,
         columnGap: 6,  gridWidth: 7, gridHeight:8 };
@@ -2041,36 +2054,36 @@ export default function GridLayoutUtilTest() {
       GridLayoutUtil.getGridItemPosition(row, column, page);
     })
 
-    it('test_GridLayoutUtil_getBigScreenGridItemPositionWithRTL', 0, () => {
+    it('test_GridLayoutUtil_getSuperFoldGridItemPositionWithRTL', 0, () => {
       let row: number = 1;
       let column: number = 1;
       let page: number = 1;
       let isPortrait: boolean = true;
-      GridLayoutUtil.getBigScreenGridItemPositionWithRTL(row, column, page, isPortrait);
+      GridLayoutUtil.getSuperFoldGridItemPositionWithRTL(row, column, page, isPortrait);
     })
 
-    it('test_GridLayoutUtil_getBigScreenGridItemPosition', 0, () => {
+    it('test_GridLayoutUtil_getSuperFoldGridItemPosition', 0, () => {
       let row: number = 1;
       let column: number = 1;
       let page: number = 1;
       let isPortrait: boolean = true;
-      GridLayoutUtil.getBigScreenGridItemPosition(row, column, page, isPortrait);
+      GridLayoutUtil.getSuperFoldGridItemPosition(row, column, page, isPortrait);
     })
 
-    it('test_GridLayoutUtil_getBigScreenGridItemPosition_01', 0, () => {
+    it('test_GridLayoutUtil_getSuperFoldGridItemPosition_01', 0, () => {
       let row: number = -1;
       let column: number = -1;
       let page: number = -1;
       let isPortrait: boolean = true;
-      GridLayoutUtil.getBigScreenGridItemPosition(row, column, page, isPortrait);
+      GridLayoutUtil.getSuperFoldGridItemPosition(row, column, page, isPortrait);
     })
 
-    it('test_GridLayoutUtil_getBigScreenGridItemPosition_02', 0, () => {
+    it('test_GridLayoutUtil_getSuperFoldGridItemPosition_02', 0, () => {
       let row: number = 0;
       let column: number = 0;
       let page: number = 0;
       let isPortrait: boolean = false;
-      GridLayoutUtil.getBigScreenGridItemPosition(row, column, page, isPortrait);
+      GridLayoutUtil.getSuperFoldGridItemPosition(row, column, page, isPortrait);
     })
 
     it('test_GridLayoutUtil_getGridItemPositionWithoutRTL', 0, () => {

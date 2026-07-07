@@ -97,6 +97,7 @@ import {
   vibratorMgr,
   EditModeConstants,
 } from '@ohos/launchercommon/src/main/ets/TsIndex';
+import { AiSuggestionFormManager } from '@ohos/aisuggestion/src/main/ets/default/manager/AiSuggestionFormManager';
 import { FormStyleConfig, FormViewModel } from '@ohos/form';
 import { HoverAnimationUtil, batchUninstallChain, ForwardType } from '@ohos/launchercommon/Index';
 import { PageDesktopDragHandler } from '../../../PageDesktopDragHandler';
@@ -791,6 +792,7 @@ export class FormItemRelativeEventAlpha {
 
   private onFormItemDraggedRemoved(cardId: string): void {
     log.showWarn(`onFormItemDraggedRemoved, cardId:${cardId}`);
+    AiSuggestionFormManager.getInstance().deleteCardInfo(cardId);
     if (cardId === this.mFormItem.cardId) {
       this.removeForm();
       const pageIndex: number = desktopUtil.getPageIndexValue();
@@ -862,7 +864,7 @@ export class FormItemRelativeEventAlpha {
       const serviceManager: ThemeServiceManager = new ThemeServiceManager(getContext(this) as common.UIAbilityContext);
       serviceManager.checkScbOnlineTheme();
     }
-    // 处理升级场景SceneBoard卡片映射关系文件
+    // 处理系统迁移场景SceneBoard卡片映射关系文件
     if (FormRelationManager.getInstance().isSceneBoardCard(this.mFormItem.bundleName, this.mFormItem.cardName)) {
       this.deleteSceneBoardFormRelation(this.mFormItem.cardId);
     }

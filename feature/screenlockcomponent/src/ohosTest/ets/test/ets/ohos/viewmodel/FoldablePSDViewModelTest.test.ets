@@ -39,12 +39,12 @@ export default function FoldablePSDViewModelTest() {
     it('test_viewModelInit_should_return_false', TestConst.TEST_LEVEL, (): void => {
       let model: FoldablePSDModel = new FoldablePSDModel();
       foldablePSDViewModel.viewModelInit(model);
-      expect(foldablePSDViewModel.foldablePSDModel.isUltraScreenGState).assertEqual(false);
+      expect(foldablePSDViewModel.foldablePSDModel.isThreeFoldGState).assertEqual(false);
     })
 
     it('test_doInit_doRelease_should_return_true', TestConst.TEST_LEVEL, (): void => {
       let mocker: MockKit = new MockKit();
-      let mockFunc1: Function = mocker.mockFunc(DeviceHelper, DeviceHelper.isUltraScreenProduct);
+      let mockFunc1: Function = mocker.mockFunc(DeviceHelper, DeviceHelper.isThreeFoldProduct);
       when(mockFunc1)().afterReturn(false);
       foldablePSDViewModel.doInit();
       foldablePSDViewModel.doRelease();
@@ -60,10 +60,10 @@ export default function FoldablePSDViewModelTest() {
       mocker.clearAll();
     })
 
-    it('test_updateUltraScreenGState_should_assertEqual', TestConst.TEST_LEVEL, (): void => {
-      let updateUltraScreenGState: ISlStateChangeListener = (foldablePSDViewModel as object)['updateUltraScreenGState'];
-      updateUltraScreenGState.onSlStateChange?.(SlMainStateType.SL_STATIC_STATE, SlStaticStateType.SCREEN_BP);
-      expect(foldablePSDViewModel.foldablePSDModel.isUltraScreenGState).assertEqual(DisplayUtils.isUltraScreenGStatus());
+    it('test_updateThreeFoldGState_should_assertEqual', TestConst.TEST_LEVEL, (): void => {
+      let updateThreeFoldGState: ISlStateChangeListener = (foldablePSDViewModel as object)['updateThreeFoldGState'];
+      updateThreeFoldGState.onSlStateChange?.(SlMainStateType.SL_STATIC_STATE, SlStaticStateType.SCREEN_BP);
+      expect(foldablePSDViewModel.foldablePSDModel.isThreeFoldGState).assertEqual(DisplayUtils.isThreeFoldGStatus());
     })
 
     it('test_displayStateListener_should_assertFalse', TestConst.TEST_LEVEL, (): void => {

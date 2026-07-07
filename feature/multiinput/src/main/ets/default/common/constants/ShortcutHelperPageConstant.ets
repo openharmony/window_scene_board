@@ -46,6 +46,11 @@ export default class ShortcutHelperPanelKeyItemConstants {
         $r('app.string.system_function_show_desktop_key_r')]
     },
     {
+      description: $r('app.string.system_function_voice_search'),
+      isMulti: false,
+      firstKeyList: ['logo', $r('app.string.system_function_show_desktop_key_s')]
+    },
+    {
       description: $r('app.string.system_function_shortcut_key_pannel'),
       isMulti: false,
       firstKeyList: ['logo', $r('app.string.system_function_show_desktop_key_question_mark')]

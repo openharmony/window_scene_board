@@ -5,7 +5,7 @@ export default {
   plugins: []       /* Custom plugin to extend the functionality of Hvigor. */
 }
 // /*
-//  * Copyright (c) Huawei Device Co., Ltd. 2024-2024. All rights reserved.
+//  * Copyright (c) Huawei Technologies Co., Ltd. 2024-2024. All rights reserved.
 //  */
 //
 // // Script for compiling build behavior. It is built in the build plug-in and cannot be modified currently.

@@ -1,0 +1,42 @@
+{
+    "plural":[
+        {
+            "name":"delete_select_wallpapers",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"¿Eliminar los fondos de pantalla seleccionados?",
+                    "attr":{
+                        "priority":"LT"
+                    }
+                },
+                {
+                    "quantity":"one",
+                    "value":"¿Eliminar el fondo de pantalla seleccionado?",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"item_select",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"%d elemento seleccionado",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"%d elementos seleccionados",
+                    "attr":{
+                        "priority":"LT"
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -15,14 +15,18 @@
 
 import { BuilderNode } from '@kit.ArkUI';
 import type Want from '@ohos.app.ability.Want';
-import { LogDomain, Logger } from '@ohos/basicutils';
-import { localEventManager } from '@ohos/frameworkwrapper';
-import { FormLayoutCacheManager, GridLayoutItemInfo } from '../TsIndex';
+import { Logger, LogDomain, CommonUtils } from '@ohos/basicutils';
+import { GlobalContext, localEventManager } from '@ohos/frameworkwrapper';
+import { DesktopUtils, FormLayoutCacheManager, GridLayoutItemInfo } from '../TsIndex';
 import { EventConstants } from '../constants/EventConstants';
 
 const TAG: string = 'CardNodeControllerManager';
 const log: Logger = Logger.getLogHelper(LogDomain.FORM);
 
+export interface AiFormStackItemBuildInterface {
+  // 创建View
+  buildView: () => WrappedBuilder<AiFormBasicParams[]>;
+}
 
 export interface  FormComponentBasicEvent {
   // 组件内部异常回调
@@ -86,13 +90,62 @@ export class FormBasicParams {
   }
 }
 
+export class AiFormComponentBasicData {
+  cardId: string;
+  width: number;
+  height: number;
+  formItem: GridLayoutItemInfo;
+  borderRadius: number;
+  containerId: string;
+  isOuterDesktop: boolean;
+  isLongPressZoomIn: boolean;
+  isCreateFormAnimation: boolean;
+  isFormStackChildItem: boolean;
+  constructor(cardId: string, formItemWidth: number, formItemHeight: number, formItem: GridLayoutItemInfo,
+    borderRadius: number, containerId: string, isOuterDesktop: boolean, isLongPressZoomIn = false,
+    isCreateFormAnimation = false, isFormStackChildItem = false) {
+    // 语音助手建议参数
+    this.cardId = cardId;
+    this.width = formItemWidth;
+    this.height = formItemHeight;
+    this.formItem = formItem;
+    this.isCreateFormAnimation = isCreateFormAnimation;
+    this.borderRadius = borderRadius;
+    this.containerId = containerId;
+    this.isLongPressZoomIn = isLongPressZoomIn;
+    this.isOuterDesktop = isOuterDesktop;
+    this.isFormStackChildItem = isFormStackChildItem;
+  }
+}
+
+export class AiFormComponentBasicEvent {
+  deleteForm?: (playAnimation: boolean, formItem?: GridLayoutItemInfo, isOuter?: boolean) => void;
+  updateFormId?: Function;
+  updateAppName?: (name: string) => void;
+  onItemHover?: (event: HoverEvent) => void;
+  onItemSelected?: (index: number) => void;
+  isUseEffect?: (useEffect: boolean) => void;
+  isDuringAppExitAnim?: (isAppExiting: boolean) => void;
+}
+
+// 语音助手建议
+export class AiFormBasicParams {
+  basicData: AiFormComponentBasicData;
+  basicEvent?: AiFormComponentBasicEvent;
+  constructor(basicData: AiFormComponentBasicData, basicEvent?: AiFormComponentBasicEvent) {
+    this.basicData = basicData;
+    this.basicEvent = basicEvent;
+  }
+}
+
 // 占位参数
 export class FormOccupyParams {
   cardId: string;
   isAiCard: boolean;
-  formParams?: FormBasicParams; // 记录抢占节点的数据信息
-  constructor(cardId: string) {
+  formParams?: FormBasicParams | AiFormBasicParams; // 记录抢占节点的数据信息
+  constructor(cardId: string, isAiCard = false) {
     this.cardId = cardId;
+    this.isAiCard = isAiCard;
   }
 }
 
@@ -111,10 +164,14 @@ const checkLeakDelay: number = 30000; // 延时30s去检测引用节点泄漏
 export class CardNodeControllerManager {
   private static cardNodeCache: Map<string, BuilderNode<[FormBasicParams]> | null> =
     new Map<string, BuilderNode<[FormBasicParams]> | null>();
+  private static aiCardNodeCache: Map<string, BuilderNode<[object]> | null> =
+    new Map<string, BuilderNode<[object]> | null>(); // 语音助手建议节点缓存
   private static cardControllerCache: Map<string, object> = new Map<string, object>();
+  private static aiCardControllerCache: Map<string, object> = new Map<string, object>(); // 语音助手建议controller缓存
+  private static aiSuggestionBuilder: AiFormStackItemBuildInterface | null = null;
 
   public static getNodeCacheSize(): number {
-    return CardNodeControllerManager.cardNodeCache.size;
+    return CardNodeControllerManager.cardNodeCache.size + CardNodeControllerManager.aiCardNodeCache.size;
   }
 
   public static getFormKey(): string[] {
@@ -126,17 +183,38 @@ export class CardNodeControllerManager {
     return ret;
   }
 
+  public static getAiFormKey(): string[] {
+    const keys = CardNodeControllerManager.aiCardNodeCache.keys();
+    const ret: string[] = [];
+    for (let key of keys) {
+      ret.push(key);
+    }
+    return ret;
+  }
 
   public static getCardNode(cardId: string): BuilderNode<[FormBasicParams]> | null {
     return CardNodeControllerManager.cardNodeCache.get(cardId) ?? null;
+  }
+
+  public static getAiCardNode(cardId: string): BuilderNode<[object]> | null {
+    return CardNodeControllerManager.aiCardNodeCache.get(cardId) ?? null;
   }
 
   public static deleteCardNode(cardId: string): void {
     CardNodeControllerManager.cardNodeCache.delete(cardId);
   }
 
+  public static deleteAiCardNode(cardId: string): void {
+    CardNodeControllerManager.aiCardNodeCache.delete(cardId);
+  }
+
   public static setCardNode(cardId: string, node: BuilderNode<[FormBasicParams]> | null): void {
     CardNodeControllerManager.cardNodeCache.set(cardId, node);
+  }
+
+  public static setAiCardNode(cardId: string, node: BuilderNode<[FormBasicParams]> | null): void {
+    CardNodeControllerManager.aiCardNodeCache.set(cardId, node);
+    GlobalContext.getContext()?.eventHub?.emit(`${EventConstants.EVENT_AI_CARDNODE_UPDATE}_${cardId}`, cardId);
   }
 
   public static updateCardNode(cardId: string, newCardId: string): void {
@@ -145,16 +223,34 @@ export class CardNodeControllerManager {
     CardNodeControllerManager.setCardNode(newCardId, node || null);
   }
 
+  public static updateAiCardNode(cardId: string, newCardId: string): void {
+    const node: BuilderNode<[FormBasicParams]> | null | undefined = CardNodeControllerManager.getAiCardNode(cardId);
+    CardNodeControllerManager.deleteAiCardNode(cardId);
+    CardNodeControllerManager.setAiCardNode(newCardId, node || null);
+  }
+
   public static getCardController(cardId: string): object {
     return CardNodeControllerManager.cardControllerCache.get(cardId) as Object;
+  }
+
+  public static getAiCardController(cardId: string): object {
+    return CardNodeControllerManager.aiCardControllerCache.get(cardId) as Object;
   }
 
   public static deleteCardController(cardId: string): void {
     CardNodeControllerManager.cardControllerCache.delete(cardId);
   }
 
+  public static deleteAiCardController(cardId: string): void {
+    CardNodeControllerManager.aiCardControllerCache.delete(cardId);
+  }
+
   public static setCardController(cardId: string, controller: object): void {
     CardNodeControllerManager.cardControllerCache.set(cardId, controller);
+  }
+
+  public static setAiCardController(cardId: string, controller: object): void {
+    CardNodeControllerManager.aiCardControllerCache.set(cardId, controller);
   }
 
   public static updateCardController(cardId: string, newCardId: string): void {
@@ -163,12 +259,30 @@ export class CardNodeControllerManager {
     CardNodeControllerManager.setCardController(newCardId, controller);
   }
 
+  public static updateAiCardController(cardId: string, newCardId: string): void {
+    const controller = CardNodeControllerManager.getAiCardController(cardId);
+    CardNodeControllerManager.deleteAiCardController(cardId);
+    CardNodeControllerManager.setAiCardController(newCardId, controller);
+  }
+
+  // 语音助手卡片Builder
+  public static setAiSuggestionBuildItem(aiSuggestionBuilder: AiFormStackItemBuildInterface): void {
+    CardNodeControllerManager.aiSuggestionBuilder = aiSuggestionBuilder;
+  }
+
+  public static getAiSuggestionBuildItem() : AiFormStackItemBuildInterface | null {
+    return CardNodeControllerManager.aiSuggestionBuilder;
+  }
+
   // 销毁节点
   public static destroyNodeByCardId(cardId: string): void {
     log.showInfo(TAG,`delete all FormComponent Node; cardId = ${cardId}`);
     CardNodeControllerManager.cardControllerCache.delete(cardId);
+    CardNodeControllerManager.aiCardControllerCache.delete(cardId);
     CardNodeControllerManager.cardNodeCache.get(cardId)?.dispose();
+    CardNodeControllerManager.aiCardNodeCache.get(cardId)?.dispose();
     CardNodeControllerManager.cardNodeCache.delete(cardId);
+    CardNodeControllerManager.aiCardNodeCache.delete(cardId);
   }
 
   // 销毁普通卡片节点

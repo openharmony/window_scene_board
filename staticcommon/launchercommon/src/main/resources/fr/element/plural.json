@@ -1,0 +1,156 @@
+{
+    "plural":[
+        {
+            "name":"talkback_n_page_move_back",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"L'écran original %d a été déplacé d'un écran en arrière",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"L'écran original %d a été déplacé d'un écran en arrière",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"talkback_n_page_move_forward",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"L'écran original %d a été déplacé d'un écran en avant",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"one",
+                    "value":"L'écran original %d a été déplacé d'un écran en avant",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"number_of_notifications",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"%d notifications",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"one",
+                    "value":"%d notification",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"talkback_drag_page_to_n",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"Déplacé vers l'écran %d",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"Déplacé vers l'écran %d",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"number_of_apps",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"%d application",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"%d applications",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"remove_n_title",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"Retirer les %d applications ?",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"one",
+                    "value":"Retirer %d application ?",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"delete_n_title",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"Supprimer %d application ?",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"Supprimer %d applications ?",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"uninstall_n_title",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"Désinstaller %d application ?",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"Désinstaller les %d applications ?",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -381,6 +381,8 @@ export type { CommonComponent } from './schedule/AnimPolicyRegistry';
 
 export { SCBVisualEffectData } from './service/wallpaper/SCBVisualEffectData';
 
-export { SCBTriFoldManager, SCBUltraScreenState } from './utils/SCBTriFoldManager';
+export { SCBTriFoldManager, SCBTripleFoldState } from './utils/SCBTriFoldManager';
 
 export { settingsDataManager } from './setting/SettingsDataManager';
+
+export { LightOutdoorConfig } from './service/config/LightOutdoorConfig';

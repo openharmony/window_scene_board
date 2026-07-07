@@ -57,7 +57,7 @@ export class PadWithCarPanelViewModel {
     this.startShellWindow(sceneInfo);
   }
   /**
-   * 监听主屏点击，如果是当前应用则拉起壳应用
+   * 监听主屏点击语音助手建议，如果是当前应用则拉起壳应用
    */
   private startSceneFromOtherCallback = (sceneInfo: SCBSceneInfo, fromInfo?: SCBSceneInfo) => {
     this.startShellWindow(sceneInfo);

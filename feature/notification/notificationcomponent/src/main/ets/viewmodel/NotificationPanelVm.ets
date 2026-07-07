@@ -80,7 +80,7 @@ const NTF_HEADER_TIME_TEXT_ID: string = 'NotificationHeaderView_TimeView_Text_ti
  */
 const BLUR_AREA_HEIGHT_LANDSCAPE_LAYOUT = 87;
 const BLUR_AREA_HEIGHT = 115;
-const BLUR_AREA_TRANSY = -40;
+const BLUR_AREA_TRANSY = 0;
 const LANDSCAPE_DIVISOR = 1.6;
 
 @ObservedV2
@@ -169,7 +169,7 @@ export class NotificationPanelVm extends NotificationBaseVm implements INotifica
   @Computed
   get isLandscapeLayout(): boolean {
     if (DeviceInfoVm.instance.isLandscape) {
-      // 大大屏幕机，展开或半展开
+      // 大折叠机，展开或半展开
       if (DeviceHelper.isFold()) {
         return !DeviceInfoVm.instance.isExpand;
       }

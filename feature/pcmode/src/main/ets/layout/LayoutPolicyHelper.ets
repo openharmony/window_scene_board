@@ -320,11 +320,23 @@ export class LayoutPolicyHelper {
       topThreshold = SCBSystemSceneUtils.getInstance().getStatusBarHeightPx(screenProperty.screenId);
     }
     let bottomThreshold = screenProperty.height;
-    let dock = SCBSceneSessionManager.getInstance()
-      .getSystemSceneSessionWithSystemBarType(SystemBarType.SMART_DOCK, screenProperty.screenId);
-    if (dock && !isDockAutoHideEnable) {
-      const dockHeight = dock.currRect.height.getPx();
+    if (!isDockAutoHideEnable) {
+      let dockHeight = SCBSystemSceneUtils.getInstance().getDockHeightPx(screenProperty.screenId,
+        UIContextUtil.getInstance().getUIContext(screenProperty.screenId));
+      if (dockHeight === 0) {
+        // 尝试从AppStorage获取
+        const savedDockHeight = AppStorage.get<number>('dockHeight');
+        if (savedDockHeight && savedDockHeight > 0) {
+          dockHeight = vp2px(savedDockHeight);
+          log.showInfo(TAG, 'getSplitInitialRect - Get dock height from AppStorage (vp): ' + savedDockHeight + ', converted to px: ' + dockHeight);
+        } else {
+          // 使用硬编码默认值
+          dockHeight = 99;
+          log.showInfo(TAG, 'getSplitInitialRect - Use default dock height: ' + dockHeight);
+        }
+      }
       bottomThreshold = bottomThreshold - dockHeight;
+      log.showInfo(TAG, 'getSplitInitialRect - Status bar height: ' + topThreshold + ', dock height: ' + dockHeight + ', calculated bottom threshold: ' + bottomThreshold);
     }
     const rect = new SCBSessionRect(0, 0, 0, 0);
     const width: number = this.getInitSplitSceneWidth(screenProperty, isSplitPrimary, dividerParam);
@@ -559,12 +571,33 @@ export class LayoutPolicyHelper {
     let height = screenHeight;
     log.showInfo(TAG, 'calculateMaxRect layoutFullScreen=' + layoutFullScreen);
     if (!layoutFullScreen) {
+      // 沉浸式下dock栏高度不参与窗口大小计算
       const statusBarHeight = SCBSystemSceneUtils.getInstance().getStatusBarHeightPx(screenProperty.screenId);
-      const dockHeight = SCBSystemSceneUtils.getInstance().getDockHeightPx(screenProperty.screenId,
+      let dockHeight = SCBSystemSceneUtils.getInstance().getDockHeightPx(screenProperty.screenId,
         UIContextUtil.getInstance().getUIContext(screenProperty.screenId));
+
+      // dock栏高度获取失败时
+      if (dockHeight === 0) {
+        // 尝试从AppStorage获取
+        const savedDockHeight = AppStorage.get<number>('dockHeight');
+        if (savedDockHeight && savedDockHeight > 0) {
+          dockHeight = vp2px(savedDockHeight);
+          log.showInfo(TAG,
+            'calculateMaxRect - Get dock height from AppStorage (vp): ' + savedDockHeight + ', converted to px: ' +
+              dockHeight);
+        } else {
+          // 使用默认值
+          dockHeight = 99;
+          log.showInfo(TAG, 'calculateMaxRect - Use default dock height: ' + dockHeight);
+        }
+      }
+
       const heightThreshold = dockHeight + statusBarHeight;
       positionY = statusBarHeight;
       height -= heightThreshold;
+
+      log.showInfo(TAG, 'calculateMaxRect - Status bar height: ' + statusBarHeight + ', dock height: ' + dockHeight +
+        ', calculated window height: ' + height);
     }
     resultRect.setRectNum(positionX, positionY, width, height);
     return resultRect;

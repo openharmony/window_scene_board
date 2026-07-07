@@ -14,6 +14,13 @@
                 "priority":"translate"
             }
         },
+      {
+        "name":"Desktop_setting",
+        "value":"Ajustes de pantalla principal",
+        "attr":{
+          "priority":"translate"
+        }
+      },
         {
             "name":"stop_font_creation_service",
             "value":"Deshabilitar servicio",
@@ -157,6 +164,54 @@
       {
         "name": "wallpaper_editor",
         "value": "Aplicar"
+      },
+      {
+        "name": "cancle",
+        "value": "Cancelar"
+      },
+      {
+        "name": "set_wallpaper_all",
+        "value": "Configuración simultánea"
+      },
+      {
+        "name": "set_wallpaper_desktop",
+        "value": "Configurar el Fondo de pantalla del escritorio"
+      },
+      {
+        "name": "set_wallpaper_lock",
+        "value": "Configurar el Fondo de pantalla de bloqueo"
+      },
+      {
+        "name": "wallpaper_show_style",
+        "value": "Cómo mostrar el fondo de pantalla"
+      },
+      {
+        "name": "screen_fit",
+        "value": "Ajustar a la pantalla"
+      },
+      {
+        "name": "screen_full",
+        "value": "llenar la pantalla"
+      },
+      {
+        "name": "screen_center",
+        "value": "centro"
+      },
+      {
+        "name": "screen_sctetch",
+        "value": "estirar por completo"
+      },
+      {
+        "name": "screen_tile",
+        "value": "departamento"
+      },
+      {
+        "name": "image_decoding_failure",
+        "value": "Error de imagen. Vuelve a intentarlo."
+      },
+      {
+        "name":"Desktop_individuation",
+        "value":"Pantalla principal y estilo"
       }
     ]
 }

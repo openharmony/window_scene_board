@@ -1,5 +1,5 @@
 /*
- * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -37,8 +37,8 @@ const BORDER_LINE_TRANSPARENT: string = '#00317af7';
 const UNFOCUSED_SHADOW_COLOR: string = '#40000000';
 const FOCUSED_SHADOW_COLOR: string = '#73000000';
 const RECENT_BOARD_RADIUS = 16;
-const ULTRA_SCREEN_F_MAIN_WIDTH = 1008;
-const ULTRA_SCREEN_M_MAIN_WIDTH = 2048;
+const THREE_FOLD_F_MAIN_WIDTH = 1008;
+const THREE_FOLD_M_MAIN_WIDTH = 2048;
 
 export class FloatingRectCache extends RectItem {
   public isMiniScene: boolean = false;
@@ -534,8 +534,8 @@ export class SCBFloatingParam {
    * @param screenProperty the screenProperty
    */
   public calcExpandPortraitWidthRatio(screenProperty: SCBScreenProperty): void {
-    if (DeviceHelper.isUltraScreenProduct()) {
-      this.calcRatioBaseWidth = ULTRA_SCREEN_F_MAIN_WIDTH;
+    if (DeviceHelper.isThreeFoldProduct()) {
+      this.calcRatioBaseWidth = THREE_FOLD_F_MAIN_WIDTH;
     } else {
       let mainScreenProperty = SCBScreenSessionManager.getInstance().getPhyScreenProperty(MAIN_SCREEN_ID);
       this.calcRatioBaseWidth = mainScreenProperty.width > 0 ? mainScreenProperty.width :
@@ -549,13 +549,13 @@ export class SCBFloatingParam {
     let screenWidth = Math.min(screenProperty.width, screenProperty.height);
     let screenHeight = Math.max(screenProperty.width, screenProperty.height);
     if (SCBScreenSessionManager.getInstance().isSecondaryFoldablePhoneExpandStatus()) {
-      screenWidth = Math.min(ULTRA_SCREEN_M_MAIN_WIDTH, screenWidth);
+      screenWidth = Math.min(THREE_FOLD_M_MAIN_WIDTH, screenWidth);
     }
 
     this.defaultWidthRatio = FloatingSceneExpandStyle.DEFAULT_WIDTH_RATIO * screenWidth / this.calcRatioBaseWidth;
     let maxWidthRatio = FloatingSceneExpandStyle.MAX_WIDTH_RATIO * screenWidth / this.calcRatioBaseWidth;
     maxWidthRatio *= this.anchorByPortraitStyle();
-    if (!(DeviceHelper.isUltraScreenProduct() && screenHeight >= 2.5 * this.calcRatioBaseWidth)) {
+    if (!(DeviceHelper.isThreeFoldProduct() && screenHeight >= 2.5 * this.calcRatioBaseWidth)) {
       maxWidthRatio *= (screenProperty.height / screenHeight);
     }
     this.setMaxWidthRatio(maxWidthRatio, 'calcExpandPortraitWidthRatio');
@@ -577,7 +577,7 @@ export class SCBFloatingParam {
   private initWithDeviceExpanded(screenProperty: SCBScreenProperty, isLandscapeFloat: boolean | undefined): void {
     let screenWidth = Math.min(screenProperty.width, screenProperty.height);
     if (SCBScreenSessionManager.getInstance().isSecondaryFoldablePhoneExpandStatus()) {
-      screenWidth = Math.min(ULTRA_SCREEN_M_MAIN_WIDTH, screenProperty.height);
+      screenWidth = Math.min(THREE_FOLD_M_MAIN_WIDTH, screenProperty.height);
     }
     this.defaultWidthRatio = FloatingSceneExpandStyle.DEFAULT_WIDTH_RATIO * screenWidth / this.calcRatioBaseWidth;
     this.maxWidthRatio = isLandscapeFloat ?
@@ -596,8 +596,8 @@ export class SCBFloatingParam {
   public calcExpandLandscapeWidthRatio(screenProperty: SCBScreenProperty): void {
     if (this.isUseShortSide) {
       let mainScreenProperty = SCBScreenSessionManager.getInstance().getPhyScreenProperty(MAIN_SCREEN_ID);
-      if (DeviceHelper.isUltraScreenProduct()) {
-        this.calcRatioBaseWidth = ULTRA_SCREEN_F_MAIN_WIDTH;
+      if (DeviceHelper.isThreeFoldProduct()) {
+        this.calcRatioBaseWidth = THREE_FOLD_F_MAIN_WIDTH;
       } else {
         this.calcRatioBaseWidth = mainScreenProperty.width > 0 ? mainScreenProperty.width :
           screenProperty.width / DEFAULT_RATIO;
@@ -619,7 +619,7 @@ export class SCBFloatingParam {
 
     let screenWidth = Math.min(screenProperty.width, screenProperty.height);
     if (SCBScreenSessionManager.getInstance().isSecondaryFoldablePhoneExpandStatus()) {
-      screenWidth = Math.min(ULTRA_SCREEN_M_MAIN_WIDTH, screenWidth);
+      screenWidth = Math.min(THREE_FOLD_M_MAIN_WIDTH, screenWidth);
     }
 
     let widthScale = parseFloat((screenWidth / this.calcRatioBaseWidth).toFixed(DEFAULT_RATIO_POINT));
@@ -974,18 +974,18 @@ export class FloatSceneSizeData {
       case FloatSizeState.EXPAND_PORTRAIT:
       case FloatSizeState.EXPAND_LANDSCAPE:
         if (!this.isNoNeedCalcSize(this.realDataMap, floatState, shortEdgeLength, longEdgeLength)) {
-          // 大屏幕机 悬浮窗窗口size宽度 = 折叠态屏幕宽度
+          // 折叠机 悬浮窗窗口size宽度 = 折叠态屏幕宽度
           let calcRatioBaseWidth;
           let mainScreenProperty = SCBScreenSessionManager.getInstance().getPhyScreenProperty(MAIN_SCREEN_ID);
-          if (DeviceHelper.isUltraScreenProduct()) {
-            calcRatioBaseWidth = ULTRA_SCREEN_F_MAIN_WIDTH;
+          if (DeviceHelper.isThreeFoldProduct()) {
+            calcRatioBaseWidth = THREE_FOLD_F_MAIN_WIDTH;
           } else {
             calcRatioBaseWidth = mainScreenProperty.width > 0 ? mainScreenProperty.width : shortEdgeLength * ONE_HALF;
           }
           let aspectRatio = FloatingSceneExpandStyle.ASPECT_RATIO;
           // 默认比例 = 展开态屏幕宽度 * defaultWithRatio / 实际窗口宽度.
           let defaultRatio = shortEdgeLength * FloatingSceneExpandStyle.DEFAULT_WIDTH_RATIO / calcRatioBaseWidth;
-          // 大屏幕机 悬浮窗窗口size高度 = 折叠态屏幕宽度 / 宽高显示比 + title栏高度 / 默认比例.
+          // 折叠机 悬浮窗窗口size高度 = 折叠态屏幕宽度 / 宽高显示比 + title栏高度 / 默认比例.
           let floatHeight =
             calcRatioBaseWidth / aspectRatio + vp2px(FloatingSceneCommonStyle.TITLEBAR_HEIGHT) / defaultRatio;
           let floatRectItem = new RectItem(0, 0, calcRatioBaseWidth, floatHeight);
@@ -1056,9 +1056,9 @@ export class FloatSceneSizeData {
       case FloatSizeState.EXPAND_LANDSCAPE:
         if (!this.isNoNeedCalcSize(this.defaultDataMap, floatState, shortEdgeLength, longEdgeLength)) {
           if (SCBScreenSessionManager.getInstance().isSecondaryFoldablePhoneExpandStatus()) {
-            shortEdgeLength = Math.min(ULTRA_SCREEN_M_MAIN_WIDTH, shortEdgeLength);
+            shortEdgeLength = Math.min(THREE_FOLD_M_MAIN_WIDTH, shortEdgeLength);
           }
-          // 大屏幕机默认比例 = 当前屏幕宽 * 默认显示比例的屏幕宽度比 / 悬浮窗口size宽度
+          // 折叠机默认比例 = 当前屏幕宽 * 默认显示比例的屏幕宽度比 / 悬浮窗口size宽度
           let defaultRatio = shortEdgeLength * FloatingSceneExpandStyle.DEFAULT_WIDTH_RATIO / realFloatRect.width();
           // 默认比例实际大小 = 真实大小 * 默认比例
           let floatWidth = realFloatRect.width() * defaultRatio;
@@ -1190,11 +1190,11 @@ export enum FloatSizeState {
    */
   LANDSCAPE_PAD,
   /**
-   * 大屏幕机展开态，竖屏位置尺寸state.
+   * 折叠机展开态，竖屏位置尺寸state.
    */
   EXPAND_PORTRAIT,
   /**
-   * 大屏幕机展开态，横屏位置尺寸state.
+   * 折叠机展开态，横屏位置尺寸state.
    */
   EXPAND_LANDSCAPE,
 }

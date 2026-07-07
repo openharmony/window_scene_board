@@ -25,15 +25,21 @@ import {
   ArgumentMatchers
 } from '@ohos/hypium'
 import PcFileFolderManager from '../../../../../../../../pcbase/src/main/ets/common/controller/PcFileFolderManager';
+import { FileInfo, ThumbnailUtil,RcmItem,FileOperation,RightMenuInfo,RightMenuClass } from '@hw-pc-filemanager/common/index';
 import { GlobalContext, EventManager, EvtBus, } from '@ohos/frameworkwrapper';
 import PcFileAccess, { FileObservedChangeEvent } from '../../../../../../../../pcbase/src/main/ets/common/controller/PcFileAccess';
+import { CommonUtil, GlobalHolder,FileObserveResultModel,ThreadCommonUtil,PasteBoardUtil,UnityStartMode } from '@hw-pc-filemanager/common';
 import { DesktopLayoutManager } from '@ohos/pagedesktop/src/main/ets/default/manager/DesktopLayoutManager';
 import { MenuInfo, CommonConstants, GridLayoutItemInfo, DesktopFileInfo } from '@ohos/launchercommon';
+import { NewFileData } from '@hw-pc-filemanager/right-menu/src/main/ets/default/RightMenuExpand/menuKind/NewFileData';
+import { RightMenuExpandManager, RightMenuViewUtils } from '@hw-pc-filemanager/right-menu';
 import { RightMenuNewFileData,RefreshUriListener,FileFolderManager,FileFolderComponent, MenuConstants } from '@ohos/desktopfilefolder';
 import { PageDesktopViewModel } from '@ohos/pagedesktop';
+import { FileThumbnailType } from '@hw-pc-filemanager/common/src/main/ets/utils/ThumbnailUtil';
 import { PcFileFolderConstants } from '../../../../../../../../pcbase/src/main/ets/common/constants/PcFileFolderConstants';
 import { image } from '@kit.ImageKit';
 import lazy { RegionFolderHelper, RegionFolderLayoutCacheManager,RegionFolderManager,RegionFolderSelect } from '@ohos/regionfolder/Index';
+import { BaseMenuKind } from '@hw-pc-filemanager/right-menu/src/main/ets/default/RightMenuExpand/menuKind/BaseMenuKind';
 import { CloseAppManager } from '@ohos/launchercommon/src/main/ets/manager/CloseAppManager';
 import { CheckEmptyUtils, LogHelper,LogDomain } from '@ohos/basicutils';
 import common from '@ohos.app.ability.common';
@@ -48,6 +54,7 @@ import {
   DragPosition,
 } from '@ohos/componentdrag';
 import {PcDesktopLayoutManager} from '../../../../../../../../pcbase/src/main/ets/SceneBoard/systemscene/ViewModel/PcDesktopLayoutManager';
+import { Point } from '@hw-pc-filemanager/common/src/main/ets/model/Common';
 let pcFileFolderManager: PcFileFolderManager;
 
 

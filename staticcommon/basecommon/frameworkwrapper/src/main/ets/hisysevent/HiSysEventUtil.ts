@@ -60,6 +60,8 @@ import {
   LightIconInNotHarmonyFolderBean,
   ClickDeleteAppDialogParams,
   RecentSwiperParams,
+  deliverDialogOpenParams,
+  deliverDialogOperationParams,
   DeleteShortcutParams,
   ToRecentGestureParams,
   AddBlankPageParams,
@@ -93,7 +95,7 @@ import {
   ForceMultiWindowSwitchParams,
   ForceMultiWindowSwitchWeeklyParams,
   VmUsingTimeParams,
-  BigScreenSwipeChangeParams,
+  SuperFoldSwipeChangeParams,
   SystemSceneStateParams,
   BaseParams,
   EnterDrawerModeParams,
@@ -172,6 +174,7 @@ export class HiSysEventUtil {
   private static SOUND_MENU: string = 'SOUND_MENU';
   private static SYSTEM_MENU: string = 'SYSTEM_MENU';
   private static INPUT_METHOD_CLICK: string = 'INPUT_METHOD_CLICK';
+  private static ASSISTANT_TRANSLATE_CLICK: string = 'ASSISTANT_TRANSLATE_CLICK';
   private static QUICK_NOTE_CLICK: string = 'QUICK_NOTE_CLICK';
   private static SLOT_CLICK: string = 'SLOT_CLICK';
   private static SLOT_COUNT_CHANGE: string = 'SLOT_COUNT_CHANGE';
@@ -249,7 +252,7 @@ export class HiSysEventUtil {
   public static APPCENTER_TYPE_INPUT = 1;
   public static APPCENTER_TYPE_CLICK = 2;
   public static APPCENTER_TYPE_PINCH = 3;
-  public static APPCENTER_TYPE_HOSKEY = 4; // 从OpenHarmony键启动
+  public static APPCENTER_TYPE_HOSKEY = 4; // 从系统键启动
 
 
   // 应用中心操作动作
@@ -267,7 +270,7 @@ export class HiSysEventUtil {
   private static SHORT_KEY_BRIGHTNESS: string = 'SHORT_KEY_BRIGHTNESS';
 
   // super fold 切换桌面
-  public static readonly BIG_SCREEN_SWIPE_PAGE: string = 'BIG_SCREEN_SWIPE_PAGE';
+  public static readonly SUPER_FOLD_SWIPE_PAGE: string = 'SUPER_FOLD_SWIPE_PAGE';
   //三指上滑清屏打点
   public static readonly PC_SHOW_DESKTOP_GESTURE: string = 'PC_SHOW_DESKTOP_GESTURE';
   // 单指上滑清屏打点
@@ -315,10 +318,16 @@ export class HiSysEventUtil {
   // 点击桌面应用
   public static CLICK_APP_ICON = 'CLICK_APP_ICON_UE';
 
-  // 点击未OpenHarmony化应用下载打点
+  // 点击、文件夹中应用-出现弹窗
+  public static DELIVER_DIALOG_OPEN = 'DELIVER_DIALOG_OPEN_UE';
+
+  // 点击、文件夹中应用-弹窗操作
+  public static DELIVER_DIALOG_OPERATION = 'DELIVER_DIALOG_OPERATION_UE';
+
+  // 点击未鸿蒙化应用下载打点
   public static CLICK_NH_APP_ICON_INSTALL = 'CLICK_NH_APP_ICON_INSTALL_UE';
 
-  // 点击未OpenHarmony化应用弹窗打点
+  // 点击未鸿蒙化应用弹窗打点
   public static CLICK_APP_ICON_OPEN_DIALOG = 'CLICK_APP_ICON_OPEN_DIALOG_UE';
 
   // 点击桌面快捷方式
@@ -427,7 +436,7 @@ export class HiSysEventUtil {
   // 拖动应用图标/应用快捷方式至文件夹外
   public static DRAG_ICON_FROM_FOLDER = 'DRAG_ICON_FROM_FOLDER_UE';
 
-  // 拖动应用图标/应用快捷方式至未OpenHarmony化文件夹外
+  // 拖动应用图标/应用快捷方式至未鸿蒙化文件夹外
   public static DRAG_ICON_FROM_NH_FOLDER = 'DRAG_ICON_FROM_NH_FOLDER_UE';
 
   // 菜单方式修改大文件夹尺寸
@@ -478,10 +487,10 @@ export class HiSysEventUtil {
   // 拖动图标向文件夹中添加应用
   public static DRAG_ICON_INTO_FOLDER = 'DRAG_ICON_INTO_FOLDER_UE';
 
-  // 拖动图标向未OpenHarmony化文件夹中添加应用
+  // 拖动图标向未鸿蒙化文件夹中添加应用
   public static DRAG_ICON_INTO_NH_FOLDER = 'DRAG_ICON_INTO_NH_FOLDER_UE';
 
-  // 未OpenHarmony化文件夹中图标点亮
+  // 未鸿蒙化文件夹中图标点亮
   public static LIGHT_ICON_IN_NH_FOLDER = 'LIGHT_ICON_IN_NH_FOLDER_UE';
 
   private static DRAG_CHANGE_BIG_FOLDER_SIZE = 'DRAG_CHANGE_BIG_FOLDER_SIZE';
@@ -500,7 +509,7 @@ export class HiSysEventUtil {
   // 重命名文件夹
   public static readonly RENAME_FOLDER = 'RENAME_FOLDER_UE';
 
-  // 重命名未OpenHarmony化文件夹
+  // 重命名未鸿蒙化文件夹
   public static readonly RENAME_NOT_HARMONY_FOLDER = 'RENAME_NOT_HARMONY_FOLDER_UE';
 
   // 点击X号清空文件夹名称
@@ -674,16 +683,16 @@ export class HiSysEventUtil {
   // 上报锁屏卡片状态点（关联主题id)
   public static SCREEN_LOCK_FORM_DATA_STATE: string = 'SCREEN_LOCK_FORM_DATA_STATE';
 
-  // 上报升级app不匹配事件
+  // 上报系统迁移app不匹配事件
   public static BACKUP_MISMATCH_APP = 'BACKUP_MISMATCH_APP';
 
-  // 上报升级卡片不匹配事件
+  // 上报系统迁移卡片不匹配事件
   public static BACKUP_MISMATCH_CARD = 'BACKUP_MISMATCH_CARD';
 
-  // 上报升级 快捷方式不匹配事件
+  // 上报系统迁移 快捷方式不匹配事件
   public static BACKUP_MISMATCH_SHORTCUT = 'BACKUP_MISMATCH_SHORTCUT';
 
-  // 上报升级 备份恢复结果
+  // 上报系统迁移 备份恢复结果
   public static BACKUP_RESULT = 'BACKUP_RESULT';
 
   // 上报临时移除锁屏卡片数据（关联主题id)
@@ -732,7 +741,7 @@ export class HiSysEventUtil {
     .SYSTEM_NAV_UE);
   private static mRotationChangeReportEvent = HiSysReportEvent.getHiSysReportEvent(ReportDomain.ROTATION_UE);
 
-  // OpenHarmony键启动类型
+  // 系统键启动类型
   public static readonly HOSKEY_TYPE_INPUT = 1;
   private static readonly HOSKEY_UE_DOMAIN: string = 'HOSKEY_UE';
   public static readonly Pull_HOSKEY = 'AWAKE_HOSKEY';
@@ -803,6 +812,9 @@ export class HiSysEventUtil {
 
   //捏合手势
   public static readonly PC_PINCH_CLOSE_GESTURE: string = 'PC_PINCH_CLOSE_GESTURE';
+
+  // 检测到应用图片采样为恶意透明图片
+  public static EVIL_APP_DETECTED = 'EVIL_APP_DETECTED';
 
   //进入抽屉模式
   public static ENTER_DRAWER_MODE = 'ENTER_DRAWER_MODE';
@@ -1045,6 +1057,19 @@ export class HiSysEventUtil {
   }
 
   /**
+   * PC状态栏 语音助手翻译图标点击打点
+   *
+   */
+  static reportAssistantTranslateClick(): void {
+    let params: BaseParams = {
+      PNAMEID: ReportParams.PACKAGE_NAME,
+      PVERSIONID: ReportParams.PROCESS_NAME,
+    };
+    HiSysEventUtil.report(HiSysEventUtil.SCENE_BOARD_UE_DOMAIN, HiSysEventUtil.ASSISTANT_TRANSLATE_CLICK,
+      hiSysEvent.EventType.BEHAVIOR, params);
+  }
+
+  /**
    * PC状态栏 备忘录图标点击打点
    *
    */
@@ -1096,6 +1121,9 @@ export class HiSysEventUtil {
         break;
       case PluginSlot.SLOT_STATUS_BLUETOOTH_PANEL:
         HiDfxEventUtil.reportBluetoothClick();
+        break;
+      case PluginSlot.SLOT_STATUS_ASSISTANT_TRANSLATE:
+        HiSysEventUtil.reportAssistantTranslateClick();
         break;
       case PluginSlot.SLOT_STATUS_QUICK_NOTE:
         HiSysEventUtil.reportQuickNoteClick();
@@ -1808,7 +1836,7 @@ export class HiSysEventUtil {
    * @param folderPositionInDesktop 文件夹位置
    * @param isCardFolder 是否是大文件夹，true表示是大文件夹，false表示不是大文件夹
    * @param folderContent 文件夹内容：SCREENCOUNT: 文件夹的屏幕数,ICONCOUNT:文件夹内图标数
-   * @param folderType 文件夹类型 0-普通文件夾, 1-非OpenHarmony化, -1-均不是
+   * @param folderType 文件夹类型 0-普通文件夾, 1-非鸿蒙化, 2-, 3-， -1-均不是
    */
   public static reportCloseFolder(folderPositionInDesktop: string, isCardFolder: boolean, folderContent: string,
     folderId?: string, folderType?: number): void {
@@ -1834,7 +1862,7 @@ export class HiSysEventUtil {
    * @param isCardFolder 是否是大文件夹，true表示是大文件夹，false表示不是大文件夹
    * @param folderContent 文件夹内容：SCREENCOUNT: 文件夹的屏幕数,ICONCOUNT:文件夹内图标数
    * @param folderId 文件夹id
-   * @param folderType 文件夹类型 0-普通文件夾, 1-非OpenHarmony化, -1-均不是
+   * @param folderType 文件夹类型 0-普通文件夾, 1-非鸿蒙化, 2-, 3-， -1-均不是
    */
   public static reportDragFolder(dragStartPositionInDesktop: string, dragEndPositionInDesktop: string,
     isCardFolder: boolean, folderContent: string, folderId: string, folderType: number): void {
@@ -2004,7 +2032,7 @@ export class HiSysEventUtil {
   /**
    * 文件夹内翻页
    *
-   * @param folderType 文件夹类型 0-普通文件夾, 1-非OpenHarmony化, -1-均不是
+   * @param folderType 文件夹类型 0-普通文件夾, 1-非鸿蒙化, 2-, 3-， -1-均不是
    */
   public static reportSnapToPageInFolder(folderId: string, appCount: number, pageCount: number, isCardFolder: boolean,
     folderType: number): void {
@@ -2025,7 +2053,7 @@ export class HiSysEventUtil {
    * 文件夹反向添加删除
    *
    * @param folderId 文件夹Id
-   * @param folderType 文件夹类型 0-普通文件夾, 1-非OpenHarmony化, -1-均不是
+   * @param folderType 文件夹类型 0-普通文件夾, 1-非鸿蒙化, 2-, 3-， -1-均不是
    * @param isBigFolder 是否是大文件夹 true-是, false-否
    */
   public static reportReverseAddInFolder(folderId: string, folderType?: number, isCardFolder?: boolean): void {
@@ -2062,13 +2090,13 @@ export class HiSysEventUtil {
   }
 
   /**
-   * 拖动OpenHarmony化图标向未OpenHarmony化文件夹内增加应用
+   * 拖动鸿蒙化图标向未鸿蒙化文件夹内增加应用
    *
    * @param folderPositionInDesktop 被拖动应用的起始位置
    * @param isCardFolder 是否是大文件夹，true表示是大文件夹，false表示不是大文件夹
    * @param folderContent 文件夹内容：SCREENCOUNT: 文件夹的屏幕数,ICONCOUNT:文件夹内图标数
    * @param folderId 文件夹id
-   * @param folderType 文件夹类型 0-普通文件夾, 1-非OpenHarmony化, -1-均不是
+   * @param folderType 文件夹类型 0-普通文件夾, 1-非鸿蒙化, 2-, 3-， -1-均不是
    */
   public static reportDragIconIntoNotHarmonyFolder(folderPositionInDesktop: string,
     isCardFolder: boolean, folderContent: string, folderId: string, folderType: number): void {
@@ -2086,7 +2114,7 @@ export class HiSysEventUtil {
   }
 
   /**
-   * 点亮未OpenHarmony化文件夹中图标
+   * 点亮未鸿蒙化文件夹中图标
    *
    * lighticonInfo 被点亮图标的信息（含bundleName-应用包名）
    */
@@ -2153,6 +2181,41 @@ export class HiSysEventUtil {
       LIGHTINGTIME: lightingTime
     };
     HiSysEventUtil.report(HiSysEventUtil.SCENE_BOARD_UE_DOMAIN, HiSysEventUtil.CLICK_APP_ICON,
+      hiSysEvent.EventType.BEHAVIOR, params);
+  }
+
+  /**
+   * 点击、文件夹中应用出现弹窗
+   *
+   * @param bundleName 应用包名
+   */
+  public static reportdeliverDialogOpen(bundleName: string): void {
+    let params: deliverDialogOpenParams = {
+      PNAMEID: ReportParams.PACKAGE_NAME,
+      PVERSIONID: ReportParams.PROCESS_NAME,
+      BUNDLENAME: bundleName,
+
+    };
+    HiSysEventUtil.report(HiSysEventUtil.SCENE_BOARD_UE_DOMAIN, HiSysEventUtil.DELIVER_DIALOG_OPEN,
+      hiSysEvent.EventType.BEHAVIOR, params);
+  }
+
+  /**
+   * 、文件夹中应用弹窗操作
+   *
+   * @param bundleName 应用包名
+   * @param dialogType 弹窗类型 0-下载新版本，1-弹窗类型：已，卸载版本，2-下载、
+   * @param operation 具体操作
+   */
+  public static reportdeliverDialogOperation(bundleName: string, dialogType: number, operation: string): void {
+    let params: deliverDialogOperationParams = {
+      PNAMEID: ReportParams.PACKAGE_NAME,
+      PVERSIONID: ReportParams.PROCESS_NAME,
+      BUNDLENAME: bundleName,
+      DIALOGTYPE: dialogType,
+      OPERATION: operation
+    };
+    HiSysEventUtil.report(HiSysEventUtil.SCENE_BOARD_UE_DOMAIN, HiSysEventUtil.DELIVER_DIALOG_OPERATION,
       hiSysEvent.EventType.BEHAVIOR, params);
   }
 
@@ -2225,7 +2288,7 @@ export class HiSysEventUtil {
    * 取消卸载单应用
    *
    * @param bundleName 应用包名
-   * @param folderType 文件夹类型 0-普通文件夾, 1-非OpenHarmony化， -1-均不是
+   * @param folderType 文件夹类型 0-普通文件夾, 1-非鸿蒙化, 2-, 3-， -1-均不是
    */
   public static reportCancelUninstallSingleApp(bundleName: string, folderType: number): void {
     let params: CancelAppUninstall = {
@@ -2287,6 +2350,7 @@ export class HiSysEventUtil {
       BAREICONNUMBER: DesktopInformation.BAREICONNUMBER,
       BARESHORTCUTICONNUMBER: DesktopInformation.BARESHORTCUTICONNUMBER,
       DESKTOPLAYOUT: DesktopInformation.DESKTOPLAYOUT,
+      HISEARCHSTATUS: DesktopInformation.HISEARCHSTATUS,
       AUTOALIGNSTATUS: DesktopInformation.AUTOALIGNSTATUS,
     };
     HiSysEventUtil.report(HiSysEventUtil.SCENE_BOARD_UE_DOMAIN, HiSysEventUtil.DESKTOP_INFORMATION,
@@ -2317,7 +2381,7 @@ export class HiSysEventUtil {
   /**
    * 打开文件夹
    *
-   * @param folderType 文件夹类型 0-普通文件夾, 1-非OpenHarmony化, -1-均不是
+   * @param folderType 文件夹类型 0-普通文件夾, 1-非鸿蒙化, 2-, 3-， -1-均不是
    */
   public static reportOpenFolder(pageNum: number, iconNum: number, isCardFolder: boolean, folderType: number,
     folderPosition?: string, shortcutCount?: number, folderId?: string): void {
@@ -2340,7 +2404,7 @@ export class HiSysEventUtil {
   /**
    * 长按文件夹内的图标拖动变换位置
    *
-   * @param folderType 文件夹类型 0-普通文件夾, 1-非OpenHarmony化, -1-均不是
+   * @param folderType 文件夹类型 0-普通文件夾, 1-非鸿蒙化, 2-, 3-， -1-均不是
    */
   public static reportMoveIconInFolder(moveIconInFolderBean: MoveIconInFolderBean, folderType?: number): void {
     if (!moveIconInFolderBean) {
@@ -2389,7 +2453,7 @@ export class HiSysEventUtil {
   }
 
   /**
-   * 文件夹_拖动应用图标/应用快捷方式至未OpenHarmony化文件夹外 (非批量)
+   * 文件夹_拖动应用图标/应用快捷方式至未鸿蒙化文件夹外 (非批量)
    */
   public static reportDragIconFromNotHarmonyFolder(dragIconFromFolderBean: DragIconFromNotHarmonyFolderBean): void {
     if (!dragIconFromFolderBean) {
@@ -2412,7 +2476,7 @@ export class HiSysEventUtil {
   /**
    * 文件夹_通过菜单方式转换文件夹类型
    *
-   * @param folderType 文件夹类型 0-普通文件夾, 1-非OpenHarmony化, -1-均不是
+   * @param folderType 文件夹类型 0-普通文件夾, 1-非鸿蒙化, 2-, 3-， -1-均不是
    */
   public static reportMenuModifyFolderSize(folderSizeModifyBean: FolderSizeModifyBean): void {
     if (!folderSizeModifyBean) {
@@ -2537,7 +2601,7 @@ export class HiSysEventUtil {
   /**
    * 打开卸载弹窗
    *
-   * @param folderType 文件夹类型 0-普通文件夾, 1-非OpenHarmony化, -1-均不是
+   * @param folderType 文件夹类型 0-普通文件夾, 1-非鸿蒙化, 2-, 3-， -1-均不是
    * @param isBigFolder 是否是大文件夹 true-是, false-否
    */
   public static reportOpenUninstallAppDialog(packageName: string, folderType: number, isCardFolder?: boolean): void {
@@ -2571,7 +2635,7 @@ export class HiSysEventUtil {
    * 文件夹内应用长按点击移除按钮打点
    *
    * @param packageName 应用包名
-   * @param folderType 文件夹类型 0-普通文件夾, 1-非OpenHarmony化, -1-均不是
+   * @param folderType 文件夹类型 0-普通文件夾, 1-非鸿蒙化, 2-, 3-， -1-均不是
    */
   public static reportClickDeleteAppDialog(packageName: string, folderType: number): void {
     let params: ClickDeleteAppDialogParams = {
@@ -2588,7 +2652,7 @@ export class HiSysEventUtil {
    * 确定卸载应用
    *
    * @param component 被移除应用名
-   * @param folderType 文件夹类型 0-普通文件夾, 1-非OpenHarmony化, -1-均不是
+   * @param folderType 文件夹类型 0-普通文件夾, 1-非鸿蒙化, 2-, 3-， -1-均不是
    * @param isBigFolder 是否是大文件夹 true-是, false-否
    */
   public static reportUninstallApp(component: string, folderType: number, isCardFolder?: boolean): void {
@@ -2608,7 +2672,7 @@ export class HiSysEventUtil {
    * 从桌面移除应用
    *
    * @param packageName 应用包名
-   * @param folderType 文件夹类型 0-普通文件夾, 1-非OpenHarmony化, -1-均不是
+   * @param folderType 文件夹类型 0-普通文件夾, 1-非鸿蒙化, 2-, 3-， -1-均不是
    */
   public static reportRemoveApp(packageName: string, folderType: number): void {
     let params: RemoveAppParams = {
@@ -2625,7 +2689,7 @@ export class HiSysEventUtil {
    * 取消从桌面移除应用
    *
    * @param packageName 应用包名
-   * @param folderType 文件夹类型 0-普通文件夾, 1-非OpenHarmony化, -1-均不是
+   * @param folderType 文件夹类型 0-普通文件夾, 1-非鸿蒙化, 2-, 3-， -1-均不是
    */
   public static reportCancelRemoveApp(packageName: string, folderType: number): void {
     let params: CancelRemoveAppParams = {
@@ -2762,9 +2826,9 @@ export class HiSysEventUtil {
   }
 
   /**
-   * 未OpenHarmony化文件夹改名打点
+   * 未鸿蒙化文件夹改名打点
    *
-   * @param folderType 文件夹类型 0-普通文件夾, 1-非OpenHarmony化, -1-均不是
+   * @param folderType 文件夹类型 0-普通文件夾, 1-非鸿蒙化, 2-, 3-， -1-均不是
    */
   public static reportRenameNotHarmonyFolder(folderType: number): void {
     let params: RenameNotHarmonyFolderParams = {
@@ -2809,12 +2873,12 @@ export class HiSysEventUtil {
    * @param type 切换方式
    */
   public static reportSwipePage(type: number): void {
-    let params: BigScreenSwipeChangeParams = {
+    let params: SuperFoldSwipeChangeParams = {
       PNAMEID: ReportParams.PACKAGE_NAME,
       PVERSIONID: ReportParams.PROCESS_NAME,
       SWIPER_METHOD: type
     };
-    HiSysEventUtil.report(HiSysEventUtil.SCENE_BOARD_UE_DOMAIN, HiSysEventUtil.BIG_SCREEN_SWIPE_PAGE,
+    HiSysEventUtil.report(HiSysEventUtil.SCENE_BOARD_UE_DOMAIN, HiSysEventUtil.SUPER_FOLD_SWIPE_PAGE,
       hiSysEvent.EventType.BEHAVIOR, params);
   }
 
@@ -3815,6 +3879,28 @@ export class HiSysEventUtil {
     };
     HiSysEventUtil.reportEvent(HiSysEventUtil.CLICK_PC_DOCK_ARROW_BUTTON, params, hiSysEvent.EventType.BEHAVIOR,
       HiSysEventUtil.SCENE_BOARD_UE_DOMAIN);
+  }
+
+  /**
+   * 检测到应用图片采样为恶意透明图片
+   *
+   * @param packageName 包名
+   */
+  public static reportEvilAppDetected(packageName: string): void {
+    interface EvilAppDetectedParams {
+      PNAMEID: string;
+      PVERSIONID: string;
+      PACKAGENAME: string;
+      VERSIONCODE: string;
+    }
+    let params: EvilAppDetectedParams = {
+      PNAMEID: ReportParams.PACKAGE_NAME,
+      PVERSIONID: ReportParams.PROCESS_NAME,
+      PACKAGENAME: packageName,
+      VERSIONCODE: HiSysEventUtil.getVersionName(packageName),
+    };
+    HiSysEventUtil.report(HiSysEventUtil.SCENE_BOARD_UE_DOMAIN, HiSysEventUtil.EVIL_APP_DETECTED,
+      hiSysEvent.EventType.BEHAVIOR, params);
   }
 
   /**

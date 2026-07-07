@@ -38,7 +38,7 @@ import { PageStorages } from '@ohos/managementcomponent/src/main/ets/com/ohos/co
 import { StatusBarModel } from '../model/StatusBarModel';
 import NtfSettingUtil from '@ohos/managementcomponent/src/main/ets/com/ohos/common/NtfSettingUtil';
 import { ResourceUtil } from '@ohos/managementcomponent/src/main/ets/com/ohos/common/ResourceUtil';
-import { HdsNavDestination, HdsNavDestinationAttribute } from '@kit.UIDesignKit';
+// import { HdsNavDestination, HdsNavDestinationAttribute } from '@kit.UIDesignKit';
 import { SysUIHdsNavigations } from '../common/SysUIHdsNavigations';
 import { StatusBarSettingItem } from './StatusBarSettingItem';
 import { StatusBarSettingModel } from '../model/StatusBarSettingModel';

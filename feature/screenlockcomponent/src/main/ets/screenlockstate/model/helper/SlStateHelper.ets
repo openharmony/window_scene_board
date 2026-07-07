@@ -38,6 +38,7 @@ class SlStateHelper {
   private slFingerprintBindState?: SlFingerprintBindState; // 锁屏指纹UI状态器
   private slFingerprintAnimState?: WidgetAnimState; // 指纹动效状态器
   private slOneMirrorStaticState?: OneMirrorStaticState; // 一镜到底服务静态状态
+  private slDeliverBadgeBindState?: ISlState; // 沉浸锁屏克隆应用角标组件状态
 
   public getSlStaticState(): ISlState | undefined {
     if (!this.slStaticState) {
@@ -156,6 +157,14 @@ class SlStateHelper {
         slUiStateMgr.getSlState(SlMainStateType.SL_ONE_MIRROR_STATIC_STATE) as OneMirrorStaticState;
     }
     return this.slOneMirrorStaticState;
+  }
+
+  public getImmerseDeliverBadgeBindState(): ISlState | undefined {
+    if (!this.slDeliverBadgeBindState) {
+      this.slDeliverBadgeBindState =
+        slUiStateMgr.getSlState(SlMainStateType.SL_DELIVER_BADGE_BIND_STATE);
+    }
+    return this.slDeliverBadgeBindState;
   }
 }
 

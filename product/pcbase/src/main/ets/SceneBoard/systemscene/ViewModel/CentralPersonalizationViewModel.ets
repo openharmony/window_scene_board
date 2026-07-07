@@ -308,6 +308,8 @@ export class CentralPersonalizationViewModel {
         return false;
       }
     }
+    // 隐藏系统语音助手输入法窗口
+    inputMethod.getController()?.hideSoftKeyboard();
     if (isNeedHide) {
       // 悬浮键盘先关闭再拉起虚拟键盘
       setTimeout(() => {

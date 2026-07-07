@@ -1,5 +1,5 @@
 /**
- * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) 2021-2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,11 +13,12 @@
  * limitations under the License.
  */
 
-import { CommonConstants } from '@ohos/launchercommon';
-import { PresetStyleConstants } from '@ohos/launchercommon';
-import { LayoutViewModel } from '@ohos/launchercommon';
-import { AppGridStyleConfig } from '@ohos/launchercommon';
+import { AppGridStyleConfig, CommonConstants, LayoutViewModel, PresetStyleConstants } from '@ohos/launchercommon';
 import FeatureConstants from './constants/FeatureConstants';
+import { LogDomain, LogHelper } from '@ohos/basicutils';
+
+const TAG = 'AppCenterGridStyleConfig';
+const log: LogHelper = LogHelper.getLogHelper(LogDomain.HOME, TAG);
 
 /**
  * style config of AppCenter
@@ -82,6 +83,7 @@ export class AppCenterGridStyleConfig extends AppGridStyleConfig {
     this.mAppCenterItemHeight = result.mAppCenterItemHeight ?? this.mAppCenterItemHeight;
     this.mIndicatorBottom = result.mIndicatorBottom ?? this.mIndicatorBottom;
     this.mAppCenterMarginBottom = result.mAppCenterMarginBottom ?? this.mAppCenterMarginBottom;
+    log.showInfo(`initConfig mGridWidth:${this.mGridWidth};mGridHeight:${this.mGridHeight}`)
   }
 
   private setConfigName(configName: string): void {

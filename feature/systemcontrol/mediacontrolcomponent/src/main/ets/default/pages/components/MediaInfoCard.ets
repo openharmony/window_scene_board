@@ -144,7 +144,7 @@ export struct MediaInfoCard {
   @Prop pointOpacityThird: number = 0.1; // 播放动画透明度3
   @Prop showDevType: ShowDevType = ShowDevType.MEDIA;
   @Prop callDeviceListHeight: number = 0;
-  private clickCurSwitchIcon: () => void = () => {};
+  clickCurSwitchIcon: () => void = () => {};
   @Link playbackCardHeight: number;
   @StorageLink('hasCall') hasCall: boolean = false;
   @StorageLink('showPlayLoading') showPlayLoading: boolean = false;
@@ -2026,7 +2026,8 @@ export struct MediaInfoCard {
   }
 
   jumpToApp(sessionId: string) {
-    if (!this.isButtonHolding && !this.mediaTransitionFlag) {
+    //mediaTransitionFlag在一镜到底动画播放完后的值不为0，导致无法从播控中心跳转到具体音频应用，先不判断mediaTransitionFlag的值
+    if (!this.isButtonHolding) {
       log.showInfo(`jumpToApp: ${sessionId?.length < 10 ? '' : (sessionId?.substr(0, 5) + '**' +
       sessionId?.substr(sessionId?.length - 5))}`);
       if (sessionId && sessionId !== 'default') {
@@ -3228,21 +3229,20 @@ export struct MediaInfoCard {
         .geometryTransition(this.getGeometryKey('buttonRewind'), this.getGeometryOptions())
         .id('media_rewind_No.' + this.index)
 
-      } else {
-        Button({ stateEffect: this.isShowLoopMode }) {
+      } else if (this.isShowLoopMode) {
+        Button({ stateEffect: true }) {
           SymbolGlyph(loopIcon[this.loopMode])
             .fontSize(this.isPC ? Constants.COMMON_PICTURE_SIZE_BIG_PLUS : `${Constants.COMMON_PICTURE_SIZE}vp`)
-            .fontColor(this.getIconColor(this.isShowLoopMode))
+            .fontColor(this.getIconColor(true))
             .rotate({ angle: this.loopMode === 3 ? this.isRTL() ? 180 : 0 : 0 })
             .backgroundColor(Color.Transparent)
             .foregroundBrightness(this.colorModeViewData.foregroundPrimaryOption)
-            .opacity(this.isPC ? (this.isShowLoopMode ? 1 : 0.3) : 1)
             .symbolEffect(new ReplaceSymbolEffect(EffectScope.WHOLE),
-              this.isShowLoopMode ? this.loopModeTriggerValue : -1)
+              this.loopModeTriggerValue)
         }
         .onClick(() => {
           log.showInfo(`getLoopMode: ${this.loopMode}, ${this.isSliderChange}`);
-          if (this.isSliderChange || !this.isCanPlay || !this.isShowLoopMode || !this.debounce()) {
+          if (this.isSliderChange || !this.isCanPlay || !this.debounce()) {
             return;
           }
           this.mediaInfoProvider?.callLoop(this.sessionId, this.loopMode);
@@ -3254,7 +3254,6 @@ export struct MediaInfoCard {
         .rotate({ angle: this.loopMode === 3 ? this.isRTL() ? 180 : 0 : 0 })
         .accessibilityLevel('yes')
         .accessibilityGroup(true)
-        .accessibilityDescription(this.isShowLoopMode ? '' : ResUtils.getInnerString($r('app.string.access_unavailable')))
         .accessibilityText(this.accessLoopMode())
         .size({ width: Constants.COMMON_PICTURE_SIZE_LARGE, height: Constants.COMMON_PICTURE_SIZE_LARGE })
         .backgroundColor(Color.Transparent)
@@ -3262,6 +3261,11 @@ export struct MediaInfoCard {
         .key('media_loop_No.' + this.index)
         .id('buttonLoopModeEnd')
         .geometryTransition(this.getGeometryKey('buttonLoopMode'), this.getGeometryOptions())
+      } else {
+        Blank()
+          .width(Constants.COMMON_PICTURE_SIZE_LARGE)
+          .height(Constants.COMMON_PICTURE_SIZE_LARGE)
+          .visibility(Visibility.Hidden)
       }
       this.playbackControl()
 
@@ -3293,14 +3297,14 @@ export struct MediaInfoCard {
         .key('media_fastforward_No.' + this.index)
         .geometryTransition(this.getGeometryKey('buttonForward'), this.getGeometryOptions())
         .id('media_fastforward_No.' + this.index)
-      } else {
-        Button({ stateEffect: this.isShowFavor }) {
+      } else if (this.isShowFavor) {
+        Button({ stateEffect: true }) {
           SymbolGlyph(this.isFavorite ? $r(ButtonIconName.FAVOR_FILL_SYMBOL) : $r(ButtonIconName.FAVOR_SYMBOL))
-            .fontColor(this.getIconColor(this.isShowFavor))
+            .fontColor(this.getIconColor(true))
             .foregroundBrightness(this.colorModeViewData.foregroundPrimaryOption)
             .backgroundColor(Color.Transparent)
             .fontSize(`${Constants.COMMON_PICTURE_SIZE}vp`)
-            .symbolEffect(new ReplaceSymbolEffect(EffectScope.WHOLE), this.isShowFavor ? this.favorTriggerValue : -1)
+            .symbolEffect(new ReplaceSymbolEffect(EffectScope.WHOLE), this.favorTriggerValue)
         }
         .onClick(() => {
           log.showInfo('Add this attribute to ensure that barrier-free reading is normal.');
@@ -3312,7 +3316,6 @@ export struct MediaInfoCard {
         .type(ButtonType.Circle)
         .accessibilityLevel('yes')
         .accessibilityGroup(true)
-        .accessibilityDescription(this.isShowFavor ? '' : ResUtils.getInnerString($r('app.string.access_unavailable')))
         .accessibilityText(this.isFavorite ? ResUtils.getInnerString($r('app.string.access_Favorited')) :
           ResUtils.getInnerString($r('app.string.access_favorites')))
         .size({
@@ -3324,6 +3327,11 @@ export struct MediaInfoCard {
         .key('media_favorite_No.' + this.index)
         .id('buttonFavorEnd')
         .geometryTransition(this.getGeometryKey('buttonFavor'), this.getGeometryOptions())
+      } else {
+        Blank()
+          .width(Constants.COMMON_PICTURE_SIZE_LARGE)
+          .height(Constants.COMMON_PICTURE_SIZE_LARGE)
+          .visibility(Visibility.Hidden)
       }
     }
     .height(Constants.COMMON_PICTURE_SIZE_LARGE)

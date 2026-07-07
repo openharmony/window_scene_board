@@ -52,7 +52,6 @@ export struct AppIconMenu {
   private isOuterDesktop: boolean = false;
   private appIconConfig: AppIconConfig = new AppIconConfig();
   private isDisAppear: boolean = false;
-
   @ObjectLink iconMenuVm: AppIconMenuVm;
 
   private getMenuWidth(): number {

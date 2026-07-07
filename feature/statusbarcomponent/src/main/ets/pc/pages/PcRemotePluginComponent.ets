@@ -33,6 +33,8 @@ import { AnimProperty } from '../manager/AnimManager';
 import StatusBarManager from '../manager/StatusBarManager';
 import WifiIconPC from '@ohos/wificomponent/src/main/ets/default/pages/wifiIconPC';
 import PcSearchIconPage from './PcSearchIconPage';
+import { PcAIAssistantPage } from './PcAIAssistantPage';
+import HarmonyRingPage from './PcHarmonyIconPage';
 import { PcStatusBarDragMgr } from '../manager/PcStatusBarDragMgr';
 import { Constants } from '../common/Constants';
 import { StatusBarTint } from '../../common/StatusBarTint';
@@ -68,6 +70,7 @@ const DEFAULT_MAX_WIDTH = 300;
  */
 const SYMBOL_ICON_SIZE_MAP: Map<string, number> = new Map([
   [PluginSlot.SLOT_STATUS_SMART_SCREENSHOT, 20],
+  [PluginSlot.SLOT_STATUS_ASSISTANT_TRANSLATE, 22],
   [PluginSlot.SLOT_STATUS_QUICK_NOTE, 18],
   [PluginSlot.SLOT_STATUS_CAPSULE_SCREENSHOT, 20],
   [PluginSlot.SLOT_STATUS_VIRTUAL_KEYBOARD, 20],
@@ -184,6 +187,10 @@ export struct PcRemotePluginComponent {
       this.buildSymbolIcon(SYMBOL_ICON_SIZE_MAP.get(this.property.getSlot()) ?? 0);
     } else if (this.property.getSlot() === PluginSlot.SLOT_STATUS_SEARCH) {
       PcSearchIconPage({property: this.property})
+    } else if (this.property.getSlot() === PluginSlot.SLOT_STATUS_HOS_KEY) {
+      HarmonyRingPage()
+    } else if (this.property.getSlot() === PluginSlot.SLOT_STATUS_ASSISTANT_VOICE) {
+      PcAIAssistantPage()
     } else if (this.iconRes) {
       Image(this.iconRes)
         .padding(this.pluginPadding)

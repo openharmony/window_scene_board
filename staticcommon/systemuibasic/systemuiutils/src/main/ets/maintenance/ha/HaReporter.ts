@@ -30,7 +30,7 @@ export class HaReporter {
     'creatorBundleName', 'errorCodes', 'pushData', 'detailType', 'agentBundleName', 'slotType', 'privilege', 'typeCode',
     'templateType', 'capsuleType', 'extendType', 'liveVersion', 'liveType', 'isEnd', 'liveDuration', 'stage', 'liveEvent',
     'remindFlags', 'notificationControlFlags', 'isOngoing', 'deliveryTime', 'isKeyGuard', 'focusMode', 'ringMode',
-    'appIndex', 'isAlertOnce'];
+    'appIndex', 'isAlertOnce', 'isDeliverNotification'];
 
   /* 代码字段映射到HA打点字段 */
   private static readonly PARAM_KEY_MAP: Map<string, string> = new Map([
@@ -60,7 +60,7 @@ export class HaReporter {
     ['isShowHeadsUp', 'detailType'],
     ['isHeadsUpStick', 'privilege'],
     ['isRemoveAllowed', 'extendType'],
-    /* 提醒 */
+    /* deliver提醒 */
     ['reason', 'detailType'],
     ['type', 'typeCode'],
     /* 接口异常 */
@@ -73,7 +73,7 @@ export class HaReporter {
     ['volumePanelNeedShow', 'typeCode'],
     ['displayName', 'agentBundleName'],
     ['deviceType', 'templateType'],
-    /* 默认异常 */
+    /* deliver默认异常 */
     ['event', 'detailType'],
     ['subType', 'extendType'],
     ['subCode', 'typeCode'],

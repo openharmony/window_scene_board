@@ -19,6 +19,7 @@ import systemparameter from '@ohos.systemparameter';
 import { DesktopLayoutCacheData } from '../../../../../../main/ets/cache/layout/DesktopLayoutCacheData'
 import {
   AppItemInfo,
+  DeliverUtil,
   NotHarmonyUtil,
   DefaultDesktopLayoutInfo,
   CommonConstants,
@@ -572,6 +573,12 @@ export default function NotHarmonyUtilTest() {
       when(mockFunc)(ArgumentMatchers.any).afterReturn(false);
       item.intent = JSON.stringify(new Map([['installSource','']]));
       expect(NotHarmonyUtil.checkNotHarmonyItemLightingStatus(item)).assertEqual(false);
+
+      item.intent = JSON.stringify(new Map([['installSource','com.deliver.appstore.lite']]));
+      expect(NotHarmonyUtil.checkNotHarmonyItemLightingStatus(item)).assertEqual(true);
+
+      item.intent = JSON.stringify(new Map([['installSource','com.easy.abroad']]));
+      expect(NotHarmonyUtil.checkNotHarmonyItemLightingStatus(item)).assertEqual(true);
 
       item.intent = JSON.stringify(new Map([['installSource',''],['maskState', '1']]));
       expect(NotHarmonyUtil.checkNotHarmonyItemLightingStatus(item)).assertEqual(true);

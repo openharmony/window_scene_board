@@ -48,7 +48,7 @@ import type {
   TriggerContinueMissionParams
 } from './ReportParams';
 import { HiSysContinueSceneStageData } from './HiSysData';
-import { GridLayoutUtil, ResidentLayoutCacheMgr } from '../TsIndex';
+import { DeliverUtil, GridLayoutUtil, ResidentLayoutCacheMgr } from '../TsIndex';
 
 const TAG = 'SCBHiSysEventUtil';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.HOME, TAG);
@@ -106,6 +106,7 @@ export class SCBHiSysEventUtil {
 
   // 特殊文件夹内应用数量
   private static notHarmonyAppNum: number = 0;
+  private static deliverAppNum: number = 0;
   private static easyAppNum: number = 0;
 
   /**
@@ -162,6 +163,7 @@ export class SCBHiSysEventUtil {
     folderStateInfo.cellX = item.row ?? 0;
     folderStateInfo.cellY = item.column ?? 0;
     folderStateInfo.isInDock = isInDock;
+    folderStateInfo.folderType = DeliverUtil.getFolderTypeByFolderId(folderId);
     // 文件夹内的页数
     folderStateInfo.pageNum = item.layoutInfo?.length ?? 0;
     // 文件夹内的应用总数
@@ -317,6 +319,7 @@ export class SCBHiSysEventUtil {
         reportParam.APPTYPE = bean.APPTYPE;
         reportParam.APPNAME = bean.APPNAME;
         reportParam.NOTHARMONYNUM = SCBHiSysEventUtil.notHarmonyAppNum;
+        reportParam.DELIVERNUM = SCBHiSysEventUtil.deliverAppNum;
         reportParam.EASYNUM = SCBHiSysEventUtil.easyAppNum;
         res.push(reportParam);
       }
@@ -341,6 +344,7 @@ export class SCBHiSysEventUtil {
 
   private static buildAndBatchReportIconGridInfo(isOuter?: boolean): void {
     SCBHiSysEventUtil.notHarmonyAppNum = 0;
+    SCBHiSysEventUtil.deliverAppNum = 0;
     SCBHiSysEventUtil.easyAppNum = 0;
     let beans: IconGridInfoBeanParams[] = [];
     if (!isOuter) {
@@ -387,6 +391,7 @@ export class SCBHiSysEventUtil {
         let reportParam: IconGridInfoBean = new IconGridInfoBean();
         reportParam.PARAMS = JSON.stringify(params);
         reportParam.NOTHARMONYNUM = SCBHiSysEventUtil.notHarmonyAppNum;
+        reportParam.DELIVERNUM = SCBHiSysEventUtil.deliverAppNum;
         reportParam.EASYNUM = SCBHiSysEventUtil.easyAppNum;
         res.push(reportParam);
       }
@@ -412,7 +417,20 @@ export class SCBHiSysEventUtil {
   }
 
   private static buildIconGridInfo(appItem: DockItemInfo | GridLayoutItemInfo, beans: IconGridInfoBeanParams[]): void {
-    if (appItem.typeId === CommonConstants.TYPE_FOLDER) {
+    // 桌面图标
+    if (appItem.typeId === CommonConstants.TYPE_APP) {
+      let appType: number = DeliverUtil.getAppType(appItem);
+      beans.push(SCBHiSysEventUtil.buildIconGridInfoBean(appItem, appItem,
+        appItem.container === CommonConstants.CONTAINER_SMARTDOCK ? LocationTypes.DOCK : LocationTypes.DESKTOP, -1,
+        appType, SCBHiSysEventUtil.getAppName(appItem)));
+      if (appType === DeliverUtil.APPTYPE_TYPE_DELIVER) {
+        SCBHiSysEventUtil.deliverAppNum++;
+      } else if (appType === DeliverUtil.APPTYPE_TYPE_EASY) {
+        SCBHiSysEventUtil.easyAppNum++;
+      } else if (appType === DeliverUtil.APPTYPE_TYPE_NOTHARMONY) {
+        this.notHarmonyAppNum++;
+      }
+    } else if (appItem.typeId === CommonConstants.TYPE_FOLDER) {
       // 文件夹内
       SCBHiSysEventUtil.buildIconGridInfoInFolder(appItem, beans);
     }
@@ -427,9 +445,23 @@ export class SCBHiSysEventUtil {
     beans: IconGridInfoBeanParams[]): void {
     appItem.layoutInfo?.forEach((appItems: GridLayoutItemInfo[]) => {
       appItems.forEach((item: GridLayoutItemInfo) => {
-        let folderType: number = -1;
+        let folderType: number = DeliverUtil.FOLDER_TYPE_NOTFOLDER;
+        if (appItem.container === CommonConstants.CONTAINER_SMARTDOCK) {
+          folderType =
+            DeliverUtil.getFolderTypeByFolderId(appItem.keyName ?? (appItem as GridLayoutItemInfo)?.folderId);
+        } else {
+          folderType = DeliverUtil.getFolderTypeByFolderId((appItem as GridLayoutItemInfo)?.folderId);
+        }
+        let appType: number = DeliverUtil.getAppType(item);
+        if (appType === DeliverUtil.APPTYPE_TYPE_DELIVER) {
+          SCBHiSysEventUtil.deliverAppNum++;
+        } else if (appType === DeliverUtil.APPTYPE_TYPE_EASY) {
+          SCBHiSysEventUtil.easyAppNum++;
+        } else if (appType === DeliverUtil.APPTYPE_TYPE_NOTHARMONY) {
+          this.notHarmonyAppNum++;
+        }
         let locationType = SCBHiSysEventUtil.getLocationType(appItem, item);
-        beans.push(SCBHiSysEventUtil.buildIconGridInfoBean(item, appItem, locationType, folderType, -1,
+        beans.push(SCBHiSysEventUtil.buildIconGridInfoBean(item, appItem, locationType, folderType, appType,
           SCBHiSysEventUtil.getAppName(item)));
       });
     });
@@ -466,7 +498,7 @@ export class SCBHiSysEventUtil {
   /**
    * 构建图标信息
    *
-   * @param appType 应用类型 0-正常应用，可直接打开, 1-未OpenHarmony化应用（未安装）, -1-均不是
+   * @param appType 应用类型 0-正常应用，可直接打开, 1-未鸿蒙化应用（未安装）, 2-, 3- ,-1-均不是
    * @param appName 应用名
    */
   private static buildIconGridInfoBean(item: DockItemInfo | GridLayoutItemInfo,

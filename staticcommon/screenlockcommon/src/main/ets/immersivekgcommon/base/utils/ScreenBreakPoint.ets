@@ -39,13 +39,13 @@ export enum SizeBp {
 export enum SizeBpSplice {
   DEFAULT = 'Default', // 默认，拼接场景超出范围时取默认值
   SM = 'Small_Medium', // 概括小外屏
-  MS = 'Medium_Small', // 概括直板机、大折叠折叠态横屏，超大屏F态横屏，小折叠内屏横屏
-  LS = 'Large_Small', // 概括PAD横屏，超大屏G态横屏
+  MS = 'Medium_Small', // 概括直板机、大折叠折叠态横屏，三折叠F态横屏，小折叠内屏横屏
+  LS = 'Large_Small', // 概括PAD横屏，三折叠G态横屏
   XS = 'XLarge_Small', // 概括PC大屏、PAD横屏
-  MM = 'Medium_Medium', // 概括大折叠展开态竖屏、横屏，超大屏M态竖屏、横屏
-  SL = 'Small_Large', // 概括直板机、大折叠折叠态竖屏，超大屏F态竖屏，小折叠内屏竖屏
+  MM = 'Medium_Medium', // 概括大折叠展开态竖屏、横屏，三折叠M态竖屏、横屏
+  SL = 'Small_Large', // 概括直板机、大折叠折叠态竖屏，三折叠F态竖屏，小折叠内屏竖屏
   LL = 'Large_Large', // 概括PAD竖屏
-  ML = 'Medium_Large', // 概括PAD竖屏，超大屏G态竖屏
+  ML = 'Medium_Large', // 概括PAD竖屏，三折叠G态竖屏
 }
 
 // 屏幕宽高断点状态
@@ -162,11 +162,11 @@ export class BpCalculator {
   }
 
   private static calibrateWidthBp(oriBp: SizeBp): SizeBp {
-    // 校准横向断点，当横向断点落在LG范围时，如果非PAD或超大屏设备，则统一按直板机横屏处理
+    // 校准横向断点，当横向断点落在LG范围时，如果非PAD或三折叠设备，则统一按直板机横屏处理
     if (oriBp !== SizeBp.LG) {
       return oriBp;
     }
-    if (DeviceHelper.isUltraScreenProduct() || DeviceHelper.isPad() || DeviceHelper.isPC()) {
+    if (DeviceHelper.isThreeFoldProduct() || DeviceHelper.isPad() || DeviceHelper.isPC()) {
       return oriBp;
     }
     return SizeBp.MD;

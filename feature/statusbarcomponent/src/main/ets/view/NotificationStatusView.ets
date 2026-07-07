@@ -72,6 +72,7 @@ export struct NotificationStatusView {
       .syncLoad(false)
       .interpolation(ImageInterpolation.Medium)
       .autoResize(false)
+      .borderRadius(4)
       .onError((error) => {
         const key = ntfEntry.groupKey;
         LogWithHa.error(log, `Load image error, key is: ${key}, message is: ${error?.message}`,

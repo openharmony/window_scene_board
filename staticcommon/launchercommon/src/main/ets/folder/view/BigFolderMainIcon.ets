@@ -19,7 +19,7 @@ import { GlobalContext } from '@ohos/frameworkwrapper/src/main/ets/TsIndex';
 import { AppIconConfig } from '../../launchericon/config/AppIconConfig';
 import { AppIconCommonView } from '../../launchericon/view/AppIconCommonView'
 import { AppIconBadgeVm } from '../../launchericon/viewmodel/AppIconBadgeVm';
-import { AppItemInfo, CommonConstants, FolderAppItemInfo, NotHarmonyUtil } from '../../TsIndex';
+import { AppItemInfo, CommonConstants, FolderAppItemInfo, DeliverUtil, NotHarmonyUtil } from '../../TsIndex';
 import { BigFolderAppDefaultModifier } from '../viewmdoel/BigFolderAppDefaultModifier';
 import ServiceExtensionContext from 'application/ServiceExtensionContext';
 import { BadgeAnimationType } from '../../uicomponents/CustomBadge';

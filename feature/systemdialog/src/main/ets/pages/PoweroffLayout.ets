@@ -570,7 +570,7 @@ export struct PoweroffLayout {
     let margin: Length = $r('app.float.poweroff_option_margin_landscape');
     if (DeviceHelper.isPhone()) {
       if (DeviceHelper.isFold()) {
-        // 大屏幕机
+        // 折叠机
         if (!this.isExpand && !DeviceHelper.isLandscape()) {
           margin = $r('app.float.poweroff_option_margin');
         }

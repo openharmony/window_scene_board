@@ -1,0 +1,400 @@
+{
+    "plural":[
+        {
+            "name":"sim_unlock_input_tips",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"Введите PIN-код SIM-карты (осталось %d попытки)",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"one",
+                    "value":"Введите PIN-код SIM-карты (осталась %d попытка)",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"few",
+                    "value":"Введите PIN-код SIM-карты (осталось %d попытки)",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"many",
+                    "value":"Введите PIN-код SIM-карты (осталось %d попыток)",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"psd_incorrect_will_locked1",
+            "value":[
+                {
+                    "quantity":"few",
+                    "value":"еще %d некорректные попытки",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"еще %d некорректные попытки",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"many",
+                    "value":"еще %d некорректных попыток",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"one",
+                    "value":"еще %d некорректную попытку",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"psd_incorrect_will_locked2",
+            "value":[
+                {
+                    "quantity":"few",
+                    "value":"%d минуты",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"one",
+                    "value":"%d минуту",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"many",
+                    "value":"%d минут",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"%d минуты",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"psd_incorrect_will_locked3",
+            "value":[
+                {
+                    "quantity":"few",
+                    "value":"%d секунды",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"%d секунды",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"many",
+                    "value":"%d секунд",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"one",
+                    "value":"%d секунду",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"psd_totle_length",
+            "value":[
+                {
+                    "quantity":"few",
+                    "value":"Всего %d цифры",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"many",
+                    "value":"Всего %d цифр",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"one",
+                    "value":"Всего %d цифра",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"Всего %d цифры",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"sim_unlock_input_puk_tips",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"Введите PUK-код (осталось %d попытки)",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"one",
+                    "value":"Введите PUK-код (осталась %d попытка)",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"few",
+                    "value":"Введите PUK-код (осталось %d попытки)",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"many",
+                    "value":"Введите PUK-код (осталось %d попыток)",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"psd_incorrect_psd_left_times",
+            "value":[
+                {
+                    "quantity":"few",
+                    "value":"Неверный PIN-код. Осталось %d попытки.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"Неверный PIN-код. Осталось %d попытки.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"many",
+                    "value":"Неверный PIN-код. Осталось %d попыток.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"one",
+                    "value":"Неверный PIN-код. Осталась %d попытка.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"psd_incorrect_psd_left_times_mix",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"Неверный пароль. Осталось %d попытки.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"one",
+                    "value":"Неверный пароль. Осталась %d попытка.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"few",
+                    "value":"Неверный пароль. Осталось %d попытки.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"many",
+                    "value":"Неверный пароль. Осталось %d попыток.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"psd_entered_length",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"Введено %d цифры",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"one",
+                    "value":"Введена %d цифра",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"many",
+                    "value":"Введено %d цифр",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"few",
+                    "value":"Введено %d цифры",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"fp_fingerprint_not_match",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"Отпечаток не распознан. Осталась %d попытка.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"Отпечаток не распознан. Осталось %d попытки.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"few",
+                    "value":"Отпечаток не распознан. Осталось %d попытки.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"many",
+                    "value":"Отпечаток не распознан. Осталось %d попыток.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"sim_unlock_pin_incorrect_tips",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"Неверный PIN-код SIM-карты. Осталось %d попытки.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"one",
+                    "value":"Неверный PIN-код SIM-карты. Осталась %d попытка.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"few",
+                    "value":"Неверный PIN-код SIM-карты. Осталось %d попытки.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"many",
+                    "value":"Неверный PIN-код SIM-карты. Осталось %d попыток.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"sim_unlock_puk_incorrect_tips",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"Неверный PUK-код. Осталась %d попытка. После достижения лимита некорректных попыток SIM-карта будет заблокирована навсегда.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"Неверный PUK-код. Осталось %d попытки. После достижения лимита некорректных попыток SIM-карта будет заблокирована навсегда.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"few",
+                    "value":"Неверный PUK-код. Осталось %d попытки. После достижения лимита некорректных попыток SIM-карта будет заблокирована навсегда.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"many",
+                    "value":"Неверный PUK-код. Осталось %d попыток. После достижения лимита некорректных попыток SIM-карта будет заблокирована навсегда.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

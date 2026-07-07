@@ -16,6 +16,7 @@
 import { CheckEmptyUtils, LogDomain, LogHelper, SingletonHelper } from '@ohos/basicutils';
 import {
   BigFolderStyleConfig,
+  DeliverUtil,
   FolderActionLifeCycleEvent,
   FolderActionLifeCycleEventManager,
   FolderLifeCyclePriority,
@@ -53,6 +54,7 @@ export class OpenFolderViewModel {
       let iconSizeInFolder: number = FolderStyleManager.getInstance().getFolderAppSize(folder.area, folder.isInDock);
 
       AppStorage.setOrCreate('isAddIconHidden', false);
+      DeliverUtil.addAddIcon(folder, 'OpenFolderViewModel open folder');
 
       let newAppBubbleCommonParams = new AppBubbleCommonParams();
       newAppBubbleCommonParams.bindFolderId = folder.folderId || '';

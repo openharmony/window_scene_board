@@ -1,0 +1,62 @@
+{
+    "plural":[
+        {
+            "name":"item_select",
+            "value":[
+                {
+                    "quantity":"two",
+                    "value":"[TS_1063150]_%d items selected"
+                },
+                {
+                    "quantity":"few",
+                    "value":"[TS_1063151]_%d items selected"
+                },
+                {
+                    "quantity":"many",
+                    "value":"[TS_1063148]_%d items selected"
+                },
+                {
+                    "quantity":"one",
+                    "value":"[TS_1063152]_%d item selected"
+                },
+                {
+                    "quantity":"zero",
+                    "value":"[TS_1063153]_%d items selected"
+                },
+                {
+                    "quantity":"other",
+                    "value":"[TS_1063149]_%d items selected"
+                }
+            ]
+        },
+        {
+            "name":"delete_select_wallpapers",
+            "value":[
+                {
+                    "quantity":"zero",
+                    "value":"[TS_1064674]_Delete the selected wallpapers?"
+                },
+                {
+                    "quantity":"other",
+                    "value":"[TS_1064673]_Delete the selected wallpapers?"
+                },
+                {
+                    "quantity":"two",
+                    "value":"[TS_1064678]_Delete the selected wallpapers?"
+                },
+                {
+                    "quantity":"many",
+                    "value":"[TS_1064676]_Delete the selected wallpapers?"
+                },
+                {
+                    "quantity":"one",
+                    "value":"[TS_1064675]_Delete the selected wallpaper?"
+                },
+                {
+                    "quantity":"few",
+                    "value":"[TS_1064677]_Delete the selected wallpapers?"
+                }
+            ]
+        }
+    ]
+}

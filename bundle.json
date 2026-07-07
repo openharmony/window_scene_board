@@ -1,20 +1,20 @@
 {
-  "name": "@ohos/scene_board_ext",
+  "name": "@ohos/window_scene_board",
   "description": "SceneBoard",
   "version": "3.1",
   "license": "Apache License 2.0",
   "publishAs": "code-segment",
   "segment": {
-    "destPath": "//foundation/window/scene_board_ext"
+    "destPath": "//foundation/window/window_scene_board"
   },
   "dirs": {},
   "scripts": {},
   "component": {
-    "name": "scene_board_ext",
+    "name": "window_scene_board",
     "subsystem": "window",
     "syscap": [],
     "features": [
-      "scene_board_ext_feature_product"
+      "window_scene_board_feature_product"
     ],
     "adapted_system_type": [
       "standard"
@@ -29,7 +29,7 @@
     },
     "build": {
       "sub_component": [
-        "//foundation/window/scene_board_ext:SceneBoard"
+        "//foundation/window/window_scene_board:SceneBoard"
       ],
       "inner_kits": [],
       "test": []

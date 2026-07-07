@@ -226,6 +226,8 @@ export class FormStackExpandEvent {
         if (!CheckEmptyUtils.checkStrIsEmpty(cardId)) {
           this.mExpandModel.emitFormStackClosedMsg(cardId);
         }
+        // 恢复语音助手建议
+        log.showInfo('recover aiSuggestion');
         localEventManager.sendLocalEventSticky(EventConstants.EVENT_REQUEST_SET_OPERATE_STACK_ENABLED, true);
         this.closeFormStackWithReset();
         // 无障碍模式下，且剩下的卡片大于1，主动播报堆叠已关闭
@@ -662,8 +664,8 @@ export class FormStackExpandEvent {
       }
 
       log.showInfo('register fold display status change callback.');
-      if (DeviceHelper.isUltraScreenProduct()) {
-        // 超大屏回调设置成异步的
+      if (DeviceHelper.isThreeFoldProduct()) {
+        // 三折叠回调设置成异步的
         display.on('foldStatusChange', this.mDisplayFolderStatusChangeCallbackAsync);
       } else {
         display.on('foldStatusChange', this.mDisplayFolderStatusChangeCallback);
@@ -678,7 +680,7 @@ export class FormStackExpandEvent {
       if (!DeviceHelper.isFoldButNotSmallFoldProduct()) {
         return;
       }
-      if (DeviceHelper.isUltraScreenProduct()) {
+      if (DeviceHelper.isThreeFoldProduct()) {
         display.off('foldStatusChange', this.mDisplayFolderStatusChangeCallbackAsync);
       } else {
         display.off('foldStatusChange', this.mDisplayFolderStatusChangeCallback);
@@ -710,6 +712,8 @@ export class FormStackExpandEvent {
       log.showError('init expand config layout failed!');
       return;
     }
+    log.showInfo('locked aiSuggestion');
+    // 锁定语音助手建议，不让刷新
     localEventManager.sendLocalEventSticky(EventConstants.EVENT_REQUEST_SET_OPERATE_STACK_ENABLED, false);
     this.initAnimateData(this.mViewData as FormStackExpandViewData);
     FormStackManager.getInstance().setFormStackId(itemInfo.formStackId as string);

@@ -17,7 +17,7 @@ import notificationManager from '@ohos.notificationManager';
 import type image from '@ohos.multimedia.image';
 import type { wantAgent, WantAgent } from '@kit.AbilityKit';
 import bundleManager from '@ohos.bundle.bundleManager';
-import { NotificationBaseContent, NotificationCreatorType, OverlayIconStyle } from './NotificationContent';
+import { NotificationBaseContent, NotificationCreatorType, OverlayIconStyle, DeliverInstallSource } from './NotificationContent';
 import systemSoundManager from '@ohos.multimedia.systemSoundManager';
 import resourceManager from '@ohos.resourceManager';
 import type { LiveViewData } from '../liveview/data/LiveViewData';
@@ -175,7 +175,7 @@ export class BaseNotification {
 
   /**
    * 堆叠图标样式
-   * 0: 圆形; 1: 方形; 2: 样式反转
+   * 0: 圆形; 1: 方形; 2: 样式反转 例:克隆应用图标覆盖;
    */
   overlayIconStyle?: OverlayIconStyle;
 
@@ -213,6 +213,46 @@ export class BaseNotification {
    *  自动清除的时间
    */
   autoDeletedTime?: number;
+
+  /**
+   * 是否是通知
+   */
+  isDeliverNotification: boolean = false;
+
+  /**
+   * 是否是push通知
+   */
+  isDeliverPushNotification: boolean = false;
+
+  /**
+   * 通知指向应用主页
+   */
+  deliverAbilityName?: Promise<string>;
+
+  /**
+   * push通知wantAgentInfo
+   */
+  deliverPushWantAgentInfo?: wantAgent.WantAgentInfo;
+
+  /**
+   * push通知LauncherInfo
+   */
+  deliverPushLauncherInfo?: string;
+
+  /**
+   * 通知的key
+   */
+  deliverNotificationKey: string = '';
+
+  /**
+   * 是否拉起DELIVER全屏
+   */
+  isDeliverFullScreen: boolean = false;
+
+  /**
+   * APP安装来源
+   */
+  deliverInstallSource: DeliverInstallSource;
 
   /**
    * 通知分组组名
@@ -380,7 +420,7 @@ export class BaseNotification {
   sortWeight?: number;
 
   /**
-   * 通知channelId
+   * deliver通知channelId
    */
   channelId?: string;
 

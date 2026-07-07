@@ -46,7 +46,7 @@ export class BrightnessManager {
   }
 
   public isSupportBrightnessMultiInputFeature(): boolean {
-    return uiType === SCBConstants.UITYPE_PAD || DeviceHelper.isUltraScreenProduct();
+    return uiType === SCBConstants.UITYPE_PAD || DeviceHelper.isThreeFoldProduct();
   }
 
   async init(): Promise<void> {

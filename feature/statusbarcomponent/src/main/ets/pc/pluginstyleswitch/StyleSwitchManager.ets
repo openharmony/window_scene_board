@@ -139,7 +139,8 @@ export class StyleSwitchManager {
    * @returns 状态栏类型
    */
   private readStatusBarType(): PluginDisplayStyle {
-    let statusBarTypeStr = SettingsUtil.getSecureValue(Constants.SETTINGS_KEY);
+    let statusBarTypeStr =
+      SettingsUtil.getSecureValue(Constants.SETTINGS_KEY, StatusBarType.TYPE_MAIN_WINDOW_STATUS_BAR.toString());
     let statusBarType = Number(statusBarTypeStr);
     statusBarType = StatusBarType.isWindowStyle(statusBarType) ? PluginDisplayStyle
       .WINDOWS_STYLE : PluginDisplayStyle.MAC_STYLE

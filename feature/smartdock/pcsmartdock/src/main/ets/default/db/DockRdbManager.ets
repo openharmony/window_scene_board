@@ -48,7 +48,7 @@ export class DockRdbManager {
     try {
       await rdbStoreHelper.executeSql(DockRdbStoreConfig.dockMenuTaskInfo.createTable);
     } catch (err) {
-      log.showError(TAG, `initTable error: ${err?.message}`);
+      log.showError(TAG, `initVoiceInfoTable error: ${err?.message}`);
     }
   }
 

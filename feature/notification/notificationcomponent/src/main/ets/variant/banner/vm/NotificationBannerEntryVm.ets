@@ -34,8 +34,7 @@ import type { OnStateChangeListener } from '@ohos/systemuicommon';
 import { HeadsUpChangeEvent } from '@ohos/systemuicommon';
 import { NotificationSysEventReporter } from '@ohos/systemuicommon';
 import I18n from '@ohos.i18n';
-import { display } from '@kit.ArkUI';
-import { NotificationBase, NotificationEvent } from '@ohos/systemuicommon/newTsIndex';
+import { NotificationBase, NotificationEvent, NotificationUtil } from '@ohos/systemuicommon/newTsIndex';
 import { ArrayUtils, CommonUtils, LogDomain, Logger } from '@ohos/basicutils/src/main/ets/TsIndex';
 import { SettingsConstants, WindowConstants } from '@ohos/commonconstants/src/main/ets/TsIndex';
 import { DeviceHelper,
@@ -51,6 +50,7 @@ import { LiveHeadsUpShowEvent } from '@ohos/systemuicommon/src/main/ets/notifica
 import { AppProtectedStatusVm } from '@ohos/systemuicommon/src/main/ets/vm/AppProtectedStatusVm';
 import { hideBannerNtfContentObj } from '../../../model/HideBannerNtfContentObj';
 import { DropDownAdapter } from '@ohos/systemuicommon/src/main/ets/adapter/DropDownAdapter';
+import { OutdoorVm } from '@ohos/systemuicommon/src/main/ets/vm/OutdoorVm';
 
 const TAG = 'NotificationBannerEntryVm';
 const log: Logger = Logger.getLogHelper(LogDomain.NC);
@@ -237,6 +237,21 @@ export class NotificationBannerEntryVm {
     }
   };
 
+  /**
+   * 云端模式二移除自定义应用事件
+   */
+  private onOutdoorRemoveApp = (bundleNameList: string[]): void => {
+    const creatorBundleName = this.callback?.getNtfEntry()?.creatorBundleName;
+    log.showInfo(TAG, `onOutdoorRemoveApp, creatorBundleName: ${creatorBundleName}`);
+    for (const bundleName of bundleNameList) {
+      // 移除当前通知，直接隐藏横幅窗口
+      if (bundleName === creatorBundleName) {
+        this.hideHeadsUpWindow();
+        break;
+      }
+    }
+  };
+
   private checkIsStartingFloatingWindow(): boolean {
     if (!this.callback?.isStartingFloatingWindow) {
       return false;
@@ -265,6 +280,8 @@ export class NotificationBannerEntryVm {
 
     // 监听面板切换
     bannerMgr.registerStateChangeListener(StateType.TYPE_BANNER_PANEL_TYPE, this.onStateChange);
+    // 监听云端模式二移除自定义应用事件
+    OutdoorVm.instance.emitter.on('outdoorRemoveApp', this.onOutdoorRemoveApp);
   }
 
   /**
@@ -310,6 +327,7 @@ export class NotificationBannerEntryVm {
     this.callback = undefined;
     // 取消监听面板切换
     bannerMgr.unregisterStateChangeListener(StateType.TYPE_BANNER_PANEL_TYPE, this.onStateChange);
+    OutdoorVm.instance.emitter.off('outdoorRemoveApp', this.onOutdoorRemoveApp);
   }
 
   /**
@@ -582,12 +600,19 @@ export class NotificationBannerEntryVm {
    *
    * @param event 事件
    */
-  private onNotificationTaskEvent = (event: NotificationEvent): void => {
+  private onNotificationTaskEvent = async (event: NotificationEvent): Promise<void> => {
     if (SystemUICcmConfig.instance.isEnabledLive2 && event.notificationList?.[0]?.isLiveView()) {
       return;
     }
     const ntfHash = event.notificationList[0]?.hashCode;
     log.showInfo(TAG, `onNotificationTaskEvent. ntf: ${ntfHash}, eventType: ${event.eventType}`)
+    // 添加免打扰检查
+    const bannerNotDisturb = await NotificationUtil.getDNDEnable();
+    log.showInfo(TAG, `bannerNotDisturb: ${bannerNotDisturb}`)
+    if (bannerNotDisturb) {
+      log.showInfo(TAG, 'bannerNotDisturb, skip show banner');
+      return;
+    }
     const task = new TaskItem(`onNotificationTaskEvent_${event.eventType}`, async () => {
       this.onNotificationEvent(event);
       if (event.eventType === NotificationEntryEvent.EVENT_TYPE_POST_ADD ||
@@ -657,6 +682,9 @@ export class NotificationBannerEntryVm {
   }
 
   private isAllowShowHeadsUp(entry: NotificationBase, isUpdate: boolean): boolean {
+    if (!OutdoorVm.instance.isInOutdoorAppList(entry)) {
+      return false;
+    }
     if (!EmergencyThermalSafeManager.instance.isShowNotification(entry?.creatorBundleName)) {
       return false;
     }

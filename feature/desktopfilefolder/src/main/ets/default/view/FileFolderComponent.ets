@@ -462,7 +462,7 @@ export default struct FileFolderComponent {
     }
     let dragInfoList: DragItemInfo[] = [];
     let cachedPos: number[] = [];
-    if (DeviceHelper.isBigScreenMachine()) {
+    if (DeviceHelper.isSuperFoldMachine()) {
       const isPortrait: boolean = AppStorage.get<boolean>('isPortrait') as boolean;
       const page: number = cached.page ?? 0;
       cachedPos = GridLayoutUtil.getIconCenterPosition(cached.row, cached.column, [1, 1], page, isPortrait);
@@ -900,7 +900,7 @@ export default struct FileFolderComponent {
               this.log.showWarn('not response for mouse action');
               return;
             }
-            if (DeviceHelper.isBigScreenMachine()) {
+            if (DeviceHelper.isSuperFoldMachine()) {
               vibratorMgr.startVibration(CommonConstants.VIBRATION_EFFECT_MEDIUM,
                 CommonConstants.VIBRATION_ATTRIBUTE_LONG_PRESS, TAG);
             }
@@ -953,7 +953,7 @@ export default struct FileFolderComponent {
       onAppear: () => {
         this.onMenuPreviewAnimate(1.1);
       },
-      layoutRegionMargin: DeviceHelper.isBigScreenMachine() ? {
+      layoutRegionMargin: DeviceHelper.isSuperFoldMachine() ? {
         left: 0,
         right: 0,
         bottom: 0,

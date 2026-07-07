@@ -828,6 +828,11 @@ export class PhoneNtfHeadsUpVm {
       DisplayNotificationMaintenance.doReport(entry, DisplayNotificationErrorCode.PWD_VISIBLE);
       return true;
     }
+    if (this.checkIsAod()) {
+      log.showInfo(`In AOD, heads up is not supported.`);
+      DisplayNotificationMaintenance.doReport(entry, DisplayNotificationErrorCode.IN_AOD);
+      return true;
+    }
     // 实况列表存在时 不弹横幅
     if (bannerMgr.isBannerPanelType(BannerPanelType.TYPE_LIVE_LIST)) {
       log.showInfo(`liveList is showing, heads up is not supported.`);
@@ -835,6 +840,19 @@ export class PhoneNtfHeadsUpVm {
       return true;
     }
     return false;
+  }
+
+  private checkIsAod(): boolean | undefined {
+    const shouldScreenOn = this.currentEntry?.shouldScreenOn(this.isNtfAutoScreenOn);
+    log.showInfo(`checkIsAod shouldScreenOn: ${shouldScreenOn}`);
+
+    // 若当前未亮屏、通知应亮屏(开关或通知标记)、通知支持锁屏通知，则点亮屏幕
+    if (this.isScreenOff && shouldScreenOn && this.currentEntry?.isLockScreenEnable) {
+      WakeUpUtils.wakeUpScreen(this.currentEntry?.controlConfig.isExtraScreenOn());
+      log.showInfo(`checkIsAod wakeUpScreen`);
+      return false;
+    }
+    return immersiveKgMgr.getOneMirrorState().getAodStyle(true)?.isAod;
   }
 
   /**
@@ -960,6 +978,7 @@ export class PhoneNtfHeadsUpVm {
     if (CommonUtils.isInvalid(entry)) {
       return;
     }
+    const pushIsDeliver = entry?.isDeliverPushNotification;
     let settingSound: number = this.initSettingSound(entry);
     let smartReminderType = this.getSmartReminderType(entry, isUpdate);
     log.showInfo(`Smart Reminder Info: smartReminderType-${smartReminderType}`);

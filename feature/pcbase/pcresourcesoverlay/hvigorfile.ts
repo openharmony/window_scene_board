@@ -1,7 +1,7 @@
 module.exports = require('@ohos/hvigor-ohos-plugin').hspTasks
 
 // /*
-//  * Copyright (c) Huawei Device Co., Ltd. 2024-2024. All rights reserved.
+//  * Copyright (c) Huawei Technologies Co., Ltd. 2024-2024. All rights reserved.
 //  */
 // import { getHvigorNode, hvigor } from '@ohos/hvigor';
 // import { hspTasks } from '@ohos/hvigor-ohos-plugin';

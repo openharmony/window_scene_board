@@ -25,6 +25,7 @@ export interface NotificationConfigSyncTaskParam {
   userId: number;
   language: string;
   hiddenBundleList: string[];
+  deliverSystemBundleList: string[];
   displayUid?: Set<number>; // 正在展示的通知，高优先级处理
   eventType?: number;
 }

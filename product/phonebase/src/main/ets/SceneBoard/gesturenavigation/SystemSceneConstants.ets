@@ -12,12 +12,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import { SCBAiBarConstants } from '../aiBar/SCBAiBarConstants';
 
 export class SystemSceneConstants {
   // 导航条参数
   public static readonly WIDTH_THRESHOLD_SMALL = 600;
   public static readonly WIDTH_THRESHOLD_MIDDLE = 840;
-  public static readonly DEFAULT_HEIGHT = 28;
+  public static readonly DEFAULT_HEIGHT = SCBAiBarConstants.GESTURE_NAV_BOTTOM_HOTAREA_HEIGHT;
   // Phone底部导航横屏状态下窗口的宽度与屏幕的宽度比
   public static readonly LANDSCAPE_WINDOWWIDTH_PERCENT_PHONE = 0.7;
   // Pad底部导航横屏状态下窗口的宽度与屏幕的宽度比
@@ -26,7 +27,7 @@ export class SystemSceneConstants {
   public static readonly OUTER_GESTURE_NAV_ADD_LENGTH = 4;
   public static readonly AREA_WIDTH = '35%';
   public static readonly AREA_REST_WIDTH = 0.65;
-  public static readonly BAR_DEFAULT_WIDTH = 112;
+  public static readonly BAR_DEFAULT_WIDTH = SCBAiBarConstants.GESTURE_NAV_AI_BAR_WIDTH_DEFAULT;
   public static readonly BAR_MARGIN_BOTTOM = 10;
   public static readonly CAPSULE_MARGIN = 48; // 24vp * 2，UX要求AI导航条宽度比锁屏胶囊两侧各少24vp
   public static readonly TWO = 2;
@@ -36,7 +37,7 @@ export class SystemSceneConstants {
   public static readonly OPACITY_ANIM_DEFAULT_THRESHOLD_X =
     SystemSceneConstants.BAR_DEFAULT_WIDTH / SystemSceneConstants.THREE;
   public static readonly DOCK_ANIM_HEIGHT: number = 100;
-  public static readonly BAR_HEIGHT = 5;
+  public static readonly BAR_HEIGHT = SCBAiBarConstants.GESTURE_NAV_AI_BAR_HEIGHT;
   public static readonly DEFAULT_BAR_RADIUS = SystemSceneConstants.BAR_HEIGHT / SystemSceneConstants.TWO;
   public static readonly GAME_FOCUS = 4;
   public static readonly ENTER_GAME = 1;

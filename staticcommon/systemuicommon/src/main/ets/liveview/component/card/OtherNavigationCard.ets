@@ -14,6 +14,8 @@
  */
 
 import { LogDomain, LogHelper } from '@ohos/basicutils';
+import { RTLUtil } from '@ohos/componenthelper';
+import { AodStyleType, ImmersiveAodStyle } from '../../../immersivekeyguardcommon/base/interface/ImmersiveAodStyle';
 import { ObservedItem } from '../../../model/ObservedModel';
 import { immersiveKgMgr } from '../../../immersivekeyguardcommon/manager/ImmersiveKeyguardStateManager';
 import {
@@ -102,6 +104,12 @@ export struct OtherNavigationCard {
    */
   @Consume notificationType: number;
 
+  /**
+   * AOD显示样式
+   */
+  @State aodStyle: ImmersiveAodStyle | undefined = immersiveKgMgr.getOneMirrorState().getAodStyle(
+    this.notificationType === NotificationType.TYPE_PHONE_KEYGUARD);
+
   @State colorModeViewData: ColorModeViewData = ColorModeViewModel.getInstance().getViewData();
   @State colorModeLiveViewData: ColorModeLiveViewData = ColorModeViewModel.getInstance().getLiveViewData();
 
@@ -185,7 +193,7 @@ export struct OtherNavigationCard {
           color: '#3F808080',
           radius: $r('app.float.live_view_left_large_icon_radius')
         })
-        .opacity(1)
+        .opacity(this.aodStyle?.isAod ? this.aodStyle.getStyleValue(AodStyleType.NTF_APP_ICON_ALPHA) : 1)
 
       Column() {
         Text(this.appName?.value ?? '')
@@ -195,7 +203,8 @@ export struct OtherNavigationCard {
           $r('app.float.live_view_other_card_title_font_size') : this.cardParam?.mainNavInfoSize as Resource,
             this.outerHomeVm.isIgnoreFontScaleState))
           .fontFeature('\"ss08\" on')
-          .fontColor(('sys.color.ohos_id_color_text_primary'))
+          .fontColor(this.aodStyle?.isAod ? this.aodStyle?.getStyleValue(AodStyleType.FONT_COLOR) :
+            ('sys.color.ohos_id_color_text_primary'))
           .wordBreak(WordBreak.BREAK_ALL)
           .textAlign(TextAlign.Start)
           .maxLines(1)
@@ -205,7 +214,7 @@ export struct OtherNavigationCard {
           .margin({
             bottom: this.cardParam?.hasNavDirectionIcons ? $r('app.float.live_view_other_card_title_margin_bottom') : 0,
           })
-          .renderGroup(true)
+          .renderGroup(this.aodStyle?.isOneMirror ? false : true)
 
         Text(this.baseData?.contentHideText)
           .fontFamily('HarmonyHeiTi')
@@ -216,10 +225,10 @@ export struct OtherNavigationCard {
           .maxLines(1)
           .wordBreak(WordBreak.BREAK_ALL)
           .textOverflow({ overflow: TextOverflow.Ellipsis })
-          .renderGroup(true)
+          .renderGroup(this.aodStyle?.isOneMirror ? false : true)
           .lineHeight(this.fontScaleState.getScaleSize($r('app.float.live_view_card_text_line_height'),
             this.outerHomeVm.isIgnoreFontScaleState))
-          .fontColor($r('sys.color.ohos_id_color_text_secondary'))
+          .fontColor(this.aodStyle?.isAod ? this.aodStyle?.getStyleValue(AodStyleType.CARD_SECONDARY_FONT_COLOR) : $r('sys.color.ohos_id_color_text_secondary'))
           .fontWeight(FontWeight.Regular)
       }
       .alignItems(HorizontalAlign.Start)
@@ -251,7 +260,7 @@ export struct OtherNavigationCard {
     Row() {
       Row() {
         Text($r('app.string.live_view_hide_tip'))
-          .fontColor($r('sys.color.ohos_id_color_text_tertiary'))
+          .fontColor(this.aodStyle?.isAod ? this.aodStyle?.getStyleValue(AodStyleType.FONT_COLOR) : $r('sys.color.ohos_id_color_text_tertiary'))
           .fontSize(this.fontScaleState.getScaleSize($r('sys.float.ohos_id_text_size_body2'),
             this.outerHomeVm.isIgnoreFontScaleState))
           .fontWeight('sys.string.ohos_id_text_font_family_regular')
@@ -307,7 +316,7 @@ export struct OtherNavigationCard {
       .objectFit(ImageFit.Contain)
       .colorFilter(this.getImgColorFilter())
       .draggable(false)
-      .opacity(undefined)
+      .opacity(this.aodStyle?.isAod ? this.aodStyle.getStyleValue(AodStyleType.NTF_APP_ICON_ALPHA) : undefined)
       .alignRules(this.isSmallFoldOuterScreen ? {
         left: { anchor: '__container__', align: HorizontalAlign.Start },
         top: { anchor: '__container__', align: VerticalAlign.Top }
@@ -333,7 +342,7 @@ export struct OtherNavigationCard {
       .textAlign(TextAlign.Start)
       .maxLines(1)
       .textOverflow({ overflow: TextOverflow.Ellipsis })
-      .renderGroup(true)
+      .renderGroup(this.aodStyle?.isOneMirror ? false : true)
       .margin({
         bottom: this.isSmallFoldOuterScreen ? 2 : this.cardParam?.mainViceSpace,
       })
@@ -357,7 +366,7 @@ export struct OtherNavigationCard {
     .textAlign(TextAlign.Start)
     .maxLines(1)
     .textOverflow({ overflow: TextOverflow.Ellipsis })
-    .renderGroup(true)
+    .renderGroup(this.aodStyle?.isOneMirror ? false : true)
     .draggable(false)
     .lineHeight(this.isSmallFoldOuterScreen ? 16 : undefined)
   }
@@ -408,7 +417,7 @@ export struct OtherNavigationCard {
         .objectFit(ImageFit.Contain)
         .interpolation(ImageInterpolation.Medium)
         .borderRadius('6vp')
-        .opacity(undefined)
+        .opacity(this.aodStyle?.isAod ? this.aodStyle.getStyleValue(AodStyleType.NTF_APP_ICON_ALPHA) : undefined)
         .clip(true)
         .draggable(false)
         .alignRules(this.cardParam?.appIconAlignRule)
@@ -479,7 +488,7 @@ export struct OtherNavigationCard {
             .height(this.getNavDirsSize())
             .width(this.getNavDirsSize())
             .colorFilter(this.getImgColorFilter())
-            .opacity(undefined)
+            .opacity(this.aodStyle?.isAod ? this.aodStyle.getStyleValue(AodStyleType.NTF_APP_ICON_ALPHA) : undefined)
             .draggable(false)
             .syncLoad(true)
         },
@@ -494,6 +503,10 @@ export struct OtherNavigationCard {
   }
 
   private getRichTextColor(entry: RichText): string | number | Resource | undefined {
+    // AOD时，使用AOD颜色
+    if (this.aodStyle?.isAod) {
+      return this.aodStyle?.getStyleValue(AodStyleType.CARD_SECONDARY_FONT_COLOR);
+    }
 
     // 当前富文本颜色，如外卖距离商家 300 米，数字300标记为蓝色，AOD时不变色
     let currentTextColor = entry?.getCurrentTextColor();
@@ -715,6 +728,9 @@ export struct OtherNavigationCard {
   }
 
   private getTitleFontColor(): number | Resource | string | undefined {
+    if (this.aodStyle?.isAod) {
+      return this.aodStyle?.getStyleValue(AodStyleType.FONT_COLOR)
+    }
     if (this.isOuterScreenImmersiveLive2()) {
       return LiveStyle.LIVE_CARD_TITLE_FONT_COLOR;
     }
@@ -722,7 +738,7 @@ export struct OtherNavigationCard {
   }
 
   getImgColorFilter(): ColorFilter | undefined {
-    if (this.isOuterScreenImmersiveLive2()) {
+    if (this.isOuterScreenImmersiveLive2() || this.aodStyle?.isAod) {
       return this.data?.layoutNavigationIconMimeType === 'svg' || this.data?.layoutNavigationIconMimeType === 'png' ?
       LiveStyle.WHITE_COLOR_FILTER : undefined;
     }

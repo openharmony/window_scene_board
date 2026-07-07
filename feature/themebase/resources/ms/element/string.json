@@ -1,0 +1,2615 @@
+{
+    "string":[
+        {
+            "name":"best_example_of_uploading_photos",
+            "value":"Contoh",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_chest",
+            "value":"Peti aplikasi",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"played",
+            "value":"Sedang dimainkan",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"wallpaper_G_only",
+            "value":"Hanya dipakai pada skrin tigaan",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"side_face",
+            "value":"Profil tepi",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"been_lifted",
+            "value":"Penyeretan dimulakan",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"apply_theme",
+            "value":"Gunakan tema",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"back",
+            "value":"Kembali",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"lockscreen_preview",
+            "value":"Skrin kunci",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"female",
+            "value":"Perempuan",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"select_from_folder",
+            "value":"Layari folder",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"adult",
+            "value":"Dewasa",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"not_selected",
+            "value":"Tidak dipilih",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"got_it",
+            "value":"OK",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"insufficient_quota",
+            "value":"Had penjanaan AI untuk bulan ini dicapai.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aigc_theme_service_privacy_statement",
+            "value":"Kenyataan Mengenai Tema AI dan Privasi",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"auto_align",
+            "value":"Auto-jajar",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"current_theme_style",
+            "value":"Ikut tema",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_dynamic_lead_fail_content",
+            "value":"Sumber Persona Dinamik gagal dijana. Ketik untuk butiran.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remove_this_theme",
+            "value":"Keluarkan tema ini?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wallpaper_display_mode",
+            "value":"Pilih suaian",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"add_wallpaper",
+            "value":"Tambah imej",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"my_theme_0",
+            "value":"Tema saya",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"account_button_login",
+            "value":"Log masuk",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_dynamic_lead_finish_content",
+            "value":"Sumber Persona Dinamik dijanakan. Ketik untuk melihat dan menggunakan.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_main_pandora_title",
+            "value":"Skrin utama & gaya",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"picture_getting",
+            "value":"Mendapatkan imej…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_main_time_travel_ongoing_content",
+            "value":"Menjanakan hias latar AI. Ketik untuk melihat.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"font_apply_failed",
+            "value":"Tidak dapat menggunakan fon.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"generate_failed",
+            "value":"Tidak dapat dijanakan.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"time_travel_generate_failed",
+            "value":"Tidak dapat menjana hias latar Rentas Masa.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"save_success",
+            "value":"Berjaya disimpan.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"confirm",
+            "value":"Sahkan",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"customize",
+            "value":"Sesuaikan",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"screen_off_theme",
+            "value":"Sentiasa Dipaparkan",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_main_pandora_fail_content",
+            "value":"Penjanaan hias latar tidak berjaya.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"wallpaper_recommendation",
+            "value":"Dicadangkan",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"click_input_text",
+            "value":"Masukkan teks",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"lock_layout_content",
+            "value":"Apabila ini dihidupkan, unsur-unsur skrin utama tidak boleh dialihkan atau dikeluarkan.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aigc_theme_service_description",
+            "value":"Perkhidmatan ini memerlukan sambungan %1$s dan perlu membaca dan memuat naik/memindahkan imej. Ini adalah untuk menyediakan ciri-ciri yang berkaitan dengan tema. Kami hanya mengumpulkan maklumat peribadi yang relevan dengan ciri-ciri yang anda gunakan. Untuk butiran, rujuk kepada %2$s.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"continue_generating",
+            "value":"Janakan lebih banyak",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"full_screen_reading_exit",
+            "value":"Anda sudah keluar dari pralihat skrin penuh",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"apply",
+            "value":"Gunakan",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"set_as_lockscreen",
+            "value":"Tetapkan sebagai skrin kunci",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"save_picture",
+            "value":"Simpan imej",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"recover_Theme_App_massage",
+            "value":"Tema perlu dipasang untuk menggunakan ciri ini.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"nav_to_my_wallpaper_edit_tips",
+            "value":"Pada skrin kunci, cubit atau sentuh & tahan bahagian jam untuk mengedit.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_main_dimensional_travel_ongoing_content",
+            "value":"Menjanakan hias latar Animirror. Ketik untuk melihat.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_off_app_chest_title",
+            "value":"Nyahdayakan peti aplikasi",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aod_ways_display_awake_off",
+            "value":"Dimatikan",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"have_occlusion",
+            "value":"Muka dalam imej ditutup.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"wallpaper_cannot_be_edited_in_a_small_window",
+            "value":"Hias latar tidak boleh diedit dalam tetingkap kecil.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"end_of_service",
+            "value":"Nyahdayakan",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"read_theme_service_description_and_click_agree",
+            "value":"Sila baca kenyataan di atas dengan teliti. Dengan mengetik Setuju, anda bersetuju untuk membenarkan kami memberi anda perkhidmatan ini.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Desktop_setting",
+            "value":"Tetapan skrin utama",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_off_Desktop_resource_center_title",
+            "value":"Nyahdayakan peti aplikasi",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ai_wallpaper_service_description_1",
+            "value":"Perkhidmatan ini memerlukan sambungan %1$s dan perlu membaca dan memuat naik/memindahkan imej untuk menyediakan ciri-ciri berkaitan dengan hias latar. Dengan mengetik Setuju, anda bersetuju dengan terma-terma ini dan %2$s. Untuk butiran lebih lanjut tentang cara maklumat peribadi anda diproses, rujuk kepada %3$s.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"HiSearch_title",
+            "value":"Carian voice",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ai_wallpaper_service_name_3",
+            "value":"Perkhidmatan tema Rentas Masa",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"photo_not_meet_have_label",
+            "value":"Foto ini tidak boleh digunakan. Pilih foto yang lain daripada imej dicadangkan.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"detail_page",
+            "value":"Laman pralihat",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"tip_button_text",
+            "value":"Ketahui lebih lanjut",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wallpaper_M_only",
+            "value":"Hanya dipakai pada dwiskrin",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"image_decoding_failure",
+            "value":"Ralat imej. Cuba lagi.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"table_theme",
+            "value":"Skrin utama",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"waiting_closing_app_chest",
+            "value":"Menyahdayakan peti aplikasi…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"homescreen_preview",
+            "value":"Skrin utama",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"magic_screen",
+            "value":"Dwipralihat",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"edit_M_tip",
+            "value":"Nyahlipat kepada mod skrin duaan untuk mengedit.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"free_official_theme",
+            "value":"Tema rasmi percuma",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"have_no_people",
+            "value":"Tiada muka dikesan.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"generate_failed_origin_img_error",
+            "value":"Tidak dapat dijanakan.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"desktop_layout",
+            "value":"Tataletak",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"full_screen_reading_enter",
+            "value":"Anda sudah masuk ke pralihat skrin penuh",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aod_all_day_display",
+            "value":"Sepanjang hari",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"in_use",
+            "value":"Sedang digunakan",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screenlock_sign_entry",
+            "value":"Cara menetapkan tandatangan skrin kunci",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"intelligent_status_on",
+            "value":"Dihidupkan",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_off_app_chest_content",
+            "value":"Apabila ini dinyahdayakan, aplikasi dalam peti aplikasi yang tidak dipaparkan di mana-mana tempat boleh ditemukan dalam folder baru di bahagian bawah skrin utama.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"enableTheme",
+            "value":"Menggunakan tema…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"apply_generating_ai_wallpaper",
+            "value":"Ketik Gunakan untuk menjanakan hias latar.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"update_photo",
+            "value":"Kemas kini",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"execution_timed_out",
+            "value":"Operasi tamat masa.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"continue",
+            "value":"Teruskan",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_main_pandora_finish_content",
+            "value":"Hias latar AI dijanakan. Ketik untuk melihat dan menggunakan.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"tip_content",
+            "value":"Dekatkan dua jari bersama pada skrin kunci atau skrin utama untuk menukarkan tema dan menyesuaikan hias latar dan widget dengan pantas.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_ways_display_awake_intelligent",
+            "value":"Pintar",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"apply_wallpaper_info",
+            "value":"Gunakan hias latar pada",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"recover",
+            "value":"Pulihkan",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"delete_fail",
+            "value":"Tidak dapat dipadamkan.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"i_know",
+            "value":"Faham",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"management",
+            "value":"Uruskan",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"is_off_Desktop_resource_center_cancel",
+            "value":"Batalkan",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"center_the_original_image",
+            "value":"Tengah",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"keywords_during_call",
+            "value":"Animasi panggilan",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aigc_theme_service_subtitle",
+            "value":"Perkhidmatan ini memuat naik imej dipilih ke awan, tempat ia menggunakan AI untuk menjana sumber tema.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"is_off_Desktop_resource_center_close",
+            "value":"Nyahdayakan",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"show_date",
+            "value":"Tunjukkan tarikh",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cover_screen",
+            "value":"Skrin kulit",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remove",
+            "value":"Keluarkan",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"auto_align_content",
+            "value":"Isi ruang yang kosong secara automatik apabila aplikasi dikeluarkan.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_dynamic_lead_Unable_to_update_automatically",
+            "value":"Pustaka sumber Persona Dinamik penuh. Ini bermakna sumber tidak akan dikemas kini secara automatik. Ketik untuk menguruskan pustaka.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"select_from_gallery",
+            "value":"Pilih dari Galeri",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"interactive_theme_detail_tip",
+            "value":"Nota: Menggunakan tema ini akan menukarkan kaedah buka kunci wajah anda daripada \"Buka kunci langsung\" kepada \"Leret untuk membuka kunci\".",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pandora_service_unavailable",
+            "value":"Tidak tersedia buat sementara. Cuba sebentar lagi.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"recover_Theme_App",
+            "value":"Pulihkan aplikasi Tema?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"upload_photo_loading",
+            "value":"Memuat…",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"reach_upper_limit",
+            "value":"Bilangan maksimum hias latar dicapai. Padamkan beberapa hias latar untuk menambah hias latar baru.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"is_off_Desktop_resource_center_content",
+            "value":"Apabila ini dinyahdayakan, aplikasi dalam peti aplikasi yang tidak dipaparkan di mana-mana tempat boleh ditemukan dalam folder baru di bahagian bawah skrin utama.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cancel",
+            "value":"Batalkan",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"preview_image",
+            "value":"Pralihat imej",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"intelligent",
+            "value":"Assistant·TODAY",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"resource_description",
+            "value":"Penerangan",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_main_dimensional_travel_finish_content",
+            "value":"Hias latar Animirror baharu dijanakan. Ketik untuk melihat dan menggunakan.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"more_online_themes",
+            "value":"Lebih banyak tema",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"should_apply_current_theme",
+            "value":"Gunakan tema ini?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"default_icon",
+            "value":"Dipratetap",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"full_screen_reading_page_one",
+            "value":"Nombor skrin pralihat %d, leret ke kiri atau kanan dengan dua jari untuk memuatkan skrin butiran yang lain",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keep_one_wallpaper",
+            "value":"Minimum satu hias latar diperlukan.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_chest_description",
+            "value":"Leret ke atas pada skrin utama untuk memaparkan semua aplikasi yang dipasang. Seret aplikasi untuk ditambah ke skrin utama. Keluarkan aplikasi dari skrin utama dengan menyentuh & menahannya dan ketik Keluarkan.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"apply_failed",
+            "value":"Tidak dapat digunakan.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"agree",
+            "value":"Setuju",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wallpaper_F_only",
+            "value":"Hanya dipakai pada skrin tunggal",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"paused",
+            "value":"Dijeda",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Desktop_slide",
+            "value":"Leret ke bawah untuk mencari",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keywords_outer_apply",
+            "value":"Aplikasi",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"random",
+            "value":"Rawak",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aigc_theme_privacy_statement",
+            "value":"Kenyataan Mengenai Perkhidmatan Tema AI dan Privasi",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"outside_screen_show",
+            "value":"Skrin kulit",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"settings_detail_page_tip",
+            "value":"Dwiketik untuk butiran",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"recommend_theme",
+            "value":"Lihat butiran",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"login_failed",
+            "value":"Tiada sambungan Internet. Cuba sebentar lagi.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"show_lock_screen_signature",
+            "value":"Tandatangan skrin kunci",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aigc_generation_prompt",
+            "value":"Dijanakan oleh voice AI",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"theme_title",
+            "value":"Tema",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"default_font",
+            "value":"Dipratetap",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"theme_cannot_be_edited_in_a_small_window",
+            "value":"Tema tidak boleh diedit dalam tetingkap kecil.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"intelligent_settings",
+            "value":"Assistant·TODAY",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"te_cancel",
+            "value":"Batalkan",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pandora_theme_upload_photo_tips",
+            "value":"%1$d. Muat naik foto orang yang menunjukkan mukanya dengan jelas.\n%2$d. Penjanaan imej mungkin tidak berfungsi dengan subjek lebih muda.\n%3$d. Imej yang dijanakan oleh AI mungkin tidak memuaskan.\n%4$d. Jangan muat naik foto yang mengandungi kandungan kesat, ganas, atau diskriminasi.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"show_lunar_date",
+            "value":"Tunjukkan tarikh lunar",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"undelete_toast",
+            "value":"Hias latar ini tidak boleh dipadamkan.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"wallpaper_title",
+            "value":"Hias latar",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"uncompleted",
+            "value":"Ciri akan tersedia tidak lama lagi.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"checked",
+            "value":"Dipilih",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"exiting_current_page",
+            "value":"Penjanaan akan diteruskan termasuk juga apabila anda keluar daripada skrin ini.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"update_available",
+            "value":"Kemas kini tersedia",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_style",
+            "value":"Fon",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"select_all",
+            "value":"Pilih semua",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"person_information",
+            "value":"Sifat",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"try_out",
+            "value":"Cubalah",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aigc_theme_service",
+            "value":"Perkhidmatan Tema AI",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"network_error",
+            "value":"Ralat rangkaian. Sila cuba lagi.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_restored",
+            "value":"Aplikasi telah dipulihkan.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"regenerate",
+            "value":"Cuba lagi",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"covertheme_settings_title",
+            "value":"Skrin utama, skrin kulit & gaya",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"no_select",
+            "value":"Tiada yang dipilih",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"untoggle_camera_mover",
+            "value":"Menyahpilih ini akan mematikan kesan dinamik.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dimensional_travel_generate_failed",
+            "value":"Tidak dapat menjana hias latar Animirror.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_watch_info",
+            "value":"Gunakan pada muka jam tangan",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"wallpaper_carousel_gallery",
+            "value":"Hias latar (Maks %d)",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"top_right",
+            "value":"Kanan atas",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"more_online_icon",
+            "value":"Lebih banyak ikon",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aod_theme",
+            "value":"Sentiasa Dipaparkan",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"keywords_outer_facard",
+            "value":"Widget",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"apply_dialog_title",
+            "value":"Gunakan tema pada",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"photo_selected",
+            "value":"Foto dipilih",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"more_online_font",
+            "value":"Lebih banyak fon",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"homescreen",
+            "value":"Skrin utama",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"generate_failed_and_try_again",
+            "value":"Tidak dapat dijanakan. Sila cuba lagi.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"preset_theme",
+            "value":"Tema dipratetap",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"device_temperature_too_high",
+            "value":"Suhu peranti terlalu tinggi. Cuba sebentar lagi.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"style_choose",
+            "value":"Gaya",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"more_online_wallpapers",
+            "value":"Lebih banyak hias latar",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"camera_mover",
+            "value":"Dinamik",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"lockscreen",
+            "value":"Skrin kunci",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_main_time_travel_finish_content",
+            "value":"Hias latar Rentas Masa baharu dijanakan. Ketik untuk melihat dan menggunakan.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"network_unavailable",
+            "value":"Tiada sambungan Internet. Periksa tetapan rangkaian anda.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"delete_wallpaper",
+            "value":"Padamkan hias latar",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ai_wallpaper_terms",
+            "value":"Terma Penggunaan Keupayaan AI Generatif Tema Rentas Masa",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pandora_theme_description",
+            "value":"%1$d. Muat naik foto orang yang menunjukkan mukanya dengan jelas.\n%2$d. Imej yang dijanakan oleh AI mungkin tidak tepat atau tidak sesuai.\n%3$d. Jangan muat naik foto yang mengandungi kandungan kesat, ganas, atau diskriminasi.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"male",
+            "value":"Lelaki",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"icon",
+            "value":"Ikon",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"have_multi_people",
+            "value":"Imej hendaklah mengandungi seorang individu sahaja.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"continue_upload_image",
+            "value":"Tema semasa akan dipadamkan dan tema baru akan dijanakan. Teruskan?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"tip_cancel_text",
+            "value":"Tutup",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"tip_title",
+            "value":"Peribadikan skrin kunci dan skrin utama dengan pantas",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aigc_theme_service_stop_note",
+            "value":"Perkhidmatan ini tidak akan tersedia lagi jika anda menyahdayakannya. Nyahdayakan juga?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"photo_not_meet_no_label",
+            "value":"Tidak dapat menggunakan foto ini. Sila pilih yang lain.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pop_up_content",
+            "value":"Kesan statik dicadangkan. Hidup dinyahdayakan.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"infancy",
+            "value":"Kanak-kanak",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"scale_to_fill_screen",
+            "value":"Regang",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"applied",
+            "value":"Digunakan",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"tiling",
+            "value":"Jubin",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"preview",
+            "value":"Pralihat",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"blur",
+            "value":"Kabur",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aesthetic",
+            "value":"Gubahan pintar",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"moving_photo_dialog_content",
+            "value":"Oleh sebab hias latar hidup tidak boleh digunakan bersama dengan hias latar lain, ini akan digunakan sebagai hias latar statik.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"big_angle",
+            "value":"Sudut tidak sesuai.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_main_pandora_ongoing_content",
+            "value":"Menjanakan hias latar AI.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"get_best_results",
+            "value":"Ketahui cara mendapat keputusan yang lebih baik",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"my_wallpapers",
+            "value":"Hias latar saya",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_sub_screen_info",
+            "value":"Gunakan pada skrin kulit",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"desktop_resource_center",
+            "value":"Peti aplikasi",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"choose_person_info",
+            "value":"Sila pilih sifat anda.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"low_pixel",
+            "value":"Resolusi imej terlalu rendah.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"apply_watch_info_toast",
+            "value":"Tidak dapat disegerakkan. Sila cuba lagi.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"moving_photo_dialog_toast",
+            "value":"Hias latar hidup tidak boleh digunakan bersama dengan hias latar lain.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"theme_icon",
+            "value":"Daripada Tema",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"my_downloads",
+            "value":"Dimuat turun",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"change_wallpaper",
+            "value":"Tukarkan hias latar",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"preview_photo_loading",
+            "value":"Memuatkan...",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"on_network",
+            "value":"Internet",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_current_theme_first",
+            "value":"Gunakan tema dahulu.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dynamic",
+            "value":"Hidup",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"interactive",
+            "value":"Interaktif",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"save_carousel",
+            "value":"Simpan",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"login_in_settings",
+            "value":"Log masuk ke ID HUAWEI anda dalam Tetapan dahulu.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"more_themes",
+            "value":"Lebih banyak tema",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"desktop_resource_center_description",
+            "value":"Leret ke atas pada skrin utama untuk memaparkan semua aplikasi yang dipasang. Seret aplikasi untuk ditambah ke skrin utama. Keluarkan aplikasi dari skrin utama dengan menyentuh & menahannya dan ketik Keluarkan.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"photo_not_meet",
+            "value":"Foto ini tidak boleh digunakan. Pilih foto yang lain daripada potret terpilih.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pandora_aesthetic_dialog_confirm",
+            "value":"OK",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"deselect_all",
+            "value":"Nyahpilih semua",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"age_too_small_error",
+            "value":"Tidak dapat dijanakan. Subjek terlalu muda.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_dynamic_lead_automatically_updated_finish_content",
+            "value":"Sumber Persona Dinamik sudah dikemas kini secara automatik. Ketik untuk melihat.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"waiting_closing_desktop_resource_center",
+            "value":"Menyahdayakan peti aplikasi…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ai_wallpaper_service_subtitle_1",
+            "value":"Imej dipilih akan dimuat naik ke pelayan awan untuk menjana hias latar menggunakan algoritma AI berasaskan awan. Ini memerlukan kebenaran yang berikut:",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"generating_ai_wallpaper",
+            "value":"Menjanakan hias latar AI…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"fill_screen",
+            "value":"Isikan",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"generating_ai_wallpaper_need_time",
+            "value":"Menjanakan… (Mengambil masa kira-kira %d min)",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"edit_G_tip",
+            "value":"Nyahlipat kepada mod skrin tigaan untuk mengedit.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"composition_failed",
+            "value":"Tidak dapat digubah.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"continue_update_image",
+            "value":"Tema semasa akan dipadamkan dan tema baharu akan dijana. Teruskan?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ai_wallpaper_service_stop_note_1",
+            "value":"Perkhidmatan ini tidak akan tersedia lagi jika anda menyahdayakannya. Nyahdayakan juga?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"delete",
+            "value":"Padamkan",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_theme",
+            "value":"Tambah tema",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keywords_outer_theme",
+            "value":"Tema",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"theme_data_service_instructions",
+            "value":"Perkhidmatan ini memerlukan sambungan Internet dan memerlukan kebenaran Lokasi, Aktiviti fizikal, dan Sambungan peranti, dan membaca data lokasi, senaman dan kesihatan, peranti, dan media (imej dan video). Ini adalah untuk menyokong tema yang perlu memaparkan maklumat ini dan untuk menyediakan ciri-ciri tema interaktif. Untuk butiran lebih lanjut tentang cara maklumat peribadi anda diproses, rujuk kepada %1$s dan %2$s. Dengan menghidupkan ini, anda bersetuju untuk membolehkan kami memberi anda perkhidmatan ini.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"occlusion_exists",
+            "value":"Ditutupi",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"my_theme_d",
+            "value":"Tema saya %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"file_getting",
+            "value":"Memuat turun fail dari awan…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"clear_facial_features",
+            "value":"Ciri-ciri jelas",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"font_apply_successd",
+            "value":"Fon digunakan.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"wallpaper_carousel_info",
+            "value":"Karusel hias latar (%1$d/%2$d)",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"after_generate_wallpaper_enable_theme",
+            "value":"Tema ini akan digunakan pada masa yang sama.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"tip_play_text",
+            "value":"Mainkan",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aod_ways_display_awake_scheduled",
+            "value":"Dijadualkan",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"unsupported_moving_photo_wallpaper",
+            "value":"Hias latar hidup tidak disokong pada skrin utama.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"applyWallpaper",
+            "value":"Menggunakan hias latar…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"content_reporting",
+            "value":"Laporkan kandungan",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"keywords_cover_screen",
+            "value":"Skrin kulit",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"face_the_camera",
+            "value":"Memandang depan",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"end_aigc_service_text",
+            "value":"Untuk butiran, rujuk kepada %1$s dan %2$s. Jika anda tidak ingin menggunakan perkhidmatan ini lagi, ketik %3$s.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"center_and_fit",
+            "value":"Suaian",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"upload_photo",
+            "value":"Muat naik",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"moving_photo_dialog_title",
+            "value":"Tukarkan hias latar?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"main_screen",
+            "value":"Skrin utama",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"apply_sub_screen_info_subtext",
+            "value":"Anda boleh mengedit dalam tema Skrin kulit.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"intelligent_status_off",
+            "value":"Dimatikan",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_dynamic_lead_ongoing_content",
+            "value":"Menjana sumber Persona Dinamik. Ketik untuk melihat.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"artistic_signature_does_not_overlap_with_main_subject",
+            "value":"Tandatangan diperibadikan tidak bertindih dengan subjek utama.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_camera_mover_to_experience_dynamic",
+            "value":"Nyahdayakan kesan Dinamik untuk mencuba \"Gambar bergerak\".",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"image_does_not_recognize_dof",
+            "value":"Tiada subjek kedalaman medan dicam dalam imej.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_dof_to_experience_camera_mover",
+            "value":"Nyahdayakan kesan DoF untuk mencuba kesan Dinamik.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"digital_clock_does_not_overlap_with_main_subject",
+            "value":"Jam digital tidak bertindih dengan subjek utama.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_camera_mover_to_experience_dof",
+            "value":"Nyahdayakan kesan Dinamik untuk mencuba kesan DoF.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_dynamic_to_experience_camera_mover",
+            "value":"Nyahdayakan \"Gambar bergerak\" untuk mencuba kesan Dinamik.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_dynamic_to_experience_dof",
+            "value":"Nyahdayakan \"Gambar bergerak\" untuk mencuba kesan DoF.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_dof_to_experience_dynamic",
+            "value":"Nyahdayakan kesan DoF untuk mencuba \"Gambar bergerak\".",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dock_color_style_follow_system_tips",
+            "value":"Dalam Mod gelap, warna dok akan menjadi lebih gelap.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"exit_pandora_dialog",
+            "value":"Simpan dan gunakan?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"start_generating",
+            "value":"Janakan",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"clock_edit_tips",
+            "value":"Dwiketik untuk mengedit, dwiketik dan tahan untuk menggerakkan jam.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"icon_size_tip",
+            "value":"Tidak terpakai kepada dok.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"theme_data_service_permissions",
+            "value":"Notis Kebenaran",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"theme_personalize_screen_reading_other_page",
+            "value":"Nombor skrin %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"switch_to_desktop_preview",
+            "value":"Tukar kepada pralihat skrin utama",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"about",
+            "value":"Perihal",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"switch_to_lock_screen_preview",
+            "value":"Tukar kepada pralihat skrin kunci",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"clock_style",
+            "value":"Gaya jam %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"blur_slider_read_notes",
+            "value":"Ketik peluncur untuk mengaktifkan dan melaraskan kabur",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"multi_checkbox",
+            "value":"Kotak semak berbilang pilihan",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"current_icon_checked",
+            "value":"Ikon semasa, dipilih",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remove_theme_info",
+            "value":"Tema ini, bersama-sama hias latar dan pek ikon, akan dikeluarkan.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"screenlock_settings",
+            "value":"Skrin kunci",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"stop_theme_data_service_title",
+            "value":"Nyahdayakan Perkhidmatan Tema",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"insufficient_storage_toast",
+            "value":"Tidak dapat memberikan perkhidmatan tema kerana storan dalaman tidak mencukupi. Padamkan fail untuk mengosongkan ruang.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"waiting_closing",
+            "value":"Menyahdayakan…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"top_left",
+            "value":"Kiri atas",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"current_wallpaper_checked",
+            "value":"Hias latar semasa, dipilih",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"clock_font_style",
+            "value":"Fon jam %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"theme_data_service",
+            "value":"Perkhidmatan Tema",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"turn_off_dynamic",
+            "value":"Matikan hidup",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"window_animation_title",
+            "value":"Minimumkan tetingkap menggunakan",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"window_animation_attraction",
+            "value":"Animasi jin",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"share_description",
+            "value":"Kongsi, sesuaikan, dan pasang aksesori",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"blurred",
+            "value":"Dikaburkan",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"more",
+            "value":"Lagi",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dock_color_style",
+            "value":"Warna dok disesuaikan dengan",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"left_of_center",
+            "value":"Kiri tengah",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"theme_card_accessibility_text",
+            "value":"Leret ke kiri atau kanan dengan dua jari untuk menukarkan tema. Leret ke atas dengan dua jari untuk mengalih keluar tema.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_off_swipe_up_title",
+            "value":"Nyahdayakan \"Leret ke atas pada skrin utama\"?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Desktop_SwipeUp",
+            "value":"Leret ke atas pada skrin utama",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"window_animation_default",
+            "value":"Animasi lalai",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"bottom_of_center",
+            "value":"Tengah bawah",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"toggle_view",
+            "value":"Tukar paparan",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"end_of_service_1",
+            "value":"Nyahdayakan perkhidmatan",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dock_color_style_follow_window_tips",
+            "value":"Dok akan berubah warna mengikut respons warna hias latar atau kandungan tetingkap yang dimaksimumkan.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"theme_personalize_full_screen_reading_page_one",
+            "value":"Nombor skrin %d, leret ke kiri atau kanan untuk memuatkan hias latar yang lain.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"lock_layout",
+            "value":"Kunci tataletak",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"center",
+            "value":"Tengah",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"turn_on_dynamic",
+            "value":"Hidupkan hidup",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"desktop_style_title",
+            "value":"Bar pintasan dan bar status",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"apply_success",
+            "value":"Berjaya digunakan.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"cam_mover_is_enabled_blur_is_not_supported",
+            "value":"Kesan dinamik sudah didayakan dan bokeh sudah dinyahdayakan.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"blur_is_enabled_Cam_mover_is_not_supported",
+            "value":"Bokeh sudah didayakan dan kesan dinamik sudah dinyahdayakan.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dof_off",
+            "value":"Kedalaman medan dimatikan",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"bottom_right",
+            "value":"Kanan bawah",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"top_of_center",
+            "value":"Atas tengah",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_off_swipe_up_content",
+            "value":"Apabila ini dinyahdayakan, anda tidak akan dapat membuka peti aplikasi. Aplikasi dalam peti aplikasi yang tidak dipaparkan di mana-mana tempat akan boleh diakses dalam folder baharu pada skrin utama.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dof_on",
+            "value":"Kedalaman medan dihidupkan",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_to",
+            "value":"Diseret ke %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dof",
+            "value":"DoF",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"clock_font_color",
+            "value":"Warna teks jam %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"current_theme",
+            "value":"Semasa",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"right_of_center",
+            "value":"Kanan tengah",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"do_camera_mover",
+            "value":"Kesan dinamik dihidupkan",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"icon_size_restore_default",
+            "value":"Tetapkan semula",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"share_card_hint",
+            "value":"Untuk berkongsi, ketik di peranti lain atau ambil & jatuhkan",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screen_reading_other_page",
+            "value":"Nombor laman pralihat %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"applying",
+            "value":"Sedang digunakan",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"button_text",
+            "value":"Tambah butang tema",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"switched_desktop_preview",
+            "value":"Ditukarkan kepada pralihat skrin utama",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"more_edits",
+            "value":"Lebih banyak pengeditan",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"lock_screen_clock",
+            "value":"Jam skrin kunci",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"undo_camera_mover",
+            "value":"Kesan dinamik dimatikan",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"icon_size",
+            "value":"Saiz ikon skrin utama",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"theme_data_service_privacy",
+            "value":"Kenyataan Mengenai Perkhidmatan Tema dan Privasi",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dock_color_style_follow_system",
+            "value":"Mod paparan",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"switched_lock_screen_preview",
+            "value":"Ditukarkan kepada pralihat skrin kunci",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"bottom_left",
+            "value":"Kiri bawah",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"un_blurred",
+            "value":"Nyahkaburkan",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"unchecked",
+            "value":"Tidak dipilih",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dock_color_style_follow_window",
+            "value":"Hias latar & tetingkap",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"set_as_desktop",
+            "value":"Tetapkan sebagai skrin utama",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"stop_theme_data_service_message",
+            "value":"Ini akan menyahdayakan Perkhidmatan Tema pada peranti ini. Tema anda dan sumber lain akan kehilangan interaktiviti dan tidak lagi dapat memaparkan data anda. Nyahdayakan juga?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screen_reading_first_page",
+            "value":"Fon lalai sistem, nombor halaman pralihat %d, leret ke kiri atau kanan untuk memuat skrin butiran lain",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dock_auto_hide_style",
+            "value":"Sembunyikan dok apabila tetingkap dimaksimumkan atau dipisahkan",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"moment_x_settings",
+            "value":"SideShow",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"moment_x_smart_display_mode_title",
+            "value":"Pintar",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"moment_x_state_off",
+            "value":"Dimatikan",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"moment_x_all_day_display_mode_title",
+            "value":"Sepanjang hari",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"color_style_not_support_in_desktop_tips",
+            "value":"Jika tema ini digunakan pada skrin utama sahaja, gaya jamnya tidak akan digunakan.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"color_style_system_title",
+            "value":"Warna sistem",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"color_style_explanation",
+            "value":"Warna serlahan digunakan pada jam dan widget di skrin utama, skrin kunci dan Sentiasa Dipaparkan, serta dalam Panel Pemberitahuan dan Panel Kawalan.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"color_style_base_title",
+            "value":"Warna asas",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"color_style_suggested_title",
+            "value":"Warna disyorkan",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"color_style_button_text",
+            "value":"Warna serlahan",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"apply_Lockscreen",
+            "value":"Menggunakan pada skrin kunci…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"tip_share_text",
+            "value":"Kongsi",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dock_item_recentcenter",
+            "value":"Pusat tugas",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dock_item_filemanager",
+            "value":"Fail",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"touch",
+            "value":"sentuhkan untuk berkongsi",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dock_item_recyclebin",
+            "value":"Tong Kitar Semula",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dock_item_visible",
+            "value":"Tunjukkan dalam dok",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dock_item_appcenter",
+            "value":"Peti aplikasi",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"unlock_set",
+            "value":"Anda boleh %1$s tema ini dengan orang lain.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"online_icons",
+            "value":"Ikon boleh dimuat turun",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"online_wallpapers",
+            "value":"Hias latar boleh dimuat turun",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"online_themes",
+            "value":"Tema boleh dimuat turun",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"online_fonts",
+            "value":"Fon boleh dimuat turun",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screen_load_other_detail_page",
+            "value":"Leret ke kiri atau kanan dengan dua jari untuk memuatkan pralihat lain. Dwiketik pralihat untuk mengaktifkannya.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screenlock_cannot_be_edited_in_a_small_window",
+            "value":"Skrin kunci tidak boleh diedit dalam tetingkap apungan.",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

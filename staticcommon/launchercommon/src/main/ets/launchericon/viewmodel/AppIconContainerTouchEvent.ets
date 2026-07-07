@@ -16,7 +16,7 @@
 import { LogDomain, LogHelper } from '@ohos/basicutils';
 import { HiDfxEventUtil } from '@ohos/frameworkwrapper';
 import { SCBSceneSessionManager } from '@ohos/windowscene';
-import { AppItemInfo, CommonConstants } from '../../TsIndex';
+import { AppItemInfo, CommonConstants, DeliverUtil } from '../../TsIndex';
 import { AppIconTouchEventIface } from '../interface/AppIconTouchEventIface';
 import { AppIconData } from './AppIconData';
 import { SCBConstants } from '@ohos/commonconstants';
@@ -49,6 +49,11 @@ export class AppIconContainerTouchEvent implements AppIconTouchEventIface {
     }
 
     log.showInfo(`on icon container touch down start: ${!this.iconData.isSuperposeApp}`);
+    // 点击堆叠处的DH应用不预加载
+    if (!this.iconData.isSuperposeApp && DeliverUtil.isSupportAppType(this.itemInfo.bundleName) &&
+      DeliverUtil.isSupportDeliver()) {
+      SCBSceneSessionManager.getInstance().preloadApp(this.itemInfo.bundleName);
+    }
   }
 
   public onClick(event?: ClickEvent | undefined): void {

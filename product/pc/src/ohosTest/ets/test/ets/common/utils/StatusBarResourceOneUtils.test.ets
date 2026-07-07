@@ -84,10 +84,28 @@ export default function StatusBarResourceOneUtilsTest() {
       }
     })
 
+    it('test_getIcon_translate', 0, () => {
+      try {
+        let callback = StatusBarResUtils.getIcon(PluginSlot.SLOT_STATUS_ASSISTANT_TRANSLATE);
+        expect(callback).assertEqual(StatusBarResUtils.getAssistantTranslateIcon);
+      } catch (e) {
+        expect(e).assertEqual('error: ' + JSON.stringify(e.message));
+      }
+    })
+
     it('test_getIcon_search', 0, () => {
       try {
         let callback = StatusBarResUtils.getIcon(PluginSlot.SLOT_STATUS_SEARCH);
         expect(callback).assertEqual(StatusBarResUtils.getSearchIcon);
+      } catch (e) {
+        expect(e).assertEqual('error: ' + JSON.stringify(e.message));
+      }
+    })
+
+    it('test_getIcon_voice', 0, () => {
+      try {
+        let callback = StatusBarResUtils.getIcon(PluginSlot.SLOT_STATUS_ASSISTANT_VOICE);
+        expect(callback).assertEqual(StatusBarResUtils.getAssistantVoiceIcon);
       } catch (e) {
         expect(e).assertEqual('error: ' + JSON.stringify(e.message));
       }

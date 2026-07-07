@@ -23,6 +23,7 @@ import { baseStateMgr } from '@ohos/systemuiutils/src/main/ets/sysdialog/BaseSta
 import { NotificationSysEventReporter } from '../../../utils/NotificationSysEventReporter';
 import { fontScaleManager } from '@ohos/systemuiutils/src/main/ets/fontScale/fontScaleManager';
 import { FontScaleState } from '@ohos/systemuiutils/src/main/ets/fontScale/fontScaleState';
+import { AodStyleType, ImmersiveAodStyle } from '../../../immersivekeyguardcommon/base/interface/ImmersiveAodStyle';
 import { immersiveKgMgr } from '../../../immersivekeyguardcommon/manager/ImmersiveKeyguardStateManager';
 import { NotificationType } from '../../../constants/NotificationType';
 import { CardButtonComponent } from './SystemComponent/CardButtonComponent';
@@ -62,6 +63,12 @@ export struct CardAuthorization {
   @Consume notificationType: number;
 
   /**
+   * AOD显示样式
+   */
+  @State aodStyle: ImmersiveAodStyle | undefined = immersiveKgMgr.getOneMirrorState().getAodStyle(
+    this.notificationType === NotificationType.TYPE_PHONE_KEYGUARD);
+
+  /**
    * 长辈模式字体
    */
   @State fontScaleState: FontScaleState = fontScaleManager.getSysFontScaleState();
@@ -80,8 +87,9 @@ export struct CardAuthorization {
   build() {
     Column() {
       Text($r('app.string.live_view_authorization_tip'))
-        .fontColor($r('sys.color.ohos_id_color_text_secondary'))
-        .opacity(1)
+        .fontColor(this.aodStyle?.isAod ? this.aodStyle?.getStyleValue(AodStyleType.AUTH_TIP_TITLE_COLOR) :
+          $r('sys.color.ohos_id_color_text_secondary'))
+        .opacity(this.aodStyle?.isAod ? AUTH_TITLE_OPACITY_AOD : 1)
         .fontSize(this.fontScaleState.getScaleSize($r('app.float.live_view_card_tip_font_size'),
           this.outerHomeVm.isIgnoreFontScaleState))
         .fontWeight(FontWeight.Medium)
@@ -96,8 +104,8 @@ export struct CardAuthorization {
       .padding({
         top: $r('app.float.live_view_tip_padding_top')
       })
-      .brightness((this.darkModeState.isDarkMode ? 1.04 : 0.95))
-      .backgroundColor(undefined)
+      .brightness(this.aodStyle?.isAod ? 1 : (this.darkModeState.isDarkMode ? 1.04 : 0.95))
+      .backgroundColor(this.aodStyle?.isAod ? this.aodStyle?.getStyleValue(AodStyleType.AUTH_TIP_BG_COLOR) : undefined)
       // 点击卡片授权提示区域不跳转至应用
       .onClick(() => {})
   }
@@ -107,6 +115,7 @@ export struct CardAuthorization {
     Row() {
       CardButtonComponent({
         text: $r('app.string.live_view_authorization_reject'),
+        aodStyle: this.aodStyle,
         onClickAction: () => {
           this.onAuthorization(false);
         }
@@ -115,11 +124,13 @@ export struct CardAuthorization {
       Divider()
         .vertical(true)
         .height($r('app.float.live_view_card_button_line_height_vp'))
-        .color($r('sys.color.ohos_id_color_text_primary'))
-        .opacity(AUTH_DIVIDER_OPACITY_NORMAL)
+        .color(this.aodStyle?.isAod ? this.aodStyle?.getStyleValue(AodStyleType.AUTH_TIP_DIVIDER_COLOR) :
+        $r('sys.color.ohos_id_color_text_primary'))
+        .opacity(this.aodStyle?.isAod ? AUTH_DIVIDER_OPACITY_AOD : AUTH_DIVIDER_OPACITY_NORMAL)
 
       CardButtonComponent({
         text: $r('app.string.live_view_authorization_confirm'),
+        aodStyle: this.aodStyle,
         onClickAction: () => {
           this.onAuthorization(true);
         }

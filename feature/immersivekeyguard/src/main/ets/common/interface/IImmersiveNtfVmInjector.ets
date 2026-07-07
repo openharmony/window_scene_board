@@ -153,6 +153,14 @@ export interface IImmersiveNtfVmInjector extends IImmersiveVmInjector, INotifica
   getStarterVm(): IImmersiveNtfStarterVm;
 
   /**
+   * 通知启动业务
+   *
+   * @param ntf 通知
+   * @returns 通知启动业务
+   */
+  getStarterDeliverVm(): IImmersiveNtfStarterVm;
+
+  /**
    * 通知条目时钟业务
    *
    * @returns 时钟业务

@@ -29,6 +29,7 @@ import {
   FormEditViewManager,
   FormManager,
   FormEditViewParam,
+  BundleConstants,
   FolderManager,
   StyleConstants,
 } from '@ohos/launchercommon';
@@ -126,7 +127,7 @@ export struct FormCompanionComponent {
   private scaleTempY: number = 1;
   private bgImage: string = '';
   private foreground: string = '';
-  private desktopContext?: ServiceExtensionContext = GlobalContext.getContext();
+  private desktopContext?: Context = GlobalContext.getContext();
   private cardDimension: number = CommonConstants.CARD_DIMENSION_1x2;
   private cardScale: number = 1;
   private supportFormZoomDimensions: number[] = [
@@ -137,7 +138,7 @@ export struct FormCompanionComponent {
   ];
   // 有些1*2卡片应用进入卡片管理时，背板和截图设置尺寸无法贴合，导致有白边，如智慧生活，对背板添加缩放
   private backScale: number = 0.98;
-  private isCompanionShowClear?: number;
+  // private isCompanionShowClear?: number;
   @State behaviorTransparent: boolean = false;
 
   aboutToDisappear(): void {
@@ -147,10 +148,10 @@ export struct FormCompanionComponent {
   private destroyCompanionComponent(sources?: string): void {
     log.showInfo(`destroyCompanionComponent: ${sources}`);
     this.deleteAnimateEx();
-    clearTimeout(this.isCompanionShowClear);
-    if (this.isCompanionShowClear) {
-      this.isCompanionShowClear = undefined;
-    }
+    // clearTimeout(this.isCompanionShowClear);
+    // if (this.isCompanionShowClear) {
+    //   this.isCompanionShowClear = undefined;
+    // }
     this.isCompanionShow = false;
     this.isEnterFormManager = false;
     this.isEnterFormEdit = false;
@@ -237,7 +238,7 @@ export struct FormCompanionComponent {
       this.backBoardColor = $r('app.color.normal_form_background_color');
     }
 
-    const supportFormZoom: boolean = this.supportFormZoomDimensions.includes(this.manageFormItem.cardDimension);
+    // const supportFormZoom: boolean = this.supportFormZoomDimensions.includes(this.manageFormItem.cardDimension);
     if (this.isEnterFromApp) {
       // 获取默认卡片
       let defaultFormIndex: number = formItem.findIndex(i => i.isDefaultCardDimension === i.cardDimension);
@@ -276,11 +277,11 @@ export struct FormCompanionComponent {
       ' defaultRadius: ' + defaultRadius)
     this.isCompanionShow = true;
     FormCenterViewManager.getInstance().setIsInFormEnterAnimate(true);
-    this.isCompanionShowClear = setTimeout(() => {
-      if (this.isCompanionShow) {
-        this.isCompanionShow = false;
-      }
-    }, 3600);
+    // this.isCompanionShowClear = setTimeout(() => {
+    //   if (this.isCompanionShow) {
+    //     this.isCompanionShow = false;
+    //   }
+    // }, 3600);
   }
 
   /**
@@ -307,6 +308,20 @@ export struct FormCompanionComponent {
   }
 
   private doFinaleAnimate(shortScaleTemp: number, curStartTime: number): void {
+    if (this.isEnterFromApp) {
+      if (this.manageFormItem.isTransparent) {
+        this.backgroundOpacity = 1;
+      } else {
+        this.backgroundOpacity = 0;
+      }
+      this.finalScaleX = 1;
+      this.finalScaleY = 1;
+      this.foregroundScale = shortScaleTemp;
+      this.destroyCompanionComponent(ANIMATE_FIRST);
+      return;
+    }
+
+    const isAISuggestion: boolean = this.manageFormItem.bundleName === BundleConstants.AI_SUGGESTION_BUNDLE;
     const isOuter: boolean = launcherStatusUtil.getShowOutLauncherStatus();
     animateExTo(ANIMATE_FIRST, {
       curve: curves.springMotion(0.468, 0.63),
@@ -324,7 +339,7 @@ export struct FormCompanionComponent {
       // 渐隐渐显动效时间 = 1600 - 落位动效执行时间
       const animateSecondTime: number = 1600 - (new Date().getTime() - curStartTime);
       log.showInfo(`animateSecondTime: ${animateSecondTime}`);
-      if (!isOuter && !this.manageFormItem.isTransparent && animateSecondTime > 0) {
+      if (!isOuter && !this.manageFormItem.isTransparent && !isAISuggestion && animateSecondTime > 0) {
         let delayTime: number = this.isEnterFromApp ? 0 : animateSecondTime;
         localEventManager.sendLocalEvent(FormConstants.FORM_MOTION_EVENT, delayTime);
         this.behaviorTransparent = true;
@@ -394,6 +409,26 @@ export struct FormCompanionComponent {
     let shortScaleTemp: number = Math.min(this.scaleTempX, this.scaleTempY);
     TraceUtil.startAnimTrace(DomainName.HOME, TraceUtil.CORE_METHOD_ENTER_FORM_MANAGER);
     const curStartTime: number = new Date().getTime();
+
+    if (this.isEnterFromApp) {
+      if (this.manageFormItem.isTransparent) {
+        this.backgroundOpacity = 1;
+      }
+      this.foregroundScale = 1.1 * shortScaleTemp;
+      this.finalScaleX = 1.1;
+      this.finalScaleY = 1.1;
+      this.formOpacity = 0;
+      this.manageFormOpacity = 1;
+      let radius: number = FormUtil.getManagerFormRadius(this.cardDimension);
+      this.companionRadius = radius * this.cardScale;
+      this.backgroundRadius = this.companionRadius;
+
+      this.translateX = translateTempX;
+      this.translateY = translateTempY;
+      this.doFinaleAnimate(shortScaleTemp, curStartTime);
+      return;
+    }
+
     animateTo({
       curve: curves.springMotion(0.468, 0.93),
     }, () => {
@@ -431,9 +466,9 @@ export struct FormCompanionComponent {
     TraceUtil.traceOnce(DomainName.SCB, 'getManageFormIcon');
     AppStorage.setOrCreate('formIndexFormManageAllowShow', false);
     this.getManageFormSnapshot(this.formManagerId);
-    setTimeout(() => {
-      this.getManageFormSnapshot(this.formManagerId, true);
-    }, DELAY_TIME);
+    // setTimeout(() => {
+    //   this.getManageFormSnapshot(this.formManagerId, true);
+    // }, DELAY_TIME);
   }
 
   private getManageFormItemId(manageIndex: number): string {
@@ -472,7 +507,8 @@ export struct FormCompanionComponent {
   }
 
   private getManageFormSnapshot(manageFormItemId: string, retry: boolean = false): void {
-    if (!this.isEnterFromApp) {
+    const isAISuggestion: boolean = this.manageFormItem.bundleName === BundleConstants.AI_SUGGESTION_BUNDLE;
+    if (!this.isEnterFromApp && !isAISuggestion) {
       // 长按普通卡片进入卡片管理，从缓存中获取卡片截图
       this.getFormSnapshotFromResourceManager();
       this.manageFormOpacity = 1;

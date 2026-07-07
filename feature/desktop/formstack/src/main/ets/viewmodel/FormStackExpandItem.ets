@@ -24,6 +24,8 @@ export class FormStackExpandItem {
 
   public cardNode: CardNodeController | null = null;
 
+  public isAiCard: boolean = false; // 是否是语音助手建议卡片
+
   public enableBlurBackground: boolean = false; // 是否支持模糊背板
 
   public translateX: number = 0;

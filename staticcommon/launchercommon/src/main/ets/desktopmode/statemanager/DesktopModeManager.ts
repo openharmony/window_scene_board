@@ -16,7 +16,7 @@
 import commonEventManager from '@ohos.commonEventManager';
 import type { BusinessError } from '@ohos.base';
 import power from '@ohos.power';
-import { CheckEmptyUtils, LogDomain, LogHelper } from '@ohos/basicutils';
+import { CheckEmptyUtils, OutdoorConfig, LogDomain, LogHelper } from '@ohos/basicutils';
 import { SCBOobeManager } from '@ohos/windowscene';
 import { EmergencyEventManager } from '../eventmanager/EmergencyEventManager';
 import batteryInfo from '@ohos.batteryInfo';
@@ -24,6 +24,7 @@ import { DesktopModeEnum, ThermalState } from './DesktopMode';
 import type DesktopModeState from './modelstate/DesktopModeState';
 import { BaseModeState } from './modelstate/BaseModeState';
 import { EmergencyThresholdManager } from '../eventmanager/EmergencyThresholdManager';
+import { LightOutdoorConfig } from '@ohos/frameworkwrapper';
 
 const TAG = 'DesktopModeManager';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.HOME, TAG);
@@ -133,6 +134,18 @@ export class DesktopModeManager {
     if (this.isPowerModeError(data.code ?? 0)) {
       EmergencyEventManager.getInstance().exitEmergencyPowerState();
       return;
+    }
+    // 如果不在云端1
+    if (!OutdoorConfig.getInstance().isInOutdoorMode()) {
+      //如果是切云端2
+      if (!LightOutdoorConfig.getInstance().isOnLightOutdoorMode() && data.code === 650) {
+        LightOutdoorConfig.getInstance().enterOutdoorMode();
+        return;
+      }
+      //如果当前是云端2，但拿到的data.code != 650, 则认为是退出云端2, 切换到之前的模式
+      if (LightOutdoorConfig.getInstance().isOnLightOutdoorMode() && data.code !== 650) {
+        LightOutdoorConfig.getInstance().existOutdoorMode();
+      }
     }
     if (data.code === power.DevicePowerMode.MODE_EXTREME_POWER_SAVE &&
       !EmergencyEventManager.getInstance().isInCharging()) {

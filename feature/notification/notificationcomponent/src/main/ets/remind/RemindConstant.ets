@@ -43,7 +43,8 @@ export enum StopReason {
   MISS_CALL = 7,
   TIMEOUT = 8,
   NOTIFICATION_CENTER_DROPDOWN = 9,
-  BANNER_SLIDE_UP = 10
+  BANNER_SLIDE_UP = 10,
+  CLOUD_REMOVE_APP = 11,
 }
 
 export enum Classification {
@@ -79,6 +80,7 @@ export class PlayRemindParam {
   public isNtfTonePlayAllow?: boolean;
   public soundDuration?: number;
   public isSysTonePlayAllow?: boolean;
+  public isDeliverPush?: boolean;
   public channelId?: string;
   public appIndex?: number;
   public ringVolume?: number;

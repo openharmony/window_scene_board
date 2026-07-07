@@ -92,6 +92,13 @@
             }
         },
         {
+            "name":"app_others",
+            "value":"deliver",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
             "name":"add_to_desktop",
             "value":"홈 화면에 추가",
             "attr":{

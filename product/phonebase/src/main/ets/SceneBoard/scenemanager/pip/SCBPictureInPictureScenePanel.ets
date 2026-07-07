@@ -1,5 +1,5 @@
 /*
- * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -132,7 +132,6 @@ export struct SCBPictureInPictureScenePanel {
     });
     if (indexInAll === -1) {
       let hwSceneSession = new SCBSpecificSession(specificSession, this.sessionStateChange);
-      specificSession?.setFocusable(false);
       hwSceneSession.registerSessionRectChangeCallback(this.sessionRectChange)
       this.delayRotation = false;
       this.pipSceneList.push(hwSceneSession);
@@ -158,6 +157,7 @@ export struct SCBPictureInPictureScenePanel {
 
   aboutToAppear(): void {
     log.showInfo('aboutToAppear');
+    SCBSceneSessionManager.getInstance().setPipIsPipEnabled(true);
     this.sessionStateChange = (parentId: number, persistentId: number,
       state: sceneSessionManager.SessionState): void => this.onSessionStateChange(parentId, persistentId, state);
     this.createSpecificScene =
@@ -334,12 +334,12 @@ export struct SCBPictureInPictureScenePanel {
 
   private updatePanelProperty(screenProperty: SCBScreenProperty) {
     this.panelRotate.angle = -screenProperty.rotation;
-    if (!SCBWindowRotateController.getInstance().isFullScreenRotatePolicy()) {
+    if (this.screenProperty.rotation === 0 || this.screenProperty.rotation === 180) {
       this.panelTranslate = { x: 0, y: 0 };
     } else {
       this.panelTranslate = {
-        x: screenProperty.getTranslateX() + 'px',
-        y: screenProperty.getTranslateY() + 'px'
+        x: this.screenProperty.getTranslateX() + 'px',
+        y: this.screenProperty.getTranslateY() + 'px'
       };
     }
     this.panelSize = { width: px2vp(screenProperty.width), height: px2vp(screenProperty.height) };

@@ -1,0 +1,2615 @@
+{
+    "string":[
+        {
+            "name":"keywords_during_call",
+            "value":"المؤثرات الحركية أثناء المكالمة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"best_example_of_uploading_photos",
+            "value":"أمثلة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wallpaper_G_only",
+            "value":"تطبيق الخلفية على ثلاث شاشات فقط",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"side_face",
+            "value":"صورة جانبية",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"been_lifted",
+            "value":"بدأ السحب",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"apply_theme",
+            "value":"استخدام المظهر",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"back",
+            "value":"رجوع",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"female",
+            "value":"أنثى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"select_from_folder",
+            "value":"اختيار من المجلدات",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"adult",
+            "value":"بالغ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"got_it",
+            "value":"حسنًا",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"insufficient_quota",
+            "value":"تم بلوغ الحد الأقصى لإنشاء المحتوى بالذكاء الاصطناعي لهذا الشهر",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"auto_align",
+            "value":"المحاذاة التلقائية",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"current_theme_style",
+            "value":"الالتزام بنمط المظهر الحالي",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remove_this_theme",
+            "value":"هل تريد إزالة هذا المظهر؟",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wallpaper_display_mode",
+            "value":"اختيار طريقة العرض",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"add_wallpaper",
+            "value":"إضافة صورة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"my_theme_0",
+            "value":"مظاهري",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"account_button_login",
+            "value":"تسجيل الدخول",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_main_pandora_title",
+            "value":"تخصيص الشاشة الرئيسية",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"picture_getting",
+            "value":"جارٍ جلب الصورة…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_main_time_travel_ongoing_content",
+            "value":"إنشاء خلفيات بالذكاء الاصطناعي. اضغط للعرض.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_apply_failed",
+            "value":"يتعذر تطبيق الخط",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"generate_failed",
+            "value":"يتعذر الإنشاء",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"save_success",
+            "value":"تم الحفظ بنجاح",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"confirm",
+            "value":"تأكيد",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"customize",
+            "value":"تخصيص",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"screen_off_theme",
+            "value":"العرض الدائم",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_main_pandora_fail_content",
+            "value":"تعذر إنشاء الخلفية.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wallpaper_recommendation",
+            "value":"مُقترحة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remove_theme_info",
+            "value":"ستتم إزالة هذا المظهر، وخلفيته، وحزمة أيقوناته.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"click_input_text",
+            "value":"أدخل النص هنا",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"continue_generating",
+            "value":"إنشاء المزيد",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"full_screen_reading_exit",
+            "value":"تم الخروج من وضع المعاينة ملء الشاشة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aesthetic",
+            "value":"التكوين الذكي",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"apply",
+            "value":"استخدام",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"set_as_lockscreen",
+            "value":"تعيين كشاشة قفل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"save_picture",
+            "value":"حفظ الصورة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"recover_Theme_App_massage",
+            "value":"مطلوب تثبيت تطبيق السمات من أجل استخدام هذه الميزة.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_main_dimensional_travel_ongoing_content",
+            "value":"إنشاء خلفيات Animirror. اضغط للعرض.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_ways_display_awake_off",
+            "value":"مغلق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"have_occlusion",
+            "value":"الوجه في الصورة محجوب.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wallpaper_cannot_be_edited_in_a_small_window",
+            "value":"لا يمكن تعديل الخلفيات في النوافذ الصغيرة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"end_of_service",
+            "value":"إيقاف",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Desktop_setting",
+            "value":"إعدادات الشاشة الرئيسية",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ai_wallpaper_service_description_1",
+            "value":"تتطلب هذه الخدمة اتصال %1$s وتحتاج إلى قراءة الصور ورفعها/نقلها لتوفير ميزات متعلقة بخلفية الشاشة. بالنقر على \"أوافق\"، فأنت توافق على هذه البنود و%2$s. لمزيد من التفاصيل عن كيفية معالجة معلوماتك الشخصية، ارجع إلى %3$s.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"HiSearch_title",
+            "value":"بحث voice",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ai_wallpaper_service_name_3",
+            "value":"خدمة مظهر السفر عبر الزمن",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"photo_not_meet_have_label",
+            "value":"يتعذر استخدام هذه الصورة. يُرجى تحديد صورة أخرى من الصور المقترحة.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"tip_button_text",
+            "value":"معرفة المزيد",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wallpaper_M_only",
+            "value":"تطبيق الخلفية على شاشتين فقط",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"image_decoding_failure",
+            "value":"مشكلة في الصورة، يُرجى إعادة المحاولة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"table_theme",
+            "value":"الشاشة الرئيسية",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"magic_screen",
+            "value":"المعاينة المزدوجة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"edit_M_tip",
+            "value":"افرد الجهاز إلى وضع الشاشتين للتحرير",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"free_official_theme",
+            "value":"سمة رسمية مجانية",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"have_no_people",
+            "value":"لم يُعثر على أي وجه.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"generate_failed_origin_img_error",
+            "value":"يتعذر الإنشاء",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"desktop_layout",
+            "value":"تخطيط الشاشة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"full_screen_reading_enter",
+            "value":"لقد دخلت إلى وضع المعاينة ملء الشاشة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aod_all_day_display",
+            "value":"طوال اليوم",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"in_use",
+            "value":"قيد الاستخدام",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screenlock_sign_entry",
+            "value":"كيفية تعيين توقيع شاشة القفل",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"intelligent_status_on",
+            "value":"مشغّل",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"share_description",
+            "value":"المشاركة، والتخصيص، والتزيين",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enableTheme",
+            "value":"جارٍ تطبيق المظهر...",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"apply_generating_ai_wallpaper",
+            "value":"انقر على \"استخدام\" لإنشاء خلفية.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"update_photo",
+            "value":"تحديث",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"execution_timed_out",
+            "value":"انتهت مهلة العملية.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"continue",
+            "value":"متابعة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_main_pandora_finish_content",
+            "value":"خلفيات تم إنشاؤها بالذكاء الاصطناعي. انقر هنا للعرض والتطبيق.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"tip_content",
+            "value":"اقرص بإصبعين معًا على شاشة القفل أو الشاشة الرئيسية لتغيير المظهر سريعًا وتخصيص الخلفيات والأدوات.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_ways_display_awake_intelligent",
+            "value":"ذكي",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"apply_wallpaper_info",
+            "value":"تطبيق الخلفية على",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"recover",
+            "value":"استعادة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"delete_fail",
+            "value":"يتعذّر الحذف",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"i_know",
+            "value":"حسنًا",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"management",
+            "value":"إدارة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"center_the_original_image",
+            "value":"توسيط",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"show_date",
+            "value":"إظهار التاريخ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cover_screen",
+            "value":"الشاشة الخارجية",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remove",
+            "value":"إزالة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"auto_align_content",
+            "value":"ملء المساحات الفارغة تلقائيًا بعد إزالة أي تطبيق.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"select_from_gallery",
+            "value":"اختيار من المعرض",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"interactive_theme_detail_tip",
+            "value":"تنويه: سيؤدي تطبيق هذا المظهر إلى تغيير طريقة فتح القفل باستخدام الوجه من \"فتح الجهاز مباشرة\" إلى \"السحب لفتح القفل\".",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pandora_service_unavailable",
+            "value":"هذه الميزة غير متوفرة مؤقتًا، يُرجى إعادة المحاولة لاحقًا",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"recover_Theme_App",
+            "value":"هل تريد استعادة تطبيق السمات؟",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"upload_photo_loading",
+            "value":"جارٍ التحميل…",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"reach_upper_limit",
+            "value":"بلغ عدد الخلفيات الحد الأقصى، يُرجى حذف بعضها لإضافة خلفيات جديدة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"cancel",
+            "value":"إلغاء",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"preview_image",
+            "value":"معاينة الصورة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"intelligent",
+            "value":"المساعد · اليوم",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"resource_description",
+            "value":"التفاصيل",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_main_dimensional_travel_finish_content",
+            "value":"تم إنشاء خلفيات Animirror جديدة. اضغط للعرض والتطبيق.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"more_online_themes",
+            "value":"المزيد من المظاهر",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"should_apply_current_theme",
+            "value":"هل تريد تطبيق هذا المظهر؟",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"default_icon",
+            "value":"أيقونات النظام",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"keep_one_wallpaper",
+            "value":"مطلوب إبقاء خلفية واحدة على الأقل",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_failed",
+            "value":"يتعذر التطبيق",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"agree",
+            "value":"أوافق",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wallpaper_F_only",
+            "value":"تطبيق الخلفية على شاشة واحدة فقط",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Desktop_slide",
+            "value":"اسحب على الشاشة الرئيسية للأسفل للبحث",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"keywords_outer_apply",
+            "value":"التطبيقات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"random",
+            "value":"عشوائي",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"outside_screen_show",
+            "value":"شاشة الغطاء",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"recommend_theme",
+            "value":"عرض التفاصيل",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"login_failed",
+            "value":"غير متصل بالإنترنت، يُرجى إعادة المحاولة لاحقًا",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"show_lock_screen_signature",
+            "value":"توقيع شاشة القفل",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aigc_generation_prompt",
+            "value":"منشأة بواسطة voice AI",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"theme_title",
+            "value":"السمات",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"default_font",
+            "value":"خطوط النظام",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"theme_cannot_be_edited_in_a_small_window",
+            "value":"لا يمكن تعديل المظاهر في النوافذ الصغيرة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"intelligent_settings",
+            "value":"المساعد · اليوم",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"te_cancel",
+            "value":"إلغاء",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pandora_theme_upload_photo_tips",
+            "value":"%1$d. ارفع صورة لشخص تظهر فيها ملامح وجهه بوضوح.\n%2$d. ميزة إنشاء الصور قد لا تعمل مع الأشخاص الصغار في السن.\n%3$d. الصور التي تم إنشاؤها باستخدام الذكاء الاصطناعي قد تكون غير مرضية.\n%4$d. لا ترفع صور تحتوي على محتوى مبتذل أو عنيف أو عنصري.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"show_lunar_date",
+            "value":"إظهار التاريخ القمري",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"undelete_toast",
+            "value":"لا يمكن حذف هذه الخلفية",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"wallpaper_title",
+            "value":"الخلفيات",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"uncompleted",
+            "value":"ستتوفر الميزة قريبًا",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"checked",
+            "value":"تم التحديد",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"exiting_current_page",
+            "value":"سيستمر الإنشاء حتى إذا غادرت هذه الشاشة.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"update_available",
+            "value":"التحديثات متوفرة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_style",
+            "value":"الخطوط",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"select_all",
+            "value":"تحديد الكل",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"person_information",
+            "value":"سمات الشخصية",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"try_out",
+            "value":"جرِّب الآن",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_restored",
+            "value":"تمت استعادة التطبيق",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"regenerate",
+            "value":"إعادة المحاولة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"covertheme_settings_title",
+            "value":"الشاشة الرئيسية وشاشة الغطاء والشكل",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"no_select",
+            "value":"لم تحدد أي عنصر",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"untoggle_camera_mover",
+            "value":"سيؤدي إلغاء تحديد هذا الخيار إلى إيقاف تشغيل المؤثرات المتحركة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_watch_info",
+            "value":"التطبيق على واجهة الساعة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wallpaper_carousel_gallery",
+            "value":"الخلفيات (%d خلفيات كحد أقصى)",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"top_right",
+            "value":"أعلى اليمين",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"more_online_icon",
+            "value":"المزيد من الأيقونات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aod_theme",
+            "value":"العرض الدائم",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"keywords_outer_facard",
+            "value":"الأدوات",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_dialog_title",
+            "value":"تطبيق المظهر على",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"more_online_font",
+            "value":"المزيد من الخطوط",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"homescreen",
+            "value":"الشاشة الرئيسية",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"generate_failed_and_try_again",
+            "value":"يتعذر الإنشاء، يُرجى إعادة المحاولة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"preset_theme",
+            "value":"سمة افتراضية",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"device_temperature_too_high",
+            "value":"درجة حرارة الجهاز مرتفعة للغاية، أعد المحاولة لاحقًا",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"style_choose",
+            "value":"النمط",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"more_online_wallpapers",
+            "value":"المزيد من الخلفيات",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"camera_mover",
+            "value":"متحركة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"lockscreen",
+            "value":"شاشة القفل",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_main_time_travel_finish_content",
+            "value":"تم إنشاء خلفيات سفر عبر الزمن جديدة. اضغط للعرض والتطبيق.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"network_unavailable",
+            "value":"غير متصل بالإنترنت، يُرجى التحقق من إعدادات الشبكة لديك",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"delete_wallpaper",
+            "value":"حذف الخلفية",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"icon_size",
+            "value":"حجم أيقونة الشاشة الرئيسية",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"icon_size_tip",
+            "value":"لن يُطبّق هذا على شريط الإرساء.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"icon_size_restore_default",
+            "value":"إعادة الضبط",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dock_color_style",
+            "value":"تكيّف لون شريط الإرساء مع",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dock_color_style_follow_window",
+            "value":"الخلفية والنوافذ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dock_color_style_follow_system",
+            "value":"وضع العرض",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dock_color_style_follow_window_tips",
+            "value":"سيتغير لون شريط الإرساء استجابةً للون خلفية الشاشة أو محتوى نافذة مُكبّرة.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dock_color_style_follow_system_tips",
+            "value":"سيصبح لون شريط الإرساء داكنًا في الوضع الليلي.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dock_auto_hide_style",
+            "value":"إخفاء شريط الإرساء عند تكبير النوافذ أو تقسيمها",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"window_animation_title",
+            "value":"مؤثرات تصغير النافذة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"window_animation_attraction",
+            "value":"تأثير الشهب المتساقطة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"window_animation_default",
+            "value":"رسوم متحركة افتراضية",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ai_wallpaper_terms",
+            "value":"بنود الاستخدام لقدرات الذكاء الاصطناعي المولّد لمظهر السفر عبر الزمن",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"share_card_hint",
+            "value":"لامس جهازًا آخر أو استخدم السحب والإفلات للمشاركة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pandora_theme_description",
+            "value":"%1$d. ارفع صورة لشخص تظهر فيها ملامح وجهه بوضوح.\n%2$d. الصور التي تم إنشاؤها باستخدام الذكاء الاصطناعي قد تكون غير دقيقة أو غير مناسبة.\n%3$d. لا ترفع صور تحتوي على محتوى مبتذل أو عنيف أو عنصري.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"male",
+            "value":"ذكر",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"icon",
+            "value":"الأيقونات",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"have_multi_people",
+            "value":"يجب أن تحتوي الصورة على شخص واحد فقط.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"continue_upload_image",
+            "value":"ستُحذف السمة الحالية ويتم إنشاء واحدة جديدة. هل تريد المتابعة؟",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"tip_cancel_text",
+            "value":"إغلاق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"tip_title",
+            "value":"التخصيص السريع لشاشة القفل والشاشة الرئيسية",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"photo_not_meet_no_label",
+            "value":"يتعذر استخدام هذه الصورة. يُرجى تحديد صورة أخرى.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pop_up_content",
+            "value":"تم إيقاف الخلفية الحية، يُستحسن استخدام خلفية ثابتة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"infancy",
+            "value":"طفل",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"scale_to_fill_screen",
+            "value":"تمديد",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"tiling",
+            "value":"قطع متلاصقة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"preview",
+            "value":"معاينة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"blur",
+            "value":"تمويه",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"big_angle",
+            "value":"الزاوية غير مناسبة.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_main_pandora_ongoing_content",
+            "value":"جارٍ إنشاء خلفيات بالذكاء الاصطناعي.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"get_best_results",
+            "value":"كيفية الحصول على أفضل النتائج",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"my_wallpapers",
+            "value":"الخلفيات الخاصة بي",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_sub_screen_info",
+            "value":"استخدام على الشاشة الخارجية",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"choose_person_info",
+            "value":"يُرجى تحديد سماتك",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"low_pixel",
+            "value":"دقة الصورة رديئة للغاية.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_watch_info_toast",
+            "value":"تتعذر المزامنة، يُرجى إعادة المحاولة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"my_downloads",
+            "value":"المُنزَّلة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"change_wallpaper",
+            "value":"تغيير الخلفية",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"preview_photo_loading",
+            "value":"جارٍ التحميل…",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"on_network",
+            "value":"الاتصال بالإنترنت",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_current_theme_first",
+            "value":"يُرجى أولًا تطبيق المظهر",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dynamic",
+            "value":"حية",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"interactive",
+            "value":"تفاعلية",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"save_carousel",
+            "value":"حفظ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"login_in_settings",
+            "value":"سجّل الدخول أولًا إلى حساب هواوي الخاص بك من الإعدادات",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"more_themes",
+            "value":"المزيد من المظاهر",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"photo_not_meet",
+            "value":"يتعذر استخدام هذه الصورة. يُرجى تحديد صورة أخرى من الصور الشخصية المميزة.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pandora_aesthetic_dialog_confirm",
+            "value":"موافق",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"deselect_all",
+            "value":"إلغاء تحديد الكل",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"age_too_small_error",
+            "value":"يتعذر الإنشاء، عمر الشخص الموجود في الصورة صغير جدًا",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ai_wallpaper_service_subtitle_1",
+            "value":"ستُرفع الصور المحددة إلى خادم السحابة لإنشاء خلفيات باستخدام خوارزميات الذكاء الاصطناعي السحابية. تحتاج هذه الخدمة إلى منحها الأذونات التالية:",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"generating_ai_wallpaper",
+            "value":"جارِ إنشاء خلفية باستخدام الذكاء الاصطناعي…",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"fill_screen",
+            "value":"ملء الشاشة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"generating_ai_wallpaper_need_time",
+            "value":"جارٍ الإنشاء… (يستغرق حوالي دقيقة واحدة)",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"edit_G_tip",
+            "value":"افرد الجهاز إلى وضع الشاشات الثلاث للتحرير",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"composition_failed",
+            "value":"يتعذر الإنشاء.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ai_wallpaper_service_stop_note_1",
+            "value":"لن تكون هذه الخدمة متاحة بعد الآن في حال إيقاف تشغيلها. هل تريد حقًا إيقاف تشغيلها؟",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"delete",
+            "value":"حذف",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"add_theme",
+            "value":"إضافة مظهر",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"keywords_outer_theme",
+            "value":"السمات",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"occlusion_exists",
+            "value":"ملامح محجوبة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"my_theme_d",
+            "value":"المظهر الخاص بي %d",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"file_getting",
+            "value":"جارٍ تنزيل ملفات من السحابة…",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"clear_facial_features",
+            "value":"ملامح واضحة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"font_apply_successd",
+            "value":"تم تطبيق الخط",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"wallpaper_carousel_info",
+            "value":"خلفيات متغيرة (‏%1$d‏/‏%2$d)",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"after_generate_wallpaper_enable_theme",
+            "value":"سيتم تطبيق هذا المظهر في نفس الوقت.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"tip_play_text",
+            "value":"تشغيل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aod_ways_display_awake_scheduled",
+            "value":"مُجدّول",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"unsupported_moving_photo_wallpaper",
+            "value":"الخلفيات المتحركة غير مدعومة على الشاشة الرئيسية",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"applyWallpaper",
+            "value":"جارٍ تطبيق الخلفية…",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"content_reporting",
+            "value":"الإبلاغ عن المحتوى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"keywords_cover_screen",
+            "value":"شاشة الغطاء",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"face_the_camera",
+            "value":"مواجهة الكاميرا مباشرةً",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"end_aigc_service_text",
+            "value":"للحصول على تفاصيل، يرجى الرجوع إلى %1$s و%2$s. إذا كنت لا تريد استخدام هذه الخدمة بعد الآن، فانقر على %3$s.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"center_and_fit",
+            "value":"توسيط وملائمة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"upload_photo",
+            "value":"رفع صورة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"main_screen",
+            "value":"الشاشة الرئيسية",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_sub_screen_info_subtext",
+            "value":"يمكنك تعديلها من مظهر الشاشة الخارجية.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"intelligent_status_off",
+            "value":"مغلق",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"desktop_style_title",
+            "value":"شريط الاختصارات وشريط الحالة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"not_selected",
+            "value":"لم يتم التحديد",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"network_error",
+            "value":"مشكلة في الشبكة، يرجى إعادة المحاولة.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"insufficient_storage_toast",
+            "value":"يتعذّر توفير خدمات المظهر بسبب عدم كفاية مساحة التخزين الداخلية، يُرجى حذف بعض الملفات لتفريغ مساحة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"lock_layout_content",
+            "value":"عند تشغيل هذا الخيار، لا يمكن نقل عناصر الشاشة الرئيسية أو إزالتها.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"lock_layout",
+            "value":"تثبيت تخطيط الشاشة الرئيسية",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"end_of_service_1",
+            "value":"إيقاف تشغيل الخدمة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_success",
+            "value":"تم الاستخدام بنجاح",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"full_screen_reading_page_one",
+            "value":"شاشة المعاينة رقم %d، اسحب بإصبعين إلى اليسار أو اليمين لتحميل شاشات التفاصيل الأخرى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"current_theme",
+            "value":"الحالي",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"screen_reading_other_page",
+            "value":"صفحة المعاينة رقم %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"applying",
+            "value":"قيد الاستخدام",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"switch_to_desktop_preview",
+            "value":"التبديل إلى معاينة الشاشة الرئيسية",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"switch_to_lock_screen_preview",
+            "value":"التبديل إلى معاينة شاشة القفل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"blur_slider_read_notes",
+            "value":"انقر على شريط التمرير لتنشيطه وضبط التمويه",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"theme_data_service_permissions",
+            "value":"الإشعار المتعلق بالأذونات",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"about",
+            "value":"نبذة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"stop_theme_data_service_title",
+            "value":"إيقاف تشغيل خدمة السمات",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"theme_data_service",
+            "value":"خدمة السمات",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"more",
+            "value":"المزيد",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"theme_data_service_privacy",
+            "value":"البيان المتعلق بخدمة السمات والخصوصية",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"theme_data_service_instructions",
+            "value":"تحتاج هذه الخدمة إلى الاتصال بالإنترنت ومنحها أذونات الموقع والنشاط البدني والاتصال بالأجهزة، بالإضافة إلى قراءة بيانات الموقع، والصحة واللياقة البدنية، ومعلومات الجهاز، والوسائط (الصور والفيديوهات). الغرض من هذا هو دعم السمات التي تتطلب عرض هذه المعلومات ولتوفير مزايا تفاعلية للسمات. يمكنك مراجعة %1$s و%2$s لمعرفة المزيد من التفاصيل عن كيفية معالجة معلوماتك الشخصية. بتشغيل هذا الزر، فأنت توافق على السماح لنا بتقديم هذه الخدمة إليك.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"stop_theme_data_service_message",
+            "value":"سيؤدي هذا الإجراء إلى إيقاف تشغيل خدمة السمات على هذا الجهاز. وستفقد السمات ومواردك الأخرى تفاعليتها ولن تتمكن من عرض بياناتك بعد الآن. هل حقًا تريد إيقاف التشغيل؟",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"cam_mover_is_enabled_blur_is_not_supported",
+            "value":"تم تشغيل التأثير الديناميكي وإيقاف البوكيه",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"blur_is_enabled_Cam_mover_is_not_supported",
+            "value":"تم تشغيل البوكيه وإيقاف التأثير الديناميكي",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dof_off",
+            "value":"عمق المجال متوقف عن التشغيل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_dof_to_experience_camera_mover",
+            "value":"يُرجى إيقاف تشغيل تأثير عمق المجال لتجربة التأثير الديناميكي",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"digital_clock_does_not_overlap_with_main_subject",
+            "value":"الساعة الرقمية لا تتداخل مع العنصر الأساسي",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_camera_mover_to_experience_dof",
+            "value":"يُرجى إيقاف تشغيل التأثير الديناميكي لتجربة تأثير عمق المجال",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_dynamic_to_experience_camera_mover",
+            "value":"يُرجى إيقاف تشغيل \"الصورة الحية\" لتجربة التأثير الديناميكي",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_dynamic_to_experience_dof",
+            "value":"يُرجى إيقاف تشغيل \"الصورة الحية\" لتجربة تأثير عمق المجال",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"artistic_signature_does_not_overlap_with_main_subject",
+            "value":"التوقيع الشخصي لا يتداخل مع العنصر الأساسي",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_camera_mover_to_experience_dynamic",
+            "value":"يُرجى إيقاف تشغيل التأثير الديناميكي لتجربة \"الصورة الحية\"",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"image_does_not_recognize_dof",
+            "value":"لم يتم التعرف على عنصر عمق المجال في الصورة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_dof_to_experience_dynamic",
+            "value":"يُرجى إيقاف تشغيل تأثير عمق المجال لتجربة \"الصورة الحية\"",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dof_on",
+            "value":"عمق المجال مُشغَّل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dof",
+            "value":"عمق المجال",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"exit_pandora_dialog",
+            "value":"هل تريد الحفظ والتطبيق؟",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"multi_checkbox",
+            "value":"خانة اختيار بالتحديد المتعدد",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screenlock_settings",
+            "value":"شاشة القفل",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"clock_edit_tips",
+            "value":"انقر مرتين للتعديل، انقر مرتين ثم مطولاً لنقل الساعة.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"theme_personalize_screen_reading_other_page",
+            "value":"الشاشة رقم %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"clock_style",
+            "value":"نمط الساعة %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"current_icon_checked",
+            "value":"الأيقونات الحالية، محددة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"top_left",
+            "value":"أعلى اليسار",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"current_wallpaper_checked",
+            "value":"الخلفية الحالية، محددة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"clock_font_style",
+            "value":"خط الساعة %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"turn_off_dynamic",
+            "value":"إيقاف العرض الحي",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"blurred",
+            "value":"مموّه",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"left_of_center",
+            "value":"يسار الوسط",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"theme_card_accessibility_text",
+            "value":"اسحب بإصبعين لليمين أو اليسار للتبديل بين المظاهر. اسحب لأعلى بإصبعين لإزالة المظهر.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"bottom_of_center",
+            "value":"أسفل الوسط",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"toggle_view",
+            "value":"التبديل بين أشكال العرض",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"theme_personalize_full_screen_reading_page_one",
+            "value":"الشاشة رقم %d، اسحب لليمين أو اليسار لتحميل خلفيات أخرى.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"center",
+            "value":"الوسط",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"turn_on_dynamic",
+            "value":"تشغيل العرض المباشر",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"bottom_right",
+            "value":"أسفل اليمين",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"top_of_center",
+            "value":"أعلى الوسط",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_to",
+            "value":"تم السحب إلى %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"clock_font_color",
+            "value":"لون نص الساعة %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"right_of_center",
+            "value":"يمين الوسط",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"do_camera_mover",
+            "value":"التأثير الديناميكي مُشغَّل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"button_text",
+            "value":"إضافة زر المظهر",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"switched_desktop_preview",
+            "value":"تم التبديل إلى معاينة الشاشة الرئيسية",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"more_edits",
+            "value":"المزيد من التعديلات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"lock_screen_clock",
+            "value":"ساعة شاشة القفل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"undo_camera_mover",
+            "value":"التأثير الديناميكي موقوف",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"switched_lock_screen_preview",
+            "value":"تم التبديل إلى معاينة شاشة القفل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"bottom_left",
+            "value":"أسفل اليسار",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"un_blurred",
+            "value":"غير مموّه",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"unchecked",
+            "value":"غير محدد",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"set_as_desktop",
+            "value":"تم التعيين كشاشة رئيسية",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screen_reading_first_page",
+            "value":"خط النظام الافتراضي، شاشة المعاينة رقم %d، اسحب إلى اليسار أو اليمين لتحميل شاشات التفاصيل الأخرى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"start_generating",
+            "value":"إنشاء",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"paused",
+            "value":"تم الإيقاف مؤقتًا",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"applied",
+            "value":"تم التطبيق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_dynamic_lead_finish_content",
+            "value":"تم إنشاء صور شخصية تفاعلية. انقر هنا لعرضها واستخدامها.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_dynamic_lead_ongoing_content",
+            "value":"جارٍ إنشاء صور شخصية تفاعلية. انقر هنا للعرض.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"played",
+            "value":"قيد التشغيل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"settings_detail_page_tip",
+            "value":"انقر مرتين لعرض التفاصيل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"continue_update_image",
+            "value":"سيُحذف المظهر الحالي ويتم إنشاء مظهر جديد. هل تريد المتابعة؟",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"time_travel_generate_failed",
+            "value":"تعذر إنشاء خلفيات Time Travel.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dimensional_travel_generate_failed",
+            "value":"تعذر إنشاء خلفيات Animirror.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_dynamic_lead_fail_content",
+            "value":"تعذر إنشاء مورد الشخصية الديناميكية. انقر هنا لعرض التفاصيل.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"detail_page",
+            "value":"صفحة المعاينة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_dynamic_lead_Unable_to_update_automatically",
+            "value":"مكتبة موارد الشخصية الديناميكية ممتلئة. وهذا يعني أن الموارد لن تُحدّث تلقائيًا. انقر هنا لإدارة المكتبة.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"lockscreen_preview",
+            "value":"قفل الشاشة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"homescreen_preview",
+            "value":"الشاشة الرئيسية",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_dynamic_lead_automatically_updated_finish_content",
+            "value":"تم تحديث موارد الشخصية الديناميكية تلقائيًا. انقر هنا للعرض.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aigc_theme_service_stop_note",
+            "value":"لن تكون هذه الخدمة متاحة بعد الآن في حال إيقافها. هل حقًا تريد إيقافها؟",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aigc_theme_service_privacy_statement",
+            "value":"البيان المتعلق بالسمات الذكية والخصوصية",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aigc_theme_service_description",
+            "value":"تتطلب هذه الخدمة %1$s وقراءة الصور ورفعها/نقلها. هذا لتوفير الميزات المتعلقة بالمظاهر. ولا نجمع سوى المعلومات الشخصية المتعلقة بالميزات التي تستخدمها. يمكنك الاطلاع على %2$s لمعرفة التفاصيل.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"read_theme_service_description_and_click_agree",
+            "value":"يُرجى قراءة البيان أعلاه بتمعّن. بالنقر على \"أوافق\"، فأنت تعني بذلك موافقتك على السماح لنا بتزويدك بهذه الخدمة.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aigc_theme_service_subtitle",
+            "value":"ترفع هذه الخدمة الصور المحددة إلى السحابة، حيث تستخدم الذكاء الاصطناعي لإنشاء موارد المظاهر.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aigc_theme_privacy_statement",
+            "value":"البيان حول خدمة السمات الذكية والخصوصية",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aigc_theme_service",
+            "value":"خدمة السمات الذكية",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"photo_selected",
+            "value":"تم تحديد الصورة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_off_Desktop_resource_center_title",
+            "value":"إيقاف صندوق التطبيقات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_off_Desktop_resource_center_cancel",
+            "value":"إلغاء",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_off_Desktop_resource_center_close",
+            "value":"إيقاف",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_off_Desktop_resource_center_content",
+            "value":"عند إيقاف هذا الخيار، يمكن العثور على التطبيقات الموجودة في صندوق التطبيقات والتي لا تُعرَض في أي مكان آخر في المجلد الجديد أسفل الشاشة الرئيسية.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"desktop_resource_center",
+            "value":"صندوق التطبيقات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"desktop_resource_center_description",
+            "value":"اسحب لأعلى على الشاشة الرئيسية لعرض جميع التطبيقات المُثبّتة. اسحب تطبيقًا لإضافته إلى الشاشة الرئيسية. يمكنك إزالة تطبيق من الشاشة الرئيسية بالنقر مطولاً عليه والنقر على \"إزالة\".",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"waiting_closing_desktop_resource_center",
+            "value":"جارٍ إيقاف صندوق التطبيقات…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_chest",
+            "value":"صندوق التطبيقات",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"is_off_app_chest_title",
+            "value":"إيقاف صندوق التطبيقات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"waiting_closing_app_chest",
+            "value":"جارٍ إيقاف صندوق التطبيقات…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_off_app_chest_content",
+            "value":"عند إيقاف هذا الخيار، يمكن العثور على التطبيقات الموجودة في صندوق التطبيقات والتي لا تُعرَض في أي مكان آخر في المجلد الجديد أسفل الشاشة الرئيسية.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_chest_description",
+            "value":"اسحب لأعلى على الشاشة الرئيسية لعرض جميع التطبيقات المُثبّتة. اسحب تطبيقًا لإضافته إلى الشاشة الرئيسية. يمكنك إزالة تطبيق من الشاشة الرئيسية بالنقر مطولاً عليه والنقر على \"إزالة\".",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"theme_icon",
+            "value":"من تطبيق السمات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"moving_photo_dialog_content",
+            "value":"نظرًا لعدم إمكانية استخدام الخلفيات المتحركة مع الخلفيات الأخرى في الوقت نفسه، فسيتم تطبيق هذه الخلفية كخلفية ثابتة.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"moving_photo_dialog_toast",
+            "value":"لا يمكن استخدام الخلفيات المتحركة مع الخلفيات الأخرى في الوقت نفسه",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"moving_photo_dialog_title",
+            "value":"هل تريد تغيير الخلفية؟",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"nav_to_my_wallpaper_edit_tips",
+            "value":"على شاشة القفل، اقرص بإصبعين أو انقر مطولًا على منطقة الساعة لتعديلها.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"waiting_closing",
+            "value":"جارِ الإيقاف…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_off_swipe_up_title",
+            "value":"هل تريد إيقاف تشغيل ميزة \"السحب للأعلى على الشاشة الرئيسية\"؟",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Desktop_SwipeUp",
+            "value":"السحب للأعلى على الشاشة الرئيسية",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_off_swipe_up_content",
+            "value":"عند إيقاف تشغيل هذا الخيار، فلن تتمكن من فتح صندوق التطبيقات. ستكون التطبيقات الموجودة في صندوق التطبيقات والتي لا تُعرض في أي مكان آخر قابلة للوصول في مجلد جديد على الشاشة الرئيسية.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"moment_x_settings",
+            "value":"وضع الاستعداد",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"moment_x_smart_display_mode_title",
+            "value":"ذكي",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"moment_x_state_off",
+            "value":"مُغلق",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"moment_x_all_day_display_mode_title",
+            "value":"طوال اليوم",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"color_style_not_support_in_desktop_tips",
+            "value":"إذا تم تطبيق السمة على الشاشة الرئيسية فقط، فلن يُطبّق نمط الساعة الخاص بها.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"color_style_system_title",
+            "value":"ألوان النظام",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"color_style_explanation",
+            "value":"تُطبّق ألوان التظليل على الساعة والأدوات على الشاشة الرئيسية، وشاشة القفل، وشاشة عرض المعلومات دومًا، وفي لوحة الإشعارات ولوحة التحكم.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"color_style_base_title",
+            "value":"الألوان الأساسية",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"color_style_suggested_title",
+            "value":"الألوان المقترحة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"color_style_button_text",
+            "value":"ألوان التظليل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"apply_Lockscreen",
+            "value":"جارٍ التطبيق على شاشة الغطاء…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"tip_share_text",
+            "value":"مشاركة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dock_item_recentcenter",
+            "value":"مركز المهام",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dock_item_filemanager",
+            "value":"مدير الملفات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"touch",
+            "value":"النقر لمشاركة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dock_item_recyclebin",
+            "value":"سلة المحذوفات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dock_item_visible",
+            "value":"إظهار في شريط الإرساء",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dock_item_appcenter",
+            "value":"صندوق التطبيقات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"unlock_set",
+            "value":"يمكنك %1$s هذا المظهر مع الآخرين.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"online_icons",
+            "value":"أيقونات قابلة للتنزيل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"online_wallpapers",
+            "value":"خلفيات قابلة للتنزيل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"online_themes",
+            "value":"سمات قابلة للتنزيل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"online_fonts",
+            "value":"خطوط قابلة للتنزيل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screen_load_other_detail_page",
+            "value":"اسحب بإصبعين إلى اليسار أو اليمين لتحميل معاينات أخرى. انقر مرتين على معاينة لتفعيلها.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screenlock_cannot_be_edited_in_a_small_window",
+            "value":"لا يمكن تعديل شاشة القفل في النوافذ العائمة",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

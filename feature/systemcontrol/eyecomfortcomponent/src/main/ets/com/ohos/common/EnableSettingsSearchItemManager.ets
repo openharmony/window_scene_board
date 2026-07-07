@@ -152,7 +152,7 @@ export class EnableSettingsSearchItemManager {
   /**
    * Enable设置搜索项
    *
-   * @param packageList 包名列表
+   * @param packageList 设备包名列表
    * @param context 上下文
    */
   public async enableSettingsSearchItem(enableKey: string, isEnable: boolean): Promise<void> {

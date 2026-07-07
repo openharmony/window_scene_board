@@ -760,7 +760,8 @@ export class ImmersiveCapsuleVm {
    * @returns 是否开启胶囊动效
    */
   private isEndableCapsuleAnim(isDisableAnim?: boolean): boolean {
-    if (!CapConst.CAPSULE_ANIM_ENABLE || this.isDestroy || isDisableAnim) {
+    if (!CapConst.CAPSULE_ANIM_ENABLE || this.isDestroy || isDisableAnim ||
+      immersiveKgMgr.getOneMirrorState().getAodStyle(true)?.isAod) {
       // 设置来新通知自动亮屏后做强提醒动效
       if (AppStorage.get('isNotificationWakeUp')) {
         return true;

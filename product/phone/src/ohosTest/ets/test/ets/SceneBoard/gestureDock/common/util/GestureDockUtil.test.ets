@@ -32,6 +32,7 @@ import {
   AppItemInfo,
   AppModel,
   CommonConstants,
+  DeliverUtil,
   DockItemInfo,
   RdbStoreManager
 } from '@ohos/launchercommon/src/main/ets/TsIndex';
@@ -254,6 +255,37 @@ export default function GestureDockUtilTest() {
       let appItemInfo: AppItemInfo = new AppItemInfo();
       appItemInfo.typeId = 3;
       expect(GestureDockUtil.buildDockItemInfo(appItemInfo) !== undefined).assertTrue();
+    })
+
+    it('GestureDockUtil_buildSceneInfoByAppItem', 0, (): void => {
+      let mocker: MockKit = new MockKit();
+      let sessionMgr: SCBSceneSessionManager = SCBSceneSessionManager.getInstance();
+      let mockerFuc: Function = mocker.mockFunc(sessionMgr, sessionMgr.isDeliverApplication);
+      let mockerFuc1: Function = mocker.mockFunc(DeliverUtil, DeliverUtil.isStartContainerApp);
+      let appItemInfo: AppItemInfo = new AppItemInfo();
+      appItemInfo.bundleName = 'testDeliverApp';
+      when(mockerFuc)(ArgumentMatchers.any).afterReturn(true);
+      when(mockerFuc1)(ArgumentMatchers.any).afterReturn(true);
+      let res = GestureDockUtil.buildSceneInfoByAppItem(appItemInfo);
+      when(mockerFuc1)(ArgumentMatchers.any).afterReturn(false);
+      let res1 = GestureDockUtil.buildSceneInfoByAppItem(appItemInfo);
+      mocker.clear(sessionMgr);
+      mocker.clear(GestureDockUtil);
+      expect(res).not().assertUndefined();
+      expect(res1).not().assertUndefined();
+    })
+
+    it('GestureDockUtil_getTargetBundleName', 0, (): void => {
+      let mocker: MockKit = new MockKit();
+      let appModel = AppModel.getInstance();
+      let mockerFuc: Function =
+        mocker.mockFunc(appModel, appModel.getAppInfoByBundleName);
+      when(mockerFuc)(ArgumentMatchers.any).afterReturn('targetBundleName');
+      let res1 = GestureDockUtil.getTargetBundleName(DeliverUtil.ABROAD_APP_PKG);
+      let res2 = GestureDockUtil.getTargetBundleName('test');
+      mocker.clear(appModel);
+      expect(res1).not().assertUndefined();
+      expect(res2).not().assertUndefined();
     })
   })
 }

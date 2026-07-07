@@ -208,7 +208,7 @@ export class PluginSlot {
   static readonly SLOT_STATUS_SEARCH = 'status_bar_search';
 
   /**
-   * status bar capsule slot - OpenHarmony环(PC)
+   * status bar capsule slot - 鸿蒙环(PC)
    */
   static readonly SLOT_STATUS_HOS_KEY = 'status_bar_pc_hoskey';
 
@@ -472,12 +472,12 @@ export class PluginSlot {
   /**
    * 控制中心slot - 分享开关
    */
-  static readonly SLOT_CONTROL_SHARE = 'toggle_HuaweiShare';
+  static readonly SLOT_CONTROL_SHARE = 'toggle_OhosShare';
 
   /**
    * 控制中心slot - 无线投屏开关
    */
-  static readonly SLOT_CONTROL_CAST = 'toggle_HuaweiCast';
+  static readonly SLOT_CONTROL_CAST = 'toggle_OhosCast';
 
   /**
    * 控制中心slot - 多屏协同开关
@@ -530,6 +530,16 @@ export class PluginSlot {
   static readonly SLOT_SCREEN_LOCK_WIFI = 'screen_lock_wifi';
 
   /**
+   * status bar slot - ai translate
+   */
+  static readonly SLOT_STATUS_ASSISTANT_TRANSLATE = 'status_bar_assistant_translate';
+
+  /**
+   * status bar slot - ai
+   */
+  static readonly SLOT_STATUS_ASSISTANT_VOICE = 'status_bar_ai';
+
+  /**
    * status bar slot - 键鼠穿越
    */
   static readonly SLOT_CAPSULE_KEY_MOUSE = 'status_bar_capsule_key_mouse';
@@ -550,14 +560,24 @@ export class PluginSlot {
   static readonly SLOT_STATUS_ICPM = 'status_bar_epc';
 
   /**
+   * status bar slot - ai meeting
+   */
+  static readonly SLOT_STATUS_ASSISTANT_MEETING = 'status_bar_pc_meeting';
+
+  /**
    * status bar slot - virtual keyBoard
    */
   static readonly SLOT_STATUS_VIRTUAL_KEYBOARD = 'status_bar_virtual_keyboard';
 
   /**
-   * status bar slot - com.ohos.cast
+   * status bar slot - com.ohos.inputmethod
    */
-  static readonly SLOT_PLUGIN_STATUS_BAR_CAST = 'plugin_status_bar_cast';
+  static readonly SLOT_PLUGIN_VOICE_KEYBOARD_PANEL = 'plugin_voice_keyboard_panel';
+
+  /**
+   * status bar slot - com.ohos.ohcast
+   */
+  static readonly SLOT_PLUGIN_STATUS_BAR_OHCAST = 'plugin_status_bar_ohcast';
 
   /**
    * status bar slot - com.ohos.powerdialog
@@ -596,6 +616,7 @@ export class PluginSlot {
         PluginSlot.SLOT_STATUS_FA_CENTER,
         PluginSlot.SLOT_STATUS_NOTIFICATION_PANEL,
         PluginSlot.SLOT_STATUS_CONTROL_CENTER,
+        PluginSlot.SLOT_STATUS_ASSISTANT_VOICE,
       ]
     ],
   ]);
@@ -614,6 +635,7 @@ export class PluginSlot {
     PluginSlot.SLOT_STATUS_SOUND_PANEL,
     PluginSlot.SLOT_STATUS_QUICK_NOTE,
     PluginSlot.SLOT_STATUS_IDESK,
+    PluginSlot.SLOT_STATUS_ASSISTANT_TRANSLATE,
     PluginSlot.SLOT_STATUS_ICPM,
     PluginSlot.SLOT_STATUS_INPUT_PANEL,
     PluginSlot.SLOT_STATUS_INPUT_METHOD,
@@ -621,6 +643,7 @@ export class PluginSlot {
     PluginSlot.SLOT_STATUS_ENTERPRISE_SPACE,
     PluginSlot.SLOT_STATUS_SUPER_PRIVACY_PC_SOFT,
     PluginSlot.SLOT_STATUS_SUPER_PRIVACY_PADDLE,
+    PluginSlot.SLOT_STATUS_ASSISTANT_VOICE,
     PluginSlot.SLOT_STATUS_PRINT]
   );
 
@@ -632,6 +655,7 @@ export class PluginSlot {
     PluginSlot.SLOT_STATUS_CAPSULE_SCREENSHOT,
     PluginSlot.SLOT_STATUS_SCREEN_RECORDER,
     PluginSlot.SLOT_STATUS_QUICK_NOTE,
+    PluginSlot.SLOT_STATUS_ASSISTANT_TRANSLATE,
   ];
 
   /**
@@ -881,6 +905,7 @@ export class PluginIconType {
     [PluginSlot.SLOT_STATUS_MICROPHONE_PANEL, PluginIconType.TYPE_SMALL_ICON],
     [PluginSlot.SLOT_STATUS_SUPER_PRIVACY_PC_SOFT, PluginIconType.TYPE_SMALL_ICON],
     [PluginSlot.SLOT_STATUS_SUPER_PRIVACY_PADDLE, PluginIconType.TYPE_SMALL_ICON],
+    [PluginSlot.SLOT_STATUS_ASSISTANT_VOICE, PluginIconType.TYPE_SMALL_ICON],
     [PluginSlot.SLOT_STATUS_LOCATION, PluginIconType.TYPE_SMALL_ICON],
     [PluginSlot.SLOT_STATUS_USB, PluginIconType.TYPE_SMALL_ICON],
   ]);

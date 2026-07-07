@@ -747,6 +747,13 @@
             }
         },
         {
+            "name":"ic_tools_vassistant_accessible",
+            "value":"扫一扫",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
             "name":"ic_tools_memorandum_accessible",
             "value":"备忘录",
             "attr":{

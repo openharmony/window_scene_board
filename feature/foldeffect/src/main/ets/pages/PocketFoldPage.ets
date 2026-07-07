@@ -21,7 +21,7 @@ import { ApsUtils } from '@ohos/frameworkwrapper';
 import { SCBPropertyChangeReason } from '@ohos/windowscene';
 import { StateMattesSwitchStrategy } from '../mattesstrategy/StateMattesSwitchStrategy';
 import { MainPageListener } from '../mattesstrategy/MattesSwitchStrategy';
-// import apsManager from '@hms.graphic.apsManager';
+// import apsManager from '@ohos.graphic.apsManager';
 import { StyleConstants } from '@ohos/launchercommon';
 import performanceMonitor from '@ohos.arkui.performanceMonitor';
 import systemDateTime from '@ohos.systemDateTime';

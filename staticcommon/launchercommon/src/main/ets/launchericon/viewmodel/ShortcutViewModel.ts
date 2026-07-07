@@ -935,6 +935,8 @@ export enum ResultCode {
   FAILED_DUPLICATE_ID = 2,
   // 3：校验/添加失败：快捷方式数量超上限
   FAILED_QUANTITY_LIMIT = 3,
+  // 4: 云端2下禁止添加应用内快捷方式
+  FAILED_ON_LIGHT_OUTDOOR_MODE = 4,
   // -1：校验/添加失败：其它原因，如BMS添加失败等
   FAILED_OTHER = -1,
 }

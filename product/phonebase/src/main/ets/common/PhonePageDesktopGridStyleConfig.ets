@@ -1,5 +1,5 @@
 /**
- * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) 2021-2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 
-import { CommonConstants, LayoutViewModel, IconCommonUtil } from '@ohos/launchercommon';
+import type { ThemeStyleInfo } from '@ohos/launchercommon';
+import { CommonConstants, DesktopMode, IconCommonUtil, LayoutViewModel, RadiusUtil, ThemeStyleManager, ThemeStylePreviewManager } from '@ohos/launchercommon';
 import { NumberConstants } from '@ohos/commonconstants';
 import { PageDesktopGridStyleConfig } from '@ohos/launchercommon/src/main/ets/layoutconfig/PageDesktopGridStyleConfig';
 import StyleConstants from './constants/StyleConstants';
-import type { ThemeStyleInfo } from '@ohos/launchercommon';
-import { ThemeStyleManager } from '@ohos/launchercommon';
-import { RadiusUtil } from '@ohos/launchercommon';
-import { ThemeStylePreviewManager } from '@ohos/launchercommon';
-import { DesktopMode } from '@ohos/launchercommon';
 import { FolderResizeUtil } from '@ohos/launchercommon/Index';
 import { launcherStatusUtil } from '@ohos/windowscene/src/main/ets/TsIndex';
+import { LogDomain, LogHelper } from '@ohos/basicutils';
+
+const TAG = 'PhonePageDesktopGridStyleConfig';
+const log: LogHelper = LogHelper.getLogHelper(LogDomain.HOME, TAG);
 
 /**
  * Phone grid style config class
@@ -97,8 +97,8 @@ export default class PhonePageDesktopGridStyleConfig extends PageDesktopGridStyl
     this.mRows = result.mRows ?? 0;
     this.mDesktopMarginTop = result.mDesktopMarginTop ?? 0;
     this.mWorkSpaceMarginTop = result.mDesktopMarginTop ?? 0;
-    this.mGridWidth = result.mGridWidth ?? 0;
-    this.mGridHeight = result.mGridHeight ?? 0;
+    this.mGridWidth = this.realGridWidth || (result.mGridWidth ?? 0);
+    this.mGridHeight = this.realGridHeight || (result.mGridHeight ?? 0);
     this.mWorkSpaceWidth = result.mGridWidth ?? 0;
     this.mWorkSpaceHeight = result.mGridHeight ?? 0;
     this.mAppItemSize = result.mAppItemSize ?? 0;
@@ -124,6 +124,8 @@ export default class PhonePageDesktopGridStyleConfig extends PageDesktopGridStyl
     this.updatePreviewIconSize();
     // 重新初始化后，清空缓存动画参数
     FolderResizeUtil.release();
+
+    log.showInfo(`initConfig mGridWidth:${this.mGridWidth};mGridHeight:${this.mGridHeight}`)
   }
 
   getConfigLevel(): string {

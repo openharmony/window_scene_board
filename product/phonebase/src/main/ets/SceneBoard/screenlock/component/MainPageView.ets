@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 
+import { common } from '@kit.AbilityKit';
 import { LogDomain, LogHelper } from '@ohos/basicutils';
 import { DeviceHelper, EventManager, EvtBus, WallpaperData, WallpaperManager } from '@ohos/frameworkwrapper';
 import { SCBScreenProperty } from '@ohos/windowscene';
@@ -50,6 +51,7 @@ import { ClockView } from './subview/ClockView';
 import { FormPanelView } from './subview/FormPanelView';
 import lazy { OuterScreenLockFormView } from './subview/OuterScreenLockFormView';
 import { SlBindState } from '../model/data/SlBindState';
+import { ImmersiveAodStyle, immersiveKgMgr } from '@ohos/systemuicommon/src/main/ets/TsIndex';
 import { SlLockIconBindState } from '@ohos/screenlockcomponent/src/main/ets/password/viewmodel/SlLockIconBindState';
 import { ScreenLockThemeChangeCallback } from '@ohos/screenlockcomponent/src/main/ets/common/ScreenLockVc';
 import TemporaryPromptViewModel from '@ohos/screenlockcomponent/src/main/ets/fingerprint/TemporaryPromptViewModel';
@@ -97,6 +99,9 @@ import { ScreenLockSpaceAniData } from '@ohos/screenlockcommon/src/main/ets/mana
 import { spaceAniHelper } from '@ohos/screenlockcommon/src/main/ets/manager/SpaceAniHelper';
 import { SlObserverProxy } from '@ohos/screenlockcomponent/src/main/ets/observer/SlObserverProxy';
 import { MpStateTypeUtils, MpStateType } from '@ohos/screenlockcommon/src/main/ets/fsm/MainPageFsm';
+import { ScreenLockFormSaveUtils } from '@ohos/screenlockwidget/src/main/ets/common/utils/ScreenLockFormSaveUtils';
+import { DesktopWallpaperState } from '@ohos/wallpapercomponent/src/main/ets/wallpaper/viewmodel/DesktopWallpaperState';
+import { commonEventManager } from '@kit.BasicServicesKit';
 
 const TAG = 'MainPageView'
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.KG, TAG);
@@ -104,13 +109,13 @@ const log: LogHelper = LogHelper.getLogHelper(LogDomain.KG, TAG);
 const COMPONENT_ID_SCREEN_LOCK_HOME = TAG + '_Screen_Lock_Home';
 const LOCK_ICON_HEIGHT: number = DeviceHelper.isPhone() ? Constants.SCREENLOCK_LOCK_ICON_HEIGHT :
 Constants.SCREENLOCK_LOCK_ICON_HEIGHT_PAD;
-const ICON_START_EXIT_BLUR_DISABLE: boolean =
-  SCBVisualEffectMgr.isFeatureParamTrue(VisualEffectConstants.ICON_START_EXIT_BLUR_DISABLE);
+const ICON_START_EXIT_BLUR_DISABLE: boolean = SCBVisualEffectMgr.isFeatureParamTrue(VisualEffectConstants.ICON_START_EXIT_BLUR_DISABLE);
 const MAX_RTL_HEIGHT: number = 3;
 
 @Component
 export struct MainPageView {
   private persistentId: number = 0;
+  private context = getContext(this) as common.UIAbilityContext;
 
   @Link screenProp: SCBScreenProperty;
   @Link lockManifestParam: LockManifest;
@@ -127,6 +132,7 @@ export struct MainPageView {
   @Consume isSmallFoldOuterScreen: boolean = false;
   @State slBindState: SlBindState = slStateHelper.getSlBindState();
   @State rootAnimState: WidgetAnimState = slStateHelper.getSlStaticState().getSlMainAnimCtrl();
+  @State aodStyle: ImmersiveAodStyle | undefined = immersiveKgMgr.getOneMirrorState().getAodStyle(true);
   @State slLockIconBindCtrl: SlLockIconBindState = slStateHelper.getSlLockIconBindState();
   @State slClockBindCtrl: SlClockBindState = slStateHelper.getSlClockBindState();
   @State slClockLocateState: SlClockLocateState = slStateHelper.getSlClockLocateState();
@@ -160,8 +166,9 @@ export struct MainPageView {
   @State spaceAniViewModel: ScreenLockSpaceAnimationViewModel = new ScreenLockSpaceAnimationViewModel();
   @StorageProp('screenLockMoveEvent') @Watch('onscreenLockMoveEvent') screenMoveEvent: TouchEvent | null = null;
   @State startAbilityAnimateData: StartAbilityOverlayAnimateData = new StartAbilityOverlayAnimateData();
+  @StorageLink('isOpenScreenLockForm') isOpenScreenLockForm: boolean = false;
 
-
+  @State pixelMap: PixelMap | null = null
   @State slClockAnimCtrl: WidgetAnimState = slStateHelper.getSlClockAnimCtrl();
 
   // 记录当前签名显示，用于添加维测日志
@@ -213,6 +220,7 @@ export struct MainPageView {
   }
 
   private onFormEditChange() {
+    log.showInfo(TAG, `onFormEditChange :${this.isEditClockUp}`);
     this.mainPageDragVc?.updateClockEditTop(this.isEditClockUp);
   }
 
@@ -225,8 +233,21 @@ export struct MainPageView {
     }
   }
 
+  /**
+   * 初始化沙箱文件，存储锁屏卡片配置
+   */
+  private async initJsonFile(): Promise<void>  {
+    try {
+      await ScreenLockFormSaveUtils.initJsonFile(this.context)
+    } catch (error) {
+      const err = error as BusinessError;
+      log.showError(TAG, `initJsonFile failed error:${err?.code} ${err?.message}`);
+    }
+  }
+
   aboutToAppear() {
     log.showInfo('aboutToAppear, start');
+    this.initJsonFile();
     StartAbilityOverlayAnimate.getInstance().initData(this.startAbilityAnimateData);
     this.mainPageViewControl = new MainPageVc({
       persistentId: this.persistentId,
@@ -246,6 +267,7 @@ export struct MainPageView {
       wallpaperData: this.wallpaperData,
       slWallpaperState: this.slWallpaperState,
       spaceAniBlurOpt: this.spaceAniBlurOpt,
+      aodStyle: this.aodStyle,
     });
     this.mainPageViewControl.slVisualVc.init();
     this.mainPageViewControl.setUIContext(this.getUIContext());
@@ -257,7 +279,6 @@ export struct MainPageView {
     this.mainPageViewControl.setSpaceAnimationViewModel(this.spaceAniViewModel);
     this.mainPageViewControl.init();
     this.mainPageViewControl.setScreenLockThemeChangeCallback(this._themeChangeCallback);
-    this.initOuterScreenLockForm();
     this.mainPageDragVc = new MainPageDragVc({
       persistentId: this.persistentId,
       mainPageVc: this.mainPageViewControl,
@@ -276,7 +297,42 @@ export struct MainPageView {
     this.eventMgr.on(FormInterruptEvent, this.handleInterrupt);
     this.slBindState.setEditClockUpScale(1.0);
     this.initMpFsmState();
+
+    new DesktopWallpaperState().getDefaultWallpaperPath(this.context, true).then((pixel: PixelMap | null) => {
+      this.pixelMap = pixel
+    })
+    this.subscribeCrossProcessEvent('ts.event.theme.change')
     log.showWarn(`aboutToAppear, end, clockStyle: ${this.clockStyle?.toString()}`);
+  }
+
+  //订阅消息
+  async subscribeCrossProcessEvent(eventName: string): Promise<void> {
+    try {
+      // 创建订阅者信息
+      const subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+        events: [eventName],
+        priority: 100,
+      };
+      // 创建订阅者
+      let subscriber = await commonEventManager.createSubscriber(subscribeInfo);
+      // 订阅事件
+      await new Promise<void>(async (resolve, reject) => {
+        commonEventManager.subscribe(subscriber, async (error, data) => {
+          if (error) {
+            log.error(`subscribe failed: ${JSON.stringify(error)}`);
+            reject(error);
+          } else {
+            log.info(`eventanme: ${eventName}`);
+            this.pixelMap = await new DesktopWallpaperState().getDefaultWallpaperPath(this.context, true)
+            resolve();
+          }
+        });
+      });
+
+      log.info( `subscribe success: ${eventName}`);
+    } catch (error) {
+      log.error(`error: ${JSON.stringify(error)}`);
+    }
   }
 
   aboutToDisappear() {
@@ -289,10 +345,6 @@ export struct MainPageView {
     this.mainPageViewControl?.slVisualVc.destroy();
     this.slObserverProxy.release();
     CommonEventMonitor.unRegisterScreenLockSubscriber();
-  }
-
-  private initOuterScreenLockForm(): void {
-      return;
   }
 
   // 处理打断添加事件
@@ -380,8 +432,6 @@ export struct MainPageView {
     })
   }
 
-
-
   @Builder
   buildFormPanelView() {
     if (this.specialModeViewData.curMode === KeyGuardMode.DEFAULT && !this.isSmallFoldOuterScreen) {
@@ -406,6 +456,7 @@ export struct MainPageView {
       keyGuardMode: this.specialModeViewData.curMode,
       slBindState: this.slBindState,
       isNtfFingerprintConflict: this.slCapWidgetBindState.getNtfFingerprintConflict(),
+      aodStyle: this.aodStyle,
       slClockBindCtrl: this.slClockBindCtrl,
       isDeviceWithOuter: false,
       isSmallFoldOuterScreen: this.isSmallFoldOuterScreen,
@@ -545,6 +596,7 @@ export struct MainPageView {
   }
 
   private getRootScale(): ScaleOptions {
+    log.showInfo(`getRootScale isEditClockUp${this.isEditClockUp};${this.slBindState.getEditClockUpScale()}`)
     if (this.isEditClockUp && this.slBindState.getEditClockUpScale() < 1) {
       return {
         x: this.slBindState.getEditClockUpScale(),
@@ -560,13 +612,14 @@ export struct MainPageView {
     const rootScale = this.slBindState.getRootScale();
     let wallpaperScale: number = this.wallpaperData.wallpaperScale > 1 ? 1 : this.wallpaperData.wallpaperScale;
     let slideScale = this.slBindState.getSlideScale();
-    return {
+    let options:ScaleOptions = {
       x: slideScale * rootScale *
       this.slBindState.getScaleByCameraTool() * wallpaperScale,
       y: slideScale * rootScale *
       this.slBindState.getScaleByCameraTool() * wallpaperScale
-    };
-
+    }
+    log.showInfo(`getRootScale scale:${JSON.stringify(options)}`);
+    return options;
   }
 
   private getWallpaperTranslate(): TranslateOptions {
@@ -590,6 +643,8 @@ export struct MainPageView {
         })
           .zIndex(SlWidgetZIndex.Z_INDEX_DROP_ANIMATION)
         RelativeContainer() {
+          // 锁屏壁纸
+          this.lockWallpaperBuilder()
           this.buildLockIcon()
           this.buildOuterScreenLockFormView()
           this.buildClockWidget()
@@ -611,6 +666,7 @@ export struct MainPageView {
     .foregroundBlurStyle(this.getScreenLockBlurStyle(),
       { colorMode: ThemeColorMode.LIGHT, adaptiveColor: AdaptiveColor.DEFAULT, scale: 0.1 },
       { disableSystemAdaptation: true })
+    .backgroundColor(this.wallpaperData.showBackWallpaper ? 'rgba(0, 0, 0, 1)' : '') // 黑底遮挡桌面
   }
 
   private getEffect(): BackgroundEffectOptions | undefined {
@@ -672,6 +728,27 @@ export struct MainPageView {
     return this.specialModeViewData.curMode !== KeyGuardMode.DEFAULT;
   }
 
+  @Builder
+  lockWallpaperBuilder() {
+    Column() {
+      if (this.pixelMap === null) {
+        Image($r('app.media.wallpaperdefault'))
+          .width('100%')
+          .height('100%')
+      } else {
+        Image(this.pixelMap)
+          .draggable(false)
+          .width('100%')
+          .height('100%')
+          .objectFit(ImageFit.Cover)
+          .hoverEffect(HoverEffect.None)
+          .interpolation(ImageInterpolation.Low)
+      }
+    }
+    .width('100%')
+    .height('100%')
+  }
+
   build() {
     if (this.slBindState.isPanelShowing()) {
       Stack({ alignContent: Alignment.Bottom }) {
@@ -684,6 +761,11 @@ export struct MainPageView {
             persistentId: this.persistentId,
             mainPageViewControl: this.mainPageViewControl
           })
+        }
+        if (this.isOpenScreenLockForm) {
+          Column()
+            .width('100%')
+            .height('30%')
         }
       }
       .visibility(this.slBindState.getSlVisibility())

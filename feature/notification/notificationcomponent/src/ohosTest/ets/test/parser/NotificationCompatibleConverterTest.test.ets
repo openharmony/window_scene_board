@@ -142,6 +142,8 @@ export default function NotificationCompatibleConverterTest() {
         expect(entry.wantAgent).toBe(ntf.wantAgent);
         expect(entry.wantAgentInfo).toBe(ntf.wantAgentInfo);
         expect(entry.deliveryTime).toBe(ntf.deliveryTime);
+        expect(entry.isDeliverNotification).toBe(ntf.isDeliverNotification);
+        expect(entry.deliverNotificationKey).toBe(ntf.deliverNotificationKey);
         expect(entry.groupName).toBe(ntf.groupName);
         expect(entry.isLockScreenEnable).toBe(ntf.isLockScreenEnable);
         expect(entry.isSoundEnable).toBe(ntf.isSoundEnable);
@@ -188,6 +190,8 @@ export default function NotificationCompatibleConverterTest() {
           wantAgent: undefined,
           wantAgentInfo: undefined,
           deliveryTime: Date.now(),
+          isDeliverNotification: false,
+          deliverNotificationKey: 'test_key',
           groupName: 'test_group',
           isLockScreenEnable: false,
           isSoundEnable: true,
@@ -232,6 +236,8 @@ export default function NotificationCompatibleConverterTest() {
         expect(entry.wantAgent).toBeUndefined();
         expect(entry.wantAgentInfo).toBeUndefined();
         expect(entry.deliveryTime).toBeCloseTo(Date.now());
+        expect(entry.isDeliverNotification).toBe(false);
+        expect(entry.deliverNotificationKey).toBe('test_key');
         expect(entry.groupName).toBe('test_group');
         expect(entry.isLockScreenEnable).toBe(false);
         expect(entry.isSoundEnable).toBe(true);
@@ -421,6 +427,7 @@ export default function NotificationCompatibleConverterTest() {
         liveNtf.overlayIconStyle = {} as any;
         liveNtf.wantAgent = {} as any;
         liveNtf.wantAgentInfo = {} as any;
+        liveNtf.isDeliverNotification = true;
         const template = new LiveSystemTemplate();
         NotificationCompatibleConverter.convertBaseTemplate(liveNtf, entry);
         expect(template.appIcon).toBe(liveNtf.appIcon);
@@ -428,6 +435,7 @@ export default function NotificationCompatibleConverterTest() {
         expect(template.overlayIconStyle).toBe(liveNtf.overlayIconStyle);
         expect(template.wantAgent).toBe(liveNtf.wantAgent);
         expect(template.wantAgentInfo).toBe(liveNtf.wantAgentInfo);
+        expect(template.isDeliverLiveNotification).toBe(true);
       });
 
       it('should handle missing fields', () => {
@@ -437,6 +445,7 @@ export default function NotificationCompatibleConverterTest() {
         liveNtf.overlayIconStyle = undefined;
         liveNtf.wantAgent = undefined;
         liveNtf.wantAgentInfo = undefined;
+        liveNtf.isDeliverNotification = false;
         const template = new LiveSystemTemplate();
         NotificationCompatibleConverter.convertBaseTemplate(liveNtf, entry);
         expect(template.appIcon).toBeUndefined();
@@ -444,6 +453,7 @@ export default function NotificationCompatibleConverterTest() {
         expect(template.overlayIconStyle).toBeUndefined();
         expect(template.wantAgent).toBeUndefined();
         expect(template.wantAgentInfo).toBeUndefined();
+        expect(template.isDeliverLiveNotification).toBe(false);
       });
     });
 

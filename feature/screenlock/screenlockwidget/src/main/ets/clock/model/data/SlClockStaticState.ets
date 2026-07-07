@@ -88,6 +88,14 @@ export class SlClockStaticState extends WidgetStaticState<ClockStaticStateType> 
    */
   private desktop2AodAnimType: ClockDeskTop2AodAnimType = ClockDeskTop2AodAnimType.NONE;
   /**
+   * aod显示电量图标开关是否打开
+   */
+  private batterySwitchOpenMap: Map<BatteryLayout, boolean> = new Map([
+    [BatteryLayout.FULL_AOD_LAYOUT, false],
+    [BatteryLayout.PART_AOD_LAYOUT, false],
+    [BatteryLayout.FULL_ART_SIGN_LAYOUT, false],
+  ]);
+  /**
    * 是否展开显示
    */
   private isClockExpand: boolean = true;
@@ -488,10 +496,15 @@ export class SlClockStaticState extends WidgetStaticState<ClockStaticStateType> 
     if (layout === undefined) {
       return;
     }
+    const switchOpen: boolean | undefined = this.batterySwitchOpenMap.get(layout);
+    if (switchOpen !== isSwitchOpen) {
+      this.batterySwitchOpenMap.set(layout, isSwitchOpen);
+      this.notifyStateChange(ClockStaticStateType.BATTERY_SWITCH_STATE);
+    }
   }
 
   public getBatterySwitchState(layout: BatteryLayout): boolean {
-    return  false;
+    return this.batterySwitchOpenMap.get(layout) ?? false;
   }
 
   public setIsExpand(isClockExpand: boolean): void {

@@ -118,7 +118,7 @@ function getColumnsByLenTest_func() {
 
 function showToastTest_func() {
   it('showToastTest_it', Level.LEVEL0, (): void => {
-    SCBMultiWindowUtils.showToast($r('app.string.openharmony_multiwindow_not_support_split_ratio'));
+    SCBMultiWindowUtils.showToast($r('app.string.oh_multiwindow_not_support_split_ratio'));
     expect(assertFlag).assertTrue();
     SCBMultiWindowUtils.showClickAnotherAppToPairSplitToast();
     expect(assertFlag).assertTrue();
@@ -161,7 +161,7 @@ function showToastTest_func() {
     let mocker1: MockKit = new MockKit();
     let mockFunc: Function = mocker1.mockFunc(appModel,appModel.getAppInfoByBundleName);
     when(mockFunc)(ArgumentMatchers.any).afterReturn(appInfo);
-    SCBMultiWindowUtils.showToast($r('app.string.openharmony_multiwindow_not_support_split_ratio'));
+    SCBMultiWindowUtils.showToast($r('app.string.oh_multiwindow_not_support_split_ratio'));
     expect(assertFlag).assertTrue();
     SCBMultiWindowUtils.showClickAnotherAppToPairSplitToast();
     expect(assertFlag).assertTrue();
@@ -834,34 +834,34 @@ function applyToContainerTest_func() {
 
 function showToastTestAll_func() {
   it('showToastTestAll_it', Level.LEVEL0, (): void => {
-    SCBMultiWindowUtils.showToast($r('app.string.openharmony_multiwindow_not_support_horizontal_split_new'));
+    SCBMultiWindowUtils.showToast($r('app.string.oh_multiwindow_not_support_horizontal_split_new'));
     SCBMultiWindowUtils.showToast($r('app.string.MultiWindow_guidance_button_next'));
     SCBMultiWindowUtils.showToast($r('app.string.MultiWindow_guidance_split_swap_title'));
     SCBMultiWindowUtils.showToast($r('app.string.MultiWindow_guidance_split_to_float_title'));
     SCBMultiWindowUtils.showToast($r('app.string.MultiWindow_guidance_button_finish'));
-    SCBMultiWindowUtils.showToast($r('app.string.openharmony_multiwindow_vertical_exchange'));
-    SCBMultiWindowUtils.showToast($r('app.string.openharmony_multiwindow_not_support_split_ratio'));
-    SCBMultiWindowUtils.showToast($r('app.string.openharmony_multiwindow_not_support_split_ratio'));
+    SCBMultiWindowUtils.showToast($r('app.string.oh_multiwindow_vertical_exchange'));
+    SCBMultiWindowUtils.showToast($r('app.string.oh_multiwindow_not_support_split_ratio'));
+    SCBMultiWindowUtils.showToast($r('app.string.oh_multiwindow_not_support_split_ratio'));
     SCBMultiWindowUtils.showToast($r('app.string.MultiWindow_guidance_split_swap_content_fold'));
     SCBMultiWindowUtils.showToast($r('app.string.MultiWindow_guidance_split_to_float_content_fold'));
     SCBMultiWindowUtils.showToast($r('app.string.MultiWindow_guidance_button_quit'));
     SCBMultiWindowUtils.showToast($r('app.string.MultiWindow_guidance_button_more'));
-    SCBMultiWindowUtils.showToast($r('app.string.openharmony_multiwindow_horizontal_split'));
+    SCBMultiWindowUtils.showToast($r('app.string.oh_multiwindow_horizontal_split'));
     SCBMultiWindowUtils.showToast($r('app.string.MultiWindow_guidance_split_swap_content_phone'));
-    SCBMultiWindowUtils.showToast($r('app.string.openharmony_multiwindow_not_support_split_for_folded_new'));
+    SCBMultiWindowUtils.showToast($r('app.string.oh_multiwindow_not_support_split_for_folded_new'));
     SCBMultiWindowUtils.showToast($r('app.string.MultiWindow_guidance_float_to_split_title'));
     SCBMultiWindowUtils.showToast($r('app.string.MultiWindow_guidance_float_to_split_content'));
     SCBMultiWindowUtils.showToast($r('app.string.MultiWindow_guidance_split_to_float_content_phone'));
     SCBMultiWindowUtils.showToast($r('app.string.MultiWindow_guidance_button_know'));
-    SCBMultiWindowUtils.showToast($r('app.string.openharmony_multiwindow_not_support_multiwindows'));
-    SCBMultiWindowUtils.showToast($r('app.string.openharmony_multiwindow_not_support_split'));
-    SCBMultiWindowUtils.showToast($r('app.string.openharmony_multiwindow_click_application_form_split_screen'));
-    SCBMultiWindowUtils.showToast($r('app.string.openharmony_multiwindow_not_support_float_window'));
-    SCBMultiWindowUtils.showToast($r('app.string.openharmony_multiwindow_app_is_open'));
-    SCBMultiWindowUtils.showToast($r('app.string.openharmony_multiwindow_not_support_vertical_split_new'));
-    SCBMultiWindowUtils.showToast($r('app.string.openharmony_multiwindow_vertical_split'));
-    SCBMultiWindowUtils.showToast($r('app.string.openharmony_multiwindow_horizontal_exchange'));
-    SCBMultiWindowUtils.showToast($r('app.string.openharmony_multiwindow_save_group'));
+    SCBMultiWindowUtils.showToast($r('app.string.oh_multiwindow_not_support_multiwindows'));
+    SCBMultiWindowUtils.showToast($r('app.string.oh_multiwindow_not_support_split'));
+    SCBMultiWindowUtils.showToast($r('app.string.oh_multiwindow_click_application_form_split_screen'));
+    SCBMultiWindowUtils.showToast($r('app.string.oh_multiwindow_not_support_float_window'));
+    SCBMultiWindowUtils.showToast($r('app.string.oh_multiwindow_app_is_open'));
+    SCBMultiWindowUtils.showToast($r('app.string.oh_multiwindow_not_support_vertical_split_new'));
+    SCBMultiWindowUtils.showToast($r('app.string.oh_multiwindow_vertical_split'));
+    SCBMultiWindowUtils.showToast($r('app.string.oh_multiwindow_horizontal_exchange'));
+    SCBMultiWindowUtils.showToast($r('app.string.oh_multiwindow_save_group'));
 
     expect(assertFlag).assertTrue();
   });
@@ -869,7 +869,7 @@ function showToastTestAll_func() {
 
 function showToastTestAdd_func() {
   it('showToastTestAdd_it', Level.LEVEL0, (): void => {
-    SCBMultiWindowUtils.showToast($r('app.string.openharmony_multiwindow_not_support_split_ratio'));
+    SCBMultiWindowUtils.showToast($r('app.string.oh_multiwindow_not_support_split_ratio'));
     expect(assertFlag).assertTrue();
     SCBMultiWindowUtils.showClickAnotherAppToPairSplitToast();
     expect(assertFlag).assertTrue();
@@ -912,7 +912,7 @@ function showToastTestAdd_func() {
     let appModel: AppModel = AppModel.getInstance();
     let mockFunc: Function = mocker1.mockFunc(appModel,appModel.getAppInfoByBundleName);
     when(mockFunc)(ArgumentMatchers.any).afterReturn(appInfo);
-    SCBMultiWindowUtils.showToast($r('app.string.openharmony_multiwindow_not_support_split_ratio'));
+    SCBMultiWindowUtils.showToast($r('app.string.oh_multiwindow_not_support_split_ratio'));
     expect(assertFlag).assertTrue();
     SCBMultiWindowUtils.showClickAnotherAppToPairSplitToast();
     expect(assertFlag).assertTrue();

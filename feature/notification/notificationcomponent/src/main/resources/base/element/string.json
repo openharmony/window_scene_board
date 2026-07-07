@@ -469,6 +469,10 @@
             "attr":{
                 "priority":"translate"
             }
-        }
+        },
+      {
+        "name": "get_installed_bundle_list_reason",
+        "value": "需要列表权限"
+      }
     ]
 }

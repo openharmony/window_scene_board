@@ -18,6 +18,38 @@ import { i18n } from '@kit.LocalizationKit';
 import { LogDomain, LogHelper } from '@ohos/basicutils';
 import { NotificationConfigBaseManager } from '@ohos/systemuicommon/src/main/ets/manager/NotificationConfigBaseManager';
 import { NotificationConfigEntity } from '@ohos/systemuicommon/src/main/ets/model/NotificationConfigEntity';
+import {
+  NotificationConfigAddEvent,
+  NotificationConfigChangeIgnoreEvent,
+  NotificationConfigUpdateResourceEvent,
+  NotificationConfigDeleteEvent,
+  NotificationConfigUpdateConfigEvent,
+} from '@ohos/systemuicommon/src/main/ets/model/NotificationConfigEvent';
+import { DeviceHelper, EvtBus, GlobalContext, PackageCommonEvent } from '@ohos/frameworkwrapper';
+import {
+  ExtAppConstants,
+  SCBConstants,
+  SettingsConstants,
+  SettingsKeyConstants,
+  VassistantConstants
+} from '@ohos/commonconstants';
+import { NotificationConfigSyncTaskParam, syncNotificationConfig } from '../../../main/ets/manager/NotificationConfigSyncTask';
+import { taskpool } from '@kit.ArkTS';
+import { notificationCcmConfig } from '@ohos/systemuicommon/src/main/ets/utils/NotificationCcmConfig';
+import { deliverSystemBundleVerity, bundleVerity } from '@ohos/systemuicommon/src/main/ets/utils/BundleVerityUtil';
+import {
+  BasicStatementAgreedEvent, BasicStatementAgreedSecureEvent
+} from '@ohos/systemuicommon/src/main/ets/datasharemanager/SysUIDataShareEvent';
+import sSettingsUtil from '@ohos/frameworkwrapper/src/main/ets/setting/SettingsUtil';
+import { InnerEventUtil } from '@ohos/systemuicommon/src/main/ets/utils/InnerEventUtil';
+import { ObjectCopyUtil } from '@ohos/componenthelper';
+import { LogWithHa } from '@ohos/systemuicommon/src/main/ets/maintenance/CommonExceptionMaintenance';
+import { NotificationExceptionCode } from '../../../main/ets/maintenance/NotificationExceptionCode';
+import { commonEventManager } from '@kit.BasicServicesKit';
+import { HdsIconUtil } from '@ohos/systemuicommon/src/main/ets/utils/HdsIconUtil';
+import { image } from '@kit.ImageKit';
+import { SystemuiConstants } from '@ohos/systemuicommon';
+import { NotificationManager } from '../../../main/ets/model/NotificationManager';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, MockKit, when, ArgumentMatchers } from '@ohos/hypium';
 import { NotificationConfigManager } from '../../../main/ets/manager/NotificationConfigManager';
 export default function NotificationConfigManagerTest() {

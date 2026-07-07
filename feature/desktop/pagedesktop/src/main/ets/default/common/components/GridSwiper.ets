@@ -19,6 +19,7 @@ import {
   Cache2RdbHelper,
   CommonConstants,
   DefaultDesktopLayoutInfo,
+  DeliverUtil,
   DesktopDragResult,
   DesktopLayoutState,
   DesktopManager,
@@ -73,7 +74,8 @@ import {
   LogDomain,
   LogHelper,
   TraceUtil,
-  SingleContext
+  SingleContext,
+  OutdoorConfig
 } from '@ohos/basicutils';
 import {
   settingsDataManager,
@@ -81,6 +83,7 @@ import {
   ApsUtils,
   DeviceHelper,
   GlobalContext,
+  GlobalSearchConstants,
   HiSysEventUtil,
   localEventManager,
   SCBDesktopCacheManager,
@@ -88,7 +91,8 @@ import {
   sOutSideWindowMgr,
   ViewController,
   ViewManagerPolicy,
-  ViewType
+  ViewType,
+  LightOutdoorConfig
 } from '@ohos/frameworkwrapper';
 import {
   animationContinueManager,
@@ -118,7 +122,7 @@ import {
   SCBTransitionManager,
   ScenePanelState
 } from '@ohos/windowscene';
-// import apsManager from '@hms.graphic.apsManager';
+// import apsManager from '@ohos.graphic.apsManager';
 import { PageDesktopGridStyleConfig } from '@ohos/launchercommon/src/main/ets/layoutconfig/PageDesktopGridStyleConfig';
 import FeatureConstants from '../constants/FeatureConstants';
 import { BigFolderViewModel } from '@ohos/bigfolder/src/main/ets/default/viewmodel/BigFolderViewModel';
@@ -157,6 +161,7 @@ import systemParameter from '@ohos.systemparameter';
 import { editModeViewManager } from '@ohos/desktopedit/src/main/ets/default/manager/EditModeViewManager';
 import { EditModeGridSwiperViewData } from '@ohos/desktopedit/src/main/ets/default/data/EditModeGridSwiperViewData';
 import { EditModeViewEvent } from '@ohos/desktopedit/src/main/ets/default/viewmodel/EditModeViewEvent';
+import { GlobalSearchLocationHandler } from '../viewmodel/GlobalSearchLocationHander';
 import { BusinessType } from '@ohos/launchercommon/src/main/ets/constants/CommonConstants';
 import {
   dropAnimationManager,
@@ -186,8 +191,8 @@ import { editModeGuideManager } from '../EditModeGuideManager';
 import lazy { outerAddAppIconManager } from '@ohos/launchercommon/src/main/ets/manager/OuterAddAppIconManager';
 import lazy {
   SCBTripleStateChange,
-  UltraScreenExpandAnimUtils,
-} from '@ohos/launchercommon/src/main/ets/utils/UltraScreenExpandAnimUtils';
+  TripleFoldExpandAnimUtils,
+} from '@ohos/launchercommon/src/main/ets/utils/TripleFoldExpandAnimUtils';
 import lazy { SCBTripleController } from '@ohos/windowscene/src/main/ets/animation/SCBTransitionController';
 import { DisplayCountViewModel } from '@ohos/launchercommon/src/main/ets/displaycount/DisplayCountViewModel';
 import { DisplayCountData } from '@ohos/launchercommon/src/main/ets/displaycount/DisplayCountData';
@@ -199,6 +204,7 @@ import { formZoomController } from './formAdjust/viewModel/FormZoomController';
 import { FormZoomDragEvtParams, FormZoomDragEvtType } from './formAdjust/common/FormZoomCommonType';
 import { AppStatusNameMapping } from '@ohos/launchercommon/src/main/ets/appinstall/AppStatusNameMapping';
 import { ExposureManager } from '@ohos/launchercommon/src/main/ets/manager/ExposureManager';
+import { AiSuggestionUtil } from '@ohos/launchercommon/src/main/ets/aisuggestion/AiSuggestionUtil';
 import lazy PageEditTips from './PageEditTips';
 import { LauncherStartup, StartupStep } from '@ohos/launchercommon/src/main/ets/tools/LauncherStartup';
 import { DoubleClickLockScreenModel } from '@ohos/launchercommon/src/main/ets/pagedesktop/viewmodel/DoubleClickLockScreenModel';
@@ -289,7 +295,7 @@ export default struct GridSwiper {
   private isFirstIn: boolean = true;
   private isPhone: boolean = false;
   private isPC: boolean = false;
-  private isBigScreen: boolean = false;
+  private isSuperFold: boolean = false;
   @State workSpaceHeight: number = 0;
   @StorageLink('isExecuteSearchGesture') isExecuteSearchGesture: boolean = false;
   private mPageDesktopDragHandler: PageDesktopDragHandler = PageDesktopDragHandler.getInstance(this.singleContext);
@@ -318,6 +324,7 @@ export default struct GridSwiper {
   private expandController?: SCBExpandController;
   private tripleController?: SCBTripleController;
   private indicatorController: IndicatorController = new IndicatorController();
+  @State hiSearchStatus: boolean = true;
   private isFactoryMode: boolean = systemParameter.getSync('const.runmode', 'default') === 'factory';
   private preferenceStore: PreferenceStore = new PreferenceStore(getContext()?.getApplicationContext() || GlobalContext.getContext(), 'DesktopSetting');
   @State swiperCurve: Curve | string | ICurve = launcherVisualEffectMgr.isLauncherSwiperCustomEnabled() ?
@@ -328,6 +335,7 @@ export default struct GridSwiper {
   @Prop scaleCenterY: number = 1;
   @State editModeState: EditModeState = editModeManager.getEditModeState();
   private lastUpdateTime: number = new Date().getTime();
+  private globalSearchLocationHandler: GlobalSearchLocationHandler = GlobalSearchLocationHandler.getInstance(this.singleContext);
   private delegateMove: Function = (event: DragEvent, extraParams?: string) => {
     this.dealDragMoveEvent(event, extraParams);
   }
@@ -336,7 +344,7 @@ export default struct GridSwiper {
   }
   private foldCreaseRegionHeightChangeEvent: Function = (isExpandStatus: boolean, workSpaceHeight: number,
     foldCreaseRegionHeight: number): void =>
-  this.bigScreenStatusChange(foldCreaseRegionHeight, isExpandStatus, workSpaceHeight);
+  this.superFoldStatusChange(foldCreaseRegionHeight, isExpandStatus, workSpaceHeight);
   private styleChangeEvent: Function = (): void => this.initWorkSpaceHeight();
 
   //手势起点坐标
@@ -406,11 +414,11 @@ export default struct GridSwiper {
     }
   }
 
-  private bigScreenStatusChange(foldCreaseRegionHeight: number, isExpandStatus: boolean,
+  private superFoldStatusChange(foldCreaseRegionHeight: number, isExpandStatus: boolean,
     workSpaceHeight: number): void {
-    log.showInfo(`bigScreenStatusChange ${this.foldCreaseRegionHeight} ${foldCreaseRegionHeight},
+    log.showInfo(`superFoldStatusChange ${this.foldCreaseRegionHeight} ${foldCreaseRegionHeight},
       ${this.isPortrait}, ${workSpaceHeight}, ${isExpandStatus}`);
-    this.mPageDesktopDragHandler.setBigScreenStatus(this.isPortrait, isExpandStatus);
+    this.mPageDesktopDragHandler.setSuperFoldStatus(this.isPortrait, isExpandStatus);
     if (foldCreaseRegionHeight === undefined) {
       if (this.workSpaceHeight !== workSpaceHeight) {
         this.workSpaceHeight = workSpaceHeight;
@@ -588,6 +596,7 @@ export default struct GridSwiper {
     log.showInfo(`onPortraitStatusChange isPortrait: ${this.isPortrait}`);
     scbEventExclusiveManager.setEventExclusive(EventType.DESKTOP_SWIPER, false);
     this.marginBottomOfIndicator = this.mPageDesktopStyleConfig.mMarginBottomOfIndicator;
+    this.globalSearchLocationHandler.stopGlobalSearchProcess();
     if (!this.isPC) {
       folderLayoutUtil.initFolderLayoutConfig();
     }
@@ -713,6 +722,7 @@ export default struct GridSwiper {
     this.appListInfoChange();
     this.mPageDesktopViewModel?.folderStatusChange(this.getPageIndex());
     this.marginBottomOfIndicator = this.mPageDesktopStyleConfig.mMarginBottomOfIndicator;
+    this.globalSearchLocationHandler.stopGlobalSearchProcess();
     if (!this.isPC) {
       folderLayoutUtil.initFolderLayoutConfig();
     }
@@ -854,7 +864,7 @@ export default struct GridSwiper {
     this.desktopContext?.eventHub.on(CommonConstants.GRID_SWIPER_DELEGATE_TO_DROP, this.delegateDrop);
     this.desktopContext?.eventHub.on(EventConstants.EVENT_CHANGE_DESKTOP_MODE, this.onDesktopModeChangeEvent);
     this.desktopContext?.eventHub.on(EventConstants.EVENT_OPEN_ICON_EDIT_PAGE, this.onOpenEditPageEvent);
-    this.desktopContext?.eventHub.on(EventConstants.EVENT_BIG_SCREEN_CONFIG_CHANGE,
+    this.desktopContext?.eventHub.on(EventConstants.EVENT_SUPER_FOLD_CONFIG_CHANGE,
       this.foldCreaseRegionHeightChangeEvent);
     this.desktopContext?.eventHub.on(EventConstants.EVENT_WORKSPACE_POSITION_CHANGE,
       this.styleChangeEvent);
@@ -876,7 +886,7 @@ export default struct GridSwiper {
     let device: string = AppStorage.get('device') as string;
     this.isPhone = (device === CommonConstants.DEFAULT_DEVICE_TYPE);
     this.isPC = DeviceHelper.isPC();
-    this.isBigScreen = DeviceHelper.isBigScreenMachine();
+    this.isSuperFold = DeviceHelper.isSuperFoldMachine();
     this.swiperEffect = this.isPC ? EdgeEffect.None : EdgeEffect.Spring;
     this.registerControllers();
     this.folderStatus = (AppStorage.get('folderStatus') ?? DeviceState.DEFAULT_STATE) as number;
@@ -924,7 +934,7 @@ export default struct GridSwiper {
 
   private setFoldDsCount(reason: string): void {
     log.showInfo('setFoldDsCount reason: %{public}s', reason);
-    if (this.isBigScreen) {
+    if (this.isSuperFold) {
       // 折叠pc展开态下一屏放两个
       this.displayCountData.setDisplayCount(StyleConstants.DEFAULT_2);
       PageInfoManager.getInstance().setDisplayCount(StyleConstants.DEFAULT_2);
@@ -948,13 +958,13 @@ export default struct GridSwiper {
 
   private initWorkSpaceHeight(): void {
     log.showInfo('initWorkSpaceHeight');
-    if (!this.isBigScreen) {
+    if (!this.isSuperFold) {
       return;
     }
     let isExpandStatus: boolean = false;
     try {
-      isExpandStatus = screenSessionManager.BigScreenStatus.BIG_SCREEN_STATUS_EXPANDED ===
-        screenSessionManager.getBigScreenStatus();
+      isExpandStatus = screenSessionManager.SuperFoldStatus.SUPER_FOLD_STATUS_EXPANDED ===
+        screenSessionManager.getSuperFoldStatus();
     } catch (error) {
       log.showError(`can not get fold status ${error?.code}, ${error?.message}`);
     }
@@ -985,7 +995,7 @@ export default struct GridSwiper {
       this.workSpaceHeight = extraHeight + mGridHeight * 2 + mFoldCreaseRegionHeight;
     }
     log.showInfo(`initWorkSpaceHeight workSpaceHeight: ${this.workSpaceHeight}`);
-    this.mPageDesktopDragHandler.setBigScreenStatus(this.isPortrait, isExpandStatus);
+    this.mPageDesktopDragHandler.setSuperFoldStatus(this.isPortrait, isExpandStatus);
   }
 
   private onActiveFormChanged(): void {
@@ -1041,7 +1051,7 @@ export default struct GridSwiper {
     };
     SCBTransitionManager.getInstance().registerFoldAnimationController(this.foldController);
     SCBTransitionManager.getInstance().registerExpandAnimationController(this.expandController);
-    if (DeviceHelper.isUltraScreenProduct()) {
+    if (DeviceHelper.isThreeFoldProduct()) {
       this.tripleController = {
         itemId: `${TAG}_Indicator`,
         onTripleAnimation: (oldState: ScreenState, newState: ScreenState, isNeedAnimation: boolean) =>
@@ -1058,7 +1068,7 @@ export default struct GridSwiper {
     this.desktopContext?.eventHub.off(FormConstants.EVENTHUB_FORM_MANAGER_UNDO_HOT_AREA);
     SCBTransitionManager.getInstance().unRegisterFoldAnimationController(this.foldController);
     SCBTransitionManager.getInstance().unRegisterExpandAnimationController(this.expandController);
-    if (DeviceHelper.isUltraScreenProduct()) {
+    if (DeviceHelper.isThreeFoldProduct()) {
       SCBTransitionManager.getInstance().unRegisterTripleAnimationController(this.tripleController);
     }
     inputConsumer.off('key', this.hosKeySearchOption);
@@ -1095,7 +1105,7 @@ export default struct GridSwiper {
     this.desktopContext?.eventHub.off(CommonConstants.GRID_SWIPER_DELEGATE_TO_DROP, this.delegateDrop);
     this.desktopContext?.eventHub.off(EventConstants.EVENT_CHANGE_DESKTOP_MODE, this.onDesktopModeChangeEvent);
     this.desktopContext?.eventHub.off(EventConstants.EVENT_OPEN_ICON_EDIT_PAGE, this.onOpenEditPageEvent);
-    this.desktopContext?.eventHub.off(EventConstants.EVENT_BIG_SCREEN_CONFIG_CHANGE,
+    this.desktopContext?.eventHub.off(EventConstants.EVENT_SUPER_FOLD_CONFIG_CHANGE,
       this.foldCreaseRegionHeightChangeEvent);
     this.desktopContext?.eventHub.off(EventConstants.EVENT_WORKSPACE_POSITION_CHANGE,
       this.styleChangeEvent);
@@ -1187,13 +1197,13 @@ export default struct GridSwiper {
       return;
     }
     log.showInfo(`indicator execute tripleAnimation, oldState is ${oldState}, newState is ${newState}`);
-    let stateChange: SCBTripleStateChange = UltraScreenExpandAnimUtils.getTripleDesktopStateChange(newState, oldState);
+    let stateChange: SCBTripleStateChange = TripleFoldExpandAnimUtils.getTripleDesktopStateChange(newState, oldState);
     this.indicatorAlpha = 0;
-    this.indicatorTranslateX = UltraScreenExpandAnimUtils.initTripleIndicatorTransX(this.screenWidth, stateChange);
-    let traceName: string = 'Desktop-UltraScreenExpandAnimation_' + UltraScreenExpandAnimUtils.getTraceName(stateChange);
+    this.indicatorTranslateX = TripleFoldExpandAnimUtils.initTripleIndicatorTransX(this.screenWidth, stateChange);
+    let traceName: string = 'Desktop-TripleFoldExpandAnimation_' + TripleFoldExpandAnimUtils.getTraceName(stateChange);
     performanceMonitor.begin(traceName, performanceMonitor.ActionType.LAST_UP);
     // ApsUtils.setApsScene(apsManager.SceneAnimation.FOLDING_SCREEN, 1);
-    animateTo(UltraScreenExpandAnimUtils.getIndicatorExpandAnimParam(stateChange), () => {
+    animateTo(TripleFoldExpandAnimUtils.getIndicatorExpandAnimParam(stateChange), () => {
       this.indicatorTranslateX = 0;
     });
     animateTo({
@@ -1255,7 +1265,7 @@ export default struct GridSwiper {
       let rectangle = event.getPreviewRect();
       let dropX: number;
       let dropY: number;
-      if (this.isBigScreen && this.mPageDesktopDragHandler.isDragLeaveSwiperPage()) {
+      if (this.isSuperFold && this.mPageDesktopDragHandler.isDragLeaveSwiperPage()) {
         dropX = event.getWindowX() ?? 0;
         dropY = event.getWindowY() ?? 0;
       } else {
@@ -1413,10 +1423,11 @@ export default struct GridSwiper {
   }
 
   /**
-   * 拖拽过程中仅卡片能拖入负一屏
+   * 拖拽过程中仅卡片(不包括语音助手建议)能拖入负一屏
    */
   private isCardDragging(): boolean {
-    return !CheckEmptyUtils.isEmpty(this.dragItemInfo) && this.dragItemInfo.typeId === CommonConstants.TYPE_CARD;
+    return !CheckEmptyUtils.isEmpty(this.dragItemInfo) && this.dragItemInfo.typeId === CommonConstants.TYPE_CARD &&
+      !AiSuggestionUtil.isVoiceAbilityForm(this.dragItemInfo.bundleName, this.dragItemInfo.abilityName);
   }
 
   /**
@@ -1471,7 +1482,7 @@ export default struct GridSwiper {
   @Styles
   gridSwiperStyle() {
     .clip(CommonConstants.DEFAULT_CLIP_FALSE)
-    .height(this.isBigScreen ? this.workSpaceHeight : StyleConstants.PERCENTAGE_100)
+    .height(this.isSuperFold ? this.workSpaceHeight : StyleConstants.PERCENTAGE_100)
     .width(StyleConstants.PERCENTAGE_100)
     .accessibilityLevel('no')
     .onDragEnter((event?: DragEvent, extraParams?: string) => {
@@ -1597,8 +1608,8 @@ export default struct GridSwiper {
         .accessibilityScrollTriggerable(false)
         .id(TAG + '_Stack_Swiper')
         .responseRegion(this.getEditmodeResponseRegion())
-        .vertical(this.isBigScreen ? this.isPortrait : false)
-        .itemSpace(this.isBigScreen ? this.foldCreaseRegionHeight : 0)
+        .vertical(this.isSuperFold ? this.isPortrait : false)
+        .itemSpace(this.isSuperFold ? this.foldCreaseRegionHeight : 0)
         .displayCount(this.displayCountData.getDisplayCount(), true)
         .scale({
           x: this.editModeGridSwiperViewData.getGridSwiperScale(),
@@ -1615,8 +1626,7 @@ export default struct GridSwiper {
         .curve(this.swiperCurve)
         .duration(this.duration)
         .indicator(false)
-        .cachedCount(this.getCachedCount(),
-          editModeManager.isInEditMode() || this.displayCountData.getCacheCount() > 0)
+        .cachedCount(this.getCachedCount(), editModeManager.isInEditMode() || this.displayCountData.getCacheCount() > 0)
         .accessibilityLevel('no')
         .hitTestBehavior(this.isExclusiveSwiperElementsEvent ? HitTestMode.Block : HitTestMode.Default)
         .onAnimationStart((index: number, targetIndex: number, extraInfo: SwiperAnimationEvent) => {
@@ -1625,6 +1635,7 @@ export default struct GridSwiper {
           GridSwiperWallpaperViewModel.getInstance(this.singleContext).sendMovedEnd(index, targetIndex, this.isEditMode);
           this.mPageDesktopDragHandler.setDragPageIndex(targetIndex);
           dropAnimationManager.cancelDropAnimation(DropAnimationCancelReason.SWIPE_DESKTOP);
+          SCBTransitionManager.getInstance().cancelCloseAppAnimate();
           formStackSnapShowManager.cancelSnapViewShow();
           if (FolderManager.getInstance().isFolderClosing()) {
             // 桌面翻页不打断文件夹打开动效，避免因为误触影响文件夹的正常打开
@@ -1716,6 +1727,9 @@ export default struct GridSwiper {
             this.setPageIndex(index);
           }
           this.mPageDesktopDragHandler.setDragPageIndex(index);
+          if (GlobalSearchLocationHandler.getInstance(this.singleContext).getGlobalSearchAnimation()) {
+            this.desktopContext?.eventHub.emit(`globalSearchLocationSwitchToPage`);
+          }
           if (this.editModeDragPageData.dragPageState === EditModePageActionEnum.DRAG_PAGE_MOVING) {
             this.editModeDragPageData.dragPageState = EditModePageActionEnum.START_DRAG_PAGE;
           }
@@ -1730,9 +1744,9 @@ export default struct GridSwiper {
             log.showInfo(`onTouch down desktop`);
             UIExceptionDetection.getInstance().restoreUIException();
             PageDesktopDragHandler.getInstance(this.singleContext).setDragStartSourceType(event.source);
+            log.showInfo(`${event?.touches.length} && ${this.isExclusiveSwiperElementsEvent}`);
             if (event?.touches.length === 1 && this.isExclusiveSwiperElementsEvent) {
-              scbEventExclusiveManager.restoreAllEventExclusive(
-                EventType.DESKTOP_ALL_NOTGRIDSWIPER, event.source, event.changedTouches[0].id);
+              scbEventExclusiveManager.restoreAllEventExclusive(EventType.DESKTOP_ALL_NOTGRIDSWIPER, event.source, event.changedTouches[0].id);
               SCBTransitionManager.getInstance().setIsExclusiveSwiperElementsCancelAnimate(true);
               SCBTransitionManager.getInstance().cancelCloseAppAnimate();
             }
@@ -1783,8 +1797,8 @@ export default struct GridSwiper {
               }
             }
           }
-          if (DeviceHelper.isUltraScreenProduct()) {
-            UltraScreenExpandAnimUtils.updateCurrentMainIndex();
+          if (DeviceHelper.isThreeFoldProduct()) {
+            TripleFoldExpandAnimUtils.updateCurrentMainIndex();
           }
         })
         .onGestureSwipe((index: number, extraInfo: SwiperAnimationEvent) => {
@@ -1938,6 +1952,10 @@ export default struct GridSwiper {
   }
 
   private isSupportGlobalSearch(): boolean {
+    if (OutdoorConfig.getInstance().isInOutdoorMode()) {
+      log.showInfo('unSupportGlobalSearch due to OutdoorMode');
+      return false;
+    }
     return true;
   }
 
@@ -1947,7 +1965,7 @@ export default struct GridSwiper {
     }
     return !AppStorage.get<boolean>('isShiftKeyDown') &&
       !AppStorage.get<boolean>('isCtrlKeyDown') &&
-      !(this.isBigScreen && AppStorage.get<boolean>('isRectSelecting'));
+      !(this.isSuperFold && AppStorage.get<boolean>('isRectSelecting'));
   }
 
   private isGlobalSearchKeyEnabled(): boolean {
@@ -1983,8 +2001,9 @@ export default struct GridSwiper {
 
     // 长按编辑模式
     let isInEditMode: boolean = editModeManager.isInEditMode();
-    log.showInfo(`isInEditMode :${isInEditMode}.`);
-    if (isInEditMode) {
+    this.hiSearchStatus = this.preferenceStore?.getHiSearchStatus();
+    log.showInfo(`isInEditMode :${isInEditMode}. hiSearchStatus:${this.hiSearchStatus}`);
+    if (isInEditMode || !this.hiSearchStatus) {
       return false;
     }
     // 多任务列表
@@ -2050,9 +2069,9 @@ export default struct GridSwiper {
   /**
    * 动画结束回调是动画停止时页面相对布局起点的偏移，一般正常归位结束的动画回调extraInfo.currentOffset是0，
    * 被打断的话就回调被打断时节点的位置
-   * 超大屏在双屏或三屏场景，旋转屏幕立马翻页，extraInfo.currentOffset有值，是因为旋转的时候会有翻页
+   * 三折屏在双屏或三屏场景，旋转屏幕立马翻页，extraInfo.currentOffset有值，是因为旋转的时候会有翻页
    * 这个时候立马翻页，extraInfo.currentOffset会有值，导致导航点会有偏移
-   * 本处暂时对超大屏做隔离，不设置偏移
+   * 本处暂时对三折屏做隔离，不设置偏移
    */
   private onAnimationEndNotShowFirstPageFlag(extraInfo: SwiperAnimationEvent): void {
     if (!this.isEditMode && PageInfoManager.getInstance().getMaxDisplayCount() === StyleConstants.DEFAULT_3 &&
@@ -2156,7 +2175,7 @@ export default struct GridSwiper {
       let rectangle = event.getPreviewRect();
       let x: number = 0;
       let y: number = 0;
-      if (this.isBigScreen && this.mPageDesktopDragHandler.isDragLeaveSwiperPage()) {
+      if (this.isSuperFold && this.mPageDesktopDragHandler.isDragLeaveSwiperPage()) {
         x = event.getWindowX() ?? 0;
         y = event.getWindowY() ?? 0;
       } else {
@@ -2215,6 +2234,9 @@ export default struct GridSwiper {
       const openFolder: GridLayoutItemInfo = FolderManager.getInstance().getOpenedFolder();
       const curPage: number = openFolder.page ?? CommonConstants.INVALID_VALUE;
       if (layoutLockUtil.isLockedPage(curPage, 'itemMove on GridSwiper')) {
+        return;
+      }
+      if (!DeliverUtil.canFolderItemDragOut(openFolder.folderId, dragItemInfo.bundleName)) {
         return;
       }
     }

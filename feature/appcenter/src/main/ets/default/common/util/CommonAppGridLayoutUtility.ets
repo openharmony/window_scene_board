@@ -307,7 +307,7 @@ export class CommonAppGridLayoutUtility {
   }
 
   /**
-   * 附加偏移量-如：大屏幕机
+   * 附加偏移量-如：折叠机
    * @param space
    */
   public setExtraPaddingTopOffset(space: number): void {

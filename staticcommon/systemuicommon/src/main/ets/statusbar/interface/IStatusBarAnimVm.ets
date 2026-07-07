@@ -17,7 +17,7 @@ import { ClockShowType } from '../enum/StatusBarEnum';
 import { IStatusBarIconVm } from './IStatusBarIconVm';
 import lazy {
   SCBTripleStateChange,
-} from '@ohos/launchercommon/src/main/ets/utils/UltraScreenExpandAnimUtils';
+} from '@ohos/launchercommon/src/main/ets/utils/TripleFoldExpandAnimUtils';
 
 export interface IStatusBarAnimVm {
   /**

@@ -115,3 +115,69 @@ abstract class AbstractSettingsPropController<T> {
     }
   }
 }
+
+class VassistantAgreementController extends AbstractSettingsPropController<boolean> {
+  get key(): string {
+    return ASSISTANT_SWITCH_KEY;
+  }
+
+  get domain(): string {
+    return settings.domainName.USER_PROPERTY;
+  }
+
+  constructor() {
+    super(false);
+  }
+
+  async parseValue(): Promise<boolean> {
+    let prop = await this.getValueCompletely(this.ctx, this.key, this.domain);
+    log.showInfo('Agreement parseValue. get from settings is [%{public}s]', prop);
+
+    if (prop === undefined || prop.length === 0 || prop === SETTINGS_SWITCH_OFF_PROP) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+}
+
+class VassistantFeatureModeController extends AbstractSettingsPropController<boolean> {
+  constructor() {
+    super(false);
+  }
+
+  get domain(): string {
+    return settings.domainName.USER_PROPERTY;
+  }
+
+  async parseValue(): Promise<boolean> {
+    const ctx = ContextManager.getTopContext();
+    const prop = await this.getValueCompletely(ctx, FEATURE_MODE_KEY, this.domain);
+    log.showInfo('Feature parseValue. get from settings is [%{public}s]', prop);
+    return prop === SETTINGS_SWITCH_ON_PROP;
+  }
+
+  get key(): string {
+    return FEATURE_MODE_KEY;
+  }
+}
+
+class VassistantSearchController extends AbstractSettingsPropController<boolean> {
+  constructor() {
+    super(false);
+  }
+
+  get domain(): string {
+    return settings.domainName.USER_PROPERTY;
+  }
+
+  async parseValue(): Promise<boolean> {
+    const prop = await this.getValueCompletely(this.ctx, this.key, this.domain);
+    log.showInfo('GetSearchAgreement. prop is [%{public}s]', prop);
+    return prop === SETTINGS_SWITCH_ON_PROP;
+  }
+
+  get key(): string {
+    return ASSISTANT_SEARCH_KEY;
+  }
+}

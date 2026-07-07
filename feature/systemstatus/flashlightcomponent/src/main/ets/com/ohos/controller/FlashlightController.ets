@@ -349,7 +349,7 @@ export class FlashlightController extends ToggleBaseViewModel {
   }
   public updateUIFromCache(): void {
     this.getViewData().isUnavailable = DeviceHelper.isEmulator() || this.mFlashlightDataCache.isUnavailable;
-    this.getViewData().isOn = this.mFlashlightDataCache.isOn;
+    //this.getViewData().isOn = this.mFlashlightDataCache.isOn;
     this.updateIcon();
     log.showInfo(`updateUIFromCache: ${this.getViewData().isUnavailable}, ${this.getViewData().isOn}`);
   }
@@ -380,10 +380,12 @@ export class FlashlightController extends ToggleBaseViewModel {
       this.postFlashlightLiveEvent(value);
       if (typeof value === 'boolean') {
         this.mCameraManager.setTorchMode(value ? TORCH_MODE_ON : TORCH_MODE_OFF);
+        // 上报开关响应语音助手事件
         HiDfxEventUtil.reportToggleClick(FASlotName.FLASHLIGHT, HiDfxEventUtil.TOGGLE_TYPE_INTENT);
         return true;
       } else if (typeof value === 'string') {
         this.mCameraManager.setTorchMode(value === 'true' ? TORCH_MODE_ON : TORCH_MODE_OFF);
+        // 上报开关响应语音助手事件
         HiDfxEventUtil.reportToggleClick(FASlotName.FLASHLIGHT, HiDfxEventUtil.TOGGLE_TYPE_INTENT);
         return true;
       } else {

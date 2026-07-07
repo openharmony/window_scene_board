@@ -197,6 +197,13 @@
             }
         },
         {
+            "name":"voice_translate_name",
+            "value":"Dịch thuật voice",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
             "name":"control_center_edit_panel_tips_max_limit",
             "value":"Đã thêm số lượng nút chuyển tối đa.",
             "attr":{
@@ -206,6 +213,13 @@
         {
             "name":"cc_accessibility_str_change_vertical_brightness_desc",
             "value":"Thanh độ sáng, chạm hai lần và giữ, sau đó vuốt lên hoặc xuống để điều chỉnh",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cloud_lai",
+            "value":"Chế độ Cloud",
             "attr":{
                 "priority":"translate"
             }

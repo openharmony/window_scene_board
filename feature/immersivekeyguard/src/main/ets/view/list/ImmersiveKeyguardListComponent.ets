@@ -69,6 +69,8 @@ import {
   immersiveKgMgr,
   ImmersiveState,
   PinTopConfigCommand,
+  AodStyleType,
+  ImmersiveAodStyle,
   ImmersiveType,
   SystemuiConstants,
   NotificationSysEventReporter
@@ -179,6 +181,10 @@ export struct ImmersiveKeyguardListComponent {
    * 沉浸面板状态
    */
   @State listBindState: NtfListBindState = this.listVm.getListBindState();
+  /**
+   * Aod显示样式
+   */
+  @State aodStyle: ImmersiveAodStyle | undefined = immersiveKgMgr.getOneMirrorState().getAodStyle(true);
 
   // 锁屏首页通知列表组件状态
   @State slListBindState?: SlListWidgetBindState = immersiveStateHelper.getSlListBindState() as SlListWidgetBindState;
@@ -427,6 +433,13 @@ export struct ImmersiveKeyguardListComponent {
   }
 
   private getEffect(): BackgroundEffectOptions | undefined {
+    if (this.aodStyle?.isAod) {
+      return {
+        policy: 1,
+        radius: 1,
+        color: this.aodStyle?.getStyleValue(AodStyleType.LIST_CARD_BACKGROUND_COLOR)
+      }
+    }
     if (!SlVisualControl.getInstance().getEnable(CcmOption.SOLID) &&
       !SlVisualControl.getInstance().getEnable(CcmOption.BRIGHT)) {
       return ImmersiveConstants.IMMERSIVE_CLOCK_SOLID_BLUR_CFG;

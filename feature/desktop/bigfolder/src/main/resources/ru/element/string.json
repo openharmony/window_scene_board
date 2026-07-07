@@ -1,21 +1,21 @@
 {
     "string":[
         {
-            "name":"d_app_dialog_cancel",
+            "name":"deliver_app_dialog_cancel",
             "value":"Пропустить",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"d_app_dialog_confirm",
+            "name":"deliver_app_dialog_confirm",
             "value":"Обновить",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"d_app_unavailable_dialog_know",
+            "name":"deliver_app_unavailable_dialog_know",
             "value":"OK",
             "attr":{
                 "priority":"LT"
@@ -29,28 +29,28 @@
             }
         },
         {
-            "name":"d_app_unavailable_dialog_content",
+            "name":"deliver_app_unavailable_dialog_content",
             "value":"Чтобы использовать это приложение, сначала загрузите приложение %s из AppGallery.",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"d_app_dialog_contents",
+            "name":"deliver_app_dialog_contents",
             "value":"Обновите ваше приложение для повышения качества обслуживания. Помните, что при переключении версий некоторые данные приложения могут быть утрачены.",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"d_app_dialog_text",
+            "name":"deliver_app_dialog_text",
             "value":"Приложение %s стало доступно для OpenHarmony.",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"uninstall_d_app_dialog_content",
+            "name":"uninstall_deliver_app_dialog_content",
             "value":"Вы уже установили версию OpenHarmony приложения %s на этом устройстве. Удалить старую версию?",
             "attr":{
                 "priority":"LT"
@@ -64,7 +64,7 @@
             }
         },
         {
-            "name":"d_app_dialog_open",
+            "name":"deliver_app_dialog_open",
             "value":"Открыть версию для OpenHarmony",
             "attr":{
                 "priority":"LT"
@@ -78,35 +78,35 @@
             }
         },
         {
-            "name":"d_app_pause_download_dialog_content",
+            "name":"deliver_app_pause_download_dialog_content",
             "value":"Загрузка приложения %s приостановлена. Возобновить?",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"d_app_unavailable_dialog_title",
+            "name":"deliver_app_unavailable_dialog_title",
             "value":"Приложение недоступно",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"d_app_dialog_title",
+            "name":"deliver_app_dialog_title",
             "value":"Доступна новая версия",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"uninstall_d_app_dialog_title",
+            "name":"uninstall_deliver_app_dialog_title",
             "value":"Установлена более новая версия",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"d_app_wait_download_dialog_content",
+            "name":"deliver_app_wait_download_dialog_content",
             "value":"Приложение %s ожидает загрузки в очереди. Загрузить его приоритетно?",
             "attr":{
                 "priority":"LT"
@@ -120,7 +120,7 @@
             }
         },
         {
-            "name":"d_app_installing_dialog_content",
+            "name":"deliver_app_installing_dialog_content",
             "value":"Приложение %s устанавливается. Подождите.",
             "attr":{
                 "priority":"translate"

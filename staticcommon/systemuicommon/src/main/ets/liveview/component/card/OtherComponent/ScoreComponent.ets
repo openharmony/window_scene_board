@@ -19,6 +19,7 @@ import { baseStateMgr } from '@ohos/systemuiutils/src/main/ets/sysdialog/BaseSta
 import { CardUtils } from '../LiveViewCardData';
 import image from '@ohos.multimedia.image';
 import { immersiveKgMgr } from '../../../../immersivekeyguardcommon/manager/ImmersiveKeyguardStateManager';
+import { AodStyleType, ImmersiveAodStyle } from '../../../../immersivekeyguardcommon/base/interface/ImmersiveAodStyle';
 import { ResUtils } from '@ohos/windowscene';
 import { LiveTimerData } from '../../../data/extend/LiveTimerData';
 import { NotificationType } from '../../../../constants/NotificationType';
@@ -50,6 +51,11 @@ export struct ScoreComponent {
    */
   @Consume notificationType: number;
 
+  /**
+   * AOD显示样式
+   */
+  @State aodStyle: ImmersiveAodStyle | undefined = immersiveKgMgr.getOneMirrorState().getAodStyle(
+    this.notificationType === NotificationType.TYPE_PHONE_KEYGUARD);
   @Prop isSmallFoldOuterScreen: boolean = false;
 
   build() {
@@ -58,7 +64,8 @@ export struct ScoreComponent {
         Divider()
           .width('100%')
           .height('1px')
-          .color(this.colorModeViewData.calcSecondarySolidColor($r('app.color.live_card_divider_bg_color'),
+          .color(this.aodStyle?.isAod ? $r('sys.color.ohos_id_color_list_separator') :
+          this.colorModeViewData.calcSecondarySolidColor($r('app.color.live_card_divider_bg_color'),
             this.dividerBrightnessOption, this.colorModeLiveViewData.liveBgPickColor))
           .foregroundBrightness(this.colorModeViewData.isSolidEnable() ? undefined : this.dividerBrightnessOption)
           .visibility(this.getDividerVisibility())
@@ -82,10 +89,12 @@ export struct ScoreComponent {
               .fontFamily('HarmonyHeiTi')
               .fontWeight(FontWeight.Regular)
               .fontSize('10vp')
-              .fontColor($r('sys.color.ohos_id_color_text_secondary'))
+              .fontColor(this.aodStyle?.isAod
+                ? this.aodStyle?.getStyleValue(AodStyleType.FONT_COLOR)
+                : $r('sys.color.ohos_id_color_text_secondary'))
               .maxLines(1)
               .textOverflow({ overflow: TextOverflow.Ellipsis })
-              .renderGroup(true)
+              .renderGroup(this.aodStyle?.isOneMirror ? false : true)
           }
             .width(34)
             .justifyContent(FlexAlign.Center)
@@ -104,7 +113,7 @@ export struct ScoreComponent {
       .justifyContent(FlexAlign.End)
       .width('100%')
       .height(this.isSmallFoldOuterScreen ? 46 : 72)
-      .opacity(undefined)
+      .opacity(this.aodStyle?.isAod ? this.aodStyle.getStyleValue(AodStyleType.NTF_EXTEND_COMPONENT_ALPHA) : undefined)
       .padding(this.isSmallFoldOuterScreen ? undefined : {
         left: 12,
         right: 12,
@@ -118,7 +127,8 @@ export struct ScoreComponent {
     if (this.data?.competitionDesc) {
       Text() {
         ForEach(this.data?.competitionDesc, (entry: CustRichText, index: number) => {
-          Span(entry?.text).fontColor((this.darkModeState?.isDarkMode ? CardUtils.DARK_RICH_CONTEXT_COLOR : entry?.getCurrentTextColor()))
+          Span(entry?.text).fontColor(this.aodStyle?.isAod ? this.aodStyle?.getStyleValue(AodStyleType.FONT_COLOR) :
+            (this.darkModeState?.isDarkMode ? CardUtils.DARK_RICH_CONTEXT_COLOR : entry?.getCurrentTextColor()))
         })
       }
       .fontFamily('HarmonyHeiTi')
@@ -127,7 +137,7 @@ export struct ScoreComponent {
       .fontColor('#99000000')
       .maxLines(1)
       .textOverflow({ overflow: TextOverflow.Ellipsis })
-      .renderGroup(true)
+      .renderGroup(this.aodStyle?.isOneMirror ? false : true)
       .margin({ bottom: 2 })
     }
   }
@@ -152,11 +162,12 @@ export struct ScoreComponent {
           .fontFamily('HarmonyHeiTi')
           .fontWeight(FontWeight.Regular)
           .fontSize(ResUtils.getNumber($r('sys.float.ohos_id_text_size_caption')) + 'vp')
-          .fontColor($r('sys.color.ohos_id_color_text_secondary'))
+          .fontColor(this.aodStyle?.isAod ? this.aodStyle?.getStyleValue(AodStyleType.FONT_COLOR) :
+            $r('sys.color.ohos_id_color_text_secondary'))
           .maxLines(1)
           .textOverflow({ overflow: TextOverflow.Ellipsis })
           .textAlign(TextAlign.Center)
-          .renderGroup(true)
+          .renderGroup(this.aodStyle?.isOneMirror ? false : true)
       }
       .width(this.isSmallFoldOuterScreen ? 40 : $r('app.float.live_view_card_score_team_width'))
       .height(this.isSmallFoldOuterScreen ? '100%' : undefined)
@@ -167,10 +178,11 @@ export struct ScoreComponent {
         .fontFamily('HarmonyHeiTi')
         .fontWeight(this.isSmallFoldOuterScreen ? FontWeight.Regular : FontWeight.Bold)
         .fontSize(this.isSmallFoldOuterScreen ? $r('app.float.live_view_other_card_small_fold_outer_screen_score_font_size') : $r('app.float.live_view_other_card_score_font_size'))
-        .fontColor($r('sys.color.ohos_id_color_text_primary'))
+        .fontColor(this.aodStyle?.isAod ? this.aodStyle?.getStyleValue(AodStyleType.FONT_COLOR) :
+          $r('sys.color.ohos_id_color_text_primary'))
         .maxLines(1)
         .textOverflow({ overflow: TextOverflow.Ellipsis })
-        .renderGroup(true)
+        .renderGroup(this.aodStyle?.isOneMirror ? false : true)
         .constraintSize({ minWidth: '20%' })
         .margin(this.isSmallFoldOuterScreen ? { left: 8, right: 8 } : { left: 12, right: 12 })
         .textAlign(TextAlign.Center)
@@ -200,8 +212,8 @@ export struct ScoreComponent {
     if (result.trim().length === 0) {
       return '';
     }
-    // 含计时器控件的实况拓展区
-    if (this.data.isTimeTemplate) {
+    // 含计时器控件的实况拓展区，AOD下显示为正在计时或正在倒计时
+    if (this.aodStyle?.isAod && this.data.isTimeTemplate) {
       if (this.timerData?.isCountDown) {
         return ResUtils.getInnerString($r('app.string.aod_count_down_timer_text'));
       }

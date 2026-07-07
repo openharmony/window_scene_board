@@ -242,5 +242,10 @@ export enum PictureLightColorDegree {
  * 电池布局信息
  */
 export enum BatteryLayout {
-  DEFAULT_LAYOUT
+  // 全屏AOD数字时钟电池布局
+  FULL_AOD_LAYOUT,
+  // 全屏AOD艺术签名电池布局
+  FULL_ART_SIGN_LAYOUT,
+  // 局部AOD数字时钟电池布局
+  PART_AOD_LAYOUT,
 }

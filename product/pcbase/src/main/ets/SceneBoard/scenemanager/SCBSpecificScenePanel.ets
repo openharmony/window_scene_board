@@ -1,5 +1,5 @@
 /*
- * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -49,6 +49,7 @@ export struct SCBSpecificScenePanel {
   zorder: number = 0;
   @State @Watch('systemSceneListUpdate') systemSceneList: SCBSpecificSceneSessionList =
     new SCBSpecificSceneSessionList();
+  @State panelZIndex: number = 0;
   private sessionStateChange = (parentId: number, persistentId: number,
                                 state: sceneSessionManager.SessionState): void =>
   this.onSessionStateChange(parentId, persistentId, state);
@@ -306,8 +307,21 @@ export struct SCBSpecificScenePanel {
     this.onDestroyFloatWindowFromSceneSession(specificSession);
   }
 
+  private setZIndex(): void {
+    let zIndex = SCBSceneSessionManager.getInstance().getZIndexByPanelZOrder(this.zorder);
+    if (zIndex === undefined) {
+      zIndex = ZORDER_TO_DEFAULTZINDEX.get(this.zorder) || 0;
+    }
+    this.panelZIndex = zIndex || 0;
+  }
+
+  private specificZIndexChange = (): void => {
+    this.setZIndex();
+  }
+
   aboutToAppear() {
     log.showInfo(`aboutToAppear, zorder: ${this.zorder}}`);
+    this.setZIndex();
     this.systemSceneList = SCBPcScenePanelManager.getInstance().getSpecificSessionList(this.zorder);
     this.sessionStateChange = (parentId: number, persistentId: number,
                                state: sceneSessionManager.SessionState): void =>
@@ -346,6 +360,8 @@ export struct SCBSpecificScenePanel {
       this.screenProp.copy(this.screenProperty);
     }
     viewMgrPolicy.registerViewCallback(ViewType.STATUS_BAR, this.statusViewCallback);
+    SCBSceneSessionManager.getInstance().registerSpecificZIndexChangeCallback(this.specificZIndexChange,
+      this.zorder, this.screenProperty.screenId);
   }
 
   aboutToDisappear(): void {
@@ -361,6 +377,7 @@ export struct SCBSpecificScenePanel {
     SCBSceneSessionManager.getInstance().unregisterDestroyFloatWindowCallback(
       this.destroyFloatWindowCallback, this.zorder, this.screenProperty?.screenId
     );
+    SCBSceneSessionManager.getInstance().unregisterSpecificZIndexChangeCallback(this.zorder, this.screenProperty.screenId);
   }
 
 
@@ -383,13 +400,13 @@ export struct SCBSpecificScenePanel {
       .direction(Direction.Ltr)
       .size({ width: this.screenProperty.width + 'px', height: this.screenProperty.height + 'px' })
       .hitTestBehavior(HitTestMode.None)
-      .zIndex(this.getZIndex())
+      .zIndex(this.panelZIndex)
     }
     .id('SCBSpecificScenePanelBackground')
     .direction(Direction.Ltr)
     .position({ x: 0, y: 0 })
     .size({ width: '100%', height: '100%' })
     .hitTestBehavior(HitTestMode.None)
-    .zIndex(this.getZIndex())
+    .zIndex(this.panelZIndex)
   }
 }

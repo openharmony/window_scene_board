@@ -41,6 +41,7 @@ import {
 import { QuickToggleController } from '../../controller/QuickToggleController';
 import { ToggleComponent } from '@ohos/controlcentercommon/src/main/ets/toggle/view/NewToggleBaseComponent';
 import { PhoneStyleFactory } from '../../phoneStyle/PhoneStyleFactory';
+import { OutdoorConfig } from '@ohos/basicutils/src/main/ets/utils/OutdoorConfig';
 import { DisplayUtils } from '@ohos/screenlockcommon';
 
 const TAG = 'Ctrl.MediaCardLayout';
@@ -70,6 +71,7 @@ export default struct ControlCenterMediaCardLayout {
   @Prop isShowWifiCard: boolean = true;
   @StorageLink('isToggleLightEnabled') isToggleLightEnabled: boolean = true;
   @StorageLink('hasCall') hasCall: boolean = false;
+  @State isMediaCardUnavailable: boolean = OutdoorConfig.getInstance().isInOutdoorMode();
 
   aboutToAppear() {
     log.info(TAG,`abouttoappear-foldStatus-${this.foldStatus}`)
@@ -214,8 +216,8 @@ export default struct ControlCenterMediaCardLayout {
           .onTouch((event: TouchEvent) => {
             this.buttonClickEffect(event);
           })
-          .opacity(1)
-          .enabled(true)
+          .opacity(this.isMediaCardUnavailable ? 0.6 : 1)
+          .enabled(!this.isMediaCardUnavailable)
         }
 
         // if (this.isShowWifiCard && (this.foldStatus !== DeviceState.FOLDED_STATE)) {

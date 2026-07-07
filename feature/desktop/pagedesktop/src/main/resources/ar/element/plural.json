@@ -1,0 +1,51 @@
+{
+    "plural":[
+        {
+            "name":"folder_is_open_and_total_screen",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"المجلد مفتوح، يحتوي على شاشة واحدة",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"المجلد مفتوح، يحتوي على %d شاشة",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"zero",
+                    "value":"المجلد مفتوح، لا يحتوي على أي شاشات",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"few",
+                    "value":"المجلد مفتوح، يحتوي على %d شاشات",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"many",
+                    "value":"المجلد مفتوح، يحتوي على %d شاشة",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"two",
+                    "value":"المجلد مفتوح، يحتوي على شاشتين",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

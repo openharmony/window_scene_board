@@ -23,7 +23,7 @@ import {
   Level,
   expect,
 } from '@ohos/hypium';
-import { UltraScreenStatus } from '@ohos/screenlockcommon';
+import { ThreeFoldStatus } from '@ohos/screenlockcommon';
 import { TripleAnimConstants } from '@ohos/phonebase/src/main/ets/SceneBoard/screenlock/constant/TripleAnimConstants';
 import { TripleAnimManagerUtil, TripleStateChange } from '@ohos/phonebase/src/main/ets/SceneBoard/screenlock/utils/TripleAnimManagerUtil';
 
@@ -50,44 +50,44 @@ export default function TripleAnimManagerUtilTest() {
 function getTripleScreenLockStateChangeTest() {
   describe('getTripleScreenLockStateChangeTest', (): void => {
     it('getTripleScreenLockStateChangeTest_01', Level.LEVEL0, (): void => {
-      let oldState: UltraScreenStatus = UltraScreenStatus.F_STATUS;
-      let newState: UltraScreenStatus = UltraScreenStatus.F_STATUS;
+      let oldState: ThreeFoldStatus = ThreeFoldStatus.F_STATUS;
+      let newState: ThreeFoldStatus = ThreeFoldStatus.F_STATUS;
       expect(TripleStateChange.INVALID).
       assertEqual(TripleAnimManagerUtil.getInstance().getTripleScreenLockStateChange(oldState, newState));
     })
     it('getTripleScreenLockStateChangeTest_02', Level.LEVEL0, (): void => {
-      let oldState: UltraScreenStatus = UltraScreenStatus.F_STATUS;
-      let newState: UltraScreenStatus = UltraScreenStatus.M_STATUS;
+      let oldState: ThreeFoldStatus = ThreeFoldStatus.F_STATUS;
+      let newState: ThreeFoldStatus = ThreeFoldStatus.M_STATUS;
       expect(TripleStateChange.F_TO_M).
       assertEqual(TripleAnimManagerUtil.getInstance().getTripleScreenLockStateChange(oldState, newState));
     })
     it('getTripleScreenLockStateChangeTest_03', Level.LEVEL0, (): void => {
-      let oldState: UltraScreenStatus = UltraScreenStatus.F_STATUS;
-      let newState: UltraScreenStatus = UltraScreenStatus.G_STATUS;
+      let oldState: ThreeFoldStatus = ThreeFoldStatus.F_STATUS;
+      let newState: ThreeFoldStatus = ThreeFoldStatus.G_STATUS;
       expect(TripleStateChange.F_TO_G).
       assertEqual(TripleAnimManagerUtil.getInstance().getTripleScreenLockStateChange(oldState, newState));
     })
     it('getTripleScreenLockStateChangeTest_04', Level.LEVEL0, (): void => {
-      let oldState: UltraScreenStatus = UltraScreenStatus.M_STATUS;
-      let newState: UltraScreenStatus = UltraScreenStatus.F_STATUS;
+      let oldState: ThreeFoldStatus = ThreeFoldStatus.M_STATUS;
+      let newState: ThreeFoldStatus = ThreeFoldStatus.F_STATUS;
       expect(TripleStateChange.M_TO_F).
       assertEqual(TripleAnimManagerUtil.getInstance().getTripleScreenLockStateChange(oldState, newState));
     })
     it('getTripleScreenLockStateChangeTest_05', Level.LEVEL0, (): void => {
-      let oldState: UltraScreenStatus = UltraScreenStatus.M_STATUS;
-      let newState: UltraScreenStatus = UltraScreenStatus.G_STATUS;
+      let oldState: ThreeFoldStatus = ThreeFoldStatus.M_STATUS;
+      let newState: ThreeFoldStatus = ThreeFoldStatus.G_STATUS;
       expect(TripleStateChange.M_TO_G).
       assertEqual(TripleAnimManagerUtil.getInstance().getTripleScreenLockStateChange(oldState, newState));
     })
     it('getTripleScreenLockStateChangeTest_06', Level.LEVEL0, (): void => {
-      let oldState: UltraScreenStatus = UltraScreenStatus.G_STATUS;
-      let newState: UltraScreenStatus = UltraScreenStatus.F_STATUS;
+      let oldState: ThreeFoldStatus = ThreeFoldStatus.G_STATUS;
+      let newState: ThreeFoldStatus = ThreeFoldStatus.F_STATUS;
       expect(TripleStateChange.G_TO_F).
       assertEqual(TripleAnimManagerUtil.getInstance().getTripleScreenLockStateChange(oldState, newState));
     })
     it('getTripleScreenLockStateChangeTest_07', Level.LEVEL0, (): void => {
-      let oldState: UltraScreenStatus = UltraScreenStatus.G_STATUS;
-      let newState: UltraScreenStatus = UltraScreenStatus.M_STATUS;
+      let oldState: ThreeFoldStatus = ThreeFoldStatus.G_STATUS;
+      let newState: ThreeFoldStatus = ThreeFoldStatus.M_STATUS;
       expect(TripleStateChange.G_TO_M).
       assertEqual(TripleAnimManagerUtil.getInstance().getTripleScreenLockStateChange(oldState, newState));
     })

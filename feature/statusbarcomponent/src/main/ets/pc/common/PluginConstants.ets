@@ -21,7 +21,8 @@ export enum PluginPositionType {
   TOP_LEFT,
   TOP_RIGHT,
   BOTTOM_LEFT,
-  BOTTOM_RIGHT
+  BOTTOM_RIGHT,
+  ASSISTANT_VOICE
 }
 
 /**

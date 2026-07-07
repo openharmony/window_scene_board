@@ -17,6 +17,7 @@ import { LogDomain, Logger, SingletonHelper } from '@ohos/basicutils';
 import { NumberConstants } from '@ohos/commonconstants';
 import { DeviceHelper } from '@ohos/frameworkwrapper';
 import {
+  DeliverUtil,
   LaunchLayoutCacheManager,
   LayoutDescription,
   layoutLockUtil,
@@ -25,7 +26,7 @@ import {
 } from '../TsIndex';
 const START_FIND_POSITION = 1;
 const START_FIND_POSITION_BIG_FOLD = 2;
-const START_FIND_POSITION_ULTRA_SCREEN = 3;
+const START_FIND_POSITION_THREE_FOLD = 3;
 const ROW_OFFSET_THREE = 3;
 const TAG = 'SCBBlankPositionUtils';
 const log: Logger = Logger.getLogHelper(LogDomain.HOME);
@@ -42,11 +43,11 @@ export class SCBBlankPositionUtils {
   public getFindBlankStartPage(maxPage: number, isOuter?: boolean): number {
     // 从第二屏开始查找空白位置
     let startFindPage: number = maxPage === 1 ? 0 : START_FIND_POSITION;
-    // 超大屏设备找位规则
+    // 三折屏设备找位规则
     if (PageInfoManager.getInstance().getMaxDisplayCount() === StyleConstants.DEFAULT_3) {
       let displayCount: number = PageInfoManager.getInstance().getDisplayCount();
       if (displayCount === StyleConstants.DEFAULT_3) {
-        startFindPage = START_FIND_POSITION_ULTRA_SCREEN;
+        startFindPage = START_FIND_POSITION_THREE_FOLD;
       } else if (displayCount === StyleConstants.DEFAULT_2) {
         startFindPage = START_FIND_POSITION_BIG_FOLD;
       }
@@ -55,7 +56,7 @@ export class SCBBlankPositionUtils {
       startFindPage = START_FIND_POSITION_BIG_FOLD;
     }
     // 折叠PC从第0页开始找
-    if (DeviceHelper.isBigScreenMachine()) {
+    if (DeviceHelper.isSuperFoldMachine()) {
       startFindPage = 0;
     }
     let lockedPageNum: number =
@@ -82,7 +83,7 @@ export class SCBBlankPositionUtils {
       startFindPage = homePageIndex + displayCount;
     }
     // 折叠PC从第0页开始找
-    if (DeviceHelper.isBigScreenMachine()) {
+    if (DeviceHelper.isSuperFoldMachine()) {
       startFindPage = 0;
     }
     let lockedPageNum: number = layoutLockUtil.isLocked('install app') ?
@@ -105,6 +106,17 @@ export class SCBBlankPositionUtils {
     desktopPosition.maxRow = layoutDescription.row;
     // 从第二屏开始查找空白位置
     let startFindPage: number = this.getStartFindPageByHomePage(layoutDescription.maxPage, isOuter);
+    // zyt预置应用首次开机的找位规则
+    if (!layoutLockUtil.isLocked('install app') && DeliverUtil.CANCEL_DELIVER_FOLDER &&
+      DeliverUtil.DELIVER_PREINSTALLED_APP_SET.has(bundleName) && PageInfoManager.getInstance().getHomePageIndex() === 0) {
+      if (DeviceHelper.isLargeInFoldProduct()) {
+        startFindPage = NumberConstants.CONSTANT_NUMBER_TWO;
+      } else if (DeviceHelper.isThreeFoldProduct()) {
+        startFindPage = NumberConstants.CONSTANT_NUMBER_THREE;
+      } else {
+        startFindPage = NumberConstants.CONSTANT_NUMBER_ONE;
+      }
+    }
     log.showInfo(TAG, 'findBlankPosition from[%{public}d] -> to[%{public}d]', startFindPage, layoutDescription.maxPage);
     for (let i = startFindPage; i < startFindPage + layoutDescription.maxPage; i++) {
       desktopPosition.page = i % layoutDescription.maxPage;

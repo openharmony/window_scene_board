@@ -2039,6 +2039,65 @@ export default function PageDesktopDragHandlerTest() {
       done();
     })
 
+    it('PageDesktopDragHandler_dealSwiperPageOnDragEnter_test01', 0, async(done:Function) => {
+      let mock: MockKit = new MockKit();
+      let mockFunc: Function = mock.mockFunc(AppStorage, AppStorage.get);
+      when(mockFunc)(ArgumentMatchers.any).afterReturn(0);
+      try {
+        pageDesktopDragHandler.dealSwiperPageOnDragEnter(1);
+        expect(pageDesktopDragHandler).not().assertUndefined();
+        (pageDesktopDragHandler as object)['isPc'] = true;
+        pageDesktopDragHandler.dealSwiperPageOnDragEnter(1, dragEvent, 'HiSearch');
+        expect(pageDesktopDragHandler).not().assertUndefined();
+        pageDesktopDragHandler.dealSwiperPageOnDragEnter(1, dragEvent, '1');
+        expect(pageDesktopDragHandler).not().assertUndefined();
+        (pageDesktopDragHandler as object)['isPc'] = false;
+        pageDesktopDragHandler.dealSwiperPageOnDragEnter(1, dragEvent, '1');
+        expect(pageDesktopDragHandler).not().assertUndefined();
+      } catch (err) {}
+      mock.ignoreMock(AppStorage, AppStorage.get);
+      done();
+    })
+
+    it('PageDesktopDragHandler_isNeedWhiteBox_test01', 0, async(done:Function) => {
+      let mock: MockKit = new MockKit();
+      let mockFunc: Function = mock.mockFunc(pageDesktopDragHandler, pageDesktopDragHandler.getExtra);
+      when(mockFunc)(ArgumentMatchers.any).afterReturn(undefined);
+      try {
+        (pageDesktopDragHandler as object)['isNeedWhiteBox']();
+        expect(pageDesktopDragHandler).not().assertUndefined();
+        (pageDesktopDragHandler as object)['isNeedWhiteBox']('1');
+        expect(pageDesktopDragHandler).not().assertUndefined();
+      } catch (err) {}
+      when(mockFunc)(ArgumentMatchers.any).afterReturn('HiSearch');
+      try {
+        (pageDesktopDragHandler as object)['isNeedWhiteBox']('1');
+        expect(pageDesktopDragHandler).not().assertUndefined();
+      } catch (err) {}
+      when(mockFunc)(ArgumentMatchers.any).afterReturn('fromFileView');
+      try {
+        (pageDesktopDragHandler as object)['isNeedWhiteBox']('1');
+        expect(pageDesktopDragHandler).not().assertUndefined();
+      }catch(err){}
+      when(mockFunc)(ArgumentMatchers.any).afterReturn('fromUserSidebar');
+      try {
+        (pageDesktopDragHandler as object)['isNeedWhiteBox']('1');
+        expect(pageDesktopDragHandler).not().assertUndefined();
+      } catch (err) {}
+      when(mockFunc)(ArgumentMatchers.any).afterReturn('phoneFile');
+      try {
+        (pageDesktopDragHandler as object)['isNeedWhiteBox']('1');
+        expect(pageDesktopDragHandler).not().assertUndefined();
+      } catch (err) {}
+      when(mockFunc)(ArgumentMatchers.any).afterReturn('1');
+      try {
+        (pageDesktopDragHandler as object)['isNeedWhiteBox']('1');
+        expect(pageDesktopDragHandler).not().assertUndefined();
+      } catch (err) {}
+      mock.ignoreMock(pageDesktopDragHandler, pageDesktopDragHandler.getExtra);
+      done();
+    })
+
     it('PageDesktopDragHandler_dragPasteFile_test01', 0, async(done:Function) => {
       try {
         let pageDesktopGridStyleConfig1: PageDesktopGridStyleConfig = PageDesktopGridStyleConfig.getInstance();
@@ -4164,6 +4223,26 @@ export default function PageDesktopDragHandlerTest() {
       mock.clearAll();
     })
 
+    it('PageDesktopDragHandler_dealSwiperPageOnDragEnter_test02', 0, async(done:Function) => {
+      let mock: MockKit = new MockKit();
+      let mockFunc: Function = mock.mockFunc(AppStorage, AppStorage.get);
+      when(mockFunc)(ArgumentMatchers.any).afterReturn(0);
+      try {
+        pageDesktopDragHandler.dealSwiperPageOnDragEnter(1);
+        expect(pageDesktopDragHandler).not().assertUndefined();
+        (pageDesktopDragHandler as object)['isPc'] = true;
+        pageDesktopDragHandler.dealSwiperPageOnDragEnter(1, dragEvent, 'HiSearch');
+        expect(pageDesktopDragHandler).not().assertUndefined();
+        pageDesktopDragHandler.dealSwiperPageOnDragEnter(1, dragEvent, '1');
+        expect(pageDesktopDragHandler).not().assertUndefined();
+        (pageDesktopDragHandler as object)['isPc'] = false;
+        pageDesktopDragHandler.dealSwiperPageOnDragEnter(1, dragEvent, '1');
+        expect(pageDesktopDragHandler).not().assertUndefined();
+      } catch (err) {}
+      mock.ignoreMock(AppStorage, AppStorage.get);
+      done();
+    })
+
     it('PageDesktopDragHandler_dealSwiperPageOnDragEnter_test03', 0, async (done: Function) => {
       let mock: MockKit = new MockKit();
       let mockFunc: Function = mock.mockFunc(AppStorage, AppStorage.get);
@@ -4266,10 +4345,10 @@ export default function PageDesktopDragHandlerTest() {
       done();
     })
 
-    it('should_return_false_when_isBigScreen_is_true_and_isExpandStatus_is_false', 0, () => {
+    it('should_return_false_when_isSuperFold_is_true_and_isExpandStatus_is_false', 0, () => {
       let pagedesktopdraghandler: PageDesktopDragHandler = new PageDesktopDragHandler();
       let pageDesktopGridStyleConfig1: PageDesktopGridStyleConfig = PageDesktopGridStyleConfig.getInstance();
-      pagedesktopdraghandler['isBigScreen'] = true;
+      pagedesktopdraghandler['isSuperFold'] = true;
       pagedesktopdraghandler['isExpandStatus'] = false;
       pagedesktopdraghandler['screenHeight'] = 1000;
       pagedesktopdraghandler['mDragCreaseHeight'] = 100;
@@ -4280,7 +4359,7 @@ export default function PageDesktopDragHandlerTest() {
       expect(result).assertEqual(false);
       const result2 = pagedesktopdraghandler['isDragInCentral'](525);
       expect(result2).assertEqual(true);
-      pagedesktopdraghandler['isBigScreen'] = false;
+      pagedesktopdraghandler['isSuperFold'] = false;
       const result3 = pagedesktopdraghandler['isDragInCentral'](525);
       expect(result3).assertEqual(false);
     });
@@ -4293,7 +4372,7 @@ export default function PageDesktopDragHandlerTest() {
       gridLayoutItemInfo1.bundleName = 'test_bundleName';
       gridLayoutItemInfo1.column = 0;
       gridLayoutItemInfo1.row = 0;
-      pagedesktopdraghandler['isBigScreen'] = true;
+      pagedesktopdraghandler['isSuperFold'] = true;
       let moveItem: MoveItem = new MoveItem();
       moveItem.area = [1, 1];
       moveItem.row = 2;

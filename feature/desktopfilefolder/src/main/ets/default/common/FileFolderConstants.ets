@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023-Huawei Device Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) 2023-2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -23,6 +23,10 @@ export class FileFolderConstants {
     'XLT', 'XLTX', 'CSV', 'ODS', 'XLSM', 'PDF'];
   public static readonly VIDEO_TYPE = ['F4V', 'DIVX', 'TS', 'RV', '3GP', 'RM', 'MPE', 'WMV', '3G2', 'M2TS', 'FLV', 'AVI',
     'ASX', 'ASF', '3GPP', 'WEBM', 'MKV', 'MPG4', 'MP4', 'MOV', 'M4V', 'M4U', 'RMVB', '3GPP2', 'MPG', 'MPEG'];
+  /**
+   * 全搜
+   */
+  public static readonly HI_SEARCH = 'HiSearch';
   /**
    * PC文管视图区
    */

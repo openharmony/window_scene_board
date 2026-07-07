@@ -29,6 +29,7 @@ import { Log } from '../../aigcServiceAbility/IdlService/Log';
 const TAG = 'DesktopSettingViewModel';
 
 export class DesktopSettingConstants {
+  public static readonly HI_SEARCH_STATUS: string = 'hiSearchStatus';
   public static readonly AUTO_ALIGN_STATUS: string = 'autoAlignStatus';
   public static readonly LOCK_LAYOUT_STATUS: string = 'lockLayoutStatus';
   //从设置搜索进来的
@@ -107,6 +108,8 @@ export class DesktopSettingViewModel {
       dataPreferences.getPreferences(context, DesktopSettingConstants.PREFERENCES_NAME)
         .then((preferences: dataPreferences.Preferences) => {
         this.preference = preferences;
+        this.desktopSettingData.hiSearchStatus =
+          this.preference.getSync(DesktopSettingConstants.HI_SEARCH_STATUS, true) as boolean;
         this.desktopSettingData.autoAlignStatus =
           this.preference.getSync(DesktopSettingConstants.AUTO_ALIGN_STATUS, false) as boolean;
         this.desktopSettingData.lockLayoutStatus =
@@ -165,6 +168,8 @@ export class DesktopSettingViewModel {
     try {
       if (key === DesktopSettingConstants.AUTO_ALIGN_STATUS && value === this.desktopSettingData.autoAlignStatus) {
         return;
+      } else if (key === DesktopSettingConstants.HI_SEARCH_STATUS && value === this.desktopSettingData.hiSearchStatus) {
+        return;
       } else if (key === DesktopSettingConstants.LOCK_LAYOUT_STATUS &&
         value === this.desktopSettingData.lockLayoutStatus) {
         return;
@@ -173,6 +178,8 @@ export class DesktopSettingViewModel {
       this.preference.flush(() => {
         if (key === DesktopSettingConstants.AUTO_ALIGN_STATUS) {
           this.desktopSettingData.autoAlignStatus = value;
+        } else if (key === DesktopSettingConstants.HI_SEARCH_STATUS) {
+          this.desktopSettingData.hiSearchStatus = value;
         } else if (key === DesktopSettingConstants.LOCK_LAYOUT_STATUS) {
           this.desktopSettingData.lockLayoutStatus = value;
         }

@@ -39,8 +39,8 @@ export class GlassBannerLayoutStyle extends GlassLayoutSize {
   public static readonly BANNER_EXPAND_CONTENT_WIDTH: string = '944px';
   public static readonly CARD_LARGE_ICON_RADIUS: Length = '32';
   public static readonly LEFT_LARGE_ICON_RADIUS: Length = '8vp';
-  public static readonly FONT_FAMILY_SANS_SC: string = 'HarmonyOS Sans SC';
-  public static readonly FONT_FAMILY_ohos_BOLD: string = 'OpenHarmony黑体';
+  public static readonly FONT_FAMILY_SANS_SC: string = 'OpenHarmony Sans SC';
+  public static readonly FONT_FAMILY_ohos_BOLD: string = '鸿蒙黑体';
   public static readonly BANNER_PADDING: Padding = {
     left: '24px',
     right: '24px',

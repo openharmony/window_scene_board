@@ -34,7 +34,7 @@ import {
   MidSceneConfig
 } from '@ohos/windowscene';
 import { viewMgrPolicy, ViewType, ApsUtils, RotateChangeEvent, EvtBus, DeviceHelper, } from '@ohos/frameworkwrapper';
-// import apsManager from '@hms.graphic.apsManager';
+// import apsManager from '@ohos.graphic.apsManager';
 import { StyleConstants } from '@ohos/launchercommon';
 import performanceMonitor from '@ohos.arkui.performanceMonitor';
 import transactionManager from '@ohos.transactionManager';
@@ -325,6 +325,8 @@ export class SCBWindowRotate {
         .getContainerSessionList(screenProperty.screenId)?.getTopActiveSession();
       if (MidSceneConfig.isSupportPadDifference() && !!topSession && topSession?.isMidScene) {
         WinLog.showInfo(WinLogDomain.WMS_ROTATION, ' midscene not show wallPaper');
+      } else if (topSession?.isSplitView()) {
+        WinLog.showInfo(WinLogDomain.WMS_ROTATION, ' splitView not show wallPaper');
       } else {
         WinLog.showInfo(WinLogDomain.WMS_ROTATION, ' not midcsene show wallPaper');
         viewMgrPolicy.showView(ViewType.WALLPAPER);

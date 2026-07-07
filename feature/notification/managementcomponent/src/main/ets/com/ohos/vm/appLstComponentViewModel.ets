@@ -49,6 +49,7 @@ export class AppItem {
   public appLiveViewSwitch?: StateValue = undefined;
   public isMetaService: boolean = false;
   public sortTag?: string = '';
+  public isdeliverApp?: boolean = false;
 }
 
 @Observed
@@ -193,6 +194,9 @@ export class AppLstComponentViewModel {
     liveViewList = liveViewList.filter((item) => item.bundleType !== bundleManager.BundleType.ATOMIC_SERVICE);
     this.bundleInfoList = appList.map((app) => this.convertItem(app));
     this.liveViewInfoList = liveViewList.map((app) => this.convertItem(app));
+    this.bundleInfoList =
+      this.bundleInfoList.filter(item => item.appTitle !== '短信存储' && item.appTitle !== '输入法' &&
+        item.appTitle !== '软件更新');
     this.callback?.(this.bundleInfoList);
     await this.liveViewAppCallback?.(this.liveViewInfoList);
   }
@@ -325,6 +329,7 @@ export class AppLstComponentViewModel {
     item.appUid = config.uid;
     item.systemApp = config.systemApp;
     item.appIndex = config.appIndex;
+    item.isdeliverApp = config.isdeliverApp;
     return item;
   }
 

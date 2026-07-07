@@ -27,7 +27,7 @@ import { StartAbilityUtil } from '@ohos/windowscene';
 
 const TAG: string = 'StartAndExitVisualEffectManager';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.HOME, TAG);
-const DISPLAY_SCREEN_FREQ: string = 'settings.display.openharmony_screen_freq';
+const DISPLAY_SCREEN_FREQ: string = 'settings.display.hw_screen_freq';
 
 /**
  * 启动退出视效管理类

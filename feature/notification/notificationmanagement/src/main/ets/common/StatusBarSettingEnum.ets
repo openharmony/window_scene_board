@@ -64,6 +64,7 @@ export const USER_BEHAVIOR_KEY: Map<SettingsKeyConstants, string> = new Map([
   [SettingsKeyConstants.SHOW_HEAD_PHONES_ICON, 'HEAD_PHONES_ENABLE'],
 ])
 
+// 语音助手意图支持的开关
 export const INTENT_SWITCH: SettingsKeyConstants[] = [
   SettingsKeyConstants.SHOW_REAL_TIME_NETWORK_SPEED,
   SettingsKeyConstants.STATUS_BAR_SHOW_NOTIFICATION_ICON,
