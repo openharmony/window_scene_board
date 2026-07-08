@@ -306,12 +306,10 @@ export struct SCBSpecificScene {
       // use 'animateTo' to force update rect immediately
       let uiContext: UIContext = this.getUIContext();
       if (uiContext && reason === sceneSessionManager.SessionSizeChangeReason.DRAG_END) {
-        this.rect && this.rect.setRect(newRect.left, newRect.top, newRect.width, newRect.height);
-        let targetX = this.handleTargetPositionXWithLimit(newRect);
-        let targetY = this.handleTargetPositionYWithLimit(newRect);
-        newRect.setPosNum(targetX, targetY);
+        log.showInfo('onSessionRectChange: before animateTo, newRect: [' + newRect.left.getPx() + ', ' +
+          newRect.top.getPx() + ', ' + newRect.width.getPx() + ', ' + newRect.height.getPx() + ']');
         uiContext.animateTo({
-          duration: 250
+          duration: 0
         }, () => {
           this.rect && this.rect.setRect(newRect.left, newRect.top, newRect.width, newRect.height);
         })
@@ -323,9 +321,9 @@ export struct SCBSpecificScene {
       this.onMultiSubRectChange(newRect, reason);
       return;
     }
-    if (parentSession?.isPcAppInPad) {
-      this.springBackIfNeeded(reason, newRect);
-    }
+    log.showInfo('onSessionRectChange already delete');
+    log.showInfo('onSessionRectChange step5: before final setRect, newRect: [' + newRect.left.getPx() + ', ' +
+      newRect.top.getPx() + ', ' + newRect.width.getPx() + ', ' + newRect.height.getPx() + ']');
     this.rect && this.rect.setRect(newRect.left, newRect.top, newRect.width, newRect.height);
     log.showInfo('onSessionRectChange end, id: ' + this.specificSession.session.persistentId + ' reason: ' +
       reason + ', newRect: [' + newRect.left.getPx() + ', ' + newRect.top.getPx() + ', ' +
