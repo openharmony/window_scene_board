@@ -11,7 +11,7 @@
   "scripts": {},
   "component": {
     "name": "window_scene_board",
-    "subsystem": "window",
+    "subsystem": "applications",
     "syscap": [],
     "features": [
       "window_scene_board_feature_product"
