@@ -13,6 +13,13 @@
             "attr":{
                 "priority":"translate"
             }
+        },
+        {
+            "name": "control_center_super_privacy_for_location_toggle",
+            "value": "تم حظر الوصول إلى الموقع، يُرجى أولًا إيقاف تشغيل وضع الخصوصية الصارم",
+            "attr": {
+                "priority": "translate"
+            }
         }
-    ]
+]
 }

@@ -1,381 +1,381 @@
 {
-    "string":[
+    "string": [
         {
-            "name":"control_center",
-            "value":"Control Panel",
-            "attr":{
-                "priority":"LT"
+            "name": "control_center",
+            "value": "Control Panel",
+            "attr": {
+                "priority": "LT"
             }
         },
         {
-            "name":"screen_recorder_widget_name",
-            "value":"Screen recorder",
-            "attr":{
-                "priority":"translate"
+            "name": "screen_recorder_widget_name",
+            "value": "Screen recorder",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"scanner_widget_name",
-            "value":"Scan",
-            "attr":{
-                "priority":"LT"
+            "name": "scanner_widget_name",
+            "value": "Scan",
+            "attr": {
+                "priority": "LT"
             }
         },
         {
-            "name":"remote_control_widget_name",
-            "value":"Smart Remote",
-            "attr":{
-                "priority":"LT"
+            "name": "remote_control_widget_name",
+            "value": "Smart Remote",
+            "attr": {
+                "priority": "LT"
             }
         },
         {
-            "name":"screen_shot_widget_name",
-            "value":"Screenshot",
-            "attr":{
-                "priority":"LT"
+            "name": "screen_shot_widget_name",
+            "value": "Screenshot",
+            "attr": {
+                "priority": "LT"
             }
         },
         {
-            "name":"control_center_edit_panel_tips_max_toggles",
-            "value":"Maximum of %d switches.",
-            "attr":{
-                "priority":"LT"
+            "name": "control_center_edit_panel_tips_max_toggles",
+            "value": "Maximum of %d switches.",
+            "attr": {
+                "priority": "LT"
             }
         },
         {
-            "name":"control_center_edit_panel_tips_max_limit",
-            "value":"Max number of switches added.",
-            "attr":{
-                "priority":"translate"
+            "name": "control_center_edit_panel_tips_max_limit",
+            "value": "Max number of switches added.",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"control_center_edit_panel_tips_min_toggles",
-            "value":"At least %d switches must be kept.",
-            "attr":{
-                "priority":"LT"
+            "name": "control_center_edit_panel_tips_min_toggles",
+            "value": "At least %d switches must be kept.",
+            "attr": {
+                "priority": "LT"
             }
         },
         {
-            "name":"control_center_edit_panel_dialog_confirm",
-            "value":"Save changes?",
-            "attr":{
-                "priority":"LT"
+            "name": "control_center_edit_panel_dialog_confirm",
+            "value": "Save changes?",
+            "attr": {
+                "priority": "LT"
             }
         },
         {
-            "name":"control_center_edit_panel_dialog_not_save",
-            "value":"Don't save",
-            "attr":{
-                "priority":"translate"
+            "name": "control_center_edit_panel_dialog_not_save",
+            "value": "Don't save",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"control_center_edit_panel_dialog_save",
-            "value":"Save",
-            "attr":{
-                "priority":"LT"
+            "name": "control_center_edit_panel_dialog_save",
+            "value": "Save",
+            "attr": {
+                "priority": "LT"
             }
         },
         {
-            "name":"control_center_edit_panel_title_edit",
-            "value":"Edit",
-            "attr":{
-                "priority":"LT"
+            "name": "control_center_edit_panel_title_edit",
+            "value": "Edit",
+            "attr": {
+                "priority": "LT"
             }
         },
         {
-            "name":"control_center_edit_panel_collapse_library",
-            "value":"Close",
-            "attr":{
-                "priority":"translate"
+            "name": "control_center_edit_panel_collapse_library",
+            "value": "Close",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"control_center_unlocked_for_editing",
-            "value":"Unlock to edit.",
-            "attr":{
-                "priority":"LT"
+            "name": "control_center_unlocked_for_editing",
+            "value": "Unlock to edit.",
+            "attr": {
+                "priority": "LT"
             }
         },
         {
-            "name":"control_center_super_privacy_for_location_toggle",
-            "value":"Location access blocked. Disable Super Privacy first.",
-            "attr":{
-                "priority":"LT"
+            "name": "control_center_super_privacy_for_location_toggle",
+            "value": "Location access blocked. Disable Super Privacy first.",
+            "attr": {
+                "priority": "LT"
             }
         },
         {
-            "name":"control_center_anti_theft_for_toggle",
-            "value":"Operation unavailable on demo device.",
-            "attr":{
-                "priority":"LT"
+            "name": "control_center_anti_theft_for_toggle",
+            "value": "Operation unavailable on demo device.",
+            "attr": {
+                "priority": "LT"
             }
         },
         {
-            "name":"control_center_no_available_toggles",
-            "value":"No switches to add",
-            "attr":{
-                "priority":"translate"
+            "name": "control_center_no_available_toggles",
+            "value": "No switches to add",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"privacy_sensor_multiple_application",
-            "value":"%s and others",
-            "attr":{
-                "priority":"translate"
+            "name": "privacy_sensor_multiple_application",
+            "value": "%s and others",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"accessed_recently",
-            "value":"%s, just now",
-            "attr":{
-                "priority":"LT"
+            "name": "accessed_recently",
+            "value": "%s, just now",
+            "attr": {
+                "priority": "LT"
             }
         },
         {
-            "name":"multi_window_widget_name",
-            "value":"Free windows",
-            "attr":{
-                "priority":"LT"
+            "name": "multi_window_widget_name",
+            "value": "Free windows",
+            "attr": {
+                "priority": "LT"
             }
         },
         {
-            "name":"cc_accessibility_str_entry_edit",
-            "value":"Edit Control Panel",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_entry_edit",
+            "value": "Edit Control Panel",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"cc_accessibility_str_collapse_library",
-            "value":"Close panel with unadded switches",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_collapse_library",
+            "value": "Close panel with unadded switches",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"cc_accessibility_str_button_str",
-            "value":"%s button",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_button_str",
+            "value": "%s button",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"cc_accessibility_str_edit_drag_description",
-            "value":"Double-tap and drag to rearrange the icons",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_edit_drag_description",
+            "value": "Double-tap and drag to rearrange the icons",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"cc_accessibility_str_entry_setting",
-            "value":"Enter Settings",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_entry_setting",
+            "value": "Enter Settings",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"cc_accessibility_str_open_candidate_library",
-            "value":"Show library",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_open_candidate_library",
+            "value": "Show library",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"cc_accessibility_str_exit_edit",
-            "value":"Exit editing",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_exit_edit",
+            "value": "Exit editing",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"cc_accessibility_str_save_edit",
-            "value":"Save changes",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_save_edit",
+            "value": "Save changes",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"cc_accessibility_str_brightness",
-            "value":"Screen brightness %s",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_brightness",
+            "value": "Screen brightness %s",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"cc_accessibility_str_change_brightness",
-            "value":"Brightness adjusted to %s",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_change_brightness",
+            "value": "Brightness adjusted to %s",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"cc_accessibility_str_change_brightness_desc",
-            "value":"Brightness bar, double-tap then hold and slide left or right to adjust",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_change_brightness_desc",
+            "value": "Brightness bar, double-tap then hold and slide left or right to adjust",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"cc_accessibility_str_change_vertical_brightness_desc",
-            "value":"Brightness bar, double tap and hold, then swipe up or down to adjust",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_change_vertical_brightness_desc",
+            "value": "Brightness bar, double tap and hold, then swipe up or down to adjust",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"cc_accessibility_str_edit_move_start",
-            "value":"Item is being dragged",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_edit_move_start",
+            "value": "Item is being dragged",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"cc_accessibility_str_edit_move_end",
-            "value":"Placed",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_edit_move_end",
+            "value": "Placed",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"cc_accessibility_str_privacy_string_camera",
-            "value":"Camera",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_privacy_string_camera",
+            "value": "Camera",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"cc_accessibility_str_privacy_string_mic",
-            "value":"Microphone",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_privacy_string_mic",
+            "value": "Microphone",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"cc_accessibility_str_privacy_string_location",
-            "value":"Location",
-            "attr":{
-                "priority":"LT"
+            "name": "cc_accessibility_str_privacy_string_location",
+            "value": "Location",
+            "attr": {
+                "priority": "LT"
             }
         },
         {
-            "name":"cc_accessibility_str_privacy_report_string",
-            "value":"%1$s accessing %2$s",
-            "attr":{
-                "priority":"LT"
+            "name": "cc_accessibility_str_privacy_report_string",
+            "value": "%1$s accessing %2$s",
+            "attr": {
+                "priority": "LT"
             }
         },
         {
-            "name":"cc_accessibility_str_library_closed",
-            "value":"Closed the Control Panel editing screen",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_library_closed",
+            "value": "Closed the Control Panel editing screen",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"cc_accessibility_str_library_opened",
-            "value":"Opened Control Panel editing screen",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_library_opened",
+            "value": "Opened Control Panel editing screen",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"cc_accessibility_str_exit_edit_page",
-            "value":"Close the editing screen",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_exit_edit_page",
+            "value": "Close the editing screen",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"cc_accessibility_str_entry_edit_page",
-            "value":"Open the editing screen",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_entry_edit_page",
+            "value": "Open the editing screen",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"cc_accessibility_str_enter_sub_page",
-            "value":"Open %s menu",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_enter_sub_page",
+            "value": "Open %s menu",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"cc_accessibility_str_exit_sub_page",
-            "value":"Exit %s menu",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_exit_sub_page",
+            "value": "Exit %s menu",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"brightness_title",
-            "value":"Brightness",
-            "attr":{
-                "priority":"LT"
+            "name": "brightness_title",
+            "value": "Brightness",
+            "attr": {
+                "priority": "LT"
             }
         },
         {
-            "name":"combined_slider_title",
-            "value":"Brightness and volume bars",
-            "attr":{
-                "priority":"translate"
+            "name": "combined_slider_title",
+            "value": "Brightness and volume bars",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"cc_accessibility_str_privacy_page",
-            "value":"Permissions",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_privacy_page",
+            "value": "Permissions",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"sound_recorder_name",
-            "value":"Recorder",
-            "attr":{
-                "priority":"translate"
+            "name": "sound_recorder_name",
+            "value": "Recorder",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"calculator_widget_name",
-            "value":"Calculator",
-            "attr":{
-                "priority":"LT"
+            "name": "calculator_widget_name",
+            "value": "Calculator",
+            "attr": {
+                "priority": "LT"
             }
         },
         {
-            "name":"clock_timer_widget_name",
-            "value":"Timer",
-            "attr":{
-                "priority":"LT"
+            "name": "clock_timer_widget_name",
+            "value": "Timer",
+            "attr": {
+                "priority": "LT"
             }
         },
         {
-            "name":"rotate_to_landscape",
-            "value":"Rotate to landscape orientation first.",
-            "attr":{
-                "priority":"LT"
+            "name": "rotate_to_landscape",
+            "value": "Rotate to landscape orientation first.",
+            "attr": {
+                "priority": "LT"
             }
         },
         {
-            "name":"unfold_to_g_state",
-            "value":"Fully unfold your phone first.",
-            "attr":{
-                "priority":"translate"
+            "name": "unfold_to_g_state",
+            "value": "Fully unfold your phone first.",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"pc_mode",
-            "value":"Computer mode",
-            "attr":{
-                "priority":"translate"
+            "name": "pc_mode",
+            "value": "Computer mode",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"pad_mode",
-            "value":"Tablet mode",
-            "attr":{
-                "priority":"translate"
+            "name": "pad_mode",
+            "value": "Tablet mode",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
@@ -393,55 +393,55 @@
             }
         },
         {
-            "name":"multimedia_sensor_bracket_kit",
-            "value":"Gimbal controls",
-            "attr":{
-                "priority":"translate"
+            "name": "multimedia_sensor_bracket_kit",
+            "value": "Gimbal controls",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"multimedia_sensor_sound_effects",
-            "value":"Sound effects",
-            "attr":{
-                "priority":"translate"
+            "name": "multimedia_sensor_sound_effects",
+            "value": "Sound effects",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"multimedia_sensor_video_effects",
-            "value":"Video effects",
-            "attr":{
-                "priority":"translate"
+            "name": "multimedia_sensor_video_effects",
+            "value": "Video effects",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-          "name":"computer_mode",
-          "value":"Desktop mode",
-          "attr":{
-            "priority":"LT"
-          }
+            "name": "computer_mode",
+            "value": "Desktop mode",
+            "attr": {
+                "priority": "LT"
+            }
         },
         {
-          "name":"notepad_quick_note_title",
-          "value":"Quick note",
-          "attr":{
-            "priority":"LT"
-          }
+            "name": "notepad_quick_note_title",
+            "value": "Quick note",
+            "attr": {
+                "priority": "LT"
+            }
         },
         {
             "name": "top_toggle_data_default",
-            "value": "mediaCard,wifi_ui_extension,bluetooth_ui_extension,super_device,brightness,sound,focus_mode"
+            "value": ""
         },
         {
             "name": "top_toggle_data_all",
-            "value": "mediaCard,wifi_ui_extension,bluetooth_ui_extension,super_device,brightness,sound,combined_slider,hotspot_tagged,mobile_data_tagged,focus_mode"
+            "value": "mediaCard,combined_slider,wifi_ui_extension,bluetooth_ui_extension,hotspot_tagged,mobile_data_tagged,focus_mode"
         },
         {
             "name": "top_toggle_data_default_multiuser",
-            "value": "mediaCard,wifi_ui_extension,bluetooth_ui_extension,sound,brightness"
+            "value": ""
         },
         {
             "name": "toggle_data_default",
-            "value": "flashlight,ring_mode,auto_rotate,toggle_scanner,ohos_share,air_plane,mobile_data,hotspot,toggle_screenshot,toggle_screen_recorder,CastToggle,location"
+            "value": "wifi_ui_extension,bluetooth_ui_extension,flashlight,ring_mode,auto_rotate,toggle_scanner,ohos_share,air_plane,mobile_data,hotspot,toggle_screenshot,toggle_screen_recorder,CastToggle,location"
         },
         {
             "name": "toggle_data_default_old",
@@ -449,7 +449,7 @@
         },
         {
             "name": "toggle_data_all",
-            "value": "flashlight,ring_mode,auto_rotate,toggle_scanner,ohos_share,air_plane,mobile_data,hotspot,toggle_screenshot,toggle_screen_recorder,CastToggle,location,music_service,nfc,eye_comfort,dark_mode,super_privacy,super_hub,power_save,near_link,youth_mode,anti_peeping,multi_window,quick_note"
+            "value": "wifi_ui_extension,bluetooth_ui_extension,flashlight,ring_mode,auto_rotate,toggle_scanner,ohos_share,air_plane,mobile_data,hotspot,toggle_screenshot,toggle_screen_recorder,CastToggle,location,music_service,nfc,eye_comfort,dark_mode,super_privacy,super_hub,power_save,near_link,youth_mode,anti_peeping,multi_window,quick_note"
         },
         {
             "name": "toggle_data_black_multiuser",

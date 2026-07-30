@@ -109,7 +109,8 @@ export class HotSpotController extends ToggleBaseViewModel {
   constructor() {
     super();
     this.getViewData().label = $r('app.string.control_center_complex_toggle_hotspot_title');
-    this.getViewData().icon = $r('app.media.ic_hotspot');
+    this.getViewData().isSymbolIcon = true;
+    this.getViewData().icon = $r('sys.symbol.hotspot');
     this.onStart();
   }
 

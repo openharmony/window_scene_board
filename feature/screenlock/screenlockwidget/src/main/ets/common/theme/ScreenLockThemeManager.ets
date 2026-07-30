@@ -1492,7 +1492,7 @@ function getDefaultPositionY(): number {
 
 function getDefaultLayout(): ClockLayout {
   if (DeviceHelper.isPhone()) {
-    return ClockLayout.DEFAULT_CLOCK_LAYOUT;
+    return ClockLayout.NORMAL_CLOCK_LAYOUT;
   } else if (DeviceHelper.isPadOr2in1PcType()) {
     return ClockLayout.NORMAL_CLOCK_LAYOUT;
   } else {

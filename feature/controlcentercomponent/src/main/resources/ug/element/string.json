@@ -1,360 +1,360 @@
 {
     "string":[
         {
-            "name":"control_center_edit_panel_dialog_confirm",
-            "value":"ئۆزگەرتىشلەرنى ساقلامسىز؟",
-            "attr":{
-                "priority":"LT"
+            "name": "control_center_edit_panel_dialog_confirm",
+            "value": "ئۆزگەرتىشلەرنى ساقلامسىز؟",
+            "attr": {
+                "priority": "LT"
             }
         },
         {
-            "name":"control_center",
-            "value":"تىزگىنلەش مەركىزى",
-            "attr":{
-                "priority":"translate"
+            "name": "control_center",
+            "value": "تىزگىنلەش مەركىزى",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"control_center_edit_panel_tips_max_toggles",
-            "value":"كۆپىدە %d ئۈزچات كۆرۈنىدۇ.",
-            "attr":{
-                "priority":"LT"
+            "name": "control_center_edit_panel_tips_max_toggles",
+            "value": "كۆپىدە %d ئۈزچات كۆرۈنىدۇ.",
+            "attr": {
+                "priority": "LT"
             }
         },
         {
-            "name":"screen_recorder_widget_name",
-            "value":"ئېكران خاتىرىلەش",
-            "attr":{
-                "priority":"LT"
+            "name": "screen_recorder_widget_name",
+            "value": "ئېكران خاتىرىلەش",
+            "attr": {
+                "priority": "LT"
             }
         },
         {
-            "name":"control_center_edit_panel_collapse_library",
-            "value":"يىغىش",
-            "attr":{
-                "priority":"translate"
+            "name": "control_center_edit_panel_collapse_library",
+            "value": "يىغىش",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"control_center_edit_panel_tips_min_toggles",
-            "value":"كەمىدە %d ئۈزچاتنى ساقلاپ قېلىش كېرەك.",
-            "attr":{
-                "priority":"LT"
+            "name": "control_center_edit_panel_tips_min_toggles",
+            "value": "كەمىدە %d ئۈزچاتنى ساقلاپ قېلىش كېرەك.",
+            "attr": {
+                "priority": "LT"
             }
         },
         {
-            "name":"control_center_unlocked_for_editing",
-            "value":"قۇلۇپ ئېچىپ تەھرىرلەڭ.",
-            "attr":{
-                "priority":"LT"
+            "name": "control_center_unlocked_for_editing",
+            "value": "قۇلۇپ ئېچىپ تەھرىرلەڭ.",
+            "attr": {
+                "priority": "LT"
             }
         },
         {
-            "name":"control_center_edit_panel_dialog_not_save",
-            "value":"ياق",
-            "attr":{
-                "priority":"LT"
+            "name": "control_center_edit_panel_dialog_not_save",
+            "value": "ياق",
+            "attr": {
+                "priority": "LT"
             }
         },
         {
-            "name":"privacy_sensor_multiple_application",
-            "value":"\u200f«%s» قاتارلىقلار",
-            "attr":{
-                "priority":"LT"
+            "name": "privacy_sensor_multiple_application",
+            "value": "‏«%s» قاتارلىقلار",
+            "attr": {
+                "priority": "LT"
             }
         },
         {
-            "name":"screen_shot_widget_name",
-            "value":"ئېكران تۇتۇش",
-            "attr":{
-                "priority":"LT"
+            "name": "screen_shot_widget_name",
+            "value": "ئېكران تۇتۇش",
+            "attr": {
+                "priority": "LT"
             }
         },
         {
-            "name":"control_center_edit_panel_dialog_save",
-            "value":"ساقلاش",
-            "attr":{
-                "priority":"LT"
+            "name": "control_center_edit_panel_dialog_save",
+            "value": "ساقلاش",
+            "attr": {
+                "priority": "LT"
             }
         },
         {
-            "name":"control_center_edit_panel_title_edit",
-            "value":"تەھرىرلەش",
-            "attr":{
-                "priority":"LT"
+            "name": "control_center_edit_panel_title_edit",
+            "value": "تەھرىرلەش",
+            "attr": {
+                "priority": "LT"
             }
         },
         {
-            "name":"multi_window_widget_name",
-            "value":"ئەركىن كۆزنەك",
-            "attr":{
-                "priority":"LT"
+            "name": "multi_window_widget_name",
+            "value": "ئەركىن كۆزنەك",
+            "attr": {
+                "priority": "LT"
             }
         },
         {
-            "name":"cc_accessibility_str_privacy_string_camera",
-            "value":"كامېرا",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_privacy_string_camera",
+            "value": "كامېرا",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"cc_accessibility_str_entry_edit",
-            "value":"بەت تەھرىرلەش",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_entry_edit",
+            "value": "بەت تەھرىرلەش",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"cc_accessibility_str_open_candidate_library",
-            "value":"ئامبارنى يېيىش",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_open_candidate_library",
+            "value": "ئامبارنى يېيىش",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"cc_accessibility_str_edit_move_end",
-            "value":"قويۇلدى",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_edit_move_end",
+            "value": "قويۇلدى",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"cc_accessibility_str_change_brightness_desc",
-            "value":"تەڭشەش بالدىقى، قوش بېسىپ تۇرۇپ ئوڭ-سولغا سىيرىپ تەڭشەيسىز",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_change_brightness_desc",
+            "value": "تەڭشەش بالدىقى، قوش بېسىپ تۇرۇپ ئوڭ-سولغا سىيرىپ تەڭشەيسىز",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"cc_accessibility_str_entry_setting",
-            "value":"تەڭشەككە كىرىش",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_entry_setting",
+            "value": "تەڭشەككە كىرىش",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"cc_accessibility_str_privacy_string_location",
-            "value":"ئورۇن",
-            "attr":{
-                "priority":"LT"
+            "name": "cc_accessibility_str_privacy_string_location",
+            "value": "ئورۇن",
+            "attr": {
+                "priority": "LT"
             }
         },
         {
-            "name":"cc_accessibility_str_privacy_string_mic",
-            "value":"مىكروفون",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_privacy_string_mic",
+            "value": "مىكروفون",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"cc_accessibility_str_brightness",
-            "value":"ئېكران يورۇقلۇقى %s",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_brightness",
+            "value": "ئېكران يورۇقلۇقى %s",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"cc_accessibility_str_exit_edit",
-            "value":"تەھرىرلەشتىن چېكىنىش",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_exit_edit",
+            "value": "تەھرىرلەشتىن چېكىنىش",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"control_center_no_available_toggles",
-            "value":"قوشىدىغان ئۈزچات يوق.",
-            "attr":{
-                "priority":"LT"
+            "name": "control_center_no_available_toggles",
+            "value": "قوشىدىغان ئۈزچات يوق.",
+            "attr": {
+                "priority": "LT"
             }
         },
         {
-            "name":"cc_accessibility_str_save_edit",
-            "value":"ئۆزگەرتىشلەرنى ساقلاش",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_save_edit",
+            "value": "ئۆزگەرتىشلەرنى ساقلاش",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"cc_accessibility_str_edit_move_start",
-            "value":"سۆرەلدى",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_edit_move_start",
+            "value": "سۆرەلدى",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"cc_accessibility_str_change_brightness",
-            "value":"يورۇقلۇق %s كە تەڭشەلدى",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_change_brightness",
+            "value": "يورۇقلۇق %s كە تەڭشەلدى",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"cc_accessibility_str_privacy_report_string",
-            "value":"\u200f%1$s نۆۋەتتە %2$s ئىجازىتىنى ئىشلىتىۋاتىدۇ",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_privacy_report_string",
+            "value": "‏%1$s نۆۋەتتە %2$s ئىجازىتىنى ئىشلىتىۋاتىدۇ",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"scanner_widget_name",
-            "value":"سايىلەش",
-            "attr":{
-                "priority":"LT"
+            "name": "scanner_widget_name",
+            "value": "سايىلەش",
+            "attr": {
+                "priority": "LT"
             }
         },
         {
-            "name":"cc_accessibility_str_collapse_library",
-            "value":"قوشمىغان ئۈزچات ئامبىرىنى يىغىش",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_collapse_library",
+            "value": "قوشمىغان ئۈزچات ئامبىرىنى يىغىش",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"cc_accessibility_str_edit_drag_description",
-            "value":"قوش چېكىپ قويۇپ بەرمەي سۆرەپ رەتلەشكە بولىدۇ",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_edit_drag_description",
+            "value": "قوش چېكىپ قويۇپ بەرمەي سۆرەپ رەتلەشكە بولىدۇ",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"cc_accessibility_str_button_str",
-            "value":"‏%s كۇنۇپكىسى",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_button_str",
+            "value": "‏%s كۇنۇپكىسى",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"accessed_recently",
-            "value":"\u200f%s، بايا ئىشلەتكەن",
-            "attr":{
-                "priority":"LT"
+            "name": "accessed_recently",
+            "value": "‏%s، بايا ئىشلەتكەن",
+            "attr": {
+                "priority": "LT"
             }
         },
         {
-            "name":"cc_accessibility_str_exit_sub_page",
-            "value":"‏%s بېتىدىن چېكىنىش",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_exit_sub_page",
+            "value": "‏%s بېتىدىن چېكىنىش",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"cc_accessibility_str_entry_edit_page",
-            "value":"تەھرىرلەش بېتىگە كىرىش",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_entry_edit_page",
+            "value": "تەھرىرلەش بېتىگە كىرىش",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"cc_accessibility_str_library_opened",
-            "value":"ئامبار يېيىلدى",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_library_opened",
+            "value": "ئامبار يېيىلدى",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"cc_accessibility_str_library_closed",
-            "value":"ئامبار يىغىلدى",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_library_closed",
+            "value": "ئامبار يىغىلدى",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"cc_accessibility_str_enter_sub_page",
-            "value":"‏%s بېتىگە كىرىش",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_enter_sub_page",
+            "value": "‏%s بېتىگە كىرىش",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"cc_accessibility_str_exit_edit_page",
-            "value":"تەھرىرلەش بېتىدىن چېكىنىش",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_exit_edit_page",
+            "value": "تەھرىرلەش بېتىدىن چېكىنىش",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"control_center_super_privacy_for_location_toggle",
-            "value":"ئورۇن مۇلازىمىتى ئېتىك، ئاۋۋال يۇقىرى مەخپىيەتلىك ھالىتىدىن چېكىنىڭ.",
-            "attr":{
-                "priority":"LT"
+            "name": "control_center_super_privacy_for_location_toggle",
+            "value": "ئورۇن مۇلازىمىتى ئېتىك، ئاۋۋال يۇقىرى مەخپىيەتلىك ھالىتىدىن چېكىنىڭ.",
+            "attr": {
+                "priority": "LT"
             }
         },
         {
-            "name":"control_center_anti_theft_for_toggle",
-            "value":"ئۈلگە ئۈسكۈنە قوغداش ھالىتىدە، بۇ مەشغۇلات يۈرمەيدۇ.",
-            "attr":{
-                "priority":"LT"
+            "name": "control_center_anti_theft_for_toggle",
+            "value": "ئۈلگە ئۈسكۈنە قوغداش ھالىتىدە، بۇ مەشغۇلات يۈرمەيدۇ.",
+            "attr": {
+                "priority": "LT"
             }
         },
         {
-            "name":"brightness_title",
-            "value":"يورۇقلۇق",
-            "attr":{
-                "priority":"LT"
+            "name": "brightness_title",
+            "value": "يورۇقلۇق",
+            "attr": {
+                "priority": "LT"
             }
         },
         {
-            "name":"combined_slider_title",
-            "value":"يورۇقلۇق بالدىقى ۋە ئۈن بالدىقى",
-            "attr":{
-                "priority":"translate"
+            "name": "combined_slider_title",
+            "value": "يورۇقلۇق بالدىقى ۋە ئۈن بالدىقى",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"cc_accessibility_str_privacy_page",
-            "value":"ئىجازەت",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_privacy_page",
+            "value": "ئىجازەت",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"sound_recorder_name",
-            "value":"ئۈنئالغۇ",
-            "attr":{
-                "priority":"LT"
+            "name": "sound_recorder_name",
+            "value": "ئۈنئالغۇ",
+            "attr": {
+                "priority": "LT"
             }
         },
         {
-            "name":"calculator_widget_name",
-            "value":"ھېسابلىغۇچ",
-            "attr":{
-                "priority":"LT"
+            "name": "calculator_widget_name",
+            "value": "ھېسابلىغۇچ",
+            "attr": {
+                "priority": "LT"
             }
         },
         {
-            "name":"clock_timer_widget_name",
-            "value":"تەتۈر ساناق",
-            "attr":{
-                "priority":"LT"
+            "name": "clock_timer_widget_name",
+            "value": "تەتۈر ساناق",
+            "attr": {
+                "priority": "LT"
             }
         },
         {
-            "name":"remote_control_widget_name",
-            "value":"ئاڭلىق تىزگىنەك",
-            "attr":{
-                "priority":"LT"
+            "name": "remote_control_widget_name",
+            "value": "ئاڭلىق تىزگىنەك",
+            "attr": {
+                "priority": "LT"
             }
         },
         {
-            "name":"rotate_to_landscape",
-            "value":"تۈزبوي چۆرۈپ ئىشلىتىڭ.",
-            "attr":{
-                "priority":"LT"
+            "name": "rotate_to_landscape",
+            "value": "تۈزبوي چۆرۈپ ئىشلىتىڭ.",
+            "attr": {
+                "priority": "LT"
             }
         },
         {
-            "name":"pc_mode",
-            "value":"\u200fPC ھالەت",
-            "attr":{
-                "priority":"translate"
+            "name": "pc_mode",
+            "value": "‏PC ھالەت",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"pad_mode",
-            "value":"تاختا ھالەت",
-            "attr":{
-                "priority":"translate"
+            "name": "pad_mode",
+            "value": "تاختا ھالەت",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
@@ -365,17 +365,17 @@
             }
         },
         {
-            "name":"control_center_edit_panel_tips_max_limit",
-            "value":"سانى چەككە يەتتى.",
-            "attr":{
-                "priority":"translate"
+            "name": "control_center_edit_panel_tips_max_limit",
+            "value": "سانى چەككە يەتتى.",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"cc_accessibility_str_change_vertical_brightness_desc",
-            "value":"يۈرۈم بالدىقى، قوش بېسىپ تۇرۇپ ئۈستى-ئاستىغا سىيرىپ تەڭشەيسىز",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_change_vertical_brightness_desc",
+            "value": "يۈرۈم بالدىقى، قوش بېسىپ تۇرۇپ ئۈستى-ئاستىغا سىيرىپ تەڭشەيسىز",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
@@ -386,46 +386,82 @@
             }
         },
         {
-            "name":"multimedia_sensor_bracket_kit",
-            "value":"پۇت تىزگىنى",
-            "attr":{
-                "priority":"translate"
+            "name": "multimedia_sensor_bracket_kit",
+            "value": "پۇت تىزگىنى",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"multimedia_sensor_sound_effects",
-            "value":"ئاۋاز ئۈنۈمى",
-            "attr":{
-                "priority":"translate"
+            "name": "multimedia_sensor_sound_effects",
+            "value": "ئاۋاز ئۈنۈمى",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"multimedia_sensor_video_effects",
-            "value":"سىن ئۈنۈمى",
-            "attr":{
-                "priority":"translate"
-            }
-        },
-      {
-        "name":"notepad_quick_note_title",
-        "value":"تېز خاتىرە",
-        "attr":{
-          "priority":"LT"
+            "name": "multimedia_sensor_video_effects",
+            "value": "سىن ئۈنۈمى",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"unfold_to_g_state",
-            "value":"ئۈچ ئېكرانلىق ھالەتتە يېيىپ ئىشلىتىڭ.",
-            "attr":{
-                "priority":"translate"
+            "name": "notepad_quick_note_title",
+            "value": "تېز خاتىرە",
+            "attr": {
+                "priority": "LT"
             }
         },
         {
-          "name":"computer_mode",
-          "value":"كومپيۇتېر ھالىتى",
-          "attr":{
-            "priority":"LT"
-          }
+            "name": "unfold_to_g_state",
+            "value": "ئۈچ ئېكرانلىق ھالەتتە يېيىپ ئىشلىتىڭ.",
+            "attr": {
+                "priority": "translate"
+            }
+        },
+        {
+            "name": "computer_mode",
+            "value": "كومپيۇتېر ھالىتى",
+            "attr": {
+                "priority": "LT"
+            }
+        },
+        {
+            "name": "top_toggle_data_default",
+            "value": ""
+        },
+        {
+            "name": "top_toggle_data_all",
+            "value": "mediaCard,combined_slider,wifi_ui_extension,bluetooth_ui_extension,hotspot_tagged,mobile_data_tagged,focus_mode"
+        },
+        {
+            "name": "top_toggle_data_default_multiuser",
+            "value": ""
+        },
+        {
+            "name": "toggle_data_default",
+            "value": "wifi_ui_extension,bluetooth_ui_extension,flashlight,ring_mode,auto_rotate,toggle_scanner,ohos_share,air_plane,mobile_data,hotspot,toggle_screenshot,toggle_screen_recorder,CastToggle,location"
+        },
+        {
+            "name": "toggle_data_default_old",
+            "value": "flashlight,ring_mode,auto_rotate,toggle_scanner,ohos_share,air_plane,mobile_data,hotspot,toggle_screenshot,toggle_screen_recorder,CastToggle,music_service,location,nfc,eye_comfort,dark_mode,toggle_Demo,multi_window"
+        },
+        {
+            "name": "toggle_data_all",
+            "value": "wifi_ui_extension,bluetooth_ui_extension,flashlight,ring_mode,auto_rotate,toggle_scanner,ohos_share,air_plane,mobile_data,hotspot,toggle_screenshot,toggle_screen_recorder,CastToggle,location,music_service,nfc,eye_comfort,dark_mode,super_privacy,super_hub,power_save,near_link,youth_mode,anti_peeping,multi_window,quick_note"
+        },
+        {
+            "name": "toggle_data_black_multiuser",
+            "value": "youth_mode,music_service,super_device,hotspot_tagged,hotspot"
+        },
+        {
+            "name": "small_screen_toggle_data_default",
+            "value": "flashlight,ring_mode,air_plane,mobile_data,ohos_share,hotspot,toggle_screenshot,toggle_screen_recorder,music_service,location,nfc"
+        },
+        {
+            "name": "edm_admin_toggles",
+            "value": "wifi_ui_extension,bluetooth_ui_extension,mobile_data,toggle_screenshot,toggle_screen_recorder,hotspot,near_link,location,hotspot_tagged,mobile_data_tagged,air_plane,nfc"
         }
     ]
 }

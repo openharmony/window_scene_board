@@ -13,20 +13,15 @@
  * limitations under the License.
  */
 
-import type { ThemeStyleInfo } from '../bean/ThemeStyleInfo';
 import { CommonConstants, DesktopMode } from '../constants/CommonConstants';
-import { ThemeStyleManager } from '../manager/ThemeStyleManager';
-import { ThemeStylePreviewManager } from '../manager/ThemeStylePreviewManager';
-import { LayoutViewModel } from '../viewmodel/LayoutViewModel';
-import { FolderModel } from '../folder/FolderModel';
 import { LogDomain, LogHelper } from '@ohos/basicutils';
 import { ResUtils } from '@ohos/windowscene';
 import { NumberConstants } from '@ohos/commonconstants';
-import { IconCommonUtil } from './IconCommonUtil';
 
 const TAG = 'RadiusUtil';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.HOME, TAG);
-const MIN_RADIUS = CommonConstants.DEFAULT_ICON_RADIUS;
+/** 卡片默认圆角（与 app.float.form_corner_radius 一致），避免跟圆形图标半径联动 */
+const DEFAULT_FORM_CORNER_RADIUS = 16;
 
 /**
  * Radius util.
@@ -34,77 +29,50 @@ const MIN_RADIUS = CommonConstants.DEFAULT_ICON_RADIUS;
 export class RadiusUtil {
   /**
    * Calculate icon radius.
+   * 桌面图标统一圆形：圆角取图标边长一半。
    *
    * @param iconSize icon size.
    * @returns iconRadius.
    */
   public static calculateRadius(iconSize: number, desktopMode?: DesktopMode): number {
-    try {
-      // 如果主题包中设置了radius，则使用主题包资源
-      let themeRadius = ResUtils.getConvertNumber($r('app.float.icon_radius'));
-      if (themeRadius >= 0) {
-        log.showInfo(`get theme radius: ${themeRadius}`);
-        return themeRadius;
-      }
-    } catch (e) {
-      log.showError(`getConvertNumber error: ${e?.message}`);
-    }
-
     if (iconSize <= 0) {
       return CommonConstants.DEFAULT_ICON_RADIUS;
     }
-    let themeStyle: ThemeStyleInfo;
-    if (desktopMode && desktopMode === DesktopMode.PREVIEW_MODE) {
-      themeStyle = ThemeStylePreviewManager.getInstance().getThemeStyle();
-    } else {
-      themeStyle = ThemeStyleManager.getInstance().getThemeStyle();
-    }
-    // 图标默认大小：54，默认圆角：14，图标大小变化时，圆角需要根据实际图标大小等比缩放
-    let iconScale: number = iconSize / CommonConstants.DEFAULT_ICON_SIZE;
-    if (desktopMode === DesktopMode.PREVIEW_MODE && themeStyle.iconSizeScale !== undefined) {
-      let defaultIconSize: number = iconSize - themeStyle.iconSizeScale;
-      if (defaultIconSize !== 0) {
-        iconScale = iconSize / defaultIconSize;
-      }
-    }
-
-    let iconRadius: number = CommonConstants.DEFAULT_ICON_RADIUS * iconScale;
-    if (themeStyle.radiusSizeScale !== undefined) {
-      iconRadius = MIN_RADIUS + themeStyle.radiusSizeScale * (iconSize / NumberConstants.CONSTANT_NUMBER_TWO - MIN_RADIUS);
-    }
-    return iconRadius;
+    // 圆形背景：radius = size / 2（忽略主题圆角配置，统一圆形）
+    return iconSize / NumberConstants.CONSTANT_NUMBER_TWO;
   }
 
   /**
    * Calculate small form (1*2 or 2*1) radius.
+   * 卡片保持原规格，不随圆形图标/文件夹半径变化。
    *
    * @param isInPreviewMode is in PreviewMode
    * @returns form radius
    */
   public static calculateSmallFormRadius(isInPreviewMode: boolean): number {
-    const folderResult = LayoutViewModel.getInstance()
-      .calculateFolder(FolderModel.getInstance().getBigFolderLayout(), isInPreviewMode);
-    if (!folderResult) {
-      log.showWarn('calculateFormRadius fail, folderResult is invalid.');
-      return CommonConstants.INVALID_VALUE;
-    }
-    let radius: number = ((folderResult.mFolderRadius ?? 0) + (folderResult.mSmallFolderRadius ?? 0)) / NumberConstants.CONSTANT_NUMBER_TWO;
-    return radius;
+    return RadiusUtil.getFormCornerRadius();
   }
 
   /**
    * Calculate big form radius.
+   * 卡片保持原规格，不随圆形图标/文件夹半径变化。
    *
    * @param isInPreviewMode is in PreviewMode
    * @returns form radius
    */
   public static calculateBigFormRadius(isInPreviewMode: boolean): number {
-    const bigFolderResult = LayoutViewModel.getInstance()
-      .calculateFolder(FolderModel.getInstance().getBigFolderLayout(), isInPreviewMode);
-    if (!bigFolderResult) {
-      log.showWarn('calculateFormRadius fail, folderResult is invalid.');
-      return CommonConstants.INVALID_VALUE;
+    return RadiusUtil.getFormCornerRadius();
+  }
+
+  private static getFormCornerRadius(): number {
+    try {
+      let themeRadius = ResUtils.getConvertNumber($r('app.float.form_corner_radius'));
+      if (themeRadius > 0) {
+        return themeRadius;
+      }
+    } catch (e) {
+      log.showError(`get form_corner_radius error: ${e?.message}`);
     }
-    return bigFolderResult.mFolderRadius ?? CommonConstants.INVALID_VALUE;
+    return DEFAULT_FORM_CORNER_RADIUS;
   }
 }

@@ -224,16 +224,14 @@ export default struct Brightness {
     .backgroundBrightnessInternal(this.colorModeViewData.brightnessChoosenOption)
 
 
-    Image($r('app.media.ic_public_brightness_filled'))
-      .width($r('app.float.Control_center_brightness_icon_width'))
-      .height($r('app.float.Control_center_brightness_icon_width'))
-      .fillColor(this.getSymbolColor())
+    SymbolGlyph($r('sys.symbol.sun_max'))
+      .fontSize($r('app.float.Control_center_brightness_icon_width'))
+      .fontColor([this.getSymbolColor()])
       .margin({
         top: LengthMetrics.vp(CC_LAYOUT_CONFIGS[this.ccLayoutIndex]?.brightnessSunIconMargin?.top as number),
         start: LengthMetrics.vp(CC_LAYOUT_CONFIGS[this.ccLayoutIndex]?.brightnessSunIconMargin?.left as number)
       })
       .draggable(false)
-      .edgeAntialiasing(0.5)
       .id(COMPONENT_ID_IMAGE_BRIGHTNESS)
       .foregroundBrightness(this.getPrimaryFgOption())
   }

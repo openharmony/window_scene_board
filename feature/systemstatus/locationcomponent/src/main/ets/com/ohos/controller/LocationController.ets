@@ -92,7 +92,8 @@ export class LocationController extends ToggleBaseViewModel {
   constructor() {
     super();
     this.getViewData().label = $r('app.string.control_center_complex_toggle_location_title');
-    this.getViewData().icon = $r('app.media.ic_controlcenter_gps');
+    this.getViewData().isSymbolIcon = true;
+    this.getViewData().icon = $r('sys.symbol.local');
     this.onStart();
     this.initLocationPrivacyState();
     this.registerPrivacyStateChangeListener();

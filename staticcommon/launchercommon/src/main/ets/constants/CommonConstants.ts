@@ -965,14 +965,14 @@ export class CommonConstants {
   public static readonly DEFAULT_WINDOWS_RADIUS = 38;
 
   /**
-   * Default IconRadius.
-   */
-  public static readonly DEFAULT_ICON_RADIUS = 14;
-
-  /**
    * Default IconSize.
    */
   public static readonly DEFAULT_ICON_SIZE = deviceInfo.deviceType === '2in1' ? 56 : 54;
+
+  /**
+   * Default IconRadius（圆形：边长一半）.
+   */
+  public static readonly DEFAULT_ICON_RADIUS = deviceInfo.deviceType === '2in1' ? 28 : 27;
 
   /**
    * Default Phone FormCenter IconRadius.

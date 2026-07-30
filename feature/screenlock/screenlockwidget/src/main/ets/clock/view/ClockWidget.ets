@@ -50,7 +50,7 @@ import {
   ElementConf
 } from '../common/ClockLayoutParam';
 import { aodClockHelper, clockLayoutHelper } from '../common/ClockLayoutHelper';
-import { ClockLayout, ClockTextAlign, BatteryLayout } from '../../common/WidgetParam';
+import { ClockLayout, ClockTextAlign, ClockWidgetId, BatteryLayout } from '../../common/WidgetParam';
 import { ClockAnimData } from '../model/data/ClockAnimData';
 import { ClockBindData } from '../model/data/ClockBindData';
 import { clockData, ClockData, ClockDataListener } from '../model/data/ClockData';
@@ -124,6 +124,17 @@ export struct ClockWidget {
    * 时钟组件适配器，组件使用方传入，组件内置默认适配器
    */
   clockAdapter: ClockAdapter = ClockAdapterFactory.wrapper(UseScene.DEFAULT_SCENE);
+
+  /**
+   * 日期、星期和农历字体；未传入时保持原有主题字体策略。
+   */
+  dateFontFamily?: string;
+  dateFontWeight?: number;
+  timeFontFamily?: string;
+  timeFontWeight?: number;
+  layoutScale?: number;
+  separatorOffsetY?: number;
+  dateSectionOffsetY?: number;
 
   /**
    * 时钟组件业务管理类，生命周期跟随ClockAdapter，并且内置数据管理器
@@ -487,12 +498,24 @@ export struct ClockWidget {
     }
   }
 
-  private getTimeFontWeight(): FontWeight | undefined { // 时间文本字重
+  private getTimeFontWeight(): number | FontWeight | undefined { // 时间文本字重
+    if (this.timeFontWeight !== undefined) {
+      return this.timeFontWeight;
+    }
     if (UDFontAdapterUtil.isSupportByFont(this.slClockBindCtrl.getFontFamily())) {
       return undefined;
     }
     let family = clockLayoutHelper.adapterTimeViewFontFamily(this.slClockBindCtrl.getFontFamily());
     return this.mClockViewModel.getClockStaticState().getTimeFontWeight(family);
+  }
+
+  private getDateFontWeight(): number | FontWeight {
+    return this.dateFontWeight ?? FontWeight.Medium;
+  }
+
+  private getTimeFontFamily(): string | Resource | undefined {
+    return this.timeFontFamily ??
+      clockLayoutHelper.adapterTimeViewFontFamily(this.slClockBindCtrl.getFontFamily());
   }
 
   private isSignVisible(): boolean { // 签名可见性
@@ -521,6 +544,7 @@ export struct ClockWidget {
     if (conf.dynamicOffset) { // 动态偏移
       defaultOffset = conf.dynamicOffset;
     }
+    const phoneOffsetY: number = this.getPhoneReferenceOffsetY(conf.id);
     if (conf.dynamicDyMap) { // 相对偏移，只受签名可见性影响
       const isSignVisible = this.isSignatureVisible();
       const hasFormCard = this.slClockBindCtrl?.hasAddedFormCard() ?? false;
@@ -529,9 +553,24 @@ export struct ClockWidget {
         isFormVisible: hasFormCard && !this.slClockBindCtrl.getIsSmallOuter()
       });
       let dy = conf.dynamicDyMap.getProperty(key) ?? 0;
-      return { x: defaultOffset.x, y: (defaultOffset.y as number) + dy };
+      return { x: defaultOffset.x, y: (defaultOffset.y as number) + dy + phoneOffsetY };
+    }
+    if (phoneOffsetY !== 0) {
+      return { x: defaultOffset.x, y: (defaultOffset.y as number) + phoneOffsetY };
     }
     return defaultOffset; // 默认位移
+  }
+
+  private getPhoneReferenceOffsetY(id: ClockWidgetId): number {
+    if (id === ClockWidgetId.ID_SEPARATOR) {
+      return this.separatorOffsetY ?? 0;
+    }
+    if (id === ClockWidgetId.ID_DATE || id === ClockWidgetId.ID_WEEK ||
+      id === ClockWidgetId.ID_LUNA || id === ClockWidgetId.ID_COM_SIGN ||
+      id === ClockWidgetId.ID_BATTERY) {
+      return this.dateSectionOffsetY ?? 0;
+    }
+    return 0;
   }
 
   private getClockTextAnchor(conf: ElementConf): Position | undefined {
@@ -697,14 +736,14 @@ export struct ClockWidget {
     if (this.slClockBindCtrl?.getClockLayout() >= 200) {
       return DateTimeI18NUtil.isArtSupportLanguage() ? this.slClockBindCtrl?.getFontFamily() : undefined;
     }
-    return this.getDigitFontFamily();
+    return this.dateFontFamily ?? this.getDigitFontFamily();
   }
 
   private getFontFamily(): string | Resource | undefined {
     if (this.slClockBindCtrl?.getClockLayout() >= 200) {
       return clockLayoutHelper?.adapterTimeViewFontFamily(this.slClockBindCtrl?.getFontFamily());
     }
-    return this.getDigitFontFamily();
+    return this.dateFontFamily ?? this.getDigitFontFamily();
   }
 
   private getDigitFontFamily(): string | Resource | undefined {
@@ -745,7 +784,8 @@ export struct ClockWidget {
           .fontFamily(this.getAdapterFontFamily())
           .minFontScale(sFontScaleUtil.minFontSize)
           .maxFontScale(sFontScaleUtil.maxClockFontSize)
-          .fontWeight(FontWeight.Medium)
+          .fontWeight(this.getDateFontWeight(),
+            { enableVariableFontWeight: this.dateFontWeight !== undefined })
           .draggable(false)
           .clip(false)
           .geometryTransition(this.clockAnimData.dateGeoId, { hierarchyStrategy: TransitionHierarchyStrategy.NONE })
@@ -771,7 +811,8 @@ export struct ClockWidget {
         .fontFamily(this.getAdapterFontFamily())
         .minFontScale(sFontScaleUtil.minFontSize)
         .maxFontScale(sFontScaleUtil.maxClockFontSize)
-        .fontWeight(FontWeight.Medium)
+        .fontWeight(this.getDateFontWeight(),
+          { enableVariableFontWeight: this.dateFontWeight !== undefined })
         .draggable(false)
         .clip(false)
         .geometryTransition(this.clockAnimData.weekGeoId, { hierarchyStrategy: TransitionHierarchyStrategy.NONE })
@@ -797,7 +838,8 @@ export struct ClockWidget {
           .fontFamily(this.getFontFamily())
           .minFontScale(sFontScaleUtil.minFontSize)
           .maxFontScale(sFontScaleUtil.maxClockFontSize)
-          .fontWeight(FontWeight.Medium)
+          .fontWeight(this.getDateFontWeight(),
+            { enableVariableFontWeight: this.dateFontWeight !== undefined })
           .draggable(false)
           .clip(false)
           .geometryTransition(this.clockAnimData.lunarGeoId, { hierarchyStrategy: TransitionHierarchyStrategy.NONE })
@@ -863,7 +905,7 @@ export struct ClockWidget {
     Text(clockTextParam.text)
       .id(clockTextParam.id)
       .fontColor(this.getFontColor())
-      .fontFamily(clockLayoutHelper.adapterTimeViewFontFamily(this.slClockBindCtrl.getFontFamily()))
+      .fontFamily(this.getTimeFontFamily())
       .fontSize(this.getVp(clockTextParam.fontSize))
       .scale({
         x: clockTextParam.fontSizeScale,
@@ -871,7 +913,8 @@ export struct ClockWidget {
         centerX: 0,
         centerY: 0
       })
-      .fontWeight(this.getTimeFontWeight())
+      .fontWeight(this.getTimeFontWeight(),
+        { enableVariableFontWeight: this.timeFontWeight !== undefined })
       .position(clockTextParam.position)
       .markAnchor(clockTextParam.anchor)
       .draggable(false)
@@ -921,7 +964,7 @@ export struct ClockWidget {
       Text(CHAR_CLOCK_SEPARATOR)
         .id(`${ClockConstants.COMPONENT_ID_DIGITAL_TEXT_VIEW}_separator_1`)
         .fontColor(this.getFontColor())
-        .fontFamily(clockLayoutHelper.adapterTimeViewFontFamily(this.slClockBindCtrl.getFontFamily()))
+        .fontFamily(this.getTimeFontFamily())
         .fontSize(this.getVp(this.clockBindState.fontSizeAfterSlideUp ?
         this.clockBindState.fontSizeAfterSlideUp : this.layoutParam.separatorConf.fontSize))
         .scale({
@@ -930,7 +973,8 @@ export struct ClockWidget {
           centerX: 0,
           centerY: 0
         })
-        .fontWeight(this.getTimeFontWeight())
+        .fontWeight(this.getTimeFontWeight(),
+          { enableVariableFontWeight: this.timeFontWeight !== undefined })
         .position(this.getWidgetOffset(this.layoutParam.separatorConf))
         .markAnchor(this.getClockTextAnchor(this.layoutParam.separatorConf))
         .opacity(this.getSeparatorAlpha(false))
@@ -1203,15 +1247,23 @@ export struct ClockWidget {
   }
 
   private getClockScale(): ScaleOptions {
+    const layoutScale: number = this.layoutScale ?? DEFAULT_VALUE;
     if ((this.slClockAnimCtrl?.isSceneAnimating(AnimScene.SCENE_INTO_IMMERSIVE) ||
       this.slClockAnimCtrl?.isSceneAnimating(AnimScene.SCENE_EXIT_IMMERSIVE)) &&
       this.slClockStaticCtrl.getClockViewId() !== AOD_CLOCK_WIDGET) {
       return {
-        x: this.slClockAnimCtrl.getScaleX() ?? DEFAULT_VALUE,
-        y: this.slClockAnimCtrl.getScaleY() ?? DEFAULT_VALUE
+        x: (this.slClockAnimCtrl.getScaleX() ?? DEFAULT_VALUE) * layoutScale,
+        y: (this.slClockAnimCtrl.getScaleY() ?? DEFAULT_VALUE) * layoutScale,
+        centerX: '50%',
+        centerY: 0
       }
     }
-    return {x: DEFAULT_VALUE, y: DEFAULT_VALUE};
+    return {
+      x: layoutScale,
+      y: layoutScale,
+      centerX: '50%',
+      centerY: 0
+    };
   }
 
   private getClockOpacity(): number {

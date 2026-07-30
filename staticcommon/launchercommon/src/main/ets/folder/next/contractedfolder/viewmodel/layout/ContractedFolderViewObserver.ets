@@ -118,6 +118,8 @@ export class ContractedFolderViewObserver extends ContractedFolderObserver {
     tmpFolderOsr.folderRadius = layoutStyle.backgroundRadius;
     tmpFolderOsr.initTemplate(layoutStyle.countInColumn, layoutStyle.countInRow);
     this.folderOsr = tmpFolderOsr;
+    // 背板实际绑定 resizeOsr.backgroundRadius，必须同步圆形半径，否则桌面稳态仍为默认圆角方形
+    this.resizeOsr.init(layoutStyle);
     this.folderBgOsr.init(FolderCommonUtil.isDockFolder(this.folderId));
     this.iconOsr.setIconData(fstData);
     this.sndIconOsr.setIconData(sndData);

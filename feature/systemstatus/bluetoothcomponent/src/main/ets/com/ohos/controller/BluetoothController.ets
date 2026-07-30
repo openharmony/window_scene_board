@@ -168,7 +168,8 @@ export class BluetoothController extends ToggleBaseViewModel {
 
   constructor() {
     super();
-    this.getViewData().icon = $r('app.media.ic_controlcenter_bt');
+    this.getViewData().isSymbolIcon = true;
+    this.getViewData().icon = $r('sys.symbol.bluetooth');
     this.getViewData().label = DEFAULT_NAME;
     this.onStart();
   }
@@ -330,7 +331,8 @@ export class BluetoothController extends ToggleBaseViewModel {
   };
 
   updateIcon() {
-    this.getViewData().icon = this.getViewData().isOn ? $r('app.media.ic_controlcenter_bt') : $r('app.media.ic_controlcenter_bt_d')
+    this.getViewData().isSymbolIcon = true;
+    this.getViewData().icon = $r('sys.symbol.bluetooth');
   }
 
   decorateStyle(style: ToggleStyle, scene: ToggleScene): ToggleStyle {

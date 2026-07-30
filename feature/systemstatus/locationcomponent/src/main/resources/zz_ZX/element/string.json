@@ -7,6 +7,13 @@
         {
             "name":"accessibility_status_bar_location",
             "value":"[TS_924295]_The app sent a valid location request"
+        },
+        {
+            "name": "control_center_super_privacy_for_location_toggle",
+            "value": "[TS_956147]_Location access blocked. Disable Super Privacy first.",
+            "attr": {
+                "priority": "translate"
+            }
         }
-    ]
+]
 }

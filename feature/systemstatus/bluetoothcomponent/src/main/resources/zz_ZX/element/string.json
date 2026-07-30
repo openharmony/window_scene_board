@@ -1,4 +1,4 @@
-{
+﻿{
     "string":[
         {
             "name":"control_center_complex_toggle_bluetooth_title",
@@ -15,6 +15,21 @@
         {
             "name":"control_center_complex_toggle_nearlink_bluetooth_title",
             "value":"[TS_1101052]_NearLink & Bluetooth"
+        },
+        {
+            "name":"control_center_complex_toggle_nearlink_title",
+            "value":"[TS_934578]_NearLink",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"control_center_anti_theft_for_toggle",
+            "value":"[TS_975446]_Operation unavailable on demo device.",
+            "attr":{
+                "priority":"LT"
+            }
         }
+
     ]
 }

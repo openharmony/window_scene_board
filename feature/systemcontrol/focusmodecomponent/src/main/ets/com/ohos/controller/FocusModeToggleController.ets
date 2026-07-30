@@ -87,7 +87,8 @@ export class FocusModeToggleController extends ToggleBaseViewModel {
 
   constructor() {
     super();
-    this.getViewData().icon = $r('app.media.moon_fill');
+    this.getViewData().isSymbolIcon = true;
+    this.getViewData().icon = $r('sys.symbol.moon');
     this.getViewData().label = $r('app.string.control_center_complex_toggle_focus_mode_title');
     this.onStart();
   }

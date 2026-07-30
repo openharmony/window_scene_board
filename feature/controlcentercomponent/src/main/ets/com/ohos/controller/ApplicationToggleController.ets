@@ -51,6 +51,7 @@ export class ApplicationToggleController extends ToggleBaseViewModel {
 
   onStart(): void {
     this.getViewData().icon = this.getIcon();
+    this.getViewData().isSymbolIcon = this.useSymbolIcon();
     this.getViewData().label = this.getLabel();
     this.updateDisableState();
   }
@@ -83,7 +84,7 @@ export class ApplicationToggleController extends ToggleBaseViewModel {
    */
   getIcon(): Resource {
     if (this.toggleId === PluginSlot.SLOT_CONTROL_SCREENSHOT) {
-      return $r('app.media.ic_widget_screenshot');
+      return $r('sys.symbol.rectangle_and_cut');
     } else if (this.toggleId === PluginSlot.SLOT_CONTROL_SCREEN_RECORDER) {
       return $r('app.media.ic_widget_screen_recorder');
     } else if (this.toggleId === PluginSlot.SLOT_CONTROL_SCANNER) {
@@ -91,10 +92,16 @@ export class ApplicationToggleController extends ToggleBaseViewModel {
     } else if (this.toggleId === PluginSlot.SLOT_CONTROL_MULTI_WINDOW) {
       return $r('sys.symbol.rectangle_on_rectangle_fill');
     } else if (this.toggleId === FASlotName.QUICK_NOTE) {
-      return $r('app.media.quick_note');
+      return $r('sys.symbol.doc_plaintext_and_pencil');
     } else {
-      return $r('app.media.ic_widget_screenshot');
+      return $r('sys.symbol.rectangle_and_cut');
     }
+  }
+
+  private useSymbolIcon(): boolean {
+    return this.toggleId === PluginSlot.SLOT_CONTROL_SCREENSHOT ||
+      this.toggleId === PluginSlot.SLOT_CONTROL_MULTI_WINDOW ||
+      this.toggleId === FASlotName.QUICK_NOTE;
   }
 
   isAvailable(): boolean {

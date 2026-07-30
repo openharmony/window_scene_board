@@ -13,6 +13,13 @@
             "attr":{
                 "priority":"translate"
             }
+        },
+        {
+            "name": "ic_tools_disable_battery_low",
+            "value": "电量过低，无法开启手电筒",
+            "attr": {
+                "priority": "translate"
+            }
         }
-    ]
+]
 }

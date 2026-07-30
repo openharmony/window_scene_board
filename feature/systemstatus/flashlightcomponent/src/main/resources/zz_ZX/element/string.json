@@ -7,6 +7,13 @@
         {
             "name":"flashlight_on_ntf_content",
             "value":"[TS_1024663]_Flashlight is on"
+        },
+        {
+            "name": "ic_tools_disable_battery_low",
+            "value": "[TS_931154]_Battery too low to turn on flashlight.",
+            "attr": {
+                "priority": "translate"
+            }
         }
-    ]
+]
 }

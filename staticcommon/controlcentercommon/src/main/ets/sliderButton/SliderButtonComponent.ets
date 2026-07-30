@@ -81,11 +81,10 @@ export struct SliderButtonComponent {
    */
   private getProgressColor(): ResourceColor {
     if (this.isExpand) {
-      return DISABLE_BRIGHTNESS ? this.colorModeViewData.brightnessBlockColor : this.animViewData.sliderProgressColor;
-    } else if (this.animViewData.sliderChosen) {
-      return this.colorModeViewData.brightnessBlockColor;
+      return DISABLE_BRIGHTNESS ? $r('sys.color.interactive_pressed') : this.animViewData.sliderProgressColor;
     }
-    return this.colorModeViewData.wifiBgOffColor;
+    // 顶栏亮度/音量滑条填充色
+    return $r('sys.color.interactive_pressed');
   }
 
   /**
@@ -127,11 +126,9 @@ export struct SliderButtonComponent {
   private getSliderBackgroundColor(): ResourceColor {
     if (this.isExpand) {
       return this.colorModeViewData.subLayoutBgColor;
-    } else if (this.colorModeViewData.isUseDefaultColor() && this.animViewData.sliderChosen) {
-      return this.colorModeViewData.chosenSliderBgColor;
-    } else {
-      return this.colorModeViewData.commonBgOffColor;
     }
+    // 顶栏滑条背板：系统白色
+    return $r('sys.color.comp_background_primary');
   }
 
   /**
@@ -320,10 +317,11 @@ export struct SliderButtonComponent {
       .width(this.viewData.buttonWidth)
       .height(this.viewData.buttonHeight)
       .borderRadius(32)
-      .backgroundColor(this.colorModeViewData.getSolidColor(
-        this.getSliderBackgroundColor(), this.getBackBrightnessInternal()))
-      .backgroundBrightnessInternal(this.colorModeViewData.getBrightnessOption(
-        this.getBackBrightnessInternal()))
+      .backgroundColor(this.isExpand ?
+        this.colorModeViewData.getSolidColor(this.getSliderBackgroundColor(), this.getBackBrightnessInternal()) :
+        $r('sys.color.comp_background_primary'))
+      .backgroundBrightnessInternal(this.isExpand ?
+        this.colorModeViewData.getBrightnessOption(this.getBackBrightnessInternal()) : undefined)
       .pointLight({
         illuminated: this.isToggleLightEnabled ? this.POINT_LIGHT_ILLUMINATED : IlluminatedType.NONE,
       })
@@ -396,8 +394,8 @@ export struct SliderButtonComponent {
       Column()
         .size(this.getSliderSizeByDirection())
         .backgroundColor(this.getProgressColor())
-        .backgroundBrightnessInternal(this.colorModeViewData.getBrightnessOption(
-          this.getProgressBrightnessInternal()))
+        .backgroundBrightnessInternal(this.isExpand ?
+          this.colorModeViewData.getBrightnessOption(this.getProgressBrightnessInternal()) : undefined)
         .transition(this.isExpand ? this.transEffectData.brightnessTransEffect(this.viewData.subpageSliderScale) :
           undefined)
     }

@@ -610,9 +610,9 @@ export class BluetoothNearLinkFusionController extends ToggleBaseViewModel {
   }
 
   updateIcon() {
+    this.getViewData().isSymbolIcon = true;
     this.getViewData().icon = this.isNearLinkEnable && !this.isBluetoothMode ?
-    $r('sys.symbol.nearlink') : $r('app.media.ic_controlcenter_bt');
-    this.getViewData().isSymbolIcon = this.isNearLinkEnable && !this.isBluetoothMode;
+    $r('sys.symbol.nearlink') : $r('sys.symbol.bluetooth');
   }
 
   private updateLabel() {

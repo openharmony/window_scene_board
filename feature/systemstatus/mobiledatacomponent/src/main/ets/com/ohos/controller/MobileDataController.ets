@@ -134,7 +134,8 @@ export class MobileDataController extends ToggleBaseViewModel {
   constructor() {
     super();
     this.getViewData().label = $r('app.string.control_center_complex_toggle_mobiledata_title');
-    this.getViewData().icon = $r('app.media.ic_mobiledata');
+    this.getViewData().isSymbolIcon = true;
+    this.getViewData().icon = $r('sys.symbol.mobiledata');
     this.onStart();
   }
 

@@ -63,7 +63,8 @@ export class FlashlightController extends ToggleBaseViewModel {
 
   constructor() {
     super();
-    this.getViewData().icon = $r('app.media.ic_flashlight_off');
+    this.getViewData().isSymbolIcon = true;
+    this.getViewData().icon = $r('sys.symbol.flashlight_off');
     this.getViewData().label = $r('app.string.control_center_complex_toggle_flashlight_title');
     this.onStart();
     FlashlightLiveManager.get().init();
@@ -79,11 +80,11 @@ export class FlashlightController extends ToggleBaseViewModel {
   }
 
   updateIcon(): void {
-    // this.getViewData().isUnavailable || !this.getViewData().isOn
+    this.getViewData().isSymbolIcon = true;
     if (!this.getViewData().isOn) {
-      this.getViewData().icon = $r('app.media.ic_flashlight_off');
+      this.getViewData().icon = $r('sys.symbol.flashlight_off');
     } else {
-      this.getViewData().icon = $r('app.media.ic_flashlight_on');
+      this.getViewData().icon = $r('sys.symbol.flashlight_on');
     }
   }
 

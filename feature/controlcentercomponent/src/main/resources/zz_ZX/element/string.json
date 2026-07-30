@@ -1,260 +1,296 @@
 {
     "string":[
         {
-            "name":"screen_recorder_widget_name",
-            "value":"[TS_908563]_Screen recorder"
+            "name": "screen_recorder_widget_name",
+            "value": "[TS_908563]_Screen recorder"
         },
         {
-            "name":"screen_shot_widget_name",
-            "value":"[TS_908562]_Screenshot"
+            "name": "screen_shot_widget_name",
+            "value": "[TS_908562]_Screenshot"
         },
         {
-            "name":"control_center",
-            "value":"[TS_908564]_Control Panel"
+            "name": "control_center",
+            "value": "[TS_908564]_Control Panel"
         },
         {
-            "name":"control_center_edit_panel_dialog_confirm",
-            "value":"[TS_908544]_Save changes?"
+            "name": "control_center_edit_panel_dialog_confirm",
+            "value": "[TS_908544]_Save changes?"
         },
         {
-            "name":"control_center_edit_panel_dialog_not_save",
-            "value":"[TS_908569]_Don't save"
+            "name": "control_center_edit_panel_dialog_not_save",
+            "value": "[TS_908569]_Don't save"
         },
         {
-            "name":"control_center_edit_panel_dialog_save",
-            "value":"[TS_908548]_Save"
+            "name": "control_center_edit_panel_dialog_save",
+            "value": "[TS_908548]_Save"
         },
         {
-            "name":"control_center_edit_panel_tips_max_toggles",
-            "value":"[TS_908574]_Maximum of %d switches."
+            "name": "control_center_edit_panel_tips_max_toggles",
+            "value": "[TS_908574]_Maximum of %d switches."
         },
         {
-            "name":"control_center_edit_panel_collapse_library",
-            "value":"[TS_908571]_Close"
+            "name": "control_center_edit_panel_collapse_library",
+            "value": "[TS_908571]_Close"
         },
         {
-            "name":"control_center_edit_panel_tips_min_toggles",
-            "value":"[TS_908579]_At least %d switches must be kept."
+            "name": "control_center_edit_panel_tips_min_toggles",
+            "value": "[TS_908579]_At least %d switches must be kept."
         },
         {
-            "name":"Control_center_label_color_type_3",
-            "value":"[TS_908578]_#b3ffffff"
+            "name": "Control_center_label_color_type_3",
+            "value": "[TS_908578]_#b3ffffff"
         },
         {
-            "name":"control_center_unlocked_for_editing",
-            "value":"[TS_908561]_Unlock to edit."
+            "name": "control_center_unlocked_for_editing",
+            "value": "[TS_908561]_Unlock to edit."
         },
         {
-            "name":"Control_center_label_color_type_2",
-            "value":"[TS_908550]_#80ffffff"
+            "name": "Control_center_label_color_type_2",
+            "value": "[TS_908550]_#80ffffff"
         },
         {
-            "name":"Control_center_label_color_type_1",
-            "value":"[TS_908559]_#99000000"
+            "name": "Control_center_label_color_type_1",
+            "value": "[TS_908559]_#99000000"
         },
         {
-            "name":"privacy_sensor_multiple_application",
-            "value":"[TS_908577]_%s and others"
+            "name": "privacy_sensor_multiple_application",
+            "value": "[TS_908577]_%s and others"
         },
         {
-            "name":"control_center_edit_panel_title_edit",
-            "value":"[TS_908551]_Edit"
+            "name": "control_center_edit_panel_title_edit",
+            "value": "[TS_908551]_Edit"
         },
         {
-            "name":"control_center_no_available_toggles",
-            "value":"[TS_920938]_No switches to add"
+            "name": "control_center_no_available_toggles",
+            "value": "[TS_920938]_No switches to add"
         },
         {
-            "name":"cc_accessibility_str_privacy_string_camera",
-            "value":"[TS_917492]_Camera"
+            "name": "cc_accessibility_str_privacy_string_camera",
+            "value": "[TS_917492]_Camera"
         },
         {
-            "name":"cc_accessibility_str_entry_edit",
-            "value":"[TS_917504]_Edit Control Panel"
+            "name": "cc_accessibility_str_entry_edit",
+            "value": "[TS_917504]_Edit Control Panel"
         },
         {
-            "name":"cc_accessibility_str_open_candidate_library",
-            "value":"[TS_917500]_Show library"
+            "name": "cc_accessibility_str_open_candidate_library",
+            "value": "[TS_917500]_Show library"
         },
         {
-            "name":"cc_accessibility_str_edit_move_end",
-            "value":"[TS_917490]_Placed"
+            "name": "cc_accessibility_str_edit_move_end",
+            "value": "[TS_917490]_Placed"
         },
         {
-            "name":"cc_accessibility_str_change_brightness_desc",
-            "value":"[TS_917496]_Brightness bar, double-tap then hold and slide left or right to adjust"
+            "name": "cc_accessibility_str_change_brightness_desc",
+            "value": "[TS_917496]_Brightness bar, double-tap then hold and slide left or right to adjust"
         },
         {
-            "name":"cc_accessibility_str_entry_setting",
-            "value":"[TS_917501]_Enter Settings"
+            "name": "cc_accessibility_str_entry_setting",
+            "value": "[TS_917501]_Enter Settings"
         },
         {
-            "name":"cc_accessibility_str_privacy_string_location",
-            "value":"[TS_917491]_Location"
+            "name": "cc_accessibility_str_privacy_string_location",
+            "value": "[TS_917491]_Location"
         },
         {
-            "name":"cc_accessibility_str_collapse_library",
-            "value":"[TS_924259]_Close panel with unadded switches"
+            "name": "cc_accessibility_str_collapse_library",
+            "value": "[TS_924259]_Close panel with unadded switches"
         },
         {
-            "name":"cc_accessibility_str_privacy_string_mic",
-            "value":"[TS_917498]_Microphone"
+            "name": "cc_accessibility_str_privacy_string_mic",
+            "value": "[TS_917498]_Microphone"
         },
         {
-            "name":"cc_accessibility_str_brightness",
-            "value":"[TS_917502]_Screen brightness %s"
+            "name": "cc_accessibility_str_brightness",
+            "value": "[TS_917502]_Screen brightness %s"
         },
         {
-            "name":"cc_accessibility_str_edit_drag_description",
-            "value":"[TS_924257]_Double-tap and drag to rearrange the icons"
+            "name": "cc_accessibility_str_edit_drag_description",
+            "value": "[TS_924257]_Double-tap and drag to rearrange the icons"
         },
         {
-            "name":"cc_accessibility_str_exit_edit",
-            "value":"[TS_917497]_Exit editing"
+            "name": "cc_accessibility_str_exit_edit",
+            "value": "[TS_917497]_Exit editing"
         },
         {
-            "name":"cc_accessibility_str_save_edit",
-            "value":"[TS_917494]_Save changes"
+            "name": "cc_accessibility_str_save_edit",
+            "value": "[TS_917494]_Save changes"
         },
         {
-            "name":"cc_accessibility_str_edit_move_start",
-            "value":"[TS_917493]_Item is being dragged"
+            "name": "cc_accessibility_str_edit_move_start",
+            "value": "[TS_917493]_Item is being dragged"
         },
         {
-            "name":"cc_accessibility_str_button_str",
-            "value":"[TS_924258]_%s button"
+            "name": "cc_accessibility_str_button_str",
+            "value": "[TS_924258]_%s button"
         },
         {
-            "name":"scanner_widget_name",
-            "value":"[TS_923015]_Scan"
+            "name": "scanner_widget_name",
+            "value": "[TS_923015]_Scan"
         },
         {
-            "name":"cc_accessibility_str_change_brightness",
-            "value":"[TS_917499]_Brightness adjusted to %s"
+            "name": "cc_accessibility_str_change_brightness",
+            "value": "[TS_917499]_Brightness adjusted to %s"
         },
         {
-            "name":"multi_window_widget_name",
-            "value":"[TS_916855]_Free windows"
+            "name": "multi_window_widget_name",
+            "value": "[TS_916855]_Free windows"
         },
         {
-            "name":"cc_accessibility_str_privacy_report_string",
-            "value":"[TS_917495]_%1$s accessing %2$s"
+            "name": "cc_accessibility_str_privacy_report_string",
+            "value": "[TS_917495]_%1$s accessing %2$s"
         },
         {
-            "name":"accessed_recently",
-            "value":"[TS_929478]_%s, just now"
+            "name": "accessed_recently",
+            "value": "[TS_929478]_%s, just now"
         },
         {
-            "name":"cc_accessibility_str_exit_sub_page",
-            "value":"[TS_943522]_Exit %s menu"
+            "name": "cc_accessibility_str_exit_sub_page",
+            "value": "[TS_943522]_Exit %s menu"
         },
         {
-            "name":"cc_accessibility_str_entry_edit_page",
-            "value":"[TS_943527]_Open the editing screen"
+            "name": "cc_accessibility_str_entry_edit_page",
+            "value": "[TS_943527]_Open the editing screen"
         },
         {
-            "name":"cc_accessibility_str_library_opened",
-            "value":"[TS_943524]_Opened Control Panel editing screen"
+            "name": "cc_accessibility_str_library_opened",
+            "value": "[TS_943524]_Opened Control Panel editing screen"
         },
         {
-            "name":"cc_accessibility_str_library_closed",
-            "value":"[TS_943526]_Closed the Control Panel editing screen"
+            "name": "cc_accessibility_str_library_closed",
+            "value": "[TS_943526]_Closed the Control Panel editing screen"
         },
         {
-            "name":"cc_accessibility_str_enter_sub_page",
-            "value":"[TS_943523]_Open %s menu"
+            "name": "cc_accessibility_str_enter_sub_page",
+            "value": "[TS_943523]_Open %s menu"
         },
         {
-            "name":"cc_accessibility_str_exit_edit_page",
-            "value":"[TS_943525]_Close the editing screen"
+            "name": "cc_accessibility_str_exit_edit_page",
+            "value": "[TS_943525]_Close the editing screen"
         },
         {
-            "name":"control_center_super_privacy_for_location_toggle",
-            "value":"[TS_956147]_Location access blocked. Disable Super Privacy first."
+            "name": "control_center_super_privacy_for_location_toggle",
+            "value": "[TS_956147]_Location access blocked. Disable Super Privacy first."
         },
         {
-            "name":"control_center_anti_theft_for_toggle",
-            "value":"[TS_975446]_Operation unavailable on demo device."
+            "name": "control_center_anti_theft_for_toggle",
+            "value": "[TS_975446]_Operation unavailable on demo device."
         },
         {
-            "name":"brightness_title",
-            "value":"[TS_966652]_Brightness"
+            "name": "brightness_title",
+            "value": "[TS_966652]_Brightness"
         },
         {
-            "name":"combined_slider_title",
-            "value":"[TS_1094797]_Brightness and volume bars"
+            "name": "combined_slider_title",
+            "value": "[TS_1094797]_Brightness and volume bars"
         },
         {
-            "name":"cc_accessibility_str_privacy_page",
-            "value":"[TS_966615]_Permissions"
+            "name": "cc_accessibility_str_privacy_page",
+            "value": "[TS_966615]_Permissions"
         },
         {
-            "name":"calculator_widget_name",
-            "value":"[TS_1019269]_Calculator"
+            "name": "calculator_widget_name",
+            "value": "[TS_1019269]_Calculator"
         },
         {
-            "name":"clock_timer_widget_name",
-            "value":"[TS_1023579]_Timer"
+            "name": "clock_timer_widget_name",
+            "value": "[TS_1023579]_Timer"
         },
         {
-            "name":"remote_control_widget_name",
-            "value":"[TS_1020536]_Smart Remote"
+            "name": "remote_control_widget_name",
+            "value": "[TS_1020536]_Smart Remote"
         },
         {
-            "name":"sound_recorder_name",
-            "value":"[TS_1019391]_Recorder"
+            "name": "sound_recorder_name",
+            "value": "[TS_1019391]_Recorder"
         },
         {
-            "name":"rotate_to_landscape",
-            "value":"[TS_1072795]_Rotate to landscape orientation first."
+            "name": "rotate_to_landscape",
+            "value": "[TS_1072795]_Rotate to landscape orientation first."
         },
         {
-            "name":"pc_mode",
-            "value":"[TS_1070793]_Computer mode"
+            "name": "pc_mode",
+            "value": "[TS_1070793]_Computer mode"
         },
         {
-            "name":"pad_mode",
-            "value":"[TS_1081107]_Tablet mode"
+            "name": "pad_mode",
+            "value": "[TS_1081107]_Tablet mode"
         },
         {
             "name":"voice_translate_name",
             "value":"[TS_1084910]_Voice Translate"
         },
         {
-            "name":"control_center_edit_panel_tips_max_limit",
-            "value":"[TS_1077916]_Max number of switches added."
+            "name": "control_center_edit_panel_tips_max_limit",
+            "value": "[TS_1077916]_Max number of switches added."
         },
         {
-            "name":"cc_accessibility_str_change_vertical_brightness_desc",
-            "value":"[TS_1086255]_Brightness bar, double tap and hold, then swipe up or down to adjust"
+            "name": "cc_accessibility_str_change_vertical_brightness_desc",
+            "value": "[TS_1086255]_Brightness bar, double tap and hold, then swipe up or down to adjust"
         },
         {
             "name":"cloud_lai",
             "value":"[TS_1085008]_Cloud mode"
         },
         {
-            "name":"multimedia_sensor_bracket_kit",
-            "value":"[TS_1104060]_Gimbal controls"
+            "name": "multimedia_sensor_bracket_kit",
+            "value": "[TS_1104060]_Gimbal controls"
         },
         {
-            "name":"multimedia_sensor_sound_effects",
-            "value":"[TS_1104059]_Sound effects"
+            "name": "multimedia_sensor_sound_effects",
+            "value": "[TS_1104059]_Sound effects"
         },
         {
-            "name":"multimedia_sensor_video_effects",
-            "value":"[TS_1104058]_Video effects"
+            "name": "multimedia_sensor_video_effects",
+            "value": "[TS_1104058]_Video effects"
         },
         {
-            "name":"unfold_to_g_state",
-            "value":"[TS_1111479]_Fully unfold your phone first."
+            "name": "unfold_to_g_state",
+            "value": "[TS_1111479]_Fully unfold your phone first."
         },
         {
-          "name":"computer_mode",
-          "value":"[TS_1105098]_Desktop mode"
+            "name": "computer_mode",
+            "value": "[TS_1105098]_Desktop mode"
         },
-      {
-        "name":"notepad_quick_note_title",
-        "value":"[TS_840472]_Quick note"
-      }
+        {
+            "name": "notepad_quick_note_title",
+            "value": "[TS_840472]_Quick note"
+        },
+        {
+            "name": "top_toggle_data_default",
+            "value": ""
+        },
+        {
+            "name": "top_toggle_data_all",
+            "value": "mediaCard,combined_slider,wifi_ui_extension,bluetooth_ui_extension,hotspot_tagged,mobile_data_tagged,focus_mode"
+        },
+        {
+            "name": "top_toggle_data_default_multiuser",
+            "value": ""
+        },
+        {
+            "name": "toggle_data_default",
+            "value": "wifi_ui_extension,bluetooth_ui_extension,flashlight,ring_mode,auto_rotate,toggle_scanner,ohos_share,air_plane,mobile_data,hotspot,toggle_screenshot,toggle_screen_recorder,CastToggle,location"
+        },
+        {
+            "name": "toggle_data_default_old",
+            "value": "flashlight,ring_mode,auto_rotate,toggle_scanner,ohos_share,air_plane,mobile_data,hotspot,toggle_screenshot,toggle_screen_recorder,CastToggle,music_service,location,nfc,eye_comfort,dark_mode,toggle_Demo,multi_window"
+        },
+        {
+            "name": "toggle_data_all",
+            "value": "wifi_ui_extension,bluetooth_ui_extension,flashlight,ring_mode,auto_rotate,toggle_scanner,ohos_share,air_plane,mobile_data,hotspot,toggle_screenshot,toggle_screen_recorder,CastToggle,location,music_service,nfc,eye_comfort,dark_mode,super_privacy,super_hub,power_save,near_link,youth_mode,anti_peeping,multi_window,quick_note"
+        },
+        {
+            "name": "toggle_data_black_multiuser",
+            "value": "youth_mode,music_service,super_device,hotspot_tagged,hotspot"
+        },
+        {
+            "name": "small_screen_toggle_data_default",
+            "value": "flashlight,ring_mode,air_plane,mobile_data,ohos_share,hotspot,toggle_screenshot,toggle_screen_recorder,music_service,location,nfc"
+        },
+        {
+            "name": "edm_admin_toggles",
+            "value": "wifi_ui_extension,bluetooth_ui_extension,mobile_data,toggle_screenshot,toggle_screen_recorder,hotspot,near_link,location,hotspot_tagged,mobile_data_tagged,air_plane,nfc"
+        }
     ]
 }

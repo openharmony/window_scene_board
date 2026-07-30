@@ -85,12 +85,15 @@ export default struct BrightnessSubpageLayout {
   };
 
   lottieDataReady(): void {
-    this.viewModel.loadLottieData();
-    this.animViewData.useLottieData = this.isLottieDataReady;
+    this.animViewData.useLottieData = false;
+    this.animViewData.useSymbol = true;
+    this.animViewData.sliderIcon = $r('sys.symbol.sun_max');
   }
 
   aboutToAppear(): void {
-    this.animViewData.useLottieData = this.isLottieDataReady;
+    this.animViewData.useLottieData = false;
+    this.animViewData.useSymbol = true;
+    this.animViewData.sliderIcon = $r('sys.symbol.sun_max');
     if (this.isLongSliderButton) {
       this.viewData.setLargeFoldSliderButtonViewData(true);
     }

@@ -285,7 +285,8 @@ export class WifiController extends ToggleBaseViewModel {
     super.onStart();
     log.showInfo('onStart');
     this.setLabel(Constants.DEFAULT_WIFI_NAME);
-    this.getViewData().icon = $r('app.media.wifi');
+    this.getViewData().isSymbolIcon = true;
+    this.getViewData().icon = $r('sys.symbol.wifi');
     AppStorageUtil.setOrCreate('WifiModel_WifiStatus', this.mWifiData, new DataProperty(true, false));
     this.mWifiData = AppStorage.get<WifiData>('WifiModel_WifiStatus') as WifiData;
     try {
@@ -922,7 +923,8 @@ export class WifiController extends ToggleBaseViewModel {
 
   updateIcon() {
     log.showInfo('updateIcon');
-    this.getViewData().icon = this.getViewData().isOn ? $r('app.media.wifi') : $r('app.media.wifi_d')
+    this.getViewData().isSymbolIcon = true;
+    this.getViewData().icon = $r('sys.symbol.wifi');
   }
 }
 

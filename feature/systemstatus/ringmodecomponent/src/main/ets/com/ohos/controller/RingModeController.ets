@@ -96,7 +96,8 @@ export class RingModeController extends ToggleBaseViewModel {
 
   constructor() {
     super();
-    this.getViewData().icon = $r('app.media.ic_controlcenter_ring_on_filled');
+    this.getViewData().isSymbolIcon = true;
+    this.getViewData().icon = $r('sys.symbol.bell');
     this.getViewData().label = $r('app.string.control_center_complex_toggle_ring_mode_title_on');
     this.onStart();
   }
@@ -338,14 +339,15 @@ export class RingModeController extends ToggleBaseViewModel {
   }
 
   updateIconAndLabel(): void {
+    this.getViewData().isSymbolIcon = true;
     if (this.mRingModeData.mode == audio.AudioRingMode.RINGER_MODE_SILENT) {
-      this.getViewData().icon = $r('app.media.ic_controlcenter_ring_off_filled');
+      this.getViewData().icon = $r('sys.symbol.bell_slash');
       this.getViewData().label = $r('app.string.control_center_complex_toggle_ring_mode_title_off');
     } else if (this.mRingModeData.mode == audio.AudioRingMode.RINGER_MODE_VIBRATE) {
-      this.getViewData().icon = $r('app.media.ic_controlcenter_vibration_filled');
+      this.getViewData().icon = $r('sys.symbol.rectangle_portrait_wave_2_fill');
       this.getViewData().label = $r('app.string.control_center_complex_toggle_ring_mode_title_vibration');
     } else if (this.mRingModeData.mode == audio.AudioRingMode.RINGER_MODE_NORMAL) {
-      this.getViewData().icon = $r('app.media.ic_controlcenter_ring_on_filled');
+      this.getViewData().icon = $r('sys.symbol.bell');
       this.getViewData().label = $r('app.string.control_center_complex_toggle_ring_mode_title_on');
     }
   }
