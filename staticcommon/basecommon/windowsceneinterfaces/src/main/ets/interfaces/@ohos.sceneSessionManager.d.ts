@@ -1547,6 +1547,12 @@ declare namespace sceneSessionManager {
     on(type: 'restoreMainWindow', callback: AsyncCallback<void>):void;
 
     /**
+     * Register the callback to restoring the main window from float window.
+     * @param type: 'restoreFloatMainWindow'
+     */
+    on(type: 'restoreFloatMainWindow', callback: Callback<Record<string, Object>>):void;
+
+    /**
      * Register the callback of session force hide change of this scene session.
      * @param type: 'sessionForceHideChange'
      */
