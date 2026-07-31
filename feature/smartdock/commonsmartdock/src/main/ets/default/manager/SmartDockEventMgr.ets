@@ -73,7 +73,6 @@ import type { SmartDockEventInterface } from '../common/interfaces/SmartDockEven
 import SmartDockViewModel from '../viewmodel/SmartDockViewModel';
 import StatusBarServiceEventMgr from './StatusBarServiceEventMgr';
 import { DesktopLayoutState } from '@ohos/launchercommon/src/main/ets/constants/CommonConstants';
-import { VassistantConstants } from '@ohos/commonconstants/src/main/ets/constants/SCBConstants';
 import { AppLockUtils } from '@ohos/launchercommon';
 import lazy { DockHiSysEventMgr } from './DockHiSysEventMgr';
 import { UIContext } from '@kit.ArkUI';
@@ -353,12 +352,7 @@ export class SmartDockEventMgr extends SingleBase implements SmartDockEventInter
         if (mItemRect) {
           params.set(KeyConstants.ITEM_RECT, mItemRect);
         }
-        if (item.bundleName === VassistantConstants.VASSISTANT_LAUNCHER_BUNDLE_NAME) {
-          StartAbilityUtil.startLauncherAbility(VassistantConstants.VASSISTANT_ABILITY_NAME,
-            VassistantConstants.VASSISTANT_BUNDLE_NAME, VassistantConstants.DEFAULT_MODULE_NAME, params);
-        } else {
-          StartAbilityUtil.startLauncherAbility(item.abilityName, item.bundleName, item.moduleName, params);
-        }
+        StartAbilityUtil.startLauncherAbility(item.abilityName, item.bundleName, item.moduleName, params);
       }
       return false;
     } else {
@@ -371,12 +365,7 @@ export class SmartDockEventMgr extends SingleBase implements SmartDockEventInter
         if (mItemRect) {
           params.set(KeyConstants.ITEM_RECT, mItemRect);
         }
-        if (item.bundleName === VassistantConstants.VASSISTANT_LAUNCHER_BUNDLE_NAME) {
-          StartAbilityUtil.startLauncherAbility(VassistantConstants.VASSISTANT_ABILITY_NAME,
-            VassistantConstants.VASSISTANT_BUNDLE_NAME, VassistantConstants.DEFAULT_MODULE_NAME, params);
-        } else {
-          StartAbilityUtil.startLauncherAbility(item.abilityName, item.bundleName, item.moduleName, params);
-        }
+        StartAbilityUtil.startLauncherAbility(item.abilityName, item.bundleName, item.moduleName, params);
       return false;
     }
   }
@@ -713,8 +702,7 @@ export class SmartDockEventMgr extends SingleBase implements SmartDockEventInter
   }
 
   protected closeSceneSession(appInfo: AppItemInfo): void {
-    const appInfoBundleName: string = appInfo.bundleName === VassistantConstants.VASSISTANT_LAUNCHER_BUNDLE_NAME ?
-      VassistantConstants.VASSISTANT_BUNDLE_NAME : appInfo.bundleName;
+    const appInfoBundleName: string = appInfo.bundleName;
     log.showInfo(`menu closeSceneSession bundleName:${appInfoBundleName}, appIndex:${appInfo?.appIndex}`);
     let containerSessionList: SCBSceneContainerSession[] = SCBSceneSessionManager.getInstance().getContainerSessionList();
     containerSessionList.forEach((item) => {

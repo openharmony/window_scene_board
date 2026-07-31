@@ -16,7 +16,6 @@ import {
   AppItemInfo,
   AppModel,
   AtomicServiceAppModel,
-  BundleConstants,
   CardItemInfo,
   CommonConstants,
   FormModel

@@ -44,7 +44,7 @@ import systemParameter from '@ohos.systemparameter';
 const TAG: string = 'FormCenterViewModel';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.FORM, TAG);
 const SCREEN_LOCK_FORM_WHITE_LIST_1X1: string[] =
-  ['com.ohos.vassistant', 'com.ohos.totemweather', 'com.ohos.clock',
+  ['com.ohos.totemweather', 'com.ohos.clock',
     'com.ohos.calculator', 'com.ohos.health', 'com.ohos.musicservice'];
 const SCREEN_LOCK_FORM_WHITE_LIST_1X2: string[] =
   ['com.ohos.totemweather', 'com.ohos.health'];

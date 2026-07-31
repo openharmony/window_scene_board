@@ -21,8 +21,8 @@ import { GridLayoutUtil } from '@ohos/launchercommon';
 import { GridLayoutItemInfo, ResidentLayoutCacheMgr, DockItemInfo, BaseLayoutCacheManager } from '@ohos/launchercommon';
 import { DefaultDesktopLayoutInfo } from '@ohos/launchercommon';
 import { Constants } from '@ohos/commonconstants';
-import { aiBarSettingsDataMgr } from '../aiBar/settings/preference/AiBarSettingsDataMgr';
-import { FloatingNavigationManager } from '../aiBar/proxy/FloatingNavigationManager';
+import { naviBarSettingsDataMgr } from '../naviBar/settings/preference/NaviBarSettingsDataMgr';
+import { FloatingNavigationManager } from '../naviBar/proxy/FloatingNavigationManager';
 import { PreferenceStore } from '@ohos/pagedesktop/src/main/ets/default/common/dao/PreferenceStore';
 import { QueryAutoAlignStatus, Response } from '@ohos/pagedesktop/src/main/ets/default/service/impl/QueryAutoAlignStatus';
 
@@ -302,7 +302,7 @@ export class DesktopInformationReporter {
       PRESETS_STACK_NUM: this.presetsFormStackNumber,
       PRESETS_CARD_NUM: this.presetsCardNumber,
       UPGRADE_CARD_NUM: this.upgradeCardNumber,
-      CLICKBACKSTATUS: aiBarSettingsDataMgr.getClickBackStatus(),
+      CLICKBACKSTATUS: naviBarSettingsDataMgr.getClickBackStatus(),
       ICONSIZE: Number(sSettingsUtil.getSecureValue('desktopIconChangeSize')),
       IS_NAME_SHOW: sSettingsUtil.getSecureValue('isDesktopIconShowName') !== 'false',
       THREE_BTN_POSITION_STYLE_WEEK: FloatingNavigationManager.getInstance().getExchangeBtnStatus(),

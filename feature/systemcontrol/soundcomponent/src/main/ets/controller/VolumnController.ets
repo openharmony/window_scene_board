@@ -93,8 +93,7 @@ export class VolumeController extends BaseController<CommonData> {
     [audio.AudioVolumeType.VOICE_CALL, new VolumeValueInfo()],
     [audio.AudioVolumeType.RINGTONE, new VolumeValueInfo()],
     [audio.AudioVolumeType.MEDIA, new VolumeValueInfo()],
-    [audio.AudioVolumeType.ALARM, new VolumeValueInfo()],
-    [audio.AudioVolumeType.VOICE_ASSISTANT, new VolumeValueInfo()]
+    [audio.AudioVolumeType.ALARM, new VolumeValueInfo()]
   ]);
   // 音量调整最小只能调整到1的音频类型集合
   private minVolumeOneSet: Set<audio.AudioVolumeType> =
@@ -235,8 +234,7 @@ export class VolumeController extends BaseController<CommonData> {
    */
   public updateVolumeUI(): void {
     try {
-      let audioVolumeType = this.isCapturerRunning ? audio.AudioVolumeType.VOICE_ASSISTANT :
-        this.audioVolumeGroupManager?.getActiveVolumeTypeSync(0);
+      let audioVolumeType = this.audioVolumeGroupManager?.getActiveVolumeTypeSync(0);
       log.showInfo(`get audioVolumeType ${audioVolumeType}, this.isCapturerRunning: ${this.isCapturerRunning}`);
       if (audioVolumeType !== undefined && this.volumeInfoMap.has(audioVolumeType)) {
         this.currentVolumeType = audioVolumeType;
@@ -267,10 +265,7 @@ export class VolumeController extends BaseController<CommonData> {
       if (capturerInfo?.capturerInfo?.source === audio.SourceType.SOURCE_TYPE_VOICE_RECOGNITION) {
         this.isCapturerRunning = capturerInfo?.capturerState === audio.AudioState.STATE_RUNNING;
         if (this.isCapturerRunning) {
-          // 语音助手语音输入场景，切换对应通道
           this.isCapturerRunning = true;
-          this.currentVolumeType = audio.AudioVolumeType.VOICE_ASSISTANT;
-          log.showInfo(`updateCapturerUICallback set currentVolumeType ${this.currentVolumeType}`);
           this.refreshVolumeIconDelay();
         } else if (capturerInfo?.capturerState > audio.AudioState.STATE_RUNNING) {
           this.updateVolumeUI();

@@ -121,7 +121,7 @@ export enum DeliverInstallSource {
   /**
    * 应用
    */
-  ABROAD_APP = 2,
+  APP = 2,
 
   /**
    * 未知来源，一般是系统应用

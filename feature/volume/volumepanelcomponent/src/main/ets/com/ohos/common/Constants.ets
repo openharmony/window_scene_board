@@ -45,7 +45,7 @@ export default class Constants {
   public static readonly SYMBOL_SPEAKER_WAVE_2_FILL: Resource = $r('sys.symbol.speaker_wave_2_fill');
   public static readonly SYMBOL_SPEAKER_WAVE_1_FILL: Resource = $r('sys.symbol.speaker_wave_1_fill');
   public static readonly VOLUME_TYPE_WEIGHTS =
-    [audio.AudioVolumeType.VOICE_CALL, audio.AudioVolumeType.VOICE_ASSISTANT, audio.AudioVolumeType.RINGTONE,
+    [audio.AudioVolumeType.VOICE_CALL, audio.AudioVolumeType.RINGTONE,
       audio.AudioVolumeType.ALARM,
       audio.AudioVolumeType.MEDIA, audio.AudioVolumeType.ACCESSIBILITY];
   public static readonly PANEL_CHANNELS =

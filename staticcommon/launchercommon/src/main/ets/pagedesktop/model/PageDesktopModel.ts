@@ -36,7 +36,6 @@ import {
 } from '@ohos/frameworkwrapper';
 import { } from '@ohos/componentanimator';
 import { ItemUtils, desktopUtil, } from '@ohos/componenthelper';
-import { SCBConstants, } from '@ohos/commonconstants';
 import { SCBTransitionManager, SCBSceneSessionManager, launcherStatusUtil, } from '@ohos/windowscene';
 import { GridOccupyStatusEnum, GridOccupyStatus, } from '@ohos/componentdrag';
 import type { AppData, SCBTransitionController, AppInFolderInfo } from '@ohos/windowscene';
@@ -757,7 +756,7 @@ export class PageDesktopModel extends SingleBase {
       exitInfo.iconRect.right = centerOfWidth + outerStackWidth;
       sceneContainerSession.companionIconInfo.iconRadius *= outerStackExitPosScale;
     }
-    if (iconId.includes(SCBConstants.AI_SUGGESTION_BUNDLE_NAME) && exitInfo.iconRect?.left === 0 &&
+    if (iconId.includes('com.ohos.suggestion') && exitInfo.iconRect?.left === 0 &&
       exitInfo.iconRect?.top === 0) {
       // iconId包含语音助手建议包名，且获取位置为0,0,0,0,改变语音助手建议的iconId尝试获取
       let oobeExitInfo = this.getOObeIconRect(exitInfo, sceneContainerSession);
@@ -815,7 +814,7 @@ export class PageDesktopModel extends SingleBase {
       return appExitInfo;
     }
     const isOpenFolder: boolean = FolderManager.getInstance().isFolderOpen();
-    if (!isOpenFolder && !this.isFromSuggestion(companionIconInfo) &&
+    if (!isOpenFolder && !this.isFromCardSuggestion(companionIconInfo) &&
     this.isInDock(companionIconInfo?.bundleName, companionIconInfo?.abilityName, companionIconInfo?.appIndex, companionIconInfo?.shortcutId)) {
       log.showInfo(TAG, `is enter isInDock`);
       appExitInfo.isInScreen = true;
@@ -825,10 +824,9 @@ export class PageDesktopModel extends SingleBase {
     return appExitInfo;
   }
 
-  private isFromSuggestion(companionIconInfo: CompanionIconInfo): boolean {
-    return (companionIconInfo?.startAppType === StartType.AI_SUGGESTION_APP ||
-      (companionIconInfo?.startAppType === StartType.CARD && !CheckEmptyUtils.isEmpty(companionIconInfo.extraId) &&
-        !Number.isNaN(companionIconInfo.extraId)));
+  private isFromCardSuggestion(companionIconInfo: CompanionIconInfo): boolean {
+    return (companionIconInfo?.startAppType === StartType.CARD && !CheckEmptyUtils.isEmpty(companionIconInfo.extraId) &&
+      !Number.isNaN(companionIconInfo.extraId));
   }
 
   /**
@@ -915,17 +913,6 @@ export class PageDesktopModel extends SingleBase {
       return { appInFolderInfo: null, app: null };
     }
 
-    // 语音助手建议优先找位，找到则返回
-    if (this.isFromSuggestion(companionIconInfo)) {
-      // 需注意语音助手建议子图标不在appListInfo里面
-      const suggestionInfo = this.findAppInCurrentShowingPageWithMethod(this.findSuggestAppInPageItems, appGridInfo,
-        companionIconInfo, 'findAppSuggestInfo');
-      if (suggestionInfo?.app != null) {
-        log.showWarn(`findAppInCurrentShowingPage find suggest icon success, iconId:${companionIconInfo?.iconId}`);
-        return suggestionInfo;
-      }
-    }
-
     return this.findAppInCurrentShowingPageWithMethod(this.findAppInCurrentPage, appGridInfo,
       companionIconInfo, 'findAppInfo');
   }
@@ -965,22 +952,7 @@ export class PageDesktopModel extends SingleBase {
   }
 
   /**
-   * 语音助手建议查找元素方法
-   */
-  private findSuggestAppInPageItems: FindAppInPageMethod =
-    (eleInCurrentPage: GridLayoutItemInfo[], companionIconInfo: CompanionIconInfo): AppTransitionInfo => {
-    const app: GridLayoutItemInfo | undefined = eleInCurrentPage?.find((appInfo: GridLayoutItemInfo) => {
-      if (appInfo === null || appInfo === undefined) {
-        log.showWarn(`findSuggestAppInPageItems startAppType is AI_SUGGESTION_APP appInfo is ${appInfo}`);
-        return false;
-      }
-      return this.isFoundAiSuggestion(appInfo, companionIconInfo);
-    });
-    return { appInFolderInfo: null, app: app };
-  }
-
-  /**
-   * 桌面普通元素(非语音助手建议图标)查找方法
+   * 桌面普通元素查找方法
    */
   private findAppInCurrentPage: FindAppInPageMethod =
     (eleInCurrentPage: GridLayoutItemInfo[], companionIconInfo: CompanionIconInfo): AppTransitionInfo => {
@@ -1007,42 +979,6 @@ export class PageDesktopModel extends SingleBase {
     return { appInFolderInfo: appInFolderInfo, app: app };
   }
 
-  private isFoundAiSuggestion(appInfo: GridLayoutItemInfo, companionIconInfo: CompanionIconInfo): boolean {
-    log.showDebug(`isFoundAiSuggestion startAppType=%{public}d, LayoutCardId=%{public}s, LayoutTypeId=%{public}d, companionExtraId=%{public}s`,
-      companionIconInfo.startAppType, appInfo.cardId, appInfo.typeId, companionIconInfo.extraId);
-    if (appInfo?.typeId === CommonConstants.TYPE_FORM_STACK) {
-      const formStackId: string | undefined = appInfo.formStackId;
-      const gridLayoutItemInfo =
-        FormLayoutCacheManager.getInstance().selectGridLayoutItemByFormstackId(formStackId ?? '');
-      let stackCards: GridLayoutItemInfo[] = gridLayoutItemInfo?.layoutInfo?.[0] ?? [];
-      const endIndex = (stackCards?.length ?? 1) - 1;
-      let isStackTop: boolean = stackCards?.[endIndex]?.cardId === companionIconInfo.extraId;
-      if (isStackTop) {
-        log.showWarn(`found in formStack cardId: ${companionIconInfo.extraId}, iconId: ${companionIconInfo.iconId}`);
-        return true;
-      }
-    }
-    if (appInfo?.cardId !== companionIconInfo.extraId) {
-      return false;
-    }
-    if (companionIconInfo.startAppType === StartType.AI_SUGGESTION_APP) {
-      const iconIdList: string[] = (GlobalContext.getInstance().getObject('AiSuggestionSubItems') as string[]) ?? [];
-      let isFound: boolean = iconIdList.includes(companionIconInfo.iconId);
-      if (isFound) {
-        log.showWarn(`found in AiSuggestion cardId: ${companionIconInfo.extraId}, iconId: ${companionIconInfo.iconId}`);
-      } else {
-        let subItems: string = iconIdList.filter(iconId => iconId.endsWith(companionIconInfo.extraId ?? '')).toString();
-        log.showWarn(`find app in AiSuggestion error, cardId: ${companionIconInfo.extraId}, subitems: ${subItems}`);
-      }
-      return isFound;
-    }
-    log.showInfo('isFoundAiSuggestion  startAppType=%{public}d, LayoutCardId=%{public}s, LayoutTypeId=%{public}d,' +
-      ' companionExtraId=%{public}s LayoutKeyName=%{public}s',
-      companionIconInfo.startAppType, appInfo.cardId, appInfo.typeId, companionIconInfo.extraId, appInfo.keyName);
-    // 语音助手推荐中服务卡片，直接返回true
-    return true;
-  }
-
   public searchInCurrentDeskTopPage(companionIconInfo: CompanionIconInfo): AppExitLocationInfo {
     const notInCurrentPage: AppExitLocationInfo = {
       isInScreen: false,
@@ -1060,8 +996,8 @@ export class PageDesktopModel extends SingleBase {
     const app =  appTransitionInfo?.app;
     const isInScreen = app !== null && app !== undefined;
     log.showWarn(`searchInCurrentDeskTopPage ${companionIconInfo?.iconNumber}, ${isInScreen}, ${app?.typeId}`);
-    if (this.isFromSuggestion(companionIconInfo) && app?.typeId !== CommonConstants.TYPE_FORM_STACK && app?.typeId !== CommonConstants.TYPE_CARD) {
-      log.showWarn(`searchInCurrentDeskTopPage isFromSuggestion but find app info, should back to app icon`);
+    if (this.isFromCardSuggestion(companionIconInfo) && app?.typeId !== CommonConstants.TYPE_FORM_STACK && app?.typeId !== CommonConstants.TYPE_CARD) {
+      log.showWarn(`searchInCurrentDeskTopPage isFromCardSuggestion but find app info, should back to app icon`);
       return notInCurrentPage;
     }
     return { isInScreen: isInScreen, iconRect: null, appInFolderInfo: appInFolderInfo, pageIndex: app?.page, type: null };
@@ -1364,7 +1300,7 @@ export class PageDesktopModel extends SingleBase {
     const cardId = (startType === StartType.CARD) ?
       formCardId ?? CloseAppManager.getInstance().getStartCardId() : undefined;
     if (extraId === undefined || extraId === null) {
-      extraId = (startType === StartType.AI_SUGGESTION_APP || startType === StartType.RECENT_DOCK_APP ||
+      extraId = (startType === StartType.RECENT_DOCK_APP ||
         startType === StartType.APP_CENTER_APP) ? CloseAppManager.getInstance().getExtraId() : undefined;
     }
     if (CheckEmptyUtils.checkStrIsEmpty(shortcutId)) {
@@ -1421,7 +1357,7 @@ export class PageDesktopModel extends SingleBase {
       appIndex = 0;
     }
     if (extraId === undefined || extraId === null) {
-      extraId = (startType === StartType.AI_SUGGESTION_APP || startType === StartType.RECENT_DOCK_APP) ?
+      extraId = (startType === StartType.RECENT_DOCK_APP) ?
       CloseAppManager.getInstance().getExtraId() : undefined;
     }
     if (CheckEmptyUtils.checkStrIsEmpty(shortcutId)) {

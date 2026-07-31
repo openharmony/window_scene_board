@@ -8,7 +8,7 @@
             }
         },
         {
-            "name":"Ai_bar_recent_detail",
+            "name":"Navi_bar_recent_detail",
             "value":"Faire glisser le doigt vers le haut depuis le bas de l'écran et maintenir permet de voir les tâches récentes.",
             "attr":{
                 "priority":"translate"
@@ -22,7 +22,7 @@
             }
         },
         {
-            "name":"Ai_bar_recent",
+            "name":"Navi_bar_recent",
             "value":"Affichage des tâches récentes",
             "attr":{
                 "priority":"translate"
@@ -358,7 +358,7 @@
             }
         },
         {
-            "name":"Ai_bar_return_home_detail",
+            "name":"Navi_bar_return_home_detail",
             "value":"Le retour à l'écran d'accueil se fait en glissant le doigt vers le haut depuis le bas de l'écran.",
             "attr":{
                 "priority":"translate"
@@ -456,14 +456,14 @@
             }
         },
         {
-            "name":"Ai_bar_vassistant_dialogue_longpress",
+            "name":"Navi_bar_vassistant_dialogue_longpress",
             "value":"Toucher et maintenir pour voice",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"Ai_bar_return_home",
+            "name":"Navi_bar_return_home",
             "value":"Retour à l'accueil",
             "attr":{
                 "priority":"translate"
@@ -519,7 +519,7 @@
             }
         },
         {
-            "name":"Ai_bar_back_click_navigation",
+            "name":"Navi_bar_back_click_navigation",
             "value":"Retour en arrière en touchant",
             "attr":{
                 "priority":"translate"
@@ -568,7 +568,7 @@
             }
         },
         {
-            "name":"Ai_bar_back",
+            "name":"Navi_bar_back",
             "value":"Retour en arrière",
             "attr":{
                 "priority":"translate"
@@ -694,7 +694,7 @@
             }
         },
         {
-            "name":"Ai_bar_gesture_back_detail",
+            "name":"Navi_bar_gesture_back_detail",
             "value":"Vous pouvez revenir à l'écran précédent en faisant glisser vers l'intérieur depuis le bord gauche ou delivert.",
             "attr":{
                 "priority":"translate"
@@ -757,7 +757,7 @@
             }
         },
         {
-            "name":"Ai_bar_vassistant",
+            "name":"Navi_bar_vassistant",
             "value":"Vous pouvez parler à voice en touchant et maintenant la barre de navigation.",
             "attr":{
                 "priority":"translate"
@@ -820,7 +820,7 @@
             }
         },
         {
-            "name":"Ai_bar_back_detail",
+            "name":"Navi_bar_back_detail",
             "value":"Vous pouvez revenir à l'écran précédent en touchant la barre de navigation.",
             "attr":{
                 "priority":"translate"
@@ -988,7 +988,7 @@
             }
         },
         {
-            "name":"Ai_bar_setting",
+            "name":"Navi_bar_setting",
             "value":"Navigation système",
             "attr":{
                 "priority":"translate"
@@ -1128,7 +1128,7 @@
             }
         },
         {
-            "name":"Ai_bar_vassistant_dialogue",
+            "name":"Navi_bar_vassistant_dialogue",
             "value":"voice Chat",
             "attr":{
                 "priority":"translate"
@@ -1184,7 +1184,7 @@
             }
         },
         {
-            "name":"Ai_bar",
+            "name":"Navi_bar",
             "value":"Barre de navigation",
             "attr":{
                 "priority":"translate"
@@ -1506,7 +1506,7 @@
             }
         },
         {
-            "name":"ai_bar_accessibility_text",
+            "name":"navi_bar_accessibility_text",
             "value":"Barre de navigation, toucher deux fois et maintenir pour parler à voice",
             "attr":{
                 "priority":"translate"

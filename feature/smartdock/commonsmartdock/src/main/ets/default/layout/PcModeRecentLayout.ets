@@ -1220,13 +1220,13 @@ struct AppItem {
       .onAppear(() => {
         log.showInfo('dockMenu onAppear');
         this.setMenuShowStatus(true);
-        this.desktopContext?.eventHub.emit('AIBarShow', true);
+        this.desktopContext?.eventHub.emit('NAVIBarShow', true);
         HiSysEventUtil.reportGoIntoAppShortcutMenu(this.appInfo.bundleName, this.appInfo.appName, 'LAUNCHER');
       })
       .onDisAppear(() => {
         log.showInfo('dockMenu onDisAppear');
         this.setMenuShowStatus(false);
-        this.desktopContext?.eventHub.emit('AIBarShow', false);
+        this.desktopContext?.eventHub.emit('NAVIBarShow', false);
         localEventManager.sendLocalEvent(EventConstants.EVENT_RESET_HIDE_DOCK_AFTER_POPUP_STATE_CALLBACK);
         AppStorage.setOrCreate<string>('notifyEnterFormManagerAnimate', String(this.appInfo.appIconId));
       })

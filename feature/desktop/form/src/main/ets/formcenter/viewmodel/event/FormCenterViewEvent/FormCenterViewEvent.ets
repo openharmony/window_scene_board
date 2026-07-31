@@ -239,7 +239,7 @@ export class FormCenterViewEvent implements FormCenterEventInterface {
       log.showInfo('showView reentrant, do nothing');
       return;
     }
-    GlobalContext.getContext()?.eventHub.emit('AIBarShow', true);
+    GlobalContext.getContext()?.eventHub.emit('NAVIBarShow', true);
     let bindSheetHeight: number = this.mViewData.bindSheetHeight;
     // 外部设置过高度
     if (this.bindSheetStateData.setHeight) {

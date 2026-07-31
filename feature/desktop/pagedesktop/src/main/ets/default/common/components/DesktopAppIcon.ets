@@ -373,25 +373,6 @@ export struct DesktopAppIcon {
       this.pageDesktopViewModel.uninstallApp(uninstallAppInfo.bundleName,
         uninstallAppInfo.isUninstallAble as boolean, uninstallAppInfo.appIndex);
       this.onMenuDialogAutoAlign();
-      // 桌面语音助手图标与语音助手快捷方式包名不同, 卸载桌面语音助手需要把语音助手所有快捷方式卸载
-      if (uninstallAppInfo.bundleName === 'com.ohos.vassistant.launcher') {
-        this.removeAllVassShortCut();
-      }
-  }
-
-  private removeAllVassShortCut(): void {
-    ShortcutViewModel.getInstance().getAllDesktopShortcutFromBMS().then(allShortCuts => {
-      allShortCuts.forEach(item => {
-        if (item.bundleName === 'com.ohos.vassistant') {
-          const appItemInfo: AppItemInfo = new AppItemInfo();
-          appItemInfo.bundleName = item.bundleName;
-          appItemInfo.moduleName = item.moduleName;
-          appItemInfo.appIndex = item.appIndex;
-          appItemInfo.shortcutId = item.id;
-          PageDesktopViewModel.getInstance().removeShortcutItem(appItemInfo);
-        }
-      })
-    });
   }
 
   private uninstallAppBlurAnimation(): void {
@@ -666,13 +647,13 @@ export struct DesktopAppIcon {
       let installSource: string = DeliverUtil.getInstallSourceByIntent(appItem.intent);
       if (installSource === DeliverUtil.DELIVER_APPSTORE_PKG) {
         if (DeliverUtil.isdeliverHapExist()) {
-          DeliverUtil.startdeliverAutoEnterLakeAbility(appItem.bundleName, appItem.iconResource);
+          DeliverUtil.startdeliverAutoOhosAbility(appItem.bundleName, appItem.iconResource);
         } else {
           this.alertDialogByMatchContainerHapStatus(appItem);
         }
-      } else if (installSource === DeliverUtil.ABROAD_APP_PKG) {
-        if (DeliverUtil.isEasyAbroadExist()) {
-          DeliverUtil.startEasyAbroadAutoEnterLakeAbility(appItem.bundleName, appItem.iconResource);
+      } else if (installSource === DeliverUtil.APP_PKG) {
+        if (DeliverUtil.isAppExist()) {
+          DeliverUtil.startAppAutoOhosAbility(appItem.bundleName, appItem.iconResource);
         } else {
           this.alertDialogByMatchContainerHapStatus(appItem);
         }
@@ -703,7 +684,7 @@ export struct DesktopAppIcon {
         LaunchLayoutCacheManager.getInstance().getAllSameBundleNameAppItem(DeliverUtil.DELIVER_APP_BUNDLE_NAME_REAL);
     } else {
       result = LaunchLayoutCacheManager.getInstance()
-        .getAllSameBundleNameAppItem(DeliverUtil.ABROAD_APP_APP_BUNDLE_NAME_REAL);
+        .getAllSameBundleNameAppItem(DeliverUtil.APP_APP_BUNDLE_NAME_REAL);
     }
     if (CheckEmptyUtils.isEmptyArr(result)) {
       let content: string = 'app.string.deliver_app_unavailable_dialog_content';

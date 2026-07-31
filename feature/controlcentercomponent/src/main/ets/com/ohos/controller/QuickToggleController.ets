@@ -193,7 +193,6 @@ export class QuickToggleController {
 
   private isPC: boolean = DeviceHelper.isPC();
 
-  // 类似java中的锁机制, 等待lockResolve被执行之后，lock被释放
   private lockResolve: () => void = () => {};
   private lock: Promise<void> = new Promise(resolve => {
     this.lockResolve = resolve

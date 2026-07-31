@@ -48,7 +48,7 @@ export class FormStackTestUtil {
   static readonly TEST_ITEM_ID1: string = 'ID_1';
   static readonly TEST_ITEM_ID2: string = 'ID_2';
   static readonly TEST_ITEM_BUNDLE_NAME: string = 'com.openharmony.photo';
-  static readonly TEST_ITEM_BUNDLE_NAME2: string = 'com.openharmony.aisuggestion';
+  static readonly TEST_ITEM_BUNDLE_NAME2: string = 'com.openharmony.testbundle2';
   static readonly TEST_FORM_STACK_ID: string = 'FORM_STACK_ID';
   static readonly DEFAULT_ITEM_LEN: number = 3;
 

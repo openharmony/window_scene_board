@@ -764,6 +764,44 @@ export class SCBKeyboardSession {
     }
   }
 
+  public notifyKeyboardAnimationWillBegin(callingId: number, isKeyboardShow: boolean, withAnimation: boolean,
+    panelRect: SCBSessionRect, beginPanelRect?: SCBSessionRect): void {
+    if (CommonUtils.isInvalid(this.session)) {
+      WinLog.showInfo(WinLogDomain.WMS_KEYBOARD,
+        'keyboard session is invalid, notify keyboard animation will begin failed');
+      return;
+    }
+    let beginRect: sceneSessionManager.SessionRect = panelRect.transfer2SessionRect();
+    let endRect: sceneSessionManager.SessionRect = panelRect.transfer2SessionRect();
+    this.calculateBeginRectAndEndRect(isKeyboardShow, beginRect, endRect, panelRect, beginPanelRect);
+    let keyboardAnimationRectConfig = new KeyboardAnimationRectConfig(beginRect, endRect, withAnimation);
+    try {
+      WinLog.showDebug(WinLogDomain.WMS_KEYBOARD,
+        'notifyKeyboardAnimationWillBegin, callingId:' + callingId + ', isKeyboardShow:' + isKeyboardShow);
+      this.session.notifyKeyboardAnimationWillBegin(callingId, isKeyboardShow, keyboardAnimationRectConfig);
+    } catch (err) {
+      WinLog.showError(WinLogDomain.WMS_KEYBOARD, `notify keyboard animation completion failed, code: ${err?.code}`);
+    }
+  }
+
+  public calculateBeginRectAndEndRect(isKeyboardShow: boolean, beginRect: sceneSessionManager.SessionRect,
+    endRect: sceneSessionManager.SessionRect, panelRect: SCBSessionRect, beginPanelRect?: SCBSessionRect): void{
+    if (beginPanelRect !== undefined) {
+      beginRect.posX_ = beginPanelRect.left.getPx();
+      beginRect.posY_ = beginPanelRect.top.getPx();
+      beginRect.width_ = beginPanelRect.width.getPx();
+      beginRect.height_ = beginPanelRect.height.getPx();
+      return;
+    }
+    let screenHeight = SCBKeyboardPanelManager.getInstance().getScreenPropertyForKeyboardPanel()?.height ??
+      (panelRect.top.getPx() + panelRect.height.getPx());
+    if (isKeyboardShow) {
+      beginRect.posY_ = screenHeight;
+    } else {
+      endRect.posY_ = screenHeight;
+    }
+  }
+
   /**
    * update Rect
    *

@@ -225,8 +225,8 @@ export class GestureDockUtil {
       let installSource = DeliverUtil.getInstallSourceByIntent(deliverItemInfo?.intent);
       let newBundleName = GestureDockUtil.getTargetBundleName(installSource);
       let newModuleName = DeliverUtil.DELIVER_APP_MODULE_NAME;
-      let newAbilityName = installSource === DeliverUtil.ABROAD_APP_PKG ?
-        DeliverUtil.ABROAD_APP_APP_ABILITY_NAME : DeliverUtil.DELIVER_APP_ABILITY_NAME;
+      let newAbilityName = installSource === DeliverUtil.APP_PKG ?
+        DeliverUtil.APP_APP_ABILITY_NAME : DeliverUtil.DELIVER_APP_ABILITY_NAME;
       bundleName = newBundleName;
       moduleName = newModuleName;
       abilityName = newAbilityName;
@@ -262,9 +262,9 @@ export class GestureDockUtil {
    */
   public static getTargetBundleName(installSource: string): string {
     let newBundleName: string;
-    if (installSource === DeliverUtil.ABROAD_APP_PKG) {
-      newBundleName = AppModel.getInstance().getAppInfoByBundleName(DeliverUtil.ABROAD_APP_APP_BUNDLE_NAME_REAL) ?
-        DeliverUtil.ABROAD_APP_APP_BUNDLE_NAME_REAL : DeliverUtil.ABROAD_APP_APP_BUNDLE_NAME;
+    if (installSource === DeliverUtil.APP_PKG) {
+      newBundleName = AppModel.getInstance().getAppInfoByBundleName(DeliverUtil.APP_APP_BUNDLE_NAME_REAL) ?
+        DeliverUtil.APP_APP_BUNDLE_NAME_REAL : DeliverUtil.APP_APP_BUNDLE_NAME;
     } else {
       newBundleName = AppModel.getInstance().getAppInfoByBundleName(DeliverUtil.DELIVER_APP_BUNDLE_NAME_REAL) ?
         DeliverUtil.DELIVER_APP_BUNDLE_NAME_REAL : DeliverUtil.DELIVER_APP_BUNDLE_NAME;

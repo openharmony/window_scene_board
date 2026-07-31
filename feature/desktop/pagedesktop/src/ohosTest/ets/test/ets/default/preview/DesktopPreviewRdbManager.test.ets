@@ -26,7 +26,7 @@ import {
 } from '@ohos/hypium';
 import { ObjUtil } from '@ohos/basicutils';
 import { IconResourceManager, RdbStoreConfig } from '@ohos/frameworkwrapper';
-import { BundleConstants, DesktopParam, GridLayoutItemInfo } from '@ohos/launchercommon/src/main/ets/TsIndex';
+import { DesktopParam, GridLayoutItemInfo } from '@ohos/launchercommon/src/main/ets/TsIndex';
 import { Context, contextConstant } from '@kit.AbilityKit';
 import { PreviewUtils } from '../../../../../../main/ets/default/preview/PreviewUtils';
 import { Log } from '../../../../../../main/ets/default/preview/Log';
@@ -437,8 +437,8 @@ export default function DesktopPreviewRdbManagerTest() {
       let mockEmpty: Function = mocker.mockFunc(PreviewUtils, PreviewUtils.isEmpty);
       when(mockEmpty)(ArgumentMatchers.any).afterReturn(true);
       let item: GridLayoutItemInfo = new GridLayoutItemInfo();
-      item.bundleName = BundleConstants.AI_SUGGESTION_BUNDLE;
-      item.abilityName = BundleConstants.AI_SUGGESTION_ABILITY;
+      item.bundleName = 'com.ohos.suggestion';
+      item.abilityName = 'ParentFormAbility';
       manager.getItemName(item, param, (str: string) => {
       });
       when(mockEmpty)(ArgumentMatchers.any).afterReturn(false);
@@ -446,14 +446,14 @@ export default function DesktopPreviewRdbManagerTest() {
       });
       let item1: GridLayoutItemInfo = new GridLayoutItemInfo();
       item1.bundleName = 'com.ohos.sceneboard';
-      item1.abilityName = BundleConstants.AI_SUGGESTION_ABILITY;
+      item1.abilityName = 'ParentFormAbility';
       manager.getItemName(item1, param, (str: string) => {
       });
       let item2: GridLayoutItemInfo = new GridLayoutItemInfo();
       item2.bundleName = 'com.ohos.sceneboard123';
-      item2.abilityName = BundleConstants.AI_SUGGESTION_ABILITY;
+      item2.abilityName = 'ParentFormAbility';
       item2.appLabelId = 0;
-      item2.moduleName = BundleConstants.AI_SUGGESTION_ABILITY;
+      item2.moduleName = 'ParentFormAbility';
       item2.appIndex = 0;
       manager.getItemName(item2, param, (str: string) => {
       });

@@ -217,7 +217,7 @@ struct EditModeButtonList {
   }
 
   aboutToDisappear(): void {
-    GlobalContext.getContext()?.eventHub.emit('AiBarUseAppColor', false);
+    GlobalContext.getContext()?.eventHub.emit('NaviBarUseAppColor', false);
     GlobalContext.getContext()?.eventHub.off(EventConstants.EVENT_UPDATE_PAGE_FOCUS, this.onUpdatePageFocus);
   }
 

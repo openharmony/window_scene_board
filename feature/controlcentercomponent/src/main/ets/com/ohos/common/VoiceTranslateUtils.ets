@@ -21,13 +21,12 @@ const TAG: string = 'VoiceTranslateUtils';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.CC, TAG);
 const MODULE_NAME: string = 'entry';
 const SUPPORT_TRANSLATE_AGENT_METADATA_KEY: string = 'isSupportTranslateAgent';
-const TRANSLATE_AGENT_URI: string = 'translateAgent://com.ohos.vassistant/agent';
-const TRANSLATE_TOOL_URI: string = 'translateTool://com.ohos.vassistant/text';
+const TRANSLATE_AGENT_URI: string = '';
+const TRANSLATE_TOOL_URI: string = '';
 
 export class VoiceTranslateUtils {
 
-  // 语音助手翻译包名
-  public static readonly BUNDLE_NAME: string = 'com.ohos.vassistant';
+  public static readonly BUNDLE_NAME: string = '';
 
   /**
    * 获取不同版本语音助手翻译助手对应的uri链接地址

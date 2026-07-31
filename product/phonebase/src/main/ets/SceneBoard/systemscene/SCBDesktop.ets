@@ -161,7 +161,6 @@ import { OpenFolderComponent } from '@ohos/bigfolder/src/main/ets/default/view/O
 import { FormZoomComponent } from '@ohos/pagedesktop/src/main/ets/default/common/components/formAdjust/view/FormZoomComponent';
 import curves from '@ohos.curves';
 import { BigFolderViewModel, FolderCloseType, OpenFolderAppBubbleNodeManager } from '@ohos/bigfolder';
-import { CardNodeControllerManager } from '@ohos/launchercommon/src/main/ets/manager/CardNodeControllerManager';
 import { ScenePanelState } from '../scenemanager/SCBScenePanel';
 import { PhoneLayoutRulesController } from '../controllers/SceneDesktopController/PhoneLayoutRulesController';
 import { SimplePhoneLayoutRulesController } from '../controllers/SceneDesktopController/SimplePhoneLayoutRulesController';
@@ -177,7 +176,6 @@ import { FormStackExpandView } from '@ohos/formstack/src/main/ets/view/FormStack
 import { FormStackSnapView } from '@ohos/formstack/src/main/ets/view/FormStackSnapView';
 import { FormStackEventReporter } from '@ohos/formstack/src/main/ets/common/FormStackEventReporter';
 import { FormHiSysEventUtil } from '@ohos/form/src/main/ets/default/util/FormHiSysEventUtil';
-import { AiSuggestionEventReporter } from '@ohos/aisuggestion/src/main/ets/default/donate/AiSuggestionEventReporter';
 import { StatusBarSysEventUtil, } from '@ohos/systemuicommon/src/main/ets/statusbar/StatusBarSysEventUtil';
 import { baseStateMgr } from '@ohos/systemuicommon';
 import performanceMonitor from '@ohos.arkui.performanceMonitor';
@@ -199,7 +197,6 @@ import { text } from '@kit.ArkGraphics2D';
 import SmartDockConstants from '@ohos/smartdock/src/main/ets/default/common/constants/SmartDockConstants';
 import lazy StatusBarServiceEventMgr from '@ohos/smartdock/src/main/ets/default/manager/StatusBarServiceEventMgr';
 import { AttributeUpdater } from '@ohos.arkui.modifier';
-import { AiSuggestionBuildItem, AiSuggestionBuildNodeItem } from '@ohos/aisuggestion/src/main/ets/default/components/AiSuggestionBuildItem';
 import lazy { OuterPhoneLayoutRulesController } from '../controllers/SceneDesktopController/OuterPhoneLayoutRulesController';
 import { folderLayout } from '@ohos/pagedesktop/src/main/ets/default/common/components/folder/viewmodel/FolderLayout';
 import { EditModeSingePageViewData } from '@ohos/desktopedit/src/main/ets/default/data/EditModeSingePageViewData';
@@ -1018,7 +1015,6 @@ export struct SCBDesktop {
     viewMgrPolicy.registerViewCallback('SCBThemeEditor', this.themeEditViewCallback);
     FormStackEventReporter.getInstance().startReportAlarm();
     FormHiSysEventUtil.getInstance().startReportAlarm();
-    AiSuggestionEventReporter.getInstance().startReportTask();
     // 设置_通知和状态栏_设置状态点周报
     StatusBarSysEventUtil.getInstance().startReportAlarm();
     let desktopIconChangeSize: string = sSettingsUtil.getSecureValue('desktopIconChangeSize');
@@ -1038,10 +1034,7 @@ export struct SCBDesktop {
     this.registerCacheDesktop();
     AnimateToScheduleUtils.raiseAnimateToGCPriority(AnimateToScheduleUtils.VALUE_START);
 
-    formStackItemViewManager.registerFormStackItemView(FormStackItemViewType.AI_SUGGESTION,
-      new AiSuggestionBuildItem());
     formStackItemViewManager.registerFormStackItemView(FormStackItemViewType.FORM_COMPONENT, new FormBuildItem());
-    CardNodeControllerManager.setAiSuggestionBuildItem(new AiSuggestionBuildNodeItem());
 
     folderLayout.registerFolderActionCallback();
     FolderActionLifeCycleEventManager.getInstance().register(this.mOpenCloseCallback);
@@ -2136,7 +2129,6 @@ export struct SCBDesktop {
     this.unregisterHideDesktop();
     this.unregisterCacheDesktop();
 
-    formStackItemViewManager.unregisterFormStackItemView(FormStackItemViewType.AI_SUGGESTION);
     formStackItemViewManager.unregisterFormStackItemView(FormStackItemViewType.FORM_COMPONENT);
 
     FolderActionLifeCycleEventManager.getInstance().unregister(this.mOpenCloseCallback);

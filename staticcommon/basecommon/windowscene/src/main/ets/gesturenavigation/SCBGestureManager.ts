@@ -103,9 +103,9 @@ class SCBGestureManager {
   private touchEventCallBack: Map<GestureType, Map<string, Function>> = new Map();
   // 手势Home、Recent、Back事件键值对
   private gestureCallBackMap: Map<number, Map<number, Function>> = new Map();
-  private aiBarRect: ViewArea = { left: 0, top: 0, width: 0, height: 0 };
+  private naviBarRect: ViewArea = { left: 0, top: 0, width: 0, height: 0 };
   private pcKeyEventCallBack: Map<string, Function> = new Map();
-  private aiBarChangeAnimCallBack: Function;
+  private naviBarChangeAnimCallBack: Function;
   private enableStateChangeCallBack: Function;
 
   // win + backspace, eg KEYCODE_BACK
@@ -615,8 +615,8 @@ class SCBGestureManager {
     eventFuncMap?.set(persistentId, callback);
   }
 
-  public setAiBarRect(areaRect: ViewArea): void {
-    this.aiBarRect = areaRect;
+  public setNaviBarRect(areaRect: ViewArea): void {
+    this.naviBarRect = areaRect;
   }
 
   /**
@@ -624,21 +624,21 @@ class SCBGestureManager {
    *
    * @return rect
    */
-  public getAiBarRect(): ViewArea {
-    return this.aiBarRect;
+  public getNaviBarRect(): ViewArea {
+    return this.naviBarRect;
   }
 
   /**
-   * unRegister AiBarChangeAnim Callback
+   * unRegister NaviBarChangeAnim Callback
    *
    * @param callback
    */
-  public unRegisterAiBarChangeAnim(): void {
-    this.aiBarChangeAnimCallBack = null;
+  public unRegisterNaviBarChangeAnim(): void {
+    this.naviBarChangeAnimCallBack = null;
   }
 
-  public registerAiBarChangeAnim(callback: Function): void {
-    this.aiBarChangeAnimCallBack = callback;
+  public registerNaviBarChangeAnim(callback: Function): void {
+    this.naviBarChangeAnimCallBack = callback;
   }
 
   public registerGestureEnableStateChange(callback: Function): void {
@@ -649,9 +649,9 @@ class SCBGestureManager {
     this.enableStateChangeCallBack = null;
   }
 
-  public aiBarChange(type: number): void {
-    if (this.aiBarChangeAnimCallBack) {
-      this.aiBarChangeAnimCallBack(type);
+  public naviBarChange(type: number): void {
+    if (this.naviBarChangeAnimCallBack) {
+      this.naviBarChangeAnimCallBack(type);
     }
   }
 

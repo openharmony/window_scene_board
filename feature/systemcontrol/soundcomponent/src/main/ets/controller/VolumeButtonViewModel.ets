@@ -344,13 +344,6 @@ export class VolumeButtonViewModel extends SliderButtonBaseViewModel {
           SymbolRenderingStrategy.MULTIPLE_OPACITY) : this.updateIconWithSymbol($r('sys.symbol.phone_fill'));
         log.showInfo(`updateVolumeIcon use phone icon`);
         break;
-      case audio.AudioVolumeType.VOICE_ASSISTANT:
-        AudioHelper.getInstance().isWirelessDevice(this.outputDevice?.deviceType) ?
-        this.updateIconWithSymbol(
-          IconMap.getFillEarphoneIcon(this.outputDevice?.address as string, this.outputDevice?.deviceType),
-          SymbolRenderingStrategy.MULTIPLE_OPACITY) : this.updateIconWithSymbol($r('sys.symbol.Voice_fill'));
-        log.showInfo(`updateVolumeIcon use voice icon`);
-        break;
       case audio.AudioVolumeType.MEDIA:
         this.updateMediaIcon();
         break;

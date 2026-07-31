@@ -68,7 +68,6 @@ import { ObjectCopyUtil } from '@ohos/componenthelper';
 import { ShortcutViewModel } from '../launchericon/viewmodel/ShortcutViewModel';
 import { ShortcutTransformItem } from './transfromitem/ShortcutTransformItem';
 import { IntentParseUtil } from '../utils/IntentParseUtil';
-import { ExtraData } from '../aisuggestion/ExtraData';
 import { AbroadPackageInfo } from './PackageInfo';
 import { ILegacyInfo } from './transfromitem/AppTransformItem';
 import { RestoreLauncherDataManager } from '../manager/RestoreLauncherDataManager';
@@ -196,7 +195,7 @@ class DataConvert {
       .generateIconByBundleNamesAndUserId(this.notHaveIconPackageNames, this.curUserId);
     // deal with single-framework Unique application
     await this.dealWithSingleUniqueApp(result, this.existAppSet, this.appItemInfoList);
-    this.addEasyAbroadApp(result);
+    this.addAppApp(result);
     // 处理追加卡片
     await AddCardToNewPageManager.getInstance().dealWithAddCard(result);
     this.reportHiSysEventAndClearCache();
@@ -700,11 +699,6 @@ class DataConvert {
         continue;
       }
       if (layoutItem.typeId === CommonConstants.TYPE_CARD) {
-        const portfolioId = ExtraData.getPortfolioId(layoutItem);
-        if (!CheckEmptyUtils.isEmpty(portfolioId) && portfolioId !== 'default') {
-          log.showWarn(TAG, `the card ${layoutItem.cardId}, bundleName ${layoutItem.bundleName} is not in restore, the card was cancelled`);
-          continue;
-        }
         const status: number = await FormModel.getInstance().getCardCloneStatus(layoutItem, existBundleName);
         let cloneItem: CloneItemInfo | undefined =
           this.getFindItemByRestoreData(layoutItem.bundleName, layoutItem?.appIndex ?? 0);
@@ -748,7 +742,7 @@ class DataConvert {
       resultItemList =
         this.dealWithSpecialElement(resultItemList, SceneType.FROM_SCENE_BOARD, DeliverUtil.DELIVER_APPSTORE_PKG);
       resultItemList =
-        this.dealWithSpecialElement(resultItemList, SceneType.FROM_SCENE_BOARD, DeliverUtil.ABROAD_APP_PKG);
+        this.dealWithSpecialElement(resultItemList, SceneType.FROM_SCENE_BOARD, DeliverUtil.APP_PKG);
       this.updateHarmonyAppNames(resultItemList);
     }
     FormRelationManager.getInstance().refreshSceneBoardFormRelationToFile();
@@ -1414,7 +1408,7 @@ class DataConvert {
    * @param targetGridLayoutItem 目标恢复集合
    * @returns 返回待恢复集合
    */
-  private getEasyAbroadApp(targetGridLayoutItem: GridLayoutItemInfo[]): GridLayoutItemInfo[] {
+  private getAppApp(targetGridLayoutItem: GridLayoutItemInfo[]): GridLayoutItemInfo[] {
     if (this.restoreInfo.length === 0) {
       return targetGridLayoutItem;
     }
@@ -1425,7 +1419,7 @@ class DataConvert {
       let keyName = cloneItem.bundleName + cloneItem.appIndex;
       let installSource = DeliverUtil.getInstallSourceByIntent(cloneItem.intent ?? '', true);
       // 应用应用且备份数据中不存在则追加
-      if (installSource === DeliverUtil.ABROAD_APP_PKG && !this.existAppSet.has(keyName)) {
+      if (installSource === DeliverUtil.APP_PKG && !this.existAppSet.has(keyName)) {
         let easyAbroditem: GridLayoutItemInfo = new GridLayoutItemInfo();
         easyAbroditem.bundleName = cloneItem.bundleName;
         easyAbroditem.area = APP_AREA;
@@ -1452,7 +1446,7 @@ class DataConvert {
    * @param targetGridLayoutItem 目标恢复集合
    * @returns
    */
-  private addEasyAbroadApp(targetGridLayoutItem: GridLayoutItemInfo[]): void {
+  private addAppApp(targetGridLayoutItem: GridLayoutItemInfo[]): void {
     if (TransformAppInfoManager.getInstance().getAbroadAutoMigrateAppType() !== AutoMigrateType.MIGRATE ||
       this.getCurUserId() !== DEFAULT_USER_ID) {
       log.showWarn(TAG, 'not allowed auto enter lake');
@@ -1497,7 +1491,7 @@ class DataConvert {
         'requestBundleName': requestBundleName,
         'maskState': NumberConstants.CONSTANT_NUMBER_ONE,
         'appType': AppReserveType.THIRD,
-        'installSource': DeliverUtil.ABROAD_APP_PKG
+        'installSource': DeliverUtil.APP_PKG
       };
       easyAbrodItem.intent = JSON.stringify(extendInfo);
       easyAbrodItem.callerName = CommonConstants.SOURCE_UPGRADE;

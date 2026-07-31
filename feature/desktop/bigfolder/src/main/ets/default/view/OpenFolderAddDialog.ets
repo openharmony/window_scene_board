@@ -651,7 +651,7 @@ export default struct OpenFolderAddDialog {
       }
     }
     .margin({ bottom: DeviceHelper.isPad() || desktopUtil.isFoldExpandStatus() ?
-    FolderAddDialogConstant.DEFAULT_ZERO_VP : FolderAddDialogConstant.AI_BAR_HEIGHT })
+    FolderAddDialogConstant.DEFAULT_ZERO_VP : FolderAddDialogConstant.NAVI_BAR_HEIGHT })
     .onKeyEvent((event?: KeyEvent) => {
       if (event?.keyCode === KeyCode.KEYCODE_BACK) {
         log.showInfo('keycode back hide dialog');

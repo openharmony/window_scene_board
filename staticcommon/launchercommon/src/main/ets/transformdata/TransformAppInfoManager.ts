@@ -29,7 +29,7 @@ const AG_APP_MIGRATE_POLICY = 'ag_module_migrate_policy.json';
 const AUTO_MIGRATE_PRIVACY_CODE = 'auto_migrate_privacy_code.json';
 const ABROAD_AUTO_MIGRATE_PRIVACY_CODE = 'abroad_auto_migrate_privacy_code.json';
 const APP_LIST = 'app_list.json';
-const ABROAD_APP_LIST = 'abroad_app_list.json';
+const OUT_APP_LIST = 'out_app_list.json';
 const APP_RESERVE_POLICY = 'app_reserve_policy.json';
 const BACK_RESTORE_PATH = 'restore/';
 const APP_RESERVE_POLICY_RESERVE = 'reserve';
@@ -57,7 +57,7 @@ export enum AppReserveType {
   // 兜底应用
   OTHER_DELIVER = 4,
   // 应用应用
-  EASYA_BROAD = 5,
+  APP = 5,
   // 快捷方式
   SHORTCUT = 6
 }
@@ -131,7 +131,7 @@ export class TransformAppInfoManager {
     }
     this.saveFileToLocal(THIRD_APP_MIGRATE_POLICY);
     this.saveFileToLocal(APP_LIST);
-    this.saveFileToLocal(ABROAD_APP_LIST);
+    this.saveFileToLocal(OUT_APP_LIST);
     this.saveFileToLocal(APP_RESERVE_POLICY);
     this.saveFileToLocal(ENTERPRISE_APP_MIGRATE_POLICY);
     this.saveFileToLocal(AG_APP_MIGRATE_POLICY);
@@ -341,7 +341,7 @@ export class TransformAppInfoManager {
     if (this.mAppMigrateInfoMap.size === 0) {
       this.loadMigratePolicies();
     }
-    return this.getMigrateByBundleAndType(bundleName, AppReserveType.EASYA_BROAD) !== undefined;
+    return this.getMigrateByBundleAndType(bundleName, AppReserveType.APP) !== undefined;
   }
 
   /**
@@ -538,16 +538,16 @@ export class TransformAppInfoManager {
    *  加载应用虚拟机内应用清单
    */
   public loadAbroadPackageInfos(): void {
-    let config: string = this.getFileString(ABROAD_APP_LIST);
+    let config: string = this.getFileString(OUT_APP_LIST);
     if (CheckEmptyUtils.checkStrIsEmpty(config)) {
-      log.showWarn(TAG, `loadApkInfos config string empty: ${ABROAD_APP_LIST}`);
+      log.showWarn(TAG, `loadApkInfos config string empty: ${OUT_APP_LIST}`);
       return;
     }
     let jsonObject: IJSonAbroadApps;
     try {
       jsonObject = JSON.parse(config);
     } catch (error) {
-      log.showError(TAG, 'parse json error,%{public}s error %{public}s ', ABROAD_APP_LIST, error?.message);
+      log.showError(TAG, 'parse json error,%{public}s error %{public}s ', OUT_APP_LIST, error?.message);
       return;
     }
     let jsonAppList: AbroadPackageInfo[] = jsonObject?.abroadAppList;

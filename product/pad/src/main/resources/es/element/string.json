@@ -8,7 +8,7 @@
             }
         },
         {
-            "name":"Ai_bar_recent_detail",
+            "name":"Navi_bar_recent_detail",
             "value":"Desliza el dedo hacia arriba desde el extremo inferior de la pantalla y detenlo para ver las tareas recientes",
             "attr":{
                 "priority":"translate"
@@ -22,7 +22,7 @@
             }
         },
         {
-            "name":"Ai_bar_recent",
+            "name":"Navi_bar_recent",
             "value":"Ver tareas recientes",
             "attr":{
                 "priority":"translate"
@@ -358,7 +358,7 @@
             }
         },
         {
-            "name":"Ai_bar_return_home_detail",
+            "name":"Navi_bar_return_home_detail",
             "value":"Desliza el dedo hacia arriba desde el extremo inferior de la pantalla para acceder a la pantalla principal",
             "attr":{
                 "priority":"translate"
@@ -449,14 +449,14 @@
             }
         },
         {
-            "name":"Ai_bar_vassistant_dialogue_longpress",
+            "name":"Navi_bar_vassistant_dialogue_longpress",
             "value":"Mantener pulsado para usar voice",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"Ai_bar_return_home",
+            "name":"Navi_bar_return_home",
             "value":"Ir a Inicio",
             "attr":{
                 "priority":"translate"
@@ -512,7 +512,7 @@
             }
         },
         {
-            "name":"Ai_bar_back_click_navigation",
+            "name":"Navi_bar_back_click_navigation",
             "value":"Pulsar para volver",
             "attr":{
                 "priority":"translate"
@@ -561,7 +561,7 @@
             }
         },
         {
-            "name":"Ai_bar_back",
+            "name":"Navi_bar_back",
             "value":"Volver",
             "attr":{
                 "priority":"translate"
@@ -687,7 +687,7 @@
             }
         },
         {
-            "name":"Ai_bar_gesture_back_detail",
+            "name":"Navi_bar_gesture_back_detail",
             "value":"Desliza el dedo hacia el centro desde los bordes izquierdo o derecho para volver a la pantalla anterior.",
             "attr":{
                 "priority":"translate"
@@ -750,7 +750,7 @@
             }
         },
         {
-            "name":"Ai_bar_vassistant",
+            "name":"Navi_bar_vassistant",
             "value":"Mantén pulsada la barra de navegación para hablar con voice.",
             "attr":{
                 "priority":"translate"
@@ -813,7 +813,7 @@
             }
         },
         {
-            "name":"Ai_bar_back_detail",
+            "name":"Navi_bar_back_detail",
             "value":"Pulsa la barra de navegación para volver a la pantalla anterior.",
             "attr":{
                 "priority":"translate"
@@ -974,7 +974,7 @@
             }
         },
         {
-            "name":"Ai_bar_setting",
+            "name":"Navi_bar_setting",
             "value":"Navegación del sistema",
             "attr":{
                 "priority":"translate"
@@ -1114,7 +1114,7 @@
             }
         },
         {
-            "name":"Ai_bar_vassistant_dialogue",
+            "name":"Navi_bar_vassistant_dialogue",
             "value":"Chat de voice",
             "attr":{
                 "priority":"translate"
@@ -1170,7 +1170,7 @@
             }
         },
         {
-            "name":"Ai_bar",
+            "name":"Navi_bar",
             "value":"Barra de navegación",
             "attr":{
                 "priority":"translate"
@@ -1492,7 +1492,7 @@
             }
         },
         {
-            "name":"ai_bar_accessibility_text",
+            "name":"navi_bar_accessibility_text",
             "value":"Barra de navegación, pulsa dos veces y mantén pulsado para hablar con voice",
             "attr":{
                 "priority":"translate"

@@ -47,7 +47,7 @@ import { SCBDefaultZIndex } from '../scenemanager/SCBScreen';
 import singletonBackViewModel, {
   SCBGestureBackViewModel
 } from '../gesturenavigation/back/viewmodel/SCBGestureBackViewModel';
-import { SCBAiBarConstants } from '../aiBar/SCBAiBarConstants';
+import { SCBNaviBarConstants } from '../naviBar/SCBNaviBarConstants';
 import {
   BackEventViewModel
 } from '@ohos/gestureback/src/main/ets/backevent/viewmodel/BackEventViewModel';
@@ -57,7 +57,7 @@ import { DebugCommandsUtils } from '../gesturenavigation/back/utils/DebugCommand
 import { BackEventView } from '../gesturenavigation/back/view/BackEventView';
 import { GlobalContext } from '@ohos/frameworkwrapper';
 import { PowerStatusEnum, PowerStatusMonitor, PowerStatusNotice } from '@ohos/screenlockcommon/Index';
-import { AiBarRegisterFunc, SCBAiBarProxyManager } from '../aiBar/proxy/SCBAiBarProxyManager';
+import { NaviBarRegisterFunc, SCBNaviBarProxyManager } from '../naviBar/proxy/SCBNaviBarProxyManager';
 import { GestureBackMetaBallModel } from '@ohos/gestureback/src/main/ets/metaball/viewmodel/GestureBackMetaBallModel';
 import { GestureBackMetaBall } from '@ohos/gestureback/src/main/ets/metaball/view/GestureBackMetaBall';
 import { systemDateTime } from '@kit.BasicServicesKit';
@@ -70,7 +70,7 @@ import {
 } from '@ohos/gestureback/src/main/ets/metaball/viewmodel/GestureBackMetaBallCallBack';
 import { GestureDockViewModel } from '../gestureDock/dock/viewmodel/GestureDockViewModel';
 import { gestureBackSettings } from '@ohos/gestureback/src/main/ets/common/GestureBackSettings';
-import { FloatingNavigationManager } from '../aiBar/proxy/FloatingNavigationManager';
+import { FloatingNavigationManager } from '../naviBar/proxy/FloatingNavigationManager';
 
 const TAG = 'SCBGestureBack';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.GESTURE, TAG);

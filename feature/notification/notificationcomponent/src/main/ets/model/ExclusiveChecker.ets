@@ -161,19 +161,19 @@ export class ExclusiveChecker {
 
   /**
    * 获取互斥toast距离底部的距离
-   * 1、没有AIBar时toast距离屏幕底部EXCLUSIVE_TOAST_BOTTOM
-   * 2、有AIBar时距离AIBar顶部EXCLUSIVE_TOAST_BOTTOM，因此要加上AIBar的bottom值
+   * 1、没有NAVIBar时toast距离屏幕底部EXCLUSIVE_TOAST_BOTTOM
+   * 2、有NAVIBar时距离NAVIBar顶部EXCLUSIVE_TOAST_BOTTOM，因此要加上NAVIBar的bottom值
    * @returns
    */
   private getToastBottom(): number {
     try {
-      const aiBarRect = scbGestureManager.getAiBarRect();
-      if (!aiBarRect.top || !aiBarRect.height) {
+      const naviBarRect = scbGestureManager.getNaviBarRect();
+      if (!naviBarRect.top || !naviBarRect.height) {
         return EXCLUSIVE_TOAST_BOTTOM;
       }
-      return windowManager.getWindowHeight() - aiBarRect.top + EXCLUSIVE_TOAST_BOTTOM;
+      return windowManager.getWindowHeight() - naviBarRect.top + EXCLUSIVE_TOAST_BOTTOM;
     } catch (e) {
-      log.error('getAiBarHeight error:', e);
+      log.error('getNaviBarHeight error:', e);
       return EXCLUSIVE_TOAST_BOTTOM;
     }
   }

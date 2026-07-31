@@ -721,91 +721,91 @@
             }
         },
         {
-            "name":"Ai_bar_setting",
+            "name":"Navi_bar_setting",
             "value":"System navigation",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"Ai_bar_back",
+            "name":"Navi_bar_back",
             "value":"Go back",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"Ai_bar_vassistant_dialogue",
+            "name":"Navi_bar_vassistant_dialogue",
             "value":"voice Chat",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"Ai_bar_back_click_navigation",
+            "name":"Navi_bar_back_click_navigation",
             "value":"Tap to go back",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"Ai_bar_vassistant_dialogue_longpress",
+            "name":"Navi_bar_vassistant_dialogue_longpress",
             "value":"Touch & hold for voice",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"Ai_bar_back_detail",
+            "name":"Navi_bar_back_detail",
             "value":"Tap the navigation bar to return to the previous screen.",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"Ai_bar_gesture_back_detail",
+            "name":"Navi_bar_gesture_back_detail",
             "value":"Swipe in from the left or right edge to return to the previous screen.",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"Ai_bar_vassistant",
+            "name":"Navi_bar_vassistant",
             "value":"Touch & hold the navigation bar to talk to voice.",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"Ai_bar_return_home",
+            "name":"Navi_bar_return_home",
             "value":"Go home",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"Ai_bar_return_home_detail",
+            "name":"Navi_bar_return_home_detail",
             "value":"Swipe up from the bottom to go to the home screen.",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"Ai_bar_recent",
+            "name":"Navi_bar_recent",
             "value":"View recent tasks",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"Ai_bar_recent_detail",
+            "name":"Navi_bar_recent_detail",
             "value":"Swipe up from the bottom and hold to view recent tasks.",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"Ai_bar",
+            "name":"Navi_bar",
             "value":"Navigation bar",
             "attr":{
                 "priority":"LT"
@@ -1316,7 +1316,7 @@
             }
         },
         {
-            "name":"ai_bar_accessibility_text",
+            "name":"navi_bar_accessibility_text",
             "value":"Navigation bar, tap twice and hold to speak to voice",
             "attr":{
                 "priority":"translate"

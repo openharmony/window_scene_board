@@ -114,16 +114,15 @@ import lazy BundleManager from '@ohos.bundle.bundleManager';
 import lazy { SCBSplitUtils } from '@ohos/windowscene/src/main/ets/scene/utils/SCBSplitUtils';
 import {
   MultiWindowEventConstants,
-  SplitType,
-  VassistantConstants
+  SplitType
 } from '@ohos/commonconstants/src/main/ets/constants/SCBConstants';
 import { quickSwitchRequestActiveAlarm } from '../../recent/scenepanel/quickswitchpanel/QuickSwitchRequestActiveAlarm';
 import { ViewManager } from '@ohos/launchercommon/src/main/ets/manager/ViewManager';
 import systemParameter from '@ohos.systemParameterEnhance';
 import {
   ReplaceReason,
-  AiSplitReason,
-  AiSplitBehavior,
+  SplitReason,
+  SplitBehavior,
   BatchEnterSplitOrMidSceneReason
 } from '@ohos/frameworkwrapper/src/main/ets/hisysevent/ReportParams';
 import UnLockConstants from '@ohos/screenlockcomponent/src/main/ets/common/Constants';
@@ -199,7 +198,7 @@ import lazy {
 } from '@ohos/windowscene/src/main/ets/scene/session/SCBSplitParam';
 import { SCBRotateUtils } from '../utils/SCBRotateUtils';
 import { QuitAppRectViewModel } from '@ohos/pagedesktop/src/main/ets/default/common/viewmodel/QuitAppRectViewModel';
-import { AIBarViewModel } from '../../aiBar/AIBarModel/AIBarViewModel';
+import { NAVIBarViewModel } from '../../naviBar/NAVIBarModel/NAVIBarViewModel';
 import { RecentStartScene } from '../../recent/scenepanel/recentpanel/RecentStartScene';
 import { CurrentMemScene, PerformanceReporter } from '@ohos/frameworkcommon/src/main/ets/TsIndex';
 import { OneStepState } from '@ohos/gesturenavigation/src/main/ets/constants/CommonConstants';
@@ -252,7 +251,6 @@ import { ENABLE_FORCE_CLOSE_HDR } from '@ohos/systemuicommon/src/main/ets/templa
 import { SCBPhoneSceneMissionProcessor } from './missionmanagement/SCBPhoneSceneMissionProcessor';
 import { SCBSceneStartInterceptor, StartInterceptions } from '@ohos/windowscene/src/main/ets/scene/framework/missions/SCBSceneStartInterceptor';
 import { INVALID_PERSISTENT_ID } from '@ohos/windowscene/src/main/ets/scene/session/SCBSceneSession';
-import { SCBVassistantMissionHandler } from './missionmanagement/SCBVassistantMissionHandler';
 import { RecentZoomAlarm } from '../../recent/scenepanel/recentpanel/RecentZoomAlarm';
 import { WinLog, WinLogDomain } from '@ohos/windowscene/src/main/ets/utils/WinLog';
 import { SwipeAppToCapsuleAnimation } from '@ohos/systemuicommon/src/main/ets/animation/SwipeAppToCapsuleAnimation';
@@ -946,13 +944,8 @@ export class SCBScenePanelViewModel extends SCBBaseScenePanelViewModel<SCBMainPa
     return false;
   }
 
-  // 检查是否需要语音助手拦截
-  private interceptRuleForVassistant = (sceneInfo: SCBSceneInfo, startFrom: StartInterceptions) => {
-    const result = SCBVassistantMissionHandler.getInstance().startInterceptor(sceneInfo, startFrom);
-    if (result) {
-      winLog.showWarn(`start ${startFrom} intercepted by Vassistant`);
-    }
-    return result;
+  private interceptRuleForVassistant = (_sceneInfo: SCBSceneInfo, _startFrom: StartInterceptions) => {
+    return false;
   }
 
   // ----------------------------------------------------------------------------------------------------
@@ -2535,8 +2528,8 @@ export class SCBScenePanelViewModel extends SCBBaseScenePanelViewModel<SCBMainPa
       SCBTransitionManager.getInstance().notifySceneTransitionIn(transitionController, true);
     }
     this.updateScreenRotationPropertyForRecent(targetRotation, sceneContainerSession);
-    AIBarViewModel.getInstance(this.screenProperty)
-      .updateAiBarHotAreaRectForRecent(this.screenProperty, targetRotation);
+    NAVIBarViewModel.getInstance(this.screenProperty)
+      .updateNaviBarHotAreaRectForRecent(this.screenProperty, targetRotation);
     this.panelMgr.raiseSceneToTop(sceneContainerSession);
     // activation/background after adding to window tree
     sceneContainerSession.requestActivation(false);
@@ -3493,17 +3486,11 @@ export class SCBScenePanelViewModel extends SCBBaseScenePanelViewModel<SCBMainPa
     // 动效打断设置
     let session = sceneContainerSession.getFocusedSession();
     let adapterSceneInfo: SCBSceneInfo | undefined = session?.sceneInfo;
-    if (adapterSceneInfo?.bundleName === VassistantConstants.VASSISTANT_BUNDLE_NAME) {
-      adapterSceneInfo = SceneInfoAdapterUtil.getAdapterSceneInfo(adapterSceneInfo.bundleName,
-        adapterSceneInfo.moduleName, adapterSceneInfo.abilityName, adapterSceneInfo.appIndex);
-    }
     const companionIconInfoBundleName: string | undefined = sceneContainerSession.companionIconInfo?.bundleName;
     const primarySessionBundleName: string | undefined = sceneContainerSession.primarySession?.sceneInfo.bundleName;
     homeLog.showInfo(`exitApp bundleName is: ${companionIconInfoBundleName}, primarySessionBundleName is: ${primarySessionBundleName}`);
     if (companionIconInfoBundleName && primarySessionBundleName && companionIconInfoBundleName !== primarySessionBundleName) {
-      if (sceneContainerSession.companionIconInfo.startAppType !== StartType.AI_SUGGESTION_APP) {
-        sceneContainerSession.companionIconInfo.startAppType = StartType.APP;
-      }
+      sceneContainerSession.companionIconInfo.startAppType = StartType.APP;
     }
     let controller = this.getTargetTransitionController(sceneContainerSession, adapterSceneInfo, true);
     this.setTransitionAnimCancel(controller, sceneContainerSession, 'requestSceneContainerBackgroundWithTransition');
@@ -3622,9 +3609,6 @@ export class SCBScenePanelViewModel extends SCBBaseScenePanelViewModel<SCBMainPa
       return;
     }
     let bundleName: string = sceneInfo.bundleName;
-    if (bundleName === VassistantConstants.VASSISTANT_BUNDLE_NAME) {
-      bundleName = VassistantConstants.VASSISTANT_LAUNCHER_BUNDLE_NAME;
-    }
     let transitionController = SCBTransitionManager.getInstance()
       .findTransitionController(bundleName, () => {
         return PageDesktopModel.getInstance().getCloseAppData(bundleName, sceneInfo.abilityName,
@@ -4617,11 +4601,6 @@ export class SCBScenePanelViewModel extends SCBBaseScenePanelViewModel<SCBMainPa
       this.panelMgr.addSceneContainerSession(sceneContainerSession);
     }
     let animationFinishedCallback = this.dataCollectionHandler?.getAnimationFinishedCallback();
-    // 应用已经在悬浮窗打开. 但是用户还是分屏打开该应用的指令.
-    let callFromVoiceAndHasOpenFloat = sceneInfo.callerBundleName === VassistantConstants.VASSISTANT_BUNDLE_NAME && (
-      sceneInfo.callerAbilityName === 'SplitScreenServiceExtAbility' || sceneInfo.callerAbilityName ===
-      VassistantConstants.VASSISTANT_ABILITY_FOR_LABEL) && sceneContainerSession &&
-    sceneContainerSession.isFloat && sceneContainerSession.isActive;
     // if (!sceneContainerSession?.isMidScene && animationFinishedCallback) {
     //   homeLog.showInfo('[SCBMain]onStartSceneFromOther called startSceneFromOtherToFloatIfNeed');
     //   return CommonResult.SUCCESS;
@@ -4791,7 +4770,7 @@ export class SCBScenePanelViewModel extends SCBBaseScenePanelViewModel<SCBMainPa
     }
 
     // 语音助手半屏到全屏启动 屏蔽动效
-    if (this.isVassistantScene(sceneInfo) || this.isScreenShotScene(sceneInfo)) {
+    if (this.isScreenShotScene(sceneInfo)) {
       sceneContainerSession?.needRenderBorderRadius.setBorderRadiusWithDfx(0, TAG, 'startVassistantScene');
       QuickSwitchRaiseTopAlarm.getInstance().cancel('startVassistantScene');
       return CommonResult.SUCCESS;
@@ -4933,14 +4912,6 @@ export class SCBScenePanelViewModel extends SCBBaseScenePanelViewModel<SCBMainPa
     //   sceneContainerSession.needRenderBorderRadius.setBorderRadiusWithDfx(CommonConstants.DEFAULT_WINDOWS_RADIUS_0, TAG,
     //     'sceneContainerZoomInFromQuickAccessMenu', sceneContainerSession.getName());
     // })
-  }
-
-  public isVassistantScene(sceneInfo: SCBSceneInfo): boolean {
-    const vassistantBundleName = 'com.ohos.vassistant';
-    const vassistantAbilityName = 'WakeupServiceExtAbility';
-    const targetAbilityName = 'VoiceAbility';
-    return sceneInfo.bundleName === vassistantBundleName && sceneInfo.callerAbilityName === vassistantAbilityName &&
-      sceneInfo.abilityName === targetAbilityName;
   }
 
   public isScreenShotScene(sceneInfo: SCBSceneInfo): boolean {
@@ -6182,8 +6153,7 @@ export class SCBScenePanelViewModel extends SCBBaseScenePanelViewModel<SCBMainPa
     let isInRecent = this.isRecentState();
     homeLog.showInfo(`[SCBFloat] isFloatingWindowMode, scenePanelState: ` +
       `${this.stateCollectionHandler?.getPanelState()}, persistentId: ${sceneInfo.persistentId}`);
-    let bundleName: string = sceneInfo.bundleName === VassistantConstants.VASSISTANT_BUNDLE_NAME ?
-    VassistantConstants.VASSISTANT_LAUNCHER_BUNDLE_NAME : sceneInfo.bundleName;
+    let bundleName: string = sceneInfo.bundleName;
     if (this.checkIfThisAppIsActive(sceneInfo, isInRecent, isInSideEdgeBar)) {
       return false;
     }
@@ -6742,7 +6712,7 @@ export class SCBScenePanelViewModel extends SCBBaseScenePanelViewModel<SCBMainPa
       } else if (quickSwitchViewModel.isAnimatingState()) {
         isShowStatusBar = true;
       }
-      AIBarViewModel.getInstance(this.screenProperty).updateAiBarHotAreaRectForRecent(this.screenProperty);
+      NAVIBarViewModel.getInstance(this.screenProperty).updateNaviBarHotAreaRectForRecent(this.screenProperty);
       this.checkIfNeedRecoverScreenProperty(RotateFuncType.START_SCENE);
       this.dataCollectionHandler?.setNeedRemoveBlank(false);
       containerSession.setNeedSyncSessionRect(true);
@@ -7908,7 +7878,7 @@ export class SCBScenePanelViewModel extends SCBBaseScenePanelViewModel<SCBMainPa
     let secondaryBundleName: string = secondaryAppSceneInfo.bundleName;
     homeLog.showInfo(`[SCBSplit] bundleName: ${primaryBundleName}, ${secondaryBundleName}; ` +
       `switchType: ${switchType}`);
-    let aiSplitReason: AiSplitReason = SCBSceneWindowAiSplitSwitchUtils.getInstance().getAiSplitReason();
+    let SplitReason: SplitReason = SCBSceneWindowAiSplitSwitchUtils.getInstance().getSplitReason();
     const currentPanelState = this.stateCollectionHandler?.getPanelState();
     if (topContainerSession === null || currentPanelState !== ScenePanelState.FULLSCENE) {
       homeLog.showWarn('[SCBSplit] non-full-screen application scenarios do not support split-screen.');
@@ -7976,7 +7946,7 @@ export class SCBScenePanelViewModel extends SCBBaseScenePanelViewModel<SCBMainPa
     let context: common.ServiceExtensionContext = GlobalContext.getContext() as common.ServiceExtensionContext;
     let primaryAppBundleName: string = primaryAppSceneInfo.bundleName;
     let secondaryAppBundleName: string = secondaryAppSceneInfo.bundleName;
-    let aiSplitReason: AiSplitReason = SCBSceneWindowAiSplitSwitchUtils.getInstance().getAiSplitReason();
+    let SplitReason: SplitReason = SCBSceneWindowAiSplitSwitchUtils.getInstance().getSplitReason();
     SCBSceneWindowAiSplitSwitchUtils.getInstance().setIsSharingIntent(true);
     SCBSceneWindowAiSplitSwitchUtils.getInstance().setRateLimitLock(false);
   }
@@ -7990,8 +7960,8 @@ export class SCBScenePanelViewModel extends SCBBaseScenePanelViewModel<SCBMainPa
     let secondaryAppBundleName: string = secondaryAppSceneInfo.bundleName;
     let secondaryAppModuleName: string = secondaryAppSceneInfo.moduleName;
     let secondaryAppAbilityName: string = secondaryAppSceneInfo.abilityName;
-    let aiSplitReason: AiSplitReason = SCBSceneWindowAiSplitSwitchUtils.getInstance().getAiSplitReason();
-    let reportData: string = `reason: ${aiSplitReason}; AppList: ${primaryAppBundleName}, ${secondaryAppBundleName}`;
+    let SplitReason: SplitReason = SCBSceneWindowAiSplitSwitchUtils.getInstance().getSplitReason();
+    let reportData: string = `reason: ${SplitReason}; AppList: ${primaryAppBundleName}, ${secondaryAppBundleName}`;
     let title = GlobalContext.getContext().resourceManager.getStringSync($r('app.string.Ai_Split_Title').id);
     homeLog.showInfo(`[getIntent] start set split intent: ${primaryAppBundleName} and ${secondaryAppBundleName}`);
     let executeIntent: Object = Object({
@@ -8018,7 +7988,7 @@ export class SCBScenePanelViewModel extends SCBBaseScenePanelViewModel<SCBMainPa
     let executeIntentStr: string = JSON.stringify(executeIntent);
     // let viewSplitScreen: insightIntent.InsightIntent = {
     let viewSplitScreen: ESObject = {
-      intentName: 'AiBarEventTrigger',
+      intentName: 'NaviBarEventTrigger',
       intentVersion: '1.0.1',
       identifier: '52dac3b0-6520-4974-81e5-25f0879449b5',
       intentActionInfo: {
@@ -8026,7 +7996,7 @@ export class SCBScenePanelViewModel extends SCBBaseScenePanelViewModel<SCBMainPa
       // },
       } as ESObject,
       intentEntityInfo: {
-        entityName: 'AiBarEvent',
+        entityName: 'NaviBarEvent',
         entityId: primaryAppBundleName + '_' + secondaryAppBundleName,
         eventType: 'EnterScene',
         sceneId: '000202508010003',

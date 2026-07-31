@@ -233,11 +233,6 @@ export class DesktopPreviewRdbManager {
       callBack(item.appName);
       return;
     }
-    if (PreviewUtils.isVoiceAbilityForm(item.bundleName, item.abilityName) && callBack) {
-    Log.showInfo(TAG, `isVoiceAbilityForm name ${desktopParam.voiceCardName}`);
-      callBack(desktopParam.voiceCardName);
-      return;
-    }
     let res: string = '';
     if (NoIconAppModel.getInstance().checkIfBundleIsNoIconApp(item.bundleName) && callBack) {
       res = NoIconAppModel.getInstance().updateNoIconAppInfo(item.bundleName).label;

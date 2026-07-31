@@ -31,7 +31,7 @@ In terms of responsibilities, SceneBoard provides capabilities for three types o
   - Hosts system UI such as wallpaper, desktop, status bar, lock screen, notifications, and Dock as system windows.
   - Uses unified window session management to bring system UI and application windows into the same window-control management framework.
 4. Product integration
-  - Provides entry capabilities in product modules such as `phone`, `pad`, and `pc`.
+  - Provides entry capabilities in product modules such as `phone`and `pc`.
 
 ## Architecture Overview
 SceneBoard is a layered framework that spans foundational session management to product integration. It connects screen management, window management for both system windows and application windows, and product-level entry points, and is ultimately packaged as a deployable HAP program for product-side use.
@@ -47,7 +47,7 @@ SceneBoard adopts a three-layer architecture: common capability layer, feature l
   - Centered on `feature`, encapsulating reusable capabilities across products, including desktop and window-related features.
 
 3. Product layer
-  - Centered on `product`, currently supporting the three product types `phone`, `pad`, and `pc`.
+  - Centered on `product`, currently supporting the two product types `phone` and `pc`.
   - Assembles the common layer and feature layer into concrete product forms, with `ServiceExtensionAbility` as the entry point.
 
 Collaboration flow:
@@ -83,7 +83,6 @@ The table below lists the core modules in this repository that are directly rela
 | `feature/commonscbscreen` | Common heterogeneous virtual-screen management, providing a general application window panel. |
 | `feature/pcmode` | Freeform windows, layout policies, window animations, and panel management for PC mode. |
 | `product/phone` | Integration entry for phone products. |
-| `product/pad` | Integration entry for tablet products. |
 | `product/pc` | Integration entry for PC products. |
 | `scripts` / `hvigor` | Build, synchronization, and engineering scripts. |
 
@@ -92,7 +91,7 @@ The table below lists the core modules in this repository that are directly rela
 2. `commonscbscreen` builds on `windowscene` to encapsulate a general heterogeneous virtual-screen management framework and provides plug-and-play screen containers for products.
 3. `pcmode` extends `windowscene` with capabilities such as freeform windows, split screen, and PC mode, and provides advanced window management policies for the product layer.
 4. `phonebase` and `pcbase` define their respective `SCBScreen` implementations, system windows, hierarchy rules, and interaction logic on top of the common capabilities.
-5. `phone`, `pad`, and `pc` are the final integration layer. They launch SceneBoard through `ServiceExtensionAbility` and connect the base screen implementation.
+5. `phone`and `pc` are the final integration layer. They launch SceneBoard through `ServiceExtensionAbility` and connect the base screen implementation.
 
 ## Development Steps
 
@@ -104,7 +103,7 @@ Implementation approach:
 2. Integrate the required feature modules and common modules in `oh-package.json5` as needed.
 3. Mount `SCBScreen` through `RootScene` on the `ServiceExtensionAbility` ArkUI page.
 
-The current `phone`, `pad`, and `pc` products all use this entry pattern.
+The current `phone` and `pc` products all use this entry pattern.
 
 ### Customize the SCBScreen Control
 Applicable scenario: product-specific system windows, hierarchy rules, gesture handling, or animation logic need to be added.
@@ -146,7 +145,6 @@ scene_board
 │  ├─commonscbscreen                 # Common screen and window panel template
 │  └─pcmode                          # PC mode, freeform windows, and split-screen capabilities
 ├─product                            # Product integration layer
-│  ├─pad                             # Tablet product module
 │  ├─pc                              # PC product module
 │  ├─pcbase                          # PC product base capabilities
 │  ├─phone                           # Phone product module

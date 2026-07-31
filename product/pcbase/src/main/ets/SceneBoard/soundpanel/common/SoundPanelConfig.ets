@@ -46,12 +46,6 @@ export const soundPanelConfig: VolumeConfig = {
       label: $r('app.string.sound_calls'),
       iconDisable: $r('app.media.ic_public_phone'),
     },
-    {
-      id: AudioVolumeType.VOICE_ASSISTANT,
-      icon: $r('app.media.ic_public_voice'),
-      label: $r('app.string.sound_ai_voice'),
-      iconDisable: $r('app.media.ic_public_voice'),
-    },
   ],
 };
 

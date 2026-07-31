@@ -8,7 +8,7 @@
             }
         },
         {
-            "name":"Ai_bar_recent_detail",
+            "name":"Navi_bar_recent_detail",
             "value":"Проведите вверх с нижней части экрана и задержите палец, чтобы посмотреть недавние задачи.",
             "attr":{
                 "priority":"translate"
@@ -22,7 +22,7 @@
             }
         },
         {
-            "name":"Ai_bar_recent",
+            "name":"Navi_bar_recent",
             "value":"Просмотр текущих задач",
             "attr":{
                 "priority":"translate"
@@ -358,7 +358,7 @@
             }
         },
         {
-            "name":"Ai_bar_return_home_detail",
+            "name":"Navi_bar_return_home_detail",
             "value":"Проведите вверх с нижней части экрана, чтобы перейти на рабочий экран",
             "attr":{
                 "priority":"translate"
@@ -449,14 +449,14 @@
             }
         },
         {
-            "name":"Ai_bar_vassistant_dialogue_longpress",
+            "name":"Navi_bar_vassistant_dialogue_longpress",
             "value":"Нажатие и удержание для использования voice",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"Ai_bar_return_home",
+            "name":"Navi_bar_return_home",
             "value":"Рабочий экран",
             "attr":{
                 "priority":"translate"
@@ -512,7 +512,7 @@
             }
         },
         {
-            "name":"Ai_bar_back_click_navigation",
+            "name":"Navi_bar_back_click_navigation",
             "value":"Нажатие для возврата",
             "attr":{
                 "priority":"translate"
@@ -582,7 +582,7 @@
             }
         },
         {
-            "name":"Ai_bar_back",
+            "name":"Navi_bar_back",
             "value":"Назад",
             "attr":{
                 "priority":"translate"
@@ -729,7 +729,7 @@
             }
         },
         {
-            "name":"Ai_bar_gesture_back_detail",
+            "name":"Navi_bar_gesture_back_detail",
             "value":"Проведите в центр от левого или правого края экрана, чтобы вернуться на предыдущий экран.",
             "attr":{
                 "priority":"translate"
@@ -806,7 +806,7 @@
             }
         },
         {
-            "name":"Ai_bar_vassistant",
+            "name":"Navi_bar_vassistant",
             "value":"Нажмите и удерживайте панель навигации, чтобы обратиться к voice.",
             "attr":{
                 "priority":"translate"
@@ -834,7 +834,7 @@
             }
         },
         {
-            "name":"ai_bar_accessibility_text",
+            "name":"navi_bar_accessibility_text",
             "value":"Панель навигации, нажмите дважды и удерживайте, чтобы обратиться к voice",
             "attr":{
                 "priority":"translate"
@@ -883,7 +883,7 @@
             }
         },
         {
-            "name":"Ai_bar_back_detail",
+            "name":"Navi_bar_back_detail",
             "value":"Нажмите на панель навигации, чтобы вернуться на предыдущий экран.",
             "attr":{
                 "priority":"translate"
@@ -1058,7 +1058,7 @@
             }
         },
         {
-            "name":"Ai_bar_setting",
+            "name":"Navi_bar_setting",
             "value":"Системная навигация",
             "attr":{
                 "priority":"translate"
@@ -1212,7 +1212,7 @@
             }
         },
         {
-            "name":"Ai_bar_vassistant_dialogue",
+            "name":"Navi_bar_vassistant_dialogue",
             "value":"Общение с voice",
             "attr":{
                 "priority":"translate"
@@ -1268,7 +1268,7 @@
             }
         },
         {
-            "name":"Ai_bar",
+            "name":"Navi_bar",
             "value":"Панель навигации",
             "attr":{
                 "priority":"translate"

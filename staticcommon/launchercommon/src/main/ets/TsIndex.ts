@@ -230,7 +230,7 @@ export { ShortcutViewModel } from './launchericon/viewmodel/ShortcutViewModel';
 
 export { KeyConstants, FolderActionFlag } from './constants/CommonConstants';
 
-export { BundleConstants, ComponentConstants } from './constants/CommonConstants';
+export { ComponentConstants } from './constants/CommonConstants';
 
 export { LayoutRulesController } from './viewmodel/LayoutRulesController';
 
@@ -772,4 +772,4 @@ export { ASCFWindowMgrListener } from './manager/ASCFWindowManagerListener';
 
 export { DirtyFormCorrector } from './db/gridlayoutcorrector/DirtyFormCorrector';
 
-export { AiBarCloneCallbackManager } from './manager/AiBarCloneCallbackManager';
+export { NaviBarCloneCallbackManager } from './manager/NaviBarCloneCallbackManager';

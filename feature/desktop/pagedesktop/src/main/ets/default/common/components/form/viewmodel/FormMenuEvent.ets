@@ -90,7 +90,7 @@ export class FormMenuEvent {
         this.setMenuShowState(false);
         this.mSetAppNameDisappear?.(false);
         this.mFormMenuVm.mIsHiddenEffect = false;
-        this.desktopContext?.eventHub.emit('AIBarShow', false);
+        this.desktopContext?.eventHub.emit('NAVIBarShow', false);
         this.desktopContext?.eventHub.emit(CommonConstants.EVENTHUB_FORM_MENU_DISAPPEAR);
       },
       onWillAppear: () => {
@@ -144,7 +144,7 @@ export class FormMenuEvent {
         log.showWarn('rightClickContext menu onDisappear');
         this.mSetFormOpacity?.(1);
         this.mSetAppNameDisappear?.(false);
-        this.desktopContext?.eventHub.emit('AIBarShow', false);
+        this.desktopContext?.eventHub.emit('NAVIBarShow', false);
         this.desktopContext?.eventHub.emit(CommonConstants.EVENTHUB_FORM_MENU_DISAPPEAR);
       },
       previewAnimationOptions: {
@@ -209,7 +209,7 @@ export class FormMenuEvent {
       FormZoomViewManager.getInstance().hideFormZoomView();
     }
     this.mSetAppNameDisappear?.(true);
-    this.desktopContext?.eventHub.emit('AIBarShow', true);
+    this.desktopContext?.eventHub.emit('NAVIBarShow', true);
   }
 
   public menuDisappearHandler(isClick: boolean, width: number, height: number, formItem: CardItemInfo): void {

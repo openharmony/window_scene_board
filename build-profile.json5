@@ -740,10 +740,6 @@
       "srcPath": "./feature/systemstatus/cameraindicator"
     },
     {
-      "name": "aisuggestion",
-      "srcPath": "./feature/desktop/aisuggestion"
-    },
-    {
       "name": "liveview",
       "srcPath": "./feature/liveview",
       "targets": [
@@ -1274,12 +1270,8 @@
           ]
         }
       ]
-    },
-    {
-      "name": "voiceagent",
-      "srcPath": "./feature/voiceagent"
-    },
-    {
+     },
+     {
       "name": "commonscbscreen",
       "srcPath": "./feature/commonscbscreen",
       "targets": [

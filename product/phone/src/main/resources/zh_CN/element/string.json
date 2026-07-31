@@ -623,91 +623,91 @@
             "value":"用于访问星闪接口"
         },
         {
-            "name":"Ai_bar_setting",
+            "name":"Navi_bar_setting",
             "value":"系统导航",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"Ai_bar_back",
+            "name":"Navi_bar_back",
             "value":"返回",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"Ai_bar_vassistant_dialogue",
+            "name":"Navi_bar_vassistant_dialogue",
             "value":"语音助手对话",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"Ai_bar_back_click_navigation",
+            "name":"Navi_bar_back_click_navigation",
             "value":"点击导航条返回",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"Ai_bar_vassistant_dialogue_longpress",
+            "name":"Navi_bar_vassistant_dialogue_longpress",
             "value":"长按触发语音助手对话",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"Ai_bar_back_detail",
+            "name":"Navi_bar_back_detail",
             "value":"点击底部导航条，返回上一级",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"Ai_bar_gesture_back_detail",
+            "name":"Navi_bar_gesture_back_detail",
             "value":"从屏幕左/右侧向内滑动，返回上一级",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"Ai_bar_vassistant",
+            "name":"Navi_bar_vassistant",
             "value":"长按底部导航条，可触发语音助手对话",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"Ai_bar_return_home",
+            "name":"Navi_bar_return_home",
             "value":"回到桌面",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"Ai_bar_return_home_detail",
+            "name":"Navi_bar_return_home_detail",
             "value":"从屏幕底部边缘上滑",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"Ai_bar_recent",
+            "name":"Navi_bar_recent",
             "value":"进入最近任务",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"Ai_bar_recent_detail",
+            "name":"Navi_bar_recent_detail",
             "value":"从屏幕底部边缘上滑并停顿",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"Ai_bar",
+            "name":"Navi_bar",
             "value":"导航条",
             "attr":{
                 "priority":"translate"
@@ -1344,7 +1344,7 @@
             }
         },
         {
-            "name":"ai_bar_accessibility_text",
+            "name":"navi_bar_accessibility_text",
             "value":"导航条，点按两次后长按即可触发语音助手对话",
             "attr":{
                 "priority":"translate"

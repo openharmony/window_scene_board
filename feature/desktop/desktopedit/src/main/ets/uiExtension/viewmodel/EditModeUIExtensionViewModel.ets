@@ -58,7 +58,7 @@ export class EditModeUIExtensionViewModel {
     if (needAnimation) {
       // 图标编辑返回、显示导航条，取消应用内导航条色彩模式
       NavBarHideAndShowManager.getInstance().executeCallbackByType(TAG, true);
-      GlobalContext.getContext()?.eventHub.emit('AiBarUseAppColor', false);
+      GlobalContext.getContext()?.eventHub.emit('NaviBarUseAppColor', false);
     }
     if (data['back'] === true) {
       this.cancelDesktopCacheState(data);

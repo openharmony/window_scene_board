@@ -385,7 +385,6 @@ export class SCBTransitionManager {
         this.checkWithFolderApp(appData, neddCheckFolderApp);
         break;
       case StartType.RECENT_DOCK_APP:
-      case StartType.AI_SUGGESTION_APP:
         isSameTransitionController = appData.bundleName === findData.bundleName &&
           appData.appIndex === findData.appIndex && appData.extraId === findData.extraId;
         break;
@@ -494,15 +493,6 @@ export class SCBTransitionManager {
       return appData.bundleName === SCBConstants.TIPS_BUNDLE_NAME && appData.startAppType === StartType.CARD &&
         !CheckEmptyUtils.isEmpty(appData.extraId);
     });
-    if (!item) {
-      item = this.transitionControllerList.find(item => {
-        const appData = item.appData;
-        const bundleName = appData.bundleName;
-        // 语音助手建议卡片内部默认卡
-        return bundleName === SCBConstants.AI_SUGGESTION_BUNDLE_NAME && appData.startAppType === StartType.CARD &&
-          !CheckEmptyUtils.isEmpty(appData.extraId);
-      });
-    }
     return item;
   }
 

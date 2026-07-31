@@ -130,7 +130,7 @@ export class EventConstants {
   // gesture navigation events
   public static EVENT_NAVIGATOR_BAR_STATUS_CHANGE = 'usual.event.NAVIGATOR_BAR_STATUS_CHANGE';
 
-  public static EVENT_AI_BAR_STATUS_CHANGE = 'usual.event.AI_BAR_STATUS_CHANGE';
+  public static EVENT_NAVI_BAR_STATUS_CHANGE = 'usual.event.NAVI_BAR_STATUS_CHANGE';
   public static SYSTEM_BAR_CHANGE = 'usual.event.SYSTEM_BAR_CHANGE';
   public static EVENT_APP_DOCK_VISIBILITY_CHANGE = 'usual.event.APP_DOCK_VISIBILITY_CHANGE';
   public static EVENT_GESTURE_NAVIGATION_HIDE_TEXT_INPUT = 'usual.event.GESTURE_NAVIGATION_HIDE_TEXT_INPUT';

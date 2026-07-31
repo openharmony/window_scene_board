@@ -69,7 +69,7 @@ import { FoldAcGridLayoutConstants, FoldedDeviceAcViewModel } from '../../folded
 
 const TAG = 'AppListPresenter';
 const log = LogHelper.getLogHelper(LogDomain.HOME, TAG);
-const FILTER_APP_LIST_IN_QXS = ['com.ohos.vassistant.launcher'];
+const FILTER_APP_LIST_IN_QXS: string[] = [];
 const CACHE_TYPE_NAME = 'name';
 
 export class AppListPresenter extends BaseViewModel {

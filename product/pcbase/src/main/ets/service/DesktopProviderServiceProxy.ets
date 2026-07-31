@@ -15,7 +15,6 @@
 
 import type Want from '@ohos.app.ability.Want';
 import type rpc from '@ohos.rpc';
-import { AiSuggestionService } from '@ohos/aisuggestion';
 import type { IService } from '@ohos/componenthelper';
 import { BaseServiceStub } from '@ohos/componenthelper';
 import { Log } from '@ohos/basicutils';
@@ -93,7 +92,6 @@ export default class DesktopProviderServiceProxy {
  * @since 2024-03-11
  */
 class DesktopProviderServiceStub extends BaseServiceStub {
-  private static readonly aiSuggestion = 1;
   private static readonly systemKey = 2;
   private static readonly rpcShutdownKey = 3;
   private static readonly cloneCloud = 4;
@@ -113,7 +111,6 @@ class DesktopProviderServiceStub extends BaseServiceStub {
 
   protected initServiceMap(): Map<number, () => IService> {
     return new Map<number, () => IService>([
-      [DesktopProviderServiceStub.aiSuggestion, (): IService => new AiSuggestionService()],
       [DesktopProviderServiceStub.cloneCloud, (): IService => new CloneCloudService()],
       [DesktopProviderServiceStub.systemKey, (): IService => new HosKeyService()],
       [DesktopProviderServiceStub.rpcShutdownKey, (): IService => new RpcShutdownService()],

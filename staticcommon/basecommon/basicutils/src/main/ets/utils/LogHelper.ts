@@ -34,7 +34,6 @@ export enum LogDomain {
   SEARCH = 0x0ff00, // Global Search
   RECENT = 0x01b09, // Recent
   GESTURE = 0x01b0a, // Gesture
-  AISUGGESTION = 0x01b0b, // AISuggestion
   WINDOW = 0x04200, // Window
   HICAR = 0x01b0d, // HiCar
   SCS = 0x01b0e, // Desktop setting
@@ -62,7 +61,6 @@ export const enum DomainName {
   SEARCH = 'Search', // Global Search
   RECENT = 'Recent', // Recent
   GESTURE = 'Gesture', // Gesture
-  AISUGGESTION = 'AISuggestion', // AISuggestion
   WINDOW = 'Window', // Window
   HICAR = 'HiCar', // HiCar
   DESKTOPSETTING = 'DesktopSetting', // Desktop setting
@@ -92,7 +90,6 @@ export const LOG_ENABLE_MAP: Map<LogDomain, boolean> = new Map([
   [LogDomain.SEARCH, true],
   [LogDomain.RECENT, true],
   [LogDomain.GESTURE, true],
-  [LogDomain.AISUGGESTION, true],
   [LogDomain.WINDOW, true],
   [LogDomain.HICAR, true],
   [LogDomain.SCS, true],

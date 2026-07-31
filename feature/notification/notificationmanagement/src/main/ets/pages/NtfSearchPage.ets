@@ -107,12 +107,6 @@ export struct NtfSearchPage {
       top: LengthMetrics.resource($r('app.float.head_component_title_margin_top'))
     };
   }
-  private fusionSearchAdmissionStateChange = (isEnable: boolean): void => {
-    log.showInfo('FusionSearchAdmissionStateChange, isEnable: %{public}s', isEnable);
-    if (isEnable) {
-      this.executeSearch(this.searchValue);
-    }
-  }
 
   aboutToDisappear(): void {
     log.showInfo('AboutToDisappear');

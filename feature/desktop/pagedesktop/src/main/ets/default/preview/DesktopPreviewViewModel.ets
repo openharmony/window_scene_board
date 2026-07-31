@@ -296,7 +296,7 @@ export class DesktopPreviewViewModel {
   }
 
   private async showTopName(stackData: StackData | FormItemData, item: GridLayoutItemInfo): Promise<void> {
-    if (!PreviewUtils.isVoiceAbilityForm(item.bundleName, item.abilityName) && !item.appLabelId) {
+    if (!item.appLabelId) {
       try {
         item.appLabelId = await launcherAbilityManager.getAppLabelId(item.bundleName);
       } catch (error) {

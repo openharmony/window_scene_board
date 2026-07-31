@@ -55,6 +55,5 @@ export { DeviceModeEnum } from './constants/DeviceModeConstants';
 
 export { PageRouterServiceCode } from './constants/PageRouterServiceCode';
 
-export { VassistantConstants } from './constants/SCBConstants';
 
 export { VisualEffectConstants, BlurEffectType } from './constants/VisualEffectConstants';

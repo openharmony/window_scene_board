@@ -232,7 +232,7 @@ export struct FormStackExpandItemView {
 
   // 外屏比例缩放
   private getOuterScaleRatio() : number {
-    if (this.isOuterDesktop && !this.mItemInfo.isAiCard) {
+    if (this.isOuterDesktop) {
       return this.mOuterFormStackExpandScale;
     }
     return 1;

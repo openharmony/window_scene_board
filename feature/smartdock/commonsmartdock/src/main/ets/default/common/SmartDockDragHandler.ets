@@ -1043,7 +1043,7 @@ export default class SmartDockDragHandler extends SingleBase implements IDockDra
    */
   private refreshDragItem(dragItem: DockItemInfo, dragType: number): boolean {
     if (dragType === CommonConstants.DRAG_FROM_DOCK) {
-      // 当拖拽dock栏元素落位到smartdock（不包含dock栏）或者Aibar上时，落位事件会透传给dock栏
+      // 当拖拽dock栏元素落位到smartdock（不包含dock栏）或者Navibar上时，落位事件会透传给dock栏
       // 如果此时dock栏落位方案中没有拖拽元素，拖拽元素会直接返回原始位置，并与其他执行过居中靠拢动效的元素重叠
       // 该场景下需要刷新dock栏元素位置，保证dock栏显示正常
       this.refreshDockItem(dragItem);

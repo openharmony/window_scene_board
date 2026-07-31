@@ -1797,7 +1797,7 @@ export class GestureQuickSwitchParams {
   TO_IS_MIDSCENE?: number;
 }
 
-export class OnClickAIBarParams {
+export class OnClickNAVIBarParams {
   PNAMEID?: string;
   PVERSIONID?: string;
   IS_ON?: boolean;
@@ -1886,7 +1886,7 @@ export class SwitchComputerModeParams {
   PVERSIONID?: string = ReportParams.PROCESS_NAME;
 }
 
-export class AiBarSettingSwitchParams {
+export class NaviBarSettingSwitchParams {
   PNAMEID?: string;
   PVERSIONID?: string;
   SWITCH_TYPE?: string;
@@ -2010,7 +2010,7 @@ export enum MidSceneDisplayMode {
   TRIFOLD_EXPANDED
 }
 
-export enum AiSplitDisplayMode {
+export enum ASplitDisplayMode {
   OTHERS,
   PAD,
   FOLD_EXPANDED,
@@ -2018,12 +2018,12 @@ export enum AiSplitDisplayMode {
   TRIFOLD_G
 }
 
-export enum AiSplitBehavior {
+export enum SplitBehavior {
   INTENTION,
   CAPSULE
 }
 
-export enum AiSplitReason {
+export enum SplitReason {
   INVALID,
   FREQUENT_SWITCH,
   NATURAL_SWITCH
@@ -2351,12 +2351,12 @@ export class SwitchingDesktopFourFingerSwipeParams {
   DISTANCE: number;
 }
 
-export class AISplitSceneParams {
+export class SplitSceneParams {
   PNAMEID?: string;
   PVERSIONID?: string;
   DISPLAYMODE?: number;
-  BEHAVIOR?: AiSplitBehavior;
-  REASON?: AiSplitReason;
+  BEHAVIOR?: SplitBehavior;
+  REASON?: SplitReason;
   PRIMARY?: string;
   SECONDARY?: string;
 }

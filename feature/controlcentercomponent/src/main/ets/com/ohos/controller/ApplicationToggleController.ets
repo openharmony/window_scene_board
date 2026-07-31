@@ -162,16 +162,7 @@ export class ApplicationToggleController extends ToggleBaseViewModel {
   }
 
   private goToScanner() {
-    log.showInfo('start scanner Ability');
-    EventManagerAdapter.startAbility(obtainStartAbilityWithWant({
-      bundleName: 'com.ohos.vassistant',
-      abilityName: 'VisionCameraAbility',
-      moduleName: 'vision',
-      parameters: {
-        entrance: 'controlCenter',
-      },
-    })
-    );
+    log.showInfo('start scanner Ability - disabled, vassistant removed');
   }
 
   private goToQuickNote() {

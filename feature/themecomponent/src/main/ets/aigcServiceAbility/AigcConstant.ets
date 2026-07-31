@@ -157,7 +157,7 @@ export class VideoParameter {
   public generateNum?: number = AigcConstant.GENERATE_VIDEO_COUNT;
 }
 
-export class AIGCMetaData {
+export class GCMetaData {
   public AIGC: Record<string, string> = {};
 }
 

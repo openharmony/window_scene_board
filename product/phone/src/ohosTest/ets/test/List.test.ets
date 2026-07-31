@@ -42,7 +42,6 @@ import FormTestSuite from '../../../../../../feature/desktop/form/src/ohosTest/e
 import FormStackTestSuite from '../../../../../../feature/desktop/formstack/src/ohosTest/ets/test/List.test';
 import FreezingTipUtilTest from './ets/SceneBoard/screenlock/common/FreezingTipUtilTest.test';
 import RecentsTestSuite from '../../../../../../feature/recents/src/ohosTest/ets/test/List.test';
-import AiSuggestionTestSuite from '../../../../../../feature/desktop/aisuggestion/src/ohosTest/ets/test/List.test';
 import WallpapercomponentTestSuite from '../../../../../../feature/wallpapercomponent/src/ohosTest/ets/test/List.test';
 import RecentLayoutManagerTest from './ets/SceneBoard/recent/common/RecentLayoutManagerTest';
 import RecentRotationUtilTest from './ets/SceneBoard/recent/common/RecentRotationUtilTest';
@@ -96,16 +95,15 @@ import InvokeAuthResultCallbackTest from './ets/service/exthome/executor/impl/In
 import InvokeFaceTest from './ets/service/exthome/executor/impl/InvokeFace.test';
 import ExtHomeServiceTest from './ets/service/exthome/ExtHomeService.test';
 
-import SCBAiBarProxyManagerTest from './ets/SceneBoard/aiBar/SCBAiBarProxyManager.test';
-import SCBAiBarCallBackTest from './ets/SceneBoard/aiBar/SCBAiBarCallBack.test';
-import AiBarServiceTest from './ets/SceneBoard/aiBar/AiBarService.test';
-import SCBGestureBackViewModelTest from './ets/SceneBoard/gesturenavigation/viewmodel/SCBGestureBackViewModel.test';
+import SCBNaviBarProxyManagerTest from './ets/SceneBoard/naviBar/SCBNaviBarProxyManager.test';
+import SCBNaviBarCallBackTest from './ets/SceneBoard/naviBar/SCBNaviBarCallBack.test';
+ import SCBGestureBackViewModelTest from './ets/SceneBoard/gesturenavigation/viewmodel/SCBGestureBackViewModel.test';
 import DebugCommandsUtilsTest from './ets/SceneBoard/gesturenavigation/utils/DebugCommandsUtils.test';
 import GestureDockPullOutModelTest from './ets/SceneBoard/gesturenavigation/model/GestureDockPullOutModel.test';
-import AiBarSettingsDataMgrTest from './ets/SceneBoard/aiBar/settings/preference/AiBarSettingsDataMgr.test';
+import NaviBarSettingsDataMgrTest from './ets/SceneBoard/naviBar/settings/preference/NaviBarSettingsDataMgr.test';
 import ThreeButtonAccessibilityManagerTest
-  from './ets/SceneBoard/aiBar/settings/preference/ThreeButtonAccessibilityManager.test';
-import TextCodecTest from './ets/SceneBoard/aiBar/util/TextCodec.test';
+  from './ets/SceneBoard/naviBar/settings/preference/ThreeButtonAccessibilityManager.test';
+import TextCodecTest from './ets/SceneBoard/naviBar/util/TextCodec.test';
 import GestureDockAdapterTest from './ets/SceneBoard/gestureDock/common/adapter/GestureDockAdapter.test';
 import GestureDockPreferenceMgrTest
   from './ets/SceneBoard/gestureDock/common/preference/GestureDockPreferenceMgr.test';
@@ -148,7 +146,7 @@ import GestureDockAllAppsViewModelTest
   from './ets/SceneBoard/gestureDock/dockallapps/viewmodel/GestureDockAllAppsViewModel.test';
 import GestureDockViewModelTest from './ets/SceneBoard/gestureDock/dock/viewmodel/GestureDockViewModel.test';
 import AllAppsDataSourceTest from './ets/SceneBoard/gestureDock/dockallapps/model/AllAppsDataSource.test';
-import FloatingNavigationManagerTest from './ets/SceneBoard/aiBar/proxy/FloatingNavigationManager.test';
+import FloatingNavigationManagerTest from './ets/SceneBoard/naviBar/proxy/FloatingNavigationManager.test';
 
 import FormClearUtilsTest from './ets/common/FormClearUtils.test';
 import BundleVerifyUtilsTest  from './ets/service/exthome/BundleVerifyUtils.test';
@@ -366,8 +364,8 @@ import { SoundComponentTestSuite } from '../../../../../../feature/systemcontrol
 import { multiWindowRssHelperTest } from './ets/SceneBoard/scenemanager/multiwindow/MultiWindowRssHelper.test';
 import { MidSceneUtilsTest } from './ets/SceneBoard/scenemanager/multiwindow/midscene/MidSceneUtilsTest.test';
 import PcModeTestSuite from '../../../../../../feature/pcmode/src/ohosTest/ets/test/List.test';
-import AIBarViewModelTest from './ets/SceneBoard/aiBar/AIBarModel/AIBarViewModel.test';
-import AccessibilityUtilsTest from './ets/SceneBoard/aiBar/util/AccessibilityUtils.test';
+import NAVIBarViewModelTest from './ets/SceneBoard/naviBar/NAVIBarModel/NAVIBarViewModel.test';
+import AccessibilityUtilsTest from './ets/SceneBoard/naviBar/util/AccessibilityUtils.test';
 import SwipeInwardControllerTest from './ets/SceneBoard/touchboardgesture/SwipeInwardEvent.test';
 import TouchBoardSwipeInwardGestureManagerTest from './ets/SceneBoard/touchboardgesture/SwipeInwardGestureManager.test';
 import FoldEffectTestSuite from '../../../../../../feature/foldeffect/src/ohosTest/ets/test/List.test';
@@ -390,10 +388,10 @@ import {
 import { FlashlightTipsModelTest } from './ets/SceneBoard/screenlock/viewmodel/FlashlightTipsModelTest.test';
 import { TouchBoardGestureManagerTest } from './ets/SceneBoard/touchboardgesture/TouchBoardGestureManagerTest.test';
 import { EditModeIconAbilityPhoneTest } from './ets/desktopedit/ability/EditModeIconAbilityPhone.test';
-import AIBarAnimateTest from './ets/SceneBoard/aiBar/AIBarModel/AIBarAnimate.test';
-import AIBarClickBackgroundDataTest from './ets/SceneBoard/aiBar/AIBarModel/AIBarClickBackgroundData.test'
-import AIBarDataTest from './ets/SceneBoard/aiBar/AIBarModel/AIBarData.test';
-import AIBarViewDataTest from './ets/SceneBoard/aiBar/AIBarModel/AlBarViewData.test';
+import NAVIBarAnimateTest from './ets/SceneBoard/naviBar/NAVIBarModel/NAVIBarAnimate.test';
+import NAVIBarClickBackgroundDataTest from './ets/SceneBoard/naviBar/NAVIBarModel/NAVIBarClickBackgroundData.test'
+import NAVIBarDataTest from './ets/SceneBoard/naviBar/NAVIBarModel/NAVIBarData.test';
+import NAVIBarViewDataTest from './ets/SceneBoard/naviBar/NAVIBarModel/NAVIBarViewData.test';
 import {
   AnimationParam1Test,
   DialClockParamTest,
@@ -422,9 +420,9 @@ import FileUtilTest from './ets/intents/utils/FileUtil.test';
 // import DesktopInformationReporterTest from './ets/SceneBoard/desktopReporter/DesktopInformationReporter.test';
 import GestureDockMethodImplTest from './ets/backup/impl/GestureDockMethodImpl.test';
 import SCBSceneManagementOnPhoneTest from './ets/SceneBoard/scenemanager/SCBSceneManagementOnPhoneTest.test';
-import ThreeButtonUpgradeDSExtAbilityTest from './ets/SceneBoard/aiBar/ability/ThreeButtonUpgradeDSExtAbility.test';
-import ThreeButtonUpgradeUIExtAbilityTest from './ets/SceneBoard/aiBar/ability/ThreeButtonUpgradeUIExtAbility.test';
-import ThreeButtonUpgradeViewModelTest from './ets/SceneBoard/aiBar/AIBarModel/ThreeButtonUpgradeViewModel.test';
+import ThreeButtonUpgradeDSExtAbilityTest from './ets/SceneBoard/naviBar/ability/ThreeButtonUpgradeDSExtAbility.test';
+import ThreeButtonUpgradeUIExtAbilityTest from './ets/SceneBoard/naviBar/ability/ThreeButtonUpgradeUIExtAbility.test';
+import ThreeButtonUpgradeViewModelTest from './ets/SceneBoard/naviBar/NAVIBarModel/ThreeButtonUpgradeViewModel.test';
 import { AodRotationAdapterThreeFoldTest } from './ets/SceneBoard/aod/adapter/AodRotationAdapterThreeFold.test';
 import SCBRotateUtilsTest from './ets/SceneBoard/scenemanager/utils/SCBRotateUtilsTest.test';
 import MidSceneDraggingEventHandlerTest
@@ -505,7 +503,6 @@ export default function testsuite() {
   NearLinkToggleSuite();
   CameraComponentTestSuite();
   WallpapercomponentTestSuite();
-  AiSuggestionTestSuite();
   PhoneAodSuite();
   GesturenavigationTestSuite();
   GestureBackTestSuite();
@@ -788,21 +785,20 @@ export function LauncherNavigationTestSuite() {
   SCBGestureBackViewModelTest();
   SCBGestureNavBarViewModelTest();
   NavbarWindowManagerTest();
-  //aiBar
-  SCBAiBarProxyManagerTest();
-  SCBAiBarCallBackTest();
-  AiBarServiceTest();
+  //naviBar
+  SCBNaviBarProxyManagerTest();
+   SCBNaviBarCallBackTest();
   PadBackGestureModelTest();
   PadBackEventViewModelTest();
-  AIBarAnimateTest();
-  AIBarClickBackgroundDataTest();
-  AIBarDataTest();
-  AiBarSettingsDataMgrTest();
+  NAVIBarAnimateTest();
+  NAVIBarClickBackgroundDataTest();
+  NAVIBarDataTest();
+  NaviBarSettingsDataMgrTest();
   ThreeButtonAccessibilityManagerTest();
-  AIBarViewModelTest();
+  NAVIBarViewModelTest();
   TextCodecTest();
   AccessibilityUtilsTest();
-  AIBarViewDataTest();
+  NAVIBarViewDataTest();
   ThreeButtonUpgradeDSExtAbilityTest();
   ThreeButtonUpgradeUIExtAbilityTest();
   ThreeButtonUpgradeViewModelTest();

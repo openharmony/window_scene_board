@@ -61,10 +61,6 @@
             "value":"[TS_1079409]_%1$s, %2$s, button, double tap to activate"
         },
         {
-            "name":"volume_accessibility_voice_assistant",
-            "value":"[TS_1091600]_Voice"
-        },
-        {
             "name":"volume_accessibility_accessibility",
             "value":"[TS_1091599]_Accessibility"
         }

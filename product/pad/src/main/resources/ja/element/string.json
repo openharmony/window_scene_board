@@ -8,7 +8,7 @@
             }
         },
         {
-            "name":"Ai_bar_recent_detail",
+            "name":"Navi_bar_recent_detail",
             "value":"下から上にスワイプしてそのまま停止すると最近実行されたタスクを表示できます",
             "attr":{
                 "priority":"translate"
@@ -22,7 +22,7 @@
             }
         },
         {
-            "name":"Ai_bar_recent",
+            "name":"Navi_bar_recent",
             "value":"最近実行されたタスクを表示",
             "attr":{
                 "priority":"translate"
@@ -358,7 +358,7 @@
             }
         },
         {
-            "name":"Ai_bar_return_home_detail",
+            "name":"Navi_bar_return_home_detail",
             "value":"画面を下から上にスワイプすると、ホーム画面に移動できます",
             "attr":{
                 "priority":"translate"
@@ -449,14 +449,14 @@
             }
         },
         {
-            "name":"Ai_bar_vassistant_dialogue_longpress",
+            "name":"Navi_bar_vassistant_dialogue_longpress",
             "value":"長押ししてVoiceを起動",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"Ai_bar_return_home",
+            "name":"Navi_bar_return_home",
             "value":"ホームに戻る",
             "attr":{
                 "priority":"translate"
@@ -512,7 +512,7 @@
             }
         },
         {
-            "name":"Ai_bar_back_click_navigation",
+            "name":"Navi_bar_back_click_navigation",
             "value":"タップして戻る",
             "attr":{
                 "priority":"translate"
@@ -561,7 +561,7 @@
             }
         },
         {
-            "name":"Ai_bar_back",
+            "name":"Navi_bar_back",
             "value":"戻る",
             "attr":{
                 "priority":"translate"
@@ -687,7 +687,7 @@
             }
         },
         {
-            "name":"Ai_bar_gesture_back_detail",
+            "name":"Navi_bar_gesture_back_detail",
             "value":"左右いずれかの端から内側にスワイプすると、前の画面に戻ります。",
             "attr":{
                 "priority":"translate"
@@ -750,7 +750,7 @@
             }
         },
         {
-            "name":"Ai_bar_vassistant",
+            "name":"Navi_bar_vassistant",
             "value":"ナビゲーションバーを長押しすると、Voiceと会話できます。",
             "attr":{
                 "priority":"translate"
@@ -813,7 +813,7 @@
             }
         },
         {
-            "name":"Ai_bar_back_detail",
+            "name":"Navi_bar_back_detail",
             "value":"ナビゲーションバーをタップすると、前の画面に戻ります。",
             "attr":{
                 "priority":"translate"
@@ -974,7 +974,7 @@
             }
         },
         {
-            "name":"Ai_bar_setting",
+            "name":"Navi_bar_setting",
             "value":"システムナビゲーション",
             "attr":{
                 "priority":"translate"
@@ -1114,7 +1114,7 @@
             }
         },
         {
-            "name":"Ai_bar_vassistant_dialogue",
+            "name":"Navi_bar_vassistant_dialogue",
             "value":"Voiceチャット",
             "attr":{
                 "priority":"translate"
@@ -1170,7 +1170,7 @@
             }
         },
         {
-            "name":"Ai_bar",
+            "name":"Navi_bar",
             "value":"ナビゲーションバー",
             "attr":{
                 "priority":"translate"
@@ -1492,7 +1492,7 @@
             }
         },
         {
-            "name":"ai_bar_accessibility_text",
+            "name":"navi_bar_accessibility_text",
             "value":"ナビゲーションバー、ダブルタップして長押しし、Voiceと話します",
             "attr":{
                 "priority":"translate"

@@ -190,28 +190,28 @@
             }
         },
         {
-            "name":"Ai_bar_return_home",
+            "name":"Navi_bar_return_home",
             "value":"ཅོག་ངོས་སུ་ལོག་པ།",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"Ai_bar_recent_detail",
+            "name":"Navi_bar_recent_detail",
             "value":"བརྙན་ཡོལ་གྱི་གཤམ་འོག་མཐའ་ནས་ཡར་འདྲུད་པ་མ་ཟད་ཅུང་ཙམ་སྡོད་པ།",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"Ai_bar_recent",
+            "name":"Navi_bar_recent",
             "value":"ཉེ་ཆར་གྱི་ལས་འགན་ལ་འཛུལ་བ།",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"Ai_bar_setting",
+            "name":"Navi_bar_setting",
             "value":"རྒྱུད་ཁོངས་ཕྱོགས་སྟོན།",
             "attr":{
                 "priority":"LT"
@@ -225,42 +225,42 @@
             }
         },
         {
-            "name":"Ai_bar_back",
+            "name":"Navi_bar_back",
             "value":"ཕྱིར་ལོག",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"Ai_bar_vassistant_dialogue",
+            "name":"Navi_bar_vassistant_dialogue",
             "value":"ཞའོ་དབྱི་གླེང་མོལ།",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"Ai_bar_gesture_back_detail",
+            "name":"Navi_bar_gesture_back_detail",
             "value":"བརྙན་ཡོལ་གྱི་གཡས་/གཡོན་ནས་དཀྱིལ་དུ་འདེད་འགུལ་བྱས་ཏེ་རིམ་པ་གོང་མར་ཕྱིར་ལོག་ཐུབ།",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"Ai_bar_vassistant",
+            "name":"Navi_bar_vassistant",
             "value":"མཐིལ་གྱི་ཕྱོགས་སྟོན་ཚན་བྱང་ལ་ཡུན་རིང་བརྡབས་ཚེ། ཞའོ་དབྱི་གླེང་མོལ་རྐྱེན་སློང་བྱེད་ཐུབ།",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"Ai_bar_return_home_detail",
+            "name":"Navi_bar_return_home_detail",
             "value":"བརྙན་ཡོལ་གྱི་གཤམ་འོག་མཐའ་ནས་ཡར་འདྲུད།",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"Ai_bar_back_detail",
+            "name":"Navi_bar_back_detail",
             "value":"མཐིལ་གྱི་ཕྱོགས་སྟོན་ཚན་བྱང་ལ་བརྡབས་ནས་རིམ་པ་གོང་མར་ཕྱིར་ལོག་ཐུབ།",
             "attr":{
                 "priority":"LT"
@@ -323,7 +323,7 @@
             }
         },
         {
-            "name":"Ai_bar",
+            "name":"Navi_bar",
             "value":"ཕྱོགས་སྟོན་ཚན་བྱང་།",
             "attr":{
                 "priority":"LT"
@@ -915,14 +915,14 @@
             }
         },
         {
-            "name":"Ai_bar_vassistant_dialogue_longpress",
+            "name":"Navi_bar_vassistant_dialogue_longpress",
             "value":"ཡུན་རིང་མནན་ཏེ་ཞའོ་དབྱི་གླེང་མོལ་རྐྱེན་སློང་བྱེད།",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"Ai_bar_back_click_navigation",
+            "name":"Navi_bar_back_click_navigation",
             "value":"ཕྱོགས་སྟོན་ཚན་བྱང་ལ་བརྡབས་ནས་ཕྱིར་ལོག",
             "attr":{
                 "priority":"LT"
@@ -985,7 +985,7 @@
             }
         },
         {
-            "name":"ai_bar_accessibility_text",
+            "name":"navi_bar_accessibility_text",
             "value":"ཕྱོགས་སྟོན་ཚན་བྱང་། ཐེངས་གཉིས་བརྡབས་ནས་ཡུན་རིང་མནན་ཚེ། ཞའོ་དབྱི་གླེང་མོལ་རྐྱེན་སློང་བྱེད་ཐུབ།",
             "attr":{
                 "priority":"translate"

@@ -400,44 +400,6 @@ export default function PageDesktopModelTest() {
       expect(retValue).not().assertNull();
     })
 
-    it('test_isFoundAiSuggestion', 0, () => {
-      let model = PageDesktopModel.getInstance();
-      let companionIconInfo: CompanionIconInfo = {
-        iconId: '',
-        bundleName: '',
-        abilityName: '',
-        moduleName: '',
-        iconNumber: 0,
-        iconRadius: 0,
-        startAppType: StartType.APP,
-        cardId: ''
-      }
-      let itemInfo = new GridLayoutItemInfo();
-      let retValue = model['isFoundAiSuggestion'](itemInfo, companionIconInfo);
-      expect(retValue).assertInstanceOf('Boolean');
-      itemInfo.typeId = 6;
-      retValue = model['isFoundAiSuggestion'](itemInfo, companionIconInfo);
-      expect(retValue).assertInstanceOf('Boolean');
-
-      itemInfo.layoutInfo = [[new GridLayoutItemInfo()]];
-      retValue = model['isFoundAiSuggestion'](itemInfo, companionIconInfo);
-      expect(retValue).assertInstanceOf('Boolean');
-
-      itemInfo.typeId = 0;
-      companionIconInfo.extraId = '10';
-      itemInfo.cardId = '1';
-      retValue = model['isFoundAiSuggestion'](itemInfo, companionIconInfo);
-      expect(retValue).assertInstanceOf('Boolean');
-
-      companionIconInfo.extraId = '1';
-      retValue = model['isFoundAiSuggestion'](itemInfo, companionIconInfo);
-      expect(retValue).assertInstanceOf('Boolean');
-
-      companionIconInfo.startAppType = StartType.AI_SUGGESTION_APP;
-      retValue = model['isFoundAiSuggestion'](itemInfo, companionIconInfo);
-      expect(retValue).assertInstanceOf('Boolean');
-    })
-
     it('test_searchInCurrentDeskTopPage', 0, () => {
       let model = PageDesktopModel.getInstance();
       let companionIconInfo: CompanionIconInfo = {
@@ -864,7 +826,7 @@ export default function PageDesktopModelTest() {
       let formCardId: string = '1';
       let appData2 = model.getCloseAppData(bundleName, abilityName, startType, formCardId, null);
 
-      startType = StartType.AI_SUGGESTION_APP;
+      startType = StartType.RECENT_DOCK_APP;
       let appData3 = model.getCloseAppData(bundleName, abilityName, startType, formCardId, null);
 
       let screenId = 0;
@@ -1711,8 +1673,6 @@ export default function PageDesktopModelTest() {
         extraId: '996'
       };
       let mocker: MockKit = new MockKit();
-      const mockerFunc = mocker.mockFunc(instance, instance['isFoundAiSuggestion']);
-      when(mockerFunc)(ArgumentMatchers.any).afterReturn(true);
       let result: AppTransitionInfo = instance['findAppInCurrentPage'](eleInCurrentPage, companionIconInfo);
       expect(result.app.cardId).assertEqual('007');
       companionIconInfo.startAppType = StartType.APP;
@@ -1827,7 +1787,7 @@ export default function PageDesktopModelTest() {
         const mockerFunc1 = mocker.mockFunc(instance, instance['getOObeIconRect']);
         when(mockerFunc)(ArgumentMatchers.any).afterReturn(new RectInfo(0, 0, 0, 0));
         when(mockerFunc1)(ArgumentMatchers.any).afterReturn(appInfo);
-        result = instance['getAppExitLocationInfo'](appInfo, SCBConstants.AI_SUGGESTION_BUNDLE_NAME, session);
+        result = instance['getAppExitLocationInfo'](appInfo, 'com.ohos.suggestion', session);
         expect(result.isInScreen).assertTrue();
         when(mockerFunc)(ArgumentMatchers.any).afterReturn(new RectInfo(1, 1, 1, 1));
         expect(result.iconRect?.left).assertEqual(0);

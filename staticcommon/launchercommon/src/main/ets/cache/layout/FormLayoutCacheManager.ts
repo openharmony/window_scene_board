@@ -19,7 +19,7 @@ import {
   LogHelper, SingleContext, Trace
 } from '@ohos/basicutils';
 import { DeviceHelper, localEventManager } from '@ohos/frameworkwrapper';
-import { BundleConstants, CommonConstants, RdbHandleResult } from '../../constants/CommonConstants';
+import { CommonConstants, RdbHandleResult } from '../../constants/CommonConstants';
 
 import GridLayoutItemInfo from '../../bean/GridLayoutItemInfo';
 import { ILayoutCacheManager } from './ILayoutCacheManager';
@@ -82,39 +82,6 @@ export class FormLayoutCacheManager extends BaseLayoutCacheManager implements IL
       return undefined;
     }
     return cardItem;
-  }
-
-  /**
-   * 查询所有语音助手建议卡片
-   *
-   * @returns 语音助手建议卡片
-   */
-  selectAllAiSuggestionItems(isOuter?: boolean): GridLayoutItemInfo[] {
-    let gridLayoutItemList: GridLayoutItemInfo[] = this.layoutCacheData.getGridLayoutItemList(isOuter);
-    let aiSuggestionItems: GridLayoutItemInfo[] = [];
-    for (let i = 0; i < gridLayoutItemList.length; i++) {
-      let info = gridLayoutItemList[i];
-      if (this.isVoiceAbilityForm(info)) {
-        aiSuggestionItems.push(gridLayoutItemList[i]);
-      } else if (info.typeId === CommonConstants.TYPE_FORM_STACK) {
-        let formStackItemInfo = info;
-        if (CheckEmptyUtils.isEmptyArr(formStackItemInfo.layoutInfo?.[0])) {
-          continue;
-        }
-        let itemList = formStackItemInfo.layoutInfo?.[0]
-          .filter(itemInfo => this.isVoiceAbilityForm(itemInfo));
-        itemList?.forEach(item => {
-          aiSuggestionItems.push(item as object as GridLayoutItemInfo);
-        });
-      }
-    }
-    return aiSuggestionItems;
-  }
-
-  private isVoiceAbilityForm(item: GridLayoutItemInfo): boolean {
-    return item.typeId === CommonConstants.TYPE_CARD &&
-      item.bundleName === BundleConstants.AI_SUGGESTION_BUNDLE &&
-      item.abilityName === BundleConstants.AI_SUGGESTION_ABILITY;
   }
 
   /**

@@ -172,7 +172,7 @@ export class VisualEffectConstants {
   /**
    * 导航条应用内模糊反色禁用
    */
-  static readonly AIBAR_BLUR_INVERT_EFFECT_DISABLE: string = 'aibar_blur_invert_effect_disable';
+  static readonly NAVIBAR_BLUR_INVERT_EFFECT_DISABLE: string = 'navibar_blur_invert_effect_disable';
 
   /**
    * 文件夹秩序感禁用

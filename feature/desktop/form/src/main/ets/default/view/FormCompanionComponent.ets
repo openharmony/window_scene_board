@@ -29,7 +29,6 @@ import {
   FormEditViewManager,
   FormManager,
   FormEditViewParam,
-  BundleConstants,
   FolderManager,
   StyleConstants,
 } from '@ohos/launchercommon';
@@ -321,7 +320,6 @@ export struct FormCompanionComponent {
       return;
     }
 
-    const isAISuggestion: boolean = this.manageFormItem.bundleName === BundleConstants.AI_SUGGESTION_BUNDLE;
     const isOuter: boolean = launcherStatusUtil.getShowOutLauncherStatus();
     animateExTo(ANIMATE_FIRST, {
       curve: curves.springMotion(0.468, 0.63),
@@ -336,10 +334,9 @@ export struct FormCompanionComponent {
       this.foregroundScale = shortScaleTemp;
     }, () => {
       TraceUtil.endAnimTrace(DomainName.HOME, TraceUtil.CORE_METHOD_ENTER_FORM_MANAGER);
-      // 渐隐渐显动效时间 = 1600 - 落位动效执行时间
       const animateSecondTime: number = 1600 - (new Date().getTime() - curStartTime);
       log.showInfo(`animateSecondTime: ${animateSecondTime}`);
-      if (!isOuter && !this.manageFormItem.isTransparent && !isAISuggestion && animateSecondTime > 0) {
+      if (!isOuter && !this.manageFormItem.isTransparent && animateSecondTime > 0) {
         let delayTime: number = this.isEnterFromApp ? 0 : animateSecondTime;
         localEventManager.sendLocalEvent(FormConstants.FORM_MOTION_EVENT, delayTime);
         this.behaviorTransparent = true;
@@ -507,9 +504,7 @@ export struct FormCompanionComponent {
   }
 
   private getManageFormSnapshot(manageFormItemId: string, retry: boolean = false): void {
-    const isAISuggestion: boolean = this.manageFormItem.bundleName === BundleConstants.AI_SUGGESTION_BUNDLE;
-    if (!this.isEnterFromApp && !isAISuggestion) {
-      // 长按普通卡片进入卡片管理，从缓存中获取卡片截图
+    if (!this.isEnterFromApp) {
       this.getFormSnapshotFromResourceManager();
       this.manageFormOpacity = 1;
     } else {

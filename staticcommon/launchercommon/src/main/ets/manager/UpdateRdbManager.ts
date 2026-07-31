@@ -55,7 +55,7 @@ import {
 } from '../TsIndex';
 import { image } from '@kit.ImageKit';
 import { IntentParseUtil } from '../utils/IntentParseUtil';
-import { AiBarCloneCallbackManager } from './AiBarCloneCallbackManager';
+import { NaviBarCloneCallbackManager } from './NaviBarCloneCallbackManager';
 
 const TAG = 'UpdateRdbManager';
 const log: Logger = Logger.getLogHelper(LogDomain.BACKUP);
@@ -1184,7 +1184,7 @@ class UpdateRdbManager {
         return;
       }
       let isCloneToOpenThreeKey =
-        await settings.getValue(context, AiBarCloneCallbackManager.getInstance().CLONE_TO_OPEN_THREE_KEY);
+        await settings.getValue(context, NaviBarCloneCallbackManager.getInstance().CLONE_TO_OPEN_THREE_KEY);
       while (isLast) {
         let floatTaskState: string = resultSet.getString(resultSet.getColumnIndex('float_task_state'));
         log.showInfo(TAG, `floatTaskState is: ${floatTaskState} isCloneToOpenThreeKey is:${isCloneToOpenThreeKey}`);
@@ -1196,7 +1196,7 @@ class UpdateRdbManager {
         }
         isLast = resultSet.goToNextRow();
       }
-      AiBarCloneCallbackManager.getInstance().isCloneToOpenThreeKey = false;
+      NaviBarCloneCallbackManager.getInstance().isCloneToOpenThreeKey = false;
     } catch (e) {
       log.showError(TAG, 'restoreFloatingBallDb error: %{public}s', e?.message);
     } finally {

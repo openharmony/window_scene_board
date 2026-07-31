@@ -28,7 +28,6 @@ import {
 } from '@ohos/launchercommon';
 import { emitter } from '@kit.BasicServicesKit';
 import { CommonConstants } from '@ohos/launchercommon';
-import { AiSuggestionUtil } from '@ohos/launchercommon/src/main/ets/aisuggestion/AiSuggestionUtil';
 import { PageDesktopViewModel } from '../viewmodel/PageDesktopViewModel';
 import { PageDesktopGridStyleConfig } from '@ohos/launchercommon/src/main/ets/layoutconfig/PageDesktopGridStyleConfig';
 import lazy AppItem from './AppItem';
@@ -36,9 +35,7 @@ import FormItemRelative from './form/view/FormItemRelative';
 import lazy FileFolderItem from './FileFolderItem';
 import { PageDesktopDragHandler } from '../PageDesktopDragHandler';
 import { GridLayoutItemInfo } from '@ohos/launchercommon';
-import lazy { AiSuggestionItem } from '@ohos/aisuggestion';
 import { FormStackItemInfo } from '@ohos/formstack/src/main/ets/common/FormStackItemInfo';
-import { AbilityFormUtil } from '@ohos/aisuggestion/src/main/ets/default/utils/AbilityFormUtil';
 import { ContractedFolder, DeskTopItemStyle } from '@ohos/launchercommon/Index';
 import { editModeManager } from '@ohos/launchercommon/src/main/ets/TsIndex';
 import {
@@ -287,19 +284,6 @@ export default struct DesktopItem {
               y: CheckEmptyUtils.isEmpty(this.desktopStyle) ? 0 : this.desktopStyle.translateY})
             .opacity(CheckEmptyUtils.isEmpty(this.desktopStyle) ? 1 : this.desktopStyle.alpha)
             .scale(this.getScale())
-        } else if (this.item.typeId === CommonConstants.TYPE_CARD &&
-          AiSuggestionUtil.isVoiceAbilityForm(this.item.bundleName, this.item.abilityName)) {
-          AiSuggestionItem({
-            formItem: this.item,
-            formMarginTop: this.mPageDesktopViewModel?.getIconMarginVertical(),
-            mNameLines: this.mNameLines,
-            mPageDesktopDragHandler: PageDesktopDragHandler.getInstance(this.singleContext),
-            mTag: this.mTag,
-            getIndexInSwiper: this.getIndexInSwiper,
-            isDesktopItem: this.isDesktopItem,
-            desktopStyle: this.desktopStyle,
-            isOuterDesktop: this.isOuterDesktop
-          })
         } else if (this.item.typeId === CommonConstants.TYPE_CARD) {
           FormItemRelative({
             singleContext: this.singleContext,

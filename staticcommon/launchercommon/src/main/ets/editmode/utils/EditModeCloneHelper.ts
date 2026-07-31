@@ -16,7 +16,7 @@
 import CommonEventManager from '@ohos.commonEventManager';
 import { LogDomain, LogHelper } from '@ohos/basicutils/src/main/ets/TsIndex';
 import { editModeManager } from '../model/EditModeManager';
-import { AiBarCloneCallbackManager } from '../../manager/AiBarCloneCallbackManager';
+import { NaviBarCloneCallbackManager } from '../../manager/NaviBarCloneCallbackManager';
 import { DesktopManager } from '../../manager/DesktopManager';
 
 const TAG = 'EditModeCloneHelper';
@@ -79,7 +79,7 @@ export class EditModeCloneHelper {
         if (data.event === EVENT_SETTINGS_DATA_FINISH) {
           editModeManager.initIsShowAppName();
           DesktopManager.getInstance().saveDesktopParam();
-          AiBarCloneCallbackManager.getInstance().executeCallback(data);
+          NaviBarCloneCallbackManager.getInstance().executeCallback(data);
         }
       });
     } catch (error) {

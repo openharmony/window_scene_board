@@ -59,14 +59,13 @@ import InvokeFaceTest from 'sceneboard/src/ohosTest/ets/test/ets/service/exthome
 import ExtHomeServiceTest from 'sceneboard/src/ohosTest/ets/test/ets/service/exthome/ExtHomeService.test';
 import { FloatCalculatorTest } from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/scenemanager/multiwindow/FloatCalculatorTest.test';
 
-import SCBAiBarProxyManagerTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/aiBar/SCBAiBarProxyManager.test';
-import SCBAiBarCallBackTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/aiBar/SCBAiBarCallBack.test';
-import AiBarServiceTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/aiBar/AiBarService.test';
-import SCBGestureBackViewModelTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/gesturenavigation/viewmodel/SCBGestureBackViewModel.test';
+import SCBNaviBarProxyManagerTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/naviBar/SCBNaviBarProxyManager.test';
+import SCBNaviBarCallBackTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/naviBar/SCBNaviBarCallBack.test';
+ import SCBGestureBackViewModelTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/gesturenavigation/viewmodel/SCBGestureBackViewModel.test';
 import DebugCommandsUtilsTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/gesturenavigation/utils/DebugCommandsUtils.test';
 import GestureDockPullOutModelTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/gesturenavigation/model/GestureDockPullOutModel.test';
-import AiBarSettingsDataMgrTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/aiBar/settings/preference/AiBarSettingsDataMgr.test';
-import TextCodecTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/aiBar/util/TextCodec.test';
+import NaviBarSettingsDataMgrTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/naviBar/settings/preference/NaviBarSettingsDataMgr.test';
+import TextCodecTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/naviBar/util/TextCodec.test';
 import GestureDockBarViewModelTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/gestureDock/dockbar/viewmodel/GestureDockBarViewModel.test';
 import GestureDockAllAppsItemViewDataMgrTest
   from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/gestureDock/dockappitem/viewdata/GestureDockAllAppsItemViewDataMgr.test';
@@ -108,13 +107,13 @@ import GestureDockAppDataHandlerTest
   from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/gestureDock/dockbar/viewmodel/viewhandler/GestureDockAppDataHandler.test';
 import GestureDockItemDragHandlerTest
   from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/gestureDock/dockbar/viewmodel/viewhandler/GestureDockItemDragHandler.test';
-import AccessibilityUtilsTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/aiBar/util/AccessibilityUtils.test';
-import AIBarViewDataTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/aiBar/AIBarModel/AlBarViewData.test';
-import ThreeButtonUpgradeDSExtAbilityTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/aiBar/ability/ThreeButtonUpgradeDSExtAbility.test';
-import ThreeButtonUpgradeUIExtAbilityTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/aiBar/ability/ThreeButtonUpgradeUIExtAbility.test';
-import ThreeButtonUpgradeViewModelTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/aiBar/AIBarModel/ThreeButtonUpgradeViewModel.test';
+import AccessibilityUtilsTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/naviBar/util/AccessibilityUtils.test';
+import NAVIBarViewDataTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/naviBar/NAVIBarModel/NAVIBarViewData.test';
+import ThreeButtonUpgradeDSExtAbilityTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/naviBar/ability/ThreeButtonUpgradeDSExtAbility.test';
+import ThreeButtonUpgradeUIExtAbilityTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/naviBar/ability/ThreeButtonUpgradeUIExtAbility.test';
+import ThreeButtonUpgradeViewModelTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/naviBar/NAVIBarModel/ThreeButtonUpgradeViewModel.test';
 import AllAppsDataSourceTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/gestureDock/dockallapps/model/AllAppsDataSource.test';
-import FloatingNavigationManagerTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/aiBar/proxy/FloatingNavigationManager.test';
+import FloatingNavigationManagerTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/naviBar/proxy/FloatingNavigationManager.test';
 
 import FormClearUtilsTest from 'sceneboard/src/ohosTest/ets/test/ets/common/FormClearUtils.test';
 import BundleVerifyUtilsTest from 'sceneboard/src/ohosTest/ets/test/ets/service/exthome/BundleVerifyUtils.test';
@@ -330,10 +329,10 @@ import {
 import { FlashlightTipsModelTest } from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/screenlock/viewmodel/FlashlightTipsModelTest.test';
 import { TouchBoardGestureManagerTest } from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/touchboardgesture/TouchBoardGestureManagerTest.test';
 import { EditModeIconAbilityPhoneTest } from 'sceneboard/src/ohosTest/ets/test/ets/desktopedit/ability/EditModeIconAbilityPhone.test';
-import AIBarAnimateTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/aiBar/AIBarModel/AIBarAnimate.test';
-import AIBarClickBackgroundDataTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/aiBar/AIBarModel/AIBarClickBackgroundData.test';
-import AIBarDataTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/aiBar/AIBarModel/AIBarData.test';
-import AIBarViewModelTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/aiBar/AIBarModel/AIBarViewModel.test';
+import NAVIBarAnimateTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/naviBar/NAVIBarModel/NAVIBarAnimate.test';
+import NAVIBarClickBackgroundDataTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/naviBar/NAVIBarModel/NAVIBarClickBackgroundData.test';
+import NAVIBarDataTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/naviBar/NAVIBarModel/NAVIBarData.test';
+import NAVIBarViewModelTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/naviBar/NAVIBarModel/NAVIBarViewModel.test';
 import {
   AnimationParam1Test,
   DialClockParamTest,
@@ -534,20 +533,20 @@ export function LauncherNavigationForOhSuite() {
   DebugCommandsUtilsTest();
   SCBGestureBackViewModelTest();
   SCBGestureNavBarViewModelTest();
-  //aiBar
-  SCBAiBarProxyManagerTest();
-  SCBAiBarCallBackTest();
-  AiBarServiceTest();
+  //naviBar
+  SCBNaviBarProxyManagerTest();
+   SCBNaviBarCallBackTest();
+
   PadBackGestureModelTest();
   PadBackEventViewModelTest();
-  AIBarAnimateTest();
-  AIBarClickBackgroundDataTest();
-  AIBarDataTest();
-  AiBarSettingsDataMgrTest();
-  AIBarViewModelTest();
+  NAVIBarAnimateTest();
+  NAVIBarClickBackgroundDataTest();
+  NAVIBarDataTest();
+  NaviBarSettingsDataMgrTest();
+  NAVIBarViewModelTest();
   TextCodecTest();
   AccessibilityUtilsTest();
-  AIBarViewDataTest();
+  NAVIBarViewDataTest();
   ThreeButtonUpgradeDSExtAbilityTest();
   ThreeButtonUpgradeUIExtAbilityTest();
   ThreeButtonUpgradeViewModelTest();
@@ -665,20 +664,20 @@ export function basicLauncherForOhSuite() {
   DebugCommandsUtilsTest();
   SCBGestureBackViewModelTest();
   SCBGestureNavBarViewModelTest();
-  //aiBar
-  SCBAiBarProxyManagerTest();
-  SCBAiBarCallBackTest();
-  AiBarServiceTest();
+  //naviBar
+  SCBNaviBarProxyManagerTest();
+   SCBNaviBarCallBackTest();
+
   PadBackGestureModelTest();
   PadBackEventViewModelTest();
-  AIBarAnimateTest();
-  AIBarClickBackgroundDataTest();
-  AIBarDataTest();
-  AiBarSettingsDataMgrTest();
-  AIBarViewModelTest();
+  NAVIBarAnimateTest();
+  NAVIBarClickBackgroundDataTest();
+  NAVIBarDataTest();
+  NaviBarSettingsDataMgrTest();
+  NAVIBarViewModelTest();
   TextCodecTest();
   AccessibilityUtilsTest();
-  AIBarViewDataTest();
+  NAVIBarViewDataTest();
   ThreeButtonUpgradeDSExtAbilityTest();
   ThreeButtonUpgradeUIExtAbilityTest();
   ThreeButtonUpgradeViewModelTest();

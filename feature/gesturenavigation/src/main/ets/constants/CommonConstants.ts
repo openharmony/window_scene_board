@@ -18,8 +18,8 @@ import { SingletonHelper } from '@ohos/basicutils';
  * GestureNavBar参数
  */
 export class GestureNavBarConstants {
-  // AiBar距离屏幕底部的距离
-  public static readonly AIBAR_DEFAULT_BOTTOM_MARGIN = 6;
+  // NaviBar距离屏幕底部的距离
+  public static readonly NAVIBAR_DEFAULT_BOTTOM_MARGIN = 6;
 }
 
 export enum OneStepState {

@@ -87,7 +87,6 @@ import { SingleStartFrom } from '@ohos/windowscene/src/main/ets/scene/session/SC
 import { SCBSpecialPanelMissionHandler } from './missionmanagement/SCBSpecialPanelMissionHandler';
 import { scbStatusBarVM } from '../../statusbar/viewmodel/SCBStatusBarVM';
 import { SCBSceneStartInterceptor, StartInterceptions } from '@ohos/windowscene/src/main/ets/scene/framework/missions/SCBSceneStartInterceptor';
-import { SCBVassistantMissionHandler } from './missionmanagement/SCBVassistantMissionHandler';
 import { WinLog, WinLogDomain } from '@ohos/windowscene/src/main/ets/utils/WinLog';
 import systemParameter from '@ohos.systemParameterEnhance';
 
@@ -243,13 +242,8 @@ export class SCBSpecialScenePanelViewModel extends SCBBaseScenePanelViewModel<SC
   // Scene Start Interceptor rules
   // ----------------------------------------------------------------------------------------------------
 
-  // 检查是否需要语音助手拦截
-  private interceptRuleForVassistant = (sceneInfo: SCBSceneInfo, startFrom: StartInterceptions) => {
-    const result = SCBVassistantMissionHandler.getInstance().startInterceptor(sceneInfo, startFrom);
-    if (result) {
-      log.showWarn(`start ${startFrom} intercepted by Vassistant`);
-    }
-    return result;
+  private interceptRuleForVassistant = (_sceneInfo: SCBSceneInfo, _startFrom: StartInterceptions) => {
+    return false;
   }
 
   // ----------------------------------------------------------------------------------------------------

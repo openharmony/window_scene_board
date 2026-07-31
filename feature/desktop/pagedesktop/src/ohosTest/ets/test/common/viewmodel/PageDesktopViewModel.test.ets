@@ -3805,7 +3805,7 @@ export default function PageDesktopViewModelTest() {
     it('test_PageDesktopViewModel_startAppWithIndex', 0, () => {
       let instance: PageDesktopViewModel = PageDesktopViewModel.getInstance();
       let info: GridLayoutItemInfo = new GridLayoutItemInfo();
-      info.bundleName = 'com.ohos.vassistant.launcher';
+      info.bundleName = 'com.ohos.testapp';
       info.abilityName = 'openharmony';
       info.moduleName = 'com';
       info.keyName = 'com';
@@ -3827,7 +3827,7 @@ export default function PageDesktopViewModelTest() {
     it('test_PageDesktopViewModel_onAppClick', 0, () => {
       let instance: PageDesktopViewModel = PageDesktopViewModel.getInstance();
       let info: GridLayoutItemInfo = new GridLayoutItemInfo();
-      info.bundleName = 'com.ohos.vassistant.launcher';
+      info.bundleName = 'com.ohos.testapp';
       info.abilityName = 'openharmony';
       info.moduleName = 'com';
       info.keyName = 'com';

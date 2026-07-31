@@ -41,7 +41,6 @@ import { PageDesktopGridStyleConfig } from '@ohos/launchercommon/src/main/ets/la
 import { FormViewModel } from '@ohos/form/src/main/ets/default/viewmodel/FormViewModel';
 import { FormStyleConfig } from '@ohos/form/src/main/ets/default/common/FormStyleConfig';
 import { FolderStyleManager } from '@ohos/launchercommon/src/main/ets/folder/next/common/FolderStyleManager';
-import { AiSuggestionUtil } from '@ohos/launchercommon/src/main/ets/aisuggestion/AiSuggestionUtil';
 
 const TAG = 'PageDesktopCloseAppHandler';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.HOME, TAG);
@@ -106,7 +105,6 @@ export class PageDesktopCloseAppHandler extends BaseCloseAppHandler {
           this.mAppIconHeight = this.mFolderStyleConfig.mFolderAppSize;
           break;
         case StartType.RECENT_DOCK_APP:
-        case StartType.AI_SUGGESTION_APP:
         default:
           break;
       }
@@ -245,9 +243,6 @@ export class PageDesktopCloseAppHandler extends BaseCloseAppHandler {
               if (this.isMatchApp(item.bundleName, item.abilityName) && this.mStartAppType === StartType.CARD &&
               this.isMatchIconId(item.cardId ?? '')) {
                 return item;
-              } else if (this.mStartAppType === StartType.AI_SUGGESTION_APP &&
-              AiSuggestionUtil.isVoiceAbilityForm(item.bundleName, item.abilityName)) {
-                return undefined;
               }
               break;
             case CommonConstants.TYPE_FOLDER:

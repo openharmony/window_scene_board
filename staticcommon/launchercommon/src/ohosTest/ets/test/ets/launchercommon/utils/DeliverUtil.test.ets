@@ -152,20 +152,20 @@ function initAppItemInfo(): AppItemInfo {
 
 function initDhItemInfos(): GridLayoutItemInfo[]{
   let dhItemInfos: GridLayoutItemInfo[] =[];
-  let gridLayoutEasyAbroadApp: GridLayoutItemInfo = new GridLayoutItemInfo();
-  gridLayoutEasyAbroadApp.typeId = CommonConstants.TYPE_APP;
-  gridLayoutEasyAbroadApp.infoId = '37f7caf8-eff6-46ab-aefe-0f9786e47669';
-  gridLayoutEasyAbroadApp.infoName = '电召PLUS';
-  gridLayoutEasyAbroadApp.bundleName = 'macao.taxi.passager';
-  gridLayoutEasyAbroadApp.abilityName = 'MainAbility';
-  gridLayoutEasyAbroadApp.moduleName = 'phone';
-  gridLayoutEasyAbroadApp.container = 66;
-  gridLayoutEasyAbroadApp.page = 0;
-  gridLayoutEasyAbroadApp.row = 1;
-  gridLayoutEasyAbroadApp.column = 0;
-  gridLayoutEasyAbroadApp.areaType = 0;
-  gridLayoutEasyAbroadApp.area = [1, 1];
-  gridLayoutEasyAbroadApp.intent =
+  let gridLayoutAppApp: GridLayoutItemInfo = new GridLayoutItemInfo();
+  gridLayoutAppApp.typeId = CommonConstants.TYPE_APP;
+  gridLayoutAppApp.infoId = '37f7caf8-eff6-46ab-aefe-0f9786e47669';
+  gridLayoutAppApp.infoName = '电召PLUS';
+  gridLayoutAppApp.bundleName = 'macao.taxi.passager';
+  gridLayoutAppApp.abilityName = 'MainAbility';
+  gridLayoutAppApp.moduleName = 'phone';
+  gridLayoutAppApp.container = 66;
+  gridLayoutAppApp.page = 0;
+  gridLayoutAppApp.row = 1;
+  gridLayoutAppApp.column = 0;
+  gridLayoutAppApp.areaType = 0;
+  gridLayoutAppApp.area = [1, 1];
+  gridLayoutAppApp.intent =
     '{"legacyInfo":{"pkgName":"macao.taxi.passager","pkgLableName":"电召PLUS","pkgSignature":"8c6e07f87c9db98fde934f69bdaaf653ef1176b0e0aa5959de87b34203a8d5f3","versionCode":"2025052303","versionName":"3.3.7","installSource":"com.ohos.abroad"},"targetModuleUrl":"","requestBundleName":"__WAIT_FOR_HARMONY_BUNDLENAME__macao.taxi.passager__1750122530100","installSource":"com.ohos.abroad","appType":0,"maskState":0}';
 
   let gridLayoutdeliverApp: GridLayoutItemInfo = new GridLayoutItemInfo();
@@ -237,7 +237,7 @@ function initDhItemInfos(): GridLayoutItemInfo[]{
   gridLayoutAboardFolder.area = [2, 2];
   gridLayoutAboardFolder.layoutInfo = [];
   gridLayoutAboardFolder.intent = '{"NotHarmonyFolder":"1715654262383"}';
-  dhItemInfos.push(gridLayoutEasyAbroadApp, gridLayoutdeliverApp, gridLayoutdeliverFolder, gridLayoutAboardFolder,
+  dhItemInfos.push(gridLayoutAppApp, gridLayoutdeliverApp, gridLayoutdeliverFolder, gridLayoutAboardFolder,
     gridLayoutNotHarmonyFolder);
   return dhItemInfos;
 }
@@ -1122,7 +1122,7 @@ export default function DeliverUtilTest() {
       let mocker: MockKit = new MockKit();
       let mockFunc1: Function = mocker.mockFunc(DeliverUtil, DeliverUtil['isdeliverHapExist']);
       when(mockFunc1)(ArgumentMatchers.any).afterReturn(true);
-      let mockFunc2: Function = mocker.mockFunc(DeliverUtil, DeliverUtil['isEasyAbroadExist']);
+      let mockFunc2: Function = mocker.mockFunc(DeliverUtil, DeliverUtil['isAppExist']);
       when(mockFunc2)(ArgumentMatchers.any).afterReturn(true);
       try {
         expect(DeliverUtil.isMatchContainerHapExist(gridLayoutItemInfo)).assertInstanceOf('Boolean');
@@ -1185,13 +1185,13 @@ export default function DeliverUtilTest() {
       let mockFunc: Function = mocker.mockFunc(appModel, appModel.getAppInfoByBundleName);
       when(mockFunc)(ArgumentMatchers.any).afterReturn(appItemInfo);
       try {
-        expect(DeliverUtil['getTargetBundleName'](true)).assertEqual(DeliverUtil.ABROAD_APP_APP_BUNDLE_NAME_REAL);
+        expect(DeliverUtil['getTargetBundleName'](true)).assertEqual(DeliverUtil.APP_APP_BUNDLE_NAME_REAL);
         expect(DeliverUtil['getTargetBundleName'](false)).assertEqual(DeliverUtil.DELIVER_APP_BUNDLE_NAME_REAL);
       } catch (error) {
       }
       when(mockFunc)(ArgumentMatchers.any).afterReturn(undefined);
       try {
-        expect(DeliverUtil['getTargetBundleName'](true)).assertEqual(DeliverUtil.ABROAD_APP_APP_BUNDLE_NAME);
+        expect(DeliverUtil['getTargetBundleName'](true)).assertEqual(DeliverUtil.APP_APP_BUNDLE_NAME);
         expect(DeliverUtil['getTargetBundleName'](false)).assertEqual(DeliverUtil.DELIVER_APP_BUNDLE_NAME);
       } catch (error) {
       }
@@ -1471,11 +1471,11 @@ export default function DeliverUtilTest() {
       let mocker: MockKit = new MockKit();
       let mockFunc1: Function = mocker.mockFunc(DeliverUtil, DeliverUtil['isdeliverHapExist']);
       when(mockFunc1)(ArgumentMatchers.any).afterReturn(false);
-      let mockFunc2: Function = mocker.mockFunc(DeliverUtil, DeliverUtil['isEasyAbroadExist']);
+      let mockFunc2: Function = mocker.mockFunc(DeliverUtil, DeliverUtil['isAppExist']);
       when(mockFunc2)(ArgumentMatchers.any).afterReturn(false);
       try {
         expect(DeliverUtil.isContainerHapExist(DeliverUtil.DELIVER_APPSTORE_PKG)).assertFalse();
-        expect(DeliverUtil.isContainerHapExist(DeliverUtil.ABROAD_APP_PKG)).assertFalse();
+        expect(DeliverUtil.isContainerHapExist(DeliverUtil.APP_PKG)).assertFalse();
         expect(DeliverUtil.isContainerHapExist(DeliverUtil.DELIVER_APPSTORE_CLASS)).assertFalse();
       } catch (error) {
       }
@@ -1790,7 +1790,7 @@ export default function DeliverUtilTest() {
       let mocker: MockKit = new MockKit();
       let mockFunc: Function = mocker.mockFunc(DeliverUtil, DeliverUtil['getDeliverStartStatus']);
       when(mockFunc)(ArgumentMatchers.any).afterReturn(DeliverUtil.DELIVER_APP_BUNDLE_NAME);
-      let mockFunc1: Function = mocker.mockFunc(DeliverUtil, DeliverUtil['isEasyAbroadPkg']);
+      let mockFunc1: Function = mocker.mockFunc(DeliverUtil, DeliverUtil['isAppPkg']);
       when(mockFunc1)(ArgumentMatchers.any).afterReturn(true);
       let mockFunc2: Function = mocker.mockFunc(DeliverUtil, DeliverUtil['isdeliverPkg']);
       when(mockFunc2)(ArgumentMatchers.any).afterReturn(true);
@@ -1804,21 +1804,21 @@ export default function DeliverUtilTest() {
 
     it('test_deleteCacheDefaultAppSort_1', 0, () => {
       const gridLayoutItemInfo: GridLayoutItemInfo = new GridLayoutItemInfo();
-      DeliverUtil['checkRemoveContainerFolder'](DeliverUtil.ABROAD_APP_APP_BUNDLE_NAME);
-      DeliverUtil['checkRemoveContainerFolder'](DeliverUtil.ABROAD_APP_APP_BUNDLE_NAME_REAL);
+      DeliverUtil['checkRemoveContainerFolder'](DeliverUtil.APP_APP_BUNDLE_NAME);
+      DeliverUtil['checkRemoveContainerFolder'](DeliverUtil.APP_APP_BUNDLE_NAME_REAL);
       expect(gridLayoutItemInfo).not().assertNull();
     });
 
     it('test_getInstallSourceByGridLayoutInfoOrFolder_1', 0, () => {
       const gridLayoutItemInfo: GridLayoutItemInfo = new GridLayoutItemInfo();
-      DeliverUtil['containerFolderMap'].set(DeliverUtil.ABROAD_APP_PKG, DeliverUtil.ABROAD_APP_PKG);
-      expect(DeliverUtil['getInstallSourceByGridLayoutInfoOrFolder'](gridLayoutItemInfo, DeliverUtil.ABROAD_APP_PKG))
-        .assertEqual(DeliverUtil.ABROAD_APP_PKG);
+      DeliverUtil['containerFolderMap'].set(DeliverUtil.APP_PKG, DeliverUtil.APP_PKG);
+      expect(DeliverUtil['getInstallSourceByGridLayoutInfoOrFolder'](gridLayoutItemInfo, DeliverUtil.APP_PKG))
+        .assertEqual(DeliverUtil.APP_PKG);
       expect(DeliverUtil['getInstallSourceByGridLayoutInfoOrFolder'](gridLayoutItemInfo,
         DeliverUtil.DELIVER_APPSTORE_PKG)).assertEqual(DeliverUtil.DELIVER_APPSTORE_PKG);
     })
 
-    it('test_startdeliverAutoEnterLakeAbility_1', 0, () => {
+    it('test_startdeliverAutoOhosAbility_1', 0, () => {
       let bundleName: string = 'bundleName';
       let appIcon: string = 'appIcon';
       let mocker: MockKit = new MockKit();
@@ -1827,7 +1827,7 @@ export default function DeliverUtilTest() {
       let mockFunc1: Function = mocker.mockFunc(StartAbilityUtil, StartAbilityUtil['StartAbilityUtil']);
       when(mockFunc1)(ArgumentMatchers.any).afterReturnNothing();
       try {
-        DeliverUtil.startdeliverAutoEnterLakeAbility(bundleName, appIcon);
+        DeliverUtil.startdeliverAutoOhosAbility(bundleName, appIcon);
       } catch (error) {
       }
       expect(appIcon).not().assertNull();
@@ -1991,7 +1991,7 @@ export default function DeliverUtilTest() {
       let result1 = DeliverUtil.verifyContainerAppIdentifier(undefined);
       expect(result1).assertFalse();
 
-      let result2 = DeliverUtil.verifyContainerAppIdentifier(DeliverUtil.ABROAD_APP_APP_BUNDLE_NAME);
+      let result2 = DeliverUtil.verifyContainerAppIdentifier(DeliverUtil.APP_APP_BUNDLE_NAME);
       expect(result2).assertFalse();
     });
 
@@ -2030,16 +2030,16 @@ export default function DeliverUtilTest() {
       let appInfo: AppItemInfo = new AppItemInfo()
       DeliverUtil['getTargetBundleName'](true);
       when(mockFunc)(ArgumentMatchers.any).afterReturn(appInfo);
-      let isEasyAbroadFolder: boolean = true;
+      let isAppFolder: boolean = true;
       try {
-        expect(DeliverUtil['getTargetBundleName'](isEasyAbroadFolder)).assertEqual('com.ohos.abroad');
-        expect(DeliverUtil['getTargetBundleName'](!isEasyAbroadFolder)).assertEqual('com.deliver.tong');
+        expect(DeliverUtil['getTargetBundleName'](isAppFolder)).assertEqual('com.ohos.abroad');
+        expect(DeliverUtil['getTargetBundleName'](!isAppFolder)).assertEqual('com.deliver.tong');
       } catch (error) {
       }
       when(mockFunc)(ArgumentMatchers.any).afterReturn(undefined);
       try {
-        expect(DeliverUtil['getTargetBundleName'](isEasyAbroadFolder)).assertEqual('com.ohos.abroadHarmony.temp');
-        expect(DeliverUtil['getTargetBundleName'](!isEasyAbroadFolder)).assertEqual('com.deliver.iapps');
+        expect(DeliverUtil['getTargetBundleName'](isAppFolder)).assertEqual('com.ohos.abroadHarmony.temp');
+        expect(DeliverUtil['getTargetBundleName'](!isAppFolder)).assertEqual('com.deliver.iapps');
       } catch (error) {
       }
       mocker.clear(appModel);
@@ -2358,7 +2358,7 @@ export default function DeliverUtilTest() {
 
       it('test_checkFolderbyInstallSource_05', 0, () => {
         try {
-          let result: boolean = DeliverUtil.checkFolderbyInstallSource(dhItemInfos[2], DeliverUtil.ABROAD_APP_PKG);
+          let result: boolean = DeliverUtil.checkFolderbyInstallSource(dhItemInfos[2], DeliverUtil.APP_PKG);
           expect(result).assertEqual(false);
         } catch (e) {
           expect(JSON.stringify(e)).assertInstanceOf('String');
@@ -2367,7 +2367,7 @@ export default function DeliverUtilTest() {
 
       it('test_checkFolderbyInstallSource_06', 0, () => {
         try {
-          let result: boolean = DeliverUtil.checkFolderbyInstallSource(dhItemInfos[3], DeliverUtil.ABROAD_APP_PKG);
+          let result: boolean = DeliverUtil.checkFolderbyInstallSource(dhItemInfos[3], DeliverUtil.APP_PKG);
           expect(result).assertEqual(false);
         } catch (e) {
           expect(JSON.stringify(e)).assertInstanceOf('String');
@@ -2405,7 +2405,7 @@ export default function DeliverUtilTest() {
 
     it('test_isHideDhRemoveMenu_04', 0, () => {
       try {
-        let result: boolean = DeliverUtil.isHideDhRemoveMenu(DeliverUtil.ABROAD_APP_APP_BUNDLE_NAME_REAL);
+        let result: boolean = DeliverUtil.isHideDhRemoveMenu(DeliverUtil.APP_APP_BUNDLE_NAME_REAL);
         expect(result).assertEqual(false);
       } catch (e) {
         expect(JSON.stringify(e)).assertInstanceOf('String');
@@ -2415,7 +2415,7 @@ export default function DeliverUtilTest() {
     it('test_isHideDhRemoveMenu_05', 0, () => {
       try {
         DesktopLayoutCacheData['mGridLayoutItemList'] = dhItemInfos;
-        let result: boolean = DeliverUtil.isHideDhRemoveMenu(DeliverUtil.ABROAD_APP_APP_BUNDLE_NAME_REAL);
+        let result: boolean = DeliverUtil.isHideDhRemoveMenu(DeliverUtil.APP_APP_BUNDLE_NAME_REAL);
         expect(result).assertEqual(false);
         DesktopLayoutCacheData['mGridLayoutItemList'] = [];
       } catch (e) {

@@ -133,11 +133,6 @@
           {
             "name": "ohos.extension.version",
             "value": "12"
-          },
-          // 语音助手建议特性码仅供语音助手建议使用
-          {
-            "name": "aisuggestion.feature.version",
-            "value": "6"
           }
         ]
       },
@@ -215,7 +210,7 @@
       },
       {
         "name": "ThreeButtonUpgradeDSExtAbility",
-        "srcEntry": "./ets/SceneBoard/aiBar/ability/ThreeButtonUpgradeDSExtAbilityRedirect.ets",
+        "srcEntry": "./ets/SceneBoard/naviBar/ability/ThreeButtonUpgradeDSExtAbilityRedirect.ets",
         "description": "ThreeButtonUpgradeDSExtAbility",
         "type": "dataShare",
         "uri": "datashare://ThreeButtonUpgradeDSExtAbility",
@@ -227,7 +222,7 @@
         "description": "ThreeButtonUpgradeUIExtAbility",
         "type": "sys/commonUI",
         "exported": true,
-        "srcEntry": "./ets/SceneBoard/aiBar/ability/ThreeButtonUpgradeUIExtAbilityRedirect.ets",
+        "srcEntry": "./ets/SceneBoard/naviBar/ability/ThreeButtonUpgradeUIExtAbilityRedirect.ets",
         "permissions": [
           "ohos.permission.ALLOW_UPGRADE_GUIDE_ACCESS"
         ]

@@ -14,7 +14,7 @@
  */
 
 import { LogDomain, LogHelper } from '@ohos/basicutils';
-import { AIBarViewModel } from '../../../aiBar/AIBarModel/AIBarViewModel';
+import { NAVIBarViewModel } from '../../../naviBar/NAVIBarModel/NAVIBarViewModel';
 import { GameOperationParams } from './GameOperationParams';
 import { SystemSceneConstants } from '../../SystemSceneConstants';
 
@@ -27,15 +27,15 @@ const log: LogHelper = LogHelper.getLogHelper(LogDomain.GESTURE, TAG);
 export class GameOperationManager {
   // 游戏场景下，相关操作参数
   private params: GameOperationParams = new GameOperationParams();
-  private aiBarViewModel?: AIBarViewModel;
+  private naviBarViewModel?: NAVIBarViewModel;
 
   /**
-   * 构造，依赖AIBarViewModel游戏场景参数isInGameSign
+   * 构造，依赖NAVIBarViewModel游戏场景参数isInGameSign
    *
-   * @param aiBarViewModel
+   * @param naviBarViewModel
    */
-  public constructor(aiBarViewModel: AIBarViewModel) {
-    this.aiBarViewModel = aiBarViewModel;
+  public constructor(naviBarViewModel: NAVIBarViewModel) {
+    this.naviBarViewModel = naviBarViewModel;
   }
 
   /**
@@ -43,7 +43,7 @@ export class GameOperationManager {
    */
   public onTouchEvent(event: TouchEvent): void {
     // 非游戏场景，不做特殊处理
-    if (!this.aiBarViewModel?.aiBarData.isInGameSign) {
+    if (!this.naviBarViewModel?.naviBarData.isInGameSign) {
       return;
     }
     if (event.type === TouchType.Down) {
@@ -66,7 +66,7 @@ export class GameOperationManager {
    */
   public isFirstFingerMoveValid(): boolean {
     // 非游戏场景，不用判断第一根手指滑动的有效性
-    if (!this.aiBarViewModel?.aiBarData.isInGameSign) {
+    if (!this.naviBarViewModel?.naviBarData.isInGameSign) {
       return true;
     }
     // 没有其他手指滑动，第一根手指滑动有效

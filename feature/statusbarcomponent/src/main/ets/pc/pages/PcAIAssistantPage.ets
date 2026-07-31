@@ -34,14 +34,14 @@ class StyleRule {
   public transparentColor?: Color | string;
 }
 
-const BUNDLE_NAME: string = 'com.ohos.vassistant';
+const BUNDLE_NAME: string = '';
 const SEARCH_BUNDLE_NAME: string = 'com.ohos.hisearch';
-const ABILITY_PC: string = 'VoicePcAbility';
-const ABILITY_TABLET: string = 'VoiceAbility';
-const PC_SERVICE_ABILITY: string = 'VoicePcServiceExtAbility';
-const PC_TRANSLATE_ABILITY: string = 'TranslateToolAbility';
+const ABILITY_PC: string = '';
+const ABILITY_TABLET: string = '';
+const PC_SERVICE_ABILITY: string = '';
+const PC_TRANSLATE_ABILITY: string = '';
 const SEARCH_ABILITY: string = 'MainAbility';
-const VOICE_SETTING_ABILITY: string = 'MyHomeAbility';
+const VOICE_SETTING_ABILITY: string = '';
 const PLUGIN_CLICK: string = 'Plguin';
 const ELEMENT_NAME: string = '18';
 const CLICK_TYPE: string = '2';

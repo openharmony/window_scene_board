@@ -281,7 +281,7 @@ export default function GestureDockUtilTest() {
       let mockerFuc: Function =
         mocker.mockFunc(appModel, appModel.getAppInfoByBundleName);
       when(mockerFuc)(ArgumentMatchers.any).afterReturn('targetBundleName');
-      let res1 = GestureDockUtil.getTargetBundleName(DeliverUtil.ABROAD_APP_PKG);
+      let res1 = GestureDockUtil.getTargetBundleName(DeliverUtil.APP_PKG);
       let res2 = GestureDockUtil.getTargetBundleName('test');
       mocker.clear(appModel);
       expect(res1).not().assertUndefined();

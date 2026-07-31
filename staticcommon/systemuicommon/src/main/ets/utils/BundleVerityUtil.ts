@@ -76,10 +76,6 @@ const NOTIFICATION_VERITY_BUNDLES: BundleVerityData[] = [
     appIdentifier: '5765880207854258395',
   },
   {
-    bundleName: 'com.ohos.vassistant.launcher',
-    appIdentifier: '5765880207855998521',
-  },
-  {
     bundleName: 'com.ohos.security.privacycenter',
     appIdentifier: '5765880207852998967',
   },

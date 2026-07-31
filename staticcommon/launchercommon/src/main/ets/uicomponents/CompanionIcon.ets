@@ -57,7 +57,6 @@ import {
   LauncherLayoutCacheUtil
 } from '../TsIndex';
 import { ShortcutViewModel } from '../launchericon/viewmodel/ShortcutViewModel';
-import { AiSuggestionCache } from '../aisuggestion/AiSuggestionCache';
 
 const TAG = 'CompanionIcon';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.ICON, TAG);
@@ -276,16 +275,6 @@ export struct CompanionIcon {
       moduleName: companionIconInfo.moduleName
     });
 
-    if (this.startType === StartType.AI_SUGGESTION_APP) {
-      this.appIcon =
-        AiSuggestionCache.getInstance().getIconCache(companionIconInfo?.bundleName + companionIconInfo?.extraId);
-      log.showInfo(`loadIconWithCache cacheKey: ${companionIconInfo?.bundleName +
-        companionIconInfo?.extraId} appIcon: ${this.appIcon?.length}`);
-      if (this.appIcon) {
-        this.singleIconOptimize(companionIconInfo.iconId);
-        return;
-      }
-    }
     if (!this.appIcon) {
       // 先获取融合图标资源，避免分层图标获取超时动效透明的问题
       IconResourceManager.getInstance().getCombIcon(companionIconInfo.bundleName,

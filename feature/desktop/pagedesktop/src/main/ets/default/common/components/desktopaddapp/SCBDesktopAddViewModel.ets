@@ -369,7 +369,7 @@ export class SCBDesktopAddViewModel {
     }
     if (this.allAppList?.length > 0) {
       this.allAppList.forEach((item: GridLayoutItemInfo) => {
-        if (DeliverUtil.isEasyAbroadItem(item.intent)) { //去掉应用内应用
+        if (DeliverUtil.isAppItem(item.intent)) { //去掉应用内应用
           return;
         }
         if (item.typeId === CommonConstants.TYPE_SHORTCUT_ICON || item.appIndex !== 0) {//去掉快捷方式和应用分身

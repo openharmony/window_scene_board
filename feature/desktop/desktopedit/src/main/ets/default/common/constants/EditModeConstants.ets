@@ -76,7 +76,7 @@ export class EditModeConstants {
   /**
    * 显示底部导航栏事件
    */
-  public static readonly AI_BAR_SHOW_EVENT = 'AIBarShow';
+  public static readonly NAVI_BAR_SHOW_EVENT = 'NAVIBarShow';
 
   public static readonly ACTIVATED_PATH_A: string = '/data/themes/a/';
   public static readonly ACTIVATED_PATH_B: string = '/data/themes/b/';

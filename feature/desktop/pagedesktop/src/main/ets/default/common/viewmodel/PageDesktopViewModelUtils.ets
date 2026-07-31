@@ -1084,7 +1084,7 @@ export class PageDesktopViewModelUtils {
    */
   public findPositionForContainerApp(item: AppItemInfo, isSupportDeliver: boolean, isRetailEnable?: boolean): boolean {
     if (item.typeId === CommonConstants.TYPE_APP && !Number.isNaN(Number(item?.codePath)) &&
-      (!DeliverUtil.CANCEL_DELIVER_FOLDER || DeliverUtil.isEasyAbroadItem(item.intent))) {
+      (!DeliverUtil.CANCEL_DELIVER_FOLDER || DeliverUtil.isAppItem(item.intent))) {
       // 是否门店版本，配合门店版本清理功能需求，备份恢厂后加载布局，如果有应用也需要收纳应用
       if (isSupportDeliver || isRetailEnable) {
         this.dealWithContainerApp(item);
@@ -1106,7 +1106,7 @@ export class PageDesktopViewModelUtils {
       }
       // 占位备份应用加到备份文件夹占位
       if (DeliverUtil.isContainerItem(item.intent) ||
-        (DeliverUtil.CANCEL_DELIVER_FOLDER && DeliverUtil.isEasyAbroadItem(item.intent))) {
+        (DeliverUtil.CANCEL_DELIVER_FOLDER && DeliverUtil.isAppItem(item.intent))) {
         this.dealWithContainerApp(item as AppItemInfo);
         return true;
       }

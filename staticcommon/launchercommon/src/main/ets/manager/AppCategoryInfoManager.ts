@@ -441,7 +441,7 @@ export class AppCategoryInfoManager {
     this.presetAppCatIdMap.set('com.ohos.dataclone', 10000000);
     this.presetAppCatIdMap.set('com.ohos.calendar', 10000000);
     this.presetAppCatIdMap.set('com.ohos.clock', 10000000);
-    this.presetAppCatIdMap.set('com.ohos.vassistant.launcher', 10000000);
+
     this.presetAppCatIdMap.set('com.ohos.settings', 10000000);
     this.presetAppCatIdMap.set('com.ohos.notepad', 10000000);
     this.presetAppCatIdMap.set('com.ohos.files', 10000000);

@@ -31,7 +31,7 @@ const log: LogHelper = LogHelper.getLogHelper(LogDomain.HOME, TAG);
 //第二位非空，表示找到了映射的商用上架鸿蒙应用
 const APP_HARMONY_ON_SHELF = 1 << 1;
 // 第四位非空，表示该应用在应用的分发清单内
-const APP_IN_ABROAD_APP_LIST = 1 << 3;
+const APP_IN_APP_LIST = 1 << 3;
 // 第五位非空，表示该应用在克隆应用的分发清单内
 const APP_IN_DELIVER_TONG_LIST = 1 << 4;
 // 第六位非空，表示该应用不在分发清单，但是兜底允许
@@ -398,7 +398,7 @@ export class AppFoundationServiceExtensionManager {
     this.queryResult = true;
     outputParam.mappingInfos.forEach((mappingInfo: MappingInfo) => {
       let type: number = mappingInfo.type;
-      if (((type & APP_IN_DELIVER_TONG_LIST) || (type & APP_IN_ABROAD_APP_LIST) || (type & APP_NOT_IN_LIST)) &&
+      if (((type & APP_IN_DELIVER_TONG_LIST) || (type & APP_IN_APP_LIST) || (type & APP_NOT_IN_LIST)) &&
         !CheckEmptyUtils.isEmpty(mappingInfo.pkgName)) {
         this.deliverBundleNamesMap.set(mappingInfo.pkgName, type);
       }

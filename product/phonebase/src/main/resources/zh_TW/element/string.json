@@ -190,28 +190,28 @@
             }
         },
         {
-            "name":"Ai_bar_return_home",
+            "name":"Navi_bar_return_home",
             "value":"返回桌面",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"Ai_bar_recent_detail",
+            "name":"Navi_bar_recent_detail",
             "value":"從螢幕底部邊緣向上滑動並停頓",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"Ai_bar_recent",
+            "name":"Navi_bar_recent",
             "value":"進入最近任務",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"Ai_bar_setting",
+            "name":"Navi_bar_setting",
             "value":"系統導覽",
             "attr":{
                 "priority":"LT"
@@ -225,42 +225,42 @@
             }
         },
         {
-            "name":"Ai_bar_back",
+            "name":"Navi_bar_back",
             "value":"返回",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"Ai_bar_vassistant_dialogue",
+            "name":"Navi_bar_vassistant_dialogue",
             "value":"語言助手對話",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"Ai_bar_gesture_back_detail",
+            "name":"Navi_bar_gesture_back_detail",
             "value":"從螢幕左/右側向內滑動，返回上一層",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"Ai_bar_vassistant",
+            "name":"Navi_bar_vassistant",
             "value":"長按底部導覽列，可觸發語言助手對話",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"Ai_bar_return_home_detail",
+            "name":"Navi_bar_return_home_detail",
             "value":"從螢幕底部邊緣向上滑動",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"Ai_bar_back_detail",
+            "name":"Navi_bar_back_detail",
             "value":"輕觸底部導覽列，返回上一層",
             "attr":{
                 "priority":"LT"
@@ -323,7 +323,7 @@
             }
         },
         {
-            "name":"Ai_bar",
+            "name":"Navi_bar",
             "value":"導覽列",
             "attr":{
                 "priority":"LT"
@@ -901,14 +901,14 @@
             }
         },
         {
-            "name":"Ai_bar_vassistant_dialogue_longpress",
+            "name":"Navi_bar_vassistant_dialogue_longpress",
             "value":"長按觸發語言助手對話",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"Ai_bar_back_click_navigation",
+            "name":"Navi_bar_back_click_navigation",
             "value":"輕觸導覽列返回",
             "attr":{
                 "priority":"LT"
@@ -971,7 +971,7 @@
             }
         },
         {
-            "name":"ai_bar_accessibility_text",
+            "name":"navi_bar_accessibility_text",
             "value":"導覽列，點按兩次後長按即可觸發語言助手對話",
             "attr":{
                 "priority":"translate"

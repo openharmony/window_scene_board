@@ -43,14 +43,14 @@
             }
         },
         {
-            "name":"Ai_bar_vassistant_dialogue_longpress",
+            "name":"Navi_bar_vassistant_dialogue_longpress",
             "value":"Chạm và giữ để đánh thức voice",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"Ai_bar_return_home",
+            "name":"Navi_bar_return_home",
             "value":"Về trang chủ",
             "attr":{
                 "priority":"translate"
@@ -64,7 +64,7 @@
             }
         },
         {
-            "name":"Ai_bar_recent_detail",
+            "name":"Navi_bar_recent_detail",
             "value":"Vuốt lên trên từ cuối màn hình và giữ để xem các tác vụ gần đây.",
             "attr":{
                 "priority":"translate"
@@ -99,7 +99,7 @@
             }
         },
         {
-            "name":"Ai_bar_recent",
+            "name":"Navi_bar_recent",
             "value":"Xem các tác vụ gần đây",
             "attr":{
                 "priority":"translate"
@@ -127,7 +127,7 @@
             }
         },
         {
-            "name":"Ai_bar_back_click_navigation",
+            "name":"Navi_bar_back_click_navigation",
             "value":"Chạm để trở lại",
             "attr":{
                 "priority":"translate"
@@ -211,7 +211,7 @@
             }
         },
         {
-            "name":"Ai_bar_back",
+            "name":"Navi_bar_back",
             "value":"Trở lại",
             "attr":{
                 "priority":"translate"
@@ -393,7 +393,7 @@
             }
         },
         {
-            "name":"Ai_bar_gesture_back_detail",
+            "name":"Navi_bar_gesture_back_detail",
             "value":"Vuốt vào trong từ cạnh bên trái hoặc bên phải để trở lại màn hình trước.",
             "attr":{
                 "priority":"translate"
@@ -491,7 +491,7 @@
             }
         },
         {
-            "name":"Ai_bar_vassistant",
+            "name":"Navi_bar_vassistant",
             "value":"Chạm và giữ thanh điều hướng để trò chuyện với voice.",
             "attr":{
                 "priority":"translate"
@@ -582,7 +582,7 @@
             }
         },
         {
-            "name":"Ai_bar_back_detail",
+            "name":"Navi_bar_back_detail",
             "value":"Chạm vào thanh điều hướng để trở lại màn hình trước.",
             "attr":{
                 "priority":"translate"
@@ -799,7 +799,7 @@
             }
         },
         {
-            "name":"Ai_bar_setting",
+            "name":"Navi_bar_setting",
             "value":"Điều hướng hệ thống",
             "attr":{
                 "priority":"translate"
@@ -974,7 +974,7 @@
             }
         },
         {
-            "name":"Ai_bar_vassistant_dialogue",
+            "name":"Navi_bar_vassistant_dialogue",
             "value":"voice Chat",
             "attr":{
                 "priority":"translate"
@@ -1051,7 +1051,7 @@
             }
         },
         {
-            "name":"Ai_bar",
+            "name":"Navi_bar",
             "value":"Thanh điều hướng",
             "attr":{
                 "priority":"translate"
@@ -1240,7 +1240,7 @@
             }
         },
         {
-            "name":"Ai_bar_return_home_detail",
+            "name":"Navi_bar_return_home_detail",
             "value":"Vuốt lên từ cuối màn hình để truy cập màn hình chính",
             "attr":{
                 "priority":"translate"
@@ -1492,7 +1492,7 @@
             }
         },
         {
-            "name":"ai_bar_accessibility_text",
+            "name":"navi_bar_accessibility_text",
             "value":"Thanh điều hướng, chạm hai lần và giữ để nói chuyện với voice",
             "attr":{
                 "priority":"translate"

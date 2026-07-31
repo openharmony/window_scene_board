@@ -222,7 +222,6 @@ import DisposedEventManagerTest from './ets/launchercommon/manager/DisposedEvent
 import {
   MultiSelectCheckboxViewModelTest
 } from './ets/launchercommon/editmode/viewModel/MultiSelectCheckboxViewModel.test';
-import AiSuggestDataManagerTest from './ets/launchercommon/manager/AiSuggestDataManager.test';
 import DesktopManagerTest from './ets/launchercommon/manager/DesktopManager.test';
 import ScreenSplitUtilTest from './ets/launchercommon/utils/ScreenSplitUtil.test';
 import NoIconAppModelTest from './ets/launchercommon/model/NoIconAppModel.test';
@@ -295,7 +294,7 @@ import AppIconResConfigTest from './ets/launchercommon/launchericon/viewmodel/Ap
 import AppIconGestureJudgeEventTest from './ets/launchercommon/launchericon/viewmodel/AppIconGestureJudgeEvent.test';
 import DesktopItemVibratorManagerTest from './ets/launchercommon/manager/DesktopItemVibratorManager.test';
 import SwiperPageManagerTest from './ets/launchercommon/viewmodel/SwiperPageManager.test';
-import AiBarCloneCallbackManagerTest from './ets/launchercommon/manager/AiBarCloneCallbackManager.test.est';
+import NaviBarCloneCallbackManagerTest from './ets/launchercommon/manager/NaviBarCloneCallbackManager.test.est';
 
 export default function PipelineDemoSuite() {
   describe("sceneboard_framework",  () =>  {
@@ -507,8 +506,7 @@ export default function PipelineDemoSuite() {
     EditModeReportManagerTest();
     MultiSelectListenManagerTest();
     MultiSelectCheckboxViewModelTest();
-    AiSuggestDataManagerTest();
-    AiBarCloneCallbackManagerTest();
+    NaviBarCloneCallbackManagerTest();
     DesktopManagerTest();
     ScreenSplitUtilTest();
     NoIconAppModelTest();

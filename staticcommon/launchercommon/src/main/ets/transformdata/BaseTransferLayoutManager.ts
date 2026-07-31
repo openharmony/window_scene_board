@@ -28,7 +28,7 @@ import { AppReserveType, BlankPageTransFormItem, DeliverUtil, GridLayoutUtil } f
 import { NotHarmonyUtil, NOT_HARMONY_FOLDERNAME } from '../utils/NotHarmonyUtil';
 import DataConvert from './DataConvert';
 import { LogBatchPrint } from './dfx/LogBatchPrint';
-import { DELIVER_FOLDERNAME, ABROAD_APP_FOLDERNAME } from '../utils/DeliverUtil';
+import { DELIVER_FOLDERNAME, APP_FOLDERNAME } from '../utils/DeliverUtil';
 
 const TAG = 'BaseTransferLayoutManager';
 const log: Logger = Logger.getLogHelper(LogDomain.BACKUP);
@@ -52,7 +52,7 @@ export class BaseTransferLayoutManager {
   // 存放可进入克隆应用文件夹的元素
   public deliverTongList: BaseTransferBean[] = [];
   // 存放应用应用
-  public easyAbroadList: BaseTransferBean[] = [];
+  public appList: BaseTransferBean[] = [];
   // 布局的最大屏数
   public maxScreenCount: number = DefaultDesktopLayoutInfo.getDefaultLayoutInfo().layoutDescription.maxPage;
   public newSmallerCount: number = 0;
@@ -113,7 +113,7 @@ export class BaseTransferLayoutManager {
     // 过滤出特殊文件夹，特殊文件夹需重新找位
     let notHamonyFolderItem: BaseTransferBean[] = [];
     let deliverTongFolderItem: BaseTransferBean[] = [];
-    let easyAbroadFolderItem: BaseTransferBean[] = [];
+    let appFolderItem: BaseTransferBean[] = [];
     let notSpecialItem: BaseTransferBean[] = currentPage.moveToNextPage.filter(item => {
       if (item.typeId !== CommonConstants.TYPE_FOLDER) {
         return true;
@@ -131,11 +131,11 @@ export class BaseTransferLayoutManager {
           deliverTongFolderItem.push(icon);
         });
         return false;
-      } else if (DeliverUtil.checkFolderbyInstallSource(item, DeliverUtil.ABROAD_APP_PKG) && item.layoutInfo) {
+      } else if (DeliverUtil.checkFolderbyInstallSource(item, DeliverUtil.APP_PKG) && item.layoutInfo) {
         item.layoutInfo[0].forEach(folderApp => {
           let icon: BaseTransferBean = ObjectCopyUtil.simpleClone(folderApp) as BaseTransferBean;
           icon.layoutWeight = 0;
-          easyAbroadFolderItem.push(icon);
+          appFolderItem.push(icon);
         });
         return false;
       }
@@ -156,8 +156,8 @@ export class BaseTransferLayoutManager {
       this.makeRestElementFolderToCurrentPage(currentPage, currentPage.occupied, deliverTongFolderItem, true);
     }
     // 处理应用
-    if (easyAbroadFolderItem.length !== 0) {
-      this.makeRestElementFolderToCurrentPage(currentPage, currentPage.occupied, easyAbroadFolderItem, true);
+    if (appFolderItem.length !== 0) {
+      this.makeRestElementFolderToCurrentPage(currentPage, currentPage.occupied, appFolderItem, true);
     }
     return currentPage;
   }
@@ -647,9 +647,9 @@ export class BaseTransferLayoutManager {
       this.dealSpecialFolderElements(this.deliverTongList);
     }
     // 处理应用文件夹
-    if (!CheckEmptyUtils.isEmptyArr(this.easyAbroadList)) {
-      log.showInfo(TAG, 'deal easy abroad elements start');
-      this.dealSpecialFolderElements(this.easyAbroadList);
+    if (!CheckEmptyUtils.isEmptyArr(this.appList)) {
+      log.showInfo(TAG, 'deal elements start');
+      this.dealSpecialFolderElements(this.appList);
     }
 
     return this.getNewLayoutFromScreenDataMap();
@@ -1495,11 +1495,11 @@ export class BaseTransferLayoutManager {
         return false;
       }
       // 过滤并收集应用应用
-      if (this.isNeedAddToEasyAbroadFolder(item)) {
+      if (this.isNeedAddToAppFolder(item)) {
         let icon: BaseTransferBean = ObjectCopyUtil.simpleClone(item) as BaseTransferBean;
         icon.layoutWeight = 0;
         abroadObj.push({ bundleName: icon.bundleName, appIndex: icon.appIndex } as IMyObj);
-        this.easyAbroadList.push(icon);
+        this.appList.push(icon);
         return false;
       }
       // 未鸿蒙化多对一替换的应用放在新机屏
@@ -1554,7 +1554,7 @@ export class BaseTransferLayoutManager {
       uniqueItemObj = [];
     }
     if (abroadObj.length !== 0) {
-      LogBatchPrint.printLogsInBatch(abroadObj, PRINT_BATCH_NUMBER, 'collect easy abroad item', TAG);
+      LogBatchPrint.printLogsInBatch(abroadObj, PRINT_BATCH_NUMBER, 'collect  item', TAG);
       abroadObj = [];
     }
   }
@@ -1684,11 +1684,11 @@ export class BaseTransferLayoutManager {
    * @param item 待恢复对象
    * @returns 是否收纳
    */
-  private isNeedAddToEasyAbroadFolder(item: GridLayoutItemInfo): boolean {
+  private isNeedAddToAppFolder(item: GridLayoutItemInfo): boolean {
     if (item.typeId !== CommonConstants.TYPE_APP) {
       return false;
     }
-    if (!DeliverUtil.isEasyAbroadItem(item.intent ?? '')) {
+    if (!DeliverUtil.isAppItem(item.intent ?? '')) {
       return false;
     }
     // 预留应用拖出
@@ -1966,12 +1966,12 @@ export class BaseTransferLayoutManager {
         DeliverUtil.setContainerFolderMapInDesktop(item);
         DeliverUtil.setIsCreateFolder(true);
         item.folderName = DELIVER_FOLDERNAME;
-      } else if (installSource === DeliverUtil.ABROAD_APP_PKG){
-        intentMap.set(NotHarmonyUtil.INSTALL_SOURCE, DeliverUtil.ABROAD_APP_PKG);
+      } else if (installSource === DeliverUtil.APP_PKG){
+        intentMap.set(NotHarmonyUtil.INSTALL_SOURCE, DeliverUtil.APP_PKG);
         item.intent = CommonUtils.mapToJonStr(intentMap);
         DeliverUtil.setContainerFolderMapInDesktop(item);
         DeliverUtil.setIsCreateFolder(true);
-        item.folderName = ABROAD_APP_FOLDERNAME;
+        item.folderName = APP_FOLDERNAME;
       } else {
         intentMap.set(NotHarmonyUtil.NOT_HARMONY_FOLDER_KEY_NAME_FOR_INTENT, item.folderId);
         NotHarmonyUtil.setNotHarmonyFolderId(item.folderId);

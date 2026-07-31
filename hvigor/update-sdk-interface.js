@@ -521,19 +521,6 @@ function replaceFile(pathFile, basePath) {
 function updateSdkInterface() {
     try {
         console.log('Update SDK interface base path', sdkBasePath);
-        // 路径替换成  ohos
-        // const hmsSdkBasePath = sdkBasePath.replace('openharmony', 'ohos');
-        // for (let pathFile of copyHmsPathFileArray) {
-        //     copyFile(pathFile, hmsSdkBasePath);
-        // }
-        //
-        // for (let pathFile of removeHmsPathFileArray) {
-        //     removeFile(pathFile, hmsSdkBasePath);
-        // }
-        //
-        // for (let pathFile of replaceHmsPathFileArray) {
-        //     replaceFile(pathFile, hmsSdkBasePath);
-        // }
 
         for (let pathFile of copyOHPathFileArray) {
             copyFile(pathFile, sdkBasePath);

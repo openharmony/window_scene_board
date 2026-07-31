@@ -48,9 +48,6 @@ const TAG = 'PcSmartDockModel';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.HOME, 'PCDock-' + TAG);
 
 const GUIDE_BUNDLE_NAME = 'com.ohos.startupguide';
-const VASSISTANT_BUNDLE_NAME = 'com.ohos.vassistant';
-const VOICE_PC_ABILITY_NAME = 'VoicePcAbility';
-const VOICE_PAD_ABILITY_NAME = 'VoiceAbility';
 const HISEARCH_PC_BUNDLE_NAME = 'com.ohos.hisearch';
 const HMMODEL_PC_BUNDLE_NAME = 'com.ohos.hmmodelfoundation';
 
@@ -701,8 +698,6 @@ export class PcSmartDockModel extends SmartDockModel {
   }
 
   private isVassiatant(bundleName: string, abilityName: string): boolean {
-    return (bundleName === VASSISTANT_BUNDLE_NAME &&
-      ((!DeviceHelper.is2In1DevicePcType() && abilityName === VOICE_PC_ABILITY_NAME) ||
-      (DeviceHelper.is2In1DevicePcType() && abilityName === VOICE_PAD_ABILITY_NAME)));
+    return false;
   }
 }

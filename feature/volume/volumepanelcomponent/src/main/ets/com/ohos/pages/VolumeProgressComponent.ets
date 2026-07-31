@@ -406,8 +406,7 @@ export default struct VolumeProgressComponent {
 
   private getSymbolGlyphValue(): Resource {
     if (this.volumeChannelType === audio.AudioVolumeType.MEDIA ||
-      this.volumeChannelType === audio.AudioVolumeType.VOICE_CALL ||
-      this.volumeChannelType === audio.AudioVolumeType.VOICE_ASSISTANT) {
+      this.volumeChannelType === audio.AudioVolumeType.VOICE_CALL) {
       // 使用外设图标
       if (this.isUseSliderIcon()) {
         log.showInfo(TAG, 'getSymbolGlyphValue isUseSliderIcon: true');
@@ -1026,9 +1025,6 @@ export default struct VolumeProgressComponent {
     if (this.volumeChannelType === audio.AudioVolumeType.ALARM) {
       return Constants.SYMBOL_ALARM_FILL;
     }
-    if (this.volumeChannelType === audio.AudioVolumeType.VOICE_ASSISTANT) {
-      return Constants.SYMBOL_VOICE_FILL;
-    }
     if (this.volumeChannelType === audio.AudioVolumeType.RINGTONE) {
       switch (this.ringerMode) {
         case audio.AudioRingMode.RINGER_MODE_SILENT:
@@ -1236,10 +1232,6 @@ export default struct VolumeProgressComponent {
     }
     if (this.volumeChannelType == audio.AudioVolumeType.VOICE_CALL) {
       this.volumeIconId = `${TAG}_Image_call`;
-      return;
-    }
-    if (this.volumeChannelType == audio.AudioVolumeType.VOICE_ASSISTANT) {
-      this.volumeIconId = `${TAG}_Image_voice`;
       return;
     }
     if (this.volumeChannelType == audio.AudioVolumeType.ACCESSIBILITY) {

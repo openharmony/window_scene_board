@@ -21,7 +21,6 @@ import {
   CommonConstants,
   DockItemInfo,
   GridLayoutItemInfo,
-  PageDesktopModel,
   StyleConstants,
   PageDesktopLayoutConfig,
   PageInfoManager,
@@ -52,11 +51,11 @@ export default class PhonePageDesktopLayoutConfig extends PageDesktopLayoutConfi
 
   /**
    * 应用找位的默认起始页
-   * 直板机从第1页开始找位
+   * 直板机从第0页（首页）开始找位，填满后再分页
    * 大折叠屏从第2页开始找位
    * 三折屏从第3页开始找位
    */
-  protected findPositionStartPage: number = 1;
+  protected findPositionStartPage: number = 0;
 
   /**
    * 重启需要检查最后空白页的个数
@@ -185,41 +184,98 @@ export default class PhonePageDesktopLayoutConfig extends PageDesktopLayoutConfi
       }
 
       let startPage = this.findPositionStartPage;
+      const maxPage = this.mGridLayoutInfo.layoutDescription.maxPage > 0 ?
+        this.mGridLayoutInfo.layoutDescription.maxPage : 18;
       while (!this.findPosition(info, startPage, rows, columns)) {
         startPage = startPage + 1;
-      };
+        if (startPage >= maxPage) {
+          log.showError(TAG, 'dealNotInCCMApp no blank position for %{public}s, startPage:%{public}d',
+            info.bundleName, startPage);
+          break;
+        }
+      }
 
       let isValid = this.updateAppInfoFromBMS(info, totalAppInfoList);
-      if (isValid) {
+      if (isValid && info.page !== undefined && info.page < maxPage) {
         log.showWarn(TAG, 'dealNotInCCMApp bundleName:%{public}s page:%{public}d row:%{public}d column:%{public}d, rows:%{public}d columns:%{public}d',
           info.bundleName, info.page, info.row, info.column, rows, columns);
         this.mGridLayoutInfo.layoutInfo.push(info);
       }
     });
+    this.updatePageCountAfterDealNotInCCMApp();
     // 预制布局中没有的应用处理完毕后，清空该数据
     this.notInCCMBundleNameSet.clear();
     this.notInCCMBundleNameSet = undefined;
   }
 
   /**
-   * 查找空位
+   * 补位结束后按实际最大页号校正 pageCount
+   */
+  private updatePageCountAfterDealNotInCCMApp(): void {
+    let maxPageIndex = 0;
+    this.mGridLayoutInfo.layoutInfo.forEach((item: GridLayoutItemInfo) => {
+      if (item.page !== undefined && item.page > maxPageIndex) {
+        maxPageIndex = item.page;
+      }
+    });
+    const newPageCount = maxPageIndex + 1;
+    const oldPageCount = this.mGridLayoutInfo.layoutDescription.pageCount;
+    if (newPageCount !== oldPageCount) {
+      log.showWarn(TAG, 'updatePageCountAfterDealNotInCCMApp %{public}d -> %{public}d', oldPageCount, newPageCount);
+      this.mGridLayoutInfo.layoutDescription.pageCount = newPageCount;
+      PageInfoManager.getInstance().updatePageCount(newPageCount, 'dealNotInCCMApp');
+      RdbStoreManager.getInstance().updateDesktopPageCount(newPageCount);
+    }
+  }
+
+  /**
+   * 该页是否预留给卡片（含卡片则应用找位跳过，避免挤进卡片页）
+   */
+  private isPageReservedForCards(page: number): boolean {
+    return this.mGridLayoutInfo.layoutInfo.some((item: GridLayoutItemInfo) =>
+      item.page === page && item.typeId === CommonConstants.TYPE_CARD);
+  }
+
+  /**
+   * 判断格子是否被占用
+   */
+  private isCellOccupied(page: number, row: number, column: number): boolean {
+    for (const item of this.mGridLayoutInfo.layoutInfo) {
+      if (item.page !== page || item.row === undefined || item.column === undefined || !item.area) {
+        continue;
+      }
+      const xMatch = column >= item.column && column < item.column + item.area[0];
+      const yMatch = row >= item.row && row < item.row + item.area[1];
+      if (xMatch && yMatch) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  /**
+   * 查找空位：按行优先扫描第一个空格子；卡片预留页直接跳过
    * @param item
    * @param startPage
    * @returns
    */
   private findPosition(item: GridLayoutItemInfo, startPage: number, rows: number, columns: number): boolean {
-    let page = startPage;
-    let lastIndex = PageDesktopModel.getInstance()
-      .getLastIndexOfGridOccupy(this.mGridLayoutInfo.layoutInfo, rows, columns, page);
-    // 当前页已满
-    if (lastIndex === rows * columns - 1) {
+    // 3a：卡片页不参与应用补位
+    if (this.isPageReservedForCards(startPage)) {
+      log.showInfo(TAG, 'findPosition skip card page:%{public}d', startPage);
       return false;
     }
-    // 在当前页最后一个占位后面增加一个元素
-    item.row = Math.floor((lastIndex + 1) / columns);
-    item.column = (lastIndex + 1) % columns;
-    item.page = page;
-    return true;
+    for (let row = 0; row < rows; row++) {
+      for (let column = 0; column < columns; column++) {
+        if (!this.isCellOccupied(startPage, row, column)) {
+          item.page = startPage;
+          item.row = row;
+          item.column = column;
+          return true;
+        }
+      }
+    }
+    return false;
   }
 
   /**

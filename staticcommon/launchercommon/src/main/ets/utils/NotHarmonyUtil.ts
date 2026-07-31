@@ -425,7 +425,7 @@ export class NotHarmonyUtil {
     }
     let intentMap: Map<string, Object> = CommonUtils.jsonStrToMap(item.intent);
     let installSource: string = intentMap.get(NotHarmonyUtil.INSTALL_SOURCE) as string;
-    if (installSource === DeliverUtil.DELIVER_APPSTORE_PKG || installSource === DeliverUtil.ABROAD_APP_PKG) {
+    if (installSource === DeliverUtil.DELIVER_APPSTORE_PKG || installSource === DeliverUtil.APP_PKG) {
       return true;
     }
     if (intentMap.get(NotHarmonyUtil.NOT_HARMONY_APP_MASK_STATE) === 1) {
@@ -446,7 +446,7 @@ export class NotHarmonyUtil {
     }
     let intentMap: Map<string, Object> = CommonUtils.jsonStrToMap(item.intent);
     let installSource: string = intentMap.get(NotHarmonyUtil.INSTALL_SOURCE) as string;
-    if (installSource !== DeliverUtil.DELIVER_APPSTORE_PKG && installSource !== DeliverUtil.ABROAD_APP_PKG) {
+    if (installSource !== DeliverUtil.DELIVER_APPSTORE_PKG && installSource !== DeliverUtil.APP_PKG) {
       if (intentMap.get(NotHarmonyUtil.NOT_HARMONY_APP_MASK_STATE) === 1) {
         return true;
       }
@@ -554,7 +554,7 @@ export class NotHarmonyUtil {
       let maskState = intentMap.get(NotHarmonyUtil.NOT_HARMONY_APP_MASK_STATE) as number;
       log.showInfo('wait for harmony app, bundleName = %{public}s , installSource = %{public}s maskState = %{public}d',
         appItemInfo.bundleName, installSource, maskState);
-      if (installSource !== DeliverUtil.DELIVER_APPSTORE_PKG && installSource !== DeliverUtil.ABROAD_APP_PKG) {
+      if (installSource !== DeliverUtil.DELIVER_APPSTORE_PKG && installSource !== DeliverUtil.APP_PKG) {
         if (!maskState) {
           pkgNameArr.push(appItemInfo.bundleName);
         } else if (maskState === 1 && queryBeforePkgNames.includes(appItemInfo.bundleName)) {

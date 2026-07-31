@@ -125,8 +125,8 @@ export class BaseViewModel extends SingleBase {
       appItemInfo ? appItemInfo : DeliverUtil.getAppItemByBundleName(bundleName);
     let installSource = DeliverUtil.getInstallSourceByIntent(itemInfo?.intent ?? '');
     let newBundleName = this.getTargetBundleName(installSource);
-    let newAbilityName = (installSource === DeliverUtil.ABROAD_APP_PKG ?
-      DeliverUtil.ABROAD_APP_APP_ABILITY_NAME : DeliverUtil.DELIVER_APP_ABILITY_NAME);
+    let newAbilityName = (installSource === DeliverUtil.APP_PKG ?
+      DeliverUtil.APP_APP_ABILITY_NAME : DeliverUtil.DELIVER_APP_ABILITY_NAME);
     log.showInfo(`newBundleName = ${newBundleName}, intent = ${itemInfo?.intent}, installSource = ${installSource}`);
     if (!DeliverUtil.verifyContainerAppIdentifier(newBundleName, 'startContainerApp')) {
       log.showWarn('verifyContainerAppIdentifier Failed');
@@ -138,9 +138,9 @@ export class BaseViewModel extends SingleBase {
 
   private getTargetBundleName(installSource: string): string {
     let newBundleName: string = '';
-    if (installSource === DeliverUtil.ABROAD_APP_PKG) {
-      newBundleName = AppModel.getInstance().getAppInfoByBundleName(DeliverUtil.ABROAD_APP_APP_BUNDLE_NAME_REAL) ?
-        DeliverUtil.ABROAD_APP_APP_BUNDLE_NAME_REAL : DeliverUtil.ABROAD_APP_APP_BUNDLE_NAME;
+    if (installSource === DeliverUtil.APP_PKG) {
+      newBundleName = AppModel.getInstance().getAppInfoByBundleName(DeliverUtil.APP_APP_BUNDLE_NAME_REAL) ?
+        DeliverUtil.APP_APP_BUNDLE_NAME_REAL : DeliverUtil.APP_APP_BUNDLE_NAME;
     } else {
       newBundleName = AppModel.getInstance().getAppInfoByBundleName(DeliverUtil.DELIVER_APP_BUNDLE_NAME_REAL) ?
         DeliverUtil.DELIVER_APP_BUNDLE_NAME_REAL : DeliverUtil.DELIVER_APP_BUNDLE_NAME;

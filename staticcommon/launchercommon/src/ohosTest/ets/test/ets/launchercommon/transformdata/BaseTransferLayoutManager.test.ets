@@ -323,21 +323,21 @@ function initScreenTransferBean(): ScreenTransferBean {
 
 function initDhItemInfos(): GridLayoutItemInfo[]{
   let dhItemInfos: GridLayoutItemInfo[] =[];
-  let gridLayoutEasyAbroadApp: GridLayoutItemInfo = new GridLayoutItemInfo();
-  gridLayoutEasyAbroadApp.typeId = CommonConstants.TYPE_APP;
-  gridLayoutEasyAbroadApp.infoId = '37f7caf8-eff6-46ab-aefe-0f9786e47669';
-  gridLayoutEasyAbroadApp.infoName = '电召PLUS';
-  gridLayoutEasyAbroadApp.bundleName = 'macao.taxi.passager';
-  gridLayoutEasyAbroadApp.abilityName = 'MainAbility';
-  gridLayoutEasyAbroadApp.moduleName = 'phone';
-  gridLayoutEasyAbroadApp.container = 66;
-  gridLayoutEasyAbroadApp.page = 0;
-  gridLayoutEasyAbroadApp.row = 0;
-  gridLayoutEasyAbroadApp.column = 0;
-  gridLayoutEasyAbroadApp.areaType = 0;
-  gridLayoutEasyAbroadApp.area = [1, 1];
-  gridLayoutEasyAbroadApp.appStatus = AppStatus.WAIT_FOR_HARMONY;
-  gridLayoutEasyAbroadApp.intent =
+  let gridLayoutAppApp: GridLayoutItemInfo = new GridLayoutItemInfo();
+  gridLayoutAppApp.typeId = CommonConstants.TYPE_APP;
+  gridLayoutAppApp.infoId = '37f7caf8-eff6-46ab-aefe-0f9786e47669';
+  gridLayoutAppApp.infoName = '电召PLUS';
+  gridLayoutAppApp.bundleName = 'macao.taxi.passager';
+  gridLayoutAppApp.abilityName = 'MainAbility';
+  gridLayoutAppApp.moduleName = 'phone';
+  gridLayoutAppApp.container = 66;
+  gridLayoutAppApp.page = 0;
+  gridLayoutAppApp.row = 0;
+  gridLayoutAppApp.column = 0;
+  gridLayoutAppApp.areaType = 0;
+  gridLayoutAppApp.area = [1, 1];
+  gridLayoutAppApp.appStatus = AppStatus.WAIT_FOR_HARMONY;
+  gridLayoutAppApp.intent =
     '{"legacyInfo":{"pkgName":"macao.taxi.passager","pkgLableName":"电召PLUS","pkgSignature":"8c6e07f87c9db98fde934f69bdaaf653ef1176b0e0aa5959de87b34203a8d5f3","versionCode":"2025052303","versionName":"3.3.7","installSource":"com.ohos.abroad"},"targetModuleUrl":"","requestBundleName":"__WAIT_FOR_HARMONY_BUNDLENAME__macao.taxi.passager__1750122530100","installSource":"com.ohos.abroad","appType":0,"maskState":0}';
 
   let gridLayoutdeliverApp: GridLayoutItemInfo = new GridLayoutItemInfo();
@@ -427,7 +427,7 @@ function initDhItemInfos(): GridLayoutItemInfo[]{
   gridLayoutAboardFolder.area = [2, 2];
   gridLayoutAboardFolder.layoutInfo = [];
   gridLayoutAboardFolder.intent = '{"NotHarmonyFolder":"1715654262383"}';
-  dhItemInfos.push(gridLayoutEasyAbroadApp, gridLayoutdeliverApp, gridNotHarmonyApp, gridLayoutdeliverFolder, gridLayoutAboardFolder,
+  dhItemInfos.push(gridLayoutAppApp, gridLayoutdeliverApp, gridNotHarmonyApp, gridLayoutdeliverFolder, gridLayoutAboardFolder,
     gridLayoutNotHarmonyFolder);
   return dhItemInfos;
 }
@@ -5699,36 +5699,36 @@ export default function BaseTransferLayoutManagerTest() {
       mock.clearAll();
     })
 
-    it("test_isNeedAddToEasyAbroadFolder_01", 0, () => {
+    it("test_isNeedAddToAppFolder_01", 0, () => {
       try {
         let itemInfo = {
           typeId: CommonConstants.TYPE_CARD,
         } as GridLayoutItemInfo;
-        let result = transferLayoutManager['isNeedAddToEasyAbroadFolder'](itemInfo);
+        let result = transferLayoutManager['isNeedAddToAppFolder'](itemInfo);
         expect(result).assertEqual(false);
       } catch (e) {
         expect(JSON.stringify(e)).assertInstanceOf('String');
       }
     })
 
-    it("test_isNeedAddToEasyAbroadFolder_02", 0, () => {
+    it("test_isNeedAddToAppFolder_02", 0, () => {
       try {
         let pkg: string = '1';
         let itemInfo = {
           typeId: CommonConstants.TYPE_APP,
           intent: JSON.stringify(new Map([['installSource', pkg]])),
         } as GridLayoutItemInfo;
-        let result = transferLayoutManager['isNeedAddToEasyAbroadFolder'](itemInfo);
+        let result = transferLayoutManager['isNeedAddToAppFolder'](itemInfo);
         expect(result).assertEqual(false);
       } catch (e) {
         expect(JSON.stringify(e)).assertInstanceOf('String');
       }
     })
 
-    it("test_isNeedAddToEasyAbroadFolder_03", 0, () => {
+    it("test_isNeedAddToAppFolder_03", 0, () => {
       let mock = new MockKit();
       try {
-        let pkg: string = DeliverUtil.ABROAD_APP_PKG;
+        let pkg: string = DeliverUtil.APP_PKG;
         let itemInfo = {
           typeId: CommonConstants.TYPE_APP,
           appStatus: 0,
@@ -5736,14 +5736,14 @@ export default function BaseTransferLayoutManagerTest() {
         } as GridLayoutItemInfo;
         let mockFunc: Function = mock.mockFunc(dataConvert, dataConvert.isInContainerFolder);
         when(mockFunc)(ArgumentMatchers.any).afterReturn(false);
-        let result = transferLayoutManager['isNeedAddToEasyAbroadFolder'](itemInfo);
+        let result = transferLayoutManager['isNeedAddToAppFolder'](itemInfo);
         expect(result).assertEqual(false);
       } catch (e) {
         expect(JSON.stringify(e)).assertInstanceOf('String');
       }
     })
 
-    it("test_isNeedAddToEasyAbroadFolder_04", 0, () => {
+    it("test_isNeedAddToAppFolder_04", 0, () => {
       let mock = new MockKit();
       try {
         let itemInfo = {
@@ -5753,7 +5753,7 @@ export default function BaseTransferLayoutManagerTest() {
         } as GridLayoutItemInfo;
         let mockFunc: Function = mock.mockFunc(dataConvert, dataConvert.isInContainerFolder);
         when(mockFunc)(ArgumentMatchers.any).afterReturn(false);
-        let result = transferLayoutManager['isNeedAddToEasyAbroadFolder'](itemInfo);
+        let result = transferLayoutManager['isNeedAddToAppFolder'](itemInfo);
         expect(result).assertEqual(true);
       } catch (e) {
         expect(JSON.stringify(e)).assertInstanceOf('String');
@@ -5762,7 +5762,7 @@ export default function BaseTransferLayoutManagerTest() {
       mock.clearAll();
     })
 
-    it("test_isNeedAddToEasyAbroadFolder_05_7", 0, () => {
+    it("test_isNeedAddToAppFolder_05_7", 0, () => {
       let mock = new MockKit();
       try {
         let itemInfo = {
@@ -5772,7 +5772,7 @@ export default function BaseTransferLayoutManagerTest() {
         } as GridLayoutItemInfo;
         let mockFunc: Function = mock.mockFunc(dataConvert, dataConvert.isInContainerFolder);
         when(mockFunc)(ArgumentMatchers.any).afterReturn(true);
-        let result = transferLayoutManager['isNeedAddToEasyAbroadFolder'](itemInfo);
+        let result = transferLayoutManager['isNeedAddToAppFolder'](itemInfo);
         expect(result).assertInstanceOf('Boolean');
       } catch (e) {
         expect(JSON.stringify(e)).assertInstanceOf('String');

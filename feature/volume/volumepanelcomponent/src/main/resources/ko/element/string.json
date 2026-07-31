@@ -106,13 +106,6 @@
             }
         },
         {
-            "name":"volume_accessibility_voice_assistant",
-            "value":"voice",
-            "attr":{
-                "priority":"translate"
-            }
-        },
-        {
             "name":"volume_accessibility_accessibility",
             "value":"접근성",
             "attr":{

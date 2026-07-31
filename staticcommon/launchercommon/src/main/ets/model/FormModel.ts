@@ -37,7 +37,7 @@ import { launcherStatusUtil, SCBOobeManager } from '@ohos/windowscene';
 import { ObjectCopyUtil } from '@ohos/componenthelper';
 import { PinyinSort } from '@ohos/frameworkpinyin';
 import { EventConstants } from '../constants/EventConstants';
-import { BundleConstants, BusinessType, CardCloneStatus, CommonConstants } from '../constants/CommonConstants';
+import { BusinessType, CardCloneStatus, CommonConstants } from '../constants/CommonConstants';
 import { CardItemInfo } from '../bean/CardItemInfo';
 import { CardInfo, AppItemCardInfo } from '../bean/AppItemCardInfo';
 import GridLayoutUtil from '../utils/GridLayoutUtil';
@@ -65,7 +65,7 @@ const log: LogHelper = LogHelper.getLogHelper(LogDomain.HOME, TAG);
 const KEY_FORM_LIST = 'formListInfo';
 const SCREEN_LOCK_FORM_WHITE_LIST: string[] = ['com.ohos.totemweather',
   'com.ohos.clock', 'com.openharmony.it.works', 'com.ohos.calculator', 'com.ohos.audioaccessorymanager',
-  'com.ohos.vassistant', 'com.ohos.musicservice', 'com.openharmony.it.welink'];
+  'com.ohos.musicservice', 'com.openharmony.it.welink'];
 const SCREEN_LOCK_AGC_PERMISSION_NAME: string = 'com.openharmony.service.screenlock.form';
 const NEW_SCREEN_LOCK_FORM_WHITE_LIST: string[] = ['com.ohos.health', 'com.ohos.soundrecorder', 'com.sinocare.ican'];
 
@@ -78,8 +78,6 @@ export const enum FormModelValidCardType {
   /**
    * 语音助手建议
    */
-  AI_SUGGESTION = 'AiSuggestion',
-
   /**
    * 简易模式/小外屏等独立布局表
    */

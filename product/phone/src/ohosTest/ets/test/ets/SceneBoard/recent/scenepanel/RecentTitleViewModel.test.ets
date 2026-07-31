@@ -33,7 +33,6 @@ import { RecentTitleInfo, RecentTitleViewModel } from '@ohos/phonebase/src/main/
 import bundleManager from '@ohos.bundle.bundleManager';
 import sceneSessionManager from '@ohos.sceneSessionManager';
 import { common } from '@kit.AbilityKit';
-import { VassistantConstants } from '@ohos/commonconstants';
 import { recentRuntimeInstance } from '@ohos/phonebase/src/main/ets/SceneBoard/recent/scenepanel/recentpanel/RecentRuntimeModel';
 
 export default function RecentTitleViewModelTest() {
@@ -941,9 +940,9 @@ export default function RecentTitleViewModelTest() {
     })
 
     it('updateIconAndName_06', TestType.USER | Size.SMALLTEST | Level.LEVEL0, (): void => {
-      sceneAppInfo.bundleName = VassistantConstants.VASSISTANT_BUNDLE_NAME;
-      sceneAppInfo.moduleName = VassistantConstants.DEFAULT_MODULE_NAME;
-      sceneAppInfo.abilityName = VassistantConstants.VASSISTANT_ABILITY_NAME;
+      sceneAppInfo.bundleName = 'com.ohos.testapp';
+      sceneAppInfo.moduleName = 'entry';
+      sceneAppInfo.abilityName = 'com.ohos.testapp.MainAbility';
       let mocker: MockKit = new MockKit();
       let mockFunc: Function = mocker.mockFunc(resourceManager, resourceManager.isSCBInnerModule);
       when(mockFunc)(ArgumentMatchers.any).afterReturn(false);

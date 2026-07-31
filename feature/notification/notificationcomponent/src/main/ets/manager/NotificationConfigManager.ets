@@ -37,8 +37,7 @@ import {
   SCBConstants,
   SettingsConstants,
   SettingsKeyConstants,
-  UpdateType,
-  VassistantConstants
+  UpdateType
 } from '@ohos/commonconstants';
 import {
   IconChangeEventParam,
@@ -653,7 +652,7 @@ class NotificationConfigManager extends NotificationConfigBaseManager {
     config.isDeliver = DELIVER_CODE_PATH_LIST.includes(bundle.appInfo.codePath);
     config.isdeliverApp = bundle.appInfo.installSource === DELIVER_TONG_BUNDLE_NAME;
     config.settingIgnore = await this.isSettingIgnore(config);
-    if (bundle.name === ExtAppConstants.PKG_BETACLUB || bundle.name === VassistantConstants.VASSISTANT_BUNDLE_NAME) {
+     if (bundle.name === ExtAppConstants.PKG_BETACLUB) {
       config.pinTop = true;
     }
     if (!config.isDeliver) {

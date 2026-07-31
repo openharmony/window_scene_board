@@ -210,7 +210,7 @@ import MultipleDragSettings, {
 } from '@ohos/launchercommon/src/main/ets/pagedesktop/viewmodel/MultipleDragSettings';
 import DesktopSortUtils from '../DesktopSortUtils';
 import {
-  OverflowConstants, VassistantConstants
+  OverflowConstants
 } from '@ohos/commonconstants/src/main/ets/constants/SCBConstants';
 import { FormHiSysEventUtil, ScreenSelectType } from '@ohos/form/src/main/ets/default/util/FormHiSysEventUtil';
 import { CardAddType } from '@ohos/launchercommon/src/main/ets/manager/FormCenterViewManager';
@@ -1294,7 +1294,7 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
         DeliverUtil.setInstallSourceAndIntent(appInfo, appInfo.intent);
       }
       let isShouldInsertDeliverFolder: boolean = isDeliverApp && !DeviceHelper.isPC() &&
-        (!DeliverUtil.CANCEL_DELIVER_FOLDER || DeliverUtil.isEasyAbroadItem(appInfo.intent));
+        (!DeliverUtil.CANCEL_DELIVER_FOLDER || DeliverUtil.isAppItem(appInfo.intent));
       if (isShouldInsertDeliverFolder) {
         this.viewModelUtils.dealWithContainerApp(appInfo);
       }
@@ -3300,7 +3300,7 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
         return false;
       }
       // 占位应用应用加到应用文件夹
-      if (DeliverUtil.isEasyAbroadItem(item.intent)) {
+      if (DeliverUtil.isAppItem(item.intent)) {
         this.viewModelUtils.dealWithContainerApp(item as AppItemInfo);
         return true;
       }
@@ -3980,7 +3980,7 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
         if (gridLayoutItemInfoList[i].bundleName === appInfo.bundleName &&
           gridLayoutItemInfoList[i].appIndex === appInfo.appIndex) {
           this.cancelDownloadTask(gridLayoutItemInfoList[i]);
-          return DeliverUtil.CANCEL_DELIVER_FOLDER && DeliverUtil.isEasyAbroadItem(appInfo.intent) ?
+          return DeliverUtil.CANCEL_DELIVER_FOLDER && DeliverUtil.isAppItem(appInfo.intent) ?
             gridLayoutItemInfoList[i] : undefined;
         }
       }
@@ -3988,7 +3988,7 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
         let gridLayoutInfo: GridLayoutItemInfo | undefined =
           gridLayoutItemInfoList[i].layoutInfo?.flat().find(item => item.bundleName ===
           appInfo.bundleName && item.appIndex === appInfo.appIndex);
-        if (gridLayoutInfo && DeliverUtil.CANCEL_DELIVER_FOLDER && DeliverUtil.isEasyAbroadItem(appInfo.intent)) {
+        if (gridLayoutInfo && DeliverUtil.CANCEL_DELIVER_FOLDER && DeliverUtil.isAppItem(appInfo.intent)) {
           this.cancelDownloadTask(gridLayoutInfo);
           return DeliverUtil.isAbroadFolder(gridLayoutItemInfoList[i].folderId) ? undefined : gridLayoutInfo;
         }
@@ -5500,13 +5500,7 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
       params.set(SCBConstants.START_APP_CLONE_INDEX, appIndex);
       this.jumpTo(abilityName, bundleName, moduleName, params);
     } else {
-      // 语音助手应用无分身, appIndex = 0
-      if (bundleName === VassistantConstants.VASSISTANT_LAUNCHER_BUNDLE_NAME) {
-        this.jumpTo(VassistantConstants.VASSISTANT_ABILITY_NAME,
-          VassistantConstants.VASSISTANT_BUNDLE_NAME, VassistantConstants.DEFAULT_MODULE_NAME);
-      } else {
-        this.jumpTo(abilityName, bundleName, moduleName);
-      }
+      this.jumpTo(abilityName, bundleName, moduleName);
     }
   }
 

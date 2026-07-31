@@ -452,13 +452,13 @@
       ]
     },
     {
-      "pageTitle": "$string:Ai_bar_setting",
+      "pageTitle": "$string:Navi_bar_setting",
       "pageDescription": "",
-      "entryKey": "ai_bar_settings",
+      "entryKey": "navi_bar_settings",
       "params": "",
       "path": [
         "$string:System",
-        "$string:Ai_bar_setting"
+        "$string:Navi_bar_setting"
       ],
       "supportDevices": [
         "phone",
@@ -467,26 +467,26 @@
       ],
       "searchItems": [
         {
-          "itemName": "ai_bar_setting",
-          "itemTitle": "$string:Ai_bar_setting",
+          "itemName": "navi_bar_setting",
+          "itemTitle": "$string:Navi_bar_setting",
           "itemDescription": "Ai bar setting",
           "icon": ""
         },
         {
-          "itemName": "ai_bar_back",
-          "itemTitle": "$string:Ai_bar_back",
+          "itemName": "navi_bar_back",
+          "itemTitle": "$string:Navi_bar_back",
           "itemDescription": "Ai bar back",
           "icon": ""
         },
         {
-          "itemName": "ai_bar_back_click_navigation",
-          "itemTitle": "$string:Ai_bar_back_click_navigation",
+          "itemName": "navi_bar_back_click_navigation",
+          "itemTitle": "$string:Navi_bar_back_click_navigation",
           "itemDescription": "Click the navigation bar to return",
           "icon": ""
         },
         {
-          "itemName": "ai_bar",
-          "itemTitle": "$string:Ai_bar",
+          "itemName": "navi_bar",
+          "itemTitle": "$string:Navi_bar",
           "itemDescription": "Ai bar",
           "icon": ""
         },

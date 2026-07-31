@@ -58,7 +58,6 @@ function ohpm_install_deps() {
     ohpm_install "${PROJECT_PATH}/feature/castengine"
     ohpm_install "${PROJECT_PATH}/feature/devecoviewer"
     ohpm_install "${PROJECT_PATH}/feature/controlcentercomponent"
-    ohpm_install "${PROJECT_PATH}/feature/desktop/aisuggestion/"
     ohpm_install "${PROJECT_PATH}/feature/desktop/bigfolder"
     ohpm_install "${PROJECT_PATH}/feature/desktop/emergencymode"
     ohpm_install "${PROJECT_PATH}/feature/desktop/desktopedit"

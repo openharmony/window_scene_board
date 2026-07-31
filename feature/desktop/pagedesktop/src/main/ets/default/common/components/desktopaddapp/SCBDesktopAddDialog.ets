@@ -438,7 +438,7 @@ export default struct SCBDesktopAddDialog {
         bottom: DesktopAddDialogConstant.BUTTON_MARGIN
       })
     }
-    .margin( { bottom: DesktopAddDialogConstant.AI_BAR_HEIGHT})
+    .margin( { bottom: DesktopAddDialogConstant.NAVI_BAR_HEIGHT})
   }
 }
 

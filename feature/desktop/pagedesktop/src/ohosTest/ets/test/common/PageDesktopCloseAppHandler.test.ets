@@ -252,13 +252,6 @@ export default function PageDesktopCloseAppHandlerTest() {
         expect(JSON.stringify(err)).assertInstanceOf('String');
       }
       expect(instance).not().assertNull();
-      (instance as object)['mStartAppType'] = StartType.AI_SUGGESTION_APP;
-      try {
-        instance.getAppIconInfoByName('996', '007', 8);
-      } catch (err) {
-        expect(JSON.stringify(err)).assertInstanceOf('String');
-      }
-      expect(instance).not().assertNull();
       (instance as object)['mStartAppType'] = StartType.SCREEN_LOCK_TOOLS;
       try {
         instance.getAppIconInfoByName('996', '007', 8);

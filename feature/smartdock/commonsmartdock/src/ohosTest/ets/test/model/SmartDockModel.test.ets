@@ -3167,64 +3167,6 @@ export default function SmartDockModelTest() {
       mocker.clearAll();
     })
 
-    it('test_fillRecentMissionInfoList_04', 0, (): void => {
-      const GUIDE_BUNDLE_NAME = 'com.ohos.startupguide';
-      const VASSISTANT_BUNDLE_NAME = 'com.ohos.vassistant';
-      const VOICE_PC_ABILITY_NAME = 'VoicePcAbility';
-      let instance: SmartDockModel = SmartDockModel.getInstance();
-      let mocker: MockKit = new MockKit();
-      try {
-        let sceneInfo: SCBSceneInfo = new SCBSceneInfo('exampleBundle', 'exampleModule', 'exampleAbility');
-        let sceneSession: SCBSceneSession =
-          new SCBSceneSession(sceneSessionManager.requestSceneSession(sceneInfo), sceneInfo);
-        let screenProperty: SCBScreenProperty = new SCBScreenProperty();
-        let containerSession: SCBSceneContainerSession = new SCBSceneContainerSession(sceneSession, screenProperty);
-        containerSession.init();
-
-        let containerSession2: SCBSceneContainerSession = new SCBSceneContainerSession(sceneSession, screenProperty);
-        containerSession2.secondarySession = sceneSession;
-
-        let bundleName: string = 'com.ohos.contacts';
-        let sceneInfo3: SCBSceneInfo = new SCBSceneInfo(bundleName, 'exampleModule', 'exampleAbility');
-        let sceneSession3: SCBSceneSession =
-          new SCBSceneSession(sceneSessionManager.requestSceneSession(sceneInfo3), sceneInfo3);
-        let containerSession3: SCBSceneContainerSession = new SCBSceneContainerSession(sceneSession3, screenProperty);
-        containerSession3.secondarySession = sceneSession;
-        containerSession3.primarySession = null;
-
-        let sceneInfo4: SCBSceneInfo = new SCBSceneInfo(GUIDE_BUNDLE_NAME, 'exampleModule', 'exampleAbility');
-        let sceneSession4: SCBSceneSession =
-          new SCBSceneSession(sceneSessionManager.requestSceneSession(sceneInfo4), sceneInfo4);
-        let containerSession4: SCBSceneContainerSession = new SCBSceneContainerSession(sceneSession4, screenProperty);
-        containerSession4.secondarySession = sceneSession;
-
-        let sceneInfo5: SCBSceneInfo = new SCBSceneInfo(VASSISTANT_BUNDLE_NAME, 'exampleModule', VOICE_PC_ABILITY_NAME);
-        let sceneSession5: SCBSceneSession =
-          new SCBSceneSession(sceneSessionManager.requestSceneSession(sceneInfo5), sceneInfo5);
-        let containerSession5: SCBSceneContainerSession = new SCBSceneContainerSession(sceneSession5, screenProperty);
-        containerSession5.secondarySession = sceneSession;
-
-        let containerSessionList: SCBSceneContainerSession[] =
-          [containerSession, containerSession2, containerSession3, containerSession4, containerSession5];
-
-        let itemInfo1: RecentBundleMissionInfo = new RecentBundleMissionInfo();
-        itemInfo1.bundleName = bundleName;
-        itemInfo1.appIndex = 0;
-        let recentMissionsList: Array<RecentBundleMissionInfo> = [itemInfo1];
-
-        let appList: AppItemInfo[] = AppModel.getInstance().getAppList();
-        let mockFunc1: Function = mocker.mockFunc(instance, instance.getAbilityItemInfo);
-        when(mockFunc1)(ArgumentMatchers.any).afterReturn(undefined);
-        SmartDockModel.getInstance().fillRecentMissionInfoList(appList, containerSessionList, recentMissionsList);
-        containerSession.requestDestruction(true, true, false);
-        expect(instance instanceof SmartDockModel).assertTrue();
-      } catch (e) {
-        expect(JSON.stringify(e)).assertInstanceOf('String');
-      }
-      mocker.clear(instance);
-      mocker.clearAll();
-    })
-
     it('test_checkAppInstanceKey', 0, (): void => {
       let instance: SmartDockModel = SmartDockModel.getInstance();
       let ret = instance.checkAppInstanceKey(undefined, undefined);

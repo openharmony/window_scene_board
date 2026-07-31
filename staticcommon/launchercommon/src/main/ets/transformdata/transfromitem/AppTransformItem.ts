@@ -251,8 +251,8 @@ export class AppTransformItem extends BaseTransformItem {
       extendInfo.installSource = DeliverUtil.DELIVER_APPSTORE_PKG;
     } else if (this.transformAppManager.getAbroadAutoMigrateAppType() === AutoMigrateType.MIGRATE &&
       DEFAULT_USER === DataConvert.getCurUserId() && this.transformAppManager.isEasyAboardApp(item.bundleName)) {
-      legacyInfo.installSource = DeliverUtil.ABROAD_APP_PKG;
-      extendInfo.installSource = DeliverUtil.ABROAD_APP_PKG;
+      legacyInfo.installSource = DeliverUtil.APP_PKG;
+      extendInfo.installSource = DeliverUtil.APP_PKG;
     }
     item.intent = JSON.stringify(extendInfo);
     item.callerName = MIGRATE_SERVER_PROCESS_NAME;

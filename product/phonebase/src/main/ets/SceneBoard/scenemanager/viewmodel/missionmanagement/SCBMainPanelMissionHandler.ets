@@ -30,7 +30,6 @@ import {
   ContainerDataCategory
 } from '@ohos/windowscene';
 import { SCBScenePanelViewModel } from '../SCBScenePanelViewModel';
-import { SCBVassistantMissionHandler } from './SCBVassistantMissionHandler';
 import sceneSessionManager from '@ohos.sceneSessionManager';
 import { DeviceHelper } from '@ohos/frameworkwrapper';
 
@@ -61,13 +60,6 @@ export class SCBMainPanelMissionHandler extends SCBScenePanelMissionHandler {
 
   public setViewModel(vm: SCBScenePanelViewModel | null): void {
     this.panelViewModel = vm;
-    SCBVassistantMissionHandler.getInstance().setStartSceneFromOther((info: SCBSceneInfo) => {
-      this.panelViewModel?.onStartSceneFromOther(info);
-    });
-    SCBVassistantMissionHandler.getInstance().setBackExitOneStepToFull((currContainerSession: SCBSceneContainerSession,
-      persistentId: number) => {
-      this.panelViewModel?.backExitOneStepToFullCallback(currContainerSession, persistentId);
-    });
   }
 
   onPopSceneOut(persistentId: number, sceneInfo: SCBSceneInfo, opts: SCBTransferSceneOpts): SCBSceneSession | null {

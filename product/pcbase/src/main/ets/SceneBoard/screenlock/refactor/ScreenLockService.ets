@@ -44,7 +44,7 @@ import {
   SCBSceneSessionManager,
   SCBScreenSessionManager,
   scbGestureManager,
-  AIBarConstants,
+  NAVIBarConstants,
   UserSwitchEventType
 } from '@ohos/windowscene';
 import ScreenLockModel from './ScreenLockModel';

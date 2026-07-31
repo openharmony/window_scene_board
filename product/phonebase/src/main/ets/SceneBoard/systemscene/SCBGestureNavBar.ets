@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import {
-  AIBarConstants,
+  NAVIBarConstants,
   EventType,
   GestureNavigationState,
   GestureType,
@@ -41,18 +41,18 @@ import {
 } from '../gesturenavigation/SCBGestureNavBarViewModel';
 import { SystemSceneConstants } from '../gesturenavigation/SystemSceneConstants';
 
-import AIBarView from '../aiBar/view/AIBarView';
-import { AIBarViewModel } from '../aiBar/AIBarModel/AIBarViewModel';
-import { aiBarSettingsDataMgr, AiBarSettingsDataMgr } from '../aiBar/settings/preference/AiBarSettingsDataMgr';
+import NAVIBarView from '../naviBar/view/NAVIBarView';
+import { NAVIBarViewModel } from '../naviBar/NAVIBarModel/NAVIBarViewModel';
+import { naviBarSettingsDataMgr, NaviBarSettingsDataMgr } from '../naviBar/settings/preference/NaviBarSettingsDataMgr';
 import { GestureDockViewModel } from '../gestureDock/dock/viewmodel/GestureDockViewModel';
-import { FloatingNavigationManager } from '../aiBar/proxy/FloatingNavigationManager';
+import { FloatingNavigationManager } from '../naviBar/proxy/FloatingNavigationManager';
 import { NavbarWindowManager } from '../gesturenavigation/navbar/viewmodel/NavbarWindowManager';
 import { SCBGestureNavSetMgr } from '@ohos/componenthelper';
-import { threeButtonAccessibilityMgr } from '../aiBar/settings/preference/ThreeButtonAccessibilityManager';
+import { threeButtonAccessibilityMgr } from '../naviBar/settings/preference/ThreeButtonAccessibilityManager';
 import { GameOperationManager } from '../gesturenavigation/navbar/model/GameOperationManager';
 
 const TAG = 'SCBGestureNavBar';
-const AIBAR_TAG = 'AIBAR';
+const NAVIBAR_TAG = 'NAVIBAR';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.GESTURE, TAG);
 const FUN_NUM = 'SF-20005714_f301';
 
@@ -74,8 +74,8 @@ export struct SCBGestureNavBar {
     new NavbarPanGesture(this.navBarViewModel, this.sendTouchEventController);
   @StorageLink('isInNavBarGesture') isInNavBarGesture: boolean = false;
   @StorageProp('isAccessibilityMode') @Watch('onChangeAccessibilityModeState') isAccessibilityMode: boolean = false;
-  private readonly aiBarViewModel: AIBarViewModel = AIBarViewModel.getInstance(this.screenProperty);
-  private gameOperationManager: GameOperationManager = new GameOperationManager(this.aiBarViewModel);
+  private readonly naviBarViewModel: NAVIBarViewModel = NAVIBarViewModel.getInstance(this.screenProperty);
+  private gameOperationManager: GameOperationManager = new GameOperationManager(this.naviBarViewModel);
   @State isUnLockReceived: boolean = false;
   @StorageProp('currColorMode') currColorMode: number =
     GlobalContext.getContext().config.colorMode as number;
@@ -95,12 +95,12 @@ export struct SCBGestureNavBar {
     onReceiveEvent: (event: string, params: number | boolean): void => {
       switch (event) {
         case EventConstants.EVENT_APP_EXIT_LANDSCAPE:
-          log.showInfo(`[${AIBAR_TAG}] receive APP_EXIT_LANDSCAPE event, params=${params}`);
+          log.showInfo(`[${NAVIBAR_TAG}] receive APP_EXIT_LANDSCAPE event, params=${params}`);
           if (typeof params !== 'boolean') {
             log.showInfo('params is not boolean');
             break;
           }
-          if (params === this.aiBarViewModel.aiBarViewData.isInExitLandScape) {
+          if (params === this.naviBarViewModel.naviBarViewData.isInExitLandScape) {
             log.showInfo('isInExitLandScape is not change');
             break;
           }
@@ -108,11 +108,11 @@ export struct SCBGestureNavBar {
             curve: Curve.Linear,
             duration: 200
           }, () => {
-            this.aiBarViewModel.aiBarViewData.isInExitLandScape = params;
+            this.naviBarViewModel.naviBarViewData.isInExitLandScape = params;
           });
           break;
         case EventConstants.EVENT_NAV_BAR_GESTURE_CANCEL:
-          log.showInfo(`[${AIBAR_TAG}] receive EVENT_NAV_BAR_GESTURE_CANCEL event, params=${params},` +
+          log.showInfo(`[${NAVIBAR_TAG}] receive EVENT_NAV_BAR_GESTURE_CANCEL event, params=${params},` +
             `this.isInNavBarGesture is ${this.isInNavBarGesture}`);
           if (this.isInNavBarGesture) {
             this.onPanGestureActionCancel();
@@ -145,7 +145,7 @@ export struct SCBGestureNavBar {
     this.navbarWindowManager.init(this.viewController, this.persistentId);
     viewMgrPolicy.registerViewController(TAG, this.viewController);
     this.viewController.updateId(this.persistentId);
-    this.aiBarViewModel.updateArea(this.screenProperty);
+    this.naviBarViewModel.updateArea(this.screenProperty);
     this.viewController.show();
     this.initScreenPropertyListener();
     ASCFWindowMgrListener.registerAppUpdateListener();
@@ -158,7 +158,7 @@ export struct SCBGestureNavBar {
     localEventManager.registerEventListener(this.localEventListener,
       [EventConstants.EVENT_APP_EXIT_LANDSCAPE, EventConstants.EVENT_NAV_BAR_GESTURE_CANCEL]);
     SCBTransitionManager.getInstance().registerUnlockTransitionController(this.unLockTransitionController, false);
-    this.aiBarViewModel.aiBarViewAppear(this.persistentId, this.viewController, this.sendTouchEventController);
+    this.naviBarViewModel.naviBarViewAppear(this.persistentId, this.viewController, this.sendTouchEventController);
   }
 
   private registerGestureEnabledCallBack() {
@@ -184,7 +184,7 @@ export struct SCBGestureNavBar {
     SCBTransitionManager.getInstance().unRegisterUnlockTransitionController(this.unLockTransitionController, false);
     this.navBarViewModel.unRegisterRotateAnimaChangeCallBack();
     this.navBarViewModel.unRegisterSingleHandStatusChangeCallback();
-    this.aiBarViewModel.aiBarViewDisAppear();
+    this.naviBarViewModel.naviBarViewDisAppear();
     ASCFWindowMgrListener.unRegisterAppUpdateListener();
     this.navbarWindowManager.release();
   }
@@ -196,11 +196,11 @@ export struct SCBGestureNavBar {
         if (reason === SCBPropertyChangeReason.ROTATION && this.isInNavBarGesture) {
           this.onPanGestureActionCancel();
         }
-        this.aiBarViewModel.aiBarViewData.isToastShow = false;
-        this.aiBarViewModel.aiBarAnimate.whetherEndWeakNavigationAnimationImmediate(
-          this.aiBarViewModel.aiBarViewData.capsuleWidth);
-        this.aiBarViewModel.updateArea(screenProperty);
-        this.aiBarViewModel.resetHotAreaHeightInGame();
+        this.naviBarViewModel.naviBarViewData.isToastShow = false;
+        this.naviBarViewModel.naviBarAnimate.whetherEndWeakNavigationAnimationImmediate(
+          this.naviBarViewModel.naviBarViewData.capsuleWidth);
+        this.naviBarViewModel.updateArea(screenProperty);
+        this.naviBarViewModel.resetHotAreaHeightInGame();
       }, undefined, true, this.persistentId);
   }
 
@@ -212,26 +212,26 @@ export struct SCBGestureNavBar {
 
   private onLockReceived(): void {
     log.showInfo('onLockReceived');
-    this.aiBarViewModel.aiBarData.gameStatusMap = new Map();
-    this.aiBarViewModel.setWindowInputTypeAndGameSign();
-    this.aiBarViewModel.aiBarViewData.isToastShow = false;
+    this.naviBarViewModel.naviBarData.gameStatusMap = new Map();
+    this.naviBarViewModel.setWindowInputTypeAndGameSign();
+    this.naviBarViewModel.naviBarViewData.isToastShow = false;
     this.navBarViewModel.enableScreenRotate();
     this.isUnLockReceived = false;
-    this.aiBarViewModel.aiBarViewData.isScreenLock = true;
+    this.naviBarViewModel.naviBarViewData.isScreenLock = true;
   }
 
   private onUnLockReceived(): void {
     log.showInfo('onUnLockReceived');
-    this.aiBarViewModel.aiBarViewData.isToastShow = false;
+    this.naviBarViewModel.naviBarViewData.isToastShow = false;
     this.isUnLockReceived = true;
-    this.aiBarViewModel.aiBarViewData.isScreenLock = false;
+    this.naviBarViewModel.naviBarViewData.isScreenLock = false;
     FloatingNavigationManager.getInstance().setIsScreenLock(false);
-    scbGestureManager.aiBarChange(AIBarConstants.GESTURE_AI_BAR_TYPE_DESKTOP);
+    scbGestureManager.naviBarChange(NAVIBarConstants.GESTURE_NAVI_BAR_TYPE_DESKTOP);
     // 同步preference到settings,AreaMode.EL2需解锁之后再获取
     // 更改为原来逻辑一样。收到解锁通知，延迟一秒去同步preference到settings
     setTimeout(() => {
       if (this.isUnLockReceived) {
-        aiBarSettingsDataMgr.initData();
+        naviBarSettingsDataMgr.initData();
       }
     }, 1000);
   }
@@ -254,7 +254,7 @@ export struct SCBGestureNavBar {
     if (this.isGestureEnabled) {
       Stack({ alignContent: Alignment.Bottom }) {
         if (!OutdoorConfig.getInstance().isInOutdoorMode()) {
-          AIBarView({
+          NAVIBarView({
             screenProperty: this.screenProperty,
             persistentId: this.persistentId,
             viewController: this.viewController
@@ -298,8 +298,8 @@ export struct SCBGestureNavBar {
               dropAnimationManager.cancelDropAnimation(DropAnimationCancelReason.SWIPE_NAV_BAR);
               scbEventExclusiveManager.setEventExclusive(EventType.GESTURE_NAVBAR, true);
               this.isInNavBarGesture = true;
-              log.showInfo(`isTempShowAiBar:${this.aiBarViewModel.aiBarViewData.isTempShowAiBar}`);
-              this.navbarPanGesture.initParam(this.aiBarViewModel.aiBarViewData.isTempShowAiBar);
+              log.showInfo(`isTempShowNaviBar:${this.naviBarViewModel.naviBarViewData.isTempShowNaviBar}`);
+              this.navbarPanGesture.initParam(this.naviBarViewModel.naviBarViewData.isTempShowNaviBar);
               this.navbarPanGesture.checkAndSetPerationType(this.screenProperty);
               switch (this.navbarPanGesture.panGestureType) {
                 case PanGestureType.GAME_OPERATE:
@@ -307,7 +307,7 @@ export struct SCBGestureNavBar {
                   break;
                 case PanGestureType.DEFAULT:
                   this.navbarPanGesture.defaultPeration(event);
-                  this.aiBarViewModel.aiBarAnimate.checkInitAnimParam(event);
+                  this.naviBarViewModel.naviBarAnimate.checkInitAnimParam(event);
                   break;
               }
             })
@@ -318,8 +318,8 @@ export struct SCBGestureNavBar {
                 return;
               }
               if (this.isGestureNavBarCancel) {
-                if (this.aiBarViewModel.isAiBarTranslate()) {
-                  this.aiBarViewModel.aiBarAnimate.playBarResetAnim();
+                if (this.naviBarViewModel.isNaviBarTranslate()) {
+                  this.naviBarViewModel.naviBarAnimate.playBarResetAnim();
                 }
                 SCBGestureNavBarViewModel.getInstance().enableScreenRotate();
                 return;
@@ -339,7 +339,7 @@ export struct SCBGestureNavBar {
                   break;
                 case PanGestureType.DEFAULT:
                   this.navbarPanGesture.defaultPeration(event);
-                  this.aiBarViewModel.aiBarAnimate.checkPlayBarFollowHandAnim(event);
+                  this.naviBarViewModel.naviBarAnimate.checkPlayBarFollowHandAnim(event);
                   this.lastUpdateEvent = event;
                   break;
               }
@@ -368,7 +368,7 @@ export struct SCBGestureNavBar {
                   break;
                 case PanGestureType.DEFAULT:
                   this.navbarPanGesture.defaultPeration(event);
-                  this.aiBarViewModel.aiBarAnimate.playBarResetAnim();
+                  this.naviBarViewModel.naviBarAnimate.playBarResetAnim();
                   break;
               }
               this.gameOperationManager.reset();
@@ -396,7 +396,7 @@ export struct SCBGestureNavBar {
           const sendNum: number = this.sendTouchEventController?.getSendNum() ?? 0;
           this.downEvent = event;
           // 防误触状态且已没有透传事件时，不再透传
-          this.noSendEvent = this.aiBarViewModel.aiBarData.isInGameSign && sendNum === 0;
+          this.noSendEvent = this.naviBarViewModel.naviBarData.isInGameSign && sendNum === 0;
           log.showInfo(`onTouch noSendEvent is ${this.noSendEvent}`);
         }
 
@@ -426,7 +426,7 @@ export struct SCBGestureNavBar {
           (this.navBarViewModel.upOrCancelTouch(event.type))) {
           scbGestureManager.onTouchEvent(GestureType.NAVIGATION, 'SCBScreenLock', event);
         }
-        this.aiBarViewModel.aiBarOnTouchEvent(event, this.downEvent);
+        this.naviBarViewModel.naviBarOnTouchEvent(event, this.downEvent);
       })
       .onClick(() => {
         if (!this.noSendEvent || (this.sendUpEvent && this.upEvent)) {
@@ -463,7 +463,7 @@ export struct SCBGestureNavBar {
         break;
       case PanGestureType.DEFAULT:
         this.navbarPanGesture.defaultPeration(this.lastUpdateEvent);
-        this.aiBarViewModel.aiBarAnimate.playBarResetAnim();
+        this.naviBarViewModel.naviBarAnimate.playBarResetAnim();
         this.lastUpdateEvent = null;
         break;
     }
@@ -474,21 +474,21 @@ export struct SCBGestureNavBar {
   private checkFirstUpSlide(event: GestureEvent): void {
     if (Math.abs(event?.offsetY) > SystemSceneConstants.HOT_AREA_HEIGHT_IN_GAME) {
       this.navbarPanGesture.isFirstUpSlide = true;
-      this.aiBarViewModel.aiBarData.isTimerRunning = true;
-      clearTimeout(this.aiBarViewModel.aiBarData.hideAiBarTimer);
-      clearTimeout(this.aiBarViewModel.aiBarData.immerseHideAiBarTimer);
-      this.aiBarViewModel.aiBarData.hideAiBarTimer = setTimeout(() => {
-        this.aiBarViewModel.aiBarData.isTimerRunning = false;
-        this.aiBarViewModel.aiBarViewData.isTempShowAiBar = false;
-      }, SystemSceneConstants.AI_BAR_DISPLAY_TIME);
-      this.aiBarViewModel.aiBarViewData.isTempShowAiBar = true;
+      this.naviBarViewModel.naviBarData.isTimerRunning = true;
+      clearTimeout(this.naviBarViewModel.naviBarData.hideNaviBarTimer);
+      clearTimeout(this.naviBarViewModel.naviBarData.immerseHideNaviBarTimer);
+      this.naviBarViewModel.naviBarData.hideNaviBarTimer = setTimeout(() => {
+        this.naviBarViewModel.naviBarData.isTimerRunning = false;
+        this.naviBarViewModel.naviBarViewData.isTempShowNaviBar = false;
+      }, SystemSceneConstants.NAVI_BAR_DISPLAY_TIME);
+      this.naviBarViewModel.naviBarViewData.isTempShowNaviBar = true;
       FloatingNavigationManager.getInstance().slideShowFloatingNavigation();
-      log.showInfo(`isTempShowAiBar is ${this.aiBarViewModel.aiBarViewData.isTempShowAiBar}, aiBar is displaying.`);
+      log.showInfo(`isTempShowNaviBar is ${this.naviBarViewModel.naviBarViewData.isTempShowNaviBar}, naviBar is displaying.`);
     }
   }
 
   private sendMoveEventInGameClick(): void {
-    if (this.navBarViewModel.checkGameStatus() && this.aiBarViewModel.aiBarViewData.isShowingAiBar) {
+    if (this.navBarViewModel.checkGameStatus() && this.naviBarViewModel.naviBarViewData.isShowingNaviBar) {
       log.showInfo('Send the move event in game when click.');
       if (this.downEvent && this.upEvent && this.sendTouchEventController) {
         this.sendTouchEventController.sendTouchEvent(this.downEvent);

@@ -70,7 +70,7 @@ export class NavbarPanGesture {
 
   /**
    * PanGesture.start时初始化参数
-   * @param aiBarIsShowInStart PanGesture.start时的导航条状态
+   * @param naviBarIsShowInStart PanGesture.start时的导航条状态
    */
   public initParam(): void {
     this.isFirstUpSlide = false;

@@ -27,7 +27,7 @@ const NO_ICON_APP_BUNDLE: string[] = [
   'com.ohos.audioaccessorymanager',
   'com.ohos.sceneboard',
   'com.ohos.musicservice',
-  'com.ohos.vassistant',
+
   'com.ohos.suggestion',
   'com.ohos.systemmanagerform',
   'com.ohos.hiwrite',

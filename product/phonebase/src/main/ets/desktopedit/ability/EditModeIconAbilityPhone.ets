@@ -136,7 +136,6 @@ export default class EditModeIconAbilityPhone extends UIExtensionAbility {
         desktopParam = JsonUtils.parse<DesktopParam>(() => new DesktopParam(), JSON.stringify(desktopParamObj));
         if (desktopParam) {
           desktopParam.formRadius = ResUtils.getNumber($r('app.float.form_corner_radius'));
-          desktopParam.voiceCardName = ResUtils.getInnerString($r('app.string.aisuggestion_app_name'));
         }
       } catch (error) {
         log.showError('dealDesktopPreviewParam error%{public}d:%{public}s', error.code, error.message);

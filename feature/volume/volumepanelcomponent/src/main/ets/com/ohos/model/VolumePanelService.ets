@@ -369,8 +369,6 @@ export class VolumePanelService {
       formatValue = audio.AudioVolumeType.VOICE_CALL;
     } else if (audioVolumeType === audio.AudioVolumeType.RINGTONE) {
       formatValue = audio.AudioVolumeType.RINGTONE;
-    } else if (audioVolumeType === audio.AudioVolumeType.VOICE_ASSISTANT) {
-      formatValue = audio.AudioVolumeType.VOICE_ASSISTANT;
     } else if (audioVolumeType === audio.AudioVolumeType.ALL) {
       formatValue = audio.AudioVolumeType.ALL;
     } else if (audioVolumeType === audio.AudioVolumeType.ACCESSIBILITY) {
@@ -394,8 +392,6 @@ export class VolumePanelService {
       formatValue = audio.AudioVolumeType.VOICE_CALL;
     } else if (audioVolumeType === audio.AudioVolumeType.RINGTONE) {
       formatValue = audio.AudioVolumeType.RINGTONE;
-    } else if (audioVolumeType === audio.AudioVolumeType.VOICE_ASSISTANT) {
-      formatValue = audio.AudioVolumeType.VOICE_ASSISTANT;
     } else if (audioVolumeType === audio.AudioVolumeType.ALL) {
       formatValue = audio.AudioVolumeType.ALL;
     } else if (audioVolumeType === audio.AudioVolumeType.ACCESSIBILITY) {

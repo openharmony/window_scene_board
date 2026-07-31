@@ -8,7 +8,7 @@
             }
         },
         {
-            "name":"Ai_bar_recent_detail",
+            "name":"Navi_bar_recent_detail",
             "value":"اسحب من أسفل الشاشة نحو الأعلى مع الاستمرار في لمس الشاشة لإظهار المهام الحديثة.",
             "attr":{
                 "priority":"translate"
@@ -22,7 +22,7 @@
             }
         },
         {
-            "name":"Ai_bar_recent",
+            "name":"Navi_bar_recent",
             "value":"عرض المهام الحديثة",
             "attr":{
                 "priority":"translate"
@@ -351,7 +351,7 @@
             }
         },
         {
-            "name":"Ai_bar_return_home_detail",
+            "name":"Navi_bar_return_home_detail",
             "value":"اسحب من أسفل الشاشة نحو الأعلى للانتقال إلى الشاشة الرئيسية.",
             "attr":{
                 "priority":"translate"
@@ -442,14 +442,14 @@
             }
         },
         {
-            "name":"Ai_bar_vassistant_dialogue_longpress",
+            "name":"Navi_bar_vassistant_dialogue_longpress",
             "value":"انقر مطولًا للتحدث إلى voice",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"Ai_bar_return_home",
+            "name":"Navi_bar_return_home",
             "value":"الانتقال إلى الشاشة الرئيسية",
             "attr":{
                 "priority":"translate"
@@ -505,7 +505,7 @@
             }
         },
         {
-            "name":"Ai_bar_back_click_navigation",
+            "name":"Navi_bar_back_click_navigation",
             "value":"انقر للرجوع إلى الخلف",
             "attr":{
                 "priority":"translate"
@@ -582,7 +582,7 @@
             }
         },
         {
-            "name":"Ai_bar_back",
+            "name":"Navi_bar_back",
             "value":"الرجوع للخلف",
             "attr":{
                 "priority":"translate"
@@ -729,7 +729,7 @@
             }
         },
         {
-            "name":"Ai_bar_gesture_back_detail",
+            "name":"Navi_bar_gesture_back_detail",
             "value":"اسحب من الطرف الأيمن أو الأيسر للشاشة للرجوع إلى الشاشة السابقة.",
             "attr":{
                 "priority":"translate"
@@ -806,7 +806,7 @@
             }
         },
         {
-            "name":"Ai_bar_vassistant",
+            "name":"Navi_bar_vassistant",
             "value":"انقر مطولًا على شريط التنقل للتحدث إلى voice.",
             "attr":{
                 "priority":"translate"
@@ -834,7 +834,7 @@
             }
         },
         {
-            "name":"ai_bar_accessibility_text",
+            "name":"navi_bar_accessibility_text",
             "value":"شريط التنقل، انقر مرتين مع الضغط مطولًا للتحدث إلى voice",
             "attr":{
                 "priority":"translate"
@@ -883,7 +883,7 @@
             }
         },
         {
-            "name":"Ai_bar_back_detail",
+            "name":"Navi_bar_back_detail",
             "value":"انقر على شريط التنقل للعودة إلى الشاشة السابقة",
             "attr":{
                 "priority":"LT"
@@ -1065,7 +1065,7 @@
             }
         },
         {
-            "name":"Ai_bar_setting",
+            "name":"Navi_bar_setting",
             "value":"أزرار التنقل",
             "attr":{
                 "priority":"translate"
@@ -1219,7 +1219,7 @@
             }
         },
         {
-            "name":"Ai_bar_vassistant_dialogue",
+            "name":"Navi_bar_vassistant_dialogue",
             "value":"دردشة voice",
             "attr":{
                 "priority":"translate"
@@ -1275,7 +1275,7 @@
             }
         },
         {
-            "name":"Ai_bar",
+            "name":"Navi_bar",
             "value":"شريط التنقل",
             "attr":{
                 "priority":"translate"

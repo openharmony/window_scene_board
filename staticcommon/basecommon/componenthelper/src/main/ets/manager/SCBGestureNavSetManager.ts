@@ -48,7 +48,7 @@ export interface GestureNavigationSet {
   backMetaBallFollowingDampY: number;
   needBackExtrudeAnim: string;
   navBarLandscapeWindowWidthPercent: number;
-  aiBarMarginBottom: number;
+  naviBarMarginBottom: number;
   controlVersion: string;
   sceneControlList: Array<SceneControl>;
 }

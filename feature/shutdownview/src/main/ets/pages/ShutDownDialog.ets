@@ -38,8 +38,7 @@ import { rpcShutdownPolicy } from '../policy/RpcShutdownPolicy';
 import { BUNDLE_NAME_SETTINGS, pcShutdownDialogVMP } from './PcShutdownDialogVMP';
 
 const TAG = 'ShutDownDialog';
-const log = LogHelper.getLogHelper(LogDomain.SCB, TAG);
-const BUNDLE_NAME_VASSISTANT = 'com.ohos.vassistant';
+const log: LogHelper = LogHelper.getLogHelper(LogDomain.SCB, TAG);
 const MASTER_APPLICATION = 0;
 const REFRESH_TIMER = 3;
 
@@ -264,31 +263,12 @@ export struct ShutDownDialog {
     const tempRunningAppName: string[] = [];
     for (const appBundleName of notifyRes) {
       try {
-        if (appBundleName === BUNDLE_NAME_VASSISTANT) {
-          const aiAppName = this.initRunningAppAI(appBundleName);
-          tempRunningAppName.push(aiAppName)
-          log.showInfo(`push app: ${aiAppName}`);
-        } else {
-          this.normalInitRunningAppList(tempRunningAppName, appBundleName);
-        }
+        this.normalInitRunningAppList(tempRunningAppName, appBundleName);
       } catch (err) {
         log.showError(`initRunningAppList failed! code: ${err?.code}, message: ${err?.message}`);
       }
     }
     return tempRunningAppName;
-  }
-
-  private initRunningAppAI(bundleName: string): string {
-    log.showInfo('initRunningAppAI start');
-    try {
-      let resourceInfo: bundleResourceManager.BundleResourceInfo =
-        bundleResourceManager.getBundleResourceInfo(bundleName);
-      log.showInfo(`get NoIconApp info, bundleName: ${bundleName}, label: ${resourceInfo.label}`);
-      return resourceInfo ? resourceInfo.label : '';
-    } catch (e) {
-      log.showError(`initRunningAppAI failed! code: ${e?.code}, message: ${e?.message}`);
-      return '';
-    }
   }
 
   private normalInitRunningAppList(runningAppNameList: string[], bundleName: string): void {

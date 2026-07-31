@@ -320,7 +320,7 @@ export { ResUtils } from './utils/ResourceUtils';
 
 export { launcherStatusUtil } from './utils/LauncherStatusUtil';
 
-export { AIBarConstants } from './recent/constants/AIBarConstants';
+export { NAVIBarConstants } from './recent/constants/NAVIBarConstants';
 
 export { SCBScreenDebugCommands } from './scene/dump/SCBScreenDebugCommands';
 

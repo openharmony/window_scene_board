@@ -862,8 +862,10 @@ export struct SCBScreen {
       return;
     }
     this.updateKeyboardStateInfo(keyboardState, isActive);
-    // notifyKeyboardAnimationCompleted 放到 changeKeyboardState 里 closeKeyboardSyncTransaction 之后，
-    // 保证底层 keyboardWillShow 先于 keyboardDidShow。
+    if (!this.keyboardSession.isFloatGravity()) {
+      this.keyboardSession.notifyKeyboardAnimationWillBegin(callingId, isActive, false, panelRect);
+      this.keyboardSession.notifyKeyboardAnimationCompleted(callingId, isActive, panelRect);
+    }
     SCBKeyboardManager.getInstance().closeKeyboardAnimation(false);
   }
 
@@ -960,18 +962,18 @@ export struct SCBScreen {
     const callingId = this.keyboardSession.getCallingSessionId();
     const panelRect = this.keyboardSession.getKeyboardPanelRealRect();
     let withAnimation = false;
-    // if (!this.keyboardSession.isWindowShowAnimate || this.keyboardSession.isCloseKeyboardAnimation ||
-    // this.keyboardSession.isRectAbnormal(isActive, this.scbScreenProperty, panelRect)) {
+    if (!this.keyboardSession.isWindowShowAnimate || this.keyboardSession.isCloseKeyboardAnimation ||
+    this.keyboardSession.isRectAbnormal(isActive, this.scbScreenProperty, panelRect)) {
       log.showInfo('[SCBKeyboard] isShowAnimate: ' + this.keyboardSession.isWindowShowAnimate +
         ', isCloseAnimation: ' + this.keyboardSession.isCloseKeyboardAnimation);
       this.keyboardVisibilityChangeWithoutAnimation(callingId, panelRect, keyboardState, isActive);
-    // } else {
-    //   if (this.keyboardSession.IsNeedOpenSyncTransaction(this.keyboardSession.isActive, isActive)) {
-    //     this.keyboardSession.openKeyboardSyncTransaction();
-    //   }
-    //   this.keyboardVisibilityChangeWithAnimation(callingId, panelRect, keyboardState, isActive);
-    //   withAnimation = true;
-    // }
+    } else {
+      if (this.keyboardSession.IsNeedOpenSyncTransaction(this.keyboardSession.isActive, isActive)) {
+        this.keyboardSession.openKeyboardSyncTransaction();
+      }
+      this.keyboardVisibilityChangeWithAnimation(callingId, panelRect, keyboardState, isActive);
+      withAnimation = true;
+    }
     if (!this.keyboardSession.isFloatGravity()) {
       // notify listener of keyboard animation if need keep synchronous
       SCBKeyboardManager.getInstance().NotifyAnimationSyncCallbacks();

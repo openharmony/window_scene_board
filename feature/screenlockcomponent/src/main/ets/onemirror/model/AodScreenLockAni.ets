@@ -24,7 +24,7 @@ export default class AodScreenLockAni implements IMirrorToEnd {
     this.aniConf = aniConf;
     this.elemType = elemType;
     this.isBottomElem = this.elemType === MirrorElemType.Mirror_NOTIFICATION ||
-      this.elemType === MirrorElemType.Mirror_AI_BAR;
+      this.elemType === MirrorElemType.Mirror_NAVI_BAR;
   }
 
   public doWhenBeginSleep(): void {

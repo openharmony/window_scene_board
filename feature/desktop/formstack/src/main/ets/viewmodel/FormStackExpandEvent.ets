@@ -227,7 +227,7 @@ export class FormStackExpandEvent {
           this.mExpandModel.emitFormStackClosedMsg(cardId);
         }
         // 恢复语音助手建议
-        log.showInfo('recover aiSuggestion');
+         log.showInfo('recover card stack');
         localEventManager.sendLocalEventSticky(EventConstants.EVENT_REQUEST_SET_OPERATE_STACK_ENABLED, true);
         this.closeFormStackWithReset();
         // 无障碍模式下，且剩下的卡片大于1，主动播报堆叠已关闭
@@ -712,7 +712,7 @@ export class FormStackExpandEvent {
       log.showError('init expand config layout failed!');
       return;
     }
-    log.showInfo('locked aiSuggestion');
+    log.showInfo('locked card stack');
     // 锁定语音助手建议，不让刷新
     localEventManager.sendLocalEventSticky(EventConstants.EVENT_REQUEST_SET_OPERATE_STACK_ENABLED, false);
     this.initAnimateData(this.mViewData as FormStackExpandViewData);

@@ -204,7 +204,6 @@ import { formZoomController } from './formAdjust/viewModel/FormZoomController';
 import { FormZoomDragEvtParams, FormZoomDragEvtType } from './formAdjust/common/FormZoomCommonType';
 import { AppStatusNameMapping } from '@ohos/launchercommon/src/main/ets/appinstall/AppStatusNameMapping';
 import { ExposureManager } from '@ohos/launchercommon/src/main/ets/manager/ExposureManager';
-import { AiSuggestionUtil } from '@ohos/launchercommon/src/main/ets/aisuggestion/AiSuggestionUtil';
 import lazy PageEditTips from './PageEditTips';
 import { LauncherStartup, StartupStep } from '@ohos/launchercommon/src/main/ets/tools/LauncherStartup';
 import { DoubleClickLockScreenModel } from '@ohos/launchercommon/src/main/ets/pagedesktop/viewmodel/DoubleClickLockScreenModel';
@@ -1426,8 +1425,7 @@ export default struct GridSwiper {
    * 拖拽过程中仅卡片(不包括语音助手建议)能拖入负一屏
    */
   private isCardDragging(): boolean {
-    return !CheckEmptyUtils.isEmpty(this.dragItemInfo) && this.dragItemInfo.typeId === CommonConstants.TYPE_CARD &&
-      !AiSuggestionUtil.isVoiceAbilityForm(this.dragItemInfo.bundleName, this.dragItemInfo.abilityName);
+    return !CheckEmptyUtils.isEmpty(this.dragItemInfo) && this.dragItemInfo.typeId === CommonConstants.TYPE_CARD;
   }
 
   /**

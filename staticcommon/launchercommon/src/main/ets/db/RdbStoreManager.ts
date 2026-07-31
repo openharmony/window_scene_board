@@ -3284,7 +3284,7 @@ export class RdbStoreManager {
    *
    * @param voiceCardId Voice card ID
    * @param cardInfoCache Stringed Voice internal card data
-   * @returns update aiSuggestion result
+   * @returns update voiceCard result
    */
   async updateVoiceCardInfoMap(voiceCardId: string, cardInfoCache: string): Promise<boolean> {
     log.showWarn(`updateVoiceInfo start, card:${voiceCardId}`);

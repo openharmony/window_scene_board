@@ -106,13 +106,6 @@
             }
         },
         {
-            "name":"volume_accessibility_voice_assistant",
-            "value":"语音助手声音",
-            "attr":{
-                "priority":"translate"
-            }
-        },
-        {
             "name":"volume_accessibility_accessibility",
             "value":"无障碍",
             "attr":{

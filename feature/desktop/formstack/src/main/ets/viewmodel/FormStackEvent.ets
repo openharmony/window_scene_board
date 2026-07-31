@@ -52,7 +52,6 @@ import { formStackSnapShowManager } from '../common/FormStackSnapShowManager';
 import { FormStackAnimate } from './FormStackAnimate';
 import { FormStackMsgType, FormStackViewModel, AddInterfaceExtendParam } from './FormStackViewModel';
 import { FormStackAnimateItem } from './FormStackAnimateItem';
-import { AiSuggestionUtil } from '@ohos/launchercommon/src/main/ets/aisuggestion/AiSuggestionUtil';
 
 const TAG: string = 'FormStackEvent';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.FORM, TAG);
@@ -906,19 +905,7 @@ export class FormStackEvent {
   }
 
   private getAppNameFromCache(card: CardItemInfo): string {
-    if (!AiSuggestionUtil.isVoiceAbilityForm(card.bundleName, card.abilityName)) {
-      return '';
-    }
-
-    const formStackId: string = this.mFormStackItem.formStackId as string;
-    let cardInfo: CardItemInfo | undefined = FormStackManager.getInstance()
-      .getFormStackSubCards(formStackId).find(ele => ele.cardId === card.cardId);
-
-    if (CheckEmptyUtils.checkStrIsEmpty(cardInfo?.appName)) {
-      return ResUtils.getInnerString($r('app.string.aisuggestion_app_name'));
-    }
-
-    return cardInfo?.appName ?? '';
+    return '';
   }
 
   private getCardNameWithCacheCallback(name: string, topCard: CardItemInfo, callback: (name: string) => void): void {

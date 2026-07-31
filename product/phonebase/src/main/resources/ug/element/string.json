@@ -190,28 +190,28 @@
             }
         },
         {
-            "name":"Ai_bar_return_home",
+            "name":"Navi_bar_return_home",
             "value":"ئۈستەليۈزىگە قايتىش",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"Ai_bar_recent_detail",
+            "name":"Navi_bar_recent_detail",
             "value":"ئېكراننىڭ ئاستىدىن ئۈستىگە سىيرىپ تۇرۇڭ",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"Ai_bar_recent",
+            "name":"Navi_bar_recent",
             "value":"يېقىنقى ۋەزىپە",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"Ai_bar_setting",
+            "name":"Navi_bar_setting",
             "value":"سىستېما يېتەكلىگۈچ",
             "attr":{
                 "priority":"LT"
@@ -225,42 +225,42 @@
             }
         },
         {
-            "name":"Ai_bar_back",
+            "name":"Navi_bar_back",
             "value":"قايتىش",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"Ai_bar_vassistant_dialogue",
+            "name":"Navi_bar_vassistant_dialogue",
             "value":"شياۋيى سۆھبەت",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"Ai_bar_gesture_back_detail",
+            "name":"Navi_bar_gesture_back_detail",
             "value":"ئېكراننىڭ ئوڭ/سول قىرىدىن ئىچىگە سىيرىسىڭىز ئالدىنقى بەتكە قايتىدۇ.",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"Ai_bar_vassistant",
+            "name":"Navi_bar_vassistant",
             "value":"ئاستىدىكى يېتەكلەش بالدىقىنى بېسىپ تۇرسىڭىز شياۋيى سۆھبەت ئېچىلىدۇ.",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"Ai_bar_return_home_detail",
+            "name":"Navi_bar_return_home_detail",
             "value":"ئېكراننىڭ ئاستى قىرىدىن ئۈستىگە سىيرىڭ",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"Ai_bar_back_detail",
+            "name":"Navi_bar_back_detail",
             "value":"ئاستىدىكى يېتەكلەش بالدىقىنى بېسىپ ئالدىنقى بەتكە قايتىسىز.",
             "attr":{
                 "priority":"LT"
@@ -323,7 +323,7 @@
             }
         },
         {
-            "name":"Ai_bar",
+            "name":"Navi_bar",
             "value":"يېتەكلەش بالدىقى",
             "attr":{
                 "priority":"LT"
@@ -901,14 +901,14 @@
             }
         },
         {
-            "name":"Ai_bar_vassistant_dialogue_longpress",
+            "name":"Navi_bar_vassistant_dialogue_longpress",
             "value":"بېسىپ تۇرۇپ شياۋيى سۆھبەتنى ئېچىش",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"Ai_bar_back_click_navigation",
+            "name":"Navi_bar_back_click_navigation",
             "value":"چېكىپ قايتىش",
             "attr":{
                 "priority":"LT"
@@ -971,7 +971,7 @@
             }
         },
         {
-            "name":"ai_bar_accessibility_text",
+            "name":"navi_bar_accessibility_text",
             "value":"يېتەكلەش بالدىقى، ئۈچ چېكىپ قويۇپ بەرمەي تۇرسىڭىز شياۋيى سۆھبەت ئويغىنىدۇ",
             "attr":{
                 "priority":"translate"

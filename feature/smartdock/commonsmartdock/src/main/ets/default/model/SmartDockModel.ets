@@ -93,8 +93,6 @@ const log: LogHelper = LogHelper.getLogHelper(LogDomain.HOME, TAG);
 const KEY_NAME = 'name';
 const FIRST_LOADED_SNAPSHOT_NUMBER = 15;
 const GUIDE_BUNDLE_NAME = 'com.ohos.startupguide';
-const VASSISTANT_BUNDLE_NAME = 'com.ohos.vassistant';
-const VOICE_PC_ABILITY_NAME = 'VoicePcAbility';
 
 /**
  * SmartDock Model
@@ -404,9 +402,7 @@ export default class SmartDockModel extends SingleBase {
 
       for (let j = 0; j < allSession.length; j++) {
         let currentSession = allSession[j];
-        if (currentSession.sceneInfo.bundleName === GUIDE_BUNDLE_NAME ||
-          (currentSession.sceneInfo.bundleName === VASSISTANT_BUNDLE_NAME &&
-          currentSession.sceneInfo?.abilityName === VOICE_PC_ABILITY_NAME)) {
+        if (currentSession.sceneInfo.bundleName === GUIDE_BUNDLE_NAME) {
           continue;
         }
         // pad自由多窗语音助手壳应用包名和实际运行的应用包名不一致, 这里需要单独适配下

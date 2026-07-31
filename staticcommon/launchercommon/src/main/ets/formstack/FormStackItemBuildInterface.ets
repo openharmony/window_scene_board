@@ -18,7 +18,6 @@ import { FormStackItemBuildParam } from './FormStackItemBuildParam';
 
 export enum FormStackItemViewType {
   TYPE_MIN = 0,
-  AI_SUGGESTION = 1,
   FORM_COMPONENT = 2,
   TYPE_MAX = 10,
 }

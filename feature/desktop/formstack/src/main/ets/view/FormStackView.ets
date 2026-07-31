@@ -37,7 +37,6 @@ import {
   FormStackEventIdUtil,
   FormCommonUtil,
   PageDesktopModel,
-  BundleConstants,
   RdbStoreManager,
   LayoutViewModel,
   ReceiveEventInfo,
@@ -60,13 +59,10 @@ import {
   SceneIdentificationManager,
   SceneState,
   AccessibilityManager,
-  localEventManager,
-  EvtBus
+  localEventManager
 } from '@ohos/frameworkwrapper';
 import { NumberConstants, SCBConstants } from '@ohos/commonconstants';
-import { AiSuggestionConstants,
-  LongPressType } from '@ohos/launchercommon/src/main/ets/aisuggestion/AiSuggestionConstants';
-import { DragEventManager } from '@ohos/componentdrag';
+ import { DragEventManager } from '@ohos/componentdrag';
 import { DropAnimationCancelReason,
   DropAnimationDestination,
   DropAnimationListener, dropAnimationObserver,
@@ -79,7 +75,7 @@ import { ResUtils, SCBTransitionManager, scbEventExclusiveManager, EventType,
 import { GridLayoutItemInfo } from '@ohos/launchercommon';
 import { DeviceState } from '@ohos/launchercommon';
 import { FormRelationManager } from '@ohos/launchercommon';
-import { FormConstants, FormViewModel } from '@ohos/form';
+import { FormViewModel } from '@ohos/form';
 import {
   nameAppearAnimate,
   MenuCommonUtil,
@@ -125,10 +121,7 @@ import {
 import { FormStackItemView } from './FormStackItemView';
 import { FormAppName } from './FormAppName';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { AiSuggestionUtil } from '@ohos/launchercommon/src/main/ets/aisuggestion/AiSuggestionUtil';
-import {
-  VoiceInStackExposeEvent, createVoiceInStackExposeEvent
-} from '@ohos/launchercommon/src/main/ets/aisuggestion/VoiceInStackExposeEvent';
+
 
 const TAG: string = 'FormStackView';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.FORM, TAG);
@@ -143,6 +136,14 @@ enum CardAreaType {
 };
 const BLEND_MODE_SRC_OVER: number = 4;
 const UPDATE_CARD_ORDER_DELAY: number = 5000;
+const LONG_PRESS_SELECT_ITEM_SNAP_DURATION: number = 450;
+
+enum LongPressType {
+  DEFAULT,
+  GET_WALLPAPER,
+  SHOW_WALLPAPER,
+  SELECTED_ITEM,
+}
 
 @Component
 export struct FormStackView {
@@ -281,10 +282,6 @@ export struct FormStackView {
   private topCardSnapshot: image.PixelMap | null = null;
 
   private onLanguageChange(): void {
-    // 切换语言时刷新堆叠名称,语音助手建议卡片通过updateAppName回调刷新
-    if (AiSuggestionUtil.isVoiceAbilityForm(this.mCurrentFormItem.bundleName, this.mCurrentFormItem.abilityName)) {
-      return;
-    }
     this.showTopCardName(this.mFormStackTopCardId);
   }
 
@@ -779,7 +776,7 @@ export struct FormStackView {
       return;
     }
 
-    if (!AiSuggestionUtil.isVoiceAbilityForm(item.bundleName, item.abilityName) && !item.appLabelId) {
+    if (!item.appLabelId) {
       log.showWarn(`appLabelId invalid and get it now. cardId: ${item.cardId}, bundleName: ${item.bundleName}, ` +
         `appLabelId: ${item.appLabelId}`);
       item.appLabelId = await launcherAbilityManager.getAppLabelId(item.bundleName);
@@ -796,9 +793,7 @@ export struct FormStackView {
         this.appNameLoadCallback(appName, item);
       }
     } else {
-      // 语音助手建议无图标但是label不是固定需要特殊处理
-      if (item.bundleName !== FormConstants.AI_SUGGESTION_BUNDLE_NAME &&
-        NoIconAppModel.getInstance().checkIfBundleIsNoIconApp(item.bundleName)) {
+      if (NoIconAppModel.getInstance().checkIfBundleIsNoIconApp(item.bundleName)) {
         let appName: string = item.bundleName === CommonConstants.SCENEBOARD_BUNDLE ?
           ResourceManager.getInstance().getStringByName('lock_screen') :
           NoIconAppModel.getInstance().updateNoIconAppInfo(item.bundleName).label;
@@ -1492,12 +1487,8 @@ export struct FormStackView {
               log.showInfo(`top form: ${this.mFormStackTopCardId}, set cover form: ${this.mCoverFormItem?.cardId}`);
             }
           }),
-        LongPressGesture({ repeat: false, duration: AiSuggestionConstants.LONG_PRESS_SELECT_ITEM_SNAP_DURATION })
+        LongPressGesture({ repeat: false, duration: LONG_PRESS_SELECT_ITEM_SNAP_DURATION })
           .onAction(() => {
-            if (AiSuggestionUtil.isVoiceAbilityForm(this.mCurrentFormItem.bundleName,
-              this.mCurrentFormItem.abilityName)) {
-              this.getFormStackSnapshot();
-            }
           }),
       )
     )
@@ -1904,7 +1895,7 @@ export struct FormStackView {
         log.showInfo('MenuBuilder onAppear');
         this.isMenuAppear = true;
         this.isMenuClicked = false;
-        GlobalContext.getContext()?.eventHub.emit('AIBarShow', true);
+        GlobalContext.getContext()?.eventHub.emit('NAVIBarShow', true);
         MenuInfoManager.getInstance()
           .getContextMenuListener(this.mCurrentFormItem?.cardId)?.onMenuAppear?.(ResponseType.LongPress);
         // appName 隐藏
@@ -1918,7 +1909,7 @@ export struct FormStackView {
       .onDisAppear(() => {
         log.showInfo('MenuBuilder onDisAppear');
         this.isMenuAppear = false;
-        GlobalContext.getContext()?.eventHub.emit('AIBarShow', false);
+        GlobalContext.getContext()?.eventHub.emit('NAVIBarShow', false);
         const isClicked: boolean = this.isMenuClicked;
         this.isMenuClicked = false;
         this.reportShortcutMenuClicked(isClicked);
@@ -1961,8 +1952,6 @@ export struct FormStackView {
       `bundleName: ${this.mFormItemList[this.slideFormIndex].bundleName}`);
 
     this.mStaticMaskExtraWidth = FormStackUtil.getFormStackMaskExtraWidth(this.mFormItemList.length);
-    EvtBus.post(VoiceInStackExposeEvent, createVoiceInStackExposeEvent(
-      this.mFormStackItem.layoutInfo[0], this.mFormStackItem.page, this.mCurrentFormItem));
   }
 
   private isFormStackIdMatch(): boolean {
@@ -2067,9 +2056,6 @@ export struct FormStackView {
         return;
       }
       this.getFormStackSnapshot();
-      if (AiSuggestionUtil.isVoiceAbilityForm(this.mCurrentFormItem.bundleName, this.mCurrentFormItem.abilityName)) {
-        GlobalContext.getContext()?.eventHub.emit('appIconLongPressEffectCancel', true);
-      }
       return;
     }
 

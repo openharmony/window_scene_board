@@ -23,7 +23,6 @@ import { FormStackConstants } from '../common/FormStackConstants';
 import { FormStackExpandConfig } from '../common/FormStackExpandConfig';
 import { FormStackUtil } from '../common/FormStackUtil';
 import { FormStackExpandItem } from './FormStackExpandItem';
-import { AiSuggestionUtil } from '@ohos/launchercommon/src/main/ets/aisuggestion/AiSuggestionUtil';
 
 const TAG: string = 'FormStackExpandViewData';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.FORM, TAG);
@@ -173,10 +172,8 @@ export class FormStackExpandViewData {
       expandItem.idStr = `${FormStackConstants.FORM_STACK_EXPAND_ID_PREFIX}_${cardItem.cardId}`;
       expandItem.zIndex = index;
       expandItem.enableBlurBackground = FormCommonUtil.getEnableBlurBackground(cardItem); // 模糊背板
-      expandItem.isAiCard = AiSuggestionUtil.isVoiceAbilityForm(cardItem.bundleName, cardItem.abilityName);
       expandItem.cardNode = new CardNodeController(new FormOccupyParams(
-        cardItem.cardId,
-        expandItem.isAiCard
+        cardItem.cardId
       ), TAG, new CardNodeOption(true));
       this.mItemInfoList.push(expandItem);
     });

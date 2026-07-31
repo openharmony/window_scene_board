@@ -46,7 +46,7 @@ export default function MediaControllerVideoTest() {
     /**
      * 打开视频
      */
-    it('open_hmsapp_video', 0, async (done: Function) => {
+    it('open_app_video', 0, async (done: Function) => {
       try {
         hilog.info(0x0, TAG, 'open_himovie begin');
         await startAbility('com.ohos.himovie', 'MainAbility');
@@ -59,7 +59,7 @@ export default function MediaControllerVideoTest() {
         expect(true).assertTrue();
         done()
       } catch(e) {
-        hilog.info(0x0, TAG, 'open_hmsapp_video' + e.message);
+        hilog.info(0x0, TAG, 'open_app_video' + e.message);
       }
     })
 

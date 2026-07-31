@@ -31,7 +31,7 @@ import { rpc } from '@kit.IPCKit';
 import { CardItemInfo} from '@ohos/launchercommon/src/main/ets/TsIndex';
 import { OpenFormCenterService } from '../../../../../../main/ets/default/service/OpenFormCenterService';
 import { FormCenterResponse, FormCenterResponseCode } from '../../../../../../main/ets/default/service/ServiceInterface';
-import { SCBAiBarCallBack } from '../../../../../../../../../../product/phone/src/main/ets/SceneBoard/aiBar/proxy/SCBAiBarCallBack';
+import { SCBNaviBarCallBack } from '../../../../../../../../../../product/phone/src/main/ets/SceneBoard/naviBar/proxy/SCBNaviBarCallBack';
 import { FormCenterViewParam } from '@ohos/launchercommon/src/main/ets/manager/FormCenterViewManager';
 
 
@@ -71,7 +71,7 @@ export function OpenFormCenterServiceTest() {
         let result = openformInstance['handleOpenFormCenterResult'](null,response);
         expect(result == null).assertTrue();
 
-        let proxy: rpc.IRemoteObject = new SCBAiBarCallBack("");
+        let proxy: rpc.IRemoteObject = new SCBNaviBarCallBack("");
         result = openformInstance['handleOpenFormCenterResult'](proxy, null);
         expect(result == null).assertTrue();
 

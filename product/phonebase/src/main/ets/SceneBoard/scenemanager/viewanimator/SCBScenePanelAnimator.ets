@@ -73,7 +73,7 @@ import {
 } from '@ohos/windowscene/src/main/ets/TsIndex';
 import { SceneBoardStateManager, CoreEventType as SCBCoreEventType } from '@ohos/frameworkwrapper/Index';
 import sceneSessionManager from '@ohos.sceneSessionManager'
-import { BlurEffectType, SCBConstants, VassistantConstants, VisualEffectConstants } from '@ohos/commonconstants';
+import { BlurEffectType, SCBConstants, VisualEffectConstants } from '@ohos/commonconstants';
 import { SCBScenePanelViewModel } from '../viewmodel/SCBScenePanelViewModel';
 // import apsManager from '@ohos.graphic.apsManager';
 import { BigFolderViewModel } from '@ohos/bigfolder';
@@ -895,10 +895,6 @@ export class SCBScenePanelAnimator {
     sceneContainerSession.resetTransitionOutData(CommonConstants.getDeviceRadius(), 'sceneContainerTransitionOut');
     // 没找到controller也需要初始化CompanionIconInfo
     let adapterSceneInfo: SCBSceneInfo | undefined = session?.sceneInfo;
-    if (adapterSceneInfo?.bundleName === VassistantConstants.VASSISTANT_BUNDLE_NAME) {
-      adapterSceneInfo = SceneInfoAdapterUtil.getAdapterSceneInfo(adapterSceneInfo.bundleName,
-        adapterSceneInfo.moduleName, adapterSceneInfo.abilityName, adapterSceneInfo.appIndex);
-    }
     sceneContainerSession.initCompanionIconInfo(adapterSceneInfo, controller);
     let appExitInfo = QuitAppRectViewModel.getInstance().buildAppExitInfoInExit(sceneContainerSession);
     let companionIconInfo = sceneContainerSession.companionIconInfo;

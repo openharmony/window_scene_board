@@ -16,10 +16,8 @@
 import ServiceExtensionAbility from '@ohos.app.ability.ServiceExtensionAbility';
 import type Want from '@ohos.app.ability.Want';
 import type rpc from '@ohos.rpc';
-import { AiSuggestionService } from '@ohos/aisuggestion';
 import { IService, BaseServiceStub } from '@ohos/componenthelper';
 import { Log } from '@ohos/basicutils';
-import { AiBarService } from '../SceneBoard/aiBar/service/AiBarService';
 import { RecentDeviceService } from './RecentDeviceService';
 // import { RestoringPhoneDesktopLayout } from '../backup/RestoringPhoneDesktopLayout';
 import { SampleDeviceService } from '@ohos/pagedesktop/src/main/ets/default/service/SampleDeviceService';
@@ -86,10 +84,8 @@ export default class DesktopProviderService extends ServiceExtensionAbility {
  * @since 2023-08-11
  */
 export class PhoneDesktopProviderServiceStub extends BaseServiceStub {
-  private static readonly aiSuggestion = 1;
-  private static readonly cloneCloud = 2;
-  private static readonly aiVassiant = 3;
-  private static readonly sampleDevice = 4;
+   private static readonly cloneCloud = 2;
+   private static readonly sampleDevice = 4;
   private static readonly recentDeleteDeviece = 5;
   private static readonly globalSearch = 6;
   private static readonly desktopIcon = 7;
@@ -102,9 +98,7 @@ export class PhoneDesktopProviderServiceStub extends BaseServiceStub {
 
   protected initServiceMap(): Map<number, () => IService> {
     return new Map<number, () => IService>([
-      [PhoneDesktopProviderServiceStub.aiSuggestion, (): IService => new AiSuggestionService()],
       [PhoneDesktopProviderServiceStub.cloneCloud, (): IService => new CloneCloudService()],
-      [PhoneDesktopProviderServiceStub.aiVassiant, (): IService => new AiBarService()],
       [PhoneDesktopProviderServiceStub.sampleDevice,
         (): IService => new SampleDeviceService(new RestoringPhoneDesktopLayout())],
       [PhoneDesktopProviderServiceStub.recentDeleteDeviece, (): IService => new RecentDeviceService()],

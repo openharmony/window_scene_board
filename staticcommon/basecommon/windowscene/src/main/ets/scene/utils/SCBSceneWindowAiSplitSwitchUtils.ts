@@ -22,7 +22,7 @@ import { SCBSceneInfo, SCBSceneMode } from '../session/SCBSceneInfo';
 import lazy { SCBTripleFoldState, SCBTriFoldManager } from '@ohos/frameworkwrapper';
 import { SCBSceneContainerSession } from '../session/SCBSceneContainerSession';
 import { SCBSceneSession } from '../session/SCBSceneSession';
-import { AiSplitReason } from '@ohos/frameworkwrapper/src/main/ets/hisysevent/ReportParams';
+import { SplitReason } from '@ohos/frameworkwrapper/src/main/ets/hisysevent/ReportParams';
 import { common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -509,14 +509,14 @@ export class SCBSceneWindowAiSplitSwitchUtils {
    *
    * @return switchTypeName
    */
-  public getAiSplitReason(): AiSplitReason {
+  public getSplitReason(): SplitReason {
     if (this.switchType === SwitchType.NATURAL_SWITCH) {
-      return AiSplitReason.NATURAL_SWITCH;
+      return SplitReason.NATURAL_SWITCH;
     }
     if (this.switchType === SwitchType.FREQUENT_SWITCH) {
-      return AiSplitReason.FREQUENT_SWITCH;
+      return SplitReason.FREQUENT_SWITCH;
     }
-    return AiSplitReason.INVALID;
+    return SplitReason.INVALID;
   }
 
   /**

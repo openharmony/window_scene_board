@@ -240,11 +240,10 @@ import {
 } from '../recent/scenepanel/homepanel/HomeCallbacks';
 import { recentRuntimeInstance } from '../recent/scenepanel/recentpanel/RecentRuntimeModel';
 import {
-  MultiWindowEventConstants,
-  VassistantConstants
+  MultiWindowEventConstants
 } from '@ohos/commonconstants/src/main/ets/constants/SCBConstants';
 import { recentDisplayManager } from '@ohos/recents/src/main/ets/TsIndex';
-import { AiBarChangeType } from '../aiBar/SCBAiBarConstants';
+import { NaviBarChangeType } from '../naviBar/SCBNaviBarConstants';
 import { QuitAppRectViewModel } from '@ohos/pagedesktop/src/main/ets/default/common/viewmodel/QuitAppRectViewModel';
 import { RecentAccessibilityUtils } from '../recent/scenepanel/recentpanel/RecentAccessibilityUtils';
 import lazy { ThreeFingerSwiperCallback, TouchBoardGestureManager } from '../touchboardgesture/TouchBoardGestureManager';
@@ -304,7 +303,7 @@ import { SCBMinimizeSceneOpts } from '@ohos/windowscene/src/main/ets/scene/Scene
 import { SCBSceneStartInterceptor, StartInterceptions } from '@ohos/windowscene/src/main/ets/scene/framework/missions/SCBSceneStartInterceptor';
 import lazy { SCBRecentPrepareManager } from './pcmode/SCBRecentPrepareManager';
 import lazy { singleDisplayPocketUtil } from './utils/SingleDisplayPocketUtil';
-import { FloatingNavigationManager } from '../aiBar/proxy/FloatingNavigationManager';
+import { FloatingNavigationManager } from '../naviBar/proxy/FloatingNavigationManager';
 import transactionManager from '@ohos.transactionManager';
 import lazy {
   SCBSceneWindowAiSplitSwitchUtils,
@@ -1130,9 +1129,9 @@ export struct SCBScenePanel {
         .deliverGestureEvent(RecentGestureEvent.ENTER_APP_IDLE_FROM_ZOOM_FOLLOWING,
           this.containerSessionList.getTopActiveSession());
       this.onEnterAppFullScreen();
-      homeLog.showInfo(`EVENT_AI_BAR_STATUS_CHANGE`);
+      homeLog.showInfo(`EVENT_NAVI_BAR_STATUS_CHANGE`);
       this.recentInnerState.onInit();
-      localEventManager.sendLocalEvent(EventConstants.EVENT_AI_BAR_STATUS_CHANGE, AiBarChangeType.SHOW_BAR);
+      localEventManager.sendLocalEvent(EventConstants.EVENT_NAVI_BAR_STATUS_CHANGE, NaviBarChangeType.SHOW_BAR);
     }
   };
   private recentFollowFromAppCallback: RecentFollowingFromAppCallback = {
@@ -3189,9 +3188,6 @@ export struct SCBScenePanel {
 
   private sceneContainerTransitionOutForOneStepSplit(sceneContainerSession: SCBSceneContainerSession): void {
     let bundleName = sceneContainerSession.primarySession?.sceneInfo.bundleName;
-    if (bundleName === VassistantConstants.VASSISTANT_BUNDLE_NAME) {
-      bundleName = VassistantConstants.VASSISTANT_LAUNCHER_BUNDLE_NAME;
-    }
     let controller = SCBTransitionManager.getInstance().findTransitionController(
       bundleName, () => {
         return PageDesktopModel.getInstance().getCloseAppData(

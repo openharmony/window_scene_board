@@ -1,6 +1,6 @@
 import PowerButtonManagerTest from './ets/manager/PowerButtonManager.test'
 import AnimSystemProfileTest from './ets/manager/AnimSystemProfile.test'
-import AiBarVisualEffectManagerTest from './ets/manager/AiBarVisualEffectManager.test';
+import NaviBarVisualEffectManagerTest from './ets/manager/NaviBarVisualEffectManager.test';
 /*
  * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -65,7 +65,7 @@ export function EditModeTestSuite() {
   DragControllerUtilTest();
   DragAccessibilityUtilsTest();
   FrameUtilTest();
-  AiBarVisualEffectManagerTest();
+  NaviBarVisualEffectManagerTest();
   AnimSystemProfileTest()
   PowerButtonManagerTest()
 }

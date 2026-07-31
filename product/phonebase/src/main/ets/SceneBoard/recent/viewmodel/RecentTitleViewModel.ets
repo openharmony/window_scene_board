@@ -31,7 +31,6 @@ import { RecentLayoutManager } from '../common/RecentLayoutManager';
 import { RecentStyle } from '../RecentStyle';
 import { curves } from '@kit.ArkUI';
 import systemParameter from '@ohos.systemParameterEnhance';
-import { VassistantConstants } from '@ohos/commonconstants/src/main/ets/constants/SCBConstants';
 import { recentRuntimeInstance } from '../scenepanel/recentpanel/RecentRuntimeModel';
 import { ArrayList } from '@kit.ArkTS';
 import { RecentIconConstants } from '../common/constants/RecentIconConstants';
@@ -343,17 +342,8 @@ export class RecentTitleViewModel {
       return;
     }
     RecentTitleViewModel.checkAppIndex(appInfo);
-    let isVassistant = appInfo.bundleName === VassistantConstants.VASSISTANT_BUNDLE_NAME &&
-      appInfo.moduleName === VassistantConstants.DEFAULT_MODULE_NAME &&
-      appInfo.abilityName === VassistantConstants.VASSISTANT_ABILITY_NAME;
     let appLabelId: number | undefined = appInfo.appLabelId;
     let sceneInfoLabel = sceneInfo?.label;
-    if (isVassistant) {
-      appLabelId = SceneInfoAdapterUtil.getAdapterLabelId(VassistantConstants.VASSISTANT_BUNDLE_NAME,
-        VassistantConstants.VASSISTANT_ABILITY_FOR_LABEL);
-      RecentTitleViewModel.updateNameFromResourceManager(appInfo, sceneInfoLabel, appLabelId, nameCallback);
-      return;
-    }
     if (RecentTitleViewModel.updateNameFromCacheDirectly(appInfo, sceneInfoLabel, nameCallback)) {
       return;
     }

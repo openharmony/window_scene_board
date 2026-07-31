@@ -88,7 +88,6 @@ const HOVER_LEAVE_TIPS_DELAY: number = 0;
 const POPUP_MIN_TEXT_WIDTH: number = 64;
 const HARMONY_RING_WIDTH: number = 60;
 const GROUP_COMPONENT_END_MARGIN: number = 2.5;
-const VASSISTANT_BUNDLE_NAME = 'com.ohos.vassistant';
 
 @Component
 export struct DockStatusBarComponent {
@@ -110,7 +109,7 @@ export struct DockStatusBarComponent {
   @State spaceRowWidth: number = 0;
   @State isVertical: boolean = false;
   private mScreenWidth: number = this.mSmartDockStyleConfig.mScreenWidth;
-  @State isAIHide: boolean = GetHideAppsFromConfig.getInstance().isHideApp(VASSISTANT_BUNDLE_NAME);
+  @State isAIHide: boolean = false;
   /**
    * 多事件管理器
    */
@@ -199,7 +198,7 @@ export struct DockStatusBarComponent {
   }
 
   handleHideAppConfigLoadEvent = (event: HideAppConfigLoadEvent): void => {
-    this.isAIHide = GetHideAppsFromConfig.getInstance().isHideApp(VASSISTANT_BUNDLE_NAME);
+    this.isAIHide = false;
     log.showInfo(`dockstatus handleHideAppConfigLoadEvent ${this.isAIHide}`);
   }
 

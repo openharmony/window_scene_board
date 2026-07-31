@@ -128,7 +128,7 @@ export struct NtfSearchResultView {
       if (this.searchResultList.length > 0) {
         this.buildFinallyList();
       }
-      Row().height(ContextManager.aiBarHeightByVp);
+      Row().height(ContextManager.naviBarHeightByVp);
     }.constraintSize({ minHeight: '100%' })
   }
 
@@ -248,7 +248,7 @@ export struct NtfSearchResultView {
   scrollBar() {
     ScrollBar({ scroller: this.scroller, direction: ScrollBarDirection.Vertical, state: BarState.Auto })
       .height('100%')
-      .margin({ bottom: ContextManager.aiBarHeightByVp })
+      .margin({ bottom: ContextManager.naviBarHeightByVp })
   }
 
   private jumpMgmtView(item: ResultItemInfo): void {

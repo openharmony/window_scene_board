@@ -33,7 +33,7 @@ import {
 import { CommonUtils, LogDomain, LogHelper } from '@ohos/basicutils';
 import { SCBDefaultZIndex } from './SCBScreen';
 import performanceMonitor from '@ohos.arkui.performanceMonitor';
-import { SCBAiBarConstants } from '../aiBar/SCBAiBarConstants';
+import { SCBNaviBarConstants } from '../naviBar/SCBNaviBarConstants';
 import curves from '@ohos.curves';
 import { StyleConstants } from '@ohos/launchercommon'
 import ViewManagerPolicy, { ViewType } from '@ohos/frameworkwrapper/src/main/ets/manager/view/ViewManagerPolicy'

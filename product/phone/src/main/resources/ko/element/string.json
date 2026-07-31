@@ -43,14 +43,14 @@
             }
         },
         {
-            "name":"Ai_bar_vassistant_dialogue_longpress",
+            "name":"Navi_bar_vassistant_dialogue_longpress",
             "value":"길게 터치하여 voice 부르기",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"Ai_bar_return_home",
+            "name":"Navi_bar_return_home",
             "value":"귀가",
             "attr":{
                 "priority":"translate"
@@ -64,7 +64,7 @@
             }
         },
         {
-            "name":"Ai_bar_recent_detail",
+            "name":"Navi_bar_recent_detail",
             "value":"하단에서 위로 스와이프한 다음 누른 상태를 유지하여 최근 작업을 확인합니다.",
             "attr":{
                 "priority":"translate"
@@ -99,7 +99,7 @@
             }
         },
         {
-            "name":"Ai_bar_recent",
+            "name":"Navi_bar_recent",
             "value":"최근 작업 보기",
             "attr":{
                 "priority":"translate"
@@ -127,7 +127,7 @@
             }
         },
         {
-            "name":"Ai_bar_back_click_navigation",
+            "name":"Navi_bar_back_click_navigation",
             "value":"탭하여 뒤로 돌아가기",
             "attr":{
                 "priority":"translate"
@@ -211,7 +211,7 @@
             }
         },
         {
-            "name":"Ai_bar_back",
+            "name":"Navi_bar_back",
             "value":"돌아가기",
             "attr":{
                 "priority":"translate"
@@ -393,7 +393,7 @@
             }
         },
         {
-            "name":"Ai_bar_gesture_back_detail",
+            "name":"Navi_bar_gesture_back_detail",
             "value":"왼쪽 또는 오른쪽 가장자리에서 안으로 스와이프하여 이전 화면으로 돌아갑니다.",
             "attr":{
                 "priority":"translate"
@@ -491,7 +491,7 @@
             }
         },
         {
-            "name":"Ai_bar_vassistant",
+            "name":"Navi_bar_vassistant",
             "value":"Voice와 대화하려면 탐색 표시줄을 길게 터치하십시오.",
             "attr":{
                 "priority":"translate"
@@ -582,7 +582,7 @@
             }
         },
         {
-            "name":"Ai_bar_back_detail",
+            "name":"Navi_bar_back_detail",
             "value":"탐색 표시줄을 탭하여 이전 화면으로 돌아갑니다.",
             "attr":{
                 "priority":"translate"
@@ -806,7 +806,7 @@
             }
         },
         {
-            "name":"Ai_bar_setting",
+            "name":"Navi_bar_setting",
             "value":"시스템 탐색",
             "attr":{
                 "priority":"translate"
@@ -981,7 +981,7 @@
             }
         },
         {
-            "name":"Ai_bar_vassistant_dialogue",
+            "name":"Navi_bar_vassistant_dialogue",
             "value":"voice 채팅",
             "attr":{
                 "priority":"translate"
@@ -1058,7 +1058,7 @@
             }
         },
         {
-            "name":"Ai_bar",
+            "name":"Navi_bar",
             "value":"탐색 표시줄",
             "attr":{
                 "priority":"translate"
@@ -1247,7 +1247,7 @@
             }
         },
         {
-            "name":"Ai_bar_return_home_detail",
+            "name":"Navi_bar_return_home_detail",
             "value":"화면 하단에서 위로 스와이프하여 홈 화면으로 이동합니다",
             "attr":{
                 "priority":"translate"
@@ -1506,7 +1506,7 @@
             }
         },
         {
-            "name":"ai_bar_accessibility_text",
+            "name":"navi_bar_accessibility_text",
             "value":"탐색 표시줄, 두 번 탭하고 길게 눌러 Voice와 말하기",
             "attr":{
                 "priority":"translate"

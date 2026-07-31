@@ -352,7 +352,7 @@ declare namespace sceneSessionManager {
      */
     TYPE_SIDE_EDGE_BAR,
     /**
-     * Navigation aiBar.
+     * Navigation naviBar.
      */
     TYPE_NAVIGATION_INDICATOR,
     /**
@@ -2101,6 +2101,9 @@ declare namespace sceneSessionManager {
      * notify close keyboard sync Transaction
      */
     closeKeyboardSyncTransaction(keyboardBaseInfo: KeyboardBaseInfo,keyboardAnimationRectConfig: KeyboardAnimationRectConfig,callingWindowInfoData: CallingWindowInfoData): void;
+
+    notifyKeyboardAnimationWillBegin(callingId: number, isShowAnimation: boolean,
+      keyboardAnimationRectConfig: KeyboardAnimationRectConfig): void;
 
     /**
      * notify keyboard animation completed

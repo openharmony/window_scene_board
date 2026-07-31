@@ -112,7 +112,7 @@ function createGameCardInfo7(): GameCardInfo {
 
 function createGridLayoutItemInfo01(): GridLayoutItemInfo {
   let info: GridLayoutItemInfo = new GridLayoutItemInfo();
-  info.bundleName = 'com.ohos.vassistant.launcher';
+  info.bundleName = 'com.ohos.testapp';
   info.abilityName = 'openharmony';
   info.moduleName = 'com';
   info.keyName = 'com';

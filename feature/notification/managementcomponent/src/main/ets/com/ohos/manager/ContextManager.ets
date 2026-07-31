@@ -26,7 +26,7 @@ export class ContextManager {
   public static context: ctx.Context;
   public static want: Want;
   public static session?: UIExtensionContentSession;
-  public static aiBarHeightByVp: number = 0;
+  public static naviBarHeightByVp: number = 0;
   public static windowWidthByVp: number = 0;
   public static windowHeightByVp: number = 0;
   public static ntfAndStatusBarTopPadding: number = 0;
@@ -56,9 +56,9 @@ export class ContextManager {
         log.showWarn('InitContextManager error by null windowProxy');
         return;
       }
-      // 通过代理窗口获取AIBar的高度
+      // 通过代理窗口获取NAVIBar的高度
       const avoidArea = windowProxy.getWindowAvoidArea(window.AvoidAreaType.TYPE_NAVIGATION_INDICATOR);
-      ContextManager.aiBarHeightByVp = ArkUIAdapter.px2vp(avoidArea?.bottomRect?.height ?? 0);
+      ContextManager.naviBarHeightByVp = ArkUIAdapter.px2vp(avoidArea?.bottomRect?.height ?? 0);
 
       const windowProxyRect = windowProxy.properties?.uiExtensionHostWindowProxyRect;
       if (windowProxyRect) {

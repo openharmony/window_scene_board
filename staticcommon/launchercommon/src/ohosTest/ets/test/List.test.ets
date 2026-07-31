@@ -225,7 +225,6 @@ import DisposedEventManagerTest from './ets/launchercommon/manager/DisposedEvent
 import {
   MultiSelectCheckboxViewModelTest
 } from './ets/launchercommon/editmode/viewModel/MultiSelectCheckboxViewModel.test';
-import AiSuggestDataManagerTest from './ets/launchercommon/manager/AiSuggestDataManager.test';
 import DesktopManagerTest from './ets/launchercommon/manager/DesktopManager.test';
 import ScreenSplitUtilTest from './ets/launchercommon/utils/ScreenSplitUtil.test';
 import NoIconAppModelTest from './ets/launchercommon/model/NoIconAppModel.test';
@@ -296,7 +295,7 @@ import DisplayCountViewModelTest from './ets/launchercommon/displaycount/Display
 import AppIconGestureJudgeEventTest from './ets/launchercommon/launchericon/viewmodel/AppIconGestureJudgeEvent.test';
 import DesktopItemVibratorManagerTest from './ets/launchercommon/manager/DesktopItemVibratorManager.test';
 import SwiperPageManagerTest from './ets/launchercommon/viewmodel/SwiperPageManager.test';
-import AiBarCloneCallbackManagerTest from './ets/launchercommon/manager/AiBarCloneCallbackManager.test.est';
+import NaviBarCloneCallbackManagerTest from './ets/launchercommon/manager/NaviBarCloneCallbackManager.test.est';
 
 export default function CommonTestSuite() {
   FrameworkTestSuite(); // 合一框架组测试用例
@@ -577,8 +576,7 @@ export function EditModeTestSuite() {
   EditModeReportManagerTest();
   MultiSelectListenManagerTest();
   MultiSelectCheckboxViewModelTest();
-  AiSuggestDataManagerTest();
-  AiBarCloneCallbackManagerTest();
+  NaviBarCloneCallbackManagerTest();
   AddCardToNewPageManagerTest();
   DesktopManagerTest();
   ScreenSplitUtilTest();

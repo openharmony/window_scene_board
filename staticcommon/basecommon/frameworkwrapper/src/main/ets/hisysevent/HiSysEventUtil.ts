@@ -27,8 +27,8 @@ import {
   IntoGlobalSearchParams,
   DragChangeFolderSizeParams,
   DragChangeFolderSizeFailParams,
-  AiBarSettingSwitchParams,
-  OnClickAIBarParams,
+  NaviBarSettingSwitchParams,
+  OnClickNAVIBarParams,
   ScreenLockQuickToolParams,
   TurboChargingParams,
   SwitchFreeMultiWindowModeParams,
@@ -708,7 +708,7 @@ export class HiSysEventUtil {
   public static LONG_PRESS_MISTOUCH: string = 'LONG_PRESS_MISTOUCH';
 
   // AI横条设置
-  public static AI_BAR_SWITCH: string = 'AI_BAR_SWITCH';
+  public static NAVI_BAR_SWITCH: string = 'NAVI_BAR_SWITCH';
 
   // 锁屏密码有效期
   public static USER_PIN_TIMEOUT_AUTH: string = 'USER_PIN_TIMEOUT_AUTH';
@@ -3104,8 +3104,8 @@ export class HiSysEventUtil {
    *
    * @param isOn 是否开启
    */
-  static reportOnClickAIBar(isOn: boolean): void {
-    let params: OnClickAIBarParams = {
+  static reportOnClickNAVIBar(isOn: boolean): void {
+    let params: OnClickNAVIBarParams = {
       PNAMEID: ReportParams.PACKAGE_NAME,
       PVERSIONID: ReportParams.PROCESS_NAME,
       IS_ON: isOn
@@ -3389,14 +3389,14 @@ export class HiSysEventUtil {
    * @param switchType 开关名
    * @param isOn 是否开启
    */
-  static reportAiBarSettingSwitchParams(switchType: string, isOn: boolean): void {
-    let params: AiBarSettingSwitchParams = {
+  static reportNaviBarSettingSwitchParams(switchType: string, isOn: boolean): void {
+    let params: NaviBarSettingSwitchParams = {
       PNAMEID: ReportParams.PACKAGE_NAME,
       PVERSIONID: ReportParams.PROCESS_NAME,
       SWITCH_TYPE: switchType,
       IS_ON: isOn,
     };
-    HiSysEventUtil.report(HiSysEventUtil.SYSTEM_NAV_UE, HiSysEventUtil.AI_BAR_SWITCH,
+    HiSysEventUtil.report(HiSysEventUtil.SYSTEM_NAV_UE, HiSysEventUtil.NAVI_BAR_SWITCH,
       hiSysEvent.EventType.BEHAVIOR, params);
   }
 

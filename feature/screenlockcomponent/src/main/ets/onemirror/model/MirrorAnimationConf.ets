@@ -85,7 +85,7 @@ export enum MirrorElemType {
   Mirror_FINGERPRINT = 3,
   Mirror_NOTIFICATION = 4,
   Mirror_LOW_POSITION = 5,
-  Mirror_AI_BAR = 6,
+  Mirror_NAVI_BAR = 6,
   Mirror_SCREEN_LOCK = 7,
 }
 

@@ -84,7 +84,7 @@ const DELIVER_EXIST_EASY_NO_EXIST = '1';
 const DELIVER_NO_EXIST_EASY_EXIST = '2';
 const DELIVER_EXIST_EASY_EXIST = '3';
 export const DELIVER_FOLDERNAME = '${app_others}';
-export const ABROAD_APP_FOLDERNAME = '应用';
+export const APP_FOLDERNAME = '应用';
 
 export class DeliverUtil {
   public static ohos_APPLICATION = '1';
@@ -95,10 +95,10 @@ export class DeliverUtil {
   public static APPMARKET_BUNDLE_NAME = 'com.openharmony.appmarket'; // 应用市场包名
   public static DELIVER_APP_MODULE_NAME = 'entry';
   public static DELIVER_APP_ABILITY_NAME = 'EntryAbility';
-  public static ABROAD_APP_APP_BUNDLE_NAME = 'com.ohos.abroadHarmony.temp'; // 应用临时包名
-  public static ABROAD_APP_APP_BUNDLE_NAME_REAL = 'com.ohos.abroad'; // 应用正式包名
-  public static ABROAD_APP_APP_ABILITY_NAME = 'EntryAbility';
-  public static ABROAD_APP_PKG = 'com.ohos.abroad'; // 应用应用市场包名
+  public static APP_APP_BUNDLE_NAME = 'com.ohos.abroadHarmony.temp'; // 应用临时包名
+  public static APP_APP_BUNDLE_NAME_REAL = 'com.ohos.abroad'; // 应用正式包名
+  public static APP_APP_ABILITY_NAME = 'EntryAbility';
+  public static APP_PKG = 'com.ohos.abroad'; // 应用应用市场包名
   public static DELIVER_APPSTORE_PKG = 'com.deliver.appstore.lite'; // 应用市场包名
   public static DELIVER_APPSTORE_CLASS = 'com.deliver.appstore.lite.main.MainActivity';
   public static WAIT_FOR_HARMONY_PREFIX = '__WAIT_FOR_HARMONY_BUNDLENAME__';
@@ -106,8 +106,8 @@ export class DeliverUtil {
   public static DELIVER_APP_MAP = new Map([
     [DeliverUtil.DELIVER_APP_BUNDLE_NAME, DeliverUtil.DELIVER_APPSTORE_PKG],
     [DeliverUtil.DELIVER_APP_BUNDLE_NAME_REAL, DeliverUtil.DELIVER_APPSTORE_PKG],
-    [DeliverUtil.ABROAD_APP_APP_BUNDLE_NAME, DeliverUtil.ABROAD_APP_PKG],
-    [DeliverUtil.ABROAD_APP_APP_BUNDLE_NAME_REAL, DeliverUtil.ABROAD_APP_PKG]
+    [DeliverUtil.APP_APP_BUNDLE_NAME, DeliverUtil.APP_PKG],
+    [DeliverUtil.APP_APP_BUNDLE_NAME_REAL, DeliverUtil.APP_PKG]
   ]);
 
   public static FOLDER_TYPE_COMMON = 0; //普通文件夾
@@ -146,31 +146,31 @@ export class DeliverUtil {
   private static disableOperationsOnFolder: string = systemparameter.getSync('const.deliver.operations_on_folder', 'true');
   private static addIconGeometryId: string = '';
   private static appBundleNameFoundInDock: string = '';
-  private static ABROAD_APP_CLASS: string = 'com.ohos.abroad.activities.MainActivity';
+  private static APP_CLASS: string = 'com.ohos.abroad.activities.MainActivity';
   private static APP_IDENTIFIER_MAP = new Map([
     [DeliverUtil.DELIVER_APP_BUNDLE_NAME, '5765880207854232697'],
     [DeliverUtil.DELIVER_APP_BUNDLE_NAME_REAL, '5765880207855132255'],
-    [DeliverUtil.ABROAD_APP_APP_BUNDLE_NAME, '5765880207854567265'],
-    [DeliverUtil.ABROAD_APP_APP_BUNDLE_NAME_REAL, '5765880207855325039']
+    [DeliverUtil.APP_APP_BUNDLE_NAME, '5765880207854567265'],
+    [DeliverUtil.APP_APP_BUNDLE_NAME_REAL, '5765880207855325039']
   ]);
   private static editModeState: EditModeState = editModeManager.getEditModeState();
   private static DELIVER_TRANSFER_BUNDLE_NAME: string = 'com.deliver.appstore.transfer'; // 克隆应用预置应用：文件共享
   private static DELIVER_BROWSER_BUNDLE_NAME: string = 'com.deliver.browser'; // 克隆应用预置应用：搜应用
-  private static ABROAD_APP_TRANSFER_BUNDLE_NAME: string = 'com.ohos.transfer.abroad'; // 应用预置应用：文件共享
-  private static ABROAD_APP_FEEDBACK_BUNDLE_NAME: string = 'com.ohos.feedback.abroad'; // 应用预置应用：小易客服
+  private static APP_TRANSFER_BUNDLE_NAME: string = 'com.ohos.transfer.abroad'; // 应用预置应用：文件共享
+  private static APP_FEEDBACK_BUNDLE_NAME: string = 'com.ohos.feedback.abroad'; // 应用预置应用：小易客服
   public static PREINSTALLED_APP_SET = new Set([
     DeliverUtil.DELIVER_TRANSFER_BUNDLE_NAME,
     DeliverUtil.DELIVER_BROWSER_BUNDLE_NAME,
-    DeliverUtil.ABROAD_APP_TRANSFER_BUNDLE_NAME,
-    DeliverUtil.ABROAD_APP_FEEDBACK_BUNDLE_NAME
+    DeliverUtil.APP_TRANSFER_BUNDLE_NAME,
+    DeliverUtil.APP_FEEDBACK_BUNDLE_NAME
   ]);
   public static DELIVER_PREINSTALLED_APP_SET = new Set([
     DeliverUtil.DELIVER_TRANSFER_BUNDLE_NAME,
     DeliverUtil.DELIVER_BROWSER_BUNDLE_NAME
   ]);
-  public static ABROAD_APP_PREINSTALLED_APP_SET = new Set([
-    DeliverUtil.ABROAD_APP_TRANSFER_BUNDLE_NAME,
-    DeliverUtil.ABROAD_APP_FEEDBACK_BUNDLE_NAME
+  public static APP_PREINSTALLED_APP_SET = new Set([
+    DeliverUtil.APP_TRANSFER_BUNDLE_NAME,
+    DeliverUtil.APP_FEEDBACK_BUNDLE_NAME
   ]);
 
   public static DEFAULT_DELIVER_APP_SORT = DeliverUtil.createDeliverAppMap();
@@ -225,7 +225,7 @@ export class DeliverUtil {
         if (CheckEmptyUtils.isEmpty(folderId)) {
           return false;
         }
-        return DeliverUtil.containerFolderMap.get(DeliverUtil.ABROAD_APP_PKG) === folderId ||
+        return DeliverUtil.containerFolderMap.get(DeliverUtil.APP_PKG) === folderId ||
           NotHarmonyUtil.mNotHarmonyFolderId === folderId;
       }
       if (!DeliverUtil.isContainerItem(intent ?? '') && DeliverUtil.isContainerFolder(folderId)) {
@@ -516,9 +516,9 @@ export class DeliverUtil {
    *
    */
   static handleOnClicked(folderId: string): void {
-    let easyAbroadFolderId = DeliverUtil.containerFolderMap.get(DeliverUtil.ABROAD_APP_PKG);
-    let abilityName = easyAbroadFolderId === folderId ? DeliverUtil.ABROAD_APP_CLASS : DeliverUtil.DELIVER_APPSTORE_CLASS;
-    let bundleName = easyAbroadFolderId === folderId ? DeliverUtil.ABROAD_APP_PKG : DeliverUtil.DELIVER_APPSTORE_PKG;
+    let appFolderId = DeliverUtil.containerFolderMap.get(DeliverUtil.APP_PKG);
+    let abilityName = appFolderId === folderId ? DeliverUtil.APP_CLASS : DeliverUtil.DELIVER_APPSTORE_CLASS;
+    let bundleName = appFolderId === folderId ? DeliverUtil.APP_PKG : DeliverUtil.DELIVER_APPSTORE_PKG;
     let moduleName = 'entry';
     let params: Map<string, Object> = new Map();
     let otherParams: Map<string, Object> = new Map();
@@ -526,21 +526,21 @@ export class DeliverUtil {
       otherParams.set('realBundleName', bundleName);
       otherParams.set('realAbilityName', abilityName);
       otherParams.set('realModuleName', moduleName);
-      bundleName = DeliverUtil.getTargetBundleName(easyAbroadFolderId === folderId);
+      bundleName = DeliverUtil.getTargetBundleName(appFolderId === folderId);
       if (!DeliverUtil.verifyContainerAppIdentifier(bundleName, 'handleOnClicked')) {
         return;
       }
-      abilityName = easyAbroadFolderId === folderId ? DeliverUtil.ABROAD_APP_APP_ABILITY_NAME : DeliverUtil.DELIVER_APP_ABILITY_NAME;
+      abilityName = appFolderId === folderId ? DeliverUtil.APP_APP_ABILITY_NAME : DeliverUtil.DELIVER_APP_ABILITY_NAME;
       moduleName = DeliverUtil.DELIVER_APP_MODULE_NAME;
     }
     StartAbilityUtil.startLauncherAbility(abilityName, bundleName, moduleName, params, undefined, otherParams);
   }
 
-  private static getTargetBundleName(isEasyAbroadFolder: boolean): string {
+  private static getTargetBundleName(isAppFolder: boolean): string {
     let bundleName: string = '';
-    if (isEasyAbroadFolder) {
-      bundleName = AppModel.getInstance().getAppInfoByBundleName(DeliverUtil.ABROAD_APP_APP_BUNDLE_NAME_REAL) ?
-      DeliverUtil.ABROAD_APP_APP_BUNDLE_NAME_REAL : DeliverUtil.ABROAD_APP_APP_BUNDLE_NAME;
+    if (isAppFolder) {
+      bundleName = AppModel.getInstance().getAppInfoByBundleName(DeliverUtil.APP_APP_BUNDLE_NAME_REAL) ?
+      DeliverUtil.APP_APP_BUNDLE_NAME_REAL : DeliverUtil.APP_APP_BUNDLE_NAME;
     } else {
       bundleName = AppModel.getInstance().getAppInfoByBundleName(DeliverUtil.DELIVER_APP_BUNDLE_NAME_REAL) ?
       DeliverUtil.DELIVER_APP_BUNDLE_NAME_REAL : DeliverUtil.DELIVER_APP_BUNDLE_NAME;
@@ -691,7 +691,7 @@ export class DeliverUtil {
       dhApplicationStatus = DELIVER_EXIST_EASY_NO_EXIST;
     }
 
-    if (DeliverUtil.verifyContainerAppIdentifier(DeliverUtil.ABROAD_APP_APP_BUNDLE_NAME_REAL)) {
+    if (DeliverUtil.verifyContainerAppIdentifier(DeliverUtil.APP_APP_BUNDLE_NAME_REAL)) {
       dhApplicationStatus = dhApplicationStatus === DELIVER_EXIST_EASY_NO_EXIST ?
         DELIVER_EXIST_EASY_EXIST : DELIVER_NO_EXIST_EASY_EXIST;
     }
@@ -804,9 +804,9 @@ export class DeliverUtil {
     return bundleName === DeliverUtil.DELIVER_APP_BUNDLE_NAME ||
       bundleName === DeliverUtil.DELIVER_APP_BUNDLE_NAME_REAL ||
       bundleName === DeliverUtil.DELIVER_APPSTORE_PKG ||
-      bundleName === DeliverUtil.ABROAD_APP_PKG ||
-      bundleName === DeliverUtil.ABROAD_APP_APP_BUNDLE_NAME ||
-      bundleName === DeliverUtil.ABROAD_APP_APP_BUNDLE_NAME_REAL;
+      bundleName === DeliverUtil.APP_PKG ||
+      bundleName === DeliverUtil.APP_APP_BUNDLE_NAME ||
+      bundleName === DeliverUtil.APP_APP_BUNDLE_NAME_REAL;
   }
 
   /**
@@ -822,7 +822,7 @@ export class DeliverUtil {
     if (NotHarmonyUtil.isNotHarmonyFolderById(folderId)) {
       return DeliverUtil.FOLDER_TYPE_NOTHARMONY;
     }
-    if (DeliverUtil.containerFolderMap.get(DeliverUtil.ABROAD_APP_PKG) === folderId) {
+    if (DeliverUtil.containerFolderMap.get(DeliverUtil.APP_PKG) === folderId) {
       return DeliverUtil.FOLDER_TYPE_EASY;
     } else if (DeliverUtil.containerFolderMap.get(DeliverUtil.DELIVER_APPSTORE_PKG) === folderId) {
       return DeliverUtil.FOLDER_TYPE_DELIVER;
@@ -843,7 +843,7 @@ export class DeliverUtil {
     let map: Map<string, Object> = CommonUtils.jsonStrToMap(item.intent ?? '');
     if (map.get(KEY_INSTALL_SOURCE) as string === DeliverUtil.DELIVER_APPSTORE_PKG) {
       return DeliverUtil.APPTYPE_TYPE_DELIVER;
-    } else if (map.get(KEY_INSTALL_SOURCE) as string === DeliverUtil.ABROAD_APP_PKG) {
+    } else if (map.get(KEY_INSTALL_SOURCE) as string === DeliverUtil.APP_PKG) {
       return DeliverUtil.APPTYPE_TYPE_EASY;
     }
 
@@ -910,7 +910,7 @@ export class DeliverUtil {
       log.showWarn(TAG, `isAbroadFolder: false. folderId = ${folderId}`);
       return false;
     }
-    return DeliverUtil.containerFolderMap.get(DeliverUtil.ABROAD_APP_PKG) === folderId;
+    return DeliverUtil.containerFolderMap.get(DeliverUtil.APP_PKG) === folderId;
   }
 
   /**
@@ -953,7 +953,7 @@ export class DeliverUtil {
     }
     let map: Map<string, Object> = CommonUtils.jsonStrToMap(intent);
     return map.get(KEY_INSTALL_SOURCE) as string === DeliverUtil.DELIVER_APPSTORE_PKG ||
-      map.get(KEY_INSTALL_SOURCE) as string === DeliverUtil.ABROAD_APP_PKG;
+      map.get(KEY_INSTALL_SOURCE) as string === DeliverUtil.APP_PKG;
   }
 
   /**
@@ -962,12 +962,12 @@ export class DeliverUtil {
    * @param item 应用item
    * @returns true 是应用文件夹内应用, false 不是应用文件夹内应用
    */
-  static isEasyAbroadItem(intent: string): boolean {
+  static isAppItem(intent: string): boolean {
     if (CheckEmptyUtils.isEmpty(intent)) {
       return false;
     }
     let map: Map<string, Object> = CommonUtils.jsonStrToMap(intent);
-    return map.get(KEY_INSTALL_SOURCE) as string === DeliverUtil.ABROAD_APP_PKG;
+    return map.get(KEY_INSTALL_SOURCE) as string === DeliverUtil.APP_PKG;
   }
 
   /**
@@ -1031,7 +1031,7 @@ export class DeliverUtil {
   }
 
   private static getInstallSourceByBundleName(bundleName: string): string {
-    if (bundleName === DeliverUtil.DELIVER_APPSTORE_PKG || bundleName === DeliverUtil.ABROAD_APP_PKG) {
+    if (bundleName === DeliverUtil.DELIVER_APPSTORE_PKG || bundleName === DeliverUtil.APP_PKG) {
       return bundleName;
     }
     let appInstallSource = DeliverUtil.DELIVER_APPSTORE_PKG;
@@ -1040,7 +1040,7 @@ export class DeliverUtil {
         .getBundleInfoSync(bundleName, bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION);
       appInstallSource = bundleInfo.appInfo?.installSource;
       log.showInfo(TAG, `getInstallSourceByBundleName, bundleInfo appInstallSource = ${appInstallSource}`);
-      if (appInstallSource !== DeliverUtil.DELIVER_APPSTORE_PKG && appInstallSource !== DeliverUtil.ABROAD_APP_PKG) {
+      if (appInstallSource !== DeliverUtil.DELIVER_APPSTORE_PKG && appInstallSource !== DeliverUtil.APP_PKG) {
         appInstallSource = DeliverUtil.DELIVER_APPSTORE_PKG;
       }
     } catch (err) {
@@ -1073,14 +1073,14 @@ export class DeliverUtil {
     if (installSource === DeliverUtil.DELIVER_APPSTORE_PKG) {
       return $r('app.string.app_others');
     }
-    return ABROAD_APP_FOLDERNAME;
+    return APP_FOLDERNAME;
   }
 
   private static getInstallSourceByGridLayoutInfoOrFolder(gridLayoutInfo: GridLayoutItemInfo | AppItemInfo, folderId?: string): string {
     let installSource: string = '';
     if (!CheckEmptyUtils.isEmpty(folderId)) {
-      let easyAbroadFolderId = DeliverUtil.containerFolderMap.get(DeliverUtil.ABROAD_APP_PKG);
-      installSource = easyAbroadFolderId === folderId ? DeliverUtil.ABROAD_APP_PKG : DeliverUtil.DELIVER_APPSTORE_PKG;
+      let appFolderId = DeliverUtil.containerFolderMap.get(DeliverUtil.APP_PKG);
+      installSource = appFolderId === folderId ? DeliverUtil.APP_PKG : DeliverUtil.DELIVER_APPSTORE_PKG;
     } else {
       installSource = CommonUtils.jsonStrToMap(gridLayoutInfo?.intent ?? '').get(KEY_INSTALL_SOURCE) as string;
     }
@@ -1094,8 +1094,8 @@ export class DeliverUtil {
    * @returns 文件夹名称
    */
   static getContainerFolderName(appItemInfo: AppItemInfo): string {
-    if (appItemInfo.installSource === DeliverUtil.ABROAD_APP_PKG) {
-      return ABROAD_APP_FOLDERNAME;
+    if (appItemInfo.installSource === DeliverUtil.APP_PKG) {
+      return APP_FOLDERNAME;
     }
     return DELIVER_FOLDERNAME;
   }
@@ -1285,8 +1285,8 @@ export class DeliverUtil {
     if (installSource === DeliverUtil.DELIVER_APPSTORE_PKG) {
       matchContainerHapExist = DeliverUtil.isdeliverHapExist();
     }
-    if (installSource === DeliverUtil.ABROAD_APP_PKG) {
-      matchContainerHapExist = DeliverUtil.isEasyAbroadExist();
+    if (installSource === DeliverUtil.APP_PKG) {
+      matchContainerHapExist = DeliverUtil.isAppExist();
     }
     log.showInfo(TAG, `isMatchContainerHapExist bundleName: ${gridLayoutInfo.bundleName}, res: ${matchContainerHapExist}.`);
     return matchContainerHapExist;
@@ -1372,10 +1372,10 @@ export class DeliverUtil {
     if (installSoruce === DeliverUtil.DELIVER_APPSTORE_PKG) {
       return DeliverUtil.isdeliverHapExist();
     }
-    if (installSoruce === DeliverUtil.ABROAD_APP_PKG) {
-      return DeliverUtil.isEasyAbroadExist();
+    if (installSoruce === DeliverUtil.APP_PKG) {
+      return DeliverUtil.isAppExist();
     }
-    return DeliverUtil.isdeliverHapExist() || DeliverUtil.isEasyAbroadExist();
+    return DeliverUtil.isdeliverHapExist() || DeliverUtil.isAppExist();
   }
 
   /**
@@ -1393,9 +1393,9 @@ export class DeliverUtil {
    *
    * @returns true：已安装，false：未安装
    */
-  public static isEasyAbroadExist(): boolean {
-    return AppModel.getInstance().getAppInfoByBundleName(DeliverUtil.ABROAD_APP_APP_BUNDLE_NAME) !== undefined ||
-      AppModel.getInstance().getAppInfoByBundleName(DeliverUtil.ABROAD_APP_APP_BUNDLE_NAME_REAL) !== undefined;
+  public static isAppExist(): boolean {
+    return AppModel.getInstance().getAppInfoByBundleName(DeliverUtil.APP_APP_BUNDLE_NAME) !== undefined ||
+      AppModel.getInstance().getAppInfoByBundleName(DeliverUtil.APP_APP_BUNDLE_NAME_REAL) !== undefined;
   }
 
   /**
@@ -1462,9 +1462,9 @@ export class DeliverUtil {
         preference.delete(DeliverUtil.DELIVER_TRANSFER_BUNDLE_NAME);
         preference.delete(DeliverUtil.DELIVER_BROWSER_BUNDLE_NAME);
         break;
-      case DeliverUtil.ABROAD_APP_APP_BUNDLE_NAME:
-      case DeliverUtil.ABROAD_APP_APP_BUNDLE_NAME_REAL:
-        preference.delete(DeliverUtil.ABROAD_APP_TRANSFER_BUNDLE_NAME);
+      case DeliverUtil.APP_APP_BUNDLE_NAME:
+      case DeliverUtil.APP_APP_BUNDLE_NAME_REAL:
+        preference.delete(DeliverUtil.APP_TRANSFER_BUNDLE_NAME);
         break;
       default:
         log.showWarn(TAG, 'error deliver app bundle = %{public}s', bundleName);
@@ -1492,20 +1492,20 @@ export class DeliverUtil {
    */
   public static removeContainerFolder(bundleName: string): void {
     let delAppSet: Set<string> = DeliverUtil.isdeliverPkg(bundleName) ? DeliverUtil.DELIVER_PREINSTALLED_APP_SET :
-      DeliverUtil.ABROAD_APP_PREINSTALLED_APP_SET;
+      DeliverUtil.APP_PREINSTALLED_APP_SET;
     log.showInfo(TAG, `removeContainerFolder, delAppSet.size = ${delAppSet.size}.`);
     delAppSet.forEach(item => AppModel.getInstance().appItemRemove(item, 0));
   }
 
   private static checkRemoveContainerFolder(bundleName: string): boolean {
     return DeliverUtil.getDeliverStartStatus() !== DeliverUtil.DELIVER_START_FINISHED_CODE &&
-      ((DeliverUtil.isEasyAbroadPkg(bundleName) && DeliverUtil.isdeliverHapExist()) ||
-      (DeliverUtil.isdeliverPkg(bundleName) && DeliverUtil.isEasyAbroadExist()));
+      ((DeliverUtil.isAppPkg(bundleName) && DeliverUtil.isdeliverHapExist()) ||
+      (DeliverUtil.isdeliverPkg(bundleName) && DeliverUtil.isAppExist()));
   }
 
-  private static isEasyAbroadPkg(bundleName: string): boolean {
-    return bundleName === DeliverUtil.ABROAD_APP_APP_BUNDLE_NAME ||
-      bundleName === DeliverUtil.ABROAD_APP_APP_BUNDLE_NAME_REAL;
+  private static isAppPkg(bundleName: string): boolean {
+    return bundleName === DeliverUtil.APP_APP_BUNDLE_NAME ||
+      bundleName === DeliverUtil.APP_APP_BUNDLE_NAME_REAL;
   }
 
   private static isdeliverPkg(bundleName: string): boolean {
@@ -1518,14 +1518,14 @@ export class DeliverUtil {
    * @param bundleName 点击应用的包名
    * @param iconResource 点击应用的图标路径
    */
-  public static async startdeliverAutoEnterLakeAbility(bundleName: string, iconResource: string): Promise<void> {
+  public static async startdeliverAutoOhosAbility(bundleName: string, iconResource: string): Promise<void> {
     log.showInfo(TAG, `start deliver auto enter lake ability`);
     let appIcon: string = await DeliverUtil.getRealIconAndScale(iconResource);
     const want: Want = {
       bundleName: DeliverUtil.DELIVER_APP_BUNDLE_NAME_REAL,
       moduleName: DeliverUtil.DELIVER_APP_MODULE_NAME,
       abilityName: DeliverUtil.DELIVER_APP_ABILITY_NAME,
-      action: 'ohos.want.action.EnterLake',
+      action: 'ohos.want.action.Ohos',
       parameters: {
         'realBundleName': bundleName,
         'realAppIcon': appIcon,
@@ -1543,14 +1543,14 @@ export class DeliverUtil {
    * @param bundleName 点击应用的包名
    * @param iconResource 点击应用的图标路径
    */
-  public static async startEasyAbroadAutoEnterLakeAbility(bundleName: string, iconResource: string): Promise<void> {
-    log.showInfo(TAG, `start easyAbroad auto enter lake ability`);
+  public static async startAppAutoOhosAbility(bundleName: string, iconResource: string): Promise<void> {
+    log.showInfo(TAG, `start app auto enter lake ability`);
     let appIcon: string = await DeliverUtil.getRealIconAndScale(iconResource);
     const want: Want = {
-      bundleName: DeliverUtil.ABROAD_APP_APP_BUNDLE_NAME_REAL,
+      bundleName: DeliverUtil.APP_APP_BUNDLE_NAME_REAL,
       moduleName: DeliverUtil.DELIVER_APP_MODULE_NAME,
       abilityName: DeliverUtil.DELIVER_APP_ABILITY_NAME,
-      action: 'ohos.want.action.EnterLake',
+      action: 'ohos.want.action.Ohos',
       parameters: {
         'realBundleName': bundleName,
         'realAppIcon': appIcon,
@@ -1559,7 +1559,7 @@ export class DeliverUtil {
     try {
       StartAbilityUtil.startAbility(want);
     } catch (e) {
-      log.showError(TAG, `start easyAbroad auto enter lake ability failed, code: ${e.code}, message: ${e.message}`);
+      log.showError(TAG, `start app auto enter lake ability failed, code: ${e.code}, message: ${e.message}`);
     }
   }
 
@@ -1671,8 +1671,8 @@ export class DeliverUtil {
     let targetSource = '';
     if (bundleName === DeliverUtil.DELIVER_APP_BUNDLE_NAME_REAL) {
       targetSource = DeliverUtil.DELIVER_APPSTORE_PKG;
-    } else if (bundleName === DeliverUtil.ABROAD_APP_APP_BUNDLE_NAME_REAL) {
-      targetSource = DeliverUtil.ABROAD_APP_PKG;
+    } else if (bundleName === DeliverUtil.APP_APP_BUNDLE_NAME_REAL) {
+      targetSource = DeliverUtil.APP_PKG;
     } else {
       return false;
     }
@@ -1767,7 +1767,7 @@ export class DeliverUtil {
   public static checkAndMergeAbroadFolder(configFromRdb: GridLayoutItemInfo[]): void {
     let abroadFolderArr: GridLayoutItemInfo[] = [];
     configFromRdb.forEach(item => {
-      if (item.typeId === CommonConstants.TYPE_FOLDER && item.folderName === ABROAD_APP_FOLDERNAME) {
+      if (item.typeId === CommonConstants.TYPE_FOLDER && item.folderName === APP_FOLDERNAME) {
         abroadFolderArr.push(item);
       }
     });
@@ -1787,12 +1787,12 @@ export class DeliverUtil {
   }
 
   static isInContainerFolder(item: AppItemInfo): boolean {
-    return DeliverUtil.isIndeliverOrEasyAbroadFolder(item, DeliverUtil.containerFolderMap.get(
-      DeliverUtil.DELIVER_APPSTORE_PKG) ?? '') || DeliverUtil.isIndeliverOrEasyAbroadFolder(item,
-      DeliverUtil.containerFolderMap.get(DeliverUtil.ABROAD_APP_PKG) ?? '');
+    return DeliverUtil.isIndeliverOrAppFolder(item, DeliverUtil.containerFolderMap.get(
+      DeliverUtil.DELIVER_APPSTORE_PKG) ?? '') || DeliverUtil.isIndeliverOrAppFolder(item,
+      DeliverUtil.containerFolderMap.get(DeliverUtil.APP_PKG) ?? '');
   }
 
-  static isIndeliverOrEasyAbroadFolder(item: AppItemInfo, folderId: string): boolean {
+  static isIndeliverOrAppFolder(item: AppItemInfo, folderId: string): boolean {
     if (CheckEmptyUtils.isEmpty(folderId)) {
       log.showInfo(TAG, 'folderId is not exit');
       return false;
@@ -1935,8 +1935,8 @@ export class DeliverUtil {
     let deliverAppMap: Map<string, string> = new Map([
       [DeliverUtil.DELIVER_TRANSFER_BUNDLE_NAME, '0'],
       [DeliverUtil.DELIVER_BROWSER_BUNDLE_NAME, '1'],
-      [DeliverUtil.ABROAD_APP_TRANSFER_BUNDLE_NAME, '0'],
-      [DeliverUtil.ABROAD_APP_FEEDBACK_BUNDLE_NAME, '1']
+      [DeliverUtil.APP_TRANSFER_BUNDLE_NAME, '0'],
+      [DeliverUtil.APP_FEEDBACK_BUNDLE_NAME, '1']
     ]);
     if(DeliverUtil.CANCEL_DELIVER_FOLDER){
       deliverAppMap.delete(DeliverUtil.DELIVER_TRANSFER_BUNDLE_NAME);

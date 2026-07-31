@@ -96,7 +96,6 @@ import {
   vibratorMgr,
   EditModeConstants,
 } from '@ohos/launchercommon/src/main/ets/TsIndex';
-import { AiSuggestionFormManager } from '@ohos/aisuggestion/src/main/ets/default/manager/AiSuggestionFormManager';
 import { FormStyleConfig, FormViewModel } from '@ohos/form';
 import { HoverAnimationUtil, batchUninstallChain, ForwardType } from '@ohos/launchercommon/Index';
 import { PageDesktopDragHandler } from '../../../PageDesktopDragHandler';
@@ -790,7 +789,6 @@ export class FormItemRelativeEventBeta {
 
   private onFormItemDraggedRemoved(cardId: string): void {
     log.showWarn(`onFormItemDraggedRemoved, cardId:${cardId}`);
-    AiSuggestionFormManager.getInstance().deleteCardInfo(cardId);
     if (cardId === this.mFormItem.cardId) {
       this.removeForm();
       const pageIndex: number = desktopUtil.getPageIndexValue();

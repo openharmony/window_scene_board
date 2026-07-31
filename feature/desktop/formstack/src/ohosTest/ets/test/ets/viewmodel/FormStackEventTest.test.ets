@@ -27,14 +27,12 @@ import {
 } from '@ohos/hypium';
 import {
   CardItemInfo,
-  BundleConstants,
   editModeManager,
   GridLayoutItemBuilder,
   GridLayoutItemInfo,
   AppItemInfo,
   FormRelationManager,
 } from '@ohos/launchercommon';
-import { AbilityFormUtil } from '../../../../../../../aisuggestion/src/main/ets/default/utils/AbilityFormUtil';
 import { FormStackAnimate } from '../../../../../main/ets/viewmodel/FormStackAnimate';
 import { FormStackEvent } from '../../../../../main/ets/viewmodel/FormStackEvent';
 import { FormStackTestUtil } from '../common/FormStackTestUtil';
@@ -129,18 +127,18 @@ export function FormStackEventTest() {
       expect(event.getAppName(formStackInfo.layoutInfo[0][0], (name) => {
       })).assertTrue();
 
-      formStackInfo.layoutInfo[0][0].bundleName = BundleConstants.AI_SUGGESTION_BUNDLE;
+      formStackInfo.layoutInfo[0][0].bundleName = 'com.ohos.suggestion';
       expect(event.getAppName(formStackInfo.layoutInfo[0][0], (name) => {
       })).assertTrue();
 
       formStackInfo.layoutInfo[0][0].bundleName = '';
-      formStackInfo.layoutInfo[0][0].abilityName = BundleConstants.AI_SUGGESTION_ABILITY;
+      formStackInfo.layoutInfo[0][0].abilityName = 'ParentFormAbility';
       expect(event.getAppName(formStackInfo.layoutInfo[0][0], (name) => {
       })).assertTrue();
 
-      formStackInfo.layoutInfo[0][0].bundleName = BundleConstants.AI_SUGGESTION_BUNDLE;
+      formStackInfo.layoutInfo[0][0].bundleName = 'com.ohos.suggestion';
       event.getAppName(formStackInfo.layoutInfo[0][0], (name) => {
-        expect(name).assertEqual(AbilityFormUtil.getDefaultNameOfAiSuggestion());
+        expect(name).assertEqual('');
       });
 
       const card = formStackInfo.layoutInfo[0][0];

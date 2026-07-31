@@ -204,9 +204,9 @@ export class CommonConstants {
   public static readonly VIBRATION_EFFECT_SLIDE_TYPE6 = 'haptic.slide.type6';
 
   /**
-   * Long press the vibration effect of the AIbar
+   * Long press the vibration effect of the NAVibar
    */
-  public static readonly VIBRATION_EFFECT_AIBAR = 'haptic.AIbar';
+  public static readonly VIBRATION_EFFECT_NAVIBAR = 'haptic.NAVibar';
 
   /**
    * the vibration effect of the recent element
@@ -295,10 +295,6 @@ export class CommonConstants {
    */
   public static readonly NOTEPAD_BUNDLE = 'com.ohos.notepad';
 
-  /**
-   * Bundle name of ai service
-   */
-  public static readonly AI_SERVICE_BUNDLE = 'com.ohos.vassistant';
 
   /**
    * Bundle name of music
@@ -2292,45 +2288,7 @@ export enum DesktopMode {
   PREVIEW_MODE = 2
 }
 
-/**
- * bundle name constants enum
- */
-export enum BundleConstants {
-  /**
-   * the bundle name of ai suggestion
-   */
-  AI_SUGGESTION_BUNDLE = 'com.ohos.suggestion',
 
-  /**
-   * the module name of ai suggestion
-   */
-  AI_SUGGESTION_MODULE = 'entry',
-
-  /**
-   * the ability name of ai suggestion
-   */
-  AI_SUGGESTION_ABILITY = 'ParentFormAbility',
-
-
-  /**
-   * the min card name of ai suggestion
-   */
-  AI_SUGGESTION_MIN_CARD = 'minVoiceRecCard',
-
-
-
-  /**
-   * the med card name of ai suggestion
-   */
-  AI_SUGGESTION_MED_CARD = 'medVoiceRecCard',
-
-
-
-  /**
-   * the max card name of ai suggestion
-   */
-  AI_SUGGESTION_MAX_CARD = 'maxVoiceRecCard'
-}
 
 /**
  * 系统栏（状态栏、导航条）沉浸式显隐变化类型
@@ -2340,7 +2298,7 @@ export enum SystemBarChangeType {
   HIDE_BAR,
   CANCEL_TASK, // 取消沉浸式隐藏的计时任务
   SET_TASK, // 设置沉浸式隐藏的计时任务
-  AI_BAR_IMMERSE_TASK
+  NAVI_BAR_IMMERSE_TASK
 }
 
 /**
@@ -2366,11 +2324,6 @@ export enum FormLocation {
    * form is on the form manager
    */
   FORM_MANAGER = 2,
-
-  /**
-   * form is on the ai suggestion
-   */
-  AI_SUGGESTION = 7,
 }
 
 /**

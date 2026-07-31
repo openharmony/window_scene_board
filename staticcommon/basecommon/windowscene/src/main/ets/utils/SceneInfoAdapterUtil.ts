@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-import { VassistantConstants } from '@ohos/commonconstants';
 import { LogDomain, LogHelper } from '@ohos/basicutils';
 import { bundleManager, Want } from '@kit.AbilityKit';
 import { SCBSceneContainerSession, SCBSceneInfo, SCBSceneInfoFromScreenLock, SCBSceneSessionManager } from '../TsIndex';
@@ -25,24 +24,9 @@ const log: LogHelper = LogHelper.getLogHelper(LogDomain.SCB, TAG);
  * Vassistant adapter util
  */
 export class SceneInfoAdapterUtil {
-  /**
-   * 语音助手应用桌面图标信息适配
-   */
   public static getAdapterSceneInfo(bundleName: string, moduleName: string, abilityName: string,
     appIndex?: number): SCBSceneInfo {
-    let sceneInfo: SCBSceneInfo;
-    if (bundleName === VassistantConstants.VASSISTANT_BUNDLE_NAME &&
-    this.isAdapterBundleExist(VassistantConstants.VASSISTANT_LAUNCHER_BUNDLE_NAME)) {
-      log.showInfo('adapter com.ohos.vassistant to vassistant launcher.');
-      sceneInfo = new SCBSceneInfo(VassistantConstants.VASSISTANT_LAUNCHER_BUNDLE_NAME,
-        VassistantConstants.DEFAULT_MODULE_NAME, VassistantConstants.VASSISTANT_ABILITY_NAME, 0);
-    } else if (bundleName === VassistantConstants.VASSISTANT_LAUNCHER_BUNDLE_NAME) {
-      log.showInfo('adapter com.ohos.vassistant.launcher to vassistant.');
-      sceneInfo = new SCBSceneInfo(VassistantConstants.VASSISTANT_BUNDLE_NAME,
-        VassistantConstants.DEFAULT_MODULE_NAME, VassistantConstants.VASSISTANT_ABILITY_NAME, 0);
-    } else {
-      sceneInfo = new SCBSceneInfo(bundleName, moduleName, abilityName, appIndex);
-    }
+    let sceneInfo: SCBSceneInfo = new SCBSceneInfo(bundleName, moduleName, abilityName, appIndex);
     const queryKey = `${bundleName}${moduleName}${abilityName}`;
     sceneInfo.launchType = SCBSceneSessionManager.getInstance().getAbilityLaunchType(queryKey);
     return sceneInfo;
@@ -68,41 +52,8 @@ export class SceneInfoAdapterUtil {
     }
   }
 
-  /**
-   * 判断是否应替换包名
-   */
   public static getAdapterBundleName(bundleName: string): string {
-    if (bundleName !== VassistantConstants.VASSISTANT_BUNDLE_NAME) {
-      return bundleName;
-    }
-    return this.getAdapterNewBundleName(VassistantConstants.VASSISTANT_BUNDLE_NAME,
-      VassistantConstants.VASSISTANT_LAUNCHER_BUNDLE_NAME);
-  }
-
-  /**
-   * 替换包名
-   */
-  private static getAdapterNewBundleName(oldBundleName: string, newBundleName: string): string {
-    if (SceneInfoAdapterUtil.isAdapterBundleExist(newBundleName)) {
-      return newBundleName;
-    } else {
-      return oldBundleName;
-    }
-  }
-
-  /*
-   * 新包名是否存在
-   */
-  private static isAdapterBundleExist(bundleName: string): boolean {
-    try {
-      let bundleInfo: bundleManager.BundleInfo | undefined = undefined;
-      bundleInfo = bundleManager.getBundleInfoSync(bundleName,
-        bundleManager.BundleFlag.GET_BUNDLE_INFO_DEFAULT);
-      return bundleInfo !== undefined;
-    } catch (err) {
-      log.showError(`getBundleInfoSync error, code: ${err.code}, message: ${err.message}`);
-      return false;
-    }
+    return bundleName;
   }
 
   public static getScreenLockInfo(sceneContainerSession: SCBSceneContainerSession): SCBSceneInfoFromScreenLock | null {

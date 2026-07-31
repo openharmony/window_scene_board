@@ -48,14 +48,14 @@ export default function LocalHapMigrateInfoTest() {
 
     it('test_constructor', 0, () => {
       const APP_TASTE_FRESH = 1 << 2;
-      const APP_IN_ABROAD_APP_LIST = 1 << 3;
+      const APP_IN_APP_LIST = 1 << 3;
       const APP_IN_DELIVER_TONG_LIST = 1 << 4;
       const APP_NOT_IN_LIST = 1 << 5;
       const APP_ENTERPRISE = 1 << 6;
       let localHapMigrateInfo: LocalHapMigrateInfo = new LocalHapMigrateInfo(new Object({ type: APP_TASTE_FRESH }));
       expect(localHapMigrateInfo.type).assertEqual(AppReserveType.TASTE_FRESH);
-      localHapMigrateInfo = new LocalHapMigrateInfo(new Object({ type: APP_IN_ABROAD_APP_LIST }));
-      expect(localHapMigrateInfo.type).assertEqual(AppReserveType.EASYA_BROAD);
+      localHapMigrateInfo = new LocalHapMigrateInfo(new Object({ type: APP_IN_APP_LIST }));
+      expect(localHapMigrateInfo.type).assertEqual(AppReserveType.APP);
       localHapMigrateInfo = new LocalHapMigrateInfo(new Object({ type: APP_IN_DELIVER_TONG_LIST }));
       expect(localHapMigrateInfo.type).assertEqual(AppReserveType.DELIVER_TONG);
       localHapMigrateInfo = new LocalHapMigrateInfo(new Object({ type: APP_NOT_IN_LIST }));

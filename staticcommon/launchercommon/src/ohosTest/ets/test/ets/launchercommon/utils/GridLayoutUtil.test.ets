@@ -65,7 +65,7 @@ export default function GridLayoutUtilTest() {
       firstPageItems.push(itemInfo3);
 
       const itemInfo4 = new GridLayoutItemInfo();
-      itemInfo4.bundleName = 'com.ohos.vassistant';
+      itemInfo4.bundleName = 'com.ohos.testapp';
       firstPageItems.push(itemInfo4);
 
       layoutInfo.push(firstPageItems);

@@ -19,7 +19,7 @@ import { AppReserveType } from './TransformAppInfoManager';
 // 第三位非空，表示该应用为尝鲜应用
 const APP_TASTE_FRESH = 1 << 2;
 // 第四位非空，表示该应用在应用的分发清单内
-const APP_IN_ABROAD_APP_LIST = 1 << 3;
+const APP_IN_APP_LIST = 1 << 3;
 // 第五位非空，表示该应用在克隆应用的分发清单内
 const APP_IN_DELIVER_TONG_LIST = 1 << 4;
 // 第六位非空，表示该应用不在分发清单，但是兜底允许
@@ -60,8 +60,8 @@ export class LocalHapMigrateInfo {
       } else if (this.type & APP_NOT_IN_LIST) {
         this.type = AppReserveType.OTHER_DELIVER;
         return;
-      } else if (this.type & APP_IN_ABROAD_APP_LIST) {
-        this.type = AppReserveType.EASYA_BROAD;
+      } else if (this.type & APP_IN_APP_LIST) {
+        this.type = AppReserveType.APP;
         return;
       } else if (this.type & APP_ENTERPRISE) {
         this.type = AppReserveType.ENTERPRISE;

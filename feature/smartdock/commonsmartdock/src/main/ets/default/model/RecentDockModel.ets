@@ -51,7 +51,6 @@ import FeatureConstants from '../common/constants/FeatureConstants';
 import SmartDockModel from './SmartDockModel';
 import StatusBarServiceEventMgr from '../manager/StatusBarServiceEventMgr';
 import { image } from '@kit.ImageKit';
-import { VassistantConstants } from '@ohos/commonconstants/src/main/ets/constants/SCBConstants';
 
 const TAG = 'RecentDockModel';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.HOME, TAG);
@@ -254,12 +253,7 @@ export default class RecentDockModel extends SingleBase {
       params.set(SCBConstants.START_APP_CLONE_INDEX, item.appIndex);
       StartAbilityUtil.startLauncherAbility(item.abilityName, item.bundleName, item.moduleName, params);
     } else {
-      if (item.bundleName === VassistantConstants.VASSISTANT_LAUNCHER_BUNDLE_NAME) {
-        StartAbilityUtil.startLauncherAbility(VassistantConstants.VASSISTANT_ABILITY_NAME,
-          VassistantConstants.VASSISTANT_BUNDLE_NAME, VassistantConstants.DEFAULT_MODULE_NAME);
-      } else {
-        StartAbilityUtil.startLauncherAbility(item.abilityName, item.bundleName, item.moduleName);
-      }
+      StartAbilityUtil.startLauncherAbility(item.abilityName, item.bundleName, item.moduleName);
     }
   }
 

@@ -36,7 +36,7 @@ import { AigcFileUtils } from '../AigcFileUtils';
 import { AigcHiSysEventUtil } from '../AigcHiSysEventUtil';
 import AigcNotificationManager, { AigcNoticeType } from '../notificationmanager/AigcNotificationManager';
 import { AigcPixelmapUtils } from '../AigcPixelmapUtils';
-import { AIGCThemeInfoAdapter } from '../AIGCThemeInfoAdapter';
+import { GCThemeInfoAdapter } from '../GCThemeInfoAdapter';
 import { AigcWallpaperColorManager } from '../AigcWallpaperColorManager';
 import { EditThemeArg } from '../TSCaller/EditThemeArg';
 import { NullableType, ThemeInfoNew, ThemeOptions } from '../TSCaller/ThemeOptions';
@@ -429,7 +429,7 @@ export default class IdlAigcServiceImpl extends IdlAigcServiceStub {
     let retCode: boolean = false;
     try {
       const originImgTmpPath: string = `${originImgDir}/origin.jpg`;
-      if (!await AIGCThemeInfoAdapter.prepareOriThemeRsc(originImgTmpPath, toActivatePath)) {
+      if (!await GCThemeInfoAdapter.prepareOriThemeRsc(originImgTmpPath, toActivatePath)) {
         // Log.error(TAG, `activateAndGenerateVideo prepareOriThemeRsc failed.`);
         callback(IdlAigcServiceImpl.FAIL, '');
         return;
@@ -584,7 +584,7 @@ export default class IdlAigcServiceImpl extends IdlAigcServiceStub {
       let errCode: number = 0;
       if (errCode === 0) {
         await AigcPixelmapUtils.dimForVideo(themeRscPath, timeStamp.toString());
-        if (!await AIGCThemeInfoAdapter.activateVideoTheme(this.context, themeID)) {
+        if (!await GCThemeInfoAdapter.activateVideoTheme(this.context, themeID)) {
           // Log.error(TAG, `generateVideo activateVideoTheme failed for ${themeID}.`);
         }
       }

@@ -27,15 +27,12 @@ import {
 } from '@ohos/hypium';
 import {
   CardItemInfo,
-  BundleConstants,
   editModeManager,
   GridLayoutItemBuilder,
   GridLayoutItemInfo,
   AppItemInfo,
   FormRelationManager,
-  AiSuggestionUtil
 } from '@ohos/launchercommon';
-import { AbilityFormUtil } from '../../../../../../../aisuggestion/src/main/ets/default/utils/AbilityFormUtil';
 import { FormStackAnimate } from '../../../../../main/ets/viewmodel/FormStackAnimate';
 import { FormStackEvent } from '../../../../../main/ets/viewmodel/FormStackEvent';
 import { FormStackTestUtil } from '../common/FormStackTestUtil';
@@ -153,18 +150,18 @@ export function FormStackEventTest() {
         expect(event.getAppName(formStackInfo.layoutInfo[0][0], (name) => {
         })).assertTrue();
 
-        formStackInfo.layoutInfo[0][0].bundleName = BundleConstants.AI_SUGGESTION_BUNDLE;
+        formStackInfo.layoutInfo[0][0].bundleName = 'com.ohos.suggestion';
         expect(event.getAppName(formStackInfo.layoutInfo[0][0], (name) => {
         })).assertTrue();
 
         formStackInfo.layoutInfo[0][0].bundleName = '';
-        formStackInfo.layoutInfo[0][0].abilityName = BundleConstants.AI_SUGGESTION_ABILITY;
+        formStackInfo.layoutInfo[0][0].abilityName = 'ParentFormAbility';
         expect(event.getAppName(formStackInfo.layoutInfo[0][0], (name) => {
         })).assertTrue();
 
-        formStackInfo.layoutInfo[0][0].bundleName = BundleConstants.AI_SUGGESTION_BUNDLE;
+        formStackInfo.layoutInfo[0][0].bundleName = 'com.ohos.suggestion';
         event.getAppName(formStackInfo.layoutInfo[0][0], (name) => {
-          expect(name).assertEqual(AbilityFormUtil.getDefaultNameOfAiSuggestion());
+          expect(name).assertEqual('');
         });
 
         const card = formStackInfo.layoutInfo[0][0];
@@ -1219,29 +1216,21 @@ export function FormStackEventTest() {
     });
 
     it('getAppNameFromCache_test01', 0, () => {
-      let mocker: MockKit = new MockKit();
       try {
-        let mockFunc = mocker.mockFunc(AiSuggestionUtil, AiSuggestionUtil.isVoiceAbilityForm);
-        when(mockFunc)(ArgumentMatchers.any).afterReturn(false);
         event.mFormItemList = itemList;
         (event as object)['getAppNameFromCache'](cardInfo);
         expect(event).not().assertUndefined();
-        mocker.clear(AiSuggestionUtil);
       } catch (e) {
         expect(JSON.stringify(e)).assertInstanceOf('String');
       }
     });
 
     it('getAppNameFromCache_test02', 0, () => {
-      let mocker: MockKit = new MockKit();
       try {
         mFormStackItem.formStackId = 'a';
-        let mockFunc = mocker.mockFunc(AiSuggestionUtil, AiSuggestionUtil.isVoiceAbilityForm);
-        when(mockFunc)(ArgumentMatchers.any).afterReturn(true);
         event.mFormItemList = itemList;
         (event as object)['getAppNameFromCache'](cardInfo);
         expect(event).not().assertUndefined();
-        mocker.clear(AiSuggestionUtil);
       } catch (e) {
         expect(JSON.stringify(e)).assertInstanceOf('String');
       }

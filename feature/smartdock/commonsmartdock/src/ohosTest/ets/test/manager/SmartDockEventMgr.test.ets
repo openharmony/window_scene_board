@@ -705,48 +705,6 @@ export default function SmartDockEventMgrTest() {
       } catch (err) {}
     });
 
-    it('test_closeFrontWindow_02', 0, () => {
-      let mock = new MockKit();
-      let instance = SmartDockEventMgr.getInstance();
-      try {
-        let screenProperty: SCBScreenProperty = new SCBScreenProperty();
-        let sceneInfo3: SCBSceneInfo =
-          new SCBSceneInfo('VASSISTANT_BUNDLE_NAME', 'exampleModule', 'VOICE_PC_ABILITY_NAME', 0);
-        let sceneSession3: SCBSceneSession =
-          new SCBSceneSession(sceneSessionManager.requestSceneSession(sceneInfo3), sceneInfo3);
-        sceneSession3.isMinimizing = false;
-        sceneSession3.setFocused(true);
-        let containerSession3: SCBSceneContainerSession = new SCBSceneContainerSession(sceneSession3, screenProperty);
-        containerSession3.primarySession = sceneSession3;
-        containerSession3.secondarySession = sceneSession3;
-        containerSession3.isSplit = true;
-        containerSession3['_isActive'] = true;
-
-        let containerSessionList: SCBSceneContainerSession[] = [containerSession3];
-        let mockFunc: Function = mock.mockFunc(instance, (instance as object)['getMissionInfoActiveList']);
-        when(mockFunc)(ArgumentMatchers.any).afterReturn(containerSessionList);
-
-        let dockItemInfo: DockItemInfo = {
-          visible: false,
-          borderVisible: false,
-          shake: 0,
-          missionInfoList: [],
-          appName: '',
-          appIconId: 0,
-          bundleName: 'com.ohos.contacts',
-          abilityName: 'MainAbilityentry',
-          moduleName: 'contacts'
-        }
-
-        instance.closeFrontWindow();
-        expect(instance instanceof SmartDockEventMgr).assertTrue();
-      } catch (e) {
-        expect(JSON.stringify(e)).assertInstanceOf('String');
-      }
-      mock.clear(instance);
-      mock.clearAll();
-    })
-
     it('test_getMissionInfoActiveList_01', 0, () => {
       try {
         let instance = SmartDockEventMgr.getInstance();
@@ -755,36 +713,6 @@ export default function SmartDockEventMgrTest() {
       } catch (e) {
         expect(JSON.stringify(e)).assertInstanceOf('String');
       }
-    })
-
-    it('test_getMissionInfoActiveList_02', 0, () => {
-      let mock = new MockKit();
-      try {
-        let screenProperty: SCBScreenProperty = new SCBScreenProperty();
-        let sceneInfo3: SCBSceneInfo =
-          new SCBSceneInfo('VASSISTANT_BUNDLE_NAME', 'exampleModule', 'VOICE_PC_ABILITY_NAME', 0);
-        let sceneSession3: SCBSceneSession =
-          new SCBSceneSession(sceneSessionManager.requestSceneSession(sceneInfo3), sceneInfo3);
-        sceneSession3.isMinimizing = false;
-        sceneSession3.setFocused(true);
-        let containerSession3: SCBSceneContainerSession = new SCBSceneContainerSession(sceneSession3, screenProperty);
-        containerSession3.primarySession = sceneSession3;
-        containerSession3.secondarySession = sceneSession3;
-        containerSession3.isSplit = true;
-        containerSession3['_isActive'] = true;
-
-        let containerSessionList: SCBSceneContainerSession[] = [containerSession3];
-        let mockFunc: Function = mock.mockFunc(SCBSceneSessionManager.getInstance(), SCBSceneSessionManager.getInstance().getContainerSessionList);
-        when(mockFunc)(ArgumentMatchers.any).afterReturn(containerSessionList);
-
-        let instance = SmartDockEventMgr.getInstance();
-        (instance as object)['getMissionInfoActiveList']();
-        expect(instance instanceof SmartDockEventMgr).assertTrue();
-      } catch (e) {
-        expect(JSON.stringify(e)).assertInstanceOf('String');
-      }
-      mock.clear(SCBSceneSessionManager.getInstance());
-      mock.clearAll();
     })
 
     it('SmartDockEventMgrTest_showRecentCenter_true', 0, async (done: Function) => {
@@ -1077,37 +1005,6 @@ export default function SmartDockEventMgrTest() {
       mock.clearAll();
     })
 
-    it('test_queryFrontSession_04', 0, () => {
-      let mock = new MockKit();
-      try {
-        let screenProperty: SCBScreenProperty = new SCBScreenProperty();
-        let sceneInfo3: SCBSceneInfo =
-          new SCBSceneInfo('VASSISTANT_BUNDLE_NAME', 'exampleModule', 'VOICE_PC_ABILITY_NAME', 0);
-        let sceneSession3: SCBSceneSession =
-          new SCBSceneSession(sceneSessionManager.requestSceneSession(sceneInfo3), sceneInfo3);
-        sceneSession3.isMinimizing = false;
-        sceneSession3.setFocused(true);
-        let containerSession3: SCBSceneContainerSession = new SCBSceneContainerSession(sceneSession3, screenProperty);
-        containerSession3.primarySession = sceneSession3;
-        containerSession3.secondarySession = sceneSession3;
-        containerSession3['_isActive'] = true;
-
-        let containerSessionList: SCBSceneContainerSession[] = [containerSession3];
-        let mockFunc: Function =
-          mock.mockFunc(SCBSceneSessionManager.getInstance(),
-            SCBSceneSessionManager.getInstance().getContainerSessionList);
-        when(mockFunc)(ArgumentMatchers.any).afterReturn(containerSessionList);
-
-        let instance: SmartDockEventMgr = SmartDockEventMgr.getInstance();
-        (instance as object)['queryFrontSession']();
-        expect(instance instanceof SmartDockEventMgr).assertTrue();
-      } catch (e) {
-        expect(JSON.stringify(e)).assertInstanceOf('String');
-      }
-      mock.clear(SCBSceneSessionManager.getInstance());
-      mock.clearAll();
-    })
-
     it('test_setUIContext_01', 0,() => {
       try {
         let instance: SmartDockEventMgr = SmartDockEventMgr.getInstance();
@@ -1146,76 +1043,6 @@ export default function SmartDockEventMgrTest() {
       mock.clearAll();
     })
 
-    it('test_openFrontWindow_03', 0, () => {
-      let mock = new MockKit();
-      let instance = SmartDockEventMgr.getInstance();
-      try {
-        let screenProperty: SCBScreenProperty = new SCBScreenProperty();
-        let sceneInfo3: SCBSceneInfo =
-          new SCBSceneInfo('VASSISTANT_BUNDLE_NAME', 'exampleModule', 'VOICE_PC_ABILITY_NAME', 0);
-        let sceneSession3: SCBSceneSession =
-          new SCBSceneSession(sceneSessionManager.requestSceneSession(sceneInfo3), sceneInfo3);
-        sceneSession3.isMinimizing = false;
-        sceneSession3.setFocused(true);
-        let containerSession3: SCBSceneContainerSession = new SCBSceneContainerSession(sceneSession3, screenProperty);
-        containerSession3.primarySession = sceneSession3;
-        containerSession3.secondarySession = sceneSession3;
-        containerSession3['_isActive'] = true;
-
-        let containerSessionList: SCBSceneContainerSession[] = [containerSession3];
-        let mockFunc2: Function = mock.mockFunc(instance, (instance as object)['getMissionInfoActiveList']);
-        when(mockFunc2)(ArgumentMatchers.any).afterReturn(containerSessionList);
-
-        let mockFunc: Function = mock.mockFunc(CheckEmptyUtils, CheckEmptyUtils.isEmpty);
-        when(mockFunc)(ArgumentMatchers.any).afterReturn(false);
-
-        AppStorage.setOrCreate<SCBSceneContainerSession[]>('missionInfoActiveList', containerSessionList);
-
-        instance.openFrontWindow();
-        expect(instance instanceof SmartDockEventMgr).assertTrue();
-      } catch (e) {
-        expect(JSON.stringify(e)).assertInstanceOf('String');
-      }
-      mock.clear(CheckEmptyUtils);
-      mock.clear(instance);
-      mock.clearAll();
-    })
-
-    it('test_openFrontWindow_04', 0, () => {
-      let mock = new MockKit();
-      let instance = SmartDockEventMgr.getInstance();
-      try {
-        let screenProperty: SCBScreenProperty = new SCBScreenProperty();
-        let sceneInfo3: SCBSceneInfo =
-          new SCBSceneInfo('VASSISTANT_BUNDLE_NAME', 'exampleModule', 'VOICE_PC_ABILITY_NAME', 0);
-        let sceneSession3: SCBSceneSession =
-          new SCBSceneSession(sceneSessionManager.requestSceneSession(sceneInfo3), sceneInfo3);
-        sceneSession3.isMinimizing = false;
-        sceneSession3.setFocused(true);
-        let containerSession3: SCBSceneContainerSession = new SCBSceneContainerSession(sceneSession3, screenProperty);
-        containerSession3.primarySession = sceneSession3;
-        containerSession3.secondarySession = sceneSession3;
-        containerSession3['_isActive'] = true;
-
-        let containerSessionList: SCBSceneContainerSession[] = [containerSession3];
-        let mockFunc2: Function = mock.mockFunc(instance, (instance as object)['getMissionInfoActiveList']);
-        when(mockFunc2)(ArgumentMatchers.any).afterReturn([]);
-
-        let mockFunc: Function = mock.mockFunc(CheckEmptyUtils, CheckEmptyUtils.isEmpty);
-        when(mockFunc)(ArgumentMatchers.any).afterReturn(false);
-
-        AppStorage.setOrCreate<SCBSceneContainerSession[]>('missionInfoActiveList', containerSessionList);
-
-        instance.openFrontWindow();
-        expect(instance instanceof SmartDockEventMgr).assertTrue();
-      } catch (e) {
-        expect(JSON.stringify(e)).assertInstanceOf('String');
-      }
-      mock.clear(CheckEmptyUtils);
-      mock.clear(instance);
-      mock.clearAll();
-    })
-
     it('test_recentOnClick_01', 0, () => {
       let mock = new MockKit();
       try {
@@ -1242,7 +1069,7 @@ export default function SmartDockEventMgrTest() {
 
         let item: DockItemInfo = new DockItemInfo();
         item.typeId = CommonConstants.TYPE_SHORTCUT_ICON +1;
-        item.bundleName = 'com.ohos.vassistant.launcher';
+        item.bundleName = 'com.ohos.testapp';
         let instance: SmartDockEventMgr = SmartDockEventMgr.getInstance();
         instance.recentOnClick(null, item, false);
         expect(instance instanceof SmartDockEventMgr).assertTrue();
@@ -1324,7 +1151,7 @@ export default function SmartDockEventMgrTest() {
 
         let item: DockItemInfo = new DockItemInfo();
         item.typeId = CommonConstants.TYPE_SHORTCUT_ICON+1;
-        item.bundleName = 'com.ohos.vassistant.launcher';
+        item.bundleName = 'com.ohos.testapp';
 
         AppStorage.setOrCreate<RecentBundleMissionInfo[]>('missionInfoList', []);
 
@@ -1347,11 +1174,11 @@ export default function SmartDockEventMgrTest() {
 
         let item: DockItemInfo = new DockItemInfo();
         item.typeId = CommonConstants.TYPE_SHORTCUT_ICON+1;
-        item.bundleName = 'com.ohos.vassistant.launcher';
+        item.bundleName = 'com.ohos.testapp';
         item.appIndex = 0;
 
         let missionInfo:RecentBundleMissionInfo = new RecentBundleMissionInfo();
-        missionInfo.bundleName = 'com.ohos.vassistant.launcher';
+        missionInfo.bundleName = 'com.ohos.testapp.launcher';
         missionInfo.appIndex = 0;
         missionInfo.missionInfoList = [];
         let missionInfoList: RecentBundleMissionInfo[] = [missionInfo];
@@ -1378,7 +1205,7 @@ export default function SmartDockEventMgrTest() {
 
         let item: DockItemInfo = new DockItemInfo();
         item.typeId = CommonConstants.TYPE_SHORTCUT_ICON+1;
-        item.bundleName = 'com.ohos.vassistant.launcher';
+        item.bundleName = 'com.ohos.testapp';
         item.appIndex = 0;
 
         let testSceneInfo: SCBSceneInfo = new SCBSceneInfo('', '', '');
@@ -1388,7 +1215,7 @@ export default function SmartDockEventMgrTest() {
         let session: SCBSceneContainerSession = new SCBSceneContainerSession(testPrimarySCBSceneSession, testSCBScreenProperty);
 
         let missionInfo:RecentBundleMissionInfo = new RecentBundleMissionInfo();
-        missionInfo.bundleName = 'com.ohos.vassistant.launcher';
+        missionInfo.bundleName = 'com.ohos.testapp.launcher';
         missionInfo.appIndex = 0;
         missionInfo.missionInfoList = [session];
         let missionInfoList: RecentBundleMissionInfo[] = [missionInfo];
@@ -1415,7 +1242,7 @@ export default function SmartDockEventMgrTest() {
 
         let item: DockItemInfo = new DockItemInfo();
         item.typeId = CommonConstants.TYPE_SHORTCUT_ICON+1;
-        item.bundleName = 'com.ohos.vassistant.launcher';
+        item.bundleName = 'com.ohos.testapp';
         item.appIndex = 0;
 
         let testSceneInfo: SCBSceneInfo = new SCBSceneInfo('', '', '');
@@ -1426,7 +1253,7 @@ export default function SmartDockEventMgrTest() {
         session.isSplit = true;
 
         let missionInfo:RecentBundleMissionInfo = new RecentBundleMissionInfo();
-        missionInfo.bundleName = 'com.ohos.vassistant.launcher';
+        missionInfo.bundleName = 'com.ohos.testapp.launcher';
         missionInfo.appIndex = 0;
         missionInfo.missionInfoList = [session];
         let missionInfoList: RecentBundleMissionInfo[] = [missionInfo];
@@ -1448,7 +1275,7 @@ export default function SmartDockEventMgrTest() {
       let mock = new MockKit();
       let instance: SmartDockEventMgr = SmartDockEventMgr.getInstance();
       try {
-        let bundleName = 'com.ohos.vassistant.launcher';
+        let bundleName = 'com.ohos.testapp.launcher';
         let mockFunc: Function = mock.mockFunc(SCBSceneSessionManager.getInstance(), SCBSceneSessionManager.getInstance().isPcMode);
         when(mockFunc)(ArgumentMatchers.any).afterReturn(true);
 
@@ -1469,7 +1296,7 @@ export default function SmartDockEventMgrTest() {
         session.setActivationAtToggleHomeScenario();
 
         let missionInfo:RecentBundleMissionInfo = new RecentBundleMissionInfo();
-        missionInfo.bundleName = 'com.ohos.vassistant.launcher';
+        missionInfo.bundleName = 'com.ohos.testapp.launcher';
         missionInfo.appIndex = 0;
         missionInfo.missionInfoList = [session];
         let missionInfoList: RecentBundleMissionInfo[] = [missionInfo];
@@ -1492,7 +1319,7 @@ export default function SmartDockEventMgrTest() {
       let mock = new MockKit();
       let instance: SmartDockEventMgr = SmartDockEventMgr.getInstance();
       try {
-        let bundleName = 'com.ohos.vassistant.launcher';
+        let bundleName = 'com.ohos.testapp.launcher';
         let mockFunc: Function = mock.mockFunc(SCBSceneSessionManager.getInstance(), SCBSceneSessionManager.getInstance().isPcMode);
         when(mockFunc)(ArgumentMatchers.any).afterReturn(true);
 
@@ -1513,7 +1340,7 @@ export default function SmartDockEventMgrTest() {
         session.setActivationAtToggleHomeScenario();
 
         let missionInfo:RecentBundleMissionInfo = new RecentBundleMissionInfo();
-        missionInfo.bundleName = 'com.ohos.vassistant.launcher';
+        missionInfo.bundleName = 'com.ohos.testapp.launcher';
         missionInfo.appIndex = 0;
         missionInfo.missionInfoList = [session];
         let missionInfoList: RecentBundleMissionInfo[] = [missionInfo];
@@ -1536,7 +1363,7 @@ export default function SmartDockEventMgrTest() {
       let mock = new MockKit();
       let instance: SmartDockEventMgr = SmartDockEventMgr.getInstance();
       try {
-        let bundleName = 'com.ohos.vassistant.launcher';
+        let bundleName = 'com.ohos.testapp.launcher';
         let mockFunc: Function = mock.mockFunc(SCBSceneSessionManager.getInstance(), SCBSceneSessionManager.getInstance().isPcMode);
         when(mockFunc)(ArgumentMatchers.any).afterReturn(true);
 
@@ -1558,7 +1385,7 @@ export default function SmartDockEventMgrTest() {
         session.setActivationAtToggleHomeScenario();
 
         let missionInfo:RecentBundleMissionInfo = new RecentBundleMissionInfo();
-        missionInfo.bundleName = 'com.ohos.vassistant.launcher';
+        missionInfo.bundleName = 'com.ohos.testapp.launcher';
         missionInfo.appIndex = 0;
         missionInfo.missionInfoList = [session];
         let missionInfoList: RecentBundleMissionInfo[] = [missionInfo];
@@ -1784,61 +1611,6 @@ export default function SmartDockEventMgrTest() {
         let sceneSession: SCBSceneSession =
           new SCBSceneSession(sceneSessionManager.requestSceneSession(sceneInfo), sceneInfo);
         (instance as object)['close'](sceneSession);
-        expect(instance instanceof SmartDockEventMgr).assertTrue();
-      } catch (e) {
-        expect(JSON.stringify(e)).assertInstanceOf('String');
-      }
-      mock.clear(SCBSceneSessionManager.getInstance());
-      mock.clearAll();
-    })
-
-    it('test_closeSceneSession_01', 0, () => {
-      let mock = new MockKit();
-      try {
-        const VASSISTANT_BUNDLE_NAME: string = 'com.ohos.vassistant';
-        const VASSISTANT_LAUNCHER_BUNDLE_NAME: string = 'com.ohos.vassistant.launcher';
-        let appIndex: number = 0;
-
-        let item: DockItemInfo = new DockItemInfo();
-        item.bundleName = VASSISTANT_LAUNCHER_BUNDLE_NAME;
-        item.appIndex = appIndex;
-        item.moduleName = 'entry';
-
-        let screenProperty: SCBScreenProperty = new SCBScreenProperty();
-
-        let sceneInfo1: SCBSceneInfo =
-          new SCBSceneInfo(VASSISTANT_BUNDLE_NAME, 'exampleModule', 'VOICE_PC_ABILITY_NAME', appIndex);
-        let sceneSession1: SCBSceneSession =
-          new SCBSceneSession(sceneSessionManager.requestSceneSession(sceneInfo1), sceneInfo1);
-        let containerSession1: SCBSceneContainerSession = new SCBSceneContainerSession(sceneSession1, screenProperty);
-        containerSession1.primarySession = sceneSession1;
-        containerSession1.secondarySession = sceneSession1;
-
-        let sceneInfo2: SCBSceneInfo =
-          new SCBSceneInfo(VASSISTANT_BUNDLE_NAME, 'exampleModule', 'VOICE_PC_ABILITY_NAME', appIndex);
-        let sceneSession2: SCBSceneSession =
-          new SCBSceneSession(sceneSessionManager.requestSceneSession(sceneInfo2), sceneInfo2);
-        let containerSession2: SCBSceneContainerSession = new SCBSceneContainerSession(sceneSession2, screenProperty);
-        containerSession2.primarySession = sceneSession2;
-        containerSession2.secondarySession = null;
-
-        let sceneInfo3: SCBSceneInfo =
-          new SCBSceneInfo(VASSISTANT_BUNDLE_NAME, 'exampleModule', 'VOICE_PC_ABILITY_NAME', appIndex);
-        let sceneSession3: SCBSceneSession =
-          new SCBSceneSession(sceneSessionManager.requestSceneSession(sceneInfo3), sceneInfo3);
-        let containerSession3: SCBSceneContainerSession = new SCBSceneContainerSession(sceneSession3, screenProperty);
-        containerSession3.primarySession = null;
-        containerSession3.secondarySession = sceneSession3;
-
-        let containerSessionList: SCBSceneContainerSession[] =
-          [containerSession1, containerSession2, containerSession3];
-        let mockFunc: Function =
-          mock.mockFunc(SCBSceneSessionManager.getInstance(),
-            SCBSceneSessionManager.getInstance().getContainerSessionList);
-        when(mockFunc)(ArgumentMatchers.any).afterReturn(containerSessionList);
-
-        let instance: SmartDockEventMgr = SmartDockEventMgr.getInstance();
-        (instance as object)['closeSceneSession'](item);
         expect(instance instanceof SmartDockEventMgr).assertTrue();
       } catch (e) {
         expect(JSON.stringify(e)).assertInstanceOf('String');

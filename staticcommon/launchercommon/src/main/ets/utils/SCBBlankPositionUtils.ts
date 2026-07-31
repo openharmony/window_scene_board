@@ -22,9 +22,12 @@ import {
   LayoutDescription,
   layoutLockUtil,
   PageInfoManager,
-  StyleConstants
+  StyleConstants,
+  CommonConstants
 } from '../TsIndex';
-const START_FIND_POSITION = 1;
+import type GridLayoutItemInfo from '../bean/GridLayoutItemInfo';
+// 直板机从首页(page 0)开始找空位，填满后再分页；折叠屏保持原策略
+const START_FIND_POSITION = 0;
 const START_FIND_POSITION_BIG_FOLD = 2;
 const START_FIND_POSITION_THREE_FOLD = 3;
 const ROW_OFFSET_THREE = 3;
@@ -41,8 +44,8 @@ export class SCBBlankPositionUtils {
    * @returns 开始找空位的起始页
    */
   public getFindBlankStartPage(maxPage: number, isOuter?: boolean): number {
-    // 从第二屏开始查找空白位置
-    let startFindPage: number = maxPage === 1 ? 0 : START_FIND_POSITION;
+    // 直板机从首页开始找空位，填满后再分页
+    let startFindPage: number = START_FIND_POSITION;
     // 三折屏设备找位规则
     if (PageInfoManager.getInstance().getMaxDisplayCount() === StyleConstants.DEFAULT_3) {
       let displayCount: number = PageInfoManager.getInstance().getDisplayCount();
@@ -71,16 +74,13 @@ export class SCBBlankPositionUtils {
    * @returns 开始找空位的起始页
    */
   public getStartFindPageByHomePage(maxPage: number, isOuter?: boolean): number {
-    // 从第二屏开始查找空白位置
-    let startFindPage: number = maxPage === 1 ? 0 : START_FIND_POSITION;
     let homePageIndex: number = PageInfoManager.getInstance().getHomePageIndex();
     // 每屏显示的页数
     let displayCount = PageInfoManager.getInstance().getDisplayCount();
-    //基于不同形态设备，分别在当前形态设置的主屏的下一大屏找位
+    // 直板机从主屏页开始找空位；多屏形态仍从当前主屏所在大屏的下一屏找位
+    let startFindPage: number = homePageIndex;
     if (displayCount > 1) {
       startFindPage = Math.floor(homePageIndex / displayCount) * displayCount + displayCount;
-    } else {
-      startFindPage = homePageIndex + displayCount;
     }
     // 折叠PC从第0页开始找
     if (DeviceHelper.isSuperFoldMachine()) {
@@ -104,9 +104,9 @@ export class SCBBlankPositionUtils {
     }
     desktopPosition.maxColumn = layoutDescription.column;
     desktopPosition.maxRow = layoutDescription.row;
-    // 从第二屏开始查找空白位置
+    // 直板机从首页开始查找空白位置，填满后再分页
     let startFindPage: number = this.getStartFindPageByHomePage(layoutDescription.maxPage, isOuter);
-    // zyt预置应用首次开机的找位规则
+    // zyt预置应用首次开机的找位规则：直板机从首页填满，折叠屏保持原策略
     if (!layoutLockUtil.isLocked('install app') && DeliverUtil.CANCEL_DELIVER_FOLDER &&
       DeliverUtil.DELIVER_PREINSTALLED_APP_SET.has(bundleName) && PageInfoManager.getInstance().getHomePageIndex() === 0) {
       if (DeviceHelper.isLargeInFoldProduct()) {
@@ -114,7 +114,7 @@ export class SCBBlankPositionUtils {
       } else if (DeviceHelper.isThreeFoldProduct()) {
         startFindPage = NumberConstants.CONSTANT_NUMBER_THREE;
       } else {
-        startFindPage = NumberConstants.CONSTANT_NUMBER_ONE;
+        startFindPage = NumberConstants.CONSTANT_NUMBER_ZERO;
       }
     }
     log.showInfo(TAG, 'findBlankPosition from[%{public}d] -> to[%{public}d]', startFindPage, layoutDescription.maxPage);
@@ -137,6 +137,11 @@ export class SCBBlankPositionUtils {
    * @returns
    */
   private findBlankPositionPage(desktopPosition: DesktopPosition, isOuter?: boolean): boolean {
+    // 3a：卡片预留页不参与应用找位，避免新装应用挤进卡片页
+    if (this.isPageReservedForCards(desktopPosition.page, isOuter)) {
+      log.showInfo(TAG, 'findBlankPositionPage skip card page:%{public}d', desktopPosition.page);
+      return false;
+    }
     let rowOffset: number = 0;
     if (DeviceHelper.isPad() && desktopPosition.page === 0) {
       rowOffset = ROW_OFFSET_THREE;
@@ -157,6 +162,16 @@ export class SCBBlankPositionUtils {
     }
     log.showInfo(TAG, 'findBlankPosition page:%{public}d result: false', desktopPosition.page);
     return false;
+  }
+
+  /**
+   * 该页是否预留给卡片（页内存在卡片则应用找位跳过）
+   */
+  private isPageReservedForCards(page: number, isOuter?: boolean): boolean {
+    const gridList: GridLayoutItemInfo[] =
+      LaunchLayoutCacheManager.getInstance().getGridLayoutItemList(isOuter);
+    return gridList.some((item: GridLayoutItemInfo) =>
+      item.page === page && item.typeId === CommonConstants.TYPE_CARD);
   }
 }
 

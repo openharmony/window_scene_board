@@ -83,7 +83,6 @@ export enum AudioVolumeType {
   VOICE_CALL = 0,
   RINGTONE = 2,
   MEDIA = 3,
-  VOICE_ASSISTANT = 9,
 }
 
 export enum AudioDeviceType {
@@ -140,13 +139,13 @@ export interface InputDeviceChangeListener { onInputDeviceChange: Function }
 
 export type FocusItemType = DeviceInfo | MenuType;
 
-export enum AISoundType {
-  AI_SING_ALONG_MODE = 101,
-  AI_VOICE_ENHANCE_MODE = 102,
-  AI_CALL_REDUCE_NOISE = 103,
+export enum SoundType {
+  SING_ALONG_MODE = 101,
+  VOICE_ENHANCE_MODE = 102,
+  CALL_REDUCE_NOISE = 103,
 }
 
-export const AI_NOT_SUPPORT = 'AI_SOUND_NOT_SUPPORT';
+export const SOUND_NOT_SUPPORT = 'AI_SOUND_NOT_SUPPORT';
 
 export class DNDConstants {
   public static FOCUS_MODE_PROFILE: string = 'focus_mode_profile';

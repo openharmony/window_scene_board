@@ -54,7 +54,6 @@ import GridLayoutUtil, { ItemsCount } from '@ohos/launchercommon/src/main/ets/ut
 import { PageDesktopGridStyleConfig } from '@ohos/launchercommon/src/main/ets/layoutconfig/PageDesktopGridStyleConfig';
 import { FolderStyleManager, FolderViewData, SwiperPageManager } from '@ohos/launchercommon/Index';
 import { BaseIconInfo } from '@ohos/launchercommon/src/main/ets/bean/BaseIconInfo';
-import { VassistantConstants } from '@ohos/commonconstants/src/main/ets/constants/SCBConstants';
 import OpenFolderDragHandler from '@ohos/bigfolder/src/main/ets/default/common/OpenFolderDragHandler';
 
 const TAG = 'QuitAppRectViewModel';
@@ -259,24 +258,12 @@ export class QuitAppRectViewModel {
       moduleName: companionIconInfo.moduleName,
       appIndex: companionIconInfo.appIndex,
     }
-    if (companionIconInfo.bundleName === VassistantConstants.VASSISTANT_BUNDLE_NAME) {
-      iconInfo.bundleName = VassistantConstants.VASSISTANT_LAUNCHER_BUNDLE_NAME;
-      iconInfo.moduleName = VassistantConstants.DEFAULT_MODULE_NAME;
-      iconInfo.abilityName = VassistantConstants.VASSISTANT_ABILITY_NAME;
-    }
     const keyName: string = AppItemInfo.getKeyName(iconInfo);
     let layoutCacheManager = LaunchLayoutCacheManager.getInstance();
     const folderId = isOpenFolder ? openFolderId : undefined;
     let isDesktopApp: boolean = true;
     let layoutItemInfos: GridLayoutItemInfo[];
-    if (companionIconInfo?.startAppType === StartType.AI_SUGGESTION_APP &&
-      CloseAppManager.getInstance().getStartAppType() === StartType.AI_SUGGESTION_APP) {
-      log.showWarn(`buildAppExitInfoInDesktop startAppType is AI_SUGGESTION_APP`);
-      layoutItemInfos = layoutCacheManager.getDesktopAppInfo(keyName, this.typeIds, folderId,
-        PageDesktopModel.getInstance().getPageIndex());
-    } else {
-      layoutItemInfos = layoutCacheManager.getDesktopAppInfo(keyName, this.typeIds, folderId);
-    }
+    layoutItemInfos = layoutCacheManager.getDesktopAppInfo(keyName, this.typeIds, folderId);
     if (CheckEmptyUtils.isEmptyArr(layoutItemInfos) || CheckEmptyUtils.isEmpty(layoutItemInfos[0])) {
       log.showWarn(`app is not in desktop`);
       isDesktopApp = false;

@@ -17,7 +17,6 @@ import { BusinessError } from '@ohos.base';
 import formHost from '@ohos.app.form.formHost';
 import { CommonConstants, FormModel, FormModelValidCardType, RdbStoreManager } from '@ohos/launchercommon';
 import { LogDomain, LogHelper } from '@ohos/basicutils';
-import { AiSuggestionFormManager } from '@ohos/aisuggestion/src/main/ets/default/manager/AiSuggestionFormManager';
 import ScreenLockThemeManager from '@ohos/screenlockwidget/src/main/ets/common/theme/ScreenLockThemeManager';
 import { DeviceHelper, GlobalContext } from '@ohos/frameworkwrapper/src/main/ets/TsIndex';
 import { settings } from '@kit.BasicServicesKit';
@@ -55,13 +54,6 @@ export class FormClearUtils {
   }
 
   private static doClearInvalidForm(): void {
-    FormModel.getInstance().registerQueryValidCardIdCallback(FormModelValidCardType.AI_SUGGESTION,
-      async (): Promise<string[]> => {
-        let cardIdList = await AiSuggestionFormManager.getInstance().getAllInnerCardId();
-        return cardIdList;
-      }
-    );
-
     FormModel.getInstance().registerQueryValidCardIdCallback(FormModelValidCardType.RDB_GRIDLAYOUT_TABLE_INDEPENDENT,
       async (): Promise<string[]> => {
         let formIds: string[] = [];

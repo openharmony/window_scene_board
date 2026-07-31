@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import { DeviceHelper } from '@ohos/frameworkwrapper';
-import { BundleConstants, GridLayoutItemInfo } from '@ohos/launchercommon/src/main/ets/TsIndex';
+import { GridLayoutItemInfo } from '@ohos/launchercommon/src/main/ets/TsIndex';
 import {
   describe,
   beforeAll,
@@ -73,28 +73,28 @@ export default function PreviewUtilsTest() {
       expect(result).assertFalse();
     });
 
-    it('should_return_true_when_bundleName_and_abilityName_match_Voice_constants', 0, () => {
-      const bundleName: ESObject = BundleConstants.AI_SUGGESTION_BUNDLE;
-      const abilityName: ESObject = BundleConstants.AI_SUGGESTION_ABILITY;
-      const result: ESObject = PreviewUtils.isVoiceAbilityForm(bundleName, abilityName);
-      expect(result).assertTrue();
-    });
-
-    it('should_return_false_when_bundleName_does_not_match_Voice_bundle', 0, () => {
-      const bundleName: ESObject = "com.example.someotherbundle";
-      const abilityName: ESObject = BundleConstants.AI_SUGGESTION_ABILITY;
+    it('should_return_false_for_isVoiceAbilityForm', 0, () => {
+      const bundleName: ESObject = 'com.ohos.suggestion';
+      const abilityName: ESObject = 'ParentFormAbility';
       const result: ESObject = PreviewUtils.isVoiceAbilityForm(bundleName, abilityName);
       expect(result).assertFalse();
     });
 
-    it('should_return_false_when_abilityName_does_not_match_Voice_ability', 0, () => {
-      const bundleName: ESObject = BundleConstants.AI_SUGGESTION_BUNDLE;
+    it('should_return_false_when_bundleName_does_not_match', 0, () => {
+      const bundleName: ESObject = "com.example.someotherbundle";
+      const abilityName: ESObject = 'ParentFormAbility';
+      const result: ESObject = PreviewUtils.isVoiceAbilityForm(bundleName, abilityName);
+      expect(result).assertFalse();
+    });
+
+    it('should_return_false_when_abilityName_does_not_match', 0, () => {
+      const bundleName: ESObject = 'com.ohos.suggestion';
       const abilityName: ESObject = "com.example.someotherability";
       const result: ESObject = PreviewUtils.isVoiceAbilityForm(bundleName, abilityName);
       expect(result).assertFalse();
     });
 
-    it('should_return_false_when_both_bundleName_and_abilityName_do_not_match_Voice_constants', 0, () => {
+    it('should_return_false_when_both_do_not_match', 0, () => {
       const bundleName: ESObject = "com.example.someotherbundle";
       const abilityName: ESObject = "com.example.someotherability";
       const result: ESObject = PreviewUtils.isVoiceAbilityForm(bundleName, abilityName);

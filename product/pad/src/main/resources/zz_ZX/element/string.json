@@ -213,15 +213,15 @@
             "value":"[TS_929471]_From split-screen view, swipe up or resize the windows to enter parallel-window view."
         },
         {
-            "name":"Ai_bar_return_home",
+            "name":"Navi_bar_return_home",
             "value":"[TS_917577]_Go home"
         },
         {
-            "name":"Ai_bar_recent_detail",
+            "name":"Navi_bar_recent_detail",
             "value":"[TS_917578]_Swipe up from the bottom and hold to view recent tasks."
         },
         {
-            "name":"Ai_bar_recent",
+            "name":"Navi_bar_recent",
             "value":"[TS_917584]_View recent tasks"
         },
         {
@@ -229,7 +229,7 @@
             "value":"[TS_925942]_Picture-in-picture"
         },
         {
-            "name":"Ai_bar_setting",
+            "name":"Navi_bar_setting",
             "value":"[TS_917586]_System navigation"
         },
         {
@@ -237,7 +237,7 @@
             "value":"[TS_922847]_More AODs"
         },
         {
-            "name":"Ai_bar_back",
+            "name":"Navi_bar_back",
             "value":"[TS_917585]_Go back"
         },
         {
@@ -245,7 +245,7 @@
             "value":"[TS_925945]_Floating window"
         },
         {
-            "name":"Ai_bar_vassistant_dialogue",
+            "name":"Navi_bar_vassistant_dialogue",
             "value":"[TS_917579]_Voice Chat"
         },
         {
@@ -265,7 +265,7 @@
             "value":"[TS_925936]_When this is on, video and MeeTime calls will continue in a mini window when you open another app or return to the home screen."
         },
         {
-            "name":"Ai_bar",
+            "name":"Navi_bar",
             "value":"[TS_922799]_Navigation bar"
         },
         {
@@ -273,7 +273,7 @@
             "value":"[TS_927765]_for accessing the near link interface"
         },
         {
-            "name":"Ai_bar_gesture_back_detail",
+            "name":"Navi_bar_gesture_back_detail",
             "value":"[TS_917583]_Swipe in from the left or right edge to return to the previous screen."
         },
         {
@@ -297,7 +297,7 @@
             "value":"[TS_925939]_Swipe to the top right for a floating window or the top left for split screen."
         },
         {
-            "name":"Ai_bar_vassistant",
+            "name":"Navi_bar_vassistant",
             "value":"[TS_917581]_Touch & hold the navigation bar to talk to voice."
         },
         {
@@ -309,7 +309,7 @@
             "value":"[TS_922798]_System"
         },
         {
-            "name":"Ai_bar_return_home_detail",
+            "name":"Navi_bar_return_home_detail",
             "value":"[TS_917582]_Swipe up from the bottom to go to the home screen."
         },
         {
@@ -321,7 +321,7 @@
             "value":"[TS_1101140]_Compatibility mode"
         },
         {
-            "name":"Ai_bar_back_detail",
+            "name":"Navi_bar_back_detail",
             "value":"[TS_917580]_Tap the navigation bar to return to the previous screen."
         },
         {
@@ -545,11 +545,11 @@
             "value":"[TS_971215]_OK"
         },
         {
-            "name":"Ai_bar_vassistant_dialogue_longpress",
+            "name":"Navi_bar_vassistant_dialogue_longpress",
             "value":"[TS_966060]_Touch & hold for voice"
         },
         {
-            "name":"Ai_bar_back_click_navigation",
+            "name":"Navi_bar_back_click_navigation",
             "value":"[TS_966059]_Tap to go back"
         },
         {
@@ -569,7 +569,7 @@
             "value":"[TS_971638]_A maximum of %1$d applications can be added."
         },
         {
-            "name":"ai_bar_accessibility_text",
+            "name":"navi_bar_accessibility_text",
             "value":"[TS_972532]_Navigation bar, tap twice and hold to speak to voice"
         },
         {

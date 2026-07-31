@@ -36,8 +36,8 @@ import { soundFeatureModel, SoundFeatureType } from '../model/SoundFeatureModel'
 import { audioDevice, AudioOutputChangeListener4V, AudioSoundViewModel } from '../viewmodel/AudioSoundViewModel';
 import { PanelManager, PanelStateChangeListener } from '../manager/PanelManager';
 import Constants from '../common/Constants';
-import AIEffectCallNoiseReductionView from './AIEffectCallNoiseReductionView';
-import AIEffectVoiceCancelView from './AIEffectVoiceCancelView';
+import EffectCallNoiseReductionView from './EffectCallNoiseReductionView';
+import EffectVoiceCancelView from './EffectVoiceCancelView';
 import { HorizontalCardComponent } from './HorizontalCardComponent';
 import EarPhoneDevice from './EarPhoneDevice';
 import DeviceItem from './DeviceItem';
@@ -269,13 +269,13 @@ export default struct SoundPanelComponent {
       }
 
       if (XmlParseUtil.getVocalCancelSupport()) {
-        AIEffectVoiceCancelView()
+        EffectVoiceCancelView()
         if (XmlParseUtil.getCallNoiseReductforceSupport()) {
           this.MyDivider(this.style.soundPanelMarginLeft, 'Third_Divider')
         }
       }
       if (XmlParseUtil.getCallNoiseReductforceSupport()) {
-        AIEffectCallNoiseReductionView()
+        EffectCallNoiseReductionView()
       }
       this.MyDivider(this.style.soundPanelMarginLeft, 'Fourth_Divider')
 

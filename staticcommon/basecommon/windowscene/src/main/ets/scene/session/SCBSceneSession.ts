@@ -1312,7 +1312,7 @@ export class SCBSceneSession {
         if (systemBarProperty.type === sceneSessionManager.SessionType.TYPE_NAVIGATION_INDICATOR &&
           this.sceneInfo.windowMode === SCBSceneMode.FULLSCREEN &&
           this.isSessionForeground()) {
-          WinLog.showInfo(WinLogDomain.WMS_IMMS, `win:${this.session.persistentId},AIbar:${systemBarProperty.enable}`);
+          WinLog.showInfo(WinLogDomain.WMS_IMMS, `win:${this.session.persistentId},NAVibar:${systemBarProperty.enable}`);
           SCBSceneSessionManager.getInstance().updateNavigationBarProperty(systemBarProperty.enable, this);
           SCBSceneSessionManager.getInstance()
             .notifyNavigationPropertyChanged(systemBarProperty, this.sceneInfo.screenId);

@@ -598,7 +598,7 @@ export class OpenFolderAddViewModel {
     if (allAppList?.length > 0) {
       allAppList.forEach((item: GridLayoutItemInfo) => {
         if ((!DeliverUtil.CANCEL_DELIVER_FOLDER && DeliverUtil.DELIVER_PREINSTALLED_APP_SET.has(item.bundleName)) ||
-        DeliverUtil.isEasyAbroadItem(item.intent)) {
+        DeliverUtil.isAppItem(item.intent)) {
           return;
         }
         let otherItem: FolderAddItemInfo = new FolderAddItemInfo();

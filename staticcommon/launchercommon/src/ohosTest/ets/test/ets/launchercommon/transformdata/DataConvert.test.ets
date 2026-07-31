@@ -47,35 +47,35 @@ import { CloneItemInfoManager } from '../../../../../../main/ets/transformdata/m
 function initGridLayoutItemInfos(): GridLayoutItemInfo[] {
   let layoutInfos: GridLayoutItemInfo[] = [];
 
-  let gridLayoutEasyAbroadApp1: GridLayoutItemInfo = new GridLayoutItemInfo();
-  gridLayoutEasyAbroadApp1.typeId = CommonConstants.TYPE_APP;
-  gridLayoutEasyAbroadApp1.infoId = '37f7caf8-eff6-46ab-aefe-0f9786e47669';
-  gridLayoutEasyAbroadApp1.infoName = '电召PLUS';
-  gridLayoutEasyAbroadApp1.bundleName = 'macao.taxi.passager';
-  gridLayoutEasyAbroadApp1.abilityName = 'MainAbility';
-  gridLayoutEasyAbroadApp1.moduleName = 'phone';
-  gridLayoutEasyAbroadApp1.container = 66;
-  gridLayoutEasyAbroadApp1.page = 0;
-  gridLayoutEasyAbroadApp1.row = 1;
-  gridLayoutEasyAbroadApp1.column = 0;
-  gridLayoutEasyAbroadApp1.area = [1, 1];
-  gridLayoutEasyAbroadApp1.intent =
+  let gridLayoutAppApp1: GridLayoutItemInfo = new GridLayoutItemInfo();
+  gridLayoutAppApp1.typeId = CommonConstants.TYPE_APP;
+  gridLayoutAppApp1.infoId = '37f7caf8-eff6-46ab-aefe-0f9786e47669';
+  gridLayoutAppApp1.infoName = '电召PLUS';
+  gridLayoutAppApp1.bundleName = 'macao.taxi.passager';
+  gridLayoutAppApp1.abilityName = 'MainAbility';
+  gridLayoutAppApp1.moduleName = 'phone';
+  gridLayoutAppApp1.container = 66;
+  gridLayoutAppApp1.page = 0;
+  gridLayoutAppApp1.row = 1;
+  gridLayoutAppApp1.column = 0;
+  gridLayoutAppApp1.area = [1, 1];
+  gridLayoutAppApp1.intent =
     '{"legacyInfo":{"pkgName":"macao.taxi.passager","pkgLableName":"电召PLUS","pkgSignature":"8c6e07f87c9db98fde934f69bdaaf653ef1176b0e0aa5959de87b34203a8d5f3","versionCode":"2025052303","versionName":"3.3.7","installSource":"com.ohos.abroad"},"targetModuleUrl":"","requestBundleName":"__WAIT_FOR_HARMONY_BUNDLENAME__macao.taxi.passager__1750122530100","installSource":"com.ohos.abroad","appType":0,"maskState":0}';
 
 
-  let gridLayoutEasyAbroadApp2: GridLayoutItemInfo = new GridLayoutItemInfo();
-  gridLayoutEasyAbroadApp2.typeId = CommonConstants.TYPE_APP;
-  gridLayoutEasyAbroadApp2.infoId = '37f7caf8-eff6-46ab-aefe-0f9786e47669';
-  gridLayoutEasyAbroadApp2.infoName = '香港航班资讯';
-  gridLayoutEasyAbroadApp2.bundleName = 'com.eks.hkflight';
-  gridLayoutEasyAbroadApp2.abilityName = 'MainAbility';
-  gridLayoutEasyAbroadApp2.moduleName = 'phone';
-  gridLayoutEasyAbroadApp2.container = 66;
-  gridLayoutEasyAbroadApp2.page = 0;
-  gridLayoutEasyAbroadApp2.row = 0;
-  gridLayoutEasyAbroadApp2.column = 1;
-  gridLayoutEasyAbroadApp2.area = [1, 1];
-  gridLayoutEasyAbroadApp2.intent =
+  let gridLayoutAppApp2: GridLayoutItemInfo = new GridLayoutItemInfo();
+  gridLayoutAppApp2.typeId = CommonConstants.TYPE_APP;
+  gridLayoutAppApp2.infoId = '37f7caf8-eff6-46ab-aefe-0f9786e47669';
+  gridLayoutAppApp2.infoName = '香港航班资讯';
+  gridLayoutAppApp2.bundleName = 'com.eks.hkflight';
+  gridLayoutAppApp2.abilityName = 'MainAbility';
+  gridLayoutAppApp2.moduleName = 'phone';
+  gridLayoutAppApp2.container = 66;
+  gridLayoutAppApp2.page = 0;
+  gridLayoutAppApp2.row = 0;
+  gridLayoutAppApp2.column = 1;
+  gridLayoutAppApp2.area = [1, 1];
+  gridLayoutAppApp2.intent =
     '{"legacyInfo":{"pkgName":"com.eks.hkflight","pkgLableName":"香港航班资讯","pkgSignature":"","versionCode":"","versionName":"","installSource":"com.ohos.abroad"},"targetModuleUrl":"","requestBundleName":"__WAIT_FOR_HARMONY_BUNDLENAME__com.eks.hkflight__1750477794802","installSource":"com.ohos.abroad","appType":0,"maskState":0}';
 
   let gridLayoutdeliverApp1: GridLayoutItemInfo = new GridLayoutItemInfo();
@@ -120,7 +120,7 @@ function initGridLayoutItemInfos(): GridLayoutItemInfo[] {
   gridLayoutApp.column = 1;
   gridLayoutApp.area = [1, 1];
   layoutInfos =
-    [gridLayoutEasyAbroadApp1, gridLayoutEasyAbroadApp2, gridLayoutdeliverApp1, gridLayoutdeliverApp2, gridLayoutApp];
+    [gridLayoutAppApp1, gridLayoutAppApp2, gridLayoutdeliverApp1, gridLayoutdeliverApp2, gridLayoutApp];
   return layoutInfos;
 }
 
@@ -138,7 +138,7 @@ function initCloneItemInfos(): CloneItemInfo[] {
     appType: 0
   } as CloneItemInfo;
 
-  let easyAbroadAppinfo1: CloneItemInfo = {
+  let appAppinfo1: CloneItemInfo = {
     bundleName: 'macao.taxi.passager',
     packageName: 'macao.taxi.passager',
     iconUri: 'file://com.ohos.sceneboard/data/storage/el1/base/haps/phone_sceneboard/files/RestoreIconData/macao.taxi.passager.png',
@@ -151,7 +151,7 @@ function initCloneItemInfos(): CloneItemInfo[] {
     appType: 0
   } as CloneItemInfo;
 
-  let easyAbroadAppinfo2: CloneItemInfo = {
+  let appAppinfo2: CloneItemInfo = {
     bundleName: 'com.eks.hkflight',
     packageName: 'com.eks.hkflight',
     iconUri: 'file://com.ohos.sceneboard/data/storage/el1/base/haps/phone_sceneboard/files/RestoreIconData/com.eks.hkflight.png',
@@ -191,7 +191,7 @@ function initCloneItemInfos(): CloneItemInfo[] {
   } as CloneItemInfo;
 
   cloneItemInfos =
-    [abnormalAppinfo, easyAbroadAppinfo1, easyAbroadAppinfo2, deliverAppinfo1, deliverAppinfo2];
+    [abnormalAppinfo, appAppinfo1, appAppinfo2, deliverAppinfo1, deliverAppinfo2];
   return cloneItemInfos;
 }
 
@@ -1827,11 +1827,11 @@ export default function DataConvertTest() {
       }
     })
 
-    it('test_getEasyAbroadApp_01', 0, () => {
+    it('test_getAppApp_01', 0, () => {
       try {
       let targetGridLayoutItem: GridLayoutItemInfo[] = [layoutInfos[4]];
       dataConvert['restoreInfo'] = [];
-      let result: GridLayoutItemInfo[] = dataConvert['getEasyAbroadApp'](targetGridLayoutItem);
+      let result: GridLayoutItemInfo[] = dataConvert['getAppApp'](targetGridLayoutItem);
       expect(result).assertEqual(targetGridLayoutItem);
       } catch (e) {
         expect(JSON.stringify(e)).assertInstanceOf('String');
@@ -1839,11 +1839,11 @@ export default function DataConvertTest() {
       dataConvert['restoreInfo'] = [];
     });
 
-    it('test_getEasyAbroadApp_02', 0, () => {
+    it('test_getAppApp_02', 0, () => {
       try {
         let targetGridLayoutItem: GridLayoutItemInfo[] = [layoutInfos[4]];
         dataConvert['restoreInfo'] = [cloneItemInfos[0]];
-        let result: GridLayoutItemInfo[] = dataConvert['getEasyAbroadApp'](targetGridLayoutItem);
+        let result: GridLayoutItemInfo[] = dataConvert['getAppApp'](targetGridLayoutItem);
         expect(result).assertEqual(targetGridLayoutItem);
       } catch (e) {
         expect(JSON.stringify(e)).assertInstanceOf('String');
@@ -1851,11 +1851,11 @@ export default function DataConvertTest() {
       dataConvert['restoreInfo'] = [];
     });
 
-    it('test_getEasyAbroadApp_03', 0, () => {
+    it('test_getAppApp_03', 0, () => {
       try {
         let targetGridLayoutItem: GridLayoutItemInfo[] = [layoutInfos[4]];
         dataConvert['restoreInfo'] = [cloneItemInfos[0], cloneItemInfos[3]];
-        let result: GridLayoutItemInfo[] = dataConvert['getEasyAbroadApp'](targetGridLayoutItem);
+        let result: GridLayoutItemInfo[] = dataConvert['getAppApp'](targetGridLayoutItem);
         expect(result).assertEqual(targetGridLayoutItem);
       } catch (e) {
         expect(JSON.stringify(e)).assertInstanceOf('String');
@@ -1863,11 +1863,11 @@ export default function DataConvertTest() {
       dataConvert['restoreInfo'] = [];
     });
 
-    it('test_getEasyAbroadApp_04', 0, () => {
+    it('test_getAppApp_04', 0, () => {
       try {
         let targetGridLayoutItem: GridLayoutItemInfo[] = [layoutInfos[4]];
         dataConvert['restoreInfo'] = [cloneItemInfos[0], cloneItemInfos[2]];
-        let result: GridLayoutItemInfo[] = dataConvert['getEasyAbroadApp'](targetGridLayoutItem);
+        let result: GridLayoutItemInfo[] = dataConvert['getAppApp'](targetGridLayoutItem);
         dataConvert['existAppSet'] = new Set(['com.eks.hkflight0']);
         expect(result).assertEqual(targetGridLayoutItem);
       } catch (e) {
@@ -1877,11 +1877,11 @@ export default function DataConvertTest() {
       dataConvert['existAppSet'] = new Set();
     });
 
-    it('test_getEasyAbroadApp_05', 0, () => {
+    it('test_getAppApp_05', 0, () => {
       try {
         let targetGridLayoutItem: GridLayoutItemInfo[] = [layoutInfos[4]];
         dataConvert['restoreInfo'] = [cloneItemInfos[0], cloneItemInfos[1]];
-        let result: GridLayoutItemInfo[] = dataConvert['getEasyAbroadApp'](targetGridLayoutItem);
+        let result: GridLayoutItemInfo[] = dataConvert['getAppApp'](targetGridLayoutItem);
         dataConvert['existAppSet'] = new Set(['com.eks.hkflight0']);
         expect(result.length).assertEqual(2);
       } catch (e) {

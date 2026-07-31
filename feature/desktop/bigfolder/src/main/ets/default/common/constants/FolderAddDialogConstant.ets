@@ -136,7 +136,7 @@ export default class FolderAddDialogConstant {
 
   public static readonly DEFAULT_BUTTON_HEIGHT = '40vp';
 
-  public static readonly AI_BAR_HEIGHT = '28vp';
+  public static readonly NAVI_BAR_HEIGHT = '28vp';
 
   public static readonly DEFAULT_BUTTON_PADDING = '8vp';
 }

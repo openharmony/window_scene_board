@@ -98,8 +98,8 @@ import MultiModalInputUtil from '@ohos/multimodalinput/src/main/ets/MultiModalIn
 import { NotificationIpc } from '@ohos/systemuicommon/src/main/ets/remote/Constant';
 import { NotificationRemoteObject } from '@ohos/notificationcomponent/src/main/ets/remote/NotificationRemoteObject';
 import {
-  AiBarSettingsDataMgr
-} from '@ohos/phonebase/src/main/ets/SceneBoard/aiBar/settings/preference/AiBarSettingsDataMgr';
+  NaviBarSettingsDataMgr
+} from '@ohos/phonebase/src/main/ets/SceneBoard/naviBar/settings/preference/NaviBarSettingsDataMgr';
 import { recentLockModel } from '@ohos/phonebase/src/main/ets/SceneBoard/recent/settings/RecentLockModel';
 import sceneSessionManager from '@ohos.sceneSessionManager';
 import { MatchCardDataManager } from '@ohos/launchercommon/src/main/ets/model/MatchCardDataManager';
@@ -317,7 +317,7 @@ export default class MainAbility extends ServiceExtensionAbility {
    * 初始化导航条默认高度，外settingsData数据同步
    */
   private initGestureBottomHeight(): void {
-    AiBarSettingsDataMgr.getInstance().setGestureBottomHeight();
+    NaviBarSettingsDataMgr.getInstance().setGestureBottomHeight();
   }
 
   /**

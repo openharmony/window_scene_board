@@ -30,7 +30,7 @@ import AIAudioEffectSettingModel, {
   enhanceNoiseReductStatusChangeListener,
   AIAudioEffectProp,
   AIAudioEnhanceProp
-} from '@ohos/pcbase/src/main/ets/SceneBoard/microphonepanel/model/AIAudioEffectSettingModel';
+} from '@ohos/pcbase/src/main/ets/SceneBoard/microphonepanel/model/AudioEffectSettingModel';
 import XmlParseUtil from '@ohos/pcbase/src/main/ets/SceneBoard/microphonepanel/util/XmlParseUtil';
 import MicrophonePanelModel from '@ohos/pcbase/src/main/ets/SceneBoard/microphonepanel/model/MicrophonePanelModel';
 import { PcAudioDevice } from '@ohos/pcbase/src/main/ets/SceneBoard/microphonepanel/PcAudioDevice';

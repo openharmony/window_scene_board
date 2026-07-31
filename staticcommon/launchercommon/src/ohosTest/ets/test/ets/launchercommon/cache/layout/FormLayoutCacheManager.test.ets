@@ -18,7 +18,6 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, MockK
   ArgumentMatchers } from '@ohos/hypium'
 import { DesktopLayoutCacheData } from '../../../../../../../main/ets/cache/layout/DesktopLayoutCacheData'
 import {
-  BundleConstants,
   CardItemInfo,
   CommonConstants,
   DefaultDesktopLayoutInfo, FormLayoutCacheManager,
@@ -232,40 +231,6 @@ export default function FormLayoutCacheManagerTest() {
       }catch{};
     })
 
-    it('selectAllAiSuggestionItems00', 0, () => {
-      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      try{
-        let layoutCacheManager: FormLayoutCacheManager = FormLayoutCacheManager.getInstance();
-        let defaultLayout: DefaultDesktopLayoutInfo = DefaultDesktopLayoutInfo.getDefaultLayoutInfo();
-        let layoutInfoList: GridLayoutItemInfo[] = [];
-        let infoId: string = '1';
-        let bundleName: string = 'com.openharmony.demoApp';
-        let keyName: string = 'com.openharmony.demoAppPhoneEntryAbility';
-        let demoCard: GridLayoutItemInfo = new GridLayoutItemInfo();
-        demoCard.infoId = infoId;
-        demoCard.bundleName = BundleConstants.AI_SUGGESTION_BUNDLE;
-        demoCard.abilityName = BundleConstants.AI_SUGGESTION_ABILITY;
-        demoCard.typeId = CommonConstants.TYPE_CARD;
-        demoCard.page = 0;
-        demoCard.row = 0;
-        demoCard.column = 0;
-        demoCard.area = [2, 2];
-        demoCard.keyName = keyName;
-        demoCard.cardId = '1';
-        layoutInfoList.push(demoCard);
-        defaultLayout.layoutInfo = layoutInfoList;
-
-        // 条件1
-        let layoutCacheData: DesktopLayoutCacheData = new DesktopLayoutCacheData(defaultLayout);
-        layoutCacheManager.reInit(layoutCacheData);
-
-        let res: GridLayoutItemInfo[] = layoutCacheManager.selectAllAiSuggestionItems();
-
-        // Defines a variety of assertion methods, which are used to declare expected boolean conditions.
-        expect(res.length).assertEqual(1);
-      }catch{};
-    })
-
     it('selectFormStackItemByFormStackId00', 0, () => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       try{
@@ -277,8 +242,8 @@ export default function FormLayoutCacheManagerTest() {
         let keyName: string = 'com.openharmony.demoAppPhoneEntryAbility';
         let demoCard: GridLayoutItemInfo = new GridLayoutItemInfo();
         demoCard.infoId = infoId;
-        demoCard.bundleName = BundleConstants.AI_SUGGESTION_BUNDLE;
-        demoCard.abilityName = BundleConstants.AI_SUGGESTION_ABILITY;
+        demoCard.bundleName = 'com.ohos.suggestion';
+        demoCard.abilityName = 'ParentFormAbility';
         demoCard.typeId = CommonConstants.TYPE_FORM_STACK;
         demoCard.page = 0;
         demoCard.row = 0;
@@ -312,8 +277,8 @@ export default function FormLayoutCacheManagerTest() {
         let keyName: string = 'com.openharmony.demoAppPhoneEntryAbility';
         let demoCard: GridLayoutItemInfo = new GridLayoutItemInfo();
         demoCard.infoId = infoId;
-        demoCard.bundleName = BundleConstants.AI_SUGGESTION_BUNDLE;
-        demoCard.abilityName = BundleConstants.AI_SUGGESTION_ABILITY;
+        demoCard.bundleName = 'com.ohos.suggestion';
+        demoCard.abilityName = 'ParentFormAbility';
         demoCard.typeId = CommonConstants.TYPE_FORM_STACK;
         demoCard.page = 0;
         demoCard.row = 0;
@@ -347,8 +312,8 @@ export default function FormLayoutCacheManagerTest() {
         let keyName: string = 'com.openharmony.demoAppPhoneEntryAbility';
         let demoCard: GridLayoutItemInfo = new GridLayoutItemInfo();
         demoCard.infoId = infoId;
-        demoCard.bundleName = BundleConstants.AI_SUGGESTION_BUNDLE;
-        demoCard.abilityName = BundleConstants.AI_SUGGESTION_ABILITY;
+        demoCard.bundleName = 'com.ohos.suggestion';
+        demoCard.abilityName = 'ParentFormAbility';
         demoCard.typeId = CommonConstants.TYPE_CARD;
         demoCard.page = 0;
         demoCard.row = 0;
@@ -382,8 +347,8 @@ export default function FormLayoutCacheManagerTest() {
         let keyName: string = 'com.openharmony.demoAppPhoneEntryAbility';
         let demoCard: GridLayoutItemInfo = new GridLayoutItemInfo();
         demoCard.infoId = infoId;
-        demoCard.bundleName = BundleConstants.AI_SUGGESTION_BUNDLE;
-        demoCard.abilityName = BundleConstants.AI_SUGGESTION_ABILITY;
+        demoCard.bundleName = 'com.ohos.suggestion';
+        demoCard.abilityName = 'ParentFormAbility';
         demoCard.typeId = CommonConstants.TYPE_CARD;
         demoCard.page = 0;
         demoCard.row = 0;
@@ -420,8 +385,8 @@ export default function FormLayoutCacheManagerTest() {
         let keyName: string = 'com.openharmony.demoAppPhoneEntryAbility';
         let demoCard: GridLayoutItemInfo = new GridLayoutItemInfo();
         demoCard.infoId = infoId;
-        demoCard.bundleName = BundleConstants.AI_SUGGESTION_BUNDLE;
-        demoCard.abilityName = BundleConstants.AI_SUGGESTION_ABILITY;
+        demoCard.bundleName = 'com.ohos.suggestion';
+        demoCard.abilityName = 'ParentFormAbility';
         demoCard.typeId = CommonConstants.TYPE_CARD;
         demoCard.page = 0;
         demoCard.row = 0;
@@ -463,8 +428,8 @@ export default function FormLayoutCacheManagerTest() {
         let keyName: string = 'com.openharmony.demoAppPhoneEntryAbility';
         let demoCard: GridLayoutItemInfo = new GridLayoutItemInfo();
         demoCard.infoId = infoId;
-        demoCard.bundleName = BundleConstants.AI_SUGGESTION_BUNDLE;
-        demoCard.abilityName = BundleConstants.AI_SUGGESTION_ABILITY;
+        demoCard.bundleName = 'com.ohos.suggestion';
+        demoCard.abilityName = 'ParentFormAbility';
         demoCard.typeId = CommonConstants.TYPE_FORM_STACK;
         demoCard.page = 0;
         demoCard.row = 0;
@@ -509,8 +474,8 @@ export default function FormLayoutCacheManagerTest() {
         let keyName: string = 'com.openharmony.demoAppPhoneEntryAbility';
         let demoCard: GridLayoutItemInfo = new GridLayoutItemInfo();
         demoCard.infoId = infoId;
-        demoCard.bundleName = BundleConstants.AI_SUGGESTION_BUNDLE;
-        demoCard.abilityName = BundleConstants.AI_SUGGESTION_ABILITY;
+        demoCard.bundleName = 'com.ohos.suggestion';
+        demoCard.abilityName = 'ParentFormAbility';
         demoCard.typeId = CommonConstants.TYPE_CARD;
         demoCard.page = 0;
         demoCard.row = 0;
@@ -545,8 +510,8 @@ export default function FormLayoutCacheManagerTest() {
         let keyName: string = 'com.openharmony.demoAppPhoneEntryAbility';
         let demoCard: GridLayoutItemInfo = new GridLayoutItemInfo();
         demoCard.infoId = infoId;
-        demoCard.bundleName = BundleConstants.AI_SUGGESTION_BUNDLE;
-        demoCard.abilityName = BundleConstants.AI_SUGGESTION_ABILITY;
+        demoCard.bundleName = 'com.ohos.suggestion';
+        demoCard.abilityName = 'ParentFormAbility';
         demoCard.typeId = CommonConstants.TYPE_CARD;
         demoCard.page = 0;
         demoCard.row = 0;
@@ -580,8 +545,8 @@ export default function FormLayoutCacheManagerTest() {
         let keyName: string = 'com.openharmony.demoAppPhoneEntryAbility';
         let demoCard: GridLayoutItemInfo = new GridLayoutItemInfo();
         demoCard.infoId = infoId;
-        demoCard.bundleName = BundleConstants.AI_SUGGESTION_BUNDLE;
-        demoCard.abilityName = BundleConstants.AI_SUGGESTION_ABILITY;
+        demoCard.bundleName = 'com.ohos.suggestion';
+        demoCard.abilityName = 'ParentFormAbility';
         demoCard.typeId = CommonConstants.TYPE_CARD;
         demoCard.page = 0;
         demoCard.row = 0;
@@ -616,8 +581,8 @@ export default function FormLayoutCacheManagerTest() {
         let keyName: string = 'com.openharmony.demoAppPhoneEntryAbility';
         let demoCard: GridLayoutItemInfo = new GridLayoutItemInfo();
         demoCard.infoId = infoId;
-        demoCard.bundleName = BundleConstants.AI_SUGGESTION_BUNDLE;
-        demoCard.abilityName = BundleConstants.AI_SUGGESTION_ABILITY;
+        demoCard.bundleName = 'com.ohos.suggestion';
+        demoCard.abilityName = 'ParentFormAbility';
         demoCard.typeId = CommonConstants.TYPE_CARD;
         demoCard.page = 0;
         demoCard.row = 0;
@@ -652,8 +617,8 @@ export default function FormLayoutCacheManagerTest() {
         let keyName: string = 'com.openharmony.demoAppPhoneEntryAbility';
         let demoCard: GridLayoutItemInfo = new GridLayoutItemInfo();
         demoCard.infoId = infoId;
-        demoCard.bundleName = BundleConstants.AI_SUGGESTION_BUNDLE;
-        demoCard.abilityName = BundleConstants.AI_SUGGESTION_ABILITY;
+        demoCard.bundleName = 'com.ohos.suggestion';
+        demoCard.abilityName = 'ParentFormAbility';
         demoCard.typeId = CommonConstants.TYPE_CARD;
         demoCard.page = 0;
         demoCard.row = 0;
@@ -1244,8 +1209,8 @@ export default function FormLayoutCacheManagerTest() {
       let formStackId: string = 'testFormStackid';
       let demoCard: GridLayoutItemInfo = new GridLayoutItemInfo();
       demoCard.infoId = infoId;
-      demoCard.bundleName = BundleConstants.AI_SUGGESTION_BUNDLE;
-      demoCard.abilityName = BundleConstants.AI_SUGGESTION_ABILITY;
+      demoCard.bundleName = 'com.ohos.suggestion';
+      demoCard.abilityName = 'ParentFormAbility';
       demoCard.typeId = CommonConstants.TYPE_FORM_STACK;
       demoCard.page = 0;
       demoCard.row = 0;
@@ -1268,8 +1233,8 @@ export default function FormLayoutCacheManagerTest() {
         expect(res1).assertUndefined();
         let item1: GridLayoutItemInfo = new GridLayoutItemInfo();
         item1.infoId = infoId;
-        item1.bundleName = BundleConstants.AI_SUGGESTION_BUNDLE;
-        item1.abilityName = BundleConstants.AI_SUGGESTION_ABILITY;
+        item1.bundleName = 'com.ohos.suggestion';
+        item1.abilityName = 'ParentFormAbility';
         item1.typeId = CommonConstants.TYPE_FORM_STACK;
         item1.cardId = '12230';
         demoCard.layoutInfo = [[item1]];
@@ -1278,14 +1243,14 @@ export default function FormLayoutCacheManagerTest() {
         expect(res2).assertUndefined();
         let item2: GridLayoutItemInfo = new GridLayoutItemInfo();
         item2.infoId = infoId;
-        item2.bundleName = BundleConstants.AI_SUGGESTION_BUNDLE;
-        item2.abilityName = BundleConstants.AI_SUGGESTION_ABILITY;
+        item2.bundleName = 'com.ohos.suggestion';
+        item2.abilityName = 'ParentFormAbility';
         item2.typeId = CommonConstants.TYPE_FORM_STACK;
         item2.cardId = '1223';
         let item3: GridLayoutItemInfo = new GridLayoutItemInfo();
         item3.infoId = infoId;
-        item3.bundleName = BundleConstants.AI_SUGGESTION_BUNDLE;
-        item3.abilityName = BundleConstants.AI_SUGGESTION_ABILITY;
+        item3.bundleName = 'com.ohos.suggestion';
+        item3.abilityName = 'ParentFormAbility';
         item3.typeId = CommonConstants.TYPE_FORM_STACK;
         item3.cardId = '12233';
         demoCard.layoutInfo = [[item2, item3]];
@@ -1295,22 +1260,6 @@ export default function FormLayoutCacheManagerTest() {
       } catch (e) {
       }
       mocker.clear(layoutCacheData);
-      mocker.clearAll();
-    })
-
-    it('test_selectAllAiSuggestionItems_001', 0, () => {
-      let layoutCacheManager: FormLayoutCacheManager = FormLayoutCacheManager.getInstance();
-      let cacheData: DesktopLayoutCacheData = layoutCacheManager['layoutCacheData'];
-      let mocker: MockKit = new MockKit();
-      try{
-        const mockerFunc1 = mocker.mockFunc(cacheData, cacheData.getGridLayoutItemList);
-        let items: GridLayoutItemInfo[] = createLayoutItems();
-        when(mockerFunc1)().afterReturn(items);
-        let res: GridLayoutItemInfo[] = layoutCacheManager.selectAllAiSuggestionItems();
-        expect(res.length > 0).assertTrue();
-      } catch (e) {
-      }
-      mocker.clear(cacheData);
       mocker.clearAll();
     })
 
@@ -1360,8 +1309,8 @@ export default function FormLayoutCacheManagerTest() {
         let keyName: string = 'com.openharmony.demoAppPhoneEntryAbility';
         let demoCard: GridLayoutItemInfo = new GridLayoutItemInfo();
         demoCard.infoId = infoId;
-        demoCard.bundleName = BundleConstants.AI_SUGGESTION_BUNDLE;
-        demoCard.abilityName = BundleConstants.AI_SUGGESTION_ABILITY;
+        demoCard.bundleName = 'com.ohos.suggestion';
+        demoCard.abilityName = 'ParentFormAbility';
         demoCard.typeId = CommonConstants.TYPE_CARD;
         demoCard.page = 0;
         demoCard.row = 0;
@@ -1420,8 +1369,8 @@ export default function FormLayoutCacheManagerTest() {
       let keyName: string = 'com.openharmony.demoAppPhoneEntryAbility';
       let demoCard: GridLayoutItemInfo = new GridLayoutItemInfo();
       demoCard.infoId = infoId;
-      demoCard.bundleName = BundleConstants.AI_SUGGESTION_BUNDLE;
-      demoCard.abilityName = BundleConstants.AI_SUGGESTION_ABILITY;
+      demoCard.bundleName = 'com.ohos.suggestion';
+      demoCard.abilityName = 'ParentFormAbility';
       demoCard.typeId = CommonConstants.TYPE_CARD;
       demoCard.page = 0;
       demoCard.row = 0;
@@ -1467,8 +1416,8 @@ export default function FormLayoutCacheManagerTest() {
          let keyName: string = 'com.openharmony.demoAppPhoneEntryAbility';
          let demoCard: GridLayoutItemInfo = new GridLayoutItemInfo();
          demoCard.infoId = infoId;
-         demoCard.bundleName = BundleConstants.AI_SUGGESTION_BUNDLE;
-         demoCard.abilityName = BundleConstants.AI_SUGGESTION_ABILITY;
+         demoCard.bundleName = 'com.ohos.suggestion';
+         demoCard.abilityName = 'ParentFormAbility';
          demoCard.typeId = CommonConstants.TYPE_CARD;
          demoCard.page = 0;
          demoCard.row = 0;
@@ -1554,8 +1503,8 @@ function gridItem1(): GridLayoutItemInfo {
   let keyName: string = 'com.openharmony.demoAppPhoneEntryAbility';
   let demoCard: GridLayoutItemInfo = new GridLayoutItemInfo();
   demoCard.infoId = infoId;
-  demoCard.bundleName = BundleConstants.AI_SUGGESTION_BUNDLE;
-  demoCard.abilityName = BundleConstants.AI_SUGGESTION_ABILITY;
+  demoCard.bundleName = 'com.ohos.suggestion';
+  demoCard.abilityName = 'ParentFormAbility';
   demoCard.typeId = CommonConstants.TYPE_CARD;
   demoCard.page = 0;
   demoCard.row = 0;
@@ -1617,8 +1566,8 @@ function createLayoutItems(): GridLayoutItemInfo[] {
   for (let index = 0; index < 3; index++) {
     let item0: GridLayoutItemInfo = new GridLayoutItemInfo();
     item0.typeId = CommonConstants.TYPE_CARD;
-    item0.bundleName = BundleConstants.AI_SUGGESTION_BUNDLE;
-    item0.abilityName = BundleConstants.AI_SUGGESTION_ABILITY;
+    item0.bundleName = 'com.ohos.suggestion';
+    item0.abilityName = 'ParentFormAbility';
     item1LayoutInfo.push(item0);
   }
   item1.layoutInfo = [item1LayoutInfo];
