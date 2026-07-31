@@ -10541,6 +10541,27 @@ export class SCBSceneSessionManager {
     this.requestFocus(sceneInfo.persistentId, undefined, FocusChangeReason.MOVE_UP);
   }
 
+  public onRestoreFloatMainWindow(sceneInfo: SCBSceneInfo): void {
+    let containerSession = this.getSceneContainerSessionFromScenePanel(sceneInfo.persistentId, sceneInfo.screenId);
+    if (!containerSession) {
+      log.showInfo('cannot find container, try to find in side edge');
+      let sideEdgeSession = this.getSideEdgeSessionList().getSessionByPersistentId(sceneInfo.persistentId);
+      if (sideEdgeSession instanceof SCBSceneSession) {
+        sideEdgeSession.sessionData.isNewWant = true;
+        this.startSceneFromOther(sceneInfo);
+        return;
+      }
+      log.showError(`cannot find container in getSceneContainerSessionFromScenePanel or getSideEdgeSessionList`);
+      return;
+    }
+
+    let sceneSession = containerSession.getSceneSessionByPersistentId(sceneInfo.persistentId);
+    if (sceneSession) {
+      sceneSession.sessionData.isNewWant = true;
+    }
+    this.startSceneFromOther(sceneInfo);
+  }
+
   public notifyDockAvoidWindow(persistentId: number, needAvoid?: boolean) {
     if (needAvoid !== undefined && this.existWindowOverlappedByDock(persistentId)) {
       log.showInfo(`exist other window overlaped by dock.`);
