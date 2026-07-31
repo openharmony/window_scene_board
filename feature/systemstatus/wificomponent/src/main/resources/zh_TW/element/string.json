@@ -1,4 +1,4 @@
-{
+﻿{
     "string":[
         {
             "name":"accessibility_status_bar_wifi_no",
@@ -69,6 +69,14 @@
             "attr":{
                 "priority":"LT"
             }
+        },
+        {
+            "name":"control_center_anti_theft_for_toggle",
+            "value":"樣機處於防竊值守狀態，已禁止執行此操作",
+            "attr":{
+                "priority":"LT"
+            }
         }
+
     ]
 }

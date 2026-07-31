@@ -13,6 +13,13 @@
             "attr":{
                 "priority":"translate"
             }
+        },
+        {
+            "name": "ic_tools_disable_battery_low",
+            "value": "Nivel de batería demasiado bajo para encender la linterna.",
+            "attr": {
+                "priority": "translate"
+            }
         }
-    ]
+]
 }

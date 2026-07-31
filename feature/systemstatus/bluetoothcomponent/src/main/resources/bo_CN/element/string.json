@@ -1,4 +1,4 @@
-{
+﻿{
     "string":[
         {
             "name":"control_center_complex_toggle_bluetooth_title",
@@ -27,6 +27,21 @@
             "attr":{
                 "priority":"LT"
             }
+        },
+        {
+            "name":"control_center_complex_toggle_nearlink_title",
+            "value":"སྐར་ཆེམ།",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"control_center_anti_theft_for_toggle",
+            "value":"དཔེ་མཚོན་འཕྲུལ་ཆས་རྐུན་འགོག་རྣམ་པར་གནས། བཀོལ་སྤྱོད་དེ་ལག་བསྟར་བྱ་མི་ཆོག་པར་བཟོས་ཟིན།",
+            "attr":{
+                "priority":"LT"
+            }
         }
+
     ]
 }

@@ -22,7 +22,8 @@ import { SysApiWrapper } from '../common/SysApiWrapper';
 import Constants, {
   TOGGLE_LIST_OF_2_2,
   TOGGLE_SPACE_COMPACT,
-  TOGGLE_SPACE_DIFF
+  TOGGLE_SPACE_DIFF,
+  MEDIA_ROW_TOP_TOGGLES
 } from '../common/Constants';
 import { DragHelper, MoveDirection } from './DragHelper';
 import { AccessibilityUtil } from '@ohos/screenlockcommon/src/main/ets/utils/AccessibilityUtil';
@@ -371,6 +372,7 @@ export class TopToggleEditViewModel {
             } else {
               this.previewToggles.splice(this.previewToggles.length - 1, 0, item);
             }
+            this.normalizeMediaRowInPreview();
             this.addToggleTimeOut = null;
           }, 150);
         } else {
@@ -382,6 +384,7 @@ export class TopToggleEditViewModel {
             } else {
               this.previewToggles.push(item);
             }
+            this.normalizeMediaRowInPreview();
             this.addToggleTimeOut = null;
           }, 150);
         }
@@ -389,10 +392,31 @@ export class TopToggleEditViewModel {
       } else {
         this.addToggleTimeOut = SysApiWrapper.setTimeout(() => {
           this.previewToggles.push(item);
+          this.normalizeMediaRowInPreview();
           this.addToggleTimeOut = null;
         }, 50);
       }
     });
+  }
+
+  /**
+   * 预览区媒体行顺序固定为：媒体 | 亮度音量组合
+   */
+  private normalizeMediaRowInPreview(): void {
+    const hasLegacySlider: boolean = this.previewToggles.includes(FASlotName.BRIGHTNESS) ||
+      this.previewToggles.includes(FASlotName.SOUND);
+    let working: string[] = this.previewToggles.filter(item =>
+      item !== FASlotName.BRIGHTNESS && item !== FASlotName.SOUND);
+    if (hasLegacySlider && !working.includes(FASlotName.COMBINED_SLIDER)) {
+      working.push(FASlotName.COMBINED_SLIDER);
+    }
+    const mediaRow: string[] = MEDIA_ROW_TOP_TOGGLES.filter(item => working.includes(item));
+    const others: string[] = working.filter(item => !MEDIA_ROW_TOP_TOGGLES.includes(item));
+    const ordered: string[] = mediaRow.concat(others);
+    this.previewToggles.splice(0, this.previewToggles.length);
+    for (let i = 0; i < ordered.length; i++) {
+      this.previewToggles.push(ordered[i]);
+    }
   }
 
   /**
@@ -485,6 +509,10 @@ export class TopToggleEditViewModel {
 
   private showLibraryPanel() {
     TraceUtil.startTrace(DomainName.CC, 'showLibraryPanel');
+    // 若进入编辑后库尚未延后挂载，打开时立即挂载
+    if (!this.viewData.loadToggleLibrary) {
+      this.viewData.loadToggleLibrary = true;
+    }
     ControlCenterHiSysEventUtil.reportCCEditExpandLibrary({
       TIMESTAMP: `${DropDownPanelManager.getLastDropdownTime()}`,
       SWITCHNUMBER: this.libraryToggles.length,
@@ -501,12 +529,18 @@ export class TopToggleEditViewModel {
       this.viewData.showTopToggleLibrary = true;
       this.viewData.topLibraryTrans = 0;
       this.updatePreviewHeight();
-      this.updateScrollOffset();
+      // 与快捷栏待添加区一致：展开时配合滚动/模糊；顶栏位于列表顶部，滚回顶部即可
+      if (!this.showDoubleColumn) {
+        this.scrollBlurController?.activeScrollerBlur();
+        this.scroller.scrollTo({ xOffset: 0, yOffset: 0 });
+      } else {
+        this.scrollBlurController?.scrollToWithBlur(0);
+      }
     });
   }
 
   /**
-   * 单列开关屏幕展示不下时进行列表滚动
+   * 单列开关屏幕展示不下时进行列表滚动（添加卡片后调用）
    */
   private updateScrollOffset(): void {
     if (!this.showDoubleColumn) {
@@ -599,6 +633,7 @@ export class TopToggleEditViewModel {
   public updatePreviewHeight(extraHeight: number = 0): void {
     let rows = this.getToggleRows(this.previewToggles);
     let length = rows * TOGGLE_HEIGHT + (rows + 1) * TOGGLE_ROWS_GAP + extraHeight;
+    // 与快捷栏一致：仅未展开备选库时计入添加按钮高度
     if (!this.viewData.showTopToggleLibrary) {
       length += TOGGLE_ROWS_GAP + ADD_BUTTON_HEIGHT + EXTRA_HEIGHT_IN_COMPACT_LAYOUT;
     }
@@ -649,7 +684,7 @@ export class TopToggleEditViewModel {
   }
 
   /**
-   * 是否是2*2尺寸的组合开关
+   * 是否是2*2尺寸的组合开关（媒体卡、亮度音量组合）
    *
    * @param topToggle 开关名称
    * @returns

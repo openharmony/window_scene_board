@@ -62,6 +62,7 @@ import Constants, {
   MAIN_LAYOUT_HEADER_ZINDEX,
   TOGGLE_LIST_OF_2_2,
   FIXED_TOP_TOGGLES,
+  MEDIA_ROW_TOP_TOGGLES,
 } from '../../common/Constants';
 import { DeviceState } from '@ohos/launchercommon/src/main/ets/constants/CommonConstants';
 import { ControlCenterState } from '@ohos/controlcentercommon/Index';
@@ -497,7 +498,9 @@ export default struct ControlCenterComponent {
    */
   private handleTopToggleData(): void {
     let currentTopToggles: string = this.toggleData.topToggle.join(',');
-    if (currentTopToggles === this.lastTopToggles) {
+    // 顶栏为空时 lastTopToggles 初始也为空，若直接 return 会漏插 ADD_MORE_TOP，快捷行索引整体错位
+    if (currentTopToggles === this.lastTopToggles &&
+      this.contentIndexArr.includes(ADD_MORE_TOP_BUTTON_NAME)) {
       log.showInfo('top toggles no change');
       return;
     }
@@ -519,22 +522,29 @@ export default struct ControlCenterComponent {
       this.topToggleArray = [];
       return;
     }
+    // 媒体/亮度/音量固定为同一行且顺序为：媒体 | 亮度 | 音量
+    const mediaRow: string[] = MEDIA_ROW_TOP_TOGGLES.filter(item => this.toggleData.topToggle.includes(item));
+    const otherToggles: string[] = this.toggleData.topToggle.filter(item => !MEDIA_ROW_TOP_TOGGLES.includes(item));
+    let tempTogglesArray: string[][] = [];
+    if (mediaRow.length > 0) {
+      tempTogglesArray.push(mediaRow);
+    }
     let startIndex: number = 0;
     let endIndex: number = 0;
     let numberOf2x2: number = 0;
-    let tempTogglesArray: string[][] = [];
+    toggleSize = otherToggles.length;
     while (endIndex < toggleSize) {
-      if (TOGGLE_LIST_OF_2_2.includes(this.toggleData.topToggle[endIndex])) {
+      if (TOGGLE_LIST_OF_2_2.includes(otherToggles[endIndex])) {
         numberOf2x2++;
       }
       // 如果startIndex到endIndex之间的开关可以凑成一行，即:有2个1x2 或者2个2x2 或者1个2x2加上2个1x2
       if ((endIndex - startIndex === 1 && (numberOf2x2 === 0 || numberOf2x2 === 2)) ||
         (endIndex - startIndex === 2 && numberOf2x2 === 1)) {
-        tempTogglesArray.push(this.toggleData.topToggle.slice(startIndex, endIndex + 1));
+        tempTogglesArray.push(otherToggles.slice(startIndex, endIndex + 1));
         startIndex = endIndex + 1;
         numberOf2x2 = 0;
       } else if (endIndex === toggleSize - 1) {
-        tempTogglesArray.push(this.toggleData.topToggle.slice(startIndex, endIndex + 1));
+        tempTogglesArray.push(otherToggles.slice(startIndex, endIndex + 1));
       }
       endIndex++;
     }
@@ -553,7 +563,15 @@ export default struct ControlCenterComponent {
       return;
     }
     let currentToggles:string = this.toggleData.quickToggle.join(',');
-    if (this.lastToggles === currentToggles) {
+    let toggleRowLen: number = Math.ceil(toggleSize / QuickToggleController.getInstance().getToggleColumn());
+    // 顶栏行数变化时也需重建快捷行占位，否则 getQuickToggleRow 起始下标会错位导致少显示整行
+    let expectedQuickRows: number = 0;
+    this.contentIndexArr.forEach((item: string) => {
+      if (item.startsWith(TOGGLE_ROW_ITEM_NAME)) {
+        expectedQuickRows++;
+      }
+    });
+    if (this.lastToggles === currentToggles && expectedQuickRows === toggleRowLen) {
       log.showInfo('same with last time');
       return;
     }
@@ -565,7 +583,6 @@ export default struct ControlCenterComponent {
       });
     }
     this.lastToggles = currentToggles;
-    let toggleRowLen: number = Math.ceil(toggleSize / QuickToggleController.getInstance().getToggleColumn());
     this.toggleAreaHeight = toggleRowLen * 100;
     this.contentIndexArr = this.contentIndexArr.filter(toggle => !toggle.startsWith(TOGGLE_ROW_ITEM_NAME));
     for (let i = 0; i < toggleRowLen; i++) {
@@ -1444,10 +1461,8 @@ export default struct ControlCenterComponent {
   }
 
   getTopTogglesHeight(): number {
+    // 媒体+亮度音量组合同属一行，行高已按 mediaAndWifiBlue 计算，不再为 combined 额外加行
     let topToggleRows: number = this.topToggleArray.length + (this.isLargeFoldStyle ? 0 : 1);
-    if (this.toggleData.topToggle?.includes(FASlotName.COMBINED_SLIDER)) {
-      topToggleRows++;
-    }
     log.showInfo('topToggleRows:' + topToggleRows);
     return topToggleRows * TOP_TOGGLE_ROW_HEIGHT;
   }

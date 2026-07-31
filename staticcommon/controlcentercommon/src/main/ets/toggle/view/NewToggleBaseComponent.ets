@@ -811,12 +811,12 @@ export struct ToggleComponent {
     if (this.templateType === ToggleTemplateType.TAGGED) {
       return this.toggleViewData?.isOn ?
       this.colorModeViewData.wifiBgOnColor :
-      this.colorModeViewData.wifiBgOffColor;
+      $r('sys.color.comp_background_primary');
     } else {
+      // 快捷栏关闭态保持白色；开启态蓝色不变
       return this.toggleViewData?.isOn
         ? this.colorModeViewData.commonBgOnColor
-        : this.colorModeViewData.getSolidColor(
-        this.colorModeViewData.commonBgOffColor, this.colorModeViewData.getMainCardOption(this.toggleViewData?.isOn))
+        : $r('sys.color.comp_background_primary');
     }
   }
 
@@ -1283,7 +1283,7 @@ export struct ToggleComponent {
         .fillColor(this.toggleViewData.isOn ? this.style.newIconOnColor : this.style.newIconOffColor)
     }.size({ width: this.style.buttonDiameter, height: this.style.buttonDiameter })
     .borderRadius(this.style.buttonDiameter)
-    .backgroundColor(this.toggleViewData.isOn ? '#ccffffff' : '#99000000')
+    .backgroundColor(this.toggleViewData.isOn ? '#66FFFFFF' : '#4D000000')
   }
 
   build() {

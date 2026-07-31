@@ -1530,12 +1530,10 @@ export default struct MediaCardComponent {
       .draggable(false)
       .id(COMPONENT_ID_OUTPUT_TYPE)
       .fontColor((this.isLocalDeviceState() && (this.curRemoteOutputDev < 0 || this.checkCall())) ?
-        this.isForceDark ? [$r('app.color.media_control_center_switch_full')]
-          : [$r('app.color.ohos_id_color_secondary')] :
-        this.isForceDark ? [$r('app.color.media_control_center_switch_active_full')] :
-        [$r('app.color.ohos_id_color_primary_contrary')])
-      .foregroundBrightness(this.colorModeViewData.getPrimaryFgOption(
-        !(this.isLocalDeviceState() && (this.curRemoteOutputDev < 0 || this.checkCall()))))
+        // 本地设备：黑色图标
+        [$r('sys.color.icon_primary')] :
+        // 投播中：白色图标
+        [$r('sys.color.icon_on_primary')])
       .renderingStrategy(this.getRenderingStrategy(this.getCurSwitchIcon()))
       .renderGroup(this.isMarkingRenderGroup) // 增加UI缓存，防止丢帧
   }
@@ -1581,12 +1579,10 @@ export default struct MediaCardComponent {
     .borderRadius(120)
     .justifyContent(FlexAlign.Center)
     .backgroundColor((this.isLocalDeviceState() && (this.curRemoteOutputDev < 0 || this.checkCall())) ?
-      (this.isForceDark ? $r('app.color.media_control_center_component_normal') :
-        $r('app.color.ohos_id_color_component_normal')) :
-      (this.isForceDark ? $r('app.color.media_control_center_switch_active_bgc') :
-        $r('app.color.ohos_id_color_emphasize')))
-    .backgroundBrightnessInternal(this.colorModeViewData.getTopOption(
-      !(this.isLocalDeviceState() && (this.curRemoteOutputDev < 0 || this.checkCall()))))
+      // 本地设备：浅灰底
+      $r('sys.color.comp_background_gray') :
+      // 投播中：系统强调蓝
+      $r('sys.color.comp_background_emphasize'))
     .id(this.getGeometryKey(this.checkCall() ? 'callSwitchIconStart' : 'switchIconStart'))
     .geometryTransition(this.isSmallFoldOuterScreen ? '' :
       this.getGeometryKey(this.checkCall() ? 'callSwitchIcon' : 'switchIcon'), this.geometryOptions)

@@ -31,6 +31,7 @@ import StyleConfiguration, {
   SingleExpandLongButtonStyle
 } from '../../common/StyleConfiguration';
 import DropDownPanelManager, { PanelDismissReason } from '@ohos/systemuicommon/src/main/ets/manager/DropDownPanelManager';
+import { MEDIA_ROW_TOP_TOGGLES } from '../../common/Constants';
 
 const TAG = 'Ctrl.TopToggleRow';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.CC, TAG);
@@ -89,8 +90,15 @@ export default struct TopToggleRow {
         })
 
         Row({ space: this.style.space }) {
+          if (this.slots.includes(FASlotName.COMBINED_SLIDER) || this.slots.includes(FASlotName.BRIGHTNESS)) {
+            TopToggleLoader({ toggleSlot: FASlotName.BRIGHTNESS })
+          }
+          if (this.slots.includes(FASlotName.COMBINED_SLIDER) || this.slots.includes(FASlotName.SOUND)) {
+            TopToggleLoader({ toggleSlot: FASlotName.SOUND })
+          }
           ForEach(this.slots, (item: string, index?: number) => {
-            if (item !== FASlotName.MEDIA_ITEM_NAME) {
+            if (item !== FASlotName.MEDIA_ITEM_NAME && !MEDIA_ROW_TOP_TOGGLES.includes(item) &&
+              item !== FASlotName.BRIGHTNESS && item !== FASlotName.SOUND) {
               TopToggleLoader({ toggleSlot: item })
             }
           }, (item: string, index?: number) => item)
@@ -105,15 +113,40 @@ export default struct TopToggleRow {
       .alignItems(VerticalAlign.Top)
       .clip(false)
     } else {
-      Row() {
-        ControlCenterMediaCardLayout({
-          isShowWifiCard: true,
-          mediaLandscape: mediaLandscape
-        })
-          .opacity(this.viewData.mediaCardOpacity)
+      // 固定布局：媒体(左) | 亮度+音量组合(右)，按槽位是否已添加决定显隐
+      Row({ space: this.style.space }) {
+        if (this.slots.includes(FASlotName.MEDIA_ITEM_NAME)) {
+          ControlCenterMediaCardLayout({
+            mediaLandscape: mediaLandscape
+          })
+            .opacity(this.viewData.mediaCardOpacity)
+        }
+        if (this.slots.includes(FASlotName.COMBINED_SLIDER) || this.slots.includes(FASlotName.BRIGHTNESS)) {
+          TopToggleLoader({
+            toggleSlot: FASlotName.BRIGHTNESS,
+            isVerticalSlider: true
+          })
+        }
+        if (this.slots.includes(FASlotName.COMBINED_SLIDER) || this.slots.includes(FASlotName.SOUND)) {
+          TopToggleLoader({
+            toggleSlot: FASlotName.SOUND,
+            isVerticalSlider: true
+          })
+        }
+        // 同槽位里其它顶栏项
+        ForEach(this.slots, (item: string) => {
+          if (!MEDIA_ROW_TOP_TOGGLES.includes(item) &&
+            item !== FASlotName.BRIGHTNESS && item !== FASlotName.SOUND) {
+            TopToggleLoader({ toggleSlot: item })
+          }
+        }, (item: string) => item)
       }
+      .width(CC_LAYOUT_CONFIGS[this.ccLayoutIndex]?.singleCardWidth)
+      .height($r('app.float.Control_center_mediaAndWifiBlue_height'))
+      .alignItems(VerticalAlign.Top)
       .animStyles()
       .visibility(this.backgroundOpacity.backgroundOpacity === 1 ? Visibility.Visible : Visibility.Hidden)
+      .clip(false)
     }
   }
 
@@ -154,7 +187,9 @@ export default struct TopToggleRow {
   }
 
   build() {
-    if (this.slots.includes(FASlotName.MEDIA_ITEM_NAME)) {
+    // 含媒体或亮度音量组合：走固定媒体行布局（媒体 | 亮度 | 音量对齐）
+    if (this.slots.some((item: string) => MEDIA_ROW_TOP_TOGGLES.includes(item) ||
+      item === FASlotName.BRIGHTNESS || item === FASlotName.SOUND)) {
       this.loadFixedLayout(this.isLandscape)
     } else if (this.slots.includes(FASlotName.COMBINED_SLIDER)) {
       this.loadCombinedLayout()

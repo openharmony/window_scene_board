@@ -13,6 +13,13 @@
             "attr":{
                 "priority":"translate"
             }
+        },
+        {
+            "name": "control_center_super_privacy_for_location_toggle",
+            "value": "གནས་ཡུལ་བཀོལ་མི་ཆོག་པར་བཟོས་ཟིན། སྔོན་ལ་རིམ་འདས་སྒེར་གསང་རྣམ་པ་ལས་ཕྱིར་འཐེན་གནང་རོགས།",
+            "attr": {
+                "priority": "translate"
+            }
         }
-    ]
+]
 }

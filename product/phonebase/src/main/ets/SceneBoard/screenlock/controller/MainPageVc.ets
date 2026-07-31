@@ -1869,7 +1869,8 @@ export class MainPageVc extends ScreenLockVc<MpStateType> {
     this.slBindState.setIsStaticTheme(ThemeHelperUtil.isStaticTheme());
     log.showInfo(`registerThemeActiveEvent isStaticTheme is ${this.slBindState.getIsStaticTheme()}`);
     if (themeParam && themeParam.clock) {
-      this.clockStyle.layout = themeParam.clock.layout;
+      this.clockStyle.layout = themeParam.clock.layout === ClockLayout.DEFAULT_CLOCK_LAYOUT ?
+        ClockLayout.NORMAL_CLOCK_LAYOUT : themeParam.clock.layout;
       this.clockStyle.x = themeParam.clock.positionX;
       this.clockStyle.y = themeParam.clock.positionY;
     }

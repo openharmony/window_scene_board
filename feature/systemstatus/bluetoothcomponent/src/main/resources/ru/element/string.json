@@ -1,4 +1,4 @@
-{
+﻿{
     "string":[
         {
             "name":"control_center_complex_toggle_bluetooth_title",
@@ -27,6 +27,21 @@
             "attr":{
                 "priority":"translate"
             }
+        },
+        {
+            "name":"control_center_complex_toggle_nearlink_title",
+            "value":"NearLink",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"control_center_anti_theft_for_toggle",
+            "value":"Операция недоступна на демоустройстве.",
+            "attr":{
+                "priority":"LT"
+            }
         }
+
     ]
 }

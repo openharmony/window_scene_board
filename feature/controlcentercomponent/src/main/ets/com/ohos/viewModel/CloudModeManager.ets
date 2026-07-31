@@ -41,7 +41,7 @@ export class CloudModeManager {
     FASlotName.SCREENSHOT, FASlotName.AUTO_ROTATE, FASlotName.NFC];
   public static CLOUD_TOP_TOGGLES_ARRAY: string[][] = [
     [FASlotName.MEDIA_ITEM_NAME, FASlotName.WIFI_UI_EXTENSION, FASlotName.BLUETOOTH_UI_EXTENSION],
-    [FASlotName.SUPER_DEVICE, FASlotName.BRIGHTNESS],
+    [FASlotName.BRIGHTNESS],
     [FASlotName.FOCUS_MODE, FASlotName.SOUND]];
   public static CLOUD_CONTENT_INDEX_ARR: string[] =
     ['topToggleRow_0', 'topToggleRow_1', 'topToggleRow_2', 'addMoreTopButton', 'quickToggleRow_0', 'quickToggleRow_1'];

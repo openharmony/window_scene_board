@@ -15,6 +15,20 @@
             }
         },
         {
+            "name":"control_center_complex_toggle_nearlink_title",
+            "value":"NearLink",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"control_center_anti_theft_for_toggle",
+            "value":"Operation unavailable on demo device.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
             "name":"accessibility_status_bar_bluetooth_open",
             "value":"Bluetooth is on",
             "attr":{
