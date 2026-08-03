@@ -17,7 +17,9 @@ import sceneSessionManager from '@ohos.sceneSessionManager';
 import { SCBSessionInfo } from './SCBSessionInfo';
 import { SCBSessionRect } from './SCBSessionRect';
 import { LogDomain, LogHelper } from '@ohos/basicutils';
-import { SCBEventId, SCBSceneSessionManager, SCBSpecificSceneSessionList, ClassType } from './SCBSceneSessionManager';
+import { SCBEventId, SCBSceneSessionManager, SCBSpecificSceneSessionList, ClassType,
+  DragActivateScenario,
+} from './SCBSceneSessionManager';
 import type { SCBScreenProperty } from '../../screen/session/SCBScreenSession';
 import type { SCBPropertyChangeReason } from '../../screen/session/SCBScreenSessionManager';
 import {viewMgrPolicy} from '@ohos/frameworkwrapper';
@@ -900,15 +902,16 @@ export class SCBSystemSceneSession {
   /**
    * sets whether the dragEnable attribute of the window by scb is Activate or deactivate
    *
+   * @param scenario: drag activation scenario, use DragActivateScenario values.
    * @param activateDrag: Activate or deactivate
    */
-  public setActivateDragBySystem(activateDrag: boolean): void {
+  public setActivateDragBySystem(scenario: DragActivateScenario, activateDrag: boolean): void {
     if (!this.session) {
       log.showError('session is null');
       return;
     }
     try {
-      this.session.activateDragBySystem(activateDrag);
+      this.session.activateDragBySystem(scenario, activateDrag);
     } catch (err) {
       log.showError('setActivateDragBySystem failed, reason: ' + JSON.stringify(err));
     }

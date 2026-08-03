@@ -2391,9 +2391,10 @@ declare namespace sceneSessionManager {
 
     /**
      * Activate or deactivate the dragEnable attribute of the window by scb.
-     * @param activateDrag: Indicates whether the dragEnable attribute of the window is activated.
+     * @param scenario: Drag activation scenario flag. Use DragActivateScenario values.
+     * @param enable: Whether to enable or disable the drag for the given scenario.
      */
-    activateDragBySystem(activateDrag: boolean): void;
+    activateDragBySystem(scenario: number, enable: boolean): void;
 
     /**
      * set colorSpace

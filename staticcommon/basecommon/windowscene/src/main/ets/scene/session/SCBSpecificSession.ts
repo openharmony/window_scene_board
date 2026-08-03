@@ -23,7 +23,7 @@ import { LogDomain, LogHelper } from '@ohos/basicutils';
 import { RotationConstants, SCBConstants } from '@ohos/commonconstants';
 import { SCBWindowSceneConfig, viewMgrPolicy, ViewType } from '@ohos/frameworkwrapper';
 import { SCBSceneSessionManager, SCBSpecificSceneSessionList, SessionChangeInfo, SessionDisplayChangeReason,
-  SessionRectChangeInfo, INVALID_PID, ClassType } from './SCBSceneSessionManager';
+  SessionRectChangeInfo, INVALID_PID, ClassType, DragActivateScenario } from './SCBSceneSessionManager';
 import type { SCBScreenProperty } from '../../screen/session/SCBScreenSession';
 import { SCBSystemSceneSession } from './SCBSystemSceneSession';
 import { SCBScreenSessionManager } from '../../screen/session/SCBScreenSessionManager';
@@ -1976,12 +1976,12 @@ export class SCBSpecificSession {
 
   private onFollowRelativePositionToParent(windowAnchorInfo: sceneSessionManager.WindowAnchorInfo): void {
     if (!windowAnchorInfo) {
-      this.session.activateDragBySystem(true);
+      this.session.activateDragBySystem(DragActivateScenario.FOLLOW_PARENT_POSITION, true);
       this.session.sendContainerModalEvent(WINDOW_GRAY_OUT_MAXIMIZE_EVENT, 'false');
       return;
     }
     if (!windowAnchorInfo.isAnchorEnabled) {
-      this.session.activateDragBySystem(true);
+      this.session.activateDragBySystem(DragActivateScenario.FOLLOW_PARENT_POSITION, true);
       this.session.sendContainerModalEvent(WINDOW_GRAY_OUT_MAXIMIZE_EVENT, 'false');
       this.subWindowAnchorInfo.isFollowParent = false;
       return;
@@ -1991,7 +1991,7 @@ export class SCBSpecificSession {
     this.subWindowAnchorInfo.anchor = windowAnchorInfo.windowAnchor;
     this.subWindowAnchorInfo.offsetX = windowAnchorInfo.offsetX;
     this.subWindowAnchorInfo.offsetY = windowAnchorInfo.offsetY;
-    this.session.activateDragBySystem(false);
+    this.session.activateDragBySystem(DragActivateScenario.FOLLOW_PARENT_POSITION, false);
     this.session.sendContainerModalEvent(WINDOW_GRAY_OUT_MAXIMIZE_EVENT, 'true');
     this.onSessionRectChangeRelativeToParent(this.currRect, sceneSessionManager.SessionSizeChangeReason.UNDEFINED, false);
   }

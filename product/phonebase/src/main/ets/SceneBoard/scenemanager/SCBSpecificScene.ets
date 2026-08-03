@@ -29,6 +29,7 @@ import {
   SCBWindowRaiseReason,
   SCBWindowShadowConfig,
   SCBSceneMode,
+  DragActivateScenario,
 } from '@ohos/windowscene';
 import { CommonUtils, LogDomain, LogHelper } from '@ohos/basicutils';
 import { SCBDefaultZIndex } from './SCBScreen';
@@ -548,7 +549,7 @@ export struct SCBSpecificScene {
   onFollowParentWindowLayout(isFollow: boolean) {
     log.showInfo(`onFollowParentWindowLayout, isFollow: ${isFollow}`);
     this.isFollowParentWindowLayout = isFollow;
-    this.specificSession?.session.activateDragBySystem(!isFollow);
+    this.specificSession?.session.activateDragBySystem(DragActivateScenario.FOLLOW_PARENT_LAYOUT, !isFollow);
   }
 
   getSize(): SizeOptions {

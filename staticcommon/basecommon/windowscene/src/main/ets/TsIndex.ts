@@ -60,6 +60,7 @@ export { SCBSceneSessionManager,
   PreferMultiWindowOrientation,
   UserSwitchEventType,
   UIEffectZOrderType,
+  DragActivateScenario,
 } from './scene/session/SCBSceneSessionManager';
 
 export type {

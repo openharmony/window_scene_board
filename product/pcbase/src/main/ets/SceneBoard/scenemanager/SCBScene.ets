@@ -70,6 +70,7 @@ import {
   SCBSceneContainerSession,
   NeedRenderSnapShotAnimConfig,
   SCBSceneResourceManager,
+  DragActivateScenario,
 } from '@ohos/windowscene';
 import { PowerStatus } from '@ohos/commonconstants';
 import { EventConstants, StyleConstants } from '@ohos/launchercommon'
@@ -213,7 +214,7 @@ export struct SCBScene {
     this.controlType = this.sceneSession?.getControlType();
     let isMainWindowControl = this.isMainWindowControl(isShow);
     this.isNeedHideSubWin = isMainWindowControl;
-    this.sceneSession?.setActivateDragBySystem(!isMainWindowControl);
+    this.sceneSession?.setActivateDragBySystem(DragActivateScenario.APP_LOCK, !isMainWindowControl);
     if (isMainWindowControl) {
       if (SCBSceneHelper.isOverScreen(this.sceneSession, this.screenProperty)) {
         let statusBarHeight: number = 0;
@@ -2314,7 +2315,7 @@ export struct SCBScene {
     let isMainWindowControl = this.isMainWindowControl(this.isShowUseControl);
     this.isNeedHideSubWin = isMainWindowControl;
     if (isMainWindowControl) {
-      this.sceneSession?.setActivateDragBySystem(false);
+      this.sceneSession?.setActivateDragBySystem(DragActivateScenario.APP_LOCK, false);
       this.sceneSession?.useControlSession?.setFocusable(true);
       SCBSessionListManager.refreshZOrder();
     }

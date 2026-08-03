@@ -155,6 +155,13 @@ export const enum TraverseSessionScenarios {
   OTHERS_SCENARIO,
 };
 
+export enum DragActivateScenario {
+  FOLLOW_PARENT_LAYOUT = 1 << 0,
+  FOLLOW_PARENT_POSITION = 1 << 1,
+  APP_LOCK = 1 << 2,
+  MID_SCENE_TO_PC_MODE = 1 << 3,
+}
+
 export const enum UIEffectZOrderType {
   INVALID_ZORDER,
   ABOVE_SCREEN_LOCK,

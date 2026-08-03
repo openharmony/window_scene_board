@@ -46,7 +46,8 @@ import {
   sSCBOobeManager,
   SystemBarType,
   SCBWindowShadowConfig,
-  SCBSubWindowAnchorInfo
+  SCBSubWindowAnchorInfo,
+  DragActivateScenario,
 } from '@ohos/windowscene';
 import Curves from '@ohos.curves';
 import { WindowAnimationUtils } from '@ohos/windowscene/Index';
@@ -1154,7 +1155,7 @@ export struct SCBSpecificScene {
   onFollowParentWindowLayout(isFollow: boolean) {
     log.showInfo(`onFollowParentWindowLayout, isFollow: ${isFollow}, screedId: ${this.specificSession.screenId}`);
     this.isFollowParentWindowLayout = isFollow;
-    this.specificSession?.session.activateDragBySystem(!isFollow &&
+    this.specificSession?.session.activateDragBySystem(DragActivateScenario.FOLLOW_PARENT_LAYOUT, !isFollow &&
       !this.specificSession?.subWindowAnchorInfo.isFollowParent);
   }
 

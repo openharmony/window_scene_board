@@ -36,7 +36,8 @@ import {
   SessionChangeInfo,
   SessionRectChangeInfo,
   ClassType,
-  INVALID_PID
+  INVALID_PID,
+  DragActivateScenario,
 } from './SCBSceneSessionManager';
 import type { ExecuteCallbackExtraInfo } from './SCBSceneSessionManager';
 import { SCBWindowSceneConfig } from '@ohos/frameworkwrapper';
@@ -5286,15 +5287,16 @@ export class SCBSceneSession {
   /**
    * sets whether the dragEnable attribute of the window by scb is activate or deactivate
    *
+   * @param scenario: drag activation scenario, use DragActivateScenario values.
    * @param activateDrag: activate or deactivate
    */
-  public setActivateDragBySystem(activateDrag: boolean): void {
+  public setActivateDragBySystem(scenario: DragActivateScenario, activateDrag: boolean): void {
     if (!this.session) {
       log.showError('session is null');
       return;
     }
     try {
-      this.session.activateDragBySystem(activateDrag);
+      this.session.activateDragBySystem(scenario, activateDrag);
     } catch (err) {
       log.showError('setActivateDragBySystem failed, reason: ' + JSON.stringify(err));
     }
