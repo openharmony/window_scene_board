@@ -99,9 +99,34 @@ export enum OverlayIconStyle {
   SQUARE = 1,
 
   /**
-   * 样式反转
+   * 样式反转 例:克隆应用图标覆盖
    */
   REVERSE = 2,
+}
+
+/**
+ * APP安装来源
+ */
+export enum DeliverInstallSource {
+  /**
+   * 保留
+   */
+  RESERVED = 0,
+
+  /**
+   * 克隆应用
+   */
+  DELIVER_TONG = 1,
+
+  /**
+   * 应用
+   */
+  APP = 2,
+
+  /**
+   * 未知来源，一般是系统应用
+   */
+  UNKNOWN = 3,
 }
 
 /**

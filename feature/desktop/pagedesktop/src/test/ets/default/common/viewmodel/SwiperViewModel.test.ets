@@ -55,6 +55,7 @@ import {
   KeyEventConstants,
   LayoutDescription,
   DesktopUtils,
+  DeliverUtil,
   FolderData,
   GridLayoutUtil,
   RdbStoreManager,
@@ -170,8 +171,8 @@ export default function SwiperViewModelTest() {
       let newItem: CardItemInfo = new CardItemInfo();
       newItem.id = '1573457366';
       newItem.cardId = '1573457366';
-      newItem.name = 'minRecCard';
-      newItem.cardName = 'minRecCard';
+      newItem.name = 'minVoiceRecCard';
+      newItem.cardName = 'minVoiceRecCard';
       newItem.bundleName = 'com.ohos.suggestion';
       newItem.abilityName = 'ParentFormAbility';
       newItem.moduleName = 'entry';

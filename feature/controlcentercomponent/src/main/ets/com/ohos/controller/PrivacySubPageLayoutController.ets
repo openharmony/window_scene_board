@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-// import privacyIndicatorManager from '@hms.security.privacyIndicatorManager';
+// import privacyIndicatorManager from '@ohos.security.privacyIndicatorManager';
 import { SingletonHelper, LogHelper, LogDomain } from '@ohos/basicutils';
 import { obtainLocalEvent, sEventManager } from '@ohos/frameworkwrapper';
 import { ControlCenterState } from '@ohos/controlcentercommon/Index';

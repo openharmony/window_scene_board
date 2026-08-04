@@ -62,6 +62,11 @@ class ResourceUtils implements IResProxyIf {
   private moduleContexts: Map<string, Common.Context> = new Map();
 
   /**
+   * 包context集
+   */
+  private bundleContexts: Map<string, Common.Context> = new Map();
+
+  /**
    * context等待集
    */
   private contextResolves: Set<ContextResolve> = new Set();
@@ -99,7 +104,7 @@ class ResourceUtils implements IResProxyIf {
    * @return 6个栅格宽度， px
    */
   getLandGridRowWidth(landScreenWidth: number): number {
-    let gutter = vp2px(GRID_ROW_GUTTER);
+    let gutter = this.vp2px(GRID_ROW_GUTTER);
     // 总共8个栅格
     let aveWidth = (landScreenWidth - gutter * 9) / 8;
     // 取6个栅格，有5个空隙
@@ -113,7 +118,7 @@ class ResourceUtils implements IResProxyIf {
    * @return 4个栅格宽度，单位：px
    */
   getLandBoxGridRowWidth(landScreenWidth: number): number {
-    let gutter = vp2px(GRID_ROW_GUTTER);
+    let gutter = this.vp2px(GRID_ROW_GUTTER);
     // 总共8个栅格
     let aveWidth = (landScreenWidth - gutter * 9) / 8;
     // 取4个栅格，有3个空隙
@@ -127,7 +132,7 @@ class ResourceUtils implements IResProxyIf {
    * @return 8个栅格宽度， px
    */
   getLandPadGridRowWidth(landScreenWidth: number): number {
-    let gutter = vp2px(GRID_ROW_GUTTER);
+    let gutter = this.vp2px(GRID_ROW_GUTTER);
     // 总共12个栅格
     let aveWidth = (landScreenWidth - gutter * 13) / 12;
     // 取8个栅格，有7个空隙
@@ -153,7 +158,7 @@ class ResourceUtils implements IResProxyIf {
    * @return 4个栅格宽度， px
    */
   getLandPhoneGridRowWidth(landScreenWidth: number): number {
-    let gutter = vp2px(GRID_ROW_GUTTER);
+    let gutter = this.vp2px(GRID_ROW_GUTTER);
     // 总共4个栅格
     let aveWidth = (landScreenWidth - gutter * 5) / 4;
     // 取4个栅格，有3个空隙
@@ -166,10 +171,10 @@ class ResourceUtils implements IResProxyIf {
    * @returns 栅格化宽度，px
    */
   getWidthByLandScreenWidth(landScreenWidth: number): number {
-    if (px2vp(landScreenWidth) >= 840) {
+    if (this.px2vp(landScreenWidth) >= 840) {
       // 12栅格 宽度：8
       return this.getLandPadGridRowWidth(landScreenWidth);
-    } else if (px2vp(landScreenWidth) >= 520) {
+    } else if (this.px2vp(landScreenWidth) >= 520) {
       // 8栅格 宽度：6
       return this.getLandGridRowWidth(landScreenWidth);
     } else {
@@ -194,7 +199,7 @@ class ResourceUtils implements IResProxyIf {
    * @param resource 资源信息
    * @return 字串
    */
-  getInnerString(resource: Resource): string {
+  getInnerString(resource: ResourceManager.Resource): string {
     if (CommonUtils.isInvalid(resource)) {
       return null;
     }
@@ -214,7 +219,7 @@ class ResourceUtils implements IResProxyIf {
    * @param count 变量
    * @return 字串
    */
-  async getInnerStringNum(resource: Resource, count: number | string): Promise<string> {
+  async getInnerStringNum(resource: ResourceManager.Resource, count: number | string): Promise<string> {
     if (CommonUtils.isInvalid(resource) || CommonUtils.isInvalid(count)) {
       return '';
     }
@@ -228,7 +233,7 @@ class ResourceUtils implements IResProxyIf {
    * @param count 变量
    * @return 字串
    */
-  getInnerStringNumS(resource: Resource, ...count: (string | number)[]): string {
+  getInnerStringNumS(resource: ResourceManager.Resource, ...count: (string | number)[]): string {
     if (CommonUtils.isInvalid(resource)) {
       return null;
     }
@@ -261,6 +266,27 @@ class ResourceUtils implements IResProxyIf {
       outString = this.appContext?.resourceManager?.getStringSync(res);
     } catch (err) {
       log.error('getOutString error:', err);
+    }
+    return outString;
+  }
+
+  /**
+   * 通过labelId获取应用名称字串
+   *
+   * @param res 三方资源信息
+   * @return 应用字串
+   */
+  async getDeliverOutStringById(labelId: number, bundleName: string): Promise<string> {
+    if (CommonUtils.isInvalid(labelId)) {
+      return null;
+    }
+    let outString: string = null;
+    try {
+      const resMgr = await this.getResMgr(bundleName);
+      outString = resMgr.getStringSync(labelId);
+    } catch (error) {
+      log.showError('Get deliver getDeliverOutString for [%{public}s] error by [%{public}s]', bundleName, error.message);
+      return null;
     }
     return outString;
   }
@@ -318,7 +344,7 @@ class ResourceUtils implements IResProxyIf {
    * @param count 复数值
    * @return 字串
    */
-  async getInnerPlural(resource: Resource, count: number): Promise<string> {
+  async getInnerPlural(resource: ResourceManager.Resource, count: number): Promise<string> {
     if (CommonUtils.isInvalid(resource) || CommonUtils.isInvalid(count)) {
       return null;
     }
@@ -334,7 +360,7 @@ class ResourceUtils implements IResProxyIf {
    * @param count count
    * @return string value
    */
-  getInnerPluralByResource(resource: Resource, count: number): string {
+  getInnerPluralByResource(resource: ResourceManager.Resource, count: number): string {
     if (CommonUtils.isInvalid(resource) || CommonUtils.isInvalid(count)) {
       return null;
     }
@@ -391,7 +417,7 @@ class ResourceUtils implements IResProxyIf {
    * @param resource 资源信息
    * @return 数字，单位px
    */
-  getNumber(resource: Resource): number {
+  getNumber(resource: ResourceManager.Resource): number {
     if (CommonUtils.isInvalid(resource)) {
       return 0;
     }
@@ -453,13 +479,13 @@ class ResourceUtils implements IResProxyIf {
       // px转vp返回
       if (oriStr.endsWith('px')) {
         let strPadding = oriStr.replace('px', '');
-        return px2vp(Number.parseFloat(strPadding));
+        return this.px2vp(Number.parseFloat(strPadding));
       }
       // 无单位，按vp算
       return Number.parseFloat(oriStr);
     }
     // 获取vp资源
-    return this.getNumber(value as Resource);
+    return this.getNumber(value as ResourceManager.Resource);
   }
 
   /**
@@ -488,7 +514,7 @@ class ResourceUtils implements IResProxyIf {
       return Number.parseFloat(oriStr);
     }
     // 获取vp资源
-    return this.getNumber(value as Resource);
+    return this.getNumber(value as ResourceManager.Resource);
   }
 
   /**
@@ -514,6 +540,11 @@ class ResourceUtils implements IResProxyIf {
       // MemoryUtils.removeNapiWrap(cxt, false);
     }
     this.moduleContexts.clear();
+
+    for (let cxt of this.bundleContexts.values()) {
+      // MemoryUtils.removeNapiWrap(cxt, false);
+    }
+    this.bundleContexts.clear();
   }
 
 
@@ -523,7 +554,7 @@ class ResourceUtils implements IResProxyIf {
    * @param resource 资源信息
    * @return 十进制颜色
    */
-  getColor(resource: Resource): number {
+  getColor(resource: ResourceManager.Resource): number {
     if (CommonUtils.isInvalid(resource)) {
       return -1;
     }
@@ -553,7 +584,7 @@ class ResourceUtils implements IResProxyIf {
    * @param resource 资源信息
    * @return base64字串
    */
-  async getInnerMediaBase64(resource: Resource): Promise<string> {
+  async getInnerMediaBase64(resource: ResourceManager.Resource): Promise<string> {
     if (CommonUtils.isInvalid(resource)) {
       return null;
     }
@@ -612,20 +643,43 @@ class ResourceUtils implements IResProxyIf {
    * @param res 资源
    * @returns DrawableDescriptor
    */
-  async getOutDrawableDescriptor(res: ResourceManager.Resource): Promise<DrawableDescriptor | null> {
-    if (CommonUtils.isInvalid(res)) {
+  async getOutDrawableDescriptor(res: ResourceManager.Resource, deliverIconId?: number,
+    deliverBundleName?: string): Promise<DrawableDescriptor | null> {
+    if (CommonUtils.isInvalid(res) && CommonUtils.isInvalid(deliverIconId)) {
       log.showWarn('Get drawableDescriptor error for invalid resource');
       return null;
     }
     let bundleName: string = null;
     let iconId: number = null;
-    bundleName = res.bundleName;
-    iconId = res.id;
+    if (!CommonUtils.isInvalid(res)) {
+      bundleName = res.bundleName;
+      iconId = res.id;
+    } else {
+      bundleName = deliverBundleName;
+      iconId = deliverIconId;
+    }
     try {
       const resMgr = await this.getResMgr(bundleName);
       return resMgr.getDrawableDescriptor(iconId, 0, 1);
     } catch (error) {
       log.showError('Get drawableDescriptor for [%{public}s] error by [%{public}s]', bundleName, error.message);
+      return null;
+    }
+  }
+
+  /**
+   * 获取三方应用DrawableDescriptor
+   *
+   * @param res 资源
+   * @returns DrawableDescriptor
+   */
+  async getOutDrawableDescriptorWidthDensity(deliverIconId: number,
+    deliverBundleName: string, density: number): Promise<DrawableDescriptor | null> {
+    try {
+      const resMgr = await this.getResMgr(deliverBundleName);
+      return resMgr.getDrawableDescriptor(deliverIconId, density, 1);
+    } catch (error) {
+      log.showError('Get drawableDescriptor for [%{public}s] error by [%{public}s]', deliverBundleName, error.message);
       return null;
     }
   }
@@ -683,9 +737,14 @@ class ResourceUtils implements IResProxyIf {
   private async getResMgr(bundleName?: string): Promise<ResourceManager.ResourceManager> {
     // 包名不为SystemUI，则创建对应应用资源管理器
     if (!CommonUtils.isEmpty(bundleName) && bundleName !== SCBConstants.SCENE_BOARD_PKG) {
+      let cachedContext = this.bundleContexts.get(bundleName!);
+      if (cachedContext) {
+        return cachedContext.resourceManager;
+      }
       return new Promise((resolve) => {
         this.getContext().then((context) => {
           let tarContext = context.createBundleContext(bundleName);
+          this.bundleContexts.set(bundleName!, tarContext);
           resolve(tarContext.resourceManager);
         });
       });

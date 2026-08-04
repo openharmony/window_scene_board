@@ -21,6 +21,7 @@ import {
 } from '@ohos/screenlockcommon';
 import { SlBindStateType } from '@ohos/screenlockcommon/src/main/ets/constants/SlStateType';
 import { ISlState } from '@ohos/screenlockcommon/src/main/ets/interface/ISlState';
+import { ImmersiveAodStyle, immersiveKgMgr } from '@ohos/systemuicommon/src/main/ets/TsIndex';
 import { slStateHelper } from '../common/helper/SlStateHelper';
 import { defaultManifestParam, LockManifest } from '@ohos/screenlockwidget/src/main/ets/common/theme/ThemeHelperUtil';
 import { WallpaperVc } from './WallpaperVc';
@@ -44,8 +45,20 @@ export default struct ScreenLockWallpaper {
    */
   @State slBindState?: ISlState = slStateHelper.getSlBindState();
 
+  /**
+   * Aod显示样式
+   */
+  @State @Watch('onAodStyleChange') aodStyle: ImmersiveAodStyle | undefined = immersiveKgMgr
+    .getOneMirrorState().getAodStyle(true);
+
   @State lockManifestParam: LockManifest = defaultManifestParam;
   private wallpaperViewControl?: WallpaperVc;
+
+  onAodStyleChange(): void {
+    const aodDimParam: number = this.aodStyle?.isAod ? (90 / 255) : 1; // 壁纸压暗灰阶参数90,最大灰阶255
+    this.getUIContext()?.setDynamicDimming(COMPONENT_ID_WALLPAPER, aodDimParam);
+    log.showInfo(`isKgWallpaperLight: ${this.aodStyle?.isKgWallpaperLight}`);
+  }
 
   aboutToAppear() {
     log.showInfo(`aboutToAppear`);
@@ -105,8 +118,8 @@ export default struct ScreenLockWallpaper {
 
   private getWallpaperScale(): ScaleOptions {
     return {
-      x: 1,
-      y: 1
+      x: this.aodStyle?.isKgWallpaperScale ? this.slWallpaperState.wallpaperScale : 1,
+      y: this.aodStyle?.isKgWallpaperScale ? this.slWallpaperState.wallpaperScale : 1
     };
   }
 }

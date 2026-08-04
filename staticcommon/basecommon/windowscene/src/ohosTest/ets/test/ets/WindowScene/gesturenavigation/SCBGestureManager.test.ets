@@ -516,15 +516,15 @@ export default function SCBGestureManagerTest() {
       }) === undefined).assertTrue();
     })
 
-    it('SCBGestureManagerTest_aiBarChange_1', 0, (): void => {
-      scbGestureManager['aiBarChangeAnimCallBack'] = () => undefined;
-      expect(scbGestureManager.aiBarChange(1) === undefined).assertTrue();
+    it('SCBGestureManagerTest_naviBarChange_1', 0, (): void => {
+      scbGestureManager['naviBarChangeAnimCallBack'] = () => undefined;
+      expect(scbGestureManager.naviBarChange(1) === undefined).assertTrue();
     })
 
-    it('SCBGestureManagerTest_aiBarChange_2', 0, (): void => {
-      scbGestureManager['aiBarChangeAnimCallBack'] = () => {
+    it('SCBGestureManagerTest_naviBarChange_2', 0, (): void => {
+      scbGestureManager['naviBarChangeAnimCallBack'] = () => {
       }
-      expect(scbGestureManager.aiBarChange(1) === undefined).assertTrue();
+      expect(scbGestureManager.naviBarChange(1) === undefined).assertTrue();
     })
 
     it('SCBGestureManagerTest_getNumberByString_1', 0, (): void => {

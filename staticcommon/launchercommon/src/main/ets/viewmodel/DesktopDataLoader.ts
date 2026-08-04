@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 
-import { CheckEmptyUtils, Log, LogDomain, LogHelper, SingleBase, SingleContext, singleManager } from '@ohos/basicutils';
+import { CheckEmptyUtils,
+    OutdoorConfig,
+    Log, LogDomain, LogHelper, SingleBase, SingleContext, singleManager } from '@ohos/basicutils';
 import { DesktopLayoutCacheData } from '../cache/layout/DesktopLayoutCacheData';
 import { CommonConstants, DesktopLayoutState } from '../constants/CommonConstants';
 import {
@@ -79,6 +81,9 @@ export class DesktopDataLoader extends SingleBase {
         return GetLayoutInfoFromConfig.getInstance(this.singleContext).getSimpleLayoutConfigFile();
       } else if (this.mDesktopModel === DesktopLayoutState.PC_MODE_MODEL) {
         return GetLayoutInfoFromConfig.getInstance(this.singleContext).get2in1PcLayoutConfigFile();
+      } else if (this.mDesktopModel === DesktopLayoutState.OUTDOOR_MODE ||
+          this.mDesktopModel === DesktopLayoutState.LIGHT_OUTDOOR_MODE) {
+        return GetLayoutInfoFromConfig.getInstance(this.singleContext).getOutdoorLayoutConfigFile();
       } else {
         return GetLayoutInfoFromConfig.getInstance(this.singleContext).getAllLayoutConfigFile();
       }

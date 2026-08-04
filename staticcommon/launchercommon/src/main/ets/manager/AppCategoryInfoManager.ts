@@ -441,6 +441,7 @@ export class AppCategoryInfoManager {
     this.presetAppCatIdMap.set('com.ohos.dataclone', 10000000);
     this.presetAppCatIdMap.set('com.ohos.calendar', 10000000);
     this.presetAppCatIdMap.set('com.ohos.clock', 10000000);
+
     this.presetAppCatIdMap.set('com.ohos.settings', 10000000);
     this.presetAppCatIdMap.set('com.ohos.notepad', 10000000);
     this.presetAppCatIdMap.set('com.ohos.files', 10000000);
@@ -459,7 +460,7 @@ export class AppCategoryInfoManager {
 
   private async reloadCCM(): Promise<void> {
     let cfgFiles: string[] = [];
-    let configPath: string = 'etc/openharmony_launcher_default_workspace.json';
+    let configPath: string = 'etc/hw_launcher_default_workspace.json';
     this.presetAppCatIdMap.clear();
     log.info(`reloadCCM start`);
     try {

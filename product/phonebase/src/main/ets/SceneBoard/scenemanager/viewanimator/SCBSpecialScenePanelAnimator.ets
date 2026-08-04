@@ -35,7 +35,7 @@ import {
   CommonConstants,
   StyleConstants
 } from '@ohos/launchercommon';
-// import apsManager from '@hms.graphic.apsManager';
+// import apsManager from '@ohos.graphic.apsManager';
 import { ApsUtils, ViewManagerPolicy, ViewType } from '@ohos/frameworkwrapper';
 import { SCBConstants } from '@ohos/commonconstants';
 import { SCBSpecialScenePanelViewModel } from '../viewmodel/SCBSpecialScenePanelViewModel'
@@ -88,6 +88,7 @@ export class SCBSpecialScenePanelAnimator {
           AnimateToScheduleUtils.raiseAnimateToSchedulePriority(1);
         },
       }, () => {
+        log.showInfo('animateOnPhoneCall ' + `这里执行了动画:${TraceUtil.ANIMATE_ON_PHONE_CALL}`);
         TraceUtil.startTrace(DomainName.SCB, TraceUtil.ANIMATE_ON_PHONE_CALL);
         containerSession?.needRenderAlpha?.setNeedRenderAlphaWithDfx(1.0, TAG, 'animationForPhoneCallScene',
           containerSession?.getName());
@@ -296,54 +297,35 @@ export class SCBSpecialScenePanelAnimator {
 
     log.showInfo('sceneContainerTransitionIn start');
     Trace.start(Trace.CORE_METHOD_START_SCENE_FROM_SCREEN_LOCK_ANIMATE);
-    // ApsUtils.setApsScene(apsManager.SceneAnimation.START_APP_ANIMATION, StyleConstants.DEFAULT_1);
     // 背板动效
-    animateToImmediately({
-      curve: curves.springMotion(0.285, 1.157, 0),
-      duration: 200,
-      onFinish: () => {
-        const screenLockInfo = SceneInfoAdapterUtil.getScreenLockInfo(sceneContainerSession);
-        let isMoveStarting: boolean = !!screenLockInfo?.moveStartingOption;
-        let isLastAnimation = sceneContainerSession.transitionInFinishIfNeed(animationNum, isMoveStarting);
-        log.showInfo(`sceneContainerTransitionIn end animate isLastAnimation ${isLastAnimation}`);
-        // ApsUtils.setApsScene(apsManager.SceneAnimation.START_APP_ANIMATION, StyleConstants.DEFAULT_0);
-        if (isLastAnimation) {
-          this.vm.destroyScreenLockIcon(sceneContainerSession, true);
-        }
-        Trace.end(Trace.CORE_METHOD_START_SCENE_FROM_SCREEN_LOCK_ANIMATE);
-        sceneSession?.setUseStartingWindowAboveLocked(false);
-      },
-    }, () => {
-      log.showInfo('sceneContainerTransitionIn start animate');
-      this.vm.onTransitionInactiveFromScreenLock(sceneContainerSession);
-    })
+    // animateToImmediately({
+    //   curve: curves.springMotion(0.285, 1.157, 0),
+    //   duration: 200,
+    //   onFinish: () => {
+    this.vm.onTransitionInactiveFromScreenLock(sceneContainerSession);
+    sceneContainerSession.needRenderBorderRadius.setBorderRadiusWithDfx(CommonConstants.DEFAULT_WINDOWS_RADIUS_0, TAG,
+      'onTransitionInactive', sceneContainerSession.getName());
+    sceneContainerSession.needRenderAlpha.setNeedRenderAlphaWithDfx(1.0, TAG, 'sceneContainerTransitionIn',
+      sceneContainerSession.getName());
+    sceneContainerSession.iconAlpha = 0.0;
+    const screenLockInfo = SceneInfoAdapterUtil.getScreenLockInfo(sceneContainerSession);
+    let isMoveStarting: boolean = !!screenLockInfo?.moveStartingOption;
+    let isLastAnimation = sceneContainerSession.transitionInFinishIfNeed(animationNum, isMoveStarting);
+    log.showInfo(`sceneContainerTransitionIn end animate isLastAnimation ${isLastAnimation}`);
+    if (isLastAnimation) {
+      this.vm.destroyScreenLockIcon(sceneContainerSession, true);
+    }
+    Trace.end(Trace.CORE_METHOD_START_SCENE_FROM_SCREEN_LOCK_ANIMATE);
+    sceneSession?.setUseStartingWindowAboveLocked(false);
+    //   },
+    // }, () => {
+    //   log.showInfo('sceneContainerTransitionIn start animate');
+    //   this.vm.onTransitionInactiveFromScreenLock(sceneContainerSession);
+    // })
 
     // 卡片动效
-    animateTo({
-      duration: 100,
-      curve: Curve.Linear,
-      onFinish: () => {
-        log.showInfo('sceneContainerTransitionIn end animate window alpha');
-      }
-    }, () => {
-      log.showInfo('sceneContainerTransitionIn start animate window alpha');
-      sceneContainerSession.needRenderBorderRadius.setBorderRadiusWithDfx(CommonConstants.getDeviceRadius(), TAG,
-        'onTransitionInactive', sceneContainerSession.getName());
-      sceneContainerSession.needRenderAlpha.setNeedRenderAlphaWithDfx(1.0, TAG, 'sceneContainerTransitionIn',
-        sceneContainerSession.getName());
-    })
-    // icon变化
-    animateTo({
-      delay: 50,
-      duration: 100,
-      curve: Curve.Linear,
-      onFinish: () => {
-        log.showInfo('sceneContainerTransitionIn end animate icon alpha');
-      }
-    }, () => {
-      log.showInfo('sceneContainerTransitionIn start animate icon alpha');
-      sceneContainerSession.iconAlpha = 0.0;
-    })
+    // animateTo({ ... window alpha ... })
+    // icon变化 animateTo({ ... icon alpha ... })
   }
 
   /**

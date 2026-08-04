@@ -15,7 +15,7 @@
 import { LogDomain, LogHelper } from '@ohos/managementcomponent/src/main/ets/com/ohos/common/BasicCommon';
 import { StatusBarModel } from '../model/StatusBarModel';
 import { PageStorages } from '@ohos/managementcomponent/src/main/ets/com/ohos/common/PageStorages';
-import { HdsNavDestination, HdsNavDestinationAttribute, HdsNavigationTitleBarOptions } from '@kit.UIDesignKit';
+// import { HdsNavDestination, HdsNavDestinationAttribute, HdsNavigationTitleBarOptions } from '@kit.UIDesignKit';
 import { SysUIHdsNavigations } from '../common/SysUIHdsNavigations';
 import { PageContext } from '@ohos/managementcomponent/src/main/ets/com/ohos/model/SystemUISettingSession';
 import lazy {
@@ -38,7 +38,7 @@ export struct MetaServiceMgmtView {
   private appInfo: ESObject = {};
   private isFromMainPage: boolean = false;
   private pageContext?: PageContext = PageStorages.getPageContext();
-  private titleBarOption?: HdsNavigationTitleBarOptions;
+  // private titleBarOption?: HdsNavigationTitleBarOptions;
 
   aboutToAppear(): void {
     log.showInfo(`aboutToAppear, ${this.appInfo?.appBundleName}`);

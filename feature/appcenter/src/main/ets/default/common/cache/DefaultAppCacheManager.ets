@@ -168,6 +168,9 @@ export default class DefaultAppCacheManager {
         }
         pageInfo.pageInfo.splice(findItemIndex, 1);
         deleteRet = true;
+        // 卸载后跨页补位：从下一页拉取应用填充当前页空位
+        const deletedPageIdx = this.mAppGridLayoutItemList.indexOf(pageInfo);
+        this.fillFromNextPage(deletedPageIdx, updateDbInfo, mRows, mColumns);
       }
     });
     let beforeLen = updateDbInfo.length;
@@ -183,6 +186,53 @@ export default class DefaultAppCacheManager {
       });
     }
     return deleteRet;
+  }
+
+  /**
+   * 卸载后跨页补位：从下一页拉取应用填充当前页空位，使多页时卸载后下一页应用自动向前补位
+   * @param deletedPageIdx 发生删除的页码
+   * @param updateDbInfo 待写库的更新列表
+   * @param mRows 行数
+   * @param mColumns 列数
+   */
+  private fillFromNextPage(deletedPageIdx: number, updateDbInfo: AppGridItemInfo[],
+    mRows?: number, mColumns?: number): void {
+    const rows = mRows ?? this.mGridStyleConfig.mRows;
+    const columns = mColumns ?? this.mGridStyleConfig.mColumns;
+    const capacity = rows * columns;
+    const currPage = this.mAppGridLayoutItemList[deletedPageIdx];
+    if (!currPage || currPage.pageInfo.length >= capacity) {
+      return;
+    }
+    let nextPageIdx = deletedPageIdx + 1;
+    while (currPage.pageInfo.length < capacity && nextPageIdx < this.mAppGridLayoutItemList.length) {
+      const nextPage = this.mAppGridLayoutItemList[nextPageIdx];
+      if (!nextPage?.pageInfo?.length) {
+        nextPageIdx++;
+        continue;
+      }
+      const pulledApp = nextPage.pageInfo.shift();
+      if (!pulledApp) {
+        break;
+      }
+      const targetIdx = currPage.pageInfo.length;
+      pulledApp.page = deletedPageIdx;
+      pulledApp.row = Math.floor(targetIdx / columns);
+      pulledApp.column = targetIdx % columns;
+      currPage.pageInfo.push(pulledApp);
+      updateDbInfo.push(AppGridItemInfo.newInstanceFromAppItemInfo(pulledApp));
+      for (let i = 0; i < nextPage.pageInfo.length; i++) {
+        const nextPos = this.getNextPosition(true, nextPage.pageInfo[i].row, nextPage.pageInfo[i].column,
+          nextPageIdx, rows, columns);
+        nextPage.pageInfo[i].row = nextPos ? nextPos[0] : nextPage.pageInfo[i].row;
+        nextPage.pageInfo[i].column = nextPos ? nextPos[1] : nextPage.pageInfo[i].column;
+        updateDbInfo.push(AppGridItemInfo.newInstanceFromAppItemInfo(nextPage.pageInfo[i]));
+      }
+      if (nextPage.pageInfo.length === 0) {
+        nextPageIdx++;
+      }
+    }
+    log.showInfo(`fillFromNextPage done, deletedPageIdx: ${deletedPageIdx}, currPageLen: ${currPage.pageInfo.length}`);
   }
 
   /**

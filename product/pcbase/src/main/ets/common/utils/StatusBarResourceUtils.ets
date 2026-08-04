@@ -34,6 +34,12 @@ export default class StatusBarResUtils {
         return this.getSmartScreenShotIcon;
       case PluginSlot.SLOT_STATUS_QUICK_NOTE:
         return this.getNoteIcon;
+      case PluginSlot.SLOT_STATUS_ASSISTANT_TRANSLATE:
+        return this.getAssistantTranslateIcon;
+      case PluginSlot.SLOT_STATUS_SEARCH:
+        return this.getSearchIcon;
+      case PluginSlot.SLOT_STATUS_ASSISTANT_VOICE:
+        return this.getAssistantVoiceIcon;
       case PluginSlot.SLOT_STATUS_VIRTUAL_KEYBOARD:
         return this.getVirtualKeyboardIcon;
       case PluginSlot.SLOT_STATUS_SCREEN_RECORDER:
@@ -460,6 +466,18 @@ export default class StatusBarResUtils {
 
   public static getNoteIcon = (isWhite: boolean) => {
     return $r('sys.symbol.doc_plaintext_and_pencil_fill')
+  }
+
+  public static getAssistantTranslateIcon = (isWhite: boolean) => {
+    return $r('sys.symbol.AI_translate')
+  }
+
+  public static getAssistantVoiceIcon = (isWhite: boolean) => {
+    return $r('sys.symbol.AI_translate');
+  }
+
+  public static getSearchIcon = (isWhite: boolean) => {
+    return $r('sys.symbol.AI_search');
   }
 
   public static getScreenRecorderIcon = (isWhite: boolean) => {

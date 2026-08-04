@@ -111,6 +111,9 @@ export struct DevSpecificScene {
         .borderRadius(this.specificSession.specialBoarderRadius)
         .clip(true)
         .opacity(this.specificSession.opacity)
+        .outlineRadius(this.specificSession.specialBoarderRadius)
+        .outlineColor(this.specificSession.getOutline().color)
+        .outlineWidth(`${this.specificSession.getOutline().width}px`)
     }
   }
 }

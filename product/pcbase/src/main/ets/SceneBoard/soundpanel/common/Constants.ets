@@ -139,7 +139,13 @@ export interface InputDeviceChangeListener { onInputDeviceChange: Function }
 
 export type FocusItemType = DeviceInfo | MenuType;
 
-export const AI_NOT_SUPPORT = 'AI_SOUND_NOT_SUPPORT';
+export enum SoundType {
+  SING_ALONG_MODE = 101,
+  VOICE_ENHANCE_MODE = 102,
+  CALL_REDUCE_NOISE = 103,
+}
+
+export const SOUND_NOT_SUPPORT = 'AI_SOUND_NOT_SUPPORT';
 
 export class DNDConstants {
   public static FOCUS_MODE_PROFILE: string = 'focus_mode_profile';
@@ -161,5 +167,5 @@ export class DNDConstants {
   public static DAYS_OF_WEEK_COUNT = 7;
 
   public static CLOCK_BUNDLE_NAME: string = 'com.ohos.clock';
-  public static HUAWEISHARE_BUNDLE_NAME: string = 'com.ohos.instantshare';
+  public static OHOS_SHARE_BUNDLE_NAME: string = 'com.ohos.instantshare';
 }

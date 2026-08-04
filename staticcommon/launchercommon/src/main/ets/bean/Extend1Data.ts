@@ -118,7 +118,7 @@ export const enum CardSourceType {
   SYS_PRESETS = '1',
   // 用户添加
   USER_ADD = '2',
-  // 升级
+  // 系统迁移
   UPGRADE_MIGRATE = '3',
   // 克隆
   CLONE_MIGRATE = '4',

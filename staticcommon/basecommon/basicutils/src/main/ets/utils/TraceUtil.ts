@@ -341,6 +341,7 @@ export class TraceUtil {
     [DomainName.SYS_UI, true],
     [DomainName.NC, true],
     [DomainName.CC, true],
+    [DomainName.AOD, true],
     [DomainName.KG, true],
     [DomainName.AA, true],
     [DomainName.SEARCH, true],

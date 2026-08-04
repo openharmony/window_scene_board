@@ -22,6 +22,7 @@ import { ILiveRemindVm } from '../interface/ILiveRemindVm';
 import { LiveMetaBallScene } from '../model/LiveCommonModel';
 import { LiveNotification } from '../model/LiveNotification';
 import { LiveBaseVm } from './LiveBaseVm';
+import { OutdoorVm } from '../../vm/OutdoorVm';
 
 @ObservedV2
 export class LiveRemindVm extends LiveBaseVm implements ILiveRemindVm {
@@ -57,6 +58,12 @@ export class LiveRemindVm extends LiveBaseVm implements ILiveRemindVm {
       return;
     }
 
+    if (!OutdoorVm.instance.isInOutdoorAppList(live)) {
+      const capsuleVm = this.vmInjector.getCapsuleVm(live);
+      capsuleVm.isShowed = true;
+      return;
+    }
+
     if (this.deviceVm.isEmergencyMode()) {
       const capsuleVm = this.vmInjector.getCapsuleVm(live);
       capsuleVm.isShowed = true;
@@ -72,6 +79,11 @@ export class LiveRemindVm extends LiveBaseVm implements ILiveRemindVm {
     }
 
     const capsuleVm = this.vmInjector.getCapsuleVm(live);
+    if (!OutdoorVm.instance.isInOutdoorAppList(live)) {
+      capsuleVm.isShowed = true;
+      return;
+    }
+
     if (this.deviceVm.isEmergencyMode()) {
       capsuleVm.isShowed = true;
       return;
@@ -108,6 +120,11 @@ export class LiveRemindVm extends LiveBaseVm implements ILiveRemindVm {
   checkCurrentRemindScene(): void {
     const live = this.getCurrentRemindCapsule();
     if (live) {
+      if (!OutdoorVm.instance.isInOutdoorAppList(live)) {
+        this.clearRemindCapsule();
+        return;
+      }
+
       if (this.deviceVm.isEmergencyMode()) {
         this.clearRemindCapsule();
         return;

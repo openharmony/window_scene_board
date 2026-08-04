@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"control_center_complex_toggle_meeting_title",
+            "value":"Ứng dụng Ghi chú voice",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

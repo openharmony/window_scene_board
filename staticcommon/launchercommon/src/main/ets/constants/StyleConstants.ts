@@ -454,14 +454,14 @@ export class StyleConstants {
   public static readonly GESTURE_NAV_BOTTOM_HOTAREA_HEIGHT = 28;
   public static readonly OUTER_GESTURE_NAV_BOTTOM_HOTAREA_HEIGHT =
     StyleConstants.GESTURE_NAV_BOTTOM_HOTAREA_HEIGHT + StyleConstants.OUTER_GESTURE_NAV_ADD_LENGTH;
-  public static readonly GESTURE_NAV_AI_BAR_HEIGHT = 5;
-  public static readonly GESTURE_NAV_AI_BAR_WIDTH_DEFAULT = 112;
-  public static readonly GESTURE_NAV_AI_BAR_WIDTH_DEFAULT_PAD = 262;
-  public static readonly GESTURE_NAV_AI_BAR_EFFECT_BLUR_RADIUS = 30;
-  public static readonly GESTURE_NAV_AI_BAR_EFFECT_SATURATION = 0.6;
-  public static readonly GESTURE_NAV_AI_BAR_EFFECT_COLOR = '#33ffffff';
-  public static readonly GESTURE_NAV_AI_BAR_EFFECT_COLOR_PAD = '#66ffffff';
-  public static readonly GESTURE_NAV_AI_BAR_OPACITY = 1;
+  public static readonly GESTURE_NAV_NAVI_BAR_HEIGHT = 5;
+  public static readonly GESTURE_NAV_NAVI_BAR_WIDTH_DEFAULT = 112;
+  public static readonly GESTURE_NAV_NAVI_BAR_WIDTH_DEFAULT_PAD = 262;
+  public static readonly GESTURE_NAV_NAVI_BAR_EFFECT_BLUR_RADIUS = 30;
+  public static readonly GESTURE_NAV_NAVI_BAR_EFFECT_SATURATION = 0.6;
+  public static readonly GESTURE_NAV_NAVI_BAR_EFFECT_COLOR = '#33ffffff';
+  public static readonly GESTURE_NAV_NAVI_BAR_EFFECT_COLOR_PAD = '#66ffffff';
+  public static readonly GESTURE_NAV_NAVI_BAR_OPACITY = 1;
 
   // move and drag
   public static readonly DEFAULT_CONTAINER_TITLE_HEIGHT = 37;
@@ -568,6 +568,9 @@ export class StyleConstants {
   public static readonly STYLE_BG_MEDIUM_LIGHT = 29;
   public static readonly STYLE_BG_LARGE_LIGHT = 45;
   public static readonly STYLE_BG_XLARGE_LIGHT = 120;
+
+  /** 桌面图标 Image.sourceSize，与 HDS 网格图标资源规格一致 */
+  public static readonly APP_ICON_SOURCE_SIZE = 288;
 
   // 图标投影参数
   public static readonly APP_ICON_SHADOW_RADIUS = 40;

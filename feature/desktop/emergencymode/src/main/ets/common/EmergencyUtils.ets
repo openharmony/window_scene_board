@@ -31,7 +31,7 @@ export class EmergencyUtils {
    * @returns
    */
   public static getScreenWidth(): number {
-    if (DeviceHelper.isUltraScreenProduct()) {
+    if (DeviceHelper.isThreeFoldProduct()) {
        let mScreenStateModel: ScreenStateModel = ScreenStateMonitor.getInstance().getCurrentScreenStateModel();
        return px2vp(mScreenStateModel.width);
     }
@@ -52,7 +52,7 @@ export class EmergencyUtils {
    * @returns
    */
   public static getScreenHeight(): number {
-    if (DeviceHelper.isUltraScreenProduct()) {
+    if (DeviceHelper.isThreeFoldProduct()) {
       let mScreenStateModel: ScreenStateModel = ScreenStateMonitor.getInstance().getCurrentScreenStateModel();
       return px2vp(mScreenStateModel.height);
     }
@@ -78,11 +78,11 @@ export class EmergencyUtils {
   }
 
   /**
-   * 获取超大屏栅栏宽度和距离.
+   * 获取三折叠栅栏宽度和距离.
    * @param style
    * @returns
    */
-  public static getUltraScreenGridWidthAndGutter(style: FoldExpandStyle): number[] {
+  public static getThreeFoldGridWidthAndGutter(style: FoldExpandStyle): number[] {
     if (CheckEmptyUtils.isEmpty(style)) {
       log.showError('get three fold grid style is empty');
       return [0, CommonConstants.GRID_GUTTER];
@@ -95,12 +95,12 @@ export class EmergencyUtils {
   }
 
   /**
-   * 初始化超大屏的图标网格信息
+   * 初始化三折叠的图标网格信息
    * @param gridWidth
    * @param gridGutter
    * @param style
    */
-  public static initGridStyleOfUltraScreen(gridWidth: number, gridGutter: number, style: CommonStyle,
+  public static initGridStyleOfThreeFold(gridWidth: number, gridGutter: number, style: CommonStyle,
     fStyle: FoldExpandStyle): void {
     if (CheckEmptyUtils.isEmpty(style) || CheckEmptyUtils.isEmpty(fStyle)) {
       log.showError('init grid style is empty');

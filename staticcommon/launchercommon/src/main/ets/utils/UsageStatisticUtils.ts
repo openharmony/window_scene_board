@@ -18,7 +18,6 @@ import { SCBSceneInfo, SCBSceneSessionManager, SceneInfoAdapterUtil } from '@oho
 import { ObjectCopyUtil } from '@ohos/componenthelper';
 import { AppModel } from '../model/AppModel';
 import type { AppItemInfo } from '../bean/AppItemInfo';
-
 const TAG = 'UsageStatisticUtils';
 const APP_MAX_AMOUNT: number = 20;
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.HOME, TAG);

@@ -1025,6 +1025,53 @@ function MidSceneManagerTest_doVibrationMid_01() {
   });
 }
 function MidSceneManagerTest_interruptStartSceneForMidSceneIfNeed_01() {
+  it('MidSceneManager_interruptStartSceneForMidSceneIfNeed_01', Level.LEVEL0, () => {
+    let containerZero = new SCBSceneContainerSession(primarySession, screenProperty);
+    containerZero.primarySession = null;
+    let container1 = new SCBSceneContainerSession(primarySession, screenProperty);
+    (container1.sessionData.midSceneFSM as MidSceneFSM) = new MidSceneFSM(container1, callback);
+    let midsceneData0: MidSceneData = new MidSceneData(0);
+    let midsceneData1: MidSceneData = new MidSceneData(1);
+    let midsceneData2: MidSceneData = new MidSceneData(2);
+    (container1.sessionData.midSceneFSM as MidSceneFSM).context.l2r = [midsceneData0, midsceneData1, midsceneData2];
+    let addToMidScene: () => void = () => {
+    };
+    midSceneManager.interruptStartSceneForMidSceneIfNeed(ScenePanelState.SPLIT, null, null, true, addToMidScene);
+    midSceneManager.interruptStartSceneForMidSceneIfNeed(ScenePanelState.SPLIT, null, containerZero, true,
+      addToMidScene);
+    midSceneManager.interruptStartSceneForMidSceneIfNeed(ScenePanelState.SPLIT, null, container1, true, addToMidScene);
+    midSceneManager.interruptStartSceneForMidSceneIfNeed(ScenePanelState.SPLIT, scbSceneSession, container1, false,
+      addToMidScene);
+    midSceneManager.interruptStartSceneForMidSceneIfNeed(ScenePanelState.SPLIT, scbSceneSession, container1, true,
+      addToMidScene);
+    midSceneManager.interruptStartSceneForMidSceneIfNeed(ScenePanelState.SPLIT, scbSceneSession, null, true,
+      addToMidScene);
+    midSceneManager.interruptStartSceneForMidSceneIfNeed(ScenePanelState.SPLIT, scbSceneSession, container1, true,
+      addToMidScene);
+    container1.isMidScene = true;
+    midSceneManager.interruptStartSceneForMidSceneIfNeed(ScenePanelState.FLOAT_SCENE, scbSceneSession, container1, true,
+      addToMidScene);
+    midSceneManager.interruptStartSceneForMidSceneIfNeed(ScenePanelState.SPLIT, scbSceneSession, container1, false,
+      addToMidScene);
+    container1.midSceneMap.set(0, scbSceneSession);
+    midSceneManager.interruptStartSceneForMidSceneIfNeed(ScenePanelState.SPLIT, scbSceneSession, container1, true,
+      addToMidScene);
+    midSceneManager.interruptStartSceneForMidSceneIfNeed(ScenePanelState.FLOAT_SCENE, scbSceneSession, container1,
+      false,
+      addToMidScene);
+    midSceneManager.interruptStartSceneForMidSceneIfNeed(ScenePanelState.FLOAT_SCENE, scbSceneSession, container1, true,
+      addToMidScene);
+    let mocker: MockKit = new MockKit();
+    let sessionManager: SCBSceneSessionManager = SCBSceneSessionManager.getInstance();
+    let mockFunc: Function = mocker.mockFunc(sessionManager, sessionManager.isDeliverApplication);
+    when(mockFunc)(ArgumentMatchers.any).afterReturn(true);
+    midSceneManager.interruptStartSceneForMidSceneIfNeed(ScenePanelState.SPLIT, scbSceneSession, container1, true,
+      addToMidScene);
+    mocker.clear(sessionManager);
+    expect(ReflectionUtils.useFunc(midSceneManager, 'interruptStartSceneForMidSceneIfNeed', ScenePanelState.SPLIT,
+      scbSceneSession, container1, true, addToMidScene)).assertTrue();
+  });
+
   it('MidSceneManager_interruptStartSceneForMidSceneIfNeed_02', Level.LEVEL0, () => {
     let containerZero = new SCBSceneContainerSession(primarySession, screenProperty);
     containerZero.primarySession = null;

@@ -15,6 +15,7 @@
 import { LiveViewCommonConstants } from '../../../common/LiveConstants';
 import { LiveTimerData } from '../../../data/extend/LiveTimerData';
 import { immersiveKgMgr } from '../../../../immersivekeyguardcommon/manager/ImmersiveKeyguardStateManager';
+import { AodStyleType, ImmersiveAodStyle } from '../../../../immersivekeyguardcommon/base/interface/ImmersiveAodStyle';
 import { fontScaleManager } from '@ohos/systemuiutils/src/main/ets/fontScale/fontScaleManager';
 import { FontScaleState } from '@ohos/systemuiutils/src/main/ets/fontScale/fontScaleState';
 import { TimeTextStyle } from '../../../../immersivekeyguardcommon/base/interface/TimeTextStyle';
@@ -31,11 +32,18 @@ export struct LiveTimeComponent {
   private timeTextStyle?: TimeTextStyle;
   @Prop viewFontColor: ResourceColor = $r('sys.color.ohos_id_color_text_primary');
   @Prop foreBrightnessOption: BrightnessOptions | undefined = undefined;
+  @Prop isAodText: string | undefined = undefined;
 
   /**
    * 通知面板类型
    */
   @Consume notificationType: number;
+
+  /**
+   * AOD显示样式
+   */
+  @State aodStyle: ImmersiveAodStyle | undefined = immersiveKgMgr.getOneMirrorState().getAodStyle(
+    this.notificationType === NotificationType.TYPE_PHONE_KEYGUARD);
   /**
    * 长辈模式字体
    */
@@ -52,7 +60,7 @@ export struct LiveTimeComponent {
       Text(this.getTimeText())
         .accessibilityText(this.getTimeAccessibilityText())
         .fontColor(this.viewFontColor)
-        .foregroundBrightness(this.foreBrightnessOption)
+        .foregroundBrightness(this.aodStyle?.isAod ? undefined : this.foreBrightnessOption)
         .fontWeight(FontWeight.Medium)
         .width('100%')
         .fontSize(this.getTextFontSize())
@@ -64,13 +72,13 @@ export struct LiveTimeComponent {
           this.timeTextStyle?.height ?? 'auto')
         .maxLines(1)
         .textOverflow({ overflow: TextOverflow.Ellipsis })
-        .visibility(Visibility.Visible)
+        .visibility(this.aodStyle?.isAod && !this.isAodText ? Visibility.None : Visibility.Visible)
         .scale({
-          x: ResUtils.getNumber(this.viewFontSize) ?
-            LiveViewCommonConstants.BIG_TIMER_FONT_SIZE / ResUtils.getNumber(this.viewFontSize) :
+          x: this.isAodBigTimer() && ResUtils.getNumber(this.viewFontSize) ?
+            LiveViewCommonConstants.AOD_BIG_TIMER_FONT_SIZE / ResUtils.getNumber(this.viewFontSize) :
             1,
-          y: ResUtils.getNumber(this.viewFontSize) ?
-            LiveViewCommonConstants.BIG_TIMER_FONT_SIZE / ResUtils.getNumber(this.viewFontSize) :
+          y: this.isAodBigTimer() && ResUtils.getNumber(this.viewFontSize) ?
+            LiveViewCommonConstants.AOD_BIG_TIMER_FONT_SIZE / ResUtils.getNumber(this.viewFontSize) :
             1,
           centerX: RTLUtil.isRTL() ? '100%' : 0,
           centerY: '50%',
@@ -101,10 +109,25 @@ export struct LiveTimeComponent {
   }
 
   private getTimeText(): string {
+    if (this.aodStyle?.isAod && this.isAodText) {
+      return this.isAodText;
+    }
     return LiveViewCommonConstants.formatDate(this.timeData?.initialTime, this.dateFormat, this.timeData?.isCountDown);
   }
 
   private getTimeAccessibilityText(): string {
+    if (this.aodStyle?.isAod && this.isAodText) {
+      return this.isAodText;
+    }
     return LiveAccessibilityUtil.getTImeAccessibilityText(this.timeData);
+  }
+
+  /**
+   * 获取是否AOD大字体计时控件场景
+   *
+   * @returns 是否AOD大字体计时控件场景
+   */
+  private isAodBigTimer(): boolean {
+    return this.isBigTextTimer && this.aodStyle?.isAod && !CommonUtils.isEmpty(this.isAodText) ? true : false;
   }
 }

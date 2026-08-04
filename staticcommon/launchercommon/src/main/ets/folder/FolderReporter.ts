@@ -20,6 +20,7 @@ import type { RecentBundleMissionInfo } from '../bean/RecentBundleMissionInfo';
 import { StyleConstants } from '../constants/StyleConstants';
 import { LogDomain, LogHelper, CheckEmptyUtils, CommonUtils } from '@ohos/basicutils';
 import {
+  DeliverUtil,
   ResidentLayoutCacheMgr,
   FolderLayoutCacheManager,
   NotHarmonyUtil
@@ -110,7 +111,7 @@ export class FolderReporter {
   }
 
   /**
-   * 文件夹打点上报，拖拽OpenHarmony化应用进入未OpenHarmony化文件夹
+   * 文件夹打点上报，拖拽鸿蒙化应用进入未鸿蒙化文件夹
    *
    * @param dragItemInfo
    * @param endLayoutInfo
@@ -125,6 +126,9 @@ export class FolderReporter {
     let iconCount: number = this.getFolderIconCount(endLayoutInfo.layoutInfo);
     let folderPageCount: number = endLayoutInfo.layoutInfo?.length;
     let folderContent: string = `SCREENCOUNT:${folderPageCount}, ICONCOUNT:${iconCount}`;
+    let folderType: number = DeliverUtil.getFolderTypeByFolderId(folderId);
+    HiSysEventUtil.reportDragIconIntoNotHarmonyFolder(folderPositionInDesktop,
+      !GridLayoutUtil.isSmallFolder(endLayoutInfo), folderContent, folderId, folderType);
   }
 
   /**
@@ -184,6 +188,10 @@ export class FolderReporter {
     let dragStartPositionInDesktop: string = this.getItemPositionInDesktop(startPosition, startIsInDockArea);
     let dragEndPositionInDesktop: string = this.getItemPositionInDesktop(endPosition, endIsInDockArea ?? false);
     let folderContent: string = this.getFolderContent(folderItemInfo?.layoutInfo);
+    let folderType: number = DeliverUtil.getFolderTypeByFolderId(folderItemInfo?.folderId ?? '');
+    HiSysEventUtil.reportDragFolder(dragStartPositionInDesktop,
+      dragEndPositionInDesktop, !GridLayoutUtil.isSmallFolder(folderItemInfo)
+      , folderContent, folderItemInfo?.folderId, folderType);
   }
 
   /**
@@ -221,7 +229,7 @@ export class FolderReporter {
   }
 
   /**
-   * 文件夹打点上报 - 拖拽图标到未OpenHarmony化文件夹外
+   * 文件夹打点上报 - 拖拽图标到未鸿蒙化文件夹外
    *
    * @param dragItemInfo 拖拽图标
    * @param folderItemInfo 文件夹对象
@@ -248,6 +256,7 @@ export class FolderReporter {
     dragIconIntoFolderBean.isCardFolder = !GridLayoutUtil.isSmallFolder(folderItemInfo);
     dragIconIntoFolderBean.folderContent = folderContent;
     dragIconIntoFolderBean.folderId = folderItemInfo.folderId ?? '';
+    dragIconIntoFolderBean.folderType = DeliverUtil.getFolderTypeByFolderId(folderItemInfo?.folderId ?? '');
     HiSysEventUtil.reportDragIconFromNotHarmonyFolder(dragIconIntoFolderBean);
   }
 
@@ -279,6 +288,7 @@ export class FolderReporter {
       folderSizeModifyBean.folderContent = this.getFolderContent(removeLayout.layoutInfo);
     }
     folderSizeModifyBean.folderId = removeLayout.folderId ?? '';
+    folderSizeModifyBean.folderType = DeliverUtil.getFolderTypeByFolderId(removeLayout.folderId ?? '');
     HiSysEventUtil.reportMenuModifyFolderSize(folderSizeModifyBean);
     log.showDebug('reportMenuModifyFolderSize: folderSizeModifyBean -- %{public}s', folderSizeModifyBean);
   }
@@ -325,6 +335,8 @@ export class FolderReporter {
     moveIconInFolderBean.folderId = folderId ?? '';
     moveIconInFolderBean.startPosition = startPosition;
     moveIconInFolderBean.endPosition = endPosition;
+    let folderType: number = DeliverUtil.getFolderTypeByFolderId(folderId ?? '');
+    HiSysEventUtil.reportMoveIconInFolder(moveIconInFolderBean, folderType);
     log.showDebug('reportMoveIconInFolder: moveIconInFolderBean -- %{public}s', moveIconInFolderBean);
   }
 
@@ -346,6 +358,10 @@ export class FolderReporter {
     let folderPosition: string = this.getItemPositionInDesktop(
       folderItem, folderItem?.container === CommonConstants.CONTAINER_DOCK);
     log.showInfo('in reportFolderOperation open');
+    let folderType: number = DeliverUtil.getFolderTypeByFolderId(folderItem.folderId ?? '');
+    HiSysEventUtil.reportOpenFolder((folderItem?.layoutInfo as Object[])?.length, iconCount,
+      !GridLayoutUtil.isSmallFolder(folderItem), folderType,
+      folderPosition, iconCount, folderItem?.folderId);
   }
 
   /**
@@ -364,6 +380,10 @@ export class FolderReporter {
       let folderContent: string = this.getFolderContent(folderItem?.layoutInfo ?? []);
       let folderPositionInDesktop: string = this.getItemPositionInDesktop(folderItem,
         folderItem?.container === CommonConstants.CONTAINER_DOCK);
+      let folderType: number = DeliverUtil.getFolderTypeByFolderId(folderId ?? '');
+      HiSysEventUtil.reportCloseFolder(folderPositionInDesktop,
+        !GridLayoutUtil.isSmallFolder(folderItem), folderContent,
+        folderItem?.folderId, folderType);
     }
   }
 
@@ -397,6 +417,34 @@ export class FolderReporter {
     }
     let iconPositionInFolder: string = `SCREENCOUNT: ${folderItem.layoutInfo.length}, SCREENINDEX: ${appIndex},
       CELLX: ${appColumn}, CELLY: ${appRow}, isInDock:false`;
+    let itemAppType: number = DeliverUtil.getAppType(appItem);
+    // 未鸿蒙化应用增加打点（点亮字段）
+    if (itemAppType === DeliverUtil.APPTYPE_COMMON || itemAppType === DeliverUtil.APPTYPE_TYPE_GRAY) {
+      HiSysEventUtil.reportClickAppIcon(component, containerType, '-1', folderPositionInDesktop,
+        iconPositionInFolder, 'true', 'false', folderItem.folderId, itemAppType, appItem.appIndex, '', '');
+    } else if (itemAppType === DeliverUtil.APPTYPE_TYPE_NOTHARMONY &&
+      appItem?.appStatus === AppStatus.WAIT_FOR_HARMONY) {
+      if (CommonUtils.jsonStrToMap(appItem.intent).get(NotHarmonyUtil.NOT_HARMONY_APP_MASK_STATE) !== 1) {
+        HiSysEventUtil.reportClickAppIcon(appItem.bundleName, containerType, '-1', folderPositionInDesktop,
+          iconPositionInFolder, 'true', 'false', folderItem.folderId, itemAppType, appItem.appIndex, 'false',
+          '0');
+      } else {
+        let intentMap: Map<string, Object> = CommonUtils.jsonStrToMap(appItem?.intent);
+        let lightData: number = intentMap.get('lightData') as number;
+        let timeSpan: number;
+        if (lightData) {
+          timeSpan = new Date().getTime() - lightData;
+        } else {
+          timeSpan = -1;
+        }
+        HiSysEventUtil.reportClickAppIcon(appItem.bundleName, containerType, '-1', folderPositionInDesktop,
+          iconPositionInFolder, 'true', 'false', folderItem.folderId, itemAppType, appItem.appIndex, 'true',
+          timeSpan.toString());
+      }
+    } else {
+      HiSysEventUtil.reportClickAppIcon(component, containerType, '-1', folderPositionInDesktop, iconPositionInFolder,
+        'true', 'false', folderItem.folderId, itemAppType, appItem.appIndex, '', '');
+    }
     if (appItem.typeId === CommonConstants.TYPE_SHORTCUT_ICON) {
       HiSysEventUtil.reportClickShortcut(component, appItem.shortcutId, containerType, '-1', folderPositionInDesktop,
         iconPositionInFolder, folderItem.folderId);

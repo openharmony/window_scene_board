@@ -41,6 +41,7 @@ import { MetaServiceConnect } from '@ohos/systemuicommon/src/main/ets/manager/Me
 // import { serviceNotification } from '@kit.PushKit';
 
 const log = LogHelper.getLogHelper(LogDomain.NC, 'NotificationApiUtil');
+const EVENT_DELIVER_NOTIFICATION_REMOVE = 'event.deliver.notification.remove';
 
 /**
  * 录屏bundleName
@@ -68,9 +69,61 @@ export class NotificationApiUtil {
       if (ntf.isDisplayAtTop) {
         notificationConfigManager.setPinTopState(ntf.creatorUid, false);
       }
+      // 如果是通知，关闭通知时需要发送删除通知的事件
+      NotificationApiUtil.sendDeliverNotificationRemoveEvent(ntf, true);
 
       // 关闭通知
       NotificationApiUtil.setNtfEnable(ntf.creatorBundleName, ntf.creatorUid, false);
+    }
+  }
+
+  /**
+   * 通知移除时发送公共事件告诉
+   * @param ntf 通知数据
+   * @param isRemoveAll 是否移除全部
+   */
+  private static sendDeliverNotificationRemoveEvent(ntf: NotificationBase, isRemoveAll: boolean = false): void {
+    // 非通知，直接跳过
+    if (!ntf.isDeliverNotification) {
+      return;
+    }
+
+    if (isRemoveAll) {
+      // 批量删除通知
+      log.showInfo(`sendDeliverNotificationRemoveEvent removeAll`);
+      const options: commonEventManager.CommonEventPublishData = {
+        data: ntf?.deliverNotificationKey + '-1-1',
+        subscriberPermissions: ['ohos.permission.NOTIFICATION_CONTROLLER']
+      };
+      NotificationApiUtil.sendDeliverCommonEvent(EVENT_DELIVER_NOTIFICATION_REMOVE, options);
+    } else {
+      const nftList: NotificationBase[]  = ntf.isNormalGroup() ? ntf.children : [ntf];
+      nftList.forEach(deliverNtf => {
+        const options: commonEventManager.CommonEventPublishData = {
+          data: deliverNtf?.deliverNotificationKey + '-0-0',
+          subscriberPermissions: ['ohos.permission.NOTIFICATION_CONTROLLER']
+        };
+        NotificationApiUtil.sendDeliverCommonEvent(EVENT_DELIVER_NOTIFICATION_REMOVE, options);
+      });
+    }
+  }
+
+  /**
+   * 发送公共事件
+   * @param options
+   */
+  private static sendDeliverCommonEvent(event: string, options: commonEventManager.CommonEventPublishData): void {
+    log.showInfo(`Send deliver notification ${event} event, data: ${options.data}`);
+    try {
+      commonEventManager.publish(event, options, err => {
+        if (err) {
+          log.showError(`sendDeliverCommonEvent: ${err.code}, message is ${err.message}`);
+        } else {
+          log.showInfo('sendDeliverCommonEvent success');
+        }
+      });
+    } catch (err) {
+      log.showError(`sendDeliverCommonEvent: ${err.code}, message is ${err.message}`);
     }
   }
 
@@ -162,6 +215,11 @@ export class NotificationApiUtil {
    * @param ntfList 通知列表
    */
   public static async removeNtfByCancel(ntfList: NotificationBase[]): Promise<void> {
+    // 如果是通知，删除通知时需要发送删除通知的事件
+    ntfList.forEach(ntf => {
+      NotificationApiUtil.sendDeliverNotificationRemoveEvent(ntf);
+    });
+    log.showInfo('Remove ntfList by cancel');
     await NotificationDataManager.instance.removeLiveView(ntfList, false);
   }
 

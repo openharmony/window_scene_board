@@ -30,7 +30,7 @@ const KEYBOARD = 4;
 @Component
 export default struct DeviceItem {
   @Prop device: audioDevice;
-  @Prop curViewIndex: number;
+  @Link curViewIndex: number;
   @State style: SoundDeviceStyle = StyleConfiguration.getSoundDeviceStyle();
   @State styleClickable: ClickableMenuStyle = StyleConfiguration.getClickableMenuStyle();
   @State colorModeViewData: ColorModeViewData = ColorModeViewModel.getInstance().getViewData();
@@ -105,6 +105,7 @@ export default struct DeviceItem {
 
   private deviceSelect(event: ClickEvent): void {
     log.showInfo(TAG, `click output device to select, type: ${this.device.type}`);
+    this.curViewIndex = this.device.viewIndex;
     let eventType: string = HiSysEventUtil.TOUCH_EVENT;
     if (event.source === SourceType.Mouse) {
       eventType = HiSysEventUtil.MOUSE_EVENT;

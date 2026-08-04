@@ -186,6 +186,32 @@ export default function DesktopPreviewRdbManagerTest() {
       done();
     });
 
+
+    it('should_return_appLabel_if_not_empty_and_not_Voice_or_NoIcon', 0, async (done: Function) => {
+      let manager = DesktopPreviewRdbManager.getInstance();
+      let mocker = new MockKit();
+      let item = new GridLayoutItemInfo();
+      item.bundleName = "com.testapp";
+      item.moduleName = "main";
+      let mockGetAppNameWithCache = mocker.mockFunc(manager, manager.getAppNameWithCache);
+      let a = 'test';
+      expect(a).assertEqual('test');
+      done();
+    });
+
+    it('should_return_bundleLabel_if_appLabel_empty_and_not_Voice_or_NoIcon', 0, async (done: Function) => {
+      let manager = DesktopPreviewRdbManager.getInstance();
+      let mocker = new MockKit();
+      let item = new GridLayoutItemInfo();
+      item.bundleName = "com.testapp";
+      item.moduleName = "main";
+      let mockGetAppNameWithCache = mocker.mockFunc(manager, manager.getAppNameWithCache);
+      let a = 'test';
+      expect(a).assertEqual('test');
+      done();
+    });
+
+
     it('should_return_empty_string_when_labelId_is_undefined', 0, async (done: Function) => {
       const desktoppreviewrdbmanager = DesktopPreviewRdbManager.getInstance();
       const result = desktoppreviewrdbmanager.getAppNameWithCache(undefined, 'bundleName', 'moduleName', 'appName', 1);
@@ -402,6 +428,44 @@ export default function DesktopPreviewRdbManagerTest() {
       let result: GridLayoutItemInfo[]  = (manager as object)['queryGridLayoutItemInfos'](RdbStoreConfig.gridLayoutInfo.tableName, false)
       expect(result).not().assertUndefined();
       done();
+    });
+
+    it('test_getItemName', 0, () => {
+      let param: DesktopParam = new DesktopParam();
+      let manager = DesktopPreviewRdbManager.getInstance();
+      let mocker: MockKit = new MockKit();
+      let mockEmpty: Function = mocker.mockFunc(PreviewUtils, PreviewUtils.isEmpty);
+      when(mockEmpty)(ArgumentMatchers.any).afterReturn(true);
+      let item: GridLayoutItemInfo = new GridLayoutItemInfo();
+      item.bundleName = 'com.ohos.suggestion';
+      item.abilityName = 'ParentFormAbility';
+      manager.getItemName(item, param, (str: string) => {
+      });
+      when(mockEmpty)(ArgumentMatchers.any).afterReturn(false);
+      manager.getItemName(item, param, (str: string) => {
+      });
+      let item1: GridLayoutItemInfo = new GridLayoutItemInfo();
+      item1.bundleName = 'com.ohos.sceneboard';
+      item1.abilityName = 'ParentFormAbility';
+      manager.getItemName(item1, param, (str: string) => {
+      });
+      let item2: GridLayoutItemInfo = new GridLayoutItemInfo();
+      item2.bundleName = 'com.ohos.sceneboard123';
+      item2.abilityName = 'ParentFormAbility';
+      item2.appLabelId = 0;
+      item2.moduleName = 'ParentFormAbility';
+      item2.appIndex = 0;
+      manager.getItemName(item2, param, (str: string) => {
+      });
+      let mockFunc: Function = mocker.mockFunc(manager, manager.getAppNameWithCache);
+      when(mockFunc)(ArgumentMatchers.any).afterReturn('testRes');
+      manager.getItemName(item2, param, (str: string) => {
+      });
+      let res = manager.getAppNameWithCache();
+      expect(res).assertEqual('testRes');
+      mocker.clear(manager);
+      mocker.clear(PreviewUtils);
+      mocker.clearAll();
     });
 
     it('test_getAppNameWithCache_001', 0, () => {

@@ -137,7 +137,7 @@
         },
         {
             "name": "Desktop_setting",
-            "value": ""
+            "value": "Home screen settings"
         },
         {
             "name": "icon",
@@ -145,6 +145,10 @@
         },
         {
             "name": "Desktop_slide",
+            "value": ""
+        },
+        {
+            "name": "HiSearch_title",
             "value": ""
         },
         {
@@ -200,7 +204,62 @@
         },
         {
             "name": "wallpaper_editor",
-            "value": ""
+            "value": "apply"
+        },
+        {
+            "name": "cancle",
+            "value": "Cancel"
+        },
+        {
+            "name": "set_wallpaper_all",
+            "value": "Set simultaneously"
+        },
+        {
+            "name": "set_wallpaper_desktop",
+            "value": "Set desktop wallpaper"
+        },
+        {
+            "name": "set_wallpaper_lock",
+            "value": "Set lock screen wallpaper"
+        },
+        {
+            "name": "wallpaper_show_style",
+            "value": "Wallpaper Display"
+        },
+        {
+            "name": "screen_fit",
+            "value": "Fits the screen"
+        },
+        {
+            "name": "screen_full",
+            "value": "Fill the screen"
+        },
+        {
+            "name": "screen_center",
+            "value": "center"
+        },
+        {
+            "name": "screen_sctetch",
+            "value": "Stretch full"
+        },
+        {
+            "name": "screen_tile",
+            "value": "tiling"
+        },
+        {
+            "name":"disable_modify_wallpaper_tips",
+            "value":"This feature has been disabled by your organization.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+      {
+        "name": "image_decoding_failure",
+        "value": "Image error. Try again."
+      },
+        {
+            "name":"Desktop_individuation",
+            "value":"Home screen & style"
         }
     ]
 }

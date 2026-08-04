@@ -16,7 +16,7 @@ import { SCBSessionRect } from '@ohos/windowscene';
 import { SCBFoldState } from '../utils/Constants';
 
 export interface FoldShutdownViewProxy {
-  getCurBigScreenStatus: (screenId?: number) => SCBFoldState;
+  getCurSuperFoldStatus: (screenId?: number) => SCBFoldState;
   getBSideRegion: () => SCBSessionRect;
   registerFoldSceneStateChangeCallback: (callback: Function, isPriority: boolean, tag?: string) => void;
   unregisterFoldSceneStateChangeCallback: (callback: Function, tag?: string) => void;

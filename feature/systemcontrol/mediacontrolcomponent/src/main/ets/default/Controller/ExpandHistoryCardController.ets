@@ -47,7 +47,7 @@ export default class ExpandHistoryCardController {
       TIME: startTime,
       SCREENSTATUS: this.getScreenStatus(),
       DEVICEMODELTYPE: 'phone',
-      SCREENFOLDEDSTATUS: CommonUtils.isFoldExpanded() ? (CommonUtils.isUltraScreenProductInGState() ? 11 : 1) : 2
+      SCREENFOLDEDSTATUS: CommonUtils.isFoldExpanded() ? (CommonUtils.isThreeFoldProductInGState() ? 11 : 1) : 2
     };
     log.showInfo(' report HISTORY_AVQUEUE_PLAY:' + JSON.stringify(dfxParam));
     HiSysEvent.getEventParam(EventType.HISTORY_AVQUEUE_PLAY)

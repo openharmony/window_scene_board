@@ -21,6 +21,7 @@ import { editModeViewManager } from '../../default/manager/EditModeViewManager';
 import { editModeUIExtensionViewModel } from '../viewmodel/EditModeUIExtensionViewModel';
 import { EditModeDockConstants } from '../../default/common/constants/EditModeStyleConstants';
 import { launcherVisualEffectMgr } from '@ohos/launchercommon/Index';
+import { Want } from '@kit.AbilityKit';
 
 const TAG: string = 'EditModeExtensionUI';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.HOME, TAG);
@@ -67,6 +68,16 @@ export default struct EditModeExtensionUI {
         })
         .onAppear(() => {
           focusControl.requestFocus('edit_mode_extension_occlusion');
+          let want: Want | undefined = this.iconEditWantData.getExtensionWant()
+          if (want?.abilityName === 'HomeThemeComponentExtAbility') {
+            AppStorage.setOrCreate('showWallpaperPage', true)
+          }
+        })
+        .onDisAppear(()=>{
+          let want: Want | undefined = this.iconEditWantData.getExtensionWant()
+          if (want?.abilityName === 'HomeThemeComponentExtAbility') {
+            AppStorage.setOrCreate('showWallpaperPage', false)
+          }
         })
     }
   }

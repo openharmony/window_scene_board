@@ -662,7 +662,7 @@ export class DropDownPanelManager {
           this.dismissCallback = undefined;
           log.showInfo('dismissCallback_pc');
         }
-      }, 100)
+      }, 0)
     } else {
       this.animToDismiss();
     }

@@ -19,6 +19,8 @@ import type rpc from '@ohos.rpc';
 import { BaseServiceStub, IService } from '@ohos/componenthelper';
 import { Log } from '@ohos/basicutils';
 import { RecentDeviceService } from '@ohos/phonebase/src/main/ets/service/RecentDeviceService';
+// import { RestoringPhoneDesktopLayout } from '@ohos/phonebase/src/main/ets/backup/RestoringPhoneDesktopLayout';
+import { SampleDeviceService } from '@ohos/pagedesktop/src/main/ets/default/service/SampleDeviceService';
 import { DesktopIconService } from '@ohos/pagedesktop/src/main/ets/default/service/DesktopIconService';
 import { GlobalSearchLocationService } from '@ohos/phonebase/src/main/ets/service/GlobalSearchLocationService';
 import { CloneCloudService } from '@ohos/phonebase/src/main/ets/service/CloneCloudService';
@@ -116,6 +118,8 @@ export class PhoneDesktopProviderServiceStub extends BaseServiceStub {
   protected initServiceMap(): Map<number, () => IService> {
     return new Map<number, () => IService>([
       [PhoneDesktopProviderServiceStub.cloneCloud, (): IService => new CloneCloudService()],
+      // [PhoneDesktopProviderServiceStub.sampleDevice,
+      //   (): IService => new SampleDeviceService(new RestoringPhoneDesktopLayout())],
       [PhoneDesktopProviderServiceStub.recentDeleteDeviece, (): IService => new RecentDeviceService()],
       [PhoneDesktopProviderServiceStub.globalSearch, (): IService => new GlobalSearchLocationService()],
       [PhoneDesktopProviderServiceStub.queryNotInstall, (): IService => new QueryDesktopAppService()],

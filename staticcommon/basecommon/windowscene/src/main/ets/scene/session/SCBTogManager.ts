@@ -14,12 +14,12 @@
  */
 
 import appManager from '@ohos.app.ability.appManager';
-// import statusBar from '@hms.pcService.statusBar';
+import statusBar from '@ohos.pcService.statusBar';
 import { SCBSceneInfo } from './SCBSceneInfo';
 import { SCBSceneSession } from './SCBSceneSession';
 import { SCBSceneSessionManager } from './SCBSceneSessionManager';
 import { SCBSceneContainerSession } from './SCBSceneContainerSession';
-import { LogDomain, LogHelper } from '@ohos/basicutils';
+import { LogDomain, LogHelper, CapabilityUtil } from '@ohos/basicutils';
 import { EvtBus, EventManager } from '@ohos/frameworkwrapper';
 import { sEventManager } from '@ohos/frameworkwrapper';
 import { ProcessStateChangeEvent } from '@ohos/frameworkwrapper';
@@ -181,7 +181,7 @@ export class SCBTogManager {
     await this.getRunningPids();
     log.showInfo(`tryToExitPCMode pid length ${this.pids.length}`);
     if (this.pids.length > 0) {
-      // statusBar.exitProcesses(this.pids);
+      CapabilityUtil.isStatusBarAvailable() && statusBar.exitProcesses(this.pids);
       setTimeout(() => {
         this.checkNeedExitNotify();
       }, EXIT_NOTIFY_WAITE);

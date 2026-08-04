@@ -22,6 +22,7 @@ import {
 import ServiceExtensionContext from 'application/ServiceExtensionContext';
 import { AppIconBadgeVm } from '@ohos/launchercommon/src/main/ets/launchericon/viewmodel/AppIconBadgeVm';
 import {
+  DeliverUtil,
   AppItemInfo,
   GridLayoutItemInfo,
   folderGesData,
@@ -132,27 +133,29 @@ export struct OpenFolderAddBubble {
     }
     const openFolderId: string = dataMgr.getOpenFolderId();
     const openFolder: GridLayoutItemInfo = dataMgr.getOpenedFolder();
+    const folderType: number = DeliverUtil.getFolderTypeByFolderId(openFolderId);
     const isCardFolder: boolean = GridLayoutUtil.isBigFolder(openFolder);
-    // 锁定布局时普通文件夹不可反选
-    if (lockLayoutManager.isLockLayout()) {
-      lockLayoutManager.toastLockedLayout();
-      return;
+    if (DeliverUtil.isContainerFolder(openFolderId)) {
+      if (DeliverUtil.getDeliverStartStatus() !== DeliverUtil.DELIVER_START_FINISHED_CODE &&
+        !DeliverUtil.isMatchContainerHapExist(this.item, openFolderId)) {
+        this.builddeliverAppAlertDialog().open();
+        return;
+      }
+      DeliverUtil.handleOnClicked(openFolderId);
+      HiSysEventUtil.reportReverseAddInFolder(openFolderId, folderType, isCardFolder);
+    } else {
+      // 锁定布局时普通文件夹不可反选
+      if (lockLayoutManager.isLockLayout()) {
+        lockLayoutManager.toastLockedLayout();
+        return;
+      }
+      log.showInfo('Click add to open dialog.');
+      this.mMultiSelectManager.clearAllSelect();
+      this.mMultiSelectManager.updateCheckboxSelectState();
+      localEventManager.sendLocalEvent(EventConstants.EVENT_FOLDER_ADD_SHEET_REQUEST_OPEN,
+        new FolderAddEventParams(FolderCommonConstants.OPEN_ADD_SHEET_ADD_BUBBLE, openFolderId));
+      HiSysEventUtil.reportReverseAddInFolder(openFolderId, folderType, isCardFolder);
     }
-    log.showInfo('Click add to open dialog.');
-    this.mMultiSelectManager.clearAllSelect();
-    this.mMultiSelectManager.updateCheckboxSelectState();
-    localEventManager.sendLocalEvent(EventConstants.EVENT_FOLDER_ADD_SHEET_REQUEST_OPEN,
-      new FolderAddEventParams(FolderCommonConstants.OPEN_ADD_SHEET_ADD_BUBBLE, openFolderId));
-    // 锁定布局时普通文件夹不可反选
-    if (lockLayoutManager.isLockLayout()) {
-      lockLayoutManager.toastLockedLayout();
-      return;
-    }
-    log.showInfo('Click add to open dialog.');
-    this.mMultiSelectManager.clearAllSelect();
-    this.mMultiSelectManager.updateCheckboxSelectState();
-    localEventManager.sendLocalEvent(EventConstants.EVENT_FOLDER_ADD_SHEET_REQUEST_OPEN,
-      new FolderAddEventParams(FolderCommonConstants.OPEN_ADD_SHEET_ADD_BUBBLE, openFolderId));
   }
 
   private initAddButtonParam(): void {
@@ -163,6 +166,37 @@ export struct OpenFolderAddBubble {
       this.appData.setIconScale(aniParameters[2]);
       this.appData.setIconOpacity(aniParameters[3] ?? 1, TAG, 'initAddButtonParam');
     }
+  }
+
+  private builddeliverAppAlertDialog(): CustomDialogController {
+    const openFolderId: string = FolderManager.getInstance().getOpenFolderId();
+    let deliverAppAlertDialog: CustomDialogController = new CustomDialogController({
+      builder: AlertDialog({
+        primaryTitle: $r('app.string.deliver_app_unavailable_dialog_title'),
+        content: $r('app.string.deliver_app_unavailable_dialog_content',
+          DeliverUtil.getContainerFolderNameForDialog(this.item, openFolderId)),
+        primaryButton: {
+          value: $r('app.string.deliver_app_unavailable_dialog_know'),
+          fontColor: $r('sys.color.ohos_id_color_text_primary_activated'),
+          action: () => {
+            HiSysEventUtil.reportdeliverDialogOperation(this.item.bundleName, DeliverUtil.DIALOG_TYPE_UNAVAILABLE,
+              DeliverUtil.CLICK_KNOW)
+            log.showInfo('uninstalldeliverAppDialog cancel');
+            deliverAppAlertDialog?.close();
+          },
+        },
+      }),
+      cancel: () => {
+        HiSysEventUtil.reportdeliverDialogOperation(this.item.bundleName, DeliverUtil.DIALOG_TYPE_UNAVAILABLE,
+          DeliverUtil.CLICK_BLANK_AREA)
+        log.showInfo('uninstalldeliverAppDialog cancel');
+        deliverAppAlertDialog?.close();
+      },
+      autoCancel: true,
+      customStyle: false,
+      alignment: DialogAlignment.Center,
+    });
+    return deliverAppAlertDialog;
   }
 
   private getAddIconModifier(): BigFolderAppDefaultModifier {

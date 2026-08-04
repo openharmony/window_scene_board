@@ -1,0 +1,1663 @@
+{
+    "string":[
+        {
+            "name":"MultiWindow_guidance_mid_multi_finger_knead_title",
+            "value":"Vào/Thoát chế độ toàn màn hình",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_show_not_support_small_step",
+            "value":"%1$s không hỗ trợ hiển thị cửa sổ mini.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_split_adjust_to_mid_title",
+            "value":"Vào Chế độ xem Đa nhiệm bằng cách chỉnh cỡ cửa sổ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_Mid_View_contents",
+            "value":"Từ chế độ xem màn hình chia, vuốt lên hoặc chỉnh cỡ cửa sổ để vào chế độ xem cửa sổ song song.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_button_next",
+            "value":"Tiếp",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"minimize_window",
+            "value":"Thu nhỏ cực tiểu",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Navi_bar_vassistant_dialogue_longpress",
+            "value":"Chạm và giữ để đánh thức voice",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Navi_bar_return_home",
+            "value":"Về trang chủ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_adjust_mid_window_title",
+            "value":"Điều chỉnh cửa sổ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Navi_bar_recent_detail",
+            "value":"Vuốt lên trên từ cuối màn hình và giữ để xem các tác vụ gần đây.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_slid_delete_title",
+            "value":"Vuốt để đóng ứng dụng",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_add_window_content",
+            "value":"Bạn có thể thêm cửa sổ khác vào nhóm này từ menu ở trên cùng.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"not_harmony_apps",
+            "value":"Sắp ra mắt",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_does_not_support_panoramic_multiwindow_in_current_state",
+            "value":"Không hỗ trợ chế độ xem Đa nhiệm.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Navi_bar_recent",
+            "value":"Xem các tác vụ gần đây",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"already_exist_pip_window_toast",
+            "value":"Trước tiên, hãy đóng cửa sổ mini hiện có.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_split_swap_title",
+            "value":"Lật cửa sổ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"force_split2full_tips",
+            "value":"Chế độ lấp đầy màn hình sẽ có hiệu lực vào lần tiếp theo bạn mở ứng dụng.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Navi_bar_back_click_navigation",
+            "value":"Chạm để trở lại",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_not_support_multiwindows",
+            "value":"%1$s không hỗ trợ hiển thị đa cửa sổ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"maximize_window",
+            "value":"Phóng to tối đa",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_pip_switch_title",
+            "value":"Hình trong hình",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_not_support_split_ratio",
+            "value":"Không thể điều chỉnh kích thước màn hình cho trò chơi.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_vertical_split",
+            "value":"Chia theo chiều dọc",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_split_to_float_title",
+            "value":"Màn hình chia thành cửa sổ di động",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"folder_name_tools",
+            "value":"Công cụ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_click_application_form_midScene_waiting_state",
+            "value":"Chạm vào biểu tượng ứng dụng để thêm vào chế độ xem Đa nhiệm.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"oh_multiwindow_not_support_split_for_folded_new",
+            "value":"%1$s không có sẵn ở chế độ màn hình chia khi thiết bị được gập lại.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"No_available_window",
+            "value":"Không có cửa sổ ứng dụng",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"duplicate_add",
+            "value":"Đã được thêm rồi.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Navi_bar_back",
+            "value":"Trở lại",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"uninstall",
+            "value":"Gỡ cài đặt",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_not_support_horizontal_split_new",
+            "value":"%1$s không hỗ trợ màn hình chia ngang.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"replace_window",
+            "value":"Hoán đổi",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"oh_multiwindow_minimize_all_float_due_to_rss",
+            "value":"Để đảm bảo trải nghiệm mượt mà, cửa sổ di động đã được thu gọn sang bên.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"title_search_result",
+            "value":"Kết quả",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"recover_Theme_App_massage",
+            "value":"Bạn cần cài đặt ứng dụng Chủ đề để sử dụng tính năng này.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_three_finger_cross_slip_content",
+            "value":"Vuốt sang trái hoặc phải bằng ba ngón tay.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_add_window_title",
+            "value":"Thêm cửa sổ mới",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_floating_windows_contents",
+            "value":"Mở ứng dụng trong cửa sổ di động và sử dụng cử chỉ để thu nhỏ, phóng to hoặc đóng ứng dụng.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_Mid_View_title",
+            "value":"Chế độ xem cửa sổ song song",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_center_menu_add_desktop",
+            "value":"Thêm vào màn hình chính",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"search_apps",
+            "value":"Tìm kiếm ứng dụng",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_ring_mode_title_vibration",
+            "value":"Rung",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_click_application_form_split_screen",
+            "value":"Hãy mở một ứng dụng khác để xem ở chế độ màn hình chia.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Desktop_setting",
+            "value":"Cài đặt màn hình chính",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aod_cancel",
+            "value":"Hủy",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"HiSearch_title",
+            "value":"voice Search",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"folder_name_system_apps",
+            "value":"Ứng dụng ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_window",
+            "value":"Thêm",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"delete_app",
+            "value":"Gỡ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"style_mode_label_small",
+            "value":"Nhỏ (%1$d:%2$d)",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"flip_the_phone",
+            "value":"Lật để bật đèn pin",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_location_title",
+            "value":"Vị trí",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"style_mode_label_split",
+            "value":"Cột",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"landscape_app_full_ratio",
+            "value":"Tỷ lệ toàn màn hình",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Navi_bar_gesture_back_detail",
+            "value":"Vuốt vào trong từ cạnh bên trái hoặc bên phải để trở lại màn hình trước.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_floating_tip",
+            "value":"Chạm để xem các nút điều khiển.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_button_know",
+            "value":"Đã hiểu",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_delete_form",
+            "value":"Gỡ tiện ích này?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_split_tip",
+            "value":"Chạm để xem các nút điều khiển.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"mid_scene_tip_label",
+            "value":"Thả ra để vào Chế độ xem Đa nhiệm",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_ring_mode_title_off",
+            "value":"Im lặng",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"learn_more",
+            "value":"Tìm hiểu thêm",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"continue",
+            "value":"Tiếp",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"recover",
+            "value":"Khôi phục",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_ring_mode_title_on",
+            "value":"Âm thanh",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"restoring_tips_btn",
+            "value":"OK",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_does_not_support_panoramic_multiwindow",
+            "value":"Ứng dụng này không hỗ trợ chế độ xem Đa nhiệm.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_focused_switch_content_fold",
+            "value":"Chạm vào cửa sổ để chọn.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Navi_bar_vassistant",
+            "value":"Chạm và giữ thanh điều hướng để trò chuyện với voice.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_not_support_split",
+            "value":"%1$s không hỗ trợ chế độ hiển thị phân tách màn hình.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_one_step_mid_title",
+            "value":"Vào Chế độ xem Đa nhiệm bằng cách vuốt",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"continue_mission_fail_device_connecting_to_another_device",
+            "value":"Chuyển giao không thành công. %1$s đang tương tác với một thiết bị khác.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"System",
+            "value":"Hệ thống",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_uninstall",
+            "value":"Không cho phép gỡ cài đặt.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"force_split_tips",
+            "value":"Chế độ xem theo cột sẽ có hiệu lực vào lần tiếp theo bạn mở ứng dụng.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_not_support_float_window",
+            "value":"Không mở được %1$s trong cửa sổ di động.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"style_mode_label_full",
+            "value":"Lấp đầy màn hình",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"add",
+            "value":"Thêm",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"delete_form",
+            "value":"Kéo vào đây để xóa",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_swap_content",
+            "value":"Chạm và giữ thanh trên cùng của cửa sổ, sau đó kéo qua cửa sổ khác.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"new_folder_name",
+            "value":"Thư mục %1$d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Navi_bar_back_detail",
+            "value":"Chạm vào thanh điều hướng để trở lại màn hình trước.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"gesture_dock_add_limit",
+            "value":"Có thể thêm tối đa %1$d ứng dụng.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_button_quit",
+            "value":"Để sau",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"confirm_pcmod_tips",
+            "value":"OK",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"recover_Theme_App",
+            "value":"Khôi phục ứng dụng Chủ đề?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"enter_pc_mode_tips",
+            "value":"Sắp bật chế độ cửa sổ tự do. Chế độ này chỉ có sẵn khi xoay ngang.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"close_window",
+            "value":"Đóng",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"close_flashlight_tips",
+            "value":"Nhấn nút Nguồn để tắt đèn pin",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"floating_three_button_navigation",
+            "value":"Điều khiển điều hướng di động",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_bluetooth_title",
+            "value":"Bluetooth",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cancel",
+            "value":"Hủy",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_menu_open",
+            "value":"Mở",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_to_voice",
+            "value":"Kéo đến voice",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_to_voice_detail",
+            "value":"Chạm và giữ vào một mục cho đến khi mục đó nổi lên, sau đó kéo xuống dưới cùng.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"uninstall_success",
+            "value":"Đã gỡ cài đặt.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"uninstall_failed",
+            "value":"Gỡ cài đặt không thành công.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"title_recently_use",
+            "value":"Gần đây",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_to_voice_reminder",
+            "value":"Kéo đến voice và thả ra để kích hoạt",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_nfc_mode_title",
+            "value":"NFC",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_adjust_mid_window_content",
+            "value":"Kéo để chỉnh cỡ cửa sổ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"forbid_pip_window_size_adjust",
+            "value":"Không điều chỉnh được kích thước cửa sổ trên màn hình ngoài.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"landscape_startup_title",
+            "value":"Tùy chọn Mở rộng ứng dụng",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"compatible_application_display",
+            "value":"Ứng dụng tương thích",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_horizontal_split",
+            "value":"Chia theo chiều ngang",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_dialog_title",
+            "value":"Luôn hiển thị",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Desktop_slide",
+            "value":"Vuốt xuống để tìm kiếm",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aod_modify_mode_smart_text",
+            "value":"Cài đặt Luôn hiển thị này chỉ hỗ trợ chế độ Thông minh. Chế độ hiển thị của bạn đã được tự động chuyển đổi.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"one_hand_mode",
+            "value":"Chế độ một tay",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"oh_multiwindow_app_is_open",
+            "value":"Ứng dụng đã mở.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"oh_multiwindow_not_support_vertical_split_new",
+            "value":"%1$s không hỗ trợ màn hình chia dọc.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_swap_title",
+            "value":"Hoán đổi cửa sổ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"continue_mission_fail_close_hotspot_and_try_again",
+            "value":"Chuyển giao không thành công. Tắt điểm phát sóng cá nhân trên %1$s và thử lại.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Navi_bar_setting",
+            "value":"Điều hướng hệ thống",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"title_all_apps",
+            "value":"Tất cả ứng dụng",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"No_running_apps_recently",
+            "value":"Không có ứng dụng nào gần đây",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aod_poup_confirm",
+            "value":"OK",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"floating_three_button_navigation_detail",
+            "value":"Kéo các phím điều hướng để điều chỉnh vị trí của chúng.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_button_finish",
+            "value":"Xong",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"style_mode_label_medium",
+            "value":"Trung bình",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_split_swap_content_phone",
+            "value":"Chạm và giữ thanh trên cùng của cửa sổ, sau đó kéo qua cửa sổ khác.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"add_to_desktop",
+            "value":"Thêm vào màn hình chính",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"landscape_view_force",
+            "value":"Buộc hiển thị ngang",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remove_form_dialog_content",
+            "value":"Bạn có thể thêm lại tiện ích này từ menu thao tác nhanh của ứng dụng.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aod_list_title_more_style",
+            "value":"Kiểu luôn hiển thị khác",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_one_step_mid_content",
+            "value":"Vuốt từ cuối lên đầu màn hình, sau đó chọn một ứng dụng.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_float_to_split_title",
+            "value":"Cửa sổ di động thành màn hình chia",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_floating_windows_title",
+            "value":"Cửa sổ di động",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_restored",
+            "value":"Ứng dụng đã được khôi phục.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"covertheme_settings_title",
+            "value":"Màn hình chính, màn hình ngoài và kiểu",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dragging_to_mid_tip",
+            "value":"Thả ra để vào Chế độ xem Đa nhiệm",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_three_finger_cross_slip_title",
+            "value":"Chuyển đổi giữa các ứng dụng",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"folder_name_preload",
+            "value":"Ứng dụng hàng đầu",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"title_bar_menu_enlarge_window",
+            "value":"Phóng to",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"continue_mission_waiting",
+            "value":"Đang chuyển giao…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_float_to_split_content",
+            "value":"Chạm và giữ thanh trên cùng của cửa sổ, sau đó kéo để vào chế độ xem màn hình chia.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"title_bar_menu_shrink_window",
+            "value":"Thu nhỏ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"one_hand_mode_accessibility_str_entry_setting",
+            "value":"Cài đặt",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Navi_bar_vassistant_dialogue",
+            "value":"voice Chat",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Desktop_individuation",
+            "value":"Màn hình chính và phong cách",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_dock_title",
+            "value":"Nút Đa cửa sổ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"airplane_mode",
+            "value":"Chế độ Máy bay",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_split_to_float_content_phone",
+            "value":"Chạm và giữ thanh trên cùng của cửa sổ, sau đó kéo để chuyển đổi thành cửa sổ di động.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_dialog_content",
+            "value":"Cần bật chế độ Luôn hiển thị. Bật ngay?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_pip_switch_desc",
+            "value":"Khi bật tính năng này, cuộc gọi MeeTime và video sẽ tiếp tục trong một cửa sổ nhỏ khi bạn mở ứng dụng khác hoặc quay lại màn hình chính.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"title_support_multiWindow",
+            "value":"Thêm",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_horizontal_exchange",
+            "value":"Lật trên/dưới",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"restoring_tips_message",
+            "value":"Tính năng này không có sẵn trong khi dữ liệu đang được khôi phục. Hãy thử lại sau.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"split_to_float",
+            "value":"Cửa sổ di động",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Navi_bar",
+            "value":"Thanh điều hướng",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"title_bar_menu_maximize_window",
+            "value":"Phóng to tối đa",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"split_screen",
+            "value":"Màn hình chia",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_menu_exit",
+            "value":"Thoát",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_focused_switch_title_fold",
+            "value":"Chuyển đổi cửa sổ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_split_adjust_to_mid_content",
+            "value":"Ở chế độ xem màn hình chia, hãy kéo đường phân cách cho đến khi chế độ xem thay đổi.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_mid_view_guidance_floating_tip",
+            "value":"Kéo vào đây để chỉnh cỡ cửa sổ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_multi_finger_knead_content",
+            "value":"Xòe ngón cái và ba ngón tay ra hoặc chụm các ngón tay lại.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"landscape_desc_force",
+            "value":"Ứng dụng sẽ mở ở chế độ xem ngang, ngay cả khi ứng dụng không hỗ trợ chế độ này. Bạn có thể thay đổi tỷ lệ khung hình bên dưới.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"one_handed_mode_diag_title",
+            "value":"Chế độ Một tay",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_save_group",
+            "value":"Lưu nhóm",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"next_step",
+            "value":"Tiếp",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aod_enable",
+            "value":"Bật",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"title_bar_menu_close_window",
+            "value":"Đóng",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_change_views_title",
+            "value":"Nhanh chóng thay đổi chế độ xem",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_split_screen_contents",
+            "value":"Kéo thanh trên cùng để lật cửa sổ hoặc mở cửa sổ di động. Chỉnh cỡ bằng cách kéo ở giữa.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_split_swap_content_fold",
+            "value":"Chạm và giữ thanh trên cùng của cửa sổ, sau đó kéo qua cửa sổ khác.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"one_handed_mode_diag_content",
+            "value":"Để vào Chế độ Một tay, hãy trượt ngón tay dọc theo phía dưới màn hình và giữ nguyên ở đó trong giây lát.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_vertical_exchange",
+            "value":"Lật trái/phải",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"title_bar_menu_minimize_window",
+            "value":"Thu nhỏ cực tiểu",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_center_menu_add_dock",
+            "value":"Thêm vào thanh tác vụ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"gesture_return_desktop",
+            "value":"Trở lại màn hình chính",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_change_views_contents",
+            "value":"Vuốt lên trên cùng bên phải để mở cửa sổ di động hoặc vuốt lên trên cùng bên trái để chia đôi màn hình.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_dock_contents",
+            "value":"Vuốt từ cạnh vào trong để mở thanh tác vụ. Chạm vào một ứng dụng để mở cửa sổ di động. Hoặc kéo ứng dụng vào màn hình để vào chế độ xem màn hình chia.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_slid_delete_content",
+            "value":"Chạm và giữ thanh trên cùng của cửa sổ, sau đó vuốt nhanh về phía cuối màn hình.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_split_to_float_content_fold",
+            "value":"Chạm và giữ thanh trên cùng của cửa sổ, sau đó kéo để chuyển đổi thành cửa sổ di động.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"running_apps_recently",
+            "value":"Ứng dụng gần đây",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Navi_bar_return_home_detail",
+            "value":"Vuốt lên từ cuối màn hình để truy cập màn hình chính",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_back_to_middle_scene_using_gesture",
+            "value":"Chụm bốn ngón tay lại với nhau để trở lại chế độ xem Đa nhiệm.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"one_handed_mode_diag_cancel",
+            "value":"Đã hiểu",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"display_brightness",
+            "value":"Màn hình và độ sáng",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_title",
+            "value":"Đa cửa sổ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"gesture_enter_recent_task",
+            "value":"Xem các tác vụ gần đây",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"gesture_return",
+            "value":"Trở lại",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"out_pcmod_tips",
+            "value":"Để thoát chế độ này, trước tiên hãy đóng %s.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_float_to_split_content_fold",
+            "value":"Chạm và giữ thanh trên cùng của cửa sổ, sau đó kéo để vào chế độ xem màn hình chia.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"force_split2other",
+            "value":"Tỷ lệ khung hình đã thay đổi. Có thể có vấn đề về hiển thị.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"switch_floating_window",
+            "value":"Cửa sổ di động",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dragging_to_full_tip",
+            "value":"Thả ra để vào chế độ xem toàn màn hình",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"one_hand_mode_exit",
+            "value":"Chạm vào vùng trống để thoát.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_dock_switch_contents",
+            "value":"Vuốt từ cạnh màn hình vào trong, giữ, rồi thả để mở thanh tác vụ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_button_more",
+            "value":"Tìm hiểu thêm",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"know",
+            "value":"Đã hiểu",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"continue_mission_fail",
+            "value":"Chuyển giao không thành công.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_dock_switch_title",
+            "value":"Nút Đa cửa sổ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_show_not_support_adjust_window",
+            "value":"Cửa sổ %1$s không hỗ trợ chỉnh cỡ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"one_hand_compatibility_mode_prompt_string",
+            "value":"Nếu bạn gặp sự cố hiển thị, hãy thử khởi chạy lại ứng dụng.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"one_handed_mode_diag_confirm",
+            "value":"Tìm hiểu thêm",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_not_support_change_split_ratio",
+            "value":"Không thể điều chỉnh tỷ lệ cửa sổ %1$s ở chế độ xem màn hình chia.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_not_support_split_this_way_currently",
+            "value":"Ở hình thái thiết bị hiện tại của bạn, không thể mở %1$s ở chế độ màn hình chia theo cách này.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_not_support_split_currently",
+            "value":"Ở hình thái thiết bị hiện tại của bạn, %1$s không hỗ trợ chế độ màn hình chia.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_split_screen_title",
+            "value":"Màn hình chia",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dragging_to_one_to_two_split_tip",
+            "value":"Thả để vào màn hình chia %1$d:%2$d",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dragging_to_two_to_one_split_tip",
+            "value":"Thả để vào màn hình chia %2$d:%1$d",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enter_free_windows_tips",
+            "value":"Để sử dụng chế độ cửa sổ tự do, hãy xoay thiết bị của bạn sang hướng ngang.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"multi_window_force_switch_title",
+            "value":"Chế độ tương thích",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keyboard_panel_smart_access_text",
+            "value":"Các chế độ nhập khác, nút",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"unlock_app",
+            "value":"%s đã được mở khóa",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_video_player",
+            "value":"Cửa sổ mini đang phát video",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keyboard_panel_world_access_text",
+            "value":"Chuyển đổi bàn phím, nút",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_window_open",
+            "value":"Điều khiển phát lại đang được hiển thị",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_play",
+            "value":"Phát",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keyboard_thumb_access_text",
+            "value":"Bàn phím ngón tay cái, nút",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"lock_app",
+            "value":"Đa khóa %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"navi_bar_accessibility_text",
+            "value":"Thanh điều hướng, chạm hai lần và giữ để nói chuyện với voice",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keyboard_float_access_text",
+            "value":"Bàn phím di động, nút",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_restore",
+            "value":"Khôi phục lại cửa sổ lớn hơn",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_play_fast_backward",
+            "value":"Trở lại",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keyboard_common_access_text",
+            "value":"Bàn phím chuẩn, nút",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_window_close",
+            "value":"Điều khiển phát lại đã bị ẩn",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_locked",
+            "value":"%s đã bị khóa",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_play_previous",
+            "value":"Phát bài trước",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keyboard_one_hand_access_text",
+            "value":"Bàn phím một tay, nút",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_play_next",
+            "value":"Phát bài kế tiếp",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_play_fast_forward",
+            "value":"Tua nhanh",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"let_go_drag_to_voice",
+            "value":"Thả ra để gửi đến voice",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_window_show",
+            "value":"Cửa sổ mini đang được hiển thị",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_close",
+            "value":"Đóng cửa sổ mini",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"recent_unlock",
+            "value":"Mở khóa %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_play_pause",
+            "value":"Tạm dừng",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"creation_results",
+            "value":"Kết quả tạo phông chữ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"creation_results_apply",
+            "value":"Áp dụng",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"content_creation",
+            "value":"Đang tạo phông chữ…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"desktop_layout",
+            "value":"Bố cục",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"auto_align",
+            "value":"Tự động sắp xếp",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"auto_align_content",
+            "value":"Tự động lấp các khoảng trống khi ứng dụng được gỡ bỏ.",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

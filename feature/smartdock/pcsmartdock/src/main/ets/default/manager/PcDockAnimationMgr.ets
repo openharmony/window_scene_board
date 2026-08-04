@@ -203,15 +203,9 @@ export class PcDockAnimationMgr {
   public computeHoverScale(item: DockItemInfo, leftDistance: number, padding: number, itemWidth: number): void {
     if (item !== this.lastItem) {
       this.lastItem = item;
-      if (leftDistance > itemWidth / 2) {
-        this.nextItemScale = this.curItemScale;
-        this.curItemScale = this.prevItemScale;
-        this.prevItemScale = 1;
-      } else {
-        this.prevItemScale = this.curItemScale;
-        this.curItemScale = this.nextItemScale;
-        this.nextItemScale = 1;
-      }
+      this.prevItemScale = HoverEffectConstants.FIXED_HOVER_RESET;
+      this.curItemScale = HoverEffectConstants.FIXED_HOVER_RESET;
+      this.nextItemScale = HoverEffectConstants.FIXED_HOVER_RESET;
     }
     const maxWidth: number = HoverEffectConstants.MAX_SCALE_REGION * itemWidth;
     const preItemWidth = this.getItemWidth(this.prevItemScale);

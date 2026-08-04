@@ -30,6 +30,8 @@ export { CheckEmptyUtils } from './utils/CheckEmptyUtils';
 
 export { CommonUtils } from './utils/CommonUtils';
 
+export { DeliverUtil } from './utils/DeliverUtil';
+
 export type { Equality } from './utils/Equality';
 
 export type { Duplication } from './utils/Duplication';
@@ -76,8 +78,12 @@ export { PixelMapUtil } from './utils/PixelMapUtil';
 
 export { UIContextHelper } from './utils/UIContextHelper';
 
+export { OutdoorConfig } from './utils/OutdoorConfig';
+
 export { HiTraceChain } from './utils/HiTraceChain';
 
 export { Logger } from './utils/Logger';
 
 export { AudioManagerHelper } from './utils/AudioManagerHelper';
+
+export { CapabilityUtil } from './utils/CapabilityUtil';

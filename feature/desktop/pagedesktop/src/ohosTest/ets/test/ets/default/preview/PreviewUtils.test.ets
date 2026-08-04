@@ -73,6 +73,34 @@ export default function PreviewUtilsTest() {
       expect(result).assertFalse();
     });
 
+    it('should_return_false_for_isVoiceAbilityForm', 0, () => {
+      const bundleName: ESObject = 'com.ohos.suggestion';
+      const abilityName: ESObject = 'ParentFormAbility';
+      const result: ESObject = PreviewUtils.isVoiceAbilityForm(bundleName, abilityName);
+      expect(result).assertFalse();
+    });
+
+    it('should_return_false_when_bundleName_does_not_match', 0, () => {
+      const bundleName: ESObject = "com.example.someotherbundle";
+      const abilityName: ESObject = 'ParentFormAbility';
+      const result: ESObject = PreviewUtils.isVoiceAbilityForm(bundleName, abilityName);
+      expect(result).assertFalse();
+    });
+
+    it('should_return_false_when_abilityName_does_not_match', 0, () => {
+      const bundleName: ESObject = 'com.ohos.suggestion';
+      const abilityName: ESObject = "com.example.someotherability";
+      const result: ESObject = PreviewUtils.isVoiceAbilityForm(bundleName, abilityName);
+      expect(result).assertFalse();
+    });
+
+    it('should_return_false_when_both_do_not_match', 0, () => {
+      const bundleName: ESObject = "com.example.someotherbundle";
+      const abilityName: ESObject = "com.example.someotherability";
+      const result: ESObject = PreviewUtils.isVoiceAbilityForm(bundleName, abilityName);
+      expect(result).assertFalse();
+    });
+
     it('should_return_true_when_device_is_bar_and_form_is_not_transparent', 0, async (done: Function) => {
       let formItem: ESObject = new GridLayoutItemInfo();
       formItem.isTransparent = false;

@@ -43,6 +43,7 @@ import { SlClockLocateState } from '@ohos/screenlockwidget/src/main/ets/clock/mo
 import { SlClockStaticState } from '@ohos/screenlockwidget/src/main/ets/clock/model/data/SlClockStaticState';
 import { ClockThemeHelper } from '@ohos/screenlockwidget/src/main/ets/common/helper/ClockThemeHelper';
 import {
+  CLOCK_REFERENCE_FONT_FAMILY,
   ClockLayout,
   IThemeParam,
   LockscreenThemeConfig
@@ -73,7 +74,7 @@ import { SlLockIconBindState } from '@ohos/screenlockcomponent/src/main/ets/pass
 import Constants from '@ohos/screenlockcomponent/src/main/ets/common/Constants';
 import { SlBindStateType } from '@ohos/screenlockcommon/src/main/ets/constants/SlStateType';
 import { ClockStaticStateType } from '@ohos/screenlockcommon/src/main/ets/constants/SlStateType';
-import lazy { UltraScreenExpandAnimationVc } from '../subviewcontrol/UltraScreenExpandAnimationVc';
+import lazy { TripleFoldExpandAnimationVc } from '../subviewcontrol/TripleFoldExpandAnimationVc';
 import { ClockAdapterFactory } from '@ohos/screenlockwidget/src/main/ets/clock/adapter/ClockAdapter';
 import { UseScene } from '@ohos/screenlockwidget/src/main/ets/common/adapter/Constans';
 import { ClockLayoutParam, clockLayoutParam } from '@ohos/screenlockwidget/src/main/ets/clock/common/ClockLayoutParam';
@@ -86,6 +87,14 @@ import { MpStateTypeUtils } from '@ohos/screenlockcommon/src/main/ets/fsm/MainPa
 
 const TAG = 'ClockView';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.KG, TAG);
+const REFERENCE_CLOCK_LAYOUT_SCALE: number = 1.2;
+// 在 44 基础上整体上移约时间行渲染高度(68*1.2≈82)的 2/5，即 33。
+const REFERENCE_CLOCK_TOP_OFFSET: number = 11;
+// 参考样式时间字重由 900 减 20% 得 720。
+const REFERENCE_TIME_FONT_WEIGHT: number = 720;
+const REFERENCE_DATE_FONT_WEIGHT: number = 500;
+const REFERENCE_SEPARATOR_OFFSET_Y: number = -8;
+const REFERENCE_DATE_SECTION_OFFSET_Y: number = 12;
 
 @Component
 export struct ClockView {
@@ -232,7 +241,7 @@ export struct ClockView {
     this.clockViewVc?.updateClockMargin();
     this.clockViewVc?.setScreenLockThemeChangeCallback(this._themeChangeCallback);
     this.parentVc?.updateClockTextBlurEnabled();
-    if (DeviceHelper.isUltraScreenProduct()) {
+    if (DeviceHelper.isThreeFoldProduct()) {
       this.clockViewVc.refreshPreClockPosition();
     }
     this.slClockStaticCtrl.setIsNeedRefreshClockLayout(false);
@@ -298,6 +307,13 @@ export struct ClockView {
         ClockWidget({
           clockAdapter: this.clockViewVc?.getClockAdapter(),
           isPosterShadow: this.clockStyle?.isPosterShadow,
+          timeFontFamily: this.isReferenceClockLayout() ? CLOCK_REFERENCE_FONT_FAMILY : undefined,
+          timeFontWeight: this.isReferenceClockLayout() ? REFERENCE_TIME_FONT_WEIGHT : undefined,
+          dateFontFamily: this.isReferenceClockLayout() ? CLOCK_REFERENCE_FONT_FAMILY : undefined,
+          dateFontWeight: this.isReferenceClockLayout() ? REFERENCE_DATE_FONT_WEIGHT : undefined,
+          layoutScale: this.isReferenceClockLayout() ? REFERENCE_CLOCK_LAYOUT_SCALE : 1,
+          separatorOffsetY: this.isReferenceClockLayout() ? REFERENCE_SEPARATOR_OFFSET_Y : 0,
+          dateSectionOffsetY: this.isReferenceClockLayout() ? REFERENCE_DATE_SECTION_OFFSET_Y : 0,
         })
           .translate(this.getClockTran())
           .scale(this.getClockScale())
@@ -408,7 +424,7 @@ export struct ClockView {
     if (this.specialModeViewData?.curMode !== KeyGuardMode.DEFAULT) {
       return { x: 0, y: 0 };
     }
-    if (this.slClockAnimCtrl?.isSceneAnimating(this.getTripleAnimScene()) && DeviceHelper.isUltraScreenProduct()) {
+    if (this.slClockAnimCtrl?.isSceneAnimating(this.getTripleAnimScene()) && DeviceHelper.isThreeFoldProduct()) {
       return this.getTripleClockTran();
     }
     if (this.clockAnimState?.isWidgetAnimating()) { // 动效优先
@@ -420,8 +436,8 @@ export struct ClockView {
   }
 
   private getTripleAnimScene(): string | undefined {
-    if (DeviceHelper.isUltraScreenProduct()) {
-      return UltraScreenExpandAnimationVc.getInstance().getCurAnimScene();
+    if (DeviceHelper.isThreeFoldProduct()) {
+      return TripleFoldExpandAnimationVc.getInstance().getCurAnimScene();
     }
     return undefined;
   }
@@ -438,11 +454,18 @@ export struct ClockView {
     return this.isSmallFoldOuterScreen ? false : this.clockStyle?.isClockSignatureVisible;
   }
 
-  private getClockWidgetTopMargin() {
+  private getClockWidgetTopMargin(): number {
     if ((KeyguardStatusService.isMode(KeyGuardMode.LOST_MODE)) && this.isSmallFoldOuterScreen) {
       return Constants.SMALL_SCREENLOCK_CLOCK_WIDGET_MARGIN_TOP;
     }
-    return this.slClockBindCtrl.getClockWidgetTopMargin();
+    const topMargin: number = this.slClockBindCtrl.getClockWidgetTopMargin();
+    return this.isReferenceClockLayout() ? topMargin + REFERENCE_CLOCK_TOP_OFFSET : topMargin;
+  }
+
+  private isReferenceClockLayout(): boolean {
+    return !this.isSmallFoldOuterScreen &&
+      (this.specialModeViewData?.curMode ?? KeyGuardMode.DEFAULT) === KeyGuardMode.DEFAULT &&
+      this.getClockLayout() === ClockLayout.NORMAL_CLOCK_LAYOUT;
   }
 
   private getClockWidgetOpacity(): number {

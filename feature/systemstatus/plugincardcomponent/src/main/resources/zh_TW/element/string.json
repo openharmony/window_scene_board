@@ -64,7 +64,7 @@
             }
         },
         {
-            "name":"title_login_openharmony_account",
+            "name":"title_login_hw_account",
             "value":"「超級終端」需要登入華為 ID",
             "attr":{
                 "priority":"LT"

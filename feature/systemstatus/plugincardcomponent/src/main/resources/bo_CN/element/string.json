@@ -64,7 +64,7 @@
             }
         },
         {
-            "name":"title_login_openharmony_account",
+            "name":"title_login_hw_account",
             "value":"༼རིམ་འདས་མཐའ་སྣེ་༽ཡིས་ཧྭ་ཝེ་ཐོ་ཨང་ཐོ་འཇུག་བྱ་དགོས།",
             "attr":{
                 "priority":"LT"

@@ -20,6 +20,7 @@ import {
   AppStatus,
   CommonConstants,
   ContactCacheManager,
+  DeliverUtil,
   EditModeConstants,
   GridLayoutItemInfo,
   GridLayoutUtil,
@@ -103,8 +104,16 @@ export abstract class AbstractBatchUninstaller {
       log.showInfo(`isRemovable>>> ${item.bundleName} not removable type`);
       return false;
     }
-    // 取消即将发布应用文件夹特性开关关闭时，未OpenHarmony化的应用不可移除
+    // 取消即将发布应用文件夹特性开关关闭时，未鸿蒙化的应用不可移除
     let appTypes: number[] = [];
+    if (!NotHarmonyUtil.CANCEL_NOT_HARMONY_FOLDER) {
+      appTypes.push(DeliverUtil.APPTYPE_TYPE_NOTHARMONY);
+    }
+    let thisAppType: number = DeliverUtil.getAppType(item);
+    if (thisAppType != null && appTypes.indexOf(thisAppType) > CommonConstants.INVALID_VALUE) {
+      log.showInfo(`isRemovable>>> ${item.bundleName} not harmony app`);
+      return false;
+    }
     return true;
   }
 
@@ -125,14 +134,42 @@ export abstract class AbstractBatchUninstaller {
       log.showInfo(`isUninstallable>>> ${item.bundleName} showing out launcher`);
       return true;
     }
+    if (DeliverUtil.DELIVER_APP_MAP.has(item.bundleName)) {
+      // 克隆应用等图标暂时按无法卸载处理
+      log.showInfo(`isUninstallable>>> ${item.bundleName} deliver app`);
+      return false;
+    }
     // 不可卸载不可删
     if (item.isUninstallAble === false) {
       log.showInfo(`isUninstallable>>> ${item.bundleName} not UninstallAble`);
       return false;
     }
+    // 取消即将发布应用文件夹特性开关关闭时，未鸿蒙化的应用不可删
+    let appTypes: number[] = [
+      DeliverUtil.APPTYPE_TYPE_EASY
+    ];
+    if (!NotHarmonyUtil.CANCEL_NOT_HARMONY_FOLDER) {
+      appTypes.push(DeliverUtil.APPTYPE_TYPE_NOTHARMONY);
+    }
+    let thisAppType: number = DeliverUtil.getAppType(item);
+    if (thisAppType != null && appTypes.indexOf(thisAppType) > CommonConstants.INVALID_VALUE) {
+      log.showInfo(`isUninstallable>>> ${item.bundleName} app isDeliverApp`);
+      return false;
+    }
     // 正在安装不可删
     if (item.appStatus === AppStatus.INSTALLING) {
       log.showInfo(`isUninstallable>>> ${item.bundleName} app INSTALLING`);
+      return false;
+    }
+    // 存在克隆应用或应用文件夹时，克隆应用或应用应用未安装则不可删
+    if (item.typeId === CommonConstants.TYPE_APP &&
+      !GridLayoutUtil.isAppInstalled(item) && DeliverUtil.isHideDhRemoveMenu(item.bundleName)) {
+      log.showInfo(`isHideDhRemoveMenu >>> ${item.bundleName} not remove`);
+      return false;
+    }
+    if (thisAppType === DeliverUtil.APPTYPE_TYPE_DELIVER &&
+      DeliverUtil.getDeliverStartStatus() !== DeliverUtil.DELIVER_START_FINISHED_CODE) {
+      log.showInfo(`isUninstallable>>> ${item.bundleName} app isDeliverApp`);
       return false;
     }
     // 所在页加锁不可删

@@ -203,7 +203,7 @@ export default function DesktopLayoutCacheDataTest() {
       let layoutInfoList: GridLayoutItemInfo[] = [];
       let demoApp: GridLayoutItemInfo = new GridLayoutItemInfo();
       demoApp.infoId = 'id';
-      demoApp.bundleName = 'com.hw.clock';
+      demoApp.bundleName = 'com.ohos.clock';
       demoApp.typeId = CommonConstants.TYPE_APP;
       demoApp.page = 1;
       demoApp.row = 0;
@@ -235,7 +235,7 @@ export default function DesktopLayoutCacheDataTest() {
       let layoutInfoList: GridLayoutItemInfo[] = [];
       let demoApp: GridLayoutItemInfo = new GridLayoutItemInfo();
       demoApp.infoId = 'id';
-      demoApp.bundleName = 'com.hw.clock';
+      demoApp.bundleName = 'com.ohos.clock';
       demoApp.typeId = CommonConstants.TYPE_APP;
       demoApp.page = 1;
       demoApp.row = 0;

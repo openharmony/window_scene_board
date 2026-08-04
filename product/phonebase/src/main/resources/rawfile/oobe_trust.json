@@ -1,9 +1,9 @@
 {
   "trustList":[
     {
-      "bundleName":"com.ohos.hwstartupguide",
-      "moduleName":"phone_hwstartupguide",
-      "abilityName":"com.ohos.hwstartupguide.MainAbility"
+      "bundleName":"com.ohos.startupguide",
+      "moduleName":"phone_startupguide",
+      "abilityName":"com.ohos.startupguide.MainAbility"
     },
     {
       "bundleName":"com.ohos.browser",
@@ -64,6 +64,11 @@
       "bundleName": "com.ohos.outerhome",
       "moduleName": "entry",
       "abilityName": "EntryAbility"
+    },
+    {
+      "bundleName":"com.deliver.tong",
+      "moduleName":"entry",
+      "abilityName":"OobeAbility"
     },
     {
       "bundleName":"com.wifiservice.portallogin",

@@ -53,7 +53,7 @@ const RIGHT_BTN_ID: string = 'header_btn_right';
 const DEFAULT_IOT_HEIGHT: number = 150;
 const DEFAULT_BLANK_HEIGHT: number = 20;
 const EDIT_PREVIEW_PANEL_MIN_HEIGHT: number = 100;
-const EDIT_TOP_PREVIEW_PANEL_MIN_HEIGHT: number = 36;
+const EDIT_TOP_PREVIEW_PANEL_MIN_HEIGHT: number = 100;
 const COMPONENT_ID_OPEN_CANDIDATE_LIBRARY = TAG + '_Open_Candidate_Library';
 const COMPONENT_ID_CLOSE_CANDIDATE_LIBRARY = TAG + '_Close_Candidate_Library';
 const COMPONENT_ID_REMOVE_BTN_IMAGE = TAG + '_Remove_Btn_Image';
@@ -147,6 +147,12 @@ export struct ToggleEditView {
 
   aboutToAppear() {
     this.initEditStyle();
+    // 预构建阶段只准备预览完成态；待添加库延后加载，避免进入编辑卡顿
+    this.viewData.previewToggleScale = 1;
+    this.viewData.borderScale = 1;
+    this.viewData.toggleSubscriptScale = 1;
+    this.viewData.toggleSubscriptOpacity = 1;
+    this.viewData.borderColor = '#99ffffff';
     this.viewModel.previewToggles = this.previewToggles;
     this.viewModel.libraryToggles = this.libraryToggles;
     this.viewModel.previewTopToggles = this.previewTopToggles;
@@ -328,8 +334,12 @@ export struct ToggleEditView {
         }
         .width('100%')
         .alignItems(HorizontalAlign.Center)
-        .height(this.viewData.showIotLibrary ? 10000 : undefined)
-        .margin({ top: this.editHeadAreaHeight, bottom: this.viewData.showQuickToggleLibrary ? 406 : 0 })
+        .height(this.viewData.showIotLibrary || this.viewData.showQuickToggleLibrary ||
+          this.viewData.showTopToggleLibrary ? 10000 : undefined)
+        .margin({
+          top: this.editHeadAreaHeight,
+          bottom: (this.viewData.showQuickToggleLibrary || this.viewData.showTopToggleLibrary) ? 406 : 0
+        })
       }
       .layoutWeight(1)
       .scrollBar(BarState.Off)
@@ -380,7 +390,8 @@ export struct ToggleEditView {
       .margin({top: this.editHeadAreaHeight})
       .width('100%')
       // scroll占位，使iot卡片可以滚动到顶部
-      .height(this.viewData.showIotLibrary || this.viewData.showQuickToggleLibrary ? 10000 : undefined)
+      .height(this.viewData.showIotLibrary || this.viewData.showQuickToggleLibrary ||
+        this.viewData.showTopToggleLibrary ? 10000 : undefined)
       .alignItems(HorizontalAlign.Center)
     }
     .height('100%')
@@ -481,10 +492,7 @@ export struct ToggleEditView {
       this.buildTogglesGrid(false, false)
       Blank()
     } else if (toggleEditType === ToggleEditType.TOP_TOGGLE) {
-      Column() {
-        this.buildTopTogglesGrid(false)
-      }
-      .height(this.getTopTogglePanelHeight())
+      this.buildTopTogglesGrid(false)
       Blank()
     }
   }
@@ -574,7 +582,8 @@ export struct ToggleEditView {
     .width(this.editPageWidth)
     .height(this.viewData.editTopPreviewPanelHeight < EDIT_TOP_PREVIEW_PANEL_MIN_HEIGHT ?
       EDIT_TOP_PREVIEW_PANEL_MIN_HEIGHT : this.viewData.editTopPreviewPanelHeight)
-    .opacity(this.isShowingLibrary() ? TOGGLE_PREVIEW_OPACITY : 1)
+    .opacity(this.isShowingLibrary() ?
+      (this.viewData.showQuickToggleLibrary ? 0 : TOGGLE_PREVIEW_OPACITY) : 1)
   }
 
   @Builder
@@ -582,6 +591,7 @@ export struct ToggleEditView {
     if (inPreview) {
       this.topToggleGridLayout(true)
     } else {
+      // 与快捷栏待添加区一致：固定可视高度内滚动
       Scroll() {
         this.topToggleGridLayout(false)
       }
@@ -590,7 +600,7 @@ export struct ToggleEditView {
       .scrollBar(BarState.Off)
       .scrollable(ScrollDirection.Vertical)
       .edgeEffect(EdgeEffect.Spring)
-      .height(this.showDoubleColumn ? this.getTopTogglePanelHeight() : 350)
+      .height(this.showDoubleColumn ? this.getTopTogglePanelHeight() : 334)
     }
   }
 
@@ -621,8 +631,8 @@ export struct ToggleEditView {
   buildTopGridItemPreview(item: string, idx: number) {
     GridItem() {
       Stack() {
-        TopToggleLoader({ toggleSlot: item, isEditMode: true })
-        // 右上角角标
+        TopToggleLoader({ toggleSlot: item, isEditMode: true, enableGeometryTransition: false })
+        // 右上角角标（与快捷栏一致）
         Image($r('app.media.ic_remove')).size({ width: 26, height: 26 })
           .margin({ top: -6, right: -6 })
           .borderRadius(26)
@@ -653,8 +663,10 @@ export struct ToggleEditView {
       }
       .focusable(!this.isShowingLibrary())
       .height(this.topToggleViewModel.isCombinedToggle(item) ?
-        ResUtils.getNumber($r('app.float.Control_center_long_button_height')) * 2 + TOGGLE_SPACE :
+        $r('app.float.Control_center_meidaCard_width') :
       $r('app.float.Control_center_long_button_height'))
+      .width(this.topToggleViewModel.isCombinedToggle(item) ?
+        $r('app.float.Control_center_meidaCard_width') : undefined)
       .alignContent(Alignment.TopEnd)
       .scale({ x: item === this.viewData.dragItem ? 1.08 : 1, y: item === this.viewData.dragItem ? 1.08 : 1 })
       .translate(item === this.viewData.dragItem ? { x: this.viewData.offsetX, y: this.viewData.offsetY }
@@ -891,19 +903,19 @@ export struct ToggleEditView {
 
   @Builder
   buildTopTogglesLibrary() {
-    // 备选库开关
-    if (this.libraryTopToggles.length > 0) {
-      Stack() {
-        this.buildTopTogglesGrid(false);
-      }
-      .clip(true)
-      .padding({ top: 9.5, left: 16, right: 16 })
-      .margin({ top: 30 })
-      .width(this.editPageWidth)
-      .height('100%')
-      .alignContent(Alignment.Top)
-      .direction(Direction.Ltr)
-    } else {
+    // 备选库开关（结构与快捷栏待添加区一致）
+    Stack() {
+      this.buildTopTogglesGrid(false);
+    }
+    .clip(true)
+    .padding({ top: 9.5, left: 16, right: 16 })
+    .margin({ top: 30 })
+    .width(this.editPageWidth)
+    .height('100%')
+    .alignContent(Alignment.Top)
+    .direction(Direction.Ltr)
+
+    if (this.libraryTopToggles.length === 0) {
       this.buildNoAvailableTogglesHint();
     }
   }
@@ -1075,15 +1087,14 @@ export struct ToggleEditView {
   buildTopToggleLibraryItem(item: string) {
     GridItem() {
       Stack() {
-        TopToggleLoader({ toggleSlot: item, isEditMode: true })
-        // 右上角角标
+        TopToggleLoader({ toggleSlot: item, isEditMode: true, enableGeometryTransition: false })
+        // 右上角角标（与快捷栏待添加区一致）
         Image($r('app.media.ic_add')).size({ width: 26, height: 26 })
           .margin({ top: -6, right: -6 })
           .borderRadius(26)
           .scale({ x: this.viewData.toggleSubscriptScale, y: this.viewData.toggleSubscriptScale })
           .opacity(this.viewData.toggleSubscriptOpacity)
-          .visibility((item === this.viewData.dragItem || this.viewData.showQuickToggleLibrary) ? Visibility.Hidden :
-          Visibility.Visible)
+          .visibility(item === this.viewData.dragItem ? Visibility.Hidden : Visibility.Visible)
           .id(COMPONENT_ID_ADD_BTN_IMAGE)
         // 用于屏蔽快捷开关的点击、拖动等事件
         Stack().parentSize().visibility(item === this.viewData.dragItem ? Visibility.Hidden : Visibility.Visible).accessibilityLevel('no')
@@ -1105,8 +1116,11 @@ export struct ToggleEditView {
           })
       }
       .focusable(this.isShowingLibrary())
-      .height(this.topToggleViewModel.isCombinedToggle(item) ? $r('app.float.Control_center_combined_button_height') :
+      .height(this.topToggleViewModel.isCombinedToggle(item) ?
+        $r('app.float.Control_center_meidaCard_width') :
       $r('app.float.Control_center_long_button_height'))
+      .width(this.topToggleViewModel.isCombinedToggle(item) ?
+        $r('app.float.Control_center_meidaCard_width') : undefined)
       .alignContent(Alignment.TopEnd)
     }
     .onKeyPreIme((event: KeyEvent) => {

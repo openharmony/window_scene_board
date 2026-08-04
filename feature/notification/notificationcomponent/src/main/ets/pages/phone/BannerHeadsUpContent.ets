@@ -62,6 +62,7 @@ import { NtfCloseVM } from '../../vm/NtfCloseVM';
 import { NotificationSysEventReporter, FloatingOperationType } from '@ohos/systemuicommon';
 import { EventBroadcast, OhterCardExtendAnimVm, ProgressCardAnimVm, SysUiWindowType } from '@ohos/systemuicommon/Index';
 import { NtfColorModeVM } from '../../vm/NtfColorModeVM';
+import apsManager from '@hms.graphic.apsManager';
 import { NtfListContentConfig } from '../../vm/config/NtfViewConfig';
 import { ntfViewConfigManager } from '../../vm/config/NtfViewConfigManager';
 import { ItemGestureModifier } from '../../model/NotificationGestureModifier';
@@ -526,7 +527,9 @@ export struct BannerHeadsUpContent {
       this.headsUpTransitionEffect = NotificationConfig.HEADS_UP_DISAPPEAR_ANIM_TRANSITION_EFFECT;
       this.setChangeTransitionEffectJob();
       clearTimeout(this.bannerAniTimeoutID);
+      ApsUtils.setApsScene(apsManager.SceneAnimation.BANNER_NOTIFICATION, APSSceneState.START_SCENE);
       this.bannerAniTimeoutID = setTimeout(() => {
+        ApsUtils.setApsScene(apsManager.SceneAnimation.BANNER_NOTIFICATION, APSSceneState.END_SCENE);
       }, BANNER_ANI_TIMEOUT_DURATION);
     }
     if (!ntfEntry?.hashCode && this.touchOperLock) {
@@ -891,6 +894,7 @@ export struct BannerHeadsUpContent {
       curve: curves.springMotion(0.5, 0.8),
       onFinish: () => {
         SCBSceneSessionManager.getInstance().notifyAnimationFinishedCallback(true);
+        ApsUtils.setApsScene(apsManager.SceneAnimation.BANNER_NOTIFICATION, APSSceneState.END_SCENE);
       }
     }, () => {
       this.bannerDeformState.update(bannerDeformState);
@@ -1145,6 +1149,7 @@ export struct BannerHeadsUpContent {
       this.initDeformParam(0); // 更新此时的通知参数
       this.isDeformFlag = true;
       this.isInitParam = true;
+      ApsUtils.setApsScene(apsManager.SceneAnimation.BANNER_NOTIFICATION, APSSceneState.START_SCENE);
       // 0、预置点击显示悬浮窗动效
       this.presetClickToFloatingAnimation();
       // 1、拉起悬浮窗

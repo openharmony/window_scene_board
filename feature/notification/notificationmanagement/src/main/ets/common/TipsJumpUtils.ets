@@ -60,7 +60,7 @@ export class TipsJumpUtils {
   }
 
   /**
-   * 跳转到OpenHarmony应用的指定页面，使用uri方式
+   * 跳转到鸿蒙应用的指定页面，使用uri方式
    */
   private static jumpAppByUri(context: startAbleContext, uri: string): void {
     log.showInfo('try jump to app');

@@ -28,8 +28,10 @@ import { QuickToggleController } from '../controller/QuickToggleController';
 
 const TAG = 'ControlCenterHomeViewModel';
 const log = LogHelper.getLogHelper(LogDomain.CC, TAG);
-const DELAY_LOAD_EDIT_PAGE: number = 50;
-const DELAY_SHOW_EDIT_PAGE: number = 350;
+/**
+ * 仅预构建预览区后尽快切换；待添加库延后加载，避免进入编辑时主线程被库内容占满造成卡顿。
+ */
+const DELAY_SHOW_EDIT_PAGE: number = 64;
 const ROW_SPACE: number = 16;
 
 export class ControlCenterHomeViewModel {
@@ -62,48 +64,20 @@ export class ControlCenterHomeViewModel {
     log.showInfo('jumpToEditView');
     this.isEditing = true;
     EvtBus.post(ControlCenterAnimatingEvent, { controlCenterAnimating: true });
-    this.viewData.blankLayoutWeight = 0;
     if (this.isIotEditSupported) {
       this.uiExtProxy?.send({ 'method': 'jumpToIotEdit' });
     }
     this.isLargeFoldStyle = this.getLargeFoldStyle();
-    SysApiWrapper.animateTo({
-      curve: Curve.Friction,
-      duration: 350
-    }, () => {
-      this.viewData.mediaCardOpacity = 0;
-      this.viewData.largeMediaCardOpacity = 0;
-      this.viewData.largeMediaCardScale = 0.95;
-      this.viewData.superTerminalOpacity = 0;
-      this.viewData.focusOpacity = 0;
-    });
     this.viewData.showAddMoreButton = true;
-    // 如果进入编辑前头部有模糊，需要进入编辑后让它消失
-    animateTo({
-      curve: Curve.Friction,
-      duration: 300
-    }, () => {
-      this.scrollBlurController?.inactiveScrollerBlur();
-    })
     if (!this.scrollBlurController?.getBlurActiveState()) {
       this.viewData.shouldClipHeadArea = true;
       log.showInfo('no need show blur area, clip head');
     }
-    SysApiWrapper.animateTo({
-      curve: curves.interpolatingSpring(0, 1, 503, 45)
-    }, () => {
-      this.scroller.scrollTo({
-        xOffset: 0,
-        yOffset: this.getTopTogglesHeight() - (this.scrollBlurController?.getListStartOffset() as number)
-      });
-    });
+    this.scrollBlurController?.inactiveScrollerBlur();
 
-    // 异步预构建编辑页布局
-    this.loadEditTimerId = SysApiWrapper.setTimeout(() => {
-      this.viewData.loadEditPage = true;
-    }, DELAY_LOAD_EDIT_PAGE);
+    // 立刻挂载编辑预览（不挂待添加库），短延迟后一次性切到编辑页
+    this.viewData.loadEditPage = true;
 
-    // 提前执行编辑页显示动效，抵消编辑页显示动效准备时间
     this.showEditTimerId = SysApiWrapper.setTimeout(() => {
       TraceUtil.startTrace(DomainName.CC, 'showEdit');
       if (DropDownPanelManager.isPanelDismissing()) {
@@ -112,11 +86,22 @@ export class ControlCenterHomeViewModel {
         TraceUtil.endTrace(DomainName.CC, 'jumpToEditView');
         return;
       }
-      log.showInfo('jumpToEditView finished');
+      // 同帧切换：显示编辑页并收起主页，避免中间态卡顿
+      this.viewData.blankLayoutWeight = 0;
+      this.viewData.mediaCardOpacity = 0;
+      this.viewData.largeMediaCardOpacity = 0;
+      this.viewData.largeMediaCardScale = 0.95;
+      this.viewData.superTerminalOpacity = 0;
+      this.viewData.focusOpacity = 0;
       this.viewData.showEditPage = true;
-      sEventManager.publish(obtainLocalEvent('ControlCenterState', ControlCenterState.TOGGLE_EDIT));
       this.viewData.showEditModeHeader = true;
       this.viewData.showEditText = true;
+      this.scroller.scrollTo({
+        xOffset: 0,
+        yOffset: this.getEditEnterScrollOffset()
+      });
+      log.showInfo('jumpToEditView finished');
+      sEventManager.publish(obtainLocalEvent('ControlCenterState', ControlCenterState.TOGGLE_EDIT));
       TraceUtil.endTrace(DomainName.CC, 'showEdit');
       TraceUtil.endTrace(DomainName.CC, 'jumpToEditView');
     }, DELAY_SHOW_EDIT_PAGE);
@@ -204,6 +189,21 @@ export class ControlCenterHomeViewModel {
   private clearTimer() {
     clearTimeout(this.loadEditTimerId);
     clearTimeout(this.showEditTimerId);
+  }
+
+  /**
+   * 进入编辑时的列表滚动偏移。顶栏为空时不得按媒体行高度滚动，否则快捷栏会被上推造成跳动。
+   */
+  private getEditEnterScrollOffset(): number {
+    const topToggles: string[] = QuickToggleController.getInstance().getToggleData().topToggle;
+    if (!topToggles || topToggles.length === 0) {
+      log.showInfo('getEditEnterScrollOffset top empty, skip scroll');
+      return 0;
+    }
+    const listStart: number = this.scrollBlurController?.getListStartOffset() as number ?? 0;
+    const offset: number = this.getTopTogglesHeight() - listStart;
+    log.showInfo(`getEditEnterScrollOffset topSize:${topToggles.length} offset:${offset}`);
+    return offset < 0 ? 0 : offset;
   }
 
   private getTopTogglesHeight(): number {

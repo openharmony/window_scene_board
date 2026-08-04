@@ -20,7 +20,7 @@ export function ConstantsTest() {
   describe('ConstantsTest', (): void => {
     it('ConstantsTest_CAST_BUNDLE_NAME', Level.LEVEL1, () => {
       let constantName = Constants.CAST_BUNDLE_NAME;
-      let constantValue = 'com.ohos.huaweicast';
+      let constantValue = 'com.ohos.ohcast';
       expect(constantName === constantValue).assertTrue();
     });
 
@@ -36,8 +36,8 @@ export function ConstantsTest() {
       expect(constantName === constantValue).assertTrue();
     });
 
-    it('ConstantsTest_HWCAST_PRIVACY_VERSION', Level.LEVEL1, () => {
-      let constantName = Constants.HWCAST_PRIVACY_VERSION;
+    it('ConstantsTest_CAST_PRIVACY_VERSION', Level.LEVEL1, () => {
+      let constantName = Constants.CAST_PRIVACY_VERSION;
       let constantValue = 'wireless_projection_privacy_agree';
       expect(constantName === constantValue).assertTrue();
     });
@@ -50,31 +50,31 @@ export function ConstantsTest() {
 
     it('ConstantsTest_PUBLISH_EVENT_CAST_CONNECTED', Level.LEVEL1, () => {
       let constantName = Constants.PUBLISH_EVENT_CAST_CONNECTED;
-      let constantValue = 'huaweicast.event.CAST_CONNECTED';
+      let constantValue = 'ohcast.event.CAST_CONNECTED';
       expect(constantName === constantValue).assertTrue();
     });
 
     it('ConstantsTest_PUBLISH_EVENT_CAST_DISCONNECTED', Level.LEVEL1, () => {
       let constantName = Constants.PUBLISH_EVENT_CAST_DISCONNECTED;
-      let constantValue = 'huaweicast.event.CAST_DISCONNECTED';
+      let constantValue = 'ohcast.event.CAST_DISCONNECTED';
       expect(constantName === constantValue).assertTrue();
     });
 
     it('ConstantsTest_PUBLISH_EVENT_CAST_DISCONNECT_DEVICE', Level.LEVEL1, () => {
       let constantName = Constants.PUBLISH_EVENT_CAST_DISCONNECT_DEVICE;
-      let constantValue = 'huaweicast.event.DISCONNECT_DEVICE';
+      let constantValue = 'ohcast.event.DISCONNECT_DEVICE';
       expect(constantName === constantValue).assertTrue();
     });
 
     it('ConstantsTest_PUBLISH_EVENT_GET_CONNECT_STATE', Level.LEVEL1, () => {
       let constantName = Constants.PUBLISH_EVENT_GET_CONNECT_STATE;
-      let constantValue = 'huaweicast.event.CAST_GET_CONNECT_STATE';
+      let constantValue = 'ohcast.event.CAST_GET_CONNECT_STATE';
       expect(constantName === constantValue).assertTrue();
     });
 
     it('ConstantsTest_PUBLISH_EVENT_CLOSE_CAST_DIALOG', Level.LEVEL1, () => {
       let constantName = Constants.PUBLISH_EVENT_CLOSE_CAST_DIALOG;
-      let constantValue = 'huaweicast.event.CLOSE_CAST_DIALOG';
+      let constantValue = 'ohcast.event.CLOSE_CAST_DIALOG';
       expect(constantName === constantValue).assertTrue();
     });
 
@@ -98,19 +98,19 @@ export function ConstantsTest() {
 
     it('ConstantsTest_PUBLISH_EVENT_DIALOG_SHOW', Level.LEVEL1, () => {
       let constantName = Constants.PUBLISH_EVENT_DIALOG_SHOW;
-      let constantValue = 'huaweicast.event.CAST_DIALOG_SHOW';
+      let constantValue = 'ohcast.event.CAST_DIALOG_SHOW';
       expect(constantName === constantValue).assertTrue();
     });
 
     it('ConstantsTest_PUBLISH_EVENT_CLOSE_SUB_WINDOW', Level.LEVEL1, () => {
       let constantName = Constants.PUBLISH_EVENT_CLOSE_SUB_WINDOW;
-      let constantValue = 'huaweicast.event.CLOSE_SUB_WINDOW';
+      let constantValue = 'ohcast.event.CLOSE_SUB_WINDOW';
       expect(constantName === constantValue).assertTrue();
     });
 
     it('ConstantsTest_PUBLISH_EVENT_OPEN_SUB_WINDOW', Level.LEVEL1, () => {
       let constantName = Constants.PUBLISH_EVENT_OPEN_SUB_WINDOW;
-      let constantValue = 'huaweicast.event.OPEN_SUB_WINDOW';
+      let constantValue = 'ohcast.event.OPEN_SUB_WINDOW';
       expect(constantName === constantValue).assertTrue();
     });
 

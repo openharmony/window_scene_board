@@ -16,7 +16,7 @@
 import osAccount from '@ohos.account.osAccount';
 import { SingletonHelper, LogDomain, LogHelper } from '@ohos/basicutils';
 import power from '@ohos.power';
-// import fingerprintMgr from '@hms.userIAM.fingerAuthManager';
+// import fingerprintMgr from '@ohos.userIAM.fingerAuthManager';
 import type { BusinessError } from '@ohos.base';
 
 const TAG = 'FingerprintReporter';

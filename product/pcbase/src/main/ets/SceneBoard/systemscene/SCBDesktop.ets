@@ -1,5 +1,5 @@
 /*
- * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -79,7 +79,8 @@ import {
   KeyEventListener,
   BigFolderStyleConfig,
   FormEditViewManager,
-  AppItemInfo
+  AppItemInfo,
+  DesktopStatusBarHelper
 } from '@ohos/launchercommon';
 import componentSnapshot from '@ohos.arkui.componentSnapshot';
 import { FormComponentModel } from '@ohos/launchercommon/src/main/ets/form/model/FormComponentModel';
@@ -385,7 +386,7 @@ export struct SCBDesktop {
       AppStorage.setOrCreate('lockReceived', Date.now());
     } else {
       if (this.scaleValue !== 1) {
-        animateTo({ duration: 600 }, () => {
+        animateTo({ duration: 200 }, () => {
           this.scaleValue = 1;
         })
       }
@@ -1438,6 +1439,7 @@ export struct SCBDesktop {
   private desktopFocusCallback: ViewCallback = {
     onGainFocus: ():void => {
       log.showInfo(TAG, 'onGainFocus');
+      DesktopStatusBarHelper.ensureVisibleOnDesktop('SCBDesktop.onGainFocus');
       this.desktopFocused = true;
       localEventManager.sendLocalEventSticky(EventConstants.EVENT_REQUEST_DESKTOP_FOCUS_CHANGE, true);
     },
@@ -1577,7 +1579,7 @@ export struct SCBDesktop {
     // 风格切换需改变配置文件mSysTopHeight的值
     PcLauncherLayoutStyleConfig.getInstance(this.singleContext).initSysTopHeight();
     this.getContext()?.eventHub.emit(EventConstants.EVENT_WORKSPACE_POSITION_CHANGE, gridOffset, fixedPage);
-    this.getContext()?.eventHub.emit(EventConstants.EVENT_BIG_SCREEN_STATUS_CHANGE);
+    this.getContext()?.eventHub.emit(EventConstants.EVENT_SUPER_FOLD_STATUS_CHANGE);
   }
 
   private registerFoldAngleChangeEvent(): void {

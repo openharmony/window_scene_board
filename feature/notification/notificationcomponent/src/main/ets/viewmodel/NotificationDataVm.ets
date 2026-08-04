@@ -28,6 +28,8 @@ import {
   NotificationCategory,
   NotificationEvent
 } from '@ohos/systemuicommon/newTsIndex';
+import { NtfAutoScreenOnEvent } from '@ohos/systemuicommon/src/main/ets/TsIndex';
+import { WakeUpUtils } from '../common/WakeUpUtils';
 
 const TAG = 'NotificationDataVm';
 const log = LogHelper.getLogHelper(LogDomain.NC, TAG);
@@ -36,6 +38,7 @@ const log = LogHelper.getLogHelper(LogDomain.NC, TAG);
 interface InnerRecord extends NotificationRefreshRecord {
   // 是否开启数据记录
   isRecordEnable: boolean;
+  isNtfAutoScreenOnEnable: boolean;
 }
 
 /**
@@ -62,6 +65,7 @@ export abstract class NotificationDataVm extends NotificationBaseVm implements I
   private readonly dataRefreshRecord: InnerRecord = {
     isRecordEnable: false,
     isDataRefresh: false,
+    isNtfAutoScreenOnEnable: true,
     dataRefreshType: NotificationRefreshType.DATA_INIT,
     changeDataSet: new Set(),
     updateDataSet: new Set()
@@ -73,13 +77,23 @@ export abstract class NotificationDataVm extends NotificationBaseVm implements I
   private onNotificationEvent = (event: NotificationEvent): void => {
     this.handleNotificationEvent(event);
   };
+  /**
+   * 收到通知自动亮屏开关事件
+   *
+   * @param event 事件
+   */
+  private onNtfAutoScreenOnEvent = (event: NtfAutoScreenOnEvent): void => {
+    this.dataRefreshRecord.isNtfAutoScreenOnEnable = event.isNtfAutoScreenOnEnable();
+    log.showInfo(`onNtfAutoScreenOnEvent isNtfAutoScreenOn: ${event.isNtfAutoScreenOnEnable()}`);
+  }
 
   /**
    * 初始化
    */
   init(): void {
     log.showInfo(`Init: ${this.vmName}`);
-    InnerEventUtil.on(NotificationEvent, this.onNotificationEvent);
+    InnerEventUtil.on(NotificationEvent, this.onNotificationEvent)
+      .on(NtfAutoScreenOnEvent, this.onNtfAutoScreenOnEvent)
   }
 
   /**
@@ -87,7 +101,8 @@ export abstract class NotificationDataVm extends NotificationBaseVm implements I
    */
   destroy(): void {
     log.showInfo(`Destroy: ${this.vmName}`);
-    InnerEventUtil.off(NotificationEvent, this.onNotificationEvent);
+    InnerEventUtil.off(NotificationEvent, this.onNotificationEvent)
+      .off(NtfAutoScreenOnEvent, this.onNtfAutoScreenOnEvent)
     // 清空数据
     this.ntfGroupMap.clear();
     this.ntfHashMap.clear();
@@ -153,6 +168,17 @@ export abstract class NotificationDataVm extends NotificationBaseVm implements I
    * @param dataRecord 数据刷新记录
    */
   protected onDataChange(dataRecord: NotificationRefreshRecord): void {
+    log.showInfo(`onDataChange isDataRefresh ${dataRecord.isDataRefresh}`);
+    log.showInfo(`onDataChange dataRefreshType ${dataRecord.dataRefreshType}`);
+    log.showInfo(`onDataChange isNtfAutoScreenOnEnable: ${this.dataRefreshRecord.isNtfAutoScreenOnEnable}`);
+    if(AppStorage.get<boolean>('reboot_ntf_msg') === true) {
+      return;
+    }
+    if (this.dataRefreshRecord.isNtfAutoScreenOnEnable) {
+      if (dataRecord.isDataRefresh) {
+        WakeUpUtils.wakeUpScreen(true);
+      }
+    }
   }
 
   /**
@@ -502,13 +528,13 @@ export abstract class NotificationDataVm extends NotificationBaseVm implements I
     // 新增、更新场景，有数据则新增，无数据则更新
     if (refreshType === NotificationRefreshType.DATA_ADD || refreshType === NotificationRefreshType.DATA_UPDATE) {
       let resultType = ArrayUtils.isEmpty(this.dataRefreshRecord.changeDataSet) ?
-      NotificationRefreshType.DATA_UPDATE : NotificationRefreshType.DATA_ADD;
+        NotificationRefreshType.DATA_UPDATE : NotificationRefreshType.DATA_ADD;
       this.dataRefreshRecord.dataRefreshType = resultType;
       return;
     }
     // 删除场景，有数据则删除，无数据则更新
     let resultType = ArrayUtils.isEmpty(this.dataRefreshRecord.changeDataSet) ?
-    NotificationRefreshType.DATA_UPDATE : NotificationRefreshType.DATA_DELETE;
+      NotificationRefreshType.DATA_UPDATE : NotificationRefreshType.DATA_DELETE;
     this.dataRefreshRecord.dataRefreshType = resultType;
   }
 

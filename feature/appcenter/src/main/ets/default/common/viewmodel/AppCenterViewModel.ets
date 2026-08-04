@@ -1,5 +1,5 @@
 /*
- * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -23,7 +23,7 @@ import { AppCenterDragMgr } from '../../controller/AppCenterDragMgr';
 import { HashMap } from '@kit.ArkTS';
 import AppGridLayoutCacheManager from '../cache/AppGridLayoutCacheManager';
 import LayoutConstants from '../../constants/LayoutConstants';
-// import SearchClient from '@hms.ai.search';
+// import SearchClient from '@ohos.ai.search';
 import { AppCenterSearchResultModel } from '../model/AppCenterSearchResultModel';
 import { AppCenterSearchResultTask } from '../model/AppCenterSearchResultTask';
 import { AppCenterDynamicEffects } from './AppCenterDynamicEffects';
@@ -798,7 +798,7 @@ export class AppCenterViewModel {
 
   /**
    *
-   * 初始化单页面的动效参数数组 - 大屏幕机
+   * 初始化单页面的动效参数数组 - 折叠机
    *
    * @param screenId
    * @param pageIdx
@@ -879,7 +879,7 @@ export class AppCenterViewModel {
       `${this.appItemEdgePosFold.length}`);
   }
   /**
-   * 设置大屏幕机边缘动效参数
+   * 设置折叠机边缘动效参数
    * @param ep
    */
   public setAppItemEdgePosForFold(ep: Array<Array<number>>): void {

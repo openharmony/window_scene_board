@@ -41,7 +41,8 @@ export class KeyguardStatusService {
   }
 
   public static isOnlyCurrentUser(): boolean {
-    return KeyguardStatusService.isMode(KeyGuardMode.LOST_MODE);
+    return KeyguardStatusService.isMode(KeyGuardMode.LOST_MODE) ||
+    KeyguardStatusService.isMode(KeyGuardMode.CLOUD_LAI) || KeyguardStatusService.isMode(KeyGuardMode.CLOUD_LAI_2);
   }
 
   /**
@@ -116,6 +117,15 @@ export class KeyguardStatusService {
   }
 
   /**
+   * 判断当前是否为云端模式二
+   * @param mode
+   * @returns
+   */
+  public static isCloudModeTwo(): boolean {
+    return KeyguardStatusService.isMode(KeyGuardMode.CLOUD_LAI_2);
+  }
+
+  /**
    * 判断当前是否为统一处理的特殊模式
    * @returns
    */
@@ -123,6 +133,8 @@ export class KeyguardStatusService {
     const status = GlobalStatusCache.getInstance().getStatus(KeyGuardCacheKey.SPECIAL_MODE, KeyGuardMode.DEFAULT);
     return BitStatesUtil.hasState(status as number, KeyGuardMode.LOST_MODE) ||
       BitStatesUtil.hasState(status as number, KeyGuardMode.THERMAL_SAFETY) ||
+      BitStatesUtil.hasState(status as number, KeyGuardMode.CLOUD_LAI) ||
+      BitStatesUtil.hasState(status as number, KeyGuardMode.CLOUD_LAI_2) ||
       BitStatesUtil.hasState(status as number, KeyGuardMode.POWER_EMERGENCY);
   }
 

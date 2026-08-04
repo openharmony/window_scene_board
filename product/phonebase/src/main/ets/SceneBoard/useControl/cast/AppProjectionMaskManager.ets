@@ -21,14 +21,14 @@ const MASK_FONT_SIZE: number = 24;
 
 export function registerAppProjectionMaskParam() {
   SCBAppUseControlManager.getInstance().registerComponentBuilderParam(ControlType.APP_PROJECTION, {
-    loadBundleName: 'com.ohos.huaweicast',
+    loadBundleName: 'com.ohos.ohcast',
     loadAbilityName: 'ScreenAbility',
     useControlMainMaskBuilder: recentAppProjectionMaskBuilder,
     useControlRecentMaskBuilder: recentAppProjectionMaskBuilder,
     isNeedShowUseControlComponent: undefined
   });
   SCBAppUseControlManager.getInstance().updateControlAppInfo(ControlType.APP_PROJECTION, [{
-    bundleName: 'com.ohos.huaweicast',
+    bundleName: 'com.ohos.ohcast',
     appIndex: 0,
     isNeedControl: true,
     isControlRecentOnly: true

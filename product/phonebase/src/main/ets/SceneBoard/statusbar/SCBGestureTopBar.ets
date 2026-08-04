@@ -383,7 +383,7 @@ export struct SCBGestureTopBar {
         MultiInputViewModel.getInstance().updateStatusAndFloatingTitleFromGestureTopBar(true);
       } else {
         InnerEventUtil.post(NotifyStatusBarShowHideEvent, new NotifyStatusBarShowHideEvent(true, true));
-        localEventManager.sendLocalEvent(EventConstants.SYSTEM_BAR_CHANGE, SystemBarChangeType.AI_BAR_IMMERSE_TASK);
+        localEventManager.sendLocalEvent(EventConstants.SYSTEM_BAR_CHANGE, SystemBarChangeType.NAVI_BAR_IMMERSE_TASK);
       }
     }
   }

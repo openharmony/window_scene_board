@@ -1,5 +1,5 @@
 /**
- * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) 2021-2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -33,6 +33,7 @@ import { AtomicServiceAppModel } from '../model/AtomicServiceAppModel';
 import { CloseAppManager } from '../manager/CloseAppManager';
 import {
   AppItemInfo,
+  DeliverUtil,
   DisposedEventManager,
   AppGalleryDownloadManager,
   GridLayoutItemInfo,
@@ -43,6 +44,7 @@ import {
   FormLayoutCacheManager
 } from '../TsIndex';
 import image from '@ohos.multimedia.image';
+import { FormRelationManager } from '../transformdata/FormRelationManager';
 import LauncherBackupUtil from '../utils/LauncherBackupUtil';
 import AppUpdateUtils from '../utils/AppUpdateUtils';
 
@@ -95,6 +97,10 @@ export class BaseViewModel extends SingleBase {
    */
   jumpToWithMode(windowMode: SCBSceneMode, abilityName: string, bundleName: string, moduleName: string,
     params?: Map<string, Object>, screenId?: number): void {
+    if (DeliverUtil.isStartContainerApp(bundleName)) {
+      this.startContainerApp(windowMode, abilityName, bundleName, moduleName, params, screenId);
+      return;
+    }
     if (DisposedEventManager.getInstance().getRuledBundleNamesMap().has(bundleName)) {
       Prompt.showToast({
         message: $r('app.string.wait_data_recover_toast')
@@ -104,8 +110,42 @@ export class BaseViewModel extends SingleBase {
     StartAbilityUtil.startLauncherAbilityWithMode(windowMode, abilityName, bundleName, moduleName, params, screenId);
   }
 
+  public async startContainerApp(windowMode: SCBSceneMode, abilityName: string, bundleName: string, moduleName: string,
+    params?: Map<string, Object>, screenId?: number): Promise<void> {
+    let otherParams: Map<string, Object> = new Map();
+    let icon = await this.getIconAndScale(abilityName, bundleName, moduleName);
+    log.showInfo(`startContainerApp, icon.length = ${icon.length}, origin bundleName = ${bundleName}`);
+    otherParams.set('realBundleName', bundleName);
+    otherParams.set('realAbilityName', abilityName);
+    otherParams.set('realModuleName', moduleName);
+    otherParams.set('realAppIcon', icon);
+    let newModuleName = DeliverUtil.DELIVER_APP_MODULE_NAME;
+    let appItemInfo: AppItemInfo | undefined = AppModel.getInstance().getAppInfoByBundleName(bundleName);
+    let itemInfo: AppItemInfo | GridLayoutItemInfo | undefined =
+      appItemInfo ? appItemInfo : DeliverUtil.getAppItemByBundleName(bundleName);
+    let installSource = DeliverUtil.getInstallSourceByIntent(itemInfo?.intent ?? '');
+    let newBundleName = this.getTargetBundleName(installSource);
+    let newAbilityName = (installSource === DeliverUtil.APP_PKG ?
+      DeliverUtil.APP_APP_ABILITY_NAME : DeliverUtil.DELIVER_APP_ABILITY_NAME);
+    log.showInfo(`newBundleName = ${newBundleName}, intent = ${itemInfo?.intent}, installSource = ${installSource}`);
+    if (!DeliverUtil.verifyContainerAppIdentifier(newBundleName, 'startContainerApp')) {
+      log.showWarn('verifyContainerAppIdentifier Failed');
+      return;
+    }
+    StartAbilityUtil.startLauncherAbilityWithMode(windowMode, newAbilityName, newBundleName, newModuleName, params,
+      screenId, otherParams);
+  }
+
   private getTargetBundleName(installSource: string): string {
     let newBundleName: string = '';
+    if (installSource === DeliverUtil.APP_PKG) {
+      newBundleName = AppModel.getInstance().getAppInfoByBundleName(DeliverUtil.APP_APP_BUNDLE_NAME_REAL) ?
+        DeliverUtil.APP_APP_BUNDLE_NAME_REAL : DeliverUtil.APP_APP_BUNDLE_NAME;
+    } else {
+      newBundleName = AppModel.getInstance().getAppInfoByBundleName(DeliverUtil.DELIVER_APP_BUNDLE_NAME_REAL) ?
+        DeliverUtil.DELIVER_APP_BUNDLE_NAME_REAL : DeliverUtil.DELIVER_APP_BUNDLE_NAME;
+    }
+    log.showInfo(`getTargetBundleName, newBundleName = ${newBundleName}`);
     return newBundleName;
   }
 
@@ -226,6 +266,10 @@ export class BaseViewModel extends SingleBase {
         message: $r('app.string.uninstall_success')
       });
     } else {
+      if (resultCode === -1 && DeliverUtil.isContainerPkg(bundleName ?? '')) {
+        log.info('UNINSTALL app not show toast in base view model');
+        return;
+      }
       Prompt.showToast({
         message: $r('app.string.uninstall_failed')
       });
@@ -241,7 +285,7 @@ export class BaseViewModel extends SingleBase {
 
   /**
    *
-   * @param isRemove 是否为移除，OpenHarmony化应用显示移除，未OpenHarmony化应用显示卸载
+   * @param isRemove 是否为移除，鸿蒙化应用显示移除，未鸿蒙化应用显示卸载
    * @param bundleName
    * @param appIndex
    * @param isDeleteMainApp 是否同步移除主应用和分身应用，true则一起移除，false则只移除分身应用
@@ -249,9 +293,9 @@ export class BaseViewModel extends SingleBase {
    */
   public deleteNotInstallApp(isRemove: boolean, bundleName: string, appIndex: number,
     isDeleteMainAppAndTwinApp: boolean = true): void {
-    // 0:未OpenHarmony化应用  1：已OpenHarmony化应用
+    // 0:未鸿蒙化应用  1：已鸿蒙化应用
     let appSourceType: number = isRemove ? 1 : 0;
-    // 未OpenHarmony化主应用移除时，需要传递_WAIT_FOR_OPENHARMONY_BUNDLENAME_时间戳
+    // 未鸿蒙化主应用移除时，需要传递_WAIT_FOR_HRAMONY_BUNDLENAME_时间戳
     let waitForHarmonyBundleName = bundleName;
     let isAlreadyCancelToAG: boolean = false;
     bundleName = bundleName.startsWith('__WAIT_FOR_') ? bundleName.split('__')[2] : bundleName;
@@ -274,6 +318,12 @@ export class BaseViewModel extends SingleBase {
       }
       // 只有移除主应用才会更新数据库卡片信息
       log.showInfo(`remove app card, bundleName: ${bundleName}, appIndex: ${appIndex}`);
+      let relationCards: CardItemInfo[] =
+        FormRelationManager.getInstance().updateFormAndStackInfoByBundleName(bundleName);
+      if (!CheckEmptyUtils.isEmptyArr(relationCards)) {
+        FormLayoutCacheManager.getInstance()
+          .updateFormAndStackInfos(relationCards, BusinessType.BUSINESS_BASIC_DESKTOP, true);
+      }
     }
     // 依赖缓存数据，业务侧尽量保证不要提前清理缓存
     let appList: GridLayoutItemInfo[] = LaunchLayoutCacheManager.getInstance().getAllSameBundleNameAppItem(bundleName);
@@ -289,7 +339,7 @@ export class BaseViewModel extends SingleBase {
       // 主应用卸载时需同步调该方法移除分身应用，则这里isDeleteMainApp需为false，只移除分身应用
       if (item.appIndex === 0 && isDeleteMainAppAndTwinApp) {
         if (!isRemove) {
-          // 未OpenHarmony化主应用卸载时，需要传递_WAIT_FOR_HRAMONY_BUNDLENAME_时间戳
+          // 未鸿蒙化主应用卸载时，需要传递_WAIT_FOR_HRAMONY_BUNDLENAME_时间戳
           bundleName = CommonUtils.jsonStrToMap(item.intent).get('requestBundleName') as string ?? bundleName;
         }
         if (!isAlreadyCancelToAG) {

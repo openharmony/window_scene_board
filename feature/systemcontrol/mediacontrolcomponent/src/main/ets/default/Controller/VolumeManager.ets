@@ -1,5 +1,5 @@
 /*
- * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the 'License');
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -147,7 +147,7 @@ export default class VolumeManager {
     const sessionId = this.curSessionIdLink.get();
     log.showInfo(`update volume: ${volume}, needRestore=${needRestore}, type=${type},
       ${sessionId?.length < 10 ? '' : (sessionId?.substr(0, 5) + '**' + sessionId?.substr(sessionId?.length - 5))}`);
-    if ((type === SetVolumeType.AUDIO) || (type === SetVolumeType.CAST)) {
+    if ((type === SetVolumeType.CAST)) {
       log.showInfo(`set audio volume not match with cast mode: type=${type}`);
       return;
     }

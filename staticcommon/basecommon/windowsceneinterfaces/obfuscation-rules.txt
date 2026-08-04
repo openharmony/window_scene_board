@@ -19,3 +19,5 @@
 -enable-toplevel-obfuscation
 -enable-filename-obfuscation
 -enable-export-obfuscation
+-keep-property-name
+isAcousticEchoCancelerSupported

@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import SearchClient from '@hms.ai.search';
 import { afterAll, afterEach, beforeAll, beforeEach, it, describe, expect } from '@ohos/hypium';
 import { NtfSearchController, ResultItemInfo,
   ResultItemInfoTask } from '../../../../../main/ets/common/NtfSearchController';
@@ -40,6 +41,12 @@ export function NtfSearchControllerTest() {
     it('NtfSearchController_getSearchResultTest01', 0, async (): Promise<void> => {
       const resultList: ResultItemInfo[] = await nNtfSearchController.getSearchResult('nfcTest');
       expect(resultList).assertInstanceOf('Array');
+    })
+
+    it('NtfSearchController_getSearchQueryTest01', 0,  (): void => {
+      const queryRes: SearchClient.Query = nNtfSearchController.getSearchQuery('nfcTest') as SearchClient.Query;
+      const queryClause: SearchClient.SimpleQueryClause = queryRes.query as SearchClient.SimpleQueryClause;
+      expect(queryClause.query).assertEqual('nfcTest');
     })
   })
 }

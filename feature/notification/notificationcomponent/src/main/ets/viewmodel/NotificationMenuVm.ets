@@ -32,6 +32,7 @@ import { LogDomain, LogHelper, DomainName, TraceUtil } from '@ohos/basicutils/sr
 import { ItemUtils } from '@ohos/componenthelper/src/main/ets/TsIndex';
 import { ResUtils } from '@ohos/windowscene/src/main/ets/TsIndex';
 import { ArkUIAdapter } from '@ohos/systemuicommon/src/main/ets/utils/ArkUIAdapter';
+import { OutdoorVm } from '@ohos/systemuicommon/src/main/ets/vm/OutdoorVm';
 
 const TAG = 'NotificationMenuVm';
 const log = LogHelper.getLogHelper(LogDomain.NC, TAG);
@@ -171,12 +172,20 @@ export class NotificationMenuVm extends NotificationItemBaseVm implements INotif
     if (ntf.creatorType === NotificationCreatorType.SA) {
       return false;
     }
+    // 云端模式下不支持设置
+    if (OutdoorVm.instance.isInOutdoorMode) {
+      return false;
+    }
     // 紧急模式下不支持设置
     if (DeviceInfoVm.instance.isEmergencyMode()) {
       return false;
     }
     // 折叠态更多通知不支持设置
     if (this.isMoreBrief()) {
+      return false;
+    }
+    // 系统通知不支持设置
+    if (this.ntf.checkIsDeliverSystemNotification()) {
       return false;
     }
     // 全场景通知不支持设置

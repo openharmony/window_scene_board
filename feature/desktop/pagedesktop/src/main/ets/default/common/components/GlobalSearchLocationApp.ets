@@ -18,6 +18,7 @@ import { PageDesktopViewModel } from '../viewmodel/PageDesktopViewModel';
 import { PageDesktopGridStyleConfig } from '@ohos/launchercommon/src/main/ets/layoutconfig/PageDesktopGridStyleConfig';
 import { CheckEmptyUtils, LogDomain, LogHelper, RectInfo, SingleContext, Trace } from '@ohos/basicutils';
 import { ItemUtils } from '@ohos/componenthelper';
+import { GlobalSearchLocationHandler } from '../viewmodel/GlobalSearchLocationHander';
 import GlobalSearchLocationParam from '../viewmodel/GlobalSearchLocationParam';
 import Curves from '@ohos.curves';
 import { AppNameVm } from '@ohos/launchercommon/src/main/ets/launchericon/viewmodel/AppNameVm';
@@ -41,6 +42,8 @@ export default struct GlobalSearchLocationApp {
   @State blurScale: number = 0;
   private appNameVmIndesktop: AppNameVm = new AppNameVm();
   private appNameVmInFolder: AppNameVm = new AppNameVm();
+  private globalSearchLocationHandler: GlobalSearchLocationHandler =
+    GlobalSearchLocationHandler.getInstance(this.singleContext);
   @State iconSize:number = this.styleConfig.mIconSize;
   private appIconConfig: AppIconConfig = new AppIconConfig();
 
@@ -51,6 +54,7 @@ export default struct GlobalSearchLocationApp {
       .setEnableMenu(false)
       .setEnableDrag(false)
       .setEnableMultiSelect(false);
+    this.gsParam = GlobalSearchLocationHandler.getInstance(this.singleContext).getGlobalSearchLocationParam();
     log.showInfo(`rectName = ${this.gsParam.rectName}`);
     this.rect = ItemUtils.getRectById(this.gsParam.rectName);
     log.showInfo(`this.rect.width = ${this.rect.width}, this.rect.heigth = ${this.rect.height},` +
@@ -61,6 +65,7 @@ export default struct GlobalSearchLocationApp {
     if (this.gsParam.type === SearchLocationType.DOCK_TYPE && SmartDockZoomFeatureSwitch.isSupportZoom()) {
       this.iconSize *= SmartDockZoomManager.getDockScale();
     }
+    GlobalSearchLocationHandler.getInstance(this.singleContext).hideIcon();
     this.locationAnimationFirstStage();
     this.locationBackgroundShow();
     this.appNameVmIndesktop.modifier.onInit = (instance?: CommonAttribute) => {
@@ -76,6 +81,7 @@ export default struct GlobalSearchLocationApp {
   }
 
   aboutToDisappear(): void {
+    this.globalSearchLocationHandler.stopGlobalSearchProcess();
   }
 
   private locationBackgroundShow() {
@@ -98,6 +104,8 @@ export default struct GlobalSearchLocationApp {
       curve: Curves.cubicBezierCurve(0.33, 0, 0.67, 1),
       onFinish: () => {
         log.showInfo(`locationBackgroundFade, onFinish`);
+        GlobalSearchLocationHandler.getInstance(this.singleContext).restoreIcon();
+        GlobalSearchLocationHandler.getInstance(this.singleContext).setGlobalSearchAnimation(false);
         Trace.end('backgroundFade');
       }
     }, () => {

@@ -48,6 +48,7 @@ import { GameCardInfo } from '../bean/GameCardInfo';
 import {
   FormLayoutCacheManager,
   FormModel,
+  FormRelationManager,
   RdbStoreManager,
 } from '../TsIndex';
 import { Extend1Data } from '../bean/Extend1Data';
@@ -512,6 +513,11 @@ export class FormCommonUtil {
   public static isFormValid(item: GridLayoutItemInfo): boolean {
     if (!item || !item.bundleName) {
       return false;
+    }
+
+    // 1. 克隆占位卡默认已经安装
+    if (FormRelationManager.getInstance().isSceneBoardCard(item.bundleName, item.cardName ?? '')) {
+      return true;
     }
 
     // 2. 如果卡片对应应用没有安装，可认为卡片没安装

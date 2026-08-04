@@ -502,7 +502,7 @@ struct Item {
     if (this.isSetPcShowFullScreen) {
       return this.rotateHeight;
     }
-    if (!DeviceHelper.isBigScreenMachine()) {
+    if (!DeviceHelper.isSuperFoldMachine()) {
       return this.rotateHeight;
     }
     if (this.isOrientationLandscape) {
@@ -512,7 +512,7 @@ struct Item {
   }
 
   private getRealWidth(): Length {
-    if (!DeviceHelper.isBigScreenMachine()) {
+    if (!DeviceHelper.isSuperFoldMachine()) {
       return this.rotateWidth;
     }
     if (this.isOrientationLandscape) {
@@ -536,7 +536,7 @@ struct Item {
     // Add for AuthWidget rotate on 5.0, and removed on 6.0
     this.processUiExtNodeAngle();
 
-    if (DeviceHelper.isPC() && DeviceHelper.isBigScreenMachine()) {
+    if (DeviceHelper.isPC() && DeviceHelper.isSuperFoldMachine()) {
       this.isSetPcShowFullScreen = this.item?.want?.parameters?.isSetPcShowFullScreen as boolean;
       this.preProcessFromFoldDevice();
     }
@@ -601,7 +601,7 @@ struct Item {
     if (this.isEnableBackGesture) {
       this.unregisterBackPressListener();
     }
-    if (DeviceHelper.isPC() && DeviceHelper.isBigScreenMachine()) {
+    if (DeviceHelper.isPC() && DeviceHelper.isSuperFoldMachine()) {
       // 注销折叠监听
       try {
         display.off('foldStatusChange', this.onFoldStatusChangeListener);

@@ -35,6 +35,7 @@ import { LiveViewData } from '../../data/LiveViewData';
 import ScreenRecordCapsule from './ScreenRecordCapsule';
 import { AccessibilityAppName } from '../../../accessibility/AccessibilityAppName';
 import { LiveAccessibilityUtil } from '../../common/liveAccessibilityUtil';
+import { ImmersiveAodStyle } from '../../../immersivekeyguardcommon/base/interface/ImmersiveAodStyle';
 import { immersiveKgMgr } from '../../../immersivekeyguardcommon/manager/ImmersiveKeyguardStateManager';
 import { DeviceHelper } from '@ohos/frameworkwrapper/src/main/ets/TsIndex';
 
@@ -55,6 +56,11 @@ export default struct RootCapsule {
    * 实况数据
    */
   @State liveViewData: LiveViewData = new LiveViewData();
+
+  /**
+   * AOD显示样式
+   */
+  @State aodStyle: ImmersiveAodStyle | undefined = immersiveKgMgr.getOneMirrorState().getAodStyle(true);
 
   /**
    * 胶囊数据
@@ -96,7 +102,7 @@ export default struct RootCapsule {
     .backgroundColor(this.getBackgroundColor())
     .width(this.getCapsuleWidth())
     .height(this.getCapsuleHeight())
-    .opacity(this.getCapsuleAlpha())
+    .opacity(this.isOuterHomeAod() ? isAodOnOpacity : this.getCapsuleAlpha())
     .translate(this.getCapsuleTranslate())
     .zIndex(this.getCapsuleZIndex())
     .margin({
@@ -145,6 +151,7 @@ export default struct RootCapsule {
             isAnimation: this.capsuleAnimState.isAnimating,
             shouldHideContent: this.checkShouldHideContent(),
             isLockScreen: this.isLockScreen,
+            isOuterHomeAod: this.isOuterHomeAod()
           });
         } else {
           TimerCapsule({
@@ -157,6 +164,7 @@ export default struct RootCapsule {
             isAnimation: this.capsuleAnimState.isAnimating,
             shouldHideContent: this.checkShouldHideContent(),
             isLockScreen: this.isLockScreen,
+            isOuterHomeAod: this.isOuterHomeAod()
           });
         }
       } else if (this.capsuleData?.isDataType(CapsuleType.TYPE_PROGRESS)) {
@@ -187,15 +195,19 @@ export default struct RootCapsule {
           .zIndex(-1)
           .clip(true)
           .borderRadius(this.getBorderRadius())
-          .width(this.getCapsuleWidth() + (0))
+          .width(this.getCapsuleWidth() + (this.isOuterHomeAod() ? LiveViewCapsuleStyle.CAPSULE_SHADOW_LEFT_MARGIN : 0))
           .height(this.getCapsuleHeight())
           .translate(this.getCapsuleTranslate())
           .scale(this.getCapsuleScale())
-          .opacity(this.getCapsuleAlpha())
-          .margin({ start : LengthMetrics.vp(this.getMarginLeft()) })
+          .opacity(this.isOuterHomeAod() ? isAodOnOpacity : this.getCapsuleAlpha())
+          .margin({ start: this.isOuterHomeAod() ? undefined : LengthMetrics.vp(this.getMarginLeft()) })
 
       }
     }
+  }
+
+  private isOuterHomeAod(): boolean {
+    return (this.aodStyle?.isAod ?? false) && this.isLockScreen && !DeviceHelper.isFoldExpandedOrHalf();
   }
 
   private checkShouldHideContent(): boolean {
@@ -411,6 +423,9 @@ export default struct RootCapsule {
       return false;
     }
     if (this.capsuleListState.capsuleHideScene !== 0) {
+      return false;
+    }
+    if (this.isOuterHomeAod()) {
       return false;
     }
     return true;

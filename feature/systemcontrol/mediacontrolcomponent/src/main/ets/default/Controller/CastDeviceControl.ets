@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023-Huawei Device Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) 2023-2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the 'License');
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -16,7 +16,7 @@
 import { LogDomain, LogHelper } from '@ohos/basicutils/src/main/ets/utils/LogHelper';
 import audio from '@ohos.multimedia.audio';
 import BusinessError from '@ohos.base';
-// import collaborationServiceManager from '@hms.collaboration.collaborationServiceManager'
+// import collaborationServiceManager from '@ohos.collaboration.collaborationServiceManager'
 import Constants, { DeviceSource, CarInfo, AudioControlCode, WorkerMsgCastParameter} from '../Util/Constants';
 import CastDeviceManager from './CastDeviceManager';
 import promptAction from '@ohos.promptAction';

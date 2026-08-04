@@ -497,7 +497,12 @@ export class NotificationBannerVm extends NotificationBaseVm implements INotific
   }
 
   releasePanel(): void {
-    this.headsUpVM.hideHeadsUpWindow();
+    // 横幅立即隐藏，普通横幅延迟隐藏
+    if (this.ntf?.isDeliverNotification) {
+      this.headsUpVM.releasePanel();
+    } else {
+      this.headsUpVM.hideHeadsUpWindow();
+    }
   }
 
   updateHeadsUpTransitionEffect(isNtfCancel?: boolean): boolean {

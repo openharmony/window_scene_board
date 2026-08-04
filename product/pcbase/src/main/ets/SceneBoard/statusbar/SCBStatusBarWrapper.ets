@@ -562,7 +562,7 @@ export struct SCBStatusBarWrapper {
         sceneZIndex: sceneZIndex,
         isFocusable: sceneName === GESTURE_BARR_SCENE_NAME ? false : true,
         isTouchable: true,
-        isRotatable: false,
+        isRotatable: true,
         hitTestMode: HitTestMode.Default,
         sceneType: sceneSessionManager.SceneType.SYSTEM_WINDOW_SCENE,
         enableActiveModeChange: enableActiveModeChange
@@ -591,7 +591,7 @@ export struct SCBStatusBarWrapper {
           sceneZIndex: sceneZIndex,
           isFocusable: false,
           isTouchable: true,
-          isRotatable: false,
+          isRotatable: true,
           hitTestMode: HitTestMode.Default,
           systemBarType: SystemBarType.STATUS_BAR,
           sceneType: sceneSessionManager.SceneType.SYSTEM_WINDOW_SCENE,
@@ -611,7 +611,7 @@ export struct SCBStatusBarWrapper {
           sceneZIndex: sceneZIndex,
           isFocusable: true,
           isTouchable: true,
-          isRotatable: false,
+          isRotatable: true,
           hitTestMode: HitTestMode.Default,
           borderRadius: WindowConstants.WINDOW_CORNER_RADIUS,
           shadow: {

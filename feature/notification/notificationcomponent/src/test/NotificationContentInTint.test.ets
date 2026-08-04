@@ -44,6 +44,7 @@ import { AppProtectedVm } from '@ohos/systemuicommon/src/main/ets/vm/AppProtecte
 import { LengthMetrics } from '@kit.ArkUI';
 import { NotificationUtils } from '../../../../main/ets/common/NotificationUtils';
 import { NtfSingleItemVM } from '../../../../main/ets/vm/NtfSingleItemVM';
+import { DeliverBadge } from '@ohos/systemuicommon/src/main/ets/view/DeliverBadge';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, MockKit, when, ArgumentMatchers } from '@ohos/hypium';
 import {  } from '../../../../main/ets/pages/phone/NotificationContentInTint';
 export default function Test() {
@@ -78,6 +79,7 @@ export default function Test() {
       entry.notificationActionView = new NotificationActionView();
       entry.swingTrackVm = new SwingTrackVm();
       entry.acoAppNames = [new AccessibilityAppName('test1'), new AccessibilityAppName('test2')];
+      entry.iconBadge = new DeliverBadge();
       entry.notificationColorModeVM = new NtfColorModeVM();
       entry.notificationTimeVM = new NtfTimeVM();
       entry.ntfSingleItemVM = new NtfSingleItemVM();
@@ -117,6 +119,7 @@ export default function Test() {
       entry.commonData.notificationActionView = new NotificationActionView();
       entry.commonData.swingTrackVm = new SwingTrackVm();
       entry.commonData.acoAppNames = [new AccessibilityAppName('test1'), new AccessibilityAppName('test2')];
+      entry.commonData.iconBadge = new DeliverBadge();
       entry.commonData.notificationColorModeVM = new NtfColorModeVM();
       entry.commonData.notificationTimeVM = new NtfTimeVM();
       entry.commonData.ntfSingleItemVM = new NtfSingleItemVM();
@@ -178,6 +181,7 @@ export default function Test() {
       entry.notificationActionView = new NotificationActionView();
       entry.swingTrackVm = new SwingTrackVm();
       entry.acoAppNames = [new AccessibilityAppName('test1'), new AccessibilityAppName('test2')];
+      entry.iconBadge = new DeliverBadge();
       entry.notificationColorModeVM = new NtfColorModeVM();
       entry.notificationTimeVM = new NtfTimeVM();
       entry.ntfSingleItemVM = new NtfSingleItemVM();
@@ -217,6 +221,7 @@ export default function Test() {
       entry.commonData.notificationActionView = new NotificationActionView();
       entry.commonData.swingTrackVm = new SwingTrackVm();
       entry.commonData.acoAppNames = [new AccessibilityAppName('test1'), new AccessibilityAppName('test2')];
+      entry.commonData.iconBadge = new DeliverBadge();
       entry.commonData.notificationColorModeVM = new NtfColorModeVM();
       entry.commonData.notificationTimeVM = new NtfTimeVM();
       entry.commonData.ntfSingleItemVM = new NtfSingleItemVM();
@@ -281,6 +286,7 @@ export default function Test() {
       entry.notificationActionView = new NotificationActionView();
       entry.swingTrackVm = new SwingTrackVm();
       entry.acoAppNames = [new AccessibilityAppName('test1'), new AccessibilityAppName('test2')];
+      entry.iconBadge = new DeliverBadge();
       entry.notificationColorModeVM = new NtfColorModeVM();
       entry.notificationTimeVM = new NtfTimeVM();
       entry.ntfSingleItemVM = new NtfSingleItemVM();
@@ -320,6 +326,7 @@ export default function Test() {
       entry.commonData.notificationActionView = new NotificationActionView();
       entry.commonData.swingTrackVm = new SwingTrackVm();
       entry.commonData.acoAppNames = [new AccessibilityAppName('test1'), new AccessibilityAppName('test2')];
+      entry.commonData.iconBadge = new DeliverBadge();
       entry.commonData.notificationColorModeVM = new NtfColorModeVM();
       entry.commonData.notificationTimeVM = new NtfTimeVM();
       entry.commonData.ntfSingleItemVM = new NtfSingleItemVM();
@@ -385,6 +392,7 @@ export default function Test() {
       entry.notificationActionView = new NotificationActionView();
       entry.swingTrackVm = new SwingTrackVm();
       entry.acoAppNames = [new AccessibilityAppName('test1'), new AccessibilityAppName('test2')];
+      entry.iconBadge = new DeliverBadge();
       entry.notificationColorModeVM = new NtfColorModeVM();
       entry.notificationTimeVM = new NtfTimeVM();
       entry.ntfSingleItemVM = new NtfSingleItemVM();
@@ -424,6 +432,7 @@ export default function Test() {
       entry.commonData.notificationActionView = new NotificationActionView();
       entry.commonData.swingTrackVm = new SwingTrackVm();
       entry.commonData.acoAppNames = [new AccessibilityAppName('test1'), new AccessibilityAppName('test2')];
+      entry.commonData.iconBadge = new DeliverBadge();
       entry.commonData.notificationColorModeVM = new NtfColorModeVM();
       entry.commonData.notificationTimeVM = new NtfTimeVM();
       entry.commonData.ntfSingleItemVM = new NtfSingleItemVM();

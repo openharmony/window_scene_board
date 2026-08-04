@@ -110,6 +110,7 @@ export class NtfSearchController {
       
       const predicates = NotificationConfigEntity.getPredicates()
         .inCondition({ userId: [this.userId, DEFAULT_USER_ID] })
+        .equalTo({ isDeliver: false })
         .beginWrap()
         .like({ label: searchValue })
         .or()

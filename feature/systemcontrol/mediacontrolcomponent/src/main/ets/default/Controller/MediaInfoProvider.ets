@@ -2232,6 +2232,10 @@ export default class MediaInfoProvider {
         'bundleName': bundleName,
         'abilityName': abilityName
       };
+      if (sessionTag === 'deliverMediaSession') {
+        want.action = 'action.system.home';
+        want.entities = ['entity.system.home'];
+      }
     }
     // 本地电话
     if (!sessionId) {
@@ -2271,7 +2275,7 @@ export default class MediaInfoProvider {
       if (DeviceHelper.isBarPhone()) {
         return -1;
       }
-      return CommonUtils.isFoldExpanded() ? (CommonUtils.isUltraScreenProductInGState() ? 11 : 1) : 2;
+      return CommonUtils.isFoldExpanded() ? (CommonUtils.isThreeFoldProductInGState() ? 11 : 1) : 2;
     }
     return -1;
   }

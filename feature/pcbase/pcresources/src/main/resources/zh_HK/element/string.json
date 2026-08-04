@@ -128,6 +128,10 @@
             "value":"無可用視窗"
         },
         {
+            "name":"confirm_shutdown",
+            "value":"仍要關機"
+        },
+        {
             "name":"sound_menu_title",
             "value":"聲音"
         },
@@ -211,6 +215,10 @@
             "value":"%s使用相機中"
         },
         {
+            "name":"confirm_reboot",
+            "value":"仍要重新啟動"
+        },
+        {
             "name":"adapter_text",
             "value":"電源：電源變壓器"
         },
@@ -261,6 +269,13 @@
         {
             "name":"cancel",
             "value":"取消"
+        },
+        {
+            "name":"ai_sound_enable",
+            "value":"已啟用 AI 音效",
+            "attr":{
+                "priority":"translate"
+            }
         },
         {
             "name":"microphone_mute_enable",
@@ -412,14 +427,14 @@
         },
         {
             "name":"record_noise_reduct_off",
-            "value":"停用降噪錄音",
+            "value":"停用 AI 降噪錄音",
             "attr":{
                 "priority":"translate"
             }
         },
         {
             "name":"record_noise_reduct_on",
-            "value":"啟用降噪錄音",
+            "value":"啟用 AI 降噪錄音",
             "attr":{
                 "priority":"translate"
             }
@@ -503,12 +518,12 @@
             "value":"鎖屏密碼變更成功，需要輸入密碼"
         },
         {
-            "name":"sound_detail",
-            "value":"關於音效功能的說明"
+            "name":"ai_sound_detail",
+            "value":"關於 AI 音效功能的說明"
         },
         {
             "name":"sound",
-            "value":"SOUND音效"
+            "value":"SOUND AI 音效"
         },
         {
             "name":"agree",
@@ -516,7 +531,7 @@
         },
         {
             "name":"permission_detail",
-            "value":"<body><span style='normal'>本裝置提供音訊輸入和音訊輸出場景的音效功能。音訊輸入場景（通話和錄音），以降噪演算法為基礎，面向單人收音場景提供「單人靜谧空間」功能，面向多人收音場景提供「多人純淨人聲」功能。音訊輸出場景，面向音樂和影片播放場景提供「智能伴唱」和「人聲突顯」功能，面向通話提供「通話對端降噪」功能。</span><span style='wrap'>\n-</span><span style='title'>\n一、單人靜谧空間通話功能介紹</span><span style='wrap'>\n-</span><span style='normal'>\n本裝置提供單人靜谧空間通話功能，單人靜谧空間通話功能是一種以語音中的聲紋資訊為基礎，來提升目標人語音訊號質素的通話降噪增強技術。在語音通話過程中，此功能會從裝置麥克風拾取的聲音訊號中，識別並增強通話人的聲音訊號，抑制或消除其他干擾聲音，將通話人的語音更清晰地傳遞給對方。</span><span style='wrap'>\n-</span><span style='bold'>\n任何技術都存在一定局限和風險，使用單人靜谧空間通話功能時，需要注意以下事項：</span><span style='normal'>\n%1$d. 通話中，會自動擷取通話人聲紋資訊，擷取成功後，此功能才生效。\n%2$d. 通話中，周圍持續存在較大干擾噪音的場景下，聲紋擷取成功率會有所降低，影響此功能的生效率。\n%3$d. 佩戴不同類型耳機，或佩戴姿態不同，通話降噪增強效果可能會存在差異。\n%4$d. 在此功能生效的場景下，單次通話過程只能針對單個說話人聲音作增強。在通話的過程中切換說話人，會導致切換人音質下降，您可以透過手動停用單人靜谧空間通話功能來解決此問題。\n%5$d. 聲紋相近的干擾人聲，可能不會被當作干擾聲音抑制或消除。</span><span style='wrap'>\n-</span><span style='bold'>\n私隱聲明</span><span style='normal'>\n您的</span><span style='bold'>聲紋資訊</span><span style='normal'>將受到嚴格保護。該資訊不會被儲存，華為不會進行備份，也無法取得應用程式。例如，您在使用單人靜谧空間通話功能時，通話應用程式只能接收到降噪增強後的語音訊號，而無法存取、備份或取得</span><span style='bold'>聲紋資訊</span><span style='normal'>。\n您擁有聲紋資訊的自主控制權，可以靈活控制聲紋資訊的使用及使用範圍。例如，您在不想使用靜谧空間通話功能時，您可以在「設定」gt;「聲音」gt;「輸入」設定中停用「單人靜谧空間」。日後在您再次使用此功能時，本功能會重新取得您的聲紋資訊。</span><span style='wrap'>\n-</span><span style='title'>\n二、智能伴唱和人聲突顯功能介紹</span><span style='wrap'>\n-</span><span style='normal'>\n本裝置提供 </span><span style='bold'>智能伴唱</span><span style='normal'>和 </span><span style='bold'>人聲突顯</span><span style='normal'>功能。借助模型，</span><span style='bold'>智能伴唱</span><span style='normal'>功能可以在播放聲音和影片時降低人聲並保留背景聲音，實時突出伴奏隨時跟唱。</span><span style='bold'>人聲突顯</span><span style='normal'>功能可以在播放聲音和影片時降低背景聲音並保留人聲，在播放一些背景嘈雜的聲音片段時能夠讓您重點關注語音。</span><span style='wrap'>\n-</span><span style='bold'>\n任何技術都存在一定局限和風險，使用智能伴唱和人聲突顯功能時，需要注意以下事項：</span><span style='normal'>\n%6$d. 該功能僅在部分應用程式及部分裝置（僅揚聲器和耳機裝置）生效，生效場景以實際使用為準。\n%7$d. 不同的音訊內容，智能伴唱可能會有人聲殘留。\n%8$d. 不同的音訊內容，人聲突顯可能會有人聲損傷。\n%9$d. 裝置重新啟動後，功能將自動停用。</span><span style='wrap'>\n-</span><span style='bold'>\n免責聲明</span><span style='bold'>\n智能伴唱</span><span style='normal'>和</span><span style='bold'>人聲突顯</span><span style='normal'>需要用戶手動啟用才能生效，僅作為個人日常使用。如果由於用戶自己的行為帶來音訊版權糾紛，後果將由消費者自行承擔。</span></body>",
+            "value":"<body><span style='normal'>本裝置提供音訊輸入和音訊輸出場景的 AI 音效功能。音訊輸入場景（通話和錄音），以 AI 降噪演算法為基礎，面向單人收音場景提供「單人靜谧空間」功能，面向多人收音場景提供「多人純淨人聲」功能。音訊輸出場景，面向音樂和影片播放場景提供「AI 智能伴唱」和「AI 人聲突顯」功能，面向通話提供「通話對端降噪」功能。</span><span style='wrap'>\n-</span><span style='title'>\n一、單人靜谧空間通話功能介紹</span><span style='wrap'>\n-</span><span style='normal'>\n本裝置提供單人靜谧空間通話功能，單人靜谧空間通話功能是一種以語音中的聲紋資訊為基礎，來提升目標人語音訊號質素的通話降噪增強技術。在語音通話過程中，此功能會從裝置麥克風拾取的聲音訊號中，識別並增強通話人的聲音訊號，抑制或消除其他干擾聲音，將通話人的語音更清晰地傳遞給對方。</span><span style='wrap'>\n-</span><span style='bold'>\n任何技術都存在一定局限和風險，使用單人靜谧空間通話功能時，需要注意以下事項：</span><span style='normal'>\n%1$d. 通話中，會自動擷取通話人聲紋資訊，擷取成功後，此功能才生效。\n%2$d. 通話中，周圍持續存在較大干擾噪音的場景下，聲紋擷取成功率會有所降低，影響此功能的生效率。\n%3$d. 佩戴不同類型耳機，或佩戴姿態不同，通話降噪增強效果可能會存在差異。\n%4$d. 在此功能生效的場景下，單次通話過程只能針對單個說話人聲音作增強。在通話的過程中切換說話人，會導致切換人音質下降，您可以透過手動停用單人靜谧空間通話功能來解決此問題。\n%5$d. 聲紋相近的干擾人聲，可能不會被當作干擾聲音抑制或消除。</span><span style='wrap'>\n-</span><span style='bold'>\n私隱聲明</span><span style='normal'>\n您的</span><span style='bold'>聲紋資訊</span><span style='normal'>將受到嚴格保護。該資訊不會被儲存，華為不會進行備份，也無法取得應用程式。例如，您在使用單人靜谧空間通話功能時，通話應用程式只能接收到降噪增強後的語音訊號，而無法存取、備份或取得</span><span style='bold'>聲紋資訊</span><span style='normal'>。\n您擁有聲紋資訊的自主控制權，可以靈活控制聲紋資訊的使用及使用範圍。例如，您在不想使用靜谧空間通話功能時，您可以在「設定」gt;「聲音」gt;「輸入」設定中停用「單人靜谧空間」。日後在您再次使用此功能時，本功能會重新取得您的聲紋資訊。</span><span style='wrap'>\n-</span><span style='title'>\n二、AI 智能伴唱和 AI 人聲突顯功能介紹</span><span style='wrap'>\n-</span><span style='normal'>\n本裝置提供 </span><span style='bold'>AI 智能伴唱</span><span style='normal'>和 </span><span style='bold'>AI 人聲突顯</span><span style='normal'>功能。借助 AI 模型，</span><span style='bold'>AI 智能伴唱</span><span style='normal'>功能可以在播放聲音和影片時降低人聲並保留背景聲音，實時突出伴奏隨時跟唱。</span><span style='bold'>AI 人聲突顯</span><span style='normal'>功能可以在播放聲音和影片時降低背景聲音並保留人聲，在播放一些背景嘈雜的聲音片段時能夠讓您重點關注語音。</span><span style='wrap'>\n-</span><span style='bold'>\n任何技術都存在一定局限和風險，使用 AI 智能伴唱和 AI 人聲突顯功能時，需要注意以下事項：</span><span style='normal'>\n%6$d. 該功能僅在部分應用程式及部分裝置（僅揚聲器和耳機裝置）生效，生效場景以實際使用為準。\n%7$d. 不同的音訊內容，AI 智能伴唱可能會有人聲殘留。\n%8$d. 不同的音訊內容，AI 人聲突顯可能會有人聲損傷。\n%9$d. 裝置重新啟動後，功能將自動停用。</span><span style='wrap'>\n-</span><span style='bold'>\n免責聲明</span><span style='bold'>\nAI 智能伴唱</span><span style='normal'>和</span><span style='bold'> AI 人聲突顯</span><span style='normal'>需要用戶手動啟用才能生效，僅作為個人日常使用。如果由於用戶自己的行為帶來音訊版權糾紛，後果將由消費者自行承擔。</span></body>",
             "attr":{
                 "priority":"translate"
             }
@@ -531,10 +546,18 @@
         },
         {
             "name":"sound_permission",
-            "value":"<body><span style='normal'>華為終端有限公司需要從您的聲音中提取聲紋資訊，用於在通話或錄音中增強您的語音訊號，抑制或消除其他干擾資訊，讓您的語音能更清晰地傳遞給對方。您的聲紋資訊不會被儲存，華為不會備份。</span><span style='wrap'>\n-</span><span style='normal'>\n檢視「</span><span style='active'>關於 SOUND音效功能的說明</span><span style='normal'>」以了解更多資訊。</span><span style='wrap'>\n-</span><span style='normal'>\n輕觸下方「同意」，即表示您同意我們處理您的聲紋資訊。</span></body>",
+            "value":"<body><span style='normal'>華為終端有限公司需要從您的聲音中提取聲紋資訊，用於在通話或錄音中增強您的語音訊號，抑制或消除其他干擾資訊，讓您的語音能更清晰地傳遞給對方。您的聲紋資訊不會被儲存，華為不會備份。</span><span style='wrap'>\n-</span><span style='normal'>\n檢視「</span><span style='active'>關於 SOUND AI 音效功能的說明</span><span style='normal'>」以了解更多資訊。</span><span style='wrap'>\n-</span><span style='normal'>\n輕觸下方「同意」，即表示您同意我們處理您的聲紋資訊。</span></body>",
             "attr":{
                 "priority":"LT"
             }
+        },
+        {
+            "name":"sound_detail",
+            "value":"關於 SOUND AI 音效功能的說明"
+        },
+        {
+            "name":"ai_sound",
+            "value":"AI 音效"
         },
         {
             "name":"enter_screenLock_password",
@@ -714,15 +737,19 @@
             "value":"勿擾模式"
         },
         {
+            "name":"sound_ai",
+            "value":"AI 音效"
+        },
+        {
             "name":"voice_cancel",
-            "value":"智能伴唱",
+            "value":"AI 智能伴唱",
             "attr":{
                 "priority":"translate"
             }
         },
         {
             "name":"voice_extract",
-            "value":"人聲突顯",
+            "value":"AI 人聲突顯",
             "attr":{
                 "priority":"translate"
             }
@@ -1338,6 +1365,13 @@
         {
             "name":"disable_modify_wallpaper_tips",
             "value":"此功能已被貴組織禁用",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"recommend_input_method",
+            "value":"語言助手輸入法",
             "attr":{
                 "priority":"translate"
             }

@@ -83,6 +83,8 @@ import { IContractedFolderLongPressViewModel } from '../viewmodel/manager/IContr
 import { IContractedFolderOpenCloseViewModel } from '../viewmodel/manager/IContractedFolderOpenCloseViewModel';
 import { ContractedFolderEmptyItem } from './ContractedFolderEmptyItem';
 import { ContractedFolderItem } from './ContractedFolderItem';
+import { DeliverUtil } from '../../../../utils/DeliverUtil';
+import { DeliveryFolderItem } from './DeliveryFolderItem';
 import { AppIconConfig } from '../../../../launchericon/config/AppIconConfig';
 import { FolderActionLifeCycleEventManager,
   FolderActionLifeCycleStatus } from '../../common/viewmodel/lifecycle/FolderActionLifeCycleEventManager';
@@ -605,19 +607,33 @@ export struct ContractedFolder {
           StyleConstants.FOLDER_LAST_THREE_APP_FIRST_MASK : StyleConstants.FOLDER_LAST_THREE_APP_SECOND_MASK,
       })
     } else {
-      ContractedFolderItem({
-        item: item as AppItemInfo,
-        iconSize: this.iconSize,
-        iconRadius: this.iconRadius,
-        folderId: this.folderId ?? '',
-        appIconConfig: this.getIconConfig(item),
-        bigFolderIconModifier: FolderIconConfigUtil.getBigFolderIconModifier(),
-        editFolderMode: this.layoutOsr.editFolderMode,
-        index: index,
-        isSmall: this.style.isLayout1X1(),
-        onAppClick: (msg: string, folderId: string, item: GridLayoutItemInfo) => this.eventMgr?.onClick(msg,
-          folderId, FolderClickType.ICON_CLICK, item)
-      })
+      if (DeliverUtil.isContainerItem(item.intent ?? '')) {
+        DeliveryFolderItem({
+          item: item as AppItemInfo,
+          iconSize: this.iconSize,
+          iconRadius: this.iconRadius,
+          folderId: this.folderId ?? '',
+          isSmall: this.style.isLayout1X1(),
+          appIconConfig: this.getIconConfig(item),
+          bigFolderIconModifier: FolderIconConfigUtil.getBigFolderIconModifier(),
+          editFolderMode: this.layoutOsr.editFolderMode,
+          index: index,
+        })
+      } else {
+        ContractedFolderItem({
+          item: item as AppItemInfo,
+          iconSize: this.iconSize,
+          iconRadius: this.iconRadius,
+          folderId: this.folderId ?? '',
+          appIconConfig: this.getIconConfig(item),
+          bigFolderIconModifier: FolderIconConfigUtil.getBigFolderIconModifier(),
+          editFolderMode: this.layoutOsr.editFolderMode,
+          index: index,
+          isSmall: this.style.isLayout1X1(),
+          onAppClick: (msg: string, folderId: string, item: GridLayoutItemInfo) => this.eventMgr?.onClick(msg,
+            folderId, FolderClickType.ICON_CLICK, item)
+        })
+      }
     }
   }
 

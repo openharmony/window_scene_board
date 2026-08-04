@@ -9,29 +9,19 @@
       "entryKey": "desktop_settings",
       "params": "",
       "path": [
-        "$string:Desktop_individuation" ,"$string:Desktop_setting"
+        "$string:Desktop_individuation",
+        "$string:Desktop_setting"
       ],
       "supportDevices": [
         "phone",
         "tablet",
         "2in1"
-      ] ,
+      ],
       "searchItems": [
         {
           "itemName": "desktop_setting",
           "itemTitle": "$string:Desktop_setting",
           "itemDescription": "Desktop setting",
-          "icon": "",
-          "checkItem": {
-            "type": "function",
-            "checkKey": "isSmallFoldProduct",
-            "value": "false"
-          }
-        },
-        {
-          "itemName": "desktop_slide",
-          "itemTitle": "$string:Desktop_slide",
-          "itemDescription": "Desktop slide",
           "icon": "",
           "checkItem": {
             "type": "function",
@@ -71,18 +61,6 @@
             "checkKey": "isSmallFoldProduct",
             "value": "false"
           }
-        },
-        {
-          "itemName": "icon_settings",
-          "itemTitle": "$string:icon_settings",
-          "itemDescription": "Icons",
-          "alias": "图标大小|图标太大|图标太小|图标有点大|图标有点小|图标过大|图标过小|图标大|图标小|图标调节|图标大小调节|调节图标|调大图标|调小图标|图标调大|图标调小|图标修改|修改图标|图标变大|图标变小|显示名称|显示名字|显示文字|无字模式|图标名称|图标名字|图标文字|隐藏图标文字|显示图标文字|去掉图标文字|增加图标文字|tubiao|mingzi|mingcheng|wenzi|wuzimoshi",
-          "icon": "",
-          "checkItem": {
-            "type": "function",
-            "checkKey": "isSmallFoldProduct",
-            "value": "false"
-          }
         }
       ]
     },
@@ -96,7 +74,7 @@
       ],
       "supportDevices": [
         "phone"
-      ] ,
+      ],
       "searchItems": [
         {
           "itemName": "magic_screen",
@@ -117,11 +95,12 @@
       "entryKey": "desktop_settings",
       "params": "",
       "path": [
-        "$string:covertheme_settings_title" ,"$string:Desktop_setting"
+        "$string:covertheme_settings_title",
+        "$string:Desktop_setting"
       ],
       "supportDevices": [
         "phone"
-      ] ,
+      ],
       "searchItems": [
         {
           "itemName": "desktop_setting",
@@ -469,16 +448,81 @@
             "checkKey": "isSupportForcedLandscape",
             "value": "true"
           }
+        }
+      ]
+    },
+    {
+      "pageTitle": "$string:Navi_bar_setting",
+      "pageDescription": "",
+      "entryKey": "navi_bar_settings",
+      "params": "",
+      "path": [
+        "$string:System",
+        "$string:Navi_bar_setting"
+      ],
+      "supportDevices": [
+        "phone",
+        "tablet",
+        "2in1"
+      ],
+      "searchItems": [
+        {
+          "itemName": "navi_bar_setting",
+          "itemTitle": "$string:Navi_bar_setting",
+          "itemDescription": "Ai bar setting",
+          "icon": ""
         },
         {
-          "itemName": "landscape_view_force",
-          "itemTitle": "$string:landscape_view_force",
-          "itemDescription": "Force Landscape View",
+          "itemName": "navi_bar_back",
+          "itemTitle": "$string:Navi_bar_back",
+          "itemDescription": "Ai bar back",
+          "icon": ""
+        },
+        {
+          "itemName": "navi_bar_back_click_navigation",
+          "itemTitle": "$string:Navi_bar_back_click_navigation",
+          "itemDescription": "Click the navigation bar to return",
+          "icon": ""
+        },
+        {
+          "itemName": "navi_bar",
+          "itemTitle": "$string:Navi_bar",
+          "itemDescription": "Ai bar",
+          "icon": ""
+        },
+        {
+          "itemName": "floating_three_button_navigation_new",
+          "itemTitle": "$string:floating_three_button_navigation_new",
+          "itemDescription": "floating_three_button_navigation_new",
+          "alias": "长按可|拖动更改|三键导航|位置",
           "icon": "",
           "checkItem": {
-            "type": "function",
-            "checkKey": "isSupportForcedLandscape",
-            "value": "true"
+            "type": "settingData",
+            "checkKey": "floating_navigation_ccm",
+            "value": "0"
+          }
+        },
+        {
+          "itemName": "more_settings",
+          "itemTitle": "$string:more_settings",
+          "itemDescription": "more_settings",
+          "icon": "",
+          "checkItem": {
+            "type": "settingData",
+            "checkKey": "floating_navigation_ccm",
+            "value": "0"
+          }
+        },
+        {
+          "itemName": "floating_navigation_ball_name",
+          "itemTitle": "$string:floating_navigation_ball_name",
+          "itemDescription": "floating_navigation_ball_name",
+          "icon": "",
+          "alias": "悬浮球",
+          "checkItem": {
+            "type": "settingData",
+            "checkKey": "floating_navigation_ball_ccm",
+            "value": "0"
           }
         }
       ]

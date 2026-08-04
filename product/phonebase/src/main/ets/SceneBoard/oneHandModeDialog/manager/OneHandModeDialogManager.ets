@@ -71,7 +71,7 @@ export class OneHandModeDialogManager {
       let bundleName: string = sceneInfo.bundleName;
       OneHandModeDialogDb.getInstance().getOpenOneHandModeCount().then((count: number) => {
         // 进入手模式并且前台应用在白名单内，总次数+1
-        if (config.normalAppMap.has(bundleName)) {
+        if (config.normalAppMap.has(bundleName) || config.deliverAppMap.has(bundleName)) {
           ++count;
           OneHandModeDialogDb.getInstance().setDialogPopupCount(
             { bundleName: OneHandDialogConstants.OPEN_ONE_HAND_MODE_NUM }, count);
@@ -202,7 +202,8 @@ export class OneHandModeDialogManager {
     }
 
     // 白名单校验
-    if (await this.checkAndSetPopupCount(bundleName, config.normalAppMap)) {
+    if (await this.checkAndSetPopupCount(bundleName, config.normalAppMap) ||
+        await this.checkAndSetPopupCount(bundleName, config.deliverAppMap)) {
       return true;
     }
     return false;

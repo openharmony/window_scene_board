@@ -54,7 +54,7 @@ export default class GlassNtfConstant {
   public static readonly BANNER_CURVE: curves.ICurve = curves.cubicBezierCurve(0.4, 0.0, 0.4, 1.0);
   public static readonly blackAppList: string[] = [
     '',
-    'com.ohos.huaweicast',
+    'com.ohos.ohcast',
   ];
   public static readonly IMAGE_ICON_ID: string = '_image_app_icon';
   public static readonly PHONE_BUNDLE_NAME: string = 'com.ohos.callui';

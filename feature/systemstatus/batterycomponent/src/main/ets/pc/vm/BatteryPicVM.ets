@@ -15,13 +15,13 @@
 
 import { LogDomain, LogHelper } from '@ohos/basicutils';
 import { AccountMgr, EventManager, EvtBus } from '@ohos/frameworkwrapper';
-// import privacyManager from '@hms.security.privacyIndicatorManager';
+// import privacyManager from '@ohos.security.privacyIndicatorManager';
 import { componentUtils, display } from '@kit.ArkUI';
 import { emitter } from '@kit.BasicServicesKit';
 import { SCBFoldStatePropertyChangeEvent } from '@ohos/windowscene/src/main/ets/events/SCBFoldStatePropertyChangeEvent';
 import { DisplayMgr } from '@ohos/windowscene/src/main/ets/utils/DisplayManager';
 import { SCBScreenSessionManager } from '@ohos/windowscene';
-import { BigScreenStatus } from '../common/BigScreenStatus';
+import { SuperFoldStatus } from '../common/SuperFoldStatus';
 
 const TAG = 'batteryPicVM';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.SYS_UI, TAG);
@@ -137,7 +137,7 @@ export class BatteryPicVM {
   /**
    * 形态变化时状态管理
    */
-  private bigScreenStatus: BigScreenStatus = BigScreenStatus.getInstance();
+  private superFoldStatus: SuperFoldStatus = SuperFoldStatus.getInstance();
   /**
    * 变化后屏幕的高度
    */
@@ -245,54 +245,54 @@ export class BatteryPicVM {
     log.showInfo('init');
     emitter.on(REFRESH_PRIVACY_STAGE_EVENT, refreshPrivacyStage);
     this.eventMgr
-      .on(SCBFoldStatePropertyChangeEvent, this.onBigScreenStatusChange);
+      .on(SCBFoldStatePropertyChangeEvent, this.onSuperFoldStatusChange);
     this.registerPrivacyStateChangeListener();
   }
 
-  private onBigScreenStatusChange = async (bigScreenStateProperty: SCBFoldStatePropertyChangeEvent) => {
-    log.showInfo(`onBigScreenStatusChange property, bSideHeight: ${bigScreenStateProperty.bSideHeight}, ` +
-      `curState: ${bigScreenStateProperty.curState}, tarState: ${bigScreenStateProperty.tarState}`);
-    this.updateScreenInfo(bigScreenStateProperty);
-    this.updateAnimationStage(bigScreenStateProperty);
+  private onSuperFoldStatusChange = async (superFoldStateProperty: SCBFoldStatePropertyChangeEvent) => {
+    log.showInfo(`onSuperFoldStatusChange property, bSideHeight: ${superFoldStateProperty.bSideHeight}, ` +
+      `curState: ${superFoldStateProperty.curState}, tarState: ${superFoldStateProperty.tarState}`);
+    this.updateScreenInfo(superFoldStateProperty);
+    this.updateAnimationStage(superFoldStateProperty);
   }
 
-  private updateScreenInfo(bigScreenStateProperty: SCBFoldStatePropertyChangeEvent): void {
+  private updateScreenInfo(superFoldStateProperty: SCBFoldStatePropertyChangeEvent): void {
     // 虚拟键盘和磁吸键盘存在
-    if (this.bigScreenStatus.isKeyBoardExist(bigScreenStateProperty)) {
-      this.adaptiveScreenHeight = bigScreenStateProperty.bSideHeight;
-      this.adaptiveScreenWidth = bigScreenStateProperty.bSideWidth;
+    if (this.superFoldStatus.isKeyBoardExist(superFoldStateProperty)) {
+      this.adaptiveScreenHeight = superFoldStateProperty.bSideHeight;
+      this.adaptiveScreenWidth = superFoldStateProperty.bSideWidth;
     } else {
       // 获取的整个屏幕的宽高
       let screenSession = SCBScreenSessionManager.getInstance().getMainScreenSession();
       // px
       this.adaptiveScreenHeight = screenSession.scbScreenProperty.height;
       this.adaptiveScreenWidth = screenSession.scbScreenProperty.width;
-      log.showInfo('onBigScreenStatusChange, other state');
+      log.showInfo('onSuperFoldStatusChange, other state');
     }
     log.showInfo(`screenHeight: ${this.adaptiveScreenHeight}, screenWidth: ${this.adaptiveScreenWidth}`);
   }
 
-  private updateAnimationStage(bigScreenStateProperty: SCBFoldStatePropertyChangeEvent): void {
-    this.updateKeyBoardStatus(bigScreenStateProperty);
+  private updateAnimationStage(superFoldStateProperty: SCBFoldStatePropertyChangeEvent): void {
+    this.updateKeyBoardStatus(superFoldStateProperty);
     if (this.isKeyBoardStatusIn || this.isKeyBoardStatusOUt) {
       log.showInfo(`isKeyBoardStatusOUt: ${this.isKeyBoardStatusOUt}, isKeyBoardStatusIn: ${this.isKeyBoardStatusIn}`);
       this.stageQueue.push(AnimationStage.reopenAll);
     }
   }
 
-  private updateKeyBoardStatus(bigScreenStateProperty: SCBFoldStatePropertyChangeEvent): void {
+  private updateKeyBoardStatus(superFoldStateProperty: SCBFoldStatePropertyChangeEvent): void {
     this.isKeyBoardStatusOUt = false;
     this.isKeyBoardStatusIn = false;
-    if (this.bigScreenStatus.isKeyBoardConvert(bigScreenStateProperty)) {
+    if (this.superFoldStatus.isKeyBoardConvert(superFoldStateProperty)) {
       log.showWarn(`no need change!`);
       return;
     }
-    if (this.bigScreenStatus.isKeyBoardExist(bigScreenStateProperty)) {
+    if (this.superFoldStatus.isKeyBoardExist(superFoldStateProperty)) {
       this.isKeyBoardStatusIn = true;
       this.reOpenDelay = 500;
     } else {
       // 键盘退出时位置位置变化
-      if (this.bigScreenStatus.isKeyBoardOut(bigScreenStateProperty)) {
+      if (this.superFoldStatus.isKeyBoardOut(superFoldStateProperty)) {
         this.isKeyBoardStatusOUt = true;
         this.reOpenDelay = 200;
       }

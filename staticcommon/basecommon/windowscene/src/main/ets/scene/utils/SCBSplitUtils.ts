@@ -28,13 +28,13 @@ export class SCBSplitUtils {
   ];
 
   /**
-   * 是否超大屏固定分屏比例场景
+   * 是否三折叠固定分屏比例场景
    *
    * @param sceneInfo SCBSceneInfo
    * @returns { boolean }
    */
-  public static isUltraScreenFixedSplitRatioScene(sceneInfo: SCBSceneInfo | null | undefined): boolean {
-    if (!DeviceHelper.isUltraScreenProduct()) {
+  public static isThreeFoldFixedSplitRatioScene(sceneInfo: SCBSceneInfo | null | undefined): boolean {
+    if (!DeviceHelper.isThreeFoldProduct()) {
       return false;
     }
     if (SCBSplitUtils.getFixedSplitRatio(sceneInfo) === SplitRatioEnum.UNDEFINED) {

@@ -29,6 +29,7 @@ import {
   AppStatus,
   CommonConstants,
   DefaultDesktopLayoutInfo,
+  DeliverUtil,
   DisappearLastAppData,
   DockItemInfo,
   FolderData,
@@ -3599,6 +3600,8 @@ export default function BigFolderViewModelTest() {
       when(mockFunc)(ArgumentMatchers.any).afterReturn([anotherFolder]);
       let mockFunc2: Function = mocker.mockFunc(folderLayoutCacheManager, folderLayoutCacheManager.selectIndexInLayout);
       when(mockFunc2)(ArgumentMatchers.any).afterReturn(-1);
+      let mockFunc3: Function = mocker.mockFunc(DeliverUtil, DeliverUtil.checkFolderIsReleased);
+      when(mockFunc3)(ArgumentMatchers.any).afterReturn(true);
       let mockFunc4: Function = mocker.mockFunc(NotHarmonyUtil, NotHarmonyUtil.isNotHarmonyFolderShouldReleased);
       when(mockFunc4)(ArgumentMatchers.any).afterReturn(false);
       (instance as object)['moveAppFromOtherFolders'](list, folder);
@@ -3610,6 +3613,7 @@ export default function BigFolderViewModelTest() {
       (instance as object)['moveAppFromOtherFolders'](list, folder);
       expect(list.length).assertEqual(1);
       mocker.clear(folderLayoutCacheManager);
+      mocker.clear(DeliverUtil);
       mocker.clear(NotHarmonyUtil);
       mocker.clearAll();
     });
@@ -3644,6 +3648,7 @@ export default function BigFolderViewModelTest() {
       manager['mode'] = MultiSelectMode.MULTI;
       let folderLayoutInfo: GridLayoutItemInfo[][] = [[info]];
       let mocker: MockKit = new MockKit();
+      let mockFunc: Function = mocker.mockFunc(DeliverUtil, DeliverUtil.checkFolderIsReleased);
       let mockFunc02: Function = mocker.mockFunc(NotHarmonyUtil, NotHarmonyUtil.isNotHarmonyFolderShouldReleased);
       let mockFunc03: Function = mocker.mockFunc(MultiSelectManager, MultiSelectManager.getInstance);
       let mockFunc04: Function = mocker.mockFunc(GridLayoutUtil, GridLayoutUtil.checkGridItemEqual);
@@ -3653,6 +3658,7 @@ export default function BigFolderViewModelTest() {
       when(mockFunc04)(ArgumentMatchers.any).afterReturn(false);
       (instance as object)['updateDesktopAppList'](folderLayoutInfo, info, [info], info, [itemInfo]);
       expect(folderLayoutInfo.length).assertEqual(1);
+      mocker.clear(DeliverUtil);
       mocker.clear(NotHarmonyUtil);
       mocker.clear(MultiSelectManager);
       mocker.clear(GridLayoutUtil);
@@ -3925,6 +3931,8 @@ export default function BigFolderViewModelTest() {
       when(mockFunc5)(ArgumentMatchers.any).afterReturnNothing();
       (instance as object)['moveAppFromOtherFolders']([gridLayoutItemInfo], gridLayoutItemInfoOther);
       when(mockFunc3)(ArgumentMatchers.any).afterReturn([new GridLayoutItemInfo()]);
+      let mockFunc6: Function = mocker.mockFunc(DeliverUtil, DeliverUtil['checkFolderIsReleased']);
+      when(mockFunc6)(ArgumentMatchers.any).afterReturn(true);
       let mockFunc7: Function = mocker.mockFunc(NotHarmonyUtil, NotHarmonyUtil['isNotHarmonyFolderShouldReleased']);
       when(mockFunc7)(ArgumentMatchers.any).afterReturn(true);
       let mockFunc8: Function =
@@ -3944,6 +3952,7 @@ export default function BigFolderViewModelTest() {
       mocker.clear(folderLayoutCacheManager);
       mocker.clear(NotHarmonyUtil);
       mocker.clear(instance);
+      mocker.clear(DeliverUtil);
       mocker.clearAll();
       done();
     });
@@ -4039,6 +4048,8 @@ export default function BigFolderViewModelTest() {
       when(mockFunc5)(ArgumentMatchers.any).afterReturn(Promise);
       (instance as object)['updateFolderInfoAfterRemoveShortIconInEditMode'](gridLayoutItemInfo);
       when(mockFunc3)(ArgumentMatchers.any).afterReturn(false);
+      let mockFunc6: Function = mocker.mockFunc(DeliverUtil, DeliverUtil.checkFolderIsReleased);
+      when(mockFunc6)(ArgumentMatchers.any).afterReturn(true);
       let mockFunc7: Function = mocker.mockFunc(NotHarmonyUtil, NotHarmonyUtil.isNotHarmonyFolderShouldReleased);
       when(mockFunc7)(ArgumentMatchers.any).afterReturn(true);
       let mockFunc8: Function =
@@ -4058,6 +4069,7 @@ export default function BigFolderViewModelTest() {
       mocker.clear(folderLayoutCacheManager);
       mocker.clear(instance);
       mocker.clear(FolderData);
+      mocker.clear(DeliverUtil);
       mocker.clear(NotHarmonyUtil);
       mocker.clear(localEventManager);
       mocker.clear(LauncherLayoutCacheUtil);
@@ -4097,6 +4109,29 @@ export default function BigFolderViewModelTest() {
       app1.appIndex = 0;
       app1.typeId = CommonConstants.TYPE_APP;
       let folder1: GridLayoutItemInfo = new GridLayoutItemInfo();
+      let folderAppList1: GridLayoutItemInfo[] = [];
+      folderAppList1.push(app1);
+      folder1.layoutInfo = [folderAppList1];
+
+      let folderLayout: FolderLayoutCacheManager = FolderLayoutCacheManager.getInstance();
+      let mocker: MockKit = new MockKit();
+      let mockFunc: Function = mocker.mockFunc(folderLayout, folderLayout.selectIndexInLayout);
+      when(mockFunc)(ArgumentMatchers.any).afterReturn(1);
+      expect((instance as object)['checkReleaseFolderIfNeeded'](folder1, [app1]) === undefined).assertTrue();
+      mocker.clear(folderLayout);
+      mocker.clearAll();
+      done();
+    });
+
+    it('test_checkReleaseFolderIfNeeded_02', 0, (done: Function) => {
+      let bundleName: string = 'com.ohos.uninstallApp';
+      let app1: GridLayoutItemInfo = new GridLayoutItemInfo();
+      app1.bundleName = bundleName;
+      app1.appIndex = 0;
+      app1.typeId = CommonConstants.TYPE_APP;
+      app1.intent = `{'installSource':'com.deliver.appstore.lite'}`;
+      let folder1: GridLayoutItemInfo = new GridLayoutItemInfo();
+      folder1.intent = `{'installSource':'com.deliver.appstore.lite'}`;
       let folderAppList1: GridLayoutItemInfo[] = [];
       folderAppList1.push(app1);
       folder1.layoutInfo = [folderAppList1];

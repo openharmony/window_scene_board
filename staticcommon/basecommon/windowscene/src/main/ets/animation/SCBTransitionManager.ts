@@ -385,7 +385,6 @@ export class SCBTransitionManager {
         this.checkWithFolderApp(appData, neddCheckFolderApp);
         break;
       case StartType.RECENT_DOCK_APP:
-      case StartType.AI_SUGGESTION_APP:
         isSameTransitionController = appData.bundleName === findData.bundleName &&
           appData.appIndex === findData.appIndex && appData.extraId === findData.extraId;
         break;
@@ -464,6 +463,36 @@ export class SCBTransitionManager {
   }
 
   private getControllerItem(item: SCBTransitionController, findData: AppData): SCBTransitionController {
+    if (CheckEmptyUtils.isEmpty(item)) {
+      // 没有找到Controller，判断是OOBE包名，找OOBE对应的语音助手建议包名
+      let oobeItem = this.findOobeTransitionController(findData);
+      if (oobeItem) {
+        return oobeItem;
+      }
+    }
+    return item;
+  }
+
+  private findOobeTransitionController(findData: AppData): SCBTransitionController {
+    if (this.isOobeBundleName(findData.bundleName)) {
+      let item = this.getOobeControllerItem();
+      if (item) {
+        log.showInfo(`Find oobe controller success, bundleName=%{public}s abilityName=%{public}s appIconId=%{public}s`,
+          item.appData.bundleName, item.appData.abilityName, item.appData.appIconId);
+        return item;
+      }
+    }
+    return null;
+  }
+
+  private getOobeControllerItem(): SCBTransitionController {
+    // OOBE
+    let item = this.transitionControllerList.find(item => {
+      const appData = item.appData;
+      // 语音助手建议卡片内部玩机技巧
+      return appData.bundleName === SCBConstants.TIPS_BUNDLE_NAME && appData.startAppType === StartType.CARD &&
+        !CheckEmptyUtils.isEmpty(appData.extraId);
+    });
     return item;
   }
 

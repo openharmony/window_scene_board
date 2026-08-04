@@ -65,12 +65,12 @@ export default function StyleConfigFactoryTest() {
       when(mockfunc1)().afterReturn(false);
       when(mockfunc_isfold)().afterReturn(false);
       when(mockfunc_isPad)().afterReturn(true);
-      let mockfunc_isUltraScreen: Function = mocker.mockFunc(DeviceHelper, DeviceHelper.isUltraScreenProduct);
+      let mockfunc_isThreeFold: Function = mocker.mockFunc(DeviceHelper, DeviceHelper.isThreeFoldProduct);
       when(mockfunc)().afterReturn(false);
       when(mockfunc1)().afterReturn(false);
       when(mockfunc_isfold)().afterReturn(false);
       when(mockfunc_isPad)().afterReturn(false);
-      when(mockfunc_isUltraScreen)().afterReturn(true);
+      when(mockfunc_isThreeFold)().afterReturn(true);
       let emergencyStyle3: EmergencyStyle = StyleConfigFactory.createEmergencyStyle();
 
       when(mockfunc_isPad)().afterReturn(false);
@@ -122,7 +122,7 @@ export default function StyleConfigFactoryTest() {
         let mockFunc1: Function = mock.mockFunc(desktopUtil, desktopUtil.needIgnoreFoldDeviceForLauncher);
         when(mockFunc1)(ArgumentMatchers.any).afterReturn(false);
 
-        let mockFunc2: Function = mock.mockFunc(DeviceHelper, DeviceHelper.isUltraScreenProduct);
+        let mockFunc2: Function = mock.mockFunc(DeviceHelper, DeviceHelper.isThreeFoldProduct);
         when(mockFunc2)(ArgumentMatchers.any).afterReturn(false);
 
         let mockFunc3: Function = mock.mockFunc(DeviceHelper, DeviceHelper.isFold);
@@ -149,7 +149,7 @@ export default function StyleConfigFactoryTest() {
         let mockFunc1: Function = mock.mockFunc(desktopUtil, desktopUtil.needIgnoreFoldDeviceForLauncher);
         when(mockFunc1)(ArgumentMatchers.any).afterReturn(false);
 
-        let mockFunc2: Function = mock.mockFunc(DeviceHelper, DeviceHelper.isUltraScreenProduct);
+        let mockFunc2: Function = mock.mockFunc(DeviceHelper, DeviceHelper.isThreeFoldProduct);
         when(mockFunc2)(ArgumentMatchers.any).afterReturn(false);
 
         let mockFunc3: Function = mock.mockFunc(DeviceHelper, DeviceHelper.isFold);
@@ -176,7 +176,7 @@ export default function StyleConfigFactoryTest() {
         let mockFunc1: Function = mock.mockFunc(desktopUtil, desktopUtil.needIgnoreFoldDeviceForLauncher);
         when(mockFunc1)(ArgumentMatchers.any).afterReturn(false);
 
-        let mockFunc2: Function = mock.mockFunc(DeviceHelper, DeviceHelper.isUltraScreenProduct);
+        let mockFunc2: Function = mock.mockFunc(DeviceHelper, DeviceHelper.isThreeFoldProduct);
         when(mockFunc2)(ArgumentMatchers.any).afterReturn(false);
 
         let mockFunc3: Function = mock.mockFunc(DeviceHelper, DeviceHelper.isFold);

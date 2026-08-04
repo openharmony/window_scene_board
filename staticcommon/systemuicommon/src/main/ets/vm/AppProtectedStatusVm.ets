@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-// import appLock from '@hms.security.appLock';
+// import appLock from '@ohos.security.appLock';
 import osAccount from '@ohos.account.osAccount';
 import { Singleton } from '../utils/Singleton';
 import { LogHelper, LogDomain } from '@ohos/basicutils';

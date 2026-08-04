@@ -29,7 +29,7 @@ export const FOLD_STATUS_HALF_FOLDED_WITH_SECOND_HALF_FOLDED = 23;
 /**
  * F/M/G state for three fold device, only for fold expand animation
  */
-export enum SCBUltraScreenState {
+export enum SCBTripleFoldState {
   UNKNOWN = 'UNKNOWN',
   F = 'F',
   M = 'M',
@@ -44,18 +44,18 @@ export class SCBTriFoldManager {
     return SingletonHelper.getInstance(SCBTriFoldManager, TAG);
   }
 
-  private prevTriFoldState: SCBUltraScreenState = SCBUltraScreenState.UNKNOWN;
-  private curTriFoldState: SCBUltraScreenState = SCBUltraScreenState.UNKNOWN;
+  private prevTriFoldState: SCBTripleFoldState = SCBTripleFoldState.UNKNOWN;
+  private curTriFoldState: SCBTripleFoldState = SCBTripleFoldState.UNKNOWN;
 
   /**
    * Get previous fold state of three fold product, only used for fold or expand animation
    *
-   * @return SCBUltraScreenState, F/M/G state
+   * @return SCBTripleFoldState, F/M/G state
    */
-  public getPrevTriFoldState(): SCBUltraScreenState {
-    if (!DeviceHelper.isUltraScreenProduct()) {
+  public getPrevTriFoldState(): SCBTripleFoldState {
+    if (!DeviceHelper.isThreeFoldProduct()) {
       log.showWarn('getPrevTriFoldState skip for not support this product');
-      return SCBUltraScreenState.UNKNOWN;
+      return SCBTripleFoldState.UNKNOWN;
     }
     return this.prevTriFoldState;
   }
@@ -64,12 +64,12 @@ export class SCBTriFoldManager {
   /**
    * Get current fold state of three fold product, only used for fold or expand animation
    *
-   * @return SCBUltraScreenState, F/M/G state
+   * @return SCBTripleFoldState, F/M/G state
    */
-  public getCurTriFoldState(): SCBUltraScreenState {
-    if (!DeviceHelper.isUltraScreenProduct()) {
+  public getCurTriFoldState(): SCBTripleFoldState {
+    if (!DeviceHelper.isThreeFoldProduct()) {
       log.showWarn('getCurTriFoldState skip for not support this product');
-      return SCBUltraScreenState.UNKNOWN;
+      return SCBTripleFoldState.UNKNOWN;
     }
     return this.curTriFoldState;
   }
@@ -77,22 +77,22 @@ export class SCBTriFoldManager {
   /**
    * Recalculate current fold state of three fold product, only used for fold or expand animation
    *
-   * @return SCBUltraScreenState, F/M/G state
+   * @return SCBTripleFoldState, F/M/G state
    */
-  public recalculateTriFoldState(): SCBUltraScreenState {
-    if (!DeviceHelper.isUltraScreenProduct()) {
+  public recalculateTriFoldState(): SCBTripleFoldState {
+    if (!DeviceHelper.isThreeFoldProduct()) {
       log.showWarn('recalculateTriFoldState skip for not support this product');
-      return SCBUltraScreenState.UNKNOWN;
+      return SCBTripleFoldState.UNKNOWN;
     }
     let curFoldStatus: screenSessionManager.FoldDisplayMode = screenSessionManager.getFoldDisplayMode();
     log.showInfo(`recalculateTriFoldState, curFoldStatus:${curFoldStatus}`);
-    let state = SCBUltraScreenState.UNKNOWN;
+    let state = SCBTripleFoldState.UNKNOWN;
     if (curFoldStatus === screenSessionManager.FoldDisplayMode.FULL) {
-      state = SCBUltraScreenState.M;
+      state = SCBTripleFoldState.M;
     } else if (curFoldStatus === screenSessionManager.FoldDisplayMode.MAIN) {
-      state = SCBUltraScreenState.F;
+      state = SCBTripleFoldState.F;
     } else if (curFoldStatus === screenSessionManager.FoldDisplayMode.GLOBAL_FULL) {
-      state = SCBUltraScreenState.G;
+      state = SCBTripleFoldState.G;
     }
     return state;
   }
@@ -101,7 +101,7 @@ export class SCBTriFoldManager {
    * Update sh fold state of three fold product, only used for fold or expand animation
    */
   public updateTriFoldStateIfNeeded(): void {
-    if (!DeviceHelper.isUltraScreenProduct()) {
+    if (!DeviceHelper.isThreeFoldProduct()) {
       return;
     }
     let newState = this.recalculateTriFoldState();
@@ -118,7 +118,7 @@ export class SCBTriFoldManager {
    * @returns true: is G state, otherwise not
    */
   public isCurGState(): boolean {
-    return this.curTriFoldState === SCBUltraScreenState.G;
+    return this.curTriFoldState === SCBTripleFoldState.G;
   }
 
   /**
@@ -127,7 +127,7 @@ export class SCBTriFoldManager {
    * @returns true: is M state, otherwise not
    */
   public isCurMState(): boolean {
-    return this.curTriFoldState === SCBUltraScreenState.M;
+    return this.curTriFoldState === SCBTripleFoldState.M;
   }
 
   /**
@@ -136,7 +136,7 @@ export class SCBTriFoldManager {
    * @returns true: is F state, otherwise not
    */
   public isCurFState(): boolean {
-    return this.curTriFoldState === SCBUltraScreenState.F;
+    return this.curTriFoldState === SCBTripleFoldState.F;
   }
 
   /**
@@ -145,7 +145,7 @@ export class SCBTriFoldManager {
    * @returns true: is G state, otherwise not
    */
   public isPrevGState(): boolean {
-    return this.prevTriFoldState === SCBUltraScreenState.G;
+    return this.prevTriFoldState === SCBTripleFoldState.G;
   }
 
   /**
@@ -154,7 +154,7 @@ export class SCBTriFoldManager {
    * @returns true: is M state, otherwise not
    */
   public isPrevMState(): boolean {
-    return this.prevTriFoldState === SCBUltraScreenState.M;
+    return this.prevTriFoldState === SCBTripleFoldState.M;
   }
 
   /**
@@ -163,7 +163,7 @@ export class SCBTriFoldManager {
    * @returns true: is F state, otherwise not
    */
   public isPrevFState(): boolean {
-    return this.prevTriFoldState === SCBUltraScreenState.F;
+    return this.prevTriFoldState === SCBTripleFoldState.F;
   }
 
   /**
@@ -172,8 +172,8 @@ export class SCBTriFoldManager {
    * @returns
    */
   public isMStateGStateSwitch(): boolean {
-    return (this.prevTriFoldState === SCBUltraScreenState.M ||
-      this.prevTriFoldState === SCBUltraScreenState.G) && (this.curTriFoldState === SCBUltraScreenState.M ||
-      this.curTriFoldState === SCBUltraScreenState.G);
+    return (this.prevTriFoldState === SCBTripleFoldState.M ||
+      this.prevTriFoldState === SCBTripleFoldState.G) && (this.curTriFoldState === SCBTripleFoldState.M ||
+      this.curTriFoldState === SCBTripleFoldState.G);
   }
 }

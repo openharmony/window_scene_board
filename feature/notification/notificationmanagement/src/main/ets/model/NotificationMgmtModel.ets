@@ -306,4 +306,20 @@ export class NotificationMgmtModel {
       return Promise.reject(e);
     }
   }
+
+  /**
+   * 获取应用是否为备份应用
+   */
+  public isDeliver = async (): Promise<boolean> => {
+    log.showInfo('IsDeliver.');
+    try {
+      const bundleModel = new BundleResourceModel();
+      const ret = await bundleModel.isDeliverApplication(this.bundleOption.bundle);
+      log.showInfo('IsDeliver. return %{public}s', ret);
+      return Promise.resolve(ret);
+    } catch (error) {
+      log.showError('LoadDeliverFlag Error')
+      return Promise.reject();
+    }
+  }
 }

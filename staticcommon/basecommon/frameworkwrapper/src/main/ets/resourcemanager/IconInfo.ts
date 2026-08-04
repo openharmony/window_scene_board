@@ -49,7 +49,7 @@ export default class IconInfo {
   // ability名
   abilityName: string = '';
 
-  // 通过hds处理时使用的包名
+  // 通过hds处理时使用的包名（应用在包名基础上追加_template）
   hdsBundleName: string = '';
 
   // 查询图标的扩展参数信息

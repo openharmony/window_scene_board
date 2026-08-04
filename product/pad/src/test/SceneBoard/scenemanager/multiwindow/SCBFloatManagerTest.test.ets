@@ -1330,11 +1330,11 @@ function SCBFloatManagerTest_58() {
       expect(container2.screenProperty.height).assertEqual(100);
     })
 
-    it('processFoldOrExpandOnUltraScreen', Level.LEVEL0, () => {
+    it('processFoldOrExpandOnThreeFold', Level.LEVEL0, () => {
       let mocker: MockKit = new MockKit();
       let mockFunc: Function = mocker.mockFunc(floatManager, floatManager.getKeepForegroundFloatingList);
       let screenSessionManager = SCBScreenSessionManager.getInstance();
-      let func2: Function = mocker.mockFunc(screenSessionManager, screenSessionManager.getLastUltraScreenState);
+      let func2: Function = mocker.mockFunc(screenSessionManager, screenSessionManager.getLastTripleFoldState);
       let container1 = new SCBSceneContainerSession(sceneSession, screenProperty);
       floatingSessionList.clear();
       floatingSessionList.push(container1);
@@ -1352,11 +1352,11 @@ function SCBFloatManagerTest_58() {
       screenProperty.width = 100;
       screenProperty.height = 100;
       container1.isFloat = false;
-      when(func2)(ArgumentMatchers.any).afterReturn(SCBUltraScreenState.M);
-      floatManager.processFoldOrExpandOnUltraScreen();
+      when(func2)(ArgumentMatchers.any).afterReturn(SCBTripleFoldState.M);
+      floatManager.processFoldOrExpandOnThreeFold();
       container1.isFloat = true;
-      when(func2)(ArgumentMatchers.any).afterReturn(SCBUltraScreenState.G);
-      floatManager.processFoldOrExpandOnUltraScreen();
+      when(func2)(ArgumentMatchers.any).afterReturn(SCBTripleFoldState.G);
+      floatManager.processFoldOrExpandOnThreeFold();
       mocker.clear(floatManager);
       mocker.clear(screenSessionManager);
       expect(container1.isFloat).assertTrue();
@@ -1374,7 +1374,7 @@ function SCBFloatManagerTest_58() {
       let scenePanelManager = SCBScenePanelManager.getInstance();
       let screenSessionManager = SCBScreenSessionManager.getInstance();
       let func1: Function = mocker.mockFunc(floatManager, floatManager.getKeepForegroundFloatingList);
-      let func2: Function = mocker.mockFunc(screenSessionManager, screenSessionManager.getLastUltraScreenState);
+      let func2: Function = mocker.mockFunc(screenSessionManager, screenSessionManager.getLastTripleFoldState);
       let func3: Function = mocker.mockFunc(scenePanelManager, scenePanelManager.getTopActiveSceneSessionArray);
       when(func3)(ArgumentMatchers.any).afterReturn(null);
       let container1 = new SCBSceneContainerSession(sceneSession, screenProperty);
@@ -1409,10 +1409,10 @@ function SCBFloatManagerTest_58() {
       activeSceneSessionArray.push(container1);
       activeSceneSessionArray.push(container2);
       when(func3)(ArgumentMatchers.any).afterReturn(activeSceneSessionArray);
-      when(func2)(ArgumentMatchers.any).afterReturn(SCBUltraScreenState.M);
+      when(func2)(ArgumentMatchers.any).afterReturn(SCBTripleFoldState.M);
       floatManager.doFoldInFState(screenProperty);
       container1.isFloat = true;
-      when(func2)(ArgumentMatchers.any).afterReturn(SCBUltraScreenState.G);
+      when(func2)(ArgumentMatchers.any).afterReturn(SCBTripleFoldState.G);
       floatManager.doFoldInFState(screenProperty);
       mocker.clear(floatManager);
       mocker.clear(scenePanelManager);
@@ -1823,7 +1823,7 @@ function SCBFloatManagerTest_59() {
 
     it('registerFoldChangeListener', Level.LEVEL0, () => {
       let mocker: MockKit = new MockKit();
-      let func1: Function = mocker.mockFunc(DeviceHelper, DeviceHelper.isUltraScreenProduct);
+      let func1: Function = mocker.mockFunc(DeviceHelper, DeviceHelper.isThreeFoldProduct);
       let container1 = new SCBSceneContainerSession(sceneSession, screenProperty);
       container1.isFloat = false;
       container1.needRenderTranslate.setTranslateX(0);

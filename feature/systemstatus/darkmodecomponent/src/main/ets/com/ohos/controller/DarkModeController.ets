@@ -97,7 +97,8 @@ export class DarkModeController extends ToggleBaseViewModel {
   constructor() {
     super();
     this.context = GlobalContext.getContext();
-    this.mDarkModeData.icon = $r('app.media.ic_controlcenter_dark_mode');
+    this.mDarkModeData.isSymbolIcon = true;
+    this.mDarkModeData.icon = $r('sys.symbol.circle_filled_and_circle');
     this.mDarkModeData.label = $r('app.string.control_center_complex_toggle_dark_mode_title');
   }
 

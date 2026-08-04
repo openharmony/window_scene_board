@@ -2,7 +2,11 @@
 -enable-toplevel-obfuscation
 -keep-global-name
 LogCollectUtil
+ItemsCount
 -keep-property-name
 clearCollectLogInterval
 createCollectLogInterval
+SIZE_1
+SIZE_2
+SIZE_4
 

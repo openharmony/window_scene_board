@@ -1,4 +1,4 @@
-{
+﻿{
     "string":[
         {
             "name":"control_center_complex_toggle_bluetooth_title",
@@ -27,6 +27,21 @@
             "attr":{
                 "priority":"LT"
             }
+        },
+        {
+            "name":"control_center_complex_toggle_nearlink_title",
+            "value":"星閃",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"control_center_anti_theft_for_toggle",
+            "value":"樣機處於防竊值守狀態，已禁止執行此操作",
+            "attr":{
+                "priority":"LT"
+            }
         }
+
     ]
 }

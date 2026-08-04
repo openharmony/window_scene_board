@@ -530,7 +530,7 @@ export class ImmersiveCapsuleData implements ICapsuleData {
   /**
    * 设置overlayIcon样式
    *
-   * @param overlayIconStyle 图标样式(0: 圆形, 1: 方形, 2: 样式反转)
+   * @param overlayIconStyle 图标样式(0: 圆形, 1: 方形, 2: 样式反转 例:克隆应用图标覆盖)
    * @param forceRefresh 强制刷新
    */
   setOverlayIconStyle(overlayIconStyle: OverlayIconStyle, forceRefresh?: boolean): void {

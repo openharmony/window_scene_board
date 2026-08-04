@@ -494,7 +494,7 @@ export class LiveNotificationOtherParser extends LiveNotificationBaseParser {
         cardData.isImmersiveInteraction = true;
       }
       // 标示是否允许常亮
-      cardData.isKeepScreenOnEnable = String(immParameters['openharmony_live_view_keep_screen_on']).toString() === 'true';
+      cardData.isKeepScreenOnEnable = String(immParameters['hw_live_view_keep_screen_on']).toString() === 'true';
       // 标示UIExtension的加载want
       cardData.immersiveWant = {
         bundleName: bundleName,

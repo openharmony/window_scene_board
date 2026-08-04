@@ -112,9 +112,19 @@ import {
 } from '@ohos/windowscene';
 import lazy BundleManager from '@ohos.bundle.bundleManager';
 import lazy { SCBSplitUtils } from '@ohos/windowscene/src/main/ets/scene/utils/SCBSplitUtils';
+import {
+  MultiWindowEventConstants,
+  SplitType
+} from '@ohos/commonconstants/src/main/ets/constants/SCBConstants';
 import { quickSwitchRequestActiveAlarm } from '../../recent/scenepanel/quickswitchpanel/QuickSwitchRequestActiveAlarm';
 import { ViewManager } from '@ohos/launchercommon/src/main/ets/manager/ViewManager';
 import systemParameter from '@ohos.systemParameterEnhance';
+import {
+  ReplaceReason,
+  SplitReason,
+  SplitBehavior,
+  BatchEnterSplitOrMidSceneReason
+} from '@ohos/frameworkwrapper/src/main/ets/hisysevent/ReportParams';
 import UnLockConstants from '@ohos/screenlockcomponent/src/main/ets/common/Constants';
 import {
   BusinessError,
@@ -161,12 +171,12 @@ import {
   GlobalSearchStatus,
   IconResourceManager,
 } from '@ohos/frameworkwrapper/src/main/ets/TsIndex';
-import lazy { SCBTriFoldManager, SCBUltraScreenState } from '@ohos/frameworkwrapper/src/main/ets/utils/SCBTriFoldManager';
+import lazy { SCBTriFoldManager, SCBTripleFoldState } from '@ohos/frameworkwrapper/src/main/ets/utils/SCBTriFoldManager';
 import { EditModeViewEvent } from '@ohos/desktopedit/src/main/ets/default/viewmodel/EditModeViewEvent';
 import { editModeViewManager } from '@ohos/desktopedit/src/main/ets/default/manager/EditModeViewManager';
-import { launcherVisualEffectMgr, UltraScreenExpandAnimUtils, } from '@ohos/launchercommon/Index';
+import { launcherVisualEffectMgr, TripleFoldExpandAnimUtils, } from '@ohos/launchercommon/Index';
 import { curves, performanceMonitor } from '@kit.ArkUI';
-// import apsManager from '@hms.graphic.apsManager';
+// import apsManager from '@ohos.graphic.apsManager';
 import { bundleManager } from '@kit.AbilityKit';
 import { GestureDockViewModel } from '../../gestureDock/dock/viewmodel/GestureDockViewModel';
 import { ContainerShowState, RecentNotShow } from '../../recent/scenepanel/recentpanel/RecentNotShow';
@@ -188,6 +198,7 @@ import lazy {
 } from '@ohos/windowscene/src/main/ets/scene/session/SCBSplitParam';
 import { SCBRotateUtils } from '../utils/SCBRotateUtils';
 import { QuitAppRectViewModel } from '@ohos/pagedesktop/src/main/ets/default/common/viewmodel/QuitAppRectViewModel';
+import { NAVIBarViewModel } from '../../naviBar/NAVIBarModel/NAVIBarViewModel';
 import { RecentStartScene } from '../../recent/scenepanel/recentpanel/RecentStartScene';
 import { CurrentMemScene, PerformanceReporter } from '@ohos/frameworkcommon/src/main/ets/TsIndex';
 import { OneStepState } from '@ohos/gesturenavigation/src/main/ets/constants/CommonConstants';
@@ -223,11 +234,17 @@ import { SCBPiPManager } from '../pip/SCBPiPManager';
 import { recentViewModel } from '../../recent/scenepanel/recentpanel/RecentViewModel';
 import { SCBMinimizeSceneOpts } from '@ohos/windowscene/src/main/ets/scene/SceneModuleIndex';
 import { PipOneShotAnimHelper } from '../pip/utils/PipOneShotAnimHelper';
-import { SCBTripleStateChange } from '@ohos/launchercommon/src/main/ets/utils/UltraScreenExpandAnimUtils';
+import { SCBTripleStateChange } from '@ohos/launchercommon/src/main/ets/utils/TripleFoldExpandAnimUtils';
 import { ScenePanelStates } from '../../recent/scenepanel/ScenePanelStates';
 import { SCBMainPanelMissionHandler } from './missionmanagement/SCBMainPanelMissionHandler';
+import { WindowStateChangeMode } from '@ohos/frameworkwrapper/src/main/ets/hisysevent/ReportParams';
 import { SceneBoardStateManager, CoreEventType } from '@ohos/frameworkwrapper/Index';
 import { RecentTitleViewModel } from '../../recent/viewmodel/RecentTitleViewModel';
+// import lazy { insightIntent } from '@kit.IntentsKit';
+import lazy {
+  SCBSceneWindowAiSplitSwitchUtils,
+  SwitchType
+} from '@ohos/windowscene/src/main/ets/scene/utils/SCBSceneWindowAiSplitSwitchUtils';
 import common from '@ohos.app.ability.common';
 import lazy { SCBRecentPrepareManager } from '../pcmode/SCBRecentPrepareManager';
 import { ENABLE_FORCE_CLOSE_HDR } from '@ohos/systemuicommon/src/main/ets/template/common/SCBVisualEffectOption';
@@ -238,6 +255,7 @@ import { RecentZoomAlarm } from '../../recent/scenepanel/recentpanel/RecentZoomA
 import { WinLog, WinLogDomain } from '@ohos/windowscene/src/main/ets/utils/WinLog';
 import { SwipeAppToCapsuleAnimation } from '@ohos/systemuicommon/src/main/ets/animation/SwipeAppToCapsuleAnimation';
 import { SCBFloatManager } from '../multiwindow/SCBFloatManager';
+import { SCBSplitManager } from '../multiwindow/SCBSplitManager';
 
 const PANEL_NAME = 'SCBScenePanel';
 const TAG = 'SCBScenePanelViewModel';
@@ -594,6 +612,7 @@ export class SCBScenePanelViewModel extends SCBBaseScenePanelViewModel<SCBMainPa
   private startAndExitEffectMgr: StartAndExitVisualEffectManager = StartAndExitVisualEffectManager.getInstance();
   private folderData: FolderData = FolderData.getInstance();
 
+  // isNewStyle为false时，整体动效效果按照匹配设备来隔离
   public isNewStyle: boolean = true;
   public isEnableBlur: boolean = true;
 
@@ -889,12 +908,14 @@ export class SCBScenePanelViewModel extends SCBBaseScenePanelViewModel<SCBMainPa
   private registerSceneStartingInterceptorRules(): void {
     SCBSceneStartInterceptor.getInstance().registerInterceptorRule(this.interceptRuleForProjection, this.screenId, this.panelId);
     SCBSceneStartInterceptor.getInstance().registerInterceptorRule(this.interceptRuleForMultiWindow, this.screenId, this.panelId);
+    SCBSceneStartInterceptor.getInstance().registerInterceptorRule(this.interceptRuleForVassistant, this.screenId, this.panelId);
     SCBSceneStartInterceptor.getInstance().registerInterceptorRule(this.interceptRuleForPCAppInPhone, this.screenId, this.panelId);
   }
 
   private unregisterSceneStartingInterceptorRules(): void {
     SCBSceneStartInterceptor.getInstance().unregisterInterceptorRule(this.interceptRuleForProjection, this.screenId, this.panelId);
     SCBSceneStartInterceptor.getInstance().unregisterInterceptorRule(this.interceptRuleForMultiWindow, this.screenId, this.panelId);
+    SCBSceneStartInterceptor.getInstance().unregisterInterceptorRule(this.interceptRuleForVassistant, this.screenId, this.panelId);
     SCBSceneStartInterceptor.getInstance().unregisterInterceptorRule(this.interceptRuleForPCAppInPhone, this.screenId, this.panelId);
   }
 
@@ -920,6 +941,10 @@ export class SCBScenePanelViewModel extends SCBBaseScenePanelViewModel<SCBMainPa
 
   // 检查是否需要多窗拦截
   private interceptRuleForMultiWindow = (sceneInfo: SCBSceneInfo, startFrom: StartInterceptions) => {
+    return false;
+  }
+
+  private interceptRuleForVassistant = (_sceneInfo: SCBSceneInfo, _startFrom: StartInterceptions) => {
     return false;
   }
 
@@ -1475,6 +1500,8 @@ export class SCBScenePanelViewModel extends SCBBaseScenePanelViewModel<SCBMainPa
         containerSession.companionIconInfo?.bundleName);
       this.publishScenePanelEventMsg(CEManager.CUSTOM_BACK_HOME_EVENT, ReturnDesktopEventType.BACK_TO_HOME);
       containerSession.setAnimatingReason(WindowAnimationReason.MINIMIZE);
+      // 显示壁纸，避免桌面黑屏
+      this.showWallpaperAfterRotate();
       this.requestSceneContainerBackgroundWithTransition(containerSession);
       let sceneSession = containerSession.findSceneSessionByPersistentId(persistentId);
       if (sceneSession !== null && sceneSession.sceneInfo.additionalCallers.length !== 0) {
@@ -2221,6 +2248,48 @@ export class SCBScenePanelViewModel extends SCBBaseScenePanelViewModel<SCBMainPa
     })
   }
 
+  /**
+   * 一键删除回桌面：跳过模糊/桌面 scale 动效，仅保留功能副作用
+   */
+  public finishClearAllToHome(): void {
+    if (!this.stateCollectionHandler || !this.dataCollectionHandler) {
+      return;
+    }
+    if (this.stateCollectionHandler.getPanelState() === ScenePanelState.HOME) {
+      return;
+    }
+    this.requestDestructionWhenExitRecent();
+    this.updatePanelStateInner(ScenePanelState.HOME);
+    this.finishClearAllBlurWithoutAnim();
+    this.updateScenePanelByState(ScenePanelState.HOME, 0, true);
+  }
+
+  private finishClearAllBlurWithoutAnim(): void {
+    const isFolderClosed: boolean = !this.folderData.isFolderOpen();
+    const isMinimizedAll: boolean = CloseAppManager.getInstance().getIsMinimizeAllScene();
+    const shouldApplyBlur: boolean = this.startAndExitEffectMgr.isStartExitWallpaperBlurDisable()
+      && (isFolderClosed || isMinimizedAll);
+    if (shouldApplyBlur) {
+      launcherVisualEffectMgr.setWallpaperBlurInactive('finishClearAllToHome');
+    }
+    this.panelMgr.onBlurTransitionInactive();
+    launcherVisualEffectMgr.exitBlurWithoutAnim();
+    CloseAppManager.getInstance().setIsMinimizeAllScene(false);
+    if (this.startAndExitEffectMgr.isStartExitWallpaperBlurDisable()
+      && !FolderData.getInstance().isFolderOpen()
+      && launcherVisualEffectMgr.isBlurEffectEnabledByType(BlurEffectType.FOLDER)) {
+      launcherVisualEffectMgr.updateBlurEffect(false, BlurEffectType.FOLDER);
+      homeLog.showInfo('finishClearAllToHome ICON_START_EXIT_BLUR_EFFECT false');
+    }
+    if (this.isTopActiveContainerInSplit()) {
+      homeLog.showInfo('finishClearAllToHome add blur for split');
+      this.panelMgr.getPanelSession()?.setBgBlurEnable(true, 'finishClearAllToHome');
+    }
+    let expandStatus = SCBScreenSessionManager.getInstance().isFoldablePhoneExpandStatus();
+    SCBDesktopCacheManager.getInstance().setDesktopCacheWithDfx(false, 'finishClearAllToHome', true, expandStatus);
+    this.panelMgr.disableBlurComponent('finishClearAllToHome');
+  }
+
   private isTopActiveContainerInSplit(): boolean {
     let containerSessionList =
       SCBSceneSessionManager.getInstance().getContainerSessionList(this.screenProperty.screenId);
@@ -2253,13 +2322,14 @@ export class SCBScenePanelViewModel extends SCBBaseScenePanelViewModel<SCBMainPa
     this.updateScenePanelByState(state, blurAnimDelayTime);
   }
 
-  public updateScenePanelByState(state: ScenePanelState, delayTime: number = 0): void {
+  public updateScenePanelByState(state: ScenePanelState, delayTime: number = 0,
+    withoutScaleAnim: boolean = false): void {
     if (!this.stateCollectionHandler || !this.dataCollectionHandler) {
       return;
     }
     if (state === ScenePanelState.HOME) {
       this.changeScenePanelStateToHome(this.dataCollectionHandler.getFromScenePanelState(),
-        this.stateCollectionHandler.getPanelState(), delayTime);
+        this.stateCollectionHandler.getPanelState(), delayTime, withoutScaleAnim);
     }
     if (state === ScenePanelState.SPLIT) {
       SCBTransitionManager.getInstance().swipeUpFromHome(RecentsStyleConstants.SCALE_DEFAULT);
@@ -2458,6 +2528,8 @@ export class SCBScenePanelViewModel extends SCBBaseScenePanelViewModel<SCBMainPa
       SCBTransitionManager.getInstance().notifySceneTransitionIn(transitionController, true);
     }
     this.updateScreenRotationPropertyForRecent(targetRotation, sceneContainerSession);
+    NAVIBarViewModel.getInstance(this.screenProperty)
+      .updateNaviBarHotAreaRectForRecent(this.screenProperty, targetRotation);
     this.panelMgr.raiseSceneToTop(sceneContainerSession);
     // activation/background after adding to window tree
     sceneContainerSession.requestActivation(false);
@@ -3091,6 +3163,8 @@ export class SCBScenePanelViewModel extends SCBBaseScenePanelViewModel<SCBMainPa
         if (fromContainerSession) {
           this.succeedBackToCaller(containerSession, persistentId);
         }
+      } else {
+        SCBFloatManager.getInstance().exitFloatWithAnimator(containerSession);
       }
       terminateSceneEntryParam.isForceClean = false;
       return;
@@ -3416,9 +3490,7 @@ export class SCBScenePanelViewModel extends SCBBaseScenePanelViewModel<SCBMainPa
     const primarySessionBundleName: string | undefined = sceneContainerSession.primarySession?.sceneInfo.bundleName;
     homeLog.showInfo(`exitApp bundleName is: ${companionIconInfoBundleName}, primarySessionBundleName is: ${primarySessionBundleName}`);
     if (companionIconInfoBundleName && primarySessionBundleName && companionIconInfoBundleName !== primarySessionBundleName) {
-      if (sceneContainerSession.companionIconInfo.startAppType !== StartType.AI_SUGGESTION_APP) {
-        sceneContainerSession.companionIconInfo.startAppType = StartType.APP;
-      }
+      sceneContainerSession.companionIconInfo.startAppType = StartType.APP;
     }
     let controller = this.getTargetTransitionController(sceneContainerSession, adapterSceneInfo, true);
     this.setTransitionAnimCancel(controller, sceneContainerSession, 'requestSceneContainerBackgroundWithTransition');
@@ -3473,9 +3545,9 @@ export class SCBScenePanelViewModel extends SCBBaseScenePanelViewModel<SCBMainPa
    *
    * @param containerSession
    */
-  public updateSplitOnUltraScreen(containerSession: SCBSceneContainerSession | null): void {
+  public updateSplitOnThreeFold(containerSession: SCBSceneContainerSession | null): void {
     if (containerSession && SCBScreenSessionManager.getInstance().isSecondaryFoldablePhoneExpandStatus()) {
-      if (DeviceHelper.isUltraScreenProduct()) {
+      if (DeviceHelper.isThreeFoldProduct()) {
         if (SCBSplitUtils.hasFixedSplitRatioScene(containerSession)) {
           winLog.showInfo('[SCBSplit] fixed split ratio, orientation unchanged, skip rotation anim');
           return;
@@ -3508,7 +3580,7 @@ export class SCBScenePanelViewModel extends SCBBaseScenePanelViewModel<SCBMainPa
   }
 
   public startSplitFromIcon(sceneSession: SCBSceneSession, sceneInfo: SCBSceneInfo){
-    homeLog.showInfo('onStartSceneFromIcon container new one');
+    homeLog.showInfo(`onStartSceneFromIcon container new one, isNewWant=${sceneSession.isNewWant}`);
     let activeSceneContainerSession = new SCBSceneContainerSession(sceneSession, this.screenProperty);
     let persistentId: ESObject = sceneSession.session.persistentId;
     this.removeExistSession(persistentId);
@@ -3516,7 +3588,7 @@ export class SCBScenePanelViewModel extends SCBBaseScenePanelViewModel<SCBMainPa
     sceneSession.requestSessionActivation();
     this.panelMgr.addSceneContainerSession(activeSceneContainerSession);
     this.panelMgr.raiseSceneToTop(activeSceneContainerSession);
-    activeSceneContainerSession.requestActivation(sceneSession!.isNewWant);
+    activeSceneContainerSession.requestActivation(sceneSession.isNewWant);
     sceneSession.sessionData.isNewWant = true;
     SCBSceneSessionManager.getInstance().startSplitFromIcon(sceneInfo.screenId, sceneSession.session.persistentId,
       activeSceneContainerSession.containerId);
@@ -3557,12 +3629,15 @@ export class SCBScenePanelViewModel extends SCBBaseScenePanelViewModel<SCBMainPa
     this.startSceneWithRotationIfNeed(activeSceneContainerSession);
     this.updateScenePanelState(ScenePanelState.FULLSCENE, false);
     sceneSession.sceneInfo.updateWindowModeAndSync(SCBSceneMode.SECONDARY);
+    activeSceneContainerSession.dividerParam.initSplitWidthLimits(activeSceneContainerSession);
     this.initBeforePairSplitAnim(activeSceneContainerSession, lastRotation);
     activeSceneContainerSession.splitParam.clearSplitRatioCacheForPad();
     activeSceneContainerSession.changeState(SCBSceneContainerState.SPLIT);
     activeSceneContainerSession.primarySession?.setExitSplitOnBackground(false, 'pairSplit');
     activeSceneContainerSession.secondarySession?.setExitSplitOnBackground(false, 'pairSplit');
+    activeSceneContainerSession.sessionData.preferSplitBackToFull = false;
     this.secondarySceneTransitionIn(activeSceneContainerSession, transitionController);
+    SCBSplitManager.getInstance().refreshSplitContainer(activeSceneContainerSession, activeSceneContainerSession.screenProperty);
   }
 
   private initBeforePairSplitAnim(container: SCBSceneContainerSession, lastRotation: number) {
@@ -3619,8 +3694,8 @@ export class SCBScenePanelViewModel extends SCBBaseScenePanelViewModel<SCBMainPa
     }, () => {
       activeSceneContainerSession?.dividerParam.clearPrimaryDynamicVariable();
     })
-    // let reason = DeviceHelper.isUltraScreenProduct() &&
-    let reason: ESObject = DeviceHelper.isUltraScreenProduct() &&
+    // let reason = DeviceHelper.isThreeFoldProduct() &&
+    let reason: ESObject = DeviceHelper.isThreeFoldProduct() &&
       (activeSceneContainerSession.splitParam.getSplitRatioCache(SplitRatioCacheKey.G_MODE_DIVIDER_RATIO) >
       SplitRatioEnum.UNDEFINED) ? sceneSessionManager.SessionSizeChangeReason.FULL_TO_SPLIT : undefined;
     activeSceneContainerSession.updateSessionRectForSplit(activeSceneContainerSession.screenProperty, true, reason);
@@ -3679,7 +3754,7 @@ export class SCBScenePanelViewModel extends SCBBaseScenePanelViewModel<SCBMainPa
     }
     winLog.showInfo(`[SCBSplit] pairSplitIfInOneApp, fromContainer: ${fromContainerSession.getName()}, sceneInfo.windowMode:${sceneInfo.windowMode}`);
     // if new start app is from float, need remove it from float firstly
-    this.removeBackgroundSession(toSceneSession);
+    // this.removeBackgroundSession(toSceneSession);
     if (!SCBScreenSessionManager.getInstance().isSecondaryFoldablePhoneExpandStatus()) {
       fromContainerSession.splitParam.clearGModeSplitRatioCache();
     }
@@ -3789,6 +3864,7 @@ export class SCBScenePanelViewModel extends SCBBaseScenePanelViewModel<SCBMainPa
       winLog.showError('exitSplitToBackground invalid sceneSession, skip');
       return;
     }
+    winLog.showInfo(`exitSplitToBackground needDestructedInSplit:${sceneSession.needDestructedInSplit}`);
     sceneSession.setExitSplitOnBackground(true, 'exitSplitToBackground');
     if (sceneSession.needDestructedInSplit) {
       this.terminateSplitScene(sceneSession, index, needRemove, screenProperty);
@@ -3835,17 +3911,27 @@ export class SCBScenePanelViewModel extends SCBBaseScenePanelViewModel<SCBMainPa
       winLog.showInfo(`enterToOneStepWithTranslate return, life cycle UNDEFINED, ${container?.getName()}`);
       return;
     }
-    let dividerParam = container.dividerParam;
-    let oneStepTrans: number = dividerParam.calOneStepDefaultTrans(container.screenProperty);
-    dividerParam.setOneStepDefaultPos(oneStepTrans, container.screenProperty);
-    dividerParam.notifyPositionChange();
-    dividerParam.resetSceneRotate();
-    dividerParam.primary.setBorderRadius({
-      topLeft: DividerStyleConstants.SPLIT_BORDER_RADIUS,
-      topRight: DividerStyleConstants.SPLIT_BORDER_RADIUS,
-      bottomLeft: DividerStyleConstants.SPLIT_BORDER_RADIUS,
-      bottomRight: DividerStyleConstants.SPLIT_BORDER_RADIUS
-    }, 'enterToOneStepWithTranslate');
+    animateToImmediately({
+      curve: curves.springMotion(0.55, 0.85),
+      delay: 400,
+      onFinish: () => {
+        winLog.showInfo('animateToImmediately:one step split end');
+      }
+    }, () => {
+      let dividerParam = container.dividerParam;
+      dividerParam.updateDividerParamWithRatio(container.screenProperty);
+      let oneStepTrans: number = dividerParam.calOneStepDefaultTrans(container.screenProperty);
+      dividerParam.setOneStepDefaultPos(oneStepTrans, container.screenProperty);
+      dividerParam.notifyPositionChange();
+      dividerParam.resetSceneRotate();
+      dividerParam.primary.setBorderRadius({
+        topLeft: DividerStyleConstants.SPLIT_BORDER_RADIUS,
+        topRight: DividerStyleConstants.SPLIT_BORDER_RADIUS,
+        bottomLeft: DividerStyleConstants.SPLIT_BORDER_RADIUS,
+        bottomRight: DividerStyleConstants.SPLIT_BORDER_RADIUS
+      }, 'enterToOneStepWithTranslate');
+      SCBSplitManager.getInstance().refreshSplitContainer(container, container.screenProperty);
+    })
     foregroundSession.sceneInfo.updateWindowModeAndSync(SCBSceneMode.PRIMARY);
     SCBSceneSessionManager.getInstance()
       .requestFocus(foregroundSession.session.persistentId, false, FocusChangeReason.SPLIT_SCREEN);
@@ -3905,7 +3991,7 @@ export class SCBScenePanelViewModel extends SCBBaseScenePanelViewModel<SCBMainPa
 
     curContainerSession.removeSceneSession(backgroundSession);
     this.keepFullScreenForegroundForSplit(foregroundSession, curContainerSession, needAnimation);
-    if (needBackground) {
+    if (needBackground && backgroundSession) {
       this.exitSplitToBackground(backgroundSession, index, needRemove, curContainerSession.screenProperty);
     }
     if (this.stateCollectionHandler?.getPanelState() === ScenePanelState.HOME) {
@@ -3931,33 +4017,46 @@ export class SCBScenePanelViewModel extends SCBBaseScenePanelViewModel<SCBMainPa
       curContainerSession, needAnimation, needRemove, needBackground);
 
     curContainerSession.splitParam.setLifeCycle(SplitLifeCycle.UNDEFINED);
-    curContainerSession.sessionData.preferSplitBackToFull = false;
+    curContainerSession.sessionData.preferSplitBackToFull = true;
   }
 
   /**
    * determine exitId by isStartFromVirtual or getNeedExitSceneSession
    * @param containerSession
+   * @param isVirtualOnVoice
    * @returns
    */
-  private getPersistentIdToExitSplit(containerSession: SCBSceneContainerSession): number {
+  private getPersistentIdToExitSplit(containerSession: SCBSceneContainerSession, isVirtualOnVoice: boolean): number {
+    if (isVirtualOnVoice) {
+      if (containerSession.primarySession) {
+        winLog.showInfo(`[SCBSplit] getPersistentIdToExitSplit return primarySession`);
+        return containerSession.primarySession.session.persistentId;
+      } else if (containerSession.secondarySession) {
+        winLog.showInfo(`[SCBSplit] getPersistentIdToExitSplit return secondarySession`);
+        return containerSession.secondarySession.session.persistentId;
+      }
+    }
     return containerSession.getNeedExitSceneSession().session.persistentId;
   }
 
   /**
    * exit oneStepSplit or splitView to fullScene
    * @param currContainerSession
+   * @param isVirtualOnVoice
    */
-  private exitSplitViewToFullScene(currContainerSession: SCBSceneContainerSession): void {
+  private exitSplitViewToFullScene(currContainerSession: SCBSceneContainerSession, isVirtualOnVoice: boolean = false): void {
     let sceneInfo: SCBSceneInfo | undefined = undefined;
     if (currContainerSession.isOneStepSplit() && currContainerSession.primarySession) {
       this.maximizeSplitScene(currContainerSession.primarySession.session.persistentId, currContainerSession);
     } else if (currContainerSession.isSplitView()) {
       if (currContainerSession.isActive) {
         this.minimizeSplitScene(currContainerSession,
-          this.getPersistentIdToExitSplit(currContainerSession));
+          this.getPersistentIdToExitSplit(currContainerSession, isVirtualOnVoice));
       }
-      sceneInfo = currContainerSession.primarySession?.isFixedMultiWindowOrientation ?
-        currContainerSession.primarySession?.sceneInfo : currContainerSession.secondarySession?.sceneInfo;
+      if (!isVirtualOnVoice) {
+        sceneInfo = currContainerSession.primarySession?.isFixedMultiWindowOrientation ?
+          currContainerSession.primarySession?.sceneInfo : currContainerSession.secondarySession?.sceneInfo;
+      }
     }
     this.resetWindowEffect(currContainerSession);
   }
@@ -3971,9 +4070,15 @@ export class SCBScenePanelViewModel extends SCBBaseScenePanelViewModel<SCBMainPa
       winLog.showInfo(`exitSplitViewByExpandToFold cannot exit split with containerId:${containerId}`);
       return;
     }
-    if (DeviceHelper.isUltraScreenProduct()) {
-      this.exitSplitViewInFixedMultiWindowOrientation(currContainerSession.primarySession?.sceneInfo.persistentId,
-        currContainerSession.containerId);
+    let isVirtualOnVoice: boolean = false;
+    let exitId: number | undefined = currContainerSession?.secondarySession?.session.persistentId;
+    if (isVirtualOnVoice && exitId) {
+      this.exitSplitViewToFullScene(currContainerSession, isVirtualOnVoice);
+    } else {
+      if (DeviceHelper.isThreeFoldProduct()) {
+        this.exitSplitViewInFixedMultiWindowOrientation(currContainerSession.primarySession?.sceneInfo.persistentId,
+          currContainerSession.containerId);
+      }
     }
   }
 
@@ -4008,6 +4113,7 @@ export class SCBScenePanelViewModel extends SCBBaseScenePanelViewModel<SCBMainPa
         let isMaximizePrimary: boolean = currContainerSession.primarySession.session.persistentId === persistentId;
         let exitPersistentId: number = isMaximizePrimary ? currContainerSession.secondarySession.session.persistentId :
         currContainerSession.primarySession.session.persistentId;
+        this.transformSplitViewForFullScreen(persistentId, !isMaximizePrimary, 0, currContainerSession);
       } else if (currContainerSession.dividerParam.isDividerDragging) {
         // drag exit one step split to full
         winLog.showInfo(`[SCBSplit] drag exit one step split to full`);
@@ -4080,6 +4186,7 @@ export class SCBScenePanelViewModel extends SCBBaseScenePanelViewModel<SCBMainPa
     SCBSceneSessionManager.getInstance()
       .updateNavigationBarProperty(curContainerSession.mainSession.systemBarProperty
         .get(sceneSessionManager.SessionType.TYPE_NAVIGATION_INDICATOR)?.enable);
+    ViewManagerPolicy.showView(ViewType.WALLPAPER);
   }
 
   private updateNaviBarPropForMaxSplit(currContainerSession: SCBSceneContainerSession) {
@@ -4122,7 +4229,7 @@ export class SCBScenePanelViewModel extends SCBBaseScenePanelViewModel<SCBMainPa
   }
 
   public onStartSceneFromIcon = (sceneInfo: SCBSceneInfo, fromInfo?: SCBSceneInfo): void => {
-    sceneInfo.startMode = SCBSceneSessionManager.getInstance().getApplicationInfo(sceneInfo.bundleName).startMode;
+    sceneInfo.startMode = SCBSceneSessionManager.getInstance().getApplicationInfo(sceneInfo.bundleName)?.startMode;
     homeLog.showWarn('[SCBMain][id:%{public}d][sceneInfo:%{public}s/%{public}s/%{public}s/%{public}d]' +
       '[screenId:%{public}d]onStartSceneFromIcon, scenePanelState %{public}d, startMode %{public}d', sceneInfo.persistentId,
       sceneInfo.bundleName, sceneInfo.moduleName, sceneInfo.abilityName, sceneInfo.appIndex, sceneInfo.screenId,
@@ -4147,6 +4254,9 @@ export class SCBScenePanelViewModel extends SCBBaseScenePanelViewModel<SCBMainPa
       } else{
         sceneSession.sceneInfo.requestId = sceneInfo.requestId;
       }
+      //TODO 0416胡毕杰提供的求助解决方案
+    }else if (sceneInfo.launchType === bundleManager.LaunchType.MULTITON) {
+      sceneSession = this.requestNewSceneSession(sceneInfo);
     } else {
       sceneSession = this.requestSceneSession(sceneInfo);
     }
@@ -4211,6 +4321,14 @@ export class SCBScenePanelViewModel extends SCBBaseScenePanelViewModel<SCBMainPa
       this.startSplitFromIcon(sceneSession, sceneInfo);
       return;
     }
+
+    SCBSceneWindowAiSplitSwitchUtils.getInstance().aiSplitSwitchBySceneSession(sceneSession?.sceneInfo.windowMode,
+      sceneSession?.sceneInfo, sceneSession?.isSupportSplitMode());
+
+    // if (sceneContainerSession && !this.isSceneContainerSessionNotShowRecent(sceneContainerSession)) {
+    //   homeLog.showWarn('[SCBMain]onStartSceneFromIcon interrupt to enterFloat');
+    //   return;
+    // }
 
     homeLog.showWarn(`onStartSceneFromIcon isNewWant ${sceneSession.isNewWant} scenePanelState ` +
       `${this.stateCollectionHandler?.getPanelState()}` +
@@ -4483,6 +4601,10 @@ export class SCBScenePanelViewModel extends SCBBaseScenePanelViewModel<SCBMainPa
       this.panelMgr.addSceneContainerSession(sceneContainerSession);
     }
     let animationFinishedCallback = this.dataCollectionHandler?.getAnimationFinishedCallback();
+    // if (!sceneContainerSession?.isMidScene && animationFinishedCallback) {
+    //   homeLog.showInfo('[SCBMain]onStartSceneFromOther called startSceneFromOtherToFloatIfNeed');
+    //   return CommonResult.SUCCESS;
+    // }
     let transitionController = SCBTransitionManager.getInstance()
       .findTransitionController(sceneInfo.bundleName, () => {
         return PageDesktopModel.getInstance().getCloseAppData(sceneInfo.bundleName, sceneInfo.abilityName,
@@ -4512,6 +4634,8 @@ export class SCBScenePanelViewModel extends SCBBaseScenePanelViewModel<SCBMainPa
       homeLog.showInfo('onStartSceneFromOther sceneContainerSession is in split exit split');
       // here need update sceneContainerSession, because when exit split in recent, it has changed
       sceneContainerSession = this.getSceneContainerSessionWithPersistentId(sceneSession.session.persistentId);
+      ViewManagerPolicy.hideView(ViewType.DESKTOP);
+      ViewManagerPolicy.hideView(ViewType.WALLPAPER);
     }
 
     if (sceneContainerSession === null) {
@@ -4645,6 +4769,13 @@ export class SCBScenePanelViewModel extends SCBBaseScenePanelViewModel<SCBMainPa
       SCBSceneSessionManager.getInstance().resetStartingSceneFromPiP();
     }
 
+    // 语音助手半屏到全屏启动 屏蔽动效
+    if (this.isScreenShotScene(sceneInfo)) {
+      sceneContainerSession?.needRenderBorderRadius.setBorderRadiusWithDfx(0, TAG, 'startVassistantScene');
+      QuickSwitchRaiseTopAlarm.getInstance().cancel('startVassistantScene');
+      return CommonResult.SUCCESS;
+    }
+
     // 桌面卡片动效
     if (isStartCard && this.searchInScreen()) {
       if (isActive) {
@@ -4694,6 +4825,10 @@ export class SCBScenePanelViewModel extends SCBBaseScenePanelViewModel<SCBMainPa
     let cardId = sceneInfo?.want?.parameters?.[FormConstants.ID_PARAM] as string;
     if (cardId) {
       homeLog.showWarn(`onStartSceneFromOther from idParam cardId = ${cardId}`);
+
+      // 语音助手建议里面展示的部分卡片使用message的方式跳转，接收不到卡片框架的onRouter方法回调，因此无法设置跳转启动的参数，页面退出的时，
+      // 无法落位到卡片，为解决这个问题，在点击卡片的时候，将卡片ID传给AMS，AMS传给WMS，WMS传给桌面，最后桌面设置跳转启动的参数
+      // 从而解决卡片落位动效不正确的问题。
       CloseAppManager.getInstance().setStartAppType(StartType.CARD, cardId, undefined, undefined, sceneInfo.bundleName);
     }
 
@@ -4747,31 +4882,36 @@ export class SCBScenePanelViewModel extends SCBBaseScenePanelViewModel<SCBMainPa
     this.panelMgr.addSceneContainerSession(sceneContainerSession);
     this.panelMgr.raiseSceneToTop(sceneContainerSession);
     let animationNum = sceneContainerSession.getTransitionCount();
-    animateTo({
-      duration: 500,
-      curve: Curve.Friction,
-      onFinish: () => {
-        if (animationNum == sceneContainerSession.getTransitionCount()) {
-          homeLog.showInfo('animationNum: ' + sceneContainerSession.getTransitionCount() + 'needRenderScale:' +
-            sceneContainerSession?.needRenderScale.scaleX);
-          if (CommonUtils.equals(sceneContainerSession?.needRenderScale.scaleX, 1.0)) {
-            sceneContainerSession.needRenderBorderRadius.setBorderRadiusWithDfx(
-              CommonConstants.DEFAULT_WINDOWS_RADIUS_0,
-              TAG, 'sceneContainerZoomInFromQuickAccessMenu', sceneContainerSession.getName());
-          }
-          sceneContainerSession.clearTransitionCount();
-          AnimateToScheduleUtils.raiseAppStartToCPUPriority(1);
-        }
-        // ApsUtils.setApsScene(apsManager.SceneAnimation.START_APP_ANIMATION, StyleConstants.DEFAULT_0);
-      },
-    }, () => {
-      sceneContainerSession.onTransitionInactive();
-      this.panelMgr.onBlurTransitionActive(1.0, 'SCBScenePanel > sceneContainerZoomInFromQuickAccessMenu');
-      sceneContainerSession.needRenderAlpha.setNeedRenderAlphaWithDfx(1.0, TAG,
-        'sceneContainerZoomInFromQuickAccessMenu', sceneContainerSession.getName());
-      sceneContainerSession.needRenderBorderRadius.setBorderRadiusWithDfx(CommonConstants.getDeviceRadius(), TAG,
-        'sceneContainerZoomInFromQuickAccessMenu', sceneContainerSession.getName());
-    })
+    // animateTo({
+    //   duration: 500,
+    //   curve: Curve.Friction,
+    //   onFinish: () => {
+    sceneContainerSession.onTransitionInactive();
+    this.panelMgr.onBlurTransitionActive(1.0, 'SCBScenePanel > sceneContainerZoomInFromQuickAccessMenu');
+    sceneContainerSession.needRenderAlpha.setNeedRenderAlphaWithDfx(1.0, TAG,
+      'sceneContainerZoomInFromQuickAccessMenu', sceneContainerSession.getName());
+    sceneContainerSession.needRenderBorderRadius.setBorderRadiusWithDfx(CommonConstants.DEFAULT_WINDOWS_RADIUS_0, TAG,
+      'sceneContainerZoomInFromQuickAccessMenu', sceneContainerSession.getName());
+    if (animationNum == sceneContainerSession.getTransitionCount()) {
+      homeLog.showInfo('animationNum: ' + sceneContainerSession.getTransitionCount() + 'needRenderScale:' +
+        sceneContainerSession?.needRenderScale.scaleX);
+      if (CommonUtils.equals(sceneContainerSession?.needRenderScale.scaleX, 1.0)) {
+        sceneContainerSession.needRenderBorderRadius.setBorderRadiusWithDfx(
+          CommonConstants.DEFAULT_WINDOWS_RADIUS_0,
+          TAG, 'sceneContainerZoomInFromQuickAccessMenu', sceneContainerSession.getName());
+      }
+      sceneContainerSession.clearTransitionCount();
+      AnimateToScheduleUtils.raiseAppStartToCPUPriority(1);
+    }
+    //   },
+    // }, () => {
+    //   sceneContainerSession.onTransitionInactive();
+    //   this.panelMgr.onBlurTransitionActive(1.0, 'SCBScenePanel > sceneContainerZoomInFromQuickAccessMenu');
+    //   sceneContainerSession.needRenderAlpha.setNeedRenderAlphaWithDfx(1.0, TAG,
+    //     'sceneContainerZoomInFromQuickAccessMenu', sceneContainerSession.getName());
+    //   sceneContainerSession.needRenderBorderRadius.setBorderRadiusWithDfx(CommonConstants.DEFAULT_WINDOWS_RADIUS_0, TAG,
+    //     'sceneContainerZoomInFromQuickAccessMenu', sceneContainerSession.getName());
+    // })
   }
 
   public isScreenShotScene(sceneInfo: SCBSceneInfo): boolean {
@@ -4862,6 +5002,7 @@ export class SCBScenePanelViewModel extends SCBBaseScenePanelViewModel<SCBMainPa
         }
       }, () => {
         containerSession.notifyForegroundInteractiveStatus(false);
+        ViewManagerPolicy.showView(ViewType.WALLPAPER);
         this.oneStepSplitExitInner(containerSession);
         containerSession.requestBackground();
         containerSession.isDisappearing = true;
@@ -4917,11 +5058,14 @@ export class SCBScenePanelViewModel extends SCBBaseScenePanelViewModel<SCBMainPa
     SCBTransitionManager.getInstance().notifySceneTransitionOut(controller, false);
     ViewManagerPolicy.showView(ViewType.DESKTOP);
     ViewManagerPolicy.showView(ViewType.WALLPAPER);
+    ViewManagerPolicy.hideView(ViewType.STATUS_BAR);
     // mask desktop edit mode
     this.editModeViewEvent.editSwitchEnable = false;
     homeLog.showInfo(`mask desktop edit mode, editSwitchEnable: ${this.editModeViewEvent.editSwitchEnable}`);
     this.updateScenePanelState(ScenePanelState.SPLIT);
     container.notifyForegroundInteractiveStatus(false);
+    container.sessionData.preferSplitBackToFull = true;
+    this.exitSplitViewForBackToOneStep(!isPrimaryOneStep, 0, container, needRemove);
   }
 
   public exitSplitForFullScene(containerSession: SCBSceneContainerSession, persistentId: number, needRemove: boolean,
@@ -5016,6 +5160,9 @@ export class SCBScenePanelViewModel extends SCBBaseScenePanelViewModel<SCBMainPa
   public updateFloatContainerWithScreenChange(screenProperty: SCBScreenProperty,
     reason: SCBContainerRotationReason): void {
     WinLog.showInfo(WinLogDomain.WMS_ROTATION, '[updateFloatContainerWithScreenChange] update float container.');
+    this.floatingSessionList.forEach((floatingSession) => {
+      floatingSession.rotateFloating(screenProperty, reason);
+    });
   }
 
   /**
@@ -5123,7 +5270,7 @@ export class SCBScenePanelViewModel extends SCBBaseScenePanelViewModel<SCBMainPa
         sceneSessionManager.SessionSizeChangeReason.UNDEFINED);
       this.updateBlackBackgroundState(false);
       // ApsUtils.setApsScene(apsManager.SceneAnimation.SCREEN_RORATION, StyleConstants.DEFAULT_0);
-      this.showWallpaperAfterRotate();
+      // this.showWallpaperAfterRotate();
       rotateEvent.rotateStatus = RotateChangeEvent.ROTATE_STATUS_END;
       EvtBus.post<RotateChangeEvent>(RotateChangeEvent, rotateEvent);
       performanceMonitor.end('SCREEN_ROTATION_ANI');
@@ -5664,14 +5811,17 @@ export class SCBScenePanelViewModel extends SCBBaseScenePanelViewModel<SCBMainPa
       WinLog.showError(WinLogDomain.WMS_ROTATION, '[startSceneWithRotationIfNeed] containerSession is null.');
       return;
     }
-    WinLog.showInfo(WinLogDomain.WMS_ROTATION, `[startSceneWithRotationIfNeed] containerSession ${containerSession.getName()}, ` +
-                     `needAnimation ${needAnimation} isFromRecent ${isFromRecent} fromUser ${fromUser} ` +
-                     `isPageRotation ${isPageRotation}`);
     let screenSession = SCBScreenSessionManager.getInstance().getScreenSession(this.screenProperty.screenId);
     if (!screenSession) {
       WinLog.showError(WinLogDomain.WMS_ROTATION, '[startSceneWithRotationIfNeed] screenSession is null');
       return;
     }
+    if (containerSession.consumePendingPageRotation('startSceneWithRotationIfNeed')) {
+      isPageRotation = true;
+    }
+    WinLog.showInfo(WinLogDomain.WMS_ROTATION, `[startSceneWithRotationIfNeed] containerSession ${containerSession.getName()}, ` +
+                     `needAnimation ${needAnimation} isFromRecent ${isFromRecent} fromUser ${fromUser} ` +
+                     `isPageRotation ${isPageRotation}`);
     if (SCBRotationConfig.getInstance().isDeviceRotationOptimizationSwitchOn()) {
       screenSession.rotationController.startSceneWithRotationIfNeed(containerSession, needAnimation,
         isFromRecent, fromUser, isPageRotation);
@@ -6242,11 +6392,15 @@ export class SCBScenePanelViewModel extends SCBBaseScenePanelViewModel<SCBMainPa
   }
 
   public changeScenePanelStateToHome(fromState: ScenePanelState, toState: ScenePanelState,
-    scaleDelayTime: number = 0): void {
+    scaleDelayTime: number = 0, withoutScaleAnim: boolean = false): void {
     // Cover scenarios return to home : app crash, multi-task deletion tasks or return to home without gestures
     if (!(fromState === ScenePanelState.FULLSCENE &&
       toState === ScenePanelState.HOME && SCBSceneSessionManager.getInstance().isScreenLocked())) {
-      SCBTransitionManager.getInstance().runGlobalInactiveCallback(true, scaleDelayTime);
+      if (withoutScaleAnim) {
+        SCBTransitionManager.getInstance().runGlobalInactiveCallback(false);
+      } else {
+        SCBTransitionManager.getInstance().runGlobalInactiveCallback(true, scaleDelayTime);
+      }
       SCBTransitionManager.getInstance().swipeUpFromHome(RecentsStyleConstants.SCALE_DEFAULT);
     }
     if (uiType === SCBConstants.UITYPE_PAD) {
@@ -6301,6 +6455,7 @@ export class SCBScenePanelViewModel extends SCBBaseScenePanelViewModel<SCBMainPa
   }
 
   public enterRecentView(isFromNavigationCallback: boolean, isFromApp: boolean = true) {
+    recentLog.showInfo(`enterRecentView isFromApp=${isFromApp}`);
     // 进入多任务，背景模糊加上灰阶
     if (this.stateCollectionHandler?.getBgGrayScaleDisableState()) {
       this.stateCollectionHandler.updateBgGrayScaleDisableState(false);
@@ -6557,6 +6712,7 @@ export class SCBScenePanelViewModel extends SCBBaseScenePanelViewModel<SCBMainPa
       } else if (quickSwitchViewModel.isAnimatingState()) {
         isShowStatusBar = true;
       }
+      NAVIBarViewModel.getInstance(this.screenProperty).updateNaviBarHotAreaRectForRecent(this.screenProperty);
       this.checkIfNeedRecoverScreenProperty(RotateFuncType.START_SCENE);
       this.dataCollectionHandler?.setNeedRemoveBlank(false);
       containerSession.setNeedSyncSessionRect(true);
@@ -7363,8 +7519,9 @@ export class SCBScenePanelViewModel extends SCBBaseScenePanelViewModel<SCBMainPa
   }
 
   public getTransitionOutCurve(limit: boolean | null): Curve | ICurve {
+    // isNewStyle为false时，弹簧自然振动周期按照匹配设备来隔离
     let response: number = 0.42;
-    // 退出动画弹簧曲线response参数区分不同设备形态
+    // 设备场景退出动画弹簧曲线response参数区分不同设备形态
     if (this.isNewStyle) {
       response = StartAndExitUtil.getResponse(StartAndExitResponse.EXIT);
     }
@@ -7381,16 +7538,16 @@ export class SCBScenePanelViewModel extends SCBBaseScenePanelViewModel<SCBMainPa
   }
 
   public showSnapShotOnExpand(containerSession: SCBSceneContainerSession): void {
-    if (!DeviceHelper.isUltraScreenProduct() || CheckEmptyUtils.isEmpty(containerSession)) {
+    if (!DeviceHelper.isThreeFoldProduct() || CheckEmptyUtils.isEmpty(containerSession)) {
       return;
     }
     // showSnapShotOnExpand is before onScreenPropertyChange, need to use current fold state as last state
     // and recalculate a new triple fold state
-    let lastUltraScreenStatus: SCBUltraScreenState = SCBTriFoldManager.getInstance().getCurTriFoldState();
-    let curUltraScreenState: SCBUltraScreenState = SCBTriFoldManager.getInstance().recalculateTriFoldState();
-    homeLog.showInfo(`foldexpand windows animation, lastUltraScreenStatus =  ${lastUltraScreenStatus},` +
-      `curUltraScreenState = ${curUltraScreenState}`);
-    let foldExpandStateChange : SCBTripleStateChange = UltraScreenExpandAnimUtils.getTripleStateChange(curUltraScreenState, lastUltraScreenStatus);
+    let lastTripleFoldStatus: SCBTripleFoldState = SCBTriFoldManager.getInstance().getCurTriFoldState();
+    let curTripleFoldState: SCBTripleFoldState = SCBTriFoldManager.getInstance().recalculateTriFoldState();
+    homeLog.showInfo(`foldexpand windows animation, lastTripleFoldStatus =  ${lastTripleFoldStatus},` +
+      `curTripleFoldState = ${curTripleFoldState}`);
+    let foldExpandStateChange : SCBTripleStateChange = TripleFoldExpandAnimUtils.getTripleStateChange(curTripleFoldState, lastTripleFoldStatus);
     this.stateCollectionHandler?.setFoldExpandStateChange(foldExpandStateChange);
     if (this.stateCollectionHandler?.getPanelState() !== ScenePanelState.FULLSCENE || containerSession.isSplit) {
       return;
@@ -7429,8 +7586,8 @@ export class SCBScenePanelViewModel extends SCBBaseScenePanelViewModel<SCBMainPa
   public pcAppExitWithFold(screenProperty: SCBScreenProperty): void {
     let topContainerSession = this.containerSessionList.getTopActiveSession();
     if (topContainerSession?.primarySession && topContainerSession.isPcAppExit()) {
-      if (DeviceHelper.isUltraScreenProduct() &&
-        SCBTriFoldManager.getInstance().getCurTriFoldState() === SCBUltraScreenState.M) {
+      if (DeviceHelper.isThreeFoldProduct() &&
+        SCBTriFoldManager.getInstance().getCurTriFoldState() === SCBTripleFoldState.M) {
         // M态保持G态时位置大小需做偏移计算
         topContainerSession.needRenderTranslate.setTranslateXWithDfx(px2vp(screenProperty.width -
         topContainerSession.screenProperty.width), TAG, 'pcAppExitWithFold', topContainerSession.getName());
@@ -7502,17 +7659,17 @@ export class SCBScenePanelViewModel extends SCBBaseScenePanelViewModel<SCBMainPa
    * @param screenRotation
    * @param stateChange
    */
-  public ultraScreenProductAnimation(screenRotation: number, stateChange: SCBTripleStateChange): void {
+  public tripleFoldProductAnimation(screenRotation: number, stateChange: SCBTripleStateChange): void {
     if (!this.stateCollectionHandler) {
       return;
     }
     homeLog.showInfo(`start animation by state change, stateChange = ${stateChange}, rotation = ${screenRotation}`);
-    let animType: string = UltraScreenExpandAnimUtils.getScenePanelAnimType(stateChange);
-    let animFactor: number = UltraScreenExpandAnimUtils.getScenePanelAnimFactor(stateChange);
+    let animType: string = TripleFoldExpandAnimUtils.getScenePanelAnimType(stateChange);
+    let animFactor: number = TripleFoldExpandAnimUtils.getScenePanelAnimFactor(stateChange);
     this.tripleAnimStart(animType);
     this.tripleAnimTransStart(screenRotation, animFactor);
     animateTo({
-      curve: UltraScreenExpandAnimUtils.getScenePanelTransCurve(stateChange),
+      curve: TripleFoldExpandAnimUtils.getScenePanelTransCurve(stateChange),
       onFinish: () => {
         this.tripleAnimFinish(animType);
       }
@@ -7520,7 +7677,7 @@ export class SCBScenePanelViewModel extends SCBBaseScenePanelViewModel<SCBMainPa
       this.tripleAnimTransEnd(screenRotation);
     })
     animateTo({
-      curve: UltraScreenExpandAnimUtils.getScenePanelAlphaCurve(stateChange),
+      curve: TripleFoldExpandAnimUtils.getScenePanelAlphaCurve(stateChange),
     }, () => {
       if (this.stateCollectionHandler) {
         this.stateCollectionHandler.getViewParam().recentAlpha = 1;
@@ -7668,16 +7825,60 @@ export class SCBScenePanelViewModel extends SCBBaseScenePanelViewModel<SCBMainPa
   }
 
   /**
+   * Proceed AI split switch
+   *
+   * @param reason is screen property change's reason
+   * @param containerSession is current SCBSceneContainerSession
+   * @param foldExpandStateChange is type of state change
+   * @return
+   */
+  public AiSplitSwitch(reason: SCBPropertyChangeReason, containerSession: SCBSceneContainerSession | null,
+    foldExpandStateChange: SCBTripleStateChange): void {
+    homeLog.showInfo(`[ScenePanel-AiSplitSwitch] screen state change reason: ${reason}` +
+      `, foldExpandStateChange: ${foldExpandStateChange}`);
+    if ((DeviceHelper.isThreeFoldProduct() &&
+      (foldExpandStateChange === SCBTripleStateChange.M_TO_F || foldExpandStateChange ===
+      SCBTripleStateChange.G_TO_F)) ||
+      (DeviceHelper.isLargeInFoldProduct() && reason === SCBPropertyChangeReason.EXPAND_TO_FOLD)) {
+      // SCBSceneWindowAiSplitSwitchUtils.getInstance().deleteSplitIntent();
+      SCBSceneWindowAiSplitSwitchUtils.getInstance().endAiSplitSwitchHandler();
+      return;
+    }
+    if (containerSession === null) {
+      homeLog.showWarn('[ScenePanel-AiSplitSwitch] cannot find top active container session');
+      return;
+    }
+    let sceneSession: SCBSceneSession | null = containerSession.primarySession;
+    if (sceneSession === null) {
+      homeLog.showWarn('[ScenePanel-AiSplitSwitch] cannot find primary scene session');
+      return;
+    }
+    let currentWindowMode: SCBSceneMode = sceneSession.sceneInfo.windowMode;
+    homeLog.showInfo(`[ScenePanel-AiSplitSwitch] get current windowMode ${currentWindowMode}`);
+    if (currentWindowMode === SCBSceneMode.FULLSCREEN && ((DeviceHelper.isThreeFoldProduct() &&
+      (foldExpandStateChange === SCBTripleStateChange.F_TO_M || foldExpandStateChange ===
+      SCBTripleStateChange.F_TO_G)) ||
+      (DeviceHelper.isLargeInFoldProduct() && reason === SCBPropertyChangeReason.FOLD_TO_EXPAND))) {
+      SCBSceneWindowAiSplitSwitchUtils.getInstance()
+        .startAiSplitSwitchHandler(sceneSession.sceneInfo, sceneSession.isSupportSplitMode());
+    }
+  }
+
+  /**
+   * Split screen from AI bar
+   *
    * @param primary App's sceneInfo
    * @param secondary App's sceneInfo
    * @param fromContainerSession is last SCBSceneContainerSession
    * @return
    */
   public viewSplitScreen(primaryAppSceneInfo: SCBSceneInfo, secondaryAppSceneInfo: SCBSceneInfo,
-    topContainerSession: SCBSceneContainerSession | null): void {
+    topContainerSession: SCBSceneContainerSession | null, switchType: SwitchType): void {
     let primaryBundleName: string = primaryAppSceneInfo.bundleName;
     let secondaryBundleName: string = secondaryAppSceneInfo.bundleName;
-    homeLog.showInfo(`[SCBSplit] bundleName: ${primaryBundleName}, ${secondaryBundleName}; `);
+    homeLog.showInfo(`[SCBSplit] bundleName: ${primaryBundleName}, ${secondaryBundleName}; ` +
+      `switchType: ${switchType}`);
+    let SplitReason: SplitReason = SCBSceneWindowAiSplitSwitchUtils.getInstance().getSplitReason();
     const currentPanelState = this.stateCollectionHandler?.getPanelState();
     if (topContainerSession === null || currentPanelState !== ScenePanelState.FULLSCENE) {
       homeLog.showWarn('[SCBSplit] non-full-screen application scenarios do not support split-screen.');
@@ -7691,6 +7892,38 @@ export class SCBScenePanelViewModel extends SCBBaseScenePanelViewModel<SCBMainPa
     let topBundleName: string = topSceneSession.sceneInfo.bundleName;
     let topWindowMode: SCBSceneMode = topSceneSession.sceneInfo.windowMode;
     SCBKeyboardManager.getInstance().requestHideKeyboard(topSceneSession);
+    if (switchType === SwitchType.FREQUENT_SWITCH) {
+      // 频繁快切场景，新拉起分屏窗口布局右侧
+      homeLog.showInfo('[SCBSplit] split screen as frequent type');
+      SCBSceneWindowAiSplitSwitchUtils.getInstance().setSwitchType(SwitchType.INVALID);
+      if (topBundleName !== primaryBundleName || topWindowMode !== SCBSceneMode.FULLSCREEN) {
+        return;
+      }
+      secondaryAppSceneInfo.updateWindowModeAndSync(SCBSceneMode.SECONDARY);
+      let secondarySceneSession: SCBSceneSession | null = this.requestSceneSession(secondaryAppSceneInfo);
+      if (secondarySceneSession === null) {
+        homeLog.showWarn('[SCBSplit] toSceneSession is null');
+        return;
+      }
+      this.pairSplitIfInOneApp(topContainerSession, null, secondarySceneSession, secondaryAppSceneInfo);
+    } else if (switchType === SwitchType.NATURAL_SWITCH) {
+      // 应用跳转自然拉起场景，新拉起分屏窗口布局左侧
+      homeLog.showInfo('[SCBSplit] split screen as natural type');
+      SCBSceneWindowAiSplitSwitchUtils.getInstance().setSwitchType(SwitchType.INVALID);
+      if (topBundleName !== secondaryBundleName || topWindowMode !== SCBSceneMode.FULLSCREEN) {
+        return;
+      }
+      primaryAppSceneInfo.updateWindowModeAndSync(SCBSceneMode.PRIMARY);
+      let primarySceneSession: SCBSceneSession | null = this.requestSceneSession(primaryAppSceneInfo);
+      if (primarySceneSession === null) {
+        homeLog.showWarn('[SCBSplit] toSceneSession is null');
+        return;
+      }
+      this.pairSplitIfInOneApp(topContainerSession, null, primarySceneSession, primaryAppSceneInfo);
+    } else {
+      homeLog.showWarn('[SCBSplit] invalid switch type');
+    }
+    SCBSceneWindowAiSplitSwitchUtils.getInstance().setSwitchType(SwitchType.INVALID);
   }
 
   /**
@@ -7704,10 +7937,18 @@ export class SCBScenePanelViewModel extends SCBBaseScenePanelViewModel<SCBMainPa
     if (DeviceHelper.isEmulator()) {
       return;
     }
+    if (!SCBSceneWindowAiSplitSwitchUtils.getInstance().isTargetScene()) {
+      return;
+    }
+    // let viewSplitScreen: insightIntent.InsightIntent = this.getIntent(primaryAppSceneInfo, secondaryAppSceneInfo);
     let viewSplitScreen: ESObject = this.getIntent(primaryAppSceneInfo, secondaryAppSceneInfo);
+    // SCBSceneWindowAiSplitSwitchUtils.getInstance().processShareIntent(viewSplitScreen);
     let context: common.ServiceExtensionContext = GlobalContext.getContext() as common.ServiceExtensionContext;
     let primaryAppBundleName: string = primaryAppSceneInfo.bundleName;
     let secondaryAppBundleName: string = secondaryAppSceneInfo.bundleName;
+    let SplitReason: SplitReason = SCBSceneWindowAiSplitSwitchUtils.getInstance().getSplitReason();
+    SCBSceneWindowAiSplitSwitchUtils.getInstance().setIsSharingIntent(true);
+    SCBSceneWindowAiSplitSwitchUtils.getInstance().setRateLimitLock(false);
   }
 
   private getIntent(primaryAppSceneInfo: SCBSceneInfo, secondaryAppSceneInfo: SCBSceneInfo):
@@ -7719,8 +7960,9 @@ export class SCBScenePanelViewModel extends SCBBaseScenePanelViewModel<SCBMainPa
     let secondaryAppBundleName: string = secondaryAppSceneInfo.bundleName;
     let secondaryAppModuleName: string = secondaryAppSceneInfo.moduleName;
     let secondaryAppAbilityName: string = secondaryAppSceneInfo.abilityName;
-    let reportData: string = `AppList: ${primaryAppBundleName}, ${secondaryAppBundleName}`;
-    let title = GlobalContext.getContext().resourceManager.getStringSync($r('app.string.theme_title').id);
+    let SplitReason: SplitReason = SCBSceneWindowAiSplitSwitchUtils.getInstance().getSplitReason();
+    let reportData: string = `reason: ${SplitReason}; AppList: ${primaryAppBundleName}, ${secondaryAppBundleName}`;
+    let title = GlobalContext.getContext().resourceManager.getStringSync($r('app.string.Ai_Split_Title').id);
     homeLog.showInfo(`[getIntent] start set split intent: ${primaryAppBundleName} and ${secondaryAppBundleName}`);
     let executeIntent: Object = Object({
       intentName: 'ViewSplitScreen',
@@ -7744,8 +7986,9 @@ export class SCBScenePanelViewModel extends SCBBaseScenePanelViewModel<SCBMainPa
       })
     });
     let executeIntentStr: string = JSON.stringify(executeIntent);
+    // let viewSplitScreen: insightIntent.InsightIntent = {
     let viewSplitScreen: ESObject = {
-      intentName: 'EventTrigger',
+      intentName: 'NaviBarEventTrigger',
       intentVersion: '1.0.1',
       identifier: '52dac3b0-6520-4974-81e5-25f0879449b5',
       intentActionInfo: {
@@ -7753,7 +7996,7 @@ export class SCBScenePanelViewModel extends SCBBaseScenePanelViewModel<SCBMainPa
       // },
       } as ESObject,
       intentEntityInfo: {
-        entityName: 'Event',
+        entityName: 'NaviBarEvent',
         entityId: primaryAppBundleName + '_' + secondaryAppBundleName,
         eventType: 'EnterScene',
         sceneId: '000202508010003',
@@ -7781,6 +8024,33 @@ export class SCBScenePanelViewModel extends SCBBaseScenePanelViewModel<SCBMainPa
       } as ESObject
     }
     return viewSplitScreen;
+  }
+
+  private naturalAiSplit(fromSession: SCBSceneContainerSession, toSession: SCBSceneContainerSession): void {
+    if (SCBSceneWindowAiSplitSwitchUtils.getInstance().isTargetScene()) {
+      homeLog.showInfo('[SCBSplit] start split-naturally scene');
+      let fromSceneSession: SCBSceneSession | null = fromSession.primarySession;
+      let toSceneSession: SCBSceneSession | null = toSession.primarySession;
+      if (fromSceneSession === null || toSceneSession === null) {
+        homeLog.showWarn('[SCBSplit] scene session is null');
+        return;
+      }
+      if (!(fromSceneSession.isSupportSplitMode() && toSceneSession.isSupportSplitMode())) {
+        homeLog.showWarn('[SCBSplit] scene session cannot split');
+        return;
+      }
+      let fromSceneInfo: SCBSceneInfo = fromSceneSession.sceneInfo;
+      let toSceneInfo: SCBSceneInfo = toSceneSession.sceneInfo;
+      if (fromSceneInfo.bundleName === toSceneInfo.bundleName) {
+        homeLog.showWarn('[SCBSplit] same app, cannot set natural split intent');
+        return;
+      }
+      if (SCBSceneWindowAiSplitSwitchUtils.getInstance().isNaturalScene(fromSceneInfo, toSceneInfo)) {
+        SCBSceneWindowAiSplitSwitchUtils.getInstance().setSwitchType(SwitchType.NATURAL_SWITCH);
+        SCBSceneWindowAiSplitSwitchUtils.getInstance().startNaturalSwitchScene(fromSceneInfo, toSceneInfo);
+        SCBSceneWindowAiSplitSwitchUtils.getInstance().setRateLimitLock(true);
+      }
+    }
   }
 
   /**

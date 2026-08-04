@@ -18,6 +18,7 @@ import {
   StyleConstants,
   FolderModel,
   EditModeUtils,
+  DeliverUtil,
   NotHarmonyUtil,
   EditModeState,
   editModeManager,
@@ -627,6 +628,11 @@ export struct OpenFolderGridSwiper {
       return;
     }
     const appsLen: number = FolderCommonUtil.getFilterAppListInFolder(folder).length;;
+    if (!DeliverUtil.checkFolderIsReleased(folder?.folderId, appsLen)) {
+      DeliverUtil.addAddIcon(folder, 'OpenFolderGridSwiper update');
+    } else {
+      DeliverUtil.delAddIcon(folder, 'OpenFolderGridSwiper releaseFolder');
+    }
     this.mFolderInfoData = folder.layoutInfo ?? [];
     log.showDebug('updateOpenFolderLayout folderId:%{public}s folderName:%{public}s',
       folder?.folderId, folder?.folderName);
@@ -641,8 +647,10 @@ export struct OpenFolderGridSwiper {
     const openFolderData: GridLayoutItemInfo = this.mFolderMgr.getOpenedFolder();
     let msg: string = '';
     if (this.isAddIconHidden) {
+      DeliverUtil.delAddIcon(openFolderData, 'updateAddIconWhenDrag');
       msg = 'updateAddIconWhenDrag to delete addIcon';
     } else {
+      DeliverUtil.addAddIcon(openFolderData, 'updateAddIconWhenDrag');
       msg = 'updateAddIconWhenDrag to add addIcon';
     }
     this.mFolderInfoData = openFolderData.layoutInfo ?? [];
@@ -1235,8 +1243,17 @@ export struct OpenFolderGridSwiper {
         log.showInfo('isDrag, just ignore title click');
         return;
       }
-      if (NotHarmonyUtil.isNotHarmonyFolderById(openFolderData?.folderId)) {
+      if (DeliverUtil.isDisableOperationsOnFolder(openFolderData?.folderId) ||
+      NotHarmonyUtil.isNotHarmonyFolderById(openFolderData?.folderId)) {
         log.showInfo('this folder cannot be rename');
+        if (DeliverUtil.isShowToast()) {
+          Prompt.showToast({
+            message: ResourceManager.getInstance().getStringByName('can_not_rename_flod')
+          });
+          // 文件夹提示不支持重命名打点上报
+          let folderType: number = DeliverUtil.getFolderTypeByFolderId(this.folderId);
+          HiSysEventUtil.reportRenameNotHarmonyFolder(folderType)
+        }
         return;
       }
       this.folderNameAppearDuration = 0;
@@ -1424,6 +1441,9 @@ export struct OpenFolderGridSwiper {
               for (let i = 0; i < openFolderData.layoutInfo.length; i++) {
                 iconCount += openFolderData.layoutInfo[i].length;
               }
+              let folderType: number = DeliverUtil.getFolderTypeByFolderId(this.folderId);
+              HiSysEventUtil.reportSnapToPageInFolder(openFolderData.folderId as string, iconCount,
+                openFolderData.layoutInfo.length, !GridLayoutUtil.isSmallFolder(openFolderData), folderType);
             }
             FolderDataModelManager.getInstance().onFolderPageChange(this.folderId, index);
           })

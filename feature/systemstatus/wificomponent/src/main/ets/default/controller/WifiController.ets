@@ -174,24 +174,7 @@ export class WifiController extends ToggleBaseViewModel {
       return;
     }
     if (DeviceHelper.isPC()) {
-      // pc点击文字弹出二级窗口，并关闭控制中心面板
-      sEventManager.publish(obtainLocalEvent(LOCAL_EVENT_TYPE, false));
-      windowMgr.hideWindowWithAnim(PluginSlot.SLOT_STATUS_CONTROL_CENTER);
-      // 设置二级页面窗口位置
-      let position = windowMgr.getWindowPosition(PluginSlot.SLOT_STATUS_WIFI_PANEL);
-      if (StatusBarType.isMacStyle(AppStorage.get('statusBarType') as number)) {
-        let controlCenterPosition = windowMgr.getWindowPosition(PluginSlot.SLOT_STATUS_CONTROL_CENTER);
-        position.left = controlCenterPosition.left + controlCenterPosition.width - position.width;
-      }
-      EvtBus.post(WindowPositionChangeEvent,
-        { windowName: PluginSlot.SLOT_STATUS_WIFI_PANEL,
-          position: PluginPosition.POSITION_RIGHT,
-          area: position,
-          caller: PluginSlot.SLOT_STATUS_CONTROL_CENTER});
-      let info = AppStorage.get<PluginInfo>(PluginSlot.SLOT_STATUS_WIFI_PANEL + '_info');
-      windowMgr.setWindowData(PluginSlot.SLOT_STATUS_WIFI_PANEL, info);
-      windowMgr.showWindowWithAnim(PluginSlot.SLOT_STATUS_WIFI_PANEL, true);
-      sEventManager.publish(obtainLocalEvent(LOCAL_EVENT_TYPE, true));
+      //由于PC设置应用不开源，故屏蔽控制中心点击WIfi图标拉起wifi设置面板的功能
     } else {
       this.handleOnControlCenterWithScreenLockForUIE(
         ():void => this.showWifiSubWindow(FASlotName.WIFI_UI_EXTENSION), true);
@@ -302,7 +285,8 @@ export class WifiController extends ToggleBaseViewModel {
     super.onStart();
     log.showInfo('onStart');
     this.setLabel(Constants.DEFAULT_WIFI_NAME);
-    this.getViewData().icon = $r('app.media.wifi');
+    this.getViewData().isSymbolIcon = true;
+    this.getViewData().icon = $r('sys.symbol.wifi');
     AppStorageUtil.setOrCreate('WifiModel_WifiStatus', this.mWifiData, new DataProperty(true, false));
     this.mWifiData = AppStorage.get<WifiData>('WifiModel_WifiStatus') as WifiData;
     try {
@@ -939,7 +923,8 @@ export class WifiController extends ToggleBaseViewModel {
 
   updateIcon() {
     log.showInfo('updateIcon');
-    this.getViewData().icon = this.getViewData().isOn ? $r('app.media.wifi') : $r('app.media.wifi_d')
+    this.getViewData().isSymbolIcon = true;
+    this.getViewData().icon = $r('sys.symbol.wifi');
   }
 }
 

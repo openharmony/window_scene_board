@@ -1,0 +1,2601 @@
+{
+    "string":[
+        {
+            "name":"best_example_of_uploading_photos",
+            "value":"နမူနာများ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_chest",
+            "value":"App Chest",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"played",
+            "value":"ဖွင့်နေသည်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"wallpaper_G_only",
+            "value":"မျက်နှာပြင်သုံးခုတွဲတွင်သာ သုံးရန်",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"been_lifted",
+            "value":"ဆွဲရွှေ့ခြင်း စတင်ထားသည်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"lockscreen_preview",
+            "value":"လော့ခ်မျက်နှာပြင်",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"female",
+            "value":"အမျိုးသမီး",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"not_selected",
+            "value":"မရွေးထားပါ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aigc_theme_service_privacy_statement",
+            "value":"AI Themes နှင့် ကိုယ်ရေးအချက်အလက် လုံခြုံရေးအကြောင်း ထုတ်ပြန်ချက်",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_dynamic_lead_fail_content",
+            "value":"Dynamic Persona ရင်းမြစ် ဖန်တီးမှု မအောင်မြင်ပါ။ အသေးစိတ်ကို ကြည့်ရန် နှိပ်ပါ။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_wallpaper",
+            "value":"ပုံ ပေါင်းထည့်ရန်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"account_button_login",
+            "value":"ဝင်ရန်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_dynamic_lead_finish_content",
+            "value":"Dynamic Persona ရင်းမြစ်များကို ဖန်တီးထားသည်။ ကြည့်ပြီး သုံးရန် နှိပ်ပါ။",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_main_pandora_title",
+            "value":"ပင်မ မျက်နှာပြင်နှင့် စတိုင်",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_main_time_travel_ongoing_content",
+            "value":"AI နောက်ခံပုံများကို ဖန်တီးနေသည်။ ကြည့်ရန် နှိပ်ပါ။",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"time_travel_generate_failed",
+            "value":"Time Travel နောက်ခံပုံများကို ဖန်တီး၍ မရနိုင်ပါ။",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"save_success",
+            "value":"အောင်မြင်စွာ သိမ်းဆည်းပြီး။",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"lock_layout_content",
+            "value":"ဤသည်ကို ဖွင့်ထားချိန်တွင် ပင်မ မျက်နှာပြင်ရှိ အရာများကို ရွှေ့ခြင်း သို့မဟုတ် ဖယ်ရှားခြင်း လုပ်မရနိုင်ပါ။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aigc_theme_service_description",
+            "value":"ဤဝန်ဆောင်မှုသည် %1$s ချိတ်ဆက်မှုကို လိုအပ်ပြီး ရုပ်ပုံများကို ဖတ်ရန်နှင့် အပ်လုဒ်လုပ်/လွှဲပြောင်းရန် လိုအပ်ပါသည်။ ဤသည်မှာ Theme နှင့်ဆက်စပ်သော လုပ်ဆောင်ချက်များ ပံ့ပိုးရန် ဖြစ်ပါသည်။ သင်အသုံးပြုသော လုပ်ဆောင်ချက်များနှင့် ဆက်စပ်သော ကိုယ်ရေး အချက်အလက်များကိုသာ ကျွန်ုပ်တို့ စုဆောင်းပါသည်။ အသေးစိတ်အတွက် %2$sကို ကိုးကားပါ။",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"full_screen_reading_exit",
+            "value":"ပင်မ မျက်နှာပြင် နမူနာကြည့်ရှုမှုမှ ထွက်လိုက်ပါပြီ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"apply",
+            "value":"သုံးရန်",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"set_as_lockscreen",
+            "value":"လော့ခ်မျက်နှာပြင်အဖြစ် သတ်မှတ်ရန်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"save_picture",
+            "value":"ပုံ သိမ်းရန်",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"nav_to_my_wallpaper_edit_tips",
+            "value":"လော့ခ်မျက်နှာပြင်တွင် တည်းဖြတ်ရန် နာရီဧရိယာကို ချုံ့ချဲ့လုပ်ပါ သို့မဟုတ် နှိပ်၍ ဖိထားပါ။",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_main_dimensional_travel_ongoing_content",
+            "value":"Animirror နောက်ခံပုံများကို ဖန်တီးနေသည်။ ကြည့်ရန် နှိပ်ပါ။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_off_app_chest_title",
+            "value":"App Chest ကို ပိတ်ရန်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"read_theme_service_description_and_click_agree",
+            "value":"အထက်ပါ ထုတ်ပြန်ချက်ကို ဂရုတစိုက် ဖတ်ရှုပေးပါ။ သဘောတူသည်ကို နှိပ်ခြင်းဖြင့် သင့်အား ဤဝန်ဆောင်မှုကို ကျွန်ုပ်တို့က ပံ့ပိုးပေးရန် သဘောတူလိုက်ခြင်းဖြစ်ပါသည်။",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"is_off_Desktop_resource_center_title",
+            "value":"App Chest ကို ပိတ်ရန်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"detail_page",
+            "value":"အစမ်းကြည့် စာမျက်နှာ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"tip_button_text",
+            "value":"နောက်ထပ်လေ့လာရန်",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wallpaper_M_only",
+            "value":"မျက်နှာပြင်နှစ်ခုတွဲတွင်သာ သုံးရန်",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"waiting_closing_app_chest",
+            "value":"App Chest ကို ပိတ်နေဆဲ…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"homescreen_preview",
+            "value":"ပင်မ မျက်နှာပြင်",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"free_official_theme",
+            "value":"အခမဲ့ တရားဝင် Theme",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"desktop_layout",
+            "value":"အဆင်အပြင်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"full_screen_reading_enter",
+            "value":"မျက်နှာပြင်အပြည့် နမူနာကြည့်ရှုမှုအတွင်း ဝင်ထားပါသည်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_off_app_chest_content",
+            "value":"၎င်းကို ပိတ်ထားသည့်အခါ အခြား မည်သည့်နေရာတွင်မျှ မပြသထားသော App Chest ရှိ အက်ပ်များကို ပင်မ မျက်နှာပြင်၏ အောက်ခြေရှိ ဖိုင်တွဲအသစ်တွင် ရှာတွေ့နိုင်ပါသည်။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aod_ways_display_awake_intelligent",
+            "value":"စမတ်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"i_know",
+            "value":"သဘောပေါက်ပါပြီ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"management",
+            "value":"စီမံရန်",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"is_off_Desktop_resource_center_cancel",
+            "value":"ပယ်ဖျက်ရန်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keywords_during_call",
+            "value":"ဖုန်းခေါ်ဆိုမှု အန်နီမေးရှင်း",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aigc_theme_service_subtitle",
+            "value":"ဤဝန်ဆောင်မှုသည် ရွေးချယ်ထားသော ရုပ်ပုံများကို Cloud သို့ အပ်လုဒ်လုပ်ပြီး Cloud ပေါ်တွင် AI ကို သုံး၍ Theme ရင်းမြစ်များကို ထုတ်လုပ်ပါသည်။",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"is_off_Desktop_resource_center_close",
+            "value":"ပိတ်ရန်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"show_date",
+            "value":"ရက်စွဲ ပြသရန်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_dynamic_lead_Unable_to_update_automatically",
+            "value":"Dynamic Persona ရင်းမြစ် စုစည်းမှု ပြည့်နေပါပြီ။ ဆိုလိုသည်မှာ ရင်းမြစ်များသည် အော်တို အပ်ဒိတ်လုပ်တော့မည် မဟုတ်ပါ။ စုစည်းမှုကို စီမံခန့်ခွဲရန် နှိပ်ပါ။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"select_from_gallery",
+            "value":"ပုံပြခန်းမှ ရွေးချယ်ရန်",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"is_off_Desktop_resource_center_content",
+            "value":"၎င်းကို ပိတ်ထားသည့်အခါ အခြား မည်သည့်နေရာတွင်မျှ မပြသထားသော App Chest ရှိ အက်ပ်များကို ပင်မ မျက်နှာပြင်၏ အောက်ခြေရှိ ဖိုင်တွဲအသစ်တွင် ရှာတွေ့နိုင်ပါသည်။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cancel",
+            "value":"မလုပ်ပါ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_main_dimensional_travel_finish_content",
+            "value":"Animirror နောက်ခံပုံ အသစ်များကို ဖန်တီးထားသည်။ ကြည့်ပြီး သုံးရန် နှိပ်ပါ။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"full_screen_reading_page_one",
+            "value":"အစမ်းကြည့် မျက်နှာပြင် အမှတ် %d၊ အခြားအသေးစိတ် မျက်နှာပြင်များကို လုပ်ဆောင်ရန် လက်နှစ်ချောင်းဖြင့် ဘယ်ဘက် သို့မဟုတ် ညာဘက်သို့ ပွတ်ဆွဲပါ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_chest_description",
+            "value":"ထည့်သွင်းထားသော အက်ပ်အားလုံးကို ပြသရန် ပင်မ မျက်နှာပြင်တွင် အပေါ်သို့ ပွတ်ဆွဲပါ။ ပင်မ မျက်နှာပြင်တွင် ထည့်ရန် အက်ပ်တစ်ခုကို ဆွဲရွှေ့ပါ။ အက်ပ်ကို နှိပ်၍ ဖိထားပြီးနောက် ဖယ်ရှားရန်ကို နှိပ်ခြင်းဖြင့် ပင်မ မျက်နှာပြင်မှ အက်ပ်တစ်ခုကို ဖယ်ရှားလိုက်ပါ။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"agree",
+            "value":"သဘောတူသည်",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wallpaper_F_only",
+            "value":"မျက်နှာပြင်တစ်ခုတည်းတွင်သာ သုံးရန်",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"paused",
+            "value":"ရပ်တန့်ထားပြီး",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aigc_theme_privacy_statement",
+            "value":"AI Themes ဝန်ဆောင်မှုနှင့် ကိုယ်ရေးအချက်အလက် လုံခြုံရေးအကြောင်း ထုတ်ပြန်ချက်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"outside_screen_show",
+            "value":"ကာဗာမျက်နှာပြင်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"settings_detail_page_tip",
+            "value":"အသေးစိတ်အတွက် နှစ်ချက်နှိပ်ပါ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"show_lock_screen_signature",
+            "value":"လော့ခ်မျက်နှာပြင် စာတန်း",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"theme_title",
+            "value":"Themes",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"te_cancel",
+            "value":"မလုပ်ပါ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wallpaper_title",
+            "value":"နောက်ခံပုံများ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"uncompleted",
+            "value":"လုပ်ဆောင်ချက်ကို မကြာမီ ရရှိပါမည်။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"checked",
+            "value":"ရွေးချယ်ထားသည်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"exiting_current_page",
+            "value":"ဤမျက်နှာပြင်မှ သင်ထွက်လိုက်လျှင်ပင် ဖန်တီးမှုကို ဆက်လုပ်ပါမည်။",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aigc_theme_service",
+            "value":"AI Themes ဝန်ဆောင်မှု",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"network_error",
+            "value":"ကွန်ရက် ချို့ယွင်းချက်။ ထပ်စမ်းကြည့်ပါ။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dimensional_travel_generate_failed",
+            "value":"Animirror နောက်ခံပုံများကို ဖန်တီး၍ မရနိုင်ပါ။",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"top_right",
+            "value":"ညာထိပ်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aod_theme",
+            "value":"အမြဲဖွင့် ပြသမှု",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"photo_selected",
+            "value":"ဓာတ်ပုံ ရွေးချယ်ထားသည်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"preset_theme",
+            "value":"ကြိုတင်သတ်မှတ်ထားသော ပုံစံ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"device_temperature_too_high",
+            "value":"စက်အပူချိန်သည် မြင့်လွန်းနေပါသည်။ နောက်မှ ထပ်ကြိုးစားကြည့်ပါ။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"more_online_wallpapers",
+            "value":"နောက်ထပ် နောက်ခံပုံများ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_main_time_travel_finish_content",
+            "value":"Time Travel နောက်ခံပုံ အသစ်များကို ဖန်တီးထားသည်။ ကြည့်ပြီး သုံးရန် နှိပ်ပါ။",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"icon",
+            "value":"အိုင်ကွန်များ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"continue_upload_image",
+            "value":"လက်ရှိ Theme ကို ဖျက်ပြီး အသစ်တစ်ခုကို ဖန်တီးပါမည်။ ဆက်လုပ်မည်လား။",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"tip_cancel_text",
+            "value":"ပိတ်သည်။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aigc_theme_service_stop_note",
+            "value":"ဤဝန်ဆောင်မှုကို ပိတ်လိုက်ပါက ၎င်းကို ဆက်လက်ရရှိနိုင်တော့မည် မဟုတ်ပါ။ မည်သို့ပင်ဖြစ်စေ ပိတ်မည်လား။",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"applied",
+            "value":"သုံးပြီး",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"preview",
+            "value":"အစမ်းကြည့်မည်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"blur",
+            "value":"မှုန်ဝါး",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aesthetic",
+            "value":"စမတ် အပြင်အဆင်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"moving_photo_dialog_content",
+            "value":"လှုပ်ရှားနောက်ခံပုံများကို အခြားသော နောက်ခံပုံများနှင့် ပေါင်းစပ် အသုံးပြု၍ မရသောကြောင့် ဤသည်ကို ရုပ်ငြိမ် နောက်ခံပုံအဖြစ် သုံးသွားပါမည်။",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"my_wallpapers",
+            "value":"ကျွန်ုပ်၏ နောက်ခံပုံများ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"desktop_resource_center",
+            "value":"App Chest",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"moving_photo_dialog_toast",
+            "value":"လှုပ်ရှားနောက်ခံပုံများကို အခြားသော နောက်ခံပုံများနှင့် ပေါင်းစပ် အသုံးပြု၍ မရပါ။",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"theme_icon",
+            "value":"Themes မှ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"my_downloads",
+            "value":"ဒေါင်းလုဒ်လုပ်ပြီး",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"preview_photo_loading",
+            "value":"လုပ်ဆောင်နေဆဲ…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"on_network",
+            "value":"အင်တာနက်",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"more_themes",
+            "value":"နောက်ထပ် Theme များ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"desktop_resource_center_description",
+            "value":"ထည့်သွင်းထားသော အက်ပ်အားလုံးကို ပြသရန် ပင်မ မျက်နှာပြင်တွင် အပေါ်သို့ ပွတ်ဆွဲပါ။ ပင်မ မျက်နှာပြင်တွင် ထည့်ရန် အက်ပ်တစ်ခုကို ဆွဲရွှေ့ပါ။ အက်ပ်ကို နှိပ်၍ ဖိထားပြီးနောက် ဖယ်ရှားရန်ကို နှိပ်ခြင်းဖြင့် ပင်မ မျက်နှာပြင်မှ အက်ပ်တစ်ခုကို ဖယ်ရှားလိုက်ပါ။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_dynamic_lead_automatically_updated_finish_content",
+            "value":"Dynamic Persona ရင်းမြစ်များကို အော်တို အပ်ဒိတ်လုပ်ပြီးပါပြီ။ ကြည့်ရန် နှိပ်ပါ။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"waiting_closing_desktop_resource_center",
+            "value":"App Chest ကို ပိတ်နေဆဲ…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"continue_update_image",
+            "value":"လက်ရှိ Theme ကို ဖျက်ပြီး အသစ်တစ်ခုကို ဖန်တီးပါမည်။ ဆက်လုပ်မည်လား။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keywords_outer_theme",
+            "value":"Themes",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"theme_data_service_instructions",
+            "value":"ဤဝန်ဆောင်မှုသည် အင်တာနက် ချိတ်ဆက်မှု လိုအပ်ပြီး တည်နေရာ၊ ကိုယ်လက်လှုပ်ရှားမှုနှင့် စက် ချိတ်ဆက်မှု ခွင့်ပြုချက်များကို လိုအပ်သည့်အပြင် တည်နေရာ၊ ကြံ့ခိုင်မှုနှင့် ကျန်းမာရေး၊ စက်နှင့် မီဒီယာ (ရုပ်ပုံများနှင့် ဗီဒီယိုများ) ဒေတာကို ဖတ်ရန် လိုအပ်သည်။ ၎င်းမှာ ဤအချက်အလက်ကို ပြသရန် လိုအပ်သော Theme များကို ပံ့ပိုးရန်နှင့် တုံ့ပြန်လုပ်ဆောင်မှုရှိသော Theme လုပ်ဆောင်ချက်များကို ပံ့ပိုးပေးရန် ဖြစ်ပါသည်။ သင့်ကိုယ်ရေး အချက်အလက်များကို စီမံလုပ်ဆောင်ပုံအကြောင်း နောက်ထပ်အသေးစိတ်အတွက် %1$sနှင့် %2$sကို ကိုးကားပါ။ ၎င်းကို ဖွင့်ခြင်းဖြင့် သင်သည် ကျွန်ုပ်တို့အား ဤဝန်ဆောင်မှုကို ပံ့ပိုးခွင့်ပြုကြောင်း သဘောတူပါသည်။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"tip_play_text",
+            "value":"ဖွင့်ရန်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"moving_photo_dialog_title",
+            "value":"နောက်ခံပုံ ပြောင်းလဲမည်လား။",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_dynamic_lead_ongoing_content",
+            "value":"Dynamic Persona ရင်းမြစ်များကို ဖန်တီးနေသည်။ ကြည့်ရန် နှိပ်ပါ။",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"artistic_signature_does_not_overlap_with_main_subject",
+            "value":"စိတ်ကြိုက် အမှတ်သင်္ကေတသည် အဓိကအကြောင်းအရာပေါ်တွင် မထပ်နေပါ။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_camera_mover_to_experience_dynamic",
+            "value":"\"ရွေ့လျား ရုပ်ပုံ\" ကို သုံးရန် ဒိုင်းနမစ် အထူးပြုလုပ်ချက်ကို ပိတ်ပါ။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"recover_Theme_App_massage",
+            "value":"ဤလုပ်ဆောင်ချက်ကို သုံးရန်အတွက် Themes ကို ထည့်သွင်းရန် လိုအပ်ပါသည်။",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"image_does_not_recognize_dof",
+            "value":"ရုပ်ပုံထဲတွင် နောက်ခံနှင့် အကြောင်းအရာအကြား အကွာအဝေးကို မတွေ့ရှိရပါ။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Desktop_setting",
+            "value":"ပင်မ မျက်နှာပြင် ဆက်တင်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_dof_to_experience_camera_mover",
+            "value":"ဒိုင်းနမစ် အထူးပြုလုပ်ချက်ကို သုံးရန် DoF အထူးပြုလုပ်ချက်ကို ပိတ်ပါ။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"digital_clock_does_not_overlap_with_main_subject",
+            "value":"ဒစ်ဂျစ်တယ်နာရီသည် အဓိကအကြောင်းအရာပေါ်တွင် မထပ်နေပါ။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_camera_mover_to_experience_dof",
+            "value":"DoF အထူးပြုလုပ်ချက်ကို သုံးရန် ဒိုင်းနမစ် အထူးပြုလုပ်ချက်ကို ပိတ်ပါ။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_dynamic_to_experience_camera_mover",
+            "value":"ဒိုင်းနမစ် အထူးပြုလုပ်ချက်ကို သုံးရန် \"ရွေ့လျား ရုပ်ပုံ\"ကို ပိတ်ပါ။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_dynamic_to_experience_dof",
+            "value":"DoF အထူးပြုလုပ်ချက်ကို သုံးရန် \"ရွေ့လျား ရုပ်ပုံ\"ကို ပိတ်ပါ။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"covertheme_settings_title",
+            "value":"ပင်မ မျက်နှာပြင်၊ ကာဗာမျက်နှာပြင်နှင့် စတိုင်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_dof_to_experience_dynamic",
+            "value":"\"ရွေ့လျား ရုပ်ပုံ\" ကို သုံးရန် DoF အထူးပြုလုပ်ချက်ကို ပိတ်ပါ။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"side_face",
+            "value":"ဘေးတိုက် မျက်နှာ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_theme",
+            "value":"ဤ Theme ကို သုံးရန်",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"back",
+            "value":"နောက်သို့",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dock_color_style_follow_system_tips",
+            "value":"အမှောင်စနစ်တွင် Dock အရောင်သည် ပို၍ မှောင်သွားပါမည်။",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"select_from_folder",
+            "value":"ဖိုင်တွဲများ ဖွင့်ကြည့်ရန်",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"adult",
+            "value":"လူကြီး",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"got_it",
+            "value":"အိုကေ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"insufficient_quota",
+            "value":"ဤလအတွက် AI ဖြင့် ဖန်တီးထုတ်လုပ်မှု အကန့်အသတ်သို့ ရောက်ရှိသွားပါပြီ။",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"auto_align",
+            "value":"အော်တို ချိန်ညှိမှု",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"current_theme_style",
+            "value":"Theme အတိုင်း သုံးရန်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"exit_pandora_dialog",
+            "value":"သိမ်း၍ သုံးမည်လား။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"start_generating",
+            "value":"ဖန်တီးထုတ်လုပ်ရန်",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"remove_this_theme",
+            "value":"ဤ Theme ကို ဖယ်ရှားမည်လား။",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"wallpaper_display_mode",
+            "value":"အံဝင်ခွင်ကျပုံစံတစ်ခု ရွေးရန်",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"my_theme_0",
+            "value":"ကျွန်ုပ်၏ Theme",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"clock_edit_tips",
+            "value":"တည်းဖြတ်ရန် နှစ်ချက်နှိပ်ပါ၊ နာရီကို ရွှေ့ရန် နှစ်ချက်နှိပ်၍ ဖိထားပါ။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"icon_size_tip",
+            "value":"Dock ပေါ်တွင် သက်ရောက်မှု မရှိပါ။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"theme_data_service_permissions",
+            "value":"ခွင့်ပြုချက် အသိပေးချက်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"theme_personalize_screen_reading_other_page",
+            "value":"မျက်နှာပြင် အမှတ် %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"switch_to_desktop_preview",
+            "value":"ပင်မ မျက်နှာပြင် အစမ်းကြည့်ရှုမှုသို့ ပြောင်းရန်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"about",
+            "value":"အကြောင်း",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"picture_getting",
+            "value":"ဓာတ်ပုံ ရယူနေဆဲ…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_apply_failed",
+            "value":"ဖောင့်ကို သုံး၍ မရနိုင်ပါ။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"generate_failed",
+            "value":"ဖန်တီးထုတ်လုပ်၍ မရနိုင်ပါ။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"switch_to_lock_screen_preview",
+            "value":"လော့ခ်မျက်နှာပြင် အစမ်းကြည့်ရှုမှုသို့ ပြောင်းရန်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"confirm",
+            "value":"အတည်ပြုရန်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"customize",
+            "value":"စိတ်ကြိုက်ဖန်တီးရန်",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"clock_style",
+            "value":"နာရီ ပုံစံ %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screen_off_theme",
+            "value":"အမြဲဖွင့် ပြသမှု",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"blur_slider_read_notes",
+            "value":"၎င်းကို သက်ဝင်လုပ်ဆောင်ရန် ဆလိုက်ဒါကို နှိပ်၍ အဝါးကို ချိန်ညှိပါ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"multi_checkbox",
+            "value":"တစ်ခုထက်ပို၍ရွေးရန် ချက်ခ်ဘောက်စ်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_main_pandora_fail_content",
+            "value":"နောက်ခံပုံ ဖန်တီးထုတ်လုပ်မှု မအောင်မြင်ပါ။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"current_icon_checked",
+            "value":"လက်ရှိ အိုင်ကွန်များ၊ ရွေးချယ်ထားသည်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"wallpaper_recommendation",
+            "value":"အကြံပြုချက်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remove_theme_info",
+            "value":"ဤ Theme ကို ၎င်း၏ နောက်ခံပုံ၊ အိုင်ကွန် ပက်ကေ့ခ်ျတို့နှင့်အတူ ဖယ်ရှားသွားပါမည်။",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"click_input_text",
+            "value":"စာသားများ ဖြည့်သွင်းရန်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screenlock_settings",
+            "value":"လော့ခ်မျက်နှာပြင်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"stop_theme_data_service_title",
+            "value":"Themes ဝန်ဆောင်မှုကို ပိတ်ရန်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"insufficient_storage_toast",
+            "value":"စက်တွင်း သိုလှောင်မှု မလုံလောက်သောကြောင့် Theme ဝန်ဆောင်မှုများကို မပံ့ပိုးပေးနိုင်ပါ။ နေရာလွတ်သွားစေရန် ဖိုင်များကို ဖျက်ပါ။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"continue_generating",
+            "value":"ထပ်ဖန်တီးရန်",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"waiting_closing",
+            "value":"ပိတ်နေဆဲ…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aod_ways_display_awake_off",
+            "value":"ပိတ်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"have_occlusion",
+            "value":"ရုပ်ပုံထဲရှိ မျက်နှာမှာ ကွယ်နေပါသည်။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"top_left",
+            "value":"ထိပ်ပိုင်း ဘယ်ဘက်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"current_wallpaper_checked",
+            "value":"လက်ရှိ နောက်ခံပုံ၊ ရွေးချယ်ထားသည်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"wallpaper_cannot_be_edited_in_a_small_window",
+            "value":"နောက်ခံပုံများကို ဝင်းဒိုးအသေးများတွင် တည်းဖြတ်၍ မရနိုင်ပါ။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"end_of_service",
+            "value":"ပိတ်ရန်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ai_wallpaper_service_description_1",
+            "value":"နောက်ခံပုံနှင့်ဆက်နွှယ်သော လုပ်ဆောင်ချက်များကို ပံ့ပိုးပေးရန် ဤဝန်ဆောင်မှုသည် %1$s ချိတ်ဆက်မှုကို လိုအပ်ပြီး ရုပ်ပုံများကို ဖတ်ပြီး အပ်လုဒ်လုပ်/လွှဲပြောင်းရန် လိုအပ်ပါသည်။ သဘောတူသည်ကို နှိပ်ခြင်းဖြင့် ဤစည်းမျဉ်းများနှင့် %2$s ကို သင် သဘောတူပါသည်။ သင့်ကိုယ်ရေး အချက်အလက်များကို စီမံလုပ်ဆောင်ပုံအကြောင်း နောက်ထပ်အသေးစိတ်တို့အတွက် %3$s ကို ကိုးကားပါ။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"clock_font_style",
+            "value":"နာရီ ဖောင့် %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"HiSearch_title",
+            "value":"voice Search",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"theme_data_service",
+            "value":"Themes ဝန်ဆောင်မှု",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ai_wallpaper_service_name_3",
+            "value":"Time Travel Theme ဝန်ဆောင်မှု",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"photo_not_meet_have_label",
+            "value":"ဤဓာတ်ပုံကို အသုံးပြု၍ မရနိုင်ပါ။ အကြံပြုထားသော ပုံများမှ အခြားပုံကို ရွေးချယ်ပေးပါ။",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"image_decoding_failure",
+            "value":"ရုပ်ပုံဖောမတ် ချို့ယွင်းချက် ဖြစ်နေသည်။ ထပ်ကြိုးစားပါ။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"table_theme",
+            "value":"ပင်မ မျက်နှာပြင်",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"magic_screen",
+            "value":"နှစ်ဖက်မြင် အစမ်းကြည့်ရှုမှု",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"edit_M_tip",
+            "value":"တည်းဖြတ်ရန် မျက်နှာပြင်နှစ်ခုတွဲ စနစ်သို့ ဖြန့်လိုက်ပါ။",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"have_no_people",
+            "value":"မည်သည့်မျက်နှာမျှ ရှာဖွေ တွေ့ရှိခြင်း မရှိပါ။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"turn_off_dynamic",
+            "value":"Live ပိတ်ပါမည်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"generate_failed_origin_img_error",
+            "value":"ဖန်တီးထုတ်လုပ်၍ မရနိုင်ပါ။",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"window_animation_title",
+            "value":"ဝင်းဒိုး ချုံ့ရာတွင် သုံးရန်ပုံစံ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"window_animation_attraction",
+            "value":"မီးခွက်စောင့်နတ်ပုံစံ အန်နီမေးရှင်း",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aod_all_day_display",
+            "value":"တစ်နေ့လုံး",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screenlock_sign_entry",
+            "value":"လော့ခ်မျက်နှာပြင် စာတန်းကို သတ်မှတ်ရန် နည်းလမ်း",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"intelligent_status_on",
+            "value":"ဖွင့်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"share_description",
+            "value":"ဝေမျှရန်၊ စိတ်ကြိုက်ဖန်တီးရန်နှင့် အလှဆင်ရန်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"enableTheme",
+            "value":"Theme ကို သုံးနေဆဲ…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"apply_generating_ai_wallpaper",
+            "value":"နောက်ခံပုံ ဖန်တီးထုတ်လုပ်ရန်အတွက် သုံးမည်ကို နှိပ်ပါ။",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"update_photo",
+            "value":"အပ်ဒိတ်လုပ်ရန်",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"execution_timed_out",
+            "value":"လုပ်ဆောင်ချက် အချိန်စေ့သွားပါပြီ။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"blurred",
+            "value":"အဝါး လုပ်ထားသည်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"more",
+            "value":"နောက်ထပ်",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dock_color_style",
+            "value":"Dock အရောင် အလိုက်သင့် ပြောင်းလဲရန်",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"continue",
+            "value":"ဆက်လုပ်ရန်",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"notification_main_pandora_finish_content",
+            "value":"AI နောက်ခံပုံများကို ဖန်တီးထုတ်လုပ်ပြီးပါပြီ။ ပြသရန် နှိပ်ပြီး သုံးလိုက်ပါ။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"left_of_center",
+            "value":"အလယ်ပိုင်း ဘယ်ဘက်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"tip_content",
+            "value":"Theme ကို အမြန်ပြောင်းပြီး နောက်ခံပုံနှင့် ဝစ်ဂျတ်များကို စိတ်ကြိုက်ပြင်ဆင်ရန် လော့ခ်မျက်နှာပြင် သို့မဟုတ် ပင်မ မျက်နှာပြင်ပေါ် လက်နှစ်ချောင်းကို ဆွဲစေ့ပါ။",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_wallpaper_info",
+            "value":"ဖော်ပြပါတွင် နောက်ခံပုံ သုံးရန်",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"recover",
+            "value":"မူလအတိုင်း ပြန်ထားရန်",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"delete_fail",
+            "value":"ဖျက်၍ မရနိုင်ပါ။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"center_the_original_image",
+            "value":"အလယ်",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"theme_card_accessibility_text",
+            "value":"Theme များ ပြောင်းရန် လက်နှစ်ချောင်းဖြင့် ဘယ် သို့မဟုတ် ညာသို့ ပွတ်ဆွဲပါ။ Theme ကို ဖယ်ရှားရန် လက်နှစ်ချောင်းဖြင့် အပေါ်ကို ပွတ်ဆွဲပါ။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_off_swipe_up_title",
+            "value":"\"ပင်မ မျက်နှာပြင်တွင် အပေါ်သို့ ပွတ်ဆွဲရန်\"ကို ပိတ်မည်လား။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Desktop_SwipeUp",
+            "value":"ပင်မ မျက်နှာပြင်တွင် အပေါ်သို့ ပွတ်ဆွဲရန်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"window_animation_default",
+            "value":"ပုံသေ အန်နီမေးရှင်း",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"cover_screen",
+            "value":"ကာဗာမျက်နှာပြင်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"bottom_of_center",
+            "value":"အောက်ခြေ အလယ်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"toggle_view",
+            "value":"ပြသမှုများ ပြောင်းရန်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"end_of_service_1",
+            "value":"ဝန်ဆောင်မှု ပိတ်ရန်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remove",
+            "value":"ဖယ်ရှားရန်",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dock_color_style_follow_window_tips",
+            "value":"နောက်ခံပုံ၏ အရောင် သို့မဟုတ် အဆုံးထိ ချဲ့ထားသော ဝင်းဒိုး၏ အကြောင်းအရာအပေါ်လိုက်၍ Dock သည် အရောင်ပြောင်းလဲသွားပါမည်။",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"auto_align_content",
+            "value":"အက်ပ်များကို ဖယ်ရှားသည့်အခါ နေရာလွတ်များတွင် အော်တို ဖြည့်ပေးပါသည်။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"theme_personalize_full_screen_reading_page_one",
+            "value":"မျက်နှာပြင် အမှတ် %d ၊ အခြား နောက်ခံပုံများ ပြသရန် ဘယ် သို့မဟုတ် ညာသို့ ပွတ်ဆွဲပါ။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"interactive_theme_detail_tip",
+            "value":"မှတ်ချက် ဤ Theme ကို သုံးလိုက်လျှင် သင်၏ မျက်နှာဖြင့် လော့ခ်ဖြေစနစ် နည်းလမ်းသည် \"တိုက်ရိုက် လော့ခ်ဖြေစနစ်\" မှ \"လော့ခ်ဖြေရန် ပွတ်ဆွဲစနစ်\" သို့ ပြောင်းသွားပါမည်။",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pandora_service_unavailable",
+            "value":"ယာယီ မရရှိနိုင်ပါ။ နောက်မှ ထပ်ကြိုးစားပါ။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"lock_layout",
+            "value":"လော့ခ်ပုံစံ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"recover_Theme_App",
+            "value":"Themes အက်ပ်ကို မူလအတိုင်း ပြန်ထားမည်လား။",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"center",
+            "value":"အလယ်ပိုင်း",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"upload_photo_loading",
+            "value":"လုပ်ဆောင်နေဆဲ…",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"turn_on_dynamic",
+            "value":"Live ဖွင့်ပါမည်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"reach_upper_limit",
+            "value":"နောက်ခံပုံ အများဆုံး အရေအတွက်သို့ ရောက်ရှိသွားပါပြီ။ အသစ်များ ထည့်ရန် အချို့ကို ဖျက်ပါ။",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"desktop_style_title",
+            "value":"ရှော့(တ်)ကတ်ဘားနှင့် အခြေအနေပြ ဘား",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"apply_success",
+            "value":"အောင်မြင်စွာ သုံးပြီးပါပြီ။",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"intelligent",
+            "value":"Assistant·TODAY",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"resource_description",
+            "value":"ရှင်းလင်းဖော်ပြချက်",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"more_online_themes",
+            "value":"နောက်ထပ် Theme များ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"should_apply_current_theme",
+            "value":"ဤ Theme ကို သုံးမည်လား။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"default_icon",
+            "value":"ကြိုတင်သတ်မှတ်မှု",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keep_one_wallpaper",
+            "value":"အနည်းဆုံး နောက်ခံပုံတစ်ပုံ လိုအပ်သည်။",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_failed",
+            "value":"သုံး၍ မရနိုင်ပါ။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cam_mover_is_enabled_blur_is_not_supported",
+            "value":"Dynamic အထူးပြုလုပ်ချက်ကို ဖွင့်ထား၍ အဝါး အထူးပြုလုပ်ချက်ကို ပိတ်လိုက်ပါသည်။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"blur_is_enabled_Cam_mover_is_not_supported",
+            "value":"အဝါး အထူးပြုလုပ်ချက်ကို ဖွင့်ထား၍ Dynamic အထူးပြုလုပ်ချက်ကို ပိတ်လိုက်ပါသည်။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dof_off",
+            "value":"Depth of Field ကို ပိတ်ထားသည်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"bottom_right",
+            "value":"အောက်ခြေ ညာဘက်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"top_of_center",
+            "value":"အလယ် ထိပ်ပိုင်း",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_off_swipe_up_content",
+            "value":"၎င်းကို ပိတ်ထားသည့်အခါ App Chest ကို ဖွင့်နိုင်မည် မဟုတ်ပါ။ အခြား မည်သည့်နေရာတွင်မျှ မပြသထားသော App Chest ရှိ အက်ပ်များကို ပင်မ မျက်နှာပြင်ရှိ ဖိုင်တွဲအသစ်တွင် ဝင်ရောက် သုံးစွဲနိုင်ပါမည်။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Desktop_slide",
+            "value":"ရှာဖွေရေးအတွက် အောက်သို့ ပွတ်ဆွဲရန်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keywords_outer_apply",
+            "value":"အက်ပ်များ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"random",
+            "value":"ကျပန်း",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"recommend_theme",
+            "value":"အသေးစိတ် ကြည့်ရန်",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dof_on",
+            "value":"Depth of Field ကို ဖွင့်ထားသည်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"login_failed",
+            "value":"အင်တာနက် ချိတ်ဆက်မှု မရှိပါ။ နောက်မှ ထပ်ကြိုးစားပါ။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aigc_generation_prompt",
+            "value":"voice AI က ဖန်တီးထုတ်လုပ်ပေးထားသည်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"default_font",
+            "value":"ကြိုတင်သတ်မှတ်မှု",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"theme_cannot_be_edited_in_a_small_window",
+            "value":"Theme များကို ဝင်းဒိုးအသေးများတွင် တည်းဖြတ်၍ မရနိုင်ပါ။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"intelligent_settings",
+            "value":"Assistant·TODAY",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pandora_theme_upload_photo_tips",
+            "value":"%1$d. မျက်နှာပုံကို ရှင်းလင်းစွာ မြင်ရသည့် လူပုံ ဓာတ်ပုံတစ်ပုံကို အပ်လုဒ်လုပ်ပေးပါ။\n%2$d. ရုပ်ပုံ ဖန်တီးထုတ်လုပ်မှုသည် ဖန်တီးမည့်ပုံပါပုဂ္ဂိုလ်က ငယ်ရွယ်လျှင် အလုပ်မလုပ်ခြင်းမျိုး ရှိနိုင်ပါသည်။\n%3$d. AI က ဖန်တီးထုတ်လုပ်ပေးသော ရုပ်ပုံများမှာ စိတ်ကျေနပ်စရာမကောင်းခြင်းမျိုး ရှိနိုင်ပါသည်။\n%4$d. ရိုင်းပျမှု၊ အကြမ်းဖက်မှု သို့မဟုတ် ခွဲခြားဆက်ဆံမှု အကြောင်းအရာများ ပါဝင်သည့် ဓာတ်ပုံများကို အပ်လုဒ်မလုပ်ပါနှင့်။",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"show_lunar_date",
+            "value":"ရိုးရာလပြက္ခဒိန် ရက်စွဲကို ပြရန်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"undelete_toast",
+            "value":"ဤနောက်ခံပုံကို ဖျက်၍ မရနိုင်ပါ။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_to",
+            "value":"%s သို့ ဆွဲရွှေ့ထားသည်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"update_available",
+            "value":"အပ်ဒိတ်များ ရရှိနိုင်ပါသည်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"font_style",
+            "value":"ဖောင့်များ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"select_all",
+            "value":"အားလုံး ရွေးရန်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"person_information",
+            "value":"သွင်ပြင်လက္ခဏာများ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"try_out",
+            "value":"စမ်းကြည့်ရန်",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_restored",
+            "value":"အက်ပ်ကို မူလအတိုင်း ပြန်ထားပြီးဖြစ်သည်။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"regenerate",
+            "value":"ထပ်ကြိုးစားရန်",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"no_select",
+            "value":"ဘာကိုမျှ မရွေးထားပါ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"untoggle_camera_mover",
+            "value":"ဤရွေးချယ်မှုကို မရွေးလိုက်လျှင် Dynamic အထူးပြုလုပ်ချက် ပိတ်သွားပါမည်။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dof",
+            "value":"DoF",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"clock_font_color",
+            "value":"နာရီ စာသားအရောင် %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"apply_watch_info",
+            "value":"နာရီ မျက်နှာပြင်တွင် သုံးရန်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"wallpaper_carousel_gallery",
+            "value":"နောက်ခံပုံများ (အများဆုံး %d ပုံအထိ)",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"more_online_icon",
+            "value":"နောက်ထပ် အိုင်ကွန်များ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"current_theme",
+            "value":"လက်ရှိ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"keywords_outer_facard",
+            "value":"ဝစ်ဂျတ်များ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"right_of_center",
+            "value":"အလယ်ပိုင်း ညာဘက်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"apply_dialog_title",
+            "value":"ဖော်ပြပါတွင် Theme ကို သုံးရန်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"more_online_font",
+            "value":"နောက်ထပ် ဖောင့်များ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"homescreen",
+            "value":"ပင်မ မျက်နှာပြင်",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"do_camera_mover",
+            "value":"Dynamic အထူးပြုလုပ်ချက်ကို ဖွင့်ထားသည်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"generate_failed_and_try_again",
+            "value":"ဖန်တီးထုတ်လုပ်၍ မရနိုင်ပါ။ ထပ်ကြိုးစားကြည့်ပါ။",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"style_choose",
+            "value":"စတိုင်",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"icon_size_restore_default",
+            "value":"ပြန်လည်သတ်မှတ်ရန်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"camera_mover",
+            "value":"Dynamic",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"lockscreen",
+            "value":"လော့ခ်မျက်နှာပြင်",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"network_unavailable",
+            "value":"အင်တာနက် ချိတ်ဆက်မှု မရှိပါ။ သင့်ကွန်ရက် ဆက်တင်ကို စစ်ဆေးပါ။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"delete_wallpaper",
+            "value":"နောက်ခံပုံကို ဖျက်ရန်",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ai_wallpaper_terms",
+            "value":"Time Travel Theme နှင့်ပတ်သက်၍ Generative AI စွမ်းဆောင်ရည်များအတွက် သုံးစွဲမှု စည်းမျဉ်းများ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"share_card_hint",
+            "value":"ဝေမျှရန် အခြားစက်ကို ထိတို့ပါ သို့မဟုတ် ဆွဲရွှေ့၍ ချပေးပါ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pandora_theme_description",
+            "value":"%1$d. မျက်နှာပုံကို ရှင်းလင်းစွာ မြင်ရသည့် လူပုံ ဓာတ်ပုံတစ်ပုံကို အပ်လုဒ်လုပ်ပေးပါ။\n%2$d. AI က ဖန်တီးထုတ်လုပ်ပေးသော ရုပ်ပုံများမှာ မတိကျခြင်း သို့မဟုတ် အများကြည့်ရှုရန် မသင့်လျော်ခြင်း ရှိနိုင်ပါသည်။\n%3$d. ရိုင်းပျမှု၊ အကြမ်းဖက်မှု သို့မဟုတ် ခွဲခြားဆက်ဆံမှု အကြောင်းအရာများ ပါဝင်သည့် ဓာတ်ပုံများကို အပ်လုဒ်မလုပ်ပါနှင့်။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"male",
+            "value":"အမျိုးသား",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"screen_reading_other_page",
+            "value":"အစမ်းကြည့် စာမျက်နှာ နံပါတ် %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"have_multi_people",
+            "value":"ပုံ၌ လူတစ်ဦးသာ ပါသင့်ပါသည်။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"applying",
+            "value":"သုံးနေဆဲ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"tip_title",
+            "value":"လော့ခ်မျက်နှာပြင်နှင့် ပင်မ မျက်နှာပြင်ကို အမြန် စိတ်ကြိုက်ပြင်ဆင်ရန်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"photo_not_meet_no_label",
+            "value":"ဤဓာတ်ပုံကို အသုံးပြု၍ မရနိုင်ပါ။ အခြားတစ်ခုကို ရွေးချယ်ပေးပါ။",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pop_up_content",
+            "value":"တည်ငြိမ်သော အထူးပြုလုပ်ချက်ကို သုံးရန် အကြံပြုပါသည်။ Live ကို ပိတ်ထားသည်။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"button_text",
+            "value":"Theme ထည့်ရန် ခလုတ်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"switched_desktop_preview",
+            "value":"ပင်မ မျက်နှာပြင် အစမ်းကြည့်ရှုမှုသို့ ပြောင်းထားသည်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"infancy",
+            "value":"ကလေး",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"scale_to_fill_screen",
+            "value":"ချဲ့",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"more_edits",
+            "value":"နောက်ထပ် တည်းဖြတ်စရာများ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"tiling",
+            "value":"အပိုင်းလိုက်",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"lock_screen_clock",
+            "value":"လော့ခ်မျက်နှာပြင် နာရီ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"undo_camera_mover",
+            "value":"Dynamic အထူးပြုလုပ်ချက်ကို ပိတ်ထားသည်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"big_angle",
+            "value":"မလိုက်ဖက်သော ရှုထောင့်။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"notification_main_pandora_ongoing_content",
+            "value":"AI နောက်ခံပုံများ ဖန်တီးထုတ်လုပ်နေသည်။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"get_best_results",
+            "value":"ပိုကောင်းသည့် ရလဒ်များ ရရှိနိုင်သည့် နည်းလမ်းကို လေ့လာရန်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"apply_sub_screen_info",
+            "value":"ကာဗာမျက်နှာပြင်တွင် သုံးရန်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"icon_size",
+            "value":"ပင်မမျက်နှာပြင် အိုင်ကွန် အရွယ်အစား",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"choose_person_info",
+            "value":"သင်၏ သွင်ပြင်လက္ခဏာများကို ရွေးချယ်ပေးပါ။",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"theme_data_service_privacy",
+            "value":"Themes ဝန်ဆောင်မှုနှင့် ကိုယ်ရေးအချက်အလက် လုံခြုံရေးအကြောင်း ထုတ်ပြန်ချက်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"low_pixel",
+            "value":"ရုပ်ပုံ ရီဆိုလူးရှင်း နည်းလွန်းပါသည်။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"apply_watch_info_toast",
+            "value":"ချိန်ကိုက်၍ မရနိုင်ပါ။ ထပ်ကြိုးစားကြည့်ပါ။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dock_color_style_follow_system",
+            "value":"ပြသမှု စနစ်",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"change_wallpaper",
+            "value":"နောက်ခံပုံ ပြောင်းရန်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"switched_lock_screen_preview",
+            "value":"လော့ခ်မျက်နှာပြင် အစမ်းကြည့်ရှုမှုသို့ ပြောင်းထားသည်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"apply_current_theme_first",
+            "value":"ဦးစွာ Theme ကို သုံးပါ။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dynamic",
+            "value":"Live",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"save_carousel",
+            "value":"သိမ်းရန်",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"bottom_left",
+            "value":"အောက်ခြေ ဘယ်ဘက်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"login_in_settings",
+            "value":"ဆက်တင်တွင် သင့် HUAWEI ID သို့ ဦးစွာ ဝင်ရောက်ပါ။",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"photo_not_meet",
+            "value":"ဤဓာတ်ပုံကို အသုံးပြု၍ မရနိုင်ပါ။ အသားပေးဖော်ပြထားသော အလှပုံများမှ အခြားတစ်ပုံကို ရွေးချယ်ပေးပါ။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pandora_aesthetic_dialog_confirm",
+            "value":"အိုကေ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"deselect_all",
+            "value":"အားလုံး မရွေးရန်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"age_too_small_error",
+            "value":"ဖန်တီးထုတ်လုပ်၍ မရနိုင်ပါ။ ဖန်တီးမည့်ပုံပါပုဂ္ဂိုလ်မှာ အရွယ်ငယ်လွန်းသည်။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ai_wallpaper_service_subtitle_1",
+            "value":"Cloud အခြေပြု AI အယ်လ်ဂိုရီသမ်များကို အသုံးပြု၍ နောက်ခံပုံများ ဖန်တီးထုတ်လုပ်ရန် ရွေးထားသော ရုပ်ပုံများကို Cloud ဆာဗာသို့ အပ်လုဒ်လုပ်ပါမည်။ ၎င်းသည် ဖော်ပြပါ ခွင့်ပြုချက်များ လိုအပ်ပါသည်-",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"generating_ai_wallpaper",
+            "value":"AI နောက်ခံပုံ ဖန်တီးထုတ်လုပ်နေဆဲ…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"fill_screen",
+            "value":"အပြည့်",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"generating_ai_wallpaper_need_time",
+            "value":"ဖန်တီးထုတ်လုပ်နေဆဲ… (%d မိနစ်ခန့် ကြာမြင့်မည်)",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"edit_G_tip",
+            "value":"တည်းဖြတ်ရန် မျက်နှာပြင်သုံးခုတွဲ စနစ်သို့ ဖြန့်လိုက်ပါ။",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"un_blurred",
+            "value":"အဝါး ဖျောက်ထားသည်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"composition_failed",
+            "value":"အချိုးအစားချိန်ညှိမှု မအောင်မြင်ပါ။",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"unchecked",
+            "value":"မရွေးထားပါ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ai_wallpaper_service_stop_note_1",
+            "value":"ဤဝန်ဆောင်မှုကို ပိတ်လိုက်ပါက ၎င်းကို ဆက်လက်ရရှိနိုင်တော့မည် မဟုတ်ပါ။ မည်သို့ပင်ဖြစ်စေ ပိတ်မည်လား။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"delete",
+            "value":"ဖျက်ရန်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_theme",
+            "value":"Theme ထည့်ရန်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dock_color_style_follow_window",
+            "value":"နောက်ခံပုံနှင့် ဝင်းဒိုးများ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"occlusion_exists",
+            "value":"မျက်နှာကွယ်နေသည်",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"my_theme_d",
+            "value":"ကျွန်ုပ်၏ Theme %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"file_getting",
+            "value":"Cloud မှ ဖိုင်များကို ဒေါင်းလုဒ်လုပ်နေဆဲ…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"clear_facial_features",
+            "value":"ရှင်းလင်းသည့် သွင်ပြင်အနေအထား",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"font_apply_successd",
+            "value":"ဖောင့်ကို သုံးထားပါသည်။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"wallpaper_carousel_info",
+            "value":"နောက်ခံပုံ လှည့်လည်ပြသမှု (%1$d/%2$d)",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"after_generate_wallpaper_enable_theme",
+            "value":"ဤ Theme ကို တစ်ချိန်တည်းအပြိုင် သုံးသွားပါမည်။",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_ways_display_awake_scheduled",
+            "value":"စီစဉ်ထားချိန်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"set_as_desktop",
+            "value":"ပင်မ မျက်နှာပြင်အဖြစ် သတ်မှတ်ရန်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"stop_theme_data_service_message",
+            "value":"ဤသို့ လုပ်လိုက်လျှင် ဤစက်ရှိ Themes ဝန်ဆောင်မှု ပိတ်သွားပါမည်။ သင်၏ Themes နှင့် အခြားရင်းမြစ်များသည် အပြန်အလှန်တုံ့ပြန်နိုင်မှု ဆုံးရှုံးသွားမည်ဖြစ်၍ သင့်ဒေတာကို ဆက်လက်ပြသပေးနိုင်မည်မဟုတ်ပါ။ မည်သို့ပင်ဖြစ်စေ ပိတ်မည်လား။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"unsupported_moving_photo_wallpaper",
+            "value":"ပင်မ မျက်နှာပြင်တွင် လှုပ်ရှားနောက်ခံပုံနှင့် တွဲဖက်လုပ်ဆောင်နိုင်ခြင်း မရှိပါ။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"applyWallpaper",
+            "value":"နောက်ခံပုံကို သုံးနေဆဲ…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"content_reporting",
+            "value":"အကြောင်းအရာကို ရီပို့(တ်)လုပ်ရန်",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"keywords_cover_screen",
+            "value":"ကာဗာမျက်နှာပြင်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"face_the_camera",
+            "value":"မျက်နှာတည့်တည့်ပုံ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"end_aigc_service_text",
+            "value":"အသေးစိတ် သိရှိရန် %1$sနှင့် %2$sကို ကိုးကားပါ။ ဤဝန်ဆောင်မှုကို ဆက်လက် အသုံးမပြုလိုပါက %3$s ကို နှိပ်ပါ။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"center_and_fit",
+            "value":"အံဝင်ခွင်ကျ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"screen_reading_first_page",
+            "value":"စနစ် ပုံသေဖောင့်၊ အစမ်းကြည့် မျက်နှာပြင် အမှတ် %d၊ အခြားအသေးစိတ် မျက်နှာပြင်များကို လုပ်ဆောင်ရန် ဘယ် သို့မဟုတ် ညာသို့ ပွတ်ဆွဲပါ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"upload_photo",
+            "value":"အပ်လုဒ်လုပ်ရန်",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"main_screen",
+            "value":"ပင်မ မျက်နှာပြင်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dock_auto_hide_style",
+            "value":"ဝင်းဒိုးများကို အဆုံးထိချဲ့ထားချိန် သို့မဟုတ် ခွဲထားချိန်၌ Dock ကို ဝှက်ရန်",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"apply_sub_screen_info_subtext",
+            "value":"ကာဗာမျက်နှာပြင် Theme များ၌ ၎င်းကို တည်းဖြတ်နိုင်ပါသည်။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"intelligent_status_off",
+            "value":"ပိတ်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"moment_x_settings",
+            "value":"SideShow",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"moment_x_smart_display_mode_title",
+            "value":"စမတ်",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"moment_x_state_off",
+            "value":"ပိတ်",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"moment_x_all_day_display_mode_title",
+            "value":"တစ်နေ့လုံး",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"color_style_not_support_in_desktop_tips",
+            "value":"Theme ကို ပင်မ မျက်နှာပြင်တွင်သာ သုံးထားပါက နာရီ စတိုင်ကို သုံး၍ ရမည် မဟုတ်ပါ။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"color_style_system_title",
+            "value":"စနစ် အရောင်များ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"color_style_explanation",
+            "value":"ရောင်စုံမင် အရောင်များကို ပင်မ မျက်နှာပြင်၊ လော့ခ်မျက်နှာပြင်နှင့် အမြဲဖွင့် ပြသမှုတို့ရှိ နာရီနှင့် ဝစ်ဂျတ်များအပြင် အသိပေးချက် မျက်နှာပြင်နှင့် ကွန်ထရိုးလ် ပန်နယ်တို့တွင်လည်း သုံးပါသည်။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"color_style_base_title",
+            "value":"အခြေခံအရောင်များ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"color_style_suggested_title",
+            "value":"အကြံပြုထားသော အရောင်များ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"color_style_button_text",
+            "value":"ရောင်စုံမင် အရောင်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"apply_Lockscreen",
+            "value":"လော့ခ် မျက်နှာပြင်တွင် သုံးနေဆဲ…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"tip_share_text",
+            "value":"ဝေမျှရန်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dock_item_recentcenter",
+            "value":"အလုပ်စင်တာ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dock_item_filemanager",
+            "value":"Files",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"touch",
+            "value":"ထိ၍ ဝေမျှ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dock_item_recyclebin",
+            "value":"အမှိုက်ပုံး",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dock_item_visible",
+            "value":"Dock တွင် ပြသရန်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dock_item_appcenter",
+            "value":"App Chest",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"unlock_set",
+            "value":"ဤ Theme ကို အခြားသူများနှင့် %1$sနိုင်ပါသည်။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"preview_image",
+            "value":"ပုံကို အစမ်းကြည့်ရန်",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"online_icons",
+            "value":"ဒေါင်းလုဒ်လုပ်နိုင်သည့် အိုင်ကွန်များ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"online_wallpapers",
+            "value":"ဒေါင်းလုဒ်လုပ်နိုင်သည့် နောက်ခံပုံများ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"online_themes",
+            "value":"ဒေါင်းလုဒ်လုပ်နိုင်သည့် Theme များ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"online_fonts",
+            "value":"ဒေါင်းလုဒ်လုပ်နိုင်သည့် ဖောင့်များ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screen_load_other_detail_page",
+            "value":"အခြားအစမ်းကြည့် မျက်နှာပြင်များကို လုပ်ဆောင်ရန် လက်နှစ်ချောင်းဖြင့် ဘယ်ဘက် သို့မဟုတ် ညာဘက်သို့ ပွတ်ဆွဲပါ။ ၎င်းကို သက်ဝင်လုပ်ဆောင်ရန် အစမ်းကြည့် မျက်နှာပြင်ကို နှစ်ချက်နှိပ်ပါ။",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screenlock_cannot_be_edited_in_a_small_window",
+            "value":"လော့ခ်မျက်နှာပြင်ကို Floating ဝင်းဒိုးများတွင် တည်းဖြတ်၍ မရနိုင်ပါ။",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

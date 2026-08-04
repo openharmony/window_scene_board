@@ -67,11 +67,11 @@ import {
 import { SmartDockStyleMgr } from '../manager/SmartDockStyleMgr';
 import lazy {
   SCBTripleStateChange,
-  UltraScreenExpandAnimUtils,
-} from '@ohos/launchercommon/src/main/ets/utils/UltraScreenExpandAnimUtils';
+  TripleFoldExpandAnimUtils,
+} from '@ohos/launchercommon/src/main/ets/utils/TripleFoldExpandAnimUtils';
 import lazy {
-  UltraScreenAnimationConstants
-} from '@ohos/launchercommon/src/main/ets/constants/UltraScreenAnimationConstants';
+  TripleFoldAnimationConstants
+} from '@ohos/launchercommon/src/main/ets/constants/TripleFoldAnimationConstants';
 import { EvtBus } from '@ohos/frameworkwrapper/src/main/ets/eventbus/EventBus';
 import lazy { RecentDockAnimationEvent } from '@ohos/launchercommon/src/main/ets/events/RecentDockEvents';
 import { DockRegionLayoutPropertyVm } from '../viewmodel/DockRegionLayoutPropertyVm';
@@ -139,31 +139,31 @@ export struct DockAppItem {
   }
 
   private tripleAnimationListener = (event: RecentDockAnimationEvent) => {
-    this.tripleAnimation(event.lastUltraScreenState, event.curUltraScreenState);
+    this.tripleAnimation(event.lastTripleFoldState, event.curTripleFoldState);
   }
 
   private tripleAnimation(oldState: ScreenState, newState: ScreenState): void {
     log.showInfo(TAG, `recent dock item execute tripleAnimation, oldState is ${oldState}, newState is ${newState}`);
-    let stateChange: SCBTripleStateChange = UltraScreenExpandAnimUtils.getTripleDesktopStateChange(newState, oldState);
-    let col: number[] = UltraScreenExpandAnimUtils.getTripleDockColumn(this.index, false);
+    let stateChange: SCBTripleStateChange = TripleFoldExpandAnimUtils.getTripleDesktopStateChange(newState, oldState);
+    let col: number[] = TripleFoldExpandAnimUtils.getTripleDockColumn(this.index, false);
     animateTo({
       duration: 0,
     }, () => {
       this.animationVm.translateX =
-        UltraScreenExpandAnimUtils.initTripleDockAnimTranslateX(this.screenWidth, stateChange);
-      this.animationVm.alpha = UltraScreenExpandAnimUtils.initTripleRecentDockItemAnimAlpha(stateChange);
+        TripleFoldExpandAnimUtils.initTripleDockAnimTranslateX(this.screenWidth, stateChange);
+      this.animationVm.alpha = TripleFoldExpandAnimUtils.initTripleRecentDockItemAnimAlpha(stateChange);
     });
     animateTo({
-      curve: UltraScreenAnimationConstants.TRANSLATE_CURVES,
-      duration: UltraScreenAnimationConstants.ANIMATION_DURATION,
+      curve: TripleFoldAnimationConstants.TRANSLATE_CURVES,
+      duration: TripleFoldAnimationConstants.ANIMATION_DURATION,
     }, () => {
       this.animationVm.translateX = 0;
     });
-    let alphaDelayTime: number = UltraScreenExpandAnimUtils.getUltraScreenExpandAlphaDelayTime(col[0], stateChange);
+    let alphaDelayTime: number = TripleFoldExpandAnimUtils.getTripleFoldExpandAlphaDelayTime(col[0], stateChange);
     animateTo({
       curve: Curve.Linear,
       delay: alphaDelayTime,
-      duration: UltraScreenAnimationConstants.ALPHA_DURATION,
+      duration: TripleFoldAnimationConstants.ALPHA_DURATION,
     }, () => {
       this.animationVm.alpha = 1;
     });
@@ -303,7 +303,7 @@ export struct DockAppItem {
       onExpandAnimation: () => this.expandedAnimation(),
     };
     SCBTransitionManager.getInstance().registerExpandAnimationController(this.expandController);
-    if (DeviceHelper.isUltraScreenProduct()) {
+    if (DeviceHelper.isThreeFoldProduct()) {
       EvtBus.on<RecentDockAnimationEvent>(RecentDockAnimationEvent, this.tripleAnimationListener);
     }
     this.desktopContext?.eventHub.on(SmartDockConstants.DOCK_ZOOM_EVENT, this.onScaleChangeEvent);
@@ -314,7 +314,7 @@ export struct DockAppItem {
     log.showDebug(TAG, `aboutToDisappear: appInfo: ${this.appInfo?.bundleName}`);
     viewMgrPolicy.unRegisterViewCallback(ViewType.KEYGUARD, this.keyguardCallback);
     SCBTransitionManager.getInstance().unRegisterExpandAnimationController(this.expandController);
-    if (DeviceHelper.isUltraScreenProduct()) {
+    if (DeviceHelper.isThreeFoldProduct()) {
       EvtBus.off<RecentDockAnimationEvent>(RecentDockAnimationEvent, this.tripleAnimationListener);
     }
     this.desktopContext?.eventHub.off(SmartDockConstants.DOCK_ZOOM_EVENT, this.onScaleChangeEvent);

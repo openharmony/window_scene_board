@@ -14,6 +14,7 @@
  */
 import { LivePickUpTemplate } from '../../../data/template/LivePickUpTemplate';
 import { immersiveKgMgr } from '../../../../immersivekeyguardcommon/manager/ImmersiveKeyguardStateManager';
+import { AodStyleType, ImmersiveAodStyle } from '../../../../immersivekeyguardcommon/base/interface/ImmersiveAodStyle';
 import { CommonUtils } from '@ohos/basicutils';
 import { ResUtils } from '@ohos/windowscene';
 import { LiveTimerData } from '../../../data/extend/LiveTimerData';
@@ -33,6 +34,12 @@ export struct PickUpComponent {
    * 通知面板类型
    */
   @Consume notificationType: number;
+
+  /**
+   * AOD显示样式
+   */
+  @State aodStyle: ImmersiveAodStyle | undefined = immersiveKgMgr.getOneMirrorState().getAodStyle(
+    this.notificationType === NotificationType.TYPE_PHONE_KEYGUARD);
 
   @State isShowLine: boolean = true;
   @Prop isSmallFoldOuterScreen: boolean = false;
@@ -61,7 +68,7 @@ export struct PickUpComponent {
       }
       .width('100%')
       .height(this.isSmallFoldOuterScreen ? 46 : 72)
-      .opacity(undefined)
+      .opacity(this.aodStyle?.isAod ? this.aodStyle.getStyleValue(AodStyleType.NTF_EXTEND_COMPONENT_ALPHA) : undefined)
       .padding(this.isSmallFoldOuterScreen ? undefined : {
         left: 12,
         right: 12
@@ -77,11 +84,12 @@ export struct PickUpComponent {
         .fontFamily('HarmonyHeiTi')
         .fontWeight(FontWeight.Regular)
         .fontSize(this.getFontSize())
-        .fontColor($r('sys.color.ohos_id_color_text_secondary'))
+        .fontColor(this.aodStyle?.isAod ? this.aodStyle?.getStyleValue(AodStyleType.FONT_COLOR) :
+        $r('sys.color.ohos_id_color_text_secondary'))
         .textAlign(TextAlign.Start)
         .maxLines(1)
         .textOverflow({ overflow: TextOverflow.Ellipsis })
-        .renderGroup(true)
+        .renderGroup(this.aodStyle?.isOneMirror ? false : true)
         .margin({ bottom: this.isSmallFoldOuterScreen ? 5 : 4 })
       this.buildStack();
     }
@@ -100,7 +108,7 @@ export struct PickUpComponent {
           .width(this.contentLayoutLength)
           .backgroundColor(this.data?.underlineColor)
           .borderRadius('3.5vp')
-          .opacity(1)
+          .opacity(this.aodStyle?.isAod ? 0 : 1)
           .margin({
             top: this.isSmallFoldOuterScreen ? 12 : 20
           })
@@ -110,7 +118,8 @@ export struct PickUpComponent {
         .fontFamily('HarmonyHeiTi')
         .fontWeight(this.isAodTimer() ? FontWeight.Medium : FontWeight.Bold)
         .fontSize(this.isSmallFoldOuterScreen ? '18vp' : '26vp')
-        .fontColor($r('sys.color.ohos_id_color_text_primary'))
+        .fontColor(this.aodStyle?.isAod ? this.aodStyle?.getStyleValue(AodStyleType.FONT_COLOR) :
+        $r('sys.color.ohos_id_color_text_primary'))
         .maxLines(1)
         .textOverflow({ overflow: TextOverflow.Ellipsis })
         .onSizeChange((oldValue: SizeOptions, newValue: SizeOptions) => {
@@ -118,7 +127,7 @@ export struct PickUpComponent {
             this.contentLayoutLength = newValue?.width as number;
           }, 0)
         })
-        .renderGroup(true)
+        .renderGroup(this.aodStyle?.isOneMirror ? false : true)
         .scale(this.getExtendContentScale())
     }
     .alignContent(Alignment.Start)
@@ -133,11 +142,12 @@ export struct PickUpComponent {
       .fontFamily('HarmonyHeiTi')
       .fontWeight(FontWeight.Regular)
       .fontSize('8vp')
-      .fontColor($r('sys.color.ohos_id_color_text_tertiary'))
+      .fontColor(this.aodStyle?.isAod ? this.aodStyle?.getStyleValue(AodStyleType.FONT_COLOR) :
+      $r('sys.color.ohos_id_color_text_tertiary'))
       .textAlign(TextAlign.Start)
       .maxLines(1)
       .textOverflow({ overflow: TextOverflow.Ellipsis })
-      .renderGroup(true)
+      .renderGroup(this.aodStyle?.isOneMirror ? false : true)
       .height(12)
   }
 
@@ -196,10 +206,11 @@ export struct PickUpComponent {
   }
 
   /**
+   * 判断是否AOD下通知类型为含有计时器的实况类型
    *
-   * @returns boolean 通知类型为含有计时器的实况类型
+   * @returns boolean AOD下通知类型为含有计时器的实况类型
    */
   private isAodTimer(): boolean {
-    return this.data.isTimeTemplate ? true : false;
+    return this.aodStyle?.isAod && this.data.isTimeTemplate ? true : false;
   }
 }

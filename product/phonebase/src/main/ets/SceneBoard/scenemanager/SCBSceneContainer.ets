@@ -1,5 +1,5 @@
 /*
- * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -91,21 +91,26 @@ import {
   SCBDividerParamArray,
   SingleStartFrom
 } from '@ohos/windowscene/src/main/ets/scene/session/SCBSceneContainerSession';
-import { sOutSideWindowMgr, SCBWindowSceneConfig, GlobalContext, DeviceHelper } from '@ohos/frameworkwrapper';
+import { sOutSideWindowMgr, SCBWindowSceneConfig, GlobalContext, DeviceHelper, ViewManagerPolicy, ViewType } from '@ohos/frameworkwrapper';
 import { LogDomain, LogHelper, StartType, Log, CommonUtils } from '@ohos/basicutils';
 import { desktopUtil, ItemUtils, SCBVisualEffectMgr } from '@ohos/componenthelper';
-import { SCBConstants, RotationConstants, VisualEffectConstants, } from '@ohos/commonconstants';
+import { SCBConstants, RotationConstants, VisualEffectConstants, DividerStyleConstants, } from '@ohos/commonconstants';
 import { OverlayCardInfo, OverlayCardState } from '@ohos/systemuicommon';
 import { ConfigurationConstant } from '@kit.AbilityKit';
 import power from '@ohos.power';
 import thermal from '@ohos.thermal';
 import { SCBSceneContainerViewModel } from './viewmodel/SCBSceneContainerViewModel';
+import lazy {
+  SCBSceneWindowAiSplitSwitchUtils
+} from '@ohos/windowscene/src/main/ets/scene/utils/SCBSceneWindowAiSplitSwitchUtils';
 import { RecentStateManager } from '../recent/innerstate/RecentStates';
 import { RecentForegroundBlurAniMgr } from '../recent/scenepanel/recentpanel/RecentForegroundBlurAniMgr';
 import { RecentDelete } from '../recent/scenepanel/recentpanel/RecentDelete';
 import { SCBRotateUtils } from './utils/SCBRotateUtils';
 import { SCBDivider } from './SCBDivider';
 import { SCBScalingScene } from './SCBScalingScene';
+import { SCBSplitManager } from './multiwindow/SCBSplitManager';
+import { RecentFrameCallback } from './SCBScreen';
 
 const TAG = 'SCBSceneContainer';
 const homeLog: LogHelper = LogHelper.getLogHelper(LogDomain.HOME, TAG);
@@ -283,6 +288,15 @@ export struct SCBSceneContainer {
         SCBSceneSessionManager.getInstance().notifyFullScreenMenuVisible(false);
       }
     }
+    if (curState === SCBSceneContainerState.SPLIT) {
+      ViewManagerPolicy.hideView(ViewType.DESKTOP);
+      ViewManagerPolicy.hideView(ViewType.WALLPAPER);
+      if (DeviceHelper.isPhone() && this.dividerParam.isUpDownSplit()) {
+        ViewManagerPolicy.showView(ViewType.STATUS_BAR);
+      } else {
+        ViewManagerPolicy.hideView(ViewType.STATUS_BAR);
+      }
+    }
   }
 
   private notifyKeyboardAboveFloatOrNot(previousState: SCBSceneContainerState, curState: SCBSceneContainerState): void {
@@ -376,7 +390,7 @@ export struct SCBSceneContainer {
     this.checkContainerStateIfNeed();
   }
 
-  private onContainerFoldChangeForUltraScreen() {
+  private onContainerFoldChangeForThreeFold() {
     this.needCompatibleBlur = false;
     homeLog.showInfo(`needCompatibleBlur: ${this.needCompatibleBlur},`)
   }
@@ -470,9 +484,9 @@ export struct SCBSceneContainer {
       }
     });
     this.sceneContainerSession.registerContainerStateChangeCallback(this.containerStateChangeCallback);
-    this.sceneContainerSession.registerContainerFoldChangeForUltraScreenCallback(
+    this.sceneContainerSession.registerContainerFoldChangeForThreeFoldCallback(
       () => {
-        this.onContainerFoldChangeForUltraScreen();
+        this.onContainerFoldChangeForThreeFold();
       });
   }
 
@@ -507,6 +521,13 @@ export struct SCBSceneContainer {
     }
     if (reason === SCBRotateChangeReason.ROTATE_END) {
       homeLog.showDebug('split scene, ROTATE_END');
+      if (this.sceneContainerSession.isSplitView()) {
+        if (DeviceHelper.isPhone() && this.dividerParam.isUpDownSplit()) {
+          ViewManagerPolicy.showView(ViewType.STATUS_BAR);
+        } else {
+          ViewManagerPolicy.hideView(ViewType.STATUS_BAR);
+        }
+      }
       animateTo({
         curve: Curve.Sharp,
         duration: 200,
@@ -1069,6 +1090,18 @@ export struct SCBSceneContainer {
     }
   }
 
+  @Builder
+  blurStandInIconBuilder(primary: boolean) {
+    if (this.sceneContainerSession.isSplit && this.buildBlurStandIn(primary)) {
+      Stack({alignContent: Alignment.Center}) {
+        Image(SCBSplitManager.getInstance().getCombIcon(this.sceneContainerSession, primary))
+          .width(DividerStyleConstants.SPLIT_ICON_SIZE)
+          .height(DividerStyleConstants.SPLIT_ICON_SIZE)
+      }
+      .size({ width: '100%', height: '100%' })
+    }
+  }
+
   private buildBlurStandIn(primary: boolean): boolean {
     if (primary && this.sceneContainerSession.primarySession && this.primarySceneParam.useBlurStandIn) {
       return true;
@@ -1324,6 +1357,7 @@ export struct SCBSceneContainer {
                       this.effectComponentBuilder(true);
                       this.splitBorderBuilder(true)
                       this.blurStandInBuilder(true)
+                      this.blurStandInIconBuilder(true)
                     }
                     .id('primaryStack')
                     .sceneRectStyles({ sceneParam: this.primarySceneParam })
@@ -1366,6 +1400,7 @@ export struct SCBSceneContainer {
                         this.effectComponentBuilder(false);
                         this.splitBorderBuilder(false)
                         this.blurStandInBuilder(false)
+                        this.blurStandInIconBuilder(false)
                       }
                       .id('secondaryStack')
                       .sceneRectStyles({ sceneParam: this.secondarySceneParam })

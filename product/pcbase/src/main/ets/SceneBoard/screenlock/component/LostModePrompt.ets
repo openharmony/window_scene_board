@@ -52,7 +52,7 @@ export struct LostModePrompt {
           .textOverflow({ overflow: TextOverflow.Ellipsis })
           .fontColor(this.userStyle.style.lostModeTextColor)
           .margin({
-            top: DeviceHelper.isBigScreenMachine() ? this.lostModeInfoMarginTop :
+            top: DeviceHelper.isSuperFoldMachine() ? this.lostModeInfoMarginTop :
             $r('app.float.lost_mode_prompt_margin_top'),
           })
 

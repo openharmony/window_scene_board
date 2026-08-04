@@ -51,6 +51,7 @@ import type { AbilityItemInfo } from '../../../../../../../main/ets/bean/Ability
 import display from '@ohos.display';
 import { bundleManager } from '@kit.AbilityKit'
 import { WindowSize } from '../../../../../../../main/ets/bean/AbilityItemInfo';
+import { DeliverUtil } from '@ohos/basicutils';
 import { PackageCommonEvent } from '@ohos/frameworkwrapper';
 import commonEvent from '@ohos.commonEventManager';
 import { SCBSystemSceneSession } from '../../../../../../../main/ets/scene/session/SCBSystemSceneSession';
@@ -760,7 +761,10 @@ export function SCBSceneSessionManagerFiveTest() {
     it('isExclusionTest01', 0, async (done: Function) => {
       let manager: SCBSceneSessionManager = SCBSceneSessionManager.getInstance();
       let mocker: MockKit = new MockKit();
+      let isSupportDeliver: Function = mocker.mockFunc(DeliverUtil, DeliverUtil.isSupportDeliver);
+      when(isSupportDeliver)(ArgumentMatchers.any).afterReturn(false);
       expect(manager.isExclusion(sceneInfoGlobal.bundleName, SCBSceneMode.UNDEFINED)).assertFalse();
+      mocker.clear(DeliverUtil);
       mocker.clearAll();
       done();
     });
@@ -803,6 +807,38 @@ export function SCBSceneSessionManagerFiveTest() {
       manager.updateSessionDisplayId(0, 12);
       manager.updateSessionDisplayId(12, -1);
       expect(manager !==  undefined).assertTrue();
+      done();
+    });
+
+    it('checkIsInitDeliverAbilityInfoTest01', 0, async (done: Function) => {
+      let manager: SCBSceneSessionManager = SCBSceneSessionManager.getInstance();
+      ReflectionUtils.setProperty(manager, 'isInitDeliverAbilityInfo', false);
+      ReflectionUtils.useFunc(manager, 'checkIsInitDeliverAbilityInfo', '0');
+      expect(ReflectionUtils.getProperty(manager, 'isInitDeliverAbilityInfo')).assertFalse();
+      done();
+    });
+
+    it('checkIsInitDeliverAbilityInfoTest02', 0, async (done: Function) => {
+      let manager: SCBSceneSessionManager = SCBSceneSessionManager.getInstance();
+      ReflectionUtils.setProperty(manager, 'isInitDeliverAbilityInfo', false);
+      ReflectionUtils.useFunc(manager, 'checkIsInitDeliverAbilityInfo', '1');
+      expect(ReflectionUtils.getProperty(manager, 'isInitDeliverAbilityInfo')).assertTrue();
+      done();
+    });
+
+    it('checkIsInitDeliverAbilityInfoTest03', 0, async (done: Function) => {
+      let manager: SCBSceneSessionManager = SCBSceneSessionManager.getInstance();
+      ReflectionUtils.setProperty(manager, 'isInitDeliverAbilityInfo', false);
+      ReflectionUtils.useFunc(manager, 'checkIsInitDeliverAbilityInfo', '2');
+      expect(ReflectionUtils.getProperty(manager, 'isInitDeliverAbilityInfo')).assertTrue();
+      done();
+    });
+
+    it('checkIsInitDeliverAbilityInfoTest04', 0, async (done: Function) => {
+      let manager: SCBSceneSessionManager = SCBSceneSessionManager.getInstance();
+      ReflectionUtils.setProperty(manager, 'isInitDeliverAbilityInfo', true);
+      ReflectionUtils.useFunc(manager, 'checkIsInitDeliverAbilityInfo', '0');
+      expect(ReflectionUtils.getProperty(manager, 'isInitDeliverAbilityInfo')).assertTrue();
       done();
     });
 

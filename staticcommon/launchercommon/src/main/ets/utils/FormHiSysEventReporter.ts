@@ -48,7 +48,7 @@ export interface ClickCardEvent {
   formName: string;
   column: number;
   row: number;
-  // infoType 卡片信息类型，0-普通卡片
+  // infoType 卡片信息类型，0-普通卡片 1-语音助手母卡 2-语音助手子卡
   infoType: number;
   sourceType: string;
 }
@@ -103,7 +103,7 @@ export interface ClickCardShortcutMenuEvent {
   moduleName: string;
   formName: string;
   menuType: number;
-  // infoType 卡片信息类型，0-普通卡片
+  // infoType 卡片信息类型，0-普通卡片 1-语音助手母卡 2-语音助手子卡
   infoType: number;
   sourceType: string;
   // 卡片类型，0-普通卡片 1-互动卡片-场景动效 2-互动卡片-趣味交互
@@ -483,7 +483,7 @@ export enum RemoveCardResultType {
  * Form UE Event Reporter.
  */
 export class FormHiSysEventReporter {
-  // 升级卡片替换
+  // 系统迁移卡片替换
   public static readonly CARD_MIGRATE_IN_UPGRADE = 'CARD_MIGRATE_IN_UPGRADE';
 
   // 点击新增卡片进屏幕
@@ -719,7 +719,7 @@ export class FormHiSysEventReporter {
   }
 
   /**
-   * 升级卡片替换
+   * 系统迁移卡片替换
    */
   public static reportCardUpdateInMigrate(event: CardUpdateInMigrateEvent): void {
     let params : CardUpdateInMigrateParams = {

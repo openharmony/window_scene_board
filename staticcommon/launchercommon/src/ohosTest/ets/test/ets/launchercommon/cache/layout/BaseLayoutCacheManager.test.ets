@@ -1106,7 +1106,7 @@ export default function BaseLayoutCacheManagerTest() {
     it('test_deleteBlankPageFromLayoutInfo', 0, async (done: Function) => {
       let layoutCacheManager: BaseLayoutCacheManager = BaseLayoutCacheManager.getInstance();
       let mocker: MockKit = new MockKit();
-      let mockFunc: Function = mocker.mockFunc(DeviceHelper, DeviceHelper.isBigScreenMachine);
+      let mockFunc: Function = mocker.mockFunc(DeviceHelper, DeviceHelper.isSuperFoldMachine);
       when(mockFunc)(ArgumentMatchers.any).afterReturn(true);
       let ret1 = layoutCacheManager.deleteBlankPageFromLayoutInfo(0);
       expect(ret1).assertFalse();

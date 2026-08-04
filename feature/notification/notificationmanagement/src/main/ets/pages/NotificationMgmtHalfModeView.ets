@@ -51,7 +51,7 @@ export struct NotificationMgmtHalfModeView {
   @State viewData: NotificationMgmtViewData = new NotificationMgmtViewData();
   @State isShowPanel: boolean = true;
   @State appVersionInfo: AppVersionInfo = new AppVersionInfo();
-  @State aiBarHeightByVp: number = 0;
+  @State naviBarHeightByVp: number = 0;
   @State windowWidthByVp: number = 0;
   @State windowHeightByVp: number = 0;
 
@@ -100,7 +100,7 @@ export struct NotificationMgmtHalfModeView {
     }
   }
 
-  private isAIBarBottom(): boolean {
+  private isNAVIBarBottom(): boolean {
     return Math.min(this.windowWidthByVp, this.windowHeightByVp) < 600;
   }
 
@@ -124,10 +124,10 @@ export struct NotificationMgmtHalfModeView {
     .height('100%')
     .onSizeChange(() => {
       ContextManager.loadWindow();
-      this.aiBarHeightByVp = ContextManager.aiBarHeightByVp;
+      this.naviBarHeightByVp = ContextManager.naviBarHeightByVp;
       this.windowWidthByVp = ContextManager.windowWidthByVp;
       this.windowHeightByVp = ContextManager.windowHeightByVp;
-      log.showInfo(`aiBarHeightByVp: ${this.aiBarHeightByVp} windowWidthByVp: ${this.windowWidthByVp} windowHeightByVp: ${this.windowHeightByVp}`);
+      log.showInfo(`naviBarHeightByVp: ${this.naviBarHeightByVp} windowWidthByVp: ${this.windowWidthByVp} windowHeightByVp: ${this.windowHeightByVp}`);
     })
   }
 
@@ -148,7 +148,7 @@ export struct NotificationMgmtHalfModeView {
       start: LengthMetrics.resource($r('app.float.ntf_half_mode_view_padding_start')),
       end: LengthMetrics.resource($r('app.float.ntf_half_mode_view_padding_end')),
       top: LengthMetrics.vp(8),
-      bottom: LengthMetrics.vp(this.isAIBarBottom() ? this.aiBarHeightByVp : 0)
+      bottom: LengthMetrics.vp(this.isNAVIBarBottom() ? this.naviBarHeightByVp : 0)
     })
   }
 

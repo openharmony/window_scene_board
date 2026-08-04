@@ -1,0 +1,11 @@
+{
+  "string":[
+    {
+      "name":"low_battery_tip",
+      "value":"배터리가 %s만 남았습니다. 컴퓨터를 전원에 연결하거나 화면 자동꺼짐으로 전환하십시오.",
+      "attr":{
+        "priority":"translate"
+      }
+    }
+  ]
+}

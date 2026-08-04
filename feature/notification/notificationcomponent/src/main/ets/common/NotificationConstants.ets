@@ -155,6 +155,14 @@ export class NotificationConstants {
    */
   public static readonly NTF_LIST_ROW_ID: string = 'NotificationListRow_NtfCenter';
   /**
+   * 克隆应用隐私协议状态
+   */
+  public static readonly DELIVER_PRIVACY_ENABLE_STATE: string = 'ohos_fusion_privacyprotocol_enable';
+  /**
+   * 克隆应用隐私协议 默认未初始化克隆应用环境
+   */
+  public static readonly DELIVER_PRIVACY_ENABLE_STATE_DEFAULT: string = '0';
+  /**
    * 通知中心列表中更多通知折叠态组件ID
    */
   public static readonly NTF_CENTER_EXTRA_BRIEF_COMP_ID = 'NotificationListContent_ExtraContentBrief';

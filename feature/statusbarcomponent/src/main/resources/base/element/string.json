@@ -40,6 +40,13 @@
             }
         },
         {
+            "name":"ai_assistant",
+            "value":"voice",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
             "name":"location_statusbar_tips",
             "value":"Location"
         },
@@ -124,6 +131,18 @@
         {
             "name":"key_mouse_sharing",
             "value":"Keyboard & mouse sharing"
+        },
+        {
+            "name":"voice_notetaker",
+            "value":"voice Notetaker"
+        },
+        {
+            "name":"voice_translate",
+            "value":"voice Translate"
+        },
+        {
+            "name":"voice_search",
+            "value":"voice Search"
         },
         {
             "name":"file_upload",

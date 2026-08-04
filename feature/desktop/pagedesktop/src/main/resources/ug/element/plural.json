@@ -1,0 +1,23 @@
+{
+    "plural":[
+        {
+            "name":"folder_is_open_and_total_screen",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"قىسقۇچ ئوچۇق، %d ئېكران بار",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"قىسقۇچ ئوچۇق، %d ئېكران بار",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

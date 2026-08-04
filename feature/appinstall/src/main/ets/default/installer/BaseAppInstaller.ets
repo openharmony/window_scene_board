@@ -243,7 +243,7 @@ export abstract class BaseAppInstaller {
     data.status = AppStatus.INSTALLED;
     this.updateAppGalleryDataStatus(data, AppStatus.INSTALLED);
     this.dealNoImageIconCache(data.bundleName);
-    // 标记出湖应用安装完成，触发dh数据往HM应用恢复
+    // 标记应用安装完成，触发dh数据往HM应用恢复
     DisposedEventManager.getInstance().handleAppInstalled(event);
   }
 

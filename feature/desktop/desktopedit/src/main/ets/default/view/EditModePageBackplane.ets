@@ -106,8 +106,8 @@ export default struct EditModePageBackplane {
 
   /**
    * 使用中间页拉伸300%宽度的背板的场景：
-   * 1、超大屏设备展开态当前显示页在进入编辑模式动效中
-   * 2、超大屏设备展开态进入编辑模式动效后
+   * 1、三折叠设备展开态当前显示页在进入编辑模式动效中
+   * 2、三折叠设备展开态进入编辑模式动效后
    * */
   private isCurrentPageShowInTriFoldEditMode(): boolean {
     return this.displayCnt === 3 && this.index % this.displayCnt === 1 &&
@@ -115,7 +115,7 @@ export default struct EditModePageBackplane {
   }
 
   /**
-   * 超大屏设备展开态当前显示页在进入编辑模式动效中左右两页直接下树隐藏不显示，在进入编辑模式动效后，恢复上树
+   * 三折叠设备展开态当前显示页在进入编辑模式动效中左右两页直接下树隐藏不显示，在进入编辑模式动效后，恢复上树
    * */
   private isTriFoldDeviceNotMiddlePage(): boolean {
     return this.displayCnt === 3 && this.index % this.displayCnt !== 1;

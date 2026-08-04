@@ -72,6 +72,7 @@ import {
 import { fingerPrintTapListener } from '../../../../main/ets/model/FingerPrintTapListener';
 import { NtfColorModeVM } from '../../../../main/ets/vm/NtfColorModeVM';
 import { liveCapsuleVm } from '';
+import apsManager from '@hms.graphic.apsManager';
 import { NtfListContentConfig } from '../../../../main/ets/vm/config/NtfViewConfig';
 import { ntfViewConfigManager } from '../../../../main/ets/vm/config/NtfViewConfigManager';
 import { LiveListAnimStatus } from '';

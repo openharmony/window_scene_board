@@ -8,14 +8,14 @@
             }
         },
         {
-            "name":"d_app_dialog_cancel",
+            "name":"deliver_app_dialog_cancel",
             "value":"略過",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"d_app_dialog_confirm",
+            "name":"deliver_app_dialog_confirm",
             "value":"立即更新",
             "attr":{
                 "priority":"LT"
@@ -29,21 +29,21 @@
             }
         },
         {
-            "name":"d_app_dialog_title",
+            "name":"deliver_app_dialog_title",
             "value":"新版本，新體驗",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"d_app_dialog_contents",
+            "name":"deliver_app_dialog_contents",
             "value":"更新版本即可開啟全新用戶體驗。更新後，您的部分應用程式數據可能會因相容性問題而遺失。",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"d_app_dialog_text",
+            "name":"deliver_app_dialog_text",
             "value":"「%s」已適配 OpenHarmony，可更新版本獲得全新體驗。",
             "attr":{
                 "priority":"LT"
@@ -57,14 +57,14 @@
             }
         },
         {
-            "name":"uninstall_d_app_dialog_title",
+            "name":"uninstall_deliver_app_dialog_title",
             "value":"已安裝新版本",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"uninstall_d_app_dialog_content",
+            "name":"uninstall_deliver_app_dialog_content",
             "value":"本機已存在 OpenHarmony 版本「%s」。解除安裝此應用程式？",
             "attr":{
                 "priority":"LT"
@@ -78,49 +78,49 @@
             }
         },
         {
-            "name":"d_app_dialog_open",
+            "name":"deliver_app_dialog_open",
             "value":"開啟 NEXT 版本",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"d_app_unavailable_dialog_title",
+            "name":"deliver_app_unavailable_dialog_title",
             "value":"應用程式暫時無法使用",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"d_app_unavailable_dialog_content",
+            "name":"deliver_app_unavailable_dialog_content",
             "value":"請前往應用程式市場下載%s。",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"d_app_unavailable_dialog_know",
+            "name":"deliver_app_unavailable_dialog_know",
             "value":"知道了",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"d_app_pause_download_dialog_content",
+            "name":"deliver_app_pause_download_dialog_content",
             "value":"%s下載任務暫停。繼續下載？",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"d_app_wait_download_dialog_content",
+            "name":"deliver_app_wait_download_dialog_content",
             "value":"%s等待下載中。優先下載？",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"d_app_installing_dialog_content",
+            "name":"deliver_app_installing_dialog_content",
             "value":"%s安裝中，請稍候。",
             "attr":{
                 "priority":"translate"

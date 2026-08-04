@@ -19,8 +19,8 @@ import { PluginClickInfo, PluginInfo, PluginParseInfo } from '@ohos/frameworkwra
 const TAG = 'Ctrl.ControlCenterPluginPcModeMgr';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.CC, TAG);
 
-const openharmony_SHARE_PANEL_HEIGHT = 376;
-const openharmony_CAST_PANEL_HEIGHT = 398;
+const HW_SHARE_PANEL_HEIGHT = 376;
+const CAST_PANEL_HEIGHT = 398;
 const NEAR_LINK_PANEL_HEIGHT = 370;
 const EBOOK_PANEL_HEIGHT = 283;
 const NOT_DISTURB_PANEL_HEIGHT = 413;
@@ -48,7 +48,7 @@ export class ControlCenterPcModePluginPanelMgr {
     pluginInfo.pluginParseInfo.clickInfo = new PluginClickInfo();
     pluginInfo.pluginParseInfo.clickInfo.clickType = 'window';
     pluginInfo.pluginParseInfo.clickInfo.abilityName = 'ShareSettingsDialogAbility';
-    pluginInfo.pluginParseInfo.clickInfo.windowHeight = openharmony_SHARE_PANEL_HEIGHT;
+    pluginInfo.pluginParseInfo.clickInfo.windowHeight = HW_SHARE_PANEL_HEIGHT;
     this.addPanel(pluginInfo)
     pluginInfo = new PluginInfo();
     pluginInfo.pluginParseInfo = new PluginParseInfo();
@@ -100,7 +100,7 @@ export class ControlCenterPcModePluginPanelMgr {
     pluginInfo.pluginParseInfo.clickInfo.clickType = 'window';
     pluginInfo.pluginParseInfo.clickInfo.abilityName = 'AccountUIExtensionAbility';
     pluginInfo.pluginParseInfo.clickInfo.windowHeight = ACCOUNT_PANEL_HEIGHT;
-    pluginInfo.pluginParseInfo.clickInfo.uiExtensionType = 'hms/account';
+    pluginInfo.pluginParseInfo.clickInfo.uiExtensionType = 'ohos/account';
     pluginInfo.pluginParseInfo.clickInfo.requestType = 25;
     this.addPanel(pluginInfo)
   }

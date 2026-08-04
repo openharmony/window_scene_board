@@ -226,6 +226,10 @@ export class QuickToggleEditViewModel {
 
   private showLibraryPanel() {
     TraceUtil.startTrace(DomainName.CC, 'showLibraryPanel');
+    // 若进入编辑后库尚未延后挂载，打开时立即挂载
+    if (!this.viewData.loadToggleLibrary) {
+      this.viewData.loadToggleLibrary = true;
+    }
     ControlCenterHiSysEventUtil.reportCCEditExpandLibrary({
       TIMESTAMP: `${DropDownPanelManager.getLastDropdownTime()}`,
       SWITCHNUMBER: this.libraryToggles.length,

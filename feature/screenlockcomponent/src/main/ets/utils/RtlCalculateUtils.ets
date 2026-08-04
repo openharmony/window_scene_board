@@ -24,7 +24,7 @@ import { ClockLayout, LockscreenFormConfig } from '@ohos/screenlockwidget/src/ma
 import PasswordConstants from '../password/common/PasswordConstants';
 import { DigitalKeyboardItem } from '../password/common/DigitalKeyboardItem';
 import Constants from '../common/Constants';
-import { DisplayUtils, UltraScreenStatus } from '@ohos/screenlockcommon';
+import { DisplayUtils, ThreeFoldStatus } from '@ohos/screenlockcommon';
 
 const TAG = 'RtlCalculateUtils';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.KG, TAG);
@@ -46,9 +46,9 @@ export class RtlCalculateUtils {
   public static getScreenLockPanelPositionX(isFoldExpand: boolean, isPadPortrait: boolean,
     clockStyle: AnyClock): number {
     let isN4Layout: boolean = clockLayoutHelper.isN4Layout(clockStyle.layout);
-    let threeSt = DisplayUtils.getUltraScreenStatus();
-    // 大折叠，超大屏M态
-    if (IS_FOLD_BUT_NOT_SMALL_FOLD || threeSt === UltraScreenStatus.M_STATUS) {
+    let threeSt = DisplayUtils.getThreeFoldStatus();
+    // 大折叠，三折叠M态
+    if (IS_FOLD_BUT_NOT_SMALL_FOLD || threeSt === ThreeFoldStatus.M_STATUS) {
       return RtlCalculateUtils.getFoldRealPositionForMargin(isN4Layout, isFoldExpand, clockStyle.x);
     }
 
@@ -57,8 +57,8 @@ export class RtlCalculateUtils {
       positionX = clockStyle.x + 1;
     }
 
-    // 平板，超大屏G态
-    if (IS_PAD || threeSt === UltraScreenStatus.G_STATUS) {
+    // 平板，三折叠G态
+    if (IS_PAD || threeSt === ThreeFoldStatus.G_STATUS) {
       return RtlCalculateUtils.getPadRealPositionXForMargin(isN4Layout, isPadPortrait, positionX);
     }
 

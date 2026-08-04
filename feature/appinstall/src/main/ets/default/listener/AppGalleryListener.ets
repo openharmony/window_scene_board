@@ -206,7 +206,7 @@ export class AppGalleryListener {
       log.showInfo('handleBundleMappingEventChange end, event parameters are null');
       return;
     }
-    // 根据应用市场通知去点亮或熄灭占位的未OpenHarmony化应用
+    // 根据应用市场通知去点亮或熄灭占位的未鸿蒙化应用
     let hasohosApp: string[] | undefined = Reflect.get(event.parameters, 'ag.params.HARMONY_PKGS_ADDED');
     let notohosApp: string[] | undefined = Reflect.get(event.parameters, 'ag.params.HARMONY_PKGS_REMOVED');
     let publicTestohosApp: string[] | undefined = Reflect.get(event.parameters, 'ag.params.PUBLIC_TEST_APP_PKGS_ADDED');
@@ -227,9 +227,9 @@ export class AppGalleryListener {
       });
     }
     this.dealNotohosApp(notohosApp, relationMap, publicTestRelationMap);
-    // 兼容老版本未OpenHarmony化应用平铺在桌面的场景
+    // 兼容老版本未鸿蒙化应用平铺在桌面的场景
     NotHarmonyUtil.lightingNotHarmonyAppIcons(relationMap, publicTestRelationMap);
-    // 刷新未OpenHarmony化应用文件夹中的应用排序状态
+    // 刷新未鸿蒙化应用文件夹中的应用排序状态
     if (notohosApp !== undefined && !CheckEmptyUtils.isEmptyArr(notohosApp)) {
       for (let i = 0; i < notohosApp.length; i++) {
         relationMap.delete(notohosApp[i]);
@@ -253,6 +253,7 @@ export class AppGalleryListener {
       let lightArr: string[] = lightDeliverBundleNames.split(',');
       notohosApp?.forEach(item => {
         if (lightArr.indexOf(item) !== CommonConstants.INVALID_VALUE) {
+          log.showWarn('BundleMappingEventChange notohosApp is delivery light app');
           return;
         }
         log.showInfo(`BundleMappingEventChange notohosApp: ${item}`);

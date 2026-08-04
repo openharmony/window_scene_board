@@ -31,6 +31,8 @@ import {
 } from '@ohos/systemuicommon/src/main/ets/datasharemanager/SysUIDataShareEvent';
 import { EnvVm } from '@ohos/systemuicommon/src/main/ets/vm/EnvVm';
 import { SettingsConstants, SettingsKeyConstants } from '@ohos/commonconstants/src/main/ets/constants/Constants';
+import { OutdoorVm } from '@ohos/systemuicommon/src/main/ets/vm/OutdoorVm';
+import { NotificationUtil } from '@ohos/systemuicommon/newTsIndex';
 
 const TAG = 'NotificationRemindManager';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.NC, TAG);
@@ -62,21 +64,24 @@ export class NotificationRemindManager {
   private flashReminderSlot: string =
     sSettingsUtil.getSecureValue(SettingsKeyConstants.ACCESSIBILITY_REMINDER_FUNCTION_ENABLED,
       SettingsConstants.ACCESSIBILITY_REMINDER_FUNCTION_ENABLED_DEFAULT);
-
+  // 切换声音模式
   private onRingModeChange: Callback<audio.AudioRingMode> = (ringMode: audio.AudioRingMode) => {
     log.showInfo(`Ring mode change: ${ringMode}`);
     switch (ringMode) {
-      case audio.AudioRingMode.RINGER_MODE_SILENT:
-        this.isSysTonePlayAllow = false;
-        this.isSysVibrationAllow = false;
-        break;
+      // 响铃模式
       case audio.AudioRingMode.RINGER_MODE_NORMAL:
         this.isSysTonePlayAllow = true;
         this.isSysVibrationAllow = true;
         break;
+      // 振动模式
       case audio.AudioRingMode.RINGER_MODE_VIBRATE:
         this.isSysTonePlayAllow = false;
         this.isSysVibrationAllow = true;
+        break;
+      // 静音模式
+      case audio.AudioRingMode.RINGER_MODE_SILENT:
+        this.isSysTonePlayAllow = false;
+        this.isSysVibrationAllow = false;
         break;
       default:
         break;
@@ -109,7 +114,10 @@ export class NotificationRemindManager {
    * @param isUpdate 是否更新通知
    * @param requestSound request数据中的sound信息
    */
-  public remind(ntfEntry: NotificationBase, isUpdate: boolean, requestSound?: string): void {
+  public async remind(ntfEntry: NotificationBase, isUpdate: boolean, requestSound?: string): Promise<void> {
+    if (!OutdoorVm.instance.isInOutdoorAppList(ntfEntry)) {
+      return;
+    }
     if (!EmergencyThermalSafeManager.instance.isShowNotification(ntfEntry.creatorBundleName)) {
       return;
     }
@@ -136,7 +144,11 @@ export class NotificationRemindManager {
       log.showInfo(`No need to remind, isSilence ${ntfEntry.hashCode}`);
       return;
     }
-
+    // 添加免打扰检查
+    if(await NotificationUtil.getDNDEnable()){
+      log.showInfo(`enter NOT_DISTURB, no play`);
+      return;
+    }
     RemindPlayManager.instance.play({
       context: GlobalContext.getContext(),
       isTonePlayAllow: ntfEntry.isSoundEnable && this.isSysTonePlayAllow,
@@ -153,6 +165,7 @@ export class NotificationRemindManager {
       isNtfTonePlayAllow: ntfEntry.isSoundEnable,
       soundDuration: ntfEntry.soundDuration,
       isSysTonePlayAllow: this.isSysTonePlayAllow,
+      isDeliverPush: ntfEntry.isDeliverPushNotification,
       channelId: ntfEntry.channelId,
       appIndex: ntfEntry.appIndex,
       traceId: ntfEntry.traceId,
@@ -218,7 +231,7 @@ export class NotificationRemindManager {
   /**
    * 闪烁提醒方式变化回调
    */
-  private onFlashReminderSlotChangeEvent = (event: FlashReminderSlotChangeEvent) =>  {
+  private onFlashReminderSlotChangeEvent = (event: FlashReminderSlotChangeEvent) => {
     const slot: string = event.getFlashReminderSlot();
     log.showInfo(`onFlashReminderSlotChange, mode is: ${slot}`);
     this.flashReminderSlot = slot;

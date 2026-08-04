@@ -35,7 +35,7 @@ import {
   StatusBarServiceInfo,
   TrayManager } from '@ohos/statusbarextensionservice/src/main/ets/TsIndex';
 import type ctx from '@ohos.app.ability.common';
-// import statusBar from '@hms.pcService.statusBar';
+import statusBar from '@ohos.pcService.statusBar';
 import Want from '@ohos.app.ability.Want';
 import SmartDockConstants from '../common/constants/SmartDockConstants';
 import SmartDockViewModel from '../viewmodel/SmartDockViewModel';
@@ -50,7 +50,7 @@ export class AppManager {
   private bundleName: string = '';
   private appInfo: DockItemInfo | undefined = undefined;
   private isEventRegistered: boolean = false;
-  private statusBarGroupMenu?: ESObject[] = [];
+  private statusBarGroupMenu?: statusBar.StatusBarGroupMenu[] = [];
   private isOnExit: boolean = false;
 
   constructor(bundleName: string, pid?: number) {
@@ -120,12 +120,12 @@ export class AppManager {
     }
   }
 
-  setStatusBarGroupMenu(groupMenu: ESObject[]): void {
+  setStatusBarGroupMenu(groupMenu: statusBar.StatusBarGroupMenu[]): void {
     log.showInfo(`setStatusBarGroupMenu length: ${groupMenu?.length}`);
     this.statusBarGroupMenu = groupMenu;
   }
 
-  private onExtendedMenuClick(menuAction?: ESObject): void {
+  private onExtendedMenuClick(menuAction?: statusBar.StatusBarMenuAction): void {
     if (!menuAction) {
       return;
     }
@@ -142,10 +142,10 @@ export class AppManager {
     }
   }
 
-  private setSubMenu(menuList: ESObject[]): MenuInfo[] {
+  private setSubMenu(menuList: statusBar.StatusBarSubMenuItem[]): MenuInfo[] {
     const menuInfos: MenuInfo[] = [];
     if (!ArrayUtils.isEmpty(menuList)) {
-      menuList.forEach((subMenu: ESObject) => {
+      menuList.forEach((subMenu: statusBar.StatusBarSubMenuItem) => {
         let menu: MenuInfo = new MenuInfo();
         menu.menuType = CommonConstants.MENU_TYPE_FIXED;
         menu.menuText = subMenu.subTitle;
@@ -159,10 +159,10 @@ export class AppManager {
     return menuInfos;
   }
 
-  private setMenuInfo(groupMenuList: ESObject): MenuInfo[] {
+  private setMenuInfo(groupMenuList: statusBar.StatusBarGroupMenu): MenuInfo[] {
     const menuInfos: MenuInfo[] = [];
     if (!ArrayUtils.isEmpty(groupMenuList)) {
-      groupMenuList.forEach((groupMenu: ESObject) => {
+      groupMenuList.forEach((groupMenu: statusBar.StatusBarMenuItem) => {
         if (!groupMenu) {
           return;
         }
@@ -185,7 +185,7 @@ export class AppManager {
   private getExtendedMenu(): MenuInfo[] {
     const menuInfos: MenuInfo[] = [];
     if (this.statusBarGroupMenu) {
-      this.statusBarGroupMenu.forEach((groupMenu: ESObject) => {
+      this.statusBarGroupMenu.forEach((groupMenu: statusBar.StatusBarGroupMenu) => {
         menuInfos.push(...this.setMenuInfo(groupMenu));
       });
     }

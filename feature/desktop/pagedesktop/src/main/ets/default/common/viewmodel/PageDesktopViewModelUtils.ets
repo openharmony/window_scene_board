@@ -38,13 +38,16 @@ import {
   LogDomain,
   Logger,
   CheckEmptyUtils,
-  PixelMapUtil, CommonUtils
+  PixelMapUtil, CommonUtils,
+  OutdoorConfig
 } from '@ohos/basicutils';
 import {
   ResourceManager,
   GlobalContext,
   EvtBus,
-  ContextModifyUtils
+  ContextModifyUtils,
+  LightOutdoorConfig,
+  DeviceHelper
 } from '@ohos/frameworkwrapper';
 import { NumberConstants } from '@ohos/commonconstants';
 import { ObjectCopyUtil } from '@ohos/componenthelper';
@@ -55,7 +58,8 @@ import {
   StyleConstants,
   BadgeManager,
   AppModel,
-  LayoutViewModel
+  LayoutViewModel,
+  DeliverUtil
 } from '@ohos/launchercommon';
 import { BusinessType, DesktopLayoutState } from '@ohos/launchercommon/src/main/ets/constants/CommonConstants';
 import type ctx from '@ohos.app.ability.common';
@@ -283,15 +287,24 @@ export class PageDesktopViewModelUtils {
   /**
    * 容器内应用临时方案，把新安装的容器app放在应用文件夹内
    * @param appItem 新安装应用的信息
-   * @param isDeliverApp false未OpenHarmony化应用
+   * @param isDeliverApp false未鸿蒙化应用
    */
   public dealWithContainerApp(appItemInfo: AppItemInfo, isDeliverApp: boolean = true): void {
+    // 云端模式下不处理容器类app
+    if (OutdoorConfig.getInstance().isInOutdoorMode() ||
+      LightOutdoorConfig.getInstance().isOnLightOutdoorMode()) {
+      return;
+    }
     let layoutCacheManager: LaunchLayoutCacheManager = LaunchLayoutCacheManager.getInstance();
     let bundleName: string = appItemInfo.bundleName;
     let residentList: DockItemInfo[] = ResidentLayoutCacheMgr.getInstance().getAllDockItems();
     if (this.checkInLayout(residentList, bundleName)) {
       log.showInfo(TAG, 'container app check in dock = %{public}s', appItemInfo.bundleName);
+      DeliverUtil.setAppBundleNameFoundInDock(bundleName);
       return;
+    }
+    if (isDeliverApp) {
+      DeliverUtil.setInstallSourceAndIntent(appItemInfo, appItemInfo.intent);
     }
     // 容器数组，数组0是容器文件夹的index，数组1是容器应用的index
     let containerIndex: number[] = [-1, -1];
@@ -305,12 +318,16 @@ export class PageDesktopViewModelUtils {
     appItemInfo.area = [1, 1];
     appItemInfo.typeId = CommonConstants.TYPE_APP;
     let folderIndexInDock = CommonConstants.INVALID_VALUE;
+    if (containerFolderIndex === CommonConstants.INVALID_VALUE) {
+      folderIndexInDock = this.getContainerFolderIndex(residentList, appItemInfo.installSource ?? '', isDeliverApp);
+    }
     try {
       log.showWarn(TAG, 'container folderIndexInDock = %{public}d, folderIndex = %{public}d, bundleName = %{public}s',
         folderIndexInDock, containerFolderIndex, bundleName);
       if (containerFolderIndex !== CommonConstants.INVALID_VALUE) {
         this.addInfoToDeskTopFolder(layoutCacheManager, containerFolderIndex, bundleName, appItemInfo, isDeliverApp);
       } else if (folderIndexInDock !== CommonConstants.INVALID_VALUE) {
+        DeliverUtil.delAddIconForResidentList(residentList, folderIndexInDock);
         this.addInfoToDockFolder(residentList, folderIndexInDock, appItemInfo);
       } else {
         this.makeContainerFolderToDesktop(appItemInfo, isDeliverApp);
@@ -326,7 +343,7 @@ export class PageDesktopViewModelUtils {
    * @param bundleName 应用的bundleName
    * @param containerIndex 记录查找的index值
    * @param installSource 安装应用的来源
-   * @param isDeliverApp false未OpenHarmony化应用
+   * @param isDeliverApp false未鸿蒙化应用
    * @returns true表示查询成功，false表示查询失败
    */
   public selectContainerAppIndexInLayout(bundleName: string, containerIndex: number[], installSource?: string,
@@ -345,11 +362,17 @@ export class PageDesktopViewModelUtils {
           let size: number = folderOpenColumn * folderOpenRow;
           let page: number = Math.floor(folderIndex / size);
           let appIndex: number = folderIndex % size;
+          DeliverUtil.checkInstallSource(mLayoutInfo[page][appIndex], true);
           return false;
+        }
+        if (DeliverUtil.isCustomizedFolder(isDeliverApp, gridLayoutItemList[i].typeId, gridLayoutItemList[i].folderId,
+          installSource)) {
+          containerIndex[0] = i;
         }
       } else if (gridLayoutItemList[i].typeId === CommonConstants.TYPE_APP) {
         if (gridLayoutItemList[i].bundleName === bundleName && gridLayoutItemList[i].appIndex === appIndex) {
           log.showInfo(TAG, 'container app check in desktop = %{public}s', bundleName);
+          DeliverUtil.checkInstallSource(gridLayoutItemList[i], true);
           return false;
         }
       }
@@ -387,7 +410,33 @@ export class PageDesktopViewModelUtils {
     if (!folderInfo) {
       return;
     }
-    this.addInfoToFolder(folderInfo, appItemInfo);
+    DeliverUtil.delAddIconForOpenFolderData(folderInfo);
+    if (DeliverUtil.DEFAULT_DELIVER_APP_SORT.has(bundleName) &&
+      this.preferences?.getSync(bundleName, false) as boolean === false) {
+      // sort
+      const gridlayoutItem: GridLayoutItemInfo | undefined = this.getGridLayoutItemInfo(folderInfo, appItemInfo);
+      const layoutInfo = folderInfo.layoutInfo?.flat();
+      if (!layoutInfo || !gridlayoutItem) {
+        return;
+      }
+      layoutInfo.push(gridlayoutItem);
+      let folderAppList: GridLayoutItemInfo[] = this.sortDeliverFolderApp(layoutInfo);
+      // 写回文件夹
+      this.updateFolderAppLocation(folderAppList);
+      FolderLayoutCacheManager.getInstance().updateFolderItemLayoutInfoByFolderId(
+        folderInfo.folderId,
+        DeliverUtil.translateFolderLayout(folderAppList),
+        folderAppList,
+        TAG,
+        true,
+        deliverAppShowOuter
+      );
+      this.preferences?.putSync(bundleName, true);
+      this.preferences?.flush();
+      log.showInfo(TAG, 'refresh default app sort success.');
+    } else {
+      this.addInfoToFolder(folderInfo, appItemInfo);
+    }
     const folderMgr = FolderManager.getInstance();
     if (!folderMgr.isFolderOpen()) {
       const layoutInfo: GridLayoutItemInfo[] = folderInfo.layoutInfo?.flat() ?? [];
@@ -415,8 +464,18 @@ export class PageDesktopViewModelUtils {
     if (CheckEmptyUtils.isEmptyArr(layoutInfo)) {
       return newArr;
     }
+    DeliverUtil.DEFAULT_DELIVER_APP_SORT.forEach(() => {
+      let tmp: GridLayoutItemInfo  = new GridLayoutItemInfo();
+      tmp.bundleName = '';
+      newArr.push(tmp);
+    });
     layoutInfo.forEach((item) => {
-      newArr.push(item);
+      if (DeliverUtil.DEFAULT_DELIVER_APP_SORT.has(item.bundleName)) {
+        let sortIndex: number = parseInt(DeliverUtil.DEFAULT_DELIVER_APP_SORT.get(item.bundleName) ?? '0');
+        newArr[sortIndex] = item;
+      } else {
+        newArr.push(item);
+      }
     });
     return newArr.filter(item => item.bundleName !== '');
   }
@@ -456,6 +515,14 @@ export class PageDesktopViewModelUtils {
     return appIndex !== CommonConstants.INVALID_VALUE;
   }
 
+  private getContainerFolderIndex(residentList: DockItemInfo[], installSource: string,
+    isDeliverApp: boolean = true): number {
+    let forderIndex: number = residentList.findIndex(item =>
+    DeliverUtil.isCustomizedFolder(isDeliverApp, item.itemType, item.appId, installSource));
+    log.showInfo(TAG, 'getContainerFolderIndex::index: %{public}d', forderIndex);
+    return forderIndex;
+  }
+
   private makeFolder(appItemInfo: AppItemInfo, isDeliverApp: boolean = true): GridLayoutItemInfo {
     // make folder used info position
     let gridLayoutInfo: GridLayoutItemInfo = new GridLayoutItemInfo();
@@ -463,6 +530,7 @@ export class PageDesktopViewModelUtils {
     gridLayoutInfo.folderId = new Date().getTime().toString();
     gridLayoutInfo.bundleName = gridLayoutInfo.folderId;
     gridLayoutInfo.keyName = gridLayoutInfo.folderId;
+    gridLayoutInfo.folderName = DeliverUtil.getContainerFolderName(appItemInfo);
     gridLayoutInfo.appStatus = AppStatus.INSTALLED;
     gridLayoutInfo.container = CommonConstants.CONTAINER_DESKTOP;
     gridLayoutInfo.intent = appItemInfo.intent;
@@ -483,6 +551,10 @@ export class PageDesktopViewModelUtils {
       gridlayoutItem1.bundleName, gridlayoutItem1.page, gridlayoutItem1.row, gridlayoutItem1.column);
     gridLayoutInfo.layoutInfo = [[gridlayoutItem1]];
     log.showInfo(TAG, 'make folder in desktop');
+    if (isDeliverApp) {
+      DeliverUtil.setContainerFolderMapInDesktop(gridLayoutInfo);
+      DeliverUtil.setIsCreateFolder(true);
+    }
     return gridLayoutInfo;
   }
 
@@ -493,6 +565,8 @@ export class PageDesktopViewModelUtils {
     }
     log.showInfo(TAG, 'addInfoToFolder start');
     let gridlayoutItem: GridLayoutItemInfo | undefined = this.getGridLayoutItemInfo(folderItemInfo, newAppItem);
+    FolderLayoutCacheManager.getInstance()
+      .insertAppItemToFolder(folderItemInfo.folderId, gridlayoutItem, BusinessType.BUSINESS_BASIC_DESKTOP);
   }
 
   private addInfoToDockFolder(residentList: DockItemInfo[], insertIndex: number, newAppItem: AppItemInfo): void {
@@ -500,6 +574,29 @@ export class PageDesktopViewModelUtils {
     const changFolder: GridLayoutItemInfo = GridLayoutUtil.dockItemToGridLayout(residentList[insertIndex]);
     let gridlayoutItem: GridLayoutItemInfo | undefined = this.getGridLayoutItemInfo(changFolder, newAppItem);
     if (!gridlayoutItem) {
+      return;
+    }
+    if (DeliverUtil.DEFAULT_DELIVER_APP_SORT.has(newAppItem.bundleName) &&
+      this.preferences?.getSync(newAppItem.bundleName, false) as boolean === false) {
+      log.showInfo(TAG, 'default deliver app sort bundleName = %{public}s', newAppItem.bundleName);
+      let appList: GridLayoutItemInfo[] | undefined = changFolder.layoutInfo?.flat();
+      if (!appList) {
+        return;
+      }
+      appList.push(gridlayoutItem);
+      let folderAppList: GridLayoutItemInfo[] = this.sortDeliverFolderApp(appList);
+      // 写回文件夹
+      this.updateFolderAppLocation(folderAppList);
+      // dock入库完成后才刷新，这样避免查询数据库后没查询被覆盖
+      RdbStoreManager.getInstance().addInfoToDockFolder(changFolder.folderId, folderAppList).then(() => {
+        changFolder.layoutInfo = DeliverUtil.translateFolderLayout(folderAppList);
+        residentList.splice(insertIndex, 1, GridLayoutUtil.gridLayoutToDockItem(changFolder));
+        log.showInfo(TAG, 'addInfoToDockFolder bundleName = %{public}s', newAppItem.bundleName);
+        FolderManager.getInstance().updateFolderItems('addInfoToDockFolder', changFolder, [gridlayoutItem])
+        LayoutViewModel.getInstance().updateResidentDockLayout(TAG.concat('_add1'), residentList);
+        this.preferences?.putSync(newAppItem.bundleName, true);
+        this.preferences?.flush();
+      });
       return;
     }
     RdbStoreManager.getInstance().insertGridLayoutInfoWithCheck(gridlayoutItem).then(() => {
@@ -638,8 +735,8 @@ export class PageDesktopViewModelUtils {
   }
 
   async getAlignStatus(): Promise<boolean> {
-    return true;
-    /*let result: boolean = false;
+    // return true;
+    let result: boolean = false;
     let desktopContext = GlobalContext.getInstance().getObject('desktopContext') as ctx.ServiceExtensionContext;
     if (desktopContext === undefined) {
       return result;
@@ -665,7 +762,7 @@ export class PageDesktopViewModelUtils {
     };
     await ContextModifyUtils.modifyTargetContextAsync(context, contextConstant.AreaMode.EL1, callback, `${TAG}-getAlignStatus`);
     log.showInfo(TAG, `alignstatus is ${result}`);
-    return result;*/
+    return result;
   }
 
   /**
@@ -682,22 +779,31 @@ export class PageDesktopViewModelUtils {
     }
     let launchLayoutCacheManager: LaunchLayoutCacheManager = LaunchLayoutCacheManager.getInstance();
     let layoutDes = launchLayoutCacheManager.selectLayoutDescription();
+    let row: number = layoutDes.row;
     let col: number = layoutDes.column;
     itemList.sort((itemA: GridLayoutItemInfo, itemB: GridLayoutItemInfo) => {
-      return this.compareGridLayoutItemByLocation(itemA, itemB, col);
+      return this.compareGridLayoutItemByLocation(itemA, itemB, row, col);
     });
     let alignItem: SqueezeGridLayout[] = this.autoAlignGridLayoutItem(itemList, uninstallAppItemArr);
     return alignItem;
   }
 
-  private compareGridLayoutItemByLocation(itemA: GridLayoutItemInfo, itemB: GridLayoutItemInfo, col: number): number {
+  private compareGridLayoutItemByLocation(itemA: GridLayoutItemInfo, itemB: GridLayoutItemInfo,
+    row: number, col: number): number {
     if (!itemA || !itemB) {
       log.showWarn(TAG, 'compareGridLayout failure as  item is null');
       return 0;
     }
-    let valueA: number = (itemA.row ?? 0) * col + (itemA.column ?? 0);
-    let valueB: number = (itemB.row ?? 0) * col + (itemB.column ?? 0);
+    let valueA: number = this.getGridLayoutItemSortValue(itemA, row, col);
+    let valueB: number = this.getGridLayoutItemSortValue(itemB, row, col);
     return valueA - valueB;
+  }
+
+  private getGridLayoutItemSortValue(item: GridLayoutItemInfo, row: number, col: number): number {
+    if (DeviceHelper.isPC()) {
+      return (item.column ?? 0) * row + (item.row ?? 0);
+    }
+    return (item.row ?? 0) * col + (item.column ?? 0);
   }
 
   private autoAlignGridLayoutItem(itemList: GridLayoutItemInfo[], unstallAppItem: AppItemInfo[]): SqueezeGridLayout[] {
@@ -755,6 +861,10 @@ export class PageDesktopViewModelUtils {
   }
 
   public async initDeliverStatusChange(): Promise<void> {
+    // 监听事件.非云端模式才监听，云端下无克隆应用。
+    if (!OutdoorConfig.getInstance().isInOutdoorMode()) {
+      EvtBus.on(RgmStatusChangeEvent, (event: CommonEvent) => this.handleRgmStatusChangeEvent(event));
+    }
     // 读取sp文件
     let options: preferences.Options = { name: this.preferencesFileName };
     try {
@@ -775,12 +885,16 @@ export class PageDesktopViewModelUtils {
         break;
       // 背景：
       // 1、容器管理提供公共事件：rgm_remove，代表的含义为：容器进入卸载流程中，和容器相关的模块需要清理容器的缓存数据；
-      // 2、大桌面在监听到rgm_remove后，完成大文件夹的销毁，PMS模块在进行升级的应用恢复，还未触发rgm_remove的清理流程，仍有部分应用安装，
+      // 2、大桌面在监听到rgm_remove后，完成大文件夹的销毁，PMS模块在进行系统迁移的应用恢复，还未触发rgm_remove的清理流程，仍有部分应用安装，
       // 导致定制大文件夹再次出现；
       // 优化: 容器管理增加一个rgm_removed公共事件，代表的含义为：容器完成卸载流程，业务方根据具体场景完成清理缓存的动作；
       case 'rgm_remove':
       case 'rgm_removed':
         log.showInfo(TAG, 'rgm_remove delete sp cache');
+        DeliverUtil.DEFAULT_DELIVER_APP_SORT.forEach((value, key) => {
+          log.showInfo(TAG, 'rgm_user_unlocked refresh delete key bundleName = %{public}s', key);
+          this.preferences?.deleteSync(key);
+        });
         this.preferences?.flush();
         this.deleteContainerFolderList();
         break;
@@ -798,6 +912,10 @@ export class PageDesktopViewModelUtils {
     if (CheckEmptyUtils.isEmptyArr(appList)) {
       return;
     }
+    appList = appList.filter(item => !CheckEmptyUtils.isEmpty(item) && DeliverUtil.isContainerItem(item.intent));
+    if (!CheckEmptyUtils.isEmptyArr(appList)) {
+      appList.forEach(appItem => AppModel.getInstance().appItemRemove(appItem.bundleName, 0));
+    }
   }
 
   public async refreshDeliverAppList(sceneMsg?: string): Promise<void> {
@@ -812,6 +930,8 @@ export class PageDesktopViewModelUtils {
           deliverAppList.push(appList[i]);
         }
       }
+      // 重启后，DH启动后校准文件夹内应用数据，只会执行一次，BMS没有桌面有的要删掉，BMS有桌面没有的要新增
+      AppModel.getInstance().deleteAppsByDelivery(deliverAppList);
       if (CheckEmptyUtils.isEmpty(deliverAppList)) {
         return;
       }
@@ -822,18 +942,28 @@ export class PageDesktopViewModelUtils {
         // 查找缓存是否存在这个应用 不存在则新增应用
         let bmsApp: AppItemInfo | undefined = AppModel.getInstance().getAppInfoByBundleName(launcherAppInfo.bundleName);
         log.showInfo(TAG, 'refresh deliver app bundleName = %{public}s', launcherAppInfo.bundleName);
+        // dh启动刷新桌面应用可卸载状态
         let itemIndex: number = gridLayoutItemList
           .findIndex(item => item?.bundleName === launcherAppInfo.bundleName);
         if (itemIndex !== CommonConstants.INVALID_VALUE) {
           gridLayoutItemList[itemIndex].isUninstallAble = launcherAppInfo.isUninstallAble;
         }
+        // 刷新dock区应用卸载状态
         itemIndex = residentList.findIndex(item => launcherAppInfo.bundleName === item.bundleName);
         if (itemIndex !== CommonConstants.INVALID_VALUE) {
           residentList[itemIndex].isUninstallAble = launcherAppInfo.isUninstallAble;
         }
+        DeliverUtil.setInstallSourceAndIntent(launcherAppInfo, bmsApp?.intent);
+        AppModel.getInstance().setAppListByDelivery(launcherAppInfo);
+        if (!bmsApp && DeliverUtil.CANCEL_DELIVER_FOLDER) {
+          this.pageDesktopViewModel.updateBMSChangedApp(launcherAppInfo.bundleName);
+        } else if(!bmsApp && !DeliverUtil.CANCEL_DELIVER_FOLDER){
+          this.dealWithContainerApp(launcherAppInfo);
+        }
       });
       LayoutViewModel.getInstance().updateResidentDockLayout(TAG.concat('_refresh'), residentList);
       this.pageDesktopViewModel.lightPagingFiltering(true, sceneMsg);
+      DeliverUtil.refreshFolder();
     } catch (error) {
       log.showError(TAG, 'refreshDeliverAppList error : %{public}s', error?.message);
     }
@@ -868,6 +998,21 @@ export class PageDesktopViewModelUtils {
   }
 
   private hasNextItemLocationInOnePage(maxRow: number, maxCol: number, itemLocation: ItemLocation): boolean {
+    if (DeviceHelper.isPC()) {
+      // PC blank-position scan uses column-major order: top-to-bottom first, then left-to-right.
+      let nextRow: number = itemLocation.curRow + 1;
+      itemLocation.curRow = nextRow % maxRow;
+      itemLocation.curCol = itemLocation.curCol + Math.floor(nextRow / maxRow);
+
+      let isNeedFindNextPage: boolean = itemLocation.curCol >= maxCol;
+      if (isNeedFindNextPage) {
+        itemLocation.curPage = itemLocation.curPage + 1;
+        itemLocation.curRow = 0;
+        itemLocation.curCol = 0;
+      }
+      return !isNeedFindNextPage;
+    }
+
     let nextCol: number = itemLocation.curCol + 1;
     itemLocation.curCol = (nextCol) % maxCol;
     itemLocation.curRow = (itemLocation.curRow) + Math.floor(nextCol / maxCol);
@@ -938,13 +1083,35 @@ export class PageDesktopViewModelUtils {
    * @returns true找位成功,false失败
    */
   public findPositionForContainerApp(item: AppItemInfo, isSupportDeliver: boolean, isRetailEnable?: boolean): boolean {
-    if (item.typeId === CommonConstants.TYPE_APP && !Number.isNaN(Number(item?.codePath))) {
-      // 是否门店版本，配合门店版本清理功能需求，恢厂后加载布局
+    if (item.typeId === CommonConstants.TYPE_APP && !Number.isNaN(Number(item?.codePath)) &&
+      (!DeliverUtil.CANCEL_DELIVER_FOLDER || DeliverUtil.isAppItem(item.intent))) {
+      // 是否门店版本，配合门店版本清理功能需求，备份恢厂后加载布局，如果有应用也需要收纳应用
       if (isSupportDeliver || isRetailEnable) {
         this.dealWithContainerApp(item);
+        let refreshFolderId: string = DeliverUtil.getContainerFolder(item.installSource);
+        const folder: FoldersData = FolderManager.getInstance().getFolder(refreshFolderId);
+        if (!folder.isEmptyGrid()) {
+          FolderManager.getInstance().updateFolderItems('refreshDeliverAppList', folder.getGridInfo(), folder.getItems());
+        }
         return true;
       }
     }
+    // 备份应用单独处理
+    if (item.appStatus !== AppStatus.INSTALLED) {
+      // 已在安装的应用不重复占位
+      let tmpInfo = AppModel.getInstance().getAppInfoByBundleName(item.bundleName);
+      if (item.appStatus === AppStatus.WAIT_FOR_HARMONY && !CheckEmptyUtils.isEmpty(tmpInfo)) {
+        log.showWarn(TAG, `updateAppItemLayoutInfo ${item.bundleName} is exist`);
+        return true;
+      }
+      // 占位备份应用加到备份文件夹占位
+      if (DeliverUtil.isContainerItem(item.intent) ||
+        (DeliverUtil.CANCEL_DELIVER_FOLDER && DeliverUtil.isAppItem(item.intent))) {
+        this.dealWithContainerApp(item as AppItemInfo);
+        return true;
+      }
+    }
+
     return false;
   }
 }

@@ -18,7 +18,7 @@ import { AppItemInfo } from '../bean/AppItemInfo';
 import { DockItemInfo } from '../bean/DockItemInfo';
 import { RdbStoreManager } from '../db/RdbStoreManager';
 import { AppModel } from '../model/AppModel';
-import { CommonConstants, NotHarmonyUtil } from '../TsIndex';
+import { CommonConstants, DeliverUtil, NotHarmonyUtil } from '../TsIndex';
 
 const TAG = 'CommonDockModel';
 const log = LogHelper.getLogHelper(LogDomain.HOME, TAG);
@@ -50,6 +50,11 @@ export class CommonDockModel {
       itemInfo.isUninstallAble = findItem?.isUninstallAble;
       itemInfo.badgeNumber = findItem?.badgeNumber;
       itemInfo.codePath = findItem?.codePath;
+      DeliverUtil.copyDockOldDataToIntent(itemInfo);
+      if (itemInfo?.typeId === CommonConstants.TYPE_FOLDER && DeliverUtil.isContainerItem(itemInfo.intent ?? '')) {
+        log.showInfo('init container folder in dock');
+        DeliverUtil.setContainerFolderMapInDock(itemInfo);
+      }
       if (NotHarmonyUtil.isNotHarmonyFolderByIntent(itemInfo.intent ?? '') || itemInfo.appName === '${not_harmony_apps}') {
         log.showInfo('init not harmony folder in dock');
         let map: Map<string, Object> = CommonUtils.jsonStrToMap(itemInfo.intent);

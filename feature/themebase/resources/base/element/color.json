@@ -1,0 +1,228 @@
+{
+  "color": [
+    {
+      "name": "start_window_background",
+      "value": "#00FFFFFF"
+    },
+    {
+      "name": "add_button_bg_color",
+      "value": "#5291FF"
+    },
+    {
+      "name": "button_bg_color",
+      "value": "#99FFFFFF"
+    },
+    {
+      "name": "add_theme_bg_color",
+      "value": "#33FFFFFF"
+    },
+    {
+      "name": "button_border_color",
+      "value": "#26FFFFFF"
+    },
+    {
+      "name": "gallery_button_bg_color",
+      "value": "#33FFFFFF"
+    },
+    {
+      "name": "function_button_bg_color",
+      "value": "#5291FF"
+    },
+    {
+      "name": "ok_button_shadow_color",
+      "value": "#1a000000"
+    },
+    {
+      "name": "iconstyle_button_bg_color",
+      "value": "#66ffffff"
+    },
+    {
+      "name": "bottomsheet_bg_color",
+      "value": "#ccffffff"
+    },
+    {
+      "name": "fakeicon_default_text_color",
+      "value": "#40ffffff"
+    },
+    {
+      "name": "applybutton_fg_color",
+      "value": "#FFFFFF"
+    },
+    {
+      "name": "bezelcard_bg_color",
+      "value": "#D8D8D8"
+    },
+    {
+      "name": "floatingbutton_fg_color",
+      "value": "#FFFFFF"
+    },
+    {
+      "name": "floatingbutton_bg_color",
+      "value": "#33FFFFFF"
+    },
+    {
+      "name": "floatingbutton_bg_color_highlighted",
+      "value": "#0A59F7"
+    },
+    {
+      "name": "roundbluricon_filling_color",
+      "value": "#FFFFFF"
+    },
+    {
+      "name": "roundbluricon_filter_color",
+      "value": "#0A59F7"
+    },
+    {
+      "name": "roundedblurbadge_label_fg_color",
+      "value": "#FFFFFF"
+    },
+    {
+      "name": "roundedblurbadge_bg_color",
+      "value": "#19000000"
+    },
+    {
+      "name": "roundedplaincard_placeholder_color",
+      "value": "#D8D8D8"
+    },
+    {
+      "name": "applysheet_bg_blur_color",
+      "value": "#99FFFFFF"
+    },
+    {
+      "name": "color_bg",
+      "value": "#F1F3F5"
+    },
+    {
+      "name": "chat_box_background",
+      "value": "#006AFF"
+    },
+    {
+      "name": "gallerybutton_bg_noenable_color",
+      "value": "#D8D8D8"
+    },
+    {
+      "name": "gallerybutton_border_color",
+      "value": "#33808080"
+    },
+    {
+      "name": "sigbutton_separator_color",
+      "value": "#000000"
+    },
+    {
+      "name": "roundedcard_inner_border_color_light",
+      "value": "#33808080"
+    },
+    {
+      "name": "roundedcard_inner_border_color_dark",
+      "value": "#1AFFFFFF"
+    },
+    {
+      "name": "edit_border_color",
+      "value": "#99FFFFFF"
+    },
+    {
+      "name": "apply_button_font_color",
+      "value": "#FFFFFFFF"
+    },
+    {
+      "name": "apply_button_background_color",
+      "value": "#33FFFFFF"
+    },
+    {
+      "name": "card_border_color",
+      "value": "#33808080"
+    },
+    {
+      "name": "more_online_button_background_color_light",
+      "value": "#4DFFFFFF"
+    },
+    {
+      "name": "more_online_button_foreground_color_light",
+      "value": "#99D2D6D9"
+    },
+    {
+      "name": "more_online_button_background_color_dark",
+      "value": "#4DFFFFFF"
+    },
+    {
+      "name": "more_online_button_foreground_color_dark",
+      "value": "#99141414"
+    },
+    {
+      "name": "cover_theme_card_bg",
+      "value": "#0C000000"
+    },
+    {
+      "name": "trans_color",
+      "value": "#00FFFFFF"
+    },
+    {
+      "name": "preview_image_border_color",
+      "value": "#33808080"
+    },
+    {
+      "name": "delete_icon_red",
+      "value": "#E84026"
+    },
+    {
+      "name": "pte_color_bg",
+      "value": "#000000"
+    },
+    {
+      "name": "pte_color_back",
+      "value": "#6f6f6f"
+    },
+    {
+      "name": "pte_color_background",
+      "value": "#ba3a3939"
+    },
+    {
+      "name": "pte_color_color",
+      "value": "#5f5f5f"
+    },
+    {
+      "name": "pte_color_load",
+      "value": "#414141"
+    },
+    {
+      "name": "pte_color_radius",
+      "value": "#232323"
+    },
+    {
+      "name": "pte_color_fill",
+      "value": "#dcdcdc"
+    },
+    {
+      "name": "pte_color_toast",
+      "value": "#cc708090"
+    },
+    {
+      "name": "galley_background_color",
+      "value": "#E6FFFFFF"
+    },
+    {
+      "name": "circle_checkbox_font_color",
+      "value": "#FFFFFFFF"
+    },
+    {
+      "name": "color_default_white",
+      "value": "#00000000"
+    },
+    {
+      "name": "preview_bg_color",
+      "value": "#FF000000"
+    },
+    {
+      "name": "card_bg_color",
+      "value": "#4CFFFFFF"
+    },
+    {
+      "name": "oobe_card_border_color",
+      "value": "#7FFFFFFF"
+    },
+    {
+      "name": "border_color",
+      "value": "#1A000000"
+    }
+  ]
+}

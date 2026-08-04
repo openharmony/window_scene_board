@@ -14,6 +14,9 @@
         },
         {
           "value": "com.ohos.remotecontroller:remote_control"
+        },
+        {
+          "value": "com.ohos.vassistant:voice_translate"
         }
       ]
     }

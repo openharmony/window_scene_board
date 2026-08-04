@@ -159,6 +159,7 @@ export class IconGridInfoBean {
   public PVERSIONID: string = ReportParams.PROCESS_NAME;
   public PARAMS: string = '';
   public NOTHARMONYNUM: number = 0;
+  public DELIVERNUM: number = 0;
   public EASYNUM: number = 0;
 }
 
@@ -196,11 +197,11 @@ export class OuterIconGridInfoBean {
    */
   public LOCATIONTYPE: number = 0;
   /**
-   * 文件夹类型 0-普通文件夾, 1-非OpenHarmony化, -1-均不是
+   * 文件夹类型 0-普通文件夾, 1-非鸿蒙化, 2-, 3-， -1-均不是
    */
   public FOLDERTYPE: number = 0;
   /**
-   * app类型 0-正常应用，可直接打开, 2-未OpenHarmony化应用（未安装）, -1-均不是
+   * app类型 0-正常应用，可直接打开, 2-未鸿蒙化应用（未安装）, 3-, 4- ,-1-均不是
    */
   public APPTYPE: number = 0;
   /**
@@ -208,11 +209,15 @@ export class OuterIconGridInfoBean {
    */
   public APPNAME: string = '';
   /**
-   * 未OpenHarmony化文件夹中图标数量
+   * 未鸿蒙化文件夹中图标数量
    */
   public NOTHARMONYNUM: number = 0;
   /**
-   * 出xx文件夹中应用数量
+   * 文件夹中图标数量
+   */
+  public DELIVERNUM: number = 0;
+  /**
+   * 文件夹中应用数量
    */
   public EASYNUM: number = 0;
 }
@@ -243,12 +248,12 @@ export interface IconGridInfoBeanParams {
    */
   LOCATIONTYPE: number;
   /**
-   * 文件夹类型 0-普通文件夾, 1-非OpenHarmony化, -1-均不是
+   * 文件夹类型 0-普通文件夾, 1-非鸿蒙化, 2-, 3-， -1-均不是
    *
    */
   FOLDERTYPE: number;
   /**
-   * app类型 0-正常应用，可直接打开, 2-未OpenHarmony化应用（未安装）, -1-均不是
+   * app类型 0-正常应用，可直接打开, 2-未鸿蒙化应用（未安装）, 3-, 4- ,-1-均不是
    *
    */
   APPTYPE: number;

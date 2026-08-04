@@ -39,6 +39,7 @@ import {
   GridLayoutUtil,
   LauncherLayoutCacheUtil,
   LaunchLayoutCacheManager,
+  DeliverUtil,
   LayoutDescription,
   PadLaunchLayoutCacheManager,
   RdbStoreManager,

@@ -38,6 +38,7 @@ import { slUiStateMgr } from '@ohos/screenlockcommon/src/main/ets/manager/Screen
 import { ISlStateChangeListener } from '@ohos/screenlockcommon/src/main/ets/interface/ISlStateChangeListener';
 import { SlListWidgetBindState } from '../../model/data/SlListWidgetBindState';
 import { immersiveStateHelper } from '../../common/helper/ImmersiveStateHelper';
+import { ImmersiveAodStyle, immersiveKgMgr } from '@ohos/systemuicommon/src/main/ets/TsIndex';
 
 const TAG = 'ImmersiveNtfListComponent';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.KG, TAG);
@@ -126,6 +127,11 @@ export struct ImmersiveNtfListComponent {
   // 锁屏首页通知列表组件状态
   @State slListBindState?: SlListWidgetBindState = immersiveStateHelper.getSlListBindState() as SlListWidgetBindState;
 
+  /**
+   * Aod显示样式
+   */
+  @State aodStyle: ImmersiveAodStyle | undefined = immersiveKgMgr.getOneMirrorState().getAodStyle(true);
+
   aboutToAppear(): void {
     log.showInfo('aboutToAppear, start');
     this.listVm.appear(this.ntfListVM);
@@ -169,7 +175,7 @@ export struct ImmersiveNtfListComponent {
       // 禁止滑动时，防止回弹
       .edgeEffect(this.slListBindState?.getListScrollEnable() ? EdgeEffect.Spring : EdgeEffect.None)
       .borderRadius(NotificationConfig.BORDER_RADIUS)
-      .enableScrollInteraction(this.slListBindState?.getListScrollEnable())
+      .enableScrollInteraction(this.slListBindState?.getListScrollEnable() && !this.aodStyle?.isAod)
       .onAppear(() => {
         this.listVm.scrollListToTop(); // 初始化保持置顶
       })

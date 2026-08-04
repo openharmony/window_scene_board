@@ -128,14 +128,19 @@ export class FloatingBallOneMirrorAnimation extends StartAppOneMirrorAnimation {
     log.showInfo(TAG, `init scale ${scale}, x ${cardRect.x}, y ${cardRect.y}`);
 
     containerSession.needRenderAlpha.setNeedRenderAlphaWithDfx(1, TAG, 'init', sessionName);
-    containerSession.needRenderBorderRadius.setBorderRadiusWithDfx(this.prepareParams.cardRadius / scale, TAG, 'init',
-      sessionName);
-    containerSession.needRenderScale.setScaleXWithDfx(scale, TAG, 'init', sessionName);
-    containerSession.needRenderScale.setScaleYWithDfx(scale, TAG, 'init', sessionName);
-    // 应用窗口初始位移位置
-    const scaleDiff = shortWidth - cardRect.width;
-    containerSession.needRenderTranslate.setTranslateXWithDfx(cardRect.x - scaleDiff / 2, TAG, 'init', sessionName);
-    containerSession.needRenderTranslate.setTranslateYWithDfx(cardRect.y - scaleDiff / 2 , TAG, 'init', sessionName);
+    containerSession.needRenderBorderRadius.setBorderRadiusWithDfx(0, TAG, 'init', sessionName);
+    containerSession.needRenderScale.setScaleXWithDfx(1, TAG, 'init', sessionName);
+    containerSession.needRenderScale.setScaleYWithDfx(1, TAG, 'init', sessionName);
+    containerSession.needRenderClip.setClipWidth(screenProperty.width);
+    containerSession.needRenderClip.setClipHeight(screenProperty.height);
+    containerSession.needRenderTranslate.setTranslateXWithDfx(0, TAG, 'init', sessionName);
+    containerSession.needRenderTranslate.setTranslateYWithDfx(0, TAG, 'init', sessionName);
+    // const scale = cardRect.width / shortWidth;
+    // containerSession.needRenderScale.setScaleXWithDfx(scale, TAG, 'init', sessionName);
+    // containerSession.needRenderScale.setScaleYWithDfx(scale, TAG, 'init', sessionName);
+    // const scaleDiff = shortWidth - cardRect.width;
+    // containerSession.needRenderTranslate.setTranslateXWithDfx(cardRect.x - scaleDiff / 2, TAG, 'init', sessionName);
+    // containerSession.needRenderTranslate.setTranslateYWithDfx(cardRect.y - scaleDiff / 2 , TAG, 'init', sessionName);
   }
 
   /**
@@ -147,40 +152,19 @@ export class FloatingBallOneMirrorAnimation extends StartAppOneMirrorAnimation {
     const sessionName = containerSession.getName();
     const panelManager = overlayTransitionParam.scenePanelManager;
     const cardState = containerSession.overlayCardTransition?.overlayCardState as OverlayCardState;
-    return this.animation.executeAnimation([
-      {
-        duration: 100,
-        curve: this.commonCurve,
-        event: () => {
-          if (cardState) {
-            cardState.overlayCardBgAlpha = 0;
-          }
-        },
-        delay: 20,
-        finishCallbackFast: true,
-      },
-      {
-        curve: this.getClipCurve(screenProperty),
-        event: () => {
-          containerSession.needRenderClip.setClipWidth(screenProperty.width);
-        },
-        finishCallbackFast: true,
-      },
-      {
-        curve: this.commonCurve,
-        event: () => {
-          containerSession.needRenderBorderRadius.setBorderRadiusWithDfx(DeviceHelper.getDeviceRadius(), TAG,
-            'final', containerSession.getName());
-          containerSession.needRenderScale.setScaleXWithDfx(1, TAG, 'final', sessionName);
-          containerSession.needRenderScale.setScaleYWithDfx(1, TAG, 'final', sessionName);
-          containerSession.needRenderClip.setClipHeight(screenProperty.height);
-          containerSession.needRenderTranslate.setTranslateXWithDfx(0, TAG, 'final', sessionName);
-          containerSession.needRenderTranslate.setTranslateYWithDfx(0, TAG, 'final', sessionName);
-          panelManager.onBlurTransitionActive(1.0, TAG);
-        },
-        finishCallbackFast: true,
-      },
-    ])
+    if (cardState) {
+      cardState.overlayCardBgAlpha = 0;
+    }
+    containerSession.needRenderClip.setClipWidth(screenProperty.width);
+    containerSession.needRenderClip.setClipHeight(screenProperty.height);
+    containerSession.needRenderBorderRadius.setBorderRadiusWithDfx(0, TAG, 'final', containerSession.getName());
+    containerSession.needRenderScale.setScaleXWithDfx(1, TAG, 'final', sessionName);
+    containerSession.needRenderScale.setScaleYWithDfx(1, TAG, 'final', sessionName);
+    containerSession.needRenderTranslate.setTranslateXWithDfx(0, TAG, 'final', sessionName);
+    containerSession.needRenderTranslate.setTranslateYWithDfx(0, TAG, 'final', sessionName);
+    panelManager.onBlurTransitionActive(1.0, TAG);
+    return Promise.resolve();
+    // return this.animation.executeAnimation([...]);
   }
 
   private getClipCurve(screenProperty: SCBScreenProperty): ICurve {

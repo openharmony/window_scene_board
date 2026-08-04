@@ -43,11 +43,14 @@ export default class DesktopSettingUIExtAbility extends UIExtensionAbility {
       let oldArea = context.area;
       context.area = contextConstant.AreaMode.EL1;
       this.preference = await data_preferences.getPreferences(context, 'DesktopSetting');
+      let hiSearchStatus = await this.preference.get('hiSearchStatus', true) as boolean;
       let autoAlignStatus = await this.preference.get('autoAlignStatus', false) as boolean;
-      log.showInfo(`${TAG}, autoAlignStatus, ${autoAlignStatus}`);
+      log.showInfo(`${TAG}, Get hiSearchStatus Value,hiSearchStatus,${hiSearchStatus},autoAlignStatus, ${autoAlignStatus}`);
+      AppStorage.setOrCreate('hiSearchStatus', hiSearchStatus);
       AppStorage.setOrCreate('autoAlignStatus', autoAlignStatus);
       context.area = oldArea;
     } catch (e) {
+      AppStorage.setOrCreate('hiSearchStatus', true);
       AppStorage.setOrCreate('autoAlignStatus', false);
       log.showInfo(`${TAG}, Preference Error, ${(e as BusinessError).message}`);
     }
@@ -55,7 +58,8 @@ export default class DesktopSettingUIExtAbility extends UIExtensionAbility {
   }
 
   async onBackground(): Promise<void> {
-    log.showInfo(`${TAG},autoAlignStatus:${AppStorage.get('autoAlignStatus')}`);
+    log.showInfo(`${TAG}, onBackground, hiSearchStatus:${AppStorage.get('hiSearchStatus')},autoAlignStatus:${AppStorage.get('autoAlignStatus')}`);
+    this.preference?.putSync('hiSearchStatus', AppStorage.get('hiSearchStatus') as boolean);
     this.preference?.putSync('autoAlignStatus', AppStorage.get('autoAlignStatus') as boolean);
     await this.preference?.flush();
   }
@@ -66,8 +70,10 @@ export default class DesktopSettingUIExtAbility extends UIExtensionAbility {
         // 先清除缓存再创建，会直接从数据库加载开关值，避免数据库值变化，缓存未改变
         await data_preferences.removePreferencesFromCache(this.context?.getApplicationContext(), 'DesktopSetting');
         this.preference = await data_preferences.getPreferences(this.context?.getApplicationContext(), 'DesktopSetting');
+        let hiSearchStatus = await this.preference.get('hiSearchStatus', true) as boolean;
         let autoAlignStatus = await this.preference.get('autoAlignStatus', false) as boolean;
-        log.showInfo(`${TAG}, autoAlignStatus, ${autoAlignStatus}`);
+        log.showInfo(`${TAG}, onForeground,hiSearchStatus,${hiSearchStatus},autoAlignStatus, ${autoAlignStatus}`);
+        AppStorage.setOrCreate('hiSearchStatus', hiSearchStatus);
         AppStorage.setOrCreate('autoAlignStatus', autoAlignStatus);
       } catch (error) {
         log.error('data_preferences getPreferences error %{public}s', error?.message);

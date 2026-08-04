@@ -232,6 +232,10 @@ export enum NtfEventName {
    * 事件id:
    */
   NOTIFICATION_SILENCE_BUTTON = 'NOTIFICATION_SILENCE_BUTTON',
+  /**
+   * 云端模式_是否开启云端模式一_监听云端模式二事件
+   */
+  SETTING_CLOUD_MODE_CONFIG = 'SETTING_CLOUD_MODE_CONFIG',
 }
 
 export enum GroupItemType {
@@ -1303,6 +1307,22 @@ export class NotificationOpenAppMgmtParams extends NtfEntryParams {
    */
   NOTIFICATION_TYPE?: number;
 }
+export class CloudModeConfigParams extends FoldStateParams {
+  /**
+   * 是否开启云端模式一 0：关闭 1：开启
+   */
+  public IS_OPNE_PENLAI_MODE?: number;
+
+  /**
+   * 云端模式二监听事件 entercloud2: 进入云端模式二，exitcloud2：退出云端模式二，selectapp：添加或移除应用
+   */
+  public LISTENER_PENLAI_MODE_STATUS?: string;
+
+  /**
+   * 云端模式事件变更监听失败
+   */
+  public ERROR_CODE?: number;
+}
 /**
  * 打点函数类
  */
@@ -1945,6 +1965,21 @@ export class NotificationSysEventReporter {
     HiSysEventUtil.report(
       NotificationSysEventReporter.NOTIFICATION_UE,
       NtfEventName.NTF_CENTER_CLICK_APP_INNER_MGMT,
+      hiSysEvent.EventType.BEHAVIOR,
+      params
+    );
+  }
+
+  /**
+   * 云端模式_是否开启云端模式一_监听云端模式二事件
+   */
+  public static async cloudModeConfig(params: CloudModeConfigParams): Promise<void> {
+    params.PNAMEID = ReportParams.PACKAGE_NAME;
+    params.PVERSIONID = await ReportParams.getVersionCode();
+
+    HiSysEventUtil.report(
+      NotificationSysEventReporter.NOTIFICATION_UE,
+      NtfEventName.SETTING_CLOUD_MODE_CONFIG,
       hiSysEvent.EventType.BEHAVIOR,
       params
     );

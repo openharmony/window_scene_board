@@ -39,10 +39,13 @@ import fileuri from '@ohos.file.fileuri';
 import fs from '@ohos.file.fs';
 import {
   AppInstallUtils,
+  AppReserveType,
+  DeliverUtil,
   LaunchLayoutCacheManager,
   LegacyInfo
 } from '../../TsIndex';
 import { image } from '@kit.ImageKit';
+import DataConvert from '../../transformdata/DataConvert';
 import { RestoreLauncherDataManager } from '../../manager/RestoreLauncherDataManager';
 import { launcherStatusUtil } from '@ohos/windowscene/src/main/ets/TsIndex';
 
@@ -77,7 +80,7 @@ export class RestoreLauncherData implements IExecutor {
 
   private isWaitForHarmonyList: Array<boolean> = [];
 
-  private waitForHarmonyKeyList: Array<string> = [];
+  private waitForSystemKeyList: Array<string> = [];
 
   private restoreAppIndexList: Array<number> = [];
 
@@ -119,9 +122,10 @@ export class RestoreLauncherData implements IExecutor {
         log.showWarn(TAG, `the bundleName is Empty ${curItem.bundleName},${curItem.packageName},${curItem.callerName}`);
         continue;
       }
-      // 克隆场景传桌面包名表示勾选布局
-      if (curItem.packageName === CloneCloudRequestMethod.RESTORE_LAUNCHER_LAYOUT ||
-        curItem.bundleName === CloneCloudRequestMethod.RESTORE_LAUNCHER_LAYOUT) {
+      // RESTORE_LAUNCHER_LAYOUT_FROM_HWLAUNCHER表示设备包名，RESTORE_LAUNCHER_LAYOUT_FROM_HM表示next包名
+      // 系统迁移和单窗口单屏场景传桌面包名表示勾选布局
+      if (curItem.packageName === CloneCloudRequestMethod.RESTORE_LAUNCHER_LAYOUT_FROM_HWLAUNCHER ||
+        curItem.bundleName === CloneCloudRequestMethod.RESTORE_LAUNCHER_LAYOUT_FROM_HM) {
         log.showInfo(TAG, `Restore launcherLayout :${curItem.bundleName}`);
         this.isBackUpLauncherLayout = true;
       } else {
@@ -141,10 +145,23 @@ export class RestoreLauncherData implements IExecutor {
 
   private parseItemParam(curItem: ExtraDataInfo, iconUri: string): void {
     let appType: number = curItem.appType ?? 0;
-    this.restorePkgList.push(curItem.packageName ?? '');
-    this.restoreBundleList.push(curItem.bundleName ?? '');
-    this.isWaitForHarmonyList.push(false);
-    this.waitForHarmonyKeyList.push('');
+    if (appType === AppReserveType.SHORTCUT) {
+      this.restorePkgList.push(curItem.packageName + curItem.legacyInfo?.shortcutId);
+      this.restoreBundleList.push(curItem.packageName + curItem.legacyInfo?.shortcutId);
+      this.isWaitForHarmonyList.push(false);
+      this.waitForSystemKeyList.push('');
+    } else if(!CommonUtils.isEmpty(curItem.bundleName) &&
+    curItem.bundleName.startsWith(DeliverUtil.WAIT_FOR_HARMONY_PREFIX)) {
+      this.restorePkgList.push(curItem.packageName ?? '');
+      this.restoreBundleList.push(curItem.legacyInfo?.pkgName);
+      this.isWaitForHarmonyList.push(true);
+      this.waitForSystemKeyList.push(curItem.bundleName);
+    } else {
+      this.restorePkgList.push(curItem.packageName ?? '');
+      this.restoreBundleList.push(curItem.bundleName ?? '');
+      this.isWaitForHarmonyList.push(false);
+      this.waitForSystemKeyList.push('');
+    }
     this.restoreIsInContainerList.push(curItem.isInContainer ?? false);
     this.restoreTitleList.push(curItem.title ?? '');
     this.restoreAppIndexList.push(curItem.index ?? CommonConstants.MAIN_APP_INDEX);
@@ -206,7 +223,7 @@ export class RestoreLauncherData implements IExecutor {
         let appTypeList: number[] = preference.getSync('RestoreAppTypeData', []) as number[];
         let enterpriseLinkList: string[] = preference.getSync('RestoreEnterpriseLinkData', []) as string[];
         let oldIsWaitForHarmonyList: boolean[] = preference.getSync('RestoreIsWaitForHarmonyListData', []) as boolean[];
-        let oldWaitForHarmonyKeyList: string[] = preference.getSync('RestoreWaitForHarmonyKeyListData', []) as string[];
+        let oldWaitForSystemKeyList: string[] = preference.getSync('RestoreWaitForSystemKeyListData', []) as string[];
         preference.putSync('RestoreLegacyInfoData',
           needRefresh ? this.restoreLegacyInfoList : legacyInfoList.concat(this.restoreLegacyInfoList));
         preference.putSync('RestoreAppTypeData',
@@ -215,8 +232,8 @@ export class RestoreLauncherData implements IExecutor {
           needRefresh ? this.restoreEnterpriseLinkList : enterpriseLinkList.concat(this.restoreEnterpriseLinkList));
         preference.putSync('RestoreIsWaitForHarmonyListData',
           needRefresh ? this.isWaitForHarmonyList : oldIsWaitForHarmonyList.concat(this.isWaitForHarmonyList));
-        preference.putSync('RestoreWaitForHarmonyKeyListData',
-          needRefresh ? this.waitForHarmonyKeyList : oldWaitForHarmonyKeyList.concat(this.waitForHarmonyKeyList));
+        preference.putSync('RestoreWaitForSystemKeyListData',
+          needRefresh ? this.waitForSystemKeyList : oldWaitForSystemKeyList.concat(this.waitForSystemKeyList));
       }
       preference.flushSync();
       log.showInfo(TAG, 'save restore data to sp successs');
@@ -255,7 +272,7 @@ export class RestoreLauncherData implements IExecutor {
       this.restoreAppIndexList = preference.getSync('RestoreAppIndexData', []) as number[];
       this.isWaitForHarmonyList = preference.getSync('RestoreIsWaitForHarmonyListData', []) as boolean[];
       this.restoreLegacyInfoList = preference.getSync('RestoreLegacyInfoData', []) as LegacyInfo[];
-      this.waitForHarmonyKeyList = preference.getSync('RestoreWaitForHarmonyKeyListData', []) as string[];
+      this.waitForSystemKeyList = preference.getSync('RestoreWaitForSystemKeyListData', []) as string[];
       this.restoreEnterpriseLinkList = preference.getSync('RestoreEnterpriseLinkData', []) as string[];
       this.restoreAppTypeList = preference.getSync('RestoreAppTypeData', []) as number[];
       this.restoreTitleList = preference.getSync('RestoreIconTitleData', []) as string[];
@@ -277,8 +294,24 @@ export class RestoreLauncherData implements IExecutor {
    */
   private async getIconUri(item: ExtraDataInfo): Promise<string> {
     let iconUri: string = '';
+    if (item.appType === AppReserveType.SHORTCUT) {
+      if (!CommonUtils.isEmpty(item.iconUri)) {
+        iconUri = this.getIconCopyUri(item.iconUri);
+      }
+      log.showWarn(TAG, 'backUp item = %{public}s, %{public}d, %{public}d,  %{public}s, %{public}s',
+        item.packageName, item.index, item.appType, item.legacyInfo?.shortcutId, iconUri);
+      return iconUri;
+    }
     if (!CommonUtils.isEmpty(item.iconUri)) {
-      iconUri = await this.getIconCopyUri(item.iconUri);
+      if (this.sceneType === SceneType.FROM_HW_LAUNCHER) {
+        // 系统迁移
+        iconUri = await RestoreLauncherDataManager.getInstance().getIconScaleUri(item.iconUri);
+      } else {
+        iconUri = await this.getIconCopyUri(item.iconUri);
+      }
+    }
+    if (CommonUtils.isEmpty(iconUri)) {
+      iconUri = DataConvert.getOldIconUri(item.packageName);
     }
     if (CommonUtils.isEmpty(iconUri)) {
       iconUri = await this.getIconAppGalleryUri(item);
@@ -330,15 +363,28 @@ export class RestoreLauncherData implements IExecutor {
       item.appIndex = this.restoreAppIndexList[i];
       item.typeId = CommonConstants.TYPE_APP;
       // 过滤已安装应用和快捷方式
-      if (this.checkIsInstalled(item)) {
+      if (this.checkIsInstalled(item) || this.restoreAppTypeList[i] === AppReserveType.SHORTCUT) {
         continue;
       }
       if (this.isWaitForHarmonyList[i]) {
         item.appStatus = AppStatus.WAIT_FOR_HARMONY;
+        item.intent = DeliverUtil.getCloneGridLayoutItemIntent(this.restoreLegacyInfoList[i], this.waitForSystemKeyList[i],
+          this.restoreEnterpriseLinkList[i], this.restoreAppTypeList[i]);
       } else {
         item.appStatus = AppStatus.PENDING;
       }
+      if (!this.isWaitForHarmonyList[i] && (this.restoreAppTypeList[i] === AppReserveType.ENTERPRISE ||
+        this.restoreAppTypeList[i] === AppReserveType.TASTE_FRESH)) {
+        log.showWarn(TAG, `${item.bundleName} save EnterpriseLink,targetModuleUrl: ${this.restoreEnterpriseLinkList[i]}`);
+        let extendInfo: IExtendInfo = {
+          'targetModuleUrl': this.restoreEnterpriseLinkList[i],
+          'appType': this.restoreAppTypeList[i],
+          'maskState': 1
+        };
+        item.intent = JSON.stringify(extendInfo);
+      }
       item.appName = this.restoreTitleList[i];
+      DataConvert.updateHarmonyAppName(item);
       log.showInfo(TAG, `Insert ${item.bundleName},${item.keyName} callName is ${this.ownerInfo?.bundleName}`);
       item.callerName = this.ownerInfo?.bundleName;
       item.iconResource = this.restoreIconUriList[i];
@@ -401,7 +447,7 @@ class ExtraInfo {
   versionCode?: string;
 
   /**
-   * 克隆类型
+   * 0：系统迁移  1：单窗口单屏
    */
   sceneType?: number;
 
@@ -422,7 +468,7 @@ export class ExtraDataInfo {
   callerType: number = 0;
 
   /**
-   * OpenHarmony应用包名（未OpenHarmony化应用不能填）
+   * 鸿蒙应用包名（未鸿蒙化应用不能填）
    */
   bundleName: string = '';
 
@@ -452,7 +498,7 @@ export class ExtraDataInfo {
   enterpriseLink: string = '';
 
   /**
-   * 未OpenHarmony化应用相关信息
+   * 未鸿蒙化应用相关信息
    */
   legacyInfo: LegacyInfo = new LegacyInfo();
 
@@ -462,7 +508,7 @@ export class ExtraDataInfo {
   index: number = 0;
 
   /**
-   * 区分内置应用，true为内置应用
+   * 区分应用真机应用和内置应用，true为内置应用
    */
   isInContainer: boolean = false;
 }

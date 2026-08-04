@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 
+import { LengthMetrics } from '@kit.ArkUI';
 import { LogDomain, LogHelper } from '@ohos/basicutils';
+import { DeviceHelper } from '@ohos/frameworkwrapper';
 import { StyleConstants } from '@ohos/launchercommon';
 import { FormCenterTitleParam, CenterTitleBuilderInterface } from '../../../interfaces/FormCenterTitleBuildeInterface';
 import { FormCenterTitleStyle } from '../../../viewstyles/FormCenterTitleStyle';
@@ -32,6 +34,7 @@ function buildFormCenterTitle($$: FormCenterTitleParam) {
   FormCenterTitle({
     style: $$.style ?? new FormCenterTitleStyle(),
     text: $$.text,
+    onCloseClick: $$.onCloseClick,
   })
 }
 
@@ -39,6 +42,27 @@ function buildFormCenterTitle($$: FormCenterTitleParam) {
 export struct FormCenterTitle {
   public style: FormCenterTitleStyle = new FormCenterTitleStyle();
   public text: string | Resource = '';
+  public onCloseClick?: () => void;
+
+  @Builder
+  closeIconBuilder() {
+    Button({ type: ButtonType.Circle }) {
+      SymbolGlyph($r('sys.symbol.xmark'))
+        .width(this.style.closeButtonIconSize)
+        .height(this.style.closeButtonIconSize)
+        .fontSize(this.style.closeButtonIconSize + 'vp')
+        .draggable(false)
+        .fontColor([this.style.closeButtonIconColor])
+    }
+    .id(`${TAG}_Close_Icon`)
+    .width(this.style.closeButtonSize)
+    .height(this.style.closeButtonSize)
+    .margin({ end: LengthMetrics.vp(this.style.closeButtonMarginEnd) })
+    .backgroundColor(this.style.closeButtonBgColor)
+    .onClick(() => {
+      this.onCloseClick?.();
+    })
+  }
 
   build() {
     Row() {
@@ -55,11 +79,16 @@ export struct FormCenterTitle {
         })
         .textAlign(TextAlign.Start)
         .maxFontScale(StyleConstants.FONT_MAX_SCALE_FORM_TEXT)
+        .layoutWeight(1)
+
+      if (this.onCloseClick && DeviceHelper.isPad()) {
+        this.closeIconBuilder()
+      }
     }
     .padding(this.style.titlePadding)
     .width('100%')
-    .height(this.style.titleHeight)
+    .height(DeviceHelper.isPC() ? '7%' : this.style.titleHeight)
     .alignItems(this.style.alignItems)
-    .justifyContent(FlexAlign.Start)
+    .justifyContent(FlexAlign.SpaceBetween)
   }
 }

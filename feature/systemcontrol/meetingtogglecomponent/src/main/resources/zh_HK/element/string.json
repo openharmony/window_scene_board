@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"control_center_complex_toggle_meeting_title",
+            "value":"語言助手慧記",
+            "attr":{
+                "priority":"LT"
+            }
+        }
+    ]
+}

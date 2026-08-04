@@ -22,6 +22,10 @@ import { CardMediaController } from '../../Controller/CardMediaController';
 import { CardMediaControllerDc } from '../../Controller/CardMediaControllerDc';
 import { DcMediaController } from '../../Controller/DcMediaController';
 import {
+  AodStyleType,
+  ImmersiveAodStyle,
+} from '@ohos/systemuicommon/src/main/ets/immersivekeyguardcommon/base/interface/ImmersiveAodStyle';
+import {
   immersiveKgMgr,
 } from '@ohos/systemuicommon/src/main/ets/immersivekeyguardcommon/manager/ImmersiveKeyguardStateManager';
 import { globalStorage } from '../../Util/GlobalStorage';
@@ -100,6 +104,10 @@ export default struct ControlButtonGroup {
   @StorageLink('isSysColor') isSysColor: boolean = true;
   @State sysConfigData: SysConfigData | undefined = ThreadUtil.isMainThread ?
     MediaViewModelManager.getData(MediaVMType.SYS_CONFIG_DATA, true) as SysConfigData : undefined;
+  /**
+   * AOD显示样式
+   */
+  @State aodStyle: ImmersiveAodStyle | undefined = immersiveKgMgr.getOneMirrorState().getAodStyle(true);
   /**
    * size of buttons and icons
    */
@@ -253,6 +261,21 @@ export default struct ControlButtonGroup {
     }
   }
 
+  getAodStyle() {
+    log.debug('getAodStyle');
+    let rgbaColor = [255, 255, 255, 60];
+    const color: number | undefined = this.aodStyle?.getStyleValue(AodStyleType.MEDIA_BUTTON_COLOR);
+    if (typeof color === 'number') {
+      rgbaColor = [
+        (color & 0x00FF0000) >> 16,
+        (color & 0x0000FF00) >> 8,
+        (color & 0x000000FF),
+        ((color & 0xFF000000) >>> 24) / 255,
+      ]
+    }
+    return rgbaColor;
+  }
+
   updateButtonSize(): void {
     this.playIconSize = this.isSmallFoldOuterScreen ? 24 : 30;
     this.bigIconSize = this.isSmallFoldOuterScreen ? 20 : 24;
@@ -284,64 +307,73 @@ export default struct ControlButtonGroup {
   build() {
     Flex({ direction: FlexDirection.Row, justifyContent: FlexAlign.SpaceBetween, alignItems: ItemAlign.Center }) {
       if (this.sessionType === 'audio') {
-        Button({ stateEffect: this.isCanLoopMode }) {
-          SymbolGlyph(loopIcon[this.curLoopMode])
-            .fontSize(`${this.bigIconSize}vp`)
-            .draggable(false)
-            .renderGroup(this.isMarkingRenderGroup)// 增加UI缓存，防止丢帧
-            .fontColor((this.isForceDark ? (this.isCanLoopMode ? [$r('app.color.media_control_item_icon_primary')] : [$r('app.color.media_control_item_icon_disable')]) : ['#000000']))
-            .foregroundBrightness(this.sceneType === 'expandMediaInfoCard' ? this.colorModeViewData.foregroundPrimaryOption :
+        if (this.isCanLoopMode) {
+          Button({ stateEffect: true }) {
+            SymbolGlyph(loopIcon[this.curLoopMode])
+              .fontSize(`${this.bigIconSize}vp`)
+              .draggable(false)
+              .renderGroup(this.aodStyle?.isOneMirror ? false : this.isMarkingRenderGroup)// 增加UI缓存，防止丢帧
+              .fontColor(this.aodStyle?.isAod ? [this.aodStyle?.getStyleValue(AodStyleType.MEDIA_BUTTON_COLOR)] :
+                (this.isForceDark ? [$r('app.color.media_control_item_icon_primary')] : ['#000000']))
+              .foregroundBrightness(this.aodStyle?.isAod ? undefined : this.sceneType === 'expandMediaInfoCard' ?
+                this.colorModeViewData.foregroundPrimaryOption :
                 BrightnessUtils.getInstance().getBrightnessOption(this.isSysColor, this.sceneType, this.isDarkMode()))
-            .rotate({
-              angle: this.loopMode === AVSessionManager.LoopMode.LOOP_MODE_SHUFFLE ? this.isRTL() ? 180 : 0 : 0
-            })
-            .symbolEffect(new ReplaceSymbolEffect(EffectScope.WHOLE), this.isLoopModeButtonVisible)
+              .rotate({
+                angle: this.loopMode === AVSessionManager.LoopMode.LOOP_MODE_SHUFFLE ? this.isRTL() ? 180 : 0 : 0
+              })
+              .symbolEffect(new ReplaceSymbolEffect(EffectScope.WHOLE), this.isLoopModeButtonVisible)
+          }
+          .type(ButtonType.Circle)
+          .size({ width: this.bigButtonSize, height: this.bigButtonSize })
+          .backgroundColor(Color.Transparent)
+          .opacity(1)
+          .accessibilityLevel('yes')
+          .accessibilityGroup(true)
+          .accessibilityText(this.accessLoopMode())
+          .id(Constants.BUTTON_GROUP_LOOP)
+          .rotate({
+            angle: this.loopMode === AVSessionManager.LoopMode.LOOP_MODE_SHUFFLE ? this.isRTL() ? 180 : 0 : 0
+          })
+          .onClick(() => {
+            if (this.isClickSlider) {
+              log.showInfo('loopMode is invalid');
+              return;
+            }
+            log.showInfo(`onclick loop mode: , ${this.curLoopMode}`);
+            this.setScenesType();
+            this.controller.callLoopMode(this.curLoopMode);
+            setTimeout(() => {
+              AccessibilityUtil.requestFocusAccessibility(Constants.BUTTON_GROUP_LOOP);
+            }, 100)
+          })
+          .onVisibleAreaChange([0, 1], (isVisible: boolean, currentRatio: number) => {
+            if (isVisible && currentRatio >= 1 && !this.isLoopModeButtonVisible) {
+              this.isLoopModeButtonVisible = true;
+            }
+            if (!isVisible && currentRatio <= 0 && this.isLoopModeButtonVisible) {
+              this.isLoopModeButtonVisible = false;
+            }
+          })
+        } else {
+          Blank()
+            .width(this.bigButtonSize)
+            .height(this.bigButtonSize)
+            .visibility(Visibility.Hidden)
         }
-        .type(ButtonType.Circle)
-        .size({ width: this.bigButtonSize, height: this.bigButtonSize })
-        .backgroundColor(Color.Transparent)
-        .opacity(this.isForceDark ? 1 : (this.isCanLoopMode ? 1 : 0.3))
-        .accessibilityLevel('yes')
-        .accessibilityGroup(true)
-        .accessibilityDescription(this.isCanLoopMode ? '' : this.getResourceString($r('app.string.access_unavailable')))
-        .accessibilityText(this.accessLoopMode())
-        .id(Constants.BUTTON_GROUP_LOOP)
-        .rotate({
-          angle: this.loopMode === AVSessionManager.LoopMode.LOOP_MODE_SHUFFLE ? this.isRTL() ? 180 : 0 : 0
-        })
-        .onClick(() => {
-          if (!this.isCanLoopMode || this.isClickSlider) {
-            log.showInfo('loopMode is invalid');
-            return;
-          }
-          log.showInfo(`onclick loop mode: , ${this.curLoopMode}`);
-          this.setScenesType();
-          this.controller.callLoopMode(this.curLoopMode);
-          setTimeout(() => {
-            AccessibilityUtil.requestFocusAccessibility(Constants.BUTTON_GROUP_LOOP);
-          }, 100)
-        })
-        .onVisibleAreaChange([0, 1], (isVisible: boolean, currentRatio: number) => {
-          if (isVisible && currentRatio >= 1 && !this.isLoopModeButtonVisible) {
-            this.isLoopModeButtonVisible = true;
-          }
-          if (!isVisible && currentRatio <= 0 && this.isLoopModeButtonVisible) {
-            this.isLoopModeButtonVisible = false;
-          }
-        })
       } else {
         Button({ stateEffect: this.isShowRewind }) {
           SymbolGlyph($r(this.getSkipIntervalsIcon(false)))
             .fontSize(`${this.bigIconSize}vp`)
-            .fontColor((this.isShowRewind ? (!this.isForceDark ? [$r('app.color.ohos_id_color_primary')] :
+            .fontColor(this.aodStyle?.isAod ? [this.aodStyle.getStyleValue(AodStyleType.MEDIA_BUTTON_COLOR)] :
+              (this.isShowRewind ? (!this.isForceDark ? [$r('app.color.ohos_id_color_primary')] :
                 [$r('app.color.media_control_item_icon_primary')]) : (!this.isForceDark ?
                 [$r('app.color.ohos_id_color_fourth')] : [$r('app.color.media_control_item_icon_disable')])))
             .backgroundColor(Color.Transparent)
-            .foregroundBrightness(this.sceneType === 'expandMediaInfoCard' ?
+            .foregroundBrightness(this.aodStyle?.isAod ? undefined : this.sceneType === 'expandMediaInfoCard' ?
               this.colorModeViewData.foregroundPrimaryOption :
-                BrightnessUtils.getInstance().getBrightnessOption(this.isSysColor, this.sceneType, this.isDarkMode()))
+              BrightnessUtils.getInstance().getBrightnessOption(this.isSysColor, this.sceneType, this.isDarkMode()))
             .symbolEffect(new BounceSymbolEffect(EffectScope.WHOLE, EffectDirection.DOWN), this.fastRewindTriggerValue)
-            .renderGroup(this.isMarkingRenderGroup)// 增加UI缓存，防止丢帧
+            .renderGroup(this.aodStyle?.isOneMirror ? false : this.isMarkingRenderGroup)// 增加UI缓存，防止丢帧
         }
         .type(ButtonType.Circle)
         .backgroundColor(Color.Transparent)
@@ -363,15 +395,29 @@ export default struct ControlButtonGroup {
       }
 
       Button({ stateEffect: this.isCanPlayPrevious }) {
-        AnimationIconLocal({
-          active: this.isCanPlayPrevious,
-          scaleValue: this.isSmallFoldOuterScreen ? 1.2 : 1.4,
-          isControlCenter: this.isSmallFoldOuterScreen ? 'isSmallFoldOuterScreen' : 'item',
-          sceneType: this.sceneType,
-        })
-          .size({ width: this.bigButtonSize, height: this.bigButtonSize })
-          .rotate({ centerX: '50%', centerY: '50%', angle: 180 })
-          .backgroundColor(Color.Transparent)
+        if (this.aodStyle?.isAod) {
+          Image($r('app.media.ic_sing_previous'))
+            .size({ width: 22, height: 22 })
+            .scale({ x: 1.4, y: 1.5 })
+            .draggable(false)
+            .fillColor(this.aodStyle?.isAod ? this.aodStyle.getStyleValue(AodStyleType.MEDIA_BUTTON_COLOR) :
+              (this.isCanPlayPrevious ?
+                (!this.isForceDark ? $r('app.color.ohos_id_color_primary') : $r('app.color.media_control_item_icon_primary')) :
+                (!this.isForceDark ? $r('app.color.ohos_id_color_fourth') : $r('app.color.media_control_item_icon_disable'))))
+            .rotate({ angle: this.isRTL() ? 180 : 0 })
+            .translate({x: -1})
+            .renderGroup(this.aodStyle?.isOneMirror ? false : this.isMarkingRenderGroup)// 增加UI缓存，防止丢帧
+        } else {
+          AnimationIconLocal({
+            active: this.isCanPlayPrevious,
+            scaleValue: this.isSmallFoldOuterScreen ? 1.2 : 1.4,
+            isControlCenter: this.isSmallFoldOuterScreen ? 'isSmallFoldOuterScreen' : 'item',
+            sceneType: this.sceneType,
+          })
+            .size({ width: this.bigButtonSize, height: this.bigButtonSize })
+            .rotate({ centerX: '50%', centerY: '50%', angle: 180 })
+            .backgroundColor(Color.Transparent)
+        }
       }
       .type(ButtonType.Circle)
       .accessibilityLevel('yes')
@@ -395,24 +441,28 @@ export default struct ControlButtonGroup {
       .key(ControlButtonGroup.KEY_MEDIA_CARD_PRE + ControlButtonGroup.KEY_PREVIOUS)
 
       Button({ stateEffect: this.isShowPlayButton }) {
-      if (this.showPlayLoading && this.sceneType === 'expandMediaInfoCard') {
-        LoadingProgress()
-          .size({ width: this.playIconSize, height: this.playIconSize })
-          .color($r('app.color.media_control_item_icon_primary'))
-          .foregroundBrightness(this.colorModeViewData.foregroundPrimaryOption)
-      } else {
-        SymbolGlyph(this.isPlaying ? $r(ButtonIconName.PAUSE_SYMBOL) : $r(ButtonIconName.PLAY_SYMBOL))
-          .fontSize(`${this.playIconSize}vp`)
-          .fontColor((this.isShowPlayButton ? (!this.isForceDark ? [$r('app.color.ohos_id_color_primary')] : [$r('app.color.media_control_item_icon_primary')]) :
-              (!this.isForceDark ? [$r('app.color.ohos_id_color_fourth')] : [$r('app.color.media_control_item_icon_disable')])))
-          .symbolEffect(new ReplaceSymbolEffect(EffectScope.WHOLE), this.isPlayButtonVisible)
-          .draggable(false)
-          .rotate({ angle: this.isRTL() ? 180 : 0 })
-          .backgroundColor(Color.Transparent)
-          .foregroundBrightness(this.sceneType === 'expandMediaInfoCard' ? this.colorModeViewData.foregroundPrimaryOption :
+        if (this.showPlayLoading && this.sceneType === 'expandMediaInfoCard') {
+          LoadingProgress()
+            .size({ width: this.playIconSize, height: this.playIconSize })
+            .color($r('app.color.media_control_item_icon_primary'))
+            .foregroundBrightness(this.colorModeViewData.foregroundPrimaryOption)
+        } else {
+          SymbolGlyph(this.isPlaying ? $r(ButtonIconName.PAUSE_SYMBOL) : $r(ButtonIconName.PLAY_SYMBOL))
+            .fontSize(`${this.playIconSize}vp`)
+            .fontColor(this.aodStyle?.isAod ? [this.aodStyle.getStyleValue(AodStyleType.MEDIA_BUTTON_COLOR)] :
+              (this.isShowPlayButton ? (!this.isForceDark ? [$r('app.color.ohos_id_color_primary')] :
+                [$r('app.color.media_control_item_icon_primary')]) :
+                (!this.isForceDark ? [$r('app.color.ohos_id_color_fourth')] :
+                  [$r('app.color.media_control_item_icon_disable')])))
+            .symbolEffect(new ReplaceSymbolEffect(EffectScope.WHOLE), this.isPlayButtonVisible)
+            .draggable(false)
+            .rotate({ angle: this.isRTL() ? 180 : 0 })
+            .backgroundColor(Color.Transparent)
+            .foregroundBrightness(this.aodStyle?.isAod ? undefined : this.sceneType === 'expandMediaInfoCard' ?
+              this.colorModeViewData.foregroundPrimaryOption :
               BrightnessUtils.getInstance().getBrightnessOption(this.isSysColor, this.sceneType, this.isDarkMode()))
-          .id(COMPONENT_ID_PAUSE)
-          .renderGroup(this.isMarkingRenderGroup)// 增加UI缓存，防止丢帧
+            .id(COMPONENT_ID_PAUSE)
+            .renderGroup(this.aodStyle?.isOneMirror ? false : this.isMarkingRenderGroup)// 增加UI缓存，防止丢帧
         }
       }
       .type(ButtonType.Circle)
@@ -420,7 +470,7 @@ export default struct ControlButtonGroup {
       .accessibilityGroup(true)
       .accessibilityDescription(this.isShowPlayButton ? '' : this.getResourceString($r('app.string.access_unavailable')))
       .accessibilityText(this.isPlaying ? this.getResourceString($r('app.string.access_pause')) :
-      this.getResourceString($r('app.string.access_play')))
+        this.getResourceString($r('app.string.access_play')))
       .onClick(() => {
         log.showInfo(`on play/pause click: ${this.isHasMedia}, ${this.isPlaying}`);
         this.setScenesType();
@@ -468,14 +518,28 @@ export default struct ControlButtonGroup {
       .key(ControlButtonGroup.KEY_MEDIA_CARD_PRE + ControlButtonGroup.KEY_PLAY_OR_PAUSE);
 
       Button({ stateEffect: this.isCanPlayNext }) {
-        AnimationIconLocal({
-          active: this.isCanPlayNext,
-          scaleValue: this.isSmallFoldOuterScreen ? 1.2 : 1.4,
-          isControlCenter: this.isSmallFoldOuterScreen ? 'isSmallFoldOuterScreen' : 'item',
-          sceneType: this.sceneType
-        })
-          .size({ width: this.bigButtonSize, height: this.bigButtonSize })
-          .backgroundColor(Color.Transparent)
+        if (this.aodStyle?.isAod) {
+          Image($r('app.media.ic_sing_next'))
+            .size({ width: this.smallIconSize, height: this.smallIconSize})
+            .scale({x: 1.5, y: 1.5})
+            .draggable(false)
+            .fillColor(this.aodStyle?.isAod ? this.aodStyle.getStyleValue(AodStyleType.MEDIA_BUTTON_COLOR) :
+              (this.isCanPlayNext ?
+                (!this.isForceDark ? $r('app.color.ohos_id_color_primary') : $r('app.color.media_control_item_icon_primary')) :
+                (!this.isForceDark ? $r('app.color.ohos_id_color_fourth') : $r('app.color.media_control_item_icon_disable'))))
+            .rotate({ angle: this.isRTL() ? 180 : 0 })
+            .translate({x: 1})
+            .renderGroup(this.aodStyle?.isOneMirror ? false : this.isMarkingRenderGroup)// 增加UI缓存，防止丢帧
+        } else {
+          AnimationIconLocal({
+            active: this.isCanPlayNext,
+            scaleValue: this.isSmallFoldOuterScreen ? 1.2 : 1.4,
+            isControlCenter: this.isSmallFoldOuterScreen ? 'isSmallFoldOuterScreen' : 'item',
+            sceneType: this.sceneType
+          })
+            .size({ width: this.bigButtonSize, height: this.bigButtonSize })
+            .backgroundColor(Color.Transparent)
+        }
       }
       .type(ButtonType.Circle)
       .accessibilityLevel('yes')
@@ -502,12 +566,16 @@ export default struct ControlButtonGroup {
         Button({ stateEffect: this.isShowFastForward }) {
           SymbolGlyph($r(this.getSkipIntervalsIcon(true)))
             .fontSize(`${this.bigIconSize}vp`)
-            .fontColor((this.isShowFastForward ? (!this.isForceDark ? [$r('app.color.ohos_id_color_primary')] : [$r('app.color.media_control_item_icon_primary')]) : (!this.isForceDark ? [$r('app.color.ohos_id_color_fourth')] : [$r('app.color.media_control_item_icon_disable')])))
+            .fontColor(this.aodStyle?.isAod ? [this.aodStyle.getStyleValue(AodStyleType.MEDIA_BUTTON_COLOR)] :
+              (this.isShowFastForward ? (!this.isForceDark ? [$r('app.color.ohos_id_color_primary')] :
+                [$r('app.color.media_control_item_icon_primary')]) : (!this.isForceDark ?
+                [$r('app.color.ohos_id_color_fourth')] : [$r('app.color.media_control_item_icon_disable')])))
             .backgroundColor(Color.Transparent)
-            .foregroundBrightness(this.sceneType === 'expandMediaInfoCard' ? this.colorModeViewData.foregroundPrimaryOption :
-                BrightnessUtils.getInstance().getBrightnessOption(this.isSysColor, this.sceneType, this.isDarkMode()))
+            .foregroundBrightness(this.aodStyle?.isAod ? undefined : this.sceneType === 'expandMediaInfoCard' ?
+              this.colorModeViewData.foregroundPrimaryOption :
+              BrightnessUtils.getInstance().getBrightnessOption(this.isSysColor, this.sceneType, this.isDarkMode()))
             .symbolEffect(new BounceSymbolEffect(EffectScope.WHOLE, EffectDirection.DOWN), this.fastForwardTriggerValue)
-            .renderGroup(this.isMarkingRenderGroup)// 增加UI缓存，防止丢帧
+            .renderGroup(this.aodStyle?.isOneMirror ? false : this.isMarkingRenderGroup)// 增加UI缓存，防止丢帧
         }
         .type(ButtonType.Circle)
         .size({ width: this.bigButtonSize, height: this.bigButtonSize })
@@ -526,31 +594,29 @@ export default struct ControlButtonGroup {
           this.controller.callRewindOrForward('fastForward', this.skipIntervals);
           this.isClickFastForward = true;
         })
-      } else {
-        Button({ stateEffect: this.isCanFavor }) {
+      } else if (this.isCanFavor) {
+        Button({ stateEffect: true }) {
           SymbolGlyph(this.isFavor ? $r(ButtonIconName.FAVOR_FILL_SYMBOL) : $r(ButtonIconName.FAVOR_SYMBOL))
             .fontSize(`${this.bigIconSize}vp`)
             .draggable(false)
-            .fontColor((this.isCanFavor ? (!this.isForceDark ? [$r('app.color.ohos_id_color_primary')] : [$r('app.color.media_control_item_icon_primary')]) : (!this.isForceDark ? [$r('app.color.ohos_id_color_fourth')] : [$r('app.color.media_control_item_icon_disable')])))
-            .foregroundBrightness(this.sceneType === 'expandMediaInfoCard' ? this.colorModeViewData.foregroundPrimaryOption :
-                BrightnessUtils.getInstance().getBrightnessOption(this.isSysColor, this.sceneType, this.isDarkMode()))
+            .fontColor(this.aodStyle?.isAod ? [this.aodStyle.getStyleValue(AodStyleType.MEDIA_BUTTON_COLOR)] :
+              (!this.isForceDark ? [$r('app.color.ohos_id_color_primary')] :
+                [$r('app.color.media_control_item_icon_primary')]))
+            .foregroundBrightness(this.aodStyle?.isAod ? undefined : this.sceneType === 'expandMediaInfoCard' ?
+              this.colorModeViewData.foregroundPrimaryOption :
+              BrightnessUtils.getInstance().getBrightnessOption(this.isSysColor, this.sceneType, this.isDarkMode()))
             .symbolEffect(new ReplaceSymbolEffect(EffectScope.WHOLE), this.isFavorButtonVisible)
-            .renderGroup(this.isMarkingRenderGroup)// 增加UI缓存，防止丢帧
+            .renderGroup(this.aodStyle?.isOneMirror ? false : this.isMarkingRenderGroup)// 增加UI缓存，防止丢帧
         }
         .type(ButtonType.Circle)
         .size({ width: this.bigButtonSize, height: this.bigButtonSize })
         .backgroundColor(Color.Transparent)
         .accessibilityLevel('yes')
         .accessibilityGroup(true)
-        .accessibilityDescription(this.isCanFavor ? '' : this.getResourceString($r('app.string.access_unavailable')))
         .accessibilityText(this.isFavor ? this.getResourceString($r('app.string.access_Favorited')) :
-        this.getResourceString($r('app.string.access_favorites')))
+          this.getResourceString($r('app.string.access_favorites')))
         .id(Constants.BUTTON_GROUP_FAVOR)
         .onClick(() => {
-          if (!this.isCanFavor) {
-            log.showInfo('isCanFavor is invalid');
-            return;
-          }
           if (this.isHasMedia) {
             this.setScenesType();
             this.controller.callFavorites(this.assetId, this.isFavor || false);
@@ -569,6 +635,11 @@ export default struct ControlButtonGroup {
             this.isFavorButtonVisible = false;
           }
         })
+      } else {
+        Blank()
+          .width(this.bigButtonSize)
+          .height(this.bigButtonSize)
+          .visibility(Visibility.Hidden)
       }
     }
     .accessibilityLevel('yes')

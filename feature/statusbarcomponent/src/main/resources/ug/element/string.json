@@ -57,6 +57,13 @@
             }
         },
         {
+            "name":"ai_assistant",
+            "value":"شياۋيى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
             "name":"battery_power",
             "value":"توك: ‎%s‎",
             "attr":{
@@ -136,6 +143,27 @@
         {
             "name":"ethernet_status_connected",
             "value":"سىملىق تور ئۇلاق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"voice_search",
+            "value":"شياۋيى ئىزدىگۈچ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"voice_translate",
+            "value":"شياۋيى تەرجىمە",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"voice_notetaker",
+            "value":"شياۋيى ئاڭلىق خاتىرە",
             "attr":{
                 "priority":"translate"
             }

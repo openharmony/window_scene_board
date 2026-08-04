@@ -48,6 +48,7 @@ const SCENARIO_MODE_DEFAULT: string = '0';
 const SCENARIO_ICON_DEFAULT: string = 'moon_fill';
 const SCENARIO_LABEL_DEFAULT: string = '$string:DND_mode';
 const FOCUS_MODE_ENABLE_DEFAULT: string = '0';
+const SCENARIO_MODE_CLOUD: string = '40';
 const INTELLIGENT_SCENE_ENABLE_REMINDER_FLAG: string = 'intelligent_scene_reminder_flag';
 const MODE_NAME_EXCLUDE_LENGTH: number = 8;
 const SET_MODE_DELAY: number = 300;
@@ -58,6 +59,7 @@ const RETRY_DELAY_TIME: number = 1000;
 const UN_CHECKED: string = '0';
 const CHECKED: string = '1';
 const DEFAULT_SUB_PANEL_HEIGHT: number = 478;
+const CLOUD_SUB_PANEL_HEIGHT: number = 300;
 
 export class ScenarioModeToggleController extends ToggleBaseViewModel {
   private mScenarioModeData: ScenarioModeData = new ScenarioModeData();
@@ -189,6 +191,9 @@ export class ScenarioModeToggleController extends ToggleBaseViewModel {
     this.mScenarioModeData.iconId = DataShareUtils.getSettingsSecureValueSync('intelligent_scene_icon', SCENARIO_ICON_DEFAULT);
     this.updateIconAndLabel();
     log.showInfo(`scenarioModeIcon: ${this.mScenarioModeData.iconId}`);
+    if(this.isCloudMode(this.scenarioMode)) {
+      DropDownPanelManager.hideWindowDirectly();
+    }
   }
 
   getToggleLabelText(modeName: string): string {
@@ -239,7 +244,8 @@ export class ScenarioModeToggleController extends ToggleBaseViewModel {
 
   handleUpdateState(): void {
     // 无弹窗时执行 UI First 逻辑
-    if ((this.getViewData().isOn || this.isCheckedRemind())) {
+    if ((this.getViewData().isOn || this.isCheckedRemind()) &&
+      !this.isCloudMode(this.scenarioMode)) {
       this.getViewData().isOn = !this.getViewData().isOn;
     }
   }
@@ -320,7 +326,7 @@ export class ScenarioModeToggleController extends ToggleBaseViewModel {
 
   openScenarioModeSubPanel(): void {
     log.showInfo('show scenario mode subpage');
-    let windowHeight = DEFAULT_SUB_PANEL_HEIGHT;
+    let windowHeight = this.isCloudMode(this.openMode) ? CLOUD_SUB_PANEL_HEIGHT : DEFAULT_SUB_PANEL_HEIGHT;
     sToggleSubWindowController.showSubWindowByClickInfo(FASlotName.SCENARIO_MODE, {
       clickType: 'window',
       bundleName: 'com.ohos.intelligentscene',
@@ -328,5 +334,9 @@ export class ScenarioModeToggleController extends ToggleBaseViewModel {
       uiExtensionType: 'sys/commonUI',
       windowHeight: windowHeight
     } as PluginClickInfo);
+  }
+
+  isCloudMode(modeID: string): boolean {
+    return modeID === SCENARIO_MODE_CLOUD;
   }
 }

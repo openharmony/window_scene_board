@@ -1,4 +1,4 @@
-# Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved.
+# Copyright (c) Huawei Technologies Co., Ltd. 2024-2025. All rights reserved.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -89,6 +89,7 @@ function ohpm_install_deps() {
     ohpm_install "${PROJECT_PATH}/feature/gesturenavigation"
     ohpm_install "${PROJECT_PATH}/feature/immersivekeyguard"
     ohpm_install "${PROJECT_PATH}/feature/liveview/"
+    ohpm_install "${PROJECT_PATH}/feature/screenlock/metaballsturbo/"
     ohpm_install "${PROJECT_PATH}/feature/multiinput"
     ohpm_install "${PROJECT_PATH}/feature/notification/managementcomponent"
     ohpm_install "${PROJECT_PATH}/feature/notification/notificationcomponent"
@@ -193,23 +194,25 @@ function build() {
     mkdir build
     mkdir build/outputs
     mkdir build/outputs/SceneBoard
-    ./hvigorw assembleHap --mode module -p module=default_notificationmanagement --no-daemon -p debuggable=false -p buildMode=release -p hvigor-obfuscation=false
-    ./hvigorw assembleHap --mode module -p module=engineservice --no-daemon -p debuggable=false -p buildMode=release -p hvigor-obfuscation=false
-    ./hvigorw assembleHap --mode module -p module=themecomponent --no-daemon -p debuggable=false -p buildMode=release -p hvigor-obfuscation=false
-    ./hvigorw assembleHsp --mode module -p module=basecommon@default -p product=default --no-daemon -p debuggable=false -p buildMode=release -p hvigor-obfuscation=false
+    ./hvigorw assembleHap --mode module -p module=default_notificationmanagement --no-daemon -p debuggable=false -p buildMode=release -p hvigor-obfuscation=true
+    ./hvigorw assembleHap --mode module -p module=engineservice --no-daemon -p debuggable=false -p buildMode=release -p hvigor-obfuscation=true
+    ./hvigorw assembleHap --mode module -p module=themecomponent --no-daemon -p debuggable=false -p buildMode=release -p hvigor-obfuscation=true
+    ./hvigorw assembleHap --mode module -p module=metaballsturbo --no-daemon -p debuggable=false -p buildMode=release -p hvigor-obfuscation=true
+    ./hvigorw assembleHsp --mode module -p module=basecommon@default -p product=default --no-daemon -p debuggable=false -p buildMode=release -p hvigor-obfuscation=true
     cp ./feature/notification/notificationmanagement/build/default/outputs/default/default_notificationmanagement-phone_sceneboard-default-signed.hap ./build/outputs/SceneBoard/SceneBoard_NotificationManagement.hap
     cp ./feature/engineservice/build/default/outputs/default/engineservice-phone_sceneboard-default-signed.hap ./build/outputs/SceneBoard/SceneBoard_EngineService.hap
     cp ./feature/themecomponent/build/default/outputs/default/themecomponent-phone_sceneboard-default-signed.hap ./build/outputs/SceneBoard/SceneBoard_ThemeComponent.hap
+    cp ./feature/screenlock/metaballsturbo/build/default/outputs/default/metaballsturbo-phone_sceneboard-default-signed.hap ./build/outputs/SceneBoard/SceneBoard_MetaBallsTurbo.hap
     cp ./basecommon/build/default/outputs/default/basecommon-default-signed.hsp ./build/outputs/SceneBoard/basecommon.hsp
     if [ "${DT_TASK_FLAG}" == "fullCoverage" ] || [ "${DT_TASK_FLAG}" == "fullCoverageReboot" ];then
-        ./hvigorw assembleHap --mode module -p module=phone_sceneboard --no-daemon -p debuggable=false -p buildMode=release -p ohos-test-coverage=true -p hvigor-obfuscation=false
+        ./hvigorw assembleHap --mode module -p module=phone_sceneboard --no-daemon -p debuggable=false -p buildMode=release -p ohos-test-coverage=true -p hvigor-obfuscation=true
     else
-        ./hvigorw assembleHap --mode module -p module=phone_sceneboard --no-daemon -p debuggable=false -p buildMode=release -p hvigor-obfuscation=false
+        ./hvigorw assembleHap --mode module -p module=phone_sceneboard --no-daemon -p debuggable=false -p buildMode=release -p hvigor-obfuscation=true
     fi
     if [ "${DT_TASK_FLAG}" == "coverage" ] || [ "${DT_TASK_FLAG}" == "fullCoverage" ] || [ "${DT_TASK_FLAG}" == "fullCoverageReboot" ];then
-        ./hvigorw --mode module -p module=phone_sceneboard@ohosTest packageTesting --no-daemon -p debuggable=false -p buildMode=release -p ohos-test-coverage=true -p hvigor-obfuscation=false
+        ./hvigorw --mode module -p module=phone_sceneboard@ohosTest packageTesting --no-daemon -p debuggable=false -p buildMode=release -p ohos-test-coverage=true -p hvigor-obfuscation=true
     else
-        ./hvigorw --mode module -p module=phone_sceneboard@ohosTest packageTesting --no-daemon -p debuggable=false -p buildMode=release -p hvigor-obfuscation=false
+        ./hvigorw --mode module -p module=phone_sceneboard@ohosTest packageTesting --no-daemon -p debuggable=false -p buildMode=release -p hvigor-obfuscation=true
     fi
     if [ -e "build/DTPipeline.zip" ];then
         echo "build/DTPipeline.zip is exist"
@@ -302,10 +305,10 @@ function build_themeservice() {
     mkdir build/outputs/ThemeService
 
 
-    ./hvigorw assembleHap --mode module -p module=themeservice_core --daemon -p debuggable=false -p buildMode=release -p ohos-test-coverage=true -p hvigor-obfuscation=false
+    ./hvigorw assembleHap --mode module -p module=themeservice_core --daemon -p debuggable=false -p buildMode=release -p ohos-test-coverage=true -p hvigor-obfuscation=true
 
 	if [ "${DT_TASK_FLAG}" == "coverage" ] || [ "${DT_TASK_FLAG}" == "fullCoverage" ];then
-	    ./hvigorw --mode module -p module=themeservice_core@ohosTest -p debuggable=false -p ohos-test-coverage=true hvigor-obfuscation=false assembleHap packageTesting  --parallel --incremental --no-daemon --stacktrace
+	    ./hvigorw --mode module -p module=themeservice_core@ohosTest -p debuggable=false -p ohos-test-coverage=true hvigor-obfuscation=true assembleHap packageTesting  --parallel --incremental --no-daemon --stacktrace
     else
         ./hvigorw --mode module -p module=themeservice_core@ohosTest packageTesting --no-daemon -p debuggable=false -p buildMode=release -p
 	fi

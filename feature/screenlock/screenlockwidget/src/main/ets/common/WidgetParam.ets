@@ -114,6 +114,12 @@ export enum ClockComFamily {
   HARMONY_CLOCK_ULT_2_4 = 'HarmonyClock_ult_layout_2_4',
 }
 
+/**
+ * 锁屏日期字体
+ */
+// 仓库内同名字体资源实际为 Thin 占位文件；Phone 参考样式使用系统可变字体落实 900/500 字重。
+export const CLOCK_REFERENCE_FONT_FAMILY: string = 'HarmonyOS Sans';
+
 // 预置字体样式集
 export const ALL_COM_FAMILY: ClockComFamily[] = [ClockComFamily.HARMONY_CLOCK_01, ClockComFamily.HARMONY_CLOCK_02,
   ClockComFamily.HARMONY_CLOCK_03, ClockComFamily.HARMONY_CLOCK_04, ClockComFamily.HARMONY_CLOCK_05,
@@ -242,5 +248,10 @@ export enum PictureLightColorDegree {
  * 电池布局信息
  */
 export enum BatteryLayout {
-  DEFAULT_LAYOUT
+  // 全屏AOD数字时钟电池布局
+  FULL_AOD_LAYOUT,
+  // 全屏AOD艺术签名电池布局
+  FULL_ART_SIGN_LAYOUT,
+  // 局部AOD数字时钟电池布局
+  PART_AOD_LAYOUT,
 }

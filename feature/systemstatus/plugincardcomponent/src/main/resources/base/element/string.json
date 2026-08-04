@@ -92,7 +92,7 @@
             }
         },
         {
-            "name":"title_login_openharmony_account",
+            "name":"title_login_hw_account",
             "value":"Log in to use Super Device",
             "attr":{
                 "priority":"LT"

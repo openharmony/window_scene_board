@@ -18,6 +18,7 @@ import mSignalModel from '@ohos/signalcomponent/src/main/ets/default/signalModel
 import data from '@ohos.telephony.data';
 import AirplaneController from '@ohos/airplanecomponent/src/main/ets/default/controller/AirplaneController';
 import Sim from '@ohos.telephony.sim';
+import vsim from '@hms.telephony.vsim';
 import { resourceManager } from '@kit.LocalizationKit';
 import { LogDomain, LogHelper } from '@ohos/basicutils/src/main/ets/TsIndex';
 import { EvtBus } from '@ohos/frameworkwrapper';
@@ -45,6 +46,7 @@ export class SignalStyle {
 }
 
 const SIM_COUNT_0 = 0;
+let isVSimEnabled = vsim.getVSimStatus().isVSimEnabled
 @Component
 export default struct SignalIcon {
   @StorageLink('cellularLevel') @Watch('refreshCellularInfo') cellularLevel: number[] =
@@ -62,17 +64,27 @@ export default struct SignalIcon {
 
   refreshCellularInfo() {
     log.showInfo(`refreshCellularInfo  cellularLevel: ${this.cellularLevel[0]}, ${this.cellularLevel[1]}, ${this.cellularLevel[2]}`);
+    log.showInfo(`vsim status is ${isVSimEnabled}`);
     // 单卡时，默认显示有卡片的卡槽的sim卡
     // 卡槽1有sim卡，卡槽2没有sim卡，cardSituation = 0
     if (this.cellularLevel[0] !== Constants.CELLULAR_NO_SIM_CARD &&
       this.cellularLevel[1] === Constants.CELLULAR_NO_SIM_CARD) {
       this.hasTwoSimCard = false;
-      this.cardSituation = this.simCardIsActive[2] && this.cellularLevel[2] !== Constants.CELLULAR_NO_SIM_CARD && 0;
+      this.cardSituation = this.simCardIsActive[2] && this.cellularLevel[2] !== Constants.CELLULAR_NO_SIM_CARD &&
+      isVSimEnabled ? 4 : 0;
       log.showInfo('process slot 0 and slot 2');
+    }
+    // 天际通无卡
+    if (this.cellularLevel[0] === Constants.CELLULAR_NO_SIM_CARD &&
+      this.cellularLevel[1] === Constants.CELLULAR_NO_SIM_CARD &&
+      this.cellularLevel[2] !== Constants.CELLULAR_NO_SIM_CARD && isVSimEnabled) {
+      this.cardSituation = 6;
+      log.showInfo('process slot 2');
     }
     // 均无卡时 使用卡0的图标组件来显示
     if (this.cellularLevel[0] === Constants.CELLULAR_NO_SIM_CARD &&
-      this.cellularLevel[1] === Constants.CELLULAR_NO_SIM_CARD) {
+      this.cellularLevel[1] === Constants.CELLULAR_NO_SIM_CARD &&
+      !isVSimEnabled) {
       this.cardSituation = 0;
       log.showInfo('process slot no card 0');
     }
@@ -80,7 +92,8 @@ export default struct SignalIcon {
     if (this.cellularLevel[0] === Constants.CELLULAR_NO_SIM_CARD &&
       this.cellularLevel[1] !== Constants.CELLULAR_NO_SIM_CARD) {
       this.hasTwoSimCard = false;
-      this.cardSituation = this.simCardIsActive[2] && this.cellularLevel[2] !== Constants.CELLULAR_NO_SIM_CARD && 1;
+      this.cardSituation = this.simCardIsActive[2] && this.cellularLevel[2] !== Constants.CELLULAR_NO_SIM_CARD &&
+      isVSimEnabled ? 5 : 1;
       log.showInfo('process slot 1 and slot 2');
     }
     // 卡槽1和卡槽2都有sim卡，根据启用状态区分
@@ -96,19 +109,23 @@ export default struct SignalIcon {
       // 双卡，卡1被激活，卡2关闭，显示卡1
       if (this.simCardIsActive[0] && !this.simCardIsActive[1]) {
         this.cardSituation =
-          this.simCardIsActive[2] && this.cellularLevel[2] !== Constants.CELLULAR_NO_SIM_CARD && 0;
+          this.simCardIsActive[2] && this.cellularLevel[2] !== Constants.CELLULAR_NO_SIM_CARD &&
+          isVSimEnabled ? 4 : 0;
         log.showInfo('process slot 0 and slot 2');
       } else if (!this.simCardIsActive[0] && this.simCardIsActive[1]) { // 双卡，卡1关闭，卡2被激活，显示卡2
         this.cardSituation =
-          this.simCardIsActive[2] && this.cellularLevel[2] !== Constants.CELLULAR_NO_SIM_CARD && 1;
+          this.simCardIsActive[2] && this.cellularLevel[2] !== Constants.CELLULAR_NO_SIM_CARD &&
+          isVSimEnabled ? 5 : 1;
         log.showInfo('process slot 1 and slot 2');
       } else if (!this.simCardIsActive[0] && !this.simCardIsActive[1]) { // 双卡，卡1关闭，卡2关闭，显示一张无信号的卡图标
         this.cardSituation =
-          this.simCardIsActive[2] && this.cellularLevel[2] !== Constants.CELLULAR_NO_SIM_CARD && 3;
+          this.simCardIsActive[2] && this.cellularLevel[2] !== Constants.CELLULAR_NO_SIM_CARD &&
+          isVSimEnabled ? 6 : 3;
         log.showInfo('process slot 2');
       } else { // 双卡都被激活
         this.cardSituation =
-          this.simCardIsActive[2] && this.cellularLevel[2] !== Constants.CELLULAR_NO_SIM_CARD && 2;
+          this.simCardIsActive[2] && this.cellularLevel[2] !== Constants.CELLULAR_NO_SIM_CARD &&
+          isVSimEnabled ? 7 : 2;
         log.showInfo('process slot 0 and slot 1 and slot 2');
       }
     }

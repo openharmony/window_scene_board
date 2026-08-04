@@ -1,5 +1,5 @@
 /*
- * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -22,6 +22,7 @@ import {
   SingleBase,
   singleManager,
   SingleContext,
+  OutdoorConfig,
   CommonUtils
 } from '@ohos/basicutils';
 import { GlobalContext, DeviceHelper } from '@ohos/frameworkwrapper';
@@ -31,6 +32,9 @@ import util from '@ohos.util';
 import { InstructionManager } from '../utils/differential/InstructionManager';
 import type ctx from '@ohos.app.ability.common';
 import { AppCategoryInfoManager } from '../manager/AppCategoryInfoManager';
+import {
+  LightOutdoorConfig
+} from '@ohos/frameworkwrapper';
 
 const TAG = 'GetLayoutInfoFromConfig';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.HOME, TAG);
@@ -43,6 +47,7 @@ export class GetLayoutInfoFromConfig extends SingleBase {
   private mFinalLayout: DefaultDesktopLayoutInfo | null = null;
   private mOuterFinalLayout: DefaultDesktopLayoutInfo | null = null;
   private mSimpleFinalLayout: DefaultDesktopLayoutInfo | null = null;
+  private mOutdoorModeLayout: DefaultDesktopLayoutInfo | null = null;
 
   private mGetLayoutInfoCallbacks: Array<Function> = [];
   // 获取预制布局是否完成
@@ -117,6 +122,64 @@ export class GetLayoutInfoFromConfig extends SingleBase {
   }
 
   /**
+   * 通过配置文件获取云端桌面布局
+   * 根据传入的desktopModel来加载不同的预制布局文件
+   * @returns 布局信息
+   */
+  public async getOutdoorLayoutConfigFile(filePath?: string): Promise<DefaultDesktopLayoutInfo> {
+    if (this.mOutdoorModeLayout != null) {
+      log.showInfo('getOutdoorLayoutConfigFile mOutdoorModeLayout is not null');
+      return this.mOutdoorModeLayout;
+    }
+    let cfgFiles: string[] = [];
+    let configPath: string = 'etc/hw_launcher_outdoor_workspace.json';
+    if (LightOutdoorConfig.getInstance().isOnLightOutdoorMode()) {
+      configPath = 'etc/SceneBoard/hw_launcher_outdoor_workspace.json';
+    }
+    log.info(`getOutdoorLayoutConfigFile -> start, configPath: ${configPath}`);
+    try {
+      cfgFiles = await ConfigParseUtil.getAllConfig(configPath);
+    } catch (error) {
+      log.error('configPolicy.getCfgFiles error', error);
+    }
+    if (filePath) {
+      // 只获取定制目录下的布局信息
+      cfgFiles = [];
+      cfgFiles.push(filePath);
+    }
+    if (CheckEmptyUtils.isEmptyArr(cfgFiles)) {
+      log.showError('getOutdoorLayoutConfigFile -> cfgFiles is empty.');
+      if (OutdoorConfig.getInstance().isInOutdoorMode()) {
+        this.mOutdoorModeLayout = await this.getConfigFromFile('outdoor_layoutInfo.json');
+      } else {
+        this.mOutdoorModeLayout = await this.getConfigFromFile('light_outdoor_layoutInfo.json');
+      }
+    } else {
+      this.configLisTraversal(cfgFiles, true);
+      if (!this.mOutdoorModeLayout) {
+        log.showError('getOutdoorLayoutConfigFile -> cfgFiles is error');
+        this.mOutdoorModeLayout = await this.getConfigFromFile('outdoor_layoutInfo.json');
+      }
+    }
+    this.isFinishedFlag = true;
+    this.mGetLayoutInfoCallbacks.forEach((callback: Function) => {
+      if (callback) {
+        callback();
+      }
+    });
+    this.mGetLayoutInfoCallbacks = [];
+    if (LightOutdoorConfig.getInstance().isOnLightOutdoorMode()) {
+      this.mOutdoorModeLayout?.layoutInfo.forEach(item => {
+        let intentMap: Map<string, Object> = CommonUtils.jsonStrToMap(item.intent);
+        intentMap.set('comeFrom', 'ccm');
+        item.intent = CommonUtils.mapToJonStr(intentMap);
+      });
+    }
+    log.showInfo(`getOutdoorLayoutConfigFile end, layoutInfo.length ${this.mOutdoorModeLayout?.layoutInfo.length} `);
+    return this.mOutdoorModeLayout as DefaultDesktopLayoutInfo;
+  }
+
+  /**
    * 通过配置文件获取布局信息
    *
    * @returns 布局信息
@@ -128,7 +191,7 @@ export class GetLayoutInfoFromConfig extends SingleBase {
       return this.mFinalLayout;
     }
     let cfgFiles: string[] = [];
-    let configPath: string = 'etc/openharmony_launcher_default_workspace.json';
+    let configPath: string = 'etc/hw_launcher_default_workspace.json';
     try {
       cfgFiles = await ConfigParseUtil.getAllConfig(configPath);
     } catch (error) {
@@ -171,7 +234,7 @@ export class GetLayoutInfoFromConfig extends SingleBase {
       return this.mFinalLayout;
     }
     let cfgFiles: string[] = [];
-    let configPath: string = 'etc/openharmony_launcher_2in1_pc_workspace.json';
+    let configPath: string = 'etc/hw_launcher_2in1_pc_workspace.json';
     try {
       cfgFiles = await ConfigParseUtil.getAllConfig(configPath);
     } catch (error) {
@@ -205,7 +268,7 @@ export class GetLayoutInfoFromConfig extends SingleBase {
     return this.mOuterFinalLayout;
   }
 
-  private configLisTraversal(cfgFiles: string[]): void {
+  private configLisTraversal(cfgFiles: string[], isOutdoorMode: boolean = false): void {
     let configList: Array<DefaultDesktopLayoutInfo> = [];
     cfgFiles.forEach((filePath) => {
       log.showInfo('Succeeded in obtaining the CCM layout configuration file.');
@@ -221,12 +284,43 @@ export class GetLayoutInfoFromConfig extends SingleBase {
       }
     }
     if (configList.length === 1) {
-      this.mFinalLayout = configList[0];
+      if (isOutdoorMode) {
+        this.mOutdoorModeLayout = configList[0];
+      } else {
+        this.mFinalLayout = configList[0];
+      }
     }
     if (configList.length > 1) {
-      this.mFinalLayout = configList[0];
+      if (isOutdoorMode) {
+        this.mOutdoorModeLayout = configList[0];
+      } else {
+        this.mFinalLayout = configList[0];
+      }
       for (let index = 1; index < configList.length; index++) {
-        this.mFinalLayout = this.mergeLayout(this.mFinalLayout, configList[index]);
+        if (isOutdoorMode) {
+          this.mOutdoorModeLayout = this.mergeLayout(this.mOutdoorModeLayout, configList[index]);
+        } else {
+          this.mFinalLayout = this.mergeLayout(this.mFinalLayout, configList[index]);
+        }
+      }
+    }
+  }
+
+  private outerConfigLisTraversal(outerCfgFiles: string[]): void {
+    let outerConfigList: Array<DefaultDesktopLayoutInfo> = [];
+    outerCfgFiles.forEach((outerConfigPath) => {
+      log.showInfo('Succeeded in obtaining the CCM layout configuration file.');
+      const outerLayout: DefaultDesktopLayoutInfo = FileUtils.readJsonFile(outerConfigPath.toString());
+      this.complementaryLayoutInfo(outerLayout);
+      outerConfigList.push(outerLayout);
+    });
+    if (outerConfigList.length === 1) {
+      this.mOuterFinalLayout = outerConfigList[0];
+    }
+    if (outerConfigList.length > 1) {
+      this.mOuterFinalLayout = outerConfigList[0];
+      for (let index = 1; index < outerConfigList.length; index++) {
+        this.mOuterFinalLayout = this.mergeLayout(this.mOuterFinalLayout, outerConfigList[index]);
       }
     }
   }
@@ -249,6 +343,10 @@ export class GetLayoutInfoFromConfig extends SingleBase {
       log.showError(`promise getRawFileContent failed, error code: ${error.code}, message: ${error.message}.`);
     }
     return defaultConfig;
+  }
+
+  private getInstructionMgr(): InstructionManager {
+    return singleManager.get<InstructionManager>(InstructionManager, this.singleContext);
   }
 
   private mergeLayout(oriLayout: DefaultDesktopLayoutInfo, incLayout: DefaultDesktopLayoutInfo):

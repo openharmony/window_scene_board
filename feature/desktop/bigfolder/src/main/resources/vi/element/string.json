@@ -1,35 +1,35 @@
 {
     "string":[
         {
-            "name":"d_app_unavailable_dialog_content",
+            "name":"deliver_app_unavailable_dialog_content",
             "value":"Để sử dụng ứng dụng này, trước tiên hãy tải xuống %s từ AppGallery.",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"d_app_dialog_contents",
+            "name":"deliver_app_dialog_contents",
             "value":"Cập nhật ứng dụng để có trải nghiệm hoàn toàn mới. Xin lưu ý rằng một số dữ liệu ứng dụng có thể bị mất khi chuyển đổi phiên bản.",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"d_app_dialog_cancel",
+            "name":"deliver_app_dialog_cancel",
             "value":"Bỏ qua",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"d_app_dialog_text",
+            "name":"deliver_app_dialog_text",
             "value":"%s hiện đã có sẵn cho OpenHarmony.",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"uninstall_d_app_dialog_content",
+            "name":"uninstall_deliver_app_dialog_content",
             "value":"Bạn đã cài đặt OpenHarmony phiên bản %s trên thiết bị này. Gỡ cài đặt phiên bản cũ?",
             "attr":{
                 "priority":"LT"
@@ -43,7 +43,7 @@
             }
         },
         {
-            "name":"d_app_dialog_open",
+            "name":"deliver_app_dialog_open",
             "value":"Mở phiên bản OpenHarmony",
             "attr":{
                 "priority":"LT"
@@ -57,49 +57,49 @@
             }
         },
         {
-            "name":"d_app_dialog_confirm",
+            "name":"deliver_app_dialog_confirm",
             "value":"Cập nhật ngay",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"d_app_pause_download_dialog_content",
+            "name":"deliver_app_pause_download_dialog_content",
             "value":"Quá trình tải xuống đã bị tạm dừng đối với %s. Tiếp tục?",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"d_app_unavailable_dialog_title",
+            "name":"deliver_app_unavailable_dialog_title",
             "value":"Ứng dụng không có sẵn",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"d_app_dialog_title",
+            "name":"deliver_app_dialog_title",
             "value":"Đã có phiên bản mới",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"uninstall_d_app_dialog_title",
+            "name":"uninstall_deliver_app_dialog_title",
             "value":"Đã cài đặt phiên bản mới hơn",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"d_app_unavailable_dialog_know",
+            "name":"deliver_app_unavailable_dialog_know",
             "value":"OK",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"d_app_wait_download_dialog_content",
+            "name":"deliver_app_wait_download_dialog_content",
             "value":"%s đang trong hàng đợi tải xuống. Bạn có muốn ưu tiên quá trình tải xuống này không?",
             "attr":{
                 "priority":"LT"
@@ -120,7 +120,7 @@
             }
         },
         {
-            "name":"d_app_installing_dialog_content",
+            "name":"deliver_app_installing_dialog_content",
             "value":"%s đang được cài đặt. Vui lòng đợi.",
             "attr":{
                 "priority":"translate"

@@ -87,12 +87,12 @@ export interface ThemeTrialService {
     reminderDuration: number): Promise<number>;
 
   /**
-   * 关闭所有定时器
+   * 云端模式进入后，关闭所有定时器
    */
   stopTimer(): Promise<void>;
 
   /**
-   * 重新开启定时器
+   * 云端模式退出后，重新开启定时器
    */
   restartTimer(): Promise<void>;
 }

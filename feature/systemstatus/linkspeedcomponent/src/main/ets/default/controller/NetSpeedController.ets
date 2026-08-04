@@ -50,7 +50,7 @@ import { AirplaneStateEvent } from '@ohos/systemuicommon/src/main/ets/TsIndex';
 import { RegisterAPIProtector } from '@ohos/systemuicommon/Index';
 import commonEventManager from '@ohos.commonEventManager';
 import { StatusBarExceptionCode } from '@ohos/systemuicommon/src/main/ets/statusbar/enum/StatusBarExceptionCode';
-// import Vsim from '@hms.telephony.vsim';
+// import Vsim from '@ohos.telephony.vsim';
 import dataShare from '@ohos.data.dataShare';
 import Settings from '@ohos.settings';
 
@@ -452,7 +452,13 @@ export class NetSpeedController extends BaseController<LinkSpeedData> {
     }
     this.mIsFirst = true;
     this.timerId = setInterval(() => {
-      this.getLinkedInfo();
+      // this.getAllTxBytes(),this.getAllRxBytes()获取不到蜂窝上下行流量，导致打开移动数据，状态栏实时网速为0。
+      // 暂时用statistics.getCellularTxBytes获取蜂窝流量，在wifi连接时，显示wifi网速
+      if (!this.isConnected) {
+        this.getCellularInfo();
+      } else {
+        this.getLinkedInfo();
+      }
     }, RETRY_INTERVAL);
     log.showWarn(`createLinkSpeedQueryInterval end: ${this.timerId}`);
   }
@@ -510,6 +516,30 @@ export class NetSpeedController extends BaseController<LinkSpeedData> {
         StatusBarExceptionCode.NET_SPEED_FAIL, error, TAG);
     }
     return stats;
+  }
+
+  /**
+   * 获取蜂窝网速
+   * @returns
+   */
+  private async getCellularInfo(): Promise<void> {
+      try {
+        //获取蜂窝实时上行流量
+        let txStats: number = await statistics.getCellularTxBytes();
+        //获取蜂窝实时下行流量
+        let rxStats: number = await statistics.getCellularRxBytes();
+        this.mCurrentValue = txStats + rxStats;
+        let value = Math.abs(this.mCurrentValue - this.mLastValue) / CIRCLE_COUNT;
+        this.mLastValue = this.mCurrentValue;
+        if (this.mIsFirst) {
+          this.mIsFirst = false;
+          value = 0;
+        }
+        this.setSpeed(value);
+        log.showInfo(`getCellularInfo success`);
+      } catch (err) {
+        log.showError(`getCellularInfo fail,code:${err?.code},message:${err?.message}`);
+      }
   }
 
   private async getAllRxBytes(): Promise<number> {

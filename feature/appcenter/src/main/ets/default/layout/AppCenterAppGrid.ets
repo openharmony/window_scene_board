@@ -13,27 +13,36 @@
  * limitations under the License.
  */
 
-import { LogDomain, LogHelper, SingleContext } from '@ohos/basicutils';
-import { GlobalContext, HiSysEventUtil, localEventManager } from '@ohos/frameworkwrapper';
-import { windowManager} from '@ohos/componentdrag';
+import { LogDomain, LogHelper, RectInfo, SingleContext } from '@ohos/basicutils';
+import {
+  GlobalContext,
+  HiSysEventUtil,
+  IconResourceManager,
+  localEventManager,
+  ResourceManager
+} from '@ohos/frameworkwrapper';
+import { windowManager } from '@ohos/componentdrag';
 import {
   AppGridStyleConfig, CalculateAppCenterRst, ReceiveEventInfo, StyleConstants
 } from '@ohos/launchercommon';
+import { GridLayoutItemInfo, KeyConstants, MenuInfo } from '@ohos/launchercommon/src/main/ets/TsIndex';
 import ServiceExtensionContext from 'application/ServiceExtensionContext';
 import { LayoutViewModel } from '@ohos/launchercommon';
 import { AppItemInfo } from '@ohos/launchercommon';
 import { CommonConstants } from '@ohos/launchercommon';
 import performanceMonitor from '@ohos.arkui.performanceMonitor';
 import { AppCenterItem } from './AppCenterItem';
+import { AppMenu } from '@ohos/launchercommon/Index';
 import FeatureConstants from '../common/constants/FeatureConstants';
 import AppGridLayoutCacheManager from '../common/cache/AppGridLayoutCacheManager';
 import AppGridLayoutUtil from '../common/util/AppGridLayoutUtil';
 import { FoldedDeviceAcViewModel, FoldStatusChangeEvent, SCBFoldedState } from '../folded/FoldedDeviceAcViewModel';
 import { AppCenterViewModel } from '../common/viewmodel/AppCenterViewModel';
-import { SCBPropertyChangeReason,
-  SCBScreenProperty, SCBScreenSessionManager } from '@ohos/windowscene';
+import {
+  SCBPropertyChangeReason, SCBScreenProperty, SCBScreenSessionManager
+} from '@ohos/windowscene';
 import { AppCenterDragMgr } from '../controller/AppCenterDragMgr';
-import { RTLUtil } from '@ohos/componenthelper';
+import { ItemUtils, RTLUtil, SceneSessionUIContextManager } from '@ohos/componenthelper';
 import { curves } from '@kit.ArkUI';
 import { AC_DRAG_SQUEEZE_DURATION } from '../constants/LayoutConstants';
 
@@ -42,6 +51,8 @@ const TAG = 'AppCenterAppGrid';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.HOME, TAG);
 const DEFAULT_ICON_RADIUS = 20;
 const FOLD_TO_UNFOLDED_DURATION = 400;
+const IN_PAGE_MENU_ITEM_HEIGHT = 40;
+const IN_PAGE_MENU_OFFSET = 8;
 
 /**
  * 应用中心网格布局
@@ -105,12 +116,10 @@ export struct AppCenterAppGrid {
   isDragStart: boolean = false;
   @Provide
   isFocused: boolean = false;
-
   private desktopContext?: ServiceExtensionContext = GlobalContext.getContext();
-
-  @State acGridPaddingTop:number = 0;
-  @State acGridPaddingBottom:number = 0;
-  @State acGridPaddingLeft:number = 0;
+  @State acGridPaddingTop: number = 0;
+  @State acGridPaddingBottom: number = 0;
+  @State acGridPaddingLeft: number = 0;
   @State acColumns: number = AppCenterViewModel.getInstance().getAppGridStyleConfig(this.screenProp.screenId).mColumns;
   @State acRows: number = AppCenterViewModel.getInstance().getAppGridStyleConfig(this.screenProp.screenId).mRows;
   @State acFirstGridPaddingTop: number = 0;
@@ -121,7 +130,13 @@ export struct AppCenterAppGrid {
   @Link swiperPaddingBottom: number;
   private currentScreenHeight: number = this.screenProp.height;
   private currentScreenWidth: number = this.screenProp.width;
-
+  @State inPageMenuVisible: boolean = false;
+  @State inPageMenuInfoList: MenuInfo[] = [];
+  @State inPageMenuPosition: Position = { x: 0, y: 0 };
+  private inPageMenuWidth: number = StyleConstants.MENU_WIDTH_COLUMNS_PC;
+  private inPageMenuPlacement: Placement = Placement.BottomLeft;
+  private inPageMenuItem: AppItemInfo = new AppItemInfo();
+  private inPageMenuRect: RectInfo = new RectInfo();
   private readonly foldStateChangeListener: ReceiveEventInfo = {
     onReceiveEvent: (event: string, params: FoldStatusChangeEvent): void => {
       log.showInfo(`hopper state change event-in grid received: ${event}, params: ${JSON.stringify(params)}`);
@@ -156,10 +171,10 @@ export struct AppCenterAppGrid {
   };
 
   private resetGridPadding(cs: SCBFoldedState, isNeedResetPaddingAnimation: boolean, ts?: SCBFoldedState): void {
-    let gTop: number = AppCenterViewModel.getInstance().
-    getAppGridStyleConfig(this.screenProp.screenId).mAppCenterMarginTop;
-    let gBottom: number = AppCenterViewModel.getInstance().
-    getAppGridStyleConfig(this.screenProp.screenId).mAppCenterMarginBottom;
+    let gTop: number =
+      AppCenterViewModel.getInstance().getAppGridStyleConfig(this.screenProp.screenId).mAppCenterMarginTop;
+    let gBottom: number =
+      AppCenterViewModel.getInstance().getAppGridStyleConfig(this.screenProp.screenId).mAppCenterMarginBottom;
     let gSpace: number = FoldedDeviceAcViewModel.getInstance(this.screenProp.screenId).getSwiperItemSpace();
     let singleGridSpace: number = (gTop + gBottom + gSpace) / 2;
 
@@ -275,6 +290,58 @@ export struct AppCenterAppGrid {
     return this.acGridPaddingBottom;
   }
 
+  private async sortAppsByFirstChar(arr: AppItemInfo[]): Promise<void> {
+    const filledPromises = arr.map(async (item: AppItemInfo) => {
+      const appName: string = await ResourceManager.getInstance().getAppName(
+        item.appLabelId,
+        item.bundleName,
+        item.moduleName
+      );
+      item.appName = appName;
+      return item;
+    });
+    // 2. 等待所有异步请求完成，得到完整的 appName 数组
+    const filledArr = await Promise.all(filledPromises);
+    this.appGridList = filledArr.sort((a, b) => {
+      // 工具函数：提取首个有效字符（去空格，避免开头空格干扰）
+      const getFirstValidChar = (str: string): string => {
+        const trimmed = str.trim();
+        return trimmed.charAt(0) || '';
+      };
+
+      // 提取两个项的 abilityName 首字符
+      const charA = getFirstValidChar(a.appName);
+      const charB = getFirstValidChar(b.appName);
+      // 工具函数：判断字符类型（数字=0，字母=1，其他=2）
+      const getCharType = (char: string): 0 | 1 | 2 => {
+        if (/^\d$/.test(char)) {
+          return 0;
+        } // 单个数字
+        if (/^[a-zA-Z]$/.test(char)) {
+          return 1;
+        } // 单个字母（大小写）
+        return 2; // 中文/特殊符号等
+      };
+      const typeA = getCharType(charA);
+      const typeB = getCharType(charB);
+      // 第一步：按类型优先级排序（数字 > 字母 > 其他）
+      if (typeA !== typeB) {
+        return typeA - typeB;
+      }
+      // 第二步：同类型内部排序
+      if (typeA === 0) {
+        // 数字类型：按首字符数值排序
+        return Number(charA) - Number(charB);
+      }
+      if (typeA === 1) {
+        // 字母类型：转大写后按 A-Z 字典序（忽略大小写）
+        return charA.toUpperCase().localeCompare(charB.toUpperCase());
+      }
+      // 其他类型（中文）：按拼音排序
+      return a.appName.localeCompare(b.appName, 'zh-CN');
+    });
+  };
+
   public aboutToAppear(): void {
     log.showInfo(`aboutToAppear inSearch: ${this.inSearch}-${this.pageIndex}`);
     this.onUpdatePageEvent();
@@ -286,6 +353,8 @@ export struct AppCenterAppGrid {
     log.showInfo(`aboutToAppear ac-param: ${JSON.stringify(this.appCenterRst)}`);
     if (!this.inSearch) {
       this.appGridList = AppGridLayoutCacheManager.getInstance().getAppGridLayoutItemsByPage(this.pageIndex);
+      //应用中心初始排序
+      // this.sortAppsByFirstChar(this.appGridList);
       if (FoldedDeviceAcViewModel.getInstance().isFoldedDevice() &&
       FoldedDeviceAcViewModel.getInstance().isUnFoldedHorizontal()) {
         this.gridOptions = AppGridLayoutUtil.getGridLayoutOptions(
@@ -384,6 +453,7 @@ export struct AppCenterAppGrid {
 
   aboutToDisappear(): void {
     log.showInfo(`aboutToDisappear inSearch: ${this.inSearch}-${this.pageIndex}`);
+    this.closeInPageMenu();
     this.offUpdatePageEvent();
     if (FoldedDeviceAcViewModel.getInstance().isFoldedDevice()) {
       localEventManager.unregisterEventListener(this.foldStateChangeListener);
@@ -418,6 +488,7 @@ export struct AppCenterAppGrid {
     if (this.inSearch) {
       return;
     }
+    this.closeInPageMenu();
     this.appGridList = AppGridLayoutCacheManager.getInstance().getAppGridLayoutItemsByPage(this.pageIndex);
     log.showInfo(`updateCurrentPageEvent, page: ${this.pageIndex}, appGridList.length: ${this.appGridList.length}`);
     this.gridOptions = AppGridLayoutUtil.getGridLayoutOptions(this.appGridList, this.screenProp.screenId);
@@ -514,6 +585,84 @@ export struct AppCenterAppGrid {
     }
   }
 
+  private closeInPageMenuIfNeeded(): boolean {
+    if (!this.inPageMenuVisible) {
+      return false;
+    }
+    this.closeInPageMenu();
+    return true;
+  }
+
+  private closeInPageMenu(): void {
+    if (!this.inPageMenuVisible) {
+      return;
+    }
+    this.inPageMenuVisible = false;
+    log.showInfo('close appcenter in-page menu from grid');
+  }
+
+  private getGridRect(): RectInfo {
+    SceneSessionUIContextManager.getInstance().setUiContext(this.getUIContext());
+    return ItemUtils.getFrameNodeRectById(`Grid_${this.pageIndex}`);
+  }
+
+  private getInPageMenuX(iconRect: RectInfo, gridRect: RectInfo, menuWidth: number,
+    menuPlacement: Placement): number {
+    const iconLeft: number = iconRect.left - gridRect.left;
+    const iconWidth: number = iconRect.width ?? iconRect.right - iconRect.left;
+    if (menuPlacement === Placement.TopRight || menuPlacement === Placement.BottomRight) {
+      return Math.max(0, iconLeft + iconWidth - menuWidth);
+    }
+    return Math.max(0, iconLeft);
+  }
+
+  private getInPageMenuY(iconRect: RectInfo, gridRect: RectInfo, menuInfoList: MenuInfo[],
+    menuPlacement: Placement): number {
+    const iconTop: number = iconRect.top - gridRect.top;
+    const iconHeight: number = iconRect.height ?? iconRect.bottom - iconRect.top;
+    const menuHeight: number = menuInfoList.length * IN_PAGE_MENU_ITEM_HEIGHT + StyleConstants.DEFAULT_4 * 2;
+    if (menuPlacement === Placement.Bottom || menuPlacement === Placement.BottomLeft ||
+      menuPlacement === Placement.BottomRight) {
+      return iconTop + iconHeight + IN_PAGE_MENU_OFFSET;
+    }
+    return Math.max(0, iconTop - menuHeight - IN_PAGE_MENU_OFFSET);
+  }
+
+  private openInPageMenu: Function = (item: AppItemInfo, menuInfoList: MenuInfo[], iconRect: RectInfo,
+    menuWidth: number, menuPlacement: Placement): void => {
+    const gridRect: RectInfo = this.getGridRect();
+    this.inPageMenuItem = item;
+    this.inPageMenuInfoList = menuInfoList;
+    this.inPageMenuRect = iconRect;
+    this.inPageMenuWidth = menuWidth;
+    this.inPageMenuPlacement = menuPlacement;
+    this.inPageMenuPosition = { x: this.getInPageMenuX(iconRect, gridRect, menuWidth, menuPlacement),
+      y: this.getInPageMenuY(iconRect, gridRect, menuInfoList, menuPlacement) };
+    this.inPageMenuVisible = true;
+  }
+
+  @Builder
+  inPageMenuBuilder() {
+    AppMenu({
+      menuInfoList: this.inPageMenuInfoList,
+      closeMenu: () => this.closeInPageMenu(),
+      menuWidth: this.inPageMenuWidth,
+      appParams: new Map<string, Object>([[KeyConstants.ITEM_RECT, this.inPageMenuRect]]),
+      menuPlacement: this.inPageMenuPlacement,
+      iconSize: this.iconSize,
+      iconRadius: this.iconRadius,
+      appItem: this.inPageMenuItem as Object as GridLayoutItemInfo,
+    })
+    .width(this.inPageMenuWidth)
+    .padding(StyleConstants.DEFAULT_4)
+    .backgroundBlurStyle(BlurStyle.COMPONENT_REGULAR)
+    .borderRadius(StyleConstants.DEFAULT_16)
+    .shadow(ShadowStyle.OUTER_DEFAULT_MD)
+    .position(this.inPageMenuPosition)
+    .transition(TransitionEffect.OPACITY.animation({ duration: 100 })
+      .combine(TransitionEffect.scale({ x: 0.95, y: 0.95 }).animation({ duration: 100, curve: Curve.FastOutSlowIn })))
+  }
+
   private getForEachKey(item: AppItemInfo) {
     if (!item) {
       return 'AppGrid';
@@ -570,6 +719,9 @@ export struct AppCenterAppGrid {
 
   private onIconContainerClickCallback = (event?: ClickEvent) => {
     log.showInfo('onIconContainerClickCallback');
+    if (this.closeInPageMenuIfNeeded()) {
+      return;
+    }
     if (this.isDragFlag) {
       log.showInfo('in drag, not response');
       return;
@@ -608,6 +760,7 @@ export struct AppCenterAppGrid {
         appCenterBubbleMarginBottom: this.appCenterBubbleMarginBottom,
         iconSize: this.iconSize,
         onIconContainerClick: this.onIconContainerClickCallback,
+        openInPageMenu: this.openInPageMenu,
         screenProp: this.screenProp,
         iconRadius: this.iconRadius,
         nameSize: this.nameSize,
@@ -635,37 +788,47 @@ export struct AppCenterAppGrid {
   }
 
   build() {
-    Grid(undefined, this.gridOptions) {
-      /**
-       * ForEach如果itemGenerator定义了index，KeyGenerator未定义index，key = KeyGenerator返回值 + index
-       * 如果itemGenerator、keyGenerator都定义了index，key = keyGenerator返回值
-       * 所以不要删掉keyGenerator的index，否则会导致拖拽场景下Item重新渲染
-       */
-      ForEach(this.appGridList, (item: AppItemInfo, index?: number) => {
-        this.buildGridItem(item, index)
-      }, (item: AppItemInfo, index: number) => this.getForEachKey(item))
+    Stack({ alignContent: Alignment.TopStart }) {
+      Grid() {
+        /**
+         * ForEach如果itemGenerator定义了index，KeyGenerator未定义index，key = KeyGenerator返回值 + index
+         * 如果itemGenerator、keyGenerator都定义了index，key = keyGenerator返回值
+         * 所以不要删掉keyGenerator的index，否则会导致拖拽场景下Item重新渲染
+         */
+        ForEach(this.appGridList, (item: AppItemInfo, index?: number) => {
+          this.buildGridItem(item, index)
+        }, (item: AppItemInfo, index: number) => this.getForEachKey(item))
+      }
+      .id(`Grid_${this.pageIndex}`)
+      .animation({ duration: 200 })
+      .columnsTemplate(this.getColumnsTemplate())
+      .rowsTemplate(this.getRowsTemplate())
+      .columnsGap(this.appGridStyleConfig.mColumnsGap)
+      .rowsGap(this.appGridStyleConfig.mRowsGap)
+      .width(StyleConstants.PERCENTAGE_100)
+      .height(StyleConstants.PERCENTAGE_100)
+      .onClick(() => {
+        performanceMonitor.begin(HiSysEventUtil.EXIT_APP_CENTER, performanceMonitor.ActionType.LAST_UP);
+        log.showInfo(`appgrid onclick :${this.isDragFlag}`);
+        if (this.closeInPageMenuIfNeeded()) {
+          return;
+        }
+        if (this.isDragFlag) {
+          return;
+        }
+        this.doHideAppCenterWithAnimation('AC AppGrid', this.screenProp.screenId);
+      })
+      .padding({
+        left: px2vp(Math.round(vp2px(this.acGridPaddingLeft ?? 0))),
+        top: px2vp(Math.round(vp2px(this.getGridTopWithPageIndex()))),
+        right: px2vp(Math.round(vp2px(this.acGridPaddingLeft ?? 0))),
+        bottom: px2vp(Math.round(vp2px(this.getGridBottomWithPageIndex())))
+      })
+      if (this.inPageMenuVisible) {
+        this.inPageMenuBuilder();
+      }
     }
-    .id(`Grid_${this.pageIndex}`)
-    .animation({ duration: 200 })
-    .columnsTemplate(this.getColumnsTemplate())
-    .rowsTemplate(this.getRowsTemplate())
-    .columnsGap(this.appGridStyleConfig.mColumnsGap)
-    .rowsGap(this.appGridStyleConfig.mRowsGap)
     .width(StyleConstants.PERCENTAGE_100)
     .height(StyleConstants.PERCENTAGE_100)
-    .onClick(() => {
-      performanceMonitor.begin(HiSysEventUtil.EXIT_APP_CENTER, performanceMonitor.ActionType.LAST_UP);
-      log.showInfo(`appgrid onclick :${this.isDragFlag}`);
-      if (this.isDragFlag) {
-        return;
-      }
-      this.doHideAppCenterWithAnimation('AC AppGrid', this.screenProp.screenId);
-    })
-    .padding({
-      left: px2vp(Math.round(vp2px(this.acGridPaddingLeft ?? 0))),
-      top: px2vp(Math.round(vp2px(this.getGridTopWithPageIndex()))),
-      right: px2vp(Math.round(vp2px(this.acGridPaddingLeft ?? 0))),
-      bottom: px2vp(Math.round(vp2px(this.getGridBottomWithPageIndex())))
-    })
   }
 }

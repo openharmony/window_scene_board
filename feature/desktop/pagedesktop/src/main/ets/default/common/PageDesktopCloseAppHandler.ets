@@ -1,5 +1,5 @@
 /**
- * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved. 2024-2025. All rights reserved.
+ * Copyright (c) 2022-2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -105,7 +105,6 @@ export class PageDesktopCloseAppHandler extends BaseCloseAppHandler {
           this.mAppIconHeight = this.mFolderStyleConfig.mFolderAppSize;
           break;
         case StartType.RECENT_DOCK_APP:
-        case StartType.AI_SUGGESTION_APP:
         default:
           break;
       }
@@ -244,8 +243,6 @@ export class PageDesktopCloseAppHandler extends BaseCloseAppHandler {
               if (this.isMatchApp(item.bundleName, item.abilityName) && this.mStartAppType === StartType.CARD &&
               this.isMatchIconId(item.cardId ?? '')) {
                 return item;
-              } else if (this.mStartAppType === StartType.AI_SUGGESTION_APP) {
-                return undefined;
               }
               break;
             case CommonConstants.TYPE_FOLDER:

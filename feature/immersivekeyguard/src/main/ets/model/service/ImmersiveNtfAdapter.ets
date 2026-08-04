@@ -88,7 +88,7 @@ const IMMERSIVE_AUTH_DATA_KEY = 'eventControl';
 const IMMERSIVE_AUTH_DATA_VAL = 'lockScreen';
 
 // 沉浸态常亮开关
-const IMM_KEEP_SCREEN_ON = 'openharmony_live_view_keep_screen_on';
+const IMM_KEEP_SCREEN_ON = 'hw_live_view_keep_screen_on';
 
 // 开关标示
 const FLAG_ENABLE = 'true';

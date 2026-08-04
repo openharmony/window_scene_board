@@ -17,6 +17,7 @@ import { FolderDataManager } from './data/FolderDataManager';
 import { DragAppToFolderData, DragCoveredItem, FoldersData } from './data/FoldersData';
 import {
   CommonConstants,
+  DeliverUtil,
   DisappearLastAppData,
   FolderViewModel,
   GridLayoutItemInfo,
@@ -142,6 +143,7 @@ export class FolderManager {
       want = folder;
     }
     if (want && want.layoutInfo) {
+      DeliverUtil.addAddIcon(want, 'getItemsInFolder');
       return want.layoutInfo.flat();
     }
     return [];

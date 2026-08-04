@@ -95,7 +95,7 @@ export class VolumeButtonViewModel extends SliderButtonBaseViewModel {
     sEventManager.subscribe('volumeLottieReady', this.lottieDataReady);
     if (this.getViewData().isExpand) {
       this.getLottieAnimMode().getIconViewData().iconName = $r('app.string.sound_title');
-      this.getLottieAnimMode().getIconViewData().subPageIcon = $r('sys.symbol.speaker_wave_3_fill');
+      this.getLottieAnimMode().getIconViewData().subPageIcon = $r('sys.symbol.speaker_wave_3');
       this.executeSubpageAnim(true);
       sEventManager.subscribe('ControlCenterState', this.onControlCenterStateChange);
     }
@@ -348,7 +348,7 @@ export class VolumeButtonViewModel extends SliderButtonBaseViewModel {
         this.updateMediaIcon();
         break;
       default:
-        this.getAnimData().useLottieData = true;
+        this.updateIconWithSymbol(IconMap.SPEAKER_FILL_ICON);
         break;
     }
     if (!needIconTransitionEffect) {
@@ -361,7 +361,7 @@ export class VolumeButtonViewModel extends SliderButtonBaseViewModel {
 
   /**
    * 更新媒体流图标
-   * 规则：蓝牙设备和有线设备获取图片资源，其他默认lottie资源
+   * 规则：蓝牙设备和有线设备获取耳机图标，其他默认扬声器 symbol
    */
   private updateMediaIcon(): void {
     if (AudioHelper.getInstance().isWirelessDevice(this.outputDevice?.deviceType)) {
@@ -378,8 +378,8 @@ export class VolumeButtonViewModel extends SliderButtonBaseViewModel {
         SymbolRenderingStrategy.MULTIPLE_OPACITY);
       log.showInfo('updateMediaIcon use NEARLINK icon');
     } else {
-      log.showInfo(`updateMediaIcon use speaker lottie`);
-      this.getAnimData().useLottieData = true;
+      log.showInfo(`updateMediaIcon use speaker_wave_3`);
+      this.updateIconWithSymbol(IconMap.SPEAKER_FILL_ICON);
     }
   }
 

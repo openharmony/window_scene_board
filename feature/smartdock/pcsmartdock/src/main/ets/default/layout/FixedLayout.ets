@@ -14,20 +14,18 @@
  */
 
 import {
-  ObjUtil,
-  LogDomain,
-  LogHelper,
-  CheckEmptyUtils,
-  Trace,
-  SingleContext,
+  ObjUtil, LogDomain, LogHelper, CheckEmptyUtils, Trace, SingleContext,
 } from '@ohos/basicutils';
 import {
   INVALID_SCREEN_ID,
   SCBPropertyChangeReason,
   SCBRotateChangeReason,
-  SCBSceneSessionManager, SCBScreenProperty,
+  SCBSceneSessionManager,
+  SCBScreenProperty,
   SCBScreenSessionManager,
-  SystemBarType, windowMgr } from '@ohos/windowscene';
+  SystemBarType,
+  windowMgr
+} from '@ohos/windowscene';
 import {
   EventManager,
   EvtBus,
@@ -61,7 +59,12 @@ import AppItem from './AppItem';
 import { PcDockPopupMgr } from '../manager/PcDockPopupMgr';
 import { DockStatusBarComponent } from './DockStatusBarComponent';
 import PcSmartDockViewModel from '../viewmodel/SmartDockViewModel';
-import { ArrowType, FixedDockResource, HoverItemInfo, FixedDockConstants } from '../common/constants/FixedDockConstants';
+import {
+  ArrowType,
+  FixedDockResource,
+  HoverItemInfo,
+  FixedDockConstants
+} from '../common/constants/FixedDockConstants';
 import { PCDockUtils } from '../utils/PCDockUtils';
 import curves from '@ohos.curves';
 import {
@@ -79,7 +82,7 @@ import { PCDockDragMgr } from '../manager/PCDockDragMgr';
 import { StatusBarType } from '@ohos/systemuicommon/src/main/ets/TsIndex';
 import PcModeContinuableModel from '@ohos/smartdock/src/main/ets/default/pcmode/model/PcModeContinuableModel';
 import { PcModeDockUtils } from '@ohos/smartdock/src/main/ets/default/utils/PcModeDockUtils';
-import { PcSmartDockStyleManager, PcDockStyleConfig} from '../common/PcSmartDockStyleManager';
+import { PcSmartDockStyleManager, PcDockStyleConfig } from '../common/PcSmartDockStyleManager';
 import { PluginStyleUtil } from '@ohos/statusbarcomponent/src/main/ets/pc/common/PluginStyleUtil';
 
 const TAG = 'FixedLayout';
@@ -121,8 +124,8 @@ export default struct FixedLayout {
   private getContinuableItemIndexFunc: Function = () => this.getContinuableItemIndex();
   private mPCDockDragMgr: PCDockDragMgr = PCDockDragMgr.getInstance();
   private isResidentMovingInAnim: boolean = false;
-  private readonly dockChangeAnim: AnimateParam = {curve: curves.interpolatingSpring(0, 1, 528, 40)};
-  private readonly dockDragAnim: AnimateParam = {curve: curves.interpolatingSpring(0, 1, 660, 66)};
+  private readonly dockChangeAnim: AnimateParam = { curve: curves.interpolatingSpring(0, 1, 528, 40) };
+  private readonly dockDragAnim: AnimateParam = { curve: curves.interpolatingSpring(0, 1, 660, 66) };
   private readonly linearAnim: AnimateParam = { curve: Curve.Linear, duration: 0 };
   @State dockWidth: number = 0;
   @State dividerAnimateParam: AnimateParam = this.dockChangeAnim;
@@ -151,7 +154,8 @@ export default struct FixedLayout {
   @State animatedIconId: number = -1;
 
   @StorageLink('systemLanguage') language: string = '';
-  @StorageLink('continueDeviceInfo') @Watch('onContinueDeviceChange') deviceInfo: DockContinuableInfo = new DockContinuableInfo();
+  @StorageLink('continueDeviceInfo') @Watch('onContinueDeviceChange') deviceInfo: DockContinuableInfo =
+    new DockContinuableInfo();
   @StorageLink('residentList') @Watch('onDockListChange') globalResidentList: Array<DockItemInfo> = [];
   @StorageLink('recentList') @Watch('onDockListChange') globalRecentList: Array<DockItemInfo> = [];
   @StorageProp('mWallpaperAvgColor') mWallpaperAvgColor: string = '#00ffffff';
@@ -160,7 +164,8 @@ export default struct FixedLayout {
   @StorageLink('isDropAnimationGoing') @Watch('onDropAnimationStatusChanged') isDropAnimationGoing: boolean = false;
   private dragWidthChangeCurve: curves.ICurve = curves.interpolatingSpring(0, 1, 200, 23);
   @State isDockChange: boolean = false;
-  @StorageLink('collaborationDataList') @Watch('onCollaborationDataListChange') collaborationDataList: Array<DockItemInfo> = [];
+  @StorageLink('collaborationDataList') @Watch('onCollaborationDataListChange') collaborationDataList: Array<DockItemInfo> =
+    [];
   @State localCollaborationList: DockItemInfo[] = [];
   private isRotating: boolean = false;
 
@@ -286,9 +291,9 @@ export default struct FixedLayout {
   }
 
   private publishWpsUnreadMessageTitleInfo(updateState: string,
-                                           height: number | undefined,
-                                           abilityName: string | undefined,
-                                           moduleName: string | undefined): void {
+    height: number | undefined,
+    abilityName: string | undefined,
+    moduleName: string | undefined): void {
     log.showInfo(`updateWpsInfo wps app: ${this.wpsAppInfo?.bundleName}`);
     this.findWpsAppInfo();
     if (!this.wpsAppInfo) {
@@ -476,13 +481,13 @@ export default struct FixedLayout {
     }
     const index = this.globalRecentList.findIndex((item: DockItemInfo) => {
       return item?.bundleName == this.deviceInfo.bundleName && (item?.appIndex ?? 0) === 0 &&
-        (item?.itemType ?? 0) === CommonConstants.TYPE_APP ;
+        (item?.itemType ?? 0) === CommonConstants.TYPE_APP;
     });
     return index < 0;
   }
 
   private updateDockListInfoWithAnimation(isNeedAnimation: boolean = true,
-      isAddContinuableItem: boolean = false): void {
+    isAddContinuableItem: boolean = false): void {
     log.showInfo('ScbSmartDock Change Animation');
     Trace.start(TRACE_ONDOCKLISTCHANGE);
     this.smartDockViewModel.onDockListChange();
@@ -540,9 +545,9 @@ export default struct FixedLayout {
     const itemWidth = (config.mListItemWidth +
       config.mListItemGap / 2);
     const leftGap = (this.isResidentArrowShow ?
-    config.mRecentArrowGap : config.mListItemGap / 2);
+      config.mRecentArrowGap : config.mListItemGap / 2);
     const rightGap = (this.isRecentArrowShow ?
-    config.mRecentArrowGap : config.mListItemGap / 2);
+      config.mRecentArrowGap : config.mListItemGap / 2);
     if (this.isResidentMovingInAnim) {
       this.dividerOffsetXAnim = itemWidth +
         (rightGap - leftGap - config.mResidentSplitLineWidth) / 2;
@@ -629,7 +634,7 @@ export default struct FixedLayout {
     if (this.isResidentLeftArrowClickable) {
       this.residentLeftArrowBgColor = this.isResidentLeftArrowHover ?
         (this.isDarkMode() ? FixedDockResource.ARROW_HOVER_DARK_COLOR :
-        FixedDockResource.ARROW_HOVER_LIGHT_COLOR) : null;
+          FixedDockResource.ARROW_HOVER_LIGHT_COLOR) : null;
       this.residentLeftArrowOpacity = 1;
     } else {
       this.residentLeftArrowBgColor = null;
@@ -638,7 +643,7 @@ export default struct FixedLayout {
     if (this.isResidentRightArrowClickable) {
       this.residentRightArrowBgColor = this.isResidentRightArrowHover ?
         (this.isDarkMode() ? FixedDockResource.ARROW_HOVER_DARK_COLOR :
-        FixedDockResource.ARROW_HOVER_LIGHT_COLOR) : null;
+          FixedDockResource.ARROW_HOVER_LIGHT_COLOR) : null;
       this.residentRightArrowOpacity = 1;
     } else {
       this.residentRightArrowBgColor = null;
@@ -774,7 +779,8 @@ export default struct FixedLayout {
     for (let i = 0; i < this.systemItemList.length; i++) {
       if (!this.checkIsSameApp(this.systemItemList[i], i)) {
         log.showInfo(`GlobalResidentList need to fix ${DockUtils.getPrintParam(this.globalResidentList)}`);
-        ResidentLayoutCacheMgr.getInstance().updateAllDockItems('fixPcDock', this.systemItemList.concat(this.localResidentList));
+        ResidentLayoutCacheMgr.getInstance()
+          .updateAllDockItems('fixPcDock', this.systemItemList.concat(this.localResidentList));
         return;
       }
     }
@@ -1051,12 +1057,12 @@ export default struct FixedLayout {
         }
         if (event?.type === TouchType.Down) {
           this.residentLeftArrowBgColor = (this.isDarkMode() ? FixedDockResource.ARROW_CLICK_DARK_COLOR :
-          FixedDockResource.ARROW_CLICK_LIGHT_COLOR);
+            FixedDockResource.ARROW_CLICK_LIGHT_COLOR);
         }
         if (event?.type === TouchType.Up) {
           if (this.isResidentLeftArrowHover) {
             this.residentLeftArrowBgColor = (this.isDarkMode() ? FixedDockResource.ARROW_HOVER_DARK_COLOR :
-            FixedDockResource.ARROW_HOVER_LIGHT_COLOR);
+              FixedDockResource.ARROW_HOVER_LIGHT_COLOR);
           } else {
             this.residentLeftArrowBgColor = null;
           }
@@ -1069,12 +1075,12 @@ export default struct FixedLayout {
         }
         if (event?.type === TouchType.Down) {
           this.residentRightArrowBgColor = (this.isDarkMode() ? FixedDockResource.ARROW_CLICK_DARK_COLOR :
-          FixedDockResource.ARROW_CLICK_LIGHT_COLOR);
+            FixedDockResource.ARROW_CLICK_LIGHT_COLOR);
         }
         if (event?.type === TouchType.Up) {
           if (this.isResidentRightArrowHover) {
             this.residentRightArrowBgColor = (this.isDarkMode() ? FixedDockResource.ARROW_HOVER_DARK_COLOR :
-            FixedDockResource.ARROW_HOVER_LIGHT_COLOR);
+              FixedDockResource.ARROW_HOVER_LIGHT_COLOR);
           } else {
             this.residentRightArrowBgColor = null;
           }
@@ -1203,7 +1209,7 @@ export default struct FixedLayout {
   }
 
   private getVisibleIndex(indexInList: number, residentNum: number, recentNum: number): number {
-    let listNum : number = residentNum + recentNum - this.systemItemList.length + (this.isDividerShow() ? 1 : 0);
+    let listNum: number = residentNum + recentNum - this.systemItemList.length + (this.isDividerShow() ? 1 : 0);
     let visibleListIndex: number = indexInList + 1;
     for (let i = indexInList + 1; i < listNum; i++) {
       if (this.isDividerShow() && i === this.localResidentList.length) {
@@ -1392,6 +1398,8 @@ export default struct FixedLayout {
     this.pcDockAnimationMgr.setIsHoveringDock(isHover);
     const isDockMenuShow = this.popupMgr.isDockMenuShow(this.screenProp.screenId);
     log.showInfo(`fixedlayout,onhoverhappen, ${isHover}, ${isDockMenuShow}`);
+    // 鼠标移动到dock区域时变量为false，移出dock栏区域时变量为true
+    // AppStorage.setOrCreate('mouseInDockArea', !isHover);
     if (!isHover && !isDockMenuShow) {
       animateTo({
         curve: curves.springCurve(0, 1, 322, 30),
@@ -1427,6 +1435,11 @@ export default struct FixedLayout {
     })
     .justifyContent(FlexAlign.Center)
     .onHover((isHover) => {
+      if (isHover && !this.smartDockViewModel.isLeftArrow(arrowType)) {
+        this.pcDockAnimationMgr.resetAllEffect();
+        this.additionResidentListWidth = 0;
+      }
+
       this.onHoverArrow(arrowType, isHover);
     })
     .onClick(() => {
@@ -1479,7 +1492,7 @@ export default struct FixedLayout {
         getContinuableItemIndex: this.getContinuableItemIndexFunc,
         continueItemVisibleFunc: this.continueItemVisibleFunc,
         enableScrollInteraction: this.enableScrollInteraction,
-        updateAppItem: (appInfo:DockItemInfo): DockItemInfo => {
+        updateAppItem: (appInfo: DockItemInfo): DockItemInfo => {
           this.localResidentList.forEach((item) => {
             if (appInfo.bundleName === item.bundleName) {
               appInfo = item;
@@ -1502,7 +1515,7 @@ export default struct FixedLayout {
           { x: -0.5 * (PcSmartDockStyleManager.getStyle(this.screenProp).mListItemWidth) }))
         .combine(TransitionEffect.opacity(0.0))
         .animation(this.isDockChange ?
-        this.linearAnim : { curve: curves.interpolatingSpring(0, 1, 528, 40), delay: isResident ? 0 : 50 }),
+          this.linearAnim : { curve: curves.interpolatingSpring(0, 1, 528, 40), delay: isResident ? 0 : 50 }),
       TransitionEffect.scale({ x: 0.25, y: 0.25 })
         .combine(TransitionEffect.translate(
           { x: -0.5 * (PcSmartDockStyleManager.getStyle(this.screenProp).mListItemWidth) }))
@@ -1513,7 +1526,7 @@ export default struct FixedLayout {
 
   @Builder
   areaNewBuilder() {
-    List({ scroller:this.mResidentScroller }) {
+    List({ scroller: this.mResidentScroller }) {
       ForEach(this.localResidentList, (item: DockItemInfo) => {
         this.AppItemBuilder(item, false, true)
       }, (item: DockItemInfo) => this.getForeachKey(item))
@@ -1552,7 +1565,7 @@ export default struct FixedLayout {
     .id(FixedDockResource.DOCK_COMMON_AREA_ID)
     .listDirection(PcSmartDockStyleManager.getStyle(this.screenProp).mListDirection)
     .height('100%')
-    .layoutWeight(1)
+    .width(this.getCommonAreaWidth())
     .scrollSnapAlign(ScrollSnapAlign.START)
     .edgeEffect(EdgeEffect.None)
     .enableScrollInteraction(this.enableScrollInteraction)
@@ -1608,6 +1621,7 @@ export default struct FixedLayout {
     .id(FixedDockResource.DOCK_SYSTEM_AREA_ID)
     .listDirection(PcSmartDockStyleManager.getStyle(this.screenProp).mListDirection)
     .height('100%')
+    .width(this.getSystemAreaWidth())
     .renderGroup(this.enableRenderGroup)
     .scrollSnapAlign(ScrollSnapAlign.START)
     .edgeEffect(EdgeEffect.None)
@@ -1667,16 +1681,23 @@ export default struct FixedLayout {
         ))
   }
 
-  private getHoverSpaceWidth(): number {
-    let width = this.residentListWidth;
-    if (this.isResidentArrowShow) {
-      width += 2 * PcSmartDockStyleManager.getStyle(this.screenProp).mRecentArrowWidth;
-      width += this.getArrowLeftMargin(ArrowType.RESIDENT_LEFT) +
-      this.getArrowRightMargin(ArrowType.RESIDENT_LEFT) +
-      this.getArrowLeftMargin(ArrowType.RESIDENT_RIGHT) +
-      this.getArrowRightMargin(ArrowType.RESIDENT_RIGHT);
+  private getDockRowWidth(): number | string {
+    if (!this.isResidentArrowShow) {
+      return 'auto';
     }
-    return width;
+    return this.getBaseSpaceWidth();
+  }
+
+  private getCommonAreaWidth(): number | string {
+    if (!this.isResidentArrowShow) {
+      return 'auto';
+    }
+    return Math.max(0, this.baseResidentListWidth - this.getSystemAreaWidth());
+  }
+
+  private getSystemAreaWidth(): number {
+    let config: PcDockStyleConfig = PcSmartDockStyleManager.getStyle(this.screenProp);
+    return this.systemItemList.length * (config.mListItemWidth + config.mListItemGap);
   }
 
   private getBaseSpaceWidth(): number {
@@ -1730,7 +1751,7 @@ export default struct FixedLayout {
             }
           }
           .justifyContent(FlexAlign.Center)
-          .width(this.getHoverSpaceWidth())
+          .width(this.getDockRowWidth())
           .height('100%')
           .onHover((isHover: boolean) => {
             this.onHoverEvent(isHover);
@@ -1745,7 +1766,7 @@ export default struct FixedLayout {
         if (event && event.type === TouchType.Up && event.touches && event.touches.length > 0 &&
           event.touches[0].displayX < px2vp(this.screenProp.width) -
           PcSmartDockStyleManager.getStyle(this.screenProp).mToggleHomeWidth) {
-            SCBSceneSessionManager.getInstance().exitActiveSplit(INVALID_SCREEN_ID);
+          SCBSceneSessionManager.getInstance().exitActiveSplit(INVALID_SCREEN_ID);
         }
       })
 

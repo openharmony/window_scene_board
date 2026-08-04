@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { DividerShowType, HdsNavigationTitleBarOptions } from '@kit.UIDesignKit';
+// import { DividerShowType, HdsNavigationTitleBarOptions } from '@kit.UIDesignKit';
 
 export class SysUIHdsNavigations {
   // public static getTitleBarOptions(mainTitle: ResourceStr, backIconAction?: () => void,

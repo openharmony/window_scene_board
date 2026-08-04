@@ -54,6 +54,7 @@ export class LiveViewExtendStyle implements ExtendStyle {
   public buttonLength: number = 40;
   public buttonBorderRadius: number = 20;
   public buttonBackground: ResourceColor = '#FF000000';
+  public deliverLiveButtonBackground: ResourceColor = '#0D000000';
   /**
    * 进度按钮参数
    */

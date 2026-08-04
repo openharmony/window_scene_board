@@ -67,12 +67,14 @@ import {
   AppIconCommonView,
   AppIconConfig,
   UninstallDialog,
+  DeliverDialogUtil,
   UninstallDialogUtil,
   ReConfirmationUninstallDialog,
   DragProxyManager,
   DragHandlerType,
   IDesktopDragHandler,
 } from '@ohos/launchercommon/Index';
+import { deliverDialogType } from '@ohos/launchercommon/src/main/ets/base/AppToHapMappingManager';
 import GridLayoutItemInfo from '@ohos/launchercommon/src/main/ets/bean/GridLayoutItemInfo';
 import { MenuInfo } from '@ohos/launchercommon/src/main/ets/bean/MenuInfo';
 import {
@@ -101,10 +103,12 @@ import {
   AppGalleryDownloadManager,
   AppItemInfo,
   CloseAppManager,
+  DeliverUtil,
   EditModeUtils,
   FolderData,
   FolderLayoutCacheManager,
-  GrayAppListManager
+  GrayAppListManager,
+  DialogConfig,
 } from '@ohos/launchercommon/src/main/ets/TsIndex';
 import { AppNameModifier } from '@ohos/launchercommon/src/main/ets/uicomponents/AppName';
 import GridLayoutUtil from '@ohos/launchercommon/src/main/ets/utils/GridLayoutUtil';
@@ -218,7 +222,10 @@ export struct OpenFolderAppBubble {
 
   private uninstallDialogController: CustomDialogController | null = new CustomDialogController({
     builder: UninstallDialog({
-      cancel: () => {},
+      cancel: () => {
+        const folderType: number = DeliverUtil.getFolderTypeByFolderId(this.mFolderMgr.getOpenFolderId());
+        HiSysEventUtil.reportCancelUninstallSingleApp(this.bundleName, folderType);
+      },
       confirm: () => {
         // PC定制逻辑，当前PC独立布局，冗余流程，后期审视删除
         if (DeviceHelper.isPC()) {
@@ -232,7 +239,10 @@ export struct OpenFolderAppBubble {
       dialogName: FolderCommonUtil.getUninstallDialogName(this.uninstallAppInfo?.appName),
       isFromDesktop: true
     }),
-    cancel: () => {},
+    cancel: () => {
+      const folderType: number = DeliverUtil.getFolderTypeByFolderId(this.mFolderMgr.getOpenFolderId());
+      HiSysEventUtil.reportCancelUninstallSingleApp(this.bundleName, folderType);
+    },
     autoCancel: true,
     showInSubWindow: true,
     alignment: DialogAlignment.Center,
@@ -340,6 +350,9 @@ export struct OpenFolderAppBubble {
       if (event?.type === CommonConstants.TOUCH_TYPE_DOWN) {
         log.showInfo('create folderApp pixmap start');
         this.desktopContext?.eventHub.emit(EventConstants.EVENT_FOLDER_CLOSE_RENAME_INPUT);
+        if (DeliverUtil.isSupportAppType(this.item.bundleName) && DeliverUtil.isSupportDeliver()) {
+          SCBSceneSessionManager.getInstance().preloadApp(this.item.bundleName);
+        }
         this.isGrayIcon = GrayAppListManager.getInstance().isGrayAppIcon(this.item);
       } else if (event?.type === CommonConstants.TOUCH_TYPE_UP) {
         log.showInfo('touch up start');
@@ -601,6 +614,17 @@ export struct OpenFolderAppBubble {
       AppInstallingDataManager.getInstance().toastInstalling(this.item.bundleName);
       return;
     }
+    if (DeliverUtil.isContainerItem(this.item.intent)) {
+      log.showWarn(`onContainerAppIconClick, containerItem is ${JSON.stringify(this.item)}`);
+      this.checkContainerAppClickEvent(this.item as AppItemInfo);
+      return;
+    }
+    if (DeliverUtil.needOpendeliverAppAlertDialog(this.item)) {
+      let content: string = 'app.string.deliver_app_unavailable_dialog_content';
+      this.builddeliverAppAlertDialog(content).open();
+      HiSysEventUtil.reportdeliverDialogOpen(this.item.bundleName);
+      return;
+    }
     let itemAppStatus: AppStatus = this.getAppStatus();
     if (itemAppStatus === AppStatus.INSTALLED || itemAppStatus === undefined) {
       this.onAppClick();
@@ -627,6 +651,89 @@ export struct OpenFolderAppBubble {
     } else if (itemAppStatus === AppStatus.WAITING) {
       AppInstallUtils.getInstance().dealClickPreDownload(this.item);
     }
+  }
+
+  /**
+   * 根据所点击的应用的类型、是否安装以及是否启动来响应不同的操作
+   * @param appItem 点击的应用
+   */
+  private checkContainerAppClickEvent(appItem: AppItemInfo): void {
+    if (!GridLayoutUtil.isAppInstalled(appItem)) {
+      let installSource: string = DeliverUtil.getInstallSourceByIntent(appItem.intent);
+      if (installSource === DeliverUtil.DELIVER_APPSTORE_PKG) {
+        if (DeliverUtil.isdeliverHapExist()) {
+          DeliverUtil.startdeliverAutoOhosAbility(appItem.bundleName, appItem.iconResource);
+        } else {
+          this.alertDialogByMatchContainerHapStatus(appItem);
+        }
+      } else if (installSource === DeliverUtil.APP_PKG) {
+        if (DeliverUtil.isAppExist()) {
+          DeliverUtil.startAppAutoOhosAbility(appItem.bundleName, appItem.iconResource);
+        } else {
+          this.alertDialogByMatchContainerHapStatus(appItem);
+        }
+      } else {
+        AppInstallUtils.getInstance().checkTask(appItem);
+        this.reportFolderAppClick();
+      }
+    } else {
+      let isDeliverStart: boolean = DeliverUtil.getDeliverStartStatus() === DeliverUtil.DELIVER_START_FINISHED_CODE;
+      if (isDeliverStart || (!isDeliverStart && DeliverUtil.isMatchContainerHapExist(appItem as GridLayoutItemInfo))) {
+        this.openDialogOrApplication();
+      } else {
+        this.alertDialogByMatchContainerHapStatus(appItem);
+      }
+    }
+    return;
+  }
+
+  /**
+   * 根据点击的应用所对应的克隆应用/应用的状态来响应不同的弹框
+   * @param appItem 点击的应用
+   */
+  private alertDialogByMatchContainerHapStatus(appItem: AppItemInfo): void {
+    let isdeliverApp: boolean =
+      DeliverUtil.getInstallSourceByIntent(appItem.intent) === DeliverUtil.DELIVER_APPSTORE_PKG;
+    let result: GridLayoutItemInfo[];
+    if (isdeliverApp) {
+      result =
+        LaunchLayoutCacheManager.getInstance().getAllSameBundleNameAppItem(DeliverUtil.DELIVER_APP_BUNDLE_NAME_REAL);
+    } else {
+      result = LaunchLayoutCacheManager.getInstance()
+        .getAllSameBundleNameAppItem(DeliverUtil.APP_APP_BUNDLE_NAME_REAL);
+    }
+    if (CheckEmptyUtils.isEmptyArr(result)) {
+      let content: string = 'app.string.deliver_app_unavailable_dialog_content';
+      this.builddeliverAppAlertDialog(content).open();
+      HiSysEventUtil.reportdeliverDialogOpen(appItem?.bundleName);
+      return;
+    }
+    let containerItem: GridLayoutItemInfo = result[0];
+    let downloadStatusInfo: DownloadStatusInfo | undefined =
+      AppGalleryDownloadManager.getInstance().getDownDownloadTaskInfo(DeliverUtil.DELIVER_APP_BUNDLE_NAME_REAL);
+    let containerItemStatus: number =
+      downloadStatusInfo ? downloadStatusInfo.status : containerItem.appStatus as number;
+    if (containerItemStatus === AppStatus.DOWNLOADING || containerItemStatus === AppStatus.INSTALLING ||
+      containerItemStatus === AppStatus.INSTALL_WAITING) {
+      let content: string = 'app.string.deliver_app_installing_dialog_content';
+      this.builddeliverAppAlertDialog(content).open();
+      HiSysEventUtil.reportdeliverDialogOpen(appItem?.bundleName);
+      return;
+    } else if (containerItemStatus === AppStatus.WAITING || containerItemStatus === AppStatus.WIFI_WAITING ||
+      containerItemStatus === AppStatus.PENDING) {
+      let content: string = 'app.string.deliver_app_wait_download_dialog_content';
+      this.builddeliverAppChooseDialog(content, containerItem, containerItemStatus, DeliverUtil.DIALOG_TYPE_WAIT_DOWNLOAD)
+        .open();
+      HiSysEventUtil.reportdeliverDialogOpen(appItem?.bundleName);
+      return;
+    } else if (containerItemStatus === AppStatus.PAUSING) {
+      let content: string = 'app.string.deliver_app_pause_download_dialog_content';
+      this.builddeliverAppChooseDialog(content, containerItem, containerItemStatus, DeliverUtil.DIALOG_TYPE_PAUSE_DOWNLOAD)
+        .open();
+      HiSysEventUtil.reportdeliverDialogOpen(appItem?.bundleName);
+      return;
+    }
+    return;
   }
 
   private onAppClick(): void {
@@ -659,11 +766,39 @@ export struct OpenFolderAppBubble {
           `SCREENCOUNT: ${folderItem.layoutInfo?.length}, SCREENINDEX:${appInFolderPosition[2]},` +
             ` CELLX: ${appInFolderPosition[1]}, CELLY: ${appInFolderPosition[0]}, isInDock: false`;
         const iconPositionInDesktop = '-1';
+        let itemAppType: number = DeliverUtil.getAppType(this.item)
         let containerType: string = ''
         if (ArrayUtils.equalsArr(folderItem.area, [1, 1])) {
           containerType = 'folderIcon';
         } else {
           containerType = 'cardFolderOpen';
+        }
+        // 未鸿蒙化应用增加打点（点亮字段）或者置灰应用增加打点
+        if (itemAppType === DeliverUtil.APPTYPE_COMMON || itemAppType === DeliverUtil.APPTYPE_TYPE_GRAY) {
+          HiSysEventUtil.reportClickAppIcon(this.item.bundleName, containerType, '-1', folderPositionInDesktop,
+            iconPositionInFolder, 'true', 'false', folderItem.folderId, itemAppType, this.item.appIndex, '', '');
+        } else if (itemAppType === DeliverUtil.APPTYPE_TYPE_NOTHARMONY &&
+          this.item?.appStatus === AppStatus.WAIT_FOR_HARMONY) {
+          if (CommonUtils.jsonStrToMap(this.item.intent).get(NotHarmonyUtil.NOT_HARMONY_APP_MASK_STATE) !== 1) {
+            HiSysEventUtil.reportClickAppIcon(this.item.bundleName, containerType, '-1', folderPositionInDesktop,
+              iconPositionInFolder, 'true', 'false', folderItem.folderId, itemAppType, this.item.appIndex, 'false',
+              '0');
+          } else {
+            let intentMap: Map<string, Object> = CommonUtils.jsonStrToMap(this.item?.intent);
+            let lightData: number = intentMap.get('lightData') as number;
+            let timeSpan: number;
+            if (lightData) {
+              timeSpan = new Date().getTime() - lightData;
+            } else {
+              timeSpan = -1;
+            }
+            HiSysEventUtil.reportClickAppIcon(this.item.bundleName, containerType, '-1', folderPositionInDesktop,
+              iconPositionInFolder, 'true', 'false', folderItem.folderId, itemAppType, this.item.appIndex, 'true',
+              timeSpan.toString());
+          }
+        } else {
+          HiSysEventUtil.reportClickAppIcon(this.item.bundleName, containerType, '-1', folderPositionInDesktop,
+            iconPositionInFolder, 'true', 'false', folderItem.folderId, itemAppType, this.item.appIndex, '', '');
         }
         if (this.item.typeId === CommonConstants.TYPE_SHORTCUT_ICON) {
           HiSysEventUtil.reportClickShortcut(this.item.bundleName, this.item.shortcutId, containerType,
@@ -757,6 +892,18 @@ export struct OpenFolderAppBubble {
         removeInfo.menuImgSrc = '/common/pics/ic_public_remove.svg';
       }
       removeInfo.onMenuClick = (): void => {
+        // 长按移除打点,未鸿蒙化应用走卸载打点
+        if (DeviceHelper.isPhoneOrPad()) {
+          const openFolderId: string = this.mFolderMgr.getOpenFolderId();
+          let folderType: number = DeliverUtil.getFolderTypeByFolderId(openFolderId);
+          if (this.isRemoveAction) {
+            HiSysEventUtil.reportClickDeleteAppDialog(bundleName, folderType);
+          } else {
+            const isCardFolder: boolean = GridLayoutUtil.isBigFolder(this.mFolderMgr.getOpenedFolder());
+            HiSysEventUtil.reportOpenUninstallAppDialog(bundleName, folderType, isCardFolder);
+          }
+        }
+
         // 菜单消失后再执行移除逻辑,避免菜单预览图动效残影
         this.removeNotInstalledApp = (): void => {
           this.desktopContext?.eventHub.off(CommonConstants.EVENTHUB_APP_MENU_DISAPPEAR,
@@ -831,6 +978,7 @@ export struct OpenFolderAppBubble {
   }
 
   private getMenuInfo(): MenuInfo[] {
+    DeliverUtil.refreshContainerAppUninstallStatus(this.item);
     const menu: MenuInfoType = {
       appInfo: this.item as AppItemInfo,
       dialog: this.uninstallDialogController,
@@ -1025,7 +1173,7 @@ export struct OpenFolderAppBubble {
 
   showFolderBadgeAnimation() {
     this.mOpenFolderBadgeManager.showFolderBadgeAnimation();
-    if (this.item.appIndex ||
+    if (this.item.appIndex || DeliverUtil.isdeliverApp(this.item.intent) ||
       PC_IN_PHONE_LIST.includes(this.item.bundleName) || NotHarmonyUtil.isWaitingDownloadApp(this.item)) {
       this.mOpenFolderBadgeManager.showFolderCloneBadgeAnimation();
     }
@@ -1035,9 +1183,201 @@ export struct OpenFolderAppBubble {
     this.mOpenFolderBadgeManager.badgeChangeOnOpenClose();
   }
 
+  private builddeliverAppDialog(hapBundleName: string | undefined,
+    appName?: string): CustomDialogController {
+    let deliverAppDialog = new CustomDialogController({
+      builder: AlertDialog({
+        primaryTitle: $r('app.string.deliver_app_dialog_title'),
+        content: $r('app.string.deliver_app_dialog_text', appName),
+        primaryButton: DeliverDialogUtil.createDialogPrimaryButton(this.item.bundleName,
+          $r('app.string.deliver_app_dialog_cancel'), () => {
+            HiSysEventUtil.reportdeliverDialogOperation(this.item.bundleName, DeliverUtil.DIALOG_TYPE_NEW_VERSION,
+              DeliverUtil.CLICK_IGNORE)
+            log.showInfo('deliver_app_dialog_title cancel');
+            localEventManager.sendLocalEventSticky(EventConstants.EVENT_OPEN_APPLICATION, this.item);
+            deliverAppDialog?.close();
+          }),
+        secondaryButton: {
+          value: $r('app.string.deliver_app_dialog_confirm'),
+          action: () => {
+            HiSysEventUtil.reportdeliverDialogOperation(this.item.bundleName, DeliverUtil.DIALOG_TYPE_NEW_VERSION,
+              DeliverUtil.CLICK_UPDATE)
+            log.showInfo('deliver_app_dialog_title confirm');
+            DeliverUtil.leavingLakeStartAppGalleryDetail(hapBundleName, this.item.bundleName);
+            deliverAppDialog?.close();
+          }
+        },
+      }),
+      cancel: () => {
+        HiSysEventUtil.reportdeliverDialogOperation(this.item.bundleName, DeliverUtil.DIALOG_TYPE_NEW_VERSION,
+          DeliverUtil.CLICK_BLANK_AREA)
+        log.showInfo('deliver_app_dialog_title cancel');
+        deliverAppDialog?.close();
+      },
+      autoCancel: true,
+      customStyle: false,
+      alignment: DialogAlignment.Center,
+    });
+    return deliverAppDialog;
+  }
+
+  private buildUninstalldeliverAppDialog(installedDialogType: InstalledDialogType,
+    hapBundleName?: string): CustomDialogController {
+    let hapAppName: string = GridLayoutUtil.getdeliverAppName(hapBundleName);
+    let dialogConfig: DialogConfig = DeliverUtil.getStringByDialogType(installedDialogType);
+    let uninstalldeliverAppDialog: CustomDialogController = new CustomDialogController({
+      builder: AlertDialog({
+        primaryTitle: $r('app.string.uninstall_deliver_app_dialog_title'),
+        content: $r(dialogConfig.content, hapAppName),
+        primaryButton: DeliverDialogUtil.createUninstallDialogPrimaryButton(installedDialogType,
+          $r(dialogConfig.primaryButton), () => {
+            HiSysEventUtil.reportdeliverDialogOperation(this.item?.bundleName, DeliverUtil.DIALOG_TYPE_NEXT_VERSION,
+              DeliverUtil.CLICK_IGNORE);
+            log.showInfo('uninstalldeliverAppDialog cancel');
+            localEventManager.sendLocalEventSticky(EventConstants.EVENT_OPEN_APPLICATION, this.item);
+            uninstalldeliverAppDialog?.close();
+          }),
+        secondaryButton: {
+          value: $r(dialogConfig.secondaryButton),
+          fontColor: $r(dialogConfig.fontColor),
+          action: () => {
+            if (installedDialogType === InstalledDialogType.OPEN) {
+              log.showInfo('uninstalldeliverAppDialog open');
+              HiSysEventUtil.reportdeliverDialogOperation(this.item?.bundleName, DeliverUtil.DIALOG_TYPE_NEXT_VERSION,
+                DeliverUtil.CLICK_OPEN_NEXT);
+              let itemList: GridLayoutItemInfo[] =
+                LaunchLayoutCacheManager.getInstance().getAllSameBundleNameAppItem(hapBundleName);
+              if (!CheckEmptyUtils.isEmptyArr(itemList)) {
+                StartAbilityUtil.startAbilityByName(itemList[0].abilityName, itemList[0].bundleName,
+                  itemList[0].moduleName);
+              }
+              uninstalldeliverAppDialog?.close();
+            } else {
+              HiSysEventUtil.reportdeliverDialogOperation(this.item?.bundleName, DeliverUtil.DIALOG_TYPE_UNINSTALL,
+                DeliverUtil.CLICK_UNINSTALL);
+              log.showInfo('uninstalldeliverAppDialog uninstall');
+              uninstalldeliverAppDialog?.close();
+              AppStorage.setOrCreate('uninstallAppInfo', this.item);
+              AppStorage.setOrCreate('showUninstallDialog', true);
+              this.uninstallDialogController?.open();
+            }
+          }
+        },
+      }),
+      cancel: () => {
+        HiSysEventUtil.reportdeliverDialogOperation(this.item.bundleName, DeliverUtil.DIALOG_TYPE_NEXT_VERSION,
+          DeliverUtil.CLICK_BLANK_AREA)
+        log.showInfo('uninstalldeliverAppDialog cancel');
+        uninstalldeliverAppDialog?.close();
+      },
+      autoCancel: true,
+      customStyle: false,
+      alignment: DialogAlignment.Center,
+    });
+    return uninstalldeliverAppDialog;
+  }
+
+  private builddeliverAppAlertDialog(content: string): CustomDialogController {
+    let deliverAppAlertDialog: CustomDialogController = new CustomDialogController({
+      builder: AlertDialog({
+        primaryTitle: $r('app.string.deliver_app_unavailable_dialog_title'),
+        content: $r(content, DeliverUtil.getContainerFolderNameForDialog(this.item)),
+        primaryButton: {
+          value: $r('app.string.deliver_app_unavailable_dialog_know'),
+          fontColor: $r('sys.color.ohos_id_color_text_primary_activated'),
+          action: () => {
+            HiSysEventUtil.reportdeliverDialogOperation(this.item.bundleName, DeliverUtil.DIALOG_TYPE_UNAVAILABLE,
+              DeliverUtil.CLICK_KNOW)
+            log.showInfo('deliverAppAlertDialog know');
+            deliverAppAlertDialog?.close();
+          },
+        },
+      }),
+      cancel: () => {
+        HiSysEventUtil.reportdeliverDialogOperation(this.item.bundleName, DeliverUtil.DIALOG_TYPE_UNAVAILABLE,
+          DeliverUtil.CLICK_BLANK_AREA)
+        log.showInfo('deliverAppAlertDialog cancel');
+        deliverAppAlertDialog?.close();
+      },
+      autoCancel: true,
+      customStyle: false,
+      alignment: DialogAlignment.Center,
+    });
+    return deliverAppAlertDialog;
+  }
+
+  private builddeliverAppChooseDialog(content: string, containerItem: GridLayoutItemInfo,
+    containerItemStatus: number, dialogType?: number): CustomDialogController {
+    let deliverAppAlertDialog: CustomDialogController = new CustomDialogController({
+      builder: AlertDialog({
+        primaryTitle: $r('app.string.deliver_app_unavailable_dialog_title'),
+        content: $r(content, DeliverUtil.getContainerFolderNameForDialog(this.item)),
+        primaryButton: {
+          value: $r('app.string.cancel'),
+          fontColor: $r('sys.color.ohos_id_color_text_primary_activated'),
+          action: () => {
+            HiSysEventUtil.reportdeliverDialogOperation(this.item?.bundleName,
+              dialogType ?? DeliverUtil.DIALOG_TYPE_UNAVAILABLE, DeliverUtil.CLICK_CANCEL);
+            log.showInfo('deliverAppChooseDialog cancel');
+            deliverAppAlertDialog?.close();
+          },
+        },
+        secondaryButton: {
+          value: $r('app.string.confirm_dialog'),
+          fontColor: $r('sys.color.ohos_id_color_warning'),
+          action: () => {
+            HiSysEventUtil.reportdeliverDialogOperation(this.item?.bundleName,
+              dialogType ?? DeliverUtil.DIALOG_TYPE_UNAVAILABLE, DeliverUtil.CLICK_CONFIRM);
+            log.showInfo('deliverAppChooseDialog confirm');
+            if (containerItemStatus === AppStatus.WAITING || containerItemStatus === AppStatus.WIFI_WAITING) {
+              AppInstallUtils.getInstance().clickAppToPreDownload(containerItem);
+            } else if (containerItemStatus === AppStatus.PAUSING) {
+              AppInstallUtils.getInstance().resumeTask(containerItem.bundleName);
+            }
+            deliverAppAlertDialog?.close();
+          }
+        },
+      }),
+      cancel: () => {
+        HiSysEventUtil.reportdeliverDialogOperation(this.item?.bundleName,
+          dialogType ?? DeliverUtil.DIALOG_TYPE_UNAVAILABLE, DeliverUtil.CLICK_CONFIRM);
+        log.showInfo('deliverAppChooseDialog cancel');
+        deliverAppAlertDialog?.close();
+      },
+      autoCancel: true,
+      customStyle: false,
+      alignment: DialogAlignment.Center,
+    });
+    return deliverAppAlertDialog;
+  }
+
   private openDialogOrApplication(event?: ClickEvent): void {
     let mappingManager = AppToHapMappingManager.getInstance();
     let hapBundleName: string = mappingManager.getMapping().get(this.item.bundleName) as string;
+    switch (mappingManager.shouldOpenDialog(this.item.bundleName)) {
+      case deliverDialogType.NOT_EXIST_MAPPING_NEXT_VERSION:
+        this.onAppClick();
+        break;
+      case deliverDialogType.NEXT_VERSION_NOT_INSTALLED:
+        GridLayoutUtil.checkCurrentItemAppName(this.item);
+        let showAppName: string = IconResourceManager.getInstance()
+          .getAppNameByCache(this.item.appLabelId, this.item.bundleName, this.item.moduleName, '', this.item.appIndex);
+        if (CheckEmptyUtils.isEmpty(showAppName)) {
+          showAppName = this.item.appName ?? '';
+        }
+        this.builddeliverAppDialog(hapBundleName, showAppName).open();
+        HiSysEventUtil.reportdeliverDialogOpen(this.item.bundleName);
+        break;
+      case deliverDialogType.NEXT_VERSION_INSTALLED:
+        GridLayoutUtil.checkCurrentItemAppName(this.item);
+        DeliverUtil.refreshContainerAppUninstallStatus(this.item);
+        let installedDialogType: InstalledDialogType = mappingManager.getInstalledDialogType(this.item.bundleName);
+        this.buildUninstalldeliverAppDialog(installedDialogType, hapBundleName).open();
+        HiSysEventUtil.reportdeliverDialogOpen(this.item.bundleName);
+        break;
+      default :
+        log.showWarn('openDialogOrApplication type error');
+    }
   }
 
   @Builder
@@ -1047,6 +1387,10 @@ export struct OpenFolderAppBubble {
         Image(this.item.iconResource)
           .width(EditModeUtils.convertWithDesktopScale(this.appItemWidth))
           .height(EditModeUtils.convertWithDesktopScale(this.appItemWidth))
+          .sourceSize({
+            width: StyleConstants.APP_ICON_SOURCE_SIZE,
+            height: StyleConstants.APP_ICON_SOURCE_SIZE
+          })
           .borderRadius(EditModeUtils.convertWithDesktopScale(this.mFolderIconRadius))
           .syncLoad(GridLayoutUtil.isImageSyncLoad(this.item.iconResource))
           .interpolation(ImageInterpolation.Medium)
@@ -1057,6 +1401,10 @@ export struct OpenFolderAppBubble {
         .draggable(false)
         .width(EditModeUtils.convertWithDesktopScale(this.appItemWidth))
         .height(EditModeUtils.convertWithDesktopScale(this.appItemWidth))
+        .sourceSize({
+          width: StyleConstants.APP_ICON_SOURCE_SIZE,
+          height: StyleConstants.APP_ICON_SOURCE_SIZE
+        })
         .borderRadius(EditModeUtils.convertWithDesktopScale(this.mFolderIconRadius))
         .syncLoad(true)
         .interpolation(ImageInterpolation.Medium)
@@ -1089,7 +1437,8 @@ export struct OpenFolderAppBubble {
 
   private getAppIconConfig(): AppIconConfig {
     const openFolderData: GridLayoutItemInfo = this.mFolderMgr.getOpenedFolder();
-    let enableMultiSelect : boolean = MultiSelectManager.getInstance().debug_enabledAppInFolder;
+    let enableMultiSelect : boolean = MultiSelectManager.getInstance().debug_enabledAppInFolder &&
+    DeliverUtil.canFolderItemDragOut(openFolderData.folderId, this.item.bundleName);
     return FolderIconConfigUtil
       .getOpenFolderAppIconConfig(this.item, this.mFolderIconRadius, this.openFolderIconExternCb)
       .setEnableMultiSelect(enableMultiSelect);

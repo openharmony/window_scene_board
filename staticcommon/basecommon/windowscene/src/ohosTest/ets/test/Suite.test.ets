@@ -128,7 +128,7 @@ export default function PipelineDemoSuite() {
     SCBSceneContainerSessionArrayTest();
   });
 
-  describe("scene_board_ext", () =>  {
+  describe("window_scene_board", () =>  {
     SCBSceneContainerSessionTest();
     SCBSceneContainerSessionTest2();
     SCBSceneInfoTest();

@@ -60,12 +60,12 @@ export function GestureNavBarCcmSettingsTest() {
       mocker.ignoreMock(SCBGestureNavSetMgr, SCBGestureNavSetMgr.getGestureNavigationSet);
     });
 
-    it('GestureNavBarCcmSettingsTest_getAiBarMarginBottom_1', Level.LEVEL0, (): void => {
+    it('GestureNavBarCcmSettingsTest_getNaviBarMarginBottom_1', Level.LEVEL0, (): void => {
       let SCBGestureNavSetMgr: SCBGestureNavSetManager = new SCBGestureNavSetManager();
       let mocker = new MockKit();
       let mockFunc: Function = mocker.mockFunc(SCBGestureNavSetMgr, SCBGestureNavSetMgr.getGestureNavigationSet);
       when(mockFunc)(ArgumentMatchers.any).afterReturn(undefined);
-      expect(gestureNavBarCcmSettings.getAiBarMarginBottom() === undefined).assertTrue();
+      expect(gestureNavBarCcmSettings.getNaviBarMarginBottom() === undefined).assertTrue();
       mocker.ignoreMock(SCBGestureNavSetMgr, SCBGestureNavSetMgr.getGestureNavigationSet);
     });
   });

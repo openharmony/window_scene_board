@@ -13,6 +13,16 @@
  * limitations under the License.
  */
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
+import {
+  DEFAULT_MEMORY_GC_PSS_KB,
+  DEFAULT_MEMORY_MANAGE_ENABLE,
+  DEFAULT_MEMORY_MONITOR_INTERVAL,
+  ERROR_PSS,
+  KEY_MEMORY_MANAGE_ENABLE,
+  KEY_MEMORY_MONITOR_INTERVAL,
+  KEY_MEMORY_PSS_THRESHOLD,
+  MemoryUtils
+} from '@hw-ohos/memorytool';
 import systemparameter from '@ohos.systemparameter';
 
 export function MemoryUtilsTest() {

@@ -38,7 +38,7 @@ import {
   ScreenLockApi,
   slWallpaperMgr,
   SLWallpaperType,
-  UltraScreenStatus
+  ThreeFoldStatus
 } from '@ohos/screenlockcommon';
 import { DisplayStateManager, FileUtil } from '@ohos/screenlockcommon/Index';
 import ThemeHelperUtil from './ThemeHelperUtil';
@@ -74,6 +74,9 @@ import { slStateHelper } from '../utils/SlStateHelper';
 import { PageDesktopOneShotManager } from '@ohos/launchercommon/src/main/ets/viewmodel/PageDesktopOneShotManager';
 import { ThemeRemoteManager } from './ThemeRemoteManager'
 import { HIS_COLOR_MAP } from '../../editsheet/models/AnyColor';
+import { JSON } from '@kit.ArkTS';
+import { common } from '@kit.AbilityKit';
+import { ScreenLockFormSaveUtils } from '../utils/ScreenLockFormSaveUtils';
 
 const TAG: string = 'ScreenLockThemeManager';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.KG, TAG);
@@ -88,6 +91,7 @@ export const SANDBOX_THEME_PATH_SYSTEM_B: string = '/data/themes/b/system';
 
 export const SUB_SCREEN_THEME_PATH: string = '/sub_screen';
 
+export const JSON_FILE_NAME = 'ScreenLockForm_data.json';
 /*
  * 锁屏时钟、卡片等配置信息的限定符集合
  * */
@@ -379,7 +383,7 @@ export default class ScreenLockThemeManager {
 
   // 异壁纸主题配置使能开关
   private isSupportMultiSceneTheme: boolean = (DeviceHelper.isFoldButNotSmallFoldProduct() ||
-    DeviceHelper.isPadOr2in1PcType() || DeviceHelper.isUltraScreenProduct()) &&
+    DeviceHelper.isPadOr2in1PcType() || DeviceHelper.isThreeFoldProduct()) &&
      !DeviceHelper.isPcNot2in1Device();
 
   private isInteractiveTheme: boolean = false; // 是否交互类主题
@@ -402,6 +406,7 @@ export default class ScreenLockThemeManager {
   };
 
   private isWallpaperAllInOne: boolean = false; // 主题包是否壁纸归一
+  private context: common.UIAbilityContext = getContext() as common.UIAbilityContext;
 
   private onThemeActivationEvent = (event: ThemeActivationEvent): void => {
     try {
@@ -457,7 +462,7 @@ export default class ScreenLockThemeManager {
       this.addThemeQualifier(ThemeScene.UNFOLDED);
       this.addThemeQualifier(ThemeScene.LAND_UNFOLDED);
     }
-    if (DeviceHelper.isUltraScreenProduct()) {
+    if (DeviceHelper.isThreeFoldProduct()) {
       this.addThemeQualifier(ThemeScene.LAND);
       this.addThemeQualifier(ThemeScene.UNFOLDED);
       this.addThemeQualifier(ThemeScene.LAND_UNFOLDED);
@@ -603,30 +608,56 @@ export default class ScreenLockThemeManager {
     this.outerThemeParam = await this.getScreenLockThemeParams(true);
     this.parseManifestData();
     this.parseDescriptionData();
-    this.getScreenLockThemeParams().then((themePackageParams: Map<Qualifier, LockscreenThemeConfig>) => {
+    this.getScreenLockThemeParams().then(async (themePackageParams: Map<Qualifier, LockscreenThemeConfig>) => {
       log.info('load LockThemeParams finish then applyTheme');
-      themePackageParams = this.refreshAndStore(themePackageParams);
-      this.currentThemeParams = themePackageParams;
-      if (!this.isSupportMultiSceneTheme) {
-        let curThemeParams = themePackageParams.get(DEFAULT_SANDBOX_THEME_QUALIFIER);
-        if (curThemeParams) {
-          sThemeUpgradeManager.upgradeBaseScene(curThemeParams);
-        }
-        this.onThemePreChange(curThemeParams?.clock);
-        activateThemeCallback?.onThemeActivate?.(curThemeParams);
-      } else {
-        sThemeUpgradeManager.upgradeMultiScene(themePackageParams);
-        let curQualifier = DeviceHelper.isFoldExpanded() ? ThemeScene.UNFOLDED : DEFAULT_SANDBOX_THEME_QUALIFIER;
-        // 大屏幕机G态适配
-        if (DeviceHelper.isUltraScreenProduct() && DeviceHelper.isGState()) {
-          curQualifier = ThemeScene.UNFOLDED2;
-        }
-        const curThemeParams = themePackageParams.get(curQualifier);
-        log.showInfo(`applyTheme ${curQualifier} ${curThemeParams?.clock?.aestheticColorArgs?.isChangeColor} ${curThemeParams?.clock?.color}`);
-        activateThemeCallback?.onMultiThemeActivate?.(themePackageParams);
+      let CurrentThemePath: string | undefined =  this.getCurrentThemePath();
+      const sandboxDir  = this.context.filesDir;
+      const targetPath = `${sandboxDir}/${JSON_FILE_NAME}`;
+      let mySaveLockscreenConfig = await ScreenLockFormSaveUtils.readJsonFile(targetPath);
+      if (mySaveLockscreenConfig == 'fail') {
+        this.goToApplyTheme(themePackageParams, activateThemeCallback);
+        return;
       }
-      EvtBus.post(ScreenLockThemeChangeEvent, new ScreenLockThemeChangeEvent());
+      if (!CurrentThemePath) {
+        // let oldFormConfig: LockscreenForm = themePackageParams?.get(DEFAULT_SANDBOX_THEME_QUALIFIER)?.form as LockscreenForm
+        let newFormConfig: LockscreenForm = JSON.parse(mySaveLockscreenConfig) as LockscreenForm;
+        let newThemParamMap:Map<Qualifier, LockscreenThemeConfig> = new Map();
+        let oldClockConfig: IThemeParam = themePackageParams?.get(DEFAULT_SANDBOX_THEME_QUALIFIER)?.clock as IThemeParam;
+        let newLockscreenThemeConfig: LockscreenThemeConfig = {
+          clock: oldClockConfig,
+          form: newFormConfig
+        }
+        newThemParamMap.set(DEFAULT_SANDBOX_THEME_QUALIFIER, newLockscreenThemeConfig);
+        this.goToApplyTheme(newThemParamMap, activateThemeCallback);
+        return;
+      }
+      this.goToApplyTheme(themePackageParams, activateThemeCallback);
     });
+
+  }
+
+  private goToApplyTheme(newThemParamMap: Map<Qualifier, LockscreenThemeConfig>, activateThemeCallback: ActivateThemeCallback | undefined) {
+    newThemParamMap = this.refreshAndStore(newThemParamMap);
+    this.currentThemeParams = newThemParamMap;
+    if (!this.isSupportMultiSceneTheme) {
+      let curThemeParams = newThemParamMap.get(DEFAULT_SANDBOX_THEME_QUALIFIER);
+      if (curThemeParams) {
+        sThemeUpgradeManager.upgradeBaseScene(curThemeParams);
+      }
+      this.onThemePreChange(curThemeParams?.clock);
+      activateThemeCallback?.onThemeActivate?.(curThemeParams);
+    } else {
+      sThemeUpgradeManager.upgradeMultiScene(newThemParamMap);
+      let curQualifier = DeviceHelper.isFoldExpanded() ? ThemeScene.UNFOLDED : DEFAULT_SANDBOX_THEME_QUALIFIER;
+      // 折叠机G态适配
+      if (DeviceHelper.isThreeFoldProduct() && DeviceHelper.isGState()) {
+        curQualifier = ThemeScene.UNFOLDED2;
+      }
+      const curThemeParams = newThemParamMap.get(curQualifier);
+      log.showInfo(`applyTheme ${curQualifier} ${curThemeParams?.clock?.aestheticColorArgs?.isChangeColor} ${curThemeParams?.clock?.color}`);
+      activateThemeCallback?.onMultiThemeActivate?.(newThemParamMap);
+    }
+    EvtBus.post(ScreenLockThemeChangeEvent, new ScreenLockThemeChangeEvent());
     log.showInfo(`applyTheme isScreenLock:${ScreenLockApi.isScreenLockShow()}`);
     if (!ScreenLockApi.isScreenLockShow()) {
       // 非锁屏界面更新了主题需要清空原来缓存的失效时钟位置
@@ -703,7 +734,7 @@ export default class ScreenLockThemeManager {
   }
 
   protected getFoldValidSandboxPath(currentThemePath?: string): string {
-    // 大屏幕机路径降级取用：unfolded-land -> unfolded -> base
+    // 折叠机路径降级取用：unfolded-land -> unfolded -> base
     let curQualifier = this.getCurrentThemeQualifier();
     let curSandBox = this.getSandboxPath(curQualifier);
     if (this.isFileExist(currentThemePath + curSandBox)) {
@@ -1066,6 +1097,7 @@ export default class ScreenLockThemeManager {
       } else if (fs.accessSync(SANDBOX_THEME_PATH_FLAG_B)) {
         return isOuterScreen ? SANDBOX_THEME_PATH_SYSTEM_B + SUB_SCREEN_THEME_PATH : SANDBOX_THEME_PATH_SYSTEM_B;
       }
+      return undefined;
     } catch (e) {
       log.showError(`Check file access failed: ${e?.message}`);
     }
@@ -1143,7 +1175,7 @@ export default class ScreenLockThemeManager {
     if (qualifier === ThemeScene.BASE) {
       return this.isSupportMultiSceneTheme ? defaultPortraitThemeParam : defaultThemeParam;
     }
-    if (DeviceHelper.isUltraScreenProduct()) {
+    if (DeviceHelper.isThreeFoldProduct()) {
       let gSateThemeParam = ObjectCopyUtil.deepClone(defaultThemeParam);
       this.setGStateDefaultThemeParam(qualifier, gSateThemeParam);
       return gSateThemeParam;
@@ -1153,10 +1185,10 @@ export default class ScreenLockThemeManager {
 
   public getDefaultClockParams(currentQualifier: string = this.getCurrentThemeQualifier()): LockscreenThemeConfig {
     const currentThemeParam:LockscreenThemeConfig = this.getDefaultThemeParams(currentQualifier);
-    if (DeviceHelper.isUltraScreenProduct()) {
-      if (DisplayUtils.getUltraScreenStatus() === UltraScreenStatus.M_STATUS) {
+    if (DeviceHelper.isThreeFoldProduct()) {
+      if (DisplayUtils.getThreeFoldStatus() === ThreeFoldStatus.M_STATUS) {
         currentThemeParam.clock.positionX = CLOCK_M_POSITION_X;
-      } else if (DisplayUtils.getUltraScreenStatus() === UltraScreenStatus.G_STATUS) {
+      } else if (DisplayUtils.getThreeFoldStatus() === ThreeFoldStatus.G_STATUS) {
         currentThemeParam.clock.positionX = CLOCK_G_POSITION_X;
       } else {
         currentThemeParam.clock.positionX = CLOCK_F_POSITION_X;
@@ -1166,7 +1198,7 @@ export default class ScreenLockThemeManager {
   }
 
   /**
-   * 超大屏G态默认样式
+   * 三折叠G态默认样式
    *
    * @param qualifier 形态
    * @param sourceParam 原样式
@@ -1209,7 +1241,7 @@ export default class ScreenLockThemeManager {
 
   protected parseAndValidateThemeParam(data: string, isOuterScreen: boolean = false): LockscreenThemeConfig {
     try {
-      const themeData: LockscreenThemeConfig = JSON.parse(data);
+      const themeData: LockscreenThemeConfig = JSON.parse(data) as LockscreenThemeConfig;
       // config.json中的字体优先级更高
       let hasFont = Boolean(themeData?.clock?.fontFamily);
       let clockConfigData: IThemeParam = this.parseClockConfig(themeData?.clock ||
@@ -1351,10 +1383,10 @@ export default class ScreenLockThemeManager {
         log.showError('wallpaper config file is empty');
         return;
       }
-      if (JSON.parse(text)?.versionCode) {
-        const version: string = String(JSON.parse(text).versionCode);
-        this.isWallpaperAllInOne = (version === VERSION_CODE_5_1);
-      }
+      // if (JSON.parse(text)?.versionCode) {
+      //   const version: string = String(JSON.parse(text).versionCode);
+      //   this.isWallpaperAllInOne = (version === VERSION_CODE_5_1);
+      // }
     } catch (error) {
       log.showError('Can not read wallpaper config, errorCode:' + error?.code);
     }
@@ -1446,7 +1478,7 @@ export function getDefaultPositionX(): number {
     return PC_DEFAULT_CLOCK_POSITIONX;
   } else if (DeviceHelper.isPadOr2in1PcType() ||
       DeviceHelper.isFoldButNotSmallFoldProduct() || (
-      DeviceHelper.isUltraScreenProduct() && !DeviceHelper.isFState()
+      DeviceHelper.isThreeFoldProduct() && !DeviceHelper.isFState()
   )) {
     return WIDESCREEN_DEFAULT_CLOCK_POSITIONX;
   } else {
@@ -1460,7 +1492,7 @@ function getDefaultPositionY(): number {
 
 function getDefaultLayout(): ClockLayout {
   if (DeviceHelper.isPhone()) {
-    return ClockLayout.DEFAULT_CLOCK_LAYOUT;
+    return ClockLayout.NORMAL_CLOCK_LAYOUT;
   } else if (DeviceHelper.isPadOr2in1PcType()) {
     return ClockLayout.NORMAL_CLOCK_LAYOUT;
   } else {

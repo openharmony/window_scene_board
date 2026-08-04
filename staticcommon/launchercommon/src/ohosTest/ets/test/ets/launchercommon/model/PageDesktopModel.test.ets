@@ -57,6 +57,7 @@ import {
   LaunchLayoutCacheManager,
   PadLaunchLayoutCacheManager,
   LayoutDescription,
+  DeliverUtil,
   FolderData,
 } from '../../../../../../main/ets/TsIndex';
 import { AppTransitionInfo } from '../../../../../../main/ets/pagedesktop/model/PageDesktopModel';
@@ -825,7 +826,7 @@ export default function PageDesktopModelTest() {
       let formCardId: string = '1';
       let appData2 = model.getCloseAppData(bundleName, abilityName, startType, formCardId, null);
 
-      startType = StartType.AI_SUGGESTION_APP;
+      startType = StartType.RECENT_DOCK_APP;
       let appData3 = model.getCloseAppData(bundleName, abilityName, startType, formCardId, null);
 
       let screenId = 0;
@@ -1438,7 +1439,12 @@ export default function PageDesktopModelTest() {
         extraId: '996'
       };
       let mocker: MockKit = new MockKit();
+      let mockFunc: Function = mocker.mockFunc(DeliverUtil, DeliverUtil.isContainerPkg);
+      let mockFunc2: Function = mocker.mockFunc(DeliverUtil, DeliverUtil.isContainerFolder);
+      when(mockFunc)(ArgumentMatchers.any).afterReturn(true);
+      when(mockFunc2)(ArgumentMatchers.any).afterReturn(true);
       expect(instance['getIconRectInfo'](companionIconInfo, true, '996')).assertNull();
+      mocker.clear(DeliverUtil);
       mocker.clearAll();
     })
 
@@ -1667,7 +1673,6 @@ export default function PageDesktopModelTest() {
         extraId: '996'
       };
       let mocker: MockKit = new MockKit();
-      when(mockerFunc)(ArgumentMatchers.any).afterReturn(true);
       let result: AppTransitionInfo = instance['findAppInCurrentPage'](eleInCurrentPage, companionIconInfo);
       expect(result.app.cardId).assertEqual('007');
       companionIconInfo.startAppType = StartType.APP;
@@ -1782,6 +1787,8 @@ export default function PageDesktopModelTest() {
         const mockerFunc1 = mocker.mockFunc(instance, instance['getOObeIconRect']);
         when(mockerFunc)(ArgumentMatchers.any).afterReturn(new RectInfo(0, 0, 0, 0));
         when(mockerFunc1)(ArgumentMatchers.any).afterReturn(appInfo);
+        result = instance['getAppExitLocationInfo'](appInfo, 'com.ohos.suggestion', session);
+        expect(result.isInScreen).assertTrue();
         when(mockerFunc)(ArgumentMatchers.any).afterReturn(new RectInfo(1, 1, 1, 1));
         expect(result.iconRect?.left).assertEqual(0);
         instance.setOuterFormStackExitScale(0.5);

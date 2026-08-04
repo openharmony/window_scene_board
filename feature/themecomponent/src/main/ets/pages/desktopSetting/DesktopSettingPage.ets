@@ -18,7 +18,7 @@ import { DesktopSettingConstants, DesktopSettingViewModel } from './DesktopSetti
 import { DesktopSettingData } from './DesktopSettingData';
 import { DesktopSettingPageController } from '../../controller/desktopSetting/DesktopSettingPageController';
 import { DesktopSettingHiSysEventUtil } from './DesktopSettingHiSysEventUtil';
-import { HdsNavDestination, HdsNavDestinationAttribute } from '@kit.UIDesignKit';
+// import { HdsNavDestination, HdsNavDestinationAttribute } from '@kit.UIDesignKit';
 import { SmallWindowUtil } from '../../utils/SmallWindowUtil';
 import { Log } from '../../aigcServiceAbility/IdlService/Log';
 
@@ -32,6 +32,7 @@ const DELAY_PRELOAD_TIME: number = 300;
 export default struct DesktopSettingPage {
   private desktopSettingViewModel: DesktopSettingViewModel = DesktopSettingViewModel.getInstance();
   @Consume('pageInfos') pageInfos: NavPathStack;
+  @State desktopSettingData: DesktopSettingData = this.desktopSettingViewModel.getDesktopSettingData();
   @State cardMargin: number = 16;
   @State isIntelligentSignPrivacy: boolean = false;
   @Consume('isHideBackButton') isHideBackButton: boolean;
@@ -188,6 +189,39 @@ export default struct DesktopSettingPage {
     .justifyContent(FlexAlign.SpaceBetween)
   }
 
+  @Builder
+  hiSearchLayout() {
+    Row() {
+      Text($r('app.string.HiSearch_title'))
+        .fontSize($r('sys.float.ohos_id_text_size_sub_title3'))
+        .fontColor($r('sys.color.ohos_id_color_text_secondary'))
+        .fontWeight(FontWeight.Medium)
+        .fontFamily('HarmonyHeiTi-Medium')
+        .padding({ left: 12 })
+    }
+    .width('100%')
+    .margin({ bottom: 10 })
+    Row() {
+      Text($r('app.string.Desktop_slide')).fontSize($r('sys.float.ohos_id_text_size_sub_title2')).fontWeight(500)
+        .flexShrink(1)
+      Toggle({ type: ToggleType.Switch, isOn: this.desktopSettingData.hiSearchStatus })
+        .onChange((isOn: boolean) => {
+          Log.info(TAG, `hiSearchStatus, isOn:${isOn}`);
+          this.desktopSettingViewModel.savePreference(DesktopSettingConstants.HI_SEARCH_STATUS, isOn);
+          // 桌面-桌面设置-桌面下滑开关
+          DesktopSettingHiSysEventUtil.reportSettingVoiceSearchSwitch(isOn);
+        })
+        .hoverEffect(HoverEffect.None)
+        .accessibilityLevel('yes')
+    }
+    .accessibilityGroup(true)
+    .padding({left: 12, right: 12, top: 14, bottom: 14})
+    .backgroundColor($r('sys.color.comp_background_list_card'))
+    .borderRadius($r('sys.float.corner_radius_level10'))
+    .width('100%')
+    .justifyContent(FlexAlign.SpaceBetween)
+  }
+
   // 图标调节
   @Builder
   iconSettingsLayout() {
@@ -259,6 +293,7 @@ export default struct DesktopSettingPage {
     Column() {
       Scroll() {
         Column() {
+          this.hiSearchLayout()
           this.desktopLayoutSwitch()
           if (!this.desktopSettingViewModel.isPC()) {
             this.intelligentSettings()

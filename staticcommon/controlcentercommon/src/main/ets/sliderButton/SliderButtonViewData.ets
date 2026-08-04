@@ -149,7 +149,7 @@ export class SliderButtonAnimViewData {
     ColorModeViewModel.getInstance().getViewData().brightnessNotChosenOption;
   // 二级页进度条颜色数据
   @Track public sliderProgressColor: ResourceColor =
-    ColorModeViewModel.getInstance().getViewData().wifiBgOffColor;
+    $r('sys.color.interactive_pressed');
   // 图标提亮数据
   @Track public iconBrightnessInternal: BrightnessOptions | undefined =
     ColorModeViewModel.getInstance().getViewData().foregroundPrimaryOptionOnBackground;

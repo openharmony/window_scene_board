@@ -14,15 +14,15 @@
     },
     {
       "name": "toggle_data_default",
-      "value": "focus_mode,location,air_plane,mic,near_link,power_save,meeting,super_privacy,eye_comfort,dark_mode,key_mouse_share,anti_peeping"
+      "value": "focus_mode,location,air_plane,mic,CastToggle,near_link,power_save,meeting,super_privacy,eye_comfort,dark_mode,key_mouse_share,anti_peeping"
     },
     {
       "name": "toggle_data_default_old",
-      "value": "focus_mode,location,air_plane,mic,near_link,power_save,meeting,super_privacy,eye_comfort,dark_mode,key_mouse_share,anti_peeping"
+      "value": "focus_mode,location,air_plane,mic,CastToggle,near_link,power_save,meeting,super_privacy,eye_comfort,dark_mode,key_mouse_share,anti_peeping"
     },
     {
       "name": "toggle_data_all",
-      "value": "air_plane,focus_mode,location,toggle_screen_recorder,mic,near_link,power_save,super_privacy,eye_comfort,dark_mode,key_mouse_share,anti_peeping,toggle_screenshot,dpin"
+      "value": "air_plane,focus_mode,location,toggle_screen_recorder,mic,CastToggle,near_link,power_save,super_privacy,dark_mode,key_mouse_share,anti_peeping,toggle_screenshot,dpin"
     },
     {
       "name": "toggle_data_black_multiuser",

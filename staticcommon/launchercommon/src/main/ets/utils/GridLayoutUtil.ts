@@ -877,6 +877,26 @@ export default class GridLayoutUtil {
   }
 
   /**
+   * 获取DH弹窗应用名称
+   * @param bundleName 应用包名
+   * @returns 应用名称
+   */
+  public static getdeliverAppName(bundleName: string | undefined): string {
+    let appName = '';
+    if (!bundleName || CheckEmptyUtils.checkStrIsEmpty(bundleName)) {
+      log.showWarn('bundleName is empty');
+      return appName;
+    }
+    let appItems = LaunchLayoutCacheManager.getInstance().getAllSameBundleNameAppItem(bundleName);
+    if (!CheckEmptyUtils.isEmptyArr(appItems)) {
+      GridLayoutUtil.checkCurrentItemAppName(appItems[0]);
+      appName = appItems[0].appName as string;
+    }
+    log.showInfo(`getdeliverAppName: ${appName}`);
+    return appName;
+  }
+
+  /**
    * 根据宫格参数初始化宫格位置工具类
    *
    * @param gridParam 宫格参数
@@ -952,7 +972,7 @@ export default class GridLayoutUtil {
    * @param isPortrait 是否为竖屏状态
    * @returns 宫格左上角的坐标
    */
-  public static getBigScreenGridItemPositionWithRTL(row: number, column: number, page: number, isPortrait: boolean): number[] {
+  public static getSuperFoldGridItemPositionWithRTL(row: number, column: number, page: number, isPortrait: boolean): number[] {
     let positionUtil: GridItemPositionUtil =
       GridLayoutUtil.isEditMode ? GridLayoutUtil.editModePositionUtil : GridLayoutUtil.positionUtil;
     let paddingLeft: number | undefined = isPortrait ? undefined : GridLayoutUtil.foldScreenExpandPaddingLeft[page % 2];
@@ -970,7 +990,7 @@ export default class GridLayoutUtil {
    * @param isPortrait 是否为竖屏状态
    * @returns 宫格左上角的坐标
    */
-  public static getBigScreenGridItemPosition(row: number, column: number, page: number, isPortrait: boolean): number[] {
+  public static getSuperFoldGridItemPosition(row: number, column: number, page: number, isPortrait: boolean): number[] {
     let positionUtil: GridItemPositionUtil =
       GridLayoutUtil.isEditMode ? GridLayoutUtil.editModePositionUtil : GridLayoutUtil.positionUtil;
     let paddingLeft: number | undefined = isPortrait ? undefined : GridLayoutUtil.foldScreenExpandPaddingLeft[page % 2];
@@ -1036,20 +1056,19 @@ export default class GridLayoutUtil {
    */
   public static getIconCenterPosition(row: number | undefined, column: number | undefined,
     area?: number[], page?: number, isVertical?: boolean, isRealCenter?: boolean): number[] {
-    let positionUtil: GridItemPositionUtil =
-      GridLayoutUtil.isEditMode ? GridLayoutUtil.editModePositionUtil : GridLayoutUtil.positionUtil;
+    let positionUtil: GridItemPositionUtil = GridLayoutUtil.isEditMode ? GridLayoutUtil.editModePositionUtil : GridLayoutUtil.positionUtil;
     const displayCount = PageInfoManager.getInstance().getDisplayCount();
-    if (RTLUtil.isRTL() && page !== undefined && !DeviceHelper.isBigScreenMachine()) {
+    let isSuperFoldMachine = DeviceHelper.isSuperFoldMachine()
+    if (RTLUtil.isRTL() && page !== undefined && !isSuperFoldMachine) {
       page = displayCount - 1 - page % displayCount + Math.floor(page / displayCount) * displayCount;
     }
-    let position: DragPosition =
-      positionUtil.getCenterPosition({ row: row, column: column, area: area },
-        GridLayoutUtil.getExpandPaddingLeft(page), undefined, isRealCenter);
-    if (DeviceHelper.isBigScreenMachine()) {
-      position = isVertical ? positionUtil.getCenterPosition({ row: row, column: column, area: area },
-        undefined, GridLayoutUtil.getExpandPaddingTop(0, page), isRealCenter) :
-        positionUtil.getCenterPosition({ row: row, column: column, area: area },
-          GridLayoutUtil.getExpandPaddingTop(0, page), undefined, isRealCenter);
+    let paddingLeft = isSuperFoldMachine ? GridLayoutUtil.getExpandPaddingLeft(page) : undefined;
+    log.showInfo(`getIconCenterPosition isSuperFoldMachine:${isSuperFoldMachine},page:${page},paddingLeft:${paddingLeft},displayCount:${displayCount}`);
+    let position: DragPosition = positionUtil.getCenterPosition({ row: row, column: column, area: area }, paddingLeft, undefined, isRealCenter);
+    if (DeviceHelper.isSuperFoldMachine()) {
+      position = isVertical
+        ? positionUtil.getCenterPosition({ row: row, column: column, area: area }, undefined, GridLayoutUtil.getExpandPaddingTop(0, page), isRealCenter)
+        : positionUtil.getCenterPosition({ row: row, column: column, area: area }, GridLayoutUtil.getExpandPaddingTop(0, page), undefined, isRealCenter);
     }
     GridLayoutUtil.updatePositionByRTL(position);
     return [position.x, position.y];
@@ -1072,7 +1091,7 @@ export default class GridLayoutUtil {
     let position: DragPosition =
       positionUtil.getCenterPosition({ row: row, column: column, area: area },
         GridLayoutUtil.getExpandPaddingLeft(page));
-    if (DeviceHelper.isBigScreenMachine()) {
+    if (DeviceHelper.isSuperFoldMachine()) {
       position = isPortrait ? positionUtil.getCenterPosition({ row: row, column: column, area: area },
         undefined, GridLayoutUtil.getExpandPaddingTop(0, page)) :
       positionUtil.getCenterPosition({ row: row, column: column, area: area },
@@ -1106,13 +1125,12 @@ export default class GridLayoutUtil {
    * @returns 宫格距屏幕左边缘的距离
    */
   private static getExpandPaddingLeft(page?: number, isGettingRealPosition?: boolean): number | undefined {
-    let currentPaddingLeft =
-      GridLayoutUtil.isEditMode ? GridLayoutUtil.foldScreenExpandPaddingLeftInEditMode :
-      GridLayoutUtil.foldScreenExpandPaddingLeft;
+    let currentPaddingLeft = GridLayoutUtil.isEditMode ?
+      GridLayoutUtil.foldScreenExpandPaddingLeftInEditMode : GridLayoutUtil.foldScreenExpandPaddingLeft;
     if (isGettingRealPosition) {
       currentPaddingLeft = GridLayoutUtil.foldScreenExpandPaddingLeft;
     }
-    let paddingLeft : number | undefined = undefined;
+    let paddingLeft: number | undefined = undefined;
     const displayCount = PageInfoManager.getInstance().getDisplayCount();
     if (page === undefined) {
       return paddingLeft;
@@ -1122,6 +1140,8 @@ export default class GridLayoutUtil {
     } else {
       paddingLeft = currentPaddingLeft[page % displayCount];
     }
+    log.showInfo(`getExpandPaddingLeft page:${page}%${displayCount}=${page %
+      displayCount},currentPaddingLeft:${currentPaddingLeft.toString()},paddingLeft ${paddingLeft},`);
     return paddingLeft;
   }
 
@@ -1300,12 +1320,12 @@ export default class GridLayoutUtil {
   }
 
   /**
-   * 是否为超大屏展开态
+   * 是否为三折叠展开态
    *
-   * @returns 超大屏展开状态
+   * @returns 三折叠展开状态
    */
   public static isTrifoldExpanded(): boolean {
-    return DeviceHelper.isUltraScreenProduct() && !DeviceHelper.isFState();
+    return DeviceHelper.isThreeFoldProduct() && !DeviceHelper.isFState();
   }
 
   public static isLargeFoldOrTrifoldExpanded(): boolean {

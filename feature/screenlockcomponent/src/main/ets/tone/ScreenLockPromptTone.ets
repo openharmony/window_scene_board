@@ -12,26 +12,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import configPolicy from '@ohos.configPolicy';
 import { BusinessError } from '@ohos.base';
 import Media from '@ohos.multimedia.media';
 import Audio from '@ohos.multimedia.audio';
-import FileIo from '@ohos.file.fs';
+import resourceManager from '@ohos.resourceManager';
+import type abilityCommon from '@ohos.app.ability.common';
+import { GlobalContext } from '@ohos/frameworkwrapper';
 import { LogDomain, LogHelper } from '@ohos/basicutils/src/main/ets/utils/LogHelper';
 import { CommonUtils } from '@ohos/basicutils/src/main/ets/utils/CommonUtils';
 
 const TAG = 'ScreenLockPromptTone';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.KG, TAG);
-
-/**
- * fd前缀
- */
-const PRE_FD = 'fd://';
-
-/**
- * file前缀
- */
-const PRE_FILE = 'file:/';
 
 /**
  * 创建播放器入参
@@ -52,12 +43,41 @@ export class ScreenLockPromptTone {
    */
   private isMediaPlaying: boolean = false;
 
-  private file?: FileIo.File;
+  private rawFilePath?: string;
+  private rawFileRm?: resourceManager.ResourceManager;
+
+  /**
+   * 解析用于 rawfile 的 ResourceManager。
+   * GlobalContext.getContext() 依赖 MainAbility/SystemUI 等注入 globalThis.mContext，早于注入或竞态时可能为空；
+   * 与桌面等逻辑一致，再尝试 desktopContext；最后回退 ApplicationContext。
+   */
+  private resolveResourceManager(): resourceManager.ResourceManager | undefined {
+    log.showInfo('resolveResourceManager start');
+    const host = GlobalContext.getContext();
+    log.showInfo(`resolveResourceManager host:${host == null} resourceManager:${host?.resourceManager == null}`);
+    if (host?.resourceManager) {
+      log.showInfo(`resolveResourceManager from host`);
+      return host.resourceManager;
+    }
+    const desktop = GlobalContext.getInstance().getObject('desktopContext') as abilityCommon.ServiceExtensionContext | undefined;
+    if (desktop?.resourceManager) {
+      log.showInfo(`resolveResourceManager from desktop`);
+      return desktop.resourceManager;
+    }
+    try {
+      const base: abilityCommon.ServiceExtensionContext | undefined = host ?? desktop;
+      log.showInfo(`resolveResourceManager from base`);
+      return base?.getApplicationContext()?.resourceManager;
+    } catch {
+      log.showInfo(`resolveResourceManager is undefined`);
+      return undefined;
+    }
+  }
 
   /**
    * 播放提示音
    *
-   * @param src 音频文件路径
+   * @param src 模块 rawfile 下相对路径，例如 media/audio/ui/Lock.ogg
    * @return void
    */
   public playNtfAudio(src: string): void {
@@ -137,13 +157,10 @@ export class ScreenLockPromptTone {
           break;
         case 'stopped': // stop接口成功调用后触发该状态机上报
           log.showInfo('AVPlayer state stopped called.');
-          // 关闭文件流
-          this.closeAudioFile();
           audioMedia?.reset(); // 调用reset接口初始化avplayer状态
           break;
         case 'released':
           log.showInfo('AVPlayer state released called.');
-          this.closeAudioFile();
           param?.onRelease?.();
           break;
         default:
@@ -151,13 +168,6 @@ export class ScreenLockPromptTone {
           break;
       }
     });
-  }
-
-  private closeAudioFile(): void {
-    if (this.file) {
-      FileIo.close(this.file);
-      this.file = undefined;
-    }
   }
 
   /**
@@ -173,12 +183,18 @@ export class ScreenLockPromptTone {
   }
 
   /**
-   * 开启提示音播放准备
+   * 开启提示音播放准备（bundle rawfile 资源）
    *
-   * @param src 提示音文件路径
+   * @param src 提示音在 rawfile 目录下的相对路径
    * @returns void
    */
   protected async startPrePlay(src: string): Promise<void> {
+    let rm: resourceManager.ResourceManager | undefined = this.resolveResourceManager();
+    if (!rm) {
+      log.showError('startPrePlay resourceManager unavailable (GlobalContext / desktopContext / application).');
+      this.isMediaPlaying = false;
+      return;
+    }
     // 创建播放器后，ID不匹配则直接释放
     let param: AudioParam = {};
     let audio = await this.initAudioRenderer(param);
@@ -187,36 +203,50 @@ export class ScreenLockPromptTone {
       this.isMediaPlaying = false;
       return;
     }
-    // 正常播放
     try {
-      let path = await configPolicy.getOneCfgFile(src);
-      this.file = await FileIo.open(this.getAudioFilePath(path));
-      log.showInfo(`audio play file = ${this.file.fd}`);
-      // 注册回调
-      param.onRelease = (): void => {
+      let fileDescriptor: resourceManager.RawFileDescriptor = await rm.getRawFd(src);
+      log.showInfo(`audio play rawfile fd = ${fileDescriptor.fd}`);
+      if (!fileDescriptor || fileDescriptor.fd <= 0 || (fileDescriptor.length !== undefined && fileDescriptor.length <= 0)) {
+        log.showError(`startPrePlay invalid rawfile descriptor, fd=${fileDescriptor?.fd}, length=${fileDescriptor?.length}`);
+        audio?.release();
         this.isMediaPlaying = false;
+        try {
+          rm.closeRawFd(src);
+        } catch (closeErr) {
+          log.showWarn(`closeRawFd fail: ${(closeErr as BusinessError)?.message}`);
+        }
+        return;
+      }
+
+      // keep fd alive until player released
+      this.rawFilePath = src;
+      this.rawFileRm = rm;
+      param.onRelease = (): void => {
+        try {
+          if (this.rawFileRm && this.rawFilePath) {
+            this.rawFileRm.closeRawFd(this.rawFilePath);
+          }
+        } catch (closeErr) {
+          log.showWarn(`closeRawFd onRelease fail: ${(closeErr as BusinessError)?.message}`);
+        } finally {
+          this.rawFilePath = undefined;
+          this.rawFileRm = undefined;
+          this.isMediaPlaying = false;
+        }
       };
-      // 开始播放
       if (audio) {
-        audio.url = PRE_FD + `${this.file.fd}`;
+        let avFileDescriptor: Media.AVFileDescriptor = {
+          fd: fileDescriptor.fd,
+          offset: fileDescriptor.offset,
+          length: fileDescriptor.length
+        };
+        audio.fdSrc = avFileDescriptor;
       }
     } catch (e) {
       let err = e as BusinessError;
       log.error(`startPrePlay err: ${err?.message}`);
-      // 释放播放器
       audio?.release();
       this.isMediaPlaying = false;
-      this.closeAudioFile();
     }
-  }
-
-  /**
-   * 截取音频文件路径，有file前缀则去掉
-   *
-   * @param oriSrc 原路径
-   * @return 截取后路径
-   */
-  protected getAudioFilePath(oriSrc: string): string {
-    return oriSrc.replace(PRE_FILE, '');
   }
 }

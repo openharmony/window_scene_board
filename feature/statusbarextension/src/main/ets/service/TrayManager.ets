@@ -12,10 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-// import statusBar from '@hms.pcService.statusBar';
+import statusBar from '@ohos.pcService.statusBar';
 import {
-  LogDomain,
-  LogHelper,
+  LogDomain, LogHelper, CapabilityUtil,
 } from '@ohos/basicutils';
 import { ExtendMap } from '@ohos/basicutils/src/main/ets/utils/ExtendMap';
 import { StatusBarConnectEvent, StatusBarServiceInfo } from './StatusBarServiceEventManager';
@@ -29,8 +28,7 @@ export interface BundleInfo {
   // hdc临时方案，托盘相关消息缓存区
   pids: Set<number>;
   backPids: Set<number>;
-  //  data?: statusBar.StatusBarItem;
-  data?: ESObject;
+  data?: statusBar.StatusBarItem;
 }
 
 // 当前仅对底层提供的托盘能力进行一层封装，方便后续统一整改
@@ -45,13 +43,18 @@ export class TrayManager {
   public static getOrCreateTrayManager(): TrayManager {
     if (TrayManager.mInstance === undefined) {
       TrayManager.mInstance = new TrayManager();
-      // statusBar.createTrayManager((slot: number, pid: number, instanceIndex: string, isDetached: boolean) => {
-      //   TrayManager.mInstance?.trayManagerListener.forEach((listener) => {
-      //     listener(slot, pid, instanceIndex, isDetached);
-      //   });
-      //   TrayManager.mInstance?.itemInfos.getData(slot, instanceIndex)?.backPids.add(pid);
-      //   log.showInfo(`add MultiMap backPids:${slot},${pid} ${instanceIndex} ${isDetached}`);
-      // });
+      try {
+        CapabilityUtil.isStatusBarAvailable() &&
+        statusBar.createTrayManager((slot: number, pid: number, instanceIndex: string, isDetached: boolean) => {
+          TrayManager.mInstance?.trayManagerListener.forEach((listener) => {
+            listener(slot, pid, instanceIndex, isDetached);
+          });
+          TrayManager.mInstance?.itemInfos.getData(slot, instanceIndex)?.backPids.add(pid);
+          log.showInfo(`add MultiMap backPids:${slot},${pid} ${instanceIndex} ${isDetached}`);
+        });
+      } catch (e) {
+        log.showError(`getOrCreateTrayManager faild, ${e}`)
+      }
     }
     return TrayManager.mInstance;
   }
@@ -60,12 +63,16 @@ export class TrayManager {
   public static deleteTrayManager(): boolean {
     log.showDebug('deleteTrayManager...');
     if (TrayManager.mInstance !== undefined) {
-      if (TrayManager.mInstance.itemInfos.getSize() > 0) {
-        TrayManager.mInstance.itemInfos.forEach((value: BundleInfo, tokenId: number, instanceKey: string) => {
-          // statusBar.deleteTrayForApp(tokenId, instanceKey);
-        });
+      try {
+        if (TrayManager.mInstance.itemInfos.getSize() > 0) {
+          TrayManager.mInstance.itemInfos.forEach((value: BundleInfo, tokenId: number, instanceKey: string) => {
+            CapabilityUtil.isStatusBarAvailable() && statusBar.deleteTrayForApp(tokenId, instanceKey);
+          });
+        }
+        CapabilityUtil.isStatusBarAvailable() && statusBar.deleteTrayManager();
+      } catch (e) {
+        log.showError(`deleteTrayManager faild, ${e}`)
       }
-      // statusBar.deleteTrayManager();
       TrayManager.mInstance = undefined;
     }
     return true;
@@ -94,7 +101,7 @@ export class TrayManager {
         tokenIdInfo?.pids.add(pid);
       });
     } else {
-      // statusBar.createTrayForApp(slot, instanceIndex ?? '');
+      CapabilityUtil.isStatusBarAvailable() && statusBar.createTrayForApp(slot, instanceIndex ?? '');
       let bundleInfo: BundleInfo = {
         bundleName: bundleName,
         pids: new Set(pids),
@@ -133,6 +140,11 @@ export class TrayManager {
           tokenIdInfo.data.icons = info.data?.statusBarIcon;
         }
         break;
+      case StatusBarConnectEvent.UPDATE_HOVERTIPS:
+        if (info.data?.hoverTips && tokenIdInfo.data) {
+          tokenIdInfo.data.hoverTips = info.data?.hoverTips;
+        }
+        break;
       default:
         break;
     }
@@ -142,7 +154,7 @@ export class TrayManager {
     log.showDebug('deleteTrayForApp instanceKey: ' + instanceKey);
     if (this.itemInfos.hasData(tokenId, instanceKey ?? '')) {
       this.itemInfos.deleteData(tokenId, instanceKey ?? '');
-      // statusBar.deleteTrayForApp(tokenId, instanceKey ?? '');
+      CapabilityUtil.isStatusBarAvailable() && statusBar.deleteTrayForApp(tokenId, instanceKey ?? '');
     }
   }
 
@@ -158,6 +170,8 @@ export class TrayManager {
   }
 
   public static exitTrayProcess(pids: number[]): void {
-    // statusBar.exitProcesses(pids);
+    log.showInfo('CapabilityUtil.isStatusBarAvailable(): '
+      + CapabilityUtil.isStatusBarAvailable());
+    CapabilityUtil.isStatusBarAvailable() && statusBar.exitProcesses(pids);
   }
 }

@@ -131,6 +131,20 @@
             "name": "dynamic_lead_generate_failed",
             "value": ""
         },
+      {
+        "name":"Desktop_setting",
+        "value":"ཅོག་ངོས་སྒྲིག་འགོད།",
+        "attr":{
+          "priority":"translate"
+        }
+      },
+      {
+        "name":"disable_modify_wallpaper_tips",
+        "value":"རྩོལ་ནུས་འདི་སྒྲིག་འཛུགས་མཆོག་གིས་བཀག་ཟིན།",
+        "attr":{
+          "priority":"translate"
+        }
+      },
         {
             "name": "notification_main_pandora_title",
             "value": ""
@@ -157,6 +171,54 @@
       {
         "name": "wallpaper_editor",
         "value": "ཉེར་སྤྱོད།"
+      },
+      {
+        "name": "cancle",
+        "value": "ཆ་ཚང་བཀག་འགོག་བྱེད་པ།"
+      },
+      {
+        "name": "set_wallpaper_all",
+        "value": "དུས་མཉམ་དུ་སྒྲིག་འཛུགས་བྱེད་པ།"
+      },
+      {
+        "name": "set_wallpaper_desktop",
+        "value": "ཡོངས་འཛིན་གྱི་ཚོར་བའི་རི་མོ་སྒྲིག་འཛུགས།"
+      },
+      {
+        "name": "set_wallpaper_lock",
+        "value": "ཟྭ་བརྙན་ཤེལ་གྱི་གྱང་ཤོག་སྒྲིག་སྟངས་འཛིན་དགོས།"
+      },
+      {
+        "name": "wallpaper_show_style",
+        "value": "གྱང་ཤོག་གི་རྣམ་པ།"
+      },
+      {
+        "name": "screen_fit",
+        "value": "བརྙན་ཤེལ་ལ་འཚམ་པོ་ཡོད།"
+      },
+      {
+        "name": "screen_full",
+        "value": "བརྙན་ངོས་ཧྲིལ་པོ།"
+      },
+      {
+        "name": "screen_center",
+        "value": "དཀྱིལ་སྙིང་"
+      },
+      {
+        "name": "screen_sctetch",
+        "value": "ཡོངས་སུ་བསྲིངས་པ།"
+      },
+      {
+        "name": "screen_tile",
+        "value": "སྙོམ་སྒྲིག་བྱས་པ།"
+      },
+      {
+        "name": "image_decoding_failure",
+        "value": "པར་རིས་རྒྱུན་ལྡན་མིན། ཡང་བསྐྱར་ཚོད་ལྟ་གནང་རོགས།"
+      },
+      {
+        "name":"Desktop_individuation",
+        "value":"ཅོག་ངོས་དང་སྒེར་གཤིས་ཅན།"
       }
     ]
 }

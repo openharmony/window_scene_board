@@ -58,7 +58,7 @@ const COMPONENT_ID_SCREEN_LOCK_STATUS_BAR = TAG;
  */
 @Component
 export default struct StatusBar {
-  @Require @Prop @Watch('switchAccountAnimation') isSwitchAnimation: boolean;
+  @Require @Prop @Watch('statusBarShowAnimation') isSwitchAnimation: boolean;
   @State private style: ScreenlockComponentStyle = StyleConfiguration.getScreenlockComponentStyle();
   @Provide private contentColor: string = '';
   @Link isPowerMenuPanelShowed: boolean;
@@ -86,8 +86,14 @@ export default struct StatusBar {
     }
 
   private onLock(): void {
+    log.showInfo(`screenLock change : ${this.isLock}`);
     if (this.isLock) {
-      this.resetParam();
+      this.statusBarShowAnimation();
+    } else {
+      this.statusViewBlur = LockScreenAnimationController.DEFAULT_BLUR_RADIUS;
+      this.statusViewOpacity = LockScreenAnimationController.DEFAULT_OPACITY_RATIO;
+      this.statusViewScale = LockScreenAnimationController.DEFAULT_SCALE_RATIO;
+      this.statusViewTranslate = LockScreenAnimationController.DEFAULT_TRANSLATE;
     }
   }
 
@@ -96,17 +102,6 @@ export default struct StatusBar {
    */
   private onBrightChange(): void {
     this.contentColor = this.isBright ? DARK_CONTENT_COLOR : BRIGHT_CONTENT_COLOR;
-  }
-
-  private resetParam(): void {
-    if (AppStorage.get('isLockAnimationStart')) {
-      return;
-    }
-    log.showInfo('resetParam');
-    this.statusViewBlur = LockScreenAnimationController.DEFAULT_BLUR_RADIUS;
-    this.statusViewOpacity = LockScreenAnimationController.DEFAULT_OPACITY_RATIO;
-    this.statusViewScale = LockScreenAnimationController.DEFAULT_SCALE_RATIO;
-    this.statusViewTranslate = LockScreenAnimationController.DEFAULT_TRANSLATE;
   }
 
   /**
@@ -124,12 +119,14 @@ export default struct StatusBar {
   private registerOpenCoverAnimationCallback(): void {
     OpenCoverAnimationController.getInstance().registerInitParamCallback(
       OpenCoverAnimationController.STATUS_VIEW_ANIMATION, () => {
+      log.showInfo('registerOpenCoverAnimationCallback 1 statusViewOpacity = 0');
       this.statusViewOpacity = OpenCoverAnimationController.STATUS_VIEW_OPACITY_BEGIN;
       this.statusViewScale = OpenCoverAnimationController.STATUS_VIEW_SCALE_BEGIN;
       this.statusViewTranslate = OpenCoverAnimationController.STATUS_VIEW_TRANSLATE_Y_BEGIN;
     });
     OpenCoverAnimationController.getInstance().registerAnimationCallback(
       OpenCoverAnimationController.STATUS_VIEW_ANIMATION, () => {
+      log.showInfo('registerOpenCoverAnimationCallback 2 statusViewOpacity = 0');
       this.statusViewOpacity = OpenCoverAnimationController.DEFAULT_OPACITY;
       this.statusViewScale = OpenCoverAnimationController.DEFAULT_SCALE;
       this.statusViewTranslate = OpenCoverAnimationController.DEFAULT_TRANSLATE;
@@ -137,46 +134,37 @@ export default struct StatusBar {
   }
 
   /**
-   * @description 取消开盖动效
+   * @description 锁屏状态栏展示动效
    */
-  private unregisterOpenCoverAnimationCallback(): void {
-    OpenCoverAnimationController.getInstance().unregisterCallback(
-      OpenCoverAnimationController.STATUS_VIEW_ANIMATION);
-  }
-
-  /**
-   * @description 企业空间切换账户动效
-   */
-  private switchAccountAnimation(): void {
-    if (this.isSwitchAnimation) {
-      log.showInfo(`Start Animation`);
-      this.statusViewOpacity = SwitchAccountAnimationParameter.statusBarOpacityBegin;
-      this.statusViewScale = SwitchAccountAnimationParameter.statusBarScaleBegin;
-      this.statusViewTranslate = SwitchAccountAnimationParameter.statusBarTranslateBegin;
-      animateTo({
-        delay: SwitchAccountAnimationParameter.statusTime,
-        duration: 200 * SwitchAccountAnimationParameter.dynamicEffectRatio,
-        curve: Curve.Sharp
-      }, () => {
-        this.statusViewOpacity = SwitchAccountAnimationParameter.statusBarOpacityEnd;
-      });
-      animateTo({
-        delay: SwitchAccountAnimationParameter.statusTime,
-        duration: 400 * SwitchAccountAnimationParameter.dynamicEffectRatio,
-        curve: Curve.Friction,
-        onFinish: () => {
-          Trace.end('SWITCHACCOUNTANIMATION_SCB2');
-          Trace.end('SWITCHACCOUNTANIMATION_SCBLOCK_EAGERLY');
-          // 进锁屏情况下，等待动效执行完，允许四指滑动
-          let animationTime = systemDateTime.getUptime(systemDateTime.TimeType.ACTIVE, false).toString();
-          AppStorage.setOrCreate('switchAccountState', animationTime);
-          AppStorage.setOrCreate('isCanSlide', true);
-        }
-      }, () => {
-        this.statusViewScale = SwitchAccountAnimationParameter.statusBarScaleEnd;
-        this.statusViewTranslate = SwitchAccountAnimationParameter.statusBarTranslateEnd;
-      });
-    }
+  private statusBarShowAnimation(): void {
+    log.showInfo('statusBarShowAnimation statusViewOpacity = 0');
+    this.statusViewOpacity = SwitchAccountAnimationParameter.statusBarOpacityBegin;
+    this.statusViewScale = SwitchAccountAnimationParameter.statusBarScaleBegin;
+    this.statusViewTranslate = SwitchAccountAnimationParameter.statusBarTranslateBegin;
+    animateTo({
+      delay: SwitchAccountAnimationParameter.statusTime,
+      duration: 200 * SwitchAccountAnimationParameter.dynamicEffectRatio,
+      curve: Curve.Sharp
+    }, () => {
+      log.showInfo('statusBarShowAnimation statusViewOpacity = 1');
+      this.statusViewOpacity = SwitchAccountAnimationParameter.statusBarOpacityEnd;
+    });
+    animateTo({
+      delay: SwitchAccountAnimationParameter.statusTime,
+      duration: 400 * SwitchAccountAnimationParameter.dynamicEffectRatio,
+      curve: Curve.Friction,
+      onFinish: () => {
+        Trace.end('SWITCHACCOUNTANIMATION_SCB2');
+        Trace.end('SWITCHACCOUNTANIMATION_SCBLOCK_EAGERLY');
+        // 进锁屏情况下，等待动效执行完，允许四指滑动
+        let animationTime = systemDateTime.getUptime(systemDateTime.TimeType.ACTIVE, false).toString();
+        AppStorage.setOrCreate('switchAccountState', animationTime);
+        AppStorage.setOrCreate('isCanSlide', true);
+      }
+    }, () => {
+      this.statusViewScale = SwitchAccountAnimationParameter.statusBarScaleEnd;
+      this.statusViewTranslate = SwitchAccountAnimationParameter.statusBarTranslateEnd;
+    });
   }
 
   /**
@@ -186,15 +174,16 @@ export default struct StatusBar {
     mBatteryModel.initBatteryModel();
     this.batteryStyle.picBodyWidth = $r('app.float.screenLock_battery_width');
     this.batteryStyle.picBodyHeight = $r('app.float.screenLock_battery_height');
-    this.switchAccountAnimation();
+    this.statusBarShowAnimation();
     this.style.initStyle();
     this.onBrightChange();
 
-    LockScreenAnimationController.getInstance().registerCallback(
+    /*LockScreenAnimationController.getInstance().registerCallback(
       LockScreenAnimationController.LOCK_SCREEN_STATUS_CALLBACK, () => {
+      log.showInfo('LOCK_SCREEN_STATUS_CALLBACK statusViewOpacity = 0');
       this.statusViewOpacity = LockScreenAnimationController.OPACITY_RATIO;
       this.statusViewTranslate = LockScreenAnimationController.LOCK_SCREEN_STATUS_TRANSLATE;
-    });
+    });*/
 
     this.socVm.init(this);
     this.registerOpenCoverAnimationCallback();
@@ -212,9 +201,11 @@ export default struct StatusBar {
    */
   public aboutToDisappear(): void {
     this.socVm.destroy();
-    LockScreenAnimationController.getInstance()
-      .unregisterCallback(LockScreenAnimationController.LOCK_SCREEN_STATUS_CALLBACK);
-    this.unregisterOpenCoverAnimationCallback();
+    /*LockScreenAnimationController.getInstance()
+      .unregisterCallback(LockScreenAnimationController.LOCK_SCREEN_STATUS_CALLBACK);*/
+    // 取消开盖动效
+    OpenCoverAnimationController.getInstance().unregisterCallback(
+      OpenCoverAnimationController.STATUS_VIEW_ANIMATION);
     try {
       // superPrivacyManager.off('superPrivacyModeChange', this.onSuperPrivacyModeChange);
     } catch (err) {

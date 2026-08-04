@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { LogDomain, LogHelper, } from '@ohos/basicutils';
+import { OutdoorConfig, LogDomain, LogHelper, } from '@ohos/basicutils';
 import {
   SCBSceneContainerState,
   SCBScenePanelManager,
@@ -36,7 +36,7 @@ export class GestureDockAdapter {
   public static isGestureDockForbid(): boolean {
     let isDeviceForbid = launcherStatusUtil.getShowOutLauncherStatus();
     return isDeviceForbid || GestureDockAdapter.isContainerSessionForbid() || GestureDockAdapter.isModeForbid() ||
-      GestureDockAdapter.isSystemAlertDialog();
+      GestureDockAdapter.isSystemAlertDialog() || GestureDockAdapter.isOutdoorMode();
   }
 
   private static isModeForbid(): boolean {
@@ -44,6 +44,21 @@ export class GestureDockAdapter {
   }
 
   private static isContainerSessionForbid(): boolean {
+    // let focusedSession = SCBSceneSessionManager.getInstance().getFocusedSession();
+    // let containerSession = SCBScenePanelManager.getInstance().getSceneContainerSessionList().getTopActiveSession();
+    // if (focusedSession?.session?.type === sceneSessionManager.SessionType.TYPE_NEGATIVE_SCREEN ||
+    //   containerSession?.getState() === SCBSceneContainerState.ONE_STEP) {
+    //   log.showInfo(`negative screen or split screen,forbid`);
+    //   return true;
+    // }
+    // if (containerSession?.isMidScene && !containerSession?.needRenderShowInRecent.showInRecent) {
+    //   log.showInfo(`dock forbid in mid scene`);
+    //   return true;
+    // }
+    // if (containerSession?.dividerParam.isDragging()) {
+    //   log.showInfo(`dividerParam is Dragging or guidanceDialog is Showing`);
+    //   return true;
+    // }
     return true;
   }
 
@@ -56,5 +71,14 @@ export class GestureDockAdapter {
     let focusedSessionId = SCBSceneSessionManager.getInstance().getFocusedSessionId();
     let focusedSession = SCBSceneSessionManager.getInstance().getSystemSceneSessionWithId(focusedSessionId);
     return focusedSession && focusedSession.systemType === sceneSessionManager.SessionType.TYPE_SYSTEM_ALERT;
+  }
+
+  /**
+   * 是否是户外模式模式
+   *
+   * @returns
+   */
+  private static isOutdoorMode(): boolean {
+    return OutdoorConfig.getInstance().isInOutdoorMode();
   }
 }

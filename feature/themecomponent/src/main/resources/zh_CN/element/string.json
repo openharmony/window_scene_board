@@ -14,6 +14,13 @@
                 "priority":"translate"
             }
         },
+      {
+        "name":"disable_modify_wallpaper_tips",
+        "value":"此功能已被贵组织禁用",
+        "attr":{
+          "priority":"translate"
+        }
+      },
         {
             "name":"font_creation_dialog_part_four",
             "value":"关于锁屏字体创作服务与隐私的声明",
@@ -21,6 +28,13 @@
                 "priority":"translate"
             }
         },
+      {
+        "name":"Desktop_setting",
+        "value":"桌面设置",
+        "attr":{
+          "priority":"translate"
+        }
+      },
         {
             "name":"font_creation_dialog_stop_service_text",
             "value":"停止后，将无法智能学习图片内的文字风格并创作。确定停止？",
@@ -157,6 +171,54 @@
       {
         "name": "wallpaper_editor",
         "value": "应用"
+      },
+      {
+        "name": "cancle",
+        "value": "取消"
+      },
+      {
+        "name": "set_wallpaper_all",
+        "value": "同时设置"
+      },
+      {
+        "name": "set_wallpaper_desktop",
+        "value": "设置桌面壁纸"
+      },
+      {
+        "name": "set_wallpaper_lock",
+        "value": "设置锁屏壁纸"
+      },
+      {
+        "name": "wallpaper_show_style",
+        "value": "壁纸显示方式"
+      },
+      {
+        "name": "screen_fit",
+        "value": "适合屏幕"
+      },
+      {
+        "name": "screen_full",
+        "value": "充满屏幕"
+      },
+      {
+        "name": "screen_center",
+        "value": "居中"
+      },
+      {
+        "name": "screen_sctetch",
+        "value": "拉伸充满"
+      },
+      {
+        "name": "screen_tile",
+        "value": "平铺"
+      },
+      {
+        "name": "image_decoding_failure",
+        "value": "图片异常，请重试"
+      },
+      {
+        "name":"Desktop_individuation",
+        "value":"桌面和个性化"
       }
     ]
 }

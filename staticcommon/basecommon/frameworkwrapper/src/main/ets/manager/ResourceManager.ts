@@ -566,6 +566,8 @@ export class ResourceManager {
             });
           }).catch((error) => {
             log.showError(`getAppNameWithCache error:${error} `);
+            appName = this.getBundleAppNameByBms(bundleName, cacheKey);
+            callback(appName);
           });
         } catch (err) {
           log.error(`getAppNameWithCache error:${err} bundleName:${bundleName}, labelId:${labelId}`);
@@ -753,6 +755,16 @@ export class ResourceManager {
     }
   }
 
+  // 场景下，通过缓存、资源管理取不到应用名字，再通过bms缓存接口取一次名字
+  private getBundleAppNameByBms(bundleName: string, cacheKey: string): string {
+    let appName: string = this.getBundleAppName(bundleName);
+    log.showInfo(`getBundleAppNameByBms appName = ${appName}`);
+    if (!CheckEmptyUtils.isEmpty(appName) && appName !== bundleName) {
+      this.setAppResourceCache(cacheKey, KEY_NAME, appName);
+    }
+    return appName;
+  }
+
   getBundleLabelWithCache(labelId: number, bundleName: string, moduleName: string, appName: string, callback): void {
     if (!labelId) {
       log.showInfo(`getBundleLabelWithCache invalid labelId:${labelId}`);
@@ -761,11 +773,19 @@ export class ResourceManager {
       const cacheKey = `${labelId}${bundleName}${moduleName}`;
       const name = this.getAppResourceCache(cacheKey, KEY_NAME);
       if (CheckEmptyUtils.isEmpty(name)) {
+        if (this.isResourceManagerEmpty()) {
+          log.showInfo('getBundleLabelWithCache resourceManager is empty');
+          appName = this.getBundleAppNameByBms(bundleName, cacheKey);
+          callback(appName);
+        }
         try {
           log.showDebug(`getBundleLabelWithCache bundleName:${bundleName}, moduleName:${moduleName} labelId:${labelId}, appName${appName}`);
           let bundleContext = (GlobalContext.getInstance().getObject('desktopContext') as ctx.ServiceExtensionContext).createBundleContext(bundleName);
           bundleContext.resourceManager.getStringValue(labelId, (error, value) => {
             if (error != null || CheckEmptyUtils.checkStrIsEmpty(value)) {
+              log.error(`getBundleLabelWithCache getStringValue ERROR! labelId:${labelId}`, error);
+              appName = this.getBundleAppNameByBms(bundleName, cacheKey);
+              callback(appName);
             } else {
               this.setAppResourceCache(cacheKey, KEY_NAME, value);
               callback(value);
@@ -777,6 +797,8 @@ export class ResourceManager {
             });
         } catch (err) {
           log.error('getBundleLabelWithCache error:', err);
+          appName = this.getBundleAppNameByBms(bundleName, cacheKey);
+          callback(appName);
         }
       } else {
         callback(name);

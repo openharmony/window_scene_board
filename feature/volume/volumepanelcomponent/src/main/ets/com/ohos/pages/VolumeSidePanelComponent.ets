@@ -68,6 +68,7 @@ import { SystemUICcmConfig } from '@ohos/systemuicommon/src/main/ets/utils/Syste
 import { KeyCode, inputMonitor, KeyEvent, Action } from '@kit.InputKit';
 import VolumePanelService from '../model/VolumePanelService';
 import type { VolumeKeyPressedListener } from '../common/Interfaces';
+import { OutdoorVm } from '@ohos/systemuicommon/src/main/ets/vm/OutdoorVm';
 
 const TAG = 'VolumeControl-SidePanel';
 const log: Logger = Logger.getLogHelper(LogDomain.SYS_UI);
@@ -1025,7 +1026,7 @@ export default struct VolumeSidePanelComponent {
         return channel.channelId;
       })
 
-      if (this.isRenderVolumeArrow) {
+      if (this.isRenderVolumeArrow && !OutdoorVm.instance.isInOutdoorMode) {
         Image($r('app.media.handle'))
           .width(this.volumeComponentStyle.volumeArrowWidth)
           .opacity(this.volumeArrowOpacity)
@@ -1258,8 +1259,14 @@ export default struct VolumeSidePanelComponent {
     if (VolumeWindowController.getInstance().isFoldExpand() || VolumeWindowController.getInstance().isDisplayLand()) {
       // 宽屏使用栅格
       let widthInPixel = ResUtils.getLandBoxGridRowWidth(this.mWindowWidth);
-      this.volumeDialogMaxWidth = ArkUIAdapter.px2vp(widthInPixel);
-      log.showInfo(TAG, `volume dialog in box grid style, width: ${this.volumeDialogMaxWidth}.`);
+      if (widthInPixel <= 0) {
+        log.showWarn(TAG, `getLandBoxGridRowWidth returned invalid value: ${widthInPixel}, use default width`);
+        this.volumeDialogMaxWidth = this.volumeComponentStyle.volumeDialogWidthInNumber;
+      } else {
+        this.volumeDialogMaxWidth = ArkUIAdapter.px2vp(widthInPixel);
+      }
+      log.showInfo(TAG, `volume dialog in box grid style, mWindowWidth: ${this.mWindowWidth}, ` +
+        `widthInPixel: ${widthInPixel}, volumeDialogMaxWidth: ${this.volumeDialogMaxWidth}.`);
     } else { // 窄屏固定宽度
       this.setDialogWidthWithRegular();
     }
@@ -1280,7 +1287,10 @@ export default struct VolumeSidePanelComponent {
       log.showInfo(TAG, `volume dialog in half fold style, width: ${this.volumeBarTopMargin}.`);
     } else if (this.isDisplayLandOrDisplayReverse()) { // 横屏高度居中 竖屏下倒置也要居中
       let heightInVp = ArkUIAdapter.px2vp(this.mWindowHeight);
-      this.volumeBarTopMargin = (heightInVp - this.volumeComponentStyle.volumeDialogHeightInNumber) / 2;
+      let maxPanelHeight = heightInVp * 0.9; // 最大高度为屏幕高度的90%
+      this.volumeBarTopMargin = (heightInVp - Math.min(this.volumeComponentStyle.volumeDialogHeightInNumber, maxPanelHeight)) / 2;
+      log.showInfo(TAG, `volume dialog in landscape, heightInVp: ${heightInVp}, maxPanelHeight: ${maxPanelHeight}, ` +
+        `volumeBarTopMargin: ${this.volumeBarTopMargin}.`);
     } else { // 竖屏对齐物理按键
       this.volumeBarTopMargin = this.volumePaddingTop - volumeSettingHeight;
       //XT物理按键高度较高，需要避让状态栏，距离状态栏8vp
@@ -1581,10 +1591,6 @@ export default struct VolumeSidePanelComponent {
   }
 
   private allControlInInterpolatingAnimate(): void {
-    const width: number = this.getDialogWith();
-    //音量条等间距间隙
-    let space = (width - this.volumeActiveChannelSize * this.volumeComponentStyle.volumeProgressComponentWidth) /
-      (this.volumeActiveChannelSize + 1);
     animateTo({
       iterations: 1,
       curve: this.volumeComponentStyle.interpolatingSpringDefault,
@@ -1594,14 +1600,26 @@ export default struct VolumeSidePanelComponent {
       }
     }, () => {
       this.animationInCount++;
-      this.volumeStackHeight = this.volumeComponentStyle.volumeDialogHeightInNumber;
+      let panelHeight = this.volumeComponentStyle.volumeDialogHeightInNumber;
+      if (this.isDisplayLandOrDisplayReverse()) {
+        let heightInVp = ArkUIAdapter.px2vp(this.mWindowHeight);
+        let maxPanelHeight = heightInVp * 0.9;
+        panelHeight = Math.min(this.volumeComponentStyle.volumeDialogHeightInNumber, maxPanelHeight);
+      }
+      this.volumeStackHeight = panelHeight;
       this.volumeStackOpacity = 1;
       this.adjustVolumePosition();
-      this.dialogChannelContainerHeight = this.volumeComponentStyle.volumeDialogHeightInNumber;
+      this.dialogChannelContainerHeight = panelHeight;
       this.panelTextOpacity = 1;
-      for (let index = 0; index < this.volumeActiveChannelSize; index++) {
-        this.panelToRights[index] = (this.volumeActiveChannelSize - 1 - index) *
-          (space + this.volumeComponentStyle.volumeProgressComponentWidth) + space;
+      const width: number = this.volumeDialogWidth;
+      let space = (width - this.volumeActiveChannelSize * this.volumeComponentStyle.volumeProgressComponentWidth) /
+        (this.volumeActiveChannelSize + 1);
+      for (let index = 0; index < this.volumeChannelSize; index++) {
+        const i = this.activeChannelTypes.findIndex(item => item === this.volumeChannels[index].volumeType);
+        if (i !== -1) {
+          this.panelToRights[index] = (this.volumeActiveChannelSize - 1 - i) *
+            (space + this.volumeComponentStyle.volumeProgressComponentWidth) + space;
+        }
       }
     });
   }
@@ -2034,6 +2052,9 @@ export default struct VolumeSidePanelComponent {
     if (this.isConfigSmallScreen) {
       return;
     }
+    if (OutdoorVm.instance.isInOutdoorMode) {
+      return;
+    }
     if (this.volumeAnimType === VolumeAnimType.TYPE_ALL_CONTROL_START) {
       let deltaScreenX = x - this.lastX;
       let deltaScreenY = y - this.lastY;
@@ -2196,7 +2217,8 @@ export default struct VolumeSidePanelComponent {
     const percent = this.volumeAccessibilityPercentValues.get($$.channel.volumeType) ?? ACCESSIBILITY_DEFAULT_PERCENT;
     const channelName = $$.channel.volumeType === audio.AudioVolumeType.MEDIA ? $r('app.string.volume_accessibility_media') :
     $$.channel.channelName;
-    return this.isExpandVolumePanel() || this.isConfigSmallScreen ?
+    return this.isExpandVolumePanel() || this.isConfigSmallScreen ||
+    OutdoorVm.instance.isInOutdoorMode ?
     $r('app.string.volume_accessibility_dialog', percent, channelName) :
     $r('app.string.volume_accessibility_single', percent, channelName);
   }

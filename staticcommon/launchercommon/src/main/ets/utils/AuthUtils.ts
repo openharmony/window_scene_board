@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-// import appLock from '@hms.security.appLock';
+// import appLock from '@ohos.security.appLock';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { LogDomain, LogHelper } from '@ohos/basicutils';
 const TAG = 'AuthUtils';

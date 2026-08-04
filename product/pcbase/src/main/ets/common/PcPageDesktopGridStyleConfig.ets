@@ -1,5 +1,5 @@
 /**
- * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) 2021-2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -111,6 +111,8 @@ export default class PcPageDesktopGridStyleConfig extends PageDesktopGridStyleCo
       GridLayoutUtil.getFloorVp(LayoutViewModel.getInstance(this.singleContext).getSysUITopHeight());
     const result = LayoutViewModel.getInstance(this.singleContext).calculateDesktop();
     log.showInfo(`initConfig ========================================= , ${JSON.stringify(result)}`);
+    this.mGridWidth = this.realGridWidth || (result.mGridWidth ?? 0);
+    this.mGridHeight = this.realGridHeight || (result.mGridHeight ?? 0);
     if (result.mMargin != undefined) {
       this.mMargin = result.mMargin;
       this.mWorkSpacePadding = this.mMargin;
@@ -133,9 +135,6 @@ export default class PcPageDesktopGridStyleConfig extends PageDesktopGridStyleCo
     if (result.mDesktopMarginTop != undefined) {
       this.mDesktopMarginTop = result.mDesktopMarginTop;
     }
-    if (result.mGridWidth != undefined) {
-      this.mGridWidth = result.mGridWidth;
-    }
     if (result.mWorkSpaceWidth != undefined) {
       this.mWorkSpaceWidth = result.mWorkSpaceWidth;
     }
@@ -147,9 +146,6 @@ export default class PcPageDesktopGridStyleConfig extends PageDesktopGridStyleCo
     }
     if (result.mWorkSpacePaddingBottom != undefined) {
       this.mWorkSpacePaddingBottom = result.mWorkSpacePaddingBottom;
-    }
-    if (result.mGridHeight != undefined) {
-      this.mGridHeight = result.mGridHeight;
     }
     if (result.mAppItemSize != undefined) {
       this.mAppItemSize = result.mAppItemSize;

@@ -15,7 +15,6 @@
 
 import performanceMonitor from '@ohos.arkui.performanceMonitor';
 import sceneSessionManager from '@ohos.sceneSessionManager';
-import I18n from '@ohos.i18n';
 import { LogDomain, LogHelper, ObjUtil } from '@ohos/basicutils';
 import { RotationConstants, SceneConstants } from '@ohos/commonconstants';
 import { GlobalSearchStatus, sOutSideWindowMgr } from '@ohos/frameworkwrapper';
@@ -37,26 +36,13 @@ import {
 } from '@ohos/windowscene';
 import { SCBDefaultZIndex } from '../scenemanager/SCBScreen';
 import { SCBSpecificZIndex } from '../scenemanager/SCBSpecificScene';
-import { SCBKeyboardPanelBar } from './SCBKeyboardPanelBar';
-import { SCBKeyboardDialog } from './SCBKeyboardDialog';
 import { FoldExpandAnimUtils, FoldAnimationConstants } from '@ohos/launchercommon/Index';
 import { uiEffect } from '@kit.ArkGraphics2D';
-import lazy { SectorComponent } from './SectorComponent';
-import {
-  // HdsVisualComponent,
-  // HdsSceneController,
-  // HdsSceneType,
-  // hdsEffect
-} from '@kit.UIDesignKit';
 
 const TAG: string = 'SCBIMFKeyboardPanel';
 const log = LogHelper.getLogHelper(LogDomain.WINDOW, TAG);
-const KEYBOARD_PANEL_COLOR: Resource = $r('app.color.keyboard_panel_background_color');
 const NO_BORDER_RADIUS: number = 0;
 const BLUR_RADIUS: number = 600;
-const BLEND_SRC_OVER: number = 1000;
-const BLEND_SRC_IN: number = 6;
-const DOUBLE_TWO_SIZE : number = 2;
 const GRADIENT_RATIO: number = 0.3;
 
 interface PositionOptions {
@@ -101,16 +87,11 @@ class KeyboardCommon {
 @Component
 export struct SCBKeyboard {
   @Link screenProperty: SCBScreenProperty;
-  @State isShowDialog: boolean = false;
-  @State dialogType: string = 'left';
-  @State dialogOffset: number[] = [0, 0];
   @State translateX: number = 0;
-  // @State sceneController: HdsSceneController = new HdsSceneController();
   @ObjectLink keyboardSession: SCBKeyboardSession;
   @ObjectLink keyboardPanelSession: SCBKeyboardPanelSession;
   @ObjectLink panelRect: SCBSessionRect;
   @ObjectLink keyboardRect: SCBSessionRect;
-  @State isShowSector: boolean = true;
   private sessionState: sceneSessionManager.SessionState = sceneSessionManager.SessionState.STATE_BACKGROUND;
   name: string = '';
 
@@ -131,9 +112,6 @@ export struct SCBKeyboard {
     if (KEYBOARD_STATE_MAP.get(this.name) === keyboardState && this.keyboardSession.isActive) {
       log.showInfo('ShowKeyboard id: ' + this.keyboardSession.session?.persistentId +
        ', name: ' + this.name + ', rect: ' + this.keyboardRect?.printPx());
-      if (this.sessionState !== this.keyboardSession.sessionData?.sessionState) {
-        this.isShowSector = this.keyboardPanelSession?.isFlowLightMode;
-      }
       this.sessionState = this.keyboardSession.sessionData?.sessionState;
       return true;
     }
@@ -147,12 +125,7 @@ export struct SCBKeyboard {
     log.showInfo('Keyboard aboutToAppear, id: ' + this.keyboardSession?.session.persistentId + ', name: ' +
       this.name + ', currRect: ' + this.keyboardSession?.currRect?.printPx() + ', rectForFingerprint: ' +
       this.keyboardSession?.rectForFingerprint?.printPx() + ', refCount: ' + this.keyboardSession?.getRefCount());
-    SCBKeyboardPanelManager.getInstance().registerDialogChangeCallback((isShowDialog: boolean) => {
-      log.showInfo('dialog change , isShowDialog = ' + isShowDialog);
-      this.isShowDialog = isShowDialog;
-    })
 
-    SCBKeyboardPanelManager.getInstance().registerPauseFlowLightCallback(this.pauseFlowLightEffect);
     SCBKeyboardManager.getInstance().registerKeyboardTranslateChangeCallback(this.screenPropertyChangeCallbacks)
     SCBKeyboardManager.getInstance().registerHideAnimationInterruptionCallback(this.hideAnimationInterruption);
   }
@@ -160,18 +133,8 @@ export struct SCBKeyboard {
   aboutToDisappear() {
     this.keyboardSession?.decRefCount();
     SCBKeyboardManager.getInstance().unRegisterKeyboardTranslateChangeCallback();
-    SCBKeyboardPanelManager.getInstance().unRegisterDialogChangeCallback();
     SCBKeyboardManager.getInstance().unregisterHideAnimationInterruptionCallback();
-    SCBKeyboardPanelManager.getInstance().unRegisterPauseFlowLightCallback();
     log.showInfo(`Keyboard aboutToDisappear, name: ${this.name}, refCount: ${this.keyboardSession?.getRefCount()}`);
-  }
-
-
-  private pauseFlowLightEffect: Function = (isFlowLightPause: boolean) => {
-    if (isFlowLightPause) {
-      // this.sceneController.pause();
-    } 
-    log.showInfo(`Pause keyboard flow light effect, isFlowLightPause: ${isFlowLightPause}`);
   }
 
   private screenPropertyChangeCallbacks: Function =
@@ -228,31 +191,7 @@ export struct SCBKeyboard {
     if (inputMethodUtil.isEnableImmersive(this.keyboardPanelSession?.keyboardViewMode)) {
       return $r('app.color.keyboard_immersive_color');
     }  
-    return this.keyboardPanelSession.isShowPanel ? KEYBOARD_PANEL_COLOR : $r('app.color.keyboard_transparent_color');
-  }
-
-  @Builder
-  keyboardFlowLighEffect() {
-    Stack() {
-      Stack()
-      .linearGradient({
-        direction: GradientDirection.Bottom,
-          colors: [[Color.Transparent, 0], [Color.Black, 0.15], [Color.Black, 1]] })
-      .width(this.panelRect.width.getPxStr())
-      .height(this.keyboardPanelSession?.getPanelRealHeight() + 'px')
-      /*HdsVisualComponent()
-      .scene(inputMethodUtil.isDarkImmersive(this.keyboardPanelSession?.keyboardViewMode) ? 
-        HdsSceneType.UV_FLOWLIGHT_KEYBOARD_DARK : HdsSceneType.UV_FLOWLIGHT_KEYBOARD_LIGHT,
-           this.sceneController, () => { },
-             { expected: hdsEffect.FrameRateType.FRAME_RATE_15, min: hdsEffect.FrameRateType.FRAME_RATE_15,
-               max: hdsEffect.FrameRateType.FRAME_RATE_15 })
-      .blendMode(BLEND_SRC_IN)
-      .width((this.panelRect.width.getPx() * DOUBLE_TWO_SIZE) + 'px')
-      .height((this.keyboardPanelSession?.getPanelRealHeight() * DOUBLE_TWO_SIZE) + 'px')*/
-    }
-    .blendMode(BLEND_SRC_OVER, BlendApplyType.OFFSCREEN)
-    .width(this.panelRect.width.getPxStr())
-    .height(this.keyboardPanelSession?.getPanelRealHeight() + 'px')
+    return $r('app.color.keyboard_transparent_color');
   }
 
   private getGradientHeight(): number {
@@ -290,35 +229,13 @@ export struct SCBKeyboard {
         colors: [[Color.Transparent, 0], [Color.Black, 0.25], [Color.Black, 1]] })
     .advancedBlendMode(inputMethodUtil.getPanelImmersiveMode(this.keyboardPanelSession?.keyboardViewMode))
   }
-
-  @Builder 
-  flowLighBackground() {
-    Stack({ alignContent: Alignment.Top }) {
-      this.keyboardFlowLighEffect();
-      if (this.isShowSector) {
-        SectorComponent({
-          isShowSector: $isShowSector,
-          sectorHeight: this.keyboardPanelSession?.getPanelRealHeight(),
-          panelRect: this.panelRect,
-          keyboardPanelSession: this.keyboardPanelSession});
-      }
-      Stack() {}
-      .width(this.panelRect.width.getPxStr())
-      .height(this.getGradientHeight() + 'px')
-      .compositingFilter(uiEffect.createFilter().radiusGradientBlur(BLUR_RADIUS, { 
-        fractionStops: [[0, 0], [1, 0.7], [0, 1]], direction: GradientDirection.Bottom }))
-    }
-    .width(this.panelRect.width.getPxStr())
-    .height(this.keyboardPanelSession?.getPanelRealHeight() + 'px')
-  }
  
   @Builder
   keyboardBackgroundBuilder() {
     Stack({ alignContent: Alignment.Bottom }) {
-      if (this.keyboardPanelSession?.isGradientMode && !this.keyboardPanelSession?.isFlowLightMode) {
+      if (this.keyboardPanelSession?.isGradientMode) {
         this.gradientBackground();
-      }
-      if (!this.keyboardPanelSession?.isGradientMode) {
+      } else {
         this.immersiveBackground();
       }
     }
@@ -327,11 +244,8 @@ export struct SCBKeyboard {
   }
 
   GetKeyboardBorderRadius(): number {
-    if (this.keyboardPanelSession?.isShowPanel) {
-      return this.keyboardSession?.GetKeyboardBorderRadius();
-    }
     if (inputMethodUtil.isEnableImmersive(this.keyboardPanelSession?.keyboardViewMode)) {
-      return SCBKeyboardPanelManager.getInstance().GetPadBorderRadius();
+      return this.keyboardSession?.GetKeyboardBorderRadius();
     }
     return NO_BORDER_RADIUS;
   }    
@@ -343,17 +257,6 @@ export struct SCBKeyboard {
       if (this.keyboardRect?.height.getPx() > 0) {
         this.keyboardBuilder();
       }
-      if (this.keyboardPanelSession?.isPanelBarShow && this.keyboardPanelSession?.hotAreaBottom > 0) {
-        SCBKeyboardPanelBar({
-          keyboardSession: this.keyboardSession,
-          keyboardPanelSession: this.keyboardPanelSession,
-          panelRect: this.panelRect,
-          screenProperty: $screenProperty,
-          dialogType: $dialogType,
-          dialogOffset: $dialogOffset,
-          isShowDialog: $isShowDialog
-        })
-      }
     }
     .zIndex(KeyboardCommon.getZIndex(this.keyboardSession))
     .keyboardLayoutParams()
@@ -364,63 +267,18 @@ export struct SCBKeyboard {
     .borderRadius(this.GetKeyboardBorderRadius())
     .clip(this.keyboardSession?.isFloatGravity() ? true : false)
     .transition(TransitionEffect.IDENTITY)
-  }
-
-  getDialogOffset(): Padding {
-    let isRTL = I18n.isRTL(I18n.System.getSystemLanguage());
-    if ((this.dialogType === 'right' && !isRTL) || (this.dialogType === 'left' && isRTL)) {
-      return { left: 0, right: this.dialogOffset[0], bottom: this.dialogOffset[1] };
-    } else {
-      return { left: this.dialogOffset[0], right: 0, bottom: this.dialogOffset[1]}
-    }
-  }
-
-  @Builder
-  dialogBuilder() {
-    WindowScene(SCBKeyboardPanelManager.getInstance().getPanelDialogSession()?.session.persistentId) {
-      Row() {
-        if (this.dialogType === 'right') {
-          Blank()
-        }
-        SCBKeyboardDialog({
-          gravity: this.keyboardSession?.sessionGravity,
-          dialogType: $dialogType,
-          screenProperty: $screenProperty,
-          isShowDialog: $isShowDialog,
-          keyboardPanelSession: this.keyboardPanelSession
-        })
-      }
-      .alignItems(VerticalAlign.Bottom)
-      .size({ width: this.screenProperty?.width + 'px', height: this.screenProperty?.height + 'px' })
-      .padding(this.getDialogOffset())
-      .accessibilityText(this.dialogType === 'right' ? $r('app.string.keyboard_smart_menu_access_text')
-        : $r('app.string.keyboard_switch_menu_access_text'))
-      .onClick(() => {
-        this.isShowDialog = false;
-        SCBKeyboardPanelManager.getInstance().setPanelDialogVisibility(this.isShowDialog);
-      })
-    }
-    .zIndex(KeyboardCommon.getZIndex(this.keyboardSession))
-    .size({ width: this.screenProperty?.width + 'px', height: this.screenProperty?.height + 'px' })
-    .id(`SCBKeyboardDialog${SCBKeyboardPanelManager.getInstance().getPanelDialogSession()?.session.persistentId}`)
-    .visibility(this.isShowDialog ? Visibility.Visible : Visibility.Hidden)
-    .transition(TransitionEffect.OPACITY.animation({ duration: 150, curve: '0.4, 0, 0.2, 1' }).
-      combine(TransitionEffect.translate({ y: 30 })))
-    .focusable(true)
-    .hitTestBehavior(HitTestMode.Default)
-  }
-
-  showDialog(): boolean {
-    log.showInfo('enable show dialog, this.isShowDialog = ' + this.isShowDialog);
-    return this.isShowDialog && this.keyboardPanelSession?.visibility;
+    .shadow(this.keyboardPanelSession?.panelShadow?.radius > 0 ?
+      {
+        radius: this.keyboardPanelSession?.panelShadow?.radius,
+        color: this.keyboardPanelSession?.panelShadow?.color,
+        offsetX: this.keyboardPanelSession?.panelShadow?.offsetX,
+        offsetY: this.keyboardPanelSession?.panelShadow?.offsetY
+      }: { radius: 0 })
   }
 
   build() {
     if (this.showKeyboard()) {
       this.keyboardPanelBuilder();
-      if (this.showDialog()) {
-        this.dialogBuilder()
-      }
     }
   }
 }
@@ -439,7 +297,8 @@ export struct SCBKeyboardPanel {
   private needRotation(): boolean {
     // only input method not in panel need rotate
     if (this.keyboardState === KeyboardState.SHOW_IN_BELOW_SPECIFIC_SCENE ||
-      this.keyboardState === KeyboardState.SHOW_IN_ABOVE_SPECIFIC_SCENE) {
+      this.keyboardState === KeyboardState.SHOW_IN_ABOVE_SPECIFIC_SCENE ||
+      this.keyboardState === KeyboardState.SHOW_IN_ABOVE_SPLIT_SCENE) {
       log.showInfo('Rotate the input method in BelowSpecificScene or AboveSpecificScene.');
       return true;
     }

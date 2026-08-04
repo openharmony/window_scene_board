@@ -291,6 +291,25 @@ export function IconResourceManagerTest() {
       expect(iconResourceManager['cacheFactory']).not().assertUndefined();
     });
 
+    it('test_getIconBase64Batch_01', 0, async (): Promise<void> => {
+      let hashmap: HashMap<string, string> = await iconResourceManager.getIconBase64Batch([]);
+      expect(hashmap.length).assertEqual(0);
+    });
+
+    it('test_getIconBase64Batch_02', 0, async (): Promise<void> => {
+      let bundleName: string = 'com.ohos.photos';
+      let size = 110;
+      let list: string[] = [];
+      for (let index = 0; index < size; index++) {
+        list.push(bundleName + index);
+      }
+      await iconResourceManager.getIconBase64Batch(list);
+
+      list = ['com.ohos.photos.test', 'com.ohos.camera.test'];
+      let hashmap: HashMap<string, string> = await iconResourceManager.getIconBase64Batch(list);
+      expect(hashmap).not().assertUndefined();
+    });
+
     it('test_refreshIconResourceBatch_01', 0, async (): Promise<void> => {
       let bundleName: string = 'com.ohos.photos';
       let iconExt: IconExtendParam = new IconExtendParam();
@@ -340,6 +359,52 @@ export function IconResourceManagerTest() {
       expect(taskList).not().assertUndefined();
       mocker.clear(bundleManagerFwk);
       mocker.ignoreMock(bundleManagerFwk, mockerFunInfo);
+      mocker.clearAll();
+    });
+
+    it('test_getAppIconByBms_01', 0, async (): Promise<void> => {
+      let bundleName: string = 'com.ohos.photos';
+      let result: IconInfo = await (iconResourceManager as object)['getAppIconByBms'](bundleName, false, false);
+      expect(result).not().assertUndefined();
+    });
+
+    it('test_getAppIconByBms_02', 0, async (): Promise<void> => {
+      let bundleName: string = 'com.ohos.photos';
+      let result: IconInfo = await (iconResourceManager as object)['getAppIconByBms'](bundleName, true, false);
+      expect(result).not().assertUndefined();
+    });
+
+    it('test_getAppIconByBms_03', 0, async (): Promise<void> => {
+      let bundleName: string = 'com.ohos.photos';
+      let result: IconInfo = await (iconResourceManager as object)['getAppIconByBms'](bundleName, true, true);
+      expect(result).not().assertUndefined();
+    });
+
+    it('test_getAppIconByBms_04_mock_empty_string', 0, async (): Promise<void> => {
+      let mocker: MockKit = new MockKit();
+      let mockerFun: Function =
+        mocker.mockFunc(ResourceManager.getInstance(), ResourceManager.getInstance().getBundleAppIcon);
+      when(mockerFun)(ArgumentMatchers.any).afterReturn('');
+
+      let bundleName: string = 'com.ohos.photos';
+      let result: IconInfo = await (iconResourceManager as object)['getAppIconByBms'](bundleName, true, true);
+      expect(result).not().assertUndefined();
+      mocker.clear(mockerFun);
+      mocker.ignoreMock(ResourceManager.getInstance(), mockerFun);
+      mocker.clearAll();
+    });
+
+    it('test_getAppIconByBms_04_mock_default', 0, async (): Promise<void> => {
+      let mocker: MockKit = new MockKit();
+      let mockerFun: Function =
+        mocker.mockFunc(ResourceManager.getInstance(), ResourceManager.getInstance().getBundleAppIcon);
+      when(mockerFun)(ArgumentMatchers.any).afterReturn(SCBConstants.DEFAULT_ICON);
+
+      let bundleName: string = 'com.ohos.photos';
+      let result: IconInfo = await (iconResourceManager as object)['getAppIconByBms'](bundleName, true, true);
+      expect(result).not().assertUndefined();
+      mocker.clear(mockerFun);
+      mocker.ignoreMock(ResourceManager.getInstance(), mockerFun);
       mocker.clearAll();
     });
 

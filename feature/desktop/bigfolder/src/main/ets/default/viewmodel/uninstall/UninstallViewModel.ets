@@ -23,6 +23,7 @@ import {
   ContractedFolderViewModelManager,
   ContractedFolderViewModelType,
   DeleteItemType,
+  DeliverUtil,
   DisappearLastAppData,
   EventConstants,
   FolderCommonUtil,
@@ -138,6 +139,8 @@ export class UninstallViewModel implements IContractedFolderUninstallViewModel {
   public uninstallLockedItem(msg: string, folderId: string, itemInfo: GridLayoutItemInfo): void {
     log.showInfo(TAG, `uninstall locked app from (${msg})`);
     lockedAppUninstallModel.setUninstallData(itemInfo.bundleName, (): void => {
+      let folderType: number = DeliverUtil.getFolderTypeByFolderId(folderId);
+      HiSysEventUtil.reportUninstallApp(itemInfo.bundleName as string, folderType);
       log.showInfo(TAG, 'locked app uninstall success callback');
       this.uninstallItem(msg, folderId, itemInfo, false);
     });
@@ -266,7 +269,7 @@ export class UninstallViewModel implements IContractedFolderUninstallViewModel {
     let isHarmony: boolean = deleteItem.appStatus !== AppStatus.WAIT_FOR_HARMONY;
     let appIndex: number = deleteItem.appIndex ?? 0;
     let bundleName: string = deleteItem.bundleName;
-    // 未OpenHarmony化应用需要传映射表的包名
+    // 未鸿蒙化应用需要传映射表的包名
     if (!isHarmony) {
       bundleName = CommonUtils.jsonStrToMap(deleteItem.intent).get('requestBundleName') as string ?? bundleName;
     }
@@ -293,7 +296,9 @@ export class UninstallViewModel implements IContractedFolderUninstallViewModel {
 
   private onAnimationEndToUninstall(isUninstall: boolean, uninstallItem: GridLayoutItemInfo): void {
     if (isUninstall) {
+      let folderType: number = DeliverUtil.getFolderTypeByFolderId(this.mFolderMgr.getOpenedFolder().folderId);
       let isCardFolder: boolean = GridLayoutUtil.isBigFolder(this.mFolderMgr.getOpenedFolder());
+      HiSysEventUtil.reportUninstallApp(uninstallItem?.bundleName as string, folderType, isCardFolder);
       localEventManager.sendLocalEventSticky(EventConstants.EVENT_UNINSTALL_APPLICATION, uninstallItem);
     } else {
       AppModel.getInstance().onLockedAppUninstallAnimEnd(uninstallItem.bundleName, uninstallItem.appIndex);
@@ -318,6 +323,11 @@ export class UninstallViewModel implements IContractedFolderUninstallViewModel {
     selectedItemMap.forEach((selectAppList: GridLayoutItemInfo[], folder: GridLayoutItemInfo) => {
       const isFolderOpened = openFolder.folderId === folder.folderId;
       const removedUniqueList: string[] = selectAppList.map(item => {
+        // 吸附从文件夹中删除应用时候，检查是不是克隆应用应用
+        if (DeliverUtil.isdeliverApp(item.intent)) {
+          log.showInfo(TAG, `clear deliver app folder cache: ${item.bundleName}`);
+          localEventManager.sendLocalEventSticky(EventConstants.EVENT_FOLDER_APP_PACKAGE_CHANGED, item.bundleName);
+        }
         return GridLayoutUtil.generateUniqueKey(item);
       });
       const cacheFolder: GridLayoutItemInfo = this.mFolderMgr.getFolder(folder.folderId).getGridInfo();

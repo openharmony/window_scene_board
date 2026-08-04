@@ -28,6 +28,7 @@ import contextConstant from '@ohos.app.ability.contextConstant';
 
 const TAG: string = 'Desktop-Setting-SwitchIntentExecutorImpl';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.SCS, TAG);
+const KEY_SEARCH_STATUS: string = 'hiSearchStatus';
 const PREFERENCE_FILE_NAME: string = 'DesktopSetting';
 const DEFAULT_INTENT_COMPONENT: string = 'intents/pages/DesktopSlideCardPage';
 const WINDOW_BACKGROUND_COLOR: string = '#00000000';
@@ -144,6 +145,26 @@ export default class SwitchIntentExecutorImpl extends InsightIntentExecutor {
       try {
         let preference: data_preferences.Preferences = await data_preferences.getPreferences(
           callbackContext, PREFERENCE_FILE_NAME);
+        let currentStatus = await preference.get(KEY_SEARCH_STATUS, true) as boolean;
+        log.showInfo(`setSwitchInternal currentStatus:` + currentStatus);
+        log.showInfo(`setSlideSwitch, old value is ${currentStatus}, new value is ${newStatus}}`);
+
+        if (newStatus === currentStatus) {
+          if (currentStatus) { // 已经打开
+            log.info(`switch: ${itemName} has already turn on`);
+          } else {
+            log.info(`switch: ${itemName} has already turn off`);
+          }
+        } else {
+          preference.putSync(KEY_SEARCH_STATUS, newStatus);
+          await preference.flush();
+          if (newStatus) {
+            log.info(`switch: ${itemName} turn on success`);
+          } else {
+            log.info(`switch: ${itemName} turn off success`);
+          }
+        }
+
       } catch (e) {
         log.showInfo(`Preference Error, ${(e as BusinessError).message}`);
       }
@@ -173,18 +194,23 @@ export default class SwitchIntentExecutorImpl extends InsightIntentExecutor {
   }
 
   async getSlideSwitch(): Promise<number> {
+    let hiSearchStatus: boolean = false;
     let applicationContext = ContextManager.getContext()?.getApplicationContext();
     let callback = async (callbackContext: common.Context) => {
       try {
         let preference: data_preferences.Preferences = await data_preferences.getPreferences(
           callbackContext, PREFERENCE_FILE_NAME);
+        let currentStatus: boolean = await preference.get(KEY_SEARCH_STATUS, true) as boolean;
+        log.showInfo(`getSlideSwitch currentStatus:` + currentStatus);
+        hiSearchStatus = await preference.get(KEY_SEARCH_STATUS, true) as boolean;
+        log.showInfo(`Get ${KEY_SEARCH_STATUS} Value, ${hiSearchStatus}`);
       } catch (e) {
         log.showInfo(`Preference Error, ${(e as BusinessError).message}`);
       }
     };
     await ContextModifyUtils.modifyTargetContextAsync(applicationContext, contextConstant.AreaMode.EL1, callback,
       `${TAG}-getSlideSwitch`);
-    let switchFlag: number = 1;
+    let switchFlag: number = hiSearchStatus ? 0 : 1;
     return switchFlag;
   }
 

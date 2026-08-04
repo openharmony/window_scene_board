@@ -36,6 +36,7 @@ import { UseScene } from '@ohos/screenlockwidget/src/main/ets/common/adapter/Con
 import { ClockAdapter } from '@ohos/screenlockwidget/src/main/ets/clock/adapter/ClockAdapter';
 import {
   immersiveKgMgr,
+  ImmersiveAodStyle,
   ImmersiveState,
   ImmersiveType,
   IState,
@@ -70,12 +71,16 @@ export class MainPageHeightManger {
   private immersiveState: ImmersiveState = immersiveKgMgr.getImmersiveDisplayState();
   // 锁屏主页面时钟组件适配器
   private kgClockAdapter: ClockAdapter = ClockAdapterFactory.wrapper(UseScene.MAIN_PAGE);
+  // 全屏AOD时钟组件适配器
+  private aodAlockAdapter: ClockAdapter = ClockAdapterFactory.wrapper(UseScene.AOD_FULL_SCREEN);
   // 通知列表条目总高度
   private itemHeightSum: number = 0;
   // 是否锁屏编辑状态
   private isKgEditor: boolean = false;
   // 问候语模式状态
   private isGreetShow: boolean = false;
+  // 是否处于AOD状态
+  private aodStyle: ImmersiveAodStyle | undefined = immersiveKgMgr.getOneMirrorState().getAodStyle(true);
   // 是否显示艺术签名文本
   private isShowArtSign: boolean = true;
 
@@ -294,12 +299,14 @@ export class MainPageHeightManger {
   private setClockCollapse(): void {
     let meshRange: MeshRange = new MeshRange(0, 1);
     this.kgClockAdapter.getClockWidgetModel().onMeshUsageChange(meshRange, () => {});
+    this.aodAlockAdapter.getClockWidgetModel().onMeshUsageChange(meshRange, () => {});
   }
 
   // 设置时钟到展开态
   private setClockExpand(): void {
     let meshRange: MeshRange = new MeshRange(0, MAX_GRID_AMOUNT_NORMAL);
     this.kgClockAdapter.getClockWidgetModel().onMeshUsageChange(meshRange, () => {});
+    this.aodAlockAdapter.getClockWidgetModel().onMeshUsageChange(meshRange, () => {});
   }
 
 

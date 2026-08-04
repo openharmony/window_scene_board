@@ -18,81 +18,70 @@ import display from '@ohos.display';
 import type image from '@ohos.multimedia.image';
 import { componentSnapshot, ImageModifier, performanceMonitor } from '@kit.ArkUI';
 import {
-  CardItemInfo,
   CommonConstants,
-  DesktopDragResult,
-  DeviceState,
-  EditModeConstants,
-  EditModeUtils,
-  EventConstants,
-  Extend1Data,
-  FormCommonUtil,
-  FormLayoutCacheManager,
-  FormStackEventIdUtil,
-  GridLayoutItemInfo,
-  GridLayoutUtil,
-  launcherAbilityManager,
-  LayoutViewModel,
-  lockLayoutManager,
-  MenuInfo,
-  MenuInfoManager,
-  NoIconAppModel,
-  PageDesktopModel,
+  DesktopUtils,
+  StyleConstants,
   PresetStyleConstants,
-  RdbStoreManager,
-  ReceiveEventInfo,
+  CardItemInfo,
+  launcherAbilityManager,
+  MenuInfoManager,
+  EditModeUtils,
+  Extend1Data,
+  GridLayoutUtil,
   ScreenSplitUtil,
-  StyleConstants
+  MenuInfo,
+  EventConstants,
+  NoIconAppModel,
+  FormLayoutCacheManager,
+  EditModeConstants,
+  FormStackEventIdUtil,
+  FormCommonUtil,
+  PageDesktopModel,
+  RdbStoreManager,
+  LayoutViewModel,
+  ReceiveEventInfo,
+  lockLayoutManager,
+  DesktopDragResult,
 } from '@ohos/launchercommon';
 import {
   CheckEmptyUtils,
-  CommonUtils,
-  DomainName,
   LogDomain,
   LogHelper,
+  TraceUtil,
+  DomainName,
   RectInfo,
-  SingleContext,
-  TraceUtil
+  CommonUtils,
+  SingleContext
 } from '@ohos/basicutils';
 import {
-  AccessibilityManager,
   GlobalContext,
-  localEventManager,
   ResourceManager,
   SceneIdentificationManager,
-  SceneState
+  SceneState,
+  AccessibilityManager,
+  localEventManager
 } from '@ohos/frameworkwrapper';
 import { NumberConstants, SCBConstants } from '@ohos/commonconstants';
-import { DragEventManager } from '@ohos/componentdrag';
-import {
-  DropAnimationCancelReason,
+ import { DragEventManager } from '@ohos/componentdrag';
+import { DropAnimationCancelReason,
   DropAnimationDestination,
-  DropAnimationListener,
-  dropAnimationObserver,
-  DropAnimationParam
-} from '@ohos/componentanimator';
-import {
+  DropAnimationListener, dropAnimationObserver,
+  DropAnimationParam } from '@ohos/componentanimator';
+import { dragSnapshotHelper, ItemUtils, SnapshotType, ObjectCopyUtil,
   DragAccessibilityUtils,
-  dragSnapshotHelper,
-  ItemUtils,
-  ObjectCopyUtil,
-  SnapshotType,
-  StateEx
-} from '@ohos/componenthelper';
+  StateEx} from '@ohos/componenthelper';
+import { ResUtils, SCBTransitionManager, scbEventExclusiveManager, EventType,
+  launcherStatusUtil } from '@ohos/windowscene';
+import { GridLayoutItemInfo } from '@ohos/launchercommon';
+import { DeviceState } from '@ohos/launchercommon';
+import { FormRelationManager } from '@ohos/launchercommon';
+import { FormViewModel } from '@ohos/form';
 import {
-  EventType,
-  launcherStatusUtil,
-  ResUtils,
-  scbEventExclusiveManager,
-  SCBTransitionManager
-} from '@ohos/windowscene';
-import { FormConstants, FormViewModel } from '@ohos/form';
-import {
-  FormDFXUtil,
+  nameAppearAnimate,
+  MenuCommonUtil,
   HoverAnimationUtil,
   launcherVisualEffectMgr,
-  MenuCommonUtil,
-  nameAppearAnimate,
+  FormDFXUtil,
 } from '@ohos/launchercommon/Index';
 import { EditModeState } from '@ohos/launchercommon/src/main/ets/editmode/data/EditModeState';
 import { editModeManager } from '@ohos/launchercommon/src/main/ets/editmode/model/EditModeManager';
@@ -110,12 +99,12 @@ import { FormStackSlideAnimate, SlideAnimateParam } from '../common/FormStackSli
 import { FormStackUtil } from '../common/FormStackUtil';
 import { FormStackManager } from '../common/FormStackManager';
 import {
-  FormStackExpandEventParam,
   FormStackHiSysEventUtil,
-  ShortcutMenuClickEvent,
-  ShortcutMenuClickItem,
   SwitchCardsEvent,
   SwitchCardsSlideType,
+  FormStackExpandEventParam,
+  ShortcutMenuClickEvent,
+  ShortcutMenuClickItem,
 } from '../common/FormStackHiSysEventUtil';
 import { FormStackAnimateItem, OpenFormStackStateInfo } from '../viewmodel/FormStackAnimateItem';
 import { FormStackAnimate, SlideOperateType } from '../viewmodel/FormStackAnimate';
@@ -123,10 +112,16 @@ import { FormStackViewModel } from '../viewmodel/FormStackViewModel';
 import { FormStackMenuViewModel } from '../viewmodel/FormStackMenuViewModel';
 import { FormStackEvent } from '../viewmodel/FormStackEvent';
 import FormStackMenu from './FormStackMenu';
-import { FormStackBackboard, FormStackMask, SecondFormMask } from './FormStackMaskView';
+import {
+  SecondFormMask,
+  FormStackBackboard,
+  FormStackMask,
+  FormStackCoverImage
+} from './FormStackMaskView';
 import { FormStackItemView } from './FormStackItemView';
 import { FormAppName } from './FormAppName';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 
 const TAG: string = 'FormStackView';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.FORM, TAG);
@@ -141,6 +136,14 @@ enum CardAreaType {
 };
 const BLEND_MODE_SRC_OVER: number = 4;
 const UPDATE_CARD_ORDER_DELAY: number = 5000;
+const LONG_PRESS_SELECT_ITEM_SNAP_DURATION: number = 450;
+
+enum LongPressType {
+  DEFAULT,
+  GET_WALLPAPER,
+  SHOW_WALLPAPER,
+  SELECTED_ITEM,
+}
 
 @Component
 export struct FormStackView {
@@ -289,6 +292,15 @@ export struct FormStackView {
   }
 
   private updateDialogName(value: string): void {
+    // 将系统替换场景的SceneBoard应用名称替换为设备应用名称
+    if (FormRelationManager.getInstance().isSceneBoardCard(
+      this.mCurrentFormItem.bundleName, this.mCurrentFormItem.cardName)) {
+      let appName: string = FormRelationManager.getInstance().getAppNameByCardId(this.mCurrentFormItem.cardId);
+      if (!CheckEmptyUtils.checkStrIsEmpty(appName)) {
+        log.showInfo(`set appName : ${appName}`);
+        value = appName;
+      }
+    }
     this.mDialogName = this.mGetRemoveFormTitleFun?.(value);
   }
 
@@ -311,7 +323,8 @@ export struct FormStackView {
     log.showInfo('isEqualToDragItemChange, isDragStart:%{public}s', this.isDragStart);
     if (!this.isDragStart) {
       this.formNameOpacity = 0;
-      GlobalContext.getContext()?.eventHub.emit(`mFormStackPressTypeChange_${this.mFormStackTopCardId}`);
+      GlobalContext.getContext()?.eventHub.emit(`mFormStackPressTypeChange_${this.mFormStackTopCardId}`,
+        LongPressType.DEFAULT);
       nameAppearAnimate(() => this.formNameOpacity = 1);
     }
   }
@@ -772,17 +785,25 @@ export struct FormStackView {
     log.showWarn('appLabelId: %{public}d, bundleName: %{public}s, moduleName: %{public}s.', item.appLabelId,
       item.bundleName, item.moduleName);
 
-    // 无图标但是label不是固定需要特殊处理
-    if (NoIconAppModel.getInstance().checkIfBundleIsNoIconApp(item.bundleName)) {
-      let appName: string = item.bundleName === CommonConstants.SCENEBOARD_BUNDLE ?
-        ResourceManager.getInstance().getStringByName('lock_screen') :
-        NoIconAppModel.getInstance().updateNoIconAppInfo(item.bundleName).label;
-      this.appNameLoadCallback(appName, item);
-      return;
+    // 将系统替换场景的SceneBoard占位卡片名称替换为设备应用名称
+    if (FormRelationManager.getInstance().isSceneBoardCard(item.bundleName, item.cardName)) {
+      let appName: string = FormRelationManager.getInstance().getAppNameByCardId(item.cardId);
+      if (!CheckEmptyUtils.checkStrIsEmpty(appName)) {
+        log.showInfo(`set appName : ${appName}`);
+        this.appNameLoadCallback(appName, item);
+      }
+    } else {
+      if (NoIconAppModel.getInstance().checkIfBundleIsNoIconApp(item.bundleName)) {
+        let appName: string = item.bundleName === CommonConstants.SCENEBOARD_BUNDLE ?
+          ResourceManager.getInstance().getStringByName('lock_screen') :
+          NoIconAppModel.getInstance().updateNoIconAppInfo(item.bundleName).label;
+        this.appNameLoadCallback(appName, item);
+        return;
+      }
+      this.mEvent.getAppName(item, (name: string) => {
+        this.appNameLoadCallback(name, item);
+      });
     }
-    this.mEvent.getAppName(item, (name: string) => {
-      this.appNameLoadCallback(name, item);
-    });
   }
 
   private onLockReceived(): void {
@@ -1406,7 +1427,8 @@ export struct FormStackView {
         // 100ms 空长按手势确保图标优先于编辑模式背板响应长按手势
         LongPressGesture({ repeat: false, duration: EditModeConstants.PAGE_DRAG_SKIP_GESTURE_TIME})
           .onAction(() => {
-            GlobalContext.getContext()?.eventHub.emit(`mFormStackPressTypeChange_${this.mFormStackTopCardId}`);
+            GlobalContext.getContext()?.eventHub.emit(`mFormStackPressTypeChange_${this.mFormStackTopCardId}`,
+              LongPressType.GET_WALLPAPER);
         }),
         LongPressGesture({ repeat: false, duration: NumberConstants.LONG_PRESS_VIBRATOR_TIME })
           .onAction(() => {
@@ -1453,16 +1475,21 @@ export struct FormStackView {
             if (!editModeManager.isInEditMode()) {
               this.playLongPressAnimation(false);
             }
-            GlobalContext.getContext()?.eventHub.emit(`mFormStackPressTypeChange_${this.mFormStackTopCardId}`);
+            GlobalContext.getContext()?.eventHub.emit(`mFormStackPressTypeChange_${this.mFormStackTopCardId}`,
+              LongPressType.SHOW_WALLPAPER);
           }),
         LongPressGesture({ repeat: false, duration: FormStackConstants.FORMSTACK_LONG_PRESS_SNAP_IAMGE_TIME })
           .onAction(() => {
             if (!editModeManager.isInEditMode() && !AppStorage.get<boolean>('isDrag')) {
               this.mCoverFormItem = this.mEvent.getFormIfNeedCover();
-              GlobalContext.getContext()?.eventHub.emit(`mFormStackPressTypeChange_${this.mFormStackTopCardId}`);
+              GlobalContext.getContext()?.eventHub.emit(`mFormStackPressTypeChange_${this.mFormStackTopCardId}`,
+                LongPressType.SELECTED_ITEM);
               log.showInfo(`top form: ${this.mFormStackTopCardId}, set cover form: ${this.mCoverFormItem?.cardId}`);
             }
-          })
+          }),
+        LongPressGesture({ repeat: false, duration: LONG_PRESS_SELECT_ITEM_SNAP_DURATION })
+          .onAction(() => {
+          }),
       )
     )
   }
@@ -1532,7 +1559,8 @@ export struct FormStackView {
     this.showMenu = false;
     this.isMenuAppear = false;
     this.isHiddenEffect = false;
-    GlobalContext.getContext()?.eventHub.emit(`mFormStackPressTypeChange_${this.mFormStackTopCardId}`);
+    GlobalContext.getContext()?.eventHub.emit(`mFormStackPressTypeChange_${this.mFormStackTopCardId}`,
+      LongPressType.DEFAULT);
     // appName 渐显
     animateTo({
       duration: 100,
@@ -1604,7 +1632,8 @@ export struct FormStackView {
     log.showWarn(`openFormStackFlag change to: ${this.openFormStackFlag}`);
     if (!this.openFormStackFlag) {
       this.isToOpenFormStack = false;
-      GlobalContext.getContext()?.eventHub.emit(`mFormStackPressTypeChange_${this.mFormStackTopCardId}`);
+      GlobalContext.getContext()?.eventHub.emit(`mFormStackPressTypeChange_${this.mFormStackTopCardId}`,
+        LongPressType.DEFAULT);
       AppStorage.setOrCreate('dragCardOfFormstackClosed', true);
       if (this.isListChangeByEdit) {
         this.mViewModel.updateFormListByClose(this.mFormItemList);
@@ -1866,7 +1895,7 @@ export struct FormStackView {
         log.showInfo('MenuBuilder onAppear');
         this.isMenuAppear = true;
         this.isMenuClicked = false;
-        GlobalContext.getContext()?.eventHub.emit('AIBarShow', true);
+        GlobalContext.getContext()?.eventHub.emit('NAVIBarShow', true);
         MenuInfoManager.getInstance()
           .getContextMenuListener(this.mCurrentFormItem?.cardId)?.onMenuAppear?.(ResponseType.LongPress);
         // appName 隐藏
@@ -1880,7 +1909,7 @@ export struct FormStackView {
       .onDisAppear(() => {
         log.showInfo('MenuBuilder onDisAppear');
         this.isMenuAppear = false;
-        GlobalContext.getContext()?.eventHub.emit('AIBarShow', false);
+        GlobalContext.getContext()?.eventHub.emit('NAVIBarShow', false);
         const isClicked: boolean = this.isMenuClicked;
         this.isMenuClicked = false;
         this.reportShortcutMenuClicked(isClicked);

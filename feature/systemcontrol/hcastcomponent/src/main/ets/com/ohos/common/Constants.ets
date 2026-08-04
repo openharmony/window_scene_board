@@ -14,22 +14,22 @@
  */
 
 export default class Constants {
-  public static readonly CAST_BUNDLE_NAME: string = 'com.ohos.cast';
+  public static readonly CAST_BUNDLE_NAME: string = 'com.ohos.ohcast';
   public static readonly CONTROL_CENTER_CLICK_CODE: number = 1002;
   public static readonly CONTROL_CENTER_PHONE_CLICK_CODE: number = 1006;
   public static readonly CAST_PRIVACY_VERSION: string = 'wireless_projection_privacy_agree';
   public static readonly CONTROL_CENTER_RESHOW_PRIVACY: string = 'need_reshow_projection_privacy';
-  public static readonly PUBLISH_EVENT_CAST_CONNECTED: string = 'cast.event.CAST_CONNECTED';
-  public static readonly PUBLISH_EVENT_CAST_DISCONNECTED: string = 'cast.event.CAST_DISCONNECTED';
-  public static readonly PUBLISH_EVENT_CAST_DISCONNECT_DEVICE: string = 'cast.event.DISCONNECT_DEVICE';
-  public static readonly PUBLISH_EVENT_GET_CONNECT_STATE: string = 'cast.event.CAST_GET_CONNECT_STATE';
-  public static readonly PUBLISH_EVENT_CLOSE_CAST_DIALOG: string = 'cast.event.CLOSE_CAST_DIALOG';
+  public static readonly PUBLISH_EVENT_CAST_CONNECTED: string = 'ohcast.event.CAST_CONNECTED';
+  public static readonly PUBLISH_EVENT_CAST_DISCONNECTED: string = 'ohcast.event.CAST_DISCONNECTED';
+  public static readonly PUBLISH_EVENT_CAST_DISCONNECT_DEVICE: string = 'ohcast.event.DISCONNECT_DEVICE';
+  public static readonly PUBLISH_EVENT_GET_CONNECT_STATE: string = 'ohcast.event.CAST_GET_CONNECT_STATE';
+  public static readonly PUBLISH_EVENT_CLOSE_CAST_DIALOG: string = 'ohcast.event.CLOSE_CAST_DIALOG';
   public static readonly PUBLISH_PERMISSION_MIRROR: string = 'ohos.permission.ACCESS_CAST_ENGINE_MIRROR';
   public static readonly PRIVACY_VERSION_DEFAULT: string = '0';
   public static readonly PRIVACY_VERSION_NEWEST: string = '1';
-  public static readonly PUBLISH_EVENT_DIALOG_SHOW: string = 'cast.event.CAST_DIALOG_SHOW';
-  public static readonly PUBLISH_EVENT_CLOSE_SUB_WINDOW: string = 'cast.event.CLOSE_SUB_WINDOW';
-  public static readonly PUBLISH_EVENT_OPEN_SUB_WINDOW: string = 'cast.event.OPEN_SUB_WINDOW';
+  public static readonly PUBLISH_EVENT_DIALOG_SHOW: string = 'ohcast.event.CAST_DIALOG_SHOW';
+  public static readonly PUBLISH_EVENT_CLOSE_SUB_WINDOW: string = 'ohcast.event.CLOSE_SUB_WINDOW';
+  public static readonly PUBLISH_EVENT_OPEN_SUB_WINDOW: string = 'ohcast.event.OPEN_SUB_WINDOW';
   public static readonly DIALOG_DEFAULT: number = 0;
   public static readonly DIALOG_PRIVACY: number = -100001;
   public static readonly DIALOG_WIFI_BLUETOOTH: number = -100002;

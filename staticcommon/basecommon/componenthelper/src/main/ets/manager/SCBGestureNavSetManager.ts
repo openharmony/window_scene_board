@@ -48,7 +48,7 @@ export interface GestureNavigationSet {
   backMetaBallFollowingDampY: number;
   needBackExtrudeAnim: string;
   navBarLandscapeWindowWidthPercent: number;
-  aiBarMarginBottom: number;
+  naviBarMarginBottom: number;
   controlVersion: string;
   sceneControlList: Array<SceneControl>;
 }
@@ -161,7 +161,7 @@ export class SCBGestureNavSetManager {
   /**
    * @param needUpdateSystemParameterEnhance
    *
-   * 克隆，检验是否支持悬浮导航
+   * 单窗口单屏，检验是否支持悬浮导航
    */
   public dealWithFloatingNavigation(needUpdateSystemParameterEnhance?: boolean): void {
     log.showInfo(`dealWithFloatingNavigation`);

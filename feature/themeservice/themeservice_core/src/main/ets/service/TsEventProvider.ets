@@ -25,6 +25,7 @@ import { themeVipService } from './impl/ThemeVipServiceImpl';
 import { presetRecommendService } from './impl/TsPresetRecommendImpl';
 import { SubscribeUserSwitchedImpl } from './impl/subscribe/SubscribeUserSwitchedImpl';
 import { SubscribeUserUnlockedImpl } from './impl/subscribe/SubscribeUserUnlockedImpl';
+import { SubscribeCloudChangeImpl } from './impl/subscribe/SubscribeCloudChangeImpl';
 
 
 const TAG: string = 'TsEventProvider';
@@ -67,6 +68,11 @@ export class TsEventProvider {
   private userUnlockedSubscriber?: commonEventManager.CommonEventSubscriber;
 
   /**
+   * 公共事件订阅器-云端模式切换监听
+   */
+  private cloudChangeSubscriber?: commonEventManager.CommonEventSubscriber;
+ 
+  /**
    * 获取单例对象
    *
    * @returns 对象
@@ -96,6 +102,8 @@ export class TsEventProvider {
       this.userSwitchedSubscriber = await this.createSubscriber(new SubscribeUserSwitchedImpl(), localId);
       // 冷启动开机首次解锁监听
       this.userUnlockedSubscriber = await this.createSubscriber(new SubscribeUserUnlockedImpl(), localId);
+      // 云端模式2切换监听
+      this.cloudChangeSubscriber = await this.createSubscriber(new SubscribeCloudChangeImpl(), localId);
       // 监听Ts内部主题使能结果事件
       EventEmitter.on(EventId.EVENT_ACTIVATE_THEME, async (data: ActivateEventData) => {
         presetRecommendService.get().onThemeActivated(data);

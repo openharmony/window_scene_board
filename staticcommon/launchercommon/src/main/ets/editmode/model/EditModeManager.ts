@@ -221,7 +221,7 @@ export class EditModeManager {
       }
       DesktopItemVibratorManager.getInstance().setEffectId(CommonConstants.VIBRATION_EFFECT_LIGHT, 'enterEditMode');
     } else {
-      // 显示AIBar
+      // 显示NAVIBar
       NavBarHideAndShowManager.getInstance().executeCallbackByType(TAG, true);
       this.editModeReportManager.reportLeaveEditMode(type);
       Trace.end(Trace.CORE_METHOD_INTO_EDIT_MODE);

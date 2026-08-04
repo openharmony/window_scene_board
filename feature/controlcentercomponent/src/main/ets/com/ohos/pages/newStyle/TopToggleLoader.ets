@@ -23,25 +23,22 @@ import {
 import { CC_LAYOUT_CONFIGS, ControlCenterLayoutIndex } from '../../controller/ControlCenterLayoutController';
 import { PhoneStyleFactory } from '../../phoneStyle/PhoneStyleFactory';
 import { FASlotName } from '@ohos/commonconstants';
-import lazy { PluginCardComponent } from '@ohos/plugincardcomponent/src/main/ets/default/pages/PluginCardComponent';
 import { ControlCenterState } from '@ohos/controlcentercommon/Index';
 import { QuickToggleController } from '../../controller/QuickToggleController';
 import BrightnessSliderButton from './BrightnessSliderButton';
 import { VolumeSliderButton, soundSubPageController } from '@ohos/soundcomponent';
-import { ControlCenterViewModel } from '../../viewModel/ControlCenterViewModel';
-import { KeyCode } from '@kit.InputKit';
 import { BrightnessSharedViewData } from '../../viewModel/BrightnessViewModel';
 import { BackgroundOpacity } from '../../model/BrightnessViewData';
 import StyleConfiguration, {
   ControlCenterLongButtonLayoutStyle,
   SingleExpandLongButtonStyle
 } from '../../common/StyleConfiguration';
-import { DeviceHelper } from '@ohos/frameworkwrapper';
 import {
   sBrightnessSubPageLayoutController as brightnessSubPageController
 } from '../../controller/BrightnessSubPageLayoutController';
 import { LengthMetrics } from '@kit.ArkUI';
 import lazy { ResUtils } from '@ohos/windowscene/src/main/ets/utils/ResourceUtils';
+import ControlCenterMediaCardLayout from './ControlCenterMediaCardLayout';
 
 const TAG = 'Ctrl.TopToggleLoader';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.CC, TAG);
@@ -50,6 +47,10 @@ const log: LogHelper = LogHelper.getLogHelper(LogDomain.CC, TAG);
 export default struct TopToggleLoader {
   public toggleSlot: string = '';
   public isEditMode: boolean = false;
+  /** 与媒体卡同行时使用竖向滑条 */
+  public isVerticalSlider: boolean = false;
+  /** 备选库等场景关闭共享元素动效，避免与主页/预览区冲突 */
+  public enableGeometryTransition: boolean = true;
   public style: ControlCenterLongButtonLayoutStyle | SingleExpandLongButtonStyle =
     StyleConfiguration.getControlCenterLongButtonLayoutStyle();
   private isIntelligentSceneEnable: boolean = AppStorage.get<boolean>('IntelligentSceneEnable') ?? false;
@@ -63,25 +64,54 @@ export default struct TopToggleLoader {
     log.showInfo('aboutToAppear ' + this.toggleSlot);
   }
 
+  /**
+   * 媒体行亮度/音量：添加后与组合滑条均使用竖向
+   */
+  private useVerticalSlider(): boolean {
+    return this.isVerticalSlider;
+  }
+
+  private getGeometryTransitionId(slot: string): string {
+    const baseId: string = slot + CC_LAYOUT_CONFIGS[this.ccLayoutIndex]?.showMediaAboveCardToggles;
+    return this.enableGeometryTransition ? baseId : `${baseId}_library`;
+  }
+
+  @Builder
+  mediaCardBuilder() {
+    Row() {
+      ControlCenterMediaCardLayout({ skipGeometryTransition: !this.enableGeometryTransition })
+    }
+    .accessibilityGroup(this.isEditMode && this.isAccessibilityMode)
+    .accessibilityLevel(this.isEditMode && this.isAccessibilityMode ? 'no' : 'auto')
+    .visibility(this.backgroundOpacity.backgroundOpacity === 1 || this.isEditMode ?
+      Visibility.Visible : Visibility.Hidden)
+    .borderRadius($r('app.float.Control_center_meidaCard_radius'))
+    .width($r('app.float.Control_center_meidaCard_width'))
+    .height($r('app.float.Control_center_meidaCard_width'))
+  }
+
   @Builder
   sliderButtonBuilder() {
     if (this.toggleSlot === FASlotName.BRIGHTNESS &&
       (this.controlCenterState !== ControlCenterState.BRIGHTNESS_SUBPAGE ||
         this.controlCenterState === ControlCenterState.BRIGHTNESS_SUBPAGE &&
           !brightnessSubPageController.isHorizontal())) {
-      BrightnessSliderButton({ isEditMode: this.isEditMode })
+      BrightnessSliderButton({ isEditMode: this.isEditMode, isHorizontal: !this.useVerticalSlider() })
         .accessibilityGroup(this.isEditMode && this.isAccessibilityMode)
         .accessibilityLevel(this.isEditMode && this.isAccessibilityMode ? 'no' : 'auto')
-        .visibility(this.backgroundOpacity.horizontalBrightOpacity === 1 ? Visibility.Visible : Visibility.Hidden)
-        .id('brightnessSliderButton');
+        .visibility((this.useVerticalSlider() ? this.backgroundOpacity.verticalBrightOpacity :
+          this.backgroundOpacity.horizontalBrightOpacity) === 1 || this.isEditMode ?
+          Visibility.Visible : Visibility.Hidden)
+        .id(this.useVerticalSlider() ? 'topBarBrightnessSliderButton' : 'brightnessSliderButton');
     } else if (this.toggleSlot === FASlotName.SOUND &&
       (this.controlCenterState !== ControlCenterState.SOUND_SUB_PAGE ||
       this.controlCenterState === ControlCenterState.SOUND_SUB_PAGE && !soundSubPageController.isHorizontal())) {
-      VolumeSliderButton({ isEditMode: this.isEditMode })
+      VolumeSliderButton({ isEditMode: this.isEditMode, isHorizontal: !this.useVerticalSlider() })
         .accessibilityGroup(this.isEditMode && this.isAccessibilityMode)
         .accessibilityLevel(this.isEditMode && this.isAccessibilityMode ? 'no' : 'auto')
-        .visibility(this.backgroundOpacity.backgroundOpacity === 1 ? Visibility.Visible : Visibility.Hidden)
-        .id('volumeSliderButton');
+        .visibility(this.backgroundOpacity.backgroundOpacity === 1 || this.isEditMode ?
+          Visibility.Visible : Visibility.Hidden)
+        .id(this.useVerticalSlider() ? 'topBarVolumeSliderButton' : 'volumeSliderButton');
     } else {
       Stack()
         .width($r('app.float.Control_center_long_button_width'))
@@ -126,7 +156,8 @@ export default struct TopToggleLoader {
         this.controlCenterState === ControlCenterState.BRIGHTNESS_SUBPAGE &&
         brightnessSubPageController.isHorizontal()) {
         BrightnessSliderButton({ isEditMode: this.isEditMode, isHorizontal: false })
-          .visibility(this.backgroundOpacity.verticalBrightOpacity === 1 ? Visibility.Visible : Visibility.Hidden)
+          .visibility(this.backgroundOpacity.verticalBrightOpacity === 1 || this.isEditMode ?
+            Visibility.Visible : Visibility.Hidden)
           .id('combinedBrightnessSliderButton');
       } else {
         Stack()
@@ -138,7 +169,8 @@ export default struct TopToggleLoader {
         this.controlCenterState === ControlCenterState.SOUND_SUB_PAGE &&
         soundSubPageController.isHorizontal()) {
         VolumeSliderButton({ isEditMode: this.isEditMode, isHorizontal: false })
-          .visibility(this.backgroundOpacity.backgroundOpacity === 1 ? Visibility.Visible : Visibility.Hidden)
+          .visibility(this.backgroundOpacity.backgroundOpacity === 1 || this.isEditMode ?
+            Visibility.Visible : Visibility.Hidden)
           .id('combinedVolumeSliderButton');
       } else {
         Stack()
@@ -148,30 +180,6 @@ export default struct TopToggleLoader {
     }
     .accessibilityGroup(this.isEditMode && this.isAccessibilityMode)
     .accessibilityLevel(this.isEditMode && this.isAccessibilityMode ? 'no' : 'auto')
-  }
-
-  @Builder
-  superDeviceBuilder() {
-    Row() {
-      if (this.controlCenterState !== ControlCenterState.SUB_PANEL ||
-        sToggleSubWindowController.getCurrentSubPanelSlot() !== this.toggleSlot) {
-        PluginCardComponent()
-          .borderRadius($r('app.float.Control_center_long_button_radius'))
-          .id('transition_topToggle' + this.toggleSlot + (this.isEditMode ? 'edit' : ''))
-          .geometryTransition(this.toggleSlot + CC_LAYOUT_CONFIGS[this.ccLayoutIndex]?.showMediaAboveCardToggles)
-      }
-    }
-    .accessibilityGroup(this.isEditMode && this.isAccessibilityMode)
-    .accessibilityLevel(this.isEditMode && this.isAccessibilityMode ? 'no' : 'auto')
-    .visibility(this.backgroundOpacity.backgroundOpacity === 1 ? Visibility.Visible : Visibility.Hidden)
-    .onKeyPreIme((event: KeyEvent) => {
-      return ControlCenterViewModel.onKeyPreForbidAction(event, KeyCode.KEYCODE_DPAD_LEFT)
-    })
-    .borderRadius($r('app.float.Control_center_long_button_radius'))
-    .width(this.style.newCardWidth)
-    .height(this.style.newCardHeight)
-    .opacity(1)
-    .enabled(true)
   }
 
   @Builder
@@ -188,8 +196,9 @@ export default struct TopToggleLoader {
           toggleScene: ToggleScene.PHONE
         })
           .borderRadius($r('app.float.Control_center_long_button_radius'))
-          .id('transition_topToggle' + slot + (this.isEditMode ? 'edit' : ''))
-          .geometryTransition(slot + CC_LAYOUT_CONFIGS[this.ccLayoutIndex]?.showMediaAboveCardToggles)
+          .id('transition_topToggle' + slot + (this.isEditMode ? 'edit' : '') +
+            (this.enableGeometryTransition ? '' : '_library'))
+          .geometryTransition(this.getGeometryTransitionId(slot))
       }
     }
     .accessibilityGroup(this.isEditMode && this.isAccessibilityMode)
@@ -201,14 +210,17 @@ export default struct TopToggleLoader {
   }
 
   build() {
-    if (this.toggleSlot === FASlotName.FOCUS_MODE) {
+    // 超级终端开关已下线，不再渲染
+    if (this.toggleSlot === FASlotName.SUPER_DEVICE) {
+      // no-op
+    } else if (this.toggleSlot === FASlotName.FOCUS_MODE) {
       if (this.isIntelligentSceneEnable) {
         this.loadLongButtonLayout(FASlotName.SCENARIO_MODE)
       } else {
         this.loadLongButtonLayout(FASlotName.FOCUS_MODE)
       }
-    } else if (this.toggleSlot === FASlotName.SUPER_DEVICE) {
-      this.superDeviceBuilder()
+    } else if (this.toggleSlot === FASlotName.MEDIA_ITEM_NAME) {
+      this.mediaCardBuilder();
     } else if (this.toggleSlot === FASlotName.BRIGHTNESS || this.toggleSlot === FASlotName.SOUND) {
       this.sliderButtonBuilder();
     } else if (this.toggleSlot === FASlotName.COMBINED_SLIDER) {

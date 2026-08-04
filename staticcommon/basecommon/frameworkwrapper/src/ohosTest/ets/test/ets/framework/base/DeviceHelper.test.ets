@@ -134,7 +134,7 @@ export function DeviceHelperTest() {
     it('DeviceHelperTest_isLargeScreen', 0, (): void => {
       let mocker: MockKit = new MockKit();
       let mockerFun1 = mocker.mockFunc(DeviceHelper, DeviceHelper.isPad);
-      let mockerFun2 = mocker.mockFunc(DeviceHelper, DeviceHelper.isUltraScreenProduct);
+      let mockerFun2 = mocker.mockFunc(DeviceHelper, DeviceHelper.isThreeFoldProduct);
       let mockerFun3 = mocker.mockFunc(DeviceHelper, DeviceHelper.isGState);
       when(mockerFun1)().afterReturn(true);
       expect(DeviceHelper.isLargeScreen()).assertTrue();

@@ -1,6 +1,6 @@
 import PowerButtonManagerTest from './ets/manager/PowerButtonManager.test'
 import AnimSystemProfileTest from './ets/manager/AnimSystemProfile.test'
-import AiBarVisualEffectManagerTest from './ets/manager/AiBarVisualEffectManager.test';
+import NaviBarVisualEffectManagerTest from './ets/manager/NaviBarVisualEffectManager.test';
 /*
  * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -32,6 +32,7 @@ import { SCBVisualEffectManagerTest } from './ets/framework/visualeffect/manager
 import { SCBGestureNavSetManagerTest } from './ets/component/manager/SCBGestureNavSetManager.test';
 import { GestureBackCcmSettingsTest } from './ets/framework/visualeffect/manager/GestureBackCcmSettings.test';
 import { GestureNavBarCcmSettingsTest } from './ets/framework/visualeffect/manager/GestureNavBarCcmSettings.test';
+import { OutdoorCcmManagerTest } from './ets/framework/visualeffect/manager/OutdoorCcmManager.test';
 
 export default function ComponentHelperTestSuite() {
   FrameworkTestSuite(); // 合一框架组测试用例
@@ -41,6 +42,7 @@ export default function ComponentHelperTestSuite() {
 
 export function FrameworkTestSuite() {
   SCBVisualEffectManagerTest();
+  OutdoorCcmManagerTest();
   GestureBackCcmSettingsTest();
   GestureNavBarCcmSettingsTest();
 }
@@ -63,7 +65,7 @@ export function EditModeTestSuite() {
   DragControllerUtilTest();
   DragAccessibilityUtilsTest();
   FrameUtilTest();
-  AiBarVisualEffectManagerTest();
+  NaviBarVisualEffectManagerTest();
   AnimSystemProfileTest()
   PowerButtonManagerTest()
 }

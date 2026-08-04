@@ -16,9 +16,9 @@
 import { NotificationEntry, NtfDataUpdateListener } from '../../model/NotificationEntry';
 import { NotificationConfig } from '../../common/NotificationConfig';
 import { CommonUtils, LogDomain, LogHelper } from '@ohos/basicutils';
-import { RTLUtil } from '@ohos/componenthelper';
+import { RTLUtil } from '@ohos/componenthelper'
 import { EventManager, EvtBus } from '@ohos/frameworkwrapper';
-import { ResUtils } from '@ohos/windowscene';
+import { ResUtils } from '@ohos/windowscene'
 import { NotificationExtraMenuRow } from './NotificationExtraMenuRow';
 import { NtfItemSwipeController } from '../../controller/NtfItemSwipeController';
 import { NotificationAnimationParas } from '../../common/NotificationAnimationParas';
@@ -29,8 +29,15 @@ import curves from '@ohos.curves';
 import Curves from '@ohos.curves';
 import { notificationStyle } from '../../vm/style/NotificationStyle';
 import {
+  ImmersiveAodStyle
+} from '@ohos/systemuicommon/src/main/ets/immersivekeyguardcommon/base/interface/ImmersiveAodStyle';
+import {
   immersiveKgMgr
 } from '@ohos/systemuicommon/src/main/ets/immersivekeyguardcommon/manager/ImmersiveKeyguardStateManager';
+import {
+  NotificationConfigEvent,
+  NotificationConfigEventType
+} from '@ohos/systemuicommon/src/main/ets/model/NotificationConfigEvent';
 import { NotificationType } from '@ohos/systemuicommon/Index';
 import { NotificationItemStyle } from '../../vm/style/NotificationItemStyle';
 import { NtfTimeVM } from '../../vm/NtfTimeVM';
@@ -39,12 +46,14 @@ import { NtfColorModeVM } from '../../vm/NtfColorModeVM';
 import { NtfAnimationConsts } from '../../common/NtfAnimationConsts';
 import { LengthMetrics } from '@ohos.arkui.node';
 import i18n from '@ohos.i18n';
+import { notificationConfigManager } from '../../manager/NotificationConfigManager';
 import { NtfBrightnessMode, NtfListContentConfig } from '../../vm/config/NtfViewConfig';
 import { ntfViewConfigManager } from '../../vm/config/NtfViewConfigManager';
 import { NotificationAccessibilityUtil as AccessUtil } from '../../common/NotificationAccessibilityUtil';
 import { ExtraNtfCollapsedAnimation } from '../../animation/ExtraNtfCollapsedAnimation';
 import { AccessibilityCollapsedState } from '@ohos/systemuicommon/src/main/ets/accessibility/AccessibilityAppName';
 import { OverlayIconStyle } from '@ohos/systemuicommon';
+import { DeliverBadge } from '@ohos/systemuicommon/src/main/ets/view/DeliverBadge';
 
 const TAG = 'NotificationExtraContentBrief';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.NC, TAG);
@@ -154,6 +163,12 @@ export struct NotificationExtraContentBrief {
   @State itemStyle: NotificationItemStyle = notificationStyle.item;
 
   @State colorModeVM: NtfColorModeVM | undefined = undefined;
+
+  /**
+   * Aod显示样式
+   */
+  @State aodStyle: ImmersiveAodStyle | undefined = immersiveKgMgr.getOneMirrorState().getAodStyle(
+    this.notificationType === NotificationType.TYPE_PHONE_KEYGUARD);
 
   /**
    * 时间戳VM
@@ -269,7 +284,7 @@ export struct NotificationExtraContentBrief {
       .textOverflow({ overflow: TextOverflow.Ellipsis })
       .id(`${TAG}_Text_${this.extraNtfList[0]?.hashCode}`)
       .transition(TransitionEffect.OPACITY.animation({ duration: 116 }))
-      .visibility(Visibility.Visible)
+      .visibility(this.aodStyle?.isAod ? Visibility.Hidden : Visibility.Visible)
       .renderGroup(true)
   }
 
@@ -363,6 +378,9 @@ export struct NotificationExtraContentBrief {
                 .id(entry.hashCode + '_image_app_icon')
                 .attributeModifier(new NtfAppIconModifier($r('app.float.ntf_small_icon_size_phone'),
                   $r('app.float.ntf_item_right_icon_radius'), undefined, false))
+              DeliverBadge({
+                isKgScene: this.notificationType === NotificationType.TYPE_PHONE_KEYGUARD,
+              })
             }
             .zIndex(this.getZIndex(entry))
             .translate({ x: this.getStartMargin(this.getNtfIndex(entry)) })

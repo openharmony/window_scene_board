@@ -16,6 +16,7 @@ import { LogDomain, LogHelper } from '@ohos/basicutils';
 import { LiveViewCommonConstants } from '../../../common/LiveConstants';
 import { fontScaleManager } from '@ohos/systemuiutils/src/main/ets/fontScale/fontScaleManager';
 import { FontScaleState } from '@ohos/systemuiutils/src/main/ets/fontScale/fontScaleState';
+import { AodStyleType, ImmersiveAodStyle } from '../../../../immersivekeyguardcommon/base/interface/ImmersiveAodStyle';
 import { OuterHomeVm } from '../../../../../ets/vm/OuterHomeVm'
 
 const TAG = LiveViewCommonConstants.LOG_PREFIX + 'CardButtonComponent';
@@ -30,6 +31,10 @@ const AUTH_BUTTON_OPACITY_NORMAL = 0.6;
 @Component
 export struct CardButtonComponent {
   @Prop text: Resource;
+  /**
+   * AOD显示样式
+   */
+  @Prop aodStyle: ImmersiveAodStyle | undefined;
   /**
    * 长辈模式字体
    */
@@ -82,10 +87,11 @@ export struct CardButtonComponent {
     Row() {
       Text(this.text)
         .draggable(false)
-        .fontColor($r('sys.color.ohos_id_color_text_primary'))
+        .fontColor(this.aodStyle?.isAod ? this.aodStyle?.getStyleValue(AodStyleType.AUTH_TIP_BUTTON_COLOR) :
+        $r('sys.color.ohos_id_color_text_primary'))
         .fontSize(this.fontScaleState.getScaleSize($r('app.float.live_view_card_button_font_size'),
           this.outerHomeVm.isIgnoreFontScaleState))
-        .opacity(AUTH_BUTTON_OPACITY_NORMAL)
+        .opacity(this.aodStyle?.isAod ? AUTH_BUTTON_OPACITY_AOD : AUTH_BUTTON_OPACITY_NORMAL)
         .maxLines(1)
         .textOverflow({ overflow: TextOverflow.Ellipsis })
         .fontWeight(FontWeight.Medium)

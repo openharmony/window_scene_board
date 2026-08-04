@@ -14,7 +14,7 @@
  */
 import { threadCall } from '../messageChannel/ThreadCall';
 import lazy { ApsUtils } from '@ohos/frameworkwrapper';
-// import lazy apsManager from '@hms.graphic.apsManager';
+// import lazy apsManager from '@ohos.graphic.apsManager';
 
 export class ApsAdapter {
   private static notificationAPSTaskId: number | undefined = undefined;

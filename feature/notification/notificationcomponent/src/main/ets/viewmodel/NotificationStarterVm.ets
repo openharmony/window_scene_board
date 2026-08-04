@@ -24,12 +24,15 @@ import {
   INotificationStarterVm,
   NotificationBaseVm,
   NotificationStartWantAgentParams,
-  StartAppOneMirrorAnimation } from '@ohos/systemuicommon/newIndex';
-import { NotificationSysEventReporter,
+  StartAppOneMirrorAnimation
+} from '@ohos/systemuicommon/newIndex';
+import {
+  NotificationSysEventReporter,
   StatusBarType,
   ScreenLockAdapter,
   SystemUICommonUtil,
-  SystemuiConstants } from '@ohos/systemuicommon';
+  SystemuiConstants
+} from '@ohos/systemuicommon';
 import { ExclusiveChecker } from '../model/ExclusiveChecker';
 import { NotificationConfig } from '../common/NotificationConfig';
 import { NotificationBase, NotificationUtil } from '@ohos/systemuicommon/newTsIndex';
@@ -282,7 +285,8 @@ export class NotificationStarterVm extends NotificationBaseVm implements INotifi
     if (isHidePanel) {
       // 拉起wantAgent后，保底逻辑收起通知面板
       this.hidePanel(true);
-      log.showInfo('HandleNtfPanelCollapseByWant. %{public}d %{public}s', params.cardVm.ntf.wantAgentInfo?.operationType, this.vmInjector.scene);
+      log.showInfo('HandleNtfPanelCollapseByWant. %{public}d %{public}s',
+        params.cardVm.ntf.wantAgentInfo?.operationType, this.vmInjector.scene);
     }
     if (params.cardVm.ntf.isAutoDelete) {
       if (params.cardVm.isPrivacy && params.groupNtf?.isNormalGroup()) {
@@ -294,7 +298,7 @@ export class NotificationStarterVm extends NotificationBaseVm implements INotifi
   }
 
   /**
-   * 通知拉起应用
+   * 通知拉起应用前需要检查当前是否为重载业务，如果是则不打开应用，并且提示用户
    * @returns true表示当前不打开应用
    */
   isExcludeForStartApp(params: NotificationStartWantAgentParams): boolean {
@@ -353,5 +357,6 @@ export class NotificationStarterVm extends NotificationBaseVm implements INotifi
         'ohos.params.launchReasonMessage': SystemuiConstants.NC_LAUNCH_REASON_MESSAGE,
       };
     }
+    log.showInfo(`want.parameters: ${JSON.stringify(params.triggerInfo)}`);
   }
 }

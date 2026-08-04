@@ -62,6 +62,11 @@ interface DeviceConfig {
 export const soundDeviceConfig: DeviceConfig = {
   deviceLayoutGroups: [
     {
+      id: AudioDeviceType.SPEAKER,
+      icon: $r('app.media.ic_device_matebook'),
+      label: $r('app.string.sound_output_device_local'),
+    },
+    {
       id: AudioDeviceType.BLUETOOTH_SCO,
       icon: $r('app.media.ic_device_soundx'),
       label: $r('app.string.sound_output_device_soundx'),

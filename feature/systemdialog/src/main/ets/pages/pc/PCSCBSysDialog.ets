@@ -332,7 +332,7 @@ struct Item {
   }
 
   private preProcessFromFoldDevice(): void {
-    if (!DeviceHelper.isBigScreenMachine()) {
+    if (!DeviceHelper.isSuperFoldMachine()) {
       return;
     }
     // 显示前获取当前折叠状态
@@ -390,7 +390,7 @@ struct Item {
   }
 
   private getRealHeight(): Length {
-    if (!DeviceHelper.isBigScreenMachine()) {
+    if (!DeviceHelper.isSuperFoldMachine()) {
       return this.rotateHeight;
     }
     if (this.isOrientationLandscape) {
@@ -400,7 +400,7 @@ struct Item {
   }
 
   private getRealWidth(): Length {
-    if (!DeviceHelper.isBigScreenMachine()) {
+    if (!DeviceHelper.isSuperFoldMachine()) {
       return this.rotateWidth;
     }
     if (this.isOrientationLandscape) {
@@ -478,7 +478,7 @@ struct Item {
       this.unregisterBackPressListener();
     }
 
-    if (DeviceHelper.isBigScreenMachine()) {
+    if (DeviceHelper.isSuperFoldMachine()) {
       // 注销折叠监听
       try {
         display.off('foldStatusChange', this.onFoldStatusChangeListener);
@@ -547,7 +547,7 @@ struct Item {
   }
 
   getBackgroundColor(): ResourceColor {
-    if (DeviceHelper.isBigScreenMachine() && !this.item?.want?.parameters?.isSetPcBgColorTransparent) {
+    if (DeviceHelper.isSuperFoldMachine() && !this.item?.want?.parameters?.isSetPcBgColorTransparent) {
       return $r('sys.color.ohos_id_color_mask_thin');
     }
     return Color.Transparent;

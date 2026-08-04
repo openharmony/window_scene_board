@@ -38,7 +38,7 @@ export class FoldExpandAnimUtils {
   // true for big fold product
   private static isLargeFoldProduct: boolean = DeviceHelper.isLargeInFoldProduct();
   // true for three fold product
-  public static isUltraScreenProduct: boolean = DeviceHelper.isUltraScreenProduct();
+  public static isThreeFoldProduct: boolean = DeviceHelper.isThreeFoldProduct();
 
   /**
    * Judge whether the large or small fold product

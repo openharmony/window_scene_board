@@ -31,6 +31,7 @@ import { AppIconTouchEvent } from '../../../../../../../main/ets/launchericon/vi
 import { AppItemInfo, editModeManager } from '../../../../../../../main/ets/TsIndex';
 import { AppIconData } from '../../../../../../../main/ets/launchericon/viewmodel/AppIconData';
 import { scbEventExclusiveManager } from '@ohos/windowscene';
+import { DeliverUtil } from '../../../../../../../main/ets/utils/DeliverUtil';
 import { AppIconMenuVm } from '../../../../../../../main/ets/launchericon/viewmodel/AppIconMenuVm';
 import { AppIconBadgeVm } from '../../../../../../../main/ets/launchericon/viewmodel/AppIconBadgeVm';
 import { AppIconBadgeEvent } from '../../../../../../../main/ets/launchericon/viewmodel/AppIconBadgeEvent';

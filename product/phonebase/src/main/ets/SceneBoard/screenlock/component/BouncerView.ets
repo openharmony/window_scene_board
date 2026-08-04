@@ -475,21 +475,21 @@ export struct BouncerView {
       log.showInfo(`changePsdTopMargin pad portrait  ${this.psdLayoutData.index}`);
       return;
     }
-    // 超大屏G态
-    if (DeviceHelper.isUltraScreenProduct() && DisplayUtils.isUltraScreenGStatus()) {
+    // 三折叠G态
+    if (DeviceHelper.isThreeFoldProduct() && DisplayUtils.isThreeFoldGStatus()) {
       if (!this.isDeviceLandscape) {
         this.deviceGridData =
           KeyBoardLayoutConstants.DEVICES_GRIDS.get(DeviceClassification.PSD_FOLD_EXPAND) as DevicesGrids;
         this.pinLayoutData = KeyBoardLayoutConstants.PIN_LAYOUT.get(DeviceClassification.PSD_FOLD_EXPAND) as PinLayout;
         this.psdLayoutData =
-          KeyBoardLayoutConstants.PSD_LAYOUT.get(DeviceClassification.PSD_ULTRA_SCREEN_G_PORTRAIT) as PassWordLayout;
+          KeyBoardLayoutConstants.PSD_LAYOUT.get(DeviceClassification.PSD_THREE_FOLD_G_PORTRAIT) as PassWordLayout;
       } else {
         this.deviceGridData =
-          KeyBoardLayoutConstants.DEVICES_GRIDS.get(DeviceClassification.PSD_ULTRA_SCREEN_G_HORIZONTAL) as DevicesGrids;
+          KeyBoardLayoutConstants.DEVICES_GRIDS.get(DeviceClassification.PSD_THREE_FOLD_G_HORIZONTAL) as DevicesGrids;
         this.pinLayoutData =
           KeyBoardLayoutConstants.PIN_LAYOUT.get(DeviceClassification.PSD_FOLD_EXPAND_HORIZONTAL) as PinLayout;
         this.psdLayoutData =
-          KeyBoardLayoutConstants.PSD_LAYOUT.get(DeviceClassification.PSD_ULTRA_SCREEN_G_HORIZONTAL) as PassWordLayout;
+          KeyBoardLayoutConstants.PSD_LAYOUT.get(DeviceClassification.PSD_THREE_FOLD_G_HORIZONTAL) as PassWordLayout;
       }
       log.showInfo(`changePsdTopMargin three fold G state ${this.psdLayoutData.index}`);
       return;
@@ -537,7 +537,7 @@ export struct BouncerView {
       }
     }
 
-    // 大屏幕机折叠态或其他
+    // 折叠机折叠态或其他
     this.pinLayoutData = KeyBoardLayoutConstants.PIN_LAYOUT.get(DeviceClassification.PSD_NO_FINGER) as PinLayout;
     this.deviceGridData =
       KeyBoardLayoutConstants.DEVICES_GRIDS.get(DeviceClassification.PSD_NO_FINGER) as DevicesGrids;

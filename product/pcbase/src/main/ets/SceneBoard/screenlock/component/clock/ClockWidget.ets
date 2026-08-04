@@ -100,6 +100,7 @@ export default struct ClockWidget {
     Column() {
       TimeView({
         dateTimeModel: this.dateTimeModel,
+        textAlign: TextAlign.Center,
         themeClockParam: this.themeClockParam,
         clockAnim: this.clockAnim,
         clockWidgetVD: this.clockWidgetVD,
@@ -129,11 +130,11 @@ export default struct ClockWidget {
           Stack() {
             this.clockBuilder(ClockStyleConst.CLOCK_WIDGE_OPAQUE)
 
-            Stack()
-              .useEffect(true)
-              .backgroundColor(this.isBrightWallPaper ? '#00000000' : ClockStyleConst.CLOCK_WIDGE_OPAQUE.fontColor)
-              .width('100%')
-              .height('100%')
+            // Stack()
+            //   .useEffect(true)
+            //   .backgroundColor(this.isBrightWallPaper ? '#00000000' : ClockStyleConst.CLOCK_WIDGE_OPAQUE.fontColor)
+            //   .width('100%')
+            //   .height('100%')
             Column() {
             }
             .width('100%')

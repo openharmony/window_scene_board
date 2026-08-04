@@ -507,6 +507,10 @@
             "attr":{
                 "priority":"translate"
             }
+        },
+        {
+            "name": "get_installed_bundle_list_reason",
+            "value": "需要应用列表权限"
         }
     ]
 }

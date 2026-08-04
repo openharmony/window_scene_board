@@ -21,6 +21,7 @@ import {
   AppItemInfo,
   AppStatus,
   CommonConstants,
+  DeliverUtil,
   ShortcutViewModel,
   StyleConstants
 } from '../../TsIndex';
@@ -108,6 +109,10 @@ export class AppIconResConfig implements AppIconResIface {
 
     if (itemInfo.appStatus === AppStatus.INSTALLED ||
       (itemInfo.appStatus === AppStatus.UPDATING && !iconData?.image) || !itemInfo.iconResource) {
+      if (DeliverUtil.isdeliverApp(itemInfo.intent) && CheckEmptyUtils.isEmpty(itemInfo.moduleName) &&
+        CheckEmptyUtils.isEmpty(itemInfo.abilityName)) {
+        return itemInfo.iconResource as string;
+      }
       return await this.loadIconResourceByCache(itemInfo);
     }
     return itemInfo.iconResource as string;
@@ -116,7 +121,7 @@ export class AppIconResConfig implements AppIconResIface {
   private async loadIconResourceByCache(itemInfo: AppItemInfo): Promise<image.PixelMap> {
     let iconSrc: image.PixelMap = await IconResourceManager.getInstance().getCombIcon(
       itemInfo.bundleName, itemInfo.moduleName, itemInfo.abilityName, itemInfo.appIndex, TAG,
-      false);
+      DeliverUtil.isSupportAppType(itemInfo.bundleName));
 
     if (CheckEmptyUtils.isEmptyPixelMap(iconSrc)) {
       // 如果获取到的PixelMap无效则重新获取一次
@@ -124,7 +129,7 @@ export class AppIconResConfig implements AppIconResIface {
       await IconResourceManager.getInstance().deleteIconResource(itemInfo.bundleName);
       iconSrc = await IconResourceManager.getInstance().getCombIcon(
         itemInfo.bundleName, itemInfo.moduleName, itemInfo.abilityName, itemInfo.appIndex, TAG,
-        false);
+        DeliverUtil.isSupportAppType(itemInfo.bundleName));
     }
     // iconSrc重试获取后仍然异常打点上报
     if (CheckEmptyUtils.isEmptyPixelMap(iconSrc)) {

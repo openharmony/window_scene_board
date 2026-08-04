@@ -21,17 +21,13 @@ import { SCBSceneContainerSession } from '../session/SCBSceneContainerSession';
 import { SCBSceneOrientation } from '../session/SCBSceneOrientation';
 import { SCBScreenSessionManager, SCBPropertyChangeReason,
   SCBRotateChangeReason } from '../../screen/session/SCBScreenSessionManager';
-import { ROTATION_TO_ORIENTATION, SCBSceneSessionManager, ScenePanelState,
-  THREE_ROTATION_TO_ORIENTATION } from '../session/SCBSceneSessionManager';
+import { ROTATION_TO_ORIENTATION, SCBSceneSessionManager, ScenePanelState } from '../session/SCBSceneSessionManager';
 import { LogDomain, LogHelper } from '@ohos/basicutils';
 import { HiSysEventUtil } from '@ohos/frameworkwrapper';
-import { SCBDividerParam } from '../session/SCBDividerParam';
-import { SCBSessionRect } from '../session/SCBSessionRect';
 import { SCBSceneSession } from '../session/SCBSceneSession';
 import sceneSessionManager from '@ohos.sceneSessionManager';
 import { SCBSystemSceneSession } from '../session/SCBSystemSceneSession';
 import { SCBSpecificSession } from '../session/SCBSpecificSession';
-import { WinLog, WinLogDomain } from '../../utils/WinLog';
 
 const TAG = 'SCBWindowRotateController';
 const log = LogHelper.getLogHelper(LogDomain.WINDOW, TAG);
@@ -70,7 +66,7 @@ export class SCBWindowRotateController {
     if (screenSession === undefined) {
       screenSession = SCBScreenSessionManager.getInstance().getMainScreenSession();
       if (screenSession === null || screenSession === undefined) {
-        WinLog.showError(WinLogDomain.WMS_ROTATION, '[isFullScreenRotatePolicy] screenSession is null.');
+        log.showInfo('[isFullScreenRotatePolicy] screenSession is null.');
         return false;
       }
     }
@@ -87,7 +83,7 @@ export class SCBWindowRotateController {
   public isDesktopRotatable(): boolean {
     const screenSession = SCBScreenSessionManager.getInstance().getMainScreenSession();
     if (screenSession === null || screenSession === undefined) {
-      WinLog.showInfo(WinLogDomain.WMS_ROTATION, '[isDesktopRotatable] screenSession is null.');
+      log.showInfo('[isDesktopRotatable] screenSession is null.');
       return false;
     }
     return screenSession.isRotateScreenPolicy() || this.isFullScreenRotatePolicy();
@@ -99,7 +95,7 @@ export class SCBWindowRotateController {
    * @param {func} Function
    */
   public registerWindowRotateChangeCallback(func: Function): void {
-    WinLog.showInfo(WinLogDomain.WMS_ROTATION, '[registerWindowRotateChangeCallback] register.');
+    log.showInfo('[registerWindowRotateChangeCallback] register.');
     this.windowRotateChangeCallback = func;
   }
 
@@ -107,7 +103,7 @@ export class SCBWindowRotateController {
    * unregister window rotate change callback
    */
   public unRegisterWindowRotateChangeCallback(): void {
-    WinLog.showInfo(WinLogDomain.WMS_ROTATION, '[unRegisterWindowRotateChangeCallback] unregiser');
+    log.showInfo('[unRegisterWindowRotateChangeCallback] unregiser');
     this.windowRotateChangeCallback = undefined;
   }
 
@@ -117,7 +113,7 @@ export class SCBWindowRotateController {
     if (this.windowRotateChangeCallback) {
       this.windowRotateChangeCallback(screenProperty, reason, needNotify);
     } else {
-      WinLog.showError(WinLogDomain.WMS_ROTATION, '[notifyWindowRotateChange] callback is null');
+      log.showInfo('[notifyWindowRotateChange] callback is null');
     }
   }
 
@@ -129,7 +125,7 @@ export class SCBWindowRotateController {
     if (this.beforeWindowRotateChangeCallback) {
       this.beforeWindowRotateChangeCallback();
     } else {
-      WinLog.showInfo(WinLogDomain.WMS_ROTATION, '[notifyBeforeWindowRotateChange] callback is null');
+      log.showInfo('[notifyBeforeWindowRotateChange] callback is null');
     }
   }
 
@@ -139,7 +135,7 @@ export class SCBWindowRotateController {
    * @param {func} Function
    */
   public registerStartSceneWithRotationIfNeedCallback(func: Function): void {
-    WinLog.showInfo(WinLogDomain.WMS_ROTATION, '[registerStartSceneWithRotationIfNeedCallback] register.');
+    log.showInfo('[registerStartSceneWithRotationIfNeedCallback] register.');
     this.startSceneWithRotationIfNeedCallback = func;
   }
 
@@ -147,7 +143,7 @@ export class SCBWindowRotateController {
    * unregister callback which start scene as the same time rotate if need
    */
   public unRegisterStartSceneWithRotationIfNeedCallback(): void {
-    WinLog.showInfo(WinLogDomain.WMS_ROTATION, '[unRegisterStartSceneWithRotationIfNeedCallback] unregister.');
+    log.showInfo('[unRegisterStartSceneWithRotationIfNeedCallback] unregister.');
     this.startSceneWithRotationIfNeedCallback = undefined;
   }
 
@@ -156,7 +152,7 @@ export class SCBWindowRotateController {
     if (this.startSceneWithRotationIfNeedCallback) {
       this.startSceneWithRotationIfNeedCallback(containerSession, needAnimation, isFromRecent, fromUser);
     } else {
-      WinLog.showError(WinLogDomain.WMS_ROTATION, '[notifyStartSceneWithRotationIfNeed] callback is null.');
+      log.showInfo('[notifyStartSceneWithRotationIfNeed] callback is null.');
     }
   }
 
@@ -173,12 +169,11 @@ export class SCBWindowRotateController {
   public windowRotateEntry(targetRotation: number, rotateReasonDescription: string,
     needAnimation: boolean = true, isForce: boolean = false,
     needNotify: boolean = true, ignoreSuspendRotate: boolean = false, isPageRotation: boolean = false): void {
-    WinLog.showInfo(WinLogDomain.WMS_ROTATION, `[windowRotateEntry] targetRotation: ${targetRotation}, ` +
-                 `rotateReasonDescription:${rotateReasonDescription} ` +
-                 `isPageRotation:${isPageRotation}`);
+    log.showInfo(`windowRotateEntry targetRotation: ${targetRotation}, rotateReasonDescription:${rotateReasonDescription} ` +
+      `isPageRotation:${isPageRotation}`);
     const screenSession = SCBScreenSessionManager.getInstance().getMainScreenSession();
     if (screenSession === null || screenSession === undefined) {
-      WinLog.showInfo(WinLogDomain.WMS_ROTATION, '[windowRotateEntry] screenSession is null.');
+      log.showInfo('[windowRotateEntry] screenSession is null.');
       return;
     }
     if (screenSession.isRotateScreenPolicy()) {
@@ -187,23 +182,22 @@ export class SCBWindowRotateController {
       return;
     }
     if (!ignoreSuspendRotate && screenSession.isSuspendRotate(rotateReasonDescription)) {
-      WinLog.showInfo(WinLogDomain.WMS_ROTATION, '[windowRotateEntry] rotate is disabled return.');
+      log.showInfo('[windowRotateEntry] rotate is disabled return.');
       return;
     }
     if (isForce) {
-      WinLog.showInfo(WinLogDomain.WMS_ROTATION, '[windowRotateEntry] force rotate');
+      log.showInfo('[windowRotateEntry] force rotate');
       this.rotateScreenToRotation(targetRotation, needAnimation, needNotify, rotateReasonDescription, screenSession, isPageRotation);
       return;
     }
     let curScreenRotation = screenSession.scbScreenProperty.rotation;
     if (targetRotation === curScreenRotation) {
-      WinLog.showInfo(WinLogDomain.WMS_ROTATION, '[windowRotateEntry] no need rotate with same rotation: ' + targetRotation);
+      log.showInfo('[windowRotateEntry] no need rotate with same rotation: ' + targetRotation);
       return;
     }
-    let needRotate = SCBSceneSessionManager.getInstance().isScreenNeedRotate(targetRotation,
-      curScreenRotation, screenSession.scbScreenProperty.screenId);
+    let needRotate = SCBSceneSessionManager.getInstance().isScreenNeedRotate(targetRotation, curScreenRotation, screenSession.scbScreenProperty.screenId);
     if (!needRotate) {
-      WinLog.showInfo(WinLogDomain.WMS_ROTATION, '[windowRotateEntry] screen no need rotate return');
+      log.showInfo('[windowRotateEntry] screen no need rotate return');
       return;
     }
     this.rotateScreenToRotation(targetRotation, needAnimation, needNotify, rotateReasonDescription, screenSession,
@@ -213,21 +207,17 @@ export class SCBWindowRotateController {
 
   private rotateScreenToRotation(rotation: number, needAnimation: boolean = true, needNotify: boolean = true,
     rotateReasonDescription: string, screenSession: SCBScreenSession, isPageRotation: boolean = false): void {
-    WinLog.showInfo(WinLogDomain.WMS_ROTATION, `[rotateScreenToRotation] rotate screen to: ${rotation}, ` + 
-                 `rotateReasonDescription: ${rotateReasonDescription} ` +
-                 `isPageRotation: ${isPageRotation}`);
+    log.showInfo(`[rotateScreenToRotation] rotate screen to: ${rotation}, rotateReasonDescription: ${rotateReasonDescription} isPageRotation: ${isPageRotation}`);
     this.notifyBeforeWindowRotateChange();
     AppStorage.setOrCreate('screenRotation', rotation);
     if (rotateReasonDescription === 'sensor rotation change') {
       let bundleName = SCBSceneSessionManager.getInstance().getContainerSessionList(screenSession.scbScreenProperty.screenId)
         .getTopActiveSession()?.primarySession?.sceneInfo.bundleName;
-      HiSysEventUtil.reportRotationChange(bundleName, screenSession.scbScreenProperty.rotation, rotation,
-        HiSysEventUtil.ROTATION_TYPE_SENSOR);
+      HiSysEventUtil.reportRotationChange(bundleName, screenSession.scbScreenProperty.rotation, rotation, HiSysEventUtil.ROTATION_TYPE_SENSOR);
     }
     let propertyAfter = screenSession.scbScreenProperty.getRotatedScreenProperty(rotation);
-    const reason = isPageRotation ? SCBPropertyChangeReason.PAGE_ROTATION :
-      (needAnimation ? SCBPropertyChangeReason.FOLD_SCREEN_ROTATION :
-        SCBPropertyChangeReason.FOLD_LANDSCAPE_START);
+    const reason = isPageRotation ? SCBPropertyChangeReason.PAGE_ROTATION : (needAnimation ? SCBPropertyChangeReason.FOLD_SCREEN_ROTATION :
+      SCBPropertyChangeReason.FOLD_LANDSCAPE_START);
     this.notifyWindowRotateChange(propertyAfter, reason, needNotify);
   }
 
@@ -246,7 +236,7 @@ export class SCBWindowRotateController {
    * @param {func} Function
    */
   public registerLandscapeStartScenePanelCallback(func: Function): void {
-    WinLog.showInfo(WinLogDomain.WMS_ROTATION, '[registerLandscapeStartScenePanelCallback] register.');
+    log.showInfo('[registerLandscapeStartScenePanelCallback] register.');
     this.landscapeStartScenePanelCallback = func;
   }
 
@@ -254,7 +244,7 @@ export class SCBWindowRotateController {
    * unRegister landscape start scenePanel callback
    */
   public unRegisterLandscapeStartScenePanelCallback(): void {
-    WinLog.showInfo(WinLogDomain.WMS_ROTATION, '[unRegisterLandscapeStartScenePanelCallback] unregister.');
+    log.showInfo('[unRegisterLandscapeStartScenePanelCallback] unregister.');
     this.landscapeStartScenePanelCallback = undefined;
   }
 
@@ -262,7 +252,7 @@ export class SCBWindowRotateController {
     if (this.landscapeStartScenePanelCallback) {
       this.landscapeStartScenePanelCallback(propertyAfter);
     } else {
-      WinLog.showError(WinLogDomain.WMS_ROTATION, '[updateScenePanelWhenLandscapeStart] callback is null.');
+      log.showInfo('[updateScenePanelWhenLandscapeStart] callback is null.');
     }
   }
 
@@ -309,7 +299,7 @@ export class SCBWindowRotateController {
       this.landscapeStartDesktopRotation = screenSession.scbScreenProperty.rotation;
     }
     let windowRotation = targetRotation;
-    WinLog.showInfo(WinLogDomain.WMS_ROTATION, `[sceneLandscapeStart] landScapeStartNotSync: ${this.landScapeStartNotSync}, ` +
+    log.showInfo(`[sceneLandscapeStart] landScapeStartNotSync: ${this.landScapeStartNotSync}, ` +
                  `landscapeStartFlag: ${this.landscapeStartFlag}`);
     if (!this.isFullScreenRotatePolicy()) {
       if (this.landScapeStartNotSync && this.landscapeStartFlag) {
@@ -322,7 +312,7 @@ export class SCBWindowRotateController {
     }
     let propertyAfter: SCBScreenProperty = screenProperty.getRotatedScreenProperty(windowRotation);
     let propertyNotify = screenSession.scbScreenProperty.getRotatedScreenProperty(targetRotation);
-    WinLog.showInfo(WinLogDomain.WMS_ROTATION, `[sceneLandscapeStart] begin screen rotate policy landscape start, ` + 
+    log.showInfo(`[sceneLandscapeStart] begin screen rotate policy landscape start, ` +
                  `targetRotation: ${targetRotation}, windowRotation: ${windowRotation}, ` + 
                  `currentRotation: ${this.landscapeStartDesktopRotation}, ` +
                  `scbScreenProperty.rotation: ${screenSession.scbScreenProperty.rotation}`);
@@ -358,11 +348,11 @@ export class SCBWindowRotateController {
   public landscapeStartSync(containerSession: SCBSceneContainerSession, screenProperty: SCBScreenProperty): void {
     let screenSession = SCBScreenSessionManager.getInstance().getScreenSession(screenProperty.screenId);
     if (screenSession === null || screenSession === undefined || this.landscapeStartBundleName !== containerSession.getBundleName()) {
-      WinLog.showError(WinLogDomain.WMS_ROTATION, '[landscapeStartSync] screenSession is null or error bundleName.');
+      log.showInfo('[landscapeStartSync] screenSession is null or error bundleName.');
       return;
     }
     let scenePanelState: ScenePanelState | undefined = AppStorage.get<ScenePanelState>('scenePanelState');
-    WinLog.showInfo(WinLogDomain.WMS_ROTATION, `[landscapeStartSync] begin screen rotate policy, ` + 
+    log.showInfo(`[landscapeStartSync] begin screen rotate policy, ` +
                  `landscape start sync Flag: ${this.landscapeStartFlag}, ` +
                  `landscapeStartRotation: ${this.landscapeStartRotation}, ` +
                  `currentRotation: ${screenSession.scbScreenProperty.rotation}, ` +
@@ -382,7 +372,7 @@ export class SCBWindowRotateController {
       this.landScapeStartNotSync = false;
       let newRequestedOrientation = containerSession.getContainerRequestOrientation();
       if (newRequestedOrientation !== this.landscapeStartSceneOrientation) {
-        WinLog.showInfo(WinLogDomain.WMS_ROTATION, `[landscapeStartSync] screen rotate policy landscape start window orientation from ` +
+        log.showInfo(`[landscapeStartSync] screen rotate policy landscape start window orientation from ` +
                      `${this.landscapeStartSceneOrientation}  to  ${newRequestedOrientation}`);
         this.notifyStartSceneWithRotationIfNeed(containerSession, true, false, true);
       }
@@ -397,7 +387,7 @@ export class SCBWindowRotateController {
   public isLandscapeStartInterrupt(): boolean {
     const screenSession = SCBScreenSessionManager.getInstance().getMainScreenSession();
     if (screenSession === null || screenSession === undefined) {
-      WinLog.showInfo(WinLogDomain.WMS_ROTATION, '[isLandscapeStartInterrupt] screenSession is null.');
+      log.showInfo('[isLandscapeStartInterrupt] screenSession is null.');
       return false;
     }
     return (screenSession.isRotateScreenPolicy() || this.isFullScreenRotatePolicy()) && this.landScapeStartNotSync;
@@ -407,7 +397,7 @@ export class SCBWindowRotateController {
   public isLandscapeStartNotSync(): boolean {
     const screenSession = SCBScreenSessionManager.getInstance().getMainScreenSession();
     if (screenSession === null || screenSession === undefined) {
-      WinLog.showInfo(WinLogDomain.WMS_ROTATION, '[isLandscapeStartNotSync] screenSession is null.');
+      log.showInfo('[isLandscapeStartNotSync] screenSession is null.');
       return false;
     }
     return (screenSession.isRotateScreenPolicy() || this.isFullScreenRotatePolicy()) && this.landscapeStartFlag && this.landScapeStartNotSync;
@@ -419,10 +409,10 @@ export class SCBWindowRotateController {
     let orientation: number = ROTATION_TO_ORIENTATION.get(screenProperty.rotation) ?? 0;
 
     if (orientation === undefined) {
-      WinLog.showInfo(WinLogDomain.WMS_ROTATION, '[notifyRotationChange] rotation is undefined');
+      log.showInfo('[notifyRotationChange] rotation is undefined');
       return undefined;
     }
-    WinLog.showInfo(WinLogDomain.WMS_ROTATION, `[notifyRotationChange] begin, type:${rotationChangeType},` + `orientation ${orientation}`);
+    log.showInfo(`[notifyRotationChange] begin, type:${rotationChangeType},` + `orientation ${orientation}`);
     let rotationChangeInfo: sceneSessionManager.RotationChangeInfo = {
       type: rotationChangeType,
       orientation: orientation,
@@ -447,24 +437,24 @@ export class SCBWindowRotateController {
   public updateRotationWindow(rotationWindow: Array<sceneSessionManager.RotationChangeResult> | void): void {
     if (rotationWindow === null || rotationWindow === undefined || typeof rotationWindow !== 'object' ||
         !Array.isArray(rotationWindow)) {
-      WinLog.showError(WinLogDomain.WMS_ROTATION, `[updateRotationWindow] rotationWindow is null.`);
+      log.showInfo(`[updateRotationWindow] rotationWindow is null.`);
       return;
     }
-    WinLog.showInfo(WinLogDomain.WMS_ROTATION, `[updateRotationWindow] size: ${rotationWindow.length}`);
+    log.showInfo(`[updateRotationWindow] size: ${rotationWindow.length}`);
     for (let i = 0; i < rotationWindow.length; i++) {
       let rotationResult = rotationWindow[i];
       let session: SCBSceneSession | SCBSpecificSession | SCBSystemSceneSession | null =
         SCBSceneSessionManager.getInstance().getSessionById(rotationResult.persistentId);
       if (session === null) {
-        WinLog.showError(WinLogDomain.WMS_ROTATION, `[updateRotationWindow] session null`);
+        log.showInfo(`[updateRotationWindow] session null`);
         return;
       }
       if (SCBWindowSceneConfig.getInstance().windowSceneConfig?.uiType === SCBConstants.UITYPE_PC ||
         (session instanceof SCBSceneSession && session.isPcAppInPad)) {
-        WinLog.showError(WinLogDomain.WMS_ROTATION, `[updateRotationWindow] not support pc`);
+        log.showInfo(`[updateRotationWindow] not support pc`);
         return;
       }
-      WinLog.showInfo(WinLogDomain.WMS_ROTATION, `[updateRotationWindow], rectType:${rotationResult.rectType}, ` +
+      log.showInfo(`[updateRotationWindow], rectType:${rotationResult.rectType}, ` +
                    `persistentId:${rotationResult.persistentId}, width:${rotationResult.windowRect.width_}, ` +
                    `height:${rotationResult.windowRect.height_}`);
       if (rotationResult.windowRect.width_ === 0 || rotationResult.windowRect.height_ === 0) {

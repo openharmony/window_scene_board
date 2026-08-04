@@ -1,0 +1,196 @@
+{
+  "layoutDescription": {
+    "pageCount": 6,
+    "row": 6,
+    "column": 4,
+    "maxPage": 18,
+    "maxForm": 80
+  },
+  "layoutInfo": [
+    {
+      "bundleName": "com.ohos.contacts",
+      "abilityName": "com.ohos.contacts.MainAbility",
+      "moduleName": "entry",
+      "container": -101,
+      "typeId": 0,
+      "column": 0
+    },
+    {
+      "bundleName": "com.ohos.mms",
+      "abilityName": "com.ohos.mms.MainAbility",
+      "moduleName": "entry",
+      "container": -101,
+      "typeId": 0,
+      "column": 1
+    },
+    {
+      "bundleName": "com.ohos.emergencycommunication",
+      "abilityName": "com.ohos.emergencycommunication.SOSEmergencyCallAbility",
+      "moduleName": "entry",
+      "container": -101,
+      "typeId": 0,
+      "column": 2
+    },
+    {
+      "bundleName": "com.ohos.maps.app",
+      "abilityName": "EntryAbility",
+      "moduleName": "phone",
+      "container": -101,
+      "typeId": 0,
+      "column": 3
+    },
+    {
+      "bundleName": "com.ohos.maps.app",
+      "abilityName": "MapCardAbility",
+      "moduleName": "entry",
+      "cardName": "MapWidget",
+      "formConfigAbility": "ability://EntryAbility",
+      "container": -100,
+      "isTransparent": true,
+      "typeId": 1,
+      "area": [
+        4,
+        6
+      ],
+      "page": 0,
+      "row": 0,
+      "column": 0
+    },
+    {
+      "bundleName": "com.ohos.totemweather",
+      "abilityName": "FormAbility",
+      "moduleName": "product",
+      "cardName": "ClockWeatherCard",
+      "formConfigAbility": "ability://com.ohos.totemweather.MainAbility",
+      "container": -100,
+      "cardDimension": 3,
+      "isTransparent": true,
+      "typeId": 1,
+      "area": [
+        4,
+        2
+      ],
+      "page": 1,
+      "row": 0,
+      "column": 0
+    },
+    {
+      "bundleName": "com.ohos.cloudmodeassistant",
+      "abilityName": "EntryFormAbility",
+      "moduleName": "entry",
+      "cardName": "cloudusercard",
+      "formConfigAbility": "EntryFormAbility",
+      "container": -100,
+      "cardDimension": 3,
+      "isTransparent": false,
+      "typeId": 1,
+      "area": [
+        4,
+        2
+      ],
+      "page": 1,
+      "row": 2,
+      "column": 0
+    },
+    {
+      "bundleName": "com.ohos.callsetting",
+      "abilityName": "com.ohos.callsetting.SatelliteFormAbility",
+      "moduleName": "default",
+      "cardName": "SatelliteWidgetCard",
+      "cardDimension": 2,
+      "container": -100,
+      "typeId": 1,
+      "area": [
+        2,
+        2
+      ],
+      "page": 1,
+      "row": 4,
+      "column": 0
+    },
+    {
+      "bundleName": "com.ohos.compass",
+      "abilityName": "EntryAbility",
+      "moduleName": "entry",
+      "container": -100,
+      "typeId": 0,
+      "area": [
+        1,
+        1
+      ],
+      "page": 1,
+      "row": 4,
+      "column": 2
+    },
+    {
+      "bundleName": "com.ohos.notepad",
+      "abilityName": "MainAbility",
+      "moduleName": "NotepadPhone",
+      "container": -100,
+      "typeId": 0,
+      "area": [
+        1,
+        1
+      ],
+      "page": 1,
+      "row": 4,
+      "column": 3
+    },
+    {
+      "bundleName": "com.ohos.settings",
+      "abilityName": "com.ohos.settings.MainAbility",
+      "moduleName": "phone_settings",
+      "container": -100,
+      "typeId": 0,
+      "area": [
+        1,
+        1
+      ],
+      "page": 1,
+      "row": 5,
+      "column": 2
+    },
+    {
+      "bundleName": "com.ohos.cloudmodeassistant",
+      "abilityName": "MainAbility",
+      "moduleName": "NotepadPhone",
+      "container": -100,
+      "typeId": 0,
+      "area": [
+        1,
+        1
+      ],
+      "page": 1,
+      "row": 5,
+      "column": 3
+    },
+    {
+      "bundleName": "com.ohos.betaclub",
+      "abilityName": "MainAbility",
+      "moduleName": "phone",
+      "container": -100,
+      "typeId": 0,
+      "area": [
+        1,
+        1
+      ],
+      "page": 2,
+      "row": 0,
+      "column": 0
+    },
+    {
+      "bundleName": "com.ohos.samplemanagement",
+      "abilityName": "MainAbility",
+      "moduleName": "entry",
+      "container": -100,
+      "typeId": 0,
+      "area": [
+        1,
+        1
+      ],
+      "page": 2,
+      "row": 0,
+      "column": 1
+    }
+  ]
+}

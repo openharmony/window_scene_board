@@ -28,16 +28,14 @@ import taskpool from '@ohos.taskpool';
 import { LogDomain, LogHelper } from '@ohos/basicutils/src/main/ets/utils/LogHelper';
 import { audio } from '@kit.AudioKit';
 
-
 const TAG = 'ScreenLockAVPlayerManager';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.KG, TAG);
 
 /**
  * 文件资源的路径
  */
-const REMIDE_AUDIO_BASE_PATH: string = '/sys_prod/variant/region_comm/china/';
-const SCREEN_LOCK_AUDIO_PATH: string = 'resource/media/audio/ui/Lock.ogg';
-const SCREEN_UNLOCK_AUDIO_PATH: string = 'resource/media/audio/ui/Unlock.ogg';
+const SCREEN_LOCK_AUDIO_PATH: string = 'lock.ogg';
+const SCREEN_UNLOCK_AUDIO_PATH: string = 'lock.ogg';
 
 /**
  * 锁屏提示音数据库字段 & 默认值
@@ -79,7 +77,6 @@ export default class ScreenLockAVPlayerManager {
     DataShareManager.getInstance().registerUserSettingsDataShareListener(SCREEN_LOCK_SOUNDS_ENABLE, () => {
       ScreenLockAVPlayerManager.handleScreenLockToneStatus();
     });
-
   }
 
   private static handleScreenLockToneStatus(): void {
@@ -117,7 +114,6 @@ export default class ScreenLockAVPlayerManager {
         lockStateInfo.isPageShow ? ToneType.LOCK_TONE : ToneType.UNLOCK_TONE);
     }
   };
-
 
   public static onScreenLockPageTypeListenerOff(): void {
     ScreenLockStateManager.getInstance().unRegisterObserver(ScreenLockAVPlayerManager.screenLockStateChangeListener);
@@ -163,45 +159,12 @@ export default class ScreenLockAVPlayerManager {
   }
 
   /**
-   * 播放提示音，在子线程播放
+   * 播放提示音
    *
    * @param audioPath
    */
   private static playAudio(audioPath: string): void {
-    ScreenLockAVPlayerManager.doTask(playScreenLockAudio, audioPath);
+    new ScreenLockPromptTone().playNtfAudio(audioPath);
   }
 
-  private static async doTask(func: Function, ...args: Object[]): Promise<Object | undefined> {
-    try {
-      const myTask = new taskpool.Task(func, ...args);
-      taskpool.execute(myTask, taskpool.Priority.MEDIUM)
-        .then((data) => {
-          return data;
-        })
-        .catch((error: Error) => {
-          log.error('taskpool execute try error', error);
-        });
-    } catch (e) {
-      log.error(`doTask error when execute ${func.name},`, e);
-    }
-    return undefined;
-  }
-}
-
-/**
- * 在子线程播放回调函数
- *
- * @param audioPath
- */
-function playScreenLockAudio(audioPath: string): void {
-  'use concurrent';
-  const TAG = 'SCBScreenLock-PlayScreenLockAudio';
-  const log: LogHelper = LogHelper.getLogHelper(LogDomain.KG, TAG);
-  const mScreenLockPromptTone = new ScreenLockPromptTone();
-  try {
-    mScreenLockPromptTone.playNtfAudio(audioPath);
-    log.showInfo('playNtfAudio try');
-  } catch (err) {
-    log.error(`playScreenLockAudio  error: ${err}`);
-  }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -74,6 +74,7 @@ import {
   NeedTrackSplitState,
 } from '@ohos/windowscene/src/main/ets/scene/session/SCBSceneContainerSession';
 import { AttributeUpdater } from '@kit.ArkUI';
+import { JSON } from '@kit.ArkTS';
 
 const TAG = 'SCBSceneContainer';
 const log = LogHelper.getLogHelper(LogDomain.SCB, TAG);
@@ -232,6 +233,12 @@ export struct SCBSceneContainer {
     } else if (this.isTouchDragHotArea(type, WindowDragHotAreaType.HOT_AREA_TYPT_LEFT)) {
       const rect = LayoutPolicyHelper.getInstance().getSplitInitialRect(this.screenProperty, this.dividerParam, true);
       positionX = rect.left.getVp() + MASK_POSITION_VALUE;
+      positionY = rect.top.getVp() + MASK_POSITION_VALUE;
+      width = rect.width.getVp() - MASK_POSITION_VALUE * 2;
+      height = rect.height.getVp() - MASK_POSITION_VALUE * 2;
+    } else if (this.isTouchDragHotArea(type, WindowDragHotAreaType.HOT_AREA_TYPT_RIGHT)) {
+      const rect = LayoutPolicyHelper.getInstance().getSplitInitialRect(this.screenProperty, this.dividerParam, true);
+      positionX = px2vp(this.screenProperty.width) - (rect.width.getVp() - MASK_POSITION_VALUE * 2);
       positionY = rect.top.getVp() + MASK_POSITION_VALUE;
       width = rect.width.getVp() - MASK_POSITION_VALUE * 2;
       height = rect.height.getVp() - MASK_POSITION_VALUE * 2;

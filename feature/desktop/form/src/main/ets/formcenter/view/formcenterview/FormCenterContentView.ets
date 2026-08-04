@@ -51,7 +51,7 @@ export struct FormCenterContentView {
   public mRecommendedCardList: CardItemInfo[] = [];
   public openHighIndexView: boolean = false;
   public style?: FormCenterViewStyle;
-  @State mViewData: ViewData = new ViewData();
+  @ObjectLink mViewData: ViewData;
   @State mAppInfoList: LazyDataSource<AppItemInfo> = new LazyDataSource<AppItemInfo>();
 
   build() {

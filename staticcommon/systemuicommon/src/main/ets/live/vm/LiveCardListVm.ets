@@ -36,6 +36,7 @@ import { ArkUIAdapter } from '../../utils/ArkUIAdapter';
 import { TrimLevel, ViewType } from '@ohos/frameworkwrapper';
 import { ViewManagerAdapter, ViewMgrPolicyViewCallback } from '../../adapter/ViewManagerAdapter';
 import { DeviceModeEnum } from '@ohos/commonconstants';
+import { OutdoorVm } from '../../vm/OutdoorVm';
 
 const TAG = 'LiveCardListVm';
 const log = LogHelper.getLogHelper(LogDomain.SYS_UI, TAG);
@@ -412,6 +413,10 @@ export class LiveCardListVm extends LiveBaseVm implements ILiveCardListVm {
   }
 
   private checkShouldAdd(live: LiveNotification): boolean {
+    if (!OutdoorVm.instance.isInOutdoorAppList(live)) {
+      log.showWarn(`Add faield, ${live.creatorBundleName} is not in OutdoorAppList`);
+      return false;
+    }
     if (this.liveList.includes(live)) {
       log.showWarn(`Add faield, duplicate live: ${live.hashCode}`);
       return false;

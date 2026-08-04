@@ -23,6 +23,7 @@ import bundleManager from '@ohos.bundle.bundleManager';
 import type { BusinessError } from '@ohos.base';
 import { TaskItem, TaskQueue, crossModuleCallUtil } from '@ohos/systemuicommon';
 import common from '@ohos.app.ability.common';
+import { OutdoorVm } from '@ohos/systemuicommon/src/main/ets/vm/OutdoorVm';
 
 // instrument ignore file
 const TAG = 'PhoneNotificationController';
@@ -65,13 +66,19 @@ export default class PhoneNotificationController {
       const ntfTitle = context.resourceManager.getStringByNameSync('low_battery_ntf_title');
       const ntfText = context.resourceManager.getStringByNameSync('low_battery_ntf_content', `${batterySoc}%`);
       const actionButtons: notificationManager.NotificationActionButton[] = [];
-      const ntfBtnText = context.resourceManager.getStringByNameSync('low_battery_ntf_btn_text');
-      const agent = await this.getWantAgent();
-      actionButtons.push({
-        title: ntfBtnText,
-        wantAgent: agent,
-      });
+      // 云端模式下不需要按钮
+      if (!OutdoorVm.instance.isInOutdoorMode) {
+        const ntfBtnText = context.resourceManager.getStringByNameSync('low_battery_ntf_btn_text');
+        const agent = await this.getWantAgent();
+        actionButtons.push({
+          title: ntfBtnText,
+          wantAgent: agent,
+        });
+      }
 
+      let array = context.resourceManager.getMediaByNameSync(Constants.LOW_BATTERY_NTF_ICON);
+      let res: image.ImageSource = image.createImageSource(array.buffer);
+      let smallIcon: image.PixelMap = await res.createPixelMap()
       const lowBatteryNtfRequest: notificationManager.NotificationRequest = {
         notificationSlotType: notificationManager.SlotType.SOCIAL_COMMUNICATION,
         id: Constants.LOW_BATTERY_NTF_ID,
@@ -83,10 +90,10 @@ export default class PhoneNotificationController {
           }
         },
         actionButtons,
-        smallIcon: this.smallIcon,
+        smallIcon: smallIcon,
         isAlertOnce,
         extraInfo: {
-          openharmony_custom_appname: ntfTitle
+          hw_custom_appname: ntfTitle
         }
       };
       await notificationManager.publish(lowBatteryNtfRequest);

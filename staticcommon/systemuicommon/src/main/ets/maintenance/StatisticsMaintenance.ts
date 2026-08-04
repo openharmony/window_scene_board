@@ -77,6 +77,10 @@ interface NtfNum {
   receiveNum: number;
   isShow: number[];
   soundDuration: number[];
+  deliverPlayTime: number[];
+  deliverStopTime: number[];
+  deliverSendPlayTime: number[];
+  deliverSendStopTime: number[];
   customSound: number[];
   ringSetting: number[];
   isProtected: number[];
@@ -589,7 +593,18 @@ export class StatisticsMaintenance extends MaintenanceRecord<StatisticsMaintenan
   }
 
   private getRingType(ntfNum: NtfNum, type: RemindType): number[] {
-    return ntfNum.ringTime;
+    switch (type) {
+      case RemindType.DELIVER_PLAY:
+        return ntfNum.deliverPlayTime;
+      case RemindType.DELIVER_STOP:
+        return ntfNum.deliverStopTime;
+      case RemindType.SEND_DELIVER_PLAY:
+        return ntfNum.deliverSendPlayTime;
+      case RemindType.SEND_DELIVER_STOP:
+        return ntfNum.deliverSendStopTime;
+      default:
+        return ntfNum.ringTime;
+    }
   }
 
   /**
@@ -644,6 +659,10 @@ export class StatisticsMaintenance extends MaintenanceRecord<StatisticsMaintenan
       receiveNum: 0,
       isShow: [],
       soundDuration: [],
+      deliverPlayTime: [],
+      deliverStopTime: [],
+      deliverSendPlayTime: [],
+      deliverSendStopTime: [],
       customSound: [],
       ringSetting: [],
       isProtected: [],
@@ -841,6 +860,10 @@ export class StatisticsMaintenance extends MaintenanceRecord<StatisticsMaintenan
           value.receiveNum,
           this.compressInfo(value.isShow),
           this.compressInfo(value.soundDuration),
+          this.getRelativelyTime(value.deliverPlayTime),
+          this.getRelativelyTime(value.deliverStopTime),
+          this.getRelativelyTime(value.deliverSendPlayTime),
+          this.getRelativelyTime(value.deliverSendStopTime),
           this.compressInfo(value.customSound),
           this.compressInfo(value.ringSetting),
           this.compressInfo(value.isProtected),

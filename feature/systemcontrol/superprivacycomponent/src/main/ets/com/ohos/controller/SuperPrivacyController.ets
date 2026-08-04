@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-// import superPrivacyManager from '@hms.security.superPrivacyManager';
+// import superPrivacyManager from '@ohos.security.superPrivacyManager';
 import Want from '@ohos.app.ability.Want';
 import { i18n } from '@kit.LocalizationKit';
 import { BusinessError } from '@kit.BasicServicesKit';

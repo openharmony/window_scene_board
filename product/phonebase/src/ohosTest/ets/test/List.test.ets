@@ -13,6 +13,15 @@
  * limitations under the License.
  */
 
+import AodTestSuite from '../../../../../../feature/aod/src/ohosTest/ets/test/List.test';
+import { AodRotationAdapterFactoryTest } from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/aod/adapter/AodRotationAdapterFactory.test';
+import { SmallWindowUtilTest } from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/aod/personalization/utils/SmallWindowUtil.test';
+import {
+  AodViewControllerFullScreenFolderTest
+} from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/aod/factory/viewcontroller/AodViewControllerFullScreenFolder.test';
+import {
+  AodViewControllerSmartStickerFolderTest
+} from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/aod/factory/viewcontroller/AodViewControllerSmartStickerFolder.test';
 import CommonTestSuite from '@ohos/launchercommon/src/ohosTest/ets/test/List.test';
 import ControlCenterTestSuite from '../../../../../../feature/controlcentercomponent/src/ohosTest/ets/test/List.test';
 import HotSpotComponentTestSuite from '../../../../../../feature/systemstatus/hotspotcomponent/src/ohosTest/ets/test/List.test';
@@ -62,7 +71,7 @@ import BatteryComponentTestSuite from '../../../../../../feature/systemstatus/ba
 import VolumepanelComponentTestSuite from '../../../../../../feature/volume/volumepanelcomponent/src/ohosTest/ets/test/List.test';
 import StatusBarComponentTestSuite from '../../../../../../feature/statusbarcomponent/src/ohosTest/ets/test/List.test';
 import WifiComponentTestSuite from '../../../../../../feature/systemstatus/wificomponent/src/ohosTest/ets/test/List.test';
-import HwCastTestSuite from '../../../../../../feature/systemcontrol/hcastcomponent/src/ohosTest/ets/test/List.test';
+import CastTestSuite from '../../../../../../feature/systemcontrol/hcastcomponent/src/ohosTest/ets/test/List.test';
 import SuperPrivacyTestSuite from '../../../../../../feature/systemcontrol/superprivacycomponent/src/ohosTest/ets/test/List.test';
 import SignalComponentTestSuite from '../../../../../../feature/systemstatus/signalcomponent/src/ohosTest/ets/test/List.test';
 import RingModeComponentTestSuite from '../../../../../../feature/systemstatus/ringmodecomponent/src/ohosTest/ets/test/List.test';
@@ -86,10 +95,13 @@ import InvokeAuthResultCallbackTest from 'sceneboard/src/ohosTest/ets/test/ets/s
 import InvokeFaceTest from 'sceneboard/src/ohosTest/ets/test/ets/service/exthome/executor/impl/InvokeFace.test';
 import ExtHomeServiceTest from 'sceneboard/src/ohosTest/ets/test/ets/service/exthome/ExtHomeService.test';
 
-import SCBGestureBackViewModelTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/gesturenavigation/viewmodel/SCBGestureBackViewModel.test';
+import SCBNaviBarProxyManagerTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/naviBar/SCBNaviBarProxyManager.test';
+import SCBNaviBarCallBackTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/naviBar/SCBNaviBarCallBack.test';
+ import SCBGestureBackViewModelTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/gesturenavigation/viewmodel/SCBGestureBackViewModel.test';
 import DebugCommandsUtilsTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/gesturenavigation/utils/DebugCommandsUtils.test';
 import GestureDockPullOutModelTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/gesturenavigation/model/GestureDockPullOutModel.test';
-import TextCodecTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/aiBar/util/TextCodec.test';
+import NaviBarSettingsDataMgrTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/naviBar/settings/preference/NaviBarSettingsDataMgr.test';
+import TextCodecTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/naviBar/util/TextCodec.test';
 import GestureDockAdapterTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/gestureDock/common/adapter/GestureDockAdapter.test';
 import GestureDockPreferenceMgrTest
   from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/gestureDock/common/preference/GestureDockPreferenceMgr.test';
@@ -132,7 +144,7 @@ import GestureDockAllAppsViewModelTest
   from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/gestureDock/dockallapps/viewmodel/GestureDockAllAppsViewModel.test';
 import GestureDockViewModelTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/gestureDock/dock/viewmodel/GestureDockViewModel.test';
 import AllAppsDataSourceTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/gestureDock/dockallapps/model/AllAppsDataSource.test';
-import FloatingNavigationManagerTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/aiBar/proxy/FloatingNavigationManager.test';
+import FloatingNavigationManagerTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/naviBar/proxy/FloatingNavigationManager.test';
 
 import FormClearUtilsTest from 'sceneboard/src/ohosTest/ets/test/ets/common/FormClearUtils.test';
 import BundleVerifyUtilsTest  from 'sceneboard/src/ohosTest/ets/test/ets/service/exthome/BundleVerifyUtils.test';
@@ -348,8 +360,8 @@ import { SoundComponentTestSuite } from '../../../../../../feature/systemcontrol
 import { multiWindowRssHelperTest } from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/scenemanager/multiwindow/MultiWindowRssHelper.test';
 import { MidSceneUtilsTest } from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/scenemanager/multiwindow/midscene/MidSceneUtilsTest.test';
 import PcModeTestSuite from '../../../../../../feature/pcmode/src/ohosTest/ets/test/List.test';
-import AIBarViewModelTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/aiBar/AIBarModel/AIBarViewModel.test';
-import AccessibilityUtilsTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/aiBar/util/AccessibilityUtils.test';
+import NAVIBarViewModelTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/naviBar/NAVIBarModel/NAVIBarViewModel.test';
+import AccessibilityUtilsTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/naviBar/util/AccessibilityUtils.test';
 import SwipeInwardControllerTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/touchboardgesture/SwipeInwardEvent.test';
 import TouchBoardSwipeInwardGestureManagerTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/touchboardgesture/SwipeInwardGestureManager.test';
 import FoldEffectTestSuite from '../../../../../../feature/foldeffect/src/ohosTest/ets/test/List.test';
@@ -369,10 +381,10 @@ import {
 import { FlashlightTipsModelTest } from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/screenlock/viewmodel/FlashlightTipsModelTest.test';
 import { TouchBoardGestureManagerTest } from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/touchboardgesture/TouchBoardGestureManagerTest.test';
 import { EditModeIconAbilityPhoneTest } from 'sceneboard/src/ohosTest/ets/test/ets/desktopedit/ability/EditModeIconAbilityPhone.test';
-import AIBarAnimateTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/aiBar/AIBarModel/AIBarAnimate.test';
-import AIBarClickBackgroundDataTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/aiBar/AIBarModel/AIBarClickBackgroundData.test'
-import AIBarDataTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/aiBar/AIBarModel/AIBarData.test';
-import AIBarViewDataTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/aiBar/AIBarModel/AlBarViewData.test';
+import NAVIBarAnimateTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/naviBar/NAVIBarModel/NAVIBarAnimate.test';
+import NAVIBarClickBackgroundDataTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/naviBar/NAVIBarModel/NAVIBarClickBackgroundData.test'
+import NAVIBarDataTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/naviBar/NAVIBarModel/NAVIBarData.test';
+import NAVIBarViewDataTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/naviBar/NAVIBarModel/NAVIBarViewData.test';
 import {
   AnimationParam1Test,
   DialClockParamTest,
@@ -401,10 +413,10 @@ import FileUtilTest from 'sceneboard/src/ohosTest/ets/test/ets/intents/utils/Fil
 // import DesktopInformationReporterTest from './ets/SceneBoard/desktopReporter/DesktopInformationReporter.test';
 import GestureDockMethodImplTest from 'sceneboard/src/ohosTest/ets/test/ets/backup/impl/GestureDockMethodImpl.test';
 import SCBSceneManagementOnPhoneTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/scenemanager/SCBSceneManagementOnPhoneTest.test';
-import ThreeButtonUpgradeDSExtAbilityTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/aiBar/ability/ThreeButtonUpgradeDSExtAbility.test';
-import ThreeButtonUpgradeUIExtAbilityTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/aiBar/ability/ThreeButtonUpgradeUIExtAbility.test';
-import ThreeButtonUpgradeViewModelTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/aiBar/AIBarModel/ThreeButtonUpgradeViewModel.test';
-import { AodRotationAdapterUltraScreenTest } from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/aod/adapter/AodRotationAdapterUltraScreen.test';
+import ThreeButtonUpgradeDSExtAbilityTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/naviBar/ability/ThreeButtonUpgradeDSExtAbility.test';
+import ThreeButtonUpgradeUIExtAbilityTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/naviBar/ability/ThreeButtonUpgradeUIExtAbility.test';
+import ThreeButtonUpgradeViewModelTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/naviBar/NAVIBarModel/ThreeButtonUpgradeViewModel.test';
+import { AodRotationAdapterThreeFoldTest } from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/aod/adapter/AodRotationAdapterThreeFold.test';
 import SCBRotateUtilsTest from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/scenemanager/utils/SCBRotateUtilsTest.test';
 import MidSceneDraggingEventHandlerTest
   from 'sceneboard/src/ohosTest/ets/test/ets/SceneBoard/scenemanager/multiwindow/midsceneforpad/MidSceneDraggingEventHandlerTest.test';
@@ -456,7 +468,7 @@ export default function testsuite() {
   MultiWindowTestSuite();
   LandscapeWindowTestSuite();
   FreeformSceneTestSuite();
-  HwCastTestSuite();
+  CastTestSuite();
   SuperPrivacyTestSuite();
   ControlCenterTestSuite();
   AirplaneComponentTestSuite();
@@ -648,7 +660,7 @@ export function PhoneAodSuite() {
   OuterClockParamTest();
   AodWindowTest();
   AodPreviewImageManagerTest();
-  AodRotationAdapterUltraScreenTest();
+  AodRotationAdapterThreeFoldTest();
   AodViewControllerOuterDigitalClockTest();
 }
 
@@ -737,20 +749,19 @@ export function LauncherNavigationTestSuite() {
   DebugCommandsUtilsTest();
   SCBGestureBackViewModelTest();
   SCBGestureNavBarViewModelTest();
-  //aiBar
-  SCBAiBarProxyManagerTest();
-  SCBAiBarCallBackTest();
-  AiBarServiceTest();
+  //naviBar
+  SCBNaviBarProxyManagerTest();
+   SCBNaviBarCallBackTest();
   PadBackGestureModelTest();
   PadBackEventViewModelTest();
-  AIBarAnimateTest();
-  AIBarClickBackgroundDataTest();
-  AIBarDataTest();
-  AiBarSettingsDataMgrTest();
-  AIBarViewModelTest();
+  NAVIBarAnimateTest();
+  NAVIBarClickBackgroundDataTest();
+  NAVIBarDataTest();
+  NaviBarSettingsDataMgrTest();
+  NAVIBarViewModelTest();
   TextCodecTest();
   AccessibilityUtilsTest();
-  AIBarViewDataTest();
+  NAVIBarViewDataTest();
   ThreeButtonUpgradeDSExtAbilityTest();
   ThreeButtonUpgradeUIExtAbilityTest();
   ThreeButtonUpgradeViewModelTest();
@@ -763,7 +774,7 @@ export function PhoneSystemUISuite() {
   BatteryComponentTestSuite();
   StatusBarComponentTestSuite();
   WifiComponentTestSuite();
-  HuaweiShareComponentTestSuite();
+  OhosShareComponentTestSuite();
   SignalComponentTestSuite();
 }
 

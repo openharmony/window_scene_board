@@ -24,7 +24,9 @@ import {
 import { GlobalContext, DownloadStatusChangeEvent, HiSysEventUtil } from '@ohos/frameworkwrapper';
 import {
   AppItemInfo,
+  AppReserveType,
   AppStatus,
+  DeliverUtil,
   DockItemInfo,
   EventConstants,
   FolderAppItemInfo,
@@ -57,7 +59,7 @@ export const NOT_HARMONY_FOLDERNAME = '${not_harmony_apps}';
 
 export class NotHarmonyUtil {
   public static readonly NOT_HARMONY_FOLDER_KEY_NAME_FOR_INTENT: string = 'NotHarmonyFolder';
-  //判断未OpenHarmony化图标的点亮状态字段，1：点亮 0：置灰
+  //判断未鸿蒙化图标的点亮状态字段，1：点亮 0：置灰
   public static readonly NOT_HARMONY_APP_MASK_STATE: string = 'maskState';
   public static readonly APP_TYPE: string = 'appType';
   public static readonly LIGHT_DATA: string = 'lightData';
@@ -100,7 +102,7 @@ export class NotHarmonyUtil {
     //文件夹元素数量≤0、非定制文件夹内元素数量为1时返回True
     let shouldRelease: boolean =
       appsLength <= 0 || (appsLength === CommonConstants.FOLDER_APP_VALUE && !NotHarmonyUtil.isNotHarmonyFolderById(folderId));
-    //未OpenHarmony化文内且剩余元素为1，且为已安装状态时返回true
+    //未鸿蒙化文内且剩余元素为1，且为已安装状态时返回true
     if (NotHarmonyUtil.isNotHarmonyFolderById(folderId) && appsLength === 1) {
       shouldRelease = gridLayout?.[0]?.appStatus === AppStatus.INSTALLED;
     }
@@ -125,7 +127,7 @@ export class NotHarmonyUtil {
   /**
    * 点亮&去除点亮桌面的图标
    *
-   * @param relationMap 未OpenHarmony化文件夹中应用列表map
+   * @param relationMap 未鸿蒙化文件夹中应用列表map
    */
   static lightingNotHarmonyAppIcons(relationMap: Map<string, boolean>, publicTestRelationMap: Map<string, boolean>): void {
     if ((!relationMap || relationMap.size === 0) && (!publicTestRelationMap || publicTestRelationMap.size === 0)) {
@@ -231,14 +233,19 @@ export class NotHarmonyUtil {
     paras.bundleName = desktopItemInfo.bundleName;
     if (relationMap.get(desktopItemInfo.bundleName)) {
       intentMap.set(NotHarmonyUtil.NOT_HARMONY_APP_MASK_STATE, 1);
+      intentMap.set(NotHarmonyUtil.APP_TYPE, AppReserveType.THIRD);
       intentMap.set(NotHarmonyUtil.LIGHT_DATA, new Date().getTime().toString());
       HiSysEventUtil.reportLightIconInNotHarmonyFolder(paras);
     } else if (publicTestRelationMap.get(desktopItemInfo.bundleName)) {
       intentMap.set(NotHarmonyUtil.NOT_HARMONY_APP_MASK_STATE, 1);
+      intentMap.set(NotHarmonyUtil.APP_TYPE, AppReserveType.TASTE_FRESH);
       intentMap.set(NotHarmonyUtil.LIGHT_DATA, new Date().getTime().toString());
       HiSysEventUtil.reportLightIconInNotHarmonyFolder(paras);
     } else {
       intentMap.set(NotHarmonyUtil.NOT_HARMONY_APP_MASK_STATE, 0);
+      if (intentMap.get(NotHarmonyUtil.APP_TYPE) === AppReserveType.TASTE_FRESH) {
+        intentMap.set(NotHarmonyUtil.APP_TYPE, AppReserveType.THIRD);
+      }
     }
     // 保存数据入库和缓存
     let intentStr: string = CommonUtils.mapToJonStr(intentMap);
@@ -260,9 +267,9 @@ export class NotHarmonyUtil {
   }
 
   /**
-   * 点亮未OpenHarmony化应用文件夹中的图标： 目前采用的方式是全量刷新
+   * 点亮未鸿蒙化应用文件夹中的图标： 目前采用的方式是全量刷新
    *
-   * @param relationMap 未OpenHarmony化文件夹中应用列表map
+   * @param relationMap 未鸿蒙化文件夹中应用列表map
    */
   static refreshNotHarmonyFolderPosition(relationMap: Map<string, boolean>, publicTestRelationMap: Map<string, boolean>): void {
     if ((relationMap.size === 0 && publicTestRelationMap.size === 0) || !NotHarmonyUtil.mNotHarmonyFolderId) {
@@ -296,12 +303,19 @@ export class NotHarmonyUtil {
   /**
    * 点亮桌面（非dock)区文件夹中的图标
    *
-   * @param relationMap 未OpenHarmony化文件夹中应用列表map
+   * @param relationMap 未鸿蒙化文件夹中应用列表map
    */
   private static refreshNotHarmonyFolderInDesktop(folderItem: GridLayoutItemInfo,
     relationMap: Map<string, boolean>, publicTestRelationMap: Map<string, boolean>): void {
     let folderAppList: GridLayoutItemInfo[] = NotHarmonyUtil.refreshNotHarmonyFolderAppList(relationMap, publicTestRelationMap, folderItem);
     NotHarmonyUtil.updateFolderAppLocation(folderAppList);
+    FolderLayoutCacheManager.getInstance().updateFolderItemLayoutInfoByFolderId(
+      folderItem.folderId ?? '',
+      DeliverUtil.translateFolderLayout(folderAppList),
+      folderAppList,
+      TAG,
+      true
+    );
     const openFolderId: string = FolderManager.getInstance().getOpenFolderId();
     if (openFolderId === this.mNotHarmonyFolderId) {
       FolderDataModelManager.getInstance().getSwiperController()?.changeIndex(0, false);
@@ -311,7 +325,7 @@ export class NotHarmonyUtil {
   /**
    * 点亮dock区文件夹中的图标
    *
-   * @param relationMap 未OpenHarmony化文件夹中应用列表map
+   * @param relationMap 未鸿蒙化文件夹中应用列表map
    */
   private static refreshNotHarmonyFolderInDock(relationMap: Map<string, boolean>, publicTestRelationMap: Map<string, boolean>): void {
     let residentList: Array<DockItemInfo> = ResidentLayoutCacheMgr.getInstance().getAllDockItems();
@@ -327,6 +341,7 @@ export class NotHarmonyUtil {
     let folderAppList: GridLayoutItemInfo[] = NotHarmonyUtil.refreshNotHarmonyFolderAppList(relationMap, publicTestRelationMap, dockFolderItemInfo);
     NotHarmonyUtil.updateFolderAppLocation(folderAppList);
 
+    dockFolderItemInfo.layoutInfo = DeliverUtil.translateFolderLayout(folderAppList);
     const folderMgr: FolderManager = FolderManager.getInstance()
     const openFolderId: string = folderMgr.getOpenFolderId();
     if (openFolderId === this.mNotHarmonyFolderId) {
@@ -395,11 +410,11 @@ export class NotHarmonyUtil {
     let appType: number = CommonUtils.jsonStrToMap(item.intent).get(NotHarmonyUtil.APP_TYPE) as number;
     let maskState: number =
       CommonUtils.jsonStrToMap(item.intent).get(NotHarmonyUtil.NOT_HARMONY_APP_MASK_STATE) as number;
-    return false;
+    return appType === AppReserveType.ENTERPRISE || (appType === AppReserveType.TASTE_FRESH && maskState === 1);
   }
 
   /**
-   * 判断未OpenHarmony化的item是否满足点亮条件
+   * 判断未鸿蒙化的item是否满足点亮条件
    *
    * @param item 应用item
    * @returns true 是否满足点亮条件
@@ -410,6 +425,9 @@ export class NotHarmonyUtil {
     }
     let intentMap: Map<string, Object> = CommonUtils.jsonStrToMap(item.intent);
     let installSource: string = intentMap.get(NotHarmonyUtil.INSTALL_SOURCE) as string;
+    if (installSource === DeliverUtil.DELIVER_APPSTORE_PKG || installSource === DeliverUtil.APP_PKG) {
+      return true;
+    }
     if (intentMap.get(NotHarmonyUtil.NOT_HARMONY_APP_MASK_STATE) === 1) {
       return true;
     }
@@ -417,7 +435,7 @@ export class NotHarmonyUtil {
   }
 
   /**
-   * 判断未OpenHarmony化的item是否满足加待下载角标条件
+   * 判断未鸿蒙化的item是否满足加待下载角标条件
    *
    * @param item 应用item
    * @returns true 需要添加待下载角标条件
@@ -428,8 +446,10 @@ export class NotHarmonyUtil {
     }
     let intentMap: Map<string, Object> = CommonUtils.jsonStrToMap(item.intent);
     let installSource: string = intentMap.get(NotHarmonyUtil.INSTALL_SOURCE) as string;
-    if (intentMap.get(NotHarmonyUtil.NOT_HARMONY_APP_MASK_STATE) === 1) {
-      return true;
+    if (installSource !== DeliverUtil.DELIVER_APPSTORE_PKG && installSource !== DeliverUtil.APP_PKG) {
+      if (intentMap.get(NotHarmonyUtil.NOT_HARMONY_APP_MASK_STATE) === 1) {
+        return true;
+      }
     }
     return false;
   }
@@ -457,7 +477,7 @@ export class NotHarmonyUtil {
   }
 
   /**
-   * 查询并点亮未OpenHarmony化可出入湖应用
+   * 查询并点亮未鸿蒙化可出应用
    *
    * @param gridLayoutItemInfoList 未安装应用信息info
    */
@@ -534,11 +554,13 @@ export class NotHarmonyUtil {
       let maskState = intentMap.get(NotHarmonyUtil.NOT_HARMONY_APP_MASK_STATE) as number;
       log.showInfo('wait for harmony app, bundleName = %{public}s , installSource = %{public}s maskState = %{public}d',
         appItemInfo.bundleName, installSource, maskState);
-      if (!maskState) {
-        pkgNameArr.push(appItemInfo.bundleName);
-      } else if (maskState === 1 && queryBeforePkgNames.includes(appItemInfo.bundleName)) {
-        pkgNameArr.push(appItemInfo.bundleName);
-        lightBeforeBundleNames.push(appItemInfo.bundleName);
+      if (installSource !== DeliverUtil.DELIVER_APPSTORE_PKG && installSource !== DeliverUtil.APP_PKG) {
+        if (!maskState) {
+          pkgNameArr.push(appItemInfo.bundleName);
+        } else if (maskState === 1 && queryBeforePkgNames.includes(appItemInfo.bundleName)) {
+          pkgNameArr.push(appItemInfo.bundleName);
+          lightBeforeBundleNames.push(appItemInfo.bundleName);
+        }
       }
     });
     return result;

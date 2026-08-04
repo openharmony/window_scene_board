@@ -447,7 +447,7 @@ export class EditModeUtils {
   }
 
   /**
-   * 是否为大大屏幕机产品展开态OR半展开态
+   * 是否为大折叠机产品展开态OR半展开态
    *
    * @returns true是，false不是
    */

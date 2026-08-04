@@ -130,6 +130,7 @@ export class EventConstants {
   // gesture navigation events
   public static EVENT_NAVIGATOR_BAR_STATUS_CHANGE = 'usual.event.NAVIGATOR_BAR_STATUS_CHANGE';
 
+  public static EVENT_NAVI_BAR_STATUS_CHANGE = 'usual.event.NAVI_BAR_STATUS_CHANGE';
   public static SYSTEM_BAR_CHANGE = 'usual.event.SYSTEM_BAR_CHANGE';
   public static EVENT_APP_DOCK_VISIBILITY_CHANGE = 'usual.event.APP_DOCK_VISIBILITY_CHANGE';
   public static EVENT_GESTURE_NAVIGATION_HIDE_TEXT_INPUT = 'usual.event.GESTURE_NAVIGATION_HIDE_TEXT_INPUT';
@@ -168,6 +169,7 @@ export class EventConstants {
 
   // outer card events
   public static EVENT_REQUEST_OUTER_CARD_DELETE = 'launcher.event.EVENT_REQUEST_OUTER_CARD_DELETE';
+  public static EVENT_REQUEST_OUTER_AI_CARD_DELETE = 'launcher.event.EVENT_REQUEST_OUTER_AI_CARD_DELETE';
   public static EVENT_REQUEST_OUTER_MENU_CLOSE = 'launcher.event.EVENT_REQUEST_OUTER_MENU_CLOSE';
   public static EVENT_REQUEST_OUTER_MENU_OPEN = 'launcher.event.EVENT_REQUEST_OUTER_MENU_OPEN';
   public static EVENT_REQUEST_OUTER_CARD_DRAG_END = 'launcher.event.EVENT_REQUEST_OUTER_CARD_DRAG_END';
@@ -254,7 +256,7 @@ export class EventConstants {
   public static EVENT_CHANGE_DESKTOP_DISPLAY_COUNT = 'launcher.event.CHANGE_DESKTOP_DISPLAY_COUNT';
 
   //super fold status change
-  public static EVENT_BIG_SCREEN_STATUS_CHANGE = 'launcher.event.super_fold_status_change';
+  public static EVENT_SUPER_FOLD_STATUS_CHANGE = 'launcher.event.super_fold_status_change';
 
   // 编辑模式切换 通知动画事件
   public static EVENT_CHANGE_DESKTOP_MODE_ANIMATE = 'launcher.event.CHANGE_DESKTOP_MODE_ANIMATE';
@@ -275,7 +277,7 @@ export class EventConstants {
   public static EVENT_OPEN_ICON_EDIT_PAGE = 'launcher.event.OPEN_ICON_EDIT_PAGE';
 
   // 更新桌面中轴区大小
-  public static EVENT_BIG_SCREEN_CONFIG_CHANGE = 'launcher.event.super.fold.config.change';
+  public static EVENT_SUPER_FOLD_CONFIG_CHANGE = 'launcher.event.super.fold.config.change';
 
   // change desktop focus event
   public static EVENT_REQUEST_DESKTOP_FOCUS_CHANGE = 'launcher.event.DESKTOP_FOCUS_CHANGE';
@@ -354,7 +356,7 @@ export class EventConstants {
   public static EVENT_ICON_RESOURCE_REFRESH = 'launcher.event.EVENT_ICON_RESOURCE_REFRESH';
   // 打断翻页滑动
   public static EVENT_BREAK_SLIDE_SWIPER_PAGE = 'launcher.event.BREAK_SLIDE_SWIPER_PAGE';
-  // 超大屏桌面开合更新屏幕数据
+  // 三折叠桌面开合更新屏幕数据
   public static EVENT_UPDATE_SCREEN_DATA = 'launcher.event.UPDATE_SCREEN_DATA';
   // 切换主题时对首页所有大文件截图
   public static EVENT_CHANGE_THEME_BIG_FOLDER_PIC = 'launcher.event.CHANGE_THEME_BIG_FOLDER_PIC';
@@ -369,6 +371,7 @@ export class EventConstants {
    */
   public static EVENT_FOLDER_ADD_SHEET_REQUEST_OPEN = 'EVENT_FOLDER_ADD_SHEET_REQUEST_OPEN';
   public static EVENT_FOLDER_ADD_SHEET_REQUEST_CLOSE = 'EVENT_FOLDER_ADD_SHEET_REQUEST_CLOSE';
+  public static EVENT_AI_CARDNODE_UPDATE = 'EVENT_AI_CARDNODE_UPDATE';
 };
 
 export default EventConstants;

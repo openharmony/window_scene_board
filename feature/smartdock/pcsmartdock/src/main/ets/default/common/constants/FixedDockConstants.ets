@@ -114,9 +114,9 @@ export class FixedDockResource {
   public static readonly FRAME_BACKGROUND_DARK_COLOR = '#1affffff';
   public static readonly FRAME_BACKGROUND_LIGHT_COLOR = '#1a000000';
 
-  public static readonly HOVER_ENTER_DOCK_DELAY_TIME_PREVIEW = 500; // 首次进入dock, hover出preview窗的等待时长
+  public static readonly HOVER_ENTER_DOCK_DELAY_TIME_PREVIEW = 0; // 首次进入dock, hover出preview窗的等待时长
   public static readonly HOVER_ENTER_DELAY_TIME_TIPS = 1000; // 进入dock，hover出tips提示的等待时长
-  public static readonly HOVER_ENTER_DELAY_TIME_PREVIEW = 200; // dock栏hover进图标，呼出preview窗的等待时长
+  public static readonly HOVER_ENTER_DELAY_TIME_PREVIEW = 0; // dock栏hover进图标，呼出preview窗的等待时长
   public static readonly HOVER_EXIT_DELAY_TIME_PREVIEW = 225; // 退出dock时，preview窗 & tips窗消失时长
   public static readonly HOVER_EXIT_DELAY_TIME_TIPS = 0; // tips窗消失延长时间
   public static readonly HOVER_PREVIEW_SHOW_ANIM_DURATION = 200; // preview窗显示动效时长

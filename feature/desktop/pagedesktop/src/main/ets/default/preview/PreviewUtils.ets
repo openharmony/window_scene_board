@@ -38,6 +38,10 @@ export class PreviewUtils {
     return str === undefined || str === null || str.trim().length === 0;
   }
 
+  public static isVoiceAbilityForm(bundleName: string, abilityName: string): boolean {
+    return false;
+  }
+
   public static isFormSupportShadow(formItem: GridLayoutItemInfo): boolean {
     return DeviceHelper.isBarPhone() && !formItem.isTransparent;
   }

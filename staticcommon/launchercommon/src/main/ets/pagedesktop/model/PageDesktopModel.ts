@@ -1,5 +1,5 @@
 /**
- * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) 2021-2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -36,7 +36,6 @@ import {
 } from '@ohos/frameworkwrapper';
 import { } from '@ohos/componentanimator';
 import { ItemUtils, desktopUtil, } from '@ohos/componenthelper';
-import { SCBConstants, } from '@ohos/commonconstants';
 import { SCBTransitionManager, SCBSceneSessionManager, launcherStatusUtil, } from '@ohos/windowscene';
 import { GridOccupyStatusEnum, GridOccupyStatus, } from '@ohos/componentdrag';
 import type { AppData, SCBTransitionController, AppInFolderInfo } from '@ohos/windowscene';
@@ -58,6 +57,7 @@ import {
   LayoutDescription,
   DesktopModeManager,
   LauncherLayoutCacheUtil,
+  DeliverUtil,
   FormLayoutCacheManager,
   ResidentLayoutCacheMgr,
   RecentLayoutCacheMgr,
@@ -230,7 +230,7 @@ export class PageDesktopModel extends SingleBase {
       log.showInfo(`deleteBlankPageFromLayoutInfo, page ${page} is home page`);
       return false;
     }
-    if (DeviceHelper.isBigScreenMachine()) {
+    if (DeviceHelper.isSuperFoldMachine()) {
       return false;
     }
     let launcherLayoutCache: LaunchLayoutCacheManager = LaunchLayoutCacheManager.getInstance();
@@ -756,9 +756,9 @@ export class PageDesktopModel extends SingleBase {
       exitInfo.iconRect.right = centerOfWidth + outerStackWidth;
       sceneContainerSession.companionIconInfo.iconRadius *= outerStackExitPosScale;
     }
-    if (exitInfo.iconRect?.left === 0 &&
+    if (iconId.includes('com.ohos.suggestion') && exitInfo.iconRect?.left === 0 &&
       exitInfo.iconRect?.top === 0) {
-      // 且获取位置为0,0,0,0
+      // iconId包含语音助手建议包名，且获取位置为0,0,0,0,改变语音助手建议的iconId尝试获取
       let oobeExitInfo = this.getOObeIconRect(exitInfo, sceneContainerSession);
       return oobeExitInfo as AppExitLocationInfo;
     }
@@ -814,7 +814,7 @@ export class PageDesktopModel extends SingleBase {
       return appExitInfo;
     }
     const isOpenFolder: boolean = FolderManager.getInstance().isFolderOpen();
-    if (!isOpenFolder && !this.isFromSuggestion(companionIconInfo) &&
+    if (!isOpenFolder && !this.isFromCardSuggestion(companionIconInfo) &&
     this.isInDock(companionIconInfo?.bundleName, companionIconInfo?.abilityName, companionIconInfo?.appIndex, companionIconInfo?.shortcutId)) {
       log.showInfo(TAG, `is enter isInDock`);
       appExitInfo.isInScreen = true;
@@ -824,10 +824,9 @@ export class PageDesktopModel extends SingleBase {
     return appExitInfo;
   }
 
-  private isFromSuggestion(companionIconInfo: CompanionIconInfo): boolean {
-    return (companionIconInfo?.startAppType === StartType.AI_SUGGESTION_APP ||
-      (companionIconInfo?.startAppType === StartType.CARD && !CheckEmptyUtils.isEmpty(companionIconInfo.extraId) &&
-        !Number.isNaN(companionIconInfo.extraId)));
+  private isFromCardSuggestion(companionIconInfo: CompanionIconInfo): boolean {
+    return (companionIconInfo?.startAppType === StartType.CARD && !CheckEmptyUtils.isEmpty(companionIconInfo.extraId) &&
+      !Number.isNaN(companionIconInfo.extraId));
   }
 
   /**
@@ -860,7 +859,12 @@ export class PageDesktopModel extends SingleBase {
   }
 
   private getIconRectInfo(companionIconInfo: CompanionIconInfo, isInScreen: boolean, iconId: string): RectInfo | null {
+    // 正式商用版本上定制文件夹中不显示克隆应用与应用应用，因此需要定制处理
     const folderId: string = FolderManager.getInstance().getOpenedFolder().folderId;
+    if (DeliverUtil.isContainerPkg(companionIconInfo?.bundleName) &&
+      DeliverUtil.isContainerFolder(folderId)) {
+      return null;
+    }
     let iconRectInfo: RectInfo | null = null;
     if (!isInScreen) {
       isInScreen = this.searchInScreen(companionIconInfo)?.isInScreen;
@@ -930,7 +934,7 @@ export class PageDesktopModel extends SingleBase {
       log.showWarn(`findAppInCurrentShowingPageWithMethod page: ${page} componentId:${appTransitionInfo?.app?.componentId} msg:${msg}`);
       return appTransitionInfo;
     }
-    // 超大屏需要查找关联显示页
+    // 三折叠需要查找关联显示页
     if (desktopUtil.isThreeScreenGState()) {
       PageInfoManager.getInstance().loopPageCallback(page, (callbackPage: number) : boolean => {
         appTransitionInfo = findAppInPageMethod(appGridInfo[callbackPage], companionIconInfo);
@@ -940,7 +944,7 @@ export class PageDesktopModel extends SingleBase {
       }, false);
       return appTransitionInfo;
     }
-    // 大屏展开态需要查找隔壁页
+    // 双折叠展开态需要查找隔壁页
     if (desktopUtil.isFoldExpandStatus()) {
       return findAppInPageMethod(appGridInfo[this.getNeighborPage(page)], companionIconInfo);
     }
@@ -992,8 +996,8 @@ export class PageDesktopModel extends SingleBase {
     const app =  appTransitionInfo?.app;
     const isInScreen = app !== null && app !== undefined;
     log.showWarn(`searchInCurrentDeskTopPage ${companionIconInfo?.iconNumber}, ${isInScreen}, ${app?.typeId}`);
-    if (this.isFromSuggestion(companionIconInfo) && app?.typeId !== CommonConstants.TYPE_FORM_STACK && app?.typeId !== CommonConstants.TYPE_CARD) {
-      log.showWarn(`searchInCurrentDeskTopPage isFromSuggestion but find app info, should back to app icon`);
+    if (this.isFromCardSuggestion(companionIconInfo) && app?.typeId !== CommonConstants.TYPE_FORM_STACK && app?.typeId !== CommonConstants.TYPE_CARD) {
+      log.showWarn(`searchInCurrentDeskTopPage isFromCardSuggestion but find app info, should back to app icon`);
       return notInCurrentPage;
     }
     return { isInScreen: isInScreen, iconRect: null, appInFolderInfo: appInFolderInfo, pageIndex: app?.page, type: null };
@@ -1296,7 +1300,7 @@ export class PageDesktopModel extends SingleBase {
     const cardId = (startType === StartType.CARD) ?
       formCardId ?? CloseAppManager.getInstance().getStartCardId() : undefined;
     if (extraId === undefined || extraId === null) {
-      extraId = (startType === StartType.AI_SUGGESTION_APP || startType === StartType.RECENT_DOCK_APP ||
+      extraId = (startType === StartType.RECENT_DOCK_APP ||
         startType === StartType.APP_CENTER_APP) ? CloseAppManager.getInstance().getExtraId() : undefined;
     }
     if (CheckEmptyUtils.checkStrIsEmpty(shortcutId)) {
@@ -1353,7 +1357,7 @@ export class PageDesktopModel extends SingleBase {
       appIndex = 0;
     }
     if (extraId === undefined || extraId === null) {
-      extraId = (startType === StartType.AI_SUGGESTION_APP || startType === StartType.RECENT_DOCK_APP) ?
+      extraId = (startType === StartType.RECENT_DOCK_APP) ?
       CloseAppManager.getInstance().getExtraId() : undefined;
     }
     if (CheckEmptyUtils.checkStrIsEmpty(shortcutId)) {

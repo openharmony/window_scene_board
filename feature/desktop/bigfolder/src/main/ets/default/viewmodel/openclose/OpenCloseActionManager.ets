@@ -22,6 +22,7 @@ import {
   GridLayoutItemInfo,
   GridLayoutUtil,
   folderLayoutUtil,
+  DeliverUtil,
   EditModeUtils,
   editModeManager,
   StyleConstants,
@@ -126,12 +127,14 @@ class OpenCloseActionManager {
       log.showInfo(`folder on opened:${folder.folderId}`);
       this.delAniParams(folder);
       this.animatingType = FOLDER_STATIC_TYPE;
-      if (DeviceHelper.isUltraScreenProduct()) {
+      if (DeviceHelper.isThreeFoldProduct()) {
         this.updateOpenFolderAppNameWidth(folder);
       }
     },
     onClosingFolder: (folder: GridLayoutItemInfo) => {
       if (!openFolderLayout.getGridSwiperLayout().isShowOpenFolder) {
+        // 文件夹已经关闭, 不需要动效场景
+        DeliverUtil.delAddIcon(folder, 'folder closed');
         ContractedFolderLayoutViewModel.getInstance().getViewOsrMgr(folder.folderId)
           .getObserverUpdator('folder-closed-opacity', OBSERVER_TYPE.FOLDER_ICON).opacity(1.0);
         return;
@@ -147,6 +150,7 @@ class OpenCloseActionManager {
       this.breakCurrentAnimation();
       openFolderLayout.getGridSwiperLayout().isShowOpenFolder = false;
       this.animatingType = FOLDER_STATIC_TYPE;
+      DeliverUtil.delAddIcon(folder, 'openedFolderCallback');
       FolderItemBadgeChangeNotifyUtils.notifySmallFolderItemBadgeChange(folder.folderId, false);
       ContractedFolderLayoutViewModel.getInstance().getDataOsrMgr(folder.folderId)
         .updateBadgeAniType(BadgeAnimationType.CLOSE_FOLDER_COMPONENT_SHOW, 'folder closed to show');
@@ -275,9 +279,9 @@ class OpenCloseActionManager {
     let scale: number = iconSizeInFolder / openFolderIconSize;
     let scaleStack: number = scale * STACK_ICON_RATIO;
     let editModeTranslateY = this.getEditModeTranslateY();
-    const isUltraScreenProduct: boolean = DeviceHelper.isUltraScreenProduct();
-    const ultraScreenGridItemWidth: number =
-      isUltraScreenProduct ? OpenFolderStyleConfig.getInstance().getOpenFolderStyle().gridItemWidth : 0;
+    const isThreeFoldProduct: boolean = DeviceHelper.isThreeFoldProduct();
+    const threeFoldGridItemWidth: number =
+      isThreeFoldProduct ? OpenFolderStyleConfig.getInstance().getOpenFolderStyle().gridItemWidth : 0;
     for (let i = 0; i < array.length; i++) {
       if (i == pageNum) {
         break;
@@ -307,8 +311,8 @@ class OpenCloseActionManager {
         let nameData: AppNameVm =
           openFolderAppBubbleLayout.getNameData(item.keyName ?? item.bundleName);
         nameData.modifier.attribute?.opacity(0);
-        if (isUltraScreenProduct) {
-          nameData.modifier.attribute?.width(ultraScreenGridItemWidth);
+        if (isThreeFoldProduct) {
+          nameData.modifier.attribute?.width(threeFoldGridItemWidth);
         }
       }
 
@@ -423,7 +427,9 @@ class OpenCloseActionManager {
     data: AppIconData, item: GridLayoutItemInfo): RectangularCoordinates.Point {
     let openFolderAppPos: RectangularCoordinates.Point | undefined;
     // 多选下的不可拖出应用不从Id拿位置
-    if (this.mIsGetRectById) {
+    let isCanGetPostionById: boolean = DeliverUtil.canFolderItemDragOut(folderItem.folderId, item.bundleName) ||
+      !MultiSelectManager.getInstance().isInMultiSelect;
+    if (this.mIsGetRectById && isCanGetPostionById) {
       openFolderAppPos = folderLayoutUtil.getOpenFolderItemPoint(this.mUiContext, data.iconId);
     }
     if (!openFolderAppPos) {
@@ -496,7 +502,7 @@ class OpenCloseActionManager {
   }
 
   private setAppCloneBadgeVisible(item: GridLayoutItemInfo, data: AppIconData, isVisible: boolean): void {
-    if (item.appIndex && item.appIndex > 0 ||
+    if (item.appIndex && item.appIndex > 0 || DeliverUtil.isdeliverApp(item.intent) ||
       NotHarmonyUtil.isWaitingDownloadApp(item)) {
       data.cloneBadgeVisible = isVisible;
     }

@@ -21,6 +21,7 @@ import CapsuleMarquee, { CapsuleMarqueeContent } from './CapsuleMarquee';
 import { LogDomain, LogHelper } from '@ohos/basicutils';
 import { ResUtils } from '@ohos/windowscene';
 import { LiveViewCapsuleStyle } from '../../common/LiveViewCapsuleStyle';
+import { ImmersiveAodStyle } from '../../../immersivekeyguardcommon/base/interface/ImmersiveAodStyle';
 import { immersiveKgMgr } from '../../../immersivekeyguardcommon/manager/ImmersiveKeyguardStateManager';
 import { LiveViewData } from '../../data/LiveViewData';
 import { LiveViewCommonConstants } from '../../common/LiveConstants';
@@ -40,6 +41,10 @@ const log: LogHelper = LogHelper.getLogHelper(LogDomain.SYS_UI, TAG);
 @Component
 export default struct ScreenRecordCapsule {
   @State capsuleListState: CapsuleListState = capsuleStateMgr.getCapsuleState();
+  /**
+   * AOD显示样式
+   */
+  @State aodStyle: ImmersiveAodStyle | undefined = immersiveKgMgr.getOneMirrorState().getAodStyle(true);
   @ObjectLink capsuleData: LiveCapsuleData;
   @ObjectLink timeData: LiveTimerData;
   @Prop textOpacity: number;

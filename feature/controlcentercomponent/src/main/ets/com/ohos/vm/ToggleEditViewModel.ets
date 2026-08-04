@@ -16,11 +16,11 @@
 import curves from '@ohos.curves';
 import { DomainName, LogDomain, LogHelper, TraceUtil } from '@ohos/basicutils';
 import { EvtBus, obtainLocalEvent, sEventManager, GlobalContext } from '@ohos/frameworkwrapper';
-import { HoverConstants } from '@ohos/commonconstants';
+import { HoverConstants, FASlotName } from '@ohos/commonconstants';
 import lazy { ResUtils } from '@ohos/windowscene/src/main/ets/utils/ResourceUtils';
 import { ToggleEditViewData, ToggleEditType } from './ToggleEditViewData';
 import { SysApiWrapper } from '../common/SysApiWrapper';
-import { FIXED_TOP_TOGGLES } from '../common/Constants';
+import { FIXED_TOP_TOGGLES, MEDIA_ROW_TOP_TOGGLES } from '../common/Constants';
 import { ControlCenterState } from '@ohos/controlcentercommon/Index';
 import lazy sControlCenterController from '../controller/ControlCenterController';
 import { QuickToggleController } from '../controller/QuickToggleController';
@@ -36,7 +36,6 @@ import { TOGGLE_EDIT_LIBRARY_HEIGHT } from '../common/Constants';
 
 const TAG = 'ToggleEditViewModel';
 const log = LogHelper.getLogHelper(LogDomain.CC, TAG);
-const DELAY_SAVE_TOGGLES: number = 100;
 const LIBRARY_COLLAPSE_THRESHOLD: number = 120;
 
 export enum ToggleButtonType {
@@ -72,6 +71,7 @@ export class ToggleEditViewModel {
   public iotViewModel?: IotEditViewModel;
   public quickToggleViewModel?: QuickToggleEditViewModel;
   public topToggleViewModel?: TopToggleEditViewModel;
+  private loadLibraryTimerId: number = -1;
 
   constructor(viewData: ToggleEditViewData, showDoubleColumn: boolean) {
     this.viewData = viewData;
@@ -139,6 +139,10 @@ export class ToggleEditViewModel {
   public onViewDisappear = (): void => {
     this.eventManager.offAll();
     this.setSaveConfirmDialogState(false);
+    clearTimeout(this.loadLibraryTimerId);
+    this.loadLibraryTimerId = -1;
+    this.viewData.enterEditFinished = false;
+    this.viewData.loadToggleLibrary = false;
   }
   public handleOnHover: Function = (type: ToggleButtonType, isHover?: boolean) => {
     if (isHover === undefined) {
@@ -371,49 +375,23 @@ export class ToggleEditViewModel {
 
   private showPreviewToggles(): void {
     TraceUtil.startTrace(DomainName.CC, 'showPreviewToggles');
-    SysApiWrapper.animateTo({
-      duration: 250,
-      curve: Curve.Friction,
-      onFinish: () => {
-        SysApiWrapper.animateTo({
-          duration: 400,
-          curve: Curve.Friction,
-          onFinish: () => {
-            this.viewData.enterEditFinished = true;
-            this.viewData.loadToggleLibrary = true;
-            TraceUtil.endTrace(DomainName.CC, 'showPreviewToggles');
-            TraceUtil.endTrace(DomainName.CC, 'onEnterEdit');
-          },
-        }, () => {
-          this.viewData.borderScale = 1;
-          this.viewData.previewToggleScale = 1;
-        });
+    // 先完成编辑预览交互态；待添加库延后离屏预构建，避免与进入编辑抢主线程
+    this.viewData.previewToggleScale = 1;
+    this.viewData.borderScale = 1;
+    this.viewData.toggleSubscriptScale = 1;
+    this.viewData.toggleSubscriptOpacity = 1;
+    this.viewData.borderColor = '#99ffffff';
+    this.viewData.enterEditFinished = true;
+    clearTimeout(this.loadLibraryTimerId);
+    this.loadLibraryTimerId = SysApiWrapper.setTimeout(() => {
+      if (!this.viewData.enterEditFinished) {
+        return;
       }
-    }, () => {
-      this.viewData.previewToggleScale = 1.03;
-      this.viewData.toggleSubscriptScale = 1;
-      this.viewData.toggleSubscriptOpacity = 1;
-    });
-    SysApiWrapper.animateTo({
-      duration: 250,
-      curve: Curve.Sharp,
-      onFinish: () => {
-        SysApiWrapper.animateTo({
-          duration: 400,
-          curve: Curve.Sharp,
-        }, () => {
-          this.viewData.borderScale = 1;
-        });
-      }
-    }, () => {
-      this.viewData.borderScale = 1.01;
-    });
-    SysApiWrapper.animateTo({
-      duration: 750,
-      curve: Curve.Linear,
-    }, () => {
-      this.viewData.borderColor = '#99ffffff';
-    });
+      this.viewData.loadToggleLibrary = true;
+      log.showInfo('deferred loadToggleLibrary after enter edit');
+    }, 350);
+    TraceUtil.endTrace(DomainName.CC, 'showPreviewToggles');
+    TraceUtil.endTrace(DomainName.CC, 'onEnterEdit');
   }
 
   private checkEquals(source: string[], target: string[]): boolean {
@@ -429,20 +407,36 @@ export class ToggleEditViewModel {
   }
 
   private saveToggles(): void {
-    SysApiWrapper.setTimeout(() => {
-      TraceUtil.startTrace(DomainName.CC, 'saveToggles');
-      QuickToggleController.getInstance().saveQuickToggleData(this.previewToggles);
-      QuickToggleController.getInstance().saveTopToggleData(this.getTopToggleDataWithFixed());
-      TraceUtil.endTrace(DomainName.CC, 'saveToggles');
-    }, DELAY_SAVE_TOGGLES);
+    // 先落盘再退编辑页，避免刷新时读到旧 Settings 导致确认无效
+    TraceUtil.startTrace(DomainName.CC, 'saveToggles');
+    QuickToggleController.getInstance().saveQuickToggleData(this.previewToggles);
+    QuickToggleController.getInstance().saveTopToggleData(this.getTopToggleDataWithFixed());
+    TraceUtil.endTrace(DomainName.CC, 'saveToggles');
   }
 
   /**
-   * 获取含有固定开关的头部开关列表
+   * 获取含有固定开关的头部开关列表；媒体/亮度/音量按固定顺序排在最前
    * @returns
    */
   private getTopToggleDataWithFixed(): string[] {
-    return FIXED_TOP_TOGGLES.concat(this.previewTopToggles);
+    const merged: string[] = FIXED_TOP_TOGGLES.concat(this.previewTopToggles);
+    return this.normalizeMediaRowOrder(merged);
+  }
+
+  /**
+   * 规范化媒体行顺序：媒体 | 亮度音量组合，其余项保持相对顺序跟在后面
+   */
+  private normalizeMediaRowOrder(toggles: string[]): string[] {
+    const hasLegacySlider: boolean = toggles.includes(FASlotName.BRIGHTNESS) ||
+      toggles.includes(FASlotName.SOUND);
+    let working: string[] = toggles.filter(item =>
+      item.length > 0 && item !== FASlotName.BRIGHTNESS && item !== FASlotName.SOUND);
+    if (hasLegacySlider && !working.includes(FASlotName.COMBINED_SLIDER)) {
+      working.push(FASlotName.COMBINED_SLIDER);
+    }
+    const mediaRow: string[] = MEDIA_ROW_TOP_TOGGLES.filter(item => working.includes(item));
+    const others: string[] = working.filter(item => !MEDIA_ROW_TOP_TOGGLES.includes(item));
+    return mediaRow.concat(others);
   }
 
   private setSaveConfirmDialogState(isShow: boolean) {

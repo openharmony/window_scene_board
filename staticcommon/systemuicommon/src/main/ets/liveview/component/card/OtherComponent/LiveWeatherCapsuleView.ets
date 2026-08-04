@@ -14,6 +14,7 @@
  */
 
 import { LengthMetrics } from '@ohos.arkui.node';
+import { AodStyleType, ImmersiveAodStyle } from '../../../../immersivekeyguardcommon/base/interface/ImmersiveAodStyle';
 import { immersiveKgMgr } from '../../../../immersivekeyguardcommon/manager/ImmersiveKeyguardStateManager';
 import { LiveStyle } from '../../../../live/constants/LiveStyle';
 import { LiveWeatherModel, WeatherCapsuleType } from '../../../../live/model/LiveWeatherModel';
@@ -34,16 +35,21 @@ export struct LiveWeatherCapsuleView {
   @Prop weatherCapsuleType: WeatherCapsuleType | undefined = undefined;
   private extendStyle: ExtendStyle = new LiveViewExtendStyle();
   @State colorModeViewData: ColorModeViewData = ColorModeViewModel.getInstance().getViewData();
+  @State aodStyle: ImmersiveAodStyle | undefined = immersiveKgMgr.getOneMirrorState().getAodStyle(true);
 
   private getLiveExtendButtonBgColor(): ResourceColor | undefined {
-    return $r('app.color.theme_ntf_phone_remaind_bg_color');
+    return this.aodStyle?.isAod ? this.aodStyle?.getStyleValue(AodStyleType.CAPSULE_MAIN_FONT_COLOR) : $r('app.color.theme_ntf_phone_remaind_bg_color');
   }
 
   private getTextColor(): ResourceColor | undefined {
-    return this.extendStyle?.textColor;
+    return this.aodStyle?.isAod ? this.aodStyle?.getStyleValue(AodStyleType.CAPSULE_SECONDARY_FONT_COLOR) :
+      this.extendStyle?.textColor;
   }
 
   private isRenderGroup(): boolean {
+    if (this.aodStyle?.isOneMirror || this.aodStyle?.isAod) {
+      return false;
+    }
     return true;
   }
 
@@ -75,7 +81,8 @@ export struct LiveWeatherCapsuleView {
               .minFontSize(LiveStyle.WEATHER_CAPSULE_TEXT_MIN_SIZE)
               .fontFeature('\"ss08\" on')
               .fontColor(this.getTextColor())
-              .foregroundBrightness(this.colorModeViewData.foregroundSecondaryOption)
+              .foregroundBrightness(this.aodStyle?.isAod ? BrightnessOptionUtils.aodTimeLightOptionForFillColor :
+              this.colorModeViewData.foregroundSecondaryOption)
               .opacity(undefined)
               .textAlign(TextAlign.Center)
               .maxLines(1)
@@ -102,7 +109,9 @@ export struct LiveWeatherCapsuleView {
         maxHeight: this.extendStyle?.capsuleButtonHeight,
       })
       .backgroundColor(this.getLiveExtendButtonBgColor())
-      .backgroundBrightnessInternal(SystemUIColorVm.instance.weatherButtonBrightness)
+      .backgroundBrightnessInternal(this.aodStyle?.isAod ?
+      BrightnessOptionUtils.getInstance().aodTimeLightOptionForButtonBgColor :
+      SystemUIColorVm.instance.weatherButtonBrightness)
     }
     .height(16)
     .displayPriority(1)

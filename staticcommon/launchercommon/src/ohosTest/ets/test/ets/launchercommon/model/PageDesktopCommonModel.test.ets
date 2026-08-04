@@ -474,7 +474,7 @@ export default function PageDesktopCommonModelTest() {
       let formCardId: string = '1';
       let appData2 = model.getCloseAppData(bundleName, abilityName, startType, formCardId, null);
 
-      startType = StartType.AI_SUGGESTION_APP;
+      startType = StartType.RECENT_DOCK_APP;
       let appData3 = model.getCloseAppData(bundleName, abilityName, startType, formCardId, null);
 
       let screenId: number = 0;

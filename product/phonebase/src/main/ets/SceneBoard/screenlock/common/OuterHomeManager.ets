@@ -76,7 +76,7 @@ export class OuterHomeManager extends AbstractInitialAble {
           // 如果播放外屏灭屏动效过程中再次按power键, 需要取消之前的延迟灭屏, 并马上灭屏, 避免阻碍后续的power亮屏事件
           log.showInfo('power key down in screen off mirror to end');
           this.clearTimer();
-          // 打断灭屏动效时采用不下电灭屏
+          // 打断灭屏动效时采用不下电灭屏, 与设备体验保持一致
           SCBScreenSessionManager.getInstance().notifyScreenLockEvent(NOTIFY_OFF_SCREEN_OPEN_LCD);
         }
       }

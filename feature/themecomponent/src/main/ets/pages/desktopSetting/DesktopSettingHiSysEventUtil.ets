@@ -33,6 +33,10 @@ export class DesktopSettingHiSysEventUtil {
    */
   private static SETTING_ENTER_INTELLIGENT: string = 'SETTING_ENTER_INTELLIGENT';
   /**
+   * 桌面-桌面设置-桌面下滑开关
+   */
+  private static SETTING_VOICE_SEARCH_SWITCH: string = 'SETTING_VOICE_SEARCH_SWITCH';
+  /**
    * 桌面设置-桌面布局-自动对齐开关
    */
   private static SETTING_AUTO_ALIGN_SWITCH: string = 'SETTING_AUTO_ALIGN_SWITCH';
@@ -60,6 +64,17 @@ export class DesktopSettingHiSysEventUtil {
     Log.debug(TAG, 'reportSettingEnterIntelligent');
     // HiSysEventUtil.report(DesktopSettingHiSysEventUtil.SCENE_BOARD_UE_DOMAIN,
     //   DesktopSettingHiSysEventUtil.SETTING_ENTER_INTELLIGENT, hiSysEvent.EventType.BEHAVIOR, new BaseParams());
+  }
+
+  /**
+   * 桌面-桌面设置-桌面下滑开关
+   */
+  static reportSettingVoiceSearchSwitch(isOn: boolean): void {
+    Log.debug(TAG, 'reportSettingVoiceSearchSwitch');
+    // let params = new SettingSwitchParams();
+    // params.IS_ON = isOn ? 1 : 0;
+    // HiSysEventUtil.report(DesktopSettingHiSysEventUtil.SCENE_BOARD_UE_DOMAIN,
+    //   DesktopSettingHiSysEventUtil.SETTING_VOICE_SEARCH_SWITCH, hiSysEvent.EventType.BEHAVIOR, params);
   }
 
   /**

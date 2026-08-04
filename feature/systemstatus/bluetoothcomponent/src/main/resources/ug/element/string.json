@@ -1,4 +1,4 @@
-{
+﻿{
     "string":[
         {
             "name":"control_center_complex_toggle_bluetooth_title",
@@ -27,6 +27,21 @@
             "attr":{
                 "priority":"LT"
             }
+        },
+        {
+            "name":"control_center_complex_toggle_nearlink_title",
+            "value":"ئۇچقۇن",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"control_center_anti_theft_for_toggle",
+            "value":"ئۈلگە ئۈسكۈنە قوغداش ھالىتىدە، بۇ مەشغۇلات يۈرمەيدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
         }
+
     ]
 }

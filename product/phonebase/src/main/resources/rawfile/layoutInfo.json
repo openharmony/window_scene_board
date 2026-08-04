@@ -40,6 +40,90 @@
       "column": 3
     },
     {
+      "bundleName": "com.ohos.settings",
+      "abilityName": "com.ohos.settings.MainAbility",
+      "moduleName": "phone_settings",
+      "container": -100,
+      "typeId": 0,
+      "area": [
+        1,
+        1
+      ],
+      "page": 0,
+      "row": 0,
+      "column": 0
+    },
+    {
+      "bundleName": "com.ohos.photos",
+      "abilityName": "com.ohos.photos.MainAbility",
+      "moduleName": "phone_photos",
+      "container": -100,
+      "typeId": 0,
+      "area": [
+        1,
+        1
+      ],
+      "page": 0,
+      "row": 0,
+      "column": 1
+    },
+    {
+      "bundleName": "com.ohos.calendar",
+      "abilityName": "MainAbility",
+      "moduleName": "phone",
+      "container": -100,
+      "typeId": 0,
+      "area": [
+        1,
+        1
+      ],
+      "page": 0,
+      "row": 0,
+      "column": 2
+    },
+    {
+      "bundleName": "com.ohos.clock",
+      "abilityName": "com.ohos.clock.phone",
+      "moduleName": "entry",
+      "container": -100,
+      "typeId": 0,
+      "area": [
+        1,
+        1
+      ],
+      "page": 0,
+      "row": 0,
+      "column": 3
+    },
+    {
+      "bundleName": "com.ohos.filemanager",
+      "abilityName": "MainAbility",
+      "moduleName": "phone",
+      "container": -100,
+      "typeId": 0,
+      "area": [
+        1,
+        1
+      ],
+      "page": 0,
+      "row": 1,
+      "column": 0
+    },
+    {
+      "bundleName": "com.ohos.clouddrive",
+      "abilityName": "MainAbility",
+      "moduleName": "entry",
+      "container": -100,
+      "typeId": 0,
+      "area": [
+        1,
+        1
+      ],
+      "page": 0,
+      "row": 1,
+      "column": 1
+    },
+    {
       "bundleName": "com.ohos.totemweather",
       "abilityName": "FormAbility",
       "moduleName": "product",
@@ -53,8 +137,25 @@
         4,
         2
       ],
-      "page": 0,
+      "page": 1,
       "row": 0,
+      "column": 0
+    },
+    {
+      "bundleName": "com.ohos.suggestion",
+      "abilityName": "ParentFormAbility",
+      "moduleName": "entry",
+      "formConfigAbility": "",
+      "cardName": "minVoiceRecCard",
+      "cardDimension": 2,
+      "container": -100,
+      "typeId": 1,
+      "area": [
+        2,
+        2
+      ],
+      "page": 1,
+      "row": 2,
       "column": 0
     },
     {
@@ -69,37 +170,9 @@
         2,
         1
       ],
-      "page": 0,
-      "row": 3,
+      "page": 1,
+      "row": 2,
       "column": 2
-    },
-    {
-      "bundleName": "com.ohos.settings",
-      "abilityName": "com.ohos.settings.MainAbility",
-      "moduleName": "phone_settings",
-      "container": -100,
-      "typeId": 0,
-      "area": [
-        1,
-        1
-      ],
-      "page": 0,
-      "row": 5,
-      "column": 0
-    },
-    {
-      "bundleName": "com.ohos.photos",
-      "abilityName": "com.ohos.photos.MainAbility",
-      "moduleName": "phone_photos",
-      "container": -100,
-      "typeId": 0,
-      "area": [
-        1,
-        1
-      ],
-      "page": 0,
-      "row": 5,
-      "column": 1
     },
     {
       "bundleName": "com.ohos.photos",
@@ -115,64 +188,8 @@
         2
       ],
       "page": 1,
-      "row": 0,
+      "row": 4,
       "column": 0
-    },
-    {
-      "bundleName": "com.ohos.calendar",
-      "abilityName": "MainAbility",
-      "moduleName": "phone",
-      "container": -100,
-      "typeId": 0,
-      "area": [
-        1,
-        1
-      ],
-      "page": 1,
-      "row": 2,
-      "column": 0
-    },
-    {
-      "bundleName": "com.ohos.clock",
-      "abilityName": "com.ohos.clock.phone",
-      "moduleName": "entry",
-      "container": -100,
-      "typeId": 0,
-      "area": [
-        1,
-        1
-      ],
-      "page": 1,
-      "row": 2,
-      "column": 1
-    },
-    {
-      "bundleName": "com.ohos.filemanager",
-      "abilityName": "MainAbility",
-      "moduleName": "phone",
-      "container": -100,
-      "typeId": 0,
-      "area": [
-        1,
-        1
-      ],
-      "page": 1,
-      "row": 3,
-      "column": 0
-    },
-    {
-      "bundleName": "com.ohos.clouddrive",
-      "abilityName": "MainAbility",
-      "moduleName": "entry",
-      "container": -100,
-      "typeId": 0,
-      "area": [
-        1,
-        1
-      ],
-      "page": 1,
-      "row": 3,
-      "column": 1
     }
   ]
 }

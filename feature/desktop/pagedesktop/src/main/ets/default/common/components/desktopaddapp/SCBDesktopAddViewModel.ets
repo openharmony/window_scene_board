@@ -20,6 +20,7 @@ import {
   AppItemInfo,
   AppModel,
   CommonConstants,
+  DeliverUtil,
   DesktopPosition,
   GetLayoutInfoFromConfig,
   LayoutDescription,
@@ -52,6 +53,7 @@ export class SCBDesktopAddViewModel {
   private static sInstance: SCBDesktopAddViewModel;
   private cacheManager: LaunchLayoutCacheManager = LaunchLayoutCacheManager.getInstance();
   private addListColumn: number = 4;
+  private outdoorExplorationRuleCfg: OutdoorExplorationRule | null = null;
   public desktopAddDialogShowInfo = new DesktopAddDialogShowInfo();
   private allAppList: GridLayoutItemInfo[] = [];
   private presetAppList: string[] = [];
@@ -147,7 +149,7 @@ export class SCBDesktopAddViewModel {
   public showToast(resId: string): void {
     try {
       promptAction.showToast({
-        message: $r(resId)
+        message: $r(resId, this.outdoorExplorationRuleCfg?.maxAddAppCount)
       });
     } catch (err) {
       log.showError(TAG, 'showToast failed: ${public}d: %{public}s', err.code, err.message);
@@ -155,11 +157,76 @@ export class SCBDesktopAddViewModel {
   }
 
   /**
+   * 读取云端2预置规格，包括最大可添加应用，黑名单应用等
+   */
+  public async getOutdoorExplorationConfig(): Promise<void> {
+    if (this.outdoorExplorationRuleCfg != null) {
+      log.showInfo(TAG, 'outdoorExplorationRuleCfg is not null');
+      return;
+    }
+    let cfgFiles: string[] = [];
+    let configPath: string = 'etc/cloud/hw_outdoor_exploration_mode_add_app.json';
+    log.info(`getOutdoorExplorationConfig -> start, configPath: ${configPath}`);
+    try {
+      cfgFiles = await configPolicy.getCfgFiles(configPath);
+    } catch (error) {
+      log.error('configPolicy.getCfgFiles error', error);
+    }
+    if (CheckEmptyUtils.isEmptyArr(cfgFiles)) {
+      log.showError(TAG, 'getOutdoorExplorationConfig -> cfgFiles is empty.');
+      await this.getOutdoorExplorationConfigByRawfile();
+    } else {
+      this.outdoorExplorationRuleCfg = await this.getOutdoorExplorationConfigFromFile(cfgFiles);
+      if (!this.outdoorExplorationRuleCfg.addAppBlacklist) {
+        log.showError(TAG, 'getOutdoorExplorationConfig -> cfgFiles is error');
+        await this.getOutdoorExplorationConfigByRawfile();
+      }
+    }
+    log.showInfo(TAG, `getOutdoorExplorationConfig end`);
+  }
+
+  /**
+   * 通过配置文件获取云端2应用配置文件
+   * @param cfgFiles: string [] 文件所在路径
+   * @returns Promise<OutdoorExplorationRule> 解析完的规则类
+   */
+  private async getOutdoorExplorationConfigFromFile(cfgFiles: string []): Promise<OutdoorExplorationRule> {
+    let outdoorExplorationRule = new OutdoorExplorationRule();
+    cfgFiles.forEach(item => {
+      log.showInfo(TAG, 'Succeeded in obtaining the CCM OutdoorExplorationConfig file.');
+      outdoorExplorationRule = FileUtils.readJsonFile(item.toString());
+    })
+    return outdoorExplorationRule;
+  }
+
+  /**
+   * 从rawfile读取规则
+   */
+  private async getOutdoorExplorationConfigByRawfile(): Promise<void> {
+    const configPath: string = 'hw_outdoor_exploration_mode_add_app.json';
+    try {
+      await (GlobalContext.getInstance().getObject('desktopContext') as ctx.ServiceExtensionContext).resourceManager
+        .getRawFileContent(configPath).then(value => {
+          let textDecoder = new util.TextDecoder('utf-8', { ignoreBOM: true });
+          const configFromFile = textDecoder.decodeWithStream(value, { stream: false });
+          if (configFromFile) {
+            this.outdoorExplorationRuleCfg = JSON.parse(configFromFile);
+          }
+        }).catch((error: Error) => {
+          log.showError(TAG, `getRawFileContent promise error, message: ${error.message}.`);
+        });
+    } catch (error) {
+      log.showError(TAG, `promise getRawFileContent failed, error code: ${error.code}, message: ${error.message}.`);
+    }
+    return;
+  }
+
+  /**
    * 获取最大可添加应用数
-   * @returns number 最大可添加应用数
+   * @returns this.outdoorExplorationRuleCfg!.maxAddAppCount: number 最大可添加应用数
    */
   public getMaxAppCount(): number {
-    return 0;
+    return this.outdoorExplorationRuleCfg!.maxAddAppCount;
   }
 
   /**
@@ -246,8 +313,9 @@ export class SCBDesktopAddViewModel {
   private getAllApps(): GridLayoutItemInfo[] {
     let appList: AppItemInfo[] = AppModel.getInstance().getAppList();
     appList.forEach(appInfo => {
-      if (appInfo?.codePath == String(NumberConstants.CONSTANT_NUMBER_ONE)) {
+      if (appInfo?.codePath == String(NumberConstants.CONSTANT_NUMBER_ONE)) { //给克隆应用和应用应用打标签
         let bmsApp: AppItemInfo | undefined = AppModel.getInstance().getAppInfoByBundleName(appInfo.bundleName);
+        DeliverUtil.setInstallSourceAndIntent(appInfo, bmsApp?.intent);
       }
     })
     let newAppList: GridLayoutItemInfo[] =  appList as GridLayoutItemInfo[];
@@ -272,6 +340,19 @@ export class SCBDesktopAddViewModel {
   }
 
   /**
+   * 获取云端预置应用包名
+   * @returns presetAppList: string []
+   */
+  private async getPresetApps(): Promise<string[]> {
+    let presetAppList: string[] = [];
+    let defaultDesktopLayoutInfo = await GetLayoutInfoFromConfig.getInstance().getOutdoorLayoutConfigFile();
+    defaultDesktopLayoutInfo.layoutInfo.forEach((item: GridLayoutItemInfo) => {
+      presetAppList.push(item.bundleName);
+    })
+    return presetAppList;
+  }
+
+  /**
    * 应用过滤
    * @param containsList: GridLayoutItemInfo[] 已添加的应用列表
    * @returns appList: DesktopAddItemInfo[] 过滤后的可显示应用列表
@@ -280,12 +361,24 @@ export class SCBDesktopAddViewModel {
     if (!this.allAppList.length) {
       this.allAppList = this.getAllApps();
     }
+    if (!this.presetAppList.length) {
+      this.presetAppList = await this.getPresetApps();
+    }
+    if (!this.outdoorExplorationRuleCfg?.addAppBlacklist.length) {
+      await this.getOutdoorExplorationConfig();
+    }
     if (this.allAppList?.length > 0) {
       this.allAppList.forEach((item: GridLayoutItemInfo) => {
+        if (DeliverUtil.isAppItem(item.intent)) { //去掉应用内应用
+          return;
+        }
         if (item.typeId === CommonConstants.TYPE_SHORTCUT_ICON || item.appIndex !== 0) {//去掉快捷方式和应用分身
           return;
         }
         if (this.presetAppList.includes(item.bundleName)) {//去掉预置应用
+          return;
+        }
+        if (this.outdoorExplorationRuleCfg?.addAppBlacklist.includes(item.bundleName)) {//去掉黑名单应用
           return;
         }
         let otherItem: DesktopAddItemInfo = new DesktopAddItemInfo();//重新封装
@@ -417,7 +510,7 @@ export class SCBDesktopAddViewModel {
     let addInfo: GridLayoutItemInfo = new GridLayoutItemInfo();
     addInfo.typeId = CommonConstants.TYPE_ADD;
     addInfo.bundleName = CommonConstants.SCENEBOARD_BUNDLE;
-    addInfo.infoId = '';
+    addInfo.infoId = CommonConstants.LIGHT_OUTDOOR_ADD_ICON_INFO_ID;
     addInfo.area = [1, 1];
     return addInfo;
   }
@@ -485,7 +578,7 @@ export class SCBDesktopAddViewModel {
       addInfo.row = row;
       addInfo.column = column;
       LaunchLayoutCacheManager.getInstance()
-        .insertGridLayoutItemInfo(addInfo, 'Add Application', false);
+        .insertGridLayoutItemInfo(addInfo, 'Add Application on outdoorMode', false);
       log.showInfo(TAG, `findPosition for AddInfo, page:${page}, row: ${row}, column: ${column}`);
     } else {
       let desktopPosition: DesktopPosition = scbBlankPositionUtils.findBlankPosition(false);
@@ -495,7 +588,7 @@ export class SCBDesktopAddViewModel {
       log.showInfo(TAG, `select 0 apps, findPosition for AddInfo, page:${addInfo.page}, row: ${
       addInfo.row}, column: ${addInfo.column}`);
       LaunchLayoutCacheManager.getInstance()
-        .insertGridLayoutItemInfo(addInfo, 'Add Application', false);
+        .insertGridLayoutItemInfo(addInfo, 'Add Application on outdoorMode', false);
     }
   }
 
@@ -525,7 +618,7 @@ export class SCBDesktopAddViewModel {
       return;
     }
     LaunchLayoutCacheManager.getInstance()
-      .insertGridLayoutItemInfo(gridlayoutItem, 'Add Application', true, false);
+      .insertGridLayoutItemInfo(gridlayoutItem, 'Add Application on outdoorMode', true, false);
   }
 }
 
@@ -545,6 +638,12 @@ export class DesktopAddItemInfo {
   public catId: number | undefined;
   public catName: string | undefined;
   public subTitlePaddingTop: string = DesktopAddDialogConstant.DEFAULT_SUBTITLE_TOP_PADDING;
+}
+
+export class OutdoorExplorationRule {
+  public maxAddAppCount: number = 0; //需要读配置文件
+  public addAppBlacklist: string[] = [];
+  public iconBadgeInvisibleList: string[] =[];
 }
 
 @Observed

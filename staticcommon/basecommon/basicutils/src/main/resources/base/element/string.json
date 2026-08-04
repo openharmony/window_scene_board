@@ -241,6 +241,13 @@
             }
         },
         {
+            "name":"app_others",
+            "value":"deliver",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
             "name":"WorkSchedulerExtensionAbility_label",
             "value":"ReportWorkSchedulerExtensionAbility"
         },

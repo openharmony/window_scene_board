@@ -16,7 +16,7 @@
 import systemParameterEnhance from '@ohos.systemParameterEnhance';
 import { LogDomain, LogHelper } from '@ohos/basicutils';
 import { ApsUtils } from '@ohos/frameworkwrapper';
-// import apsManager from '@hms.graphic.apsManager';
+// import apsManager from '@ohos.graphic.apsManager';
 
 const TAG = 'SystemParamUtils';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.KG, TAG);

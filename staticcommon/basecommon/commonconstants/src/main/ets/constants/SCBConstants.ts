@@ -81,6 +81,7 @@ export class SCBConstants {
    * Default WindowRadius 38.
    */
   static readonly DEFAULT_WINDOWS_RADIUS = 38;
+  // static readonly DEFAULT_WINDOWS_RADIUS = 0;
 
   /**
    * Default WindowRadius 0.
@@ -383,6 +384,7 @@ export class DividerStyleConstants {
   static readonly SPLIT_RATIO_HALF = 0.5;
   static readonly RATIO_ONE_TO_THREE = 1 / 3;
   static readonly RATIO_TWO_TO_THREE = 2 / 3;
+  static readonly SPLIT_ICON_SIZE = 100;
 }
 
 export class MidSceneConstants {
@@ -600,3 +602,4 @@ export enum PreLaunchType {
 export enum DBErrorCode {
   DEVICE_VERSION_GET_FAILED = 100001,
 }
+

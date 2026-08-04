@@ -43,8 +43,8 @@ export interface GridAttribute {
 
 export enum DisplayType {
   BAR,
-  EXPANDING_BIG_SCREEN,
-  EXPANDING_ULTRA_SCREEN,
+  EXPANDING_TWO_FOLD,
+  EXPANDING_THREE_FOLD,
   PAD
 }
 
@@ -53,17 +53,17 @@ export class GridUtil {
 
   private constructor() {
     /**
-     * 大屏：边距24，间距12
-     * 超大屏：横屏边距32，间距12；竖屏边距24，间距12
+     * 双折叠：边距24，间距12
+     * 三折叠：横屏边距32，间距12；竖屏边距24，间距12
      * Pad：横屏边距32，间距16；竖屏边距24，间距12
      */
-    this.initExpandingBigScreenGrid();
-    this.initExpandingUltraScreenGrid();
+    this.initExpandingTwoFoldGrid();
+    this.initExpandingThreeFoldGrid();
     this.initPadGrid();
   }
 
-  private initExpandingBigScreenGrid() {
-    this.displayGridMap.set(DisplayType.EXPANDING_BIG_SCREEN, {
+  private initExpandingTwoFoldGrid() {
+    this.displayGridMap.set(DisplayType.EXPANDING_TWO_FOLD, {
       xGridAttribute: {
         count: 8,
         margin: 24,
@@ -77,8 +77,8 @@ export class GridUtil {
     });
   }
 
-  private initExpandingUltraScreenGrid() {
-    this.displayGridMap.set(DisplayType.EXPANDING_ULTRA_SCREEN, {
+  private initExpandingThreeFoldGrid() {
+    this.displayGridMap.set(DisplayType.EXPANDING_THREE_FOLD, {
       xGridAttribute: {
         count: 12,
         margin: 32,
@@ -134,12 +134,12 @@ export class GridUtil {
   public getDisplayType(): DisplayType {
     let displayType: DisplayType = DisplayType.BAR;
     log.showInfo(TAG, `getDisplayType ${DeviceHelper.isFoldExpanded()} ${DeviceHelper.isLargeInFoldProduct()}
-      ${DeviceHelper.isUltraScreenProduct()} ${DeviceHelper.isMState()}`)
+      ${DeviceHelper.isThreeFoldProduct()} ${DeviceHelper.isMState()}`)
     if ((DeviceHelper.isFoldExpanded() && DeviceHelper.isLargeInFoldProduct()) ||
-      (DeviceHelper.isUltraScreenProduct() && DeviceHelper.isMState())) {
-      displayType = DisplayType.EXPANDING_BIG_SCREEN;
-    } else if (DeviceHelper.isUltraScreenProduct() && DeviceHelper.isGState()) {
-      displayType = DisplayType.EXPANDING_ULTRA_SCREEN;
+      (DeviceHelper.isThreeFoldProduct() && DeviceHelper.isMState())) {
+      displayType = DisplayType.EXPANDING_TWO_FOLD;
+    } else if (DeviceHelper.isThreeFoldProduct() && DeviceHelper.isGState()) {
+      displayType = DisplayType.EXPANDING_THREE_FOLD;
     } else if (DeviceHelper.isPad()) {
       displayType = DisplayType.PAD;
     }
@@ -149,8 +149,8 @@ export class GridUtil {
 
   /**
    * 获取锁屏签名/艺术签名半模态框宫格数量
-   * 大屏：8占8
-   * 超大屏：横屏12占8，竖屏8占8
+   * 双折叠：8占8
+   * 三折叠：横屏12占8，竖屏8占8
    * Pad：横屏12占8，竖屏大pad 8占6，小pad 8占8
    * @returns 锁屏签名/艺术签名半模态框宽度
    */

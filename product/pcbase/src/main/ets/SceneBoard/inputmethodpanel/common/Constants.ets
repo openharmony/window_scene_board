@@ -17,6 +17,7 @@ import inputMethod from '@ohos.inputMethod';
 import InputMethodSubtype from '@ohos.InputMethodSubtype';
 
 export default class Constants {
+  static readonly RECOMMEND_INPUT_METHOD = $r('app.string.recommend_input_method');
   static readonly WINDOW_WIDTH: number = 360;
   static readonly REQUEST_FOCUS_MENU = 'request_focus_input_method';
   static readonly DARK_COLOR_FILTER = [0, 0, 0, 0, 255, 0, 0, 0, 0, 255, 0, 0, 0, 0, 255, 0, 0, 0, 1, 0];

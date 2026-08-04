@@ -23,6 +23,7 @@ import {
   MultiSelectManager,
   AppIconModel,
   GridLayoutItemInfo,
+  DeliverUtil,
   EditModeConstants,
   NotHarmonyUtil
 } from '../../TsIndex';
@@ -56,10 +57,22 @@ import { AppIconDynamicShadowData } from '../viewmodel/AppIconDynamicShadowData'
 import { AppIconSuperposeBadgeVm } from '../viewmodel/AppIconSuperposeBadgeVm';
 import { AppIconStyleConfig } from '../config/AppIconStyleConfig';
 import { batchUninstallChain } from '../../editmode/viewModel/batchUninstall/BatchUninstallChain';
+import { NoIconAppModel } from '../../model/NoIconAppModel';
+import { MenuInfo } from '../../bean/MenuInfo';
 
 const TAG = 'AppIconCommonView';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.ICON, TAG);
 const DEFAULT_SCALE: number = 1.0;
+const DEFAULT_CONTACT_SHORTCUT_NAME = '联系人';
+const DEFAULT_PHONE_SHORTCUT_NAME = '电话';
+
+@Extend(Image)
+function appIconSourceSize() {
+  .sourceSize({
+    width: StyleConstants.APP_ICON_SOURCE_SIZE,
+    height: StyleConstants.APP_ICON_SOURCE_SIZE
+  })
+}
 
 @Component
 export struct AppIconCommonView {
@@ -75,7 +88,6 @@ export struct AppIconCommonView {
   private disableMaskModifier?: AttributeUpdater<CommonAttribute>;
   // 按压蒙层Modifier
   private touchMaskModifier?: AttributeUpdater<CommonAttribute>;
-
   private item: AppItemInfo = new AppItemInfo();
   private appNameVm: AppNameVm = new AppNameVm();
   private isFolderAppName: boolean = false;
@@ -89,21 +101,18 @@ export struct AppIconCommonView {
   private popupOffset: Position = { x: 0, y: 8 };
   private popupPlacement: Placement = Placement.BottomLeft;
   private isContainerFocus: boolean = false;
-
   // 自定义图标Builder, 图标属性、事件业务侧自管理;
   @BuilderParam extendIconBuilder?: CustomBuilder;
   // 自定义角标Builder, 角标属性、事件业务侧自管理
   @BuilderParam extendBadgeBuilder?: CustomBuilder;
   // 自定义应用名称Builder, 名称属性、事件业务侧资管理
   @BuilderParam extendAppNameBuilder?: CustomBuilder;
-
   @State iconData: AppIconData = new AppIconData();
   @State isMultiSelectEntered: BooleanState = MultiSelectManager.getInstance().getStatus().getEnteredState();
   @Prop isSelect: boolean = false;
   @Link iconSize: number;
   @Prop @Watch('iconRadiusChange') iconRadius: number = CommonConstants.DEFAULT_ICON_RADIUS;
   @Prop isGainFocus: boolean = false;
-
   // 背板相关
   @State backplaneVm: AppIconBackplaneVm = new AppIconBackplaneVm();
   // 置灰蒙层相关
@@ -131,10 +140,13 @@ export struct AppIconCommonView {
   @StorageLink('foldStatusForOuterScreen') @Watch('folderStatusChange') foldStatusForOuterScreen: number =
     DeviceState.DEFAULT_STATE;
   @StorageLink('showDesktopBadges') showDesktopBadges: boolean = true;
+  @State showPopupHover: boolean = false;
+  @State appName: string = '';
+  @StorageLink('mouseInDockArea') mouseInDockArea: boolean = false;
   private marginValue: Margin = {
     top: PresetStyleConstants.DEFAULT_ICON_NAME_GAP
   };
-  private paddingValue : Padding = {
+  private paddingValue: Padding = {
     bottom: StyleConstants.DEFAULT_2,
     top: StyleConstants.DEFAULT_2,
     left: StyleConstants.DEFAULT_2,
@@ -209,7 +221,7 @@ export struct AppIconCommonView {
   private getShadowOptions(): ShadowOptions | null {
     // 动态阴影(比如PC dock)
     if (this.appIconConfig.enableShadow && this.appIconConfig.enableDynamicIconShadow &&
-      this.appIconDynamicShadowData) {
+    this.appIconDynamicShadowData) {
       return {
         radius: this.appIconDynamicShadowData.radius,
         color: this.appIconDynamicShadowData.color,
@@ -223,7 +235,7 @@ export struct AppIconCommonView {
 
   private getIconRadius(): number {
     if (!onLineThemeUtil.isOnlineTheme() || !GridLayoutUtil.isAppInstalled(this.item) ||
-      this.appIconConfig.enableRadiusAll) {
+    this.appIconConfig.enableRadiusAll) {
       return this.iconRadius;
     } else {
       return 0;
@@ -296,7 +308,7 @@ export struct AppIconCommonView {
    */
   private isOverlayIcon(): boolean {
     if (!this.appIconConfig.enableOverlayIcon) {
-        return false;
+      return false;
     }
     // 分层图标不需要使用overlay
     if (this.iconData.isLayeredIcons) {
@@ -314,8 +326,9 @@ export struct AppIconCommonView {
     if (this.iconData.isDynamicIcon) {
       return false;
     }
-    if (PC_IN_PHONE_LIST.includes(this.item.bundleName) ||
-      NotHarmonyUtil.isWaitingDownloadApp(this.item)) {
+    // 克隆应用、PC应用、未鸿蒙化不需要使用overlay
+    if (DeliverUtil.isdeliverApp(this.item.intent) || PC_IN_PHONE_LIST.includes(this.item.bundleName) ||
+    NotHarmonyUtil.isWaitingDownloadApp(this.item)) {
       return false;
     }
     // 有禁用、下载、自定义蒙层的图标不需要使用overlay
@@ -339,7 +352,7 @@ export struct AppIconCommonView {
     }
     const itemShow = this.appIconConfig.enableInstallAnimate &&
       ((!GridLayoutUtil.isAppInstalled(this.item) && this.iconEvent.isIconShow() && !this.isInDrag) ||
-      this.item.appStatus === AppStatus.UPDATING || this.item.appStatus === AppStatus.WAIT_FOR_HARMONY);
+        this.item.appStatus === AppStatus.UPDATING || this.item.appStatus === AppStatus.WAIT_FOR_HARMONY);
     if (itemShow || (this.item.appStatus === this.iconData.appStatus)) {
       // item是常态, 数据是准确的, 或者两者状态相同, 取itemShow.
       return itemShow;
@@ -363,6 +376,21 @@ export struct AppIconCommonView {
     log.showInfo(`aboutToAppear ${this.item.bundleName}.`);
     this.initComponentData();
     this.onCreateFormShortcutHandler();
+
+    this.appName = NoIconAppModel.getInstance().updateNoIconAppInfo(this.item.bundleName).label;
+    if (this.appName === DEFAULT_CONTACT_SHORTCUT_NAME) {
+      this.appName = DEFAULT_PHONE_SHORTCUT_NAME
+      log.showInfo(`appNameNew =  ${this.appName}`);
+    }
+    log.showInfo(`appName =  ${this.appName}`);
+    setTimeout(() => {
+      if (!this.appIconConfig?.externCb) {
+        log.showError('onMouse failed, appIconConfig.externCb is invalid');
+        return;
+      }
+      this.iconEvent.getIconMenuEvent()?.setMenuInfo(this.appIconConfig.externCb?.getMenuInfo,
+        this.appIconConfig.externCb.getNotInstalledMenuMap);
+    }, 0)
   }
 
   aboutToReuse(params: Record<string, Object>): void {
@@ -437,7 +465,9 @@ export struct AppIconCommonView {
     })
     .onTouch((event: TouchEvent): void => this.iconEvent.getIconTouchEventIface()?.onTouch(event))
     .onHover((isHover: boolean, event: HoverEvent): void => this.iconEvent.getIconHoverEventIface()?.onHover(isHover,
-      event, (scale: number) => { this.iconData.containerScale = scale; }))
+      event, (scale: number) => {
+        this.iconData.containerScale = scale;
+      }))
     .onMouse((event: MouseEvent): void => this.iconEvent.getIconMouseEventIface()?.onMouse(event))
     .onPreDrag((preDragStatus: PreDragStatus) => this.iconEvent.getIconDragEventIface()?.onPreDrag(preDragStatus))
     .focusable(false)
@@ -448,13 +478,13 @@ export struct AppIconCommonView {
     .parallelGesture(
       GestureGroup(GestureMode.Parallel,
         // 100ms 空长按手势确保图标优先于编辑模式背板响应长按手势
-        LongPressGesture({ repeat: false, duration: EditModeConstants.PAGE_DRAG_SKIP_GESTURE_TIME}),
+        LongPressGesture({ repeat: false, duration: EditModeConstants.PAGE_DRAG_SKIP_GESTURE_TIME }),
         // 300ms 多选长按预汇聚
         LongPressGesture({ repeat: false, duration: MultiSelectStyleConfig.LONG_PRESS_TIME_OF_PRE_GATHER })
           .onAction((event: GestureEvent) => {
             this.iconEvent.getLongPressGestureEventIface()?.onLongPressPreGatherAction(event);
           })
-          .onActionEnd((event:GestureEvent) => {
+          .onActionEnd((event: GestureEvent) => {
             this.iconEvent.getLongPressGestureEventIface()?.onLongPressPreGatherActionEnd(event);
           }),
         // 350ms 单选长按截图
@@ -502,7 +532,9 @@ export struct AppIconCommonView {
   @Styles
   dragStyles() {
     .draggable(this.appIconConfig.enableDrag && this.iconData.enableDrag)
-    .onDragStart((event: DragEvent) => { return this.iconEvent.getIconDragEventIface()?.onDragStart(event); })
+    .onDragStart((event: DragEvent) => {
+      return this.iconEvent.getIconDragEventIface()?.onDragStart(event);
+    })
     .onDragEnd((event: DragEvent) => this.iconEvent.getIconDragEventIface()?.onDragEnd(event))
     .onGestureJudgeBegin((gestureInfo: GestureInfo, event: BaseGestureEvent) => {
       return this.iconEvent.getIconGestureJudgeIface()?.onGestureJudgeBegin(gestureInfo, event);
@@ -515,11 +547,13 @@ export struct AppIconCommonView {
   @Styles
   bindMenuStyles() {
     .bindContextMenu(this.iconEvent.getIconRightClickContextMenuIface()?.showContextMenu() ?
-        this.rightClickMenuBuilder : (): void => {},
+      this.rightClickMenuBuilder : (): void => {
+      },
       ResponseType.RightClick,
       this.iconEvent.getIconRightClickContextMenuIface()?.getRightClickMenuOptions(this.iconMenuVm.menuPlacement))
     .bindContextMenu(this.iconMenuVm.isMenuShow(),
-      this.iconEvent.getIconLongPressContextMenuIface()?.showContextMenu() ? this.longPressMenuBuilder : (): void => {},
+      this.iconEvent.getIconLongPressContextMenuIface()?.showContextMenu() ? this.longPressMenuBuilder : (): void => {
+      },
       this.iconEvent.getIconLongPressContextMenuIface()?.getLongPressMenuOptions())
   }
 
@@ -531,6 +565,7 @@ export struct AppIconCommonView {
           .draggable(false)
           .width(EditModeUtils.convertWithDesktopScale(this.iconSize))
           .height(EditModeUtils.convertWithDesktopScale(this.iconSize))
+          .appIconSourceSize()
           .pixelRound({ end: PixelRoundCalcPolicy.FORCE_CEIL, bottom: PixelRoundCalcPolicy.FORCE_CEIL })
           .borderRadius(EditModeUtils.convertWithDesktopScale(this.iconRadius))
           .syncLoad(this.isSyncLoad())
@@ -595,6 +630,7 @@ export struct AppIconCommonView {
         Image(this.iconData.image ? this.iconData.image : this.item.iconResource)
           .width(this.iconSize)
           .height(this.iconSize)
+          .appIconSourceSize()
           .pixelRound({ end: PixelRoundCalcPolicy.FORCE_CEIL, bottom: PixelRoundCalcPolicy.FORCE_CEIL })
           .syncLoad(GridLayoutUtil.isImageSyncLoad(this.item.iconResource ?? ''))
           .interpolation(ImageInterpolation.Medium)
@@ -609,6 +645,7 @@ export struct AppIconCommonView {
             .draggable(false)
             .width(this.iconSize)
             .height(this.iconSize)
+            .appIconSourceSize()
             .pixelRound({ end: PixelRoundCalcPolicy.FORCE_CEIL, bottom: PixelRoundCalcPolicy.FORCE_CEIL })
             .syncLoad(true)
             .interpolation(ImageInterpolation.Medium)
@@ -620,19 +657,19 @@ export struct AppIconCommonView {
             .onError((error: ImageError) => this.iconEvent.showImageErrorMessage(error))
             .id('LongPressImage')
         }
-      if (this.disableMaskVm.visible) {
-        Canvas(this.iconEvent.getIconMaskCanvas(IconCanvasType.LONG_PRESS_MASK)?.getContext())
-          .onReady(() => {
-            this.iconEvent.getIconMaskCanvas(IconCanvasType.LONG_PRESS_MASK)?.updateMask(this.iconData.image,
-              this.iconSize, this.item);
-          })
-          .onDisAppear(() => {
-            this.iconEvent.releaseIconCanvas(IconCanvasType.LONG_PRESS_MASK);
-          })
-          .width(this.iconSize)
-          .height(this.iconSize)
-          .pixelRound({ end: PixelRoundCalcPolicy.FORCE_CEIL, bottom: PixelRoundCalcPolicy.FORCE_CEIL })
-          .id(this.iconEvent.getIconMaskCanvas(IconCanvasType.LONG_PRESS_MASK)?.getCanvasId())
+        if (this.disableMaskVm.visible) {
+          Canvas(this.iconEvent.getIconMaskCanvas(IconCanvasType.LONG_PRESS_MASK)?.getContext())
+            .onReady(() => {
+              this.iconEvent.getIconMaskCanvas(IconCanvasType.LONG_PRESS_MASK)?.updateMask(this.iconData.image,
+                this.iconSize, this.item);
+            })
+            .onDisAppear(() => {
+              this.iconEvent.releaseIconCanvas(IconCanvasType.LONG_PRESS_MASK);
+            })
+            .width(this.iconSize)
+            .height(this.iconSize)
+            .pixelRound({ end: PixelRoundCalcPolicy.FORCE_CEIL, bottom: PixelRoundCalcPolicy.FORCE_CEIL })
+            .id(this.iconEvent.getIconMaskCanvas(IconCanvasType.LONG_PRESS_MASK)?.getCanvasId())
         }
       }
       this.touchMaskInMenuPreview()
@@ -673,6 +710,7 @@ export struct AppIconCommonView {
           this.iconSize * NumberConstants.CONSTANT_ADAPTIVE_SCALE)
         .width(this.iconData.isHighResolutionImage ? this.iconSize :
           this.iconSize * NumberConstants.CONSTANT_ADAPTIVE_SCALE)
+        .appIconSourceSize()
         .pixelRound({ end: PixelRoundCalcPolicy.FORCE_CEIL, bottom: PixelRoundCalcPolicy.FORCE_CEIL })
         .syncLoad(true)
         .interpolation(ImageInterpolation.Low)
@@ -684,6 +722,7 @@ export struct AppIconCommonView {
           this.iconSize * NumberConstants.CONSTANT_ADAPTIVE_SCALE)
         .width(this.iconData.isHighResolutionImage ? this.iconSize :
           this.iconSize * NumberConstants.CONSTANT_ADAPTIVE_SCALE)
+        .appIconSourceSize()
         .pixelRound({ end: PixelRoundCalcPolicy.FORCE_CEIL, bottom: PixelRoundCalcPolicy.FORCE_CEIL })
         .syncLoad(true)
         .interpolation(ImageInterpolation.Low)
@@ -709,6 +748,7 @@ export struct AppIconCommonView {
           this.iconSize * NumberConstants.CONSTANT_ADAPTIVE_SCALE)
         .width(this.iconData.isHighResolutionImage ? this.iconSize :
           this.iconSize * NumberConstants.CONSTANT_ADAPTIVE_SCALE)
+        .appIconSourceSize()
         .pixelRound({ end: PixelRoundCalcPolicy.FORCE_CEIL, bottom: PixelRoundCalcPolicy.FORCE_CEIL })
         .syncLoad(true)
         .interpolation(ImageInterpolation.Medium)
@@ -741,6 +781,7 @@ export struct AppIconCommonView {
     } else {
       if (!this.iconData.isDynamicIcon) {
         Image(this.iconData.image)
+          .appIconSourceSize()
           .syncLoad(this.isSyncLoad())
           .interpolation(ImageInterpolation.Medium)
           .autoResize(false)
@@ -750,6 +791,21 @@ export struct AppIconCommonView {
           .bindMenuStyles()
           .onError((error: ImageError) => this.iconEvent.showImageErrorMessage(error))
           .attributeModifier(this.iconModifier)
+          .onHover((hover: boolean) => {
+            this.showPopupHover = hover
+          })
+          // .bindPopup(
+          //   this.showPopupHover && this.mouseInDockArea,
+          //   {
+          //     message: this.appName,
+          //     offset: {
+          //       x: 0,
+          //       y: 0
+          //     },
+          //     mask: false
+          //   }
+          // )
+
       }
     }
   }
@@ -925,6 +981,7 @@ export struct AppIconCommonView {
           nameWidth: this.nameWidth,
           nameSize: this.nameSize,
           nameFontColor: this.nameFontColor,
+          currentFontColor: this.nameFontColor,
           bundleName: this.item.bundleName,
           moduleName: this.item.moduleName,
           parentItem: this.item,
@@ -1013,6 +1070,7 @@ export struct AppIconCommonView {
   @Builder
   overlayIcon() {
     Image(this.iconData.image)
+      .appIconSourceSize()
       .syncLoad(this.isSyncLoad())
       .interpolation(ImageInterpolation.Medium)
       .autoResize(false)

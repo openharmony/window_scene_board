@@ -76,12 +76,12 @@ export struct SCBTrayPanel {
   private screenLockObserver: Observer | null = null;
   private eventMgr: EventManager = EvtBus.createEventManager();
   private showDropFrame: boolean = true;
-  private itemRect: Rectangle = {
-    x: 0,
-    y: 0,
-    width: 0,
-    height: 0
-  };
+  // private itemRect: Rectangle = {
+  //   x: 0,
+  //   y: 0,
+  //   width: 0,
+  //   height: 0
+  // };
   @State gridWidth: number = 0;
   @State gridHeight: number = 0;
   @State gridColumns: number = Constants.MIN_COLUMNS;
@@ -89,29 +89,53 @@ export struct SCBTrayPanel {
 
   aboutToAppear() {
     log.showInfo('aboutToAppear');
-    viewMgrPolicy.registerViewController(ViewType.TRAY_PANEL, this.trayPanelCtrl);
+    // todo 将监听使用统一的方法异步处理
+    // viewMgrPolicy.registerViewController(ViewType.TRAY_PANEL, this.trayPanelCtrl);
     this.trayPanelCtrl.updateId(this.persistentId);
-    this.trayPanelCtrl.registerFocusCallback();
-    this.trayPanelCtrl.registerTouchOutsideCallback(() => {
-      return this.dealTrayPanelTouchOutSide();
-    });
+    // this.trayPanelCtrl.registerFocusCallback();
+    // this.trayPanelCtrl.registerTouchOutsideCallback(() => {
+    //   return this.dealTrayPanelTouchOutSide();
+    // });
     // 初始化时需要根据当前显示图标数量更新组件的网格大小
     this.trayAreaChange(this.trayAreaPlugins.getVisualPluginNum());
     this.initWindowPolicy();
     // 窗口动画绑定onFrame
     windowMgr.startBindWinAnimOnFrame(WINDOW_NAME);
 
-    // 锁屏监听
-    this.screenLockObserver = {
-      notify: (): void => {
-        log.showInfo('onLockScreen');
-        this.onLockScreen();
-      }
-    };
-    screenLockMediator.addObserver(this.screenLockObserver);
+    // // 锁屏监听
+    // this.screenLockObserver = {
+    //   notify: (): void => {
+    //     log.showInfo('onLockScreen');
+    //     this.onLockScreen();
+    //   }
+    // };
+    // screenLockMediator.addObserver(this.screenLockObserver);
     this.panelInfo = StatusBarPanelManager.getInstance()
       .getStatusBarInfoById(this.persistentId);
-    PcStatusBarDragMgr.getInstance().registerTrayListNumChangeInDragCallback(this.onTrayListNumChangeInDrag);
+    // PcStatusBarDragMgr.getInstance().registerTrayListNumChangeInDragCallback(this.onTrayListNumChangeInDrag);
+    this.registerListener()
+  }
+
+  registerListener() {
+    // todo 将监听使用统一的方法异步处理
+    const timeId = setTimeout(() => {
+      viewMgrPolicy.registerViewController(ViewType.TRAY_PANEL, this.trayPanelCtrl);
+      this.trayPanelCtrl.updateId(this.persistentId);
+      this.trayPanelCtrl.registerFocusCallback();
+      this.trayPanelCtrl.registerTouchOutsideCallback(() => {
+        return this.dealTrayPanelTouchOutSide();
+      });
+      // 锁屏监听
+      this.screenLockObserver = {
+        notify: (): void => {
+          log.showInfo('onLockScreen');
+          this.onLockScreen();
+        }
+      };
+      screenLockMediator.addObserver(this.screenLockObserver);
+      PcStatusBarDragMgr.getInstance().registerTrayListNumChangeInDragCallback(this.onTrayListNumChangeInDrag);
+      clearTimeout(timeId)
+    }, 0)
   }
 
   private onTrayListNumChangeInDrag = (addTrayPlugNum: number): void => {
@@ -201,14 +225,15 @@ export struct SCBTrayPanel {
         }
       }
     })
-    .onAreaChange((oldValue: Area, newValue: Area) => {
-      this.itemRect = {
-        x: newValue.globalPosition.x,
-        y: newValue.globalPosition.y,
-        width: newValue.width,
-        height: newValue.height
-      };
-    })
+    // todo 代码暂时没用注释该方法
+    // .onAreaChange((oldValue: Area, newValue: Area) => {
+    //   this.itemRect = {
+    //     x: newValue.globalPosition.x,
+    //     y: newValue.globalPosition.y,
+    //     width: newValue.width,
+    //     height: newValue.height
+    //   };
+    // })
   }
 
   private initWindowPolicy() {

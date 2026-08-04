@@ -1,5 +1,5 @@
 /**
- * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) 2021-2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -75,4 +75,17 @@ export default class FeatureConstants {
   public static readonly NO_KEYBOARD = -1;
   public static readonly KEYBOARD_PAGE_B = 0;
   public static readonly KEYBOARD_PAGE_C = 1;
+
+  public static readonly CARD_TYPE_ONE = '1';
+  public static readonly CARD_TYPE_SIX = '6';
+  public static readonly CARD_TYPE_FOUR = '4';
+  public static readonly CARD_TYPE_SECOND = '2';
+  public static readonly CARD_MARGIN_OFFSET_ZERO = 0;
+  public static readonly CARD_MARGIN_OFFSET_FIVE = 5;
+  public static readonly CARD_MARGIN_OFFSET_TWELVE = 12;
+  public static readonly CARD_MARGIN_OFFSET_FOURTTEN = 14;
+  public static readonly CARD_MARGIN_OFFSET_FORTY_TWO = 42;
+  public static readonly CARD_MARGIN_OFFSET_TWENTY_EIGHT = 28;
+  public static readonly CARD_MARGIN_OFFSET_FORTY_THREE = 43.5;
+  public static readonly CARD_MARGIN_OFFSET_TWENTY_SEVEN = 27.5;
 }

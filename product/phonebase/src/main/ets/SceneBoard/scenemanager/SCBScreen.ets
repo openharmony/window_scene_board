@@ -1,5 +1,5 @@
 /*
- * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -14,69 +14,65 @@
  */
 
 import { HashMap } from '@kit.ArkTS';
-import { CommonConstants, DesktopModeEnum, DesktopModeManager, StyleConstants } from '@ohos/launchercommon';
-import { SCBScenePanel } from './SCBScenePanel';
+import { CommonConstants } from '@ohos/launchercommon';
+import { SCBScenePanel } from './SCBScenePanel'
 import { FrameCallback } from '@kit.ArkUI';
-import lazy { MidSceneConfig } from '@ohos/windowscene';
 import {
+  SCBScreenSession,
+  SCBKeyboardSession,
+  SCBScreenProperty,
+  SCBSessionRect,
+  SpecificPanelZOrder,
   DisplayMgr,
+  SCBSceneSessionManager,
   KeyboardState,
-  ResUtils,
+  SCBScreenSessionManager,
+  SCBRotateChangeReason,
+  SCBPropertyChangeReason,
   SCBKeyboardManager,
   SCBKeyboardPanelSession,
-  SCBKeyboardSession,
-  SCBPropertyChangeReason,
-  SCBRotateChangeReason,
-  SCBSceneSessionManager,
+  SystemBarType,
+  ResUtils,
   SCBScreenDebugCommands,
-  SCBScreenProperty,
-  SCBScreenSession,
-  SCBScreenSessionManager,
-  SCBSessionRect,
   SCBSystemSceneSession,
   SCBWindowRotateController,
-  SpecificPanelZOrder,
-  SystemBarType,
 } from '@ohos/windowscene';
 import {
   EvtBus,
-  GlobalContext,
-  localEventManager,
   RotateChangeEvent,
+  ViewType,
+  viewMgrPolicy,
+  ApsUtils,
   SCBWindowSceneConfig,
   ViewManagerPolicy,
-  viewMgrPolicy,
-  ViewType
+  GlobalContext,
+  DeviceHelper,
+  localEventManager,
 } from '@ohos/frameworkwrapper';
 import lazy { SCBTriFoldManager } from '@ohos/frameworkwrapper/src/main/ets/utils/SCBTriFoldManager';
-import {
-  AnimateToScheduleUtils,
-  AppStorageUtil,
-  DataProperty,
-  LogDomain,
-  LogHelper,
-  SingleContext,
-  Trace
-} from '@ohos/basicutils';
+import { LogHelper, LogDomain, AppStorageUtil, DataProperty, AnimateToScheduleUtils, SingleContext } from '@ohos/basicutils';
 import { RotationConstants, SCBConstants, } from '@ohos/commonconstants';
+import { WindowAnimationUtils } from '@ohos/windowscene/Index';
+import sceneSessionManager from '@ohos.sceneSessionManager'
+import { SCBSpecificScenePanel } from './SCBSpecificScenePanel'
+import { SCBDynamicSpecificScenePanel } from './SCBDynamicSpecificScenePanel';
 import {
-  AbstractSCBSceneRegisterManager,
   SCBSystemScene,
   SystemSceneBuilderParam,
   SystemSceneOptions,
-  WindowAnimationUtils
+  AbstractSCBSceneRegisterManager,
 } from '@ohos/windowscene/Index';
-import sceneSessionManager from '@ohos.sceneSessionManager';
-import { SCBSpecificScenePanel } from './SCBSpecificScenePanel';
-import { SCBDynamicSpecificScenePanel } from './SCBDynamicSpecificScenePanel';
 import { SCBKeyboardPanel } from '../keyboard/SCBKeyboardPanel';
+import { DesktopModeEnum, DesktopModeManager, } from '@ohos/launchercommon';
+import { StyleConstants } from '@ohos/launchercommon';
 import { FoldExpandAnimUtils } from '@ohos/launchercommon/Index';
-import { SCBSpecialScenePanel } from './SCBSpecialScenePanel';
+import { SCBSpecialScenePanel } from './SCBSpecialScenePanel'
 import curves from '@ohos.curves';
 import { SCBPictureInPictureScenePanel } from './pip/SCBPictureInPictureScenePanel';
 import lazy { SCBFloatingBallPanel } from './floatingball/view/SCBFloatingBallPanel';
 import transactionManager from '@ohos.transactionManager';
 import { FormClearUtils } from '../../common/FormClearUtils';
+// import apsManager from '@ohos.graphic.apsManager';
 import systemParameterEnhance from '@ohos.systemParameterEnhance';
 import PhoneStage from '../../common/PhoneStage';
 import { SCBGestureDockParam } from '../gestureDock/dock/viewmodel/viewdata/GestureDockParam';
@@ -85,12 +81,16 @@ import performanceMonitor from '@ohos.arkui.performanceMonitor';
 import lazy { FlashlightTips } from '../flashlight/FlashlightTips';
 import lazy { FlashlightTipsUtil } from '@ohos/screenlockcommon/src/main/ets/utils/FlashlightTipsUtil';
 import lazy { FlashlightTipsConstants } from '@ohos/screenlockcommon/src/main/ets/constants/FlashlightTipsConstants';
+import { SCBBrightnessPanel } from '../brightnesspanel/pages/SCBBrightnessPanel';
+import lazy { MidSceneConfig } from '@ohos/windowscene';
 import { OneHandModeBox, OneHandModeManager } from './onehandmode/OneHandModeManager';
+import { SCBProductFuncType } from '@ohos/windowscene/src/main/ets/screen/session/SCBScreenSessionManager';
 import { SCBSingleHandController } from './onehandmode/SCBSingleHandController';
 import display from '@ohos.display';
 import rpc from '@ohos.rpc';
 import { BusinessError } from '@kit.BasicServicesKit';
 import common from '@ohos.app.ability.common';
+import { Trace } from '@ohos/basicutils';
 import { gestureBackSettings } from '@ohos/gestureback/src/main/ets/common/GestureBackSettings';
 import lazy { SCBMicReminder } from '@ohos/multiinput';
 import { SCBRotateUtils } from './utils/SCBRotateUtils';
@@ -863,6 +863,7 @@ export struct SCBScreen {
     }
     this.updateKeyboardStateInfo(keyboardState, isActive);
     if (!this.keyboardSession.isFloatGravity()) {
+      this.keyboardSession.notifyKeyboardAnimationWillBegin(callingId, isActive, false, panelRect);
       this.keyboardSession.notifyKeyboardAnimationCompleted(callingId, isActive, panelRect);
     }
     SCBKeyboardManager.getInstance().closeKeyboardAnimation(false);
@@ -961,22 +962,23 @@ export struct SCBScreen {
     const callingId = this.keyboardSession.getCallingSessionId();
     const panelRect = this.keyboardSession.getKeyboardPanelRealRect();
     let withAnimation = false;
-    // if (!this.keyboardSession.isWindowShowAnimate || this.keyboardSession.isCloseKeyboardAnimation ||
-    // this.keyboardSession.isRectAbnormal(isActive, this.scbScreenProperty, panelRect)) {
+    if (!this.keyboardSession.isWindowShowAnimate || this.keyboardSession.isCloseKeyboardAnimation ||
+    this.keyboardSession.isRectAbnormal(isActive, this.scbScreenProperty, panelRect)) {
       log.showInfo('[SCBKeyboard] isShowAnimate: ' + this.keyboardSession.isWindowShowAnimate +
         ', isCloseAnimation: ' + this.keyboardSession.isCloseKeyboardAnimation);
       this.keyboardVisibilityChangeWithoutAnimation(callingId, panelRect, keyboardState, isActive);
-    // } else {
-    //   if (this.keyboardSession.IsNeedOpenSyncTransaction(this.keyboardSession.isActive, isActive)) {
-    //     this.keyboardSession.openKeyboardSyncTransaction();
-    //   }
-    //   this.keyboardVisibilityChangeWithAnimation(callingId, panelRect, keyboardState, isActive);
-    //   withAnimation = true;
-    // }
+    } else {
+      if (this.keyboardSession.IsNeedOpenSyncTransaction(this.keyboardSession.isActive, isActive)) {
+        this.keyboardSession.openKeyboardSyncTransaction();
+      }
+      this.keyboardVisibilityChangeWithAnimation(callingId, panelRect, keyboardState, isActive);
+      withAnimation = true;
+    }
     if (!this.keyboardSession.isFloatGravity()) {
       // notify listener of keyboard animation if need keep synchronous
       SCBKeyboardManager.getInstance().NotifyAnimationSyncCallbacks();
       this.keyboardSession.closeKeyboardSyncTransaction(isActive, withAnimation, false);
+      this.keyboardSession.notifyKeyboardAnimationCompleted(callingId, isActive, panelRect);
     }
   }
 
@@ -1351,6 +1353,7 @@ export struct SCBScreen {
           isLandscapeStartRotatable: options.landscapeStartRotatable,
           sceneType: options.sceneType,
           isFollowDeskTop: options.followDeskTop,
+          isFollowFocus: options.followFocus,
           alwaysNeedAnimateWhenRotation: options.alwaysNeedAnimateWhenRotation
         },
         screenProperty: this.scbScreenProperty
@@ -1520,6 +1523,8 @@ export struct SCBScreen {
 
     this.keyboardBuilder('BelowSpecificScene')
 
+    this.keyboardBuilder('AboveSplitScene')
+
     this.systemSceneBuilder(this.scbSceneRegisterManager.getSystemSceneBuilder('SCBBannerNotification'),
       sceneSessionManager.SessionType.TYPE_FLOAT, 'SCBBannerNotification',
       SCBDefaultZIndex.BANNER_LIVE,
@@ -1617,8 +1622,9 @@ export struct SCBScreen {
       SCBDefaultZIndex.STATUS_BAR,
       new SystemSceneOptions(
         {
-          touchable: true,
+          landscapeStartRotatable: true,
           rotatable: true,
+          touchable: true,
           systemBarType: SystemBarType.STATUS_BAR
         }))
 

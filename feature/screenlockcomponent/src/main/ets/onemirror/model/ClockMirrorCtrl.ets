@@ -15,6 +15,7 @@
 import { LogDomain, LogHelper } from '@ohos/basicutils';
 
 import { BrightnessOptionUtils } from '@ohos/systemuicommon/Index';
+import { AodStyleType, ImmersiveAodStyle, immersiveKgMgr } from '@ohos/systemuicommon/src/main/ets/TsIndex';
 import { SlClockBindState } from '@ohos/screenlockwidget/src/main/ets/clock/model/data/SlClockBindState';
 import { SlClockStaticState } from '@ohos/screenlockwidget/src/main/ets/clock/model/data/SlClockStaticState';
 import { slStateHelper } from '../../common/helper/SlStateHelper';
@@ -225,7 +226,7 @@ export class ClockMirrorCtrl implements IComponentMirrorCtrl {
 
   setPartAodAnimState(scene: string): void {
     log.showInfo(`setPartAodAnimState state=${scene}`);
-    const batteryLayout = BatteryLayout.DEFAULT_LAYOUT;
+    const batteryLayout = BatteryLayout.PART_AOD_LAYOUT;
     if (scene === MirrorsScene.DESKTOP_TO_AOD + MirrorAnimState.START) {
       this.clockAnimCtrl?.setStateValue(WBaseProperty.BACKGROUND_COLOR, this.getStartBackgroundColor());
       if (aodHardwareConfig.isSupportBackgroundEffect() && !(this.clockStaticCtrl?.getChangeColorState())) {
@@ -295,7 +296,7 @@ export class ClockMirrorCtrl implements IComponentMirrorCtrl {
 
   setPartAodUiBindState(scene: string): void {
     log.showInfo(`setPartAodAnimState state=${scene}`);
-    const batteryLayout = BatteryLayout.DEFAULT_LAYOUT;
+    const batteryLayout = BatteryLayout.PART_AOD_LAYOUT;
     if (scene === MirrorsScene.DESKTOP_TO_AOD + MirrorAnimState.START) {
       this.setBatteryVisibility(false, batteryLayout);
       return;
@@ -377,7 +378,7 @@ export class ClockMirrorCtrl implements IComponentMirrorCtrl {
     return scene === MirrorsScene.SCREEN_OFF_TO_SL && !this.clockUiBindCtrl?.isInDesktopAndAodClockOneShot();
   }
 
-  private setBatteryVisibility(isShowing: boolean, layout: BatteryLayout = BatteryLayout.DEFAULT_LAYOUT): void {
+  private setBatteryVisibility(isShowing: boolean, layout: BatteryLayout = BatteryLayout.FULL_AOD_LAYOUT): void {
     let showAodBatterySwitchState = this.clockStaticCtrl?.getBatterySwitchState(layout);
     if (!showAodBatterySwitchState) {
       log.showWarn('AOD battery switch is close');

@@ -48,7 +48,7 @@ export class SwiperPageManager {
   }
 
   /**
-   * 设置是否为超大屏首次开机
+   * 设置是否为三折叠首次开机
    * @param isFirst
    */
   public setFirstPowerOnTriple(isFirst: boolean): void {
@@ -56,7 +56,7 @@ export class SwiperPageManager {
   }
 
   /**
-   * 确定是否为超大屏首次开机
+   * 确定是否为三折叠首次开机
    * @returns true:首次 false:非首次
    */
   public getFirstPowerOnTriple(): boolean {

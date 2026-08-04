@@ -22,7 +22,7 @@ import { AppIconCommonView } from '../../../../launchericon/view/AppIconCommonVi
 import { AppIconBadgeVm } from '../../../../launchericon/viewmodel/AppIconBadgeVm';
 import { AppIconCommonEvent } from '../../../../launchericon/viewmodel/AppIconCommonEvent';
 import { AppIconData } from '../../../../launchericon/viewmodel/AppIconData';
-import { AppItemInfo, CommonConstants, FolderAppItemInfo, GridLayoutItemInfo } from '../../../../TsIndex';
+import { AppItemInfo, CommonConstants, DeliverUtil, FolderAppItemInfo, GridLayoutItemInfo } from '../../../../TsIndex';
 import { AppStatus } from '../../../../constants/CommonConstants';
 import { BadgeAnimationType } from '../../../../uicomponents/CustomBadge';
 import { NotHarmonyUtil } from '../../../../utils/NotHarmonyUtil';

@@ -44,6 +44,7 @@ import {
   BigFolderStyleConfig
 } from '@ohos/launchercommon';
 import { AppBubbleCommonParams, launcherVisualEffectMgr } from '@ohos/launchercommon/Index';
+import { DeliverUtil } from '@ohos/launchercommon/src/main/ets/TsIndex';
 import { AppIconBadgeVm } from '@ohos/launchercommon/src/main/ets/launchericon/viewmodel/AppIconBadgeVm';
 import { AddDialogBubbleNodeParams } from '../common/AddDialogBubbleNodeParam';
 import FolderAddDialogConstant from '../common/constants/FolderAddDialogConstant';
@@ -365,6 +366,9 @@ export default struct OpenFolderAddDialog {
       return 'DialogBubbleClock';
     } else if (item.itemInfo.appIndex !== 0) {
       return 'DialogBubbleIndex';
+    } else if (DeliverUtil.isdeliverApp(item.itemInfo.intent) &&
+      !DeliverUtil.isInContainerFolder(item.itemInfo as AppItemInfo)) {
+      return 'DialogBubbledeliver';
     } else if (GridLayoutUtil.isShortcutToDesktopInApp(item.itemInfo)) {
       return 'DialogBubbleShortcutToDesktop';
     } else {
@@ -647,7 +651,7 @@ export default struct OpenFolderAddDialog {
       }
     }
     .margin({ bottom: DeviceHelper.isPad() || desktopUtil.isFoldExpandStatus() ?
-    FolderAddDialogConstant.DEFAULT_ZERO_VP : FolderAddDialogConstant.AI_BAR_HEIGHT })
+    FolderAddDialogConstant.DEFAULT_ZERO_VP : FolderAddDialogConstant.NAVI_BAR_HEIGHT })
     .onKeyEvent((event?: KeyEvent) => {
       if (event?.keyCode === KeyCode.KEYCODE_BACK) {
         log.showInfo('keycode back hide dialog');

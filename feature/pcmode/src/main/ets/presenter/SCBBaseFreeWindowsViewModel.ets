@@ -183,6 +183,8 @@ export abstract class SCBBaseFreeWindowsViewModel implements IFreeWindowsViewMod
   protected needShowFullScreenAboveScreen: boolean = false;
   //是否需要互斥业务监听
   protected needMutexListener: boolean = false;
+  //是否使能语音助手定制逻辑
+  protected vaCustomEnable: boolean = true;
   private readonly MAX_SESSION_LIMIT_ONE_APP = 128;
   // 防止拉起窗口极限场景下，超过单个进程vsync链接数限制
   private readonly MAX_VSYNC_CONNECTION_LIMIT_ONE_APP = 200;
@@ -950,6 +952,7 @@ export abstract class SCBBaseFreeWindowsViewModel implements IFreeWindowsViewMod
 
   protected onInitConfigs(): void {
     this.needShowFullScreenAboveScreen = false;
+    this.vaCustomEnable = true;
     this.needMutexListener = false;
   }
 
@@ -1199,7 +1202,8 @@ export abstract class SCBBaseFreeWindowsViewModel implements IFreeWindowsViewMod
     if (isSameSessionInSplit === true) {
       return;
     }
-    this.raiseSceneToTopAsync(sceneContainerSession, sceneSession.session.persistentId);
+    const needRequestFocus = sceneInfo.focusedOnShow !== false;
+    this.raiseSceneToTopAsync(sceneContainerSession, sceneSession.session.persistentId, needRequestFocus);
     if (this.isInPanelState(ScenePanelState.APP_CENTER)) {
       this.log.showInfo('onStartSceneFromOther exit appCenter view.');
       this.panelProxy.exitAppCenterView();
@@ -1613,8 +1617,19 @@ export abstract class SCBBaseFreeWindowsViewModel implements IFreeWindowsViewMod
     if (dock) {
       dockRect.copyFrom(dock.currRect);
       dockHeight = dock.currRect.height.getPx();
+      this.log.showInfo('getRealScreenInfo - Get dock height from SCBSceneSessionManager: ' + dockHeight);
     } else {
       this.log.showError('getRealScreenInfo SmartDock no exit');
+      // 尝试从AppStorage获取dock栏高度
+      const savedDockHeight = AppStorage.get<number>('dockHeight');
+      if (savedDockHeight) {
+        dockHeight = vp2px(savedDockHeight);
+        this.log.showInfo('getRealScreenInfo - Get dock height from AppStorage (vp): ' + savedDockHeight + ', converted to px: ' + dockHeight);
+      } else {
+        // 使用硬编码默认值
+        dockHeight = 99;
+        this.log.showInfo('getRealScreenInfo - Use default dock height: ' + dockHeight);
+      }
     }
     let screenWidth = this.screenProperty.width;
     let screenHeight = this.screenProperty.height;
@@ -1622,6 +1637,7 @@ export abstract class SCBBaseFreeWindowsViewModel implements IFreeWindowsViewMod
     let maxTop = statusBarHeightPx;
     let maxBottom = screenHeight - dockHeight;
     let fullScreenTop = 0;
+    this.log.showInfo('getRealScreenInfo - Screen width: ' + screenWidth + ', screen height: ' + screenHeight + ', status bar height: ' + statusBarHeightPx + ', dock height: ' + dockHeight + ', screen height limit: ' + screenHeightLimit);
     return new RealScreenInfo(screenWidth, screenHeight, screenHeightLimit, maxTop, maxBottom, fullScreenTop);
   }
 
@@ -2392,8 +2408,11 @@ export abstract class SCBBaseFreeWindowsViewModel implements IFreeWindowsViewMod
       })
     } else {
       this.getUiContext()?.animateTo({
-        duration: 0,
+        duration: 400,
         onFinish: finishCallback
+       // duration: 400,
+       // curve: Curve.EaseInOut,
+       // delay: 400,
       }, () => {
         if (this.isHide) {
           primarySession!.setTran(sceneEndTranX, sceneEndTranY - dockHeight / 4);
@@ -2402,35 +2421,47 @@ export abstract class SCBBaseFreeWindowsViewModel implements IFreeWindowsViewMod
         }
       })
       this.getUiContext()?.animateTo({
-        duration: 0,
+       // duration: 0,
+        duration: 400,
+        curve: Curve.EaseInOut,
       }, () => {
         primarySession!.floatBorderRadius = CommonConstants.DEFAULT_ICON_RADIUS / sceneEndScale;
       })
       if (!this.isBottomInBScreen(primarySession)) {
         if (this.isHide) {
           this.getUiContext()?.animateTo({
-            duration: 0,
+            //duration: 0,
+            duration: 400,
+            curve: Curve.EaseInOut,
           }, () => {
             primarySession!.opacity = 0;
           })
           this.getUiContext()?.animateTo({
-            duration: 0,
+           // duration: 0,
+            duration: 400,
+            curve: Curve.EaseInOut,
           }, () => {
             primarySession!.setScale(0, 0);
           })
         } else {
           this.getUiContext()?.animateTo({
-            duration: 0,
+         //   duration: 0,
+            duration: 400,
+            curve: Curve.EaseInOut,
           }, () => {
             primarySession!.setScaleX(sceneEndScaleX);
           })
           this.getUiContext()?.animateTo({
-            duration: 0,
+           // duration: 0,
+            duration: 400,
+            curve: Curve.EaseInOut,
           }, () => {
             primarySession!.setScaleY(sceneEndScaleY);
           })
           this.getUiContext()?.animateTo({
-            duration: 0,
+           // duration: 0,
+            duration: 400,
+            curve: Curve.EaseInOut,
           }, () => {
             primarySession!.opacity = 0;
           })
@@ -2438,7 +2469,8 @@ export abstract class SCBBaseFreeWindowsViewModel implements IFreeWindowsViewMod
             this.getUiContext()?.animateTo({
               duration: 0,
             }, () => {
-              transitionController?.onActive?.(this.tag, 'onMinimizeScene');
+              //dock栏态栏图标会消失一会儿再显示的原因
+              //transitionController?.onActive?.(this.tag, 'onMinimizeScene');
             })
           }
         }
@@ -3229,7 +3261,7 @@ export abstract class SCBBaseFreeWindowsViewModel implements IFreeWindowsViewMod
     }
 
     const bundleName: string | undefined = containerSession?.primarySession?.sceneInfo?.bundleName;
-    const oobeBundleName: string = 'com.ohos.hwstartupguide';
+    const oobeBundleName: string = 'com.ohos.startupguide';
     const isForceClean = extraInfo?.isForceClean;
     const exceptionCallback = () => {
       const removeSession = extraInfo?.errorReason === 'appRecovery' ? false : true;
@@ -3893,10 +3925,11 @@ export abstract class SCBBaseFreeWindowsViewModel implements IFreeWindowsViewMod
   }
 
   // raise scene to top, to solve the performance issue, make operation cause time async
-  private raiseSceneToTopAsync(sceneContainerSession: SCBSceneContainerSession, persistentId: number) {
+  private raiseSceneToTopAsync(sceneContainerSession: SCBSceneContainerSession, persistentId: number,
+    needRequestFocus: boolean = true) {
     WinLog.showInfo(WinLogDomain.WMS_HIERARCHY, 'raiseSceneToTopAsync inner start');
     // To move the sceneContainerSession to the last of list.
-    this.moveSceneContainerSessionToLastAndRequestFocus(sceneContainerSession, persistentId);
+    this.moveSceneContainerSessionToLastAndRequestFocus(sceneContainerSession, persistentId, needRequestFocus);
 
     // timeout for 0ms to ensure ui first
     setTimeout(() => {
@@ -3949,7 +3982,7 @@ export abstract class SCBBaseFreeWindowsViewModel implements IFreeWindowsViewMod
 
   // move SceneContainerSession to last of the array, same as remove then add
   private moveSceneContainerSessionToLastAndRequestFocus(sceneContainerSession: SCBSceneContainerSession,
-    persistentId: number) {
+    persistentId: number, needRequestFocus: boolean = true) {
     if (!sceneContainerSession) {
       return;
     }
@@ -3981,7 +4014,9 @@ export abstract class SCBBaseFreeWindowsViewModel implements IFreeWindowsViewMod
         sceneContainerSession.dividerParam.setPrimaryZIndex(isPrimaryRaise ? 0 : -1);
         sceneContainerSession.dividerParam.setSecondaryZIndex(isPrimaryRaise ? -1 : 0);
         this.refreshZOrder();
-        SCBSceneSessionManager.getInstance().requestFocus(persistentId, true, FocusChangeReason.MOVE_UP);
+        if (needRequestFocus) {
+          SCBSceneSessionManager.getInstance().requestFocus(persistentId, true, FocusChangeReason.MOVE_UP);
+        }
         const primaryZorder = sceneContainerSession.primarySession?.sessionInfo.zOrder;
         const secondaryZorder = sceneContainerSession.secondarySession?.sessionInfo.zOrder;
         this.log.showDebug(`moveSceneContainerSessionToLastAndRequestFocus ` +
@@ -4369,29 +4404,30 @@ export abstract class SCBBaseFreeWindowsViewModel implements IFreeWindowsViewMod
     } else if (isNonTraceable) {
       this.applyNonTraceableSceneAnimate(sceneContainerSession);
     } else {
+      //dock栏热启动需要动画
       this.getUiContext()?.animateTo({
-        duration: 0,
+        duration: 400,
       }, () => {
         this.restoreSceneRadius(primarySession);
       })
       this.getUiContext()?.animateTo({
-        duration: 0,
+        duration: 400,
       }, () => {
         primarySession.opacity = 1.0;
       })
       this.getUiContext()?.animateTo({
-        duration: 0,
+        duration: 400,
         onFinish: finishCallback,
       }, () => {
         primarySession.setScaleX(1.0);
       })
       this.getUiContext()?.animateTo({
-        duration: 0,
+        duration: 400,
       }, () => {
         primarySession.setScaleY(1.0);
       })
       this.getUiContext()?.animateToImmediately({
-        duration: 0,
+        duration: 400,
       }, () => {
         primarySession.setTran(0, 0);
       })

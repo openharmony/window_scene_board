@@ -75,6 +75,7 @@ export class NotificationMgmtViewEvent {
       this.model?.getAllowState().then((isOn) => {
         this.viewData?.updateAllowState(isOn);
       });
+      this.loadDeliverFlag();
       this.loadDetailConfig();
     }
   }
@@ -105,6 +106,10 @@ export class NotificationMgmtViewEvent {
       }
     }
   };
+
+  private loadDeliverFlag() {
+    this.model?.isDeliver().then((ret: boolean) => this.viewData?.setDeliverAppFlag(ret));
+  }
 
   /**
    * 加载详细数据（除开关以外的配置数据）

@@ -21,7 +21,7 @@ import {
   PluginPosition,
   PluginType,
   PluginSlot } from '@ohos/frameworkwrapper';
-// import statusBar from '@hms.pcService.statusBar';
+import statusBar from '@ohos.pcService.statusBar';
 import { StatusBarTint } from '../../common/StatusBarTint';
 import type { Equality } from '@ohos/basicutils';
 import { GroupInAreaType } from '../utils/enum';
@@ -91,7 +91,7 @@ export class PluginProperty implements Equality {
   /**
    * right menu加载数据集
    */
-  public groupMenuInfo: ESObject[] = [];
+  public groupMenuInfo: statusBar.StatusBarGroupMenu[] = [];
   /**
    * menu位置
    */
@@ -298,7 +298,7 @@ export class PluginProperty implements Equality {
    */
   getGroupMenuInfo(): void {
     if (this.pluginInfo?.pluginParseInfo.isAccessPlugin) {
-      // this.groupMenuInfo = (this.pluginInfo as PluginAccessInfo)?.menuInfo ?? [];
+      this.groupMenuInfo = (this.pluginInfo as PluginAccessInfo)?.menuInfo ?? [];
     }
   }
 
@@ -315,7 +315,9 @@ export class PluginProperty implements Equality {
   }
 
   isNeedSetMenuOffset(): boolean {
-    return (this.isWindowType() && this.isPluginTypeAccess());
+    //为了语音助手右键菜单保持正确边距，需要单独加入语音助手判断
+    return (this.isWindowType() && this.isPluginTypeAccess()) ||
+      this.getSlot() === PluginSlot.SLOT_STATUS_ASSISTANT_VOICE;
   }
 
   isConfigOrLocalPlugin(): boolean {

@@ -39,9 +39,9 @@ class GestureNavBarCcmSettings {
    *
    * @returns 导航条距离屏幕底部距离
    */
-  public getAiBarMarginBottom(): number | undefined {
-    let aiBarMarginBottom = SCBGestureNavSetMgr.getGestureNavigationSet()?.aiBarMarginBottom;
-    return aiBarMarginBottom;
+  public getNaviBarMarginBottom(): number | undefined {
+    let naviBarMarginBottom = SCBGestureNavSetMgr.getGestureNavigationSet()?.naviBarMarginBottom;
+    return naviBarMarginBottom;
   }
 }
 

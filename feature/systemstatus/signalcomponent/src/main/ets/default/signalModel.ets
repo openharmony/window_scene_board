@@ -15,7 +15,7 @@
 
 import Radio from '@ohos.telephony.radio';
 import Sim from '@ohos.telephony.sim';
-// import Vsim from '@hms.telephony.vsim';
+// import Vsim from '@ohos.telephony.vsim';
 import Observer from '@ohos.telephony.observer';
 import {
   LogDomain,

@@ -13,38 +13,19 @@
  * limitations under the License.
  */
 
-import {
-  EditModeUtils,
-  FolderLayoutStruct,
-  FolderStyleConstants,
-  GridLayoutItemInfo,
-  OpenFolderStyle,
-  OpenFolderStyleParam,
-  StyleConstants
-} from '@ohos/launchercommon';
-import { FileUtils, Log, CheckEmptyUtils, SingleContext, singleManager} from '@ohos/basicutils';
-import { GlobalContext, DeviceHelper } from '@ohos/frameworkwrapper';
-import type {
-  CalculateOpenFolderRst,
-  BaseConfig,
-  CalculateDesktopRst,
-  CalculateDockRst,
-  CalculateFormRst,
-  CalculateFolderRst
-} from '@ohos/launchercommon';
+import type { BaseConfig, CalculateDesktopRst, CalculateDockRst, CalculateFolderRst, CalculateFormRst, CalculateOpenFolderRst } from '@ohos/launchercommon';
+import { DesktopMode, FolderLayoutStruct, FolderStyleConstants, OpenFolderStyle, OpenFolderStyleParam, RadiusUtil, StyleConstants } from '@ohos/launchercommon';
+import { FileUtils, Log, LogDomain, LogHelper, SingleContext, singleManager } from '@ohos/basicutils';
+import { GlobalContext } from '@ohos/frameworkwrapper';
 import { PhoneLayoutRulesController } from './PhoneLayoutRulesController';
 import PadPresetConstants from '../../../common/constants/PadPresetConstants';
-import { RadiusUtil } from '@ohos/launchercommon';
-import { DesktopMode } from '@ohos/launchercommon';
 import preferences from '@ohos.data.preferences';
 import type ctx from '@ohos.app.ability.common';
-import { UpdateRdbManager } from '@ohos/launchercommon';
-import { GetLayoutInfoFromConfig } from '@ohos/launchercommon';
 import configPolicy from '@ohos.configPolicy';
 import { FolderStyleCalculate } from '@ohos/bigfolder/src/main/ets/default/viewmodel/FolderStyleCalculate';
-import { ObjectCopyUtil } from '@ohos/componenthelper/src/main/ets/TsIndex';
 
-const TAG = 'PadLayoutRulesControllers';
+const TAG = 'PadLayoutRulesController';
+const log: LogHelper = LogHelper.getLogHelper(LogDomain.HOME, TAG);
 const CONFIG_PATH = 'etc/desktop/grid_layout_config.json';
 const NAVIGATION_OFFSET = 2;
 const SPACE_OFFSET = 6;
@@ -79,7 +60,7 @@ export class PadLayoutRulesController extends PhoneLayoutRulesController {
     if (this.mBaseConfig) {
       return;
     }
-    Log.showInfo(TAG, `${PadLayoutRulesController.singleName} initBaseConfig start`);
+    log.showInfo(`${PadLayoutRulesController.singleName} initBaseConfig start`);
     super.initBaseConfig(baseConfig);
   }
 
@@ -88,7 +69,7 @@ export class PadLayoutRulesController extends PhoneLayoutRulesController {
     try {
       cfgFiles = configPolicy.getCfgFilesSync(CONFIG_PATH);
     } catch (error) {
-      Log.error(TAG, 'configPolicy.getCfgFiles error', error);
+      log.showError('configPolicy.getCfgFiles error', error);
     }
     if (cfgFiles?.length > 0) {
       const filePath = cfgFiles[0];
@@ -114,7 +95,7 @@ export class PadLayoutRulesController extends PhoneLayoutRulesController {
         this.initConfig();
       }
     } else {
-      Log.showInfo(TAG, 'no cfg files');
+      log.showInfo('no cfg files');
       this.initConfig();
     }
   }
@@ -126,7 +107,7 @@ export class PadLayoutRulesController extends PhoneLayoutRulesController {
   }
 
   initConfig(): void {
-    Log.showInfo(TAG, 'initConfig');
+    log.showInfo('initConfig');
     this.iconSizeOfGrid = PadIconSize.LARGE;
     this.rowNumOfGrid = PadGridProp.LONG_SCREEN_ROW_NUM_OF_GRID;
     this.columnNumOfGrid = PadGridProp.COLUMN_NUM_OF_GRID;
@@ -139,7 +120,7 @@ export class PadLayoutRulesController extends PhoneLayoutRulesController {
     let scrWidth = this.mBaseConfig.getScreenWidth();
     this.spaceOfColumnSide = (scrWidth - this.iconSizeOfGrid * this.columnNumOfGrid -
       this.spaceOfColumn * this.columnNumOfGrid) / 2;
-    Log.showInfo(TAG, `scrWidth:${scrWidth}, spaceOfColumn: ${this.spaceOfColumn}, spaceOfRow: ${this.spaceOfRow}, spaceOfColumnSide: ${this.spaceOfColumnSide},
+    log.showInfo(`scrWidth:${scrWidth}, spaceOfColumn: ${this.spaceOfColumn}, spaceOfRow: ${this.spaceOfRow}, spaceOfColumnSide: ${this.spaceOfColumnSide},
      offsetOfRowAndColumn :${this.offsetOfRowAndColumn}`);
   }
 
@@ -161,7 +142,7 @@ export class PadLayoutRulesController extends PhoneLayoutRulesController {
 
   calculateDesktop(): CalculateDesktopRst {
     let itemPadding = this.mBaseConfig.getItemPadding();
-    Log.showInfo(TAG, `itemPadding:${itemPadding}`);
+    log.showInfo(`itemPadding:${itemPadding}`);
     let realGridWidth = this.mBaseConfig.getScreenWidth() - StyleConstants.DEFAULT_2 * this.spaceOfColumnSide;
     // 更新网格宽度
     this.mBaseConfig.setGridRealWidth(realGridWidth);
@@ -217,7 +198,7 @@ export class PadLayoutRulesController extends PhoneLayoutRulesController {
       marginBottomOfIndicator: marginBottomOfIndicator,
       mHeightOfIndicator: indicatorHeight
     };
-    Log.showInfo(TAG, `desktop result: columns is ${result.mColumns}, rows is ${result.mRows}, iconSize is ${result.mIconSize}, gridWidth is ${result.mGridWidth}, gridHeight is ${result.mGridHeight}`);
+    log.showInfo(`desktop result: columns is ${result.mColumns}, rows is ${result.mRows}, iconSize is ${result.mIconSize}, gridWidth is ${result.mGridWidth}, gridHeight is ${result.mGridHeight}`);
     // save cur layout to preferences
     this.saveColumnAndRow();
     return result;
@@ -231,11 +212,11 @@ export class PadLayoutRulesController extends PhoneLayoutRulesController {
       preferences.getPreferences((GlobalContext.getInstance().getObject('desktopContext') as ctx.ServiceExtensionContext), 'DESKTOP_LAYOUT_INFO').then((preference) => {
         preference.putSync('column', this.columnNumOfGrid);
         preference.putSync('row', this.rowNumOfGrid);
-        Log.showInfo(TAG, `calculateDesktop column: ${this.columnNumOfGrid}, row: ${this.rowNumOfGrid}`);
+        log.showInfo(`calculateDesktop column: ${this.columnNumOfGrid}, row: ${this.rowNumOfGrid}`);
         preference.flush().then((res) => {
-          Log.showInfo(TAG, ` save layout to sp successs: ${res}`);
+          log.showInfo(` save layout to sp successs: ${res}`);
         }).catch((reject: Error) => {
-          Log.showInfo(TAG, ` save layout to sp fail: ${reject}`);
+          log.showInfo(` save layout to sp fail: ${reject}`);
         });
       }).catch((error: Error) => {
         Log.showError(TAG, `getPreferences inner error ${error}`);
@@ -270,7 +251,7 @@ export class PadLayoutRulesController extends PhoneLayoutRulesController {
    * calculate card form
    */
   calculateForm(): CalculateFormRst {
-    Log.showInfo(TAG, 'calculateForm pad start');
+    log.showInfo('calculateForm pad start');
     // 1 x 1  width * height
     let widthDimension0: number = this.iconSizeOfGrid;
     let heightDimension0: number = this.iconSizeOfGrid;
@@ -318,7 +299,7 @@ export class PadLayoutRulesController extends PhoneLayoutRulesController {
    * @param isInPreviewMode boolean
    */
   calculateOpenFolder(openFolderConfig: FolderLayoutStruct, isInPreviewMode?: boolean): CalculateOpenFolderRst {
-    Log.showInfo(TAG, 'calculateOpenFolder start');
+    log.showInfo('calculateOpenFolder start');
     let iconSizeTemp: number = this.iconSizeOfGrid;
     let themeStyle = this.getThemeStyleInfo(isInPreviewMode);
     if (themeStyle && themeStyle.iconSizeScale) {

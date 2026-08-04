@@ -29,7 +29,8 @@ import {
   localEventManager,
   ResourceManager,
   ViewManagerPolicy,
-  ViewType
+  ViewType,
+  LightOutdoorConfig
 } from '@ohos/frameworkwrapper';
 import { DragAccessibilityUtils, RectangularCoordinates, RTLUtil } from '@ohos/componenthelper';
 import { DragItemPosition } from '@ohos/componentdrag';
@@ -42,6 +43,7 @@ import {
   CardItemInfo,
   CommonConstants,
   DeleteItemType,
+  DeliverUtil,
   DisappearLastAppData,
   DockContinuableInfo,
   DockItemInfo,
@@ -248,6 +250,9 @@ export default class SmartDockDragHandler extends SingleBase implements IDockDra
     if (layoutLockUtil.isLocked()) {
       return;
     }
+    if (LightOutdoorConfig.getInstance().isOnLightOutdoorMode()) {
+      return;
+    }
     const dragItem: DockItemInfo = AppStorage.get<DockItemInfo>('dragItemInfo') as DockItemInfo;
     const dragGridItem: GridLayoutItemInfo = AppStorage.get<GridLayoutItemInfo>('dragItemInfo') as GridLayoutItemInfo;
     if (!GridLayoutUtil.isValidLayoutItem(dragItem as Object as GridLayoutItemInfo)) {
@@ -447,8 +452,16 @@ export default class SmartDockDragHandler extends SingleBase implements IDockDra
     let targetIndex: number = this.mReorderSolution.findNearestArea(x, y);
     let targetItem: DockItemInfo | undefined = this.mReorderLayout.getItem(targetIndex);
     let dragIndex: number = this.mReorderLayout.getItemIndex(dragItem);
+    // 云端2 dock区域不支持挤位，形成文件夹
+    if (LightOutdoorConfig.getInstance().isOnLightOutdoorMode()) {
+      return true;
+    }
     // 合成文件夹或者添加进文件夹
     if (this.mReorderSolution.isCanCover(x, y, targetIndex, dragItem)) {
+      if (DeliverUtil.isdeliverApp(dragItem.intent)) {
+        log.showInfo(`clear deliver app folder cache: ${dragItem.bundleName}`);
+        localEventManager.sendLocalEventSticky(EventConstants.EVENT_FOLDER_APP_PACKAGE_CHANGED, dragItem.bundleName);
+      }
       if (targetItem && !FolderViewModel.isLayoutFull(targetItem.layoutInfo)) {
         this.addToOrCreateFolder(dragItem, targetItem, x, y);
         return false;
@@ -824,14 +837,15 @@ export default class SmartDockDragHandler extends SingleBase implements IDockDra
     const dragItemInfo: GridLayoutItemInfo = AppStorage.get<GridLayoutItemInfo>('dragItemInfo') as GridLayoutItemInfo;
     let waitForHarmony: boolean =
       dragItemInfo.appStatus === AppStatus.WAIT_FOR_HARMONY && dragItemInfo.typeId === CommonConstants.TYPE_APP;
-    if (NotHarmonyUtil.isNotHarmonyFolderById(targetItem.bundleName) && !waitForHarmony) {
+    if (DeliverUtil.isDisableOperationsOnFolder(targetItem.bundleName, dragItemInfo.intent) ||
+      (NotHarmonyUtil.isNotHarmonyFolderById(targetItem.bundleName) && !waitForHarmony)) {
       log.showInfo('cannot drag item to flod');
       try {
         promptAction.showToast({
           message: ResourceManager.getInstance().getStringByName('can_not_add_to_flod'),
           duration: 2000,
         });
-        // 非OpenHarmony化文件夹-提示不支持图标移入打点
+        // 非鸿蒙化文件夹-提示不支持图标移入打点
         FolderReporter.getInstance()
           .reportDragIconIntoNotHarmonyFolder(dragItemInfo, targetItem, targetItem.bundleName);
       } catch (error) {
@@ -1029,7 +1043,7 @@ export default class SmartDockDragHandler extends SingleBase implements IDockDra
    */
   private refreshDragItem(dragItem: DockItemInfo, dragType: number): boolean {
     if (dragType === CommonConstants.DRAG_FROM_DOCK) {
-      // 当拖拽dock栏元素落位到smartdock（不包含dock栏）或者Aibar上时，落位事件会透传给dock栏
+      // 当拖拽dock栏元素落位到smartdock（不包含dock栏）或者Navibar上时，落位事件会透传给dock栏
       // 如果此时dock栏落位方案中没有拖拽元素，拖拽元素会直接返回原始位置，并与其他执行过居中靠拢动效的元素重叠
       // 该场景下需要刷新dock栏元素位置，保证dock栏显示正常
       this.refreshDockItem(dragItem);

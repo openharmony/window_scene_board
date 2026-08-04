@@ -44,6 +44,8 @@ export enum ClickNotificationErrorCode {
   TRIGGER_WANTAGENT_FAIL = 2003,
   /* 获取wantAgent operationType错误 */
   WANT_AGENT_GET_TYPE_ERROR = 2004,
+  /* 重载业务 */
+  DELIVER_EXCLUDE = 2005,
   /* 设置通知开关失败 */
   SET_NTF_ENABLE_FAIL = 2006,
   /* 设置实况开关失败 */
@@ -82,10 +84,18 @@ export enum ClickNotificationErrorCode {
   NO_CLICK_ACTION = 2509,
   /* 无辅助区数据 */
   NO_EXTEND_DATA = 2510,
+  /* DELIVER点击失败 */
+  DELIVER_FAIL = 2511,
+  /* DELIVER未同意克隆应用隐私协议 */
+  DELIVER_PRIVACY_DISABLE = 2512,
   /* 合一桌面公共事件_开启FULL模式 */
   FULL_MODE = 2515,
   /* 合一桌面公共事件_开启LITE模式 */
   LITE_MODE = 2516,
+  /* DELIVER本地通知环境未启动拉起失败 */
+  DELIVER_ENHANCE_FAIL = 2513,
+  /* DELIVER本地通知环境未启动拉起成功 */
+  DELIVER_ENHANCE_SUCCESS = 2514,
 }
 
 interface ClickNotificationMaintenanceExt extends NotificationMaintenanceExt {
@@ -99,6 +109,8 @@ interface ClickNotificationMaintenanceExt extends NotificationMaintenanceExt {
   scene?: string;
   /* 点击是否删除通知 */
   isAutoDelete?: boolean;
+  /* APP安装来源 */
+  source?: number;
   /* 描述信息 */
   desc?: string;
 }
@@ -140,6 +152,7 @@ export class ClickNotificationMaintenance extends NotificationMaintenance<ClickN
     ClickNotificationMaintenance.info = info;
     if (info.data instanceof NotificationBase || info.data instanceof BaseNotification) {
       ClickNotificationMaintenance.info.isAutoDelete = info.data?.isAutoDelete;
+      ClickNotificationMaintenance.info.source = info.data?.deliverInstallSource;
       ClickNotificationMaintenance.info.isCollaNtf = info.data instanceof NotificationBase ?
         info.data?.isCollaNotification : false;
     }
@@ -230,6 +243,7 @@ export class ClickNotificationMaintenance extends NotificationMaintenance<ClickN
       this.ext.buttonName = info.buttonName;
       this.ext.scene = info.scene;
       this.ext.isAutoDelete = info.isAutoDelete;
+      this.ext.source = info.source;
       this.ext.desc = info.desc;
       const moreInfo: Record<string, Object> = {};
       moreInfo.traceId = ntf.traceId;

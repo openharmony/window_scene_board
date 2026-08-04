@@ -57,6 +57,13 @@
             }
         },
         {
+            "name":"ai_assistant",
+            "value":"ཞའོ་དབྱི།",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
             "name":"battery_power",
             "value":"གློག་ཚད། : %s",
             "attr":{
@@ -136,6 +143,27 @@
         {
             "name":"ethernet_status_connected",
             "value":"སྐུད་ལྡན་དྲ་རྒྱ་སྦྲེལ་ཟིན།",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"voice_search",
+            "value":"ཞའོ་དབྱི་བཤེར་འཚོལ།",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"voice_translate",
+            "value":"ཞའོ་དབྱི་ཡིག་སྒྱུར།",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"voice_notetaker",
+            "value":"ཞའོ་དབྱི་རིག་ལྡན་ཟིན་ཐོ།",
             "attr":{
                 "priority":"translate"
             }

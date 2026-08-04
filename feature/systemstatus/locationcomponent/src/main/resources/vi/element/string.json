@@ -13,6 +13,13 @@
             "attr":{
                 "priority":"translate"
             }
+        },
+        {
+            "name": "control_center_super_privacy_for_location_toggle",
+            "value": "Đã chặn quyền truy cập vị trí. Trước tiên hãy tắt chế độ Siêu riêng tư.",
+            "attr": {
+                "priority": "translate"
+            }
         }
-    ]
+]
 }

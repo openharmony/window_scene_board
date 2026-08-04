@@ -20,6 +20,7 @@ export interface FormCenterTitleParam {
   text?: string | Resource;
   style?: FormCenterTitleStyle;
   mEditModeSearchOptions?: EditModeSearchOptions;
+  onCloseClick?: () => void;
 }
 
 export interface CenterTitleBuilderInterface {

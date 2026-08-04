@@ -148,7 +148,8 @@ export class FileFolderDragHandler {
    * @returns
    */
   public isNeedWhiteBox(extraInfo?: string): boolean {
-    return this.isDragFromFileManager(extraInfo) || this.isDragFromAnotherPc(extraInfo);
+    return this.isDragFromFileManager(extraInfo) || this.isDragFromHiSearch(extraInfo) ||
+      this.isDragFromAnotherPc(extraInfo);
   }
 
   /**
@@ -190,6 +191,19 @@ export class FileFolderDragHandler {
       return true;
     }
     return false;
+  }
+
+  /**
+   * 判断是否来自全搜的拖拽
+   * @param extraInfo
+   * @returns
+   */
+  public isDragFromHiSearch(extraInfo?: string): boolean {
+    if (!extraInfo) {
+      log.showError(TAG, 'isDragFromHiSearch invalid extraInfo');
+      return false;
+    }
+    return extraInfo.includes(FileFolderConstants.HI_SEARCH);
   }
 
 }

@@ -346,6 +346,13 @@
             "attr":{
                 "priority":"LT"
             }
+        },
+        {
+            "name":"app_others",
+            "value":"\u200fdeliver",
+            "attr":{
+                "priority":"LT"
+            }
         }
     ]
 }

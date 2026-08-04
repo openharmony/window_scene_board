@@ -16,6 +16,7 @@
 import { notificationCcmConfig } from '@ohos/systemuicommon';
 import { LogDomain, LogHelper, SingletonHelper, ThreadUtil } from '@ohos/basicutils';
 import { notificationConfigManager } from './manager/NotificationConfigManager';
+import { NotificationRestoreManager } from './backup/NotificationRestoreManager';
 import { NotificationSubscribeManager } from './manager/NotificationSubscribeManager';
 import { NotificationRemindManager } from './manager/NotificationRemindManager';
 import { HaInitManager } from './manager/HaInitManager';
@@ -28,6 +29,7 @@ import lazy { ScreenLockApi, screenLockInnerStateManager, ScreenLockStateManager
   SystemSwitchUtils } from '@ohos/screenlockcommon';
 import lazy { PowerStatusMonitor } from '@ohos/screenlockcommon/Index';
 import lazy { ScreenLockAdapter } from '@ohos/systemuicommon';
+import { OutdoorVm } from '@ohos/systemuicommon/src/main/ets/vm/OutdoorVm';
 
 const TAG = 'NotificationInitiator';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.NC, TAG);
@@ -80,8 +82,14 @@ export class NotificationInitiator {
       // 初始化消息提醒
       NotificationRemindManager.get().init();
 
+      // 初始化系统迁移三方应用延迟加载
+      NotificationRestoreManager.get().init();
+
       // 通知中心周期打点初始化
       SystemUIStateEventReporter.get().init();
+
+      // 云端模式初始化
+      OutdoorVm.instance.init();
 
       log.showInfo('Notification init end');
     } catch (error) {

@@ -23,6 +23,10 @@
     {
       "name": "normal_form_center_shadow_color",
       "value": "#59050505"
+    },
+    {
+      "name": "formCenter_background",
+      "value": "#59050505"
     }
   ]
 }

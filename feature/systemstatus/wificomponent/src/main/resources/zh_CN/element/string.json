@@ -1,4 +1,4 @@
-{
+﻿{
     "string":[
         {
             "name":"accessibility_status_bar_wifi_no",
@@ -69,6 +69,14 @@
             "attr":{
                 "priority":"translate"
             }
+        },
+        {
+            "name":"control_center_anti_theft_for_toggle",
+            "value":"样机处于防盗值守状态，此操作已被禁止执行",
+            "attr":{
+                "priority":"LT"
+            }
         }
+
     ]
 }

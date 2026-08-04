@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 /* instrument ignore file */
-// import superPrivacyManager from '@hms.security.superPrivacyManager';
+// import superPrivacyManager from '@ohos.security.superPrivacyManager';
 import { BusinessError } from '@kit.BasicServicesKit';
 import commonEventManager from '@ohos.commonEventManager';
 import { AsyncCallback } from '@ohos.base';

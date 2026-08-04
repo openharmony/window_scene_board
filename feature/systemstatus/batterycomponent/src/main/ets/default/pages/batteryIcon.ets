@@ -52,7 +52,7 @@ import {
   getBatteryHeight,
   productSeries,
 } from '../common/privacyIndicatorModel';
-// import privacyIndicatorManager from '@hms.security.privacyIndicatorManager';
+// import privacyIndicatorManager from '@ohos.security.privacyIndicatorManager';
 import display from '@ohos.display';
 import { curves, LengthMetrics } from '@kit.ArkUI';
 import { DropDownPanelManager } from '@ohos/systemuicommon/Index';

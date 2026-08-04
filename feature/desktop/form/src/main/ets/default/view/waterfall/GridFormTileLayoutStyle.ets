@@ -22,6 +22,7 @@ import StyleManager from '../../manager/StyleManager';
 import lazy PcFormStyleConstants from '../../common/constants/PcFormStyleConstants';
 import { RecommendFormsViewEvent } from '../../viewmodel/RecommendFormsViewEvent';
 import { SearchStateMgr } from '../../../formcenter/view/atomicview/SearchComponent';
+import { DeviceHelper } from '@ohos/frameworkwrapper';
 
 const TAG = 'GridFormTileLayoutStyle';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.HOME, TAG);
@@ -186,12 +187,12 @@ export default struct GridFormTileLayoutStyle {
     .edgeEffect(EdgeEffect.Spring)
     .columnsGap(PcFormStyleConstants.PC_GRID_COLUMN_GAP)
     .id('Grid_Style_From_Center')
-    .columnsTemplate('1fr 1fr 1fr 1fr')
+    .columnsTemplate('1fr 1fr')
     .padding({
       top: StyleManager.getSheetFormStyle()?.contentAreaMarginTop,
       left: this.mViewData.cardViewMargin,
       right: this.mViewData.cardViewMargin
     })
-    .width(this.mViewData.viewWidth)
+    .width(DeviceHelper.isPC() ? '100%' : this.mViewData.viewWidth)
   }
 }

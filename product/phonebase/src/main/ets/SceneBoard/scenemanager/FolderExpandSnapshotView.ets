@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 import { image } from '@kit.ImageKit';
 import { curves } from '@kit.ArkUI';
 import { LogDomain, LogHelper } from '@ohos/basicutils';
@@ -20,9 +19,9 @@ import sceneSessionManager from '@ohos.sceneSessionManager';
 import { StyleConstants } from '@ohos/launchercommon';
 import { EvtBus } from '@ohos/frameworkwrapper/src/main/ets/eventbus/EventBus';
 import {
-  UltraScreenExpandAnimUtils,
+  TripleFoldExpandAnimUtils,
   SCBTripleStateChange
-} from '@ohos/launchercommon/src/main/ets/utils/UltraScreenExpandAnimUtils';
+} from '@ohos/launchercommon/src/main/ets/utils/TripleFoldExpandAnimUtils';
 
 const TAG = 'FolderExpandSnapshotView';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.WINDOW, TAG);
@@ -62,7 +61,7 @@ export struct FolderExpandSnapshotView {
       log.showInfo(`foldExpandSnapShot get snapShot`);
       this.foldExpandSnapShotEnable = true;
       animateTo({
-        curve: UltraScreenExpandAnimUtils.getScenePanelSnapshotAlphaCurve(this.foldExpandStateChange)
+        curve: TripleFoldExpandAnimUtils.getScenePanelSnapshotAlphaCurve(this.foldExpandStateChange)
       }, () => {
         this.foldExpandSnapShotEnable = false;
         this.foldExpandSnapShot?.release();

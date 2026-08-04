@@ -72,23 +72,23 @@ export function GestureNavBarSettingsTest() {
       mocker.ignoreMock(gestureNavBarCcmSettings, gestureNavBarCcmSettings.getNavBarLandscapeWindowWidthPercent);
     });
 
-    it('GestureNavBarSettingsTest_getAiBarMarginBottom_1', Level.LEVEL0, (): void => {
+    it('GestureNavBarSettingsTest_getNaviBarMarginBottom_1', Level.LEVEL0, (): void => {
       let gestureNavBarSettings: GestureNavBarSettings = new GestureNavBarSettings();
       let mocker = new MockKit();
-      let mockFunc: Function = mocker.mockFunc(gestureNavBarCcmSettings, gestureNavBarCcmSettings.getAiBarMarginBottom);
+      let mockFunc: Function = mocker.mockFunc(gestureNavBarCcmSettings, gestureNavBarCcmSettings.getNaviBarMarginBottom);
       when(mockFunc)(ArgumentMatchers.any).afterReturn(undefined);
-      expect(gestureNavBarSettings.getAiBarMarginBottom() === GestureNavBarConstants.AIBAR_DEFAULT_BOTTOM_MARGIN)
+      expect(gestureNavBarSettings.getNaviBarMarginBottom() === GestureNavBarConstants.NAVIBAR_DEFAULT_BOTTOM_MARGIN)
         .assertTrue();
-      mocker.ignoreMock(gestureNavBarCcmSettings, gestureNavBarCcmSettings.getAiBarMarginBottom);
+      mocker.ignoreMock(gestureNavBarCcmSettings, gestureNavBarCcmSettings.getNaviBarMarginBottom);
     });
 
-    it('GestureNavBarSettingsTest_getAiBarMarginBottom_2', Level.LEVEL0, (): void => {
+    it('GestureNavBarSettingsTest_getNaviBarMarginBottom_2', Level.LEVEL0, (): void => {
       let gestureNavBarSettings: GestureNavBarSettings = new GestureNavBarSettings();
       let mocker = new MockKit();
-      let mockFunc: Function = mocker.mockFunc(gestureNavBarCcmSettings, gestureNavBarCcmSettings.getAiBarMarginBottom);
+      let mockFunc: Function = mocker.mockFunc(gestureNavBarCcmSettings, gestureNavBarCcmSettings.getNaviBarMarginBottom);
       when(mockFunc)(ArgumentMatchers.any).afterReturn(8);
-      expect(gestureNavBarSettings.getAiBarMarginBottom() === 8).assertTrue();
-      mocker.ignoreMock(gestureNavBarCcmSettings, gestureNavBarCcmSettings.getAiBarMarginBottom);
+      expect(gestureNavBarSettings.getNaviBarMarginBottom() === 8).assertTrue();
+      mocker.ignoreMock(gestureNavBarCcmSettings, gestureNavBarCcmSettings.getNaviBarMarginBottom);
     });
   });
 }

@@ -48,7 +48,7 @@ const DEFAULT_PAGE = 0;
 export class CardSqueezer extends SingleBase {
   public static singleName: string = 'CardSqueezer';
   private squeezeEnable: boolean = DeviceHelper.isPC();
-  private isBigScreen: boolean = DeviceHelper.isBigScreenMachine();
+  private isSuperFold: boolean = DeviceHelper.isSuperFoldMachine();
   private squeezeSuccess: boolean = false;
   private dragItem: GridLayoutItemInfo = new GridLayoutItemInfo();
   // 原始布局
@@ -107,7 +107,7 @@ export class CardSqueezer extends SingleBase {
     this.updateLayouts();
   }
 
-  public setBigScreenStatus(isPortrait: boolean, isExpandStatus: boolean, config: GridLayoutConfig): void {
+  public setSuperFoldStatus(isPortrait: boolean, isExpandStatus: boolean, config: GridLayoutConfig): void {
     if (this.isExpandStatus !== isExpandStatus) {
       this.originLayout.clear();
       this.cacheLayout.clear();
@@ -167,7 +167,7 @@ export class CardSqueezer extends SingleBase {
         return;
       }
       let cachePosition: DragGridPosition = { row: cache.row ?? 0, column: cache.column ?? 0, page: cache.page };
-      if (this.isBigScreen && this.isExpandStatus) {
+      if (this.isSuperFold && this.isExpandStatus) {
         cachePosition = GridLayoutUtil.changeDragGridPositionToExpand(cachePosition, this.isPortrait,
           this.mGridConfig.row, this.mGridConfig.column);
       }
@@ -186,7 +186,7 @@ export class CardSqueezer extends SingleBase {
   private getLayouts(): void {
     this.originLayout.clear();
     this.cacheLayout.clear();
-    let layoutInfo = this.isBigScreen ?
+    let layoutInfo = this.isSuperFold ?
     LaunchLayoutCacheManager.getInstance().getAllGridLayoutItemList(BusinessType.BUSINESS_BASIC_DESKTOP) :
     LaunchLayoutCacheManager.getInstance().selectGridLayoutItemsByPage(DEFAULT_PAGE);
     layoutInfo.sort((a: GridLayoutItemInfo, b: GridLayoutItemInfo) => {
@@ -198,7 +198,7 @@ export class CardSqueezer extends SingleBase {
       if (key !== itemKey) {
         // 原始布局需要深拷贝，不能直接使用缓存数据
         let newItem: GridLayoutItemInfo = ObjectCopyUtil.deepClone(item);
-        if (this.isBigScreen && this.isExpandStatus) {
+        if (this.isSuperFold && this.isExpandStatus) {
           const position: DragGridPosition =
             GridLayoutUtil.changeDragGridPositionToExpand({ row: newItem.row, column: newItem.column,
               page: newItem.page }, this.isPortrait, this.mGridConfig.row, this.mGridConfig.column);
@@ -216,7 +216,7 @@ export class CardSqueezer extends SingleBase {
    */
   private updateLayouts(): void {
     let key: string = this.getItemKey(this.dragItem);
-    let layoutInfo = this.isBigScreen ?
+    let layoutInfo = this.isSuperFold ?
     LaunchLayoutCacheManager.getInstance().getAllGridLayoutItemList(BusinessType.BUSINESS_BASIC_DESKTOP) :
     LaunchLayoutCacheManager.getInstance().selectGridLayoutItemsByPage(DEFAULT_PAGE);
     // 遍历缓存时同步删除共同元素，剩余元素即为删除元素
@@ -234,7 +234,7 @@ export class CardSqueezer extends SingleBase {
         deleteItems.delete(itemKey);
         let originItem: GridLayoutItemInfo | undefined = this.originLayout.get(itemKey);
         let position: DragGridPosition = { row: (item.row ?? 0), column: (item.column ?? 0), page: item.page };
-        if (this.isBigScreen && this.isExpandStatus) {
+        if (this.isSuperFold && this.isExpandStatus) {
           position = GridLayoutUtil.changeDragGridPositionToExpand(position, this.isPortrait,
             this.mGridConfig.row, this.mGridConfig.column);
         }
@@ -257,7 +257,7 @@ export class CardSqueezer extends SingleBase {
     } else {
       addItems.forEach((item: GridLayoutItemInfo, key: string) => {
         let newItem: GridLayoutItemInfo = ObjectCopyUtil.deepClone(item);
-        if (this.isBigScreen && this.isExpandStatus) {
+        if (this.isSuperFold && this.isExpandStatus) {
           const position: DragGridPosition =
             GridLayoutUtil.changeDragGridPositionToExpand({ row: newItem.row, column: newItem.column,
               page: newItem.page }, this.isPortrait, this.mGridConfig.row, this.mGridConfig.column);
@@ -283,7 +283,7 @@ export class CardSqueezer extends SingleBase {
   private getCrossItems(dragRect: RectItem): GridLayoutItemInfo[] {
     let crossItems: GridLayoutItemInfo[] = [];
     this.originLayout.forEach((item: GridLayoutItemInfo) => {
-      if (this.isBigScreen &&
+      if (this.isSuperFold &&
         item.page !== PageDesktopDragHandler.getInstance(this.singleContext).getCurrentPageIndex()) {
         return;
       }
@@ -311,7 +311,7 @@ export class CardSqueezer extends SingleBase {
     let crossMoveItems: MoveItem[] = [];
     // 标记布局占用状态
     let layout: GridLayoutItemInfo[] = Array.from(this.originLayout.values());
-    if (this.isBigScreen && !this.isExpandStatus) {
+    if (this.isSuperFold && !this.isExpandStatus) {
       layout = layout.filter(item =>
         item.page === PageDesktopDragHandler.getInstance(this.singleContext).getCurrentPageIndex());
     }
@@ -338,7 +338,7 @@ export class CardSqueezer extends SingleBase {
       gridOccupyStatus.markGridForCellAndSpan(cellAndSpan, GridOccupyStatusEnum.OCCUPIED);
       let origin: DragGridPosition = { row: item.row, column: item.column };
       let target: DragGridPosition = { row: res[1], column: res[0] };
-      if (this.isBigScreen && this.isExpandStatus) {
+      if (this.isSuperFold && this.isExpandStatus) {
         origin = GridLayoutUtil.changeDragGridPositionToFold(origin, this.isPortrait,
           this.mGridConfig.row, this.mGridConfig.column);
         target = GridLayoutUtil.changeDragGridPositionToFold(target, this.isPortrait,
@@ -376,7 +376,7 @@ export class CardSqueezer extends SingleBase {
           return;
         }
         target = { row: targetItem.row, column: targetItem.column };
-        if (this.isBigScreen && this.isExpandStatus) {
+        if (this.isSuperFold && this.isExpandStatus) {
           target = GridLayoutUtil.changeDragGridPositionToFold({ row: target.row, column: target.column, page: 0 },
             this.isPortrait, this.mGridConfig.row, this.mGridConfig.column);
         }
@@ -422,10 +422,10 @@ export class CardSqueezer extends SingleBase {
     moveItem.column = target.column;
     // 获取目标位置
     translatePosition[1] = GridLayoutUtil.getGridItemPosition(target.row, target.column);
-    if (this.isBigScreen && this.isExpandStatus) {
-      translatePosition[0] = GridLayoutUtil.getBigScreenGridItemPosition(origin.row, origin.column,
+    if (this.isSuperFold && this.isExpandStatus) {
+      translatePosition[0] = GridLayoutUtil.getSuperFoldGridItemPosition(origin.row, origin.column,
         origin.page, this.isPortrait);
-      translatePosition[1] = GridLayoutUtil.getBigScreenGridItemPosition(target.row, target.column,
+      translatePosition[1] = GridLayoutUtil.getSuperFoldGridItemPosition(target.row, target.column,
         target.page, this.isPortrait);
       moveItem.page = target.page ?? 0;
     }

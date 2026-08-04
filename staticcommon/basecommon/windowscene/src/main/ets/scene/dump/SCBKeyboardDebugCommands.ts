@@ -89,18 +89,10 @@ export class SCBKeyboardDebugCommands {
     array.push('type', session.session?.type);
     array.push('visibility', session.visibility);
     array.push('currRect', session.currRect);
-    array.push('isShowPanel', session.isShowPanel);
     array.push('isLandscape', session.isLandscape);
-    array.push('rightIcon', session.rightIcon);
     array.push('isActive', session.isActive);
-    array.push('smartButtonInfo', session.smartButtonInfo);
-    array.push('rightSelectedIcon', session.rightSelectedIcon);
-    array.push('toolbarPaddingLeft', session.toolbarPaddingLeft);
-    array.push('toolbarPaddingRight', session.toolbarPaddingRight);
     array.push('isExpandStatus', session.isExpandStatus);
     array.push('isHotSwitch', session.getIsHotSwitch());
-    array.push('patternOption', session.getPatternOption());
-    array.push('smartMenu', session.getSmartMenu());
     array.push('backgroundColor', session.backgroundColor);
     array.push('borderRadius', session.borderRadius);
     array.push('radius', session.radius);

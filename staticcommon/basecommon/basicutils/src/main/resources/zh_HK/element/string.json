@@ -346,6 +346,13 @@
             "attr":{
                 "priority":"LT"
             }
+        },
+        {
+            "name":"app_others",
+            "value":"克隆应用",
+            "attr":{
+                "priority":"LT"
+            }
         }
     ]
 }

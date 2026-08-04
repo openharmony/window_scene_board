@@ -97,10 +97,10 @@ export function SCBRotationConfigTest() {
     })
 
     it('isFMGScreenType', Level.LEVEL0, () => {
-      let resExpandingUltraScreenProduct: boolean =
+      let resExpandingThreeFoldProduct: boolean =
         ReflectionUtils.useFunc(rotationConfig, 'isFMGScreenType',
-          FoldPhoneTypeValue.EXPANDING_ULTRA_SCREEN_PRODUCT);
-      expect(resExpandingUltraScreenProduct).assertTrue();
+          FoldPhoneTypeValue.EXPANDING_THREE_FOLD_PRODUCT);
+      expect(resExpandingThreeFoldProduct).assertTrue();
 
       let resOther: boolean =
         ReflectionUtils.useFunc(rotationConfig, 'isFMGScreenType', FoldPhoneTypeValue.STRAIGHT);

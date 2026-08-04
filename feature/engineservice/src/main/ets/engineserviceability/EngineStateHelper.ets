@@ -38,7 +38,7 @@ const EXPAND_TO_FULL_EXPAND_PORTRAIT: number = 6;
 const EXPAND_TO_FULL_EXPAND_LAND: number = 2;
 const PORTRAIT_FULL_EXPAND_TO_BASE: number = 8;
 const BASE_TO_FULL_EXPAND: number = 10;
-const ULTRA_SCREEN_FULL_EXPAND: number = 11;
+const TRI_FOLD_FULL_EXPAND: number = 11;
 const LEFT_HALF_RIGHT_EXPAND: number = 21;
 const FOLD_LEFT_HALF_INVALID: number = 22;
 const FOLD_INVALID: number = 12;
@@ -96,11 +96,11 @@ export class EngineStateHelper {
   private context: Context;
 
   private isSupportStateChange(): boolean {
-    // 除了大屏设备，在任何时候都支持状态变化
-    if (!ThemeConstant.getIsBigScreenDevices()) {
+    // 除了超级折叠设备，在任何时候都支持状态变化
+    if (!ThemeConstant.getIsSuperFoldDevices()) {
       return true;
     }
-    // 大屏设备只有壁纸处于前台时，才允许触发状态变化
+    // 超级折叠设备只有壁纸处于前台时，才允许触发状态变化
     if (EngineProxy.getInstance().getSceneState() === 0 || EngineProxy.getInstance().getSceneState() === -1) {
       return true;
     }
@@ -227,18 +227,18 @@ export class EngineStateHelper {
       this.screenDirection === display.Orientation.PORTRAIT_INVERTED;
     Log.info(TAG, `onFoldStatusChange, screenDirection: ${this.screenDirection}, isPortrait: ${isPortrait}`);
     if (this.foldStatus === display.FoldStatus.FOLD_STATUS_EXPANDED &&
-      newFoldStatus === ULTRA_SCREEN_FULL_EXPAND) {
+      newFoldStatus === TRI_FOLD_FULL_EXPAND) {
       this.stateIdentifier += isPortrait ? EXPAND_TO_FULL_EXPAND_PORTRAIT : EXPAND_TO_FULL_EXPAND_LAND;
       this.screenDirection = isPortrait ? display.Orientation.LANDSCAPE : display.Orientation.PORTRAIT;
     } else if (this.foldStatus === display.FoldStatus.FOLD_STATUS_FOLDED &&
-      newFoldStatus === ULTRA_SCREEN_FULL_EXPAND) {
+      newFoldStatus === TRI_FOLD_FULL_EXPAND) {
       this.stateIdentifier += BASE_TO_FULL_EXPAND;
       this.screenDirection = display.Orientation.LANDSCAPE;
-    } else if (this.foldStatus === ULTRA_SCREEN_FULL_EXPAND &&
+    } else if (this.foldStatus === TRI_FOLD_FULL_EXPAND &&
       newFoldStatus === display.FoldStatus.FOLD_STATUS_EXPANDED) {
       this.stateIdentifier -= isPortrait ? EXPAND_TO_FULL_EXPAND_LAND : EXPAND_TO_FULL_EXPAND_PORTRAIT;
       this.screenDirection = isPortrait ? display.Orientation.LANDSCAPE : display.Orientation.PORTRAIT;
-    } else if (this.foldStatus === ULTRA_SCREEN_FULL_EXPAND &&
+    } else if (this.foldStatus === TRI_FOLD_FULL_EXPAND &&
       newFoldStatus === display.FoldStatus.FOLD_STATUS_FOLDED) {
       this.stateIdentifier -= isPortrait ? PORTRAIT_FULL_EXPAND_TO_BASE : BASE_TO_FULL_EXPAND;
       this.screenDirection = display.Orientation.PORTRAIT;
@@ -252,7 +252,7 @@ export class EngineStateHelper {
   }
 
   private getActualFoldStatus(incomingStatus: display.FoldStatus): display.FoldStatus {
-    // 大屏半折和M态半折更新为展开态
+    // 双折叠半折和M态半折更新为展开态
     if (incomingStatus === display.FoldStatus.FOLD_STATUS_HALF_FOLDED) {
       return display.FoldStatus.FOLD_STATUS_EXPANDED;
     }
@@ -264,7 +264,7 @@ export class EngineStateHelper {
     // 13表示半折和展开 23表示半折和半折，21表示展开和半折，更新为G态
     if (incomingStatus === LEFT_EXPAND_RIGHT_HALF || incomingStatus === LEFT_HALF_RIGHT_HALF ||
       incomingStatus === LEFT_HALF_RIGHT_EXPAND) {
-      return ULTRA_SCREEN_FULL_EXPAND;
+      return TRI_FOLD_FULL_EXPAND;
     }
 
     // 展开态、G态
@@ -304,8 +304,8 @@ export class EngineStateHelper {
       return false;
     }
 
-    // 超大屏G态可以旋转
-    if (this.foldStatus === ULTRA_SCREEN_FULL_EXPAND) {
+    // 三折叠G态可以旋转
+    if (this.foldStatus === TRI_FOLD_FULL_EXPAND) {
       return true;
     }
 
@@ -392,8 +392,8 @@ export class EngineStateHelper {
     }
     try {
       if (DeviceUtil.isFoldExpanded()) {
-        if (display.getFoldStatus() >= ULTRA_SCREEN_FULL_EXPAND) {
-          this.foldStatus = ULTRA_SCREEN_FULL_EXPAND;
+        if (display.getFoldStatus() >= TRI_FOLD_FULL_EXPAND) {
+          this.foldStatus = TRI_FOLD_FULL_EXPAND;
           this.stateIdentifier |= SECOND_EXPAND_IDENTIFIER;
         } else {
           this.foldStatus = display.FoldStatus.FOLD_STATUS_EXPANDED;

@@ -53,20 +53,46 @@ export default struct InputMethodIcon {
   }
 
   build() {
-    Image(this.viewModel.mInputMethodImage)
+    if (this.viewModel.mIsAI) {
+      Text() {
+        SymbolSpan($r('sys.symbol.AI_keyboard'))
+          .fontSize('21vp')
+          .fontColor([this.contentColor])
+          .fontWeight(FontWeight.Medium)
+      }
       .draggable(false)
+      .width('100%')
+      .height('100%')
+      .textAlign(TextAlign.Center)
       .id(COMPONENT_ID_INPUT_METHOD)
-      .objectFit(ImageFit.Contain)
-      .shadow(this.getShadow())
-      .width(this.getInputMethodIconWidth())
-      .height(this.getInputMethodIconHeight())
-      .autoResize(false)
-      .interpolation(ImageInterpolation.Medium)
-      .onError((error) => {
-        log.showError(`InputMethodImage error: ${error.message}`);
-        this.viewModel.resetInputMethodImage();
-      })
       .renderGroup(true)
+      .textShadow(this.contentColor === CONTENT_COLOR_WHITE ? [{
+        radius: 2,
+        color: '#33000000',
+        offsetX: 0,
+        offsetY: 1
+      }, {
+        radius: 6,
+        color: '#33000000',
+        offsetX: 0,
+        offsetY: 2
+      }] : [])
+    } else {
+      Image(this.viewModel.mInputMethodImage)
+        .draggable(false)
+        .id(COMPONENT_ID_INPUT_METHOD)
+        .objectFit(ImageFit.Contain)
+        .shadow(this.getShadow())
+        .width(this.getInputMethodIconWidth())
+        .height(this.getInputMethodIconHeight())
+        .autoResize(false)
+        .interpolation(ImageInterpolation.Medium)
+        .onError((error) => {
+          log.showError(`InputMethodImage error: ${error.message}`);
+          this.viewModel.resetInputMethodImage();
+        })
+        .renderGroup(true)
+    }
   }
 
   private getInputMethodIconWidth(): Length {

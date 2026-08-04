@@ -19,6 +19,7 @@ import { AbstractObserverManager } from '../base/AbstractObserverManager';
 
 const TAG = 'PowerSaveModeManager';
 const log = LogHelper.getLogHelper(LogDomain.KG, TAG);
+const POWER_SAVE_MODE_CLOUD: number = 650;
 
 /**
  * powerMode 系统显示变化监听
@@ -70,6 +71,9 @@ export class PowerSaveModeManager extends AbstractObserverManager<PowerSaveModeL
   public registerObserver(observer: PowerSaveModeListener, isCallbackImmediately: boolean = false,
     highPriory: boolean = true): void {
     super.registerObserver(observer, isCallbackImmediately, highPriory);
+    if (PowerSaveModeManager.isOutDoorCloudMode()) {
+      observer.onPowerSaveModeChange(POWER_SAVE_MODE_CLOUD);
+    }
   }
 
   /*
@@ -97,6 +101,17 @@ export class PowerSaveModeManager extends AbstractObserverManager<PowerSaveModeL
     this.broadcastDataChange(observer => {
       observer.onPowerSaveModeChange(this._powerMode);
     });
+  }
+
+  public static isOutDoorCloudMode(): boolean {
+    let curPowerMode: power.DevicePowerMode = power.DevicePowerMode.MODE_NORMAL;
+    try {
+      curPowerMode = power.getPowerMode();
+      log.showInfo(`isOutDoorCloudMode,currentMode is ${curPowerMode}`);
+    } catch (err) {
+      log.showError(`Get device power mode failed , err: ${err.code}, errMessage: ${err.message}`);
+    }
+    return curPowerMode as number === POWER_SAVE_MODE_CLOUD;
   }
 
   /*

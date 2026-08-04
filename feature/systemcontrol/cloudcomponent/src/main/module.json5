@@ -1,0 +1,9 @@
+{
+  "module": {
+    "name": "cloudcomponent",
+    "type": "har",
+    "deviceTypes": [
+      "default"
+    ]
+  }
+}

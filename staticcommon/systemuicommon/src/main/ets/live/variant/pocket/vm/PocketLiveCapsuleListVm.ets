@@ -30,6 +30,7 @@ import { AnimationBase } from '../../../../animation/AnimationBase';
 import { LiveStyle } from '../../../constants/LiveStyle';
 import { PowerStatusEnum, PowerStatusMonitorAdapter } from '../../../../adapter/PowerStatusMonitorAdapter';
 import { LiveMetaBallScene } from '../../../model/LiveCommonModel';
+import { OutdoorVm } from '../../../../vm/OutdoorVm';
 
 @ObservedV2
 export class PocketLiveCapsuleListVm extends LiveCapsuleListVm implements ILiveCapsuleListVm {
@@ -119,6 +120,9 @@ export class PocketLiveCapsuleListVm extends LiveCapsuleListVm implements ILiveC
 
     if (capsuleVm.isToDelete) {
       this.log.showWarn(`Capsule ${live.hashCode} is toDelete`);
+      capsuleVm.isVisible = false;
+    } else if (!OutdoorVm.instance.isInOutdoorAppList(live)) {
+      this.log.showWarn(`Capsule ${live.hashCode} is not in OutdoorAppList`);
       capsuleVm.isVisible = false;
     } else if (this.deviceInfoVm.isEmergencyMode()) {
       this.log.showWarn(`Capsule ${live.hashCode} is in EmergencyMode: ${this.deviceInfoVm.deviceMode}`);

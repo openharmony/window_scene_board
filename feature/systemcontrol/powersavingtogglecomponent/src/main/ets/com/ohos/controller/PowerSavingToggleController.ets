@@ -72,7 +72,8 @@ export class PowerSavingToggleController extends ToggleBaseViewModel {
   constructor() {
     super();
     this.getViewData().label = $r('app.string.control_center_complex_toggle_powersaving_title');
-    this.getViewData().icon = $r('app.media.ic_battery_powersaving');
+    this.getViewData().isSymbolIcon = true;
+    this.getViewData().icon = $r('sys.symbol.battery');
   }
 
   decorateStyle(style: ToggleStyle, scene?: ToggleScene | undefined): ToggleStyle | undefined {

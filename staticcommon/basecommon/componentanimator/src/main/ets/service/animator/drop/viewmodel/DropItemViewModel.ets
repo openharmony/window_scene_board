@@ -459,6 +459,9 @@ export class DropItemViewModel {
   }
 
   private onAnimationFinish(isCancel: boolean, releaseOnEnd: boolean = true, count: number = 0): void {
+    // 卡片框架处理完毕传入正常卡片ID异常返回新卡片ID的Bug后更改为卡片ID
+    GlobalContext.getContext().eventHub.emit('setFormOpacity');
+    AppStorage.setOrCreate('setFormOpacity', 1);
     if (!this.isInAnimation()) {
       return;
     }

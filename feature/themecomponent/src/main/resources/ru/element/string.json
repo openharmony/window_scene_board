@@ -14,6 +14,13 @@
                 "priority":"translate"
             }
         },
+      {
+        "name":"Desktop_setting",
+        "value":"Настройки рабочего экрана",
+        "attr":{
+          "priority":"translate"
+        }
+      },
         {
             "name":"stop_font_creation_service",
             "value":"Выключить службу",
@@ -157,6 +164,54 @@
       {
         "name": "wallpaper_editor",
         "value": "Применить"
+      },
+      {
+        "name": "cancle",
+        "value": "отменить"
+      },
+      {
+        "name": "set_wallpaper_all",
+        "value": "Настройка одновременно"
+      },
+      {
+        "name": "set_wallpaper_desktop",
+        "value": "Настройка обоев рабочего стола"
+      },
+      {
+        "name": "set_wallpaper_lock",
+        "value": "Настройка обоев с экраном блокировки"
+      },
+      {
+        "name": "wallpaper_show_style",
+        "value": "Как отобразить обои"
+      },
+      {
+        "name": "screen_fit",
+        "value": "По размеру экрана"
+      },
+      {
+        "name": "screen_full",
+        "value": "заполнить экран"
+      },
+      {
+        "name": "screen_center",
+        "value": "центр"
+      },
+      {
+        "name": "screen_sctetch",
+        "value": "Растянуть полностью"
+      },
+      {
+        "name": "screen_tile",
+        "value": "Плитка"
+      },
+      {
+        "name": "image_decoding_failure",
+        "value": "Ошибка изображения. Повторите попытку."
+      },
+      {
+        "name":"Desktop_individuation",
+        "value":"Рабочий экран"
       }
     ]
 }

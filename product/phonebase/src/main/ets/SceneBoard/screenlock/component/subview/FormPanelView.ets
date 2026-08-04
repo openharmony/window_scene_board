@@ -175,7 +175,7 @@ export struct FormPanelView {
   }
 
   private getFormTran(): TranslateOptions | undefined {
-    if (this.slClockAnimCtrl?.isSceneAnimating() && DeviceHelper.isUltraScreenProduct()) {
+    if (this.slClockAnimCtrl?.isSceneAnimating() && DeviceHelper.isThreeFoldProduct()) {
       return {
         x: this.slClockAnimCtrl.getTranX() ?? 0,
         y: this.slClockAnimCtrl.getTranY() ?? 0,

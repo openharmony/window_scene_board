@@ -52,7 +52,7 @@ import {
   MenuInfo,
   StyleConstants,
 } from '@ohos/launchercommon/src/main/ets/TsIndex';
-import { AppIconCommonView, AppIconConfig, HoverAnimationUtil, AppIconCommonEvent } from '@ohos/launchercommon/Index';
+import { AppIconCommonView, AppIconConfig, HoverAnimationUtil, AppIconCommonEvent, MenuCommonUtil } from '@ohos/launchercommon/Index';
 import { AppIconData } from '@ohos/launchercommon/src/main/ets/launchericon/viewmodel/AppIconData';
 import { AppCenterIconMenuVm } from '../vm/AppCenterIconMenuVm';
 import { dragTriggerUtil } from '@ohos/launchercommon/src/main/ets/utils/DragTriggerUtil';
@@ -61,7 +61,7 @@ import { AppIconContainerModifier } from '@ohos/launchercommon/src/main/ets/laun
 import { CommonConstants } from '@ohos/launchercommon';
 import ServiceExtensionContext from 'application/ServiceExtensionContext';
 import { AppCenterDragMgr } from '../controller/AppCenterDragMgr';
-import { curves, display, LengthMetrics, performanceMonitor } from '@kit.ArkUI';
+import { curves, display, performanceMonitor } from '@kit.ArkUI';
 import { ResUtils, SCBSceneSessionManager } from '@ohos/windowscene';
 import AppGridLayoutCacheManager from '../common/cache/AppGridLayoutCacheManager';
 import { EVENT_ENABLE_DRAG_STATE_CHANGE } from '../constants/LayoutConstants';
@@ -89,6 +89,9 @@ const log: LogHelper = LogHelper.getLogHelper(LogDomain.HOME, TAG);
 const ICON_HOVER_DURATION = 250;
 const DEFAULT_ICON_SCALE = 1;
 const ICON_HOVER_SCALE = 1.06;
+const IN_PAGE_MENU_LONG_PRESS_TIME = 550;
+const DEFAULT_FONT_SIZE: number = 16;
+const DEFAULT_MENU_ITEM_SIDE_PADDING: number = 17;
 
 @Component
 export struct AppCenterItem {
@@ -105,6 +108,7 @@ export struct AppCenterItem {
   @Link @Watch('updateIconContainerModifier') appCenterBubbleMarginBottom: number;
   private onItemClick?: Function;
   private onIconContainerClick?: (event?: ClickEvent) => void;
+  private openInPageMenu?: Function;
   // icon容器
   private iconContainerModifier: AppIconContainerModifier = new AppIconContainerModifier(
     () => this.updateIconContainerModifier());
@@ -200,7 +204,8 @@ export struct AppCenterItem {
       .setIsDesktopItem(false)
       .setEnableNameAnim(false)
       .setEnableLongPressIconVisibility(false)
-      .setEnableRightMenuFromName(true)
+      .setEnableRightMenuFromName(false)
+      .setEnableMenu(false)
       .setEnableBadge(this.enableBadge)
       // 图标唯一性标识
       .setAppDataOfTransactionController(
@@ -229,6 +234,59 @@ export struct AppCenterItem {
     this.iconMenuVm.setBackgroundBlurStyle(BlurStyle.COMPONENT_REGULAR);
     this.iconMenuVm.setMenuOffset({ x: 0, y: 5 });
     this.iconMenuVm.setAppItemInfo(this.item);
+  }
+
+  private getItemAppStatus(): AppStatus {
+    let downloadStatusInfo: DownloadStatusInfo | undefined =
+      AppGalleryDownloadManager.getInstance().getDownDownloadTaskInfo(this.item.bundleName);
+    if (downloadStatusInfo && !this.item.appIndex) {
+      return downloadStatusInfo.status;
+    }
+    return this.item.appStatus as AppStatus;
+  }
+
+  private getInPageMenuInfoList(): MenuInfo[] {
+    if (!GridLayoutUtil.isAppInstalled(this.item)) {
+      return this.notInstalledMenuMap?.(this.item)?.get(this.getItemAppStatus()) ?? [];
+    }
+    return this.buildMenu?.(this.item) ?? [];
+  }
+
+  private showInPageMenu(event?: MouseEvent): void {
+    if (AppCenterDragMgr.getInstance().isInDragging()) {
+      return;
+    }
+    let menuInfoList = this.getInPageMenuInfoList().filter((item: MenuInfo) => item !== undefined);
+    if (menuInfoList.length === 0) {
+      log.showWarn(`showInPageMenu menu empty, bundleName: ${this.item.bundleName}`);
+      return;
+    }
+    ContextMenu.close();
+    const iconRect: RectInfo = this.getIconRect();
+    const menuPlacement: Placement = event ?
+      MenuCommonUtil.getMenuPlacementByTouchX(event.displayX, iconRect) : Placement.BottomLeft;
+    this.openInPageMenu?.(this.item, menuInfoList, iconRect, this.getInPageMenuWidth(menuInfoList), menuPlacement);
+    log.showInfo(`showInPageMenu, bundleName: ${this.item.bundleName}, menu length: ${menuInfoList.length}`);
+  }
+
+  private measureInPageMenuWidth(menuItem: MenuInfo): number {
+    let menuWidth: number = Math.ceil(px2vp(measure.measureText({
+      textContent: menuItem.menuText,
+      fontSize: DEFAULT_FONT_SIZE,
+      fontWeight: 'medium',
+    })));
+    return menuWidth + DEFAULT_MENU_ITEM_SIDE_PADDING * 2 + StyleConstants.DEFAULT_24;
+  }
+
+  private getInPageMenuWidth(menuInfoList: MenuInfo[]): number {
+    let menuWidth: number = StyleConstants.MENU_WIDTH_COLUMNS_PC;
+    menuInfoList.forEach((menuItem: MenuInfo) => {
+      let currItemWidth = this.measureInPageMenuWidth(menuItem);
+      if (currItemWidth > menuWidth) {
+        menuWidth = currItemWidth;
+      }
+    })
+    return menuWidth;
   }
 
   // 挂载图标容器属性
@@ -651,7 +709,9 @@ export struct AppCenterItem {
    */
   private handleMouseEvent(event?: MouseEvent): void {
     if (event?.button === MouseButton.Right) {
-      event.stopPropagation?.();
+      if (event.action === MouseAction.Press) {
+        this.showInPageMenu(event);
+      }
     } else if (event?.button === MouseButton.Left) {
       ContextMenu.close();
     }
@@ -691,6 +751,10 @@ export struct AppCenterItem {
       })
       .combine(TransitionEffect.scale({ x: 0.9, y: 0.9 }))
       .animation({ curve: curves.interpolatingSpring(0, 1, 342, 37) }) : TransitionEffect.IDENTITY)
+      .parallelGesture(LongPressGesture({ repeat: false, duration: IN_PAGE_MENU_LONG_PRESS_TIME })
+        .onAction(() => {
+          this.showInPageMenu();
+        }))
       .onMouse((event?: MouseEvent) => {
         this.handleMouseEvent(event);
       })

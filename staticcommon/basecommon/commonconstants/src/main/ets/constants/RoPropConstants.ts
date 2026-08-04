@@ -31,6 +31,6 @@ export default class RoPropConstants {
  */
 export class LauncherPropConstants {
   // 底部导航条是否使能开关：当前仅供调测使用
-  static SCENEBOAR_AIBAR_ENABLE: boolean =
-    systemParameterEnhance.getSync('persist.sceneboard.aibar.enable', 'true') === 'true';
+  static SCENEBOAR_NAVIBAR_ENABLE: boolean =
+    systemParameterEnhance.getSync('persist.sceneboard.navibar.enable', 'true') === 'true';
 }

@@ -19,10 +19,11 @@ import {
   bundleManagerFwk,
   DeviceHelper,
   ResourceManager,
-  onLineThemeUtil
+  onLineThemeUtil,
+  LightOutdoorConfig
 } from '@ohos/frameworkwrapper';
-import { LogDomain, Logger, CheckEmptyUtils, StartType } from '@ohos/basicutils';
-import { SCBVisualEffectMgr } from '@ohos/componenthelper';
+import { LogDomain, Logger, CheckEmptyUtils, StartType, OutdoorConfig } from '@ohos/basicutils';
+import { OutdoorCcmManager, SCBVisualEffectMgr } from '@ohos/componenthelper';
 import { VisualEffectConstants } from '@ohos/commonconstants';
 import { AppItemInfo } from '../../bean/AppItemInfo';
 import { BaseIconInfo } from '../../bean/BaseIconInfo';
@@ -193,7 +194,7 @@ export class AppIconModel {
   }
 
   /**
-   * 显示ccm中配置应用的角标
+   * 云端模式一和云端模式二不显示ccm中配置应用的角标
    *
    * @param bundleName 包名
    * @returns true 角标不可见，false 角标可见
@@ -202,7 +203,11 @@ export class AppIconModel {
     if (CheckEmptyUtils.checkStrIsEmpty(bundleName)) {
       return false;
     }
-    return false;
+    if (!OutdoorConfig.getInstance().isInOutdoorMode() &&
+      !LightOutdoorConfig.getInstance().isOnLightOutdoorMode()) {
+      return false;
+    }
+    return OutdoorCcmManager.getInstance().isIconBadgeInvisible(bundleName);
   }
 }
 

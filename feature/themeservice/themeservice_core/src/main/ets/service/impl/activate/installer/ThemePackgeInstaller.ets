@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-// import theme from '@hms.theme.themeManager';
+// import theme from '@ohos.theme.themeManager';
 import { HashMap } from '@kit.ArkTS';
 import { BusinessError, settings } from '@kit.BasicServicesKit';
 import fs from '@ohos.file.fs';

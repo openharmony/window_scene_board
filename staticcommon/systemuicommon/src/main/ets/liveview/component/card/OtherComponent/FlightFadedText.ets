@@ -40,6 +40,7 @@ export struct FadedText {
     fontSize: $r('sys.float.ohos_id_text_size_sub_title1'),
     fontColor: $r('sys.color.ohos_id_color_text_primary'),
   };
+  @Prop isAod: boolean = false;
   @Prop fadedFontColor: ResourceColor | undefined = '#FFFFFFFF';
   @Prop badgeText: string = '';
   @Prop badgeAccessibilityText: string = '';
@@ -87,7 +88,7 @@ export struct FadedText {
             .fontFamily(this.textProps.fontFamily)
             .fontWeight(this.textProps.fontWeight)
             .fontSize(this.textProps.fontSize)
-            .fontColor(this.isEllipsis ? this.fadedFontColor : this.textProps.fontColor)
+            .fontColor(this.isEllipsis && this.isAod ? this.fadedFontColor : this.textProps.fontColor)
           if (this.isEllipsis){
             Column() {}
             .width(this.textProps.fontSize)

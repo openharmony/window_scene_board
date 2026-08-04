@@ -75,7 +75,7 @@ export abstract class ImmBaseData<T extends ImmBaseData<T>> {
   // 原主内容，通用内容文本
   @Trace protected _oriContent?: string;
 
-  // 是否覆盖小图标为对称样式
+  // 是否覆盖小图标为对称样式（克隆应用图标）
   @Trace protected _isOverlayReverse: boolean = false;
 
   // 左上角应用图标
@@ -451,9 +451,9 @@ export abstract class ImmBaseData<T extends ImmBaseData<T>> {
   }
 
   /**
-   * 覆盖小图标对称样式
+   * 覆盖小图标对称样式（克隆应用图标）
    *
-   * @returns true
+   * @returns true 克隆应用
    */
   public isOverlyReverse(): boolean {
     return this._isOverlayReverse;
@@ -788,7 +788,7 @@ export abstract class ImmBaseData<T extends ImmBaseData<T>> {
    * @returns true叠加显示
    */
   public isShowOverlay(): boolean {
-    // 保持小图标叠加
+    // 克隆应用场景，保持小图标叠加
     if (this.isOverlyReverse()) {
       return true;
     }
@@ -806,6 +806,10 @@ export abstract class ImmBaseData<T extends ImmBaseData<T>> {
    * @returns 叠加图标
    */
   public getSmallIcon(): image.PixelMap | ResourceStr | undefined {
+    // 克隆应用场景，使用克隆应用小图标
+    if (this.isOverlyReverse()) {
+      return $r('app.media.app_icon_deliver');
+    }
     // 隐私场景，保持应用图标
     let isOnlyApp = this.isDataPrivacy();
     return this._oriData.getAppIcon(isOnlyApp);
@@ -817,7 +821,7 @@ export abstract class ImmBaseData<T extends ImmBaseData<T>> {
    * @returns 大图标
    */
   public getLargeIcon(): image.PixelMap | ResourceStr | undefined {
-    // 使用应用图标
+    // 克隆应用场景，使用应用图标
     if (this.isOverlyReverse()) {
       return this._appIcon;
     }

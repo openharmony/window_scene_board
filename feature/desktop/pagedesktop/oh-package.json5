@@ -23,7 +23,7 @@
     "@ohos/desktopfilefolder": "../../desktopfilefolder",
     "@ohos/form": "../form",
     "@ohos/formstack": "../formstack",
-    "@ohos/desktopedit": "../desktopedit",
-    "@ohos/frameworkpinyin": "../../../staticcommon/basecommon/frameworkpinyin"
+     "@ohos/desktopedit": "../desktopedit",
+     "@ohos/frameworkpinyin": "../../../staticcommon/basecommon/frameworkpinyin"
   }
 }

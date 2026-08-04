@@ -14,7 +14,7 @@
  */
 
 import { settings } from '@kit.BasicServicesKit';
-import { LogDomain, Logger } from '@ohos/basicutils';
+import { LogDomain, Logger, OutdoorConfig } from '@ohos/basicutils';
 import { SCBConstants, SettingsConstants, SettingsKeyConstants } from '@ohos/commonconstants';
 import {
   DeviceHelper,
@@ -22,7 +22,8 @@ import {
   IconExtendParam,
   IconResourceManager,
   TaskInfo,
-  SettingsUtil
+  SettingsUtil,
+  LightOutdoorConfig
 } from '@ohos/frameworkwrapper';
 import { DataAndRefreshUtils } from '@ohos/frameworkwrapper/src/main/ets/resourcemanager/fwk/DataAndRefreshUtils';
 import IconInfo from '@ohos/frameworkwrapper/src/main/ets/resourcemanager/IconInfo';
@@ -70,6 +71,14 @@ export class MiniBatchRefreshStrategy extends RefreshStrategy {
     taskInfos.push(...collection.backgroundViews);
     taskInfos.push(...collection.extraViews);
     await this.getDataAndRefresh(tasks, taskInfos, iconChangeListener);
+
+    // TODO 待优化，异步存库可能存在时序问题 切主题过程中切换到云端模式，则清理缓存和数据库，避免普通模式下图标显示异常
+    if (OutdoorConfig.getInstance().isInOutdoorMode() ||
+      LightOutdoorConfig.getInstance().isOnLightOutdoorMode()) {
+      SettingsUtil.setValueEx(settings.domainName.USER_PROPERTY,
+        SettingsKeyConstants.THEME_CHANGE_STATUS, SettingsConstants.THEME_CHANGE_STATUS_STOP);
+      await IconResourceManager.getInstance().clearAppResourceCache(`${TAG} clear icon cache`);
+    }
   }
 
   private async refreshDataAndViewByListener(iconChangeListener: IconChangeListener[],

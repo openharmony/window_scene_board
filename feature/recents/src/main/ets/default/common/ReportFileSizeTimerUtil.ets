@@ -19,7 +19,7 @@ import { EventManager, HiSysEventUtil, EvtBus, ScreenLockEvent} from '@ohos/fram
 import FileUtils from '@ohos/basicutils/src/main/ets/utils/FileUtils';
 
 const TAG = 'ReportFileSizeTimerUtil';
-const log: LogHelper = LogHelper.getLogHelper(LogDomain.SCB, TAG);
+const log: LogHelper = LogHelper.getLogHelper(LogDomain.AOD, TAG);
 
 const TRIGGER_TIME: number = 1000 * 60 * 5;
 const REPORT_DURATION: number = 1000 * 60 * 60 * 24;

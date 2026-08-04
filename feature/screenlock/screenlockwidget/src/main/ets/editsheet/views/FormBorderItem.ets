@@ -40,6 +40,7 @@ export default struct FormBorderItem {
   @Prop @Watch('updateConfig') itemHeight: number = 0;
   @Prop mainColorType: ColorType = ColorType.LIGHT;
   @Prop isLightWallpaper: boolean = true;
+  @Prop contentColor: string
   @ObjectLink @Watch('updateBorderState') formHolder: FormPlaceHolderInfo;
   @State config: BorderViewConfig = new BorderViewConfig(this.itemHeight / 2);
   @State foregroundBrightArgs?: SlVisualArgs =
@@ -136,10 +137,10 @@ export default struct FormBorderItem {
       .width('100%')
       .height('100%')
       // .blendMode(this.enableBright ? BlendMode.NORMAL : BLENDMODE_DESTINATION_IN)
-      .blendMode(this.enableBright ? BlendMode.SRC_OVER : BLENDMODE_DESTINATION_IN)
-      .backgroundColor(this.getBackgroundColor())
+      .blendMode(this.enableBright ? BlendMode.SRC_IN : BLENDMODE_DESTINATION_IN)
+      .backgroundColor(this.contentColor)
       // .backgroundBrightnessInternal(this.getBackgroundBrightnessOption())
-      .backgroundBrightness(this.getBackgroundBrightnessOption())
+      // .backgroundBrightness(this.getBackgroundBrightnessOption())
     }
     .visibility(this.config.visibility ? Visibility.Visible : Visibility.Hidden)
     .blendMode(1000)

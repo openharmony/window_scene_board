@@ -24,7 +24,7 @@ import mattes from 'libeffectrender.so';
 import animator, { AnimatorResult } from '@ohos.animator';
 import { StateMattesSwitchStrategy } from '../mattesstrategy/StateMattesSwitchStrategy';
 import { MainPageListener } from '../mattesstrategy/MattesSwitchStrategy';
-// import apsManager from '@hms.graphic.apsManager';
+// import apsManager from '@ohos.graphic.apsManager';
 import {
   StyleConstants,
   AppBubbleEventData

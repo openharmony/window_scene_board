@@ -172,7 +172,11 @@ export class MultiProxyHandler {
 
   public sendEngineProxyForAOD2Lock(engine: string): void {
     let state: ScbState = ThemeServiceHelper.getInstance().getScbState();
-    state = ScbState.LOCKSCREEN;
+    if (state !== ScbState.AOD) {
+      return;
+    } else {
+      state = ScbState.LOCKSCREEN;
+    }
     this.proxyMap.get(engine)?.send({
       'scbStateChange': true,
       'scbState': state,

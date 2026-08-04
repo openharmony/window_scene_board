@@ -1,5 +1,5 @@
 /**
- * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) 2021-2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -25,7 +25,8 @@ import {
   SettingsModel,
   StyleConstants,
   vibratorMgr,
-  PageDesktopViewModelForPC
+  PageDesktopViewModelForPC,
+  editModeManager
 } from '@ohos/launchercommon';
 import { PageDesktopViewModel } from '../common/viewmodel/PageDesktopViewModel';
 import { PageDesktopDragHandler } from '../common/PageDesktopDragHandler';
@@ -44,7 +45,6 @@ import { desktopUtil, RTLUtil } from '@ohos/componenthelper';
 import RightMenu from '@ohos/launchercommon/src/main/ets/pagedesktop/components/RightMenu';
 import { RightMenuViewModel } from '@ohos/launchercommon/src/main/ets/pagedesktop/viewmodel/RightMenuViewModel';
 import ServiceExtensionContext from 'application/ServiceExtensionContext';
-import { editModeManager } from '@ohos/launchercommon/src/main/ets/editmode/model/EditModeManager';
 import { editModeViewManager } from '@ohos/desktopedit/src/main/ets/default/manager/EditModeViewManager';
 import { FocusViewModel } from '../common/viewmodel/FocusViewModel';
 import { PageDesktopGridStyleConfig } from '@ohos/launchercommon/src/main/ets/layoutconfig/PageDesktopGridStyleConfig';
@@ -54,6 +54,7 @@ import { InteractiveType, themeWallpaperAniMgr } from '@ohos/themeservice';
 import { DisplayCountViewModel, pageEditManager } from '@ohos/launchercommon/Index';
 import { NumberConstants } from '@ohos/commonconstants';
 import { SwiperLoadData } from '@ohos/swiperdata';
+import {  BaseQuitAppRect } from '../common/viewmodel/QuitAppRectViewModel';
 
 const TAG = 'PageDesktopLayout';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.HOME, TAG);
@@ -64,7 +65,7 @@ export struct PageDesktopLayout {
   @Prop singleContext?: SingleContext;
   @StorageLink('workSpaceWidth') @Watch('updateDeskTopParams') workSpaceWidth: number = 0;
   @StorageLink('workSpaceHeight') @Watch('updateDeskTopParams') workSpaceHeight: number = 0;
-  device: string = 'phone';
+  @Prop device: string = 'phone';
   @Prop screenId: number | undefined;
   @State @Watch('updateDeskTopParams') mMargin: number = 0;
   @State mTop: number = 0;
@@ -75,7 +76,7 @@ export struct PageDesktopLayout {
   private mPageDesktopViewModel: PageDesktopViewModel = PageDesktopViewModel.getInstance(this.singleContext);
   private mBaseCloseAppHandler: BaseCloseAppHandler = PageDesktopCloseAppHandler.getInstance(this.singleContext);
   private isPad: boolean = false;
-  private isBigScreen: boolean = false;
+  private isSuperFold: boolean = false;
   private isDesktopLayout: boolean = true;
   private rightMenuViewModel: RightMenuViewModel = singleManager.get<RightMenuViewModel>(RightMenuViewModel, this.singleContext);
   private onDesktopModeChangeEvent: Function = (): void => this.updateDeskTopParams();
@@ -104,7 +105,7 @@ export struct PageDesktopLayout {
     this.mPageDesktopViewModel.setUIContext(this.getUIContext());
     PageDesktopViewModelForPC.getInstance().setRightMenuViewModel(this.rightMenuViewModel);
     this.gridConfig = this.mPageDesktopViewModel.getGridConfig().layout;
-    this.isBigScreen = DeviceHelper.isBigScreenMachine();
+    this.isSuperFold = DeviceHelper.isSuperFoldMachine();
     this.updateStyle();
     this.mPageDesktopViewModel.registerAppListChangeCallback();
     if (this.device !== CommonConstants.DEFAULT_DEVICE_TYPE) {
@@ -117,7 +118,7 @@ export struct PageDesktopLayout {
     this.registerScreenIdChange();
     let desktopContext: ServiceExtensionContext = GlobalContext.getContext();
     desktopContext.eventHub.on(EventConstants.EVENT_CHANGE_DESKTOP_MODE, this.onDesktopModeChangeEvent);
-    desktopContext.eventHub.on(EventConstants.EVENT_BIG_SCREEN_STATUS_CHANGE, this.onDesktopModeChangeEvent);
+    desktopContext.eventHub.on(EventConstants.EVENT_SUPER_FOLD_STATUS_CHANGE, this.onDesktopModeChangeEvent);
     desktopContext.eventHub.on(EventConstants.EVENT_CHANGE_DESKTOP_DISPLAY_COUNT, this.onDesktopDisplayChangeEvent);
     desktopContext.eventHub.on(EventConstants.EVENT_CHANGE_DESKTOP_MODE_LAYOUT, this.onDesktopModeLayoutChangeEvent);
     desktopContext.eventHub.on(EventConstants.EVENT_CHANGE_ENTER_EDIT_MODE_ANIMATION_FINISH,
@@ -130,7 +131,7 @@ export struct PageDesktopLayout {
     CloseAppManager.getInstance().unregisterCloseAppHandler(this.mBaseCloseAppHandler);
     let desktopContext: ServiceExtensionContext = GlobalContext.getContext();
      desktopContext.eventHub.off(EventConstants.EVENT_CHANGE_DESKTOP_MODE, this.onDesktopModeChangeEvent);
-    desktopContext.eventHub.off(EventConstants.EVENT_BIG_SCREEN_STATUS_CHANGE, this.onDesktopModeChangeEvent);
+    desktopContext.eventHub.off(EventConstants.EVENT_SUPER_FOLD_STATUS_CHANGE, this.onDesktopModeChangeEvent);
     desktopContext.eventHub.off(EventConstants.EVENT_CHANGE_DESKTOP_DISPLAY_COUNT, this.onDesktopDisplayChangeEvent);
     desktopContext.eventHub.off(EventConstants.EVENT_CHANGE_DESKTOP_MODE_LAYOUT, this.onDesktopModeLayoutChangeEvent);
     desktopContext.eventHub.off(EventConstants.EVENT_CHANGE_ENTER_EDIT_MODE_ANIMATION_FINISH,
@@ -162,21 +163,26 @@ export struct PageDesktopLayout {
   }
 
   private updateDeskTopParams(): void {
+    log.showInfo('start updateDeskTopParams')
     if (!launcherStatusUtil.isCurrentDesktopVisible(false)) {
+      log.showInfo('isCurrentDesktopVisible end')
       return;
     }
     let config = PageDesktopViewModel.getInstance(this.singleContext).getPageDesktopStyleConfig();
     //在更新网格布局参数之前，重新计算一下相关参数，
     config.initConfig();
-    this.mMargin = DeviceHelper.isBigScreenMachine() ? (config.mWorkSpacePadding as number) : this.mMargin;
+    this.mMargin = DeviceHelper.isSuperFoldMachine() ? (config.mWorkSpacePadding as number) : this.mMargin;
     this.mTop = config.mDesktopMarginTop;
-    if (this.isBigScreen) {
+    if (this.isSuperFold) {
       this.mTop = this.mTop === 0 ? config.mWorkSpacePaddingTop : this.mTop;
     }
     this.checkPageDesktopDragHandlerIsNull();
     let gridConfig = PageDesktopViewModel.getInstance(this.singleContext).getGridConfig();
     let sysUITop: number = LayoutViewModel.getInstance().getSysUITopHeight();
     this.updateGridParams(config, gridConfig.row, gridConfig.column, sysUITop);
+    // 通知退出落位重新计算
+    log.showInfo(`swiperpage change config:${JSON.stringify(config)}; gridConfig:${JSON.stringify(gridConfig)};`)
+    BaseQuitAppRect.getInstance().initGridParamDesktop(config, gridConfig);
   }
 
   updateDeskTopParamsEditMode(): void {
@@ -237,7 +243,7 @@ export struct PageDesktopLayout {
   }
 
   private updateGridParams(config: PageDesktopGridStyleConfig, row: number, column: number, sysUITop: number): void {
-    let paddingLeft = config.mMargin + config.mScreenPadding;
+    let paddingLeft = config.realPaddingLeft ?? (config.mMargin + config.mScreenPadding);
     let paddingTop = config.mDesktopMarginTop + config.mScreenPaddingTop;
     // 桌面布局中Swiper组件的上间距为sysUITop，Grid组件的上间距为paddingTop - sysUITop，需要分开进行像素向下取整
     let updateTop = GridLayoutUtil.getFloorVp(sysUITop) + GridLayoutUtil.getFloorVp(paddingTop - sysUITop);
@@ -262,7 +268,7 @@ export struct PageDesktopLayout {
       }
     }
     log.showInfo(`updateGridParams screenWidth ${screenWidth} paddings ${paddings} currentDisplayCount ${currentDisplayCount} mFoldPaddingSide ${config.mFoldPaddingSide}`);
-    if (DeviceHelper.isBigScreenMachine()) {
+    if (DeviceHelper.isSuperFoldMachine()) {
       const extraHeight: number = config.mWorkSpacePaddingTop + config.mDesktopMarginTop;
       if (this.isPortrait) {
         try {
@@ -282,7 +288,7 @@ export struct PageDesktopLayout {
     }
     GridLayoutUtil.initGridPosition({
       paddingLeft: paddingLeft,
-      paddingTop: updateTop,
+      paddingTop: config.realPaddingTop ?? updateTop,
       row: row,
       column: column,
       rowGap: config.mRowsGap,
@@ -408,9 +414,6 @@ export struct PageDesktopLayout {
     // page底部向上缩放高度
     let scaleY: number = config.mMarginBottomOfIndicator + IndicatorConstants.HEIGHT_OF_NEGATIVE_SCREEN_INDICATOR +
       EditModeConstants.SWIPER_EDIT_BOTTOM_INDICATOR + bottomAddHeight - pageDownHeight;
-    if (false) {
-      scaleY = statusHeight + bottomAddHeight - pageDownHeight;
-    }
     let downHeight: number = scaleY / (1 - editModeSwiperScale);
     this.scaleCenterY = swiperHeight - downHeight + bottomAddHeight;
     EditModeUtils.setScaleCenterY(this.scaleCenterY);
@@ -427,7 +430,7 @@ export struct PageDesktopLayout {
   }
 
   private setRightClickPos(x: number, y: number): void {
-    if (this.isBigScreen) {
+    if (this.isSuperFold) {
       this.rightClickPosition = GridLayoutUtil.getRowAndColumnAndPage(x, y, this.isPortrait);
     } else {
       this.rightClickPosition = GridLayoutUtil.getRowAndColumn(x, y, 0);
@@ -525,7 +528,7 @@ export struct PageDesktopLayout {
     } else {
       if (this.buildLog()) {
       }
-      Stack(this.isBigScreen ? {alignContent: Alignment.Top} : undefined) {
+      Stack(this.isSuperFold ? {alignContent: Alignment.Top} : undefined) {
         GridSwiper({
           singleContext: this.singleContext,
           gridConfig: this.gridConfig,
@@ -541,7 +544,7 @@ export struct PageDesktopLayout {
           .focusable(true)
           .id(this.focusViewModelKey)
       }
-      .height(this.isBigScreen ? '100%' : undefined)
+      .height(this.isSuperFold ? '100%' : undefined)
       .onTouch((event: TouchEvent) => {
         if (event?.type === TouchType.Down) {
           const x: number = event?.touches[0]?.windowX ?? 0;

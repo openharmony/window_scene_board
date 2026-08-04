@@ -136,7 +136,7 @@ export default class DesktopAddDialogConstant {
 
   public static readonly DEFAULT_BUTTON_HEIGHT = '40vp';
 
-  public static readonly AI_BAR_HEIGHT = DeviceHelper.isPad() || DeviceHelper.isFold() ? '0vp' : '28vp';
+  public static readonly NAVI_BAR_HEIGHT = DeviceHelper.isPad() || DeviceHelper.isFold() ? '0vp' : '28vp';
 
   public static readonly DEFAULT_BUTTON_PADDING = '8vp';
 

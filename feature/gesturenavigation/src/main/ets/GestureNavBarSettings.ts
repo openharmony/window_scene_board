@@ -39,12 +39,12 @@ export class GestureNavBarSettings {
    *
    * @returns 导航条距离屏幕底部距离
    */
-  public getAiBarMarginBottom(): number {
-    let aiBarMarginBottom = gestureNavBarCcmSettings?.getAiBarMarginBottom();
-    if (!aiBarMarginBottom) {
-      return GestureNavBarConstants.AIBAR_DEFAULT_BOTTOM_MARGIN;
+  public getNaviBarMarginBottom(): number {
+    let naviBarMarginBottom = gestureNavBarCcmSettings?.getNaviBarMarginBottom();
+    if (!naviBarMarginBottom) {
+      return GestureNavBarConstants.NAVIBAR_DEFAULT_BOTTOM_MARGIN;
     }
-    return Number(aiBarMarginBottom);
+    return Number(naviBarMarginBottom);
   }
 }
 

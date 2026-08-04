@@ -229,6 +229,29 @@ export default function EditVisualEffectTest() {
       mocker.clearAll();
     })
 
+    it('addForm', 0, async () => {
+      let newItem: CardItemInfo = new CardItemInfo();
+      newItem.id = '1573457366';
+      newItem.cardId = '1573457366';
+      newItem.name = 'minVoiceRecCard';
+      newItem.cardName = 'minVoiceRecCard';
+      newItem.bundleName = 'com.ohos.suggestion';
+      newItem.abilityName = 'ParentFormAbility';
+      newItem.moduleName = 'entry';
+      newItem.dimension = 2;
+      newItem.cardDimension = 2;
+      newItem.appLabelId = 0;
+      newItem.area = [2, 2];
+      newItem.isTransparent = false;
+      let mPageDesktopViewModel: PageDesktopViewModel = PageDesktopViewModel.getInstance();
+      await mPageDesktopViewModel.createCardToDeskTop(newItem);
+
+      let mFormModel: FormModel = FormModel.getInstance();
+      let formsList: CardItemInfo[] = await mFormModel.getAllFormsInfoFromRdb();
+      let formItem: CardItemInfo | undefined = formsList.find(item => item.cardId === newItem.cardId);
+      expect(formItem).not().assertNull();
+    })
+
     it('deleteFormItem', 0, async () => {
       let mPageDesktopViewModel: PageDesktopViewModel = PageDesktopViewModel.getInstance();
       let mFormModel: FormModel = FormModel.getInstance();

@@ -20,7 +20,7 @@ export class IconMap {
   /**
    * 扬声器默认图标
    */
-  public static readonly SPEAKER_FILL_ICON = $r('sys.symbol.speaker_wave_3_fill');
+  public static readonly SPEAKER_FILL_ICON = $r('sys.symbol.speaker_wave_3');
 
   /**
    * 有线耳机默认图标

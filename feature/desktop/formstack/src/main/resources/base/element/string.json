@@ -97,10 +97,6 @@
             "attr":{
                 "priority":"translate"
             }
-        },
-      {
-        "name": "app_name",
-        "value": "app name"
-      }
+        }
     ]
 }

@@ -46,7 +46,7 @@ import { PcDockRecentProxy } from '../manager/PcDockRecentProxy';
 
 const TAG = 'SuggestMenuModel';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.HOME, 'PCDock-' + TAG);
-const GUIDE_BUNDLE_NAME = 'com.ohos.hwstartupguide';
+const GUIDE_BUNDLE_NAME = 'com.ohos.startupguide';
 
 /**
  * SuggestMenu Model
@@ -113,6 +113,7 @@ export default class SuggestMenuModel {
           menu.shortcutLabelId = (appData == null ? menu.shortcutLabelId : appData.appLabelId) ?? 0;
           menu.bundleName = appData == null ? menu.bundleName : appData.bundleName;
           menu.moduleName = appData == null ? menu.moduleName : appData.moduleName;
+          menu.menuAbility = appData == null ? defaultAppList[i].abilityName : appData.abilityName;
           menu.onMenuClick = (screenId?: number): void => {
             HiSysEventUtil.reportDockMenuAppClick();
             this.onMenuClick(defaultAppList[i].abilityName, menu.bundleName ?? '', menu.moduleName ?? '', screenId);
@@ -147,6 +148,7 @@ export default class SuggestMenuModel {
         menu.shortcutLabelId = this.mRecentList[i].appLabelId ?? 0;
         menu.bundleName = this.mRecentList[i].bundleName;
         menu.moduleName = this.mRecentList[i].moduleName;
+        menu.menuAbility = this.mRecentList[i].abilityName;
         menu.onMenuClick = (screenId?: number): void => {
           HiSysEventUtil.reportDockMenuAppClick();
           this.onMenuClick(this.mRecentList[i].abilityName, menu.bundleName ?? '', menu.moduleName ?? '', screenId);

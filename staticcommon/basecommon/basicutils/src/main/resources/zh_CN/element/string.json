@@ -107,6 +107,13 @@
             }
         },
         {
+            "name":"app_others",
+            "value":"克隆应用",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
             "name":"uninstall_success",
             "value":"卸载成功",
             "attr":{
