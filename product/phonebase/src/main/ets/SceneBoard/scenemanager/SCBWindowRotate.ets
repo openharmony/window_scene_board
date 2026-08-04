@@ -298,7 +298,6 @@ export class SCBWindowRotate {
   private rotationAnimationFinished(screenProperty: SCBScreenProperty, rotateEvent: RotateChangeEvent,
     isTimeoutCheck: boolean = false): void {
     WinLog.showError(WinLogDomain.WMS_ROTATION, `endRotationAnimate, ${this.rotationAnimCnt} isTimeoutCheck:${isTimeoutCheck}`);
-    SCBWindowRotateController.getInstance().notifyRotationChange(screenProperty, SCBRotateChangeReason.ROTATE_END);
     if (isTimeoutCheck) {
       if (this.rotationAnimCnt > 0) {
         this.rotationAnimCnt = 1;
@@ -313,6 +312,7 @@ export class SCBWindowRotate {
     }
     this.notifyKeyBoardAfterRotation();
     AppStorageUtil.setOrCreate('isScreenProperty', false, new DataProperty(true, false));
+    SCBWindowRotateController.getInstance().notifyRotationChange(screenProperty, SCBRotateChangeReason.ROTATE_END);
     if (this.rotationAnimCnt === 0) {
       this.notifyScreenRotateToCallbacks(screenProperty, SCBRotateChangeReason.ROTATE_END);
       this.updateScreenRotationProperty(screenProperty, SCBRotateChangeReason.ROTATE_END);

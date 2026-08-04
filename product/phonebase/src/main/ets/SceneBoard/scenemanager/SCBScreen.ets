@@ -765,7 +765,6 @@ export struct SCBScreen {
     WinLog.showInfo(WinLogDomain.WMS_ROTATION,
       `[rotationAnimationFinished] screenRotationAnimCnt:${this.screenRotationAnimCnt}, ` +
         ` isTimeoutCheck:${isTimeoutCheck}`);
-    SCBWindowRotateController.getInstance().notifyRotationChange(screenProperty, SCBRotateChangeReason.ROTATE_END);
     if (isTimeoutCheck) {
       if (this.screenRotationAnimCnt > 0) {
         this.screenRotationAnimCnt = 1;
@@ -780,6 +779,7 @@ export struct SCBScreen {
     }
     this.keyboardSession?.setKeyboardRotationFlag(false);
     AppStorageUtil.setOrCreate('isScreenProperty', false, new DataProperty(true, false));
+    SCBWindowRotateController.getInstance().notifyRotationChange(screenProperty, SCBRotateChangeReason.ROTATE_END);
     if (this.screenRotationAnimCnt === 0) {
       SCBScreenSessionManager.getInstance().notifyScreenRotateToCallbacks(screenProperty,
         SCBRotateChangeReason.ROTATE_END);
