@@ -31,14 +31,14 @@ import { SizeBreakPoint } from '@ohos/screenlockcommon/src/main/ets/constants/Sc
 
 const TAG = 'FoldablePSDViewModel';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.KG, TAG);
-const IS_ULTRA_SCREEN: boolean = DeviceHelper.isUltraScreenProduct();
+const IS_THREE_FOLD: boolean = DeviceHelper.isThreeFoldProduct();
 
 export class FoldablePSDModel {
-  // 是否是超大屏G态
-  @Track public isUltraScreenGState: boolean = false;
-  // 是否是超大屏G态且横屏
-  public isUltraScreenGStateLandscape: boolean = false;
-  // 超大屏G密码盘宽度占比
+  // 是否是三折叠G态
+  @Track public isThreeFoldGState: boolean = false;
+  // 是否是三折叠G态且横屏
+  public isThreeFoldGStateLandscape: boolean = false;
+  // 三折叠G密码盘宽度占比
   @Track public gStateKeyboardWidthPercent: number = 0.5;
   // 是否展开
   @Track public isExpand: boolean = false;
@@ -47,18 +47,18 @@ export class FoldablePSDModel {
 export default class FoldablePSDViewModel {
   public foldablePSDModel: FoldablePSDModel = new FoldablePSDModel();
 
-  private updateUltraScreenGState: ISlStateChangeListener = {
+  private updateThreeFoldGState: ISlStateChangeListener = {
     slMainStateType: SlMainStateType.SL_STATIC_STATE,
     onSlStateChange: (mainType: SlMainStateType, subType?: SlSubStateType): void => {
       if (subType === SlStaticStateType.SCREEN_BP) {
-        const isGState: boolean = DisplayUtils.isUltraScreenGStatus();
-        this.foldablePSDModel.isUltraScreenGState = isGState;
+        const isGState: boolean = DisplayUtils.isThreeFoldGStatus();
+        this.foldablePSDModel.isThreeFoldGState = isGState;
         if (isGState) {
           const bpState: ScreenBp = slUiStateMgr.getSlState(SlMainStateType.SL_STATIC_STATE)?.
             getSlState(SlStaticStateType.SCREEN_BP) as ScreenBp;
-          this.foldablePSDModel.isUltraScreenGStateLandscape = bpState.heightBp === SizeBreakPoint.SM;
+          this.foldablePSDModel.isThreeFoldGStateLandscape = bpState.heightBp === SizeBreakPoint.SM;
         }
-        this.updateUltraScreenGStateParam();
+        this.updateThreeFoldGStateParam();
       }
     }
   }
@@ -75,12 +75,12 @@ export default class FoldablePSDViewModel {
 
   doInit(): void {
     log.showInfo('doInit');
-    if (IS_ULTRA_SCREEN) {
-      this.foldablePSDModel.isUltraScreenGState = DeviceHelper.isGState();
-      this.foldablePSDModel.isUltraScreenGStateLandscape = this.foldablePSDModel.isUltraScreenGState &&
+    if (IS_THREE_FOLD) {
+      this.foldablePSDModel.isThreeFoldGState = DeviceHelper.isGState();
+      this.foldablePSDModel.isThreeFoldGStateLandscape = this.foldablePSDModel.isThreeFoldGState &&
         ScreenStateMonitor.getInstance().getCurrentScreenStateModel().orientation === ScreenOrientation.LANDSCAPE;
-      slUiStateMgr.registerSlStateChangeListener(this.updateUltraScreenGState);
-      this.updateUltraScreenGStateParam();
+      slUiStateMgr.registerSlStateChangeListener(this.updateThreeFoldGState);
+      this.updateThreeFoldGStateParam();
     }
     this.foldablePSDModel.isExpand = this.isPasswordExpand(DisplayUtils.getFoldStatus());
     DisplayStateManager.getInstance().registerObserver(this.displayStateListener);
@@ -88,25 +88,25 @@ export default class FoldablePSDViewModel {
 
   doRelease(): void {
     log.showInfo('doRelease');
-    if (IS_ULTRA_SCREEN) {
-      slUiStateMgr.unregisterSlStateChangeListener(this.updateUltraScreenGState);
+    if (IS_THREE_FOLD) {
+      slUiStateMgr.unregisterSlStateChangeListener(this.updateThreeFoldGState);
     }
     DisplayStateManager.getInstance().unRegisterObserver(this.displayStateListener);
   }
 
-  private updateUltraScreenGStateParam() {
-    if (this.foldablePSDModel.isUltraScreenGState) {
-      log.showInfo(`isUltraScreenGState, isUltraScreenGStateLandscape:${this.foldablePSDModel.isUltraScreenGStateLandscape}`);
+  private updateThreeFoldGStateParam() {
+    if (this.foldablePSDModel.isThreeFoldGState) {
+      log.showInfo(`isThreeFoldGState, isThreeFoldGStateLandscape:${this.foldablePSDModel.isThreeFoldGStateLandscape}`);
       let displayWidth: number = 0;
       try {
         displayWidth = px2vp(display.getDefaultDisplaySync().width);
       } catch (error) {
-        log.showError('updateUltraScreenGStateParam getDefaultDisplaySync fail');
+        log.showError('updateThreeFoldGStateParam getDefaultDisplaySync fail');
         return;
       }
       this.foldablePSDModel.gStateKeyboardWidthPercent =
         ScreenLockKeyboardTipUtil.getGStateKeyboardWidthPercent(displayWidth,
-          this.foldablePSDModel.isUltraScreenGStateLandscape);
+          this.foldablePSDModel.isThreeFoldGStateLandscape);
     }
   }
 

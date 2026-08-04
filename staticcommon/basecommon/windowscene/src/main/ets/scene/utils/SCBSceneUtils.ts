@@ -46,9 +46,9 @@ export class SCBSceneUtils {
     if (!sceneInfo) {
       return false;
     }
-
+    //这里包名错了
     const phoneSceneList = [
-      { bundleName: 'com.ohos.callui', moduleName: '', abilityName: 'com.ohos.callui.MainAbility', appIndex: 0 },
+      { bundleName: 'com.ohos.emergencycommunication', moduleName: '', abilityName: 'com.ohos.emergencycommunication.EmergencyCallAbility', appIndex: 0 },
       { bundleName: 'com.ohos.meetimeservice', moduleName: '', abilityName: 'CallUIKitAbility', appIndex: 0 }
     ];
 
@@ -101,13 +101,13 @@ export class SCBSceneUtils {
     let isForceSupportLandscape = isForceSupport && SCBSceneUtils.isLandscapeApp(sceneSession);
     let isFixedMultiWindowOrientation = sceneSession.isFixedMultiWindowOrientation || isForceSupportLandscape;
     let disableSupportSplit = false;
-    if (DeviceHelper.isUltraScreenProduct()) {
-      // 直板机形态或者两大屏幕机折叠态或者超大屏F态 以及超大屏G态横屏 禁用分屏
-      // 大屏展开态 超大屏M态&g态竖屏 超大屏固定分屏比例 不做禁用
+    if (DeviceHelper.isThreeFoldProduct()) {
+      // 直板机形态或者两折叠机折叠态或者三折叠F态 以及三折叠G态横屏 禁用分屏
+      // 双折叠展开态 三折叠M态&g态竖屏 三折叠固定分屏比例 不做禁用
       disableSupportSplit = !(isLargeFoldProductInExpand() || this.isSessionInPortraitWithGState(sceneSession) ||
         SCBSplitUtils.isFixedSplitRatioScene(sceneSession.sceneInfo));
     } else {
-      // 大屏展开态
+      // 双折叠展开态
       disableSupportSplit = !(SCBSceneSessionManager.isLargeInFoldProduct() &&
       SCBScreenSessionManager.getInstance().isFoldablePhoneExpandStatus());
     }
@@ -120,7 +120,7 @@ export class SCBSceneUtils {
     if (sceneSession == null) {
       return false;
     }
-    if (!DeviceHelper.isUltraScreenProduct()) {
+    if (!DeviceHelper.isThreeFoldProduct()) {
       return false;
     }
     let container = SCBSceneSessionManager.getInstance()

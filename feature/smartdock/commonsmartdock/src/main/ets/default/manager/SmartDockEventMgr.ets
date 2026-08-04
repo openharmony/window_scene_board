@@ -35,7 +35,8 @@ import {
   SCBSceneSession,
   SCBScreenProperty,
   SceneInfoAdapterUtil,
-  INVALID_SCREEN_ID
+  INVALID_SCREEN_ID,
+  SCBSceneMode
 } from '@ohos/windowscene';
 import {
   AppGalleryDownloadManager,
@@ -51,6 +52,7 @@ import {
   lockLayoutManager,
   DeleteDockItem,
   DragCoveredItem,
+  ContractedFolderLayoutViewModel
 } from '@ohos/launchercommon';
 import sceneSessionManager from '@ohos.sceneSessionManager';
 import { MenuInfo } from '@ohos/launchercommon';
@@ -76,6 +78,7 @@ import lazy { DockHiSysEventMgr } from './DockHiSysEventMgr';
 import { UIContext } from '@kit.ArkUI';
 import { FormHiSysEventUtil } from '@ohos/form/src/main/ets/default/util/FormHiSysEventUtil';
 import lazy PcModeContinuableModel from '../pcmode/model/PcModeContinuableModel';
+import { bundleManager } from '@kit.AbilityKit';
 
 const TAG = 'SmartDockEventMgr';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.HOME, TAG);
@@ -291,6 +294,7 @@ export class SmartDockEventMgr extends SingleBase implements SmartDockEventInter
       log.showInfo(`recentOnClick bundleName: ${item.bundleName}, missionInfoList.length: ${missionInfoList?.length}`);
       if (missionInfoList && !CheckEmptyUtils.isEmptyArr(missionInfoList) && item.bundleName !== CommonConstants.DISTRIBUTED_ASSIST) {
         const frontContainerSession = this.queryFrontSession();
+        const frontBundleName = SceneInfoAdapterUtil.getAdapterBundleName(frontContainerSession?.primarySession?.sceneInfo?.bundleName);
         for (let i = 0; i < missionInfoList.length; i++) {
           if (missionInfoList[i].bundleName === item.bundleName && missionInfoList[i].appIndex === item.appIndex) {
             const missionList: SCBSceneContainerSession[] = missionInfoList[i]?.missionInfoList as SCBSceneContainerSession[];
@@ -315,7 +319,7 @@ export class SmartDockEventMgr extends SingleBase implements SmartDockEventInter
                 return false;
               }
               this.setStartAppInfo(item);
-              if (missionList[0].isActive) {
+              if (missionList[0].isActive && frontBundleName === item.bundleName) {
                 SCBSceneSessionManager.getInstance().minimize(missionList[0].primarySession?.sceneInfo.screenId,
                   missionList[0].primarySession?.sceneInfo.persistentId, missionList[0].containerId);
               } else {
@@ -447,6 +451,10 @@ export class SmartDockEventMgr extends SingleBase implements SmartDockEventInter
     }
 
     ShortcutViewModel.getInstance().checkShortCutInfo(appInfo, menuInfoList);
+
+    if (dockType === SmartDockConstants.RESIDENT_DOCK_TYPE) {
+      this.checkAddMultiWindowMenu(appInfo, menuInfoList);
+    }
 
     if (this.mDevice === CommonConstants.PAD_DEVICE_TYPE) {
       let open = new MenuInfo();
@@ -615,6 +623,79 @@ export class SmartDockEventMgr extends SingleBase implements SmartDockEventInter
       menuInfoList.push(removeFormRecent);
     }
     return menuInfoList;
+  }
+
+  private checkAddMultiWindowMenu(appInfo: AppItemInfo, menuInfoList: MenuInfo[]) {
+    if(this.supportWindowMode(appInfo,bundleManager.SupportWindowMode.FLOATING)){
+      let openFromFloatingWindow: MenuInfo = new MenuInfo();
+      openFromFloatingWindow.menuType = CommonConstants.MENU_TYPE_FIXED;
+      openFromFloatingWindow.menuImgSrc = '/common/pics/ic_public_add_norm.svg';
+      openFromFloatingWindow.menuText = $r('app.string.app_menu_open_from_floating_window');
+      openFromFloatingWindow.onMenuClick = (params: Map<string, Object>): void => {
+        ContractedFolderLayoutViewModel.getInstance().updateOpenFolderStatus(0);
+        params.set(SCBConstants.IS_START_BY_LAUNCHTYPE_CONFIG, true);
+        if (appInfo?.enableNewAppInstance) {
+          params.set(SCBConstants.CREATE_NEW_APP_INSTANCE_KEY, true);
+        }
+        if ((appInfo.appIndex ?? 0) > 0) {
+          params.set(SCBConstants.START_APP_CLONE_INDEX, (appInfo.appIndex ?? 0));
+        }
+        params.set(SCBConstants.OPEN_IN_NEW_WINDOW, true);
+        StartAbilityUtil.startLauncherAbilityWithMode(SCBSceneMode.FLOATING, appInfo.abilityName, appInfo.bundleName, appInfo.moduleName, params);
+      };
+      menuInfoList.push(openFromFloatingWindow);
+      log.showInfo(TAG, 'Launcher push menu item openFromFloatingWindow');
+    }
+
+    if(this.supportWindowMode(appInfo,bundleManager.SupportWindowMode.SPLIT)){
+      let openFromSplitScreen: MenuInfo = new MenuInfo();
+      openFromSplitScreen.menuType = CommonConstants.MENU_TYPE_FIXED;
+      openFromSplitScreen.menuImgSrc = '/common/pics/ic_public_add_norm.svg';
+      openFromSplitScreen.menuText = $r('app.string.app_menu_open_from_split_screen');
+      openFromSplitScreen.onMenuClick = (params: Map<string, Object>): void => {
+        ContractedFolderLayoutViewModel.getInstance().updateOpenFolderStatus(0);
+        params.set(SCBConstants.IS_START_BY_LAUNCHTYPE_CONFIG, true);
+        if (appInfo?.enableNewAppInstance) {
+          params.set(SCBConstants.CREATE_NEW_APP_INSTANCE_KEY, true);
+        }
+        if ((appInfo.appIndex ?? 0) > 0) {
+          params.set(SCBConstants.START_APP_CLONE_INDEX, (appInfo.appIndex ?? 0));
+        }
+        params.set(SCBConstants.OPEN_IN_NEW_WINDOW, true);
+        StartAbilityUtil.startLauncherAbilityWithMode(SCBSceneMode.PRIMARY, appInfo.abilityName, appInfo.bundleName, appInfo.moduleName, params);
+      };
+      menuInfoList.push(openFromSplitScreen);
+      log.showInfo(TAG, 'Launcher push menu item openFromSplitScreen');
+    }
+  }
+
+  private enableMultiWindowMenu(appInfo: AppItemInfo): boolean {
+    if (DeviceHelper.isPC()) {
+      return false;
+    }
+    let containerSessionList = SCBSceneSessionManager.getInstance().getAllContainerSessionList();
+    let floatingSessionList = SCBSceneSessionManager.getInstance().getFloatingSessionList();
+    let find = containerSessionList.findItemByBundleInfo(appInfo.abilityName, appInfo.bundleName, appInfo.moduleName);
+    let top = containerSessionList.getTopActiveSession();
+    let findFloat =
+      floatingSessionList.findItemByBundleInfo(appInfo.abilityName, appInfo.bundleName, appInfo.moduleName);
+    if (find?.isSplit || findFloat?.isFloat || top?.isSplit) {
+      return false;
+    }
+    return true;
+  }
+
+  private supportWindowMode(
+    appInfo: AppItemInfo,
+    targetMode: bundleManager.SupportWindowMode
+  ): boolean {
+    if(!this.enableMultiWindowMenu(appInfo)) {
+      return false;
+    }
+    const abilityInfo = SCBSceneSessionManager.getInstance()
+      .getAbilityInfo(appInfo.bundleName, appInfo.moduleName, appInfo.abilityName);
+    if (!abilityInfo?.supportWindowModes) return false;
+    return abilityInfo.supportWindowModes.includes(targetMode);
   }
 
   private cleanContinueItem(appInfo: DockItemInfo): void {

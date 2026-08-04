@@ -15,8 +15,7 @@
 
 import { LogDomain, LogHelper } from '@ohos/basicutils';
 import { DeviceHelper, EventManager, EvtBus, PluginSlot, WindowEvent, } from '@ohos/frameworkwrapper';
-import { FASlotName, HoverConstants } from '@ohos/commonconstants';
-import { DeviceState } from '@ohos/launchercommon/src/main/ets/constants/CommonConstants';
+import { HoverConstants } from '@ohos/commonconstants';
 import display from '@ohos.display';
 import StyleConfiguration, {
   ControlCenterMediaCardLayoutStyle,
@@ -28,20 +27,12 @@ import lazy {
   ExpandMediaCardComponent
 } from '@ohos/mediacontrolcomponent/src/main/ets/default/pages/ExpandMediaCardComponent';
 import { ControlCenterState } from '@ohos/controlcentercommon/Index';
-import { CC_LAYOUT_CONFIGS, ControlCenterLayoutIndex } from '../../controller/ControlCenterLayoutController';
+import { ControlCenterLayoutIndex } from '../../controller/ControlCenterLayoutController';
 import { ColorModeViewModel } from '@ohos/systemuicommon/src/main/ets/template/newStyle/ColorModeViewModel';
 import { ColorModeViewData } from '@ohos/systemuicommon/src/main/ets/template/newStyle/ColorModeViewData';
-import { sToggleSubWindowController } from '@ohos/controlcentercommon/src/main/ets/windowmanager/ToggleSubWindowController';
 import { curves } from '@kit.ArkUI';
 import { BusinessError, osAccount } from '@kit.BasicServicesKit';
-import {
-  ToggleScene,
-  ToggleTemplateType
-} from '@ohos/controlcentercommon/src/main/ets/toggle/interface/ToggleStyle';
-import { QuickToggleController } from '../../controller/QuickToggleController';
-import { ToggleComponent } from '@ohos/controlcentercommon/src/main/ets/toggle/view/NewToggleBaseComponent';
-import { PhoneStyleFactory } from '../../phoneStyle/PhoneStyleFactory';
-import { DisplayUtils } from '@ohos/screenlockcommon';
+import { OutdoorConfig } from '@ohos/basicutils/src/main/ets/utils/OutdoorConfig';
 
 const TAG = 'Ctrl.MediaCardLayout';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.CC, TAG);
@@ -67,9 +58,11 @@ export default struct ControlCenterMediaCardLayout {
   @StorageLink('isSysColor') isSysColor: boolean = true;
   @StorageLink('ControlCenterState') controlCenterState: ControlCenterState = ControlCenterState.MAIN_LAYOUT;
   @StorageLink('foldStatusForOuterScreen') foldStatus: number = AppStorage.get<number>('foldStatusForOuterScreen') as number;
-  @Prop isShowWifiCard: boolean = true;
   @StorageLink('isToggleLightEnabled') isToggleLightEnabled: boolean = true;
   @StorageLink('hasCall') hasCall: boolean = false;
+  @State isMediaCardUnavailable: boolean = OutdoorConfig.getInstance().isInOutdoorMode();
+  /** 备选库等场景使用独立 geometry key，避免与主页/预览区共享元素冲突 */
+  public skipGeometryTransition: boolean = false;
 
   aboutToAppear() {
     log.info(TAG,`abouttoappear-foldStatus-${this.foldStatus}`)
@@ -161,8 +154,9 @@ export default struct ControlCenterMediaCardLayout {
   }
 
   getGeometryKey(name: string) {
-    return this.mediaLandscape !== this.isLandscape && !DeviceHelper.isPad() &&
+    const key: string = this.mediaLandscape !== this.isLandscape && !DeviceHelper.isPad() &&
       !(this.isFoldDevice && !this.getFoldStatus()) ? `${name}Hide` : name;
+    return this.skipGeometryTransition ? `${key}_library` : key;
   }
 
   build() {
@@ -177,16 +171,14 @@ export default struct ControlCenterMediaCardLayout {
   buildCommonMediaCard() {
     Column() {
       Row({ space: this.longButtonStyle.space }) {
+        // 顶栏仅媒体卡；亮度/音量由顶栏配置经 TopToggleLoader 加载
         if (this.hasMediaCard) {
           Stack() {
             if (this.controlCenterState !== ControlCenterState.MEDIA_CENTER) {
               Column()
                 .width('100%')
                 .height('100%')
-                .backgroundColor(this.colorModeViewData.getSolidColor(
-                  this.colorModeViewData.commonBgOffColor, this.colorModeViewData.mainCardOption))
-                .backgroundBrightnessInternal(this.colorModeViewData.getBrightnessOption(
-                  this.colorModeViewData.mainCardOption))
+                .backgroundColor($r('sys.color.comp_background_primary'))
                 .borderRadius(this.style.newBorderRadius)
                 .zIndex(0)
                 .id(this.getGeometryKey(this.hasCall ? 'callPanelStart' : 'mediaPanelStart'))
@@ -214,23 +206,10 @@ export default struct ControlCenterMediaCardLayout {
           .onTouch((event: TouchEvent) => {
             this.buttonClickEffect(event);
           })
-          .opacity(1)
-          .enabled(true)
-        }
-
-        // if (this.isShowWifiCard && (this.foldStatus !== DeviceState.FOLDED_STATE)) {
-        if (this.isShowWifiCard && (DisplayUtils.getFoldStatus() === 0 || 1)) {
-          Grid() {
-            this.loadLongButtonLayout(FASlotName.WIFI_UI_EXTENSION)
-            this.loadLongButtonLayout(FASlotName.BLUETOOTH_UI_EXTENSION)
-          }
-          .width(this.longButtonStyle.newCardWidth)
-          .rowsGap(this.style.space)
-          .clip(false)
+          .opacity(this.isMediaCardUnavailable ? 0.6 : 1)
+          .enabled(!this.isMediaCardUnavailable)
         }
       }
-      .width(CC_LAYOUT_CONFIGS[this.ccLayoutIndex]?.singleCardWidth)
-      .height($r('app.float.Control_center_mediaAndWifiBlue_height'))
       .clip(false)
     }
     .transition(TransitionEffect.asymmetric(
@@ -260,27 +239,4 @@ export default struct ControlCenterMediaCardLayout {
       }),
     ))
   }
-
-  @Builder
-  loadLongButtonLayout(slot: string) {
-    GridItem() {
-      if (this.controlCenterState !== ControlCenterState.SUB_PANEL ||
-        sToggleSubWindowController.getCurrentSubPanelSlot() !== slot) {
-        ToggleComponent({
-          toggleId: slot,
-          templateType: ToggleTemplateType.TAGGED,
-          toggleStyle: PhoneStyleFactory.getInstance().createTaggedStyle(),
-          toggleViewModel: QuickToggleController.getInstance().createToggleModelAndInit(slot),
-          toggleScene: ToggleScene.PHONE
-        })
-          .borderRadius($r('app.float.Control_center_long_button_radius'))
-          .id('transition_topToggle' + slot)
-          .geometryTransition(slot + CC_LAYOUT_CONFIGS[this.ccLayoutIndex]?.showMediaAboveCardToggles)
-      }
-    }
-    .borderRadius($r('app.float.Control_center_long_button_radius'))
-    .width(this.longButtonStyle.newCardWidth)
-    .height($r('app.float.Control_center_long_button_height'))
-  }
 }
-

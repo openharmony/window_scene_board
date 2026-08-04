@@ -38,7 +38,7 @@ export class MeetingToggleController extends ToggleBaseViewModel {
 
   constructor() {
     super();
-    this.getViewData().label = '';
+    this.getViewData().label = $r('app.string.control_center_complex_toggle_meeting_title');
     this.getViewData().icon = $r('app.media.ic_meeting');
   }
 

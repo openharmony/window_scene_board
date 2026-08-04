@@ -1,0 +1,32 @@
+{
+    "string":[
+        {
+            "name":"ai_wallpaper_service_description_1",
+            "value":"This service requires an %1$s connection and needs to read and upload/transfer images to provide wallpaper-related features. By clicking Agree, you agree to these terms and the %2$s. For more details about how your personal information is processed, refer to the %3$s.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"end_aigc_service_text",
+            "value":"For details, refer to the %1$s and %2$s. If you don't want to use this service anymore, click %3$s.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_chest_description",
+            "value":"Swipe up on the home screen to display all installed apps. Drag an app to add it to the home screen. Remove an app from the home screen by clicking & holding it and clicking Remove.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"desktop_resource_center_description",
+            "value":"Swipe up on the home screen to display all installed apps. Drag an app to add it to the home screen. Remove an app from the home screen by clicking & holding it and clicking Remove.",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

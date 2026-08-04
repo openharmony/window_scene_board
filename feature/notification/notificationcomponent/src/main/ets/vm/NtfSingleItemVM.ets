@@ -54,9 +54,10 @@ import {
 import { bannerMgr } from '@ohos/systemuicommon';
 import { NotificationConstants } from '../common/NotificationConstants';
 import { screenLockSysFloatTipControl } from '@ohos/screenlockcommon/src/main/ets/manager/SysFloatTipController';
-import { NotificationSysEventReporter }
-  from '@ohos/systemuicommon';
-import { ScreenLockNotificationConst } from '@ohos/screenlockcommon/src/main/ets/constants/ScreenLockNotificationConstants';
+import { NotificationSysEventReporter } from '@ohos/systemuicommon';
+import {
+  ScreenLockNotificationConst
+} from '@ohos/screenlockcommon/src/main/ets/constants/ScreenLockNotificationConstants';
 import { Callback } from '@kit.BasicServicesKit';
 import wantAgent from '@ohos.app.ability.wantAgent';
 import { CloseAppManager } from '@ohos/launchercommon/src/main/ets/manager/CloseAppManager';
@@ -67,7 +68,9 @@ import {
   ClickNotificationErrorCode,
   ClickNotificationMaintenance
 } from '@ohos/systemuicommon/src/main/ets/maintenance/ClickNotificationMaintenance';
-import { DeleteNotificationMaintenance } from '@ohos/systemuicommon/src/main/ets/maintenance/DeleteNotificationMaintenance';
+import {
+  DeleteNotificationMaintenance
+} from '@ohos/systemuicommon/src/main/ets/maintenance/DeleteNotificationMaintenance';
 import { ClickRegion, DeleteNotificationType } from '@ohos/systemuicommon/src/main/ets/maintenance/StatisticsConstants';
 import { AppProtectedVm } from '@ohos/systemuicommon/src/main/ets/vm/AppProtectedVm';
 import { ntfViewConfigManager } from './config/NtfViewConfigManager';
@@ -78,7 +81,9 @@ const TAG = 'NtfSingleItemVM';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.NC, TAG);
 const NO_LAUNCH_OPER_TYPES = [wantAgent.OperationType.UNKNOWN_TYPE, wantAgent.OperationType.SEND_COMMON_EVENT];
 const UNLOCK_DELAY_TIME: number = 300;
+const DELIVER_PRIVACY_ENABLE = 2;
 const DISTRIBUTE_OPERATION_JUMP: number = 0;
+
 /**
  * 单条通知数据处理
  *
@@ -116,10 +121,22 @@ export class NtfSingleItemVM {
   onItemClick(isHeadsUp?: boolean, clickCount?: number, isKeyguardLock?: boolean, isNtfKeyguard?: boolean): void {
     performanceMonitor.begin('NotificationClick', performanceMonitor.ActionType.LAST_UP);
     let entry = this.callback?.getNtfEntry();
+    let privacyEnableState: number =
+      Number(sSettingsUtil.getSystemValue(NotificationConstants.DELIVER_PRIVACY_ENABLE_STATE,
+        NotificationConstants.DELIVER_PRIVACY_ENABLE_STATE_DEFAULT));
+    let privacyScene: string = JSON.stringify({ 'privacyEnableState': privacyEnableState });
     ClickNotificationMaintenance.saveInfo({
       data: entry,
       clickRegion: isHeadsUp ? ClickRegion.BANNER_MAIN : ClickRegion.NTF_MAIN,
     });
+    if (entry?.isDeliverNotification && privacyEnableState !== DELIVER_PRIVACY_ENABLE) {
+      ClickNotificationMaintenance.reportClick(ClickNotificationErrorCode.DELIVER_PRIVACY_DISABLE, {
+        clickRegion: ClickRegion.NTF_DELIVER,
+        data: entry,
+        scene: privacyScene,
+      });
+      log.showInfo(`onDeliverNtfClick, privacyEnableState = ${privacyEnableState}`);
+    }
     if (!entry) {
       ClickNotificationMaintenance.reportClick(ClickNotificationErrorCode.NO_ENTRY);
       performanceMonitor.end('NotificationClick');
@@ -132,12 +149,13 @@ export class NtfSingleItemVM {
       } else {
         NotificationPanelManager.collapseNtfPanel(this.callback?.getNtfType() as number, true);
       }
+      ClickNotificationMaintenance.reportClick(ClickNotificationErrorCode.DELIVER_EXCLUDE);
       return;
     }
 
     let reportNtf: NotificationEntry[] = entry.isGroup ? entry.childrenEntry! : [entry];
 
-    if (entry?.isCollaNotification){
+    if (entry?.isCollaNotification) {
       NotificationUtil.distributeOperation(entry?.hashCode, DISTRIBUTE_OPERATION_JUMP);
       log.showInfo(`doStartDistributeOperation for ${entry?.hashCode} finished`);
       return;
@@ -173,7 +191,7 @@ export class NtfSingleItemVM {
   }
 
   /**
-   * 通知拉起应用
+   * 通知拉起应用前需要检查当前是否为重载业务，如果是则不打开应用，并且提示用户
    * @returns true表示当前不打开应用
    */
   private isExcludeForStartApp(entry: NotificationEntry): boolean {
@@ -191,7 +209,13 @@ export class NtfSingleItemVM {
    * @param isHeadsUp 是否横幅通知
    */
   private async onOtherClick(entry: NotificationEntry | null | undefined,
-    reportNtf: NotificationEntry[], isHeadsUp?: boolean) : Promise<void> {
+    reportNtf: NotificationEntry[], isHeadsUp?: boolean): Promise<void> {
+    const pushIsDeliver = entry?.isDeliverPushNotification;
+    let deliverStatus: boolean = false;
+    if (entry?.isDeliverNotification) {
+      deliverStatus = NotificationUtil.isDeliverNotStarted();
+    }
+    log.showInfo(`deliver status: ${deliverStatus}`)
     // 先执行拉起应用动作，减小应用启动时延
     this.startDoWantAgent(entry!, isHeadsUp ? LiveUseScene.SCENE_HEADS_UP : LiveUseScene.SCENE_NTF_CENTER);
     if (entry?.getLauncherBundleName()?.length !== 0) {
@@ -232,8 +256,8 @@ export class NtfSingleItemVM {
       HiDfxEventUtil.reportNotifyItemClick(entry!.creatorBundleName, HiSysDataNotifyClickState.LOCK_SINGLE_CLICK);
       let componentId: string = isNtfKeyguard ?
         isHeadsUp ? ScreenLockNotificationConst.NTF_OUT_HEADS_UP_KEY_GUARD_TIP :
-        ScreenLockNotificationConst.NTF_OUT_DROPDOWN_PANEL_KEY_GUARD_TIP :
-      ScreenLockNotificationConst.NTF_KEY_GUARD_TIP;
+          ScreenLockNotificationConst.NTF_OUT_DROPDOWN_PANEL_KEY_GUARD_TIP :
+        ScreenLockNotificationConst.NTF_KEY_GUARD_TIP;
       screenLockSysFloatTipControl.setTipMessage(componentId,
         ResUtils.getInnerStringByName('ntf_keyguard_no_content_click_tip'));
       screenLockSysFloatTipControl.setFloatTipDialogVisible(componentId, true,
@@ -279,8 +303,9 @@ export class NtfSingleItemVM {
     let isGroup = this.isInGroup();
     let componentId: string = this.getTipComponentId(isNtfKeyguard, scene === LiveUseScene.SCENE_HEADS_UP);
     if (clickCount === ScreenLockNotificationConst.NTF_FIRST_CLICK && isLocked && !isGroup) {
+      let rebootNtf: boolean = AppStorage.get<boolean>('reboot_ntf_msg') ?? false
       HiDfxEventUtil.reportNotifyItemClick(entry!.creatorBundleName, HiSysDataNotifyClickState.LOCK_SINGLE_CLICK);
-      let tipName = ScreenLockNotificationConst.KG_NTF_CLICK_TIP;
+      let tipName = rebootNtf ? ScreenLockNotificationConst.KG_NTF_NO_CONTENT_TIP : ScreenLockNotificationConst.KG_NTF_CLICK_TIP;
       screenLockSysFloatTipControl.setTipMessage(componentId, ResUtils.getInnerStringByName(tipName));
       screenLockSysFloatTipControl.setFloatTipDialogVisible(componentId, true,
         ScreenLockNotificationConst.CLICK_TOAST_SHOW_DURATION);
@@ -312,12 +337,20 @@ export class NtfSingleItemVM {
       return ScreenLockNotificationConst.NTF_KEY_GUARD_TIP;
     }
     return isHeadsUp ? ScreenLockNotificationConst.NTF_OUT_HEADS_UP_KEY_GUARD_TIP :
-    ScreenLockNotificationConst.NTF_OUT_DROPDOWN_PANEL_KEY_GUARD_TIP;
+      ScreenLockNotificationConst.NTF_OUT_DROPDOWN_PANEL_KEY_GUARD_TIP;
   }
 
   startAgentOnLock(isLocked: boolean, entry: NotificationEntry | null | undefined,
     isNtfKeyguard?: boolean, scene?: LiveUseScene) {
     log.showInfo(`startAgentOnLock  ${isLocked} ${this.isKeyguard()} ${isNtfKeyguard} ${scene}`);
+    if (AppStorage.get<boolean>('reboot_ntf_msg') ?? false) {
+      let componentId: string = ScreenLockNotificationConst.NTF_KEY_GUARD_TIP;
+      screenLockSysFloatTipControl.setTipMessage(componentId,
+        ResUtils.getInnerStringByName('ntf_keyguard_no_content_click_tip'));
+      screenLockSysFloatTipControl.setFloatTipDialogVisible(componentId, true,
+        ScreenLockNotificationConst.CLICK_TOAST_SHOW_DURATION);
+      return;
+    }
     if (isLocked) {
       ScreenLockApi.requestUnlock({
         authResultSuccess: (): void => {
@@ -443,6 +476,8 @@ export class NtfSingleItemVM {
           }
         }
       });
+    } else if (entry.isDeliverNotification) {
+      startAgent(false);
     } else if (entry.isLiveType()) {
       if (scene === LiveUseScene.SCENE_NTF_CENTER) {
         OverlayAnimExecutors.getLastOrCreateExecutor().init([NtfListComponentVM.overlayAnimData]);
@@ -455,7 +490,8 @@ export class NtfSingleItemVM {
         isLockScreen: isNtfKeyguard
       });
     } else if (scene === LiveUseScene.SCENE_NTF_CENTER) {
-      if (ntfViewConfigManager.getListContentConfig().isNtfStartDirectly) {
+      // deliverPush场景直接拉起
+      if (entry?.isDeliverPushNotification || ntfViewConfigManager.getListContentConfig().isNtfStartDirectly) {
         startAgent(true);
       } else {
         const preAction =
@@ -518,14 +554,16 @@ export class NtfSingleItemVM {
       return undefined;
     }
     return NotificationConstants.isGroupNTF(entry) ?
-    NotificationConstants.getGroupNTFItemCompId(entry.getGroupKey()) :
-    NotificationConstants.getNTFSingleItemCompId(scene, entry.hashCode)
+      NotificationConstants.getGroupNTFItemCompId(entry.getGroupKey()) :
+      NotificationConstants.getNTFSingleItemCompId(scene, entry.hashCode)
   }
 
   private getGroupItemRadius(): CardBorderRadius | undefined {
     return {
-      topLeft: NotificationConfig.BORDER_RADIUS, topRight: NotificationConfig.BORDER_RADIUS,
-      bottomLeft: NotificationConfig.BORDER_RADIUS, bottomRight: NotificationConfig.BORDER_RADIUS
+      topLeft: NotificationConfig.BORDER_RADIUS,
+      topRight: NotificationConfig.BORDER_RADIUS,
+      bottomLeft: NotificationConfig.BORDER_RADIUS,
+      bottomRight: NotificationConfig.BORDER_RADIUS
     }
   }
 
@@ -547,12 +585,12 @@ export class NtfSingleItemVM {
         ntfCenterVm.raiseItemToTop(groupTypeKey);
       }, 'beforeHandler');
       overlayAnimExecutor.addAfterHandler(() => {
-          AnimateToScheduleUtils.raiseAnimateToGCPriority(AnimateToScheduleUtils.VALUE_END);
-          ntfCenterVm.refreshItemZIndex;
-          if (isNeedCollapseDropdownPanel) {
-            ntfCenterVm.releaseUpdateFreeze('OverlayAnim')
-          }
-        }, 'afterHandler');
+        AnimateToScheduleUtils.raiseAnimateToGCPriority(AnimateToScheduleUtils.VALUE_END);
+        ntfCenterVm.refreshItemZIndex;
+        if (isNeedCollapseDropdownPanel) {
+          ntfCenterVm.releaseUpdateFreeze('OverlayAnim')
+        }
+      }, 'afterHandler');
       overlayAnimExecutor.setContainerRect(ntfCenterVm.listContainerRect)
     }
 
@@ -620,9 +658,15 @@ export class NtfSingleItemVM {
           topLeft: 0,
           topRight: 0,
           bottomLeft: NotificationConfig.BORDER_RADIUS,
-          bottomRight: NotificationConfig.BORDER_RADIUS }
+          bottomRight: NotificationConfig.BORDER_RADIUS
+        }
       }
-      return { topLeft: 0, topRight: 0, bottomLeft: 0, bottomRight: 0 }
+      return {
+        topLeft: 0,
+        topRight: 0,
+        bottomLeft: 0,
+        bottomRight: 0
+      }
     }
     return undefined;
   }
@@ -654,7 +698,7 @@ export class NtfSingleItemVM {
   kgDisplayButtonClickTip(clickCount: number, isKeyguardLock: boolean, isHideNtfContent: boolean,
     isNtfKeyguard?: boolean): boolean {
     let componentId: string = isNtfKeyguard ? ScreenLockNotificationConst.NTF_OUT_DROPDOWN_PANEL_KEY_GUARD_TIP :
-    ScreenLockNotificationConst.NTF_KEY_GUARD_TIP;
+      ScreenLockNotificationConst.NTF_KEY_GUARD_TIP;
     if (clickCount === ScreenLockNotificationConst.NTF_FIRST_CLICK && isKeyguardLock) {
       // 隐藏通知不提示双击展开通知
       if (!isHideNtfContent) {

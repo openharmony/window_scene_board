@@ -13,6 +13,13 @@
             "attr":{
                 "priority":"translate"
             }
+        },
+        {
+            "name": "control_center_super_privacy_for_location_toggle",
+            "value": "位置已禁用，请先退出超级隐私模式",
+            "attr": {
+                "priority": "translate"
+            }
         }
-    ]
+]
 }

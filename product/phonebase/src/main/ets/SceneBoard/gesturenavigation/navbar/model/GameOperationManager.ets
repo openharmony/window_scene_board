@@ -14,6 +14,7 @@
  */
 
 import { LogDomain, LogHelper } from '@ohos/basicutils';
+import { NAVIBarViewModel } from '../../../naviBar/NAVIBarModel/NAVIBarViewModel';
 import { GameOperationParams } from './GameOperationParams';
 import { SystemSceneConstants } from '../../SystemSceneConstants';
 
@@ -26,11 +27,25 @@ const log: LogHelper = LogHelper.getLogHelper(LogDomain.GESTURE, TAG);
 export class GameOperationManager {
   // 游戏场景下，相关操作参数
   private params: GameOperationParams = new GameOperationParams();
+  private naviBarViewModel?: NAVIBarViewModel;
+
+  /**
+   * 构造，依赖NAVIBarViewModel游戏场景参数isInGameSign
+   *
+   * @param naviBarViewModel
+   */
+  public constructor(naviBarViewModel: NAVIBarViewModel) {
+    this.naviBarViewModel = naviBarViewModel;
+  }
 
   /**
    * 监听底部导航TouchEvent
    */
   public onTouchEvent(event: TouchEvent): void {
+    // 非游戏场景，不做特殊处理
+    if (!this.naviBarViewModel?.naviBarData.isInGameSign) {
+      return;
+    }
     if (event.type === TouchType.Down) {
       this.params.isHasOtherFinger = !this.isFirstFinger(event);
       if (!this.params.isHasOtherFinger) {
@@ -50,6 +65,10 @@ export class GameOperationManager {
    * @returns
    */
   public isFirstFingerMoveValid(): boolean {
+    // 非游戏场景，不用判断第一根手指滑动的有效性
+    if (!this.naviBarViewModel?.naviBarData.isInGameSign) {
+      return true;
+    }
     // 没有其他手指滑动，第一根手指滑动有效
     if (!this.params.isHasOtherFinger) {
       return true;

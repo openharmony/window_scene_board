@@ -38,7 +38,7 @@ import type { SCBSystemSceneSession } from './SCBSystemSceneSession';
 import type { SCBTransitionController } from '../../animation/SCBTransitionController';
 import { SCBSceneSessionManager, PreferMultiWindowOrientation, SCBSpecificSceneSessionList } from './SCBSceneSessionManager';
 import { SCBTransitionManager } from '../../animation/SCBTransitionManager';
-import { SCBDesktopCacheManager, SCBUltraScreenState } from '@ohos/frameworkwrapper';
+import { SCBDesktopCacheManager, SCBTripleFoldState } from '@ohos/frameworkwrapper';
 import lazy { SCBTriFoldManager } from '@ohos/frameworkwrapper/src/main/ets/utils/SCBTriFoldManager';
 import { StartType } from '@ohos/basicutils';
 import { SCBScreenSessionManager } from '../../screen/session/SCBScreenSessionManager';
@@ -937,13 +937,13 @@ export class SCBSceneContainerSessionArray extends Array<SCBSceneContainerSessio
     for (let item of this) {
       if (item.primarySession && filterFunction(item.primarySession)) {
         ++containerSessionCount;
-        if (!firstContainerSession) {
+        if (!firstContainerSession && !item.primarySession.needDestructedInSplit) {
           firstContainerSession = item;
         }
       }
       if (item.secondarySession && filterFunction(item.secondarySession)) {
         ++containerSessionCount;
-        if (!firstContainerSession) {
+        if (!firstContainerSession && !item.secondarySession.needDestructedInSplit) {
           firstContainerSession = item;
         }
       }
@@ -2418,7 +2418,7 @@ class SCBSceneContainerSessionData {
   sdkVersion: number = 0;
   transitionAnimationCount: number = 0;
   isRequestLandscape: boolean = false;
-  preferSplitBackToFull: boolean = true;
+  preferSplitBackToFull: boolean = false;
   midSceneFSM: FSM | null = null;
   iconRectInfo: RectInfo = new RectInfo();
   recentSessionInfo: SCBRecentSessionInfo = new SCBRecentSessionInfo();
@@ -2523,6 +2523,8 @@ export class SCBSceneContainerSession {
    * private data of a session,which should not exposed to widgets
    */
   private sessionDataInner: SCBSceneContainerSessionDataInner = new SCBSceneContainerSessionDataInner();
+  private pendingPageRotation: boolean = false;
+
   /*
    get function provide to sessionData only. forbid ui flush
    */
@@ -2717,7 +2719,7 @@ export class SCBSceneContainerSession {
   private containerActiveModeChangeCallback: Function;
   private containerRefreshSplitSceneCallback: Function;
   private containerFoldChangeCallback: Function;
-  private containerFoldChangeForUltraScreenCallback: Function;
+  private containerFoldChangeForThreeFoldCallback: Function;
   private subSessionStateChangeCallbacks: Map<number, Function> = new Map();
   private updateSubWindowBindingCallbacks: Map<number, Function> = new Map();
   private isSaveSnapshotForMidSceneCallback: Function;
@@ -2905,6 +2907,24 @@ export class SCBSceneContainerSession {
   }
     log.showInfo(`isFloat ${this._isFloat} to ${isFloat}`);
     this._isFloat = isFloat;
+  }
+
+  public setPendingPageRotation(isPending: boolean, reason: string): void {
+    if (this.pendingPageRotation === isPending) {
+      return;
+    }
+    WinLog.showInfo(WinLogDomain.WMS_ROTATION, `[setPendingPageRotation] ${this.getName()} ` +
+      `from ${this.pendingPageRotation} to ${isPending}, reason: ${reason}`);
+    this.pendingPageRotation = isPending;
+  }
+
+  public consumePendingPageRotation(reason: string): boolean {
+    const isPending = this.pendingPageRotation;
+    if (isPending) {
+      WinLog.showInfo(WinLogDomain.WMS_ROTATION, `[consumePendingPageRotation] ${this.getName()}, reason: ${reason}`);
+    }
+    this.pendingPageRotation = false;
+    return isPending;
   }
 
   /**
@@ -3884,8 +3904,9 @@ export class SCBSceneContainerSession {
     this.needRenderScale.centerY = '50%';
     this.width = new ScbNumber(this.screenProperty.width);
     this.height = new ScbNumber(this.screenProperty.height);
-    this.needRenderBorderRadius.setBorderRadiusWithDfx(DeviceHelper.getDeviceRadius(SCBScreenSessionManager.getInstance()
-      .isFoldablePhoneExpandStatus()), TAG, 'init', extra);
+    // this.needRenderBorderRadius.setBorderRadiusWithDfx(DeviceHelper.getDeviceRadius(SCBScreenSessionManager.getInstance()
+    //   .isFoldablePhoneExpandStatus()), TAG, 'init', extra);
+    this.needRenderBorderRadius.setBorderRadiusWithDfx(SCBConstants.DEFAULT_WINDOWS_RADIUS_0, TAG, 'init', extra);
     if (needClearShowInRecent) {
       this.needRenderShowInRecent.setShowInRecentWithDfx(false, TAG, 'init', extra);
     }
@@ -4148,6 +4169,26 @@ export class SCBSceneContainerSession {
       this.exitToSmallFolder(iconRectInfo);
       return;
     }
+    if (!isTransitionOut) {
+      // if (this.companionIconInfo?.iconId && iconRectInfo) {
+      //   if (startType === StartType.CARD) {
+      //     this.startCard(iconRectInfo, isTransitionOut);
+      //     return;
+      //   }
+      //   let isAdaptiveIcon = IconResourceManager.getInstance().isAdaptiveIcon(this.companionIconInfo);
+      //   log.showWarn(`onTransitionActiveToRect, bundleName:${this.companionIconInfo?.bundleName}, ` +
+      //     `isAdaptive:${isAdaptiveIcon}`);
+      //   if (!isAdaptiveIcon) {
+      //     this.startCard(iconRectInfo, isTransitionOut);
+      //     return;
+      //   }
+      //   this.startApp(iconRectInfo, isTransitionOut);
+      //   return;
+      // }
+      // this.startOther();
+      this.onTransitionInactive();
+      return;
+    }
     if (this.companionIconInfo?.iconId && iconRectInfo) {
       if (startType === StartType.CARD) {
         this.startCard(iconRectInfo, isTransitionOut);
@@ -4288,10 +4329,10 @@ export class SCBSceneContainerSession {
   }
 
   public isPcAppExit(): boolean {
-    // 超大屏PC应用需要再G态折叠时退后台
-    return this.primarySession?.isPcAppInPad && DeviceHelper.isUltraScreenProduct() &&
-      SCBTriFoldManager.getInstance().getCurTriFoldState() !== SCBUltraScreenState.G &&
-      SCBTriFoldManager.getInstance().getPrevTriFoldState() === SCBUltraScreenState.G;
+    // 三折PC应用需要再G态折叠时退后台
+    return this.primarySession?.isPcAppInPad && DeviceHelper.isThreeFoldProduct() &&
+      SCBTriFoldManager.getInstance().getCurTriFoldState() !== SCBTripleFoldState.G &&
+      SCBTriFoldManager.getInstance().getPrevTriFoldState() === SCBTripleFoldState.G;
   }
 
   public setByRectInfo(iconRectInfo: RectInfo, param: SceneParam): void {
@@ -4423,13 +4464,15 @@ export class SCBSceneContainerSession {
     quickAccessMenuTopOffset: number, isXKey: boolean = false): void {
     this.needRenderTranslateIcon.translateIconX = 0;
     this.needRenderTranslateIcon.translateIconY = 0;
-    let borderRadius: number = DeviceHelper.getDeviceRadius(SCBScreenSessionManager.getInstance()
-      .isFoldablePhoneExpandStatus());
-    if (isXKey) {
-      borderRadius = vp2px(quickAccessMenuWidth / 2);
-    }
-    this.needRenderBorderRadius.setBorderRadiusWithDfx(borderRadius, TAG, 'startOtherForQuickAccessMenu',
-      this.getName());
+    // let borderRadius: number = DeviceHelper.getDeviceRadius(SCBScreenSessionManager.getInstance()
+    //   .isFoldablePhoneExpandStatus());
+    // if (isXKey) {
+    //   borderRadius = vp2px(quickAccessMenuWidth / 2);
+    // }
+    // this.needRenderBorderRadius.setBorderRadiusWithDfx(borderRadius, TAG, 'startOtherForQuickAccessMenu',
+    //   this.getName());
+    this.needRenderBorderRadius.setBorderRadiusWithDfx(SCBConstants.DEFAULT_WINDOWS_RADIUS_0, TAG,
+      'startOtherForQuickAccessMenu', this.getName());
     let sourceHeight = quickAccessMenuHeight;
 
     if (!this.isVertical(this.screenProperty.rotation) && !isXKey) {
@@ -4529,15 +4572,21 @@ export class SCBSceneContainerSession {
    * Start other
    */
   public startOther(): void {
-    this.needRenderScale.setScaleXWithDfx(DEFAULT_SCALE, TAG, 'startOther', this.getName());
-    this.needRenderScale.setScaleYWithDfx(DEFAULT_SCALE, TAG, 'startOther', this.getName());
+    // this.needRenderScale.setScaleXWithDfx(DEFAULT_SCALE, TAG, 'startOther', this.getName());
+    // this.needRenderScale.setScaleYWithDfx(DEFAULT_SCALE, TAG, 'startOther', this.getName());
+    this.needRenderScale.setScaleXWithDfx(1, TAG, 'startOther', this.getName());
+    this.needRenderScale.setScaleYWithDfx(1, TAG, 'startOther', this.getName());
+    // this.needRenderTranslate.setTranslateXWithDfx(0, TAG, 'startOther', this.getName());
+    // this.needRenderTranslate.setTranslateYWithDfx(-px2vp(this.screenProperty.height * WINDOW_SCALE), TAG, 'startOther', this.getName());
     this.needRenderTranslate.setTranslateXWithDfx(0, TAG, 'startOther', this.getName());
-    this.needRenderTranslate.setTranslateYWithDfx(-px2vp(this.screenProperty.height * WINDOW_SCALE), TAG, 'startOther', this.getName());
+    this.needRenderTranslate.setTranslateYWithDfx(0, TAG, 'startOther', this.getName());
     this.needRenderTranslateIcon.translateIconX = 0;
     this.needRenderTranslateIcon.translateIconY = 0;
     this.needRenderClip.setClipHeight(this.screenProperty.height);
-    this.needRenderBorderRadius.setBorderRadiusWithDfx(DeviceHelper.getDeviceRadius(SCBScreenSessionManager.getInstance()
-      .isFoldablePhoneExpandStatus()), TAG, 'startOther', this.getName());
+    // this.needRenderBorderRadius.setBorderRadiusWithDfx(DeviceHelper.getDeviceRadius(SCBScreenSessionManager.getInstance()
+    //   .isFoldablePhoneExpandStatus()), TAG, 'startOther', this.getName());
+    this.needRenderBorderRadius.setBorderRadiusWithDfx(SCBConstants.DEFAULT_WINDOWS_RADIUS_0, TAG, 'startOther',
+      this.getName());
   }
 
   public onTransitionInactiveForSplit(): void {
@@ -4560,8 +4609,10 @@ export class SCBSceneContainerSession {
     this.cardScale = 1.0;
     this.needRenderClip.setClipHeight(this.screenProperty.height);
     this.needRenderClip.setClipWidth(this.screenProperty.width);
-    this.needRenderBorderRadius.setBorderRadiusWithDfx(DeviceHelper.getDeviceRadius(SCBScreenSessionManager.getInstance()
-      .isFoldablePhoneExpandStatus()), TAG, 'onTransitionInactive', this.getName());
+    // this.needRenderBorderRadius.setBorderRadiusWithDfx(DeviceHelper.getDeviceRadius(SCBScreenSessionManager.getInstance()
+    //   .isFoldablePhoneExpandStatus()), TAG, 'onTransitionInactive', this.getName());
+    this.needRenderBorderRadius.setBorderRadiusWithDfx(SCBConstants.DEFAULT_WINDOWS_RADIUS_0, TAG, 'onTransitionInactive',
+      this.getName());
     this.needRenderTranslate.setTranslateXWithDfx(0, TAG, 'onTransitionInactive', this.getName());
     this.needRenderTranslate.setTranslateYWithDfx(0, TAG, 'onTransitionInactive', this.getName());
     this.needRenderTranslateIcon.translateIconX = 0;
@@ -4600,6 +4651,7 @@ export class SCBSceneContainerSession {
     log.showWarn(`getTransitionCount from session ${this.containerId}, ${this.sessionData.transitionAnimationCount}`);
     return SCBTransitionManager.getInstance().getTransitionCount(this.containerId.toString());
   }
+
 
   /**
    * Increase transition count
@@ -4890,6 +4942,21 @@ export class SCBSceneContainerSession {
                  'currentProperty: ' + JSON.stringify(this.screenProperty));
   }
 
+  public rotateFloating(screenProperty: SCBScreenProperty, reason: SCBContainerRotationReason): void {
+    if (this.isVertical(this.currentRotation) !== this.isVertical(screenProperty.rotation)) {
+      let width = this.needRenderClip.clipHeight.copy();
+      let height = this.needRenderClip.clipWidth.copy();
+      this.needRenderClip.setClipWidth(width);
+      this.needRenderClip.setClipHeight(height);
+      this.updateContainerSessionWithRotationInner(screenProperty, sceneSessionManager.SessionSizeChangeReason.ROTATION);
+      this.notifySceneContainerRotationChange(this.currentRotation, screenProperty, reason);
+      this.screenProperty.copy(screenProperty);
+      this.currentRotation = this.screenProperty.rotation;
+      this.width = new ScbNumber(this.screenProperty.width);
+      this.height = new ScbNumber(this.screenProperty.height);
+    }
+  }
+
   private rotateSplit(screenProperty: SCBScreenProperty, reason: SCBContainerRotationReason,
     sizeReason: sceneSessionManager.SessionSizeChangeReason): void {
     this.rotateSplitInFoldIfNeeded(screenProperty);
@@ -5053,8 +5120,18 @@ export class SCBSceneContainerSession {
       case SCBPropertyChangeReason.FOLD_SCREEN_ROTATION:
       case SCBPropertyChangeReason.FOLD_LANDSCAPE_START:
       case SCBPropertyChangeReason.PAGE_ROTATION: {
-        this.needRenderClip.setClipWidth(screenProperty.width);
-        this.needRenderClip.setClipHeight(screenProperty.height);
+        if (this.isFloat || this.isFloatView){
+          let height = this.needRenderClip.clipHeight.copy();
+          let width = this.needRenderClip.clipWidth.copy();
+          let isVertical: boolean = width.getVp() < height.getVp();
+          if (screenProperty.isScreenVertical() !== isVertical) {
+            this.needRenderClip.setClipWidth(height);
+            this.needRenderClip.setClipHeight(width);
+          }
+        } else {
+          this.needRenderClip.setClipWidth(screenProperty.width);
+          this.needRenderClip.setClipHeight(screenProperty.height);
+        }
         this.currentRotation = screenRotation;
         break;
       }
@@ -5108,11 +5185,11 @@ export class SCBSceneContainerSession {
       this.primarySession?.calcSessionRectAfterFoldChange(screenProperty);
       return;
     }
-    if (this.isFloat || this.isFloatView) {
-      log.showInfo(`updateContainerSessionWithFold return and copy screenProperty to containerSession`);
-      this.screenProperty.copy(screenProperty);
-      return;
-    }
+    // if (this.isFloat || this.isFloatView) {
+    //   log.showInfo(`updateContainerSessionWithFold return and copy screenProperty to containerSession`);
+    //   this.screenProperty.copy(screenProperty);
+    //   return;
+    // }
     if (screenSession.isRotateScreenPolicy()) {
       screenRotation = screenSession.scbScreenProperty.rotation;
     }
@@ -5167,10 +5244,18 @@ export class SCBSceneContainerSession {
       this.updateSessionRectForSplit(screenProperty, true, sizeReason);
       SCBSceneSessionManager.getInstance().notifySystemSceneToSetRotation(screenProperty);
     } else if (!this.isMidScene) {
-      this.primarySession?.updateRect(new ScbNumber(screenProperty.left), new ScbNumber(screenProperty.top),
-        new ScbNumber(screenProperty.width), new ScbNumber(screenProperty.height), sizeReason);
-      this.secondarySession?.updateRect(new ScbNumber(screenProperty.left), new ScbNumber(screenProperty.top),
-        new ScbNumber(screenProperty.width), new ScbNumber(screenProperty.height), sizeReason);
+      if (this.isFloat || this.isFloatView) {
+        // 悬浮窗使用clip的尺寸
+        this.primarySession?.updateRect(new ScbNumber(screenProperty.left), new ScbNumber(screenProperty.top),
+          this.needRenderClip.clipWidth, this.needRenderClip.clipHeight, sizeReason);
+        this.secondarySession?.updateRect(new ScbNumber(screenProperty.left), new ScbNumber(screenProperty.top),
+          this.needRenderClip.clipWidth, this.needRenderClip.clipHeight, sizeReason);
+      } else {
+        this.primarySession?.updateRect(new ScbNumber(screenProperty.left), new ScbNumber(screenProperty.top),
+          new ScbNumber(screenProperty.width), new ScbNumber(screenProperty.height), sizeReason);
+        this.secondarySession?.updateRect(new ScbNumber(screenProperty.left), new ScbNumber(screenProperty.top),
+          new ScbNumber(screenProperty.width), new ScbNumber(screenProperty.height), sizeReason);
+      }
     }
     this.primarySession?.calcSessionRectAfterFoldChange(screenProperty);
     this.secondarySession?.calcSessionRectAfterFoldChange(screenProperty);
@@ -5232,7 +5317,7 @@ export class SCBSceneContainerSession {
           this.dividerParam.needCutOut = true;
           this.updateSplitStyleWithFoldInner(screenProperty);
           this.splitParam.clearPrevSplitRatio();
-          if (DeviceHelper.isUltraScreenProduct()) {
+          if (DeviceHelper.isThreeFoldProduct()) {
             this.dividerParam.setSplitStyle(SplitStyle.UNDEFINED);
           }
           break;
@@ -5260,7 +5345,7 @@ export class SCBSceneContainerSession {
       targetSplitStyle = this.isVertical(screenSession.scbScreenProperty.rotation) ? SplitStyle.UP_AND_DOWN_POS :
         SplitStyle.LEFT_AND_RIGHT_POS;
     }
-    if (SCBTriFoldManager.getInstance().isCurMState() && DeviceHelper.isUltraScreenProduct()) {
+    if (SCBTriFoldManager.getInstance().isCurMState() && DeviceHelper.isThreeFoldProduct()) {
       if (SCBSplitUtils.hasFixedSplitRatioScene(this)) {
         targetSplitStyle = SplitStyle.LEFT_AND_RIGHT_POS;
       }
@@ -5726,7 +5811,7 @@ export class SCBSceneContainerSession {
 
   private processOrientationForSplit(sensorRotation: number, screenRotation: number,
     uiType: string, isLock: boolean): number | undefined {
-    if (DeviceHelper.isGState() && DeviceHelper.isUltraScreenProduct()) {
+    if (DeviceHelper.isGState() && DeviceHelper.isThreeFoldProduct()) {
       if (SCBSplitUtils.hasFixedSplitRatioScene(this)) {
         return this.processMidSceneGStateOrientation(screenRotation, sensorRotation, isLock);
       }
@@ -6026,7 +6111,7 @@ export class SCBSceneContainerSession {
       return fixedRotation;
     }
 
-    if (this.primarySession?.isPcAppInPad && DeviceHelper.isUltraScreenProduct()) {
+    if (this.primarySession?.isPcAppInPad && DeviceHelper.isThreeFoldProduct()) {
       log.showInfo(`getTargetRotation handle in pc in largeScreen.`);
       return RotationConstants.ROTATION_0;
     }
@@ -6143,12 +6228,12 @@ export class SCBSceneContainerSession {
   }
 
   /**
-   * register container fold change callback for ultrascreen
+   * register container fold change callback for threefold
    *
    * @param { Function } callback
    */
-  public registerContainerFoldChangeForUltraScreenCallback(callback: Function): void {
-    this.containerFoldChangeForUltraScreenCallback = callback;
+  public registerContainerFoldChangeForThreeFoldCallback(callback: Function): void {
+    this.containerFoldChangeForThreeFoldCallback = callback;
   }
 
   public registerGetOverlaySessionCallback(callback: () => SCBSystemSceneSession[]): void {
@@ -6165,10 +6250,10 @@ export class SCBSceneContainerSession {
     }
   }
 
-  public notifySceneContainerFoldChangeForUltraScreen(): void {
-    if (this.containerFoldChangeForUltraScreenCallback) {
+  public notifySceneContainerFoldChangeForThreeFold(): void {
+    if (this.containerFoldChangeForThreeFoldCallback) {
       log.showWarn(`notifySceneContainer foldstatus change`)
-      this.containerFoldChangeForUltraScreenCallback();
+      this.containerFoldChangeForThreeFoldCallback();
     }
   }
 
@@ -6523,8 +6608,8 @@ export class SCBSceneContainerSession {
       primRect.setRectNum(primaryPosX, primaryPosY, primaryWidth, height);
       secRect.setRectNum(secondaryPosX, secondaryPosY, secondaryWidth, height);
     }
-    this.primarySession?.updateRect(primRect.left, primRect.top, primRect.width, primRect.height, changeReason, true);
-    this.secondarySession?.updateRect(secRect.left, secRect.top, secRect.width, secRect.height, changeReason, true);
+    this.primarySession?.updateRect(primRect.left, primRect.top, primRect.width, primRect.height, changeReason);
+    this.secondarySession?.updateRect(secRect.left, secRect.top, secRect.width, secRect.height, changeReason);
   }
 
   private fixSecRectMinError(secRect: SCBSessionRect, screenProperty: SCBScreenProperty): void {
@@ -6835,7 +6920,7 @@ export class SCBSceneContainerSession {
     this.containerActiveModeChangeCallback = null;
     this.containerFoldChangeCallback = null;
     this.interactiveStateChangeCallback = undefined;
-    this.containerFoldChangeForUltraScreenCallback = null;
+    this.containerFoldChangeForThreeFoldCallback = null;
   }
 
   public getSceneSessionByPersistentId(persistentId: number): SCBSceneSession | undefined {
@@ -7276,6 +7361,15 @@ export class SCBSceneContainerSession {
     }
     WinLog.showError(WinLogDomain.WMS_LIFE, 'error items in container session.');
     return null;
+  }
+
+  /**
+   * set _isActive at toggleHome scenario only for PC
+   */
+  public setActivationAtToggleHomeScenario(): void {
+    log.showInfo(`setActivationAtToggleHomeScenario update _isActive and toggleHomeState`);
+    this.toggleHomeState = false;
+    this._isActive = true;
   }
 }
 

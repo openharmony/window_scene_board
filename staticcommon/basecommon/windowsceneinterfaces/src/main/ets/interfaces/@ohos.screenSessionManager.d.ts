@@ -1,5 +1,5 @@
 /*
- * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -183,7 +183,7 @@ declare namespace screenSessionManager {
     /**
      * super fold status change.
      */
-    BIG_SCREEN_STATUS_CHANGE,
+    SUPER_FOLD_STATUS_CHANGE,
   }
 
   /**
@@ -384,42 +384,42 @@ declare namespace screenSessionManager {
    * @syscap SystemCapability.Window.SessionManager
    * @since 14
    */
-  enum BigScreenStatus {
+  enum SuperFoldStatus {
     /**
      * Super Fold Status Unknown.
      *
      * @syscap SystemCapability.Window.SessionManager
      * @since 14
      */
-    BIG_SCREEN_STATUS_UNKNOWN = 0,
+    SUPER_FOLD_STATUS_UNKNOWN = 0,
     /**
      * Super Fold Status Folded.
      *
      * @syscap SystemCapability.Window.SessionManager
      * @since 14
      */
-    BIG_SCREEN_STATUS_FOLDED,
+    SUPER_FOLD_STATUS_FOLDED,
     /**
      * Super Fold Status Half Folded.
      *
      * @syscap SystemCapability.Window.SessionManager
      * @since 14
      */
-    BIG_SCREEN_STATUS_HALF_FOLDED,
+    SUPER_FOLD_STATUS_HALF_FOLDED,
     /**
      * Super Fold Status Expanded.
      *
      * @syscap SystemCapability.Window.SessionManager
      * @since 14
      */
-    BIG_SCREEN_STATUS_EXPANDED,
+    SUPER_FOLD_STATUS_EXPANDED,
     /**
      * Super Fold Status keyboard.
      *
      * @syscap SystemCapability.Window.SessionManager
      * @since 14
      */
-    BIG_SCREEN_STATUS_KEYBOARD
+    SUPER_FOLD_STATUS_KEYBOARD
   }
 
   /**
@@ -568,9 +568,9 @@ declare namespace screenSessionManager {
 
     /**
      * Register the callback of super fold status change from system.
-     * @param type 'bigScreenStatusChange'
+     * @param type 'superFoldStatusChange'
      */
-    on(type: 'bigScreenStatusChange', callback: Callback<number, BigScreenStatus>): void;
+    on(type: 'superFoldStatusChange', callback: Callback<number, SuperFoldStatus>): void;
 
     /**
      * Register the callback of extend screen connect status change from system.
@@ -767,19 +767,19 @@ declare namespace screenSessionManager {
   function updateAvailableArea(screenId: number, area: DMRect): void;
 
   /**
-   * updateBigScreenAvailableArea
+   * updateSuperFoldAvailableArea
    * @param screenId number
    * @param bArea DMRect
    * @param cArea DMRect
    */
-  function updateBigScreenAvailableArea(screenId: number, bArea: DMRect, cArea: DMRect): void;
+  function updateSuperFoldAvailableArea(screenId: number, bArea: DMRect, cArea: DMRect): void;
 
   /**
-   * updateBigScreenBCAvailableArea
+   * updateSuperFoldBCAvailableArea
    * @param screenId number
    * @param area DMRect
    */
-  function updateBigScreenExpandAvailableArea(screenId: number, area: DMRect): void;
+  function updateSuperFoldExpandAvailableArea(screenId: number, area: DMRect): void;
 
   /**
    * Get the current fold status of the foldable device.
@@ -796,7 +796,7 @@ declare namespace screenSessionManager {
    * Get the current super fold status of the super fold device.
    * @returns Returns super fold status of device.
    */
-  function getBigScreenStatus(): BigScreenStatus;
+  function getSuperFoldStatus(): SuperFoldStatus;
 
   /**
    * Get the current super rotation of the super fold device.

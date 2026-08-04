@@ -1,0 +1,148 @@
+{
+    "plural":[
+        {
+            "name":"psd_incorrect_will_locked1",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"ཐེངས་ %d",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"psd_incorrect_will_locked2",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"སྐར་མ་ %d",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"psd_incorrect_will_locked3",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"སྐར་ཆ་ %d",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"psd_incorrect_psd_left_times",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"གསང་ཨང་ནོར་འདུག ད་དུང་ཚོད་ལྟ་ཐེངས་ %d བྱ་ཆོག",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"psd_incorrect_psd_left_times_mix",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"གསང་ཨང་ནོར་འདུག ད་དུང་ཚོད་ལྟ་ཐེངས་ %d བྱ་ཆོག",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"sim_unlock_input_puk_tips",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"PUK ཨང་གྲངས་ནང་འཇུག (ཐེངས་ %d ལྷག)",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"sim_unlock_input_tips",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"SIM བྱང་བུའི་ PIN ཨང་གྲངས་ནང་འཇུག (ཐེངས་ %d ལྷག)",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"sim_unlock_puk_incorrect_tips",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"SIM བྱང་བུའི་ PUK ཨང་གྲངས་ནོར་བ། ཁྱེད་ལ་ད་དུང་གོ་སྐབས་ %d ཡོད། གལ་ཏེ་སྔར་བཞིན་ནོར་བ་ཡིན་ན། SIM བྱང་བུ་ནམ་ཡང་བཀོལ་མི་ཐུབ་པར་འགྱུར་སྲིད།",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"sim_unlock_pin_incorrect_tips",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"SIM བྱང་བུའི་ PIN ཨང་གྲངས་ནོར་བ། ཁྱེད་ལ་ད་དུང་གོ་སྐབས་ %d ཡོད།",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"fp_fingerprint_not_match",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"མཛུབ་རིས་ཆ་མི་འགྲིག ད་དུང་ཐེངས་ %d ཚོད་ལྟ་གནང་ཆོག",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"psd_totle_length",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"ཁྱོན་བསྡོམས་གྲངས་གནས་ %d",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"psd_entered_length",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"གྲངས་གནས་ %d ནང་འཇུག་བྱས་ཟིན།",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

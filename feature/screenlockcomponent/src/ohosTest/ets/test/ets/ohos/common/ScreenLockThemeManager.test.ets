@@ -46,7 +46,7 @@ import commonEventManager from '@ohos.commonEventManager';
 import { DeviceHelper, ThemeActivationEvent } from '@ohos/frameworkwrapper';
 import { ClockComFamily } from '@ohos/screenlockwidget';
 import { DisplayUtils, ScreenLockState, screenLockStateManager,
-  UltraScreenStatus } from '@ohos/screenlockcommon/src/main/ets/TsIndex';
+  ThreeFoldStatus } from '@ohos/screenlockcommon/src/main/ets/TsIndex';
 
 export default function ScreenLockThemeManagerTest() {
 

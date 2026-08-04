@@ -21,28 +21,32 @@
             "value":"[TS_863887]_Bluetooth"
         },
         {
-            "name":"openharmony_multiwindow_not_support_multiwindows",
+            "name":"oh_multiwindow_not_support_multiwindows",
             "value":"[TS_869898]_%1$s does not support multi window display."
         },
         {
-            "name":"openharmony_multiwindow_not_support_split",
+            "name":"oh_multiwindow_not_support_split",
             "value":"[TS_869895]_%1$s does not support split-screen display."
         },
         {
-            "name":"openharmony_multiwindow_not_support_split_ratio",
+            "name":"oh_multiwindow_not_support_split_ratio",
             "value":"[TS_911909]_Screen sizes can't be adjusted for games."
         },
         {
-            "name":"openharmony_multiwindow_click_application_form_split_screen",
+            "name":"oh_multiwindow_click_application_form_split_screen",
             "value":"[TS_869902]_Open another app for split-screen view."
         },
         {
-            "name":"openharmony_multiwindow_not_support_float_window",
+            "name":"oh_multiwindow_not_support_float_window",
             "value":"[TS_873725]_%1$s can't be opened in a floating window."
         },
         {
-            "name":"openharmony_multiwindow_app_is_open",
+            "name":"oh_multiwindow_app_is_open",
             "value":"[TS_881042]_App is already open."
+        },
+        {
+            "name":"HiSearch_title",
+            "value":"[TS_881712]_Voice Search"
         },
         {
             "name":"Desktop_setting",
@@ -105,8 +109,8 @@
             "value":"[TS_863917]_Add to home screen"
         },
         {
-            "name":"folder_name_oh",
-            "value":"[TS_968023]_Huawei Apps"
+            "name":"folder_name_system_apps",
+            "value":"[TS_968023]_System Apps"
         },
         {
             "name":"folder_name_preload",
@@ -193,11 +197,11 @@
             "value":"[TS_906040]_Apply ACCESS_BLUETOOTH permission"
         },
         {
-            "name":"openharmony_multiwindow_not_support_vertical_split_new",
+            "name":"oh_multiwindow_not_support_vertical_split_new",
             "value":"[TS_939801]_%1$s does not support vertical split screen."
         },
         {
-            "name":"openharmony_multiwindow_not_support_horizontal_split_new",
+            "name":"oh_multiwindow_not_support_horizontal_split_new",
             "value":"[TS_939800]_%1$s does not support horizontal split screen."
         },
         {
@@ -209,16 +213,40 @@
             "value":"[TS_929471]_From split-screen view, swipe up or resize the windows to enter parallel-window view."
         },
         {
+            "name":"Navi_bar_return_home",
+            "value":"[TS_917577]_Go home"
+        },
+        {
+            "name":"Navi_bar_recent_detail",
+            "value":"[TS_917578]_Swipe up from the bottom and hold to view recent tasks."
+        },
+        {
+            "name":"Navi_bar_recent",
+            "value":"[TS_917584]_View recent tasks"
+        },
+        {
             "name":"MultiWindow_pip_switch_title",
             "value":"[TS_925942]_Picture-in-picture"
+        },
+        {
+            "name":"Navi_bar_setting",
+            "value":"[TS_917586]_System navigation"
         },
         {
             "name":"aod_list_title_more_style",
             "value":"[TS_922847]_More AODs"
         },
         {
+            "name":"Navi_bar_back",
+            "value":"[TS_917585]_Go back"
+        },
+        {
             "name":"MultiWindow_floating_windows_title",
             "value":"[TS_925945]_Floating window"
+        },
+        {
+            "name":"Navi_bar_vassistant_dialogue",
+            "value":"[TS_917579]_Voice Chat"
         },
         {
             "name":"MultiWindow_dock_title",
@@ -237,8 +265,16 @@
             "value":"[TS_925936]_When this is on, video and MeeTime calls will continue in a mini window when you open another app or return to the home screen."
         },
         {
+            "name":"Navi_bar",
+            "value":"[TS_922799]_Navigation bar"
+        },
+        {
             "name":"permission_reason_access_near_link",
             "value":"[TS_927765]_for accessing the near link interface"
+        },
+        {
+            "name":"Navi_bar_gesture_back_detail",
+            "value":"[TS_917583]_Swipe in from the left or right edge to return to the previous screen."
         },
         {
             "name":"next_step",
@@ -261,6 +297,10 @@
             "value":"[TS_925939]_Swipe to the top right for a floating window or the top left for split screen."
         },
         {
+            "name":"Navi_bar_vassistant",
+            "value":"[TS_917581]_Touch & hold the navigation bar to talk to voice."
+        },
+        {
             "name":"MultiWindow_dock_contents",
             "value":"[TS_925934]_Swipe in from the edge to open the dock. Tap an app to open a floating window. Or drag an app into the screen to enter split-screen view."
         },
@@ -269,12 +309,20 @@
             "value":"[TS_922798]_System"
         },
         {
+            "name":"Navi_bar_return_home_detail",
+            "value":"[TS_917582]_Swipe up from the bottom to go to the home screen."
+        },
+        {
             "name":"MultiWindow_title",
             "value":"[TS_925935]_Multi-window"
         },
         {
             "name":"multi_window_force_switch_title",
             "value":"[TS_1101140]_Compatibility mode"
+        },
+        {
+            "name":"Navi_bar_back_detail",
+            "value":"[TS_917580]_Tap the navigation bar to return to the previous screen."
         },
         {
             "name":"MultiWindow_dock_switch_contents",
@@ -291,6 +339,14 @@
         {
             "name":"MultiWindow_dock_switch_title",
             "value":"[TS_925943]_Multi-window dock"
+        },
+        {
+            "name":"drag_to_voice",
+            "value":"[TS_929472]_Drag to voice"
+        },
+        {
+            "name":"drag_to_voice_detail",
+            "value":"[TS_929473]_Touch & hold an item until it starts floating, then drag it to the bottom."
         },
         {
             "name":"No_available_window",
@@ -345,7 +401,7 @@
             "value":"[TS_937415]_Touch & hold the top bar on a window, then drag it over another window."
         },
         {
-            "name":"openharmony_multiwindow_not_support_split_for_folded_new",
+            "name":"oh_multiwindow_not_support_split_for_folded_new",
             "value":"[TS_941846]_%1$s not available in split-screen while device is folded."
         },
         {
@@ -393,23 +449,23 @@
             "value":"[TS_945322]_OK"
         },
         {
-            "name":"openharmony_multiwindow_horizontal_split",
+            "name":"oh_multiwindow_horizontal_split",
             "value":"[TS_949924]_Split horizontally"
         },
         {
-            "name":"openharmony_multiwindow_vertical_split",
+            "name":"oh_multiwindow_vertical_split",
             "value":"[TS_949922]_Split vertically"
         },
         {
-            "name":"openharmony_multiwindow_horizontal_exchange",
+            "name":"oh_multiwindow_horizontal_exchange",
             "value":"[TS_949921]_Flip top/bottom"
         },
         {
-            "name":"openharmony_multiwindow_save_group",
+            "name":"oh_multiwindow_save_group",
             "value":"[TS_949925]_Save combo"
         },
         {
-            "name":"openharmony_multiwindow_vertical_exchange",
+            "name":"oh_multiwindow_vertical_exchange",
             "value":"[TS_949923]_Flip left/right"
         },
         {
@@ -489,6 +545,14 @@
             "value":"[TS_971215]_OK"
         },
         {
+            "name":"Navi_bar_vassistant_dialogue_longpress",
+            "value":"[TS_966060]_Touch & hold for voice"
+        },
+        {
+            "name":"Navi_bar_back_click_navigation",
+            "value":"[TS_966059]_Tap to go back"
+        },
+        {
             "name":"covertheme_settings_title",
             "value":"[TS_971295]_Home screen, cover screen & style"
         },
@@ -503,6 +567,10 @@
         {
             "name":"gesture_dock_add_limit",
             "value":"[TS_971638]_A maximum of %1$d applications can be added."
+        },
+        {
+            "name":"navi_bar_accessibility_text",
+            "value":"[TS_972532]_Navigation bar, tap twice and hold to speak to voice"
         },
         {
             "name":"MultiWindow_guidance_mid_multi_finger_knead_title",
@@ -593,12 +661,20 @@
             "value":"[TS_975935]_Touch & hold the top bar on a window, then drag to enter split-screen view."
         },
         {
+            "name":"let_go_drag_to_voice",
+            "value":"[TS_977868]_Release to send to voice"
+        },
+        {
             "name":"flip_the_phone",
             "value":"[TS_968327]_Flip to turn on flashlight"
         },
         {
             "name":"close_flashlight_tips",
             "value":"[TS_966391]_Press the Power button to turn off the flashlight"
+        },
+        {
+            "name":"drag_to_voice_reminder",
+            "value":"[TS_982602]_Drag to voice and release to activate"
         },
         {
             "name":"enter_pc_mode_tips",
@@ -717,7 +793,7 @@
             "value":"[TS_1045012]_Shrink"
         },
         {
-            "name":"openharmony_multiwindow_click_application_form_midScene_waiting_state",
+            "name":"oh_multiwindow_click_application_form_midScene_waiting_state",
             "value":"[TS_1001225]_Tap an app icon to add to Multitask view."
         },
         {
@@ -725,15 +801,15 @@
             "value":"[TS_1002549]_%1$s does not support mini window display."
         },
         {
-            "name":"openharmony_multiwindow_does_not_support_panoramic_multiwindow_in_current_state",
+            "name":"oh_multiwindow_does_not_support_panoramic_multiwindow_in_current_state",
             "value":"[TS_1002963]_Multitask view not supported."
         },
         {
-            "name":"openharmony_multiwindow_does_not_support_panoramic_multiwindow",
+            "name":"oh_multiwindow_does_not_support_panoramic_multiwindow",
             "value":"[TS_1002826]_This app doesn't support Multitask view."
         },
         {
-            "name":"openharmony_multiwindow_back_to_middle_scene_using_gesture",
+            "name":"oh_multiwindow_back_to_middle_scene_using_gesture",
             "value":"[TS_1001358]_Pinch four fingers together to return to Multitask view."
         },
         {
@@ -869,7 +945,7 @@
             "value":"[TS_1061869]_Window size can't be adjusted on cover screen."
         },
         {
-            "name":"openharmony_multiwindow_minimize_all_float_due_to_rss",
+            "name":"oh_multiwindow_minimize_all_float_due_to_rss",
             "value":"[TS_1067048]_To ensure a smooth experience, the floating window has been tucked away to the side."
         },
         {

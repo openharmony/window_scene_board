@@ -97,7 +97,7 @@ const log: LogHelper = LogHelper.getLogHelper(LogDomain.CC, TAG);
 const MAX_RETRY_TIMES: number = 5; // dataShare最多重试次数
 const RETRY_INTERVAL_MS: number = 1500; // 重试间隔
 const REFRESH_TOGGLE_DATA_DELAY_MS: number = 60000; // 延迟间隔
-const PROJECTION_TOGGLE_KEY: string = 'HuaweiCastToggle';
+const PROJECTION_TOGGLE_KEY: string = 'CastToggle';
 const PROJECTION_PRIVACY_AGREE: string = 'need_reshow_projection_privacy';
 const MAIN_USER_ID: number = 100;
 const QUICK_TOGGLE_DATA_DEFAULT: string = 'false';
@@ -113,7 +113,6 @@ const NON_STANDARD_TOGGLE: string[] =
   [FASlotName.MEDIA_ITEM_NAME,
     FASlotName.BRIGHTNESS,
     FASlotName.SOUND,
-    FASlotName.SUPER_DEVICE,
     FASlotName.COMBINED_SLIDER];
 
 export class QuickToggleController {
@@ -194,7 +193,6 @@ export class QuickToggleController {
 
   private isPC: boolean = DeviceHelper.isPC();
 
-  // 类似java中的锁机制, 等待lockResolve被执行之后，lock被释放
   private lockResolve: () => void = () => {};
   private lock: Promise<void> = new Promise(resolve => {
     this.lockResolve = resolve
@@ -539,7 +537,12 @@ export class QuickToggleController {
       log.showInfo(`getTopToggleData settings value is null, get default toggle data!`);
       return this.getDefaultTopToggleData();
     }
-    return topToggleStr.split(',');
+    const rawTopToggles: string[] = topToggleStr.split(',').filter(item => item.length > 0);
+    const normalized: string[] = this.normalizeMediaRowOrder(rawTopToggles);
+    if (normalized.join(',') !== rawTopToggles.join(',')) {
+      this.saveTopToggleData(normalized);
+    }
+    return normalized;
   }
 
   /**
@@ -561,8 +564,77 @@ export class QuickToggleController {
       log.showInfo(`getQuickToggleData settings value is null, get default toggle data!`);
       quickToggleStr = Constants.LOAD_NEW_DEFAULT_TOGGLE ? ResUtils.getInnerString($r('app.string.toggle_data_default')) :
       ResUtils.getInnerString($r('app.string.toggle_data_default_old'));
+      return quickToggleStr.split(',');
     }
-    return quickToggleStr.split(',');
+    // 迁移旧快捷栏：补齐 WLAN/蓝牙圆形快捷开关
+    return this.migrateQuickToggleData(quickToggleStr.split(','));
+  }
+
+  /**
+   * 媒体行固定顺序：媒体 | 亮度音量组合；并移除已下线的超级终端开关
+   */
+  private normalizeMediaRowOrder(toggles: string[]): string[] {
+    const migrated: string[] = this.migrateLegacySlidersToCombined(toggles)
+      .filter(item => item !== FASlotName.SUPER_DEVICE);
+    const mediaRowOrder: string[] = [
+      FASlotName.MEDIA_ITEM_NAME,
+      FASlotName.COMBINED_SLIDER
+    ];
+    const mediaRow: string[] = mediaRowOrder.filter(item => migrated.includes(item));
+    const others: string[] = migrated.filter(item => item.length > 0 && !mediaRowOrder.includes(item));
+    return mediaRow.concat(others);
+  }
+
+  /**
+   * 旧版拆分的 brightness/sound 合并为 combined_slider，一体添加/移除
+   */
+  private migrateLegacySlidersToCombined(toggles: string[]): string[] {
+    const hasBrightness: boolean = toggles.includes(FASlotName.BRIGHTNESS);
+    const hasSound: boolean = toggles.includes(FASlotName.SOUND);
+    if (!hasBrightness && !hasSound) {
+      return toggles.filter(item => item.length > 0);
+    }
+    let migrated: string[] = toggles.filter(item =>
+      item.length > 0 && item !== FASlotName.BRIGHTNESS && item !== FASlotName.SOUND);
+    if (!migrated.includes(FASlotName.COMBINED_SLIDER)) {
+      const mediaIdx: number = migrated.indexOf(FASlotName.MEDIA_ITEM_NAME);
+      if (mediaIdx >= 0) {
+        migrated.splice(mediaIdx + 1, 0, FASlotName.COMBINED_SLIDER);
+      } else {
+        migrated.unshift(FASlotName.COMBINED_SLIDER);
+      }
+    }
+    log.showInfo(`migrateLegacySlidersToCombined from:${toggles.toString()} to:${migrated.toString()}`);
+    return migrated;
+  }
+
+  /**
+   * 迁移快捷栏数据：仅在用户尚未自定义时，补齐 WLAN/蓝牙到首位。
+   * 用户确认保存过布局后不可再强制写回，否则无法移除 WLAN/蓝牙。
+   */
+  private migrateQuickToggleData(quickToggles: string[]): string[] {
+    let migrated: string[] = quickToggles.filter(item => item.length > 0);
+    if (this.toggleDataEdited) {
+      return migrated;
+    }
+    const wifiSlot: string = FASlotName.WIFI_UI_EXTENSION;
+    const btSlot: string = FASlotName.BLUETOOTH_UI_EXTENSION;
+    const needWifi: boolean = !migrated.includes(wifiSlot);
+    const needBt: boolean = !migrated.includes(btSlot);
+    if (!needWifi && !needBt) {
+      return migrated;
+    }
+    const insertList: string[] = [];
+    if (needWifi) {
+      insertList.push(wifiSlot);
+    }
+    if (needBt) {
+      insertList.push(btSlot);
+    }
+    migrated = insertList.concat(migrated.filter(item => item !== wifiSlot && item !== btSlot));
+    log.showInfo(`migrateQuickToggleData insert:${insertList.toString()} result:${migrated.toString()}`);
+    this.saveQuickToggleData(migrated);
+    return migrated;
   }
 
   /**
@@ -663,7 +735,10 @@ export class QuickToggleController {
       if (!topToggles.includes(toggle)) {
         if (NON_STANDARD_TOGGLE.includes(toggle) || this.createToggleModel(toggle) !== undefined) {
           toggleData.otherTopToggle.push(toggle);
-          this.stopToggleModel(toggle);
+          // WLAN/蓝牙等同时存在于快捷栏时不可 stop，否则快捷图标会被卸掉
+          if (!quickToggles.includes(toggle)) {
+            this.stopToggleModel(toggle);
+          }
         }
       }
     });
@@ -672,7 +747,9 @@ export class QuickToggleController {
       if (!quickToggles.includes(toggle)) {
         if (this.createToggleModel(toggle) !== undefined) {
           toggleData.otherToggle.push(toggle);
-          this.stopToggleModel(toggle);
+          if (!topToggles.includes(toggle)) {
+            this.stopToggleModel(toggle);
+          }
         }
       }
     });
@@ -732,7 +809,10 @@ export class QuickToggleController {
     let defaultTopToggleStr: string = this.userId === MAIN_USER_ID ?
     ResUtils.getInnerString($r('app.string.top_toggle_data_default')) :
     ResUtils.getInnerString($r('app.string.top_toggle_data_default_multiuser'));
-    return defaultTopToggleStr.split(',');
+    if (CommonUtils.isEmpty(defaultTopToggleStr)) {
+      return [];
+    }
+    return defaultTopToggleStr.split(',').filter(item => item.length > 0);
   }
 
   /**

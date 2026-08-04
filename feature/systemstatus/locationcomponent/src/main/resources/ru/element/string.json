@@ -13,6 +13,13 @@
             "attr":{
                 "priority":"translate"
             }
+        },
+        {
+            "name": "control_center_super_privacy_for_location_toggle",
+            "value": "Доступ к геоданным запрещен. Сначала выключите режим Суперконфиденциальность.",
+            "attr": {
+                "priority": "translate"
+            }
         }
-    ]
+]
 }

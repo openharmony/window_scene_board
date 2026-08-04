@@ -130,6 +130,7 @@ export default function NotificationSettingDialogVmTest() {
         ntf.creatorBundleName = 'test_bundle';
         ntf.appLabel = 'Test App';
         ntf.isAtomicServiceFromPush = false;
+        ntf.isDeliverNotification = false;
         ntf.isSettingIgnore = false;
         ntf.isDisplayAtTop = false;
         ntf.groupKey = 'test_key';
@@ -154,6 +155,7 @@ export default function NotificationSettingDialogVmTest() {
         ntf.creatorBundleName = 'test_bundle';
         ntf.appLabel = 'Test App';
         ntf.isAtomicServiceFromPush = true;
+        ntf.isDeliverNotification = false;
         ntf.isSettingIgnore = false;
         ntf.isDisplayAtTop = false;
         ntf.groupKey = 'test_key';
@@ -174,6 +176,7 @@ export default function NotificationSettingDialogVmTest() {
         ntf.creatorBundleName = 'test_bundle';
         ntf.appLabel = 'Test App';
         ntf.isAtomicServiceFromPush = false;
+        ntf.isDeliverNotification = false;
         ntf.isSettingIgnore = false;
         ntf.isDisplayAtTop = false;
         ntf.groupKey = 'test_key';
@@ -196,6 +199,7 @@ export default function NotificationSettingDialogVmTest() {
         ntf.creatorBundleName = NotificationConstants.DISABLE_CLOSE_NOTIFICATION_PACKAGE_NAME[0];
         ntf.appLabel = 'Test App';
         ntf.isAtomicServiceFromPush = false;
+        ntf.isDeliverNotification = false;
         ntf.isSettingIgnore = false;
         ntf.isDisplayAtTop = false;
         ntf.groupKey = 'test_key';
@@ -217,6 +221,7 @@ export default function NotificationSettingDialogVmTest() {
         ntf.creatorBundleName = 'test_bundle';
         ntf.appLabel = 'Test App';
         ntf.isAtomicServiceFromPush = false;
+        ntf.isDeliverNotification = false;
         ntf.isSettingIgnore = true;
         ntf.isDisplayAtTop = false;
         ntf.groupKey = 'test_key';
@@ -276,6 +281,7 @@ export default function NotificationSettingDialogVmTest() {
         ntf.creatorBundleName = 'test_bundle';
         ntf.appLabel = 'Test App';
         ntf.isAtomicServiceFromPush = false;
+        ntf.isDeliverNotification = false;
         ntf.isSettingIgnore = false;
         ntf.isDisplayAtTop = false;
         ntf.groupKey = 'test_key';
@@ -331,6 +337,7 @@ export default function NotificationSettingDialogVmTest() {
         const ntf = new NotificationBase();
         ntf.isLiveView = () => false;
         ntf.creatorBundleName = 'test_bundle';
+        ntf.isDeliverNotification = false;
         ntf.isSettingIgnore = false;
 
         vm.ntf = ntf;
@@ -346,6 +353,7 @@ export default function NotificationSettingDialogVmTest() {
         const ntf = new NotificationBase();
         ntf.isLiveView = () => false;
         ntf.creatorBundleName = NotificationConstants.DISABLE_CLOSE_NOTIFICATION_PACKAGE_NAME[0];
+        ntf.isDeliverNotification = false;
         ntf.isSettingIgnore = false;
 
         vm.ntf = ntf;
@@ -360,6 +368,7 @@ export default function NotificationSettingDialogVmTest() {
         const ntf = new NotificationBase();
         ntf.isLiveView = () => false;
         ntf.creatorBundleName = 'test_bundle';
+        ntf.isDeliverNotification = false;
         ntf.isSettingIgnore = true;
 
         vm.ntf = ntf;
@@ -406,6 +415,24 @@ export default function NotificationSettingDialogVmTest() {
 
         vm.ntf = ntf;
         expect(vm.isShowCloseButton()).toBe(false);
+      });
+    });
+
+    describe('isShowPintTopButton', () => {
+      it('should return true for non-deliver ntf', () => {
+        const ntf = new NotificationBase();
+        ntf.isDeliverNotification = false;
+
+        vm.ntf = ntf;
+        expect(vm.isShowPintTopButton()).toBe(true);
+      });
+
+      it('should return false for deliver ntf', () => {
+        const ntf = new NotificationBase();
+        ntf.isDeliverNotification = true;
+
+        vm.ntf = ntf;
+        expect(vm.isShowPintTopButton()).toBe(false);
       });
     });
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -41,6 +41,7 @@ import { BusinessError } from '@ohos.base';
 import power from '@ohos.power';
 import common from '@ohos.app.ability.common';
 import notificationSubscribe from '@ohos.notificationSubscribe';
+import notificationManager from '@ohos.notificationManager';
 import audio from '@ohos.multimedia.audio';
 import { LocalEventCallback } from '../Util/LocalEventCallBack';
 import Constants, {
@@ -72,7 +73,7 @@ import { combineObject, debounce } from '../Util/Tool';
 import { MediaEventCallback, MetadataChangeCallback, ValidCommandChangeCallback } from '../EventBus/MediaEventCallback';
 import { MediaEventManager, MediaEventType } from '../EventBus/MediaEventManager';
 import { MetadataChangeEvent, ValidCommandChangeEvent } from '../EventBus/MediaEvent';
-// import collaborationServiceManager from '@hms.collaboration.collaborationServiceManager'
+// import collaborationServiceManager from '@ohos.collaboration.collaborationServiceManager'
 import MediaInfoProvider from './MediaInfoProvider';
 import { CastDeviceControl } from './CastDeviceControl';
 import { ControlCenterPluginMgr } from '@ohos/controlcentercommon/src/main/ets/base/ControlCenterPluginMgr';
@@ -227,6 +228,8 @@ export class CardMediaController {
   private static isChangeSongLink: AbstractProperty<boolean> | undefined = undefined;
   private static isChangeAppLink: AbstractProperty<boolean> | undefined = undefined;
   private static lastNotifyId: string = '';
+  private lastPublishedNtfSessionId: string = '';
+  private lastPublishedCapsuleTitle: string = '';
   private removeNotificationTimer: number | undefined = undefined;
   private showingMesHistoryTitle: string | boolean | undefined;
   private isShowingMesHistory: boolean = false;
@@ -601,6 +604,10 @@ export class CardMediaController {
         log.showInfo('on sessionDestroy');
         this.sessionDestroyCallbackSet.delete(sessionId);
         this.commonInterface?.releaseCallback(sessionId);
+        // 会话结束后，销毁播控通知
+        if (this.lastPublishedNtfSessionId === sessionId) {
+          this.postNotificationCancelEvent(CardMediaController.lastNotifyId, 'session destroyed');
+        }
         if (!this.sessionProvider || !this.sessionProvider.avSessionControllerMap.size) {
           log.error(`on sessionDestroy without sessionProvider return`);
           return;
@@ -1055,7 +1062,7 @@ export class CardMediaController {
       if (DeviceHelper.isBarPhone()) {
         return -1;
       }
-      return CommonUtils.isFoldExpanded() ? (CommonUtils.isUltraScreenProductInGState() ? 11 : 1) : 2;
+      return CommonUtils.isFoldExpanded() ? (CommonUtils.isThreeFoldProductInGState() ? 11 : 1) : 2;
     }
     return -1;
   }
@@ -1338,6 +1345,15 @@ export class CardMediaController {
         CardMediaController.mediaTitleLink?.set(mediaInfo.musicTitle);
       }
     }
+    // 切歌时更新补发的播控通知胶囊文本（基于title变化，避免musicAssetId的falsy问题）
+    if (CardMediaController.controller?.lastPublishedNtfSessionId !== '' &&
+      mediaInfo.musicTitle != undefined &&
+      CardMediaController.controller?.lastPublishedCapsuleTitle !== mediaInfo.musicTitle) {
+      (CardMediaController.controller as CardMediaController).lastPublishedCapsuleTitle =
+        mediaInfo.musicTitle as string;
+      CardMediaController.controller?.publishMediaNtf(
+        CardMediaController?.controller?.sessionProvider?.topSessionId as string);
+    }
     log.showInfo(`callback : set displayTags : ${mediaInfo.displayTags}`);
     CardMediaController.mediaDisplayTagsLink?.set(mediaInfo?.displayTags || null);
     if (CardMediaController.controller?.enableDc) {
@@ -1388,6 +1404,10 @@ export class CardMediaController {
     mediaInfo.musicPic = undefined;
     if (mediaInfo.playState != undefined) {
       CardMediaController.mediaPlayStateLink?.set(mediaInfo.playState);
+      // 三方应用通过AVSession播放音频时，若通知栏无播控通知则主动补发实况通知
+      if (mediaInfo.playState === AVSessionManager.PlaybackState.PLAYBACK_STATE_PLAY) {
+        CardMediaController.controller?.ensureMediaNtfForAudioSession();
+      }
     }
     if (mediaInfo.duration != undefined) {
       CardMediaController.durationLink?.set(mediaInfo.duration);
@@ -1690,7 +1710,10 @@ export class CardMediaController {
     if (this.enableDc) {
       messageChannel.sendMessage('syncAppStorage', {name: 'isVideo', value: false});
     }
-    this.getDefaultMediaInfo(sessionId);
+    // 仅视频会话需要提前重置默认数据,防止视频播放完不刷新
+    if (descriptor.type === 'video') {
+      this.getDefaultMediaInfo(sessionId);
+    }
 
     let isVideo: boolean = false;
     isVideo = (descriptor.type === 'video');
@@ -2066,8 +2089,9 @@ export class CardMediaController {
     }
     let enableUnification: boolean = systemParameterEnhance.getSync('mediaController.unification', 'true') == 'true'
     if (DeviceHelper.isPC() && !ControlCenterPluginMgr.isPcMode) {
-      sEventManager.publish(obtainLocalEvent('hideControlPanel', ''));
-      StartAbilityUtil.startServiceExtensionAbility(want);
+      //PC播控中心不开源，屏蔽拉起二级界面入口
+      // sEventManager.publish(obtainLocalEvent('hideControlPanel', ''));
+      // StartAbilityUtil.startServiceExtensionAbility(want);
     } else {
       this.goSubWindow(want, enableUnification);
     }
@@ -2130,6 +2154,10 @@ export class CardMediaController {
         'bundleName': bundleName,
         'abilityName': abilityName
       };
+      if (sessionTag === 'deliverMediaSession') {
+        want.action = 'action.system.home';
+        want.entities = ['entity.system.home'];
+      }
     }
     // 本地电话
     if (!sessionId) {
@@ -2350,6 +2378,9 @@ export class CardMediaController {
 
   public postNotificationCancelEvent(notifyId: string, from?: string): void {
     log.showInfo('post Notification Cancel Event notifyId: ' + notifyId + ', type: ' + from);
+    // 通知被取消时，重置补发标记，允许后续播放时重新补发
+    this.lastPublishedNtfSessionId = '';
+    this.lastPublishedCapsuleTitle = '';
     let reason = notificationSubscribe.RemoveReason.CANCEL_REASON_REMOVE;
     try {
       notificationSubscribe.remove(notifyId, reason, (err) => {
@@ -2363,6 +2394,130 @@ export class CardMediaController {
       log.showError('postNotificationCancelEvent error ' + error);
     }
     log.showInfo('postNotificationCancelEvent done');
+  }
+
+  /**
+   * 三方应用通过AVSession播放音视频时，若通知栏无播控通知则补发实况通知
+   * 当会话切换时，取消旧通知并发布新通知，确保胶囊数据与当前播放应用一致
+   */
+  private ensureMediaNtfForAudioSession(): void {
+    const sessionId = this.sessionProvider?.topSessionId;
+    if (!sessionId) {
+      log.showInfo('ensureMediaNtfForAudioSession: no topSessionId');
+      return;
+    }
+    // 同一会话避免重复发布
+    if (this.lastPublishedNtfSessionId === sessionId) {
+      log.showInfo('ensureMediaNtfForAudioSession: already published for this session');
+      return;
+    }
+    // 会话切换时，先取消旧通知再发布新通知，确保胶囊切换到新应用
+    if (this.lastPublishedNtfSessionId !== '') {
+      this.postNotificationCancelEvent(CardMediaController.lastNotifyId, 'session switched');
+    }
+    this.lastPublishedNtfSessionId = sessionId;
+    this.publishMediaNtf(sessionId);
+  }
+
+  /**
+   * 发布播控实况通知到通知栏
+   */
+  private async publishMediaNtf(sessionId: string): Promise<void> {
+    const bundleName: string = (this.sessionProvider?.bundleNameMap[sessionId] as string) || '';
+    const abilityName: string = (this.sessionProvider?.abilityNameMap[sessionId] as string) || '';
+    const title = CardMediaController.mediaTitleLink?.get() as string || '';
+    const artist = CardMediaController.mediaArtistLink?.get() as string || '';
+    this.lastPublishedCapsuleTitle = title;
+    log.showInfo(`publishMediaNtf for bundle: ${bundleName}, title: ${title}`);
+    // 通过bundleName和abilityName创建wantAgent，实现点击通知跳转到对应应用
+    let wantAgent: _WantAgent | undefined;
+    if (bundleName && abilityName) {
+      try {
+        let want: Want = {
+          bundleName: bundleName,
+          abilityName: abilityName,
+        };
+        let wantAgentInfo: WantAgent.WantAgentInfo = {
+          wants: [want],
+          actionType: WantAgent.OperationType.START_ABILITIES,
+          requestCode: 0,
+          wantAgentFlags: [WantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG],
+        };
+        wantAgent = await WantAgent.getWantAgent(wantAgentInfo);
+        log.showInfo(`publishMediaNtf create wantAgent success`);
+      } catch (err) {
+        log.showError(`publishMediaNtf create wantAgent err: ${err}`);
+      }
+    }
+    // 获取音频应用的UID，用于agentBundle代理发布
+    let appUid: number = -1;
+    if (bundleName) {
+      try {
+        let bundleInfo = await bundleManager.getBundleInfo(bundleName,
+          bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION);
+        if (bundleInfo && bundleInfo.appInfo) {
+          appUid = bundleInfo.appInfo.uid;
+          log.showInfo(`publishMediaNtf get appUid: ${appUid}`);
+        }
+      } catch (err) {
+        log.showInfo(`publishMediaNtf get bundleInfo err: ${err}`);
+      }
+    }
+    try {
+      let capsuleIcon: image.PixelMap | undefined = undefined;
+      if (CardMediaController.mediaIconLink?.get() && typeof CardMediaController.mediaIconLink?.get() !== 'string') {
+        capsuleIcon = CardMediaController.mediaIconLink?.get() as image.PixelMap;
+      }
+      let request: notificationManager.NotificationRequest = {
+        content: {
+          notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_SYSTEM_LIVE_VIEW,
+          systemLiveView: {
+            typeCode: 2, // SysTypeCode.BROADCASTING_CENTER
+            liveViewType: 0, // LiveType.NORMAL
+            title: title,
+            text: artist,
+            capsule: {
+              title: title,
+              content: artist,
+              icon: capsuleIcon,
+            },
+          }
+        },
+        notificationSlotType: notificationManager.SlotType.LIVE_VIEW,
+        deliveryTime: Date.now(),
+        isFloatingIcon: true,
+        wantAgent: wantAgent,
+        agentBundle: appUid > 0 ? {
+          bundle: bundleName,
+          uid: appUid,
+        } : undefined,
+      };
+
+      // publish回调
+      let publishCallback = (err: BusinessError): void => {
+        if (err) {
+          log.showError(`publishMediaNtf failed: ${err.code} ${err.message}`);
+        } else {
+          log.showInfo(`publishMediaNtf success for ${bundleName}`);
+        }
+      };
+
+      let onResponseCallback = (id:number, option:notificationManager.ButtonOptions) => {
+        log.showInfo(`response callback: ` + JSON.stringify(option) + `notificationId` + id);
+      }
+      let systemLiveViewSubscriber: notificationManager.SystemLiveViewSubscriber  = {
+        onResponse: onResponseCallback
+      };
+      // 订阅系统实况窗(按钮)
+      await notificationManager.subscribeSystemLiveView(systemLiveViewSubscriber);
+      // 发布通知
+      notificationManager.publish(request, publishCallback);
+    } catch (err) {
+      let error = err as BusinessError;
+      log.showError(`publishMediaNtf error: ${error.code} ${error.message}`);
+      this.lastPublishedNtfSessionId = '';
+      this.lastPublishedCapsuleTitle = '';
+    }
   }
 
   public removeExistedNotification(notifyId: string, forceRemove: boolean = false): void {
@@ -2513,7 +2668,7 @@ export class CardMediaController {
         CONTROLINTERFACE: globalStorage.getNumberByKey('isShowSwitch'),
         SCREENSTATUS: this.getScreenStatus(),
         DEVICEMODELTYPE: 'phone',
-        SCREENFOLDEDSTATUS: CommonUtils.isFoldExpanded() ? (CommonUtils.isUltraScreenProductInGState() ? 11 : 1) : 2,
+        SCREENFOLDEDSTATUS: CommonUtils.isFoldExpanded() ? (CommonUtils.isThreeFoldProductInGState() ? 11 : 1) : 2,
         PICKER_STYLE: 'NONE'
       };
       provider.reportScenesHiEvent(EventType.SHOW_DEVICE_LIST, dfxParam, true);

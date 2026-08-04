@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { LogDomain, LogHelper } from '@ohos/basicutils';
+import { OutdoorConfig, LogDomain, LogHelper } from '@ohos/basicutils';
 import Queue from '@ohos.util.Queue';
 import { EditModeHomePageSettingParams } from '../../editmode/hisysevent/EditModeReportParams';
 import { launcherStatusUtil } from '@ohos/windowscene';
@@ -22,6 +22,7 @@ import { RdbStoreManager } from '../../db/RdbStoreManager';
 import { LayoutViewModel } from '../../viewmodel/LayoutViewModel';
 import { HiEditModeEventUtils } from '../../editmode/hisysevent/HiEditModeEventUtils';
 import { DeviceHelper, HiDfxEventUtil } from '@ohos/frameworkwrapper';
+import { LightOutdoorConfig } from '@ohos/frameworkwrapper';
 import { SceneMsgEnum } from '../../TsIndex';
 
 const TAG = 'PageInfoManager';
@@ -73,7 +74,7 @@ export class PageInfoManager {
    * @returns 主屏下标
    */
   public getHomePageIndex(): number {
-    // 外屏返回0
+    // 云端模式/外屏返回0
     if (!this.isHomePageSetSupport()) {
       return 0;
     }
@@ -120,6 +121,12 @@ export class PageInfoManager {
    * @returns 是否
    */
   public isHomePageSetSupport(): boolean {
+    // 云端模式
+    if (OutdoorConfig.getInstance().isInOutdoorMode() ||
+      LightOutdoorConfig.getInstance().isOnLightOutdoorMode()) {
+      log.showInfo('isHomePageSetSupport is In Outdoor Mode');
+      return false;
+    }
     // VDE外屏
     if (launcherStatusUtil.getShowOutLauncherStatus()) {
       log.showInfo('isHomePageSetSupport Show Out Launcher');

@@ -20,8 +20,8 @@ import constant from '@ohos.bluetooth.constant';
 import { HashMap } from '@kit.ArkTS';
 import { constant as bluetoothConstant } from '@kit.ConnectivityKit';
 import audio from '@ohos.multimedia.audio';
-// import nearlinkDevice from '@hms.nearlink.remoteDevice';
-// import nearlinkConstant from '@hms.nearlink.constant';
+// import nearlinkDevice from '@ohos.nearlink.remoteDevice';
+// import nearlinkConstant from '@ohos.nearlink.constant';
 
 const TAG = 'SymbolIconUtil';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.HOME, TAG);
@@ -94,7 +94,7 @@ class SymbolIconUtil {
   /**
    * 判断是否蓝牙音频设备（耳机、眼镜、...)
    */
-  isHUAWEIAudioDevice(mac: string): boolean {
+  isOhosAudioDevice(mac: string): boolean {
     if (this.getProductId(mac)[0] !== 'FFFFFF' && this.isEarphone(mac)) {
       return true;
     }

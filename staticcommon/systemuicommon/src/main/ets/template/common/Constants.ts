@@ -40,6 +40,7 @@ export enum AudioVolumeType {
   MEDIA = 3,
 }
 
+
 export enum HostType {
   UNKNOWN_HOST = -1,
   AUDIO_SYSTEM = 0,

@@ -481,6 +481,92 @@
           }
         }
       ]
+    },
+    {
+      "pageTitle": "$string:Navi_bar_setting",
+      "pageDescription": "",
+      "entryKey": "navi_bar_settings",
+      "params": "",
+      "path": [
+        "$string:System", "$string:Navi_bar_setting"
+      ],
+      "supportDevices": [
+        "phone",
+        "tablet",
+        "2in1"
+      ] ,
+      "searchItems": [
+        {
+          "itemName": "navi_bar_setting",
+          "itemTitle": "$string:Navi_bar_setting",
+          "itemDescription": "Ai bar setting",
+          "icon": ""
+        },
+        {
+          "itemName": "navi_bar_back",
+          "itemTitle": "$string:Navi_bar_back",
+          "itemDescription": "Ai bar back",
+          "icon": ""
+        },
+        {
+          "itemName": "navi_bar_vassistant_dialogue",
+          "itemTitle": "$string:Navi_bar_vassistant_dialogue",
+          "itemDescription": "Ai bar vassistant dialogue",
+          "icon": ""
+        },
+        {
+          "itemName": "navi_bar_back_click_navigation",
+          "itemTitle": "$string:Navi_bar_back_click_navigation",
+          "itemDescription": "Click the navigation bar to return",
+          "icon": ""
+        },
+        {
+          "itemName": "navi_bar_vassistant_dialogue_longpress",
+          "itemTitle": "$string:Navi_bar_vassistant_dialogue_longpress",
+          "itemDescription": "Long press to trigger AI dialogue",
+          "icon": ""
+        },
+        {
+          "itemName": "navi_bar",
+          "itemTitle": "$string:Navi_bar",
+          "itemDescription": "Ai bar",
+          "icon": ""
+        },
+        {
+          "itemName": "floating_three_button_navigation_new",
+          "itemTitle": "$string:floating_three_button_navigation_new",
+          "itemDescription": "floating_three_button_navigation_new",
+          "alias": "长按可|拖动更改|三键导航|位置",
+          "icon": "",
+          "checkItem": {
+            "type": "settingData",
+            "checkKey": "floating_navigation_ccm",
+            "value": "0"
+          }
+        },
+        {
+          "itemName": "more_settings",
+          "itemTitle": "$string:more_settings",
+          "itemDescription": "more_settings",
+          "icon": "",
+          "checkItem": {
+            "type": "settingData",
+            "checkKey": "floating_navigation_ccm",
+            "value": "0"
+          }
+        },
+        {
+          "itemName": "floating_navigation_ball_name",
+          "itemTitle": "$string:floating_navigation_ball_name",
+          "itemDescription": "floating_navigation_ball_name",
+          "icon": "",
+          "checkItem": {
+            "type": "settingData",
+            "checkKey": "floating_navigation_ball_ccm",
+            "value": "0"
+          }
+        }
+      ]
     }
   ]
 }

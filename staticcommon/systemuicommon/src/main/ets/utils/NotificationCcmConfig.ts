@@ -79,6 +79,14 @@ class NotificationCcmConfig {
     return this.hiddenEntranceBundle;
   }
 
+  /**
+   * 获取系统应用包名列表
+   * @returns
+   */
+  public getDeliverSystemBundleList(): string[] {
+    return this.notificationService?.permissionWhiteListNotification ?? [];
+  }
+
   private collectHiddenBundle(): void {
     let keys = Object.keys(this.appPrivileges);
 

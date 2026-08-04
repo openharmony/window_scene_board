@@ -23,6 +23,7 @@ import {
   SCBSceneSessionManager
 } from '@ohos/windowscene';
 import { DeviceHelper } from '@ohos/frameworkwrapper';
+import { DeliverUtil } from '@ohos/launchercommon/src/main/ets/TsIndex';
 import { OuterAppManager } from '@ohos/launchercommon/src/main/ets/manager/OuterAppManager';
 import { SCBScenePanel } from './SCBScenePanel';
 import {

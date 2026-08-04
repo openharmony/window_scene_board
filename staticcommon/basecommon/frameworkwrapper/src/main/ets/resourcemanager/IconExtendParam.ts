@@ -23,7 +23,10 @@ export class IconExtendParam {
   // 图标名称
   iconName: string;
 
-  // 通过hds处理时使用的包名
+  // 应用使用默认模板
+  isTemplatedIcon: boolean = false;
+
+  // 通过hds处理时使用的包名（应用在包名基础上追加_template）
   bundleName: string;
 
   // 是否描边

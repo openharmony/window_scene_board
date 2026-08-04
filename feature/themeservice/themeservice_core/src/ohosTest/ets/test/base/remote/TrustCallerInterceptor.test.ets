@@ -16,7 +16,7 @@
 import { ArgumentMatchers, describe, it, Level, MockKit, TestType, when } from '@ohos/hypium';
 import { BundleUtils, CallerInfo } from '@ohos/themeservicebase/Index';
 import { RemoteCode } from '@ohos/themeservicebase/src/main/ets/remote/RemoteCode';
-import { Illegal, OHOS_TEST_openharmony_APP } from '../../../core/remote/TSOhosRemoteCallerInfo';
+import { Illegal, OHOS_TEST_HW_APP } from '../../../core/remote/TSOhosRemoteCallerInfo';
 import { TSOhosTestManger } from '../../../core/TSOhosTestManger';
 import { AssertUtils } from '../../../core/util/AssertUtils';
 import { BundleMocker } from '../../../mock/BundleMocker';
@@ -49,7 +49,7 @@ export default function TrustCallerInterceptorTest() {
     it('undefined_signatureInfo', TestType.SAFETY | Level.LEVEL0, async () => {
       let mocker: MockKit = new MockKit()
       let getBundleNameByUidFun: Function = mocker.mockFunc(BundleUtils, BundleUtils.getBundleNameByUid)
-      when(getBundleNameByUidFun)(ArgumentMatchers.any).afterReturn(Promise.resolve(OHOS_TEST_openharmony_APP.bundleName));
+      when(getBundleNameByUidFun)(ArgumentMatchers.any).afterReturn(Promise.resolve(OHOS_TEST_HW_APP.bundleName));
 
       let getBundleSignatureFun: Function = mocker.mockFunc(BundleUtils, BundleUtils.getBundleSignature)
       when(getBundleSignatureFun)(ArgumentMatchers.any).afterReturn(Promise.resolve(undefined));

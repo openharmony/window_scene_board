@@ -80,8 +80,8 @@
     "@ohos/musicservicetogglecomponent": "file:../../feature/systemcontrol/musicservicetogglecomponent",
     "@ohos/plugincardcomponent": "../../feature/systemstatus/plugincardcomponent",
     "@ohos/pcmode": "../../feature/pcmode",
-    "@ohos/volumepanelcomponent": "../../feature/volume/volumepanelcomponent",
-    "@ohos/screenlockwidget": "file:../../feature/screenlock/screenlockwidget",
+     "@ohos/volumepanelcomponent": "../../feature/volume/volumepanelcomponent",
+     "@ohos/screenlockwidget": "file:../../feature/screenlock/screenlockwidget",
     "@ohos/appinstall": "../../feature/appinstall",
     "@ohos/controlcentercommon": "../../staticcommon/controlcentercommon",
   }

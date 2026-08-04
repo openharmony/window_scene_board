@@ -66,6 +66,18 @@ export class FormClearUtils {
       }
     );
 
+    //为云端模式2注册卡片
+    FormModel.getInstance().registerQueryValidCardIdCallback(FormModelValidCardType.OUTDOOR_CARD,
+      async (): Promise<string[]> => {
+        let formIds: string[] = [];
+        let cardIdList = (await RdbStoreManager.getInstance().getAllFormInfosForLightOutdoorMode()).map(
+          (item: CardItemInfo) => item.cardId.toString()
+        );
+        formIds.push(...cardIdList);
+        return formIds;
+      }
+    );
+
     FormModel.getInstance().registerQueryValidCardIdCallback(FormModelValidCardType.SCREEN_LOCK,
       async (): Promise<string[]> => {
         let cardIdList: string[] = await ScreenLockThemeManager.getInstance().getPersistenceCardId();

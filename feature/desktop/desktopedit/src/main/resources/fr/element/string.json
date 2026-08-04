@@ -141,6 +141,13 @@
             }
         },
         {
+            "name":"hwireader",
+            "value":"Livres",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
             "name":"camera",
             "value":"Appareil photo",
             "attr":{

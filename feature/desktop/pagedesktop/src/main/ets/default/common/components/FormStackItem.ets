@@ -98,7 +98,7 @@ export default struct FormStackItem {
       const cardId: string = cards[i].cardId;
       const controller = CardNodeControllerManager.getCardController(cardId) as CardNodeController;
       if (controller) {
-        const params = controller.formParams as (FormBasicParams);
+        const params = controller.formParams as FormBasicParams;
         if (params instanceof FormBasicParams) {
           params.basicData.width = this.isOuterDesktop ? mFormComponentStyle?.formLayoutSize?.width as number :
             this.mViewData.mFormStackItemWidth;

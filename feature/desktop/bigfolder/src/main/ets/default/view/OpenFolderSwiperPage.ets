@@ -30,6 +30,7 @@ import {
 import {
   AppStatus,
   CommonConstants,
+  DeliverUtil,
   EditModeUtils,
   FolderConstants,
   FolderLayoutInOpen,
@@ -590,7 +591,8 @@ export struct OpenFolderSwiperPage {
       return;
     }
     this.uninstallAppPageIndex = this.mFolderMgr.getPageIndexInFolder(this.folderUnInstallItemInfo, openFolderData);
-    if (!NotHarmonyUtil.isNotHarmonyFolderById(openFolderData?.folderId)) {
+    if (!DeliverUtil.isContainerFolder(openFolderData?.folderId) &&
+      !NotHarmonyUtil.isNotHarmonyFolderById(openFolderData?.folderId)) {
       this.uninstalledList.push(this.folderUnInstallItemInfo?.keyName);
       this.dealAssociatedUninstallApp();
     }
@@ -938,11 +940,27 @@ export struct OpenFolderSwiperPage {
         }
 
         // 多选模式下，可拖拽的定制应用才可以勾选，拖拽多选应用离开文件夹时不再做拦截
-        let isDragLeaveDisabled: boolean = false;
+        let isDragLeaveDisabled: boolean =
+          DeliverUtil.isDisableOperationsOnFolder(this.folderId, dragItemInfo.intent, dragItemInfo.bundleName) &&
+          CheckEmptyUtils.isEmptyArr(dragItems);
+        DeliverUtil.setIsDragLeaveDisabled(isDragLeaveDisabled);
         let waitForHarmony: boolean =
           dragItemInfo.appStatus === AppStatus.WAIT_FOR_HARMONY && dragItemInfo.typeId === CommonConstants.TYPE_APP;
         if (isDragLeaveDisabled || (NotHarmonyUtil.isNotHarmonyFolderById(this.folderId) && waitForHarmony)) {
-          // 图标拖出非OpenHarmony化文件夹打点
+          if (DeliverUtil.isShowToast()) {
+            try {
+              const canNotRemoveAppFromFolderMsg: string =
+                ResourceManager.getInstance().getStringByName('can_not_remove_from_flod');
+              Prompt.showToast({
+                message: canNotRemoveAppFromFolderMsg
+              });
+              this.textAnnouncedForRemoveAppFromFolder(canNotRemoveAppFromFolderMsg);
+            } catch (err) {
+              log.showError('show canNotRemoveAppFromFolderMsg result: failed %{public}d:%{public}s', err.code,
+                err.message);
+            }
+          }
+          // 图标拖出非鸿蒙化文件夹打点
           const openFolderData: GridLayoutItemInfo = this.mFolderMgr.getOpenedFolder();
           FolderReporter.getInstance().reportDragIconFromNotHarmonyFolder(dragItemInfo.bundleName, openFolderData);
           OpenFolderDragHandler.getInstance().resetTranslateZero('onDragLeave cancel for NotHarmony');

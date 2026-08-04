@@ -59,8 +59,8 @@ export class StartAndExitUtil {
   public static getResponse(responseType: number): number {
     let response: number;
     let screenStateKey: string = 'F_portrait';
-    // 超大屏设备根据断点信息区分不同屏幕形态
-    if (DeviceHelper.isUltraScreenProduct()) {
+    // 三折叠设备根据断点信息区分不同屏幕形态
+    if (DeviceHelper.isThreeFoldProduct()) {
       let screenModel: ScreenStateModel = ScreenStateMonitor.getInstance().getCurrentScreenStateModel();
       screenStateKey = screenModel.screenState + '_' + screenModel.orientation;
     }

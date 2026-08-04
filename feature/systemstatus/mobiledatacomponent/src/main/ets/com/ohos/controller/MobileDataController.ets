@@ -44,7 +44,7 @@ import sim from '@ohos.telephony.sim';
 import { CellularDataEnableEvent } from '@ohos/systemuicommon';
 import call from '@ohos.telephony.call';
 import radio from '@ohos.telephony.radio';
-// import vsim from '@hms.telephony.vsim'
+// import vsim from '@ohos.telephony.vsim'
 import Prompt from '@ohos.promptAction';
 import Settings from '@ohos.settings';
 import systemParameterEnhance from '@ohos.systemParameterEnhance';
@@ -134,7 +134,8 @@ export class MobileDataController extends ToggleBaseViewModel {
   constructor() {
     super();
     this.getViewData().label = $r('app.string.control_center_complex_toggle_mobiledata_title');
-    this.getViewData().icon = $r('app.media.ic_mobiledata');
+    this.getViewData().isSymbolIcon = true;
+    this.getViewData().icon = $r('sys.symbol.mobiledata');
     this.onStart();
   }
 
@@ -432,13 +433,14 @@ export class MobileDataController extends ToggleBaseViewModel {
   }
 
   private showMobileDataSubWindow(toggleId?: string): void {
-    sToggleSubWindowController.showSubWindowByClickInfo(toggleId ?? FASlotName.MOBILE_DATA, {
-      clickType: 'window',
-      bundleName: 'com.ohos.simcardmanagement',
-      abilityName: 'MobileDataChangeExtAbility',
-      uiExtensionType: 'sys/commonUI',
-      windowHeight: (this.maxSimCount === 2 ? DEFAULT_SIM_HEIGHT : SINGLE_SIM_HEIGHT),
-    } as PluginClickInfo);
+    //sim卡管理7.0才开源，先屏蔽移动数据二级界面
+    // sToggleSubWindowController.showSubWindowByClickInfo(toggleId ?? FASlotName.MOBILE_DATA, {
+    //   clickType: 'window',
+    //   bundleName: 'com.ohos.simcardmanagement',
+    //   abilityName: 'MobileDataChangeExtAbility',
+    //   uiExtensionType: 'sys/commonUI',
+    //   windowHeight: (this.maxSimCount === 2 ? DEFAULT_SIM_HEIGHT : SINGLE_SIM_HEIGHT),
+    // } as PluginClickInfo);
   }
 
   private waitCallback(): void {

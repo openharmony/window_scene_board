@@ -57,6 +57,13 @@ export default function GlobalSearchLocationServiceTest() {
       expect(ret).assertEqual('unknown method');
     });
 
+    it('test_GlobalSearchLocationService_03', 0, async () => {
+      let instance: GlobalSearchLocationService = new GlobalSearchLocationService();
+      let msg: CallMessage = {method: RequestMethod.BEGIN_GLOBAL_SEARCH, extra: instance};
+      let ret: string = await instance.onCall(JSON.stringify(msg));
+      expect(ret.length).assertLargerOrEqual(0);
+    });
+
     it('test_GlobalSearchLocationService_04', 0, async () => {
       let instance: GlobalSearchLocationService = new GlobalSearchLocationService();
       let ret: boolean = instance.isSupportSegments();

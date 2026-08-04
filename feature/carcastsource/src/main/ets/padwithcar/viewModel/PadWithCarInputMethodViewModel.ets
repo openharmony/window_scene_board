@@ -27,7 +27,6 @@ import {
   SCBScreenProperty,
   SCBScreenSessionManager
 } from '@ohos/windowscene/src/main/ets/TsIndex';
-import keyboardPanelManager from '@ohos.keyboardPanelManager';
 
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.HICAR, 'PadWithCarInputMethodViewModel');
 const INVALID_Z_ORDER: number = -1;
@@ -248,20 +247,6 @@ export class PadWithCarInputMethodViewModel {
     this.sceneModelChangeFunc?.(this.inputMethodModel);
   }
 
-  private sendScreenChangeCommand(isOnPadWithCar: boolean): void {
-    let screenChangeCommand: Record<string, keyboardPanelManager.CommandDataType> = {
-      'screenChangeAction': isOnPadWithCar ? ScreenChangeAction.IN_CAR : ScreenChangeAction.OUT_CAR
-    };
-    const SYS_CMD = 'sys_cmd';
-    screenChangeCommand[SYS_CMD] = 1;
-    try {
-      keyboardPanelManager.sendPrivateCommand(screenChangeCommand);
-      log.showInfo(`sendScreenChangeCommand: isOnPadWithCar = ${isOnPadWithCar}`);
-    } catch (err) {
-      log.showError(`sendScreenChangeCommand: errCode: ${err?.code}, errMessage: ${err?.message}`);
-    }
-  }
-
   public updateDisplayId(screenId: number): void {
     log.showInfo(`updateDisplayId: screenId = ${screenId} panelEnable = ${this.inputMethodModel.panelEnable}`);
     if (this.inputMethodModel.panelEnable) {
@@ -284,7 +269,6 @@ export class PadWithCarInputMethodViewModel {
       return;
     }
     log.showInfo(`onCallingScreenChange: isShow = ${isShow}`);
-    this.sendScreenChangeCommand(isShow);
     if (isShow) {
       this.updateDisplayId(this.inputMethodModel.screenProperty?.screenId ??
       SCBSceneSessionManager.getInstance().mainScreenId);

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -55,7 +55,7 @@ const DEFAULT_TIME_OUT: number = 1000;
 const MODE_CHANGE_TIME_OUT: number = 300;
 const DUAL_DISPLAY_FOLD_DEVICE_FLAG = '2';
 const SINGLE_DISPLAY_POCKET_FOLD_DEVICE_FLAG = '4';
-const BIG_SCREEN_DEVICE_FLAG = '5';
+const SUPER_FOLD_DEVICE_FLAG = '5';
 const SECONDARY_DISPLAY_FOLD_DEVICE_FLAG = '6';
 const ROTATE_STRATEGY_WINDOW: number = 0;
 const ROTATE_STRATEGY_SCREEN: number = 1;
@@ -109,7 +109,7 @@ export class SCBScreenProperty {
 
   public get displayRotation(): number {
     const realRotation = (this.rotation + this._rotationOffset) % RotationConstants.ROTATION_360;
-    log.showInfo(`rotation${this.rotation}, rotationOffset:${this._rotationOffset}`);
+    log.showInfo(`displayRotation rotation${this.rotation}, rotationOffset:${this._rotationOffset}`);
     return realRotation + this._correctingRotation;
   }
 
@@ -236,6 +236,7 @@ export class SCBScreenProperty {
     if (productCallBacks) {
       return productCallBacks();
     }
+    log.showInfo(`isScreenVertical ${this.defaultScreenOrientation},${this.rotation}`)
     if (this.defaultScreenOrientation === 0) {
       return this.rotation === RotationConstants.ROTATION_0 || this.rotation === RotationConstants.ROTATION_180;
     } else {
@@ -628,15 +629,14 @@ export class SCBScreenSession {
 
   private registerSensorRotationChangeCallback(): void {
     this.session.on('sensorRotationChange', (sensorRotation: number) => {
-      let traceName = `[ROTATION] SCBScreenSession sensorRotationChange`;
-      Trace.start(traceName);
       let oldSensorRotation: number = this.currentSensorRotation;
       this.currentSensorRotation = sensorRotation;
       if (sensorRotation === INVALID_SENSOR_ROTATION) {
-        WinLog.showInfo(WinLogDomain.WMS_ROTATION, '[registerSensorRotationChangeCallback] sensorRotation is invalid.');
-        Trace.end(traceName);
+        // 无效角度
         return;
       }
+      let traceName = `[ROTATION] SCBScreenSession sensorRotationChange`;
+      Trace.start(traceName);
       this.notifySensorRotationToSub(sensorRotation);
       if (this.sensorScreenProperty.rotation === sensorRotation &&
         oldSensorRotation !== PLACED_SENSOR_ROTATION) {
@@ -1085,6 +1085,8 @@ export class SCBScreenSession {
     WinLog.showInfo(WinLogDomain.WMS_ROTATION, `[rotationChangeByScreen] sensorRotation: ${sensorRotation}, ` +
                  `rotateReasonDescription:${rotateReasonDescription} ` +
                  `isPageRotation:${isPageRotation}`);
+    log.showInfo(`rotationChangeByScreen sensorRotation: ${sensorRotation}, rotateReasonDescription:${rotateReasonDescription} ` +
+      `isPageRotation:${isPageRotation}`);
     // 屏幕旋转入口
     if (this.isSuspendRotate(rotateReasonDescription)) {
       WinLog.showInfo(WinLogDomain.WMS_ROTATION, '[rotationChangeByScreen] rotationChangeByScreen rotate is disabled return.');
@@ -1101,10 +1103,12 @@ export class SCBScreenSession {
     }
     let needRotate = SCBSceneSessionManager.getInstance().isScreenNeedRotate(sensorRotation, curScreenRotation,
         this.scbScreenProperty.screenId);
+    log.showInfo(`rotationChangeByScreen needRotate: ${needRotate}`);
     if (!needRotate) {
       WinLog.showInfo(WinLogDomain.WMS_ROTATION, '[rotationChangeByScreen] screen no need rotate return');
       return;
     }
+    log.showInfo('rotationChangeByScreen to rotateScreenToRotation');
     this.rotateScreenToRotation(sensorRotation, needAnimation, needNotify, rotateReasonDescription, isPageRotation);
     return;
   }
@@ -1452,7 +1456,7 @@ export class SCBScreenSession {
     // HPR 横屏启动，横屏启动的时候设置偏移、只有主屏走进来
     let width = screenProperty.bounds.width;
     let height = screenProperty.bounds.height;
-    // 大屏幕机展开态connect会上报竖屏(sensor0°)，其他上报扫描方向为0°时的宽高
+    // 折叠机展开态connect会上报竖屏(sensor0°)，其他上报扫描方向为0°时的宽高
     if (this.isExpandStatus) {
       let currentRotation = screenProperty.rotation;
       screenProperty.rotation = this.calculateFoldablePhoneRotation(currentRotation);
@@ -1607,6 +1611,7 @@ export class SCBScreenSession {
    * @param { string } rotateReasonDescription
    */
   private sensorRotationChange(sensorRotation: number, rotateReasonDescription: string = ''): void {
+    log.showInfo(`sensorRotationChange: ${sensorRotation} ${rotateReasonDescription}`);
     if (this.isSuspendRotate(rotateReasonDescription)) {
       WinLog.showInfo(WinLogDomain.WMS_ROTATION, '[sensorRotationChange] rotate is disabled return.');
       return;
@@ -1617,6 +1622,7 @@ export class SCBScreenSession {
     }
     let needRotate = SCBSceneSessionManager.getInstance().isScreenNeedRotate(sensorRotation, this.scbScreenProperty.rotation,
       this.scbScreenProperty.screenId);
+    log.showInfo(`sensorRotationChange needRotate: ${needRotate}`);
     if (needRotate) {
       SCBWindowRotateController.getInstance().notifyBeforeWindowRotateChange();
       let sensorProperty = this.calculateScreenPropertyWithRotation(sensorRotation);
@@ -1724,8 +1730,8 @@ export class SCBScreenSession {
       return SCBPropertyChangeReason.SCREEN_DISCONNECT;
     } else if (reason === screenSessionManager.ScreenPropertyChangeReason.FOLD_SCREEN_FOLDING) {
       return SCBPropertyChangeReason.EXPAND_TO_FOLD;
-    } else if (reason === screenSessionManager.ScreenPropertyChangeReason.BIG_SCREEN_STATUS_CHANGE) {
-      return SCBPropertyChangeReason.BIG_SCREEN_STATUS_CHANGE;
+    } else if (reason === screenSessionManager.ScreenPropertyChangeReason.SUPER_FOLD_STATUS_CHANGE) {
+      return SCBPropertyChangeReason.SUPER_FOLD_STATUS_CHANGE;
     } else {
       return SCBPropertyChangeReason.UNDEFINED;
     }

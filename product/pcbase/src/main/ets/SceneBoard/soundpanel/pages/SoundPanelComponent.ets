@@ -36,8 +36,8 @@ import { soundFeatureModel, SoundFeatureType } from '../model/SoundFeatureModel'
 import { audioDevice, AudioOutputChangeListener4V, AudioSoundViewModel } from '../viewmodel/AudioSoundViewModel';
 import { PanelManager, PanelStateChangeListener } from '../manager/PanelManager';
 import Constants from '../common/Constants';
-import AIEffectCallNoiseReductionView from './AIEffectCallNoiseReductionView';
-import AIEffectVoiceCancelView from './AIEffectVoiceCancelView';
+import EffectCallNoiseReductionView from './EffectCallNoiseReductionView';
+import EffectVoiceCancelView from './EffectVoiceCancelView';
 import { HorizontalCardComponent } from './HorizontalCardComponent';
 import EarPhoneDevice from './EarPhoneDevice';
 import DeviceItem from './DeviceItem';
@@ -138,7 +138,7 @@ export default struct SoundPanelComponent {
     },
     onCurrentOutputDeviceChange: (viewIndex: number) => {
       log.showInfo(`audioOutputChangeListener onCurrentOutputDeviceChange device viewIndex: ${viewIndex}`);
-      this.viewIndex = viewIndex;
+      //this.viewIndex = viewIndex;
       this.getCurDevice();
     }
   };
@@ -269,13 +269,13 @@ export default struct SoundPanelComponent {
       }
 
       if (XmlParseUtil.getVocalCancelSupport()) {
-        AIEffectVoiceCancelView()
+        EffectVoiceCancelView()
         if (XmlParseUtil.getCallNoiseReductforceSupport()) {
           this.MyDivider(this.style.soundPanelMarginLeft, 'Third_Divider')
         }
       }
       if (XmlParseUtil.getCallNoiseReductforceSupport()) {
-        AIEffectCallNoiseReductionView()
+        EffectCallNoiseReductionView()
       }
       this.MyDivider(this.style.soundPanelMarginLeft, 'Fourth_Divider')
 
@@ -305,24 +305,25 @@ export default struct SoundPanelComponent {
 
   private execClickAction(event: ClickEvent): void {
     log.showInfo(`click sound panel more settings`);
-    let eventType: string = HiSysEventUtil.TOUCH_EVENT;
-    if (event.source === SourceType.Mouse) {
-      eventType = HiSysEventUtil.MOUSE_EVENT;
-    } else if (event.source === KEYBOARD) {
-      eventType = HiSysEventUtil.SHORTCUT_EVENT;
-    } else {
-      eventType = HiSysEventUtil.TOUCH_EVENT;
-    }
-    HiSysEventUtil.reportSoundMenu(HiSysEventUtil.CLICK_MORE, eventType);
-    // 点击跳转页面，隐藏面板
-    windowMgr.hideWindowWithAnim(WINDOW_NAME);
-    const is2In1Pc: boolean = DeviceHelper.is2In1DevicePcType();
-    StartAbilityUtil.startAbilityFromOther({
-      bundleName: ExtAppConstants.PKG_PC_SETTINGS,
-      abilityName: ExtAppConstants.ABILITY_PC_SETTINGS_AUDIO,
-      uri: is2In1Pc ? 'volume_settings' : 'pc_audio_settings',
-      moduleName: is2In1Pc ? 'phone_settings' : 'pc_settings'
-    });
+    //PC设置不开源，屏蔽点击“声音设置”后跳转设置音量设置界面的逻辑
+    // let eventType: string = HiSysEventUtil.TOUCH_EVENT;
+    // if (event.source === SourceType.Mouse) {
+    //   eventType = HiSysEventUtil.MOUSE_EVENT;
+    // } else if (event.source === KEYBOARD) {
+    //   eventType = HiSysEventUtil.SHORTCUT_EVENT;
+    // } else {
+    //   eventType = HiSysEventUtil.TOUCH_EVENT;
+    // }
+    // HiSysEventUtil.reportSoundMenu(HiSysEventUtil.CLICK_MORE, eventType);
+    // // 点击跳转页面，隐藏面板
+    // windowMgr.hideWindowWithAnim(WINDOW_NAME);
+    // const is2In1Pc: boolean = DeviceHelper.is2In1DevicePcType();
+    // StartAbilityUtil.startAbilityFromOther({
+    //   bundleName: ExtAppConstants.PKG_PC_SETTINGS,
+    //   abilityName: ExtAppConstants.ABILITY_PC_SETTINGS_AUDIO,
+    //   uri: is2In1Pc ? 'volume_settings' : 'pc_audio_settings',
+    //   moduleName: is2In1Pc ? 'phone_settings' : 'pc_settings'
+    // });
   }
 
   private panelStateChangeListener: PanelStateChangeListener = {

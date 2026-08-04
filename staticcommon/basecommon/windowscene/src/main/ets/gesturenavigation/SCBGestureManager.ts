@@ -1,5 +1,5 @@
 /*
- * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -103,7 +103,9 @@ class SCBGestureManager {
   private touchEventCallBack: Map<GestureType, Map<string, Function>> = new Map();
   // 手势Home、Recent、Back事件键值对
   private gestureCallBackMap: Map<number, Map<number, Function>> = new Map();
+  private naviBarRect: ViewArea = { left: 0, top: 0, width: 0, height: 0 };
   private pcKeyEventCallBack: Map<string, Function> = new Map();
+  private naviBarChangeAnimCallBack: Function;
   private enableStateChangeCallBack: Function;
 
   // win + backspace, eg KEYCODE_BACK
@@ -613,6 +615,31 @@ class SCBGestureManager {
     eventFuncMap?.set(persistentId, callback);
   }
 
+  public setNaviBarRect(areaRect: ViewArea): void {
+    this.naviBarRect = areaRect;
+  }
+
+  /**
+   * get ai bar rect in vp
+   *
+   * @return rect
+   */
+  public getNaviBarRect(): ViewArea {
+    return this.naviBarRect;
+  }
+
+  /**
+   * unRegister NaviBarChangeAnim Callback
+   *
+   * @param callback
+   */
+  public unRegisterNaviBarChangeAnim(): void {
+    this.naviBarChangeAnimCallBack = null;
+  }
+
+  public registerNaviBarChangeAnim(callback: Function): void {
+    this.naviBarChangeAnimCallBack = callback;
+  }
 
   public registerGestureEnableStateChange(callback: Function): void {
     this.enableStateChangeCallBack = callback;
@@ -620,6 +647,12 @@ class SCBGestureManager {
 
   public unRegisterGestureEnableStateChange(): void {
     this.enableStateChangeCallBack = null;
+  }
+
+  public naviBarChange(type: number): void {
+    if (this.naviBarChangeAnimCallBack) {
+      this.naviBarChangeAnimCallBack(type);
+    }
   }
 
   private registerPCKey(): void {

@@ -1,0 +1,20 @@
+{
+  "color": [
+    {
+      "name": "card_border_color",
+      "value": "#1AFFFFFF"
+    },
+    {
+      "name": "cover_theme_card_bg",
+      "value": "#26FFFFFF"
+    },
+    {
+      "name": "preview_image_border_color",
+      "value": "#1AFFFFFF"
+    },
+    {
+      "name": "galley_background_color",
+      "value": "#E61A1A1A"
+    }
+  ]
+}

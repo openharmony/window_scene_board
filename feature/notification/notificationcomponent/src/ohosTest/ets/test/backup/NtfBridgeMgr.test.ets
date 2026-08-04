@@ -52,12 +52,40 @@ import { image } from '@kit.ImageKit';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, MockKit, when, ArgumentMatchers } from '@ohos/hypium';
 import { NotificationManager } from '../../../main/ets/model/NotificationManager';
 export default function NotificationManagerTest() {
-  describe('isPushNts_testSuite', () => {
+  describe('isDeliverPushNts_testSuite', () => {
 
     beforeEach(() => {
     });
     afterEach(() => {
     });
+
+
+    it('should_return_false_when_want_parameters_is_null', 0, async () => {
+      let want: Want = new Want();
+      want.parameters = null;
+      let notificationManager: NotificationManager = new NotificationManager();
+      const result = await notificationManager.isDeliverPushNts(want);
+      expect(result).assertEqual(false);
+    });
+
+    it('should_return_false_when_pushDeliverLaunchInfo_is_null', 0, async () => {
+      let want: Want = new Want();
+      want.parameters = {};
+      let notificationManager: NotificationManager = new NotificationManager();
+      const result = await notificationManager.isDeliverPushNts(want);
+      expect(result).assertEqual(false);
+    });
+
+    it('should_return_false_when_pushDeliverLaunchInfo_is_empty_string', 0, async () => {
+      let want: Want = new Want();
+      want.parameters = {
+        [SystemuiConstants.KEY_PUSH_DELIVER_LAUNCH_INFO]: ''
+      };
+      let notificationManager: NotificationManager = new NotificationManager();
+      const result = await notificationManager.isDeliverPushNts(want);
+      expect(result).assertEqual(false);
+    });
+
 
     it('should_return_default_value_when_systemParameterEnhance_throws_error', 0, async () => {
       let mocker: MockKit = new MockKit();
@@ -109,6 +137,21 @@ export default function NotificationManagerTest() {
       mocker.ignoreMock(logHelper, logHelper.showInfo);
     });
 
+    it('should_return_when_ntfEntry_is_DeliverPushNotification_and_agent_is_undefined', 0, async () => {
+      let notificationmanager: NotificationManager = new NotificationManager();
+      let mocker: MockKit = new MockKit();
+      let logHelper: LogHelper = LogHelper.getInstance();
+      let mockfunc: Function = mocker.mockFunc(logHelper, logHelper.showInfo);
+      when(mockfunc)(ArgumentMatchers.anyString).afterReturnNothing();
+
+      let agent: WantAgent = new WantAgent();
+      let ntfEntry: NotificationEntry = new NotificationEntry();
+      ntfEntry.isDeliverPushNotification = true;
+      await notificationmanager.startWantAgent(agent, undefined, 'inputKey', 'inputContent', ntfEntry);
+
+      mocker.ignoreMock(logHelper, logHelper.showInfo);
+    });
+
     it('should_return_when_wantAgent_trigger_throws_error', 0, async () => {
       let notificationmanager: NotificationManager = new NotificationManager();
       let mocker: MockKit = new MockKit();
@@ -123,6 +166,59 @@ export default function NotificationManagerTest() {
         }
       };
       await notificationmanager.startWantAgent(agent);
+
+      mocker.ignoreMock(logHelper, logHelper.showInfo);
+    });
+
+    it('should_return_when_ntfEntry_is_DeliverPushNotification_and_getDeliverPushWantInfo_returns_undefined', 0, async () => {
+      let notificationmanager: NotificationManager = new NotificationManager();
+      let mocker: MockKit = new MockKit();
+      let logHelper: LogHelper = LogHelper.getInstance();
+      let mockfunc: Function = mocker.mockFunc(logHelper, logHelper.showInfo);
+      when(mockfunc)(ArgumentMatchers.anyString).afterReturnNothing();
+
+      let agent: WantAgent = new WantAgent();
+      let ntfEntry: NotificationEntry = new NotificationEntry();
+      ntfEntry.isDeliverPushNotification = true;
+      await notificationmanager.startWantAgent(agent, undefined, 'inputKey', 'inputContent', ntfEntry);
+
+      mocker.ignoreMock(logHelper, logHelper.showInfo);
+    });
+
+    it('should_return_when_ntfEntry_is_DeliverPushNotification_and_getDeliverPush WantInfo_returns_agent', 0, async () => {
+      let notificationmanager: NotificationManager = new NotificationManager();
+      let mocker: MockKit = new MockKit();
+      let logHelper: LogHelper = LogHelper.getInstance();
+      let mockfunc: Function = mocker.mockFunc(logHelper, logHelper.showInfo);
+      when(mockfunc)(ArgumentMatchers.anyString).afterReturnNothing();
+
+      let agent: WantAgent = new WantAgent();
+      let mockWantAgent: any = {
+        trigger: (agent: WantAgent, wantParam: Want, callback: Function) => {
+        }
+      };
+      let ntfEntry: NotificationEntry = new NotificationEntry();
+      ntfEntry.isDeliverPushNotification = true;
+      await notificationmanager.startWantAgent(agent, undefined, 'inputKey', 'inputContent', ntfEntry);
+
+      mocker.ignoreMock(logHelper, logHelper.showInfo);
+    });
+
+    it('should_return_when_ntfEntry_is_DeliverPushNotification_and_getDeliverPush WantInfo_throws_error', 0, async () => {
+      let notificationmanager: NotificationManager = new NotificationManager();
+      let mocker: MockKit = new MockKit();
+      let logHelper: LogHelper = LogHelper.getInstance();
+      let mockfunc: Function = mocker.mockFunc(logHelper, logHelper.showInfo);
+      when(mockfunc)(ArgumentMatchers.anyString).afterReturnNothing();
+
+      let agent: WantAgent = new WantAgent();
+      let mockWantAgent: any = {
+        trigger: (agent: WantAgent, wantParam: Want, callback: Function) => {
+        }
+      };
+      let ntfEntry: NotificationEntry = new NotificationEntry();
+      ntfEntry.isDeliverPushNotification = true;
+      await notificationmanager.startWantAgent(agent, undefined, 'inputKey', 'inputContent', ntfEntry);
 
       mocker.ignoreMock(logHelper, logHelper.showInfo);
     });
@@ -160,6 +256,57 @@ export default function NotificationManagerTest() {
 
       mocker.ignoreMock(logHelper, logHelper.showInfo);
     });
+
+    it('should_return_empty_string_when_bundleName_is_null', 0, async () => {
+      let notificationManager: NotificationManager = new NotificationManager();
+      const result = await notificationManager.getDeliverPushNotificationHomePage(null);
+      expect(result).assertEqual('');
+    });
+
+    it('should_return_empty_string_when_queryGridLayoutItemsByBundleName_throws_error', 0, async () => {
+      let notificationManager: NotificationManager = new NotificationManager();
+      let mocker: MockKit = new MockKit();
+      const result = await notificationManager.getDeliverPushNotificationHomePage('testBundleName');
+      expect(result).assertEqual('');
+    });
+
+    it('should_return_empty_string_when_abilityInfos_is_null', 0, async () => {
+      let notificationManager: NotificationManager = new NotificationManager();
+      let mocker: MockKit = new MockKit();
+      const result = await notificationManager.getDeliverPushNotificationHomePage('testBundleName');
+      expect(result).assertEqual('');
+    });
+
+    it('should_return_abilityName_when_abilityName_is_not_null', 0, async () => {
+      let notificationManager: NotificationManager = new NotificationManager();
+      let mocker: MockKit = new MockKit();
+      let abilityInfos: Array<any> = [{ abilityName: 'testAbilityName' }];
+      const result = await notificationManager.getDeliverPushNotificationHomePage('testBundleName');
+      expect(result).assertEqual('testAbilityName');
+    });
+
+    it('should_return_undefined_when_want_is_null', 0, () => {
+      let notificationManager: NotificationManager = new NotificationManager();
+      const result = notificationManager.getPushDeliverWantAgentInfo(null);
+      expect(result).assertUndefined();
+    });
+
+    it('should_return_undefined_when_want_parameters_is_null', 0, () => {
+      let notificationManager: NotificationManager = new NotificationManager();
+      let want: Want = new Want();
+      const result = notificationManager.getPushDeliverWantAgentInfo(want);
+      expect(result).assertUndefined();
+    });
+
+    it('should_return_wantAgentInfo_when_want_parameters_has_push_info', 0, () => {
+      let notificationManager: NotificationManager = new NotificationManager();
+      let want: Want = new Want();
+      want.parameters = {};
+      want.parameters[SystemuiConstants.KEY_PUSH_DELIVER_WANT_AGENT_INFO] = new WantAgent();
+      const result = notificationManager.getPushDeliverWantAgentInfo(want);
+      expect(result).assertInstanceOf(WantAgent);
+    });
+
 
     it('should_return_immediately_when_pushWantInfo_is_null', 0, async () => {
       let notificationmanager: NotificationManager = new NotificationManager();

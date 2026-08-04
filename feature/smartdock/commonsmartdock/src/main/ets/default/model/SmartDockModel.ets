@@ -17,6 +17,7 @@ import Prompt from '@ohos.promptAction';
 import type image from '@ohos.multimedia.image';
 import lazy { FixedDockResource } from '../common/constants/PcModeDockConstants';
 import {
+  DeliverUtil,
   AppItemInfo,
   Cache2RdbHelper,
   LauncherLayoutCacheUtil,
@@ -91,8 +92,7 @@ const TAG = 'SmartDockModel';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.HOME, TAG);
 const KEY_NAME = 'name';
 const FIRST_LOADED_SNAPSHOT_NUMBER = 15;
-const GUIDE_BUNDLE_NAME = 'com.ohos.hwstartupguide';
-const VOICE_PC_ABILITY_NAME = 'VoicePcAbility';
+const GUIDE_BUNDLE_NAME = 'com.ohos.startupguide';
 
 /**
  * SmartDock Model
@@ -167,6 +167,7 @@ export default class SmartDockModel extends SingleBase {
 
     // 更新对应的数据到appItemInfo
     this.mResidentCacheMgr.fillDockItemByAppInfo(appItemInfo, appDataFromSystem);
+    DeliverUtil.checkInstallSource(appItemInfo);
     // 更新对应的数据到数据库
     DockUtils.updateNewInstalledApp(appItemInfo);
     // 更新缓存
@@ -401,27 +402,32 @@ export default class SmartDockModel extends SingleBase {
 
       for (let j = 0; j < allSession.length; j++) {
         let currentSession = allSession[j];
-        if (currentSession.sceneInfo.bundleName === GUIDE_BUNDLE_NAME ||
-          (currentSession.sceneInfo?.abilityName === VOICE_PC_ABILITY_NAME)) {
+        if (currentSession.sceneInfo.bundleName === GUIDE_BUNDLE_NAME) {
           continue;
         }
+        // pad自由多窗语音助手壳应用包名和实际运行的应用包名不一致, 这里需要单独适配下
+        const sessionBundleName: string = SceneInfoAdapterUtil.getAdapterBundleName(currentSession.sceneInfo.bundleName);
         const localMissionInfo: RecentBundleMissionInfo | undefined = recentMissionsList.find((item) =>
-          item.appIndex === currentSession.sceneInfo.appIndex);
+          item.bundleName === sessionBundleName && item.appIndex === currentSession.sceneInfo.appIndex);
         if (localMissionInfo) {
           localMissionInfo.missionInfoList?.push(containerSessionList[i]);
         } else {
-          let appItem = appList.find(item => item.appIndex === currentSession.sceneInfo.appIndex);
+          let appItem = appList.find(item => item.bundleName === sessionBundleName &&
+            item.appIndex === currentSession.sceneInfo.appIndex);
           if (!appItem && currentSession.sceneInfo.isAtomicService) {
+            appItem = AtomicServiceAppModel.getInstance().getAtomicInfoByBundleName(sessionBundleName);
           }
           let recentTaskInfo: RecentBundleMissionInfo | undefined = new RecentBundleMissionInfo();
           if (!appItem) {
+            log.showInfo(`app not found in appList: ${sessionBundleName}`);
             recentTaskInfo = this.getAbilityItemInfo(currentSession);
             if (!recentTaskInfo) {
-              log.showError(`getAbilityItemInfo failed, ` +
+              log.showError(`getAbilityItemInfo failed, bundleName: ${sessionBundleName}, ` +
                 `moduleName: ${currentSession.sceneInfo.moduleName}, ` +
                 `abilityName: ${currentSession.sceneInfo.abilityName}`);
               continue;
             }
+            noAppDesktopIconList.push(sessionBundleName);
           } else {
             this.appItemCopyToRecentTaskInfo(appItem, recentTaskInfo);
           }
@@ -730,8 +736,8 @@ export default class SmartDockModel extends SingleBase {
    * @param itemIndex
    */
   insertItemToIndex(insertIndex: number, itemIndex: number): void {
-    log.showInfo(`insertItemToIndex insertIndex: ${insertIndex}, itemIndex: ${itemIndex}`);
-    const dockResidentNum = 3;
+    log.showInfo(`insertItemToIndex insertIndex: ${insertIndex}, itemIndex: ${itemIndex}, mDevice: ${this.mDevice}`);
+    const dockResidentNum = 2;
     if ((insertIndex < dockResidentNum || itemIndex < dockResidentNum) &&
       this.mDevice === CommonConstants.PAD_DEVICE_TYPE) {
       try {

@@ -116,7 +116,7 @@ export class LiveBaseTemplate extends BaseExtendProperty implements ILiveTemplat
 
   /**
    * 通知图标样式
-   * 0: 圆形; 1: 方形; 2: 样式反转
+   * 0: 圆形; 1: 方形; 2: 样式反转 例:克隆应用图标覆盖;
    */
   overlayIconStyle?: OverlayIconStyle;
 
@@ -135,6 +135,11 @@ export class LiveBaseTemplate extends BaseExtendProperty implements ILiveTemplat
    * 此处主要用于扩展卡片模板辅助区数据
    */
   extendType: LiveExtendType = 0;
+
+  /**
+   * 是否是发送的实况通知
+   */
+  isDeliverLiveNotification: boolean = false;
 
   /**
    * 倒计时模板的特有字段
@@ -279,12 +284,24 @@ export class LiveBaseTemplate extends BaseExtendProperty implements ILiveTemplat
   /**
    * 设置overlayIcon样式
    *
-   * @param overlayIconStyle 图标样式(0: 圆形, 1: 方形, 2: 样式反转)
+   * @param overlayIconStyle 图标样式(0: 圆形, 1: 方形, 2: 样式反转 例:克隆应用图标覆盖)
    * @param forceRefresh 强制刷新
    */
   setOverlayIconStyle(overlayIconStyle: OverlayIconStyle, forceRefresh?: boolean): void {
     if (forceRefresh || !CommonUtils.isInvalid(overlayIconStyle)) {
       this.overlayIconStyle = overlayIconStyle;
+    }
+  }
+
+  /**
+   * 设置发送的实况通知
+   *
+   * @param isDeliverLiveNotification 是发送的实况通知
+   * @param forceRefresh 是否强制刷新
+   */
+  setIsDeliverLiveNotification(isDeliverLiveNotification?: boolean, forceRefresh?: boolean): void {
+    if (forceRefresh || !CommonUtils.isInvalid(isDeliverLiveNotification)) {
+      this.isDeliverLiveNotification = isDeliverLiveNotification;
     }
   }
 

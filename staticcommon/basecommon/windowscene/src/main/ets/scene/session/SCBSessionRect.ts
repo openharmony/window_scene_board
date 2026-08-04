@@ -90,7 +90,7 @@ export class SCBSessionRect {
   width: ScbNumber;
   height: ScbNumber;
 
-  constructor(left?: number, top?: number, width?: number, height?: number) {
+   constructor(left?: number, top?: number, width?: number, height?: number) {
     this.left = new ScbNumber(left);
     this.top = new ScbNumber(top);
     this.width = new ScbNumber(width);

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -352,7 +352,7 @@ declare namespace sceneSessionManager {
      */
     TYPE_SIDE_EDGE_BAR,
     /**
-     * Navigation aiBar.
+     * Navigation naviBar.
      */
     TYPE_NAVIGATION_INDICATOR,
     /**
@@ -1953,7 +1953,7 @@ declare namespace sceneSessionManager {
      * @param type: 'setAnimationPropertyAndOptions'
      */
     on(type: 'animateToTargetProperty', callback: Callback<WindowAnimationProperty, WindowAnimationOptions>): void;
-
+    on(type: 'callingWindowIdChange', callback: Callback<number>):void;
     /**
      * notify rotation property
      * @param rotation: window rotation
@@ -2100,9 +2100,10 @@ declare namespace sceneSessionManager {
     /**
      * notify close keyboard sync Transaction
      */
-    closeKeyboardSyncTransaction(keyboardPanelRect: SessionRect, isKeyboardShow: boolean,
-      beginRect: SessionRect, endRect: SessionRect, animated: boolean,
-      callingId: number, isGravityChanged: boolean): void;
+    closeKeyboardSyncTransaction(keyboardBaseInfo: KeyboardBaseInfo,keyboardAnimationRectConfig: KeyboardAnimationRectConfig,callingWindowInfoData: CallingWindowInfoData): void;
+
+    notifyKeyboardAnimationWillBegin(callingId: number, isShowAnimation: boolean,
+      keyboardAnimationRectConfig: KeyboardAnimationRectConfig): void;
 
     /**
      * notify keyboard animation completed
@@ -2196,6 +2197,13 @@ declare namespace sceneSessionManager {
      * @param occluded indicates if occluded
      */
     notifyPipOcclusionChange(occluded: boolean);
+
+    /**
+     * Notify pip active status change to native (floating active vs side edge bar, etc.).
+     *
+     * @param isActive true when pip is in normal floating active state, false when stowed in side edge bar
+     */
+    notifyPipActiveStatusChange(isActive: boolean);
 
     /**
      * Notify pip size change to native.
@@ -2383,9 +2391,10 @@ declare namespace sceneSessionManager {
 
     /**
      * Activate or deactivate the dragEnable attribute of the window by scb.
-     * @param activateDrag: Indicates whether the dragEnable attribute of the window is activated.
+     * @param scenario: Drag activation scenario flag. Use DragActivateScenario values.
+     * @param enable: Whether to enable or disable the drag for the given scenario.
      */
-    activateDragBySystem(activateDrag: boolean): void;
+    activateDragBySystem(scenario: number, enable: boolean): void;
 
     /**
      * set colorSpace
@@ -2559,6 +2568,7 @@ declare namespace sceneSessionManager {
   interface AppWindowSceneConfig {
     floatCornerRadius: number;
     uiType: string;
+    multiWindowUIType: string;
     backgroundScreenLock: boolean;
     rotationMode: string;
     desktopStatusBarConfig: StatusBarConfig;
@@ -3152,6 +3162,12 @@ declare namespace sceneSessionManager {
    * @param type: 'createKeyboardSession'
    */
   function on(type: 'createKeyboardSession', callback: Callback<SceneSession, SceneSession>): void;
+
+  /**
+   * Register the callback of set SpecificWindow ZIndex.
+   * @param type: 'setSpecificWindowZIndex'
+   */
+  function on(type: 'setSpecificWindowZIndex', callback: Callback<SceneSession, SceneSession>): void;
 
   /**
    * Register the callback of recover scene session.
@@ -3940,13 +3956,6 @@ declare namespace sceneSessionManager {
   function setSupportFunctionType(funcType: SupportFunctionType): void;
 
   /**
-   * GetApplicationInfo from bms
-   * @param bundleName
-   * @returns SCBApplicationInfo
-   */
-  function getApplicationInfo(bundleName: string): SCBApplicationInfo;
-
-  /**
    * to update recent main session list
    * @param recentMainSessionIds the persistentIds of recently used main sessions
    */
@@ -3966,6 +3975,11 @@ declare namespace sceneSessionManager {
    * @param switchStatus indicates pip autoStart switch status of system setting
    */
   function setPiPSettingSwitchStatus(switchStatus: boolean): void;
+
+  /**
+   * set Is Pip Enabled.
+   */
+  function setIsPipEnabled(enable: boolean):void;
 }
 
 export default sceneSessionManager;

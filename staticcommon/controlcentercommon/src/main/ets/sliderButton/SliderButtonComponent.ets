@@ -81,11 +81,10 @@ export struct SliderButtonComponent {
    */
   private getProgressColor(): ResourceColor {
     if (this.isExpand) {
-      return DISABLE_BRIGHTNESS ? this.colorModeViewData.brightnessBlockColor : this.animViewData.sliderProgressColor;
-    } else if (this.animViewData.sliderChosen) {
-      return this.colorModeViewData.brightnessBlockColor;
+      return DISABLE_BRIGHTNESS ? $r('sys.color.interactive_pressed') : this.animViewData.sliderProgressColor;
     }
-    return this.colorModeViewData.wifiBgOffColor;
+    // 顶栏亮度/音量滑条填充色
+    return $r('sys.color.interactive_pressed');
   }
 
   /**
@@ -127,11 +126,63 @@ export struct SliderButtonComponent {
   private getSliderBackgroundColor(): ResourceColor {
     if (this.isExpand) {
       return this.colorModeViewData.subLayoutBgColor;
-    } else if (this.colorModeViewData.isUseDefaultColor() && this.animViewData.sliderChosen) {
-      return this.colorModeViewData.chosenSliderBgColor;
-    } else {
-      return this.colorModeViewData.commonBgOffColor;
     }
+    // 顶栏滑条背板：系统白色
+    return $r('sys.color.comp_background_primary');
+  }
+
+  /**
+   * 亮度自动调节组件
+   */
+  @Builder
+  automaticBrightness() {
+    Row() {
+      Text($r('app.string.automatic_brightness'))
+        .fontWeight(FontWeight.Medium)
+        .fontColor($r('sys.color.font_primary'))
+        .fontSize($r('sys.float.Body_L'))
+      Toggle({ type: ToggleType.Switch, isOn: this.switchState })
+        .onChange((isOn: boolean) => {
+           this.sliderOperation.onSwitchChange?.(isOn);
+        })
+    }
+    .padding({
+      start: LengthMetrics.resource($r('sys.float.padding_level6')),
+      end: LengthMetrics.resource($r('sys.float.padding_level6'))
+    })
+    .visibility((this.isExpand && this.geometryTag.startsWith('brightness')) ? Visibility.Visible : Visibility.None)
+    .borderRadius($r('sys.float.corner_radius_level8'))
+    .justifyContent(FlexAlign.SpaceBetween)
+    .alignItems(VerticalAlign.Center)
+    .backgroundColor(!DISABLE_BRIGHTNESS ? this.colorModeViewData.subpageBrightnessBgColor :
+      this.colorModeViewData.brightnessBgColor)
+    .backgroundBrightnessInternal(this.colorModeViewData.getBrightnessOption(
+      this.colorModeViewData.subpageBrightnessBgOption))
+    .alignRules({
+      middle: { anchor: '__container__', align: HorizontalAlign.Center },
+      top: { anchor: '__container__', align: VerticalAlign.Top }
+    })
+    .width(this.viewData.sliderWidth)
+    .height(this.viewData.sliderHeight)
+    .margin({ top: 154 })
+    .opacity(this.animViewData.subpageOpacity)
+    .scale(this.animViewData.subpageScale)
+    .geometryTransition('automatic' + this.geometryTag)
+    .transition(TransitionEffect.asymmetric(
+      TransitionEffect.OPACITY,
+      TransitionEffect.OPACITY.animation({
+        duration: this.geometryTag.endsWith('Vertical') ? 50 : 100,
+        curve: Curve.Friction
+      })
+    ))
+    .shadow(this.animViewData.subpageHide ? {
+      radius: this.animViewData.shadowRadius,
+      color: '#26000000',
+      offsetY: 0,
+      offsetX: 0
+    } : undefined)
+    .opacity(this.animViewData.subpageHide ? 0 : 1)
+    .id('automaticBrightness' + this.geometryTag)
   }
 
   build() {
@@ -145,6 +196,7 @@ export struct SliderButtonComponent {
         this.buildVerticalSubpageItem()
       }
       this.loadSliderLayer();
+      this.automaticBrightness()
       this.loadIcon();
     }
     .shadow(this.animViewData.subpageHide ? undefined : {
@@ -265,10 +317,11 @@ export struct SliderButtonComponent {
       .width(this.viewData.buttonWidth)
       .height(this.viewData.buttonHeight)
       .borderRadius(32)
-      .backgroundColor(this.colorModeViewData.getSolidColor(
-        this.getSliderBackgroundColor(), this.getBackBrightnessInternal()))
-      .backgroundBrightnessInternal(this.colorModeViewData.getBrightnessOption(
-        this.getBackBrightnessInternal()))
+      .backgroundColor(this.isExpand ?
+        this.colorModeViewData.getSolidColor(this.getSliderBackgroundColor(), this.getBackBrightnessInternal()) :
+        $r('sys.color.comp_background_primary'))
+      .backgroundBrightnessInternal(this.isExpand ?
+        this.colorModeViewData.getBrightnessOption(this.getBackBrightnessInternal()) : undefined)
       .pointLight({
         illuminated: this.isToggleLightEnabled ? this.POINT_LIGHT_ILLUMINATED : IlluminatedType.NONE,
       })
@@ -341,8 +394,8 @@ export struct SliderButtonComponent {
       Column()
         .size(this.getSliderSizeByDirection())
         .backgroundColor(this.getProgressColor())
-        .backgroundBrightnessInternal(this.colorModeViewData.getBrightnessOption(
-          this.getProgressBrightnessInternal()))
+        .backgroundBrightnessInternal(this.isExpand ?
+          this.colorModeViewData.getBrightnessOption(this.getProgressBrightnessInternal()) : undefined)
         .transition(this.isExpand ? this.transEffectData.brightnessTransEffect(this.viewData.subpageSliderScale) :
           undefined)
     }

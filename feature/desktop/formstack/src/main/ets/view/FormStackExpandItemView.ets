@@ -18,7 +18,7 @@ import curves from '@ohos.curves';
 import { ImageModifier } from '@kit.ArkUI';
 import { desktopItemDraggableManager, StyleConstants } from '@ohos/launchercommon';
 import { CheckEmptyUtils, LogDomain, LogHelper } from '@ohos/basicutils';
-import { AccessibilityManager, GlobalContext } from '@ohos/frameworkwrapper';
+import { AccessibilityManager, GlobalContext, LightOutdoorConfig } from '@ohos/frameworkwrapper';
 import { ResUtils } from '@ohos/windowscene';
 import { NumberConstants } from '@ohos/commonconstants';
 import { FormStackConstants } from '../common/FormStackConstants';
@@ -198,6 +198,11 @@ export struct FormStackExpandItemView {
     })
     .onGestureJudgeBegin((gestureInfo: GestureInfo, event: BaseGestureEvent) => {
       if (gestureInfo.type === GestureControl.GestureType.DRAG && !desktopItemDraggableManager.getEnableDrag()) {
+        return GestureJudgeResult.REJECT;
+      }
+      // 云端2预制元素禁止拖拽
+      if (gestureInfo.type === GestureControl.GestureType.DRAG &&
+      LightOutdoorConfig.getInstance().isOnLightOutdoorMode()) {
         return GestureJudgeResult.REJECT;
       }
       return GestureJudgeResult.CONTINUE;

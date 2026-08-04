@@ -1,0 +1,1663 @@
+{
+    "string":[
+        {
+            "name":"MultiWindow_guidance_button_next",
+            "value":"التالي",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Navi_bar_recent_detail",
+            "value":"اسحب من أسفل الشاشة نحو الأعلى مع الاستمرار في لمس الشاشة لإظهار المهام الحديثة.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_does_not_support_panoramic_multiwindow_in_current_state",
+            "value":"عرض المهام المتعددة غير مدعوم",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Navi_bar_recent",
+            "value":"عرض المهام الحديثة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_not_support_multiwindows",
+            "value":"تطبيق %1$s لا يدعم عرض النوافذ المتعددة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"maximize_window",
+            "value":"تكبير",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"oh_multiwindow_vertical_split",
+            "value":"تقسيم رأسي",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"folder_name_tools",
+            "value":"الأدوات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"replace_window",
+            "value":"تبديل",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"oh_multiwindow_minimize_all_float_due_to_rss",
+            "value":"تمت إزاحة النافذة العائمة إلى الجانب للحصول على تجربة سلسة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"search_apps",
+            "value":"البحث عن تطبيق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_ring_mode_title_vibration",
+            "value":"اهتزاز",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_click_application_form_split_screen",
+            "value":"افتح تطبيقًا آخرًا لاستخدامه في وضع تقسيم الشاشة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"folder_name_system_apps",
+            "value":"تطبيقات هواوي",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_window",
+            "value":"إضافة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"flip_the_phone",
+            "value":"اقلب الجهاز لتشغيل المصباح",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_ring_mode_title_off",
+            "value":"صامت",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"learn_more",
+            "value":"معرفة المزيد",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_ring_mode_title_on",
+            "value":"رنين",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_does_not_support_panoramic_multiwindow",
+            "value":"هذا التطبيق لا يدعم وضع عرض المهام المتعددة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_focused_switch_content_fold",
+            "value":"انقر على نافذة لاختيارها.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"oh_multiwindow_not_support_split",
+            "value":"تطبيق \"%1$s\" لا يدعم وضع تقسيم الشاشة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"System",
+            "value":"النظام",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add",
+            "value":"إضافة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"delete_form",
+            "value":"إزالة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_button_quit",
+            "value":"لاحقًا",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"close_window",
+            "value":"إغلاق",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_bluetooth_title",
+            "value":"البلوتوث",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_split_screen_title",
+            "value":"تقسيم الشاشة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_nfc_mode_title",
+            "value":"NFC",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"forbid_pip_window_size_adjust",
+            "value":"لا يمكن ضبط حجم النافذة على شاشة الغطاء",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_horizontal_split",
+            "value":"تقسيم أفقي",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_modify_mode_smart_text",
+            "value":"تم تبديل وضع العرض تلقائيًا، فشاشة عرض المعلومات دومًا الحالية لا تدعم سوى الوضع الذكي فقط.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"one_hand_mode",
+            "value":"وضع الاستخدام بيد واحدة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aod_poup_confirm",
+            "value":"حسنًا",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aod_list_title_more_style",
+            "value":"المزيد من خلفيات وضع العرض الدائم",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"folder_name_preload",
+            "value":"تطبيقات مميزة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"one_hand_mode_accessibility_str_entry_setting",
+            "value":"الإعدادات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Desktop_individuation",
+            "value":"تخصيص الشاشة الرئيسية",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"airplane_mode",
+            "value":"وضع الطائرة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_horizontal_exchange",
+            "value":"تبديل النوافذ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"title_bar_menu_maximize_window",
+            "value":"تكبير",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_focused_switch_title_fold",
+            "value":"التبديل بين النوافذ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"oh_multiwindow_save_group",
+            "value":"حفظ التشكيلة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"next_step",
+            "value":"التالي",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"title_bar_menu_close_window",
+            "value":"إغلاق",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_change_views_title",
+            "value":"التغيير السريع للعرض",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_vertical_exchange",
+            "value":"تبديل النوافذ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"title_bar_menu_minimize_window",
+            "value":"تصغير",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"running_apps_recently",
+            "value":"التطبيقات المُستخدمة مؤخرًا",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Navi_bar_return_home_detail",
+            "value":"اسحب من أسفل الشاشة نحو الأعلى للانتقال إلى الشاشة الرئيسية.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_back_to_middle_scene_using_gesture",
+            "value":"اقرص بأربعة أصابع معًا للعودة إلى وضع عرض المهام المتعددة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_button_more",
+            "value":"معرفة المزيد",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"know",
+            "value":"حسنًا",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_floating_windows_title",
+            "value":"نافذة عائمة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_not_support_change_split_ratio",
+            "value":"لا يمكن ضبط نسبة أبعاد نافذة %1$s في عرض تقسيم الشاشة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_not_support_split_this_way_currently",
+            "value":"لا يمكن فتح %1$s في وضع تقسيم الشاشة بهذه الطريقة في وضعية جهازك الحالية",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_not_support_split_currently",
+            "value":"لا يدعم تطبيق %1$s تقسيم الشاشة في وضعية جهازك الحالية",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_multi_finger_knead_title",
+            "value":"الدخول/الخروج من وضع ملء الشاشة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_show_not_support_small_step",
+            "value":"تطبيق %1$s لا يدعم عرض النافذة المصغرة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_split_adjust_to_mid_title",
+            "value":"الدخول إلى عرض المهام المتعددة عن طريق تغيير حجم النوافذ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_Mid_View_contents",
+            "value":"اسحب لأعلى أو غيّر حجم النوافذ أثناء وضع عرض تقسيم الشاشة، للدخول إلى وضع عرض النافذة المتوازية.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"minimize_window",
+            "value":"تصغير",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Navi_bar_vassistant_dialogue_longpress",
+            "value":"انقر مطولًا للتحدث إلى voice",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Navi_bar_return_home",
+            "value":"الانتقال إلى الشاشة الرئيسية",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_adjust_mid_window_title",
+            "value":"ضبط النوافذ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_slid_delete_title",
+            "value":"السحب لإغلاق التطبيقات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_add_window_content",
+            "value":"يمكنك إضافة نافذة أخرى إلى هذه المجموعة من القائمة في الأعلى.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"not_harmony_apps",
+            "value":"التطبيقات القادمة قريبًا",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"already_exist_pip_window_toast",
+            "value":"أغلق أولًا النافذة المصغرة الموجودة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_split_swap_title",
+            "value":"تبديل النوافذ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"force_split2full_tips",
+            "value":"سيسري مفعول العرض ملء الشاشة من المرة القادمة التي يتم فيها تشغيل التطبيق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Navi_bar_back_click_navigation",
+            "value":"انقر للرجوع إلى الخلف",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_pip_switch_title",
+            "value":"صورة ضمن صورة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_not_support_split_ratio",
+            "value":"يتعذر تعديل حجم الشاشة مع تطبيقات الألعاب",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keyboard_panel_smart_access_text",
+            "value":"زر أوضاع الإدخال الأخرى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_split_to_float_title",
+            "value":"الانتقال من وضع تقسيم الشاشة إلى النافذة العائمة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"unlock_app",
+            "value":"تم فتح قفل %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_click_application_form_midScene_waiting_state",
+            "value":"انقر على أيقونة تطبيق ما لإضافته إلى وضع عرض المهام المتعددة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"oh_multiwindow_not_support_split_for_folded_new",
+            "value":"تطبيق %1$s لا يدعم وضع تقسيم الشاشة أثناء طي الجهاز",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"No_available_window",
+            "value":"لا توجد نافذة تطبيق متاحة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_video_player",
+            "value":"تشغيل الفيديو في نافذة مصغرة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"duplicate_add",
+            "value":"لقد تمت الإضافة مسبقًا",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Navi_bar_back",
+            "value":"الرجوع للخلف",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"uninstall",
+            "value":"إزالة التثبيت",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keyboard_panel_world_access_text",
+            "value":"زر تبديل لوحة المفاتيح",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_not_support_horizontal_split_new",
+            "value":"تطبيق %1$s لا يدعم وضع تقسيم الشاشة الأفقي",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"title_search_result",
+            "value":"نتائج البحث",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"recover_Theme_App_massage",
+            "value":"مطلوب تثبيت تطبيق السمات من أجل استخدام هذه الميزة.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_three_finger_cross_slip_content",
+            "value":"اسحب باستخدام ثلاث أصابع على الشاشة نحو اليمين أو اليسار.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_add_window_title",
+            "value":"إضافة نافذة جديدة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_floating_windows_contents",
+            "value":"افتح التطبيقات في النوافذ العائمة واستخدم الإيماءات لتصغير النافذة أو تكبيرها أو إغلاقها.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_Mid_View_title",
+            "value":"وضع عرض النافذة المتوازية",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_center_menu_add_desktop",
+            "value":"الإضافة إلى الشاشة الرئيسية",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Desktop_setting",
+            "value":"إعدادات الشاشة الرئيسية",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aod_cancel",
+            "value":"إلغاء",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"HiSearch_title",
+            "value":"بحث voice",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_window_open",
+            "value":"تم إظهار عناصر التحكم بالتشغيل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_play",
+            "value":"تشغيل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"delete_app",
+            "value":"إزالة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"style_mode_label_small",
+            "value":"صغيرة (‏%1$d:‏%2$d)",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"control_center_complex_toggle_location_title",
+            "value":"الموقع",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"style_mode_label_split",
+            "value":"الأعمدة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"landscape_app_full_ratio",
+            "value":"أبعاد العرض ملء الشاشة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Navi_bar_gesture_back_detail",
+            "value":"اسحب من الطرف الأيمن أو الأيسر للشاشة للرجوع إلى الشاشة السابقة.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keyboard_thumb_access_text",
+            "value":"زر لوحة مفاتيح الإبهام",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_floating_tip",
+            "value":"انقر هنا لعرض عناصر التحكم",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_button_know",
+            "value":"حسنًا",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_delete_form",
+            "value":"هل تريد إزالة هذه الأداة؟",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_split_tip",
+            "value":"انقر هنا لعرض عناصر التحكم",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"mid_scene_tip_label",
+            "value":"أفلت إصبعك للدخول إلى وضع عرض المهام المتعددة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"continue",
+            "value":"التالي",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"recover",
+            "value":"استعادة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"lock_app",
+            "value":"تطبيق %s مقفل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"restoring_tips_btn",
+            "value":"حسنًا",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Navi_bar_vassistant",
+            "value":"انقر مطولًا على شريط التنقل للتحدث إلى voice.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_one_step_mid_title",
+            "value":"الدخول إلى عرض المهام المتعددة عن طريق السحب",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"continue_mission_fail_device_connecting_to_another_device",
+            "value":"تعذر التسليم، \u202a%1$s\u202c يتفاعل مع جهاز أخر",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"disable_uninstall",
+            "value":"لا يمكن إزالة هذا التطبيق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"navi_bar_accessibility_text",
+            "value":"شريط التنقل، انقر مرتين مع الضغط مطولًا للتحدث إلى voice",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"force_split_tips",
+            "value":"سيسري مفعول العرض العمودي من المرة القادمة التي يتم فيها تشغيل التطبيق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_not_support_float_window",
+            "value":"يتعذر فتح تطبيق %1$s في نافذة عائمة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"style_mode_label_full",
+            "value":"ملء الشاشة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keyboard_float_access_text",
+            "value":"زر لوحة المفاتيح العائمة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_swap_content",
+            "value":"انقر مطولًا على الشريط العلوي لإحدى النوافذ، ثم اسحبها فوق نافذة أخرى للتبديل بينهما.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"new_folder_name",
+            "value":"المجلد %1$d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Navi_bar_back_detail",
+            "value":"انقر على شريط التنقل للعودة إلى الشاشة السابقة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"gesture_dock_add_limit",
+            "value":"يمكن إضافة %1$d تطبيقًا كحدٍ أقصى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_restore",
+            "value":"استعادة النافذة الأكبر",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"confirm_pcmod_tips",
+            "value":"حسنًا",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"recover_Theme_App",
+            "value":"هل تريد استعادة تطبيق السمات؟",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"enter_pc_mode_tips",
+            "value":"وضع النوافذ الحرة على وشك التشغيل. يُرجى العلم أن هذا الوضع متوفر فقط في الاتجاه الأفقي.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"close_flashlight_tips",
+            "value":"اضغط على زر تشغيل الجهاز لإطفاء المصباح",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"floating_three_button_navigation",
+            "value":"أزرار التنقل العائمة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cancel",
+            "value":"إلغاء",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_menu_open",
+            "value":"فتح",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_to_voice",
+            "value":"السحب إلى voice",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_to_voice_detail",
+            "value":"انقر مطولًا على عنصر ما حتى يبدأ في الطفو، ثم اسحبه إلى الأسفل.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"uninstall_success",
+            "value":"تمت إزالة التثبيت",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"uninstall_failed",
+            "value":"تتعذر إزالة التثبيت",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"title_recently_use",
+            "value":"المستخدمة مؤخرًا",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_to_voice_reminder",
+            "value":"اسحبه إلى voice ثم ارفع إصبعك للبدء",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_adjust_mid_window_content",
+            "value":"اسحب لتغيير حجم النوافذ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pip_play_fast_backward",
+            "value":"الرجوع للخلف",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"landscape_startup_title",
+            "value":"خيارات ضبط عرض التطبيقات على الشاشة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"compatible_application_display",
+            "value":"التطبيقات المتوافقة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aod_dialog_title",
+            "value":"العرض الدائم",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Desktop_slide",
+            "value":"اسحب للأسفل للبحث",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_app_is_open",
+            "value":"هذا التطبيق مفتوح بالفعل",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"oh_multiwindow_not_support_vertical_split_new",
+            "value":"تطبيق %1$s لا يدعم وضع تقسيم الشاشة الرأسي",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_swap_title",
+            "value":"التبديل بين النوافذ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"continue_mission_fail_close_hotspot_and_try_again",
+            "value":"تعذر التسليم، أغلق نقطة الاتصال الشخصية على \u202a%1$s\u202c وأعد المحاولة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Navi_bar_setting",
+            "value":"أزرار التنقل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"title_all_apps",
+            "value":"جميع التطبيقات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"No_running_apps_recently",
+            "value":"لا توجد تطبيقات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"floating_three_button_navigation_detail",
+            "value":"إمكانية تغيير أماكن أزرار شريط التنقل عن طريق السحب.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_button_finish",
+            "value":"تم",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"style_mode_label_medium",
+            "value":"متوسطة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_split_swap_content_phone",
+            "value":"انقر مطولًا على الشريط العلوي لإحدى النوافذ، ثم اسحبها فوق نافذة أخرى للتبديل بينهما.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"add_to_desktop",
+            "value":"الإضافة إلى الشاشة الرئيسية",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keyboard_common_access_text",
+            "value":"زر لوحة المفاتيح العادية",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"landscape_view_force",
+            "value":"فرض الاتجاه الأفقي",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remove_form_dialog_content",
+            "value":"يمكنك إضافة هذه الأداة مرة أخرى من قائمة الإجراء السريع للتطبيق.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_one_step_mid_content",
+            "value":"اسحب من أسفل الشاشة نحو الأعلى، ثم اختر تطبيقًا.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_float_to_split_title",
+            "value":"الانتقال من وضع النافذة العائمة إلى تقسيم الشاشة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_restored",
+            "value":"تمت استعادة التطبيق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"covertheme_settings_title",
+            "value":"الشاشة الرئيسية وشاشة الغطاء والشكل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dragging_to_mid_tip",
+            "value":"أفلت إصبعك للدخول إلى وضع عرض المهام المتعددة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_three_finger_cross_slip_title",
+            "value":"التبديل بين التطبيقات",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"title_bar_menu_enlarge_window",
+            "value":"تكبير",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"continue_mission_waiting",
+            "value":"جارٍ التسليم…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_float_to_split_content",
+            "value":"انقر مطولًا على الشريط العلوي لإحدى النوافذ، ثم اسحب للدخول إلى وضع تقسيم الشاشة.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"title_bar_menu_shrink_window",
+            "value":"نافذة أصغر",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pip_window_close",
+            "value":"تم إخفاء عناصر التحكم بالتشغيل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Navi_bar_vassistant_dialogue",
+            "value":"دردشة voice",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_dock_title",
+            "value":"شريط النوافذ المتعددة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_split_to_float_content_phone",
+            "value":"انقر مطولًا على الشريط العلوي لإحدى النوافذ، ثم اسحب للتبديل إلى وضع النافذة العائمة.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"aod_dialog_content",
+            "value":"مطلوب تشغيل وضع \"العرض الدائم\". هل تريد تشغيله الآن؟",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_pip_switch_desc",
+            "value":"عند تشغيل هذا الخيار، ستستمر مكالمات الفيديو ومكالمات MeeTime في نافذة مصغرة عند فتح تطبيق آخر أو الرجوع إلى الشاشة الرئيسية.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"title_support_multiWindow",
+            "value":"المزيد",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"restoring_tips_message",
+            "value":"هذا الإجراء غير مُتاح أثناء استعادة البيانات. أعد المحاولة لاحقًا.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"split_to_float",
+            "value":"نافذة عائمة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Navi_bar",
+            "value":"شريط التنقل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_locked",
+            "value":"تم قفل تطبيق %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_play_previous",
+            "value":"تشغيل السابق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"split_screen",
+            "value":"تقسيم الشاشة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"app_menu_exit",
+            "value":"خروج",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_split_adjust_to_mid_content",
+            "value":"اسحب الخط الفاصل بين النوافذ في وضع تقسيم الشاشة حتى يتغير العرض.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_mid_view_guidance_floating_tip",
+            "value":"اسحب هنا لتغيير حجم النوافذ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_multi_finger_knead_content",
+            "value":"باعد بين الإبهام والثلاث أصابع الأخرى للعرض ملء الشاشة، أو ضمهم لبعضهم للعودة إلى وضع النوافذ المتعددة.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"keyboard_one_hand_access_text",
+            "value":"زر لوحة مفاتيح اليد الواحدة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"one_handed_mode_diag_title",
+            "value":"وضع الاستخدام بيد واحدة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"aod_enable",
+            "value":"تشغيل",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_split_screen_contents",
+            "value":"اسحب الشريط العلوي لقلب النوافذ أو افتح نافذة عائمة. يمكنك تغيير الحجم عن طريق سحب الخط الفاصل بين النوافذ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_split_swap_content_fold",
+            "value":"انقر مطولًا على الشريط العلوي لإحدى النوافذ، ثم اسحبها فوق نافذة أخرى للتبديل بينهما.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"one_handed_mode_diag_content",
+            "value":"اسحب إصبعك على الحافة السفلية للشاشة دون أن ترفعها للدخول إلى وضع الاستخدام بيد واحدة.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_play_next",
+            "value":"تشغيل التالي",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_center_menu_add_dock",
+            "value":"الإضافة إلى شريط الإرساء",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_play_fast_forward",
+            "value":"تقديم سريع",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"gesture_return_desktop",
+            "value":"الرجوع إلى الشاشة الرئيسية",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_change_views_contents",
+            "value":"اسحب لأعلى اليمين لفتح نافذة عائمة أو لأعلى اليسار لوضع تقسيم الشاشة.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_dock_contents",
+            "value":"اسحب من حافة الشاشة نحو الداخل لفتح شريط الإرساء. ثم انقر على أيقونة تطبيقٍ ما لفتح نافذة عائمة. أو اسحب تطبيقٍ ما إلى الشاشة للدخول في وضع عرض تقسيم الشاشة.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_slid_delete_content",
+            "value":"انقر مطولًا على الشريط العلوي لإحدى النوافذ، ثم اسحب بسرعة نحو أسفل الشاشة.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_split_to_float_content_fold",
+            "value":"انقر مطولًا على الشريط العلوي لإحدى النوافذ، ثم اسحب للتبديل إلى وضع النافذة العائمة.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"one_handed_mode_diag_cancel",
+            "value":"حسنًا",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"display_brightness",
+            "value":"الشاشة والسطوع",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_title",
+            "value":"نافذة متعددة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"gesture_enter_recent_task",
+            "value":"عرض المهام الحديثة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"gesture_return",
+            "value":"الرجوع للخلف",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"out_pcmod_tips",
+            "value":"أغلق أولًا تطبيق %s للخروج من هذا الوضع.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"let_go_drag_to_voice",
+            "value":"ارفع إصبعك للإرسال إلى voice",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_float_to_split_content_fold",
+            "value":"انقر مطولًا على الشريط العلوي لإحدى النوافذ، ثم اسحب للدخول إلى وضع تقسيم الشاشة.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pip_window_show",
+            "value":"يتم العرض في نافذة مصغرة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"switch_floating_window",
+            "value":"نافذة عائمة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dragging_to_full_tip",
+            "value":"أفلت إصبعك للدخول إلى وضع العرض ملء الشاشة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"one_hand_mode_exit",
+            "value":"انقر على المنطقة الفارغة للخروج.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_dock_switch_contents",
+            "value":"اسحب مطولًا من حافة الشاشة نحو الداخل، ثم اترك إصبعك لفتح شريط الإرساء.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pip_close",
+            "value":"إغلاق النافذة المصغرة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"recent_unlock",
+            "value":"فتح قفل تطبيق \"%s\"",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"continue_mission_fail",
+            "value":"تعذر التسليم",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_dock_switch_title",
+            "value":"شريط النوافذ المتعددة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"MultiWindow_guidance_mid_show_not_support_adjust_window",
+            "value":"تطبيق %1$s لا يدعم تغيير حجم النافذة",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pip_play_pause",
+            "value":"الإيقاف مؤقتًا",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"one_hand_compatibility_mode_prompt_string",
+            "value":"حاول إعادة فتح التطبيق إذا واجهت مشاكل في العرض.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"one_handed_mode_diag_confirm",
+            "value":"معرفة المزيد",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dragging_to_one_to_two_split_tip",
+            "value":"أفلت يدك للدخول إلى وضع تقسيم الشاشة ‏%1$d:‏%2$d",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dragging_to_two_to_one_split_tip",
+            "value":"أفلت يدك للدخول إلى وضع تقسيم الشاشة‏ %2$d:‏%1$d",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"landscape_desc_force",
+            "value":"ستُفتح التطبيقات في العرض الأفقي، حتى لو لم تكن تدعمه. ويمكنك تغيير نسب العرض إلى الارتفاع أدناه.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"force_split2other",
+            "value":"تم تغيير أبعاد الصورة، قد تحدث مشكلات في العرض",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"enter_free_windows_tips",
+            "value":"بالنسبة إلى وضع النوافذ الحرة، دوّر جهازك إلى الاتجاه الأفقي.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"multi_window_force_switch_title",
+            "value":"وضع التوافق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"creation_results",
+            "value":"نتيجة الخط",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"creation_results_apply",
+            "value":"استخدام",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"content_creation",
+            "value":"جارٍ إنشاء الخط…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"desktop_layout",
+            "value":"تخطيط الصفحة",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"auto_align",
+            "value":"المحاذاة التلقائية",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"auto_align_content",
+            "value":"ملء المساحات الفارغة تلقائيًا بعد إزالة أي تطبيق.",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

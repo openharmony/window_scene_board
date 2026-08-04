@@ -60,6 +60,7 @@ import {
 import { slUiStateMgr } from '@ohos/screenlockcommon/src/main/ets/manager/ScreenLockUiStateManager';
 import { ClockAdapterFactory } from '@ohos/screenlockwidget/src/main/ets/clock/adapter/ClockAdapter';
 import { UseScene } from '@ohos/screenlockwidget/src/main/ets/common/adapter/Constans';
+import { SLDeliverBadgeBindState } from '@ohos/immersivekeyguard/src/main/ets/model/data/SLDeliverBadgeBindState';
 import { slStateHelper as screenLockStateHelper } from '@ohos/screenlockwidget/src/main/ets/common/utils/SlStateHelper';
 import { SlEditorBindState } from '@ohos/screenlockwidget/src/main/ets/editsheet/models/SlEditorBindState';
 import { SlClockEditorBindState } from '@ohos/screenlockwidget/src/main/ets/editsheet/models/SlClockEditorBindState';
@@ -123,6 +124,8 @@ class SlStateHelper {
   private slFoldablePSDStaticState: SlFoldablePSDStaticState = new SlFoldablePSDStaticState();
   // 锁头动效管理器
   private slLockIconAnimCtrl?: WidgetAnimState;
+  // 锁屏组件，克隆应用角标组件UI绑定状态
+  private slDeliverBadgeBindState: SLDeliverBadgeBindState = new SLDeliverBadgeBindState();
   // 锁屏编辑UI绑定状态
   private slEditUIState?: SlEditorBindState;
 
@@ -307,6 +310,10 @@ class SlStateHelper {
 
   public getSlFoldablePSDAnimCtrl(): WidgetAnimState | undefined {
     return this.slFoldablePSDStaticState.getSlFoldablePSDAnimCtrl();
+  }
+
+  public getSlDeliverBadgeBindState(): SLDeliverBadgeBindState {
+    return this.slDeliverBadgeBindState;
   }
 
   public getEditUIState(): SlEditorBindState {

@@ -31,7 +31,7 @@ import {
   AppIconContainerTouchEvent,
   AppIconContainerTouchEventParam
 } from '../../../../../../../main/ets/launchericon/viewmodel/AppIconContainerTouchEvent';
-import { AppItemInfo, CommonConstants } from '../../../../../../../main/ets/TsIndex';
+import { AppItemInfo, CommonConstants, DeliverUtil } from '../../../../../../../main/ets/TsIndex';
 import { AppIconData } from '../../../../../../../main/ets/launchericon/viewmodel/AppIconData';
 
 export function AppIconContainerTouchEventTest() {
@@ -99,6 +99,8 @@ export function AppIconContainerTouchEventTest() {
       let action: () => void = (): void => { called = true; };
 
       let mocker: MockKit = new MockKit();
+      let mockFunIsSupportAppType: Function = mocker.mockFunc(DeliverUtil, DeliverUtil.isSupportAppType);
+      when(mockFunIsSupportAppType)(ArgumentMatchers.any).afterAction(action);
 
       let inValidEvent: TouchEvent = AppStorage.get('AppIconContainerTouchEventTestInvalidKey') as TouchEvent;
       new AppIconContainerTouchEvent().initContainerTouchParam({
@@ -123,6 +125,8 @@ export function AppIconContainerTouchEventTest() {
         iconData: new AppIconData()
       }).onTouch(event);
       expect(called).assertFalse();
+
+      mocker.clear(DeliverUtil);
       mocker.clearAll();
     });
 
@@ -135,6 +139,9 @@ export function AppIconContainerTouchEventTest() {
         SCBSceneSessionManager.getInstance().preloadApp);
       when(mockFunPreloadApp)(ArgumentMatchers.any).afterAction(action);
 
+      let mockFunIsSupportAppType: Function = mocker.mockFunc(DeliverUtil, DeliverUtil.isSupportAppType);
+      when(mockFunIsSupportAppType)(ArgumentMatchers.any).afterReturn(false);
+
       event.type = CommonConstants.TOUCH_TYPE_DOWN;
       new AppIconContainerTouchEvent().initContainerTouchParam({
         itemInfo: new AppItemInfo(),
@@ -143,6 +150,8 @@ export function AppIconContainerTouchEventTest() {
       expect(called).assertFalse();
 
       when(mockFunIsSupportAppType)(ArgumentMatchers.any).afterReturn(true);
+      let mockFunIsSupportDeliver: Function = mocker.mockFunc(DeliverUtil, DeliverUtil.isSupportDeliver);
+      when(mockFunIsSupportDeliver)(ArgumentMatchers.any).afterReturn(false);
       new AppIconContainerTouchEvent().initContainerTouchParam({
         itemInfo: new AppItemInfo(),
         iconData: new AppIconData()
@@ -157,6 +166,7 @@ export function AppIconContainerTouchEventTest() {
       expect(called).assertTrue();
 
       mocker.clear(SCBSceneSessionManager.getInstance());
+      mocker.clear(DeliverUtil);
       mocker.clearAll();
     });
   });

@@ -92,7 +92,7 @@ export default class DesktopProviderServiceProxy {
  * @since 2024-03-11
  */
 class DesktopProviderServiceStub extends BaseServiceStub {
-  private static readonly harmonyKey = 2;
+  private static readonly systemKey = 2;
   private static readonly rpcShutdownKey = 3;
   private static readonly cloneCloud = 4;
   private static readonly sampleDevice = 5;
@@ -112,7 +112,7 @@ class DesktopProviderServiceStub extends BaseServiceStub {
   protected initServiceMap(): Map<number, () => IService> {
     return new Map<number, () => IService>([
       [DesktopProviderServiceStub.cloneCloud, (): IService => new CloneCloudService()],
-      [DesktopProviderServiceStub.harmonyKey, (): IService => new HosKeyService()],
+      [DesktopProviderServiceStub.systemKey, (): IService => new HosKeyService()],
       [DesktopProviderServiceStub.rpcShutdownKey, (): IService => new RpcShutdownService()],
       [DesktopProviderServiceStub.desktopIcon, (): IService => new DesktopIconService()],
       [DesktopProviderServiceStub.filerFolderService, (): IService => new FileFolderService()],

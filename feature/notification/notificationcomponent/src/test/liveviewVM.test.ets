@@ -30,11 +30,12 @@ import {
   ExtAppConstants,
   SCBConstants,
   SettingsConstants,
-  SettingsKeyConstants
-} from '@ohos/commonconstants';
+   SettingsKeyConstants
+ } from '@ohos/commonconstants';
 import { NotificationConfigSyncTaskParam, syncNotificationConfig } from '../../../main/ets/manager/NotificationConfigSyncTask';
 import { taskpool } from '@kit.ArkTS';
 import { notificationCcmConfig } from '@ohos/systemuicommon/src/main/ets/utils/NotificationCcmConfig';
+import { deliverSystemBundleVerity, bundleVerity } from '@ohos/systemuicommon/src/main/ets/utils/BundleVerityUtil';
 import {
   BasicStatementAgreedEvent, BasicStatementAgreedSecureEvent
 } from '@ohos/systemuicommon/src/main/ets/datasharemanager/SysUIDataShareEvent';

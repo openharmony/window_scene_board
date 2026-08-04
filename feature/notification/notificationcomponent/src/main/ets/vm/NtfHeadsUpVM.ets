@@ -572,7 +572,9 @@ export class NtfHeadsUpVM {
     log.showInfo(`setHideContent app:${newEntry.bannerHideContentMode} global:${hideBannerNtfContentObj.getIsHiddenContent()}`)
     let isHide: boolean = false;
     if (newEntry.bannerHideContentMode === HideBannerContentType.FOLLOW_SYSTEM) {
-      isHide = hideBannerNtfContentObj.getIsHiddenContent();
+      // isHide = hideBannerNtfContentObj.getIsHiddenContent();
+      let isClose = sSettingsUtil.getSecureValue(SettingsKeyConstants.APP_NTF_CONFIG_HIDE_BANNER_CONTENT, 'true')
+      isHide = parseInt(isClose) === 1 ? true : false
     } else if (newEntry.bannerHideContentMode === HideBannerContentType.ALWAYS) {
       isHide = false;
     } else if (newEntry.bannerHideContentMode === HideBannerContentType.NEVER) {

@@ -30,10 +30,12 @@ import { SCBVisualEffectManagerTest } from './ets/framework/visualeffect/manager
 import { SCBGestureNavSetManagerTest } from './ets/component/manager/SCBGestureNavSetManager.test';
 import { GestureBackCcmSettingsTest } from './ets/framework/visualeffect/manager/GestureBackCcmSettings.test';
 import { GestureNavBarCcmSettingsTest } from './ets/framework/visualeffect/manager/GestureNavBarCcmSettings.test';
+import { OutdoorCcmManagerTest } from './ets/framework/visualeffect/manager/OutdoorCcmManager.test';
 
 export default function PipelineDemoSuite() {
   describe("sceneboard_framework",  () =>  {
     SCBVisualEffectManagerTest();
+    OutdoorCcmManagerTest();
     GestureBackCcmSettingsTest();
     GestureNavBarCcmSettingsTest();
   });

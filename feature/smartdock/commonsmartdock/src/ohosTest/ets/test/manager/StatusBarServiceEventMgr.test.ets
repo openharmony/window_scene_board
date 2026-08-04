@@ -20,6 +20,7 @@ import { CommonConstants, DockItemInfo, MenuInfo,
   RecentLayoutCacheMgr,
   ResidentLayoutCacheMgr } from '@ohos/launchercommon/src/main/ets/TsIndex';
 import StatusBarServiceEventMgr, { AppManager } from '../../../../main/ets/default/manager/StatusBarServiceEventMgr';
+import statusBar from '@ohos.pcService.statusBar';
 import {
   BundleInfo,
   StatusBarConnectEvent,
@@ -218,6 +219,9 @@ export default function StatusBarServiceEventMgrTest() {
       try {
         let appManager: AppManager = new AppManager(bundleName, pid1);
         appManager.getIsOnExit();
+
+        let groupMenu: statusBar.StatusBarGroupMenu[] = [];
+        appManager.setStatusBarGroupMenu(groupMenu);
         expect(appManager instanceof AppManager).assertTrue();
       } catch (e) {
         expect(JSON.stringify(e)).assertInstanceOf('String');

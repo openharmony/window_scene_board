@@ -16,10 +16,11 @@
 import { LogDomain, LogHelper } from '@ohos/basicutils';
 import { DeviceHelper } from '@ohos/frameworkwrapper';
 import { immersiveVm } from '../../viewmodel/ImmersiveVm';
-import { SysTypeCode } from '@ohos/systemuicommon';
+import { AodStyleType, SysTypeCode } from '@ohos/systemuicommon';
 import { ImmersiveState } from '@ohos/systemuicommon';
 import {
   immersiveKgMgr,
+  ImmersiveAodStyle,
   DarkModeState,
   bannerMgr
 } from '@ohos/systemuicommon';
@@ -82,6 +83,7 @@ export struct ImmersiveCardItem {
   @State cardToggleAnim: WidgetAnimState = this.animMgr.getCardAnimState(CardAnimType.CARD_TOGGLE_TYPE);
   @Prop isFoldFullDisplay: boolean = false;
   @State cardStyle: ImmersiveCardStyle = immersiveVm.getImmersiveCardVm().getCardStyle();
+  @State aodStyle: ImmersiveAodStyle | undefined = immersiveKgMgr.getOneMirrorState().getAodStyle(true);
   @State colorModeViewData: ColorModeViewData = ColorModeViewModel.getInstance().getViewData();
   @State bindStateCtrl: SlCardWidgetBindState | undefined =
     immersiveStateHelper.getImmerseCardBindState() as SlCardWidgetBindState;
@@ -258,7 +260,7 @@ export struct ImmersiveCardItem {
         event?.stopPropagation();
       })
       .pointLight({
-        illuminated: IlluminatedType.BORDER
+        illuminated: this.aodStyle?.isAod ? IlluminatedType.NONE : IlluminatedType.BORDER
       })
     }
     .onClick(this.isIgnoreClick() ? undefined : (event: ClickEvent) => {
@@ -339,9 +341,16 @@ export struct ImmersiveCardItem {
   }
 
   private getBgColor(): ResourceColor | undefined {
+    if (this.aodStyle?.isAod) {
+      return this.aodStyle?.getStyleValue(AodStyleType.SHADE_BACKGROUND_COLOR);
+    }
     let solidColor = this.backBrightArgs?.getSolidColor(this.darkMode?.isDarkMode);
     if (this.enableSolid && solidColor) {
       return solidColor;
+    }
+
+    if (this.shouldUseDefaultImmersiveCardColor()) {
+      return this.aodStyle?.getStyleValue(AodStyleType.SHADE_BACKGROUND_COLOR);
     }
 
     return this.keyguardImmersiveCardDefaultColor;
@@ -379,6 +388,9 @@ export struct ImmersiveCardItem {
   }
 
   private getBackButtonOpacity(): number | undefined {
+    if (this.aodStyle?.isAod) {
+      return 0;
+    }
     if (this.cardBackBtnAnimState?.isSceneAnimating()) {
       return this.cardBackBtnAnimState?.getAlpha();
     }
@@ -395,6 +407,10 @@ export struct ImmersiveCardItem {
   private getBgAlpha(): number | undefined {
     if (this.isSmallFoldOuterScreen) {
       return 0;
+    }
+
+    if (this.aodStyle?.isAod) {
+      return 1;
     }
 
     if (this.animState?.isSceneAnimating(ImmersiveConstants.IMMERSIVE_ONE_MIRROR_SCENE)) {
@@ -427,6 +443,9 @@ export struct ImmersiveCardItem {
   }
 
   private getContentOpacity(): number | undefined {
+    if (this.aodStyle?.isAod) {
+      return this.aodStyle.getStyleValue(AodStyleType.LIST_CARD_BG_ALPHA);
+    }
     if (!this.animState?.isSceneAnimating()) {
       return undefined;
     }

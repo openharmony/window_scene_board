@@ -31,7 +31,8 @@ export function LiveTimeNode($$: LiveTimeParams = new LiveTimeParams()) {
     Text(getTimeText($$))
       .accessibilityText(getTimeAccessibilityText($$))
       .fontColor($r('sys.color.ohos_id_color_text_primary'))
-      .foregroundBrightness(ColorModeViewModel.getInstance().getViewData().foregroundSecondaryOption)
+      .foregroundBrightness($$.isTitle ? undefined :
+        ($$.aodStyle?.isAod ? undefined : ColorModeViewModel.getInstance().getViewData().foregroundSecondaryOption))
       .fontWeight(FontWeight.Medium)
       .fontSize(
         $$.timeTextStyle ?
@@ -49,15 +50,17 @@ export function LiveTimeNode($$: LiveTimeParams = new LiveTimeParams()) {
 }
 
 function getTimeText(params: LiveTimeParams): string {
-  if (params.timeData?.isCountDown) {
-    return LiveViewCommonConstants.COUNTDOWN_TEXT;
+  if (immersiveKgMgr.getOneMirrorState().getAodStyle(
+    params.notificationType === NotificationType.TYPE_PHONE_KEYGUARD)?.isAod && params.timeData?.isCountDown) {
+    return LiveViewCommonConstants.AOD_COUNTDOWN_TEXT;
   }
   return LiveViewCommonConstants.formatDate(params.timeData?.initialTime, new Date(), params.timeData?.isCountDown);
 }
 
 function getTimeAccessibilityText(params: LiveTimeParams): string {
-  if (params.timeData?.isCountDown) {
-    return LiveViewCommonConstants.COUNTDOWN_TEXT;
+  if (immersiveKgMgr.getOneMirrorState().getAodStyle(
+    params.notificationType === NotificationType.TYPE_PHONE_KEYGUARD)?.isAod && params.timeData?.isCountDown) {
+    return LiveViewCommonConstants.AOD_COUNTDOWN_TEXT;
   }
   return LiveAccessibilityUtil.getTImeAccessibilityText(params.timeData);
 }

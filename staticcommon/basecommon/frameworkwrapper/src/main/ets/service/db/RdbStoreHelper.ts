@@ -284,6 +284,10 @@ export class RdbStoreHelper {
    */
   public async insert(target: string, valuesBucket: rdb.ValuesBucket, context?: Context.BaseContext,
     sceneMsg?: string, isDoRestore?: boolean, retryTimes: number = 0): Promise<number> {
+    if (target === RdbStoreConfig.outdoorLayoutInfo.tableName) {
+      log.showInfo(`Outdoor mode not support insert to ${target}`);
+      return SCBConstants.INVALID_VALUE;
+    }
     if (this.mRdbStore === undefined) {
       await this.createRdbStore(context);
     }
@@ -348,6 +352,10 @@ export class RdbStoreHelper {
     sceneMsg?: string, isDoRestore?: boolean, retryTimes: number = 0): Promise<number> {
     if (this.mRdbStore === undefined) {
       await this.createRdbStore(context);
+    }
+    if (target === RdbStoreConfig.outdoorLayoutInfo.tableName) {
+      log.showInfo(`Outdoor mode not support batchInsert to ${target}`);
+      return SCBConstants.INVALID_VALUE;
     }
     if (CheckEmptyUtils.isEmpty(insertBucketList) || this.mRdbStore === undefined) {
       log.showWarn('empty valuesBucket while batchInsert or mRdbStore undefined');

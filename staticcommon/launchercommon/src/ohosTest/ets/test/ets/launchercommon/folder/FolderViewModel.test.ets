@@ -26,6 +26,7 @@ import {
 } from '@ohos/hypium';
 import {
   AppItemInfo,
+  DeliverUtil,
   DisappearLastAppData,
   DockItemInfo,
   FolderAppItemInfo,
@@ -485,6 +486,8 @@ export default function FolderViewModelTest() {
       let isFolderFull: boolean = TestFolderViewModel.isFolderFull(gridLayoutItemInfo);
       expect(isFolderFull).assertFalse();
       when(mockFunc)(ArgumentMatchers.any).afterReturn(false);
+      let mockFunc1: Function = mocker.mockFunc(DeliverUtil, DeliverUtil.isContainerFolder);
+      when(mockFunc1)(ArgumentMatchers.any).afterReturn(true);
       let isFolderFull1: boolean = TestFolderViewModel.isFolderFull(gridLayoutItemInfo);
       expect(isFolderFull1).assertFalse();
       when(mockFunc1)(ArgumentMatchers.any).afterReturn(false);
@@ -496,6 +499,7 @@ export default function FolderViewModelTest() {
       let isFolderFull2: boolean = TestFolderViewModel.isFolderFull(gridLayoutItemInfo);
       expect(isFolderFull2).assertFalse();
       mocker.clear(ObjUtil);
+      mocker.clear(DeliverUtil);
       mocker.clearAll();
     })
 
@@ -527,12 +531,15 @@ export default function FolderViewModelTest() {
       let isCan3: boolean = TestFolderViewModel.canFolderDropIn(itemInfo, dragItems_max);
       expect(isCan3).assertFalse();
       itemInfo.typeId = CommonConstants.TYPE_FORM_COMBINE;
+      let mockFunc1: Function = mocker.mockFunc(DeliverUtil, DeliverUtil.isContainerFolder);
+      when(mockFunc1)(ArgumentMatchers.any).afterReturn(true);
       let isCan2: boolean = TestFolderViewModel.canFolderDropIn(itemInfo, dragItems);
       expect(isCan2).assertFalse();
       when(mockFunc1)(ArgumentMatchers.any).afterReturn(false);
       itemInfo.typeId = CommonConstants.TYPE_FORM_COMBINE;
       let isCan4: boolean = TestFolderViewModel.canFolderDropIn(itemInfo, dragItems);
       expect(true).assertTrue();
+      mocker.clear(DeliverUtil);
       mocker.clear(TestFolderViewModel);
       mocker.clearAll();
     })

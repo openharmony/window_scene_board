@@ -161,6 +161,7 @@ export class FormCenterViewEvent implements FormCenterEventInterface {
     this.closeFormEffect = false;
     TraceUtil.startTrace(DomainName.SCB, FormConstants.EDIT_PAGE_TRACE_EXIT_FORM_CENTER);
     log.showWarn('bindsheet onWillDisappear');
+    AppStorage.setOrCreate('isOpenScreenLockForm', false);
     GlobalContext.getContext()?.eventHub.emit(CommonConstants.EVENTHUB_MARK_DESKTOP_FREEZE, false);
     // 打断一镜到底动效
     GlobalContext.getContext()?.eventHub.emit(CommonConstants.EVENTHUB_FORM_MANAGER_EXIT);
@@ -238,7 +239,7 @@ export class FormCenterViewEvent implements FormCenterEventInterface {
       log.showInfo('showView reentrant, do nothing');
       return;
     }
-    GlobalContext.getContext()?.eventHub.emit('AIBarShow', true);
+    GlobalContext.getContext()?.eventHub.emit('NAVIBarShow', true);
     let bindSheetHeight: number = this.mViewData.bindSheetHeight;
     // 外部设置过高度
     if (this.bindSheetStateData.setHeight) {

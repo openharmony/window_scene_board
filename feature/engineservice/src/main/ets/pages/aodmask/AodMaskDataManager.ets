@@ -34,13 +34,13 @@ const OFFSET_ARR_SIZE: number = 2;
 // 默认蒙版上边距，96vp
 const DEFAULT_TOP_PADDING: number = 96;
 
-// 超大屏G态或者PAD竖屏状态蒙版上边距，132vp
+// 三折叠G态或者PAD竖屏状态蒙版上边距，132vp
 const LARGE_TOP_PADDING: number =  132;
 
 // 默认蒙版宽高，200vp
 const DEFAULT_MASK_EDGE_LENGTH: number = 200;
 
-// 超大屏G态或者PAD竖屏状态蒙版宽高，240vp
+// 三折叠G态或者PAD竖屏状态蒙版宽高，240vp
 const LARGE_MASK_EDGE_LENGTH: number = 240;
 
 export class AodMaskDataManager {
@@ -250,7 +250,7 @@ export class AodMaskDataManager {
     // 更新遮罩层上边距和宽高
     let localTopPadding: number = DEFAULT_TOP_PADDING;
     let localMaskEdgeLength: number = DEFAULT_MASK_EDGE_LENGTH;
-    // 平板或者超大屏G态参数计算
+    // 平板或者三折叠G态参数计算
     if (DeviceUtil.isPad() || (DeviceUtil.isTriFoldProduct() && isTriUnfolded)) {
       localMaskEdgeLength = LARGE_MASK_EDGE_LENGTH;
       if (isLandscape) {

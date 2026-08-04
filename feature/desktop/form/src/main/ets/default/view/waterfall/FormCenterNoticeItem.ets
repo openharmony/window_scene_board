@@ -14,6 +14,7 @@
  */
 
 import { LengthMetrics } from '@kit.ArkUI'
+import { DeviceHelper } from '@ohos/frameworkwrapper';
 import { FormCenterViewManager } from '@ohos/launchercommon/src/main/ets/TsIndex';
 import lazy PcFormStyleConstants from '../../common/constants/PcFormStyleConstants';
 
@@ -34,13 +35,14 @@ export struct FormCenterNoticeItem {
       Column() {
         Row() {
           Text($r('app.string.form_center_notice_text'))
+            .key('FormCenterNoticeItem_Text')
             .font({
               family: 'HarmonyHeiTi',
               size: PcFormStyleConstants.PC_GRID_ITEM_TEXT_APP_NAME_SIZE,
               weight: FontWeight.Medium,
             })
             .fontColor($r('sys.color.font_secondary'))
-            .height(PcFormStyleConstants.NOTICE_ADD_TO_DESKTOP_TEXT_HEIGHT)
+            .height(DeviceHelper.isPC() ? '34%' : PcFormStyleConstants.NOTICE_ADD_TO_DESKTOP_TEXT_HEIGHT)
             .margin({
               top: LengthMetrics.vp(PcFormStyleConstants.NOTICE_ADD_TO_DESKTOP_TEXT_TOP),
               bottom: LengthMetrics.vp(PcFormStyleConstants.NOTICE_ADD_TO_DESKTOP_TEXT_BOTTOM),
@@ -50,13 +52,14 @@ export struct FormCenterNoticeItem {
           Blank()
 
           Button($r('app.string.form_center_notice_button'))
+            .key('FormCenterNoticeItem_Button')
             .type(ButtonType.Normal)
             .fontSize(PcFormStyleConstants.PC_GRID_ITEM_TEXT_DESCRIPTION_SIZE)
             .fontFamily('HarmonyHeiTi')
             .fontWeight(FontWeight.Medium)
             .fontColor($r('sys.color.comp_background_primary_contrary'))
-            .height(PcFormStyleConstants.NOTICE_FINISH_BUTTON_HEIGHT)
-            .width(PcFormStyleConstants.NOTICE_FINISH_BUTTON_WIDTH)
+            .height(DeviceHelper.isPC() ? '50%' : PcFormStyleConstants.NOTICE_FINISH_BUTTON_HEIGHT)
+            .width(DeviceHelper.isPC() ? '12%' : PcFormStyleConstants.NOTICE_FINISH_BUTTON_WIDTH)
             .borderRadius($r('sys.float.corner_radius_level4'))
             .margin({
               top: LengthMetrics.vp(PcFormStyleConstants.NOTICE_FINISH_BUTTON_MARGIN_TOP),
@@ -67,11 +70,12 @@ export struct FormCenterNoticeItem {
               this.mFormCenterViewManager.closeFormCenterView();
             })
         }
+        // .justifyContent(FlexAlign.SpaceEvenly)
         .width('100%')
+        .height('10%')
         .saturate(PcFormStyleConstants.PC_NOTICE_SATURATE)
         .backgroundColor('#0affffff')
       }
-      .height(PcFormStyleConstants.NOTICE_HEIGHT)
       .width('100%')
     }
   }

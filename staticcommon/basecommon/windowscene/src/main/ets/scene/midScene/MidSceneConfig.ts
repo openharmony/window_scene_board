@@ -21,7 +21,7 @@ import { systemParameterEnhance } from '@kit.BasicServicesKit';
 
 // max incline thres
 const MID_INCLINED_THRESHOLD_PHONE: number = 1 / 3;
-const MID_INCLINED_THRESHOLD_ULTRA_SCREEN_FULL_EXPAND: number = 1 / 4;
+const MID_INCLINED_THRESHOLD_THREE_FOLD_FULL_EXPAND: number = 1 / 4;
 const MID_INCLINED_THRESHOLD_PAD: number = 1 / 6;
 
 // max divider number in midscene
@@ -143,7 +143,7 @@ export class MidSceneConfig {
       return MID_INCLINED_THRESHOLD_PAD;
     }
     if (SCBTriFoldManager.getInstance().isCurGState()) {
-      return MID_INCLINED_THRESHOLD_ULTRA_SCREEN_FULL_EXPAND;
+      return MID_INCLINED_THRESHOLD_THREE_FOLD_FULL_EXPAND;
     }
     return MID_INCLINED_THRESHOLD_PHONE;
   }

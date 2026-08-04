@@ -16,7 +16,7 @@ import { PcStatusBarIconManager, StatusBarMenuChange } from '../manager/PcStatus
 import { PluginProperty } from '../viewdata/PluginProperty';
 import { PluginAccessBase } from './PluginAccessBase';
 import { PluginListAdapter } from '../pluginData/PluginListAdapter';
-// import statusBar from '@hms.pcService.statusBar';
+import statusBar from '@ohos.pcService.statusBar';
 import StatusBarEventPoster from '../manager/StatusBarEventPoster';
 import {
   AccessPanelHeightChangeEvent,
@@ -26,6 +26,7 @@ import {
   PluginIconChangeEvent,
   PluginPosition} from '@ohos/frameworkwrapper/src/main/ets/TsIndex';
 import { CheckEmptyUtils, LogDomain, LogHelper } from '@ohos/basicutils/src/main/ets/TsIndex';
+import { StatusBarTipsChangeEvent } from '@ohos/systemuicommon/src/main/ets/TsIndex';
 
 const TAG = 'MessageAccess';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.SCB, TAG);
@@ -52,8 +53,11 @@ export class MessageAccess extends PluginAccessBase {
       accessPanelHeightChange: (tokenId: number, instanceKey: string, height: number): void => {
         this.updateAccessPanelHeight(tokenId, instanceKey, height)
       },
-      accessIconChange: (tokenId: number, instanceKey: string, icons: ESObject): void => {
+      accessIconChange: (tokenId: number, instanceKey: string, icons: statusBar.StatusBarIcon): void => {
         this.updateAccessIconInfo(tokenId, instanceKey, icons)
+      },
+      accessHoverTipsChange: (tokenId: number, instanceKey: string, hoverTips: string): void => {
+        this.updateAccessHoverTips(tokenId, instanceKey, hoverTips)
       }
     });
     this.eventMgr.on(CapsuleVisibleEvent, this.onCapsuleVisibleEvent);
@@ -95,7 +99,7 @@ export class MessageAccess extends PluginAccessBase {
    * @param slot
    * @param icons 图标信息
    */
-  private updateAccessIconInfo(slot: number, instanceIndex: string, icons: ESObject) {
+  private updateAccessIconInfo(slot: number, instanceIndex: string, icons: statusBar.StatusBarIcon) {
     log.showInfo(`updateAccessIconInfo ${slot} ${instanceIndex}`);
     const pluginInfo: PluginProperty | null = PluginListAdapter.getInstance()
       .getPluginPropertyByTokenId(slot, instanceIndex);
@@ -125,7 +129,7 @@ export class MessageAccess extends PluginAccessBase {
     const pluginInfo: PluginProperty | null = PluginListAdapter.getInstance()
       .getPluginPropertyByTokenId(slot, instanceIndex);
     if (pluginInfo && pluginInfo.pluginInfo) {
-      // (pluginInfo.pluginInfo as PluginAccessInfo).menuInfo = statusBarMenu.groupMenu;
+      (pluginInfo.pluginInfo as PluginAccessInfo).menuInfo = statusBarMenu.groupMenu;
       const eventData: PluginChangeEvent = {
         pluginInfos: [], position: PluginPosition.POSITION_RIGHT
       }
@@ -147,6 +151,17 @@ export class MessageAccess extends PluginAccessBase {
     };
     log.showInfo(`updateAccessPanelHeight ${slot} ${instanceIndex} ${height}`);
     StatusBarEventPoster.getInstance().postExternalEvent(AccessPanelHeightChangeEvent, panelHeightEvent);
+  }
+
+  private updateAccessHoverTips(slot: number, instanceIndex: string, hoverTips: string): void {
+    const pluginInfo: PluginProperty | null = PluginListAdapter.getInstance()
+      .getPluginPropertyByTokenId(slot, instanceIndex);
+    if (pluginInfo && pluginInfo.pluginInfo) {
+      (pluginInfo.pluginInfo as PluginAccessInfo).hoverTips = hoverTips;
+
+      log.showInfo(`updateAccessHoverTips ${slot} - ${instanceIndex} - ${hoverTips}`);
+      EvtBus.post(StatusBarTipsChangeEvent, StatusBarTipsChangeEvent.create(slot.toString(),hoverTips));
+    }
   }
 
   protected deInitDiff(): void {

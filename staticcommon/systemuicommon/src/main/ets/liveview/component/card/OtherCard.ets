@@ -33,6 +33,7 @@ import { CardUtils } from './LiveViewCardData';
 import { CardAuthorization } from './CardAuthorization';
 import { bannerMgr } from '../../../banner/phone/BannerManager';
 import { BannerPanelType, BannerState } from '../../../banner/common/info/BannerState';
+import { AodStyleType, ImmersiveAodStyle } from '../../../immersivekeyguardcommon/base/interface/ImmersiveAodStyle';
 import { immersiveKgMgr } from '../../../immersivekeyguardcommon/manager/ImmersiveKeyguardStateManager';
 import { ObservedItem } from '../../../model/ObservedModel';
 import { fontScaleManager } from '@ohos/systemuiutils/src/main/ets/fontScale/fontScaleManager';
@@ -92,6 +93,12 @@ export struct OtherCard {
    * 通知面板类型
    */
   @Consume notificationType: number;
+
+  /**
+   * AOD显示样式
+   */
+  @State aodStyle: ImmersiveAodStyle | undefined = immersiveKgMgr.getOneMirrorState().getAodStyle(
+    this.notificationType === NotificationType.TYPE_PHONE_KEYGUARD);
 
   @State colorModeViewData: ColorModeViewData = ColorModeViewModel.getInstance().getViewData();
   /**
@@ -170,7 +177,7 @@ export struct OtherCard {
               .interpolation(ImageInterpolation.Medium)
               .onClick(this.baseData?.getIconClickListener(this.useScene, this.isNeedBannerInScreenLock,
                 this.isShowBannerFromScreenLock))
-              .opacity(1)
+              .opacity(this.aodStyle?.isAod ? this.aodStyle.getStyleValue(AodStyleType.NTF_APP_ICON_ALPHA) : 1)
               .autoResize(false)
           }
           Column() {
@@ -293,7 +300,7 @@ export struct OtherCard {
     Row() {
       Row() {
         Text($r('app.string.live_view_hide_tip'))
-          .fontColor($r('sys.color.ohos_id_color_text_tertiary'))
+          .fontColor(this.aodStyle?.isAod ? this.aodStyle?.getStyleValue(AodStyleType.FONT_COLOR) : $r('sys.color.ohos_id_color_text_tertiary'))
           .fontSize(this.fontScaleState.getScaleSize($r('sys.float.ohos_id_text_size_body2')))
           .fontWeight('sys.string.ohos_id_text_font_family_regular')
           .wordBreak(WordBreak.BREAK_ALL)
@@ -343,7 +350,7 @@ export struct OtherCard {
       .textOverflow({ overflow: TextOverflow.Ellipsis })
       .margin(this.isAodOnlyShowTitleTimer() ? undefined : { bottom: this.getTextBottomMargin() })
       .lineHeight(this.getLineHeight())
-      .renderGroup(true)
+      .renderGroup(this.aodStyle?.isOneMirror ? false : true)
   }
 
   @Builder
@@ -360,6 +367,10 @@ export struct OtherCard {
         if (this.shouldHideContent()) {
           Span(this.baseData?.contentHideText)
             .fontColor(this.getHideContentFontColor())
+            .fontWeight(FontWeight.Regular)
+        } else if (this.aodStyle?.isAod && this.isContentTimer()) {
+          Span(this.getAodTimerText())
+            .fontColor(this.aodStyle?.getStyleValue(AodStyleType.CARD_SECONDARY_FONT_COLOR))
             .fontWeight(FontWeight.Regular)
         } else {
           ForEach(this.data?.richContent, (entry: CustRichText, index: number) => {
@@ -379,7 +390,7 @@ export struct OtherCard {
       .maxLines(1)
       .wordBreak(WordBreak.BREAK_ALL)
       .textOverflow({ overflow: TextOverflow.Ellipsis })
-      .renderGroup(true)
+      .renderGroup(this.aodStyle?.isOneMirror ? false : true)
       .lineHeight(this.fontScaleState.getScaleSize(this.customerStyle.richTextLineHeight ??
       $r('app.float.live_view_card_text_line_height'), this.outerHomeVm.isIgnoreFontScaleState))
     }
@@ -390,13 +401,16 @@ export struct OtherCard {
       return this.appName?.value ?? '';
     }
     let text: string = '';
+    if (this.aodStyle?.isAod && this.isTitleTimer()) {
+      return this.getAodTimerText();
+    }
     if (isAccessibilityText) {
       text = this.data.transformTimerAccessibilityText(this.data.title ?? '', this.timerData);
     } else {
       text = this.data.getTitleText(this.data.title ?? '', this.timerData);
     }
     let isHealth: boolean = this.baseData?.creatorBundleName === HEALTH;
-    if (isHealth && typeof text === 'string') {
+    if (this.aodStyle?.isAod && isHealth && typeof text === 'string') {
       return text.replace(LiveViewCommonConstants.NUM_REGX, LiveViewCommonConstants.NUM_FUZZ);
     }
     return text;
@@ -414,7 +428,7 @@ export struct OtherCard {
       text = this.data.transformTimerText(entry.text ?? '', this.timerData);
     }
     let isHealth: boolean = this.baseData?.creatorBundleName === HEALTH;
-    if (isHealth && typeof text === 'string') {
+    if (this.aodStyle?.isAod && isHealth && typeof text === 'string') {
       return text.replace(LiveViewCommonConstants.NUM_REGX, LiveViewCommonConstants.NUM_FUZZ);
     }
     return text;
@@ -467,6 +481,11 @@ export struct OtherCard {
   }
 
   private getRichTextColor(entry: CustRichText): string | number | Resource | undefined {
+    // AOD时，使用AOD颜色，加粗的文字有区别
+    if (this.aodStyle?.isAod) {
+      return entry?.getCurrentTextColor() ? this.aodStyle?.getStyleValue(AodStyleType.FONT_COLOR) :
+        this.aodStyle?.getStyleValue(AodStyleType.CARD_SECONDARY_FONT_COLOR);
+    }
 
     // 当前富文本颜色，如外卖距离商家 300 米，数字300标记为蓝色，AOD时不变色
     let currentTextColor = entry?.getCurrentTextColor();
@@ -529,9 +548,13 @@ export struct OtherCard {
   }
 
   /**
+   * aod模式 非胶囊状态下, 实况辅助区文字提亮: aodTimeLightOptionForFillColor
    * 非胶囊状态下, 实况辅助区文字提亮: foregroundSecondaryOption
    */
   private getLiveExtendTextColor(): BrightnessOptions | undefined {
+    if (this.aodStyle?.isAod) {
+      return BrightnessOptionUtils.aodTimeLightOptionForFillColor;
+    }
     return this.colorModeViewData.foregroundSecondaryOption;
   }
 
@@ -540,6 +563,9 @@ export struct OtherCard {
    * 非胶囊状态下, 实况辅助区按钮背板提亮: ntfLiveExtendButtonBgOption
    */
   private getLiveExtendButtonBgColor(): BrightnessOptions | undefined {
+    if (this.aodStyle?.isAod) {
+      return BrightnessOptionUtils.getInstance().aodTimeLightOptionForButtonBgColor;
+    }
     return this.colorModeViewData.ntfLiveExtendButtonBgOption;
   }
 
@@ -656,7 +682,7 @@ export struct OtherCard {
   }
 
   isAodOnlyShowTitleTimer(): boolean {
-    return !this.shouldHideContent() &&
+    return !this.shouldHideContent() && (this.aodStyle?.isAod ?? false) &&
       this.isTitleTimer() && this.isContentTimer();
   }
 
@@ -671,6 +697,9 @@ export struct OtherCard {
   }
 
   private getTitleFontColor(): number | Resource | string | undefined {
+    if (this.aodStyle?.isAod) {
+      return this.aodStyle?.getStyleValue(AodStyleType.FONT_COLOR)
+    }
     if (this.isOuterScreenImmersiveLive2()) {
       return LiveStyle.LIVE_CARD_TITLE_FONT_COLOR;
     }
@@ -678,6 +707,9 @@ export struct OtherCard {
   }
 
   private getHideContentFontColor(): number | Resource | string | undefined {
+    if (this.aodStyle?.isAod) {
+      return this.aodStyle?.getStyleValue(AodStyleType.CARD_SECONDARY_FONT_COLOR);
+    }
     if (this.isOuterScreenImmersiveLive2()) {
       return LiveStyle.LIVE_CARD_TEXT_FONT_COLOR;
     }

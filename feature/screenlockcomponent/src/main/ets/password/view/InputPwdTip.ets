@@ -63,6 +63,7 @@ export default struct InputPwdTip {
   @Consume toastPromptViewModel: ToastPromptViewModel;
   @State isFaceUnlockSwitchOpen: boolean = false;
   @State isSpecialMode: boolean = false;
+  @State isCloudTwo: boolean = false;
   @State zoomRatio: number = 1.0;
   @StorageLink('isPwdVisible') isPwdVisible: boolean = false;
   @State tipTranslateX: number = 0;
@@ -81,6 +82,7 @@ export default struct InputPwdTip {
   private readonly _specialModeListener: SpecialModeChangeListener = {
     onSpecialModeChange: (curMode: KeyGuardMode): void => {
       this.isSpecialMode = curMode !== KeyGuardMode.DEFAULT;
+      this.isCloudTwo = curMode === KeyGuardMode.CLOUD_LAI_2;
       PasswordManager.getInstance().clearErrorTips();
       GlobalStatusCache.getInstance().setStatus(StatusCacheConst.IS_SPECIAL_MODE_BOUNCER_FOCUS_KEY, this.isSpecialMode);
     }
@@ -107,11 +109,13 @@ export default struct InputPwdTip {
       if (strongAuthState !== StrongAuthReasonFlags.NO_NEED_STRONG_AUTH) {
         // 强认证状态触发立刻刷新提示语，强认证状态恢复跟随密码页消失
         this.needStrongAuth = true;
+        AppStorage.setOrCreate<boolean>('reboot_ntf_msg', true);
         this.strongAuthTip = StrongAuthStateManager.getInstance().getStrongAuthPwdTip();
       }
     });
 
     this.isSpecialMode = KeyguardStatusService.isSpecialMode();
+    this.isCloudTwo = KeyguardStatusService.isCloudModeTwo();
     SpecialModeManager.getInstance().registerObserver(this._specialModeListener);
     PasswordManager.getInstance().registerObserver(this.passwordTipsChangeListener);
   }

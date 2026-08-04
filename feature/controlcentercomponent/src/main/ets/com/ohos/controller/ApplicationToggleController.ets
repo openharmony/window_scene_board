@@ -29,6 +29,7 @@ import systemParameterEnhance from '@ohos.systemParameterEnhance';
 import { EventManagerAdapter } from '@ohos/systemuicommon/src/main/ets/adapter/EventManagerAdapter';
 import { FASlotName } from '@ohos/commonconstants/src/main/ets/TsIndex';
 import { ToggleBaseViewModel } from '@ohos/controlcentercommon/src/main/ets/toggle/vm/ToggleBaseViewModel';
+import { VoiceTranslateUtils } from '../common/VoiceTranslateUtils';
 import { AbilityConstant, StartOptions } from '@kit.AbilityKit';
 import { screenLock } from '@kit.BasicServicesKit';
 
@@ -50,6 +51,7 @@ export class ApplicationToggleController extends ToggleBaseViewModel {
 
   onStart(): void {
     this.getViewData().icon = this.getIcon();
+    this.getViewData().isSymbolIcon = this.useSymbolIcon();
     this.getViewData().label = this.getLabel();
     this.updateDisableState();
   }
@@ -82,7 +84,7 @@ export class ApplicationToggleController extends ToggleBaseViewModel {
    */
   getIcon(): Resource {
     if (this.toggleId === PluginSlot.SLOT_CONTROL_SCREENSHOT) {
-      return $r('app.media.ic_widget_screenshot');
+      return $r('sys.symbol.rectangle_and_cut');
     } else if (this.toggleId === PluginSlot.SLOT_CONTROL_SCREEN_RECORDER) {
       return $r('app.media.ic_widget_screen_recorder');
     } else if (this.toggleId === PluginSlot.SLOT_CONTROL_SCANNER) {
@@ -90,10 +92,16 @@ export class ApplicationToggleController extends ToggleBaseViewModel {
     } else if (this.toggleId === PluginSlot.SLOT_CONTROL_MULTI_WINDOW) {
       return $r('sys.symbol.rectangle_on_rectangle_fill');
     } else if (this.toggleId === FASlotName.QUICK_NOTE) {
-      return $r('app.media.quick_note');
+      return $r('sys.symbol.doc_plaintext_and_pencil');
     } else {
-      return $r('app.media.ic_widget_screenshot');
+      return $r('sys.symbol.rectangle_and_cut');
     }
+  }
+
+  private useSymbolIcon(): boolean {
+    return this.toggleId === PluginSlot.SLOT_CONTROL_SCREENSHOT ||
+      this.toggleId === PluginSlot.SLOT_CONTROL_MULTI_WINDOW ||
+      this.toggleId === FASlotName.QUICK_NOTE;
   }
 
   isAvailable(): boolean {
@@ -131,6 +139,7 @@ export class ApplicationToggleController extends ToggleBaseViewModel {
           }
           return;
         }
+        DropDownPanelManager.animToDismissEvent();
         log.showInfo('start screenshot Ability');
         DropDownPanelManager.setPanelDismissCallback(()=>{
           HiDfxEventUtil.reportControlCenterScreenshotClick(HiDfxEventUtil.SHOT_FULL_SCREEN);
@@ -138,7 +147,6 @@ export class ApplicationToggleController extends ToggleBaseViewModel {
           EventManagerAdapter.startAbility(obtainStartServiceExt('com.ohos.screenshot',
             'com.ohos.screenshot.ServiceExtAbility'));
         })
-        DropDownPanelManager.animToDismissEvent();
         break;
       case PluginSlot.SLOT_CONTROL_SCANNER:
         log.showInfo('start scanner Ability');
@@ -154,16 +162,7 @@ export class ApplicationToggleController extends ToggleBaseViewModel {
   }
 
   private goToScanner() {
-    log.showInfo('start scanner Ability');
-    EventManagerAdapter.startAbility(obtainStartAbilityWithWant({
-      bundleName: 'com.ohos.scanner',
-      abilityName: 'VisionCameraAbility',
-      moduleName: 'vision',
-      parameters: {
-        entrance: 'controlCenter',
-      },
-    })
-    );
+    log.showInfo('start scanner Ability - disabled, vassistant removed');
   }
 
   private goToQuickNote() {

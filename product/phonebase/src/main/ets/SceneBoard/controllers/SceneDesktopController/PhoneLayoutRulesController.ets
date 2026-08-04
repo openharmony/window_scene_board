@@ -158,7 +158,7 @@ export class PhoneLayoutRulesController extends LayoutRulesController {
       this.offsetOfRowAndColumn = DefaultGridProp.SMALL_OFFSET_OF_ROW_AND_COLUMN;
       this.rowNumOfGrid = DefaultGridProp.ORDINARY_SCREEN_ROW_NUM_OF_GRID;
     }
-    if (DeviceHelper.isUltraScreenProduct()) {
+    if (DeviceHelper.isThreeFoldProduct()) {
       this.rowNumOfGrid = DefaultGridProp.ORDINARY_SCREEN_ROW_NUM_OF_GRID;
     }
     this.columnNumOfGrid = DefaultGridProp.COLUMN_NUM_OF_GRID;

@@ -1,5 +1,5 @@
 {
-  "name": "scene_board_ext",
+  "name": "window_scene_board",
   "version": "1.0.0",
   "scripts": {
     "build": "node scripts/Build.js",

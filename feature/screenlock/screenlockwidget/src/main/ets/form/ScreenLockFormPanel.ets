@@ -30,6 +30,7 @@ import {
   vibratorMgr,
   WBaseProperty
 } from '@ohos/screenlockcommon';
+import { aodHardwareConfig } from '@ohos/screenlockcommon/Index';
 import {
   Trace,
   LogDomain,
@@ -70,6 +71,11 @@ import {
   ENTER_OTHER_APP_BORDER_HIDE
 } from '@ohos/screenlockcommon/src/main/ets/base/BaseViewModel';
 import { BrightnessOptionUtils } from '@ohos/systemuicommon/Index';
+import { AodStyleType, ImmersiveAodStyle,
+} from '@ohos/systemuicommon';
+import {
+  immersiveKgMgr
+} from '@ohos/systemuicommon';
 import curves from '@ohos.curves';
 import { DynamicFontSize, sFontScaleUtil } from '../common/utils/FontScaleUtil';
 import { SlWidgetId } from '@ohos/screenlockcommon/src/main/ets/constants/SlWidgetConst';
@@ -138,6 +144,7 @@ export default struct ScreenLockFormPanel {
   @Prop isLightWallpaper: boolean = false;
   @Prop formPositionY: number;
   @Prop mainColorType: ColorType = ColorType.LIGHT;
+  @Prop isAod: boolean = false;
   @Prop bgEffect: BackgroundEffectOptions | undefined;
   @Link @Watch('onFormViewModelChange') formViewModel: ScreenLockFormViewModel;
   @Consume @Watch('onGridWidth') gridWidth: number;
@@ -206,6 +213,9 @@ export default struct ScreenLockFormPanel {
     GlobalStatusCache.getInstance().subscribe(StatusCacheConst.SCREEN_WIDTH_KEY, this.screenWidthChangeCallback);
     this.isNtfListCollapsed = ScreenLockFormPanelMeshConfig.isPanelVisible;
     sEventManager.subscribe(FormPanelChange.PANEL_VISIBLE, this.onFormPanelVisibilityChange);
+    if (!this.isAod) {
+      this.formViewModel.initViewModel(this.displayModeListener);
+    }
     this.panelWidth = this.getPadPanelWidth();
     let curLanguage: string = getContext().resourceManager.getConfigurationSync().locale;
     if (curLanguage.startsWith('en')) {
@@ -222,6 +232,9 @@ export default struct ScreenLockFormPanel {
     }
     GlobalStatusCache.getInstance().unsubscribe(StatusCacheConst.SCREEN_WIDTH_KEY, this.screenWidthChangeCallback);
     sEventManager.off(FormPanelChange.PANEL_VISIBLE, this.onFormPanelVisibilityChange);
+    if (!this.isAod) {
+      this.formViewModel.destroyViewModel();
+    }
   }
 
   /**
@@ -436,6 +449,7 @@ export default struct ScreenLockFormPanel {
               formGridWidthAmount: this.formGridWidthAmount,
               themeId: this.themeId,
               themeName: this.themeName,
+              isAod: this.isAod,
               bgEffect: this.bgEffect,
               isLightWallpaper: this.isLightWallpaper,
               aestheticColorArgs: this.aestheticColorArgs,
@@ -453,6 +467,7 @@ export default struct ScreenLockFormPanel {
           .width('100%')
           .height('100%')
           .hitTestBehavior(HitTestMode.None)
+          .id(SlWidgetId.FORM_FOR_AOD)
         }
       }
       .accessibilityLevel('no')
@@ -466,6 +481,7 @@ export default struct ScreenLockFormPanel {
     .onClick((event?: ClickEvent) => {
       if ((this.displayMode === EDIT_GUIDE_MODE || this.displayMode === EDIT_FULL_MODE) && this.formPositionY > 0) {
         log.showInfo(`onClick displayMode: ${this.displayMode} formPositionY: ${this.formPositionY}`);
+        AppStorage.setOrCreate('isOpenScreenLockForm', true);
         let event = new FormEnterEditCardEvent(FormOutputEventType.ENTER_EDIT_CARD_EVENT, TAG);
         this.formViewModel.formAdapter?.getInvoker().onEvent(event);
         PerformanceMonitorUtil.reportLockscreenEditServiceWidgets();
@@ -518,10 +534,15 @@ struct ScreenLockFormComponent {
   @Consume gridWidth: number;
   @Link @Watch('onFormConfigChange') formViewModel: ScreenLockFormViewModel;
   @State themeId: string = '';
+  @Prop isAod: boolean;
   @Prop bgEffect: BackgroundEffectOptions | undefined;
   @Prop sizeHeight: number;
   @Link formGridWidthAmount: number;
   @Prop formWidth: number;
+  /**
+   * Aod显示样式
+   */
+  @State aodStyle: ImmersiveAodStyle | undefined = immersiveKgMgr.getOneMirrorState().getAodStyle(true);
   @Prop aestheticColorArgs?: AestheticColorArgs = new AestheticColorArgs();
   @Prop clockStrokeColor?: string = '';
   @Prop isLightWallpaper: boolean = false;
@@ -693,6 +714,7 @@ struct ScreenLockFormComponent {
               mainColorType: this.mainColorType,
               themeId: this.themeId,
               themeName: this.themeName,
+              isAod: this.isAod,
               isLightWallpaper: this.isLightWallpaper,
               aestheticColorArgs: this.aestheticColorArgs,
               clockStrokeColor: this.clockStrokeColor,
@@ -738,6 +760,11 @@ struct ScreenLockFormCard {
   @Consume isEdited: boolean;
   @Consume gridWidth: number;
   @State themeId: string = '';
+  @Prop isAod: boolean;
+  /**
+   * Aod显示样式
+   */
+  @State aodStyle?: ImmersiveAodStyle = immersiveKgMgr.getOneMirrorState().getAodStyle(true);
   @Prop aestheticColorArgs?: AestheticColorArgs = new AestheticColorArgs();
   @Prop bgEffect: BackgroundEffectOptions | undefined;
   @Prop clockStrokeColor?: string = '';
@@ -765,10 +792,16 @@ struct ScreenLockFormCard {
 
   private dragSnapshot?: PixelMap;
   private themeName: string = '';
+  // private keyguardCardDarkBgOption: BrightnessOptions = BrightnessOptionUtils.keyguardCardBackgroundDarkOption;
+  // private keyguardCardLightBgOption: BrightnessOptions = BrightnessOptionUtils.keyguardCardBackgroundLightOption;
+  // private keyguardTimeDarkOption: BrightnessOptions = BrightnessOptionUtils.keyguardTimeDarkOption;
+  // private keyguardTimeLightOption: BrightnessOptions = BrightnessOptionUtils.keyguardTimeLightOption;
+  // private aodFormBackboardLightOption: BrightnessOptions = BrightnessOptionUtils.aodFormBackboardLightOption;
   private keyguardCardDarkBgOption: BackgroundBrightnessOptions = BrightnessOptionUtils.keyguardCardBackgroundDarkOption;
   private keyguardCardLightBgOption: BackgroundBrightnessOptions = BrightnessOptionUtils.keyguardCardBackgroundLightOption;
   private keyguardTimeDarkOption: BackgroundBrightnessOptions = BrightnessOptionUtils.keyguardTimeDarkOption;
   private keyguardTimeLightOption: BackgroundBrightnessOptions = BrightnessOptionUtils.keyguardTimeLightOption;
+  private aodFormBackboardLightOption: BackgroundBrightnessOptions = BrightnessOptionUtils.aodFormBackboardLightOption;
   private brightColor: ResourceColor = BrightnessOptionUtils.brightColor;
   private eventMgr: EventManager = EvtBus.createEventManager();
   private isNotifyInvisibled = false;
@@ -935,9 +968,17 @@ struct ScreenLockFormCard {
     return BrightnessOptionUtils.changeColor(this.clockStrokeColor) ?? this.brightColor;
   }
 
+  private getAodBackgroundColor(): ResourceColor | undefined {
+    const isChangeColor = slStateHelper.getSlClockStaticState()?.getChangeColorState();
+    if (aodHardwareConfig.isSupportBackgroundEffect() && !isChangeColor) {
+      return this.aodStyle?.getStyleValue(AodStyleType.SCREEN_LOCK_CLOCK_COLOR);
+    }
+    return this.aodStyle?.getStyleValue(AodStyleType.SCREEN_LOCK_CLOCK_COLOR);
+  }
+
   private getMirrorAlpha(): number {
     const isChangeColor = slStateHelper.getSlClockStaticState()?.getChangeColorState();
-    if (!isChangeColor) {
+    if (aodHardwareConfig.isSupportBackgroundEffect() && !isChangeColor) {
       return 1;
     }
     return 1;
@@ -967,6 +1008,31 @@ struct ScreenLockFormCard {
     return this.isLightWallpaper ? this.keyguardTimeDarkOption : this.keyguardTimeLightOption;
   }
 
+  // private getAodBrightnessOption(): BrightnessOptions | undefined {
+  //   if (!this.enableBright || this.clockStrokeColor === COLOR_BLACK) {
+  //     return undefined;
+  //   }
+  //
+  //   if (this.clockStrokeColor !== CLOCK_DEFAULT_FOREGROUND_COLOR) {
+  //     return this.isLightWallpaper ?
+  //       BrightnessOptionUtils.aodFormFrontColorationDarkOption :
+  //       BrightnessOptionUtils.aodFormFrontColorationLightOption;
+  //   }
+  //   return BrightnessOptionUtils.aodFormFrontLightOption;
+  // }
+
+  private getAodBrightnessOption(): BackgroundBrightnessOptions | undefined {
+    if (!this.enableBright || this.clockStrokeColor === COLOR_BLACK) {
+      return undefined;
+    }
+
+    if (this.clockStrokeColor !== CLOCK_DEFAULT_FOREGROUND_COLOR) {
+      return this.isLightWallpaper ?
+      BrightnessOptionUtils.aodFormFrontColorationDarkOption :
+      BrightnessOptionUtils.aodFormFrontColorationLightOption;
+    }
+    return BrightnessOptionUtils.aodFormFrontLightOption;
+  }
 
   // private getBgBrightnessOption(): BrightnessOptions  | undefined {
   //   if (!this.enableBright) {
@@ -1031,6 +1097,9 @@ struct ScreenLockFormCard {
   }
 
   private getBackgroundColor(): ResourceColor | undefined {
+    if (this.aodStyle?.isAod) {
+      return this?.aodStyle?.getStyleValue(AodStyleType.AOD_FORM_PANEL_COLOR);
+    }
     if (this.enableSolid) {
       return this.panelBrightArgs?.getSolidColor();
     }
@@ -1066,19 +1135,29 @@ struct ScreenLockFormCard {
   build() {
     RelativeContainer() {
       Stack() {
-        Stack() {
+        if (this.aodStyle?.isAod) {
           Column() {
           }
-          .backgroundEffect(this.enableEffect && this.enableBright ? this.bgEffect : undefined)
-          .width('100%')
-          .height('100%')
-
-          Column() {
-          }
-          .width('100%')
-          .height('100%')
           .backgroundColor(this.getBackgroundColor())
-          .backgroundBrightness(this.getBgBrightnessOption())
+          .width('100%')
+          .height('100%')
+        } else {
+          Stack() {
+            Column() {
+            }
+            .backgroundEffect(this.enableEffect && this.enableBright ? this.bgEffect : undefined)
+            .width('100%')
+            .height('100%')
+
+            Column() {
+            }
+            .width('100%')
+            .height('100%')
+            .backgroundColor(this.getBackgroundColor())
+            // .backgroundBrightnessInternal(this.aodStyle?.isAod ? this.aodFormBackboardLightOption :
+            .backgroundBrightness(this.aodStyle?.isAod ? this.aodFormBackboardLightOption :
+            this.getBgBrightnessOption())
+          }
         }
       }
       .accessibilityLevel('no-hide-descendants')
@@ -1111,7 +1190,7 @@ struct ScreenLockFormCard {
               this.onAcquiredCallback(this.currentFormId);
               this.formViewModel.registerRouterProxy(String(form.idString));
             })
-            .obscured([])
+            .obscured(this.aodStyle?.isAod ? [ObscuredReasons.PLACEHOLDER] : [])
             .onError((error) => {
               log.showError(`FormComponent error msg: ${error.msg}`);
               this.onAcquiredFailedCallback();
@@ -1200,29 +1279,32 @@ struct ScreenLockFormCard {
           }
         })
 
-        Column() {
-        }
-        .hitTestBehavior(HitTestMode.Transparent)
-        .useEffect(this.clockStrokeColor !== COLOR_BLACK && this.enableEffect)
-        .width('100%')
-        .height('100%')
-        .blendMode(6)
-        .accessibilityLevel('no')
+        // Column() {
+        // }
+        // .hitTestBehavior(HitTestMode.Transparent)
+        // .useEffect((!this.aodStyle?.isAod) &&
+        //   this.clockStrokeColor !== COLOR_BLACK && this.enableEffect)
+        // .width('100%')
+        // .height('100%')
+        // .blendMode(6)
+        // .accessibilityLevel('no')
 
-        Column() {
-        }
-        .hitTestBehavior(HitTestMode.Transparent)
-        .width('100%')
-        .height('100%')
+        // Column() {
+        // }
+        // .hitTestBehavior(HitTestMode.Transparent)
+        // .width('100%')
+        // .height('100%')
+        // // .blendMode(!this.enableBright || this.enableSolid || this.clockStrokeColor === COLOR_BLACK ?
+        // //   BLENDMODE_DESTINATION_IN : BlendMode.NORMAL)
         // .blendMode(!this.enableBright || this.enableSolid || this.clockStrokeColor === COLOR_BLACK ?
-        //   BLENDMODE_DESTINATION_IN : BlendMode.NORMAL)
-        .blendMode(!this.enableBright || this.enableSolid || this.clockStrokeColor === COLOR_BLACK ?
-          BLENDMODE_DESTINATION_IN : BlendMode.SRC_OVER)
-        .backgroundColor(this.getForegroundColor())
-        .backgroundBrightness(this.getBrightnessOption())
-        .accessibilityLevel('no')
+        //   BLENDMODE_DESTINATION_IN : BlendMode.SRC_OVER)
+        // .backgroundColor(this.aodStyle?.isAod ?
+        // this.getAodBackgroundColor() : this.getForegroundColor())
+        // // .backgroundBrightnessInternal(this.aodStyle?.isAod ? this.getAodBrightnessOption() : this.getBrightnessOption())
+        // .backgroundBrightness(this.aodStyle?.isAod ? this.getAodBrightnessOption() : this.getBrightnessOption())
+        // .accessibilityLevel('no')
 
-        if (this.clockStrokeColor !== CLOCK_DEFAULT_FOREGROUND_COLOR &&
+        if (!this.aodStyle?.isAod && this.clockStrokeColor !== CLOCK_DEFAULT_FOREGROUND_COLOR &&
           this.clockStrokeColor !== COLOR_BLACK && this.enableBright) {
           Column() {
           }
@@ -1248,7 +1330,7 @@ struct ScreenLockFormCard {
       }
     }
     .accessibilityLevel('no')
-    .opacity(this.getFormOpacity())
+    .opacity(this.aodStyle?.isAod ? this.getMirrorAlpha() : this.getFormOpacity())
     .parallelGesture(
       GestureGroup(GestureMode.Parallel,
         LongPressGesture({ repeat: false, duration: 300 })

@@ -13,6 +13,13 @@
             "attr":{
                 "priority":"LT"
             }
+        },
+        {
+            "name": "ic_tools_disable_battery_low",
+            "value": "電量過低，無法開啟電筒",
+            "attr": {
+                "priority": "translate"
+            }
         }
-    ]
+]
 }

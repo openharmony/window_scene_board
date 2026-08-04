@@ -102,7 +102,7 @@ export class StaticWallpaperManager {
    * 判断设备是否发生旋转，没有发生旋转的场景如下：
    * 1、当前处于折叠状态，不会旋转
    * 2、根据限定词获取旋转状态，判断是否发生旋转
-   * 3、对于超大屏M到G，G到M,F到G, G到F，没有发生旋转
+   * 3、对于三折叠M到G，G到M,F到G, G到F，没有发生旋转
    *
    * @param lastResourceQualifier 上次的限定符
    * @param resourceQualifier 当前的限定符

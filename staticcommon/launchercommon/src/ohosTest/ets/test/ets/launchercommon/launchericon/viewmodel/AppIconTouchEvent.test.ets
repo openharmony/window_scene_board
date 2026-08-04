@@ -32,6 +32,7 @@ import { AppIconTouchEvent,
 import { AppItemInfo } from '../../../../../../../main/ets/TsIndex';
 import { AppIconData } from '../../../../../../../main/ets/launchericon/viewmodel/AppIconData';
 import { scbEventExclusiveManager } from '@ohos/windowscene';
+import { DeliverUtil } from '../../../../../../../main/ets/utils/DeliverUtil';
 
 export default function AppIconTouchEventTest() {
   let appIconTouchEvent: AppIconTouchEvent = new AppIconTouchEvent();
@@ -341,6 +342,9 @@ export default function AppIconTouchEventTest() {
         let mockFunc: Function = mock.mockFunc(scbEventExclusiveManager, scbEventExclusiveManager.isExclusive);
         when(mockFunc)(ArgumentMatchers.any).afterReturn(false);
 
+        let mockFunc2: Function = mock.mockFunc(DeliverUtil, DeliverUtil.isContainerItem);
+        when(mockFunc2)(ArgumentMatchers.any).afterReturn(true);
+
         let iconData: AppIconData = new AppIconData();
         iconData.isSuperposeApp = true;
         (appIconTouchEvent as object)['iconData'] = iconData;
@@ -356,6 +360,7 @@ export default function AppIconTouchEventTest() {
         expect(JSON.stringify(e)).assertInstanceOf('String');
       }
       mock.clear(scbEventExclusiveManager);
+      mock.clear(DeliverUtil);
       mock.clearAll();
     })
 
@@ -364,6 +369,9 @@ export default function AppIconTouchEventTest() {
       try {
         let mockFunc: Function = mock.mockFunc(scbEventExclusiveManager, scbEventExclusiveManager.isExclusive);
         when(mockFunc)(ArgumentMatchers.any).afterReturn(false);
+
+        let mockFunc2: Function = mock.mockFunc(DeliverUtil, DeliverUtil.isContainerItem);
+        when(mockFunc2)(ArgumentMatchers.any).afterReturn(true);
 
         let iconData: AppIconData = new AppIconData();
         iconData.isSuperposeApp = false;
@@ -380,6 +388,7 @@ export default function AppIconTouchEventTest() {
         expect(JSON.stringify(e)).assertInstanceOf('String');
       }
       mock.clear(scbEventExclusiveManager);
+      mock.clear(DeliverUtil);
       mock.clearAll();
     })
   });

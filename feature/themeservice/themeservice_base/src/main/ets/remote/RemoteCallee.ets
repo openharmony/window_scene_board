@@ -26,6 +26,7 @@ import { RemoteRsp } from './RemoteRsp';
 import { RpcCodec } from './RpcCodec';
 import { trustCallerInterceptor } from './TrustCallerInterceptor';
 import { postSerialExecutionInterceptor, preSerialExecutionInterceptor } from './SerialExecutionInterceptor';
+import { CloudUtils } from '../utils/CloudUtils';
 
 const TAG: string = 'RemoteStub';
 const TIMEOUT: number = 30000;
@@ -61,9 +62,9 @@ class RemoteStub extends rpc.RemoteObject {
       // code：对端发送的服务请求码，作为TS内部跨端接口版本号使用
       const version: number = code;
       TsLog.info(TAG, `remote version = ${version}`);
-      // 校验调用真合法性
-      if (!this.verifyAccessToken()) {
-        TsLog.warning(TAG, `${this.getDescriptor()} illegal caller method`);
+      // 校验调用真合法性 (云端模式下拦截所有请求接口)
+      if (CloudUtils.isInCloudMode() || !this.verifyAccessToken()) {
+        TsLog.warning(TAG, `${this.getDescriptor()} cloud or illegal caller method`);
         reply = RpcCodec.toRpc(version, RemoteRsp.ERR_ILLEGAL_CALLER, reply);
       } else {
         const rsp: RemoteRsp = await this.request(version, data);

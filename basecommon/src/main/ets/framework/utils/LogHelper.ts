@@ -67,6 +67,7 @@ const LOG_ENABLE_MAP: Map<LogDomain, boolean> = new Map([
   [LogDomain.RECENT, true],
   [LogDomain.GESTURE, true],
   [LogDomain.WINDOW, true],
+  [LogDomain.HICAR, true],
   [LogDomain.SCS, true]
 ]);
 

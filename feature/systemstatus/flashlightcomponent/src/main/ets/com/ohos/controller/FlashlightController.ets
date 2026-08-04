@@ -63,7 +63,8 @@ export class FlashlightController extends ToggleBaseViewModel {
 
   constructor() {
     super();
-    this.getViewData().icon = $r('app.media.ic_flashlight_off');
+    this.getViewData().isSymbolIcon = true;
+    this.getViewData().icon = $r('sys.symbol.flashlight_off');
     this.getViewData().label = $r('app.string.control_center_complex_toggle_flashlight_title');
     this.onStart();
     FlashlightLiveManager.get().init();
@@ -79,11 +80,11 @@ export class FlashlightController extends ToggleBaseViewModel {
   }
 
   updateIcon(): void {
-    // this.getViewData().isUnavailable || !this.getViewData().isOn
+    this.getViewData().isSymbolIcon = true;
     if (!this.getViewData().isOn) {
-      this.getViewData().icon = $r('app.media.ic_flashlight_off');
+      this.getViewData().icon = $r('sys.symbol.flashlight_off');
     } else {
-      this.getViewData().icon = $r('app.media.ic_flashlight_on');
+      this.getViewData().icon = $r('sys.symbol.flashlight_on');
     }
   }
 
@@ -349,7 +350,7 @@ export class FlashlightController extends ToggleBaseViewModel {
   }
   public updateUIFromCache(): void {
     this.getViewData().isUnavailable = DeviceHelper.isEmulator() || this.mFlashlightDataCache.isUnavailable;
-    this.getViewData().isOn = this.mFlashlightDataCache.isOn;
+    //this.getViewData().isOn = this.mFlashlightDataCache.isOn;
     this.updateIcon();
     log.showInfo(`updateUIFromCache: ${this.getViewData().isUnavailable}, ${this.getViewData().isOn}`);
   }
@@ -380,10 +381,12 @@ export class FlashlightController extends ToggleBaseViewModel {
       this.postFlashlightLiveEvent(value);
       if (typeof value === 'boolean') {
         this.mCameraManager.setTorchMode(value ? TORCH_MODE_ON : TORCH_MODE_OFF);
+        // 上报开关响应语音助手事件
         HiDfxEventUtil.reportToggleClick(FASlotName.FLASHLIGHT, HiDfxEventUtil.TOGGLE_TYPE_INTENT);
         return true;
       } else if (typeof value === 'string') {
         this.mCameraManager.setTorchMode(value === 'true' ? TORCH_MODE_ON : TORCH_MODE_OFF);
+        // 上报开关响应语音助手事件
         HiDfxEventUtil.reportToggleClick(FASlotName.FLASHLIGHT, HiDfxEventUtil.TOGGLE_TYPE_INTENT);
         return true;
       } else {

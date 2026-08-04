@@ -84,6 +84,7 @@ import { PriorityWeatherScene } from '../model/LiveWeatherModel';
 import { DropDownAdapter } from '../../adapter/DropDownAdapter';
 import { CapsuleShowType } from '../model/LiveCommonModel';
 import { SCBSceneMode } from '@ohos/windowscene';
+import { OutdoorVm } from '../../vm/OutdoorVm';
 
 const TAG = 'LiveHeadsUpVm';
 const log = LogHelper.getLogHelper(LogDomain.SYS_UI, TAG);
@@ -553,6 +554,10 @@ export class LiveHeadsUpVm extends LiveBaseVm implements ILiveHeadsUpVm {
   }
 
   public async show(live: LiveNotification, isUpdate: boolean = false): Promise<boolean> {
+    if (!OutdoorVm.instance.isInOutdoorAppList(live)) {
+      log.showWarn(`${live.hashCode} is not in OutdoorAppList`);
+      return false;
+    }
     const cardVm = this.getCardVm(live);
     if (!cardVm.isNeedShow(live)) {
       log.showInfo(`live no need show`);

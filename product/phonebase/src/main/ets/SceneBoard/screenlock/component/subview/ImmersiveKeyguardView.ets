@@ -147,7 +147,7 @@ function buildImmersiveCapsuleComponent($$: ImmersiveKeyguardViewParams) {
       .id(SlWidgetId.IMMERSIVE_CAP)
       .zIndex(SlWidgetZIndex.Z_INDEX_IMMERSIVE_CAP)
       .alignRules({
-        top: { anchor: SlWidgetId.BOTTOM_TOOLS_ICON, align: VerticalAlign.Top },
+        bottom: { anchor: SlWidgetId.ROOT_ID, align: VerticalAlign.Bottom },
         middle: { anchor: SlWidgetId.ROOT_ID, align: HorizontalAlign.Center }
       })
       .onAreaChange((old, newArea) => {
@@ -162,7 +162,7 @@ function buildImmersiveCapsuleComponent($$: ImmersiveKeyguardViewParams) {
       .id(SlWidgetId.IMMERSIVE_CAP)
       .zIndex(SlWidgetZIndex.Z_INDEX_IMMERSIVE_CAP)
       .alignRules({
-        top: { anchor: SlWidgetId.BOTTOM_TOOLS_ICON, align: VerticalAlign.Top },
+        bottom: { anchor: SlWidgetId.ROOT_ID, align: VerticalAlign.Bottom },
         middle: { anchor: SlWidgetId.ROOT_ID, align: HorizontalAlign.Center }
       })
       .onAreaChange((old, newArea) => {

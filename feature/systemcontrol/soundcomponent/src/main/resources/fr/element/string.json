@@ -107,7 +107,7 @@
         },
         {
             "name":"cc_accessibility_str_change_volume_desc",
-            "value":"Barre de volume, toucher deux fois et maintenir, puis faire glisser vers la gauche ou la droite pour ajuster",
+            "value":"Barre de volume, toucher deux fois et maintenir, puis faire glisser vers la gauche ou la deliverte pour ajuster",
             "attr":{
                 "priority":"translate"
             }

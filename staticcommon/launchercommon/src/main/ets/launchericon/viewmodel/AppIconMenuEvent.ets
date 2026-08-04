@@ -13,8 +13,8 @@
  * limitations under the License.
  */
 
-import { GlobalContext, HiSysEventUtil } from '@ohos/frameworkwrapper';
-import { CheckEmptyUtils, LogDomain, LogHelper, } from '@ohos/basicutils';
+import { GlobalContext, HiSysEventUtil, LightOutdoorConfig } from '@ohos/frameworkwrapper';
+import { CheckEmptyUtils, OutdoorConfig, LogDomain, LogHelper, } from '@ohos/basicutils';
 import { RectInfo } from '@ohos/basicutils';
 import { ItemUtils } from '@ohos/componenthelper';
 import { CommonConstants } from '../../constants/CommonConstants';
@@ -59,6 +59,10 @@ export class AppIconMenuEvent {
     } else {
       this.iconMenuVm.setMenuInfo(getMenuInfo?.() ?? []);
     }
+  }
+
+  public getMenuInfo(): MenuInfo[] {
+    return this.iconMenuVm.getMenuInfo() || [];
   }
 
   public init(itemInfo: AppItemInfo,
@@ -136,7 +140,9 @@ export class AppIconMenuEvent {
    */
   public onLongPressShowMenu(): void {
     if (!editModeManager.isInEditMode() && !AppStorage.get<boolean>('isDrag') && !ScreenSplitUtil.isScreenSplit(TAG) &&
-      this.iconMenuVm.getMenuInfo()?.length) {
+      this.iconMenuVm.getMenuInfo()?.length && !(OutdoorConfig.getInstance().isInOutdoorMode() ||
+      (LightOutdoorConfig.getInstance().isOnLightOutdoorMode() &&
+        !desktopItemDraggableManager.isItemDraggable(this.itemInfo as Object as GridLayoutItemInfo)))) {
       this.iconMenuVm.setIsMenuShow(true);
     }
   }

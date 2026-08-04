@@ -95,7 +95,9 @@
         "ALTER TABLE gridLayout_info RENAME TO gridLayout_info_old",
         "CREATE TABLE IF NOT EXISTS gridlayout_info (_id INTEGER PRIMARY KEY AUTOINCREMENT,user_id INTEGER,info_id TEXT UNIQUE,info_name TEXT,uri TEXT,file_type INTEGER,container INTEGER,type_id INTEGER,width INTEGER,height INTEGER,page_index INTEGER,column INTEGER,row INTEGER,appIcon_id INTEGER,appLabel_id INTEGER,bundle_name TEXT,module_name TEXT,ability_name TEXT,app_status INTEGER, icon_resource TEXT, kind_id INTEGER,extend1 TEXT,extend2 TEXT,download_progress REAL,caller_name TEXT,file_ino TEXT,app_index INTEGER,shortcut_id TEXT,intent TEXT)",
         "INSERT INTO gridlayout_info SELECT _id,user_id,info_id,info_name,uri,file_type,container,type_id,width,height,page_index,column,row,appIcon_id,appLabel_id,bundle_name,module_name,ability_name,app_status,icon_resource,kind_id,extend1,extend2,download_progress,caller_name,file_ino,app_index,shortcut_id,intent FROM gridlayout_info_old",
-        "DROP TABLE IF EXISTS gridLayout_info_old"
+        "DROP TABLE IF EXISTS gridLayout_info_old",
+        "DROP TABLE IF EXISTS voice_card",
+        "CREATE TABLE IF NOT EXISTS voice_card (_id INTEGER PRIMARY KEY AUTOINCREMENT, card_id TEXT, voice_info TEXT)"
       ]
     },
     {

@@ -16,6 +16,7 @@
 import { LogDomain, LogHelper, SingletonHelper } from '@ohos/basicutils';
 import { HashSet } from '@kit.ArkTS';
 import { GridLayoutItemInfo } from '../TsIndex';
+import { LightOutdoorConfig } from '@ohos/frameworkwrapper';
 
 const TAG = 'DesktopItemDraggableManager';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.HOME, TAG);
@@ -59,6 +60,32 @@ class DesktopItemDraggableManager {
       allReason += reason + ',';
     });
     log.showInfo(`enable drag fail, enable reason:${reasonType}, Drag is disabled by other reason:${allReason}`);
+  }
+
+  /**
+   * 云端2 元素是否可以拖拽,只有添加元素允许拖拽，长按
+   * 只在云端2下使用
+   *
+   * @param item 当前拖拽item
+   * @returns true/false
+   */
+  public isItemDraggable(item: GridLayoutItemInfo): boolean {
+    try {
+      let intentStr: string = item?.intent ?? '';
+      if (!intentStr || intentStr === '') {
+        return false;
+      }
+      let isAddItem: AddItemIntent = JSON.parse(intentStr);
+      if(isAddItem && isAddItem?.comeFrom === 'userAdd') {
+        // 云端2下 添加元素允许拖拽，长按
+        return true;
+      } else {
+        return false;
+      }
+    } catch (e) {
+      log.showError(`isItemDraggable error :${e?.message}`);
+      return false;
+    }
   }
 }
 

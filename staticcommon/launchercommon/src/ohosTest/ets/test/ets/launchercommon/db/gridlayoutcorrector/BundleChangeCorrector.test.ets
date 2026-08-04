@@ -32,6 +32,7 @@ import {
 } from '../../../../../../../main/ets/db/gridlayoutcorrector/BundleChangeCorrector'
 import {
   AppItemInfo,
+  DeliverUtil,
   DockItemInfo,
   GridLayoutItemInfo,
   RdbStoreManager
@@ -108,8 +109,10 @@ export default function BundleChangeCorrectorTest() {
       const dockItemInfo: DockItemInfo = new DockItemInfo();
       const bundleChangeCorrector: BundleChangeCorrector = new BundleChangeCorrector([appItemInfo], [dockItemInfo]);
       let mocker: MockKit = new MockKit();
+      let mockFunc: Function = mocker.mockFunc(DeliverUtil, DeliverUtil.isContainerFolder);
       when(mockFunc)(ArgumentMatchers.any).afterReturn(false);
       expect(bundleChangeCorrector['isNormalFolder'](gridLayoutItemInfo)).assertTrue()
+      mocker.clear(DeliverUtil);
       mocker.clearAll();
     })
 

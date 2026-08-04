@@ -1,5 +1,5 @@
 /*
- * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved. 2024-2025. All rights reserved.
+ * Copyright (c) 2022-2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -123,17 +123,32 @@ export class DataRestoreController {
   private restoreShowNotificationIcon() {
     const showIconSwitch: string = sSettingsUtil.getSecureValue(SettingsKeyConstants.STATUS_BAR_SHOW_NOTIFICATION_ICON,
       SHOW_APP_NOTIFICATION_ICON_DEFAULT_OPEN, this.context);
+    if (this.isNumberSwitchValue(showIconSwitch)) {
+      log.showInfo('showIconSwitch:' + showIconSwitch);
+      sSettingsUtil.setSecureValue(SettingsKeyConstants.STATUS_BAR_SHOW_NOTIFICATION_ICON,
+        showIconSwitch === SHOW_APP_NOTIFICATION_ICON_DEFAULT_OPEN ? 'true' : 'false', this.context);
+    }
   }
 
   private restoreShowRealtimeNetworkSpeed() {
     const showNetworkSpeedSwitch: string = sSettingsUtil
       .getSecureValue(SettingsKeyConstants.STATUS_BAR_SHOW_REAL_TIME_NETWORK_SPEED, SHOW_NETWORK_SPEED_DEFAULT_OFF,
         this.context);
+    if (this.isNumberSwitchValue(showNetworkSpeedSwitch)) {
+      log.showInfo('showNetworkSpeedSwitch:' + showNetworkSpeedSwitch);
+      sSettingsUtil.setSecureValue(SettingsKeyConstants.STATUS_BAR_SHOW_REAL_TIME_NETWORK_SPEED,
+        showNetworkSpeedSwitch !== SHOW_NETWORK_SPEED_DEFAULT_OFF ? 'true' : 'false', this.context);
+    }
   }
 
   private restorePureShow() {
     const simpleDisplaySwitch: string = sSettingsUtil
       .getSecureValue(SettingsKeyConstants.STATUS_BAR_PURE_SHOW, SIMPLE_DISPLAY_DEFAULT_OFF, this.context);
+    if (this.isNumberSwitchValue(simpleDisplaySwitch)) {
+      log.showInfo('simpleDisplaySwitch:' + simpleDisplaySwitch);
+      sSettingsUtil.setSecureValue(SettingsKeyConstants.STATUS_BAR_PURE_SHOW,
+        simpleDisplaySwitch !== SIMPLE_DISPLAY_DEFAULT_OFF ? 'true' : 'false', this.context);
+    }
   }
  
   private restoreNotificationSettings(): void {
@@ -149,11 +164,31 @@ export class DataRestoreController {
   private restoreNtfConfigScreenOn() {
     const wakeScreenSwitch: string = sSettingsUtil.getSecureValue(SettingsKeyConstants.APP_NTF_CONFIG_SCREEN_ON,
       WAKEUP_WHEN_RECEIVE_NTF_DEFAULT_OFF, this.context);
+    if (this.isNumberSwitchValue(wakeScreenSwitch)) {
+      log.showInfo('wakeScreenSwitch:' + wakeScreenSwitch);
+      sSettingsUtil.setSecureValue(SettingsKeyConstants.APP_NTF_CONFIG_SCREEN_ON,
+        wakeScreenSwitch !== WAKEUP_WHEN_RECEIVE_NTF_DEFAULT_OFF ? 'true' : 'false', this.context);
+    }
   }
 
   private restoreNtfConfigHideContent() {
     const hideNtfContentSwitch: string = sSettingsUtil.getSecureValue(SettingsKeyConstants.APP_NTF_CONFIG_HIDE_CONTENT,
       LOCK_SCREEN_ALLOW_PRIVATE_NTF_DEFAULT_OFF, this.context);
+    if (this.isNumberSwitchValue(hideNtfContentSwitch)) {
+      log.showInfo('hideNtfContentSwitch:' + hideNtfContentSwitch);
+      sSettingsUtil.setSecureValue(SettingsKeyConstants.APP_NTF_CONFIG_HIDE_CONTENT,
+        hideNtfContentSwitch !== LOCK_SCREEN_ALLOW_PRIVATE_NTF_DEFAULT_OFF ? 'true' : 'false', this.context);
+    }
+  }
+
+  /**
+   * 进入此段代码之前设置已经进行过双单映射和恢复
+   * 这里用来判断是否读取到了设备的值. 如果是, 说明前面的恢复没有生效, 再做兜底映射
+   * @param switch 读取到的开关值
+   * @returns 是否是设备的值 true:是  false:否
+   */
+  private isNumberSwitchValue(switchValue: string): boolean {
+    return switchValue === '0' || switchValue === '1';
   }
 
   private findElementsByTag(elements: CovertObject[], findTag: String): CovertObject[] {

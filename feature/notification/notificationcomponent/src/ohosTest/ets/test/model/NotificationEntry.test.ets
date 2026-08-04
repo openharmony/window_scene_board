@@ -764,6 +764,25 @@ export default function NotificationEntryTest() {
       mocker.ignoreMock(notificationEntry, notificationEntry.updateGroup);
       mocker.ignoreMock(notificationEntry, notificationEntry.addUpdateChildEntry);
     });
+
+    it('should_set_deliverNotificationKey_when_isDeliverNotification_is_true', 0, () => {
+      let notificationEntry: NotificationEntry = new NotificationEntry();
+      notificationEntry.isGroup = false;
+      notificationEntry.isDeliverNotification = true;
+      notificationEntry.deliverNotificationKey = 'deliverNotificationKey';
+      let mocker: MockKit = new MockKit();
+      let mockUpdateGroup: Function = mocker.mockFunc(notificationEntry, notificationEntry.updateGroup);
+      let mockAddUpdateChildEntry: Function = mocker.mockFunc(notificationEntry, notificationEntry.addUpdateChildEntry);
+      when(mockUpdateGroup)(ArgumentMatchers.any).afterReturnNothing();
+      when(mockAddUpdateChildEntry)(ArgumentMatchers.any).afterReturnNothing();
+      const result = notificationEntry.createGroup();
+      expect(result).assertInstanceOf(NotificationEntry);
+      expect(result.isGroup).assertTrue();
+      expect(result.isExpandable).assertTrue();
+      expect(result.deliverNotificationKey).assertEqual('deliverNotificationKey');
+      mocker.ignoreMock(notificationEntry, notificationEntry.updateGroup);
+      mocker.ignoreMock(notificationEntry, notificationEntry.addUpdateChildEntry);
+    });
   });
 
   describe('createAggregateGroup_testSuite', () => {
@@ -2207,6 +2226,9 @@ export default function NotificationEntryTest() {
       let mockIsLiveType: Function = mocker.mockFunc(notificationEntry, notificationEntry.isLiveType);
       when(mockIsLiveType)([]).afterReturn(false);
 
+      let mockCheckIsDeliverSystemNotification: Function = mocker.mockFunc(notificationEntry, notificationEntry.checkIsDeliverSystemNotification);
+      when(mockCheckIsDeliverSystemNotification)([]).afterReturn(false);
+
       let mockGetIsInEmergencyOrThermalSafeMode: Function = mocker.mockFunc(notificationEntry, notificationEntry.getIsInEmergencyOrThermalSafeMode);
       when(mockGetIsInEmergencyOrThermalSafeMode)([]).afterReturn(true);
 
@@ -2227,6 +2249,7 @@ export default function NotificationEntryTest() {
       expect(result).assertEqual(false);
 
       mocker.ignoreMock(notificationEntry, notificationEntry.isLiveType);
+      mocker.ignoreMock(notificationEntry, notificationEntry.checkIsDeliverSystemNotification);
       mocker.ignoreMock(notificationEntry, notificationEntry.getIsInEmergencyOrThermalSafeMode);
     });
 
@@ -2236,6 +2259,9 @@ export default function NotificationEntryTest() {
       let mockIsLiveType: Function = mocker.mockFunc(notificationEntry, notificationEntry.isLiveType);
       when(mockIsLiveType)([]).afterReturn(false);
 
+      let mockCheckIsDeliverSystemNotification: Function = mocker.mockFunc(notificationEntry, notificationEntry.checkIsDeliverSystemNotification);
+      when(mockCheckIsDeliverSystemNotification)([]).afterReturn(false);
+
       let mockGetIsInEmergencyOrThermalSafeMode: Function = mocker.mockFunc(notificationEntry, notificationEntry.getIsInEmergencyOrThermalSafeMode);
       when(mockGetIsInEmergencyOrThermalSafeMode)([]).afterReturn(true);
 
@@ -2256,6 +2282,7 @@ export default function NotificationEntryTest() {
       expect(result).assertEqual(true);
 
       mocker.ignoreMock(notificationEntry, notificationEntry.isLiveType);
+      mocker.ignoreMock(notificationEntry, notificationEntry.checkIsDeliverSystemNotification);
       mocker.ignoreMock(notificationEntry, notificationEntry.getIsInEmergencyOrThermalSafeMode);
     });
 
@@ -2264,6 +2291,9 @@ export default function NotificationEntryTest() {
 
       let mockIsLiveType: Function = mocker.mockFunc(notificationEntry, notificationEntry.isLiveType);
       when(mockIsLiveType)([]).afterReturn(false);
+
+      let mockCheckIsDeliverSystemNotification: Function = mocker.mockFunc(notificationEntry, notificationEntry.checkIsDeliverSystemNotification);
+      when(mockCheckIsDeliverSystemNotification)([]).afterReturn(false);
 
       let mockGetIsInEmergencyOrThermalSafeMode: Function = mocker.mockFunc(notificationEntry, notificationEntry.getIsInEmergencyOrThermalSafeMode);
       when(mockGetIsInEmergencyOrThermalSafeMode)([]).afterReturn(false);
@@ -2285,6 +2315,7 @@ export default function NotificationEntryTest() {
       expect(result).assertEqual(true);
 
       mocker.ignoreMock(notificationEntry, notificationEntry.isLiveType);
+      mocker.ignoreMock(notificationEntry, notificationEntry.checkIsDeliverSystemNotification);
       mocker.ignoreMock(notificationEntry, notificationEntry.getIsInEmergencyOrThermalSafeMode);
     });
 
@@ -2293,6 +2324,9 @@ export default function NotificationEntryTest() {
 
       let mockIsLiveType: Function = mocker.mockFunc(notificationEntry, notificationEntry.isLiveType);
       when(mockIsLiveType)([]).afterReturn(false);
+
+      let mockCheckIsDeliverSystemNotification: Function = mocker.mockFunc(notificationEntry, notificationEntry.checkIsDeliverSystemNotification);
+      when(mockCheckIsDeliverSystemNotification)([]).afterReturn(false);
 
       let mockGetIsInEmergencyOrThermalSafeMode: Function = mocker.mockFunc(notificationEntry, notificationEntry.getIsInEmergencyOrThermalSafeMode);
       when(mockGetIsInEmergencyOrThermalSafeMode)([]).afterReturn(false);
@@ -2314,6 +2348,7 @@ export default function NotificationEntryTest() {
       expect(result).assertEqual(false);
 
       mocker.ignoreMock(notificationEntry, notificationEntry.isLiveType);
+      mocker.ignoreMock(notificationEntry, notificationEntry.checkIsDeliverSystemNotification);
       mocker.ignoreMock(notificationEntry, notificationEntry.getIsInEmergencyOrThermalSafeMode);
     });
 
@@ -2322,6 +2357,9 @@ export default function NotificationEntryTest() {
 
       let mockIsLiveType: Function = mocker.mockFunc(notificationEntry, notificationEntry.isLiveType);
       when(mockIsLiveType)([]).afterReturn(false);
+
+      let mockCheckIsDeliverSystemNotification: Function = mocker.mockFunc(notificationEntry, notificationEntry.checkIsDeliverSystemNotification);
+      when(mockCheckIsDeliverSystemNotification)([]).afterReturn(false);
 
       let mockGetIsInEmergencyOrThermalSafeMode: Function = mocker.mockFunc(notificationEntry, notificationEntry.getIsInEmergencyOrThermalSafeMode);
       when(mockGetIsInEmergencyOrThermalSafeMode)([]).afterReturn(true);
@@ -2343,6 +2381,7 @@ export default function NotificationEntryTest() {
       expect(result).assertEqual(false);
 
       mocker.ignoreMock(notificationEntry, notificationEntry.isLiveType);
+      mocker.ignoreMock(notificationEntry, notificationEntry.checkIsDeliverSystemNotification);
       mocker.ignoreMock(notificationEntry, notificationEntry.getIsInEmergencyOrThermalSafeMode);
     });
   });

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -20,7 +20,7 @@ import { image } from '@kit.ImageKit';
 import sSCBOobeManager from '../../oobe/SCBOobeManager';
 import { SCBSceneContainerSession, SCBSceneContainerState } from './SCBSceneContainerSession';
 import { AnimateToScheduleUtils, DomainName, HiTraceChain, LogDomain, LogHelper, TraceUtil } from '@ohos/basicutils';
-import { RotationConstants, SCBConstants } from '@ohos/commonconstants';
+import { RotationConstants, SCBConstants, WindowConstants } from '@ohos/commonconstants';
 import { Log } from '@ohos/basicutils';
 import { SCBSceneInfo, SCBSceneMode } from './SCBSceneInfo';
 import { SCBSceneOrientation } from './SCBSceneOrientation';
@@ -36,7 +36,8 @@ import {
   SessionChangeInfo,
   SessionRectChangeInfo,
   ClassType,
-  INVALID_PID
+  INVALID_PID,
+  DragActivateScenario,
 } from './SCBSceneSessionManager';
 import type { ExecuteCallbackExtraInfo } from './SCBSceneSessionManager';
 import { SCBWindowSceneConfig } from '@ohos/frameworkwrapper';
@@ -60,7 +61,7 @@ import { SCBWindowRaiseReason } from '../../common/SCBWindowRaiseReason';
 import { FORM_ID_PARAM } from '../common/SCBSceneConstants';
 import { PC_APP_WHITE_LIST, PC_IN_PHONE_LIST } from './SCBTogManager';
 import { SCBWindowRotateController } from '../manager/SCBWindowRotateController';
-import { ControlType, SCBAppUseControlManager, SCBScreenSession } from '../../TsIndex';
+import { ControlType, SCBAppUseControlManager, SCBScreenSession, windowMgr } from '../../TsIndex';
 import { FloatingScenePadLayoutStyle } from './SCBFloatingParam';
 import { ConfigurationConstant } from '@kit.AbilityKit';
 import { SCBSceneMissionManager } from '../manager/SCBSceneMissionManager';
@@ -79,6 +80,8 @@ import { SceneDataOfMissionManagement } from '../framework/sessiondata/SceneData
 import { SceneSessionInitializer } from '../framework/strategy/scenestrategy/initstrategy/SceneSessionInitializer';
 import { SCBKioskModeManager } from '../kiosk/SCBKioskModeManager';
 import { SCBSceneResourceManager } from '../../scene/manager/SCBSceneResourceManager';
+import lazy { SCBSceneWindowAiSplitSwitchUtils } from '../utils/SCBSceneWindowAiSplitSwitchUtils';
+// import { appInfoManager } from '@kit.StoreKit';
 import { CommonResult } from '../../scene/utils/SCBSceneUtils';
 import { WinLog, WinLogDomain } from '../../utils/WinLog';
 
@@ -1158,6 +1161,13 @@ export class SCBSceneSession {
     } catch (err) {
       log.showError('setIsPcAppInPad failed, reason: ' + JSON.stringify(err));
     }
+
+    try {
+      this.session.setAppSupportPhoneInPc(this.checkIfAppSupportPhoneInPc());
+    } catch (err) {
+      log.showError('setAppSupportPhoneInPc failed, reason: ' + JSON.stringify(err));
+    }
+
     this.defaultRequestOrientation = this.sessionData.requestOrientation;
     this.syncDefaultRequestedOrientation(this.defaultRequestOrientation);
     this.sceneInfo.unclearableSession = SCBSceneSessionManager.getInstance().isUnClearFromRecent(
@@ -1303,7 +1313,7 @@ export class SCBSceneSession {
         if (systemBarProperty.type === sceneSessionManager.SessionType.TYPE_NAVIGATION_INDICATOR &&
           this.sceneInfo.windowMode === SCBSceneMode.FULLSCREEN &&
           this.isSessionForeground()) {
-          WinLog.showInfo(WinLogDomain.WMS_IMMS, `win:${this.session.persistentId},AIbar:${systemBarProperty.enable}`);
+          WinLog.showInfo(WinLogDomain.WMS_IMMS, `win:${this.session.persistentId},NAVibar:${systemBarProperty.enable}`);
           SCBSceneSessionManager.getInstance().updateNavigationBarProperty(systemBarProperty.enable, this);
           SCBSceneSessionManager.getInstance()
             .notifyNavigationPropertyChanged(systemBarProperty, this.sceneInfo.screenId);
@@ -1501,10 +1511,29 @@ export class SCBSceneSession {
   }
 
   private updateAppUseControl(type: ControlType, isNeedControl: boolean, isControlRecentOnly: boolean): void {
-    log.showInfo(`[UseControl]Update app use control, id:${this.session.persistentId} type:${type}, ` +
-      `isNeedControl:${isNeedControl}, isControlRecentOnly:${isControlRecentOnly}`);
-    let index = this.useControlList.indexOf(type);
+  let index = this.useControlList.indexOf(type);
+  let oldIsControlRecentOnly = this.controlTypeToControlRecentMap.get(type);
+
+  log.showInfo(`[UseControl]Update app use control, id:${this.session.persistentId} type:${type}, ` +
+    `isNeedControl:${isNeedControl}, isControlRecentOnly:${isControlRecentOnly}, ` +
+    `oldIsControlRecentOnly:${oldIsControlRecentOnly}, index:${index}`);
+
+    if (isNeedControl && index !== -1 && oldIsControlRecentOnly === isControlRecentOnly) {
+      return;
+    }
+
+    if (!isNeedControl && index === -1) {
+      return;
+    }
+
     const useControlLengthBeforeUpdate: number = this.useControlList.length;
+
+      if (isNeedControl) {
+      this.controlTypeToControlRecentMap.set(type, isControlRecentOnly);
+    } else {
+      this.controlTypeToControlRecentMap.delete(type);
+    }
+
     if (isNeedControl && index === -1) {
       this.useControlList.push(type);
       this.useControlList.sort();
@@ -1515,11 +1544,12 @@ export class SCBSceneSession {
         this.destroyUseControlSession();
       }
     }
-    if (isNeedControl) {
-      this.controlTypeToControlRecentMap.set(type, isControlRecentOnly);
-    } else {
-      this.controlTypeToControlRecentMap.delete(type);
+
+  if (this.useControlSession) {
+      const isRecentOnly = this.isControlRecentOnly();
+      this.useControlSession.setSessionTouchable(!isRecentOnly);
     }
+
     this.isShowUseControlCallbackList.forEach((callback) => callback && callback(this.useControlList.length > 0));
     const needUpdateShowState: boolean = this.useControlList.length === 0 || useControlLengthBeforeUpdate === 0;
     if (needUpdateShowState && this.isInUseControl() && SCBSceneSessionManager.getInstance().isPc()) {
@@ -1555,8 +1585,9 @@ export class SCBSceneSession {
     };
     this.useControlSession = SCBSceneSessionManager.getInstance().requestSystemSceneSession(sessionInfo, undefined,
       false, this.sceneInfo.screenId);
+    const isRecentOnly = this.isControlRecentOnly();
     this.useControlSession.setVisibility(true);
-    this.useControlSession.setSessionTouchable(true);
+    this.useControlSession.setSessionTouchable(!isRecentOnly);
   }
 
   private destroyUseControlSession(): void {
@@ -1732,6 +1763,27 @@ export class SCBSceneSession {
     log.showInfo(`isPcAppInPad isPcApp: ` + isPcApp);
     this.isPcAppInPad = isPcApp;
     return isPcApp;
+  }
+
+  //
+  private checkIfAppSupportPhoneInPc(): boolean {
+    let uiType: string = SCBWindowSceneConfig.getInstance().windowSceneConfig?.uiType;
+    if (uiType !== SCBConstants.UITYPE_PC) {
+      return false;
+    }
+    try {
+      let bundleInfo = BundleManager.getBundleInfoSync(
+        this.sceneInfo.bundleName,
+        BundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_HAP_MODULE
+      );
+      if (bundleInfo && bundleInfo.hapModulesInfo[0]?.deviceTypes?.length > 0) {
+        return bundleInfo.hapModulesInfo[0].deviceTypes.includes('phone') ||
+        bundleInfo.hapModulesInfo[0].deviceTypes.includes('default');
+      }
+    } catch (err) {
+      log.showInfo(`checkIfAppSupportPhoneInPc getBundleInfoSync failed: ${err}`);
+    }
+    return false;
   }
 
   /**
@@ -2371,7 +2423,7 @@ export class SCBSceneSession {
     toSceneInfo.windowHeight = sceneInfo.windowHeight;
     toSceneInfo.windowLeft = sceneInfo.windowLeft;
     toSceneInfo.windowTop = sceneInfo.windowTop;
-    toSceneInfo.initWindowLimit(sceneInfo.maxWindowWidth, sceneInfo.minWindowWidth, 
+    toSceneInfo.initWindowLimit(sceneInfo.maxWindowWidth, sceneInfo.minWindowWidth,
                                 sceneInfo.maxWindowHeight, sceneInfo.minWindowHeight);
     toSceneInfo.withAnimation = sceneInfo.withAnimation;
     toSceneInfo.focusedOnShow = sceneInfo.focusedOnShow;
@@ -2415,7 +2467,7 @@ export class SCBSceneSession {
     }
     const fromScreenName: string =
       SCBScreenSessionManager.getInstance().getScreenSession(this.sceneInfo.screenId)?.session.name;
-    if ((fromScreenName === 'SubScreen' && DeviceHelper.isSmallFoldProduct())) {
+    if ((fromScreenName === 'SubScreen' && DeviceHelper.isSmallFoldProduct()) || fromScreenName === "VoiceView") {
       log.showInfo(`fileManagerMode: ${sceneInfo.fileManagerMode}, extraFormIdentity: ${sceneInfo.extraFormIdentity}`);
       ObjUtil.setNested(toSceneInfo, ['want', 'parameters', FORM_ID_PARAM], sceneInfo.extraFormIdentity ?? '');
       return managerInstance.startSceneFromOther(toSceneInfo);
@@ -2497,7 +2549,8 @@ export class SCBSceneSession {
     containerRotation?: number, containerLastUsedPosition?: string): Promise<void> {
     TraceUtil.startTrace(DomainName.WINDOW, MissionManagementTraceUtil.ACTIVE_SCENE);
     if (SCBWindowSceneConfig.getInstance().windowSceneConfig?.uiType === SCBConstants.UITYPE_PAD ||
-    DeviceHelper.isLargeInFoldProduct() || DeviceHelper.isUltraScreenProduct()) {
+    DeviceHelper.isLargeInFoldProduct() || DeviceHelper.isThreeFoldProduct()) {
+      SCBSceneWindowAiSplitSwitchUtils.getInstance().deleteIntentInRequestActivation(this.sceneInfo);
     }
     log.showInfo(`[SCBMain]requestSceneSessionActivation: isNewActive: ${isNewActive}, isPersist: ${isPersist}, ` +
       `reason: ${reason}, name: ${this.getName()}, containerRotation: ${containerRotation}`);
@@ -3278,7 +3331,7 @@ export class SCBSceneSession {
     this.sessionData.transitionAnimationConfig.set(type, animation);
   }
 
-  private onSessionStateChange(state: sceneSessionManager.SessionState): void {
+  private async onSessionStateChange(state: sceneSessionManager.SessionState): Promise<void> {
     if (!this.session) {
       log.showError('session is null');
       return;
@@ -3321,6 +3374,7 @@ export class SCBSceneSession {
           mgr.reOrderShowWhenLocked(false, undefined, 'Session Foreground');
         }
         WinLog.showInfo(WinLogDomain.WMS_IMMS, `win:${this.session.persistentId} foreground`);
+        await mgr.updateStatusbarColor();
         mgr.updateSystemBarProperty();
         mgr.updateNavigationBarProperty(this.systemBarProperty.
           get(sceneSessionManager.SessionType.TYPE_NAVIGATION_INDICATOR)?.enable, this);
@@ -3338,6 +3392,7 @@ export class SCBSceneSession {
           mgr.reOrderShowWhenLocked(false, undefined, 'Session Background');
         }
         WinLog.showInfo(WinLogDomain.WMS_IMMS, `win:${this.session.persistentId} background`);
+        await mgr.updateStatusbarColor();
         mgr.updateSystemBarProperty();
         let topActiveSession = mgr.getContainerSessionList().getTopActiveSession();
         mgr.updateNavigationBarProperty(topActiveSession?.mainSessionActive?.systemBarProperty?.
@@ -4021,7 +4076,7 @@ export class SCBSceneSession {
     if (this.isPcAppOnPadNotSupportSplit()) {
       return { isSupport: false, reason: SupportModeResultReason.PC_IN_PAD };
     }
-    if (this.isUltraScreenPcInPhoneNotSupportSplit()) {
+    if (this.isThreeFoldPcInPhoneNotSupportSplit()) {
       return { isSupport: false, reason: SupportModeResultReason.PC_IN_PHONE };
     }
     let isSupport = this.sessionDataInner.supportWindowModes.includes(BundleManager.SupportWindowMode.SPLIT);
@@ -4034,8 +4089,8 @@ export class SCBSceneSession {
       return { isSupport: true, reason: SupportModeResultReason.FORCE_SUPPORT };
     }
     const isWillSupport = isSupport || isInSupportList;
-    if (isWillSupport && DeviceHelper.isUltraScreenProduct() &&
-    SCBSplitUtils.isUltraScreenFixedSplitRatioScene(this.sceneInfo)) {
+    if (isWillSupport && DeviceHelper.isThreeFoldProduct() &&
+    SCBSplitUtils.isThreeFoldFixedSplitRatioScene(this.sceneInfo)) {
       log.showInfo('isSupportSplitMode three fold product with fixed split radio scene, return false');
       return { isSupport: false, reason: SupportModeResultReason.FIXED_SPLIT_RATIO };
     }
@@ -4070,8 +4125,8 @@ export class SCBSceneSession {
     return false;
   }
 
-  private isUltraScreenPcInPhoneNotSupportSplit(): boolean {
-    if (DeviceHelper.isUltraScreenProduct() && PC_IN_PHONE_LIST.includes(this.sceneInfo.bundleName)) {
+  private isThreeFoldPcInPhoneNotSupportSplit(): boolean {
+    if (DeviceHelper.isThreeFoldProduct() && PC_IN_PHONE_LIST.includes(this.sceneInfo.bundleName)) {
       log.showInfo(`not support split pc app, bundleName:${this.sceneInfo.bundleName}`);
       return true;
     }
@@ -4108,7 +4163,7 @@ export class SCBSceneSession {
     if (this.isPcAppInPad && !DeviceHelper.is2In1DevicePcType()) {
       return { isSupport: false, reason: SupportModeResultReason.PC_IN_PAD };
     }
-    if (DeviceHelper.isUltraScreenProduct() && PC_IN_PHONE_LIST.includes(this.sceneInfo.bundleName)) {
+    if (DeviceHelper.isThreeFoldProduct() && PC_IN_PHONE_LIST.includes(this.sceneInfo.bundleName)) {
       log.showInfo(`not support floating pc app,  bundleName:${this.sceneInfo.bundleName}`);
       return { isSupport: false, reason: SupportModeResultReason.PC_IN_PHONE };
     }
@@ -4402,15 +4457,17 @@ export class SCBSceneSession {
   public updateCurRectForOneStepSplit(screenProperty: SCBScreenProperty,
     isUpDownSplit: boolean, moveOffset: number, reason: sceneSessionManager.SessionSizeChangeReason =
     sceneSessionManager.SessionSizeChangeReason.FULL_TO_SPLIT): void {
+    let statusbarHeight = vp2px(this.getStatusBarHeight());
+
     let dividerLen = vp2px(DIVIDER_HEIGHT);
     let width = !isUpDownSplit ? (screenProperty.width - dividerLen) / HALF : screenProperty.width;
-    let height = isUpDownSplit ? (screenProperty.height - dividerLen) / HALF : screenProperty.height;
+    let height = isUpDownSplit ? (screenProperty.height - dividerLen - statusbarHeight) / HALF : screenProperty.height;
 
     let left = Math.round(!isUpDownSplit ? screenProperty.left + moveOffset : screenProperty.left);
     let top = Math.round(isUpDownSplit ? screenProperty.top + moveOffset : screenProperty.top);
     let mainRect = new SCBSessionRect();
     mainRect.setRect(this.currRect.left, this.currRect.top, this.currRect.width, this.currRect.height);
-    this.updateRect(this.currRect.left, this.currRect.top, this.currRect.width, this.currRect.height, reason, true);
+    this.updateRect(new ScbNumber(left), new ScbNumber(top), new ScbNumber(width), new ScbNumber(height), reason);
     this.updateSubRequestedRect(mainRect);
     this.updateSubSessionRectForOneStepSplit(screenProperty, new SCBSessionRect(left, top, width, height));
   }
@@ -5230,15 +5287,16 @@ export class SCBSceneSession {
   /**
    * sets whether the dragEnable attribute of the window by scb is activate or deactivate
    *
+   * @param scenario: drag activation scenario, use DragActivateScenario values.
    * @param activateDrag: activate or deactivate
    */
-  public setActivateDragBySystem(activateDrag: boolean): void {
+  public setActivateDragBySystem(scenario: DragActivateScenario, activateDrag: boolean): void {
     if (!this.session) {
       log.showError('session is null');
       return;
     }
     try {
-      this.session.activateDragBySystem(activateDrag);
+      this.session.activateDragBySystem(scenario, activateDrag);
     } catch (err) {
       log.showError('setActivateDragBySystem failed, reason: ' + JSON.stringify(err));
     }
@@ -5504,5 +5562,13 @@ export class SCBSceneSession {
    */
   public set isFixedMultiWindowOrientation(isFixedMultiWindowOrientation: boolean) {
     this.sessionData.isFixedMultiWindowOrientation = isFixedMultiWindowOrientation;
+  }
+
+  private getStatusBarHeight(): number {
+    let statusBarH: number = px2vp(windowMgr.getWindowPosition(WindowConstants.WINDOW_NAME_STATUS_BAR).height);
+    if (statusBarH !== 0) {
+      statusBarH++;
+    }
+    return Math.ceil(statusBarH);
   }
 }

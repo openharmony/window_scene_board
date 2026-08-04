@@ -18,10 +18,19 @@
  */
 @Observed
 export class DesktopSettingData {
+  private _hiSearchStatus: boolean = false;
 
   private _autoAlignStatus: boolean = false;
 
   private _lockLayoutStatus: boolean = false;
+
+  public set hiSearchStatus(value: boolean) {
+    this._hiSearchStatus = value;
+  }
+
+  public get hiSearchStatus(): boolean {
+    return this._hiSearchStatus;
+  }
 
   public set autoAlignStatus(value: boolean) {
     this._autoAlignStatus = value;
@@ -40,7 +49,7 @@ export class DesktopSettingData {
   }
 
   public toString(): string {
-    return `DesktopSettingData autoAlignStatus: ${this.autoAlignStatus}` +
+    return `DesktopSettingData hiSearchStatus: ${this.hiSearchStatus}, autoAlignStatus: ${this.autoAlignStatus}` +
       `, lockLayoutStatus: ${this.lockLayoutStatus}`;
   }
 }

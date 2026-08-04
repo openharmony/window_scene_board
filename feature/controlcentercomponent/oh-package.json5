@@ -21,6 +21,7 @@
     "@ohos/superhubtogglecomponent": "file:../systemcontrol/superhubtogglecomponent",
     "@ohos/powersavingtogglecomponent": "file:../systemcontrol/powersavingtogglecomponent",
     "@ohos/hcastcomponent": "file:../systemcontrol/hcastcomponent",
+    "@ohos/cloudcomponent": "file:../systemcontrol/cloudcomponent",
     "@ohos/superprivacycomponent": "file:../systemcontrol/superprivacycomponent",
     "@ohos/soundcomponent": "file:../systemcontrol/soundcomponent",
     "@ohos/plugincardcomponent": "file:../systemstatus/plugincardcomponent",

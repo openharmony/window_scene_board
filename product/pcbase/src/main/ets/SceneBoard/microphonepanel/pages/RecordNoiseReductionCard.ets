@@ -17,8 +17,8 @@ import { LogDomain, LogHelper } from '@ohos/basicutils';
 import { HiSysEventUtil } from '@ohos/frameworkwrapper';
 import { NormalPanelInfo, StatusBarPanelManager } from '../../../common/manager/StatusBarPanelManager';
 import { ColorModeViewData, ColorModeViewModel } from '@ohos/systemuicommon/Index';
-import AIAudioEffectSettingModel, { AIAudioEnhanceProp,
-  enhanceNoiseReductStatusChangeListener} from '../model/AIAudioEffectSettingModel';
+import AudioEffectSettingModel, { AudioEnhanceProp,
+  enhanceNoiseReductStatusChangeListener} from '../model/AudioEffectSettingModel';
 import MicrophonePanelViewModel, {
   AppCapturerCardItemProp,
   AppCapturerCardItemsForUIListener } from '../viewmodel/MicrophonePanelViewModel';
@@ -62,8 +62,8 @@ export default struct RecordNoiseReductionCard {
     log.showInfo(`${TAG} aboutToAppear`);
     this.panelInfo = StatusBarPanelManager.getInstance()
       .getStatusBarInfoById(this.persistentId) as NormalPanelInfo;
-    this.isReductNow = AIAudioEffectSettingModel.getEnhanceNoiseReductStatus() === AIAudioEnhanceProp.NOISE_REDUCT_ON;
-    AIAudioEffectSettingModel
+    this.isReductNow = AudioEffectSettingModel.getEnhanceNoiseReductStatus() === AudioEnhanceProp.NOISE_REDUCT_ON;
+    AudioEffectSettingModel
       .registerEnhanceNoiseReductStatusChangeListener(this.enhanceNoiseReductStatusChangeListener);
     MicrophonePanelViewModel.registerStateChangeListener(this);
     MicrophonePanelViewModel.registerCapturerInfoArrayForUIListener(this.appCapturerCardItemsForUIListener);
@@ -71,7 +71,7 @@ export default struct RecordNoiseReductionCard {
 
   aboutToDisappear() {
     log.showInfo(`${TAG} aboutToDisappear`);
-    AIAudioEffectSettingModel
+    AudioEffectSettingModel
       .unregisterEnhanceNoiseReductStatusChangeListener(this.enhanceNoiseReductStatusChangeListener);
     MicrophonePanelViewModel.unregisterStateChangeListener(this);
     MicrophonePanelViewModel.unregisterCapturerInfoArrayForUIListener(this.appCapturerCardItemsForUIListener);
@@ -134,7 +134,7 @@ export default struct RecordNoiseReductionCard {
   // 通话增强状态变更的监听回调
   private enhanceNoiseReductStatusChangeListener: enhanceNoiseReductStatusChangeListener = {
     onEnhanceNoiseReductStatusChange: (enhanceProp: string) => {
-      if (enhanceProp === AIAudioEnhanceProp.NOISE_REDUCT_ON) {
+      if (enhanceProp === AudioEnhanceProp.NOISE_REDUCT_ON) {
         this.isReductNow = true;
       } else {
         this.isReductNow = false;
@@ -161,9 +161,9 @@ export default struct RecordNoiseReductionCard {
 
   private onClickEvent(event: ClickEvent) {
     if (this.isReductNow) {
-      AIAudioEffectSettingModel.setEnhanceNoiseReductStatus(AIAudioEnhanceProp.NOISE_REDUCT_OFF);
+      AudioEffectSettingModel.setEnhanceNoiseReductStatus(AudioEnhanceProp.NOISE_REDUCT_OFF);
     } else {
-      AIAudioEffectSettingModel.setEnhanceNoiseReductStatus(AIAudioEnhanceProp.NOISE_REDUCT_ON);
+      AudioEffectSettingModel.setEnhanceNoiseReductStatus(AudioEnhanceProp.NOISE_REDUCT_ON);
     }
     this.isReductNow = !this.isReductNow;
   }

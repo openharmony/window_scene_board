@@ -27,6 +27,7 @@ import Common from '@ohos.app.ability.common';
 import {
   AppStatus,
   CommonConstants,
+  DeliverUtil,
   DesktopParam,
   GridLayoutItemInfo
 } from '@ohos/launchercommon/src/main/ets/TsIndex';

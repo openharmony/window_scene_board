@@ -157,6 +157,32 @@ export function SCBSceneSessionManagerTest7() {
       expect(scbSystemBarProperty.type).assertEqual(sceneSessionManager.SessionType.TYPE_UNDEFINED);
     })
 
+    it('checkIsInitDeliverAbilityInfo', 0, () => {
+      const manager: SCBSceneSessionManager = SCBSceneSessionManager.getInstance();
+      expect(manager).not().assertNull();
+
+      // codePath === ohos_APPLICATION && isInitDeliverAbilityInfo === false
+      let codePath = '1';
+      ReflectionUtils.useFunc(manager, 'checkIsInitDeliverAbilityInfo', codePath);
+      expect(ReflectionUtils.getProperty(manager, 'isInitDeliverAbilityInfo')).assertTrue();
+
+      // codePath === LINUX_APPLICATION && isInitDeliverAbilityInfo === false
+      ReflectionUtils.setProperty(manager, 'isInitDeliverAbilityInfo', false);
+      codePath = '2';
+      ReflectionUtils.useFunc(manager, 'checkIsInitDeliverAbilityInfo', codePath);
+      expect(ReflectionUtils.getProperty(manager, 'isInitDeliverAbilityInfo')).assertTrue();
+
+      // isInitDeliverAbilityInfo === true
+      ReflectionUtils.useFunc(manager, 'checkIsInitDeliverAbilityInfo', codePath);
+      expect(ReflectionUtils.getProperty(manager, 'isInitDeliverAbilityInfo')).assertTrue();
+
+      // wrong codePath
+      ReflectionUtils.setProperty(manager, 'isInitDeliverAbilityInfo', false);
+      codePath = '3';
+      ReflectionUtils.useFunc(manager, 'checkIsInitDeliverAbilityInfo', codePath);
+      expect(ReflectionUtils.getProperty(manager, 'isInitDeliverAbilityInfo')).assertFalse();
+    })
+
     it('test_unregisterGetContainerSessionListCallback_success', 0, () => {
       const manager: SCBSceneSessionManager = SCBSceneSessionManager.getInstance();
       expect(manager).not().assertNull();

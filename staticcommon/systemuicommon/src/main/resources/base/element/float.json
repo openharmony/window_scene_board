@@ -8,6 +8,14 @@
       "name": "status_bar_phone_height",
       "value": "39"
     },
+    {
+      "name": "screen_lock_capsule_pc_translate",
+      "value": "-30"
+    },
+    {
+      "name": "screen_lock_capsule_phone_translate",
+      "value": "-15"
+    },
 
     {
       "name": "data_plan_left_right_padding",

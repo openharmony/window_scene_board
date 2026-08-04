@@ -33,6 +33,7 @@ import {
   LogHelper,
   TraceUtil,
   RectInfo,
+  OutdoorConfig,
   PixelMapUtil,
 } from '@ohos/basicutils';
 import {
@@ -46,6 +47,7 @@ import {
   HiSysEventUtil,
   localEventManager,
   DeviceHelper,
+  LightOutdoorConfig,
   ResourceManager,
   AccessibilityManager,
 } from '@ohos/frameworkwrapper';
@@ -87,6 +89,7 @@ import {
   FormHiSysEventReporter,
   FormLayoutCacheManager,
   FormModel,
+  FormRelationManager,
   GridLayoutItemInfo,
   GridLayoutUtil,
   LaunchLayoutCacheManager,
@@ -415,6 +418,10 @@ export class FormItemRelativeEvent {
 
   public async dealWithFromName(): Promise<string> {
     let appName: string = '';
+    if (FormRelationManager.getInstance().isSceneBoardCard(this.mFormItem.bundleName, this.mFormItem.cardName)) {
+      log.showWarn(`dealWithSceneBoardAppName : ${this.mFormItem.bundleName} --- ${this.mFormItem.cardId}`);
+      appName = FormRelationManager.getInstance().getAppNameByCardId(this.mFormItem.cardId);
+    }
     return appName;
   }
 
@@ -678,14 +685,26 @@ export class FormItemRelativeEvent {
    * @returns 是否接受对应的手势
    */
   public onGestureJudgeBegin(gestureInfo: GestureInfo, event: BaseGestureEvent): GestureJudgeResult {
-    if (gestureInfo.type === GestureControl.GestureType.LONG_PRESS_GESTURE) {
+    if (gestureInfo.type === GestureControl.GestureType.LONG_PRESS_GESTURE &&
+      OutdoorConfig.getInstance().isInOutdoorMode()) {
+      log.showWarn('cannot long press in OutdoorMod');
       return GestureJudgeResult.REJECT;
     }
 
+    if (gestureInfo.type === GestureControl.GestureType.LONG_PRESS_GESTURE &&
+    LightOutdoorConfig.getInstance().isOnLightOutdoorMode()) {
+      log.showWarn('cannot long press in lightOutdoorMode');
+      return GestureJudgeResult.REJECT;
+    }
     if (gestureInfo.type === GestureControl.GestureType.DRAG) {
       if (editModeManager.isInEditMode() &&
         !editModeManager.isDraggable(this.mFormItem as Object as GridLayoutItemInfo) ||
         !desktopItemDraggableManager.getEnableDrag()) {
+        return GestureJudgeResult.REJECT;
+      }
+
+      // 云端2卡片禁止拖拽
+      if (LightOutdoorConfig.getInstance().isOnLightOutdoorMode()) {
         return GestureJudgeResult.REJECT;
       }
     }
@@ -952,10 +971,15 @@ export class FormItemRelativeEvent {
       const serviceManager: ThemeServiceManager = new ThemeServiceManager(getContext(this) as common.UIAbilityContext);
       serviceManager.checkScbOnlineTheme();
     }
+    // 处理系统迁移场景SceneBoard卡片映射关系文件
+    if (FormRelationManager.getInstance().isSceneBoardCard(this.mFormItem.bundleName, this.mFormItem.cardName)) {
+      this.deleteSceneBoardFormRelation(this.mFormItem.cardId);
+    }
   }
 
   private deleteSceneBoardFormRelation(cardId: string): void {
     log.showInfo(`deal with scene board relation : ${cardId}`);
+    FormRelationManager.getInstance().deleteSceneBoardFormRelationMapByCardId(cardId);
   }
 
   private isSupportZoomCard(): boolean {

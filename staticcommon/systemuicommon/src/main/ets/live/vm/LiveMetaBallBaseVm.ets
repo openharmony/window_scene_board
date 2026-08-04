@@ -14,7 +14,7 @@
  */
 
 import curves from '@ohos.curves';
-// import { BallParams, MetaballController, MetaballAnimationParams } from '@hms.hds.Metaball';
+// import { BallParams, MetaballController, MetaballAnimationParams } from '@ohos.hds.Metaball';
 import { LogDomain, LogHelper } from '@ohos/basicutils';
 import { LiveBaseVm } from './LiveBaseVm';
 import { SysTypeCode } from '../../liveview/common/LiveConstants';

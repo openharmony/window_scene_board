@@ -48,6 +48,7 @@ import {
   AppStorageUtil,
   CheckEmptyUtils,
   DomainName,
+  OutdoorConfig,
   LogDomain,
   LogHelper,
   TraceUtil
@@ -96,6 +97,9 @@ import CardLockManager from '@ohos/launchercommon/src/main/ets/manager/CardLockM
 import MultiModalInputUtil from '@ohos/multimodalinput/src/main/ets/MultiModalInputUtil';
 import { NotificationIpc } from '@ohos/systemuicommon/src/main/ets/remote/Constant';
 import { NotificationRemoteObject } from '@ohos/notificationcomponent/src/main/ets/remote/NotificationRemoteObject';
+import {
+  NaviBarSettingsDataMgr
+} from '@ohos/phonebase/src/main/ets/SceneBoard/naviBar/settings/preference/NaviBarSettingsDataMgr';
 import { recentLockModel } from '@ohos/phonebase/src/main/ets/SceneBoard/recent/settings/RecentLockModel';
 import sceneSessionManager from '@ohos.sceneSessionManager';
 import { MatchCardDataManager } from '@ohos/launchercommon/src/main/ets/model/MatchCardDataManager';
@@ -104,7 +108,7 @@ import { FolderOperationFlag } from '@ohos/launchercommon/src/main/ets/TsIndex';
 import { TaskPool, BaseTask } from '@ohos/basicutils/src/main/ets/taskpool/TaskPool';
 import util from '@ohos.util';
 import { BusinessError } from '@kit.BasicServicesKit';
-import lazy { SCBVisualEffectMgr } from '@ohos/componenthelper';
+import lazy { OutdoorCcmManager, SCBVisualEffectMgr } from '@ohos/componenthelper';
 import { Configuration } from '@ohos.app.ability.Configuration';
 import lazy { NotificationInitiator } from '@ohos/notificationcomponent/src/main/ets/NotificationInitiator';
 import lazy { systemUIWorkerManager } from '@ohos/systemuicommon/src/main/ets/manager/SystemUIWorkerManager';
@@ -167,6 +171,9 @@ export default class MainAbility extends ServiceExtensionAbility {
     LauncherStartup.getInstance().passStep(StartupStep.INIT_SCENE_BOARD);
     // 视效参数初始化
     SCBVisualEffectMgr.init();
+    if (OutdoorConfig.getInstance().isSupportOutdoorMode()) {
+      OutdoorCcmManager.getInstance().init();
+    }
     ASCFWindowMgr.init();
 
     desktopFontScaleManager.initSetFontScale();
@@ -195,7 +202,7 @@ export default class MainAbility extends ServiceExtensionAbility {
     ScreenLockSetUpService.getInstance().init();
 
     // Init SCBSceneSessionManager, session manager service, Init screen session manager.
-    this.initSessionManager();
+    this.initSessionManager(want);
 
     // Init icon resource manager
     this.initIconResourceCache();
@@ -255,6 +262,9 @@ export default class MainAbility extends ServiceExtensionAbility {
     // Register wallpaper listener.
     this.initWallpaperManager();
 
+    // set ohos_gesture_bottom_height
+    this.initGestureBottomHeight();
+
     // set lock Preference for recent.
     this.initRecentLockPreference();
 
@@ -301,6 +311,13 @@ export default class MainAbility extends ServiceExtensionAbility {
     this.initFileSizeTimer();
 
     log.showWarn('initSceneBoard ok');
+  }
+
+  /**
+   * 初始化导航条默认高度，外settingsData数据同步
+   */
+  private initGestureBottomHeight(): void {
+    NaviBarSettingsDataMgr.getInstance().setGestureBottomHeight();
   }
 
   /**
@@ -513,7 +530,7 @@ export default class MainAbility extends ServiceExtensionAbility {
     }
   }
 
-  private initSessionManager(): void {
+  private initSessionManager(want: Want): void {
     // Init SCBSceneSessionManager
     log.showWarn('SCBSceneSessionManager init start');
     SCBSceneSessionManager.getInstance().init();
@@ -534,6 +551,10 @@ export default class MainAbility extends ServiceExtensionAbility {
 
     // Enable create float window.
     SCBSceneSessionManager.getInstance().supportCreateFloatWindow();
+
+    if (want && want.parameters && want.parameters[FormConstants.RECOVERY_PARAM]) {
+      SCBSceneSessionManager.getInstance().isAbnormalRecovery = true;
+    }
 
     // Init session manager service.
     log.showWarn('initSessionManagerService start');

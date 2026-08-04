@@ -59,7 +59,7 @@ export class DockItemAnimationEvent {
   }
 
   /**
-   * 大屏折叠动效
+   * 双折叠折叠动效
    *
    * @param screenWidth 屏幕宽度
    * @param index 元素索引
@@ -91,7 +91,7 @@ export class DockItemAnimationEvent {
   }
 
   /**
-   * 大屏展开动效
+   * 双折叠展开动效
    *
    * @param screenWidth 屏幕宽度
    * @param screenHeight 屏幕高度

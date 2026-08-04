@@ -117,7 +117,7 @@ export enum ScenesType {
   SCENES_COVER_LOCK = 'COVER_LOCK',
 
   /**
-   * 大屏展开态媒体卡
+   * 双折叠展开态媒体卡
    */
   SCENES_EXPAND_MEDIA_CARD = 'EXPAND_MEDIA_CARD'
 }

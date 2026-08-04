@@ -27,10 +27,12 @@ import InputMethodUtils from '../common/InputMethodUtils';
 
 const TAG = 'InputMethodViewModel'
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.SYS_UI, TAG);
+const BUNDLE_NAME_AI = 'com.ohos.inputmethod';
 
 @Observed
 export class InputMethodViewModel {
   public mInputMethodImage: string | PixelMap = '';
+  public mIsAI: boolean = false;
   private mIsStart: boolean = false;
   /**
    * 默认图标：透明图片
@@ -131,6 +133,7 @@ export class InputMethodViewModel {
       return;
     }
 
+    this.mIsAI = method?.name === BUNDLE_NAME_AI;
     let data = await ResUtils.getBundleInfo(TAG, method?.name);
     let resource: ResourceManager.Resource = {
       bundleName: method?.name,

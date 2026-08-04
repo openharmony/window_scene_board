@@ -15,7 +15,7 @@
 
 import { CustomMessageBase } from './CustomMessageBase';
 import SuperPrivacyConstants from '@ohos/superprivacycomponent/src/main/ets/com/ohos/common/Constants';
-// import superPrivacyManager from '@hms.security.superPrivacyManager';
+// import superPrivacyManager from '@ohos.security.superPrivacyManager';
 import { BusinessError } from '@kit.BasicServicesKit';
 import process from '@ohos.process';
 import { LogDomain, LogHelper } from '@ohos/basicutils/src/main/ets/TsIndex';

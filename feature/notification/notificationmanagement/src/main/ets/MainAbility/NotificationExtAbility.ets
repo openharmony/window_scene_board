@@ -270,8 +270,8 @@ export default class NotificationUIExtAbility extends UIExtensionAbility {
       return;
     }
 
-    const aiBarAvoidArea = windowProxy.getWindowAvoidArea(window.AvoidAreaType.TYPE_NAVIGATION_INDICATOR);
-    ContextManager.aiBarHeightByVp = px2vp(aiBarAvoidArea?.bottomRect?.height ?? 0);
+    const naviBarAvoidArea = windowProxy.getWindowAvoidArea(window.AvoidAreaType.TYPE_NAVIGATION_INDICATOR);
+    ContextManager.naviBarHeightByVp = px2vp(naviBarAvoidArea?.bottomRect?.height ?? 0);
 
     const windowProxyRect = windowProxy.properties?.uiExtensionHostWindowProxyRect;
     if (windowProxyRect) {

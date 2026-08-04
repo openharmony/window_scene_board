@@ -1,5 +1,5 @@
 /*
- * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -67,8 +67,8 @@ export class PowerStatusController {
   changePowerStatus(status: PowerStatus): void {}
 }
 
-export interface BigScreenStatusChangeListener {
-  onBigScreenStatusChange(screenId: number, bigScreenStatus: screenSessionManager.BigScreenStatus);
+export interface SuperFoldStatusChangeListener {
+  onSuperFoldStatusChange(screenId: number, superFoldStatus: screenSessionManager.SuperFoldStatus);
 }
 
 export interface ExtendScreenConnectStatusChangeListener {
@@ -95,7 +95,7 @@ export enum SCBPropertyChangeReason {
   FOLD_SCREEN_ROTATION,
   EXPAND_TO_FOLD,
   FOLD_LANDSCAPE_START,
-  BIG_SCREEN_STATUS_CHANGE,
+  SUPER_FOLD_STATUS_CHANGE,
   PAGE_ROTATION
 };
 
@@ -838,8 +838,8 @@ export class SCBScreenSessionManager {
       if (persistentId !== null) {
         let systemSceneSession = SCBSceneSessionManager.getInstance().getSystemSceneSessionWithId(persistentId);
         if (!systemSceneSession?.getVisibility()) {
-          inVisibleSystemSceneCallbacks.push(
-            [screenPropertyCallback, isRotatable, persistentId]); // 0 is callback,1 is isRotatable,2 is persistentId
+          // 0 is callback,1 is isRotatable,2 is persistentId
+          inVisibleSystemSceneCallbacks.push([screenPropertyCallback, isRotatable, persistentId]);
           continue;
         }
       }
@@ -1526,7 +1526,7 @@ export class SCBScreenSessionManager {
    * @return display.FoldStatus
    */
   public getCurFoldStatus(): display.FoldStatus {
-    if (DeviceHelper.isUltraScreenProduct()) {
+    if (DeviceHelper.isThreeFoldProduct()) {
       let foldStatus: display.FoldStatus = this.currentState;
       if (foldStatus === display.FoldStatus.FOLD_STATUS_UNKNOWN) {
         try {
@@ -1793,7 +1793,7 @@ export class SCBScreenSessionManager {
     if (SCREEN_SCAN_TYPE === SCBConstants.SCREEN_SCAN_TYPE_VERTICAL) {
       notifyRotation = (notifyRotation + RotationConstants.ROTATION_90) % RotationConstants.ROTATION_360;
     }
-    // C++侧对大屏幕机展开态做了横竖屏转换，这里需要使用sensor角度下发
+    // C++侧对折叠机展开态做了横竖屏转换，这里需要使用sensor角度下发
     let screenSession = this.getScreenSession(screenProperty.screenId);
     if (screenSession && screenSession.isFoldablePhoneExpandStatus()) {
       notifyRotation = screenProperty.rotation;
@@ -1863,7 +1863,7 @@ export class SCBScreenSessionManager {
    * @returns { Boolean }
    */
   public isSecondaryFoldablePhoneExpandStatus(): boolean {
-    if (!DeviceHelper.isUltraScreenProduct()) {
+    if (!DeviceHelper.isThreeFoldProduct()) {
       return false;
     }
 
@@ -2043,6 +2043,7 @@ export class SCBScreenSessionManager {
   public resetRotationHandleDropDownWindowHideScreenSensor(screenSession: SCBScreenSession): boolean {
     //收起的时候，判断旋转锁定
     if (!SCBScreenSessionManager.getInstance().getScreenOrientationLocked(screenSession.scbScreenProperty.screenId)) {
+      log.showInfo(`screen orientation is locked.`);
       return false;
     }
     let uiType: string = SCBWindowSceneConfig.getInstance().windowSceneConfig?.uiType;
@@ -2405,6 +2406,38 @@ export class SCBScreenSessionManager {
    */
   public notifyScreenConnectCompletion(screenId: number): void {
     screenSessionManager.notifyScreenConnectCompletion(screenId);
+  }
+
+  /**
+   * 触发旋转
+   * @param screenSession
+   * @param currentRotation
+   * @param locked 是否锁定屏幕，传入true可跳过锁定
+   */
+  public handleRotationIfNeeded(screenSession: SCBScreenSession, currentRotation?: number, locked?: boolean): void {
+    if (!screenSession) {
+      return;
+    }
+    if (!this.resetRotationHandleDropDownWindowHideScreenSensor(screenSession)) {
+      log.showInfo('resetRotationHandleDropDownWindowHideScreenSensor end');
+      return;
+    }
+    // 屏幕锁定
+    const showLocked = locked ?? this.getScreenOrientationLocked(screenSession.scbScreenProperty.screenId);
+    if (showLocked) {
+      log.showInfo('screen orientation is locked end');
+      return;
+    }
+    // 旋转角度
+    currentRotation == currentRotation ?? screenSession.sensorScreenProperty.rotation;
+    const hideSensor = screenSession.sensorScreenProperty.rotation;
+    if (hideSensor !== currentRotation ||
+      !SCBSceneSessionManager.getInstance().isRotateLockedUnrelatedSessionActive(screenSession.scbScreenProperty.screenId)) {
+      log.showInfo('go to rotationChangeEntry');
+      screenSession.rotationChangeEntry(hideSensor, 'unlock sysDialog rotation');
+    } else {
+      log.showInfo('handleRotationIfNeeded skip rotationChangeEntry, sensor/lock policy unchanged');
+    }
   }
 }
 

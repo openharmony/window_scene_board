@@ -2,7 +2,7 @@
     "string":[
         {
             "name":"accessibility_str_two_finger_slide",
-            "value":"Faire glisser deux doigts vers la gauche ou la droite pour changer d'écran",
+            "value":"Faire glisser deux doigts vers la gauche ou la deliverte pour changer d'écran",
             "attr":{
                 "priority":"translate"
             }

@@ -247,18 +247,18 @@ export default function LiveNotificationSystemParserTest() {
               }
             },
             extraInfo: {
-              openharmony_customer_accessibility_text: 'Accessibility Text',
-              openharmony_keep_headsup_sticky: true,
+              hw_customer_accessibility_text: 'Accessibility Text',
+              hw_keep_headsup_sticky: true,
               stage: 'STAGE1',
-              openharmony_sim_icon_status: 'SIM1',
-              openharmony_live_process_color: '#ff0000',
-              openharmony_capsule_process_color: '#00ff00',
-              openharmony_button_priority: [1, 2],
-              openharmony_button_accessibility_text: ['Btn1', 'Btn2'],
-              openharmony_button_state_on: [LiveButtonState.ON, LiveButtonState.OFF],
-              openharmony_capsule_sticky: true,
-              openharmony_capsule_hidden_when_terminate: true,
-              openharmony_capsule_icon_animation_type: 'ANIMATION1'
+              hw_sim_icon_status: 'SIM1',
+              hw_live_process_color: '#ff0000',
+              hw_capsule_process_color: '#00ff00',
+              hw_button_priority: [1, 2],
+              hw_button_accessibility_text: ['Btn1', 'Btn2'],
+              hw_button_state_on: [LiveButtonState.ON, LiveButtonState.OFF],
+              hw_capsule_sticky: true,
+              hw_capsule_hidden_when_terminate: true,
+              hw_capsule_icon_animation_type: 'ANIMATION1'
             }
           },
           creatorUid: 'test_uid',
@@ -417,13 +417,13 @@ export default function LiveNotificationSystemParserTest() {
         expect(parser.ntf.isSoundEnable).toBe(true);
         expect(parser.ntf.isVibrationEnable).toBe(true);
       });
-      it('should handle missing openharmony_heads_up_enable', () => {
-        delete postData.request.extraInfo.openharmony_heads_up_enable;
+      it('should handle missing hw_heads_up_enable', () => {
+        delete postData.request.extraInfo.hw_heads_up_enable;
         parser.parseRemindFlag();
         expect(parser.ntf.remindConfig.isBannerEnable()).toBe(false);
       });
-      it('should handle missing openharmony_remind', () => {
-        delete postData.request.extraInfo.openharmony_remind;
+      it('should handle missing hw_remind', () => {
+        delete postData.request.extraInfo.hw_remind;
         parser.parseRemindFlag();
         expect(parser.ntf.remindConfig.isBannerEnable()).toBe(false);
       });

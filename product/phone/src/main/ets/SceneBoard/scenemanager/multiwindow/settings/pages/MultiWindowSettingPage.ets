@@ -279,7 +279,7 @@ export default struct MultiWindowSettingPage {
             .fillColor(TITLE_BAR_FILL_COLOR)
             .draggable(false)
             .matchTextDirection(true)
-            .accessibilityText(getContext(this).resourceManager.getStringSync($r('app.string.back').id))
+            .accessibilityText(getContext(this).resourceManager.getStringSync($r('app.string.Navi_bar_back').id))
         }
         .width(40)
         .height(40)

@@ -15,7 +15,7 @@
 
 import { CallerInfo } from '@ohos/themeservicebase/Index'
 
-export const OHOS_TEST_openharmony_APP: CallerInfo = {
+export const OHOS_TEST_HW_APP: CallerInfo = {
   bundleName: 'com.ohos.thememanager',
   appIdentifier: '1173750081090759360',
   appId: 'com.ohos' +

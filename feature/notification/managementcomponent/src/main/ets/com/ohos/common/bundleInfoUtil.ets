@@ -86,4 +86,5 @@ export interface NtfBundleInfo {
   appIndex: number;
   appSwitch?: boolean;
   appSlot?: number;
+  isdeliverApp?: boolean;
 }

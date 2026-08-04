@@ -15,7 +15,7 @@
 
 import { LogDomain, Logger } from '@ohos/basicutils';
 import { DeviceHelper } from '@ohos/frameworkwrapper/src/main/ets/TsIndex';
-import { AIEffectVoiceCancelNotifyManager } from './AIEffectVoiceCancelNotifyManager';
+import { EffectVoiceCancelNotifyManager } from './EffectVoiceCancelNotifyManager';
 import { NotDisturbTimerManager } from './NotDisturbTimerManager';
 import { SoundPermissionManager } from './SoundPermissionManager';
 
@@ -58,7 +58,7 @@ export class PanelManager {
       this.baseList.push(NotDisturbTimerManager.getInstance());
     }
     this.baseList.push(SoundPermissionManager.getInstance());
-    this.baseList.push(AIEffectVoiceCancelNotifyManager.getInstance());
+    this.baseList.push(EffectVoiceCancelNotifyManager.getInstance());
   }
 
   public static getInstance(): PanelManager {

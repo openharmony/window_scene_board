@@ -20,6 +20,7 @@ import {
   DesktopParam,
   FormCommonUtil,
   FormLocation,
+  FormRelationManager,
   GridLayoutItemInfo,
   GridLayoutUtil,
   launcherAbilityManager,
@@ -427,6 +428,10 @@ export class DesktopPreviewViewModel {
    * @returns true:需要 false:不需要
    */
   private cardNeedTextColor(mFormItem: GridLayoutItemInfo): boolean {
+    if (FormRelationManager.getInstance().isSceneBoardCard(mFormItem.bundleName, mFormItem.cardName)) {
+      Log.showInfo(TAG, `cardNeedTextColor cardId:${mFormItem.cardId}} is sceneBoard card `);
+      return false;
+    }
     let isWeatherCard = mFormItem.cardName === PreviewConstants.CLOCK_WEATHER_CARD_NAME &&
       mFormItem.bundleName === PreviewConstants.CLOCK_WEATHER_BUNDLE_NAME;
     if (!isWeatherCard) {

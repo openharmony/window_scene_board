@@ -77,8 +77,8 @@ const COLLABORATION_SERVICE_NAME_LIST: string[] = [
   'DeviceCollaboration-Dual',
   'DeviceCollaboration-ExtensionScreen',
   // 无线投屏
-  'HuaweiCast-Dual',
-  'HuaweiCast',
+  'OhosCast-Dual',
+  'OhosCast',
   'Miracast',
 ];
 

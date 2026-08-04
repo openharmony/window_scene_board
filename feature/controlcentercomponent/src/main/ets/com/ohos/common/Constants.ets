@@ -210,9 +210,22 @@ export enum ToggleDragState {
     DRAGGING_CANCEL
 }
 
-// 固定显示头部区域开关
-export const FIXED_TOP_TOGGLES: string[] =
-    [FASlotName.MEDIA_ITEM_NAME, FASlotName.WIFI_UI_EXTENSION, FASlotName.BLUETOOTH_UI_EXTENSION];
+// 顶栏无固定项，媒体/亮度/音量均由用户编辑添加
+export const FIXED_TOP_TOGGLES: string[] = [];
+
+/**
+ * 媒体行固定槽位顺序：媒体 | 亮度音量组合（添加后位置固定）
+ */
+export const MEDIA_ROW_TOP_TOGGLES: string[] = [
+  FASlotName.MEDIA_ITEM_NAME,
+  FASlotName.COMBINED_SLIDER
+];
+
+/** 旧版拆分的亮度/音量槽位，需迁移为 combined_slider */
+export const LEGACY_SLIDER_TOP_TOGGLES: string[] = [
+  FASlotName.BRIGHTNESS,
+  FASlotName.SOUND
+];
 
 // 2*2尺寸开关列表
 export const TOGGLE_LIST_OF_2_2: string[] = [FASlotName.MEDIA_ITEM_NAME, FASlotName.COMBINED_SLIDER];

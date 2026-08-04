@@ -31,7 +31,7 @@ import {
   GridLayoutItemBuilder,
   GridLayoutItemInfo,
   AppItemInfo,
-  FormRelationManager
+  FormRelationManager,
 } from '@ohos/launchercommon';
 import { FormStackAnimate } from '../../../../../main/ets/viewmodel/FormStackAnimate';
 import { FormStackEvent } from '../../../../../main/ets/viewmodel/FormStackEvent';
@@ -133,6 +133,56 @@ export function FormStackEventTest() {
       } catch (e) {
         expect(JSON.stringify(e)).assertInstanceOf('String');
       }
+    });
+
+    it('getAppName', 0, () => {
+      let mockKit = new MockKit();
+      try {
+        const event: FormStackEvent = new FormStackEvent();
+        const formStackInfo = FormStackTestUtil.createFormStackItemInfo(FormStackTestUtil.TEST_FORM_STACK_ID);
+        expect(event.initData(formStackInfo, formStackInfo.layoutInfo[0], new FormStackAnimate())).assertTrue();
+
+        let mockFunc: Function =
+          mockKit.mockFunc(ResourceManager.getInstance(), ResourceManager.getInstance().getAppNameWithCache);
+        when(mockFunc)(ArgumentMatchers.any).afterReturn(undefined);
+        expect(event.getAppName({} as CardItemInfo, (name) => {
+        })).assertTrue();
+        expect(event.getAppName(formStackInfo.layoutInfo[0][0], (name) => {
+        })).assertTrue();
+
+        formStackInfo.layoutInfo[0][0].bundleName = 'com.ohos.suggestion';
+        expect(event.getAppName(formStackInfo.layoutInfo[0][0], (name) => {
+        })).assertTrue();
+
+        formStackInfo.layoutInfo[0][0].bundleName = '';
+        formStackInfo.layoutInfo[0][0].abilityName = 'ParentFormAbility';
+        expect(event.getAppName(formStackInfo.layoutInfo[0][0], (name) => {
+        })).assertTrue();
+
+        formStackInfo.layoutInfo[0][0].bundleName = 'com.ohos.suggestion';
+        event.getAppName(formStackInfo.layoutInfo[0][0], (name) => {
+          expect(name).assertEqual('');
+        });
+
+        const card = formStackInfo.layoutInfo[0][0];
+        card.abilityName = '';
+        card.appLabelId = Number(card.cardId);
+        card.cardName = 'appName';
+
+        let cards: CardItemInfo[] =
+          FormStackManager.getInstance().getFormStackSubCards(FormStackTestUtil.TEST_FORM_STACK_ID);
+        cards.push(card);
+
+        event.getAppName(card, (name) => {
+          expect(name).assertEqual('appName');
+        });
+
+        mockKit.clear(ResourceManager.getInstance());
+      } catch (e) {
+        expect(JSON.stringify(e)).assertInstanceOf('String');
+      }
+
+      mockKit.clearAll();
     });
 
     it('updateAppName', 0, () => {
@@ -1166,9 +1216,7 @@ export function FormStackEventTest() {
     });
 
     it('getAppNameFromCache_test01', 0, () => {
-      let mocker: MockKit = new MockKit();
       try {
-        when(mockFunc)(ArgumentMatchers.any).afterReturn(false);
         event.mFormItemList = itemList;
         (event as object)['getAppNameFromCache'](cardInfo);
         expect(event).not().assertUndefined();
@@ -1178,10 +1226,8 @@ export function FormStackEventTest() {
     });
 
     it('getAppNameFromCache_test02', 0, () => {
-      let mocker: MockKit = new MockKit();
       try {
         mFormStackItem.formStackId = 'a';
-        when(mockFunc)(ArgumentMatchers.any).afterReturn(true);
         event.mFormItemList = itemList;
         (event as object)['getAppNameFromCache'](cardInfo);
         expect(event).not().assertUndefined();

@@ -80,10 +80,14 @@ class LocalIconResources {
   public static readonly IC_BRIGHT_BATTERY_CHARGING_HIDESOC_ICON: Resource = $r('app.media.ic_bright_battery_charging_hidesoc');
   public static readonly IC_BRIGHT_BATTERY_NORMAL_ICON: Resource = $r('app.media.ic_bright_battery_normal');
   public static readonly IC_BRIGHT_BATTERY_CHARGING_SHOWSOC_ICON: Resource = $r('app.media.ic_bright_battery_charging_showsoc');
+  public static readonly IC_BRIGHT_BATTERY_SUPERCHARGING_SHOWSOC_ICON: Resource = $r('app.media.ic_bright_battery_supercharging_showsoc');
+  public static readonly IC_BRIGHT_BATTERY_SUPERCHARGING_HIDESOC_ICON: Resource = $r('app.media.ic_bright_battery_supercharging_hidesoc');
 
   public static readonly IC_DARK_BATTERY_CHARGING_HIDESOC_ICON: Resource = $r('app.media.ic_dark_battery_charging_hidesoc');
+  public static readonly IC_DARK_BATTERY_SUPERCHARGING_HIDESOC_ICON: Resource = $r('app.media.ic_dark_battery_supercharging_hidesoc');
   public static readonly IC_DARK_BATTERY_NORMAL_ICON: Resource = $r('app.media.ic_dark_battery_normal');
   public static readonly IC_DARK_BATTERY_CHARGING_SHOWSOC_ICON: Resource = $r('app.media.ic_dark_battery_charging_showsoc');
+  public static readonly IC_DARK_BATTERY_SUPERCHARGING_SHOWSOC_ICON: Resource = $r('app.media.ic_dark_battery_supercharging_showsoc');
   public static readonly IC_DARK_MENU_POWER_OFF_ICON: Resource = $r('app.media.menu_power_off_black');
   public static readonly IC_BRIGHT_MENU_POWER_OFF_ICON: Resource = $r('app.media.menu_power_off_white');
 }
@@ -218,11 +222,19 @@ export class PcResourceManager extends ResourceManager {
   private initImages(): void {
     this.batteryIcons = new Map<string, Resource>([
       [StaticVariables.IC_BRIGHT_BATTERY_CHARGING_HIDESOC, LocalIconResources.IC_BRIGHT_BATTERY_CHARGING_HIDESOC_ICON],
+      [StaticVariables.IC_BRIGHT_BATTERY_SUPERCHARGING_HIDESOC,
+        LocalIconResources.IC_BRIGHT_BATTERY_SUPERCHARGING_HIDESOC_ICON],
       [StaticVariables.IC_DARK_BATTERY_CHARGING_HIDESOC, LocalIconResources.IC_DARK_BATTERY_CHARGING_HIDESOC_ICON],
+      [StaticVariables.IC_DARK_BATTERY_SUPERCHARGING_HIDESOC,
+        LocalIconResources.IC_DARK_BATTERY_SUPERCHARGING_HIDESOC_ICON],
       [StaticVariables.IC_BARIGHT_BATTERY_NORMAL, LocalIconResources.IC_BRIGHT_BATTERY_NORMAL_ICON],
       [StaticVariables.IC_DARK_BATTERY_NORMAL, LocalIconResources.IC_DARK_BATTERY_NORMAL_ICON],
       [StaticVariables.IC_BRIGHT_BATTERY_CHARGING_SHOWSOC, LocalIconResources.IC_BRIGHT_BATTERY_CHARGING_SHOWSOC_ICON],
+      [StaticVariables.IC_BRIGHT_BATTERY_SUPERCHARGING_SHOWSOC,
+        LocalIconResources.IC_BRIGHT_BATTERY_SUPERCHARGING_SHOWSOC_ICON],
       [StaticVariables.IC_DARK_BATTERY_CHARGING_SHOWSOC, LocalIconResources.IC_DARK_BATTERY_CHARGING_SHOWSOC_ICON],
+      [StaticVariables.IC_DARK_BATTERY_SUPERCHARGING_SHOWSOC,
+        LocalIconResources.IC_DARK_BATTERY_SUPERCHARGING_SHOWSOC_ICON],
     ]);
   }
 

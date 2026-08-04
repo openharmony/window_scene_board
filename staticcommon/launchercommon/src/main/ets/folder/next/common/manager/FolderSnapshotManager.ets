@@ -41,6 +41,7 @@ import { FoldersData, FolderImageItemInfo } from '../model/data/FoldersData';
 import { ReceiveEventInfo } from '../../../../bean/ReceiveEventInfo';
 import { EventConstants as StaticEventConstants } from '@ohos/frameworkwrapper/src/main/ets/utils/EventManager';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { DeliverUtil } from '../../../../utils/DeliverUtil';
 import { ShortcutViewModel } from '../../../../launchericon/viewmodel/ShortcutViewModel'
 import { AppItemInfo } from '../../../../bean/AppItemInfo';
 import { AppInstallEventData } from '../../../../appinstall/AppInstallEventData';
@@ -609,6 +610,10 @@ export class FolderSnapshotManager {
         if (item.typeId === CommonConstants.TYPE_SHORTCUT_ICON) {
           await ShortcutViewModel.getInstance().getShortcutImageAsync(item as AppItemInfo);
           ShortcutViewModel.getInstance().getShortcutBackgroundImage(item as AppItemInfo);
+        } else {
+          IconResourceManager.getInstance().getCombIcon(item.bundleName, item.moduleName, item.abilityName, 0,
+            'CombIcon_SmallFolderImage', DeliverUtil.isSupportAppType(item.bundleName));
+          log.showInfo(TAG, `initAppIcon bundlename:${item?.bundleName} state: ${item?.appStatus}`);
         }
       } catch (error) {
         log.error(TAG, `initAppIcon bundlename:${item?.bundleName} error: ${error}`);

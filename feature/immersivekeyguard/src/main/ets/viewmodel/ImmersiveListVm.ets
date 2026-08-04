@@ -385,6 +385,28 @@ export class ImmersiveListVm {
     }
   }
 
+  /**
+   * 纯色模式下，由于模糊提亮关闭，需要单独适配AOD场景下通知列表背板颜色
+   */
+  updateBackColorForAod(): void {
+    if (!this.getSolidEnable()) {
+      return;
+    }
+
+    let aodStyle = immersiveKgMgr.getOneMirrorState().getAodStyle(true);
+    if (!aodStyle) {
+      return;
+    }
+    if (aodStyle.isAod) {
+      log.showInfo('updateBackColorForAod, in aod');
+      this.colorModeVM.isNeedShowBackColorForAod = true;
+    } else {
+      log.showInfo('updateBackColorForAod, exit aod');
+      this.colorModeVM.isNeedShowBackColorForAod = false
+      this.solidListener.onColorChange();
+    }
+  }
+
   getSolidColorListener(): SolidColorListener {
     return this.solidListener;
   }
@@ -526,7 +548,8 @@ export class ImmersiveListVm {
     bindState.setArea(newArea);
     // 列表高度变化，条目翻转效果动效过渡
     if (oldArea.height !== newArea.height) {
-      if (this.immersiveState?.isShowList()) {
+      const isAod = immersiveKgMgr.getOneMirrorState().getAodStyle(true)?.isAod;
+      if (this.immersiveState?.isShowList() && !isAod) {
         this.listAnimMgr?.onListHeightChange();
       }
       this.staticState.setListHeightChange(); // 高度已变化，清除标记
@@ -659,6 +682,7 @@ export class ImmersiveListVm {
    * @param ntfList 新的锁屏通知列表数据
    */
   updateListData(ntfList: Array<NotificationEntry>) {
+    let isAod = immersiveKgMgr.getOneMirrorState().getAodStyle(true)?.isAod;
     let isContentChange = ntfList && ntfList !== this.ntfList;
     // 列表参数初始化，不参与动效
     let delItem = this.initNtfList(ntfList);
@@ -669,7 +693,7 @@ export class ImmersiveListVm {
     };
 
     // 面板可见，非Aod，允许动效
-    if (this.immersiveState.isShowList() && UserSwitchService.getInstance().isCurrentUserActive) {
+    if (this.immersiveState.isShowList() && !isAod && UserSwitchService.getInstance().isCurrentUserActive) {
       let animParam: AnimateParam = { duration: 350, curve: Curve.Friction };
       this.staticState.updateItemAnim(animParam); // 列表数据变化场景，翻转效果动效过渡
       animateTo(animParam, () => updateData());
@@ -677,7 +701,7 @@ export class ImmersiveListVm {
       updateData();
     }
     // 数据更新完移除item，熄屏或非列表态强制刷新堆叠效果
-    if (!this.checkDeleteItem(delItem, false)) {
+    if (!this.checkDeleteItem(delItem, isAod)) {
       this.listAnimMgr?.updateListAnimParas({
         offset: 0,
         isResolveWait: true

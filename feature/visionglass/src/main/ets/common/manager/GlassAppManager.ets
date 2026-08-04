@@ -17,6 +17,7 @@ import { LogDomain, LogHelper } from '@ohos/basicutils';
 import { EvtBus, AbilityStateChangedEvent } from '@ohos/frameworkwrapper';
 import { AbilityState } from '@ohos/systemuicommon';
 import { BusinessError } from '@kit.BasicServicesKit';
+import xrGlassesAppService from '@hms.xrGlassesService.xrGlassesAppService';
 
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.VISION_GLASS, 'GlassAppManager');
 
@@ -29,6 +30,18 @@ export class GlassAppManager {
     if (event.bundleName === this.glassName && event.state === AbilityState.ABILITY_STATE_TERMINATED &&
       event.abilityName === this.abilityName) {
       log.showInfo(`GlassAppStatusChangeEvent state is ${event.state}`);
+      try {
+        const MIRROR_MODE_ID: number = 0;
+        xrGlassesAppService.setSpaceMode(MIRROR_MODE_ID)
+          .then((result: number) => {
+            log.showInfo(`setSpaceMode mirror success,result is ${result}`);
+          })
+          .catch((err: BusinessError) => {
+            log.showError(`setSpaceMode mirror fail,error is ${err.code}`);
+          })
+      } catch (err) {
+        log.showError(`setSpaceMode mirror fail2,error is ${err.code}`);
+      }
     }
   }
 

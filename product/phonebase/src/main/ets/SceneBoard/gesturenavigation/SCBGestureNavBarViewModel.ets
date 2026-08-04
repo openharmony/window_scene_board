@@ -31,20 +31,27 @@ import {
   scbEventExclusiveManager,
   scbGestureManager,
   SCBRotateChangeReason,
+  SCBSceneSessionManager,
   SCBScreenProperty,
   SCBScreenSessionManager
 } from '@ohos/windowscene';
+import { BaseViewController } from '@ohos/frameworkcommon';
 import { CommonConstants, EventConstants, SystemBarChangeType, vibratorMgr } from '@ohos/launchercommon';
+import { SCBNaviBarConstants } from '../naviBar/SCBNaviBarConstants';
 import { SendTouchEventController } from '@ohos/windowscene/Index';
 import { SCBSingleHandController, SingleHandStatusChangeCallback, SingleHandMode } from '../scenemanager/onehandmode/SCBSingleHandController';
 import singletonBackViewModel from './back/viewmodel/SCBGestureBackViewModel';
+import { NAVIBarViewData } from '../naviBar/NAVIBarModel/NAVIBarViewData';
+import { NAVIBarData } from '../naviBar/NAVIBarModel/NAVIBarData';
+import { NAVIBarViewModel } from '../naviBar/NAVIBarModel/NAVIBarViewModel';
 import { SCBScenePanelFSM } from '../recent/scenepanel/SCBScenePanelFSM';
 import { ScenePanelStates } from '../recent/scenepanel/ScenePanelStates';
+import { ArkUIAdapter } from '@ohos/systemuicommon/src/main/ets/utils/ArkUIAdapter';
 import { NavbarWindowManager } from './navbar/viewmodel/NavbarWindowManager';
 
 const TAG = 'SCBGestureNavBarViewModel';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.GESTURE, TAG);
-const WindowHeight: number = 44;
+const NAVIBarWindowHeight: number = 44;
 
 export enum DragEventType {
   INIT,
@@ -62,7 +69,7 @@ export enum PanGestureType {
 
 export class NavbarPanGesture {
   public isFirstUpSlide: boolean = false;
-  private IsShowInStart_: boolean = false;
+  private naviBarIsShowInStart_: boolean = false;
   private gestureNavigationState_: GestureNavigationState = GestureNavigationState.START;
   private panGestureType_: PanGestureType = PanGestureType.DEFAULT;
   private sendTouchEventController_: SendTouchEventController | null = null;
@@ -85,11 +92,11 @@ export class NavbarPanGesture {
 
   /**
    * PanGesture.start时初始化参数
-   * @param IsShowInStart PanGesture.start时的导航条状态
+   * @param naviBarIsShowInStart PanGesture.start时的导航条状态
    */
-  public initParam(IsShowInStart: boolean): void {
+  public initParam(naviBarIsShowInStart: boolean): void {
     this.isFirstUpSlide = false;
-    this.IsShowInStart_ = IsShowInStart;
+    this.naviBarIsShowInStart_ = naviBarIsShowInStart;
     this.gestureNavigationState_ = GestureNavigationState.START;
     this.panGestureType_ = PanGestureType.DEFAULT;
   }
@@ -99,7 +106,8 @@ export class NavbarPanGesture {
    * @param screenProperty PanGesture.start时的屏幕参数
    */
   public checkAndSetPerationType(screenProperty: SCBScreenProperty): void {
-    if ((this.navBarViewModel_.checkEnableAntiTouchStatus())) {
+    if (!this.naviBarIsShowInStart_ && (this.navBarViewModel_.checkEnableAntiTouchStatus() ||
+    NAVIBarViewModel.getInstance(screenProperty).isConfigureMisTouchAppActive())) {
       log.showInfo('panGestureType is GAME_OPERATE');
       this.panGestureType_ = PanGestureType.GAME_OPERATE;
     } else {
@@ -140,6 +148,8 @@ export class SCBGestureNavBarViewModel {
   private hasDisabledScreenRotate: boolean = false;
   private gestureDockCallback: Function | undefined;
   private windowManager_: NavbarWindowManager = new NavbarWindowManager();
+  private naviBarViewData: NAVIBarViewData = NAVIBarViewData.getInstance();
+  private naviBarData: NAVIBarData = NAVIBarData.getInstance();
   public screenRotation: number = CommonConstants.INVALID_VALUE;
 
   static getInstance(): SCBGestureNavBarViewModel {
@@ -214,8 +224,8 @@ export class SCBGestureNavBarViewModel {
    * @returns 判断结果
    */
   public checkEnableAntiTouchStatus(): boolean {
-    log.showInfo(`checkGameStatus:${this.checkGameStatus()}`);
-    return this.checkGameStatus();
+    log.showInfo(`checkGameStatus:${this.checkGameStatus()}, isShowingNaviBar:${!this.naviBarViewData.isShowingNaviBar}`);
+    return this.checkGameStatus() && !this.naviBarViewData.isShowingNaviBar;
   }
 
   /**
@@ -224,7 +234,7 @@ export class SCBGestureNavBarViewModel {
    * @returns 判断结果
    */
   public checkGameStatus(): boolean {
-    return false;
+    return this.naviBarData.gameStatusMap.size > 0;
   }
 
   /**
@@ -234,7 +244,7 @@ export class SCBGestureNavBarViewModel {
    */
   public getWindowHeight(animMaxHeight: number): number {
     // dock区高度与导航条长按高度比较
-    return Math.max(animMaxHeight, Math.floor(vp2px(WindowHeight)));
+    return Math.max(animMaxHeight, Math.floor(vp2px(NAVIBarWindowHeight)));
   }
 
   /**

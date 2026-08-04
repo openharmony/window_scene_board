@@ -55,6 +55,7 @@ const log = LogHelper.getLogHelper(LogDomain.SCB, TAG);
 const DEFAULT_INIT_TIMES = 5;
 const WAIT_SWITCH_INTERVAL = 100;
 const sleep = (delay: number): Promise<number> => new Promise((resolve) => setTimeout(resolve, delay));
+const AI_INPUT_BUNDLE_NAME: string = 'com.ohos.inputmethod';
 const SETTINGS_INPUTMETHOD_KEY = 'settings.input.ACTIVATED_AND_ADDED_INPUT_METHOD_SUB_MODE';
 
 export class InputMethodPanelViewModel {
@@ -688,7 +689,28 @@ export class InputMethodPanelViewModel {
         return;
       }
       let subType = subTypeList[0];
-      this.dealInputMethod(subTypeList);
+      if (subType.name === AI_INPUT_BUNDLE_NAME) {
+        let inputMethodSubTypeListStr = '';
+        try {
+          inputMethodSubTypeListStr = settings.getValueSync(this.context, SETTINGS_INPUTMETHOD_KEY, '');
+        } catch (err) {
+          log.showError('Failed to getValueSync code:' + err?.code + ', message:' + err?.message);
+        }
+        if (CheckEmptyUtils.isEmpty(inputMethodSubTypeListStr)) {
+          log.error('can not find inputMethodSubType from setting database');
+          this.dealInputMethod(subTypeList);
+          return;
+        }
+        let inputMethodSubTypeList: InputMethodSubtype[] = [];
+        try {
+          inputMethodSubTypeList = JSON.parse(inputMethodSubTypeListStr);
+        } catch (err) {
+          log.showError('Failed to parse code:' + err?.code + ', message:' + err?.message);
+        }
+        this.dealInputMethod(inputMethodSubTypeList);
+      } else {
+        this.dealInputMethod(subTypeList);
+      }
     } catch (err) {
       log.showError('Failed to listInputMethodSubtype code:' + err?.code + ', message:' + err?.message);
     }

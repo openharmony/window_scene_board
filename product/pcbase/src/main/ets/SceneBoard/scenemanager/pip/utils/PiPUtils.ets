@@ -23,6 +23,7 @@ import { RotationConstants } from '@ohos/commonconstants';
 import { Constants, PipRectUpdateReason } from './PictureInPictureConstants';
 import sceneSessionManager from '@ohos.sceneSessionManager';
 import { SCBPiPManager } from '../SCBPiPManager';
+import { LayoutViewModel } from '@ohos/launchercommon';
 
 const TAG = 'PipRectCalculator';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.WINDOW, TAG);
@@ -123,12 +124,31 @@ export class PipRectCalculator {
   }
 
   public getDockHeight(screenId: number): number {
-    let dockHeight: number = 0
+    let dockHeight = 0;
+
+    // 尝试通过 SCBSceneSessionManager 获取
     let dock = SCBSceneSessionManager.getInstance()
       .getSystemSceneSessionWithSystemBarType(SystemBarType.SMART_DOCK, screenId);
     if (dock) {
       dockHeight = dock.currRect.height.getPx();
+      log.showInfo(`${TAG} Dock height from session: ${dockHeight}`);
+      return dockHeight;
     }
+
+    // 尝试通过 LayoutViewModel 获取
+    try {
+      const layoutViewModel = LayoutViewModel.getInstance();
+      const dockHeightVp = layoutViewModel.getDockHeight();
+      dockHeight = vp2px(dockHeightVp);
+      log.showInfo(`${TAG} Dock height from LayoutViewModel: ${dockHeight}`);
+      return dockHeight;
+    } catch (error) {
+      log.showError(`${TAG} Get dock height via LayoutViewModel failed: ${error}`);
+    }
+
+    // 使用硬编码默认值兜底
+    dockHeight = 99;
+    log.showInfo(`${TAG} Dock not found, using default height: ${dockHeight}`);
     return dockHeight;
   }
 

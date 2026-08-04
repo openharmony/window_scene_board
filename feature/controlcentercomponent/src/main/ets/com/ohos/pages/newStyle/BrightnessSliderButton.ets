@@ -100,7 +100,9 @@ export default struct BrightnessSliderButton {
 
   aboutToAppear(): void {
     this.updateViewData();
-    this.animViewData.useLottieData = this.isLottieDataReady;
+    this.animViewData.useLottieData = false;
+    this.animViewData.useSymbol = true;
+    this.animViewData.sliderIcon = $r('sys.symbol.sun_max');
     if (this.isSingleFoldStyle) {
       this.viewData.setSingleFoldSliderButtonViewData();
     } else if (this.isLongSliderButton) {
@@ -110,8 +112,9 @@ export default struct BrightnessSliderButton {
   }
 
   lottieDataReady(): void {
-    this.viewModel.loadLottieData(this.isLottieDataReady);
-    this.animViewData.useLottieData = this.isLottieDataReady;
+    this.animViewData.useLottieData = false;
+    this.animViewData.useSymbol = true;
+    this.animViewData.sliderIcon = $r('sys.symbol.sun_max');
   }
 
   onPhysicsValueChanged() {

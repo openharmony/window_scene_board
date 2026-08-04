@@ -30,11 +30,11 @@ import { SystemUICcmConfig } from '@ohos/systemuicommon/src/main/ets/utils/Syste
 import { StatusBarChangeType } from '@ohos/systemuicommon/src/main/ets/live/model/LiveCommonModel';
 import { LiveStyle } from '@ohos/systemuicommon/src/main/ets/live/constants/LiveStyle';
 import lazy {
-  UltraScreenAnimationConstants
-} from '@ohos/launchercommon/src/main/ets/constants/UltraScreenAnimationConstants';
+  TripleFoldAnimationConstants
+} from '@ohos/launchercommon/src/main/ets/constants/TripleFoldAnimationConstants';
 import lazy {
   SCBTripleStateChange,
-} from '@ohos/launchercommon/src/main/ets/utils/UltraScreenExpandAnimUtils';
+} from '@ohos/launchercommon/src/main/ets/utils/TripleFoldExpandAnimUtils';
 import { RTLUtil } from '@ohos/componenthelper';
 import { display } from '@kit.ArkUI';
 // instrument ignore file
@@ -231,8 +231,8 @@ export class StatusBarAnimVm extends StatusBarBaseVm implements IStatusBarAnimVm
     Promise<void> {
     this.updateTranslateDelta(stateChange, orientation, screenChangeDelta);
     await this.animateIconTranslate.executeAnimation([{
-      curve: UltraScreenAnimationConstants.TRANSLATE_CURVES,
-      duration: UltraScreenAnimationConstants.STATUS_BAR_TRANSLATE_DURATION,
+      curve: TripleFoldAnimationConstants.TRANSLATE_CURVES,
+      duration: TripleFoldAnimationConstants.STATUS_BAR_TRANSLATE_DURATION,
       event: () => {
         if (this.leftGroupTranslateX !== 0) {
           this.leftGroupTranslateX = 0;

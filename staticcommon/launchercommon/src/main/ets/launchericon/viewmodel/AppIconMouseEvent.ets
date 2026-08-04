@@ -20,6 +20,7 @@ import { AppItemInfo } from '../../bean/AppItemInfo';
 import { AppIconConfig } from '../config/AppIconConfig';
 import { AppIconData } from './AppIconData';
 import { AppIconMenuEvent } from './AppIconMenuEvent';
+import { DomainName, TraceUtil } from '@ohos/basicutils';
 
 const TAG = 'AppIconMouseEvent';
 const log: Logger = Logger.getLogHelper(LogDomain.ICON);
@@ -75,13 +76,15 @@ export class AppIconMouseEvent implements AppIconMouseEventIface {
       log.showError(TAG, 'onMouseButtonRight failed, itemInfo or iconData or iconMenuEvent is invalid!');
       return;
     }
-
-    this.iconMenuEvent.setMenuInfo(this.appIconConfig?.externCb?.getMenuInfo,
-      this.appIconConfig?.externCb?.getNotInstalledMenuMap);
-    if (launcherStatusUtil.getShowOutLauncherStatus()) {
-      this.iconMenuEvent.setOuterAppMenuPosition(this.itemInfo);
+    log.showInfo(TAG, `menuInfoList1: ${this.iconMenuEvent?.getMenuInfo()?.length}` )
+    if (!this.iconMenuEvent?.getMenuInfo() || this.iconMenuEvent?.getMenuInfo()?.length < 1) {
+      this.iconMenuEvent?.setMenuInfo(this.appIconConfig?.externCb?.getMenuInfo,
+        this.appIconConfig?.externCb?.getNotInstalledMenuMap);
+    }
+    if (launcherStatusUtil.getShowOutLauncherStatus() && this.itemInfo) {
+      this.iconMenuEvent?.setOuterAppMenuPosition(this.itemInfo);
     } else {
-      this.iconMenuEvent.setAppMenuPosition(event?.displayX, this.iconData.iconId);
+      this.iconMenuEvent?.setAppMenuPosition(event?.displayX, this.iconData?.iconId as string);
     }
   };
 }

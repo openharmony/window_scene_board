@@ -26,8 +26,10 @@ import {
   NavigationType,
   GestureNavigationEvent,
 } from '@ohos/windowscene';
+import { NAVIBarData } from '../../../naviBar/NAVIBarModel/NAVIBarData';
 import { gestureNavBarSettings } from '@ohos/gesturenavigation/src/main/ets/GestureNavBarSettings';
 import { SystemSceneConstants } from '../../SystemSceneConstants';
+import { SCBNaviBarConstants } from '../../../naviBar/SCBNaviBarConstants';
 import { ScenePanelState } from '../../../scenemanager/SCBScenePanel';
 
 const TAG = 'NavbarWindowManager';
@@ -294,7 +296,8 @@ export class NavbarWindowManager {
     log.showInfo(`windowHeight:${this.windowHeight},hotAreaHeight:${this.responseRegionHeight},hotAreaHeightPx:${hotAreaHeightPx},extraHeight:${this.extraHeight}`);
     let regionWidth: number = this.windowWidth;
     if (this.isWindowHorizontalFullScreen) {
-      regionWidth = Math.ceil(vp2px(280));
+      regionWidth = Math.ceil(vp2px(Math.max(NAVIBarData.getInstance().naviBarWidth,
+        SCBNaviBarConstants.HOT_AREA_WIDTH)));
     }
     let regions: Rectangle[] = [{
       x: (this.windowWidth - regionWidth) / 2,

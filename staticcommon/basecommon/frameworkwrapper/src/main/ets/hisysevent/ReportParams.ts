@@ -27,9 +27,9 @@ export enum DisPlayMode {
   BAR_DEVICE,
   FOLD_DEVICE_EXPAND,
   FOLD_DEVICE_UNEXPAND,
-  ULTRA_SCREEN_DEVICE_F,
-  ULTRA_SCREEN_DEVICE_M,
-  ULTRA_SCREEN_DEVICE_G
+  TRIPLE_FOLD_DEVICE_F,
+  TRIPLE_FOLD_DEVICE_M,
+  TRIPLE_FOLD_DEVICE_G
 }
 
 export enum WindowStateChangeMode {
@@ -839,6 +839,7 @@ export class DesktopInformation {
   BAREICONNUMBER: number;
   BARESHORTCUTICONNUMBER: number;
   DESKTOPLAYOUT: string;
+  HISEARCHSTATUS: boolean;
   AUTOALIGNSTATUS: boolean;
 }
 
@@ -870,6 +871,20 @@ export class ClickAppIconParams {
   APP_INDEX?: number;
   ISLIGHTING?: string;
   LIGHTINGTIME?: string;
+}
+
+export class deliverDialogOpenParams {
+  PNAMEID?: string;
+  PVERSIONID?: string;
+  BUNDLENAME?: string;
+}
+
+export class deliverDialogOperationParams {
+  PNAMEID?: string;
+  PVERSIONID?: string;
+  BUNDLENAME?: string;
+  DIALOGTYPE?: number;
+  OPERATION?: string;
 }
 
 export class ClickAppIconInstallBean {
@@ -1217,7 +1232,7 @@ export class FolderSizeModifyParams {
   FOLDERCONTENT?: string;
   FOLDERID?: string;
   ISHIFOLDER?: boolean;
-  FOLDERTYPE?: number; // 0-普通文件夾, 1-非OpenHarmony化
+  FOLDERTYPE?: number; // 0-普通文件夾, 1-非鸿蒙化, 2-, 3-
 }
 
 export class FolderSizeModifyBean {
@@ -1729,7 +1744,7 @@ export class DesktopRightMenuParams {
   MENU_TYPE?: number;
 }
 
-export class BigScreenSwipeChangeParams {
+export class SuperFoldSwipeChangeParams {
   PNAMEID: string;
   PVERSIONID: string;
   SWIPER_METHOD?: number;
@@ -1782,7 +1797,7 @@ export class GestureQuickSwitchParams {
   TO_IS_MIDSCENE?: number;
 }
 
-export class OnClickAIBarParams {
+export class OnClickNAVIBarParams {
   PNAMEID?: string;
   PVERSIONID?: string;
   IS_ON?: boolean;
@@ -1871,7 +1886,7 @@ export class SwitchComputerModeParams {
   PVERSIONID?: string = ReportParams.PROCESS_NAME;
 }
 
-export class AiBarSettingSwitchParams {
+export class NaviBarSettingSwitchParams {
   PNAMEID?: string;
   PVERSIONID?: string;
   SWITCH_TYPE?: string;
@@ -1993,6 +2008,25 @@ export enum MidSceneDisplayMode {
   FOLD_EXPANDED,
   PAD,
   TRIFOLD_EXPANDED
+}
+
+export enum ASplitDisplayMode {
+  OTHERS,
+  PAD,
+  FOLD_EXPANDED,
+  TRIFOLD_M,
+  TRIFOLD_G
+}
+
+export enum SplitBehavior {
+  INTENTION,
+  CAPSULE
+}
+
+export enum SplitReason {
+  INVALID,
+  FREQUENT_SWITCH,
+  NATURAL_SWITCH
 }
 
 export enum MidSceneDisplayModeFold {
@@ -2315,6 +2349,16 @@ export class SwitchingDesktopFourFingerSwipeParams {
   PVERSIONID: string;
   DURATION: number;
   DISTANCE: number;
+}
+
+export class SplitSceneParams {
+  PNAMEID?: string;
+  PVERSIONID?: string;
+  DISPLAYMODE?: number;
+  BEHAVIOR?: SplitBehavior;
+  REASON?: SplitReason;
+  PRIMARY?: string;
+  SECONDARY?: string;
 }
 
 export class ForceMultiWindowSwitchParams {

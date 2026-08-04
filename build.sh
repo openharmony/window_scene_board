@@ -200,26 +200,26 @@ function build() {
     mkdir build
     mkdir build/outputs
     mkdir build/outputs/SceneBoard
-    hvigorw assembleHap --mode module -p module=default_notificationmanagement --no-daemon -p debuggable=false -p build_mode=release -p hvigor-obfuscation=false
-    hvigorw assembleHap --mode module -p module=engineservice --no-daemon -p debuggable=false -p build_mode=release -p hvigor-obfuscation=false
-    hvigorw assembleHap --mode module -p module=themecomponent --no-daemon -p debuggable=false -p build_mode=release -p hvigor-obfuscation=false
-    hvigorw assembleHsp --mode module -p module=basecommon@default -p product=default --no-daemon -p debuggable=false -p build_mode=release -p hvigor-obfuscation=false
+    hvigorw assembleHap --mode module -p module=default_notificationmanagement --no-daemon -p debuggable=false -p build_mode=release -p hvigor-obfuscation=true
+    hvigorw assembleHap --mode module -p module=engineservice --no-daemon -p debuggable=false -p build_mode=release -p hvigor-obfuscation=true
+    hvigorw assembleHap --mode module -p module=themecomponent --no-daemon -p debuggable=false -p build_mode=release -p hvigor-obfuscation=true
+    hvigorw assembleHsp --mode module -p module=basecommon@default -p product=default --no-daemon -p debuggable=false -p build_mode=release -p hvigor-obfuscation=true
     cp ./feature/notification/notificationmanagement/build/default/outputs/default/default_notificationmanagement-phone_sceneboard-default-signed.hap ./build/outputs/SceneBoard/SceneBoard_NotificationManagement.hap
     cp ./feature/engineservice/build/default/outputs/default/engineservice-phone_sceneboard-default-signed.hap ./build/outputs/SceneBoard/SceneBoard_EngineService.hap
     cp ./feature/themecomponent/build/default/outputs/default/themecomponent-phone_sceneboard-default-signed.hap ./build/outputs/SceneBoard/SceneBoard_ThemeComponent.hap
     cp ./basecommon/build/default/outputs/default/basecommon-default-signed.hsp ./build/outputs/SceneBoard/basecommon.hsp
     if [ "${DT_TASK_FLAG}" == "fullCoverage" ] || [ "${DT_TASK_FLAG}" == "fullCoverageReboot" ];then
         echo "hvigorw phone_sceneboard"
-        hvigorw assembleHap --mode module -p module=phone_sceneboard --no-daemon -p debuggable=false -p build_mode=release -p ohos-test-coverage=true -p hvigor-obfuscation=false
+        hvigorw assembleHap --mode module -p module=phone_sceneboard --no-daemon -p debuggable=false -p build_mode=release -p ohos-test-coverage=true -p hvigor-obfuscation=true
         mv ./product/phone/build/default/outputs/default/phone_sceneboard-default-signed.hap ./product/phone/build/default/outputs/default/SceneBoard.hap
     else
-        hvigorw assembleHap --mode module -p module=phone_sceneboard --no-daemon -p debuggable=false -p build_mode=release -p hvigor-obfuscation=false
+        hvigorw assembleHap --mode module -p module=phone_sceneboard --no-daemon -p debuggable=false -p build_mode=release -p hvigor-obfuscation=true
     fi
     if [ "${DT_TASK_FLAG}" == "coverage" ] || [ "${DT_TASK_FLAG}" == "fullCoverage" ] || [ "${DT_TASK_FLAG}" == "fullCoverageReboot" ];then
         echo "hvigorw phone_sceneboard@ohosTest"
-        hvigorw --mode module -p module=phone_sceneboard@ohosTest packageTesting --no-daemon -p debuggable=false -p build_mode=release -p ohos-test-coverage=true -p hvigor-obfuscation=false
+        hvigorw --mode module -p module=phone_sceneboard@ohosTest packageTesting --no-daemon -p debuggable=false -p build_mode=release -p ohos-test-coverage=true -p hvigor-obfuscation=true
     else
-        hvigorw --mode module -p module=phone_sceneboard@ohosTest packageTesting --no-daemon -p debuggable=false -p build_mode=release -p hvigor-obfuscation=false
+        hvigorw --mode module -p module=phone_sceneboard@ohosTest packageTesting --no-daemon -p debuggable=false -p build_mode=release -p hvigor-obfuscation=true
     fi
     dtpinpeline_zip
 }
@@ -240,26 +240,26 @@ function build_pad() {
     mkdir build
     mkdir build/outputs
     mkdir build/outputs/SceneBoard
-    hvigorw assembleHap --mode module -p module=default_notificationmanagement --no-daemon -p debuggable=false -p build_mode=release -p hvigor-obfuscation=false
-    hvigorw assembleHap --mode module -p module=engineservice --no-daemon -p debuggable=false -p build_mode=release -p hvigor-obfuscation=false
-    hvigorw assembleHap --mode module -p module=themecomponent --no-daemon -p debuggable=false -p build_mode=release -p hvigor-obfuscation=false
-    hvigorw assembleHsp --mode module -p module=basecommon@default -p product=default --no-daemon -p debuggable=false -p build_mode=release -p hvigor-obfuscation=false
+    hvigorw assembleHap --mode module -p module=default_notificationmanagement --no-daemon -p debuggable=false -p build_mode=release -p hvigor-obfuscation=true
+    hvigorw assembleHap --mode module -p module=engineservice --no-daemon -p debuggable=false -p build_mode=release -p hvigor-obfuscation=true
+    hvigorw assembleHap --mode module -p module=themecomponent --no-daemon -p debuggable=false -p build_mode=release -p hvigor-obfuscation=true
+    hvigorw assembleHsp --mode module -p module=basecommon@default -p product=default --no-daemon -p debuggable=false -p build_mode=release -p hvigor-obfuscation=true
     cp ./feature/notification/notificationmanagement/build/default/outputs/default/default_notificationmanagement-phone_sceneboard-default-signed.hap ./build/outputs/SceneBoard/SceneBoard_NotificationManagement.hap
     cp ./feature/engineservice/build/default/outputs/default/engineservice-phone_sceneboard-default-signed.hap ./build/outputs/SceneBoard/SceneBoard_EngineService.hap
     cp ./feature/themecomponent/build/default/outputs/default/themecomponent-phone_sceneboard-default-signed.hap ./build/outputs/SceneBoard/SceneBoard_ThemeComponent.hap
     cp ./basecommon/build/default/outputs/default/basecommon-default-signed.hsp ./build/outputs/SceneBoard/basecommon.hsp
     if [ "${DT_TASK_FLAG}" == "fullCoverage" ] || [ "${DT_TASK_FLAG}" == "fullCoverageReboot" ];then
         echo "hvigorw pad_sceneboard"
-        hvigorw assembleHap --mode module -p module=pad_sceneboard --no-daemon -p debuggable=false -p build_mode=release -p ohos-test-coverage=true -p hvigor-obfuscation=false
+        hvigorw assembleHap --mode module -p module=pad_sceneboard --no-daemon -p debuggable=false -p build_mode=release -p ohos-test-coverage=true -p hvigor-obfuscation=true
         mv ./product/pad/build/default/outputs/default/pad_sceneboard-default-signed.hap ./product/pad/build/default/outputs/default/SceneBoard.hap
     else
-        hvigorw assembleHap --mode module -p module=pad_sceneboard --no-daemon -p debuggable=false -p build_mode=release -p hvigor-obfuscation=false
+        hvigorw assembleHap --mode module -p module=pad_sceneboard --no-daemon -p debuggable=false -p build_mode=release -p hvigor-obfuscation=true
     fi
     if [ "${DT_TASK_FLAG}" == "coverage" ] || [ "${DT_TASK_FLAG}" == "fullCoverage" ] || [ "${DT_TASK_FLAG}" == "fullCoverageReboot" ];then
         echo "hvigorw pad_sceneboard@ohosTest"
-        hvigorw --mode module -p module=pad_sceneboard@ohosTest packageTesting --no-daemon -p debuggable=false -p build_mode=release -p ohos-test-coverage=true -p hvigor-obfuscation=false
+        hvigorw --mode module -p module=pad_sceneboard@ohosTest packageTesting --no-daemon -p debuggable=false -p build_mode=release -p ohos-test-coverage=true -p hvigor-obfuscation=true
     else
-        hvigorw --mode module -p module=pad_sceneboard@ohosTest packageTesting --no-daemon -p debuggable=false -p build_mode=release -p hvigor-obfuscation=false
+        hvigorw --mode module -p module=pad_sceneboard@ohosTest packageTesting --no-daemon -p debuggable=false -p build_mode=release -p hvigor-obfuscation=true
     fi
     dtpinpeline_zip
 }
@@ -279,13 +279,13 @@ function build_pc() {
     mkdir build/outputs
     mkdir build/outputs/PCDockAndAppCenter
 
-    hvigorw assembleHap --mode module -p module=pc_sceneboard --no-daemon -p debuggable=false -p build_mode=release -p hvigor-obfuscation=false
+    hvigorw assembleHap --mode module -p module=pc_sceneboard --no-daemon -p debuggable=false -p build_mode=release -p hvigor-obfuscation=true
     mv ./product/pc/build/default/outputs/default/pc_sceneboard-default-signed.hap ./product/pc/build/default/outputs/default/SceneBoard.hap
     cp ./product/pc/build/default/outputs/default/SceneBoard.hap ./build/outputs/PCDockAndAppCenter/SceneBoard.hap
     if [ "${DT_TASK_FLAG}" == "coverage" ];then
-        hvigorw --mode module -p module=pc_sceneboard@ohosTest packageTesting --no-daemon -p debuggable=false -p build_mode=release -p ohos-test-coverage=true -p hvigor-obfuscation=false
+        hvigorw --mode module -p module=pc_sceneboard@ohosTest packageTesting --no-daemon -p debuggable=false -p build_mode=release -p ohos-test-coverage=true -p hvigor-obfuscation=true
     else
-        hvigorw --mode module -p module=pc_sceneboard@ohosTest packageTesting --no-daemon -p debuggable=false -p build_mode=release -p hvigor-obfuscation=false
+        hvigorw --mode module -p module=pc_sceneboard@ohosTest packageTesting --no-daemon -p debuggable=false -p build_mode=release -p hvigor-obfuscation=true
     fi
     dtpinpeline_zip
 }
@@ -306,11 +306,11 @@ function build_themeservice() {
     mkdir build/outputs/ThemeService
 
 
-    hvigorw assembleHap --mode module -p module=themeservice_core --daemon -p debuggable=false -p build_mode=release -p ohos-test-coverage=true -p hvigor-obfuscation=false
+    hvigorw assembleHap --mode module -p module=themeservice_core --daemon -p debuggable=false -p build_mode=release -p ohos-test-coverage=true -p hvigor-obfuscation=true
     mv ./feature/themeservice/themeservice_core/build/default/outputs/default/themeservice_core-phone_sceneboard-default-signed.hap ./feature/themeservice/themeservice_core/build/default/outputs/default/ThemeService.hap
 
 	if [ "${DT_TASK_FLAG}" == "coverage" ] || [ "${DT_TASK_FLAG}" == "fullCoverage" ];then
-	    hvigorw --mode module -p module=themeservice_core@ohosTest -p debuggable=false -p ohos-test-coverage=true hvigor-obfuscation=false assembleHap packageTesting  --parallel --incremental --no-daemon --stacktrace
+	    hvigorw --mode module -p module=themeservice_core@ohosTest -p debuggable=false -p ohos-test-coverage=true hvigor-obfuscation=true assembleHap packageTesting  --parallel --incremental --no-daemon --stacktrace
     else
       hvigorw --mode module -p module=themeservice_core@ohosTest packageTesting --no-daemon -p debuggable=false -p build_mode=release -p
 	fi

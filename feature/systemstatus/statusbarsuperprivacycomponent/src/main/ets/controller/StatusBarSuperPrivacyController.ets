@@ -20,7 +20,7 @@ import {
   PluginRequestEvent,
 } from '@ohos/frameworkwrapper';
 import { SuperPrivacyModeData } from '../common/Constants';
-// import superPrivacyManager from '@hms.security.superPrivacyManager';
+// import superPrivacyManager from '@ohos.security.superPrivacyManager';
 
 const TAG = 'StatusBarSuperPrivacyController';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.SYS_UI, TAG);

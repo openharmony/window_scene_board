@@ -22,6 +22,7 @@ import FormBorderItem from './FormBorderItem';
 import { clockLayoutHelper } from '../../clock/common/ClockLayoutHelper';
 import { AnyClock } from '../models/AnyClock';
 import { LogDomain, LogHelper } from '@ohos/basicutils';
+import { SCBSceneSessionManager } from '@ohos/windowscene';
 
 const TAG = 'FormBorderView';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.KG, TAG);
@@ -67,12 +68,14 @@ export default struct FormBorderView {
 
   @Consume holderInfo: FormPlaceHolderInfo;
   @State formHolders: FormPlaceHolderInfo[] = [];
+  @State contentColor: string = ''
 
   @State layoutOptions: GridLayoutOptions = GridLayoutOptionRet.getGridLayoutOptions(this.formViewModel,
     this.formHolders);
 
-  aboutToAppear(): void {
+  async aboutToAppear(): Promise<void> {
     this.updateForms();
+    this.contentColor = await SCBSceneSessionManager.getInstance().updateLockViewColor()
   }
 
   private onDisplayModeChanged(): void {
@@ -153,7 +156,8 @@ export default struct FormBorderView {
               itemWidth: this.gridWidth * item.dimensionX - 12,
               itemHeight: this.gridWidth - 12,
               isLightWallpaper: this.isLightWallpaper,
-              mainColorType: this.mainColorType
+              mainColorType: this.mainColorType,
+              contentColor: this.contentColor
             })
           }
           .transition(TransitionEffect.OPACITY.animation({

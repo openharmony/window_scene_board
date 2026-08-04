@@ -20,7 +20,8 @@ export class PluginPosUtils {
   }
 
   public static isBottomArea(pos: PluginPositionType | undefined): boolean {
-    return pos === PluginPositionType.BOTTOM_LEFT || pos === PluginPositionType.BOTTOM_RIGHT;
+    return pos === PluginPositionType.BOTTOM_LEFT || pos === PluginPositionType.BOTTOM_RIGHT ||
+      pos === PluginPositionType.ASSISTANT_VOICE;
   }
 
   public static isLeftArea(pos: PluginPositionType | undefined): boolean {
@@ -33,7 +34,8 @@ export class PluginPosUtils {
   }
 
   public static isRightArea(pos: PluginPositionType | undefined): boolean {
-    return pos === PluginPositionType.TOP_RIGHT || pos === PluginPositionType.BOTTOM_RIGHT;
+    return pos === PluginPositionType.TOP_RIGHT || pos === PluginPositionType.BOTTOM_RIGHT ||
+      pos === PluginPositionType.ASSISTANT_VOICE;
   }
 
 

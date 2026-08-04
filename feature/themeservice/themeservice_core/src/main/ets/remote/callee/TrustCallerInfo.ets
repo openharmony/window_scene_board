@@ -18,7 +18,7 @@ import { CallerInfo } from '@ohos/themeservicebase/Index';
 export const TRUST_PATH_LIST: string[] =
   ['/data/storage/', '/data/themes/a/', '/data/themes/b/', '/data/themes/s/', '/system/fonts/'];
 
-export const openharmony_APP: CallerInfo = {
+export const HW_APP: CallerInfo = {
   bundleName: 'com.ohos.thememanager',
   appIdentifier: '1173750081090759360'
 }

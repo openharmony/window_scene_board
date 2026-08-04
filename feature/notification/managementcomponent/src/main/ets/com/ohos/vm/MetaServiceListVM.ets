@@ -58,7 +58,7 @@ export class MetaServiceListVM {
   init(callback: (bundleInfoList: AppItem[]) => void): void {
     this.callback = callback;
     this.notificationManager.subscribeChangeEvent(this.onNotificationConfigChange);
-    this.getHuaweiIDState();
+    this.getOhosIDState();
     this.subscribeAccountEvent();
   }
 
@@ -101,16 +101,16 @@ export class MetaServiceListVM {
   /**
    * 获取账号登录状态
    */
-  private async getHuaweiIDState(): Promise<void> {
-    log.showInfo(`getHuaweiIDState start`);
+  private async getOhosIDState(): Promise<void> {
+    log.showInfo(`getOhosIDState start`);
     // try {
     //   const stateRequest: authentication.StateRequest = {
     //     idType: authentication.IdType.UNION_ID,
     //     idValue: '0',
     //   };
     //   const stateResult: authentication.StateResult =
-    //     await new authentication.HuaweiIDProvider().getHuaweiIDState(stateRequest);
-    //   log.showInfo(`getHuaweiIDState success, state: ${stateResult.state}`);
+    //     await new authentication.OhosIDProvider().getOhosIDState(stateRequest);
+    //   log.showInfo(`getOhosIDState success, state: ${stateResult.state}`);
     //   if (stateResult.state === authentication.State.UNLOGGED_IN) {
     //     this.metaServiceStateVM.isLoginAccount = false;
     //     this.metaServiceStateVM.isLoadProcessVisible = false;
@@ -119,7 +119,7 @@ export class MetaServiceListVM {
     //     this.refresh(true, true);
     //   }
     // } catch (err) {
-    //   log.error(`Failed to getHuaweiIDState`, err);
+    //   log.error(`Failed to getOhosIDState`, err);
     // }
   }
 
@@ -170,23 +170,23 @@ export class MetaServiceListVM {
     try {
       // this.metaServiceStateVM.isLoginLoading = true;
       // // 创建登录请求，并设置参数
-      // const loginRequest = new authentication.HuaweiIDProvider().createLoginWithHuaweiIDRequest();
+      // const loginRequest = new authentication.OhosIDProvider().createLoginWithOhosIDRequest();
       // // 用户是否需要登录授权，该值为true且用户未登录或未授权时，会拉起用户登录或授权页面
       // loginRequest.forceLogin = true;
       // // 用于防跨站点请求伪造
       // loginRequest.state = util.generateRandomUUID();
       //
       // const controller = new authentication.AuthenticationController(ContextManager.getContext());
-      // controller.executeRequest(loginRequest).then((response: authentication.LoginWithHuaweiIDResponse) => {
+      // controller.executeRequest(loginRequest).then((response: authentication.LoginWithOhosIDResponse) => {
       //   this.metaServiceStateVM.isLoginLoading = false;
       //   const state = response.state;
       //   if (state && loginRequest.state !== state) {
       //     log.showInfo(`executeRequest failed ${state}`);
-      //     this.loginHuaweiAccountReport(0);
+      //     this.loginOhosAccountReport(0);
       //     return;
       //   }
       //   log.showInfo(`executeRequest success`);
-      //   this.loginHuaweiAccountReport(1);
+      //   this.loginOhosAccountReport(1);
       // }).catch((err: BusinessError) => {
       //   log.error(`Failed to executeRequest`, err);
       //   this.metaServiceStateVM.isLoginLoading = false;
@@ -195,16 +195,16 @@ export class MetaServiceListVM {
       //       message: ResourceUtil.getStringSync($r('app.string.network_error')) ?? '',
       //     }, ToastType.DEFAULT);
       //   }
-      //   this.loginHuaweiAccountReport(0, err?.code);
+      //   this.loginOhosAccountReport(0, err?.code);
       // });
     } catch (err) {
       log.error(`Failed to onClickToLoginAccount`, err);
       this.metaServiceStateVM.isLoginLoading = false;
-      this.loginHuaweiAccountReport(0, err?.code);
+      this.loginOhosAccountReport(0, err?.code);
     }
   };
 
-  private async loginHuaweiAccountReport(loginState: 0 | 1, errorCode?: number): Promise<void> {
+  private async loginOhosAccountReport(loginState: 0 | 1, errorCode?: number): Promise<void> {
     try {
       const lazyLoader = await import('../common/NtfSettingSysEventReporter');
       lazyLoader?.NtfSettingSysEventReporter?.metaServiceToLoginAccount({
@@ -212,7 +212,7 @@ export class MetaServiceListVM {
         ERROR_CODE: errorCode,
       });
     } catch (err) {
-      log.error(`loginHuaweiAccountReport error: `, err);
+      log.error(`loginOhosAccountReport error: `, err);
     }
   }
 }

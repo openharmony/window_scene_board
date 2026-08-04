@@ -1,0 +1,11 @@
+{
+  "string":[
+    {
+      "name":"low_battery_tip",
+      "value":"バッテリー残量はわずか%sです。コンピュータを電源に接続するか、スリープモードに切り替えてください。",
+      "attr":{
+        "priority":"translate"
+      }
+    }
+  ]
+}

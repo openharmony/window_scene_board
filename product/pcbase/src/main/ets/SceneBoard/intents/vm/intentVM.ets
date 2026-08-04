@@ -105,6 +105,10 @@ export class IntentVM {
     return result;
   }
 
+  /**
+   * 语音助手未使用，暂时开放给测试
+   * @returns
+   */
   static async switchStatusBar(): Promise<insightIntent.ExecuteResult> {
     let result: insightIntent.ExecuteResult = { code: 0 };
     try {

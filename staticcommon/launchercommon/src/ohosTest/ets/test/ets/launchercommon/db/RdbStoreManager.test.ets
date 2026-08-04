@@ -433,6 +433,15 @@ export default function RdbStoreManagerTest() {
       done();
     });
 
+    it('test_getAllFormInfosForLightOutdoorMode', 0, async (done:Function) => {
+      try {
+        const instance: RdbStoreManager = RdbStoreManager.getInstance();
+        const formList: CardItemInfo[] = await instance.getAllFormInfosForLightOutdoorMode();
+        expect(formList.length).assertLargerOrEqual(0);
+      } catch (err) {}
+      done();
+    });
+
     it('test_getAllFormExceptStackInfos', 0, async (done: Function) => {
       try {
         const instance: RdbStoreManager = RdbStoreManager.getInstance();
@@ -2273,6 +2282,15 @@ export default function RdbStoreManagerTest() {
       done();
     });
 
+    it('test_deleteVoiceCardInfoByCardId', 0, async (done:Function) => {
+      try {
+        const instance: RdbStoreManager = RdbStoreManager.getInstance();
+        const cardId = '999';
+        await instance.deleteVoiceCardInfoByCardId(cardId);
+        expect(instance).not().assertUndefined();
+      } catch (err) {}
+      done();
+    });
 
     it('test_insertGridLayoutInfoWithCheck_01', 0, async (done:Function) => {
       try {
@@ -2415,6 +2433,21 @@ export default function RdbStoreManagerTest() {
       done();
     })
 
+    it('test_initVoiceInfoTable', 0, async (done:Function) => {
+      const instance: RdbStoreManager = RdbStoreManager.getInstance();
+      await instance.initVoiceInfoTable();
+      let mocker: MockKit = new MockKit();
+      let mockFunc: Function = mocker.mockFunc(rdbStoreHelper, rdbStoreHelper.executeSql);
+      when(mockFunc)(ArgumentMatchers.any).afterThrow('error');
+      try {
+        await instance.initVoiceInfoTable();
+      } catch (err) {}
+      mocker.clear(rdbStoreHelper);
+      mocker.clearAll();
+      expect(instance).not().assertUndefined();
+      done();
+    });
+
     it('test_updateIntelligentCardList', 0, async (done:Function) => {
       const instance: RdbStoreManager = RdbStoreManager.getInstance();
       let res: ValuesBucket = {
@@ -2425,6 +2458,15 @@ export default function RdbStoreManagerTest() {
       try {
         await RdbStoreManager.getInstance().updateIntelligentCardList('intelligent_card_lists', cardList);
         expect(res.name).assertEqual('anyString');
+      } catch (err) {}
+      done();
+    });
+
+    it('test_queryAllVoiceCardInfo', 0, async (done:Function) => {
+      const instance: RdbStoreManager = RdbStoreManager.getInstance();
+      try {
+        const retValue: Record<string, string>[] = await instance.queryAllVoiceCardInfo();
+        expect(retValue.length).assertLargerOrEqual(0);
       } catch (err) {}
       done();
     });
@@ -2585,6 +2627,73 @@ export default function RdbStoreManagerTest() {
       } catch (err) {}
       done();
     })
+
+    it('test_updateVoiceCardInfoMap', 0, async (done:Function) => {
+      try {
+        let a = 'test';
+        const instance: RdbStoreManager = RdbStoreManager.getInstance();
+        const voiceCardId: string = '9999';
+        const cardInfoCache: string = 'anyCacheValue';
+        await instance.updateVoiceCardInfoMap(voiceCardId, cardInfoCache);
+
+        await instance.updateVoiceCardInfoMap(voiceCardId, cardInfoCache);
+
+        let retCacheValue =  await instance.queryVoiceCardInfo(voiceCardId);
+        expect(a).assertEqual('test');
+
+        await instance.deleteVoiceCardInfoByCardId(voiceCardId);
+      } catch (err) {}
+      done();
+    });
+
+    it('test_updateVoiceCardInfoMap02', 0, async (done:Function) => {
+      const instance: RdbStoreManager = RdbStoreManager.getInstance();
+      try {
+        let ret: boolean = await instance.updateVoiceCardInfoMap('', 'anyCacheValue');
+        expect(ret).assertEqual(true);
+      } catch (err) {}
+      try {
+        let ret = await instance.updateVoiceCardInfoMap('9999', null);
+        expect(ret).assertEqual(true);
+      } catch (err) {}
+      try {
+        let ret = await instance.updateVoiceCardInfoMap('9999', undefined);
+        expect(ret).assertEqual(true);
+      } catch (err) {}
+      done();
+    })
+
+    it('test_queryVoiceCardInfo01', 0, async (done:Function) => {
+      const instance: RdbStoreManager = RdbStoreManager.getInstance();
+      const celiCardId: string = '214748364';
+      try {
+        let ret =await instance.queryVoiceCardInfo(celiCardId);
+        expect(ret).assertNull();
+      } catch (err) {}
+      try {
+        let ret =await instance.queryVoiceCardInfo('');
+        expect(ret).assertNull();
+      } catch (err) {}
+      done();
+    });
+
+    it('test_queryVoiceCardInfo02', 0, async (done:Function) => {
+      let a ='test';
+      const instance: RdbStoreManager = RdbStoreManager.getInstance();
+      const voiceCardId: string = '9999';
+      const cardInfoCache: string = 'testValue';
+      instance.initVoiceInfoTable();
+      const valueBucket: rdb.ValuesBucket = {
+        ['id']: voiceCardId,
+        ['voice_info']: cardInfoCache
+      };
+      try {
+        let changeRows = await RdbTaskPool.getInstance().insert(RdbStoreConfig.voiceCard.tableName, valueBucket);
+        let ret =await instance.queryVoiceCardInfo(voiceCardId);
+        expect(a).assertEqual('test');
+      } catch (err) {}
+      done();
+    });
 
     it('test_updateExtend1ByCardId01', 0, async (done:Function) => {
       const instance: RdbStoreManager = RdbStoreManager.getInstance();

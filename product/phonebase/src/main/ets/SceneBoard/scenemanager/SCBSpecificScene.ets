@@ -1,5 +1,5 @@
 /*
- * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -27,19 +27,25 @@ import {
   ACTIVE_STATUS_MAP,
   FocusChangeReason,
   SCBWindowRaiseReason,
-  SCBWindowShadowConfig
+  SCBWindowShadowConfig,
+  SCBSceneMode,
+  DragActivateScenario,
 } from '@ohos/windowscene';
 import { CommonUtils, LogDomain, LogHelper } from '@ohos/basicutils';
 import { SCBDefaultZIndex } from './SCBScreen';
+import performanceMonitor from '@ohos.arkui.performanceMonitor';
+import { SCBNaviBarConstants } from '../naviBar/SCBNaviBarConstants';
 import curves from '@ohos.curves';
 import { StyleConstants } from '@ohos/launchercommon'
 import ViewManagerPolicy, { ViewType } from '@ohos/frameworkwrapper/src/main/ets/manager/view/ViewManagerPolicy'
+import { viewMgrPolicy } from '@ohos/frameworkwrapper';
+import { SCBSystemSceneUtils } from '@ohos/pcmode';
 
 const TAG = 'SCBSpecificScene';
 const log = LogHelper.getLogHelper(LogDomain.WINDOW, TAG);
 
 export enum SCBSpecificZIndex {
-  INPUT_METHOD_ABOVE_SPLIT_SCENE = 10,
+  INPUT_METHOD_ABOVE_SPLIT_SCENE = 1903,
 }
 
 interface SCBSpecificSceneBuilderParam {
@@ -52,6 +58,7 @@ export struct SCBSpecificScene {
   @Link screenProperty: SCBScreenProperty;
   @ObjectLink rect: SCBSessionRect;
   private windowAnimationUtils: WindowAnimationUtils = WindowAnimationUtils.getInstance();
+  private resetAiPanelOpacityTimeoutTask: number = -1;
   @ObjectLink subSessionList: SCBSpecificSceneSessionList;
   @State isFollowParentWindowLayout: boolean = false;
   @ObjectLink parentRect: SCBSessionRect;
@@ -212,6 +219,9 @@ export struct SCBSpecificScene {
     const screenWidth = this.screenProperty.width;
     let targetPositionX = newRect.left.getPx();
     const targetWidth = newRect.width.getPx();
+    if (targetWidth >= screenWidth - 2) {
+      return 0;
+    }
     const leftThreshold = vp2px(StyleConstants.DEFAULT_AVOID_AREA) * 3;
     if (targetPositionX + targetWidth < leftThreshold) {
       log.showDebug(`onSessionRectChange, reaching left threshold: ${leftThreshold}`);
@@ -226,8 +236,13 @@ export struct SCBSpecificScene {
   }
 
   private handleTargetPositionYWithLimit(newRect: SCBSessionRect): number {
+    const screenHeight = this.screenProperty.height;
     let targetPositionY = newRect.top.getPx();
     // top area
+    const targetHeight = newRect.height.getPx();
+    if (targetHeight >= screenHeight - 2) {
+      return 0;
+    }
     const topArea = ViewManagerPolicy.getArea(ViewType.STATUS_BAR);
     const topThreshold = topArea ? vp2px(topArea.height + topArea.top) : 0;
     if (targetPositionY < topThreshold) {
@@ -292,6 +307,8 @@ export struct SCBSpecificScene {
       // use 'animateTo' to force update rect immediately
       let uiContext: UIContext = this.getUIContext();
       if (uiContext && reason === sceneSessionManager.SessionSizeChangeReason.DRAG_END) {
+        log.showInfo('onSessionRectChange: before animateTo, newRect: [' + newRect.left.getPx() + ', ' +
+          newRect.top.getPx() + ', ' + newRect.width.getPx() + ', ' + newRect.height.getPx() + ']');
         uiContext.animateTo({
           duration: 0
         }, () => {
@@ -305,9 +322,9 @@ export struct SCBSpecificScene {
       this.onMultiSubRectChange(newRect, reason);
       return;
     }
-    if (parentSession?.isPcAppInPad) {
-      this.springBackIfNeeded(reason, newRect);
-    }
+    log.showInfo('onSessionRectChange already delete');
+    log.showInfo('onSessionRectChange step5: before final setRect, newRect: [' + newRect.left.getPx() + ', ' +
+      newRect.top.getPx() + ', ' + newRect.width.getPx() + ', ' + newRect.height.getPx() + ']');
     this.rect && this.rect.setRect(newRect.left, newRect.top, newRect.width, newRect.height);
     log.showInfo('onSessionRectChange end, id: ' + this.specificSession.session.persistentId + ' reason: ' +
       reason + ', newRect: [' + newRect.left.getPx() + ', ' + newRect.top.getPx() + ', ' +
@@ -420,6 +437,35 @@ export struct SCBSpecificScene {
     });
   }
 
+  private onUpdateMaximizeRect(): void {
+    if (!this.specificSession) {
+      log.showError(`specificSession is null`);
+      return;
+    }
+    let isActive = ACTIVE_STATUS_MAP.get(this.specificSession?.sessionData?.sessionState);
+    if (isActive === true && this.specificSession?.windowMode === SCBSceneMode.FULLSCREEN) {
+      if (!this.screenProperty) {
+        log.showWarn('screenProperty is null.');
+        return;
+      }
+    }
+    let screenHeight = this.screenProperty.height;
+    let height = screenHeight;
+    let posY = 0;
+    let systemSceneSession = SCBSceneSessionManager.getInstance()
+      .getSystemSceneSessionWithSystemType(sceneSessionManager.SessionType.TYPE_STATUS_BAR);
+    if(!this.specificSession?.layoutFullScreen && systemSceneSession &&
+    viewMgrPolicy.isViewShowing(ViewType.STATUS_BAR)){
+      let statusbarHeight = SCBSystemSceneUtils.getInstance().getStatusBarHeightPx(this.screenProperty.screenId);
+      posY = Math.floor(statusbarHeight)
+      height = screenHeight - posY;
+      SCBSceneSessionManager.getInstance().fullScreenLayoutChange(true, this.specificSession?.screenId)
+    }
+    this.specificSession?.currRect.setSizeNum(this.screenProperty.width, height);
+    this.specificSession?.currRect.setPosNum(0, posY);
+    SCBSceneSessionManager.getInstance().updateSystemBarProperty()
+  }
+
   aboutToAppear(): void {
     log.showInfo('aboutToAppear, id: ' + this.specificSession?.session.persistentId +
       ', currRect: [' + this.specificSession?.currRect.left.getPx() + ', ' + this.specificSession?.currRect.top.getPx() + ', ' +
@@ -466,6 +512,9 @@ export struct SCBSpecificScene {
       log.showInfo('onSetWindowShadows in floating window, radius: ' + shadowsInfo.radius +
         'color: ' + shadowsInfo.color + 'offsetX: ' + shadowsInfo.offsetX + 'offsetY: ' + shadowsInfo.offsetY);
     });
+    this.specificSession?.registerUpdateMaximizeRectCallback(() =>{
+      this.onUpdateMaximizeRect();
+    });
   }
 
   aboutToDisappear() {
@@ -500,7 +549,7 @@ export struct SCBSpecificScene {
   onFollowParentWindowLayout(isFollow: boolean) {
     log.showInfo(`onFollowParentWindowLayout, isFollow: ${isFollow}`);
     this.isFollowParentWindowLayout = isFollow;
-    this.specificSession?.session.activateDragBySystem(!isFollow);
+    this.specificSession?.session.activateDragBySystem(DragActivateScenario.FOLLOW_PARENT_LAYOUT, !isFollow);
   }
 
   getSize(): SizeOptions {

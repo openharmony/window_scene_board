@@ -28,6 +28,7 @@ import SystemParameterUtilTest from './ets/launchercommon/utils/SystemParameterU
 import AppListStyleConfigTest from './ets/launchercommon/layoutconfig/AppListStyleConfig.test';
 import AppGridStyleConfigTest from './ets/launchercommon/layoutconfig/AppGridStyleConfig.test';
 import RdbTaskPoolTest from './ets/launchercommon/db/RdbTaskPool.test';
+import DirtyFormCorrectorTest from './ets/launchercommon/db/gridlayoutcorrector/DirtyFormCorrector.test';
 import DuplicateItemCorrectorTest from './ets/launchercommon/db/gridlayoutcorrector/DuplicateItemCorrector.test';
 import DuplicatePositionCorrectorTest from './ets/launchercommon/db/gridlayoutcorrector/DuplicatePositionCorrector.test';
 import FieldNotNullCorrectorTest from './ets/launchercommon/db/gridlayoutcorrector/FieldNotNullCorrector.test';
@@ -44,6 +45,7 @@ import CustomBadgeManagerTest from './ets/launchercommon/model/CustomBadgeManage
 import AtomicServiceAppModelTest from './ets/launchercommon/model/AtomicServiceAppModel.test';
 import ColorUtilTest from './ets/launchercommon/utils/ColorUtil.test';
 import ConfigParseUtilTest from './ets/launchercommon/utils/ConfigParseUtil.test';
+import DeliverUtilTest from './ets/launchercommon/utils/DeliverUtil.test';
 import IntentParseUtilTest from './ets/launchercommon/utils/IntentParseUtil.test';
 import MultiFingerPinchUtilTest from './ets/launchercommon/utils/MultiFingerPinchUtil.test';
 import SmallFolderIconFileUtilTest from './ets/launchercommon/utils/SmallFolderIconFileUtil.test';
@@ -97,6 +99,19 @@ import InsertInstructionTest from './ets/launchercommon/utils/differential/Inser
 import DeleteInstructionTest from './ets/launchercommon/utils/differential/DeleteInstruction.test';
 import UpdateFormStackItemInstructionTest from './ets/launchercommon/utils/differential/UpdateFormStackItemInstruction.test';
 import AddInstructionTest from './ets/launchercommon/utils/differential/AddInstruction.test';
+import TransferLayoutManagerTest from './ets/launchercommon/transformdata/TransferLayoutManager.test';
+import DataConvertTest from './ets/launchercommon/transformdata/DataConvert.test';
+import AppTransformItemTest from './ets/launchercommon/transformdata/transfromitem/AppTransformItem.test';
+import BaseTransformItemTest from './ets/launchercommon/transformdata/transfromitem/BaseTransformItem.test';
+import CardTransformItemTest from './ets/launchercommon/transformdata/transfromitem/CardTransformItem.test';
+import CombineCardTransformItemTest
+  from './ets/launchercommon/transformdata/transfromitem/CombineCardTransformItem.test';
+import FolderTransformItemTest from './ets/launchercommon/transformdata/transfromitem/FolderTransformItem.test';
+import ShortcutTransformItemTest from './ets/launchercommon/transformdata/transfromitem/ShortcutTransformItem.test';
+import StackCardTransformItemTest from './ets/launchercommon/transformdata/transfromitem/StackCardTransformItem.test';
+import TransformItemFactoryTest from './ets/launchercommon/transformdata/transfromitem/TransformItemFactory.test';
+import WidgetTransformItemTest from './ets/launchercommon/transformdata/transfromitem/WidgetTransformItem.test';
+import TransferFormRelationModelTest from './ets/launchercommon/transformdata/TransferFormRelationModel.test';
 import RestoreLauncherDataTest from './ets/launchercommon/service/impl/RestoreLauncherData.test';
 import CloneCloudServiceTest from './ets/launchercommon/service/CloneCloudService.test';
 import BaseControllerTest from './ets/launchercommon/model/BaseControllerTest.test';
@@ -104,6 +119,7 @@ import ViewManagerTest from './ets/launchercommon/manager/ViewManager.test';
 import VibratorManagerTest from './ets/launchercommon/manager/VibratorManager.test';
 import UpdateRdbManagerTest from './ets/launchercommon/manager/UpdateRdbManager.test';
 import TransferRelationManagerTest from './ets/launchercommon/manager/TransferRelationManager.test';
+import OhosSuperAdditionRelationManagerTest from './ets/launchercommon/manager/OhosSuperAdditionRelationManager.test';
 import ThemeStylePreviewManagerTest from './ets/launchercommon/manager/ThemeStylePreviewManager.test';
 import ThemeStyleManagerTest from './ets/launchercommon/manager/ThemeStyleManager.test';
 import TextShadowManagerTest from './ets/launchercommon/manager/TextShadowManager.test';
@@ -198,6 +214,7 @@ import OuterIconCenterViewManagerTest from './ets/launchercommon/manager/OuterIc
 import SmallFoldStyleUtilTest from './ets/launchercommon/utils/SmallFoldStyleUtil.test';
 import HighFrequencyCallStatisticsTest from './ets/launchercommon/db/HighFrequencyCallStatistics.test';
 import MultiSelectListenManagerTest from './ets/launchercommon/editmode/model/MultiSelectListenerManager.test';
+import TransformAppInfoManagerTest from './ets/launchercommon/transformdata/TransformAppInfoManager.test';
 import AppToHapMappingManagerTest from './ets/launchercommon/base/AppToHapMappingManager.test';
 import AppListInfoCacheManagerTest from './ets/launchercommon/cache/AppListInfoCacheManager.test';
 import ReplaceInstructionTest from './ets/launchercommon/utils/differential/ReplaceInstruction.test';
@@ -218,6 +235,7 @@ import GameCardInfoTest from './ets/launchercommon/bean/GameCardInfo.test';
 import Extend1DataTest from './ets/launchercommon/bean/Extend1Data.test';
 import FolderDebugTest from './ets/launchercommon/folder/dfx/debug/FolderDebug.test';
 import AddToFolderInstructionTest from './ets/launchercommon/utils/differential/AddToFolderInstruction.test';
+import LocalHapMigrateInfoTest from './ets/launchercommon/transformdata/LocalHapMigrateInfo.test';
 import BaseNodeParamsTest from './ets/launchercommon/buildernode/BaseNodeParams.test';
 import DesktopIconChangeManagerTest from './ets/launchercommon/manager/DesktopIconChangeManager.test';
 import RdbSqlHelpTest from './ets/launchercommon/db/RdbSqlHelp.test';
@@ -226,9 +244,11 @@ import DockUtilsTest from './ets/launchercommon/utils/DockUtils.test';
 import LauncherVisualEffectManagerTest from './ets/launchercommon/manager/LauncherVisualEffectManager.test';
 import MinorUpdateHandlerTest from './ets/launchercommon/db/MinorUpdateHandler.test';
 import NotHarmonyUtilTest from './ets/launchercommon/utils/NotHarmonyUtil.test';
+import BundleChangeCorrectorTest from './ets/launchercommon/db/gridlayoutcorrector/BundleChangeCorrector.test';
 import EmergencyThresholdManagerTest
   from './ets/launchercommon/desktopmode/eventmanager/EmergencyThresholdManager.test';
 import StartAndExitUtilTest from './ets/launchercommon/utils/StartAndExitUtil.test';
+import FormRelationManagerTest from './ets/launchercommon/transformdata/FormRelationManager.test';
 import LauncherBackupUtilTest from './ets/launchercommon/utils/LauncherBackupUtil.test';
 import { AppDataWrapperTest } from './ets/launchercommon/launchericon/common/AppDataWrapper.test';
 import { AppIconMsgKeyUtilTest } from './ets/launchercommon/launchericon/common/AppIconMsgKeyUtil.test';
@@ -239,16 +259,29 @@ import {
 import { AppIconContextMenuTest } from './ets/launchercommon/launchericon/viewmodel/AppIconContextMenu.test';
 import ExchangeInstructionTest from './ets/launchercommon/utils/differential/ExchangeInstruction.test';
 import AddCardToNewPageManagerTest from './ets/launchercommon/manager/AddCardToNewPageManager.test';
+import TransformControllerTest from './ets/launchercommon/transformdata/TransformController.test';
+import BaseTransferLayoutManagerTest from './ets/launchercommon/transformdata/BaseTransferLayoutManager.test';
+import OhosMigrateLayoutManagerTest from './ets/launchercommon/transformdata/OhosMigrateLayoutManager.test';
+import Hm2HmLayoutManagerTest from './ets/launchercommon/transformdata/Hm2HmLayoutManager.test';
+import OhosCloneLayoutManagerTest from './ets/launchercommon/transformdata/OhosCloneLayoutManager.test';
+import OhosLayoutManagerTest from './ets/launchercommon/transformdata/OhosLayoutManager.test';
+import { OuterAppManagerTest } from './ets/launchercommon/manager/OuterAppManagerTest.test';
+import CoverPositionOperatorTest from './ets/launchercommon/transformdata/operator/CoverPositionOperator.test';
+import ExtractOperatorTest from './ets/launchercommon/transformdata/operator/ExtractOperator.test';
 import SCBBlankPositionUtilsTest from './ets/launchercommon/utils/SCBBlankPositionUtils.test';
 import { PageDragActionTest } from './ets/launchercommon/editmode/viewModel/PageDragAction.test';
 import { PageDragManagerTest } from './ets/launchercommon/editmode/model/PageDragManager.test';
 import PageEditManagerTest from './ets/launchercommon/model/PageEditManager.test';
 import PageEditViewModelTest from './ets/launchercommon/viewmodel/PageEditViewModel.test';
+import BigFolderGuidanceSmartRemindViewModelTest
+  from './ets/launchercommon/folder/viewmodel/BigFolderGuidanceSmartRemindViewModel.test';
+import LogBatchPrintTest from './ets/launchercommon/transformdata/dfx/LogBatchPrint.test';
 import EmergencyEventManagerTest from './ets/launchercommon/desktopmode/eventmanager/EmergencyEventManager.test';
 import AppIconLongPressGestureEventTest
   from './ets/launchercommon/launchericon/viewmodel/AppIconLongPressGestureEvent.test';
 import { PreviewLayoutCheckToolTest } from "./ets/launchercommon/tools/PreviewLayoutCheckTool.test";
 import AppIconTouchEventTest from './ets/launchercommon/launchericon/viewmodel/AppIconTouchEvent.test';
+import DeliverAppStrategyPushConfigManagerTest from './ets/launchercommon/base/DeliverAppStrategyPushConfigManager.test';
 import LayoutCacheDiffUtilTest from './ets/launchercommon/cache/layout/LayoutCacheDiffUtil.test';
 import CollaborationEventManagerTest from './ets/launchercommon/manager/CollaborationEventManager.test';
 import AppIconClockEventTest from './ets/launchercommon/launchericon/viewmodel/AppIconClockEvent.test';
@@ -261,6 +294,7 @@ import AppIconResConfigTest from './ets/launchercommon/launchericon/viewmodel/Ap
 import AppIconGestureJudgeEventTest from './ets/launchercommon/launchericon/viewmodel/AppIconGestureJudgeEvent.test';
 import DesktopItemVibratorManagerTest from './ets/launchercommon/manager/DesktopItemVibratorManager.test';
 import SwiperPageManagerTest from './ets/launchercommon/viewmodel/SwiperPageManager.test';
+import NaviBarCloneCallbackManagerTest from './ets/launchercommon/manager/NaviBarCloneCallbackManager.test.est';
 
 export default function PipelineDemoSuite() {
   describe("sceneboard_framework",  () =>  {
@@ -274,6 +308,7 @@ export default function PipelineDemoSuite() {
     BitSetTest();
     AppShortcutLimitUtilsTest();
     MultiFingerPinchUtilTest();
+    DeliverUtilTest();
     ConfigParseUtilTest();
     PreviewLayoutCheckToolTest();
     MatchCardDataManagerTest();
@@ -344,6 +379,7 @@ export default function PipelineDemoSuite() {
     ThemeStyleManagerTest();
     ThemeStylePreviewManagerTest();
     TransferRelationManagerTest();
+    OhosSuperAdditionRelationManagerTest();
     UpdateRdbManagerTest();
     VibratorManagerTest();
     ViewManagerTest();
@@ -406,8 +442,12 @@ export default function PipelineDemoSuite() {
     DesktopIconChangeManagerTest();
     MinorUpdateHandlerTest();
     NotHarmonyUtilTest();
+    FormCenterViewManagerTest();
+    BundleChangeCorrectorTest();
+
     StartAndExitUtilTest();
     ExchangeInstructionTest();
+    DeliverAppStrategyPushConfigManagerTest();
   });
 
   describe("sceneboard_multitasks",  () =>  {
@@ -441,6 +481,7 @@ export default function PipelineDemoSuite() {
     FolderDataTest();
     FolderGestureDataTest();
     OpenFolderAppBubbleLayoutTest();
+    BigFolderGuidanceSmartRemindViewModelTest();
     FolderViewDataTest();
     FolderOpenSwipingStateTest();
     FolderItemStateDataTest();
@@ -458,12 +499,14 @@ export default function PipelineDemoSuite() {
     BatchUninstallChainTest();
     AbstractBatchUninstallerTest();
     DialogBatchUninstallerTest();
+    LongPressBatchUninstallerTest();
     RecoverBatchUninstallerTest();
     RemoveBatchUninstallerTest();
     MultiSelectManagerTest();
     EditModeReportManagerTest();
     MultiSelectListenManagerTest();
     MultiSelectCheckboxViewModelTest();
+    NaviBarCloneCallbackManagerTest();
     DesktopManagerTest();
     ScreenSplitUtilTest();
     NoIconAppModelTest();
@@ -480,15 +523,44 @@ export default function PipelineDemoSuite() {
     AppBubbleWrapperTest();
     FormComponentEventTest();
     FormComponentModelTest();
+    UIExtensionComponentEventTest();
+  });
+
+  describe("sceneboard_icon",  () =>  {
   });
 
   describe("sceneboard_shortcut", () => {
   })
 
   describe("launcher_components", () => {
+    DataConvertTest();
+    FormRelationManagerTest();
+    LocalHapMigrateInfoTest();
+    TransferFormRelationModelTest();
+    TransferLayoutManagerTest();
+    TransformAppInfoManagerTest();
+    TransformControllerTest();
+
+    AppTransformItemTest();
+    BaseTransformItemTest();
+    CardTransformItemTest();
+    CombineCardTransformItemTest();
+    FolderTransformItemTest();
+    ShortcutTransformItemTest();
+    StackCardTransformItemTest();
+    TransformItemFactoryTest();
+    WidgetTransformItemTest();
+    BaseTransferLayoutManagerTest();
+    LogBatchPrintTest();
+    OhosMigrateLayoutManagerTest();
+    Hm2HmLayoutManagerTest();
+    OhosCloneLayoutManagerTest();
+    OhosLayoutManagerTest();
     AddCardToNewPageManagerTest();
     CollaborationEventManagerTest();
     CloneItemInfoManagerTest();
+    CoverPositionOperatorTest();
+    ExtractOperatorTest();
     // ICON
     AppDataWrapperTest();
     AppIconModelTest();
@@ -513,6 +585,7 @@ export default function PipelineDemoSuite() {
     AppIconTouchEventTest();
     AppIconCloneBadgeEventTest();
     AppIconDragEventTest();
+    OuterAppManagerTest();
     AppIconResConfigTest();
     AppIconGestureJudgeEventTest();
     // Dock

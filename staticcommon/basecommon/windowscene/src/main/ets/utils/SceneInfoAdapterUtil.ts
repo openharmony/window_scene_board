@@ -21,16 +21,12 @@ const TAG: string = 'SceneInfoAdapterUtil';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.SCB, TAG);
 
 /**
- * adapter util
+ * Vassistant adapter util
  */
 export class SceneInfoAdapterUtil {
-  /**
-   * 桌面图标信息适配
-   */
   public static getAdapterSceneInfo(bundleName: string, moduleName: string, abilityName: string,
     appIndex?: number): SCBSceneInfo {
-    let sceneInfo: SCBSceneInfo;
-    sceneInfo = new SCBSceneInfo(bundleName, moduleName, abilityName, appIndex);
+    let sceneInfo: SCBSceneInfo = new SCBSceneInfo(bundleName, moduleName, abilityName, appIndex);
     const queryKey = `${bundleName}${moduleName}${abilityName}`;
     sceneInfo.launchType = SCBSceneSessionManager.getInstance().getAbilityLaunchType(queryKey);
     return sceneInfo;
@@ -54,6 +50,10 @@ export class SceneInfoAdapterUtil {
       log.showError(`getAdapterLabelId error, code: ${err.code}, message: ${err.message}`);
       return undefined;
     }
+  }
+
+  public static getAdapterBundleName(bundleName: string): string {
+    return bundleName;
   }
 
   public static getScreenLockInfo(sceneContainerSession: SCBSceneContainerSession): SCBSceneInfoFromScreenLock | null {

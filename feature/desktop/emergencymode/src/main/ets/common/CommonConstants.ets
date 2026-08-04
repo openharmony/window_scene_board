@@ -214,7 +214,7 @@ export class CommonConstants {
 
 }
 
-export class UltraScreenConstants {
+export class ThreeFoldConstants {
   /**
    * Grid number between icon of F
    */
@@ -296,18 +296,18 @@ export class UltraScreenConstants {
   public static readonly APP_GRID_GUTTER_Y = 32;
 
   /**
-   * App item width of folder in ULTRA SCREEN
+   * App item width of folder in THREE FOLD
    */
   public static readonly APP_WIDTH = 52;
 
   /**
-   * App item height of folder in ULTRA SCREEN
+   * App item height of folder in THREE FOLD
    */
   public static readonly APP_HEIGHT = 72;
 
 }
 
-export class AppSearchUltraScreenConstants {
+export class AppSearchThreeFoldConstants {
   /**
    * Emergency col num F
    */

@@ -13,14 +13,15 @@
  * limitations under the License.
  */
 
-import { CheckEmptyUtils, LogDomain, LogHelper, singleManager } from '@ohos/basicutils';
+import { CheckEmptyUtils, OutdoorConfig, LogDomain, LogHelper, singleManager } from '@ohos/basicutils';
 import { NumberConstants } from '@ohos/commonconstants';
 import {
   DeviceHelper,
   IconResourceManager,
   localEventManager,
   RdbStoreConfig,
-  ResourceManager
+  ResourceManager,
+  LightOutdoorConfig
 } from '@ohos/frameworkwrapper';
 import { SCBSceneSessionManager } from '@ohos/windowscene';
 import { BaseBundleInfo } from '../../bean/BaseBundleInfo';
@@ -32,6 +33,7 @@ import {
   BadgeManager,
   CommonConstants,
   CommonDockModel,
+  DeliverUtil,
   DockItemInfo, DockUtils,
   EventConstants,
   FolderCommonUtil,
@@ -197,7 +199,7 @@ export class ResidentLayoutCacheMgr extends BaseDockLayoutCacheMgr {
   }
 
   /**
-   * 处理隐藏配置并增加BMS包名校验（防止脏数据，增加BMS包名校验）
+   * 处理隐藏配置并增加BMS包名校验（【语音助手桌面映射方案】防止脏数据，增加BMS包名校验）
    * @param dockDataList 缓存数据源
    */
   private async dealHideConfigAndDBMap(dockDataList: DockItemInfo[]): Promise<void> {
@@ -205,7 +207,7 @@ export class ResidentLayoutCacheMgr extends BaseDockLayoutCacheMgr {
       const isPC: boolean = DeviceHelper.isPC();
       await Promise.all([
         GetHideAppsFromConfig.getInstance().loadHideConfig(),
-        // 防止脏数据，增加BMS包名校验
+        // 【语音助手桌面映射方案】防止脏数据，增加BMS包名校验
         GridLayoutDBMapReplaceCorrectorBuilder.getInstance().dockMapReplaceCorrector(isPC, dockDataList)
       ]);
     } catch (e) {
@@ -258,6 +260,14 @@ export class ResidentLayoutCacheMgr extends BaseDockLayoutCacheMgr {
     let isInitDockInfo = false;
     let noDockInfo =
       CheckEmptyUtils.isEmptyArr(dockDataList) && this.shouldLoadDefaultLayout(tmpTableName);
+    // 如果是户外模式模式，则只判断数据库中是否有数据。
+    if (OutdoorConfig.getInstance().isInOutdoorMode()) {
+      noDockInfo = true;
+      log.showInfo(`Outdoor mode, read dockInfo from config files`);
+    }
+    if (LightOutdoorConfig.getInstance().isOnLightOutdoorMode()) {
+      noDockInfo = CheckEmptyUtils.isEmptyArr(dockDataList);
+    }
     if (noDockInfo) {
       // init preset dock data
       if (tmpTableName !== RdbStoreConfig.simpleLayoutInfo.tableName) {
@@ -377,6 +387,12 @@ export class ResidentLayoutCacheMgr extends BaseDockLayoutCacheMgr {
       }
       if (!GridLayoutUtil.isAppInstalled(appItemInfo)) {
         log.showWarn(`bundleName ${appItemInfo.bundleName} status is ${appItemInfo.appStatus}`);
+        return appItemInfo;
+      }
+      // 重启后dh未启动，dock区中的应用从bms取不到信息，也要加载出来
+      if (DeliverUtil.isContainerItem(appItemInfo.intent)) {
+        appItemInfo.codePath = String(NumberConstants.CONSTANT_NUMBER_ONE);
+        AppModel.getInstance().setAppListByDelivery(appItemInfo);
         return appItemInfo;
       }
       if (isFromResident) {
@@ -523,6 +539,12 @@ export class ResidentLayoutCacheMgr extends BaseDockLayoutCacheMgr {
       }
       const appData = await launcherAbilityManager.getAppInfoByBundleName(item.bundleName, '', item.appIndex);
       if (CheckEmptyUtils.isEmpty(appData) && !PreInstallUtils.checkIsNeedInstallApp(item)) {
+        // Deliver应用开机查不到先缓存
+        if (DeliverUtil.isContainerItem(item.intent) && item.appStatus === AppStatus.INSTALLED) {
+          let appItemInfo: AppItemInfo = item as AppItemInfo;
+          appItemInfo.codePath = String(NumberConstants.CONSTANT_NUMBER_ONE);
+          AppModel.getInstance().setAppListByDelivery(appItemInfo);
+        }
         continue;
       }
       // 记录原始状态
@@ -569,7 +591,8 @@ export class ResidentLayoutCacheMgr extends BaseDockLayoutCacheMgr {
    */
   private async dealDockFolder(dockItemInfo: DockItemInfo, residentList: DockItemInfo[]): Promise<void> {
     if (dockItemInfo.layoutInfo && dockItemInfo.layoutInfo.length > 0 &&
-      (NotHarmonyUtil.isNotHarmonyFolderHasOneOrMoreApp(dockItemInfo.appId, dockItemInfo.layoutInfo[0].length))) {
+      (DeliverUtil.checkFolderIsOneMoreApps(dockItemInfo.appId, dockItemInfo.layoutInfo[0].length) ||
+      NotHarmonyUtil.isNotHarmonyFolderHasOneOrMoreApp(dockItemInfo.appId, dockItemInfo.layoutInfo[0].length))) {
       DockUtils.formatFolderInfo(dockItemInfo);
       residentList.push(dockItemInfo);
       log.showInfo(`the residentList is ${JSON.stringify(residentList)}`);
@@ -612,6 +635,12 @@ export class ResidentLayoutCacheMgr extends BaseDockLayoutCacheMgr {
       dockGridLayoutItemInfo.bundleName, '', dockGridLayoutItemInfo.appIndex);
     if (!appDataFromSystem) {
       log.showWarn('createDockAppInfo appDataFromSystem is empty');
+      // 重启后dh未启动，dock区中的应用从bms取不到信息，也要加载出来
+      if (DeliverUtil.isContainerItem(dockItemInfo.intent) && dockItemInfo.appStatus === AppStatus.INSTALLED) {
+        dockItemInfo.codePath = String(NumberConstants.CONSTANT_NUMBER_ONE);
+        AppModel.getInstance().setAppListByDelivery(dockItemInfo);
+        return dockItemInfo;
+      }
       return null;
     }
     this.fillDockItemByAppInfo(dockItemInfo, appDataFromSystem);
@@ -724,7 +753,8 @@ export class ResidentLayoutCacheMgr extends BaseDockLayoutCacheMgr {
         let itemInfoParam = DockUtils.getPrintDockParam(dockItemInfo);
         log.showInfo(`the fold dockItemInfo is ${itemInfoParam}`);
         if (dockItemInfo.layoutInfo && dockItemInfo.layoutInfo.length > 0 &&
-          (NotHarmonyUtil.isNotHarmonyFolderHasOneOrMoreApp(dockItemInfo.appId, dockItemInfo.layoutInfo[0].length))) {
+          (DeliverUtil.checkFolderIsOneMoreApps(dockItemInfo.appId, dockItemInfo.layoutInfo[0].length) ||
+          NotHarmonyUtil.isNotHarmonyFolderHasOneOrMoreApp(dockItemInfo.appId, dockItemInfo.layoutInfo[0].length))) {
           residentList.push(dockItemInfo);
         } else {
           RdbStoreManager.getInstance().deleteItemByInfoId(dockItemInfo.appId ?? '', false);

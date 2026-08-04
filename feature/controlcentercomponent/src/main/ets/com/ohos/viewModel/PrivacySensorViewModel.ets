@@ -15,7 +15,7 @@
 
 import { PrivacySensorViewData } from '../model/PrivacySensorViewData';
 import { sMultimediaSubPageLayoutController, PageMode } from '../controller/MultimediaSubPageLayoutController';
-// import privacyIndicatorManager from '@hms.security.privacyIndicatorManager';
+// import privacyIndicatorManager from '@ohos.security.privacyIndicatorManager';
 import bundleResourceManager from '@ohos.bundle.bundleResourceManager';
 import bundleManager from '@ohos.bundle.bundleManager';
 import mechanicManager from '@ohos.distributedHardware.mechanicManager';
@@ -146,7 +146,12 @@ export class PrivacySensorViewModel {
     let bundleAppName = '';
     this.viewData.isApplicationInterview = false;
     while (data.length > 0) {
-      bundleAppName = await this.getBundleAppName(data[0].uid);
+      // 应用通过bundleName获取应用信息
+      if ((data[0].detailFlags & INDICATOR_DETAIL_FLAG) === INDICATOR_DETAIL_FLAG) {
+        bundleAppName = await this.getDeliverBundleInfoLabel(data[0].bundleName);
+      } else {
+        bundleAppName = await this.getBundleAppName(data[0].uid);
+      }
       if (bundleAppName === DEFAULT_BUNDLE_NAME) {
         data.shift();
       } else {
@@ -236,6 +241,69 @@ export class PrivacySensorViewModel {
       log.error('getBundleAppName uid:' + uid + ' error:', err);
       return DEFAULT_BUNDLE_NAME;
     }
+  }
+
+  /**
+   * 根据包名返回 bundleInfo
+   *
+   * @returns BundleInfo
+   */
+  private async getDeliverBundleInfo(bundleName: string): Promise<bundleManager.BundleInfo | null> {
+    try {
+      let bundleFlags: number = bundleManager.BundleFlag.GET_BUNDLE_INFO_DEFAULT |
+      bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION;
+      return await bundleManager.getBundleInfo(bundleName, bundleFlags);
+    } catch (error) {
+      log.showError(`getDeliverBundleInfo fail: ${error?.code} ${error?.message}`);
+    }
+    return null;
+  }
+
+  /**
+   * 根据bundleInfo 返回 包label;
+   *
+   * @returns string
+   */
+  private async getDeliverApplicationLabel(bundleInfo: bundleManager.BundleInfo, bundleName: string): Promise<string> {
+    let appLabel: string = '';
+    try {
+      if (!bundleInfo.appInfo) {
+        return appLabel
+      }
+      if (bundleInfo.appInfo.labelId <= 0) {
+        appLabel = bundleInfo.appInfo.label;
+      } else {
+        appLabel = GlobalContext.getContext().createBundleContext(bundleName)
+          .resourceManager.getStringSync(bundleInfo.appInfo.labelId);
+      }
+      return appLabel;
+    } catch (error) {
+      log.showError(`getDeliverApplicationLabel fail: ${error?.code} ${error?.message}`);
+    }
+    return appLabel;
+  }
+
+  /**
+   * 根据包名返回包label;
+   *
+   * @returns 包label
+   */
+  private async getDeliverBundleInfoLabel(bundleName: string): Promise<string> {
+    try {
+      const bundleInfo = await this.getDeliverBundleInfo(bundleName);
+      if (bundleInfo === null) {
+        return DEFAULT_BUNDLE_NAME;
+      }
+      let appLabel: string = await this.getDeliverApplicationLabel(bundleInfo, bundleName);
+      if (appLabel === '') {
+        return DEFAULT_BUNDLE_NAME;
+      }
+      log.showInfo('getDeliverBundleInfoLabel bundleName:%{public}s, appLabel:%{public}s', bundleName, appLabel);
+      return appLabel;
+    } catch (error) {
+      log.showError(`getDeliverBundleInfoLabel fail: ${error?.code} ${error?.message}`);
+    }
+    return DEFAULT_BUNDLE_NAME;
   }
 
   public static getInstance(data?: PrivacySensorViewData): PrivacySensorViewModel {

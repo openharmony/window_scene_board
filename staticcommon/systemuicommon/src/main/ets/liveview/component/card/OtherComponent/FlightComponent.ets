@@ -19,7 +19,9 @@ import { CommonUtils, LogDomain, LogHelper } from '@ohos/basicutils';
 import { ResUtils } from '@ohos/windowscene';
 import { RTLUtil } from '@ohos/componenthelper';
 import { LiveFlightTemplate } from '../../../data/template/LiveFlightTemplate';
+import { CardUtils } from '../LiveViewCardData';
 import { immersiveKgMgr } from '../../../../immersivekeyguardcommon/manager/ImmersiveKeyguardStateManager';
+import { AodStyleType, ImmersiveAodStyle } from '../../../../immersivekeyguardcommon/base/interface/ImmersiveAodStyle';
 import { NotificationType } from '../../../../constants/NotificationType';
 import { FlightLayoutSpaceType, LayoutStyle } from '../../../common/LiveConstants';
 import { FadedText } from './FlightFadedText';
@@ -27,6 +29,7 @@ import { ColorModeViewData } from '../../../../template/newStyle/ColorModeViewDa
 import { ColorModeViewModel } from '../../../../template/newStyle/ColorModeViewModel';
 import { ColorModeLiveViewData } from '../../../../template/newStyle/ColorModeLiveViewData';
 import { WeatherCapsuleType } from '../../../../live/model/LiveWeatherModel';
+import { LiveCardWeatherUtil } from '../../../../utils/LiveCardWeatherUtil';
 
 const TAG = 'LiveFlightComponent';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.SYS_UI, TAG);
@@ -46,6 +49,11 @@ export struct FlightComponent {
    */
   @Consume notificationType: number;
 
+  /**
+   * AOD显示样式
+   */
+  @State aodStyle: ImmersiveAodStyle | undefined = immersiveKgMgr.getOneMirrorState().getAodStyle(
+    this.notificationType === NotificationType.TYPE_PHONE_KEYGUARD);
   @Prop isSmallFoldOuterScreen: boolean = false;
 
   @State loadImgError: boolean = false;
@@ -60,7 +68,9 @@ export struct FlightComponent {
         Divider()
           .width('100%')
           .height('1px')
-          .color(this.colorModeViewData.calcSecondarySolidColor($r('app.color.live_card_divider_bg_color'),
+          .color(this.aodStyle?.isAod
+            ? $r('sys.color.ohos_id_color_list_separator')
+            : this.colorModeViewData.calcSecondarySolidColor($r('app.color.live_card_divider_bg_color'),
             this.dividerBrightnessOption, this.colorModeLiveViewData.liveBgPickColor))
           .foregroundBrightness(this.colorModeViewData.isSolidEnable() ? undefined : this.dividerBrightnessOption)
           .visibility(this.getDividerVisibility())
@@ -75,7 +85,7 @@ export struct FlightComponent {
       }
       .width('100%')
       .height(this.isSmallFoldOuterScreen ? 46 : 72)
-      .opacity(undefined)
+      .opacity(this.aodStyle?.isAod ? this.aodStyle.getStyleValue(AodStyleType.NTF_EXTEND_COMPONENT_ALPHA) : undefined)
       .padding(this.isSmallFoldOuterScreen ? undefined : {
         left: 12,
         right: 12,
@@ -95,6 +105,8 @@ export struct FlightComponent {
             fontSize: this.getTitleFontSize(),
             fontColor: this.getTitleFontColor(),
           },
+          isAod: this.aodStyle?.isAod ?? false,
+          fadedFontColor: this.aodStyle?.getStyleValue(AodStyleType.FADED_FONT_COLOR),
           isRTL: this.isRTL([this.data?.firstTitle, this.data?.firstContent]),
         })
           .margin(this.getTitleMargin())
@@ -106,6 +118,8 @@ export struct FlightComponent {
             fontSize: this.getContentFontSize(),
             fontColor: this.getContentFontColor(),
           },
+          isAod: this.aodStyle?.isAod ?? false,
+          fadedFontColor: this.aodStyle?.getStyleValue(AodStyleType.FADED_FONT_COLOR),
           isRTL: this.isRTL([this.data?.firstTitle, this.data?.firstContent]),
         })
       }
@@ -123,6 +137,8 @@ export struct FlightComponent {
             fontSize: this.getTitleFontSize(),
             fontColor: this.getTitleFontColor(),
           },
+          isAod: this.aodStyle?.isAod ?? false,
+          fadedFontColor: this.aodStyle?.getStyleValue(AodStyleType.FADED_FONT_COLOR),
           badgeText: this.getBadgeText(this.data?.lastTitleSuperscript),
           badgeAccessibilityText: this.getBadgeAccessibilityText(this.data?.lastTitleSuperscript),
           badgeFontSize: this.getNumberVp($r('sys.float.ohos_id_text_size_caption')),
@@ -141,6 +157,8 @@ export struct FlightComponent {
             fontSize: this.getContentFontSize(),
             fontColor: this.getContentFontColor(),
           },
+          isAod: this.aodStyle?.isAod ?? false,
+          fadedFontColor: this.aodStyle?.getStyleValue(AodStyleType.FADED_FONT_COLOR),
           badgeText: this.getBadgeText(this.data?.lastContentSuperscript),
           badgeAccessibilityText: this.getBadgeAccessibilityText(this.data?.lastContentSuperscript),
           badgeFontSize: this.getNumberVp($r('sys.float.ohos_id_text_size_caption')),
@@ -337,7 +355,11 @@ export struct FlightComponent {
     Row() {
       Text(this.data.additionalText ?? '')
         .fontSize(this.getNumberVp($r('sys.float.ohos_id_text_size_caption')))
-        .fontColor($r('app.color.flight_template_additional_text_color'))
+        .fontColor(
+          this.aodStyle?.isAod
+            ? this.aodStyle?.getStyleValue(AodStyleType.FONT_COLOR)
+            : $r('app.color.flight_template_additional_text_color')
+        )
           // [n1]指定数字一个个读
         .accessibilityText('[n1]' + (this.data.additionalText ?? ''))
         .fontWeight(FontWeight.Regular)
@@ -371,6 +393,9 @@ export struct FlightComponent {
   }
 
   private getTitleFontColor(): ResourceColor | undefined {
+    if (this.aodStyle?.isAod) {
+      return this.aodStyle?.getStyleValue(AodStyleType.FONT_COLOR);
+    }
     if (this.data?.style === LayoutStyle.SUB_TYPE_BALANCE) {
       return $r('app.color.flight_template_title_color');
     } else {
@@ -402,6 +427,9 @@ export struct FlightComponent {
   }
 
   private getContentFontColor(): ResourceColor | undefined {
+    if (this.aodStyle?.isAod) {
+      return this.aodStyle?.getStyleValue(AodStyleType.FONT_COLOR);
+    }
     if (this.data?.style === LayoutStyle.SUB_TYPE_BALANCE) {
       return $r('app.color.flight_template_title_color');
     } else {
@@ -410,10 +438,16 @@ export struct FlightComponent {
   }
 
   private getSpaceTextFontColor(): ResourceColor | undefined {
+    if (this.aodStyle?.isAod) {
+      return this.aodStyle?.getStyleValue(AodStyleType.FONT_COLOR);
+    }
     return $r('app.color.flight_template_space_text_color');
   }
 
   private getSpaceTextBorderColor(): ResourceColor | undefined {
+    if (this.aodStyle?.isAod) {
+      return this.aodStyle?.getStyleValue(AodStyleType.FONT_COLOR);
+    }
     return $r('app.color.flight_template_space_text_border_color');
   }
 

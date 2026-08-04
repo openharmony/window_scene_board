@@ -26,6 +26,7 @@ import {
   BaseViewModel,
   LiveFormSupportMgr,
 } from '@ohos/launchercommon';
+import { emitter } from '@kit.BasicServicesKit';
 import { CommonConstants } from '@ohos/launchercommon';
 import { PageDesktopViewModel } from '../viewmodel/PageDesktopViewModel';
 import { PageDesktopGridStyleConfig } from '@ohos/launchercommon/src/main/ets/layoutconfig/PageDesktopGridStyleConfig';
@@ -62,6 +63,7 @@ import lazy { outerAddAppIconManager } from '@ohos/launchercommon/src/main/ets/m
 import lazy { OuterAddAppIcon } from './OuterAddAppIcon';
 import lazy { OverflowViewModel } from './liveform/viewmodel/OverflowViewModel';
 import DesktopAddBubble from './desktopaddapp/DesktopAddBubble';
+import { FormCenterViewManager, FormCenterViewParam } from '@ohos/launchercommon/src/main/ets/manager/FormCenterViewManager';
 
 const TAG = 'DesktopItem';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.HOME, TAG);
@@ -644,6 +646,10 @@ export default struct DesktopItem {
     this.dragSnapshot = undefined;
     /* 拖拽结束使受引力动效影响 */
     this.gravity?.setActive(true);
+    let isDrag: boolean =  AppStorage.get('isDragFomCenter') ?? false;
+    if (isDrag) {
+      GlobalContext.getContext().eventHub.emit('myOnDragEnd');
+    }
   }
 
   private doSelect(): void {

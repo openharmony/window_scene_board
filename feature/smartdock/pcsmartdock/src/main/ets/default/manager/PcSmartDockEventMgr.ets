@@ -62,8 +62,7 @@ import {
 } from '@ohos/windowscene';
 
 import {
-  FormModel,
-  FormCenterViewManager
+  FormModel, FormCenterViewManager
 } from '@ohos/launchercommon';
 
 import { KeyConstants } from '@ohos/launchercommon';
@@ -79,7 +78,7 @@ import { appManager } from '@kit.AbilityKit';
 import { TrayManager } from '@ohos/statusbarextensionservice/src/main/ets/TsIndex';
 import { FixedDockResource } from '../common/constants/FixedDockConstants';
 import { FormCenterViewParam } from '@ohos/launchercommon/src/main/ets/manager/FormCenterViewManager';
-import { ShortcutViewModel} from '@ohos/launchercommon/src/main/ets/TsIndex';
+import { ShortcutViewModel } from '@ohos/launchercommon/src/main/ets/TsIndex';
 import SmartDockModel from '@ohos/smartdock/src/main/ets/default/model/SmartDockModel';
 import { PcSmartDockModel, RecycleBinRecord } from '../model/PcSmartDockModel';
 import PcModeContinuableModel from '@ohos/smartdock/src/main/ets/default/pcmode/model/PcModeContinuableModel';
@@ -178,7 +177,7 @@ export class PcSmartDockEventMgr extends SmartDockEventMgr {
   }
 
   private needAddToDesktop(appInfo: DockItemInfo): boolean {
-    if (appInfo?.bundleName === CALLUI_BUNDLE ) {
+    if (appInfo?.bundleName === CALLUI_BUNDLE) {
       return false;
     }
 
@@ -230,7 +229,8 @@ export class PcSmartDockEventMgr extends SmartDockEventMgr {
       } else {
         params?.set(SCBConstants.START_APP_CLONE_INDEX, item.appIndex ?? 0);
         params?.set(KeyConstants.ITEM_RECT, ItemUtils.getRectById(AppModel.getInstance().getAppIconContainerId(
-          'SmartDock_AppIcon', item.bundleName as string, item.abilityName as string, item.appIndex as number, item.appInstanceKey as string)));
+          'SmartDock_AppIcon', item.bundleName as string, item.abilityName as string, item.appIndex as number,
+          item.appInstanceKey as string)));
         StartAbilityUtil.startLauncherAbility(item.abilityName, item.bundleName, item.moduleName, params, screenId);
       }
       return false;
@@ -307,7 +307,8 @@ export class PcSmartDockEventMgr extends SmartDockEventMgr {
       let params = new Map<string, Object>();
       params.set(SCBConstants.START_APP_CLONE_INDEX, item.appIndex ?? 0);
       params.set(KeyConstants.ITEM_RECT, ItemUtils.getRectById(AppModel.getInstance().getAppIconContainerId(
-        'SmartDock_AppIcon', item.bundleName as string, item.abilityName as string, item.appIndex as number, item.appInstanceKey as string)));
+        'SmartDock_AppIcon', item.bundleName as string, item.abilityName as string, item.appIndex as number,
+        item.appInstanceKey as string)));
       if (item?.enableNewAppInstance && CheckEmptyUtils.checkStrIsEmpty(lastInstanceKey)) {
         params.set(SCBConstants.CREATE_NEW_APP_INSTANCE_KEY, true);
       }
@@ -382,7 +383,7 @@ export class PcSmartDockEventMgr extends SmartDockEventMgr {
       return true;
     }
 
-    if (mission.primarySession?.sceneInfo?.screenId === evtScreenId ) {
+    if (mission.primarySession?.sceneInfo?.screenId === evtScreenId) {
       return false;
     }
     let frontContainerSession2 = this.queryFrontSession(mission?.primarySession?.sceneInfo.screenId);
@@ -398,11 +399,11 @@ export class PcSmartDockEventMgr extends SmartDockEventMgr {
     if (PCDockUtils.isDlpIndex(sceneInfo?.appIndex ?? 0)) {
       return sceneInfo?.bundleName === item?.bundleName &&
         item?.appIndex === 0 &&
-        this.mSmartDockModel.checkAppInstanceKey(sceneInfo?.appInstanceKey, item?.appInstanceKey);
+      this.mSmartDockModel.checkAppInstanceKey(sceneInfo?.appInstanceKey, item?.appInstanceKey);
     } else {
       return PCDockUtils.isSameBundle(sceneInfo?.bundleName, item?.bundleName) &&
         sceneInfo?.appIndex === item?.appIndex &&
-        this.mSmartDockModel.checkAppInstanceKey(sceneInfo?.appInstanceKey, item?.appInstanceKey);
+      this.mSmartDockModel.checkAppInstanceKey(sceneInfo?.appInstanceKey, item?.appInstanceKey);
     }
   }
 
@@ -424,7 +425,7 @@ export class PcSmartDockEventMgr extends SmartDockEventMgr {
 
   private isClickResidentDlpItem(item: AppItemInfo, mission: SCBSceneContainerSession): boolean {
     if (CheckEmptyUtils.isEmpty(item) || CheckEmptyUtils.isEmpty(mission) ||
-      CheckEmptyUtils.isEmpty(mission.primarySession) || CheckEmptyUtils.isEmpty(mission?.primarySession?.sceneInfo)) {
+    CheckEmptyUtils.isEmpty(mission.primarySession) || CheckEmptyUtils.isEmpty(mission?.primarySession?.sceneInfo)) {
       return false;
     }
     let itemList: DockItemInfo[] = ResidentLayoutCacheMgr.getInstance().getAllDockItems();
@@ -606,7 +607,8 @@ export class PcSmartDockEventMgr extends SmartDockEventMgr {
       let params = new Map<string, Object>();
       params.set(SCBConstants.START_APP_CLONE_INDEX, item.appIndex ?? 0);
       params.set(KeyConstants.ITEM_RECT, ItemUtils.getRectById(AppModel.getInstance().getAppIconContainerId(
-        'SmartDock_AppIcon', item.bundleName as string, item.abilityName as string, item.appIndex as number, item.appInstanceKey as string)));
+        'SmartDock_AppIcon', item.bundleName as string, item.abilityName as string, item.appIndex as number,
+        item.appInstanceKey as string)));
       StartAbilityUtil.startLauncherAbility(item.abilityName, item.bundleName, item.moduleName, params);
     }
     return false;
@@ -1049,7 +1051,7 @@ export class PcSmartDockEventMgr extends SmartDockEventMgr {
     addToDockMenu.menuText = $r('app.string.app_center_menu_add_dock');
     addToDockMenu.onMenuClick = (): void => {
       HiSysEventUtil.reportEventById(appInfo.bundleName, 'recent add to dock');
-      if (typeof(appInfo.typeId) === 'undefined') {
+      if (typeof (appInfo.typeId) === 'undefined') {
         appInfo.typeId = CommonConstants.TYPE_APP;
       }
       log.showInfo('click menu item add to smartDock entry, bundleName = ' + appInfo.bundleName);
@@ -1176,7 +1178,7 @@ export class PcSmartDockEventMgr extends SmartDockEventMgr {
       }
     }
 
-    if (frontScenes.length === 1 ) {
+    if (frontScenes.length === 1) {
       return frontScenes[0];
     } else {
       return containerSession;

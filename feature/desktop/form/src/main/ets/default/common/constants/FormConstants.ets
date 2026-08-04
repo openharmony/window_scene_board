@@ -19,7 +19,6 @@
  * @since 2023-02-13
  */
 export default class FormConstants {
-
   /**
    * the bundle name of lite games suggestion
    */

@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 
+import { AodStyleType, ImmersiveAodStyle, ImmersiveConstants, immersiveKgMgr } from '@ohos/systemuicommon';
 import { ImmersiveMediaCapsule } from '@ohos/mediacontrolcomponent';
 import { CapsulePositionType } from '../../common/ImmersiveConstants';
 import { ImmersiveCapsuleStyle } from '../../model/data/ImmersiveCapsuleStyle';
@@ -76,6 +77,11 @@ export struct ImmersiveCapsuleItem {
   @State animState?: WidgetAnimState = BaseState.wrap(WidgetAnimState, '');
 
   @State innerState?: WidgetAnimState = BaseState.wrap(WidgetAnimState, ''); // 胶囊动效下一层状态
+
+  /**
+   * Aod显示样式
+   */
+  @State aodStyle: ImmersiveAodStyle | undefined = immersiveKgMgr.getOneMirrorState().getAodStyle(true);
 
   // 锁屏首页沉浸胶囊组件状态
   @State slCapsuleWidgetBindState?: SlCapWidgetBindState =
@@ -194,7 +200,8 @@ export struct ImmersiveCapsuleItem {
         .height(this.getAnimHeight())
         .borderRadius(this.getAnimRadius())
         .backgroundColor(this.getItemViewBackgroundColor())
-        .visibility(Visibility.Hidden)
+        .visibility(this.aodStyle?.isAod ?
+        Visibility.Visible : Visibility.Hidden)
       // 胶囊内容
       this.itemContent()
     }
@@ -209,7 +216,7 @@ export struct ImmersiveCapsuleItem {
     .borderRadius(this.getAnimRadius())
     .translate(this.getAnimTran())
     .pointLight({
-      illuminated: IlluminatedType.BORDER
+      illuminated: this.aodStyle?.isAod ? IlluminatedType.NONE : IlluminatedType.BORDER
     })
   }
 
@@ -225,6 +232,13 @@ export struct ImmersiveCapsuleItem {
   }
 
   private getItemViewBackgroundColor(): number | ResourceColor | undefined {
+    if (this.aodStyle?.isAod) {
+      if (this.isEffect()) {
+        return this.aodStyle?.getStyleValue(AodStyleType.BACKGROUND_COLOR);
+      } else {
+        return this.aodStyle?.getStyleValue(AodStyleType.SHADE_BACKGROUND_COLOR);
+      }
+    }
     if (this.enableSolid) {
       if (this.isEffect()) {
         return this.contentBackBrightArgs?.getSolidColor();
@@ -246,6 +260,12 @@ export struct ImmersiveCapsuleItem {
   private getBackgroundBrightnessInternal(): BrightnessOptions | undefined {
     if (this.enableSolid || !this.enableBright) {
       return undefined;
+    }
+    if (this.aodStyle?.isAod) {
+      if (this.isEffect()) {
+        return BrightnessOptionUtils.aodScreenNtfBaseboardLightOption;
+      }
+      return BrightnessOptionUtils.aodScreenNtfSecondBoardLightOption;
     }
     return CapConst.getCapsuleBrightEffect(this.isEffect(), this.isDarken);
   }

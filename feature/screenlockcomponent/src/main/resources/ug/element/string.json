@@ -1,0 +1,886 @@
+{
+    "string":[
+        {
+            "name":"fp_incorrect_fp_try_again",
+            "value":"بارماق ئامال بار رەسىمنى تولۇق قاپلىسۇن، بارماقنى بېسىپ سەل تۇرۇڭ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"edit_after_unlock",
+            "value":"قۇلۇپ ئېچىپ تەھرىرلەڭ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"out_sensor_fp_dirty_try_again",
+            "value":"بارماق تونۇلمىدى. بارماق ۋە سەزگۈچ پاكىز بولسۇن.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"fp_disable_enter_psd",
+            "value":"بارماق ئىزى ئېتىلدى، مەخپىي نومۇر كىرگۈزۈڭ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"toast_prompt_face_unlock_success",
+            "value":"يۈز تونۇلدى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"face_not_recognized_in_input_pwd",
+            "value":"تونۇمىدى، بۇ يەرنى چېكىپ قايتا سىناڭ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"emergency_call",
+            "value":"جىددىي قۇتقۇزۇش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_incorrect_will_locked",
+            "value":"مەخپىي نومۇر خاتا، يەنە %1$s پۇرسەت قالدى، يەنىلا خاتا كىرگۈزسىڭىز، %2$s قۇلۇپلىنىدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_unlock_puk_format_tips",
+            "value":"\u200fPIN نومۇرى %1$s خانىلىق سان",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_unlock_num_keyboard_cancel",
+            "value":"بىكار قىلىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_unlock_pin_exhausting_tips",
+            "value":"\u200fSIM كارتا PIN نومۇرى خاتا. PUK نومۇرى ئارقىلىق قۇلۇپ ئېچىڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"face_unlock_verifying",
+            "value":"يۈز تونۇۋاتىدۇ...",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_delete",
+            "value":"ئۆچۈرۈش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"lock_icon_tip_with_fingerprint",
+            "value":"بارماق ئىزى ئىشلىتىڭ ياكى ئاستىدىن ئۈستىگە سىيرىپ ئېچىڭ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"psd_incorrect_psd_try_again",
+            "value":"مەخپىي نومۇر خاتا، قايتا سىناڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_to_screen_lock",
+            "value":"قۇلۇپ ئېكرانىغا قوشۇش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"press_fingerprint_sensor_area",
+            "value":"بارماق ئىزى سەزگۈچنى تۇتۇپ دەلىللەڭ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_enter_psd",
+            "value":"مەخپىي نومۇر كىرگۈزۈڭ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_incorrect_psd_try_again_mix",
+            "value":"پارول خاتا، قايتا سىناڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"fingerprint_incorrect_will_locked",
+            "value":"بارماق تونۇلمىدى، يەنە %1$s پۇرسەت بار، خاتا بولسا %2$s قۇلۇپلىنىدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_unlock_reset_pin_tips",
+            "value":"يېڭى PIN نى كىرگۈزۈڭ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_unlock_unavailable_tips",
+            "value":"بۇ SIM كارتا ئىشلىمەيدۇ، يۈرۈتكۈچى بىلەن ئالاقىلىشىڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_confirm_tips",
+            "value":"جەزملەش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_other_users",
+            "value":"باشقا ئىشلەتكۈچى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_unlock_puk_tips",
+            "value":"يۈرۈتكۈچىدىن PUK نومۇرىنى سوراڭ، ئۇ SIM كارتىنىڭ PIN نومۇرى بىلەن بىر نومۇر ئەمەس.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"fp_try_again_after_time",
+            "value":"بارماق تونۇش ئېتىلدى، %s كۈتۈپ قايتا سىناڭ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sim_unlock_pin_not_match",
+            "value":"\u200fPIN ماس ئەمەس",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_unlock_solt_flag",
+            "value":"كارتا %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_form_to_screen_lock_editor_max",
+            "value":"قۇلۇپ ئېكرانىدا بوشلۇق يېتەرسىز.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"face_recognition_try_again_after_time",
+            "value":"يۈز تونۇش ئېتىلدى، %sتىن كېيىن قايتا سىناڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_enter_psd_mix",
+            "value":"پارول كىرگۈزۈڭ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_unlock_pin_format_tips",
+            "value":"\u200fPIN نومۇرى %1$s ~ %2$s خانىلىق سان",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_unlock_reset_pin_confirm_tips",
+            "value":"\u200fPIN كىرگۈزۈڭ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_try_again_after_time1",
+            "value":"%sتىن كېيىن قايتا سىناڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"lock_icon_tip",
+            "value":"ئاستىدىن ئۈستىگە سىيرىپ ئېچىڭ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"input_pwd_tip_when_face_and_finger_locked",
+            "value":"يۈز ۋە بارماق ئىزى تونۇش ئېتىك، مەخپىي نومۇر ئارقىلىق قۇلۇپ ئېچىڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"face_not_recognized",
+            "value":"تونۇمىدى، ئېكراننى قوش چېكىپ قايتا سىناڭ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"flash_light_accessible",
+            "value":"قولچىراق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"edit_wallpaper",
+            "value":"تەگلىك",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"show_lunar_date",
+            "value":"دېھقانلار كالېندارى كۆرسىتىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"confirm",
+            "value":"جەزملەش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sim_card_psd_confirm_accessible",
+            "value":"جەزملەش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pad_notes_accessible",
+            "value":"ئەسلەتمە",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_pin_area_accessible",
+            "value":"رامكا، SIM كارتىنىڭ PIN نومۇرىنى كىرگۈزىسىز",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"emergency_call_accessible",
+            "value":"جىددىي تېلېفون",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"face_locked_in_input_pwd_when_finger_enable",
+            "value":"يۈز تونۇش ئېتىلدى، بارماق ئىزى ياكى مەخپىي نومۇر ئارقىلىق ئېچىڭ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_back_accessible",
+            "value":"قايتىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"flash_light_close_accessible",
+            "value":"ئېتىك",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"del_pwd_accessible",
+            "value":"ئۆچۈرۈش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"face_unlock_success",
+            "value":"ئۈستىگە سىيرىپ كىرىڭ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"edit_theme",
+            "value":"ئۇسلۇب",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ic_camera_button_accessible",
+            "value":"كامېرا",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"custom_mix_psd_area_accessible",
+            "value":"پارول كىرگۈزۈش رامكىسى، قوش چېكىپ كىرگۈزىسىز",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"show_date",
+            "value":"چېسلا كۆرسىتىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"face_unlock_ready",
+            "value":"قوش چېكىپ يۈز تونۇتۇڭ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"edit_aod",
+            "value":"ئىزچىل كۆرسىتىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_unlock_num_keyboard_cancel_accessible",
+            "value":"بىكار قىلىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"fp_disable_forever",
+            "value":"بارماق ئىزى ئېتىلدى، مەخپىي نومۇر كىرگۈزۈڭ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cancel",
+            "value":"بىكار قىلىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"custom_mix_psd_ok_accessible",
+            "value":"جەزملەش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"flash_light_open_accessible",
+            "value":"ئوچۇق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"fp_hold_finger",
+            "value":"سەل توختاڭ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"camera_muted",
+            "value":"كامېرا ئېتىك، يۈز تونۇغۇچ ئىشلىمەيدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"keypad_password_four",
+            "value":"4",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keypad_password_one",
+            "value":"1",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keypad_password_six",
+            "value":"6",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keypad_password_eight",
+            "value":"8",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"psd_area_accessible",
+            "value":"پارول كىرگۈزۈش رامكىسى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keypad_password_three",
+            "value":"3",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keypad_password_nine",
+            "value":"9",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keypad_password_five",
+            "value":"5",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keypad_password_zero",
+            "value":"0",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keypad_password_two",
+            "value":"2",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keypad_password_seven",
+            "value":"7",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ic_tools_disable_battery_low",
+            "value":"توك بەك ئاز، قولچىراق ئېچىلمايدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"emergency_mode_title",
+            "value":"توك ئاز جىددىي ھالەت",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"face_unlock_ready_in_input_pwd",
+            "value":"يۈز تونۇتۇش ياكى پارول",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"face_locked_in_input_pwd",
+            "value":"يۈز تونۇش ئېتىلدى، پارول كىرگۈزۈڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"fp_try_again_psd_after_time",
+            "value":"بارماق ئىزى ئېتىلدى، %sتىن كېيىن پارول كىرگۈزۈڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"face_locked_in_input_pin",
+            "value":"يۈز تونۇش ئېتىلدى، مەخپىي نومۇر كىرگۈزۈڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"face_unlock_ready_in_input_pin",
+            "value":"يۈز تونۇتۇش ياكى مەخپىي نومۇر",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"fp_try_again_pin_after_time",
+            "value":"بارماق ئىزى ئېتىلدى، %sتىن كېيىن مەخپىي نومۇر كىرگۈزۈڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_remember_tips",
+            "value":"\u200fPIN نى ئەستە تۇتۇش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_remember_popup",
+            "value":"يانفوننى قايتا قوزغاتقان ياكى كارتىنى قايتا سالغاندا PIN نى ئۆزلۈكىدىن تولدۇرىدۇ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pattern_psd_error",
+            "value":"شەكىل خاتا",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pattern_psd_enter_psd",
+            "value":"ئاچقۇچ شەكىل سىزىڭ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pattern_area",
+            "value":"ئاچقۇچ شەكىل رايونى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pattern_psd_drawing_completed",
+            "value":"ئاچقۇچ شەكىل سىزىلىپ بولدى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_locking_popup",
+            "value":"\u200fSIM كارتا ئېچىلىۋاتىدۇ...",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"start_drawing_pattern",
+            "value":"ئاچقۇچ شەكىل سىزىش باشلاندى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cover_fully_charged",
+            "value":"تولۇق توكلاندى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"cover_quick_charging",
+            "value":"تېز توكلاۋاتىدۇ ‎%s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"cover_normal_charging",
+            "value":"توكلاۋاتىدۇ ‎%s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"cover_turbo_charging",
+            "value":"بەك تېز Turbo توكلاۋاتىدۇ ‎%s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"cover_super_charging",
+            "value":"بەك تېز توكلاۋاتىدۇ ‎%s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"keyboard_simple_delete_remainder_accessible",
+            "value":"ئۆچۈرۈلدى.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"finger_print_area_accessible",
+            "value":"بارماق سەزگۈچ رايونى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keyboard_delete_remainder",
+            "value":"ئۆچۈرۈلدى، %1$s، %2$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ic_tools_back_around_accessible",
+            "value":"ئېتىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ic_tools_memorandum_accessible",
+            "value":"ئەسلەتمە",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ic_tools_clock_accessible",
+            "value":"سائەت",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ic_tools_accessible",
+            "value":"تېزلەتمە قوراللار",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ic_tools_vassistant_accessible",
+            "value":"سايىلەش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ic_tools_calculator_accessible",
+            "value":"ھېسابلىغۇچ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ic_tools_unavailable_accessible",
+            "value":"%1$s، ئىشلىمەيدۇ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ic_tools_widgets_two_click_accessible",
+            "value":"‏%1$s، قوش چېكىپ يۈرگۈزۈڭ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"screen_lock_edit_accessible",
+            "value":"قۇلۇپ ئېكرانى تەھرىرلەش بېتى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Double_click_and_hold_accessibility",
+            "value":"قوش چېكىپ تۇرسىڭىز باشقا تاللانمىلار چىقىدۇ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"exit_edit_mode_accessible",
+            "value":"تەھرىرلەش ھالىتىدىن چېكىنىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"exit_outscreen_theme_selection_accessible",
+            "value":"تاشقى ئېكران ئۇسلۇبى تاللاشتىن چېكىنىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"enter_edit_mode_accessible",
+            "value":"تەھرىرلەش ھالىتىگە كىرىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"enter_outscreen_theme_selection_accessible",
+            "value":"تاشقى ئېكران ئۇسلۇبى تاللاش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"card_edit",
+            "value":"ئۆزلەشتۈرۈش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"fp_try_again_after_time_pc",
+            "value":"بارماق ئىزى تونۇغۇچ ئېتىك، %s كۈتۈپ قايتا سىناڭ ياكى باشقا ئۇسۇلدا قۇلۇپ ئېچىڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ic_tools_opened",
+            "value":"ئوچۇق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"keypad_password_input_success",
+            "value":"چېكىت",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"fingerprint_antitouch_notification_camera",
+            "value":"كامېرانى توسۇۋالماڭ.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"two_click_accessible",
+            "value":"بىر بارماقتا قوش چەكسىڭىز يۈرگۈزۈلىدۇ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ic_tools_two_click_back_accessible",
+            "value":"بىر بارماقتا قوش چەكسىڭىز قۇلۇپ ئېكرانى قورال-جابدۇق تىزىملىكى ئېتىلىدۇ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"ic_tools_timer_accessible",
+            "value":"تەتۈر ساناق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"reset_pin_tip",
+            "value":"سىز يېقىندا پارول ئۆزگەرتكەن، كونا پارول ھازىرمۇ ئىشلەيدۇ، كونا پارول ئارقىلىق قايتا بېكىتەمسىز؟",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"reset_psd_tip",
+            "value":"سىز يېقىندا پارول ئۆزگەرتكەن، كونا پارول ھازىرمۇ ئىشلەيدۇ، كونا پارول ئارقىلىق قايتا بېكىتەمسىز؟",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"reset_pin",
+            "value":"قايتا بېكىتىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"exit_clock_edit_mode_accessible",
+            "value":"سائەت تەھرىرلەش ھالىتىدىن چېكىنىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"enter_clock_edit_mode_accessible",
+            "value":"سائەت تەھرىرلەش ھالىتىگە كىرىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"esim_unlock_slot_flag",
+            "value":"\u200feSIM %s",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

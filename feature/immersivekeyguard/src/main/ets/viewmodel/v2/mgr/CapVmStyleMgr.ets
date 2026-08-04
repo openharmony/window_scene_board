@@ -97,11 +97,11 @@ const SMALL_ICON_BG_STYLE_PT: WBaseProperty[] = [WBaseProperty.WIDTH, WBasePrope
   WBaseProperty.BORDER_RADIUS_TL, WBaseProperty.BORDER_RADIUS_TR, WBaseProperty.BORDER_RADIUS_BL,
   WBaseProperty.BORDER_RADIUS_BR, WBaseProperty.OFFSET, WBaseProperty.VISIBILITY, WBaseProperty.BACKGROUND_COLOR];
 
-// 小图标样式需刷新属性集
+// 克隆应用小图标样式需刷新属性集
 const SMALL_ICON_REVERSE_STYLE_PT: WBaseProperty[] = [WBaseProperty.WIDTH, WBaseProperty.HEIGHT, WBaseProperty.OFFSET,
   WBaseProperty.FILL_COLOR];
 
-// 小图标背景样式需刷新属性集
+// 克隆应用小图标背景样式需刷新属性集
 const SMALL_ICON_BG_REVERSE_STYLE_PT: WBaseProperty[] = [WBaseProperty.WIDTH, WBaseProperty.HEIGHT,
   WBaseProperty.BORDER_RADIUS_TL, WBaseProperty.BORDER_RADIUS_TR, WBaseProperty.BORDER_RADIUS_BL,
   WBaseProperty.BORDER_RADIUS_BR, WBaseProperty.OFFSET, WBaseProperty.VISIBILITY, WBaseProperty.BACKGROUND_COLOR,
@@ -608,7 +608,7 @@ export class CapVmStyleMgr extends BaseVmStyleMgr {
   }
 
   /**
-   * 更新通用胶囊布局图标样式
+   * 更新通用胶囊布局克隆应用图标样式
    * 影响参数：屏幕断点，AOD状态模式
    */
   private updateIconReverseStyle(): void {
@@ -620,10 +620,10 @@ export class CapVmStyleMgr extends BaseVmStyleMgr {
     let sIconStyleH = this.getItemHelperVm()?.getCapStyleH(CapStyleSuffix.ITEM_SMALL_ICON_REVERSE_STYLE);
     let sIconBgStyleH = this.getItemHelperVm()?.getCapStyleH(sIconBgReverseSuffix);
     CAP_ALL_TYPE.forEach((capType) => {
-      // 小图标样式预置
+      // 小图标克隆应用样式预置
       let sIconStyle = sIconStyleH?.getItemSt(capType);
       SMALL_ICON_REVERSE_STYLE_PT.forEach((pt) => this.setStyleProperty(pt, sIconStyle, sIconCfgStyle));
-      // 小图标背景样式预置
+      // 小图标背景克隆应用样式预置
       let sIconBgStyle = sIconBgStyleH?.getItemSt(capType);
       SMALL_ICON_BG_REVERSE_STYLE_PT.forEach((pt) => this.setStyleProperty(pt, sIconBgStyle, sIconBgCfgStyle));
     });

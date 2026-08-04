@@ -36,6 +36,16 @@ export default function InputMethodModelTest() {
     'icon': '$media:134217738',
     'iconId': 134217738
   }
+  let property: inputMethod.InputMethodProperty = {
+    'packageName': 'com.ohos.inputmethod',
+    'name': 'com.ohos.inputmethod',
+    'methodId': 'InputService',
+    'id': 'InputService',
+    'icon': '',
+    'iconId': 134217735,
+    'label': '语音助手输入法',
+    'labelId': 134217728
+  }
   describe('InputMethodModelTest', () => {
     beforeAll((): void => {
 

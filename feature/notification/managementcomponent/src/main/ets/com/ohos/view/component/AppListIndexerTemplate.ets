@@ -29,6 +29,7 @@ import { SegmentButton, SegmentButtonItemTuple, SegmentButtonOptions } from '@oh
 import { MetaServiceListVM, MetaServiceStateVM } from '../../vm/MetaServiceListVM';
 import { componentUtils } from '@kit.ArkUI';
 import { DeviceHelper } from '../../common/DeviceHelper';
+import { bundleResourceManager } from '@kit.AbilityKit';
 
 const TAG = 'ManagementComponent-AppListIndexerTemplate';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.NC, TAG);
@@ -128,7 +129,7 @@ export default struct AppListIndexerTemplate {
         const headerHeight = px2vp(headerRect.size.height);
         const segmentButtonHeight = px2vp(segmentButtonRect.size.height);
 
-        const metaContentHeight = newHeight - headerHeight - segmentButtonHeight - ContextManager.aiBarHeightByVp;
+        const metaContentHeight = newHeight - headerHeight - segmentButtonHeight - ContextManager.naviBarHeightByVp;
         this.metaContentHeight = metaContentHeight > 300 ? metaContentHeight : 'auto';
         this.emptyServerHeight = newHeight - headerHeight - segmentButtonHeight;
         log.showInfo(`metaContentHeight: ${this.metaContentHeight} emptyServerHeight ${this.emptyServerHeight}`);
@@ -139,7 +140,7 @@ export default struct AppListIndexerTemplate {
   @Builder
   scrollBar() {
     ScrollBar({ scroller: this.scroller, direction: ScrollBarDirection.Vertical, state: BarState.Auto })
-      .height('100%').margin({ bottom: ContextManager.aiBarHeightByVp })
+      .height('100%').margin({ bottom: ContextManager.naviBarHeightByVp })
   }
 
   @Builder
@@ -169,7 +170,7 @@ export default struct AppListIndexerTemplate {
         this.hoverIdx = -1;
       }
     })
-    this.buildAiBar();
+    this.buildNaviBar();
   }
 
   @Builder
@@ -190,8 +191,8 @@ export default struct AppListIndexerTemplate {
   }
 
   @Builder
-  buildAiBar() {
-    Row().height(ContextManager.aiBarHeightByVp)
+  buildNaviBar() {
+    Row().height(ContextManager.naviBarHeightByVp)
   }
 
   @Builder
@@ -301,7 +302,17 @@ export default struct AppListIndexerTemplate {
 
   updateAppList = (appList: AppItem[]): void => {
     log.showInfo(`updateAppList appList size:${appList.length}`);
-    this.lazyAppList.refreshData(appList);
+    let newAppList: AppItem[] = []
+    appList.forEach((appInfo) => {
+      let newAppInfo = appInfo
+      if (appInfo.appIcon === undefined) {
+        let bundleResInfo = bundleResourceManager.getBundleResourceInfo(appInfo.appBundleName,
+          bundleResourceManager.ResourceFlag.GET_RESOURCE_INFO_WITH_ICON,  appInfo.appIndex);
+        newAppInfo.appIcon = bundleResInfo.icon
+      }
+      newAppList.push(newAppInfo)
+    })
+    this.lazyAppList.refreshData(newAppList);
     Trace.end(NtfManagementTrace.TRACE_LOAD_APP_LIST);
     log.showInfo(`updateAppList appList end`);
   }

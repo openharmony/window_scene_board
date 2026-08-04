@@ -27,6 +27,7 @@ import {
 } from '@ohos/hypium'
 import { batteryInfo, power, systemParameter } from '@kit.BasicServicesKit';
 import { SCBOobeManager } from '@ohos/windowscene';
+import { OutdoorConfig } from '@ohos/basicutils';
 import { EmergencyEventManager } from '../../../../../../../main/ets/desktopmode/eventmanager/EmergencyEventManager';
 
 export default function EmergencyEventManagerTest() {
@@ -260,6 +261,8 @@ export default function EmergencyEventManagerTest() {
       let isGreaterThenEnterThreshold = mocker.mockFunc(instance, instance['isGreaterThenEnterThreshold'])
       let isCharging = mocker.mockFunc(instance, instance.isInCharging);
       let eventWhenEnterThreshold = mocker.mockFunc(instance, instance['eventWhenEnterThreshold']);
+      let isOutdoorMode = mocker.mockFunc(instance, instance['idOutdoorMode']);
+      when(isOutdoorMode)().afterReturn(false);
       when(isBatteryConfigSupported)().afterReturn(true);
       when(isOobeActivated)().afterReturn(false);
       when(isGreaterThenEnterThreshold)().afterReturn(false);

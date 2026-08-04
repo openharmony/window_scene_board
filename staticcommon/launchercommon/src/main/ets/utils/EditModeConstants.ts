@@ -295,7 +295,7 @@ export default class EditModeConstants {
   /**
    * 显示底部导航栏事件
    */
-  static readonly AI_BAR_SHOW_EVENT: string = 'AIBarShow';
+  static readonly NAVI_BAR_SHOW_EVENT: string = 'NAVIBarShow';
 
   /**
    * 编辑模式APP分类文件路径

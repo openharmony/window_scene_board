@@ -15,7 +15,7 @@
 
 import { CalleeMethodSet, RemoteInterceptor } from '@ohos/themeservicebase/Index';
 import { TSRemoteCallee } from '../../../main/ets/remote/callee/TSRemoteCallee';
-import { OHOS_TEST_openharmony_APP } from '../core/remote/TSOhosRemoteCallerInfo';
+import { OHOS_TEST_HW_APP } from '../core/remote/TSOhosRemoteCallerInfo';
 
 export class TSOhosTestRemoteCallee extends TSRemoteCallee {
   onAddPreInterceptor(interceptors: RemoteInterceptor[]): void {
@@ -28,7 +28,7 @@ export class TSOhosTestRemoteCallee extends TSRemoteCallee {
 
   onRegister(methodSet: CalleeMethodSet): void {
     super.onRegister(methodSet);
-    methodSet.register('trustCallerTest', this.trustCallerTest, { trustCallers: [OHOS_TEST_openharmony_APP] });
+    methodSet.register('trustCallerTest', this.trustCallerTest, { trustCallers: [OHOS_TEST_HW_APP] });
   }
 
   trustCallerTest(): Promise<void> {

@@ -19,7 +19,7 @@ import { CommonStyle } from '@ohos/emergencymode/src/main/ets/common/CommonStyle
 import { ThermalPhoneStyleConfig } from './styleConfig/ThermalPhoneStyleConfig';
 import { ThermalFoldStyleConfig } from './styleConfig/ThermalFoldStyleConfig';
 import { ThermalPadStyleConfig } from './styleConfig/ThermalPadStyleConfig';
-import { ThermalUltraScreenStyleConfig } from './styleConfig/ThermalUltraScreenStyleConfig';
+import { ThermalThreeFoldStyleConfig } from './styleConfig/ThermalThreeFoldStyleConfig';
 
 const TAG = 'StyleConfigFactory';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.HOME, TAG);
@@ -37,8 +37,8 @@ export class StyleConfigFactory {
     let commonStyle: CommonStyle = ThermalPhoneStyleConfig.getInstance();
     if (DeviceHelper.isBarPhone() || desktopUtil.needIgnoreFoldDeviceForLauncher()) {
       commonStyle = ThermalPhoneStyleConfig.getInstance();
-    } else if (DeviceHelper.isUltraScreenProduct()) {
-      commonStyle = ThermalUltraScreenStyleConfig.getInstance();
+    } else if (DeviceHelper.isThreeFoldProduct()) {
+      commonStyle = ThermalThreeFoldStyleConfig.getInstance();
     } else if (DeviceHelper.isFold()) {
       commonStyle = ThermalFoldStyleConfig.getInstance();
     } else if (DeviceHelper.isPad()) {

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-// import privacyIndicatorManager from '@hms.security.privacyIndicatorManager';
+// import privacyIndicatorManager from '@ohos.security.privacyIndicatorManager';
 import lazy { ResUtils } from '@ohos/windowscene/src/main/ets/utils/ResourceUtils';
 
 /**

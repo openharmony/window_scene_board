@@ -27,7 +27,9 @@ import NTF_LIST_VM_HOLDER from '../../model/NtfListVmHolder';
 import curves from '@ohos.curves';
 import { ScreenLockNotificationConst } from '@ohos/screenlockcommon/src/main/ets/constants/ScreenLockNotificationConstants';
 import { screenLockSysFloatTipControl } from '@ohos/screenlockcommon/src/main/ets/manager/SysFloatTipController';
-import { immersiveKgMgr, OverlayIconStyle } from '@ohos/systemuicommon/src/main/ets/TsIndex';
+import {
+  AodStyleType, ImmersiveAodStyle, immersiveKgMgr,
+  OverlayIconStyle } from '@ohos/systemuicommon/src/main/ets/TsIndex';
 import { FontScaleState, fontScaleManager } from '@ohos/systemuicommon';
 import { NtfAppIconModifier } from '../../vm/style/NtfAppIconModifier';
 import { BrightnessOptionUtils } from '@ohos/systemuicommon/Index';
@@ -45,6 +47,7 @@ import { NtfCloseVM } from '../../vm/NtfCloseVM';
 import { NtfGroupItemModifier } from '../../model/NtfItemModifier';
 import { ExtraNtfCollapseEvent } from '../../common/event/NotificationEvent';
 import { AccessibilityCollapsedState } from '@ohos/systemuicommon/src/main/ets/accessibility/AccessibilityAppName';
+import { DeliverBadge } from '@ohos/systemuicommon/src/main/ets/view/DeliverBadge';
 import { NotificationCollaBadgeViewV1 } from '@ohos/systemuicommon/src/main/ets/view/NotificationCollaBadgeViewV1';
 
 const TAG = 'NotificationHeader';
@@ -180,6 +183,12 @@ export struct NotificationHeader {
    */
   @Consume isKeyguardLock: boolean;
 
+  /**
+   * AOD显示样式
+   */
+  @State aodStyle: ImmersiveAodStyle | undefined = immersiveKgMgr.getOneMirrorState().getAodStyle(
+    this.notificationType === NotificationType.TYPE_PHONE_KEYGUARD);
+
   private listContentConfig: NtfListContentConfig = ntfViewConfigManager.getListContentConfig();
 
   /**
@@ -272,12 +281,13 @@ export struct NotificationHeader {
       .draggable(false)
       .id(TAG + '_appName')
       .fontSize(this.fontScaleState.getScaleSize($r('app.float.ntf_app_name_font_size')))
-      .fontColor($r('app.color.theme_ntf_color_text_primary'))
+      .fontColor(this.aodStyle?.isAod ? this.aodStyle?.getStyleValue(AodStyleType.FONT_COLOR) :
+      $r('app.color.theme_ntf_color_text_primary'))
       .fontWeight(FontWeight.Regular)
       .fontFeature('\"ss08\" on')
       .maxLines(NotificationConfig.LAYOUT_WEIGHT_ONE)
       .textOverflow({ overflow: TextOverflow.Ellipsis })
-      .renderGroup(true)
+      .renderGroup(this.aodStyle?.isOneMirror ? false : true)
       .margin({
         left: RTLUtil.isRTL() ? 0 : $r('app.float.ntf_header_common_margin'),
         right: RTLUtil.isRTL() ? $r('app.float.ntf_header_common_margin') : 0
@@ -302,8 +312,9 @@ export struct NotificationHeader {
     if (this.isShowIcon()) {
       Text($r('app.string.ntf_header_divider_symbol'))
         .draggable(false)
-        .fontColor(this.colorModeVM?.themeFontForegroundColor)
-        .foregroundBrightness(this.colorModeVM?.themeFontForegroundBrightnessOptions)
+        .fontColor(this.aodStyle?.isAod ? this.aodStyle?.getStyleValue(AodStyleType.FONT_COLOR) : this.colorModeVM?.
+        themeFontForegroundColor)
+        .foregroundBrightness(this.aodStyle?.isAod ? undefined : this.colorModeVM?.themeFontForegroundBrightnessOptions)
         .margin({
           left: $r('app.float.ntf_header_common_margin'),
           right: $r('app.float.ntf_header_common_margin')
@@ -314,9 +325,9 @@ export struct NotificationHeader {
       .draggable(false)
       .id(COMPONENT_ID_ADDITIONAL_TEXT)
       .fontSize($r('app.float.ntf_app_time_font_size'))
-      .fontColor(this.colorModeVM?.
+      .fontColor(this.aodStyle?.isAod ? this.aodStyle?.getStyleValue(AodStyleType.FONT_COLOR) : this.colorModeVM?.
       themeFontForegroundColor)
-      .foregroundBrightness(this.colorModeVM?.themeFontForegroundBrightnessOptions)
+      .foregroundBrightness(this.aodStyle?.isAod ? undefined : this.colorModeVM?.themeFontForegroundBrightnessOptions)
       .fontWeight(FontWeight.Regular)
       .textOverflow({ overflow: TextOverflow.Ellipsis })
       .maxLines(1)
@@ -332,7 +343,9 @@ export struct NotificationHeader {
         .id(COMPONENT_ID_TOP_FLAG)
         .border({
           width: $r('app.float.ntf_pin_top_flag_border_width'),
-          color: this.colorModeVM?.bgPinTextColor,
+          color: this.aodStyle?.isAod
+            ? this.aodStyle?.getStyleValue(AodStyleType.FONT_COLOR)
+            : this.colorModeVM?.bgPinTextColor,
           radius: $r('app.float.ntf_pin_top_flag_border_radius'),
           style: BorderStyle.Solid
         })
@@ -347,8 +360,11 @@ export struct NotificationHeader {
         .margin({ end: LengthMetrics.resource($r('app.float.ntf_header_common_margin')) })
         .flexShrink(0)
         .geometryTransition(this.getGeometryTransitionId(), this.getGeometryTransitionOptions())
-        .fontColor(this.colorModeVM?.bgPinTextColor)
-        .foregroundBrightness(this.colorModeVM?.themeTimestampForegroundBrightnessOptions)
+        .fontColor(this.aodStyle?.isAod
+          ? this.aodStyle?.getStyleValue(AodStyleType.FONT_COLOR)
+          : this.colorModeVM?.bgPinTextColor)
+        .foregroundBrightness(this.aodStyle?.isAod ? BrightnessOptionUtils.aodTimeLightOptionForFillColor :
+          this.colorModeVM?.themeTimestampForegroundBrightnessOptions)
     }
   }
 
@@ -388,7 +404,7 @@ export struct NotificationHeader {
   buildAppIcon() {
     Image(this.appIcon)
       .id(this.ntfEntry?.getGroupTypeKey() + '_HeaderAppIcon')
-      .opacity(undefined)
+      .opacity(this.aodStyle?.isAod ? this.aodStyle.getStyleValue(AodStyleType.NTF_APP_ICON_ALPHA) : undefined)
       .attributeModifier(new NtfAppIconModifier($r('app.float.ntf_small_icon_size_in_tint'), undefined, this.ntfEntry, false))
       .geometryTransition(this.notificationType === NotificationType.TYPE_PHONE_KEYGUARD ? '' :
         this.ntfEntry?.getGroupTypeKey() + '_' + this.notificationType + '_AppIcon',
@@ -415,6 +431,13 @@ export struct NotificationHeader {
         NotificationCollaBadgeViewV1({
           geometryTransitionId : this.notificationType === NotificationType.TYPE_PHONE_KEYGUARD ? '' :
             this.ntfEntry?.getGroupTypeKey() + '_' + this.notificationType + '_CollaBadge'
+        })
+      } else {
+        DeliverBadge({
+          iconSize: ResUtils.getNumber($r('app.float.ntf_small_icon_size_in_tint')),
+          geometryTransitionId: this.notificationType === NotificationType.TYPE_PHONE_KEYGUARD ? '' :
+            this.ntfEntry?.getGroupTypeKey() + '_' + this.notificationType + '_OverlayIcon',
+          isKgScene: this.notificationType === NotificationType.TYPE_PHONE_KEYGUARD,
         })
       }
     }

@@ -22,11 +22,12 @@ import {
   Prompt,
   router,
   window,
-  SymbolGlyphModifier
+  SymbolGlyphModifier,
+  promptAction
 } from '@kit.ArkUI';
 import common from '@ohos.app.ability.common';
 import UIExtensionContentSession from '@ohos.app.ability.UIExtensionContentSession';
-import { HdsNavigation, HdsNavigationAttribute } from '@kit.UIDesignKit';
+// import { HdsNavigation, HdsNavigationAttribute } from '@kit.UIDesignKit';
 import { DesktopIntelligentSettingPage } from './desktopSetting/DesktopIntelligentSettingPage';
 import DesktopSetting from './desktopSetting/DesktopSettingPage';
 import { OUTER_DESKTOP_EDIT, OuterDesktopEditPage } from './desktopSetting/OuterDesktopEditPage';
@@ -35,20 +36,23 @@ import { SUB_SCREEN_THEME, SubScreenTheme } from './SubScreenTheme';
 import { AigcParams } from '../uiability/AigcAbility';
 import { Log } from '../aigcServiceAbility/IdlService/Log';
 import EditWallpaper from './EditWallpaper';
-import { WallPaper, WallPaperInfo } from "@ohos/themeservicekit";
+import { EventEmitter, WallPaper, WallPaperInfo } from "@ohos/themeservicekit";
 import fs from '@ohos.file.fs';
 import { BusinessError } from '@ohos.base';
 import { ThemeInfoAdapter } from '../themeInfoAdapter/ThemeInfoAdapter';
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 import { dataSharePredicates } from '@kit.ArkData';
-import { picker } from '@kit.CoreFileKit';
+import { fileIo, picker } from '@kit.CoreFileKit';
 import { Constants } from '../constants/wallpaperPathConstants';
-import { ShowWallpaperPage } from './ShowWallpaperPage'
+import { ImageShowStyle, ShowWallpaperPage } from './ShowWallpaperPage'
 import { image } from '@kit.ImageKit';
-import { WallpaperEditPage } from './WallpaperEditPage';
+import { WallPageType, WallpaperEditPage } from './WallpaperEditPage';
 import { commonEventManager, wallpaper } from '@kit.BasicServicesKit';
 import { ImageUtils } from '../utils/ImageUtils';
 import { LogUtil } from '@ohos/lottie';
+import { CompleteImageAdapter } from '../utils/ImageFitProcessor';
+import { ScreenSetting } from './ScreenSetting';
+import { PCUtils } from '../utils/PCUtils';
 
 const TAG: string = 'ThemeHome';
 const INTELLIGENT_SETTING_PAGE: string = 'intelligentSettingPage';
@@ -60,6 +64,7 @@ const FONT_CREATION_PRIVACY_PAGE: string = 'FontCreationPrivacyPage';
 @Component
 struct ThemeHome {
   private selectedImageUri: string = '';
+  private wallpaperStyle: ImageShowStyle = ImageShowStyle.ImageShowStyleFitScreen
   private context = getContext(this) as common.UIAbilityContext;
   private static readonly THEME_GALLEY: string = 'themeGallery';
   private inspector: inspector.ComponentObserver = inspector.createComponentObserver('ThemeHome');
@@ -77,6 +82,7 @@ struct ThemeHome {
   @Provide onBackPressCount: number = 0;
   // @Provide('myWallpaperList') myWallpaperList: WallpaperListDataSource = new WallpaperListDataSource();
   @State isFull: boolean = false;
+  @State isHybird: boolean = false;
   @State hasPrePage: boolean = false;
   private navName: string = '';
   private session: UIExtensionContentSession | undefined = undefined;
@@ -84,13 +90,14 @@ struct ThemeHome {
   private isNeedDestroy: boolean | undefined = true;
   private themeHomeStamp: string = '';
   private themeWindowStage: window.WindowStage | undefined;
-  @State bgPixelMap: image.PixelMap | Resource | null = null;
+  @State bgPixelMap: image.PixelMap | null = null;
   @State @Watch('updateIsHideBackButton') isSettingSplit: boolean = false;
   @State @Watch('updateIsHideBackButton') isFromSearch: boolean = false;
   @State @Watch('updateIsHideBackButton') isPadInPCMode: boolean = false;
   @Provide('isHideBackButton') isHideBackButton: boolean = false;
   @Provide('isShowAgreementDialog') isShowAgreementDialog: boolean = false;
   @Provide('agreementDialogProxy') agreementDialogProxy: UIExtensionProxy | undefined = undefined;
+  @State isSettingPage: boolean = false
 
   public updateIsHideBackButton(): void {
     this.isHideBackButton = this.isSettingSplit || this.isFromSearch || this.isPadInPCMode;
@@ -103,8 +110,11 @@ struct ThemeHome {
         selectImageFromGallery: () => {
           this.selectImageFromGallery();
         },
-        pickWallpaperToEdit: (imageUrl: Resource) => {
-          this.pickWallpaper(imageUrl)
+        pickWallpaperToEdit: (imageUrl: string, wallpaperStyle: ImageShowStyle) => {
+          this.pickWallpaper(imageUrl, wallpaperStyle)
+        },
+        pushScreenSettingPage: () => {
+          this.pageInfos.pushPath({name: Constants.SCREEN_SETTING})
         }
       })
     } else if (name === Constants.WALLPAPER_EDITOR) {
@@ -112,8 +122,10 @@ struct ThemeHome {
         bgPixelMap: this.bgPixelMap,
         imageUrl: this.selectedImageUri,
         hasPreView: this.hasPrePage,
-        setWallpaper: (uri: string): void => {
-          this.setWallpaper(uri);
+        wallpaperStyle: this.wallpaperStyle,
+        setWallpaper: async (uri: string, imagePicelMap: image.PixelMap, wallpaperType: WallPageType): Promise<boolean> => {
+           let isBack: boolean = await this.setWallpaper(uri, imagePicelMap, wallpaperType);
+           return isBack
         }
       })
     } else if (name === Constants.WALLPAPER_PICKER) {
@@ -121,8 +133,14 @@ struct ThemeHome {
         selectImageFromGallery: () => {
           this.selectImageFromGallery();
         },
-        pickWallpaperToEdit: (imageUrl: Resource) => {
-          this.pickWallpaper(imageUrl)
+        pickWallpaperToEdit: (imageUrl: string, wallpaperStyle: ImageShowStyle) => {
+          this.pickWallpaper(imageUrl, wallpaperStyle)
+        },
+        pushScreenSettingPage: () => {
+          this.pageInfos.pushPath({name: Constants.SCREEN_SETTING})
+        },
+        clickClose: () => {
+          this.session?.sendData({ 'hiddenLockWallpaper': true })
         }
       })
     } else if (name === Constants.THEME_GALLERY) {
@@ -130,12 +148,20 @@ struct ThemeHome {
         selectImageFromGallery: () => {
           this.selectImageFromGallery();
         },
-        pickWallpaperToEdit: (imageUrl: Resource) => {
-          this.pickWallpaper(imageUrl)
+        pickWallpaperToEdit: (imageUrl: string, wallpaperStyle: ImageShowStyle) => {
+          this.pickWallpaper(imageUrl, wallpaperStyle)
+        },
+        pushScreenSettingPage: () => {
+          this.pageInfos.pushPath({name: Constants.SCREEN_SETTING})
+        }
+      })
+    } else if (name === Constants.SCREEN_SETTING) {
+      ScreenSetting({
+        backAction: () => {
+          this.pageInfos.pop()
         }
       })
     }
-
   }
 
   public async aboutToAppear() {
@@ -145,6 +171,8 @@ struct ThemeHome {
     // });
 
     // HiSysEventUtil.reportDataSize();
+    //创建json文件
+    await ImageUtils.initJsonFile(this.context)
     Log.info(TAG, 'aboutToAppear');
     this.inspector.on('layout', () => {
       AppStorage.setOrCreate('rootNavigationWidth', px2vp(componentUtils.getRectangleById('ThemeHome').size.width));
@@ -158,7 +186,10 @@ struct ThemeHome {
     let params: ESObject | undefined = LocalStorage.getShared()?.get<ESObject>('params');
     this.isNeedDestroy = LocalStorage.getShared()?.get<boolean>('isNeedDestroy');
     this.navName = this.getParam(params, (param: ESObject) => param.nav as string, '');
+    this.isHybird = this.getParam(params,  (param: ESObject) => param.isHybird as boolean, false)
+    Log.info(TAG, `this.isHybird: ${this.isHybird}---${JSON.stringify(params)}`)
     Log.info(TAG, `aboutToAppear, this.isNeedDestroy = ${this.isNeedDestroy} this.navName = ${this.navName}`);
+    this.isSettingPage = this.navName === Constants.WALLPAPER_SETTING
     this.session = this.getParam(params, (param: ESObject) => param.session as UIExtensionContentSession, undefined);
     // await displayHelper.init(this.session?.getUIExtensionHostWindowProxy());
     this.pageInfos.pushPath({
@@ -168,7 +199,43 @@ struct ThemeHome {
     }, this.isNeedNavBarAnimation(this.navName));
     this.onWindowSizeChange();
     this.sizeChangeCallback();
+    this.session?.setReceiveDataCallback(async (data: Record<string, Object>) => {
+      if (data?.requestId === 'selectImageFromGallery') {
+        if (await this.modifyWallpaperDisable()) {
+          return
+        }
+        this.selectedImageUri = data!.uri as string;
+        this.hasPrePage = true
+        Log.info(TAG, 'get wallpaper------' + this.selectedImageUri);
+        this.bgPixelMap = await ImageUtils.convertUriToPixelMap(this.selectedImageUri);
+        this.pageInfos.pushPath({ name: Constants.WALLPAPER_EDITOR })
+      }
+    })
   }
+
+  async savePixelMapWithPacker(pixelMap: PixelMap, outputPath: string, format: string = 'image/jpeg', quality: number = 95): Promise<void> {
+  try {
+    const imagePacker = image.createImagePacker()
+    if (!imagePacker) {
+      throw new Error('ImagePacker creat error')
+    }
+    const packOpts: image.PackingOption = {
+      format: format,
+      quality: quality
+    }
+    const packedData = await imagePacker.packing(pixelMap, packOpts)
+    const file = fileIo.openSync(
+      outputPath,
+      fileIo.OpenMode.CREATE | fileIo.OpenMode.WRITE_ONLY | fileIo.OpenMode.TRUNC
+    )
+    fileIo.writeSync(file.fd, packedData)
+    fileIo.closeSync(file)
+    imagePacker.release()
+  } catch (error) {
+    let err = error as BusinessError;
+    Log.error(TAG, `ThemeComponentExtAbility onSessionDestroy err:${err?.message}--${err?.code}`);
+  }
+}
 
   async saveMediaToSandbox(mediaUri: string, fileName: string, context: common.UIAbilityContext): Promise<string> {
     try {
@@ -239,11 +306,11 @@ struct ThemeHome {
     fs.copyFileSync(sourceFile.fd, targetFile.fd, 0);
     fs.closeSync(sourceFile);
     fs.closeSync(targetFile);
-    LogUtil.info(`copyfile success: ${targetPath}`);
+    Log.info(TAG, `copyfile success: ${targetPath}`);
     return targetPath;
   } catch (err) {
     const error = err as BusinessError;
-    LogUtil.error(`copyfile error: ${error.code}, ${error.message}`);
+    Log.error(TAG, `copyfile error: ${error.code}, ${error.message}`);
     return "";
   }
 }
@@ -256,36 +323,9 @@ struct ThemeHome {
       return false;
     }
     const context: common.ExtensionContext = contextObject as common.ExtensionContext;
-    // //全局搜索桌面设置场景，侧滑直接返回全搜
-    // if (navName === Constants.DESKTOP_SETTING_PAGE) {
-    //   return true;
-    // }
     if (context?.extensionAbilityInfo?.name && context.extensionAbilityInfo.name !== SETTING_EXTENSION_ABILITY_NAME) {
       return false;
     }
-    // return navName === Constants.WALLPAPER_PICKER || navName === Constants.ICON_PICKER ||
-    //   navName === Constants.THEME_PICKER || navName === Constants.FONT_PICKER ||
-    //   navName === Constants.SETTINGS_THEME_PAGE || navName === Constants.MY_WALLPAPER_EDIT ||
-    //   navName === Constants.MY_WALLPAPER_EDIT_DIGITAL_CLOCK || navName === Constants.MY_WALLPAPER_EDIT_ART_SIGNATURE ||
-    //   navName === Constants.MY_WALLPAPER_EDIT_LOCK_CARD;
-    return true
-  }
-
-  private isSettingSelfDrawPage(navName: string): boolean {
-    // const contextObject: object | undefined = GlobalContext.getContext().getObject(Constants.THEME_EDITOR_CONTEXT);
-    const contextObject: object | undefined = AppStorage.get('theme_editor_context');
-
-    if (!contextObject) {
-      Log.error(TAG, `isSettingIntentPage, contextObject is undefined`);
-      return false;
-    }
-    const context: common.ExtensionContext = contextObject as common.ExtensionContext;
-    if (context?.extensionAbilityInfo?.name && context.extensionAbilityInfo.name !== SETTING_EXTENSION_ABILITY_NAME) {
-      return false;
-    }
-    // return navName === Constants.WALLPAPER_PICKER || navName === Constants.ICON_PICKER ||
-    //   navName === Constants.THEME_PICKER || navName === Constants.FONT_PICKER ||
-    //   navName === Constants.SETTINGS_THEME_PAGE;
     return true
   }
 
@@ -301,9 +341,6 @@ struct ThemeHome {
     if (context?.extensionAbilityInfo?.name && context.extensionAbilityInfo.name !== SETTING_EXTENSION_ABILITY_NAME) {
       return false;
     }
-    // return navName === Constants.WALLPAPER_PICKER || navName === Constants.ICON_PICKER ||
-    //   navName === Constants.THEME_PICKER || navName === Constants.FONT_PICKER ||
-    //   navName === Constants.SETTINGS_THEME_PAGE;
     return true
   }
 
@@ -326,7 +363,6 @@ struct ThemeHome {
     return false;
   }
 
-  // private getParam<T>(params: WantParams | undefined, getter: (params: WantParams) => Nullable<T>, def: T): T {
   private getParam(params: ESObject | undefined, getter: (params: ESObject) => ESObject, def: ESObject): ESObject {
     if (!params) {
       return def;
@@ -345,22 +381,8 @@ struct ThemeHome {
 
   private sizeChangeCallback = async (): Promise<void> => {
     try {
-      // if (this.source === THEME_APP_BUNDLE || DeviceHelper.isPC()) {
-      //   return;
-      // }
       let windowRect = this.session?.getUIExtensionHostWindowProxy().properties.uiExtensionHostWindowProxyRect;
       if (windowRect) {
-        let windowWidth: number = windowRect.width;
-        let windowHeight: number = windowRect.height;
-        let displayWidth: number = display.getDefaultDisplaySync().width;
-        let displayHeight: number = display.getDefaultDisplaySync().height;
-        // this.isPadInPCMode = await SmallWindowHelper.checkPadIsInPCMode();
-        // if (windowWidth !== displayWidth && (!SmallWindowHelper.checkSmallWindow() || windowHeight !== displayHeight &&
-        // SmallWindowHelper.checkWindowSplit())) {
-        //   this.isSettingSplit = true;
-        // } else {
-        //   this.isSettingSplit = false;
-        // }
         this.isSettingSplit = true;
 
         Log.info(TAG, `isSettingSplit: ${this.isSettingSplit}`);
@@ -372,62 +394,80 @@ struct ThemeHome {
 
   public aboutToDisappear() {
     Log.info(TAG, `aboutToDisappear, this.navName = ${this.navName}, this.isNeedDestroy = ${this.isNeedDestroy}`);
-    // try {
-    //   this.session?.getUIExtensionWindowProxy().off('windowSizeChange', this.sizeChangeCallback);
-    // } catch (e) {
-    //   Log.error(TAG, 'session error');
-    // }
-    // displayHelper.destroy();
-    //
-    // // 特殊场景，分栏设备的主题详情、壁纸编辑、个性化主题自定义、字体详情
-    // const exceptScene: boolean = this.navName === Constants.WALLPAPER_EDITOR ||
-    //   this.navName === Constants.THEME_DETAIL || this.navName === Constants.THEME_PERSONALIZE ||
-    //   this.navName === Constants.FONT_DETAIL || this.navName === Constants.LOCK_PERSONALIZE_PAGE;
-    // // 非分栏设备，直接取消注册
-    // // 分栏设备 以上几个页面 无需取消注册
-    // // 分栏设备 其他页面 取消注册
-    // if (exceptScene && DeviceHelper.isSettingSplitProduct()) {
-    //   return;
-    // }
-    // accessHelper.unregisterAccessibilityModeListener();
   }
 
-  // 将图片URI转换为PixelMap（用于背景显示）
 
+  private async modifyWallpaperDisable(): Promise<boolean> {
+    if (await PCUtils.isModifyWallpaperDisable()) {
+      Log.info(TAG, `modify wallpaper is disbaled,show toast`);
+      try {
+        promptAction.showToast({
+          message: $r('app.string.disable_modify_wallpaper_tips')
+        });
+      } catch (e) {
+        Log.error(TAG, `showToast fail, code: ${e?.code}, message: ${e?.message}`);
+      }
+      return true;
+    }
+    return false
+  }
 
   private async selectImageFromGallery() {
-    try {
-      // 1. 创建图库选择器实例
-      const photoPicker = new picker.PhotoViewPicker();
-      // 2. 配置选择参数（选单张图片）
-      const selectOptions = new picker.PhotoSelectOptions();
-      selectOptions.MIMEType = picker.PhotoViewMIMETypes.IMAGE_TYPE; // 只选图片
-      selectOptions.maxSelectNumber = 1; // 最多选1张
-      // 3. 拉起系统图库，等待用户选择
-      const result = await photoPicker.select(selectOptions);
-      // 4. 处理选择结果（拿到图片URI）
-      if (result.photoUris && result.photoUris.length > 0) {
-        this.selectedImageUri = result.photoUris[0];
-        this.hasPrePage = true
-        Log.info(TAG, 'get wallpaper' + this.selectedImageUri);
-        this.bgPixelMap = await ImageUtils.convertUriToPixelMap(this.selectedImageUri);
-        this.pageInfos.pushPath({ name: Constants.WALLPAPER_EDITOR })
-        // // 5. 调用设置壁纸方法
-        // await this.setWallpaper(this.selectedImageUri);
-      } else {
-        // hilog.warn(0x0000, 'Wallpaper', '用户取消了图库选择');
-      }
-    } catch (err) {
-      // hilog.error(0x0000, 'Wallpaper', '拉起图库失败：%{public}s', JSON.stringify(err));
+    if (this.isSettingPage) {
+      this.session?.sendData({ 'selectImageFromGallery': true })
+    } else {
+      await this.selectImageWithoutPreview()
     }
+
   }
 
+  async selectImageWithoutPreview() {
+  try {
+    const photoSelectOptions = new photoAccessHelper.PhotoSelectOptions();
+    photoSelectOptions.MIMEType = photoAccessHelper.PhotoViewMIMETypes.IMAGE_TYPE;
+    photoSelectOptions.maxSelectNumber = 1;
+    photoSelectOptions.singleSelectionMode = photoAccessHelper.SingleSelectionMode.SELECT_MODE
+    photoSelectOptions.isPreviewForSingleSelectionSupported = false;
+    photoSelectOptions.isPhotoTakingSupported = false
+    const photoViewPicker = new photoAccessHelper.PhotoViewPicker();
+    const photoSelectResult = await photoViewPicker.select(photoSelectOptions);
+    if (photoSelectResult.photoUris.length > 0) {
+      if (await this.modifyWallpaperDisable()) {
+        return
+      }
+      const uri = photoSelectResult.photoUris[0];
+      this.selectedImageUri = uri;
+      this.hasPrePage = true
+      Log.info(TAG, 'get wallpaper' + this.selectedImageUri);
+      this.bgPixelMap = await ImageUtils.convertUriToPixelMap(this.selectedImageUri);
+      this.pageInfos.pushPath({ name: Constants.WALLPAPER_EDITOR })
+    }
+
+  } catch (err) {
+    const error = err as BusinessError;
+    Log.error(TAG, `选择图片失败, code: ${error.code}, message: ${error.message}`);
+  }
+}
+
 //在壁纸页面选择壁纸
-  public pickWallpaper(imageUrl: Resource) {
-    this.bgPixelMap = imageUrl;
-    this.hasPrePage = true;
-    this.pageInfos.pushPath({ name: Constants.WALLPAPER_EDITOR });
-    Log.info(TAG, 'pickWallpaper to setWallpaper, go to wallpaper edit page')
+  public async pickWallpaper(imageUrl: string, wallpaperStyle: ImageShowStyle = ImageShowStyle.ImageShowStyleFitScreen) {
+    if (await this.modifyWallpaperDisable()) {
+      return
+    }
+    try {
+      this.selectedImageUri = imageUrl
+      // this.bgPixelMap = await ImageUtils.readLocalImage(imageUrl)
+      const displayInfo = display.getDefaultDisplaySync()
+      const width = displayInfo.width
+      const height = displayInfo.height
+      this.wallpaperStyle = wallpaperStyle
+      this.hasPrePage = true;
+      this.bgPixelMap = await CompleteImageAdapter.adaptImage(imageUrl, this.wallpaperStyle, width, height)
+      this.pageInfos.pushPath({ name: Constants.WALLPAPER_EDITOR });
+      Log.info(TAG, 'pickWallpaper to setWallpaper, go to wallpaper edit page')
+    } catch (err) {
+
+    }
   }
 
   notifyApplyTheme(): void {
@@ -439,41 +479,84 @@ struct ThemeHome {
     try {
       commonEventManager.publish('ts.event.theme.change', option, (error) => {
         if (error) {
-          console.log('notifyApplyTheme error', error);
+          Log.error(TAG, `notifyApplyTheme error err:${error?.message}--${error?.code}`);
         } else {
-          console.log('notifyApplyTheme success');
+          Log.info(TAG, 'notifyApplyTheme success');
         }
       });
     } catch (error) {
-      console.log('publish notifyApplyTheme error', error);
+      Log.error(TAG, 'publish notifyApplyTheme error', error);
     }
   }
 
-  private async setWallpaper(uri: string) {
+  publishRefreshWallpaperEvent(): void {
+    try {
+      commonEventManager.publish(Constants.REFRESH_WALLPAPER, (error) => {
+        if (error) {
+          Log.error(TAG,`publishRefreshWallpaperEvent error name:${error?.name} message:${error?.message} stack:${error?.stack}`);
+        } else {
+          Log.info(TAG, 'publishRefreshWallpaperEvent success');
+        }
+      });
+    } catch (error) {
+      let err = error as BusinessError;
+      Log.error(TAG, `publish publishRefreshWallpaperEvent error:
+                      name:${err?.name} message:${err?.message} stack:${err?.stack}` );
+    }
+  }
+
+  private async setWallpaper(uri: string, imagePicelMap: image.PixelMap, wallpaperType: WallPageType): Promise<boolean> {
+    const lockFileName = `wallpaper_lock_image.webp`;
+    const unlockFileName = `wallpaper_unlock_image.webp`;
+    Log.info(TAG, `setWallpaper----${imagePicelMap}----${imagePicelMap === null}`)
+    if (!imagePicelMap || imagePicelMap === null) {
+      promptAction.showToast({
+        message: $r('app.string.image_decoding_failure'),
+      });
+      return false
+    }
+    switch (wallpaperType) {
+      case WallPageType.WALLPAGETYPE_ALL:
+        await this.saveImageToLocalPath(uri, imagePicelMap, lockFileName, wallpaper.WallpaperType.WALLPAPER_LOCKSCREEN)
+        await this.saveImageToLocalPath(uri,imagePicelMap, unlockFileName, wallpaper.WallpaperType.WALLPAPER_SYSTEM)
+        break;
+      case WallPageType.WALLPAGETYPE_LOCK:
+        await this.saveImageToLocalPath(uri, imagePicelMap, lockFileName, wallpaper.WallpaperType.WALLPAPER_LOCKSCREEN)
+        break;
+      case WallPageType.WALLPAGETYPE_DESKTOP:
+        await this.saveImageToLocalPath(uri, imagePicelMap, unlockFileName, wallpaper.WallpaperType.WALLPAPER_SYSTEM)
+        break;
+    }
+    const path = await ImageUtils.saveImage(uri, this.context)
+    PersistentStorage.persistProp(Constants.LOCAL_WALLPAPER, path)
+    const jsonPath = await ImageUtils.initJsonFile(this.context)
+    const dataList = await ImageUtils.readJsonFile(jsonPath)
+    await ImageUtils.addData(jsonPath, dataList, path)
+    this.publishRefreshWallpaperEvent();
+    this.notifyApplyTheme()
+    return true
+  }
+
+  async saveImageToLocalPath(uri: string, imagePixelMap: PixelMap, fileName: string, wallpaperType: wallpaper.WallpaperType) {
     let localPath: string = ''
     let uiContext: common.UIAbilityContext = getContext() as common.UIAbilityContext;
-    const fileName = `wallpaper_image.webp`;
     try {
-      if (uri.startsWith('datashare://media/') || uri.startsWith('file://media/')) {
-        localPath = await this.saveMediaToSandbox(uri, fileName, uiContext);
-      } else {
-        localPath = await this.copyFileToSandbox(uri, fileName)
-      }
-      console.log(`save success: ${localPath}`);
+      const sandboxDir = uiContext.filesDir; // 获取沙箱文件目录
+      localPath = `${sandboxDir}/${fileName}`;
+      await this.savePixelMapWithPacker(imagePixelMap, localPath)
+      Log.info(TAG, `save success: ${localPath}`);
       // 验证文件是否存在
       const stat = fs.statSync(localPath);
-      console.log(`file size: ${stat.size}`);
+      Log.info(TAG, `file size: ${stat.size}`);
       let wallpaperInfos: wallpaper.WallpaperInfo[] = [];
       wallpaperInfos.push({
         foldState: wallpaper.FoldState.NORMAL,
         rotateState: wallpaper.RotateState.PORTRAIT,
         source: localPath
       });
-      await wallpaper.setAllWallpapers(wallpaperInfos, wallpaper.WallpaperType.WALLPAPER_SYSTEM)
-      this.notifyApplyTheme()
-
+      await wallpaper.setAllWallpapers(wallpaperInfos, wallpaperType)
     } catch (error) {
-      console.error('save error:', error);
+      Log.error(TAG, 'save error:', error);
     }
   }
 
@@ -482,38 +565,19 @@ struct ThemeHome {
     }
     .id('ThemeHome')
     .key('ThemeHome')
-    .backgroundColor(Color.Red)
     .hideTitleBar(true)
     .navDestination(this.PageMap)
     .hideNavBar(true)
     .mode(NavigationMode.Stack)
-    // if (DeviceHelper.isPC()) {
-    //   Navigation(this.pageInfos) {
-    //   }
-    //   .id('ThemeHome')
-    //   .key('ThemeHome')
-    //   .backgroundColor(this.isFull && (this.navName !== ThemeHome.THEME_GALLEY) ?
-    //   $r('sys.color.ohos_id_color_titlebar_sub_bg')
-    //     : $r('app.color.transparent'))
-    //   .hideTitleBar(true)
-    //   .navDestination(this.PageMap)
-    //   .hideNavBar(this.isSettingSplit || this.isFromSearch || this.isPadInPCMode)
-    //   .mode(NavigationMode.Stack)
-    // } else {
-  //   Navigation(this.pageInfos) {
-  //   }
-  //   .id('ThemeHome')
-  //   .key('ThemeHome')
-  //   .mode(NavigationMode.Auto)
-  //   // .backgroundColor(this.isFull && (this.navName !== ThemeHome.THEME_GALLEY) ?
-  //   // $r('sys.color.ohos_id_color_titlebar_sub_bg')
-  //   //   : $r('app.color.transparent'))
-  //   .backgroundColor(Color.Red)
-  //   .hideTitleBar(true)
-  //   .navDestination(this.PageMap)
-  //   .hideNavBar(this.isSettingSplit || this.isFromSearch || this.isPadInPCMode)
-  //   .mode(NavigationMode.Stack)
-  // }
-  // }
+    .borderRadius(this.isHybird ? { topLeft: 40, topRight: 40 } : 0)
+    .clip(this.isHybird ? true : false)
+    .onDisAppear(() => {
+      try {
+        this.session?.sendData({ 'hiddenLockWallpaper': true })
+      } catch (err) {
+        const error = err as BusinessError;
+        Log.error(TAG, `onDisAppear sendData error: ${error.code}, ${error.message}`);
+      }
+    })
   }
 }

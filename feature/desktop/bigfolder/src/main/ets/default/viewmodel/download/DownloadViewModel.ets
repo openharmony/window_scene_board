@@ -29,6 +29,7 @@ import {
   ContractedFolderLayoutViewModel,
   ContractedFolderViewModelManager,
   ContractedFolderViewModelType,
+  DeliverUtil,
   FolderActionLifeCycleEvent,
   FolderActionLifeCycleEventManager,
   FolderActionLifeCycleStatus,
@@ -343,11 +344,15 @@ export class DownloadViewModel implements IContractedFolderDownloadViewModel {
     if (GridLayoutUtil.isAppInstalled(item)) {
       return false;
     }
-    // 未OpenHarmony化的应用不需要计算下载进度
+    // 未鸿蒙化的应用不需要计算下载进度
     if (item.appStatus === AppStatus.WAIT_FOR_HARMONY) {
       return false;
     }
-    // OpenHarmony化的企业应用，点亮未下载时不需要计算下载进度
+    // 应用无下载进度，不计算
+    if (DeliverUtil.isContainerItem(item.intent)) {
+      return false;
+    }
+    // 鸿蒙化的企业应用，点亮未下载时不需要计算下载进度
     if (item.appStatus === AppStatus.PENDING && CommonUtils.jsonStrToMap(item.intent).get('appType') === 1) {
       return false;
     }

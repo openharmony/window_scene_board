@@ -24,8 +24,8 @@ import {
   ReceiveEventInfo,
   LayoutViewModel,
 } from '@ohos/launchercommon';
-import { localEventManager } from '@ohos/frameworkwrapper';
-import { LogDomain,
+import { LightOutdoorConfig, localEventManager } from '@ohos/frameworkwrapper';
+import { OutdoorConfig, LogDomain,
   LogHelper,
 } from '@ohos/basicutils';
 import { DeviceHelper, GlobalContext, SystemParamUtils } from '@ohos/frameworkwrapper'
@@ -122,6 +122,19 @@ export class EditModeViewEvent {
   public doPinchGestureEvent(event: GestureEvent, type: PinchGestureActionType): void {
     if (!DeviceHelper.isPhone() && !DeviceHelper.isPad()) {
       log.showInfo('onPinchGesture, isPinchGestureSwitchOff');
+      return;
+    }
+
+    // 户外模式模式禁用编辑模式
+    if (OutdoorConfig.getInstance().isInOutdoorMode() ||
+      LightOutdoorConfig.getInstance().isOnLightOutdoorMode()) {
+      log.showInfo('onPinchGesture, isOutdoorMode');
+      return;
+    }
+
+    //云端2禁用编辑模式
+    if (LightOutdoorConfig.getInstance().isOnLightOutdoorMode()) {
+      log.showInfo('onPinchGesture, onLightOutdoorMode');
       return;
     }
 

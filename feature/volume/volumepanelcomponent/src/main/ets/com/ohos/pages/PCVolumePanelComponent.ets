@@ -98,7 +98,7 @@ export default struct VolumePanelComponent {
       .on(WallpaperChangeEvent, (data: WallpaperChangeEvent) => {
       this.mWallpaperAvgColor = data.avgColor;
     })
-      .on(SCBFoldStatePropertyChangeEvent, this.onBigScreenStatusChange);
+      .on(SCBFoldStatePropertyChangeEvent, this.onSuperFoldStatusChange);
     this.registerVirtualKeyboardChangeCallback();
   }
 
@@ -124,13 +124,13 @@ export default struct VolumePanelComponent {
     this.updateArea(screenHeight, screenWidth);
   }
 
-  onBigScreenStatusChange = async (bigScreenStateProperty: SCBFoldStatePropertyChangeEvent) => {
-    Log.showInfo(TAG, `onBigScreenStatusChange property, bSideHeight: ${bigScreenStateProperty.bSideHeight}, ` +
-      `curState: ${bigScreenStateProperty.curState}, tarState: ${bigScreenStateProperty.tarState}`);
+  onSuperFoldStatusChange = async (superFoldStateProperty: SCBFoldStatePropertyChangeEvent) => {
+    Log.showInfo(TAG, `onSuperFoldStatusChange property, bSideHeight: ${superFoldStateProperty.bSideHeight}, ` +
+      `curState: ${superFoldStateProperty.curState}, tarState: ${superFoldStateProperty.tarState}`);
     // 虚拟键盘和磁吸键盘存在
-    if (this.isCalculatedByBSide(bigScreenStateProperty)) {
-      let screenHeight = bigScreenStateProperty.bSideHeight;
-      let screenWidth = bigScreenStateProperty.bSideWidth;
+    if (this.isCalculatedByBSide(superFoldStateProperty)) {
+      let screenHeight = superFoldStateProperty.bSideHeight;
+      let screenWidth = superFoldStateProperty.bSideWidth;
       this.updateArea(screenHeight, screenWidth);
     } else {
       // 获取的整个屏幕的宽高
@@ -139,14 +139,14 @@ export default struct VolumePanelComponent {
       let screenHeightTmp = screenSession.scbScreenProperty.height;
       let screenWidthTmp = screenSession.scbScreenProperty.width;
       this.updateArea(screenHeightTmp, screenWidthTmp);
-      Log.showInfo(TAG, 'onBigScreenStatusChange, other state');
+      Log.showInfo(TAG, 'onSuperFoldStatusChange, other state');
     }
   }
 
-  private isCalculatedByBSide(bigScreenStateProperty: SCBFoldStatePropertyChangeEvent): boolean {
-    return bigScreenStateProperty.tarState === SCBFoldState.HALF_FOLDED_PHYSICAL_KEYBOARD ||
-      bigScreenStateProperty.tarState === SCBFoldState.HALF_FOLDED_VIRTUAL_KEYBOARD ||
-      bigScreenStateProperty.tarState === SCBFoldState.HALF_FOLDED;
+  private isCalculatedByBSide(superFoldStateProperty: SCBFoldStatePropertyChangeEvent): boolean {
+    return superFoldStateProperty.tarState === SCBFoldState.HALF_FOLDED_PHYSICAL_KEYBOARD ||
+      superFoldStateProperty.tarState === SCBFoldState.HALF_FOLDED_VIRTUAL_KEYBOARD ||
+      superFoldStateProperty.tarState === SCBFoldState.HALF_FOLDED;
   }
 
   updateArea(screenHeight: number, screenWidth: number): void {

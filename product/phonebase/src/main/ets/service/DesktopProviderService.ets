@@ -19,6 +19,7 @@ import type rpc from '@ohos.rpc';
 import { IService, BaseServiceStub } from '@ohos/componenthelper';
 import { Log } from '@ohos/basicutils';
 import { RecentDeviceService } from './RecentDeviceService';
+// import { RestoringPhoneDesktopLayout } from '../backup/RestoringPhoneDesktopLayout';
 import { SampleDeviceService } from '@ohos/pagedesktop/src/main/ets/default/service/SampleDeviceService';
 import { DesktopIconService } from '@ohos/pagedesktop/src/main/ets/default/service/DesktopIconService';
 import { GlobalSearchLocationService } from './GlobalSearchLocationService';
@@ -83,8 +84,8 @@ export default class DesktopProviderService extends ServiceExtensionAbility {
  * @since 2023-08-11
  */
 export class PhoneDesktopProviderServiceStub extends BaseServiceStub {
-  private static readonly cloneCloud = 2;
-  private static readonly sampleDevice = 4;
+   private static readonly cloneCloud = 2;
+   private static readonly sampleDevice = 4;
   private static readonly recentDeleteDeviece = 5;
   private static readonly globalSearch = 6;
   private static readonly desktopIcon = 7;

@@ -17,6 +17,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, MockK
   ArgumentMatchers } from '@ohos/hypium'
 import { PageDesktopLayoutConfig, CommonConstants, RdbStoreManager,
   GetLayoutInfoFromConfig,DesktopDataLoader,
+  DeliverUtil,
   AppStatus,
   AppModel,
   launcherAbilityManager} from '../../../../../../main/ets/TsIndex'
@@ -588,6 +589,411 @@ export default function PageDesktopLayoutConfigTest() {
       done();
     })
 
+    it("filterDbListByInstalled", 0, async(done:Function) => {
+      const instance: PageDesktopLayoutConfig = PageDesktopLayoutConfig.getInstance();
+      let item1: GridLayoutItemInfo = new GridLayoutItemInfo();
+      item1.bundleName = 'com.ohos.sceneboard';
+      item1.typeId = CommonConstants.TYPE_APP;
+      item1.page = 1;
+      item1.row = 1;
+      item1.column = 1;
+      item1.area = [1, 2, 3];
+      item1.keyName = '1';
+      item1.cardId = '2';
+      item1.folderId = '1';
+      item1.formStackId = '1';
+      item1.layoutInfo = [];
+      let item2: GridLayoutItemInfo = new GridLayoutItemInfo();
+      item2.bundleName = 'com.ohos.calculator';
+      item2.typeId = CommonConstants.TYPE_FOLDER;
+      item2.page = 2;
+      item2.row = 2;
+      item2.column = 2;
+      item2.area = [2, 3, 4];
+      item2.keyName = '1000';
+      item2.cardId = '22';
+      item2.folderId = '1001';
+      item2.formStackId = '1';
+      item2.intent = `{'installSource':'com.deliver.appstore.lite'}`
+      let list: GridLayoutItemInfo[] = [];
+      list.push(item1);
+      list.push(item2);
+      const appItem = new AppItemInfo();
+      appItem.appName = 'appname';
+      appItem.appIconId = 1;
+      appItem.appLabelId = 2;
+      appItem.bundleName = 'com.ohos.calculator';
+      appItem.abilityName = 'abilityName';
+      appItem.moduleName = 'moduleName';
+      appItem.typeId = CommonConstants.TYPE_APP;
+      appItem.area = [2, 2, 4];
+      appItem.page = 1;
+      appItem.column = 2;
+      appItem.kindId = 1;
+      appItem.bundleType = 0;
+      appItem.applicationName = 'calculator';
+      appItem.downloadProgress = 1;
+      appItem.appStatus = 0;
+      appItem.iconResource = 'icon.png';
+      appItem.callerName = 'callerName';
+      appItem.applicationIconId = 1234;
+      appItem.isUninstallAble = true;
+      appItem.isSystemApp = false;
+      appItem.keyName = 'key name';
+      instance.filterDbListByInstalled(list,[appItem],true);
+      expect(instance instanceof PageDesktopLayoutConfig).assertTrue();
+      done();
+    })
+
+    it("filterLayoutItem1", 0, async(done:Function) => {
+      const instance: PageDesktopLayoutConfig = PageDesktopLayoutConfig.getInstance();
+      let item1: GridLayoutItemInfo = new GridLayoutItemInfo();
+      item1.bundleName = 'com.ohos.sceneboard';
+      item1.typeId = CommonConstants.TYPE_ADD;
+      item1.page = 1;
+      item1.row = 1;
+      item1.column = 1;
+      item1.area = [1, 2, 3];
+      item1.keyName = '1';
+      item1.cardId = '2';
+      item1.folderId = '1';
+      item1.formStackId = '1';
+      item1.layoutInfo = [];
+      let item2: GridLayoutItemInfo = new GridLayoutItemInfo();
+      item2.bundleName = 'com.ohos.calculator';
+      item2.typeId = CommonConstants.TYPE_ADD;
+      item2.page = 2;
+      item2.row = 2;
+      item2.column = 2;
+      item2.area = [2, 3, 4];
+      item2.keyName = '1000';
+      item2.cardId = '22';
+      item2.folderId = '1001';
+      item2.formStackId = '1';
+      item2.intent = `{'installSource':'com.deliver.appstore.lite'}`
+      let list: GridLayoutItemInfo[] = [];
+      list.push(item1);
+      list.push(item2);
+      const appItem = new AppItemInfo();
+      appItem.appName = 'appname';
+      appItem.appIconId = 1;
+      appItem.appLabelId = 2;
+      appItem.bundleName = 'com.ohos.calculator';
+      appItem.abilityName = 'abilityName';
+      appItem.moduleName = 'moduleName';
+      appItem.typeId = CommonConstants.TYPE_APP;
+      appItem.area = [2, 2, 4];
+      appItem.page = 1;
+      appItem.column = 2;
+      appItem.kindId = 1;
+      appItem.bundleType = 0;
+      appItem.applicationName = 'calculator';
+      appItem.downloadProgress = 1;
+      appItem.appStatus = 0;
+      appItem.iconResource = 'icon.png';
+      appItem.callerName = 'callerName';
+      appItem.applicationIconId = 1234;
+      appItem.isUninstallAble = true;
+      appItem.isSystemApp = false;
+      appItem.keyName = 'key name';
+      let result = instance['filterLayoutItem'](item1,[appItem],list,item2,true);
+      expect(result).assertInstanceOf('Boolean');
+      done();
+    })
+
+    it("filterLayoutItem2", 0, async(done:Function) => {
+      const instance: PageDesktopLayoutConfig = PageDesktopLayoutConfig.getInstance();
+      let item1: GridLayoutItemInfo = new GridLayoutItemInfo();
+      item1.bundleName = DeliverUtil.APPMARKET_BUNDLE_NAME;
+      item1.typeId = CommonConstants.TYPE_APP;
+      item1.page = 1;
+      item1.row = 1;
+      item1.column = 1;
+      item1.area = [1, 2, 3];
+      item1.keyName = '1';
+      item1.cardId = '2';
+      item1.folderId = '1';
+      item1.formStackId = '1';
+      item1.layoutInfo = [];
+      let item2: GridLayoutItemInfo = new GridLayoutItemInfo();
+      item2.bundleName = 'com.ohos.calculator';
+      item2.typeId = CommonConstants.TYPE_APP;
+      item2.page = 2;
+      item2.row = 2;
+      item2.column = 2;
+      item2.area = [2, 3, 4];
+      item2.keyName = '1000';
+      item2.cardId = '22';
+      item2.folderId = '1001';
+      item2.formStackId = '1';
+      item2.intent = `{'installSource':'com.deliver.appstore.lite'}`
+      let list: GridLayoutItemInfo[] = [];
+      list.push(item1);
+      list.push(item2);
+      const appItem = new AppItemInfo();
+      appItem.appName = 'appname';
+      appItem.appIconId = 1;
+      appItem.appLabelId = 2;
+      appItem.bundleName = 'com.ohos.calculator';
+      appItem.abilityName = 'abilityName';
+      appItem.moduleName = 'moduleName';
+      appItem.typeId = CommonConstants.TYPE_APP;
+      appItem.area = [2, 2, 4];
+      appItem.page = 1;
+      appItem.column = 2;
+      appItem.kindId = 1;
+      appItem.bundleType = 0;
+      appItem.applicationName = 'calculator';
+      appItem.downloadProgress = 1;
+      appItem.appStatus = 0;
+      appItem.iconResource = 'icon.png';
+      appItem.callerName = 'callerName';
+      appItem.applicationIconId = 1234;
+      appItem.isUninstallAble = true;
+      appItem.isSystemApp = false;
+      appItem.keyName = 'key name';
+      let result = instance['filterLayoutItem'](item1,[appItem],list,item2,true);
+      expect(result).assertInstanceOf('Boolean');
+      done();
+    })
+
+    it("filterLayoutItem3", 0, async(done:Function) => {
+      const instance: PageDesktopLayoutConfig = PageDesktopLayoutConfig.getInstance();
+      let item1: GridLayoutItemInfo = new GridLayoutItemInfo();
+      item1.bundleName = 'com.ohos.sceneboard';
+      item1.typeId = CommonConstants.TYPE_SHORTCUT_ICON;
+      item1.page = 1;
+      item1.row = 1;
+      item1.column = 1;
+      item1.area = [1, 2, 3];
+      item1.keyName = '1';
+      item1.cardId = '2';
+      item1.folderId = '1';
+      item1.formStackId = '1';
+      item1.layoutInfo = [];
+      item1.appStatus= AppStatus.INSTALLED;
+      item1.intent = `{'installSource':'com.deliver.appstore.lite'}`
+      let item2: GridLayoutItemInfo = new GridLayoutItemInfo();
+      item2.bundleName = 'com.ohos.calculator';
+      item2.typeId = CommonConstants.TYPE_APP;
+      item2.page = 2;
+      item2.row = 2;
+      item2.column = 2;
+      item2.area = [2, 3, 4];
+      item2.keyName = '1000';
+      item2.cardId = '22';
+      item2.folderId = '1001';
+      item2.formStackId = '1';
+      let list: GridLayoutItemInfo[] = [];
+      list.push(item1);
+      list.push(item2);
+      let result = instance['filterLayoutItem'](item1,undefined,list,item2,true);
+      expect(result).assertInstanceOf('Boolean');
+      done();
+    })
+
+    it("filterLayoutItem4", 0, async(done:Function) => {
+      const instance: PageDesktopLayoutConfig = PageDesktopLayoutConfig.getInstance();
+      let item1: GridLayoutItemInfo = new GridLayoutItemInfo();
+      item1.bundleName = 'com.ohos.sceneboard';
+      item1.typeId = CommonConstants.TYPE_SHORTCUT_ICON;
+      item1.page = 1;
+      item1.row = 1;
+      item1.column = 1;
+      item1.area = [1, 2, 3];
+      item1.keyName = '1';
+      item1.cardId = '2';
+      item1.folderId = '1';
+      item1.formStackId = '1';
+      item1.layoutInfo = [];
+      item1.appStatus= undefined;
+      item1.intent = `{'installSource':'com.deliver.appstore.lite'}`
+      let item2: GridLayoutItemInfo = new GridLayoutItemInfo();
+      item2.bundleName = 'com.ohos.calculator';
+      item2.typeId = CommonConstants.TYPE_APP;
+      item2.page = 2;
+      item2.row = 2;
+      item2.column = 2;
+      item2.area = [2, 3, 4];
+      item2.keyName = '1000';
+      item2.cardId = '22';
+      item2.folderId = '1001';
+      item2.formStackId = '1';
+      let list: GridLayoutItemInfo[] = [];
+      list.push(item1);
+      list.push(item2);
+      const appItem = new AppItemInfo();
+      appItem.appName = 'appname';
+      appItem.appIconId = 1;
+      appItem.appLabelId = 2;
+      appItem.bundleName = 'com.ohos.calculator';
+      appItem.abilityName = 'abilityName';
+      appItem.moduleName = 'moduleName';
+      appItem.typeId = CommonConstants.TYPE_APP;
+      appItem.area = [2, 2, 4];
+      appItem.page = 1;
+      appItem.column = 2;
+      appItem.kindId = 1;
+      appItem.bundleType = 0;
+      appItem.applicationName = 'calculator';
+      appItem.downloadProgress = 1;
+      appItem.appStatus = 0;
+      appItem.iconResource = 'icon.png';
+      appItem.callerName = 'callerName';
+      appItem.applicationIconId = 1234;
+      appItem.isUninstallAble = true;
+      appItem.isSystemApp = false;
+      appItem.keyName = 'key name';
+      let result = instance['filterLayoutItem'](item1,[appItem],list,item2,true);
+      expect(result).assertInstanceOf('Boolean');
+      done();
+    })
+
+    it("filterLayoutItem5", 0, async(done:Function) => {
+      const instance: PageDesktopLayoutConfig = PageDesktopLayoutConfig.getInstance();
+      let item2: GridLayoutItemInfo = new GridLayoutItemInfo();
+      item2.bundleName = 'com.ohos.calculator';
+      item2.typeId = CommonConstants.TYPE_APP;
+      item2.page = 2;
+      item2.row = 2;
+      item2.column = 2;
+      item2.area = [2, 3, 4];
+      item2.keyName = '1000';
+      item2.cardId = '22';
+      item2.folderId = '1001';
+      item2.formStackId = '1';
+      item2.moduleName = 'moduleName';
+      item2.abilityName = 'abilityName';
+      item2.appName = 'appName'
+      item2.appStatus = AppStatus.INSTALLED;
+      item2.intent = `{'installSource':'com.deliver.appstore.lite'}`
+      let list: GridLayoutItemInfo[] = [];
+      list.push(item2);
+      const appItem = new AppItemInfo();
+      appItem.appName = 'appname';
+      appItem.appIconId = 1;
+      appItem.appLabelId = 2;
+      appItem.bundleName = 'com.ohos.calculator';
+      appItem.abilityName = 'abilityName';
+      appItem.moduleName = 'moduleName';
+      appItem.typeId = CommonConstants.TYPE_APP;
+      appItem.appStatus = AppStatus.INSTALLED;
+      appItem.area = [2, 2, 4];
+      appItem.page = 1;
+      appItem.column = 2;
+      appItem.kindId = 1;
+      appItem.bundleType = 0;
+      appItem.applicationName = 'calculator';
+      appItem.downloadProgress = 1;
+      appItem.appStatus = 0;
+      appItem.iconResource = 'icon.png';
+      appItem.callerName = 'callerName';
+      appItem.applicationIconId = 1234;
+      appItem.isUninstallAble = true;
+      appItem.isSystemApp = false;
+      appItem.keyName = 'key name';
+      let result = instance['filterLayoutItem'](item2,[appItem],list,item2,true);
+      expect(result).assertInstanceOf('Boolean');
+      done();
+    })
+
+    it("isShowInDeliveryFolder", 0, async(done:Function) => {
+      const instance: PageDesktopLayoutConfig = PageDesktopLayoutConfig.getInstance();
+      let item1: GridLayoutItemInfo = new GridLayoutItemInfo();
+      item1.bundleName = 'com.ohos.sceneboard';
+      item1.typeId = CommonConstants.TYPE_SHORTCUT_ICON;
+      item1.page = 1;
+      item1.row = 1;
+      item1.column = 1;
+      item1.area = [1, 2, 3];
+      item1.keyName = '1';
+      item1.cardId = '2';
+      item1.folderId = '1';
+      item1.formStackId = '1';
+      item1.layoutInfo = [];
+      item1.appStatus= AppStatus.INSTALLED;
+      item1.intent = `{'installSource':'com.deliver.appstore.lite'}`
+      let result = instance['isShowInDeliveryFolder'](item1);
+      expect(result).assertInstanceOf('Boolean');
+      done();
+    })
+
+    it("checkRemoveFromDb", 0, async(done:Function) => {
+      const instance: PageDesktopLayoutConfig = PageDesktopLayoutConfig.getInstance();
+      let item1: GridLayoutItemInfo = new GridLayoutItemInfo();
+      item1.bundleName = 'com.ohos.sceneboard';
+      item1.typeId = CommonConstants.TYPE_SHORTCUT_ICON;
+      item1.page = 1;
+      item1.row = 1;
+      item1.column = 1;
+      item1.area = [1, 2, 3];
+      item1.keyName = '1';
+      item1.cardId = '2';
+      item1.folderId = '1';
+      item1.formStackId = '1';
+      item1.layoutInfo = [];
+      item1.appStatus= AppStatus.INSTALLED;
+      item1.intent = `{'installSource':'com.deliver.appstore.lite'}`
+      let item2: GridLayoutItemInfo = new GridLayoutItemInfo();
+      item2.bundleName = 'com.ohos.calculator';
+      item2.typeId = CommonConstants.TYPE_APP;
+      item2.page = 2;
+      item2.row = 2;
+      item2.column = 2;
+      item2.area = [2, 3, 4];
+      item2.keyName = '1000';
+      item2.cardId = '22';
+      item2.folderId = '1001';
+      item2.formStackId = '1';
+      item2.appStatus = AppStatus.INSTALLED;
+      item2.intent = `{'installSource':'com.deliver.appstore.lite'}`
+      let list: GridLayoutItemInfo[] = [];
+      list.push(item1);
+      list.push(item2);
+      let promise = new Promise<boolean>((resolve)=>{
+        resolve(false);
+      });
+      let mocker: MockKit = new MockKit();
+      let mockFunction: Function =
+        mocker.mockFunc(launcherAbilityManager, launcherAbilityManager.isAbilityInstalledAsync);
+      when(mockFunction)(ArgumentMatchers.any).afterReturn(promise);
+      await instance['loadLayoutInfoFromConfig'](2);
+      expect(instance instanceof PageDesktopLayoutConfig).assertTrue();
+      mocker.clear(launcherAbilityManager);
+      mocker.clearAll();
+      done();
+    })
+
+    it("loadLayoutInfoFromConfig1", 0, async(done:Function) => {
+      const instance: PageDesktopLayoutConfig = PageDesktopLayoutConfig.getInstance();
+      let defaultDesktopLayoutInfo = await new DefaultDesktopLayoutInfo();
+      let item1: GridLayoutItemInfo = new GridLayoutItemInfo();
+      item1.bundleName = 'com.ohos.sceneboard';
+      item1.typeId = CommonConstants.TYPE_SHORTCUT_ICON;
+      item1.page = 1;
+      item1.row = 1;
+      item1.column = 1;
+      item1.area = [1, 2, 3];
+      item1.keyName = '1';
+      item1.cardId = '2';
+      item1.folderId = '1';
+      item1.formStackId = '1';
+      item1.layoutInfo = [];
+      item1.appStatus= AppStatus.INSTALLED;
+      item1.intent = `{'installSource':'com.deliver.appstore.lite'}`
+      item1.container =  CommonConstants.CONTAINER_SMARTDOCK;
+      defaultDesktopLayoutInfo.layoutInfo = [item1];
+      let mocker: MockKit = new MockKit();
+      let mockFunction: Function =
+        mocker.mockFunc(instance['mDesktopDataLoader'], instance['mDesktopDataLoader'].loadFromJsonConfig);
+      when(mockFunction)(ArgumentMatchers.any).afterReturn(defaultDesktopLayoutInfo);
+      await instance['loadLayoutInfoFromConfig'](2);
+      expect(instance instanceof PageDesktopLayoutConfig).assertTrue();
+      mocker.clear(instance['mDesktopDataLoader']);
+      mocker.clearAll();
+      done();
+    })
+
     it("loadLayoutInfoFromConfig2", 0, async(done:Function) => {
       const instance: PageDesktopLayoutConfig = PageDesktopLayoutConfig.getInstance();
       let mocker: MockKit = new MockKit();
@@ -610,6 +1016,83 @@ export default function PageDesktopLayoutConfigTest() {
       instance['initLayoutCache']();
       expect(instance instanceof PageDesktopLayoutConfig).assertTrue();
       mocker.clear(DeviceHelper);
+      mocker.clearAll();
+      done();
+    })
+
+    it("checkAppList", 0, async(done:Function) => {
+      const instance: PageDesktopLayoutConfig = PageDesktopLayoutConfig.getInstance();
+      let mocker: MockKit = new MockKit();
+      GlobalContext.getInstance().setObject('backupStatus', undefined);
+      let appInstance = AppModel.getInstance();
+      const appItem = new AppItemInfo();
+      appItem.appName = 'appname';
+      appItem.appIconId = 1;
+      appItem.appLabelId = 2;
+      appItem.bundleName = 'com.ohos.calculator';
+      appItem.abilityName = 'abilityName';
+      appItem.moduleName = 'moduleName';
+      appItem.typeId = CommonConstants.TYPE_APP;
+      appItem.area = [2, 2, 4];
+      appItem.page = 1;
+      appItem.column = 2;
+      appItem.kindId = 1;
+      appItem.bundleType = 0;
+      appItem.applicationName = 'calculator';
+      appItem.downloadProgress = 1;
+      appItem.appStatus = 0;
+      appItem.iconResource = 'icon.png';
+      appItem.callerName = 'callerName';
+      appItem.applicationIconId = 1234;
+      appItem.isUninstallAble = true;
+      appItem.isSystemApp = false;
+      appItem.keyName = 'key name';
+      let mockFunction1: Function =
+        mocker.mockFunc(appInstance, appInstance.getAppList);
+      when(mockFunction1)(ArgumentMatchers.any).afterReturn([appItem]);
+      let item1: GridLayoutItemInfo = new GridLayoutItemInfo();
+      item1.bundleName = 'com.ohos.sceneboard';
+      item1.typeId = CommonConstants.TYPE_FOLDER;
+      item1.page = 1;
+      item1.row = 1;
+      item1.column = 1;
+      item1.area = [1, 2, 3];
+      item1.keyName = 'key name';
+      item1.cardId = '2';
+      item1.folderId = '1';
+      item1.formStackId = '1';
+      item1.layoutInfo = [];
+      item1.appStatus= AppStatus.INSTALLED;
+      item1.intent = `{'installSource':'com.deliver.appstore.lite'}`
+      item1.container =  CommonConstants.CONTAINER_SMARTDOCK;
+      let item2: GridLayoutItemInfo = new GridLayoutItemInfo();
+      item2.bundleName = 'com.ohos.calculator';
+      item2.typeId = CommonConstants.TYPE_ADD;
+      item2.page = 2;
+      item2.row = 2;
+      item2.column = 2;
+      item2.area = [2, 3, 4];
+      item2.keyName = '1000';
+      item2.cardId = '22';
+      item2.folderId = '1001';
+      item2.formStackId = '1';
+      item2.layoutInfo = [[item1,item1]];
+      let item3: GridLayoutItemInfo = new GridLayoutItemInfo();
+      item3.bundleName = 'com.ohos.calculator';
+      item3.typeId = CommonConstants.TYPE_APP;
+      item3.page = 2;
+      item3.row = 2;
+      item3.column = 2;
+      item3.area = [2, 3, 4];
+      item3.keyName = '1000';
+      item3.cardId = '22';
+      item3.folderId = '1001';
+      item3.formStackId = '1';
+      item3.layoutInfo = [[item1,item2]];
+      instance['mGridLayoutInfo'].layoutInfo = [item1,item2,item3];
+      instance['checkAppList']();
+      expect(instance instanceof PageDesktopLayoutConfig).assertTrue();
+      mocker.clear(appInstance);
       mocker.clearAll();
       done();
     })

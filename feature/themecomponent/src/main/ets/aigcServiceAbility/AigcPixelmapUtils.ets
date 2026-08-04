@@ -15,7 +15,7 @@
 
 import fs from '@ohos.file.fs';
 import { image } from '@kit.ImageKit';
-import { AigcConstant, AIGCMetaData } from './AigcConstant';
+import { AigcConstant, GCMetaData } from './AigcConstant';
 import { AigcFileUtils } from './AigcFileUtils';
 import { util } from '@kit.ArkTS';
 import { Log } from './IdlService/Log';
@@ -197,7 +197,7 @@ export class AigcPixelmapUtils {
     try {
       fd = fs.openSync(file, fs.OpenMode.READ_WRITE).fd;
       imageSource = image.createImageSource(fd);
-      let aigcMetadata: AIGCMetaData = new AIGCMetaData();
+      let aigcMetadata: GCMetaData = new GCMetaData();
       let imageID: string = AigcConstant.PRODUCE_ID_HEAD + Date.now() + util.generateRandomUUID();
       let aigcMetadataContent: Record<string, string> = {
         'Label': '1',

@@ -1,0 +1,23 @@
+{
+    "string":[
+        {
+            "name":"module_desc",
+            "value":"module description"
+        },
+        {
+            "name":"CloudcomponentAbility_desc",
+            "value":"description"
+        },
+        {
+            "name":"CloudcomponentAbility_label",
+            "value":"label"
+        },
+        {
+            "name":"cloud_lai",
+            "value":"Cloud mode",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

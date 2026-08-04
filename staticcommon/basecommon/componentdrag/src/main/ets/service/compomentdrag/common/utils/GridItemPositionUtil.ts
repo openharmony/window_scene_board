@@ -106,6 +106,7 @@ export class GridItemPositionUtil {
       log.showError(`cannot init position: invalid param column:${gridParam.column} row:${gridParam.row}`);
       return;
     }
+    log.showInfo(`initPosition:${JSON.stringify(gridParam)}`);
     this.itemWidth = (gridParam.gridWidth - gridParam.columnGap * (gridParam.column - 1)) / gridParam.column;
     this.itemHeight = (gridParam.gridHeight - gridParam.rowGap * (gridParam.row - 1)) / gridParam.row;
     this.offsetX = [];
@@ -128,6 +129,7 @@ export class GridItemPositionUtil {
     this.column = gridParam.column;
     this.gridWidth = gridParam.gridWidth;
     this.gridHeight = gridParam.gridHeight;
+    log.showInfo(`initPosition result:${this.offsetX}； ${this.offsetY}`);
   }
 
   /**
@@ -283,6 +285,7 @@ export class GridItemPositionUtil {
     }
     let left: number = paddingLeft ?? this.paddingLeft;
     let top: number = paddingTop ?? this.paddingTop;
+    log.showInfo(`getPosition X: ${this.offsetX} Y: ${this.offsetY}; ${gridPosition.column},${gridPosition.row};${left},${top}`);
     return {
       x: this.offsetX[gridPosition.column] + left,
       y: this.offsetY[gridPosition.row] + top,
@@ -308,25 +311,19 @@ export class GridItemPositionUtil {
     let height: number = gridItem.area?.[1] ?? 1;
     if (gridItem.column < 0 || gridItem.row < 0 ||
       gridItem.column + width > this.offsetX.length || gridItem.row + height > this.offsetY.length) {
-      log.showError(`cannot get center position: invalid param column:${gridItem.column} row:${gridItem.row} ` +
-        `width:${width} height:${height}`);
+      log.showError(`cannot get center position: invalid param column:${gridItem.column} row:${gridItem.row} width:${width} height:${height}`);
       return position;
     }
     let left: number = paddingLeft ?? this.paddingLeft;
     let top: number = paddingTop ?? this.paddingTop;
-    log.showInfo(`getCenterPosition offsetX: ${this.offsetX} area: ${gridItem.area} left:${left}`);
+    log.showInfo(`getCenterPosition X: ${this.offsetX},Y: ${this.offsetY} area: ${gridItem.area} left:${left} isRealCenter:${isRealCenter}`);
     if (isRealCenter) {
       // 定制卡中心点为真正的宫格中心点,故x为第二个宫格起点加上宫格布局距离屏幕左侧边距,y为宫格中心点距离屏幕顶部的高度
-      let centerWidth: number = width % 2 ?
-        (this.offsetX[0] + this.offsetX[1]) / 2 + this.offsetX[Math.floor(width / 2)] : this.offsetX[Math.floor(width / 2)];
       position.x = this.offsetX[2] + left;
-      position.y = (this.offsetY[gridItem.row] + this.offsetY[gridItem.row + height - 1]) / 2 +
-        this.itemHeight / 2 + top;
+      position.y = (this.offsetY[gridItem.row] + this.offsetY[gridItem.row + height - 1]) / 2 + this.itemHeight / 2 + top;
     } else {
-      position.x = (this.offsetX[gridItem.column] + this.offsetX[gridItem.column + width - 1]) / 2 +
-        this.centerX + left;
-      position.y = (this.offsetY[gridItem.row] + this.offsetY[gridItem.row + height - 1]) / 2 +
-        this.centerY + top;
+      position.x = (this.offsetX[gridItem.column] + this.offsetX[gridItem.column + width - 1]) / 2 + this.centerX + left;
+      position.y = (this.offsetY[gridItem.row] + this.offsetY[gridItem.row + height - 1]) / 2 + this.centerY + top;
     }
     return position;
   }

@@ -199,6 +199,11 @@ export class LiveViewData extends BaseExtendProperty implements Equality, IUpdat
   isAtomicServiceFromPush: boolean = false;
 
   /**
+   * 是否是通知
+   */
+  isDeliverNotification: boolean = false;
+
+  /**
    * 是否隐藏实况通知内容
    */
   isHideContent: boolean = false;

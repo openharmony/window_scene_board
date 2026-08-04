@@ -200,13 +200,15 @@ export class WallpaperColorManager {
           WallpaperConstants.ALPHA_0, type);
         swiperColor = WallpaperConstants.SWIPER_BLACK_COLOR;
         swiperSelectedColor = WallpaperConstants.SWIPER_BLACK_COLOR_SELECTED;
+        log.showInfo('WALLPAPER_TYPE_ONE1 ');
         break;
       }
       case WallpaperConstants.WALLPAPER_TYPE_TWO: {
         textColor = new TextColor(color, WallpaperConstants.NUMBER_20, WallpaperConstants.NUMBER_0, WallpaperConstants.NUMBER_0,
           WallpaperConstants.ALPHA_40, type);
-        swiperColor = WallpaperConstants.SWIPER_WHITE_COLOR;
-        swiperSelectedColor = WallpaperConstants.SWIPER_WHITE_COLOR_SELECTED;
+        swiperColor = WallpaperConstants.SWIPER_BLACK_COLOR;
+        swiperSelectedColor = WallpaperConstants.SWIPER_BLACK_COLOR_SELECTED;
+        log.showInfo('WALLPAPER_TYPE_ONE2 ');
         break;
       }
       case WallpaperConstants.WALLPAPER_TYPE_THREE: {
@@ -214,6 +216,7 @@ export class WallpaperColorManager {
           WallpaperConstants.ALPHA_40, type);
         swiperColor = WallpaperConstants.SWIPER_WHITE_COLOR;
         swiperSelectedColor = WallpaperConstants.SWIPER_WHITE_COLOR_SELECTED;
+        log.showInfo('WALLPAPER_TYPE_ONE3 ');
         break;
       }
       case WallpaperConstants.WALLPAPER_TYPE_FOUR: {
@@ -221,6 +224,7 @@ export class WallpaperColorManager {
           WallpaperConstants.ALPHA_0, type);
         swiperColor = WallpaperConstants.SWIPER_WHITE_COLOR;
         swiperSelectedColor = WallpaperConstants.SWIPER_WHITE_COLOR_SELECTED;
+        log.showInfo('WALLPAPER_TYPE_ONE4 ');
         break;
       }
       case WallpaperConstants.WALLPAPER_TYPE_FIVE: {
@@ -228,6 +232,7 @@ export class WallpaperColorManager {
           WallpaperConstants.ALPHA_40, type);
         swiperColor = WallpaperConstants.SWIPER_WHITE_COLOR;
         swiperSelectedColor = WallpaperConstants.SWIPER_WHITE_COLOR_SELECTED;
+        log.showInfo('WALLPAPER_TYPE_ONE5 ');
         break;
       }
       case WallpaperConstants.WALLPAPER_TYPE_SIX: {
@@ -235,6 +240,7 @@ export class WallpaperColorManager {
           WallpaperConstants.ALPHA_80, type);
         swiperColor = WallpaperConstants.SWIPER_WHITE_COLOR;
         swiperSelectedColor = WallpaperConstants.SWIPER_WHITE_COLOR_SELECTED;
+        log.showInfo('WALLPAPER_TYPE_ONE6 ');
         break;
       }
       default: {
@@ -242,7 +248,8 @@ export class WallpaperColorManager {
         textColor = new TextColor(color, WallpaperConstants.NUMBER_20, WallpaperConstants.NUMBER_0, WallpaperConstants.NUMBER_0,
           WallpaperConstants.ALPHA_40, type);
         swiperColor = WallpaperConstants.SWIPER_WHITE_COLOR;
-        swiperSelectedColor = WallpaperConstants.SWIPER_WHITE_COLOR_SELECTED;
+        swiperSelectedColor = WallpaperConstants.SWIPER_WHITE_COLOR;
+        log.showInfo('WALLPAPER_TYPE_ONE7 ');
         break;
       }
     }
@@ -250,10 +257,12 @@ export class WallpaperColorManager {
       this.mOuterTextColor = textColor;
       this.mOuterSwiperColor = swiperColor;
       this.mOuterSwiperSelectedColor = swiperSelectedColor;
+      log.showInfo('WALLPAPER_TYPE_ONE8: '+ JSON.stringify(this.mTextColor?.mTextColor));
     } else {
       this.mTextColor = textColor;
       this.mSwiperColor = swiperColor;
       this.mSwiperSelectedColor = swiperSelectedColor;
+      log.showInfo('WALLPAPER_TYPE_ONE9: '+ JSON.stringify(this.mTextColor?.mTextColor));
     }
     this.updateFontColor();
   }

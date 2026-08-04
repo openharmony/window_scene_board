@@ -1,7 +1,7 @@
 {
     "string":[
         {
-            "name":"title_login_openharmony_account",
+            "name":"title_login_hw_account",
             "value":"Inicia sesión para usar Superdispositivo",
             "attr":{
                 "priority":"translate"

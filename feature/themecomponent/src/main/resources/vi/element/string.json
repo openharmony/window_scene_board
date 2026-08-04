@@ -21,6 +21,13 @@
                 "priority":"translate"
             }
         },
+      {
+        "name":"Desktop_setting",
+        "value":"Cài đặt màn hình chính",
+        "attr":{
+          "priority":"translate"
+        }
+      },
         {
             "name":"screenlock_font_creation_service_text",
             "value":"Dịch vụ tạo phông chữ màn hình khóa",
@@ -157,6 +164,54 @@
       {
         "name": "wallpaper_editor",
         "value": "Áp dụng"
+      },
+      {
+        "name": "cancle",
+        "value": ""
+      },
+      {
+        "name": "set_wallpaper_all",
+        "value": ""
+      },
+      {
+        "name": "set_wallpaper_desktop",
+        "value": ""
+      },
+      {
+        "name": "set_wallpaper_lock",
+        "value": ""
+      },
+      {
+        "name": "wallpaper_show_style",
+        "value": "Cách hiển thị hình nền"
+      },
+      {
+        "name": "screen_fit",
+        "value": "Phù hợp với màn hình"
+      },
+      {
+        "name": "screen_full",
+        "value": "Lấp đầy màn hình"
+      },
+      {
+        "name": "screen_center",
+        "value": "trung tâm"
+      },
+      {
+        "name": "screen_sctetch",
+        "value": "căng đầy"
+      },
+      {
+        "name": "screen_tile",
+        "value": "Ngói"
+      },
+      {
+        "name": "image_decoding_failure",
+        "value": "Lỗi hình ảnh. Hãy thử lại."
+      },
+      {
+        "name":"Desktop_individuation",
+        "value":"Màn hình chính và phong cách"
       }
     ]
 }

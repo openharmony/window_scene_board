@@ -134,7 +134,7 @@ export default class FolderStyleConstants {
 
   // Specific device style param
   public static readonly FOLD_DEVICE_FOLDER_ICON_HORIZONTAL_SCALE = 13 / 15;
-  public static readonly ULTRA_SCREEN_FOLDER_ICON_VERTICAL_SCALE = 1;
+  public static readonly THREE_SCREEN_FOLDER_ICON_VERTICAL_SCALE = 1;
   public static readonly PAD_INDICATOR_BOTTOM_RATIO = 20 / 17;
   public static readonly PAD_OPEN_FOLDER_ICON_HORIZONTAL_SCALE = 12 / 17;
   public static readonly PAD_OPEN_FOLDER_ICON_VERTICAL_SCALE = 14 / 17;

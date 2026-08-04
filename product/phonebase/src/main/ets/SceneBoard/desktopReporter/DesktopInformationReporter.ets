@@ -13,13 +13,16 @@
  * limitations under the License.
  */
 import { CheckEmptyUtils, LogDomain, LogHelper } from '@ohos/basicutils';
-import { sSettingsUtil, GlobalContext } from '@ohos/frameworkwrapper';
+import { DeviceHelper, sSettingsUtil, GlobalContext } from '@ohos/frameworkwrapper';
 import { CardSourceType, CommonConstants, Extend1Data, lockLayoutManager, PageInfoManager } from '@ohos/launchercommon';
 import type { DesktopInformation, OuterDesktopInformation } from '@ohos/frameworkwrapper';
 import { AppListInfo } from '@ohos/launchercommon';
 import { GridLayoutUtil } from '@ohos/launchercommon';
 import { GridLayoutItemInfo, ResidentLayoutCacheMgr, DockItemInfo, BaseLayoutCacheManager } from '@ohos/launchercommon';
 import { DefaultDesktopLayoutInfo } from '@ohos/launchercommon';
+import { Constants } from '@ohos/commonconstants';
+import { naviBarSettingsDataMgr } from '../naviBar/settings/preference/NaviBarSettingsDataMgr';
+import { FloatingNavigationManager } from '../naviBar/proxy/FloatingNavigationManager';
 import { PreferenceStore } from '@ohos/pagedesktop/src/main/ets/default/common/dao/PreferenceStore';
 import { QueryAutoAlignStatus, Response } from '@ohos/pagedesktop/src/main/ets/default/service/impl/QueryAutoAlignStatus';
 
@@ -53,7 +56,7 @@ export class DesktopInformationReporter {
   // 大文件夹数量
   private bigFolderNumber: number = 0;
 
-  // 桌面卡片的数量，包含普通卡片
+  // 桌面卡片的数量，包含语音助手建议、普通卡片
   private faNumber: number = 0;
 
   // 新形态小外屏桌面卡片的数量
@@ -77,7 +80,7 @@ export class DesktopInformationReporter {
   // 外屏桌面预置卡片数量
   private outerPresetsCardNumber: number = 0;
 
-  // 桌面升级卡片数量
+  // 桌面系统迁移卡片数量
   private upgradeCardNumber: number = 0;
 
   // 外屏快捷方式总数
@@ -282,6 +285,7 @@ export class DesktopInformationReporter {
   }
 
   public async getDesktopInformation(): Promise<DesktopInformation> {
+    let hiSearchStatus: boolean = await this.getHiSearchStatus();
     let autoAlignStatus: boolean = await this.getAutoAlignStatus();
     let desktopInformation: DesktopInformation = {
       PNAMEID: '',
@@ -298,14 +302,17 @@ export class DesktopInformationReporter {
       PRESETS_STACK_NUM: this.presetsFormStackNumber,
       PRESETS_CARD_NUM: this.presetsCardNumber,
       UPGRADE_CARD_NUM: this.upgradeCardNumber,
+      CLICKBACKSTATUS: naviBarSettingsDataMgr.getClickBackStatus(),
       ICONSIZE: Number(sSettingsUtil.getSecureValue('desktopIconChangeSize')),
       IS_NAME_SHOW: sSettingsUtil.getSecureValue('isDesktopIconShowName') !== 'false',
-      FLOATING_BALL_SWITCH_STATUS: '0',
+      THREE_BTN_POSITION_STYLE_WEEK: FloatingNavigationManager.getInstance().getExchangeBtnStatus(),
+      FLOATING_BALL_SWITCH_STATUS: FloatingNavigationManager.getInstance().getFloatingBallStatus() ? '1' : '0',
       LOCKLAYOUTSTATUS: lockLayoutManager.isLockLayout(),
       SHORTCUTICONNUMBER: this.getShortcutIcon(),
       BAREICONNUMBER: this.getBareIcon(),
       BARESHORTCUTICONNUMBER: this.getBareShortcutIcon(),
       DESKTOPLAYOUT: this.getDesktopLayout(),
+      HISEARCHSTATUS: hiSearchStatus,
       AUTOALIGNSTATUS: autoAlignStatus,
     };
     return desktopInformation;
@@ -385,7 +392,7 @@ export class DesktopInformationReporter {
 
   /**
    *
-   * @returns 桌面所有卡片的数量，普通卡片，堆叠卡片的堆数
+   * @returns 桌面所有卡片的数量，语音助手建议，普通卡片，堆叠卡片的堆数
    */
   private getFa(): number {
     return this.faNumber + this.formStackNumber;
@@ -431,6 +438,18 @@ export class DesktopInformationReporter {
     let desktopLayoutInfo: DefaultDesktopLayoutInfo =
       BaseLayoutCacheManager.getInstance().getDesktopLayoutInfo('desktopInformation');
     return `${desktopLayoutInfo.layoutDescription.column}x${desktopLayoutInfo.layoutDescription.row}`;
+  }
+
+  /**
+   *
+   * @returns 桌面下滑开关状态
+   */
+  private async getHiSearchStatus(): Promise<boolean> {
+    let preferenceStore: PreferenceStore =
+      new PreferenceStore(getContext()?.getApplicationContext() || GlobalContext.getContext(), 'DesktopSetting');
+    await preferenceStore.removeStoreCache();
+    let hiSearchStatus: boolean = await preferenceStore.get('hiSearchStatus', true) as boolean;
+    return hiSearchStatus;
   }
 
   /**

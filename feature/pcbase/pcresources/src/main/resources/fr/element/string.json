@@ -1,0 +1,11 @@
+{
+  "string":[
+    {
+      "name":"low_battery_tip",
+      "value":"Il ne vous reste plus que %s de batterie. Veuillez brancher votre ordinateur ou le mettez en mode Veille.",
+      "attr":{
+        "priority":"translate"
+      }
+    }
+  ]
+}

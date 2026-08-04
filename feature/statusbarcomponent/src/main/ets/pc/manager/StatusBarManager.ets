@@ -1,19 +1,6 @@
 /*
- * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * Copyright (c) Huawei Technologies Co., Ltd. 2024-2024. All rights reserved.
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-/*
  * 图标接入流程：
  * 1、图标接入：遵循 ConfigAccess（配置文件接入） 或 MessageAccess （一步直达接入） 的接入规范
  * 2、图标显隐：基于当前图标显隐控制方式 PluginVisibleControlManager#getPluginType 放到对应 control 对象中控制显隐

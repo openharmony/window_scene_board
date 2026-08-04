@@ -39,11 +39,13 @@ import {
   GridLayoutItemInfo,
   GridLayoutUtil,
   LaunchLayoutCacheManager,
+  DeliverUtil,
   RdbStoreManager,
   AppGalleryEventInfo,
   scbBlankPositionUtils,
   ResidentLayoutCacheMgr,
   DockItemInfo,
+  AppReserveType,
   FolderManager,
   PreInstallUtils
 } from '@ohos/launchercommon/src/main/ets/TsIndex';
@@ -315,6 +317,10 @@ export class CacheManager {
         findApp.iconResource = FILE_PRE + icon;
       }
       findApp.appName = CheckEmptyUtils.checkStrIsEmpty(findApp.appName) ? item.appName : findApp.appName;
+      if (CommonUtils.jsonStrToMap(item.intent).get(APP_TYPE) === AppReserveType.ENTERPRISE ||
+        CommonUtils.jsonStrToMap(findApp.intent).get(APP_TYPE) === AppReserveType.ENTERPRISE) {
+        findApp.installTime = new Date().getTime().toString();
+      }
       findApp.intent = item.intent ?? '';
       if (findApp.appIndex === CommonConstants.MAIN_APP_INDEX) {
         findApp.appStatus = item.appStatus;

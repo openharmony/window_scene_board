@@ -38,7 +38,7 @@ import { image } from '@kit.ImageKit';
 import screenSessionManager from '@ohos.screenSessionManager';
 import { HiDfxEventUtil } from '@ohos/frameworkwrapper';
 import { HiSysDataShowHide } from '@ohos/frameworkwrapper';
-// import apsManager from '@hms.graphic.apsManager';
+// import apsManager from '@ohos.graphic.apsManager';
 import { ApsUtils } from '@ohos/frameworkwrapper';
 import { WinLog, WinLogDomain } from '../../utils/WinLog';
 
@@ -251,6 +251,18 @@ export class SCBKeyboardSession {
   private opacity: number = 1;
   private parentId: number = -1;
   private sessionInfo: SCBSessionInfo = new SCBSessionInfo();
+  private callingWindowInfoData: CallingWindowInfoData;
+
+
+  private getCallingWindowInfoData(): void {
+    // 使用默认值，不调用不存在的 getCallingSession() 方法
+    this.callingWindowInfoData = {
+      callingWindowState: 0,  // STATE_FOREGROUND
+      scaleX: 1.0,
+      scaleY: 1.0
+    };
+  }
+
 
   /*
    * callback of session state change
@@ -354,7 +366,17 @@ export class SCBKeyboardSession {
         `blurHeight: ${keyboardEffectOption.blurHeight},` + `FlowLightMode: ${keyboardEffectOption.flowLightMode},` +
           `GradientMode : ${keyboardEffectOption.gradientMode}`);
       SCBKeyboardPanelManager.getInstance().updateKeyboardEffectOption(this.session?.persistentId, keyboardEffectOption);
-    });  
+    });
+
+    this.session?.on('callingWindowIdChange', (callingWindowId: number) => {
+      SCBKeyboardManager.getInstance().onCallingSessionIdChange(callingWindowId);
+      SCBKeyboardManager.getInstance().notifyVirtualScreenCallingSessionChange(callingWindowId);
+    });
+    this.callingWindowInfoData = {
+      callingWindowState: 0,
+      scaleX: 1.0,
+      scaleY: 1.0
+    };
   }
 
   public isFloatGravity(): boolean {
@@ -678,9 +700,9 @@ export class SCBKeyboardSession {
   }
 
   public closeKeyboardSyncTransaction(isKeyboardShow: boolean, withAnimation: boolean, isGravityChanged: boolean,
-    beginPanelRect?: SCBSessionRect): void {
+    beginPanelRect?: SCBSessionRect, endPanelRect?: SCBSessionRect): void {
     let callingId = this.getCallingSessionId();
-    const panelRect = this.getKeyboardPanelRealRect();
+    const panelRect = endPanelRect ?? this.getKeyboardPanelRealRect();
     let keyboardPanelRect: sceneSessionManager.SessionRect = panelRect.transfer2SessionRect();
     let beginRect: sceneSessionManager.SessionRect = panelRect.transfer2SessionRect();
     let endRect: sceneSessionManager.SessionRect = panelRect.transfer2SessionRect();
@@ -698,8 +720,11 @@ export class SCBKeyboardSession {
 
     let isCloseSyncSuccess:boolean = true;
     try {
-      this.session?.closeKeyboardSyncTransaction(keyboardPanelRect, isKeyboardShow,
-        beginRect, endRect, withAnimation, callingId, isGravityChanged);
+      let keyboardBaseInfo = new KeyboardBaseInfo(callingId, isGravityChanged, isKeyboardShow, keyboardPanelRect);
+      let keyboardAnimationRectConfig = new KeyboardAnimationRectConfig(beginRect, endRect, withAnimation);
+      this.getCallingWindowInfoData();
+      this.session?.closeKeyboardSyncTransaction(keyboardBaseInfo, keyboardAnimationRectConfig,
+        this.callingWindowInfoData);
     } catch (err) {
       isCloseSyncSuccess = false;
       log.showError('closeKeyboardSyncTransaction failed' + JSON.stringify(err));
@@ -736,6 +761,44 @@ export class SCBKeyboardSession {
       this.session.notifyKeyboardAnimationCompleted(callingId, isShowAnimation, beginRect, endRect);
     } catch (err) {
       log.showError(`notify keyboard animation completion failed, code: ${err?.code}`);
+    }
+  }
+
+  public notifyKeyboardAnimationWillBegin(callingId: number, isKeyboardShow: boolean, withAnimation: boolean,
+    panelRect: SCBSessionRect, beginPanelRect?: SCBSessionRect): void {
+    if (CommonUtils.isInvalid(this.session)) {
+      WinLog.showInfo(WinLogDomain.WMS_KEYBOARD,
+        'keyboard session is invalid, notify keyboard animation will begin failed');
+      return;
+    }
+    let beginRect: sceneSessionManager.SessionRect = panelRect.transfer2SessionRect();
+    let endRect: sceneSessionManager.SessionRect = panelRect.transfer2SessionRect();
+    this.calculateBeginRectAndEndRect(isKeyboardShow, beginRect, endRect, panelRect, beginPanelRect);
+    let keyboardAnimationRectConfig = new KeyboardAnimationRectConfig(beginRect, endRect, withAnimation);
+    try {
+      WinLog.showDebug(WinLogDomain.WMS_KEYBOARD,
+        'notifyKeyboardAnimationWillBegin, callingId:' + callingId + ', isKeyboardShow:' + isKeyboardShow);
+      this.session.notifyKeyboardAnimationWillBegin(callingId, isKeyboardShow, keyboardAnimationRectConfig);
+    } catch (err) {
+      WinLog.showError(WinLogDomain.WMS_KEYBOARD, `notify keyboard animation completion failed, code: ${err?.code}`);
+    }
+  }
+
+  public calculateBeginRectAndEndRect(isKeyboardShow: boolean, beginRect: sceneSessionManager.SessionRect,
+    endRect: sceneSessionManager.SessionRect, panelRect: SCBSessionRect, beginPanelRect?: SCBSessionRect): void{
+    if (beginPanelRect !== undefined) {
+      beginRect.posX_ = beginPanelRect.left.getPx();
+      beginRect.posY_ = beginPanelRect.top.getPx();
+      beginRect.width_ = beginPanelRect.width.getPx();
+      beginRect.height_ = beginPanelRect.height.getPx();
+      return;
+    }
+    let screenHeight = SCBKeyboardPanelManager.getInstance().getScreenPropertyForKeyboardPanel()?.height ??
+      (panelRect.top.getPx() + panelRect.height.getPx());
+    if (isKeyboardShow) {
+      beginRect.posY_ = screenHeight;
+    } else {
+      endRect.posY_ = screenHeight;
     }
   }
 
@@ -1199,5 +1262,46 @@ export class SCBKeyboardSession {
       return true;
     }
     return false;
+  }
+}
+interface CallingWindowInfoData {
+  callingWindowState: number;
+  scaleX: number;
+  scaleY: number;
+}
+
+// ✅ 添加这两个类定义
+class KeyboardBaseInfo {
+  callingId: number;
+  isGravityChanged: boolean;
+  isKeyboardShow: boolean;
+  keyboardPanelRect: sceneSessionManager.SessionRect;
+
+  constructor(
+    callingId: number,
+    isGravityChanged: boolean,
+    isKeyboardShow: boolean,
+    keyboardPanelRect: sceneSessionManager.SessionRect
+  ) {
+    this.callingId = callingId;
+    this.isGravityChanged = isGravityChanged;
+    this.isKeyboardShow = isKeyboardShow;
+    this.keyboardPanelRect = keyboardPanelRect;
+  }
+}
+
+class KeyboardAnimationRectConfig {
+  beginRect: sceneSessionManager.SessionRect;
+  endRect: sceneSessionManager.SessionRect;
+  animated: boolean;
+
+  constructor(
+    beginRect: sceneSessionManager.SessionRect,
+    endRect: sceneSessionManager.SessionRect,
+    animated: boolean
+  ) {
+    this.beginRect = beginRect;
+    this.endRect = endRect;
+    this.animated = animated;
   }
 }

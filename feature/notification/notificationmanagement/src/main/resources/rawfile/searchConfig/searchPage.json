@@ -29,14 +29,14 @@
         }
       ]
     },
-
     {
       "pageTitle": "$string:status_bar_title",
       "pageDescription": "",
       "entryKey": "systemui_notification_settings",
       "params": "StatusBarSetting",
       "path": [
-        "$string:notification_and_status_bar_title", "$string:status_bar_title"
+        "$string:notification_and_status_bar_title",
+        "$string:status_bar_title"
       ],
       "supportDevices": [
         "phone",
@@ -104,12 +104,6 @@
           "icon": ""
         },
         {
-          "itemName": "enable_switch_nearlink",
-          "itemTitle": "$string:enable_switch_nearlink",
-          "itemDescription": "enable switch nearlink",
-          "icon": ""
-        },
-        {
           "itemName": "enable_switch_bluetooth",
           "itemTitle": "$string:enable_switch_bluetooth",
           "itemDescription": "enable switch bluetooth",
@@ -122,12 +116,6 @@
           "icon": ""
         },
         {
-          "itemName": "enable_switch_nfc",
-          "itemTitle": "$string:enable_switch_nfc",
-          "itemDescription": "enable switch nfc",
-          "icon": ""
-        },
-        {
           "itemName": "enable_switch_head_phones",
           "itemTitle": "$string:enable_switch_head_phones",
           "itemDescription": "enable switch head phones",
@@ -135,14 +123,14 @@
         }
       ]
     },
-
     {
       "pageTitle": "$string:more_ntf_setting",
       "pageDescription": "",
       "entryKey": "systemui_notification_settings",
       "params": "NtfMoreSetting",
       "path": [
-        "$string:notification_and_status_bar_title", "$string:more_ntf_setting"
+        "$string:notification_and_status_bar_title",
+        "$string:more_ntf_setting"
       ],
       "searchItems": [
         {
@@ -202,14 +190,14 @@
         }
       ]
     },
-
     {
       "pageTitle": "$string:live_view_title",
       "pageDescription": "",
       "entryKey": "systemui_notification_settings",
       "params": "NtfLiveViewSwitchPage",
       "path": [
-        "$string:notification_and_status_bar_title", "$string:live_view_title"
+        "$string:notification_and_status_bar_title",
+        "$string:live_view_title"
       ],
       "searchItems": [
         {

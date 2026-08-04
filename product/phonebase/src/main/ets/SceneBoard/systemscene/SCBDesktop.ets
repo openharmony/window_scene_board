@@ -14,9 +14,8 @@
  */
 
 import display from '@ohos.display';
-import {
-  AppItemToDeskAnimationComponent
-} from '@ohos/desktopedit/src/main/ets/default/view/AppItemToDeskAnimationComponent';
+import { AppItemToDeskAnimationComponent } from '@ohos/desktopedit/src/main/ets/default/view/AppItemToDeskAnimationComponent';
+import dataStorage from '@ohos.data.storage';
 import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
 import {
   AdaptiveIconManager,
@@ -29,6 +28,7 @@ import {
   DesktopManager,
   DesktopMode,
   DesktopParam,
+  DesktopStatusBarHelper,
   DeviceState,
   editModeManager,
   EditModeState,
@@ -76,7 +76,7 @@ import {
   launcherVisualEffectMgr,
   MultiSelectAnimationView,
   PageDesktopOneShotManager,
-  PageEditViewModel,
+  PageEditViewModel
 } from '@ohos/launchercommon/Index';
 import {
   EventType,
@@ -90,7 +90,8 @@ import {
   SCBSceneSessionManager,
   SCBScreenProperty,
   SCBScreenSessionManager,
-  SCBTransitionManager
+  SCBTransitionManager,
+  SCBSystemSceneSession
 } from '@ohos/windowscene';
 import {
   BreakpointManager,
@@ -104,8 +105,10 @@ import {
   GlobalSearchStatus,
   HiSysEventUtil,
   IconResourceManager,
+  LightOutdoorConfig,
   localEventManager,
   NegativeScreenConstants,
+  obtainLocalEvent,
   onLineThemeUtil,
   ResourceManager,
   SCBDesktopCacheManager,
@@ -114,10 +117,14 @@ import {
   ScreenState,
   ScreenStateModel,
   ScreenStateMonitor,
+  sEventManager,
+  EventConstants as CommonEventConstants,
   sOutSideWindowMgr,
   sSettingsUtil,
   TrimLevel,
+  ViewArea,
   ViewCallback,
+  ViewController,
   viewMgrPolicy,
   ViewType,
   WallpaperChangeListener,
@@ -127,6 +134,7 @@ import {
   WeekSchedulerReporterEvent,
   WorkSchedulerManager
 } from '@ohos/frameworkwrapper';
+import sceneSessionManager from '@ohos.sceneSessionManager';
 import {
   AnimateToScheduleUtils,
   AppStorageUtil,
@@ -150,16 +158,12 @@ import { SmartDock } from '@ohos/smartdock/src/main/ets/default/layout/SmartDock
 import { PageDesktopLayout } from '@ohos/pagedesktop/src/main/ets/default/layout/PageDesktopLayout';
 import UndoDragForm from '@ohos/pagedesktop/src/main/ets/default/common/components/UndoDragForm';
 import { OpenFolderComponent } from '@ohos/bigfolder/src/main/ets/default/view/OpenFolderComponent';
-import {
-  FormZoomComponent
-} from '@ohos/pagedesktop/src/main/ets/default/common/components/formAdjust/view/FormZoomComponent';
+import { FormZoomComponent } from '@ohos/pagedesktop/src/main/ets/default/common/components/formAdjust/view/FormZoomComponent';
 import curves from '@ohos.curves';
 import { BigFolderViewModel, FolderCloseType, OpenFolderAppBubbleNodeManager } from '@ohos/bigfolder';
 import { ScenePanelState } from '../scenemanager/SCBScenePanel';
 import { PhoneLayoutRulesController } from '../controllers/SceneDesktopController/PhoneLayoutRulesController';
-import {
-  SimplePhoneLayoutRulesController
-} from '../controllers/SceneDesktopController/SimplePhoneLayoutRulesController';
+import { SimplePhoneLayoutRulesController } from '../controllers/SceneDesktopController/SimplePhoneLayoutRulesController';
 import { FormStyleConfig } from '@ohos/form';
 import ServiceExtensionContext from 'application/ServiceExtensionContext';
 import PhonePageDesktopGridStyleConfig from '../../common/PhonePageDesktopGridStyleConfig';
@@ -167,10 +171,7 @@ import { SmartDockStyleConfig } from '@ohos/smartdock/src/main/ets/default/commo
 import { FoldPhoneLayoutRulesController } from '../controllers/SceneDesktopController/FoldPhoneLayoutRulesController';
 import type ctx from '@ohos.app.ability.common';
 import { editModeViewManager } from '@ohos/desktopedit/src/main/ets/default/manager/EditModeViewManager';
-import {
-  EditModeViewEvent,
-  PinchGestureActionType
-} from '@ohos/desktopedit/src/main/ets/default/viewmodel/EditModeViewEvent';
+import { EditModeViewEvent, PinchGestureActionType } from '@ohos/desktopedit/src/main/ets/default/viewmodel/EditModeViewEvent';
 import { FormStackExpandView } from '@ohos/formstack/src/main/ets/view/FormStackExpandView';
 import { FormStackSnapView } from '@ohos/formstack/src/main/ets/view/FormStackSnapView';
 import { FormStackEventReporter } from '@ohos/formstack/src/main/ets/common/FormStackEventReporter';
@@ -179,25 +180,15 @@ import { StatusBarSysEventUtil, } from '@ohos/systemuicommon/src/main/ets/status
 import { baseStateMgr } from '@ohos/systemuicommon';
 import performanceMonitor from '@ohos.arkui.performanceMonitor';
 import { PadLayoutRulesController } from '../controllers/SceneDesktopController/PadLayoutRulesController';
-import {
-  HorizontalFoldPhoneLayoutRulesController
-} from '../controllers/SceneDesktopController/HorizontalFoldPhoneLayoutRulesController';
+import { HorizontalFoldPhoneLayoutRulesController } from '../controllers/SceneDesktopController/HorizontalFoldPhoneLayoutRulesController';
 import parameter from '@ohos.systemparameter';
 import { DesktopInformationReporter } from '../desktopReporter/DesktopInformationReporter';
 import ReportWorkSchedulerExtensionAbility from '../desktopReporter/ReportWorkSchedulerExtensionAbility';
 import { EditModeButtonDock, EditModeRemoveBar } from '@ohos/desktopedit';
 import EditModeExtensionUI from '@ohos/desktopedit/src/main/ets/uiExtension/view/EditModeExtensionUI';
 import EditModeStyleConstants from '@ohos/desktopedit/src/main/ets/default/common/constants/EditModeStyleConstants';
-import {
-  PageDesktopDragHandler,
-  PageDesktopGridStyleConfig,
-  PageDesktopViewModel,
-  SCBDesktopAddViewModel,
-  SwiperPageFocusManager
-} from '@ohos/pagedesktop';
-import {
-  VerticalPadLayoutRulesController
-} from '../controllers/SceneDesktopController/VerticalPadLayoutRulesController';
+import { PageDesktopDragHandler, PageDesktopGridStyleConfig, PageDesktopViewModel, SCBDesktopAddViewModel, SwiperPageFocusManager } from '@ohos/pagedesktop';
+import { VerticalPadLayoutRulesController } from '../controllers/SceneDesktopController/VerticalPadLayoutRulesController';
 import { AnimationContinueItem, DropAnimationItem } from '@ohos/componentanimator/Index';
 import { ThemeActivationEvent } from '@ohos/frameworkwrapper/src/main/ets/eventbus/events/Events';
 import GlobalSearchLocationApp from '@ohos/pagedesktop/src/main/ets/default/common/components/GlobalSearchLocationApp';
@@ -206,37 +197,26 @@ import { text } from '@kit.ArkGraphics2D';
 import SmartDockConstants from '@ohos/smartdock/src/main/ets/default/common/constants/SmartDockConstants';
 import lazy StatusBarServiceEventMgr from '@ohos/smartdock/src/main/ets/default/manager/StatusBarServiceEventMgr';
 import { AttributeUpdater } from '@ohos.arkui.modifier';
-import lazy {
-  OuterPhoneLayoutRulesController
-} from '../controllers/SceneDesktopController/OuterPhoneLayoutRulesController';
+import lazy { OuterPhoneLayoutRulesController } from '../controllers/SceneDesktopController/OuterPhoneLayoutRulesController';
 import { folderLayout } from '@ohos/pagedesktop/src/main/ets/default/common/components/folder/viewmodel/FolderLayout';
 import { EditModeSingePageViewData } from '@ohos/desktopedit/src/main/ets/default/data/EditModeSingePageViewData';
 import IndicatorConstants from '@ohos/pagedesktop/src/main/ets/default/common/constants/IndicatorConstants';
 import { EditModeGridSwiperViewData } from '@ohos/desktopedit/src/main/ets/default/data/EditModeGridSwiperViewData';
 import { DesktopLayoutState } from '@ohos/launchercommon/src/main/ets/constants/CommonConstants';
-import {
-  SCBUnlockSpaceAniListener,
-  SCBUnlockTransitionController
-} from '@ohos/windowscene/src/main/ets/animation/SCBTransitionManager';
+import { SCBUnlockSpaceAniListener, SCBUnlockTransitionController } from '@ohos/windowscene/src/main/ets/animation/SCBTransitionManager';
 import { SCBDesktopViewModel } from './viewmodel/SCBDesktopViewModel';
-import lazy { UltraScreenRotateViewModel } from './ultrascreen/UltraScreenRotateViewModel';
-import {
-  BaseQuitAppRect,
-  QuitAppRectViewModel
-} from '@ohos/pagedesktop/src/main/ets/default/common/viewmodel/QuitAppRectViewModel';
-// import apsManager from '@hms.graphic.apsManager';
+import lazy { CloudChangeStatus, CloudExpandDialogMgr } from '../cloudmode/CloudExpandDialogMgr';
+import lazy { ThreeFoldRotateViewModel } from './threefold/ThreeFoldRotateViewModel';
+import { BaseQuitAppRect, QuitAppRectViewModel } from '@ohos/pagedesktop/src/main/ets/default/common/viewmodel/QuitAppRectViewModel';
+// import apsManager from '@ohos.graphic.apsManager';
 import lazy { OuterIconCenterViewManager } from '@ohos/launchercommon/src/main/ets/manager/OuterIconCenterViewManager';
 import { ThemeServiceHelper } from '@ohos/wallpapercomponent/src/main/ets/themeassistant/ThemeServiceHelper';
 import { SpaceAnimationUtils } from '@ohos/launchercommon/src/main/ets/animation/SpaceAnimationUtils';
 import { ScreenLockState, ScreenLockStateListener, screenLockStateManager } from '@ohos/screenlockcommon';
 import { GameEventListener } from '@ohos/launchercommon/src/main/ets/listener/GameEventListener';
 import { BlurEffectType } from '@ohos/commonconstants/src/main/ets/constants/VisualEffectConstants';
-import {
-  UltraScreenPhoneLayoutRulesController,
-} from '../controllers/SceneDesktopController/UltraScreenPhoneLayoutRulesController';
-import {
-  HorizontalUltraScreenPhoneLayoutRulesController
-} from '../controllers/SceneDesktopController/HorizontalUltraScreenPhoneLayoutRulesController';
+import { ThreeFoldPhoneLayoutRulesController, } from '../controllers/SceneDesktopController/ThreeFoldPhoneLayoutRulesController';
+import { HorizontalThreeFoldPhoneLayoutRulesController } from '../controllers/SceneDesktopController/HorizontalThreeFoldPhoneLayoutRulesController';
 import lazy {
   SCBSingleHandController,
   SingleHandAnimationFinishCallBack,
@@ -259,10 +239,12 @@ import { OpenFolderGridSwiperLayout } from '@ohos/bigfolder/src/main/ets/default
 import { openFolderLayout } from '@ohos/bigfolder/src/main/ets/default/viewmodel/OpenFolderLayout';
 import { ExposureManager } from '@ohos/launchercommon/src/main/ets/manager/ExposureManager';
 import { DailyScheduledReporter } from '@ohos/launchercommon/src/main/ets/hisysevent/DailyScheduledReporter';
-import lazy { UltraScreenExpandViewModel } from './ultrascreen/UltraScreenExpandViewModel';
-import lazy { UltraScreenUtils } from './ultrascreen/UltraScreenUtils';
+import lazy { SCBSceneWindowAiSplitSwitchUtils } from '@ohos/windowscene/src/main/ets/scene/utils/SCBSceneWindowAiSplitSwitchUtils';
+import lazy { ThreeFoldExpandViewModel } from './threefold/ThreeFoldExpandViewModel';
+import lazy { ThreeFoldUtils } from './threefold/ThreeFoldUtils';
 import lazy { ShieldAnimParam, ShieldAnimViewModel } from './viewmodel/ShieldAnimViewModel';
 import { LauncherStartup, StartupStep } from '@ohos/launchercommon/src/main/ets/tools/LauncherStartup';
+import { AppGalleryListener } from '@ohos/appinstall/src/main/ets/default/listener/AppGalleryListener';
 
 const TAG = 'SCBDesktop';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.HOME, TAG);
@@ -386,7 +368,7 @@ export struct SCBDesktop {
   private mBigFolderViewModel: BigFolderViewModel | null = null;
   private mFolderModel: FolderModel | null = null;
   private foldStatus: number = DeviceState.FOLDED_STATE;
-  private foldStatusForOuterScreen: number = DeviceState.FOLDED_STATE;
+  private foldStatusForOuterScreen: number = DeviceState.EXPAND_STATE;//默认扩展
   private mLayoutViewModel: LayoutViewModel | null = null;
   private navigationBarStatus: string | undefined = '0';
   private desktopContext?: ServiceExtensionContext = GlobalContext.getContext();
@@ -396,6 +378,7 @@ export struct SCBDesktop {
   private hideDesktopTimeoutId: number | null = null;
   private mDesktopViewModel: SCBDesktopViewModel =
     singleManager.get<SCBDesktopViewModel>(SCBDesktopViewModel, this.singleContext);
+  private mCloudExpandDialogMgr: CloudExpandDialogMgr | null = null;
   @State mDesktopViewData: SCBDesktopViewData = this.mDesktopViewModel.getDesktopViewData();
   private isFolderClosing: boolean = false;
   private isSmallFoldDeviceExpand: boolean = false;
@@ -429,9 +412,9 @@ export struct SCBDesktop {
   private setFreezeReadyTimerId: number = -1;
   private mPageDesktopDragHandler: PageDesktopDragHandler = PageDesktopDragHandler.getInstance();
   private lastDesktopRotation: number = 0;
-  private curUltraScreenState: ScreenStateModel = ScreenStateMonitor.getInstance()
+  private curTripleFoldState: ScreenStateModel = ScreenStateMonitor.getInstance()
     .getScreenStateModel(BreakpointManager.getInstance().getCurrentBreakpointData());
-  private lastUltraScreenState: ScreenStateModel = this.curUltraScreenState;
+  private lastTripleFoldState: ScreenStateModel = this.curTripleFoldState;
 
   private initWallpaperSubscriber(): void {
     try {
@@ -573,12 +556,14 @@ export struct SCBDesktop {
   private desktopFocusCallback: ViewCallback = {
     onGainFocus: (): void => {
       log.showInfo(`Desktop focus`);
+      DesktopStatusBarHelper.ensureVisibleOnDesktop('SCBDesktop.onGainFocus');
       PageDesktopViewModel.getInstance().setIsChangingPage(false);
       this.desktopContext?.eventHub.emit(CommonConstants.DESKTOP_FOCUS_CHANGE, true);
       AppStorage.setOrCreate('onDeskTop', true);
       AppStorage.setOrCreate('onDeskTopState', this.scenePanelState);
       ExposureManager.getInstance().handleDesktopGainFocus();
       sOutSideWindowMgr.setGlobalSearchStatus(GlobalSearchStatus.HIDE);
+      sEventManager.publish(obtainLocalEvent(CommonEventConstants.CONTROL_CENTER_SHOW_HIDE_BAR, true));
     },
     onLoseFocus: (): void => {
       log.showInfo(`Desktop lose focus, the scenePanelState is ${this.scenePanelState}`);
@@ -875,8 +860,21 @@ export struct SCBDesktop {
     }
   }
 
+  private initCloudExpandDialogMgr(): void {
+    if (DeviceHelper.isFold()) {
+      this.mCloudExpandDialogMgr = CloudExpandDialogMgr.getInstance(this.singleContext);
+    }
+  }
+
   aboutToAppear(): void {
     log.showInfo('aboutToAppear');
+    let area: ViewArea = {
+      left: 0,
+      top: 0,
+      width: px2vp(this.screenProp.width),
+      height: px2vp(this.screenProp.height),
+    };
+    this.viewController.updateArea(area);
     LauncherStartup.getInstance().passStep(StartupStep.SCB_DESKTOP);
     // 异步加载持久化的主屏下标
     PageInfoManager.getInstance().readHomePageIndex();
@@ -947,19 +945,19 @@ export struct SCBDesktop {
     this.mBigFolderViewModel = BigFolderViewModel.getInstance();
     this.mFolderModel = FolderModel.getInstance();
     let baseConfig = this.mLayoutViewModel.getBaseConfig();
-    let isUltraScreenDevice = DeviceHelper.isUltraScreenProduct();
-    if (isUltraScreenDevice) {
+    let isThreeFoldDevice = DeviceHelper.isThreeFoldProduct();
+    if (isThreeFoldDevice) {
       this.registerScreenStateMonitor();
     }
     log.showInfo(`aboutToAppear, isFoldExpandStatus: ${desktopUtil.isFoldExpandStatus()}`);
     if (launcherStatusUtil.getShowOutLauncherStatus()) {
       this.mLayoutViewModel.setLayoutRulesController(OuterPhoneLayoutRulesController.getInstance(baseConfig, this.singleContext));
     } else if (desktopUtil.isFoldExpandStatus()) {
-      //超大屏设备，G态采用对应的布局器， M态可共用之前的布局器
-      if (isUltraScreenDevice && DeviceHelper.isGState()) {
-        let horizontalUltraScreenRulesController =
-          HorizontalUltraScreenPhoneLayoutRulesController.getInstance(baseConfig, this.singleContext);
-        this.mLayoutViewModel.setLayoutRulesController(horizontalUltraScreenRulesController);
+      //三折设备，G态采用对应的布局器， M态可共用之前的布局器
+      if (isThreeFoldDevice && DeviceHelper.isGState()) {
+        let horizontalThreeFoldRulesController =
+          HorizontalThreeFoldPhoneLayoutRulesController.getInstance(baseConfig, this.singleContext);
+        this.mLayoutViewModel.setLayoutRulesController(horizontalThreeFoldRulesController);
       } else {
         this.mLayoutViewModel.setLayoutRulesController(FoldPhoneLayoutRulesController.getInstance(baseConfig, this.singleContext));
       }
@@ -976,7 +974,7 @@ export struct SCBDesktop {
     bundleManagerFwk.initIconSizeOfGrid(
       PhoneLayoutRulesController.getInstance(baseConfig, this.singleContext).calculateDesktop().mIconSize ?? 0);
     // 快捷键注册
-    if (DeviceHelper.isPad() || DeviceHelper.isUltraScreenProduct()) {
+    if (DeviceHelper.isPad() || DeviceHelper.isThreeFoldProduct()) {
       this.mMultiInputViewModel = MultiInputViewModel.getInstance();
       multiInputManager.registerPadInputEvent();
     }
@@ -1063,8 +1061,29 @@ export struct SCBDesktop {
     this.appIconConfigManager.registerBadgeKeyObserver();
     this.appIconConfigManager.initShowDesktopBadges();
     this.registerUpdateFontColor();
+    this.initCloudExpandDialogMgr();
+    this.mCloudExpandDialogMgr?.startCloudDialog(CloudChangeStatus.CLOUD_TO_APPEAR);
+    this.mCloudExpandDialogMgr?.registerCloudModeMonitor();
+    this.registerLightOutdoorListener();
   }
 
+  /**
+   * 注册云端2模式切换监听
+   */
+  private registerLightOutdoorListener(): void {
+    if (LightOutdoorConfig.getInstance().isOnLightOutdoorMode()) {
+      AppGalleryListener.getInstance().destroy();
+    }
+    LightOutdoorConfig.getInstance().registerLightOutdoorModeChangeListener(TAG, (action: number) => {
+      if (action == 0) {
+        SCBDesktopViewModel.getInstance().exitLightOutdoorMode();
+        AppGalleryListener.getInstance().init();
+      } else {
+        SCBDesktopViewModel.getInstance().enterLightOutdoorMode();
+        AppGalleryListener.getInstance().destroy();
+      }
+    });
+  }
   // 折叠屏50~176度之间壁纸会做动效
   private isFoldAngleChangeEnd(): boolean {
     return (this.foldAngle < 50.0) || (this.foldAngle > 176.0);
@@ -1086,7 +1105,7 @@ export struct SCBDesktop {
   }
 
   private registerScreenStateMonitor(): void {
-    UltraScreenRotateViewModel.getInstance().registerUltraScreenRotateCallback();
+    ThreeFoldRotateViewModel.getInstance().registerThreeFoldRotateCallback();
     ScreenStateMonitor.getInstance().registerScreenStateChangeListener(TAG, (old: ScreenStateModel,
       newData: ScreenStateModel) => {
       log.showWarn(`recevie screenState, old: ${old.screenState}, orientation: ${old.orientation}, w: ${
@@ -1096,26 +1115,26 @@ export struct SCBDesktop {
     });
   }
 
-  public foldOrExpandDesktopForUltraScreen(): void {
-    if (this.curUltraScreenState.screenState === ScreenState.F) {
+  public foldOrExpandDesktopForThreeFold(): void {
+    if (this.curTripleFoldState.screenState === ScreenState.F) {
       this.latestFoldState = DeviceState.FOLDED_STATE;
     } else {
       this.latestFoldState = DeviceState.EXPAND_STATE;
     }
     // 记忆能力仅用于MG状态切换
-    if (this.curUltraScreenState.screenState !== ScreenState.F && this.lastUltraScreenState.screenState !== ScreenState.F) {
+    if (this.curTripleFoldState.screenState !== ScreenState.F && this.lastTripleFoldState.screenState !== ScreenState.F) {
       let isSkipAnimation : boolean = this.skipFoldExpandAnimation();
       // 无动效开合场景：如负一屏场景开合，不做延迟下树处理
       if (!isSkipAnimation) {
-        UltraScreenExpandViewModel.getInstance().ultraScreenExpandBefore();
+        ThreeFoldExpandViewModel.getInstance().threeFoldExpandBefore();
       }
     }
-    UltraScreenUtils.setGTFPreNextMargin(this.curUltraScreenState.screenState, this.lastUltraScreenState.screenState);
-    log.showInfo(`foldOrExpandDesktop: state: ${this.curUltraScreenState.screenState}, orientation: ${
-      this.curUltraScreenState.orientation}`);
+    ThreeFoldUtils.setGTFPreNextMargin(this.curTripleFoldState.screenState, this.lastTripleFoldState.screenState);
+    log.showInfo(`foldOrExpandDesktop: state: ${this.curTripleFoldState.screenState}, orientation: ${
+      this.curTripleFoldState.orientation}`);
     Trace.start(Trace.CORE_METHOD_BREAKPOINT_CHANGE_DESKTOP);
-    this.processFoldOrExpandByBreakpoint(this.curUltraScreenState.width, this.curUltraScreenState.height,
-      this.curUltraScreenState.orientation === ScreenOrientation.PORTRAIT);
+    this.processFoldOrExpandByBreakpoint(this.curTripleFoldState.width, this.curTripleFoldState.height,
+      this.curTripleFoldState.orientation === ScreenOrientation.PORTRAIT);
 
     setTimeout(() => {
       ContextMenu.close();
@@ -1244,16 +1263,8 @@ export struct SCBDesktop {
     let isPortrait: boolean = this.isPortrait(screenProperty.screenId);
     this.latestScreenProperty = screenProperty;
     this.latestPortrait = isPortrait;
-    let isUltraScreenStateChanged: boolean = false;
-    let isUltraScreen = DeviceHelper.isUltraScreenProduct();
-    if (isUltraScreen) {
-      BreakpointManager.getInstance()
-        .updateBreakpointData(screenProperty.width, screenProperty.height, isPortrait, screenProperty.screenId);
-      this.lastUltraScreenState = this.curUltraScreenState;
-      this.curUltraScreenState = ScreenStateMonitor.getInstance().getCurrentScreenStateModel();
-      isUltraScreenStateChanged = this.lastUltraScreenState.screenState !== this.curUltraScreenState.screenState;
-    }
     Trace.start(Trace.CORE_METHOD_SCREEN_PROPERTY_CHANGE_DESKTOP);
+    let currentDesktopRotation = this.getDesktopRotation();
     switch (reason) {
       case SCBPropertyChangeReason.FOLD_LANDSCAPE_START:
         break;
@@ -1268,9 +1279,13 @@ export struct SCBDesktop {
         this.updateDesktopLayout(screenProperty.width, screenProperty.height, isPortrait);
         break;
       case SCBPropertyChangeReason.FOLD_SCREEN_ROTATION:
-        break;
       case SCBPropertyChangeReason.PAGE_ROTATION:
-        // 旋转动效场景
+        // 无动效转屏场景
+        log.showInfo(`PAGE_ROTATION isPortrait:${isPortrait}, current: ${currentDesktopRotation}, last: ${this.lastDesktopRotation};`);
+        this.updateDesktopLayout(screenProperty.width, screenProperty.height, isPortrait);
+        this.mDesktopViewModel.screenChangeRotationNoAnim(isPortrait, this.lastDesktopRotation !== currentDesktopRotation);
+        this.setRotationFocusComponent();
+        DesktopManager.getInstance().saveDesktopParam();
         break;
       default:
         break;
@@ -1281,11 +1296,13 @@ export struct SCBDesktop {
     if (AppStorage.get('showUninstallDialog')) {
       AppStorage.setOrCreate('showUninstallDialog', false);
     }
-    if (isUltraScreenStateChanged) {
-      DisplayCountViewModel.getInstance().calculateUltraScreenDisplayCount();
-    }
     this.lastDesktopRotation = screenProperty.rotation;
     Trace.end(Trace.CORE_METHOD_SCREEN_PROPERTY_CHANGE_DESKTOP);
+  }
+
+  private getDesktopRotation(): number {
+    let desktopSceneSession = SCBSceneSessionManager.getInstance().getSystemSceneSessionWithId(this.viewController.getId(), this.screenProp.screenId);
+    return desktopSceneSession ? desktopSceneSession.rotation : this.screenProp.rotation;
   }
 
   private setRotationFocusComponent(): void {
@@ -1294,8 +1311,8 @@ export struct SCBDesktop {
 
   private processFoldOrExpandProChange(foldState: DeviceState, screenProperty: SCBScreenProperty,
     isPortrait: boolean): void {
-    if (DeviceHelper.isUltraScreenProduct()) {
-      this.foldOrExpandDesktopForUltraScreen();
+    if (DeviceHelper.isThreeFoldProduct()) {
+      this.foldOrExpandDesktopForThreeFold();
       return;
     }
     this.isDeskSwipe = false;
@@ -1316,7 +1333,7 @@ export struct SCBDesktop {
     this.updateFoldStatusParam(this.latestFoldState);
     this.updateDesktopLayout(width, height, isPortrait);
     this.mDesktopViewModel.screenChangeExpandOrFold(this.latestFoldState, isPortrait, isStatusChange);
-    this.runTripleAnimation(this.lastUltraScreenState.screenState, this.curUltraScreenState.screenState);
+    this.runTripleAnimation(this.lastTripleFoldState.screenState, this.curTripleFoldState.screenState);
   }
 
   private runTripleAnimation(oldState: ScreenState, newState: ScreenState) {
@@ -1324,10 +1341,12 @@ export struct SCBDesktop {
     log.showInfo(`triple Animation: Desktop triple state change from ${oldState} to ${newState}
       isSkipAnimation: ${isSkipAnimation}`);
     localEventManager.sendLocalEventAsync(EventConstants.EVENT_BREAK_SLIDE_SWIPER_PAGE);
+    // 三折叠产品，处理开合AI多窗逻辑
+    SCBSceneWindowAiSplitSwitchUtils.getInstance().AiSplitSwitchByStateChange(oldState, newState);
     if (isSkipAnimation) {
       // just record swiper page location data
       SCBTransitionManager.getInstance().runTripleAnimationCallback(oldState, newState, false);
-      UltraScreenUtils.resetPreNextMargin();
+      ThreeFoldUtils.resetPreNextMargin();
     } else {
       // Complete the layout update.
       animateTo({}, () => {
@@ -1337,18 +1356,18 @@ export struct SCBDesktop {
         new RecentDockAnimationEvent(oldState, newState);
       EvtBus.post<RecentDockAnimationEvent>(RecentDockAnimationEvent, recentDockAnimationEvent);
       let continueItemAnimationEvent: ContinueItemAnimationEvent =
-        new ContinueItemAnimationEvent(this.lastUltraScreenState.screenState, this.curUltraScreenState.screenState);
+        new ContinueItemAnimationEvent(this.lastTripleFoldState.screenState, this.curTripleFoldState.screenState);
       EvtBus.post<ContinueItemAnimationEvent>(ContinueItemAnimationEvent, continueItemAnimationEvent);
       let deviceTypeIconAnimationEvent: DeviceTypeIconAnimationEvent = new DeviceTypeIconAnimationEvent();
       EvtBus.post<DeviceTypeIconAnimationEvent>(DeviceTypeIconAnimationEvent, deviceTypeIconAnimationEvent);
     }
     localEventManager.sendLocalEvent(EventConstants.EVENT_UPDATE_SCREEN_DATA);
     // 记忆能力仅用于MG状态切换
-    if (this.curUltraScreenState.screenState !== ScreenState.F && this.lastUltraScreenState.screenState !== ScreenState.F) {
+    if (this.curTripleFoldState.screenState !== ScreenState.F && this.lastTripleFoldState.screenState !== ScreenState.F) {
       let isSkipAnimation : boolean = this.skipFoldExpandAnimation();
       // 无动效开合场景，如负一屏开合，不做延迟下树处理
       if (!isSkipAnimation) {
-        UltraScreenExpandViewModel.getInstance().ultraScreenExpandAfter();
+        ThreeFoldExpandViewModel.getInstance().threeFoldExpandAfter();
       }
     }
   }
@@ -1367,19 +1386,28 @@ export struct SCBDesktop {
         SCBTransitionManager.getInstance().runFoldAnimationCallback();
       }
     }
-}
+  }
 
   // 刷新桌面布局
   private updateDesktopLayout(width: number, height: number, isPortrait: boolean): void {
     const isFoldStatus = (this.foldStatus === DeviceState.EXPAND_STATE);
+    // 对于手机设备，强制使用竖屏尺寸进行布局计算
+    let adjustedWidth = width;
+    let adjustedHeight = height;
+    if (DeviceHelper.isPhone() && width > height) {
+      // 交换宽度和高度，确保使用竖屏尺寸
+      adjustedWidth = height;
+      adjustedHeight = width;
+      log.showInfo(`updateDesktopLayout Phone device detected, swapping screen dimensions: width=${width},
+        height=${height} -> adjustedWidth=${adjustedWidth}, adjustedHeight=${adjustedHeight}`);
+    }
     //更新LayoutViewModel中的屏幕宽、高、展开状态信息，避免在LayoutRulesController中使用异常数据。
-    LayoutViewModel.getInstance(this.singleContext).getBaseConfig().resetScreenSize(width, height, this.foldStatus);
+    LayoutViewModel.getInstance(this.singleContext).getBaseConfig().resetScreenSize(adjustedWidth, adjustedHeight, this.foldStatus);
     let layoutRulesController: PhoneLayoutRulesController = this.getLayoutController(isPortrait, isFoldStatus);
     if (launcherStatusUtil.getShowOutLauncherStatus() && this.mLayoutViewModel) {
-      layoutRulesController =
-        OuterPhoneLayoutRulesController.getInstance(this.mLayoutViewModel.getBaseConfig(), this.singleContext);
+      layoutRulesController = OuterPhoneLayoutRulesController.getInstance(this.mLayoutViewModel.getBaseConfig(), this.singleContext);
     }
-    this.setDesktopWithScreenChange(layoutRulesController, width, height, this.foldStatus, isPortrait);
+    this.setDesktopWithScreenChange(layoutRulesController, adjustedWidth, adjustedHeight, this.foldStatus, isPortrait);
   }
 
   // 根据横竖屏方向，以及折叠状态，获取布局器
@@ -1394,21 +1422,21 @@ export struct SCBDesktop {
       }
       return PadLayoutRulesController.getInstance(this.mLayoutViewModel?.getBaseConfig(), this.singleContext);
     }
-    let isUltraScreenProduct = DeviceHelper.isUltraScreenProduct();
+    let isThreeFoldProduct = DeviceHelper.isThreeFoldProduct();
     let isGState = false;
-    if (isUltraScreenProduct) {
-      isGState = this.curUltraScreenState.screenState === ScreenState.G;
+    if (isThreeFoldProduct) {
+      isGState = this.curTripleFoldState.screenState === ScreenState.G;
     }
-    log.showInfo(`isExpand: ${isFoldStatus}, isUltraScreenProduct: ${isUltraScreenProduct}, isGState: ${
+    log.showInfo(`isExpand: ${isFoldStatus}, isThreeFoldProduct: ${isThreeFoldProduct}, isGState: ${
       isGState}, isPortrait: ${isPortrait}`);
     if (isFoldStatus) {
       if (isGState) {
         if (isPortrait) {
-          log.showInfo(`useLayoutController --------> UltraScreenPhoneLayoutRulesController`);
-          return UltraScreenPhoneLayoutRulesController.getInstance(this.mLayoutViewModel.getBaseConfig(), this.singleContext);
+          log.showInfo(`useLayoutController --------> ThreeFoldPhoneLayoutRulesController`);
+          return ThreeFoldPhoneLayoutRulesController.getInstance(this.mLayoutViewModel.getBaseConfig(), this.singleContext);
         }
-        log.showInfo(`useLayoutController --------> HorizontalUltraScreenPhoneLayoutRulesController`);
-        return HorizontalUltraScreenPhoneLayoutRulesController.getInstance(this.mLayoutViewModel.getBaseConfig(), this.singleContext);
+        log.showInfo(`useLayoutController --------> HorizontalThreeFoldPhoneLayoutRulesController`);
+        return HorizontalThreeFoldPhoneLayoutRulesController.getInstance(this.mLayoutViewModel.getBaseConfig(), this.singleContext);
       } else {
         if (isPortrait) {
           log.showInfo(`useLayoutController --------> FoldPhoneLayoutRulesController`);
@@ -1435,9 +1463,9 @@ export struct SCBDesktop {
   }
 
   private onDockModeChange(): void {
-    if (DeviceHelper.isUltraScreenProduct()) {
+    if (DeviceHelper.isThreeFoldProduct()) {
       this.mLayoutViewModel?.setLayoutRulesController(
-        HorizontalUltraScreenPhoneLayoutRulesController
+        HorizontalThreeFoldPhoneLayoutRulesController
           .getInstance(LayoutViewModel.getInstance(this.singleContext).getBaseConfig()));
     } else {
       this.updatePadLayoutRulesController(LayoutViewModel.getInstance(this.singleContext).getBaseConfig());
@@ -1497,19 +1525,19 @@ export struct SCBDesktop {
       return true;
     }
     // 三屏桌面场景，手机竖屏情况下开合时，由于不涉及页面之间的变化，不应该走三屏
-    if (PageInfoManager.getInstance().getMaxDisplayCount() === 3 && this.isNotExecuteUltraScreenExpandBefore()) {
+    if (PageInfoManager.getInstance().getMaxDisplayCount() === 3 && this.isNotExecuteThreeFoldExpandBefore()) {
       return true;
     }
     return false;
   }
 
-  private isNotExecuteUltraScreenExpandBefore(): boolean {
-    if (this.lastUltraScreenState.screenState === ScreenState.M && this.curUltraScreenState.screenState === ScreenState.G &&
-      this.curUltraScreenState.orientation === ScreenOrientation.PORTRAIT) {
+  private isNotExecuteThreeFoldExpandBefore(): boolean {
+    if (this.lastTripleFoldState.screenState === ScreenState.M && this.curTripleFoldState.screenState === ScreenState.G &&
+      this.curTripleFoldState.orientation === ScreenOrientation.PORTRAIT) {
       return true;
     }
-    if (this.lastUltraScreenState.screenState === ScreenState.G && this.curUltraScreenState.screenState === ScreenState.M &&
-      this.lastUltraScreenState.orientation === ScreenOrientation.PORTRAIT) {
+    if (this.lastTripleFoldState.screenState === ScreenState.G && this.curTripleFoldState.screenState === ScreenState.M &&
+      this.lastTripleFoldState.orientation === ScreenOrientation.PORTRAIT) {
       return true;
     }
     return false;
@@ -1554,12 +1582,26 @@ export struct SCBDesktop {
 
   private setDesktopWithScreenChange(layoutRulesController: PhoneLayoutRulesController,
     width: number, height: number, foldStatus: number, isPortrait: boolean): void {
-    this.viewController.updateRect({
+    // 对于手机设备，强制使用竖屏尺寸
+    let adjustedWidth = width;
+    let adjustedHeight = height;
+    if (DeviceHelper.isPhone() && width > height) {
+      // 交换宽度和高度，确保使用竖屏尺寸
+      adjustedWidth = height;
+      adjustedHeight = width;
+      log.showInfo(`setDesktopWithScreenChange Phone device detected, swapping screen dimensions in setDesktopWithScreenChange: width=${width},
+        height=${height} -> adjustedWidth=${adjustedWidth}, adjustedHeight=${adjustedHeight}`);
+    }
+
+    log.showInfo(`screenChange isExpand ${foldStatus}  width  ${adjustedWidth}  screen height ${adjustedHeight} `);
+    let area: ViewArea = {
       left: 0,
       top: 0,
-      width: px2vp(width),
-      height: px2vp(height),
-    });
+      width: px2vp(adjustedWidth),
+      height: px2vp(adjustedHeight),
+    };
+    this.viewController.updateRect(area);
+    this.viewController.updateArea(area);
     // Quit edit mode when fold status change
     if (editModeManager.isInEditMode()) {
       editModeManager.changeDesktopMode(DesktopMode.NORMAL_MODE, HiEditModeDataExitType.EXIT_SCREEN_CHANGE);
@@ -1568,12 +1610,10 @@ export struct SCBDesktop {
       folderLayoutUtil.initFolderLayoutConfig();
     }
     this.mLayoutViewModel?.setLayoutRulesController(layoutRulesController);
-    this.mLayoutViewModel?.refreshConfig(width, height, foldStatus, isPortrait,
-      this.mDesktopViewModel?.getDesktopModel());
-    this.getWindowSize(width, height);
+    this.mLayoutViewModel?.refreshConfig(adjustedWidth, adjustedHeight, foldStatus, isPortrait, this.mDesktopViewModel?.getDesktopModel());
+    this.getWindowSize(adjustedWidth, adjustedHeight);
     this.updateScreenInfo();
     this.updateDesktopFontSize();
-    log.showInfo(`screenChange isExpand ${foldStatus}  width  ${width}  screen height ${height} `);
   }
 
   private updateDesktopFontSize(): void {
@@ -1760,11 +1800,12 @@ export struct SCBDesktop {
       log.showInfo(`onActive the animateScale is ${CommonConstants.DESKTOP_ANIMATE_SCALE} return`);
       return;
     }
-    animateTo({
-      curve: curves.springMotion(0.26, 1.157, 0),
-    }, () => {
+    // 解决响应时延问题，取消桌面缩放动效
+    // animateTo({
+    //   curve: curves.springMotion(0.26, 1.157, 0),
+    // }, () => {
       this.onDesktopAnimateScaleChanged(CommonConstants.DESKTOP_ANIMATE_SCALE, 'onActive');
-    })
+    // })
   }
 
   private onInactive(infoMsg: string = '', delayTime: number = 0): void {
@@ -1830,6 +1871,13 @@ export struct SCBDesktop {
     this.desktopContext?.eventHub.emit(CommonConstants.DESKTOP_INVISIBLE_STATE);
   }
 
+  // obtain whether assistant is on from local storage
+  getAssistantFlagFromStore(): void {
+    let context = getContext()?.getApplicationContext() || GlobalContext.getContext();
+    const storage = dataStorage.getStorageSync(context?.databaseDir + '/LauncherPreference');
+    const assistantIsOnInStore = storage.getSync('assistantIsOn', 1);
+    this.assistantIsOn = assistantIsOnInStore !== 0;
+  }
 
   registerPageDesktopEvent(listener: Object): void {
     localEventManager.registerEventListener(listener, [EventConstants.EVENT_NAVIGATOR_BAR_STATUS_CHANGE,
@@ -2067,7 +2115,7 @@ export struct SCBDesktop {
     WorkSchedulerManager.getInstance().unRegisterReport(this.reportShortcutInfo);
     WorkSchedulerManager.getInstance().unRegisterReport(this.reportSystemSceneState);
     WorkSchedulerManager.unRegisterDelayTask(ReportWorkSchedulerExtensionAbility.getWorkInfo());
-    if (DeviceHelper.isPad() || DeviceHelper.isUltraScreenProduct()) {
+    if (DeviceHelper.isPad() || DeviceHelper.isThreeFoldProduct()) {
       this.mMultiInputViewModel?.unregisterEventListener();
       multiInputManager.unRegisterPadInputEvent();
     }
@@ -2081,7 +2129,6 @@ export struct SCBDesktop {
     this.unregisterHideDesktop();
     this.unregisterCacheDesktop();
 
-    formStackItemViewManager.unregisterFormStackItemView(FormStackItemViewType.AI_SUGGESTION);
     formStackItemViewManager.unregisterFormStackItemView(FormStackItemViewType.FORM_COMPONENT);
 
     FolderActionLifeCycleEventManager.getInstance().unregister(this.mOpenCloseCallback);
@@ -2108,11 +2155,13 @@ export struct SCBDesktop {
     this.appIconConfigManager.unregisterBadgeKeyObserver();
     DesktopManager.getInstance().unregisterInitCallback();
     this.unregisterUpdateFontColor();
+    this.mCloudExpandDialogMgr?.unregisterCloudModeMonitor();
+    LightOutdoorConfig.getInstance().unRegisterLightOutdoorModeChangeListener(TAG);
   }
 
   private unRegisterScreenStateMonitor(): void {
-    if (DeviceHelper.isUltraScreenProduct()) {
-      UltraScreenRotateViewModel.getInstance().unRegisterUltraScreenRotateCallback();
+    if (DeviceHelper.isThreeFoldProduct()) {
+      ThreeFoldRotateViewModel.getInstance().unRegisterThreeFoldRotateCallback();
       ScreenStateMonitor.getInstance().unRegisterScreeStateChangeListener(TAG);
     }
 }
@@ -2140,8 +2189,21 @@ export struct SCBDesktop {
 
   private getWindowSize(width?: number, height?: number): void {
     try {
-      this.screenWidth = width ? this.getUIContext().px2vp(width) : this.getUIContext().px2vp(this.screenProp.width);
-      this.screenHeight = height ? this.getUIContext().px2vp(height) : this.getUIContext().px2vp(this.screenProp.height);
+      let realWidth = width ? width : this.screenProp.width;
+      let realHeight = height ? height : this.screenProp.height;
+
+      // 对于手机设备，强制使用竖屏尺寸
+      if (DeviceHelper.isPhone() && realWidth > realHeight) {
+        // 交换宽度和高度，确保使用竖屏尺寸
+        const temp = realWidth;
+        realWidth = realHeight;
+        realHeight = temp;
+        log.showInfo(`getWindowSize Phone device detected, swapping screen dimensions in getWindowSize: width=${width},
+          height=${height} -> realWidth=${realWidth}, realHeight=${realHeight}`);
+      }
+
+      this.screenWidth = this.getUIContext().px2vp(realWidth);
+      this.screenHeight = this.getUIContext().px2vp(realHeight);
       log.showInfo(`screenWidth: ${this.screenWidth}, screenHeight: ${this.screenHeight}`);
       AppStorage.setOrCreate('recentScreenWidth', this.screenWidth);
       AppStorage.setOrCreate('recentScreenHeight', this.screenHeight);
@@ -2408,7 +2470,9 @@ export struct SCBDesktop {
         if (this.isWallpaperBlurEffect.value) {
           this.CustomBlurEffectBuilder();
         }
-        if (this.mDesktopViewData.launcherModel === DesktopLayoutState.HOME_LAUNCHER_MODE) {
+        if (this.mDesktopViewData.launcherModel === DesktopLayoutState.HOME_LAUNCHER_MODE
+          || this.mDesktopViewData.launcherModel === DesktopLayoutState.OUTDOOR_MODE
+          || this.mDesktopViewData.launcherModel === DesktopLayoutState.LIGHT_OUTDOOR_MODE) {
           this.UniHomeLauncherBuilder();
         } else if (this.mDesktopViewData.launcherModel === DesktopLayoutState.SIMPLE_LAUNCHER_MODEL) {
           this.SimpleHomeLauncherBuilder();
@@ -2514,7 +2578,7 @@ export struct SCBDesktop {
           })
         }
       }
-      .renderGroup(this.isDeskSwipe)
+      .renderGroup(false)
       .clip(this.isDeskSwipe)
       .height(this.dockHeight)
       .margin({ top: SmartDockStyleConfig.getInstance().mSmartDockMarginTop })

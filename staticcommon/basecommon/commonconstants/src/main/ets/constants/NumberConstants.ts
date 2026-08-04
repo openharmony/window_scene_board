@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023-Huawei Device Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) 2023-2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -223,7 +223,7 @@ export class NumberConstants {
     NumberConstants.CONSTANT_NUMBER_ONE_THOUSAND;
 
   /**
-   * OpenHarmony键相关常量
+   * 系统键相关常量
    */
   static readonly HOSKEY_WIDTH = 640;
   static readonly HOSKEY_BOTTOM_SPACE = 8;

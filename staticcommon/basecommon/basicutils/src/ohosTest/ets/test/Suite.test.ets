@@ -25,6 +25,7 @@ import { FileUtilTest } from './ets/framework/utils/FileUtils.test';
 import { LogHelperTest } from './ets/framework/utils/LogHelper.test';
 import { JsonUtilsTest } from './ets/framework/manager/serialization/JsonUtils.test';
 import { AppStorageUtilTest } from './ets/framework/utils/AppStorageUtil.test';
+import { FwkDeliverUtilTest } from './ets/framework/utils/DeliverUtil.test';
 import { SolidColorAlgorithmUtilsTest } from './ets/framework/utils/SolidColorAlgorithmUtils.test';
 import { SingleManagerTest } from './ets/component/utils/SingleManager/SingleManager.test';
 import UnionArrayTest from './ets/recent/UnionArray.test';
@@ -43,6 +44,7 @@ export default function PipelineDemoSuite() {
     FileUtilTest();
     LogHelperTest();
     AppStorageUtilTest();
+    FwkDeliverUtilTest();
     AnimateToScheduleUtilsTest();
     TaskPoolTest();
     TaskManagerTest();

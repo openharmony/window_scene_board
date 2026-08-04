@@ -12,6 +12,7 @@
     "desktopsetting/pages/DesktopSetting",
     "intents/pages/DesktopSlideCardPage",
     "desktopedit/pages/DesktopEditPage",
+    "SceneBoard/naviBar/view/ThreeButtonUpgradeView",
     "restoringtips/RestoringTipsDialog",
     "SystemDialog/pages/PoweroffIndex",
     "SystemDialog/pages/AlertPage",

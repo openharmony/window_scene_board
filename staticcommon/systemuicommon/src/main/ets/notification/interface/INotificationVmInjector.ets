@@ -162,6 +162,14 @@ export interface INotificationVmInjector extends IBaseVmInjector {
   getStarterVm(): INotificationStarterVm;
 
   /**
+   * 获取通知卡片启动的VM
+   *
+   * @param ntf 通知
+   * @returns 通知卡片启动的VM
+   */
+  getStarterDeliverVm(): INotificationStarterVm;
+
+  /**
    * 获取可扩展小外屏通知卡片启动的VM
    */
   getStarterOuterHomeVm(): INotificationStarterVm;

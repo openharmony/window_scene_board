@@ -376,7 +376,8 @@ export class ImmersiveCardVm {
 
   private isNeedToAnim(oldData: ImmersiveNtfData): boolean {
     if (this.showList.showData?.cardData?.immersiveWant ||
-      oldData.cardData?.liveView?.sysTypeCode === SysTypeCode.BROADCASTING_CENTER) {
+      oldData.cardData?.liveView?.sysTypeCode === SysTypeCode.BROADCASTING_CENTER ||
+      immersiveKgMgr.getOneMirrorState().getAodStyle(true)?.isAod) {
       return false
     }
     return true;
@@ -892,7 +893,8 @@ export class ImmersiveCardVm {
   }
 
   private isNeedAnim(): boolean {
-    return immersiveKgMgr.getBeforeImmersiveState().isCapsule();
+    return immersiveKgMgr.getBeforeImmersiveState().isCapsule() &&
+      !immersiveKgMgr.getOneMirrorState().getAodStyle(true)?.isAod;
   }
 
   private isOtherTheme(): boolean {

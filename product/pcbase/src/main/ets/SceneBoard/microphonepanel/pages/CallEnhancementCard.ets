@@ -22,8 +22,8 @@ import StyleConfiguration, { ClickableMenuStyle, SoundDeviceStyle } from '../com
 import MicrophonePanelViewModel, { CurrentInputDeviceChangeForUIListener,
   InputCardItemProp,
   InputDevicesChangeForUIListener } from '../viewmodel/MicrophonePanelViewModel';
-import AIAudioEffectSettingModel, { AIAudioEnhanceProp,
-  callReinforceStatusChangeListener } from '../model/AIAudioEffectSettingModel';
+import AudioEffectSettingModel, { AudioEnhanceProp,
+  callReinforceStatusChangeListener } from '../model/AudioEffectSettingModel';
 import XmlParseUtil from '../util/XmlParseUtil';
 import SettingsUtil from '../../soundpanel/util/SettingsUtil';
 import Constants, { SettingsKeyConstants } from '../common/Constants';
@@ -76,7 +76,7 @@ export default struct CallEnhancementCard {
     this.panelInfo = StatusBarPanelManager.getInstance()
       .getStatusBarInfoById(this.persistentId) as NormalPanelInfo;
     this.initPrivacyAgreementListener();
-    AIAudioEffectSettingModel.registerCallReinforceStatusChangeListener(this.callReinforceStatusChangeForUIListener);
+    AudioEffectSettingModel.registerCallReinforceStatusChangeListener(this.callReinforceStatusChangeForUIListener);
     MicrophonePanelViewModel.registerStateChangeListener(this);
     MicrophonePanelViewModel.registerInputDevicesForUIListener(this.inputDevicesChangeForUIListener);
     MicrophonePanelViewModel.registerCurrentInputDeviceForUIListener(this.currentInputDeviceChangeForUIListener);
@@ -86,7 +86,7 @@ export default struct CallEnhancementCard {
 
   aboutToDisappear() {
     log.showInfo(`${TAG} aboutToDisappear`);
-    AIAudioEffectSettingModel.unregisterCallReinforceStatusChangeListener(this.callReinforceStatusChangeForUIListener);
+    AudioEffectSettingModel.unregisterCallReinforceStatusChangeListener(this.callReinforceStatusChangeForUIListener);
     MicrophonePanelViewModel.unregisterStateChangeListener(this);
     MicrophonePanelViewModel.unregisterInputDevicesForUIListener(this.inputDevicesChangeForUIListener);
     MicrophonePanelViewModel.unregisterCurrentInputDeviceForUIListener(this.currentInputDeviceChangeForUIListener);
@@ -247,10 +247,10 @@ export default struct CallEnhancementCard {
   // 通话增强状态变更的监听回调
   private callReinforceStatusChangeForUIListener: callReinforceStatusChangeListener = {
     onCallReinforceStatusChange: (enhanceProp: string) => {
-      if (enhanceProp === AIAudioEnhanceProp.ENHANCE_SINGLE) {
+      if (enhanceProp === AudioEnhanceProp.ENHANCE_SINGLE) {
         this.isPNREnable = true;
         this.isAINREnable = false;
-      } else if (enhanceProp === AIAudioEnhanceProp.ENHANCE_DEFAULT) {
+      } else if (enhanceProp === AudioEnhanceProp.ENHANCE_DEFAULT) {
         this.isPNREnable = false;
         this.isAINREnable = false;
       } else {
@@ -357,7 +357,7 @@ export default struct CallEnhancementCard {
           this.isPNREnable = true;
           this.isAINREnable = false;
           this.doSavaSelection(Constants.CALL_REINFORCE_USER_SELECTION_SINGLE);
-          AIAudioEffectSettingModel.setCallReinforceStatus(AIAudioEnhanceProp.ENHANCE_SINGLE);
+          AudioEffectSettingModel.setCallReinforceStatus(AudioEnhanceProp.ENHANCE_SINGLE);
         }
       });
     } catch (e) {
@@ -393,12 +393,12 @@ export default struct CallEnhancementCard {
   private onPNRClickEvent(event: ClickEvent) {
     if (this.isPNREnable) {
       this.doSavaSelection(Constants.CALL_REINFORCE_USER_SELECTION_DEFAULT);
-      AIAudioEffectSettingModel.setCallReinforceStatus(AIAudioEnhanceProp.ENHANCE_DEFAULT);
+      AudioEffectSettingModel.setCallReinforceStatus(AudioEnhanceProp.ENHANCE_DEFAULT);
     } else {
       if (this.isSigned) {
         this.isAINREnable = false;
         this.doSavaSelection(Constants.CALL_REINFORCE_USER_SELECTION_SINGLE);
-        AIAudioEffectSettingModel.setCallReinforceStatus(AIAudioEnhanceProp.ENHANCE_SINGLE);
+        AudioEffectSettingModel.setCallReinforceStatus(AudioEnhanceProp.ENHANCE_SINGLE);
       } else {
         this.onShowPermissionAbility();
         return;
@@ -410,11 +410,11 @@ export default struct CallEnhancementCard {
   private onAINRClickEvent(event: ClickEvent) {
     if (this.isAINREnable) {
       this.doSavaSelection(Constants.CALL_REINFORCE_USER_SELECTION_DEFAULT);
-      AIAudioEffectSettingModel.setCallReinforceStatus(AIAudioEnhanceProp.ENHANCE_DEFAULT);
+      AudioEffectSettingModel.setCallReinforceStatus(AudioEnhanceProp.ENHANCE_DEFAULT);
     } else {
       this.isPNREnable = false;
       this.doSavaSelection(Constants.CALL_REINFORCE_USER_SELECTION_MULTIPLE);
-      AIAudioEffectSettingModel.setCallReinforceStatus(AIAudioEnhanceProp.ENHANCE_MULTIPLE);
+      AudioEffectSettingModel.setCallReinforceStatus(AudioEnhanceProp.ENHANCE_MULTIPLE);
     }
     this.isAINREnable = !this.isAINREnable;
   }

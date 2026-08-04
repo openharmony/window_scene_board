@@ -27,6 +27,7 @@ import { SCBSceneInfo } from '@ohos/windowscene';
 import { bundleManager } from '@kit.AbilityKit';
 import { PcDockPopupMgr } from '../manager/PcDockPopupMgr';
 import { bundleResourceManager } from '@kit.AbilityKit';
+import PcSmartDockViewModel from '../viewmodel/SmartDockViewModel';
 
 const TAG = 'PCDockUtils';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.HOME, 'PCDock-' + TAG);
@@ -65,18 +66,20 @@ export class PCDockUtils {
    * @param item 图标
    * @returns id
    */
-  public static getAppItemColumnId(item: DockItemInfo): string {
+  public static getAppItemColumnId(item: DockItemInfo, isResident: boolean = true): string {
+    const baseField: string = PcSmartDockViewModel.getInstance().getIdPrefix(isResident) ;
+    const field = 'AppIcon'
     if (item?.abilityName === CommonConstants.APPCENTER_ABILITY) {
-      return 'ResidentLayoutForPC_AppItem_com.ohos.sceneboard1';
+      return `${baseField}_${field}_com.ohos.sceneboard1`;
     }
     if (item?.abilityName === CommonConstants.RECENT_ABILITY) {
-      return 'ResidentLayoutForPC_AppItem_com.ohos.sceneboard2';
+      return `${baseField}_${field}_com.ohos.sceneboard2`;
     }
-    return PCDockUtils.buildStandardId(item);
+    return PCDockUtils.buildStandardId(item, `${baseField}_${field}_`);
   }
 
-  private static buildStandardId(item: DockItemInfo): string {
-    let res: string = 'ResidentLayoutForPC_AppItem_' + item?.bundleName + SPLIT_STR + item?.appIndex + SPLIT_STR +
+  private static buildStandardId(item: DockItemInfo, field: string = 'ResidentLayoutForPC_AppItem_'): string {
+    let res: string = field + item?.bundleName + SPLIT_STR + item?.appIndex + SPLIT_STR +
       item?.shortcutId ?? '';
     if (item?.appIndex !== undefined && item?.appIndex > 0) {
       res = res + SPLIT_STR + item?.appIndex;

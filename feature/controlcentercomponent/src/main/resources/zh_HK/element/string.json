@@ -1,417 +1,467 @@
 {
     "string":[
         {
-            "name":"control_center_edit_panel_dialog_confirm",
-            "value":"儲存目前修改？",
-            "attr":{
-                "priority":"LT"
+            "name": "control_center_edit_panel_dialog_confirm",
+            "value": "儲存目前修改？",
+            "attr": {
+                "priority": "LT"
             }
         },
         {
-            "name":"control_center",
-            "value":"控制中心",
-            "attr":{
-                "priority":"translate"
+            "name": "control_center",
+            "value": "控制中心",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"control_center_edit_panel_tips_max_toggles",
-            "value":"最多顯示 %d 個快捷開關",
-            "attr":{
-                "priority":"LT"
+            "name": "control_center_edit_panel_tips_max_toggles",
+            "value": "最多顯示 %d 個快捷開關",
+            "attr": {
+                "priority": "LT"
             }
         },
         {
-            "name":"screen_recorder_widget_name",
-            "value":"屏幕錄影",
-            "attr":{
-                "priority":"LT"
+            "name": "screen_recorder_widget_name",
+            "value": "屏幕錄影",
+            "attr": {
+                "priority": "LT"
             }
         },
         {
-            "name":"control_center_edit_panel_collapse_library",
-            "value":"收起備選庫",
-            "attr":{
-                "priority":"translate"
+            "name": "control_center_edit_panel_collapse_library",
+            "value": "收起備選庫",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"control_center_edit_panel_tips_min_toggles",
-            "value":"最少顯示 %d 個快捷開關",
-            "attr":{
-                "priority":"LT"
+            "name": "control_center_edit_panel_tips_min_toggles",
+            "value": "最少顯示 %d 個快捷開關",
+            "attr": {
+                "priority": "LT"
             }
         },
         {
-            "name":"control_center_unlocked_for_editing",
-            "value":"解鎖後即可編輯",
-            "attr":{
-                "priority":"translate"
+            "name": "control_center_unlocked_for_editing",
+            "value": "解鎖後即可編輯",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"control_center_edit_panel_dialog_not_save",
-            "value":"不儲存",
-            "attr":{
-                "priority":"LT"
+            "name": "control_center_edit_panel_dialog_not_save",
+            "value": "不儲存",
+            "attr": {
+                "priority": "LT"
             }
         },
         {
-            "name":"privacy_sensor_multiple_application",
-            "value":"「%s」等",
-            "attr":{
-                "priority":"LT"
+            "name": "privacy_sensor_multiple_application",
+            "value": "「%s」等",
+            "attr": {
+                "priority": "LT"
             }
         },
         {
-            "name":"screen_shot_widget_name",
-            "value":"截屏",
-            "attr":{
-                "priority":"LT"
+            "name": "screen_shot_widget_name",
+            "value": "截屏",
+            "attr": {
+                "priority": "LT"
             }
         },
         {
-            "name":"control_center_edit_panel_dialog_save",
-            "value":"儲存",
-            "attr":{
-                "priority":"LT"
+            "name": "control_center_edit_panel_dialog_save",
+            "value": "儲存",
+            "attr": {
+                "priority": "LT"
             }
         },
         {
-            "name":"control_center_edit_panel_title_edit",
-            "value":"編輯",
-            "attr":{
-                "priority":"LT"
+            "name": "control_center_edit_panel_title_edit",
+            "value": "編輯",
+            "attr": {
+                "priority": "LT"
             }
         },
         {
-            "name":"multi_window_widget_name",
-            "value":"自由多視窗",
-            "attr":{
-                "priority":"translate"
+            "name": "multi_window_widget_name",
+            "value": "自由多視窗",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"cc_accessibility_str_privacy_string_camera",
-            "value":"相機",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_privacy_string_camera",
+            "value": "相機",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"cc_accessibility_str_entry_edit",
-            "value":"頁面編輯",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_entry_edit",
+            "value": "頁面編輯",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"cc_accessibility_str_open_candidate_library",
-            "value":"展開備選庫",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_open_candidate_library",
+            "value": "展開備選庫",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"cc_accessibility_str_edit_move_end",
-            "value":"已放置",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_edit_move_end",
+            "value": "已放置",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"cc_accessibility_str_change_brightness_desc",
-            "value":"進度條 輕觸兩下並按住左右滑動即可調節",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_change_brightness_desc",
+            "value": "進度條 輕觸兩下並按住左右滑動即可調節",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"cc_accessibility_str_entry_setting",
-            "value":"前往設定",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_entry_setting",
+            "value": "前往設定",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"cc_accessibility_str_privacy_string_location",
-            "value":"位置",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_privacy_string_location",
+            "value": "位置",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"cc_accessibility_str_privacy_string_mic",
-            "value":"麥克風",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_privacy_string_mic",
+            "value": "麥克風",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"cc_accessibility_str_brightness",
-            "value":"屏幕亮度 %s",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_brightness",
+            "value": "屏幕亮度 %s",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"cc_accessibility_str_exit_edit",
-            "value":"退出編輯",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_exit_edit",
+            "value": "退出編輯",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"control_center_no_available_toggles",
-            "value":"無可新增的快捷開關",
-            "attr":{
-                "priority":"LT"
+            "name": "control_center_no_available_toggles",
+            "value": "無可新增的快捷開關",
+            "attr": {
+                "priority": "LT"
             }
         },
         {
-            "name":"cc_accessibility_str_save_edit",
-            "value":"儲存修改",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_save_edit",
+            "value": "儲存修改",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"cc_accessibility_str_edit_move_start",
-            "value":"已拖起",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_edit_move_start",
+            "value": "已拖起",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"cc_accessibility_str_change_brightness",
-            "value":"調節亮度為 %s",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_change_brightness",
+            "value": "調節亮度為 %s",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"cc_accessibility_str_privacy_report_string",
-            "value":"%1$s應用程式，存取 %2$s 權限中",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_privacy_report_string",
+            "value": "%1$s應用程式，存取 %2$s 權限中",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"scanner_widget_name",
-            "value":"掃一掃",
-            "attr":{
-                "priority":"LT"
+            "name": "scanner_widget_name",
+            "value": "掃一掃",
+            "attr": {
+                "priority": "LT"
             }
         },
         {
-            "name":"cc_accessibility_str_collapse_library",
-            "value":"收起備選庫",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_collapse_library",
+            "value": "收起備選庫",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"cc_accessibility_str_edit_drag_description",
-            "value":"輕觸兩下並長按即可拖動排序",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_edit_drag_description",
+            "value": "輕觸兩下並長按即可拖動排序",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"cc_accessibility_str_button_str",
-            "value":"%s 按鈕",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_button_str",
+            "value": "%s 按鈕",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"accessed_recently",
-            "value":"%s剛剛存取",
-            "attr":{
-                "priority":"LT"
+            "name": "accessed_recently",
+            "value": "%s剛剛存取",
+            "attr": {
+                "priority": "LT"
             }
         },
         {
-            "name":"cc_accessibility_str_exit_sub_page",
-            "value":"退出%s頁面",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_exit_sub_page",
+            "value": "退出%s頁面",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"cc_accessibility_str_entry_edit_page",
-            "value":"進入編輯頁面",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_entry_edit_page",
+            "value": "進入編輯頁面",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"cc_accessibility_str_library_opened",
-            "value":"備選庫已展開",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_library_opened",
+            "value": "備選庫已展開",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"cc_accessibility_str_library_closed",
-            "value":"備選庫已收起",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_library_closed",
+            "value": "備選庫已收起",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"cc_accessibility_str_enter_sub_page",
-            "value":"進入%s頁面",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_enter_sub_page",
+            "value": "進入%s頁面",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"cc_accessibility_str_exit_edit_page",
-            "value":"退出編輯頁面",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_exit_edit_page",
+            "value": "退出編輯頁面",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"control_center_super_privacy_for_location_toggle",
-            "value":"位置已禁用，請先退出超級私隱模式",
-            "attr":{
-                "priority":"LT"
+            "name": "control_center_super_privacy_for_location_toggle",
+            "value": "位置已禁用，請先退出超級私隱模式",
+            "attr": {
+                "priority": "LT"
             }
         },
         {
-            "name":"control_center_anti_theft_for_toggle",
-            "value":"樣機處於防盜值守狀態，此操作已被禁止執行",
-            "attr":{
-                "priority":"LT"
+            "name": "control_center_anti_theft_for_toggle",
+            "value": "樣機處於防盜值守狀態，此操作已被禁止執行",
+            "attr": {
+                "priority": "LT"
             }
         },
         {
-            "name":"brightness_title",
-            "value":"亮度",
-            "attr":{
-                "priority":"LT"
+            "name": "brightness_title",
+            "value": "亮度",
+            "attr": {
+                "priority": "LT"
             }
         },
         {
-            "name":"combined_slider_title",
-            "value":"亮度條與音量條",
-            "attr":{
-                "priority":"translate"
+            "name": "combined_slider_title",
+            "value": "亮度條與音量條",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"cc_accessibility_str_privacy_page",
-            "value":"私隱權限",
-            "attr":{
-                "priority":"translate"
+            "name": "cc_accessibility_str_privacy_page",
+            "value": "私隱權限",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"sound_recorder_name",
-            "value":"錄音機",
-            "attr":{
-                "priority":"LT"
+            "name": "sound_recorder_name",
+            "value": "錄音機",
+            "attr": {
+                "priority": "LT"
             }
         },
         {
-            "name":"calculator_widget_name",
-            "value":"計算機",
-            "attr":{
-                "priority":"LT"
+            "name": "calculator_widget_name",
+            "value": "計算機",
+            "attr": {
+                "priority": "LT"
             }
         },
         {
-            "name":"clock_timer_widget_name",
-            "value":"計時器",
-            "attr":{
-                "priority":"LT"
+            "name": "clock_timer_widget_name",
+            "value": "計時器",
+            "attr": {
+                "priority": "LT"
             }
         },
         {
-            "name":"remote_control_widget_name",
-            "value":"智能遙控器",
-            "attr":{
-                "priority":"LT"
+            "name": "remote_control_widget_name",
+            "value": "智能遙控器",
+            "attr": {
+                "priority": "LT"
             }
         },
         {
-            "name":"rotate_to_landscape",
-            "value":"需要旋轉至橫向屏幕狀態使用",
-            "attr":{
-                "priority":"LT"
+            "name": "rotate_to_landscape",
+            "value": "需要旋轉至橫向屏幕狀態使用",
+            "attr": {
+                "priority": "LT"
             }
         },
         {
-            "name":"pc_mode",
-            "value":"PC 模式",
-            "attr":{
-                "priority":"translate"
+            "name": "pc_mode",
+            "value": "PC 模式",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"pad_mode",
-            "value":"平板電腦模式",
-            "attr":{
-                "priority":"translate"
+            "name": "pad_mode",
+            "value": "平板電腦模式",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"control_center_edit_panel_tips_max_limit",
-            "value":"新增內容已達上限",
-            "attr":{
-                "priority":"translate"
-            }
-        },
-        {
-            "name":"cc_accessibility_str_change_vertical_brightness_desc",
-            "value":"進度條，輕觸兩下並按住上下滑動即可調節",
+            "name":"voice_translate_name",
+            "value":"語言助手翻譯",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"multimedia_sensor_bracket_kit",
-            "value":"雲台控制",
+            "name": "control_center_edit_panel_tips_max_limit",
+            "value": "新增內容已達上限",
+            "attr": {
+                "priority": "translate"
+            }
+        },
+        {
+            "name": "cc_accessibility_str_change_vertical_brightness_desc",
+            "value": "進度條，輕觸兩下並按住上下滑動即可調節",
+            "attr": {
+                "priority": "translate"
+            }
+        },
+        {
+            "name":"cloud_lai",
+            "value":"蓬萊模式",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"multimedia_sensor_sound_effects",
-            "value":"音效效果",
-            "attr":{
-                "priority":"translate"
+            "name": "multimedia_sensor_bracket_kit",
+            "value": "雲台控制",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"multimedia_sensor_video_effects",
-            "value":"影片效果",
-            "attr":{
-                "priority":"translate"
+            "name": "multimedia_sensor_sound_effects",
+            "value": "音效效果",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-        "name":"notepad_quick_note_title",
-        "value":"速記",
-        "attr":{
-          "priority":"LT"
+            "name": "multimedia_sensor_video_effects",
+            "value": "影片效果",
+            "attr": {
+                "priority": "translate"
             }
         },
         {
-            "name":"unfold_to_g_state",
-            "value":"需展開至三屏幕形態使用",
-            "attr":{
-                "priority":"translate"
+            "name": "notepad_quick_note_title",
+            "value": "速記",
+            "attr": {
+                "priority": "LT"
             }
         },
         {
-          "name":"computer_mode",
-          "value":"電腦模式",
-          "attr":{
-            "priority":"LT"
-          }
+            "name": "unfold_to_g_state",
+            "value": "需展開至三屏幕形態使用",
+            "attr": {
+                "priority": "translate"
+            }
+        },
+        {
+            "name": "computer_mode",
+            "value": "電腦模式",
+            "attr": {
+                "priority": "LT"
+            }
+        },
+        {
+            "name": "top_toggle_data_default",
+            "value": ""
+        },
+        {
+            "name": "top_toggle_data_all",
+            "value": "mediaCard,combined_slider,wifi_ui_extension,bluetooth_ui_extension,hotspot_tagged,mobile_data_tagged,focus_mode"
+        },
+        {
+            "name": "top_toggle_data_default_multiuser",
+            "value": ""
+        },
+        {
+            "name": "toggle_data_default",
+            "value": "wifi_ui_extension,bluetooth_ui_extension,flashlight,ring_mode,auto_rotate,toggle_scanner,ohos_share,air_plane,mobile_data,hotspot,toggle_screenshot,toggle_screen_recorder,CastToggle,location"
+        },
+        {
+            "name": "toggle_data_default_old",
+            "value": "flashlight,ring_mode,auto_rotate,toggle_scanner,ohos_share,air_plane,mobile_data,hotspot,toggle_screenshot,toggle_screen_recorder,CastToggle,music_service,location,nfc,eye_comfort,dark_mode,toggle_Demo,multi_window"
+        },
+        {
+            "name": "toggle_data_all",
+            "value": "wifi_ui_extension,bluetooth_ui_extension,flashlight,ring_mode,auto_rotate,toggle_scanner,ohos_share,air_plane,mobile_data,hotspot,toggle_screenshot,toggle_screen_recorder,CastToggle,location,music_service,nfc,eye_comfort,dark_mode,super_privacy,super_hub,power_save,near_link,youth_mode,anti_peeping,multi_window,quick_note"
+        },
+        {
+            "name": "toggle_data_black_multiuser",
+            "value": "youth_mode,music_service,super_device,hotspot_tagged,hotspot"
+        },
+        {
+            "name": "small_screen_toggle_data_default",
+            "value": "flashlight,ring_mode,air_plane,mobile_data,ohos_share,hotspot,toggle_screenshot,toggle_screen_recorder,music_service,location,nfc"
+        },
+        {
+            "name": "edm_admin_toggles",
+            "value": "wifi_ui_extension,bluetooth_ui_extension,mobile_data,toggle_screenshot,toggle_screen_recorder,hotspot,near_link,location,hotspot_tagged,mobile_data_tagged,air_plane,nfc"
         }
     ]
 }

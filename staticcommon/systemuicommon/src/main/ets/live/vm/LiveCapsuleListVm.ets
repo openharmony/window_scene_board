@@ -69,6 +69,7 @@ import { appManager } from '@kit.AbilityKit';
 import { StatusBarViewControllerAdapter } from '../../adapter/StatusBarViewControllerAdapter';
 import type { CapsuleAppInfo } from '../../animation/SwipeAppToCapsuleAnimation';
 import { ShowStage } from '../interface/ILiveCapsuleFaceLockVm';
+import { OutdoorVm } from '../../vm/OutdoorVm';
 
 const TAG = 'LiveCapsuleListVm';
 const log = LogHelper.getLogHelper(LogDomain.SYS_UI, TAG);
@@ -100,6 +101,10 @@ export class LiveCapsuleListVm extends LiveBaseVm implements ILiveCapsuleListVm 
   private capsuleKeepShowingVm = this.vmInjector.getCapsuleKeepShowingVm();
   private exeDelayPromise?: CustomPromise<void>;
   private uniqueToggleFlag: boolean = true;
+  /**
+   * 云端模式
+   */
+  private outdoorVm = OutdoorVm.instance;
 
   @Monitor('envVm.statusBarColor')
   onColorChange() {
@@ -731,6 +736,9 @@ export class LiveCapsuleListVm extends LiveBaseVm implements ILiveCapsuleListVm 
     if (capsuleVm.isToDelete) {
       log.showWarn(`Capsule ${live.hashCode} is toDelete`);
       capsuleVm.isVisible = false;
+    } else if (!this.outdoorVm.isInOutdoorAppList(live)) {
+      log.showWarn(`Capsule ${live.hashCode} is not in OutdoorAppList`);
+      capsuleVm.isVisible = false;
     } else if (this.deviceInfoVm.isEmergencyMode()) {
       log.showWarn(`Capsule ${live.hashCode} is in EmergencyMode: ${this.deviceInfoVm.deviceMode}`);
       capsuleVm.isVisible = false;
@@ -996,6 +1004,13 @@ export class LiveCapsuleListVm extends LiveBaseVm implements ILiveCapsuleListVm 
     this.toggleCapsuleList();
   }
 
+  @Monitor('outdoorVm.isInOutdoorMode', 'outdoorVm.outdoorAppList')
+  onOutdoorModeChange(): void {
+    log.showWarn(`onOutdoorModeChange: ${this.outdoorVm.isInOutdoorMode}`);
+    this.isInterruptInstantBanner = false;
+    this.toggleCapsuleList();
+  }
+
   public onBannerTypeChange = (): void => {
     this.metaBallVm.setScene(LiveMetaBallScene.LIVE_PANEL, this.bannerVm.isHideCapsule());
   };
@@ -1189,6 +1204,11 @@ export class LiveCapsuleListVm extends LiveBaseVm implements ILiveCapsuleListVm 
     });
     if (!live) {
       log.showInfo(`onCheckAppToCapsule has no same live, return false`);
+      return false;
+    }
+
+    if (!this.outdoorVm.isInOutdoorAppList(live)) {
+      log.showInfo(`Capsule ${live.hashCode} is not in OutdoorAppList, return false`);
       return false;
     }
 

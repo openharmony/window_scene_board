@@ -76,6 +76,12 @@ export struct NotificationListItem {
   @ObjectLink ntfAniParameters: NotificationAnimationParas;
   private isUseEffect: boolean = true;
 
+  /**
+   * 是否为AOD中显示
+   */
+  @State inAod: boolean = immersiveKgMgr.getOneMirrorState().getAodStyle(
+    this.notificationType === NotificationType.TYPE_PHONE_KEYGUARD)?.isAod ?? false;
+
   @StorageLink('DarkModeModel_DarkModeStatus') darkModeDataPc: CommonData = new CommonData();
 
   @StorageLink('Notification_DarkModeModel_DarkModeStatus') darkModeData: DarkModeState = new DarkModeState();
@@ -176,7 +182,7 @@ export struct NotificationListItem {
     if (!NotificationType.isKeyguard(this.notificationType)) {
       this.frameCount.start(2);
     }
-    if (DeviceHelper.isBigScreenMachine()) {
+    if (DeviceHelper.isSuperFoldMachine()) {
       const singleMenuHeight = ResUtils.getNumber($r('app.float.ntf_pc_menu_item_height'));
       const menuMarginHeight = ResUtils.getNumber($r('app.float.ntf_pc_menu_item_margin_top'));
       const menuBottomHeight = ResUtils.getNumber($r('app.float.ntf_pc_click_menu_padding_bottom'))
@@ -190,7 +196,7 @@ export struct NotificationListItem {
   }
 
   checkNeedOffset() {
-    if (!DeviceHelper.isBigScreenMachine() || !this.isHalfFold) {
+    if (!DeviceHelper.isSuperFoldMachine() || !this.isHalfFold) {
       return;
     }
     const vpBSideHeight = ArkUIAdapter.px2vp(display.getDisplayByIdSync(0).height);
@@ -462,6 +468,10 @@ export struct NotificationListItem {
    */
   private isShowRightMenu(): boolean {
     if (CommonUtils.isInvalid(this.ntfGroupEntry)) {
+      return false;
+    }
+    if (this.ntfGroupEntry?.isDeliverNotification) {
+      log.showInfo(`ntf: ${this.getNtfEntry()?.hashCode} isDeliver, not show Right Menu`);
       return false;
     }
 

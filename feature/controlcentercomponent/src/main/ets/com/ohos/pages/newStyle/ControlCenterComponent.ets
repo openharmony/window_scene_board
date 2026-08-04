@@ -62,6 +62,7 @@ import Constants, {
   MAIN_LAYOUT_HEADER_ZINDEX,
   TOGGLE_LIST_OF_2_2,
   FIXED_TOP_TOGGLES,
+  MEDIA_ROW_TOP_TOGGLES,
 } from '../../common/Constants';
 import { DeviceState } from '@ohos/launchercommon/src/main/ets/constants/CommonConstants';
 import { ControlCenterState } from '@ohos/controlcentercommon/Index';
@@ -139,6 +140,7 @@ import TopToggleRow from './TopToggleRow';
 import { sBrightnessSubPageLayoutController } from '../../controller/BrightnessSubPageLayoutController';
 import { soundSubPageController } from '@ohos/soundcomponent';
 import { SliderButtonShareData } from '@ohos/controlcentercommon/src/main/ets/sliderButton/SliderButtonViewData';
+import { CloudMode, CloudModeManager } from '../../viewModel/CloudModeManager';
 import { DisplayUtils } from '@ohos/screenlockcommon';
 
 const EXPECTED_FRAME_RATE_RANGE: ExpectedFrameRateRange = {
@@ -421,6 +423,7 @@ export default struct ControlCenterComponent {
   @State quickToggles: string[] = [];
   @State topToggleArray: string[][] = [];
   @State @Watch('onDesktopModeChange') desktopMode: DesktopMode = EmergencyManager.getInstance().getData();
+  @State @Watch('onCloudModeChange') CloudMode: CloudMode = CloudModeManager.getInstance().getData();
 
   // 底部点击收起的空白区域高度
   @State tapBlankAreaHeight: number = 0;
@@ -475,6 +478,8 @@ export default struct ControlCenterComponent {
   handleToggleDataChanged() {
     if (this.desktopMode.desktopMode === DesktopModeEnum.EMERGENCY_MODE) {
       return;
+    } else if (this.CloudMode.isOutdoorCloudMode || this.CloudMode.isOutDoorCloudMode) {
+      return;
     }
     // 添加头部1*2开关
     this.handleTopToggleData();
@@ -493,7 +498,9 @@ export default struct ControlCenterComponent {
    */
   private handleTopToggleData(): void {
     let currentTopToggles: string = this.toggleData.topToggle.join(',');
-    if (currentTopToggles === this.lastTopToggles) {
+    // 顶栏为空时 lastTopToggles 初始也为空，若直接 return 会漏插 ADD_MORE_TOP，快捷行索引整体错位
+    if (currentTopToggles === this.lastTopToggles &&
+      this.contentIndexArr.includes(ADD_MORE_TOP_BUTTON_NAME)) {
       log.showInfo('top toggles no change');
       return;
     }
@@ -515,22 +522,29 @@ export default struct ControlCenterComponent {
       this.topToggleArray = [];
       return;
     }
+    // 媒体/亮度/音量固定为同一行且顺序为：媒体 | 亮度 | 音量
+    const mediaRow: string[] = MEDIA_ROW_TOP_TOGGLES.filter(item => this.toggleData.topToggle.includes(item));
+    const otherToggles: string[] = this.toggleData.topToggle.filter(item => !MEDIA_ROW_TOP_TOGGLES.includes(item));
+    let tempTogglesArray: string[][] = [];
+    if (mediaRow.length > 0) {
+      tempTogglesArray.push(mediaRow);
+    }
     let startIndex: number = 0;
     let endIndex: number = 0;
     let numberOf2x2: number = 0;
-    let tempTogglesArray: string[][] = [];
+    toggleSize = otherToggles.length;
     while (endIndex < toggleSize) {
-      if (TOGGLE_LIST_OF_2_2.includes(this.toggleData.topToggle[endIndex])) {
+      if (TOGGLE_LIST_OF_2_2.includes(otherToggles[endIndex])) {
         numberOf2x2++;
       }
       // 如果startIndex到endIndex之间的开关可以凑成一行，即:有2个1x2 或者2个2x2 或者1个2x2加上2个1x2
       if ((endIndex - startIndex === 1 && (numberOf2x2 === 0 || numberOf2x2 === 2)) ||
         (endIndex - startIndex === 2 && numberOf2x2 === 1)) {
-        tempTogglesArray.push(this.toggleData.topToggle.slice(startIndex, endIndex + 1));
+        tempTogglesArray.push(otherToggles.slice(startIndex, endIndex + 1));
         startIndex = endIndex + 1;
         numberOf2x2 = 0;
       } else if (endIndex === toggleSize - 1) {
-        tempTogglesArray.push(this.toggleData.topToggle.slice(startIndex, endIndex + 1));
+        tempTogglesArray.push(otherToggles.slice(startIndex, endIndex + 1));
       }
       endIndex++;
     }
@@ -549,7 +563,15 @@ export default struct ControlCenterComponent {
       return;
     }
     let currentToggles:string = this.toggleData.quickToggle.join(',');
-    if (this.lastToggles === currentToggles) {
+    let toggleRowLen: number = Math.ceil(toggleSize / QuickToggleController.getInstance().getToggleColumn());
+    // 顶栏行数变化时也需重建快捷行占位，否则 getQuickToggleRow 起始下标会错位导致少显示整行
+    let expectedQuickRows: number = 0;
+    this.contentIndexArr.forEach((item: string) => {
+      if (item.startsWith(TOGGLE_ROW_ITEM_NAME)) {
+        expectedQuickRows++;
+      }
+    });
+    if (this.lastToggles === currentToggles && expectedQuickRows === toggleRowLen) {
       log.showInfo('same with last time');
       return;
     }
@@ -561,7 +583,6 @@ export default struct ControlCenterComponent {
       });
     }
     this.lastToggles = currentToggles;
-    let toggleRowLen: number = Math.ceil(toggleSize / QuickToggleController.getInstance().getToggleColumn());
     this.toggleAreaHeight = toggleRowLen * 100;
     this.contentIndexArr = this.contentIndexArr.filter(toggle => !toggle.startsWith(TOGGLE_ROW_ITEM_NAME));
     for (let i = 0; i < toggleRowLen; i++) {
@@ -582,6 +603,31 @@ export default struct ControlCenterComponent {
     this.contentIndexArr.push(IOT_ITEM_NAME + this.contentIndexArr.length);
   }
 
+  onCloudModeChange() {
+    if (this.CloudMode.isOutdoorCloudMode || this.CloudMode.isOutDoorCloudMode) {
+      this.handleCloudMode();
+    } else {
+      log.showInfo('out CloudMode');
+      this.handleToggleDataChanged();
+    }
+  }
+
+  handleCloudMode() {
+    const cloudToggles = CloudModeManager.CLOUD_TOGGLES;
+    const cloudTopToggleArr = CloudModeManager.CLOUD_TOP_TOGGLES_ARRAY;
+    this.quickToggles = cloudToggles;
+    this.topToggleArray = cloudTopToggleArr;
+    this.lastToggles = this.quickToggles.join(',');
+    this.lastTopToggles = this.topToggleArray.join(',');
+    let currentToggles:string = this.toggleData.quickToggle.join(',');
+    DropDownPanelManager.updateQuickToggleData(currentToggles);
+    this.contentIndexArr = CloudModeManager.CLOUD_CONTENT_INDEX_ARR;
+    this.animationViewModel.updateViewDataArray(this.contentIndexArr.length + 1, Controller.isControlCenterVisible());
+    let toggleRowLen: number = Math.ceil(cloudToggles.length / QuickToggleController.getInstance().getToggleColumn());
+    this.toggleAreaHeight = toggleRowLen * 100;
+    this.setBottomBlankAreaHeight();
+  }
+
   onDesktopModeChange() {
     if (this.desktopMode.desktopMode === DesktopModeEnum.EMERGENCY_MODE) {
       log.showInfo('into emergency');
@@ -596,6 +642,8 @@ export default struct ControlCenterComponent {
       this.contentIndexArr = ['topToggleRow_0', 'addMoreTopButton', 'quickToggleRow_0'];
       this.animationViewModel.updateViewDataArray(this.contentIndexArr.length + 1, Controller.isControlCenterVisible());
       this.setBottomBlankAreaHeight();
+    } else if (this.CloudMode.isOutdoorCloudMode || this.CloudMode.isOutDoorCloudMode) {
+      this.handleCloudMode();
     }
     else {
       log.showInfo('out emergency');
@@ -609,6 +657,7 @@ export default struct ControlCenterComponent {
 
   aboutToAppear() {
     this.onDesktopModeChange();
+    this.onCloudModeChange();
     this.displaySyncObject = displaySync.create();
     // 设置DisplaySync期望的帧率
     this.displaySyncObject?.setExpectedFrameRateRange(EXPECTED_FRAME_RATE_RANGE);
@@ -697,6 +746,7 @@ export default struct ControlCenterComponent {
     Controller.setHomeViewData(undefined);
     Controller.setShowToastMethod(undefined);
     EmergencyManager.getInstance().unRegisterDesktopModeChange();
+    CloudModeManager.getInstance().unRegisterDesktopModeChange();
     this.eventMgr?.offAll();
     this.scrollBlurController?.unregister();
     VolumeController.getInstance().releaseVolumeChangeCallback();
@@ -1289,7 +1339,7 @@ export default struct ControlCenterComponent {
       .height(this.iotHeight + PADDING_HEIGHT)
       .padding({top: PADDING_HEIGHT})
       .visibility(VisibilityController.getIOTVisibility(
-        this.backgroundOpacity.backgroundOpacity, this.desktopMode, this.lockStatus))
+        this.backgroundOpacity.backgroundOpacity, this.desktopMode, this.lockStatus, this.CloudMode))
   }
 
   /**
@@ -1411,10 +1461,8 @@ export default struct ControlCenterComponent {
   }
 
   getTopTogglesHeight(): number {
+    // 媒体+亮度音量组合同属一行，行高已按 mediaAndWifiBlue 计算，不再为 combined 额外加行
     let topToggleRows: number = this.topToggleArray.length + (this.isLargeFoldStyle ? 0 : 1);
-    if (this.toggleData.topToggle?.includes(FASlotName.COMBINED_SLIDER)) {
-      topToggleRows++;
-    }
     log.showInfo('topToggleRows:' + topToggleRows);
     return topToggleRows * TOP_TOGGLE_ROW_HEIGHT;
   }
@@ -1426,7 +1474,7 @@ export default struct ControlCenterComponent {
   loadPrivacySensor() {
     PrivacySensor({ animationData: this.animationDataArray[INDEX_HEADER] })
       .visibility(VisibilityController.getHeadVisibility(
-        this.data.state, this.backgroundOpacity.backgroundOpacity, this.desktopMode))
+        this.data.state, this.backgroundOpacity.backgroundOpacity, this.desktopMode, this.CloudMode))
       .height(this.isAccessibilityMode ?
         this.privacySensorParentComponentHeight + this.privacySensorData.privacySensorHeight : 0)
       .scale(this.data.state === ControlCenterState.MAIN_LAYOUT ?
@@ -1573,13 +1621,13 @@ export default struct ControlCenterComponent {
         .margin(CC_LAYOUT_CONFIGS[this.ccLayoutIndex].headerMargin)
         .scale(this.getHeaderLayoutScale())
         .visibility(VisibilityController.getHeadVisibility(
-          this.data.state, this.backgroundOpacity.backgroundOpacity, this.desktopMode))
+          this.data.state, this.backgroundOpacity.backgroundOpacity, this.desktopMode, this.CloudMode))
     }
     .direction(Direction.Ltr)
     .width(CC_LAYOUT_CONFIGS[this.ccLayoutIndex].headerWidth ?? '100%')
     .justifyContent(CC_LAYOUT_CONFIGS[this.ccLayoutIndex].headerWidth ? FlexAlign.Center : FlexAlign.End)
     .visibility(VisibilityController.getHeadLayoutVisibility(
-      this.data.state, this.backgroundOpacity.backgroundOpacity))
+      this.data.state, this.backgroundOpacity.backgroundOpacity, this.CloudMode))
     .onAppear(() => {
       this.uiContextRequestFocus('Ctrl.HeaderLayout_Image_edit_btn');
     })

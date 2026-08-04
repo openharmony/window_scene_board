@@ -6,7 +6,7 @@
     },
     {
       "name": "Control_center_icon_default_bg_color_opacity",
-      "value": "#66FFFFFF"
+      "value": "#FFFFFFFF"
     },
     {
       "name": "Control_center_icon_on_bg_color",
@@ -98,7 +98,7 @@
     },
     {
       "name": "Control_center_wifiBlue_icon_default_bg_color",
-      "value": "#ff000000"
+      "value": "#19000000"
     },
     {
       "name": "Control_center_wifiBlue_icon_default_bg_color_opacity",
@@ -122,11 +122,11 @@
     },
     {
       "name":"Control_center_wifiBlue_icon_default_bg_color_dark",
-      "value":"#ffFFFFFF"
+      "value":"#4DFFFFFF"
     },
     {
       "name":"Control_center_wifiBlue_icon_default_bg_color_dark_opacity",
-      "value":"#19FFFFFF"
+      "value":"#4DFFFFFF"
     },
     {
       "name": "Control_center_wifiBlue_icon_on_bg_color_dark",
@@ -162,27 +162,27 @@
     },
     {
       "name": "Control_center_brightness_block_color",
-      "value": "#FFFFFFFF"
+      "value": "#19000000"
     },
     {
       "name": "Control_center_brightness_block_color_dark",
-      "value": "#FFFFFFFF"
+      "value": "#19000000"
     },
     {
       "name": "Control_center_brightness_bg_color",
-      "value": "#FF000000"
+      "value": "#FFFFFFFF"
     },
     {
       "name": "Control_center_brightness_bg_color_opacity",
-      "value": "#33000000"
+      "value": "#FFFFFFFF"
     },
     {
       "name": "Control_center_brightness_bg_color_dark",
-      "value": "#FF000000"
+      "value": "#4DFFFFFF"
     },
     {
       "name": "Control_center_brightness_bg_color_dark_opacity",
-      "value": "#33000000"
+      "value": "#4DFFFFFF"
     },
     {
       "name": "Control_center_brightness_subpage_block_color",
@@ -274,19 +274,19 @@
     },
     {
       "name": "theme_ntf_color_text_primary",
-      "value": "$ohos:color:ohos_id_color_text_primary"
+      "value": "#E5000000"
     },
     {
       "name": "theme_ntf_color_text_secondary",
-      "value": "$ohos:color:ohos_id_color_text_secondary"
+      "value": "#99000000"
     },
     {
       "name": "theme_ntf_color_text_tertiary",
-      "value": "$ohos:color:ohos_id_color_text_tertiary"
+      "value": "#66000000"
     },
     {
       "name": "media_control_default_img_bgc",
-      "value": "#0C000000"
+      "value": "#19000000"
     },
     {
       "name": "media_control_default_img_bgc_dark",
@@ -378,15 +378,15 @@
     },
     {
       "name": "window_settings_font_secondary",
-      "value": "$ohos:color:font_secondary"
+      "value": "#99000000"
     },
     {
       "name": "window_settings_font_tertiary",
-      "value": "$ohos:color:font_tertiary"
+      "value": "#66000000"
     },
     {
       "name": "window_settings_font_primary",
-      "value": "$ohos:color:font_primary"
+      "value": "#E5000000"
     },
     {
       "name": "immersive_card_no_location_bg_color",
@@ -397,11 +397,11 @@
       "value": "#40000000"
     },
     {
-      "name": "immersive_capsule_d_aod_color",
+      "name": "immersive_capsule_deliver_aod_color",
       "value": "#40ffffff"
     },
     {
-      "name": "immersive_capsule_d_default_color",
+      "name": "immersive_capsule_deliver_default_color",
       "value": "#ffffff"
     },
     {

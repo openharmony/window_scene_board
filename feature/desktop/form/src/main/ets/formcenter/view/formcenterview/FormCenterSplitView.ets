@@ -34,13 +34,14 @@ import { FormCenterSplitEventInterface } from '../../interfaces/FormCenterSplitE
 import { NavEvent } from '../../viewmodel/event/NavEvent';
 import { NavDestinationParam } from '../../interfaces/NavDestinationBuilderInterface';
 import { FormCenterCommonUtil } from '../../util/FormCenterCommonUtil';
+import { DeviceHelper } from '@ohos/frameworkwrapper';
 
 const TAG = 'FormCenterSplitView';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.FORM, TAG);
 
 @Component
 export struct FormCenterSplitView {
-  public mViewData: ViewData = new ViewData();
+  @ObjectLink mViewData: ViewData;
   public mAppInfoList: LazyDataSource<AppItemInfo> = new LazyDataSource<AppItemInfo>();
   public mSearchComponentParam: SearchComponentParam = new SearchComponentParam();
   public mEvent?: FormCenterSplitEventInterface = new NavEvent();
@@ -153,7 +154,7 @@ export struct FormCenterSplitView {
         .onTouch(() => {
           FormCenterCommonUtil.clearSearchFocus(this.getUIContext());
         })
-        .width(this.mViewData.appListWidth - this.style.titleMargin * 2)
+        // .width(this.mViewData.appListWidth - this.style.titleMargin * 2)
       }, (item: AppItemInfo, index: number): string => {
         return `${item.bundleName}-${item.moduleName}-${item.abilityName}-${index}`;
       })
@@ -164,6 +165,7 @@ export struct FormCenterSplitView {
     })
     .margin(this.style.listMargin)
     .width(this.style.listWidth)
+    .height('93%')
   }
 
   build() {
@@ -178,18 +180,16 @@ export struct FormCenterSplitView {
           this.buildAppInfoList(this.mAppInfoList)
         }
       }
-      .height(this.style.stackHeight)
-      .width(this.style.stackWidth)
       .alignContent(this.style.stackAlignContent)
       .margin(this.style.stackMargin)
     }
     .id(`${TAG}_Navigation`)
     .margin(this.style.navMargin)
     .hideTitleBar(this.style.navHideTitleBar)
-    .navBarWidth(this.mViewData.appListWidth)
+    .navBarWidth(DeviceHelper.isPC() ? '27%' : this.mViewData.appListWidth)
     .mode(NavigationMode.Split)
     .navDestination(this.formShowPage)
-    .height(this.style.navHeight ?? this.mViewData.navDestinationViewData.viewHeight)
-    .width(this.style.navWidth ?? this.mViewData.bindSheetWidth)
+    .height(DeviceHelper.isPC() ? '90%' : this.mViewData.navDestinationViewData.viewHeight)
+    .width(DeviceHelper.isPC() ? '100%' : this.mViewData.bindSheetWidth)
   }
 }

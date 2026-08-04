@@ -794,7 +794,7 @@ class ScreenLockWallpaperManager {
       } else {
         return ThemeScene.BASE;
       }
-    } else if (DeviceHelper.isUltraScreenGPortrait()) {
+    } else if (DeviceHelper.isThreeFoldGPortrait()) {
       if (DeviceHelper.isMState()) {
         if (this.isPortrait) {
           return ThemeScene.UNFOLDED;

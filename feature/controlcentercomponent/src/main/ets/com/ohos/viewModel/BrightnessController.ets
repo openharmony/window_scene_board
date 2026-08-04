@@ -72,7 +72,8 @@ export class BrightnessController extends BaseController<BrightnessData> {
   }
 
   private getDefaultLottieName(): string {
-    return RTLUtil.isRTL() ? this.getMirrorLottieOpenName() : this.getNewLottieOpenName();
+    return RTLUtil.isRTL() ? this.getMirrorLottieOpenName(this.autoBrightnessState) :
+      this.getNewLottieOpenName(this.autoBrightnessState);
   }
 
   /**
@@ -82,12 +83,12 @@ export class BrightnessController extends BaseController<BrightnessData> {
     return true;
   }
 
-  getNewLottieOpenName(): string {
-    return 'sun.json';
+  getNewLottieOpenName(isAutoBrightness: boolean = false): string {
+    return isAutoBrightness ? 'auto_sun.json' : 'sun.json';
   }
 
-  getMirrorLottieOpenName(): string {
-    return 'sun_mirror.json';
+  getMirrorLottieOpenName(isAutoBrightness: boolean = false): string {
+    return isAutoBrightness ? 'auto_sun_mirror.json' : 'sun_mirror.json';
   }
 
   getData(): CommonData {

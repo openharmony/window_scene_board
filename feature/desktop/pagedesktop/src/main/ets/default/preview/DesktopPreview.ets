@@ -243,6 +243,10 @@ struct AppIconPreview {
           .interpolation(ImageInterpolation.Medium)
           .width(this.mDesktopParam.iconSize)
           .height(this.mDesktopParam.iconSize)
+          .sourceSize({
+            width: StyleConstants.APP_ICON_SOURCE_SIZE,
+            height: StyleConstants.APP_ICON_SOURCE_SIZE
+          })
           .backgroundImage(this.desktopPreviewViewModel.getShortcutBackgroundImage(this.mAppItem.bundleName))
           .backgroundImageSize(ImageSize.Cover)
           .backgroundImagePosition(Alignment.Center)
@@ -251,6 +255,10 @@ struct AppIconPreview {
           .borderRadius(this.mDesktopParam.iconRadius)
           .width(this.mDesktopParam.iconSize)
           .height(this.mDesktopParam.iconSize)
+          .sourceSize({
+            width: StyleConstants.APP_ICON_SOURCE_SIZE,
+            height: StyleConstants.APP_ICON_SOURCE_SIZE
+          })
           .shadow(DeviceHelper.isBarPhone() ? {
             radius: StyleConstants.APP_ICON_SHADOW_RADIUS,
             color: StyleConstants.APP_ICON_SHADOW_COLOR,

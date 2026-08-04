@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-// import statusBar from '@hms.pcService.statusBar';
+import statusBar from '@ohos.pcService.statusBar';
 import { SingletonHelper, LogDomain, LogHelper } from '@ohos/basicutils';
 import {
   DeviceHelper,
@@ -50,7 +50,7 @@ const log: LogHelper = LogHelper.getLogHelper(LogDomain.SYS_UI, TAG);
 const statusBarRemoteManager = StatusBarServiceEventManager.getInstance();
 
 export interface StatusBarMenuChange {
-  groupMenu: ESObject[];
+  groupMenu: statusBar.StatusBarGroupMenu[];
   tokenId: number;
   instanceKey: string;
 }
@@ -61,6 +61,7 @@ interface AccessEvent {
   accessPanelHeightChange: Function;
   accessMenuChange: Function;
   accessIconChange: Function;
+  accessHoverTipsChange: Function;
 }
 
 interface ICallback {
@@ -76,6 +77,7 @@ export class PcStatusBarIconManager {
   private changeAccessMenu: Function | null = null;
   private updateAccessPanelHeight: Function | null = null;
   private changeAccessIcon: Function | null = null;
+  private changeAccessHoverTips: Function | null = null;
   private eventMgr: EventManager = EvtBus.createEventManager();
 
   /**
@@ -120,6 +122,11 @@ export class PcStatusBarIconManager {
           this.updateIconToStatusBar(slot, info.data.instanceKey, info.data.statusBarIcon);
         }
         break;
+      case StatusBarConnectEvent.UPDATE_HOVERTIPS:
+        if (info.data?.hoverTips) {
+          this.updateHoverTips(slot, info.data.instanceKey, info.data.hoverTips);
+        }
+        break;
       default:
         break;
     }
@@ -150,6 +157,7 @@ export class PcStatusBarIconManager {
     this.changeAccessMenu = event.accessMenuChange;
     this.updateAccessPanelHeight = event.accessPanelHeightChange;
     this.changeAccessIcon = event.accessIconChange;
+    this.changeAccessHoverTips = event.accessHoverTipsChange;
     log.showInfo('registerAccessChangeEvent method has been init...');
   }
 
@@ -161,6 +169,7 @@ export class PcStatusBarIconManager {
     this.changeAccessMenu = null;
     this.updateAccessPanelHeight = null;
     this.changeAccessIcon = null;
+    this.changeAccessHoverTips = null;
     log.showInfo('unRegisterAccessChangeEvent method has been remove...');
   }
 
@@ -276,7 +285,7 @@ export class PcStatusBarIconManager {
     item.pids = new Set<number>([info.pid]);
     item.accessTokenId = info.tokenId;
     item.icon = info.data.statusBarItem?.icons!;
-    // item.menuInfo = info.data.statusBarItem?.statusBarGroupMenu ?? [];
+    item.menuInfo = info.data.statusBarItem?.statusBarGroupMenu ?? [];
 
     item.pluginParseInfo = new PluginParseInfo();
     item.pluginParseInfo.isAccessPlugin = true;
@@ -406,7 +415,7 @@ export class PcStatusBarIconManager {
    * 更新右键菜单
    * @param statusBarMenu 菜单更新信息
    */
-  public updateStatusBarMenu(tokenId: number, instanceKey: string, menuInfo: ESObject[]): void {
+  public updateStatusBarMenu(tokenId: number, instanceKey: string, menuInfo: statusBar.StatusBarGroupMenu[]): void {
     if (this.changeAccessMenu === null) {
       log.showInfo('changeAccessMenu is null');
       return;
@@ -441,11 +450,18 @@ export class PcStatusBarIconManager {
    * @param tokenId
    * @param icons
    */
-  public updateIconToStatusBar(tokenId: number, instanceKey: string, icons: ESObject): void {
+  public updateIconToStatusBar(tokenId: number, instanceKey: string, icons: statusBar.StatusBarIcon): void {
     if (this.changeAccessIcon === null) {
       return;
     }
     this.changeAccessIcon(tokenId, instanceKey, icons);
+  }
+
+  public updateHoverTips(tokenId: number, instanceKey: string, hoverTips: string): void {
+    if (this.changeAccessHoverTips === null) {
+      return;
+    }
+    this.changeAccessHoverTips(tokenId, instanceKey, hoverTips);
   }
 
   public registerGetContainerSessionListCallback(callback: Function): void {

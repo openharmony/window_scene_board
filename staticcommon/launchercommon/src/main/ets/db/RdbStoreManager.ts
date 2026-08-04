@@ -18,7 +18,8 @@ import {
   LogHelper,
   CheckEmptyUtils,
   CommonUtils,
-  SingleContext
+  SingleContext,
+  OutdoorConfig
 } from '@ohos/basicutils';
 import {
   GlobalContext,
@@ -32,7 +33,8 @@ import {
   HiDfxEventUtil,
   ResourceManager,
   ContextModifyUtils,
-  sSettingsUtil
+  sSettingsUtil,
+  LightOutdoorConfig
 } from '@ohos/frameworkwrapper';
 import { image } from '@kit.ImageKit';
 import { desktopUtil } from '@ohos/componenthelper';
@@ -45,6 +47,7 @@ import { CardItemInfo } from '../bean/CardItemInfo';
 import GridLayoutItemInfo from '../bean/GridLayoutItemInfo';
 import notificationManager from '@ohos.notificationManager';
 import type BadgeItemInfo from '../bean/BadgeItemInfo';
+import VoiceColumns, { VoiceEnums } from './column/VoiceColumns';
 import rdb from '@ohos.data.relationalStore';
 import { rdbTaskPool } from './RdbTaskPool';
 import GridLayoutInfoColumns, { GridLayoutInfoEnums } from './column/GridLayoutInfoColumns';
@@ -76,6 +79,7 @@ import { util } from '@kit.ArkTS';
 import { UpdateGirdLayoutReq } from '../bean/GridLayoutMapReplaceInfo';
 import { PageIndexTypeInfoEnums } from './column/PageIndexTypeInfoColumns';
 import PageIndexTypeInfo from '../bean/PageIndexTypeInfo';
+// import { appInfoManager } from '@kit.StoreKit';
 import type common from '@ohos.app.ability.common';
 import { contextConstant } from '@kit.AbilityKit';
 import { FormCommonUtil } from '../utils/FormCommonUtil';
@@ -157,6 +161,10 @@ export class RdbStoreManager {
       this.mLayoutTableName = RdbStoreConfig.gridLayoutInfo.tableName;
     } else if (desktopMode === DesktopLayoutState.PC_MODE_MODEL) {
       this.mLayoutTableName = RdbStoreConfig.pc_mode_gridLayoutInfo.tableName;
+    } else if (desktopMode === DesktopLayoutState.OUTDOOR_MODE) {
+      this.mLayoutTableName = RdbStoreConfig.outdoorLayoutInfo.tableName;
+    } else if (desktopMode === DesktopLayoutState.LIGHT_OUTDOOR_MODE) {
+      this.mLayoutTableName = RdbStoreConfig.lightOutdoorLayoutInfo.tableName;
     } else {
       this.mLayoutTableName = RdbStoreConfig.simpleLayoutInfo.tableName;
     }
@@ -432,6 +440,14 @@ export class RdbStoreManager {
   public async getAllFormInfos(isOuter?: boolean): Promise<CardItemInfo[]> {
     log.showInfo('getAllFormInfos start');
     return this.getAllFormInfoByTableName(this.getLayoutInfoTableName(isOuter));
+  }
+
+  /**
+   * 查询极限户外模式卡片数据
+   * @returns
+   */
+  public async getAllFormInfosForLightOutdoorMode(): Promise<CardItemInfo[]> {
+    return this.getAllFormInfoByTableName(RdbStoreConfig.lightOutdoorLayoutInfo.tableName);
   }
 
   public async getAllFormInfosPcMode(): Promise<CardItemInfo[]> {
@@ -805,7 +821,7 @@ export class RdbStoreManager {
   }
 
   /**
-   * 预置场景, 卡片ID从0变为有效值,按照container和bundleName更新卡片ID; 升级场景，用新的卡片ID更新旧的卡片ID
+   * 预置场景, 卡片ID从0变为有效值,按照container和bundleName更新卡片ID; 系统替换场景，用新的卡片ID更新旧的卡片ID
    * @param oldCardId 待更新卡片的旧的卡片ID
    * @param layoutItem 待更新的卡片的布局信息
    * @returns 更新是否成功
@@ -1207,6 +1223,14 @@ export class RdbStoreManager {
       key = (this.mLayoutTableName === RdbStoreConfig.simpleLayoutInfo.tableName) ?
       CommonConstants.SIMPLE_DESKTOP_PAGE_COUNT : CommonConstants.DESKTOP_PAGE_COUNT;
     }
+    /**
+     * 极限户外模式覆盖原有的key值
+     */
+    if (OutdoorConfig.getInstance().isInOutdoorMode()) {
+      key = CommonConstants.OUTDOOR_PAGE_COUNT;
+    } else if (LightOutdoorConfig.getInstance().isOnLightOutdoorMode()) {
+      key = CommonConstants.LIGHT_OUTDOOR_PAGE_COUNT;
+    }
     log.showInfo(`updateSettings key:${key} value:${value}`);
     this.preferences?.putSync(key, value);
     await this.preferences?.flush().then(() => {
@@ -1238,6 +1262,11 @@ export class RdbStoreManager {
     } else {
       key = (this.mLayoutTableName === RdbStoreConfig.simpleLayoutInfo.tableName) ?
       CommonConstants.SIMPLE_DESKTOP_PAGE_COUNT : CommonConstants.DESKTOP_PAGE_COUNT;
+    }
+    if (OutdoorConfig.getInstance().isInOutdoorMode()) {
+      key = CommonConstants.OUTDOOR_PAGE_COUNT;
+    } else if (LightOutdoorConfig.getInstance().isOnLightOutdoorMode()) {
+      key = CommonConstants.LIGHT_OUTDOOR_PAGE_COUNT;
     }
     let count = this.preferences?.getSync(key, DEFAULT_PAGE).valueOf() as number;
     log.showInfo(`querySettingsPageCount key:${key} count:${count}`);
@@ -1275,6 +1304,10 @@ export class RdbStoreManager {
    * @returns true:新增成功;false:新增失败
    */
   public async insertIntoSmartdock(dockInfoList: DockItemInfo[], tableName?: string): Promise<boolean> {
+    if (OutdoorConfig.getInstance().isInOutdoorMode()) {
+      log.showInfo('Outdoor mode, no need insert dock info to db');
+      return true;
+    }
     log.showInfo(`insertIntoSmartdock dockInfoList: ${dockInfoList?.length}`);
     if (CheckEmptyUtils.isEmpty(dockInfoList)) {
       return false;
@@ -1785,6 +1818,10 @@ export class RdbStoreManager {
    */
   public async insertGridLayoutInfo(gridlayoutInfo: GridLayoutItemInfo[], isNeedCheckPosition: boolean = true,
                                     isOuter?: boolean, ctx?: SingleContext): Promise<boolean> {
+    if (OutdoorConfig.getInstance().isInOutdoorMode()) {
+      log.showInfo('Outdoor mode, no need insert layout info to db');
+      return true;
+    }
     if (CheckEmptyUtils.isEmptyArr(gridlayoutInfo)) {
       HiDfxEventUtil.reportRDBAbnormal(RDBErrorCode.EMPTY_PARAM, `gridlayoutInfo is empty when insertGridLayoutInfo`);
       log.showError('insertGridLayoutInfo gridlayoutInfo is empty');
@@ -3240,6 +3277,124 @@ export class RdbStoreManager {
       message: ${(e as BusinessError)?.message}`);
     }
     return buckets;
+  }
+
+  /**
+   * Update or add Voice internal card datasheet
+   *
+   * @param voiceCardId Voice card ID
+   * @param cardInfoCache Stringed Voice internal card data
+   * @returns update voiceCard result
+   */
+  async updateVoiceCardInfoMap(voiceCardId: string, cardInfoCache: string): Promise<boolean> {
+    log.showWarn(`updateVoiceInfo start, card:${voiceCardId}`);
+    if (!voiceCardId) {
+      return true;
+    }
+    if (cardInfoCache === null || cardInfoCache === undefined) {
+      return true;
+    }
+    let conditions: Map<string, rdb.ValueType> = new Map();
+    conditions.set(VoiceColumns.CARD_ID, voiceCardId);
+    const valueBucket: rdb.ValuesBucket = {
+      [VoiceEnums.CARD_ID]: voiceCardId,
+      [VoiceEnums.VOICE_DATA]: cardInfoCache
+    };
+    let changeRows = await rdbTaskPool.update(RdbStoreConfig.voiceCard.tableName, conditions, valueBucket);
+    if (changeRows >= 1) {
+      log.showInfo(`updateVoiceInfo updated ok: ${changeRows}`);
+    } else {
+      changeRows = await rdbTaskPool.insert(RdbStoreConfig.voiceCard.tableName, valueBucket);
+      if (changeRows === CommonConstants.INVALID_VALUE) {
+        log.showError(`updateVoiceInfo insert fail`);
+        return false;
+      }
+      log.showInfo(`updateVoiceInfo insert: ${changeRows}`);
+    }
+    return true;
+  }
+
+  /**
+   * Query Voice internal card datasheet
+   *
+   * @param voiceCardId Voice card ID
+   * @returns Stringed Voice internal card data
+   */
+  async queryVoiceCardInfo(voiceCardId: string): Promise<string> {
+    let strData: string = '';
+    if (!voiceCardId) {
+      return strData;
+    }
+    return new Promise((resolve, reject) => {
+      let predicates = new rdb.RdbPredicates(RdbStoreConfig.voiceCard.tableName).equalTo(VoiceColumns.CARD_ID, voiceCardId);
+      rdbStoreHelper.query(predicates).then((resultSet) => {
+        let isLast = resultSet?.goToFirstRow();
+        log.showInfo(`queryVoice data isLast: ${isLast}, cardId: ${voiceCardId}`);
+        if (isLast) {
+          strData = resultSet?.getString(resultSet?.getColumnIndex(VoiceColumns.VOICE_DATA)) ?? '';
+        }
+        resolve(strData);
+        resultSet?.close();
+      }).catch((err: Error) => {
+        log.showError(`queryVoice data failed, message is ${err.message}`);
+        reject(err);
+      });
+    });
+  }
+
+  /**
+   * Delete Voice internal card datasheet
+   *
+   * @param cardId Voice card ID
+   */
+  async deleteVoiceCardInfoByCardId(cardId: string): Promise<void> {
+    log.showWarn(`deleteVoiceCardInfoByCardId start, card:${cardId}`);
+    let conditions: Map<string, rdb.ValueType> = new Map();
+    conditions.set(VoiceColumns.CARD_ID, cardId);
+    await rdbTaskPool.delete(RdbStoreConfig.voiceCard.tableName, conditions).then((rows: Number) => {
+      log.showWarn(`deleteVoiceCardInfoByCardId: ${rows}`);
+    }).catch((err: Error) => {
+      log.showError(`deleteVoiceCardInfoByCardId: ${err}`);
+    });
+  }
+
+  /**
+   * Initialize the Voice table structure
+   */
+  async initVoiceInfoTable(): Promise<void> {
+    log.showInfo('initVoiceInfoTable start');
+    try {
+      await rdbStoreHelper.executeSql(RdbStoreConfig.voiceCard.createTable);
+    } catch (err) {
+      log.showError(`initVoiceInfoTable error: ${err?.message}`);
+    }
+  }
+
+  /**
+   * Get all Voice table info
+   *
+   * @returns  All voice internal card data
+   */
+  async queryAllVoiceCardInfo(): Promise<Record<string, string>[]> {
+    const resultList: Record<string, string>[] = [];
+    try {
+      const predicates = new rdb.RdbPredicates(RdbStoreConfig.voiceCard.tableName);
+      let resultSet: rdb.ResultSet | undefined = await rdbStoreHelper.query(predicates, []);
+      if (!resultSet) {
+        return resultList;
+      }
+      while (resultSet.goToNextRow()) {
+        let cardId = resultSet.getString(resultSet.getColumnIndex(VoiceColumns.CARD_ID));
+        let strData = resultSet.getString(resultSet.getColumnIndex(VoiceColumns.VOICE_DATA));
+        resultList.push({ cardId, strData });
+      }
+      resultSet.close();
+      resultSet = undefined;
+    } catch (err) {
+      log.showError(`queryAllVoiceCardInfo error: ${err}`);
+    }
+    log.showInfo(`queryAllVoiceCardInfo resultList length: ${resultList.length}`);
+    return resultList;
   }
 
   async updateIntelligentCardList(idNameInfo: string, cardList: Array<rdb.ValuesBucket>): Promise<void> {

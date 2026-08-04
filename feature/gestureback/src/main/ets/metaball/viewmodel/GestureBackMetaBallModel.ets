@@ -14,7 +14,7 @@
  */
 
 import animator, { AnimatorOptions, AnimatorResult } from '@ohos.animator';
-import { SingletonHelper, LogDomain, LogHelper } from '@ohos/basicutils';
+import { SingletonHelper, LogDomain, LogHelper, OutdoorConfig } from '@ohos/basicutils';
 import { SCBConstants } from '@ohos/commonconstants';
 import { RTLUtil } from '@ohos/componenthelper';
 import { DeviceHelper, SCBWindowSceneConfig } from '@ohos/frameworkwrapper';
@@ -53,11 +53,11 @@ const DOCK_CIRCLE_RADIUS = 10;
 // 真实圆结束半径
 const REAL_CIRCLE_END_RADIUS = 15;
 
-// 箭头OpenHarmony环动画时长
+// 箭头鸿蒙环动画时长
 const SLIDEOUT_ANIMATE_DURATION = 500;
 // 箭头消失时长
 const ARROW_DISAPPEAR_ANIMATE_DURATION = 300;
-// OpenHarmony环动画延时
+// 鸿蒙环动画延时
 const DOCK_IMG_DELAY: number = 200;
 const HALF_PI: number = Math.PI / 2;
 const TAG = 'GestureBackMetaBall';
@@ -115,7 +115,7 @@ export class GestureBackMetaBallModel {
   private handleUpBackAnim: AnimatorResult | undefined = undefined;
   // 回滑过程中融球以及贝塞尔收起动效
   private moveBackAnim: AnimatorResult | undefined = undefined;
-  // 箭头与OpenHarmony环切换动效
+  // 箭头与鸿蒙环切换动效
   private changeImgAnim?: AnimatorResult;
   private frameAnimEasing: string = 'spring(0, 1, 246.7, 31.4)';
   // 虚拟圆初始、中间、结束位置 x坐标
@@ -575,6 +575,9 @@ export class GestureBackMetaBallModel {
     if (this.isExtrudeBallsAnimRunning) {
       return false;
     }
+    if (OutdoorConfig.getInstance().isInOutdoorMode()) {
+      return false;
+    }
     // 检查箭头是否完全露出
     if (moveProcess <= this.arrowCompleteShowProcess) {
       return false;
@@ -679,7 +682,7 @@ export class GestureBackMetaBallModel {
   }
 
   /**
-   * 侧边Dock呼出场景下箭头与OpenHarmony环切换动效
+   * 侧边Dock呼出场景下箭头与鸿蒙环切换动效
    *
    * @param isShowDockImg true:满足呼出侧边Dock条件，箭头切换为圆圈  false：圆圈恢复为箭头
    */
@@ -725,7 +728,7 @@ export class GestureBackMetaBallModel {
   }
 
   /**
-   * 结束箭头与OpenHarmony环切换动效
+   * 结束箭头与鸿蒙环切换动效
    */
   public finishChangeDockImgAnim(): void {
     this.changeImgAnim?.finish();

@@ -40,14 +40,19 @@ export class AppIconMenuVm {
   public layoutRegionMargin: Margin | undefined = undefined;
   protected menuPreviewAnimOptions: ContextMenuAnimationOptions | undefined = {
     scale: [StyleConstants.MENU_ANIMATION_FROM_ICON, StyleConstants.MENU_ANIMATION_TO],
-    transition: this.isHiddenEffect ? TransitionEffect.asymmetric(
+    // 解决卡片拉起时延问题，取消菜单淡出动画
+    // transition: this.isHiddenEffect ? TransitionEffect.asymmetric(
+    transition: TransitionEffect.asymmetric(
       TransitionEffect.opacity(0),
-      TransitionEffect.IDENTITY.animation({ duration: 0 })) : undefined,
+      // TransitionEffect.IDENTITY.animation({ duration: 0 })) : undefined,
+      TransitionEffect.IDENTITY.animation({ duration: 0 }))
   }
   protected menuTransition: TransitionEffect | undefined =
-    this.isHiddenEffect ? TransitionEffect.asymmetric(
+    // this.isHiddenEffect ? TransitionEffect.asymmetric(
+    TransitionEffect.asymmetric(
       TransitionEffect.opacity(0),
-      TransitionEffect.IDENTITY.animation({ duration: 0 })) : undefined;
+      // TransitionEffect.IDENTITY.animation({ duration: 0 })) : undefined;
+      TransitionEffect.IDENTITY.animation({ duration: 0 }));
 
   public isMenuShow(): boolean {
     return this.isShowMenu && this.normalParam.menuInfo.length > 0;

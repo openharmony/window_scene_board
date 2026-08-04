@@ -16,6 +16,7 @@
 import type { IExecutor } from '@ohos/launchercommon';
 import { LogDomain, LogHelper } from '@ohos/basicutils';
 import { IService } from '@ohos/componenthelper';
+import { GlobalSearchImp } from './GlobalSearchImp';
 
 const TAG: string = 'GlobalSearchLocationService';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.HOME, TAG);
@@ -50,6 +51,7 @@ export class GSResponse {
  */
 export class GlobalSearchLocationService implements IService {
   private static readonly executorMap: Map<string, () => IExecutor> = new Map<string, () => IExecutor>([
+    [RequestMethod.BEGIN_GLOBAL_SEARCH, (): IExecutor => new GlobalSearchImp()],
   ]);
 
   async onCall(json: string): Promise<string> {

@@ -66,7 +66,7 @@ export class FormManagerEvent implements FormManagerEventInterface {
         return;
       }
       this.bindSheetStateData.height = this.mViewData.bindSheetHeight;
-      GlobalContext.getContext()?.eventHub.emit('AIBarShow', true);
+      GlobalContext.getContext()?.eventHub.emit('NAVIBarShow', true);
       log.showWarn('real open formManagerView height: ' + String(this.bindSheetStateData.height));
       return;
     }
@@ -76,7 +76,7 @@ export class FormManagerEvent implements FormManagerEventInterface {
 
     let bundleName: string | undefined = this.formCenterViewParam.bundleName;
     log.showWarn(`show ${bundleName} forms`);
-    GlobalContext.getContext()?.eventHub.emit('AIBarShow', true);
+    GlobalContext.getContext()?.eventHub.emit('NAVIBarShow', true);
     this.mStartFormInfo = this.formCenterViewParam.formInfo as CardItemInfo;
     FormCenterViewModel.getInstance().updateFromManagerData(FormCenterViewModel.getInstance().isScreenLock).then(() => {
       this.mAppInfo = FormCenterViewModel.getInstance().getAppInfo(bundleName as string);
@@ -123,7 +123,7 @@ export class FormManagerEvent implements FormManagerEventInterface {
         .emit('waitFormCenterResponse', { code: FormCenterResponseCode.BACK_TO_FORM_CENTER });
       log.showWarn('back to formCenterView');
     }
-    GlobalContext.getContext()?.eventHub.emit('AIBarShow', false);
+    GlobalContext.getContext()?.eventHub.emit('NAVIBarShow', false);
     if (FormCenterViewModel.getInstance().isNegativeScreenOpen) {
       AppStorage.setOrCreate('showFormManagerViewByNegativeScreen', false);
     }

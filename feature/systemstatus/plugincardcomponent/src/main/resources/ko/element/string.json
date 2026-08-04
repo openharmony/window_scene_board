@@ -1,7 +1,7 @@
 {
     "string":[
         {
-            "name":"title_login_openharmony_account",
+            "name":"title_login_hw_account",
             "value":"로그인하여 슈퍼 디바이스 사용",
             "attr":{
                 "priority":"LT"

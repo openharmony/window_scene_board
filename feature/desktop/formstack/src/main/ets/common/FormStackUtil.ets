@@ -209,8 +209,8 @@ export class FormStackUtil {
   }
 
   public static adaptDeleteImageMoveLongestDistance(distance: number): number {
-    if (DeviceHelper.isUltraScreenProduct() && DeviceHelper.isGState() && AppStorage.get('isPortrait')) {
-      // 超大屏G态竖屏，endX要缩小，防止过于贴近屏幕左侧
+    if (DeviceHelper.isThreeFoldProduct() && DeviceHelper.isGState() && AppStorage.get('isPortrait')) {
+      // 三折叠G态竖屏，endX要缩小，防止过于贴近屏幕左侧
       distance *= FormStackConstants.FORM_END_TRANSLATE_X_ADAPT_RATIO;
     }
     return distance;

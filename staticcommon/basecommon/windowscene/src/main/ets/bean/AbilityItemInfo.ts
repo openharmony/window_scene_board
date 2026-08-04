@@ -1,5 +1,5 @@
 /**
- * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) 2021-2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -15,6 +15,9 @@
 import type bundleManager from '@ohos.bundle.bundleManager';
 import { StartMode } from '../scene/common/SCBSceneEnums';
 
+export class ApplicationInfoItem {
+  public startMode!: StartMode;
+}
 /**
  * AbilityInfo from BMS
  */
@@ -155,6 +158,14 @@ export class AbilityItemInfo {
    * @since 20
    */
   isForceRotate: boolean;
+
+  /**
+   * applicationInfo
+   * @type {ApplicationInfoItem}
+   * @syscap SystemCapability.BundleManager.BundleFramework.Core
+   * @since 20
+   */
+  public applicationInfo!: ApplicationInfoItem;
 }
 
 /**

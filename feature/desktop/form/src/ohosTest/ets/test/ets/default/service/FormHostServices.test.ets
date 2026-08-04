@@ -378,6 +378,42 @@ export function FormHostServiceTest() {
       expect(calledTimes >= 0).assertTrue();
     });
 
+    it('registerFormRecycleListener_002', TestType.FUNCTION | Level.LEVEL0, () => {
+      let formHostService: FormHostService = FormHostService.getInstance();
+      let calledTimes: number = 0;
+      let recycleListener: RecycleChangeListener = {
+        onRecycleChange: (state: boolean): void => {
+          calledTimes = calledTimes + 1;
+        }
+      };
+      formHostService.registerFormRecycleListener('test1', recycleListener);
+      expect(calledTimes >= 0).assertTrue();
+
+      let recycleListener1: RecycleChangeListener = {
+        onRecycleChange: (state: boolean): void => {
+          calledTimes = calledTimes + 1;
+        }
+      };
+      formHostService.registerFormRecycleListener('test1', recycleListener1);
+      expect(calledTimes >= 0).assertTrue();
+    });
+
+    it('unRegisterFormRecycleListener_003', TestType.FUNCTION | Level.LEVEL0, () => {
+      let formHostService: FormHostService = FormHostService.getInstance();
+      let calledTimes: number = 0;
+      let recycleListener: RecycleChangeListener = {
+        onRecycleChange: (state: boolean): void => {
+          calledTimes = calledTimes + 1;
+        }
+      };
+      formHostService.unRegisterFormRecycleListener('unRegister1', recycleListener);
+      expect(calledTimes >= 0).assertTrue();
+
+      formHostService.registerFormRecycleListener('unRegister1', recycleListener);
+      formHostService.unRegisterFormRecycleListener('unRegister1', recycleListener);
+      expect(calledTimes >= 0).assertTrue();
+    });
+
     it('formRecycleWhenAppStartHandler_004', TestType.FUNCTION | Level.LEVEL0, () => {
       let formHostService: FormHostService = FormHostService.getInstance();
       (formHostService as object)['startRecycleTimer'] = 1;

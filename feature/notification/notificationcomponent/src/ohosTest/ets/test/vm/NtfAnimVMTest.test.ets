@@ -147,6 +147,28 @@ export default function NtfActionVMTest() {
       expect(screenSession.isEnableRotate).assertEqual(true);
       mocker.ignoreMock(SCBScreenSessionManager, SCBScreenSessionManager.getInstance().getMainScreenSession);
     });
+    it('should_release_panel_heads_up_when_isDeliverNotification_and_isHeadsUp_is_true', 0, async () => {
+      let ntfactionvm: NtfActionVM = new NtfActionVM();
+      let mocker: MockKit = new MockKit();
+      let mockfunc: Function = mocker.mockFunc(bannerMgr, bannerMgr.releasePanelHeadsUp);
+      when(mockfunc)().afterReturnNothing();
+      let entry: NotificationEntry = new NotificationEntry();
+      entry.isDeliverNotification = true;
+      let action: NotificationAction = new NotificationAction();
+      ntfactionvm.startNtfAction(action, false, true);
+      mocker.ignoreMock(bannerMgr, bannerMgr.releasePanelHeadsUp);
+    });
+    it('should_collapse_panel_when_isDeliverNotification_and_isHeadsUp_is_false', 0, async () => {
+      let ntfactionvm: NtfActionVM = new NtfActionVM();
+      let mocker: MockKit = new MockKit();
+      let mockfunc: Function = mocker.mockFunc(NotificationPanelManager, NotificationPanelManager.collapseNtfPanel);
+      when(mockfunc)(ArgumentMatchers.anyNumber, ArgumentMatchers.anyBoolean).afterReturnNothing();
+      let entry: NotificationEntry = new NotificationEntry();
+      entry.isDeliverNotification = true;
+      let action: NotificationAction = new NotificationAction();
+      ntfactionvm.startNtfAction(action, false, false);
+      mocker.ignoreMock(NotificationPanelManager, NotificationPanelManager.collapseNtfPanel);
+    });
     it('should_call_checkAndStart_when_entry_is_valid', 0, async () => {
       let ntfactionvm: NtfActionVM = new NtfActionVM();
       let mocker: MockKit = new MockKit();
@@ -156,6 +178,53 @@ export default function NtfActionVMTest() {
       let action: NotificationAction = new NotificationAction();
       ntfactionvm.startNtfAction(action, false, false);
       mocker.ignoreMock(NtfActionVM.prototype, NtfActionVM.prototype.checkAndStart);
+    });
+    it('should_report_click_when_entry_is_valid_and_isDeliverNotification_is_true', 0, async () => {
+      let ntfactionvm: NtfActionVM = new NtfActionVM();
+      let mocker: MockKit = new MockKit();
+      let mockfunc: Function = mocker.mockFunc(ClickNotificationMaintenance, ClickNotificationMaintenance.reportClick);
+      when(mockfunc)(ArgumentMatchers.any).afterReturnNothing();
+      let entry: NotificationEntry = new NotificationEntry();
+      entry.isDeliverNotification = true;
+      let action: NotificationAction = new NotificationAction();
+      ntfactionvm.startNtfAction(action, false, false);
+      mocker.ignoreMock(ClickNotificationMaintenance, ClickNotificationMaintenance.reportClick);
+    });
+    it('should_call_releasePanelHeadsUp_when_entry_is_valid_and_isDeliverNotification_is_true_and_isHeadsUp_is_true', 0,
+      async () => {
+        let ntfactionvm: NtfActionVM = new NtfActionVM();
+        let mocker: MockKit = new MockKit();
+        let mockfunc: Function = mocker.mockFunc(bannerMgr, bannerMgr.releasePanelHeadsUp);
+        when(mockfunc)().afterReturnNothing();
+        let entry: NotificationEntry = new NotificationEntry();
+        entry.isDeliverNotification = true;
+        let action: NotificationAction = new NotificationAction();
+        ntfactionvm.startNtfAction(action, false, true);
+        mocker.ignoreMock(bannerMgr, bannerMgr.releasePanelHeadsUp);
+      });
+    it('should_call_collapsePanel_when_entry_is_valid_and_isDeliverNotification_is_true_and_isHeadsUp_is_false', 0,
+      async () => {
+        let ntfactionvm: NtfActionVM = new NtfActionVM();
+        let mocker: MockKit = new MockKit();
+        let mockfunc: Function = mocker.mockFunc(NotificationPanelManager, NotificationPanelManager.collapseNtfPanel);
+        when(mockfunc)(ArgumentMatchers.anyNumber, ArgumentMatchers.anyBoolean).afterReturnNothing();
+        let entry: NotificationEntry = new NotificationEntry();
+        entry.isDeliverNotification = true;
+        let action: NotificationAction = new NotificationAction();
+        ntfactionvm.startNtfAction(action, false, false);
+        mocker.ignoreMock(NotificationPanelManager, NotificationPanelManager.collapseNtfPanel);
+      });
+    it('should_call_startWantAgent_when_entry_is_valid_and_isDeliverNotification_is_false', 0, async () => {
+      let ntfactionvm: NtfActionVM = new NtfActionVM();
+      let mocker: MockKit = new MockKit();
+      let mockfunc: Function = mocker.mockFunc(NtfMgr, NtfMgr.startWantAgent);
+      when(mockfunc)(ArgumentMatchers.any, ArgumentMatchers.any, ArgumentMatchers.any, ArgumentMatchers.any)
+        .afterReturnNothing();
+      let entry: NotificationEntry = new NotificationEntry();
+      entry.isDeliverNotification = false;
+      let action: NotificationAction = new NotificationAction();
+      ntfactionvm.startNtfAction(action, false, false);
+      mocker.ignoreMock(NtfMgr, NtfMgr.startWantAgent);
     });
 
     it('should_call_startActionInner_when_wantAgent_is_null', 0, () => {

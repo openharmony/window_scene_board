@@ -35,5 +35,13 @@ export default function IntentBeanFactoryTest() {
       }
 
     });
+
+    it('should_set_hiSearchStatus_to_true_when_isOn_is_true', 0, () => {
+      (IntentBeanFactory as object)['putDesktopSlideSwitch'](true);
+    });
+
+    it('should_set_hiSearchStatus_to_false_when_isOn_is_false', 0, () => {
+      (IntentBeanFactory as object)['putDesktopSlideSwitch'](false);
+    });
   });
 }

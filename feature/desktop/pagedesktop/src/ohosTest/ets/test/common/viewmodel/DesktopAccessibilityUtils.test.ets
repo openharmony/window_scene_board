@@ -89,22 +89,16 @@ export default function DesktopAccessibilityUtilsTest() {
       let item: GridLayoutItemInfo = new GridLayoutItemInfo();
       item.typeId = CommonConstants.TYPE_CARD;
       let isAccessibilityMode: boolean = true;
-      let mocker: MockKit = new MockKit();
-      when(mockFunc)(ArgumentMatchers.any).afterReturn(true);
       let result:string = DesktopAccessibilityUtils.getDesktopItemAccessibilityLevel(item, isAccessibilityMode);
       expect(result).assertEqual('no');
-      mocker.clearAll();
     })
 
     it('test_getDesktopItemAccessibilityLevel6', 0, () => {
       let item: GridLayoutItemInfo = new GridLayoutItemInfo();
       item.typeId = CommonConstants.TYPE_CARD;
       let isAccessibilityMode: boolean = true;
-      let mocker: MockKit = new MockKit();
-      when(mockFunc)(ArgumentMatchers.any).afterReturn(false);
       let result:string = DesktopAccessibilityUtils.getDesktopItemAccessibilityLevel(item, isAccessibilityMode);
       expect(result).not().assertNull();
-      mocker.clearAll();
     })
 
     it('test_getDesktopItemAccessibilityLevel7', 0, () => {

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-// import fusionSearchClient from '@hms.ai.search';
+// import fusionSearchClient from '@ohos.ai.search';
 import { CheckEmptyUtils, LogDomain, LogHelper } from '@ohos/basicutils';
 
 const TAG = 'FusionSearchUtil';

@@ -974,6 +974,8 @@ export class SCBKeyboardManager {
     // When the keyboard is show, SCBSceneContiner needs to be triggered to rebuild.
     let mainSession: SCBSceneSession | null = null;
     if (state === sceneSessionManager.SessionState.STATE_FOREGROUND) {
+      // 重置动画标志，确保应用从后台恢复时能有回弹动效
+      this.requestKeyboardAnimate = true;
       if (this.isVoiceInteractionWindowInRecent()) {
         log.showInfo('VOICE_INTERACTION window in recent is touchable');
         this.setKeyboardSessionTouchable(true);

@@ -75,8 +75,16 @@ export class TsAnimationHandler {
   }
 
   private obtainAnimation(srcState: ScbState, dstState: ScbState): number {
-    if (srcState === ScbState.LOCKSCREEN && dstState === ScbState.DESKTOP) {
+    if (srcState === ScbState.AOD && dstState === ScbState.DESKTOP) {
+      return AnimationType.AOD_HOME;
+    } else if (srcState === ScbState.AOD && dstState === ScbState.LOCKSCREEN) {
+      return AnimationType.AOD_LOCK;
+    } else if (srcState === ScbState.LOCKSCREEN && dstState === ScbState.DESKTOP) {
       return AnimationType.LOCK_HOME;
+    } else if (srcState === ScbState.LOCKSCREEN && dstState === ScbState.AOD) {
+      return AnimationType.LOCK_AOD;
+    } else if (srcState === ScbState.DESKTOP && dstState === ScbState.AOD) {
+      return AnimationType.HOME_AOD;
     } else if (srcState === ScbState.DESKTOP && dstState === ScbState.LOCKSCREEN) {
       return AnimationType.HOME_LOCK;
     } else if (dstState === ScbState.SLEEP) {

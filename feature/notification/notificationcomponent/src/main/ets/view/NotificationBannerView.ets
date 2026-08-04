@@ -32,6 +32,7 @@ import { NotificationConfig } from '../common/NotificationConfig';
 import { NotificationCardView } from './NotificationCardView';
 import { NotificationBannerLiveVmInjector } from '../variant/banner/vm/NotificationBannerLiveVmInjector';
 import { SystemUICcmConfig } from '@ohos/systemuicommon/src/main/ets/utils/SystemUICcmConfig';
+import { OutdoorVm } from '@ohos/systemuicommon/src/main/ets/vm/OutdoorVm';
 
 const TAG = 'NotificationBannerView';
 const log: Logger = Logger.getLogHelper(LogDomain.NC);
@@ -125,7 +126,7 @@ export struct NotificationBannerView {
               ntf: this.notificationBannerVm.ntf as NormalNotification
             })
           }
-          if (this.verticalSwipeVm?.isSupportFloating) {
+          if (this.verticalSwipeVm?.isSupportFloating && !OutdoorVm.instance.isInOutdoorMode) {
             this.buildDropBar()
           }
         }

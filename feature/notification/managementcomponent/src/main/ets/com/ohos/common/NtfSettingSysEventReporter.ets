@@ -179,6 +179,13 @@ export class NotificationDisplayPreviewParams extends NTFControlParams {
    * 1 - 关闭
    */
   public NTF_MORE_SETTING_DISPLAY_PREVIEW?: 0 | 1;
+  /**
+   * 通过语音助手操作
+   *
+   * 0 - 否
+   * 1 - 是
+   */
+  public IS_VOICE?: 0 | 1;
 }
 export class LiveViewDisplayPreviewParams extends NTFControlParams {
   /**
@@ -187,6 +194,13 @@ export class LiveViewDisplayPreviewParams extends NTFControlParams {
    * 1 - 关闭
    */
   public LIVE_VIEW_DISPLAY_PREVIEW?: 0 | 1;
+  /**
+   * 通过语音助手操作
+   *
+   * 0 - 否
+   * 1 - 是
+   */
+  public IS_VOICE?: 0 | 1;
 }
 export class NotificationScreenStyleParams extends NTFControlParams {
   /**
@@ -195,6 +209,13 @@ export class NotificationScreenStyleParams extends NTFControlParams {
    * 1 - 低位
    */
   public NTF_SCREEN_LOCK_STYLE?: 0 | 1;
+  /**
+   * 通过语音助手操作
+   *
+   * 0 - 否
+   * 1 - 是
+   */
+  public IS_VOICE?: 0 | 1;
 }
 export class NotificationSettingAppManagementParams extends NTFControlParams {
   /**
@@ -229,6 +250,13 @@ export class NotificationSettingAppManagementParams extends NTFControlParams {
    * 3 - 静音
    */
   public SWITCH_STATUS?: number;
+  /**
+   * 通过语音助手操作
+   *
+   * 0 - 否
+   * 1 - 是
+   */
+  public IS_VOICE?: 0 | 1;
 }
 export class NotificationSettingClickEventParams extends NTFControlParams {
   /**
@@ -337,6 +365,13 @@ export class NotificationHideManagementParams extends NTFControlParams {
    * 1 - 关闭
    */
   public OPERATE_METHOD?: 0 | 1;
+  /**
+   * 通过语音助手操作
+   *
+   * 0 - 否
+   * 1 - 是
+   */
+  public IS_VOICE?: 0 | 1;
 }
 export class NotificationScreenManagementParams extends NTFControlParams {
   /**
@@ -345,6 +380,13 @@ export class NotificationScreenManagementParams extends NTFControlParams {
    * 1 - 关闭
    */
   public OPERATE_METHOD?: 0 | 1;
+  /**
+   * 通过语音助手操作
+   *
+   * 0 - 否
+   * 1 - 是
+   */
+  public IS_VOICE?: 0 | 1;
 }
 
 export class NotificationShowDesktopBadgeParams extends NTFControlParams {
@@ -354,6 +396,13 @@ export class NotificationShowDesktopBadgeParams extends NTFControlParams {
    * 1 - 关闭
    */
   public OPERATE_METHOD?: 0 | 1;
+  /**
+   * 通过语音助手操作
+   *
+   * 0 - 否
+   * 1 - 是
+   */
+  public IS_VOICE?: 0 | 1;
 }
 
 export class NotificationDistributionButtonParams extends NTFControlParams {
@@ -409,7 +458,7 @@ export class SwitchAppOrMetaServiceSegmentButton extends NTFControlParams {
   public BUNDLE_TYPE?: number;
 }
 
-export class MetaServiceToLoginHuaweiAccount extends NTFControlParams {
+export class MetaServiceToLoginOhosAccount extends NTFControlParams {
   /**
    * 登录状态
    * 0 - 登录失败
@@ -898,7 +947,7 @@ export class NtfSettingSysEventReporter {
   /**
    * 未登录账号获取元服务列表前点击登录
    */
-  public static async metaServiceToLoginAccount(params: MetaServiceToLoginHuaweiAccount): Promise<void> {
+  public static async metaServiceToLoginAccount(params: MetaServiceToLoginOhosAccount): Promise<void> {
     params.PNAMEID = ReportParams.PACKAGE_NAME;
     params.PVERSIONID = await ReportParams.getVersionCode();
 

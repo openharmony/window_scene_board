@@ -281,6 +281,49 @@ export function SCBSceneSessionManagerTest3() {
       done();
     });
 
+    it('isDeliverApplicationTest', 0, async (done: Function) => {
+      let manager: SCBSceneSessionManager = SCBSceneSessionManager.getInstance();
+      expect(manager).not().assertNull();
+      expect(manager.isDeliverApplication('test')).assertFalse();
+      done();
+    });
+
+    it('isDeliverApplicationTest02', 0, async (done: Function) => {
+      let bundleName = 'bundleName';
+      let codePath = '1';
+      let manager: SCBSceneSessionManager = SCBSceneSessionManager.getInstance();
+      let codePathMap: Map<string, string> = new Map();
+      codePathMap.set(bundleName, codePath);
+      manager['codePathMap'] = codePathMap;
+      expect(manager).not().assertNull();
+      expect(manager.isDeliverApplication(bundleName)).assertTrue();
+      done();
+    });
+
+    it('isDeliverApplicationTest03', 0, async (done: Function) => {
+      let bundleName = 'bundleName';
+      let codePath = '2';
+      let manager: SCBSceneSessionManager = SCBSceneSessionManager.getInstance();
+      let codePathMap: Map<string, string> = new Map();
+      codePathMap.set(bundleName, codePath);
+      manager['codePathMap'] = codePathMap;
+      expect(manager).not().assertNull();
+      expect(manager.isDeliverApplication(bundleName)).assertTrue();
+      done();
+    });
+
+    it('isDeliverApplicationTest04', 0, async (done: Function) => {
+      let bundleName = 'bundleName';
+      let codePath = '3';
+      let manager: SCBSceneSessionManager = SCBSceneSessionManager.getInstance();
+      let codePathMap: Map<string, string> = new Map();
+      codePathMap.set(bundleName, codePath);
+      manager['codePathMap'] = codePathMap;
+      expect(manager).not().assertNull();
+      expect(manager.isDeliverApplication(bundleName)).assertFalse();
+      done();
+    });
+
     it('registerGlobalSearchExitCallbackTest', 0, async (done: Function) => {
       let manager: SCBSceneSessionManager = SCBSceneSessionManager.getInstance();
       expect(manager).not().assertNull();

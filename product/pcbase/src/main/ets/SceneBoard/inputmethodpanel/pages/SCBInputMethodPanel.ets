@@ -108,6 +108,19 @@ export struct SCBInputMethodPanel {
       vp2px(40) + // setting
       vp2px(4); // bottom
 
+    const isVoice: boolean = await this.isVoiceAbility();
+    if (isVoice && !DeviceHelper.is2In1DevicePcType()) {
+      let statusBarSettingHeight: number =
+        componentUtils.getRectangleById('hide_input_method_status_bar_text')?.size?.height;
+      if (!statusBarSettingHeight) {
+        statusBarSettingHeight = vp2px(40);
+      }
+      heightWin = heightWin +
+        vp2px(32) + // menu title
+        statusBarSettingHeight + // input method status bar setting
+        vp2px(8); // divider
+    }
+
     let updateRect: window.Rect = {
       top: defaultRect.top,
       left: defaultRect.left,
@@ -120,6 +133,16 @@ export struct SCBInputMethodPanel {
       position: PluginPosition.POSITION_RIGHT,
       area: updateRect
     });
+  }
+
+  private async isVoiceAbility(): Promise<boolean> {
+    try {
+      const currentIme: inputMethod.InputMethodProperty | null = await InputMethodUtils.queryCurrentInputMethod();
+      return currentIme?.name === 'com.ohos.inputmethod';
+    } catch (error) {
+      log.showError(`getCurrentInputMethod fail, error: ${error}`);
+      return false;
+    }
   }
 
   initWindowPolicy() {

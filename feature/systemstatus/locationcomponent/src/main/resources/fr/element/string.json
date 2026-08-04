@@ -13,6 +13,13 @@
             "attr":{
                 "priority":"translate"
             }
+        },
+        {
+            "name": "control_center_super_privacy_for_location_toggle",
+            "value": "Accès aux informations de localisation bloqué. Veuillez d'abord désactiver le mode Super privé.",
+            "attr": {
+                "priority": "translate"
+            }
         }
-    ]
+]
 }

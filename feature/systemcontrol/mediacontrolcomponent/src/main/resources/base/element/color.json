@@ -58,7 +58,7 @@
     },
     {
       "name": "ohos_id_color_component_normal",
-      "value": "#19000000"
+      "value": "#FFF1F3F5"
     },
     {
       "name": "device_checked_ok",
@@ -206,7 +206,7 @@
     },
     {
       "name": "media_control_center_component_normal",
-      "value": "#FFFFFFFF"
+      "value": "#FFF1F3F5"
     },
     {
       "name": "media_control_center_switch_active_bgc",

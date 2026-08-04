@@ -45,13 +45,10 @@ export class DesktopAccessibilityUtils {
       if (item.typeId === CommonConstants.TYPE_FOLDER) {
         return 'no';
       }
-      if (item.typeId === CommonConstants.TYPE_CARD ) {
+      if (item.typeId === CommonConstants.TYPE_CARD) {
         return 'no';
       }
       if (item.typeId === CommonConstants.TYPE_FORM_STACK && (item.layoutInfo?.[0]?.length ?? 0) > 1) {
-        return 'no';
-      }
-      if (item.typeId === CommonConstants.TYPE_CARD) {
         return 'no';
       }
     }

@@ -340,7 +340,7 @@ export struct SCBDropdownPanel {
   @Provide closeNtfDialogClose: boolean = true;
   @Provide ntfSilenceDialogClose: boolean = true;
   @Provide pinTopLimitDialogClose: boolean = true;
-  @Provide hwCastDialogIsOpen: boolean = false;
+  @Provide castDialogIsOpen: boolean = false;
   @Provide superDeviceDialogIsOpen: boolean = false;
   @State @Watch('onControlCenterDataChanged') data: ControlCenterData = ControlCenterController.getData();
   /**
@@ -730,9 +730,9 @@ export struct SCBDropdownPanel {
       this.pinTopLimitDialogClose = true;
       return true;
     }
-    if (this.hwCastDialogIsOpen) {
-      log.showInfo(`reset hwCastDialogIsOpen: ${this.hwCastDialogIsOpen}`);
-      this.hwCastDialogIsOpen = false;
+    if (this.castDialogIsOpen) {
+      log.showInfo(`reset castDialogIsOpen: ${this.castDialogIsOpen}`);
+      this.castDialogIsOpen = false;
       return true;
     }
     if (this.superDeviceDialogIsOpen) {

@@ -178,8 +178,8 @@ export class RecentAndAppCenterSwitchManager {
     viewMgrPolicy.isViewShowing(ViewType.APP_CENTER_EXT) || this.isRecentToAppCenter) {
       this.isRecentToAppCenter = false;
       this.setAllOneFrameVisible(true);
-      AppStorage.setOrCreate('showRecent', true);
       this.hideAppCenter();
+      AppStorage.setOrCreate('showRecent', true);
       return;
     }
 

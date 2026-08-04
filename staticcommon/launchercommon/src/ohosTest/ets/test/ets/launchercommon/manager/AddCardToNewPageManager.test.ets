@@ -59,6 +59,50 @@ export default function AddCardToNewPageManagerTest() {
       done();
     })
 
+    it('AddCardToNewPageManagerTest_02', 0, async (done: Function) => {
+      await AddCardToNewPageManager.getInstance().init(SceneType.FROM_HW_LAUNCHER);
+      addCardToNewPageShortcut();
+      let result: GridLayoutItemInfo[] = [];
+      await AddCardToNewPageManager.getInstance().dealWithAddCard(result);
+      expect(result.length).assertLargerOrEqual(0);
+      done();
+    })
+
+    it('AddCardToNewPageManagerTest_03_7', 0, async () => {
+      try {
+        await AddCardToNewPageManager.getInstance().init(SceneType.FROM_HW_LAUNCHER);
+        addCardToNewPageApp();
+        let result: GridLayoutItemInfo[] = [];
+        await AddCardToNewPageManager.getInstance().dealWithAddCard(result);
+        expect(result.length).assertLargerOrEqual(0);
+      } catch (e) {
+        expect(JSON.stringify(e)).assertInstanceOf('String');
+      }
+    })
+
+    it('AddCardToNewPageManagerTest_04', 0, async (done: Function) => {
+      await AddCardToNewPageManager.getInstance().init(SceneType.FROM_HW_LAUNCHER);
+      addCardToNewPageCard();
+      let result: GridLayoutItemInfo[] = [];
+      await AddCardToNewPageManager.getInstance().dealWithAddCard(result);
+      expect(result.length).assertLargerOrEqual(0);
+      done();
+    })
+
+    it('AddCardToNewPageManagerTest_05_7', 0, async () => {
+      try {
+        await AddCardToNewPageManager.getInstance().init(SceneType.FROM_HW_LAUNCHER);
+        addCardToNewPageShortcut();
+        addCardToNewPageApp();
+        addCardToNewPageCard();
+        let result: GridLayoutItemInfo[] = [];
+        await AddCardToNewPageManager.getInstance().dealWithAddCard(result);
+        expect(result.length).assertLargerOrEqual(0);
+      } catch (e) {
+        expect(JSON.stringify(e)).assertInstanceOf('String');
+      }
+    })
+
     it('test_loadFileMapping_01', 0, () => {
       let mock = new MockKit();
       try {
@@ -241,6 +285,34 @@ export default function AddCardToNewPageManagerTest() {
       mock.clearAll();
     })
 
+    it('test_addCardToNewPage_02', 0, () => {
+      let mock = new MockKit();
+      let instance = AddCardToNewPageManager.getInstance();
+      try {
+        let mockFunc: Function = mock.mockFunc(instance, instance['addCardToNewPage']);
+        when(mockFunc)(ArgumentMatchers.any).afterReturn(Promise.resolve());
+
+        let param: CardMappingModelInterface = {
+          'sceneType': '0,2',
+          'sourceType': 0,
+          'sourceAbilityName': 'com.openharmony.systemmanager.mainscreen.MainScreenActivity',
+          'targetBundleName': 'com.ohos.systemmanagerform',
+          'targetCardName': 'shortCutCard',
+          'targetCardUnique': CardUniqueType.NOTHING
+        }
+        let mapping: CardMappingModel = new CardMappingModel(param);
+
+        instance['sceneType'] = SceneType.FROM_HW_LAUNCHER;
+        instance['mappingSet'].add(mapping);
+        instance.dealWithAddCard([]);
+        expect(instance instanceof AddCardToNewPageManager).assertTrue();
+      } catch (e) {
+        expect(JSON.stringify(e)).assertInstanceOf('String');
+      }
+      mock.clear(instance);
+      mock.clearAll();
+    })
+
     it('test_getFileMapping_01', 0, () => {
       let mock = new MockKit();
       let instance = AddCardToNewPageManager.getInstance();
@@ -282,7 +354,7 @@ function addCardToNewPageCard(): void {
   let backupInfo = new BackupFavoriteInfo();
   backupInfo.itemType = BackupItemType.BACKUP_ITEM_TYPE_CARD;
   backupInfo.intent =
-    '#Intent;component=com.openharmony.ohos.systemmanager/.FormAbility;i.ohos.extra.param.key.form_dimension=1;l.ohos.extra.param.key.form_identity=68905085265646719;i.addtype=2;i.previewId=0;S.ohos.extra.param.key.form_name=card_one_touch_optimization_horizontal;B.fa_card_background_blur_need=true;S.jsFormModuleName=card_one_touch_optimization_horizontal;B.fa_variable_card=false;S.jsFormCodePath=%2Fopenharmony_product%2Fapp%2FHwSystemManagerHm%2Ffacard-entry-release-rich.hap;S.deepLink=;S.original_bundle_name=com.openharmony.ohos.systemmanager;B.fa_is_js_card=true;S.ohos.extra.param.key.module_name=facard;B.fa_card_enter_animation=true;i.ohos.extra.param.key.form_width=441;i.ohos.extra.param.key.form_height=155;S.related_bundle_name=com.openharmony.systemmanager;end';
+    '#Intent;component=com.openharmony.ohos.systemmanager/.FormAbility;i.ohos.extra.param.key.form_dimension=1;l.ohos.extra.param.key.form_identity=68905085265646719;i.addtype=2;i.previewId=0;S.ohos.extra.param.key.form_name=card_one_touch_optimization_horizontal;B.fa_card_background_blur_need=true;S.jsFormModuleName=card_one_touch_optimization_horizontal;B.fa_variable_card=false;S.jsFormCodePath=%2Fhw_product%2Fapp%2FHwSystemManagerHm%2Ffacard-entry-release-rich.hap;S.deepLink=;S.original_bundle_name=com.openharmony.ohos.systemmanager;B.fa_is_js_card=true;S.ohos.extra.param.key.module_name=facard;B.fa_card_enter_animation=true;i.ohos.extra.param.key.form_width=441;i.ohos.extra.param.key.form_height=155;S.related_bundle_name=com.openharmony.systemmanager;end';
   let formRelationParamStr: string =
     AddCardToNewPageManager.getInstance().getFormRelationParamsFromIntent(backupInfo.intent);
   AddCardToNewPageManager.getInstance().addCardToNewPageCard(backupInfo, formRelationParamStr);

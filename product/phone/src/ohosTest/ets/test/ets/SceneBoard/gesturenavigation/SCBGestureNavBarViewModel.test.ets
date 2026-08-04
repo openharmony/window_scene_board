@@ -37,7 +37,7 @@ import {
   when
 } from '@ohos/hypium';
 import { DesktopModeManager, SystemBarChangeType } from '@ohos/launchercommon/src/main/ets/TsIndex';
-import { SCBAiBarConstants } from '@ohos/phonebase/src/main/ets/SceneBoard/aiBar/SCBAiBarConstants';
+import { SCBNaviBarConstants } from '@ohos/phonebase/src/main/ets/SceneBoard/naviBar/SCBNaviBarConstants';
 
 import {
   NavbarPanGesture,
@@ -45,8 +45,8 @@ import {
   SCBGestureNavBarViewModel,
 } from '@ohos/phonebase/src/main/ets/SceneBoard/gesturenavigation/SCBGestureNavBarViewModel';
 import { SystemSceneConstants } from '@ohos/phonebase/src/main/ets/SceneBoard/gesturenavigation/SystemSceneConstants';
-import { AIBarViewData } from '@ohos/phonebase/src/main/ets/SceneBoard/aiBar/AIBarModel/AIBarViewData';
-import { AIBarViewModel } from '@ohos/phonebase/src/main/ets/SceneBoard/aiBar/AIBarModel/AIBarViewModel';
+import { NAVIBarViewData } from '@ohos/phonebase/src/main/ets/SceneBoard/naviBar/NAVIBarModel/NAVIBarViewData';
+import { NAVIBarViewModel } from '@ohos/phonebase/src/main/ets/SceneBoard/naviBar/NAVIBarModel/NAVIBarViewModel';
 export default function SCBGestureNavBarViewModelTest() {
   describe('SCBGestureNavBarViewModelTest', () => {
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
@@ -71,8 +71,8 @@ export default function SCBGestureNavBarViewModelTest() {
 
     let navBarViewModel: SCBGestureNavBarViewModel = new SCBGestureNavBarViewModel();
     let scbScreenProperty: SCBScreenProperty = new SCBScreenProperty();
-    let aiBarViewData: AIBarViewData = AIBarViewData.getInstance();
-    let aiBarViewModel: AIBarViewModel = AIBarViewModel.getInstance(new SCBScreenProperty());
+    let naviBarViewData: NAVIBarViewData = NAVIBarViewData.getInstance();
+    let naviBarViewModel: NAVIBarViewModel = NAVIBarViewModel.getInstance(new SCBScreenProperty());
 
     let eventArea: Area = {
       width: 0,
@@ -181,7 +181,7 @@ export default function SCBGestureNavBarViewModelTest() {
       let mockFunc1: Function = mocker.mockFunc(navBarViewModel,
         navBarViewModel.checkGameStatus);
       when(mockFunc1)(ArgumentMatchers.any).afterReturn(true);
-      aiBarViewData.isShowingAiBar = false;
+      naviBarViewData.isShowingNaviBar = false;
       navBarViewModel.checkEnableAntiTouchStatus();
       expect(navBarViewModel).not().assertUndefined();
       mocker.clear(navBarViewModel);
@@ -192,7 +192,7 @@ export default function SCBGestureNavBarViewModelTest() {
       let mockFunc1: Function = mocker.mockFunc(navBarViewModel,
         navBarViewModel.checkGameStatus);
       when(mockFunc1)(ArgumentMatchers.any).afterReturn(true);
-      aiBarViewData.isShowingAiBar = true;
+      naviBarViewData.isShowingNaviBar = true;
       navBarViewModel.checkEnableAntiTouchStatus();
       expect(navBarViewModel).not().assertUndefined();
       mocker.clear(navBarViewModel);
@@ -365,7 +365,7 @@ export default function SCBGestureNavBarViewModelTest() {
       let navBarViewModel: SCBGestureNavBarViewModel = SCBGestureNavBarViewModel.getInstance();
       let navbarPanGesture = new NavbarPanGesture(navBarViewModel, sendTouchEventController);
       let screenProperty: SCBScreenProperty = new SCBScreenProperty();
-      navbarPanGesture.initParam(true); // aiBarIsShowInStart_ = true
+      navbarPanGesture.initParam(true); // naviBarIsShowInStart_ = true
       expect(navbarPanGesture.panGestureType).assertEqual(PanGestureType.DEFAULT);
       navbarPanGesture.checkAndSetPerationType(screenProperty);
     })
@@ -375,7 +375,7 @@ export default function SCBGestureNavBarViewModelTest() {
       let navBarViewModel: SCBGestureNavBarViewModel = SCBGestureNavBarViewModel.getInstance();
       let navbarPanGesture = new NavbarPanGesture(navBarViewModel, sendTouchEventController);
       let screenProperty: SCBScreenProperty = new SCBScreenProperty();
-      navbarPanGesture.initParam(false); // aiBarIsShowInStart_ = false
+      navbarPanGesture.initParam(false); // naviBarIsShowInStart_ = false
       let mocker: MockKit = new MockKit();
       let mockFunc: Function = mocker.mockFunc(navBarViewModel, navBarViewModel.checkEnableAntiTouchStatus);
       when(mockFunc)(ArgumentMatchers.any).afterReturn(true);
@@ -388,12 +388,12 @@ export default function SCBGestureNavBarViewModelTest() {
       let navBarViewModel: SCBGestureNavBarViewModel = SCBGestureNavBarViewModel.getInstance();
       let navbarPanGesture = new NavbarPanGesture(navBarViewModel, sendTouchEventController);
       let screenProperty: SCBScreenProperty = new SCBScreenProperty();
-      navbarPanGesture.initParam(false); // aiBarIsShowInStart_ = false
+      navbarPanGesture.initParam(false); // naviBarIsShowInStart_ = false
       let mocker: MockKit = new MockKit();
-      let mockFunc: Function = mocker.mockFunc(aiBarViewModel, aiBarViewModel.isConfigureMisTouchAppActive);
+      let mockFunc: Function = mocker.mockFunc(naviBarViewModel, naviBarViewModel.isConfigureMisTouchAppActive);
       when(mockFunc)(ArgumentMatchers.any).afterReturn(true);
       expect(navbarPanGesture.checkAndSetPerationType(screenProperty) === undefined).assertTrue();
-      mocker.ignoreMock(aiBarViewModel, aiBarViewModel.isConfigureMisTouchAppActive);
+      mocker.ignoreMock(naviBarViewModel, naviBarViewModel.isConfigureMisTouchAppActive);
     })
 
     it('NavbarPanGesture_accidentalTouchPeration_001', 0, () => {

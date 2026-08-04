@@ -88,9 +88,10 @@ export class BrightnessButtonViewModel extends SliderButtonBaseViewModel {
     log.showInfo('aboutToAppear START');
     this.loadLottieData();
     super.aboutToAppear();
+    this.applySunMaxIcon();
     if (this.getViewData().isExpand) {
       this.getLottieAnimMode().getIconViewData().iconName = $r('app.string.brightness_title');
-      this.getLottieAnimMode().getIconViewData().subPageIcon = $r('sys.symbol.sun_max_fill');
+      this.getLottieAnimMode().getIconViewData().subPageIcon = $r('sys.symbol.sun_max');
       this.executeSubpageAnim(true);
       //监听收起二级页事件
       sEventManager.subscribe('ControlCenterState', this.onControlCenterStateChange);
@@ -115,10 +116,18 @@ export class BrightnessButtonViewModel extends SliderButtonBaseViewModel {
     });
   }
 
-  private updateLottieData() {
-    this.loadLottieData();
+  /**
+   * 亮度条默认图标：鸿蒙 sun_max symbol
+   */
+  private applySunMaxIcon(): void {
+    this.getAnimData().sliderIcon = $r('sys.symbol.sun_max');
+    this.getAnimData().useSymbol = true;
+    this.getAnimData().useLottieData = false;
     this.getLottieAnimMode().onCanvasDisappear();
-    this.getLottieAnimMode().onCanvasReady();
+  }
+
+  private updateLottieData() {
+    this.applySunMaxIcon();
   }
 
   public aboutToDisappear() {

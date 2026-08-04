@@ -1,5 +1,5 @@
 /*
- * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -46,7 +46,8 @@ import {
   sSCBOobeManager,
   SystemBarType,
   SCBWindowShadowConfig,
-  SCBSubWindowAnchorInfo
+  SCBSubWindowAnchorInfo,
+  DragActivateScenario,
 } from '@ohos/windowscene';
 import Curves from '@ohos.curves';
 import { WindowAnimationUtils } from '@ohos/windowscene/Index';
@@ -263,9 +264,19 @@ export struct SCBSpecificScene {
       PCUtils.vp2px(this.getUIContext(), StyleConstants.DEFAULT_CONTAINER_TITLE_HEIGHT);
     let dock = SCBSceneSessionManager.getInstance()
       .getSystemSceneSessionWithSystemBarType(SystemBarType.SMART_DOCK, screenId);
+    //todo 这一步没有执行 导致后续计算失败 获取不到dock对象
     if (dock && dock.getVisibility()) {
       const dockHeight = dock.currRect.height.getPx();
       bottomThreshold = bottomThreshold - dockHeight;
+    }
+    else {
+      //todo 28版本上面获取不到dock对象 下面代码预处理 因为这里dock获取为空导致子窗无法回弹
+      const DEFAULT_DOCK_HEIGHT = 99;
+      //todo  1. 尝试从 AppStorage 获取值
+      const savedHeight = AppStorage.get<number>('dockHeight');
+      //todo  2. 如果获取到了值则使用，否则使用默认值 (使用 ?? 空值合并运算符)
+      const finalHeight = savedHeight ?? DEFAULT_DOCK_HEIGHT;
+      bottomThreshold = bottomThreshold - finalHeight;
     }
     if (targetPositionY > bottomThreshold) {
       log.showDebug(`onSessionRectChange, reaching bottom threshold: ${bottomThreshold}`);
@@ -840,6 +851,7 @@ export struct SCBSpecificScene {
     systemAniSceneCtrl.enqueue(SystemAnimatedScene.ENTER_WINDOW_FULL_SCREEN);
     this.onMaximizeDefaultApp();
     this.specificSession.windowMode = SCBSceneMode.FULLSCREEN;
+    this.specificSession.layoutFullScreen = true
   }
 
   private onMaximizeDefaultApp(): void {
@@ -1143,7 +1155,7 @@ export struct SCBSpecificScene {
   onFollowParentWindowLayout(isFollow: boolean) {
     log.showInfo(`onFollowParentWindowLayout, isFollow: ${isFollow}, screedId: ${this.specificSession.screenId}`);
     this.isFollowParentWindowLayout = isFollow;
-    this.specificSession?.session.activateDragBySystem(!isFollow &&
+    this.specificSession?.session.activateDragBySystem(DragActivateScenario.FOLLOW_PARENT_LAYOUT, !isFollow &&
       !this.specificSession?.subWindowAnchorInfo.isFollowParent);
   }
 

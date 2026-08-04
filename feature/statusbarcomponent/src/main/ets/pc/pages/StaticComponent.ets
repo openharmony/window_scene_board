@@ -84,7 +84,7 @@ export struct StaticComponent {
       return;
     }
     if (this.pluginInfo?.pluginParseInfo?.pluginSlot === PluginSlot.SLOT_STATUS_PERSONAL) {
-      this.mImage = this.contentColor === '#FFFFFF' ? $r('app.media.pc_dark_hoskey') : $r('app.media.pc_light_hoskey');
+      this.mImage = this.contentColor === '#FFFFFF' ? $r('app.media.pc_dark_syskey') : $r('app.media.pc_light_syskey');
       return;
     }
     if (this.pluginInfo?.pluginParseInfo?.pluginSlot === PluginSlot.SLOT_STATUS_NOTIFICATION_PANEL) {

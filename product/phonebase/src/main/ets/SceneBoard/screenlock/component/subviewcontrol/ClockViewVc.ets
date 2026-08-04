@@ -100,7 +100,7 @@ import {
 } from '@ohos/screenlockwidget/src/main/ets/clock/viewmodel/viewanim/ClockWidgetOneShotAnimManager';
 import { ClockHookType, UseScene } from '@ohos/screenlockwidget/src/main/ets/common/adapter/Constans';
 import lazy { TripleAnimManagerUtil } from '../../utils/TripleAnimManagerUtil';
-import lazy { UltraScreenExpandAnimationVc } from './UltraScreenExpandAnimationVc';
+import lazy { TripleFoldExpandAnimationVc } from './TripleFoldExpandAnimationVc';
 import { ClockAdapterFactory } from '@ohos/screenlockwidget/src/main/ets/clock/adapter/ClockAdapter';
 import { ClockAdapter } from '@ohos/screenlockwidget/src/main/ets/clock/adapter/ClockAdapter';
 import { slEditorHelper } from '@ohos/screenlockwidget/src/main/ets/editsheet/utils/EditSheetHelper';
@@ -419,8 +419,20 @@ export class ClockViewVc extends ScreenLockVc<MpStateType> {
       clockWidgetTopMargin = this.isEditClockUp ? CLOCK_UP_DISTANCE :
         this.parentVc.getScreenLockPanelPositionY(gridWidth);
     }
-    const clockWidgetLeftMargin = panelPositionX * gridWidth +
+
+    // 计算基础左边距（基于网格系统）
+    const baseLeftMargin = panelPositionX * gridWidth +
       clockLayoutHelper.getHorizontalGridMargin(this.isPortrait());
+    // 计算补偿边距：由于 gridWidth 使用了 Math.min(singleWidth, singleHeight)，
+    // 当垂直方向较小时，水平方向的总宽度会小于屏幕宽度，需要额外补偿使时钟居中
+    const gridAmount = clockLayoutHelper.getLayoutGridAmount(this.isPortrait());
+    const screenWidth = clockLayoutHelper.getScreenWidth();
+    const actualGridTotalWidth = gridWidth * gridAmount.x;
+    const compensationMargin = (screenWidth - actualGridTotalWidth) / 2 -
+      clockLayoutHelper.getHorizontalGridMargin(this.isPortrait());
+
+    // 最终左边距 = 基础边距 + 补偿边距
+    const clockWidgetLeftMargin = baseLeftMargin + compensationMargin;
     const clockBorderLeftMargin = gridWidth * this.slClockLocateState.getDragGridX();
     const clockBorderTopMargin = gridWidth * this.slClockLocateState.getDragGridY();
 
@@ -431,7 +443,7 @@ export class ClockViewVc extends ScreenLockVc<MpStateType> {
       }
     }
 
-    if (DeviceHelper.isUltraScreenProduct()) {
+    if (DeviceHelper.isThreeFoldProduct()) {
       useAnimate = !TripleAnimManagerUtil.getInstance().getSkipClockMarginAnimation();
       log.showInfo(`triple fold product, useAnimate is ${useAnimate}`);
     }
@@ -564,7 +576,7 @@ export class ClockViewVc extends ScreenLockVc<MpStateType> {
       slEditorHelper.getLayoutEditManger().clearEditCache();
       log.showWarn(`updateClockStyle clock style ${this.clockStyle?.toString()}`);
       this.initEditMainColor();
-      if (DeviceHelper.isUltraScreenProduct()) {
+      if (DeviceHelper.isThreeFoldProduct()) {
         this.refreshPreClockPosition();
       }
     }
@@ -800,18 +812,18 @@ export class ClockViewVc extends ScreenLockVc<MpStateType> {
 
   private progressFoldExpandAnimation(): void {
     if (DeviceHelper.isLargeInFoldProduct()) {
-      // 大屏，将开合时的时钟动效标志位复位
+      // 双折叠，将开合时的时钟动效标志位复位
       ScreenLockFoldExpandAnimUtil.getInstance().setSkipClockAnimation(false);
     }
-    if (DeviceHelper.isUltraScreenProduct()) {
-      // 超大屏产品，触发时钟的锁屏开合动效
+    if (DeviceHelper.isThreeFoldProduct()) {
+      // 三折叠产品，触发时钟的锁屏开合动效
       this.tripleAnimationCtrl();
     }
   }
 
   // 更新时钟位置信息
   public refreshPreClockPosition(): void {
-    if (!TripleAnimManagerUtil.getInstance().getSkipClockMarginAnimation() && DeviceHelper.isUltraScreenProduct()) {
+    if (!TripleAnimManagerUtil.getInstance().getSkipClockMarginAnimation() && DeviceHelper.isThreeFoldProduct()) {
       log.showInfo('change clock style, refresh pre clock position');
       TripleAnimManagerUtil.getInstance().setPreClockPosition(this.slClockBindCtrl.getClockWidgetLeftMargin(),
         this.slClockBindCtrl.getClockWidgetTopMargin());
@@ -821,7 +833,7 @@ export class ClockViewVc extends ScreenLockVc<MpStateType> {
   private tripleAnimationCtrl(): void {
     TripleAnimManagerUtil.getInstance().setCurClockPosition(this.slClockBindCtrl.getClockWidgetLeftMargin(),
       this.slClockBindCtrl.getClockWidgetTopMargin());
-    UltraScreenExpandAnimationVc.getInstance().tripleAnimation(true);
+    TripleFoldExpandAnimationVc.getInstance().tripleAnimation(true);
     TripleAnimManagerUtil.getInstance().setSkipClockMarginAnimation(false);
   }
 
@@ -829,8 +841,8 @@ export class ClockViewVc extends ScreenLockVc<MpStateType> {
 
   public setBatteryLayout(): void {
     const isPartType: Nullable<boolean> = false;
-    this.slClockBindCtrl?.setBatteryLayout(isPartType ? BatteryLayout.DEFAULT_LAYOUT :
-    BatteryLayout.DEFAULT_LAYOUT);
+    this.slClockBindCtrl?.setBatteryLayout(isPartType ? BatteryLayout.PART_AOD_LAYOUT :
+    BatteryLayout.FULL_AOD_LAYOUT);
     log.showInfo(`isPartType: ${isPartType}`);
   }
 }

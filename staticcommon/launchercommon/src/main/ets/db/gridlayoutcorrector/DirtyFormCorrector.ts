@@ -29,14 +29,12 @@ import {
 } from '../../TsIndex';
 
 const TAG = 'DirtyFormCorrector';
-const CARD_TYPE_TEMP: number = 1;
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.HOME, TAG);
 
 export class DirtyFormCorrector extends AbstractGridLayoutCorrector {
   private pageDeletedSet: Set<number> = new Set();
 
   handleData(girdLayoutInfo: GridLayoutItemInfo[], isOuter?: boolean): void {
-    // 处理小游戏卡片脏数据
     this.dealDirtyGameCard(girdLayoutInfo, isOuter);
   }
 

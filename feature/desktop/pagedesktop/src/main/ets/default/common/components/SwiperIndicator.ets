@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023-Huawei Device Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) 2023-2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -20,7 +20,8 @@ import {
   DomainName,
   CheckEmptyUtils,
   RectInfo,
-  SingleContext
+  SingleContext,
+  OutdoorConfig
 } from '@ohos/basicutils'
 import {
   SCBUnlockTransitionController,
@@ -32,7 +33,7 @@ import { launcherStatusUtil } from '@ohos/windowscene';
 import { StyleConstants, LayoutViewModel, PageInfoManager } from '@ohos/launchercommon';
 import { WallpaperConstants } from '@ohos/commonconstants';
 import curves from '@ohos.curves';
-// import apsManager from '@hms.graphic.apsManager';
+// import apsManager from '@ohos.graphic.apsManager';
 import {
   ViewCallback,
   viewMgrPolicy,
@@ -41,7 +42,8 @@ import {
   ApsUtils,
   HiSysEventUtil,
   WallpaperColorManager,
-  DeviceHelper
+  DeviceHelper,
+  LightOutdoorConfig
 } from '@ohos/frameworkwrapper';
 import { AttributeUpdater } from '@ohos.arkui.modifier';
 import { DeviceState } from '@ohos/launchercommon';
@@ -65,6 +67,8 @@ import {
   EditModeDragPageData,
   EditModeDragPageTipTextData,
   pageEditManager } from '@ohos/launchercommon/Index';
+import { LightOutdoorState } from '../viewmodel/LightOutdoorState';
+import { LightOutdoorDesktopViewModel } from '../viewmodel/LightOutdoorDesktopViewModel';
 
 const TAG = 'SwiperIndicator';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.HOME, TAG);
@@ -183,6 +187,7 @@ export default struct SwiperIndicator {
   private displayCountViewModel: DisplayCountViewModel = DisplayCountViewModel.getInstance();
   @State @Watch('refreshModifier') displayCountData: DisplayCountData = this.displayCountViewModel.getDisplayCountData();
   @State addIndicatorList: number[] = [0];
+  @State lightOutdoorState: LightOutdoorState = LightOutdoorDesktopViewModel.getInstance().getLightOutdoorState();
 
   aboutToAppear(): void {
     SCBSceneSessionManager.getInstance().registerUnlockTransitionCallback(this.unLockTransitionController);
@@ -303,7 +308,8 @@ export default struct SwiperIndicator {
     let leftValue: number = this.getSelectIndicatorForRTL(true);
     let distX: number = IndicatorConstants.INDICATOR_DISTANCE;
     if (this.folderStatus === DeviceState.DEFAULT_STATE) {
-      leftValue = leftValue + (this.isOuterDesktop ? 0 : distX);
+      // 解决RTL语言桌面滑块位置不正确bug，原因为默认屏场景下多加了distX。
+      // leftValue = leftValue + (this.isOuterDesktop ? 0 : distX);
       return this.offsetX === 0 ? -1 * leftValue : -1 * leftValue - distX * (this.offsetX / this.screenWidth);
     }
     // 折叠屏场景

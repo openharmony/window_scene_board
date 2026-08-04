@@ -94,7 +94,7 @@
         },
         {
             "name":"home_screen",
-            "value":"[TS_921310]_Huawei home screen"
+            "value":"[TS_921310]_System home screen"
         },
         {
             "name":"desktop_current_page",
@@ -121,15 +121,15 @@
             "value":"[TS_949972]_Add"
         },
         {
-            "name":"d_app_dialog_content",
+            "name":"deliver_app_dialog_content",
             "value":"[TS_950190]_%s is now available for OpenHarmony. Update your app for an all new experience.\n\nPlease note that some app data may be lost when switching versions."
         },
         {
-            "name":"d_app_dialog_cancel",
+            "name":"deliver_app_dialog_cancel",
             "value":"[TS_950188]_Ignore"
         },
         {
-            "name":"d_app_dialog_confirm",
+            "name":"deliver_app_dialog_confirm",
             "value":"[TS_950189]_Update now"
         },
         {
@@ -219,6 +219,10 @@
         {
             "name":"edit_mode_pinch_gesture_tip",
             "value":"[TS_1042388]_Pinch with two fingers to add apps and widgets"
+        },
+        {
+            "name":"only_deliver_app_can_add_to_fold",
+            "value":"[TS_1047531]_Only deliver apps can be added to this folder."
         },
         {
             "name":"folder_rename_cleared",

@@ -27,8 +27,11 @@ import {
 } from '@ohos/systemuicommon/src/main/ets/liveview/component/card/OtherComponent/ExtendComponent';
 import { AccessibilityAppName } from '@ohos/systemuicommon/src/main/ets/accessibility/AccessibilityAppName';
 import {
+  AodStyleType,
   bannerMgr,
   DarkModeState,
+  ImmersiveAodStyle,
+  immersiveKgMgr,
   LiveBaseTemplate,
   LiveButtonData,
   LiveTimerData,
@@ -51,6 +54,7 @@ import { LengthMetrics } from '@ohos.arkui.node';
 import { WDefault } from '@ohos/screenlockcommon';
 import { AppProtectedVm } from '@ohos/systemuicommon/src/main/ets/vm/AppProtectedVm';
 import { SlVisualControl } from '@ohos/screenlockcommon/src/main/ets/visual/SlVisualControl';
+import { ImmersiveDeliverBadge } from '../common/ImmersiveDeliverBadge';
 
 /**
  * 沉浸胶囊实况样式
@@ -71,6 +75,10 @@ export struct ImmersiveCommonCapsule {
    * 是否开启辅助功能朗读模式
    */
   @StorageProp('isAccessibilityMode') isAccessibilityMode: boolean = false;
+  /**
+   * Aod显示样式
+   */
+  @State aodStyle: ImmersiveAodStyle | undefined = immersiveKgMgr.getOneMirrorState().getAodStyle(true);
 
   @State colorModeViewData: ColorModeViewData = ColorModeViewModel.getInstance().getViewData();
 
@@ -259,7 +267,17 @@ export struct ImmersiveCommonCapsule {
     }
     .id(style.textId)
     .layoutWeight(1)
-    .alignRules({
+    .alignRules(style.isAodCenter ? {
+      start: { anchor: CapItemId.ICON_AREA, align: HorizontalAlign.End },
+      end: {
+        anchor: this.hasExtend() ? CapItemId.EXTEND_AREA : CapItemId.ROOT_ID,
+        align: this.hasExtend() ? HorizontalAlign.Start : HorizontalAlign.End
+      },
+      center: {
+        anchor: CapItemId.ROOT_ID,
+        align: VerticalAlign.Center
+      }
+    } : {
       start: { anchor: CapItemId.ICON_AREA, align: HorizontalAlign.End },
       end: {
         anchor: this.hasExtend() ? CapItemId.EXTEND_AREA : CapItemId.ROOT_ID,
@@ -270,7 +288,11 @@ export struct ImmersiveCommonCapsule {
         align: this.isTitle(style) ? VerticalAlign.Top : VerticalAlign.Bottom
       }
     })
-    .margin({
+    .margin(style.isAodCenter ? {
+      start: LengthMetrics.vp(CapConst.CAPSULE_ICON_MARGIN),
+      end: LengthMetrics.vp(!this.hasExtend() ? CapConst.CAPSULE_GROUP_RIGHT_MARGIN : 0),
+      top: LengthMetrics.vp(CapConst.CAPSULE_MAIN_TEXT_MARGIN_TOP)
+    } : {
       start: LengthMetrics.vp(CapConst.CAPSULE_ICON_MARGIN),
       top: LengthMetrics.vp(this.isTitle(style) ? CapConst.CAPSULE_MAIN_TEXT_MARGIN_TOP :
       CapConst.CAPSULE_SECONDARY_TEXT_MARGIN_TOP),
@@ -312,11 +334,14 @@ export struct ImmersiveCommonCapsule {
       RelativeContainer() {
         Image(this.capsuleData?.getLargeIcon())
           .id(CapItemId.LARGE_ICON)
+          .colorFilter(this.capsuleData?.getLargeColorFilter(this.aodStyle?.isAod))
           .zIndex(CapConst.CAPSULE_LARGE_ICON_ZINDEX)
-          .opacity(WDefault.MAX_VALUE)
+          .opacity(this.aodStyle?.getNtfIconOpacity() ?? WDefault.MAX_VALUE)
           .iconAttrs()
           .iconStyles()
-        if (!(this.capsuleData?.overlayIconStyle === OverlayIconStyle.REVERSE)) {
+        if (this.capsuleData?.overlayIconStyle === OverlayIconStyle.REVERSE) {
+          ImmersiveDeliverBadge()
+        } else {
           Column()
             .zIndex(CapConst.CAPSULE_SMALL_MASK_ZINDEX)
             .width(CapConst.CAPSULE_EXTEND_SMALL_ICON_SPECS)
@@ -330,10 +355,11 @@ export struct ImmersiveCommonCapsule {
               start: LengthMetrics.vp(CapConst.CAPSULE_SMALL_ICON_MARGIN),
               top: LengthMetrics.vp(CapConst.CAPSULE_SMALL_ICON_MARGIN)
             })
-            .visibility(Visibility.Hidden)
+            .visibility(this.aodStyle?.isAod ? Visibility.Visible : Visibility.Hidden)
+            .backgroundColor(this.aodStyle?.getStyleValue(AodStyleType.BACKGROUND_COLOR))
           Image(this.capsuleData?.getSmallIcon())
             .zIndex(CapConst.CAPSULE_SMALL_ICON_ZINDEX)
-            .opacity(WDefault.MAX_VALUE)
+            .opacity(this.aodStyle?.getNtfIconOpacity() ?? WDefault.MAX_VALUE)
             .width(CapConst.CAPSULE_EXTEND_SMALL_ICON_SPECS)
             .height(CapConst.CAPSULE_EXTEND_SMALL_ICON_SPECS)
             .borderRadius(CapConst.CAPSULE_EXTEND_SMALL_ICON_RADIUS)
@@ -360,12 +386,13 @@ export struct ImmersiveCommonCapsule {
     } else {
       Image(this.capsuleData?.getLargeIcon())
         .id(CapItemId.ICON_AREA)
+        .colorFilter(this.capsuleData?.getLargeColorFilter(this.aodStyle?.isAod))
         .iconAttrs()
         .iconStyles()
         .accessibilityLevel(this.capsuleData?.shouldShowInImmersiveCard() ? 'yes' : 'no')
         .accessibilityText(this.capsuleData?.shouldShowInImmersiveCard() ? (this.capsuleData?.appName ?? '') : '')
         .onClick(this.capsuleData?.shouldShowInImmersiveCard() ? this.capsuleStyle.onIconClick : undefined)
-        .opacity(undefined)
+        .opacity(this.aodStyle?.isAod ? this.aodStyle.getStyleValue(AodStyleType.NTF_APP_ICON_ALPHA) : undefined)
     }
   }
 
@@ -379,7 +406,7 @@ export struct ImmersiveCommonCapsule {
             progressData: this.capsuleData.liveProgress,
             extendStyle: this.extendStyle
           })
-            .opacity(1)
+            .opacity(this.aodStyle?.isAod ? this.aodStyle.getStyleValue(AodStyleType.NTF_EXTEND_VIEW_ALPHA_CONTENT) : 1)
         }
         if (this.hasButton()) { // 按钮
           ForEach(this.capsuleData.getButtonData(this.capsuleStyle.btnCount), (btn: LiveButtonData) => {
@@ -388,6 +415,7 @@ export struct ImmersiveCommonCapsule {
               buttonData: btn,
               extendStyle: this.extendStyle,
               isDarkMode: this.darkMode.isDarkMode,
+              isAod: this.aodStyle?.isAod ?? false,
               isNotBorder: true,
               bgBrightnessOption: this.getButtonBrightness(),
               isBrightnessDisable: this.isEnableSolid,
@@ -445,12 +473,14 @@ export struct ImmersiveCommonCapsule {
     } else { // 普通文本标题
       this.FadeTextView({
         textId: CapItemId.TITLE_TEXT,
-        mainText: this.capsuleData?.getTitle(this.templateTime, this.capsuleData?.liveView?.creatorBundleName),
+        mainText: this.capsuleData?.getTitle(this.templateTime, this.capsuleData?.liveView?.creatorBundleName,
+          this.aodStyle?.isAod),
         mainTextColor: this.getMainTextColor(),
         mainTextWeight: FontWeight.Medium,
         mainTextSize: CapConst.CAPSULE_MAIN_TEXT_FONT_SIZE,
         mainMinFontSize: CapConst.CAPSULE_SECONDARY_TEXT_FONT_SIZE,
         isMainText: true,
+        isAodCenter:this.getAodCenterLayout(true)
       })
     }
     // 副文本
@@ -460,11 +490,13 @@ export struct ImmersiveCommonCapsule {
     } else { // 普通文本副文本
       this.FadeTextView({
         textId: CapItemId.CONTENT_TEXT,
-        mainText: this.capsuleData?.getContent(this.templateTime, this.capsuleData?.liveView?.creatorBundleName),
+        mainText: this.capsuleData?.getContent(this.templateTime, this.capsuleData?.liveView?.creatorBundleName,
+          this.aodStyle?.isAod),
         mainTextColor: this.getSecondaryTextColor(),
         mainTextWeight: FontWeight.Regular,
         mainTextSize: CapConst.CAPSULE_SECONDARY_TEXT_FONT_SIZE,
         isMainText: true,
+        isAodCenter: this.getAodCenterLayout()
       })
     }
   }
@@ -540,6 +572,9 @@ export struct ImmersiveCommonCapsule {
    * @returns 主文本
    */
   private getMainTextBrightness(style: CapFadeTextStyle): BrightnessOptions | undefined {
+    if (this.aodStyle?.isAod) {
+      return BrightnessOptionUtils.aodTimeLightOptionForFillColor;
+    }
 
     if (this.isEnableSolid || !this.enableBright) {
       return undefined;
@@ -549,6 +584,10 @@ export struct ImmersiveCommonCapsule {
   }
 
   private getMainTextColor(): ResourceColor | undefined {
+    if (this.aodStyle?.isAod) {
+      return this.aodStyle?.getStyleValue(AodStyleType.CAPSULE_MAIN_FONT_COLOR);
+    }
+
     if (this.isEnableSolid) {
       return this.contentBrightArgs?.getSolidColor();
     }
@@ -567,6 +606,9 @@ export struct ImmersiveCommonCapsule {
    * @returns 主文本
    */
   private geSecondTextBrightness(style: CapFadeTextStyle): BrightnessOptions | undefined {
+    if (this.aodStyle?.isAod) {
+      return BrightnessOptionUtils.aodTimeLightOptionForFillColor;
+    }
 
     if (this.isEnableSolid || !this.enableBright) {
       return undefined;
@@ -576,6 +618,9 @@ export struct ImmersiveCommonCapsule {
   }
 
   private getSecondaryTextColor(): ResourceColor | undefined {
+    if (this.aodStyle?.isAod) {
+      return this.aodStyle?.getStyleValue(AodStyleType.CAPSULE_MAIN_FONT_COLOR);
+    }
     if (this.isEnableSolid) {
       return this.shadowBrightArgs?.getSolidColor();
     }
@@ -602,9 +647,13 @@ export struct ImmersiveCommonCapsule {
   }
 
   /**
+   * aod模式 胶囊状态下, 实况辅助区文字提亮: aodTimeLightOptionForFillColor
    * 胶囊状态下, 实况辅助区文字提亮: immersiveCapTextLightOption/immersiveCapTextDarkOption
    */
   private getCapTextBrightness(): BrightnessOptions | undefined {
+    if (this.aodStyle?.isAod) {
+      return BrightnessOptionUtils.aodTimeLightOptionForFillColor;
+    }
 
     if (this.isEnableSolid || !this.enableBright) {
       return undefined;
@@ -618,6 +667,9 @@ export struct ImmersiveCommonCapsule {
    * 实况辅助区文字纯色
    */
   private getCapTextColor(): ResourceColor | undefined {
+    if (this.aodStyle?.isAod) {
+      return this.aodStyle?.getStyleValue(AodStyleType.CAPSULE_MAIN_FONT_COLOR);
+    }
 
     if (this.isEnableSolid) {
       return this.supportTextBrightArgs?.getSolidColor() ?? $r('app.color.immersive_capsule_default2');
@@ -654,6 +706,7 @@ export struct ImmersiveCommonCapsule {
   }
 
   /**
+   * aod模式 胶囊状态下, 实况辅助区背板提亮: aodTimeLightOptionForButtonBgColor
    * 胶囊状态下, 实况辅助区按钮背板提亮: immersiveCapBgcDarkOption/immersiveCapBgcLightOption
    */
   private getSupportBgBright(): BrightnessOptions | undefined {
@@ -669,6 +722,9 @@ export struct ImmersiveCommonCapsule {
    * 实况辅助区背板纯色
    */
   private getSupportBgColor(): ResourceColor | undefined {
+    if (this.aodStyle?.isAod) {
+      return this.aodStyle?.getStyleValue(AodStyleType.CAPSULE_MAIN_FONT_COLOR);
+    }
 
     if (this.isEnableSolid) {
       return this.supportBackBrightArgs?.getSolidColor();
@@ -679,6 +735,20 @@ export struct ImmersiveCommonCapsule {
     return this.isDarken ? $r('app.color.immersive_capsule_default') : $r('app.color.immersive_capsule_default2');
   }
 
+  /**
+   * 获取是否AOD下含计时器胶囊主副文本居中布局
+   *
+   * @param  isTitle 是否是标题
+   * @returns 是否AOD文本居中布局
+   */
+  private getAodCenterLayout(isTitle?: boolean): boolean | undefined {
+    if (isTitle) {
+      return this.capsuleData?.hasTimer() && !this.capsuleData?.isHideContent &&
+      this.capsuleData?.isTimerInContent() && this.aodStyle?.isAod;
+    }
+    return this.capsuleData?.hasTimer() && !this.capsuleData?.isHideContent &&
+    this.hasTimerInTitle() && this.aodStyle?.isAod;
+  }
 }
 
 @Extend(Image)

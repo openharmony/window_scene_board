@@ -1,4 +1,4 @@
-{
+﻿{
     "string":[
         {
             "name":"accessibility_status_bar_wifi_no",
@@ -69,6 +69,14 @@
             "attr":{
                 "priority":"translate"
             }
+        },
+        {
+            "name":"control_center_anti_theft_for_toggle",
+            "value":"هذه العملية غير متاحة على جهاز العرض",
+            "attr":{
+                "priority":"LT"
+            }
         }
+
     ]
 }

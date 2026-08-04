@@ -60,6 +60,7 @@ export { SCBSceneSessionManager,
   PreferMultiWindowOrientation,
   UserSwitchEventType,
   UIEffectZOrderType,
+  DragActivateScenario,
 } from './scene/session/SCBSceneSessionManager';
 
 export type {
@@ -188,29 +189,9 @@ export {
   SCBDefaultOrientationPolicy
 } from './scene/session/SCBSceneOrientationPolicy';
 
-export { SCBKeyboardPanelSession,
-  KEYBOARD_PRIVATE_COMMAND_KEYS,
-  PatternAction } from './scene/session/SCBKeyboardPanelSession';
+export { SCBKeyboardPanelSession } from './scene/session/SCBKeyboardPanelSession';
 
-export {
-  TOOLBAR_FLOAT_HEIGHT,
-  FOLD_EXPAND_TOOLBAR_HEIGHT,
-  FOLD_EXPAND_TOOLBAR_LAND_WIDTH,
-  FOLD_EXPAND_TOOLBAR_WIDTH,
-  PHONE_ONE_HANDED_WIDTH,
-  PHONE_TOOLBAR_LANDSCAPE_HEIGHT,
-  PHONE_TOOLBAR_PORTRAIT_WIDTH,
-  PHONE_TOOLBAR_PORTRAIT_WIDTH_FLOAT,
-  PHONE_TOOLBAR_PORTRAIT_HEIGHT,
-  PHONE_TOOLBAR_IMAGE_MARGIN,
-  PHONE_TOOLBAR_LANDSCAPE_IMAGE_MARGIN,
-  FOLD_EXPAND_TOOLBAR_IMAGE_MARGIN,
-  TOOLBAR_FLOAT_IMAGE_MARGIN,
-  SCBKeyboardPanelManager } from './scene/session/SCBKeyboardPanelManager';
-
-export type { KeyboardBarOption, KeyboardBarParams } from './scene/session/SCBKeyboardPanelManager';
-
-export type { SmartMenuItem, SmartMenu, MenuAction, Parameters } from './scene/session/SCBKeyboardPanelSession';
+export { SCBKeyboardPanelManager } from './scene/session/SCBKeyboardPanelManager';
 
 export { StartAbilityUtil } from './startAbility/StartAbilityUtil';
 
@@ -340,7 +321,7 @@ export { ResUtils } from './utils/ResourceUtils';
 
 export { launcherStatusUtil } from './utils/LauncherStatusUtil';
 
-export { AIBarConstants } from './recent/constants/AIBarConstants';
+export { NAVIBarConstants } from './recent/constants/NAVIBarConstants';
 
 export { SCBScreenDebugCommands } from './scene/dump/SCBScreenDebugCommands';
 
@@ -378,7 +359,7 @@ export { NodeBuildParams } from './animation/NodeBuildParams';
 
 export { PreferenceStore } from './db/PreferenceStore';
 
-export { StartMode } from './scene/common/SCBSceneEnums';
+export { StartMode, BackgroundReason } from './scene/common/SCBSceneEnums';
 
 export { SCBSceneResourceManager, SceneResourceType } from './scene/manager/SCBSceneResourceManager';
 

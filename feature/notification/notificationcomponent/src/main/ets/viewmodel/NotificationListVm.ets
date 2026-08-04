@@ -49,6 +49,7 @@ import { DeviceModeEnum } from '@ohos/commonconstants';
 import { NotificationStyle } from '../constants/NotificationStyle';
 import { NtfAnimationConsts } from '../common/NtfAnimationConsts';
 import { performanceMonitor } from '@kit.ArkUI';
+import { OutdoorVm } from '@ohos/systemuicommon/src/main/ets/vm/OutdoorVm';
 
 const TAG = 'NotificationListVm';
 const log = LogHelper.getLogHelper(LogDomain.NC, TAG);
@@ -164,6 +165,10 @@ export class NotificationListVm extends NotificationDataVm implements INotificat
     log.showInfo('onClick, hide panel');
     DropdownVm.instance.hidePanel(true);
   }
+  /**
+   * 云端模式
+   */
+  protected outdoorVm = OutdoorVm.instance;
   /**
    * 面板隐藏时，如果组通知只有一条通知则取消组通知
    * @returns
@@ -781,6 +786,10 @@ export class NotificationListVm extends NotificationDataVm implements INotificat
    * @returns 是：需要过滤 否：不需要过滤
    */
   protected isNeedFilter(ntf: NotificationBase, ignoreGroupKeyMap?: Map<string, boolean>): boolean {
+    // 云端模式下过滤白名单应用通知和实况
+    if (!this.outdoorVm.isInOutdoorAppList(ntf)) {
+      return true;
+    }
     //应急模式下仅展示实况或白名单应用
     if (DeviceInfoVm.instance.isEmergencyMode() &&
       (!ntf.isLiveView() && !this.deviceInfoVm.emergencyModelTrustAppList.includes(ntf.creatorBundleName))) {
@@ -842,6 +851,12 @@ export class NotificationListVm extends NotificationDataVm implements INotificat
       await SystemUICommonUtil.sleep(DEVICE_MODE_CHANGE_NTF_DELAY);
     }
 
+    this.updateNtf({ updateType: UpdateType.DEVICE_MODE_CHANGE });
+  }
+
+  @Monitor('outdoorVm.isInOutdoorMode', 'outdoorVm.outdoorAppList')
+  onOutdoorModeChange(): void {
+    log.showInfo(`onOutdoorModeChange: ${this.outdoorVm.isInOutdoorMode}`);
     this.updateNtf({ updateType: UpdateType.DEVICE_MODE_CHANGE });
   }
 

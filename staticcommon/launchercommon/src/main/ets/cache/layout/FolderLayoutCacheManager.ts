@@ -25,7 +25,7 @@ import { BaseLayoutCacheManager } from './BaseLayoutCacheManager';
 import { DesktopLayoutCacheData } from './DesktopLayoutCacheData';
 import { ILayoutCacheManager } from './ILayoutCacheManager';
 import { LauncherLayoutCacheUtil } from './LauncherLayoutCacheUtil';
-import { GridLayoutUtil, PageDesktopModel, RdbStoreManager,
+import { DeliverUtil, GridLayoutUtil, PageDesktopModel, RdbStoreManager,
   DockItemInfo,
   NotHarmonyUtil,
   ResidentLayoutCacheMgr,
@@ -175,7 +175,11 @@ export class FolderLayoutCacheManager extends BaseLayoutCacheManager implements 
         folderPage.filter(itemInPage => itemInPage.typeId !== CommonConstants.TYPE_APP ||
           itemInPage.appStatus !== AppStatus.INSTALLED ||
         installedAppInfoList.some(app => {
-          return app.keyName === itemInPage.keyName;
+          if (DeliverUtil.isContainerItem(item.intent)) {
+            return app.bundleName === itemInPage.bundleName;
+          } else {
+            return app.keyName === itemInPage.keyName;
+          }
         })
         ));
         if (item.layoutInfo.flat().length >= CommonConstants.FOLDER_APP_VALUE &&
@@ -191,8 +195,13 @@ export class FolderLayoutCacheManager extends BaseLayoutCacheManager implements 
           NotHarmonyUtil.setNotHarmonyFolderId(item.folderId ?? '');
           NotHarmonyUtil.queryAndLightDeliverApp(item.layoutInfo?.flat());
         }
+        if (item.layoutInfo.flat().length >= CommonConstants.FOLDER_APP_VALUE &&
+        DeliverUtil.isContainerItem(item.intent)) {
+          log.showInfo('init custom folder in desktop');
+          DeliverUtil.setContainerFolderMapInDesktop(item);
+        }
         let isCanHaveOneAppFolder = item.layoutInfo.flat().length === CommonConstants.FOLDER_APP_VALUE &&
-        NotHarmonyUtil.isNotHarmonyFolderById(item?.folderId);
+          (DeliverUtil.isContainerFolder(item?.folderId) || NotHarmonyUtil.isNotHarmonyFolderById(item?.folderId));
         let isFolder = item.layoutInfo.flat().length > CommonConstants.FOLDER_APP_VALUE || isCanHaveOneAppFolder;
         if (isFolder) {
           folderList.push(item);
@@ -829,8 +838,12 @@ export class FolderLayoutCacheManager extends BaseLayoutCacheManager implements 
   }
 
   private updateAddIcon(folderId: string, folderItem: GridLayoutItemInfo): void {
-    if (GridLayoutUtil.isSmallFolder(folderItem)) {
+    if (!DeliverUtil.isContainerFolder(folderId) || GridLayoutUtil.isSmallFolder(folderItem)) {
       return;
+    }
+    if (FolderManager.getInstance().getOpenFolderId() === folderId &&
+      AppStorage.get<boolean>('isAddIconHidden') === false) {
+      DeliverUtil.addAddIcon(folderItem, 'updateFolderLayoutInfoByFolderId');
     }
   }
 
@@ -981,6 +994,46 @@ export class FolderLayoutCacheManager extends BaseLayoutCacheManager implements 
   }
 
   /**
+   * 仅备份场景使用，插入应用到文件夹
+   *
+   * @param folderId 文件夹id
+   * @param appItem 应用的item
+   * @param label 业务标识
+   */
+  insertAppItemToFolder(folderId: string, appItem: GridLayoutItemInfo | undefined, label: string): void {
+    log.showInfo('insertAppItemToFolder folderId: %{public}s, from %{public}s', folderId, label);
+    let griLayoutItemList = this.layoutCacheData.getGridLayoutItemList(false);
+    if (!appItem || appItem.page === undefined || appItem.page < 0 || !appItem.bundleName) {
+      log.error('insert to folder failure as the app item is invalid');
+      return;
+    }
+    let filter =
+      (item: GridLayoutItemInfo): boolean => item.folderId === folderId && item.typeId === CommonConstants.TYPE_FOLDER;
+    let folderItem: GridLayoutItemInfo | undefined = griLayoutItemList.find(filter);
+    if (!folderItem) {
+      log.showError('add to folder failure as the folder id %{public}s is not exist', folderId);
+      return;
+    }
+    this.insertAppItemToFolderCache(folderItem, appItem);
+    log.showInfo('addInfoToFolder bundleName = %{public}s, page = %{public}d, row = %{public}d, col = %{public}d, container = %{public}d',
+      appItem.bundleName, appItem.page, appItem.row, appItem.column, folderItem.id);
+    AppStorage.set<boolean>('isAddDeliveAppToFolder', true);
+    const items: GridLayoutItemInfo[] = (folderItem.layoutInfo?.flat() ?? []).concat(appItem);
+    FolderManager.getInstance().updateFolderItems('insert app to folder for container folder', folderItem, items);
+    this.layoutCacheData.updateLayoutListCacheAndPrebuild(griLayoutItemList, false);
+    try {
+      if (!folderItem.id) {
+        this.waitAddFordleInfos.push(appItem);
+        return;
+      }
+      appItem.container = folderItem.id;
+      LauncherLayoutCacheUtil.insertGridLayoutListCallBack([appItem], false);
+    } catch (error) {
+      log.showError('insertAppItemToFolder with error %{public}s', error.message);
+    }
+  }
+
+  /**
    * 当文件夹id落库后，落库前收集的没有container的应用列表waitAddFordleInfos需要写入对应文件夹并写入数据库
    *
    * @param folderIntent 文件夹inetnt
@@ -992,6 +1045,13 @@ export class FolderLayoutCacheManager extends BaseLayoutCacheManager implements 
         return;
       }
       let targetInfo: GridLayoutItemInfo[] = [];
+      for (const item of this.waitAddFordleInfos) {
+        if (DeliverUtil.getInstallSourceByIntent(item.intent ?? '') ===
+          DeliverUtil.getInstallSourceByIntent(folderIntent)) {
+          item.container = container;
+          targetInfo.push(item);
+        }
+      }
       this.waitAddFordleInfos = this.waitAddFordleInfos.filter(waitAppItem =>
       !targetInfo.some(targetAppItem => targetAppItem.bundleName === waitAppItem.bundleName));
       log.info('insertAppToFolderWithoutContainer waitAddFordleInfoslength = %{public}d, targetInfolength = %{public}d',
@@ -1148,7 +1208,8 @@ export class FolderLayoutCacheManager extends BaseLayoutCacheManager implements 
       return false;
     }
     for (let i = 0; i < allFolders.length; i++) {
-      if (NotHarmonyUtil.isNotHarmonyFolderById(allFolders[i].folderId)) {
+      if (DeliverUtil.isContainerFolder(allFolders[i].folderId) ||
+      NotHarmonyUtil.isNotHarmonyFolderById(allFolders[i].folderId)) {
         let findResult: boolean = allFolders[i].layoutInfo?.flat().findIndex(item => item.bundleName === bundleName &&
           item.typeId === CommonConstants.TYPE_APP) !== CommonConstants.INVALID_VALUE;
         if (findResult) {

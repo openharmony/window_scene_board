@@ -54,6 +54,7 @@ import { themeInfoService } from './ThemeInfoServiceImpl';
 import { tsTimer } from './TsTimerImpl';
 import { ThemePackageInstaller } from './activate/installer/ThemePackgeInstaller';
 import { RemoteCode } from '@ohos/themeservicebase/src/main/ets/remote/RemoteCode';
+import { CloudUtils } from '@ohos/themeservicebase';
 
 const TAG: string = 'ThemeTrialServiceImpl';
 
@@ -237,8 +238,8 @@ export class ThemeTrialServiceImpl implements ThemeTrialService {
   async onInit(): Promise<void> {
     // 获取当前试用主题/字体信息
     let trialCacheData: NullableType<TrialCacheData> = await ThemeTrialCache.getInstance().get();
-    if (!trialCacheData) { // 当前不存在试用主题/字体
-      TsLog.info(TAG, `onInit Delay check trial expire not need, no trialCacheData.`);
+    if (CloudUtils.isInCloudMode() || !trialCacheData) { // 当前不存在试用主题/字体 或处于云端模式
+      TsLog.info(TAG, `onInit Delay check trial expire not need, in cloud or no trialCacheData.`);
       return;
     }
     TsLog.info(TAG, `onInit, Delay check trial expire`);
@@ -853,7 +854,7 @@ export class ThemeTrialServiceImpl implements ThemeTrialService {
   }
 
   async stopTimer(): Promise<void> {
-    TsLog.info(TAG, `stopTimer`);
+    TsLog.info(TAG, `stopTimer because cloud enter`);
     let trialCacheData: Nullable<TrialCacheData> = await ThemeTrialCache.getInstance().get();
     if (!trialCacheData) {
       TsLog.info(TAG, `stopTimer return. no trialCacheData`);
@@ -863,7 +864,7 @@ export class ThemeTrialServiceImpl implements ThemeTrialService {
   }
 
   async restartTimer(): Promise<void> {
-    TsLog.info(TAG, `restartTimer`);
+    TsLog.info(TAG, `restartTimer because cloud exit`);
     let trialCacheData: Nullable<TrialCacheData> = await ThemeTrialCache.getInstance().get();
     if (!trialCacheData) {
       TsLog.info(TAG, `restartTimer return. no trialCacheData`);

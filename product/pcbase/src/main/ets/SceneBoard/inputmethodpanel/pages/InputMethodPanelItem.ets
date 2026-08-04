@@ -86,6 +86,12 @@ export default struct InputMethodPanelItem {
     if (this.inputMethodItem != undefined) {
       log.showInfo(`updateMethodList, inputMethodItem:${JSON.stringify(this.inputMethodItem)}`);
       log.showInfo(`updateMethodList, mCurrentInputMethodSubtype:${JSON.stringify(this.mCurrentInputMethodSubtype)}`);
+
+      // 如果是语音助手输入法，将icon图标替换为symbol图标
+      if (this.inputMethodItem?.vType === 'InputMethodInfo' &&
+        (this.inputMethodItem as InputMethodInfo).property?.name === 'com.ohos.inputmethod') {
+        this.inputMethodUseSymbolIcon = true;
+      }
       ViewModel.updateIcon(this.inputMethodItem, (image: image.PixelMap) => this.iconLoadCallback(image));
       ViewModel.updateTitle(this.inputMethodItem, (title: string) => this.titleLoadCallback(title));
     }
@@ -131,7 +137,7 @@ export default struct InputMethodPanelItem {
   titleLoadCallback(title: string) {
     log.showInfo(`title:${title}, inputMethodItem:${this.inputMethodItem}`);
     this.mKey = title;
-    this.mTitle = title;
+    this.mTitle = this.isReCommendInputMethod(title) ? $r('app.string.suffix_recommend', title) : title;
   }
 
   buildLog(inputMethodItem?: InputMethodItemType): boolean {
@@ -155,6 +161,10 @@ export default struct InputMethodPanelItem {
   private updateInputMethodItem(inputMethodInfo: InputMethodItemType) {
     this.inputMethodItem = inputMethodInfo;
     this.loadInputMethodItem(this.inputMethodItem);
+  }
+
+  private isReCommendInputMethod(title: string): boolean {
+    return title === ResUtils.getInnerString(Constants.RECOMMEND_INPUT_METHOD);
   }
 
   private getIconSize() {
@@ -325,7 +335,7 @@ export default struct InputMethodPanelItem {
           .textOverflow({ overflow: TextOverflow.Ellipsis })
           .maxLines(1)
           .direction(RTLUtil.isRTL() ? Direction.Rtl : Direction.Ltr)
-          .wordBreak(WordBreak.BREAK_ALL)
+          .wordBreak(this.isReCommendInputMethod(this.mKey) ? WordBreak.NORMAL : WordBreak.BREAK_ALL)
 
         if (this.showMoreArrow) {
           Image(this.isArrowUp ? $r('sys.media.ohos_ic_public_arrow_up')

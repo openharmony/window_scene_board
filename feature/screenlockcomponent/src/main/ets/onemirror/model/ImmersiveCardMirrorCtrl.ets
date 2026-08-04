@@ -16,7 +16,7 @@ import { LogDomain, LogHelper } from '@ohos/basicutils';
 import { CardWgBindStateType } from '@ohos/screenlockcommon/src/main/ets/constants/SlStateType';
 import { WBaseProperty } from '@ohos/screenlockcommon';
 import { SlStateId } from '@ohos/screenlockcommon/src/main/ets/TsIndex';
-import { immersiveKgMgr } from '@ohos/systemuicommon/src/main/ets/TsIndex';
+import { ImmersiveAodStyle, immersiveKgMgr } from '@ohos/systemuicommon/src/main/ets/TsIndex';
 import { slStateHelper } from '../../screenlockstate/model/helper/SlStateHelper'
 import { MirrorAnimState, MirrorsScene, MirrorToEndConst } from '../constants/MirrorToEndConst';
 import { ImmersiveMirrorCtrl } from './ImmersiveMirrorCtrl';
@@ -24,8 +24,11 @@ import { ImmersiveMirrorCtrl } from './ImmersiveMirrorCtrl';
 const TAG = 'ImmersiveCardMirrorCtrl';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.KG, TAG);
 const NORMAL_ALPHA = 1;
+const AOD_CARD_ALPHA = 0.7;
+const AOD_CARD_PREVIEW_ALPHA = 0.4;
 
 export class ImmersiveCardMirrorCtrl extends ImmersiveMirrorCtrl {
+  private aodStyle: ImmersiveAodStyle | undefined = immersiveKgMgr.getOneMirrorState().getAodStyle(true);
 
   constructor() {
     super();
@@ -39,28 +42,48 @@ export class ImmersiveCardMirrorCtrl extends ImmersiveMirrorCtrl {
 
   setUiBindState(scene: string): void {
     log.showInfo(`setUiBindState=${scene}`);
-    if (scene === MirrorsScene.SCREEN_OFF_TO_SL_END) {
+    if (scene === MirrorsScene.AOD_TO_SL || scene === MirrorsScene.SCREEN_OFF_TO_SL_END) {
+      // 沉浸大卡只存在全屏AOD动效，v2以配置AOD状态过渡，无需管理动效
       if (!this.isV2()) {
         this.uiBindCtrl?.setSlState(CardWgBindStateType.BACKGROUND_ALPHA, NORMAL_ALPHA);
         this.uiBindCtrl?.setSlState(CardWgBindStateType.PREVIEW_ALPHA, NORMAL_ALPHA);
       }
     }
     if (this.isNeedChangeCardState(scene) && immersiveKgMgr.getImmersiveKeyguardState().immersiveState.isShowCard()) {
+      if (!this.isV2()) {
+        this.uiBindCtrl?.setSlState(CardWgBindStateType.BACKGROUND_ALPHA, AOD_CARD_ALPHA);
+        this.uiBindCtrl?.setSlState(CardWgBindStateType.PREVIEW_ALPHA, AOD_CARD_PREVIEW_ALPHA);
+      }
     }
   }
 
   setAnimState(scene: string): void {
     log.showInfo(`setAnimState state=${scene}`);
-    if (scene === MirrorsScene.SCREEN_OFF_TO_SL) {
+    if (scene === MirrorsScene.DESKTOP_TO_AOD || scene === MirrorsScene.SL_TO_AOD ||
+      scene === MirrorsScene.SCREEN_OFF_TO_SL) {
+      if (!this.isV2()) {
+        this.animCtrl?.setStateValue(WBaseProperty.ALPHA, AOD_CARD_ALPHA);
+        this.animCtrl?.setStateValue(WBaseProperty.LIGHT_UP_EFFECT, AOD_CARD_PREVIEW_ALPHA);
+      }
+      if (this.aodStyle) {
+        this.aodStyle.isKgWallpaperLight = true;
+      }
       return;
     }
 
-    if (scene === MirrorAnimState.START) {
+    if (scene === MirrorsScene.DESKTOP_TO_AOD + MirrorAnimState.START) {
+      if (!this.isV2()) {
+        this.animCtrl?.setStateValue(WBaseProperty.ALPHA, AOD_CARD_ALPHA);
+        this.animCtrl?.setStateValue(WBaseProperty.LIGHT_UP_EFFECT, AOD_CARD_PREVIEW_ALPHA);
+      }
     } else {
       if (!this.isV2()) {
         this.animCtrl?.setStateValue(WBaseProperty.ALPHA, NORMAL_ALPHA);
         this.animCtrl?.setStateValue(WBaseProperty.LIGHT_UP_EFFECT, NORMAL_ALPHA);
       }
+    }
+    if (this.aodStyle) {
+      this.aodStyle.isKgWallpaperLight = true;
     }
   }
 

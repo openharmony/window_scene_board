@@ -53,7 +53,11 @@ export class NormalNotificationGroup extends NotificationBase {
     this.isOngoing = ntf.isOngoing;
     this.isDisplayAtTop = ntf.isDisplayAtTop;
     this.isShowStatusBarIcon = ntf.isShowStatusBarIcon;
+    this.isDeliverNotification = ntf.isDeliverNotification;
     this.overlayIconStyle = ntf.overlayIconStyle;
+    if (this.isDeliverNotification) {
+      this.deliverNotificationKey = ntf.deliverNotificationKey;
+    }
     this.isCollaNotification = ntf.isCollaNotification;
     this.isSettingIgnore = ntf.isSettingIgnore;
     this.category = ntf.category;

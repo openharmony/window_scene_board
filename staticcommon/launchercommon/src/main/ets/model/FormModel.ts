@@ -19,7 +19,7 @@ import bundleManager from '@ohos.bundle.bundleManager';
 import { promptAction } from '@kit.ArkUI';
 import formHost from '@ohos.app.form.formHost';
 import { systemParameter } from '@kit.BasicServicesKit';
-// import cloudCapabilityManager from '@hms.core.deviceCloudGateway.cloudCapabilityManager';
+// import cloudCapabilityManager from '@ohos.core.deviceCloudGateway.cloudCapabilityManager';
 import {
   LogDomain,
   LogHelper,
@@ -55,7 +55,8 @@ import {
   FormCommonUtil,
   LaunchLayoutCacheManager,
   ReceiveEventInfo,
-  SettingsModel
+  SettingsModel,
+  FormRelationManager,
 } from '../TsIndex';
 import { NoIconAppModel } from './NoIconAppModel';
 
@@ -75,6 +76,9 @@ export const enum FormModelValidCardType {
   INTELLIGENT = 'Intelligent',
 
   /**
+   * 语音助手建议
+   */
+  /**
    * 简易模式/小外屏等独立布局表
    */
   RDB_GRIDLAYOUT_TABLE_INDEPENDENT = 'RdbGridLayoutTableIndependent',
@@ -88,6 +92,11 @@ export const enum FormModelValidCardType {
    * qxs pc模式下卡片
    */
   QXS_PC_MODE_CARD = 'QxsPcModeCard',
+
+  /**
+   * 户外模式模式下的卡片
+   */
+  OUTDOOR_CARD = 'OutdoorCard'
 }
 
 /**
@@ -1242,8 +1251,8 @@ export class FormModel {
   }
 
   public isSupportFormCenterSplit(): boolean {
-    // 目前支持分栏样式设备,大折叠展开态、PAD、PC、超大屏G态和M态
-    if (DeviceHelper.isUltraScreenProduct()) {
+    // 目前支持分栏样式设备,大折叠展开态、PAD、PC、三折叠G态和M态
+    if (DeviceHelper.isThreeFoldProduct()) {
       return DeviceHelper.isGState() || DeviceHelper.isMState();
     }
     if (DeviceHelper.isPad() || DeviceHelper.isPC() ||
@@ -1315,6 +1324,11 @@ export class FormModel {
   }
 
   private async checkNormalCard(layoutItem: GridLayoutItemInfo, bundleNameSet: Set<String>): Promise<number> {
+    if (FormRelationManager.getInstance().isSceneBoardCard(layoutItem.bundleName, layoutItem.cardName)) {
+      // 不克隆旧机占位卡
+      log.showWarn('placeholder card not surrprt clone');
+      return CardCloneStatus.ABNORMAL_WITHOUT_CARD;
+    }
     const cards: CardItemInfo[] = await this.getFormsInfoByBundleName(layoutItem.bundleName);
     if (CheckEmptyUtils.isEmptyArr(cards)) {
       // 不具备添加bundleName应用所对应的一类卡片的能力

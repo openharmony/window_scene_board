@@ -104,7 +104,7 @@
             }
         },
         {
-            "name":"title_login_openharmony_account",
+            "name":"title_login_hw_account",
             "value":"“超级终端”需登录账号",
             "attr":{
                 "priority":"translate"

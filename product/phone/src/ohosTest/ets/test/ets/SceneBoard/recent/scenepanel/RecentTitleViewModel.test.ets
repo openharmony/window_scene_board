@@ -940,6 +940,9 @@ export default function RecentTitleViewModelTest() {
     })
 
     it('updateIconAndName_06', TestType.USER | Size.SMALLTEST | Level.LEVEL0, (): void => {
+      sceneAppInfo.bundleName = 'com.ohos.testapp';
+      sceneAppInfo.moduleName = 'entry';
+      sceneAppInfo.abilityName = 'com.ohos.testapp.MainAbility';
       let mocker: MockKit = new MockKit();
       let mockFunc: Function = mocker.mockFunc(resourceManager, resourceManager.isSCBInnerModule);
       when(mockFunc)(ArgumentMatchers.any).afterReturn(false);

@@ -68,7 +68,7 @@ export class FormWeeklyParams {
   // 预置卡片数
   public PRESETSNUM: number = -1;
 
-  // 升级替换卡片数
+  // 系统迁移替换卡片数
   public UPGRADENUM: number = -1;
 
   // 卡片来源

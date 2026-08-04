@@ -55,6 +55,11 @@ export class SystemuiConstants {
   static readonly INVOKE_APP_SUCCESS: number = 0;
 
   /**
+   * deliverPush 通知 SystemUI 拉起三方应用 成功时 调用push 的 code
+   */
+  static readonly INVOKE_APP_BY_ZYT_SUCCESS: number = 2;
+
+  /**
    * push 通知 SystemUI 拉起三方应用 失败时 调用push 的 code
    */
   static readonly INVOKE_APP_FAIL: number = 1;
@@ -80,9 +85,34 @@ export class SystemuiConstants {
   static readonly KEY_INVOKE_PUSH_WANT_PARAMETERS_DESC: string = 'desc';
 
   /**
+   * deliverPush pushDeliverWantAgentInfo 参数 key
+   */
+  static readonly KEY_PUSH_DELIVER_WANT_AGENT_INFO: string = 'pushDeliverWantAgentInfo';
+
+  /**
+   * deliverPush跳转参数 key
+   */
+  static readonly KEY_PUSH_DELIVER_LAUNCH_INFO: string = 'pushDeliverLaunchInfo';
+
+  /**
+   * deliverPush点击事件
+   */
+  static readonly DELIVER_CLICK_ACTION: string = 'event.deliver.notification.click';
+
+  /**
    * Default invalid value.
    */
   static INVALID_VALUE = -1;
+
+  /**
+   * 克隆应用正式包名
+   */
+  static DELIVER_APP_BUNDLE_NAME_REAL = 'com.deliver.tong';
+
+  /**
+   * 克隆应用能力名称
+   */
+  static DELIVER_APP_ABILITY_NAME = 'EntryAbility';
 
   //手机重启时，消息deliveryTime与当前时间的间隔阈值
   public static readonly LIVE_TIME_DIFF = 30000;

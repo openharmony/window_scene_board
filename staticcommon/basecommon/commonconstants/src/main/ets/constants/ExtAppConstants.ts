@@ -201,9 +201,9 @@ export class ExtAppConstants {
   static readonly ABILITY_AUDIO_ACCESSORY_MANAGER: string = 'DeviceDetailAbility';
 
   /**
-   * OpenHarmony键 ability
+   * 系统键 ability
    */
   static readonly ohosKEY_ABILITYNAME: string = 'HosKeyServiceAbility';
-  static readonly ohosKEY_BUNDLENAME: string = 'com.ohos.harmonykey';
+  static readonly ohosKEY_BUNDLENAME: string = 'com.ohos.systemkey';
   static readonly ohosKEY_MODULENAME: string = 'pc';
 }

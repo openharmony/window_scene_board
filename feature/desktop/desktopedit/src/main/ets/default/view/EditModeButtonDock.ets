@@ -60,12 +60,7 @@ const BUTTON_ITEM_LIST: ButtonModel[] = [
     key: EditModeDockConstants.ICON_KEY,
     name: EditModeDockConstants.ICON_KEY,
     icon: 'square_fill_grid_2x2'
-  },
-  {
-    key: EditModeDockConstants.THEME_KEY,
-    name: EditModeDockConstants.THEME_KEY,
-    icon: 'brush_fill'
-  },
+  }
 ];
 
 const BUTTON_ITEM_LIST_2D: ButtonModel[] = [
@@ -222,7 +217,7 @@ struct EditModeButtonList {
   }
 
   aboutToDisappear(): void {
-    GlobalContext.getContext()?.eventHub.emit('AiBarUseAppColor', false);
+    GlobalContext.getContext()?.eventHub.emit('NaviBarUseAppColor', false);
     GlobalContext.getContext()?.eventHub.off(EventConstants.EVENT_UPDATE_PAGE_FOCUS, this.onUpdatePageFocus);
   }
 

@@ -96,6 +96,8 @@ export class SlClockBindState extends WidgetBindState<ClockBindStateType> {
   @Track private topDynamicMargin: number = 0;
   // 缓存时钟展开样式的上边距动态偏移
   @Track private topExpandDynamicMargin: number = 0;
+  // 时钟电池显示模式
+  @Track private batteryLayout: BatteryLayout = BatteryLayout.FULL_AOD_LAYOUT;
   // 外层时钟组件偏移
   @Track private clockViewOffset: Position = { x: 0, y: 0 };
   // 时钟是否是AOD展开态显示
@@ -173,7 +175,14 @@ export class SlClockBindState extends WidgetBindState<ClockBindStateType> {
   }
 
   public setBatteryLayout(displayModel: BatteryLayout): SlClockBindState {
+    if (this.batteryLayout !== displayModel) {
+      this.batteryLayout = displayModel;
+    }
     return this;
+  }
+
+  public getBatteryLayout(): BatteryLayout | undefined {
+    return this.batteryLayout;
   }
 
   public setBackgroundColor(color: ResourceColor): SlClockBindState {

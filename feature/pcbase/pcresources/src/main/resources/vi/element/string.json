@@ -1,0 +1,11 @@
+{
+  "string":[
+    {
+      "name":"low_battery_tip",
+      "value":"Pin chỉ còn %s. Hãy cắm sạc máy tính hoặc chuyển sang chế độ Ngủ.",
+      "attr":{
+        "priority":"translate"
+      }
+    }
+  ]
+}

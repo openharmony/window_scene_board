@@ -98,9 +98,9 @@ export class FolderStyleManager {
     let folderConfig: ContractedFolderLayoutStyle = new ContractedFolderLayoutStyle();
     /* 初始化文件夹网格参数 */
     folderConfig.area = area;
-    folderConfig.backgroundRadius = this.getFolderRadiusByArea(area);
     folderConfig.backgroundWidth = this.getWidthByArea(area);
     folderConfig.backgroundHeight = this.getHeightByArea(area);
+    folderConfig.backgroundRadius = this.getFolderRadiusByArea(area);
     folderConfig.countInRow = this.getCountPerRowInFolder(area);
     folderConfig.countInColumn = this.getCountPerColumnInFolder(area);
     folderConfig.mGridGap = this.getFolderGridGap(area);
@@ -322,19 +322,25 @@ export class FolderStyleManager {
   }
 
   /**
-   * 根据area获取文件夹圆角
+   * 根据area获取文件夹圆角（收缩态文件夹外形；卡片圆角已与此解耦）
    *
    * @param area 文件夹大小
    * @returns 圆角值
    */
   public getFolderRadiusByArea(area?: number[]): number {
+    const folderWidth: number = this.getWidthByArea(area);
+    const folderHeight: number = this.getHeightByArea(area);
+    const shortSide: number = Math.min(folderWidth, folderHeight);
+    if (shortSide > 0) {
+      // 桌面文件夹外形圆形（1x1 正圆；1x2/2x1 为短边一半的胶囊）
+      return shortSide / StyleConstants.DEFAULT_2;
+    }
     if (!area || area.length <= 1) {
       return this.mBigFolderStyle.mFolderRadius;
     }
     if (area[0] === AreaSpan.SPAN_1.valueOf() && area[1] === AreaSpan.SPAN_1.valueOf()) {
       return this.mSmallFolderStyle.mSmallFolderRadius;
     }
-    // 1*2和2*1大文件和1*2卡片圆角保持一致
     if (area[0] === AreaSpan.SPAN_1.valueOf() || area[1] === AreaSpan.SPAN_1.valueOf()) {
       return this.getFormRadiusByDimension(CommonConstants.CARD_DIMENSION_1x2);
     }

@@ -486,7 +486,7 @@ export class FormLayoutCacheManager extends BaseLayoutCacheManager implements IL
     }
     let gridLayoutItemList: GridLayoutItemInfo[] = this.layoutCacheData.getGridLayoutItemList();
     let newGridLayoutItemList: GridLayoutItemInfo[] = gridLayoutItemList;
-    if (LauncherLayoutCacheUtil.getIsLazyRotate() && DeviceHelper.isBigScreenMachine()) {
+    if (LauncherLayoutCacheUtil.getIsLazyRotate() && DeviceHelper.isSuperFoldMachine()) {
       if (!LauncherLayoutCacheUtil.updateCardAnotherStatusPosition(gridLayoutItemList, cardItem)) {
         localEventManager.sendLocalEventSticky(EventConstants.EVENT_DESKTOP_CANT_ADD, null);
         log.showWarn('addCardItemToDesktop not addable');
@@ -627,7 +627,7 @@ export class FormLayoutCacheManager extends BaseLayoutCacheManager implements IL
   }
 
   /**
-   * 升级根据id更新卡片/堆叠缓存和数据库信息
+   * 系统迁移根据id更新卡片/堆叠缓存和数据库信息
    * @param remainingStackInfos 要保留的堆叠信息
    * @param deleteFormAndStackInfos 要删除的卡片和堆叠信息
    * @param label 业务标识

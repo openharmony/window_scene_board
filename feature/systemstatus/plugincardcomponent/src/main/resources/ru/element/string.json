@@ -1,7 +1,7 @@
 {
     "string":[
         {
-            "name":"title_login_openharmony_account",
+            "name":"title_login_hw_account",
             "value":"Выполните вход, чтобы использовать функцию Суперустройство",
             "attr":{
                 "priority":"LT"

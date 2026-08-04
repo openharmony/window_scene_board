@@ -35,8 +35,10 @@ import {
   BadgeManager,
   BaseViewModel,
   CardItemInfo,
-  ClickCardShortcutMenuEvent, CommonConstants,
+  ClickCardShortcutMenuEvent,
+  CommonConstants,
   DeleteItemType,
+  DeliverUtil,
   NotHarmonyUtil,
   DesktopFileInfo,
   DisposedEventManager,
@@ -95,6 +97,7 @@ import {
   SwiperLoadManager,
   ViewManager,
   CloseAppManager,
+  AppReserveType,
   HiEditModeEventUtils,
   LauncherLayoutCacheConfig,
   ShortcutInfo,
@@ -106,6 +109,7 @@ import {
   AppInstallEventData,
   ClickAddCardEvent,
   ResidentLayoutCacheMgr,
+  DeliverAppStrategyPushConfigManager,
   DesktopUtils,
   PreInstallUtils,
   SceneMsgEnum,
@@ -144,6 +148,7 @@ import {
   ArrayUtils,
   SingleContext,
   singleManager,
+  OutdoorConfig,
 } from '@ohos/basicutils';
 import {
   AccountMgr,
@@ -159,15 +164,13 @@ import {
   WallpaperColorManager,
   sOutSideWindowMgr,
   AccessibilityManager,
-  SCBVisualEffectData
+  SCBVisualEffectData,
+  LightOutdoorConfig
 } from '@ohos/frameworkwrapper';
 import { GravityAnimationListener, gravityAnimationListenerManager, } from '@ohos/componentanimator';
 import { desktopUtil, ObjectCopyUtil } from '@ohos/componenthelper';
 import {
-  launcherStatusUtil,
-  ScenePanelState,
-  DisplayConstants,
-  ResUtils,
+  launcherStatusUtil, ScenePanelState, DisplayConstants, ResUtils,
 } from '@ohos/windowscene';
 import { NumberConstants, SCBConstants, KeyCodeConstants, VisualEffectConstants } from '@ohos/commonconstants';
 import { SCBVisualEffectMgr } from '@ohos/componenthelper/src/main/ets/manager/SCBVisualEffectManager';
@@ -202,13 +205,18 @@ import { AppFormWantParamInterface } from '@ohos/launchercommon/src/main/ets/man
 import { FocusViewModel } from './FocusViewModel';
 import { AppListInfo } from '../dao/AppListInfo';
 import { systemParameter } from '@kit.BasicServicesKit';
-import MultipleDragSettings, { MultipleDragPosition } from '@ohos/launchercommon/src/main/ets/pagedesktop/viewmodel/MultipleDragSettings';
+import MultipleDragSettings, {
+  MultipleDragPosition
+} from '@ohos/launchercommon/src/main/ets/pagedesktop/viewmodel/MultipleDragSettings';
 import DesktopSortUtils from '../DesktopSortUtils';
-import { OverflowConstants} from '@ohos/commonconstants/src/main/ets/constants/SCBConstants';
+import {
+  OverflowConstants
+} from '@ohos/commonconstants/src/main/ets/constants/SCBConstants';
 import { FormHiSysEventUtil, ScreenSelectType } from '@ohos/form/src/main/ets/default/util/FormHiSysEventUtil';
 import { CardAddType } from '@ohos/launchercommon/src/main/ets/manager/FormCenterViewManager';
 import { AppLockUtils, AppLockManager, editModeManager } from '@ohos/launchercommon';
 import UDC from '@ohos.data.unifiedDataChannel';
+import { FormRelationManager } from '@ohos/launchercommon';
 import { AutoAlignDataManager } from '../autoalign/AutoAlignDataManager';
 import { AppCategoryUtils } from '@ohos/launchercommon/src/main/ets/utils/AppCategoryUtils';
 import { AppCategoryInfoManager } from '@ohos/launchercommon/src/main/ets/manager/AppCategoryInfoManager';
@@ -236,6 +244,7 @@ import { AppItemBuilder } from '../components/AppItem';
 import { FileFolderItemBuilder } from '../components/FileFolderItem';
 import { LauncherStartup, StartupStep } from '@ohos/launchercommon/src/main/ets/tools/LauncherStartup';
 import { SCBDesktopAddViewModel } from '../components/desktopaddapp/SCBDesktopAddViewModel';
+import { LightOutdoorDesktopViewModel } from './LightOutdoorDesktopViewModel';
 
 const TAG = 'PageDesktopViewModel';
 const log: Logger = Logger.getLogHelper(LogDomain.HOME);
@@ -298,7 +307,7 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
   private mGridAppsInfos: GridLayoutItemInfo[][] = [];
   private fileFolderManager: FileFolderManager = fileFolderManagerFactory.getFileFolderManager();
   private isPad = false;
-  private isBigScreen: boolean = false;
+  private isSuperFold: boolean = false;
   private isAddByDraggingFlag = false;
   private desktopSwiperController: SwiperController | undefined;
   private mMenuInfoManager: MenuInfoManager;
@@ -335,7 +344,7 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
   private multipleDragSettings = MultipleDragSettings.getInstance();
   private mFocusViewModel: FocusViewModel = FocusViewModel.getInstance();
   private mFormEditViewManager: FormEditViewManager = FormEditViewManager.getInstance();
-  private multiSelectMap: Map<string, image.PixelMap > = new Map();
+  private multiSelectMap: Map<string, image.PixelMap> = new Map();
   private uninstallAppItemInfoArr: AppItemInfo[] = [];
   private mGridLayoutItemList: GridLayoutItemInfo[] = [];
   private mdeleteItemList: GridLayoutItemInfo[] = [];
@@ -359,7 +368,6 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
   };
   private isMakingFolder: boolean = false;
   private newUpdateAppList: GridLayoutItemInfo[] = [];
-
   private posOccupyArray: boolean[][][] = [];
   public appGridLayoutItems: GridLayoutItemInfo[] = [];
   public folderGridLayoutItems: GridLayoutItemInfo[] = [];
@@ -535,7 +543,8 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
   public createCardWithAnimation(cardItemInfo: CardItemInfo, dragItemType: number, dropX: number, dropY: number,
     isAddFormApp?: boolean): Promise<number> {
     if (this.hasEnoughArea(cardItemInfo)) {
-      GlobalContext.getContext()?.eventHub.emit(FormConstants.EVENTHUB_FORM_MANAGER_CREATE_FORM, cardItemInfo, [dropX, dropY], dragItemType);
+      GlobalContext.getContext()?.eventHub.emit(FormConstants.EVENTHUB_FORM_MANAGER_CREATE_FORM, cardItemInfo,
+        [dropX, dropY], dragItemType);
     } else {
       // 桌面没有空位，删除已加到卡片框架侧的卡片
       if (cardItemInfo.cardId) {
@@ -545,7 +554,8 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
     return this.createCardToDeskTop(cardItemInfo,
       () => {
         log.showInfo(TAG, 'do create card animation');
-        GlobalContext.getContext()?.eventHub.emit(FormConstants.EVENTHUB_FORM_MANAGER_CREATE_FORM_RESULT, cardItemInfo, this.createCardState);
+        GlobalContext.getContext()?.eventHub.emit(FormConstants.EVENTHUB_FORM_MANAGER_CREATE_FORM_RESULT, cardItemInfo,
+          this.createCardState);
         this.reportAddCardToScreenByDragEvent(cardItemInfo, dragItemType,
           this.createCardState ? ResultType.SUCCESS : ResultType.FAILED, isAddFormApp);
       },
@@ -595,7 +605,7 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
   }
 
   public reportAddCardToScreenByDragEvent(dragItemInfo: CardItemInfo | undefined, dragItemType: number,
-    resultType: number, isAddFormApp?: boolean) : void {
+    resultType: number, isAddFormApp?: boolean): void {
     if (!dragItemInfo || !dragItemInfo.area || CheckEmptyUtils.isEmptyArr(dragItemInfo.area) ||
     CheckEmptyUtils.isEmpty(dragItemInfo.cardDimension) || CheckEmptyUtils.isEmpty(dragItemInfo.page)) {
       return;
@@ -874,7 +884,18 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
   }
 
   private appInstallBmsChangeEvent(eventData: AppInstallEventData): void {
+    this.updateFormAfterAppInstall(eventData.bundleName);
     this.regroupDataAppListChange([], eventData.eventName, eventData.bundleName, eventData.appIndex);
+  }
+
+  private updateFormAfterAppInstall(bundleName: string): void {
+    // 更新数据库卡片信息
+    let relationCards: CardItemInfo[] =
+      FormRelationManager.getInstance().updateFormAndStackInfoByBundleName(bundleName);
+    if (!CheckEmptyUtils.isEmptyArr(relationCards)) {
+      FormLayoutCacheManager.getInstance()
+        .updateFormAndStackInfos(relationCards, BusinessType.BUSINESS_BASIC_DESKTOP, true, false);
+    }
   }
 
   private dealAddAppWhenMaxPageEvent(addItems: GridLayoutItemInfo[]): void {
@@ -888,6 +909,16 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
   private removeDeliverItem(itemInfo: GridLayoutItemInfo): void {
     if (CheckEmptyUtils.isEmpty(itemInfo)) {
       return;
+    }
+    if (DeliverUtil.DELIVER_APP_MAP.has(itemInfo.bundleName)) {
+      // 移除文件夹内未鸿蒙化应用的下载任务
+      DeliverUtil.removeWaitHMDownloadTask(itemInfo.bundleName);
+      // container未启动场景，同时存在克隆应用和应用hap时，卸载其中一个应用时，需删除对应文件夹
+      DeliverUtil.removeContainerFolder(itemInfo.bundleName);
+    }
+    // dh应用卸载后，也需要同步删除其他布局模式的表中应用数据
+    if (DeliverUtil.isContainerItem(itemInfo.intent)) {
+      RdbStoreManager.getInstance().deleteInfoFromOtherTable(itemInfo.bundleName);
     }
   }
 
@@ -911,7 +942,8 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
       this.mIsFirstSinglePlaySwitch = false;
     } else {
       log.showInfo(TAG, 'switchSingleDisplay outerAppListInfo length = ' + outerAppListInfo.appGridInfo.length +
-        'appListInfo length = ' + appListInfo.appGridInfo.length + ' isOuter = ' + launcherStatusUtil.getShowOutLauncherStatus());
+        'appListInfo length = ' + appListInfo.appGridInfo.length + ' isOuter = ' +
+      launcherStatusUtil.getShowOutLauncherStatus());
       let allGridLayoutItems =
         this.mLauncherLayoutCacheManager.getAllGridLayoutItemList(BusinessType.BUSINESS_BASIC_DESKTOP);
       this.mBundleInfoList = allGridLayoutItems;
@@ -920,7 +952,8 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
       SwiperLoadManager.getInstance(launcherStatusUtil.getShowOutLauncherStatus()).hardCodeRefreshPageDesktop();
       let currentPage: number = AppStorage.get<number>(desktopUtil.getPageIndex()) ?? 0;
       if (appListInfo.appGridInfo.length > currentPage) {
-        log.showInfo(TAG, `switchSingleDisplay current Page length = ${outerAppListInfo.appGridInfo[currentPage]?.length}`);
+        log.showInfo(TAG,
+          `switchSingleDisplay current Page length = ${outerAppListInfo.appGridInfo[currentPage]?.length}`);
       }
       this.mGridAppsInfos = launcherStatusUtil.getShowOutLauncherStatus() ? outerAppListInfo.appGridInfo :
         appListInfo.appGridInfo;
@@ -943,7 +976,6 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
     this.mGridConfig = this.getGridConfig();
     this.pagingFiltering(undefined, undefined, SceneMsgEnum.SCENE_MSG_SETTINGS_CHANGE);
   };
-
   private readonly mKeyEventListener: KeyEventListener = {
     onReceiveKeyEvent: (event): void => {
       log.showInfo(TAG, 'key event come: ' + event);
@@ -1029,11 +1061,12 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
     this.setPageIndex();
     this.mViewManager = ViewManager.getInstance();
     this.mFormHostService = FormHostService.getInstance();
-    this.isBigScreen = DeviceHelper.isBigScreenMachine();
-    // 开机注册时还不是deliver版本，事件未注册上，需要修改为phone和pad都注册
+    this.isSuperFold = DeviceHelper.isSuperFoldMachine();
+    // 通过克隆应用安装的容器不需要重启，开机注册时还不是deliver版本，事件未注册上，需要修改为phone和pad都注册
     if (DeviceHelper.isPhoneOrPad()) {
       this.viewModelUtils.initDeliverStatusChange();
       DisposedEventManager.getInstance().initEvent();
+      DeliverAppStrategyPushConfigManager.getInstance().initConfigFiles();
       this.registerDeliverAppStrategyChangeObserver();
     }
     ContractedFolderCommonViewModel.getInstance().registerBuildAppMenu((menu: MenuInfoType): MenuInfo[] => {
@@ -1054,20 +1087,22 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
   }
 
   /**
-   * 监听应用出湖策略云推更新
+   * 监听应用策略云推更新
    * @returns
    */
   private registerDeliverAppStrategyChangeObserver(): void {
     this.subscribeInfo = CommonEventManager.createSubscriberSync({
       events: [DUE_HAP_CFG_UPDATED]
     });
-    CommonEventManager.subscribe(this.subscribeInfo, async (err: BusinessError, data: CommonEventManager.CommonEventData) => {
-      if (err) {
-        log.showError(TAG, `subscribe callback failed, ${err.code}, ${err.message}`);
-        return;
-      }
-      log.showInfo(TAG, `broadcast type:${data?.parameters?.type} subtype:${data?.parameters?.subtype}`);
-    });
+    CommonEventManager.subscribe(this.subscribeInfo,
+      async (err: BusinessError, data: CommonEventManager.CommonEventData) => {
+        if (err) {
+          log.showError(TAG, `subscribe callback failed, ${err.code}, ${err.message}`);
+          return;
+        }
+        DeliverAppStrategyPushConfigManager.getInstance().backupCloudFilesToAppFilesDir();
+        log.showInfo(TAG, `broadcast type:${data?.parameters?.type} subtype:${data?.parameters?.subtype}`);
+      });
   }
 
   private initSubscriber(): void {
@@ -1093,7 +1128,8 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
     // 企业应用授权成功后重建卡片
     if (!eventData || eventData.code !== ENTERPRISE_APP_AUTH_CHANGE_CODE || !eventData.parameters ||
       eventData.parameters.authStatus !== ENTERPRISE_APP_AUTH_SUCCESS_STATUS) {
-      log.showError(TAG, `eventCallback failed, code:${eventData?.code}, authStatus:${eventData?.parameters?.authStatus}`);
+      log.showError(TAG,
+        `eventCallback failed, code:${eventData?.code}, authStatus:${eventData?.parameters?.authStatus}`);
       return;
     }
 
@@ -1192,7 +1228,13 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
       // 重启且桌面布局加载完成后，全量更新应用的分类信息
       if (AppCategoryInfoManager.getInstance().getAppCatEnable()) {
         let bundleNames: string [] = [];
-        bundleNames = AppCategoryUtils.getAllAppBundleNames();
+        if (LightOutdoorConfig.getInstance().isOnLightOutdoorMode()) {
+          SCBDesktopAddViewModel.getInstance().initQuerySelectItem(); //获取已经添加到桌面的应用信息
+          SCBDesktopAddViewModel.getInstance().refreshAllAppList(); //云端2重启需要获取全量应用分类
+          bundleNames = SCBDesktopAddViewModel.getInstance().getAllAppsBundleName();
+        } else {
+          bundleNames = AppCategoryUtils.getAllAppBundleNames();
+        }
         AppCategoryInfoManager.getInstance().initAllAppCatInfo(bundleNames);
       }
     } else {
@@ -1246,6 +1288,21 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
       appInfo.typeId = CommonConstants.TYPE_APP;
       appInfo.area = [1, 1];
 
+      // 备份应用加桌，需要根据配置项决定是否放入备份文件夹中（PC不支持）
+      let isDeliverApp: boolean = DeliverUtil.isSupportDeliver() && !Number.isNaN(Number(appInfo.codePath));
+      if (isDeliverApp) {
+        DeliverUtil.setInstallSourceAndIntent(appInfo, appInfo.intent);
+      }
+      let isShouldInsertDeliverFolder: boolean = isDeliverApp && !DeviceHelper.isPC() &&
+        (!DeliverUtil.CANCEL_DELIVER_FOLDER || DeliverUtil.isAppItem(appInfo.intent));
+      if (isShouldInsertDeliverFolder) {
+        this.viewModelUtils.dealWithContainerApp(appInfo);
+      }
+
+      if (DeliverUtil.DELIVER_APP_MAP.has(appInfo.bundleName)) {
+        DeliverUtil.dealdeliverEasyAppStatus();
+      }
+
       // 桌面上查找是否存在
       let isFind = false;
       let gridLayoutItemInfoList = this.mLauncherLayoutCacheManager.getAllGridLayoutItemList(
@@ -1269,7 +1326,9 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
       }
 
       // 桌面和dock不存在,则找空位插入(pc不直接加桌)
-      if (!isFind && !DeviceHelper.isPC()) {
+      let isNeedInsertApp: boolean =
+        !isDeliverApp || (DeliverUtil.CANCEL_DELIVER_FOLDER && DeliverUtil.isdeliverApp(appInfo.intent));
+      if (!isFind && isNeedInsertApp && !DeviceHelper.isPC()) {
         this.updateAppItemLayoutInfo(appInfo, false);
       }
       // 刷新桌面
@@ -1277,6 +1336,12 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
       if (launcherStatusUtil.getShowOutLauncherStatus()) {
         // 外屏场景刷新内屏
         this.refreshScreen(SceneMsgEnum.SCENE_MSG_UPDATE_BMS_CHANGED_APP);
+      }
+      // dh应用下载进文件夹，需要刷新下文件夹
+      if (isShouldInsertDeliverFolder) {
+        this.refreshScreen(SceneMsgEnum.SCENE_MSG_UPDATE_BMS_CHANGED_APP);
+        let refreshFolderId: string = DeliverUtil.getContainerFolder(appInfo.installSource);
+        return;
       }
     }
   }
@@ -1305,7 +1370,8 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
 
   private updateFolderItem(folderInfo: GridLayoutItemInfo, updateInfo: AppItemInfo): void {
     if (this.mFolderMgr.isFolderOpen() && this.mFolderMgr.getOpenFolderId() === folderInfo.folderId) {
-      this.mFolderMgr.updateOpenFolderLayout('BMS change opened folder item', folderInfo.layoutInfo?.flat() ?? [], true);
+      this.mFolderMgr.updateOpenFolderLayout('BMS change opened folder item', folderInfo.layoutInfo?.flat() ?? [],
+        true);
     } else {
       // 安装或更新时，移除新的应用后在节点管理的回调删除旧节点
       const items: GridLayoutItemInfo[] = (folderInfo.layoutInfo?.flat() ?? []).filter(
@@ -1328,7 +1394,8 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
     residentList.forEach((dockItem, index) => {
       if (dockItem.typeId === CommonConstants.TYPE_FOLDER) {
         let inFolderIndex: number = dockItem.layoutInfo?.flat().findIndex(
-          itemInFolder => itemInFolder.bundleName === appInfo.bundleName && itemInFolder.appIndex === appInfo.appIndex &&
+          itemInFolder => itemInFolder.bundleName === appInfo.bundleName &&
+            itemInFolder.appIndex === appInfo.appIndex &&
             itemInFolder.typeId === CommonConstants.TYPE_APP
         ) ?? -1;
         if (inFolderIndex !== -1) {
@@ -1385,8 +1452,10 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
       .selectGridLayoutItemsByType(CommonConstants.TYPE_SHORTCUT_ICON, isOuter);
     this.appendShortcutData(shortcutInfoList, bundleInfoListTemp);
     this.mBundleInfoList = bundleInfoListTemp;
-    log.showWarn(TAG, 'loadGridList length of bundle:%{public}d, form:%{public}d, stack:%{public}d, shortcut:%{public}d folder:%{public}d',
-      this.mBundleInfoList.length, this.formInfoList.length, formStackInfoList.length, shortcutInfoList.length, folderInfoList.length);
+    log.showWarn(TAG,
+      'loadGridList length of bundle:%{public}d, form:%{public}d, stack:%{public}d, shortcut:%{public}d folder:%{public}d',
+      this.mBundleInfoList.length, this.formInfoList.length, formStackInfoList.length, shortcutInfoList.length,
+      folderInfoList.length);
     this.mSettingsModel.setAppListInfo(this.mBundleInfoList, isOuter);
     Trace.end(Trace.CORE_METHOD_LOAD_GRID_LIST + sceneMsg);
     this.pagingFiltering(bundleInfoListTemp, undefined, undefined, isOuter);
@@ -1462,6 +1531,10 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
           this.viewModelUtils.initOuterInstalledInfo(totalAppInfoList, pageDesktopInfoList, outerLayoutInfoList);
         }
       } else {
+        if (!OutdoorConfig.getInstance().isInOutdoorMode() && !DeviceHelper.isPC()) {
+          //从BMS中同步应用数据，PC设备不自动添加新安装应用到桌面
+          this.viewModelUtils.addNewInstalledInfo(totalAppInfoList, pageDesktopInfoList);
+        }
         this.removeBottomBarInfo(pageDesktopInfoList, isOuter);
       }
     }
@@ -1586,7 +1659,14 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
   removeAppItem(appItem: DeleteItemType): void {
     let isAutoAlign: boolean = true;
     let isNeedUpdateDrawerModeStatus: boolean = true;
+    if (LightOutdoorConfig.getInstance().isOnLightOutdoorMode()) {
+      isAutoAlign = false;
+      isNeedUpdateDrawerModeStatus = false;
+    }
     this.removeAppItemOne(appItem, isAutoAlign, isNeedUpdateDrawerModeStatus);
+    if (LightOutdoorConfig.getInstance().isOnLightOutdoorMode()) {
+      LightOutdoorDesktopViewModel.getInstance().handleAppItemDelete(appItem.bundleName!);
+    }
     this.lightPagingFiltering();
   }
 
@@ -1659,7 +1739,7 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
     if (needAutoAlign && !appItem.deleteByDockDrop) {
       this.deleteAppItemAutoAlign(deleteItemList);
     }
-    const uiType:ESObject = SCBWindowSceneConfig.getInstance().windowSceneConfig?.uiType;
+    const uiType: ESObject = SCBWindowSceneConfig.getInstance().windowSceneConfig?.uiType;
     if (uiType !== SCBConstants.UITYPE_PC || (uiType === SCBConstants.UITYPE_PC && appItem?.isUninstalled)) {
       // 卸载应用，同步移除快捷方式
       deleteItemList = this.mLauncherLayoutCacheManager.selectSameApp(appItem.bundleName, appItem.appIndex);
@@ -1679,7 +1759,8 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
    *
    * @param appItem 移除元素
    */
-  private removeAppItemOne(appItem: DeleteItemType, needAutoAlign: boolean = true, needUpdateDrawerModeStatus: boolean = true): void {
+  private removeAppItemOne(appItem: DeleteItemType, needAutoAlign: boolean = true,
+    needUpdateDrawerModeStatus: boolean = true): void {
     this.mBundleInfoList = this.mSettingsModel.getAppListInfo(false);
     log.showWarn(TAG, `removeAppItemOne bundle:${appItem.bundleName}, typeId:${appItem.typeId},` +
       `appIndex:${appItem.appIndex}, shortcutId:${appItem.shortcutId}, keyname=${appItem.keyName}, autoAlign:${needAutoAlign}`);
@@ -1706,7 +1787,8 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
       log.showError(TAG, `removeAppItemOne not found bundle:${appItem.bundleName}, typeId:${appItem.typeId}`);
       return;
     }
-    this.mLauncherLayoutCacheManager.deleteGridLayoutItemById(removeItemList[0], BusinessType.BUSINESS_BASIC_DESKTOP, true);
+    this.mLauncherLayoutCacheManager.deleteGridLayoutItemById(removeItemList[0], BusinessType.BUSINESS_BASIC_DESKTOP,
+      true);
     if (needAutoAlign) {
       this.deleteAppItemAutoAlign(removeItemList);
     }
@@ -1752,14 +1834,35 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
     }
     log.showInfo(TAG, `deleteAppItemBatch items length: ${items.length}`);
     let autoAlignDeleteItemList: GridLayoutItemInfo[] = [];
+    let allDeliverItems: GridLayoutItemInfo[] = [];
     for (let i = 0; i < items.length; i++) {
       let deleteItems: GridLayoutItemInfo[] = this.mLauncherLayoutCacheManager
         .selectSameAppAndFolder(items[i].keyName, items[i].bundleName, items[i].folderId, items[i].appIndex,
           items[i].shortcutId, false);
-      this.deleteAppItemOne(items[i], false);
-      if (!CheckEmptyUtils.isEmptyArr(deleteItems) && !CheckEmptyUtils.isEmpty(deleteItems[0]) &&
-        deleteItems[0].container === CommonConstants.CONTAINER_DESKTOP) {
-        autoAlignDeleteItemList.push(deleteItems[0]);
+      if (!CheckEmptyUtils.isEmptyArr(deleteItems) && DeliverUtil.isdeliverApp(deleteItems[0].intent)) {
+        allDeliverItems.push(deleteItems[0]);
+        this.deleteAppItemOne(items[i], false);
+      } else {
+        this.deleteAppItemOne(items[i], false);
+        if (!CheckEmptyUtils.isEmptyArr(deleteItems) && !CheckEmptyUtils.isEmpty(deleteItems[0]) &&
+          deleteItems[0].container === CommonConstants.CONTAINER_DESKTOP) {
+          autoAlignDeleteItemList.push(deleteItems[0]);
+        }
+      }
+    }
+    if (!CheckEmptyUtils.isEmptyArr(allDeliverItems)) {
+      let pageCount: number = this.mLauncherLayoutCacheManager.selectPageCount();
+      log.showInfo(TAG, 'autoAlign all deliver items length: %{public}d, pageCount: %{public}d', allDeliverItems.length,
+        pageCount);
+      for (let i = 0; i < pageCount; i++) {
+        let deliverItems: GridLayoutItemInfo[] = allDeliverItems.filter(item => item.page === i);
+        this.viewModelUtils.getAlignStatus().then((mAutoAlignStatus) => {
+          if (mAutoAlignStatus) {
+            log.showInfo(TAG, 'deliver items execute autoAlign. page: %{public}d ,' +
+              'item length: %{public}d', i, deliverItems.length);
+            this.deleteAppItemAutoAlign(deliverItems);
+          }
+        });
       }
     }
     if (!items[0].deleteByDockDrop) {
@@ -1815,13 +1918,16 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
     }
     const openFolderId: string = this.mFolderMgr.getOpenFolderId();
     const isCardFolder: boolean = GridLayoutUtil.isBigFolder(this.mFolderMgr.getOpenedFolder());
+    let folderType: number = DeliverUtil.getFolderTypeByFolderId(openFolderId);
+    HiSysEventUtil.reportUninstallApp(uninstallItemInfo?.bundleName, folderType, isCardFolder);
     log.showInfo(TAG, 'uninstallItemFromFolder appName: %{public}s, uninstallAble: %{public}s',
       uninstallItemInfo.bundleName, uninstallItemInfo.isUninstallAble);
     let appItem = uninstallItemInfo.toAppItemInfo();
     if (uninstallItemInfo.typeId === CommonConstants.TYPE_SHORTCUT_ICON) {
       log.showInfo(TAG, 'removeShortcutItem');
       this.removeShortcutItem(appItem);
-    } else if (uninstallItemInfo.typeId === CommonConstants.TYPE_APP && uninstallItemInfo.appStatus !== AppStatus.INSTALLED) {
+    } else if (uninstallItemInfo.typeId === CommonConstants.TYPE_APP &&
+      uninstallItemInfo.appStatus !== AppStatus.INSTALLED) {
       // 下载中删除
       AppInstallUtils.getInstance().cancelTask(uninstallItemInfo.bundleName);
     } else {
@@ -1844,8 +1950,10 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
     this.mUninstallListeners.forEach(listener => listener?.uninstallAppResult(appItem.bundleName,
       CommonConstants.UNINSTALL_SUCCESS, appItem.appIndex, appItem.shortcutId));
     this.mLauncherLayoutCacheManager.deleteShortcutItem(appItem, true, false);
-    this.mShortcutViewModel.deleteShortcutFromBMS({ bundleName: appItem.bundleName, appIndex: appItem.appIndex,
-      id: appItem.shortcutId });
+    this.mShortcutViewModel.deleteShortcutFromBMS({
+      bundleName: appItem.bundleName, appIndex: appItem.appIndex,
+      id: appItem.shortcutId
+    });
     if (this.mPageDesktopModel.deleteBlankPageFromLayoutInfo(appItem.page, false)) {
       const curPageIndex = this.mPageDesktopModel.getPageIndex(false);
       log.showInfo(TAG, 'deleteAppItem' + curPageIndex);
@@ -1891,14 +1999,16 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
         appItemInfo = AppModel.getInstance().getAppInfoByBundleName(appInfo?.bundleName);
       }
       if (!appItemInfo) {
-        log.showInfo(TAG, `addToDesktop get appItemInfo error. bundleName:${appInfo?.bundleName}, keyName:${appInfo?.keyName}`);
+        log.showInfo(TAG,
+          `addToDesktop get appItemInfo error. bundleName:${appInfo?.bundleName}, keyName:${appInfo?.keyName}`);
         return;
       }
       appItemInfo.typeId = CommonConstants.TYPE_APP;
     }
     appItemInfo.area = [1, 1];
     this.mBundleInfoList = this.mSettingsModel.getAppListInfo();
-    log.showWarn(TAG, `addToDesktop keyName: ${appItemInfo?.keyName}, mBundleInfoList length: ${this.mBundleInfoList.length}`);
+    log.showWarn(TAG,
+      `addToDesktop keyName: ${appItemInfo?.keyName}, mBundleInfoList length: ${this.mBundleInfoList.length}`);
     for (let i = 0; i < this.mBundleInfoList.length; i++) {
       const shortcutIdTemp = this.mBundleInfoList[i]?.shortcutId ?? '';
       if (this.mBundleInfoList[i].keyName === appItemInfo.keyName &&
@@ -1932,12 +2042,14 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
       });
       return;
     }
-    if (this.isPad) {
+    if (this.isPad
+      || DeviceHelper.isPC()) {
       const buildItem: GridLayoutItemInfo = this.viewModelUtils.buildGridLayoutInfoFromItemInfo(appItemInfo, 0, 0, 0);
       this.updateElementLocation(this.mLauncherLayoutCacheManager.selectLayoutDescription(), buildItem);
     }
     this.lightPagingFiltering(false, SceneMsgEnum.SCENE_MSG_ADD_TO_DESKTOP);
-    if (this.isPad) {
+    if (this.isPad
+      || DeviceHelper.isPC()) {
       Prompt.showToast({
         message: this.mResourceManager.getStringByName('added_to_desktop'),
         bottom: this.getToastBottom()
@@ -1952,7 +2064,8 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
    */
   updateBadgeNumber(badgeInfo: BadgeItemInfo): void {
     // badgeInfo.checkAppInstanceKey 应用多开实例消息不在桌面显示，判断多开消息，在桌面直接退出
-    if (AppStorage.get('isDesktopLoadFinished') !== true || !CheckEmptyUtils.checkStrIsEmpty(badgeInfo?.appInstanceKey)) {
+    if (AppStorage.get('isDesktopLoadFinished') !== true ||
+      !CheckEmptyUtils.checkStrIsEmpty(badgeInfo?.appInstanceKey)) {
       log.showInfo(TAG, 'the desktop is not load finished');
       return;
     }
@@ -1966,11 +2079,13 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
       appInfo.badgeNumber = badgeInfo.isShow ? badgeInfo.badgeNumber : 0;
       this.mSettingsModel.setAppListInfo(this.mBundleInfoList);
     } else {
-      appInfo = FolderLayoutCacheManager.getInstance().updateBadgeNumberInFolder(badgeInfo, BusinessType.BUSINESS_BASIC_DESKTOP, false);
+      appInfo = FolderLayoutCacheManager.getInstance()
+        .updateBadgeNumberInFolder(badgeInfo, BusinessType.BUSINESS_BASIC_DESKTOP, false);
     }
     if (appInfo?.bundleName) {
       const newBadgeNumber = badgeInfo.isShow ? badgeInfo.badgeNumber : 0;
-      localEventManager.sendLocalEventSticky(`badgeUpdate${appInfo.bundleName}${appInfo.appIndex ?? 0}`, newBadgeNumber);
+      localEventManager.sendLocalEventSticky(`badgeUpdate${appInfo.bundleName}${appInfo.appIndex ?? 0}`,
+        newBadgeNumber);
     }
   }
 
@@ -2007,6 +2122,10 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
     for (let i = 0; i < appInfoList.length; i++) {
       if (this.isInHideAppList(appInfoList[i] as GridLayoutItemInfo)) {
         continue;
+      }
+      if (appInfoList[i]?.codePath === String(NumberConstants.CONSTANT_NUMBER_ONE) &&
+      CheckEmptyUtils.checkStrIsEmpty(appInfoList[i]?.intent)) {
+        DeliverUtil.setInstallSourceAndIntent(appInfoList[i], appInfoList[i]?.intent);
       }
       appInfoList[i].typeId = CommonConstants.TYPE_APP;
       appInfoList[i].area = [1, 1];
@@ -2090,7 +2209,8 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
     return intentAfterUpdate;
   }
 
-  private async appendFormData(formInfoList: GridLayoutItemInfo[], bundleInfoList: GridLayoutItemInfo[]): Promise<void> {
+  private async appendFormData(formInfoList: GridLayoutItemInfo[],
+    bundleInfoList: GridLayoutItemInfo[]): Promise<void> {
     let appListCopy: AppItemInfo[] = [];
     appListCopy.push(...this.mAppModel.getAppList());
     if (SCBOobeManager.isEnable()) {
@@ -2099,7 +2219,7 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
       appListCopy.push(...await this.mAtomicServiceAppModel.getAtomicServiceAppList());
     }
     log.showInfo(TAG, `the length of appListCopy is ${appListCopy.length}`);
-    if (!this.mIsFinishedInitLayout) {
+    if (!this.mIsFinishedInitLayout || LightOutdoorConfig.getInstance().isHotSwitchToLightOutdoorMode()) {
       await this.updateFormData(formInfoList);
     }
 
@@ -2119,7 +2239,8 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
   private updateFormLabel(formInfo: CardItemInfo): void {
     let appListCopy: AppItemInfo[] = [];
     appListCopy.push(...this.mAppModel.getAppList());
-    let atomicInfo: AppItemInfo | undefined = this.mAtomicServiceAppModel.getAtomicInfoByBundleName(formInfo.bundleName);
+    let atomicInfo: AppItemInfo | undefined =
+      this.mAtomicServiceAppModel.getAtomicInfoByBundleName(formInfo.bundleName);
     if (atomicInfo) {
       appListCopy.push(atomicInfo);
     }
@@ -2149,7 +2270,9 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
       this.checkIfDuplicatePosition(true);
     }
     let appListInfo: GridLayoutItemInfo[] = new Array<GridLayoutItemInfo>();
-    let allGridLayoutItems = this.mLauncherLayoutCacheManager.getAllGridLayoutItemList(BusinessType.BUSINESS_BASIC_DESKTOP);
+    LightOutdoorDesktopViewModel.getInstance().appendAddIconForLightOutdoorMode(true);
+    let allGridLayoutItems =
+      this.mLauncherLayoutCacheManager.getAllGridLayoutItemList(BusinessType.BUSINESS_BASIC_DESKTOP);
     this.mBundleInfoList = allGridLayoutItems;
     this.mSettingsModel.setAppListInfo(this.mBundleInfoList);
     const folderInfoList = this.mLauncherLayoutCacheManager.selectGridLayoutItemsByType(CommonConstants.TYPE_FOLDER);
@@ -2159,7 +2282,8 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
     const allRankedAppInfos = this.integrateSwiper(appListInfo);
     desktopLayoutInfo.appGridInfo = allRankedAppInfos.gridAppsInfos;
     desktopLayoutInfo.waterfallItemListInfo = allRankedAppInfos.waterfallAppInfos;
-    log.showWarn(TAG, 'lightPagingFiltering length of appListInfo:%{public}d waterfallInfo:%{public}d bundleInfo:%{public}d',
+    log.showWarn(TAG,
+      'lightPagingFiltering length of appListInfo:%{public}d waterfallInfo:%{public}d bundleInfo:%{public}d',
       appListInfo.length, desktopLayoutInfo.waterfallItemListInfo.length, this.mBundleInfoList?.length);
     AppStorage.SetOrCreate('selectDesktopAppItem', '');
     AppStorage.SetOrCreate('selectItem', '');
@@ -2185,6 +2309,7 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
     };
     let appListInfo: GridLayoutItemInfo[] = new Array<GridLayoutItemInfo>();
     this.getAndSetLayoutInfo(bundleInfoList, undefined, isOuter);
+    LightOutdoorDesktopViewModel.getInstance().appendAddIconForLightOutdoorMode(false);
     const layoutInfo: GridLayoutItemInfo[] = this.mLauncherLayoutCacheManager.getAllGridLayoutItemList(
       BusinessType.BUSINESS_BASIC_DESKTOP, isOuter);
     appListInfo = this.getAppListInfo(bundleInfoList, appListInfo, layoutInfo, abilityInfo);
@@ -2192,7 +2317,8 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
     const allAppInfos = this.integrateSwiper(appListInfo, isOuter);
     appInfo.appGridInfo = allAppInfos.gridAppsInfos;
     appInfo.waterfallItemListInfo = allAppInfos.waterfallAppInfos;
-    log.showWarn(TAG, `pagingFiltering appListInfo length: ${appListInfo.length} waterfallInfo length: ${appInfo.waterfallItemListInfo.length}`);
+    log.showWarn(TAG,
+      `pagingFiltering appListInfo length: ${appListInfo.length} waterfallInfo length: ${appInfo.waterfallItemListInfo.length}`);
     AppStorage.setOrCreate('selectDesktopAppItem', '');
     AppStorage.setOrCreate('selectItem', '');
     this.checkIsAutoAnimating();
@@ -2212,6 +2338,7 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
       MatchCardLayoutManager.getInstance().setIsFinishedInitLayout();
     }
     localEventManager.sendLocalEventSticky(EventConstants.EVENT_REQUEST_PAGEDESK_REFRESH_FINISHED, null);
+    LightOutdoorDesktopViewModel.getInstance().onPageDesktopRefreshFinished();
     Trace.end(Trace.CORE_METHOD_PAGING_FILTERING + sceneMsg);
   }
 
@@ -2231,7 +2358,8 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
     const needResetAppInfoList: GridLayoutItemInfo[] = [];
     let deleteAppList: GridLayoutItemInfo[] = new Array<GridLayoutItemInfo>();
     for (let i = 0; i < layoutInfo.length; i++) {
-      if (layoutInfo[i].typeId === CommonConstants.TYPE_APP || layoutInfo[i].typeId === CommonConstants.TYPE_SHORTCUT_ICON) {
+      if (layoutInfo[i].typeId === CommonConstants.TYPE_APP ||
+        layoutInfo[i].typeId === CommonConstants.TYPE_SHORTCUT_ICON) {
         // do not change installing app's layout
         let isAddToLayout: boolean = false;
         if (!GridLayoutUtil.isAppInstalled(layoutInfo[i]) && layoutInfo[i].appStatus !== AppStatus.UPDATING) {
@@ -2263,9 +2391,11 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
           }
         }
         if (!isAddToLayout) {
-          log.showWarn(TAG, 'the app %{public}s is error at page %{public}d, row %{public}d column %{public}d and delete from layout',
+          log.showWarn(TAG,
+            'the app %{public}s is error at page %{public}d, row %{public}d column %{public}d and delete from layout',
             layoutInfo[i].keyName, layoutInfo[i].page, layoutInfo[i].row, layoutInfo[i].column);
-          this.mLauncherLayoutCacheManager.deleteAppItemByKeyName(layoutInfo[i].keyName, BusinessType.BUSINESS_BASIC_DESKTOP, true);
+          this.mLauncherLayoutCacheManager.deleteAppItemByKeyName(layoutInfo[i].keyName,
+            BusinessType.BUSINESS_BASIC_DESKTOP, true);
           if (!CheckEmptyUtils.isEmpty(layoutInfo[i].page)) {
             this.mPageDesktopModel.deleteBlankPageFromLayoutInfo(layoutInfo[i].page);
           }
@@ -2289,22 +2419,25 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
       } else if (layoutInfo[i].typeId === CommonConstants.TYPE_CARD) {
         // 预置布局中的卡片
         if (CheckEmptyUtils.checkStrIsEmpty(layoutInfo[i].cardId)) {
-          log.showWarn(TAG, `layoutinfo cardId is: ${layoutInfo[i].cardId}, cardDimension is: ${layoutInfo[i].cardDimension}`);
+          log.showWarn(TAG,
+            `layoutinfo cardId is: ${layoutInfo[i].cardId}, cardDimension is: ${layoutInfo[i].cardDimension}`);
           layoutInfo[i].areaType = CommonConstants.TYPE_AREA_DESKTOP;
           layoutInfo[i].x = 0;
           if (!layoutInfo[i].cardDimension) {
-            layoutInfo[i].cardDimension = this.viewModelUtils.getCardDimension(LayoutViewModel.getInstance().getDesktopModel(), layoutInfo[i]);
+            layoutInfo[i].cardDimension =
+              this.viewModelUtils.getCardDimension(LayoutViewModel.getInstance().getDesktopModel(), layoutInfo[i]);
           }
           appListInfo.push(layoutInfo[i]);
           continue;
         }
         layoutInfo[i].x = 0;
         layoutInfo[i].areaType = CommonConstants.TYPE_AREA_DESKTOP;
-        layoutInfo[i].cardDimension = this.viewModelUtils.getCardDimension(LayoutViewModel.getInstance().getDesktopModel(), layoutInfo[i]);
+        layoutInfo[i].cardDimension =
+          this.viewModelUtils.getCardDimension(LayoutViewModel.getInstance().getDesktopModel(), layoutInfo[i]);
         layoutInfo[i].isFormDimension1x4 = layoutInfo[i].cardName === 'OneMulFourClockCard';
         layoutInfo[i].area = CardItemInfo.getCardSize(layoutInfo[i].cardDimension, layoutInfo[i].isFormDimension1x4);
         appListInfo.push(layoutInfo[i]);
-      } else if (layoutInfo[i].typeId === CommonConstants.TYPE_FILE_FOLDER ) {
+      } else if (layoutInfo[i].typeId === CommonConstants.TYPE_FILE_FOLDER) {
         if (layoutInfo[i].container !== CommonConstants.CONTAINER_DESKTOP) {
           log.showInfo(TAG, `file or folder not in desktop, container: ${layoutInfo[i].container}`);
           continue;
@@ -2317,10 +2450,12 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
       } else if (layoutInfo[i].typeId === CommonConstants.TYPE_ADD) {
         appListInfo.push(layoutInfo[i]);
       }
-    };
+    }
+    ;
     appListInfo = this.removeShortcutByDeleteApp(deleteAppList, appListInfo);
     PreInstallUtils.resetAppInfoList(needResetAppInfoList);
-    log.showWarn(TAG, `getAppListInfo appListInfo layoutInfo ${appListInfo?.length} ${layoutInfo?.length} ${abilityInfo?.bundleName}`);
+    log.showWarn(TAG,
+      `getAppListInfo appListInfo layoutInfo ${appListInfo?.length} ${layoutInfo?.length} ${abilityInfo?.bundleName}`);
     this.viewModelUtils.itemNumMoreReport(appListInfo);
     return appListInfo;
   }
@@ -2349,7 +2484,7 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
   }
 
   // 查找并替换覆盖安装的app
-  private dealGridLayoutItemInfo(layoutInfo: GridLayoutItemInfo, abilityInfo: GridLayoutItemInfo) : void {
+  private dealGridLayoutItemInfo(layoutInfo: GridLayoutItemInfo, abilityInfo: GridLayoutItemInfo): void {
     if (!layoutInfo.layoutInfo) {
       return;
     }
@@ -2397,13 +2532,15 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
       } else {
         this.mLauncherLayoutCacheManager.deleteDuplicateItemById(item, BusinessType.BUSINESS_BASIC_DESKTOP,
           DeviceHelper.isPC(), isOuter);
-        log.showWarn(TAG, `filter the duplicate element in layout type ${item.typeId} id ${item.infoId} bundleName ${item.bundleName}`);
+        log.showWarn(TAG,
+          `filter the duplicate element in layout type ${item.typeId} id ${item.infoId} bundleName ${item.bundleName}`);
       }
     }
     return filterItemListInfo;
   }
 
-  private checkIsDuplicateElement(firstItem: GridLayoutItemInfo, secItem: GridLayoutItemInfo, isMultiAppIcon: boolean): boolean {
+  private checkIsDuplicateElement(firstItem: GridLayoutItemInfo, secItem: GridLayoutItemInfo,
+    isMultiAppIcon: boolean): boolean {
     let isDuplicateElement = false;
     if (firstItem.typeId === CommonConstants.TYPE_APP && firstItem.typeId === secItem.typeId) {
       if ((isMultiAppIcon && secItem.keyName === firstItem.keyName) ||
@@ -2424,13 +2561,15 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
 
   private checkIsDuplicateCard(firstItem: GridLayoutItemInfo, secItem: GridLayoutItemInfo): boolean {
     return (secItem.cardId === firstItem.cardId && !CheckEmptyUtils.checkStrIsEmpty(firstItem.cardId)) ||
-      (firstItem.container === CommonConstants.CONTAINER_DESKTOP && secItem.container === CommonConstants.CONTAINER_DESKTOP &&
+      (firstItem.container === CommonConstants.CONTAINER_DESKTOP &&
+        secItem.container === CommonConstants.CONTAINER_DESKTOP &&
         firstItem.row === secItem.row && firstItem.column === secItem.column &&
       CheckEmptyUtils.checkStrIsEmpty(secItem.cardId) && secItem.page === firstItem.page);
   }
 
   private checkIsDuplicateFolder(firstItem: GridLayoutItemInfo, secItem: GridLayoutItemInfo): boolean {
-    return secItem.folderId === firstItem.folderId && !CheckEmptyUtils.isEmpty(firstItem.folderId) && firstItem.folderId !== '0';
+    return secItem.folderId === firstItem.folderId && !CheckEmptyUtils.isEmpty(firstItem.folderId) &&
+      firstItem.folderId !== '0';
   }
 
   private checkIsDuplicateFormStack(firstItem: GridLayoutItemInfo, secItem: GridLayoutItemInfo): boolean {
@@ -2470,8 +2609,9 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
         pageSet.add(tmpPage);
         if (max <= tmpPage + 1) {
           if (tmpPage >= max) {
-            log.showError(TAG, `elementPage is not less than pageCount-->pageCount:${max}, elementPage:${list[i].page}, ` +
-              `bundleName:${list[i].bundleName}, row:${list[i].row}, column:${list[i].column}`);
+            log.showError(TAG,
+              `elementPage is not less than pageCount-->pageCount:${max}, elementPage:${list[i].page}, ` +
+                `bundleName:${list[i].bundleName}, row:${list[i].row}, column:${list[i].column}`);
           }
           max = tmpPage + 1;
         }
@@ -2490,7 +2630,8 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
       } else {
         let mPage = list[i].page;
         if (mPage === undefined || mPage < 0 || CheckEmptyUtils.isEmpty(gridAppsInfos[mPage])) {
-          log.showError(TAG, 'integrateSwiper page:' + mPage + 'bundle:' + list[i].bundleName + 'length:' + list.length);
+          log.showError(TAG,
+            'integrateSwiper page:' + mPage + 'bundle:' + list[i].bundleName + 'length:' + list.length);
         } else {
           gridAppsInfos[mPage].push(list[i]);
         }
@@ -2498,7 +2639,7 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
     }
 
     // 展开态开机时如果是奇数页就补一页
-    if (desktopUtil.isFoldExpandStatus() || this.isBigScreen) {
+    if (desktopUtil.isFoldExpandStatus() || this.isSuperFold) {
       this.foldAddBlankPage(gridAppsInfos);
     }
 
@@ -2506,7 +2647,8 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
       gridAppsInfos.push([]);
     }
 
-    this.mLauncherLayoutCacheManager.updatePageCount(gridAppsInfos.length, BusinessType.BUSINESS_BASIC_DESKTOP, true, isOuter);
+    this.mLauncherLayoutCacheManager.updatePageCount(gridAppsInfos.length, BusinessType.BUSINESS_BASIC_DESKTOP, true,
+      isOuter);
     this.updateGridAppsInfos(gridAppsInfos);
     let rst: GridAppListInfo = {
       gridAppsInfos: gridAppsInfos,
@@ -2619,9 +2761,13 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
   private updateLayoutInfo(bundleInfoList: GridLayoutItemInfo[], isOuter?: boolean): void {
     const newApp: GridLayoutItemInfo[] = [];
     let bottomAppList: DockItemInfo[] = ResidentLayoutCacheMgr.getInstance().getAllDockItems();
-    log.showWarn(TAG, 'the mBundleInfoList size ' + bundleInfoList.length + ' bottomAppList size: ' + bottomAppList.length);
+    log.showWarn(TAG,
+      'the mBundleInfoList size ' + bundleInfoList.length + ' bottomAppList size: ' + bottomAppList.length);
     //Detect newly installed apps
     for (const itemInfo of bundleInfoList) {
+      if (DeliverUtil.isRemovedDeliverApp(itemInfo.bundleName)) {
+        continue;
+      }
       if (this.unInstallList.has(`${itemInfo.bundleName}${itemInfo.appIndex ?? 0}`)) {
         continue;
       }
@@ -2666,7 +2812,8 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
             moduleName: unInstallingItem.moduleName,
             appIndex: unInstallingItem.appIndex,
           };
-          this.mLauncherLayoutCacheManager.deleteSameAppAndFolder(delItem, BusinessType.BUSINESS_BASIC_DESKTOP, true, false);
+          this.mLauncherLayoutCacheManager.deleteSameAppAndFolder(delItem, BusinessType.BUSINESS_BASIC_DESKTOP, true,
+            false);
         }
       });
       log.showInfo(TAG, 'the new installing app %{public}d unInstalling app %{public}s', this.mInstallingItem.length,
@@ -2685,7 +2832,7 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
     let layoutDescription: LayoutDescription = this.mLauncherLayoutCacheManager.selectLayoutDescription();
     let first = layoutDescription.column;
     let second = layoutDescription.row;
-    let item : ItemParameter = {
+    let item: ItemParameter = {
       area: [1, 1]
     };
     for (let y = 0; y < first; y++) {
@@ -2713,7 +2860,7 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
     }
     let first = layoutDescription.column;
     let second = layoutDescription.row;
-    let item : ItemParameter = {
+    let item: ItemParameter = {
       area: [1, 1]
     };
     for (let y = 0; y < first; y++) {
@@ -2767,7 +2914,8 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
    * @param newAddedList 新增的文件夹或应用列表
    * @param page 指定的页码，如果未指定，则使用默认页码
    */
-  private updateFileFolderItemLayoutInfo(item: GridLayoutItemInfo, newAddedList: GridLayoutItemInfo[], page?: number): void {
+  private updateFileFolderItemLayoutInfo(item: GridLayoutItemInfo, newAddedList: GridLayoutItemInfo[],
+    page?: number): void {
     let pageInfo: PageInfo = this.getPageInfo(page);
     let startPageIndex = pageInfo.startPageIndex;
     let pageCount = pageInfo.pageCount;
@@ -2781,22 +2929,23 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
     let startColumn = startInfo.startColumn;
     let startRow = startInfo.startRow;
 
-    const pageCycleCallback = (i: number, startColumn: number, startRow: number, isPad: boolean, first: number, second: number): boolean => {
-      for (let y = startColumn; y < first; y++) {
-        if (y > startColumn) {
-          startRow = 0;
-        }
-        for (let x = startRow; x < second; x++) {
-          const positionX = isPad ? y : x;
-          const positionY = isPad ? x : y;
-          if (this.processPositionValid(item, i, positionX, positionY, isPad, newAddedList, pageCount)) {
-            isNeedNewPage = false;
-            return true;
+    const pageCycleCallback =
+      (i: number, startColumn: number, startRow: number, isPad: boolean, first: number, second: number): boolean => {
+        for (let y = startColumn; y < first; y++) {
+          if (y > startColumn) {
+            startRow = 0;
+          }
+          for (let x = startRow; x < second; x++) {
+            const positionX = isPad ? y : x;
+            const positionY = isPad ? x : y;
+            if (this.processPositionValid(item, i, positionX, positionY, isPad, newAddedList, pageCount)) {
+              isNeedNewPage = false;
+              return true;
+            }
           }
         }
-      }
-      return false;
-    };
+        return false;
+      };
 
     pageCycle: for (let i = startPageIndex; i < pageCount; i++) {
       if (pageCycleCallback(i, startColumn, startRow, isPad, first, second)) {
@@ -2822,14 +2971,16 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
     }
   }
 
-  private processPositionValid(item: GridLayoutItemInfo, i: number, positionX: number, positionY: number, isPad: boolean,
+  private processPositionValid(item: GridLayoutItemInfo, i: number, positionX: number, positionY: number,
+    isPad: boolean,
     newAddedList: GridLayoutItemInfo[], pageCount: number): boolean {
     if (this.mLauncherLayoutCacheManager.isPositionValid(item, i, positionX, positionY)) {
       log.showInfo(TAG, `updateFileFolderItemLayoutInfo isPositionValid: x:${positionX} y: ${positionY} page: ${i}`);
       item.page = i;
       item.column = positionX;
       item.row = positionY;
-      if (this.mLauncherLayoutCacheManager.insertGridLayoutItemInfo(item, BusinessType.BUSINESS_BASIC_DESKTOP, false, undefined, this.singleContext)) {
+      if (this.mLauncherLayoutCacheManager.insertGridLayoutItemInfo(item, BusinessType.BUSINESS_BASIC_DESKTOP, false,
+        undefined, this.singleContext)) {
         newAddedList.push(item);
       }
       return true;
@@ -2846,7 +2997,8 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
     item.page = pageCount;
     item.column = 0;
     item.row = 0;
-    this.mLauncherLayoutCacheManager.insertGridLayoutItemInfo(item, BusinessType.BUSINESS_BASIC_DESKTOP, false, undefined, this.singleContext);
+    this.mLauncherLayoutCacheManager.insertGridLayoutItemInfo(item, BusinessType.BUSINESS_BASIC_DESKTOP, false,
+      undefined, this.singleContext);
     this.mLauncherLayoutCacheManager.updatePageCount(pageCount + 1, BusinessType.BUSINESS_BASIC_DESKTOP, true);
   }
 
@@ -2854,7 +3006,7 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
    * 卡片加桌时获取页码信息
    */
   private getPagesWhenAddCard(): number[] {
-    if (this.isBigScreen && this.keyBoardStatus !== FeatureConstants.NO_KEYBOARD) {
+    if (this.isSuperFold && this.keyBoardStatus !== FeatureConstants.NO_KEYBOARD) {
       return [this.keyBoardStatus, this.keyBoardStatus];
     }
     let lockedPageNum: number =
@@ -2863,12 +3015,13 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
     let pageNum: number = GridLayoutUtil.isLargeFoldExpanded() ? 2 : 1;
     // [0]为找位起始页；当前显示页为预置页时，从非预置页开始找位
     // [1]为当前显示页；为便于逻辑统一，当前显示页为预置页时，强制指定当前页为预置页最后一页
-    log.showInfo(TAG, `getPagesWhenAddCard mTargetIndex: ${this.mTargetIndex}, lockedPageNum: ${lockedPageNum}, pageNum: ${pageNum}`);
+    log.showInfo(TAG,
+      `getPagesWhenAddCard mTargetIndex: ${this.mTargetIndex}, lockedPageNum: ${lockedPageNum}, pageNum: ${pageNum}`);
     return [Math.max(this.mTargetIndex, lockedPageNum), Math.max(this.mTargetIndex, lockedPageNum - pageNum)];
   }
 
   private getCardItemLayoutInfo(cardItemInfo: CardItemInfo): boolean {
-    let foldOpen: boolean = desktopUtil.isFoldExpandStatus() || this.isBigScreen;
+    let foldOpen: boolean = desktopUtil.isFoldExpandStatus() || this.isSuperFold;
     let pageInfoManager: PageInfoManager = PageInfoManager.getInstance();
     // 是否是三屏状态
     const displayCount: number = pageInfoManager.getDisplayCount();
@@ -2899,7 +3052,8 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
       log.showInfo(TAG, `current needNewPage, page: ${cardItemInfo.page}`);
       return true;
     }
-    log.showInfo(TAG, `get pageIndex: ${position.pageIndex}, row: ${position.row}, column: ${position.column}, this.mPageIndex: ${this.mPageIndex}, area: ${cardItemInfo.area}`);
+    log.showInfo(TAG,
+      `get pageIndex: ${position.pageIndex}, row: ${position.row}, column: ${position.column}, this.mPageIndex: ${this.mPageIndex}, area: ${cardItemInfo.area}`);
     if ((position.pageIndex - this.mPageIndex) >= pageStep) {
       this.changeSwiperIndex(position.pageIndex);
     }
@@ -2926,7 +3080,8 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
     let isNeedRefreshDesktop = false;
     for (let i = 0; i < items.length; i++) {
       let item = items[i];
-      log.showInfo(TAG, 'insertNewUpdateApp, bundleName is %{public}s; keyName %{public}s', item.bundleName, item.keyName);
+      log.showInfo(TAG, 'insertNewUpdateApp, bundleName is %{public}s; keyName %{public}s', item.bundleName,
+        item.keyName);
       if (this.mLauncherLayoutCacheManager.updateOneAppLayoutInfo(item, BusinessType.BUSINESS_BASIC_DESKTOP, true,
         false)) {
         isNeedRefreshDesktop = true;
@@ -2940,7 +3095,8 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
         relationNamesMap.set(item.oldBundleNames[0] + item.appIndex, 1);
       }
       let residentList: DockItemInfo[] = ResidentLayoutCacheMgr.getInstance().getAllDockItems();
-      let appInDockIndex: number = residentList.findIndex(dockItem => relationNamesMap.has(dockItem.bundleName + dockItem.appIndex));
+      let appInDockIndex: number =
+        residentList.findIndex(dockItem => relationNamesMap.has(dockItem.bundleName + dockItem.appIndex));
       let isFindInDock: boolean = false;
       if (appInDockIndex !== -1) {
         isFindInDock = true;
@@ -2948,7 +3104,8 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
         residentList.forEach((dockItem, index) => {
           if (dockItem.typeId === CommonConstants.TYPE_FOLDER) {
             let inFolderIndex: number =
-              dockItem.layoutInfo?.flat().findIndex(itemInFolder => relationNamesMap.has(itemInFolder.bundleName + itemInFolder.appIndex)) ?? -1;
+              dockItem.layoutInfo?.flat().findIndex(itemInFolder => relationNamesMap.has(itemInFolder.bundleName +
+              itemInFolder.appIndex)) ?? -1;
             if (inFolderIndex !== -1) {
               isFindInDock = true;
             }
@@ -3014,6 +3171,7 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
     let startFindPage: number = scbBlankPositionUtils.getStartFindPageByHomePage(maxPage, isOuter);
     let itemLocation: ItemLocation = PageDesktopViewModelUtils.getStartFindItemLocation(startFindPage, 0, 0);
     let locationItemList: GridLayoutItemInfo[] = [];
+    let isSupportDeliver: boolean = DeliverUtil.isSupportDeliver();
     let isRetailEnable: boolean = false;
     try {
       isRetailEnable = systemParameterEnhance.getSync('const.dfx.enable_retail', 'false') === 'true';
@@ -3031,6 +3189,11 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
       if (isContactShortcut && folderItem) {
         FolderLayoutCacheManager.getInstance().insertAppItemToFolderLastItemByFolderId(folderItem.folderId,
           item, BusinessType.BUSINESS_BASIC_DESKTOP, true);
+        continue;
+      }
+      // 处理备份应用找位
+      if (!batchUninstall &&
+      this.viewModelUtils.findPositionForContainerApp(item as AppItemInfo, isSupportDeliver, isRetailEnable)) {
         continue;
       }
       // 已完成一轮找位后，还没有落位的图标放到 overMaxPageList中
@@ -3059,13 +3222,16 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
           isNeedFindPosition = true;
           break;
         }
-        isNeedFindPosition = !this.viewModelUtils.findBlankPositionFromOnePage(maxRow, maxCol, maxPage, item, itemLocation);
+        isNeedFindPosition =
+          !this.viewModelUtils.findBlankPositionFromOnePage(maxRow, maxCol, maxPage, item, itemLocation);
       }
       if (!isNeedFindPosition) {
         let realPageIndex = itemLocation.findPage % maxPage;
         let newItem: GridLayoutItemInfo = (item.typeId === CommonConstants.TYPE_APP) ?
-          this.viewModelUtils.buildGridLayoutInfoFromItemInfo(item, realPageIndex, itemLocation.findCol, itemLocation.findRow) :
-          PageDesktopViewModelUtils.updateGridLayoutInfoPosition(item, realPageIndex, itemLocation.findCol, itemLocation.findRow);
+          this.viewModelUtils.buildGridLayoutInfoFromItemInfo(item, realPageIndex, itemLocation.findCol,
+            itemLocation.findRow) :
+          PageDesktopViewModelUtils.updateGridLayoutInfoPosition(item, realPageIndex, itemLocation.findCol,
+            itemLocation.findRow);
         newItem.container = CommonConstants.CONTAINER_DESKTOP;
         newItem.areaType = CommonConstants.TYPE_AREA_DESKTOP;
         locationItemList.push(newItem);
@@ -3092,8 +3258,10 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
     this.viewModelUtils.findBlankPositionWithoutVerify(maxRow, maxCol, itemLocation);
     let realPageIndex = itemLocation.findPage % maxPage;
     let newItem: GridLayoutItemInfo = (item.typeId === CommonConstants.TYPE_APP) ?
-      this.viewModelUtils.buildGridLayoutInfoFromItemInfo(item, realPageIndex, itemLocation.findCol, itemLocation.findRow) :
-      PageDesktopViewModelUtils.updateGridLayoutInfoPosition(item, realPageIndex, itemLocation.findCol, itemLocation.findRow);
+      this.viewModelUtils.buildGridLayoutInfoFromItemInfo(item, realPageIndex, itemLocation.findCol,
+        itemLocation.findRow) :
+      PageDesktopViewModelUtils.updateGridLayoutInfoPosition(item, realPageIndex, itemLocation.findCol,
+        itemLocation.findRow);
     this.checkToRemoveOverMaxPageItem(item.bundleName);
     locationItemList.push(newItem);
   }
@@ -3105,7 +3273,7 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
   }
 
   /**
-   * 创建未OpenHarmony化文件夹时设置标志位，防止多批克隆应用接收时未OpenHarmony化文件夹还没创建完成
+   * 创建未鸿蒙化文件夹时设置标志位，防止多批克隆应用接收时未鸿蒙化文件夹还没创建完成
    *
    * @param isMakingFolder true正在创建文件夹，false未创建文件夹
    */
@@ -3125,13 +3293,31 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
    */
   public updateAppItemLayoutInfo(item: GridLayoutItemInfo | AppItemInfo, isOuter?: boolean): boolean {
     if (item.appStatus !== AppStatus.INSTALLED) {
+      // 已在安装的应用不重复占位
       let tmpInfo = AppModel.getInstance().getAppInfoByBundleName(item.bundleName);
       if (item.appStatus === AppStatus.WAIT_FOR_HARMONY && !CheckEmptyUtils.isEmpty(tmpInfo)) {
         log.showWarn(TAG, `updateAppItemLayoutInfo ${item.bundleName} is exist`);
         return false;
       }
+      // 占位应用应用加到应用文件夹
+      if (DeliverUtil.isAppItem(item.intent)) {
+        this.viewModelUtils.dealWithContainerApp(item as AppItemInfo);
+        return true;
+      }
+      // 未鸿蒙化应用（不包含尝鲜应用）收进未鸿蒙化文件夹
+      if (item.appStatus === AppStatus.WAIT_FOR_HARMONY && !DeliverUtil.isContainerItem(item.intent) &&
+        item.typeId === CommonConstants.TYPE_APP && !NotHarmonyUtil.CANCEL_NOT_HARMONY_FOLDER &&
+        CommonUtils.jsonStrToMap(item.intent).get('appType') !== AppReserveType.TASTE_FRESH) {
+        // 未鸿蒙化文件夹创建完成之前将未鸿蒙化应用收集起来
+        if (this.isMakingFolder) {
+          this.newUpdateAppList.push(item as GridLayoutItemInfo);
+          return false;
+        }
+        this.viewModelUtils.dealWithContainerApp(item as AppItemInfo, false);
+        return true;
+      }
     }
-    const uiType:ESObject = SCBWindowSceneConfig.getInstance().windowSceneConfig?.uiType;
+    const uiType: ESObject = SCBWindowSceneConfig.getInstance().windowSceneConfig?.uiType;
     if (uiType === SCBConstants.UITYPE_PC &&
     this.mLauncherLayoutCacheManager.isAddAppOverMaxPage(this.mSettingsModel.getGridConfig())
     ) {
@@ -3161,7 +3347,8 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
       for (let i = startFindPage; i < endFindPage; i++) {
         if (this.findBlankPosition(first, second, isPad, i, item as GridLayoutItemInfo, isOuter)) {
           if (this.overMaxPageItems.has(item.bundleName)) {
-            log.showInfo(TAG, `updateAppItemLayoutInfo, overMaxPageItems delete bundleName: ${item.bundleName}, typeId: ${item.typeId}`);
+            log.showInfo(TAG,
+              `updateAppItemLayoutInfo, overMaxPageItems delete bundleName: ${item.bundleName}, typeId: ${item.typeId}`);
             this.overMaxPageItems.delete(item.bundleName);
           }
           return true;
@@ -3186,6 +3373,9 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
         let gridlayoutItem: GridLayoutItemInfo = (item.typeId === CommonConstants.TYPE_APP) ?
           this.viewModelUtils.buildGridLayoutInfoFromItemInfo(item, realPage, column, row)
           : PageDesktopViewModelUtils.updateGridLayoutInfoPosition(item as GridLayoutItemInfo, realPage, column, row);
+        if (CheckEmptyUtils.isEmpty(gridlayoutItem?.container) && DeliverUtil.isdeliverApp(gridlayoutItem.intent)) {
+          gridlayoutItem.container = CommonConstants.CONTAINER_DESKTOP;
+        }
         LaunchLayoutCacheManager.getInstance()
           .insertGridLayoutItemInfo(gridlayoutItem, BusinessType.BUSINESS_APP_INSTALL, true, false);
         return true;
@@ -3205,7 +3395,8 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
    * @param layoutDescription 布局描述
    * @returns 找到空位返回插入的空白页；如果超过最大屏无空位需要合入文件夹，则返回最大页面数
    */
-  private checkPageAndInsertGridLayout(item: GridLayoutItemInfo, pageCount: number, layoutDescription: LayoutDescription,
+  private checkPageAndInsertGridLayout(item: GridLayoutItemInfo, pageCount: number,
+    layoutDescription: LayoutDescription,
     startFindPage: number, isOuter?: boolean): number {
     let gridlayoutItem: GridLayoutItemInfo =
       (item.typeId === CommonConstants.TYPE_APP) ? this.viewModelUtils.buildGridLayoutInfoFromItemInfo(item,
@@ -3231,11 +3422,13 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
       this.addAppWhenMaxPage(itemList, startFindPage);
       return;
     }
-    let newOverMaxPageItems: GridLayoutItemInfo[] = itemList.filter(item => !this.overMaxPageItems.has(item.bundleName));
+    let newOverMaxPageItems: GridLayoutItemInfo[] =
+      itemList.filter(item => !this.overMaxPageItems.has(item.bundleName));
     if (CheckEmptyUtils.isEmptyArr(newOverMaxPageItems)) {
       return;
     }
-    log.showInfo(TAG, 'overMaxPageList add size %{public}d, filterSize %{public}d', itemList.length, newOverMaxPageItems.length);
+    log.showInfo(TAG, 'overMaxPageList add size %{public}d, filterSize %{public}d', itemList.length,
+      newOverMaxPageItems.length);
     let isAdd = this.addAppWhenMaxPage(newOverMaxPageItems, startFindPage);
     if (!isAdd) {
       // 开机的时候不弹，第一次添加到19屏的时候才弹
@@ -3259,7 +3452,8 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
     }
   }
 
-  private dealWithOverMaxPage(item: GridLayoutItemInfo, layoutDescription: LayoutDescription, startFindPage: number): number {
+  private dealWithOverMaxPage(item: GridLayoutItemInfo, layoutDescription: LayoutDescription,
+    startFindPage: number): number {
     if (!this.mIsFinishedInitLayout) {
       log.showWarn(TAG, 'InitLayout not finished');
       this.addAppWhenMaxPage([item], startFindPage);
@@ -3279,9 +3473,9 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
   }
 
   // 检查当前页是不是有空余位置
-  private findBlankPosition(first: number, second:number, isPad: boolean, page: number, item: GridLayoutItemInfo,
+  private findBlankPosition(first: number, second: number, isPad: boolean, page: number, item: GridLayoutItemInfo,
     isOuter?: boolean): boolean {
-    let rowOffset : number = 0;
+    let rowOffset: number = 0;
     if (DeviceHelper.isPad() && (page === 0)) {
       rowOffset = ROW_OFFSET_THREE;
     }
@@ -3343,7 +3537,7 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
   }
 
   private canAddApp(itemInfo: GridLayoutItemInfo): boolean {
-    if (CheckEmptyUtils.isEmpty(itemInfo) ||
+    if (CheckEmptyUtils.isEmpty(itemInfo) || DeliverUtil.isContainerFolder(itemInfo.folderId) ||
     FolderViewModel.isFolderFull(itemInfo) || NotHarmonyUtil.isNotHarmonyFolderById(itemInfo.folderId)) {
       return false;
     }
@@ -3425,7 +3619,8 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
     this.mAtomicServiceAppModel.getAtomicInfoByBundleName(bundleName);
     let newFormInfos: CardItemInfo[] | undefined = this.mFormModel.getAppItemFormInfo(bundleName);
     if (!appInfo || !newFormInfos || CheckEmptyUtils.isEmptyArr(newFormInfos)) {
-      log.showError(TAG, `no bundle in formModel(${newFormInfos?.length}) or appModel(${CheckEmptyUtils.isEmpty(appInfo)})`);
+      log.showError(TAG,
+        `no bundle in formModel(${newFormInfos?.length}) or appModel(${CheckEmptyUtils.isEmpty(appInfo)})`);
       return;
     }
 
@@ -3490,7 +3685,7 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
    * @param info 布局信息
    * @param layoutDescription 布局描述
    * @param item appItemInfo|gridLayoutInfo bms获取的应用信息 | 构建的网格对象
-   * @param isDeliverApp false未OpenHarmony化文件夹
+   * @param isDeliverApp false未鸿蒙化文件夹
    * @returns true找位成功，false找位失败
    */
   public updateElementLocation(layoutDescription: LayoutDescription, item: GridLayoutItemInfo,
@@ -3501,11 +3696,12 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
     let findPositionByHomePage: boolean = false;
     if (this.keyBoardStatus === FeatureConstants.NO_KEYBOARD) {
       pageCount = layoutDescription.pageCount;
-      // 未OpenHarmony化文件夹从最后一屏找位
+      // 未鸿蒙化文件夹从最后一屏找位
       if (!isDeliverApp) {
         startFindPage = pageCount - 1;
       } else {
-        startFindPage = scbBlankPositionUtils.getStartFindPageByHomePage(layoutDescription.maxPage, deliverAppShowOuter);
+        startFindPage =
+          scbBlankPositionUtils.getStartFindPageByHomePage(layoutDescription.maxPage, deliverAppShowOuter);
         findPositionByHomePage = true;
       }
     } else {
@@ -3540,13 +3736,32 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
     pageCount = DeviceHelper.isFoldButNotSmallFoldProduct() && (pageCount < START_FIND_POSITION_BIG_FOLD) ?
       START_FIND_POSITION_BIG_FOLD : pageCount;
     log.showWarn(TAG, `updateElementLocation pageCount:${pageCount}, bundlerName: ${item.bundleName} add new page`);
-    let gridlayoutItem: GridLayoutItemInfo = PageDesktopViewModelUtils.updateGridLayoutInfoPosition(item, pageCount, 0, 0);
+    let gridlayoutItem: GridLayoutItemInfo =
+      PageDesktopViewModelUtils.updateGridLayoutInfoPosition(item, pageCount, 0, 0);
     if (pageCount < layoutDescription.maxPage && !DeviceHelper.isPC()) {
       if (this.overMaxPageItems.has(item.bundleName)) {
-        log.showWarn(TAG, `addBlankPage, overMaxPageItems delete bundleName: ${item.bundleName}, typeId: ${item.typeId}`);
+        log.showWarn(TAG,
+          `addBlankPage, overMaxPageItems delete bundleName: ${item.bundleName}, typeId: ${item.typeId}`);
         this.overMaxPageItems.delete(item.bundleName);
       }
-      this.mLauncherLayoutCacheManager.insertGridLayoutItemAndUpdatePosition(gridlayoutItem, BusinessType.BUSINESS_BASIC_DESKTOP, true);
+      if (isDeliverApp &&
+      DeliverUtil.isCustomizedFolder(isDeliverApp, gridlayoutItem.typeId, gridlayoutItem.folderId)) {
+        this.mLauncherLayoutCacheManager.insertFolderLayoutInfoAsync(gridlayoutItem,
+          BusinessType.BUSINESS_BASIC_DESKTOP,
+          true, isDeliverApp);
+        FolderLayoutCacheManager.getInstance()
+          .insertAppToFolderWithoutContainer(gridlayoutItem.intent, gridlayoutItem.id);
+      } else if (!isDeliverApp &&
+      DeliverUtil.isCustomizedFolder(isDeliverApp, gridlayoutItem.typeId, gridlayoutItem.folderId)) {
+        this.setIsMakingFolder(true);
+        this.mLauncherLayoutCacheManager.insertFolderLayoutInfoAsync(gridlayoutItem,
+          BusinessType.BUSINESS_BASIC_DESKTOP, true).then(() => {
+          this.setIsMakingFolder(false);
+        });
+      } else {
+        this.mLauncherLayoutCacheManager.insertGridLayoutItemAndUpdatePosition(gridlayoutItem,
+          BusinessType.BUSINESS_BASIC_DESKTOP, true);
+      }
       this.mLauncherLayoutCacheManager.updatePageCount(pageCount + 1, BusinessType.BUSINESS_BASIC_DESKTOP, true,
         deliverAppShowOuter);
       return true;
@@ -3556,7 +3771,8 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
 
   private deleteOverMaxPageItems(item: GridLayoutItemInfo) {
     if (this.overMaxPageItems.has(item.bundleName)) {
-      log.showWarn(TAG, `updateElementLocation, overMaxPageItems delete bundleName: ${item.bundleName}, typeId: ${item.typeId}`);
+      log.showWarn(TAG,
+        `updateElementLocation, overMaxPageItems delete bundleName: ${item.bundleName}, typeId: ${item.typeId}`);
       this.overMaxPageItems.delete(item.bundleName);
     }
   }
@@ -3565,9 +3781,26 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
   private findAndUpdatePosition(first: number, second: number, isPad: boolean, page: number, item: GridLayoutItemInfo,
     isDeliverApp: boolean = true): boolean {
     let deliverAppShowOuter: boolean | undefined = isDeliverApp ? false : undefined;
-    let rowOffset : number = 0;
+    let rowOffset: number = 0;
     if (DeviceHelper.isPad() && (page === 0)) {
       rowOffset = ROW_OFFSET_THREE;
+    }
+
+    if (DeviceHelper.isPC()) {
+      for (let x = 0; x < second; x++) {
+        for (let y = rowOffset; y < first; y++) {
+          if (this.mLauncherLayoutCacheManager.isPositionValid(item, page, x, y, deliverAppShowOuter)) {
+            log.showInfo(TAG, `PC findAndUpdatePosition isPositionValid: x:${x} y:${y}`);
+            let gridlayoutItem: GridLayoutItemInfo =
+              PageDesktopViewModelUtils.updateGridLayoutInfoPosition(item, page, x, y);
+            this.addToLayout(gridlayoutItem, isDeliverApp);
+            log.showInfo(TAG, `PC findAndUpdatePosition page:${page}, bundlerName: ${item?.bundleName} result: true`);
+            return true;
+          }
+        }
+      }
+      log.showInfo(TAG, `PC findAndUpdatePosition page:${page}, bundlerName: ${item.bundleName} result: false`);
+      return false;
     }
 
     for (let y = rowOffset; y < first; y++) {
@@ -3576,7 +3809,8 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
         let positionY = isPad ? x : y;
         if (this.mLauncherLayoutCacheManager.isPositionValid(item, page, positionX, positionY, deliverAppShowOuter)) {
           log.showInfo(TAG, `findAndUpdatePosition isPositionValid: x:${positionX} y:${positionY}`);
-          let gridlayoutItem: GridLayoutItemInfo = PageDesktopViewModelUtils.updateGridLayoutInfoPosition(item, page, positionX, positionY);
+          let gridlayoutItem: GridLayoutItemInfo =
+            PageDesktopViewModelUtils.updateGridLayoutInfoPosition(item, page, positionX, positionY);
           this.addToLayout(gridlayoutItem, isDeliverApp);
           log.showInfo(TAG, `findAndUpdatePosition page:${page}, bundlerName: ${item?.bundleName} result: true`);
           return true;
@@ -3589,10 +3823,43 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
 
   private addToLayout(gridLayoutItem: GridLayoutItemInfo, isDeliverApp: boolean = true): void {
     if (DeviceHelper.isPC()) {
+      log.showInfo(TAG, `index isPC`);
       gridLayoutItem.container = CommonConstants.CONTAINER_DESKTOP;
-      this.mLauncherLayoutCacheManager.insertGridLayoutItemInfo(gridLayoutItem, BusinessType.BUSINESS_BASIC_DESKTOP, true);
+      this.mLauncherLayoutCacheManager.insertGridLayoutItemInfo(gridLayoutItem, BusinessType.BUSINESS_BASIC_DESKTOP,
+        true);
+      // For PC: Add to app list to ensure it's saved after reboot
+      this.mBundleInfoList = this.mSettingsModel.getAppListInfo();
+      const index = this.mBundleInfoList.findIndex(value => {
+        return value.keyName === gridLayoutItem.keyName;
+      });
+      log.showInfo(TAG, `index findIndex: ${index}`);
+      if (index === -1) {
+        log.showInfo(TAG, `gridLayoutItem index: ${index}`);
+        this.mBundleInfoList.push(gridLayoutItem);
+        this.mSettingsModel.setAppListInfo(this.mBundleInfoList);
+      }
+      // 更新布局缓存，确保应用被正确保存
+      this.mLauncherLayoutCacheManager.updateAppCacheInfoByAppList(this.mBundleInfoList,
+        BusinessType.BUSINESS_BASIC_DESKTOP, false);
     } else {
-      this.mLauncherLayoutCacheManager.insertGridLayoutItemAndUpdatePosition(gridLayoutItem, BusinessType.BUSINESS_BASIC_DESKTOP, true);
+      if (isDeliverApp &&
+      DeliverUtil.isCustomizedFolder(isDeliverApp, gridLayoutItem.typeId, gridLayoutItem.folderId)) {
+        this.mLauncherLayoutCacheManager.insertFolderLayoutInfoAsync(gridLayoutItem,
+          BusinessType.BUSINESS_BASIC_DESKTOP,
+          true, isDeliverApp);
+        FolderLayoutCacheManager.getInstance()
+          .insertAppToFolderWithoutContainer(gridLayoutItem.intent, gridLayoutItem.id);
+      } else if (!isDeliverApp &&
+      DeliverUtil.isCustomizedFolder(isDeliverApp, gridLayoutItem.typeId, gridLayoutItem.folderId)) {
+        this.setIsMakingFolder(true);
+        this.mLauncherLayoutCacheManager.insertFolderLayoutInfoAsync(gridLayoutItem,
+          BusinessType.BUSINESS_BASIC_DESKTOP, true).then(() => {
+          this.setIsMakingFolder(false);
+        });
+      } else {
+        this.mLauncherLayoutCacheManager.insertGridLayoutItemAndUpdatePosition(gridLayoutItem,
+          BusinessType.BUSINESS_BASIC_DESKTOP, true);
+      }
     }
   }
 
@@ -3620,7 +3887,8 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
       if (!CheckEmptyUtils.isEmptyArr(this.mInstallingItem)) {
         this.mInstallingItem = this.mInstallingItem.filter(item => item.bundleName !== bundleName);
       }
-      let downloadStatusInfo: DownloadStatusInfo | undefined = AppGalleryDownloadManager.getInstance().getDownDownloadTaskInfo(bundleName);
+      let downloadStatusInfo: DownloadStatusInfo | undefined =
+        AppGalleryDownloadManager.getInstance().getDownDownloadTaskInfo(bundleName);
       this.updateNewInstalledGridInfo(bundleName, appIndex ?? 0);
       if (downloadStatusInfo && !appIndex) {
         this.registerInstalledAniFinishCallback(bundleName, appIndex ?? 0);
@@ -3636,6 +3904,22 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
 
   private updateContainerAppNewInstalled(bundleName: string, appIndex: number): void {
     let appInfo: AppItemInfo | undefined = AppModel.getInstance().getAppInfoByBundleName(bundleName);
+    if (appInfo && this.selectDeliveryAppWaitForInstall(appInfo)) {
+      localEventManager.sendLocalEventSticky(EventConstants.EVENT_FOLDER_PACKAGE_REMOVED, {
+        bundleName: bundleName,
+        keyName: undefined,
+        appIndex: appInfo.appIndex,
+      });
+      localEventManager.sendLocalEventSticky(EventConstants.EVENT_REQUEST_PAGEDESK_ITEM_DELETE, {
+        bundleName: bundleName,
+        keyName: undefined,
+        appIndex: appInfo.appIndex,
+      });
+      setTimeout(() => {
+        this.updateBMSChangedApp(bundleName, appIndex);
+      }, DELAY_TIME_INSTALL_AFTER_REMOVE);
+      return;
+    }
     this.updateBMSChangedApp(bundleName, appIndex);
   }
 
@@ -3652,7 +3936,8 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
     for (let i = 0; i < itemList.length; i++) {
       if (appIndex === itemList[i].appIndex) {
         itemInfo = itemList[i];
-        log.showInfo(TAG, `Get intent of itemInfo, itemInfo: ${itemInfo?.bundleName}, ${itemInfo?.appIndex}, ${itemInfo?.intent}`);
+        log.showInfo(TAG,
+          `Get intent of itemInfo, itemInfo: ${itemInfo?.bundleName}, ${itemInfo?.appIndex}, ${itemInfo?.intent}`);
         break;
       }
     }
@@ -3674,25 +3959,66 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
       originItem.appIndex = newApp.appIndex;
       originItem.appStatus = AppStatus.INSTALLED;
       originItem.intent = itemInfo?.intent;
-      log.showInfo(TAG, `originItem.moduleName = ${originItem.moduleName}, originItem.abilityName = ${originItem.abilityName}`);
+      log.showInfo(TAG,
+        `originItem.moduleName = ${originItem.moduleName}, originItem.abilityName = ${originItem.abilityName}`);
       RdbStoreManager.getInstance().updateNewInstalledGridInfo(originItem, false);
     }
+  }
+
+  private selectDeliveryAppWaitForInstall(appInfo: AppItemInfo): GridLayoutItemInfo | undefined {
+    if (!DeliverUtil.isSupportDeliver() || !DeliverUtil.isSupportAppType(appInfo.bundleName)) {
+      return undefined;
+    }
+    DeliverUtil.setInstallSourceAndIntent(appInfo, appInfo.intent);
+    let gridLayoutItemInfoList: GridLayoutItemInfo[] = LaunchLayoutCacheManager.getInstance()
+      .getAllGridLayoutItemList(BusinessType.BUSINESS_APP);
+    for (let i = 0; i < gridLayoutItemInfoList.length; i++) {
+      if (CheckEmptyUtils.isEmpty(gridLayoutItemInfoList[i])) {
+        continue;
+      }
+      if (gridLayoutItemInfoList[i].typeId === CommonConstants.TYPE_APP) {
+        if (gridLayoutItemInfoList[i].bundleName === appInfo.bundleName &&
+          gridLayoutItemInfoList[i].appIndex === appInfo.appIndex) {
+          this.cancelDownloadTask(gridLayoutItemInfoList[i]);
+          return DeliverUtil.CANCEL_DELIVER_FOLDER && DeliverUtil.isAppItem(appInfo.intent) ?
+            gridLayoutItemInfoList[i] : undefined;
+        }
+      }
+      if (gridLayoutItemInfoList[i].typeId === CommonConstants.TYPE_FOLDER) {
+        let gridLayoutInfo: GridLayoutItemInfo | undefined =
+          gridLayoutItemInfoList[i].layoutInfo?.flat().find(item => item.bundleName ===
+          appInfo.bundleName && item.appIndex === appInfo.appIndex);
+        if (gridLayoutInfo && DeliverUtil.CANCEL_DELIVER_FOLDER && DeliverUtil.isAppItem(appInfo.intent)) {
+          this.cancelDownloadTask(gridLayoutInfo);
+          return DeliverUtil.isAbroadFolder(gridLayoutItemInfoList[i].folderId) ? undefined : gridLayoutInfo;
+        }
+        if (gridLayoutInfo) {
+          this.cancelDownloadTask(gridLayoutInfo);
+          // 只需要取消暂未发布应用里面的，其他直接替换，不影响应用&克隆应用
+          return NotHarmonyUtil.isNotHarmonyFolderById(gridLayoutItemInfoList[i].folderId) ? gridLayoutInfo : undefined;
+        }
+      }
+    }
+    return undefined;
   }
 
   private cancelDownloadTask(gridLayoutItemInfo: GridLayoutItemInfo): void {
     if (gridLayoutItemInfo.appStatus === AppStatus.WAIT_FOR_HARMONY) {
       let extendInfo: Map<string, Object> = CommonUtils.jsonStrToMap(gridLayoutItemInfo.intent);
       AppInstallUtils.getInstance().cancelTask(extendInfo?.get('requestBundleName') as string);
+      log.showInfo(TAG, `selectDeliveryAppWaitForInstall CancelDownloadInfo ${gridLayoutItemInfo.bundleName}`);
     }
   }
 
   private registerInstalledAniFinishCallback(bundleName: string, appIndex: number): void {
     this.waitingForInstallAni = true;
     const installAniFinishEvent: string = `desktopInstallAniFinish${bundleName}`;
-    const eventHub: ctx.EventHub = (GlobalContext.getInstance().getObject('desktopContext') as ctx.ServiceExtensionContext)?.eventHub;
+    const eventHub: ctx.EventHub =
+      (GlobalContext.getInstance().getObject('desktopContext') as ctx.ServiceExtensionContext)?.eventHub;
+    this.updateFormAfterAppInstall(bundleName);
     if (installAniFinishEvent) {
       eventHub.off(installAniFinishEvent);
-      eventHub.on(installAniFinishEvent, async(): Promise<void> => {
+      eventHub.on(installAniFinishEvent, async (): Promise<void> => {
         eventHub.off(installAniFinishEvent);
         if (this.waitingForInstallAni) {
           this.waitingForInstallAni = false;
@@ -3728,10 +4054,15 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
         message: this.mResourceManager.getStringByName('disable_uninstall')
       });
     } else if (resultCode === CommonConstants.UNINSTALL_SUCCESS) {
+      DeliverUtil.removeRecentSpecialApp(bundleName);
       Prompt.showToast({
         message: this.mResourceManager.getStringByName('uninstall_success')
       });
     } else {
+      if (resultCode === -1 && DeliverUtil.isContainerPkg(bundleName)) {
+        log.info('UNINSTALL app not show toast in page desktop view');
+        return;
+      }
       Prompt.showToast({
         message: this.mResourceManager.getStringByName('uninstall_failed')
       });
@@ -3784,7 +4115,8 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
   }
 
   public recycleFormEventHandler(state: boolean): void {
-    formLog.showInfo(TAG, `current recycleFormEventHandler, state = ${state}, currentStartApp = ${this.currentStartApp}`);
+    formLog.showInfo(TAG,
+      `current recycleFormEventHandler, state = ${state}, currentStartApp = ${this.currentStartApp}`);
     if (state) {
       // 如果已经处于全屏启动状态，如果没有触发退出全屏，不重复处理回收逻辑
       if (!this.currentStartApp) {
@@ -3926,7 +4258,8 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
     this.notifyFormsVisibilityOfPage(this.mPageIndex, true);
 
     let foldOpen: boolean = desktopUtil.isFoldExpandStatus();
-    if ((!foldOpen && (this.mPageIndex !== this.mOldPageIndex)) || (foldOpen && (this.mOldPageIndex - this.mPageIndex !== 1))) {
+    if ((!foldOpen && (this.mPageIndex !== this.mOldPageIndex)) ||
+      (foldOpen && (this.mOldPageIndex - this.mPageIndex !== 1))) {
       // 上报页面不可见打点
       this.getFormsByPageIndex(this.mOldPageIndex).forEach((item: CardItemInfo) => {
         FormHiSysEventUtil.getInstance().exposureChange(item, false, false);
@@ -3959,7 +4292,7 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
     this.mPageInvisibleTimer = setTimeout(() => {
       this.mPageInvisibleTimer = INVALID_TIMER;
 
-      // 通知用户不可见的卡片不可见, 直板机：非当前页，大屏幕机与BigScreenMachine：非当前页、非当前页隔壁一页
+      // 通知用户不可见的卡片不可见, 直板机：非当前页，折叠机与SuperFoldMachine：非当前页、非当前页隔壁一页
       let invisibleList: string[] = this.getOtherPageForms(this.mPageIndex);
       this.mFormHostService.formHostNotifyInvisible(invisibleList);
     }, isDelay ? DELAY_TIME_FOR_NOTIFY_PAGE_INVISIBLE : 0);
@@ -3978,7 +4311,7 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
 
     let formList: CardItemInfo[] = this.getFormsByPageIndex(pageIndex) as CardItemInfo[];
     let formIdList: string[] = [];
-    let formBriefList : string[] = [];
+    let formBriefList: string[] = [];
     formList.forEach((item: CardItemInfo) => {
       const cardBriefInfo: string = `${item.cardId}_${item.bundleName}_${item.page}_${item.row}_${item.column}`;
       formIdList.push(item.cardId);
@@ -4123,7 +4456,7 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
     return cardItemInfo;
   }
 
-  private isPageIndexValid(pageIndex: number) : boolean {
+  private isPageIndexValid(pageIndex: number): boolean {
     return pageIndex >= 0 && pageIndex < this.mLauncherLayoutCacheManager.selectPageCount();
   }
 
@@ -4171,7 +4504,7 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
       this.mGridAppsInfos[pageIndex].length !== 0) {
       return false;
     }
-    if (this.isBigScreen &&
+    if (this.isSuperFold &&
       !CheckEmptyUtils.isEmptyArr(this.mGridAppsInfos[this.viewModelUtils.getNeighborPage(pageIndex)]) &&
       this.mGridAppsInfos[this.viewModelUtils.getNeighborPage(pageIndex)].length !== 0) {
       return false;
@@ -4194,7 +4527,7 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
       return false;
     }
     let appsInfosNumber: number = 0;
-    if (this.isBigScreen) {
+    if (this.isSuperFold) {
       if (!CheckEmptyUtils.isEmptyArr(this.mGridAppsInfos) &&
         !CheckEmptyUtils.isEmptyArr(this.mGridAppsInfos[pageIndex])) {
         appsInfosNumber += this.mGridAppsInfos[pageIndex].length;
@@ -4265,7 +4598,7 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
         return;
       }
       Prompt.showToast({
-        message:this.mResourceManager.getStringByName('add_black_page_to_desktop_max')
+        message: this.mResourceManager.getStringByName('add_black_page_to_desktop_max')
       });
       return;
     }
@@ -4429,7 +4762,7 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
   }
 
   private getUninstallMenuText(item: AppItemInfo | GridLayoutItemInfo): Resource {
-    if (this.isPad) {
+    if (this.isPad || DeviceHelper.isPC()) {
       return $r('app.string.remove_from_desktop');
     }
     if (item.appIndex) {
@@ -4440,7 +4773,8 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
 
   private buildShortcutMenuOnPc(menuList: MenuInfo[], appInfo: AppItemInfo, openClickCallback?: Function,
     removeShortcutItem?: Function): void {
-    log.showInfo(TAG, `buildShortcutMenuOnPc bundleName=${appInfo.bundleName}, shortcutId=${appInfo.shortcutId}, container=${appInfo.container}`);
+    log.showInfo(TAG,
+      `buildShortcutMenuOnPc bundleName=${appInfo.bundleName}, shortcutId=${appInfo.shortcutId}, container=${appInfo.container}`);
     const shortcutMenu = new MenuInfo();
     shortcutMenu.menuType = CommonConstants.MENU_TYPE_FIXED;
     shortcutMenu.menuImgSrc = '/common/pics/ic_public_remove.svg';
@@ -4521,7 +4855,8 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
     removeMenu.menuImgSrc = '/common/pics/ic_public_remove.svg';
     removeMenu.menuText = $r('app.string.delete_app');
     removeMenu.onMenuClick = (): void => {
-      log.showInfo(TAG, `Launcher click menu item remove ${appInfo?.appLabelId} ${appInfo?.bundleName} ${appInfo?.moduleName}`);
+      log.showInfo(TAG,
+        `Launcher click menu item remove ${appInfo?.appLabelId} ${appInfo?.bundleName} ${appInfo?.moduleName}`);
       const appName: string = this.getAppName(appInfo);
       log.showInfo(TAG, 'buildMenuInfoList appName' + appName);
       if (!CheckEmptyUtils.isEmpty(appName)) {
@@ -4545,7 +4880,8 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
     uninstallMenu.menuImgSrc = this.isPad ? '/common/pics/ic_public_remove.svg' : '/common/pics/ic_public_delete.svg';
     uninstallMenu.menuText = this.getUninstallMenuText(appInfo);
     uninstallMenu.onMenuClick = (): void => {
-      log.showInfo(TAG, `Launcher click menu item uninstall ${appInfo?.appLabelId} ${appInfo?.bundleName} ${appInfo?.moduleName}`);
+      log.showInfo(TAG,
+        `Launcher click menu item uninstall ${appInfo?.appLabelId} ${appInfo?.bundleName} ${appInfo?.moduleName}`);
       const appName: string = this.getAppName(appInfo);
       log.showInfo(TAG, 'buildMenuInfoList appName' + appName);
       if (!CheckEmptyUtils.isEmpty(appName)) {
@@ -4558,6 +4894,15 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
     };
     uninstallMenu.menuEnabled = (appInfo.isUninstallAble && !this.isInLockedPage(appInfo) &&
       !lockLayoutManager.isLockLayout()) ?? false;
+    if ((this.isPad || DeviceHelper.isPC()) &&
+    DeliverUtil.isContainerAppUninstallAble(appInfo.intent, appInfo.isUninstallAble)) {
+      menuInfoList.push(uninstallMenu);
+      return;
+    }
+    if ((this.isPad || (!this.isPad && uninstallMenu.menuEnabled)) &&
+    DeliverUtil.isContainerAppUninstallAble(appInfo.intent, appInfo.isUninstallAble)) {
+      menuInfoList.push(uninstallMenu);
+    }
   }
 
   buildMenuInfoList(
@@ -4582,7 +4927,9 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
         shortcutMenu.menuType = CommonConstants.MENU_TYPE_FIXED;
         shortcutMenu.menuImgSrc = '/common/pics/ic_public_remove.svg';
         shortcutMenu.menuText = this.mResourceManager.getStringByName('delete_form');
-        shortcutMenu.onMenuClick = (): void => { this.onRemoveShortcut(appInfo, removeShortcutItem); };
+        shortcutMenu.onMenuClick = (): void => {
+          this.onRemoveShortcut(appInfo, removeShortcutItem);
+        };
         menuInfoList.push(shortcutMenu);
       }
       this.checkAddToOuterMenu(appInfo, menuInfoList);
@@ -4591,7 +4938,8 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
 
     this.mShortcutViewModel.checkShortCutInfo(appInfo, menuInfoList);
 
-    if (this.isPad) {
+    if (this.isPad
+      || DeviceHelper.isPC()) {
       let open: MenuInfo = new MenuInfo();
       open.menuType = CommonConstants.MENU_TYPE_FIXED;
       open.menuImgSrc = '/common/pics/ic_public_add_norm.svg';
@@ -4627,11 +4975,23 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
 
     this.checkAddToDockMenu(appInfo, menuInfoList);
 
+
+    if (DeliverUtil.isContainerAppUninstallAble(appInfo.intent, appInfo.isUninstallAble)) {
+      this.buildUninstallMenu(appInfo, dialog, menuInfoList);
+    }
+
+    // 云端2添加元素只显示移除菜单项
+    if (LightOutdoorConfig.getInstance().isOnLightOutdoorMode()) {
+      menuInfoList = [];
+      if (removeDialog) {
+        this.buildRemoveMenu(appInfo, removeDialog, menuInfoList);
+      }
+    }
     return menuInfoList;
   }
 
   private checkAddMultiWindowMenu(appInfo: AppItemInfo, menuInfoList: MenuInfo[]) {
-    if (this.enableMultiWindowMenu(appInfo)) {
+    if(this.supportWindowMode(appInfo,bundleManager.SupportWindowMode.FLOATING)){
       let openFromFloatingWindow: MenuInfo = new MenuInfo();
       openFromFloatingWindow.menuType = CommonConstants.MENU_TYPE_FIXED;
       openFromFloatingWindow.menuImgSrc = '/common/pics/ic_public_add_norm.svg';
@@ -4650,6 +5010,9 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
       };
       menuInfoList.push(openFromFloatingWindow);
       log.showInfo(TAG, 'Launcher push menu item openFromFloatingWindow');
+    }
+
+    if(this.supportWindowMode(appInfo,bundleManager.SupportWindowMode.SPLIT)){
       let openFromSplitScreen: MenuInfo = new MenuInfo();
       openFromSplitScreen.menuType = CommonConstants.MENU_TYPE_FIXED;
       openFromSplitScreen.menuImgSrc = '/common/pics/ic_public_add_norm.svg';
@@ -4672,19 +5035,42 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
   }
 
   private enableMultiWindowMenu(appInfo: AppItemInfo): boolean {
+    if (DeviceHelper.isPC()) {
+      return false;
+    }
     let containerSessionList = SCBSceneSessionManager.getInstance().getAllContainerSessionList();
     let floatingSessionList = SCBSceneSessionManager.getInstance().getFloatingSessionList();
     let find = containerSessionList.findItemByBundleInfo(appInfo.abilityName, appInfo.bundleName, appInfo.moduleName);
     let top = containerSessionList.getTopActiveSession();
-    let findFloat = floatingSessionList.findItemByBundleInfo(appInfo.abilityName, appInfo.bundleName, appInfo.moduleName);
+    let findFloat =
+      floatingSessionList.findItemByBundleInfo(appInfo.abilityName, appInfo.bundleName, appInfo.moduleName);
     if (find?.isSplit || findFloat?.isFloat || top?.isSplit) {
       return false;
     }
     return true;
   }
 
+  private supportWindowMode(
+    appInfo: AppItemInfo,
+    targetMode: bundleManager.SupportWindowMode
+  ): boolean {
+    if(!this.enableMultiWindowMenu(appInfo)) {
+      return false;
+    }
+    const abilityInfo = SCBSceneSessionManager.getInstance()
+      .getAbilityInfo(appInfo.bundleName, appInfo.moduleName, appInfo.abilityName);
+    if (!abilityInfo?.supportWindowModes) return false;
+    return abilityInfo.supportWindowModes.includes(targetMode);
+  }
+
   // 卸载打点
   private reportOpenUninstallAppDialog(appInfo: GridLayoutItemInfo): void {
+    let folderType: number = DeliverUtil.FOLDER_TYPE_NOTFOLDER;
+    if (this.mFolderMgr.isFolderOpen()) {
+      folderType = DeliverUtil.getFolderTypeByFolderId(this.mFolderMgr.getOpenFolderId());
+    }
+    const isCardFolder: boolean = GridLayoutUtil.isBigFolder(this.mFolderMgr.getOpenedFolder());
+    HiSysEventUtil.reportOpenUninstallAppDialog(appInfo?.bundleName, folderType, isCardFolder);
   }
 
   private isInLockedPage(appInfo: AppItemInfo | GridLayoutItemInfo): boolean {
@@ -4733,7 +5119,8 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
   }
 
   private checkAddToDockMenu(appInfo: AppItemInfo, menuInfoList: MenuInfo[]): void {
-    if (this.isPad) {
+    if (this.isPad ||
+    DeviceHelper.isPC()) {
       const addToDockMenu = new MenuInfo();
       addToDockMenu.menuType = CommonConstants.MENU_TYPE_FIXED;
       addToDockMenu.menuImgSrc = '/common/pics/ic_public_copy.svg';
@@ -4750,12 +5137,14 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
       menuInfoList.push(addToDockMenu);
     }
   }
+
   /**
    * 构建非安装状态应用长按菜单Map
    * @param bundleName 应用bundleName
    * @returns Map<AppStatus, MenuInfo[]>
    */
-  public buildNotInstalledAppMenu(item: AppItemInfo, dialog: CustomDialogController, gravityAnimation?: Function): Map<AppStatus, MenuInfo[]> {
+  public buildNotInstalledAppMenu(item: AppItemInfo, dialog: CustomDialogController,
+    gravityAnimation?: Function): Map<AppStatus, MenuInfo[]> {
     let bundleName: string = item.bundleName;
     let appIndex: number = item.appIndex ? item.appIndex : 0;
     let notInstalledMenuMap: Map<AppStatus, MenuInfo[]> = new Map();
@@ -4813,25 +5202,28 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
       this.removeShortcutItem(moveInfo);
       return;
     }
-    // 升级场景删除应用需要删除相应映射卡片
+    // 系统迁移场景删除应用需要删除相应映射卡片
     this.deleteSceneBoardFormRelationInfo(moveInfo.bundleName);
     this.deleteNotInstallApp(this.isRemoveFlag, moveInfo.bundleName, moveInfo.appIndex);
     ContractedFolderLayoutViewModel.getInstance().updateOpenFolderStatus(CommonConstants.OPEN_FOLDER_STATUS_CLOSE);
   }
 
   /**
-   * 克隆和升级删除占位卡片
+   * 克隆和系统迁移删除占位卡片
    * @param bundleName 应用bundleName
    * @returns void
    */
   private deleteSceneBoardFormRelationInfo(bundleName: string): void {
     let remainingStackInfos: GridLayoutItemInfo[] = [];
     let deleteFormAndStackInfos: GridLayoutItemInfo[] = [];
+    FormRelationManager.getInstance().deleteSceneBoardFormRelationInfoByBundleName(bundleName,
+      FormLayoutCacheManager.getInstance().selectAllFormsAndFormStack(), remainingStackInfos, deleteFormAndStackInfos);
     log.showInfo(TAG, `deleteFormAndStackInfos.length : ${deleteFormAndStackInfos.length}`);
     if (!CheckEmptyUtils.isEmptyArr(deleteFormAndStackInfos)) {
       // 删除缓存和数据库
-      FormLayoutCacheManager.getInstance().deleteSceneBoardFormAndStackInfos(remainingStackInfos, deleteFormAndStackInfos,
-        BusinessType.BUSINESS_BASIC_DESKTOP, true);
+      FormLayoutCacheManager.getInstance()
+        .deleteSceneBoardFormAndStackInfos(remainingStackInfos, deleteFormAndStackInfos,
+          BusinessType.BUSINESS_BASIC_DESKTOP, true);
       // 删除空白页
       for (const deleteItem of deleteFormAndStackInfos) {
         let ret: boolean = this.mPageDesktopModel.deleteBlankPageFromLayoutInfo(deleteItem.page);
@@ -4867,7 +5259,7 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
       deleteFormFromDeskTop.onMenuClick = (): void => {
         log.showInfo(TAG, 'Launcher click menu item remove form to desktop view');
         this.reportClickCardMenuEvent(formInfo, ShortcutMenuClickType.REMOVE);
-        const formAnimateData: FormAnimateData = { cardId: formInfo.cardId, isOpenRemoveFormDialog: true};
+        const formAnimateData: FormAnimateData = { cardId: formInfo.cardId, isOpenRemoveFormDialog: true };
         AppStorage.setOrCreate('formAnimateData', formAnimateData);
         if (this.isNeedRemoveConfirmDiag() && deleteFunc != null) {
           this.desktopContext?.eventHub.off(CommonConstants.EVENTHUB_FORM_MENU_DISAPPEAR);
@@ -4881,6 +5273,10 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
         }
       };
       menuInfoList.push(deleteFormFromDeskTop);
+    }
+    // 系统迁移场景的SceneBoard占位卡片长按只显示删除菜单
+    if (FormRelationManager.getInstance().isSceneBoardCard(formInfo.bundleName, formInfo.cardName)) {
+      return menuInfoList;
     }
 
     // 外屏桌面卡片长按只显示删除菜单
@@ -5035,7 +5431,8 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
     if (convertFolder && LayoutViewModel.getInstance().getDesktopModel() !== DesktopLayoutState.SIMPLE_LAUNCHER_MODEL) {
       const convertMenu = new MenuInfo();
       convertMenu.menuType = CommonConstants.MENU_TYPE_FIXED;
-      convertMenu.menuImgSrc = isConvertToSmall ? StyleConstants.DEFAULT_CONVERT_IMAGE : StyleConstants.DEFAULT_ENLARGE_IMAGE;
+      convertMenu.menuImgSrc =
+        isConvertToSmall ? StyleConstants.DEFAULT_CONVERT_IMAGE : StyleConstants.DEFAULT_ENLARGE_IMAGE;
       convertMenu.menuText = menuText;
       convertMenu.onMenuClick = (): void => {
         log.showInfo(TAG, 'Launcher click menu to convert');
@@ -5150,15 +5547,18 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
       let resultCode: number = await this.createCardToDeskTop(formItem, undefined,
         (position: number[], page?: number, screenSelectType?: number) => {
           if (page === undefined || screenSelectType === undefined) {
-            log.showWarn(TAG, `fail to report intelligent add card UE event, page=${page}, screenType=${screenSelectType}`);
+            log.showWarn(TAG,
+              `fail to report intelligent add card UE event, page=${page}, screenType=${screenSelectType}`);
             return;
           }
-          FormViewModel.getInstance(this.singleContext).reportIntelligentAddCardEvent(formItem, position, page, screenSelectType);
+          FormViewModel.getInstance(this.singleContext)
+            .reportIntelligentAddCardEvent(formItem, position, page, screenSelectType);
         });
       FormManager.getInstance().setPublishFormResult(formItem.id, resultCode);
       return;
     }
-    const wantParamInterface: AppFormWantParamInterface = await FormManager.getInstance().getAppFormWantParamInterface(parameters);
+    const wantParamInterface: AppFormWantParamInterface =
+      await FormManager.getInstance().getAppFormWantParamInterface(parameters);
     if (!CheckEmptyUtils.isEmpty(wantParamInterface.appFormSnapshot)) {
       this.publishAppCardToDesktop(formItem, wantParamInterface);
       return;
@@ -5174,7 +5574,8 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
    * @param formItem 加桌卡片
    * @param wantParamInterface 应用加桌卡片动效参数
    */
-  private async publishAppCardToDesktop(formItem: CardItemInfo, wantParamInterface: AppFormWantParamInterface): Promise<void> {
+  private async publishAppCardToDesktop(formItem: CardItemInfo,
+    wantParamInterface: AppFormWantParamInterface): Promise<void> {
     log.showInfo(TAG, 'add app form to desktop.');
     FormCenterViewManager.getInstance().setOpenAddFormViewSource(CardAddType.APP);
     formItem.cardId = formItem.id ?? '';
@@ -5291,6 +5692,13 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
    */
   async createCardToDeskTop(formCardItem: CardItemInfo | GridLayoutItemInfo, callback?: Callback<void>,
     setPositionBack?: (position: number[], page?: number, screenSelectType?: number) => void): Promise<number> {
+    // 云端模式2屏蔽添加卡片的行为
+    if (LightOutdoorConfig.getInstance().isOnLightOutdoorMode()) {
+      log.showInfo(TAG, 'no support createCardToDeskTop due to lightOutdoorMode');
+      callback?.();
+      this.desktopContext?.eventHub.emit('waitFormManagerResponse', FormManageResponse.CREATE_FORM_FAILED);
+      return formInfo.PublishFormErrorCode.INTERNAL_ERROR;
+    }
     TraceUtil.startTrace(DomainName.SCB, TraceUtil.CORE_METHOD_CREATE_CARD);
     if (JSON.stringify(formCardItem) === '{}' || CheckEmptyUtils.isEmpty(formCardItem)) {
       log.showInfo(TAG, 'createCardToDeskTop with null formCardItem');
@@ -5308,23 +5716,28 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
     }
     const cardItemInfo = this.viewModelUtils.createNewCardItemInfo(formCardItem as CardItemInfo);
     cardItemInfo.container = CommonConstants.CONTAINER_DESKTOP;
-    cardItemInfo.area = FormManager.getInstance().getCardSize(cardItemInfo.cardDimension, cardItemInfo.isFormDimension1x4);
+    cardItemInfo.area =
+      FormManager.getInstance().getCardSize(cardItemInfo.cardDimension, cardItemInfo.isFormDimension1x4);
     cardItemInfo.page = formCardItem.page ? formCardItem.page : 0;
     cardItemInfo.row = formCardItem.row ? formCardItem.row : 0;
     cardItemInfo.column = formCardItem.column ? formCardItem.column : 0;
-    log.showInfo(TAG, `createCardToDeskTop page: ${cardItemInfo.page}, row: ${cardItemInfo.row}, column: ${cardItemInfo.column}`);
+    log.showInfo(TAG,
+      `createCardToDeskTop page: ${cardItemInfo.page}, row: ${cardItemInfo.row}, column: ${cardItemInfo.column}`);
 
     let needNewPage: boolean = false;
     // row and column is undefined or null
     if (!formCardItem.row && formCardItem.row !== 0 && !formCardItem.column && formCardItem.column !== 0) {
       log.showInfo(TAG, 'createCardToDeskTop with null needNewPage');
-      needNewPage = DeviceHelper.isPad() ? this.getCardItemLayoutInfoForPad(cardItemInfo) : this.getCardItemLayoutInfo(cardItemInfo);
+      needNewPage = DeviceHelper.isPad() ? this.getCardItemLayoutInfoForPad(cardItemInfo) :
+        this.getCardItemLayoutInfo(cardItemInfo);
     }
-    log.showInfo(TAG, `createCardToDeskTop start, cardId:${formCardItem?.cardId}, bundleName: ${formCardItem?.bundleName}`);
+    log.showInfo(TAG,
+      `createCardToDeskTop start, cardId:${formCardItem?.cardId}, bundleName: ${formCardItem?.bundleName}`);
     let layoutDescription: LayoutDescription = this.mLauncherLayoutCacheManager.selectLayoutDescription();
     let pageUpdateCallBack: Function | undefined = undefined;
     if (needNewPage) {
-      if (this.checkAndHandleMaxPage(layoutDescription, (formCardItem as GridLayoutItemInfo).negativeId, cardItemInfo.cardId)) {
+      if (this.checkAndHandleMaxPage(layoutDescription, (formCardItem as GridLayoutItemInfo).negativeId,
+        cardItemInfo.cardId)) {
         callback?.();
         this.desktopContext?.eventHub.emit('waitFormManagerResponse', FormManageResponse.NO_ENOUGH_AREA);
         return formInfo.PublishFormErrorCode.NO_SPACE;
@@ -5355,7 +5768,8 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
     let positionText: string = ResUtils.getInnerStringNumS($r('app.string.drag_drop'), '', String(cardItemInfo.row + 1),
       String(cardItemInfo.column + 1));
     let announcedText: string = `${addCardResText}${positionText}`;
-    AccessibilityManager.getInstance().sendTextAnnouncedForAccessibility(announcedText, 'textAnnouncedAddCardToDesktop');
+    AccessibilityManager.getInstance()
+      .sendTextAnnouncedForAccessibility(announcedText, 'textAnnouncedAddCardToDesktop');
     return formInfo.PublishFormErrorCode.SUCCESS;
   }
 
@@ -5382,8 +5796,9 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
       FormViewModel.getInstance().addFormInfoToFormList(cardItemInfo);
     } else {
       let shortcutInfo: ShortcutInfo = cardItemInfo.shortcutInfo;
-      let appLabel: string = await ResourceManager.getInstance().getAppNameSync(shortcutInfo.labelId, shortcutInfo.bundleName,
-        shortcutInfo.moduleName, cardItemInfo.appName, shortcutInfo.appIndex);
+      let appLabel: string =
+        await ResourceManager.getInstance().getAppNameSync(shortcutInfo.labelId, shortcutInfo.bundleName,
+          shortcutInfo.moduleName, cardItemInfo.appName, shortcutInfo.appIndex);
       let itemInfo: GridLayoutItemInfo = this.convertToGridLayoutItemInfo(cardItemInfo, appLabel);
       this.mLauncherLayoutCacheManager.insertGridLayoutItemInfo(itemInfo, BusinessType.BUSINESS_BASIC_DESKTOP, true);
     }
@@ -5439,7 +5854,7 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
 
   private updatePageAfterCreateCardToDesktop(isNeedNewPage: boolean, layoutDescription: LayoutDescription,
     updateCard: CardItemInfo): void {
-    let foldOpen: boolean = desktopUtil.isFoldExpandStatus() || this.isBigScreen;
+    let foldOpen: boolean = desktopUtil.isFoldExpandStatus() || this.isSuperFold;
     let pages: number[] = this.getPagesWhenAddCard();
     let pageInfoManager: PageInfoManager = PageInfoManager.getInstance();
     // 是否是三屏状态
@@ -5468,7 +5883,8 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
       let pageAddNum: number = foldOpen ? NumberConstants.CONSTANT_NUMBER_TWO : 1;
       pageAddNum = isThreeScreen ? NumberConstants.CONSTANT_NUMBER_THREE : pageAddNum;
       let cardItemInfo: GridLayoutItemInfo = updateCard as object as GridLayoutItemInfo;
-      this.mLauncherLayoutCacheManager.updateLayoutAfterAddPage(currentIndex, pageAddNum, BusinessType.BUSINESS_CARD, true,
+      this.mLauncherLayoutCacheManager.updateLayoutAfterAddPage(currentIndex, pageAddNum, BusinessType.BUSINESS_CARD,
+        true,
         true, [cardItemInfo]);
       this.mLauncherLayoutCacheManager.updatePageCount(pageCount, BusinessType.BUSINESS_CARD, true);
     }
@@ -5533,17 +5949,20 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
         if (bottomAppList[i].itemType === CommonConstants.TYPE_FOLDER) {
           let smallFolderAppList = bottomAppList[i].layoutInfo;
           if (!smallFolderAppList) {
+            log.showInfo(TAG, `removeBottomBarInfo smallFolderAppList: ` + JSON.stringify(smallFolderAppList));
             return;
           }
           for (let j = 0; j < smallFolderAppList.length; j++) {
             for (let k = 0; k < smallFolderAppList[j].length; k++) {
-              log.showDebug(TAG, `removeBottomBarInfo smallFolderAppList[${j}][${k}]: ${JSON.stringify(smallFolderAppList[j][k])}`);
+              log.showDebug(TAG,
+                `removeBottomBarInfo smallFolderAppList[${j}][${k}]: ${JSON.stringify(smallFolderAppList[j][k])}`);
               const appInfo = pageDesktopInfo.find(item => {
                 if (!smallFolderAppList) {
                   return;
                 }
                 if (!GridLayoutUtil.isAppInstalled(smallFolderAppList[j][k])) {
-                  return item.bundleName === smallFolderAppList[j][k].bundleName && item.appIndex === smallFolderAppList[j][k].appIndex;
+                  return item.bundleName === smallFolderAppList[j][k].bundleName &&
+                    item.appIndex === smallFolderAppList[j][k].appIndex;
                 }
                 if (item.keyName === smallFolderAppList[j][k].keyName) {
                   return true;
@@ -5552,6 +5971,7 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
               });
               if (appInfo) {
                 const index = pageDesktopInfo.indexOf(appInfo);
+                log.showInfo(TAG, `removeBottomBarInfo indexOf: ` + JSON.stringify(index));
                 pageDesktopInfo.splice(index, 1);
               }
             }
@@ -5559,17 +5979,22 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
         }
         const appInfo = pageDesktopInfo.find(item => {
           if (!GridLayoutUtil.isAppInstalled(bottomAppList[i])) {
+            log.showInfo(TAG, `removeBottomBarInfo isAppInstalled ` +
+            JSON.stringify(item.bundleName === bottomAppList[i].bundleName
+              && item.appIndex === bottomAppList[i].appIndex));
             return item.bundleName === bottomAppList[i].bundleName && item.appIndex === bottomAppList[i].appIndex;
           }
           if (item.keyName === bottomAppList[i].keyName) {
+            log.showInfo(TAG, `removeBottomBarInfo keyName`);
             return true;
           }
           return false;
         });
-        if (appInfo) {
-          const index = pageDesktopInfo.indexOf(appInfo);
-          pageDesktopInfo.splice(index, 1);
-        }
+        // if (appInfo) {
+        //   const index = pageDesktopInfo.indexOf(appInfo);
+        //   log.showInfo(TAG, `removeBottomBarInfo index2: ` + JSON.stringify(index));
+        //   pageDesktopInfo.splice(index, 1);
+        // }
       }
     }
   }
@@ -5871,7 +6296,7 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
     ]);
   }
 
-  public doEnterCurrentItemEvent(uri:string): void {
+  public doEnterCurrentItemEvent(uri: string): void {
     log.showInfo(TAG, 'doEnterCurrentItemEvent');
     this.fileFolderManager?.openFileOrFolder(uri);
     this.initSelectStatus();
@@ -5959,8 +6384,8 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
     let selectedFiles: GridLayoutItemInfo[] = [];
     let selectedApps: GridLayoutItemInfo[] = [];
     this.filterSelectObject(selectedFiles, selectedApps);
-    if (selectedFiles.length !== 0 ) {
-      log.showInfo(TAG, `doDeleteEvent ${selectedFiles.length} files selected,`+
+    if (selectedFiles.length !== 0) {
+      log.showInfo(TAG, `doDeleteEvent ${selectedFiles.length} files selected,` +
         `inos: ${selectedFiles.map(girdItemInfo => girdItemInfo.ino ?? '').join(',')}`);
       this.pasteSelectItems.clear();
       this.fileFolderManager?.deleteFileOrFolder(selectedFiles
@@ -6172,7 +6597,8 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
         const rowInGrid: boolean = item.row >= 0 && ((item.row + item.area[1] - 1) < maxRow);
         const columnInGrid: boolean = item.column >= 0 && ((item.column + item.area[0] - 1) < maxColumn);
         if (!rowInGrid || !columnInGrid) {
-          log.showWarn(TAG, `item: ${item.infoId}, ${item.typeId}, column ${item.column}, row ${item.row}, area:${JSON.stringify(item.area)}`);
+          log.showWarn(TAG,
+            `item: ${item.infoId}, ${item.typeId}, column ${item.column}, row ${item.row}, area:${JSON.stringify(item.area)}`);
         }
         return rowInGrid && columnInGrid;
       });
@@ -6368,9 +6794,11 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
 
   private selectChange(items: string[], isSingle = false): void {
     for (let index = 0; index < this.lastSelectedItems.length; index++) {
-      log.showDebug(TAG, `selectChange indexOf ${!items.indexOf(this.lastSelectedItems[index])} ${this.selectChangeListeners.has(this.lastSelectedItems[index])}`);
+      log.showDebug(TAG,
+        `selectChange indexOf ${!items.indexOf(this.lastSelectedItems[index])} ${this.selectChangeListeners.has(this.lastSelectedItems[index])}`);
       // if any item in lastSelectedItems is not in items, then unselect it.
-      if (items.indexOf(this.lastSelectedItems[index]) === INVALID_IDX && this.selectChangeListeners.has(this.lastSelectedItems[index])) {
+      if (items.indexOf(this.lastSelectedItems[index]) === INVALID_IDX &&
+      this.selectChangeListeners.has(this.lastSelectedItems[index])) {
         if (!isSingle) {
           this.selectChangeListeners.get(this.lastSelectedItems[index])?.onSelectStatusChange(false);
           this.releaseSnapshot(this.multiSelectMap.get(this.lastSelectedItems[index]));
@@ -6479,7 +6907,8 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
       await CommonUtils.sleep(delay);
       attempt++;
     }
-    log.showError(TAG, `getSnapshotWithRetry failm, all ${maxRetries} retries exhausted for componentId: ${componentId}`);
+    log.showError(TAG,
+      `getSnapshotWithRetry failm, all ${maxRetries} retries exhausted for componentId: ${componentId}`);
     return undefined;
   }
 
@@ -6543,12 +6972,13 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
   }
 
   private refreshLastSelectedItems(items: string[], isSingle = false): void {
-    log.showInfo(TAG, `refreshLastSelectedItems lastSelectedItems: ${this.lastSelectedItems.length}, items: ${items?.length}`);
+    log.showInfo(TAG,
+      `refreshLastSelectedItems lastSelectedItems: ${this.lastSelectedItems.length}, items: ${items?.length}`);
     if (!isSingle) {
       this.lastSelectedItems = [];
     }
     for (let index = 0; index < items.length; index++) {
-      if (items[index] && this.lastSelectedItems.indexOf(items[index]) === INVALID_IDX ) {
+      if (items[index] && this.lastSelectedItems.indexOf(items[index]) === INVALID_IDX) {
         this.lastSelectedItems.push(items[index]);
       }
     }
@@ -6741,7 +7171,7 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
     const pageIndex: number = desktopUtil.getPageIndexValue();
     (GlobalContext.getInstance().getObject('desktopContext') as ctx.ServiceExtensionContext).eventHub
       .emit(`rect${pageIndex}`, false, false, [0, 0]);
-    let foldStatus: boolean = desktopUtil.isFoldExpandStatus() || this.isBigScreen;
+    let foldStatus: boolean = desktopUtil.isFoldExpandStatus() || this.isSuperFold;
     if (foldStatus) {
       let neighborPage = pageIndex % StyleConstants.DEFAULT_2 === 0 ? pageIndex + StyleConstants.DEFAULT_1 :
         pageIndex - StyleConstants.DEFAULT_1;
@@ -6777,14 +7207,14 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
     for (let y = column - 1; y >= 0; y--) {
       for (let x = 0; x < row; x++) {
         if (this.mLauncherLayoutCacheManager.isPositionValid({ area }, curPage, y, x)) {
-          return { pageIndex: curPage, row: x, column : y };
+          return { pageIndex: curPage, row: x, column: y };
         }
       }
     }
     return null;
   }
 
-  private getItemIndexWithAround(area: number[], startPage:number, searchPageCount: number):
+  private getItemIndexWithAround(area: number[], startPage: number, searchPageCount: number):
   PageColumnInfo | null {
     log.showInfo(TAG, `getItemIndexWithAround：${startPage}, ${searchPageCount}, ${area}`);
     const layout: LayoutDescription = this.mLauncherLayoutCacheManager.selectLayoutDescription();
@@ -6809,8 +7239,7 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
    * @param {number} pageCountToSearch 从指定pageIndex开始往后搜索页数，默认1
    * @returns { page: number; row: number; column: number; } | null
    */
-  getEnoughAreaPosition(pageIndex: number, area: number[], pageCountToSearch: number = 1): PageColumnInfo | null
-  {
+  getEnoughAreaPosition(pageIndex: number, area: number[], pageCountToSearch: number = 1): PageColumnInfo | null {
     if (this.isPad) {
       pageCountToSearch = this.keyBoardStatus === FeatureConstants.NO_KEYBOARD ? pageCountToSearch : 1;
       return this.getItemIndexWithAround(area, pageIndex, pageCountToSearch);
@@ -6835,14 +7264,14 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
           let positionX = isPad ? y : x;
           let positionY = isPad ? x : y;
           if (this.mLauncherLayoutCacheManager.isPositionValid({ area }, i, positionX, positionY)) {
-            return { pageIndex: i, row: positionY, column : positionX };
+            return { pageIndex: i, row: positionY, column: positionX };
           }
         }
       }
     }
     // 当前处于编辑模式下加号页时，直接在当前页找位
     if (editModeManager.isInEditMode() && this.mPageIndex >= pageCount) {
-      return { pageIndex: pageIndex, row: 0, column : 0 };
+      return { pageIndex: pageIndex, row: 0, column: 0 };
     }
 
     return null;
@@ -6865,12 +7294,13 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
     let appItemInfoFixArr: AppItemInfo[] = [];
     for (let i = 0; i < appItemInfoArr.length; i++) {
       let mArea = appItemInfoArr[i].area;
-      if ( mArea && mArea[0] === 1 && mArea[1] === 1) {
+      if (mArea && mArea[0] === 1 && mArea[1] === 1) {
         appItemInfoFixArr.push(appItemInfoArr[i]);
       }
     }
     this.uninstallAppItemInfoArr = appItemInfoFixArr;
-    log.showInfo(TAG, 'autoAlign autoAlignAfterUninstall uninstallAppItemInfoArr length: %{public}d', this.uninstallAppItemInfoArr.length);
+    log.showInfo(TAG, 'autoAlign autoAlignAfterUninstall uninstallAppItemInfoArr length: %{public}d',
+      this.uninstallAppItemInfoArr.length);
     gravityAnimationListenerManager.registerListener(this.gravityListener);
   }
 
@@ -6884,8 +7314,10 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
       log.showInfo(TAG, 'autoAlign exit because this.uninstallAppItemInfoArr is error');
       return;
     }
-    log.showInfo(TAG, 'autoAlignAndSqueezedAnimation uninstallApp: %{public}s, uninstallApp appName: %{public}s, uninstallAppLength: %{public}d',
-      this.uninstallAppItemInfoArr[0].bundleName, this.uninstallAppItemInfoArr[0].appName, this.uninstallAppItemInfoArr.length);
+    log.showInfo(TAG,
+      'autoAlignAndSqueezedAnimation uninstallApp: %{public}s, uninstallApp appName: %{public}s, uninstallAppLength: %{public}d',
+      this.uninstallAppItemInfoArr[0].bundleName, this.uninstallAppItemInfoArr[0].appName,
+      this.uninstallAppItemInfoArr.length);
     let gridLayoutItemList: GridLayoutItemInfo[] = this.mLauncherLayoutCacheManager
       .selectItemListByPageAndArea(this.uninstallAppItemInfoArr[0].page, this.uninstallAppItemInfoArr[0].area);
     log.showInfo(TAG, 'autoAlign current page item num (before add): %{public}d', gridLayoutItemList.length);
@@ -6901,20 +7333,23 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
         return pageItem.keyName === deleteItem.keyName;
       });
       if (appIndex === -1) {
-        log.showInfo(TAG, 'autoAlign current page add item bundleName: %{public}s appName: %{public}s', deleteItem.bundleName, deleteItem.appName);
+        log.showInfo(TAG, 'autoAlign current page add item bundleName: %{public}s appName: %{public}s',
+          deleteItem.bundleName, deleteItem.appName);
         gridLayoutItemList.push(deleteItem);
       }
     });
     this.mGridLayoutItemList = gridLayoutItemList;
     log.showInfo(TAG, 'autoAlign current page all item num: %{public}d', this.mGridLayoutItemList.length);
-    let autoAlignItem: SqueezeGridLayout[] = this.viewModelUtils.sortAndChangeForAutoAlign(this.mGridLayoutItemList, this.uninstallAppItemInfoArr);
+    let autoAlignItem: SqueezeGridLayout[] =
+      this.viewModelUtils.sortAndChangeForAutoAlign(this.mGridLayoutItemList, this.uninstallAppItemInfoArr);
     if (CheckEmptyUtils.isEmptyArr(autoAlignItem)) {
       log.showWarn(TAG, 'autoAlign failure as appItemInfo is Inactive');
     } else {
       autoAlignItem.forEach(item => this.mAutoAlignUpdateItem.push(item.updateItemsInfo));
       log.showInfo(TAG, 'current page need autoAlign item num: %{public}d', this.mAutoAlignUpdateItem.length);
       // 更新item的位置
-      LaunchLayoutCacheManager.getInstance().updateGridLayoutItemsPositionById(this.mAutoAlignUpdateItem, BusinessType.BUSINESS_BASIC_DESKTOP, false, true);
+      LaunchLayoutCacheManager.getInstance()
+        .updateGridLayoutItemsPositionById(this.mAutoAlignUpdateItem, BusinessType.BUSINESS_BASIC_DESKTOP, false, true);
       autoAlignItem.forEach(item => {
         DragEventManager.getInstance(launcherStatusUtil.getShowOutLauncherStatus())
           .startSqueezedInDesktop(item.keyName, [item.startPosition, item.endPosition]);
@@ -6980,8 +7415,8 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
       return newGridLayoutItems;
     }
     const pageDesktopGridStyleConfig: PageDesktopGridStyleConfig = this.getPageDesktopStyleConfig();
-    if (this.isBigScreen) {
-      newGridLayoutItems = this.trimInBigScreen(newGridLayoutItems, pageDesktopGridStyleConfig);
+    if (this.isSuperFold) {
+      newGridLayoutItems = this.trimInSuperFold(newGridLayoutItems, pageDesktopGridStyleConfig);
     } else {
       newGridLayoutItems.sort((a: GridLayoutItemInfo, b: GridLayoutItemInfo) => {
         if (a.row === undefined || a.column === undefined || b.row === undefined || b.column === undefined) {
@@ -6997,7 +7432,7 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
     return newGridLayoutItems;
   }
 
-  private trimInBigScreen(newGridLayoutItems: GridLayoutItemInfo[],
+  private trimInSuperFold(newGridLayoutItems: GridLayoutItemInfo[],
     pageDesktopGridStyleConfig: PageDesktopGridStyleConfig): GridLayoutItemInfo[] {
     try {
       let foldStatus: display.FoldStatus = display.getFoldStatus();
@@ -7055,23 +7490,23 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
 
 
   private coverPosition(gridLayoutItemInfos: GridLayoutItemInfo[],
-    pageDesktopGridStyleConfig: PageDesktopGridStyleConfig, isBigScreenInExpanded: boolean): void {
+    pageDesktopGridStyleConfig: PageDesktopGridStyleConfig, isSuperFoldInExpanded: boolean): void {
     if (CheckEmptyUtils.isEmptyArr(gridLayoutItemInfos)) {
       log.showError(TAG, 'grid layout item is empty');
       return;
     }
     const isPortrait: boolean = AppStorage.get<boolean>('isPortrait') as boolean;
-    // 只有大屏幕机展开态column和row才需要*2
-    const column = !isPortrait && isBigScreenInExpanded ? pageDesktopGridStyleConfig.mColumns * 2 :
+    // 只有折叠机展开态column和row才需要*2
+    const column = !isPortrait && isSuperFoldInExpanded ? pageDesktopGridStyleConfig.mColumns * 2 :
       pageDesktopGridStyleConfig.mColumns;
     const row =
-      isBigScreenInExpanded && isPortrait ? pageDesktopGridStyleConfig.mRows * 2 :
+      isSuperFoldInExpanded && isPortrait ? pageDesktopGridStyleConfig.mRows * 2 :
         pageDesktopGridStyleConfig.mRows;
     log.showInfo(TAG, `coverPosition  column:${column}, row:${row}`);
     let index: number = 0;
     for (let i = 0; i < column; i++) {
       for (let j = 0; j < row; j++) {
-        const currentPage = isBigScreenInExpanded ?
+        const currentPage = isSuperFoldInExpanded ?
           Math.floor(isPortrait ? j / pageDesktopGridStyleConfig.mRows : i / pageDesktopGridStyleConfig.mColumns) :
           this.sortOrTrimPage;
         const rowInCurrentPage = j % pageDesktopGridStyleConfig.mRows;
@@ -7100,7 +7535,9 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
       return;
     }
     let newGridLayoutItems: GridLayoutItemInfo[] = this.trimDesktopItem();
-    newGridLayoutItems = newGridLayoutItems.concat(this.cardGridLayoutItems).concat(this.exceedScreenItems).concat(this.regionFolderGridLayoutItems);
+    newGridLayoutItems = newGridLayoutItems.concat(this.cardGridLayoutItems)
+      .concat(this.exceedScreenItems)
+      .concat(this.regionFolderGridLayoutItems);
     LaunchLayoutCacheManager.getInstance().updateGridLayoutItems(newGridLayoutItems,
       BusinessType.BUSINESS_BASIC_DESKTOP, true);
     this.lightPagingFiltering(false, SceneMsgEnum.SCENE_MSG_DESKTOP_TRIM);
@@ -7114,7 +7551,8 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
       this.clearSortParam();
       return;
     }
-    log.showInfo(TAG, `sortDesktopItem sortRule: ${sortInfo?.sortRule}, isAscend: ${sortInfo?.isAscend}, page:${this.sortOrTrimPage}`);
+    log.showInfo(TAG,
+      `sortDesktopItem sortRule: ${sortInfo?.sortRule}, isAscend: ${sortInfo?.isAscend}, page:${this.sortOrTrimPage}`);
     let newGridLayoutItems: GridLayoutItemInfo[] = [];
     switch (sortInfo?.sortRule) {
       case DesktopSortRule.SORT_BY_NAME:
@@ -7138,7 +7576,9 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
         return;
     }
 
-    newGridLayoutItems = newGridLayoutItems.concat(this.cardGridLayoutItems).concat(this.exceedScreenItems).concat(this.regionFolderGridLayoutItems);
+    newGridLayoutItems = newGridLayoutItems.concat(this.cardGridLayoutItems)
+      .concat(this.exceedScreenItems)
+      .concat(this.regionFolderGridLayoutItems);
     this.dumpGridLayoutPosInfo(newGridLayoutItems);
     LaunchLayoutCacheManager.getInstance().updateGridLayoutItems(newGridLayoutItems,
       BusinessType.BUSINESS_BASIC_DESKTOP, true);
@@ -7148,7 +7588,8 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
 
   public prepareSortParam(): boolean {
     try {
-      const allGridLayoutItems: GridLayoutItemInfo[] = this.mLauncherLayoutCacheManager.getAllGridLayoutItemList(BusinessType.BUSINESS_BASIC_DESKTOP);
+      const allGridLayoutItems: GridLayoutItemInfo[] =
+        this.mLauncherLayoutCacheManager.getAllGridLayoutItemList(BusinessType.BUSINESS_BASIC_DESKTOP);
       const innerGridLayoutItems: GridLayoutItemInfo[] = this.filterItemExceedCurrentScreen(allGridLayoutItems);
       this.exceedScreenItems = this.filterItemInnerCurrentScreen(allGridLayoutItems);
       if (CheckEmptyUtils.isEmptyArr(allGridLayoutItems)) {
@@ -7159,7 +7600,7 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
       let column: number = pageDesktopGridStyleConfig.mColumns;
       let row: number = pageDesktopGridStyleConfig.mRows;
       log.showInfo(TAG, `prepareSortParam column: ${column}, row: ${row}`);
-      let length1 = this.isBigScreen ? 2 : 1;
+      let length1 = this.isSuperFold ? 2 : 1;
       this.posOccupyArray =
         Array(length1).fill(false).map(() => Array(row).fill(false).map(() => Array(column).fill(false)));
       let length = innerGridLayoutItems.length;
@@ -7272,7 +7713,8 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
       return this.getFolderThemeKey(item, desktopIconChange);
     } else if (item.typeId === CommonConstants.TYPE_CARD) {
       if (item.gameCardInfo && disabledLiveFormCount > 0) {
-        let isLiveFormDisabled: boolean = OverflowGrayAppManager.getInstance().isBundleNameInDisabledLiveFormSet(item.bundleName);
+        let isLiveFormDisabled: boolean =
+          OverflowGrayAppManager.getInstance().isBundleNameInDisabledLiveFormSet(item.bundleName);
         return `${item.cardId}${item.cardName}${item.bundleName}${item.abilityName}${item.moduleName}` +
           `${item.appLabelId}${item.typeId}${item.area}${item.areaType}${item.formConfigAbility}` +
           `${item.formRefreshDate}${isGameEngineValid}${isLiveFormDisabled}`;
@@ -7304,8 +7746,9 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
   }
 
   private getAppIconKey(item: GridLayoutItemInfo, desktopIconChange: number): string {
-    let result: string = `${item.bundleName}${item.moduleName}${item.abilityName}${item.typeId}${item.appIndex}${item.shortcutId}` +
-      `${item.installTime}${item.appIconId}${item.appLabelId}`;
+    let result: string =
+      `${item.bundleName}${item.moduleName}${item.abilityName}${item.typeId}${item.appIndex}${item.shortcutId}` +
+        `${item.installTime}${item.appIconId}${item.appLabelId}`;
     if (DeviceHelper.isPC()) {
       result += `${item.appStatus}${desktopIconChange}`;
     } else if (item.appStatus === AppStatus.INSTALLED) {
@@ -7349,10 +7792,11 @@ export class PageDesktopViewModel extends BaseViewModel implements IPageDesktopV
     const isPortrait: boolean = AppStorage.get<boolean>('isPortrait') as boolean;
     const pageDesktopGridStyleConfig = this.getPageDesktopStyleConfig();
     // column折叠PC横屏 * 2，row折叠PC竖屏 * 2
-    let column: number = this.isBigScreen && this.isExpandStatus && !isPortrait ? pageDesktopGridStyleConfig.mColumns * 2 :
-      pageDesktopGridStyleConfig.mColumns;
+    let column: number =
+      this.isSuperFold && this.isExpandStatus && !isPortrait ? pageDesktopGridStyleConfig.mColumns * 2 :
+        pageDesktopGridStyleConfig.mColumns;
     let row: number =
-      this.isBigScreen && this.isExpandStatus && isPortrait ? pageDesktopGridStyleConfig.mRows * 2 :
+      this.isSuperFold && this.isExpandStatus && isPortrait ? pageDesktopGridStyleConfig.mRows * 2 :
         pageDesktopGridStyleConfig.mRows;
     let index: number = 0;
     for (let i = 0; i < column; i++) {

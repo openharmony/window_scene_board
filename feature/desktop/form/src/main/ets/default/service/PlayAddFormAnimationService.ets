@@ -37,7 +37,7 @@ export class PlayAddFormAnimationService implements IExecutor {
     }
 
     log.showInfo(`start dropAnimation form (${extraData.startPosition.x}, ${extraData.startPosition.y}) to (${extraData.endPosition.x}, ${extraData.endPosition.y})`);
-
+    /* 这段动画有问题，会导致白屏
     let param: ScreenLockAniParam = {
       startPosition: {
         x: extraData.startPosition.x,
@@ -52,11 +52,11 @@ export class PlayAddFormAnimationService implements IExecutor {
       scaleX: extraData.scaleX,
       scaleY: extraData.scaleY
     }
-
     screenLockAniMgr.playAnimation(ScreenLockAniScene.BIND_SHEET, extraData.key, param,
       () => {
         this.onDropAnimationEnd(remoteObject)
-      });
+      });*/
+    this.onDropAnimationEnd(remoteObject)
     return ServiceReturnMsg.RET_SUCCESS;
   }
 

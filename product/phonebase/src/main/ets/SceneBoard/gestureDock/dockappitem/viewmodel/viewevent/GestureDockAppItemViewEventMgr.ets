@@ -17,7 +17,7 @@ import { CheckEmptyUtils, LogDomain, LogHelper } from '@ohos/basicutils';
 import { ViewCallback, viewMgrPolicy, ViewType } from '@ohos/frameworkwrapper';
 import { EventType, scbEventExclusiveManager, SCBTransitionManager } from '@ohos/windowscene';
 import curves from '@ohos.curves';
-import { AppDataWrapper, CommonConstants, vibratorMgr } from '@ohos/launchercommon/src/main/ets/TsIndex';
+import { AppDataWrapper, CommonConstants, vibratorMgr, DeliverUtil } from '@ohos/launchercommon/src/main/ets/TsIndex';
 import { DockType, GestureDockConstants, GestureDockMode } from '../../../common/GestureDockConstants';
 import { GestureDockEventIdUtil } from '../../../common/util/GestureDockEventIdUtil';
 import GestureDockAppItemViewDataMgr from '../viewdata/GestureDockAppItemViewDataMgr';

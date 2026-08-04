@@ -38,7 +38,7 @@ import { rpcShutdownPolicy } from '../policy/RpcShutdownPolicy';
 import { BUNDLE_NAME_SETTINGS, pcShutdownDialogVMP } from './PcShutdownDialogVMP';
 
 const TAG = 'ShutDownDialog';
-const log = LogHelper.getLogHelper(LogDomain.SCB, TAG);
+const log: LogHelper = LogHelper.getLogHelper(LogDomain.SCB, TAG);
 const MASTER_APPLICATION = 0;
 const REFRESH_TIMER = 3;
 

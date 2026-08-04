@@ -42,7 +42,7 @@ export struct LiveViewEmptyComponent {
     .height('100%')
     .justifyContent(FlexAlign.Center)
     .padding({
-      bottom: ContextManager.aiBarHeightByVp
+      bottom: ContextManager.naviBarHeightByVp
     })
   }
 

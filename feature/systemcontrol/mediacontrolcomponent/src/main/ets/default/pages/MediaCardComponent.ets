@@ -60,6 +60,10 @@ import { systemUIWorkerManager } from '@ohos/systemuicommon/src/main/ets/manager
 import { ResourceVm } from '@ohos/systemuicommon/src/main/ets/vm/ResourceVm';
 import { MediaViewModelManager, MediaVMType } from '../viewmodel/MediaViewModelManager';
 import { SysConfigData } from '../viewmodel/SysConfigData';
+import { InnerEventUtil } from '@ohos/systemuicommon/src/main/ets/utils/InnerEventUtil';
+import { NotificationEvent } from '@ohos/systemuicommon/src/main/ets/event/NotificationEvent';
+import { LiveNotification } from '@ohos/systemuicommon/src/main/ets/live/model/LiveNotification';
+import { NotificationBase } from '@ohos/systemuicommon/src/main/ets/model/NotificationBase';
 
 const TAG = 'MediaCardComponent_debug';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.MC, TAG);
@@ -375,10 +379,27 @@ export default struct MediaCardComponent {
     }
   }
 
+  /**
+   * 当播控通知被删除时，暂停音乐播放
+   */
+  private handleNotificationEvent: (event: NotificationEvent) => void = (event: NotificationEvent) => {
+    log.showInfo(`handleNotificationEvent start`);
+    if (event.eventType === NotificationEvent.EVENT_TYPE_REMOVE) {
+       const notification: NotificationBase = event?.notificationList[0];
+      if (notification && (notification instanceof LiveNotification) &&
+      (notification as LiveNotification).isMediaPlayer()) {
+         log.showInfo(`pause media`);
+         this.controller.callShowingPause();
+       }
+    }
+  };
+
   aboutToAppear() {
     log.showInfo(`MediaCardComponent aboutToAppear`);
     this.controller.doSubscribeNotify();
     this.controller.startShowing(TAG);
+    //监听播控通知删除事件
+    InnerEventUtil.on(NotificationEvent, this.handleNotificationEvent);
     // 播控监听
     EvtBus.on(MediaControlEvent, this.onMediaControlCallback);
     this.eventMgr.on(ScreenOnOffEvent, (event: ScreenOnOffEvent): void => {
@@ -427,6 +448,7 @@ export default struct MediaCardComponent {
     log.showInfo('aboutToDisappear');
     this.eventMgr.offAll();
     EvtBus.off(MediaControlEvent, this.onMediaControlCallback);
+    InnerEventUtil.off(NotificationEvent, this.handleNotificationEvent);
     this.showPlayLoading = false;
     this.clearLoadingTimer();
   }
@@ -867,13 +889,13 @@ export default struct MediaCardComponent {
         Flex({ direction: FlexDirection.Column, justifyContent: FlexAlign.SpaceBetween,
           alignItems: ItemAlign.Center }) {
           Flex({ direction: FlexDirection.Column, justifyContent: FlexAlign.Start, alignItems: ItemAlign.Start }) {
-          if (this.checkCall()) {
-            this.CallImageBuilder()
-            this.CallTitleBuilder()
-          } else {
-            this.ImageBuilder()
-            this.TitleBuilder()
-          }
+            if (this.checkCall()) {
+              this.CallImageBuilder()
+              this.CallTitleBuilder()
+            } else {
+              this.ImageBuilder()
+              this.TitleBuilder()
+            }
         }
       }
         .id('control_media_card_title')
@@ -1508,12 +1530,10 @@ export default struct MediaCardComponent {
       .draggable(false)
       .id(COMPONENT_ID_OUTPUT_TYPE)
       .fontColor((this.isLocalDeviceState() && (this.curRemoteOutputDev < 0 || this.checkCall())) ?
-        this.isForceDark ? [$r('app.color.media_control_center_switch_full')]
-          : [$r('app.color.ohos_id_color_secondary')] :
-        this.isForceDark ? [$r('app.color.media_control_center_switch_active_full')] :
-        [$r('app.color.ohos_id_color_primary_contrary')])
-      .foregroundBrightness(this.colorModeViewData.getPrimaryFgOption(
-        !(this.isLocalDeviceState() && (this.curRemoteOutputDev < 0 || this.checkCall()))))
+        // 本地设备：黑色图标
+        [$r('sys.color.icon_primary')] :
+        // 投播中：白色图标
+        [$r('sys.color.icon_on_primary')])
       .renderingStrategy(this.getRenderingStrategy(this.getCurSwitchIcon()))
       .renderGroup(this.isMarkingRenderGroup) // 增加UI缓存，防止丢帧
   }
@@ -1559,12 +1579,10 @@ export default struct MediaCardComponent {
     .borderRadius(120)
     .justifyContent(FlexAlign.Center)
     .backgroundColor((this.isLocalDeviceState() && (this.curRemoteOutputDev < 0 || this.checkCall())) ?
-      (this.isForceDark ? $r('app.color.media_control_center_component_normal') :
-        $r('app.color.ohos_id_color_component_normal')) :
-      (this.isForceDark ? $r('app.color.media_control_center_switch_active_bgc') :
-        $r('app.color.ohos_id_color_emphasize')))
-    .backgroundBrightnessInternal(this.colorModeViewData.getTopOption(
-      !(this.isLocalDeviceState() && (this.curRemoteOutputDev < 0 || this.checkCall()))))
+      // 本地设备：浅灰底
+      $r('sys.color.comp_background_gray') :
+      // 投播中：系统强调蓝
+      $r('sys.color.comp_background_emphasize'))
     .id(this.getGeometryKey(this.checkCall() ? 'callSwitchIconStart' : 'switchIconStart'))
     .geometryTransition(this.isSmallFoldOuterScreen ? '' :
       this.getGeometryKey(this.checkCall() ? 'callSwitchIcon' : 'switchIcon'), this.geometryOptions)

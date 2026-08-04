@@ -1,0 +1,74 @@
+{
+    "plural":[
+        {
+            "name":"item_select",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"%d item selected",
+                    "attr":{
+                        "priority":"LT"
+                    }
+                },
+                {
+                    "quantity":"two",
+                    "value":"%d items selected"
+                },
+                {
+                    "quantity":"zero",
+                    "value":"%d items selected"
+                },
+                {
+                    "quantity":"few",
+                    "value":"%d items selected"
+                },
+                {
+                    "quantity":"many",
+                    "value":"%d items selected"
+                },
+                {
+                    "quantity":"other",
+                    "value":"%d items selected",
+                    "attr":{
+                        "priority":"LT"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"delete_select_wallpapers",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"Delete the selected wallpaper?",
+                    "attr":{
+                        "priority":"LT"
+                    }
+                },
+                {
+                    "quantity":"two",
+                    "value":"Do you want to delete the selected wallpapers?"
+                },
+                {
+                    "quantity":"zero",
+                    "value":"Do you want to delete the selected wallpapers?"
+                },
+                {
+                    "quantity":"few",
+                    "value":"Do you want to delete the selected wallpapers?"
+                },
+                {
+                    "quantity":"many",
+                    "value":"Do you want to delete the selected wallpapers?"
+                },
+                {
+                    "quantity":"other",
+                    "value":"Delete the selected wallpapers?",
+                    "attr":{
+                        "priority":"LT"
+                    }
+                }
+            ]
+        }
+    ]
+}

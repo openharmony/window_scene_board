@@ -41,7 +41,7 @@ export class LauncherAnimUtil {
   public static setIsUIBusy(tag: string, uiBusy: boolean, isSetImmediately?: boolean, time?: number): void {
     log.showInfo(`tag=${tag} isUiBusy=${uiBusy}`);
     if (!uiBusy && !isSetImmediately) {
-      // false不主动恢复标记位，采用1.5s后自动恢复方案
+      // false不主动恢复标记位，采用1.5s后自动恢复方案，UI busy的1.5s内语音助手建议不刷新，后续优化语音助手建议的刷新时延后可以放开限制
       return;
     }
     LauncherAnimUtil.isUIThreadBusy = uiBusy;

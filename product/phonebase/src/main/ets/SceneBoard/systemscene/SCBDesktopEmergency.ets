@@ -94,11 +94,11 @@ export struct SCBDesktopEmergency {
   }
 
   /**
-   * 初始化ScreenState,1.超大屏，按照断点取值设置。 2.其他设备，按照展开折叠设置
+   * 初始化ScreenState,1.三折叠，按照断点取值设置。 2.其他设备，按照展开折叠设置
    */
   private initScreenState(): void {
-    // 超大屏,按照断点取值设置
-    if (DeviceHelper.isUltraScreenProduct()) {
+    // 三折叠,按照断点取值设置
+    if (DeviceHelper.isThreeFoldProduct()) {
       this.mScreenState = ScreenStateMonitor.getInstance().getCurrentScreenStateModel().screenState;
       return;
     }
@@ -122,7 +122,7 @@ export struct SCBDesktopEmergency {
   }
 
   private registerScreenStateMonitor(): void {
-    if (DeviceHelper.isUltraScreenProduct()) {
+    if (DeviceHelper.isThreeFoldProduct()) {
       ScreenStateMonitor.getInstance().registerScreenStateChangeListener(TAG, (old: ScreenStateModel,
         newData: ScreenStateModel) => {
         log.showInfo(`recevie screenState, old: ${old.screenState}, orientation: ${old.orientation}, w: ${
@@ -134,13 +134,13 @@ export struct SCBDesktopEmergency {
   }
 
   private unRegisterScreenStateMonitor(): void {
-    if (DeviceHelper.isUltraScreenProduct()) {
+    if (DeviceHelper.isThreeFoldProduct()) {
       ScreenStateMonitor.getInstance().unRegisterScreeStateChangeListener(TAG);
     }
   }
 
   /**
-   * 超大屏折叠展开屏幕
+   * 三折叠折叠展开屏幕
    * @param oldState
    * @param newState
    */
@@ -165,7 +165,7 @@ export struct SCBDesktopEmergency {
     if (this.desktopMode === DesktopModeEnum.THERMAL_SAFE_MODE) {
       let thermalSafeViewModel: ThermalSafeViewModel = ThermalSafeViewModel.getInstance();
       thermalSafeViewModel.setThermalSafeStyle(this.thermalStyle);
-      if (DeviceHelper.isUltraScreenProduct()) {
+      if (DeviceHelper.isThreeFoldProduct()) {
         log.showInfo('init thermal map');
         FoldExpandStyleConfig.initThermalMap();
       }
@@ -177,7 +177,7 @@ export struct SCBDesktopEmergency {
     } else {
       let emergencyViewModel: EmergencyViewModel = EmergencyViewModel.getInstance();
       emergencyViewModel.setEmergencyStyle(this.emergencyStyle);
-      if (DeviceHelper.isUltraScreenProduct()) {
+      if (DeviceHelper.isThreeFoldProduct()) {
         log.showInfo('init emergency map');
         FoldExpandStyleConfig.initEmergencyMap();
       }
@@ -216,8 +216,8 @@ export struct SCBDesktopEmergency {
   };
 
   private processFoldOrExpand(screenProperty: SCBScreenProperty, reason: SCBPropertyChangeReason): void {
-    // 超大屏走断点监听
-    if (DeviceHelper.isUltraScreenProduct()) {
+    // 三折屏走断点监听
+    if (DeviceHelper.isThreeFoldProduct()) {
       return;
     }
     if (reason === SCBPropertyChangeReason.FOLD_TO_EXPAND) {
@@ -239,7 +239,7 @@ export struct SCBDesktopEmergency {
     let screenSession = SCBScreenSessionManager.getInstance().getScreenSession(this.screenProp.screenId);
     screenSession?.setEnableRotate(true, 'emergency');
     this.unRegisterScreenStateMonitor();
-    if (DeviceHelper.isUltraScreenProduct()) {
+    if (DeviceHelper.isThreeFoldProduct()) {
       FoldExpandStyleConfig.clearMap();
     }
   }

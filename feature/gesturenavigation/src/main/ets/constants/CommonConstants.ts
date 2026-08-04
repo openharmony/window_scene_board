@@ -1,5 +1,5 @@
 /**
- * Copyright (c) Huawei Device Co., Ltd. 2024-2025. All rights reserved.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -18,8 +18,8 @@ import { SingletonHelper } from '@ohos/basicutils';
  * GestureNavBar参数
  */
 export class GestureNavBarConstants {
-  // AiBar距离屏幕底部的距离
-  public static readonly AIBAR_DEFAULT_BOTTOM_MARGIN = 6;
+  // NaviBar距离屏幕底部的距离
+  public static readonly NAVIBAR_DEFAULT_BOTTOM_MARGIN = 6;
 }
 
 export enum OneStepState {

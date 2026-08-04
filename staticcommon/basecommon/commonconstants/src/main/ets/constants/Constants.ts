@@ -83,6 +83,11 @@ export default class Constants {
   static INVALID_VALUE = -1;
 
   /**
+   * 云端2切换
+   */
+  public static readonly LIGHT_OUTDOOR_MODE_KEY: string = 'outdoor_mode_switch';
+
+  /**
    * 悬浮导航切换开发
    */
   static readonly FLOATING_NAVIGATION_KEY: string = 'floatingNavigation';
@@ -113,7 +118,7 @@ export default class Constants {
   // 设置domainName
   static readonly NAV_SETTING_DOMAIN: string = settings.domainName.DEVICE_SHARED;
 
-  // 初始化导航条默认高度
+  // 初始化导航条默认高度，外settingsData数据同步的key
   static readonly ohos_GESTURE_BOTTOM_HEIGHT: string = 'ohos_gesture_bottom_height';
 
   /**
@@ -393,7 +398,7 @@ export enum FASlotName {
   MOBILE_DATA = 'mobile_data',
   MOBILE_DATA_TAGGED = 'mobile_data_tagged',
   FLASHLIGHT = 'flashlight',
-  CAST = 'HuaweiCastToggle',
+  CAST = 'CastToggle',
   SUPER_PRIVACY = 'super_privacy',
   SHARE = 'share',
   WIFI_UI_EXTENSION = 'wifi_ui_extension',
@@ -426,6 +431,8 @@ export enum FASlotName {
   SCREEN_RECORDER = 'toggle_screen_recorder',
   SCREENSHOT = 'toggle_screenshot',
   MEDIA_ITEM_NAME = 'mediaCard',
+  VOICE_TRANSLATE = 'voice_translate',
+  CLOUD = 'cloud',
   COMPUTER_MODE = 'computer_mode',
   QUICK_NOTE = 'quick_note',
 }

@@ -32,7 +32,7 @@ import { AppToHapMappingManager } from '../base/AppToHapMappingManager';
 import installer from '@ohos.bundle.installer';
 import { preferences } from '@kit.ArkData';
 // import migrate from '@ohos.migrate';
-// import bmsBrokerAdapter from '@hms.virtService.bmsBrokerAdapter';
+// import bmsBrokerAdapter from '@ohos.virtService.bmsBrokerAdapter';
 import { BusinessError } from '@kit.BasicServicesKit';
 import bundleManager from '@ohos.bundle.bundleManager';
 import { CommonConstants, GridLayoutItemInfo, LaunchLayoutCacheManager } from '../TsIndex';

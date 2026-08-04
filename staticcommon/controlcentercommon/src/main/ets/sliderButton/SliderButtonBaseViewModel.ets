@@ -587,7 +587,7 @@ export abstract class SliderButtonBaseViewModel {
       this.getAnimData().iconScale = { x: 1, y: 1 };
       this.getAnimData().sliderProgressBrightnessInternal = this.colorModeViewData.brightnessNotChosenOption;
       this.getAnimData().iconBrightnessInternal = this.colorModeViewData.foregroundPrimaryOptionOnBackground;
-      this.getAnimData().sliderProgressColor = this.colorModeViewData.wifiBgOffColor;
+      this.getAnimData().sliderProgressColor = $r('sys.color.interactive_pressed');
     })
     // 二级页文字动效
     if (this.getViewData().isExpand) {

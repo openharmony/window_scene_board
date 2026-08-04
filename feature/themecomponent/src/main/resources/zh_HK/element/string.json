@@ -14,6 +14,13 @@
                 "priority":"translate"
             }
         },
+      {
+        "name":"disable_modify_wallpaper_tips",
+        "value":"此功能已被貴組織禁用",
+        "attr":{
+          "priority":"translate"
+        }
+      },
         {
             "name":"stop_font_creation_service",
             "value":"停用服務",
@@ -21,6 +28,13 @@
                 "priority":"translate"
             }
         },
+      {
+        "name":"Desktop_setting",
+        "value":"主屏幕設定",
+        "attr":{
+          "priority":"translate"
+        }
+      },
         {
             "name":"screenlock_font_creation_service_text",
             "value":"鎖屏字體創作服務",
@@ -157,6 +171,54 @@
       {
         "name": "wallpaper_editor",
         "value": "套用"
+      },
+      {
+        "name": "cancle",
+        "value": "取消"
+      },
+      {
+        "name": "set_wallpaper_all",
+        "value": "同时设置"
+      },
+      {
+        "name": "set_wallpaper_desktop",
+        "value": "设置案头桌面"
+      },
+      {
+        "name": "set_wallpaper_lock",
+        "value": "设置锁屏桌面"
+      },
+      {
+        "name": "wallpaper_show_style",
+        "value": "壁紙顯示方式"
+      },
+      {
+        "name": "screen_fit",
+        "value": "適合螢幕"
+      },
+      {
+        "name": "screen_full",
+        "value": "充滿螢幕"
+      },
+      {
+        "name": "screen_center",
+        "value": "置中"
+      },
+      {
+        "name": "screen_sctetch",
+        "value": "拉滿"
+      },
+      {
+        "name": "screen_tile",
+        "value": "平鋪"
+      },
+      {
+        "name": "image_decoding_failure",
+        "value": "圖片出現異常，請重試"
+      },
+      {
+        "name":"Desktop_individuation",
+        "value":"主屏幕和個人化"
       }
     ]
 }

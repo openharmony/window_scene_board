@@ -8,6 +8,13 @@
             }
         },
         {
+            "name":"app_others",
+            "value":"deliver",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
             "name":"delete_form",
             "value":"Eliminar",
             "attr":{

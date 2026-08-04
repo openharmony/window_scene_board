@@ -52,7 +52,7 @@ import { SCBScreenMask } from '../screenlock/pages/SCBScreenMask';
 import { FixedScrollerComponent } from '@ohos/pcsmartdock/src/main/ets/default/layout/FixedScrollerComponent';
 import { StyleConstants } from '@ohos/launchercommon';
 import { SCBSystemSceneLayout } from '../statusbar/SCBSceneLayout';
-// import apsManager from '@hms.graphic.apsManager';
+// import apsManager from '@ohos.graphic.apsManager';
 import { SCBCloneWallpaper } from '../systemscene/SCBCloneWallpaper';
 import { SCBScreenMaskOobe } from '../screenlock/pages/SCBScreenMaskOobe';
 import { SCBSysDialogDefault, SCBSysDialogUpper } from '@ohos/systemdialog/src/main/ets/pages/SCBSysDialog'

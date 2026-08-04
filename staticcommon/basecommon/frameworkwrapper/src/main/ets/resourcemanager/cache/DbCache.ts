@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { LogDomain, CheckEmptyUtils, PixelMapUtil, Logger } from '@ohos/basicutils';
+import { LogDomain, CheckEmptyUtils, PixelMapUtil, Logger, OutdoorConfig } from '@ohos/basicutils';
 import { IconCacheInterface } from '../IconCacheInterface';
 import IconInfo, { IconDatabaseColumn, IconPicType } from '../IconInfo';
 import rdb from '@ohos.data.relationalStore';
@@ -30,9 +30,11 @@ import { ContextModifyUtils } from './../../utils/ContextModifyUtils';
 import { IconExtendParam } from '../IconExtendParam';
 import { HashMap } from '@kit.ArkTS';
 import { DataTaskPool } from '../fwk/DataTaskPool';
+import { LightOutdoorConfig } from '../../service/config/LightOutdoorConfig';
 
 const TAG = 'DbCache';
 const log: Logger = Logger.getLogHelper(LogDomain.SCB);
+const OUTDOOR_MODE_TABLE_NAME: string = 'outdoor_icon_info';
 
 export class DbCache implements IconCacheInterface {
   private mRdbStore: rdb.RdbStore;
@@ -45,8 +47,13 @@ export class DbCache implements IconCacheInterface {
     return DbCache.sInstance;
   }
 
+  private isCloudMode(): boolean {
+    return OutdoorConfig.getInstance().isInOutdoorMode() ||
+    LightOutdoorConfig.getInstance().isOnLightOutdoorMode();
+  }
+
   private getTableName(): string {
-    return RdbStoreConfig.iconInfo.tableName;
+    return this.isCloudMode() ? OUTDOOR_MODE_TABLE_NAME : RdbStoreConfig.iconInfo.tableName;
   }
 
   async getCombIcon(bundleName: string, moduleName: string, abilityName: string, param: IconExtendParam):
@@ -118,7 +125,7 @@ export class DbCache implements IconCacheInterface {
     return resultIcon;
   }
 
-  // 避免在子线程中调用此方法
+  // 避免在子线程中调用此方法，子线程中云端模式判断不准确，可能写错表
   async setIconResource(bundleName: string, moduleName: string, abilityName: string, iconInfo: IconInfo,
     param: IconExtendParam): Promise<void> {
     if (this.noCacheDb(param.appIndex, moduleName, abilityName, param.hasBorder) ||
@@ -161,7 +168,7 @@ export class DbCache implements IconCacheInterface {
     }
   }
 
-  public async setIconResourceBatch(iconInfos: IconInfo[]): Promise<void> {
+  public async setIconResourceBatch(iconInfos: IconInfo[], isCloud: boolean): Promise<void> {
     if (CheckEmptyUtils.isEmptyArr(iconInfos)) {
       log.showWarn(TAG, 'iconInfos is empty!');
       return;
@@ -189,7 +196,7 @@ export class DbCache implements IconCacheInterface {
         [IconDatabaseColumn.APP_VERSION]: appVersion,
       };
       try {
-        let tableName: string = RdbStoreConfig.iconInfo.tableName;
+        let tableName: string = isCloud ? OUTDOOR_MODE_TABLE_NAME : RdbStoreConfig.iconInfo.tableName;
         let changeRows =
           await this.mRdbStore?.insert(tableName, insertIconInfo, rdb.ConflictResolution.ON_CONFLICT_REPLACE);
         const combinePicLength = iconInfo.combinePic?.length;
@@ -209,7 +216,8 @@ export class DbCache implements IconCacheInterface {
     DataTaskPool.getInstance().startBatchInsertInfo(iconInfos, batchId, allFinished);
   }
 
-  async getIconByBundles(bundles: Array<string>, queryOnlyByBundleName: boolean = false): Promise<HashMap<string, string>> {
+  async getIconByBundles(bundles: Array<string>, queryOnlyByBundleName: boolean = false,
+      isCloud: boolean = false): Promise<HashMap<string, string>> {
     let result: HashMap<string, string> = new HashMap();
 
     if (this.mRdbStore === undefined && !(await this.createRdbStore())) {
@@ -219,7 +227,7 @@ export class DbCache implements IconCacheInterface {
 
     let resultSet = undefined;
     try {
-      let predicates = new rdb.RdbPredicates(RdbStoreConfig.iconInfo.tableName);
+      let predicates = new rdb.RdbPredicates(isCloud ? OUTDOOR_MODE_TABLE_NAME : RdbStoreConfig.iconInfo.tableName);
       // 按照列升序查询
       if (queryOnlyByBundleName) {
         predicates.in(IconDatabaseColumn.BUNDLE_NAME, bundles);
@@ -234,7 +242,7 @@ export class DbCache implements IconCacheInterface {
         result.set(resultSet.getString(resultSet.getColumnIndex(IconDatabaseColumn.BUNDLE_NAME)),
           resultSet.getString(resultSet.getColumnIndex(IconDatabaseColumn.COMBINE_PIC)));
       }
-      log.showWarn(TAG, `query from db, bundles length ${bundles.length} result length ${result.length} resultSet ${resultSet?.rowCount}`);
+      log.showWarn(TAG, `query from db, isPengali ${isCloud} bundles length ${bundles.length} result length ${result.length} resultSet ${resultSet?.rowCount}`);
       resultSet.close();
       resultSet = null;
     } catch (e) {

@@ -204,9 +204,9 @@ export class CommonConstants {
   public static readonly VIBRATION_EFFECT_SLIDE_TYPE6 = 'haptic.slide.type6';
 
   /**
-   * Long press the vibration effect of the AIbar
+   * Long press the vibration effect of the NAVibar
    */
-  public static readonly VIBRATION_EFFECT_AIBAR = 'haptic.AIbar';
+  public static readonly VIBRATION_EFFECT_NAVIBAR = 'haptic.NAVibar';
 
   /**
    * the vibration effect of the recent element
@@ -229,6 +229,11 @@ export class CommonConstants {
   public static readonly VIBRATION_EFFECT_NOTICE = 'haptic.notice.mode';
 
   public static readonly VIBRATION_EFFECT_UPGLIDE = 'haptic.upglide';
+
+  /**
+   * 搜索
+   */
+  public static HISEARCH_BUNDLE = 'com.ohos.hisearch';
 
   /**
    * Ability name of recycleBin.
@@ -289,6 +294,7 @@ export class CommonConstants {
    * Bundle name of notepad
    */
   public static readonly NOTEPAD_BUNDLE = 'com.ohos.notepad';
+
 
   /**
    * Bundle name of music
@@ -955,14 +961,14 @@ export class CommonConstants {
   public static readonly DEFAULT_WINDOWS_RADIUS = 38;
 
   /**
-   * Default IconRadius.
-   */
-  public static readonly DEFAULT_ICON_RADIUS = 14;
-
-  /**
    * Default IconSize.
    */
   public static readonly DEFAULT_ICON_SIZE = deviceInfo.deviceType === '2in1' ? 56 : 54;
+
+  /**
+   * Default IconRadius（圆形：边长一半）.
+   */
+  public static readonly DEFAULT_ICON_RADIUS = deviceInfo.deviceType === '2in1' ? 28 : 27;
 
   /**
    * Default Phone FormCenter IconRadius.
@@ -1472,7 +1478,7 @@ export class CommonConstants {
   public static readonly DESKTOP_PAGING_REFRESH = 'desktopPagingFiltering';
 
   /**
-   * 桌面图标、文件夹、卡片、大小调整范围
+   * 桌面图标、文件夹、卡片、语音助手建议大小调整范围
    */
   public static readonly DESKTOP_ICON_CHANGE_SIZE_MIN = -6;
   public static readonly DESKTOP_ICON_CHANGE_SIZE_MAX = 8;
@@ -1632,6 +1638,11 @@ export class CommonConstants {
   public static readonly SIMPLE_MODE_KEY: string = 'simple_ui_mode_switch';
 
   /**
+   * 云端2切换开发
+   */
+  public static readonly LIGHT_OUTDOOR_MODE_KEY: string = 'outdoor_mode_switch';
+
+  /**
    * 简易模式桌面页数
    */
   public static readonly SIMPLE_DESKTOP_PAGE_COUNT: string = 'simple_page_count';
@@ -1640,6 +1651,16 @@ export class CommonConstants {
    * 普通桌面页数
    */
   public static readonly DESKTOP_PAGE_COUNT: string = 'page_count';
+
+  /**
+   * 户外模式模式页数
+   */
+  public static readonly OUTDOOR_PAGE_COUNT: string = 'outdoor_page_cout';
+
+  /**
+   * 云端2 页数
+   */
+  public static readonly LIGHT_OUTDOOR_PAGE_COUNT: string = 'outdoor_page_cout';
 
   /**
    * dock栏元素复位事件
@@ -1676,7 +1697,7 @@ export class CommonConstants {
   public static readonly CONTAINER_APP_KIND_ID = -999;
 
   /**
-   * 升级应用旧图标占位缩放
+   * 系统迁移应用旧图标占位缩放
    */
   public static readonly MIGRATE_PLACEHOLDER_ICON_SCALE = 1.12;
 
@@ -1900,6 +1921,11 @@ export class CommonConstants {
    */
   static readonly BIG_FOLDER_TIMEOUT: number = 9000;
 
+  /**
+   * 云端2下面添加应用按钮的infoId
+   */
+  static readonly LIGHT_OUTDOOR_ADD_ICON_INFO_ID = 'light_outdoor_add_icon_id';
+  
   /**
    * start renderGroup or not
    */
@@ -2262,6 +2288,8 @@ export enum DesktopMode {
   PREVIEW_MODE = 2
 }
 
+
+
 /**
  * 系统栏（状态栏、导航条）沉浸式显隐变化类型
  */
@@ -2270,7 +2298,7 @@ export enum SystemBarChangeType {
   HIDE_BAR,
   CANCEL_TASK, // 取消沉浸式隐藏的计时任务
   SET_TASK, // 设置沉浸式隐藏的计时任务
-  AI_BAR_IMMERSE_TASK
+  NAVI_BAR_IMMERSE_TASK
 }
 
 /**
@@ -2296,11 +2324,6 @@ export enum FormLocation {
    * form is on the form manager
    */
   FORM_MANAGER = 2,
-
-  /**
-   * form is on the ai suggestion
-   */
-  AI_SUGGESTION = 7,
 }
 
 /**
@@ -2335,13 +2358,15 @@ export enum BusinessType
 export enum DesktopLayoutState {
   HOME_LAUNCHER_MODE = 0,
   SIMPLE_LAUNCHER_MODEL = 1,
-  PC_MODE_MODEL = 2
+  PC_MODE_MODEL = 2,
+  OUTDOOR_MODE = 3, // 户外模式模式
+  LIGHT_OUTDOOR_MODE = 4, // 轻户外模式(云端2)
 }
 
 /**
  * 折叠pc宫格相关
  */
-export class BigScreenConstants {
+export class SuperFoldConstants {
   public static readonly DEFAULT_PAGE_COUNT = 2;
 
   public static readonly DEFAULT_PORTRAIT_COLUMN = 12;
@@ -2363,22 +2388,47 @@ export class DesktopSettingConstants {
   public static readonly PREFERENCES_NAME = 'DesktopSetting';
 
   /**
-   * 自动补位key值
+   * 桌面下滑在设备中key值
+   */
+  public static readonly HI_SEARCH_OPEN_PREFERENCE = 'hisearch_open_preference';
+
+  /**
+   * 桌面下滑在设备中key值
+   */
+  public static readonly HI_SEARCH_OPEN_STATE = 'hiSearchStatus';
+
+  /**
+   * 桌面下滑在设备中默认值
+   */
+  public static readonly DEFAULT_VALUE_HI_SEARCH_OPEN_STATE = true;
+
+  /**
+   * 自动补位在设备中key值
+   */
+  public static readonly AUTOMATIC_FILLING_PREFERENCE = 'auto_align';
+
+  /**
+   * 自动补位在设备中key值
    */
   public static readonly AUTOMATIC_FILLING_STATE = 'autoAlignStatus';
 
   /**
-   * 桌面下滑默认值
+   * 桌面下滑在设备中默认值
    */
   public static readonly DEFAULT_VALUE_AUTOMATIC_FILLING_STATE = false;
 
   /**
-   * 锁定布局key值
+   * 锁定布局在设备中key值
+   */
+  public static readonly LOCK_LAYOUT_PREFERENCE = 'HOME_LOCK_SWITCH';
+
+  /**
+   * 锁定布局在设备中key值
    */
   public static readonly LOCK_LAYOUT_STATE = 'lockLayoutStatus';
 
   /**
-   * 锁定布局默认值
+   * 锁定布局在设备中默认值
    */
   public static readonly DEFAULT_VALUE_LOCK_LAYOUT_STATE = false;
 }
@@ -2440,9 +2490,18 @@ export enum AppDistributionType {
  */
 export enum SceneType {
   /**
-   * 克隆
+   * 系统迁移
    */
-  FROM_SCENE_BOARD = 1
+  FROM_HW_LAUNCHER = 0,
+  /**
+   * 单窗口单屏
+   */
+  FROM_SCENE_BOARD = 1,
+
+  /**
+   * 系统迁移
+   */
+  HWLAUNCHER_MIGRATE_ohos = 2,
 }
 
 /**

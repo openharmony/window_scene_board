@@ -277,33 +277,29 @@ export class ColorModeViewData {
     this.brightnessNotChosenOption =
       this.isBrightnessActive ? BrightnessOptionUtils.getInstance().brightnessNotChosenLight : undefined;
 
-    this.commonIconOnColor = $r('app.color.Control_center_icon_on_color');
-    this.commonIconOffColor = $r('app.color.Control_center_icon_default_color');
-    this.commonBgOnColor = $r('app.color.Control_center_icon_on_bg_color');
-    this.commonBgOffColor = this.isUseDefaultColor() ? $r('app.color.Control_center_icon_default_bg_color') :
-      $r('app.color.Control_center_icon_default_bg_color_opacity');
-    this.chosenSliderBgColor = this.isUseDefaultColor() ? $r('app.color.Control_center_icon_default_bg_color') :
-      $r('app.color.Control_center_brightness_bg_color_opacity');
-    this.wifiOnTextColor = $r('app.color.Control_center_long_button_font_on_color');
-    this.wifiOffTextColor = $r('app.color.Control_center_long_button_font_default_color');
-    this.wifiBgOnColor = $r('app.color.Control_center_wifiBlue_icon_on_bg_color');
-    this.wifiBgOffColor = this.isUseDefaultColor() ? $r('app.color.Control_center_wifiBlue_icon_default_bg_color') :
-      $r('app.color.Control_center_wifiBlue_icon_default_bg_color_opacity');
-    this.brightnessBgColor = !DISABLE_BRIGHTNESS ? $r('app.color.Control_center_brightness_bg_color') :
-      $r('app.color.Control_center_brightness_bg_color_opacity');
-    this.volumeAndBrightNessBgColor = $r('app.color.Control_center_wifiBlue_icon_on_bg_color');
-    this.brightnessBlockColor = $r('app.color.Control_center_brightness_block_color');
+    this.commonIconOnColor = $r('sys.color.icon_on_primary');
+    this.commonIconOffColor = $r('sys.color.icon_primary');
+    this.commonBgOnColor = $r('sys.color.comp_background_emphasize');
+    // 顶栏媒体/滑条关闭态底板：系统白色
+    this.commonBgOffColor = $r('sys.color.comp_background_primary');
+    this.chosenSliderBgColor = $r('sys.color.comp_background_primary');
+    this.wifiOnTextColor = $r('sys.color.font_primary');
+    this.wifiOffTextColor = $r('sys.color.font_primary');
+    this.wifiBgOnColor = $r('sys.color.comp_background_emphasize');
+    this.wifiBgOffColor = $r('sys.color.interactive_pressed');
+    this.brightnessBgColor = $r('sys.color.comp_background_primary');
+    this.volumeAndBrightNessBgColor = $r('sys.color.comp_background_emphasize');
+    this.brightnessBlockColor = $r('sys.color.interactive_pressed');
     this.subpageBrightnessTitleColor = $r('app.color.Control_center_brightness_subpage_title_color');
     this.subpageBrightnessBgColor = $r('app.color.Control_center_brightness_subpage_bg_color');
     this.subpageBrightnessBlockColor = $r('app.color.Control_center_brightness_subpage_block_color');
     this.subpageBrightnessSettingsColor = $r('app.color.Control_center_brightness_subpage_settings_color');
-    this.brightnessNotChosenBlockColor = $r('app.color.Control_center_wifiBlue_icon_default_bg_color');
-    this.superDeviceBgColor = $r('app.color.super_device_icon_bg_color');
-    this.deviceIconBgColor = $r('app.color.device_icon_bg_color');
-    this.mediaDefaultImgBgColor = $r('app.color.media_control_default_img_bgc');
-    this.mediaDefaultImgColor = $r('app.color.media_control_icon_disable');
-    this.subLayoutBgColor = !DISABLE_BRIGHTNESS ? $r('app.color.Control_center_subLayout_default_bg_color') :
-      $r('app.color.Control_center_subLayout_default_bg_color_opacity');
+    this.brightnessNotChosenBlockColor = $r('sys.color.interactive_pressed');
+    this.superDeviceBgColor = $r('sys.color.comp_background_primary');
+    this.deviceIconBgColor = $r('sys.color.comp_background_gray');
+    this.mediaDefaultImgBgColor = $r('sys.color.comp_background_gray');
+    this.mediaDefaultImgColor = $r('sys.color.icon_secondary');
+    this.subLayoutBgColor = $r('sys.color.comp_background_primary');
     this.noPermissionBgc = $r('sys.color.font_on_tertiary');
     this.noLocationBgc = $r('app.color.immersive_card_no_location_bg_color');
 
@@ -371,17 +367,14 @@ export class ColorModeViewData {
     this.commonIconOnColor = $r('app.color.Control_center_icon_on_color_dark');
     this.commonIconOffColor = $r('app.color.Control_center_icon_default_color_dark');
     this.commonBgOnColor = $r('app.color.Control_center_icon_on_bg_color_dark');
-    this.commonBgOffColor = this.isUseDefaultColor() ? $r('app.color.Control_center_icon_default_bg_color_dark') :
-      $r('app.color.Control_center_icon_default_bg_color_dark_opacity');
-    this.chosenSliderBgColor = this.isUseDefaultColor() ? $r('app.color.Control_center_icon_default_bg_color_dark') :
-      $r('app.color.Control_center_icon_default_bg_color_dark_opacity');
+    // 深色模式关闭态统一磨砂透明，避免实心黑
+    this.commonBgOffColor = $r('app.color.Control_center_icon_default_bg_color_dark_opacity');
+    this.chosenSliderBgColor = $r('app.color.Control_center_icon_default_bg_color_dark_opacity');
     this.wifiOnTextColor = $r('app.color.Control_center_long_button_font_on_color_dark');
     this.wifiOffTextColor = $r('app.color.Control_center_long_button_font_default_color_dark');
     this.wifiBgOnColor = $r('app.color.Control_center_wifiBlue_icon_on_bg_color_dark');
-    this.wifiBgOffColor = this.isUseDefaultColor() ? $r('app.color.Control_center_wifiBlue_icon_default_bg_color_dark') :
-      $r('app.color.Control_center_wifiBlue_icon_default_bg_color_dark_opacity');
-    this.brightnessBgColor = !DISABLE_BRIGHTNESS ? $r('app.color.Control_center_brightness_bg_color_dark') :
-      $r('app.color.Control_center_brightness_bg_color_dark_opacity');
+    this.wifiBgOffColor = $r('app.color.Control_center_wifiBlue_icon_default_bg_color_dark');
+    this.brightnessBgColor = $r('app.color.Control_center_brightness_bg_color_dark_opacity');
     this.volumeAndBrightNessBgColor = $r('app.color.Control_center_brightness_bg_color_dark');
     this.brightnessBlockColor = $r('app.color.Control_center_brightness_block_color_dark');
     this.subpageBrightnessBgColor = $r('app.color.Control_center_brightness_subpage_bg_color_dark');
@@ -389,7 +382,7 @@ export class ColorModeViewData {
     this.subpageBrightnessTitleColor = $r('app.color.Control_center_brightness_subpage_title_color_dark');
     this.subpageBrightnessSettingsColor = $r('app.color.Control_center_brightness_subpage_settings_color_dark');
     this.brightnessNotChosenBlockColor = $r('app.color.Control_center_wifiBlue_icon_default_bg_color_dark');
-    this.superDeviceBgColor = $r('app.color.Control_center_icon_default_bg_color_dark');
+    this.superDeviceBgColor = $r('app.color.Control_center_icon_default_bg_color_dark_opacity');
     this.deviceIconBgColor = $r('app.color.device_icon_bg_color_dark');
     this.mediaDefaultImgBgColor = $r('app.color.media_control_default_img_bgc_dark');
     this.mediaDefaultImgColor = $r('app.color.media_control_icon_disable_dark');

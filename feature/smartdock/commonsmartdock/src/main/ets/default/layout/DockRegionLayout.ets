@@ -65,11 +65,11 @@ import { DockRegionAnimationEvent } from '../viewmodel/DockRegionAnimationEvent'
 import { DockRegionLayoutPropertyVm } from '../viewmodel/DockRegionLayoutPropertyVm';
 import lazy {
   SCBTripleStateChange,
-  UltraScreenExpandAnimUtils,
-} from '@ohos/launchercommon/src/main/ets/utils/UltraScreenExpandAnimUtils';
+  TripleFoldExpandAnimUtils,
+} from '@ohos/launchercommon/src/main/ets/utils/TripleFoldExpandAnimUtils';
 import lazy {
-  UltraScreenAnimationConstants
-} from '@ohos/launchercommon/src/main/ets/constants/UltraScreenAnimationConstants';
+  TripleFoldAnimationConstants
+} from '@ohos/launchercommon/src/main/ets/constants/TripleFoldAnimationConstants';
 import lazy { RecentDockAnimationEvent } from '@ohos/launchercommon/src/main/ets/events/RecentDockEvents';
 import { SmartDockObserver } from '../viewmodel/smartDockObserver';
 import lazy { SmartDockZoomEvent } from '../viewmodel/SmartDockZoomEvent';
@@ -292,29 +292,29 @@ export default struct DockRegionLayout {
   }
 
   private tripleAnimationListener = (event: RecentDockAnimationEvent) => {
-    this.tripleAnimation(event.lastUltraScreenState, event.curUltraScreenState);
+    this.tripleAnimation(event.lastTripleFoldState, event.curTripleFoldState);
   }
 
   private tripleAnimation(oldState: ScreenState, newState: ScreenState): void {
     log.showInfo('recent dock bg execute tripleAnimation, oldState is %{public}d, newState is %{public}d',
       oldState, newState);
-    let stateChange: SCBTripleStateChange = UltraScreenExpandAnimUtils.getTripleDesktopStateChange(newState, oldState);
+    let stateChange: SCBTripleStateChange = TripleFoldExpandAnimUtils.getTripleDesktopStateChange(newState, oldState);
     animateTo({
       duration: 0,
     }, () => {
       this.animationVm.translateX =
-        UltraScreenExpandAnimUtils.initTripleDockAnimTranslateX(this.screenWidth, stateChange);
-      this.animationVm.alpha = UltraScreenExpandAnimUtils.initTripleDockBgAnimAlpha(stateChange);
+        TripleFoldExpandAnimUtils.initTripleDockAnimTranslateX(this.screenWidth, stateChange);
+      this.animationVm.alpha = TripleFoldExpandAnimUtils.initTripleDockBgAnimAlpha(stateChange);
     });
     animateTo({
-      curve: UltraScreenAnimationConstants.TRANSLATE_CURVES,
-      duration: UltraScreenAnimationConstants.ANIMATION_DURATION,
+      curve: TripleFoldAnimationConstants.TRANSLATE_CURVES,
+      duration: TripleFoldAnimationConstants.ANIMATION_DURATION,
     }, () => {
       this.animationVm.translateX = 0;
     });
     animateTo({
       curve: Curve.Linear,
-      duration: UltraScreenAnimationConstants.DOCK_BG_ALPHA_DURATION,
+      duration: TripleFoldAnimationConstants.DOCK_BG_ALPHA_DURATION,
     }, () => {
       this.animationVm.alpha = 1;
     });
@@ -375,7 +375,7 @@ export default struct DockRegionLayout {
       onExpandAnimation: () => this.expandedAnimation(),
     };
     SCBTransitionManager.getInstance().registerExpandAnimationController(this.expandController);
-    if (DeviceHelper.isUltraScreenProduct()) {
+    if (DeviceHelper.isThreeFoldProduct()) {
       EvtBus.on<RecentDockAnimationEvent>(RecentDockAnimationEvent, this.tripleAnimationListener);
     }
     this.desktopContext?.eventHub.on(EventConstants.EVENT_CHANGE_DESKTOP_MODE, this.onDesktopModeChangeEvent);
@@ -393,7 +393,7 @@ export default struct DockRegionLayout {
     viewMgrPolicy.unRegisterViewCallback(ViewType.KEYGUARD, this.keyguardCallback);
     slUiStateMgr.unregisterSlStateChangeListener(this.slStaticStateListener);
     SCBTransitionManager.getInstance().unRegisterExpandAnimationController(this.expandController);
-    if (DeviceHelper.isUltraScreenProduct()) {
+    if (DeviceHelper.isThreeFoldProduct()) {
       EvtBus.off<RecentDockAnimationEvent>(RecentDockAnimationEvent, this.tripleAnimationListener);
     }
     this.desktopContext?.eventHub.off(EventConstants.EVENT_CHANGE_DESKTOP_MODE, this.onDesktopModeChangeEvent);

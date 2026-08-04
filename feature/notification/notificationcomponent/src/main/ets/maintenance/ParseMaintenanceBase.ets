@@ -92,6 +92,8 @@ export interface ParseNotificationMaintenanceExt extends NotificationMaintenance
   appIndex?: number;
   /* 是否仅提醒一次 */
   isAlertOnce?: boolean;
+  /* 是否通知 */
+  isDeliverNotification?: boolean;
   /* 实况是否静默 */
   isMute?: boolean;
 }
@@ -169,6 +171,7 @@ export abstract class ParseMaintenanceBase extends NotificationMaintenance<Parse
     this.ext.ringMode = StatisticsMaintenance.get().getRingMode();
     this.ext.appIndex = entry.appIndex;
     this.ext.isAlertOnce = entry.isAlertOnce;
+    this.ext.isDeliverNotification = entry.isDeliverNotification;
     this.fillExtMoreInfo(entry);
   }
 
@@ -181,6 +184,7 @@ export abstract class ParseMaintenanceBase extends NotificationMaintenance<Parse
       moreInfo.userId = entry.creatorUserId;
     }
     moreInfo.isShow = StatisticsMaintenance.get().getIsShow();
+    moreInfo.isDeliverFullScreen = entry.isDeliverFullScreen ?? false;
     if (entry.channelId) {
       moreInfo.channelId = entry.channelId;
     }

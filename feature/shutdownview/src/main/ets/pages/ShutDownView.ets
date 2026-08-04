@@ -88,6 +88,7 @@ export struct ShutDownView {
   @State dialogOffsetY: number = 0;
   @State isReboot: boolean = false;
   @State isHibernate: boolean = true;
+  @State isModeChange: boolean = false;
   @StorageLink('DarkModeModel_DarkModeStatus') @Watch('onDarkModeChanged') darkModeData: CommonData = new CommonData();
   dialogController: CustomDialogController = new CustomDialogController({
     builder: ShutDownDialog({
@@ -95,6 +96,7 @@ export struct ShutDownView {
       dlgHeight: this.dlgHeight,
       isReboot: this.isReboot,
       isHibernate: this.isHibernate,
+      isModeChange: this.isModeChange,
     }),
     customStyle: true,
     maskColor: $r('app.color.transparent'),
@@ -114,7 +116,7 @@ export struct ShutDownView {
   })
 
   private updateDialogOffsetY(): void {
-    const curFoldState = FoldShutdownViewProxyManager.getInstance().getCurBigScreenStatus();
+    const curFoldState = FoldShutdownViewProxyManager.getInstance().getCurSuperFoldStatus();
     const curBSideHeight = FoldShutdownViewProxyManager.getInstance().getBSideRegion().height.getPx();
     switch (curFoldState) {
       case SCBFoldState.HALF_FOLDED_VIRTUAL_KEYBOARD:
@@ -474,8 +476,8 @@ export struct ShutDownView {
       if (!this.isReboot) {
         let hibernateVal: string = sSettingsUtil.getValue(ShutdownViewConstant.hibernateKey);
         if (!hibernateVal || hibernateVal === '') {
-          log.showInfo(`${TAG} get hibernateVal from db fail.`);
-          this.isHibernate = true;
+          log.showInfo(`${TAG} get hibernateVal from db fail, default to shutdown.`);
+          this.isHibernate = false;
         } else {
           this.isHibernate = hibernateVal === ShutdownViewConstant.isHibernateOpen;
           log.showInfo(`${TAG} get hibernateVal from db succ. hibernateVal: ${hibernateVal}, isHibernate: ${this.isHibernate}`);

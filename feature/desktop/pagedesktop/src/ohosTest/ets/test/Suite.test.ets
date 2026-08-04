@@ -38,6 +38,7 @@ import PageDesktopPushDownViewModelTest from './common/viewmodel/PageDesktopPush
 import SampleDeviceServiceTest from './ets/default/service/SampleDeviceService.test';
 import SetPinShortcutLimitInfoTest from './ets/default/service/impl/SetPinShortcutLimitInfo.test';
 import RestoringDesktopLayoutTest from './ets/default/service/impl/RestoringDesktopLayout.test';
+import GlobalSearchLocationHandlerTest from './common/viewmodel/GlobalSearchLocationHandler.test';
 import { DesktopFormStackViewModelTest } from './common/viewmodel/DesktopFormStackViewModel.test';
 import FocusViewModelTest from './common/viewmodel/FocusViewModel.test';
 import GridItemsPoolTest from './common/viewmodel/GridItemsPool.test';
@@ -136,5 +137,9 @@ export default function PipelineDemoSuite() {
     OverflowNoLimitPolicyTest();
     OverflowDeviceManagerTest();
     OverflowFormItemEventTest();
+  });
+
+  describe("launcher_components", () => {
+    GlobalSearchLocationHandlerTest();
   });
 }

@@ -13,6 +13,13 @@
             "attr":{
                 "priority":"translate"
             }
+        },
+        {
+            "name": "ic_tools_disable_battery_low",
+            "value": "تعذر تشغيل الفلاش. البطارية منخفضة للغاية.",
+            "attr": {
+                "priority": "translate"
+            }
         }
-    ]
+]
 }

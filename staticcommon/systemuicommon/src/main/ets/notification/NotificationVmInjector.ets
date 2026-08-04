@@ -182,6 +182,15 @@ export abstract class NotificationVmInjector extends BaseVmInjector implements I
   }
 
   /**
+   * 获取通知卡片启动的VM
+   * @param ntf 通知
+   * @returns
+   */
+  getStarterDeliverVm(): INotificationStarterVm {
+    throw new Error('Not implement for required method [getStarterDeliverVm]');
+  }
+
+  /**
    * 获取可扩展小外屏通知卡片启动的VM
    */
   getStarterOuterHomeVm(): INotificationStarterVm {

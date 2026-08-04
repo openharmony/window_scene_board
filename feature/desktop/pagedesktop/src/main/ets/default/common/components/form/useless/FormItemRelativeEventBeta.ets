@@ -860,7 +860,7 @@ export class FormItemRelativeEventBeta {
       const serviceManager: ThemeServiceManager = new ThemeServiceManager(getContext(this) as common.UIAbilityContext);
       serviceManager.checkScbOnlineTheme();
     }
-    // 处理升级场景SceneBoard卡片映射关系文件
+    // 处理系统迁移场景SceneBoard卡片映射关系文件
     if (FormRelationManager.getInstance().isSceneBoardCard(this.mFormItem.bundleName, this.mFormItem.cardName)) {
       this.deleteSceneBoardFormRelation(this.mFormItem.cardId);
     }

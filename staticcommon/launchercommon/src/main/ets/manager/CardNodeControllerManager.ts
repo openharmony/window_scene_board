@@ -15,27 +15,20 @@
 
 import { BuilderNode } from '@kit.ArkUI';
 import type Want from '@ohos.app.ability.Want';
-import { LogDomain, Logger } from '@ohos/basicutils';
-import { localEventManager } from '@ohos/frameworkwrapper';
-import { FormLayoutCacheManager, GridLayoutItemInfo } from '../TsIndex';
+import { Logger, LogDomain, CommonUtils } from '@ohos/basicutils';
+import { GlobalContext, localEventManager } from '@ohos/frameworkwrapper';
+import { DesktopUtils, FormLayoutCacheManager, GridLayoutItemInfo } from '../TsIndex';
 import { EventConstants } from '../constants/EventConstants';
 
 const TAG: string = 'CardNodeControllerManager';
 const log: Logger = Logger.getLogHelper(LogDomain.FORM);
 
-
-export interface  FormComponentBasicEvent {
-  // 组件内部异常回调
+export interface FormComponentBasicEvent {
   onError: (e: IErrorInfo) => void;
-  // 唯一性标识更新，会触发UI组件上下树
   onAcquired: (form: FormCallbackInfo) => void;
-  // 卡片点击启动
   onRouter: () => void;
-  // 卡片uninstall回调
   onUninstall: (form: FormCallbackInfo) => void;
-  // 卡片点击事件
   onTouch?: (event: TouchEvent) => void;
-  // onLoad事件
   onLoad?: () => void;
 }
 
@@ -48,7 +41,7 @@ export class FormComponentBasicData {
   cardDimension: number;
   want: Want;
   borderRadius: number = 0;
-  compId: string; // 节点ID
+  compId: string;
   hoverEffect: number | undefined;
   updateLocation: boolean = true;
   width: number;
@@ -80,23 +73,19 @@ export class FormBasicParams {
   basicData: FormComponentBasicData;
   basicEvent: FormComponentBasicEvent;
   constructor(basicData: FormComponentBasicData, eventCb: FormComponentBasicEvent) {
-    // 卡片6要素/相关事件
     this.basicData = basicData;
     this.basicEvent = eventCb;
   }
 }
 
-// 占位参数
 export class FormOccupyParams {
   cardId: string;
-  isAiCard: boolean;
-  formParams?: FormBasicParams; // 记录抢占节点的数据信息
+  formParams?: FormBasicParams;
   constructor(cardId: string) {
     this.cardId = cardId;
   }
 }
 
-// 节点配置项
 export class CardNodeOption {
   highestPriority: boolean = false;
   destroyImmediately: boolean = false;
@@ -105,8 +94,6 @@ export class CardNodeOption {
     this.destroyImmediately = destroyImmediately;
   }
 }
-
-const checkLeakDelay: number = 30000; // 延时30s去检测引用节点泄漏
 
 export class CardNodeControllerManager {
   private static cardNodeCache: Map<string, BuilderNode<[FormBasicParams]> | null> =
@@ -125,7 +112,6 @@ export class CardNodeControllerManager {
     }
     return ret;
   }
-
 
   public static getCardNode(cardId: string): BuilderNode<[FormBasicParams]> | null {
     return CardNodeControllerManager.cardNodeCache.get(cardId) ?? null;
@@ -163,32 +149,26 @@ export class CardNodeControllerManager {
     CardNodeControllerManager.setCardController(newCardId, controller);
   }
 
-  // 销毁节点
   public static destroyNodeByCardId(cardId: string): void {
-    log.showInfo(TAG,`delete all FormComponent Node; cardId = ${cardId}`);
+    log.showInfo(TAG, `delete all FormComponent Node; cardId = ${cardId}`);
     CardNodeControllerManager.cardControllerCache.delete(cardId);
     CardNodeControllerManager.cardNodeCache.get(cardId)?.dispose();
     CardNodeControllerManager.cardNodeCache.delete(cardId);
   }
 
-  // 销毁普通卡片节点
   public static destroyFormNodeByCardId(cardId: string): void {
-    log.showInfo(TAG,`delete FC FormComponent Node; cardId = ${cardId}`);
+    log.showInfo(TAG, `delete FC FormComponent Node; cardId = ${cardId}`);
     CardNodeControllerManager.cardControllerCache.delete(cardId);
     CardNodeControllerManager.cardNodeCache.get(cardId)?.dispose();
     CardNodeControllerManager.cardNodeCache.delete(cardId);
   }
 
-  // 检测卡片ID是否在缓存中
   public static cardIdInCache(cardId: string): boolean {
-    // 桌面缓存
     let desktopCacheList: string[] =
       FormLayoutCacheManager.getInstance().selectAllFormsList(false).map(i => i.cardId ?? '');
     log.showInfo(TAG, `cache cachesList = ${desktopCacheList}`);
-    // 负一屏缓存
     localEventManager.sendLocalEventSticky(EventConstants.INTELLIGENT_GET_FROM_ID_LIST_CALLBACK, {
       callback: (list?: string[]) => {
-        // 负一屏卡片
         log.showInfo(TAG, `IntelligentCardsView cachesList = ${list}`);
         if (list) {
           desktopCacheList = desktopCacheList.concat(list);
@@ -196,7 +176,6 @@ export class CardNodeControllerManager {
       }
     });
     const dragItemInfo = AppStorage.get('dragItemInfo') as GridLayoutItemInfo;
-    // 正在拖拽的
     if (dragItemInfo) {
       log.showInfo(TAG, `dragging card id = ${dragItemInfo.cardId}`);
       desktopCacheList.push(dragItemInfo.cardId);

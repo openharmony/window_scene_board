@@ -19,7 +19,7 @@ import { Constants } from './Constants';
 
 const SRC_STATE_SHIFT: number = 3;
 
-const BIG_SCREEN_DEVICE_FLAG: string = '5';
+const SUPER_FOLD_DEVICE_FLAG: string = '5';
 const FOLD_SCREEN_FLAG: String = systemParameterEnhance.getSync('const.window.foldscreen.type', '0,0,0,0');
 
 /**
@@ -198,13 +198,13 @@ export class ThemeConstant {
   public static readonly PERMISSIONS: string = 'permissions';
 
   /**
-   * 判断设备是否为大屏设备
+   * 判断设备是否为超级折叠设备
    */
-  public static getIsBigScreenDevices(): boolean {
+  public static getIsSuperFoldDevices(): boolean {
     if (FOLD_SCREEN_FLAG === '' || FOLD_SCREEN_FLAG === null) {
       return false;
     }
-    return FOLD_SCREEN_FLAG.substring(0, 1) === BIG_SCREEN_DEVICE_FLAG;
+    return FOLD_SCREEN_FLAG.substring(0, 1) === SUPER_FOLD_DEVICE_FLAG;
   }
 
   /**

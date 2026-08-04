@@ -1,4 +1,4 @@
-{
+﻿{
     "string":[
         {
             "name":"accessibility_status_bar_wifi_no",
@@ -39,6 +39,14 @@
         {
             "name":"shared_network_tips_network_calls",
             "value":"[TS_1004508]_You can use %s's mobile network to access the Internet and make and receive calls."
+        },
+        {
+            "name":"control_center_anti_theft_for_toggle",
+            "value":"[TS_975446]_Operation unavailable on demo device.",
+            "attr":{
+                "priority":"LT"
+            }
         }
+
     ]
 }

@@ -14,8 +14,11 @@
  */
 
 export class Constants {
+  public static readonly LOCAL_WALLPAPER = 'local_wallpaper';//当前的壁纸
+  public static readonly REFRESH_WALLPAPER = "refresh_wallpaper";//刷新壁纸
   public static readonly WALLPAPER_SETTING= 'settingsThemePage';
   public static readonly WALLPAPER_EDITOR = 'wallpaperEditor';
   public static readonly WALLPAPER_PICKER = 'wallpaperPicker';
   public static readonly THEME_GALLERY = 'themeGallery';
+  public static readonly SCREEN_SETTING = 'screenSetting';
 }

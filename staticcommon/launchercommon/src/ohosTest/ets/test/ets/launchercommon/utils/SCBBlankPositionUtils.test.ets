@@ -48,8 +48,8 @@ export default function SCBBlankPositionUtilsTest() {
 
     it('getFindBlankStartPage', Level.LEVEL0, (): void => {
       let mocker: MockKit = new MockKit();
-      let isBigScreenMachineFun = mocker.mockFunc(DeviceHelper, DeviceHelper.isBigScreenMachine);
-      when(isBigScreenMachineFun)().afterReturn(false);
+      let isSuperFoldMachineFun = mocker.mockFunc(DeviceHelper, DeviceHelper.isSuperFoldMachine);
+      when(isSuperFoldMachineFun)().afterReturn(false);
 
       let mockerFun = mocker.mockFunc(DeviceHelper, DeviceHelper.isFoldButNotSmallFoldAndSingleDisplay);
       when(mockerFun)().afterReturn(false);

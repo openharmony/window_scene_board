@@ -44,6 +44,7 @@ import { NtfGroupItemModifier } from '../../../../main/ets/model/NtfItemModifier
 import { WDefault } from '@ohos/screenlockcommon';
 import { ResUtils } from '@ohos/windowscene';
 import { AccessibilityCollapsedState } from '@ohos/systemuicommon/src/main/ets/accessibility/AccessibilityAppName';
+import { DeliverBadge } from '@ohos/systemuicommon/src/main/ets/view/DeliverBadge';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, MockKit, when, ArgumentMatchers } from '@ohos/hypium';
 import {  } from '../../../../main/ets/pages/phone/NotificationGroupBrief';
 export default function Test() {
@@ -79,6 +80,7 @@ export default function Test() {
       let ntfListContentConfig: NtfListContentConfig = new NtfListContentConfig();
       let pinTopIcon: pinTopIcon = new pinTopIcon();
       let notificationGroupExpandAnimation: NotificationGroupExpandAnimation = new NotificationGroupExpandAnimation();
+      let deliverBadge: DeliverBadge = new DeliverBadge();
       let wDefault: WDefault = new WDefault();
       let resUtils: ResUtils = new ResUtils();
       let brightnessOptionUtils: BrightnessOptionUtils = new BrightnessOptionUtils();
@@ -119,6 +121,7 @@ export default function Test() {
       let ntfListContentConfig: NtfListContentConfig = new NtfListContentConfig();
       let pinTopIcon: pinTopIcon = new pinTopIcon();
       let notificationGroupExpandAnimation: NotificationGroupExpandAnimation = new NotificationGroupExpandAnimation();
+      let deliverBadge: DeliverBadge = new DeliverBadge();
       let wDefault: WDefault = new WDefault();
       let resUtils: ResUtils = new ResUtils();
       let brightnessOptionUtils: BrightnessOptionUtils = new BrightnessOptionUtils();
@@ -163,6 +166,7 @@ export default function Test() {
       let ntfListContentConfig: NtfListContentConfig = new NtfListContentConfig();
       let pinTopIcon: pinTopIcon = new pinTopIcon();
       let notificationGroupExpandAnimation: NotificationGroupExpandAnimation = new NotificationGroupExpandAnimation();
+      let deliverBadge: DeliverBadge = new DeliverBadge();
       let wDefault: WDefault = new WDefault();
       let resUtils: ResUtils = new ResUtils();
       let brightnessOptionUtils: BrightnessOptionUtils = new BrightnessOptionUtils();
@@ -202,6 +206,7 @@ export default function Test() {
       let ntfListContentConfig: NtfListContentConfig = new NtfListContentConfig();
       let pinTopIcon: pinTopIcon = new pinTopIcon();
       let notificationGroupExpandAnimation: NotificationGroupExpandAnimation = new NotificationGroupExpandAnimation();
+      let deliverBadge: DeliverBadge = new DeliverBadge();
       let wDefault: WDefault = new WDefault();
       let resUtils: ResUtils = new ResUtils();
       let brightnessOptionUtils: BrightnessOptionUtils = new BrightnessOptionUtils();
@@ -242,6 +247,7 @@ export default function Test() {
       let ntfListContentConfig: NtfListContentConfig = new NtfListContentConfig();
       let pinTopIcon: pinTopIcon = new pinTopIcon();
       let notificationGroupExpandAnimation: NotificationGroupExpandAnimation = new NotificationGroupExpandAnimation();
+      let deliverBadge: DeliverBadge = new DeliverBadge();
       let wDefault: WDefault = new WDefault();
       let resUtils: ResUtils = new ResUtils();
       let brightnessOptionUtils: BrightnessOptionUtils = new BrightnessOptionUtils();
@@ -286,6 +292,7 @@ export default function Test() {
       let ntfListContentConfig: NtfListContentConfig = new NtfListContentConfig();
       let pinTopIcon: pinTopIcon = new pinTopIcon();
       let notificationGroupExpandAnimation: NotificationGroupExpandAnimation = new NotificationGroupExpandAnimation();
+      let deliverBadge: DeliverBadge = new DeliverBadge();
       let wDefault: WDefault = new WDefault();
       let resUtils: ResUtils = new ResUtils();
       let brightnessOptionUtils: BrightnessOptionUtils = new BrightnessOptionUtils();
@@ -325,6 +332,7 @@ export default function Test() {
       let ntfListContentConfig: NtfListContentConfig = new NtfListContentConfig();
       let pinTopIcon: pinTopIcon = new pinTopIcon();
       let notificationGroupExpandAnimation: NotificationGroupExpandAnimation = new NotificationGroupExpandAnimation();
+      let deliverBadge: DeliverBadge = new DeliverBadge();
       let wDefault: WDefault = new WDefault();
       let resUtils: ResUtils = new ResUtils();
       let brightnessOptionUtils: BrightnessOptionUtils = new BrightnessOptionUtils();
@@ -364,6 +372,7 @@ export default function Test() {
       let ntfListContentConfig: NtfListContentConfig = new NtfListContentConfig();
       let pinTopIcon: pinTopIcon = new pinTopIcon();
       let notificationGroupExpandAnimation: NotificationGroupExpandAnimation = new NotificationGroupExpandAnimation();
+      let deliverBadge: DeliverBadge = new DeliverBadge();
       let wDefault: WDefault = new WDefault();
       let resUtils: ResUtils = new ResUtils();
       let brightnessOptionUtils: BrightnessOptionUtils = new BrightnessOptionUtils();
@@ -408,6 +417,7 @@ export default function Test() {
       let ntfListContentConfig: NtfListContentConfig = new NtfListContentConfig();
       let pinTopIcon: pinTopIcon = new pinTopIcon();
       let notificationGroupExpandAnimation: NotificationGroupExpandAnimation = new NotificationGroupExpandAnimation();
+      let deliverBadge: DeliverBadge = new DeliverBadge();
       let wDefault: WDefault = new WDefault();
       let resUtils: ResUtils = new ResUtils();
       let brightnessOptionUtils: BrightnessOptionUtils = new BrightnessOptionUtils();
@@ -447,6 +457,7 @@ export default function Test() {
       let ntfListContentConfig: NtfListContentConfig = new NtfListContentConfig();
       let pinTopIcon: pinTopIcon = new pinTopIcon();
       let notificationGroupExpandAnimation: NotificationGroupExpandAnimation = new NotificationGroupExpandAnimation();
+      let deliverBadge: DeliverBadge = new DeliverBadge();
       let wDefault: WDefault = new WDefault();
       let resUtils: ResUtils = new ResUtils();
       let brightnessOptionUtils: BrightnessOptionUtils = new BrightnessOptionUtils();
@@ -482,6 +493,7 @@ export default function Test() {
       let ntfListContentConfig: NtfListContentConfig = new NtfListContentConfig();
       let pinTopIcon: pinTopIcon = new pinTopIcon();
       let notificationGroupExpandAnimation: NotificationGroupExpandAnimation = new NotificationGroupExpandAnimation();
+      let deliverBadge: DeliverBadge = new DeliverBadge();
       let wDefault: WDefault = new WDefault();
       let resUtils: ResUtils = new ResUtils();
       let brightnessOptionUtils: BrightnessOptionUtils = new BrightnessOptionUtils();

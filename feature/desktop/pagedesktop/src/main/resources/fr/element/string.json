@@ -1,0 +1,389 @@
+{
+    "string":[
+        {
+            "name":"add_card_fail_desktop",
+            "value":"L'ajout ne peut pas se faire. Veuillez réessayer ultérieurement.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_card_success_desktop",
+            "value":"L'ajout a été fait.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"app_cant_add_to_folder",
+            "value":"Échec de l'ajout des icônes d'application aux dossiers.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"individuation",
+            "value":"Personnaliser",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sort_by_create_time",
+            "value":"Date de création",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"delete_app",
+            "value":"Retirer",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"covertTo_bigFolder",
+            "value":"Élargir",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_delete_card",
+            "value":"Retirer le widget de %s ?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"is_delete_app",
+            "value":"Retirer %s ?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"right_collaboration",
+            "value":"Importer à partir d'un autre appareil",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"rename_folder",
+            "value":"Renommer",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"remove_from_desktop",
+            "value":"Retirer de l'écran d'accueil",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_icon_to_desktop_max",
+            "value":"Il n'y a plus de place sur l'écran d'accueil. Veuillez essayer de déplacer certains éléments.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"folder_create_toast",
+            "value":"%1$s a été placé avec %2$s dans le dossier \" %3$s\" du %4$d écran d'accueil.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_form_to_desktop_max",
+            "value":"Il n'y a plus d'espace sur l'écran actuel.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"right_shell",
+            "value":"HiShell",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"covertTo_smallFolder",
+            "value":"Réduire",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"added_to_desktop",
+            "value":"Ajouté à l'écran d'accueil.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"can_not_remove_from_flod",
+            "value":"Cette application ne peut pas être déplacée hors de ce dossier.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"can_not_rename_flod",
+            "value":"Ce dossier ne peut pas être renommé.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_page_tip",
+            "value":"La fonction Maintenir et faire glisser les écrans pour changer l'ordre",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cant_add_current_or_portrait",
+            "value":"Le placement ne peut pas se faire. Le widget ne tient pas dans les deux orientations.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"form_in_desktop_exceed",
+            "value":"Le nombre maximum de widgets a été atteint.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sort_by_type",
+            "value":"Type",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"uninstall",
+            "value":"Désinstaller",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"content_add_toast",
+            "value":"L'ajout ne peut pas se faire. Il n'y a pas assez de place pour faire pivoter.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"edit_mode_pinch_gesture_tip",
+            "value":"Pincement avec deux doigts pour ajouter des applications et des widgets",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"desktop_sort",
+            "value":"Trier par",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sort_by_modify_time",
+            "value":"Date de modification",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"deliver_app_dialog_content",
+            "value":"%s est maintenant disponible pour OpenHarmony. Veuillez mettre à jour votre application pour une toute nouvelle expérience.\n\nVeuillez noter que certaines données de l'application peuvent être perdues lors du changement de version.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"folder_add_toast",
+            "value":"%1$s a été placé dans le dossier \"%2$s\" du de l'écran d'accueil %3$d.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"paste",
+            "value":"Coller",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"add_black_page_to_desktop_max",
+            "value":"Le nombre maximum d'écrans d'accueil atteint.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cant_add_current_or_landscape",
+            "value":"Le placement ne peut pas se faire. Le widget ne tient pas dans les deux orientations.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"right_create",
+            "value":"Nouveau",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cancel",
+            "value":"Annuler",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"right_create_folder",
+            "value":"Dossier",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sort_by_size",
+            "value":"Taille",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"can_not_add_to_flod",
+            "value":"Cette application ne peut pas être ajoutée à ce dossier.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sort_by_name",
+            "value":"Nom",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"deliver_app_dialog_cancel",
+            "value":"Ignorer",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"deliver_app_dialog_confirm",
+            "value":"Mettre à jour maintenant",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"bigFolder_useGuidance_content",
+            "value":"Veuillez toucher longuement sur un dossier, puis déplacez le contour pour l'agrandir.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"bigFolder_useGuidance_title",
+            "value":"Redimensionner les dossiers",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"bigFolder_useGuidance_button",
+            "value":"OK",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"only_deliver_app_can_add_to_fold",
+            "value":"Seules les applications deliver peuvent être ajoutées à ce dossier.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"folder_rename_clear",
+            "value":"Effacer le texte",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"desktop_current_page_tips",
+            "value":"Écran %1$s sur %2$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"folder_add",
+            "value":"Ajouter",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"home_screen",
+            "value":"Écran d'accueil ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"folder_is_closed",
+            "value":"Le dossier est fermé",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"desktop_current_page",
+            "value":"Écran %1$s sur %2$s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"folder_rename_cleared",
+            "value":"Effacé",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"smart_assistant_today",
+            "value":"Assistant∙TODAY",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"desktop_had_existed_the_app",
+            "value":"Cette application se trouve déjà sur l'écran d'accueil.",
+            "attr":{
+                "priority":"LT"
+            }
+        }
+    ]
+}

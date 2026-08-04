@@ -116,8 +116,8 @@
             }
         },
         {
-            "name":"folder_name_oh",
-            "value":"Huawei Apps",
+            "name":"folder_name_system_apps",
+            "value":" Apps",
             "attr":{
                 "priority":"LT"
             }
@@ -225,6 +225,13 @@
             "value":"remove app from folder"
         },
         {
+            "name":"airplane_mode",
+            "value":"Airplane mode",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
             "name":"control_center_complex_toggle_bluetooth_title",
             "value":"Bluetooth",
             "attr":{
@@ -299,140 +306,161 @@
             }
         },
         {
-            "name":"openharmony_multiwindow_not_support_multiwindows",
+            "name":"oh_multiwindow_not_support_multiwindows",
             "value":"%1$s does not support multi window display.",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"openharmony_multiwindow_not_support_split",
+            "name":"oh_multiwindow_not_support_split",
             "value":"%1$s does not support split-screen display.",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"openharmony_multiwindow_not_support_vertical_split_new",
+            "name":"oh_multiwindow_not_support_vertical_split_new",
             "value":"%1$s does not support vertical split screen.",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"openharmony_multiwindow_not_support_horizontal_split_new",
+            "name":"oh_multiwindow_not_support_horizontal_split_new",
             "value":"%1$s does not support horizontal split screen.",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"openharmony_multiwindow_not_support_split_ratio",
+            "name":"oh_multiwindow_not_support_split_ratio",
             "value":"Screen sizes can't be adjusted for games.",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"openharmony_multiwindow_save_group",
+            "name":"oh_multiwindow_save_group",
             "value":"Save combo",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"openharmony_multiwindow_horizontal_split",
+            "name":"oh_multiwindow_horizontal_split",
             "value":"Split horizontally",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"openharmony_multiwindow_vertical_split",
+            "name":"oh_multiwindow_vertical_split",
             "value":"Split vertically",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"openharmony_multiwindow_horizontal_exchange",
+            "name":"oh_multiwindow_horizontal_exchange",
             "value":"Flip top/bottom",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"openharmony_multiwindow_vertical_exchange",
+            "name":"oh_multiwindow_vertical_exchange",
             "value":"Flip left/right",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"openharmony_multiwindow_not_support_split_for_folded_new",
+            "name":"oh_multiwindow_not_support_split_for_folded_new",
             "value":"%1$s not available in split-screen while device is folded.",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"openharmony_multiwindow_click_application_form_split_screen",
+            "name":"oh_multiwindow_click_application_form_split_screen",
             "value":"Open another app for split-screen view.",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"openharmony_multiwindow_application_not_split_now_device",
+            "name":"oh_multiwindow_application_voice_opened_three",
+            "value":"%1$s, %2$s, and %3$s are already open.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"oh_multiwindow_application_voice_opened_one",
+            "value":"%1$s is already open.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"oh_multiwindow_application_not_split_now_device",
             "value":"Voice command split-screen unavailable on this device.",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"openharmony_multiwindow_application_not_support",
+            "name":"oh_multiwindow_application_not_support",
             "value":"Can't open %1$s in split-screen with %2$s and %3$s.",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"openharmony_multiwindow_application_not_split",
+            "name":"oh_multiwindow_application_voice_opened_two",
+            "value":"%1$s and %2$s are already open.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"oh_multiwindow_application_not_split",
             "value":"%1$s and %2$s can't be opened in L/R split-screen.",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"openharmony_multiwindow_application_not_split_rotate",
+            "name":"oh_multiwindow_application_not_split_rotate",
             "value":"Voice command split-screen unavailable. Rotate the device and try again.",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"openharmony_multiwindow_application_not_mid",
+            "name":"oh_multiwindow_application_not_mid",
             "value":"%1$s, %2$s, and %3$s can't be opened as a group.",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"openharmony_multiwindow_application_not_split_expand",
+            "name":"oh_multiwindow_application_not_split_expand",
             "value":"Voice command split-screen unavailable. Unfold the device and try again.",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"openharmony_multiwindow_not_support_float_window",
+            "name":"oh_multiwindow_not_support_float_window",
             "value":"%1$s can't be opened in a floating window.",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"openharmony_multiwindow_minimize_all_float_due_to_rss",
+            "name":"oh_multiwindow_minimize_all_float_due_to_rss",
             "value":"To ensure a smooth experience, the floating window has been tucked away to the side.",
             "attr":{
                 "priority":"LT"
@@ -447,15 +475,15 @@
             "value":"Used to receive common event of downloading status from appGallery"
         },
         {
-            "name":"openharmony_multiwindow_app_is_open",
+            "name":"oh_multiwindow_app_is_open",
             "value":"App is already open.",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"openharmony_multiwindow_app_is_running",
-            "value":"currently performing a task in this app.",
+            "name":"oh_multiwindow_app_is_running",
+            "value":"AI is currently performing a task in this app.",
             "attr":{
                 "priority":"translate"
             }
@@ -577,6 +605,13 @@
             "value":"From split-screen view, swipe up or resize the windows to enter parallel-window view.",
             "attr":{
                 "priority":"LT"
+            }
+        },
+        {
+            "name":"HiSearch_title",
+            "value":"voice Search",
+            "attr":{
+                "priority":"translate"
             }
         },
         {
@@ -724,6 +759,20 @@
             }
         },
         {
+            "name":"MultiWindow_aisplit_not_support_split",
+            "value":"You left the app. Unable to enter split-screen mode.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"Ai_Split_Title",
+            "value":"Split screen",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
             "name":"aod_dialog_title",
             "value":"Always On Display",
             "attr":{
@@ -752,6 +801,97 @@
             }
         },
         {
+            "name":"Navi_bar_setting",
+            "value":"System navigation",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Navi_bar_back",
+            "value":"Go back",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Navi_bar_vassistant_dialogue",
+            "value":"voice Chat",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Navi_bar_back_click_navigation",
+            "value":"Tap to go back",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Navi_bar_vassistant_dialogue_longpress",
+            "value":"Touch & hold for voice",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Navi_bar_back_detail",
+            "value":"Tap the navigation bar to return to the previous screen.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Navi_bar_gesture_back_detail",
+            "value":"Swipe in from the left or right edge to return to the previous screen.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Navi_bar_vassistant",
+            "value":"Touch & hold the navigation bar to talk to voice.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Navi_bar_return_home",
+            "value":"Go home",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Navi_bar_return_home_detail",
+            "value":"Swipe up from the bottom to go to the home screen.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Navi_bar_recent",
+            "value":"View recent tasks",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Navi_bar_recent_detail",
+            "value":"Swipe up from the bottom and hold to view recent tasks.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"Navi_bar",
+            "value":"Navigation bar",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
             "name":"System",
             "value":"System",
             "attr":{
@@ -775,6 +915,27 @@
         {
             "name":"learn_more",
             "value":"Learn more",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"drag_to_voice",
+            "value":"Drag to voice",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"let_go_drag_to_voice",
+            "value":"Release to send to voice",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"drag_to_voice_detail",
+            "value":"Touch & hold an item until it starts floating, then drag it to the bottom.",
             "attr":{
                 "priority":"LT"
             }
@@ -1270,6 +1431,13 @@
             }
         },
         {
+            "name":"navi_bar_accessibility_text",
+            "value":"Navigation bar, tap twice and hold to speak to voice",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
             "name":"keyboard_switch_menu_access_text",
             "value":"Close keyboard switching menu",
             "attr":{
@@ -1286,6 +1454,13 @@
         {
             "name":"keyboard_panel_world_access_text",
             "value":"Switch keyboards, button",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"drag_to_voice_reminder",
+            "value":"Drag to voice and release to activate",
             "attr":{
                 "priority":"translate"
             }
@@ -1473,21 +1648,21 @@
             }
         },
         {
-            "name":"openharmony_multiwindow_click_application_form_midScene_waiting_state",
+            "name":"oh_multiwindow_click_application_form_midScene_waiting_state",
             "value":"Tap an app icon to add to Multitask view.",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"openharmony_multiwindow_does_not_support_panoramic_multiwindow",
+            "name":"oh_multiwindow_does_not_support_panoramic_multiwindow",
             "value":"This app doesn't support Multitask view.",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"openharmony_multiwindow_back_to_middle_scene_using_gesture",
+            "name":"oh_multiwindow_back_to_middle_scene_using_gesture",
             "value":"Pinch four fingers together to return to Multitask view.",
             "attr":{
                 "priority":"LT"
@@ -1501,14 +1676,14 @@
             }
         },
         {
-            "name":"openharmony_multiwindow_does_not_support_panoramic_multiwindow_in_current_state",
+            "name":"oh_multiwindow_does_not_support_panoramic_multiwindow_in_current_state",
             "value":"Multitask view not supported.",
             "attr":{
                 "priority":"LT"
             }
         },
         {
-            "name":"openharmony_multiwindow_current_window_is_full_2d",
+            "name":"oh_multiwindow_current_window_is_full_2d",
             "value":"The number of open windows has reached the limit, please close some windows before attempting to split the screen",
             "attr":{
                 "priority":"translate"
@@ -1620,21 +1795,21 @@
             }
         },
         {
-            "name":"openharmony_multiwindow_not_support_split_currently",
+            "name":"oh_multiwindow_not_support_split_currently",
             "value":"In your device's current form, %1$s does not support split-screen.",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"openharmony_multiwindow_not_support_split_this_way_currently",
+            "name":"oh_multiwindow_not_support_split_this_way_currently",
             "value":"In your device's current form, %1$s can't be opened in split-screen in this way.",
             "attr":{
                 "priority":"translate"
             }
         },
         {
-            "name":"openharmony_multiwindow_not_support_change_split_ratio",
+            "name":"oh_multiwindow_not_support_change_split_ratio",
             "value":"Can't adjust %1$s window ratio in split-screen view.",
             "attr":{
                 "priority":"translate"
@@ -1736,6 +1911,13 @@
             "value":"Go back",
             "attr":{
                 "priority":"LT"
+            }
+        },
+        {
+            "name":"ai_font_creation",
+            "value":"Generating font pack…",
+            "attr":{
+                "priority":"translate"
             }
         },
         {

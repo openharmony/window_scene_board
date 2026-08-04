@@ -13,6 +13,13 @@
             "attr":{
                 "priority":"translate"
             }
+        },
+        {
+            "name": "ic_tools_disable_battery_low",
+            "value": "Batterie trop faible pour allumer la lampe-torche.",
+            "attr": {
+                "priority": "translate"
+            }
         }
-    ]
+]
 }

@@ -825,7 +825,7 @@ function getAvailableWidth(orientation: number, displayWidth: number, leftPaddin
     // 以下 vp2px(2) 为UX设计的中线间隔2VP 这里使用px做计算，所以转换一下
       case CutoutEvent.CUTOUT_LEFT:
         if (LayoutUtils.isXTProductType() && SignalModel?.getCutoutInfo().cutoutRect?.left > STATUSBAR_MIN_LEFT_WIDTH) {
-          availableWidth = getAvailableWidthForUltraScreen(displayWidth, leftPadding, rightPadding);
+          availableWidth = getAvailableWidthForThreeFold(displayWidth, leftPadding, rightPadding);
           log.showInfo(TAG, `available width left hole ${availableWidth}`);
           break;
         }
@@ -862,7 +862,7 @@ function getTranslate(translate: number): number {
   return RTLUtil.isRTL() ? -translate : translate;
 }
 
-function getAvailableWidthForUltraScreen(displayWidth: number, leftPadding: string, rightPadding: string): number {
+function getAvailableWidthForThreeFold(displayWidth: number, leftPadding: string, rightPadding: string): number {
   let xOffsetLeft: number = leftPadding === undefined ? DEFAULT_X_OFFSET : vp2px(parseFloat(leftPadding));
   let xOffsetRight: number = rightPadding === undefined ? DEFAULT_X_OFFSET : vp2px(parseFloat(rightPadding));
 

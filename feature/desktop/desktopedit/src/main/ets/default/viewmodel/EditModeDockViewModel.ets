@@ -112,7 +112,7 @@ export class EditModeDockViewModel {
     HiEditModeEventUtils.reportEnterSubPage(key);
     if (key === EditModeDockConstants.FORM_SERVICE_KEY) {
       log.showInfo('open form page');
-      GlobalContext.getContext()?.eventHub.emit('AiBarUseAppColor', true);
+      GlobalContext.getContext()?.eventHub.emit('NaviBarUseAppColor', true);
       dropAnimationManager.cancelDropAnimation(DropAnimationCancelReason.OPEN_FORM_CENTER);
       GlobalContext.getContext()?.eventHub.emit(CommonConstants.EVENTHUB_MARK_DESKTOP_FREEZE, true);
       ViewManager.getInstance().jumpFormServiceView(FormConstants.FORM_SERVICE_SHOW_FROM_EDIT_MODE);

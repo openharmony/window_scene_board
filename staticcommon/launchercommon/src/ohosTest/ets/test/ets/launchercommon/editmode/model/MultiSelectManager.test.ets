@@ -32,6 +32,7 @@ import { CheckboxCheckState, CheckboxInfoType,
   MultiSelectItemType,
   MultiSelectMode} from '../../../../../../../main/ets/editmode/data/MultiSelectData';
 import { AppItemInfo,
+  DeliverUtil,
   EditModeUtils,
   folderLayoutUtil,
   GridLayoutItemInfo,
@@ -1237,6 +1238,7 @@ export default function MultiSelectManagerTest() {
     it('test_isDeliverApp_02_27', 0, async () => {
       let mockKit: MockKit = new MockKit();
       try {
+        const mockFunc1: Function = mockKit.mockFunc(DeliverUtil, DeliverUtil.isContainerFolder);
         when(mockFunc1)(ArgumentMatchers.any).afterReturn(true);
 
         let checkboxInfo: CheckboxInfoType = new CheckboxInfoType();
@@ -1254,6 +1256,7 @@ export default function MultiSelectManagerTest() {
       } catch (e) {
         expect(JSON.stringify(e)).assertInstanceOf('String');
       }
+      mockKit.clear(DeliverUtil);
       mockKit.clearAll();
     })
 

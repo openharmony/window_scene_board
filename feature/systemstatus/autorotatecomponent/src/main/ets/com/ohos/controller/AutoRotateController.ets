@@ -27,10 +27,11 @@ import { ScreenSessionAdapter } from '@ohos/systemuicommon/src/main/ets/adapter/
 import { PromptAdapter } from '@ohos/controlcentercommon/src/main/ets/adapter/PromptAdapter';
 import lazy { ResUtils } from '@ohos/windowscene/src/main/ets/utils/ResourceUtils';
 import { SceneSessionAdapter } from '@ohos/systemuicommon/src/main/ets/adapter/SceneSessionAdapter';
-import { EvtBus, EventManager, MultiWindowRotateChangeEvent } from '@ohos/frameworkwrapper';
+import { EvtBus, EventManager, MultiWindowRotateChangeEvent, SettingsUtil } from '@ohos/frameworkwrapper';
 
 const TAG = 'Model.AutoRotateController';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.SYS_UI, TAG);
+const IS_LAUNCHED: string = 'systemLaunched';
 
 export class AutoRotateController extends ToggleBaseViewModel {
   private lockTemporarily: boolean = false;
@@ -87,9 +88,26 @@ export class AutoRotateController extends ToggleBaseViewModel {
     return true;
   }
 
+  /**
+   * 判断系统是否首次启动，以决定自动旋转锁定初始开关状态
+   * @returns
+   */
+  private isFirstBoot(): boolean {
+   let systemLaunched: string = SettingsUtil.getValue(IS_LAUNCHED, '');
+   if (!systemLaunched) {
+     systemLaunched = '1';
+     SettingsUtil.setValue(IS_LAUNCHED, systemLaunched);
+     return true;
+   }
+   return false;
+  }
+
   onStart(): void {
     super.onStart();
     log.showInfo('onStart');
+    if (this.isFirstBoot()) {
+      ScreenSessionAdapter.setScreenOrientationLocked(true);
+    }
     AppStorageUtil.setOrCreate('AutoRotateModel_AutoRotateStatus', this.getViewData(), new DataProperty(true, false));
     this.handleUpdateState();
     this.eventManager.on(MultiWindowRotateChangeEvent, this.updateRotateState);

@@ -267,7 +267,7 @@ export class DisplayStateManager extends AbstractObserverManager<DisplayStateLis
     log.showInfo(`updateFoldExpandState`);
     let isFoldExpanded: boolean = DisplayUtils.getFoldStatus() === display.FoldStatus.FOLD_STATUS_EXPANDED ||
       DisplayUtils.getFoldStatus() === display.FoldStatus.FOLD_STATUS_HALF_FOLDED ||
-      DisplayUtils.isUltraScreenGStatus(screenProperty);
+      DisplayUtils.isThreeFoldGStatus(screenProperty);
     let isFoldChange: boolean = this._isFoldExpanded !== isFoldExpanded;
     this._isFoldExpanded = isFoldExpanded;
     return isFoldChange;

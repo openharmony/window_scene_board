@@ -84,7 +84,6 @@ export default class DesktopProviderService extends ServiceExtensionAbility {
  */
 export class PhoneDesktopProviderServiceStub extends BaseServiceStub {
   private static readonly cloneCloud = 2;
-  private static readonly sampleDevice = 4;
   private static readonly recentDeleteDeviece = 5;
   private static readonly globalSearch = 6;
   private static readonly desktopIcon = 7;

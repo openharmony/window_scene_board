@@ -14,12 +14,16 @@
  */
 
 import { Log } from '@ohos/basicutils';
-import { ResUtils } from '@ohos/windowscene';
+import { ResUtils, SCBSceneSessionManager } from '@ohos/windowscene';
 import { ColorType, MainColor } from '../models/MainColor';
 import { BrightnessOptionUtils } from '../utils/BrightnessOptionUtils';
 import FloatingButton from './FloatingButton';
 import { sFontScaleUtil } from '../../common/utils/FontScaleUtil';
 import { ScreenLockCutOutUtil } from '../../common/utils/ScreenLockCutOutUtil';
+import image from '@ohos.multimedia.image';
+import { effectKit } from '@kit.ArkGraphics2D';
+import { EXTREMELY_LIGHT_COLOR_PICTURE } from '@ohos/systemuicommon/src/main/ets/statusbar/enum/StatusbarConstants';
+
 const TAG: string = 'MediumButton';
 
 @Component
@@ -36,11 +40,21 @@ export default struct MediumButton {
   @Prop text: Resource;
   onButtonClick?: () => void;
   @State private isPressed: boolean = false;
+  @State isLight: boolean = true
 
-  aboutToAppear(): void {
+  async aboutToAppear(): Promise<void> {
+    console.log(`走到了这里11111`)
     if (this.mainColor.colorType === ColorType.LIGHT) {
       this.fgBrightness = BrightnessOptionUtils.foregroundSecondaryOption;
       this.bgBrightness = BrightnessOptionUtils.backgroundSixOption;
+    }
+    let pixelMap: image.PixelMap | null = await SCBSceneSessionManager.getInstance().getDefaultWallpaperPath(true)
+    if (pixelMap === null) {
+     this.isLight = true
+    } else {
+      const lightColorDegree: effectKit.PictureLightColorDegree | null =
+        await SCBSceneSessionManager.getLightDegree(pixelMap);
+       this.isLight = lightColorDegree === EXTREMELY_LIGHT_COLOR_PICTURE ? true : false;
     }
   }
 
@@ -51,7 +65,8 @@ export default struct MediumButton {
         .fontSize($r('sys.float.ohos_id_text_size_button1'))
         .minFontScale(sFontScaleUtil.minFontSize)
         .maxFontScale(sFontScaleUtil.maxFontSize)
-        .fontColor($r('sys.color.ohos_id_color_text_primary_contrary'))
+        // .fontColor(this.isLight ?  '#FF000000' : $r('sys.color.ohos_id_color_text_primary_contrary'))
+        .fontColor('#FF000000')
         .textAlign(TextAlign.Center)
         .opacity(0.9)
         .draggable(false)
@@ -64,8 +79,9 @@ export default struct MediumButton {
     .accessibilityDescription(ResUtils.getInnerString($r('app.string.widgets_two_click_accessible')))
     .id(TAG + '_GuideButton')
     .renderGroup(this.animating)
-    .backgroundColor('#33FFFFFF')
-    .useEffect(true)
+    .backgroundColor(Color.White)
+    // .backgroundColor(this.curMpState === MpStateType.EDIT_NORMAL_STATE ? '#FFFFFFFF' : (this.isLight ? '#33333333' : '#33FFFFFF'))
+    // .useEffect(true)
     .height('32vp')
     .padding({ left: '5vp', right: '5vp' })
     .constraintSize({ minWidth: '76vp', maxWidth: ScreenLockCutOutUtil.buttonMaxLength + 'vp' })
@@ -115,7 +131,7 @@ export default struct MediumButton {
         .fontSize($r('sys.float.ohos_id_text_size_button1'))
         .minFontScale(sFontScaleUtil.minFontSize)
         .maxFontScale(sFontScaleUtil.maxFontSize)
-        .fontColor($r('sys.color.ohos_id_color_text_primary_contrary'))
+        .fontColor(this.isLight ? '#FF000000' : $r('sys.color.ohos_id_color_text_primary_contrary'))
         .maxLines(1)
         .textOverflow({ overflow: TextOverflow.Ellipsis })
         .opacity(0.9)
@@ -123,7 +139,7 @@ export default struct MediumButton {
     }
     .id(TAG + '_ApplyButton')
     .blur(this.blurRadius, undefined, { disableSystemAdaptation: true })
-    .backgroundColor($r('sys.color.ohos_id_color_emphasize'))
+    .backgroundColor(this.isLight ? '#33333333' : $r('sys.color.ohos_id_color_emphasize'))
     .align(Alignment.Center)
     .height('32vp')
     .padding({ left: '5vp', right: '5vp' })

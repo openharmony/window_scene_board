@@ -49,7 +49,9 @@ import { CommonEventSystemuiTest } from './ets/event/CommonEventSystemuiTest.tes
 import { LiveViewEventTest } from './ets/event/LiveViewEventTest.test';
 import LiveViewHelperTest from './ets/liveview/common/LiveViewHelper.test';
 import { FrameNodeManagerTest } from './ets/framenode/FrameNodeManagerTest.test';
+import { OneMirrorStateTest } from './ets/immersivekeyguardcommon/base/anim/OneMirrorStateTest.test';
 import { ParserControllerTest } from './ets/immersivekeyguardcommon/base/dataparse/ParserControllerTest.test';
+import { ImmersiveAodStyleTest } from './ets/immersivekeyguardcommon/base/interface/ImmersiveAodStyleTest.test';
 import { TouchRunnableManagerTest } from './ets/immersivekeyguardcommon/base/manager/TouchRunnableManagerTest.test';
 import { SymbolIconUtilTest } from './ets/utils/SymbolIconUtil.test';
 import { AppProtectedVmTest } from './ets/vm/AppProtectedVm.test';
@@ -95,7 +97,9 @@ export default function PipelineDemoSuite() {
     CommonEventSystemuiTest();
     LiveViewEventTest();
     FrameNodeManagerTest();
+    OneMirrorStateTest();
     ParserControllerTest();
+    ImmersiveAodStyleTest();
     TouchRunnableManagerTest();
     AppProtectedVmTest();
     NtfControlConfigTest();

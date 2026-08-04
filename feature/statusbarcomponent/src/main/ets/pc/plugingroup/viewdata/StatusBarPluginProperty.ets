@@ -29,13 +29,15 @@ export class StatusBarPluginProperty {
       [PluginPositionType.TOP_LEFT, new PositionProperty(PluginPositionType.TOP_LEFT)],
       [PluginPositionType.TOP_RIGHT, new PositionProperty(PluginPositionType.TOP_RIGHT)],
       [PluginPositionType.BOTTOM_LEFT, new PositionProperty(PluginPositionType.BOTTOM_LEFT)],
-      [PluginPositionType.BOTTOM_RIGHT, new PositionProperty(PluginPositionType.BOTTOM_RIGHT)]
+      [PluginPositionType.BOTTOM_RIGHT, new PositionProperty(PluginPositionType.BOTTOM_RIGHT)],
+      [PluginPositionType.ASSISTANT_VOICE, new PositionProperty(PluginPositionType.ASSISTANT_VOICE)]
     ]);
 
-  // 风格切换期间不需要清理的分区或分组图标:OpenHarmony键、搜索
+  // 风格切换期间不需要清理的分区或分组图标:系统键、搜索、语音助手
   private noNeedClearPlugins: Map<PluginPositionType, PluginGroupType[]> =
     new Map<PluginPositionType, PluginGroupType[]>([
-      [PluginPositionType.BOTTOM_LEFT, []]
+      [PluginPositionType.BOTTOM_LEFT, []],
+      [PluginPositionType.ASSISTANT_VOICE, []]
     ])
 
   public movePluginTo(plugin: PluginProperty, positionType: PluginPositionType, groupType: PluginGroupType): void {

@@ -883,7 +883,7 @@ export class Constants {
   /**
    * 动态壁纸主题引擎
    */
-  public static readonly openharmony_THEME_ENGINE: number = 3;
+  public static readonly HW_THEME_ENGINE: number = 3;
 
   /**
    * Json文件中子类为空
@@ -1209,7 +1209,7 @@ export class Constants {
   /**
    * 音乐包名
    */
-  public static readonly openharmony_MUSIC_PKG_NAME: string = 'com.ohos.music';
+  public static readonly HW_MUSIC_PKG_NAME: string = 'com.ohos.music';
 
   /**
    * 历史会话session上限
@@ -1292,37 +1292,37 @@ export class Constants {
   public static readonly MAX_ANIM_TIME_VIDEO_FRAME: number = 900;
 
   /**
-   * 超大屏视频主题视频尺寸，单位px
+   * 三折叠视频主题视频尺寸，单位px
    */
   public static readonly TRI_FOLD_VIDEO_FRAME_SIZE: number = 3184;
 
   /**
-   * 超大屏M态宽，单位px
+   * 三折叠M态宽，单位px
    */
   public static readonly TRI_FOLD_UNFOLD_WIDTH: number = 2048;
 
   /**
-   * 超大屏M态高，单位px
+   * 三折叠M态高，单位px
    */
   public static readonly TRI_FOLD_UNFOLD_HEIGHT: number = 2232;
 
   /**
-   * 超大屏F态宽，单位px
+   * 三折叠F态宽，单位px
    */
   public static readonly TRI_FOLD_BASE_WIDTH: number = 1008;
 
   /**
-   * 超大屏M态X轴偏移，单位px
+   * 三折叠M态X轴偏移，单位px
    */
   public static readonly TRI_FOLD_UNFOLD_OFFSET_X: number = -1136;
 
   /**
-   * 超大屏G态锁屏X轴偏移，单位px
+   * 三折叠G态锁屏X轴偏移，单位px
    */
   public static readonly UNFOLD2_LOCK_OFFSET_X: number = 1084;
 
   /**
-   * 超大屏F态锁屏X轴偏移，单位px
+   * 三折叠F态锁屏X轴偏移，单位px
    */
   public static readonly TRI_BASE_LOCK_OFFSET_X: number = 52;
 

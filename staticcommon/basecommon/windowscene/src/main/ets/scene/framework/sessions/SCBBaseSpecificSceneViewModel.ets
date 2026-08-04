@@ -22,7 +22,8 @@ import {
   SCBSceneSession,
   ACTIVE_STATUS_MAP,
   SCBWindowRaiseReason,
-  SCBWindowShadowConfig
+  SCBWindowShadowConfig,
+  DragActivateScenario,
 } from '../../../TsIndex.ts';
 import sceneSessionManager from '@ohos.sceneSessionManager';
 import { Logger, LogDomain, CommonUtils } from '@ohos/basicutils';
@@ -218,7 +219,7 @@ export class SCBBaseSpecificSceneViewModel {
 
   protected onFollowParentWindowLayout(isFollow: boolean) {
     log.showInfo(TAG, `onFollowParentWindowLayout, isFollow: ${isFollow}`);
-    this.specificSession.session.activateDragBySystem(!isFollow);
+    this.specificSession.session.activateDragBySystem(DragActivateScenario.FOLLOW_PARENT_LAYOUT, !isFollow);
   }
 
   protected onSubSessionStateChange(parentId: number, persistentId: number,

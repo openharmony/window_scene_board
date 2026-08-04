@@ -4,9 +4,13 @@
     "com.ohos.appgallery",
     "com.ohos.thememanager",
     "com.ohos.parentcontrol",
-    "com.easy.ohos.abroad",
-    "com.easy.transfer.abroad",
-    "com.easy.feedback.abroad",
+    "com.ohos.vassistant.launcher",
+    "com.deliver.tong",
+    "com.deliver.appstore.transfer",
+    "com.deliver.browser",
+    "com.ohos.abroad",
+    "com.ohos.transfer.abroad",
+    "com.ohos.feedback.abroad",
     "com.openharmony.baseexperience"
   ],
   "iconBadgeInvisibleList": [

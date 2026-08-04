@@ -80,6 +80,7 @@ import {
   AppStatus,
   AppToHapMappingManager,
   CommonConstants,
+  DeliverUtil,
   DesktopManager,
   DeviceState,
   DockContinuableInfo,
@@ -116,6 +117,7 @@ import {
   SmallFolderStyleConfig,
   lockLayoutManager,
   InstalledDialogType,
+  DialogConfig,
   DeleteDockItem,
   SmallFolderConstants,
   DesktopUtils,
@@ -128,6 +130,7 @@ import {
   AppIconConfig,
   AppIconDefaultModifier,
   BadgeAnimationType,
+  DeliverDialogUtil,
   ContractedFolder,
   DeskTopItemStyle,
   FolderStyleManager,
@@ -138,7 +141,7 @@ import {
   AppNameVm
 } from '@ohos/launchercommon/Index';
 import curves from '@ohos.curves';
-// import apsManager from '@hms.graphic.apsManager';
+// import apsManager from '@ohos.graphic.apsManager';
 import { AppIconBadgeVm } from '@ohos/launchercommon/src/main/ets/launchericon/viewmodel/AppIconBadgeVm';
 import { AppIconMenuVm } from '@ohos/launchercommon/src/main/ets/launchericon/viewmodel/AppIconMenuVm';
 import SmartDockConstants from '../common/constants/SmartDockConstants';
@@ -173,6 +176,7 @@ import {
 } from '@ohos/screenlockcommon/src/main/ets/constants/SlStateType';
 import { slUiStateMgr } from '@ohos/screenlockcommon/src/main/ets/manager/ScreenLockUiStateManager';
 import { SmartDockEventMgr } from '../manager/SmartDockEventMgr';
+import { deliverDialogType } from '@ohos/launchercommon/src/main/ets/base/AppToHapMappingManager';
 import { DockRegionAnimationVm } from '../viewmodel/DockRegionAnimationVm';
 import { DockRegionAnimationEvent } from '../viewmodel/DockRegionAnimationEvent';
 import { DockItemAnimationVm } from '../viewmodel/DockItemAnimationVm';
@@ -182,11 +186,11 @@ import { DragItemPlaceVm } from '../viewmodel/DragItemPlaceVm';
 import lazy { SCBTripleController } from '@ohos/windowscene/src/main/ets/animation/SCBTransitionController';
 import lazy {
   SCBTripleStateChange,
-  UltraScreenExpandAnimUtils,
-} from '@ohos/launchercommon/src/main/ets/utils/UltraScreenExpandAnimUtils';
+  TripleFoldExpandAnimUtils,
+} from '@ohos/launchercommon/src/main/ets/utils/TripleFoldExpandAnimUtils';
 import lazy {
-  UltraScreenAnimationConstants
-} from '@ohos/launchercommon/src/main/ets/constants/UltraScreenAnimationConstants';
+  TripleFoldAnimationConstants
+} from '@ohos/launchercommon/src/main/ets/constants/TripleFoldAnimationConstants';
 import { DockRegionLayoutModel } from '../model/DockRegionLayoutModel';
 import { AppInstallingDataManager } from '@ohos/launchercommon/src/main/ets/appinstall/AppInstallingDataManager';
 import { SmartDockObserver } from '../viewmodel/smartDockObserver';
@@ -397,9 +401,9 @@ export default struct ResidentLayout {
 
   private tripleAnimation(oldState: ScreenState, newState: ScreenState, isNeedAnimation: boolean): void {
     log.showInfo(`resident dock bg execute tripleAnimation, oldState is ${oldState}, newState is ${newState}`);
-    let stateChange: SCBTripleStateChange = UltraScreenExpandAnimUtils.getTripleDesktopStateChange(newState, oldState);
+    let stateChange: SCBTripleStateChange = TripleFoldExpandAnimUtils.getTripleDesktopStateChange(newState, oldState);
     if (!isNeedAnimation) {
-      this.animationVm.alpha = UltraScreenExpandAnimUtils.getTripleDockBgAnimEndAlpha(stateChange);
+      this.animationVm.alpha = TripleFoldExpandAnimUtils.getTripleDockBgAnimEndAlpha(stateChange);
       SCBDesktopCacheManager.getInstance().resetFreezeStateOnly('FOLD_TO_EXPAND_DOCK_BACKGROUND');
       log.showInfo(`resident dock bg noneed tripleAnimation`);
       return;
@@ -408,23 +412,23 @@ export default struct ResidentLayout {
       duration: 0,
     }, () => {
       this.animationVm.translateX =
-        UltraScreenExpandAnimUtils.initTripleDockAnimTranslateX(this.mScreenWidth, stateChange);
-      this.animationVm.alpha = UltraScreenExpandAnimUtils.initTripleDockBgAnimAlpha(stateChange);
+        TripleFoldExpandAnimUtils.initTripleDockAnimTranslateX(this.mScreenWidth, stateChange);
+      this.animationVm.alpha = TripleFoldExpandAnimUtils.initTripleDockBgAnimAlpha(stateChange);
     });
     animateTo({
-      curve: UltraScreenAnimationConstants.TRANSLATE_CURVES,
-      duration: UltraScreenAnimationConstants.ANIMATION_DURATION,
+      curve: TripleFoldAnimationConstants.TRANSLATE_CURVES,
+      duration: TripleFoldAnimationConstants.ANIMATION_DURATION,
     }, () => {
       this.animationVm.translateX = 0;
     });
     animateTo({
       curve: Curve.Linear,
-      duration: UltraScreenAnimationConstants.DOCK_BG_ALPHA_DURATION,
+      duration: TripleFoldAnimationConstants.DOCK_BG_ALPHA_DURATION,
       onFinish: () => {
         SCBDesktopCacheManager.getInstance().resetFreezeStateOnly('FOLD_TO_EXPAND_DOCK_BACKGROUND');
       }
     }, () => {
-      this.animationVm.alpha = UltraScreenExpandAnimUtils.getTripleDockBgAnimEndAlpha(stateChange);
+      this.animationVm.alpha = TripleFoldExpandAnimUtils.getTripleDockBgAnimEndAlpha(stateChange);
     });
   }
 
@@ -608,7 +612,7 @@ export default struct ResidentLayout {
       onExpandAnimation: () => this.expandedAnimation(),
     };
     SCBTransitionManager.getInstance().registerExpandAnimationController(this.expandController);
-    if (DeviceHelper.isUltraScreenProduct()) {
+    if (DeviceHelper.isThreeFoldProduct()) {
       this.tripleController = {
         itemId: `${TAG}_dock`,
         onTripleAnimation: (oldState: ScreenState, newState: ScreenState, isNeedAnimation: boolean) =>
@@ -632,7 +636,7 @@ export default struct ResidentLayout {
     SCBSceneSessionManager.getInstance().unregisterUnlockTransitionCallback(this.unLockTransitionController);
     viewMgrPolicy.unRegisterViewCallback(ViewType.KEYGUARD, this.keyguardCallback);
     SCBTransitionManager.getInstance().unRegisterExpandAnimationController(this.expandController);
-    if (DeviceHelper.isUltraScreenProduct()) {
+    if (DeviceHelper.isThreeFoldProduct()) {
       SCBTransitionManager.getInstance().unRegisterTripleAnimationController(this.tripleController);
     }
     this.desktopContext?.eventHub.off(SmartDockConstants.DOCK_HOLDER_NOTIFY_EVENT, this.dockHolderNotifyEvent);
@@ -828,6 +832,12 @@ export default struct ResidentLayout {
       AppInstallingDataManager.getInstance().toastInstalling(item.bundleName);
       return;
     }
+    if (DeliverUtil.isContainerItem(item.intent)) {
+      log.showWarn(`onContainerAppIconClick, containerItem is ${JSON.stringify(item)}`);
+      this.clickItem = item;
+      this.checkContainerAppClickEvent(event, item as AppItemInfo);
+      return;
+    }
     if (itemAppStatus === AppStatus.INSTALLED || itemAppStatus === undefined) {
       if (this.onItemClick) {
         this.onItemClick(event, item);
@@ -848,7 +858,7 @@ export default struct ResidentLayout {
       return;
     } else if ((item.appIndex && item.appIndex > 0) ||
       item.typeId === CommonConstants.TYPE_SHORTCUT_ICON) {
-      // 升级数据迁移，分身应用未安装完成，不响应点击事件
+      // 系统迁移数据迁移，分身应用未安装完成，不响应点击事件
       AppInstallUtils.getInstance().clickTwinApp(item.bundleName);
       return;
     }
@@ -878,8 +888,178 @@ export default struct ResidentLayout {
     const screenPageCount: number = description ? description.pageCount : 0;
     let position: string = `SCREENCOUNT: ${screenPageCount}SCREENINDEX:${appItem.page}` +
       `CELLX:${appItem.column}CELLY:${appItem.row}isInDock:true`;
+    let itemAppType: number = DeliverUtil.getAppType(appItem)
+    HiSysEventUtil.reportClickAppIcon(component, containerType, position, '-1', '-1', 'false', 'false', '-1',
+      itemAppType, appItem.appIndex, '', '');
   }
 
+  /**
+   * 根据所点击的应用的类型、是否安装以及是否启动来响应不同的操作
+   * @param appItem 点击的应用
+   */
+  private checkContainerAppClickEvent(event: ClickEvent, appItem: AppItemInfo): void {
+    if (!GridLayoutUtil.isAppInstalled(appItem)) {
+      let installSource: string = DeliverUtil.getInstallSourceByIntent(appItem.intent);
+      if (installSource === DeliverUtil.DELIVER_APPSTORE_PKG) {
+        if (DeliverUtil.isdeliverHapExist()) {
+          DeliverUtil.startdeliverAutoOhosAbility(appItem.bundleName, appItem.iconResource);
+        } else {
+          this.alertDialogByMatchContainerHapStatus(appItem);
+        }
+      } else if (installSource === DeliverUtil.APP_PKG) {
+        if (DeliverUtil.isAppExist()) {
+          DeliverUtil.startAppAutoOhosAbility(appItem.bundleName, appItem.iconResource);
+        } else {
+          this.alertDialogByMatchContainerHapStatus(appItem);
+        }
+      } else {
+        AppInstallUtils.getInstance().checkTask(appItem);
+      }
+    } else {
+      let isDeliverStart: boolean = DeliverUtil.getDeliverStartStatus() === DeliverUtil.DELIVER_START_FINISHED_CODE;
+      if (isDeliverStart || (!isDeliverStart && DeliverUtil.isMatchContainerHapExist(appItem as GridLayoutItemInfo))) {
+        this.openDialogOrApplication(event);
+      } else {
+        this.alertDialogByMatchContainerHapStatus(appItem);
+      }
+    }
+    return;
+  }
+
+  /**
+   * 根据点击的应用所对应的克隆应用/应用的状态来响应不同的弹框
+   * @param appItem 点击的应用
+   */
+  private alertDialogByMatchContainerHapStatus(appItem: AppItemInfo): void {
+    let isdeliverApp: boolean =
+      DeliverUtil.getInstallSourceByIntent(appItem.intent) === DeliverUtil.DELIVER_APPSTORE_PKG;
+    let result: GridLayoutItemInfo[];
+    if (isdeliverApp) {
+      result =
+        LaunchLayoutCacheManager.getInstance().getAllSameBundleNameAppItem(DeliverUtil.DELIVER_APP_BUNDLE_NAME_REAL);
+    } else {
+      result = LaunchLayoutCacheManager.getInstance()
+        .getAllSameBundleNameAppItem(DeliverUtil.APP_APP_BUNDLE_NAME_REAL);
+    }
+    if (CheckEmptyUtils.isEmptyArr(result)) {
+      let content: string = 'app.string.deliver_app_unavailable_dialog_content';
+      this.builddeliverAppAlertDialog(content).open();
+      return;
+    }
+    let containerItem: GridLayoutItemInfo = result[0];
+    let downloadStatusInfo: DownloadStatusInfo | undefined =
+      AppGalleryDownloadManager.getInstance().getDownDownloadTaskInfo(DeliverUtil.DELIVER_APP_BUNDLE_NAME_REAL);
+    let containerItemStatus: number =
+      downloadStatusInfo ? downloadStatusInfo.status : containerItem.appStatus as number;
+    if (containerItemStatus === AppStatus.DOWNLOADING || containerItemStatus === AppStatus.INSTALLING ||
+      containerItemStatus === AppStatus.INSTALL_WAITING) {
+      let content: string = 'app.string.deliver_app_installing_dialog_content';
+      this.builddeliverAppAlertDialog(content).open();
+      return;
+    } else if (containerItemStatus === AppStatus.WAITING || containerItemStatus === AppStatus.WIFI_WAITING ||
+      containerItemStatus === AppStatus.PENDING) {
+      let content: string = 'app.string.deliver_app_wait_download_dialog_content';
+      this.builddeliverAppChooseDialog(content, containerItem, containerItemStatus).open();
+      return;
+    } else if (containerItemStatus === AppStatus.PAUSING) {
+      let content: string = 'app.string.deliver_app_pause_download_dialog_content';
+      this.builddeliverAppChooseDialog(content, containerItem, containerItemStatus).open();
+      return;
+    }
+    return;
+  }
+
+  private builddeliverAppChooseDialog(content: string, containerItem: GridLayoutItemInfo,
+    containerItemStatus: number): CustomDialogController {
+    let deliverAppAlertDialog: CustomDialogController = new CustomDialogController({
+      builder: AlertDialog({
+        primaryTitle: $r('app.string.deliver_app_unavailable_dialog_title'),
+        content: $r(content, DeliverUtil.getContainerFolderNameForDialog(this.clickItem)),
+        primaryButton: {
+          value: $r('app.string.cancel'),
+          fontColor: $r('sys.color.ohos_id_color_text_primary_activated'),
+          action: () => {
+            log.showInfo('deliverAppChooseDialog cancel');
+            deliverAppAlertDialog?.close();
+          },
+        },
+        secondaryButton: {
+          value: $r('app.string.confirm_dialog'),
+          fontColor: $r('sys.color.ohos_id_color_warning'),
+          action: () => {
+            log.showInfo('deliverAppChooseDialog confirm');
+            if (containerItemStatus === AppStatus.WAITING || containerItemStatus === AppStatus.WIFI_WAITING) {
+              AppInstallUtils.getInstance().clickAppToPreDownload(containerItem);
+            } else if (containerItemStatus === AppStatus.PAUSING) {
+              AppInstallUtils.getInstance().resumeTask(containerItem.bundleName);
+            }
+            deliverAppAlertDialog?.close();
+          }
+        },
+      }),
+      cancel: () => {
+        log.showInfo('deliverAppChooseDialog cancel');
+        deliverAppAlertDialog?.close();
+      },
+      autoCancel: true,
+      customStyle: false,
+      alignment: DialogAlignment.Center,
+    });
+    return deliverAppAlertDialog;
+  }
+
+  private builddeliverAppAlertDialog(content: string): CustomDialogController {
+    let deliverAppAlertDialog: CustomDialogController = new CustomDialogController({
+      builder: AlertDialog({
+        primaryTitle: $r('app.string.deliver_app_unavailable_dialog_title'),
+        content: $r(content, DeliverUtil.getContainerFolderNameForDialog(this.clickItem)),
+        primaryButton: {
+          value: $r('app.string.deliver_app_unavailable_dialog_know'),
+          fontColor: $r('sys.color.ohos_id_color_text_primary_activated'),
+          action: () => {
+            log.showInfo('deliverAppAlertDialog know');
+            deliverAppAlertDialog?.close();
+          },
+        },
+      }),
+      cancel: () => {
+        log.showInfo('deliverAppAlertDialog cancel');
+        deliverAppAlertDialog?.close();
+      },
+      autoCancel: true,
+      customStyle: false,
+      alignment: DialogAlignment.Center,
+    });
+    return deliverAppAlertDialog;
+  }
+
+  private openDialogOrApplication(event: ClickEvent): void {
+    let mappingManager: AppToHapMappingManager = AppToHapMappingManager.getInstance();
+    let hapBundleName: string = mappingManager.getMapping().get(this.clickItem.bundleName) as string;
+    switch (mappingManager.shouldOpenDialog(this.clickItem.bundleName)) {
+      case deliverDialogType.NOT_EXIST_MAPPING_NEXT_VERSION:
+        if (DeliverUtil.isStartContainerApp(this.clickItem.bundleName)) {
+          this.mSmartDockViewModel.startContainerApp(SCBSceneMode.FULLSCREEN,this.clickItem.abilityName, this.clickItem.bundleName,
+            this.clickItem.moduleName);
+        } else {
+          this.onInstalledAppClick(event, this.clickItem);
+        }
+        break;
+      case deliverDialogType.NEXT_VERSION_NOT_INSTALLED:
+        GridLayoutUtil.checkCurrentItemAppName(this.clickItem);
+        this.builddeliverAppDialog(hapBundleName, this.clickItem.appName).open();
+        HiSysEventUtil.reportdeliverDialogOpen(this.clickItem?.bundleName);
+        break;
+      case deliverDialogType.NEXT_VERSION_INSTALLED:
+        GridLayoutUtil.checkCurrentItemAppName(this.clickItem);
+        let installedDialogType: InstalledDialogType = mappingManager.getInstalledDialogType(this.clickItem.bundleName);
+        this.buildUninstalldeliverAppDialog(installedDialogType, hapBundleName).open();
+        HiSysEventUtil.reportdeliverDialogOpen(this.clickItem?.bundleName);
+        break;
+      default:
+        log.showWarn('openDialogOrApplication type error');
+    }
+  }
 
   private onInstalledAppClick(event: ClickEvent, item: DockItemInfo): void {
     if (this.onItemClick) {
@@ -894,6 +1074,105 @@ export default struct ResidentLayout {
       this.onHoverItem = item.bundleName as string;
     }
     AppStorage.setOrCreate('isClickOpenPopup', false);
+  }
+
+  private buildUninstalldeliverAppDialog(installedDialogType: InstalledDialogType,
+    hapBundleName?: string): CustomDialogController {
+    let hapAppName: string = GridLayoutUtil.getdeliverAppName(hapBundleName);
+    let dialogConfig: DialogConfig = DeliverUtil.getStringByDialogType(installedDialogType);
+    let uninstalldeliverAppDialog: CustomDialogController = new CustomDialogController({
+      builder: AlertDialog({
+        primaryTitle: $r('app.string.uninstall_deliver_app_dialog_title'),
+        content: $r(dialogConfig.content, hapAppName),
+        primaryButton: DeliverDialogUtil.createUninstallDialogPrimaryButton(installedDialogType,
+          $r(dialogConfig.primaryButton), () => {
+            log.showInfo('uninstalldeliverAppDialog cancel');
+            HiSysEventUtil.reportdeliverDialogOperation(this.clickItem?.bundleName, DeliverUtil.DIALOG_TYPE_NEXT_VERSION,
+              DeliverUtil.CLICK_IGNORE);
+            this.mPageDesktopViewModel.openApplication(this.clickItem.abilityName, this.clickItem.bundleName,
+              this.clickItem.moduleName,
+              this.clickItem.appIndex);
+            uninstalldeliverAppDialog?.close();
+          }),
+        secondaryButton: {
+          value: $r(dialogConfig.secondaryButton),
+          fontColor: $r(dialogConfig.fontColor),
+          action: () => {
+            if (installedDialogType === InstalledDialogType.OPEN) {
+              log.showInfo('uninstalldeliverAppDialog open');
+              HiSysEventUtil.reportdeliverDialogOperation(this.clickItem?.bundleName, DeliverUtil.DIALOG_TYPE_NEXT_VERSION,
+                DeliverUtil.CLICK_OPEN_NEXT);
+              let itemList: GridLayoutItemInfo[] =
+                LaunchLayoutCacheManager.getInstance().getAllSameBundleNameAppItem(hapBundleName);
+              if (!CheckEmptyUtils.isEmptyArr(itemList)) {
+                StartAbilityUtil.startAbilityByName(itemList[0].abilityName, itemList[0].bundleName,
+                  itemList[0].moduleName);
+              }
+              uninstalldeliverAppDialog?.close();
+            } else {
+              log.showInfo('uninstalldeliverAppDialog uninstall');
+              HiSysEventUtil.reportdeliverDialogOperation(this.clickItem?.bundleName, DeliverUtil.DIALOG_TYPE_UNINSTALL,
+                DeliverUtil.CLICK_UNINSTALL);
+              uninstalldeliverAppDialog?.close();
+              AppStorage.setOrCreate('uninstallAppInfo', this.clickItem);
+              AppStorage.setOrCreate('showUninstallDialog', true);
+              this.uninstallDialogController?.open();
+            }
+          }
+        },
+      }),
+      cancel: () => {
+        log.showInfo('uninstalldeliverAppDialog cancel');
+        HiSysEventUtil.reportdeliverDialogOperation(this.clickItem?.bundleName, DeliverUtil.DIALOG_TYPE_NEXT_VERSION,
+          DeliverUtil.CLICK_BLANK_AREA);
+        uninstalldeliverAppDialog?.close();
+      },
+      autoCancel: true,
+      customStyle: false,
+      alignment: DialogAlignment.Center,
+    });
+    return uninstalldeliverAppDialog;
+  }
+
+  private builddeliverAppDialog(hapBundleName: string | undefined,
+    appName?: string): CustomDialogController {
+    ResourceManager.getInstance().getStringByName('deliver_app_dialog_content');
+    let deliverAppDialog = new CustomDialogController({
+      builder: AlertDialog({
+        primaryTitle: $r('app.string.deliver_app_dialog_title'),
+        content: $r('app.string.deliver_app_dialog_text', appName),
+        primaryButton: DeliverDialogUtil.createDialogPrimaryButton(this.clickItem.bundleName,
+          $r('app.string.deliver_app_dialog_cancel'), () => {
+            HiSysEventUtil.reportdeliverDialogOperation(this.clickItem?.bundleName, DeliverUtil.DIALOG_TYPE_NEW_VERSION,
+              DeliverUtil.CLICK_IGNORE);
+            log.showInfo('deliver_app_dialog_title cancel');
+            this.mPageDesktopViewModel.openApplication(this.clickItem.abilityName, this.clickItem.bundleName,
+              this.clickItem.moduleName,
+              this.clickItem.appIndex);
+            deliverAppDialog?.close();
+          }),
+        secondaryButton: {
+          value: $r('app.string.deliver_app_dialog_confirm'),
+          action: () => {
+            HiSysEventUtil.reportdeliverDialogOperation(this.clickItem?.bundleName, DeliverUtil.DIALOG_TYPE_NEW_VERSION,
+              DeliverUtil.CLICK_UPDATE);
+            log.showInfo('deliver_app_dialog_title confirm');
+            DeliverUtil.leavingLakeStartAppGalleryDetail(hapBundleName, this.clickItem.bundleName);
+            deliverAppDialog?.close();
+          }
+        },
+      }),
+      cancel: () => {
+        HiSysEventUtil.reportdeliverDialogOperation(this.clickItem?.bundleName, DeliverUtil.DIALOG_TYPE_NEW_VERSION,
+          DeliverUtil.CLICK_BLANK_AREA);
+        log.showInfo('deliver_app_dialog_title cancel');
+        deliverAppDialog?.close();
+      },
+      autoCancel: true,
+      customStyle: false,
+      alignment: DialogAlignment.Center,
+    });
+    return deliverAppDialog;
   }
 
   onContinueDeviceChange(): void {
@@ -1508,7 +1787,7 @@ struct AppItem {
     };
     SCBTransitionManager.getInstance().registerFoldAnimationController(this.foldController);
     SCBTransitionManager.getInstance().registerExpandAnimationController(this.expandController);
-    if (DeviceHelper.isUltraScreenProduct()) {
+    if (DeviceHelper.isThreeFoldProduct()) {
       this.tripleController = {
         itemId: `${TAG}_dock`,
         onTripleAnimation: (oldState: ScreenState, newState: ScreenState, isNeedAnimation: boolean) =>
@@ -1634,26 +1913,26 @@ struct AppItem {
       log.showInfo(`resident dock item noneed tripleAnimation`);
       return;
     }
-    let stateChange: SCBTripleStateChange = UltraScreenExpandAnimUtils.getTripleDesktopStateChange(newState, oldState);
-    let col: number[] = UltraScreenExpandAnimUtils.getTripleDockColumn(this.getIndex());
+    let stateChange: SCBTripleStateChange = TripleFoldExpandAnimUtils.getTripleDesktopStateChange(newState, oldState);
+    let col: number[] = TripleFoldExpandAnimUtils.getTripleDockColumn(this.getIndex());
     animateTo({
       duration: 0,
     }, () => {
       this.animationVm.translateX =
-        UltraScreenExpandAnimUtils.initTripleDockAnimTranslateX(this.screenWidth, stateChange);
-      this.animationVm.alpha = UltraScreenExpandAnimUtils.initTripleResidentDockItemAnimAlpha(stateChange);
+        TripleFoldExpandAnimUtils.initTripleDockAnimTranslateX(this.screenWidth, stateChange);
+      this.animationVm.alpha = TripleFoldExpandAnimUtils.initTripleResidentDockItemAnimAlpha(stateChange);
     });
     animateTo({
-      curve: UltraScreenAnimationConstants.TRANSLATE_CURVES,
-      duration: UltraScreenAnimationConstants.ANIMATION_DURATION,
+      curve: TripleFoldAnimationConstants.TRANSLATE_CURVES,
+      duration: TripleFoldAnimationConstants.ANIMATION_DURATION,
     }, () => {
       this.animationVm.translateX = 0;
     });
-    let alphaDelayTime: number = UltraScreenExpandAnimUtils.getUltraScreenExpandAlphaDelayTime(col[0], stateChange);
+    let alphaDelayTime: number = TripleFoldExpandAnimUtils.getTripleFoldExpandAlphaDelayTime(col[0], stateChange);
     animateTo({
       curve: Curve.Linear,
       delay: alphaDelayTime,
-      duration: UltraScreenAnimationConstants.ALPHA_DURATION,
+      duration: TripleFoldAnimationConstants.ALPHA_DURATION,
     }, () => {
       this.animationVm.alpha = 1;
     });
@@ -1724,7 +2003,7 @@ struct AppItem {
     viewMgrPolicy.unRegisterViewCallback(ViewType.KEYGUARD, this.keyguardCallback);
     SCBTransitionManager.getInstance().unRegisterFoldAnimationController(this.foldController);
     SCBTransitionManager.getInstance().unRegisterExpandAnimationController(this.expandController);
-    if (DeviceHelper.isUltraScreenProduct()) {
+    if (DeviceHelper.isThreeFoldProduct()) {
       SCBTransitionManager.getInstance().unRegisterTripleAnimationController(this.tripleController);
     }
     this.unregisterDragEvent();
@@ -2111,6 +2390,9 @@ struct AppItem {
       if (event?.type === CommonConstants.TOUCH_TYPE_DOWN) {
         log.showInfo('onTouch down start');
         this.isTouchUp = false;
+        if (DeliverUtil.isSupportAppType(this.appInfo.bundleName) && DeliverUtil.isSupportDeliver()) {
+          SCBSceneSessionManager.getInstance().preloadApp(this.appInfo.bundleName);
+        }
       } else if (event?.type === CommonConstants.TOUCH_TYPE_UP) {
         this.dealWithTouchUp();
       }

@@ -91,8 +91,8 @@ export class MidSceneEvents {
   public static readonly EVENT_SCENE_REPLACE: string = 'scene_replace';
 
   // triple fold state change for m to g
-  public static readonly EVENT_ULTRA_SCREEN_STATE_CHANGE_M_TO_G: string = 'triple_fold_state_change_m_to_g';
+  public static readonly EVENT_TRIPLE_FOLD_STATE_CHANGE_M_TO_G: string = 'triple_fold_state_change_m_to_g';
 
   // triple fold state change for g to m
-  public static readonly EVENT_ULTRA_SCREEN_STATE_CHANGE_G_TO_M: string = 'triple_fold_state_change_g_to_m';
+  public static readonly EVENT_TRIPLE_FOLD_STATE_CHANGE_G_TO_M: string = 'triple_fold_state_change_g_to_m';
 }

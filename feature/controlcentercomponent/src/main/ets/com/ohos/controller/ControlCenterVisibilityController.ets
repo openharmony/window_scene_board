@@ -16,6 +16,7 @@
 import { ControlCenterState } from '@ohos/controlcentercommon/Index';
 import lazy Controller from '../controller/ControlCenterController';
 import { DesktopMode } from '../viewModel/EmergencyManager';
+import { CloudMode } from '../viewModel/CloudModeManager';
 import { LogHelper, LogDomain, } from '@ohos/basicutils';
 import { DesktopModeEnum } from '@ohos/launchercommon/src/main/ets/desktopmode/statemanager/DesktopMode';
 
@@ -38,12 +39,14 @@ export default class ControlCenterVisibilityController {
 
   // 控制头部按钮、隐私指示器显隐
   public static getHeadVisibility(state: ControlCenterState,
-    backgroundOpacity: number, emergency: DesktopMode): Visibility {
+    backgroundOpacity: number, emergency: DesktopMode, cloudMode: CloudMode): Visibility {
     if (ControlCenterVisibilityController.isSlidingBrightness(backgroundOpacity)) {
       return Visibility.Hidden;
     } else if (emergency.desktopMode === DesktopModeEnum.EMERGENCY_MODE) {
       return Visibility.Hidden;
     } else if (state !== ControlCenterState.MAIN_LAYOUT) {
+      return Visibility.Hidden;
+    } else if (cloudMode.isOutdoorCloudMode || cloudMode.isOutDoorCloudMode) {
       return Visibility.Hidden;
     } else {
       // 其他场景的默认显示，并受mainLayout的visibility属性的统一控制
@@ -58,10 +61,13 @@ export default class ControlCenterVisibilityController {
    * @param backgroundOpacity 背景透明度
    * @returns
    */
-  public static getHeadLayoutVisibility(state: ControlCenterState, backgroundOpacity: number): Visibility {
+  public static getHeadLayoutVisibility(state: ControlCenterState, backgroundOpacity: number,
+    cloudMode: CloudMode): Visibility {
     if (ControlCenterVisibilityController.isSlidingBrightness(backgroundOpacity)) {
       return Visibility.Hidden;
     } else if (state !== ControlCenterState.MAIN_LAYOUT) {
+      return Visibility.Hidden;
+    } else if (cloudMode.isOutdoorCloudMode || cloudMode.isOutDoorCloudMode) {
       return Visibility.Hidden;
     }
     // 其他场景的默认显示，并受mainLayout的visibility属性的统一控制
@@ -93,12 +99,15 @@ export default class ControlCenterVisibilityController {
     }
   }
 
-  public static getIOTVisibility(backgroundOpacity: number, emergency: DesktopMode, lockStatus: number): Visibility {
+  public static getIOTVisibility(backgroundOpacity: number, emergency: DesktopMode, lockStatus: number,
+    cloudMode: CloudMode): Visibility {
     log.showInfo(`backgroundOpacity:${backgroundOpacity}, lockStatus:${lockStatus}, emergency:${emergency}`);
     if (lockStatus === 1) {
       return Visibility.None;
     }
     if (ControlCenterVisibilityController.isSlidingBrightness(backgroundOpacity)) {
+      return Visibility.Hidden;
+    } else if (cloudMode.isOutdoorCloudMode || cloudMode.isOutDoorCloudMode) {
       return Visibility.Hidden;
     } else {
       // 其他场景的默认显示，并受mainLayout的visibility属性的统一控制

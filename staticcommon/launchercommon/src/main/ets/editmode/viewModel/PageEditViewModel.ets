@@ -408,7 +408,7 @@ export class PageEditViewModel {
     let result: number = swiperHeight / 2 + editModeBgTranslateY + bgHeight / 2 - gridHeight - offsetY -
     PageEditViewModel.getInstance().getOneThirdSpace();
     log.showInfo(`getGridMarginTopFromSwiper end, result: ${result}`);
-    return result;
+    return result < 0 ? 0 : result;
   }
 
   /**

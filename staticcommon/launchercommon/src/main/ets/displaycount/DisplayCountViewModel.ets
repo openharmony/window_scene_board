@@ -24,8 +24,8 @@ const TAG = 'DisplayCountViewModel';
 const log: Logger = Logger.getLogHelper(LogDomain.HOME);
 const PRE_NEXT_MARGIN = 0.01;
 
-// 超大屏设备每6页一组计算
-const ULTRA_SCREEN_GROUP = 6;
+// 三折屏设备每6页一组计算
+const THREE_FOLD_GROUP = 6;
 
 /**
  * DisplayCount viewmodel类
@@ -78,9 +78,9 @@ export class DisplayCountViewModel {
   }
 
   /**
-   * 计算超大屏displayCount
+   * 计算三折屏displayCount
    */
-  public calculateUltraScreenDisplayCount(): void {
+  public calculateThreeFolDisplayCount(): void {
     if (PageInfoManager.getInstance().getMaxDisplayCount() !== StyleConstants.DEFAULT_3) {
       return;
     }
@@ -125,7 +125,7 @@ export class DisplayCountViewModel {
     PageInfoManager.getInstance().setDisplayCount(displayCount);
     let pageIndex = PageInfoManager.getInstance().getPageIndex();
 
-    let modulus = pageIndex % ULTRA_SCREEN_GROUP;
+    let modulus = pageIndex % THREE_FOLD_GROUP;
     // 三屏到二屏旋转场景
     if (origValue === 3 && displayCount === 2) {
       if (modulus === 0 || modulus === 1) {

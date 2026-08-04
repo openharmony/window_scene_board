@@ -62,6 +62,7 @@ import {
   AppStatus,
   AppGalleryDownloadManager,
   DownloadStatusInfo,
+  DeliverUtil,
   GridLayoutItemInfo,
   AppDataWrapper,
   AppInstallUtils,
@@ -1219,13 +1220,13 @@ struct AppItem {
       .onAppear(() => {
         log.showInfo('dockMenu onAppear');
         this.setMenuShowStatus(true);
-        this.desktopContext?.eventHub.emit('AIBarShow', true);
+        this.desktopContext?.eventHub.emit('NAVIBarShow', true);
         HiSysEventUtil.reportGoIntoAppShortcutMenu(this.appInfo.bundleName, this.appInfo.appName, 'LAUNCHER');
       })
       .onDisAppear(() => {
         log.showInfo('dockMenu onDisAppear');
         this.setMenuShowStatus(false);
-        this.desktopContext?.eventHub.emit('AIBarShow', false);
+        this.desktopContext?.eventHub.emit('NAVIBarShow', false);
         localEventManager.sendLocalEvent(EventConstants.EVENT_RESET_HIDE_DOCK_AFTER_POPUP_STATE_CALLBACK);
         AppStorage.setOrCreate<string>('notifyEnterFormManagerAnimate', String(this.appInfo.appIconId));
       })
@@ -1414,6 +1415,9 @@ struct AppItem {
     localEventManager.sendLocalEvent(EventConstants.EVENT_RESET_HIDE_DOCK_AFTER_POPUP_STATE_CALLBACK);
     if (event?.type === CommonConstants.TOUCH_TYPE_DOWN) {
       log.showInfo('onTouch down');
+      if (DeliverUtil.isSupportAppType(this.appInfo.bundleName) && DeliverUtil.isSupportDeliver()) {
+        SCBSceneSessionManager.getInstance().preloadApp(this.appInfo.bundleName);
+      }
     } else if (event?.type === CommonConstants.TOUCH_TYPE_UP) {
       log.showInfo('onTouch up');
       if (!editModeManager.isInEditMode()) {

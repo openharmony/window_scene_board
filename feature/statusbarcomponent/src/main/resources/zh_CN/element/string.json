@@ -28,6 +28,10 @@
             "value":"有线网络已连接"
         },
         {
+            "name":"ai_assistant",
+            "value":"语音助手"
+        },
+        {
             "name":"location_statusbar_tips",
             "value":"位置"
         },
@@ -109,6 +113,18 @@
         {
             "name": "key_mouse_sharing",
             "value": "键鼠共享"
+        },
+        {
+            "name":"voice_notetaker",
+            "value":"语音助手慧记"
+        },
+        {
+            "name":"voice_translate",
+            "value":"语音助手翻译"
+        },
+        {
+            "name":"voice_search",
+            "value":"语音助手搜索"
         },
         {
             "name":"file_upload",

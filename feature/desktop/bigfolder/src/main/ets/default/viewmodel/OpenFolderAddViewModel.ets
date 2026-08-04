@@ -21,6 +21,7 @@ import {
   AppCategoryInfoManager,
   AppModel,
   CommonConstants,
+  DeliverUtil,
   DockItemInfo,
   FolderLayoutCacheManager,
   FolderOperationFlag,
@@ -440,6 +441,8 @@ export class OpenFolderAddViewModel {
   reportEvent(): void {
     const folderId: string = this.mFolderMgr.getOpenFolderId();
     const isCardFolder: boolean = GridLayoutUtil.isBigFolder(this.mFolderMgr.getOpenedFolder());
+    const folderType: number = DeliverUtil.getFolderTypeByFolderId(folderId);
+    HiSysEventUtil.reportReverseAddInFolder(folderId, folderType, isCardFolder);
   }
 
   private categorizeApps(allApps: FolderAddItemInfo[], categorizedApps: FolderAddItemInfo[],
@@ -594,7 +597,13 @@ export class OpenFolderAddViewModel {
 
     if (allAppList?.length > 0) {
       allAppList.forEach((item: GridLayoutItemInfo) => {
-        return;
+        if ((!DeliverUtil.CANCEL_DELIVER_FOLDER && DeliverUtil.DELIVER_PREINSTALLED_APP_SET.has(item.bundleName)) ||
+        DeliverUtil.isAppItem(item.intent)) {
+          return;
+        }
+        let otherItem: FolderAddItemInfo = new FolderAddItemInfo();
+        otherItem.itemInfo = item;
+        appList.push(otherItem);
       });
     }
 

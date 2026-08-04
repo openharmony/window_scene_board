@@ -304,6 +304,12 @@ export default function SCBEventExclusiveManagerTest() {
       expect(scbEventExclusiveManager.setEventExclusive(caller, isExclusive) === undefined).assertTrue();
     })
 
+    it('SCBEventExclusiveManagerTest_getEventExclusiveBitmap_0012', 0, () => {
+      let isExclusive = true;
+      let caller = EventType.GLOBALSEARCH_LOCATIONAPPSHOW;
+      expect(scbEventExclusiveManager.setEventExclusive(caller, isExclusive) === undefined).assertTrue();
+    })
+
     it('SCBEventExclusiveManagerTest_getEventExclusiveBitmap_0013', 0, () => {
       let isExclusive = true;
       let caller = EventType.APPEXIT_LANDSCAPE;

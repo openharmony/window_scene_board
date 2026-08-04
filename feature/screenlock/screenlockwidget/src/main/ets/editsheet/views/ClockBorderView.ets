@@ -23,6 +23,7 @@ import { ClockLayoutParam, clockLayoutParam } from '../../clock/common/ClockLayo
 import BorderViewConfig, { BorderState } from '../models/BorderConfig';
 import { ColorType } from '../models/MainColor';
 import { SlVisualArgs, SlVisualControl, SlPositionType, SlAreaType, CcmOption } from '@ohos/screenlockcommon';
+import { SCBSceneSessionManager } from '@ohos/windowscene';
 
 const BLENDMODE_SRC_OVER: number = 1000;
 const BLENDMODE_DESTINATION_IN: number = 6;
@@ -36,9 +37,15 @@ export default struct ClockBorderView {
   @Prop isLightWallpaper: boolean = true;
   @State layoutParam : ClockLayoutParam = clockLayoutParam;
   @State config: BorderViewConfig = new BorderViewConfig(24);
+  @State contentColor: string = ''
   @State backgroundBrightArgs?: SlVisualArgs =
     SlVisualControl.getInstance().getVisualArgs(SlPositionType.SL_CLOCK_WIDGET);
   private enableBright: boolean = SlVisualControl.getInstance().getEnable(CcmOption.BRIGHT, SlAreaType.CAPSULE);
+
+  async aboutToAppear(): Promise<void> {
+    //获取锁屏壁纸的亮度等级
+    this.contentColor = await SCBSceneSessionManager.getInstance().updateLockViewColor()
+  }
 
   private onDisplayModeChanged(): void {
     switch (this.displayMode) {
@@ -106,10 +113,11 @@ export default struct ClockBorderView {
       .width('100%')
       .height('100%')
       // .blendMode(this.enableBright ? BlendMode.NORMAL : BLENDMODE_DESTINATION_IN)
-      .blendMode(this.enableBright ? BlendMode.SRC_OVER : BLENDMODE_DESTINATION_IN)
-      .backgroundColor(this.getBgColor())
+      .blendMode(this.enableBright ? BlendMode.SRC_IN : BLENDMODE_DESTINATION_IN)
+      // .backgroundColor(this.getBgColor())
+      .backgroundColor(this.contentColor)
       // .backgroundBrightnessInternal(this.getBgBrightnessOption())
-      .backgroundBrightness(this.getBgBrightnessOption())
+      // .backgroundBrightness(this.getBgBrightnessOption())
     }
     .visibility(this.config.visibility ? Visibility.Visible : Visibility.Hidden)
     .width(this.layoutParam.gridParam.gridWidthSize)

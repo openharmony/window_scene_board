@@ -27,6 +27,7 @@ import { DockBarParam, DockBarOutParam, DockBarScrollerParam } from './GestureDo
 import { GestureDockBarViewData } from './GestureDockBarViewData';
 import { DeviceHelper, sSettingsUtil } from '@ohos/frameworkwrapper';
 import Display from '@ohos.display';
+import { SCBNaviBarConstants } from '../../../../naviBar/SCBNaviBarConstants';
 
 const TAG = 'GestureDockBarViewDataMgr';
 const log = LogHelper.getLogHelper(LogDomain.GESTURE, TAG);

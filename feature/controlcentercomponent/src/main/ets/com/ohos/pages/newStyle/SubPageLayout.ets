@@ -45,7 +45,7 @@ const BORDER_RADIUS: number = 32;
 const SINGLE_FOLD_SUB_HEIGHT: number = 276;
 const SINGLE_FOLD_SUB_WIDTH: number = 276;
 const SINGLE_FOLD_SUB_RADIUS: number = 20;
-const toggleWhiteList: string[] = ['super_device', 'scenario_mode'];
+const toggleWhiteList: string[] = ['scenario_mode'];
 const UEC_EXCEPTION_CODE: number = 100014;
 const MAX_RETRY_TIME: number = 5;
 

@@ -43,6 +43,9 @@ import { CloneCloudServiceResponse } from '@ohos/launchercommon/src/main/ets/con
 import SmartDockConstants from '@ohos/smartdock/src/main/ets/default/common/constants/SmartDockConstants';
 import SmartDockModel from '@ohos/smartdock/src/main/ets/default/model/SmartDockModel';
 import preferences from '@ohos.data.preferences';
+import {
+  RestoreLauncherDataListInfo
+} from '@ohos/launchercommon/src/main/ets/transformdata/RestoreLauncherDataListInfo';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 const TAG: string = 'CancelRestoreLauncherData';
@@ -133,8 +136,34 @@ export class CancelRestoreLauncherData implements IExecutor {
     let appTypeList: number[] = preference.getSync('RestoreAppTypeData', []) as number[];
     let enterpriseLinkList: string[] = preference.getSync('RestoreEnterpriseLinkData', []) as string[];
     let isWaitForHarmonyList: boolean[] = preference.getSync('RestoreIsWaitForHarmonyListData', []) as boolean[];
-    let waitForHarmonyKeyList: string[] = preference.getSync('RestoreWaitForHarmonyKeyListData', []) as string[];
+    let waitForSystemKeyList: string[] = preference.getSync('RestoreWaitForSystemKeyListData', []) as string[];
     let appIndexList: number[] = preference.getSync('RestoreAppIndexData', []) as number[];
+    let resLauDaListInfo = new RestoreLauncherDataListInfo();
+    for (let i = 0; i < pkgList.length; i++) {
+      let index = restoreBundleList.indexOf(pkgList[i]);
+      if (index === CommonConstants.INVALID_VALUE) {
+        resLauDaListInfo.pkgList.push(pkgList[i]);
+        resLauDaListInfo.bundleList.push(bundleList[i]);
+        resLauDaListInfo.iconUriList.push(iconUriList[i]);
+        resLauDaListInfo.titleList.push(titleList[i]);
+        resLauDaListInfo.legacyInfoList.push(legacyInfoList[i]);
+        resLauDaListInfo.appTypeList.push(appTypeList[i]);
+        resLauDaListInfo.enterpriseLinkList.push(enterpriseLinkList[i]);
+        resLauDaListInfo.isWaitForHarmonyList.push(isWaitForHarmonyList[i]);
+        resLauDaListInfo.waitForSystemKeyList.push(waitForSystemKeyList[i]);
+        resLauDaListInfo.appIndexList.push(appIndexList[i]);
+      }
+    }
+    preference.putSync('RestorePkgData', resLauDaListInfo.pkgList);
+    preference.putSync('RestoreBundleData', resLauDaListInfo.bundleList);
+    preference.putSync('RestoreIconUriData', resLauDaListInfo.iconUriList);
+    preference.putSync('RestoreIconTitleData', resLauDaListInfo.titleList);
+    preference.putSync('RestoreLegacyInfoData', resLauDaListInfo.legacyInfoList);
+    preference.putSync('RestoreAppTypeData', resLauDaListInfo.appTypeList);
+    preference.putSync('RestoreEnterpriseLinkData', resLauDaListInfo.enterpriseLinkList);
+    preference.putSync('RestoreIsWaitForHarmonyListData', resLauDaListInfo.isWaitForHarmonyList);
+    preference.putSync('RestoreWaitForSystemKeyListData', resLauDaListInfo.waitForSystemKeyList);
+    preference.putSync('RestoreAppIndexData', resLauDaListInfo.appIndexList);
     preference.flush();
   }
 

@@ -715,6 +715,7 @@ export struct FixedScrollerComponent {
 
   private isTouchInCurrentPopupItem(x: number, y: number): boolean {
     const appIconId: string = PCDockUtils.getAppItemColumnId(this.mPopItem);
+    log.showInfo(`isTouchInCurrentPopupItem appIconId: ${appIconId}`);
     let cmpRect = ItemUtils.getCmpRect(appIconId, this.screenProp.screenId, this.getUIContext());
     if (CheckEmptyUtils.isEmpty(cmpRect)) {
       return false;

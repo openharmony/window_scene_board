@@ -31,6 +31,7 @@ import { BaseViewModel } from '../../../../../../main/ets/base/BaseViewModel';
 import {
   AppItemInfo,
   CommonConstants,
+  DeliverUtil,
   DisposedEventManager,
   GridLayoutItemInfo,
   LaunchLayoutCacheManager,
@@ -93,6 +94,50 @@ export default function BaseViewModelTest() {
       done();
     })
 
+    it('test_jumpTo_isStartContainerApp_true_startContainerApp', 0, async (done: Function) => {
+      let baseViewModel: TestBaseViewModel = new TestBaseViewModel();
+      let abilityName: string = 'abilityName';
+      let bundleName: string = 'com.ohos.photos';
+      let moduleName: string = 'moduleName';
+      let params = new Map<string, Object>();
+      let screenId: number = 0;
+      let mocker: MockKit = new MockKit();
+      let mockFunc: Function = mocker.mockFunc(DeliverUtil, DeliverUtil.isContainerHapExist);
+      when(mockFunc)().afterReturn(true);
+      let mockFunc1: Function = mocker.mockFunc(DeliverUtil, DeliverUtil.isSupportAppType);
+      when(mockFunc1)(ArgumentMatchers.any).afterReturn(true);
+      let mockFunc2: Function = mocker.mockFunc(DeliverUtil, DeliverUtil.isSupportDeliver);
+      when(mockFunc2)().afterReturn(true);
+      let mockFunc3: Function = mocker.mockFunc(DeliverUtil, DeliverUtil.getDeliverStartStatus);
+      when(mockFunc3)().afterReturn('1001');
+      baseViewModel.jumpTo(abilityName, bundleName, moduleName, params, screenId);
+      expect(baseViewModel).not().assertUndefined();
+      expect(bundleName).assertEqual('com.ohos.photos');
+      mocker.clear(DeliverUtil);
+      mocker.clearAll();
+      done();
+    })
+
+    it('test_jumpTo_isStartWaitHMContainerApp_true_startContainerApp', 0, async (done: Function) => {
+      let baseViewModel: TestBaseViewModel = new TestBaseViewModel();
+      let abilityName: string = 'abilityName';
+      let bundleName: string = 'com.ohos.photos';
+      let moduleName: string = 'moduleName';
+      let params = new Map<string, Object>();
+      let screenId: number = 0;
+      let mocker: MockKit = new MockKit();
+      let mockFunc: Function = mocker.mockFunc(DeliverUtil, DeliverUtil.isContainerHapExist);
+      when(mockFunc)().afterReturn(false);
+      let mockFunc1: Function = mocker.mockFunc(DeliverUtil, DeliverUtil.isStartWaitHMContainerApp);
+      when(mockFunc1)(ArgumentMatchers.any).afterReturn(true);
+      baseViewModel.jumpTo(abilityName, bundleName, moduleName, params, screenId);
+      expect(baseViewModel).not().assertUndefined();
+      expect(bundleName).assertEqual('com.ohos.photos');
+      mocker.clear(DeliverUtil);
+      mocker.clearAll();
+      done();
+    })
+
     it('test_jumpTo_getRuledBundleNamesMap_truefalse', 0, async (done: Function) => {
       let baseViewModel: TestBaseViewModel = new TestBaseViewModel();
       let abilityName: string = 'abilityName';
@@ -101,6 +146,10 @@ export default function BaseViewModelTest() {
       let params = new Map<string, Object>();
       let screenId: number = 0;
       let mocker: MockKit = new MockKit();
+      let mockFunc: Function = mocker.mockFunc(DeliverUtil, DeliverUtil.isContainerHapExist);
+      when(mockFunc)().afterReturn(false);
+      let mockFunc1: Function = mocker.mockFunc(DeliverUtil, DeliverUtil.isStartWaitHMContainerApp);
+      when(mockFunc1)(ArgumentMatchers.any).afterReturn(false);
       let eventManager: DisposedEventManager = DisposedEventManager.getInstance();
       let mockFunc2: Function = mocker.mockFunc(eventManager, eventManager.getRuledBundleNamesMap);
       let params1 = new Map<string, Object>();
@@ -117,8 +166,24 @@ export default function BaseViewModelTest() {
         baseViewModel.jumpTo(abilityName, bundleName, moduleName, params, screenId);
       } catch (e) {}
       expect(params2.has(bundleName)).assertFalse();
+      mocker.clear(DeliverUtil);
       mocker.clear(eventManager);
       mocker.clearAll();
+      done();
+    })
+
+
+    it('test_startContainerApp1', 0, async (done: Function) => {
+      let testVM: TestBaseViewModel = new TestBaseViewModel();
+      let abilityName: string = 'a';
+      let bundleName: string = 'a';
+      let moduleName: string = 'a';
+      let params = new Map<string, Object>();
+      let screenId: number = 0;
+      try {
+        testVM.jumpTo(abilityName, bundleName, moduleName, params, screenId);
+      } catch (e) {}
+      expect(testVM).not().assertNull();
       done();
     })
 
@@ -153,6 +218,44 @@ export default function BaseViewModelTest() {
         let size = imagePixelMap.getImageInfoSync().size ?? new Size();
         expect(size).not().assertUndefined();
       }
+      done();
+    })
+
+    it('test_jumpto_isStartContainerApp_false', 0, async (done: Function) => {
+      let baseViewModel: TestBaseViewModel = new TestBaseViewModel();
+      let abilityName: string = 'com.ohos.photos.MainAbility';
+      let bundleName: string = 'com.ohos.photos';
+      let moduleName: string = 'phone_photos';
+      let params = new Map<string, Object>();
+      let screenId: number = 0;
+      let mocker: MockKit = new MockKit();
+      let mockFunc: Function = mocker.mockFunc(DeliverUtil, DeliverUtil.isContainerHapExist);
+      when(mockFunc)().afterReturn(true);
+      let mockFunc1: Function = mocker.mockFunc(DeliverUtil, DeliverUtil.isSupportAppType);
+      when(mockFunc1)(ArgumentMatchers.any).afterReturn(false);
+      let mockFunc2: Function = mocker.mockFunc(DeliverUtil, DeliverUtil.isSupportDeliver);
+      when(mockFunc2)().afterReturn(false);
+      let mockFunc3: Function = mocker.mockFunc(DeliverUtil, DeliverUtil.getDeliverStartStatus);
+      when(mockFunc3)().afterReturn('1000');
+      try {
+        baseViewModel.jumpTo(abilityName, bundleName, moduleName, params, screenId);
+      } catch (e) {}
+      when(mockFunc)().afterReturn(true);
+      when(mockFunc1)(ArgumentMatchers.any).afterReturn(true);
+      when(mockFunc2)().afterReturn(false);
+      when(mockFunc3)().afterReturn('1000');
+      baseViewModel.jumpTo(abilityName, bundleName, moduleName, params, screenId);
+      when(mockFunc)().afterReturn(true);
+      when(mockFunc1)(ArgumentMatchers.any).afterReturn(true);
+      when(mockFunc2)().afterReturn(true);
+      when(mockFunc3)().afterReturn('1000');
+      try {
+        baseViewModel.jumpTo(abilityName, bundleName, moduleName, params, screenId);
+      } catch (e) {}
+      expect(baseViewModel).not().assertUndefined();
+      expect(bundleName).assertEqual('com.ohos.photos');
+      mocker.clear(DeliverUtil);
+      mocker.clearAll();
       done();
     })
 
@@ -270,8 +373,11 @@ export default function BaseViewModelTest() {
     it('test_informUninstallResult_else001', 0, async (done: Function) => {
       let testVM: TestBaseViewModel = new TestBaseViewModel();
       let mocker = new MockKit();
+      let mockFunc = mocker.mockFunc(DeliverUtil, DeliverUtil.isContainerPkg);
+      when(mockFunc)(ArgumentMatchers.any).afterReturn(true);
       testVM.informUninstallResult(-1, 'testbundlename');
       expect(testVM).not().assertNull();
+      mocker.clear(DeliverUtil);
       mocker.clearAll();
       done();
     })

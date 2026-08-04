@@ -162,6 +162,13 @@
             }
         },
         {
+            "name":"system_function_voice_search",
+            "value":"voice Search",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
             "name":"system_function_open_file_manager",
             "value":"Files",
             "attr":{
