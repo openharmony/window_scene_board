@@ -36,6 +36,7 @@ import { SCBSceneInfo, SCBSceneMode } from './SCBSceneInfo';
 import { image } from '@kit.ImageKit';
 import { ACTIVE_STATUS_MAP } from './SCBSceneSessionManager';
 import { WinLog, WinLogDomain } from '../../utils/WinLog';
+import Want from '@ohos.app.ability.Want'
 import { SCBSceneMissionManager } from '../manager/SCBSceneMissionManager';
 
 const TAG = 'SCBSpecificSession';
@@ -438,6 +439,7 @@ export class SCBSpecificSession {
     this.registerPCOrPadListeners();
     this.registerFullscreenChangeCallback();
     this.registerWindowCornerRadiusChangeCallback();
+    this.registerRestoreFloatMainWindow();
     this.session.on('setWindowShadows', (shadowsInfo: SCBWindowShadowConfig) => {
       if (shadowsInfo) {
         log.showInfo(`setWindowShadows,shadow radius:${shadowsInfo.radius}, color:${shadowsInfo.color}, ` +
@@ -2135,5 +2137,25 @@ export class SCBSpecificSession {
     if (callbackArray.length === 0) {
       this.windowMovingCallbackMap.delete(screenId);
     }
+  }
+
+  public registerRestoreFloatMainWindow(): void {
+    log.showInfo('register restoreFloatMainWindow');
+    this.session.on('restoreFloatMainWindow', (wantParameters: Record<string, Object>) => {
+      let sceneInfo: SCBSceneInfo | undefined = this.getParentSession()?.sceneInfo;
+      if (sceneInfo === undefined) {
+        log.showError(`cannot find parent session`);
+        return;
+      }
+
+      let want: Want = {
+        bundleName: sceneInfo.bundleName,
+        moduleName: sceneInfo.moduleName,
+        abilityName: sceneInfo.abilityName,
+        parameters: wantParameters,
+      }
+      sceneSessionManager.updateSceneSessionWant(sceneInfo, want, sceneInfo.requestId);
+      SCBSceneSessionManager.getInstance().onRestoreFloatMainWindow(sceneInfo);
+    })
   }
 }
