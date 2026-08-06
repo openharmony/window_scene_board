@@ -363,7 +363,7 @@ export { StartMode, BackgroundReason } from './scene/common/SCBSceneEnums';
 
 export { SCBSceneResourceManager, SceneResourceType } from './scene/manager/SCBSceneResourceManager';
 
-export { SCBRotationConfig } from './rotation/SCBRotationConfig';
+export { SCBRotationConfig, OrientationExecutionResult } from './rotation/SCBRotationConfig';
 
 export { SCBExpandGuideParam } from './scene/session/SCBExpandGuideParam';
 

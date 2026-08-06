@@ -1353,9 +1353,9 @@ export class SCBSceneSession {
         this.session.persistentId, undefined, shouldBackToCaller);
     });
 
-    this.session.on('sessionRequestedOrientationChange', (requestedOrientation, needAnimation)=> {
+    this.session.on('sessionRequestedOrientationChange', (requestedOrientation, needAnimation, promiseId: number) => {
       SCBSceneSessionManager.getInstance().notifyContainerSessionChangeReqOrientation(
-        this.sceneInfo.screenId, requestedOrientation, this.session.persistentId, needAnimation);
+        this.sceneInfo.screenId, requestedOrientation, this.session.persistentId, needAnimation, promiseId);
     });
 
     this.session.on('sessionGetTargetOrientationConfigInfo', (targetOrientation)=> {
