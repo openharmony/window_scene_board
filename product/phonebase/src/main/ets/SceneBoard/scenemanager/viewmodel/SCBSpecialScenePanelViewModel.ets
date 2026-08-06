@@ -77,7 +77,8 @@ import {
   SCBBaseScenePanelViewModel,
   ScbNumber,
   CommonResult,
-  SceneInfoAdapterUtil
+  SceneInfoAdapterUtil,
+  OrientationExecutionResult
 } from '@ohos/windowscene';
 import { ScenePanelState } from '../SCBSpecialScenePanel';
 import { RotationConstants } from '@ohos/commonconstants';
@@ -886,7 +887,8 @@ export class SCBSpecialScenePanelViewModel extends SCBBaseScenePanelViewModel<SC
    * @param persistentId id of scene.
    * @param requestedOrientation target orientation
    */
-  public onContainerRequestedOrientationChange(persistentId: number, requestedOrientation: number): void {
+  public onContainerRequestedOrientationChange(persistentId: number, requestedOrientation: number,
+    promiseId: number = 0): void {
     let containerSession = this.getSceneContainerSessionWithPersistentId(persistentId);
     if (!containerSession) {
       log.showError('cannot find container Session with persistentId: ' + persistentId);
@@ -911,10 +913,14 @@ export class SCBSpecialScenePanelViewModel extends SCBBaseScenePanelViewModel<SC
         log.showWarn('onContainerRequestedOrientationChange animCnt reaches the max limits, rotationAnimCnt: ' +
         this.rotationAnimCnt + ' screenRotationAnimCnt: ' +
         this.panelStateCollectionHandler?.getScreenRotationAnimCnt());
+        containerSession.setOrientationExecutionResultMap(promiseId, true, OrientationExecutionResult.ORIENTATION_IGNORED);
         return;
       }
+      containerSession.orientationExecutionResult = OrientationExecutionResult.ORIENTATION_APPLIED;
       this.startSceneWithRotationIfNeed(containerSession, true, true);
+      containerSession.setOrientationExecutionResultMap(promiseId, true, containerSession.orientationExecutionResult);
     } else {
+      containerSession.setOrientationExecutionResultMap(promiseId, true, OrientationExecutionResult.ORIENTATION_IGNORED);
       // no need to rotation if no active session
       log.showInfo('onContainerRequestedOrientationChange no active session name: ' +
       containerSession.primarySession?.sceneInfo.bundleName +

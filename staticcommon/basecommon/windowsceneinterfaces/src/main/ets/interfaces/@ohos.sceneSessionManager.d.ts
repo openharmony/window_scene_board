@@ -1781,7 +1781,7 @@ declare namespace sceneSessionManager {
      * @param type: 'sessionRequestedOrientationChange'
      * @param callback: requested orientation, whether the rotation is page rotation'
      */
-    on(type: 'sessionRequestedOrientationChange', callback: Callback<number, boolean>): void;
+    on(type: 'sessionRequestedOrientationChange', callback: Callback<number, boolean, number>): void;
 
     on(type: 'sessionGetTargetOrientationConfigInfo', callback: Callback<number>): void;
 
@@ -2463,6 +2463,11 @@ declare namespace sceneSessionManager {
      * request close the specific session
      */
     requestSpecificSessionClose(): void;
+
+    /**
+     * notify orientation execution result
+     */
+    notifyOrientationExecutionResult(promiseId: number, orientationExecutionResult: number): void;
 
   }
 
