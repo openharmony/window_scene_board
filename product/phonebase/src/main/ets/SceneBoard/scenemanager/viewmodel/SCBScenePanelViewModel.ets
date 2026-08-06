@@ -5239,7 +5239,6 @@ export class SCBScenePanelViewModel extends SCBBaseScenePanelViewModel<SCBMainPa
     isTimeoutCheck: boolean = false): void {
     homeLog.showInfo(`endRotationAnimate rotationAnimCnt:${this.dataCollectionHandler?.getRotationAnimCnt()}` +
       `isTimeoutCheck:${isTimeoutCheck}`);
-    SCBWindowRotateController.getInstance().notifyRotationChange(screenProperty, SCBRotateChangeReason.ROTATE_END);
     this.updateNeedScrollClipRotateFinish();
     if (!this.dataCollectionHandler) {
       return;
@@ -5259,6 +5258,7 @@ export class SCBScenePanelViewModel extends SCBBaseScenePanelViewModel<SCBMainPa
     let rotationDuration = Date.now() - rotationStartTime;
     HiDfxEventUtil.reportScenePanelRotationEnd(rotationStartTime.toFixed(), this.screenProperty.screenId,
       this.getPanelName(), rotationDuration);
+    SCBWindowRotateController.getInstance().notifyRotationChange(screenProperty, SCBRotateChangeReason.ROTATE_END);
     if (this.dataCollectionHandler.getRotationAnimCnt() === 0) {
       this.notifyScreenRotateToCallbacks(screenProperty,
         SCBRotateChangeReason.ROTATE_END);

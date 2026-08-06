@@ -1005,7 +1005,6 @@ export class SCBSpecialScenePanelViewModel extends SCBBaseScenePanelViewModel<SC
   private rotationAnimationFinished(rotationStartTime: number, screenProperty: SCBScreenProperty,
     isTimeoutCheck: boolean = false): void {
     WinLog.showInfo(WinLogDomain.WMS_ROTATION, `[rotationAnimationFinished] animCnt:${this.rotationAnimCnt} timeout:${isTimeoutCheck}`);
-    SCBWindowRotateController.getInstance().notifyRotationChange(screenProperty, SCBRotateChangeReason.ROTATE_END);
     if (isTimeoutCheck) {
       if (this.rotationAnimCnt > 0) {
         this.rotationAnimCnt = 1;
@@ -1021,6 +1020,7 @@ export class SCBSpecialScenePanelViewModel extends SCBBaseScenePanelViewModel<SC
     let rotationDuration = Date.now() - rotationStartTime;
     HiDfxEventUtil.reportScenePanelRotationEnd(rotationStartTime.toFixed(), this.screenProperty.screenId,
       this.panelStateCollectionHandler?.getPanelName(), rotationDuration);
+    SCBWindowRotateController.getInstance().notifyRotationChange(screenProperty, SCBRotateChangeReason.ROTATE_END);
     if (this.rotationAnimCnt === 0) {
       SCBScreenSessionManager.getInstance().notifyScreenRotateToCallbacks(screenProperty,
         SCBRotateChangeReason.ROTATE_END);
