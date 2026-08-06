@@ -901,7 +901,6 @@ export class SCBRotationController {
     isTimeoutCheck: boolean = false): void {
     WinLog.showInfo(WinLogDomain.WMS_ROTATION, `[rotationAnimationFinished] rotationAnimCnt:${this.getRotationAnimCnt()}` +
                  `isTimeoutCheck:${isTimeoutCheck}`);
-    SCBWindowRotateController.getInstance().notifyRotationChange(screenProperty, SCBRotateChangeReason.ROTATE_END);
     this.updateNeedScrollClipRotateFinish();
     if (isTimeoutCheck) {
       if (this.getRotationAnimCnt() > 0) {
@@ -918,6 +917,7 @@ export class SCBRotationController {
     let rotationDuration = Date.now() - rotationStartTime;
     HiDfxEventUtil.reportScenePanelRotationEnd(rotationStartTime.toFixed(), this.getScreenProperty().screenId,
       this.getPanelName(), rotationDuration);
+    SCBWindowRotateController.getInstance().notifyRotationChange(screenProperty, SCBRotateChangeReason.ROTATE_END);
     if (this.getRotationAnimCnt() === 0) {
       this.notifyScreenRotateToCallbacks(screenProperty,
         SCBRotateChangeReason.ROTATE_END);
