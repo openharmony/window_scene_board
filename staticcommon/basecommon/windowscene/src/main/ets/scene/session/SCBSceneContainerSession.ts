@@ -69,7 +69,8 @@ import { ViewManagerPolicy, ViewType } from '@ohos/frameworkwrapper';
 import { IContainerSessionData } from '../framework/containerdata/IContainerSessionData';
 import { ContainerDataCategory, ContainerStateCategory, SceneDataCategory, BackgroundReason } from '../common/SCBSceneEnums';
 import { ContainerDataOfBasic } from '../framework/containerdata/ContainerDataOfBasic';
-import { ContainerSessionFilter, SCBRotationConfig, SCBSceneMissionManager } from '../../TsIndex';
+import { ContainerSessionFilter, SCBSceneMissionManager } from '../../TsIndex';
+import { SCBRotationConfig, OrientationExecutionResult } from '../../rotation/SCBRotationConfig';
 import { ContainerSessionInitializer } from '../framework/strategy/containerstrategy/initstrategy/ContainerSessionInitializer';
 import { MissionManagementTraceUtil, SCBSceneUtils } from '../utils/SCBSceneUtils';
 import lazy {  SCBSplitUtils } from '../utils/SCBSplitUtils';
@@ -170,6 +171,11 @@ export enum SplitStyle {
   UNDEFINED = -1,
   LEFT_AND_RIGHT_POS = 0,
   UP_AND_DOWN_POS = 1
+}
+
+interface OrientationExecutionRecord {
+  notifyResult: boolean,
+  orientationResult: OrientationExecutionResult
 }
 
 export interface CloseContainerParam {
@@ -2569,6 +2575,8 @@ export class SCBSceneContainerSession {
   screenProperty: SCBScreenProperty = new SCBScreenProperty();
   lastRecentStartBeforeRect: SCBSessionRect = new SCBSessionRect();
   lastRecentStartBeforeRotation: number = -1;
+  private notifyOrientationExecutionResultMap: Map<number, OrientationExecutionRecord> = new Map();
+  orientationExecutionResult: OrientationExecutionResult = OrientationExecutionResult.ORIENTATION_INVALID;
 
   dividerParam: SCBDividerParam;
   floatingParam: SCBFloatingParam = new SCBFloatingParam();
@@ -5435,21 +5443,69 @@ export class SCBSceneContainerSession {
     this.dividerParam.updateDividerParamWithRatio(screenProperty, this.splitParam.getGModeSplitRatioCache());
   }
 
+  public setOrientationExecutionResultMap(promiseId: number, isNotify: boolean, result: OrientationExecutionResult): void {
+    WinLog.showInfo(WinLogDomain.WMS_ROTATION, '[setOrientationExecutionResultMap] promiseId: ' + promiseId + ' result: ' + result);
+    if (promiseId === 0) {
+      WinLog.showInfo(WinLogDomain.WMS_ROTATION, '[setOrientationExecutionResultMap] promiseId invalid');
+      return;
+    }
+    if (this.notifyOrientationExecutionResultMap.get(promiseId)?.notifyResult) {
+      WinLog.showInfo(WinLogDomain.WMS_ROTATION, '[setOrientationExecutionResultMap] already notify');
+      return;
+    }
+    this.notifyOrientationExecutionResultMap.set(promiseId, { notifyResult: isNotify, orientationResult: result });
+  }
+
+  public getOrientationExecutionResultMapFirst(promiseId: number): boolean | undefined {
+    return this.notifyOrientationExecutionResultMap.get(promiseId)?.notifyResult;
+  }
+
+  public getOrientationExecutionResultMapSecond(promiseId: number): OrientationExecutionResult | undefined {
+    return this.notifyOrientationExecutionResultMap.get(promiseId)?.orientationResult;
+  }
+
+  public resetOrientationExecutionResultMap(promiseId: number): void {
+    this.notifyOrientationExecutionResultMap.delete(promiseId);
+  }
+
+  public notifyOrientationExecutionResult(persistentId: number, promiseId: number, result?: OrientationExecutionResult): void {
+    WinLog.showInfo(WinLogDomain.WMS_ROTATION, '[notifyOrientationExecutionResult] persistentId: ' +
+      persistentId + ' promiseId: ' + promiseId + ' result: ' + result);
+    if (persistentId === 0 || promiseId === 0 || result === undefined) {
+      return;
+    }
+    let actualSession: SCBSceneSession | null = null;
+    if (this.primarySession?.session.persistentId === persistentId) {
+      actualSession = this.primarySession;
+    } else if (this.secondarySession?.session.persistentId === persistentId) {
+      actualSession = this.secondarySession;
+    } else {
+      return;
+    }
+    if (!actualSession) {
+      WinLog.showError(WinLogDomain.WMS_ROTATION, '[notifyOrientationExecutionResult] session is null');
+      return;
+    }
+    actualSession?.session?.notifyOrientationExecutionResult(promiseId, result);
+  }
+
   /**
    * Get container request orientation
    *
    * @returns { SCBSceneOrientation }
    */
-  public getContainerRequestOrientation() : SCBSceneOrientation {
+  public getContainerRequestOrientation(persistentId: number = 0, promiseId: number = 0): SCBSceneOrientation {
     if (!this.primarySession && !this.secondarySession) {
       return SCBSceneOrientation.UNSPECIFIED;
     }
     // midScene G-state rotate policy
     if (this.isMidScene && SCBTriFoldManager.getInstance().isCurGState()) {
+      this.setOrientationExecutionResultMap(promiseId, true, OrientationExecutionResult.ORIENTATION_IGNORED);
       return SCBSceneOrientation.AUTO_ROTATION_LANDSCAPE_RESTRICTED;
     }
     // split rotate policy
     if (this.primarySession && this.secondarySession) {
+      this.setOrientationExecutionResultMap(promiseId, true, OrientationExecutionResult.ORIENTATION_IGNORED);
       return SCBSceneOrientation.AUTO_ROTATION_RESTRICTED;
     }
     let actualSession = this.primarySession ? this.primarySession : this.secondarySession;
@@ -6108,6 +6164,7 @@ export class SCBSceneContainerSession {
                  ' fixedRotation: ' + fixedRotation);
 
     if (fixedRotation !== -1) {
+      this.orientationExecutionResult = OrientationExecutionResult.ORIENTATION_IGNORED;
       return fixedRotation;
     }
 

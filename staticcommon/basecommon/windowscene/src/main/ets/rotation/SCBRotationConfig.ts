@@ -81,6 +81,13 @@ export enum RotationConfigType {
   FIXED_ROTATION = 3
 }
 
+export enum OrientationExecutionResult {
+  ORIENTATION_APPLIED = 0,
+  ORIENTATION_IGNORED = 1,
+  ORIENTATION_PENDING = 2,
+  ORIENTATION_INVALID = 3
+}
+
 /**
  * SCBRotationConfig
  */
