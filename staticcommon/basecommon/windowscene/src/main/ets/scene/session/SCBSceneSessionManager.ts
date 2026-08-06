@@ -116,6 +116,7 @@ import { SceneBoardStateManager, CoreEventType } from '@ohos/frameworkwrapper/In
 import { MidSceneLifeCycle } from './SCBMidSceneParam';
 import { SCBSceneStartInterceptor } from '../framework/missions/SCBSceneStartInterceptor';
 import { WinLog, WinLogDomain } from '../../utils/WinLog';
+import { OrientationExecutionResult } from '../../rotation/SCBRotationConfig';
 import effectKit from '@ohos.effectKit';
 import image from '@ohos.multimedia.image';
 import fs from '@ohos.file.fs';
@@ -8665,7 +8666,7 @@ export class SCBSceneSessionManager {
   }
 
   private notifySpecialPanelChangeReqOrientation(
-    screenId: number, requestedOrientation: number, persistentId: number): void {
+    screenId: number, requestedOrientation: number, persistentId: number, promiseId?: number): void {
     if (!this.specialCallbackMap.has(SCBEventId.ORIENTATION_CHANGE)) {
       log.showError(`No scene func: ${SCBEventId.ORIENTATION_CHANGE} has registered!`);
       return;
@@ -8682,8 +8683,9 @@ export class SCBSceneSessionManager {
       return;
     }
     functions.forEach((value: Function) => {
-      value(persistentId, requestedOrientation);
+      value(persistentId, requestedOrientation, promiseId);
     });
+    this.notifyContainerSessionOrientationExecutionResult(screenId, persistentId, promiseId);
   }
 
   /**
@@ -8694,15 +8696,15 @@ export class SCBSceneSessionManager {
    * @param persistentId
    */
   public notifyContainerSessionChangeReqOrientation(
-    screenId: number, requestedOrientation: number, persistentId: number, needAnimation: boolean = true): void {
-    log.showInfo(`RequestedOrientationChange persistentId:${persistentId} reqOrientation:${requestedOrientation}`);
+    screenId: number, requestedOrientation: number, persistentId: number, needAnimation: boolean = true, promiseId?: number): void {
+    log.showInfo(`RequestedOrientationChange persistentId:${persistentId} reqOrientation:${requestedOrientation} promiseId:${promiseId}`);
     let specialContainerSessionList = this.getSpecialContainerSessionList();
     let index = specialContainerSessionList.findIndex((item) => {
       return item.primarySession?.session.persistentId === persistentId ||
         item.secondarySession?.session.persistentId === persistentId;
     });
     if (this.isScreenLocked() && index !== -1) {
-      this.notifySpecialPanelChangeReqOrientation(screenId, requestedOrientation, persistentId);
+      this.notifySpecialPanelChangeReqOrientation(screenId, requestedOrientation, persistentId, promiseId);
       return;
     }
     if (!this.callbackMap.has(SCBEventId.ORIENTATION_CHANGE)) {
@@ -8721,8 +8723,34 @@ export class SCBSceneSessionManager {
       return;
     }
     functions.forEach((value: Function) => {
-      value(persistentId, requestedOrientation, needAnimation);
+      value(persistentId, requestedOrientation, needAnimation, promiseId);
     });
+    this.notifyContainerSessionOrientationExecutionResult(screenId, persistentId, promiseId);
+  }
+
+  public notifyContainerSessionOrientationExecutionResult(screenId: number, persistentId: number, promiseId: number | undefined): void {
+    if (promiseId === undefined || promiseId === 0) {
+      WinLog.showInfo(WinLogDomain.WMS_ROTATION, '[notifyContainerSessionOrientationExecutionResult] promiseId invalid');
+      return;
+    }
+    const containerSessionList: SCBSceneContainerSessionArray = this.getContainerSessionList(screenId);
+    const specialContainerSessionList: SCBSceneContainerSessionArray = this.getSpecialContainerSessionList();
+    const floatContainerSessionList: SCBSceneContainerSessionArray = this.getFloatingSessionList();
+    const containerSession = containerSessionList.findByPersistentId(persistentId) ??
+      floatContainerSessionList.findByPersistentId(persistentId) ?? specialContainerSessionList.findByPersistentId(persistentId);
+    if (!containerSession) {
+      WinLog.showInfo(WinLogDomain.WMS_ROTATION, '[notifyContainerSessionOrientationExecutionResult] containerSession is null');
+      return;
+    }
+    if (containerSession.getOrientationExecutionResultMapFirst(promiseId) === undefined) {
+      WinLog.showInfo(WinLogDomain.WMS_ROTATION, '[notifyContainerSessionOrientationExecutionResult] ignored');
+      containerSession.notifyOrientationExecutionResult(persistentId, promiseId,
+        OrientationExecutionResult.ORIENTATION_IGNORED);
+    } else {
+      containerSession.notifyOrientationExecutionResult(persistentId, promiseId,
+        containerSession.getOrientationExecutionResultMapSecond(promiseId));
+    }
+    containerSession.resetOrientationExecutionResultMap(promiseId);
   }
 
   /**

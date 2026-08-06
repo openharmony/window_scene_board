@@ -167,7 +167,8 @@ import {
   NavigationType,
   CommonResult,
   SCBRotationConfig,
-  SplitStyle
+  SplitStyle,
+  OrientationExecutionResult
 } from '@ohos/windowscene';
 import { MemoryManager } from '@ohos/frameworkcommon';
 import {
@@ -2122,7 +2123,9 @@ export struct SCBScenePanel {
     }
   }
 
-  private onContainerRequestedOrientationChange = (persistentId: number, requestedOrientation: number, needAnimation: boolean = true): void => {
+  private onContainerRequestedOrientationChange = (persistentId: number, requestedOrientation: number,
+    needAnimation: boolean = true, promiseId: number = 0): void => {
+    WinLog.showInfo(WinLogDomain.WMS_ROTATION, 'persistentId: ' + persistentId + ' promiseId: ' + promiseId);
     let containerSession = this.panelViewModel.getSceneContainerSessionWithPersistentId(persistentId);
     if (!containerSession) {
       WinLog.showError(WinLogDomain.WMS_ROTATION, '[onContainerRequestedOrientationChange] cannot find container session, ' +
@@ -2148,7 +2151,7 @@ export struct SCBScenePanel {
       return;
     }
     const lastRequestLandscape = containerSession.isRequestLandscape;
-    let newRequestedOrientation = containerSession.getContainerRequestOrientation();
+    let newRequestedOrientation = containerSession.getContainerRequestOrientation(persistentId, promiseId);
     WinLog.showWarn(WinLogDomain.WMS_ROTATION, '[onContainerRequestedOrientationChange] Convert requested orientation from: ' +
       containerSession.requestOrientation + ' to: ' + newRequestedOrientation);
     containerSession.sessionData.requestOrientation = newRequestedOrientation;
@@ -2162,6 +2165,7 @@ export struct SCBScenePanel {
           `when is in foldeffect animation.`);
         const mattesRotateStrategy = MattesRotateStrategy.getInstance();
         mattesRotateStrategy.writeContainerOrientation(persistentId, actualRequestedOrientation);
+        containerSession.setOrientationExecutionResultMap(promiseId, true, OrientationExecutionResult.ORIENTATION_PENDING);
         return;
       }
     }
@@ -2169,25 +2173,30 @@ export struct SCBScenePanel {
     if (containerSession.isOneStepSplit()) {
       WinLog.showWarn(WinLogDomain.WMS_ROTATION, `[onContainerRequestedOrientationChange] cannot rotate
         when is in one step split state.`);
+      containerSession.setOrientationExecutionResultMap(promiseId, true, OrientationExecutionResult.ORIENTATION_IGNORED);
       return;
     }
     if (containerSession.isFloat) {
       WinLog.showWarn(WinLogDomain.WMS_ROTATION, `[onContainerRequestedOrientationChange] cannot rotate when in float state.`);
+      containerSession.setOrientationExecutionResultMap(promiseId, true, OrientationExecutionResult.ORIENTATION_IGNORED);
       return;
     }
     if (this.sysSceneSession.isTouchable) {
       containerSession.setPendingPageRotation(pendingPageRotationRequest, 'onContainerRequestedOrientationChangeRecent');
       WinLog.showWarn(WinLogDomain.WMS_ROTATION, `[onContainerRequestedOrientationChange] cannot rotate when in recent state.`);
+      containerSession.setOrientationExecutionResultMap(promiseId, true, OrientationExecutionResult.ORIENTATION_IGNORED);
       return;
     }
     if (SCBWindowRotateController.getInstance().isLandscapeStartNotSync()) {
       containerSession.setPendingPageRotation(pendingPageRotationRequest, 'onContainerRequestedOrientationChangeLandscapeStart');
       WinLog.showWarn(WinLogDomain.WMS_ROTATION, `[onContainerRequestedOrientationChange] cannot rotate ` +
         `when is in landscapeStart state.`);
+      containerSession.setOrientationExecutionResultMap(promiseId, true, OrientationExecutionResult.ORIENTATION_PENDING);
       return;
     }
     let screenSession = SCBScreenSessionManager.getInstance().getScreenSession(this.screenProperty.screenId);
     if (this.isFixedRotation(screenSession)) {
+      containerSession.setOrientationExecutionResultMap(promiseId, true, OrientationExecutionResult.ORIENTATION_IGNORED);
       return;
     }
     if (containerSession.isActive && !isScreenLocked) {
@@ -2197,16 +2206,20 @@ export struct SCBScenePanel {
           this.rotationAnimCnt > 10 || this.screenRotationAnimCnt > 10) {
           WinLog.showWarn(WinLogDomain.WMS_ROTATION, '[onContainerRequestedOrientationChange] animCnt reaches the max limits, ' +
             'rotationAnimCnt: ' + this.rotationAnimCnt + ' screenRotationAnimCnt: ' + this.screenRotationAnimCnt);
+          containerSession.setOrientationExecutionResultMap(promiseId, true, OrientationExecutionResult.ORIENTATION_IGNORED);
           return;
         }
+        containerSession.orientationExecutionResult = OrientationExecutionResult.ORIENTATION_APPLIED;
         this.panelViewModel.startSceneWithRotationIfNeed(containerSession, needAnimation, false, fromUser,
           isPageRotationRequest);
+        containerSession.setOrientationExecutionResultMap(promiseId, true, containerSession.orientationExecutionResult);
       } else {
         containerSession.setPendingPageRotation(pendingPageRotationRequest, 'onContainerRequestedOrientationChangeStartAnimating');
       }
     } else {
       containerSession.setPendingPageRotation(pendingPageRotationRequest, 'onContainerRequestedOrientationChangeInactive');
       // no need to rotation if no active session
+      containerSession.setOrientationExecutionResultMap(promiseId, true, OrientationExecutionResult.ORIENTATION_IGNORED);
       WinLog.showInfo(WinLogDomain.WMS_ROTATION, '[onContainerRequestedOrientationChange] no animation name: ' +
       containerSession.primarySession?.sceneInfo.bundleName +
         ' isActive: ' + containerSession.isActive + ' from: ' + containerSession.requestOrientation + ' to: ' +
