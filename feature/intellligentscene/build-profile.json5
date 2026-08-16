@@ -1,0 +1,82 @@
+{
+  "app": {
+    "products": [
+      {
+        "name": "default",
+        "signingConfig": "release",
+        "targetSdkVersion": 20,
+        "compatibleSdkVersion": 20,
+        "compileSdkVersion": '26.0.0',
+        "runtimeOS": "OpenHarmony"
+      }
+    ],
+    "buildModeSet": [
+      {
+        "name": "debug",
+      },
+      {
+        "name": "release"
+      }
+    ]
+  },
+  "modules": [
+    {
+      "name": "phone",
+      "srcPath": "./product/phone",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        },
+        {
+          "name": "lite",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "scene.common",
+      "srcPath": "./common",
+    },
+    {
+      "name": "scene.configmanage",
+      "srcPath": "./feature/configmanage"
+    },
+    {
+      "name": "scene.datamanage",
+      "srcPath": "./feature/datamanage"
+    },
+    {
+      "name": "scene.configlinkage",
+      "srcPath": "./feature/configlinkage"
+    },
+    {
+      "name": "scene.backup",
+      "srcPath": "./feature/backup",
+    },
+    {
+      "name": "scene.statemanage",
+      "srcPath": "./feature/statemanage"
+    },
+    {
+      "name": "scene.activationmanage",
+      "srcPath": "./feature/activationmanage",
+    },
+    {
+      "name": "scene.notdisturb",
+      "srcPath": "./feature/notdisturb",
+    },
+    {
+      "name": "scene.modeconfig",
+      "srcPath": "./feature/modeconfig",
+    },
+    {
+      "name": "scene.form",
+      "srcPath": "./feature/form",
+    }
+  ]
+}
