@@ -22,10 +22,8 @@ import {
   LayoutDescription,
   layoutLockUtil,
   PageInfoManager,
-  StyleConstants,
-  CommonConstants
+  StyleConstants
 } from '../TsIndex';
-import type GridLayoutItemInfo from '../bean/GridLayoutItemInfo';
 // 直板机从首页(page 0)开始找空位，填满后再分页；折叠屏保持原策略
 const START_FIND_POSITION = 0;
 const START_FIND_POSITION_BIG_FOLD = 2;
@@ -137,11 +135,6 @@ export class SCBBlankPositionUtils {
    * @returns
    */
   private findBlankPositionPage(desktopPosition: DesktopPosition, isOuter?: boolean): boolean {
-    // 3a：卡片预留页不参与应用找位，避免新装应用挤进卡片页
-    if (this.isPageReservedForCards(desktopPosition.page, isOuter)) {
-      log.showInfo(TAG, 'findBlankPositionPage skip card page:%{public}d', desktopPosition.page);
-      return false;
-    }
     let rowOffset: number = 0;
     if (DeviceHelper.isPad() && desktopPosition.page === 0) {
       rowOffset = ROW_OFFSET_THREE;
@@ -162,16 +155,6 @@ export class SCBBlankPositionUtils {
     }
     log.showInfo(TAG, 'findBlankPosition page:%{public}d result: false', desktopPosition.page);
     return false;
-  }
-
-  /**
-   * 该页是否预留给卡片（页内存在卡片则应用找位跳过）
-   */
-  private isPageReservedForCards(page: number, isOuter?: boolean): boolean {
-    const gridList: GridLayoutItemInfo[] =
-      LaunchLayoutCacheManager.getInstance().getGridLayoutItemList(isOuter);
-    return gridList.some((item: GridLayoutItemInfo) =>
-      item.page === page && item.typeId === CommonConstants.TYPE_CARD);
   }
 }
 

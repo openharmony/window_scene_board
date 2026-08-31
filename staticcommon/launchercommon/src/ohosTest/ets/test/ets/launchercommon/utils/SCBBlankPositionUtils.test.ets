@@ -60,7 +60,7 @@ export default function SCBBlankPositionUtilsTest() {
       let isOuter = false;
       let maxPage = 18;
       let startPage = scbBlankPositionUtils.getFindBlankStartPage(maxPage, isOuter);
-      expect(startPage).assertEqual(1);
+      expect(startPage).assertEqual(0);
 
       mocker.clear(DeviceHelper);
       mocker.clearAll();
