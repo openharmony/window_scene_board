@@ -229,14 +229,6 @@ export default class PhonePageDesktopLayoutConfig extends PageDesktopLayoutConfi
   }
 
   /**
-   * 该页是否预留给卡片（含卡片则应用找位跳过，避免挤进卡片页）
-   */
-  private isPageReservedForCards(page: number): boolean {
-    return this.mGridLayoutInfo.layoutInfo.some((item: GridLayoutItemInfo) =>
-      item.page === page && item.typeId === CommonConstants.TYPE_CARD);
-  }
-
-  /**
    * 判断格子是否被占用
    */
   private isCellOccupied(page: number, row: number, column: number): boolean {
@@ -254,17 +246,12 @@ export default class PhonePageDesktopLayoutConfig extends PageDesktopLayoutConfi
   }
 
   /**
-   * 查找空位：按行优先扫描第一个空格子；卡片预留页直接跳过
+   * 查找空位：按行优先扫描第一个空格子（卡片按 area 占格，不整页跳过）
    * @param item
    * @param startPage
    * @returns
    */
   private findPosition(item: GridLayoutItemInfo, startPage: number, rows: number, columns: number): boolean {
-    // 3a：卡片页不参与应用补位
-    if (this.isPageReservedForCards(startPage)) {
-      log.showInfo(TAG, 'findPosition skip card page:%{public}d', startPage);
-      return false;
-    }
     for (let row = 0; row < rows; row++) {
       for (let column = 0; column < columns; column++) {
         if (!this.isCellOccupied(startPage, row, column)) {
