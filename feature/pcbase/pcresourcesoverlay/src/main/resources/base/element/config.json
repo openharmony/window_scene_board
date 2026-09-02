@@ -26,7 +26,7 @@
     },
     {
       "name": "toggle_data_all",
-      "value": "computer_mode,focus_mode,flashlight,ring_mode,auto_rotate,air_plane,hotspot,toggle_screenshot,CastToggle,toggle_Demo,dark_mode,key_mouse_share,camera,mic,nfc,super_privacy,super_hub,eye_comfort,power_save,near_link,location,youth_mode,music_service,anti_peeping,quick_note"
+      "value": "computer_mode,focus_mode,flashlight,ring_mode,auto_rotate,air_plane,hotspot,toggle_screenshot,toggle_screen_recorder,CastToggle,toggle_Demo,dark_mode,key_mouse_share,camera,mic,nfc,super_privacy,super_hub,eye_comfort,power_save,near_link,location,youth_mode,music_service,anti_peeping,quick_note"
     },
     {
       "name": "small_screen_toggle_data_default",

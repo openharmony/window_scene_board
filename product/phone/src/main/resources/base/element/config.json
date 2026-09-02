@@ -22,7 +22,7 @@
     },
     {
       "name": "toggle_data_all",
-      "value": "wifi_ui_extension,bluetooth_ui_extension,flashlight,ring_mode,auto_rotate,share,air_plane,mobile_data,hotspot,toggle_screenshot,CastToggle,location,nfc,dark_mode,super_privacy,near_link,anti_peeping,multi_window,quick_note"
+      "value": "wifi_ui_extension,bluetooth_ui_extension,flashlight,ring_mode,auto_rotate,share,air_plane,mobile_data,hotspot,toggle_screenshot,toggle_screen_recorder,CastToggle,location,nfc,dark_mode,super_privacy,near_link,anti_peeping,multi_window,quick_note"
     },
     {
       "name": "toggle_data_black_multiuser",
