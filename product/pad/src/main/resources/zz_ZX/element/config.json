@@ -26,7 +26,7 @@
     },
     {
       "name": "toggle_data_all",
-      "value": "flashlight,ring_mode,auto_rotate,share,air_plane,mobile_data,hotspot,toggle_screenshot,CastToggle,location,nfc,dark_mode,super_privacy,near_link,anti_peeping,multi_window,quick_note"
+      "value": "flashlight,ring_mode,auto_rotate,share,air_plane,mobile_data,hotspot,toggle_screenshot,toggle_screen_recorder,CastToggle,location,nfc,dark_mode,super_privacy,near_link,anti_peeping,multi_window,quick_note"
     },
     {
       "name": "pc_mode_toggle_data_all",
