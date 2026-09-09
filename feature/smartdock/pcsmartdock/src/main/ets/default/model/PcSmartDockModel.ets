@@ -47,7 +47,7 @@ import PcModeContinuableModel from '@ohos/smartdock/src/main/ets/default/pcmode/
 const TAG = 'PcSmartDockModel';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.HOME, 'PCDock-' + TAG);
 
-const GUIDE_BUNDLE_NAME = 'com.ohos.startupguide';
+const GUIDE_BUNDLE_NAME = 'com.ohos.startup_guide';
 const HISEARCH_PC_BUNDLE_NAME = 'com.ohos.hisearch';
 const HMMODEL_PC_BUNDLE_NAME = 'com.ohos.hmmodelfoundation';
 
