@@ -46,7 +46,7 @@ import { PcDockRecentProxy } from '../manager/PcDockRecentProxy';
 
 const TAG = 'SuggestMenuModel';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.HOME, 'PCDock-' + TAG);
-const GUIDE_BUNDLE_NAME = 'com.ohos.startupguide';
+const GUIDE_BUNDLE_NAME = 'com.ohos.startup_guide';
 
 /**
  * SuggestMenu Model
