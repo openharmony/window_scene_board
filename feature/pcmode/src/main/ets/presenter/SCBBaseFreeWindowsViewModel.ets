@@ -3261,7 +3261,7 @@ export abstract class SCBBaseFreeWindowsViewModel implements IFreeWindowsViewMod
     }
 
     const bundleName: string | undefined = containerSession?.primarySession?.sceneInfo?.bundleName;
-    const oobeBundleName: string = 'com.ohos.startupguide';
+    const oobeBundleName: string = 'com.ohos.startup_guide';
     const isForceClean = extraInfo?.isForceClean;
     const exceptionCallback = () => {
       const removeSession = extraInfo?.errorReason === 'appRecovery' ? false : true;
