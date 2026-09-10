@@ -1,7 +1,7 @@
 {
   "trustList":[
     {
-      "bundleName":"com.ohos.startupguide",
+      "bundleName":"com.ohos.startup_guide",
       "moduleName":"pc_startupguide",
       "abilityName":"com.ohos.startupguide.MainAbility"
     },

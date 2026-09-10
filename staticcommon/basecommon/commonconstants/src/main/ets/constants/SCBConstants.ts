@@ -40,7 +40,7 @@ export class SCBConstants {
   /**
    * oobe应用包名
    */
-  static readonly OOBE_PKG: string = 'com.ohos.startupguide';
+  static readonly OOBE_PKG: string = 'com.ohos.startup_guide';
 
   /**
    * 玩机技巧包名
