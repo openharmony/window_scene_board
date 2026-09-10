@@ -163,7 +163,7 @@ export class ExtAppConstants {
   /**
    * OOBE package name 首次开箱引导
    */
-  static readonly PKG_OOBE: string = 'com.ohos.startupguide';
+  static readonly PKG_OOBE: string = 'com.ohos.startup_guide';
 
   /**
    * OOBE ability
