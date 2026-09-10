@@ -92,7 +92,7 @@ const TAG = 'SmartDockModel';
 const log: LogHelper = LogHelper.getLogHelper(LogDomain.HOME, TAG);
 const KEY_NAME = 'name';
 const FIRST_LOADED_SNAPSHOT_NUMBER = 15;
-const GUIDE_BUNDLE_NAME = 'com.ohos.startupguide';
+const GUIDE_BUNDLE_NAME = 'com.ohos.startup_guide';
 
 /**
  * SmartDock Model
