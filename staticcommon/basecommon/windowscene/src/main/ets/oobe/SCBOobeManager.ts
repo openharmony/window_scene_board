@@ -33,6 +33,7 @@ import sSCBOtaManager from './SCBOtaManager';
 import sTrustListOobeManager from './trustlist/TrustListOobeManager';
 import sPrivateOobeManager from './PrivateOobeManager';
 import { OobePreferences } from './preferences/OobePreferences';
+import { SCBScreenSessionManager } from '../screen/session/SCBScreenSessionManager';
 import { checkOobeSettingsDataByTaskpool } from './preferences/OobeTask';
 import { TraceUtil } from '@ohos/basicutils';
 import { TaskpoolUtil } from '@ohos/basicutils';
@@ -344,6 +345,28 @@ export class SCBOobeManager extends BaseOobeManager {
     if (!this.isScreenlockReady && this.spaceNumber !== ADMIN_USERID && !sPrivateOobeManager.getPrivateUserState()) {
       log.showInfo(`startOobeIfNeed isScreenlockReady: ${this.isScreenlockReady}, spaceNumber: ${this.spaceNumber}`);
       return;
+    }
+
+    // Wait for screen session connectivity before launching OOBE.
+    // The screen session must be available to ensure the display pipeline
+    // is ready to render OOBE content without a blank screen.
+    let screenWaitMax = 60; // 60 iterations * 100ms = 6 seconds max wait
+    while (screenWaitMax > 0) {
+      try {
+        const screenSessionMgr = SCBScreenSessionManager.getInstance();
+        if (screenSessionMgr && screenSessionMgr.getMainScreenSession()) {
+          log.showInfo('startOobeIfNeed: screen session ready, proceeding to start OOBE');
+          break;
+        }
+      } catch (e) {
+        // SCBScreenSessionManager may not be fully initialized yet
+      }
+      log.showInfo(`startOobeIfNeed: waiting for screen session, retry: ${screenWaitMax}`);
+      await new Promise<void>(resolve => setTimeout(resolve, 100));
+      screenWaitMax--;
+    }
+    if (screenWaitMax === 0) {
+      log.showWarn('startOobeIfNeed: timeout waiting for screen session, starting OOBE anyway');
     }
 
     await this.startOobe();
