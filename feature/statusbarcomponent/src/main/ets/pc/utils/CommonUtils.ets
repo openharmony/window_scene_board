@@ -86,8 +86,8 @@ export class CommonUtils {
     try {
       const context: ServiceExtensionContext = GlobalContext.getContext();
       let defaultDpiString: string = settings.getValueSync(context, SETTINGS_KEY_DPI, '');
-      let defaultDpi = parseInt(defaultDpiString);
-      if (!isNaN(defaultDpi)) {
+      if (/^\d+$/.test(defaultDpiString)) {
+        let defaultDpi = Number.parseInt(defaultDpiString, 10);
         vp2pxScale = defaultDpi / DPI2PIXELS;
         return vp2pxScale;
       }
